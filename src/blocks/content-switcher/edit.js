@@ -29,9 +29,8 @@ import PremiumBackgroundControl from "../../components/Premium-Background-Contro
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 import PremiumTypo from "../../components/premium-typo";
 import PremiumShadow from "../../components/PremiumShadow";
-import PremiumResponsivePadding from "../../components/Premium-Responsive-Padding";
-import PremiumResponsiveMargin from "../../components/Premium-Responsive-Margin";
 import PremiumBorder from "../../components/premium-border";
+import SpacingControl from '../../components/premium-responsive-spacing'
 import WebfontLoader from "../../components/typography/fontLoader"
 
 /**
@@ -128,36 +127,12 @@ function Edit(props) {
         firstLabelBorderLeft,
         firstLabelBorderUpdated,
         firstLabelBorderWidth,
-        firstLabelPaddingT,
-        firstLabelPaddingR,
-        firstLabelPaddingB,
-        firstLabelPaddingL,
-        firstLabelPaddingTTablet,
-        firstLabelPaddingRTablet,
-        firstLabelPaddingBTablet,
-        firstLabelPaddingLTablet,
-        firstLabelPaddingTMobile,
-        firstLabelPaddingRMobile,
-        firstLabelPaddingBMobile,
-        firstLabelPaddingLMobile,
         secondLabelBorderTop,
         secondLabelBorderRight,
         secondLabelBorderBottom,
         secondLabelBorderLeft,
         secondLabelBorderUpdated,
         secondLabelBorderWidth,
-        secondLabelPaddingT,
-        secondLabelPaddingR,
-        secondLabelPaddingB,
-        secondLabelPaddingL,
-        secondLabelPaddingTTablet,
-        secondLabelPaddingRTablet,
-        secondLabelPaddingBTablet,
-        secondLabelPaddingLTablet,
-        secondLabelPaddingTMobile,
-        secondLabelPaddingRMobile,
-        secondLabelPaddingBMobile,
-        secondLabelPaddingLMobile,
         contentStyles,
         firstContentStyles,
         firstContentBorderTop,
@@ -166,30 +141,6 @@ function Edit(props) {
         firstContentBorderLeft,
         firstContentBorderUpdated,
         firstContentBorderWidth,
-        firstContentMarginT,
-        firstContentMarginR,
-        firstContentMarginB,
-        firstContentMarginL,
-        firstContentMarginTTablet,
-        firstContentMarginRTablet,
-        firstContentMarginBTablet,
-        firstContentMarginLTablet,
-        firstContentMarginTMobile,
-        firstContentMarginRMobile,
-        firstContentMarginBMobile,
-        firstContentMarginLMobile,
-        contentPaddingT,
-        contentPaddingR,
-        contentPaddingB,
-        contentPaddingL,
-        contentPaddingTTablet,
-        contentPaddingRTablet,
-        contentPaddingBTablet,
-        contentPaddingLTablet,
-        contentPaddingTMobile,
-        contentPaddingRMobile,
-        contentPaddingBMobile,
-        contentPaddingLMobile,
         secondContentStyles,
         secondContentBorderTop,
         secondContentBorderRight,
@@ -205,32 +156,15 @@ function Edit(props) {
         containerBorderLeft,
         containerBorderUpdated,
         containerBorderWidth,
-        containerPaddingT,
-        containerPaddingR,
-        containerPaddingB,
-        containerPaddingL,
-        containerPaddingTTablet,
-        containerPaddingRTablet,
-        containerPaddingBTablet,
-        containerPaddingLTablet,
-        containerPaddingTMobile,
-        containerPaddingRMobile,
-        containerPaddingBMobile,
-        containerPaddingLMobile,
-        containerMarginT,
-        containerMarginR,
-        containerMarginB,
-        containerMarginL,
-        containerMarginTTablet,
-        containerMarginRTablet,
-        containerMarginBTablet,
-        containerMarginLTablet,
-        containerMarginTMobile,
-        containerMarginRMobile,
-        containerMarginBMobile,
-        containerMarginLMobile,
         effect,
-        slide
+        slide,
+        firstLabelborder,
+        firstLabelPadding,
+        secondLabelPadding,
+        contentPadding,
+        containerPadding,
+        firstContentMargin,
+        containerMargin
     } = attributes
 
     const DISPLAY = [
@@ -319,34 +253,34 @@ function Edit(props) {
     const ContainerBorderRadius = getPreviewSize(props.deviceType, switcherStyles.containerRadius, switcherStyles.containerRadiusTablet, switcherStyles.containerRadiusMobile);
     const LabelSpacing = getPreviewSize(props.deviceType, labelStyles.labelSpacing, labelStyles.labelSpacingTablet, labelStyles.labelSpacingMobile);
     const FirstLabelSize = getPreviewSize(props.deviceType, labelStyles.firstLabelfontSize, labelStyles.firstLabelfontSizeTablet, labelStyles.firstLabelfontSizeMobile);
-    const FirstLabelPaddingTop = getPreviewSize(props.deviceType, firstLabelPaddingT, firstLabelPaddingTTablet, firstLabelPaddingTMobile);
-    const FirstLabelPaddingRight = getPreviewSize(props.deviceType, firstLabelPaddingR, firstLabelPaddingRTablet, firstLabelPaddingRMobile);
-    const FirstLabelPaddingBottom = getPreviewSize(props.deviceType, firstLabelPaddingB, firstLabelPaddingBTablet, firstLabelPaddingBMobile);
-    const FirstLabelPaddingLeft = getPreviewSize(props.deviceType, firstLabelPaddingL, firstLabelPaddingLTablet, firstLabelPaddingLMobile);
+    const FirstLabelPaddingTop = getPreviewSize(props.deviceType, firstLabelPadding.Desktop.top, firstLabelPadding.Tablet.top, firstLabelPadding.Mobile.top);
+    const FirstLabelPaddingRight = getPreviewSize(props.deviceType, firstLabelPadding.Desktop.right, firstLabelPadding.Tablet.right, firstLabelPadding.Mobile.right);
+    const FirstLabelPaddingBottom = getPreviewSize(props.deviceType, firstLabelPadding.Desktop.bottom, firstLabelPadding.Tablet.bottom, firstLabelPadding.Mobile.bottom);
+    const FirstLabelPaddingLeft = getPreviewSize(props.deviceType, firstLabelPadding.Desktop.left, firstLabelPadding.Tablet.left, firstLabelPadding.Mobile.left);
     const SecondLabelSize = getPreviewSize(props.deviceType, labelStyles.secondLabelfontSize, labelStyles.secondLabelfontSizeTablet, labelStyles.secondLabelfontSizeMobile);
-    const SecondLabelPaddingTop = getPreviewSize(props.deviceType, secondLabelPaddingT, secondLabelPaddingTTablet, secondLabelPaddingTMobile);
-    const SecondLabelPaddingRight = getPreviewSize(props.deviceType, secondLabelPaddingR, secondLabelPaddingRTablet, secondLabelPaddingRMobile);
-    const SecondLabelPaddingBottom = getPreviewSize(props.deviceType, secondLabelPaddingB, secondLabelPaddingBTablet, secondLabelPaddingBMobile);
-    const SecondLabelPaddingLeft = getPreviewSize(props.deviceType, secondLabelPaddingL, secondLabelPaddingLTablet, secondLabelPaddingLMobile);
+    const SecondLabelPaddingTop = getPreviewSize(props.deviceType, secondLabelPadding.Desktop.top, secondLabelPadding.Tablet.top, secondLabelPadding.Mobile.top);
+    const SecondLabelPaddingRight = getPreviewSize(props.deviceType, secondLabelPadding.Desktop.right, secondLabelPadding.Tablet.right, secondLabelPadding.Mobile.right);
+    const SecondLabelPaddingBottom = getPreviewSize(props.deviceType, secondLabelPadding.Desktop.bottom, secondLabelPadding.Tablet.bottom, secondLabelPadding.Mobile.bottom);
+    const SecondLabelPaddingLeft = getPreviewSize(props.deviceType, secondLabelPadding.Desktop.left, secondLabelPadding.Tablet.left, secondLabelPadding.Mobile.left);
     const ContentHeight = getPreviewSize(props.deviceType, contentStyles.contentHeight, contentStyles.contentHeightTablet, contentStyles.contentHeightMobile);
     const FirstContentSize = getPreviewSize(props.deviceType, firstContentStyles.firstContentfontSize, firstContentStyles.firstContentfontSizeTablet, firstContentStyles.firstContentfontSizeMobile);
-    const FirstContentMarginTop = getPreviewSize(props.deviceType, firstContentMarginT, firstContentMarginTTablet, firstContentMarginTMobile);
-    const FirstContentMarginRight = getPreviewSize(props.deviceType, firstContentMarginR, firstContentMarginRTablet, firstContentMarginRMobile);
-    const FirstContentMarginBottom = getPreviewSize(props.deviceType, firstContentMarginB, firstContentMarginBTablet, firstContentMarginBMobile);
-    const FirstContentMarginLeft = getPreviewSize(props.deviceType, firstContentMarginL, firstContentMarginLTablet, firstContentMarginLMobile);
-    const ContentPaddingTop = getPreviewSize(props.deviceType, contentPaddingT, contentPaddingTTablet, contentPaddingTMobile);
-    const ContentPaddingRight = getPreviewSize(props.deviceType, contentPaddingR, contentPaddingRTablet, contentPaddingRMobile);
-    const ContentPaddingBottom = getPreviewSize(props.deviceType, contentPaddingB, contentPaddingBTablet, contentPaddingBMobile);
-    const ContentPaddingLeft = getPreviewSize(props.deviceType, contentPaddingL, contentPaddingLTablet, contentPaddingLMobile);
+    const FirstContentMarginTop = getPreviewSize(props.deviceType, firstContentMargin.Desktop.top, firstContentMargin.Tablet.top, firstContentMargin.Mobile.top);
+    const FirstContentMarginRight = getPreviewSize(props.deviceType, firstContentMargin.Desktop.right, firstContentMargin.Tablet.right, firstContentMargin.Mobile.right);
+    const FirstContentMarginBottom = getPreviewSize(props.deviceType, firstContentMargin.Desktop.bottom, firstContentMargin.Tablet.bottom, firstContentMargin.Mobile.bottom);
+    const FirstContentMarginLeft = getPreviewSize(props.deviceType, firstContentMargin.Desktop.left, firstContentMargin.Tablet.left, firstContentMargin.Mobile.left);
+    const ContentPaddingTop = getPreviewSize(props.deviceType, contentPadding.Desktop.top, contentPadding.Tablet.top, contentPadding.Mobile.top);
+    const ContentPaddingRight = getPreviewSize(props.deviceType, contentPadding.Desktop.right, contentPadding.Tablet.right, contentPadding.Mobile.right);
+    const ContentPaddingBottom = getPreviewSize(props.deviceType, contentPadding.Desktop.bottom, contentPadding.Tablet.bottom, contentPadding.Mobile.bottom);
+    const ContentPaddingLeft = getPreviewSize(props.deviceType, contentPadding.Desktop.left, contentPadding.Tablet.left, contentPadding.Mobile.left);
     const SecondContentSize = getPreviewSize(props.deviceType, secondContentStyles.secondContentfontSize, secondContentStyles.secondContentfontSizeTablet, secondContentStyles.secondContentfontSizeMobile);
-    const ContainerMarginTop = getPreviewSize(props.deviceType, containerMarginT, containerMarginTTablet, containerMarginTMobile);
-    const ContainerMarginRight = getPreviewSize(props.deviceType, containerMarginR, containerMarginRTablet, containerMarginRMobile);
-    const ContainerMarginBottom = getPreviewSize(props.deviceType, containerMarginB, containerMarginBTablet, containerMarginBMobile);
-    const ContainerMarginLeft = getPreviewSize(props.deviceType, containerMarginL, containerMarginLTablet, containerMarginLMobile);
-    const ContainerPaddingTop = getPreviewSize(props.deviceType, containerPaddingT, containerPaddingTTablet, containerPaddingTMobile);
-    const ContainerPaddingRight = getPreviewSize(props.deviceType, containerPaddingR, containerPaddingRTablet, containerPaddingRMobile);
-    const ContainerPaddingBottom = getPreviewSize(props.deviceType, containerPaddingB, containerPaddingBTablet, containerPaddingBMobile);
-    const ContainerPaddingLeft = getPreviewSize(props.deviceType, containerPaddingL, containerPaddingLTablet, containerPaddingLMobile);
+    const ContainerMarginTop = getPreviewSize(props.deviceType, containerMargin.Desktop.top, containerMargin.Tablet.top, containerMargin.Mobile.top);
+    const ContainerMarginRight = getPreviewSize(props.deviceType, containerMargin.Desktop.right, containerMargin.Tablet.right, containerMargin.Mobile.right);
+    const ContainerMarginBottom = getPreviewSize(props.deviceType, containerMargin.Desktop.bottom, containerMargin.Tablet.bottom, containerMargin.Mobile.bottom);
+    const ContainerMarginLeft = getPreviewSize(props.deviceType, containerMargin.Desktop.left, containerMargin.Tablet.left, containerMargin.Mobile.left);
+    const ContainerPaddingTop = getPreviewSize(props.deviceType, containerPadding.Desktop.top, containerPadding.Tablet.top, containerPadding.Mobile.top);
+    const ContainerPaddingRight = getPreviewSize(props.deviceType, containerPadding.Desktop.right, containerPadding.Tablet.right, containerPadding.Mobile.right);
+    const ContainerPaddingBottom = getPreviewSize(props.deviceType, containerPadding.Desktop.bottom, containerPadding.Tablet.bottom, containerPadding.Mobile.bottom);
+    const ContainerPaddingLeft = getPreviewSize(props.deviceType, containerPadding.Desktop.left, containerPadding.Tablet.left, containerPadding.Mobile.left);
 
     const saveSwitcherStyles = (color, value) => {
         const newColors = { ...switcherStyles };
@@ -823,66 +757,12 @@ function Edit(props) {
                                                 saveLabelStyles('firstLabelBoxShadowPosition', newValue)
                                             }
                                         />
-                                        <PremiumResponsivePadding
-                                            paddingTop={firstLabelPaddingT}
-                                            paddingRight={firstLabelPaddingR}
-                                            paddingBottom={firstLabelPaddingB}
-                                            paddingLeft={firstLabelPaddingL}
-                                            paddingTopTablet={firstLabelPaddingTTablet}
-                                            paddingRightTablet={firstLabelPaddingRTablet}
-                                            paddingBottomTablet={firstLabelPaddingBTablet}
-                                            paddingLeftTablet={firstLabelPaddingLTablet}
-                                            paddingTopMobile={firstLabelPaddingTMobile}
-                                            paddingRightMobile={firstLabelPaddingRMobile}
-                                            paddingBottomMobile={firstLabelPaddingBMobile}
-                                            paddingLeftMobile={firstLabelPaddingLMobile}
+                                        <SpacingControl
+                                            label={__('Padding', 'premium-blocks-for-gutenberg')}
+                                            value={firstLabelPadding}
+                                            onChange={(value) => setAttributes({ firstLabelPadding: value })}
                                             showUnits={true}
-                                            selectedUnit={labelStyles.firstLabelPaddingType}
-                                            onChangePadSizeUnit={newvalue => saveLabelStyles('firstLabelPaddingType', newvalue)}
-                                            onChangePaddingTop={
-                                                (device, newValue) => {
-                                                    if (device === "desktop") {
-                                                        setAttributes({ firstLabelPaddingT: newValue })
-                                                    } else if (device === "tablet") {
-                                                        setAttributes({ firstLabelPaddingTTablet: newValue })
-                                                    } else {
-                                                        setAttributes({ firstLabelPaddingTMobile: newValue })
-                                                    }
-                                                }
-                                            }
-                                            onChangePaddingRight={
-                                                (device, newValue) => {
-                                                    if (device === "desktop") {
-                                                        setAttributes({ firstLabelPaddingR: newValue })
-                                                    } else if (device === "tablet") {
-                                                        setAttributes({ firstLabelPaddingRTablet: newValue })
-                                                    } else {
-                                                        setAttributes({ firstLabelPaddingRMobile: newValue })
-                                                    }
-                                                }
-                                            }
-                                            onChangePaddingBottom={
-                                                (device, newValue) => {
-                                                    if (device === "desktop") {
-                                                        setAttributes({ firstLabelPaddingB: newValue })
-                                                    } else if (device === "tablet") {
-                                                        setAttributes({ firstLabelPaddingBTablet: newValue })
-                                                    } else {
-                                                        setAttributes({ firstLabelPaddingBMobile: newValue })
-                                                    }
-                                                }
-                                            }
-                                            onChangePaddingLeft={
-                                                (device, newValue) => {
-                                                    if (device === "desktop") {
-                                                        setAttributes({ firstLabelPaddingL: newValue })
-                                                    } else if (device === "tablet") {
-                                                        setAttributes({ firstLabelPaddingLTablet: newValue })
-                                                    } else {
-                                                        setAttributes({ firstLabelPaddingLMobile: newValue })
-                                                    }
-                                                }
-                                            }
+                                            responsive={true}
                                         />
                                     </Fragment>
                                 );
@@ -994,66 +874,12 @@ function Edit(props) {
                                                 saveLabelStyles('secondLabelBoxShadowPosition', newValue)
                                             }
                                         />
-                                        <PremiumResponsivePadding
-                                            paddingTop={secondLabelPaddingT}
-                                            paddingRight={secondLabelPaddingR}
-                                            paddingBottom={secondLabelPaddingB}
-                                            paddingLeft={secondLabelPaddingL}
-                                            paddingTopTablet={secondLabelPaddingTTablet}
-                                            paddingRightTablet={secondLabelPaddingRTablet}
-                                            paddingBottomTablet={secondLabelPaddingBTablet}
-                                            paddingLeftTablet={secondLabelPaddingLTablet}
-                                            paddingTopMobile={secondLabelPaddingTMobile}
-                                            paddingRightMobile={secondLabelPaddingRMobile}
-                                            paddingBottomMobile={secondLabelPaddingBMobile}
-                                            paddingLeftMobile={secondLabelPaddingLMobile}
+                                        <SpacingControl
+                                            label={__('Padding', 'premium-blocks-for-gutenberg')}
+                                            value={secondLabelPadding}
+                                            onChange={(value) => setAttributes({ secondLabelPadding: value })}
                                             showUnits={true}
-                                            selectedUnit={labelStyles.secondLabelPaddingType}
-                                            onChangePadSizeUnit={newvalue => saveLabelStyles('secondLabelPaddingType', newvalue)}
-                                            onChangePaddingTop={
-                                                (device, newValue) => {
-                                                    if (device === "desktop") {
-                                                        setAttributes({ secondLabelPaddingT: newValue })
-                                                    } else if (device === "tablet") {
-                                                        setAttributes({ secondLabelPaddingTTablet: newValue })
-                                                    } else {
-                                                        setAttributes({ secondLabelPaddingTMobile: newValue })
-                                                    }
-                                                }
-                                            }
-                                            onChangePaddingRight={
-                                                (device, newValue) => {
-                                                    if (device === "desktop") {
-                                                        setAttributes({ secondLabelPaddingR: newValue })
-                                                    } else if (device === "tablet") {
-                                                        setAttributes({ secondLabelPaddingRTablet: newValue })
-                                                    } else {
-                                                        setAttributes({ secondLabelPaddingRMobile: newValue })
-                                                    }
-                                                }
-                                            }
-                                            onChangePaddingBottom={
-                                                (device, newValue) => {
-                                                    if (device === "desktop") {
-                                                        setAttributes({ secondLabelPaddingB: newValue })
-                                                    } else if (device === "tablet") {
-                                                        setAttributes({ secondLabelPaddingBTablet: newValue })
-                                                    } else {
-                                                        setAttributes({ secondLabelPaddingBMobile: newValue })
-                                                    }
-                                                }
-                                            }
-                                            onChangePaddingLeft={
-                                                (device, newValue) => {
-                                                    if (device === "desktop") {
-                                                        setAttributes({ secondLabelPaddingL: newValue })
-                                                    } else if (device === "tablet") {
-                                                        setAttributes({ secondLabelPaddingLTablet: newValue })
-                                                    } else {
-                                                        setAttributes({ secondLabelPaddingLMobile: newValue })
-                                                    }
-                                                }
-                                            }
+                                            responsive={true}
                                         />
                                     </Fragment>
                                 );
@@ -1065,339 +891,6 @@ function Edit(props) {
                             );
                         }}
                     </TabPanel>
-                    {/* <h2 className="premium-content-switcher-labels-style">{__("First Label")}</h2>
-                    <AdvancedPopColorControl
-                        label={__("Text Color", 'premium-block-for-gutenberg')}
-                        colorValue={labelStyles.firstLabelColor}
-                        colorDefault={''}
-                        onColorChange={newValue =>
-                            saveLabelStyles(
-                                'firstLabelColor', newValue
-                            )
-                        }
-                    />
-                    <PremiumTypo
-                        components={["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"]}
-                        setAttributes={saveLabelStyles}
-                        fontSizeType={{ value: labelStyles.firstLabelfontSizeType, label: __("firstLabelfontSizeType") }}
-                        fontSize={labelStyles.firstLabelfontSize}
-                        fontSizeMobile={labelStyles.firstLabelfontSizeMobile}
-                        fontSizeTablet={labelStyles.firstLabelfontSizeTablet}
-                        onChangeSize={newSize => saveLabelStyles('firstLabelfontSize', newSize)}
-                        onChangeTabletSize={newSize => saveLabelStyles('firstLabelfontSizeTablet', newSize)}
-                        onChangeMobileSize={newSize => saveLabelStyles('firstLabelfontSizeMobile', newSize)}
-                        weight={labelStyles.firstLabelWeight}
-                        style={labelStyles.firstLabelStyle}
-                        spacing={labelStyles.firstLabelLetter}
-                        upper={labelStyles.firstLabelUpper}
-                        line={labelStyles.firstLabelLine}
-                        fontFamily={labelStyles.firstLabelFontFamily}
-                        onChangeWeight={newWeight =>
-                            saveLabelStyles('firstLabelWeight', newWeight || 500)
-                        }
-                        onChangeStyle={newStyle =>
-                            saveLabelStyles('firstLabelStyle', newStyle)
-                        }
-                        onChangeSpacing={newValue =>
-                            saveLabelStyles('firstLabelLetter', newValue)
-                        }
-                        onChangeUpper={check => saveLabelStyles('firstLabelUpper', check)}
-                        onChangeLine={newValue => saveLabelStyles('firstLabelLine', newValue)}
-                        onChangeFamily={(fontFamily) => saveLabelStyles('firstLabelFontFamily', fontFamily)}
-                    />
-                    <PremiumShadow
-                        label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
-                        color={labelStyles.firstLabelShadowColor}
-                        blur={labelStyles.firstLabelShadowBlur}
-                        horizontal={labelStyles.firstLabelShadowHorizontal}
-                        vertical={labelStyles.firstLabelShadowVertical}
-                        onChangeColor={newColor =>
-                            saveLabelStyles('firstLabelShadowColor', newColor)
-                        }
-                        onChangeBlur={newBlur => saveLabelStyles('firstLabelShadowBlur', newBlur)}
-                        onChangehHorizontal={newValue =>
-                            saveLabelStyles('firstLabelShadowHorizontal', newValue)
-                        }
-                        onChangeVertical={newValue =>
-                            saveLabelStyles('firstLabelShadowVertical', newValue)
-                        }
-                    />
-                    <PremiumBorder
-                        borderType={labelStyles.firstLabelborderType}
-                        borderWidth={firstLabelBorderWidth}
-                        top={firstLabelBorderTop}
-                        right={firstLabelBorderRight}
-                        bottom={firstLabelBorderBottom}
-                        left={firstLabelBorderLeft}
-                        borderColor={labelStyles.firstLabelborderColor}
-                        borderRadius={labelStyles.firstLabelborderRadius}
-                        onChangeType={newType => saveLabelStyles('firstLabelborderType', newType)}
-                        onChangeWidth={({ top, right, bottom, left }) =>
-                            setAttributes({
-                                firstLabelBorderUpdated: true,
-                                firstLabelBorderTop: top,
-                                firstLabelBorderRight: right,
-                                firstLabelBorderBottom: bottom,
-                                firstLabelBorderLeft: left,
-                            })
-                        }
-                        onChangeColor={colorValue =>
-                            saveLabelStyles('firstLabelborderColor', colorValue)
-                        }
-                        onChangeRadius={newrRadius =>
-                            saveLabelStyles('firstLabelborderRadius', newrRadius)
-                        }
-                    />
-                    <PremiumShadow
-                        label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
-                        boxShadow={true}
-                        color={labelStyles.firstLabelBoxShadowColor}
-                        blur={labelStyles.firstLabelBoxShadowBlur}
-                        horizontal={labelStyles.firstLabelBoxShadowHorizontal}
-                        vertical={labelStyles.firstLabelBoxShadowVertical}
-                        position={labelStyles.firstLabelBoxShadowPosition}
-                        onChangeColor={newColor =>
-                            saveLabelStyles('firstLabelBoxShadowColor', newColor)
-                        }
-                        onChangeBlur={newBlur => saveLabelStyles('firstLabelBoxShadowBlur', newBlur)}
-                        onChangehHorizontal={newValue =>
-                            saveLabelStyles('firstLabelBoxShadowHorizontal', newValue)
-                        }
-                        onChangeVertical={newValue =>
-                            saveLabelStyles('firstLabelBoxShadowVertical', newValue)
-                        }
-                        onChangePosition={newValue =>
-                            saveLabelStyles('firstLabelBoxShadowPosition', newValue)
-                        }
-                    />
-                    <PremiumResponsivePadding
-                        paddingTop={firstLabelPaddingT}
-                        paddingRight={firstLabelPaddingR}
-                        paddingBottom={firstLabelPaddingB}
-                        paddingLeft={firstLabelPaddingL}
-                        paddingTopTablet={firstLabelPaddingTTablet}
-                        paddingRightTablet={firstLabelPaddingRTablet}
-                        paddingBottomTablet={firstLabelPaddingBTablet}
-                        paddingLeftTablet={firstLabelPaddingLTablet}
-                        paddingTopMobile={firstLabelPaddingTMobile}
-                        paddingRightMobile={firstLabelPaddingRMobile}
-                        paddingBottomMobile={firstLabelPaddingBMobile}
-                        paddingLeftMobile={firstLabelPaddingLMobile}
-                        showUnits={true}
-                        selectedUnit={labelStyles.firstLabelPaddingType}
-                        onChangePadSizeUnit={newvalue => saveLabelStyles('firstLabelPaddingType', newvalue)}
-                        onChangePaddingTop={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ firstLabelPaddingT: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ firstLabelPaddingTTablet: newValue })
-                                } else {
-                                    setAttributes({ firstLabelPaddingTMobile: newValue })
-                                }
-                            }
-                        }
-                        onChangePaddingRight={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ firstLabelPaddingR: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ firstLabelPaddingRTablet: newValue })
-                                } else {
-                                    setAttributes({ firstLabelPaddingRMobile: newValue })
-                                }
-                            }
-                        }
-                        onChangePaddingBottom={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ firstLabelPaddingB: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ firstLabelPaddingBTablet: newValue })
-                                } else {
-                                    setAttributes({ firstLabelPaddingBMobile: newValue })
-                                }
-                            }
-                        }
-                        onChangePaddingLeft={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ firstLabelPaddingL: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ firstLabelPaddingLTablet: newValue })
-                                } else {
-                                    setAttributes({ firstLabelPaddingLMobile: newValue })
-                                }
-                            }
-                        }
-                    />
-                    <hr />
-                    <h2 className="premium-content-switcher-labels-style">{__("Second Label")}</h2>
-                    <AdvancedPopColorControl
-                        label={__("Text Color", 'premium-block-for-gutenberg')}
-                        colorValue={labelStyles.secondLabelColor}
-                        colorDefault={''}
-                        onColorChange={newValue =>
-                            saveLabelStyles(
-                                'secondLabelColor', newValue
-                            )
-                        }
-                    />
-                    <PremiumTypo
-                        components={["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"]}
-                        setAttributes={saveLabelStyles}
-                        fontSizeType={{ value: labelStyles.secondLabelfontSizeType, label: __("secondLabelfontSizeType") }}
-                        fontSize={labelStyles.secondLabelfontSize}
-                        fontSizeMobile={labelStyles.secondLabelfontSizeMobile}
-                        fontSizeTablet={labelStyles.secondLabelfontSizeTablet}
-                        onChangeSize={newSize => saveLabelStyles('secondLabelfontSize', newSize)}
-                        onChangeTabletSize={newSize => saveLabelStyles('secondLabelfontSizeTablet', newSize)}
-                        onChangeMobileSize={newSize => saveLabelStyles('secondLabelfontSizeMobile', newSize)}
-                        weight={labelStyles.secondLabelWeight}
-                        style={labelStyles.secondLabelStyle}
-                        spacing={labelStyles.secondLabelLetter}
-                        upper={labelStyles.secondLabelUpper}
-                        line={labelStyles.secondLabelLine}
-                        fontFamily={labelStyles.secondLabelFontFamily}
-                        onChangeWeight={newWeight =>
-                            saveLabelStyles('secondLabelWeight', newWeight || 500)
-                        }
-                        onChangeStyle={newStyle =>
-                            saveLabelStyles('secondLabelStyle', newStyle)
-                        }
-                        onChangeSpacing={newValue =>
-                            saveLabelStyles('secondLabelLetter', newValue)
-                        }
-                        onChangeUpper={check => saveLabelStyles('secondLabelUpper', check)}
-                        onChangeLine={newValue => saveLabelStyles('secondLabelLine', newValue)}
-                        onChangeFamily={(fontFamily) => saveLabelStyles('secondLabelFontFamily', fontFamily)}
-                    />
-                    <PremiumShadow
-                        label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
-                        color={labelStyles.secondLabelShadowColor}
-                        blur={labelStyles.secondLabelShadowBlur}
-                        horizontal={labelStyles.secondLabelShadowHorizontal}
-                        vertical={labelStyles.secondLabelShadowVertical}
-                        onChangeColor={newColor =>
-                            saveLabelStyles('secondLabelShadowColor', newColor)
-                        }
-                        onChangeBlur={newBlur => saveLabelStyles('secondLabelShadowBlur', newBlur)}
-                        onChangehHorizontal={newValue =>
-                            saveLabelStyles('secondLabelShadowHorizontal', newValue)
-                        }
-                        onChangeVertical={newValue =>
-                            saveLabelStyles('secondLabelShadowVertical', newValue)
-                        }
-                    />
-                    <PremiumBorder
-                        borderType={labelStyles.secondLabelborderType}
-                        borderWidth={secondLabelBorderWidth}
-                        top={secondLabelBorderTop}
-                        right={secondLabelBorderRight}
-                        bottom={secondLabelBorderBottom}
-                        left={secondLabelBorderLeft}
-                        borderColor={labelStyles.secondLabelborderColor}
-                        borderRadius={labelStyles.secondLabelborderRadius}
-                        onChangeType={newType => saveLabelStyles('secondLabelborderType', newType)}
-                        onChangeWidth={({ top, right, bottom, left }) =>
-                            setAttributes({
-                                secondLabelBorderUpdated: true,
-                                secondLabelBorderTop: top,
-                                secondLabelBorderRight: right,
-                                secondLabelBorderBottom: bottom,
-                                secondLabelBorderLeft: left,
-                            })
-                        }
-                        onChangeColor={colorValue =>
-                            saveLabelStyles('secondLabelborderColor', colorValue)
-                        }
-                        onChangeRadius={newrRadius =>
-                            saveLabelStyles('secondLabelborderRadius', newrRadius)
-                        }
-                    />
-                    <PremiumShadow
-                        label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
-                        boxShadow={true}
-                        color={labelStyles.secondLabelBoxShadowColor}
-                        blur={labelStyles.secondLabelBoxShadowBlur}
-                        horizontal={labelStyles.secondLabelBoxShadowHorizontal}
-                        vertical={labelStyles.secondLabelBoxShadowVertical}
-                        position={labelStyles.secondLabelBoxShadowPosition}
-                        onChangeColor={newColor =>
-                            saveLabelStyles('secondLabelBoxShadowColor', newColor)
-                        }
-                        onChangeBlur={newBlur => saveLabelStyles('secondLabelBoxShadowBlur', newBlur)}
-                        onChangehHorizontal={newValue =>
-                            saveLabelStyles('secondLabelBoxShadowHorizontal', newValue)
-                        }
-                        onChangeVertical={newValue =>
-                            saveLabelStyles('secondLabelBoxShadowVertical', newValue)
-                        }
-                        onChangePosition={newValue =>
-                            saveLabelStyles('secondLabelBoxShadowPosition', newValue)
-                        }
-                    />
-                    <PremiumResponsivePadding
-                        paddingTop={secondLabelPaddingT}
-                        paddingRight={secondLabelPaddingR}
-                        paddingBottom={secondLabelPaddingB}
-                        paddingLeft={secondLabelPaddingL}
-                        paddingTopTablet={secondLabelPaddingTTablet}
-                        paddingRightTablet={secondLabelPaddingRTablet}
-                        paddingBottomTablet={secondLabelPaddingBTablet}
-                        paddingLeftTablet={secondLabelPaddingLTablet}
-                        paddingTopMobile={secondLabelPaddingTMobile}
-                        paddingRightMobile={secondLabelPaddingRMobile}
-                        paddingBottomMobile={secondLabelPaddingBMobile}
-                        paddingLeftMobile={secondLabelPaddingLMobile}
-                        showUnits={true}
-                        selectedUnit={labelStyles.secondLabelPaddingType}
-                        onChangePadSizeUnit={newvalue => saveLabelStyles('secondLabelPaddingType', newvalue)}
-                        onChangePaddingTop={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ secondLabelPaddingT: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ secondLabelPaddingTTablet: newValue })
-                                } else {
-                                    setAttributes({ secondLabelPaddingTMobile: newValue })
-                                }
-                            }
-                        }
-                        onChangePaddingRight={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ secondLabelPaddingR: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ secondLabelPaddingRTablet: newValue })
-                                } else {
-                                    setAttributes({ secondLabelPaddingRMobile: newValue })
-                                }
-                            }
-                        }
-                        onChangePaddingBottom={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ secondLabelPaddingB: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ secondLabelPaddingBTablet: newValue })
-                                } else {
-                                    setAttributes({ secondLabelPaddingBMobile: newValue })
-                                }
-                            }
-                        }
-                        onChangePaddingLeft={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ secondLabelPaddingL: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ secondLabelPaddingLTablet: newValue })
-                                } else {
-                                    setAttributes({ secondLabelPaddingLMobile: newValue })
-                                }
-                            }
-                        }
-                    /> */}
                 </PanelBody>
                 )}
                 <PanelBody
@@ -1688,129 +1181,19 @@ function Edit(props) {
                         }}
                     </TabPanel>
                     <hr />
-                    <PremiumResponsiveMargin
-                        directions={["all"]}
-                        marginTop={firstContentMarginT}
-                        marginRight={firstContentMarginR}
-                        marginBottom={firstContentMarginB}
-                        marginLeft={firstContentMarginL}
-                        marginTopTablet={firstContentMarginTTablet}
-                        marginRightTablet={firstContentMarginRTablet}
-                        marginBottomTablet={firstContentMarginBTablet}
-                        marginLeftTablet={firstContentMarginLTablet}
-                        marginTopMobile={firstContentMarginTMobile}
-                        marginRightMobile={firstContentMarginRMobile}
-                        marginBottomMobile={firstContentMarginBMobile}
-                        marginLeftMobile={firstContentMarginLMobile}
+                    <SpacingControl
+                        label={__('Margin', 'premium-blocks-for-gutenberg')}
+                        value={firstContentMargin}
+                        onChange={(value) => setAttributes({ firstContentMargin: value })}
                         showUnits={true}
-                        onChangeMarSizeUnit={newvalue => saveFirstContentStyles('firstContentMarginType', newvalue)}
-                        selectedUnit={firstContentStyles.firstContentMarginType}
-                        onChangeMarginTop={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ firstContentMarginT: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ firstContentMarginTTablet: newValue })
-                                } else {
-                                    setAttributes({ firstContentMarginTMobile: newValue })
-                                }
-                            }
-                        }
-                        onChangeMarginRight={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ firstContentMarginR: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ firstContentMarginRTablet: newValue })
-                                } else {
-                                    setAttributes({ firstContentMarginRMobile: newValue })
-                                }
-                            }
-                        }
-                        onChangeMarginBottom={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ firstContentMarginB: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ firstContentMarginBTablet: newValue })
-                                } else {
-                                    setAttributes({ firstContentMarginBMobile: newValue })
-                                }
-                            }
-                        }
-                        onChangeMarginLeft={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ firstContentMarginL: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ firstContentMarginLTablet: newValue })
-                                } else {
-                                    setAttributes({ firstContentMarginLMobile: newValue })
-                                }
-                            }
-                        }
-
+                        responsive={true}
                     />
-                    <PremiumResponsivePadding
-                        paddingTop={contentPaddingT}
-                        paddingRight={contentPaddingR}
-                        paddingBottom={contentPaddingB}
-                        paddingLeft={contentPaddingL}
-                        paddingTopTablet={contentPaddingTTablet}
-                        paddingRightTablet={contentPaddingRTablet}
-                        paddingBottomTablet={contentPaddingBTablet}
-                        paddingLeftTablet={contentPaddingLTablet}
-                        paddingTopMobile={contentPaddingTMobile}
-                        paddingRightMobile={contentPaddingRMobile}
-                        paddingBottomMobile={contentPaddingBMobile}
-                        paddingLeftMobile={contentPaddingLMobile}
+                    <SpacingControl
+                        label={__('Padding', 'premium-blocks-for-gutenberg')}
+                        value={contentPadding}
+                        onChange={(value) => setAttributes({ contentPadding: value })}
                         showUnits={true}
-                        selectedUnit={firstContentStyles.firstContentPaddingType}
-                        onChangePadSizeUnit={newvalue => saveFirstContentStyles('firstContentPaddingType', newvalue)}
-                        onChangePaddingTop={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ contentPaddingT: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ contentPaddingTTablet: newValue })
-                                } else {
-                                    setAttributes({ contentPaddingTMobile: newValue })
-                                }
-                            }
-                        }
-                        onChangePaddingRight={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ contentPaddingR: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ contentPaddingRTablet: newValue })
-                                } else {
-                                    setAttributes({ contentPaddingRMobile: newValue })
-                                }
-                            }
-                        }
-                        onChangePaddingBottom={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ contentPaddingB: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ contentPaddingBTablet: newValue })
-                                } else {
-                                    setAttributes({ contentPaddingBMobile: newValue })
-                                }
-                            }
-                        }
-                        onChangePaddingLeft={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ contentPaddingL: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ contentPaddingLTablet: newValue })
-                                } else {
-                                    setAttributes({ contentPaddingLMobile: newValue })
-                                }
-                            }
-                        }
+                        responsive={true}
                     />
                 </PanelBody>
 
@@ -1885,129 +1268,19 @@ function Edit(props) {
                             saveContainerStyles('containerBoxShadowPosition', newValue)
                         }
                     />
-                    <PremiumResponsiveMargin
-                        directions={["all"]}
-                        marginTop={containerMarginT}
-                        marginRight={containerMarginR}
-                        marginBottom={containerMarginB}
-                        marginLeft={containerMarginL}
-                        marginTopTablet={containerMarginTTablet}
-                        marginRightTablet={containerMarginRTablet}
-                        marginBottomTablet={containerMarginBTablet}
-                        marginLeftTablet={containerMarginLTablet}
-                        marginTopMobile={containerMarginTMobile}
-                        marginRightMobile={containerMarginRMobile}
-                        marginBottomMobile={containerMarginBMobile}
-                        marginLeftMobile={containerMarginLMobile}
+                    <SpacingControl
+                        label={__('Margin', 'premium-blocks-for-gutenberg')}
+                        value={containerMargin}
+                        onChange={(value) => setAttributes({ containerMargin: value })}
                         showUnits={true}
-                        onChangeMarSizeUnit={newvalue => saveContainerStyles('iconMarginType', newvalue)}
-                        selectedUnit={containerStyles.iconMarginType}
-                        onChangeMarginTop={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ containerMarginT: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ containerMarginTTablet: newValue })
-                                } else {
-                                    setAttributes({ containerMarginTMobile: newValue })
-                                }
-                            }
-                        }
-                        onChangeMarginRight={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ containerMarginR: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ containerMarginRTablet: newValue })
-                                } else {
-                                    setAttributes({ containerMarginRMobile: newValue })
-                                }
-                            }
-                        }
-                        onChangeMarginBottom={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ containerMarginB: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ containerMarginBTablet: newValue })
-                                } else {
-                                    setAttributes({ containerMarginBMobile: newValue })
-                                }
-                            }
-                        }
-                        onChangeMarginLeft={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ containerMarginL: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ containerMarginLTablet: newValue })
-                                } else {
-                                    setAttributes({ containerMarginLMobile: newValue })
-                                }
-                            }
-                        }
-
+                        responsive={true}
                     />
-                    <PremiumResponsivePadding
-                        paddingTop={containerPaddingT}
-                        paddingRight={containerPaddingR}
-                        paddingBottom={containerPaddingB}
-                        paddingLeft={containerPaddingL}
-                        paddingTopTablet={containerPaddingTTablet}
-                        paddingRightTablet={containerPaddingRTablet}
-                        paddingBottomTablet={containerPaddingBTablet}
-                        paddingLeftTablet={containerPaddingLTablet}
-                        paddingTopMobile={containerPaddingTMobile}
-                        paddingRightMobile={containerPaddingRMobile}
-                        paddingBottomMobile={containerPaddingBMobile}
-                        paddingLeftMobile={containerPaddingLMobile}
+                    <SpacingControl
+                        label={__('Padding', 'premium-blocks-for-gutenberg')}
+                        value={containerPadding}
+                        onChange={(value) => setAttributes({ containerPadding: value })}
                         showUnits={true}
-                        selectedUnit={containerStyles.iconPaddingType}
-                        onChangePadSizeUnit={newvalue => saveContainerStyles('iconPaddingType', newvalue)}
-                        onChangePaddingTop={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ containerPaddingT: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ containerPaddingTTablet: newValue })
-                                } else {
-                                    setAttributes({ containerPaddingTMobile: newValue })
-                                }
-                            }
-                        }
-                        onChangePaddingRight={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ containerPaddingR: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ containerPaddingRTablet: newValue })
-                                } else {
-                                    setAttributes({ containerPaddingRMobile: newValue })
-                                }
-                            }
-                        }
-                        onChangePaddingBottom={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ containerPaddingB: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ containerPaddingBTablet: newValue })
-                                } else {
-                                    setAttributes({ containerPaddingBMobile: newValue })
-                                }
-                            }
-                        }
-                        onChangePaddingLeft={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ containerPaddingL: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ containerPaddingLTablet: newValue })
-                                } else {
-                                    setAttributes({ containerPaddingLMobile: newValue })
-                                }
-                            }
-                        }
+                        responsive={true}
                     />
                 </PanelBody>
             </InspectorControls>
@@ -2064,14 +1337,14 @@ function Edit(props) {
                             : containerBorderWidth + "px",
                         borderRadius: containerStyles.containerborderRadius + "px",
                         borderColor: containerStyles.containerborderColor,
-                        paddingTop: ContainerPaddingTop + containerStyles.containerPaddingType,
-                        paddingRight: ContainerPaddingRight + containerStyles.containerPaddingType,
-                        paddingBottom: ContainerPaddingBottom + containerStyles.containerPaddingType,
-                        paddingLeft: ContainerPaddingLeft + containerStyles.containerPaddingType,
-                        marginTop: ContainerMarginTop + containerStyles.containerMarginType,
-                        marginBottom: ContainerMarginBottom + containerStyles.containerMarginType,
-                        marginLeft: ContainerMarginLeft + containerStyles.containerMarginType,
-                        marginRight: ContainerMarginRight + containerStyles.containerMarginType,
+                        paddingTop: ContainerPaddingTop + containerPadding.unit,
+                        paddingRight: ContainerPaddingRight + containerPadding.unit,
+                        paddingBottom: ContainerPaddingBottom + containerPadding.unit,
+                        paddingLeft: ContainerPaddingLeft + containerPadding.unit,
+                        marginTop: ContainerMarginTop + containerMargin.unit,
+                        marginBottom: ContainerMarginBottom + containerMargin.unit,
+                        marginLeft: ContainerMarginLeft + containerMargin.unit,
+                        marginRight: ContainerMarginRight + containerMargin.unit,
                     }}>
                     <div className={`premium-content-switcher-toggle-${display}`}
                         style={{
@@ -2101,10 +1374,10 @@ function Edit(props) {
                                         : firstLabelBorderWidth + "px",
                                     borderRadius: labelStyles.firstLabelborderRadius + "px",
                                     borderColor: labelStyles.firstLabelborderColor,
-                                    paddingTop: FirstLabelPaddingTop + labelStyles.firstLabelPaddingType,
-                                    paddingBottom: FirstLabelPaddingBottom + labelStyles.firstLabelPaddingType,
-                                    paddingLeft: FirstLabelPaddingLeft + labelStyles.firstLabelPaddingType,
-                                    paddingRight: FirstLabelPaddingRight + labelStyles.firstLabelPaddingType,
+                                    paddingTop: FirstLabelPaddingTop + firstLabelPadding.unit,
+                                    paddingBottom: FirstLabelPaddingBottom + firstLabelPadding.unit,
+                                    paddingLeft: FirstLabelPaddingLeft + firstLabelPadding.unit,
+                                    paddingRight: FirstLabelPaddingRight + firstLabelPadding.unit,
                                     textShadow: `${labelStyles.firstLabelShadowHorizontal}px ${labelStyles.firstLabelShadowVertical}px ${labelStyles.firstLabelShadowBlur}px ${labelStyles.firstLabelShadowColor}`,
                                     boxShadow: `${labelStyles.firstLabelBoxShadowHorizontal}px ${labelStyles.firstLabelBoxShadowVertical}px ${labelStyles.firstLabelBoxShadowBlur}px ${labelStyles.firstLabelBoxShadowColor} ${labelStyles.firstLabelBoxShadowPosition}`,
                                 }}
@@ -2144,10 +1417,10 @@ function Edit(props) {
                                         : secondLabelBorderWidth + "px",
                                     borderRadius: labelStyles.secondLabelborderRadius + "px",
                                     borderColor: labelStyles.secondLabelborderColor,
-                                    paddingTop: SecondLabelPaddingTop + labelStyles.secondLabelPaddingType,
-                                    paddingBottom: SecondLabelPaddingBottom + labelStyles.secondLabelPaddingType,
-                                    paddingLeft: SecondLabelPaddingLeft + labelStyles.secondLabelPaddingType,
-                                    paddingRight: SecondLabelPaddingRight + labelStyles.secondLabelPaddingType,
+                                    paddingTop: SecondLabelPaddingTop + secondLabelPadding.unit,
+                                    paddingBottom: SecondLabelPaddingBottom + secondLabelPadding.unit,
+                                    paddingLeft: SecondLabelPaddingLeft + secondLabelPadding.unit,
+                                    paddingRight: SecondLabelPaddingRight + secondLabelPadding.unit,
                                     textShadow: `${labelStyles.secondLabelShadowHorizontal}px ${labelStyles.secondLabelShadowVertical}px ${labelStyles.secondLabelShadowBlur}px ${labelStyles.secondLabelShadowColor}`,
                                     boxShadow: `${labelStyles.secondLabelBoxShadowHorizontal}px ${labelStyles.secondLabelBoxShadowVertical}px ${labelStyles.secondLabelBoxShadowBlur}px ${labelStyles.secondLabelBoxShadowColor} ${labelStyles.secondLabelBoxShadowPosition}`,
                                 }}
@@ -2158,10 +1431,10 @@ function Edit(props) {
                     <div
                         className={`premium-content-switcher-list ${effect == 'slide' ? `slide-${slide}` : ""}`}
                         style={{
-                            marginTop: FirstContentMarginTop + firstContentStyles.firstContentMarginType,
-                            marginBottom: FirstContentMarginBottom + firstContentStyles.firstContentMarginType,
-                            marginLeft: FirstContentMarginLeft + firstContentStyles.firstContentMarginType,
-                            marginRight: FirstContentMarginRight + firstContentStyles.firstContentMarginType,
+                            marginTop: FirstContentMarginTop + firstContentMargin.unit,
+                            marginBottom: FirstContentMarginBottom + firstContentMargin.unit,
+                            marginLeft: FirstContentMarginLeft + firstContentMargin.unit,
+                            marginRight: FirstContentMarginRight + firstContentMargin.unit,
                         }}
                     >
                         <ul className="premium-content-switcher-two-content">
@@ -2175,10 +1448,10 @@ function Edit(props) {
                                     borderRadius: firstContentStyles.firstContentborderRadius + "px",
                                     borderColor: firstContentStyles.firstContentborderColor,
                                     minHeight: ContentHeight + contentStyles.contentHeightType,
-                                    paddingTop: ContentPaddingTop + firstContentStyles.firstContentPaddingType,
-                                    paddingBottom: ContentPaddingBottom + firstContentStyles.firstContentPaddingType,
-                                    paddingLeft: ContentPaddingLeft + firstContentStyles.firstContentPaddingType,
-                                    paddingRight: ContentPaddingRight + firstContentStyles.firstContentPaddingType,
+                                    paddingTop: ContentPaddingTop + contentPadding.unit,
+                                    paddingBottom: ContentPaddingBottom + contentPadding.unit,
+                                    paddingLeft: ContentPaddingLeft + contentPadding.unit,
+                                    paddingRight: ContentPaddingRight + contentPadding.unit,
                                     boxShadow: `${firstContentStyles.firstContentBoxShadowHorizontal}px ${firstContentStyles.firstContentBoxShadowVertical}px ${firstContentStyles.firstContentBoxShadowBlur}px ${firstContentStyles.firstContentBoxShadowColor} ${firstContentStyles.firstContentBoxShadowPosition}`,
                                 }}>
                                 <RichText
@@ -2213,10 +1486,10 @@ function Edit(props) {
                                     borderRadius: secondContentStyles.secondContentborderRadius + "px",
                                     borderColor: secondContentStyles.secondContentborderColor,
                                     minHeight: ContentHeight + contentStyles.contentHeightType,
-                                    paddingTop: ContentPaddingTop + secondContentStyles.secondContentPaddingType,
-                                    paddingBottom: ContentPaddingBottom + secondContentStyles.secondContentPaddingType,
-                                    paddingLeft: ContentPaddingLeft + secondContentStyles.secondContentPaddingType,
-                                    paddingRight: ContentPaddingRight + secondContentStyles.secondContentPaddingType,
+                                    paddingTop: ContentPaddingTop + contentPadding.unit,
+                                    paddingBottom: ContentPaddingBottom + contentPadding.unit,
+                                    paddingLeft: ContentPaddingLeft + contentPadding.unit,
+                                    paddingRight: ContentPaddingRight + contentPadding.unit,
                                     boxShadow: `${secondContentStyles.secondContentBoxShadowHorizontal}px ${secondContentStyles.secondContentBoxShadowVertical}px ${secondContentStyles.secondContentBoxShadowBlur}px ${secondContentStyles.secondContentBoxShadowColor} ${secondContentStyles.secondContentBoxShadowPosition}`,
                                 }}>
                                 <RichText

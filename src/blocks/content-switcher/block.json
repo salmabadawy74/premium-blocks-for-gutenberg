@@ -137,7 +137,6 @@
                 "firstLabelBoxShadowHorizontal": "",
                 "firstLabelBoxShadowVertical": "",
                 "firstLabelBoxShadowPosition": "inset",
-                "firstLabelPaddingType": "px",
                 "secondLabelColor": "rgb(84, 89, 95)",
                 "secondLabelLetter": 0,
                 "secondLabelLine": 0,
@@ -160,8 +159,7 @@
                 "secondLabelBoxShadowBlur": "",
                 "secondLabelBoxShadowHorizontal": "",
                 "secondLabelBoxShadowVertical": "",
-                "secondLabelBoxShadowPosition": "inset",
-                "secondLabelPaddingType": "px"
+                "secondLabelBoxShadowPosition": "inset"
             }
         },
         "firstLabelBorderTop": {
@@ -188,54 +186,6 @@
             "type": "number",
             "default": "1"
         },
-        "firstLabelPaddingT": {
-            "type": "number",
-            "default": "0"
-        },
-        "firstLabelPaddingR": {
-            "type": "number",
-            "default": "0"
-        },
-        "firstLabelPaddingB": {
-            "type": "number",
-            "default": "0"
-        },
-        "firstLabelPaddingL": {
-            "type": "number",
-            "default": "0"
-        },
-        "firstLabelPaddingTTablet": {
-            "type": "number",
-            "default": "0"
-        },
-        "firstLabelPaddingRTablet": {
-            "type": "number",
-            "default": "0"
-        },
-        "firstLabelPaddingBTablet": {
-            "type": "number",
-            "default": "0"
-        },
-        "firstLabelPaddingLTablet": {
-            "type": "number",
-            "default": "0"
-        },
-        "firstLabelPaddingTMobile": {
-            "type": "number",
-            "default": "0"
-        },
-        "firstLabelPaddingRMobile": {
-            "type": "number",
-            "default": "0"
-        },
-        "firstLabelPaddingBMobile": {
-            "type": "number",
-            "default": "0"
-        },
-        "firstLabelPaddingLMobile": {
-            "type": "number",
-            "default": "0"
-        },
         "secondLabelBorderTop": {
             "type": "number",
             "default": "1"
@@ -259,54 +209,6 @@
         "secondLabelBorderWidth": {
             "type": "number",
             "default": "1"
-        },
-        "secondLabelPaddingT": {
-            "type": "number",
-            "default": "0"
-        },
-        "secondLabelPaddingR": {
-            "type": "number",
-            "default": "0"
-        },
-        "secondLabelPaddingB": {
-            "type": "number",
-            "default": "0"
-        },
-        "secondLabelPaddingL": {
-            "type": "number",
-            "default": "0"
-        },
-        "secondLabelPaddingTTablet": {
-            "type": "number",
-            "default": "0"
-        },
-        "secondLabelPaddingRTablet": {
-            "type": "number",
-            "default": "0"
-        },
-        "secondLabelPaddingBTablet": {
-            "type": "number",
-            "default": "0"
-        },
-        "secondLabelPaddingLTablet": {
-            "type": "number",
-            "default": "0"
-        },
-        "secondLabelPaddingTMobile": {
-            "type": "number",
-            "default": "0"
-        },
-        "secondLabelPaddingRMobile": {
-            "type": "number",
-            "default": "0"
-        },
-        "secondLabelPaddingBMobile": {
-            "type": "number",
-            "default": "0"
-        },
-        "secondLabelPaddingLMobile": {
-            "type": "number",
-            "default": "0"
         },
         "contentStyles": {
             "type": "object",
@@ -343,9 +245,7 @@
                 "firstContentBoxShadowBlur": "",
                 "firstContentBoxShadowHorizontal": "",
                 "firstContentBoxShadowVertical": "",
-                "firstContentBoxShadowPosition": "inset",
-                "firstContentPaddingType": "px",
-                "firstContentMarginType": "px"
+                "firstContentBoxShadowPosition": "inset"
             }
         },
         "firstContentBorderTop": {
@@ -371,90 +271,6 @@
         "firstContentBorderWidth": {
             "type": "number",
             "default": "1"
-        },
-        "firstContentMarginT": {
-            "type": "number"
-        },
-        "firstContentMarginR": {
-            "type": "number"
-        },
-        "firstContentMarginB": {
-            "type": "number"
-        },
-        "firstContentMarginL": {
-            "type": "number"
-        },
-        "firstContentMarginTTablet": {
-            "type": "number"
-        },
-        "firstContentMarginRTablet": {
-            "type": "number"
-        },
-        "firstContentMarginBTablet": {
-            "type": "number"
-        },
-        "firstContentMarginLTablet": {
-            "type": "number"
-        },
-        "firstContentMarginTMobile": {
-            "type": "number"
-        },
-        "firstContentMarginRMobile": {
-            "type": "number"
-        },
-        "firstContentMarginBMobile": {
-            "type": "number"
-        },
-        "firstContentMarginLMobile": {
-            "type": "number"
-        },
-        "contentPaddingT": {
-            "type": "number",
-            "default": "0"
-        },
-        "contentPaddingR": {
-            "type": "number",
-            "default": "0"
-        },
-        "contentPaddingB": {
-            "type": "number",
-            "default": "0"
-        },
-        "contentPaddingL": {
-            "type": "number",
-            "default": "0"
-        },
-        "contentPaddingTTablet": {
-            "type": "number",
-            "default": "0"
-        },
-        "contentPaddingRTablet": {
-            "type": "number",
-            "default": "0"
-        },
-        "contentPaddingBTablet": {
-            "type": "number",
-            "default": "0"
-        },
-        "contentPaddingLTablet": {
-            "type": "number",
-            "default": "0"
-        },
-        "contentPaddingTMobile": {
-            "type": "number",
-            "default": "0"
-        },
-        "contentPaddingRMobile": {
-            "type": "number",
-            "default": "0"
-        },
-        "contentPaddingBMobile": {
-            "type": "number",
-            "default": "0"
-        },
-        "contentPaddingLMobile": {
-            "type": "number",
-            "default": "0"
         },
         "secondContentStyles": {
             "type": "object",
@@ -482,8 +298,7 @@
                 "secondContentBoxShadowBlur": "",
                 "secondContentBoxShadowHorizontal": "",
                 "secondContentBoxShadowVertical": "",
-                "secondContentBoxShadowPosition": "inset",
-                "secondContentPaddingType": "px"
+                "secondContentBoxShadowPosition": "inset"
             }
         },
         "secondContentBorderTop": {
@@ -533,9 +348,7 @@
                 "containerBoxShadowBlur": "",
                 "containerBoxShadowHorizontal": "",
                 "containerBoxShadowVertical": "",
-                "containerBoxShadowPosition": "inset",
-                "containerPaddingType": "px",
-                "containerMarginType": "px"
+                "containerBoxShadowPosition": "inset"
             }
         },
         "backgroundType": {
@@ -566,102 +379,6 @@
             "type": "number",
             "default": "1"
         },
-        "containerPaddingT": {
-            "type": "number",
-            "default": ""
-        },
-        "containerPaddingR": {
-            "type": "number",
-            "default": ""
-        },
-        "containerPaddingB": {
-            "type": "number",
-            "default": ""
-        },
-        "containerPaddingL": {
-            "type": "number",
-            "default": ""
-        },
-        "containerPaddingTTablet": {
-            "type": "number",
-            "default": ""
-        },
-        "containerPaddingRTablet": {
-            "type": "number",
-            "default": ""
-        },
-        "containerPaddingBTablet": {
-            "type": "number",
-            "default": ""
-        },
-        "containerPaddingLTablet": {
-            "type": "number",
-            "default": ""
-        },
-        "containerPaddingTMobile": {
-            "type": "number",
-            "default": ""
-        },
-        "containerPaddingRMobile": {
-            "type": "number",
-            "default": ""
-        },
-        "containerPaddingBMobile": {
-            "type": "number",
-            "default": ""
-        },
-        "containerPaddingLMobile": {
-            "type": "number",
-            "default": ""
-        },
-        "containerMarginT": {
-            "type": "number",
-            "default": ""
-        },
-        "containerMarginR": {
-            "type": "number",
-            "default": ""
-        },
-        "containerMarginB": {
-            "type": "number",
-            "default": ""
-        },
-        "containerMarginL": {
-            "type": "number",
-            "default": ""
-        },
-        "containerMarginTTablet": {
-            "type": "number",
-            "default": ""
-        },
-        "containerMarginRTablet": {
-            "type": "number",
-            "default": ""
-        },
-        "containerMarginBTablet": {
-            "type": "number",
-            "default": ""
-        },
-        "containerMarginLTablet": {
-            "type": "number",
-            "default": ""
-        },
-        "containerMarginTMobile": {
-            "type": "number",
-            "default": ""
-        },
-        "containerMarginRMobile": {
-            "type": "number",
-            "default": ""
-        },
-        "containerMarginBMobile": {
-            "type": "number",
-            "default": ""
-        },
-        "containerMarginLMobile": {
-            "type": "number",
-            "default": ""
-        },
         "firstStateColor": {
             "type": "string",
             "default": "#6ec1e4"
@@ -681,6 +398,153 @@
         "slide": {
             "type": "string",
             "default": "top"
+        },
+        "firstLabelborder": {
+            "type": "object"
+        },
+        "firstLabelPadding": {
+            "type": "object",
+            "default": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "unit": "px"
+            }
+        },
+        "secondLabelPadding": {
+            "type": "object",
+            "default": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "unit": "px"
+            }
+        },
+        "contentPadding": {
+            "type": "object",
+            "default": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "unit": "px"
+            }
+        },
+        "containerPadding": {
+            "type": "object",
+            "default": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "unit": "px"
+            }
+        },
+        "firstContentMargin": {
+            "type": "object",
+            "default": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "unit": "px"
+            }
+        },
+        "containerMargin": {
+            "type": "object",
+            "default": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "unit": "px"
+            }
         }
     }
 }
