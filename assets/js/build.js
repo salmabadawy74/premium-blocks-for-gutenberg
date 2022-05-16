@@ -16353,6 +16353,186 @@ var newAttributes = {
 };
 
 var deprecated = [{
+    attributes: Object.assign(attributes, newAttributes),
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            titlePadding: {
+                "Desktop": {
+                    top: attributes.titlePaddingT,
+                    right: attributes.titlePaddingR,
+                    bottom: attributes.titlePaddingB,
+                    left: attributes.titlePaddingL
+                },
+                "Tablet": {
+                    top: attributes.titlePaddingTTablet,
+                    right: attributes.titlePaddingRTablet,
+                    bottom: attributes.titlePaddingBTablet,
+                    left: attributes.titlePaddingLTablet
+                },
+                "Mobile": {
+                    top: attributes.titlePaddingTMobile,
+                    right: attributes.titlePaddingRMobile,
+                    bottom: attributes.titlePaddingBMobile,
+                    left: attributes.titlePaddingLMobile
+                }
+            },
+            descPadding: {
+                "Desktop": {
+                    top: attributes.descPaddingT,
+                    right: attributes.descPaddingR,
+                    bottom: attributes.descPaddingB,
+                    left: attributes.descPaddingL
+                },
+                "Tablet": {
+                    top: attributes.descPaddingTTablet,
+                    right: attributes.descPaddingRTablet,
+                    bottom: attributes.descPaddingBTablet,
+                    left: attributes.descPaddingLTablet
+                },
+                "Mobile": {
+                    top: attributes.descPaddingTMobile,
+                    right: attributes.descPaddingRMobile,
+                    bottom: attributes.descPaddingBMobile,
+                    left: attributes.descPaddingLMobile
+                }
+            }
+        };
+        return Object.assign(attributes, newAttributes);
+    },
+    save: function save(props) {
+        var className = props.className;
+        var _props$attributes = props.attributes,
+            accordionId = _props$attributes.accordionId,
+            repeaterItems = _props$attributes.repeaterItems,
+            direction = _props$attributes.direction,
+            titleTag = _props$attributes.titleTag,
+            titleStyles = _props$attributes.titleStyles,
+            arrowStyles = _props$attributes.arrowStyles,
+            descStyles = _props$attributes.descStyles,
+            contentType = _props$attributes.contentType,
+            titleEditBorder = _props$attributes.titleEditBorder,
+            textShadowColor = _props$attributes.textShadowColor,
+            textShadowBlur = _props$attributes.textShadowBlur,
+            textShadowHorizontal = _props$attributes.textShadowHorizontal,
+            textShadowVertical = _props$attributes.textShadowVertical,
+            titleBorderWidth = _props$attributes.titleBorderWidth,
+            titleBorderTop = _props$attributes.titleBorderTop,
+            titleBorderRight = _props$attributes.titleBorderRight,
+            titleBorderBottom = _props$attributes.titleBorderBottom,
+            titleBorderLeft = _props$attributes.titleBorderLeft,
+            titleBorderUpdated = _props$attributes.titleBorderUpdated,
+            descBorderWidth = _props$attributes.descBorderWidth,
+            descBorderUpdated = _props$attributes.descBorderUpdated,
+            descBorderTop = _props$attributes.descBorderTop,
+            descBorderRight = _props$attributes.descBorderRight,
+            descBorderBottom = _props$attributes.descBorderBottom,
+            descBorderLeft = _props$attributes.descBorderLeft;
+
+        console.log(descPadding);
+        var mainClasses = (0, _classnames2.default)(className, 'premium-accordion');
+
+        var accordionItems = repeaterItems.map(function (item, index) {
+            return React.createElement(
+                "div",
+                {
+                    id: "premium-accordion__layer" + index,
+                    className: "premium-accordion__content_wrap"
+                },
+                React.createElement(
+                    "div",
+                    {
+                        className: "premium-accordion__title_wrap premium-accordion__" + direction + " premium-accordion__" + arrowStyles[0].arrowPos,
+                        style: {
+                            backgroundColor: titleStyles[0].titleBack,
+                            borderStyle: titleStyles[0].titleBorder,
+                            borderWidth: titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px",
+                            borderRadius: titleStyles[0].titleBorderRadius + "px",
+                            borderColor: titleStyles[0].titleBorderColor
+                        }
+                    },
+                    React.createElement(
+                        "div",
+                        { className: "premium-accordion__title" },
+                        React.createElement(RichText.Content, {
+                            tagName: titleTag.toLowerCase(),
+                            className: "premium-accordion__title_text",
+                            value: item.titleText,
+                            style: {
+                                color: titleStyles[0].titleColor,
+                                fontSize: titleStyles[0].titleSize + "px",
+                                letterSpacing: titleStyles[0].titleLetter + "px",
+                                textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                fontStyle: titleStyles[0].titleStyle,
+                                fontWeight: titleStyles[0].titleWeight,
+                                textShadow: titleStyles[0].titleShadowHorizontal + "px " + titleStyles[0].titleShadowVertical + "px " + titleStyles[0].titleShadowBlur + "px " + titleStyles[0].titleShadowColor,
+                                lineHeight: titleStyles[0].titleLine + "px"
+                            }
+                        })
+                    ),
+                    React.createElement(
+                        "div",
+                        { className: "premium-accordion__icon_wrap" },
+                        React.createElement(
+                            "svg",
+                            {
+                                className: "premium-accordion__icon premium-accordion__closed",
+                                role: "img",
+                                focusable: "false",
+                                xmlns: "http://www.w3.org/2000/svg",
+                                width: arrowStyles[0].arrowSize,
+                                height: arrowStyles[0].arrowSize,
+                                viewBox: "0 0 20 20",
+                                style: {
+                                    fill: arrowStyles[0].arrowColor,
+                                    backgroundColor: arrowStyles[0].arrowBack,
+                                    padding: arrowStyles[0].arrowPadding + "px",
+                                    borderRadius: arrowStyles[0].arrowRadius + "px"
+                                }
+                            },
+                            React.createElement("polygon", { points: "16.7,3.3 10,10 3.3,3.4 0,6.7 10,16.7 10,16.6 20,6.7 " })
+                        )
+                    )
+                ),
+                React.createElement(
+                    "div",
+                    {
+                        className: "premium-accordion__desc_wrap premium-accordion__desc_close",
+                        style: {
+                            textAlign: descStyles[0].descAlign,
+                            backgroundColor: descStyles[0].descBack,
+                            borderStyle: descStyles[0].descBorder,
+                            borderWidth: descBorderUpdated ? descBorderTop + "px " + descBorderRight + "px " + descBorderBottom + "px " + descBorderLeft + "px" : descBorderWidth + "px",
+                            borderRadius: descStyles[0].descBorderRadius + "px",
+                            borderColor: descStyles[0].descBorderColor
+
+                        }
+                    },
+                    "text" === contentType && React.createElement(RichText.Content, {
+                        tagName: "p",
+                        className: "premium-accordion__desc",
+                        value: item.descText,
+                        style: {
+                            color: descStyles[0].descColor,
+                            fontSize: descStyles[0].descSize + "px",
+                            letterSpacing: descStyles[0].descLetter + "px",
+                            textTransform: descStyles[0].descUpper ? "uppercase" : "none",
+                            textShadow: textShadowHorizontal + "px " + textShadowVertical + "px " + textShadowBlur + "px " + textShadowColor,
+                            fontStyle: descStyles[0].descStyle,
+                            fontWeight: descStyles[0].descWeight,
+                            lineHeight: descStyles[0].descLine + "px"
+                        }
+                    }),
+                    "block" === contentType && React.createElement(InnerBlocks.Content, null)
+                )
+            );
+        });
+        return React.createElement(
+            "div",
+            { id: accordionId, className: "" + mainClasses },
+            accordionItems
+        );
+    }
+}, {
     attributes: attributes,
     migrate: function migrate(attributes) {
         var newAttributes = {
@@ -16436,69 +16616,69 @@ var deprecated = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes = props.attributes,
-            accordionId = _props$attributes.accordionId,
-            repeaterItems = _props$attributes.repeaterItems,
-            direction = _props$attributes.direction,
-            titleTag = _props$attributes.titleTag,
-            titleSize = _props$attributes.titleSize,
-            titleLine = _props$attributes.titleLine,
-            titleLetter = _props$attributes.titleLetter,
-            titleStyle = _props$attributes.titleStyle,
-            titleUpper = _props$attributes.titleUpper,
-            titleWeight = _props$attributes.titleWeight,
-            titleColor = _props$attributes.titleColor,
-            titleBorder = _props$attributes.titleBorder,
-            titleBorderWidth = _props$attributes.titleBorderWidth,
-            titleBorderColor = _props$attributes.titleBorderColor,
-            titleBorderTop = _props$attributes.titleBorderTop,
-            titleBorderRight = _props$attributes.titleBorderRight,
-            titleBorderBottom = _props$attributes.titleBorderBottom,
-            titleBorderLeft = _props$attributes.titleBorderLeft,
-            titleBorderRadius = _props$attributes.titleBorderRadius,
-            titleBack = _props$attributes.titleBack,
-            titleShadowBlur = _props$attributes.titleShadowBlur,
-            titleShadowColor = _props$attributes.titleShadowColor,
-            titleShadowHorizontal = _props$attributes.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes.titleShadowVertical,
-            titlePaddingT = _props$attributes.titlePaddingT,
-            titlePaddingR = _props$attributes.titlePaddingR,
-            titlePaddingB = _props$attributes.titlePaddingB,
-            titlePaddingL = _props$attributes.titlePaddingL,
-            arrowColor = _props$attributes.arrowColor,
-            arrowBack = _props$attributes.arrowBack,
-            arrowPos = _props$attributes.arrowPos,
-            arrowPadding = _props$attributes.arrowPadding,
-            arrowSize = _props$attributes.arrowSize,
-            arrowRadius = _props$attributes.arrowRadius,
-            contentType = _props$attributes.contentType,
-            descAlign = _props$attributes.descAlign,
-            descSize = _props$attributes.descSize,
-            descLine = _props$attributes.descLine,
-            descLetter = _props$attributes.descLetter,
-            descStyle = _props$attributes.descStyle,
-            descUpper = _props$attributes.descUpper,
-            descWeight = _props$attributes.descWeight,
-            descColor = _props$attributes.descColor,
-            descBack = _props$attributes.descBack,
-            descBorder = _props$attributes.descBorder,
-            descBorderColor = _props$attributes.descBorderColor,
-            descBorderRadius = _props$attributes.descBorderRadius,
-            descBorderWidth = _props$attributes.descBorderWidth,
-            descBorderTop = _props$attributes.descBorderTop,
-            descBorderRight = _props$attributes.descBorderRight,
-            descBorderBottom = _props$attributes.descBorderBottom,
-            descBorderLeft = _props$attributes.descBorderLeft,
-            textShadowBlur = _props$attributes.textShadowBlur,
-            textShadowColor = _props$attributes.textShadowColor,
-            textShadowHorizontal = _props$attributes.textShadowHorizontal,
-            textShadowVertical = _props$attributes.textShadowVertical,
-            descPaddingT = _props$attributes.descPaddingT,
-            descPaddingR = _props$attributes.descPaddingR,
-            descPaddingB = _props$attributes.descPaddingB,
-            descPaddingL = _props$attributes.descPaddingL,
-            titleBorderUpdated = _props$attributes.titleBorderUpdated,
-            descBorderUpdated = _props$attributes.descBorderUpdated;
+        var _props$attributes2 = props.attributes,
+            accordionId = _props$attributes2.accordionId,
+            repeaterItems = _props$attributes2.repeaterItems,
+            direction = _props$attributes2.direction,
+            titleTag = _props$attributes2.titleTag,
+            titleSize = _props$attributes2.titleSize,
+            titleLine = _props$attributes2.titleLine,
+            titleLetter = _props$attributes2.titleLetter,
+            titleStyle = _props$attributes2.titleStyle,
+            titleUpper = _props$attributes2.titleUpper,
+            titleWeight = _props$attributes2.titleWeight,
+            titleColor = _props$attributes2.titleColor,
+            titleBorder = _props$attributes2.titleBorder,
+            titleBorderWidth = _props$attributes2.titleBorderWidth,
+            titleBorderColor = _props$attributes2.titleBorderColor,
+            titleBorderTop = _props$attributes2.titleBorderTop,
+            titleBorderRight = _props$attributes2.titleBorderRight,
+            titleBorderBottom = _props$attributes2.titleBorderBottom,
+            titleBorderLeft = _props$attributes2.titleBorderLeft,
+            titleBorderRadius = _props$attributes2.titleBorderRadius,
+            titleBack = _props$attributes2.titleBack,
+            titleShadowBlur = _props$attributes2.titleShadowBlur,
+            titleShadowColor = _props$attributes2.titleShadowColor,
+            titleShadowHorizontal = _props$attributes2.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes2.titleShadowVertical,
+            titlePaddingT = _props$attributes2.titlePaddingT,
+            titlePaddingR = _props$attributes2.titlePaddingR,
+            titlePaddingB = _props$attributes2.titlePaddingB,
+            titlePaddingL = _props$attributes2.titlePaddingL,
+            arrowColor = _props$attributes2.arrowColor,
+            arrowBack = _props$attributes2.arrowBack,
+            arrowPos = _props$attributes2.arrowPos,
+            arrowPadding = _props$attributes2.arrowPadding,
+            arrowSize = _props$attributes2.arrowSize,
+            arrowRadius = _props$attributes2.arrowRadius,
+            contentType = _props$attributes2.contentType,
+            descAlign = _props$attributes2.descAlign,
+            descSize = _props$attributes2.descSize,
+            descLine = _props$attributes2.descLine,
+            descLetter = _props$attributes2.descLetter,
+            descStyle = _props$attributes2.descStyle,
+            descUpper = _props$attributes2.descUpper,
+            descWeight = _props$attributes2.descWeight,
+            descColor = _props$attributes2.descColor,
+            descBack = _props$attributes2.descBack,
+            descBorder = _props$attributes2.descBorder,
+            descBorderColor = _props$attributes2.descBorderColor,
+            descBorderRadius = _props$attributes2.descBorderRadius,
+            descBorderWidth = _props$attributes2.descBorderWidth,
+            descBorderTop = _props$attributes2.descBorderTop,
+            descBorderRight = _props$attributes2.descBorderRight,
+            descBorderBottom = _props$attributes2.descBorderBottom,
+            descBorderLeft = _props$attributes2.descBorderLeft,
+            textShadowBlur = _props$attributes2.textShadowBlur,
+            textShadowColor = _props$attributes2.textShadowColor,
+            textShadowHorizontal = _props$attributes2.textShadowHorizontal,
+            textShadowVertical = _props$attributes2.textShadowVertical,
+            descPaddingT = _props$attributes2.descPaddingT,
+            descPaddingR = _props$attributes2.descPaddingR,
+            descPaddingB = _props$attributes2.descPaddingB,
+            descPaddingL = _props$attributes2.descPaddingL,
+            titleBorderUpdated = _props$attributes2.titleBorderUpdated,
+            descBorderUpdated = _props$attributes2.descBorderUpdated;
 
 
         var mainClasses = (0, _classnames2.default)(className, 'premium-accordion');
@@ -16615,59 +16795,59 @@ var deprecated = [{
     attributes: attributes,
 
     save: function save(props) {
-        var _props$attributes2 = props.attributes,
-            accordionId = _props$attributes2.accordionId,
-            repeaterItems = _props$attributes2.repeaterItems,
-            direction = _props$attributes2.direction,
-            titleTag = _props$attributes2.titleTag,
-            titleSize = _props$attributes2.titleSize,
-            titleLine = _props$attributes2.titleLine,
-            titleLetter = _props$attributes2.titleLetter,
-            titleStyle = _props$attributes2.titleStyle,
-            titleUpper = _props$attributes2.titleUpper,
-            titleWeight = _props$attributes2.titleWeight,
-            titleColor = _props$attributes2.titleColor,
-            titleBorder = _props$attributes2.titleBorder,
-            titleBorderColor = _props$attributes2.titleBorderColor,
-            titleBorderWidth = _props$attributes2.titleBorderWidth,
-            titleBorderRadius = _props$attributes2.titleBorderRadius,
-            titleBack = _props$attributes2.titleBack,
-            titleShadowBlur = _props$attributes2.titleShadowBlur,
-            titleShadowColor = _props$attributes2.titleShadowColor,
-            titleShadowHorizontal = _props$attributes2.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes2.titleShadowVertical,
-            titlePaddingT = _props$attributes2.titlePaddingT,
-            titlePaddingR = _props$attributes2.titlePaddingR,
-            titlePaddingB = _props$attributes2.titlePaddingB,
-            titlePaddingL = _props$attributes2.titlePaddingL,
-            arrowColor = _props$attributes2.arrowColor,
-            arrowBack = _props$attributes2.arrowBack,
-            arrowPos = _props$attributes2.arrowPos,
-            arrowPadding = _props$attributes2.arrowPadding,
-            arrowSize = _props$attributes2.arrowSize,
-            arrowRadius = _props$attributes2.arrowRadius,
-            contentType = _props$attributes2.contentType,
-            descAlign = _props$attributes2.descAlign,
-            descSize = _props$attributes2.descSize,
-            descLine = _props$attributes2.descLine,
-            descLetter = _props$attributes2.descLetter,
-            descStyle = _props$attributes2.descStyle,
-            descUpper = _props$attributes2.descUpper,
-            descWeight = _props$attributes2.descWeight,
-            descColor = _props$attributes2.descColor,
-            descBack = _props$attributes2.descBack,
-            descBorder = _props$attributes2.descBorder,
-            descBorderColor = _props$attributes2.descBorderColor,
-            descBorderRadius = _props$attributes2.descBorderRadius,
-            descBorderWidth = _props$attributes2.descBorderWidth,
-            textShadowBlur = _props$attributes2.textShadowBlur,
-            textShadowColor = _props$attributes2.textShadowColor,
-            textShadowHorizontal = _props$attributes2.textShadowHorizontal,
-            textShadowVertical = _props$attributes2.textShadowVertical,
-            descPaddingT = _props$attributes2.descPaddingT,
-            descPaddingR = _props$attributes2.descPaddingR,
-            descPaddingB = _props$attributes2.descPaddingB,
-            descPaddingL = _props$attributes2.descPaddingL;
+        var _props$attributes3 = props.attributes,
+            accordionId = _props$attributes3.accordionId,
+            repeaterItems = _props$attributes3.repeaterItems,
+            direction = _props$attributes3.direction,
+            titleTag = _props$attributes3.titleTag,
+            titleSize = _props$attributes3.titleSize,
+            titleLine = _props$attributes3.titleLine,
+            titleLetter = _props$attributes3.titleLetter,
+            titleStyle = _props$attributes3.titleStyle,
+            titleUpper = _props$attributes3.titleUpper,
+            titleWeight = _props$attributes3.titleWeight,
+            titleColor = _props$attributes3.titleColor,
+            titleBorder = _props$attributes3.titleBorder,
+            titleBorderColor = _props$attributes3.titleBorderColor,
+            titleBorderWidth = _props$attributes3.titleBorderWidth,
+            titleBorderRadius = _props$attributes3.titleBorderRadius,
+            titleBack = _props$attributes3.titleBack,
+            titleShadowBlur = _props$attributes3.titleShadowBlur,
+            titleShadowColor = _props$attributes3.titleShadowColor,
+            titleShadowHorizontal = _props$attributes3.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes3.titleShadowVertical,
+            titlePaddingT = _props$attributes3.titlePaddingT,
+            titlePaddingR = _props$attributes3.titlePaddingR,
+            titlePaddingB = _props$attributes3.titlePaddingB,
+            titlePaddingL = _props$attributes3.titlePaddingL,
+            arrowColor = _props$attributes3.arrowColor,
+            arrowBack = _props$attributes3.arrowBack,
+            arrowPos = _props$attributes3.arrowPos,
+            arrowPadding = _props$attributes3.arrowPadding,
+            arrowSize = _props$attributes3.arrowSize,
+            arrowRadius = _props$attributes3.arrowRadius,
+            contentType = _props$attributes3.contentType,
+            descAlign = _props$attributes3.descAlign,
+            descSize = _props$attributes3.descSize,
+            descLine = _props$attributes3.descLine,
+            descLetter = _props$attributes3.descLetter,
+            descStyle = _props$attributes3.descStyle,
+            descUpper = _props$attributes3.descUpper,
+            descWeight = _props$attributes3.descWeight,
+            descColor = _props$attributes3.descColor,
+            descBack = _props$attributes3.descBack,
+            descBorder = _props$attributes3.descBorder,
+            descBorderColor = _props$attributes3.descBorderColor,
+            descBorderRadius = _props$attributes3.descBorderRadius,
+            descBorderWidth = _props$attributes3.descBorderWidth,
+            textShadowBlur = _props$attributes3.textShadowBlur,
+            textShadowColor = _props$attributes3.textShadowColor,
+            textShadowHorizontal = _props$attributes3.textShadowHorizontal,
+            textShadowVertical = _props$attributes3.textShadowVertical,
+            descPaddingT = _props$attributes3.descPaddingT,
+            descPaddingR = _props$attributes3.descPaddingR,
+            descPaddingB = _props$attributes3.descPaddingB,
+            descPaddingL = _props$attributes3.descPaddingL;
 
         var accordionItems = repeaterItems.map(function (item, index) {
             return React.createElement(
@@ -16780,55 +16960,55 @@ var deprecated = [{
 }, {
     attributes: attributes,
     save: function save(props) {
-        var _props$attributes3 = props.attributes,
-            accordionId = _props$attributes3.accordionId,
-            repeaterItems = _props$attributes3.repeaterItems,
-            direction = _props$attributes3.direction,
-            titleTag = _props$attributes3.titleTag,
-            titleSize = _props$attributes3.titleSize,
-            titleLine = _props$attributes3.titleLine,
-            titleLetter = _props$attributes3.titleLetter,
-            titleStyle = _props$attributes3.titleStyle,
-            titleUpper = _props$attributes3.titleUpper,
-            titleWeight = _props$attributes3.titleWeight,
-            titleColor = _props$attributes3.titleColor,
-            titleBorder = _props$attributes3.titleBorder,
-            titleBorderColor = _props$attributes3.titleBorderColor,
-            titleBorderWidth = _props$attributes3.titleBorderWidth,
-            titleBorderRadius = _props$attributes3.titleBorderRadius,
-            titleBack = _props$attributes3.titleBack,
-            titleShadowBlur = _props$attributes3.titleShadowBlur,
-            titleShadowColor = _props$attributes3.titleShadowColor,
-            titleShadowHorizontal = _props$attributes3.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes3.titleShadowVertical,
-            titlePaddingT = _props$attributes3.titlePaddingT,
-            titlePaddingR = _props$attributes3.titlePaddingR,
-            titlePaddingB = _props$attributes3.titlePaddingB,
-            titlePaddingL = _props$attributes3.titlePaddingL,
-            arrowColor = _props$attributes3.arrowColor,
-            arrowBack = _props$attributes3.arrowBack,
-            arrowPos = _props$attributes3.arrowPos,
-            arrowPadding = _props$attributes3.arrowPadding,
-            arrowSize = _props$attributes3.arrowSize,
-            arrowRadius = _props$attributes3.arrowRadius,
-            contentType = _props$attributes3.contentType,
-            descAlign = _props$attributes3.descAlign,
-            descSize = _props$attributes3.descSize,
-            descLine = _props$attributes3.descLine,
-            descLetter = _props$attributes3.descLetter,
-            descStyle = _props$attributes3.descStyle,
-            descUpper = _props$attributes3.descUpper,
-            descWeight = _props$attributes3.descWeight,
-            descColor = _props$attributes3.descColor,
-            descBack = _props$attributes3.descBack,
-            descBorder = _props$attributes3.descBorder,
-            descBorderColor = _props$attributes3.descBorderColor,
-            descBorderRadius = _props$attributes3.descBorderRadius,
-            descBorderWidth = _props$attributes3.descBorderWidth,
-            descPaddingT = _props$attributes3.descPaddingT,
-            descPaddingR = _props$attributes3.descPaddingR,
-            descPaddingB = _props$attributes3.descPaddingB,
-            descPaddingL = _props$attributes3.descPaddingL;
+        var _props$attributes4 = props.attributes,
+            accordionId = _props$attributes4.accordionId,
+            repeaterItems = _props$attributes4.repeaterItems,
+            direction = _props$attributes4.direction,
+            titleTag = _props$attributes4.titleTag,
+            titleSize = _props$attributes4.titleSize,
+            titleLine = _props$attributes4.titleLine,
+            titleLetter = _props$attributes4.titleLetter,
+            titleStyle = _props$attributes4.titleStyle,
+            titleUpper = _props$attributes4.titleUpper,
+            titleWeight = _props$attributes4.titleWeight,
+            titleColor = _props$attributes4.titleColor,
+            titleBorder = _props$attributes4.titleBorder,
+            titleBorderColor = _props$attributes4.titleBorderColor,
+            titleBorderWidth = _props$attributes4.titleBorderWidth,
+            titleBorderRadius = _props$attributes4.titleBorderRadius,
+            titleBack = _props$attributes4.titleBack,
+            titleShadowBlur = _props$attributes4.titleShadowBlur,
+            titleShadowColor = _props$attributes4.titleShadowColor,
+            titleShadowHorizontal = _props$attributes4.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes4.titleShadowVertical,
+            titlePaddingT = _props$attributes4.titlePaddingT,
+            titlePaddingR = _props$attributes4.titlePaddingR,
+            titlePaddingB = _props$attributes4.titlePaddingB,
+            titlePaddingL = _props$attributes4.titlePaddingL,
+            arrowColor = _props$attributes4.arrowColor,
+            arrowBack = _props$attributes4.arrowBack,
+            arrowPos = _props$attributes4.arrowPos,
+            arrowPadding = _props$attributes4.arrowPadding,
+            arrowSize = _props$attributes4.arrowSize,
+            arrowRadius = _props$attributes4.arrowRadius,
+            contentType = _props$attributes4.contentType,
+            descAlign = _props$attributes4.descAlign,
+            descSize = _props$attributes4.descSize,
+            descLine = _props$attributes4.descLine,
+            descLetter = _props$attributes4.descLetter,
+            descStyle = _props$attributes4.descStyle,
+            descUpper = _props$attributes4.descUpper,
+            descWeight = _props$attributes4.descWeight,
+            descColor = _props$attributes4.descColor,
+            descBack = _props$attributes4.descBack,
+            descBorder = _props$attributes4.descBorder,
+            descBorderColor = _props$attributes4.descBorderColor,
+            descBorderRadius = _props$attributes4.descBorderRadius,
+            descBorderWidth = _props$attributes4.descBorderWidth,
+            descPaddingT = _props$attributes4.descPaddingT,
+            descPaddingR = _props$attributes4.descPaddingR,
+            descPaddingB = _props$attributes4.descPaddingB,
+            descPaddingL = _props$attributes4.descPaddingL;
 
 
         var accordionItems = repeaterItems.map(function (item, index) {
@@ -16935,186 +17115,6 @@ var deprecated = [{
         return React.createElement(
             "div",
             { id: accordionId, className: "" + className },
-            accordionItems
-        );
-    }
-}, {
-    attributes: Object.assign(attributes, newAttributes),
-    migrate: function migrate(attributes) {
-        var newAttributes = {
-            titlePadding: {
-                "Desktop": {
-                    top: attributes.titlePaddingT,
-                    right: attributes.titlePaddingR,
-                    bottom: attributes.titlePaddingB,
-                    left: attributes.titlePaddingL
-                },
-                "Tablet": {
-                    top: attributes.titlePaddingTTablet,
-                    right: attributes.titlePaddingRTablet,
-                    bottom: attributes.titlePaddingBTablet,
-                    left: attributes.titlePaddingLTablet
-                },
-                "Mobile": {
-                    top: attributes.titlePaddingTMobile,
-                    right: attributes.titlePaddingRMobile,
-                    bottom: attributes.titlePaddingBMobile,
-                    left: attributes.titlePaddingLMobile
-                }
-            },
-            descPadding: {
-                "Desktop": {
-                    top: attributes.descPaddingT,
-                    right: attributes.descPaddingR,
-                    bottom: attributes.descPaddingB,
-                    left: attributes.descPaddingL
-                },
-                "Tablet": {
-                    top: attributes.descPaddingTTablet,
-                    right: attributes.descPaddingRTablet,
-                    bottom: attributes.descPaddingBTablet,
-                    left: attributes.descPaddingLTablet
-                },
-                "Mobile": {
-                    top: attributes.descPaddingTMobile,
-                    right: attributes.descPaddingRMobile,
-                    bottom: attributes.descPaddingBMobile,
-                    left: attributes.descPaddingLMobile
-                }
-            }
-        };
-        return Object.assign(attributes, newAttributes);
-    },
-    save: function save(props) {
-        var className = props.className;
-        var _props$attributes4 = props.attributes,
-            accordionId = _props$attributes4.accordionId,
-            repeaterItems = _props$attributes4.repeaterItems,
-            direction = _props$attributes4.direction,
-            titleTag = _props$attributes4.titleTag,
-            titleStyles = _props$attributes4.titleStyles,
-            arrowStyles = _props$attributes4.arrowStyles,
-            descStyles = _props$attributes4.descStyles,
-            contentType = _props$attributes4.contentType,
-            titleEditBorder = _props$attributes4.titleEditBorder,
-            textShadowColor = _props$attributes4.textShadowColor,
-            textShadowBlur = _props$attributes4.textShadowBlur,
-            textShadowHorizontal = _props$attributes4.textShadowHorizontal,
-            textShadowVertical = _props$attributes4.textShadowVertical,
-            titleBorderWidth = _props$attributes4.titleBorderWidth,
-            titleBorderTop = _props$attributes4.titleBorderTop,
-            titleBorderRight = _props$attributes4.titleBorderRight,
-            titleBorderBottom = _props$attributes4.titleBorderBottom,
-            titleBorderLeft = _props$attributes4.titleBorderLeft,
-            titleBorderUpdated = _props$attributes4.titleBorderUpdated,
-            descBorderWidth = _props$attributes4.descBorderWidth,
-            descBorderUpdated = _props$attributes4.descBorderUpdated,
-            descBorderTop = _props$attributes4.descBorderTop,
-            descBorderRight = _props$attributes4.descBorderRight,
-            descBorderBottom = _props$attributes4.descBorderBottom,
-            descBorderLeft = _props$attributes4.descBorderLeft;
-
-
-        var mainClasses = (0, _classnames2.default)(className, 'premium-accordion');
-
-        var accordionItems = repeaterItems.map(function (item, index) {
-            return React.createElement(
-                "div",
-                {
-                    id: "premium-accordion__layer" + index,
-                    className: "premium-accordion__content_wrap"
-                },
-                React.createElement(
-                    "div",
-                    {
-                        className: "premium-accordion__title_wrap premium-accordion__" + direction + " premium-accordion__" + arrowStyles[0].arrowPos,
-                        style: {
-                            backgroundColor: titleStyles[0].titleBack,
-                            borderStyle: titleStyles[0].titleBorder,
-                            borderWidth: titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px",
-                            borderRadius: titleStyles[0].titleBorderRadius + "px",
-                            borderColor: titleStyles[0].titleBorderColor
-                        }
-                    },
-                    React.createElement(
-                        "div",
-                        { className: "premium-accordion__title" },
-                        React.createElement(RichText.Content, {
-                            tagName: titleTag.toLowerCase(),
-                            className: "premium-accordion__title_text",
-                            value: item.titleText,
-                            style: {
-                                color: titleStyles[0].titleColor,
-                                fontSize: titleStyles[0].titleSize + "px",
-                                letterSpacing: titleStyles[0].titleLetter + "px",
-                                textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
-                                fontStyle: titleStyles[0].titleStyle,
-                                fontWeight: titleStyles[0].titleWeight,
-                                textShadow: titleStyles[0].titleShadowHorizontal + "px " + titleStyles[0].titleShadowVertical + "px " + titleStyles[0].titleShadowBlur + "px " + titleStyles[0].titleShadowColor,
-                                lineHeight: titleStyles[0].titleLine + "px"
-                            }
-                        })
-                    ),
-                    React.createElement(
-                        "div",
-                        { className: "premium-accordion__icon_wrap" },
-                        React.createElement(
-                            "svg",
-                            {
-                                className: "premium-accordion__icon premium-accordion__closed",
-                                role: "img",
-                                focusable: "false",
-                                xmlns: "http://www.w3.org/2000/svg",
-                                width: arrowStyles[0].arrowSize,
-                                height: arrowStyles[0].arrowSize,
-                                viewBox: "0 0 20 20",
-                                style: {
-                                    fill: arrowStyles[0].arrowColor,
-                                    backgroundColor: arrowStyles[0].arrowBack,
-                                    padding: arrowStyles[0].arrowPadding + "px",
-                                    borderRadius: arrowStyles[0].arrowRadius + "px"
-                                }
-                            },
-                            React.createElement("polygon", { points: "16.7,3.3 10,10 3.3,3.4 0,6.7 10,16.7 10,16.6 20,6.7 " })
-                        )
-                    )
-                ),
-                React.createElement(
-                    "div",
-                    {
-                        className: "premium-accordion__desc_wrap premium-accordion__desc_close",
-                        style: {
-                            textAlign: descStyles[0].descAlign,
-                            backgroundColor: descStyles[0].descBack,
-                            borderStyle: descStyles[0].descBorder,
-                            borderWidth: descBorderUpdated ? descBorderTop + "px " + descBorderRight + "px " + descBorderBottom + "px " + descBorderLeft + "px" : descBorderWidth + "px",
-                            borderRadius: descStyles[0].descBorderRadius + "px",
-                            borderColor: descStyles[0].descBorderColor
-
-                        }
-                    },
-                    "text" === contentType && React.createElement(RichText.Content, {
-                        tagName: "p",
-                        className: "premium-accordion__desc",
-                        value: item.descText,
-                        style: {
-                            color: descStyles[0].descColor,
-                            fontSize: descStyles[0].descSize + "px",
-                            letterSpacing: descStyles[0].descLetter + "px",
-                            textTransform: descStyles[0].descUpper ? "uppercase" : "none",
-                            textShadow: textShadowHorizontal + "px " + textShadowVertical + "px " + textShadowBlur + "px " + textShadowColor,
-                            fontStyle: descStyles[0].descStyle,
-                            fontWeight: descStyles[0].descWeight,
-                            lineHeight: descStyles[0].descLine + "px"
-                        }
-                    }),
-                    "block" === contentType && React.createElement(InnerBlocks.Content, null)
-                )
-            );
-        });
-        return React.createElement(
-            "div",
-            { id: accordionId, className: "" + mainClasses },
             accordionItems
         );
     }
