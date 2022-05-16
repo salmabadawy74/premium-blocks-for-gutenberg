@@ -4606,9 +4606,12 @@ function Edit(props) {
     document.head.appendChild($style);
   }, []);
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
+    const content = document.querySelector('.premium-content-switcher-two-content');
+
     if (!mounted) {
       inputFirstContent.current.classList.remove("premium-content-switcher-is-visible");
       inputFirstContent.current.classList.add("premium-content-switcher-is-hidden");
+      content.style.overflow = 'hidden';
       inputSecondContent.current.classList.remove("premium-content-switcher-is-hidden");
       inputSecondContent.current.classList.add("premium-content-switcher-is-visible");
     } else {
@@ -4616,6 +4619,7 @@ function Edit(props) {
       inputSecondContent.current.classList.add("premium-content-switcher-is-hidden");
       inputFirstContent.current.classList.remove("premium-content-switcher-is-hidden");
       inputFirstContent.current.classList.add("premium-content-switcher-is-visible");
+      content.style.overflow = 'hidden';
     }
   }, [mounted]);
 

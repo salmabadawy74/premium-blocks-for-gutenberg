@@ -63,9 +63,13 @@ function Edit(props) {
     }, [])
 
     useEffect(() => {
+        const content = document.querySelector('.premium-content-switcher-two-content');
+
         if (!mounted) {
             inputFirstContent.current.classList.remove("premium-content-switcher-is-visible");
             inputFirstContent.current.classList.add("premium-content-switcher-is-hidden");
+
+            content.style.overflow = 'hidden';
 
             inputSecondContent.current.classList.remove("premium-content-switcher-is-hidden");
             inputSecondContent.current.classList.add("premium-content-switcher-is-visible");
@@ -76,6 +80,8 @@ function Edit(props) {
 
             inputFirstContent.current.classList.remove("premium-content-switcher-is-hidden");
             inputFirstContent.current.classList.add("premium-content-switcher-is-visible");
+
+            content.style.overflow = 'hidden';
         }
     }, [mounted])
 
