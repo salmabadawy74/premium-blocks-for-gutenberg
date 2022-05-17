@@ -10855,10 +10855,10 @@ var PremiumAccordion = function (_Component) {
                                 borderWidth: titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px",
                                 borderRadius: titleStyles[0].titleBorderRadius + "px",
                                 borderColor: titleStyles[0].titleBorderColor,
-                                paddingTop: "" + titlePaddingTop + titlePadding.unit,
-                                paddingRight: "" + titlePaddingRight + titlePadding.unit,
-                                paddingBottom: "" + titlePaddingBottom + titlePadding.unit,
-                                paddingLeft: "" + titlePaddingLeft + titlePadding.unit
+                                paddingTop: titlePaddingTop && "" + titlePaddingTop + (titlePadding.unit ? titlePadding.unit : 'px'),
+                                paddingRight: titlePaddingRight && "" + titlePaddingRight + (titlePadding.unit ? titlePadding.unit : 'px'),
+                                paddingBottom: titlePaddingBottom && "" + titlePaddingBottom + (titlePadding.unit ? titlePadding.unit : 'px'),
+                                paddingLeft: titlePaddingLeft && "" + titlePaddingLeft + (titlePadding.unit ? titlePadding.unit : 'px')
                             }
                         },
                         React.createElement(
@@ -16555,10 +16555,52 @@ var newAttributes = {
         type: "number"
     },
     titlePadding: {
-        type: "object"
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
     },
     descPadding: {
-        type: "object"
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
     }
 };
 
