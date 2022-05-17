@@ -18120,10 +18120,10 @@ var edit = exports.edit = function (_Component) {
                     id: "premium-banner-" + block_id,
                     className: mainClasses + " premium-banner__responsive_" + responsive + " premium-banner-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
                     style: {
-                        paddingTop: containerPaddingTop + containerStyles[0].paddingU,
-                        paddingRight: containerPaddingRight + containerStyles[0].paddingU,
-                        paddingBottom: containerPaddingBottom + containerStyles[0].paddingU,
-                        paddingLeft: containerPaddingLeft + containerStyles[0].paddingU
+                        paddingTop: containerPaddingTop && "" + containerPaddingTop + padding.unit,
+                        paddingRight: containerPaddingRight && "" + containerPaddingRight + padding.unit,
+                        paddingBottom: containerPaddingBottom && "" + containerPaddingBottom + padding.unit,
+                        paddingLeft: containerPaddingLeft && "" + containerPaddingLeft + padding.unit
                     }
                 },
                 React.createElement("style", {
@@ -18956,23 +18956,24 @@ var deprecatedContent = [{
         var newAttributes = {
             padding: {
                 "Desktop": {
-                    top: attributes.paddingT,
-                    right: attributes.paddingR,
-                    bottom: attributes.paddingB,
-                    left: attributes.paddingL
+                    top: attributes.paddingT || '',
+                    right: attributes.paddingR || '',
+                    bottom: attributes.paddingB || '',
+                    left: attributes.paddingL || ''
                 },
                 "Tablet": {
-                    top: attributes.paddingTTablet,
-                    right: attributes.paddingRTablet,
-                    bottom: attributes.paddingBTablet,
-                    left: attributes.paddingLTablet
+                    top: attributes.paddingTTablet || '',
+                    right: attributes.paddingRTablet || '',
+                    bottom: attributes.paddingBTablet || '',
+                    left: attributes.paddingLTablet || ''
                 },
                 "Mobile": {
-                    top: attributes.paddingTMobile,
-                    right: attributes.paddingRMobile,
-                    bottom: attributes.paddingBMobile,
-                    left: attributes.paddingLMobile
-                }
+                    top: attributes.paddingTMobile || '',
+                    right: attributes.paddingRMobile || '',
+                    bottom: attributes.paddingBMobile || '',
+                    left: attributes.paddingLMobile || ''
+                },
+                "unit": "px"
             }
         };
         return Object.assign(attributes, newAttributes);

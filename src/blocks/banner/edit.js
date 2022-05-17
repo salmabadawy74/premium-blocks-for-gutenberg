@@ -542,10 +542,10 @@ export class edit extends Component {
                     id={`premium-banner-${block_id}`}
                     className={`${mainClasses} premium-banner__responsive_${responsive} premium-banner-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
                     style={{
-                        paddingTop: containerPaddingTop + containerStyles[0].paddingU,
-                        paddingRight: containerPaddingRight + containerStyles[0].paddingU,
-                        paddingBottom: containerPaddingBottom + containerStyles[0].paddingU,
-                        paddingLeft: containerPaddingLeft + containerStyles[0].paddingU
+                        paddingTop: containerPaddingTop && `${containerPaddingTop}${padding.unit}`,
+                        paddingRight: containerPaddingRight && `${containerPaddingRight}${padding.unit}`,
+                        paddingBottom: containerPaddingBottom && `${containerPaddingBottom}${padding.unit}`,
+                        paddingLeft: containerPaddingLeft && `${containerPaddingLeft}${padding.unit}`
                     }}
                 >
                     <style

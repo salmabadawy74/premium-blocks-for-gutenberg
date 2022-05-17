@@ -542,23 +542,24 @@ const deprecatedContent = [
             let newAttributes = {
                 padding: {
                     "Desktop": {
-                        top: attributes.paddingT,
-                        right: attributes.paddingR,
-                        bottom: attributes.paddingB,
-                        left: attributes.paddingL
+                        top: attributes.paddingT || '',
+                        right: attributes.paddingR || '',
+                        bottom: attributes.paddingB || '',
+                        left: attributes.paddingL || ''
                     },
                     "Tablet": {
-                        top: attributes.paddingTTablet,
-                        right: attributes.paddingRTablet,
-                        bottom: attributes.paddingBTablet,
-                        left: attributes.paddingLTablet
+                        top: attributes.paddingTTablet || '',
+                        right: attributes.paddingRTablet || '',
+                        bottom: attributes.paddingBTablet || '',
+                        left: attributes.paddingLTablet || ''
                     },
                     "Mobile": {
-                        top: attributes.paddingTMobile,
-                        right: attributes.paddingRMobile,
-                        bottom: attributes.paddingBMobile,
-                        left: attributes.paddingLMobile
+                        top: attributes.paddingTMobile || '',
+                        right: attributes.paddingRMobile || '',
+                        bottom: attributes.paddingBMobile || '',
+                        left: attributes.paddingLMobile || ''
                     },
+                    "unit": "px"
                 }
             }
             return Object.assign(attributes, newAttributes)

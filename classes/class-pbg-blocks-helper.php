@@ -1335,7 +1335,6 @@ class PBG_Blocks_Helper {
 		if(isset( $attr['padding'] )){
 			$padding = $attr['padding'];
 			$css->set_selector( '#premium-banner-' . $unique_id );
-			error_log( wp_json_encode( $padding ) );
 			$css->add_property( 'padding-top', $css->render_color( $padding['Desktop']['top'] . $padding['unit'] ) );
 			$css->add_property( 'padding-right', $css->render_color( $padding['Desktop']['right'] . $padding['unit'] ) );
 			$css->add_property( 'padding-bottom', $css->render_color( $padding['Desktop']['bottom'] . $padding['unit'] ) );
