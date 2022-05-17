@@ -10195,6 +10195,8 @@ __webpack_require__(380);
 
 __webpack_require__(391);
 
+__webpack_require__(395);
+
 /***/ }),
 /* 129 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -44488,6 +44490,7 @@ var attributes = {
     paddingBMobile: {
         type: "number"
     }
+
 };
 exports.default = attributes;
 
@@ -68226,6 +68229,167 @@ var attributes = (_attributes = {
     type: "string",
     default: "h2"
 }), _attributes);
+exports.default = attributes;
+
+/***/ }),
+/* 395 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _icons = __webpack_require__(4);
+
+var _icons2 = _interopRequireDefault(_icons);
+
+var _attributes = __webpack_require__(396);
+
+var _attributes2 = _interopRequireDefault(_attributes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+var registerBlockType = wp.blocks.registerBlockType;
+
+
+registerBlockType("premium/column", {
+    title: __("Column"),
+    icon: React.createElement(_icons2.default, { icon: "" }),
+    category: "premium-blocks",
+    attributes: _attributes2.default,
+    supports: {},
+    example: {},
+    edit: function edit() {
+        return React.createElement(
+            "div",
+            null,
+            "Hello"
+        );
+    },
+    save: function save() {
+        return React.createElement(
+            "div",
+            null,
+            "Hello"
+        );
+    }
+});
+
+/***/ }),
+/* 396 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var attributes = {
+    block_id: {
+        type: 'string'
+    },
+    classMigrate: {
+        type: 'boolean',
+        default: false
+    },
+    columnWidth: {
+        type: "string"
+    },
+    columnWidthTablet: {
+        type: "string"
+    },
+    columnWidthMobile: {
+        type: "string"
+    },
+    containerBack: {
+        type: "string"
+    },
+    backgroundType: {
+        type: "string"
+    },
+    backgroundImageID: {
+        type: "string"
+    },
+    backgroundImageURL: {
+        type: "string"
+    },
+    backgroundRepeat: {
+        type: "string",
+        value: 'no-reapet'
+    },
+    backgroundPosition: {
+        type: "string",
+        value: 'top center'
+    },
+    backgroundSize: {
+        type: "string",
+        value: 'auto'
+    },
+    fixed: {
+        type: 'boolean',
+        default: false
+    },
+    gradientColorOne: {
+        type: "string"
+    },
+    gradientLocationOne: {
+        type: 'string',
+        default: '0'
+    },
+    gradientColorTwo: {
+        type: "string"
+    },
+    gradientLocationTwo: {
+        type: "string"
+    },
+    gradientAngle: {
+        type: 'number',
+        default: '180'
+    },
+    gradientPosition: {
+        type: 'string',
+        default: 'center center'
+    },
+    borderTop: {
+        type: "number"
+    },
+    borderRight: {
+        type: "number"
+    },
+    borderBottom: {
+        type: "number"
+    },
+    borderLeft: {
+        type: "number"
+    },
+
+    shadowColor: {
+        type: 'string'
+    },
+    shadowBlur: {
+        type: 'number',
+        default: '0'
+    },
+    shadowHorizontal: {
+        type: 'number',
+        default: '0'
+    },
+    shadowVertical: {
+        type: "number",
+        default: '0'
+    },
+    shadowPosition: {
+        type: 'string'
+    },
+    columnPadding: {
+        type: 'object'
+    },
+    columnMargin: {
+        type: "object"
+    }
+};
+
 exports.default = attributes;
 
 /***/ })

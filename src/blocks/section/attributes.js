@@ -167,6 +167,7 @@ const attributes = {
     },
     paddingBMobile: {
         type: "number"
-    }
+    },
+
 }
 export default attributes
