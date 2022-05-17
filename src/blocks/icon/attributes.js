@@ -1,4 +1,11 @@
 const attributes = {
+    block_id: {
+        type: "string"
+    },
+    classMigrate: {
+        type: "boolean",
+        default: false
+    },
     iconBorder: {
         type: "boolean",
         default: false,
@@ -23,36 +30,6 @@ const attributes = {
         type: "string",
         default: "none"
     },
-    paddingT: {
-        type: "number"
-    },
-    paddingR: {
-        type: "number"
-    },
-    paddingB: {
-        type: "number"
-    },
-    paddingL: {
-        type: "number"
-    },
-    paddingU: {
-        type: "string",
-        default: "px"
-    },
-
-    marginT: {
-        type: "number"
-    },
-    marginR: {
-        type: "number"
-    },
-    marginB: {
-        type: "number"
-    },
-    marginL: {
-        type: "number"
-    },
-
     borderWidth: {
         type: "number",
         default: "1"
@@ -92,31 +69,6 @@ const attributes = {
     wrapBorderLeft: {
         type: "number",
         default: 1
-    },
-    wrapPaddingT: {
-        type: "number"
-    },
-    wrapPaddingR: {
-        type: "number"
-    },
-    wrapPaddingB: {
-        type: "number"
-    },
-    wrapPaddingL: {
-        type: "number"
-    },
-
-    wrapMarginT: {
-        type: "number"
-    },
-    wrapMarginR: {
-        type: "number"
-    },
-    wrapMarginB: {
-        type: "number"
-    },
-    wrapMarginL: {
-        type: "number"
     },
     iconStyles: {
         type: "array",
@@ -175,27 +127,8 @@ const attributes = {
                 gradientPosition: 'center center'
             }]
     },
-
-    padding: {
-        type: "string",
-        default: "up"
-    },
-    margin: {
-        type: "string",
-        default: "up"
-    },
     background: {
         type: "string"
-    },
-
-
-    wrapPadding: {
-        type: "string",
-        default: "up"
-    },
-    wrapMargin: {
-        type: "string",
-        default: "up"
     },
     urlCheck: {
         type: "boolean"
@@ -222,101 +155,101 @@ const attributes = {
         type: "string",
         default: ""
     },
-    paddingTTablet: {
-        type: "number"
+    iconMargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            unit: "px"
+        }
     },
-    paddingRTablet: {
-        type: "number"
+    iconPadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            unit: "px"
+        }
     },
-    paddingBTablet: {
-        type: "number"
+    wrapMargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            unit: "px"
+        }
     },
-    paddingLTablet: {
-        type: "number"
-    },
-    paddingTMobile: {
-        type: "number"
-    },
-    paddingRMobile: {
-        type: "number"
-    },
-    paddingBMobile: {
-        type: "number"
-    },
-    paddingLMobile: {
-        type: "number"
-    },
-    wrapPaddingTTablet: {
-        type: "number"
-    },
-    wrapPaddingRTablet: {
-        type: "number"
-    },
-    wrapPaddingBTablet: {
-        type: "number"
-    },
-    wrapPaddingLTablet: {
-        type: "number"
-    },
-    wrapPaddingTMobile: {
-        type: "number"
-    },
-    wrapPaddingRMobile: {
-        type: "number"
-    },
-    wrapPaddingBMobile: {
-        type: "number"
-    },
-    wrapPaddingLMobile: {
-        type: "number"
-    },
-    marginTTablet: {
-        type: "number"
-    },
-    marginRTablet: {
-        type: "number"
-    },
-    marginBTablet: {
-        type: "number"
-    },
-    marginLTablet: {
-        type: "number"
-    },
-    marginTMobile: {
-        type: "number"
-    },
-    marginRMobile: {
-        type: "number"
-    },
-    marginBMobile: {
-        type: "number"
-    },
-    marginLMobile: {
-        type: "number"
-    },
-    wrapMarginTTablet: {
-        type: "number"
-    },
-    wrapMarginRTablet: {
-        type: "number"
-    },
-    wrapMarginBTablet: {
-        type: "number"
-    },
-    wrapMarginLTablet: {
-        type: "number"
-    },
-    wrapMarginTMobile: {
-        type: "number"
-    },
-    wrapMarginRMobile: {
-        type: "number"
-    },
-    wrapMarginBMobile: {
-        type: "number"
-    },
-    wrapMarginLMobile: {
-        type: "number"
-    },
+    wrapPadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            unit: "px"
+        }
+    }
 }
 export default attributes;

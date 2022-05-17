@@ -7,17 +7,19 @@ import PremiumBackgroundControl from "../../components/Premium-Background-Contro
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
-const { __ } = wp.i18n;
 import RadioComponent from '../../components/radio-control';
-import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
-import PremiumResponsiveMargin from '../../components/Premium-Responsive-Margin';
 import PremiumShadow from "../../components/PremiumShadow";
+import SpacingControl from '../../components/premium-responsive-spacing'
+
+const { __ } = wp.i18n;
 
 const {
     PanelBody,
     SelectControl,
     ToggleControl,
 } = wp.components;
+
+const { useEffect } = wp.element;
 
 const { InspectorControls, URLInput } = wp.blockEditor;
 
@@ -40,7 +42,13 @@ function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
 const edit = props => {
     const { isSelected, setAttributes, className } = props;
 
+    useEffect(() => {
+        setAttributes({ block_id: props.clientId })
+        setAttributes({ classMigrate: true })
+    }, [])
+
     const {
+        block_id,
         iconBorder,
         wrapBorder,
         iconType,
@@ -49,15 +57,6 @@ const edit = props => {
         hoverEffect,
         iconStyles,
         containerStyles,
-        paddingT,
-        paddingR,
-        paddingB,
-        paddingL,
-        paddingU,
-        marginT,
-        marginR,
-        marginB,
-        marginL,
         borderWidth,
         iconBorderTop,
         iconBorderRight,
@@ -68,14 +67,6 @@ const edit = props => {
         wrapBorderRight,
         wrapBorderBottom,
         wrapBorderLeft,
-        wrapPaddingT,
-        wrapPaddingR,
-        wrapPaddingB,
-        wrapPaddingL,
-        wrapMarginT,
-        wrapMarginR,
-        wrapMarginB,
-        wrapMarginL,
         urlCheck,
         link,
         target,
@@ -83,38 +74,10 @@ const edit = props => {
         hideTablet,
         hideMobile,
         backgroundType,
-        paddingTTablet,
-        paddingRTablet,
-        paddingBTablet,
-        paddingLTablet,
-        paddingTMobile,
-        paddingRMobile,
-        paddingBMobile,
-        paddingLMobile,
-        wrapPaddingTTablet,
-        wrapPaddingRTablet,
-        wrapPaddingBTablet,
-        wrapPaddingLTablet,
-        wrapPaddingTMobile,
-        wrapPaddingRMobile,
-        wrapPaddingBMobile,
-        wrapPaddingLMobile,
-        marginTTablet,
-        marginRTablet,
-        marginBTablet,
-        marginLTablet,
-        marginTMobile,
-        marginRMobile,
-        marginBMobile,
-        marginLMobile,
-        wrapMarginTTablet,
-        wrapMarginRTablet,
-        wrapMarginBTablet,
-        wrapMarginLTablet,
-        wrapMarginTMobile,
-        wrapMarginRMobile,
-        wrapMarginBMobile,
-        wrapMarginLMobile,
+        iconPadding,
+        iconMargin,
+        wrapPadding,
+        wrapMargin
     } = props.attributes;
 
     const EFFECTS = [
@@ -186,22 +149,22 @@ const edit = props => {
     }
 
     const mainClasses = classnames(className, "premium-icon");
-    const iconPaddingTop = getPreviewSize(props.deviceType, paddingT, paddingTTablet, paddingTMobile);
-    const iconPaddingRight = getPreviewSize(props.deviceType, paddingR, paddingRTablet, paddingRMobile);
-    const iconPaddingBottom = getPreviewSize(props.deviceType, paddingB, paddingBTablet, paddingBMobile);
-    const iconPaddingLeft = getPreviewSize(props.deviceType, paddingL, paddingLTablet, paddingLMobile);
-    const iconMarginTop = getPreviewSize(props.deviceType, marginT, marginTTablet, marginTMobile);
-    const iconMarginRight = getPreviewSize(props.deviceType, marginR, marginRTablet, marginRMobile);
-    const iconMarginBottom = getPreviewSize(props.deviceType, marginB, marginBTablet, marginBMobile);
-    const iconMarginLeft = getPreviewSize(props.deviceType, marginL, marginLTablet, marginLMobile);
-    const wrapPaddingTop = getPreviewSize(props.deviceType, wrapPaddingT, wrapPaddingTTablet, wrapPaddingTMobile);
-    const wrapPaddingRight = getPreviewSize(props.deviceType, wrapPaddingR, wrapPaddingRTablet, wrapPaddingRMobile);
-    const wrapPaddingBottom = getPreviewSize(props.deviceType, wrapPaddingB, wrapPaddingBTablet, wrapPaddingBMobile);
-    const wrapPaddingLeft = getPreviewSize(props.deviceType, wrapPaddingL, wrapPaddingLTablet, wrapPaddingLMobile);
-    const wrapMarginTop = getPreviewSize(props.deviceType, wrapMarginT, wrapMarginTTablet, wrapMarginTMobile);
-    const wrapMarginRight = getPreviewSize(props.deviceType, wrapMarginR, wrapMarginRTablet, wrapMarginRMobile);
-    const wrapMarginBottom = getPreviewSize(props.deviceType, wrapMarginB, wrapMarginBTablet, wrapMarginBMobile);
-    const wrapMarginLeft = getPreviewSize(props.deviceType, wrapMarginL, wrapMarginLTablet, wrapMarginLMobile);
+    const iconPaddingTop = getPreviewSize(props.deviceType, iconPadding.Desktop.top, iconPadding.Tablet.top, iconPadding.Mobile.top);
+    const iconPaddingRight = getPreviewSize(props.deviceType, iconPadding.Desktop.right, iconPadding.Tablet.right, iconPadding.Mobile.right);
+    const iconPaddingBottom = getPreviewSize(props.deviceType, iconPadding.Desktop.bottom, iconPadding.Tablet.bottom, iconPadding.Mobile.bottom);
+    const iconPaddingLeft = getPreviewSize(props.deviceType, iconPadding.Desktop.left, iconPadding.Tablet.left, iconPadding.Mobile.left);
+    const iconMarginTop = getPreviewSize(props.deviceType, iconMargin.Desktop.top, iconMargin.Tablet.top, iconMargin.Mobile.top);
+    const iconMarginRight = getPreviewSize(props.deviceType, iconMargin.Desktop.right, iconMargin.Tablet.right, iconMargin.Mobile.right);
+    const iconMarginBottom = getPreviewSize(props.deviceType, iconMargin.Desktop.bottom, iconMargin.Tablet.bottom, iconMargin.Mobile.bottom);
+    const iconMarginLeft = getPreviewSize(props.deviceType, iconMargin.Desktop.left, iconMargin.Tablet.left, iconMargin.Mobile.left);
+    const wrapPaddingTop = getPreviewSize(props.deviceType, wrapPadding.Desktop.top, wrapPadding.Tablet.top, wrapPadding.Mobile.top);
+    const wrapPaddingRight = getPreviewSize(props.deviceType, wrapPadding.Desktop.right, wrapPadding.Tablet.right, wrapPadding.Mobile.right);
+    const wrapPaddingBottom = getPreviewSize(props.deviceType, wrapPadding.Desktop.bottom, wrapPadding.Tablet.bottom, wrapPadding.Mobile.bottom);
+    const wrapPaddingLeft = getPreviewSize(props.deviceType, wrapPadding.Desktop.left, wrapPadding.Tablet.left, wrapPadding.Mobile.left);
+    const wrapMarginTop = getPreviewSize(props.deviceType, wrapMargin.Desktop.top, wrapMargin.Tablet.top, wrapMargin.Mobile.top);
+    const wrapMarginRight = getPreviewSize(props.deviceType, wrapMargin.Desktop.right, wrapMargin.Tablet.right, wrapMargin.Mobile.right);
+    const wrapMarginBottom = getPreviewSize(props.deviceType, wrapMargin.Desktop.bottom, wrapMargin.Tablet.bottom, wrapMargin.Mobile.bottom);
+    const wrapMarginLeft = getPreviewSize(props.deviceType, wrapMargin.Desktop.left, wrapMargin.Tablet.left, wrapMargin.Mobile.left);
     return [
         isSelected && (
             <InspectorControls key={"inspector"}>
@@ -307,123 +270,19 @@ const edit = props => {
                         onChangehHorizontal={newValue => saveIconStyle({ shadowHorizontal: newValue })}
                         onChangeVertical={newValue => saveIconStyle({ shadowVertical: newValue })}
                     />
-                    <PremiumResponsiveMargin
-                        directions={["all"]}
-                        marginTop={marginT}
-                        marginRight={marginR}
-                        marginBottom={marginB}
-                        marginLeft={marginL}
-                        marginTopTablet={marginTTablet}
-                        marginRightTablet={marginRTablet}
-                        marginBottomTablet={marginBTablet}
-                        marginLeftTablet={marginLTablet}
-                        marginTopMobile={marginTMobile}
-                        marginRightMobile={marginRMobile}
-                        marginBottomMobile={marginBMobile}
-                        marginLeftMobile={marginLMobile}
-                        onChangeMarginTop={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ marginT: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ marginTTablet: newValue })
-                                } else {
-                                    setAttributes({ marginTMobile: newValue })
-                                }
-                            }
-                        }
-                        onChangeMarginRight={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ marginR: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ marginRTablet: newValue })
-                                } else {
-                                    setAttributes({ marginRMobile: newValue })
-                                }
-                            }
-                        }
-                        onChangeMarginBottom={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ marginB: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ marginBTablet: newValue })
-                                } else {
-                                    setAttributes({ marginBMobile: newValue })
-                                }
-                            }
-                        }
-                        onChangeMarginLeft={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ marginL: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ marginLTablet: newValue })
-                                } else {
-                                    setAttributes({ marginLMobile: newValue })
-                                }
-                            }
-                        }
-
+                    <SpacingControl
+                        label={__('Margin', 'premium-blocks-for-gutenberg')}
+                        value={iconMargin}
+                        onChange={(value) => setAttributes({ iconMargin: value })}
+                        showUnits={true}
+                        responsive={true}
                     />
-                    <PremiumResponsivePadding
-                        paddingTop={paddingT}
-                        paddingRight={paddingR}
-                        paddingBottom={paddingB}
-                        paddingLeft={paddingL}
-                        paddingTopTablet={paddingTTablet}
-                        paddingRightTablet={paddingRTablet}
-                        paddingBottomTablet={paddingBTablet}
-                        paddingLeftTablet={paddingLTablet}
-                        paddingTopMobile={paddingTMobile}
-                        paddingRightMobile={paddingRMobile}
-                        paddingBottomMobile={paddingBMobile}
-                        paddingLeftMobile={paddingLMobile}
-                        onChangePaddingTop={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ paddingT: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ paddingTTablet: newValue })
-                                } else {
-                                    setAttributes({ paddingTMobile: newValue })
-                                }
-                            }
-                        }
-                        onChangePaddingRight={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ paddingR: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ paddingRTablet: newValue })
-                                } else {
-                                    setAttributes({ paddingRMobile: newValue })
-                                }
-                            }
-                        }
-                        onChangePaddingBottom={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ paddingB: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ paddingBTablet: newValue })
-                                } else {
-                                    setAttributes({ paddingBMobile: newValue })
-                                }
-                            }
-                        }
-                        onChangePaddingLeft={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ paddingL: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ paddingLTablet: newValue })
-                                } else {
-                                    setAttributes({ paddingLMobile: newValue })
-                                }
-                            }
-                        }
+                    <SpacingControl
+                        label={__('Padding', 'premium-blocks-for-gutenberg')}
+                        value={iconPadding}
+                        onChange={(value) => setAttributes({ iconPadding: value })}
+                        showUnits={true}
+                        responsive={true}
                     />
                 </PanelBody>
                 <PanelBody
@@ -486,123 +345,19 @@ const edit = props => {
                         onChangeVertical={newValue => saveContainerStyle({ wrapShadowVertical: newValue })}
                         onChangePosition={newValue => saveContainerStyle({ wrapShadowPosition: newValue })}
                     />
-                    <PremiumResponsiveMargin
-                        directions={["all"]}
-                        marginTop={wrapMarginT}
-                        marginRight={wrapMarginR}
-                        marginBottom={wrapMarginB}
-                        marginLeft={wrapMarginL}
-                        marginTopTablet={wrapMarginTTablet}
-                        marginRightTablet={wrapMarginRTablet}
-                        marginBottomTablet={wrapMarginBTablet}
-                        marginLeftTablet={wrapMarginLTablet}
-                        marginTopMobile={wrapMarginTMobile}
-                        marginRightMobile={wrapMarginRMobile}
-                        marginBottomMobile={wrapMarginBMobile}
-                        marginLeftMobile={wrapMarginLMobile}
-                        onChangeMarginTop={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ wrapMarginT: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ wrapMarginTTablet: newValue })
-                                } else {
-                                    setAttributes({ wrapMarginTMobile: newValue })
-                                }
-                            }
-                        }
-                        onChangeMarginRight={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ wrapMarginR: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ wrapMarginRTablet: newValue })
-                                } else {
-                                    setAttributes({ wrapMarginRMobile: newValue })
-                                }
-                            }
-                        }
-                        onChangeMarginBottom={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ wrapMarginB: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ wrapMarginBTablet: newValue })
-                                } else {
-                                    setAttributes({ wrapMarginBMobile: newValue })
-                                }
-                            }
-                        }
-                        onChangeMarginLeft={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ wrapMarginL: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ wrapMarginLTablet: newValue })
-                                } else {
-                                    setAttributes({ wrapMarginLMobile: newValue })
-                                }
-                            }
-                        }
-
+                    <SpacingControl
+                        label={__('Margin', 'premium-blocks-for-gutenberg')}
+                        value={wrapMargin}
+                        onChange={(value) => setAttributes({ wrapMargin: value })}
+                        showUnits={true}
+                        responsive={true}
                     />
-                    <PremiumResponsivePadding
-                        paddingTop={wrapPaddingT}
-                        paddingRight={wrapPaddingR}
-                        paddingBottom={wrapPaddingB}
-                        paddingLeft={wrapPaddingL}
-                        paddingTopTablet={wrapPaddingTTablet}
-                        paddingRightTablet={wrapPaddingRTablet}
-                        paddingBottomTablet={wrapPaddingBTablet}
-                        paddingLeftTablet={wrapPaddingLTablet}
-                        paddingTopMobile={wrapPaddingTMobile}
-                        paddingRightMobile={wrapPaddingRMobile}
-                        paddingBottomMobile={wrapPaddingBMobile}
-                        paddingLeftMobile={wrapPaddingLMobile}
-                        onChangePaddingTop={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ wrapPaddingT: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ wrapPaddingTTablet: newValue })
-                                } else {
-                                    setAttributes({ wrapPaddingTMobile: newValue })
-                                }
-                            }
-                        }
-                        onChangePaddingRight={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ wrapPaddingR: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ wrapPaddingRTablet: newValue })
-                                } else {
-                                    setAttributes({ wrapPaddingRMobile: newValue })
-                                }
-                            }
-                        }
-                        onChangePaddingBottom={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ wrapPaddingB: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ wrapPaddingBTablet: newValue })
-                                } else {
-                                    setAttributes({ wrapPaddingBMobile: newValue })
-                                }
-                            }
-                        }
-                        onChangePaddingLeft={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ wrapPaddingL: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ wrapPaddingLTablet: newValue })
-                                } else {
-                                    setAttributes({ wrapPaddingLMobile: newValue })
-                                }
-                            }
-                        }
+                    <SpacingControl
+                        label={__('Padding', 'premium-blocks-for-gutenberg')}
+                        value={wrapPadding}
+                        onChange={(value) => setAttributes({ wrapPadding: value })}
+                        showUnits={true}
+                        responsive={true}
                     />
                 </PanelBody>
                 <PremiumResponsiveTabs
@@ -617,70 +372,75 @@ const edit = props => {
         ),
         <div
             className={`${mainClasses}__container ${hideDesktop} ${hideTablet} ${hideMobile}`}
-            style={{
-                textAlign: align,
-                backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
-                backgroundImage: btnbg,
-                backgroundRepeat: containerStyles[0].backgroundRepeat,
-                backgroundPosition: containerStyles[0].backgroundPosition,
-                backgroundSize: containerStyles[0].backgroundSize,
-                backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
-                borderStyle: containerStyles[0].wrapBorderType,
-                borderWidth: wrapBorder
-                    ? `${wrapBorderTop}px ${wrapBorderRight}px ${wrapBorderBottom}px ${wrapBorderLeft}px`
-                    : wrapBorderWidth + "px",
-                borderRadius: containerStyles[0].wrapBorderRadius + "px",
-                borderColor: containerStyles[0].wrapBorderColor,
-                boxShadow: `${containerStyles[0].wrapShadowHorizontal || 0}px ${containerStyles[0].wrapShadowVertical ||
-                    0}px ${containerStyles[0].wrapShadowBlur ||
-                    0}px ${containerStyles[0].wrapShadowColor} ${containerStyles[0].wrapShadowPosition}`,
-                paddingTop: wrapPaddingTop,
-                paddingRight: wrapPaddingRight,
-                paddingBottom: wrapPaddingBottom,
-                paddingLeft: wrapPaddingLeft,
-                marginTop: wrapMarginTop,
-                marginRight: wrapMarginRight,
-                marginBottom: wrapMarginBottom,
-                marginLeft: wrapMarginLeft
-            }}
+            id={`premium-icon-${block_id}`}
         >
-            {iconType === "fa" && 1 != FontAwesomeEnabled && (
-                <p className={`premium-icon__alert`}>
-                    {__("Please Enable Font Awesome Icons from Plugin settings")}
-                </p>
-            )}
-            {(iconType === "dash" || 1 == FontAwesomeEnabled) && (
-                <i
-                    className={`premium-icon ${selectedIcon} premium-icon__${hoverEffect}`}
-                    style={{
-                        color: iconStyles[0].iconColor || "#6ec1e4",
-                        backgroundColor: iconStyles[0].iconBack,
-                        fontSize: (iconStyles[0].iconSize || 50) + iconStyles[0].iconSizeUnit,
-                        paddingTop: iconPaddingTop + paddingU,
-                        paddingRight: iconPaddingRight + paddingU,
-                        paddingBottom: iconPaddingBottom + paddingU,
-                        paddingLeft: iconPaddingLeft + paddingU,
-                        marginTop: iconMarginTop,
-                        marginRight: iconMarginRight,
-                        marginBottom: iconMarginBottom,
-                        marginLeft: iconMarginLeft,
-                        borderStyle: iconStyles[0].borderType,
-                        borderWidth: iconBorder
-                            ? `${iconBorderTop}px ${iconBorderRight}px ${iconBorderBottom}px ${iconBorderLeft}px`
-                            : borderWidth + "px",
-                        borderRadius: iconStyles[0].borderRadius || 100 + "px",
-                        borderColor: iconStyles[0].borderColor,
-                        textShadow: `${iconStyles[0].shadowHorizontal || 0}px ${iconStyles[0].shadowVertical ||
-                            0}px ${iconStyles[0].shadowBlur || 0}px ${iconStyles[0].shadowColor}`
-                    }}
-                />
-            )}
-            {urlCheck && isSelected && (
-                <URLInput
-                    value={link}
-                    onChange={newUrl => setAttributes({ link: newUrl })}
-                />
-            )}
+            <div
+                className={`premium-icon-container`}
+                style={{
+                    textAlign: align,
+                    backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
+                    backgroundImage: btnbg,
+                    backgroundRepeat: containerStyles[0].backgroundRepeat,
+                    backgroundPosition: containerStyles[0].backgroundPosition,
+                    backgroundSize: containerStyles[0].backgroundSize,
+                    backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
+                    borderStyle: containerStyles[0].wrapBorderType,
+                    borderWidth: wrapBorder
+                        ? `${wrapBorderTop}px ${wrapBorderRight}px ${wrapBorderBottom}px ${wrapBorderLeft}px`
+                        : wrapBorderWidth + "px",
+                    borderRadius: containerStyles[0].wrapBorderRadius + "px",
+                    borderColor: containerStyles[0].wrapBorderColor,
+                    boxShadow: `${containerStyles[0].wrapShadowHorizontal || 0}px ${containerStyles[0].wrapShadowVertical ||
+                        0}px ${containerStyles[0].wrapShadowBlur ||
+                        0}px ${containerStyles[0].wrapShadowColor} ${containerStyles[0].wrapShadowPosition}`,
+                    paddingTop: wrapPaddingTop + wrapPadding.unit,
+                    paddingRight: wrapPaddingRight + wrapPadding.unit,
+                    paddingBottom: wrapPaddingBottom + wrapPadding.unit,
+                    paddingLeft: wrapPaddingLeft + wrapPadding.unit,
+                    marginTop: wrapMarginTop + wrapMargin.unit,
+                    marginRight: wrapMarginRight + wrapMargin.unit,
+                    marginBottom: wrapMarginBottom + wrapMargin.unit,
+                    marginLeft: wrapMarginLeft + wrapMargin.unit
+                }}
+            >
+                {iconType === "fa" && 1 != FontAwesomeEnabled && (
+                    <p className={`premium-icon__alert`}>
+                        {__("Please Enable Font Awesome Icons from Plugin settings")}
+                    </p>
+                )}
+                {(iconType === "dash" || 1 == FontAwesomeEnabled) && (
+                    <i
+                        className={`premium-icon ${selectedIcon} premium-icon__${hoverEffect}`}
+                        style={{
+                            color: iconStyles[0].iconColor || "#6ec1e4",
+                            backgroundColor: iconStyles[0].iconBack,
+                            fontSize: (iconStyles[0].iconSize || 50) + iconStyles[0].iconSizeUnit,
+                            paddingTop: iconPaddingTop + iconPadding.unit,
+                            paddingRight: iconPaddingRight + iconPadding.unit,
+                            paddingBottom: iconPaddingBottom + iconPadding.unit,
+                            paddingLeft: iconPaddingLeft + iconPadding.unit,
+                            marginTop: iconMarginTop + iconMargin.unit,
+                            marginRight: iconMarginRight + iconMargin.unit,
+                            marginBottom: iconMarginBottom + iconMargin.unit,
+                            marginLeft: iconMarginLeft + iconMargin.unit,
+                            borderStyle: iconStyles[0].borderType,
+                            borderWidth: iconBorder
+                                ? `${iconBorderTop}px ${iconBorderRight}px ${iconBorderBottom}px ${iconBorderLeft}px`
+                                : borderWidth + "px",
+                            borderRadius: iconStyles[0].borderRadius || 100 + "px",
+                            borderColor: iconStyles[0].borderColor,
+                            textShadow: `${iconStyles[0].shadowHorizontal || 0}px ${iconStyles[0].shadowVertical ||
+                                0}px ${iconStyles[0].shadowBlur || 0}px ${iconStyles[0].shadowColor}`
+                        }}
+                    />
+                )}
+                {urlCheck && isSelected && (
+                    <URLInput
+                        value={link}
+                        onChange={newUrl => setAttributes({ link: newUrl })}
+                    />
+                )}
+            </div>
         </div>
     ];
 };
