@@ -157,9 +157,7 @@ const attributes = {
                 titleShadowColor: '',
                 titleShadowBlur: '0',
                 titleShadowHorizontal: '0',
-                titleShadowVertical: '0',
-                titleMarginT: '',
-                titleMarginB: '',
+                titleShadowVertical: '0'
             }
         ]
     },
@@ -174,9 +172,7 @@ const attributes = {
                 descSizeTablet: 20,
                 descSizeMobile: 20,
                 descLine: '',
-                descWeight: '',
-                descMarginT: '',
-                descMarginB: '',
+                descWeight: ''
             }
         ]
     },
@@ -203,8 +199,6 @@ const attributes = {
                 btnBorderColor: '',
                 btnPadding: '',
                 btnPaddingU: 'px',
-                btnMarginT: '',
-                btnMarginB: '',
                 btnShadowColor: '',
                 btnShadowBlur: '',
                 btnShadowHorizontal: '0',
@@ -268,18 +262,6 @@ const attributes = {
             }
         ]
     },
-    titleMarginT: {
-        type: "number"
-    },
-    titleMarginB: {
-        type: "number"
-    },
-    descMarginT: {
-        type: "number"
-    },
-    descMarginB: {
-        type: "number"
-    },
     btnBorderWidth: {
         type: "number",
         default: "1"
@@ -308,95 +290,125 @@ const attributes = {
     borderLeft: {
         type: "number"
     },
-    btnMarginT: {
-        type: "number"
+    containerMargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            unit: "px"
+        }
     },
-    btnMarginB: {
-        type: "number"
+    containerPadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            unit: "px"
+        }
     },
-    marginT: {
-        type: "number"
+    titleMargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            unit: "px"
+        }
     },
-    marginR: {
-        type: "number"
+    descMargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            unit: "px"
+        }
     },
-    marginB: {
-        type: "number"
-    },
-    marginL: {
-        type: "number"
-    },
-    paddingT: {
-        type: "number"
-    },
-    paddingR: {
-        type: "number"
-    },
-    paddingB: {
-        type: "number"
-    },
-    paddingL: {
-        type: "number"
-    },
-    marginTTablet: {
-        type: "number"
-    },
-    marginRTablet: {
-        type: "number"
-    },
-    marginBTablet: {
-        type: "number"
-    },
-    marginLTablet: {
-        type: "number"
-    },
-    marginTMobile: {
-        type: "number"
-    },
-    marginRMobile: {
-        type: "number"
-    },
-    marginBMobile: {
-        type: "number"
-    },
-    marginLMobile: {
-        type: "number"
-    },
-    paddingTTablet: {
-        type: "number"
-    },
-    paddingRTablet: {
-        type: "number"
-    },
-    paddingBTablet: {
-        type: "number"
-    },
-    paddingLTablet: {
-        type: "number"
-    },
-    paddingTMobile: {
-        type: "number"
-    },
-    paddingRMobile: {
-        type: "number"
-    },
-    paddingBMobile: {
-        type: "number"
-    },
-    paddingLMobile: {
-        type: "number"
-    },
-    btnMarginTTablet: {
-        type: "number"
-    },
-    btnMarginBTablet: {
-        type: "number"
-    },
-    btnMarginTMobile: {
-        type: "number"
-    },
-    btnMarginBMobile: {
-        type: "number"
+    btnMargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            unit: "px"
+        }
     },
 }
 export default attributes;

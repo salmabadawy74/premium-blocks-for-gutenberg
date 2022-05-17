@@ -10,8 +10,7 @@ import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 import RadioComponent from '../../components/radio-control';
-import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
-import PremiumResponsiveMargin from '../../components/Premium-Responsive-Margin';
+import SpacingControl from '../../components/premium-responsive-spacing'
 import WebfontLoader from "../../components/typography/fontLoader"
 import PremiumShadow from "../../components/PremiumShadow";
 
@@ -121,15 +120,10 @@ class edit extends Component {
             hideDesktop,
             hideTablet,
             hideMobile,
-            iconOpacity,
             titleStyles,
             descStyles,
             btnStyles,
             containerStyles,
-            titleMarginT,
-            titleMarginB,
-            descMarginT,
-            descMarginB,
             btnBorderWidth,
             btnBorderTop,
             btnBorderRight,
@@ -139,45 +133,12 @@ class edit extends Component {
             borderRight,
             borderBottom,
             borderLeft,
-            btnMarginT,
-            btnMarginB,
-            marginT,
-            marginR,
-            marginB,
-            marginL,
-            paddingT,
-            paddingR,
-            paddingB,
-            paddingL,
             iconType,
-            marginTTablet,
-            marginRTablet,
-            marginBTablet,
-            marginLTablet,
-            marginTMobile,
-            marginRMobile,
-            marginBMobile,
-            marginLMobile,
-            paddingTTablet,
-            paddingRTablet,
-            paddingBTablet,
-            paddingLTablet,
-            paddingTMobile,
-            paddingRMobile,
-            paddingBMobile,
-            paddingLMobile,
-            btnMarginTTablet,
-            btnMarginBTablet,
-            btnMarginTMobile,
-            btnMarginBMobile,
-            titleMarginTTablet,
-            titleMarginBTablet,
-            titleMarginTMobile,
-            titleMarginBMobile,
-            descMarginTTablet,
-            descMarginBTablet,
-            descMarginTMobile,
-            descMarginBMobile,
+            containerPadding,
+            containerMargin,
+            btnMargin,
+            descMargin,
+            titleMargin
         } = attributes;
 
         const imgIcon = [
@@ -319,20 +280,26 @@ class edit extends Component {
         const titleFontSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titleSizeTablet, titleStyles[0].titleSizeMobile);
         const descriptionFontSize = this.getPreviewSize(this.props.deviceType, descStyles[0].descSize, descStyles[0].descSizeTablet, descStyles[0].descSizeMobile);
         const buttonFontSize = this.getPreviewSize(this.props.deviceType, btnStyles[0].btnSize, btnStyles[0].btnSizeTablet, btnStyles[0].btnSizeMobile);
-        const containerPaddingTop = this.getPreviewSize(this.props.deviceType, paddingT, paddingTTablet, paddingTMobile);
-        const containerPaddingRight = this.getPreviewSize(this.props.deviceType, paddingR, paddingRTablet, paddingRMobile);
-        const containerPaddingBottom = this.getPreviewSize(this.props.deviceType, paddingB, paddingBTablet, paddingBMobile);
-        const containerPaddingLeft = this.getPreviewSize(this.props.deviceType, paddingL, paddingLTablet, paddingLMobile);
-        const containerMarginTop = this.getPreviewSize(this.props.deviceType, marginT, marginTTablet, marginTMobile);
-        const containerMarginRight = this.getPreviewSize(this.props.deviceType, marginR, marginRTablet, marginRMobile);
-        const containerMarginBottom = this.getPreviewSize(this.props.deviceType, marginB, marginBTablet, marginBMobile);
-        const containerMarginLeft = this.getPreviewSize(this.props.deviceType, marginL, marginLTablet, marginLMobile);
-        const titleMarginTop = this.getPreviewSize(this.props.deviceType, titleMarginT, titleMarginTTablet, titleMarginTMobile);
-        const titleMarginBottom = this.getPreviewSize(this.props.deviceType, titleMarginB, titleMarginBTablet, titleMarginBMobile);
-        const descMarginTop = this.getPreviewSize(this.props.deviceType, descMarginT, descMarginTTablet, descMarginTMobile);
-        const descMarginBottom = this.getPreviewSize(this.props.deviceType, descMarginB, descMarginBTablet, descMarginBMobile);
-        const btnMarginTop = this.getPreviewSize(this.props.deviceType, btnMarginT, btnMarginTTablet, btnMarginTMobile);
-        const btnMarginBottom = this.getPreviewSize(this.props.deviceType, btnMarginB, btnMarginBTablet, btnMarginBMobile);
+        const containerPaddingTop = this.getPreviewSize(this.props.deviceType, containerPadding.Desktop.top, containerPadding.Tablet.top, containerPadding.Mobile.top);
+        const containerPaddingRight = this.getPreviewSize(this.props.deviceType, containerPadding.Desktop.right, containerPadding.Tablet.right, containerPadding.Mobile.right);
+        const containerPaddingBottom = this.getPreviewSize(this.props.deviceType, containerPadding.Desktop.bottom, containerPadding.Tablet.bottom, containerPadding.Mobile.bottom);
+        const containerPaddingLeft = this.getPreviewSize(this.props.deviceType, containerPadding.Desktop.left, containerPadding.Tablet.left, containerPadding.Mobile.left);
+        const containerMarginTop = this.getPreviewSize(this.props.deviceType, containerMargin.Desktop.top, containerMargin.Tablet.top, containerMargin.Mobile.top);
+        const containerMarginRight = this.getPreviewSize(this.props.deviceType, containerMargin.Desktop.right, containerMargin.Tablet.right, containerMargin.Mobile.right);
+        const containerMarginBottom = this.getPreviewSize(this.props.deviceType, containerMargin.Desktop.bottom, containerMargin.Tablet.bottom, containerMargin.Mobile.bottom);
+        const containerMarginLeft = this.getPreviewSize(this.props.deviceType, containerMargin.Desktop.left, containerMargin.Tablet.left, containerMargin.Mobile.left);
+        const titleMarginTop = this.getPreviewSize(this.props.deviceType, titleMargin.Desktop.top, titleMargin.Tablet.top, titleMargin.Mobile.top);
+        const titleMarginRight = this.getPreviewSize(this.props.deviceType, titleMargin.Desktop.right, titleMargin.Tablet.right, titleMargin.Mobile.right);
+        const titleMarginBottom = this.getPreviewSize(this.props.deviceType, titleMargin.Desktop.bottom, titleMargin.Tablet.bottom, titleMargin.Mobile.bottom);
+        const titlePaddingLeft = this.getPreviewSize(this.props.deviceType, titleMargin.Desktop.left, titleMargin.Tablet.left, titleMargin.Mobile.left);
+        const descMarginTop = this.getPreviewSize(this.props.deviceType, descMargin.Desktop.top, descMargin.Tablet.top, descMargin.Mobile.top);
+        const descMarginRight = this.getPreviewSize(this.props.deviceType, descMargin.Desktop.right, descMargin.Tablet.right, descMargin.Mobile.right);
+        const descMarginBottom = this.getPreviewSize(this.props.deviceType, descMargin.Desktop.bottom, descMargin.Tablet.bottom, descMargin.Mobile.bottom);
+        const descMarginLeft = this.getPreviewSize(this.props.deviceType, descMargin.Desktop.left, descMargin.Tablet.left, descMargin.Mobile.left);
+        const btnMarginTop = this.getPreviewSize(this.props.deviceType, btnMargin.Desktop.top, btnMargin.Tablet.top, btnMargin.Mobile.top);
+        const btnMarginRight = this.getPreviewSize(this.props.deviceType, btnMargin.Desktop.right, btnMargin.Tablet.right, btnMargin.Mobile.right);
+        const btnMarginBottom = this.getPreviewSize(this.props.deviceType, btnMargin.Desktop.bottom, btnMargin.Tablet.bottom, btnMargin.Mobile.bottom);
+        const btnMarginLeft = this.getPreviewSize(this.props.deviceType, btnMargin.Desktop.left, btnMargin.Tablet.left, btnMargin.Mobile.left);
 
         return [
             isSelected && (
@@ -520,37 +487,12 @@ class edit extends Component {
                                 onChangehHorizontal={newValue => saveTitleStyle({ titleShadowHorizontal: newValue || 0 })}
                                 onChangeVertical={newValue => saveTitleStyle({ titleShadowVertical: newValue || 0 })}
                             />
-                            <PremiumResponsiveMargin
-                                directions={["top", "bottom"]}
-                                marginTop={titleMarginT}
-                                marginBottom={titleMarginB}
-                                marginTopTablet={titleMarginTTablet}
-                                marginBottomTablet={titleMarginBTablet}
-                                marginTopMobile={titleMarginTMobile}
-                                marginBottomMobile={titleMarginBMobile}
-                                onChangeMarginTop={
-                                    (device, newValue) => {
-                                        if (device === "desktop") {
-                                            setAttributes({ titleMarginT: newValue })
-                                        } else if (device === "tablet") {
-                                            setAttributes({ titleMarginTTablet: newValue })
-                                        } else {
-                                            setAttributes({ titleMarginTMobile: newValue })
-                                        }
-                                    }
-                                }
-                                onChangeMarginBottom={
-                                    (device, newValue) => {
-                                        if (device === "desktop") {
-                                            setAttributes({ titleMarginB: newValue })
-                                        } else if (device === "tablet") {
-                                            setAttributes({ titleMarginBTablet: newValue })
-                                        } else {
-                                            setAttributes({ titleMarginBMobile: newValue })
-                                        }
-                                    }
-                                }
-
+                            <SpacingControl
+                                label={__('Margin', 'premium-blocks-for-gutenberg')}
+                                value={titleMargin}
+                                onChange={(value) => setAttributes({ titleMargin: value })}
+                                showUnits={false}
+                                responsive={true}
                             />
                         </PanelBody>
                     )}
@@ -580,36 +522,12 @@ class edit extends Component {
                                 onChangeLine={newValue => saveDescriptionStyle({ descLine: newValue })}
                                 onChangeFamily={(fontFamily) => saveDescriptionStyle({ descFont: fontFamily })}
                             />
-                            <PremiumResponsiveMargin
-                                directions={["top", "bottom"]}
-                                marginTop={descMarginT}
-                                marginBottom={descMarginB}
-                                marginTopTablet={descMarginTTablet}
-                                marginBottomTablet={descMarginBTablet}
-                                marginTopMobile={descMarginTMobile}
-                                marginBottomMobile={descMarginBMobile}
-                                onChangeMarginTop={
-                                    (device, newValue) => {
-                                        if (device === "desktop") {
-                                            setAttributes({ descMarginT: newValue })
-                                        } else if (device === "tablet") {
-                                            setAttributes({ descMarginTTablet: newValue })
-                                        } else {
-                                            setAttributes({ descMarginTMobile: newValue })
-                                        }
-                                    }
-                                }
-                                onChangeMarginBottom={
-                                    (device, newValue) => {
-                                        if (device === "desktop") {
-                                            setAttributes({ descMarginB: newValue })
-                                        } else if (device === "tablet") {
-                                            setAttributes({ descMarginBTablet: newValue })
-                                        } else {
-                                            setAttributes({ descMarginBMobile: newValue })
-                                        }
-                                    }
-                                }
+                            <SpacingControl
+                                label={__('Margin', 'premium-blocks-for-gutenberg')}
+                                value={descMargin}
+                                onChange={(value) => setAttributes({ descMargin: value })}
+                                showUnits={false}
+                                responsive={true}
                             />
                         </PanelBody>
                     )}
@@ -707,38 +625,12 @@ class edit extends Component {
                                 onChangeUnit={newValue => saveButtonStyle({ btnPaddingU: newValue })}
                                 unit={btnStyles[0].btnPaddingU}
                             />
-                            <PremiumResponsiveMargin
-                                directions={["top", "bottom"]}
-                                marginTop={btnMarginT}
-                                marginBottom={btnMarginB}
-                                marginTopTablet={btnMarginTTablet}
-                                marginBottomTablet={btnMarginBTablet}
-                                marginTopMobile={btnMarginTMobile}
-                                marginBottomMobile={btnMarginBMobile}
-                                onChangeMarginTop={
-                                    (device, newValue) => {
-                                        if (device === "desktop") {
-                                            setAttributes({ btnMarginT: newValue })
-                                        } else if (device === "tablet") {
-                                            setAttributes({ btnMarginTTablet: newValue })
-                                        } else {
-                                            setAttributes({ btnMarginTMobile: newValue })
-                                        }
-                                        setAttributes({ btnPadUpdate: true })
-                                    }
-                                }
-                                onChangeMarginBottom={
-                                    (device, newValue) => {
-                                        if (device === "desktop") {
-                                            setAttributes({ btnMarginB: newValue })
-                                        } else if (device === "tablet") {
-                                            setAttributes({ btnMarginBTablet: newValue })
-                                        } else {
-                                            setAttributes({ btnMarginBMobile: newValue })
-                                        }
-                                        setAttributes({ btnPadUpdate: true })
-                                    }
-                                }
+                            <SpacingControl
+                                label={__('Margin', 'premium-blocks-for-gutenberg')}
+                                value={btnMargin}
+                                onChange={(value) => setAttributes({ btnMargin: value })}
+                                showUnits={false}
+                                responsive={true}
                             />
 
                         </PanelBody>
@@ -817,127 +709,19 @@ class edit extends Component {
                             onChangeVertical={newValue => saveContainerStyle({ hoverShadowVertical: newValue })}
                             onChangePosition={newValue => saveContainerStyle({ hoverShadowPosition: newValue })}
                         />
-                        <PremiumResponsiveMargin
-                            directions={["all"]}
-                            marginTop={marginT}
-                            marginRight={marginR}
-                            marginBottom={marginB}
-                            marginLeft={marginL}
-                            marginTopTablet={marginTTablet}
-                            marginRightTablet={marginRTablet}
-                            marginBottomTablet={marginBTablet}
-                            marginLeftTablet={marginLTablet}
-                            marginTopMobile={marginTMobile}
-                            marginRightMobile={marginRMobile}
-                            marginBottomMobile={marginBMobile}
-                            marginLeftMobile={marginLMobile}
-                            onChangeMarginTop={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ marginT: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ marginTTablet: newValue })
-                                    } else {
-                                        setAttributes({ marginTMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangeMarginRight={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ marginR: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ marginRTablet: newValue })
-                                    } else {
-                                        setAttributes({ marginRMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangeMarginBottom={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ marginB: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ marginBTablet: newValue })
-                                    } else {
-                                        setAttributes({ marginBMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangeMarginLeft={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ marginL: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ marginLTablet: newValue })
-                                    } else {
-                                        setAttributes({ marginLMobile: newValue })
-                                    }
-                                }
-                            }
+                        <SpacingControl
+                            label={__('Margin', 'premium-blocks-for-gutenberg')}
+                            value={containerMargin}
+                            onChange={(value) => setAttributes({ containerMargin: value })}
+                            showUnits={false}
+                            responsive={true}
                         />
-                        <PremiumResponsivePadding
-                            paddingTop={paddingT}
-                            paddingRight={paddingR}
-                            paddingBottom={paddingB}
-                            paddingLeft={paddingL}
-                            paddingTopTablet={paddingTTablet}
-                            paddingRightTablet={paddingRTablet}
-                            paddingBottomTablet={paddingBTablet}
-                            paddingLeftTablet={paddingLTablet}
-                            paddingTopMobile={paddingTMobile}
-                            paddingRightMobile={paddingRMobile}
-                            paddingBottomMobile={paddingBMobile}
-                            paddingLeftMobile={paddingLMobile}
+                        <SpacingControl
+                            label={__('Padding', 'premium-blocks-for-gutenberg')}
+                            value={containerPadding}
+                            onChange={(value) => setAttributes({ containerPadding: value })}
                             showUnits={true}
-                            selectedUnit={containerStyles[0].paddingU}
-                            onChangePadSizeUnit={newvalue =>
-                                saveContainerStyle({ paddingU: newvalue })
-                            }
-                            onChangePaddingTop={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ paddingT: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ paddingTTablet: newValue })
-                                    } else {
-                                        setAttributes({ paddingTMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangePaddingRight={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ paddingR: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ paddingRTablet: newValue })
-                                    } else {
-                                        setAttributes({ paddingRMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangePaddingBottom={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ paddingB: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ paddingBTablet: newValue })
-                                    } else {
-                                        setAttributes({ paddingBMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangePaddingLeft={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ paddingL: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ paddingLTablet: newValue })
-                                    } else {
-                                        setAttributes({ paddingLMobile: newValue })
-                                    }
-                                }
-                            }
+                            responsive={true}
                         />
                     </PanelBody>
                     <PanelBody
@@ -1086,10 +870,10 @@ class edit extends Component {
                     marginRight: containerMarginRight,
                     marginBottom: containerMarginBottom,
                     marginLeft: containerMarginLeft,
-                    paddingTop: containerPaddingTop + containerStyles[0].paddingU,
-                    paddingRight: containerPaddingRight + containerStyles[0].paddingU,
-                    paddingBottom: containerPaddingBottom + containerStyles[0].paddingU,
-                    paddingLeft: containerPaddingLeft + containerStyles[0].paddingU,
+                    paddingTop: containerPaddingTop && containerPaddingTop + (containerPadding.unit ? containerPadding.unit : 'px'),
+                    paddingRight: containerPaddingRight && containerPaddingRight + (containerPadding.unit ? containerPadding.unit : 'px'),
+                    paddingBottom: containerPaddingBottom && containerPaddingBottom + (containerPadding.unit ? containerPadding.unit : 'px'),
+                    paddingLeft: containerPaddingLeft && containerPaddingLeft + (containerPadding.unit ? containerPadding.unit : 'px'),
                     boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px ${containerStyles[0].shadowColor} ${containerStyles[0].shadowPosition}`,
                     backgroundColor: containerStyles[0].backColor,
                     backgroundImage: containerStyles[0].imageURL ? `url('${containerStyles[0].imageURL}')` : 'none',
@@ -1163,7 +947,9 @@ class edit extends Component {
                             className={`premium-icon-box__title_wrap`}
                             style={{
                                 marginTop: titleMarginTop,
-                                marginBottom: titleMarginBottom
+                                marginRight: titleMarginRight,
+                                marginBottom: titleMarginBottom,
+                                marginLeft: titlePaddingLeft,
                             }}
                         >
                             <RichText
@@ -1192,7 +978,9 @@ class edit extends Component {
                             className={`premium-icon-box__desc_wrap`}
                             style={{
                                 marginTop: descMarginTop,
-                                marginBottom: descMarginBottom
+                                marginRight: descMarginRight,
+                                marginBottom: descMarginBottom,
+                                marginLeft: descMarginLeft,
                             }}
                         >
                             <RichText
@@ -1218,7 +1006,9 @@ class edit extends Component {
                             className={`premium-icon-box__btn_wrap premium-button__${btnEffect} premium-button__${effectDir}`}
                             style={{
                                 marginTop: btnMarginTop,
-                                marginBottom: btnMarginBottom
+                                marginRight: btnMarginRight,
+                                marginBottom: btnMarginBottom,
+                                marginLeft: btnMarginLeft,
                             }}
                         >
                             <RichText
