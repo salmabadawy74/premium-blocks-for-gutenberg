@@ -32203,13 +32203,9 @@ var _radioControl = __webpack_require__(10);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
-var _PremiumResponsivePadding = __webpack_require__(12);
+var _premiumResponsiveSpacing = __webpack_require__(409);
 
-var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
-
-var _PremiumResponsiveMargin = __webpack_require__(31);
-
-var _PremiumResponsiveMargin2 = _interopRequireDefault(_PremiumResponsiveMargin);
+var _premiumResponsiveSpacing2 = _interopRequireDefault(_premiumResponsiveSpacing);
 
 var _fontLoader = __webpack_require__(21);
 
@@ -32360,15 +32356,10 @@ var edit = function (_Component) {
                 hideDesktop = attributes.hideDesktop,
                 hideTablet = attributes.hideTablet,
                 hideMobile = attributes.hideMobile,
-                iconOpacity = attributes.iconOpacity,
                 titleStyles = attributes.titleStyles,
                 descStyles = attributes.descStyles,
                 btnStyles = attributes.btnStyles,
                 containerStyles = attributes.containerStyles,
-                titleMarginT = attributes.titleMarginT,
-                titleMarginB = attributes.titleMarginB,
-                descMarginT = attributes.descMarginT,
-                descMarginB = attributes.descMarginB,
                 btnBorderWidth = attributes.btnBorderWidth,
                 btnBorderTop = attributes.btnBorderTop,
                 btnBorderRight = attributes.btnBorderRight,
@@ -32378,45 +32369,12 @@ var edit = function (_Component) {
                 borderRight = attributes.borderRight,
                 borderBottom = attributes.borderBottom,
                 borderLeft = attributes.borderLeft,
-                btnMarginT = attributes.btnMarginT,
-                btnMarginB = attributes.btnMarginB,
-                marginT = attributes.marginT,
-                marginR = attributes.marginR,
-                marginB = attributes.marginB,
-                marginL = attributes.marginL,
-                paddingT = attributes.paddingT,
-                paddingR = attributes.paddingR,
-                paddingB = attributes.paddingB,
-                paddingL = attributes.paddingL,
                 iconType = attributes.iconType,
-                marginTTablet = attributes.marginTTablet,
-                marginRTablet = attributes.marginRTablet,
-                marginBTablet = attributes.marginBTablet,
-                marginLTablet = attributes.marginLTablet,
-                marginTMobile = attributes.marginTMobile,
-                marginRMobile = attributes.marginRMobile,
-                marginBMobile = attributes.marginBMobile,
-                marginLMobile = attributes.marginLMobile,
-                paddingTTablet = attributes.paddingTTablet,
-                paddingRTablet = attributes.paddingRTablet,
-                paddingBTablet = attributes.paddingBTablet,
-                paddingLTablet = attributes.paddingLTablet,
-                paddingTMobile = attributes.paddingTMobile,
-                paddingRMobile = attributes.paddingRMobile,
-                paddingBMobile = attributes.paddingBMobile,
-                paddingLMobile = attributes.paddingLMobile,
-                btnMarginTTablet = attributes.btnMarginTTablet,
-                btnMarginBTablet = attributes.btnMarginBTablet,
-                btnMarginTMobile = attributes.btnMarginTMobile,
-                btnMarginBMobile = attributes.btnMarginBMobile,
-                titleMarginTTablet = attributes.titleMarginTTablet,
-                titleMarginBTablet = attributes.titleMarginBTablet,
-                titleMarginTMobile = attributes.titleMarginTMobile,
-                titleMarginBMobile = attributes.titleMarginBMobile,
-                descMarginTTablet = attributes.descMarginTTablet,
-                descMarginBTablet = attributes.descMarginBTablet,
-                descMarginTMobile = attributes.descMarginTMobile,
-                descMarginBMobile = attributes.descMarginBMobile;
+                containerPadding = attributes.containerPadding,
+                containerMargin = attributes.containerMargin,
+                btnMargin = attributes.btnMargin,
+                descMargin = attributes.descMargin,
+                titleMargin = attributes.titleMargin;
 
 
             var imgIcon = [{
@@ -32522,20 +32480,26 @@ var edit = function (_Component) {
             var titleFontSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titleSizeTablet, titleStyles[0].titleSizeMobile);
             var descriptionFontSize = this.getPreviewSize(this.props.deviceType, descStyles[0].descSize, descStyles[0].descSizeTablet, descStyles[0].descSizeMobile);
             var buttonFontSize = this.getPreviewSize(this.props.deviceType, btnStyles[0].btnSize, btnStyles[0].btnSizeTablet, btnStyles[0].btnSizeMobile);
-            var containerPaddingTop = this.getPreviewSize(this.props.deviceType, paddingT, paddingTTablet, paddingTMobile);
-            var containerPaddingRight = this.getPreviewSize(this.props.deviceType, paddingR, paddingRTablet, paddingRMobile);
-            var containerPaddingBottom = this.getPreviewSize(this.props.deviceType, paddingB, paddingBTablet, paddingBMobile);
-            var containerPaddingLeft = this.getPreviewSize(this.props.deviceType, paddingL, paddingLTablet, paddingLMobile);
-            var containerMarginTop = this.getPreviewSize(this.props.deviceType, marginT, marginTTablet, marginTMobile);
-            var containerMarginRight = this.getPreviewSize(this.props.deviceType, marginR, marginRTablet, marginRMobile);
-            var containerMarginBottom = this.getPreviewSize(this.props.deviceType, marginB, marginBTablet, marginBMobile);
-            var containerMarginLeft = this.getPreviewSize(this.props.deviceType, marginL, marginLTablet, marginLMobile);
-            var titleMarginTop = this.getPreviewSize(this.props.deviceType, titleMarginT, titleMarginTTablet, titleMarginTMobile);
-            var titleMarginBottom = this.getPreviewSize(this.props.deviceType, titleMarginB, titleMarginBTablet, titleMarginBMobile);
-            var descMarginTop = this.getPreviewSize(this.props.deviceType, descMarginT, descMarginTTablet, descMarginTMobile);
-            var descMarginBottom = this.getPreviewSize(this.props.deviceType, descMarginB, descMarginBTablet, descMarginBMobile);
-            var btnMarginTop = this.getPreviewSize(this.props.deviceType, btnMarginT, btnMarginTTablet, btnMarginTMobile);
-            var btnMarginBottom = this.getPreviewSize(this.props.deviceType, btnMarginB, btnMarginBTablet, btnMarginBMobile);
+            var containerPaddingTop = this.getPreviewSize(this.props.deviceType, containerPadding.Desktop.top, containerPadding.Tablet.top, containerPadding.Mobile.top);
+            var containerPaddingRight = this.getPreviewSize(this.props.deviceType, containerPadding.Desktop.right, containerPadding.Tablet.right, containerPadding.Mobile.right);
+            var containerPaddingBottom = this.getPreviewSize(this.props.deviceType, containerPadding.Desktop.bottom, containerPadding.Tablet.bottom, containerPadding.Mobile.bottom);
+            var containerPaddingLeft = this.getPreviewSize(this.props.deviceType, containerPadding.Desktop.left, containerPadding.Tablet.left, containerPadding.Mobile.left);
+            var containerMarginTop = this.getPreviewSize(this.props.deviceType, containerMargin.Desktop.top, containerMargin.Tablet.top, containerMargin.Mobile.top);
+            var containerMarginRight = this.getPreviewSize(this.props.deviceType, containerMargin.Desktop.right, containerMargin.Tablet.right, containerMargin.Mobile.right);
+            var containerMarginBottom = this.getPreviewSize(this.props.deviceType, containerMargin.Desktop.bottom, containerMargin.Tablet.bottom, containerMargin.Mobile.bottom);
+            var containerMarginLeft = this.getPreviewSize(this.props.deviceType, containerMargin.Desktop.left, containerMargin.Tablet.left, containerMargin.Mobile.left);
+            var titleMarginTop = this.getPreviewSize(this.props.deviceType, titleMargin.Desktop.top, titleMargin.Tablet.top, titleMargin.Mobile.top);
+            var titleMarginRight = this.getPreviewSize(this.props.deviceType, titleMargin.Desktop.right, titleMargin.Tablet.right, titleMargin.Mobile.right);
+            var titleMarginBottom = this.getPreviewSize(this.props.deviceType, titleMargin.Desktop.bottom, titleMargin.Tablet.bottom, titleMargin.Mobile.bottom);
+            var titlePaddingLeft = this.getPreviewSize(this.props.deviceType, titleMargin.Desktop.left, titleMargin.Tablet.left, titleMargin.Mobile.left);
+            var descMarginTop = this.getPreviewSize(this.props.deviceType, descMargin.Desktop.top, descMargin.Tablet.top, descMargin.Mobile.top);
+            var descMarginRight = this.getPreviewSize(this.props.deviceType, descMargin.Desktop.right, descMargin.Tablet.right, descMargin.Mobile.right);
+            var descMarginBottom = this.getPreviewSize(this.props.deviceType, descMargin.Desktop.bottom, descMargin.Tablet.bottom, descMargin.Mobile.bottom);
+            var descMarginLeft = this.getPreviewSize(this.props.deviceType, descMargin.Desktop.left, descMargin.Tablet.left, descMargin.Mobile.left);
+            var btnMarginTop = this.getPreviewSize(this.props.deviceType, btnMargin.Desktop.top, btnMargin.Tablet.top, btnMargin.Mobile.top);
+            var btnMarginRight = this.getPreviewSize(this.props.deviceType, btnMargin.Desktop.right, btnMargin.Tablet.right, btnMargin.Mobile.right);
+            var btnMarginBottom = this.getPreviewSize(this.props.deviceType, btnMargin.Desktop.bottom, btnMargin.Tablet.bottom, btnMargin.Mobile.bottom);
+            var btnMarginLeft = this.getPreviewSize(this.props.deviceType, btnMargin.Desktop.left, btnMargin.Tablet.left, btnMargin.Mobile.left);
 
             return [isSelected && React.createElement(
                 BlockControls,
@@ -32775,33 +32739,14 @@ var edit = function (_Component) {
                             return saveTitleStyle({ titleShadowVertical: newValue || 0 });
                         }
                     }),
-                    React.createElement(_PremiumResponsiveMargin2.default, {
-                        directions: ["top", "bottom"],
-                        marginTop: titleMarginT,
-                        marginBottom: titleMarginB,
-                        marginTopTablet: titleMarginTTablet,
-                        marginBottomTablet: titleMarginBTablet,
-                        marginTopMobile: titleMarginTMobile,
-                        marginBottomMobile: titleMarginBMobile,
-                        onChangeMarginTop: function onChangeMarginTop(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ titleMarginT: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ titleMarginTTablet: newValue });
-                            } else {
-                                setAttributes({ titleMarginTMobile: newValue });
-                            }
+                    React.createElement(_premiumResponsiveSpacing2.default, {
+                        label: __('Margin', 'premium-blocks-for-gutenberg'),
+                        value: titleMargin,
+                        onChange: function onChange(value) {
+                            return setAttributes({ titleMargin: value });
                         },
-                        onChangeMarginBottom: function onChangeMarginBottom(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ titleMarginB: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ titleMarginBTablet: newValue });
-                            } else {
-                                setAttributes({ titleMarginBMobile: newValue });
-                            }
-                        }
-
+                        showUnits: false,
+                        responsive: true
                     })
                 ),
                 descChecked && React.createElement(
@@ -32843,32 +32788,14 @@ var edit = function (_Component) {
                             return saveDescriptionStyle({ descFont: fontFamily });
                         }
                     }),
-                    React.createElement(_PremiumResponsiveMargin2.default, {
-                        directions: ["top", "bottom"],
-                        marginTop: descMarginT,
-                        marginBottom: descMarginB,
-                        marginTopTablet: descMarginTTablet,
-                        marginBottomTablet: descMarginBTablet,
-                        marginTopMobile: descMarginTMobile,
-                        marginBottomMobile: descMarginBMobile,
-                        onChangeMarginTop: function onChangeMarginTop(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ descMarginT: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ descMarginTTablet: newValue });
-                            } else {
-                                setAttributes({ descMarginTMobile: newValue });
-                            }
+                    React.createElement(_premiumResponsiveSpacing2.default, {
+                        label: __('Margin', 'premium-blocks-for-gutenberg'),
+                        value: descMargin,
+                        onChange: function onChange(value) {
+                            return setAttributes({ descMargin: value });
                         },
-                        onChangeMarginBottom: function onChangeMarginBottom(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ descMarginB: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ descMarginBTablet: newValue });
-                            } else {
-                                setAttributes({ descMarginBMobile: newValue });
-                            }
-                        }
+                        showUnits: false,
+                        responsive: true
                     })
                 ),
                 btnChecked && React.createElement(
@@ -33007,34 +32934,14 @@ var edit = function (_Component) {
                         },
                         unit: btnStyles[0].btnPaddingU
                     }),
-                    React.createElement(_PremiumResponsiveMargin2.default, {
-                        directions: ["top", "bottom"],
-                        marginTop: btnMarginT,
-                        marginBottom: btnMarginB,
-                        marginTopTablet: btnMarginTTablet,
-                        marginBottomTablet: btnMarginBTablet,
-                        marginTopMobile: btnMarginTMobile,
-                        marginBottomMobile: btnMarginBMobile,
-                        onChangeMarginTop: function onChangeMarginTop(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ btnMarginT: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ btnMarginTTablet: newValue });
-                            } else {
-                                setAttributes({ btnMarginTMobile: newValue });
-                            }
-                            setAttributes({ btnPadUpdate: true });
+                    React.createElement(_premiumResponsiveSpacing2.default, {
+                        label: __('Margin', 'premium-blocks-for-gutenberg'),
+                        value: btnMargin,
+                        onChange: function onChange(value) {
+                            return setAttributes({ btnMargin: value });
                         },
-                        onChangeMarginBottom: function onChangeMarginBottom(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ btnMarginB: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ btnMarginBTablet: newValue });
-                            } else {
-                                setAttributes({ btnMarginBMobile: newValue });
-                            }
-                            setAttributes({ btnPadUpdate: true });
-                        }
+                        showUnits: false,
+                        responsive: true
                     })
                 ),
                 React.createElement(
@@ -33153,111 +33060,23 @@ var edit = function (_Component) {
                             return saveContainerStyle({ hoverShadowPosition: newValue });
                         }
                     }),
-                    React.createElement(_PremiumResponsiveMargin2.default, {
-                        directions: ["all"],
-                        marginTop: marginT,
-                        marginRight: marginR,
-                        marginBottom: marginB,
-                        marginLeft: marginL,
-                        marginTopTablet: marginTTablet,
-                        marginRightTablet: marginRTablet,
-                        marginBottomTablet: marginBTablet,
-                        marginLeftTablet: marginLTablet,
-                        marginTopMobile: marginTMobile,
-                        marginRightMobile: marginRMobile,
-                        marginBottomMobile: marginBMobile,
-                        marginLeftMobile: marginLMobile,
-                        onChangeMarginTop: function onChangeMarginTop(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ marginT: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ marginTTablet: newValue });
-                            } else {
-                                setAttributes({ marginTMobile: newValue });
-                            }
+                    React.createElement(_premiumResponsiveSpacing2.default, {
+                        label: __('Margin', 'premium-blocks-for-gutenberg'),
+                        value: containerMargin,
+                        onChange: function onChange(value) {
+                            return setAttributes({ containerMargin: value });
                         },
-                        onChangeMarginRight: function onChangeMarginRight(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ marginR: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ marginRTablet: newValue });
-                            } else {
-                                setAttributes({ marginRMobile: newValue });
-                            }
-                        },
-                        onChangeMarginBottom: function onChangeMarginBottom(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ marginB: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ marginBTablet: newValue });
-                            } else {
-                                setAttributes({ marginBMobile: newValue });
-                            }
-                        },
-                        onChangeMarginLeft: function onChangeMarginLeft(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ marginL: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ marginLTablet: newValue });
-                            } else {
-                                setAttributes({ marginLMobile: newValue });
-                            }
-                        }
+                        showUnits: false,
+                        responsive: true
                     }),
-                    React.createElement(_PremiumResponsivePadding2.default, {
-                        paddingTop: paddingT,
-                        paddingRight: paddingR,
-                        paddingBottom: paddingB,
-                        paddingLeft: paddingL,
-                        paddingTopTablet: paddingTTablet,
-                        paddingRightTablet: paddingRTablet,
-                        paddingBottomTablet: paddingBTablet,
-                        paddingLeftTablet: paddingLTablet,
-                        paddingTopMobile: paddingTMobile,
-                        paddingRightMobile: paddingRMobile,
-                        paddingBottomMobile: paddingBMobile,
-                        paddingLeftMobile: paddingLMobile,
+                    React.createElement(_premiumResponsiveSpacing2.default, {
+                        label: __('Padding', 'premium-blocks-for-gutenberg'),
+                        value: containerPadding,
+                        onChange: function onChange(value) {
+                            return setAttributes({ containerPadding: value });
+                        },
                         showUnits: true,
-                        selectedUnit: containerStyles[0].paddingU,
-                        onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
-                            return saveContainerStyle({ paddingU: newvalue });
-                        },
-                        onChangePaddingTop: function onChangePaddingTop(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ paddingT: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ paddingTTablet: newValue });
-                            } else {
-                                setAttributes({ paddingTMobile: newValue });
-                            }
-                        },
-                        onChangePaddingRight: function onChangePaddingRight(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ paddingR: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ paddingRTablet: newValue });
-                            } else {
-                                setAttributes({ paddingRMobile: newValue });
-                            }
-                        },
-                        onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ paddingB: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ paddingBTablet: newValue });
-                            } else {
-                                setAttributes({ paddingBMobile: newValue });
-                            }
-                        },
-                        onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ paddingL: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ paddingLTablet: newValue });
-                            } else {
-                                setAttributes({ paddingLMobile: newValue });
-                            }
-                        }
+                        responsive: true
                     })
                 ),
                 React.createElement(
@@ -33426,10 +33245,10 @@ var edit = function (_Component) {
                         marginRight: containerMarginRight,
                         marginBottom: containerMarginBottom,
                         marginLeft: containerMarginLeft,
-                        paddingTop: containerPaddingTop + containerStyles[0].paddingU,
-                        paddingRight: containerPaddingRight + containerStyles[0].paddingU,
-                        paddingBottom: containerPaddingBottom + containerStyles[0].paddingU,
-                        paddingLeft: containerPaddingLeft + containerStyles[0].paddingU,
+                        paddingTop: containerPaddingTop && containerPaddingTop + (containerPadding.unit ? containerPadding.unit : 'px'),
+                        paddingRight: containerPaddingRight && containerPaddingRight + (containerPadding.unit ? containerPadding.unit : 'px'),
+                        paddingBottom: containerPaddingBottom && containerPaddingBottom + (containerPadding.unit ? containerPadding.unit : 'px'),
+                        paddingLeft: containerPaddingLeft && containerPaddingLeft + (containerPadding.unit ? containerPadding.unit : 'px'),
                         boxShadow: containerStyles[0].shadowHorizontal + "px " + containerStyles[0].shadowVertical + "px " + containerStyles[0].shadowBlur + "px " + containerStyles[0].shadowColor + " " + containerStyles[0].shadowPosition,
                         backgroundColor: containerStyles[0].backColor,
                         backgroundImage: containerStyles[0].imageURL ? "url('" + containerStyles[0].imageURL + "')" : 'none',
@@ -33486,7 +33305,9 @@ var edit = function (_Component) {
                             className: "premium-icon-box__title_wrap",
                             style: {
                                 marginTop: titleMarginTop,
-                                marginBottom: titleMarginBottom
+                                marginRight: titleMarginRight,
+                                marginBottom: titleMarginBottom,
+                                marginLeft: titlePaddingLeft
                             }
                         },
                         React.createElement(RichText, {
@@ -33517,7 +33338,9 @@ var edit = function (_Component) {
                             className: "premium-icon-box__desc_wrap",
                             style: {
                                 marginTop: descMarginTop,
-                                marginBottom: descMarginBottom
+                                marginRight: descMarginRight,
+                                marginBottom: descMarginBottom,
+                                marginLeft: descMarginLeft
                             }
                         },
                         React.createElement(RichText, {
@@ -33545,7 +33368,9 @@ var edit = function (_Component) {
                             className: "premium-icon-box__btn_wrap premium-button__" + btnEffect + " premium-button__" + effectDir,
                             style: {
                                 marginTop: btnMarginTop,
-                                marginBottom: btnMarginBottom
+                                marginRight: btnMarginRight,
+                                marginBottom: btnMarginBottom,
+                                marginLeft: btnMarginLeft
                             }
                         },
                         React.createElement(RichText, {
@@ -33657,16 +33482,10 @@ var save = function save(props) {
         hideDesktop = _props$attributes.hideDesktop,
         hideTablet = _props$attributes.hideTablet,
         hideMobile = _props$attributes.hideMobile,
-        iconOpacity = _props$attributes.iconOpacity,
         titleStyles = _props$attributes.titleStyles,
         descStyles = _props$attributes.descStyles,
         btnStyles = _props$attributes.btnStyles,
         containerStyles = _props$attributes.containerStyles,
-        titleMarginT = _props$attributes.titleMarginT,
-        titleMarginB = _props$attributes.titleMarginB,
-        descMarginT = _props$attributes.descMarginT,
-        descMarginB = _props$attributes.descMarginB,
-        btnBorderWidth = _props$attributes.btnBorderWidth,
         btnBorderTop = _props$attributes.btnBorderTop,
         btnBorderRight = _props$attributes.btnBorderRight,
         btnBorderBottom = _props$attributes.btnBorderBottom,
@@ -33674,18 +33493,7 @@ var save = function save(props) {
         borderTop = _props$attributes.borderTop,
         borderRight = _props$attributes.borderRight,
         borderBottom = _props$attributes.borderBottom,
-        borderLeft = _props$attributes.borderLeft,
-        btnMarginT = _props$attributes.btnMarginT,
-        btnMarginB = _props$attributes.btnMarginB,
-        marginT = _props$attributes.marginT,
-        marginR = _props$attributes.marginR,
-        marginB = _props$attributes.marginB,
-        marginL = _props$attributes.marginL,
-        paddingT = _props$attributes.paddingT,
-        paddingR = _props$attributes.paddingR,
-        paddingB = _props$attributes.paddingB,
-        paddingL = _props$attributes.paddingL,
-        iconType = _props$attributes.iconType;
+        borderLeft = _props$attributes.borderLeft;
 
 
     var mainClasses = (0, _classnames2.default)(className, 'premium-icon-box');
@@ -36573,9 +36381,7 @@ var attributes = {
             titleShadowColor: '',
             titleShadowBlur: '0',
             titleShadowHorizontal: '0',
-            titleShadowVertical: '0',
-            titleMarginT: '',
-            titleMarginB: ''
+            titleShadowVertical: '0'
         }]
     },
     descStyles: {
@@ -36588,9 +36394,7 @@ var attributes = {
             descSizeTablet: 20,
             descSizeMobile: 20,
             descLine: '',
-            descWeight: '',
-            descMarginT: '',
-            descMarginB: ''
+            descWeight: ''
         }]
     },
     btnStyles: {
@@ -36615,8 +36419,6 @@ var attributes = {
             btnBorderColor: '',
             btnPadding: '',
             btnPaddingU: 'px',
-            btnMarginT: '',
-            btnMarginB: '',
             btnShadowColor: '',
             btnShadowBlur: '',
             btnShadowHorizontal: '0',
@@ -36677,18 +36479,6 @@ var attributes = {
 
         }]
     },
-    titleMarginT: {
-        type: "number"
-    },
-    titleMarginB: {
-        type: "number"
-    },
-    descMarginT: {
-        type: "number"
-    },
-    descMarginB: {
-        type: "number"
-    },
     btnBorderWidth: {
         type: "number",
         default: "1"
@@ -36717,95 +36507,125 @@ var attributes = {
     borderLeft: {
         type: "number"
     },
-    btnMarginT: {
-        type: "number"
+    containerMargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            unit: "px"
+        }
     },
-    btnMarginB: {
-        type: "number"
+    containerPadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            unit: "px"
+        }
     },
-    marginT: {
-        type: "number"
+    titleMargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            unit: "px"
+        }
     },
-    marginR: {
-        type: "number"
+    descMargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            unit: "px"
+        }
     },
-    marginB: {
-        type: "number"
-    },
-    marginL: {
-        type: "number"
-    },
-    paddingT: {
-        type: "number"
-    },
-    paddingR: {
-        type: "number"
-    },
-    paddingB: {
-        type: "number"
-    },
-    paddingL: {
-        type: "number"
-    },
-    marginTTablet: {
-        type: "number"
-    },
-    marginRTablet: {
-        type: "number"
-    },
-    marginBTablet: {
-        type: "number"
-    },
-    marginLTablet: {
-        type: "number"
-    },
-    marginTMobile: {
-        type: "number"
-    },
-    marginRMobile: {
-        type: "number"
-    },
-    marginBMobile: {
-        type: "number"
-    },
-    marginLMobile: {
-        type: "number"
-    },
-    paddingTTablet: {
-        type: "number"
-    },
-    paddingRTablet: {
-        type: "number"
-    },
-    paddingBTablet: {
-        type: "number"
-    },
-    paddingLTablet: {
-        type: "number"
-    },
-    paddingTMobile: {
-        type: "number"
-    },
-    paddingRMobile: {
-        type: "number"
-    },
-    paddingBMobile: {
-        type: "number"
-    },
-    paddingLMobile: {
-        type: "number"
-    },
-    btnMarginTTablet: {
-        type: "number"
-    },
-    btnMarginBTablet: {
-        type: "number"
-    },
-    btnMarginTMobile: {
-        type: "number"
-    },
-    btnMarginBMobile: {
-        type: "number"
+    btnMargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            unit: "px"
+        }
     }
 };
 exports.default = attributes;
