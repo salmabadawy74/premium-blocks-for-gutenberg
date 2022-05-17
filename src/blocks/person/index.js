@@ -2,6 +2,7 @@ import { person } from "../../../assets/js/settings";
 
 import save from "./save";
 import edit from "./edit";
+import deprecated from "./deprecated";
 import PbgIcon from "../icons";
 import attributes from "./attributes";
 
@@ -19,5 +20,6 @@ registerBlockType("premium/person", {
     },
     example: {},
     edit: edit,
-    save: save
+    save: save,
+    deprecated: deprecated
 });

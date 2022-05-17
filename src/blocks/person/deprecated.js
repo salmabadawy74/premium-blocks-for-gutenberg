@@ -1,4 +1,5 @@
 const { __ } = wp.i18n;
+import DefaultImage from "../../components/default-image";
 import classnames from "classnames"
 
 const attributes = {
