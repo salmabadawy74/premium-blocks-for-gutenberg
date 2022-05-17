@@ -705,10 +705,10 @@ class edit extends Component {
                         : containerStyles[0].borderWidth + "px",
                     borderRadius: containerStyles[0].borderRadius + "px",
                     borderColor: containerStyles[0].borderColor,
-                    paddingTop: containerPaddingTop + containerStyles[0].paddingU,
-                    paddingRight: containerPaddingRight + containerStyles[0].paddingU,
-                    paddingBottom: containerPaddingBottom + containerStyles[0].paddingU,
-                    paddingLeft: containerPaddingLeft + containerStyles[0].paddingU,
+                    paddingTop: containerPaddingTop && `${containerPaddingTop}${padding.unit}`,
+                    paddingRight: containerPaddingRight && `${containerPaddingRight}${padding.unit}`,
+                    paddingBottom: containerPaddingBottom && `${containerPaddingBottom}${padding.unit}`,
+                    paddingLeft: containerPaddingLeft && `${containerPaddingLeft}${padding.unit}`,
                 }}
             >
                 {iconCheck && (
