@@ -10,13 +10,14 @@ import {
     useEffect,
     useState
 } from '@wordpress/element';
+import { withSelect } from '@wordpress/data'
 import { PanelBody, TextControl, TabPanel, ToggleControl, SelectControl } from '@wordpress/components';
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 import PremiumBorder from "../../components/premium-border";
 import RadioComponent from '../../components/radio-control';
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
-import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
+import SpacingControl from '../../components/premium-responsive-spacing'
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
  * Those files can contain any CSS code that gets applied to the editor.
@@ -35,8 +36,7 @@ import './editor.scss';
  */
 
  
-
-export default function Edit(props) {
+function Edit(props) {
 
 const [ isEditing, setEditing ] = useState(false);
 const {  attributes, setAttributes } = props;
@@ -51,43 +51,23 @@ const { triggerLabel,
     block_id, 
     triggerStyles, 
     canvasStyles, 
-    spacing, 
+    triggerSpacing, 
     triggerBorderTop,
-     triggerBorderRight, 
-     triggerBorderBottom, 
-     triggerBorderLeft, 
-     hOffset, 
-     vOffset } = attributes;
+    triggerBorderRight, 
+    triggerBorderBottom, 
+    triggerBorderLeft
+    } = attributes;
+
 const onChangeText = ( newText ) => {
     setAttributes( { triggerLabel: newText } );
 };
-const defaultSize = {
-    desktop: "",
-    tablet: "",
-    mobile: "",
-    unit: "px"
-};
-const defaultSpacingValue = {
-    desktop: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-    },
-    tablet: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-    },
-    mobile: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-    }
-};
-
+const triggerIconSize = getPreviewSize(props.deviceType, triggerStyles.iconSize, triggerStyles.iconSizeTablet, triggerStyles.iconSizeMobile);
+const triggerVOffset = getPreviewSize(props.deviceType, triggerStyles.vOffset, triggerStyles.vOffsetTablet, triggerStyles.vOffsetMobile);
+const triggerHOffset = getPreviewSize(props.deviceType, triggerStyles.hOffset, triggerStyles.hOffsetTablet, triggerStyles.hOffsetMobile);
+const triggerSpacingTop = getPreviewSize(props.deviceType, triggerSpacing.Desktop.top, triggerSpacing.Tablet.top, triggerSpacing.Mobile.top);
+const triggerSpacingRight = getPreviewSize(props.deviceType, triggerSpacing.Desktop.right, triggerSpacing.Tablet.right, triggerSpacing.Mobile.right);
+const triggerSpacingBottom = getPreviewSize(props.deviceType, triggerSpacing.Desktop.bottom, triggerSpacing.Tablet.bottom, triggerSpacing.Mobile.bottom);
+const triggerSpacingLeft = getPreviewSize(props.deviceType, triggerSpacing.Desktop.left, triggerSpacing.Tablet.left, triggerSpacing.Mobile.left);
 
 const setTriggerStyles = (color, value) => {
     const newColors = { ...triggerStyles };
@@ -98,14 +78,7 @@ const setCanvasStyles = (color, value) => {
     const newColors = { ...canvasStyles };
     newColors[color] = value;
     setAttributes({ canvasStyles: newColors });
-}
-let padding = spacing.padding ? spacing.padding : defaultSpacingValue;
-const onChangePadding = (side, value, device) => {
-    const newPadding = { ...padding };
-    newPadding[device][side] = value;
-    setAttributes({ spacing: { ...spacing, padding: newPadding } });
-}
-
+};
 function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
     if (device === 'Mobile') {
         if (undefined !== mobileSize && '' !== mobileSize) {
@@ -120,7 +93,7 @@ function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
     }
     return desktopSize;
 }
-const triggerIconSize = getPreviewSize(props.deviceType, triggerStyles.iconSize, triggerStyles.iconSizeTablet, triggerStyles.iconSizeMobile);
+
     return (
         <Fragment>
             
@@ -295,12 +268,12 @@ const triggerIconSize = getPreviewSize(props.deviceType, triggerStyles.iconSize,
                         />
                         <ResponsiveRangeControl
                             label={__('Vertical Offset', 'premium-blocks-for-gutenberg')}
-                            value={attributes.vOffset}
-                            onChange={(value) => setAttributes({ vOffset: value })}
-                            tabletValue={attributes.vOffsetTablet}
-                            onChangeTablet={(value) => setAttributes({ vOffsetTablet: value })}
-                            mobileValue={attributes.vOffsetMobile}
-                            onChangeMobile={(value) => setAttributes({ vOffsetMobile: value })}
+                            value={triggerStyles.vOffset}
+                            onChange={(value) => setTriggerStyles( 'vOffset', value )}
+                            tabletValue={triggerStyles.vOffsetTablet}
+                            onChangeTablet={(value) => setTriggerStyles( 'vOffsetTablet', value )}
+                            mobileValue={triggerStyles.vOffsetMobile}
+                            onChangeMobile={(value) => setTriggerStyles( 'vOffsetMobile', value )}
                             min={0}
                             max={200}
                             step={1}
@@ -310,12 +283,12 @@ const triggerIconSize = getPreviewSize(props.deviceType, triggerStyles.iconSize,
                         />
                         <ResponsiveRangeControl
                             label={__('Horizontal Offset', 'premium-blocks-for-gutenberg')}
-                            value={attributes.hOffset}
-                            onChange={(value) => setAttributes({ hOffset: value })}
-                            tabletValue={attributes.hOffsetTablet}
-                            onChangeTablet={(value) => setAttributes({ hOffsetTablet: value })}
-                            mobileValue={attributes.hOffsetMobile}
-                            onChangeMobile={(value) => setAttributes({ hOffsetMobile: value })}
+                            value={triggerStyles.hOffset}
+                            onChange={(value) => setTriggerStyles( 'hOffset', value )}
+                            tabletValue={triggerStyles.hOffsetTablet}
+                            onChangeTablet={(value) => setTriggerStyles( 'hOffsetTablet', value )}
+                            mobileValue={triggerStyles.hOffsetMobile}
+                            onChangeMobile={(value) => setTriggerStyles( 'hOffsetMobile', value )}
                             min={0}
                             max={200}
                             step={1}
@@ -363,41 +336,13 @@ const triggerIconSize = getPreviewSize(props.deviceType, triggerStyles.iconSize,
                         units={['px']}
                         defaultValue={500}
                     />)
-                }
-                    <PremiumResponsivePadding
-                        directions={["all"]}
-                        paddingTop={padding.desktop.top}
-                        paddingRight={padding.desktop.right}
-                        paddingBottom={padding.desktop.bottom}
-                        paddingLeft={padding.desktop.left}
-                        paddingTopTablet={padding.tablet.top}
-                        paddingRightTablet={padding.tablet.right}
-                        paddingBottomTablet={padding.tablet.bottom}
-                        paddingLeftTablet={padding.tablet.left}
-                        paddingTopMobile={padding.mobile.top}
-                        paddingRightMobile={padding.mobile.right}
-                        paddingBottomMobile={padding.mobile.bottom}
-                        paddingLeftMobile={padding.mobile.left}
-                        onChangePaddingTop={
-                            (device, newValue) => {
-                                onChangePadding('top', newValue, device);
-                            }
-                        }
-                        onChangePaddingRight={
-                            (device, newValue) => {
-                                onChangePadding('right', newValue, device);
-                            }
-                        }
-                        onChangePaddingBottom={
-                            (device, newValue) => {
-                                onChangePadding('bottom', newValue, device);
-                            }
-                        }
-                        onChangePaddingLeft={
-                            (device, newValue) => {
-                                onChangePadding('left', newValue, device);
-                            }
-                        }
+                   }
+                    <SpacingControl
+                    label={__('Padding', 'premium-blocks-for-gutenberg')}
+                    value={triggerSpacing}
+                    onChange={(value) => setAttributes({ triggerSpacing: value })}
+                    showUnits={true}
+                    responsive={true}
                     />
 
                 </PanelBody>
@@ -439,20 +384,20 @@ const triggerIconSize = getPreviewSize(props.deviceType, triggerStyles.iconSize,
                 border-color: ${triggerStyles.borderHoverColor} !important;
             }
             #block-${block_id} .float-position-topright {
-                top: ${attributes.vOffset}px;
-                right: ${attributes.hOffset}px;
+                top: ${triggerVOffset}px;
+                right: ${triggerHOffset}px;
             }
             #block-${block_id} .float-position-topleft {
-                top: ${attributes.vOffset}px;
-                left: ${attributes.hOffset}px;
+                top: ${triggerVOffset}px;
+                left: ${triggerHOffset}px;
             }
             #block-${block_id} .float-position-bottomright {
-                bottom: ${attributes.vOffset}px;
-                right: ${attributes.hOffset}px;
+                bottom: ${triggerVOffset}px;
+                right: ${triggerHOffset}px;
             }
             #block-${block_id} .float-position-bottomleft {
-                bottom: ${attributes.vOffset}px;
-                left: ${attributes.hOffset}px;
+                bottom: ${triggerVOffset}px;
+                left: ${triggerHOffset}px;
             }
 
         `}
@@ -493,10 +438,10 @@ const triggerIconSize = getPreviewSize(props.deviceType, triggerStyles.iconSize,
                     }}></div>
                         <div className="gpb-popup-content gpb-desktop-popup-content"
                         style={{
-                            paddingTop: `${padding.desktop.top}px`,
-                            paddingRight: `${padding.desktop.right}px`,
-                            paddingBottom: `${padding.desktop.bottom}px`,
-                            paddingLeft: `${padding.desktop.left}px`,
+                            paddingTop: triggerSpacingTop + triggerSpacing.unit,
+                            paddingBottom: triggerSpacingBottom + triggerSpacing.unit,
+                            paddingLeft: triggerSpacingLeft + triggerSpacing.unit,
+                            paddingRight: triggerSpacingRight + triggerSpacing.unit,
                             backgroundColor: `${canvasStyles.canvasBgColor}`,
                             width: `${canvasStyles.width}px`,
                         }}
@@ -514,7 +459,14 @@ const triggerIconSize = getPreviewSize(props.deviceType, triggerStyles.iconSize,
                 )}
 				</div></div>
                 </Fragment>
-    );
-    
+    )
 }
+export default withSelect((select, props) => {
+    const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
+    let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return {
+        deviceType: deviceType
+    }
+})(Edit)
 

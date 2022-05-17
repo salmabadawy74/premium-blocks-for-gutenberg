@@ -1,8 +1,3 @@
-/**
- * External dependencies
- */
- import { closeSmall } from '@wordpress/icons';
-
  /**
   * WordPress dependencies
   */
@@ -16,46 +11,43 @@
         triggerLabel,
         triggerStyles, 
         canvasStyles, 
-        spacing, 
         triggerBorderTop, 
         triggerBorderRight, 
         triggerBorderLeft, 
         triggerBorderBottom,
         displayFloat,
-        floatPosition,
-        hOffset,
-        vOffset
+        floatPosition
      } = attributes;
     const blockProps = useBlockProps.save({
          id: `premium-trigger-${block_id}`,
          className: ``,
      });
-     const defaultSpacingValue = {
-        desktop: {
-            top: '',
-            right: '',
-            bottom: '',
-            left: ''
-        },
-        tablet: {
-            top: '',
-            right: '',
-            bottom: '',
-            left: ''
-        },
-        mobile: {
-            top: '',
-            right: '',
-            bottom: '',
-            left: ''
-        }
-    };
-     let padding = spacing.padding ? spacing.padding : defaultSpacingValue;
-     const onChangePadding = (side, value, device) => {
-         const newPadding = { ...padding };
-         newPadding[device][side] = value;
-         setAttributes({ spacing: { ...spacing, padding: newPadding } });
-     }
+    //  const defaultSpacingValue = {
+    //     desktop: {
+    //         top: '',
+    //         right: '',
+    //         bottom: '',
+    //         left: ''
+    //     },
+    //     tablet: {
+    //         top: '',
+    //         right: '',
+    //         bottom: '',
+    //         left: ''
+    //     },
+    //     mobile: {
+    //         top: '',
+    //         right: '',
+    //         bottom: '',
+    //         left: ''
+    //     }
+    // };
+    //  let padding = spacing.padding ? spacing.padding : defaultSpacingValue;
+    //  const onChangePadding = (side, value, device) => {
+    //      const newPadding = { ...padding };
+    //      newPadding[device][side] = value;
+    //      setAttributes({ spacing: { ...spacing, padding: newPadding } });
+    //  }
     // const [ isEditing, setEditing ] = useState( false );
 
      return (
@@ -86,22 +78,6 @@
             #premium-trigger-${block_id} .toggle-button[data-style="outline"]:hover {
                 border-color: ${triggerStyles.borderHoverColor} !important;
             }
-            #premium-trigger-${block_id} .float-position-topright {
-                top: ${vOffset}px;
-                right: ${hOffset}px;
-            }
-            #premium-trigger-${block_id} .float-position-topleft {
-                top: ${vOffset}px;
-                left: ${hOffset}px;
-            }
-            #premium-trigger-${block_id} .float-position-bottomright {
-                bottom: ${vOffset}px;
-                right: ${hOffset}px;
-            }
-            #premium-trigger-${block_id} .float-position-bottomleft {
-                bottom: ${vOffset}px;
-                left: ${hOffset}px;
-            }
         `}
         </style>  
                         <div className={`premium-trigger-container`}>
@@ -114,7 +90,7 @@
                             {triggerLabel &&
                                 <span className='trigger-label' style={{color: triggerStyles.labelColor }}>{triggerLabel}</span>
                             }
-                                <svg style={{fontSize: `${triggerStyles.iconSize}px` , fill:`${triggerStyles.iconColor}`}} height="1.5em" viewBox="0 -53 384 384" width="1.5em" xmlns="http://www.w3.org/2000/svg">
+                                <svg style={{fill:`${triggerStyles.iconColor}`}} height="1.5em" viewBox="0 -53 384 384" width="1.5em" xmlns="http://www.w3.org/2000/svg">
                                     <path d="m368 154.667969h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"></path>
                                     <path d="m368 32h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"></path>
                                     <path d="m368 277.332031h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"></path>
@@ -132,10 +108,6 @@
                         <div role="presentation" className="gpb-popup-overlay" style={{backgroundColor: `${canvasStyles.overlayBgColor}`,}}></div>
                         <div className="gpb-popup-content gpb-desktop-popup-content"
                         style={{
-                            paddingTop: `${padding.desktop.top}px`,
-                            paddingRight: `${padding.desktop.right}px`,
-                            paddingBottom: `${padding.desktop.bottom}px`,
-                            paddingLeft: `${padding.desktop.left}px`,
                             backgroundColor: `${canvasStyles.canvasBgColor}`,
                         }}>
                             <div className="gpb-popup-header">

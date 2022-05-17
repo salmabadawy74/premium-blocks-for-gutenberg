@@ -32,14 +32,6 @@
 			"type": "string",
 			"default": "left"
 		},
-		"hOffset": {
-			"type": "number",
-			"default": "10"	
-		},
-		"vOffset": {
-			"type": "number",
-			"default": "10"
-		},
 		"floatPosition": {
 			"type": "string",
 			"default": "topright"
@@ -50,6 +42,12 @@
 				"iconSize": "",
 				"iconSizeTablet": "",
 				"iconSizeMobile": "",
+				"vOffset": "",
+				"vOffsetTablet": "",
+				"vOffsetMobile": "",
+				"hOffset": "",
+				"hOffsetTablet": "",
+				"hOffsetMobile": "",
                 "iconColor": "",
                 "iconBgColor": "#e8e8e8",
                 "iconHoverColor": "",
@@ -72,10 +70,28 @@
 				"width": ""
             }
         },
-		"spacing": {
+		"triggerSpacing": {
             "type": "object",
-            "default": {
-                "padding": null
+                "default": {
+					"Desktop": {
+						"top": "",
+						"right": "",
+						"bottom": "",
+						"left": ""
+					},
+					"Tablet": {
+						"top": "",
+						"right": "",
+						"bottom": "",
+						"left": ""
+					},
+					"Mobile": {
+						"top": "",
+						"right": "",
+						"bottom": "",
+						"left": ""
+					},
+					"unit": "px"
             }
         },
 		"triggerBorderTop": {
