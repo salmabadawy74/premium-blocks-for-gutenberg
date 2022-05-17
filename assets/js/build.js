@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 129);
+/******/ 	return __webpack_require__(__webpack_require__.s = 127);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -121,7 +121,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 	if (typeof module !== 'undefined' && module.exports) {
 		classNames.default = classNames;
 		module.exports = classNames;
-	} else if ("function" === 'function' && _typeof(__webpack_require__(43)) === 'object' && __webpack_require__(43)) {
+	} else if ("function" === 'function' && _typeof(__webpack_require__(42)) === 'object' && __webpack_require__(42)) {
 		// register as 'classnames', consistent with npm package name
 		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
 			return classNames;
@@ -205,11 +205,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = undefined;
 
-var _premiumSizeUnits = __webpack_require__(29);
+var _premiumSizeUnits = __webpack_require__(27);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
-var _rangeControl = __webpack_require__(132);
+var _rangeControl = __webpack_require__(130);
 
 var _rangeControl2 = _interopRequireDefault(_rangeControl);
 
@@ -290,19 +290,19 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _get = __webpack_require__(84);
+var _get = __webpack_require__(83);
 
 var _get2 = _interopRequireDefault(_get);
 
-var _map = __webpack_require__(93);
+var _map = __webpack_require__(91);
 
 var _map2 = _interopRequireDefault(_map);
 
-var _classnames = __webpack_require__(51);
+var _classnames = __webpack_require__(50);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _colord = __webpack_require__(217);
+var _colord = __webpack_require__(216);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -734,7 +734,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(9);
+var _react = __webpack_require__(8);
 
 var _singleRangeControl = __webpack_require__(2);
 
@@ -1038,16 +1038,75 @@ exports.default = PremiumBorder;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+var __ = wp.i18n.__;
+var _wp$components = wp.components,
+    PanelBody = _wp$components.PanelBody,
+    ToggleControl = _wp$components.ToggleControl;
+
+function PremiumResponsiveTabs(props) {
+    var _props$onChangeDeskto = props.onChangeDesktop,
+        onChangeDesktop = _props$onChangeDeskto === undefined ? function () {} : _props$onChangeDeskto,
+        _props$onChangeTablet = props.onChangeTablet,
+        onChangeTablet = _props$onChangeTablet === undefined ? function () {} : _props$onChangeTablet,
+        _props$onChangeMobile = props.onChangeMobile,
+        onChangeMobile = _props$onChangeMobile === undefined ? function () {} : _props$onChangeMobile,
+        Desktop = props.Desktop,
+        Tablet = props.Tablet,
+        Mobile = props.Mobile;
+
+
+    return React.createElement(
+        PanelBody,
+        {
+            title: __("Responsive"),
+            className: "premium-panel-body",
+            initialOpen: false
+        },
+        React.createElement(ToggleControl, {
+            label: __('Hide in Desktop'),
+            checked: Desktop,
+            onChange: onChangeDesktop
+        }),
+        React.createElement(ToggleControl, {
+            label: __('Hide in Tablet'),
+            checked: Tablet,
+            onChange: onChangeTablet
+        }),
+        React.createElement(ToggleControl, {
+            label: __('Hide in Mobile'),
+            checked: Mobile,
+            onChange: onChangeMobile
+        })
+    );
+}
+exports.default = PremiumResponsiveTabs;
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports) {
+
+module.exports = React;
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _premiumFonts = __webpack_require__(219);
+var _premiumFonts = __webpack_require__(218);
 
 var _premiumFonts2 = _interopRequireDefault(_premiumFonts);
 
-var _responsiveRangeControl = __webpack_require__(19);
+var _responsiveRangeControl = __webpack_require__(20);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
@@ -1055,7 +1114,7 @@ var _singleRangeControl = __webpack_require__(2);
 
 var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
-var _fontList = __webpack_require__(220);
+var _fontList = __webpack_require__(219);
 
 var _fontList2 = _interopRequireDefault(_fontList);
 
@@ -1538,65 +1597,6 @@ var PremiumTypo = function (_Component) {
 exports.default = PremiumTypo;
 
 /***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-var __ = wp.i18n.__;
-var _wp$components = wp.components,
-    PanelBody = _wp$components.PanelBody,
-    ToggleControl = _wp$components.ToggleControl;
-
-function PremiumResponsiveTabs(props) {
-    var _props$onChangeDeskto = props.onChangeDesktop,
-        onChangeDesktop = _props$onChangeDeskto === undefined ? function () {} : _props$onChangeDeskto,
-        _props$onChangeTablet = props.onChangeTablet,
-        onChangeTablet = _props$onChangeTablet === undefined ? function () {} : _props$onChangeTablet,
-        _props$onChangeMobile = props.onChangeMobile,
-        onChangeMobile = _props$onChangeMobile === undefined ? function () {} : _props$onChangeMobile,
-        Desktop = props.Desktop,
-        Tablet = props.Tablet,
-        Mobile = props.Mobile;
-
-
-    return React.createElement(
-        PanelBody,
-        {
-            title: __("Responsive"),
-            className: "premium-panel-body",
-            initialOpen: false
-        },
-        React.createElement(ToggleControl, {
-            label: __('Hide in Desktop'),
-            checked: Desktop,
-            onChange: onChangeDesktop
-        }),
-        React.createElement(ToggleControl, {
-            label: __('Hide in Tablet'),
-            checked: Tablet,
-            onChange: onChangeTablet
-        }),
-        React.createElement(ToggleControl, {
-            label: __('Hide in Mobile'),
-            checked: Mobile,
-            onChange: onChangeMobile
-        })
-    );
-}
-exports.default = PremiumResponsiveTabs;
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports) {
-
-module.exports = React;
-
-/***/ }),
 /* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1677,195 +1677,6 @@ exports.default = React.memo(RadioComponent);
 
 /***/ }),
 /* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-var _premiumPadding = __webpack_require__(218);
-
-var _premiumPadding2 = _interopRequireDefault(_premiumPadding);
-
-var _premiumSizeUnits = __webpack_require__(29);
-
-var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var __ = wp.i18n.__;
-var _wp$data = wp.data,
-    useSelect = _wp$data.useSelect,
-    useDispatch = _wp$data.useDispatch;
-var useState = wp.element.useState;
-
-function PremiumResponsivePadding(props) {
-    var showUnits = props.showUnits,
-        selectedUnit = props.selectedUnit,
-        onChangePadSizeUnit = props.onChangePadSizeUnit,
-        paddingTop = props.paddingTop,
-        paddingRight = props.paddingRight,
-        paddingBottom = props.paddingBottom,
-        paddingLeft = props.paddingLeft,
-        paddingTopTablet = props.paddingTopTablet,
-        paddingRightTablet = props.paddingRightTablet,
-        paddingBottomTablet = props.paddingBottomTablet,
-        paddingLeftTablet = props.paddingLeftTablet,
-        paddingTopMobile = props.paddingTopMobile,
-        paddingRightMobile = props.paddingRightMobile,
-        paddingBottomMobile = props.paddingBottomMobile,
-        paddingLeftMobile = props.paddingLeftMobile;
-
-    var _useState = useState('Desktop'),
-        _useState2 = _slicedToArray(_useState, 2),
-        deviceType = _useState2[0],
-        setDeviceType = _useState2[1];
-
-    var customSetPreviewDeviceType = function customSetPreviewDeviceType(device) {
-        setDeviceType(device);
-    };
-    if (wp.data.select('core/edit-post')) {
-        var theDevice = useSelect(function (select) {
-            var _select = select('core/edit-post'),
-                _select$__experimenta = _select.__experimentalGetPreviewDeviceType,
-                __experimentalGetPreviewDeviceType = _select$__experimenta === undefined ? null : _select$__experimenta;
-
-            return __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : 'Desktop';
-        }, []);
-        if (theDevice !== deviceType) {
-            setDeviceType(theDevice);
-        }
-
-        var _useDispatch = useDispatch('core/edit-post'),
-            _useDispatch$__experi = _useDispatch.__experimentalSetPreviewDeviceType,
-            __experimentalSetPreviewDeviceType = _useDispatch$__experi === undefined ? null : _useDispatch$__experi;
-
-        customSetPreviewDeviceType = function customSetPreviewDeviceType(device) {
-            __experimentalSetPreviewDeviceType(device);
-            setDeviceType(device);
-        };
-    }
-    var devices = ['Desktop', 'Tablet', 'Mobile'];
-    var output = {};
-    output.Mobile = React.createElement(_premiumPadding2.default, {
-        paddingTop: paddingTopMobile,
-        paddingRight: paddingRightMobile,
-        paddingBottom: paddingBottomMobile,
-        paddingLeft: paddingLeftMobile,
-        onChangePadTop: function onChangePadTop(paddingTopMobile) {
-            return props.onChangePaddingTop("mobile", paddingTopMobile);
-        },
-        onChangePadRight: function onChangePadRight(paddingRightMobile) {
-            return props.onChangePaddingRight("mobile", paddingRightMobile);
-        },
-        onChangePadBottom: function onChangePadBottom(paddingBottomMobile) {
-            return props.onChangePaddingBottom("mobile", paddingBottomMobile);
-        },
-        onChangePadLeft: function onChangePadLeft(paddingLeftMobile) {
-            return props.onChangePaddingLeft("mobile", paddingLeftMobile);
-        },
-        showUnits: false,
-        selectedUnit: selectedUnit,
-        onChangePadSizeUnit: onChangePadSizeUnit
-    });
-    output.Tablet = React.createElement(_premiumPadding2.default, {
-
-        paddingTop: paddingTopTablet,
-        paddingRight: paddingRightTablet,
-        paddingBottom: paddingBottomTablet,
-        paddingLeft: paddingLeftTablet,
-        onChangePadTop: function onChangePadTop(paddingTopTablet) {
-            return props.onChangePaddingTop("tablet", paddingTopTablet);
-        },
-        onChangePadRight: function onChangePadRight(paddingRightTablet) {
-            return props.onChangePaddingRight("tablet", paddingRightTablet);
-        },
-        onChangePadBottom: function onChangePadBottom(paddingBottomTablet) {
-            return props.onChangePaddingBottom("tablet", paddingBottomTablet);
-        },
-        onChangePadLeft: function onChangePadLeft(paddingLeftTablet) {
-            return props.onChangePaddingLeft("tablet", paddingLeftTablet);
-        },
-        showUnits: false,
-        selectedUnit: selectedUnit,
-        onChangePadSizeUnit: onChangePadSizeUnit
-    });
-    output.Desktop = React.createElement(_premiumPadding2.default, {
-        paddingTop: paddingTop,
-        paddingRight: paddingRight,
-        paddingBottom: paddingBottom,
-        paddingLeft: paddingLeft,
-        onChangePadTop: function onChangePadTop(paddingTop) {
-            return props.onChangePaddingTop("desktop", paddingTop);
-        },
-        onChangePadRight: function onChangePadRight(paddingRight) {
-            return props.onChangePaddingRight("desktop", paddingRight);
-        },
-        onChangePadBottom: function onChangePadBottom(paddingBottom) {
-            return props.onChangePaddingBottom("desktop", paddingBottom);
-        },
-        onChangePadLeft: function onChangePadLeft(paddingLeft) {
-            return props.onChangePaddingLeft("desktop", paddingLeft);
-        },
-        showUnits: false,
-        selectedUnit: selectedUnit,
-        onChangePadSizeUnit: onChangePadSizeUnit
-    });
-    return React.createElement(
-        'div',
-        { className: 'premium-blocks-range-control' },
-        React.createElement(
-            'header',
-            null,
-            React.createElement(
-                'div',
-                { className: 'premium-slider-title-wrap' },
-                React.createElement(
-                    'span',
-                    { className: 'customize-control-title premium-control-title' },
-                    '  ',
-                    __("Padding")
-                ),
-                React.createElement(
-                    'ul',
-                    { className: 'premium-responsive-control-btns premium-responsive-slider-btns' },
-                    devices.map(function (device, key) {
-                        var activeClass = device === deviceType ? ' active' : '';
-                        var icon = device.toLowerCase() === 'mobile' ? 'smartphone' : device.toLowerCase();
-                        return React.createElement(
-                            'li',
-                            { key: key, className: '' + device + activeClass },
-                            React.createElement(
-                                'button',
-                                { type: 'button', className: 'preview-' + device + activeClass, 'data-device': device },
-                                React.createElement('i', { 'class': 'dashicons dashicons-' + icon, onClick: function onClick() {
-                                        var nextDevice = key + 1 > devices.length - 1 ? devices[0] : devices[key + 1];
-                                        customSetPreviewDeviceType(nextDevice);
-                                    } })
-                            )
-                        );
-                    })
-                )
-            ),
-            showUnits && React.createElement(_premiumSizeUnits2.default, {
-                activeUnit: selectedUnit,
-                onChangeSizeUnit: function onChangeSizeUnit(newValue) {
-                    return onChangePadSizeUnit(newValue);
-                }
-            })
-        ),
-        output[deviceType] ? output[deviceType] : output.Desktop
-    );
-}
-exports.default = PremiumResponsivePadding;
-
-/***/ }),
-/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2058,7 +1869,206 @@ process.umask = function () {
 };
 
 /***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _premiumPadding = __webpack_require__(217);
+
+var _premiumPadding2 = _interopRequireDefault(_premiumPadding);
+
+var _premiumSizeUnits = __webpack_require__(27);
+
+var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+var _wp$data = wp.data,
+    useSelect = _wp$data.useSelect,
+    useDispatch = _wp$data.useDispatch;
+var useState = wp.element.useState;
+
+function PremiumResponsivePadding(props) {
+    var showUnits = props.showUnits,
+        selectedUnit = props.selectedUnit,
+        onChangePadSizeUnit = props.onChangePadSizeUnit,
+        paddingTop = props.paddingTop,
+        paddingRight = props.paddingRight,
+        paddingBottom = props.paddingBottom,
+        paddingLeft = props.paddingLeft,
+        paddingTopTablet = props.paddingTopTablet,
+        paddingRightTablet = props.paddingRightTablet,
+        paddingBottomTablet = props.paddingBottomTablet,
+        paddingLeftTablet = props.paddingLeftTablet,
+        paddingTopMobile = props.paddingTopMobile,
+        paddingRightMobile = props.paddingRightMobile,
+        paddingBottomMobile = props.paddingBottomMobile,
+        paddingLeftMobile = props.paddingLeftMobile;
+
+    var _useState = useState('Desktop'),
+        _useState2 = _slicedToArray(_useState, 2),
+        deviceType = _useState2[0],
+        setDeviceType = _useState2[1];
+
+    var customSetPreviewDeviceType = function customSetPreviewDeviceType(device) {
+        setDeviceType(device);
+    };
+    if (wp.data.select('core/edit-post')) {
+        var theDevice = useSelect(function (select) {
+            var _select = select('core/edit-post'),
+                _select$__experimenta = _select.__experimentalGetPreviewDeviceType,
+                __experimentalGetPreviewDeviceType = _select$__experimenta === undefined ? null : _select$__experimenta;
+
+            return __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : 'Desktop';
+        }, []);
+        if (theDevice !== deviceType) {
+            setDeviceType(theDevice);
+        }
+
+        var _useDispatch = useDispatch('core/edit-post'),
+            _useDispatch$__experi = _useDispatch.__experimentalSetPreviewDeviceType,
+            __experimentalSetPreviewDeviceType = _useDispatch$__experi === undefined ? null : _useDispatch$__experi;
+
+        customSetPreviewDeviceType = function customSetPreviewDeviceType(device) {
+            __experimentalSetPreviewDeviceType(device);
+            setDeviceType(device);
+        };
+    }
+    var devices = ['Desktop', 'Tablet', 'Mobile'];
+    var output = {};
+    output.Mobile = React.createElement(_premiumPadding2.default, {
+        paddingTop: paddingTopMobile,
+        paddingRight: paddingRightMobile,
+        paddingBottom: paddingBottomMobile,
+        paddingLeft: paddingLeftMobile,
+        onChangePadTop: function onChangePadTop(paddingTopMobile) {
+            return props.onChangePaddingTop("mobile", paddingTopMobile);
+        },
+        onChangePadRight: function onChangePadRight(paddingRightMobile) {
+            return props.onChangePaddingRight("mobile", paddingRightMobile);
+        },
+        onChangePadBottom: function onChangePadBottom(paddingBottomMobile) {
+            return props.onChangePaddingBottom("mobile", paddingBottomMobile);
+        },
+        onChangePadLeft: function onChangePadLeft(paddingLeftMobile) {
+            return props.onChangePaddingLeft("mobile", paddingLeftMobile);
+        },
+        showUnits: false,
+        selectedUnit: selectedUnit,
+        onChangePadSizeUnit: onChangePadSizeUnit
+    });
+    output.Tablet = React.createElement(_premiumPadding2.default, {
+
+        paddingTop: paddingTopTablet,
+        paddingRight: paddingRightTablet,
+        paddingBottom: paddingBottomTablet,
+        paddingLeft: paddingLeftTablet,
+        onChangePadTop: function onChangePadTop(paddingTopTablet) {
+            return props.onChangePaddingTop("tablet", paddingTopTablet);
+        },
+        onChangePadRight: function onChangePadRight(paddingRightTablet) {
+            return props.onChangePaddingRight("tablet", paddingRightTablet);
+        },
+        onChangePadBottom: function onChangePadBottom(paddingBottomTablet) {
+            return props.onChangePaddingBottom("tablet", paddingBottomTablet);
+        },
+        onChangePadLeft: function onChangePadLeft(paddingLeftTablet) {
+            return props.onChangePaddingLeft("tablet", paddingLeftTablet);
+        },
+        showUnits: false,
+        selectedUnit: selectedUnit,
+        onChangePadSizeUnit: onChangePadSizeUnit
+    });
+    output.Desktop = React.createElement(_premiumPadding2.default, {
+        paddingTop: paddingTop,
+        paddingRight: paddingRight,
+        paddingBottom: paddingBottom,
+        paddingLeft: paddingLeft,
+        onChangePadTop: function onChangePadTop(paddingTop) {
+            return props.onChangePaddingTop("desktop", paddingTop);
+        },
+        onChangePadRight: function onChangePadRight(paddingRight) {
+            return props.onChangePaddingRight("desktop", paddingRight);
+        },
+        onChangePadBottom: function onChangePadBottom(paddingBottom) {
+            return props.onChangePaddingBottom("desktop", paddingBottom);
+        },
+        onChangePadLeft: function onChangePadLeft(paddingLeft) {
+            return props.onChangePaddingLeft("desktop", paddingLeft);
+        },
+        showUnits: false,
+        selectedUnit: selectedUnit,
+        onChangePadSizeUnit: onChangePadSizeUnit
+    });
+    return React.createElement(
+        'div',
+        { className: 'premium-blocks-range-control' },
+        React.createElement(
+            'header',
+            null,
+            React.createElement(
+                'div',
+                { className: 'premium-slider-title-wrap' },
+                React.createElement(
+                    'span',
+                    { className: 'customize-control-title premium-control-title' },
+                    '  ',
+                    __("Padding")
+                ),
+                React.createElement(
+                    'ul',
+                    { className: 'premium-responsive-control-btns premium-responsive-slider-btns' },
+                    devices.map(function (device, key) {
+                        var activeClass = device === deviceType ? ' active' : '';
+                        var icon = device.toLowerCase() === 'mobile' ? 'smartphone' : device.toLowerCase();
+                        return React.createElement(
+                            'li',
+                            { key: key, className: '' + device + activeClass },
+                            React.createElement(
+                                'button',
+                                { type: 'button', className: 'preview-' + device + activeClass, 'data-device': device },
+                                React.createElement('i', { 'class': 'dashicons dashicons-' + icon, onClick: function onClick() {
+                                        var nextDevice = key + 1 > devices.length - 1 ? devices[0] : devices[key + 1];
+                                        customSetPreviewDeviceType(nextDevice);
+                                    } })
+                            )
+                        );
+                    })
+                )
+            ),
+            showUnits && React.createElement(_premiumSizeUnits2.default, {
+                activeUnit: selectedUnit,
+                onChangeSizeUnit: function onChangeSizeUnit(newValue) {
+                    return onChangePadSizeUnit(newValue);
+                }
+            })
+        ),
+        output[deviceType] ? output[deviceType] : output.Desktop
+    );
+}
+exports.default = PremiumResponsivePadding;
+
+/***/ }),
 /* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var core = module.exports = { version: '2.5.7' };
+if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
+
+/***/ }),
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2146,16 +2156,6 @@ function PremiumMediaUpload(props) {
 }
 
 /***/ }),
-/* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var core = module.exports = { version: '2.5.7' };
-if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
-
-/***/ }),
 /* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2198,7 +2198,7 @@ module.exports = isArray;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var freeGlobal = __webpack_require__(87);
+var freeGlobal = __webpack_require__(86);
 
 /** Detect free variable `self`. */
 var freeSelf = (typeof self === 'undefined' ? 'undefined' : _typeof(self)) == 'object' && self && self.Object === Object && self;
@@ -2298,21 +2298,34 @@ module.exports = hexToRgba;
  */
 
 if (process.env.NODE_ENV !== 'production') {
-  var ReactIs = __webpack_require__(105);
+  var ReactIs = __webpack_require__(103);
 
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(248)(ReactIs.isElement, throwOnDirectAccess);
+  module.exports = __webpack_require__(247)(ReactIs.isElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(251)();
+  module.exports = __webpack_require__(250)();
 }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
 /***/ }),
 /* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
+var global = module.exports = typeof window != 'undefined' && window.Math == Math ? window : typeof self != 'undefined' && self.Math == Math ? self
+// eslint-disable-next-line no-new-func
+: Function('return this')();
+if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
+
+/***/ }),
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2325,7 +2338,7 @@ exports.default = undefined;
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-var _premiumSizeUnits = __webpack_require__(29);
+var _premiumSizeUnits = __webpack_require__(27);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
@@ -2488,19 +2501,6 @@ function ResponsiveRangeControl(_ref) {
 exports.default = ResponsiveRangeControl;
 
 /***/ }),
-/* 20 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-var global = module.exports = typeof window != 'undefined' && window.Math == Math ? window : typeof self != 'undefined' && self.Math == Math ? self
-// eslint-disable-next-line no-new-func
-: Function('return this')();
-if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
-
-/***/ }),
 /* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2515,7 +2515,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _webfontloader = __webpack_require__(103);
+var _webfontloader = __webpack_require__(101);
 
 var _webfontloader2 = _interopRequireDefault(_webfontloader);
 
@@ -2633,15 +2633,15 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = PremiumBackgroundControl;
 
-var _react = __webpack_require__(9);
+var _react = __webpack_require__(8);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _premiumBackground = __webpack_require__(104);
+var _premiumBackground = __webpack_require__(102);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
-var _map = __webpack_require__(93);
+var _map = __webpack_require__(91);
 
 var _map2 = _interopRequireDefault(_map);
 
@@ -2865,6 +2865,198 @@ function PremiumBackgroundControl(_ref) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+
+var global = __webpack_require__(19);
+var core = __webpack_require__(13);
+var ctx = __webpack_require__(115);
+var hide = __webpack_require__(32);
+var has = __webpack_require__(26);
+var PROTOTYPE = 'prototype';
+
+var $export = function $export(type, name, source) {
+  var IS_FORCED = type & $export.F;
+  var IS_GLOBAL = type & $export.G;
+  var IS_STATIC = type & $export.S;
+  var IS_PROTO = type & $export.P;
+  var IS_BIND = type & $export.B;
+  var IS_WRAP = type & $export.W;
+  var exports = IS_GLOBAL ? core : core[name] || (core[name] = {});
+  var expProto = exports[PROTOTYPE];
+  var target = IS_GLOBAL ? global : IS_STATIC ? global[name] : (global[name] || {})[PROTOTYPE];
+  var key, own, out;
+  if (IS_GLOBAL) source = name;
+  for (key in source) {
+    // contains in native
+    own = !IS_FORCED && target && target[key] !== undefined;
+    if (own && has(exports, key)) continue;
+    // export native or passed
+    out = own ? target[key] : source[key];
+    // prevent global pollution for namespaces
+    exports[key] = IS_GLOBAL && typeof target[key] != 'function' ? source[key]
+    // bind timers to global for call from export context
+    : IS_BIND && own ? ctx(out, global)
+    // wrap global constructors for prevent change them in library
+    : IS_WRAP && target[key] == out ? function (C) {
+      var F = function F(a, b, c) {
+        if (this instanceof C) {
+          switch (arguments.length) {
+            case 0:
+              return new C();
+            case 1:
+              return new C(a);
+            case 2:
+              return new C(a, b);
+          }return new C(a, b, c);
+        }return C.apply(this, arguments);
+      };
+      F[PROTOTYPE] = C[PROTOTYPE];
+      return F;
+      // make static versions for prototype methods
+    }(out) : IS_PROTO && typeof out == 'function' ? ctx(Function.call, out) : out;
+    // export proto methods to core.%CONSTRUCTOR%.methods.%NAME%
+    if (IS_PROTO) {
+      (exports.virtual || (exports.virtual = {}))[key] = out;
+      // export proto methods to core.%CONSTRUCTOR%.prototype.%NAME%
+      if (type & $export.R && expProto && !expProto[key]) hide(expProto, key, out);
+    }
+  }
+};
+// type bitmap
+$export.F = 1; // forced
+$export.G = 2; // global
+$export.S = 4; // static
+$export.P = 8; // proto
+$export.B = 16; // bind
+$export.W = 32; // wrap
+$export.U = 64; // safe
+$export.R = 128; // real proto method for `library`
+module.exports = $export;
+
+/***/ }),
+/* 24 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var anObject = __webpack_require__(41);
+var IE8_DOM_DEFINE = __webpack_require__(116);
+var toPrimitive = __webpack_require__(70);
+var dP = Object.defineProperty;
+
+exports.f = __webpack_require__(25) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
+  anObject(O);
+  P = toPrimitive(P, true);
+  anObject(Attributes);
+  if (IE8_DOM_DEFINE) try {
+    return dP(O, P, Attributes);
+  } catch (e) {/* empty */}
+  if ('get' in Attributes || 'set' in Attributes) throw TypeError('Accessors not supported!');
+  if ('value' in Attributes) O[P] = Attributes.value;
+  return O;
+};
+
+/***/ }),
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// Thank's IE8 for his funny defineProperty
+module.exports = !__webpack_require__(34)(function () {
+  return Object.defineProperty({}, 'a', { get: function get() {
+      return 7;
+    } }).a != 7;
+});
+
+/***/ }),
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var hasOwnProperty = {}.hasOwnProperty;
+module.exports = function (it, key) {
+  return hasOwnProperty.call(it, key);
+};
+
+/***/ }),
+/* 27 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = PremiumSizeUnits;
+function PremiumSizeUnits(props) {
+    var activeUnit = props.activeUnit,
+        units = props.units,
+        _props$onChangeSizeUn = props.onChangeSizeUnit,
+        onChangeSizeUnit = _props$onChangeSizeUn === undefined ? function (unit) {} : _props$onChangeSizeUn;
+
+    var sizeUnits = ["px", "em", "%"];
+    if (undefined !== units) {
+        sizeUnits = units;
+    }
+    return React.createElement(
+        "ul",
+        { className: "premium-slider-units" },
+        sizeUnits.map(function (unit, index) {
+            return React.createElement(
+                "li",
+                {
+                    className: "single-unit " + (unit === activeUnit && "active"),
+                    onClick: function onClick() {
+                        return onChangeSizeUnit(unit);
+                    }
+                },
+                React.createElement(
+                    "span",
+                    { className: "unit-text" },
+                    " ",
+                    unit
+                )
+            );
+        })
+    );
+}
+
+/***/ }),
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var baseIsNative = __webpack_require__(140),
+    getValue = __webpack_require__(143);
+
+/**
+ * Gets the native function at `key` of `object`.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @param {string} key The key of the method to get.
+ * @returns {*} Returns the function if it's native, else `undefined`.
+ */
+function getNative(object, key) {
+  var value = getValue(object, key);
+  return baseIsNative(value) ? value : undefined;
+}
+
+module.exports = getNative;
+
+/***/ }),
+/* 29 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -2887,7 +3079,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
  * 
  */
 !function (e, t) {
-  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(18), __webpack_require__(9), __webpack_require__(51), __webpack_require__(40), __webpack_require__(106)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(18), __webpack_require__(9), __webpack_require__(51), __webpack_require__(40), __webpack_require__(106)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
+  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(18), __webpack_require__(8), __webpack_require__(50), __webpack_require__(40), __webpack_require__(104)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(18), __webpack_require__(8), __webpack_require__(50), __webpack_require__(40), __webpack_require__(104)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) ? exports.FontIconPicker = t(require("prop-types"), require("react"), require("classnames"), require("react-dom"), require("react-transition-group")) : e.FontIconPicker = t(e.PropTypes, e.React, e.classNames, e.ReactDOM, e.ReactTransitionGroup);
@@ -3429,10 +3621,27 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   }]).default;
 });
 //# sourceMappingURL=fonticonpicker.react.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(50)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(49)(module)))
 
 /***/ }),
-/* 24 */
+/* 30 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var iconsList = {
+    Dashicons: ["", "dashicons dashicons-menu", "dashicons dashicons-admin-site", "dashicons dashicons-dashboard", "dashicons dashicons-admin-post", "dashicons dashicons-admin-media", "dashicons dashicons-admin-links", "dashicons dashicons-admin-page", "dashicons dashicons-admin-comments", "dashicons dashicons-admin-appearance", "dashicons dashicons-admin-plugins", "dashicons dashicons-admin-users", "dashicons dashicons-admin-tools", "dashicons dashicons-admin-settings", "dashicons dashicons-admin-network", "dashicons dashicons-admin-home", "dashicons dashicons-admin-generic", "dashicons dashicons-admin-collapse", "dashicons dashicons-filter", "dashicons dashicons-admin-customizer", "dashicons dashicons-admin-multisite", "dashicons dashicons-welcome-write-blog", "dashicons dashicons-welcome-add-page", "dashicons dashicons-welcome-view-site", "dashicons dashicons-welcome-widgets-menus", "dashicons dashicons-welcome-comments", "dashicons dashicons-welcome-learn-more", "dashicons dashicons-format-aside", "dashicons dashicons-format-image", "dashicons dashicons-format-gallery", "dashicons dashicons-format-video", "dashicons dashicons-format-status", "dashicons dashicons-format-quote", "dashicons dashicons-format-chat", "dashicons dashicons-format-audio", "dashicons dashicons-camera", "dashicons dashicons-images-alt", "dashicons dashicons-images-alt2", "dashicons dashicons-video-alt", "dashicons dashicons-video-alt2", "dashicons dashicons-video-alt3", "dashicons dashicons-media-archive", "dashicons dashicons-media-audio", "dashicons dashicons-media-code", "dashicons dashicons-media-default", "dashicons dashicons-media-document", "dashicons dashicons-media-interactive", "dashicons dashicons-media-spreadsheet", "dashicons dashicons-media-text", "dashicons dashicons-media-video", "dashicons dashicons-playlist-audio", "dashicons dashicons-playlist-video", "dashicons dashicons-controls-play", "dashicons dashicons-controls-pause", "dashicons dashicons-controls-forward", "dashicons dashicons-controls-skipforward", "dashicons dashicons-controls-back", "dashicons dashicons-controls-skipback", "dashicons dashicons-controls-repeat", "dashicons dashicons-controls-volumeon", "dashicons dashicons-controls-volumeoff", "dashicons dashicons-image-crop", "dashicons dashicons-image-rotate", "dashicons dashicons-image-rotate-left", "dashicons dashicons-image-rotate-right", "dashicons dashicons-image-flip-vertical", "dashicons dashicons-image-flip-horizontal", "dashicons dashicons-image-filter", "dashicons dashicons-undo", "dashicons dashicons-redo", "dashicons dashicons-editor-bold", "dashicons dashicons-editor-italic", "dashicons dashicons-editor-ul", "dashicons dashicons-editor-ol", "dashicons dashicons-editor-quote", "dashicons dashicons-editor-alignleft", "dashicons dashicons-editor-aligncenter", "dashicons dashicons-editor-alignright", "dashicons dashicons-editor-insertmore", "dashicons dashicons-editor-spellcheck", "dashicons dashicons-editor-expand", "dashicons dashicons-editor-contract", "dashicons dashicons-editor-kitchensink", "dashicons dashicons-editor-underline", "dashicons dashicons-editor-justify", "dashicons dashicons-editor-textcolor", "dashicons dashicons-editor-paste-word", "dashicons dashicons-editor-paste-text", "dashicons dashicons-editor-removeformatting", "dashicons dashicons-editor-video", "dashicons dashicons-editor-customchar", "dashicons dashicons-editor-outdent", "dashicons dashicons-editor-indent", "dashicons dashicons-editor-help", "dashicons dashicons-editor-strikethrough", "dashicons dashicons-editor-unlink", "dashicons dashicons-editor-rtl", "dashicons dashicons-editor-break", "dashicons dashicons-editor-code", "dashicons dashicons-editor-paragraph", "dashicons dashicons-editor-table", "dashicons dashicons-align-left", "dashicons dashicons-align-right", "dashicons dashicons-align-center", "dashicons dashicons-align-none", "dashicons dashicons-lock", "dashicons dashicons-unlock", "dashicons dashicons-calendar", "dashicons dashicons-calendar-alt", "dashicons dashicons-visibility", "dashicons dashicons-hidden", "dashicons dashicons-post-status", "dashicons dashicons-edit", "dashicons dashicons-trash", "dashicons dashicons-sticky", "dashicons dashicons-external", "dashicons dashicons-arrow-up", "dashicons dashicons-arrow-down", "dashicons dashicons-arrow-right", "dashicons dashicons-arrow-left", "dashicons dashicons-arrow-up-alt", "dashicons dashicons-arrow-down-alt", "dashicons dashicons-arrow-right-alt", "dashicons dashicons-arrow-left-alt", "dashicons dashicons-arrow-up-alt2", "dashicons dashicons-arrow-down-alt2", "dashicons dashicons-arrow-right-alt2", "dashicons dashicons-arrow-left-alt2", "dashicons dashicons-sort", "dashicons dashicons-leftright", "dashicons dashicons-randomize", "dashicons dashicons-list-view", "dashicons dashicons-exerpt-view", "dashicons dashicons-grid-view", "dashicons dashicons-move", "dashicons dashicons-share", "dashicons dashicons-share-alt", "dashicons dashicons-share-alt2", "dashicons dashicons-twitter", "dashicons dashicons-rss", "dashicons dashicons-email", "dashicons dashicons-email-alt", "dashicons dashicons-facebook", "dashicons dashicons-facebook-alt", "dashicons dashicons-googleplus", "dashicons dashicons-networking", "dashicons dashicons-hammer", "dashicons dashicons-art", "dashicons dashicons-migrate", "dashicons dashicons-performance", "dashicons dashicons-universal-access", "dashicons dashicons-universal-access-alt", "dashicons dashicons-tickets", "dashicons dashicons-nametag", "dashicons dashicons-clipboard", "dashicons dashicons-heart", "dashicons dashicons-megaphone", "dashicons dashicons-schedule", "dashicons dashicons-wordpress", "dashicons dashicons-wordpress-alt", "dashicons dashicons-pressthis", "dashicons dashicons-update", "dashicons dashicons-screenoptions", "dashicons dashicons-info", "dashicons dashicons-cart", "dashicons dashicons-feedback", "dashicons dashicons-cloud", "dashicons dashicons-translation", "dashicons dashicons-tag", "dashicons dashicons-category", "dashicons dashicons-archive", "dashicons dashicons-tagcloud", "dashicons dashicons-text", "dashicons dashicons-yes", "dashicons dashicons-no", "dashicons dashicons-no-alt", "dashicons dashicons-plus", "dashicons dashicons-plus-alt", "dashicons dashicons-minus", "dashicons dashicons-dismiss", "dashicons dashicons-marker", "dashicons dashicons-star-filled", "dashicons dashicons-star-half", "dashicons dashicons-star-empty", "dashicons dashicons-flag", "dashicons dashicons-warning", "dashicons dashicons-location", "dashicons dashicons-location-alt", "dashicons dashicons-vault", "dashicons dashicons-shield", "dashicons dashicons-shield-alt", "dashicons dashicons-sos", "dashicons dashicons-search", "dashicons dashicons-slides", "dashicons dashicons-analytics", "dashicons dashicons-chart-pie", "dashicons dashicons-chart-bar", "dashicons dashicons-chart-line", "dashicons dashicons-chart-area", "dashicons dashicons-groups", "dashicons dashicons-businessman", "dashicons dashicons-id", "dashicons dashicons-id-alt", "dashicons dashicons-products", "dashicons dashicons-awards", "dashicons dashicons-forms", "dashicons dashicons-testimonial", "dashicons dashicons-portfolio", "dashicons dashicons-book", "dashicons dashicons-book-alt", "dashicons dashicons-download", "dashicons dashicons-upload", "dashicons dashicons-backup", "dashicons dashicons-clock", "dashicons dashicons-lightbulb", "dashicons dashicons-microphone", "dashicons dashicons-desktop", "dashicons dashicons-laptop", "dashicons dashicons-tablet", "dashicons dashicons-smartphone", "dashicons dashicons-phone", "dashicons dashicons-index-card", "dashicons dashicons-carrot", "dashicons dashicons-building", "dashicons dashicons-store", "dashicons dashicons-album", "dashicons dashicons-palmtree", "dashicons dashicons-tickets-alt", "dashicons dashicons-money", "dashicons dashicons-smiley", "dashicons dashicons-thumbs-up", "dashicons dashicons-thumbs-down", "dashicons dashicons-layout", "dashicons dashicons-paperclip"],
+    "Font Awesome Icons": ["fa fa-glass", "fa fa-music", "fa fa-search", "fa fa-envelope-o", "fa fa-heart", "fa fa-star", "fa fa-star-o", "fa fa-user", "fa fa-film", "fa fa-th-large", "fa fa-th", "fa fa-th-list", "fa fa-check", "fa fa-times", "fa fa-search-plus", "fa fa-search-minus", "fa fa-power-off", "fa fa-signal", "fa fa-cog", "fa fa-trash-o", "fa fa-home", "fa fa-file-o", "fa fa-clock-o", "fa fa-road", "fa fa-download", "fa fa-arrow-circle-o-down", "fa fa-arrow-circle-o-up", "fa fa-inbox", "fa fa-play-circle-o", "fa fa-repeat", "fa fa-refresh", "fa fa-list-alt", "fa fa-lock", "fa fa-flag", "fa fa-headphones", "fa fa-volume-off", "fa fa-volume-down", "fa fa-volume-up", "fa fa-qrcode", "fa fa-barcode", "fa fa-tag", "fa fa-tags", "fa fa-book", "fa fa-bookmark", "fa fa-print", "fa fa-camera", "fa fa-font", "fa fa-bold", "fa fa-italic", "fa fa-text-height", "fa fa-text-width", "fa fa-align-left", "fa fa-align-center", "fa fa-align-right", "fa fa-align-justify", "fa fa-list", "fa fa-outdent", "fa fa-indent", "fa fa-video-camera", "fa fa-picture-o", "fa fa-pencil", "fa fa-map-marker", "fa fa-adjust", "fa fa-tint", "fa fa-pencil-square-o", "fa fa-share-square-o", "fa fa-check-square-o", "fa fa-arrows", "fa fa-step-backward", "fa fa-fast-backward", "fa fa-backward", "fa fa-play", "fa fa-pause", "fa fa-stop", "fa fa-forward", "fa fa-fast-forward", "fa fa-step-forward", "fa fa-eject", "fa fa-chevron-left", "fa fa-chevron-right", "fa fa-plus-circle", "fa fa-minus-circle", "fa fa-times-circle", "fa fa-check-circle", "fa fa-question-circle", "fa fa-info-circle", "fa fa-crosshairs", "fa fa-times-circle-o", "fa fa-check-circle-o", "fa fa-ban", "fa fa-arrow-left", "fa fa-arrow-right", "fa fa-arrow-up", "fa fa-arrow-down", "fa fa-share", "fa fa-expand", "fa fa-compress", "fa fa-plus", "fa fa-minus", "fa fa-asterisk", "fa fa-exclamation-circle", "fa fa-gift", "fa fa-leaf", "fa fa-fire", "fa fa-eye", "fa fa-eye-slash", "fa fa-exclamation-triangle", "fa fa-plane", "fa fa-calendar", "fa fa-random", "fa fa-comment", "fa fa-magnet", "fa fa-chevron-up", "fa fa-chevron-down", "fa fa-retweet", "fa fa-shopping-cart", "fa fa-folder", "fa fa-folder-open", "fa fa-arrows-v", "fa fa-arrows-h", "fa fa-bar-chart", "fa fa-twitter-square", "fa fa-facebook-square", "fa fa-camera-retro", "fa fa-key", "fa fa-cogs", "fa fa-comments", "fa fa-thumbs-o-up", "fa fa-thumbs-o-down", "fa fa-star-half", "fa fa-heart-o", "fa fa-sign-out", "fa fa-linkedin-square", "fa fa-thumb-tack", "fa fa-external-link", "fa fa-sign-in", "fa fa-trophy", "fa fa-github-square", "fa fa-upload", "fa fa-lemon-o", "fa fa-phone", "fa fa-square-o", "fa fa-bookmark-o", "fa fa-phone-square", "fa fa-twitter", "fa-brands fa-facebook", "fa fa-github", "fa fa-unlock", "fa fa-credit-card", "fa fa-rss", "fa fa-hdd-o", "fa fa-bullhorn", "fa fa-bell", "fa fa-certificate", "fa fa-hand-o-right", "fa fa-hand-o-left", "fa fa-hand-o-up", "fa fa-hand-o-down", "fa fa-arrow-circle-left", "fa fa-arrow-circle-right", "fa fa-arrow-circle-up", "fa fa-arrow-circle-down", "fa fa-globe", "fa fa-wrench", "fa fa-tasks", "fa fa-filter", "fa fa-briefcase", "fa fa-arrows-alt", "fa fa-users", "fa fa-link", "fa fa-cloud", "fa fa-flask", "fa fa-scissors", "fa fa-files-o", "fa fa-paperclip", "fa fa-floppy-o", "fa fa-square", "fa fa-bars", "fa fa-list-ul", "fa fa-list-ol", "fa fa-strikethrough", "fa fa-underline", "fa fa-table", "fa fa-magic", "fa fa-truck", "fa fa-pinterest", "fa fa-pinterest-square", "fa fa-google-plus-square", "fa fa-google-plus", "fa fa-money", "fa fa-caret-down", "fa fa-caret-up", "fa fa-caret-left", "fa fa-caret-right", "fa fa-columns", "fa fa-sort", "fa fa-sort-desc", "fa fa-sort-asc", "fa fa-envelope", "fa fa-linkedin", "fa fa-undo", "fa fa-gavel", "fa fa-tachometer", "fa fa-comment-o", "fa fa-comments-o", "fa fa-bolt", "fa fa-sitemap", "fa fa-umbrella", "fa fa-clipboard", "fa fa-lightbulb-o", "fa fa-exchange", "fa fa-cloud-download", "fa fa-cloud-upload", "fa fa-user-md", "fa fa-stethoscope", "fa fa-suitcase", "fa fa-bell-o", "fa fa-coffee", "fa fa-cutlery", "fa fa-file-text-o", "fa fa-building-o", "fa fa-hospital-o", "fa fa-ambulance", "fa fa-medkit", "fa fa-fighter-jet", "fa fa-beer", "fa fa-h-square", "fa fa-plus-square", "fa fa-angle-double-left", "fa fa-angle-double-right", "fa fa-angle-double-up", "fa fa-angle-double-down", "fa fa-angle-left", "fa fa-angle-right", "fa fa-angle-up", "fa fa-angle-down", "fa fa-desktop", "fa fa-laptop", "fa fa-tablet", "fa fa-mobile", "fa fa-circle-o", "fa fa-quote-left", "fa fa-quote-right", "fa fa-spinner", "fa fa-circle", "fa fa-reply", "fa fa-github-alt", "fa fa-folder-o", "fa fa-folder-open-o", "fa fa-smile-o", "fa fa-frown-o", "fa fa-meh-o", "fa fa-gamepad", "fa fa-keyboard-o", "fa fa-flag-o", "fa fa-flag-checkered", "fa fa-terminal", "fa fa-code", "fa fa-reply-all", "fa fa-star-half-o", "fa fa-location-arrow", "fa fa-crop", "fa fa-code-fork", "fa fa-chain-broken", "fa fa-question", "fa fa-info", "fa fa-exclamation", "fa fa-superscript", "fa fa-subscript", "fa fa-eraser", "fa fa-puzzle-piece", "fa fa-microphone", "fa fa-microphone-slash", "fa fa-shield", "fa fa-calendar-o", "fa fa-fire-extinguisher", "fa fa-rocket", "fa fa-maxcdn", "fa fa-chevron-circle-left", "fa fa-chevron-circle-right", "fa fa-chevron-circle-up", "fa fa-chevron-circle-down", "fa fa-html5", "fa fa-css3", "fa fa-anchor", "fa fa-unlock-alt", "fa fa-bullseye", "fa fa-ellipsis-h", "fa fa-ellipsis-v", "fa fa-rss-square", "fa fa-play-circle", "fa fa-ticket", "fa fa-minus-square", "fa fa-minus-square-o", "fa fa-level-up", "fa fa-level-down", "fa fa-check-square", "fa fa-pencil-square", "fa fa-external-link-square", "fa fa-share-square", "fa fa-compass", "fa fa-caret-square-o-down", "fa fa-caret-square-o-up", "fa fa-caret-square-o-right", "fa fa-eur", "fa fa-gbp", "fa fa-usd", "fa fa-inr", "fa fa-jpy", "fa fa-rub", "fa fa-krw", "fa fa-btc", "fa fa-file", "fa fa-file-text", "fa fa-sort-alpha-asc", "fa fa-sort-alpha-desc", "fa fa-sort-amount-asc", "fa fa-sort-amount-desc", "fa fa-sort-numeric-asc", "fa fa-sort-numeric-desc", "fa fa-thumbs-up", "fa fa-thumbs-down", "fa fa-youtube-square", "fa fa-youtube", "fa fa-xing", "fa fa-xing-square", "fa fa-youtube-play", "fa fa-dropbox", "fa fa-stack-overflow", "fa fa-instagram", "fa fa-flickr", "fa fa-adn", "fa fa-bitbucket", "fa fa-bitbucket-square", "fa fa-tumblr", "fa fa-tumblr-square", "fa fa-long-arrow-down", "fa fa-long-arrow-up", "fa fa-long-arrow-left", "fa fa-long-arrow-right", "fa fa-apple", "fa fa-windows", "fa fa-android", "fa fa-linux", "fa fa-dribbble", "fa fa-skype", "fa fa-foursquare", "fa fa-trello", "fa fa-female", "fa fa-male", "fa fa-gratipay", "fa fa-sun-o", "fa fa-moon-o", "fa fa-archive", "fa fa-bug", "fa fa-vk", "fa fa-weibo", "fa fa-renren", "fa fa-pagelines", "fa fa-stack-exchange", "fa fa-arrow-circle-o-right", "fa fa-arrow-circle-o-left", "fa fa-caret-square-o-left", "fa fa-dot-circle-o", "fa fa-wheelchair", "fa fa-vimeo-square", "fa fa-try", "fa fa-plus-square-o", "fa fa-space-shuttle", "fa fa-slack", "fa fa-envelope-square", "fa fa-wordpress", "fa fa-openid", "fa fa-university", "fa fa-graduation-cap", "fa fa-yahoo", "fa fa-google", "fa fa-reddit", "fa fa-reddit-square", "fa fa-stumbleupon-circle", "fa fa-stumbleupon", "fa fa-delicious", "fa fa-digg", "fa fa-pied-piper-pp", "fa fa-pied-piper-alt", "fa fa-drupal", "fa fa-joomla", "fa fa-language", "fa fa-fax", "fa fa-building", "fa fa-child", "fa fa-paw", "fa fa-spoon", "fa fa-cube", "fa fa-cubes", "fa fa-behance", "fa fa-behance-square", "fa fa-steam", "fa fa-steam-square", "fa fa-recycle", "fa fa-car", "fa fa-taxi", "fa fa-tree", "fa fa-spotify", "fa fa-deviantart", "fa fa-soundcloud", "fa fa-database", "fa fa-file-pdf-o", "fa fa-file-word-o", "fa fa-file-excel-o", "fa fa-file-powerpoint-o", "fa fa-file-image-o", "fa fa-file-archive-o", "fa fa-file-audio-o", "fa fa-file-video-o", "fa fa-file-code-o", "fa fa-vine", "fa fa-codepen", "fa fa-jsfiddle", "fa fa-life-ring", "fa fa-circle-o-notch", "fa fa-rebel", "fa fa-empire", "fa fa-git-square", "fa fa-git", "fa fa-hacker-news", "fa fa-tencent-weibo", "fa fa-qq", "fa fa-weixin", "fa fa-paper-plane", "fa fa-paper-plane-o", "fa fa-history", "fa fa-circle-thin", "fa fa-header", "fa fa-paragraph", "fa fa-sliders", "fa fa-share-alt", "fa fa-share-alt-square", "fa fa-bomb", "fa fa-futbol-o", "fa fa-tty", "fa fa-binoculars", "fa fa-plug", "fa fa-slideshare", "fa fa-twitch", "fa fa-yelp", "fa fa-newspaper-o", "fa fa-wifi", "fa fa-calculator", "fa fa-paypal", "fa fa-google-wallet", "fa fa-cc-visa", "fa fa-cc-mastercard", "fa fa-cc-discover", "fa fa-cc-amex", "fa fa-cc-paypal", "fa fa-cc-stripe", "fa fa-bell-slash", "fa fa-bell-slash-o", "fa fa-trash", "fa fa-copyright", "fa fa-at", "fa fa-eyedropper", "fa fa-paint-brush", "fa fa-birthday-cake", "fa fa-area-chart", "fa fa-pie-chart", "fa fa-line-chart", "fa fa-lastfm", "fa fa-lastfm-square", "fa fa-toggle-off", "fa fa-toggle-on", "fa fa-bicycle", "fa fa-bus", "fa fa-ioxhost", "fa fa-angellist", "fa fa-cc", "fa fa-ils", "fa fa-meanpath", "fa fa-buysellads", "fa fa-connectdevelop", "fa fa-dashcube", "fa fa-forumbee", "fa fa-leanpub", "fa fa-sellsy", "fa fa-shirtsinbulk", "fa fa-simplybuilt", "fa fa-skyatlas", "fa fa-cart-plus", "fa fa-cart-arrow-down", "fa fa-diamond", "fa fa-ship", "fa fa-user-secret", "fa fa-motorcycle", "fa fa-street-view", "fa fa-heartbeat", "fa fa-venus", "fa fa-mars", "fa fa-mercury", "fa fa-transgender", "fa fa-transgender-alt", "fa fa-venus-double", "fa fa-mars-double", "fa fa-venus-mars", "fa fa-mars-stroke", "fa fa-mars-stroke-v", "fa fa-mars-stroke-h", "fa fa-neuter", "fa fa-genderless", "fa fa-facebook-official", "fa fa-pinterest-p", "fa fa-whatsapp", "fa fa-server", "fa fa-user-plus", "fa fa-user-times", "fa fa-bed", "fa fa-viacoin", "fa fa-train", "fa fa-subway", "fa fa-medium", "fa fa-y-combinator", "fa fa-optin-monster", "fa fa-opencart", "fa fa-expeditedssl", "fa fa-battery-full", "fa fa-battery-three-quarters", "fa fa-battery-half", "fa fa-battery-quarter", "fa fa-battery-empty", "fa fa-mouse-pointer", "fa fa-i-cursor", "fa fa-object-group", "fa fa-object-ungroup", "fa fa-sticky-note", "fa fa-sticky-note-o", "fa fa-cc-jcb", "fa fa-cc-diners-club", "fa fa-clone", "fa fa-balance-scale", "fa fa-hourglass-o", "fa fa-hourglass-start", "fa fa-hourglass-half", "fa fa-hourglass-end", "fa fa-hourglass", "fa fa-hand-rock-o", "fa fa-hand-paper-o", "fa fa-hand-scissors-o", "fa fa-hand-lizard-o", "fa fa-hand-spock-o", "fa fa-hand-pointer-o", "fa fa-hand-peace-o", "fa fa-trademark", "fa fa-registered", "fa fa-creative-commons", "fa fa-gg", "fa fa-gg-circle", "fa fa-tripadvisor", "fa fa-odnoklassniki", "fa fa-odnoklassniki-square", "fa fa-get-pocket", "fa fa-wikipedia-w", "fa fa-safari", "fa fa-chrome", "fa fa-firefox", "fa fa-opera", "fa fa-internet-explorer", "fa fa-television", "fa fa-contao", "fa fa-500px", "fa fa-amazon", "fa fa-calendar-plus-o", "fa fa-calendar-minus-o", "fa fa-calendar-times-o", "fa fa-calendar-check-o", "fa fa-industry", "fa fa-map-pin", "fa fa-map-signs", "fa fa-map-o", "fa fa-map", "fa fa-commenting", "fa fa-commenting-o", "fa fa-houzz", "fa fa-vimeo", "fa fa-black-tie", "fa fa-fonticons", "fa fa-reddit-alien", "fa fa-edge", "fa fa-credit-card-alt", "fa fa-codiepie", "fa fa-modx", "fa fa-fort-awesome", "fa fa-usb", "fa fa-product-hunt", "fa fa-mixcloud", "fa fa-scribd", "fa fa-pause-circle", "fa fa-pause-circle-o", "fa fa-stop-circle", "fa fa-stop-circle-o", "fa fa-shopping-bag", "fa fa-shopping-basket", "fa fa-hashtag", "fa fa-bluetooth", "fa fa-bluetooth-b", "fa fa-percent", "fa fa-gitlab", "fa fa-wpbeginner", "fa fa-wpforms", "fa fa-envira", "fa fa-universal-access", "fa fa-wheelchair-alt", "fa fa-question-circle-o", "fa fa-blind", "fa fa-audio-description", "fa fa-volume-control-phone", "fa fa-braille", "fa fa-assistive-listening-systems", "fa fa-american-sign-language-interpreting", "fa fa-deaf", "fa fa-glide", "fa fa-glide-g", "fa fa-sign-language", "fa fa-low-vision", "fa fa-viadeo", "fa fa-viadeo-square", "fa fa-snapchat", "fa fa-snapchat-ghost", "fa fa-snapchat-square", "fa fa-pied-piper", "fa fa-first-order", "fa fa-yoast", "fa fa-themeisle", "fa fa-google-plus-official", "fa fa-font-awesome"]
+};
+
+exports.default = iconsList;
+
+/***/ }),
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3444,11 +3653,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-var _premiumMargin = __webpack_require__(259);
+var _premiumMargin = __webpack_require__(258);
 
 var _premiumMargin2 = _interopRequireDefault(_premiumMargin);
 
-var _premiumSizeUnits = __webpack_require__(29);
+var _premiumSizeUnits = __webpack_require__(27);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
@@ -3625,199 +3834,156 @@ function PremiumResponsiveMargin(props) {
 exports.default = PremiumResponsiveMargin;
 
 /***/ }),
-/* 25 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var global = __webpack_require__(20);
-var core = __webpack_require__(14);
-var ctx = __webpack_require__(116);
-var hide = __webpack_require__(33);
-var has = __webpack_require__(28);
-var PROTOTYPE = 'prototype';
+var dP = __webpack_require__(24);
+var createDesc = __webpack_require__(52);
+module.exports = __webpack_require__(25) ? function (object, key, value) {
+  return dP.f(object, key, createDesc(1, value));
+} : function (object, key, value) {
+  object[key] = value;
+  return object;
+};
 
-var $export = function $export(type, name, source) {
-  var IS_FORCED = type & $export.F;
-  var IS_GLOBAL = type & $export.G;
-  var IS_STATIC = type & $export.S;
-  var IS_PROTO = type & $export.P;
-  var IS_BIND = type & $export.B;
-  var IS_WRAP = type & $export.W;
-  var exports = IS_GLOBAL ? core : core[name] || (core[name] = {});
-  var expProto = exports[PROTOTYPE];
-  var target = IS_GLOBAL ? global : IS_STATIC ? global[name] : (global[name] || {})[PROTOTYPE];
-  var key, own, out;
-  if (IS_GLOBAL) source = name;
-  for (key in source) {
-    // contains in native
-    own = !IS_FORCED && target && target[key] !== undefined;
-    if (own && has(exports, key)) continue;
-    // export native or passed
-    out = own ? target[key] : source[key];
-    // prevent global pollution for namespaces
-    exports[key] = IS_GLOBAL && typeof target[key] != 'function' ? source[key]
-    // bind timers to global for call from export context
-    : IS_BIND && own ? ctx(out, global)
-    // wrap global constructors for prevent change them in library
-    : IS_WRAP && target[key] == out ? function (C) {
-      var F = function F(a, b, c) {
-        if (this instanceof C) {
-          switch (arguments.length) {
-            case 0:
-              return new C();
-            case 1:
-              return new C(a);
-            case 2:
-              return new C(a, b);
-          }return new C(a, b, c);
-        }return C.apply(this, arguments);
-      };
-      F[PROTOTYPE] = C[PROTOTYPE];
-      return F;
-      // make static versions for prototype methods
-    }(out) : IS_PROTO && typeof out == 'function' ? ctx(Function.call, out) : out;
-    // export proto methods to core.%CONSTRUCTOR%.methods.%NAME%
-    if (IS_PROTO) {
-      (exports.virtual || (exports.virtual = {}))[key] = out;
-      // export proto methods to core.%CONSTRUCTOR%.prototype.%NAME%
-      if (type & $export.R && expProto && !expProto[key]) hide(expProto, key, out);
-    }
+/***/ }),
+/* 33 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+module.exports = function (it) {
+  return (typeof it === 'undefined' ? 'undefined' : _typeof(it)) === 'object' ? it !== null : typeof it === 'function';
+};
+
+/***/ }),
+/* 34 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (exec) {
+  try {
+    return !!exec();
+  } catch (e) {
+    return true;
   }
 };
-// type bitmap
-$export.F = 1; // forced
-$export.G = 2; // global
-$export.S = 4; // static
-$export.P = 8; // proto
-$export.B = 16; // bind
-$export.W = 32; // wrap
-$export.U = 64; // safe
-$export.R = 128; // real proto method for `library`
-module.exports = $export;
 
 /***/ }),
-/* 26 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var anObject = __webpack_require__(42);
-var IE8_DOM_DEFINE = __webpack_require__(117);
-var toPrimitive = __webpack_require__(71);
-var dP = Object.defineProperty;
-
-exports.f = __webpack_require__(27) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
-  anObject(O);
-  P = toPrimitive(P, true);
-  anObject(Attributes);
-  if (IE8_DOM_DEFINE) try {
-    return dP(O, P, Attributes);
-  } catch (e) {/* empty */}
-  if ('get' in Attributes || 'set' in Attributes) throw TypeError('Accessors not supported!');
-  if ('value' in Attributes) O[P] = Attributes.value;
-  return O;
+// to indexed object, toObject with fallback for non-array-like ES3 strings
+var IObject = __webpack_require__(119);
+var defined = __webpack_require__(71);
+module.exports = function (it) {
+  return IObject(defined(it));
 };
 
 /***/ }),
-/* 27 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-// Thank's IE8 for his funny defineProperty
-module.exports = !__webpack_require__(35)(function () {
-  return Object.defineProperty({}, 'a', { get: function get() {
-      return 7;
-    } }).a != 7;
-});
+var store = __webpack_require__(74)('wks');
+var uid = __webpack_require__(55);
+var _Symbol = __webpack_require__(19).Symbol;
+var USE_SYMBOL = typeof _Symbol == 'function';
 
-/***/ }),
-/* 28 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var hasOwnProperty = {}.hasOwnProperty;
-module.exports = function (it, key) {
-  return hasOwnProperty.call(it, key);
+var $exports = module.exports = function (name) {
+  return store[name] || (store[name] = USE_SYMBOL && _Symbol[name] || (USE_SYMBOL ? _Symbol : uid)('Symbol.' + name));
 };
 
+$exports.store = store;
+
 /***/ }),
-/* 29 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.default = PremiumSizeUnits;
-function PremiumSizeUnits(props) {
-    var activeUnit = props.activeUnit,
-        units = props.units,
-        _props$onChangeSizeUn = props.onChangeSizeUnit,
-        onChangeSizeUnit = _props$onChangeSizeUn === undefined ? function (unit) {} : _props$onChangeSizeUn;
+var _Symbol = __webpack_require__(43),
+    getRawTag = __webpack_require__(132),
+    objectToString = __webpack_require__(133);
 
-    var sizeUnits = ["px", "em", "%"];
-    if (undefined !== units) {
-        sizeUnits = units;
-    }
-    return React.createElement(
-        "ul",
-        { className: "premium-slider-units" },
-        sizeUnits.map(function (unit, index) {
-            return React.createElement(
-                "li",
-                {
-                    className: "single-unit " + (unit === activeUnit && "active"),
-                    onClick: function onClick() {
-                        return onChangeSizeUnit(unit);
-                    }
-                },
-                React.createElement(
-                    "span",
-                    { className: "unit-text" },
-                    " ",
-                    unit
-                )
-            );
-        })
-    );
-}
+/** `Object#toString` result references. */
+var nullTag = '[object Null]',
+    undefinedTag = '[object Undefined]';
 
-/***/ }),
-/* 30 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var baseIsNative = __webpack_require__(141),
-    getValue = __webpack_require__(144);
+/** Built-in value references. */
+var symToStringTag = _Symbol ? _Symbol.toStringTag : undefined;
 
 /**
- * Gets the native function at `key` of `object`.
+ * The base implementation of `getTag` without fallbacks for buggy environments.
  *
  * @private
- * @param {Object} object The object to query.
- * @param {string} key The key of the method to get.
- * @returns {*} Returns the function if it's native, else `undefined`.
+ * @param {*} value The value to query.
+ * @returns {string} Returns the `toStringTag`.
  */
-function getNative(object, key) {
-  var value = getValue(object, key);
-  return baseIsNative(value) ? value : undefined;
+function baseGetTag(value) {
+    if (value == null) {
+        return value === undefined ? undefinedTag : nullTag;
+    }
+    return symToStringTag && symToStringTag in Object(value) ? getRawTag(value) : objectToString(value);
 }
 
-module.exports = getNative;
+module.exports = baseGetTag;
 
 /***/ }),
-/* 31 */
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/**
+ * Checks if `value` is object-like. A value is object-like if it's not `null`
+ * and has a `typeof` result of "object".
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+ * @example
+ *
+ * _.isObjectLike({});
+ * // => true
+ *
+ * _.isObjectLike([1, 2, 3]);
+ * // => true
+ *
+ * _.isObjectLike(_.noop);
+ * // => false
+ *
+ * _.isObjectLike(null);
+ * // => false
+ */
+function isObjectLike(value) {
+  return value != null && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) == 'object';
+}
+
+module.exports = isObjectLike;
+
+/***/ }),
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3933,172 +4099,6 @@ function PremiumFilters(props) {
 }
 
 /***/ }),
-/* 32 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-var iconsList = {
-    Dashicons: ["", "dashicons dashicons-menu", "dashicons dashicons-admin-site", "dashicons dashicons-dashboard", "dashicons dashicons-admin-post", "dashicons dashicons-admin-media", "dashicons dashicons-admin-links", "dashicons dashicons-admin-page", "dashicons dashicons-admin-comments", "dashicons dashicons-admin-appearance", "dashicons dashicons-admin-plugins", "dashicons dashicons-admin-users", "dashicons dashicons-admin-tools", "dashicons dashicons-admin-settings", "dashicons dashicons-admin-network", "dashicons dashicons-admin-home", "dashicons dashicons-admin-generic", "dashicons dashicons-admin-collapse", "dashicons dashicons-filter", "dashicons dashicons-admin-customizer", "dashicons dashicons-admin-multisite", "dashicons dashicons-welcome-write-blog", "dashicons dashicons-welcome-add-page", "dashicons dashicons-welcome-view-site", "dashicons dashicons-welcome-widgets-menus", "dashicons dashicons-welcome-comments", "dashicons dashicons-welcome-learn-more", "dashicons dashicons-format-aside", "dashicons dashicons-format-image", "dashicons dashicons-format-gallery", "dashicons dashicons-format-video", "dashicons dashicons-format-status", "dashicons dashicons-format-quote", "dashicons dashicons-format-chat", "dashicons dashicons-format-audio", "dashicons dashicons-camera", "dashicons dashicons-images-alt", "dashicons dashicons-images-alt2", "dashicons dashicons-video-alt", "dashicons dashicons-video-alt2", "dashicons dashicons-video-alt3", "dashicons dashicons-media-archive", "dashicons dashicons-media-audio", "dashicons dashicons-media-code", "dashicons dashicons-media-default", "dashicons dashicons-media-document", "dashicons dashicons-media-interactive", "dashicons dashicons-media-spreadsheet", "dashicons dashicons-media-text", "dashicons dashicons-media-video", "dashicons dashicons-playlist-audio", "dashicons dashicons-playlist-video", "dashicons dashicons-controls-play", "dashicons dashicons-controls-pause", "dashicons dashicons-controls-forward", "dashicons dashicons-controls-skipforward", "dashicons dashicons-controls-back", "dashicons dashicons-controls-skipback", "dashicons dashicons-controls-repeat", "dashicons dashicons-controls-volumeon", "dashicons dashicons-controls-volumeoff", "dashicons dashicons-image-crop", "dashicons dashicons-image-rotate", "dashicons dashicons-image-rotate-left", "dashicons dashicons-image-rotate-right", "dashicons dashicons-image-flip-vertical", "dashicons dashicons-image-flip-horizontal", "dashicons dashicons-image-filter", "dashicons dashicons-undo", "dashicons dashicons-redo", "dashicons dashicons-editor-bold", "dashicons dashicons-editor-italic", "dashicons dashicons-editor-ul", "dashicons dashicons-editor-ol", "dashicons dashicons-editor-quote", "dashicons dashicons-editor-alignleft", "dashicons dashicons-editor-aligncenter", "dashicons dashicons-editor-alignright", "dashicons dashicons-editor-insertmore", "dashicons dashicons-editor-spellcheck", "dashicons dashicons-editor-expand", "dashicons dashicons-editor-contract", "dashicons dashicons-editor-kitchensink", "dashicons dashicons-editor-underline", "dashicons dashicons-editor-justify", "dashicons dashicons-editor-textcolor", "dashicons dashicons-editor-paste-word", "dashicons dashicons-editor-paste-text", "dashicons dashicons-editor-removeformatting", "dashicons dashicons-editor-video", "dashicons dashicons-editor-customchar", "dashicons dashicons-editor-outdent", "dashicons dashicons-editor-indent", "dashicons dashicons-editor-help", "dashicons dashicons-editor-strikethrough", "dashicons dashicons-editor-unlink", "dashicons dashicons-editor-rtl", "dashicons dashicons-editor-break", "dashicons dashicons-editor-code", "dashicons dashicons-editor-paragraph", "dashicons dashicons-editor-table", "dashicons dashicons-align-left", "dashicons dashicons-align-right", "dashicons dashicons-align-center", "dashicons dashicons-align-none", "dashicons dashicons-lock", "dashicons dashicons-unlock", "dashicons dashicons-calendar", "dashicons dashicons-calendar-alt", "dashicons dashicons-visibility", "dashicons dashicons-hidden", "dashicons dashicons-post-status", "dashicons dashicons-edit", "dashicons dashicons-trash", "dashicons dashicons-sticky", "dashicons dashicons-external", "dashicons dashicons-arrow-up", "dashicons dashicons-arrow-down", "dashicons dashicons-arrow-right", "dashicons dashicons-arrow-left", "dashicons dashicons-arrow-up-alt", "dashicons dashicons-arrow-down-alt", "dashicons dashicons-arrow-right-alt", "dashicons dashicons-arrow-left-alt", "dashicons dashicons-arrow-up-alt2", "dashicons dashicons-arrow-down-alt2", "dashicons dashicons-arrow-right-alt2", "dashicons dashicons-arrow-left-alt2", "dashicons dashicons-sort", "dashicons dashicons-leftright", "dashicons dashicons-randomize", "dashicons dashicons-list-view", "dashicons dashicons-exerpt-view", "dashicons dashicons-grid-view", "dashicons dashicons-move", "dashicons dashicons-share", "dashicons dashicons-share-alt", "dashicons dashicons-share-alt2", "dashicons dashicons-twitter", "dashicons dashicons-rss", "dashicons dashicons-email", "dashicons dashicons-email-alt", "dashicons dashicons-facebook", "dashicons dashicons-facebook-alt", "dashicons dashicons-googleplus", "dashicons dashicons-networking", "dashicons dashicons-hammer", "dashicons dashicons-art", "dashicons dashicons-migrate", "dashicons dashicons-performance", "dashicons dashicons-universal-access", "dashicons dashicons-universal-access-alt", "dashicons dashicons-tickets", "dashicons dashicons-nametag", "dashicons dashicons-clipboard", "dashicons dashicons-heart", "dashicons dashicons-megaphone", "dashicons dashicons-schedule", "dashicons dashicons-wordpress", "dashicons dashicons-wordpress-alt", "dashicons dashicons-pressthis", "dashicons dashicons-update", "dashicons dashicons-screenoptions", "dashicons dashicons-info", "dashicons dashicons-cart", "dashicons dashicons-feedback", "dashicons dashicons-cloud", "dashicons dashicons-translation", "dashicons dashicons-tag", "dashicons dashicons-category", "dashicons dashicons-archive", "dashicons dashicons-tagcloud", "dashicons dashicons-text", "dashicons dashicons-yes", "dashicons dashicons-no", "dashicons dashicons-no-alt", "dashicons dashicons-plus", "dashicons dashicons-plus-alt", "dashicons dashicons-minus", "dashicons dashicons-dismiss", "dashicons dashicons-marker", "dashicons dashicons-star-filled", "dashicons dashicons-star-half", "dashicons dashicons-star-empty", "dashicons dashicons-flag", "dashicons dashicons-warning", "dashicons dashicons-location", "dashicons dashicons-location-alt", "dashicons dashicons-vault", "dashicons dashicons-shield", "dashicons dashicons-shield-alt", "dashicons dashicons-sos", "dashicons dashicons-search", "dashicons dashicons-slides", "dashicons dashicons-analytics", "dashicons dashicons-chart-pie", "dashicons dashicons-chart-bar", "dashicons dashicons-chart-line", "dashicons dashicons-chart-area", "dashicons dashicons-groups", "dashicons dashicons-businessman", "dashicons dashicons-id", "dashicons dashicons-id-alt", "dashicons dashicons-products", "dashicons dashicons-awards", "dashicons dashicons-forms", "dashicons dashicons-testimonial", "dashicons dashicons-portfolio", "dashicons dashicons-book", "dashicons dashicons-book-alt", "dashicons dashicons-download", "dashicons dashicons-upload", "dashicons dashicons-backup", "dashicons dashicons-clock", "dashicons dashicons-lightbulb", "dashicons dashicons-microphone", "dashicons dashicons-desktop", "dashicons dashicons-laptop", "dashicons dashicons-tablet", "dashicons dashicons-smartphone", "dashicons dashicons-phone", "dashicons dashicons-index-card", "dashicons dashicons-carrot", "dashicons dashicons-building", "dashicons dashicons-store", "dashicons dashicons-album", "dashicons dashicons-palmtree", "dashicons dashicons-tickets-alt", "dashicons dashicons-money", "dashicons dashicons-smiley", "dashicons dashicons-thumbs-up", "dashicons dashicons-thumbs-down", "dashicons dashicons-layout", "dashicons dashicons-paperclip"],
-    "Font Awesome Icons": ["fa fa-glass", "fa fa-music", "fa fa-search", "fa fa-envelope-o", "fa fa-heart", "fa fa-star", "fa fa-star-o", "fa fa-user", "fa fa-film", "fa fa-th-large", "fa fa-th", "fa fa-th-list", "fa fa-check", "fa fa-times", "fa fa-search-plus", "fa fa-search-minus", "fa fa-power-off", "fa fa-signal", "fa fa-cog", "fa fa-trash-o", "fa fa-home", "fa fa-file-o", "fa fa-clock-o", "fa fa-road", "fa fa-download", "fa fa-arrow-circle-o-down", "fa fa-arrow-circle-o-up", "fa fa-inbox", "fa fa-play-circle-o", "fa fa-repeat", "fa fa-refresh", "fa fa-list-alt", "fa fa-lock", "fa fa-flag", "fa fa-headphones", "fa fa-volume-off", "fa fa-volume-down", "fa fa-volume-up", "fa fa-qrcode", "fa fa-barcode", "fa fa-tag", "fa fa-tags", "fa fa-book", "fa fa-bookmark", "fa fa-print", "fa fa-camera", "fa fa-font", "fa fa-bold", "fa fa-italic", "fa fa-text-height", "fa fa-text-width", "fa fa-align-left", "fa fa-align-center", "fa fa-align-right", "fa fa-align-justify", "fa fa-list", "fa fa-outdent", "fa fa-indent", "fa fa-video-camera", "fa fa-picture-o", "fa fa-pencil", "fa fa-map-marker", "fa fa-adjust", "fa fa-tint", "fa fa-pencil-square-o", "fa fa-share-square-o", "fa fa-check-square-o", "fa fa-arrows", "fa fa-step-backward", "fa fa-fast-backward", "fa fa-backward", "fa fa-play", "fa fa-pause", "fa fa-stop", "fa fa-forward", "fa fa-fast-forward", "fa fa-step-forward", "fa fa-eject", "fa fa-chevron-left", "fa fa-chevron-right", "fa fa-plus-circle", "fa fa-minus-circle", "fa fa-times-circle", "fa fa-check-circle", "fa fa-question-circle", "fa fa-info-circle", "fa fa-crosshairs", "fa fa-times-circle-o", "fa fa-check-circle-o", "fa fa-ban", "fa fa-arrow-left", "fa fa-arrow-right", "fa fa-arrow-up", "fa fa-arrow-down", "fa fa-share", "fa fa-expand", "fa fa-compress", "fa fa-plus", "fa fa-minus", "fa fa-asterisk", "fa fa-exclamation-circle", "fa fa-gift", "fa fa-leaf", "fa fa-fire", "fa fa-eye", "fa fa-eye-slash", "fa fa-exclamation-triangle", "fa fa-plane", "fa fa-calendar", "fa fa-random", "fa fa-comment", "fa fa-magnet", "fa fa-chevron-up", "fa fa-chevron-down", "fa fa-retweet", "fa fa-shopping-cart", "fa fa-folder", "fa fa-folder-open", "fa fa-arrows-v", "fa fa-arrows-h", "fa fa-bar-chart", "fa fa-twitter-square", "fa fa-facebook-square", "fa fa-camera-retro", "fa fa-key", "fa fa-cogs", "fa fa-comments", "fa fa-thumbs-o-up", "fa fa-thumbs-o-down", "fa fa-star-half", "fa fa-heart-o", "fa fa-sign-out", "fa fa-linkedin-square", "fa fa-thumb-tack", "fa fa-external-link", "fa fa-sign-in", "fa fa-trophy", "fa fa-github-square", "fa fa-upload", "fa fa-lemon-o", "fa fa-phone", "fa fa-square-o", "fa fa-bookmark-o", "fa fa-phone-square", "fa fa-twitter", "fa-brands fa-facebook", "fa fa-github", "fa fa-unlock", "fa fa-credit-card", "fa fa-rss", "fa fa-hdd-o", "fa fa-bullhorn", "fa fa-bell", "fa fa-certificate", "fa fa-hand-o-right", "fa fa-hand-o-left", "fa fa-hand-o-up", "fa fa-hand-o-down", "fa fa-arrow-circle-left", "fa fa-arrow-circle-right", "fa fa-arrow-circle-up", "fa fa-arrow-circle-down", "fa fa-globe", "fa fa-wrench", "fa fa-tasks", "fa fa-filter", "fa fa-briefcase", "fa fa-arrows-alt", "fa fa-users", "fa fa-link", "fa fa-cloud", "fa fa-flask", "fa fa-scissors", "fa fa-files-o", "fa fa-paperclip", "fa fa-floppy-o", "fa fa-square", "fa fa-bars", "fa fa-list-ul", "fa fa-list-ol", "fa fa-strikethrough", "fa fa-underline", "fa fa-table", "fa fa-magic", "fa fa-truck", "fa fa-pinterest", "fa fa-pinterest-square", "fa fa-google-plus-square", "fa fa-google-plus", "fa fa-money", "fa fa-caret-down", "fa fa-caret-up", "fa fa-caret-left", "fa fa-caret-right", "fa fa-columns", "fa fa-sort", "fa fa-sort-desc", "fa fa-sort-asc", "fa fa-envelope", "fa fa-linkedin", "fa fa-undo", "fa fa-gavel", "fa fa-tachometer", "fa fa-comment-o", "fa fa-comments-o", "fa fa-bolt", "fa fa-sitemap", "fa fa-umbrella", "fa fa-clipboard", "fa fa-lightbulb-o", "fa fa-exchange", "fa fa-cloud-download", "fa fa-cloud-upload", "fa fa-user-md", "fa fa-stethoscope", "fa fa-suitcase", "fa fa-bell-o", "fa fa-coffee", "fa fa-cutlery", "fa fa-file-text-o", "fa fa-building-o", "fa fa-hospital-o", "fa fa-ambulance", "fa fa-medkit", "fa fa-fighter-jet", "fa fa-beer", "fa fa-h-square", "fa fa-plus-square", "fa fa-angle-double-left", "fa fa-angle-double-right", "fa fa-angle-double-up", "fa fa-angle-double-down", "fa fa-angle-left", "fa fa-angle-right", "fa fa-angle-up", "fa fa-angle-down", "fa fa-desktop", "fa fa-laptop", "fa fa-tablet", "fa fa-mobile", "fa fa-circle-o", "fa fa-quote-left", "fa fa-quote-right", "fa fa-spinner", "fa fa-circle", "fa fa-reply", "fa fa-github-alt", "fa fa-folder-o", "fa fa-folder-open-o", "fa fa-smile-o", "fa fa-frown-o", "fa fa-meh-o", "fa fa-gamepad", "fa fa-keyboard-o", "fa fa-flag-o", "fa fa-flag-checkered", "fa fa-terminal", "fa fa-code", "fa fa-reply-all", "fa fa-star-half-o", "fa fa-location-arrow", "fa fa-crop", "fa fa-code-fork", "fa fa-chain-broken", "fa fa-question", "fa fa-info", "fa fa-exclamation", "fa fa-superscript", "fa fa-subscript", "fa fa-eraser", "fa fa-puzzle-piece", "fa fa-microphone", "fa fa-microphone-slash", "fa fa-shield", "fa fa-calendar-o", "fa fa-fire-extinguisher", "fa fa-rocket", "fa fa-maxcdn", "fa fa-chevron-circle-left", "fa fa-chevron-circle-right", "fa fa-chevron-circle-up", "fa fa-chevron-circle-down", "fa fa-html5", "fa fa-css3", "fa fa-anchor", "fa fa-unlock-alt", "fa fa-bullseye", "fa fa-ellipsis-h", "fa fa-ellipsis-v", "fa fa-rss-square", "fa fa-play-circle", "fa fa-ticket", "fa fa-minus-square", "fa fa-minus-square-o", "fa fa-level-up", "fa fa-level-down", "fa fa-check-square", "fa fa-pencil-square", "fa fa-external-link-square", "fa fa-share-square", "fa fa-compass", "fa fa-caret-square-o-down", "fa fa-caret-square-o-up", "fa fa-caret-square-o-right", "fa fa-eur", "fa fa-gbp", "fa fa-usd", "fa fa-inr", "fa fa-jpy", "fa fa-rub", "fa fa-krw", "fa fa-btc", "fa fa-file", "fa fa-file-text", "fa fa-sort-alpha-asc", "fa fa-sort-alpha-desc", "fa fa-sort-amount-asc", "fa fa-sort-amount-desc", "fa fa-sort-numeric-asc", "fa fa-sort-numeric-desc", "fa fa-thumbs-up", "fa fa-thumbs-down", "fa fa-youtube-square", "fa fa-youtube", "fa fa-xing", "fa fa-xing-square", "fa fa-youtube-play", "fa fa-dropbox", "fa fa-stack-overflow", "fa fa-instagram", "fa fa-flickr", "fa fa-adn", "fa fa-bitbucket", "fa fa-bitbucket-square", "fa fa-tumblr", "fa fa-tumblr-square", "fa fa-long-arrow-down", "fa fa-long-arrow-up", "fa fa-long-arrow-left", "fa fa-long-arrow-right", "fa fa-apple", "fa fa-windows", "fa fa-android", "fa fa-linux", "fa fa-dribbble", "fa fa-skype", "fa fa-foursquare", "fa fa-trello", "fa fa-female", "fa fa-male", "fa fa-gratipay", "fa fa-sun-o", "fa fa-moon-o", "fa fa-archive", "fa fa-bug", "fa fa-vk", "fa fa-weibo", "fa fa-renren", "fa fa-pagelines", "fa fa-stack-exchange", "fa fa-arrow-circle-o-right", "fa fa-arrow-circle-o-left", "fa fa-caret-square-o-left", "fa fa-dot-circle-o", "fa fa-wheelchair", "fa fa-vimeo-square", "fa fa-try", "fa fa-plus-square-o", "fa fa-space-shuttle", "fa fa-slack", "fa fa-envelope-square", "fa fa-wordpress", "fa fa-openid", "fa fa-university", "fa fa-graduation-cap", "fa fa-yahoo", "fa fa-google", "fa fa-reddit", "fa fa-reddit-square", "fa fa-stumbleupon-circle", "fa fa-stumbleupon", "fa fa-delicious", "fa fa-digg", "fa fa-pied-piper-pp", "fa fa-pied-piper-alt", "fa fa-drupal", "fa fa-joomla", "fa fa-language", "fa fa-fax", "fa fa-building", "fa fa-child", "fa fa-paw", "fa fa-spoon", "fa fa-cube", "fa fa-cubes", "fa fa-behance", "fa fa-behance-square", "fa fa-steam", "fa fa-steam-square", "fa fa-recycle", "fa fa-car", "fa fa-taxi", "fa fa-tree", "fa fa-spotify", "fa fa-deviantart", "fa fa-soundcloud", "fa fa-database", "fa fa-file-pdf-o", "fa fa-file-word-o", "fa fa-file-excel-o", "fa fa-file-powerpoint-o", "fa fa-file-image-o", "fa fa-file-archive-o", "fa fa-file-audio-o", "fa fa-file-video-o", "fa fa-file-code-o", "fa fa-vine", "fa fa-codepen", "fa fa-jsfiddle", "fa fa-life-ring", "fa fa-circle-o-notch", "fa fa-rebel", "fa fa-empire", "fa fa-git-square", "fa fa-git", "fa fa-hacker-news", "fa fa-tencent-weibo", "fa fa-qq", "fa fa-weixin", "fa fa-paper-plane", "fa fa-paper-plane-o", "fa fa-history", "fa fa-circle-thin", "fa fa-header", "fa fa-paragraph", "fa fa-sliders", "fa fa-share-alt", "fa fa-share-alt-square", "fa fa-bomb", "fa fa-futbol-o", "fa fa-tty", "fa fa-binoculars", "fa fa-plug", "fa fa-slideshare", "fa fa-twitch", "fa fa-yelp", "fa fa-newspaper-o", "fa fa-wifi", "fa fa-calculator", "fa fa-paypal", "fa fa-google-wallet", "fa fa-cc-visa", "fa fa-cc-mastercard", "fa fa-cc-discover", "fa fa-cc-amex", "fa fa-cc-paypal", "fa fa-cc-stripe", "fa fa-bell-slash", "fa fa-bell-slash-o", "fa fa-trash", "fa fa-copyright", "fa fa-at", "fa fa-eyedropper", "fa fa-paint-brush", "fa fa-birthday-cake", "fa fa-area-chart", "fa fa-pie-chart", "fa fa-line-chart", "fa fa-lastfm", "fa fa-lastfm-square", "fa fa-toggle-off", "fa fa-toggle-on", "fa fa-bicycle", "fa fa-bus", "fa fa-ioxhost", "fa fa-angellist", "fa fa-cc", "fa fa-ils", "fa fa-meanpath", "fa fa-buysellads", "fa fa-connectdevelop", "fa fa-dashcube", "fa fa-forumbee", "fa fa-leanpub", "fa fa-sellsy", "fa fa-shirtsinbulk", "fa fa-simplybuilt", "fa fa-skyatlas", "fa fa-cart-plus", "fa fa-cart-arrow-down", "fa fa-diamond", "fa fa-ship", "fa fa-user-secret", "fa fa-motorcycle", "fa fa-street-view", "fa fa-heartbeat", "fa fa-venus", "fa fa-mars", "fa fa-mercury", "fa fa-transgender", "fa fa-transgender-alt", "fa fa-venus-double", "fa fa-mars-double", "fa fa-venus-mars", "fa fa-mars-stroke", "fa fa-mars-stroke-v", "fa fa-mars-stroke-h", "fa fa-neuter", "fa fa-genderless", "fa fa-facebook-official", "fa fa-pinterest-p", "fa fa-whatsapp", "fa fa-server", "fa fa-user-plus", "fa fa-user-times", "fa fa-bed", "fa fa-viacoin", "fa fa-train", "fa fa-subway", "fa fa-medium", "fa fa-y-combinator", "fa fa-optin-monster", "fa fa-opencart", "fa fa-expeditedssl", "fa fa-battery-full", "fa fa-battery-three-quarters", "fa fa-battery-half", "fa fa-battery-quarter", "fa fa-battery-empty", "fa fa-mouse-pointer", "fa fa-i-cursor", "fa fa-object-group", "fa fa-object-ungroup", "fa fa-sticky-note", "fa fa-sticky-note-o", "fa fa-cc-jcb", "fa fa-cc-diners-club", "fa fa-clone", "fa fa-balance-scale", "fa fa-hourglass-o", "fa fa-hourglass-start", "fa fa-hourglass-half", "fa fa-hourglass-end", "fa fa-hourglass", "fa fa-hand-rock-o", "fa fa-hand-paper-o", "fa fa-hand-scissors-o", "fa fa-hand-lizard-o", "fa fa-hand-spock-o", "fa fa-hand-pointer-o", "fa fa-hand-peace-o", "fa fa-trademark", "fa fa-registered", "fa fa-creative-commons", "fa fa-gg", "fa fa-gg-circle", "fa fa-tripadvisor", "fa fa-odnoklassniki", "fa fa-odnoklassniki-square", "fa fa-get-pocket", "fa fa-wikipedia-w", "fa fa-safari", "fa fa-chrome", "fa fa-firefox", "fa fa-opera", "fa fa-internet-explorer", "fa fa-television", "fa fa-contao", "fa fa-500px", "fa fa-amazon", "fa fa-calendar-plus-o", "fa fa-calendar-minus-o", "fa fa-calendar-times-o", "fa fa-calendar-check-o", "fa fa-industry", "fa fa-map-pin", "fa fa-map-signs", "fa fa-map-o", "fa fa-map", "fa fa-commenting", "fa fa-commenting-o", "fa fa-houzz", "fa fa-vimeo", "fa fa-black-tie", "fa fa-fonticons", "fa fa-reddit-alien", "fa fa-edge", "fa fa-credit-card-alt", "fa fa-codiepie", "fa fa-modx", "fa fa-fort-awesome", "fa fa-usb", "fa fa-product-hunt", "fa fa-mixcloud", "fa fa-scribd", "fa fa-pause-circle", "fa fa-pause-circle-o", "fa fa-stop-circle", "fa fa-stop-circle-o", "fa fa-shopping-bag", "fa fa-shopping-basket", "fa fa-hashtag", "fa fa-bluetooth", "fa fa-bluetooth-b", "fa fa-percent", "fa fa-gitlab", "fa fa-wpbeginner", "fa fa-wpforms", "fa fa-envira", "fa fa-universal-access", "fa fa-wheelchair-alt", "fa fa-question-circle-o", "fa fa-blind", "fa fa-audio-description", "fa fa-volume-control-phone", "fa fa-braille", "fa fa-assistive-listening-systems", "fa fa-american-sign-language-interpreting", "fa fa-deaf", "fa fa-glide", "fa fa-glide-g", "fa fa-sign-language", "fa fa-low-vision", "fa fa-viadeo", "fa fa-viadeo-square", "fa fa-snapchat", "fa fa-snapchat-ghost", "fa fa-snapchat-square", "fa fa-pied-piper", "fa fa-first-order", "fa fa-yoast", "fa fa-themeisle", "fa fa-google-plus-official", "fa fa-font-awesome"]
-};
-
-exports.default = iconsList;
-
-/***/ }),
-/* 33 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var dP = __webpack_require__(26);
-var createDesc = __webpack_require__(53);
-module.exports = __webpack_require__(27) ? function (object, key, value) {
-  return dP.f(object, key, createDesc(1, value));
-} : function (object, key, value) {
-  object[key] = value;
-  return object;
-};
-
-/***/ }),
-/* 34 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-module.exports = function (it) {
-  return (typeof it === 'undefined' ? 'undefined' : _typeof(it)) === 'object' ? it !== null : typeof it === 'function';
-};
-
-/***/ }),
-/* 35 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = function (exec) {
-  try {
-    return !!exec();
-  } catch (e) {
-    return true;
-  }
-};
-
-/***/ }),
-/* 36 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// to indexed object, toObject with fallback for non-array-like ES3 strings
-var IObject = __webpack_require__(120);
-var defined = __webpack_require__(72);
-module.exports = function (it) {
-  return IObject(defined(it));
-};
-
-/***/ }),
-/* 37 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var store = __webpack_require__(75)('wks');
-var uid = __webpack_require__(56);
-var _Symbol = __webpack_require__(20).Symbol;
-var USE_SYMBOL = typeof _Symbol == 'function';
-
-var $exports = module.exports = function (name) {
-  return store[name] || (store[name] = USE_SYMBOL && _Symbol[name] || (USE_SYMBOL ? _Symbol : uid)('Symbol.' + name));
-};
-
-$exports.store = store;
-
-/***/ }),
-/* 38 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _Symbol = __webpack_require__(44),
-    getRawTag = __webpack_require__(133),
-    objectToString = __webpack_require__(134);
-
-/** `Object#toString` result references. */
-var nullTag = '[object Null]',
-    undefinedTag = '[object Undefined]';
-
-/** Built-in value references. */
-var symToStringTag = _Symbol ? _Symbol.toStringTag : undefined;
-
-/**
- * The base implementation of `getTag` without fallbacks for buggy environments.
- *
- * @private
- * @param {*} value The value to query.
- * @returns {string} Returns the `toStringTag`.
- */
-function baseGetTag(value) {
-    if (value == null) {
-        return value === undefined ? undefinedTag : nullTag;
-    }
-    return symToStringTag && symToStringTag in Object(value) ? getRawTag(value) : objectToString(value);
-}
-
-module.exports = baseGetTag;
-
-/***/ }),
-/* 39 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-/**
- * Checks if `value` is object-like. A value is object-like if it's not `null`
- * and has a `typeof` result of "object".
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
- * @example
- *
- * _.isObjectLike({});
- * // => true
- *
- * _.isObjectLike([1, 2, 3]);
- * // => true
- *
- * _.isObjectLike(_.noop);
- * // => false
- *
- * _.isObjectLike(null);
- * // => false
- */
-function isObjectLike(value) {
-  return value != null && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) == 'object';
-}
-
-module.exports = isObjectLike;
-
-/***/ }),
 /* 40 */
 /***/ (function(module, exports) {
 
@@ -4111,58 +4111,14 @@ module.exports = ReactDOM;
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var placeHolder = PremiumBlocksSettings.defaultAuthImg;
-
-var Component = wp.element.Component;
-
-var DefaultImage = function (_Component) {
-    _inherits(DefaultImage, _Component);
-
-    function DefaultImage() {
-        _classCallCheck(this, DefaultImage);
-
-        return _possibleConstructorReturn(this, (DefaultImage.__proto__ || Object.getPrototypeOf(DefaultImage)).apply(this, arguments));
-    }
-
-    _createClass(DefaultImage, [{
-        key: "render",
-        value: function render() {
-            return React.createElement("img", { src: placeHolder, className: this.props.className });
-        }
-    }]);
-
-    return DefaultImage;
-}(Component);
-
-exports.default = DefaultImage;
-
-/***/ }),
-/* 42 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var isObject = __webpack_require__(34);
+var isObject = __webpack_require__(33);
 module.exports = function (it) {
   if (!isObject(it)) throw TypeError(it + ' is not an object!');
   return it;
 };
 
 /***/ }),
-/* 43 */
+/* 42 */
 /***/ (function(module, exports) {
 
 /* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {/* globals __webpack_amd_options__ */
@@ -4171,7 +4127,7 @@ module.exports = __webpack_amd_options__;
 /* WEBPACK VAR INJECTION */}.call(exports, {}))
 
 /***/ }),
-/* 44 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4185,13 +4141,13 @@ var _Symbol = root.Symbol;
 module.exports = _Symbol;
 
 /***/ }),
-/* 45 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var getNative = __webpack_require__(30);
+var getNative = __webpack_require__(28);
 
 /* Built-in method references that are verified to be native. */
 var nativeCreate = getNative(Object, 'create');
@@ -4199,17 +4155,17 @@ var nativeCreate = getNative(Object, 'create');
 module.exports = nativeCreate;
 
 /***/ }),
-/* 46 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var listCacheClear = __webpack_require__(149),
-    listCacheDelete = __webpack_require__(150),
-    listCacheGet = __webpack_require__(151),
-    listCacheHas = __webpack_require__(152),
-    listCacheSet = __webpack_require__(153);
+var listCacheClear = __webpack_require__(148),
+    listCacheDelete = __webpack_require__(149),
+    listCacheGet = __webpack_require__(150),
+    listCacheHas = __webpack_require__(151),
+    listCacheSet = __webpack_require__(152);
 
 /**
  * Creates an list cache object.
@@ -4239,13 +4195,13 @@ ListCache.prototype.set = listCacheSet;
 module.exports = ListCache;
 
 /***/ }),
-/* 47 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var eq = __webpack_require__(91);
+var eq = __webpack_require__(89);
 
 /**
  * Gets the index at which the `key` is found in `array` of key-value pairs.
@@ -4268,13 +4224,13 @@ function assocIndexOf(array, key) {
 module.exports = assocIndexOf;
 
 /***/ }),
-/* 48 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var isKeyable = __webpack_require__(155);
+var isKeyable = __webpack_require__(154);
 
 /**
  * Gets the data for `map`.
@@ -4292,13 +4248,13 @@ function getMapData(map, key) {
 module.exports = getMapData;
 
 /***/ }),
-/* 49 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var isSymbol = __webpack_require__(59);
+var isSymbol = __webpack_require__(58);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0;
@@ -4321,7 +4277,7 @@ function toKey(value) {
 module.exports = toKey;
 
 /***/ }),
-/* 50 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4351,7 +4307,7 @@ module.exports = function (module) {
 };
 
 /***/ }),
-/* 51 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4402,7 +4358,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 	if (typeof module !== 'undefined' && module.exports) {
 		classNames.default = classNames;
 		module.exports = classNames;
-	} else if ("function" === 'function' && _typeof(__webpack_require__(43)) === 'object' && __webpack_require__(43)) {
+	} else if ("function" === 'function' && _typeof(__webpack_require__(42)) === 'object' && __webpack_require__(42)) {
 		// register as 'classnames', consistent with npm package name
 		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
 			return classNames;
@@ -4414,7 +4370,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 })();
 
 /***/ }),
-/* 52 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4430,19 +4386,19 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(284);
+var _edit = __webpack_require__(283);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(285);
+var _save = __webpack_require__(284);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(286);
+var _deprecated = __webpack_require__(285);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(111);
+var _attributes = __webpack_require__(109);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -4500,7 +4456,7 @@ registerBlockType("premium/video-box", {
 });
 
 /***/ }),
-/* 53 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4516,22 +4472,22 @@ module.exports = function (bitmap, value) {
 };
 
 /***/ }),
-/* 54 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
-var $keys = __webpack_require__(119);
-var enumBugKeys = __webpack_require__(76);
+var $keys = __webpack_require__(118);
+var enumBugKeys = __webpack_require__(75);
 
 module.exports = Object.keys || function keys(O) {
   return $keys(O, enumBugKeys);
 };
 
 /***/ }),
-/* 55 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4540,7 +4496,7 @@ module.exports = Object.keys || function keys(O) {
 module.exports = true;
 
 /***/ }),
-/* 56 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4553,7 +4509,7 @@ module.exports = function (key) {
 };
 
 /***/ }),
-/* 57 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4562,7 +4518,7 @@ module.exports = function (key) {
 exports.f = {}.propertyIsEnumerable;
 
 /***/ }),
-/* 58 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4571,7 +4527,7 @@ exports.f = {}.propertyIsEnumerable;
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var isArray = __webpack_require__(15),
-    isSymbol = __webpack_require__(59);
+    isSymbol = __webpack_require__(58);
 
 /** Used to match property names within property paths. */
 var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,
@@ -4599,7 +4555,7 @@ function isKey(value, object) {
 module.exports = isKey;
 
 /***/ }),
-/* 59 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4607,8 +4563,8 @@ module.exports = isKey;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var baseGetTag = __webpack_require__(38),
-    isObjectLike = __webpack_require__(39);
+var baseGetTag = __webpack_require__(37),
+    isObjectLike = __webpack_require__(38);
 
 /** `Object#toString` result references. */
 var symbolTag = '[object Symbol]';
@@ -4637,17 +4593,17 @@ function isSymbol(value) {
 module.exports = isSymbol;
 
 /***/ }),
-/* 60 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var mapCacheClear = __webpack_require__(138),
-    mapCacheDelete = __webpack_require__(154),
-    mapCacheGet = __webpack_require__(156),
-    mapCacheHas = __webpack_require__(157),
-    mapCacheSet = __webpack_require__(158);
+var mapCacheClear = __webpack_require__(137),
+    mapCacheDelete = __webpack_require__(153),
+    mapCacheGet = __webpack_require__(155),
+    mapCacheHas = __webpack_require__(156),
+    mapCacheSet = __webpack_require__(157);
 
 /**
  * Creates a map cache object to store key-value pairs.
@@ -4677,7 +4633,7 @@ MapCache.prototype.set = mapCacheSet;
 module.exports = MapCache;
 
 /***/ }),
-/* 61 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4718,13 +4674,13 @@ function isObject(value) {
 module.exports = isObject;
 
 /***/ }),
-/* 62 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var getNative = __webpack_require__(30),
+var getNative = __webpack_require__(28),
     root = __webpack_require__(16);
 
 /* Built-in method references that are verified to be native. */
@@ -4733,15 +4689,15 @@ var Map = getNative(root, 'Map');
 module.exports = Map;
 
 /***/ }),
-/* 63 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var arrayLikeKeys = __webpack_require__(186),
-    baseKeys = __webpack_require__(193),
-    isArrayLike = __webpack_require__(65);
+var arrayLikeKeys = __webpack_require__(185),
+    baseKeys = __webpack_require__(192),
+    isArrayLike = __webpack_require__(64);
 
 /**
  * Creates an array of the own enumerable property names of `object`.
@@ -4778,7 +4734,7 @@ function keys(object) {
 module.exports = keys;
 
 /***/ }),
-/* 64 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4820,14 +4776,14 @@ function isLength(value) {
 module.exports = isLength;
 
 /***/ }),
-/* 65 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var isFunction = __webpack_require__(89),
-    isLength = __webpack_require__(64);
+var isFunction = __webpack_require__(87),
+    isLength = __webpack_require__(63);
 
 /**
  * Checks if `value` is array-like. A value is considered array-like if it's
@@ -4861,7 +4817,7 @@ function isArrayLike(value) {
 module.exports = isArrayLike;
 
 /***/ }),
-/* 66 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4877,6 +4833,50 @@ module.exports = isArrayLike;
 var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
 module.exports = ReactPropTypesSecret;
+
+/***/ }),
+/* 66 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var placeHolder = PremiumBlocksSettings.defaultAuthImg;
+
+var Component = wp.element.Component;
+
+var DefaultImage = function (_Component) {
+    _inherits(DefaultImage, _Component);
+
+    function DefaultImage() {
+        _classCallCheck(this, DefaultImage);
+
+        return _possibleConstructorReturn(this, (DefaultImage.__proto__ || Object.getPrototypeOf(DefaultImage)).apply(this, arguments));
+    }
+
+    _createClass(DefaultImage, [{
+        key: "render",
+        value: function render() {
+            return React.createElement("img", { src: placeHolder, className: this.props.className });
+        }
+    }]);
+
+    return DefaultImage;
+}(Component);
+
+exports.default = DefaultImage;
 
 /***/ }),
 /* 67 */
@@ -5020,6 +5020,3110 @@ exports.default = PremiumUpperQuote;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _stringify = __webpack_require__(312);
+
+var _stringify2 = _interopRequireDefault(_stringify);
+
+var _extends2 = __webpack_require__(314);
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _getPrototypeOf = __webpack_require__(323);
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = __webpack_require__(327);
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = __webpack_require__(328);
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = __webpack_require__(332);
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = __webpack_require__(354);
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = __webpack_require__(8);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(18);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _lottieWeb = __webpack_require__(362);
+
+var _lottieWeb2 = _interopRequireDefault(_lottieWeb);
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+var Lottie = function (_React$Component) {
+  (0, _inherits3.default)(Lottie, _React$Component);
+
+  function Lottie() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    (0, _classCallCheck3.default)(this, Lottie);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = Lottie.__proto__ || (0, _getPrototypeOf2.default)(Lottie)).call.apply(_ref, [this].concat(args))), _this), _this.handleClickToPause = function () {
+      // The pause() method is for handling pausing by passing a prop isPaused
+      // This method is for handling the ability to pause by clicking on the animation
+      if (_this.anim.isPaused) {
+        _this.anim.play();
+      } else {
+        _this.anim.pause();
+      }
+    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+  }
+
+  (0, _createClass3.default)(Lottie, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _props = this.props,
+          options = _props.options,
+          playSegments = _props.playSegments,
+          goToAndPlay = _props.goToAndPlay,
+          goToAndStop = _props.goToAndStop,
+          eventListeners = _props.eventListeners;
+      var loop = options.loop,
+          autoplay = options.autoplay,
+          animationData = options.animationData,
+          rendererSettings = options.rendererSettings;
+
+      this.options = {
+        container: this.el,
+        renderer: 'svg',
+        loop: loop !== false,
+        autoplay: autoplay !== false,
+        playSegments: playSegments.segments !== null,
+        goToAndPlay: goToAndPlay.value !== null,
+        goToAndStop: goToAndStop.value !== null,
+        animationData: animationData,
+        rendererSettings: rendererSettings
+      };
+
+      this.options = (0, _extends3.default)({}, this.options, options);
+      this.anim = _lottieWeb2.default.loadAnimation(this.options);
+
+      // Immediately handle goTo's if necessary.
+      if (this.options.goToAndPlay) {
+        this.goToAndPlay();
+      }
+      if (this.options.goToAndStop) {
+        this.goToAndStop();
+      }
+      if (this.options.playSegments) {
+        this.playSegments();
+      }
+      this.registerEvents(eventListeners);
+    }
+  }, {
+    key: 'componentWillUpdate',
+    value: function componentWillUpdate(nextProps /* , nextState */) {
+      /* Recreate the animation handle if the data is changed */
+      if (this.options.animationData !== nextProps.options.animationData) {
+        this.deRegisterEvents(this.props.eventListeners);
+        this.destroy();
+        this.options = (0, _extends3.default)({}, this.options, nextProps.options);
+        this.anim = _lottieWeb2.default.loadAnimation(this.options);
+        this.registerEvents(nextProps.eventListeners);
+      }
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate(prevProps) {
+      if (this.props.isStopped) {
+        this.stop();
+      } else if (this.options.playSegments) {
+        this.playSegments();
+      } else {
+        this.play();
+      }
+
+      if ((0, _stringify2.default)(this.props.goToAndPlay) !== (0, _stringify2.default)(prevProps.goToAndPlay)) {
+        this.goToAndPlay();
+      }
+
+      if ((0, _stringify2.default)(this.props.goToAndStop) !== (0, _stringify2.default)(prevProps.goToAndStop)) {
+        this.goToAndStop();
+      }
+
+      this.pause();
+      this.setSpeed();
+      this.setDirection();
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      this.deRegisterEvents(this.props.eventListeners);
+      this.destroy();
+      this.options.animationData = null;
+      this.anim = null;
+    }
+  }, {
+    key: 'setSpeed',
+    value: function setSpeed() {
+      this.anim.setSpeed(this.props.speed);
+    }
+  }, {
+    key: 'setDirection',
+    value: function setDirection() {
+      this.anim.setDirection(this.props.direction);
+    }
+  }, {
+    key: 'play',
+    value: function play() {
+      this.anim.play();
+    }
+  }, {
+    key: 'playSegments',
+    value: function playSegments() {
+      var _props$playSegments = this.props.playSegments,
+          segments = _props$playSegments.segments,
+          forceFlag = _props$playSegments.forceFlag;
+
+      this.anim.playSegments(segments, forceFlag);
+    }
+  }, {
+    key: 'stop',
+    value: function stop() {
+      this.anim.stop();
+    }
+  }, {
+    key: 'pause',
+    value: function pause() {
+      if (this.props.isPaused && !this.anim.isPaused) {
+        this.anim.pause();
+      } else if (!this.props.isPaused && this.anim.isPaused) {
+        this.anim.pause();
+      }
+    }
+  }, {
+    key: 'goToAndPlay',
+    value: function goToAndPlay() {
+      console.log('#goToAndPlay ', this.props.goToAndPlay);
+      var _props$goToAndPlay = this.props.goToAndPlay,
+          value = _props$goToAndPlay.value,
+          isFrame = _props$goToAndPlay.isFrame;
+
+      this.anim.goToAndPlay(value, isFrame);
+    }
+  }, {
+    key: 'goToAndStop',
+    value: function goToAndStop() {
+      var _props$goToAndStop = this.props.goToAndStop,
+          value = _props$goToAndStop.value,
+          isFrame = _props$goToAndStop.isFrame;
+
+      this.anim.goToAndStop(value, isFrame);
+    }
+  }, {
+    key: 'destroy',
+    value: function destroy() {
+      this.anim.destroy();
+    }
+  }, {
+    key: 'registerEvents',
+    value: function registerEvents(eventListeners) {
+      var _this2 = this;
+
+      eventListeners.forEach(function (eventListener) {
+        _this2.anim.addEventListener(eventListener.eventName, eventListener.callback);
+      });
+    }
+  }, {
+    key: 'deRegisterEvents',
+    value: function deRegisterEvents(eventListeners) {
+      var _this3 = this;
+
+      eventListeners.forEach(function (eventListener) {
+        _this3.anim.removeEventListener(eventListener.eventName, eventListener.callback);
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this4 = this;
+
+      var _props2 = this.props,
+          width = _props2.width,
+          height = _props2.height,
+          ariaRole = _props2.ariaRole,
+          ariaLabel = _props2.ariaLabel,
+          isClickToPauseDisabled = _props2.isClickToPauseDisabled,
+          title = _props2.title;
+
+      var getSize = function getSize(initial) {
+        var size = void 0;
+
+        if (typeof initial === 'number') {
+          size = initial + 'px';
+        } else {
+          size = initial || '100%';
+        }
+
+        return size;
+      };
+
+      var lottieStyles = (0, _extends3.default)({
+        width: getSize(width),
+        height: getSize(height),
+        overflow: 'hidden',
+        margin: '0 auto',
+        outline: 'none'
+      }, this.props.style);
+
+      var onClickHandler = isClickToPauseDisabled ? function () {
+        return null;
+      } : this.handleClickToPause;
+
+      return (
+        // Bug with eslint rules https://github.com/airbnb/javascript/issues/1374
+        // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+        _react2.default.createElement('div', {
+          ref: function ref(c) {
+            _this4.el = c;
+          },
+          style: lottieStyles,
+          onClick: onClickHandler,
+          title: title,
+          role: ariaRole,
+          'aria-label': ariaLabel,
+          tabIndex: '0'
+        })
+      );
+    }
+  }]);
+  return Lottie;
+}(_react2.default.Component);
+
+exports.default = Lottie;
+
+Lottie.propTypes = {
+  eventListeners: _propTypes2.default.arrayOf(_propTypes2.default.object),
+  options: _propTypes2.default.object.isRequired,
+  height: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
+  width: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
+  isStopped: _propTypes2.default.bool,
+  isPaused: _propTypes2.default.bool,
+  goToAndPlay: _propTypes2.default.shape({
+    value: _propTypes2.default.number,
+    isFrame: _propTypes2.default.bool
+  }),
+  goToAndStop: _propTypes2.default.shape({
+    value: _propTypes2.default.number,
+    isFrame: _propTypes2.default.bool
+  }),
+  speed: _propTypes2.default.number,
+  playSegments: _propTypes2.default.shape({
+    segments: _propTypes2.default.oneOfType([_propTypes2.default.arrayOf(_propTypes2.default.number), _propTypes2.default.arrayOf(_propTypes2.default.arrayOf(_propTypes2.default.number))]),
+    forceFlag: _propTypes2.default.bool
+  }),
+  direction: _propTypes2.default.number,
+  ariaRole: _propTypes2.default.string,
+  ariaLabel: _propTypes2.default.string,
+  isClickToPauseDisabled: _propTypes2.default.bool,
+  title: _propTypes2.default.string,
+  style: _propTypes2.default.string
+};
+
+Lottie.defaultProps = {
+  eventListeners: [],
+  isStopped: false,
+  isPaused: false,
+  goToAndPlay: {
+    value: null,
+    isFrame: false
+  },
+  goToAndStop: {
+    value: null,
+    isFrame: false
+  },
+  playSegments: {
+    segments: null,
+    forceFlag: false
+  },
+  speed: 1,
+  ariaRole: 'button',
+  ariaLabel: 'animation',
+  isClickToPauseDisabled: false,
+  title: ''
+};
+
+/***/ }),
+/* 70 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// 7.1.1 ToPrimitive(input [, PreferredType])
+var isObject = __webpack_require__(33);
+// instead of the ES6 spec version, we didn't implement @@toPrimitive case
+// and the second argument - flag - preferred type is a string
+module.exports = function (it, S) {
+  if (!isObject(it)) return it;
+  var fn, val;
+  if (S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
+  if (typeof (fn = it.valueOf) == 'function' && !isObject(val = fn.call(it))) return val;
+  if (!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
+  throw TypeError("Can't convert object to primitive value");
+};
+
+/***/ }),
+/* 71 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// 7.2.1 RequireObjectCoercible(argument)
+module.exports = function (it) {
+  if (it == undefined) throw TypeError("Can't call method on  " + it);
+  return it;
+};
+
+/***/ }),
+/* 72 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// 7.1.4 ToInteger
+var ceil = Math.ceil;
+var floor = Math.floor;
+module.exports = function (it) {
+  return isNaN(it = +it) ? 0 : (it > 0 ? floor : ceil)(it);
+};
+
+/***/ }),
+/* 73 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var shared = __webpack_require__(74)('keys');
+var uid = __webpack_require__(55);
+module.exports = function (key) {
+  return shared[key] || (shared[key] = uid(key));
+};
+
+/***/ }),
+/* 74 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var core = __webpack_require__(13);
+var global = __webpack_require__(19);
+var SHARED = '__core-js_shared__';
+var store = global[SHARED] || (global[SHARED] = {});
+
+(module.exports = function (key, value) {
+  return store[key] || (store[key] = value !== undefined ? value : {});
+})('versions', []).push({
+  version: core.version,
+  mode: __webpack_require__(54) ? 'pure' : 'global',
+  copyright: '© 2018 Denis Pushkarev (zloirock.ru)'
+});
+
+/***/ }),
+/* 75 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// IE 8- don't enum bug keys
+module.exports = 'constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf'.split(',');
+
+/***/ }),
+/* 76 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.f = Object.getOwnPropertySymbols;
+
+/***/ }),
+/* 77 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// 7.1.13 ToObject(argument)
+var defined = __webpack_require__(71);
+module.exports = function (it) {
+  return Object(defined(it));
+};
+
+/***/ }),
+/* 78 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = {};
+
+/***/ }),
+/* 79 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
+var anObject = __webpack_require__(41);
+var dPs = __webpack_require__(338);
+var enumBugKeys = __webpack_require__(75);
+var IE_PROTO = __webpack_require__(73)('IE_PROTO');
+var Empty = function Empty() {/* empty */};
+var PROTOTYPE = 'prototype';
+
+// Create object with fake `null` prototype: use iframe Object with cleared prototype
+var _createDict = function createDict() {
+  // Thrash, waste and sodomy: IE GC bug
+  var iframe = __webpack_require__(117)('iframe');
+  var i = enumBugKeys.length;
+  var lt = '<';
+  var gt = '>';
+  var iframeDocument;
+  iframe.style.display = 'none';
+  __webpack_require__(339).appendChild(iframe);
+  iframe.src = 'javascript:'; // eslint-disable-line no-script-url
+  // createDict = iframe.contentWindow.Object;
+  // html.removeChild(iframe);
+  iframeDocument = iframe.contentWindow.document;
+  iframeDocument.open();
+  iframeDocument.write(lt + 'script' + gt + 'document.F=Object' + lt + '/script' + gt);
+  iframeDocument.close();
+  _createDict = iframeDocument.F;
+  while (i--) {
+    delete _createDict[PROTOTYPE][enumBugKeys[i]];
+  }return _createDict();
+};
+
+module.exports = Object.create || function create(O, Properties) {
+  var result;
+  if (O !== null) {
+    Empty[PROTOTYPE] = anObject(O);
+    result = new Empty();
+    Empty[PROTOTYPE] = null;
+    // add "__proto__" for Object.getPrototypeOf polyfill
+    result[IE_PROTO] = O;
+  } else result = _createDict();
+  return Properties === undefined ? result : dPs(result, Properties);
+};
+
+/***/ }),
+/* 80 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var def = __webpack_require__(24).f;
+var has = __webpack_require__(26);
+var TAG = __webpack_require__(36)('toStringTag');
+
+module.exports = function (it, tag, stat) {
+  if (it && !has(it = stat ? it : it.prototype, TAG)) def(it, TAG, { configurable: true, value: tag });
+};
+
+/***/ }),
+/* 81 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.f = __webpack_require__(36);
+
+/***/ }),
+/* 82 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var global = __webpack_require__(19);
+var core = __webpack_require__(13);
+var LIBRARY = __webpack_require__(54);
+var wksExt = __webpack_require__(81);
+var defineProperty = __webpack_require__(24).f;
+module.exports = function (name) {
+  var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
+  if (name.charAt(0) != '_' && !(name in $Symbol)) defineProperty($Symbol, name, { value: wksExt.f(name) });
+};
+
+/***/ }),
+/* 83 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var baseGet = __webpack_require__(84);
+
+/**
+ * Gets the value at `path` of `object`. If the resolved value is
+ * `undefined`, the `defaultValue` is returned in its place.
+ *
+ * @static
+ * @memberOf _
+ * @since 3.7.0
+ * @category Object
+ * @param {Object} object The object to query.
+ * @param {Array|string} path The path of the property to get.
+ * @param {*} [defaultValue] The value returned for `undefined` resolved values.
+ * @returns {*} Returns the resolved value.
+ * @example
+ *
+ * var object = { 'a': [{ 'b': { 'c': 3 } }] };
+ *
+ * _.get(object, 'a[0].b.c');
+ * // => 3
+ *
+ * _.get(object, ['a', '0', 'b', 'c']);
+ * // => 3
+ *
+ * _.get(object, 'a.b.c', 'default');
+ * // => 'default'
+ */
+function get(object, path, defaultValue) {
+  var result = object == null ? undefined : baseGet(object, path);
+  return result === undefined ? defaultValue : result;
+}
+
+module.exports = get;
+
+/***/ }),
+/* 84 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var castPath = __webpack_require__(85),
+    toKey = __webpack_require__(48);
+
+/**
+ * The base implementation of `_.get` without support for default values.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @param {Array|string} path The path of the property to get.
+ * @returns {*} Returns the resolved value.
+ */
+function baseGet(object, path) {
+  path = castPath(path, object);
+
+  var index = 0,
+      length = path.length;
+
+  while (object != null && index < length) {
+    object = object[toKey(path[index++])];
+  }
+  return index && index == length ? object : undefined;
+}
+
+module.exports = baseGet;
+
+/***/ }),
+/* 85 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var isArray = __webpack_require__(15),
+    isKey = __webpack_require__(57),
+    stringToPath = __webpack_require__(134),
+    toString = __webpack_require__(158);
+
+/**
+ * Casts `value` to a path array if it's not one.
+ *
+ * @private
+ * @param {*} value The value to inspect.
+ * @param {Object} [object] The object to query keys on.
+ * @returns {Array} Returns the cast property path array.
+ */
+function castPath(value, object) {
+  if (isArray(value)) {
+    return value;
+  }
+  return isKey(value, object) ? [value] : stringToPath(toString(value));
+}
+
+module.exports = castPath;
+
+/***/ }),
+/* 86 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(global) {
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/** Detect free variable `global` from Node.js. */
+var freeGlobal = (typeof global === 'undefined' ? 'undefined' : _typeof(global)) == 'object' && global && global.Object === Object && global;
+
+module.exports = freeGlobal;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(131)))
+
+/***/ }),
+/* 87 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var baseGetTag = __webpack_require__(37),
+    isObject = __webpack_require__(60);
+
+/** `Object#toString` result references. */
+var asyncTag = '[object AsyncFunction]',
+    funcTag = '[object Function]',
+    genTag = '[object GeneratorFunction]',
+    proxyTag = '[object Proxy]';
+
+/**
+ * Checks if `value` is classified as a `Function` object.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a function, else `false`.
+ * @example
+ *
+ * _.isFunction(_);
+ * // => true
+ *
+ * _.isFunction(/abc/);
+ * // => false
+ */
+function isFunction(value) {
+    if (!isObject(value)) {
+        return false;
+    }
+    // The use of `Object#toString` avoids issues with the `typeof` operator
+    // in Safari 9 which returns 'object' for typed arrays and other constructors.
+    var tag = baseGetTag(value);
+    return tag == funcTag || tag == genTag || tag == asyncTag || tag == proxyTag;
+}
+
+module.exports = isFunction;
+
+/***/ }),
+/* 88 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/** Used for built-in method references. */
+var funcProto = Function.prototype;
+
+/** Used to resolve the decompiled source of functions. */
+var funcToString = funcProto.toString;
+
+/**
+ * Converts `func` to its source code.
+ *
+ * @private
+ * @param {Function} func The function to convert.
+ * @returns {string} Returns the source code.
+ */
+function toSource(func) {
+  if (func != null) {
+    try {
+      return funcToString.call(func);
+    } catch (e) {}
+    try {
+      return func + '';
+    } catch (e) {}
+  }
+  return '';
+}
+
+module.exports = toSource;
+
+/***/ }),
+/* 89 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Performs a
+ * [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
+ * comparison between two values to determine if they are equivalent.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to compare.
+ * @param {*} other The other value to compare.
+ * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
+ * @example
+ *
+ * var object = { 'a': 1 };
+ * var other = { 'a': 1 };
+ *
+ * _.eq(object, object);
+ * // => true
+ *
+ * _.eq(object, other);
+ * // => false
+ *
+ * _.eq('a', 'a');
+ * // => true
+ *
+ * _.eq('a', Object('a'));
+ * // => false
+ *
+ * _.eq(NaN, NaN);
+ * // => true
+ */
+function eq(value, other) {
+  return value === other || value !== value && other !== other;
+}
+
+module.exports = eq;
+
+/***/ }),
+/* 90 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * A specialized version of `_.map` for arrays without support for iteratee
+ * shorthands.
+ *
+ * @private
+ * @param {Array} [array] The array to iterate over.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @returns {Array} Returns the new mapped array.
+ */
+function arrayMap(array, iteratee) {
+  var index = -1,
+      length = array == null ? 0 : array.length,
+      result = Array(length);
+
+  while (++index < length) {
+    result[index] = iteratee(array[index], index, array);
+  }
+  return result;
+}
+
+module.exports = arrayMap;
+
+/***/ }),
+/* 91 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var arrayMap = __webpack_require__(90),
+    baseIteratee = __webpack_require__(160),
+    baseMap = __webpack_require__(210),
+    isArray = __webpack_require__(15);
+
+/**
+ * Creates an array of values by running each element in `collection` thru
+ * `iteratee`. The iteratee is invoked with three arguments:
+ * (value, index|key, collection).
+ *
+ * Many lodash methods are guarded to work as iteratees for methods like
+ * `_.every`, `_.filter`, `_.map`, `_.mapValues`, `_.reject`, and `_.some`.
+ *
+ * The guarded methods are:
+ * `ary`, `chunk`, `curry`, `curryRight`, `drop`, `dropRight`, `every`,
+ * `fill`, `invert`, `parseInt`, `random`, `range`, `rangeRight`, `repeat`,
+ * `sampleSize`, `slice`, `some`, `sortBy`, `split`, `take`, `takeRight`,
+ * `template`, `trim`, `trimEnd`, `trimStart`, and `words`
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Collection
+ * @param {Array|Object} collection The collection to iterate over.
+ * @param {Function} [iteratee=_.identity] The function invoked per iteration.
+ * @returns {Array} Returns the new mapped array.
+ * @example
+ *
+ * function square(n) {
+ *   return n * n;
+ * }
+ *
+ * _.map([4, 8], square);
+ * // => [16, 64]
+ *
+ * _.map({ 'a': 4, 'b': 8 }, square);
+ * // => [16, 64] (iteration order is not guaranteed)
+ *
+ * var users = [
+ *   { 'user': 'barney' },
+ *   { 'user': 'fred' }
+ * ];
+ *
+ * // The `_.property` iteratee shorthand.
+ * _.map(users, 'user');
+ * // => ['barney', 'fred']
+ */
+function map(collection, iteratee) {
+  var func = isArray(collection) ? arrayMap : baseMap;
+  return func(collection, baseIteratee(iteratee, 3));
+}
+
+module.exports = map;
+
+/***/ }),
+/* 92 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var ListCache = __webpack_require__(45),
+    stackClear = __webpack_require__(163),
+    stackDelete = __webpack_require__(164),
+    stackGet = __webpack_require__(165),
+    stackHas = __webpack_require__(166),
+    stackSet = __webpack_require__(167);
+
+/**
+ * Creates a stack cache object to store key-value pairs.
+ *
+ * @private
+ * @constructor
+ * @param {Array} [entries] The key-value pairs to cache.
+ */
+function Stack(entries) {
+  var data = this.__data__ = new ListCache(entries);
+  this.size = data.size;
+}
+
+// Add methods to `Stack`.
+Stack.prototype.clear = stackClear;
+Stack.prototype['delete'] = stackDelete;
+Stack.prototype.get = stackGet;
+Stack.prototype.has = stackHas;
+Stack.prototype.set = stackSet;
+
+module.exports = Stack;
+
+/***/ }),
+/* 93 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var baseIsEqualDeep = __webpack_require__(168),
+    isObjectLike = __webpack_require__(38);
+
+/**
+ * The base implementation of `_.isEqual` which supports partial comparisons
+ * and tracks traversed objects.
+ *
+ * @private
+ * @param {*} value The value to compare.
+ * @param {*} other The other value to compare.
+ * @param {boolean} bitmask The bitmask flags.
+ *  1 - Unordered comparison
+ *  2 - Partial comparison
+ * @param {Function} [customizer] The function to customize comparisons.
+ * @param {Object} [stack] Tracks traversed `value` and `other` objects.
+ * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
+ */
+function baseIsEqual(value, other, bitmask, customizer, stack) {
+  if (value === other) {
+    return true;
+  }
+  if (value == null || other == null || !isObjectLike(value) && !isObjectLike(other)) {
+    return value !== value && other !== other;
+  }
+  return baseIsEqualDeep(value, other, bitmask, customizer, baseIsEqual, stack);
+}
+
+module.exports = baseIsEqual;
+
+/***/ }),
+/* 94 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var SetCache = __webpack_require__(169),
+    arraySome = __webpack_require__(172),
+    cacheHas = __webpack_require__(173);
+
+/** Used to compose bitmasks for value comparisons. */
+var COMPARE_PARTIAL_FLAG = 1,
+    COMPARE_UNORDERED_FLAG = 2;
+
+/**
+ * A specialized version of `baseIsEqualDeep` for arrays with support for
+ * partial deep comparisons.
+ *
+ * @private
+ * @param {Array} array The array to compare.
+ * @param {Array} other The other array to compare.
+ * @param {number} bitmask The bitmask flags. See `baseIsEqual` for more details.
+ * @param {Function} customizer The function to customize comparisons.
+ * @param {Function} equalFunc The function to determine equivalents of values.
+ * @param {Object} stack Tracks traversed `array` and `other` objects.
+ * @returns {boolean} Returns `true` if the arrays are equivalent, else `false`.
+ */
+function equalArrays(array, other, bitmask, customizer, equalFunc, stack) {
+  var isPartial = bitmask & COMPARE_PARTIAL_FLAG,
+      arrLength = array.length,
+      othLength = other.length;
+
+  if (arrLength != othLength && !(isPartial && othLength > arrLength)) {
+    return false;
+  }
+  // Check that cyclic values are equal.
+  var arrStacked = stack.get(array);
+  var othStacked = stack.get(other);
+  if (arrStacked && othStacked) {
+    return arrStacked == other && othStacked == array;
+  }
+  var index = -1,
+      result = true,
+      seen = bitmask & COMPARE_UNORDERED_FLAG ? new SetCache() : undefined;
+
+  stack.set(array, other);
+  stack.set(other, array);
+
+  // Ignore non-index properties.
+  while (++index < arrLength) {
+    var arrValue = array[index],
+        othValue = other[index];
+
+    if (customizer) {
+      var compared = isPartial ? customizer(othValue, arrValue, index, other, array, stack) : customizer(arrValue, othValue, index, array, other, stack);
+    }
+    if (compared !== undefined) {
+      if (compared) {
+        continue;
+      }
+      result = false;
+      break;
+    }
+    // Recursively compare arrays (susceptible to call stack limits).
+    if (seen) {
+      if (!arraySome(other, function (othValue, othIndex) {
+        if (!cacheHas(seen, othIndex) && (arrValue === othValue || equalFunc(arrValue, othValue, bitmask, customizer, stack))) {
+          return seen.push(othIndex);
+        }
+      })) {
+        result = false;
+        break;
+      }
+    } else if (!(arrValue === othValue || equalFunc(arrValue, othValue, bitmask, customizer, stack))) {
+      result = false;
+      break;
+    }
+  }
+  stack['delete'](array);
+  stack['delete'](other);
+  return result;
+}
+
+module.exports = equalArrays;
+
+/***/ }),
+/* 95 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var baseIsArguments = __webpack_require__(187),
+    isObjectLike = __webpack_require__(38);
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/** Built-in value references. */
+var propertyIsEnumerable = objectProto.propertyIsEnumerable;
+
+/**
+ * Checks if `value` is likely an `arguments` object.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an `arguments` object,
+ *  else `false`.
+ * @example
+ *
+ * _.isArguments(function() { return arguments; }());
+ * // => true
+ *
+ * _.isArguments([1, 2, 3]);
+ * // => false
+ */
+var isArguments = baseIsArguments(function () {
+    return arguments;
+}()) ? baseIsArguments : function (value) {
+    return isObjectLike(value) && hasOwnProperty.call(value, 'callee') && !propertyIsEnumerable.call(value, 'callee');
+};
+
+module.exports = isArguments;
+
+/***/ }),
+/* 96 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var root = __webpack_require__(16),
+    stubFalse = __webpack_require__(188);
+
+/** Detect free variable `exports`. */
+var freeExports = ( false ? 'undefined' : _typeof(exports)) == 'object' && exports && !exports.nodeType && exports;
+
+/** Detect free variable `module`. */
+var freeModule = freeExports && ( false ? 'undefined' : _typeof(module)) == 'object' && module && !module.nodeType && module;
+
+/** Detect the popular CommonJS extension `module.exports`. */
+var moduleExports = freeModule && freeModule.exports === freeExports;
+
+/** Built-in value references. */
+var Buffer = moduleExports ? root.Buffer : undefined;
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeIsBuffer = Buffer ? Buffer.isBuffer : undefined;
+
+/**
+ * Checks if `value` is a buffer.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.3.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a buffer, else `false`.
+ * @example
+ *
+ * _.isBuffer(new Buffer(2));
+ * // => true
+ *
+ * _.isBuffer(new Uint8Array(2));
+ * // => false
+ */
+var isBuffer = nativeIsBuffer || stubFalse;
+
+module.exports = isBuffer;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(49)(module)))
+
+/***/ }),
+/* 97 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/** Used as references for various `Number` constants. */
+var MAX_SAFE_INTEGER = 9007199254740991;
+
+/** Used to detect unsigned integer values. */
+var reIsUint = /^(?:0|[1-9]\d*)$/;
+
+/**
+ * Checks if `value` is a valid array-like index.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @param {number} [length=MAX_SAFE_INTEGER] The upper bounds of a valid index.
+ * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
+ */
+function isIndex(value, length) {
+  var type = typeof value === 'undefined' ? 'undefined' : _typeof(value);
+  length = length == null ? MAX_SAFE_INTEGER : length;
+
+  return !!length && (type == 'number' || type != 'symbol' && reIsUint.test(value)) && value > -1 && value % 1 == 0 && value < length;
+}
+
+module.exports = isIndex;
+
+/***/ }),
+/* 98 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var baseIsTypedArray = __webpack_require__(189),
+    baseUnary = __webpack_require__(190),
+    nodeUtil = __webpack_require__(191);
+
+/* Node.js helper references. */
+var nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
+
+/**
+ * Checks if `value` is classified as a typed array.
+ *
+ * @static
+ * @memberOf _
+ * @since 3.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a typed array, else `false`.
+ * @example
+ *
+ * _.isTypedArray(new Uint8Array);
+ * // => true
+ *
+ * _.isTypedArray([]);
+ * // => false
+ */
+var isTypedArray = nodeIsTypedArray ? baseUnary(nodeIsTypedArray) : baseIsTypedArray;
+
+module.exports = isTypedArray;
+
+/***/ }),
+/* 99 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var isObject = __webpack_require__(60);
+
+/**
+ * Checks if `value` is suitable for strict equality comparisons, i.e. `===`.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` if suitable for strict
+ *  equality comparisons, else `false`.
+ */
+function isStrictComparable(value) {
+  return value === value && !isObject(value);
+}
+
+module.exports = isStrictComparable;
+
+/***/ }),
+/* 100 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * A specialized version of `matchesProperty` for source values suitable
+ * for strict equality comparisons, i.e. `===`.
+ *
+ * @private
+ * @param {string} key The key of the property to get.
+ * @param {*} srcValue The value to match.
+ * @returns {Function} Returns the new spec function.
+ */
+function matchesStrictComparable(key, srcValue) {
+  return function (object) {
+    if (object == null) {
+      return false;
+    }
+    return object[key] === srcValue && (srcValue !== undefined || key in Object(object));
+  };
+}
+
+module.exports = matchesStrictComparable;
+
+/***/ }),
+/* 101 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+var __WEBPACK_AMD_DEFINE_RESULT__;
+
+/* Web Font Loader v1.6.28 - (c) Adobe Systems, Google. License: Apache 2.0 */(function () {
+  function aa(a, b, c) {
+    return a.call.apply(a.bind, arguments);
+  }function ba(a, b, c) {
+    if (!a) throw Error();if (2 < arguments.length) {
+      var d = Array.prototype.slice.call(arguments, 2);return function () {
+        var c = Array.prototype.slice.call(arguments);Array.prototype.unshift.apply(c, d);return a.apply(b, c);
+      };
+    }return function () {
+      return a.apply(b, arguments);
+    };
+  }function p(a, b, c) {
+    p = Function.prototype.bind && -1 != Function.prototype.bind.toString().indexOf("native code") ? aa : ba;return p.apply(null, arguments);
+  }var q = Date.now || function () {
+    return +new Date();
+  };function ca(a, b) {
+    this.a = a;this.o = b || a;this.c = this.o.document;
+  }var da = !!window.FontFace;function t(a, b, c, d) {
+    b = a.c.createElement(b);if (c) for (var e in c) {
+      c.hasOwnProperty(e) && ("style" == e ? b.style.cssText = c[e] : b.setAttribute(e, c[e]));
+    }d && b.appendChild(a.c.createTextNode(d));return b;
+  }function u(a, b, c) {
+    a = a.c.getElementsByTagName(b)[0];a || (a = document.documentElement);a.insertBefore(c, a.lastChild);
+  }function v(a) {
+    a.parentNode && a.parentNode.removeChild(a);
+  }
+  function w(a, b, c) {
+    b = b || [];c = c || [];for (var d = a.className.split(/\s+/), e = 0; e < b.length; e += 1) {
+      for (var f = !1, g = 0; g < d.length; g += 1) {
+        if (b[e] === d[g]) {
+          f = !0;break;
+        }
+      }f || d.push(b[e]);
+    }b = [];for (e = 0; e < d.length; e += 1) {
+      f = !1;for (g = 0; g < c.length; g += 1) {
+        if (d[e] === c[g]) {
+          f = !0;break;
+        }
+      }f || b.push(d[e]);
+    }a.className = b.join(" ").replace(/\s+/g, " ").replace(/^\s+|\s+$/, "");
+  }function y(a, b) {
+    for (var c = a.className.split(/\s+/), d = 0, e = c.length; d < e; d++) {
+      if (c[d] == b) return !0;
+    }return !1;
+  }
+  function ea(a) {
+    return a.o.location.hostname || a.a.location.hostname;
+  }function z(a, b, c) {
+    function d() {
+      m && e && f && (m(g), m = null);
+    }b = t(a, "link", { rel: "stylesheet", href: b, media: "all" });var e = !1,
+        f = !0,
+        g = null,
+        m = c || null;da ? (b.onload = function () {
+      e = !0;d();
+    }, b.onerror = function () {
+      e = !0;g = Error("Stylesheet failed to load");d();
+    }) : setTimeout(function () {
+      e = !0;d();
+    }, 0);u(a, "head", b);
+  }
+  function A(a, b, c, d) {
+    var e = a.c.getElementsByTagName("head")[0];if (e) {
+      var f = t(a, "script", { src: b }),
+          g = !1;f.onload = f.onreadystatechange = function () {
+        g || this.readyState && "loaded" != this.readyState && "complete" != this.readyState || (g = !0, c && c(null), f.onload = f.onreadystatechange = null, "HEAD" == f.parentNode.tagName && e.removeChild(f));
+      };e.appendChild(f);setTimeout(function () {
+        g || (g = !0, c && c(Error("Script load timeout")));
+      }, d || 5E3);return f;
+    }return null;
+  };function B() {
+    this.a = 0;this.c = null;
+  }function C(a) {
+    a.a++;return function () {
+      a.a--;D(a);
+    };
+  }function E(a, b) {
+    a.c = b;D(a);
+  }function D(a) {
+    0 == a.a && a.c && (a.c(), a.c = null);
+  };function F(a) {
+    this.a = a || "-";
+  }F.prototype.c = function (a) {
+    for (var b = [], c = 0; c < arguments.length; c++) {
+      b.push(arguments[c].replace(/[\W_]+/g, "").toLowerCase());
+    }return b.join(this.a);
+  };function G(a, b) {
+    this.c = a;this.f = 4;this.a = "n";var c = (b || "n4").match(/^([nio])([1-9])$/i);c && (this.a = c[1], this.f = parseInt(c[2], 10));
+  }function fa(a) {
+    return H(a) + " " + (a.f + "00") + " 300px " + I(a.c);
+  }function I(a) {
+    var b = [];a = a.split(/,\s*/);for (var c = 0; c < a.length; c++) {
+      var d = a[c].replace(/['"]/g, "");-1 != d.indexOf(" ") || /^\d/.test(d) ? b.push("'" + d + "'") : b.push(d);
+    }return b.join(",");
+  }function J(a) {
+    return a.a + a.f;
+  }function H(a) {
+    var b = "normal";"o" === a.a ? b = "oblique" : "i" === a.a && (b = "italic");return b;
+  }
+  function ga(a) {
+    var b = 4,
+        c = "n",
+        d = null;a && ((d = a.match(/(normal|oblique|italic)/i)) && d[1] && (c = d[1].substr(0, 1).toLowerCase()), (d = a.match(/([1-9]00|normal|bold)/i)) && d[1] && (/bold/i.test(d[1]) ? b = 7 : /[1-9]00/.test(d[1]) && (b = parseInt(d[1].substr(0, 1), 10))));return c + b;
+  };function ha(a, b) {
+    this.c = a;this.f = a.o.document.documentElement;this.h = b;this.a = new F("-");this.j = !1 !== b.events;this.g = !1 !== b.classes;
+  }function ia(a) {
+    a.g && w(a.f, [a.a.c("wf", "loading")]);K(a, "loading");
+  }function L(a) {
+    if (a.g) {
+      var b = y(a.f, a.a.c("wf", "active")),
+          c = [],
+          d = [a.a.c("wf", "loading")];b || c.push(a.a.c("wf", "inactive"));w(a.f, c, d);
+    }K(a, "inactive");
+  }function K(a, b, c) {
+    if (a.j && a.h[b]) if (c) a.h[b](c.c, J(c));else a.h[b]();
+  };function ja() {
+    this.c = {};
+  }function ka(a, b, c) {
+    var d = [],
+        e;for (e in b) {
+      if (b.hasOwnProperty(e)) {
+        var f = a.c[e];f && d.push(f(b[e], c));
+      }
+    }return d;
+  };function M(a, b) {
+    this.c = a;this.f = b;this.a = t(this.c, "span", { "aria-hidden": "true" }, this.f);
+  }function N(a) {
+    u(a.c, "body", a.a);
+  }function O(a) {
+    return "display:block;position:absolute;top:-9999px;left:-9999px;font-size:300px;width:auto;height:auto;line-height:normal;margin:0;padding:0;font-variant:normal;white-space:nowrap;font-family:" + I(a.c) + ";" + ("font-style:" + H(a) + ";font-weight:" + (a.f + "00") + ";");
+  };function P(a, b, c, d, e, f) {
+    this.g = a;this.j = b;this.a = d;this.c = c;this.f = e || 3E3;this.h = f || void 0;
+  }P.prototype.start = function () {
+    var a = this.c.o.document,
+        b = this,
+        c = q(),
+        d = new Promise(function (d, e) {
+      function f() {
+        q() - c >= b.f ? e() : a.fonts.load(fa(b.a), b.h).then(function (a) {
+          1 <= a.length ? d() : setTimeout(f, 25);
+        }, function () {
+          e();
+        });
+      }f();
+    }),
+        e = null,
+        f = new Promise(function (a, d) {
+      e = setTimeout(d, b.f);
+    });Promise.race([f, d]).then(function () {
+      e && (clearTimeout(e), e = null);b.g(b.a);
+    }, function () {
+      b.j(b.a);
+    });
+  };function Q(a, b, c, d, e, f, g) {
+    this.v = a;this.B = b;this.c = c;this.a = d;this.s = g || "BESbswy";this.f = {};this.w = e || 3E3;this.u = f || null;this.m = this.j = this.h = this.g = null;this.g = new M(this.c, this.s);this.h = new M(this.c, this.s);this.j = new M(this.c, this.s);this.m = new M(this.c, this.s);a = new G(this.a.c + ",serif", J(this.a));a = O(a);this.g.a.style.cssText = a;a = new G(this.a.c + ",sans-serif", J(this.a));a = O(a);this.h.a.style.cssText = a;a = new G("serif", J(this.a));a = O(a);this.j.a.style.cssText = a;a = new G("sans-serif", J(this.a));a = O(a);this.m.a.style.cssText = a;N(this.g);N(this.h);N(this.j);N(this.m);
+  }var R = { D: "serif", C: "sans-serif" },
+      S = null;function T() {
+    if (null === S) {
+      var a = /AppleWebKit\/([0-9]+)(?:\.([0-9]+))/.exec(window.navigator.userAgent);S = !!a && (536 > parseInt(a[1], 10) || 536 === parseInt(a[1], 10) && 11 >= parseInt(a[2], 10));
+    }return S;
+  }Q.prototype.start = function () {
+    this.f.serif = this.j.a.offsetWidth;this.f["sans-serif"] = this.m.a.offsetWidth;this.A = q();U(this);
+  };
+  function la(a, b, c) {
+    for (var d in R) {
+      if (R.hasOwnProperty(d) && b === a.f[R[d]] && c === a.f[R[d]]) return !0;
+    }return !1;
+  }function U(a) {
+    var b = a.g.a.offsetWidth,
+        c = a.h.a.offsetWidth,
+        d;(d = b === a.f.serif && c === a.f["sans-serif"]) || (d = T() && la(a, b, c));d ? q() - a.A >= a.w ? T() && la(a, b, c) && (null === a.u || a.u.hasOwnProperty(a.a.c)) ? V(a, a.v) : V(a, a.B) : ma(a) : V(a, a.v);
+  }function ma(a) {
+    setTimeout(p(function () {
+      U(this);
+    }, a), 50);
+  }function V(a, b) {
+    setTimeout(p(function () {
+      v(this.g.a);v(this.h.a);v(this.j.a);v(this.m.a);b(this.a);
+    }, a), 0);
+  };function W(a, b, c) {
+    this.c = a;this.a = b;this.f = 0;this.m = this.j = !1;this.s = c;
+  }var X = null;W.prototype.g = function (a) {
+    var b = this.a;b.g && w(b.f, [b.a.c("wf", a.c, J(a).toString(), "active")], [b.a.c("wf", a.c, J(a).toString(), "loading"), b.a.c("wf", a.c, J(a).toString(), "inactive")]);K(b, "fontactive", a);this.m = !0;na(this);
+  };
+  W.prototype.h = function (a) {
+    var b = this.a;if (b.g) {
+      var c = y(b.f, b.a.c("wf", a.c, J(a).toString(), "active")),
+          d = [],
+          e = [b.a.c("wf", a.c, J(a).toString(), "loading")];c || d.push(b.a.c("wf", a.c, J(a).toString(), "inactive"));w(b.f, d, e);
+    }K(b, "fontinactive", a);na(this);
+  };function na(a) {
+    0 == --a.f && a.j && (a.m ? (a = a.a, a.g && w(a.f, [a.a.c("wf", "active")], [a.a.c("wf", "loading"), a.a.c("wf", "inactive")]), K(a, "active")) : L(a.a));
+  };function oa(a) {
+    this.j = a;this.a = new ja();this.h = 0;this.f = this.g = !0;
+  }oa.prototype.load = function (a) {
+    this.c = new ca(this.j, a.context || this.j);this.g = !1 !== a.events;this.f = !1 !== a.classes;pa(this, new ha(this.c, a), a);
+  };
+  function qa(a, b, c, d, e) {
+    var f = 0 == --a.h;(a.f || a.g) && setTimeout(function () {
+      var a = e || null,
+          m = d || null || {};if (0 === c.length && f) L(b.a);else {
+        b.f += c.length;f && (b.j = f);var h,
+            l = [];for (h = 0; h < c.length; h++) {
+          var k = c[h],
+              n = m[k.c],
+              r = b.a,
+              x = k;r.g && w(r.f, [r.a.c("wf", x.c, J(x).toString(), "loading")]);K(r, "fontloading", x);r = null;if (null === X) if (window.FontFace) {
+            var x = /Gecko.*Firefox\/(\d+)/.exec(window.navigator.userAgent),
+                xa = /OS X.*Version\/10\..*Safari/.exec(window.navigator.userAgent) && /Apple/.exec(window.navigator.vendor);
+            X = x ? 42 < parseInt(x[1], 10) : xa ? !1 : !0;
+          } else X = !1;X ? r = new P(p(b.g, b), p(b.h, b), b.c, k, b.s, n) : r = new Q(p(b.g, b), p(b.h, b), b.c, k, b.s, a, n);l.push(r);
+        }for (h = 0; h < l.length; h++) {
+          l[h].start();
+        }
+      }
+    }, 0);
+  }function pa(a, b, c) {
+    var d = [],
+        e = c.timeout;ia(b);var d = ka(a.a, c, a.c),
+        f = new W(a.c, b, e);a.h = d.length;b = 0;for (c = d.length; b < c; b++) {
+      d[b].load(function (b, d, c) {
+        qa(a, f, b, d, c);
+      });
+    }
+  };function ra(a, b) {
+    this.c = a;this.a = b;
+  }
+  ra.prototype.load = function (a) {
+    function b() {
+      if (f["__mti_fntLst" + d]) {
+        var c = f["__mti_fntLst" + d](),
+            e = [],
+            h;if (c) for (var l = 0; l < c.length; l++) {
+          var k = c[l].fontfamily;void 0 != c[l].fontStyle && void 0 != c[l].fontWeight ? (h = c[l].fontStyle + c[l].fontWeight, e.push(new G(k, h))) : e.push(new G(k));
+        }a(e);
+      } else setTimeout(function () {
+        b();
+      }, 50);
+    }var c = this,
+        d = c.a.projectId,
+        e = c.a.version;if (d) {
+      var f = c.c.o;A(this.c, (c.a.api || "https://fast.fonts.net/jsapi") + "/" + d + ".js" + (e ? "?v=" + e : ""), function (e) {
+        e ? a([]) : (f["__MonotypeConfiguration__" + d] = function () {
+          return c.a;
+        }, b());
+      }).id = "__MonotypeAPIScript__" + d;
+    } else a([]);
+  };function sa(a, b) {
+    this.c = a;this.a = b;
+  }sa.prototype.load = function (a) {
+    var b,
+        c,
+        d = this.a.urls || [],
+        e = this.a.families || [],
+        f = this.a.testStrings || {},
+        g = new B();b = 0;for (c = d.length; b < c; b++) {
+      z(this.c, d[b], C(g));
+    }var m = [];b = 0;for (c = e.length; b < c; b++) {
+      if (d = e[b].split(":"), d[1]) for (var h = d[1].split(","), l = 0; l < h.length; l += 1) {
+        m.push(new G(d[0], h[l]));
+      } else m.push(new G(d[0]));
+    }E(g, function () {
+      a(m, f);
+    });
+  };function ta(a, b) {
+    a ? this.c = a : this.c = ua;this.a = [];this.f = [];this.g = b || "";
+  }var ua = "https://fonts.googleapis.com/css";function va(a, b) {
+    for (var c = b.length, d = 0; d < c; d++) {
+      var e = b[d].split(":");3 == e.length && a.f.push(e.pop());var f = "";2 == e.length && "" != e[1] && (f = ":");a.a.push(e.join(f));
+    }
+  }
+  function wa(a) {
+    if (0 == a.a.length) throw Error("No fonts to load!");if (-1 != a.c.indexOf("kit=")) return a.c;for (var b = a.a.length, c = [], d = 0; d < b; d++) {
+      c.push(a.a[d].replace(/ /g, "+"));
+    }b = a.c + "?family=" + c.join("%7C");0 < a.f.length && (b += "&subset=" + a.f.join(","));0 < a.g.length && (b += "&text=" + encodeURIComponent(a.g));return b;
+  };function ya(a) {
+    this.f = a;this.a = [];this.c = {};
+  }
+  var za = { latin: "BESbswy", "latin-ext": "\xE7\xF6\xFC\u011F\u015F", cyrillic: "\u0439\u044F\u0416", greek: "\u03B1\u03B2\u03A3", khmer: "\u1780\u1781\u1782", Hanuman: "\u1780\u1781\u1782" },
+      Aa = { thin: "1", extralight: "2", "extra-light": "2", ultralight: "2", "ultra-light": "2", light: "3", regular: "4", book: "4", medium: "5", "semi-bold": "6", semibold: "6", "demi-bold": "6", demibold: "6", bold: "7", "extra-bold": "8", extrabold: "8", "ultra-bold": "8", ultrabold: "8", black: "9", heavy: "9", l: "3", r: "4", b: "7" },
+      Ba = { i: "i", italic: "i", n: "n", normal: "n" },
+      Ca = /^(thin|(?:(?:extra|ultra)-?)?light|regular|book|medium|(?:(?:semi|demi|extra|ultra)-?)?bold|black|heavy|l|r|b|[1-9]00)?(n|i|normal|italic)?$/;
+  function Da(a) {
+    for (var b = a.f.length, c = 0; c < b; c++) {
+      var d = a.f[c].split(":"),
+          e = d[0].replace(/\+/g, " "),
+          f = ["n4"];if (2 <= d.length) {
+        var g;var m = d[1];g = [];if (m) for (var m = m.split(","), h = m.length, l = 0; l < h; l++) {
+          var k;k = m[l];if (k.match(/^[\w-]+$/)) {
+            var n = Ca.exec(k.toLowerCase());if (null == n) k = "";else {
+              k = n[2];k = null == k || "" == k ? "n" : Ba[k];n = n[1];if (null == n || "" == n) n = "4";else var r = Aa[n],
+                  n = r ? r : isNaN(n) ? "4" : n.substr(0, 1);k = [k, n].join("");
+            }
+          } else k = "";k && g.push(k);
+        }0 < g.length && (f = g);3 == d.length && (d = d[2], g = [], d = d ? d.split(",") : g, 0 < d.length && (d = za[d[0]]) && (a.c[e] = d));
+      }a.c[e] || (d = za[e]) && (a.c[e] = d);for (d = 0; d < f.length; d += 1) {
+        a.a.push(new G(e, f[d]));
+      }
+    }
+  };function Ea(a, b) {
+    this.c = a;this.a = b;
+  }var Fa = { Arimo: !0, Cousine: !0, Tinos: !0 };Ea.prototype.load = function (a) {
+    var b = new B(),
+        c = this.c,
+        d = new ta(this.a.api, this.a.text),
+        e = this.a.families;va(d, e);var f = new ya(e);Da(f);z(c, wa(d), C(b));E(b, function () {
+      a(f.a, f.c, Fa);
+    });
+  };function Ga(a, b) {
+    this.c = a;this.a = b;
+  }Ga.prototype.load = function (a) {
+    var b = this.a.id,
+        c = this.c.o;b ? A(this.c, (this.a.api || "https://use.typekit.net") + "/" + b + ".js", function (b) {
+      if (b) a([]);else if (c.Typekit && c.Typekit.config && c.Typekit.config.fn) {
+        b = c.Typekit.config.fn;for (var e = [], f = 0; f < b.length; f += 2) {
+          for (var g = b[f], m = b[f + 1], h = 0; h < m.length; h++) {
+            e.push(new G(g, m[h]));
+          }
+        }try {
+          c.Typekit.load({ events: !1, classes: !1, async: !0 });
+        } catch (l) {}a(e);
+      }
+    }, 2E3) : a([]);
+  };function Ha(a, b) {
+    this.c = a;this.f = b;this.a = [];
+  }Ha.prototype.load = function (a) {
+    var b = this.f.id,
+        c = this.c.o,
+        d = this;b ? (c.__webfontfontdeckmodule__ || (c.__webfontfontdeckmodule__ = {}), c.__webfontfontdeckmodule__[b] = function (b, c) {
+      for (var g = 0, m = c.fonts.length; g < m; ++g) {
+        var h = c.fonts[g];d.a.push(new G(h.name, ga("font-weight:" + h.weight + ";font-style:" + h.style)));
+      }a(d.a);
+    }, A(this.c, (this.f.api || "https://f.fontdeck.com/s/css/js/") + ea(this.c) + "/" + b + ".js", function (b) {
+      b && a([]);
+    })) : a([]);
+  };var Y = new oa(window);Y.a.c.custom = function (a, b) {
+    return new sa(b, a);
+  };Y.a.c.fontdeck = function (a, b) {
+    return new Ha(b, a);
+  };Y.a.c.monotype = function (a, b) {
+    return new ra(b, a);
+  };Y.a.c.typekit = function (a, b) {
+    return new Ga(b, a);
+  };Y.a.c.google = function (a, b) {
+    return new Ea(b, a);
+  };var Z = { load: p(Y.load, Y) }; true ? !(__WEBPACK_AMD_DEFINE_RESULT__ = (function () {
+    return Z;
+  }).call(exports, __webpack_require__, exports, module),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : "undefined" !== typeof module && module.exports ? module.exports = Z : (window.WebFont = Z, window.WebFontConfig && Y.load(window.WebFontConfig));
+})();
+
+/***/ }),
+/* 102 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = PremiumBackground;
+
+var _ColorComponent = __webpack_require__(3);
+
+var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+var Fragment = wp.element.Fragment;
+var _wp$components = wp.components,
+    SelectControl = _wp$components.SelectControl,
+    ToggleControl = _wp$components.ToggleControl,
+    Tooltip = _wp$components.Tooltip,
+    Dashicon = _wp$components.Dashicon;
+var MediaUpload = wp.blockEditor.MediaUpload;
+function PremiumBackground(props) {
+    var type = props.type,
+        colorValue = props.colorValue,
+        imageID = props.imageID,
+        imageURL = props.imageURL,
+        backgroundPosition = props.backgroundPosition,
+        backgroundRepeat = props.backgroundRepeat,
+        backgroundSize = props.backgroundSize,
+        fixed = props.fixed,
+        _props$onChangeColor = props.onChangeColor,
+        onChangeColor = _props$onChangeColor === undefined ? function () {} : _props$onChangeColor,
+        _props$onSelectMedia = props.onSelectMedia,
+        onSelectMedia = _props$onSelectMedia === undefined ? function () {} : _props$onSelectMedia,
+        _props$onRemoveImage = props.onRemoveImage,
+        onRemoveImage = _props$onRemoveImage === undefined ? function () {} : _props$onRemoveImage,
+        _props$onChangeBackPo = props.onChangeBackPos,
+        onChangeBackPos = _props$onChangeBackPo === undefined ? function () {} : _props$onChangeBackPo,
+        _props$onchangeBackRe = props.onchangeBackRepeat,
+        onchangeBackRepeat = _props$onchangeBackRe === undefined ? function () {} : _props$onchangeBackRe,
+        _props$onChangeBackSi = props.onChangeBackSize,
+        onChangeBackSize = _props$onChangeBackSi === undefined ? function () {} : _props$onChangeBackSi,
+        _props$onChangeFixed = props.onChangeFixed,
+        onChangeFixed = _props$onChangeFixed === undefined ? function () {} : _props$onChangeFixed;
+
+
+    var POSITION = [{
+        value: "top left",
+        label: __("Top Left")
+    }, {
+        value: "top center",
+        label: __("Top Center")
+    }, {
+        value: "top right",
+        label: __("Top Right")
+    }, {
+        value: "center left",
+        label: __("Center Left")
+    }, {
+        value: "center center",
+        label: __("Center Center")
+    }, {
+        value: "center right",
+        label: __("Center Right")
+    }, {
+        value: "bottom left",
+        label: __("Bottom Left")
+    }, {
+        value: "bottom center",
+        label: __("Bottom Center")
+    }, {
+        value: "bottom right",
+        label: __("Bottom Right")
+    }];
+
+    var REPEAT = [{
+        value: "no-repeat",
+        label: __("No Repeat")
+    }, {
+        value: "repeat",
+        label: __("Repeat")
+    }, {
+        value: "repeat-x",
+        label: __("Repeat Horizontally")
+    }, {
+        value: "repeat-y",
+        label: __("Repeat Vertically")
+    }];
+
+    var SIZE = [{
+        value: "auto",
+        label: __("Auto")
+    }, {
+        value: "cover",
+        label: __("Cover")
+    }, {
+        value: "contain",
+        label: __("Contain")
+    }];
+
+    return type === "color" ? React.createElement(
+        Fragment,
+        null,
+        React.createElement(_ColorComponent2.default, {
+            label: __("Background Color", ''),
+            colorValue: colorValue,
+            colorDefault: '',
+            onColorChange: onChangeColor
+        })
+    ) : React.createElement(
+        Fragment,
+        null,
+        React.createElement(MediaUpload, {
+            allowedTypes: ["image"],
+            onSelect: onSelectMedia,
+            type: "image",
+            value: imageID,
+            render: function render(_ref) {
+                var open = _ref.open;
+                return React.createElement(
+                    Fragment,
+                    null,
+                    imageURL && React.createElement(
+                        "span",
+                        { className: "premium-image-media" },
+                        React.createElement("img", {
+                            src: imageURL,
+                            className: "premium-image-upload"
+                        }),
+                        React.createElement(
+                            "div",
+                            { className: "premium-image-actions" },
+                            React.createElement(
+                                Tooltip,
+                                { text: __("Edit") },
+                                React.createElement(
+                                    "button",
+                                    {
+                                        className: "premium-image-button",
+                                        "aria-label": __("Edit"),
+                                        onClick: open,
+                                        role: "button"
+                                    },
+                                    React.createElement("span", {
+                                        "aria-label": __("Edit"),
+                                        className: "fa fa-pencil"
+                                    })
+                                )
+                            ),
+                            React.createElement(
+                                Tooltip,
+                                { text: __("Remove") },
+                                React.createElement(
+                                    "button",
+                                    {
+                                        className: "premium-image-button",
+                                        "aria-label": __("Remove"),
+                                        onClick: onRemoveImage,
+                                        role: "button"
+                                    },
+                                    React.createElement("span", {
+                                        "aria-label": __("Close"),
+                                        className: "fa fa-trash-o"
+                                    })
+                                )
+                            )
+                        )
+                    ),
+                    !imageURL && React.createElement(
+                        "div",
+                        {
+                            onClick: open,
+                            className: "premium-placeholder-image"
+                        },
+                        React.createElement(Dashicon, { icon: "insert" }),
+                        React.createElement(
+                            "span",
+                            null,
+                            __("Insert Background ")
+                        )
+                    )
+                );
+            }
+        }),
+        imageURL && React.createElement(
+            Fragment,
+            null,
+            React.createElement(SelectControl, {
+                label: __("Position"),
+                options: POSITION,
+                value: backgroundPosition,
+                onChange: onChangeBackPos
+            }),
+            React.createElement(SelectControl, {
+                label: __("Repeat"),
+                options: REPEAT,
+                value: backgroundRepeat,
+                onChange: onchangeBackRepeat
+            }),
+            React.createElement(SelectControl, {
+                label: __("Size"),
+                options: SIZE,
+                value: backgroundSize,
+                onChange: onChangeBackSize
+            }),
+            React.createElement(ToggleControl, {
+                label: __("Fixed Background"),
+                checked: fixed,
+                onChange: onChangeFixed
+            })
+        )
+    );
+}
+
+/***/ }),
+/* 103 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports = __webpack_require__(245);
+} else {
+  module.exports = __webpack_require__(246);
+}
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
+
+/***/ }),
+/* 104 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _CSSTransition = _interopRequireDefault(__webpack_require__(251));
+
+var _ReplaceTransition = _interopRequireDefault(__webpack_require__(256));
+
+var _TransitionGroup = _interopRequireDefault(__webpack_require__(108));
+
+var _Transition = _interopRequireDefault(__webpack_require__(105));
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+module.exports = {
+  Transition: _Transition.default,
+  TransitionGroup: _TransitionGroup.default,
+  ReplaceTransition: _ReplaceTransition.default,
+  CSSTransition: _CSSTransition.default
+};
+
+/***/ }),
+/* 105 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+exports.__esModule = true;
+exports.default = exports.EXITING = exports.ENTERED = exports.ENTERING = exports.EXITED = exports.UNMOUNTED = void 0;
+
+var PropTypes = _interopRequireWildcard(__webpack_require__(18));
+
+var _react = _interopRequireDefault(__webpack_require__(8));
+
+var _reactDom = _interopRequireDefault(__webpack_require__(40));
+
+var _reactLifecyclesCompat = __webpack_require__(106);
+
+var _PropTypes = __webpack_require__(107);
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+function _interopRequireWildcard(obj) {
+  if (obj && obj.__esModule) {
+    return obj;
+  } else {
+    var newObj = {};if (obj != null) {
+      for (var key in obj) {
+        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+          var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {};if (desc.get || desc.set) {
+            Object.defineProperty(newObj, key, desc);
+          } else {
+            newObj[key] = obj[key];
+          }
+        }
+      }
+    }newObj.default = obj;return newObj;
+  }
+}
+
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};var target = {};var sourceKeys = Object.keys(source);var key, i;for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];if (excluded.indexOf(key) >= 0) continue;target[key] = source[key];
+  }return target;
+}
+
+function _inheritsLoose(subClass, superClass) {
+  subClass.prototype = Object.create(superClass.prototype);subClass.prototype.constructor = subClass;subClass.__proto__ = superClass;
+}
+
+var UNMOUNTED = 'unmounted';
+exports.UNMOUNTED = UNMOUNTED;
+var EXITED = 'exited';
+exports.EXITED = EXITED;
+var ENTERING = 'entering';
+exports.ENTERING = ENTERING;
+var ENTERED = 'entered';
+exports.ENTERED = ENTERED;
+var EXITING = 'exiting';
+/**
+ * The Transition component lets you describe a transition from one component
+ * state to another _over time_ with a simple declarative API. Most commonly
+ * it's used to animate the mounting and unmounting of a component, but can also
+ * be used to describe in-place transition states as well.
+ *
+ * ---
+ *
+ * **Note**: `Transition` is a platform-agnostic base component. If you're using
+ * transitions in CSS, you'll probably want to use
+ * [`CSSTransition`](https://reactcommunity.org/react-transition-group/css-transition)
+ * instead. It inherits all the features of `Transition`, but contains
+ * additional features necessary to play nice with CSS transitions (hence the
+ * name of the component).
+ *
+ * ---
+ *
+ * By default the `Transition` component does not alter the behavior of the
+ * component it renders, it only tracks "enter" and "exit" states for the
+ * components. It's up to you to give meaning and effect to those states. For
+ * example we can add styles to a component when it enters or exits:
+ *
+ * ```jsx
+ * import { Transition } from 'react-transition-group';
+ *
+ * const duration = 300;
+ *
+ * const defaultStyle = {
+ *   transition: `opacity ${duration}ms ease-in-out`,
+ *   opacity: 0,
+ * }
+ *
+ * const transitionStyles = {
+ *   entering: { opacity: 0 },
+ *   entered:  { opacity: 1 },
+ * };
+ *
+ * const Fade = ({ in: inProp }) => (
+ *   <Transition in={inProp} timeout={duration}>
+ *     {state => (
+ *       <div style={{
+ *         ...defaultStyle,
+ *         ...transitionStyles[state]
+ *       }}>
+ *         I'm a fade Transition!
+ *       </div>
+ *     )}
+ *   </Transition>
+ * );
+ * ```
+ *
+ * There are 4 main states a Transition can be in:
+ *  - `'entering'`
+ *  - `'entered'`
+ *  - `'exiting'`
+ *  - `'exited'`
+ *
+ * Transition state is toggled via the `in` prop. When `true` the component
+ * begins the "Enter" stage. During this stage, the component will shift from
+ * its current transition state, to `'entering'` for the duration of the
+ * transition and then to the `'entered'` stage once it's complete. Let's take
+ * the following example (we'll use the
+ * [useState](https://reactjs.org/docs/hooks-reference.html#usestate) hook):
+ *
+ * ```jsx
+ * function App() {
+ *   const [inProp, setInProp] = useState(false);
+ *   return (
+ *     <div>
+ *       <Transition in={inProp} timeout={500}>
+ *         {state => (
+ *           // ...
+ *         )}
+ *       </Transition>
+ *       <button onClick={() => setInProp(true)}>
+ *         Click to Enter
+ *       </button>
+ *     </div>
+ *   );
+ * }
+ * ```
+ *
+ * When the button is clicked the component will shift to the `'entering'` state
+ * and stay there for 500ms (the value of `timeout`) before it finally switches
+ * to `'entered'`.
+ *
+ * When `in` is `false` the same thing happens except the state moves from
+ * `'exiting'` to `'exited'`.
+ */
+
+exports.EXITING = EXITING;
+
+var Transition =
+/*#__PURE__*/
+function (_React$Component) {
+  _inheritsLoose(Transition, _React$Component);
+
+  function Transition(props, context) {
+    var _this;
+
+    _this = _React$Component.call(this, props, context) || this;
+    var parentGroup = context.transitionGroup; // In the context of a TransitionGroup all enters are really appears
+
+    var appear = parentGroup && !parentGroup.isMounting ? props.enter : props.appear;
+    var initialStatus;
+    _this.appearStatus = null;
+
+    if (props.in) {
+      if (appear) {
+        initialStatus = EXITED;
+        _this.appearStatus = ENTERING;
+      } else {
+        initialStatus = ENTERED;
+      }
+    } else {
+      if (props.unmountOnExit || props.mountOnEnter) {
+        initialStatus = UNMOUNTED;
+      } else {
+        initialStatus = EXITED;
+      }
+    }
+
+    _this.state = {
+      status: initialStatus
+    };
+    _this.nextCallback = null;
+    return _this;
+  }
+
+  var _proto = Transition.prototype;
+
+  _proto.getChildContext = function getChildContext() {
+    return {
+      transitionGroup: null // allows for nested Transitions
+
+    };
+  };
+
+  Transition.getDerivedStateFromProps = function getDerivedStateFromProps(_ref, prevState) {
+    var nextIn = _ref.in;
+
+    if (nextIn && prevState.status === UNMOUNTED) {
+      return {
+        status: EXITED
+      };
+    }
+
+    return null;
+  }; // getSnapshotBeforeUpdate(prevProps) {
+  //   let nextStatus = null
+  //   if (prevProps !== this.props) {
+  //     const { status } = this.state
+  //     if (this.props.in) {
+  //       if (status !== ENTERING && status !== ENTERED) {
+  //         nextStatus = ENTERING
+  //       }
+  //     } else {
+  //       if (status === ENTERING || status === ENTERED) {
+  //         nextStatus = EXITING
+  //       }
+  //     }
+  //   }
+  //   return { nextStatus }
+  // }
+
+
+  _proto.componentDidMount = function componentDidMount() {
+    this.updateStatus(true, this.appearStatus);
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    var nextStatus = null;
+
+    if (prevProps !== this.props) {
+      var status = this.state.status;
+
+      if (this.props.in) {
+        if (status !== ENTERING && status !== ENTERED) {
+          nextStatus = ENTERING;
+        }
+      } else {
+        if (status === ENTERING || status === ENTERED) {
+          nextStatus = EXITING;
+        }
+      }
+    }
+
+    this.updateStatus(false, nextStatus);
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    this.cancelNextCallback();
+  };
+
+  _proto.getTimeouts = function getTimeouts() {
+    var timeout = this.props.timeout;
+    var exit, enter, appear;
+    exit = enter = appear = timeout;
+
+    if (timeout != null && typeof timeout !== 'number') {
+      exit = timeout.exit;
+      enter = timeout.enter; // TODO: remove fallback for next major
+
+      appear = timeout.appear !== undefined ? timeout.appear : enter;
+    }
+
+    return {
+      exit: exit,
+      enter: enter,
+      appear: appear
+    };
+  };
+
+  _proto.updateStatus = function updateStatus(mounting, nextStatus) {
+    if (mounting === void 0) {
+      mounting = false;
+    }
+
+    if (nextStatus !== null) {
+      // nextStatus will always be ENTERING or EXITING.
+      this.cancelNextCallback();
+
+      var node = _reactDom.default.findDOMNode(this);
+
+      if (nextStatus === ENTERING) {
+        this.performEnter(node, mounting);
+      } else {
+        this.performExit(node);
+      }
+    } else if (this.props.unmountOnExit && this.state.status === EXITED) {
+      this.setState({
+        status: UNMOUNTED
+      });
+    }
+  };
+
+  _proto.performEnter = function performEnter(node, mounting) {
+    var _this2 = this;
+
+    var enter = this.props.enter;
+    var appearing = this.context.transitionGroup ? this.context.transitionGroup.isMounting : mounting;
+    var timeouts = this.getTimeouts();
+    var enterTimeout = appearing ? timeouts.appear : timeouts.enter; // no enter animation skip right to ENTERED
+    // if we are mounting and running this it means appear _must_ be set
+
+    if (!mounting && !enter) {
+      this.safeSetState({
+        status: ENTERED
+      }, function () {
+        _this2.props.onEntered(node);
+      });
+      return;
+    }
+
+    this.props.onEnter(node, appearing);
+    this.safeSetState({
+      status: ENTERING
+    }, function () {
+      _this2.props.onEntering(node, appearing);
+
+      _this2.onTransitionEnd(node, enterTimeout, function () {
+        _this2.safeSetState({
+          status: ENTERED
+        }, function () {
+          _this2.props.onEntered(node, appearing);
+        });
+      });
+    });
+  };
+
+  _proto.performExit = function performExit(node) {
+    var _this3 = this;
+
+    var exit = this.props.exit;
+    var timeouts = this.getTimeouts(); // no exit animation skip right to EXITED
+
+    if (!exit) {
+      this.safeSetState({
+        status: EXITED
+      }, function () {
+        _this3.props.onExited(node);
+      });
+      return;
+    }
+
+    this.props.onExit(node);
+    this.safeSetState({
+      status: EXITING
+    }, function () {
+      _this3.props.onExiting(node);
+
+      _this3.onTransitionEnd(node, timeouts.exit, function () {
+        _this3.safeSetState({
+          status: EXITED
+        }, function () {
+          _this3.props.onExited(node);
+        });
+      });
+    });
+  };
+
+  _proto.cancelNextCallback = function cancelNextCallback() {
+    if (this.nextCallback !== null) {
+      this.nextCallback.cancel();
+      this.nextCallback = null;
+    }
+  };
+
+  _proto.safeSetState = function safeSetState(nextState, callback) {
+    // This shouldn't be necessary, but there are weird race conditions with
+    // setState callbacks and unmounting in testing, so always make sure that
+    // we can cancel any pending setState callbacks after we unmount.
+    callback = this.setNextCallback(callback);
+    this.setState(nextState, callback);
+  };
+
+  _proto.setNextCallback = function setNextCallback(callback) {
+    var _this4 = this;
+
+    var active = true;
+
+    this.nextCallback = function (event) {
+      if (active) {
+        active = false;
+        _this4.nextCallback = null;
+        callback(event);
+      }
+    };
+
+    this.nextCallback.cancel = function () {
+      active = false;
+    };
+
+    return this.nextCallback;
+  };
+
+  _proto.onTransitionEnd = function onTransitionEnd(node, timeout, handler) {
+    this.setNextCallback(handler);
+    var doesNotHaveTimeoutOrListener = timeout == null && !this.props.addEndListener;
+
+    if (!node || doesNotHaveTimeoutOrListener) {
+      setTimeout(this.nextCallback, 0);
+      return;
+    }
+
+    if (this.props.addEndListener) {
+      this.props.addEndListener(node, this.nextCallback);
+    }
+
+    if (timeout != null) {
+      setTimeout(this.nextCallback, timeout);
+    }
+  };
+
+  _proto.render = function render() {
+    var status = this.state.status;
+
+    if (status === UNMOUNTED) {
+      return null;
+    }
+
+    var _this$props = this.props,
+        children = _this$props.children,
+        childProps = _objectWithoutPropertiesLoose(_this$props, ["children"]); // filter props for Transtition
+
+
+    delete childProps.in;
+    delete childProps.mountOnEnter;
+    delete childProps.unmountOnExit;
+    delete childProps.appear;
+    delete childProps.enter;
+    delete childProps.exit;
+    delete childProps.timeout;
+    delete childProps.addEndListener;
+    delete childProps.onEnter;
+    delete childProps.onEntering;
+    delete childProps.onEntered;
+    delete childProps.onExit;
+    delete childProps.onExiting;
+    delete childProps.onExited;
+
+    if (typeof children === 'function') {
+      return children(status, childProps);
+    }
+
+    var child = _react.default.Children.only(children);
+
+    return _react.default.cloneElement(child, childProps);
+  };
+
+  return Transition;
+}(_react.default.Component);
+
+Transition.contextTypes = {
+  transitionGroup: PropTypes.object
+};
+Transition.childContextTypes = {
+  transitionGroup: function transitionGroup() {}
+};
+Transition.propTypes = process.env.NODE_ENV !== "production" ? {
+  /**
+   * A `function` child can be used instead of a React element. This function is
+   * called with the current transition status (`'entering'`, `'entered'`,
+   * `'exiting'`, `'exited'`, `'unmounted'`), which can be used to apply context
+   * specific props to a component.
+   *
+   * ```jsx
+   * <Transition in={this.state.in} timeout={150}>
+   *   {state => (
+   *     <MyComponent className={`fade fade-${state}`} />
+   *   )}
+   * </Transition>
+   * ```
+   */
+  children: PropTypes.oneOfType([PropTypes.func.isRequired, PropTypes.element.isRequired]).isRequired,
+
+  /**
+   * Show the component; triggers the enter or exit states
+   */
+  in: PropTypes.bool,
+
+  /**
+   * By default the child component is mounted immediately along with
+   * the parent `Transition` component. If you want to "lazy mount" the component on the
+   * first `in={true}` you can set `mountOnEnter`. After the first enter transition the component will stay
+   * mounted, even on "exited", unless you also specify `unmountOnExit`.
+   */
+  mountOnEnter: PropTypes.bool,
+
+  /**
+   * By default the child component stays mounted after it reaches the `'exited'` state.
+   * Set `unmountOnExit` if you'd prefer to unmount the component after it finishes exiting.
+   */
+  unmountOnExit: PropTypes.bool,
+
+  /**
+   * Normally a component is not transitioned if it is shown when the `<Transition>` component mounts.
+   * If you want to transition on the first mount set `appear` to `true`, and the
+   * component will transition in as soon as the `<Transition>` mounts.
+   *
+   * > Note: there are no specific "appear" states. `appear` only adds an additional `enter` transition.
+   */
+  appear: PropTypes.bool,
+
+  /**
+   * Enable or disable enter transitions.
+   */
+  enter: PropTypes.bool,
+
+  /**
+   * Enable or disable exit transitions.
+   */
+  exit: PropTypes.bool,
+
+  /**
+   * The duration of the transition, in milliseconds.
+   * Required unless `addEndListener` is provided.
+   *
+   * You may specify a single timeout for all transitions:
+   *
+   * ```jsx
+   * timeout={500}
+   * ```
+   *
+   * or individually:
+   *
+   * ```jsx
+   * timeout={{
+   *  appear: 500,
+   *  enter: 300,
+   *  exit: 500,
+   * }}
+   * ```
+   *
+   * - `appear` defaults to the value of `enter`
+   * - `enter` defaults to `0`
+   * - `exit` defaults to `0`
+   *
+   * @type {number | { enter?: number, exit?: number, appear?: number }}
+   */
+  timeout: function timeout(props) {
+    var pt = _PropTypes.timeoutsShape;
+    if (!props.addEndListener) pt = pt.isRequired;
+
+    for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+
+    return pt.apply(void 0, [props].concat(args));
+  },
+
+  /**
+   * Add a custom transition end trigger. Called with the transitioning
+   * DOM node and a `done` callback. Allows for more fine grained transition end
+   * logic. **Note:** Timeouts are still used as a fallback if provided.
+   *
+   * ```jsx
+   * addEndListener={(node, done) => {
+   *   // use the css transitionend event to mark the finish of a transition
+   *   node.addEventListener('transitionend', done, false);
+   * }}
+   * ```
+   */
+  addEndListener: PropTypes.func,
+
+  /**
+   * Callback fired before the "entering" status is applied. An extra parameter
+   * `isAppearing` is supplied to indicate if the enter stage is occurring on the initial mount
+   *
+   * @type Function(node: HtmlElement, isAppearing: bool) -> void
+   */
+  onEnter: PropTypes.func,
+
+  /**
+   * Callback fired after the "entering" status is applied. An extra parameter
+   * `isAppearing` is supplied to indicate if the enter stage is occurring on the initial mount
+   *
+   * @type Function(node: HtmlElement, isAppearing: bool)
+   */
+  onEntering: PropTypes.func,
+
+  /**
+   * Callback fired after the "entered" status is applied. An extra parameter
+   * `isAppearing` is supplied to indicate if the enter stage is occurring on the initial mount
+   *
+   * @type Function(node: HtmlElement, isAppearing: bool) -> void
+   */
+  onEntered: PropTypes.func,
+
+  /**
+   * Callback fired before the "exiting" status is applied.
+   *
+   * @type Function(node: HtmlElement) -> void
+   */
+  onExit: PropTypes.func,
+
+  /**
+   * Callback fired after the "exiting" status is applied.
+   *
+   * @type Function(node: HtmlElement) -> void
+   */
+  onExiting: PropTypes.func,
+
+  /**
+   * Callback fired after the "exited" status is applied.
+   *
+   * @type Function(node: HtmlElement) -> void
+   */
+  onExited: PropTypes.func // Name the function so it is clearer in the documentation
+
+} : {};
+
+function noop() {}
+
+Transition.defaultProps = {
+  in: false,
+  mountOnEnter: false,
+  unmountOnExit: false,
+  appear: false,
+  enter: true,
+  exit: true,
+  onEnter: noop,
+  onEntering: noop,
+  onEntered: noop,
+  onExit: noop,
+  onExiting: noop,
+  onExited: noop
+};
+Transition.UNMOUNTED = 0;
+Transition.EXITED = 1;
+Transition.ENTERING = 2;
+Transition.ENTERED = 3;
+Transition.EXITING = 4;
+
+var _default = (0, _reactLifecyclesCompat.polyfill)(Transition);
+
+exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
+
+/***/ }),
+/* 106 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+function componentWillMount() {
+  // Call this.constructor.gDSFP to support sub-classes.
+  var state = this.constructor.getDerivedStateFromProps(this.props, this.state);
+  if (state !== null && state !== undefined) {
+    this.setState(state);
+  }
+}
+
+function componentWillReceiveProps(nextProps) {
+  // Call this.constructor.gDSFP to support sub-classes.
+  // Use the setState() updater to ensure state isn't stale in certain edge cases.
+  function updater(prevState) {
+    var state = this.constructor.getDerivedStateFromProps(nextProps, prevState);
+    return state !== null && state !== undefined ? state : null;
+  }
+  // Binding "this" is important for shallow renderer support.
+  this.setState(updater.bind(this));
+}
+
+function componentWillUpdate(nextProps, nextState) {
+  try {
+    var prevProps = this.props;
+    var prevState = this.state;
+    this.props = nextProps;
+    this.state = nextState;
+    this.__reactInternalSnapshotFlag = true;
+    this.__reactInternalSnapshot = this.getSnapshotBeforeUpdate(prevProps, prevState);
+  } finally {
+    this.props = prevProps;
+    this.state = prevState;
+  }
+}
+
+// React may warn about cWM/cWRP/cWU methods being deprecated.
+// Add a flag to suppress these warnings for this special case.
+componentWillMount.__suppressDeprecationWarning = true;
+componentWillReceiveProps.__suppressDeprecationWarning = true;
+componentWillUpdate.__suppressDeprecationWarning = true;
+
+function polyfill(Component) {
+  var prototype = Component.prototype;
+
+  if (!prototype || !prototype.isReactComponent) {
+    throw new Error('Can only polyfill class components');
+  }
+
+  if (typeof Component.getDerivedStateFromProps !== 'function' && typeof prototype.getSnapshotBeforeUpdate !== 'function') {
+    return Component;
+  }
+
+  // If new component APIs are defined, "unsafe" lifecycles won't be called.
+  // Error if any of these lifecycles are present,
+  // Because they would work differently between older and newer (16.3+) versions of React.
+  var foundWillMountName = null;
+  var foundWillReceivePropsName = null;
+  var foundWillUpdateName = null;
+  if (typeof prototype.componentWillMount === 'function') {
+    foundWillMountName = 'componentWillMount';
+  } else if (typeof prototype.UNSAFE_componentWillMount === 'function') {
+    foundWillMountName = 'UNSAFE_componentWillMount';
+  }
+  if (typeof prototype.componentWillReceiveProps === 'function') {
+    foundWillReceivePropsName = 'componentWillReceiveProps';
+  } else if (typeof prototype.UNSAFE_componentWillReceiveProps === 'function') {
+    foundWillReceivePropsName = 'UNSAFE_componentWillReceiveProps';
+  }
+  if (typeof prototype.componentWillUpdate === 'function') {
+    foundWillUpdateName = 'componentWillUpdate';
+  } else if (typeof prototype.UNSAFE_componentWillUpdate === 'function') {
+    foundWillUpdateName = 'UNSAFE_componentWillUpdate';
+  }
+  if (foundWillMountName !== null || foundWillReceivePropsName !== null || foundWillUpdateName !== null) {
+    var componentName = Component.displayName || Component.name;
+    var newApiName = typeof Component.getDerivedStateFromProps === 'function' ? 'getDerivedStateFromProps()' : 'getSnapshotBeforeUpdate()';
+
+    throw Error('Unsafe legacy lifecycles will not be called for components using new component APIs.\n\n' + componentName + ' uses ' + newApiName + ' but also contains the following legacy lifecycles:' + (foundWillMountName !== null ? '\n  ' + foundWillMountName : '') + (foundWillReceivePropsName !== null ? '\n  ' + foundWillReceivePropsName : '') + (foundWillUpdateName !== null ? '\n  ' + foundWillUpdateName : '') + '\n\nThe above lifecycles should be removed. Learn more about this warning here:\n' + 'https://fb.me/react-async-component-lifecycle-hooks');
+  }
+
+  // React <= 16.2 does not support static getDerivedStateFromProps.
+  // As a workaround, use cWM and cWRP to invoke the new static lifecycle.
+  // Newer versions of React will ignore these lifecycles if gDSFP exists.
+  if (typeof Component.getDerivedStateFromProps === 'function') {
+    prototype.componentWillMount = componentWillMount;
+    prototype.componentWillReceiveProps = componentWillReceiveProps;
+  }
+
+  // React <= 16.2 does not support getSnapshotBeforeUpdate.
+  // As a workaround, use cWU to invoke the new lifecycle.
+  // Newer versions of React will ignore that lifecycle if gSBU exists.
+  if (typeof prototype.getSnapshotBeforeUpdate === 'function') {
+    if (typeof prototype.componentDidUpdate !== 'function') {
+      throw new Error('Cannot polyfill getSnapshotBeforeUpdate() for components that do not define componentDidUpdate() on the prototype');
+    }
+
+    prototype.componentWillUpdate = componentWillUpdate;
+
+    var componentDidUpdate = prototype.componentDidUpdate;
+
+    prototype.componentDidUpdate = function componentDidUpdatePolyfill(prevProps, prevState, maybeSnapshot) {
+      // 16.3+ will not execute our will-update method;
+      // It will pass a snapshot value to did-update though.
+      // Older versions will require our polyfilled will-update value.
+      // We need to handle both cases, but can't just check for the presence of "maybeSnapshot",
+      // Because for <= 15.x versions this might be a "prevContext" object.
+      // We also can't just check "__reactInternalSnapshot",
+      // Because get-snapshot might return a falsy value.
+      // So check for the explicit __reactInternalSnapshotFlag flag to determine behavior.
+      var snapshot = this.__reactInternalSnapshotFlag ? this.__reactInternalSnapshot : maybeSnapshot;
+
+      componentDidUpdate.call(this, prevProps, prevState, snapshot);
+    };
+  }
+
+  return Component;
+}
+
+exports.polyfill = polyfill;
+
+/***/ }),
+/* 107 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+exports.__esModule = true;
+exports.classNamesShape = exports.timeoutsShape = void 0;
+
+var _propTypes = _interopRequireDefault(__webpack_require__(18));
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+var timeoutsShape = process.env.NODE_ENV !== 'production' ? _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.shape({
+  enter: _propTypes.default.number,
+  exit: _propTypes.default.number,
+  appear: _propTypes.default.number
+}).isRequired]) : null;
+exports.timeoutsShape = timeoutsShape;
+var classNamesShape = process.env.NODE_ENV !== 'production' ? _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.shape({
+  enter: _propTypes.default.string,
+  exit: _propTypes.default.string,
+  active: _propTypes.default.string
+}), _propTypes.default.shape({
+  enter: _propTypes.default.string,
+  enterDone: _propTypes.default.string,
+  enterActive: _propTypes.default.string,
+  exit: _propTypes.default.string,
+  exitDone: _propTypes.default.string,
+  exitActive: _propTypes.default.string
+})]) : null;
+exports.classNamesShape = classNamesShape;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
+
+/***/ }),
+/* 108 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _propTypes = _interopRequireDefault(__webpack_require__(18));
+
+var _react = _interopRequireDefault(__webpack_require__(8));
+
+var _reactLifecyclesCompat = __webpack_require__(106);
+
+var _ChildMapping = __webpack_require__(257);
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};var target = {};var sourceKeys = Object.keys(source);var key, i;for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];if (excluded.indexOf(key) >= 0) continue;target[key] = source[key];
+  }return target;
+}
+
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }return target;
+  };return _extends.apply(this, arguments);
+}
+
+function _inheritsLoose(subClass, superClass) {
+  subClass.prototype = Object.create(superClass.prototype);subClass.prototype.constructor = subClass;subClass.__proto__ = superClass;
+}
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }return self;
+}
+
+var values = Object.values || function (obj) {
+  return Object.keys(obj).map(function (k) {
+    return obj[k];
+  });
+};
+
+var defaultProps = {
+  component: 'div',
+  childFactory: function childFactory(child) {
+    return child;
+  }
+  /**
+   * The `<TransitionGroup>` component manages a set of transition components
+   * (`<Transition>` and `<CSSTransition>`) in a list. Like with the transition
+   * components, `<TransitionGroup>` is a state machine for managing the mounting
+   * and unmounting of components over time.
+   *
+   * Consider the example below. As items are removed or added to the TodoList the
+   * `in` prop is toggled automatically by the `<TransitionGroup>`.
+   *
+   * Note that `<TransitionGroup>`  does not define any animation behavior!
+   * Exactly _how_ a list item animates is up to the individual transition
+   * component. This means you can mix and match animations across different list
+   * items.
+   */
+
+};
+
+var TransitionGroup =
+/*#__PURE__*/
+function (_React$Component) {
+  _inheritsLoose(TransitionGroup, _React$Component);
+
+  function TransitionGroup(props, context) {
+    var _this;
+
+    _this = _React$Component.call(this, props, context) || this;
+
+    var handleExited = _this.handleExited.bind(_assertThisInitialized(_assertThisInitialized(_this))); // Initial children should all be entering, dependent on appear
+
+
+    _this.state = {
+      handleExited: handleExited,
+      firstRender: true
+    };
+    return _this;
+  }
+
+  var _proto = TransitionGroup.prototype;
+
+  _proto.getChildContext = function getChildContext() {
+    return {
+      transitionGroup: {
+        isMounting: !this.appeared
+      }
+    };
+  };
+
+  _proto.componentDidMount = function componentDidMount() {
+    this.appeared = true;
+    this.mounted = true;
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    this.mounted = false;
+  };
+
+  TransitionGroup.getDerivedStateFromProps = function getDerivedStateFromProps(nextProps, _ref) {
+    var prevChildMapping = _ref.children,
+        handleExited = _ref.handleExited,
+        firstRender = _ref.firstRender;
+    return {
+      children: firstRender ? (0, _ChildMapping.getInitialChildMapping)(nextProps, handleExited) : (0, _ChildMapping.getNextChildMapping)(nextProps, prevChildMapping, handleExited),
+      firstRender: false
+    };
+  };
+
+  _proto.handleExited = function handleExited(child, node) {
+    var currentChildMapping = (0, _ChildMapping.getChildMapping)(this.props.children);
+    if (child.key in currentChildMapping) return;
+
+    if (child.props.onExited) {
+      child.props.onExited(node);
+    }
+
+    if (this.mounted) {
+      this.setState(function (state) {
+        var children = _extends({}, state.children);
+
+        delete children[child.key];
+        return {
+          children: children
+        };
+      });
+    }
+  };
+
+  _proto.render = function render() {
+    var _this$props = this.props,
+        Component = _this$props.component,
+        childFactory = _this$props.childFactory,
+        props = _objectWithoutPropertiesLoose(_this$props, ["component", "childFactory"]);
+
+    var children = values(this.state.children).map(childFactory);
+    delete props.appear;
+    delete props.enter;
+    delete props.exit;
+
+    if (Component === null) {
+      return children;
+    }
+
+    return _react.default.createElement(Component, props, children);
+  };
+
+  return TransitionGroup;
+}(_react.default.Component);
+
+TransitionGroup.childContextTypes = {
+  transitionGroup: _propTypes.default.object.isRequired
+};
+TransitionGroup.propTypes = process.env.NODE_ENV !== "production" ? {
+  /**
+   * `<TransitionGroup>` renders a `<div>` by default. You can change this
+   * behavior by providing a `component` prop.
+   * If you use React v16+ and would like to avoid a wrapping `<div>` element
+   * you can pass in `component={null}`. This is useful if the wrapping div
+   * borks your css styles.
+   */
+  component: _propTypes.default.any,
+
+  /**
+   * A set of `<Transition>` components, that are toggled `in` and out as they
+   * leave. the `<TransitionGroup>` will inject specific transition props, so
+   * remember to spread them through if you are wrapping the `<Transition>` as
+   * with our `<Fade>` example.
+   *
+   * While this component is meant for multiple `Transition` or `CSSTransition`
+   * children, sometimes you may want to have a single transition child with
+   * content that you want to be transitioned out and in when you change it
+   * (e.g. routes, images etc.) In that case you can change the `key` prop of
+   * the transition child as you change its content, this will cause
+   * `TransitionGroup` to transition the child out and back in.
+   */
+  children: _propTypes.default.node,
+
+  /**
+   * A convenience prop that enables or disables appear animations
+   * for all children. Note that specifying this will override any defaults set
+   * on individual children Transitions.
+   */
+  appear: _propTypes.default.bool,
+
+  /**
+   * A convenience prop that enables or disables enter animations
+   * for all children. Note that specifying this will override any defaults set
+   * on individual children Transitions.
+   */
+  enter: _propTypes.default.bool,
+
+  /**
+   * A convenience prop that enables or disables exit animations
+   * for all children. Note that specifying this will override any defaults set
+   * on individual children Transitions.
+   */
+  exit: _propTypes.default.bool,
+
+  /**
+   * You may need to apply reactive updates to a child as it is exiting.
+   * This is generally done by using `cloneElement` however in the case of an exiting
+   * child the element has already been removed and not accessible to the consumer.
+   *
+   * If you do need to update a child as it leaves you can provide a `childFactory`
+   * to wrap every child, even the ones that are leaving.
+   *
+   * @type Function(child: ReactElement) -> ReactElement
+   */
+  childFactory: _propTypes.default.func
+} : {};
+TransitionGroup.defaultProps = defaultProps;
+
+var _default = (0, _reactLifecyclesCompat.polyfill)(TransitionGroup);
+
+exports.default = _default;
+module.exports = exports["default"];
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
+
+/***/ }),
+/* 109 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var __ = wp.i18n.__;
+
+var videoBoxAttrs = {
+    block_id: {
+        type: 'string'
+    },
+    borderBoxUpdated: {
+        type: "boolean",
+        default: false
+    },
+    videoBoxId: {
+        type: "string"
+    },
+    videoType: {
+        type: "string",
+        default: "youtube"
+    },
+    videoURL: {
+        type: "string"
+    },
+    videoID: {
+        type: "string"
+    },
+    autoPlay: {
+        type: "boolean",
+        default: false
+    },
+    loop: {
+        type: "boolean",
+        default: false
+    },
+    controls: {
+        type: "boolean",
+        default: true
+    },
+    relatedVideos: {
+        type: "boolean",
+        default: false
+    },
+    mute: {
+        type: "boolean",
+        default: false
+    },
+    overlay: {
+        type: "boolean",
+        default: false
+    },
+    videoDesc: {
+        type: "boolean"
+    },
+    playIcon: {
+        type: "boolean",
+        default: true
+    },
+    // Old props
+    playLeft: {
+        type: "number"
+    },
+    classMigrate: {
+        type: 'boolean',
+        default: false
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    },
+    ratioValue: {
+        type: "string",
+        default: '169'
+    },
+    boxStyles: {
+        type: 'array',
+        default: [{
+            boxBorderType: 'none',
+            boxBorderWidth: 1,
+            boxBorderTop: '',
+            boxBorderRight: '',
+            boxBorderBottom: '',
+            boxBorderLeft: '',
+            boxBorderRadius: '',
+            boxBorderColor: '',
+            shadowColor: '',
+            shadowBlur: '',
+            shadowHorizontal: '',
+            shadowVertical: '',
+            shadowPosition: '',
+            borderBoxUpdated: false
+        }]
+    },
+    overlayStyles: {
+        type: 'array',
+        default: [{
+            overlayImgID: '',
+            overlayImgURL: '',
+            blur: 0,
+            bright: 100,
+            contrast: 100,
+            saturation: 100,
+            hue: 0
+        }]
+    },
+    playStyles: {
+        type: 'array',
+        default: [{
+            playTop: '',
+            playSize: '',
+            playPadding: '',
+            playBorderType: 'none',
+            playBorderWidth: 1,
+            playBorderRadius: '',
+            playBorderColor: '',
+            playBorderTop: '',
+            playBorderRight: '',
+            playBorderBottom: '',
+            playBorderLeft: '',
+            playColor: '',
+            playBack: '',
+            playOpacity: 1,
+            playHoverColor: '',
+            playHoverBackColor: '',
+            borderPlayUpdated: false
+
+        }]
+
+    },
+    descStyles: {
+        type: 'array',
+        default: [{
+            videoDescText: '',
+            videoDescFamily: __('Default'),
+            videoDescSize: '',
+            videoDescSizeUnit: 'px',
+            videoDescSizeMobile: '',
+            videoDescSizeTablet: '',
+            videoDescWeight: '',
+            videoDescLetter: '',
+            videoDescStyle: '',
+            videoDescUpper: false,
+            videoDescPadding: '',
+            videoDescBorderRadius: '',
+            descShadowColor: '',
+            descShadowBlur: 0,
+            descShadowHorizontal: 0,
+            descShadowVertical: 0,
+            descLeft: '',
+            descTop: '',
+            videoDescColor: '',
+            videoDescBack: '',
+            videoDescOpacity: 1
+        }]
+    }
+
+};
+exports.default = videoBoxAttrs;
+
+/***/ }),
+/* 110 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 Object.defineProperty(exports, "__esModule", {
@@ -5027,47 +8131,47 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.arrayMove = exports.sortableHandle = exports.SortableHandle = exports.sortableElement = exports.SortableElement = exports.sortableContainer = exports.SortableContainer = undefined;
 
-var _extends2 = __webpack_require__(291);
+var _extends2 = __webpack_require__(290);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _slicedToArray2 = __webpack_require__(292);
+var _slicedToArray2 = __webpack_require__(291);
 
 var _slicedToArray3 = _interopRequireDefault(_slicedToArray2);
 
-var _objectSpread2 = __webpack_require__(296);
+var _objectSpread2 = __webpack_require__(295);
 
 var _objectSpread3 = _interopRequireDefault(_objectSpread2);
 
-var _classCallCheck2 = __webpack_require__(297);
+var _classCallCheck2 = __webpack_require__(296);
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
-var _createClass2 = __webpack_require__(298);
+var _createClass2 = __webpack_require__(297);
 
 var _createClass3 = _interopRequireDefault(_createClass2);
 
-var _possibleConstructorReturn2 = __webpack_require__(299);
+var _possibleConstructorReturn2 = __webpack_require__(298);
 
 var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
 
-var _getPrototypeOf2 = __webpack_require__(301);
+var _getPrototypeOf2 = __webpack_require__(300);
 
 var _getPrototypeOf3 = _interopRequireDefault(_getPrototypeOf2);
 
-var _inherits2 = __webpack_require__(302);
+var _inherits2 = __webpack_require__(301);
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _assertThisInitialized2 = __webpack_require__(115);
+var _assertThisInitialized2 = __webpack_require__(114);
 
 var _assertThisInitialized3 = _interopRequireDefault(_assertThisInitialized2);
 
-var _defineProperty2 = __webpack_require__(114);
+var _defineProperty2 = __webpack_require__(113);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
-var _react = __webpack_require__(9);
+var _react = __webpack_require__(8);
 
 var _propTypes = __webpack_require__(18);
 
@@ -5075,11 +8179,11 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _reactDom = __webpack_require__(40);
 
-var _invariant = __webpack_require__(304);
+var _invariant = __webpack_require__(303);
 
 var _invariant2 = _interopRequireDefault(_invariant);
 
-var _toConsumableArray2 = __webpack_require__(305);
+var _toConsumableArray2 = __webpack_require__(304);
 
 var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
 
@@ -6658,3144 +9762,10 @@ exports.sortableElement = sortableElement;
 exports.SortableHandle = sortableHandle;
 exports.sortableHandle = sortableHandle;
 exports.arrayMove = arrayMove;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
-
-/***/ }),
-/* 70 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _stringify = __webpack_require__(313);
-
-var _stringify2 = _interopRequireDefault(_stringify);
-
-var _extends2 = __webpack_require__(315);
-
-var _extends3 = _interopRequireDefault(_extends2);
-
-var _getPrototypeOf = __webpack_require__(324);
-
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-var _classCallCheck2 = __webpack_require__(328);
-
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-var _createClass2 = __webpack_require__(329);
-
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = __webpack_require__(333);
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = __webpack_require__(355);
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _react = __webpack_require__(9);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = __webpack_require__(18);
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _lottieWeb = __webpack_require__(363);
-
-var _lottieWeb2 = _interopRequireDefault(_lottieWeb);
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-var Lottie = function (_React$Component) {
-  (0, _inherits3.default)(Lottie, _React$Component);
-
-  function Lottie() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
-    (0, _classCallCheck3.default)(this, Lottie);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = Lottie.__proto__ || (0, _getPrototypeOf2.default)(Lottie)).call.apply(_ref, [this].concat(args))), _this), _this.handleClickToPause = function () {
-      // The pause() method is for handling pausing by passing a prop isPaused
-      // This method is for handling the ability to pause by clicking on the animation
-      if (_this.anim.isPaused) {
-        _this.anim.play();
-      } else {
-        _this.anim.pause();
-      }
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
-  }
-
-  (0, _createClass3.default)(Lottie, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      var _props = this.props,
-          options = _props.options,
-          playSegments = _props.playSegments,
-          goToAndPlay = _props.goToAndPlay,
-          goToAndStop = _props.goToAndStop,
-          eventListeners = _props.eventListeners;
-      var loop = options.loop,
-          autoplay = options.autoplay,
-          animationData = options.animationData,
-          rendererSettings = options.rendererSettings;
-
-      this.options = {
-        container: this.el,
-        renderer: 'svg',
-        loop: loop !== false,
-        autoplay: autoplay !== false,
-        playSegments: playSegments.segments !== null,
-        goToAndPlay: goToAndPlay.value !== null,
-        goToAndStop: goToAndStop.value !== null,
-        animationData: animationData,
-        rendererSettings: rendererSettings
-      };
-
-      this.options = (0, _extends3.default)({}, this.options, options);
-      this.anim = _lottieWeb2.default.loadAnimation(this.options);
-
-      // Immediately handle goTo's if necessary.
-      if (this.options.goToAndPlay) {
-        this.goToAndPlay();
-      }
-      if (this.options.goToAndStop) {
-        this.goToAndStop();
-      }
-      if (this.options.playSegments) {
-        this.playSegments();
-      }
-      this.registerEvents(eventListeners);
-    }
-  }, {
-    key: 'componentWillUpdate',
-    value: function componentWillUpdate(nextProps /* , nextState */) {
-      /* Recreate the animation handle if the data is changed */
-      if (this.options.animationData !== nextProps.options.animationData) {
-        this.deRegisterEvents(this.props.eventListeners);
-        this.destroy();
-        this.options = (0, _extends3.default)({}, this.options, nextProps.options);
-        this.anim = _lottieWeb2.default.loadAnimation(this.options);
-        this.registerEvents(nextProps.eventListeners);
-      }
-    }
-  }, {
-    key: 'componentDidUpdate',
-    value: function componentDidUpdate(prevProps) {
-      if (this.props.isStopped) {
-        this.stop();
-      } else if (this.options.playSegments) {
-        this.playSegments();
-      } else {
-        this.play();
-      }
-
-      if ((0, _stringify2.default)(this.props.goToAndPlay) !== (0, _stringify2.default)(prevProps.goToAndPlay)) {
-        this.goToAndPlay();
-      }
-
-      if ((0, _stringify2.default)(this.props.goToAndStop) !== (0, _stringify2.default)(prevProps.goToAndStop)) {
-        this.goToAndStop();
-      }
-
-      this.pause();
-      this.setSpeed();
-      this.setDirection();
-    }
-  }, {
-    key: 'componentWillUnmount',
-    value: function componentWillUnmount() {
-      this.deRegisterEvents(this.props.eventListeners);
-      this.destroy();
-      this.options.animationData = null;
-      this.anim = null;
-    }
-  }, {
-    key: 'setSpeed',
-    value: function setSpeed() {
-      this.anim.setSpeed(this.props.speed);
-    }
-  }, {
-    key: 'setDirection',
-    value: function setDirection() {
-      this.anim.setDirection(this.props.direction);
-    }
-  }, {
-    key: 'play',
-    value: function play() {
-      this.anim.play();
-    }
-  }, {
-    key: 'playSegments',
-    value: function playSegments() {
-      var _props$playSegments = this.props.playSegments,
-          segments = _props$playSegments.segments,
-          forceFlag = _props$playSegments.forceFlag;
-
-      this.anim.playSegments(segments, forceFlag);
-    }
-  }, {
-    key: 'stop',
-    value: function stop() {
-      this.anim.stop();
-    }
-  }, {
-    key: 'pause',
-    value: function pause() {
-      if (this.props.isPaused && !this.anim.isPaused) {
-        this.anim.pause();
-      } else if (!this.props.isPaused && this.anim.isPaused) {
-        this.anim.pause();
-      }
-    }
-  }, {
-    key: 'goToAndPlay',
-    value: function goToAndPlay() {
-      console.log('#goToAndPlay ', this.props.goToAndPlay);
-      var _props$goToAndPlay = this.props.goToAndPlay,
-          value = _props$goToAndPlay.value,
-          isFrame = _props$goToAndPlay.isFrame;
-
-      this.anim.goToAndPlay(value, isFrame);
-    }
-  }, {
-    key: 'goToAndStop',
-    value: function goToAndStop() {
-      var _props$goToAndStop = this.props.goToAndStop,
-          value = _props$goToAndStop.value,
-          isFrame = _props$goToAndStop.isFrame;
-
-      this.anim.goToAndStop(value, isFrame);
-    }
-  }, {
-    key: 'destroy',
-    value: function destroy() {
-      this.anim.destroy();
-    }
-  }, {
-    key: 'registerEvents',
-    value: function registerEvents(eventListeners) {
-      var _this2 = this;
-
-      eventListeners.forEach(function (eventListener) {
-        _this2.anim.addEventListener(eventListener.eventName, eventListener.callback);
-      });
-    }
-  }, {
-    key: 'deRegisterEvents',
-    value: function deRegisterEvents(eventListeners) {
-      var _this3 = this;
-
-      eventListeners.forEach(function (eventListener) {
-        _this3.anim.removeEventListener(eventListener.eventName, eventListener.callback);
-      });
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this4 = this;
-
-      var _props2 = this.props,
-          width = _props2.width,
-          height = _props2.height,
-          ariaRole = _props2.ariaRole,
-          ariaLabel = _props2.ariaLabel,
-          isClickToPauseDisabled = _props2.isClickToPauseDisabled,
-          title = _props2.title;
-
-      var getSize = function getSize(initial) {
-        var size = void 0;
-
-        if (typeof initial === 'number') {
-          size = initial + 'px';
-        } else {
-          size = initial || '100%';
-        }
-
-        return size;
-      };
-
-      var lottieStyles = (0, _extends3.default)({
-        width: getSize(width),
-        height: getSize(height),
-        overflow: 'hidden',
-        margin: '0 auto',
-        outline: 'none'
-      }, this.props.style);
-
-      var onClickHandler = isClickToPauseDisabled ? function () {
-        return null;
-      } : this.handleClickToPause;
-
-      return (
-        // Bug with eslint rules https://github.com/airbnb/javascript/issues/1374
-        // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-        _react2.default.createElement('div', {
-          ref: function ref(c) {
-            _this4.el = c;
-          },
-          style: lottieStyles,
-          onClick: onClickHandler,
-          title: title,
-          role: ariaRole,
-          'aria-label': ariaLabel,
-          tabIndex: '0'
-        })
-      );
-    }
-  }]);
-  return Lottie;
-}(_react2.default.Component);
-
-exports.default = Lottie;
-
-Lottie.propTypes = {
-  eventListeners: _propTypes2.default.arrayOf(_propTypes2.default.object),
-  options: _propTypes2.default.object.isRequired,
-  height: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
-  width: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
-  isStopped: _propTypes2.default.bool,
-  isPaused: _propTypes2.default.bool,
-  goToAndPlay: _propTypes2.default.shape({
-    value: _propTypes2.default.number,
-    isFrame: _propTypes2.default.bool
-  }),
-  goToAndStop: _propTypes2.default.shape({
-    value: _propTypes2.default.number,
-    isFrame: _propTypes2.default.bool
-  }),
-  speed: _propTypes2.default.number,
-  playSegments: _propTypes2.default.shape({
-    segments: _propTypes2.default.oneOfType([_propTypes2.default.arrayOf(_propTypes2.default.number), _propTypes2.default.arrayOf(_propTypes2.default.arrayOf(_propTypes2.default.number))]),
-    forceFlag: _propTypes2.default.bool
-  }),
-  direction: _propTypes2.default.number,
-  ariaRole: _propTypes2.default.string,
-  ariaLabel: _propTypes2.default.string,
-  isClickToPauseDisabled: _propTypes2.default.bool,
-  title: _propTypes2.default.string,
-  style: _propTypes2.default.string
-};
-
-Lottie.defaultProps = {
-  eventListeners: [],
-  isStopped: false,
-  isPaused: false,
-  goToAndPlay: {
-    value: null,
-    isFrame: false
-  },
-  goToAndStop: {
-    value: null,
-    isFrame: false
-  },
-  playSegments: {
-    segments: null,
-    forceFlag: false
-  },
-  speed: 1,
-  ariaRole: 'button',
-  ariaLabel: 'animation',
-  isClickToPauseDisabled: false,
-  title: ''
-};
-
-/***/ }),
-/* 71 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// 7.1.1 ToPrimitive(input [, PreferredType])
-var isObject = __webpack_require__(34);
-// instead of the ES6 spec version, we didn't implement @@toPrimitive case
-// and the second argument - flag - preferred type is a string
-module.exports = function (it, S) {
-  if (!isObject(it)) return it;
-  var fn, val;
-  if (S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
-  if (typeof (fn = it.valueOf) == 'function' && !isObject(val = fn.call(it))) return val;
-  if (!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
-  throw TypeError("Can't convert object to primitive value");
-};
-
-/***/ }),
-/* 72 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// 7.2.1 RequireObjectCoercible(argument)
-module.exports = function (it) {
-  if (it == undefined) throw TypeError("Can't call method on  " + it);
-  return it;
-};
-
-/***/ }),
-/* 73 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// 7.1.4 ToInteger
-var ceil = Math.ceil;
-var floor = Math.floor;
-module.exports = function (it) {
-  return isNaN(it = +it) ? 0 : (it > 0 ? floor : ceil)(it);
-};
-
-/***/ }),
-/* 74 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var shared = __webpack_require__(75)('keys');
-var uid = __webpack_require__(56);
-module.exports = function (key) {
-  return shared[key] || (shared[key] = uid(key));
-};
-
-/***/ }),
-/* 75 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var core = __webpack_require__(14);
-var global = __webpack_require__(20);
-var SHARED = '__core-js_shared__';
-var store = global[SHARED] || (global[SHARED] = {});
-
-(module.exports = function (key, value) {
-  return store[key] || (store[key] = value !== undefined ? value : {});
-})('versions', []).push({
-  version: core.version,
-  mode: __webpack_require__(55) ? 'pure' : 'global',
-  copyright: '© 2018 Denis Pushkarev (zloirock.ru)'
-});
-
-/***/ }),
-/* 76 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// IE 8- don't enum bug keys
-module.exports = 'constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf'.split(',');
-
-/***/ }),
-/* 77 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.f = Object.getOwnPropertySymbols;
-
-/***/ }),
-/* 78 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// 7.1.13 ToObject(argument)
-var defined = __webpack_require__(72);
-module.exports = function (it) {
-  return Object(defined(it));
-};
-
-/***/ }),
-/* 79 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = {};
-
-/***/ }),
-/* 80 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-var anObject = __webpack_require__(42);
-var dPs = __webpack_require__(339);
-var enumBugKeys = __webpack_require__(76);
-var IE_PROTO = __webpack_require__(74)('IE_PROTO');
-var Empty = function Empty() {/* empty */};
-var PROTOTYPE = 'prototype';
-
-// Create object with fake `null` prototype: use iframe Object with cleared prototype
-var _createDict = function createDict() {
-  // Thrash, waste and sodomy: IE GC bug
-  var iframe = __webpack_require__(118)('iframe');
-  var i = enumBugKeys.length;
-  var lt = '<';
-  var gt = '>';
-  var iframeDocument;
-  iframe.style.display = 'none';
-  __webpack_require__(340).appendChild(iframe);
-  iframe.src = 'javascript:'; // eslint-disable-line no-script-url
-  // createDict = iframe.contentWindow.Object;
-  // html.removeChild(iframe);
-  iframeDocument = iframe.contentWindow.document;
-  iframeDocument.open();
-  iframeDocument.write(lt + 'script' + gt + 'document.F=Object' + lt + '/script' + gt);
-  iframeDocument.close();
-  _createDict = iframeDocument.F;
-  while (i--) {
-    delete _createDict[PROTOTYPE][enumBugKeys[i]];
-  }return _createDict();
-};
-
-module.exports = Object.create || function create(O, Properties) {
-  var result;
-  if (O !== null) {
-    Empty[PROTOTYPE] = anObject(O);
-    result = new Empty();
-    Empty[PROTOTYPE] = null;
-    // add "__proto__" for Object.getPrototypeOf polyfill
-    result[IE_PROTO] = O;
-  } else result = _createDict();
-  return Properties === undefined ? result : dPs(result, Properties);
-};
-
-/***/ }),
-/* 81 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var def = __webpack_require__(26).f;
-var has = __webpack_require__(28);
-var TAG = __webpack_require__(37)('toStringTag');
-
-module.exports = function (it, tag, stat) {
-  if (it && !has(it = stat ? it : it.prototype, TAG)) def(it, TAG, { configurable: true, value: tag });
-};
-
-/***/ }),
-/* 82 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.f = __webpack_require__(37);
-
-/***/ }),
-/* 83 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var global = __webpack_require__(20);
-var core = __webpack_require__(14);
-var LIBRARY = __webpack_require__(55);
-var wksExt = __webpack_require__(82);
-var defineProperty = __webpack_require__(26).f;
-module.exports = function (name) {
-  var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
-  if (name.charAt(0) != '_' && !(name in $Symbol)) defineProperty($Symbol, name, { value: wksExt.f(name) });
-};
-
-/***/ }),
-/* 84 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var baseGet = __webpack_require__(85);
-
-/**
- * Gets the value at `path` of `object`. If the resolved value is
- * `undefined`, the `defaultValue` is returned in its place.
- *
- * @static
- * @memberOf _
- * @since 3.7.0
- * @category Object
- * @param {Object} object The object to query.
- * @param {Array|string} path The path of the property to get.
- * @param {*} [defaultValue] The value returned for `undefined` resolved values.
- * @returns {*} Returns the resolved value.
- * @example
- *
- * var object = { 'a': [{ 'b': { 'c': 3 } }] };
- *
- * _.get(object, 'a[0].b.c');
- * // => 3
- *
- * _.get(object, ['a', '0', 'b', 'c']);
- * // => 3
- *
- * _.get(object, 'a.b.c', 'default');
- * // => 'default'
- */
-function get(object, path, defaultValue) {
-  var result = object == null ? undefined : baseGet(object, path);
-  return result === undefined ? defaultValue : result;
-}
-
-module.exports = get;
-
-/***/ }),
-/* 85 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var castPath = __webpack_require__(86),
-    toKey = __webpack_require__(49);
-
-/**
- * The base implementation of `_.get` without support for default values.
- *
- * @private
- * @param {Object} object The object to query.
- * @param {Array|string} path The path of the property to get.
- * @returns {*} Returns the resolved value.
- */
-function baseGet(object, path) {
-  path = castPath(path, object);
-
-  var index = 0,
-      length = path.length;
-
-  while (object != null && index < length) {
-    object = object[toKey(path[index++])];
-  }
-  return index && index == length ? object : undefined;
-}
-
-module.exports = baseGet;
-
-/***/ }),
-/* 86 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var isArray = __webpack_require__(15),
-    isKey = __webpack_require__(58),
-    stringToPath = __webpack_require__(135),
-    toString = __webpack_require__(159);
-
-/**
- * Casts `value` to a path array if it's not one.
- *
- * @private
- * @param {*} value The value to inspect.
- * @param {Object} [object] The object to query keys on.
- * @returns {Array} Returns the cast property path array.
- */
-function castPath(value, object) {
-  if (isArray(value)) {
-    return value;
-  }
-  return isKey(value, object) ? [value] : stringToPath(toString(value));
-}
-
-module.exports = castPath;
-
-/***/ }),
-/* 87 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(global) {
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-/** Detect free variable `global` from Node.js. */
-var freeGlobal = (typeof global === 'undefined' ? 'undefined' : _typeof(global)) == 'object' && global && global.Object === Object && global;
-
-module.exports = freeGlobal;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(88)))
-
-/***/ }),
-/* 88 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var g;
-
-// This works in non-strict mode
-g = function () {
-	return this;
-}();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1, eval)("this");
-} catch (e) {
-	// This works if the window reference is available
-	if ((typeof window === "undefined" ? "undefined" : _typeof(window)) === "object") g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-/***/ }),
-/* 89 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var baseGetTag = __webpack_require__(38),
-    isObject = __webpack_require__(61);
-
-/** `Object#toString` result references. */
-var asyncTag = '[object AsyncFunction]',
-    funcTag = '[object Function]',
-    genTag = '[object GeneratorFunction]',
-    proxyTag = '[object Proxy]';
-
-/**
- * Checks if `value` is classified as a `Function` object.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a function, else `false`.
- * @example
- *
- * _.isFunction(_);
- * // => true
- *
- * _.isFunction(/abc/);
- * // => false
- */
-function isFunction(value) {
-    if (!isObject(value)) {
-        return false;
-    }
-    // The use of `Object#toString` avoids issues with the `typeof` operator
-    // in Safari 9 which returns 'object' for typed arrays and other constructors.
-    var tag = baseGetTag(value);
-    return tag == funcTag || tag == genTag || tag == asyncTag || tag == proxyTag;
-}
-
-module.exports = isFunction;
-
-/***/ }),
-/* 90 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/** Used for built-in method references. */
-var funcProto = Function.prototype;
-
-/** Used to resolve the decompiled source of functions. */
-var funcToString = funcProto.toString;
-
-/**
- * Converts `func` to its source code.
- *
- * @private
- * @param {Function} func The function to convert.
- * @returns {string} Returns the source code.
- */
-function toSource(func) {
-  if (func != null) {
-    try {
-      return funcToString.call(func);
-    } catch (e) {}
-    try {
-      return func + '';
-    } catch (e) {}
-  }
-  return '';
-}
-
-module.exports = toSource;
-
-/***/ }),
-/* 91 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Performs a
- * [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
- * comparison between two values to determine if they are equivalent.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to compare.
- * @param {*} other The other value to compare.
- * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
- * @example
- *
- * var object = { 'a': 1 };
- * var other = { 'a': 1 };
- *
- * _.eq(object, object);
- * // => true
- *
- * _.eq(object, other);
- * // => false
- *
- * _.eq('a', 'a');
- * // => true
- *
- * _.eq('a', Object('a'));
- * // => false
- *
- * _.eq(NaN, NaN);
- * // => true
- */
-function eq(value, other) {
-  return value === other || value !== value && other !== other;
-}
-
-module.exports = eq;
-
-/***/ }),
-/* 92 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * A specialized version of `_.map` for arrays without support for iteratee
- * shorthands.
- *
- * @private
- * @param {Array} [array] The array to iterate over.
- * @param {Function} iteratee The function invoked per iteration.
- * @returns {Array} Returns the new mapped array.
- */
-function arrayMap(array, iteratee) {
-  var index = -1,
-      length = array == null ? 0 : array.length,
-      result = Array(length);
-
-  while (++index < length) {
-    result[index] = iteratee(array[index], index, array);
-  }
-  return result;
-}
-
-module.exports = arrayMap;
-
-/***/ }),
-/* 93 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var arrayMap = __webpack_require__(92),
-    baseIteratee = __webpack_require__(161),
-    baseMap = __webpack_require__(211),
-    isArray = __webpack_require__(15);
-
-/**
- * Creates an array of values by running each element in `collection` thru
- * `iteratee`. The iteratee is invoked with three arguments:
- * (value, index|key, collection).
- *
- * Many lodash methods are guarded to work as iteratees for methods like
- * `_.every`, `_.filter`, `_.map`, `_.mapValues`, `_.reject`, and `_.some`.
- *
- * The guarded methods are:
- * `ary`, `chunk`, `curry`, `curryRight`, `drop`, `dropRight`, `every`,
- * `fill`, `invert`, `parseInt`, `random`, `range`, `rangeRight`, `repeat`,
- * `sampleSize`, `slice`, `some`, `sortBy`, `split`, `take`, `takeRight`,
- * `template`, `trim`, `trimEnd`, `trimStart`, and `words`
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Collection
- * @param {Array|Object} collection The collection to iterate over.
- * @param {Function} [iteratee=_.identity] The function invoked per iteration.
- * @returns {Array} Returns the new mapped array.
- * @example
- *
- * function square(n) {
- *   return n * n;
- * }
- *
- * _.map([4, 8], square);
- * // => [16, 64]
- *
- * _.map({ 'a': 4, 'b': 8 }, square);
- * // => [16, 64] (iteration order is not guaranteed)
- *
- * var users = [
- *   { 'user': 'barney' },
- *   { 'user': 'fred' }
- * ];
- *
- * // The `_.property` iteratee shorthand.
- * _.map(users, 'user');
- * // => ['barney', 'fred']
- */
-function map(collection, iteratee) {
-  var func = isArray(collection) ? arrayMap : baseMap;
-  return func(collection, baseIteratee(iteratee, 3));
-}
-
-module.exports = map;
-
-/***/ }),
-/* 94 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var ListCache = __webpack_require__(46),
-    stackClear = __webpack_require__(164),
-    stackDelete = __webpack_require__(165),
-    stackGet = __webpack_require__(166),
-    stackHas = __webpack_require__(167),
-    stackSet = __webpack_require__(168);
-
-/**
- * Creates a stack cache object to store key-value pairs.
- *
- * @private
- * @constructor
- * @param {Array} [entries] The key-value pairs to cache.
- */
-function Stack(entries) {
-  var data = this.__data__ = new ListCache(entries);
-  this.size = data.size;
-}
-
-// Add methods to `Stack`.
-Stack.prototype.clear = stackClear;
-Stack.prototype['delete'] = stackDelete;
-Stack.prototype.get = stackGet;
-Stack.prototype.has = stackHas;
-Stack.prototype.set = stackSet;
-
-module.exports = Stack;
-
-/***/ }),
-/* 95 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var baseIsEqualDeep = __webpack_require__(169),
-    isObjectLike = __webpack_require__(39);
-
-/**
- * The base implementation of `_.isEqual` which supports partial comparisons
- * and tracks traversed objects.
- *
- * @private
- * @param {*} value The value to compare.
- * @param {*} other The other value to compare.
- * @param {boolean} bitmask The bitmask flags.
- *  1 - Unordered comparison
- *  2 - Partial comparison
- * @param {Function} [customizer] The function to customize comparisons.
- * @param {Object} [stack] Tracks traversed `value` and `other` objects.
- * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
- */
-function baseIsEqual(value, other, bitmask, customizer, stack) {
-  if (value === other) {
-    return true;
-  }
-  if (value == null || other == null || !isObjectLike(value) && !isObjectLike(other)) {
-    return value !== value && other !== other;
-  }
-  return baseIsEqualDeep(value, other, bitmask, customizer, baseIsEqual, stack);
-}
-
-module.exports = baseIsEqual;
-
-/***/ }),
-/* 96 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var SetCache = __webpack_require__(170),
-    arraySome = __webpack_require__(173),
-    cacheHas = __webpack_require__(174);
-
-/** Used to compose bitmasks for value comparisons. */
-var COMPARE_PARTIAL_FLAG = 1,
-    COMPARE_UNORDERED_FLAG = 2;
-
-/**
- * A specialized version of `baseIsEqualDeep` for arrays with support for
- * partial deep comparisons.
- *
- * @private
- * @param {Array} array The array to compare.
- * @param {Array} other The other array to compare.
- * @param {number} bitmask The bitmask flags. See `baseIsEqual` for more details.
- * @param {Function} customizer The function to customize comparisons.
- * @param {Function} equalFunc The function to determine equivalents of values.
- * @param {Object} stack Tracks traversed `array` and `other` objects.
- * @returns {boolean} Returns `true` if the arrays are equivalent, else `false`.
- */
-function equalArrays(array, other, bitmask, customizer, equalFunc, stack) {
-  var isPartial = bitmask & COMPARE_PARTIAL_FLAG,
-      arrLength = array.length,
-      othLength = other.length;
-
-  if (arrLength != othLength && !(isPartial && othLength > arrLength)) {
-    return false;
-  }
-  // Check that cyclic values are equal.
-  var arrStacked = stack.get(array);
-  var othStacked = stack.get(other);
-  if (arrStacked && othStacked) {
-    return arrStacked == other && othStacked == array;
-  }
-  var index = -1,
-      result = true,
-      seen = bitmask & COMPARE_UNORDERED_FLAG ? new SetCache() : undefined;
-
-  stack.set(array, other);
-  stack.set(other, array);
-
-  // Ignore non-index properties.
-  while (++index < arrLength) {
-    var arrValue = array[index],
-        othValue = other[index];
-
-    if (customizer) {
-      var compared = isPartial ? customizer(othValue, arrValue, index, other, array, stack) : customizer(arrValue, othValue, index, array, other, stack);
-    }
-    if (compared !== undefined) {
-      if (compared) {
-        continue;
-      }
-      result = false;
-      break;
-    }
-    // Recursively compare arrays (susceptible to call stack limits).
-    if (seen) {
-      if (!arraySome(other, function (othValue, othIndex) {
-        if (!cacheHas(seen, othIndex) && (arrValue === othValue || equalFunc(arrValue, othValue, bitmask, customizer, stack))) {
-          return seen.push(othIndex);
-        }
-      })) {
-        result = false;
-        break;
-      }
-    } else if (!(arrValue === othValue || equalFunc(arrValue, othValue, bitmask, customizer, stack))) {
-      result = false;
-      break;
-    }
-  }
-  stack['delete'](array);
-  stack['delete'](other);
-  return result;
-}
-
-module.exports = equalArrays;
-
-/***/ }),
-/* 97 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var baseIsArguments = __webpack_require__(188),
-    isObjectLike = __webpack_require__(39);
-
-/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty = objectProto.hasOwnProperty;
-
-/** Built-in value references. */
-var propertyIsEnumerable = objectProto.propertyIsEnumerable;
-
-/**
- * Checks if `value` is likely an `arguments` object.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an `arguments` object,
- *  else `false`.
- * @example
- *
- * _.isArguments(function() { return arguments; }());
- * // => true
- *
- * _.isArguments([1, 2, 3]);
- * // => false
- */
-var isArguments = baseIsArguments(function () {
-    return arguments;
-}()) ? baseIsArguments : function (value) {
-    return isObjectLike(value) && hasOwnProperty.call(value, 'callee') && !propertyIsEnumerable.call(value, 'callee');
-};
-
-module.exports = isArguments;
-
-/***/ }),
-/* 98 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(module) {
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var root = __webpack_require__(16),
-    stubFalse = __webpack_require__(189);
-
-/** Detect free variable `exports`. */
-var freeExports = ( false ? 'undefined' : _typeof(exports)) == 'object' && exports && !exports.nodeType && exports;
-
-/** Detect free variable `module`. */
-var freeModule = freeExports && ( false ? 'undefined' : _typeof(module)) == 'object' && module && !module.nodeType && module;
-
-/** Detect the popular CommonJS extension `module.exports`. */
-var moduleExports = freeModule && freeModule.exports === freeExports;
-
-/** Built-in value references. */
-var Buffer = moduleExports ? root.Buffer : undefined;
-
-/* Built-in method references for those with the same name as other `lodash` methods. */
-var nativeIsBuffer = Buffer ? Buffer.isBuffer : undefined;
-
-/**
- * Checks if `value` is a buffer.
- *
- * @static
- * @memberOf _
- * @since 4.3.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a buffer, else `false`.
- * @example
- *
- * _.isBuffer(new Buffer(2));
- * // => true
- *
- * _.isBuffer(new Uint8Array(2));
- * // => false
- */
-var isBuffer = nativeIsBuffer || stubFalse;
-
-module.exports = isBuffer;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(50)(module)))
-
-/***/ }),
-/* 99 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-/** Used as references for various `Number` constants. */
-var MAX_SAFE_INTEGER = 9007199254740991;
-
-/** Used to detect unsigned integer values. */
-var reIsUint = /^(?:0|[1-9]\d*)$/;
-
-/**
- * Checks if `value` is a valid array-like index.
- *
- * @private
- * @param {*} value The value to check.
- * @param {number} [length=MAX_SAFE_INTEGER] The upper bounds of a valid index.
- * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
- */
-function isIndex(value, length) {
-  var type = typeof value === 'undefined' ? 'undefined' : _typeof(value);
-  length = length == null ? MAX_SAFE_INTEGER : length;
-
-  return !!length && (type == 'number' || type != 'symbol' && reIsUint.test(value)) && value > -1 && value % 1 == 0 && value < length;
-}
-
-module.exports = isIndex;
-
-/***/ }),
-/* 100 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var baseIsTypedArray = __webpack_require__(190),
-    baseUnary = __webpack_require__(191),
-    nodeUtil = __webpack_require__(192);
-
-/* Node.js helper references. */
-var nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
-
-/**
- * Checks if `value` is classified as a typed array.
- *
- * @static
- * @memberOf _
- * @since 3.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a typed array, else `false`.
- * @example
- *
- * _.isTypedArray(new Uint8Array);
- * // => true
- *
- * _.isTypedArray([]);
- * // => false
- */
-var isTypedArray = nodeIsTypedArray ? baseUnary(nodeIsTypedArray) : baseIsTypedArray;
-
-module.exports = isTypedArray;
-
-/***/ }),
-/* 101 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var isObject = __webpack_require__(61);
-
-/**
- * Checks if `value` is suitable for strict equality comparisons, i.e. `===`.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` if suitable for strict
- *  equality comparisons, else `false`.
- */
-function isStrictComparable(value) {
-  return value === value && !isObject(value);
-}
-
-module.exports = isStrictComparable;
-
-/***/ }),
-/* 102 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * A specialized version of `matchesProperty` for source values suitable
- * for strict equality comparisons, i.e. `===`.
- *
- * @private
- * @param {string} key The key of the property to get.
- * @param {*} srcValue The value to match.
- * @returns {Function} Returns the new spec function.
- */
-function matchesStrictComparable(key, srcValue) {
-  return function (object) {
-    if (object == null) {
-      return false;
-    }
-    return object[key] === srcValue && (srcValue !== undefined || key in Object(object));
-  };
-}
-
-module.exports = matchesStrictComparable;
-
-/***/ }),
-/* 103 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-var __WEBPACK_AMD_DEFINE_RESULT__;
-
-/* Web Font Loader v1.6.28 - (c) Adobe Systems, Google. License: Apache 2.0 */(function () {
-  function aa(a, b, c) {
-    return a.call.apply(a.bind, arguments);
-  }function ba(a, b, c) {
-    if (!a) throw Error();if (2 < arguments.length) {
-      var d = Array.prototype.slice.call(arguments, 2);return function () {
-        var c = Array.prototype.slice.call(arguments);Array.prototype.unshift.apply(c, d);return a.apply(b, c);
-      };
-    }return function () {
-      return a.apply(b, arguments);
-    };
-  }function p(a, b, c) {
-    p = Function.prototype.bind && -1 != Function.prototype.bind.toString().indexOf("native code") ? aa : ba;return p.apply(null, arguments);
-  }var q = Date.now || function () {
-    return +new Date();
-  };function ca(a, b) {
-    this.a = a;this.o = b || a;this.c = this.o.document;
-  }var da = !!window.FontFace;function t(a, b, c, d) {
-    b = a.c.createElement(b);if (c) for (var e in c) {
-      c.hasOwnProperty(e) && ("style" == e ? b.style.cssText = c[e] : b.setAttribute(e, c[e]));
-    }d && b.appendChild(a.c.createTextNode(d));return b;
-  }function u(a, b, c) {
-    a = a.c.getElementsByTagName(b)[0];a || (a = document.documentElement);a.insertBefore(c, a.lastChild);
-  }function v(a) {
-    a.parentNode && a.parentNode.removeChild(a);
-  }
-  function w(a, b, c) {
-    b = b || [];c = c || [];for (var d = a.className.split(/\s+/), e = 0; e < b.length; e += 1) {
-      for (var f = !1, g = 0; g < d.length; g += 1) {
-        if (b[e] === d[g]) {
-          f = !0;break;
-        }
-      }f || d.push(b[e]);
-    }b = [];for (e = 0; e < d.length; e += 1) {
-      f = !1;for (g = 0; g < c.length; g += 1) {
-        if (d[e] === c[g]) {
-          f = !0;break;
-        }
-      }f || b.push(d[e]);
-    }a.className = b.join(" ").replace(/\s+/g, " ").replace(/^\s+|\s+$/, "");
-  }function y(a, b) {
-    for (var c = a.className.split(/\s+/), d = 0, e = c.length; d < e; d++) {
-      if (c[d] == b) return !0;
-    }return !1;
-  }
-  function ea(a) {
-    return a.o.location.hostname || a.a.location.hostname;
-  }function z(a, b, c) {
-    function d() {
-      m && e && f && (m(g), m = null);
-    }b = t(a, "link", { rel: "stylesheet", href: b, media: "all" });var e = !1,
-        f = !0,
-        g = null,
-        m = c || null;da ? (b.onload = function () {
-      e = !0;d();
-    }, b.onerror = function () {
-      e = !0;g = Error("Stylesheet failed to load");d();
-    }) : setTimeout(function () {
-      e = !0;d();
-    }, 0);u(a, "head", b);
-  }
-  function A(a, b, c, d) {
-    var e = a.c.getElementsByTagName("head")[0];if (e) {
-      var f = t(a, "script", { src: b }),
-          g = !1;f.onload = f.onreadystatechange = function () {
-        g || this.readyState && "loaded" != this.readyState && "complete" != this.readyState || (g = !0, c && c(null), f.onload = f.onreadystatechange = null, "HEAD" == f.parentNode.tagName && e.removeChild(f));
-      };e.appendChild(f);setTimeout(function () {
-        g || (g = !0, c && c(Error("Script load timeout")));
-      }, d || 5E3);return f;
-    }return null;
-  };function B() {
-    this.a = 0;this.c = null;
-  }function C(a) {
-    a.a++;return function () {
-      a.a--;D(a);
-    };
-  }function E(a, b) {
-    a.c = b;D(a);
-  }function D(a) {
-    0 == a.a && a.c && (a.c(), a.c = null);
-  };function F(a) {
-    this.a = a || "-";
-  }F.prototype.c = function (a) {
-    for (var b = [], c = 0; c < arguments.length; c++) {
-      b.push(arguments[c].replace(/[\W_]+/g, "").toLowerCase());
-    }return b.join(this.a);
-  };function G(a, b) {
-    this.c = a;this.f = 4;this.a = "n";var c = (b || "n4").match(/^([nio])([1-9])$/i);c && (this.a = c[1], this.f = parseInt(c[2], 10));
-  }function fa(a) {
-    return H(a) + " " + (a.f + "00") + " 300px " + I(a.c);
-  }function I(a) {
-    var b = [];a = a.split(/,\s*/);for (var c = 0; c < a.length; c++) {
-      var d = a[c].replace(/['"]/g, "");-1 != d.indexOf(" ") || /^\d/.test(d) ? b.push("'" + d + "'") : b.push(d);
-    }return b.join(",");
-  }function J(a) {
-    return a.a + a.f;
-  }function H(a) {
-    var b = "normal";"o" === a.a ? b = "oblique" : "i" === a.a && (b = "italic");return b;
-  }
-  function ga(a) {
-    var b = 4,
-        c = "n",
-        d = null;a && ((d = a.match(/(normal|oblique|italic)/i)) && d[1] && (c = d[1].substr(0, 1).toLowerCase()), (d = a.match(/([1-9]00|normal|bold)/i)) && d[1] && (/bold/i.test(d[1]) ? b = 7 : /[1-9]00/.test(d[1]) && (b = parseInt(d[1].substr(0, 1), 10))));return c + b;
-  };function ha(a, b) {
-    this.c = a;this.f = a.o.document.documentElement;this.h = b;this.a = new F("-");this.j = !1 !== b.events;this.g = !1 !== b.classes;
-  }function ia(a) {
-    a.g && w(a.f, [a.a.c("wf", "loading")]);K(a, "loading");
-  }function L(a) {
-    if (a.g) {
-      var b = y(a.f, a.a.c("wf", "active")),
-          c = [],
-          d = [a.a.c("wf", "loading")];b || c.push(a.a.c("wf", "inactive"));w(a.f, c, d);
-    }K(a, "inactive");
-  }function K(a, b, c) {
-    if (a.j && a.h[b]) if (c) a.h[b](c.c, J(c));else a.h[b]();
-  };function ja() {
-    this.c = {};
-  }function ka(a, b, c) {
-    var d = [],
-        e;for (e in b) {
-      if (b.hasOwnProperty(e)) {
-        var f = a.c[e];f && d.push(f(b[e], c));
-      }
-    }return d;
-  };function M(a, b) {
-    this.c = a;this.f = b;this.a = t(this.c, "span", { "aria-hidden": "true" }, this.f);
-  }function N(a) {
-    u(a.c, "body", a.a);
-  }function O(a) {
-    return "display:block;position:absolute;top:-9999px;left:-9999px;font-size:300px;width:auto;height:auto;line-height:normal;margin:0;padding:0;font-variant:normal;white-space:nowrap;font-family:" + I(a.c) + ";" + ("font-style:" + H(a) + ";font-weight:" + (a.f + "00") + ";");
-  };function P(a, b, c, d, e, f) {
-    this.g = a;this.j = b;this.a = d;this.c = c;this.f = e || 3E3;this.h = f || void 0;
-  }P.prototype.start = function () {
-    var a = this.c.o.document,
-        b = this,
-        c = q(),
-        d = new Promise(function (d, e) {
-      function f() {
-        q() - c >= b.f ? e() : a.fonts.load(fa(b.a), b.h).then(function (a) {
-          1 <= a.length ? d() : setTimeout(f, 25);
-        }, function () {
-          e();
-        });
-      }f();
-    }),
-        e = null,
-        f = new Promise(function (a, d) {
-      e = setTimeout(d, b.f);
-    });Promise.race([f, d]).then(function () {
-      e && (clearTimeout(e), e = null);b.g(b.a);
-    }, function () {
-      b.j(b.a);
-    });
-  };function Q(a, b, c, d, e, f, g) {
-    this.v = a;this.B = b;this.c = c;this.a = d;this.s = g || "BESbswy";this.f = {};this.w = e || 3E3;this.u = f || null;this.m = this.j = this.h = this.g = null;this.g = new M(this.c, this.s);this.h = new M(this.c, this.s);this.j = new M(this.c, this.s);this.m = new M(this.c, this.s);a = new G(this.a.c + ",serif", J(this.a));a = O(a);this.g.a.style.cssText = a;a = new G(this.a.c + ",sans-serif", J(this.a));a = O(a);this.h.a.style.cssText = a;a = new G("serif", J(this.a));a = O(a);this.j.a.style.cssText = a;a = new G("sans-serif", J(this.a));a = O(a);this.m.a.style.cssText = a;N(this.g);N(this.h);N(this.j);N(this.m);
-  }var R = { D: "serif", C: "sans-serif" },
-      S = null;function T() {
-    if (null === S) {
-      var a = /AppleWebKit\/([0-9]+)(?:\.([0-9]+))/.exec(window.navigator.userAgent);S = !!a && (536 > parseInt(a[1], 10) || 536 === parseInt(a[1], 10) && 11 >= parseInt(a[2], 10));
-    }return S;
-  }Q.prototype.start = function () {
-    this.f.serif = this.j.a.offsetWidth;this.f["sans-serif"] = this.m.a.offsetWidth;this.A = q();U(this);
-  };
-  function la(a, b, c) {
-    for (var d in R) {
-      if (R.hasOwnProperty(d) && b === a.f[R[d]] && c === a.f[R[d]]) return !0;
-    }return !1;
-  }function U(a) {
-    var b = a.g.a.offsetWidth,
-        c = a.h.a.offsetWidth,
-        d;(d = b === a.f.serif && c === a.f["sans-serif"]) || (d = T() && la(a, b, c));d ? q() - a.A >= a.w ? T() && la(a, b, c) && (null === a.u || a.u.hasOwnProperty(a.a.c)) ? V(a, a.v) : V(a, a.B) : ma(a) : V(a, a.v);
-  }function ma(a) {
-    setTimeout(p(function () {
-      U(this);
-    }, a), 50);
-  }function V(a, b) {
-    setTimeout(p(function () {
-      v(this.g.a);v(this.h.a);v(this.j.a);v(this.m.a);b(this.a);
-    }, a), 0);
-  };function W(a, b, c) {
-    this.c = a;this.a = b;this.f = 0;this.m = this.j = !1;this.s = c;
-  }var X = null;W.prototype.g = function (a) {
-    var b = this.a;b.g && w(b.f, [b.a.c("wf", a.c, J(a).toString(), "active")], [b.a.c("wf", a.c, J(a).toString(), "loading"), b.a.c("wf", a.c, J(a).toString(), "inactive")]);K(b, "fontactive", a);this.m = !0;na(this);
-  };
-  W.prototype.h = function (a) {
-    var b = this.a;if (b.g) {
-      var c = y(b.f, b.a.c("wf", a.c, J(a).toString(), "active")),
-          d = [],
-          e = [b.a.c("wf", a.c, J(a).toString(), "loading")];c || d.push(b.a.c("wf", a.c, J(a).toString(), "inactive"));w(b.f, d, e);
-    }K(b, "fontinactive", a);na(this);
-  };function na(a) {
-    0 == --a.f && a.j && (a.m ? (a = a.a, a.g && w(a.f, [a.a.c("wf", "active")], [a.a.c("wf", "loading"), a.a.c("wf", "inactive")]), K(a, "active")) : L(a.a));
-  };function oa(a) {
-    this.j = a;this.a = new ja();this.h = 0;this.f = this.g = !0;
-  }oa.prototype.load = function (a) {
-    this.c = new ca(this.j, a.context || this.j);this.g = !1 !== a.events;this.f = !1 !== a.classes;pa(this, new ha(this.c, a), a);
-  };
-  function qa(a, b, c, d, e) {
-    var f = 0 == --a.h;(a.f || a.g) && setTimeout(function () {
-      var a = e || null,
-          m = d || null || {};if (0 === c.length && f) L(b.a);else {
-        b.f += c.length;f && (b.j = f);var h,
-            l = [];for (h = 0; h < c.length; h++) {
-          var k = c[h],
-              n = m[k.c],
-              r = b.a,
-              x = k;r.g && w(r.f, [r.a.c("wf", x.c, J(x).toString(), "loading")]);K(r, "fontloading", x);r = null;if (null === X) if (window.FontFace) {
-            var x = /Gecko.*Firefox\/(\d+)/.exec(window.navigator.userAgent),
-                xa = /OS X.*Version\/10\..*Safari/.exec(window.navigator.userAgent) && /Apple/.exec(window.navigator.vendor);
-            X = x ? 42 < parseInt(x[1], 10) : xa ? !1 : !0;
-          } else X = !1;X ? r = new P(p(b.g, b), p(b.h, b), b.c, k, b.s, n) : r = new Q(p(b.g, b), p(b.h, b), b.c, k, b.s, a, n);l.push(r);
-        }for (h = 0; h < l.length; h++) {
-          l[h].start();
-        }
-      }
-    }, 0);
-  }function pa(a, b, c) {
-    var d = [],
-        e = c.timeout;ia(b);var d = ka(a.a, c, a.c),
-        f = new W(a.c, b, e);a.h = d.length;b = 0;for (c = d.length; b < c; b++) {
-      d[b].load(function (b, d, c) {
-        qa(a, f, b, d, c);
-      });
-    }
-  };function ra(a, b) {
-    this.c = a;this.a = b;
-  }
-  ra.prototype.load = function (a) {
-    function b() {
-      if (f["__mti_fntLst" + d]) {
-        var c = f["__mti_fntLst" + d](),
-            e = [],
-            h;if (c) for (var l = 0; l < c.length; l++) {
-          var k = c[l].fontfamily;void 0 != c[l].fontStyle && void 0 != c[l].fontWeight ? (h = c[l].fontStyle + c[l].fontWeight, e.push(new G(k, h))) : e.push(new G(k));
-        }a(e);
-      } else setTimeout(function () {
-        b();
-      }, 50);
-    }var c = this,
-        d = c.a.projectId,
-        e = c.a.version;if (d) {
-      var f = c.c.o;A(this.c, (c.a.api || "https://fast.fonts.net/jsapi") + "/" + d + ".js" + (e ? "?v=" + e : ""), function (e) {
-        e ? a([]) : (f["__MonotypeConfiguration__" + d] = function () {
-          return c.a;
-        }, b());
-      }).id = "__MonotypeAPIScript__" + d;
-    } else a([]);
-  };function sa(a, b) {
-    this.c = a;this.a = b;
-  }sa.prototype.load = function (a) {
-    var b,
-        c,
-        d = this.a.urls || [],
-        e = this.a.families || [],
-        f = this.a.testStrings || {},
-        g = new B();b = 0;for (c = d.length; b < c; b++) {
-      z(this.c, d[b], C(g));
-    }var m = [];b = 0;for (c = e.length; b < c; b++) {
-      if (d = e[b].split(":"), d[1]) for (var h = d[1].split(","), l = 0; l < h.length; l += 1) {
-        m.push(new G(d[0], h[l]));
-      } else m.push(new G(d[0]));
-    }E(g, function () {
-      a(m, f);
-    });
-  };function ta(a, b) {
-    a ? this.c = a : this.c = ua;this.a = [];this.f = [];this.g = b || "";
-  }var ua = "https://fonts.googleapis.com/css";function va(a, b) {
-    for (var c = b.length, d = 0; d < c; d++) {
-      var e = b[d].split(":");3 == e.length && a.f.push(e.pop());var f = "";2 == e.length && "" != e[1] && (f = ":");a.a.push(e.join(f));
-    }
-  }
-  function wa(a) {
-    if (0 == a.a.length) throw Error("No fonts to load!");if (-1 != a.c.indexOf("kit=")) return a.c;for (var b = a.a.length, c = [], d = 0; d < b; d++) {
-      c.push(a.a[d].replace(/ /g, "+"));
-    }b = a.c + "?family=" + c.join("%7C");0 < a.f.length && (b += "&subset=" + a.f.join(","));0 < a.g.length && (b += "&text=" + encodeURIComponent(a.g));return b;
-  };function ya(a) {
-    this.f = a;this.a = [];this.c = {};
-  }
-  var za = { latin: "BESbswy", "latin-ext": "\xE7\xF6\xFC\u011F\u015F", cyrillic: "\u0439\u044F\u0416", greek: "\u03B1\u03B2\u03A3", khmer: "\u1780\u1781\u1782", Hanuman: "\u1780\u1781\u1782" },
-      Aa = { thin: "1", extralight: "2", "extra-light": "2", ultralight: "2", "ultra-light": "2", light: "3", regular: "4", book: "4", medium: "5", "semi-bold": "6", semibold: "6", "demi-bold": "6", demibold: "6", bold: "7", "extra-bold": "8", extrabold: "8", "ultra-bold": "8", ultrabold: "8", black: "9", heavy: "9", l: "3", r: "4", b: "7" },
-      Ba = { i: "i", italic: "i", n: "n", normal: "n" },
-      Ca = /^(thin|(?:(?:extra|ultra)-?)?light|regular|book|medium|(?:(?:semi|demi|extra|ultra)-?)?bold|black|heavy|l|r|b|[1-9]00)?(n|i|normal|italic)?$/;
-  function Da(a) {
-    for (var b = a.f.length, c = 0; c < b; c++) {
-      var d = a.f[c].split(":"),
-          e = d[0].replace(/\+/g, " "),
-          f = ["n4"];if (2 <= d.length) {
-        var g;var m = d[1];g = [];if (m) for (var m = m.split(","), h = m.length, l = 0; l < h; l++) {
-          var k;k = m[l];if (k.match(/^[\w-]+$/)) {
-            var n = Ca.exec(k.toLowerCase());if (null == n) k = "";else {
-              k = n[2];k = null == k || "" == k ? "n" : Ba[k];n = n[1];if (null == n || "" == n) n = "4";else var r = Aa[n],
-                  n = r ? r : isNaN(n) ? "4" : n.substr(0, 1);k = [k, n].join("");
-            }
-          } else k = "";k && g.push(k);
-        }0 < g.length && (f = g);3 == d.length && (d = d[2], g = [], d = d ? d.split(",") : g, 0 < d.length && (d = za[d[0]]) && (a.c[e] = d));
-      }a.c[e] || (d = za[e]) && (a.c[e] = d);for (d = 0; d < f.length; d += 1) {
-        a.a.push(new G(e, f[d]));
-      }
-    }
-  };function Ea(a, b) {
-    this.c = a;this.a = b;
-  }var Fa = { Arimo: !0, Cousine: !0, Tinos: !0 };Ea.prototype.load = function (a) {
-    var b = new B(),
-        c = this.c,
-        d = new ta(this.a.api, this.a.text),
-        e = this.a.families;va(d, e);var f = new ya(e);Da(f);z(c, wa(d), C(b));E(b, function () {
-      a(f.a, f.c, Fa);
-    });
-  };function Ga(a, b) {
-    this.c = a;this.a = b;
-  }Ga.prototype.load = function (a) {
-    var b = this.a.id,
-        c = this.c.o;b ? A(this.c, (this.a.api || "https://use.typekit.net") + "/" + b + ".js", function (b) {
-      if (b) a([]);else if (c.Typekit && c.Typekit.config && c.Typekit.config.fn) {
-        b = c.Typekit.config.fn;for (var e = [], f = 0; f < b.length; f += 2) {
-          for (var g = b[f], m = b[f + 1], h = 0; h < m.length; h++) {
-            e.push(new G(g, m[h]));
-          }
-        }try {
-          c.Typekit.load({ events: !1, classes: !1, async: !0 });
-        } catch (l) {}a(e);
-      }
-    }, 2E3) : a([]);
-  };function Ha(a, b) {
-    this.c = a;this.f = b;this.a = [];
-  }Ha.prototype.load = function (a) {
-    var b = this.f.id,
-        c = this.c.o,
-        d = this;b ? (c.__webfontfontdeckmodule__ || (c.__webfontfontdeckmodule__ = {}), c.__webfontfontdeckmodule__[b] = function (b, c) {
-      for (var g = 0, m = c.fonts.length; g < m; ++g) {
-        var h = c.fonts[g];d.a.push(new G(h.name, ga("font-weight:" + h.weight + ";font-style:" + h.style)));
-      }a(d.a);
-    }, A(this.c, (this.f.api || "https://f.fontdeck.com/s/css/js/") + ea(this.c) + "/" + b + ".js", function (b) {
-      b && a([]);
-    })) : a([]);
-  };var Y = new oa(window);Y.a.c.custom = function (a, b) {
-    return new sa(b, a);
-  };Y.a.c.fontdeck = function (a, b) {
-    return new Ha(b, a);
-  };Y.a.c.monotype = function (a, b) {
-    return new ra(b, a);
-  };Y.a.c.typekit = function (a, b) {
-    return new Ga(b, a);
-  };Y.a.c.google = function (a, b) {
-    return new Ea(b, a);
-  };var Z = { load: p(Y.load, Y) }; true ? !(__WEBPACK_AMD_DEFINE_RESULT__ = (function () {
-    return Z;
-  }).call(exports, __webpack_require__, exports, module),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : "undefined" !== typeof module && module.exports ? module.exports = Z : (window.WebFont = Z, window.WebFontConfig && Y.load(window.WebFontConfig));
-})();
-
-/***/ }),
-/* 104 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.default = PremiumBackground;
-
-var _ColorComponent = __webpack_require__(3);
-
-var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var __ = wp.i18n.__;
-var Fragment = wp.element.Fragment;
-var _wp$components = wp.components,
-    SelectControl = _wp$components.SelectControl,
-    ToggleControl = _wp$components.ToggleControl,
-    Tooltip = _wp$components.Tooltip,
-    Dashicon = _wp$components.Dashicon;
-var MediaUpload = wp.blockEditor.MediaUpload;
-function PremiumBackground(props) {
-    var type = props.type,
-        colorValue = props.colorValue,
-        imageID = props.imageID,
-        imageURL = props.imageURL,
-        backgroundPosition = props.backgroundPosition,
-        backgroundRepeat = props.backgroundRepeat,
-        backgroundSize = props.backgroundSize,
-        fixed = props.fixed,
-        _props$onChangeColor = props.onChangeColor,
-        onChangeColor = _props$onChangeColor === undefined ? function () {} : _props$onChangeColor,
-        _props$onSelectMedia = props.onSelectMedia,
-        onSelectMedia = _props$onSelectMedia === undefined ? function () {} : _props$onSelectMedia,
-        _props$onRemoveImage = props.onRemoveImage,
-        onRemoveImage = _props$onRemoveImage === undefined ? function () {} : _props$onRemoveImage,
-        _props$onChangeBackPo = props.onChangeBackPos,
-        onChangeBackPos = _props$onChangeBackPo === undefined ? function () {} : _props$onChangeBackPo,
-        _props$onchangeBackRe = props.onchangeBackRepeat,
-        onchangeBackRepeat = _props$onchangeBackRe === undefined ? function () {} : _props$onchangeBackRe,
-        _props$onChangeBackSi = props.onChangeBackSize,
-        onChangeBackSize = _props$onChangeBackSi === undefined ? function () {} : _props$onChangeBackSi,
-        _props$onChangeFixed = props.onChangeFixed,
-        onChangeFixed = _props$onChangeFixed === undefined ? function () {} : _props$onChangeFixed;
-
-
-    var POSITION = [{
-        value: "top left",
-        label: __("Top Left")
-    }, {
-        value: "top center",
-        label: __("Top Center")
-    }, {
-        value: "top right",
-        label: __("Top Right")
-    }, {
-        value: "center left",
-        label: __("Center Left")
-    }, {
-        value: "center center",
-        label: __("Center Center")
-    }, {
-        value: "center right",
-        label: __("Center Right")
-    }, {
-        value: "bottom left",
-        label: __("Bottom Left")
-    }, {
-        value: "bottom center",
-        label: __("Bottom Center")
-    }, {
-        value: "bottom right",
-        label: __("Bottom Right")
-    }];
-
-    var REPEAT = [{
-        value: "no-repeat",
-        label: __("No Repeat")
-    }, {
-        value: "repeat",
-        label: __("Repeat")
-    }, {
-        value: "repeat-x",
-        label: __("Repeat Horizontally")
-    }, {
-        value: "repeat-y",
-        label: __("Repeat Vertically")
-    }];
-
-    var SIZE = [{
-        value: "auto",
-        label: __("Auto")
-    }, {
-        value: "cover",
-        label: __("Cover")
-    }, {
-        value: "contain",
-        label: __("Contain")
-    }];
-
-    return type === "color" ? React.createElement(
-        Fragment,
-        null,
-        React.createElement(_ColorComponent2.default, {
-            label: __("Background Color", ''),
-            colorValue: colorValue,
-            colorDefault: '',
-            onColorChange: onChangeColor
-        })
-    ) : React.createElement(
-        Fragment,
-        null,
-        React.createElement(MediaUpload, {
-            allowedTypes: ["image"],
-            onSelect: onSelectMedia,
-            type: "image",
-            value: imageID,
-            render: function render(_ref) {
-                var open = _ref.open;
-                return React.createElement(
-                    Fragment,
-                    null,
-                    imageURL && React.createElement(
-                        "span",
-                        { className: "premium-image-media" },
-                        React.createElement("img", {
-                            src: imageURL,
-                            className: "premium-image-upload"
-                        }),
-                        React.createElement(
-                            "div",
-                            { className: "premium-image-actions" },
-                            React.createElement(
-                                Tooltip,
-                                { text: __("Edit") },
-                                React.createElement(
-                                    "button",
-                                    {
-                                        className: "premium-image-button",
-                                        "aria-label": __("Edit"),
-                                        onClick: open,
-                                        role: "button"
-                                    },
-                                    React.createElement("span", {
-                                        "aria-label": __("Edit"),
-                                        className: "fa fa-pencil"
-                                    })
-                                )
-                            ),
-                            React.createElement(
-                                Tooltip,
-                                { text: __("Remove") },
-                                React.createElement(
-                                    "button",
-                                    {
-                                        className: "premium-image-button",
-                                        "aria-label": __("Remove"),
-                                        onClick: onRemoveImage,
-                                        role: "button"
-                                    },
-                                    React.createElement("span", {
-                                        "aria-label": __("Close"),
-                                        className: "fa fa-trash-o"
-                                    })
-                                )
-                            )
-                        )
-                    ),
-                    !imageURL && React.createElement(
-                        "div",
-                        {
-                            onClick: open,
-                            className: "premium-placeholder-image"
-                        },
-                        React.createElement(Dashicon, { icon: "insert" }),
-                        React.createElement(
-                            "span",
-                            null,
-                            __("Insert Background ")
-                        )
-                    )
-                );
-            }
-        }),
-        imageURL && React.createElement(
-            Fragment,
-            null,
-            React.createElement(SelectControl, {
-                label: __("Position"),
-                options: POSITION,
-                value: backgroundPosition,
-                onChange: onChangeBackPos
-            }),
-            React.createElement(SelectControl, {
-                label: __("Repeat"),
-                options: REPEAT,
-                value: backgroundRepeat,
-                onChange: onchangeBackRepeat
-            }),
-            React.createElement(SelectControl, {
-                label: __("Size"),
-                options: SIZE,
-                value: backgroundSize,
-                onChange: onChangeBackSize
-            }),
-            React.createElement(ToggleControl, {
-                label: __("Fixed Background"),
-                checked: fixed,
-                onChange: onChangeFixed
-            })
-        )
-    );
-}
-
-/***/ }),
-/* 105 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(246);
-} else {
-  module.exports = __webpack_require__(247);
-}
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
-
-/***/ }),
-/* 106 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _CSSTransition = _interopRequireDefault(__webpack_require__(252));
-
-var _ReplaceTransition = _interopRequireDefault(__webpack_require__(257));
-
-var _TransitionGroup = _interopRequireDefault(__webpack_require__(110));
-
-var _Transition = _interopRequireDefault(__webpack_require__(107));
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-module.exports = {
-  Transition: _Transition.default,
-  TransitionGroup: _TransitionGroup.default,
-  ReplaceTransition: _ReplaceTransition.default,
-  CSSTransition: _CSSTransition.default
-};
-
-/***/ }),
-/* 107 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-exports.__esModule = true;
-exports.default = exports.EXITING = exports.ENTERED = exports.ENTERING = exports.EXITED = exports.UNMOUNTED = void 0;
-
-var PropTypes = _interopRequireWildcard(__webpack_require__(18));
-
-var _react = _interopRequireDefault(__webpack_require__(9));
-
-var _reactDom = _interopRequireDefault(__webpack_require__(40));
-
-var _reactLifecyclesCompat = __webpack_require__(108);
-
-var _PropTypes = __webpack_require__(109);
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-function _interopRequireWildcard(obj) {
-  if (obj && obj.__esModule) {
-    return obj;
-  } else {
-    var newObj = {};if (obj != null) {
-      for (var key in obj) {
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
-          var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {};if (desc.get || desc.set) {
-            Object.defineProperty(newObj, key, desc);
-          } else {
-            newObj[key] = obj[key];
-          }
-        }
-      }
-    }newObj.default = obj;return newObj;
-  }
-}
-
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};var target = {};var sourceKeys = Object.keys(source);var key, i;for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];if (excluded.indexOf(key) >= 0) continue;target[key] = source[key];
-  }return target;
-}
-
-function _inheritsLoose(subClass, superClass) {
-  subClass.prototype = Object.create(superClass.prototype);subClass.prototype.constructor = subClass;subClass.__proto__ = superClass;
-}
-
-var UNMOUNTED = 'unmounted';
-exports.UNMOUNTED = UNMOUNTED;
-var EXITED = 'exited';
-exports.EXITED = EXITED;
-var ENTERING = 'entering';
-exports.ENTERING = ENTERING;
-var ENTERED = 'entered';
-exports.ENTERED = ENTERED;
-var EXITING = 'exiting';
-/**
- * The Transition component lets you describe a transition from one component
- * state to another _over time_ with a simple declarative API. Most commonly
- * it's used to animate the mounting and unmounting of a component, but can also
- * be used to describe in-place transition states as well.
- *
- * ---
- *
- * **Note**: `Transition` is a platform-agnostic base component. If you're using
- * transitions in CSS, you'll probably want to use
- * [`CSSTransition`](https://reactcommunity.org/react-transition-group/css-transition)
- * instead. It inherits all the features of `Transition`, but contains
- * additional features necessary to play nice with CSS transitions (hence the
- * name of the component).
- *
- * ---
- *
- * By default the `Transition` component does not alter the behavior of the
- * component it renders, it only tracks "enter" and "exit" states for the
- * components. It's up to you to give meaning and effect to those states. For
- * example we can add styles to a component when it enters or exits:
- *
- * ```jsx
- * import { Transition } from 'react-transition-group';
- *
- * const duration = 300;
- *
- * const defaultStyle = {
- *   transition: `opacity ${duration}ms ease-in-out`,
- *   opacity: 0,
- * }
- *
- * const transitionStyles = {
- *   entering: { opacity: 0 },
- *   entered:  { opacity: 1 },
- * };
- *
- * const Fade = ({ in: inProp }) => (
- *   <Transition in={inProp} timeout={duration}>
- *     {state => (
- *       <div style={{
- *         ...defaultStyle,
- *         ...transitionStyles[state]
- *       }}>
- *         I'm a fade Transition!
- *       </div>
- *     )}
- *   </Transition>
- * );
- * ```
- *
- * There are 4 main states a Transition can be in:
- *  - `'entering'`
- *  - `'entered'`
- *  - `'exiting'`
- *  - `'exited'`
- *
- * Transition state is toggled via the `in` prop. When `true` the component
- * begins the "Enter" stage. During this stage, the component will shift from
- * its current transition state, to `'entering'` for the duration of the
- * transition and then to the `'entered'` stage once it's complete. Let's take
- * the following example (we'll use the
- * [useState](https://reactjs.org/docs/hooks-reference.html#usestate) hook):
- *
- * ```jsx
- * function App() {
- *   const [inProp, setInProp] = useState(false);
- *   return (
- *     <div>
- *       <Transition in={inProp} timeout={500}>
- *         {state => (
- *           // ...
- *         )}
- *       </Transition>
- *       <button onClick={() => setInProp(true)}>
- *         Click to Enter
- *       </button>
- *     </div>
- *   );
- * }
- * ```
- *
- * When the button is clicked the component will shift to the `'entering'` state
- * and stay there for 500ms (the value of `timeout`) before it finally switches
- * to `'entered'`.
- *
- * When `in` is `false` the same thing happens except the state moves from
- * `'exiting'` to `'exited'`.
- */
-
-exports.EXITING = EXITING;
-
-var Transition =
-/*#__PURE__*/
-function (_React$Component) {
-  _inheritsLoose(Transition, _React$Component);
-
-  function Transition(props, context) {
-    var _this;
-
-    _this = _React$Component.call(this, props, context) || this;
-    var parentGroup = context.transitionGroup; // In the context of a TransitionGroup all enters are really appears
-
-    var appear = parentGroup && !parentGroup.isMounting ? props.enter : props.appear;
-    var initialStatus;
-    _this.appearStatus = null;
-
-    if (props.in) {
-      if (appear) {
-        initialStatus = EXITED;
-        _this.appearStatus = ENTERING;
-      } else {
-        initialStatus = ENTERED;
-      }
-    } else {
-      if (props.unmountOnExit || props.mountOnEnter) {
-        initialStatus = UNMOUNTED;
-      } else {
-        initialStatus = EXITED;
-      }
-    }
-
-    _this.state = {
-      status: initialStatus
-    };
-    _this.nextCallback = null;
-    return _this;
-  }
-
-  var _proto = Transition.prototype;
-
-  _proto.getChildContext = function getChildContext() {
-    return {
-      transitionGroup: null // allows for nested Transitions
-
-    };
-  };
-
-  Transition.getDerivedStateFromProps = function getDerivedStateFromProps(_ref, prevState) {
-    var nextIn = _ref.in;
-
-    if (nextIn && prevState.status === UNMOUNTED) {
-      return {
-        status: EXITED
-      };
-    }
-
-    return null;
-  }; // getSnapshotBeforeUpdate(prevProps) {
-  //   let nextStatus = null
-  //   if (prevProps !== this.props) {
-  //     const { status } = this.state
-  //     if (this.props.in) {
-  //       if (status !== ENTERING && status !== ENTERED) {
-  //         nextStatus = ENTERING
-  //       }
-  //     } else {
-  //       if (status === ENTERING || status === ENTERED) {
-  //         nextStatus = EXITING
-  //       }
-  //     }
-  //   }
-  //   return { nextStatus }
-  // }
-
-
-  _proto.componentDidMount = function componentDidMount() {
-    this.updateStatus(true, this.appearStatus);
-  };
-
-  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
-    var nextStatus = null;
-
-    if (prevProps !== this.props) {
-      var status = this.state.status;
-
-      if (this.props.in) {
-        if (status !== ENTERING && status !== ENTERED) {
-          nextStatus = ENTERING;
-        }
-      } else {
-        if (status === ENTERING || status === ENTERED) {
-          nextStatus = EXITING;
-        }
-      }
-    }
-
-    this.updateStatus(false, nextStatus);
-  };
-
-  _proto.componentWillUnmount = function componentWillUnmount() {
-    this.cancelNextCallback();
-  };
-
-  _proto.getTimeouts = function getTimeouts() {
-    var timeout = this.props.timeout;
-    var exit, enter, appear;
-    exit = enter = appear = timeout;
-
-    if (timeout != null && typeof timeout !== 'number') {
-      exit = timeout.exit;
-      enter = timeout.enter; // TODO: remove fallback for next major
-
-      appear = timeout.appear !== undefined ? timeout.appear : enter;
-    }
-
-    return {
-      exit: exit,
-      enter: enter,
-      appear: appear
-    };
-  };
-
-  _proto.updateStatus = function updateStatus(mounting, nextStatus) {
-    if (mounting === void 0) {
-      mounting = false;
-    }
-
-    if (nextStatus !== null) {
-      // nextStatus will always be ENTERING or EXITING.
-      this.cancelNextCallback();
-
-      var node = _reactDom.default.findDOMNode(this);
-
-      if (nextStatus === ENTERING) {
-        this.performEnter(node, mounting);
-      } else {
-        this.performExit(node);
-      }
-    } else if (this.props.unmountOnExit && this.state.status === EXITED) {
-      this.setState({
-        status: UNMOUNTED
-      });
-    }
-  };
-
-  _proto.performEnter = function performEnter(node, mounting) {
-    var _this2 = this;
-
-    var enter = this.props.enter;
-    var appearing = this.context.transitionGroup ? this.context.transitionGroup.isMounting : mounting;
-    var timeouts = this.getTimeouts();
-    var enterTimeout = appearing ? timeouts.appear : timeouts.enter; // no enter animation skip right to ENTERED
-    // if we are mounting and running this it means appear _must_ be set
-
-    if (!mounting && !enter) {
-      this.safeSetState({
-        status: ENTERED
-      }, function () {
-        _this2.props.onEntered(node);
-      });
-      return;
-    }
-
-    this.props.onEnter(node, appearing);
-    this.safeSetState({
-      status: ENTERING
-    }, function () {
-      _this2.props.onEntering(node, appearing);
-
-      _this2.onTransitionEnd(node, enterTimeout, function () {
-        _this2.safeSetState({
-          status: ENTERED
-        }, function () {
-          _this2.props.onEntered(node, appearing);
-        });
-      });
-    });
-  };
-
-  _proto.performExit = function performExit(node) {
-    var _this3 = this;
-
-    var exit = this.props.exit;
-    var timeouts = this.getTimeouts(); // no exit animation skip right to EXITED
-
-    if (!exit) {
-      this.safeSetState({
-        status: EXITED
-      }, function () {
-        _this3.props.onExited(node);
-      });
-      return;
-    }
-
-    this.props.onExit(node);
-    this.safeSetState({
-      status: EXITING
-    }, function () {
-      _this3.props.onExiting(node);
-
-      _this3.onTransitionEnd(node, timeouts.exit, function () {
-        _this3.safeSetState({
-          status: EXITED
-        }, function () {
-          _this3.props.onExited(node);
-        });
-      });
-    });
-  };
-
-  _proto.cancelNextCallback = function cancelNextCallback() {
-    if (this.nextCallback !== null) {
-      this.nextCallback.cancel();
-      this.nextCallback = null;
-    }
-  };
-
-  _proto.safeSetState = function safeSetState(nextState, callback) {
-    // This shouldn't be necessary, but there are weird race conditions with
-    // setState callbacks and unmounting in testing, so always make sure that
-    // we can cancel any pending setState callbacks after we unmount.
-    callback = this.setNextCallback(callback);
-    this.setState(nextState, callback);
-  };
-
-  _proto.setNextCallback = function setNextCallback(callback) {
-    var _this4 = this;
-
-    var active = true;
-
-    this.nextCallback = function (event) {
-      if (active) {
-        active = false;
-        _this4.nextCallback = null;
-        callback(event);
-      }
-    };
-
-    this.nextCallback.cancel = function () {
-      active = false;
-    };
-
-    return this.nextCallback;
-  };
-
-  _proto.onTransitionEnd = function onTransitionEnd(node, timeout, handler) {
-    this.setNextCallback(handler);
-    var doesNotHaveTimeoutOrListener = timeout == null && !this.props.addEndListener;
-
-    if (!node || doesNotHaveTimeoutOrListener) {
-      setTimeout(this.nextCallback, 0);
-      return;
-    }
-
-    if (this.props.addEndListener) {
-      this.props.addEndListener(node, this.nextCallback);
-    }
-
-    if (timeout != null) {
-      setTimeout(this.nextCallback, timeout);
-    }
-  };
-
-  _proto.render = function render() {
-    var status = this.state.status;
-
-    if (status === UNMOUNTED) {
-      return null;
-    }
-
-    var _this$props = this.props,
-        children = _this$props.children,
-        childProps = _objectWithoutPropertiesLoose(_this$props, ["children"]); // filter props for Transtition
-
-
-    delete childProps.in;
-    delete childProps.mountOnEnter;
-    delete childProps.unmountOnExit;
-    delete childProps.appear;
-    delete childProps.enter;
-    delete childProps.exit;
-    delete childProps.timeout;
-    delete childProps.addEndListener;
-    delete childProps.onEnter;
-    delete childProps.onEntering;
-    delete childProps.onEntered;
-    delete childProps.onExit;
-    delete childProps.onExiting;
-    delete childProps.onExited;
-
-    if (typeof children === 'function') {
-      return children(status, childProps);
-    }
-
-    var child = _react.default.Children.only(children);
-
-    return _react.default.cloneElement(child, childProps);
-  };
-
-  return Transition;
-}(_react.default.Component);
-
-Transition.contextTypes = {
-  transitionGroup: PropTypes.object
-};
-Transition.childContextTypes = {
-  transitionGroup: function transitionGroup() {}
-};
-Transition.propTypes = process.env.NODE_ENV !== "production" ? {
-  /**
-   * A `function` child can be used instead of a React element. This function is
-   * called with the current transition status (`'entering'`, `'entered'`,
-   * `'exiting'`, `'exited'`, `'unmounted'`), which can be used to apply context
-   * specific props to a component.
-   *
-   * ```jsx
-   * <Transition in={this.state.in} timeout={150}>
-   *   {state => (
-   *     <MyComponent className={`fade fade-${state}`} />
-   *   )}
-   * </Transition>
-   * ```
-   */
-  children: PropTypes.oneOfType([PropTypes.func.isRequired, PropTypes.element.isRequired]).isRequired,
-
-  /**
-   * Show the component; triggers the enter or exit states
-   */
-  in: PropTypes.bool,
-
-  /**
-   * By default the child component is mounted immediately along with
-   * the parent `Transition` component. If you want to "lazy mount" the component on the
-   * first `in={true}` you can set `mountOnEnter`. After the first enter transition the component will stay
-   * mounted, even on "exited", unless you also specify `unmountOnExit`.
-   */
-  mountOnEnter: PropTypes.bool,
-
-  /**
-   * By default the child component stays mounted after it reaches the `'exited'` state.
-   * Set `unmountOnExit` if you'd prefer to unmount the component after it finishes exiting.
-   */
-  unmountOnExit: PropTypes.bool,
-
-  /**
-   * Normally a component is not transitioned if it is shown when the `<Transition>` component mounts.
-   * If you want to transition on the first mount set `appear` to `true`, and the
-   * component will transition in as soon as the `<Transition>` mounts.
-   *
-   * > Note: there are no specific "appear" states. `appear` only adds an additional `enter` transition.
-   */
-  appear: PropTypes.bool,
-
-  /**
-   * Enable or disable enter transitions.
-   */
-  enter: PropTypes.bool,
-
-  /**
-   * Enable or disable exit transitions.
-   */
-  exit: PropTypes.bool,
-
-  /**
-   * The duration of the transition, in milliseconds.
-   * Required unless `addEndListener` is provided.
-   *
-   * You may specify a single timeout for all transitions:
-   *
-   * ```jsx
-   * timeout={500}
-   * ```
-   *
-   * or individually:
-   *
-   * ```jsx
-   * timeout={{
-   *  appear: 500,
-   *  enter: 300,
-   *  exit: 500,
-   * }}
-   * ```
-   *
-   * - `appear` defaults to the value of `enter`
-   * - `enter` defaults to `0`
-   * - `exit` defaults to `0`
-   *
-   * @type {number | { enter?: number, exit?: number, appear?: number }}
-   */
-  timeout: function timeout(props) {
-    var pt = _PropTypes.timeoutsShape;
-    if (!props.addEndListener) pt = pt.isRequired;
-
-    for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-      args[_key - 1] = arguments[_key];
-    }
-
-    return pt.apply(void 0, [props].concat(args));
-  },
-
-  /**
-   * Add a custom transition end trigger. Called with the transitioning
-   * DOM node and a `done` callback. Allows for more fine grained transition end
-   * logic. **Note:** Timeouts are still used as a fallback if provided.
-   *
-   * ```jsx
-   * addEndListener={(node, done) => {
-   *   // use the css transitionend event to mark the finish of a transition
-   *   node.addEventListener('transitionend', done, false);
-   * }}
-   * ```
-   */
-  addEndListener: PropTypes.func,
-
-  /**
-   * Callback fired before the "entering" status is applied. An extra parameter
-   * `isAppearing` is supplied to indicate if the enter stage is occurring on the initial mount
-   *
-   * @type Function(node: HtmlElement, isAppearing: bool) -> void
-   */
-  onEnter: PropTypes.func,
-
-  /**
-   * Callback fired after the "entering" status is applied. An extra parameter
-   * `isAppearing` is supplied to indicate if the enter stage is occurring on the initial mount
-   *
-   * @type Function(node: HtmlElement, isAppearing: bool)
-   */
-  onEntering: PropTypes.func,
-
-  /**
-   * Callback fired after the "entered" status is applied. An extra parameter
-   * `isAppearing` is supplied to indicate if the enter stage is occurring on the initial mount
-   *
-   * @type Function(node: HtmlElement, isAppearing: bool) -> void
-   */
-  onEntered: PropTypes.func,
-
-  /**
-   * Callback fired before the "exiting" status is applied.
-   *
-   * @type Function(node: HtmlElement) -> void
-   */
-  onExit: PropTypes.func,
-
-  /**
-   * Callback fired after the "exiting" status is applied.
-   *
-   * @type Function(node: HtmlElement) -> void
-   */
-  onExiting: PropTypes.func,
-
-  /**
-   * Callback fired after the "exited" status is applied.
-   *
-   * @type Function(node: HtmlElement) -> void
-   */
-  onExited: PropTypes.func // Name the function so it is clearer in the documentation
-
-} : {};
-
-function noop() {}
-
-Transition.defaultProps = {
-  in: false,
-  mountOnEnter: false,
-  unmountOnExit: false,
-  appear: false,
-  enter: true,
-  exit: true,
-  onEnter: noop,
-  onEntering: noop,
-  onEntered: noop,
-  onExit: noop,
-  onExiting: noop,
-  onExited: noop
-};
-Transition.UNMOUNTED = 0;
-Transition.EXITED = 1;
-Transition.ENTERING = 2;
-Transition.ENTERED = 3;
-Transition.EXITING = 4;
-
-var _default = (0, _reactLifecyclesCompat.polyfill)(Transition);
-
-exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
-
-/***/ }),
-/* 108 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-function componentWillMount() {
-  // Call this.constructor.gDSFP to support sub-classes.
-  var state = this.constructor.getDerivedStateFromProps(this.props, this.state);
-  if (state !== null && state !== undefined) {
-    this.setState(state);
-  }
-}
-
-function componentWillReceiveProps(nextProps) {
-  // Call this.constructor.gDSFP to support sub-classes.
-  // Use the setState() updater to ensure state isn't stale in certain edge cases.
-  function updater(prevState) {
-    var state = this.constructor.getDerivedStateFromProps(nextProps, prevState);
-    return state !== null && state !== undefined ? state : null;
-  }
-  // Binding "this" is important for shallow renderer support.
-  this.setState(updater.bind(this));
-}
-
-function componentWillUpdate(nextProps, nextState) {
-  try {
-    var prevProps = this.props;
-    var prevState = this.state;
-    this.props = nextProps;
-    this.state = nextState;
-    this.__reactInternalSnapshotFlag = true;
-    this.__reactInternalSnapshot = this.getSnapshotBeforeUpdate(prevProps, prevState);
-  } finally {
-    this.props = prevProps;
-    this.state = prevState;
-  }
-}
-
-// React may warn about cWM/cWRP/cWU methods being deprecated.
-// Add a flag to suppress these warnings for this special case.
-componentWillMount.__suppressDeprecationWarning = true;
-componentWillReceiveProps.__suppressDeprecationWarning = true;
-componentWillUpdate.__suppressDeprecationWarning = true;
-
-function polyfill(Component) {
-  var prototype = Component.prototype;
-
-  if (!prototype || !prototype.isReactComponent) {
-    throw new Error('Can only polyfill class components');
-  }
-
-  if (typeof Component.getDerivedStateFromProps !== 'function' && typeof prototype.getSnapshotBeforeUpdate !== 'function') {
-    return Component;
-  }
-
-  // If new component APIs are defined, "unsafe" lifecycles won't be called.
-  // Error if any of these lifecycles are present,
-  // Because they would work differently between older and newer (16.3+) versions of React.
-  var foundWillMountName = null;
-  var foundWillReceivePropsName = null;
-  var foundWillUpdateName = null;
-  if (typeof prototype.componentWillMount === 'function') {
-    foundWillMountName = 'componentWillMount';
-  } else if (typeof prototype.UNSAFE_componentWillMount === 'function') {
-    foundWillMountName = 'UNSAFE_componentWillMount';
-  }
-  if (typeof prototype.componentWillReceiveProps === 'function') {
-    foundWillReceivePropsName = 'componentWillReceiveProps';
-  } else if (typeof prototype.UNSAFE_componentWillReceiveProps === 'function') {
-    foundWillReceivePropsName = 'UNSAFE_componentWillReceiveProps';
-  }
-  if (typeof prototype.componentWillUpdate === 'function') {
-    foundWillUpdateName = 'componentWillUpdate';
-  } else if (typeof prototype.UNSAFE_componentWillUpdate === 'function') {
-    foundWillUpdateName = 'UNSAFE_componentWillUpdate';
-  }
-  if (foundWillMountName !== null || foundWillReceivePropsName !== null || foundWillUpdateName !== null) {
-    var componentName = Component.displayName || Component.name;
-    var newApiName = typeof Component.getDerivedStateFromProps === 'function' ? 'getDerivedStateFromProps()' : 'getSnapshotBeforeUpdate()';
-
-    throw Error('Unsafe legacy lifecycles will not be called for components using new component APIs.\n\n' + componentName + ' uses ' + newApiName + ' but also contains the following legacy lifecycles:' + (foundWillMountName !== null ? '\n  ' + foundWillMountName : '') + (foundWillReceivePropsName !== null ? '\n  ' + foundWillReceivePropsName : '') + (foundWillUpdateName !== null ? '\n  ' + foundWillUpdateName : '') + '\n\nThe above lifecycles should be removed. Learn more about this warning here:\n' + 'https://fb.me/react-async-component-lifecycle-hooks');
-  }
-
-  // React <= 16.2 does not support static getDerivedStateFromProps.
-  // As a workaround, use cWM and cWRP to invoke the new static lifecycle.
-  // Newer versions of React will ignore these lifecycles if gDSFP exists.
-  if (typeof Component.getDerivedStateFromProps === 'function') {
-    prototype.componentWillMount = componentWillMount;
-    prototype.componentWillReceiveProps = componentWillReceiveProps;
-  }
-
-  // React <= 16.2 does not support getSnapshotBeforeUpdate.
-  // As a workaround, use cWU to invoke the new lifecycle.
-  // Newer versions of React will ignore that lifecycle if gSBU exists.
-  if (typeof prototype.getSnapshotBeforeUpdate === 'function') {
-    if (typeof prototype.componentDidUpdate !== 'function') {
-      throw new Error('Cannot polyfill getSnapshotBeforeUpdate() for components that do not define componentDidUpdate() on the prototype');
-    }
-
-    prototype.componentWillUpdate = componentWillUpdate;
-
-    var componentDidUpdate = prototype.componentDidUpdate;
-
-    prototype.componentDidUpdate = function componentDidUpdatePolyfill(prevProps, prevState, maybeSnapshot) {
-      // 16.3+ will not execute our will-update method;
-      // It will pass a snapshot value to did-update though.
-      // Older versions will require our polyfilled will-update value.
-      // We need to handle both cases, but can't just check for the presence of "maybeSnapshot",
-      // Because for <= 15.x versions this might be a "prevContext" object.
-      // We also can't just check "__reactInternalSnapshot",
-      // Because get-snapshot might return a falsy value.
-      // So check for the explicit __reactInternalSnapshotFlag flag to determine behavior.
-      var snapshot = this.__reactInternalSnapshotFlag ? this.__reactInternalSnapshot : maybeSnapshot;
-
-      componentDidUpdate.call(this, prevProps, prevState, snapshot);
-    };
-  }
-
-  return Component;
-}
-
-exports.polyfill = polyfill;
-
-/***/ }),
-/* 109 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-exports.__esModule = true;
-exports.classNamesShape = exports.timeoutsShape = void 0;
-
-var _propTypes = _interopRequireDefault(__webpack_require__(18));
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-var timeoutsShape = process.env.NODE_ENV !== 'production' ? _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.shape({
-  enter: _propTypes.default.number,
-  exit: _propTypes.default.number,
-  appear: _propTypes.default.number
-}).isRequired]) : null;
-exports.timeoutsShape = timeoutsShape;
-var classNamesShape = process.env.NODE_ENV !== 'production' ? _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.shape({
-  enter: _propTypes.default.string,
-  exit: _propTypes.default.string,
-  active: _propTypes.default.string
-}), _propTypes.default.shape({
-  enter: _propTypes.default.string,
-  enterDone: _propTypes.default.string,
-  enterActive: _propTypes.default.string,
-  exit: _propTypes.default.string,
-  exitDone: _propTypes.default.string,
-  exitActive: _propTypes.default.string
-})]) : null;
-exports.classNamesShape = classNamesShape;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
-
-/***/ }),
-/* 110 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _propTypes = _interopRequireDefault(__webpack_require__(18));
-
-var _react = _interopRequireDefault(__webpack_require__(9));
-
-var _reactLifecyclesCompat = __webpack_require__(108);
-
-var _ChildMapping = __webpack_require__(258);
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};var target = {};var sourceKeys = Object.keys(source);var key, i;for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];if (excluded.indexOf(key) >= 0) continue;target[key] = source[key];
-  }return target;
-}
-
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }return target;
-  };return _extends.apply(this, arguments);
-}
-
-function _inheritsLoose(subClass, superClass) {
-  subClass.prototype = Object.create(superClass.prototype);subClass.prototype.constructor = subClass;subClass.__proto__ = superClass;
-}
-
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }return self;
-}
-
-var values = Object.values || function (obj) {
-  return Object.keys(obj).map(function (k) {
-    return obj[k];
-  });
-};
-
-var defaultProps = {
-  component: 'div',
-  childFactory: function childFactory(child) {
-    return child;
-  }
-  /**
-   * The `<TransitionGroup>` component manages a set of transition components
-   * (`<Transition>` and `<CSSTransition>`) in a list. Like with the transition
-   * components, `<TransitionGroup>` is a state machine for managing the mounting
-   * and unmounting of components over time.
-   *
-   * Consider the example below. As items are removed or added to the TodoList the
-   * `in` prop is toggled automatically by the `<TransitionGroup>`.
-   *
-   * Note that `<TransitionGroup>`  does not define any animation behavior!
-   * Exactly _how_ a list item animates is up to the individual transition
-   * component. This means you can mix and match animations across different list
-   * items.
-   */
-
-};
-
-var TransitionGroup =
-/*#__PURE__*/
-function (_React$Component) {
-  _inheritsLoose(TransitionGroup, _React$Component);
-
-  function TransitionGroup(props, context) {
-    var _this;
-
-    _this = _React$Component.call(this, props, context) || this;
-
-    var handleExited = _this.handleExited.bind(_assertThisInitialized(_assertThisInitialized(_this))); // Initial children should all be entering, dependent on appear
-
-
-    _this.state = {
-      handleExited: handleExited,
-      firstRender: true
-    };
-    return _this;
-  }
-
-  var _proto = TransitionGroup.prototype;
-
-  _proto.getChildContext = function getChildContext() {
-    return {
-      transitionGroup: {
-        isMounting: !this.appeared
-      }
-    };
-  };
-
-  _proto.componentDidMount = function componentDidMount() {
-    this.appeared = true;
-    this.mounted = true;
-  };
-
-  _proto.componentWillUnmount = function componentWillUnmount() {
-    this.mounted = false;
-  };
-
-  TransitionGroup.getDerivedStateFromProps = function getDerivedStateFromProps(nextProps, _ref) {
-    var prevChildMapping = _ref.children,
-        handleExited = _ref.handleExited,
-        firstRender = _ref.firstRender;
-    return {
-      children: firstRender ? (0, _ChildMapping.getInitialChildMapping)(nextProps, handleExited) : (0, _ChildMapping.getNextChildMapping)(nextProps, prevChildMapping, handleExited),
-      firstRender: false
-    };
-  };
-
-  _proto.handleExited = function handleExited(child, node) {
-    var currentChildMapping = (0, _ChildMapping.getChildMapping)(this.props.children);
-    if (child.key in currentChildMapping) return;
-
-    if (child.props.onExited) {
-      child.props.onExited(node);
-    }
-
-    if (this.mounted) {
-      this.setState(function (state) {
-        var children = _extends({}, state.children);
-
-        delete children[child.key];
-        return {
-          children: children
-        };
-      });
-    }
-  };
-
-  _proto.render = function render() {
-    var _this$props = this.props,
-        Component = _this$props.component,
-        childFactory = _this$props.childFactory,
-        props = _objectWithoutPropertiesLoose(_this$props, ["component", "childFactory"]);
-
-    var children = values(this.state.children).map(childFactory);
-    delete props.appear;
-    delete props.enter;
-    delete props.exit;
-
-    if (Component === null) {
-      return children;
-    }
-
-    return _react.default.createElement(Component, props, children);
-  };
-
-  return TransitionGroup;
-}(_react.default.Component);
-
-TransitionGroup.childContextTypes = {
-  transitionGroup: _propTypes.default.object.isRequired
-};
-TransitionGroup.propTypes = process.env.NODE_ENV !== "production" ? {
-  /**
-   * `<TransitionGroup>` renders a `<div>` by default. You can change this
-   * behavior by providing a `component` prop.
-   * If you use React v16+ and would like to avoid a wrapping `<div>` element
-   * you can pass in `component={null}`. This is useful if the wrapping div
-   * borks your css styles.
-   */
-  component: _propTypes.default.any,
-
-  /**
-   * A set of `<Transition>` components, that are toggled `in` and out as they
-   * leave. the `<TransitionGroup>` will inject specific transition props, so
-   * remember to spread them through if you are wrapping the `<Transition>` as
-   * with our `<Fade>` example.
-   *
-   * While this component is meant for multiple `Transition` or `CSSTransition`
-   * children, sometimes you may want to have a single transition child with
-   * content that you want to be transitioned out and in when you change it
-   * (e.g. routes, images etc.) In that case you can change the `key` prop of
-   * the transition child as you change its content, this will cause
-   * `TransitionGroup` to transition the child out and back in.
-   */
-  children: _propTypes.default.node,
-
-  /**
-   * A convenience prop that enables or disables appear animations
-   * for all children. Note that specifying this will override any defaults set
-   * on individual children Transitions.
-   */
-  appear: _propTypes.default.bool,
-
-  /**
-   * A convenience prop that enables or disables enter animations
-   * for all children. Note that specifying this will override any defaults set
-   * on individual children Transitions.
-   */
-  enter: _propTypes.default.bool,
-
-  /**
-   * A convenience prop that enables or disables exit animations
-   * for all children. Note that specifying this will override any defaults set
-   * on individual children Transitions.
-   */
-  exit: _propTypes.default.bool,
-
-  /**
-   * You may need to apply reactive updates to a child as it is exiting.
-   * This is generally done by using `cloneElement` however in the case of an exiting
-   * child the element has already been removed and not accessible to the consumer.
-   *
-   * If you do need to update a child as it leaves you can provide a `childFactory`
-   * to wrap every child, even the ones that are leaving.
-   *
-   * @type Function(child: ReactElement) -> ReactElement
-   */
-  childFactory: _propTypes.default.func
-} : {};
-TransitionGroup.defaultProps = defaultProps;
-
-var _default = (0, _reactLifecyclesCompat.polyfill)(TransitionGroup);
-
-exports.default = _default;
-module.exports = exports["default"];
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
 /***/ }),
 /* 111 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-var __ = wp.i18n.__;
-
-var videoBoxAttrs = {
-    block_id: {
-        type: 'string'
-    },
-    borderBoxUpdated: {
-        type: "boolean",
-        default: false
-    },
-    videoBoxId: {
-        type: "string"
-    },
-    videoType: {
-        type: "string",
-        default: "youtube"
-    },
-    videoURL: {
-        type: "string"
-    },
-    videoID: {
-        type: "string"
-    },
-    autoPlay: {
-        type: "boolean",
-        default: false
-    },
-    loop: {
-        type: "boolean",
-        default: false
-    },
-    controls: {
-        type: "boolean",
-        default: true
-    },
-    relatedVideos: {
-        type: "boolean",
-        default: false
-    },
-    mute: {
-        type: "boolean",
-        default: false
-    },
-    overlay: {
-        type: "boolean",
-        default: false
-    },
-    videoDesc: {
-        type: "boolean"
-    },
-    playIcon: {
-        type: "boolean",
-        default: true
-    },
-    // Old props
-    playLeft: {
-        type: "number"
-    },
-    classMigrate: {
-        type: 'boolean',
-        default: false
-    },
-    hideDesktop: {
-        type: 'boolean',
-        default: false
-    },
-    hideTablet: {
-        type: 'boolean',
-        default: false
-    },
-    hideMobile: {
-        type: 'boolean',
-        default: false
-    },
-    ratioValue: {
-        type: "string",
-        default: '169'
-    },
-    boxStyles: {
-        type: 'array',
-        default: [{
-            boxBorderType: 'none',
-            boxBorderWidth: 1,
-            boxBorderTop: '',
-            boxBorderRight: '',
-            boxBorderBottom: '',
-            boxBorderLeft: '',
-            boxBorderRadius: '',
-            boxBorderColor: '',
-            shadowColor: '',
-            shadowBlur: '',
-            shadowHorizontal: '',
-            shadowVertical: '',
-            shadowPosition: '',
-            borderBoxUpdated: false
-        }]
-    },
-    overlayStyles: {
-        type: 'array',
-        default: [{
-            overlayImgID: '',
-            overlayImgURL: '',
-            blur: 0,
-            bright: 100,
-            contrast: 100,
-            saturation: 100,
-            hue: 0
-        }]
-    },
-    playStyles: {
-        type: 'array',
-        default: [{
-            playTop: '',
-            playSize: '',
-            playPadding: '',
-            playBorderType: 'none',
-            playBorderWidth: 1,
-            playBorderRadius: '',
-            playBorderColor: '',
-            playBorderTop: '',
-            playBorderRight: '',
-            playBorderBottom: '',
-            playBorderLeft: '',
-            playColor: '',
-            playBack: '',
-            playOpacity: 1,
-            playHoverColor: '',
-            playHoverBackColor: '',
-            borderPlayUpdated: false
-
-        }]
-
-    },
-    descStyles: {
-        type: 'array',
-        default: [{
-            videoDescText: '',
-            videoDescFamily: __('Default'),
-            videoDescSize: '',
-            videoDescSizeUnit: 'px',
-            videoDescSizeMobile: '',
-            videoDescSizeTablet: '',
-            videoDescWeight: '',
-            videoDescLetter: '',
-            videoDescStyle: '',
-            videoDescUpper: false,
-            videoDescPadding: '',
-            videoDescBorderRadius: '',
-            descShadowColor: '',
-            descShadowBlur: 0,
-            descShadowHorizontal: 0,
-            descShadowVertical: 0,
-            descLeft: '',
-            descTop: '',
-            videoDescColor: '',
-            videoDescBack: '',
-            videoDescOpacity: 1
-        }]
-    }
-
-};
-exports.default = videoBoxAttrs;
-
-/***/ }),
-/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9806,7 +9776,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _unsupportedIterableToArray;
 
-var _arrayLikeToArray = __webpack_require__(113);
+var _arrayLikeToArray = __webpack_require__(112);
 
 var _arrayLikeToArray2 = _interopRequireDefault(_arrayLikeToArray);
 
@@ -9822,7 +9792,7 @@ function _unsupportedIterableToArray(o, minLen) {
 }
 
 /***/ }),
-/* 113 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9843,7 +9813,7 @@ function _arrayLikeToArray(arr, len) {
 }
 
 /***/ }),
-/* 114 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9869,7 +9839,7 @@ function _defineProperty(obj, key, value) {
 }
 
 /***/ }),
-/* 115 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9888,14 +9858,14 @@ function _assertThisInitialized(self) {
 }
 
 /***/ }),
-/* 116 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 // optional / simple context binding
-var aFunction = __webpack_require__(319);
+var aFunction = __webpack_require__(318);
 module.exports = function (fn, that, length) {
   aFunction(fn);
   if (that === undefined) return fn;
@@ -9919,17 +9889,32 @@ module.exports = function (fn, that, length) {
 };
 
 /***/ }),
+/* 116 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = !__webpack_require__(25) && !__webpack_require__(34)(function () {
+  return Object.defineProperty(__webpack_require__(117)('div'), 'a', { get: function get() {
+      return 7;
+    } }).a != 7;
+});
+
+/***/ }),
 /* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = !__webpack_require__(27) && !__webpack_require__(35)(function () {
-  return Object.defineProperty(__webpack_require__(118)('div'), 'a', { get: function get() {
-      return 7;
-    } }).a != 7;
-});
+var isObject = __webpack_require__(33);
+var document = __webpack_require__(19).document;
+// typeof document.createElement is 'object' in old IE
+var is = isObject(document) && isObject(document.createElement);
+module.exports = function (it) {
+  return is ? document.createElement(it) : {};
+};
 
 /***/ }),
 /* 118 */
@@ -9938,25 +9923,10 @@ module.exports = !__webpack_require__(27) && !__webpack_require__(35)(function (
 "use strict";
 
 
-var isObject = __webpack_require__(34);
-var document = __webpack_require__(20).document;
-// typeof document.createElement is 'object' in old IE
-var is = isObject(document) && isObject(document.createElement);
-module.exports = function (it) {
-  return is ? document.createElement(it) : {};
-};
-
-/***/ }),
-/* 119 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var has = __webpack_require__(28);
-var toIObject = __webpack_require__(36);
-var arrayIndexOf = __webpack_require__(321)(false);
-var IE_PROTO = __webpack_require__(74)('IE_PROTO');
+var has = __webpack_require__(26);
+var toIObject = __webpack_require__(35);
+var arrayIndexOf = __webpack_require__(320)(false);
+var IE_PROTO = __webpack_require__(73)('IE_PROTO');
 
 module.exports = function (object, names) {
   var O = toIObject(object);
@@ -9974,21 +9944,21 @@ module.exports = function (object, names) {
 };
 
 /***/ }),
-/* 120 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 // fallback for non-array-like ES3 and non-enumerable old V8 strings
-var cof = __webpack_require__(121);
+var cof = __webpack_require__(120);
 // eslint-disable-next-line no-prototype-builtins
 module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
   return cof(it) == 'String' ? it.split('') : Object(it);
 };
 
 /***/ }),
-/* 121 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10001,16 +9971,16 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 122 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
-var has = __webpack_require__(28);
-var toObject = __webpack_require__(78);
-var IE_PROTO = __webpack_require__(74)('IE_PROTO');
+var has = __webpack_require__(26);
+var toObject = __webpack_require__(77);
+var IE_PROTO = __webpack_require__(73)('IE_PROTO');
 var ObjectProto = Object.prototype;
 
 module.exports = Object.getPrototypeOf || function (O) {
@@ -10022,7 +9992,7 @@ module.exports = Object.getPrototypeOf || function (O) {
 };
 
 /***/ }),
-/* 123 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10032,11 +10002,11 @@ var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbo
 
 exports.__esModule = true;
 
-var _iterator = __webpack_require__(334);
+var _iterator = __webpack_require__(333);
 
 var _iterator2 = _interopRequireDefault(_iterator);
 
-var _symbol = __webpack_require__(345);
+var _symbol = __webpack_require__(344);
 
 var _symbol2 = _interopRequireDefault(_symbol);
 
@@ -10057,21 +10027,21 @@ exports.default = typeof _symbol2.default === "function" && _typeof(_iterator2.d
 };
 
 /***/ }),
-/* 124 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var LIBRARY = __webpack_require__(55);
-var $export = __webpack_require__(25);
-var redefine = __webpack_require__(125);
-var hide = __webpack_require__(33);
-var Iterators = __webpack_require__(79);
-var $iterCreate = __webpack_require__(338);
-var setToStringTag = __webpack_require__(81);
-var getPrototypeOf = __webpack_require__(122);
-var ITERATOR = __webpack_require__(37)('iterator');
+var LIBRARY = __webpack_require__(54);
+var $export = __webpack_require__(23);
+var redefine = __webpack_require__(124);
+var hide = __webpack_require__(32);
+var Iterators = __webpack_require__(78);
+var $iterCreate = __webpack_require__(337);
+var setToStringTag = __webpack_require__(80);
+var getPrototypeOf = __webpack_require__(121);
+var ITERATOR = __webpack_require__(36)('iterator');
 var BUGGY = !([].keys && 'next' in [].keys()); // Safari has buggy iterators w/o `next`
 var FF_ITERATOR = '@@iterator';
 var KEYS = 'keys';
@@ -10145,13 +10115,28 @@ module.exports = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCE
 };
 
 /***/ }),
+/* 124 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = __webpack_require__(32);
+
+/***/ }),
 /* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = __webpack_require__(33);
+// 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
+var $keys = __webpack_require__(118);
+var hiddenKeys = __webpack_require__(75).concat('length', 'prototype');
+
+exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
+  return $keys(O, hiddenKeys);
+};
 
 /***/ }),
 /* 126 */
@@ -10160,30 +10145,15 @@ module.exports = __webpack_require__(33);
 "use strict";
 
 
-// 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
-var $keys = __webpack_require__(119);
-var hiddenKeys = __webpack_require__(76).concat('length', 'prototype');
-
-exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
-  return $keys(O, hiddenKeys);
-};
-
-/***/ }),
-/* 127 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var pIE = __webpack_require__(57);
-var createDesc = __webpack_require__(53);
-var toIObject = __webpack_require__(36);
-var toPrimitive = __webpack_require__(71);
-var has = __webpack_require__(28);
-var IE8_DOM_DEFINE = __webpack_require__(117);
+var pIE = __webpack_require__(56);
+var createDesc = __webpack_require__(52);
+var toIObject = __webpack_require__(35);
+var toPrimitive = __webpack_require__(70);
+var has = __webpack_require__(26);
+var IE8_DOM_DEFINE = __webpack_require__(116);
 var gOPD = Object.getOwnPropertyDescriptor;
 
-exports.f = __webpack_require__(27) ? gOPD : function getOwnPropertyDescriptor(O, P) {
+exports.f = __webpack_require__(25) ? gOPD : function getOwnPropertyDescriptor(O, P) {
   O = toIObject(O);
   P = toPrimitive(P, true);
   if (IE8_DOM_DEFINE) try {
@@ -10193,21 +10163,7 @@ exports.f = __webpack_require__(27) ? gOPD : function getOwnPropertyDescriptor(O
 };
 
 /***/ }),
-/* 128 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var root = __webpack_require__(397);
-
-/** Built-in value references. */
-var _Symbol = root.Symbol;
-
-module.exports = _Symbol;
-
-/***/ }),
-/* 129 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10215,50 +10171,50 @@ module.exports = _Symbol;
 
 var _settings = __webpack_require__(1);
 
-__webpack_require__(130);
+__webpack_require__(128);
 
-__webpack_require__(224);
+__webpack_require__(223);
 
-__webpack_require__(229);
+__webpack_require__(228);
 
-__webpack_require__(234);
+__webpack_require__(233);
 
-__webpack_require__(239);
+__webpack_require__(238);
 
-__webpack_require__(244);
+__webpack_require__(243);
 
-__webpack_require__(263);
+__webpack_require__(262);
+
+__webpack_require__(267);
 
 __webpack_require__(268);
 
-__webpack_require__(269);
+__webpack_require__(273);
 
-__webpack_require__(274);
+__webpack_require__(278);
 
-__webpack_require__(279);
+__webpack_require__(51);
 
-__webpack_require__(52);
+__webpack_require__(286);
 
-__webpack_require__(287);
+__webpack_require__(310);
 
-__webpack_require__(311);
+__webpack_require__(367);
 
-__webpack_require__(368);
+__webpack_require__(372);
 
-__webpack_require__(373);
+__webpack_require__(376);
 
-__webpack_require__(377);
+__webpack_require__(388);
 
-__webpack_require__(382);
-
-__webpack_require__(403);
+__webpack_require__(381);
 
 window.PremiumOptionsSettings = {
     FontAwesomeEnabled: _settings.FontAwesomeEnabled
 };
 
 /***/ }),
-/* 130 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10270,19 +10226,19 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(131);
+var _edit = __webpack_require__(129);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(221);
+var _save = __webpack_require__(220);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _attributes = __webpack_require__(222);
+var _attributes = __webpack_require__(221);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
-var _deprecated = __webpack_require__(223);
+var _deprecated = __webpack_require__(222);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -10307,7 +10263,7 @@ registerBlockType("premium/accordion", {
 });
 
 /***/ }),
-/* 131 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10329,11 +10285,11 @@ var _premiumBorder = __webpack_require__(6);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _PremiumResponsivePadding = __webpack_require__(11);
+var _PremiumResponsivePadding = __webpack_require__(12);
 
 var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
 
-var _premiumTypo = __webpack_require__(7);
+var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
@@ -11145,7 +11101,7 @@ exports.default = withSelect(function (select, props) {
 })(PremiumAccordion);
 
 /***/ }),
-/* 132 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11242,13 +11198,43 @@ function PremiumRange(_ref) {
 exports.default = PremiumRange;
 
 /***/ }),
-/* 133 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _Symbol = __webpack_require__(44);
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var g;
+
+// This works in non-strict mode
+g = function () {
+	return this;
+}();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1, eval)("this");
+} catch (e) {
+	// This works if the window reference is available
+	if ((typeof window === "undefined" ? "undefined" : _typeof(window)) === "object") g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+/***/ }),
+/* 132 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _Symbol = __webpack_require__(43);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -11296,7 +11282,7 @@ function getRawTag(value) {
 module.exports = getRawTag;
 
 /***/ }),
-/* 134 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11326,13 +11312,13 @@ function objectToString(value) {
 module.exports = objectToString;
 
 /***/ }),
-/* 135 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var memoizeCapped = __webpack_require__(136);
+var memoizeCapped = __webpack_require__(135);
 
 /** Used to match property names within property paths. */
 var rePropName = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
@@ -11361,13 +11347,13 @@ var stringToPath = memoizeCapped(function (string) {
 module.exports = stringToPath;
 
 /***/ }),
-/* 136 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var memoize = __webpack_require__(137);
+var memoize = __webpack_require__(136);
 
 /** Used as the maximum memoize cache size. */
 var MAX_MEMOIZE_SIZE = 500;
@@ -11395,13 +11381,13 @@ function memoizeCapped(func) {
 module.exports = memoizeCapped;
 
 /***/ }),
-/* 137 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var MapCache = __webpack_require__(60);
+var MapCache = __webpack_require__(59);
 
 /** Error message constants. */
 var FUNC_ERROR_TEXT = 'Expected a function';
@@ -11476,15 +11462,15 @@ memoize.Cache = MapCache;
 module.exports = memoize;
 
 /***/ }),
-/* 138 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var Hash = __webpack_require__(139),
-    ListCache = __webpack_require__(46),
-    Map = __webpack_require__(62);
+var Hash = __webpack_require__(138),
+    ListCache = __webpack_require__(45),
+    Map = __webpack_require__(61);
 
 /**
  * Removes all key-value entries from the map.
@@ -11505,17 +11491,17 @@ function mapCacheClear() {
 module.exports = mapCacheClear;
 
 /***/ }),
-/* 139 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var hashClear = __webpack_require__(140),
-    hashDelete = __webpack_require__(145),
-    hashGet = __webpack_require__(146),
-    hashHas = __webpack_require__(147),
-    hashSet = __webpack_require__(148);
+var hashClear = __webpack_require__(139),
+    hashDelete = __webpack_require__(144),
+    hashGet = __webpack_require__(145),
+    hashHas = __webpack_require__(146),
+    hashSet = __webpack_require__(147);
 
 /**
  * Creates a hash object.
@@ -11545,13 +11531,13 @@ Hash.prototype.set = hashSet;
 module.exports = Hash;
 
 /***/ }),
-/* 140 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var nativeCreate = __webpack_require__(45);
+var nativeCreate = __webpack_require__(44);
 
 /**
  * Removes all key-value entries from the hash.
@@ -11568,16 +11554,16 @@ function hashClear() {
 module.exports = hashClear;
 
 /***/ }),
-/* 141 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var isFunction = __webpack_require__(89),
-    isMasked = __webpack_require__(142),
-    isObject = __webpack_require__(61),
-    toSource = __webpack_require__(90);
+var isFunction = __webpack_require__(87),
+    isMasked = __webpack_require__(141),
+    isObject = __webpack_require__(60),
+    toSource = __webpack_require__(88);
 
 /**
  * Used to match `RegExp`
@@ -11620,13 +11606,13 @@ function baseIsNative(value) {
 module.exports = baseIsNative;
 
 /***/ }),
-/* 142 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var coreJsData = __webpack_require__(143);
+var coreJsData = __webpack_require__(142);
 
 /** Used to detect methods masquerading as native. */
 var maskSrcKey = function () {
@@ -11648,7 +11634,7 @@ function isMasked(func) {
 module.exports = isMasked;
 
 /***/ }),
-/* 143 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11662,7 +11648,7 @@ var coreJsData = root['__core-js_shared__'];
 module.exports = coreJsData;
 
 /***/ }),
-/* 144 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11683,7 +11669,7 @@ function getValue(object, key) {
 module.exports = getValue;
 
 /***/ }),
-/* 145 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11708,13 +11694,13 @@ function hashDelete(key) {
 module.exports = hashDelete;
 
 /***/ }),
-/* 146 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var nativeCreate = __webpack_require__(45);
+var nativeCreate = __webpack_require__(44);
 
 /** Used to stand-in for `undefined` hash values. */
 var HASH_UNDEFINED = '__lodash_hash_undefined__';
@@ -11746,13 +11732,13 @@ function hashGet(key) {
 module.exports = hashGet;
 
 /***/ }),
-/* 147 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var nativeCreate = __webpack_require__(45);
+var nativeCreate = __webpack_require__(44);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -11777,13 +11763,13 @@ function hashHas(key) {
 module.exports = hashHas;
 
 /***/ }),
-/* 148 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var nativeCreate = __webpack_require__(45);
+var nativeCreate = __webpack_require__(44);
 
 /** Used to stand-in for `undefined` hash values. */
 var HASH_UNDEFINED = '__lodash_hash_undefined__';
@@ -11808,7 +11794,7 @@ function hashSet(key, value) {
 module.exports = hashSet;
 
 /***/ }),
-/* 149 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11829,13 +11815,13 @@ function listCacheClear() {
 module.exports = listCacheClear;
 
 /***/ }),
-/* 150 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var assocIndexOf = __webpack_require__(47);
+var assocIndexOf = __webpack_require__(46);
 
 /** Used for built-in method references. */
 var arrayProto = Array.prototype;
@@ -11872,13 +11858,13 @@ function listCacheDelete(key) {
 module.exports = listCacheDelete;
 
 /***/ }),
-/* 151 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var assocIndexOf = __webpack_require__(47);
+var assocIndexOf = __webpack_require__(46);
 
 /**
  * Gets the list cache value for `key`.
@@ -11899,13 +11885,13 @@ function listCacheGet(key) {
 module.exports = listCacheGet;
 
 /***/ }),
-/* 152 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var assocIndexOf = __webpack_require__(47);
+var assocIndexOf = __webpack_require__(46);
 
 /**
  * Checks if a list cache value for `key` exists.
@@ -11923,13 +11909,13 @@ function listCacheHas(key) {
 module.exports = listCacheHas;
 
 /***/ }),
-/* 153 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var assocIndexOf = __webpack_require__(47);
+var assocIndexOf = __webpack_require__(46);
 
 /**
  * Sets the list cache `key` to `value`.
@@ -11957,13 +11943,13 @@ function listCacheSet(key, value) {
 module.exports = listCacheSet;
 
 /***/ }),
-/* 154 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var getMapData = __webpack_require__(48);
+var getMapData = __webpack_require__(47);
 
 /**
  * Removes `key` and its value from the map.
@@ -11983,7 +11969,7 @@ function mapCacheDelete(key) {
 module.exports = mapCacheDelete;
 
 /***/ }),
-/* 155 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12006,13 +11992,13 @@ function isKeyable(value) {
 module.exports = isKeyable;
 
 /***/ }),
-/* 156 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var getMapData = __webpack_require__(48);
+var getMapData = __webpack_require__(47);
 
 /**
  * Gets the map value for `key`.
@@ -12030,13 +12016,13 @@ function mapCacheGet(key) {
 module.exports = mapCacheGet;
 
 /***/ }),
-/* 157 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var getMapData = __webpack_require__(48);
+var getMapData = __webpack_require__(47);
 
 /**
  * Checks if a map value for `key` exists.
@@ -12054,13 +12040,13 @@ function mapCacheHas(key) {
 module.exports = mapCacheHas;
 
 /***/ }),
-/* 158 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var getMapData = __webpack_require__(48);
+var getMapData = __webpack_require__(47);
 
 /**
  * Sets the map `key` to `value`.
@@ -12084,13 +12070,13 @@ function mapCacheSet(key, value) {
 module.exports = mapCacheSet;
 
 /***/ }),
-/* 159 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseToString = __webpack_require__(160);
+var baseToString = __webpack_require__(159);
 
 /**
  * Converts `value` to a string. An empty string is returned for `null`
@@ -12120,16 +12106,16 @@ function toString(value) {
 module.exports = toString;
 
 /***/ }),
-/* 160 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _Symbol = __webpack_require__(44),
-    arrayMap = __webpack_require__(92),
+var _Symbol = __webpack_require__(43),
+    arrayMap = __webpack_require__(90),
     isArray = __webpack_require__(15),
-    isSymbol = __webpack_require__(59);
+    isSymbol = __webpack_require__(58);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0;
@@ -12165,7 +12151,7 @@ function baseToString(value) {
 module.exports = baseToString;
 
 /***/ }),
-/* 161 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12173,11 +12159,11 @@ module.exports = baseToString;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var baseMatches = __webpack_require__(162),
-    baseMatchesProperty = __webpack_require__(203),
-    identity = __webpack_require__(207),
+var baseMatches = __webpack_require__(161),
+    baseMatchesProperty = __webpack_require__(202),
+    identity = __webpack_require__(206),
     isArray = __webpack_require__(15),
-    property = __webpack_require__(208);
+    property = __webpack_require__(207);
 
 /**
  * The base implementation of `_.iteratee`.
@@ -12204,15 +12190,15 @@ function baseIteratee(value) {
 module.exports = baseIteratee;
 
 /***/ }),
-/* 162 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseIsMatch = __webpack_require__(163),
-    getMatchData = __webpack_require__(202),
-    matchesStrictComparable = __webpack_require__(102);
+var baseIsMatch = __webpack_require__(162),
+    getMatchData = __webpack_require__(201),
+    matchesStrictComparable = __webpack_require__(100);
 
 /**
  * The base implementation of `_.matches` which doesn't clone `source`.
@@ -12234,14 +12220,14 @@ function baseMatches(source) {
 module.exports = baseMatches;
 
 /***/ }),
-/* 163 */
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var Stack = __webpack_require__(94),
-    baseIsEqual = __webpack_require__(95);
+var Stack = __webpack_require__(92),
+    baseIsEqual = __webpack_require__(93);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -12298,13 +12284,13 @@ function baseIsMatch(object, source, matchData, customizer) {
 module.exports = baseIsMatch;
 
 /***/ }),
-/* 164 */
+/* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var ListCache = __webpack_require__(46);
+var ListCache = __webpack_require__(45);
 
 /**
  * Removes all key-value entries from the stack.
@@ -12321,7 +12307,7 @@ function stackClear() {
 module.exports = stackClear;
 
 /***/ }),
-/* 165 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12347,7 +12333,7 @@ function stackDelete(key) {
 module.exports = stackDelete;
 
 /***/ }),
-/* 166 */
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12369,7 +12355,7 @@ function stackGet(key) {
 module.exports = stackGet;
 
 /***/ }),
-/* 167 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12391,15 +12377,15 @@ function stackHas(key) {
 module.exports = stackHas;
 
 /***/ }),
-/* 168 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var ListCache = __webpack_require__(46),
-    Map = __webpack_require__(62),
-    MapCache = __webpack_require__(60);
+var ListCache = __webpack_require__(45),
+    Map = __webpack_require__(61),
+    MapCache = __webpack_require__(59);
 
 /** Used as the size to enable large array optimizations. */
 var LARGE_ARRAY_SIZE = 200;
@@ -12433,20 +12419,20 @@ function stackSet(key, value) {
 module.exports = stackSet;
 
 /***/ }),
-/* 169 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var Stack = __webpack_require__(94),
-    equalArrays = __webpack_require__(96),
-    equalByTag = __webpack_require__(175),
-    equalObjects = __webpack_require__(179),
-    getTag = __webpack_require__(197),
+var Stack = __webpack_require__(92),
+    equalArrays = __webpack_require__(94),
+    equalByTag = __webpack_require__(174),
+    equalObjects = __webpack_require__(178),
+    getTag = __webpack_require__(196),
     isArray = __webpack_require__(15),
-    isBuffer = __webpack_require__(98),
-    isTypedArray = __webpack_require__(100);
+    isBuffer = __webpack_require__(96),
+    isTypedArray = __webpack_require__(98);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1;
@@ -12522,15 +12508,15 @@ function baseIsEqualDeep(object, other, bitmask, customizer, equalFunc, stack) {
 module.exports = baseIsEqualDeep;
 
 /***/ }),
-/* 170 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var MapCache = __webpack_require__(60),
-    setCacheAdd = __webpack_require__(171),
-    setCacheHas = __webpack_require__(172);
+var MapCache = __webpack_require__(59),
+    setCacheAdd = __webpack_require__(170),
+    setCacheHas = __webpack_require__(171);
 
 /**
  *
@@ -12557,7 +12543,7 @@ SetCache.prototype.has = setCacheHas;
 module.exports = SetCache;
 
 /***/ }),
-/* 171 */
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12584,7 +12570,7 @@ function setCacheAdd(value) {
 module.exports = setCacheAdd;
 
 /***/ }),
-/* 172 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12606,7 +12592,7 @@ function setCacheHas(value) {
 module.exports = setCacheHas;
 
 /***/ }),
-/* 173 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12637,7 +12623,7 @@ function arraySome(array, predicate) {
 module.exports = arraySome;
 
 /***/ }),
-/* 174 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12658,18 +12644,18 @@ function cacheHas(cache, key) {
 module.exports = cacheHas;
 
 /***/ }),
-/* 175 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _Symbol = __webpack_require__(44),
-    Uint8Array = __webpack_require__(176),
-    eq = __webpack_require__(91),
-    equalArrays = __webpack_require__(96),
-    mapToArray = __webpack_require__(177),
-    setToArray = __webpack_require__(178);
+var _Symbol = __webpack_require__(43),
+    Uint8Array = __webpack_require__(175),
+    eq = __webpack_require__(89),
+    equalArrays = __webpack_require__(94),
+    mapToArray = __webpack_require__(176),
+    setToArray = __webpack_require__(177);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -12776,7 +12762,7 @@ function equalByTag(object, other, tag, bitmask, customizer, equalFunc, stack) {
 module.exports = equalByTag;
 
 /***/ }),
-/* 176 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12790,7 +12776,7 @@ var Uint8Array = root.Uint8Array;
 module.exports = Uint8Array;
 
 /***/ }),
-/* 177 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12816,7 +12802,7 @@ function mapToArray(map) {
 module.exports = mapToArray;
 
 /***/ }),
-/* 178 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12842,13 +12828,13 @@ function setToArray(set) {
 module.exports = setToArray;
 
 /***/ }),
-/* 179 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var getAllKeys = __webpack_require__(180);
+var getAllKeys = __webpack_require__(179);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1;
@@ -12932,15 +12918,15 @@ function equalObjects(object, other, bitmask, customizer, equalFunc, stack) {
 module.exports = equalObjects;
 
 /***/ }),
-/* 180 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseGetAllKeys = __webpack_require__(181),
-    getSymbols = __webpack_require__(183),
-    keys = __webpack_require__(63);
+var baseGetAllKeys = __webpack_require__(180),
+    getSymbols = __webpack_require__(182),
+    keys = __webpack_require__(62);
 
 /**
  * Creates an array of own enumerable property names and symbols of `object`.
@@ -12956,13 +12942,13 @@ function getAllKeys(object) {
 module.exports = getAllKeys;
 
 /***/ }),
-/* 181 */
+/* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var arrayPush = __webpack_require__(182),
+var arrayPush = __webpack_require__(181),
     isArray = __webpack_require__(15);
 
 /**
@@ -12984,7 +12970,7 @@ function baseGetAllKeys(object, keysFunc, symbolsFunc) {
 module.exports = baseGetAllKeys;
 
 /***/ }),
-/* 182 */
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13012,14 +12998,14 @@ function arrayPush(array, values) {
 module.exports = arrayPush;
 
 /***/ }),
-/* 183 */
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var arrayFilter = __webpack_require__(184),
-    stubArray = __webpack_require__(185);
+var arrayFilter = __webpack_require__(183),
+    stubArray = __webpack_require__(184);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -13050,7 +13036,7 @@ var getSymbols = !nativeGetSymbols ? stubArray : function (object) {
 module.exports = getSymbols;
 
 /***/ }),
-/* 184 */
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13083,7 +13069,7 @@ function arrayFilter(array, predicate) {
 module.exports = arrayFilter;
 
 /***/ }),
-/* 185 */
+/* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13114,18 +13100,18 @@ function stubArray() {
 module.exports = stubArray;
 
 /***/ }),
-/* 186 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseTimes = __webpack_require__(187),
-    isArguments = __webpack_require__(97),
+var baseTimes = __webpack_require__(186),
+    isArguments = __webpack_require__(95),
     isArray = __webpack_require__(15),
-    isBuffer = __webpack_require__(98),
-    isIndex = __webpack_require__(99),
-    isTypedArray = __webpack_require__(100);
+    isBuffer = __webpack_require__(96),
+    isIndex = __webpack_require__(97),
+    isTypedArray = __webpack_require__(98);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -13169,7 +13155,7 @@ function arrayLikeKeys(value, inherited) {
 module.exports = arrayLikeKeys;
 
 /***/ }),
-/* 187 */
+/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13197,14 +13183,14 @@ function baseTimes(n, iteratee) {
 module.exports = baseTimes;
 
 /***/ }),
-/* 188 */
+/* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseGetTag = __webpack_require__(38),
-    isObjectLike = __webpack_require__(39);
+var baseGetTag = __webpack_require__(37),
+    isObjectLike = __webpack_require__(38);
 
 /** `Object#toString` result references. */
 var argsTag = '[object Arguments]';
@@ -13223,7 +13209,7 @@ function baseIsArguments(value) {
 module.exports = baseIsArguments;
 
 /***/ }),
-/* 189 */
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13249,15 +13235,15 @@ function stubFalse() {
 module.exports = stubFalse;
 
 /***/ }),
-/* 190 */
+/* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseGetTag = __webpack_require__(38),
-    isLength = __webpack_require__(64),
-    isObjectLike = __webpack_require__(39);
+var baseGetTag = __webpack_require__(37),
+    isLength = __webpack_require__(63),
+    isObjectLike = __webpack_require__(38);
 
 /** `Object#toString` result references. */
 var argsTag = '[object Arguments]',
@@ -13305,7 +13291,7 @@ function baseIsTypedArray(value) {
 module.exports = baseIsTypedArray;
 
 /***/ }),
-/* 191 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13327,7 +13313,7 @@ function baseUnary(func) {
 module.exports = baseUnary;
 
 /***/ }),
-/* 192 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13335,7 +13321,7 @@ module.exports = baseUnary;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var freeGlobal = __webpack_require__(87);
+var freeGlobal = __webpack_require__(86);
 
 /** Detect free variable `exports`. */
 var freeExports = ( false ? 'undefined' : _typeof(exports)) == 'object' && exports && !exports.nodeType && exports;
@@ -13365,17 +13351,17 @@ var nodeUtil = function () {
 }();
 
 module.exports = nodeUtil;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(50)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(49)(module)))
 
 /***/ }),
-/* 193 */
+/* 192 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var isPrototype = __webpack_require__(194),
-    nativeKeys = __webpack_require__(195);
+var isPrototype = __webpack_require__(193),
+    nativeKeys = __webpack_require__(194);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -13406,7 +13392,7 @@ function baseKeys(object) {
 module.exports = baseKeys;
 
 /***/ }),
-/* 194 */
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13432,13 +13418,13 @@ function isPrototype(value) {
 module.exports = isPrototype;
 
 /***/ }),
-/* 195 */
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var overArg = __webpack_require__(196);
+var overArg = __webpack_require__(195);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeKeys = overArg(Object.keys, Object);
@@ -13446,7 +13432,7 @@ var nativeKeys = overArg(Object.keys, Object);
 module.exports = nativeKeys;
 
 /***/ }),
-/* 196 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13469,19 +13455,19 @@ function overArg(func, transform) {
 module.exports = overArg;
 
 /***/ }),
-/* 197 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var DataView = __webpack_require__(198),
-    Map = __webpack_require__(62),
-    Promise = __webpack_require__(199),
-    Set = __webpack_require__(200),
-    WeakMap = __webpack_require__(201),
-    baseGetTag = __webpack_require__(38),
-    toSource = __webpack_require__(90);
+var DataView = __webpack_require__(197),
+    Map = __webpack_require__(61),
+    Promise = __webpack_require__(198),
+    Set = __webpack_require__(199),
+    WeakMap = __webpack_require__(200),
+    baseGetTag = __webpack_require__(37),
+    toSource = __webpack_require__(88);
 
 /** `Object#toString` result references. */
 var mapTag = '[object Map]',
@@ -13536,13 +13522,13 @@ if (DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag || Map &
 module.exports = getTag;
 
 /***/ }),
-/* 198 */
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var getNative = __webpack_require__(30),
+var getNative = __webpack_require__(28),
     root = __webpack_require__(16);
 
 /* Built-in method references that are verified to be native. */
@@ -13551,13 +13537,13 @@ var DataView = getNative(root, 'DataView');
 module.exports = DataView;
 
 /***/ }),
-/* 199 */
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var getNative = __webpack_require__(30),
+var getNative = __webpack_require__(28),
     root = __webpack_require__(16);
 
 /* Built-in method references that are verified to be native. */
@@ -13566,13 +13552,13 @@ var Promise = getNative(root, 'Promise');
 module.exports = Promise;
 
 /***/ }),
-/* 200 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var getNative = __webpack_require__(30),
+var getNative = __webpack_require__(28),
     root = __webpack_require__(16);
 
 /* Built-in method references that are verified to be native. */
@@ -13581,13 +13567,13 @@ var Set = getNative(root, 'Set');
 module.exports = Set;
 
 /***/ }),
-/* 201 */
+/* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var getNative = __webpack_require__(30),
+var getNative = __webpack_require__(28),
     root = __webpack_require__(16);
 
 /* Built-in method references that are verified to be native. */
@@ -13596,14 +13582,14 @@ var WeakMap = getNative(root, 'WeakMap');
 module.exports = WeakMap;
 
 /***/ }),
-/* 202 */
+/* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var isStrictComparable = __webpack_require__(101),
-    keys = __webpack_require__(63);
+var isStrictComparable = __webpack_require__(99),
+    keys = __webpack_require__(62);
 
 /**
  * Gets the property names, values, and compare flags of `object`.
@@ -13628,19 +13614,19 @@ function getMatchData(object) {
 module.exports = getMatchData;
 
 /***/ }),
-/* 203 */
+/* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseIsEqual = __webpack_require__(95),
-    get = __webpack_require__(84),
-    hasIn = __webpack_require__(204),
-    isKey = __webpack_require__(58),
-    isStrictComparable = __webpack_require__(101),
-    matchesStrictComparable = __webpack_require__(102),
-    toKey = __webpack_require__(49);
+var baseIsEqual = __webpack_require__(93),
+    get = __webpack_require__(83),
+    hasIn = __webpack_require__(203),
+    isKey = __webpack_require__(57),
+    isStrictComparable = __webpack_require__(99),
+    matchesStrictComparable = __webpack_require__(100),
+    toKey = __webpack_require__(48);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -13667,14 +13653,14 @@ function baseMatchesProperty(path, srcValue) {
 module.exports = baseMatchesProperty;
 
 /***/ }),
-/* 204 */
+/* 203 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseHasIn = __webpack_require__(205),
-    hasPath = __webpack_require__(206);
+var baseHasIn = __webpack_require__(204),
+    hasPath = __webpack_require__(205);
 
 /**
  * Checks if `path` is a direct or inherited property of `object`.
@@ -13709,7 +13695,7 @@ function hasIn(object, path) {
 module.exports = hasIn;
 
 /***/ }),
-/* 205 */
+/* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13730,18 +13716,18 @@ function baseHasIn(object, key) {
 module.exports = baseHasIn;
 
 /***/ }),
-/* 206 */
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var castPath = __webpack_require__(86),
-    isArguments = __webpack_require__(97),
+var castPath = __webpack_require__(85),
+    isArguments = __webpack_require__(95),
     isArray = __webpack_require__(15),
-    isIndex = __webpack_require__(99),
-    isLength = __webpack_require__(64),
-    toKey = __webpack_require__(49);
+    isIndex = __webpack_require__(97),
+    isLength = __webpack_require__(63),
+    toKey = __webpack_require__(48);
 
 /**
  * Checks if `path` exists on `object`.
@@ -13776,7 +13762,7 @@ function hasPath(object, path, hasFunc) {
 module.exports = hasPath;
 
 /***/ }),
-/* 207 */
+/* 206 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13805,16 +13791,16 @@ function identity(value) {
 module.exports = identity;
 
 /***/ }),
-/* 208 */
+/* 207 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseProperty = __webpack_require__(209),
-    basePropertyDeep = __webpack_require__(210),
-    isKey = __webpack_require__(58),
-    toKey = __webpack_require__(49);
+var baseProperty = __webpack_require__(208),
+    basePropertyDeep = __webpack_require__(209),
+    isKey = __webpack_require__(57),
+    toKey = __webpack_require__(48);
 
 /**
  * Creates a function that returns the value at `path` of a given object.
@@ -13845,7 +13831,7 @@ function property(path) {
 module.exports = property;
 
 /***/ }),
-/* 209 */
+/* 208 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13867,13 +13853,13 @@ function baseProperty(key) {
 module.exports = baseProperty;
 
 /***/ }),
-/* 210 */
+/* 209 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseGet = __webpack_require__(85);
+var baseGet = __webpack_require__(84);
 
 /**
  * A specialized version of `baseProperty` which supports deep paths.
@@ -13891,14 +13877,14 @@ function basePropertyDeep(path) {
 module.exports = basePropertyDeep;
 
 /***/ }),
-/* 211 */
+/* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseEach = __webpack_require__(212),
-    isArrayLike = __webpack_require__(65);
+var baseEach = __webpack_require__(211),
+    isArrayLike = __webpack_require__(64);
 
 /**
  * The base implementation of `_.map` without support for iteratee shorthands.
@@ -13921,14 +13907,14 @@ function baseMap(collection, iteratee) {
 module.exports = baseMap;
 
 /***/ }),
-/* 212 */
+/* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseForOwn = __webpack_require__(213),
-    createBaseEach = __webpack_require__(216);
+var baseForOwn = __webpack_require__(212),
+    createBaseEach = __webpack_require__(215);
 
 /**
  * The base implementation of `_.forEach` without support for iteratee shorthands.
@@ -13943,14 +13929,14 @@ var baseEach = createBaseEach(baseForOwn);
 module.exports = baseEach;
 
 /***/ }),
-/* 213 */
+/* 212 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseFor = __webpack_require__(214),
-    keys = __webpack_require__(63);
+var baseFor = __webpack_require__(213),
+    keys = __webpack_require__(62);
 
 /**
  * The base implementation of `_.forOwn` without support for iteratee shorthands.
@@ -13967,13 +13953,13 @@ function baseForOwn(object, iteratee) {
 module.exports = baseForOwn;
 
 /***/ }),
-/* 214 */
+/* 213 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var createBaseFor = __webpack_require__(215);
+var createBaseFor = __webpack_require__(214);
 
 /**
  * The base implementation of `baseForOwn` which iterates over `object`
@@ -13991,7 +13977,7 @@ var baseFor = createBaseFor();
 module.exports = baseFor;
 
 /***/ }),
-/* 215 */
+/* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14024,13 +14010,13 @@ function createBaseFor(fromRight) {
 module.exports = createBaseFor;
 
 /***/ }),
-/* 216 */
+/* 215 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var isArrayLike = __webpack_require__(65);
+var isArrayLike = __webpack_require__(64);
 
 /**
  * Creates a `baseEach` or `baseEachRight` function.
@@ -14064,7 +14050,7 @@ function createBaseEach(eachFunc, fromRight) {
 module.exports = createBaseEach;
 
 /***/ }),
-/* 217 */
+/* 216 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14246,7 +14232,7 @@ exports.getFormat = I;
 exports.random = E;
 
 /***/ }),
-/* 218 */
+/* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14260,11 +14246,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _premiumSizeUnits = __webpack_require__(29);
+var _premiumSizeUnits = __webpack_require__(27);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
-var _react = __webpack_require__(9);
+var _react = __webpack_require__(8);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -14495,7 +14481,7 @@ var PremiumPadding = function (_Component) {
 exports.default = PremiumPadding;
 
 /***/ }),
-/* 219 */
+/* 218 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15400,7 +15386,7 @@ fonts["Zilla Slab Highlight"] = { "v": ["regular", "700"], "subset": ["latin-ext
 exports.default = fonts;
 
 /***/ }),
-/* 220 */
+/* 219 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15414,11 +15400,11 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _classnames = __webpack_require__(51);
+var _classnames = __webpack_require__(50);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _webfontloader = __webpack_require__(103);
+var _webfontloader = __webpack_require__(101);
 
 var _webfontloader2 = _interopRequireDefault(_webfontloader);
 
@@ -15564,7 +15550,7 @@ var FontsList = function FontsList(_ref3) {
 exports.default = FontsList;
 
 /***/ }),
-/* 221 */
+/* 220 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15722,7 +15708,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 222 */
+/* 221 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15953,7 +15939,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 223 */
+/* 222 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16786,7 +16772,7 @@ var deprecated = [{
 exports.default = deprecated;
 
 /***/ }),
-/* 224 */
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16798,19 +16784,19 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(225);
+var _edit = __webpack_require__(224);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(226);
+var _save = __webpack_require__(225);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(227);
+var _deprecated = __webpack_require__(226);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(228);
+var _attributes = __webpack_require__(227);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -16834,7 +16820,7 @@ registerBlockType("premium/banner", {
 });
 
 /***/ }),
-/* 225 */
+/* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16857,23 +16843,23 @@ var _premiumBorder = __webpack_require__(6);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumTypo = __webpack_require__(7);
+var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumFilters = __webpack_require__(31);
+var _premiumFilters = __webpack_require__(39);
 
 var _premiumFilters2 = _interopRequireDefault(_premiumFilters);
 
-var _PremiumResponsivePadding = __webpack_require__(11);
+var _PremiumResponsivePadding = __webpack_require__(12);
 
 var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
 
-var _premiumMediaUpload = __webpack_require__(13);
+var _premiumMediaUpload = __webpack_require__(14);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
-var _premiumResponsiveTabs = __webpack_require__(8);
+var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
@@ -17708,7 +17694,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 226 */
+/* 225 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17873,7 +17859,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 227 */
+/* 226 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19343,7 +19329,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 228 */
+/* 227 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19584,7 +19570,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 229 */
+/* 228 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19592,15 +19578,15 @@ exports.default = attributes;
 
 var _settings = __webpack_require__(1);
 
-var _edit = __webpack_require__(230);
+var _edit = __webpack_require__(229);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(231);
+var _save = __webpack_require__(230);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(232);
+var _deprecated = __webpack_require__(231);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -19608,7 +19594,7 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(233);
+var _attributes = __webpack_require__(232);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -19633,7 +19619,7 @@ registerBlockType("premium/button", {
 });
 
 /***/ }),
-/* 230 */
+/* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19652,7 +19638,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _premiumTypo = __webpack_require__(7);
+var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
@@ -19660,7 +19646,7 @@ var _premiumBorder = __webpack_require__(6);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumResponsiveTabs = __webpack_require__(8);
+var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
@@ -20273,7 +20259,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 231 */
+/* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20359,7 +20345,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 232 */
+/* 231 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21178,7 +21164,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 233 */
+/* 232 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21306,7 +21292,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 234 */
+/* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21314,15 +21300,15 @@ exports.default = attributes;
 
 var _settings = __webpack_require__(1);
 
-var _attributes = __webpack_require__(235);
+var _attributes = __webpack_require__(234);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
-var _edit = __webpack_require__(236);
+var _edit = __webpack_require__(235);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(237);
+var _save = __webpack_require__(236);
 
 var _save2 = _interopRequireDefault(_save);
 
@@ -21330,7 +21316,7 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _deprecated = __webpack_require__(238);
+var _deprecated = __webpack_require__(237);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -21357,7 +21343,7 @@ registerBlockType("premium/countup", {
 });
 
 /***/ }),
-/* 235 */
+/* 234 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21620,7 +21606,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 236 */
+/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21640,7 +21626,7 @@ var _classnames2 = _interopRequireDefault(_classnames);
 
 var _settings = __webpack_require__(1);
 
-var _premiumTypo = __webpack_require__(7);
+var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
@@ -21652,11 +21638,11 @@ var _premiumBorder = __webpack_require__(6);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumMediaUpload = __webpack_require__(13);
+var _premiumMediaUpload = __webpack_require__(14);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
-var _premiumResponsiveTabs = __webpack_require__(8);
+var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
@@ -21676,7 +21662,7 @@ var _radioControl = __webpack_require__(10);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
-var _PremiumResponsivePadding = __webpack_require__(11);
+var _PremiumResponsivePadding = __webpack_require__(12);
 
 var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
 
@@ -22705,7 +22691,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 237 */
+/* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22924,7 +22910,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 238 */
+/* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24735,7 +24721,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 239 */
+/* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24747,19 +24733,19 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(240);
+var _edit = __webpack_require__(239);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(241);
+var _save = __webpack_require__(240);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(242);
+var _deprecated = __webpack_require__(241);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(243);
+var _attributes = __webpack_require__(242);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -24784,7 +24770,7 @@ registerBlockType("premium/dheading-block", {
 });
 
 /***/ }),
-/* 240 */
+/* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24806,11 +24792,11 @@ var _premiumBorder = __webpack_require__(6);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumTypo = __webpack_require__(7);
+var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumResponsiveTabs = __webpack_require__(8);
+var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
@@ -25631,7 +25617,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 241 */
+/* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25789,7 +25775,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 242 */
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27426,7 +27412,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 243 */
+/* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27638,7 +27624,7 @@ var attributes = (_attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 244 */
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27650,19 +27636,19 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(245);
+var _edit = __webpack_require__(244);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(260);
+var _save = __webpack_require__(259);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(261);
+var _deprecated = __webpack_require__(260);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(262);
+var _attributes = __webpack_require__(261);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -27687,7 +27673,7 @@ registerBlockType("premium/icon", {
 });
 
 /***/ }),
-/* 245 */
+/* 244 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27705,11 +27691,11 @@ var _classnames2 = _interopRequireDefault(_classnames);
 
 var _settings = __webpack_require__(1);
 
-var _reactFonticonpicker = __webpack_require__(23);
+var _reactFonticonpicker = __webpack_require__(29);
 
 var _reactFonticonpicker2 = _interopRequireDefault(_reactFonticonpicker);
 
-var _premiumIconsList = __webpack_require__(32);
+var _premiumIconsList = __webpack_require__(30);
 
 var _premiumIconsList2 = _interopRequireDefault(_premiumIconsList);
 
@@ -27721,7 +27707,7 @@ var _PremiumBackgroundControl = __webpack_require__(22);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
-var _premiumResponsiveTabs = __webpack_require__(8);
+var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
@@ -27737,11 +27723,11 @@ var _radioControl = __webpack_require__(10);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
-var _PremiumResponsivePadding = __webpack_require__(11);
+var _PremiumResponsivePadding = __webpack_require__(12);
 
 var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
 
-var _PremiumResponsiveMargin = __webpack_require__(24);
+var _PremiumResponsiveMargin = __webpack_require__(31);
 
 var _PremiumResponsiveMargin2 = _interopRequireDefault(_PremiumResponsiveMargin);
 
@@ -28456,7 +28442,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 246 */
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28531,7 +28517,7 @@ exports.isSuspense = function (a) {
 };
 
 /***/ }),
-/* 247 */
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28762,10 +28748,10 @@ if (process.env.NODE_ENV !== "production") {
     exports.isSuspense = isSuspense;
   })();
 }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
 /***/ }),
-/* 248 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28780,11 +28766,11 @@ if (process.env.NODE_ENV !== "production") {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var ReactIs = __webpack_require__(105);
-var assign = __webpack_require__(249);
+var ReactIs = __webpack_require__(103);
+var assign = __webpack_require__(248);
 
-var ReactPropTypesSecret = __webpack_require__(66);
-var checkPropTypes = __webpack_require__(250);
+var ReactPropTypesSecret = __webpack_require__(65);
+var checkPropTypes = __webpack_require__(249);
 
 var has = Function.call.bind(Object.prototype.hasOwnProperty);
 var printWarning = function printWarning() {};
@@ -29340,10 +29326,10 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
 
   return ReactPropTypes;
 };
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
 /***/ }),
-/* 249 */
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29439,7 +29425,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 };
 
 /***/ }),
-/* 250 */
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29457,7 +29443,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 var printWarning = function printWarning() {};
 
 if (process.env.NODE_ENV !== 'production') {
-  var ReactPropTypesSecret = __webpack_require__(66);
+  var ReactPropTypesSecret = __webpack_require__(65);
   var loggedTypeFailures = {};
   var has = Function.call.bind(Object.prototype.hasOwnProperty);
 
@@ -29535,10 +29521,10 @@ checkPropTypes.resetWarningCache = function () {
 };
 
 module.exports = checkPropTypes;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
 /***/ }),
-/* 251 */
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29551,7 +29537,7 @@ module.exports = checkPropTypes;
 
 
 
-var ReactPropTypesSecret = __webpack_require__(66);
+var ReactPropTypesSecret = __webpack_require__(65);
 
 function emptyFunction() {}
 function emptyFunctionWithReset() {}
@@ -29604,7 +29590,7 @@ module.exports = function () {
 };
 
 /***/ }),
-/* 252 */
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29615,15 +29601,15 @@ exports.default = void 0;
 
 var PropTypes = _interopRequireWildcard(__webpack_require__(18));
 
-var _addClass = _interopRequireDefault(__webpack_require__(253));
+var _addClass = _interopRequireDefault(__webpack_require__(252));
 
-var _removeClass = _interopRequireDefault(__webpack_require__(256));
+var _removeClass = _interopRequireDefault(__webpack_require__(255));
 
-var _react = _interopRequireDefault(__webpack_require__(9));
+var _react = _interopRequireDefault(__webpack_require__(8));
 
-var _Transition = _interopRequireDefault(__webpack_require__(107));
+var _Transition = _interopRequireDefault(__webpack_require__(105));
 
-var _PropTypes = __webpack_require__(109);
+var _PropTypes = __webpack_require__(107);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -30001,21 +29987,21 @@ CSSTransition.propTypes = process.env.NODE_ENV !== "production" ? _extends({}, _
 var _default = CSSTransition;
 exports.default = _default;
 module.exports = exports["default"];
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
 /***/ }),
-/* 253 */
+/* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(254);
+var _interopRequireDefault = __webpack_require__(253);
 
 exports.__esModule = true;
 exports.default = addClass;
 
-var _hasClass = _interopRequireDefault(__webpack_require__(255));
+var _hasClass = _interopRequireDefault(__webpack_require__(254));
 
 function addClass(element, className) {
   if (element.classList) element.classList.add(className);else if (!(0, _hasClass.default)(element, className)) if (typeof element.className === 'string') element.className = element.className + ' ' + className;else element.setAttribute('class', (element.className && element.className.baseVal || '') + ' ' + className);
@@ -30024,7 +30010,7 @@ function addClass(element, className) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 254 */
+/* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30039,7 +30025,7 @@ function _interopRequireDefault(obj) {
 module.exports = _interopRequireDefault, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
-/* 255 */
+/* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30055,7 +30041,7 @@ function hasClass(element, className) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 256 */
+/* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30070,7 +30056,7 @@ module.exports = function removeClass(element, className) {
 };
 
 /***/ }),
-/* 257 */
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30081,11 +30067,11 @@ exports.default = void 0;
 
 var _propTypes = _interopRequireDefault(__webpack_require__(18));
 
-var _react = _interopRequireDefault(__webpack_require__(9));
+var _react = _interopRequireDefault(__webpack_require__(8));
 
 var _reactDom = __webpack_require__(40);
 
-var _TransitionGroup = _interopRequireDefault(__webpack_require__(110));
+var _TransitionGroup = _interopRequireDefault(__webpack_require__(108));
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -30232,10 +30218,10 @@ ReplaceTransition.propTypes = process.env.NODE_ENV !== "production" ? {
 var _default = ReplaceTransition;
 exports.default = _default;
 module.exports = exports["default"];
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
 /***/ }),
-/* 258 */
+/* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30247,7 +30233,7 @@ exports.mergeChildMappings = mergeChildMappings;
 exports.getInitialChildMapping = getInitialChildMapping;
 exports.getNextChildMapping = getNextChildMapping;
 
-var _react = __webpack_require__(9);
+var _react = __webpack_require__(8);
 
 /**
  * Given `this.props.children`, return an object mapping key to child.
@@ -30390,7 +30376,7 @@ function getNextChildMapping(nextProps, prevChildMapping, onExited) {
 }
 
 /***/ }),
-/* 259 */
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30404,11 +30390,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(9);
+var _react = __webpack_require__(8);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _premiumSizeUnits = __webpack_require__(29);
+var _premiumSizeUnits = __webpack_require__(27);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
@@ -30656,7 +30642,7 @@ var PremiumMargin = function (_Component) {
 exports.default = PremiumMargin;
 
 /***/ }),
-/* 260 */
+/* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30767,7 +30753,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 261 */
+/* 260 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31870,7 +31856,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 262 */
+/* 261 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32199,7 +32185,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 263 */
+/* 262 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32211,19 +32197,19 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(264);
+var _edit = __webpack_require__(263);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(265);
+var _save = __webpack_require__(264);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(266);
+var _deprecated = __webpack_require__(265);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(267);
+var _attributes = __webpack_require__(266);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -32248,7 +32234,7 @@ registerBlockType("premium/icon-box", {
 });
 
 /***/ }),
-/* 264 */
+/* 263 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32268,15 +32254,15 @@ var _classnames2 = _interopRequireDefault(_classnames);
 
 var _settings = __webpack_require__(1);
 
-var _premiumTypo = __webpack_require__(7);
+var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _reactFonticonpicker = __webpack_require__(23);
+var _reactFonticonpicker = __webpack_require__(29);
 
 var _reactFonticonpicker2 = _interopRequireDefault(_reactFonticonpicker);
 
-var _premiumIconsList = __webpack_require__(32);
+var _premiumIconsList = __webpack_require__(30);
 
 var _premiumIconsList2 = _interopRequireDefault(_premiumIconsList);
 
@@ -32284,15 +32270,15 @@ var _premiumBorder = __webpack_require__(6);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumBackground = __webpack_require__(104);
+var _premiumBackground = __webpack_require__(102);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
-var _premiumMediaUpload = __webpack_require__(13);
+var _premiumMediaUpload = __webpack_require__(14);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
-var _premiumResponsiveTabs = __webpack_require__(8);
+var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
@@ -32308,11 +32294,11 @@ var _radioControl = __webpack_require__(10);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
-var _PremiumResponsivePadding = __webpack_require__(11);
+var _PremiumResponsivePadding = __webpack_require__(12);
 
 var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
 
-var _PremiumResponsiveMargin = __webpack_require__(24);
+var _PremiumResponsiveMargin = __webpack_require__(31);
 
 var _PremiumResponsiveMargin2 = _interopRequireDefault(_PremiumResponsiveMargin);
 
@@ -33710,7 +33696,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 265 */
+/* 264 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33920,7 +33906,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 266 */
+/* 265 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36511,7 +36497,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 267 */
+/* 266 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36916,7 +36902,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 268 */
+/* 267 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36926,7 +36912,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _settings = __webpack_require__(1);
 
-var _premiumMediaUpload = __webpack_require__(13);
+var _premiumMediaUpload = __webpack_require__(14);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
@@ -36934,7 +36920,7 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _premiumResponsiveTabs = __webpack_require__(8);
+var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
@@ -38040,7 +38026,7 @@ registerBlockType("premium/maps", {
 });
 
 /***/ }),
-/* 269 */
+/* 268 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38052,19 +38038,19 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(270);
+var _edit = __webpack_require__(269);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(271);
+var _save = __webpack_require__(270);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(272);
+var _deprecated = __webpack_require__(271);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(273);
+var _attributes = __webpack_require__(272);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -38088,7 +38074,7 @@ registerBlockType("premium/pricing-table", {
 });
 
 /***/ }),
-/* 270 */
+/* 269 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38110,7 +38096,7 @@ var _premiumBorder = __webpack_require__(6);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumTypo = __webpack_require__(7);
+var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
@@ -38118,7 +38104,7 @@ var _PremiumShadow = __webpack_require__(5);
 
 var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
-var _premiumResponsiveTabs = __webpack_require__(8);
+var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
@@ -39926,7 +39912,7 @@ exports.default = withSelect(function (select) {
 })(PremiumPricingTable);
 
 /***/ }),
-/* 271 */
+/* 270 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40245,7 +40231,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 272 */
+/* 271 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42613,7 +42599,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 273 */
+/* 272 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42918,7 +42904,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 274 */
+/* 273 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42926,15 +42912,15 @@ exports.default = attributes;
 
 var _settings = __webpack_require__(1);
 
-var _edit = __webpack_require__(275);
+var _edit = __webpack_require__(274);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(276);
+var _save = __webpack_require__(275);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(277);
+var _deprecated = __webpack_require__(276);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -42942,7 +42928,7 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(278);
+var _attributes = __webpack_require__(277);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -42974,7 +42960,7 @@ registerBlockType("premium/container", {
 });
 
 /***/ }),
-/* 275 */
+/* 274 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42998,7 +42984,7 @@ var _PremiumShadow = __webpack_require__(5);
 
 var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
-var _premiumResponsiveTabs = __webpack_require__(8);
+var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
@@ -43010,11 +42996,11 @@ var _PremiumBackgroundControl = __webpack_require__(22);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
-var _PremiumResponsivePadding = __webpack_require__(11);
+var _PremiumResponsivePadding = __webpack_require__(12);
 
 var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
 
-var _PremiumResponsiveMargin = __webpack_require__(24);
+var _PremiumResponsiveMargin = __webpack_require__(31);
 
 var _PremiumResponsiveMargin2 = _interopRequireDefault(_PremiumResponsiveMargin);
 
@@ -43529,7 +43515,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 276 */
+/* 275 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43630,7 +43616,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 277 */
+/* 276 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44400,7 +44386,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 278 */
+/* 277 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44581,7 +44567,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 279 */
+/* 278 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44589,15 +44575,15 @@ exports.default = attributes;
 
 var _settings = __webpack_require__(1);
 
-var _edit = __webpack_require__(280);
+var _edit = __webpack_require__(279);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(281);
+var _save = __webpack_require__(280);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(282);
+var _deprecated = __webpack_require__(281);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -44605,7 +44591,7 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(283);
+var _attributes = __webpack_require__(282);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -44630,7 +44616,7 @@ registerBlockType("premium/testimonial", {
 });
 
 /***/ }),
-/* 280 */
+/* 279 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44648,11 +44634,11 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _premiumTypo = __webpack_require__(7);
+var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _defaultImage = __webpack_require__(41);
+var _defaultImage = __webpack_require__(66);
 
 var _defaultImage2 = _interopRequireDefault(_defaultImage);
 
@@ -44664,15 +44650,15 @@ var _lowerQuote = __webpack_require__(68);
 
 var _lowerQuote2 = _interopRequireDefault(_lowerQuote);
 
-var _PremiumResponsivePadding = __webpack_require__(11);
+var _PremiumResponsivePadding = __webpack_require__(12);
 
 var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
 
-var _premiumMediaUpload = __webpack_require__(13);
+var _premiumMediaUpload = __webpack_require__(14);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
-var _premiumResponsiveTabs = __webpack_require__(8);
+var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
@@ -44692,7 +44678,7 @@ var _radioControl = __webpack_require__(10);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
-var _responsiveRangeControl = __webpack_require__(19);
+var _responsiveRangeControl = __webpack_require__(20);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
@@ -45487,7 +45473,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 281 */
+/* 280 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45501,7 +45487,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _defaultImage = __webpack_require__(41);
+var _defaultImage = __webpack_require__(66);
 
 var _defaultImage2 = _interopRequireDefault(_defaultImage);
 
@@ -45693,7 +45679,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 282 */
+/* 281 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45703,7 +45689,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _defaultImage = __webpack_require__(41);
+var _defaultImage = __webpack_require__(66);
 
 var _defaultImage2 = _interopRequireDefault(_defaultImage);
 
@@ -47097,7 +47083,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 283 */
+/* 282 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47293,7 +47279,7 @@ var testimonialsAttrs = {
 exports.default = testimonialsAttrs;
 
 /***/ }),
-/* 284 */
+/* 283 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47311,7 +47297,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _premiumTypo = __webpack_require__(7);
+var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
@@ -47319,19 +47305,19 @@ var _premiumBorder = __webpack_require__(6);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumFilters = __webpack_require__(31);
+var _premiumFilters = __webpack_require__(39);
 
 var _premiumFilters2 = _interopRequireDefault(_premiumFilters);
 
-var _index = __webpack_require__(52);
+var _index = __webpack_require__(51);
 
 var _index2 = _interopRequireDefault(_index);
 
-var _premiumMediaUpload = __webpack_require__(13);
+var _premiumMediaUpload = __webpack_require__(14);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
-var _premiumResponsiveTabs = __webpack_require__(8);
+var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
@@ -48269,7 +48255,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 285 */
+/* 284 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -48283,7 +48269,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _index = __webpack_require__(52);
+var _index = __webpack_require__(51);
 
 var _index2 = _interopRequireDefault(_index);
 
@@ -48449,7 +48435,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 286 */
+/* 285 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -48459,11 +48445,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _attributes = __webpack_require__(111);
+var _attributes = __webpack_require__(109);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
-var _index = __webpack_require__(52);
+var _index = __webpack_require__(51);
 
 var _index2 = _interopRequireDefault(_index);
 
@@ -49895,7 +49881,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 287 */
+/* 286 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -49903,15 +49889,15 @@ exports.default = deprecatedContent;
 
 var _settings = __webpack_require__(1);
 
-var _save = __webpack_require__(288);
+var _save = __webpack_require__(287);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _edit = __webpack_require__(289);
+var _edit = __webpack_require__(288);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _deprecated = __webpack_require__(309);
+var _deprecated = __webpack_require__(308);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -49919,7 +49905,7 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(310);
+var _attributes = __webpack_require__(309);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -49942,7 +49928,7 @@ registerBlockType("premium/fancy-text", {
 });
 
 /***/ }),
-/* 288 */
+/* 287 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50146,7 +50132,7 @@ function save(props) {
 }
 
 /***/ }),
-/* 289 */
+/* 288 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50164,15 +50150,15 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _premiumTypo = __webpack_require__(7);
+var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _typed = __webpack_require__(290);
+var _typed = __webpack_require__(289);
 
 var _typed2 = _interopRequireDefault(_typed);
 
-var _premiumResponsiveTabs = __webpack_require__(8);
+var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
@@ -50184,7 +50170,7 @@ var _radioControl = __webpack_require__(10);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
-var _reactSortableHoc = __webpack_require__(69);
+var _reactSortableHoc = __webpack_require__(110);
 
 var _PremiumShadow = __webpack_require__(5);
 
@@ -51001,7 +50987,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 290 */
+/* 289 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52110,10 +52096,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 	);
 });
 ;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(50)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(49)(module)))
 
 /***/ }),
-/* 291 */
+/* 290 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52142,7 +52128,7 @@ function _extends() {
 }
 
 /***/ }),
-/* 292 */
+/* 291 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52153,19 +52139,19 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _slicedToArray;
 
-var _arrayWithHoles = __webpack_require__(293);
+var _arrayWithHoles = __webpack_require__(292);
 
 var _arrayWithHoles2 = _interopRequireDefault(_arrayWithHoles);
 
-var _iterableToArrayLimit = __webpack_require__(294);
+var _iterableToArrayLimit = __webpack_require__(293);
 
 var _iterableToArrayLimit2 = _interopRequireDefault(_iterableToArrayLimit);
 
-var _unsupportedIterableToArray = __webpack_require__(112);
+var _unsupportedIterableToArray = __webpack_require__(111);
 
 var _unsupportedIterableToArray2 = _interopRequireDefault(_unsupportedIterableToArray);
 
-var _nonIterableRest = __webpack_require__(295);
+var _nonIterableRest = __webpack_require__(294);
 
 var _nonIterableRest2 = _interopRequireDefault(_nonIterableRest);
 
@@ -52176,7 +52162,7 @@ function _slicedToArray(arr, i) {
 }
 
 /***/ }),
-/* 293 */
+/* 292 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52191,7 +52177,7 @@ function _arrayWithHoles(arr) {
 }
 
 /***/ }),
-/* 294 */
+/* 293 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52232,7 +52218,7 @@ function _iterableToArrayLimit(arr, i) {
 }
 
 /***/ }),
-/* 295 */
+/* 294 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52247,7 +52233,7 @@ function _nonIterableRest() {
 }
 
 /***/ }),
-/* 296 */
+/* 295 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52258,7 +52244,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _objectSpread;
 
-var _defineProperty = __webpack_require__(114);
+var _defineProperty = __webpack_require__(113);
 
 var _defineProperty2 = _interopRequireDefault(_defineProperty);
 
@@ -52284,7 +52270,7 @@ function _objectSpread(target) {
 }
 
 /***/ }),
-/* 297 */
+/* 296 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52301,7 +52287,7 @@ function _classCallCheck(instance, Constructor) {
 }
 
 /***/ }),
-/* 298 */
+/* 297 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52331,7 +52317,7 @@ function _createClass(Constructor, protoProps, staticProps) {
 }
 
 /***/ }),
-/* 299 */
+/* 298 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52342,11 +52328,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _possibleConstructorReturn;
 
-var _typeof2 = __webpack_require__(300);
+var _typeof2 = __webpack_require__(299);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
-var _assertThisInitialized = __webpack_require__(115);
+var _assertThisInitialized = __webpack_require__(114);
 
 var _assertThisInitialized2 = _interopRequireDefault(_assertThisInitialized);
 
@@ -52363,7 +52349,7 @@ function _possibleConstructorReturn(self, call) {
 }
 
 /***/ }),
-/* 300 */
+/* 299 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52387,7 +52373,7 @@ function _typeof(obj) {
 }
 
 /***/ }),
-/* 301 */
+/* 300 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52405,7 +52391,7 @@ function _getPrototypeOf(o) {
 }
 
 /***/ }),
-/* 302 */
+/* 301 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52416,7 +52402,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _inherits;
 
-var _setPrototypeOf = __webpack_require__(303);
+var _setPrototypeOf = __webpack_require__(302);
 
 var _setPrototypeOf2 = _interopRequireDefault(_setPrototypeOf);
 
@@ -52441,7 +52427,7 @@ function _inherits(subClass, superClass) {
 }
 
 /***/ }),
-/* 303 */
+/* 302 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52461,7 +52447,7 @@ function _setPrototypeOf(o, p) {
 }
 
 /***/ }),
-/* 304 */
+/* 303 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52511,7 +52497,41 @@ var invariant = function invariant(condition, format, a, b, c, d, e, f) {
 };
 
 module.exports = invariant;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
+
+/***/ }),
+/* 304 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = _toConsumableArray;
+
+var _arrayWithoutHoles = __webpack_require__(305);
+
+var _arrayWithoutHoles2 = _interopRequireDefault(_arrayWithoutHoles);
+
+var _iterableToArray = __webpack_require__(306);
+
+var _iterableToArray2 = _interopRequireDefault(_iterableToArray);
+
+var _unsupportedIterableToArray = __webpack_require__(111);
+
+var _unsupportedIterableToArray2 = _interopRequireDefault(_unsupportedIterableToArray);
+
+var _nonIterableSpread = __webpack_require__(307);
+
+var _nonIterableSpread2 = _interopRequireDefault(_nonIterableSpread);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) {
+  return (0, _arrayWithoutHoles2.default)(arr) || (0, _iterableToArray2.default)(arr) || (0, _unsupportedIterableToArray2.default)(arr) || (0, _nonIterableSpread2.default)();
+}
 
 /***/ }),
 /* 305 */
@@ -52523,43 +52543,9 @@ module.exports = invariant;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = _toConsumableArray;
-
-var _arrayWithoutHoles = __webpack_require__(306);
-
-var _arrayWithoutHoles2 = _interopRequireDefault(_arrayWithoutHoles);
-
-var _iterableToArray = __webpack_require__(307);
-
-var _iterableToArray2 = _interopRequireDefault(_iterableToArray);
-
-var _unsupportedIterableToArray = __webpack_require__(112);
-
-var _unsupportedIterableToArray2 = _interopRequireDefault(_unsupportedIterableToArray);
-
-var _nonIterableSpread = __webpack_require__(308);
-
-var _nonIterableSpread2 = _interopRequireDefault(_nonIterableSpread);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _toConsumableArray(arr) {
-  return (0, _arrayWithoutHoles2.default)(arr) || (0, _iterableToArray2.default)(arr) || (0, _unsupportedIterableToArray2.default)(arr) || (0, _nonIterableSpread2.default)();
-}
-
-/***/ }),
-/* 306 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
 exports.default = _arrayWithoutHoles;
 
-var _arrayLikeToArray = __webpack_require__(113);
+var _arrayLikeToArray = __webpack_require__(112);
 
 var _arrayLikeToArray2 = _interopRequireDefault(_arrayLikeToArray);
 
@@ -52570,7 +52556,7 @@ function _arrayWithoutHoles(arr) {
 }
 
 /***/ }),
-/* 307 */
+/* 306 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52585,7 +52571,7 @@ function _iterableToArray(iter) {
 }
 
 /***/ }),
-/* 308 */
+/* 307 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52600,7 +52586,7 @@ function _nonIterableSpread() {
 }
 
 /***/ }),
-/* 309 */
+/* 308 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53139,7 +53125,7 @@ var deprecated = [{
 exports.default = deprecated;
 
 /***/ }),
-/* 310 */
+/* 309 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53284,7 +53270,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 311 */
+/* 310 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53294,21 +53280,21 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(312);
+var _edit = __webpack_require__(311);
 
 var _edit2 = _interopRequireDefault(_edit);
 
 var _settings = __webpack_require__(1);
 
-var _save = __webpack_require__(365);
+var _save = __webpack_require__(364);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(366);
+var _deprecated = __webpack_require__(365);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(367);
+var _attributes = __webpack_require__(366);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -53333,7 +53319,7 @@ registerBlockType("premium/lottie", {
 });
 
 /***/ }),
-/* 312 */
+/* 311 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53351,11 +53337,11 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _reactLottieWithSegments = __webpack_require__(70);
+var _reactLottieWithSegments = __webpack_require__(69);
 
 var _reactLottieWithSegments2 = _interopRequireDefault(_reactLottieWithSegments);
 
-var _premiumFilters = __webpack_require__(31);
+var _premiumFilters = __webpack_require__(39);
 
 var _premiumFilters2 = _interopRequireDefault(_premiumFilters);
 
@@ -53363,11 +53349,11 @@ var _premiumBorder = __webpack_require__(6);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _PremiumResponsivePadding = __webpack_require__(11);
+var _PremiumResponsivePadding = __webpack_require__(12);
 
 var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
 
-var _premiumResponsiveTabs = __webpack_require__(8);
+var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
@@ -53383,11 +53369,11 @@ var _radioControl = __webpack_require__(10);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
-var _responsiveRangeControl = __webpack_require__(19);
+var _responsiveRangeControl = __webpack_require__(20);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
-var _container = __webpack_require__(364);
+var _container = __webpack_require__(363);
 
 var _container2 = _interopRequireDefault(_container);
 
@@ -54093,13 +54079,27 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
+/* 312 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = { "default": __webpack_require__(313), __esModule: true };
+
+/***/ }),
 /* 313 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(314), __esModule: true };
+var core = __webpack_require__(13);
+var $JSON = core.JSON || (core.JSON = { stringify: JSON.stringify });
+module.exports = function stringify(it) {
+  // eslint-disable-line no-unused-vars
+  return $JSON.stringify.apply($JSON, arguments);
+};
 
 /***/ }),
 /* 314 */
@@ -54108,23 +54108,9 @@ module.exports = { "default": __webpack_require__(314), __esModule: true };
 "use strict";
 
 
-var core = __webpack_require__(14);
-var $JSON = core.JSON || (core.JSON = { stringify: JSON.stringify });
-module.exports = function stringify(it) {
-  // eslint-disable-line no-unused-vars
-  return $JSON.stringify.apply($JSON, arguments);
-};
-
-/***/ }),
-/* 315 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
 exports.__esModule = true;
 
-var _assign = __webpack_require__(316);
+var _assign = __webpack_require__(315);
 
 var _assign2 = _interopRequireDefault(_assign);
 
@@ -54147,13 +54133,23 @@ exports.default = _assign2.default || function (target) {
 };
 
 /***/ }),
+/* 315 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = { "default": __webpack_require__(316), __esModule: true };
+
+/***/ }),
 /* 316 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(317), __esModule: true };
+__webpack_require__(317);
+module.exports = __webpack_require__(13).Object.assign;
 
 /***/ }),
 /* 317 */
@@ -54162,23 +54158,13 @@ module.exports = { "default": __webpack_require__(317), __esModule: true };
 "use strict";
 
 
-__webpack_require__(318);
-module.exports = __webpack_require__(14).Object.assign;
+// 19.1.3.1 Object.assign(target, source)
+var $export = __webpack_require__(23);
+
+$export($export.S + $export.F, 'Object', { assign: __webpack_require__(319) });
 
 /***/ }),
 /* 318 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// 19.1.3.1 Object.assign(target, source)
-var $export = __webpack_require__(25);
-
-$export($export.S + $export.F, 'Object', { assign: __webpack_require__(320) });
-
-/***/ }),
-/* 319 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54190,22 +54176,22 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 320 */
+/* 319 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 // 19.1.2.1 Object.assign(target, source, ...)
 
-var getKeys = __webpack_require__(54);
-var gOPS = __webpack_require__(77);
-var pIE = __webpack_require__(57);
-var toObject = __webpack_require__(78);
-var IObject = __webpack_require__(120);
+var getKeys = __webpack_require__(53);
+var gOPS = __webpack_require__(76);
+var pIE = __webpack_require__(56);
+var toObject = __webpack_require__(77);
+var IObject = __webpack_require__(119);
 var $assign = Object.assign;
 
 // should work with symbols and should have deterministic property order (V8 bug)
-module.exports = !$assign || __webpack_require__(35)(function () {
+module.exports = !$assign || __webpack_require__(34)(function () {
   var A = {};
   var B = {};
   // eslint-disable-next-line no-undef
@@ -54236,7 +54222,7 @@ module.exports = !$assign || __webpack_require__(35)(function () {
 } : $assign;
 
 /***/ }),
-/* 321 */
+/* 320 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54244,9 +54230,9 @@ module.exports = !$assign || __webpack_require__(35)(function () {
 
 // false -> Array#indexOf
 // true  -> Array#includes
-var toIObject = __webpack_require__(36);
-var toLength = __webpack_require__(322);
-var toAbsoluteIndex = __webpack_require__(323);
+var toIObject = __webpack_require__(35);
+var toLength = __webpack_require__(321);
+var toAbsoluteIndex = __webpack_require__(322);
 module.exports = function (IS_INCLUDES) {
   return function ($this, el, fromIndex) {
     var O = toIObject($this);
@@ -54269,17 +54255,32 @@ module.exports = function (IS_INCLUDES) {
 };
 
 /***/ }),
-/* 322 */
+/* 321 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 // 7.1.15 ToLength
-var toInteger = __webpack_require__(73);
+var toInteger = __webpack_require__(72);
 var min = Math.min;
 module.exports = function (it) {
   return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
+};
+
+/***/ }),
+/* 322 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var toInteger = __webpack_require__(72);
+var max = Math.max;
+var min = Math.min;
+module.exports = function (index, length) {
+  index = toInteger(index);
+  return index < 0 ? max(index + length, 0) : min(index, length);
 };
 
 /***/ }),
@@ -54289,13 +54290,7 @@ module.exports = function (it) {
 "use strict";
 
 
-var toInteger = __webpack_require__(73);
-var max = Math.max;
-var min = Math.min;
-module.exports = function (index, length) {
-  index = toInteger(index);
-  return index < 0 ? max(index + length, 0) : min(index, length);
-};
+module.exports = { "default": __webpack_require__(324), __esModule: true };
 
 /***/ }),
 /* 324 */
@@ -54304,7 +54299,8 @@ module.exports = function (index, length) {
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(325), __esModule: true };
+__webpack_require__(325);
+module.exports = __webpack_require__(13).Object.getPrototypeOf;
 
 /***/ }),
 /* 325 */
@@ -54313,8 +54309,15 @@ module.exports = { "default": __webpack_require__(325), __esModule: true };
 "use strict";
 
 
-__webpack_require__(326);
-module.exports = __webpack_require__(14).Object.getPrototypeOf;
+// 19.1.2.9 Object.getPrototypeOf(O)
+var toObject = __webpack_require__(77);
+var $getPrototypeOf = __webpack_require__(121);
+
+__webpack_require__(326)('getPrototypeOf', function () {
+  return function getPrototypeOf(it) {
+    return $getPrototypeOf(toObject(it));
+  };
+});
 
 /***/ }),
 /* 326 */
@@ -54323,27 +54326,10 @@ module.exports = __webpack_require__(14).Object.getPrototypeOf;
 "use strict";
 
 
-// 19.1.2.9 Object.getPrototypeOf(O)
-var toObject = __webpack_require__(78);
-var $getPrototypeOf = __webpack_require__(122);
-
-__webpack_require__(327)('getPrototypeOf', function () {
-  return function getPrototypeOf(it) {
-    return $getPrototypeOf(toObject(it));
-  };
-});
-
-/***/ }),
-/* 327 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
 // most Object methods by ES6 should accept primitives
-var $export = __webpack_require__(25);
-var core = __webpack_require__(14);
-var fails = __webpack_require__(35);
+var $export = __webpack_require__(23);
+var core = __webpack_require__(13);
+var fails = __webpack_require__(34);
 module.exports = function (KEY, exec) {
   var fn = (core.Object || {})[KEY] || Object[KEY];
   var exp = {};
@@ -54354,7 +54340,7 @@ module.exports = function (KEY, exec) {
 };
 
 /***/ }),
-/* 328 */
+/* 327 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54369,7 +54355,7 @@ exports.default = function (instance, Constructor) {
 };
 
 /***/ }),
-/* 329 */
+/* 328 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54377,7 +54363,7 @@ exports.default = function (instance, Constructor) {
 
 exports.__esModule = true;
 
-var _defineProperty = __webpack_require__(330);
+var _defineProperty = __webpack_require__(329);
 
 var _defineProperty2 = _interopRequireDefault(_defineProperty);
 
@@ -54404,13 +54390,26 @@ exports.default = function () {
 }();
 
 /***/ }),
+/* 329 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = { "default": __webpack_require__(330), __esModule: true };
+
+/***/ }),
 /* 330 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(331), __esModule: true };
+__webpack_require__(331);
+var $Object = __webpack_require__(13).Object;
+module.exports = function defineProperty(it, key, desc) {
+  return $Object.defineProperty(it, key, desc);
+};
 
 /***/ }),
 /* 331 */
@@ -54419,11 +54418,9 @@ module.exports = { "default": __webpack_require__(331), __esModule: true };
 "use strict";
 
 
-__webpack_require__(332);
-var $Object = __webpack_require__(14).Object;
-module.exports = function defineProperty(it, key, desc) {
-  return $Object.defineProperty(it, key, desc);
-};
+var $export = __webpack_require__(23);
+// 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
+$export($export.S + $export.F * !__webpack_require__(25), 'Object', { defineProperty: __webpack_require__(24).f });
 
 /***/ }),
 /* 332 */
@@ -54432,20 +54429,9 @@ module.exports = function defineProperty(it, key, desc) {
 "use strict";
 
 
-var $export = __webpack_require__(25);
-// 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
-$export($export.S + $export.F * !__webpack_require__(27), 'Object', { defineProperty: __webpack_require__(26).f });
-
-/***/ }),
-/* 333 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
 exports.__esModule = true;
 
-var _typeof2 = __webpack_require__(123);
+var _typeof2 = __webpack_require__(122);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
@@ -54462,13 +54448,24 @@ exports.default = function (self, call) {
 };
 
 /***/ }),
+/* 333 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = { "default": __webpack_require__(334), __esModule: true };
+
+/***/ }),
 /* 334 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(335), __esModule: true };
+__webpack_require__(335);
+__webpack_require__(340);
+module.exports = __webpack_require__(81).f('iterator');
 
 /***/ }),
 /* 335 */
@@ -54477,21 +54474,10 @@ module.exports = { "default": __webpack_require__(335), __esModule: true };
 "use strict";
 
 
-__webpack_require__(336);
-__webpack_require__(341);
-module.exports = __webpack_require__(82).f('iterator');
-
-/***/ }),
-/* 336 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var $at = __webpack_require__(337)(true);
+var $at = __webpack_require__(336)(true);
 
 // 21.1.3.27 String.prototype[@@iterator]()
-__webpack_require__(124)(String, 'String', function (iterated) {
+__webpack_require__(123)(String, 'String', function (iterated) {
   this._t = String(iterated); // target
   this._i = 0; // next index
   // 21.1.5.2.1 %StringIteratorPrototype%.next()
@@ -54506,14 +54492,14 @@ __webpack_require__(124)(String, 'String', function (iterated) {
 });
 
 /***/ }),
-/* 337 */
+/* 336 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var toInteger = __webpack_require__(73);
-var defined = __webpack_require__(72);
+var toInteger = __webpack_require__(72);
+var defined = __webpack_require__(71);
 // true  -> String#at
 // false -> String#codePointAt
 module.exports = function (TO_STRING) {
@@ -54529,19 +54515,19 @@ module.exports = function (TO_STRING) {
 };
 
 /***/ }),
-/* 338 */
+/* 337 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var create = __webpack_require__(80);
-var descriptor = __webpack_require__(53);
-var setToStringTag = __webpack_require__(81);
+var create = __webpack_require__(79);
+var descriptor = __webpack_require__(52);
+var setToStringTag = __webpack_require__(80);
 var IteratorPrototype = {};
 
 // 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
-__webpack_require__(33)(IteratorPrototype, __webpack_require__(37)('iterator'), function () {
+__webpack_require__(32)(IteratorPrototype, __webpack_require__(36)('iterator'), function () {
   return this;
 });
 
@@ -54551,17 +54537,17 @@ module.exports = function (Constructor, NAME, next) {
 };
 
 /***/ }),
-/* 339 */
+/* 338 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var dP = __webpack_require__(26);
-var anObject = __webpack_require__(42);
-var getKeys = __webpack_require__(54);
+var dP = __webpack_require__(24);
+var anObject = __webpack_require__(41);
+var getKeys = __webpack_require__(53);
 
-module.exports = __webpack_require__(27) ? Object.defineProperties : function defineProperties(O, Properties) {
+module.exports = __webpack_require__(25) ? Object.defineProperties : function defineProperties(O, Properties) {
   anObject(O);
   var keys = getKeys(Properties);
   var length = keys.length;
@@ -54573,27 +54559,27 @@ module.exports = __webpack_require__(27) ? Object.defineProperties : function de
 };
 
 /***/ }),
+/* 339 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var document = __webpack_require__(19).document;
+module.exports = document && document.documentElement;
+
+/***/ }),
 /* 340 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var document = __webpack_require__(20).document;
-module.exports = document && document.documentElement;
-
-/***/ }),
-/* 341 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-__webpack_require__(342);
-var global = __webpack_require__(20);
-var hide = __webpack_require__(33);
-var Iterators = __webpack_require__(79);
-var TO_STRING_TAG = __webpack_require__(37)('toStringTag');
+__webpack_require__(341);
+var global = __webpack_require__(19);
+var hide = __webpack_require__(32);
+var Iterators = __webpack_require__(78);
+var TO_STRING_TAG = __webpack_require__(36)('toStringTag');
 
 var DOMIterables = ('CSSRuleList,CSSStyleDeclaration,CSSValueList,ClientRectList,DOMRectList,DOMStringList,' + 'DOMTokenList,DataTransferItemList,FileList,HTMLAllCollection,HTMLCollection,HTMLFormElement,HTMLSelectElement,' + 'MediaList,MimeTypeArray,NamedNodeMap,NodeList,PaintRequestList,Plugin,PluginArray,SVGLengthList,SVGNumberList,' + 'SVGPathSegList,SVGPointList,SVGStringList,SVGTransformList,SourceBufferList,StyleSheetList,TextTrackCueList,' + 'TextTrackList,TouchList').split(',');
 
@@ -54606,22 +54592,22 @@ for (var i = 0; i < DOMIterables.length; i++) {
 }
 
 /***/ }),
-/* 342 */
+/* 341 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var addToUnscopables = __webpack_require__(343);
-var step = __webpack_require__(344);
-var Iterators = __webpack_require__(79);
-var toIObject = __webpack_require__(36);
+var addToUnscopables = __webpack_require__(342);
+var step = __webpack_require__(343);
+var Iterators = __webpack_require__(78);
+var toIObject = __webpack_require__(35);
 
 // 22.1.3.4 Array.prototype.entries()
 // 22.1.3.13 Array.prototype.keys()
 // 22.1.3.29 Array.prototype.values()
 // 22.1.3.30 Array.prototype[@@iterator]()
-module.exports = __webpack_require__(124)(Array, 'Array', function (iterated, kind) {
+module.exports = __webpack_require__(123)(Array, 'Array', function (iterated, kind) {
   this._t = toIObject(iterated); // target
   this._i = 0; // next index
   this._k = kind; // kind
@@ -54647,7 +54633,7 @@ addToUnscopables('values');
 addToUnscopables('entries');
 
 /***/ }),
-/* 343 */
+/* 342 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54656,7 +54642,7 @@ addToUnscopables('entries');
 module.exports = function () {/* empty */};
 
 /***/ }),
-/* 344 */
+/* 343 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54667,29 +54653,29 @@ module.exports = function (done, value) {
 };
 
 /***/ }),
+/* 344 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = { "default": __webpack_require__(345), __esModule: true };
+
+/***/ }),
 /* 345 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(346), __esModule: true };
+__webpack_require__(346);
+__webpack_require__(351);
+__webpack_require__(352);
+__webpack_require__(353);
+module.exports = __webpack_require__(13).Symbol;
 
 /***/ }),
 /* 346 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-__webpack_require__(347);
-__webpack_require__(352);
-__webpack_require__(353);
-__webpack_require__(354);
-module.exports = __webpack_require__(14).Symbol;
-
-/***/ }),
-/* 347 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54698,31 +54684,31 @@ module.exports = __webpack_require__(14).Symbol;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var global = __webpack_require__(20);
-var has = __webpack_require__(28);
-var DESCRIPTORS = __webpack_require__(27);
-var $export = __webpack_require__(25);
-var redefine = __webpack_require__(125);
-var META = __webpack_require__(348).KEY;
-var $fails = __webpack_require__(35);
-var shared = __webpack_require__(75);
-var setToStringTag = __webpack_require__(81);
-var uid = __webpack_require__(56);
-var wks = __webpack_require__(37);
-var wksExt = __webpack_require__(82);
-var wksDefine = __webpack_require__(83);
-var enumKeys = __webpack_require__(349);
-var isArray = __webpack_require__(350);
-var anObject = __webpack_require__(42);
-var isObject = __webpack_require__(34);
-var toIObject = __webpack_require__(36);
-var toPrimitive = __webpack_require__(71);
-var createDesc = __webpack_require__(53);
-var _create = __webpack_require__(80);
-var gOPNExt = __webpack_require__(351);
-var $GOPD = __webpack_require__(127);
-var $DP = __webpack_require__(26);
-var $keys = __webpack_require__(54);
+var global = __webpack_require__(19);
+var has = __webpack_require__(26);
+var DESCRIPTORS = __webpack_require__(25);
+var $export = __webpack_require__(23);
+var redefine = __webpack_require__(124);
+var META = __webpack_require__(347).KEY;
+var $fails = __webpack_require__(34);
+var shared = __webpack_require__(74);
+var setToStringTag = __webpack_require__(80);
+var uid = __webpack_require__(55);
+var wks = __webpack_require__(36);
+var wksExt = __webpack_require__(81);
+var wksDefine = __webpack_require__(82);
+var enumKeys = __webpack_require__(348);
+var isArray = __webpack_require__(349);
+var anObject = __webpack_require__(41);
+var isObject = __webpack_require__(33);
+var toIObject = __webpack_require__(35);
+var toPrimitive = __webpack_require__(70);
+var createDesc = __webpack_require__(52);
+var _create = __webpack_require__(79);
+var gOPNExt = __webpack_require__(350);
+var $GOPD = __webpack_require__(126);
+var $DP = __webpack_require__(24);
+var $keys = __webpack_require__(53);
 var gOPD = $GOPD.f;
 var dP = $DP.f;
 var gOPN = gOPNExt.f;
@@ -54848,11 +54834,11 @@ if (!USE_NATIVE) {
 
   $GOPD.f = $getOwnPropertyDescriptor;
   $DP.f = $defineProperty;
-  __webpack_require__(126).f = gOPNExt.f = $getOwnPropertyNames;
-  __webpack_require__(57).f = $propertyIsEnumerable;
-  __webpack_require__(77).f = $getOwnPropertySymbols;
+  __webpack_require__(125).f = gOPNExt.f = $getOwnPropertyNames;
+  __webpack_require__(56).f = $propertyIsEnumerable;
+  __webpack_require__(76).f = $getOwnPropertySymbols;
 
-  if (DESCRIPTORS && !__webpack_require__(55)) {
+  if (DESCRIPTORS && !__webpack_require__(54)) {
     redefine(ObjectProto, 'propertyIsEnumerable', $propertyIsEnumerable, true);
   }
 
@@ -54930,7 +54916,7 @@ $JSON && $export($export.S + $export.F * (!USE_NATIVE || $fails(function () {
 });
 
 // 19.4.3.4 Symbol.prototype[@@toPrimitive](hint)
-$Symbol[PROTOTYPE][TO_PRIMITIVE] || __webpack_require__(33)($Symbol[PROTOTYPE], TO_PRIMITIVE, $Symbol[PROTOTYPE].valueOf);
+$Symbol[PROTOTYPE][TO_PRIMITIVE] || __webpack_require__(32)($Symbol[PROTOTYPE], TO_PRIMITIVE, $Symbol[PROTOTYPE].valueOf);
 // 19.4.3.5 Symbol.prototype[@@toStringTag]
 setToStringTag($Symbol, 'Symbol');
 // 20.2.1.9 Math[@@toStringTag]
@@ -54939,7 +54925,7 @@ setToStringTag(Math, 'Math', true);
 setToStringTag(global.JSON, 'JSON', true);
 
 /***/ }),
-/* 348 */
+/* 347 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54947,15 +54933,15 @@ setToStringTag(global.JSON, 'JSON', true);
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var META = __webpack_require__(56)('meta');
-var isObject = __webpack_require__(34);
-var has = __webpack_require__(28);
-var setDesc = __webpack_require__(26).f;
+var META = __webpack_require__(55)('meta');
+var isObject = __webpack_require__(33);
+var has = __webpack_require__(26);
+var setDesc = __webpack_require__(24).f;
 var id = 0;
 var isExtensible = Object.isExtensible || function () {
   return true;
 };
-var FREEZE = !__webpack_require__(35)(function () {
+var FREEZE = !__webpack_require__(34)(function () {
   return isExtensible(Object.preventExtensions({}));
 });
 var setMeta = function setMeta(it) {
@@ -55002,16 +54988,16 @@ var meta = module.exports = {
 };
 
 /***/ }),
-/* 349 */
+/* 348 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 // all enumerable object keys, includes symbols
-var getKeys = __webpack_require__(54);
-var gOPS = __webpack_require__(77);
-var pIE = __webpack_require__(57);
+var getKeys = __webpack_require__(53);
+var gOPS = __webpack_require__(76);
+var pIE = __webpack_require__(56);
 module.exports = function (it) {
   var result = getKeys(it);
   var getSymbols = gOPS.f;
@@ -55027,20 +55013,20 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 350 */
+/* 349 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 // 7.2.2 IsArray(argument)
-var cof = __webpack_require__(121);
+var cof = __webpack_require__(120);
 module.exports = Array.isArray || function isArray(arg) {
   return cof(arg) == 'Array';
 };
 
 /***/ }),
-/* 351 */
+/* 350 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55049,8 +55035,8 @@ module.exports = Array.isArray || function isArray(arg) {
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 // fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
-var toIObject = __webpack_require__(36);
-var gOPN = __webpack_require__(126).f;
+var toIObject = __webpack_require__(35);
+var gOPN = __webpack_require__(125).f;
 var toString = {}.toString;
 
 var windowNames = (typeof window === 'undefined' ? 'undefined' : _typeof(window)) == 'object' && window && Object.getOwnPropertyNames ? Object.getOwnPropertyNames(window) : [];
@@ -55068,11 +55054,20 @@ module.exports.f = function getOwnPropertyNames(it) {
 };
 
 /***/ }),
+/* 351 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/***/ }),
 /* 352 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
+
+__webpack_require__(82)('asyncIterator');
 
 /***/ }),
 /* 353 */
@@ -55081,7 +55076,7 @@ module.exports.f = function getOwnPropertyNames(it) {
 "use strict";
 
 
-__webpack_require__(83)('asyncIterator');
+__webpack_require__(82)('observable');
 
 /***/ }),
 /* 354 */
@@ -55090,26 +55085,17 @@ __webpack_require__(83)('asyncIterator');
 "use strict";
 
 
-__webpack_require__(83)('observable');
-
-/***/ }),
-/* 355 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
 exports.__esModule = true;
 
-var _setPrototypeOf = __webpack_require__(356);
+var _setPrototypeOf = __webpack_require__(355);
 
 var _setPrototypeOf2 = _interopRequireDefault(_setPrototypeOf);
 
-var _create = __webpack_require__(360);
+var _create = __webpack_require__(359);
 
 var _create2 = _interopRequireDefault(_create);
 
-var _typeof2 = __webpack_require__(123);
+var _typeof2 = __webpack_require__(122);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
@@ -55134,13 +55120,23 @@ exports.default = function (subClass, superClass) {
 };
 
 /***/ }),
+/* 355 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = { "default": __webpack_require__(356), __esModule: true };
+
+/***/ }),
 /* 356 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(357), __esModule: true };
+__webpack_require__(357);
+module.exports = __webpack_require__(13).Object.setPrototypeOf;
 
 /***/ }),
 /* 357 */
@@ -55149,8 +55145,9 @@ module.exports = { "default": __webpack_require__(357), __esModule: true };
 "use strict";
 
 
-__webpack_require__(358);
-module.exports = __webpack_require__(14).Object.setPrototypeOf;
+// 19.1.3.19 Object.setPrototypeOf(O, proto)
+var $export = __webpack_require__(23);
+$export($export.S, 'Object', { setPrototypeOf: __webpack_require__(358).set });
 
 /***/ }),
 /* 358 */
@@ -55159,21 +55156,10 @@ module.exports = __webpack_require__(14).Object.setPrototypeOf;
 "use strict";
 
 
-// 19.1.3.19 Object.setPrototypeOf(O, proto)
-var $export = __webpack_require__(25);
-$export($export.S, 'Object', { setPrototypeOf: __webpack_require__(359).set });
-
-/***/ }),
-/* 359 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
 // Works with __proto__ only. Old v8 can't work with null proto objects.
 /* eslint-disable no-proto */
-var isObject = __webpack_require__(34);
-var anObject = __webpack_require__(42);
+var isObject = __webpack_require__(33);
+var anObject = __webpack_require__(41);
 var check = function check(O, proto) {
   anObject(O);
   if (!isObject(proto) && proto !== null) throw TypeError(proto + ": can't set as prototype!");
@@ -55182,7 +55168,7 @@ module.exports = {
   set: Object.setPrototypeOf || ('__proto__' in {} ? // eslint-disable-line
   function (test, buggy, set) {
     try {
-      set = __webpack_require__(116)(Function.call, __webpack_require__(127).f(Object.prototype, '__proto__').set, 2);
+      set = __webpack_require__(115)(Function.call, __webpack_require__(126).f(Object.prototype, '__proto__').set, 2);
       set(test, []);
       buggy = !(test instanceof Array);
     } catch (e) {
@@ -55198,13 +55184,26 @@ module.exports = {
 };
 
 /***/ }),
+/* 359 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = { "default": __webpack_require__(360), __esModule: true };
+
+/***/ }),
 /* 360 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(361), __esModule: true };
+__webpack_require__(361);
+var $Object = __webpack_require__(13).Object;
+module.exports = function create(P, D) {
+  return $Object.create(P, D);
+};
 
 /***/ }),
 /* 361 */
@@ -55213,25 +55212,12 @@ module.exports = { "default": __webpack_require__(361), __esModule: true };
 "use strict";
 
 
-__webpack_require__(362);
-var $Object = __webpack_require__(14).Object;
-module.exports = function create(P, D) {
-  return $Object.create(P, D);
-};
+var $export = __webpack_require__(23);
+// 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
+$export($export.S, 'Object', { create: __webpack_require__(79) });
 
 /***/ }),
 /* 362 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var $export = __webpack_require__(25);
-// 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-$export($export.S, 'Object', { create: __webpack_require__(80) });
-
-/***/ }),
-/* 363 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55822,7 +55808,7 @@ return decodeURIComponent(pair[1]);}}return null;}var standalone='__[STANDALONE]
 renderer=getQueryVariable('renderer');}var readyStateCheckInterval=setInterval(checkReady,100);return lottie;});
 
 /***/ }),
-/* 364 */
+/* 363 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55958,7 +55944,7 @@ var BlockPlaceholder = function BlockPlaceholder(_ref) {
 exports.default = BlockPlaceholder;
 
 /***/ }),
-/* 365 */
+/* 364 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56027,7 +56013,7 @@ function save(props) {
 }
 
 /***/ }),
-/* 366 */
+/* 365 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56356,7 +56342,7 @@ var deprecated = [{
 exports.default = deprecated;
 
 /***/ }),
-/* 367 */
+/* 366 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56526,7 +56512,7 @@ var LottieAttr = {
 exports.default = LottieAttr;
 
 /***/ }),
-/* 368 */
+/* 367 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56538,15 +56524,15 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(369);
+var _edit = __webpack_require__(368);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _attributes = __webpack_require__(371);
+var _attributes = __webpack_require__(370);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
-var _save = __webpack_require__(372);
+var _save = __webpack_require__(371);
 
 var _save2 = _interopRequireDefault(_save);
 
@@ -56570,7 +56556,7 @@ registerBlockType("premium/modal", {
 });
 
 /***/ }),
-/* 369 */
+/* 368 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56588,11 +56574,11 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _reactLottieWithSegments = __webpack_require__(70);
+var _reactLottieWithSegments = __webpack_require__(69);
 
 var _reactLottieWithSegments2 = _interopRequireDefault(_reactLottieWithSegments);
 
-var _inspector = __webpack_require__(370);
+var _inspector = __webpack_require__(369);
 
 var _inspector2 = _interopRequireDefault(_inspector);
 
@@ -57155,7 +57141,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 370 */
+/* 369 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57167,11 +57153,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _reactFonticonpicker = __webpack_require__(23);
+var _reactFonticonpicker = __webpack_require__(29);
 
 var _reactFonticonpicker2 = _interopRequireDefault(_reactFonticonpicker);
 
-var _premiumIconsList = __webpack_require__(32);
+var _premiumIconsList = __webpack_require__(30);
 
 var _premiumIconsList2 = _interopRequireDefault(_premiumIconsList);
 
@@ -57183,7 +57169,7 @@ var _premiumBorder = __webpack_require__(6);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _PremiumResponsivePadding = __webpack_require__(11);
+var _PremiumResponsivePadding = __webpack_require__(12);
 
 var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
 
@@ -57195,15 +57181,15 @@ var _radioControl = __webpack_require__(10);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
-var _premiumTypo = __webpack_require__(7);
+var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumMediaUpload = __webpack_require__(13);
+var _premiumMediaUpload = __webpack_require__(14);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
-var _PremiumResponsiveMargin = __webpack_require__(24);
+var _PremiumResponsiveMargin = __webpack_require__(31);
 
 var _PremiumResponsiveMargin2 = _interopRequireDefault(_PremiumResponsiveMargin);
 
@@ -57211,7 +57197,7 @@ var _PremiumShadow = __webpack_require__(5);
 
 var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
-var _responsiveRangeControl = __webpack_require__(19);
+var _responsiveRangeControl = __webpack_require__(20);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
@@ -57219,7 +57205,7 @@ var _PremiumBackgroundControl = __webpack_require__(22);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
-var _premiumFilters = __webpack_require__(31);
+var _premiumFilters = __webpack_require__(39);
 
 var _premiumFilters2 = _interopRequireDefault(_premiumFilters);
 
@@ -58848,7 +58834,7 @@ var Inspector = function Inspector(_ref) {
 exports.default = Inspector;
 
 /***/ }),
-/* 371 */
+/* 370 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59313,7 +59299,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 372 */
+/* 371 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59587,7 +59573,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 373 */
+/* 372 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59595,11 +59581,11 @@ exports.default = save;
 
 var _settings = __webpack_require__(1);
 
-var _save = __webpack_require__(374);
+var _save = __webpack_require__(373);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _edit = __webpack_require__(375);
+var _edit = __webpack_require__(374);
 
 var _edit2 = _interopRequireDefault(_edit);
 
@@ -59607,7 +59593,7 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(376);
+var _attributes = __webpack_require__(375);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -59627,7 +59613,7 @@ registerBlockType("premium/image-separator", {
 });
 
 /***/ }),
-/* 374 */
+/* 373 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59711,7 +59697,7 @@ function save(props) {
 }
 
 /***/ }),
-/* 375 */
+/* 374 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59729,15 +59715,15 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _premiumIconsList = __webpack_require__(32);
+var _premiumIconsList = __webpack_require__(30);
 
 var _premiumIconsList2 = _interopRequireDefault(_premiumIconsList);
 
-var _reactFonticonpicker = __webpack_require__(23);
+var _reactFonticonpicker = __webpack_require__(29);
 
 var _reactFonticonpicker2 = _interopRequireDefault(_reactFonticonpicker);
 
-var _responsiveRangeControl = __webpack_require__(19);
+var _responsiveRangeControl = __webpack_require__(20);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
@@ -59745,11 +59731,11 @@ var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _premiumFilters = __webpack_require__(31);
+var _premiumFilters = __webpack_require__(39);
 
 var _premiumFilters2 = _interopRequireDefault(_premiumFilters);
 
-var _premiumMediaUpload = __webpack_require__(13);
+var _premiumMediaUpload = __webpack_require__(14);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
@@ -60429,7 +60415,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 376 */
+/* 375 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60589,7 +60575,7 @@ var imageSeparatorAttrs = {
 exports.default = imageSeparatorAttrs;
 
 /***/ }),
-/* 377 */
+/* 376 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60597,11 +60583,11 @@ exports.default = imageSeparatorAttrs;
 
 var _settings = __webpack_require__(1);
 
-var _save = __webpack_require__(378);
+var _save = __webpack_require__(377);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _edit = __webpack_require__(379);
+var _edit = __webpack_require__(378);
 
 var _edit2 = _interopRequireDefault(_edit);
 
@@ -60609,7 +60595,7 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(381);
+var _attributes = __webpack_require__(380);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -60632,7 +60618,7 @@ registerBlockType("premium/bullet-list", {
 });
 
 /***/ }),
-/* 378 */
+/* 377 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60891,7 +60877,7 @@ function save(props) {
 }
 
 /***/ }),
-/* 379 */
+/* 378 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60909,15 +60895,15 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _reactFonticonpicker = __webpack_require__(23);
+var _reactFonticonpicker = __webpack_require__(29);
 
 var _reactFonticonpicker2 = _interopRequireDefault(_reactFonticonpicker);
 
-var _premiumIconsList = __webpack_require__(32);
+var _premiumIconsList = __webpack_require__(30);
 
 var _premiumIconsList2 = _interopRequireDefault(_premiumIconsList);
 
-var _premiumTypo = __webpack_require__(7);
+var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
@@ -60929,25 +60915,25 @@ var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _PremiumResponsiveMargin = __webpack_require__(24);
+var _PremiumResponsiveMargin = __webpack_require__(31);
 
 var _PremiumResponsiveMargin2 = _interopRequireDefault(_PremiumResponsiveMargin);
 
-var _PremiumResponsivePadding = __webpack_require__(11);
+var _PremiumResponsivePadding = __webpack_require__(12);
 
 var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
 
-var _premiumMediaUpload = __webpack_require__(13);
+var _premiumMediaUpload = __webpack_require__(14);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
-var _responsiveRangeControl = __webpack_require__(19);
+var _responsiveRangeControl = __webpack_require__(20);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
-var _reactSortableHoc = __webpack_require__(69);
+var _reactSortableHoc = __webpack_require__(110);
 
-var _align = __webpack_require__(380);
+var _align = __webpack_require__(379);
 
 var _align2 = _interopRequireDefault(_align);
 
@@ -62665,7 +62651,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 380 */
+/* 379 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62717,7 +62703,7 @@ icons.vertical_bottom = React.createElement(
 exports.default = icons;
 
 /***/ }),
-/* 381 */
+/* 380 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63130,7 +63116,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 382 */
+/* 381 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63138,11 +63124,11 @@ exports.default = attributes;
 
 var _settings = __webpack_require__(1);
 
-var _save = __webpack_require__(383);
+var _save = __webpack_require__(382);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _edit = __webpack_require__(384);
+var _edit = __webpack_require__(383);
 
 var _edit2 = _interopRequireDefault(_edit);
 
@@ -63150,2929 +63136,7 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(402);
-
-var _attributes2 = _interopRequireDefault(_attributes);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var __ = wp.i18n.__;
-var registerBlockType = wp.blocks.registerBlockType;
-
-
-registerBlockType("premium/person", {
-    title: __("Team Members"),
-    icon: React.createElement(_icons2.default, { icon: "" }),
-    category: "premium-blocks",
-    attributes: _attributes2.default,
-    supports: {
-        inserter: _settings.person
-    },
-    example: {},
-    edit: _edit2.default,
-    save: _save2.default
-});
-
-/***/ }),
-/* 383 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _classnames = __webpack_require__(0);
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
-var _defaultImage = __webpack_require__(41);
-
-var _defaultImage2 = _interopRequireDefault(_defaultImage);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var save = function save(props) {
-    var className = props.className;
-    var _props$attributes = props.attributes,
-        id = _props$attributes.id,
-        personAlign = _props$attributes.personAlign,
-        imgBorder = _props$attributes.imgBorder,
-        imgBorderColor = _props$attributes.imgBorderColor,
-        imgSize = _props$attributes.imgSize,
-        nameV = _props$attributes.nameV,
-        titleStyles = _props$attributes.titleStyles,
-        socialIconStyles = _props$attributes.socialIconStyles,
-        socialIconBorderWidth = _props$attributes.socialIconBorderWidth,
-        socialIconBorderTop = _props$attributes.socialIconBorderTop,
-        socialIconBorderRight = _props$attributes.socialIconBorderRight,
-        socialIconBorderBottom = _props$attributes.socialIconBorderBottom,
-        socialIconBorderLeft = _props$attributes.socialIconBorderLeft,
-        socialIconBorderUpdated = _props$attributes.socialIconBorderUpdated,
-        nameStyles = _props$attributes.nameStyles,
-        descStyles = _props$attributes.descStyles,
-        titleV = _props$attributes.titleV,
-        descV = _props$attributes.descV,
-        socialIconHoverColor = _props$attributes.socialIconHoverColor,
-        effect = _props$attributes.effect,
-        effectDir = _props$attributes.effectDir,
-        multiPersonChecked = _props$attributes.multiPersonChecked,
-        borderHoverColor = _props$attributes.borderHoverColor,
-        hoverEffectPerson = _props$attributes.hoverEffectPerson,
-        effectPersonStyle = _props$attributes.effectPersonStyle,
-        multiPersonContent = _props$attributes.multiPersonContent,
-        rowPerson = _props$attributes.rowPerson,
-        change = _props$attributes.change,
-        blur = _props$attributes.blur,
-        bright = _props$attributes.bright,
-        contrast = _props$attributes.contrast,
-        saturation = _props$attributes.saturation,
-        hue = _props$attributes.hue,
-        contentColor = _props$attributes.contentColor,
-        bottomInfo = _props$attributes.bottomInfo;
-
-
-    var mainClasses = (0, _classnames2.default)(className, 'premium-person');
-
-    var socialIconfn = function socialIconfn(v) {
-        return React.createElement(
-            'ul',
-            { className: 'premium-person__social-List' },
-            v.map(function (value) {
-                return React.createElement(
-                    'li',
-                    null,
-                    React.createElement(
-                        'a',
-                        { className: 'premium-person__socialIcon__link_content ' + (socialIconStyles[0].defaultIconColor ? value.label : ""), href: '' + value.value, style: {
-                                borderStyle: socialIconStyles[0].borderTypeIcon,
-                                borderWidth: socialIconBorderUpdated ? socialIconBorderTop + 'px ' + socialIconBorderRight + 'px ' + socialIconBorderBottom + 'px ' + socialIconBorderLeft + 'px' : socialIconBorderWidth + "px",
-                                borderRadius: socialIconStyles[0].borderRadiusIcon || 100 + "px",
-                                borderColor: socialIconStyles[0].borderColorIcon,
-                                background: socialIconStyles[0].socialIconBackgroundColor
-                            } },
-                        React.createElement('i', { className: 'premium-person__socialIcon ' + (value.label == "youtube" ? "fa fa-youtube-play" : 'fa fa-' + value.label) + ' premium-person__' + socialIconHoverColor,
-                            style: {
-                                color: socialIconStyles[0].socialIconColor
-                            }
-                        })
-                    )
-                );
-            })
-        );
-    };
-    var content = function content() {
-        return React.createElement(
-            'div',
-            { className: 'premium-person-content ' + id + ' ' + (multiPersonChecked > 1 ? 'premium-person__' + rowPerson : "")
-            },
-            ' ',
-            multiPersonContent.map(function (value) {
-                return React.createElement(
-                    'div',
-                    { key: value.id, className: 'premium-person__inner premium-persson__min premium-person__' + effectPersonStyle + ' premium-person__' + hoverEffectPerson },
-                    React.createElement(
-                        'div',
-                        { className: 'premium-person__img__container' },
-                        React.createElement(
-                            'div',
-                            {
-                                className: 'premium-person__img_wrap'
-                            },
-                            value.personImgUrl && React.createElement('img', {
-                                className: 'premium-person__img',
-                                src: '' + value.personImgUrl,
-                                alt: 'Person',
-                                style: {
-                                    borderWidth: imgBorder + "px",
-                                    borderColor: imgBorderColor,
-                                    width: imgSize + "px",
-                                    height: imgSize + "px",
-                                    filter: '' + (change ? 'brightness( ' + bright + '% ) contrast( ' + contrast + '% ) saturate( ' + saturation + '% ) blur( ' + blur + 'px ) hue-rotate( ' + hue + 'deg )' : "")
-                                }
-                            }),
-                            !value.personImgUrl && React.createElement(_defaultImage2.default, { className: className })
-                        ),
-                        effectPersonStyle === 'effect2' ? React.createElement(
-                            'div',
-                            { className: 'premium-person__socialEffect2' },
-                            value.socialIcon && socialIconfn(value.items)
-                        ) : ""
-                    ),
-                    React.createElement(
-                        'div',
-                        {
-                            className: 'premium-person__info',
-                            style: {
-                                background: contentColor ? contentColor : "#f2f2f2",
-                                bottom: effectPersonStyle === 'effect1' ? bottomInfo + "px" : ""
-                            }
-                        },
-                        React.createElement(
-                            'div',
-                            { className: 'premium-person__name_wrap' },
-                            value.name && React.createElement(
-                                'span',
-                                {
-                                    className: 'premium-person__name',
-                                    style: {
-                                        color: nameStyles[0].nameColor,
-                                        fontWeight: nameStyles[0].nameWeight,
-                                        alignSelf: nameV,
-                                        letterSpacing: nameStyles[0].nameLetter + "px",
-                                        lineHeight: nameStyles[0].nameLine + "px",
-                                        fontStyle: nameStyles[0].nameStyle,
-                                        textTransform: nameStyles[0].nameUpper ? "uppercase" : "none",
-                                        textShadow: nameStyles[0].nameshadowHorizontal + 'px ' + nameStyles[0].nameshadowVertical + 'px ' + nameStyles[0].nameshadowBlur + 'px ' + nameStyles[0].nameshadowColor
-                                    }
-                                },
-                                value.name
-                            )
-                        ),
-                        React.createElement(
-                            'div',
-                            { className: 'premium-person__title_wrap' },
-                            value.title && React.createElement(
-                                'span',
-                                {
-                                    className: 'premium-person__title',
-                                    style: {
-                                        color: titleStyles[0].titleColor,
-                                        fontWeight: titleStyles[0].titleWeight,
-                                        alignSelf: titleV,
-                                        letterSpacing: titleStyles[0].titleLetter + "px",
-                                        lineHeight: titleStyles[0].titleLine + "px",
-                                        fontStyle: titleStyles[0].titleStyle,
-                                        textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
-                                        textShadow: titleStyles[0].titleshadowHorizontal + 'px ' + titleStyles[0].titleshadowVertical + 'px ' + titleStyles[0].titleshadowBlur + 'px ' + titleStyles[0].titleshadowColor
-                                    }
-                                },
-                                value.title
-                            )
-                        ),
-                        React.createElement(
-                            'div',
-                            { className: 'premium-person__desc_wrap' },
-                            value.desc && React.createElement(
-                                'span',
-                                {
-                                    className: 'premium-person__desc',
-                                    style: {
-                                        color: descStyles[0].descColor,
-                                        fontWeight: descStyles[0].descWeight,
-                                        alignSelf: descV,
-                                        letterSpacing: descStyles[0].descLetter + "px",
-                                        lineHeight: descStyles[0].descLine + "px",
-                                        fontStyle: descStyles[0].descStyle,
-                                        textTransform: descStyles[0].descUpper ? "uppercase" : "none",
-                                        textShadow: descStyles[0].descshadowHorizontal + 'px ' + descStyles[0].descshadowVertical + 'px ' + descStyles[0].descshadowBlur + 'px ' + descStyles[0].descshadowColor
-                                    }
-                                },
-                                value.desc
-                            )
-                        ),
-                        effectPersonStyle == 'effect1' ? React.createElement(
-                            'div',
-                            null,
-                            value.socialIcon && socialIconfn(value.items)
-                        ) : ""
-                    )
-                );
-            })
-        );
-    };
-
-    return React.createElement(
-        'div',
-        {
-            id: 'premium-person-' + id,
-            className: mainClasses + ' premium-person__' + effect + ' premium-person__' + effectDir,
-            style: { textAlign: personAlign }
-        },
-        React.createElement('style', {
-            dangerouslySetInnerHTML: {
-                __html: ['#premium-person-' + id + ' .premium-person:hover {', 'border-color: ' + borderHoverColor + ' !important;', "}", '#premium-person-' + id + ' .premium-person__social-List li:hover i{', 'color: ' + socialIconStyles[0].socialIconHoverColor + ' !important;', '-webkit-transition: all .2s ease-in-out;', 'transition: all .2s ease-in-out;', "}"].join("\n")
-            }
-        }),
-        content()
-    );
-};
-
-exports.default = save;
-
-/***/ }),
-/* 384 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _classnames = __webpack_require__(0);
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
-var _premiumTypo = __webpack_require__(7);
-
-var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
-
-var _premiumBorder = __webpack_require__(6);
-
-var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
-
-var _PremiumShadow = __webpack_require__(5);
-
-var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
-
-var _defaultImage = __webpack_require__(41);
-
-var _defaultImage2 = _interopRequireDefault(_defaultImage);
-
-var _premiumFilters = __webpack_require__(31);
-
-var _premiumFilters2 = _interopRequireDefault(_premiumFilters);
-
-var _ColorComponent = __webpack_require__(3);
-
-var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
-
-var _reactFonticonpicker = __webpack_require__(23);
-
-var _reactFonticonpicker2 = _interopRequireDefault(_reactFonticonpicker);
-
-var _singleRangeControl = __webpack_require__(2);
-
-var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
-
-var _responsiveRangeControl = __webpack_require__(19);
-
-var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
-
-var _PremiumResponsiveMargin = __webpack_require__(24);
-
-var _PremiumResponsiveMargin2 = _interopRequireDefault(_PremiumResponsiveMargin);
-
-var _PremiumResponsivePadding = __webpack_require__(11);
-
-var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
-
-var _premiumMediaUpload = __webpack_require__(13);
-
-var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
-
-var _reactSortableHoc = __webpack_require__(69);
-
-var _times = __webpack_require__(385);
-
-var _times2 = _interopRequireDefault(_times);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var withSelect = wp.data.withSelect;
-var __ = wp.i18n.__;
-var Component = wp.element.Component;
-var _wp$components = wp.components,
-    PanelBody = _wp$components.PanelBody,
-    SelectControl = _wp$components.SelectControl,
-    ToggleControl = _wp$components.ToggleControl,
-    TextControl = _wp$components.TextControl,
-    TextareaControl = _wp$components.TextareaControl;
-var _wp$editor = wp.editor,
-    InspectorControls = _wp$editor.InspectorControls,
-    AlignmentToolbar = _wp$editor.AlignmentToolbar,
-    BlockControls = _wp$editor.BlockControls;
-
-
-var SortableItem = (0, _reactSortableHoc.SortableElement)(function (_ref) {
-    var onRemove = _ref.onRemove,
-        saveLink = _ref.saveLink,
-        changeLinkValue = _ref.changeLinkValue,
-        value = _ref.value,
-        addLink = _ref.addLink,
-        personIndex = _ref.personIndex;
-    return React.createElement(
-        "li",
-        { tabIndex: 0 },
-        React.createElement(
-            "span",
-            { className: "premium-person__socialIcon__container" },
-            React.createElement("span", { className: "premium-person__socialIcon__dragHandle" }),
-            React.createElement(
-                "div",
-                { className: "premium-person__socialIcon__content", onClick: function onClick() {
-                        return addLink(value);
-                    } },
-                React.createElement("span", { className: "premium-person__socialIcon__iconvalue fa fa-" + value.label }),
-                value.label
-            ),
-            React.createElement("button", { className: "premium-person__socialIcon__trashicon fa fa-trash", onClick: function onClick() {
-                    return onRemove(value.label);
-                } })
-        ),
-        value.link && React.createElement(
-            "div",
-            { className: "premium-person__socialIcon__link" },
-            React.createElement(TextControl, {
-                placeholder: __("Enter " + value.label + " link"),
-                value: value.changeinput,
-                onChange: function onChange(val) {
-                    return changeLinkValue(val, value, personIndex);
-                },
-                className: "premium-person__socialIcon__textInput"
-            }),
-            React.createElement(
-                "button",
-                { className: "premium-person__socialIcon__saveButton", onClick: function onClick() {
-                        return saveLink(value.changeinput, value, personIndex);
-                    } },
-                "Save"
-            )
-        )
-    );
-});
-
-var SortableList = (0, _reactSortableHoc.SortableContainer)(function (_ref2) {
-    var items = _ref2.items,
-        onRemove = _ref2.onRemove,
-        saveLink = _ref2.saveLink,
-        changeLinkValue = _ref2.changeLinkValue,
-        addLink = _ref2.addLink,
-        personIndex = _ref2.personIndex;
-
-    return React.createElement(
-        "ul",
-        null,
-        items.map(function (value, index) {
-            return React.createElement(SortableItem, { key: "item-" + value, index: index, newIndex: index, personIndex: personIndex, value: value, onRemove: onRemove, saveLink: saveLink, addLink: addLink, changeLinkValue: changeLinkValue });
-        })
-    );
-});
-
-var edit = function (_Component) {
-    _inherits(edit, _Component);
-
-    function edit() {
-        _classCallCheck(this, edit);
-
-        return _possibleConstructorReturn(this, (edit.__proto__ || Object.getPrototypeOf(edit)).apply(this, arguments));
-    }
-
-    _createClass(edit, [{
-        key: "componentDidMount",
-        value: function componentDidMount() {
-            // Assigning id in the attribute.
-            this.props.setAttributes({ id: this.props.clientId });
-            this.props.setAttributes({ classMigrate: true });
-            this.getPreviewSize = this.getPreviewSize.bind(this);
-        }
-    }, {
-        key: "getPreviewSize",
-        value: function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
-            if (device === 'Mobile') {
-                if (undefined !== mobileSize && '' !== mobileSize) {
-                    return mobileSize;
-                } else if (undefined !== tabletSize && '' !== tabletSize) {
-                    return tabletSize;
-                }
-            } else if (device === 'Tablet') {
-                if (undefined !== tabletSize && '' !== tabletSize) {
-                    return tabletSize;
-                }
-            }
-            return desktopSize;
-        }
-    }, {
-        key: "save",
-        value: function save(value, index) {
-            var _props = this.props,
-                attributes = _props.attributes,
-                setAttributes = _props.setAttributes;
-            var multiPersonContent = attributes.multiPersonContent;
-
-            var newItems = multiPersonContent.map(function (item, thisIndex) {
-                if (index === thisIndex) {
-                    item = _extends({}, item, value);
-                }
-                return item;
-            });
-            setAttributes({
-                multiPersonContent: newItems
-            });
-        }
-    }, {
-        key: "render",
-        value: function render() {
-            var _this2 = this;
-
-            var _props2 = this.props,
-                isSelected = _props2.isSelected,
-                setAttributes = _props2.setAttributes,
-                className = _props2.className,
-                blockId = _props2.clientId;
-            var _props$attributes = this.props.attributes,
-                id = _props$attributes.id,
-                personSize = _props$attributes.personSize,
-                personAlign = _props$attributes.personAlign,
-                imgSize = _props$attributes.imgSize,
-                imgBorder = _props$attributes.imgBorder,
-                imgBorderColor = _props$attributes.imgBorderColor,
-                nameStyles = _props$attributes.nameStyles,
-                titleStyles = _props$attributes.titleStyles,
-                descStyles = _props$attributes.descStyles,
-                socialIconStyles = _props$attributes.socialIconStyles,
-                socialIconBorderWidth = _props$attributes.socialIconBorderWidth,
-                socialIconBorderTop = _props$attributes.socialIconBorderTop,
-                socialIconBorderRight = _props$attributes.socialIconBorderRight,
-                socialIconBorderBottom = _props$attributes.socialIconBorderBottom,
-                socialIconBorderLeft = _props$attributes.socialIconBorderLeft,
-                socialIconBorderUpdated = _props$attributes.socialIconBorderUpdated,
-                socialIconMarginT = _props$attributes.socialIconMarginT,
-                socialIconMarginR = _props$attributes.socialIconMarginR,
-                socialIconMarginB = _props$attributes.socialIconMarginB,
-                socialIconMarginL = _props$attributes.socialIconMarginL,
-                socialIconMarginTTablet = _props$attributes.socialIconMarginTTablet,
-                socialIconMarginRTablet = _props$attributes.socialIconMarginRTablet,
-                socialIconMarginBTablet = _props$attributes.socialIconMarginBTablet,
-                socialIconMarginLTablet = _props$attributes.socialIconMarginLTablet,
-                socialIconMarginTMobile = _props$attributes.socialIconMarginTMobile,
-                socialIconMarginRMobile = _props$attributes.socialIconMarginRMobile,
-                socialIconMarginBMobile = _props$attributes.socialIconMarginBMobile,
-                socialIconMarginLMobile = _props$attributes.socialIconMarginLMobile,
-                socialIconPaddingTop = _props$attributes.socialIconPaddingTop,
-                socialIconPaddingRight = _props$attributes.socialIconPaddingRight,
-                socialIconPaddingBottom = _props$attributes.socialIconPaddingBottom,
-                socialIconPaddingLeft = _props$attributes.socialIconPaddingLeft,
-                socialIconPaddingTTablet = _props$attributes.socialIconPaddingTTablet,
-                socialIconPaddingRTablet = _props$attributes.socialIconPaddingRTablet,
-                socialIconPaddingBTablet = _props$attributes.socialIconPaddingBTablet,
-                socialIconPaddingLTablet = _props$attributes.socialIconPaddingLTablet,
-                socialIconPaddingTMobile = _props$attributes.socialIconPaddingTMobile,
-                socialIconPaddingRMobile = _props$attributes.socialIconPaddingRMobile,
-                socialIconPaddingBMobile = _props$attributes.socialIconPaddingBMobile,
-                socialIconPaddingLMobile = _props$attributes.socialIconPaddingLMobile,
-                nameV = _props$attributes.nameV,
-                titleV = _props$attributes.titleV,
-                descV = _props$attributes.descV,
-                contentColor = _props$attributes.contentColor,
-                effect = _props$attributes.effect,
-                effectDir = _props$attributes.effectDir,
-                multiPersonChecked = _props$attributes.multiPersonChecked,
-                borderHoverColor = _props$attributes.borderHoverColor,
-                hoverEffectPerson = _props$attributes.hoverEffectPerson,
-                effectPersonStyle = _props$attributes.effectPersonStyle,
-                rowPerson = _props$attributes.rowPerson,
-                multiPersonContent = _props$attributes.multiPersonContent,
-                change = _props$attributes.change,
-                blur = _props$attributes.blur,
-                bright = _props$attributes.bright,
-                contrast = _props$attributes.contrast,
-                saturation = _props$attributes.saturation,
-                hue = _props$attributes.hue,
-                bottomInfo = _props$attributes.bottomInfo;
-
-
-            var HOVER = [{
-                value: "none",
-                label: __("None", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "zoomin",
-                label: __("Zoom In", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "zoomout",
-                label: __("Zoom Out", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "scale",
-                label: __("Scale", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "gray",
-                label: __("Gray Scale", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "blur",
-                label: __("Blur", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "bright",
-                label: __("Bright", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "sepia",
-                label: __("Sepia", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "translate",
-                label: __("Translate", 'premium-blocks-for-gutenberg')
-            }];
-
-            var EFFECTS = [{
-                value: "effect1",
-                label: __("Style 1", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "effect2",
-                label: __("Style 2", 'premium-blocks-for-gutenberg')
-            }];
-            var ROWS = [{
-                value: "column1",
-                label: __("1 Column", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "column2",
-                label: __("2 Columns", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "column3",
-                label: __("3 Columns", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "column4",
-                label: __("4 Columns", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "column5",
-                label: __("5 Columns", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "column6",
-                label: __("6 Columns", 'premium-blocks-for-gutenberg')
-            }];
-
-            var iconsList = [{
-                value: "fa fa-facebook-f",
-                label: __("facebook", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "fa fa-twitter",
-                label: __("twitter", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "fa fa-instagram",
-                label: __("instagram", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "fa fa-youtube",
-                label: __("youtube", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "fa fa-linkedin",
-                label: __("linkedin", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "fa fa-flickr",
-                label: __("flickr", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "fa fa-github",
-                label: __("github", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "fa fa-google-plus",
-                label: __("google-plus", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "fa fa-pinterest",
-                label: __("pinterest", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "fa fa-reddit",
-                label: __("reddit", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "fa fa-skype",
-                label: __("skype", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "fa fa-stack-overflow",
-                label: __("stack-overflow", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "fa fa-whatsapp",
-                label: __("whatsapp", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "fa fa-vimeo",
-                label: __("vimeo", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "fa fa-tumblr",
-                label: __("tumblr", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "fa fa-dribbble",
-                label: __("dribbble", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "fa fa-quora",
-                label: __("quora", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "fa fa-foursquare",
-                label: __("foursquare", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "fa fa-wordpress",
-                label: __("wordpress", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "fa fa-stumbleupon",
-                label: __("stumbleupon", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "fa fa-yahoo",
-                label: __("yahoo", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "fa fa-soundcloud",
-                label: __("soundcloud", 'premium-blocks-for-gutenberg')
-            }];
-
-            setAttributes({ id: blockId });
-
-            var mainClasses = (0, _classnames2.default)(className, "premium-person");
-
-            var NameSize = this.getPreviewSize(this.props.deviceType, nameStyles[0].namefontSize, nameStyles[0].namefontSizeTablet, nameStyles[0].namefontSizeMobile);
-
-            var TitleSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titlefontSizeTablet, titleStyles[0].titlefontSizeMobile);
-
-            var DescSize = this.getPreviewSize(this.props.deviceType, descStyles[0].descSize, descStyles[0].descfontSizeTablet, descStyles[0].descfontSizeMobile);
-
-            var SocialIconSize = this.getPreviewSize(this.props.deviceType, socialIconStyles[0].socialIconSize, socialIconStyles[0].socialIconfontSizeTablet, socialIconStyles[0].socialIconfontSizeMobile);
-
-            var SocialIconMarginTop = this.getPreviewSize(this.props.deviceType, socialIconMarginT, socialIconMarginTTablet, socialIconMarginTMobile);
-            var SocialIconMarginRight = this.getPreviewSize(this.props.deviceType, socialIconMarginR, socialIconMarginRTablet, socialIconMarginRMobile);
-            var SocialIconMarginBottom = this.getPreviewSize(this.props.deviceType, socialIconMarginB, socialIconMarginBTablet, socialIconMarginBMobile);
-            var SocialIconMarginLeft = this.getPreviewSize(this.props.deviceType, socialIconMarginL, socialIconMarginLTablet, socialIconMarginLMobile);
-            var SocialIconPaddingTop = this.getPreviewSize(this.props.deviceType, socialIconPaddingTop, socialIconPaddingTTablet, socialIconPaddingTMobile);
-            var SocialIconPaddingRight = this.getPreviewSize(this.props.deviceType, socialIconPaddingRight, socialIconPaddingRTablet, socialIconPaddingRMobile);
-            var SocialIconPaddingBottom = this.getPreviewSize(this.props.deviceType, socialIconPaddingBottom, socialIconPaddingBTablet, socialIconPaddingBMobile);
-            var SocialIconPaddingLeft = this.getPreviewSize(this.props.deviceType, socialIconPaddingLeft, socialIconPaddingLTablet, socialIconPaddingLMobile);
-
-            var shouldCancelStart = function shouldCancelStart(e) {
-                // Prevent sorting from being triggered if target is input or button
-                if (['div', 'button', 'input'].indexOf(e.target.tagName.toLowerCase()) !== -1) {
-                    return true; // Return true to cancel sorting
-                }
-            };
-
-            var saveNameStyles = function saveNameStyles(value) {
-                var newUpdate = nameStyles.map(function (item, index) {
-                    if (0 === index) {
-                        item = _extends({}, item, value);
-                    }
-                    return item;
-                });
-                setAttributes({
-                    nameStyles: newUpdate
-                });
-            };
-
-            var saveTitleStyles = function saveTitleStyles(value) {
-                var newUpdate = titleStyles.map(function (item, index) {
-                    if (0 === index) {
-                        item = _extends({}, item, value);
-                    }
-                    return item;
-                });
-                setAttributes({
-                    titleStyles: newUpdate
-                });
-            };
-
-            var saveDescStyles = function saveDescStyles(value) {
-                var newUpdate = descStyles.map(function (item, index) {
-                    if (0 === index) {
-                        item = _extends({}, item, value);
-                    }
-                    return item;
-                });
-                setAttributes({
-                    descStyles: newUpdate
-                });
-            };
-
-            var saveSocialIconStyles = function saveSocialIconStyles(value) {
-                var newUpdate = socialIconStyles.map(function (item, index) {
-                    if (0 === index) {
-                        item = _extends({}, item, value);
-                    }
-                    return item;
-                });
-                setAttributes({
-                    socialIconStyles: newUpdate
-                });
-            };
-
-            var _addLink = function _addLink(value, i) {
-                value.link = !value.link;
-                value.link == false ? value.changeinput = value.value : value.changeinput;
-                var array = multiPersonContent.map(function (cont) {
-                    return cont;
-                }).filter(function (f) {
-                    return f.id == i + 1;
-                });
-                var newData = array[0].items.filter(function (b) {
-                    return b;
-                });
-                array[0].items = newData;
-                multiPersonContent[i] = array[0];
-                setAttributes(multiPersonContent[i] = array[0]);
-            };
-
-            var _saveLink = function _saveLink(value, i, personIndex) {
-                i.value = value;
-                var arrayItem = multiPersonContent.map(function (cont) {
-                    return cont;
-                }).filter(function (f) {
-                    return f.id == personIndex + 1;
-                });
-                i.link = false;
-                var newData = arrayItem[0].items.filter(function (b) {
-                    return b;
-                });
-                arrayItem[0].items = newData;
-                multiPersonContent[personIndex] = arrayItem[0];
-                setAttributes(multiPersonContent[personIndex] = arrayItem[0]);
-            };
-
-            var _changeLinkValue = function _changeLinkValue(value, i, personIndex) {
-                if (personIndex + 1 > 0) {
-                    i.changeinput = value;
-                    var arrayItem = multiPersonContent.map(function (cont) {
-                        return cont;
-                    }).filter(function (f) {
-                        return f.id == personIndex + 1;
-                    });
-                    var newData = arrayItem[0].items.filter(function (b) {
-                        return b;
-                    });
-                    arrayItem[0].items = newData;
-                    multiPersonContent[personIndex] = arrayItem[0];
-                    setAttributes(multiPersonContent[personIndex] = arrayItem[0]);
-                } else {
-                    i.changeinput = value;
-                    var _arrayItem = multiPersonContent.map(function (cont) {
-                        return cont;
-                    });
-                    var _newData = _arrayItem[0].items.filter(function (b) {
-                        return b;
-                    });
-                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _arrayItem[0].personImgUrl, name: _arrayItem[0].name, title: _arrayItem[0].title, desc: _arrayItem[0].desc, socialIcon: _arrayItem[0].socialIcon, items: _newData }] });
-                }
-            };
-
-            var _onRemove = function _onRemove(value, i) {
-                var array = multiPersonContent.map(function (cont) {
-                    return cont;
-                }).filter(function (f) {
-                    return f.id == i + 1;
-                });
-                var newData = array[0].items.filter(function (b) {
-                    return b.label != value;
-                });
-                array[0].items = newData;
-                multiPersonContent[i] = array[0];
-                setAttributes(multiPersonContent[i] = array[0]);
-            };
-
-            var socialIconfn = function socialIconfn(v) {
-                return React.createElement(
-                    "ul",
-                    { className: "premium-person__social-List" },
-                    v.map(function (value) {
-                        return React.createElement(
-                            "li",
-                            null,
-                            React.createElement(
-                                "a",
-                                { className: "premium-person__socialIcon__link_content " + (socialIconStyles[0].defaultIconColor ? value.label : ""), href: "" + value.value, style: {
-                                        borderStyle: socialIconStyles[0].borderTypeIcon,
-                                        borderWidth: socialIconBorderUpdated ? socialIconBorderTop + "px " + socialIconBorderRight + "px " + socialIconBorderBottom + "px " + socialIconBorderLeft + "px" : socialIconBorderWidth + "px",
-                                        borderRadius: socialIconStyles[0].borderRadiusIcon || 100 + "px",
-                                        borderColor: socialIconStyles[0].borderColorIcon,
-                                        marginTop: SocialIconMarginTop + socialIconStyles[0].socialIconMarginType,
-                                        marginBottom: SocialIconMarginBottom + socialIconStyles[0].socialIconMarginType,
-                                        marginLeft: SocialIconMarginLeft + socialIconStyles[0].socialIconMarginType,
-                                        marginRight: SocialIconMarginRight + socialIconStyles[0].socialIconMarginType,
-                                        paddingTop: SocialIconPaddingTop + socialIconStyles[0].socialIconPaddingType,
-                                        paddingBottom: SocialIconPaddingBottom + socialIconStyles[0].socialIconPaddingType,
-                                        paddingLeft: SocialIconPaddingLeft + socialIconStyles[0].socialIconPaddingType,
-                                        paddingRight: SocialIconPaddingRight + socialIconStyles[0].socialIconPaddingType,
-                                        background: socialIconStyles[0].socialIconBackgroundColor
-                                    } },
-                                React.createElement("i", { className: "premium-person__socialIcon " + (value.label == "youtube" ? "fa fa-youtube-play" : "fa fa-" + value.label) + " premium-person__" + socialIconStyles[0].socialIconHoverColor,
-                                    style: {
-                                        color: socialIconStyles[0].socialIconColor,
-                                        fontSize: (SocialIconSize || 50) + socialIconStyles[0].socialIconfontSizeType
-                                    }
-                                })
-                            )
-                        );
-                    })
-                );
-            };
-
-            var content = function content() {
-                return React.createElement(
-                    "div",
-                    { className: "premium-person-content " + id + " " + (multiPersonChecked > 1 ? "premium-person__" + rowPerson : "")
-                    },
-                    " ",
-                    multiPersonContent.map(function (value) {
-                        return React.createElement(
-                            "div",
-                            { key: value.id, className: "premium-person__inner premium-persson__min premium-person__" + effectPersonStyle + " premium-person__" + hoverEffectPerson },
-                            React.createElement(
-                                "div",
-                                { className: "premium-person__img__container" },
-                                React.createElement(
-                                    "div",
-                                    {
-                                        className: "premium-person__img_wrap"
-                                    },
-                                    value.personImgUrl && React.createElement("img", {
-                                        className: "premium-person__img",
-                                        src: "" + value.personImgUrl,
-                                        alt: "Person",
-                                        style: {
-
-                                            borderWidth: imgBorder + "px",
-                                            borderColor: imgBorderColor,
-                                            width: imgSize + "px",
-                                            height: imgSize + "px",
-                                            filter: "" + (change ? "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )" : "")
-                                        }
-                                    }),
-                                    !value.personImgUrl && React.createElement(_defaultImage2.default, { className: className })
-                                ),
-                                effectPersonStyle === 'effect2' ? React.createElement(
-                                    "div",
-                                    { className: "premium-person__socialEffect2" },
-                                    value.socialIcon && socialIconfn(value.items)
-                                ) : ""
-                            ),
-                            React.createElement(
-                                "div",
-                                {
-                                    className: "premium-person__info",
-                                    style: {
-                                        background: contentColor ? contentColor : "#f2f2f2",
-                                        bottom: effectPersonStyle === 'effect1' ? bottomInfo + "px" : ""
-                                    }
-                                },
-                                React.createElement(
-                                    "div",
-                                    {
-                                        className: "premium-person__name_wrap",
-                                        style: {
-                                            fontSize: NameSize + nameStyles[0].namefontSizeType
-                                        }
-                                    },
-                                    value.name && React.createElement(
-                                        "span",
-                                        {
-                                            className: "premium-person__name",
-                                            style: {
-                                                color: nameStyles[0].nameColor,
-                                                fontSize: NameSize + nameStyles[0].namefontSizeType,
-                                                fontWeight: nameStyles[0].nameWeight,
-                                                alignSelf: nameV,
-                                                letterSpacing: nameStyles[0].nameLetter + "px",
-                                                lineHeight: nameStyles[0].nameLine + "px",
-                                                fontStyle: nameStyles[0].nameStyle,
-                                                textTransform: nameStyles[0].nameUpper ? "uppercase" : "none",
-                                                textShadow: nameStyles[0].nameshadowHorizontal + "px " + nameStyles[0].nameshadowVertical + "px " + nameStyles[0].nameshadowBlur + "px " + nameStyles[0].nameshadowColor
-                                            }
-                                        },
-                                        value.name
-                                    )
-                                ),
-                                React.createElement(
-                                    "div",
-                                    {
-                                        className: "premium-person__title_wrap",
-                                        style: {
-                                            fontSize: TitleSize + titleStyles[0].titlefontSizeType
-                                        }
-                                    },
-                                    value.title && React.createElement(
-                                        "span",
-                                        {
-                                            className: "premium-person__title",
-                                            style: {
-                                                color: titleStyles[0].titleColor,
-                                                fontSize: TitleSize + titleStyles[0].titlefontSizeType,
-                                                fontWeight: titleStyles[0].titleWeight,
-                                                alignSelf: titleV,
-                                                letterSpacing: titleStyles[0].titleLetter + "px",
-                                                lineHeight: titleStyles[0].titleLine + "px",
-                                                fontStyle: titleStyles[0].titleStyle,
-                                                textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
-                                                textShadow: titleStyles[0].titleshadowHorizontal + "px " + titleStyles[0].titleshadowVertical + "px " + titleStyles[0].titleshadowBlur + "px " + titleStyles[0].titleshadowColor
-                                            }
-                                        },
-                                        value.title
-                                    )
-                                ),
-                                React.createElement(
-                                    "div",
-                                    {
-                                        className: "premium-person__desc_wrap",
-                                        style: {
-                                            fontSize: DescSize + descStyles[0].descfontSizeType
-                                        }
-                                    },
-                                    value.desc && React.createElement(
-                                        "span",
-                                        {
-                                            className: "premium-person__desc",
-                                            style: {
-                                                color: descStyles[0].descColor,
-                                                fontSize: DescSize + descStyles[0].descfontSizeType,
-                                                fontWeight: descStyles[0].descWeight,
-                                                alignSelf: descV,
-                                                letterSpacing: descStyles[0].descLetter + "px",
-                                                lineHeight: descStyles[0].descLine + "px",
-                                                fontStyle: descStyles[0].descStyle,
-                                                textTransform: descStyles[0].descUpper ? "uppercase" : "none",
-                                                textShadow: descStyles[0].descshadowHorizontal + "px " + descStyles[0].descshadowVertical + "px " + descStyles[0].descshadowBlur + "px " + descStyles[0].descshadowColor
-                                            }
-                                        },
-                                        value.desc
-                                    )
-                                ),
-                                effectPersonStyle == 'effect1' ? React.createElement(
-                                    "div",
-                                    null,
-                                    value.socialIcon && socialIconfn(value.items)
-                                ) : ""
-                            )
-                        );
-                    })
-                );
-            };
-
-            var addSocialIcon = function addSocialIcon(newsocial, index) {
-                var array = iconsList.map(function (i) {
-                    return i;
-                }).filter(function (f) {
-                    return f.value == newsocial;
-                });
-                if (array[0] != undefined) {
-                    newsocial = array[0];
-                    setAttributes({ selectedSocialMediaIcon: newsocial.label });
-                    var newicon = newsocial.label;
-                    var arrayItem = multiPersonContent.map(function (cont) {
-                        return cont;
-                    }).filter(function (f) {
-                        return f.id == index + 1;
-                    });
-                    var repeat = arrayItem[0].items.filter(function (d) {
-                        return d.label == newicon;
-                    });
-                    if (repeat[0] != undefined) {
-                        arrayItem[0].items.filter(function (d) {
-                            return d.label != newicon;
-                        });
-                        multiPersonContent[index - 1] = arrayItem[0];
-                        setAttributes(multiPersonContent[index - 1] = arrayItem[0]);
-                    } else {
-                        arrayItem[0].items.push({ label: newicon, link: false, value: "", changeinput: "#" });
-                        arrayItem[0].items.filter(function (d) {
-                            return d.label != newicon;
-                        });
-                        multiPersonContent[index - 1] = arrayItem[0];
-                        setAttributes(multiPersonContent[index - 1] = arrayItem[0]);
-                    }
-                }
-            };
-
-            var addMultiPerson = function addMultiPerson(newP) {
-                var multi = [].concat(_toConsumableArray(multiPersonContent));
-                if (multi.length < newP) {
-                    var incAmount = Math.abs(newP - multi.length);
-                    {
-                        (0, _times2.default)(incAmount, function (n) {
-                            multi.push({
-                                id: multi.length + 1,
-                                personImgUrl: multi[0].personImgUrl,
-                                personImgId: '',
-                                name: multi[0].name,
-                                title: multi[0].title,
-                                desc: multi[0].desc,
-                                socialIcon: multi[0].socialIcon,
-                                items: [{ label: 'facebook', link: false, value: "#", changeinput: "#" }, { label: 'twitter', link: false, value: "#", changeinput: "#" }, { label: 'instagram', link: false, value: "#", changeinput: "#" }, { label: 'youtube', link: false, value: "#", changeinput: "#" }]
-                            });
-                        });
-                    }
-                    setAttributes({ multiPersonContent: multi });
-                } else {
-                    for (var i = multiPersonChecked; i > newP; i--) {
-                        multiPersonContent.splice(i - 1, 1);
-                    }
-                }
-                setAttributes({ multiPersonChecked: newP });
-            };
-
-            var onSortEndMulti = function onSortEndMulti(i, _ref3) {
-                var oldIndex = _ref3.oldIndex,
-                    newIndex = _ref3.newIndex;
-
-                var arrayItem = multiPersonContent.map(function (cont) {
-                    return cont;
-                }).filter(function (f) {
-                    return f.id == i + 1;
-                });
-                var array = (0, _reactSortableHoc.arrayMove)(arrayItem[0].items, oldIndex, newIndex);
-                arrayItem[0].items = array;
-                multiPersonContent[i] = arrayItem[0];
-                setAttributes(multiPersonContent[i] = arrayItem[0]);
-            };
-
-            var MultiPersonSetting = function MultiPersonSetting(index) {
-                return React.createElement(
-                    PanelBody,
-                    {
-                        key: index,
-                        title: __("Person #" + (index + 1) + " Setting"),
-                        initialOpen: false
-                    },
-                    React.createElement(_premiumMediaUpload2.default, {
-                        type: "image",
-                        imageID: multiPersonContent[index].personImgId,
-                        imageURL: multiPersonContent[index].personImgUrl,
-                        onSelectMedia: function onSelectMedia(media) {
-                            _this2.save({ personImgUrl: media.url }, index);
-                            _this2.save({ personImgId: media.id }, index);
-                        },
-                        onRemoveImage: function onRemoveImage() {
-                            _this2.save({ personImgId: '' }, index);
-                            _this2.save({ personImgUrl: '' }, index);
-                        }
-                    }),
-                    React.createElement(TextControl, {
-                        label: __("Name", 'premium-block-for-gutenberg'),
-                        value: multiPersonContent[index].name,
-                        onChange: function onChange(value) {
-                            _this2.save({ name: value }, index);
-                        }
-                    }),
-                    React.createElement(TextControl, {
-                        label: __("Title", 'premium-block-for-gutenberg'),
-                        value: multiPersonContent[index].title,
-                        onChange: function onChange(value) {
-                            _this2.save({ title: value }, index);
-                        }
-                    }),
-                    React.createElement(TextareaControl, {
-                        label: __("Description", 'premium-block-for-gutenberg'),
-                        value: multiPersonContent[index].desc,
-                        onChange: function onChange(value) {
-                            _this2.save({ desc: value }, index);
-                        }
-                    }),
-                    React.createElement(ToggleControl, {
-                        label: __("Enable Social Icons", 'premium-block-for-gutenberg'),
-                        checked: multiPersonContent[index].socialIcon,
-                        onChange: function onChange(value) {
-                            _this2.save({ socialIcon: value }, index);
-                        }
-                    }),
-                    multiPersonContent[index].socialIcon && React.createElement(
-                        "div",
-                        null,
-                        React.createElement(
-                            "label",
-                            { className: "premium-person-paragraph" },
-                            __("Social Media")
-                        ),
-                        React.createElement(_reactFonticonpicker2.default, {
-                            icons: iconsList.map(function (i) {
-                                return i.value;
-                            }),
-                            onChange: function onChange(value) {
-                                return addSocialIcon(value, index);
-                            },
-                            isMulti: false,
-                            appendTo: "body",
-                            closeOnSelect: false,
-                            iconsPerPage: 25,
-                            noSelectedPlaceholder: __("Select Icon")
-                        }),
-                        React.createElement(SortableList, { items: multiPersonContent[index].items, personIndex: index, onSortEnd: function onSortEnd(o, n) {
-                                return onSortEndMulti(index, o, n);
-                            }, onRemove: function onRemove(value) {
-                                return _onRemove(value, index);
-                            }, saveLink: function saveLink(value, i) {
-                                return _saveLink(value, i, index);
-                            }, changeLinkValue: function changeLinkValue(value, i) {
-                                return _changeLinkValue(value, i, index);
-                            }, addLink: function addLink(value) {
-                                return _addLink(value, index);
-                            }, shouldCancelStart: shouldCancelStart, helperClass: "premium-person__sortableHelper" })
-                    )
-                );
-            };
-
-            return [isSelected && "block" != personSize && React.createElement(
-                BlockControls,
-                { key: "controls" },
-                React.createElement(AlignmentToolbar, {
-                    value: personAlign,
-                    onChange: function onChange(newAlign) {
-                        return setAttributes({ personAlign: newAlign });
-                    }
-                })
-            ), isSelected && React.createElement(
-                InspectorControls,
-                { key: "inspector" },
-                React.createElement(
-                    PanelBody,
-                    {
-                        title: __("General Settings"),
-                        className: "premium-panel-body",
-                        initialOpen: false
-                    },
-                    React.createElement(_singleRangeControl2.default, {
-                        label: __("Person Number", 'premium-block-for-gutenberg'),
-                        value: multiPersonChecked,
-                        onChange: function onChange(value) {
-                            return addMultiPerson(value);
-                        },
-                        showUnit: false,
-                        defaultValue: 1,
-                        min: 1
-                    }),
-                    multiPersonChecked > 1 ? React.createElement(SelectControl, {
-                        label: __("Persons/Row", 'premium-block-for-gutenberg'),
-                        value: rowPerson,
-                        onChange: function onChange(newColumn) {
-                            return setAttributes({ rowPerson: newColumn });
-                        },
-                        options: ROWS
-                    }) : "",
-                    React.createElement(SelectControl, {
-                        label: __("Style", 'premium-block-for-gutenberg'),
-                        value: effectPersonStyle,
-                        onChange: function onChange(newEffect) {
-                            return setAttributes({ effectPersonStyle: newEffect });
-                        },
-                        options: EFFECTS
-                    }),
-                    React.createElement(SelectControl, {
-                        label: __("Image Hover Effect", 'premium-block-for-gutenberg'),
-                        options: HOVER,
-                        value: hoverEffectPerson,
-                        onChange: function onChange(newEffect) {
-                            return setAttributes({ hoverEffectPerson: newEffect });
-                        }
-                    })
-                ),
-                (0, _times2.default)(multiPersonChecked, function (n) {
-                    return MultiPersonSetting(n);
-                }),
-                React.createElement(
-                    PanelBody,
-                    {
-                        title: __("Image Style"),
-                        className: "premium-panel-body",
-                        initialOpen: false
-                    },
-                    React.createElement(_premiumFilters2.default, {
-                        blur: blur,
-                        bright: bright,
-                        contrast: contrast,
-                        saturation: saturation,
-                        hue: hue,
-                        onChangeBlur: function onChangeBlur(newSize) {
-                            return setAttributes({ blur: newSize, change: true });
-                        },
-                        onChangeBright: function onChangeBright(newSize) {
-                            return setAttributes({ bright: newSize, change: true });
-                        },
-                        onChangeContrast: function onChangeContrast(newSize) {
-                            return setAttributes({ contrast: newSize, change: true });
-                        },
-                        onChangeSat: function onChangeSat(newSize) {
-                            return setAttributes({ saturation: newSize, change: true });
-                        },
-                        onChangeHue: function onChangeHue(newSize) {
-                            return setAttributes({ hue: newSize, change: true });
-                        }
-                    })
-                ),
-                React.createElement(
-                    PanelBody,
-                    {
-                        title: __("Name"),
-                        className: "premium-panel-body",
-                        initialOpen: false
-                    },
-                    React.createElement(_premiumTypo2.default, {
-                        components: ["responsiveSize", "weight", "line", "style", "upper", "spacing"],
-                        setAttributes: saveNameStyles,
-                        fontSizeType: { value: nameStyles[0].namefontSizeType, label: __("namefontSizeType") },
-                        fontSize: nameStyles[0].namefontSize,
-                        fontSizeMobile: nameStyles[0].namefontSizeMobile,
-                        fontSizeTablet: nameStyles[0].namefontSizeTablet,
-                        onChangeSize: function onChangeSize(newSize) {
-                            return saveNameStyles({ namefontSize: newSize });
-                        },
-                        onChangeTabletSize: function onChangeTabletSize(newSize) {
-                            return saveNameStyles({ namefontSizeTablet: newSize });
-                        },
-                        onChangeMobileSize: function onChangeMobileSize(newSize) {
-                            return saveNameStyles({ namefontSizeMobile: newSize });
-                        },
-                        weight: nameStyles[0].nameWeight,
-                        style: nameStyles[0].nameStyle,
-                        spacing: nameStyles[0].nameLetter,
-                        upper: nameStyles[0].nameUpper,
-                        line: nameStyles[0].nameLine,
-                        onChangeWeight: function onChangeWeight(newWeight) {
-                            return saveNameStyles({ nameWeight: newWeight || 500 });
-                        },
-                        onChangeStyle: function onChangeStyle(newStyle) {
-                            return saveNameStyles({ nameStyle: newStyle });
-                        },
-                        onChangeSpacing: function onChangeSpacing(newValue) {
-                            return saveNameStyles({ nameLetter: newValue });
-                        },
-                        onChangeUpper: function onChangeUpper(check) {
-                            return saveNameStyles({ nameUpper: check });
-                        },
-                        onChangeLine: function onChangeLine(newValue) {
-                            return saveNameStyles({ nameLine: newValue });
-                        }
-                    }),
-                    React.createElement(
-                        "div",
-                        { className: "premium-control-toggle" },
-                        React.createElement(_ColorComponent2.default, {
-                            label: __("Color", 'premium-block-for-gutenberg'),
-                            colorValue: nameStyles[0].nameColor,
-                            colorDefault: '',
-                            onColorChange: function onColorChange(newValue) {
-                                return saveNameStyles({
-                                    nameColor: newValue
-                                });
-                            }
-                        })
-                    ),
-                    React.createElement(_PremiumShadow2.default, {
-                        label: __("Text Shadow", 'premium-blocks-for-gutenberg'),
-                        boxShadow: false,
-                        color: nameStyles[0].nameshadowColor,
-                        blur: nameStyles[0].nameshadowBlur,
-                        horizontal: nameStyles[0].nameshadowHorizontal,
-                        vertical: nameStyles[0].nameshadowVertical,
-                        onChangeColor: function onChangeColor(newColor) {
-                            return saveNameStyles({ nameshadowColor: newColor });
-                        },
-                        onChangeBlur: function onChangeBlur(newBlur) {
-                            return saveNameStyles({ nameshadowBlur: newBlur });
-                        },
-                        onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return saveNameStyles({ nameshadowHorizontal: newValue });
-                        },
-                        onChangeVertical: function onChangeVertical(newValue) {
-                            return saveNameStyles({ nameshadowVertical: newValue });
-                        }
-                    })
-                ),
-                React.createElement(
-                    PanelBody,
-                    {
-                        title: __("Title"),
-                        className: "premium-panel-body",
-                        initialOpen: false
-                    },
-                    React.createElement(_premiumTypo2.default, {
-                        components: ["responsiveSize", "weight", "line", "style", "upper", "spacing"],
-                        setAttributes: saveTitleStyles,
-                        fontSizeType: { value: titleStyles[0].titlefontSizeType, label: __("titlefontSizeType") },
-                        fontSize: titleStyles[0].titleSize,
-                        fontSizeMobile: titleStyles[0].titlefontSizeMobile,
-                        fontSizeTablet: titleStyles[0].titlefontSizeTablet,
-                        onChangeSize: function onChangeSize(newSize) {
-                            return saveTitleStyles({ titleSize: newSize });
-                        },
-                        onChangeTabletSize: function onChangeTabletSize(newSize) {
-                            return saveTitleStyles({ titlefontSizeTablet: newSize });
-                        },
-                        onChangeMobileSize: function onChangeMobileSize(newSize) {
-                            return saveTitleStyles({ titlefontSizeMobile: newSize });
-                        },
-                        weight: titleStyles[0].titleWeight,
-                        style: titleStyles[0].titleStyle,
-                        spacing: titleStyles[0].titleLetter,
-                        upper: titleStyles[0].titleUpper,
-                        line: titleStyles[0].titleLine,
-                        onChangeWeight: function onChangeWeight(newWeight) {
-                            return saveTitleStyles({ titleWeight: newWeight || 500 });
-                        },
-                        onChangeStyle: function onChangeStyle(newStyle) {
-                            return saveTitleStyles({ titleStyle: newStyle });
-                        },
-                        onChangeSpacing: function onChangeSpacing(newValue) {
-                            return saveTitleStyles({ titleLetter: newValue });
-                        },
-                        onChangeUpper: function onChangeUpper(check) {
-                            return saveTitleStyles({ titleUpper: check });
-                        },
-                        onChangeLine: function onChangeLine(newValue) {
-                            return saveTitleStyles({ titleLine: newValue });
-                        }
-                    }),
-                    React.createElement(
-                        "div",
-                        { className: "premium-control-toggle" },
-                        React.createElement(_ColorComponent2.default, {
-                            label: __("Color", 'premium-block-for-gutenberg'),
-                            colorValue: titleStyles[0].titleColor,
-                            colorDefault: '',
-                            onColorChange: function onColorChange(newValue) {
-                                return saveTitleStyles({
-                                    titleColor: newValue
-                                });
-                            }
-                        })
-                    ),
-                    React.createElement(_PremiumShadow2.default, {
-                        label: __("Text Shadow", 'premium-blocks-for-gutenberg'),
-                        boxShadow: false,
-                        color: titleStyles[0].titleshadowColor,
-                        blur: titleStyles[0].titleshadowBlur,
-                        horizontal: titleStyles[0].titleshadowHorizontal,
-                        vertical: titleStyles[0].titleshadowVertical,
-                        onChangeColor: function onChangeColor(newColor) {
-                            return saveTitleStyles({ titleshadowColor: newColor });
-                        },
-                        onChangeBlur: function onChangeBlur(newBlur) {
-                            return saveTitleStyles({ titleshadowBlur: newBlur });
-                        },
-                        onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return saveTitleStyles({ titleshadowHorizontal: newValue });
-                        },
-                        onChangeVertical: function onChangeVertical(newValue) {
-                            return saveTitleStyles({ titleshadowVertical: newValue });
-                        }
-                    })
-                ),
-                React.createElement(
-                    PanelBody,
-                    {
-                        title: __("Description"),
-                        className: "premium-panel-body",
-                        initialOpen: false
-                    },
-                    React.createElement(_premiumTypo2.default, {
-                        components: ["responsiveSize", "weight", "line", "style", "upper", "spacing"],
-                        setAttributes: saveDescStyles,
-                        fontSizeType: { value: descStyles[0].descfontSizeType, label: __("descfontSizeType") },
-                        fontSize: descStyles[0].descSize,
-                        fontSizeMobile: descStyles[0].descfontSizeMobile,
-                        fontSizeTablet: descStyles[0].descfontSizeTablet,
-                        onChangeSize: function onChangeSize(newSize) {
-                            return saveDescStyles({ descSize: newSize });
-                        },
-                        onChangeTabletSize: function onChangeTabletSize(newSize) {
-                            return saveDescStyles({ descfontSizeTablet: newSize });
-                        },
-                        onChangeMobileSize: function onChangeMobileSize(newSize) {
-                            return saveDescStyles({ descfontSizeMobile: newSize });
-                        },
-                        weight: descStyles[0].descWeight,
-                        style: descStyles[0].descStyle,
-                        spacing: descStyles[0].descLetter,
-                        upper: descStyles[0].descUpper,
-                        line: descStyles[0].descLine,
-                        onChangeWeight: function onChangeWeight(newWeight) {
-                            return saveDescStyles({ descWeight: newWeight || 500 });
-                        },
-                        onChangeStyle: function onChangeStyle(newStyle) {
-                            return saveDescStyles({ descStyle: newStyle });
-                        },
-                        onChangeSpacing: function onChangeSpacing(newValue) {
-                            return saveDescStyles({ descLetter: newValue });
-                        },
-                        onChangeUpper: function onChangeUpper(check) {
-                            return saveDescStyles({ descUpper: check });
-                        },
-                        onChangeLine: function onChangeLine(newValue) {
-                            return saveDescStyles({ descLine: newValue });
-                        }
-                    }),
-                    React.createElement(
-                        "div",
-                        { className: "premium-control-toggle" },
-                        React.createElement(_ColorComponent2.default, {
-                            label: __("Color", 'premium-block-for-gutenberg'),
-                            colorValue: descStyles[0].descColor,
-                            colorDefault: '',
-                            onColorChange: function onColorChange(newValue) {
-                                return saveDescStyles({
-                                    descColor: newValue
-                                });
-                            }
-                        })
-                    ),
-                    React.createElement(_PremiumShadow2.default, {
-                        label: __("Text Shadow", 'premium-blocks-for-gutenberg'),
-                        boxShadow: false,
-                        color: descStyles[0].descshadowColor,
-                        blur: descStyles[0].descshadowBlur,
-                        horizontal: descStyles[0].descshadowHorizontal,
-                        vertical: descStyles[0].descshadowVertical,
-                        onChangeColor: function onChangeColor(newColor) {
-                            return saveDescStyles({ descshadowColor: newColor });
-                        },
-                        onChangeBlur: function onChangeBlur(newBlur) {
-                            return saveDescStyles({ descshadowBlur: newBlur });
-                        },
-                        onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return saveDescStyles({ descshadowHorizontal: newValue });
-                        },
-                        onChangeVertical: function onChangeVertical(newValue) {
-                            return saveDescStyles({ descshadowVertical: newValue });
-                        }
-                    })
-                ),
-                multiPersonChecked > 1 ? multiPersonContent.map(function (i) {
-                    return i.socialIcon && React.createElement(
-                        PanelBody,
-                        {
-                            title: __("Social Icon"),
-                            className: "premium-panel-body",
-                            initialOpen: false
-                        },
-                        React.createElement(_responsiveRangeControl2.default, {
-                            label: __("Size", 'premium-block-for-gutenberg'),
-                            value: socialIconStyles[0].socialIconSize,
-                            tabletValue: socialIconStyles[0].socialIconfontSizeTablet,
-                            mobileValue: socialIconStyles[0].socialIconfontSizeMobile,
-                            onChange: function onChange(value) {
-                                return saveSocialIconStyles({ socialIconSize: value });
-                            },
-                            onChangeTablet: function onChangeTablet(value) {
-                                return saveSocialIconStyles({ socialIconfontSizeTablet: value });
-                            },
-                            onChangeMobile: function onChangeMobile(value) {
-                                return saveSocialIconStyles({ socialIconfontSizeMobile: value });
-                            },
-                            onChangeUnit: function onChangeUnit(key) {
-                                return saveSocialIconStyles({ socialIconfontSizeType: key });
-                            },
-                            unit: socialIconStyles[0].socialIconfontSizeType,
-                            showUnit: true,
-                            defaultValue: 20,
-                            min: 1,
-                            max: 100
-                        }),
-                        React.createElement(
-                            "div",
-                            { className: "premium-control-toggle" },
-                            React.createElement(_ColorComponent2.default, {
-                                label: __("Social Icon Color", 'premium-block-for-gutenberg'),
-                                colorValue: socialIconStyles[0].socialIconColor,
-                                colorDefault: '',
-                                onColorChange: function onColorChange(newValue) {
-                                    return saveSocialIconStyles({
-                                        socialIconColor: newValue
-                                    });
-                                }
-                            }),
-                            React.createElement(_ColorComponent2.default, {
-                                label: __("Social Icon Hover Color", 'premium-block-for-gutenberg'),
-                                colorValue: socialIconStyles[0].socialIconHoverColor,
-                                colorDefault: '',
-                                onColorChange: function onColorChange(newValue) {
-                                    return saveSocialIconStyles({
-                                        socialIconHoverColor: newValue
-                                    });
-                                }
-                            })
-                        ),
-                        React.createElement(
-                            "div",
-                            { className: "premium-control-toggle" },
-                            React.createElement(_ColorComponent2.default, {
-                                label: __("Social Icon Background Color", 'premium-block-for-gutenberg'),
-                                colorValue: socialIconStyles[0].socialIconBackgroundColor,
-                                colorDefault: '',
-                                onColorChange: function onColorChange(newValue) {
-                                    return saveSocialIconStyles({
-                                        socialIconBackgroundColor: newValue
-                                    });
-                                }
-                            })
-                        ),
-                        React.createElement(ToggleControl, {
-                            label: __("Brands Default Colors", 'premium-block-for-gutenberg'),
-                            checked: socialIconStyles[0].defaultIconColor,
-                            onChange: function onChange(newCheck) {
-                                return saveSocialIconStyles({ defaultIconColor: newCheck });
-                            }
-                        }),
-                        React.createElement(_premiumBorder2.default, {
-                            borderType: socialIconStyles[0].borderTypeIcon,
-                            borderWidth: socialIconBorderWidth,
-                            top: socialIconBorderTop,
-                            right: socialIconBorderRight,
-                            bottom: socialIconBorderBottom,
-                            left: socialIconBorderLeft,
-                            borderColor: socialIconStyles[0].borderColorIcon,
-                            borderRadius: socialIconStyles[0].borderRadiusIcon,
-                            onChangeType: function onChangeType(newType) {
-                                return saveSocialIconStyles({ borderTypeIcon: newType });
-                            },
-                            onChangeWidth: function onChangeWidth(_ref4) {
-                                var top = _ref4.top,
-                                    right = _ref4.right,
-                                    bottom = _ref4.bottom,
-                                    left = _ref4.left;
-                                return setAttributes({
-                                    socialIconBorderUpdated: true,
-                                    socialIconBorderTop: top,
-                                    socialIconBorderRight: right,
-                                    socialIconBorderBottom: bottom,
-                                    socialIconBorderLeft: left
-                                });
-                            },
-                            onChangeColor: function onChangeColor(colorValue) {
-                                return saveSocialIconStyles({ borderColorIcon: colorValue });
-                            },
-                            onChangeRadius: function onChangeRadius(newrRadius) {
-                                return saveSocialIconStyles({ borderRadiusIcon: newrRadius });
-                            }
-                        }),
-                        React.createElement(_PremiumResponsiveMargin2.default, {
-                            directions: ["all"],
-                            marginTop: socialIconMarginT,
-                            marginRight: socialIconMarginR,
-                            marginBottom: socialIconMarginB,
-                            marginLeft: socialIconMarginL,
-                            marginTopTablet: socialIconMarginTTablet,
-                            marginRightTablet: socialIconMarginRTablet,
-                            marginBottomTablet: socialIconMarginBTablet,
-                            marginLeftTablet: socialIconMarginLTablet,
-                            marginTopMobile: socialIconMarginTMobile,
-                            marginRightMobile: socialIconMarginRMobile,
-                            marginBottomMobile: socialIconMarginBMobile,
-                            marginLeftMobile: socialIconMarginLMobile,
-                            showUnits: true,
-                            onChangeMarSizeUnit: function onChangeMarSizeUnit(newvalue) {
-                                return saveSocialIconStyles({ socialIconMarginType: newvalue });
-                            },
-                            selectedUnit: socialIconStyles[0].socialIconMarginType,
-                            onChangeMarginTop: function onChangeMarginTop(device, newValue) {
-                                if (device === "desktop") {
-                                    setAttributes({ socialIconMarginT: newValue });
-                                } else if (device === "tablet") {
-                                    setAttributes({ socialIconMarginTTablet: newValue });
-                                } else {
-                                    setAttributes({ socialIconMarginTMobile: newValue });
-                                }
-                            },
-                            onChangeMarginRight: function onChangeMarginRight(device, newValue) {
-                                if (device === "desktop") {
-                                    setAttributes({ socialIconMarginR: newValue });
-                                } else if (device === "tablet") {
-                                    setAttributes({ socialIconMarginRTablet: newValue });
-                                } else {
-                                    setAttributes({ socialIconMarginRMobile: newValue });
-                                }
-                            },
-                            onChangeMarginBottom: function onChangeMarginBottom(device, newValue) {
-                                if (device === "desktop") {
-                                    setAttributes({ socialIconMarginB: newValue });
-                                } else if (device === "tablet") {
-                                    setAttributes({ socialIconMarginBTablet: newValue });
-                                } else {
-                                    setAttributes({ socialIconMarginBMobile: newValue });
-                                }
-                            },
-                            onChangeMarginLeft: function onChangeMarginLeft(device, newValue) {
-                                if (device === "desktop") {
-                                    setAttributes({ socialIconMarginL: newValue });
-                                } else if (device === "tablet") {
-                                    setAttributes({ socialIconMarginLTablet: newValue });
-                                } else {
-                                    setAttributes({ socialIconMarginLMobile: newValue });
-                                }
-                            }
-
-                        }),
-                        React.createElement(_PremiumResponsivePadding2.default, {
-                            paddingTop: socialIconPaddingTop,
-                            paddingRight: socialIconPaddingRight,
-                            paddingBottom: socialIconPaddingBottom,
-                            paddingLeft: socialIconPaddingLeft,
-                            paddingTopTablet: socialIconPaddingTTablet,
-                            paddingRightTablet: socialIconPaddingRTablet,
-                            paddingBottomTablet: socialIconPaddingBTablet,
-                            paddingLeftTablet: socialIconPaddingLTablet,
-                            paddingTopMobile: socialIconPaddingTMobile,
-                            paddingRightMobile: socialIconPaddingRMobile,
-                            paddingBottomMobile: socialIconPaddingBMobile,
-                            paddingLeftMobile: socialIconPaddingLMobile,
-                            showUnits: true,
-                            defaultValue: 0,
-                            min: 0,
-                            max: 100,
-                            selectedUnit: socialIconStyles[0].socialIconPaddingType,
-                            onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
-                                return saveSocialIconStyles({ socialIconPaddingType: newvalue });
-                            },
-                            onChangePaddingTop: function onChangePaddingTop(device, newValue) {
-                                if (device === "desktop") {
-                                    setAttributes({ socialIconPaddingTop: newValue });
-                                } else if (device === "tablet") {
-                                    setAttributes({ socialIconPaddingTTablet: newValue });
-                                } else {
-                                    setAttributes({ socialIconPaddingTMobile: newValue });
-                                }
-                            },
-                            onChangePaddingRight: function onChangePaddingRight(device, newValue) {
-                                if (device === "desktop") {
-                                    setAttributes({ socialIconPaddingRight: newValue });
-                                } else if (device === "tablet") {
-                                    setAttributes({ socialIconPaddingRTablet: newValue });
-                                } else {
-                                    setAttributes({ socialIconPaddingRMobile: newValue });
-                                }
-                            },
-                            onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
-                                if (device === "desktop") {
-                                    setAttributes({ socialIconPaddingBottom: newValue });
-                                } else if (device === "tablet") {
-                                    setAttributes({ socialIconPaddingBTablet: newValue });
-                                } else {
-                                    setAttributes({ socialIconPaddingBMobile: newValue });
-                                }
-                            },
-                            onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
-                                if (device === "desktop") {
-                                    setAttributes({ socialIconPaddingLeft: newValue });
-                                } else if (device === "tablet") {
-                                    setAttributes({ socialIconPaddingLTablet: newValue });
-                                } else {
-                                    setAttributes({ socialIconPaddingLMobile: newValue });
-                                }
-                            }
-                        })
-                    );
-                }) : multiPersonContent[0].socialIcon && React.createElement(
-                    PanelBody,
-                    {
-                        title: __("Social Icon"),
-                        className: "premium-panel-body",
-                        initialOpen: false
-                    },
-                    React.createElement(_responsiveRangeControl2.default, {
-                        label: __("Size", 'premium-block-for-gutenberg'),
-                        value: socialIconStyles[0].socialIconSize,
-                        tabletValue: socialIconStyles[0].socialIconfontSizeTablet,
-                        mobileValue: socialIconStyles[0].socialIconfontSizeMobile,
-                        onChange: function onChange(value) {
-                            return saveSocialIconStyles({ socialIconSize: value });
-                        },
-                        onChangeTablet: function onChangeTablet(value) {
-                            return saveSocialIconStyles({ socialIconfontSizeTablet: value });
-                        },
-                        onChangeMobile: function onChangeMobile(value) {
-                            return saveSocialIconStyles({ socialIconfontSizeMobile: value });
-                        },
-                        onChangeUnit: function onChangeUnit(key) {
-                            return saveSocialIconStyles({ socialIconfontSizeType: key });
-                        },
-                        unit: socialIconStyles[0].socialIconfontSizeType,
-                        showUnit: true,
-                        defaultValue: 20,
-                        min: 1,
-                        max: 100
-                    }),
-                    React.createElement(
-                        "div",
-                        { className: "premium-control-toggle" },
-                        React.createElement(_ColorComponent2.default, {
-                            label: __("Social Icon Color", 'premium-block-for-gutenberg'),
-                            colorValue: socialIconStyles[0].socialIconColor,
-                            colorDefault: '',
-                            onColorChange: function onColorChange(newValue) {
-                                return saveSocialIconStyles({
-                                    socialIconColor: newValue
-                                });
-                            }
-                        }),
-                        React.createElement(_ColorComponent2.default, {
-                            label: __("Social Icon Hover Color", 'premium-block-for-gutenberg'),
-                            colorValue: socialIconStyles[0].socialIconHoverColor,
-                            colorDefault: '',
-                            onColorChange: function onColorChange(newValue) {
-                                return saveSocialIconStyles({
-                                    socialIconHoverColor: newValue
-                                });
-                            }
-                        })
-                    ),
-                    React.createElement(
-                        "div",
-                        { className: "premium-control-toggle" },
-                        React.createElement(_ColorComponent2.default, {
-                            label: __("Social Icon Background Color", 'premium-block-for-gutenberg'),
-                            colorValue: socialIconStyles[0].socialIconBackgroundColor,
-                            colorDefault: '',
-                            onColorChange: function onColorChange(newValue) {
-                                return saveSocialIconStyles({
-                                    socialIconBackgroundColor: newValue
-                                });
-                            }
-                        })
-                    ),
-                    React.createElement(ToggleControl, {
-                        label: __("Brands Default Colors", "premium-blocks-for-gutenberg"),
-                        checked: socialIconStyles[0].defaultIconColor,
-                        onChange: function onChange(newCheck) {
-                            return saveSocialIconStyles({ defaultIconColor: newCheck });
-                        }
-                    }),
-                    React.createElement(_premiumBorder2.default, {
-                        borderType: socialIconStyles[0].borderTypeIcon,
-                        borderWidth: socialIconBorderWidth,
-                        top: socialIconBorderTop,
-                        right: socialIconBorderRight,
-                        bottom: socialIconBorderBottom,
-                        left: socialIconBorderLeft,
-                        borderColor: socialIconStyles[0].borderColorIcon,
-                        borderRadius: socialIconStyles[0].borderRadiusIcon,
-                        onChangeType: function onChangeType(newType) {
-                            return saveSocialIconStyles({ borderTypeIcon: newType });
-                        },
-                        onChangeWidth: function onChangeWidth(_ref5) {
-                            var top = _ref5.top,
-                                right = _ref5.right,
-                                bottom = _ref5.bottom,
-                                left = _ref5.left;
-                            return setAttributes({
-                                socialIconBorderUpdated: true,
-                                socialIconBorderTop: top,
-                                socialIconBorderRight: right,
-                                socialIconBorderBottom: bottom,
-                                socialIconBorderLeft: left
-                            });
-                        },
-                        onChangeColor: function onChangeColor(colorValue) {
-                            return saveSocialIconStyles({ borderColorIcon: colorValue });
-                        },
-                        onChangeRadius: function onChangeRadius(newrRadius) {
-                            return saveSocialIconStyles({ borderRadiusIcon: newrRadius });
-                        }
-                    }),
-                    React.createElement(_PremiumResponsiveMargin2.default, {
-                        directions: ["all"],
-                        marginTop: socialIconMarginT,
-                        marginRight: socialIconMarginR,
-                        marginBottom: socialIconMarginB,
-                        marginLeft: socialIconMarginL,
-                        marginTopTablet: socialIconMarginTTablet,
-                        marginRightTablet: socialIconMarginRTablet,
-                        marginBottomTablet: socialIconMarginBTablet,
-                        marginLeftTablet: socialIconMarginLTablet,
-                        marginTopMobile: socialIconMarginTMobile,
-                        marginRightMobile: socialIconMarginRMobile,
-                        marginBottomMobile: socialIconMarginBMobile,
-                        marginLeftMobile: socialIconMarginLMobile,
-                        showUnits: true,
-                        onChangeMarSizeUnit: function onChangeMarSizeUnit(newvalue) {
-                            return saveSocialIconStyles({ socialIconMarginType: newvalue });
-                        },
-                        selectedUnit: socialIconStyles[0].socialIconMarginType,
-                        onChangeMarginTop: function onChangeMarginTop(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ socialIconMarginT: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ socialIconMarginTTablet: newValue });
-                            } else {
-                                setAttributes({ socialIconMarginTMobile: newValue });
-                            }
-                        },
-                        onChangeMarginRight: function onChangeMarginRight(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ socialIconMarginR: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ socialIconMarginRTablet: newValue });
-                            } else {
-                                setAttributes({ socialIconMarginRMobile: newValue });
-                            }
-                        },
-                        onChangeMarginBottom: function onChangeMarginBottom(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ socialIconMarginB: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ socialIconMarginBTablet: newValue });
-                            } else {
-                                setAttributes({ socialIconMarginBMobile: newValue });
-                            }
-                        },
-                        onChangeMarginLeft: function onChangeMarginLeft(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ socialIconMarginL: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ socialIconMarginLTablet: newValue });
-                            } else {
-                                setAttributes({ socialIconMarginLMobile: newValue });
-                            }
-                        }
-
-                    }),
-                    React.createElement(_PremiumResponsivePadding2.default, {
-                        paddingTop: socialIconPaddingTop,
-                        paddingRight: socialIconPaddingRight,
-                        paddingBottom: socialIconPaddingBottom,
-                        paddingLeft: socialIconPaddingLeft,
-                        paddingTopTablet: socialIconPaddingTTablet,
-                        paddingRightTablet: socialIconPaddingRTablet,
-                        paddingBottomTablet: socialIconPaddingBTablet,
-                        paddingLeftTablet: socialIconPaddingLTablet,
-                        paddingTopMobile: socialIconPaddingTMobile,
-                        paddingRightMobile: socialIconPaddingRMobile,
-                        paddingBottomMobile: socialIconPaddingBMobile,
-                        paddingLeftMobile: socialIconPaddingLMobile,
-                        showUnits: true,
-                        defaultValue: 0,
-                        min: 0,
-                        max: 100,
-                        selectedUnit: socialIconStyles[0].socialIconPaddingType,
-                        onChangePadSizeUnit: function onChangePadSizeUnit(newvalue) {
-                            return saveSocialIconStyles({ socialIconPaddingType: newvalue });
-                        },
-                        onChangePaddingTop: function onChangePaddingTop(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ socialIconPaddingTop: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ socialIconPaddingTTablet: newValue });
-                            } else {
-                                setAttributes({ socialIconPaddingTMobile: newValue });
-                            }
-                        },
-                        onChangePaddingRight: function onChangePaddingRight(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ socialIconPaddingRight: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ socialIconPaddingRTablet: newValue });
-                            } else {
-                                setAttributes({ socialIconPaddingRMobile: newValue });
-                            }
-                        },
-                        onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ socialIconPaddingBottom: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ socialIconPaddingBTablet: newValue });
-                            } else {
-                                setAttributes({ socialIconPaddingBMobile: newValue });
-                            }
-                        },
-                        onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ socialIconPaddingLeft: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ socialIconPaddingLTablet: newValue });
-                            } else {
-                                setAttributes({ socialIconPaddingLMobile: newValue });
-                            }
-                        }
-                    })
-                ),
-                React.createElement(
-                    PanelBody,
-                    {
-                        title: __("Content"),
-                        className: "premium-panel-body",
-                        initialOpen: false
-                    },
-                    React.createElement(
-                        "div",
-                        { className: "premium-control-toggle" },
-                        React.createElement(_ColorComponent2.default, {
-                            label: __("Color", 'premium-block-for-gutenberg'),
-                            colorValue: contentColor,
-                            colorDefault: '',
-                            onColorChange: function onColorChange(newValue) {
-                                return setAttributes({
-                                    contentColor: newValue
-                                });
-                            }
-                        })
-                    ),
-                    effectPersonStyle === 'effect1' ? React.createElement(_singleRangeControl2.default, {
-                        label: __("Bottom Offset", 'premium-block-for-gutenberg'),
-                        value: bottomInfo,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({ bottomInfo: newValue });
-                        },
-                        showUnit: false,
-                        defaultValue: 15,
-                        min: 15
-                    }) : ""
-                )
-            ), React.createElement(
-                "div",
-                {
-                    id: "premium-person-" + id,
-                    className: mainClasses + " premium-person__" + effect + " premium-person__" + effectDir,
-                    style: { textAlign: personAlign }
-                },
-                React.createElement("style", {
-                    dangerouslySetInnerHTML: {
-                        __html: ["#premium-person-" + id + " .premium-person:hover {", "border-color: " + borderHoverColor + " !important;", "}", "#premium-person-" + id + " .premium-person__social-List li:hover i{", "color: " + socialIconStyles[0].socialIconHoverColor + " !important;", "-webkit-transition: all .2s ease-in-out;", "transition: all .2s ease-in-out;", "}"].join("\n")
-                    }
-                }),
-                content()
-            )];
-        }
-    }]);
-
-    return edit;
-}(Component);
-
-exports.default = withSelect(function (select, props) {
-    var _select = select('core/edit-post'),
-        _select$__experimenta = _select.__experimentalGetPreviewDeviceType,
-        __experimentalGetPreviewDeviceType = _select$__experimenta === undefined ? null : _select$__experimenta;
-
-    var deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
-
-    return { deviceType: deviceType };
-})(edit);
-
-/***/ }),
-/* 385 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var baseTimes = __webpack_require__(386),
-    castFunction = __webpack_require__(387),
-    toInteger = __webpack_require__(389);
-
-/** Used as references for various `Number` constants. */
-var MAX_SAFE_INTEGER = 9007199254740991;
-
-/** Used as references for the maximum length and index of an array. */
-var MAX_ARRAY_LENGTH = 4294967295;
-
-/* Built-in method references for those with the same name as other `lodash` methods. */
-var nativeMin = Math.min;
-
-/**
- * Invokes the iteratee `n` times, returning an array of the results of
- * each invocation. The iteratee is invoked with one argument; (index).
- *
- * @static
- * @since 0.1.0
- * @memberOf _
- * @category Util
- * @param {number} n The number of times to invoke `iteratee`.
- * @param {Function} [iteratee=_.identity] The function invoked per iteration.
- * @returns {Array} Returns the array of results.
- * @example
- *
- * _.times(3, String);
- * // => ['0', '1', '2']
- *
- *  _.times(4, _.constant(0));
- * // => [0, 0, 0, 0]
- */
-function times(n, iteratee) {
-  n = toInteger(n);
-  if (n < 1 || n > MAX_SAFE_INTEGER) {
-    return [];
-  }
-  var index = MAX_ARRAY_LENGTH,
-      length = nativeMin(n, MAX_ARRAY_LENGTH);
-
-  iteratee = castFunction(iteratee);
-  n -= MAX_ARRAY_LENGTH;
-
-  var result = baseTimes(length, iteratee);
-  while (++index < n) {
-    iteratee(index);
-  }
-  return result;
-}
-
-module.exports = times;
-
-/***/ }),
-/* 386 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * The base implementation of `_.times` without support for iteratee shorthands
- * or max array length checks.
- *
- * @private
- * @param {number} n The number of times to invoke `iteratee`.
- * @param {Function} iteratee The function invoked per iteration.
- * @returns {Array} Returns the array of results.
- */
-function baseTimes(n, iteratee) {
-  var index = -1,
-      result = Array(n);
-
-  while (++index < n) {
-    result[index] = iteratee(index);
-  }
-  return result;
-}
-
-module.exports = baseTimes;
-
-/***/ }),
-/* 387 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var identity = __webpack_require__(388);
-
-/**
- * Casts `value` to `identity` if it's not a function.
- *
- * @private
- * @param {*} value The value to inspect.
- * @returns {Function} Returns cast function.
- */
-function castFunction(value) {
-  return typeof value == 'function' ? value : identity;
-}
-
-module.exports = castFunction;
-
-/***/ }),
-/* 388 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * This method returns the first argument it receives.
- *
- * @static
- * @since 0.1.0
- * @memberOf _
- * @category Util
- * @param {*} value Any value.
- * @returns {*} Returns `value`.
- * @example
- *
- * var object = { 'a': 1 };
- *
- * console.log(_.identity(object) === object);
- * // => true
- */
-function identity(value) {
-  return value;
-}
-
-module.exports = identity;
-
-/***/ }),
-/* 389 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var toFinite = __webpack_require__(390);
-
-/**
- * Converts `value` to an integer.
- *
- * **Note:** This method is loosely based on
- * [`ToInteger`](http://www.ecma-international.org/ecma-262/7.0/#sec-tointeger).
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to convert.
- * @returns {number} Returns the converted integer.
- * @example
- *
- * _.toInteger(3.2);
- * // => 3
- *
- * _.toInteger(Number.MIN_VALUE);
- * // => 0
- *
- * _.toInteger(Infinity);
- * // => 1.7976931348623157e+308
- *
- * _.toInteger('3.2');
- * // => 3
- */
-function toInteger(value) {
-  var result = toFinite(value),
-      remainder = result % 1;
-
-  return result === result ? remainder ? result - remainder : result : 0;
-}
-
-module.exports = toInteger;
-
-/***/ }),
-/* 390 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var toNumber = __webpack_require__(391);
-
-/** Used as references for various `Number` constants. */
-var INFINITY = 1 / 0,
-    MAX_INTEGER = 1.7976931348623157e+308;
-
-/**
- * Converts `value` to a finite number.
- *
- * @static
- * @memberOf _
- * @since 4.12.0
- * @category Lang
- * @param {*} value The value to convert.
- * @returns {number} Returns the converted number.
- * @example
- *
- * _.toFinite(3.2);
- * // => 3.2
- *
- * _.toFinite(Number.MIN_VALUE);
- * // => 5e-324
- *
- * _.toFinite(Infinity);
- * // => 1.7976931348623157e+308
- *
- * _.toFinite('3.2');
- * // => 3.2
- */
-function toFinite(value) {
-  if (!value) {
-    return value === 0 ? value : 0;
-  }
-  value = toNumber(value);
-  if (value === INFINITY || value === -INFINITY) {
-    var sign = value < 0 ? -1 : 1;
-    return sign * MAX_INTEGER;
-  }
-  return value === value ? value : 0;
-}
-
-module.exports = toFinite;
-
-/***/ }),
-/* 391 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var baseTrim = __webpack_require__(392),
-    isObject = __webpack_require__(394),
-    isSymbol = __webpack_require__(395);
-
-/** Used as references for various `Number` constants. */
-var NAN = 0 / 0;
-
-/** Used to detect bad signed hexadecimal string values. */
-var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
-
-/** Used to detect binary string values. */
-var reIsBinary = /^0b[01]+$/i;
-
-/** Used to detect octal string values. */
-var reIsOctal = /^0o[0-7]+$/i;
-
-/** Built-in method references without a dependency on `root`. */
-var freeParseInt = parseInt;
-
-/**
- * Converts `value` to a number.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to process.
- * @returns {number} Returns the number.
- * @example
- *
- * _.toNumber(3.2);
- * // => 3.2
- *
- * _.toNumber(Number.MIN_VALUE);
- * // => 5e-324
- *
- * _.toNumber(Infinity);
- * // => Infinity
- *
- * _.toNumber('3.2');
- * // => 3.2
- */
-function toNumber(value) {
-  if (typeof value == 'number') {
-    return value;
-  }
-  if (isSymbol(value)) {
-    return NAN;
-  }
-  if (isObject(value)) {
-    var other = typeof value.valueOf == 'function' ? value.valueOf() : value;
-    value = isObject(other) ? other + '' : other;
-  }
-  if (typeof value != 'string') {
-    return value === 0 ? value : +value;
-  }
-  value = baseTrim(value);
-  var isBinary = reIsBinary.test(value);
-  return isBinary || reIsOctal.test(value) ? freeParseInt(value.slice(2), isBinary ? 2 : 8) : reIsBadHex.test(value) ? NAN : +value;
-}
-
-module.exports = toNumber;
-
-/***/ }),
-/* 392 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var trimmedEndIndex = __webpack_require__(393);
-
-/** Used to match leading whitespace. */
-var reTrimStart = /^\s+/;
-
-/**
- * The base implementation of `_.trim`.
- *
- * @private
- * @param {string} string The string to trim.
- * @returns {string} Returns the trimmed string.
- */
-function baseTrim(string) {
-  return string ? string.slice(0, trimmedEndIndex(string) + 1).replace(reTrimStart, '') : string;
-}
-
-module.exports = baseTrim;
-
-/***/ }),
-/* 393 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/** Used to match a single whitespace character. */
-var reWhitespace = /\s/;
-
-/**
- * Used by `_.trim` and `_.trimEnd` to get the index of the last non-whitespace
- * character of `string`.
- *
- * @private
- * @param {string} string The string to inspect.
- * @returns {number} Returns the index of the last non-whitespace character.
- */
-function trimmedEndIndex(string) {
-  var index = string.length;
-
-  while (index-- && reWhitespace.test(string.charAt(index))) {}
-  return index;
-}
-
-module.exports = trimmedEndIndex;
-
-/***/ }),
-/* 394 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-/**
- * Checks if `value` is the
- * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
- * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an object, else `false`.
- * @example
- *
- * _.isObject({});
- * // => true
- *
- * _.isObject([1, 2, 3]);
- * // => true
- *
- * _.isObject(_.noop);
- * // => true
- *
- * _.isObject(null);
- * // => false
- */
-function isObject(value) {
-  var type = typeof value === 'undefined' ? 'undefined' : _typeof(value);
-  return value != null && (type == 'object' || type == 'function');
-}
-
-module.exports = isObject;
-
-/***/ }),
-/* 395 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var baseGetTag = __webpack_require__(396),
-    isObjectLike = __webpack_require__(401);
-
-/** `Object#toString` result references. */
-var symbolTag = '[object Symbol]';
-
-/**
- * Checks if `value` is classified as a `Symbol` primitive or object.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a symbol, else `false`.
- * @example
- *
- * _.isSymbol(Symbol.iterator);
- * // => true
- *
- * _.isSymbol('abc');
- * // => false
- */
-function isSymbol(value) {
-    return (typeof value === 'undefined' ? 'undefined' : _typeof(value)) == 'symbol' || isObjectLike(value) && baseGetTag(value) == symbolTag;
-}
-
-module.exports = isSymbol;
-
-/***/ }),
-/* 396 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _Symbol = __webpack_require__(128),
-    getRawTag = __webpack_require__(399),
-    objectToString = __webpack_require__(400);
-
-/** `Object#toString` result references. */
-var nullTag = '[object Null]',
-    undefinedTag = '[object Undefined]';
-
-/** Built-in value references. */
-var symToStringTag = _Symbol ? _Symbol.toStringTag : undefined;
-
-/**
- * The base implementation of `getTag` without fallbacks for buggy environments.
- *
- * @private
- * @param {*} value The value to query.
- * @returns {string} Returns the `toStringTag`.
- */
-function baseGetTag(value) {
-    if (value == null) {
-        return value === undefined ? undefinedTag : nullTag;
-    }
-    return symToStringTag && symToStringTag in Object(value) ? getRawTag(value) : objectToString(value);
-}
-
-module.exports = baseGetTag;
-
-/***/ }),
-/* 397 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var freeGlobal = __webpack_require__(398);
-
-/** Detect free variable `self`. */
-var freeSelf = (typeof self === 'undefined' ? 'undefined' : _typeof(self)) == 'object' && self && self.Object === Object && self;
-
-/** Used as a reference to the global object. */
-var root = freeGlobal || freeSelf || Function('return this')();
-
-module.exports = root;
-
-/***/ }),
-/* 398 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(global) {
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-/** Detect free variable `global` from Node.js. */
-var freeGlobal = (typeof global === 'undefined' ? 'undefined' : _typeof(global)) == 'object' && global && global.Object === Object && global;
-
-module.exports = freeGlobal;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(88)))
-
-/***/ }),
-/* 399 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _Symbol = __webpack_require__(128);
-
-/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty = objectProto.hasOwnProperty;
-
-/**
- * Used to resolve the
- * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
- * of values.
- */
-var nativeObjectToString = objectProto.toString;
-
-/** Built-in value references. */
-var symToStringTag = _Symbol ? _Symbol.toStringTag : undefined;
-
-/**
- * A specialized version of `baseGetTag` which ignores `Symbol.toStringTag` values.
- *
- * @private
- * @param {*} value The value to query.
- * @returns {string} Returns the raw `toStringTag`.
- */
-function getRawTag(value) {
-  var isOwn = hasOwnProperty.call(value, symToStringTag),
-      tag = value[symToStringTag];
-
-  try {
-    value[symToStringTag] = undefined;
-    var unmasked = true;
-  } catch (e) {}
-
-  var result = nativeObjectToString.call(value);
-  if (unmasked) {
-    if (isOwn) {
-      value[symToStringTag] = tag;
-    } else {
-      delete value[symToStringTag];
-    }
-  }
-  return result;
-}
-
-module.exports = getRawTag;
-
-/***/ }),
-/* 400 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/**
- * Used to resolve the
- * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
- * of values.
- */
-var nativeObjectToString = objectProto.toString;
-
-/**
- * Converts `value` to a string using `Object.prototype.toString`.
- *
- * @private
- * @param {*} value The value to convert.
- * @returns {string} Returns the converted string.
- */
-function objectToString(value) {
-  return nativeObjectToString.call(value);
-}
-
-module.exports = objectToString;
-
-/***/ }),
-/* 401 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-/**
- * Checks if `value` is object-like. A value is object-like if it's not `null`
- * and has a `typeof` result of "object".
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
- * @example
- *
- * _.isObjectLike({});
- * // => true
- *
- * _.isObjectLike([1, 2, 3]);
- * // => true
- *
- * _.isObjectLike(_.noop);
- * // => false
- *
- * _.isObjectLike(null);
- * // => false
- */
-function isObjectLike(value) {
-  return value != null && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) == 'object';
-}
-
-module.exports = isObjectLike;
-
-/***/ }),
-/* 402 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-var __ = wp.i18n.__;
-
-var attributes = {
-    personSize: {
-        type: "string",
-        default: "md"
-    },
-    personAlign: {
-        type: "string",
-        default: "center"
-    },
-    imgSize: {
-        type: "number"
-    },
-    imgBorder: {
-        type: "number",
-        default: "1"
-    },
-    imgBorderColor: {
-        type: "string"
-    },
-    nameStyles: {
-        type: "array",
-        default: [{
-            nameColor: "rgb(110, 193, 228)",
-            nameLetter: 0,
-            nameStyle: '',
-            nameUpper: false,
-            nameWeight: 500,
-            nameLine: 0,
-            namefontSize: 20,
-            namefontSizeType: "px",
-            namefontSizeMobile: 20,
-            namefontSizeTablet: 20,
-            nameshadowColor: '',
-            nameshadowBlur: 0,
-            nameshadowHorizontal: 0,
-            nameshadowVertical: 0
-        }]
-    },
-    titleStyles: {
-        type: "array",
-        default: [{
-            titleColor: "",
-            titleLetter: 0,
-            titleStyle: '',
-            titleUpper: false,
-            titleWeight: 500,
-            titleLine: 0,
-            titleSize: 20,
-            titlefontSizeType: "px",
-            titlefontSizeMobile: 20,
-            titlefontSizeTablet: 20,
-            titleshadowColor: '',
-            titleshadowBlur: 0,
-            titleshadowHorizontal: 0,
-            titleshadowVertical: 0
-        }]
-    },
-    descStyles: {
-        type: "array",
-        default: [{
-            descColor: "",
-            descLetter: 0,
-            descStyle: '',
-            descUpper: false,
-            descWeight: '',
-            descLine: 0,
-            descSize: 20,
-            descfontSizeType: "px",
-            descfontSizeMobile: 20,
-            descfontSizeTablet: 20,
-            descshadowColor: '',
-            descshadowBlur: 0,
-            descshadowHorizontal: 0,
-            descshadowVertical: 0
-        }]
-    },
-    socialIconStyles: {
-        type: "array",
-        default: [{
-            socialIconColor: "",
-            socialIconHoverColor: '',
-            socialIconBackgroundColor: '',
-            defaultIconColor: false,
-            socialIconSize: 20,
-            socialIconfontSizeType: "px",
-            socialIconfontSizeMobile: 20,
-            socialIconfontSizeTablet: 20,
-            borderTypeIcon: 'none',
-            borderWidthIcon: '1',
-            borderRadiusIcon: '0',
-            borderColorIcon: '',
-            socialIconPaddingType: 'px',
-            socialIconMarginType: 'px'
-        }]
-    },
-    socialIconBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    socialIconBorderTop: {
-        type: "number"
-    },
-    socialIconBorderRight: {
-        type: "number"
-    },
-    socialIconBorderBottom: {
-        type: "number"
-    },
-    socialIconBorderLeft: {
-        type: "number"
-    },
-    socialIconBorderUpdated: {
-        type: "boolean",
-        default: false
-    },
-    socialIconMarginT: {
-        type: "number"
-    },
-    socialIconMarginR: {
-        type: "number"
-    },
-    socialIconMarginB: {
-        type: "number"
-    },
-    socialIconMarginL: {
-        type: "number"
-    },
-    socialIconMarginTTablet: {
-        type: "number"
-    },
-    socialIconMarginRTablet: {
-        type: "number"
-    },
-    socialIconMarginBTablet: {
-        type: "number"
-    },
-    socialIconMarginLTablet: {
-        type: "number"
-    },
-    socialIconMarginTMobile: {
-        type: "number"
-    },
-    socialIconMarginRMobile: {
-        type: "number"
-    },
-    socialIconMarginBMobile: {
-        type: "number"
-    },
-    socialIconMarginLMobile: {
-        type: "number"
-    },
-    socialIconPaddingTop: {
-        type: "number"
-    },
-    socialIconPaddingRight: {
-        type: "number"
-    },
-    socialIconPaddingBottom: {
-        type: "number"
-    },
-    socialIconPaddingLeft: {
-        type: "number"
-    },
-    socialIconPaddingTTablet: {
-        type: "number"
-    },
-    socialIconPaddingRTablet: {
-        type: "number"
-    },
-    socialIconPaddingBTablet: {
-        type: "number"
-    },
-    socialIconPaddingLTablet: {
-        type: "number"
-    },
-    socialIconPaddingTMobile: {
-        type: "number"
-    },
-    socialIconPaddingRMobile: {
-        type: "number"
-    },
-    socialIconPaddingBMobile: {
-        type: "number"
-    },
-    socialIconPaddingLMobile: {
-        type: "number"
-    },
-    titleTag: {
-        type: "string",
-        default: "p"
-    },
-    contentColor: {
-        type: "string"
-    },
-    bottomInfo: {
-        type: "number",
-        default: 15
-    },
-    effect: {
-        type: "string",
-        default: "none"
-    },
-    effectDir: {
-        type: "string",
-        default: "top"
-    },
-    descColor: {
-        type: "string",
-        default: "#000"
-    },
-    multiPersonChecked: {
-        type: "number",
-        default: 1
-    },
-    borderHoverColor: {
-        type: "string"
-    },
-    personShadowPosition: {
-        type: "string",
-        default: ""
-    },
-    id: {
-        type: "string"
-    },
-    classMigrate: {
-        type: "boolean",
-        default: false
-    },
-    hoverEffectPerson: {
-        type: "string",
-        default: "none"
-    },
-    selectedSocialMediaIcon: {
-        type: "string"
-    },
-    effectPersonStyle: {
-        type: "string",
-        default: "effect1"
-    },
-    rowPerson: {
-        type: "string",
-        default: "column1"
-    },
-    multiPersonContent: {
-        type: "array",
-        default: [{
-            id: 1,
-            personImgUrl: "",
-            personImgId: '',
-            name: "John Doe",
-            title: "Senior Developer",
-            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla",
-            socialIcon: false,
-            items: [{ label: 'facebook', link: false, value: "#", changeinput: "#" }, { label: 'twitter', link: false, value: "#", changeinput: "#" }, { label: 'instagram', link: false, value: "#", changeinput: "#" }, { label: 'youtube', link: false, value: "#", changeinput: "#" }]
-        }]
-    },
-    change: {
-        type: "boolean",
-        default: false
-    },
-    blur: {
-        type: "number",
-        default: "0"
-    },
-    bright: {
-        type: "number",
-        default: "100"
-    },
-    contrast: {
-        type: "number",
-        default: "100"
-    },
-    saturation: {
-        type: "number",
-        default: "100"
-    },
-    hue: {
-        type: "number",
-        default: "0"
-    }
-};
-exports.default = attributes;
-
-/***/ }),
-/* 403 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _settings = __webpack_require__(1);
-
-var _save = __webpack_require__(404);
-
-var _save2 = _interopRequireDefault(_save);
-
-var _edit = __webpack_require__(405);
-
-var _edit2 = _interopRequireDefault(_edit);
-
-var _icons = __webpack_require__(4);
-
-var _icons2 = _interopRequireDefault(_icons);
-
-var _attributes = __webpack_require__(406);
+var _attributes = __webpack_require__(384);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -66095,7 +63159,7 @@ registerBlockType("premium/heading", {
 });
 
 /***/ }),
-/* 404 */
+/* 382 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66314,7 +63378,7 @@ function save(props) {
 }
 
 /***/ }),
-/* 405 */
+/* 383 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66328,7 +63392,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _premiumTypo = __webpack_require__(7);
+var _premiumTypo = __webpack_require__(9);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
@@ -66336,11 +63400,11 @@ var _premiumBorder = __webpack_require__(6);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumIconsList = __webpack_require__(32);
+var _premiumIconsList = __webpack_require__(30);
 
 var _premiumIconsList2 = _interopRequireDefault(_premiumIconsList);
 
-var _reactFonticonpicker = __webpack_require__(23);
+var _reactFonticonpicker = __webpack_require__(29);
 
 var _reactFonticonpicker2 = _interopRequireDefault(_reactFonticonpicker);
 
@@ -66352,11 +63416,11 @@ var _PremiumShadow = __webpack_require__(5);
 
 var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
-var _premiumResponsiveTabs = __webpack_require__(8);
+var _premiumResponsiveTabs = __webpack_require__(7);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _responsiveRangeControl = __webpack_require__(19);
+var _responsiveRangeControl = __webpack_require__(20);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
@@ -66368,19 +63432,19 @@ var _singleRangeControl = __webpack_require__(2);
 
 var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
-var _premiumMediaUpload = __webpack_require__(13);
+var _premiumMediaUpload = __webpack_require__(14);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
-var _reactLottieWithSegments = __webpack_require__(70);
+var _reactLottieWithSegments = __webpack_require__(69);
 
 var _reactLottieWithSegments2 = _interopRequireDefault(_reactLottieWithSegments);
 
-var _PremiumResponsiveMargin = __webpack_require__(24);
+var _PremiumResponsiveMargin = __webpack_require__(31);
 
 var _PremiumResponsiveMargin2 = _interopRequireDefault(_PremiumResponsiveMargin);
 
-var _PremiumResponsivePadding = __webpack_require__(11);
+var _PremiumResponsivePadding = __webpack_require__(12);
 
 var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
 
@@ -68146,7 +65210,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 406 */
+/* 384 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68643,6 +65707,2988 @@ var attributes = (_attributes = {
     default: "h2"
 }), _attributes);
 exports.default = attributes;
+
+/***/ }),
+/* 385 */,
+/* 386 */,
+/* 387 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var root = __webpack_require__(403);
+
+/** Built-in value references. */
+var _Symbol = root.Symbol;
+
+module.exports = _Symbol;
+
+/***/ }),
+/* 388 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _settings = __webpack_require__(1);
+
+var _save = __webpack_require__(389);
+
+var _save2 = _interopRequireDefault(_save);
+
+var _edit = __webpack_require__(390);
+
+var _edit2 = _interopRequireDefault(_edit);
+
+var _icons = __webpack_require__(4);
+
+var _icons2 = _interopRequireDefault(_icons);
+
+var _attributes = __webpack_require__(408);
+
+var _attributes2 = _interopRequireDefault(_attributes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+var registerBlockType = wp.blocks.registerBlockType;
+
+
+registerBlockType("premium/person", {
+    title: __("Team Members"),
+    icon: React.createElement(_icons2.default, { icon: "" }),
+    category: "premium-blocks",
+    attributes: _attributes2.default,
+    supports: {
+        inserter: _settings.person
+    },
+    example: {},
+    edit: _edit2.default,
+    save: _save2.default
+});
+
+/***/ }),
+/* 389 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _classnames = __webpack_require__(0);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _defaultImage = __webpack_require__(66);
+
+var _defaultImage2 = _interopRequireDefault(_defaultImage);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var save = function save(props) {
+    var className = props.className;
+    var _props$attributes = props.attributes,
+        id = _props$attributes.id,
+        personAlign = _props$attributes.personAlign,
+        imgBorder = _props$attributes.imgBorder,
+        imgBorderColor = _props$attributes.imgBorderColor,
+        imgSize = _props$attributes.imgSize,
+        nameV = _props$attributes.nameV,
+        titleStyles = _props$attributes.titleStyles,
+        socialIconStyles = _props$attributes.socialIconStyles,
+        socialIconBorderWidth = _props$attributes.socialIconBorderWidth,
+        socialIconBorderTop = _props$attributes.socialIconBorderTop,
+        socialIconBorderRight = _props$attributes.socialIconBorderRight,
+        socialIconBorderBottom = _props$attributes.socialIconBorderBottom,
+        socialIconBorderLeft = _props$attributes.socialIconBorderLeft,
+        socialIconBorderUpdated = _props$attributes.socialIconBorderUpdated,
+        nameStyles = _props$attributes.nameStyles,
+        descStyles = _props$attributes.descStyles,
+        titleV = _props$attributes.titleV,
+        descV = _props$attributes.descV,
+        socialIconHoverColor = _props$attributes.socialIconHoverColor,
+        effect = _props$attributes.effect,
+        effectDir = _props$attributes.effectDir,
+        multiPersonChecked = _props$attributes.multiPersonChecked,
+        borderHoverColor = _props$attributes.borderHoverColor,
+        hoverEffectPerson = _props$attributes.hoverEffectPerson,
+        effectPersonStyle = _props$attributes.effectPersonStyle,
+        multiPersonContent = _props$attributes.multiPersonContent,
+        rowPerson = _props$attributes.rowPerson,
+        change = _props$attributes.change,
+        blur = _props$attributes.blur,
+        bright = _props$attributes.bright,
+        contrast = _props$attributes.contrast,
+        saturation = _props$attributes.saturation,
+        hue = _props$attributes.hue,
+        contentColor = _props$attributes.contentColor,
+        bottomInfo = _props$attributes.bottomInfo;
+
+
+    var mainClasses = (0, _classnames2.default)(className, 'premium-person');
+
+    var socialIconfn = function socialIconfn(v) {
+        return React.createElement(
+            'ul',
+            { className: 'premium-person__social-List' },
+            v.map(function (value) {
+                return React.createElement(
+                    'li',
+                    null,
+                    React.createElement(
+                        'a',
+                        { className: 'premium-person__socialIcon__link_content ' + (socialIconStyles[0].defaultIconColor ? value.label : ""), href: '' + value.value, style: {
+                                borderStyle: socialIconStyles[0].borderTypeIcon,
+                                borderWidth: socialIconBorderUpdated ? socialIconBorderTop + 'px ' + socialIconBorderRight + 'px ' + socialIconBorderBottom + 'px ' + socialIconBorderLeft + 'px' : socialIconBorderWidth + "px",
+                                borderRadius: socialIconStyles[0].borderRadiusIcon || 100 + "px",
+                                borderColor: socialIconStyles[0].borderColorIcon,
+                                background: socialIconStyles[0].socialIconBackgroundColor
+                            } },
+                        React.createElement('i', { className: 'premium-person__socialIcon ' + (value.label == "youtube" ? "fa fa-youtube-play" : 'fa fa-' + value.label) + ' premium-person__' + socialIconHoverColor,
+                            style: {
+                                color: socialIconStyles[0].socialIconColor
+                            }
+                        })
+                    )
+                );
+            })
+        );
+    };
+    var content = function content() {
+        return React.createElement(
+            'div',
+            { className: 'premium-person-content ' + id + ' ' + (multiPersonChecked > 1 ? 'premium-person__' + rowPerson : "")
+            },
+            ' ',
+            multiPersonContent.map(function (value) {
+                return React.createElement(
+                    'div',
+                    { key: value.id, className: 'premium-person__inner premium-persson__min premium-person__' + effectPersonStyle + ' premium-person__' + hoverEffectPerson },
+                    React.createElement(
+                        'div',
+                        { className: 'premium-person__img__container' },
+                        React.createElement(
+                            'div',
+                            {
+                                className: 'premium-person__img_wrap'
+                            },
+                            value.personImgUrl && React.createElement('img', {
+                                className: 'premium-person__img',
+                                src: '' + value.personImgUrl,
+                                alt: 'Person',
+                                style: {
+                                    borderWidth: imgBorder + "px",
+                                    borderColor: imgBorderColor,
+                                    width: imgSize + "px",
+                                    height: imgSize + "px",
+                                    filter: '' + (change ? 'brightness( ' + bright + '% ) contrast( ' + contrast + '% ) saturate( ' + saturation + '% ) blur( ' + blur + 'px ) hue-rotate( ' + hue + 'deg )' : "")
+                                }
+                            }),
+                            !value.personImgUrl && React.createElement(_defaultImage2.default, { className: className })
+                        ),
+                        effectPersonStyle === 'effect2' ? React.createElement(
+                            'div',
+                            { className: 'premium-person__socialEffect2' },
+                            value.socialIcon && socialIconfn(value.items)
+                        ) : ""
+                    ),
+                    React.createElement(
+                        'div',
+                        {
+                            className: 'premium-person__info',
+                            style: {
+                                background: contentColor ? contentColor : "#f2f2f2",
+                                bottom: effectPersonStyle === 'effect1' ? bottomInfo + "px" : ""
+                            }
+                        },
+                        React.createElement(
+                            'div',
+                            { className: 'premium-person__name_wrap' },
+                            value.name && React.createElement(
+                                'span',
+                                {
+                                    className: 'premium-person__name',
+                                    style: {
+                                        color: nameStyles[0].nameColor,
+                                        fontWeight: nameStyles[0].nameWeight,
+                                        alignSelf: nameV,
+                                        letterSpacing: nameStyles[0].nameLetter + "px",
+                                        lineHeight: nameStyles[0].nameLine + "px",
+                                        fontStyle: nameStyles[0].nameStyle,
+                                        textTransform: nameStyles[0].nameUpper ? "uppercase" : "none",
+                                        textShadow: nameStyles[0].nameshadowHorizontal + 'px ' + nameStyles[0].nameshadowVertical + 'px ' + nameStyles[0].nameshadowBlur + 'px ' + nameStyles[0].nameshadowColor
+                                    }
+                                },
+                                value.name
+                            )
+                        ),
+                        React.createElement(
+                            'div',
+                            { className: 'premium-person__title_wrap' },
+                            value.title && React.createElement(
+                                'span',
+                                {
+                                    className: 'premium-person__title',
+                                    style: {
+                                        color: titleStyles[0].titleColor,
+                                        fontWeight: titleStyles[0].titleWeight,
+                                        alignSelf: titleV,
+                                        letterSpacing: titleStyles[0].titleLetter + "px",
+                                        lineHeight: titleStyles[0].titleLine + "px",
+                                        fontStyle: titleStyles[0].titleStyle,
+                                        textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                        textShadow: titleStyles[0].titleshadowHorizontal + 'px ' + titleStyles[0].titleshadowVertical + 'px ' + titleStyles[0].titleshadowBlur + 'px ' + titleStyles[0].titleshadowColor
+                                    }
+                                },
+                                value.title
+                            )
+                        ),
+                        React.createElement(
+                            'div',
+                            { className: 'premium-person__desc_wrap' },
+                            value.desc && React.createElement(
+                                'span',
+                                {
+                                    className: 'premium-person__desc',
+                                    style: {
+                                        color: descStyles[0].descColor,
+                                        fontWeight: descStyles[0].descWeight,
+                                        alignSelf: descV,
+                                        letterSpacing: descStyles[0].descLetter + "px",
+                                        lineHeight: descStyles[0].descLine + "px",
+                                        fontStyle: descStyles[0].descStyle,
+                                        textTransform: descStyles[0].descUpper ? "uppercase" : "none",
+                                        textShadow: descStyles[0].descshadowHorizontal + 'px ' + descStyles[0].descshadowVertical + 'px ' + descStyles[0].descshadowBlur + 'px ' + descStyles[0].descshadowColor
+                                    }
+                                },
+                                value.desc
+                            )
+                        ),
+                        effectPersonStyle == 'effect1' ? React.createElement(
+                            'div',
+                            null,
+                            value.socialIcon && socialIconfn(value.items)
+                        ) : ""
+                    )
+                );
+            })
+        );
+    };
+
+    return React.createElement(
+        'div',
+        {
+            id: 'premium-person-' + id,
+            className: mainClasses + ' premium-person__' + effect + ' premium-person__' + effectDir,
+            style: { textAlign: personAlign }
+        },
+        React.createElement('style', {
+            dangerouslySetInnerHTML: {
+                __html: ['#premium-person-' + id + ' .premium-person:hover {', 'border-color: ' + borderHoverColor + ' !important;', "}", '#premium-person-' + id + ' .premium-person__social-List li:hover i{', 'color: ' + socialIconStyles[0].socialIconHoverColor + ' !important;', '-webkit-transition: all .2s ease-in-out;', 'transition: all .2s ease-in-out;', "}"].join("\n")
+            }
+        }),
+        content()
+    );
+};
+
+exports.default = save;
+
+/***/ }),
+/* 390 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _classnames = __webpack_require__(0);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _premiumTypo = __webpack_require__(9);
+
+var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
+
+var _premiumBorder = __webpack_require__(6);
+
+var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
+
+var _PremiumShadow = __webpack_require__(5);
+
+var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
+
+var _defaultImage = __webpack_require__(66);
+
+var _defaultImage2 = _interopRequireDefault(_defaultImage);
+
+var _premiumFilters = __webpack_require__(39);
+
+var _premiumFilters2 = _interopRequireDefault(_premiumFilters);
+
+var _ColorComponent = __webpack_require__(3);
+
+var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
+
+var _reactFonticonpicker = __webpack_require__(29);
+
+var _reactFonticonpicker2 = _interopRequireDefault(_reactFonticonpicker);
+
+var _singleRangeControl = __webpack_require__(2);
+
+var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
+
+var _responsiveRangeControl = __webpack_require__(20);
+
+var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
+
+var _premiumResponsiveSpacing = __webpack_require__(409);
+
+var _premiumResponsiveSpacing2 = _interopRequireDefault(_premiumResponsiveSpacing);
+
+var _premiumMediaUpload = __webpack_require__(14);
+
+var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
+
+var _reactSortableHoc = __webpack_require__(110);
+
+var _times = __webpack_require__(391);
+
+var _times2 = _interopRequireDefault(_times);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var withSelect = wp.data.withSelect;
+var __ = wp.i18n.__;
+var Component = wp.element.Component;
+var _wp$components = wp.components,
+    PanelBody = _wp$components.PanelBody,
+    SelectControl = _wp$components.SelectControl,
+    ToggleControl = _wp$components.ToggleControl,
+    TextControl = _wp$components.TextControl,
+    TextareaControl = _wp$components.TextareaControl;
+var _wp$editor = wp.editor,
+    InspectorControls = _wp$editor.InspectorControls,
+    AlignmentToolbar = _wp$editor.AlignmentToolbar,
+    BlockControls = _wp$editor.BlockControls;
+
+
+var SortableItem = (0, _reactSortableHoc.SortableElement)(function (_ref) {
+    var onRemove = _ref.onRemove,
+        saveLink = _ref.saveLink,
+        changeLinkValue = _ref.changeLinkValue,
+        value = _ref.value,
+        addLink = _ref.addLink,
+        personIndex = _ref.personIndex;
+    return React.createElement(
+        "li",
+        { tabIndex: 0 },
+        React.createElement(
+            "span",
+            { className: "premium-person__socialIcon__container" },
+            React.createElement("span", { className: "premium-person__socialIcon__dragHandle" }),
+            React.createElement(
+                "div",
+                { className: "premium-person__socialIcon__content", onClick: function onClick() {
+                        return addLink(value);
+                    } },
+                React.createElement("span", { className: "premium-person__socialIcon__iconvalue fa fa-" + value.label }),
+                value.label
+            ),
+            React.createElement("button", { className: "premium-person__socialIcon__trashicon fa fa-trash", onClick: function onClick() {
+                    return onRemove(value.label);
+                } })
+        ),
+        value.link && React.createElement(
+            "div",
+            { className: "premium-person__socialIcon__link" },
+            React.createElement(TextControl, {
+                placeholder: __("Enter " + value.label + " link"),
+                value: value.changeinput,
+                onChange: function onChange(val) {
+                    return changeLinkValue(val, value, personIndex);
+                },
+                className: "premium-person__socialIcon__textInput"
+            }),
+            React.createElement(
+                "button",
+                { className: "premium-person__socialIcon__saveButton", onClick: function onClick() {
+                        return saveLink(value.changeinput, value, personIndex);
+                    } },
+                "Save"
+            )
+        )
+    );
+});
+
+var SortableList = (0, _reactSortableHoc.SortableContainer)(function (_ref2) {
+    var items = _ref2.items,
+        onRemove = _ref2.onRemove,
+        saveLink = _ref2.saveLink,
+        changeLinkValue = _ref2.changeLinkValue,
+        addLink = _ref2.addLink,
+        personIndex = _ref2.personIndex;
+
+    return React.createElement(
+        "ul",
+        null,
+        items.map(function (value, index) {
+            return React.createElement(SortableItem, { key: "item-" + value, index: index, newIndex: index, personIndex: personIndex, value: value, onRemove: onRemove, saveLink: saveLink, addLink: addLink, changeLinkValue: changeLinkValue });
+        })
+    );
+});
+
+var edit = function (_Component) {
+    _inherits(edit, _Component);
+
+    function edit() {
+        _classCallCheck(this, edit);
+
+        return _possibleConstructorReturn(this, (edit.__proto__ || Object.getPrototypeOf(edit)).apply(this, arguments));
+    }
+
+    _createClass(edit, [{
+        key: "componentDidMount",
+        value: function componentDidMount() {
+            // Assigning id in the attribute.
+            this.props.setAttributes({ id: this.props.clientId });
+            this.props.setAttributes({ classMigrate: true });
+            this.getPreviewSize = this.getPreviewSize.bind(this);
+        }
+    }, {
+        key: "getPreviewSize",
+        value: function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
+            if (device === 'Mobile') {
+                if (undefined !== mobileSize && '' !== mobileSize) {
+                    return mobileSize;
+                } else if (undefined !== tabletSize && '' !== tabletSize) {
+                    return tabletSize;
+                }
+            } else if (device === 'Tablet') {
+                if (undefined !== tabletSize && '' !== tabletSize) {
+                    return tabletSize;
+                }
+            }
+            return desktopSize;
+        }
+    }, {
+        key: "save",
+        value: function save(value, index) {
+            var _props = this.props,
+                attributes = _props.attributes,
+                setAttributes = _props.setAttributes;
+            var multiPersonContent = attributes.multiPersonContent;
+
+            var newItems = multiPersonContent.map(function (item, thisIndex) {
+                if (index === thisIndex) {
+                    item = _extends({}, item, value);
+                }
+                return item;
+            });
+            setAttributes({
+                multiPersonContent: newItems
+            });
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var _this2 = this;
+
+            var _props2 = this.props,
+                isSelected = _props2.isSelected,
+                setAttributes = _props2.setAttributes,
+                className = _props2.className,
+                blockId = _props2.clientId;
+            var _props$attributes = this.props.attributes,
+                id = _props$attributes.id,
+                personSize = _props$attributes.personSize,
+                personAlign = _props$attributes.personAlign,
+                imgSize = _props$attributes.imgSize,
+                imgBorder = _props$attributes.imgBorder,
+                imgBorderColor = _props$attributes.imgBorderColor,
+                nameStyles = _props$attributes.nameStyles,
+                titleStyles = _props$attributes.titleStyles,
+                descStyles = _props$attributes.descStyles,
+                socialIconStyles = _props$attributes.socialIconStyles,
+                socialIconBorderWidth = _props$attributes.socialIconBorderWidth,
+                socialIconBorderTop = _props$attributes.socialIconBorderTop,
+                socialIconBorderRight = _props$attributes.socialIconBorderRight,
+                socialIconBorderBottom = _props$attributes.socialIconBorderBottom,
+                socialIconBorderLeft = _props$attributes.socialIconBorderLeft,
+                socialIconBorderUpdated = _props$attributes.socialIconBorderUpdated,
+                nameV = _props$attributes.nameV,
+                titleV = _props$attributes.titleV,
+                descV = _props$attributes.descV,
+                contentColor = _props$attributes.contentColor,
+                effect = _props$attributes.effect,
+                effectDir = _props$attributes.effectDir,
+                multiPersonChecked = _props$attributes.multiPersonChecked,
+                borderHoverColor = _props$attributes.borderHoverColor,
+                hoverEffectPerson = _props$attributes.hoverEffectPerson,
+                effectPersonStyle = _props$attributes.effectPersonStyle,
+                rowPerson = _props$attributes.rowPerson,
+                multiPersonContent = _props$attributes.multiPersonContent,
+                change = _props$attributes.change,
+                blur = _props$attributes.blur,
+                bright = _props$attributes.bright,
+                contrast = _props$attributes.contrast,
+                saturation = _props$attributes.saturation,
+                hue = _props$attributes.hue,
+                bottomInfo = _props$attributes.bottomInfo,
+                socialIconPadding = _props$attributes.socialIconPadding,
+                socialIconMargin = _props$attributes.socialIconMargin;
+
+
+            var HOVER = [{
+                value: "none",
+                label: __("None", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "zoomin",
+                label: __("Zoom In", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "zoomout",
+                label: __("Zoom Out", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "scale",
+                label: __("Scale", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "gray",
+                label: __("Gray Scale", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "blur",
+                label: __("Blur", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "bright",
+                label: __("Bright", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "sepia",
+                label: __("Sepia", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "translate",
+                label: __("Translate", 'premium-blocks-for-gutenberg')
+            }];
+
+            var EFFECTS = [{
+                value: "effect1",
+                label: __("Style 1", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "effect2",
+                label: __("Style 2", 'premium-blocks-for-gutenberg')
+            }];
+            var ROWS = [{
+                value: "column1",
+                label: __("1 Column", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "column2",
+                label: __("2 Columns", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "column3",
+                label: __("3 Columns", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "column4",
+                label: __("4 Columns", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "column5",
+                label: __("5 Columns", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "column6",
+                label: __("6 Columns", 'premium-blocks-for-gutenberg')
+            }];
+
+            var iconsList = [{
+                value: "fa fa-facebook-f",
+                label: __("facebook", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "fa fa-twitter",
+                label: __("twitter", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "fa fa-instagram",
+                label: __("instagram", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "fa fa-youtube",
+                label: __("youtube", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "fa fa-linkedin",
+                label: __("linkedin", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "fa fa-flickr",
+                label: __("flickr", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "fa fa-github",
+                label: __("github", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "fa fa-google-plus",
+                label: __("google-plus", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "fa fa-pinterest",
+                label: __("pinterest", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "fa fa-reddit",
+                label: __("reddit", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "fa fa-skype",
+                label: __("skype", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "fa fa-stack-overflow",
+                label: __("stack-overflow", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "fa fa-whatsapp",
+                label: __("whatsapp", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "fa fa-vimeo",
+                label: __("vimeo", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "fa fa-tumblr",
+                label: __("tumblr", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "fa fa-dribbble",
+                label: __("dribbble", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "fa fa-quora",
+                label: __("quora", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "fa fa-foursquare",
+                label: __("foursquare", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "fa fa-wordpress",
+                label: __("wordpress", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "fa fa-stumbleupon",
+                label: __("stumbleupon", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "fa fa-yahoo",
+                label: __("yahoo", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "fa fa-soundcloud",
+                label: __("soundcloud", 'premium-blocks-for-gutenberg')
+            }];
+
+            setAttributes({ id: blockId });
+
+            var mainClasses = (0, _classnames2.default)(className, "premium-person");
+
+            var NameSize = this.getPreviewSize(this.props.deviceType, nameStyles[0].namefontSize, nameStyles[0].namefontSizeTablet, nameStyles[0].namefontSizeMobile);
+
+            var TitleSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titlefontSizeTablet, titleStyles[0].titlefontSizeMobile);
+
+            var DescSize = this.getPreviewSize(this.props.deviceType, descStyles[0].descSize, descStyles[0].descfontSizeTablet, descStyles[0].descfontSizeMobile);
+
+            var SocialIconSize = this.getPreviewSize(this.props.deviceType, socialIconStyles[0].socialIconSize, socialIconStyles[0].socialIconfontSizeTablet, socialIconStyles[0].socialIconfontSizeMobile);
+
+            var SocialIconMarginTop = this.getPreviewSize(this.props.deviceType, socialIconMargin.Desktop.top, socialIconMargin.Tablet.top, socialIconMargin.Mobile.top);
+            var SocialIconMarginRight = this.getPreviewSize(this.props.deviceType, socialIconMargin.Desktop.right, socialIconMargin.Tablet.right, socialIconMargin.Mobile.right);
+            var SocialIconMarginBottom = this.getPreviewSize(this.props.deviceType, socialIconMargin.Desktop.bottom, socialIconMargin.Tablet.bottom, socialIconMargin.Mobile.bottom);
+            var SocialIconMarginLeft = this.getPreviewSize(this.props.deviceType, socialIconMargin.Desktop.left, socialIconMargin.Tablet.left, socialIconMargin.Mobile.left);
+            var SocialIconPaddingTop = this.getPreviewSize(this.props.deviceType, socialIconPadding.Desktop.top, socialIconPadding.Tablet.top, socialIconPadding.Mobile.top);
+            var SocialIconPaddingRight = this.getPreviewSize(this.props.deviceType, socialIconPadding.Desktop.right, socialIconPadding.Tablet.right, socialIconPadding.Mobile.right);
+            var SocialIconPaddingBottom = this.getPreviewSize(this.props.deviceType, socialIconPadding.Desktop.bottom, socialIconPadding.Tablet.bottom, socialIconPadding.Mobile.bottom);
+            var SocialIconPaddingLeft = this.getPreviewSize(this.props.deviceType, socialIconPadding.Desktop.left, socialIconPadding.Tablet.left, socialIconPadding.Mobile.left);
+
+            var shouldCancelStart = function shouldCancelStart(e) {
+                // Prevent sorting from being triggered if target is input or button
+                if (['div', 'button', 'input'].indexOf(e.target.tagName.toLowerCase()) !== -1) {
+                    return true; // Return true to cancel sorting
+                }
+            };
+
+            var saveNameStyles = function saveNameStyles(value) {
+                var newUpdate = nameStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    nameStyles: newUpdate
+                });
+            };
+
+            var saveTitleStyles = function saveTitleStyles(value) {
+                var newUpdate = titleStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    titleStyles: newUpdate
+                });
+            };
+
+            var saveDescStyles = function saveDescStyles(value) {
+                var newUpdate = descStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    descStyles: newUpdate
+                });
+            };
+
+            var saveSocialIconStyles = function saveSocialIconStyles(value) {
+                var newUpdate = socialIconStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({
+                    socialIconStyles: newUpdate
+                });
+            };
+
+            var _addLink = function _addLink(value, i) {
+                value.link = !value.link;
+                value.link == false ? value.changeinput = value.value : value.changeinput;
+                var array = multiPersonContent.map(function (cont) {
+                    return cont;
+                }).filter(function (f) {
+                    return f.id == i + 1;
+                });
+                var newData = array[0].items.filter(function (b) {
+                    return b;
+                });
+                array[0].items = newData;
+                multiPersonContent[i] = array[0];
+                setAttributes(multiPersonContent[i] = array[0]);
+            };
+
+            var _saveLink = function _saveLink(value, i, personIndex) {
+                i.value = value;
+                var arrayItem = multiPersonContent.map(function (cont) {
+                    return cont;
+                }).filter(function (f) {
+                    return f.id == personIndex + 1;
+                });
+                i.link = false;
+                var newData = arrayItem[0].items.filter(function (b) {
+                    return b;
+                });
+                arrayItem[0].items = newData;
+                multiPersonContent[personIndex] = arrayItem[0];
+                setAttributes(multiPersonContent[personIndex] = arrayItem[0]);
+            };
+
+            var _changeLinkValue = function _changeLinkValue(value, i, personIndex) {
+                if (personIndex + 1 > 0) {
+                    i.changeinput = value;
+                    var arrayItem = multiPersonContent.map(function (cont) {
+                        return cont;
+                    }).filter(function (f) {
+                        return f.id == personIndex + 1;
+                    });
+                    var newData = arrayItem[0].items.filter(function (b) {
+                        return b;
+                    });
+                    arrayItem[0].items = newData;
+                    multiPersonContent[personIndex] = arrayItem[0];
+                    setAttributes(multiPersonContent[personIndex] = arrayItem[0]);
+                } else {
+                    i.changeinput = value;
+                    var _arrayItem = multiPersonContent.map(function (cont) {
+                        return cont;
+                    });
+                    var _newData = _arrayItem[0].items.filter(function (b) {
+                        return b;
+                    });
+                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _arrayItem[0].personImgUrl, name: _arrayItem[0].name, title: _arrayItem[0].title, desc: _arrayItem[0].desc, socialIcon: _arrayItem[0].socialIcon, items: _newData }] });
+                }
+            };
+
+            var _onRemove = function _onRemove(value, i) {
+                var array = multiPersonContent.map(function (cont) {
+                    return cont;
+                }).filter(function (f) {
+                    return f.id == i + 1;
+                });
+                var newData = array[0].items.filter(function (b) {
+                    return b.label != value;
+                });
+                array[0].items = newData;
+                multiPersonContent[i] = array[0];
+                setAttributes(multiPersonContent[i] = array[0]);
+            };
+
+            var socialIconfn = function socialIconfn(v) {
+                return React.createElement(
+                    "ul",
+                    { className: "premium-person__social-List" },
+                    v.map(function (value) {
+                        return React.createElement(
+                            "li",
+                            null,
+                            React.createElement(
+                                "a",
+                                { className: "premium-person__socialIcon__link_content " + (socialIconStyles[0].defaultIconColor ? value.label : ""), href: "" + value.value, style: {
+                                        borderStyle: socialIconStyles[0].borderTypeIcon,
+                                        borderWidth: socialIconBorderUpdated ? socialIconBorderTop + "px " + socialIconBorderRight + "px " + socialIconBorderBottom + "px " + socialIconBorderLeft + "px" : socialIconBorderWidth + "px",
+                                        borderRadius: socialIconStyles[0].borderRadiusIcon || 100 + "px",
+                                        borderColor: socialIconStyles[0].borderColorIcon,
+                                        marginTop: SocialIconMarginTop + socialIconMargin.unit,
+                                        marginBottom: SocialIconMarginBottom + socialIconMargin.unit,
+                                        marginLeft: SocialIconMarginLeft + socialIconMargin.unit,
+                                        marginRight: SocialIconMarginRight + socialIconMargin.unit,
+                                        paddingTop: SocialIconPaddingTop + socialIconPadding.unit,
+                                        paddingBottom: SocialIconPaddingBottom + socialIconPadding.unit,
+                                        paddingLeft: SocialIconPaddingLeft + socialIconPadding.unit,
+                                        paddingRight: SocialIconPaddingRight + socialIconPadding.unit,
+                                        background: socialIconStyles[0].socialIconBackgroundColor
+                                    } },
+                                React.createElement("i", { className: "premium-person__socialIcon " + (value.label == "youtube" ? "fa fa-youtube-play" : "fa fa-" + value.label) + " premium-person__" + socialIconStyles[0].socialIconHoverColor,
+                                    style: {
+                                        color: socialIconStyles[0].socialIconColor,
+                                        fontSize: (SocialIconSize || 50) + socialIconStyles[0].socialIconfontSizeType
+                                    }
+                                })
+                            )
+                        );
+                    })
+                );
+            };
+
+            var content = function content() {
+                return React.createElement(
+                    "div",
+                    { className: "premium-person-content " + id + " " + (multiPersonChecked > 1 ? "premium-person__" + rowPerson : "")
+                    },
+                    " ",
+                    multiPersonContent.map(function (value) {
+                        return React.createElement(
+                            "div",
+                            { key: value.id, className: "premium-person__inner premium-persson__min premium-person__" + effectPersonStyle + " premium-person__" + hoverEffectPerson },
+                            React.createElement(
+                                "div",
+                                { className: "premium-person__img__container" },
+                                React.createElement(
+                                    "div",
+                                    {
+                                        className: "premium-person__img_wrap"
+                                    },
+                                    value.personImgUrl && React.createElement("img", {
+                                        className: "premium-person__img",
+                                        src: "" + value.personImgUrl,
+                                        alt: "Person",
+                                        style: {
+
+                                            borderWidth: imgBorder + "px",
+                                            borderColor: imgBorderColor,
+                                            width: imgSize + "px",
+                                            height: imgSize + "px",
+                                            filter: "" + (change ? "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )" : "")
+                                        }
+                                    }),
+                                    !value.personImgUrl && React.createElement(_defaultImage2.default, { className: className })
+                                ),
+                                effectPersonStyle === 'effect2' ? React.createElement(
+                                    "div",
+                                    { className: "premium-person__socialEffect2" },
+                                    value.socialIcon && socialIconfn(value.items)
+                                ) : ""
+                            ),
+                            React.createElement(
+                                "div",
+                                {
+                                    className: "premium-person__info",
+                                    style: {
+                                        background: contentColor ? contentColor : "#f2f2f2",
+                                        bottom: effectPersonStyle === 'effect1' ? bottomInfo + "px" : ""
+                                    }
+                                },
+                                React.createElement(
+                                    "div",
+                                    {
+                                        className: "premium-person__name_wrap",
+                                        style: {
+                                            fontSize: NameSize + nameStyles[0].namefontSizeType
+                                        }
+                                    },
+                                    value.name && React.createElement(
+                                        "span",
+                                        {
+                                            className: "premium-person__name",
+                                            style: {
+                                                color: nameStyles[0].nameColor,
+                                                fontSize: NameSize + nameStyles[0].namefontSizeType,
+                                                fontWeight: nameStyles[0].nameWeight,
+                                                alignSelf: nameV,
+                                                letterSpacing: nameStyles[0].nameLetter + "px",
+                                                lineHeight: nameStyles[0].nameLine + "px",
+                                                fontStyle: nameStyles[0].nameStyle,
+                                                textTransform: nameStyles[0].nameUpper ? "uppercase" : "none",
+                                                textShadow: nameStyles[0].nameshadowHorizontal + "px " + nameStyles[0].nameshadowVertical + "px " + nameStyles[0].nameshadowBlur + "px " + nameStyles[0].nameshadowColor
+                                            }
+                                        },
+                                        value.name
+                                    )
+                                ),
+                                React.createElement(
+                                    "div",
+                                    {
+                                        className: "premium-person__title_wrap",
+                                        style: {
+                                            fontSize: TitleSize + titleStyles[0].titlefontSizeType
+                                        }
+                                    },
+                                    value.title && React.createElement(
+                                        "span",
+                                        {
+                                            className: "premium-person__title",
+                                            style: {
+                                                color: titleStyles[0].titleColor,
+                                                fontSize: TitleSize + titleStyles[0].titlefontSizeType,
+                                                fontWeight: titleStyles[0].titleWeight,
+                                                alignSelf: titleV,
+                                                letterSpacing: titleStyles[0].titleLetter + "px",
+                                                lineHeight: titleStyles[0].titleLine + "px",
+                                                fontStyle: titleStyles[0].titleStyle,
+                                                textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                                textShadow: titleStyles[0].titleshadowHorizontal + "px " + titleStyles[0].titleshadowVertical + "px " + titleStyles[0].titleshadowBlur + "px " + titleStyles[0].titleshadowColor
+                                            }
+                                        },
+                                        value.title
+                                    )
+                                ),
+                                React.createElement(
+                                    "div",
+                                    {
+                                        className: "premium-person__desc_wrap",
+                                        style: {
+                                            fontSize: DescSize + descStyles[0].descfontSizeType
+                                        }
+                                    },
+                                    value.desc && React.createElement(
+                                        "span",
+                                        {
+                                            className: "premium-person__desc",
+                                            style: {
+                                                color: descStyles[0].descColor,
+                                                fontSize: DescSize + descStyles[0].descfontSizeType,
+                                                fontWeight: descStyles[0].descWeight,
+                                                alignSelf: descV,
+                                                letterSpacing: descStyles[0].descLetter + "px",
+                                                lineHeight: descStyles[0].descLine + "px",
+                                                fontStyle: descStyles[0].descStyle,
+                                                textTransform: descStyles[0].descUpper ? "uppercase" : "none",
+                                                textShadow: descStyles[0].descshadowHorizontal + "px " + descStyles[0].descshadowVertical + "px " + descStyles[0].descshadowBlur + "px " + descStyles[0].descshadowColor
+                                            }
+                                        },
+                                        value.desc
+                                    )
+                                ),
+                                effectPersonStyle == 'effect1' ? React.createElement(
+                                    "div",
+                                    null,
+                                    value.socialIcon && socialIconfn(value.items)
+                                ) : ""
+                            )
+                        );
+                    })
+                );
+            };
+
+            var addSocialIcon = function addSocialIcon(newsocial, index) {
+                var array = iconsList.map(function (i) {
+                    return i;
+                }).filter(function (f) {
+                    return f.value == newsocial;
+                });
+                if (array[0] != undefined) {
+                    newsocial = array[0];
+                    setAttributes({ selectedSocialMediaIcon: newsocial.label });
+                    var newicon = newsocial.label;
+                    var arrayItem = multiPersonContent.map(function (cont) {
+                        return cont;
+                    }).filter(function (f) {
+                        return f.id == index + 1;
+                    });
+                    var repeat = arrayItem[0].items.filter(function (d) {
+                        return d.label == newicon;
+                    });
+                    if (repeat[0] != undefined) {
+                        arrayItem[0].items.filter(function (d) {
+                            return d.label != newicon;
+                        });
+                        multiPersonContent[index - 1] = arrayItem[0];
+                        setAttributes(multiPersonContent[index - 1] = arrayItem[0]);
+                    } else {
+                        arrayItem[0].items.push({ label: newicon, link: false, value: "", changeinput: "#" });
+                        arrayItem[0].items.filter(function (d) {
+                            return d.label != newicon;
+                        });
+                        multiPersonContent[index - 1] = arrayItem[0];
+                        setAttributes(multiPersonContent[index - 1] = arrayItem[0]);
+                    }
+                }
+            };
+
+            var addMultiPerson = function addMultiPerson(newP) {
+                var multi = [].concat(_toConsumableArray(multiPersonContent));
+                if (multi.length < newP) {
+                    var incAmount = Math.abs(newP - multi.length);
+                    {
+                        (0, _times2.default)(incAmount, function (n) {
+                            multi.push({
+                                id: multi.length + 1,
+                                personImgUrl: multi[0].personImgUrl,
+                                personImgId: '',
+                                name: multi[0].name,
+                                title: multi[0].title,
+                                desc: multi[0].desc,
+                                socialIcon: multi[0].socialIcon,
+                                items: [{ label: 'facebook', link: false, value: "#", changeinput: "#" }, { label: 'twitter', link: false, value: "#", changeinput: "#" }, { label: 'instagram', link: false, value: "#", changeinput: "#" }, { label: 'youtube', link: false, value: "#", changeinput: "#" }]
+                            });
+                        });
+                    }
+                    setAttributes({ multiPersonContent: multi });
+                } else {
+                    for (var i = multiPersonChecked; i > newP; i--) {
+                        multiPersonContent.splice(i - 1, 1);
+                    }
+                }
+                setAttributes({ multiPersonChecked: newP });
+            };
+
+            var onSortEndMulti = function onSortEndMulti(i, _ref3) {
+                var oldIndex = _ref3.oldIndex,
+                    newIndex = _ref3.newIndex;
+
+                var arrayItem = multiPersonContent.map(function (cont) {
+                    return cont;
+                }).filter(function (f) {
+                    return f.id == i + 1;
+                });
+                var array = (0, _reactSortableHoc.arrayMove)(arrayItem[0].items, oldIndex, newIndex);
+                arrayItem[0].items = array;
+                multiPersonContent[i] = arrayItem[0];
+                setAttributes(multiPersonContent[i] = arrayItem[0]);
+            };
+
+            var MultiPersonSetting = function MultiPersonSetting(index) {
+                return React.createElement(
+                    PanelBody,
+                    {
+                        key: index,
+                        title: __("Person #" + (index + 1) + " Setting"),
+                        initialOpen: false
+                    },
+                    React.createElement(_premiumMediaUpload2.default, {
+                        type: "image",
+                        imageID: multiPersonContent[index].personImgId,
+                        imageURL: multiPersonContent[index].personImgUrl,
+                        onSelectMedia: function onSelectMedia(media) {
+                            _this2.save({ personImgUrl: media.url }, index);
+                            _this2.save({ personImgId: media.id }, index);
+                        },
+                        onRemoveImage: function onRemoveImage() {
+                            _this2.save({ personImgId: '' }, index);
+                            _this2.save({ personImgUrl: '' }, index);
+                        }
+                    }),
+                    React.createElement(TextControl, {
+                        label: __("Name", 'premium-block-for-gutenberg'),
+                        value: multiPersonContent[index].name,
+                        onChange: function onChange(value) {
+                            _this2.save({ name: value }, index);
+                        }
+                    }),
+                    React.createElement(TextControl, {
+                        label: __("Title", 'premium-block-for-gutenberg'),
+                        value: multiPersonContent[index].title,
+                        onChange: function onChange(value) {
+                            _this2.save({ title: value }, index);
+                        }
+                    }),
+                    React.createElement(TextareaControl, {
+                        label: __("Description", 'premium-block-for-gutenberg'),
+                        value: multiPersonContent[index].desc,
+                        onChange: function onChange(value) {
+                            _this2.save({ desc: value }, index);
+                        }
+                    }),
+                    React.createElement(ToggleControl, {
+                        label: __("Enable Social Icons", 'premium-block-for-gutenberg'),
+                        checked: multiPersonContent[index].socialIcon,
+                        onChange: function onChange(value) {
+                            _this2.save({ socialIcon: value }, index);
+                        }
+                    }),
+                    multiPersonContent[index].socialIcon && React.createElement(
+                        "div",
+                        null,
+                        React.createElement(
+                            "label",
+                            { className: "premium-person-paragraph" },
+                            __("Social Media")
+                        ),
+                        React.createElement(_reactFonticonpicker2.default, {
+                            icons: iconsList.map(function (i) {
+                                return i.value;
+                            }),
+                            onChange: function onChange(value) {
+                                return addSocialIcon(value, index);
+                            },
+                            isMulti: false,
+                            appendTo: "body",
+                            closeOnSelect: false,
+                            iconsPerPage: 25,
+                            noSelectedPlaceholder: __("Select Icon")
+                        }),
+                        React.createElement(SortableList, { items: multiPersonContent[index].items, personIndex: index, onSortEnd: function onSortEnd(o, n) {
+                                return onSortEndMulti(index, o, n);
+                            }, onRemove: function onRemove(value) {
+                                return _onRemove(value, index);
+                            }, saveLink: function saveLink(value, i) {
+                                return _saveLink(value, i, index);
+                            }, changeLinkValue: function changeLinkValue(value, i) {
+                                return _changeLinkValue(value, i, index);
+                            }, addLink: function addLink(value) {
+                                return _addLink(value, index);
+                            }, shouldCancelStart: shouldCancelStart, helperClass: "premium-person__sortableHelper" })
+                    )
+                );
+            };
+
+            return [isSelected && "block" != personSize && React.createElement(
+                BlockControls,
+                { key: "controls" },
+                React.createElement(AlignmentToolbar, {
+                    value: personAlign,
+                    onChange: function onChange(newAlign) {
+                        return setAttributes({ personAlign: newAlign });
+                    }
+                })
+            ), isSelected && React.createElement(
+                InspectorControls,
+                { key: "inspector" },
+                React.createElement(
+                    PanelBody,
+                    {
+                        title: __("General Settings"),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    React.createElement(_singleRangeControl2.default, {
+                        label: __("Person Number", 'premium-block-for-gutenberg'),
+                        value: multiPersonChecked,
+                        onChange: function onChange(value) {
+                            return addMultiPerson(value);
+                        },
+                        showUnit: false,
+                        defaultValue: 1,
+                        min: 1
+                    }),
+                    multiPersonChecked > 1 ? React.createElement(SelectControl, {
+                        label: __("Persons/Row", 'premium-block-for-gutenberg'),
+                        value: rowPerson,
+                        onChange: function onChange(newColumn) {
+                            return setAttributes({ rowPerson: newColumn });
+                        },
+                        options: ROWS
+                    }) : "",
+                    React.createElement(SelectControl, {
+                        label: __("Style", 'premium-block-for-gutenberg'),
+                        value: effectPersonStyle,
+                        onChange: function onChange(newEffect) {
+                            return setAttributes({ effectPersonStyle: newEffect });
+                        },
+                        options: EFFECTS
+                    }),
+                    React.createElement(SelectControl, {
+                        label: __("Image Hover Effect", 'premium-block-for-gutenberg'),
+                        options: HOVER,
+                        value: hoverEffectPerson,
+                        onChange: function onChange(newEffect) {
+                            return setAttributes({ hoverEffectPerson: newEffect });
+                        }
+                    })
+                ),
+                (0, _times2.default)(multiPersonChecked, function (n) {
+                    return MultiPersonSetting(n);
+                }),
+                React.createElement(
+                    PanelBody,
+                    {
+                        title: __("Image Style"),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    React.createElement(_premiumFilters2.default, {
+                        blur: blur,
+                        bright: bright,
+                        contrast: contrast,
+                        saturation: saturation,
+                        hue: hue,
+                        onChangeBlur: function onChangeBlur(newSize) {
+                            return setAttributes({ blur: newSize, change: true });
+                        },
+                        onChangeBright: function onChangeBright(newSize) {
+                            return setAttributes({ bright: newSize, change: true });
+                        },
+                        onChangeContrast: function onChangeContrast(newSize) {
+                            return setAttributes({ contrast: newSize, change: true });
+                        },
+                        onChangeSat: function onChangeSat(newSize) {
+                            return setAttributes({ saturation: newSize, change: true });
+                        },
+                        onChangeHue: function onChangeHue(newSize) {
+                            return setAttributes({ hue: newSize, change: true });
+                        }
+                    })
+                ),
+                React.createElement(
+                    PanelBody,
+                    {
+                        title: __("Name"),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    React.createElement(_premiumTypo2.default, {
+                        components: ["responsiveSize", "weight", "line", "style", "upper", "spacing"],
+                        setAttributes: saveNameStyles,
+                        fontSizeType: { value: nameStyles[0].namefontSizeType, label: __("namefontSizeType") },
+                        fontSize: nameStyles[0].namefontSize,
+                        fontSizeMobile: nameStyles[0].namefontSizeMobile,
+                        fontSizeTablet: nameStyles[0].namefontSizeTablet,
+                        onChangeSize: function onChangeSize(newSize) {
+                            return saveNameStyles({ namefontSize: newSize });
+                        },
+                        onChangeTabletSize: function onChangeTabletSize(newSize) {
+                            return saveNameStyles({ namefontSizeTablet: newSize });
+                        },
+                        onChangeMobileSize: function onChangeMobileSize(newSize) {
+                            return saveNameStyles({ namefontSizeMobile: newSize });
+                        },
+                        weight: nameStyles[0].nameWeight,
+                        style: nameStyles[0].nameStyle,
+                        spacing: nameStyles[0].nameLetter,
+                        upper: nameStyles[0].nameUpper,
+                        line: nameStyles[0].nameLine,
+                        onChangeWeight: function onChangeWeight(newWeight) {
+                            return saveNameStyles({ nameWeight: newWeight || 500 });
+                        },
+                        onChangeStyle: function onChangeStyle(newStyle) {
+                            return saveNameStyles({ nameStyle: newStyle });
+                        },
+                        onChangeSpacing: function onChangeSpacing(newValue) {
+                            return saveNameStyles({ nameLetter: newValue });
+                        },
+                        onChangeUpper: function onChangeUpper(check) {
+                            return saveNameStyles({ nameUpper: check });
+                        },
+                        onChangeLine: function onChangeLine(newValue) {
+                            return saveNameStyles({ nameLine: newValue });
+                        }
+                    }),
+                    React.createElement(
+                        "div",
+                        { className: "premium-control-toggle" },
+                        React.createElement(_ColorComponent2.default, {
+                            label: __("Color", 'premium-block-for-gutenberg'),
+                            colorValue: nameStyles[0].nameColor,
+                            colorDefault: '',
+                            onColorChange: function onColorChange(newValue) {
+                                return saveNameStyles({
+                                    nameColor: newValue
+                                });
+                            }
+                        })
+                    ),
+                    React.createElement(_PremiumShadow2.default, {
+                        label: __("Text Shadow", 'premium-blocks-for-gutenberg'),
+                        boxShadow: false,
+                        color: nameStyles[0].nameshadowColor,
+                        blur: nameStyles[0].nameshadowBlur,
+                        horizontal: nameStyles[0].nameshadowHorizontal,
+                        vertical: nameStyles[0].nameshadowVertical,
+                        onChangeColor: function onChangeColor(newColor) {
+                            return saveNameStyles({ nameshadowColor: newColor });
+                        },
+                        onChangeBlur: function onChangeBlur(newBlur) {
+                            return saveNameStyles({ nameshadowBlur: newBlur });
+                        },
+                        onChangehHorizontal: function onChangehHorizontal(newValue) {
+                            return saveNameStyles({ nameshadowHorizontal: newValue });
+                        },
+                        onChangeVertical: function onChangeVertical(newValue) {
+                            return saveNameStyles({ nameshadowVertical: newValue });
+                        }
+                    })
+                ),
+                React.createElement(
+                    PanelBody,
+                    {
+                        title: __("Title"),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    React.createElement(_premiumTypo2.default, {
+                        components: ["responsiveSize", "weight", "line", "style", "upper", "spacing"],
+                        setAttributes: saveTitleStyles,
+                        fontSizeType: { value: titleStyles[0].titlefontSizeType, label: __("titlefontSizeType") },
+                        fontSize: titleStyles[0].titleSize,
+                        fontSizeMobile: titleStyles[0].titlefontSizeMobile,
+                        fontSizeTablet: titleStyles[0].titlefontSizeTablet,
+                        onChangeSize: function onChangeSize(newSize) {
+                            return saveTitleStyles({ titleSize: newSize });
+                        },
+                        onChangeTabletSize: function onChangeTabletSize(newSize) {
+                            return saveTitleStyles({ titlefontSizeTablet: newSize });
+                        },
+                        onChangeMobileSize: function onChangeMobileSize(newSize) {
+                            return saveTitleStyles({ titlefontSizeMobile: newSize });
+                        },
+                        weight: titleStyles[0].titleWeight,
+                        style: titleStyles[0].titleStyle,
+                        spacing: titleStyles[0].titleLetter,
+                        upper: titleStyles[0].titleUpper,
+                        line: titleStyles[0].titleLine,
+                        onChangeWeight: function onChangeWeight(newWeight) {
+                            return saveTitleStyles({ titleWeight: newWeight || 500 });
+                        },
+                        onChangeStyle: function onChangeStyle(newStyle) {
+                            return saveTitleStyles({ titleStyle: newStyle });
+                        },
+                        onChangeSpacing: function onChangeSpacing(newValue) {
+                            return saveTitleStyles({ titleLetter: newValue });
+                        },
+                        onChangeUpper: function onChangeUpper(check) {
+                            return saveTitleStyles({ titleUpper: check });
+                        },
+                        onChangeLine: function onChangeLine(newValue) {
+                            return saveTitleStyles({ titleLine: newValue });
+                        }
+                    }),
+                    React.createElement(
+                        "div",
+                        { className: "premium-control-toggle" },
+                        React.createElement(_ColorComponent2.default, {
+                            label: __("Color", 'premium-block-for-gutenberg'),
+                            colorValue: titleStyles[0].titleColor,
+                            colorDefault: '',
+                            onColorChange: function onColorChange(newValue) {
+                                return saveTitleStyles({
+                                    titleColor: newValue
+                                });
+                            }
+                        })
+                    ),
+                    React.createElement(_PremiumShadow2.default, {
+                        label: __("Text Shadow", 'premium-blocks-for-gutenberg'),
+                        boxShadow: false,
+                        color: titleStyles[0].titleshadowColor,
+                        blur: titleStyles[0].titleshadowBlur,
+                        horizontal: titleStyles[0].titleshadowHorizontal,
+                        vertical: titleStyles[0].titleshadowVertical,
+                        onChangeColor: function onChangeColor(newColor) {
+                            return saveTitleStyles({ titleshadowColor: newColor });
+                        },
+                        onChangeBlur: function onChangeBlur(newBlur) {
+                            return saveTitleStyles({ titleshadowBlur: newBlur });
+                        },
+                        onChangehHorizontal: function onChangehHorizontal(newValue) {
+                            return saveTitleStyles({ titleshadowHorizontal: newValue });
+                        },
+                        onChangeVertical: function onChangeVertical(newValue) {
+                            return saveTitleStyles({ titleshadowVertical: newValue });
+                        }
+                    })
+                ),
+                React.createElement(
+                    PanelBody,
+                    {
+                        title: __("Description"),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    React.createElement(_premiumTypo2.default, {
+                        components: ["responsiveSize", "weight", "line", "style", "upper", "spacing"],
+                        setAttributes: saveDescStyles,
+                        fontSizeType: { value: descStyles[0].descfontSizeType, label: __("descfontSizeType") },
+                        fontSize: descStyles[0].descSize,
+                        fontSizeMobile: descStyles[0].descfontSizeMobile,
+                        fontSizeTablet: descStyles[0].descfontSizeTablet,
+                        onChangeSize: function onChangeSize(newSize) {
+                            return saveDescStyles({ descSize: newSize });
+                        },
+                        onChangeTabletSize: function onChangeTabletSize(newSize) {
+                            return saveDescStyles({ descfontSizeTablet: newSize });
+                        },
+                        onChangeMobileSize: function onChangeMobileSize(newSize) {
+                            return saveDescStyles({ descfontSizeMobile: newSize });
+                        },
+                        weight: descStyles[0].descWeight,
+                        style: descStyles[0].descStyle,
+                        spacing: descStyles[0].descLetter,
+                        upper: descStyles[0].descUpper,
+                        line: descStyles[0].descLine,
+                        onChangeWeight: function onChangeWeight(newWeight) {
+                            return saveDescStyles({ descWeight: newWeight || 500 });
+                        },
+                        onChangeStyle: function onChangeStyle(newStyle) {
+                            return saveDescStyles({ descStyle: newStyle });
+                        },
+                        onChangeSpacing: function onChangeSpacing(newValue) {
+                            return saveDescStyles({ descLetter: newValue });
+                        },
+                        onChangeUpper: function onChangeUpper(check) {
+                            return saveDescStyles({ descUpper: check });
+                        },
+                        onChangeLine: function onChangeLine(newValue) {
+                            return saveDescStyles({ descLine: newValue });
+                        }
+                    }),
+                    React.createElement(
+                        "div",
+                        { className: "premium-control-toggle" },
+                        React.createElement(_ColorComponent2.default, {
+                            label: __("Color", 'premium-block-for-gutenberg'),
+                            colorValue: descStyles[0].descColor,
+                            colorDefault: '',
+                            onColorChange: function onColorChange(newValue) {
+                                return saveDescStyles({
+                                    descColor: newValue
+                                });
+                            }
+                        })
+                    ),
+                    React.createElement(_PremiumShadow2.default, {
+                        label: __("Text Shadow", 'premium-blocks-for-gutenberg'),
+                        boxShadow: false,
+                        color: descStyles[0].descshadowColor,
+                        blur: descStyles[0].descshadowBlur,
+                        horizontal: descStyles[0].descshadowHorizontal,
+                        vertical: descStyles[0].descshadowVertical,
+                        onChangeColor: function onChangeColor(newColor) {
+                            return saveDescStyles({ descshadowColor: newColor });
+                        },
+                        onChangeBlur: function onChangeBlur(newBlur) {
+                            return saveDescStyles({ descshadowBlur: newBlur });
+                        },
+                        onChangehHorizontal: function onChangehHorizontal(newValue) {
+                            return saveDescStyles({ descshadowHorizontal: newValue });
+                        },
+                        onChangeVertical: function onChangeVertical(newValue) {
+                            return saveDescStyles({ descshadowVertical: newValue });
+                        }
+                    })
+                ),
+                multiPersonChecked > 1 ? multiPersonContent.map(function (i) {
+                    return i.socialIcon && React.createElement(
+                        PanelBody,
+                        {
+                            title: __("Social Icon"),
+                            className: "premium-panel-body",
+                            initialOpen: false
+                        },
+                        React.createElement(_responsiveRangeControl2.default, {
+                            label: __("Size", 'premium-block-for-gutenberg'),
+                            value: socialIconStyles[0].socialIconSize,
+                            tabletValue: socialIconStyles[0].socialIconfontSizeTablet,
+                            mobileValue: socialIconStyles[0].socialIconfontSizeMobile,
+                            onChange: function onChange(value) {
+                                return saveSocialIconStyles({ socialIconSize: value });
+                            },
+                            onChangeTablet: function onChangeTablet(value) {
+                                return saveSocialIconStyles({ socialIconfontSizeTablet: value });
+                            },
+                            onChangeMobile: function onChangeMobile(value) {
+                                return saveSocialIconStyles({ socialIconfontSizeMobile: value });
+                            },
+                            onChangeUnit: function onChangeUnit(key) {
+                                return saveSocialIconStyles({ socialIconfontSizeType: key });
+                            },
+                            unit: socialIconStyles[0].socialIconfontSizeType,
+                            showUnit: true,
+                            defaultValue: 20,
+                            min: 1,
+                            max: 100
+                        }),
+                        React.createElement(
+                            "div",
+                            { className: "premium-control-toggle" },
+                            React.createElement(_ColorComponent2.default, {
+                                label: __("Social Icon Color", 'premium-block-for-gutenberg'),
+                                colorValue: socialIconStyles[0].socialIconColor,
+                                colorDefault: '',
+                                onColorChange: function onColorChange(newValue) {
+                                    return saveSocialIconStyles({
+                                        socialIconColor: newValue
+                                    });
+                                }
+                            }),
+                            React.createElement(_ColorComponent2.default, {
+                                label: __("Social Icon Hover Color", 'premium-block-for-gutenberg'),
+                                colorValue: socialIconStyles[0].socialIconHoverColor,
+                                colorDefault: '',
+                                onColorChange: function onColorChange(newValue) {
+                                    return saveSocialIconStyles({
+                                        socialIconHoverColor: newValue
+                                    });
+                                }
+                            })
+                        ),
+                        React.createElement(
+                            "div",
+                            { className: "premium-control-toggle" },
+                            React.createElement(_ColorComponent2.default, {
+                                label: __("Social Icon Background Color", 'premium-block-for-gutenberg'),
+                                colorValue: socialIconStyles[0].socialIconBackgroundColor,
+                                colorDefault: '',
+                                onColorChange: function onColorChange(newValue) {
+                                    return saveSocialIconStyles({
+                                        socialIconBackgroundColor: newValue
+                                    });
+                                }
+                            })
+                        ),
+                        React.createElement(ToggleControl, {
+                            label: __("Brands Default Colors", 'premium-block-for-gutenberg'),
+                            checked: socialIconStyles[0].defaultIconColor,
+                            onChange: function onChange(newCheck) {
+                                return saveSocialIconStyles({ defaultIconColor: newCheck });
+                            }
+                        }),
+                        React.createElement(_premiumBorder2.default, {
+                            borderType: socialIconStyles[0].borderTypeIcon,
+                            borderWidth: socialIconBorderWidth,
+                            top: socialIconBorderTop,
+                            right: socialIconBorderRight,
+                            bottom: socialIconBorderBottom,
+                            left: socialIconBorderLeft,
+                            borderColor: socialIconStyles[0].borderColorIcon,
+                            borderRadius: socialIconStyles[0].borderRadiusIcon,
+                            onChangeType: function onChangeType(newType) {
+                                return saveSocialIconStyles({ borderTypeIcon: newType });
+                            },
+                            onChangeWidth: function onChangeWidth(_ref4) {
+                                var top = _ref4.top,
+                                    right = _ref4.right,
+                                    bottom = _ref4.bottom,
+                                    left = _ref4.left;
+                                return setAttributes({
+                                    socialIconBorderUpdated: true,
+                                    socialIconBorderTop: top,
+                                    socialIconBorderRight: right,
+                                    socialIconBorderBottom: bottom,
+                                    socialIconBorderLeft: left
+                                });
+                            },
+                            onChangeColor: function onChangeColor(colorValue) {
+                                return saveSocialIconStyles({ borderColorIcon: colorValue });
+                            },
+                            onChangeRadius: function onChangeRadius(newrRadius) {
+                                return saveSocialIconStyles({ borderRadiusIcon: newrRadius });
+                            }
+                        }),
+                        React.createElement(_premiumResponsiveSpacing2.default, {
+                            label: __('Margin', 'premium-blocks-for-gutenberg'),
+                            value: socialIconMargin,
+                            onChange: function onChange(value) {
+                                return setAttributes({ socialIconMargin: value });
+                            },
+                            showUnits: true,
+                            responsive: true
+                        }),
+                        React.createElement(_premiumResponsiveSpacing2.default, {
+                            label: __('Padding', 'premium-blocks-for-gutenberg'),
+                            value: socialIconPadding,
+                            onChange: function onChange(value) {
+                                return setAttributes({ socialIconPadding: value });
+                            },
+                            showUnits: true,
+                            responsive: true
+                        })
+                    );
+                }) : multiPersonContent[0].socialIcon && React.createElement(
+                    PanelBody,
+                    {
+                        title: __("Social Icon"),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    React.createElement(_responsiveRangeControl2.default, {
+                        label: __("Size", 'premium-block-for-gutenberg'),
+                        value: socialIconStyles[0].socialIconSize,
+                        tabletValue: socialIconStyles[0].socialIconfontSizeTablet,
+                        mobileValue: socialIconStyles[0].socialIconfontSizeMobile,
+                        onChange: function onChange(value) {
+                            return saveSocialIconStyles({ socialIconSize: value });
+                        },
+                        onChangeTablet: function onChangeTablet(value) {
+                            return saveSocialIconStyles({ socialIconfontSizeTablet: value });
+                        },
+                        onChangeMobile: function onChangeMobile(value) {
+                            return saveSocialIconStyles({ socialIconfontSizeMobile: value });
+                        },
+                        onChangeUnit: function onChangeUnit(key) {
+                            return saveSocialIconStyles({ socialIconfontSizeType: key });
+                        },
+                        unit: socialIconStyles[0].socialIconfontSizeType,
+                        showUnit: true,
+                        defaultValue: 20,
+                        min: 1,
+                        max: 100
+                    }),
+                    React.createElement(
+                        "div",
+                        { className: "premium-control-toggle" },
+                        React.createElement(_ColorComponent2.default, {
+                            label: __("Social Icon Color", 'premium-block-for-gutenberg'),
+                            colorValue: socialIconStyles[0].socialIconColor,
+                            colorDefault: '',
+                            onColorChange: function onColorChange(newValue) {
+                                return saveSocialIconStyles({
+                                    socialIconColor: newValue
+                                });
+                            }
+                        }),
+                        React.createElement(_ColorComponent2.default, {
+                            label: __("Social Icon Hover Color", 'premium-block-for-gutenberg'),
+                            colorValue: socialIconStyles[0].socialIconHoverColor,
+                            colorDefault: '',
+                            onColorChange: function onColorChange(newValue) {
+                                return saveSocialIconStyles({
+                                    socialIconHoverColor: newValue
+                                });
+                            }
+                        })
+                    ),
+                    React.createElement(
+                        "div",
+                        { className: "premium-control-toggle" },
+                        React.createElement(_ColorComponent2.default, {
+                            label: __("Social Icon Background Color", 'premium-block-for-gutenberg'),
+                            colorValue: socialIconStyles[0].socialIconBackgroundColor,
+                            colorDefault: '',
+                            onColorChange: function onColorChange(newValue) {
+                                return saveSocialIconStyles({
+                                    socialIconBackgroundColor: newValue
+                                });
+                            }
+                        })
+                    ),
+                    React.createElement(ToggleControl, {
+                        label: __("Brands Default Colors", "premium-blocks-for-gutenberg"),
+                        checked: socialIconStyles[0].defaultIconColor,
+                        onChange: function onChange(newCheck) {
+                            return saveSocialIconStyles({ defaultIconColor: newCheck });
+                        }
+                    }),
+                    React.createElement(_premiumBorder2.default, {
+                        borderType: socialIconStyles[0].borderTypeIcon,
+                        borderWidth: socialIconBorderWidth,
+                        top: socialIconBorderTop,
+                        right: socialIconBorderRight,
+                        bottom: socialIconBorderBottom,
+                        left: socialIconBorderLeft,
+                        borderColor: socialIconStyles[0].borderColorIcon,
+                        borderRadius: socialIconStyles[0].borderRadiusIcon,
+                        onChangeType: function onChangeType(newType) {
+                            return saveSocialIconStyles({ borderTypeIcon: newType });
+                        },
+                        onChangeWidth: function onChangeWidth(_ref5) {
+                            var top = _ref5.top,
+                                right = _ref5.right,
+                                bottom = _ref5.bottom,
+                                left = _ref5.left;
+                            return setAttributes({
+                                socialIconBorderUpdated: true,
+                                socialIconBorderTop: top,
+                                socialIconBorderRight: right,
+                                socialIconBorderBottom: bottom,
+                                socialIconBorderLeft: left
+                            });
+                        },
+                        onChangeColor: function onChangeColor(colorValue) {
+                            return saveSocialIconStyles({ borderColorIcon: colorValue });
+                        },
+                        onChangeRadius: function onChangeRadius(newrRadius) {
+                            return saveSocialIconStyles({ borderRadiusIcon: newrRadius });
+                        }
+                    }),
+                    React.createElement(_premiumResponsiveSpacing2.default, {
+                        label: __('Margin', 'premium-blocks-for-gutenberg'),
+                        value: socialIconMargin,
+                        onChange: function onChange(value) {
+                            return setAttributes({ socialIconMargin: value });
+                        },
+                        showUnits: true,
+                        responsive: true
+                    }),
+                    React.createElement(_premiumResponsiveSpacing2.default, {
+                        label: __('Padding', 'premium-blocks-for-gutenberg'),
+                        value: socialIconPadding,
+                        onChange: function onChange(value) {
+                            return setAttributes({ socialIconPadding: value });
+                        },
+                        showUnits: true,
+                        responsive: true
+                    })
+                ),
+                React.createElement(
+                    PanelBody,
+                    {
+                        title: __("Content"),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    React.createElement(
+                        "div",
+                        { className: "premium-control-toggle" },
+                        React.createElement(_ColorComponent2.default, {
+                            label: __("Color", 'premium-block-for-gutenberg'),
+                            colorValue: contentColor,
+                            colorDefault: '',
+                            onColorChange: function onColorChange(newValue) {
+                                return setAttributes({
+                                    contentColor: newValue
+                                });
+                            }
+                        })
+                    ),
+                    effectPersonStyle === 'effect1' ? React.createElement(_singleRangeControl2.default, {
+                        label: __("Bottom Offset", 'premium-block-for-gutenberg'),
+                        value: bottomInfo,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ bottomInfo: newValue });
+                        },
+                        showUnit: false,
+                        defaultValue: 15,
+                        min: 15
+                    }) : ""
+                )
+            ), React.createElement(
+                "div",
+                {
+                    id: "premium-person-" + id,
+                    className: mainClasses + " premium-person__" + effect + " premium-person__" + effectDir,
+                    style: { textAlign: personAlign }
+                },
+                React.createElement("style", {
+                    dangerouslySetInnerHTML: {
+                        __html: ["#premium-person-" + id + " .premium-person:hover {", "border-color: " + borderHoverColor + " !important;", "}", "#premium-person-" + id + " .premium-person__social-List li:hover i{", "color: " + socialIconStyles[0].socialIconHoverColor + " !important;", "-webkit-transition: all .2s ease-in-out;", "transition: all .2s ease-in-out;", "}"].join("\n")
+                    }
+                }),
+                content()
+            )];
+        }
+    }]);
+
+    return edit;
+}(Component);
+
+exports.default = withSelect(function (select, props) {
+    var _select = select('core/edit-post'),
+        _select$__experimenta = _select.__experimentalGetPreviewDeviceType,
+        __experimentalGetPreviewDeviceType = _select$__experimenta === undefined ? null : _select$__experimenta;
+
+    var deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return { deviceType: deviceType };
+})(edit);
+
+/***/ }),
+/* 391 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var baseTimes = __webpack_require__(392),
+    castFunction = __webpack_require__(393),
+    toInteger = __webpack_require__(395);
+
+/** Used as references for various `Number` constants. */
+var MAX_SAFE_INTEGER = 9007199254740991;
+
+/** Used as references for the maximum length and index of an array. */
+var MAX_ARRAY_LENGTH = 4294967295;
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeMin = Math.min;
+
+/**
+ * Invokes the iteratee `n` times, returning an array of the results of
+ * each invocation. The iteratee is invoked with one argument; (index).
+ *
+ * @static
+ * @since 0.1.0
+ * @memberOf _
+ * @category Util
+ * @param {number} n The number of times to invoke `iteratee`.
+ * @param {Function} [iteratee=_.identity] The function invoked per iteration.
+ * @returns {Array} Returns the array of results.
+ * @example
+ *
+ * _.times(3, String);
+ * // => ['0', '1', '2']
+ *
+ *  _.times(4, _.constant(0));
+ * // => [0, 0, 0, 0]
+ */
+function times(n, iteratee) {
+  n = toInteger(n);
+  if (n < 1 || n > MAX_SAFE_INTEGER) {
+    return [];
+  }
+  var index = MAX_ARRAY_LENGTH,
+      length = nativeMin(n, MAX_ARRAY_LENGTH);
+
+  iteratee = castFunction(iteratee);
+  n -= MAX_ARRAY_LENGTH;
+
+  var result = baseTimes(length, iteratee);
+  while (++index < n) {
+    iteratee(index);
+  }
+  return result;
+}
+
+module.exports = times;
+
+/***/ }),
+/* 392 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * The base implementation of `_.times` without support for iteratee shorthands
+ * or max array length checks.
+ *
+ * @private
+ * @param {number} n The number of times to invoke `iteratee`.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @returns {Array} Returns the array of results.
+ */
+function baseTimes(n, iteratee) {
+  var index = -1,
+      result = Array(n);
+
+  while (++index < n) {
+    result[index] = iteratee(index);
+  }
+  return result;
+}
+
+module.exports = baseTimes;
+
+/***/ }),
+/* 393 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var identity = __webpack_require__(394);
+
+/**
+ * Casts `value` to `identity` if it's not a function.
+ *
+ * @private
+ * @param {*} value The value to inspect.
+ * @returns {Function} Returns cast function.
+ */
+function castFunction(value) {
+  return typeof value == 'function' ? value : identity;
+}
+
+module.exports = castFunction;
+
+/***/ }),
+/* 394 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * This method returns the first argument it receives.
+ *
+ * @static
+ * @since 0.1.0
+ * @memberOf _
+ * @category Util
+ * @param {*} value Any value.
+ * @returns {*} Returns `value`.
+ * @example
+ *
+ * var object = { 'a': 1 };
+ *
+ * console.log(_.identity(object) === object);
+ * // => true
+ */
+function identity(value) {
+  return value;
+}
+
+module.exports = identity;
+
+/***/ }),
+/* 395 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var toFinite = __webpack_require__(396);
+
+/**
+ * Converts `value` to an integer.
+ *
+ * **Note:** This method is loosely based on
+ * [`ToInteger`](http://www.ecma-international.org/ecma-262/7.0/#sec-tointeger).
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to convert.
+ * @returns {number} Returns the converted integer.
+ * @example
+ *
+ * _.toInteger(3.2);
+ * // => 3
+ *
+ * _.toInteger(Number.MIN_VALUE);
+ * // => 0
+ *
+ * _.toInteger(Infinity);
+ * // => 1.7976931348623157e+308
+ *
+ * _.toInteger('3.2');
+ * // => 3
+ */
+function toInteger(value) {
+  var result = toFinite(value),
+      remainder = result % 1;
+
+  return result === result ? remainder ? result - remainder : result : 0;
+}
+
+module.exports = toInteger;
+
+/***/ }),
+/* 396 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var toNumber = __webpack_require__(397);
+
+/** Used as references for various `Number` constants. */
+var INFINITY = 1 / 0,
+    MAX_INTEGER = 1.7976931348623157e+308;
+
+/**
+ * Converts `value` to a finite number.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.12.0
+ * @category Lang
+ * @param {*} value The value to convert.
+ * @returns {number} Returns the converted number.
+ * @example
+ *
+ * _.toFinite(3.2);
+ * // => 3.2
+ *
+ * _.toFinite(Number.MIN_VALUE);
+ * // => 5e-324
+ *
+ * _.toFinite(Infinity);
+ * // => 1.7976931348623157e+308
+ *
+ * _.toFinite('3.2');
+ * // => 3.2
+ */
+function toFinite(value) {
+  if (!value) {
+    return value === 0 ? value : 0;
+  }
+  value = toNumber(value);
+  if (value === INFINITY || value === -INFINITY) {
+    var sign = value < 0 ? -1 : 1;
+    return sign * MAX_INTEGER;
+  }
+  return value === value ? value : 0;
+}
+
+module.exports = toFinite;
+
+/***/ }),
+/* 397 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var baseTrim = __webpack_require__(398),
+    isObject = __webpack_require__(400),
+    isSymbol = __webpack_require__(401);
+
+/** Used as references for various `Number` constants. */
+var NAN = 0 / 0;
+
+/** Used to detect bad signed hexadecimal string values. */
+var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
+
+/** Used to detect binary string values. */
+var reIsBinary = /^0b[01]+$/i;
+
+/** Used to detect octal string values. */
+var reIsOctal = /^0o[0-7]+$/i;
+
+/** Built-in method references without a dependency on `root`. */
+var freeParseInt = parseInt;
+
+/**
+ * Converts `value` to a number.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to process.
+ * @returns {number} Returns the number.
+ * @example
+ *
+ * _.toNumber(3.2);
+ * // => 3.2
+ *
+ * _.toNumber(Number.MIN_VALUE);
+ * // => 5e-324
+ *
+ * _.toNumber(Infinity);
+ * // => Infinity
+ *
+ * _.toNumber('3.2');
+ * // => 3.2
+ */
+function toNumber(value) {
+  if (typeof value == 'number') {
+    return value;
+  }
+  if (isSymbol(value)) {
+    return NAN;
+  }
+  if (isObject(value)) {
+    var other = typeof value.valueOf == 'function' ? value.valueOf() : value;
+    value = isObject(other) ? other + '' : other;
+  }
+  if (typeof value != 'string') {
+    return value === 0 ? value : +value;
+  }
+  value = baseTrim(value);
+  var isBinary = reIsBinary.test(value);
+  return isBinary || reIsOctal.test(value) ? freeParseInt(value.slice(2), isBinary ? 2 : 8) : reIsBadHex.test(value) ? NAN : +value;
+}
+
+module.exports = toNumber;
+
+/***/ }),
+/* 398 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var trimmedEndIndex = __webpack_require__(399);
+
+/** Used to match leading whitespace. */
+var reTrimStart = /^\s+/;
+
+/**
+ * The base implementation of `_.trim`.
+ *
+ * @private
+ * @param {string} string The string to trim.
+ * @returns {string} Returns the trimmed string.
+ */
+function baseTrim(string) {
+  return string ? string.slice(0, trimmedEndIndex(string) + 1).replace(reTrimStart, '') : string;
+}
+
+module.exports = baseTrim;
+
+/***/ }),
+/* 399 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/** Used to match a single whitespace character. */
+var reWhitespace = /\s/;
+
+/**
+ * Used by `_.trim` and `_.trimEnd` to get the index of the last non-whitespace
+ * character of `string`.
+ *
+ * @private
+ * @param {string} string The string to inspect.
+ * @returns {number} Returns the index of the last non-whitespace character.
+ */
+function trimmedEndIndex(string) {
+  var index = string.length;
+
+  while (index-- && reWhitespace.test(string.charAt(index))) {}
+  return index;
+}
+
+module.exports = trimmedEndIndex;
+
+/***/ }),
+/* 400 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/**
+ * Checks if `value` is the
+ * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
+ * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+ * @example
+ *
+ * _.isObject({});
+ * // => true
+ *
+ * _.isObject([1, 2, 3]);
+ * // => true
+ *
+ * _.isObject(_.noop);
+ * // => true
+ *
+ * _.isObject(null);
+ * // => false
+ */
+function isObject(value) {
+  var type = typeof value === 'undefined' ? 'undefined' : _typeof(value);
+  return value != null && (type == 'object' || type == 'function');
+}
+
+module.exports = isObject;
+
+/***/ }),
+/* 401 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var baseGetTag = __webpack_require__(402),
+    isObjectLike = __webpack_require__(407);
+
+/** `Object#toString` result references. */
+var symbolTag = '[object Symbol]';
+
+/**
+ * Checks if `value` is classified as a `Symbol` primitive or object.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a symbol, else `false`.
+ * @example
+ *
+ * _.isSymbol(Symbol.iterator);
+ * // => true
+ *
+ * _.isSymbol('abc');
+ * // => false
+ */
+function isSymbol(value) {
+    return (typeof value === 'undefined' ? 'undefined' : _typeof(value)) == 'symbol' || isObjectLike(value) && baseGetTag(value) == symbolTag;
+}
+
+module.exports = isSymbol;
+
+/***/ }),
+/* 402 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _Symbol = __webpack_require__(387),
+    getRawTag = __webpack_require__(405),
+    objectToString = __webpack_require__(406);
+
+/** `Object#toString` result references. */
+var nullTag = '[object Null]',
+    undefinedTag = '[object Undefined]';
+
+/** Built-in value references. */
+var symToStringTag = _Symbol ? _Symbol.toStringTag : undefined;
+
+/**
+ * The base implementation of `getTag` without fallbacks for buggy environments.
+ *
+ * @private
+ * @param {*} value The value to query.
+ * @returns {string} Returns the `toStringTag`.
+ */
+function baseGetTag(value) {
+    if (value == null) {
+        return value === undefined ? undefinedTag : nullTag;
+    }
+    return symToStringTag && symToStringTag in Object(value) ? getRawTag(value) : objectToString(value);
+}
+
+module.exports = baseGetTag;
+
+/***/ }),
+/* 403 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var freeGlobal = __webpack_require__(404);
+
+/** Detect free variable `self`. */
+var freeSelf = (typeof self === 'undefined' ? 'undefined' : _typeof(self)) == 'object' && self && self.Object === Object && self;
+
+/** Used as a reference to the global object. */
+var root = freeGlobal || freeSelf || Function('return this')();
+
+module.exports = root;
+
+/***/ }),
+/* 404 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(global) {
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/** Detect free variable `global` from Node.js. */
+var freeGlobal = (typeof global === 'undefined' ? 'undefined' : _typeof(global)) == 'object' && global && global.Object === Object && global;
+
+module.exports = freeGlobal;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(131)))
+
+/***/ }),
+/* 405 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _Symbol = __webpack_require__(387);
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/**
+ * Used to resolve the
+ * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+var nativeObjectToString = objectProto.toString;
+
+/** Built-in value references. */
+var symToStringTag = _Symbol ? _Symbol.toStringTag : undefined;
+
+/**
+ * A specialized version of `baseGetTag` which ignores `Symbol.toStringTag` values.
+ *
+ * @private
+ * @param {*} value The value to query.
+ * @returns {string} Returns the raw `toStringTag`.
+ */
+function getRawTag(value) {
+  var isOwn = hasOwnProperty.call(value, symToStringTag),
+      tag = value[symToStringTag];
+
+  try {
+    value[symToStringTag] = undefined;
+    var unmasked = true;
+  } catch (e) {}
+
+  var result = nativeObjectToString.call(value);
+  if (unmasked) {
+    if (isOwn) {
+      value[symToStringTag] = tag;
+    } else {
+      delete value[symToStringTag];
+    }
+  }
+  return result;
+}
+
+module.exports = getRawTag;
+
+/***/ }),
+/* 406 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/**
+ * Used to resolve the
+ * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+var nativeObjectToString = objectProto.toString;
+
+/**
+ * Converts `value` to a string using `Object.prototype.toString`.
+ *
+ * @private
+ * @param {*} value The value to convert.
+ * @returns {string} Returns the converted string.
+ */
+function objectToString(value) {
+  return nativeObjectToString.call(value);
+}
+
+module.exports = objectToString;
+
+/***/ }),
+/* 407 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/**
+ * Checks if `value` is object-like. A value is object-like if it's not `null`
+ * and has a `typeof` result of "object".
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+ * @example
+ *
+ * _.isObjectLike({});
+ * // => true
+ *
+ * _.isObjectLike([1, 2, 3]);
+ * // => true
+ *
+ * _.isObjectLike(_.noop);
+ * // => false
+ *
+ * _.isObjectLike(null);
+ * // => false
+ */
+function isObjectLike(value) {
+  return value != null && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) == 'object';
+}
+
+module.exports = isObjectLike;
+
+/***/ }),
+/* 408 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var __ = wp.i18n.__;
+
+var attributes = {
+    personSize: {
+        type: "string",
+        default: "md"
+    },
+    personAlign: {
+        type: "string",
+        default: "center"
+    },
+    imgSize: {
+        type: "number"
+    },
+    imgBorder: {
+        type: "number",
+        default: "1"
+    },
+    imgBorderColor: {
+        type: "string"
+    },
+    nameStyles: {
+        type: "array",
+        default: [{
+            nameColor: "rgb(110, 193, 228)",
+            nameLetter: 0,
+            nameStyle: '',
+            nameUpper: false,
+            nameWeight: 500,
+            nameLine: 0,
+            namefontSize: 20,
+            namefontSizeType: "px",
+            namefontSizeMobile: 20,
+            namefontSizeTablet: 20,
+            nameshadowColor: '',
+            nameshadowBlur: 0,
+            nameshadowHorizontal: 0,
+            nameshadowVertical: 0
+        }]
+    },
+    titleStyles: {
+        type: "array",
+        default: [{
+            titleColor: "",
+            titleLetter: 0,
+            titleStyle: '',
+            titleUpper: false,
+            titleWeight: 500,
+            titleLine: 0,
+            titleSize: 20,
+            titlefontSizeType: "px",
+            titlefontSizeMobile: 20,
+            titlefontSizeTablet: 20,
+            titleshadowColor: '',
+            titleshadowBlur: 0,
+            titleshadowHorizontal: 0,
+            titleshadowVertical: 0
+        }]
+    },
+    descStyles: {
+        type: "array",
+        default: [{
+            descColor: "",
+            descLetter: 0,
+            descStyle: '',
+            descUpper: false,
+            descWeight: '',
+            descLine: 0,
+            descSize: 20,
+            descfontSizeType: "px",
+            descfontSizeMobile: 20,
+            descfontSizeTablet: 20,
+            descshadowColor: '',
+            descshadowBlur: 0,
+            descshadowHorizontal: 0,
+            descshadowVertical: 0
+        }]
+    },
+    socialIconStyles: {
+        type: "array",
+        default: [{
+            socialIconColor: "",
+            socialIconHoverColor: '',
+            socialIconBackgroundColor: '',
+            defaultIconColor: false,
+            socialIconSize: 20,
+            socialIconfontSizeType: "px",
+            socialIconfontSizeMobile: 20,
+            socialIconfontSizeTablet: 20,
+            borderTypeIcon: 'none',
+            borderWidthIcon: '1',
+            borderRadiusIcon: '0',
+            borderColorIcon: '',
+            socialIconPaddingType: 'px',
+            socialIconMarginType: 'px'
+        }]
+    },
+    socialIconBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    socialIconBorderTop: {
+        type: "number"
+    },
+    socialIconBorderRight: {
+        type: "number"
+    },
+    socialIconBorderBottom: {
+        type: "number"
+    },
+    socialIconBorderLeft: {
+        type: "number"
+    },
+    socialIconBorderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    titleTag: {
+        type: "string",
+        default: "p"
+    },
+    contentColor: {
+        type: "string"
+    },
+    bottomInfo: {
+        type: "number",
+        default: 15
+    },
+    effect: {
+        type: "string",
+        default: "none"
+    },
+    effectDir: {
+        type: "string",
+        default: "top"
+    },
+    descColor: {
+        type: "string",
+        default: "#000"
+    },
+    multiPersonChecked: {
+        type: "number",
+        default: 1
+    },
+    borderHoverColor: {
+        type: "string"
+    },
+    personShadowPosition: {
+        type: "string",
+        default: ""
+    },
+    id: {
+        type: "string"
+    },
+    classMigrate: {
+        type: "boolean",
+        default: false
+    },
+    hoverEffectPerson: {
+        type: "string",
+        default: "none"
+    },
+    selectedSocialMediaIcon: {
+        type: "string"
+    },
+    effectPersonStyle: {
+        type: "string",
+        default: "effect1"
+    },
+    rowPerson: {
+        type: "string",
+        default: "column1"
+    },
+    multiPersonContent: {
+        type: "array",
+        default: [{
+            id: 1,
+            personImgUrl: "",
+            personImgId: '',
+            name: "John Doe",
+            title: "Senior Developer",
+            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla",
+            socialIcon: false,
+            items: [{ label: 'facebook', link: false, value: "#", changeinput: "#" }, { label: 'twitter', link: false, value: "#", changeinput: "#" }, { label: 'instagram', link: false, value: "#", changeinput: "#" }, { label: 'youtube', link: false, value: "#", changeinput: "#" }]
+        }]
+    },
+    change: {
+        type: "boolean",
+        default: false
+    },
+    blur: {
+        type: "number",
+        default: "0"
+    },
+    bright: {
+        type: "number",
+        default: "100"
+    },
+    contrast: {
+        type: "number",
+        default: "100"
+    },
+    saturation: {
+        type: "number",
+        default: "100"
+    },
+    hue: {
+        type: "number",
+        default: "0"
+    },
+    socialIconMargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            unit: "px"
+        }
+    },
+    socialIconPadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            unit: "px"
+        }
+    }
+};
+exports.default = attributes;
+
+/***/ }),
+/* 409 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _premiumSizeUnits = __webpack_require__(27);
+
+var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+var _wp$element = wp.element,
+    useState = _wp$element.useState,
+    useEffect = _wp$element.useEffect,
+    Fragment = _wp$element.Fragment;
+var _wp$data = wp.data,
+    useSelect = _wp$data.useSelect,
+    useDispatch = _wp$data.useDispatch;
+
+var SpacingComponent = function SpacingComponent(props) {
+    var value = props.value,
+        responsive = props.responsive,
+        showUnits = props.showUnits,
+        label = props.label;
+
+    var _useState = useState("Desktop"),
+        _useState2 = _slicedToArray(_useState, 2),
+        device = _useState2[0],
+        setDevice = _useState2[1];
+
+    var defaultValue = {
+        value: {
+            top: "",
+            right: "",
+            bottom: "",
+            left: ""
+        },
+        unit: 'px'
+
+    };
+    var ResDefaultParam = {
+        Desktop: defaultValue.value,
+        Tablet: defaultValue.value,
+        Mobile: defaultValue.value,
+        unit: defaultValue.unit
+
+    };
+    var defaultValues = responsive ? ResDefaultParam : defaultValue.value;
+    value = value ? _extends({}, defaultValues, value) : defaultValues;
+
+    var _useState3 = useState(value),
+        _useState4 = _slicedToArray(_useState3, 2),
+        state = _useState4[0],
+        setState = _useState4[1];
+
+    var _useState5 = useState(false),
+        _useState6 = _slicedToArray(_useState5, 2),
+        link = _useState6[0],
+        setLink = _useState6[1];
+
+    useEffect(function () {
+        if (state !== value) {
+            setState(value);
+        }
+    }, [props]);
+
+    var onSpacingChange = function onSpacingChange(v, choiceID) {
+        var updateState = _extends({}, state);
+        var deviceUpdateState = responsive ? _extends({}, updateState[device]) : _extends({}, updateState);
+        if (link) {
+            deviceUpdateState['top'] = v;
+            deviceUpdateState['right'] = v;
+            deviceUpdateState['bottom'] = v;
+            deviceUpdateState['left'] = v;
+        } else {
+            deviceUpdateState[choiceID] = v;
+        }
+        responsive ? updateState[device] = deviceUpdateState : updateState = deviceUpdateState;
+        props.onChange(updateState);
+        setState(updateState);
+    };
+
+    var onLinkClickHandler = function onLinkClickHandler() {
+        var linkValue = responsive ? state[device]['top'] : state['top'];
+        var updateState = _extends({}, state);
+        var deviceUpdateState = responsive ? _extends({}, updateState[device]) : _extends({}, updateState);
+        var choices = ['top', 'right', 'bottom', "left"];
+        for (var choice in choices) {
+            deviceUpdateState[choices[choice]] = linkValue;
+        }
+        responsive ? updateState[device] = deviceUpdateState : updateState = deviceUpdateState;
+        props.onChange(updateState);
+        setState(updateState);
+    };
+
+    var renderInputHtml = function renderInputHtml(device) {
+        var active = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+
+        var htmlChoices = void 0;
+        htmlChoices = ['top', 'right', 'bottom', 'left'].map(function (side) {
+            var inputValue = responsive ? state[device][side] : state[side];
+            return React.createElement(
+                "li",
+                {
+                    key: side,
+                    className: "premium-spacing-input-item"
+                },
+                React.createElement("input", {
+                    type: "number",
+                    className: "premium-spacing-input",
+                    value: inputValue,
+                    onChange: function onChange(_ref) {
+                        var value = _ref.target.value;
+                        return onSpacingChange(Number(value), side);
+                    },
+                    "data-id": side,
+                    disabled: inputValue === "disabled" ? true : false
+                }),
+                React.createElement(
+                    "span",
+                    { className: "premium-spacing-title" },
+                    {
+                        top: __('Top', 'premium-blocks-for-gutenberg'),
+                        bottom: __('Bottom', 'premium-blocks-for-gutenberg'),
+                        left: __('Left', 'premium-blocks-for-gutenberg'),
+                        right: __('Right', 'premium-blocks-for-gutenberg')
+                    }[side]
+                )
+            );
+        });
+        var linkHtml = '';
+        if (link) {
+            linkHtml = React.createElement(
+                "li",
+                { className: "premium-spacing-input-item" },
+                React.createElement("button", {
+                    className: "linked-btn is-button dashicons dashicons-admin-links connected ",
+                    onClick: function onClick() {
+                        setLink(false);
+                    }
+                })
+            );
+        } else {
+            linkHtml = React.createElement(
+                "li",
+                { className: "premium-spacing-input-item" },
+                React.createElement("button", {
+                    className: "linked-btn is-button dashicons dashicons-editor-unlink disconnected",
+                    onClick: function onClick() {
+                        onLinkClickHandler();
+                        setLink(true);
+                    }
+                })
+            );
+        }
+
+        ;
+        return React.createElement(
+            "ul",
+            {
+                className: "premium-spacing-wrapper " + device + " " + active
+            },
+            htmlChoices,
+            linkHtml
+        );
+    };
+
+    var inputHtml = null;
+
+    inputHtml = React.createElement(
+        Fragment,
+        null,
+        renderInputHtml(device, "active")
+    );
+    var devices = ['Desktop', 'Tablet', 'Mobile'];
+
+    var customSetPreviewDeviceType = function customSetPreviewDeviceType(device) {
+        setDevice(device.toLowerCase());
+    };
+
+    if (wp.data.select('core/edit-post')) {
+        var theDevice = useSelect(function (select) {
+            var _select = select('core/edit-post'),
+                _select$__experimenta = _select.__experimentalGetPreviewDeviceType,
+                __experimentalGetPreviewDeviceType = _select$__experimenta === undefined ? null : _select$__experimenta;
+
+            return __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : 'Desktop';
+        }, []);
+        if (theDevice !== device) {
+            setDevice(theDevice);
+        }
+
+        var _useDispatch = useDispatch('core/edit-post'),
+            _useDispatch$__experi = _useDispatch.__experimentalSetPreviewDeviceType,
+            __experimentalSetPreviewDeviceType = _useDispatch$__experi === undefined ? null : _useDispatch$__experi;
+
+        customSetPreviewDeviceType = function customSetPreviewDeviceType(device) {
+            __experimentalSetPreviewDeviceType(device);
+            setDevice(device);
+        };
+    }
+    var onUnitChange = function onUnitChange(unitValue) {
+        var updateState = _extends({}, state);
+        updateState["unit"] = unitValue;
+        props.onChange(updateState);
+        setState(updateState);
+    };
+    return React.createElement(
+        "div",
+        { className: "premium-spacing-responsive" },
+        React.createElement(
+            "header",
+            null,
+            React.createElement(
+                "div",
+                { className: "premium-slider-title-wrap" },
+                React.createElement(
+                    "span",
+                    { className: "customize-control-title premium-control-title" },
+                    "  ",
+                    label
+                ),
+                responsive && React.createElement(
+                    "ul",
+                    { className: "premium-responsive-control-btns premium-responsive-slider-btns" },
+                    devices.map(function (deviceType, key) {
+                        var activeClass = deviceType === device ? ' active' : '';
+                        var icon = deviceType.toLowerCase() === 'mobile' ? 'smartphone' : deviceType.toLowerCase();
+                        return React.createElement(
+                            "li",
+                            { key: key, className: "" + deviceType + activeClass },
+                            React.createElement(
+                                "button",
+                                { type: "button", className: "preview-" + deviceType + activeClass, "data-device": deviceType },
+                                React.createElement("i", { "class": "dashicons dashicons-" + icon, onClick: function onClick() {
+                                        var nextDevice = key + 1 > devices.length - 1 ? devices[0] : devices[key + 1];
+                                        customSetPreviewDeviceType(nextDevice);
+                                    } })
+                            )
+                        );
+                    })
+                )
+            ),
+            showUnits && React.createElement(_premiumSizeUnits2.default, {
+                activeUnit: state["unit"],
+                onChangeSizeUnit: function onChangeSizeUnit(unitKey) {
+                    return onUnitChange(unitKey);
+                }
+            })
+        ),
+        React.createElement(
+            "div",
+            { className: "premium-spacing-responsive-outer-wrapper" },
+            React.createElement(
+                "div",
+                { className: "input-wrapper premium-spacing-responsive-wrapper" },
+                inputHtml
+            ),
+            React.createElement(
+                "div",
+                { className: "premium-spacing-btn-reset-wrap" },
+                React.createElement("button", {
+                    className: "premium-reset-btn ",
+                    disabled: JSON.stringify(state) === JSON.stringify(defaultValues),
+                    onClick: function onClick(e) {
+                        e.preventDefault();
+                        props.onChange(defaultValues);
+                        setState(defaultValues);
+                    }
+                })
+            )
+        )
+    );
+};
+
+exports.default = SpacingComponent;
 
 /***/ })
 /******/ ]);
