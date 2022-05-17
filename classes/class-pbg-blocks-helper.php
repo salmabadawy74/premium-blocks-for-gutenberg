@@ -5039,6 +5039,24 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'margin-left', ( $attr['titleMarginL'] . ( isset( $attr['titleStyles'][0]['titleMarginType'] ) ? $attr['titleStyles'][0]['titleMarginType'] : 'px' ) . '!important' ) );
 		}
 
+		if(isset( $attr['titlePadding'] )){
+			$title_padding = $attr['titlePadding'];
+			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' );
+			$css->add_property( 'padding-top', $css->render_color( $title_padding['Desktop']['top'] . $title_padding['unit'] ) );
+			$css->add_property( 'padding-right', $css->render_color( $title_padding['Desktop']['right'] . $title_padding['unit'] ) );
+			$css->add_property( 'padding-bottom', $css->render_color( $title_padding['Desktop']['bottom'] . $title_padding['unit'] ) );
+			$css->add_property( 'padding-left', $css->render_color( $title_padding['Desktop']['left'] . $title_padding['unit'] ) );
+		}
+
+		if(isset( $attr['titleMargin'] )){
+			$title_margin = $attr['titleMargin'];
+			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' );
+			$css->add_property( 'margin-top', $css->render_color( $title_margin['Desktop']['top'] . $title_margin['unit'] ) );
+			$css->add_property( 'margin-right', $css->render_color( $title_margin['Desktop']['right'] . $title_margin['unit'] ) );
+			$css->add_property( 'margin-bottom', $css->render_color( $title_margin['Desktop']['bottom'] . $title_margin['unit'] ) );
+			$css->add_property( 'margin-left', $css->render_color( $title_margin['Desktop']['left'] . $title_margin['unit'] ) );
+		}
+		
 		// Style for icon.
 		if ( isset( $attr['iconStyles'] ) ) {
 			if ( isset( $attr['iconStyles'][0]['iconSize'] ) && isset( $attr['iconStyles'][0]['iconSizeType'] ) ) {
@@ -5093,6 +5111,24 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['iconMarginL'] ) && isset( $attr['iconStyles'][0]['iconMarginType'] ) ) {
 			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-icon' );
 			$css->add_property( 'margin-left', ( $attr['iconMarginL'] . ( isset( $attr['iconStyles'][0]['iconMarginType'] ) ? $attr['iconStyles'][0]['iconMarginType'] : 'px' ) . '!important' ) );
+		}
+
+		if(isset( $attr['iconPadding'] )){
+			$icon_padding = $attr['iconPadding'];
+			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-icon' );
+			$css->add_property( 'padding-top', $css->render_color( $icon_padding['Desktop']['top'] . $icon_padding['unit'] ) );
+			$css->add_property( 'padding-right', $css->render_color( $icon_padding['Desktop']['right'] . $icon_padding['unit'] ) );
+			$css->add_property( 'padding-bottom', $css->render_color( $icon_padding['Desktop']['bottom'] . $icon_padding['unit'] ) );
+			$css->add_property( 'padding-left', $css->render_color( $icon_padding['Desktop']['left'] . $icon_padding['unit'] ) );
+		}
+
+		if(isset( $attr['iconMargin'] )){
+			$icon_margin = $attr['iconMargin'];
+			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-icon' );
+			$css->add_property( 'margin-top', $css->render_color( $icon_margin['Desktop']['top'] . $icon_margin['unit'] ) );
+			$css->add_property( 'margin-right', $css->render_color( $icon_margin['Desktop']['right'] . $icon_margin['unit'] ) );
+			$css->add_property( 'margin-bottom', $css->render_color( $icon_margin['Desktop']['bottom'] . $icon_margin['unit'] ) );
+			$css->add_property( 'margin-left', $css->render_color( $icon_margin['Desktop']['left'] . $icon_margin['unit'] ) );
 		}
 
 		// stripeStyles
@@ -5180,6 +5216,24 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'margin-left', ( $attr['titleMarginLTablet'] . ( isset( $attr['titleStyles'][0]['titleMarginType'] ) ? $attr['titleStyles'][0]['titleMarginType'] : 'px' ) . '!important' ) );
 		}
 
+		if(isset( $attr['titlePadding'] )){
+			$title_padding = $attr['titlePadding'];
+			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' );
+			$css->add_property( 'padding-top', $css->render_color( $title_padding['Tablet']['top'] . $title_padding['unit'] ) );
+			$css->add_property( 'padding-right', $css->render_color( $title_padding['Tablet']['right'] . $title_padding['unit'] ) );
+			$css->add_property( 'padding-bottom', $css->render_color( $title_padding['Tablet']['bottom'] . $title_padding['unit'] ) );
+			$css->add_property( 'padding-left', $css->render_color( $title_padding['Tablet']['left'] . $title_padding['unit'] ) );
+		}
+
+		if(isset( $attr['titleMargin'] )){
+			$title_margin = $attr['titleMargin'];
+			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' );
+			$css->add_property( 'margin-top', $css->render_color( $title_margin['Tablet']['top'] . $title_margin['unit'] ) );
+			$css->add_property( 'margin-right', $css->render_color( $title_margin['Tablet']['right'] . $title_margin['unit'] ) );
+			$css->add_property( 'margin-bottom', $css->render_color( $title_margin['Tablet']['bottom'] . $title_margin['unit'] ) );
+			$css->add_property( 'margin-left', $css->render_color( $title_margin['Tablet']['left'] . $title_margin['unit'] ) );
+		}
+
 		// Style for icon.
 		if ( isset( $attr['iconStyles'] ) ) {
 			if ( isset( $attr['iconStyles'][0]['iconSizeTablet'] ) && isset( $attr['iconStyles'][0]['iconSizeType'] ) ) {
@@ -5234,6 +5288,24 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['iconMarginLTablet'] ) && isset( $attr['iconStyles'][0]['iconMarginType'] ) ) {
 			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-icon' );
 			$css->add_property( 'margin-left', ( $attr['iconMarginLTablet'] . ( isset( $attr['iconStyles'][0]['iconMarginType'] ) ? $attr['iconStyles'][0]['iconMarginType'] : 'px' ) . '!important' ) );
+		}
+
+		if(isset( $attr['iconPadding'] )){
+			$icon_padding = $attr['iconPadding'];
+			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-icon' );
+			$css->add_property( 'padding-top', $css->render_color( $icon_padding['Tablet']['top'] . $icon_padding['unit'] ) );
+			$css->add_property( 'padding-right', $css->render_color( $icon_padding['Tablet']['right'] . $icon_padding['unit'] ) );
+			$css->add_property( 'padding-bottom', $css->render_color( $icon_padding['Tablet']['bottom'] . $icon_padding['unit'] ) );
+			$css->add_property( 'padding-left', $css->render_color( $icon_padding['Tablet']['left'] . $icon_padding['unit'] ) );
+		}
+
+		if(isset( $attr['iconMargin'] )){
+			$icon_margin = $attr['iconMargin'];
+			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-icon' );
+			$css->add_property( 'margin-top', $css->render_color( $icon_margin['Tablet']['top'] . $icon_margin['unit'] ) );
+			$css->add_property( 'margin-right', $css->render_color( $icon_margin['Tablet']['right'] . $icon_margin['unit'] ) );
+			$css->add_property( 'margin-bottom', $css->render_color( $icon_margin['Tablet']['bottom'] . $icon_margin['unit'] ) );
+			$css->add_property( 'margin-left', $css->render_color( $icon_margin['Tablet']['left'] . $icon_margin['unit'] ) );
 		}
 
 		// stripeStyles
@@ -5323,6 +5395,24 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'margin-left', ( $attr['titleMarginLMobile'] . ( isset( $attr['titleStyles'][0]['titleMarginType'] ) ? $attr['titleStyles'][0]['titleMarginType'] : 'px' ) . '!important' ) );
 		}
 
+		if(isset( $attr['titlePadding'] )){
+			$title_padding = $attr['titlePadding'];
+			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' );
+			$css->add_property( 'padding-top', $css->render_color( $title_padding['Mobile']['top'] . $title_padding['unit'] ) );
+			$css->add_property( 'padding-right', $css->render_color( $title_padding['Mobile']['right'] . $title_padding['unit'] ) );
+			$css->add_property( 'padding-bottom', $css->render_color( $title_padding['Mobile']['bottom'] . $title_padding['unit'] ) );
+			$css->add_property( 'padding-left', $css->render_color( $title_padding['Mobile']['left'] . $title_padding['unit'] ) );
+		}
+
+		if(isset( $attr['titleMargin'] )){
+			$title_margin = $attr['titleMargin'];
+			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' );
+			$css->add_property( 'margin-top', $css->render_color( $title_margin['Mobile']['top'] . $title_margin['unit'] ) );
+			$css->add_property( 'margin-right', $css->render_color( $title_margin['Mobile']['right'] . $title_margin['unit'] ) );
+			$css->add_property( 'margin-bottom', $css->render_color( $title_margin['Mobile']['bottom'] . $title_margin['unit'] ) );
+			$css->add_property( 'margin-left', $css->render_color( $title_margin['Mobile']['left'] . $title_margin['unit'] ) );
+		}
+
 		// Style for icon.
 		if ( isset( $attr['iconStyles'] ) ) {
 			if ( isset( $attr['iconStyles'][0]['iconSizeMobile'] ) && isset( $attr['iconStyles'][0]['iconSizeType'] ) ) {
@@ -5377,6 +5467,24 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['iconMarginLMobile'] ) && isset( $attr['iconStyles'][0]['iconMarginType'] ) ) {
 			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-icon' );
 			$css->add_property( 'margin-left', ( $attr['iconMarginLMobile'] . ( isset( $attr['iconStyles'][0]['iconMarginType'] ) ? $attr['iconStyles'][0]['iconMarginType'] : 'px' ) . '!important' ) );
+		}
+
+		if(isset( $attr['iconPadding'] )){
+			$icon_padding = $attr['iconPadding'];
+			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-icon' );
+			$css->add_property( 'padding-top', $css->render_color( $icon_padding['Mobile']['top'] . $icon_padding['unit'] ) );
+			$css->add_property( 'padding-right', $css->render_color( $icon_padding['Mobile']['right'] . $icon_padding['unit'] ) );
+			$css->add_property( 'padding-bottom', $css->render_color( $icon_padding['Mobile']['bottom'] . $icon_padding['unit'] ) );
+			$css->add_property( 'padding-left', $css->render_color( $icon_padding['Mobile']['left'] . $icon_padding['unit'] ) );
+		}
+
+		if(isset( $attr['iconMargin'] )){
+			$icon_margin = $attr['iconMargin'];
+			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-icon' );
+			$css->add_property( 'margin-top', $css->render_color( $icon_margin['Mobile']['top'] . $icon_margin['unit'] ) );
+			$css->add_property( 'margin-right', $css->render_color( $icon_margin['Mobile']['right'] . $icon_margin['unit'] ) );
+			$css->add_property( 'margin-bottom', $css->render_color( $icon_margin['Mobile']['bottom'] . $icon_margin['unit'] ) );
+			$css->add_property( 'margin-left', $css->render_color( $icon_margin['Mobile']['left'] . $icon_margin['unit'] ) );
 		}
 
 		// stripeStyles

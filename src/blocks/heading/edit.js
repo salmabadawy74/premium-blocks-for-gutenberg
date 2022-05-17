@@ -459,14 +459,14 @@ class edit extends Component {
                         : iconBorderWidth + "px"} !important;
                         border-radius: ${iconStyles[0].iconborderRadius || 0}px !important;
                         border-color: ${iconStyles[0].iconborderColor} !important;
-                        padding-top: ${IconPaddingTop}${iconStyles[0].iconPaddingType} !important;
-                        padding-right: ${IconPaddingRight}${iconStyles[0].iconPaddingType} !important;
-                        padding-bottom: ${IconPaddingBottom}${iconStyles[0].iconPaddingType} !important;
-                        padding-left: ${IconPaddingLeft}${iconStyles[0].iconPaddingType} !important;
-                        margin-top: ${IconMarginTop}${iconStyles[0].iconMarginType} !important;
-                        margin-right: ${IconMarginRight}${iconStyles[0].iconMarginType} !important;
-                        margin-bottom: ${IconMarginBottom}${iconStyles[0].iconMarginType} !important;
-                        margin-left: ${IconMarginLeft}${iconStyles[0].iconMarginType} !important;
+                        padding-top: ${IconPaddingTop}${iconPadding.unit} !important;
+                        padding-right: ${IconPaddingRight}${iconPadding.unit} !important;
+                        padding-bottom: ${IconPaddingBottom}${iconPadding.unit} !important;
+                        padding-left: ${IconPaddingLeft}${iconPadding.unit} !important;
+                        margin-top: ${IconMarginTop}${iconPadding.unit} !important;
+                        margin-right: ${IconMarginRight}${iconPadding.unit} !important;
+                        margin-bottom: ${IconMarginBottom}${iconPadding.unit} !important;
+                        margin-left: ${IconMarginLeft}${iconPadding.unit} !important;
                         text-shadow: ${iconStyles[0].iconshadowHorizontal}px ${iconStyles[0].iconshadowVertical}px ${iconStyles[0].iconshadowBlur}px ${iconStyles[0].iconshadowColor} !important;
                     }
                     #premium-title-${block_id} .premium-lottie-animation svg {
@@ -1368,14 +1368,14 @@ class edit extends Component {
                                     textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
                                     fontFamily: titleStyles[0].titleFontFamily,
                                     textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`,
-                                    marginTop: TitleMarginTop + titleStyles[0].titleMarginType,
-                                    marginBottom: TitleMarginBottom + titleStyles[0].titleMarginType,
-                                    marginLeft: TitleMarginLeft + titleStyles[0].titleMarginType,
-                                    marginRight: TitleMarginRight + titleStyles[0].titleMarginType,
-                                    paddingTop: TitlePaddingTop + titleStyles[0].titlePaddingType,
-                                    paddingBottom: TitlePaddingBottom + titleStyles[0].titlePaddingType,
-                                    paddingLeft: TitlePaddingLeft + titleStyles[0].titlePaddingType,
-                                    paddingRight: TitlePaddingRight + titleStyles[0].titlePaddingType,
+                                    marginTop: TitleMarginTop && `${TitleMarginTop}${titleMargin.unit}`,
+                                    marginBottom: TitleMarginBottom && `${TitleMarginBottom}${titleMargin.unit}`,
+                                    marginLeft: TitleMarginLeft && `${TitleMarginLeft}${titleMargin.unit}`,
+                                    marginRight: TitleMarginRight && `${TitleMarginRight}${titleMargin.unit}`,
+                                    paddingTop: TitlePaddingTop && `${TitlePaddingTop}${titlePadding.unit}`,
+                                    paddingBottom: TitlePaddingBottom && `${TitlePaddingBottom}${titlePadding.unit}`,
+                                    paddingLeft: TitlePaddingLeft && `${TitlePaddingLeft}${titlePadding.unit}`,
+                                    paddingRight: TitlePaddingRight && `${TitlePaddingRight}${titlePadding.unit}`,
                                 }
                             },
                             [<Fragment>

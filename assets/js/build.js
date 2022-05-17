@@ -68591,7 +68591,7 @@ var edit = function (_Component) {
             var renderCss = React.createElement(
                 "style",
                 null,
-                "\n                    #premium-title-" + block_id + " .premium-title-style8__wrap .premium-title-text-title[data-animation='shiny'] {\n                        --base-color: " + titleStyles[0].titleColor + " !important;\n                        --shiny-color: " + titleStyles[0].shinyColor + " !important;\n                        --animation-speed: " + titleStyles[0].animateduration + "s !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-header {\n                        --shadow-color: " + titleStyles[0].blurColor + " !important;\n                        --shadow-value: " + titleStyles[0].blurShadow + "px !important;\n                        color: " + titleStyles[0].titleColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title .style1 .premium-title-header {\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + " !important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + " !important;\n                        border-left: " + (titleBorderLeft >= "1" ? titleBorderLeft + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor : "") + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title .style2{\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + "!important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + "!important;\n                        border-bottom: " + (titleBorderBottom >= "0" ? titleBorderBottom + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor + " !important" : "") + ";\n                    }\n                    #premium-title-" + block_id + " .premium-title .style4{\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + " !important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + " !important;\n                        border-bottom: " + (titleBorderBottom >= "0" ? titleBorderBottom + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor + " !important" : "") + ";\n                    }\n                    #premium-title-" + block_id + " .premium-title .style5{\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + " !important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + " !important;\n                        border-bottom: " + (titleBorderBottom >= "0" ? titleBorderBottom + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor + " !important" : "") + ";\n                    }\n                    #premium-title-" + block_id + " .premium-title .style6{\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + " !important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + " !important;\n                        border-bottom: " + (titleBorderBottom >= "0" ? titleBorderBottom + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor + " !important" : "") + ";\n                    }\n                    #premium-title-" + block_id + " .premium-title-style2__wrap {\n                        background-color: " + titleStyles[0].BGColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style3__wrap {\n                        background-color: " + titleStyles[0].BGColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style5__wrap {\n                        border-bottom: 2px solid " + titleStyles[0].lineColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style6__wrap {\n                        border-bottom: 2px solid " + titleStyles[0].lineColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style6__wrap:before {\n                        border-bottom-color: " + titleStyles[0].triangleColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-icon {\n                        color: " + iconStyles[0].iconColor + " !important;\n                        background-color: " + (backgroundType === "solid" ? iconStyles[0].containerBack : "transparent") + " !important;\n                        background-image: " + btnbg + " !important;\n                        background-repeat: " + iconStyles[0].backgroundRepeat + " !important;\n                        background-position: " + iconStyles[0].backgroundPosition + " !important;\n                        background-size: " + iconStyles[0].backgroundSize + " !important;\n                        background-attachment: " + (iconStyles[0].fixed ? "fixed" : "unset") + " !important;\n                        font-size: " + IconSize + iconStyles[0].iconSizeType + " !important;\n                        border-style: " + iconStyles[0].iconborderType + " !important;\n                        border-width: " + (iconBorderUpdated ? iconBorderTop + "px " + iconBorderRight + "px " + iconBorderBottom + "px " + iconBorderLeft + "px" : iconBorderWidth + "px") + " !important;\n                        border-radius: " + (iconStyles[0].iconborderRadius || 0) + "px !important;\n                        border-color: " + iconStyles[0].iconborderColor + " !important;\n                        padding-top: " + IconPaddingTop + iconStyles[0].iconPaddingType + " !important;\n                        padding-right: " + IconPaddingRight + iconStyles[0].iconPaddingType + " !important;\n                        padding-bottom: " + IconPaddingBottom + iconStyles[0].iconPaddingType + " !important;\n                        padding-left: " + IconPaddingLeft + iconStyles[0].iconPaddingType + " !important;\n                        margin-top: " + IconMarginTop + iconStyles[0].iconMarginType + " !important;\n                        margin-right: " + IconMarginRight + iconStyles[0].iconMarginType + " !important;\n                        margin-bottom: " + IconMarginBottom + iconStyles[0].iconMarginType + " !important;\n                        margin-left: " + IconMarginLeft + iconStyles[0].iconMarginType + " !important;\n                        text-shadow: " + iconStyles[0].iconshadowHorizontal + "px " + iconStyles[0].iconshadowVertical + "px " + iconStyles[0].iconshadowBlur + "px " + iconStyles[0].iconshadowColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-lottie-animation svg {\n                        width: " + IconSize + iconStyles[0].iconSizeType + " !important;\n                        height: " + IconSize + iconStyles[0].iconSizeType + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-header img {\n                        width: " + IconSize + iconStyles[0].iconSizeType + " !important;\n                        height: " + IconSize + iconStyles[0].iconSizeType + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-bg-text:before {\n                        content: " + BackText + ";\n                        width: " + textWidth + ";\n                        color: " + textStyles[0].textBackColor + " !important;\n                        font-size: " + TextSize + textStyles[0].textBackfontSizeType + " !important;\n                        font-weight: " + textStyles[0].textBackWeight + " !important;\n                        letter-spacing: " + textStyles[0].textBackLetter + "px !important;\n                        line-height: " + textStyles[0].textBackLine + "px !important;\n                        font-style: " + textStyles[0].textBackStyle + " !important;\n                        text-transform: " + (textStyles[0].textBackUpper ? "uppercase" : "none") + " !important;\n                        font-family: " + textStyles[0].textBackFontFamily + " !important;\n                        text-shadow: " + textStyles[0].textBackshadowHorizontal + "px " + textStyles[0].textBackshadowVertical + "px " + textStyles[0].textBackshadowBlur + "px " + textStyles[0].textBackshadowColor + " !important;\n                        mix-blend-mode: " + blend + " !important;\n                        z-index: " + zIndex + " !important;\n                        top: " + TextVertical + textStyles[0].verticalTextType + " !important;\n                        left: " + TextHorizontal + textStyles[0].horizontalTextType + " !important;\n                        transform: rotate(" + TextRotate + "deg) !important;\n                        -webkit-text-stroke-color: " + strokeStyles[0].strokeColor + " !important;\n                        -webkit-text-stroke-width: " + StrokeFull + "px !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style7-stripe-span {\n                        width: " + StripeWidth + stripeStyles[0].stripeWidthType + " !important;\n                        height: " + StripeHeight + stripeStyles[0].stripeHeightType + " !important;\n                        background-color: " + titleStyles[0].stripeColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style7-stripe__wrap {\n                        margin-top: " + StripeMarginTop + stripeStyles[0].stripeTopSpacingType + " !important;\n                        margin-bottom: " + StripeMarginBottom + stripeStyles[0].stripeBottomSpacingType + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style9__wrap .premium-letters-container .premium-title-style9-letter {\n                        font-size: " + TitleSize + titleStyles[0].titlefontSizeType + " !important;\n                        font-weight: " + titleStyles[0].titleWeight + " !important;\n                        letter-spacing: " + titleStyles[0].titleLetter + "px !important;\n                        line-height: " + (titleStyles[0].titleLine ? titleStyles[0].titleLine : '') + "px !important;\n                        font-style: " + titleStyles[0].titleStyle + " !important;\n                        text-transform: " + (titleStyles[0].titleUpper ? "uppercase" : "none") + " !important;\n                        font-family: " + titleStyles[0].titleFontFamily + " !important;\n                        text-shadow: " + titleStyles[0].titleShadowHorizontal + "px " + titleStyles[0].titleShadowVertical + "px " + titleStyles[0].titleShadowBlur + "px " + titleStyles[0].titleShadowColor + " !important;\n                    }\n                "
+                "\n                    #premium-title-" + block_id + " .premium-title-style8__wrap .premium-title-text-title[data-animation='shiny'] {\n                        --base-color: " + titleStyles[0].titleColor + " !important;\n                        --shiny-color: " + titleStyles[0].shinyColor + " !important;\n                        --animation-speed: " + titleStyles[0].animateduration + "s !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-header {\n                        --shadow-color: " + titleStyles[0].blurColor + " !important;\n                        --shadow-value: " + titleStyles[0].blurShadow + "px !important;\n                        color: " + titleStyles[0].titleColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title .style1 .premium-title-header {\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + " !important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + " !important;\n                        border-left: " + (titleBorderLeft >= "1" ? titleBorderLeft + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor : "") + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title .style2{\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + "!important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + "!important;\n                        border-bottom: " + (titleBorderBottom >= "0" ? titleBorderBottom + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor + " !important" : "") + ";\n                    }\n                    #premium-title-" + block_id + " .premium-title .style4{\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + " !important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + " !important;\n                        border-bottom: " + (titleBorderBottom >= "0" ? titleBorderBottom + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor + " !important" : "") + ";\n                    }\n                    #premium-title-" + block_id + " .premium-title .style5{\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + " !important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + " !important;\n                        border-bottom: " + (titleBorderBottom >= "0" ? titleBorderBottom + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor + " !important" : "") + ";\n                    }\n                    #premium-title-" + block_id + " .premium-title .style6{\n                        border-style: " + titleStyles[0].titleborderType + " !important;\n                        border-width: " + (titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px") + " !important;\n                        border-radius: " + (titleStyles[0].titleborderRadius || 0) + "px !important;\n                        border-color: " + titleStyles[0].titleborderColor + " !important;\n                        border-bottom: " + (titleBorderBottom >= "0" ? titleBorderBottom + "px " + titleStyles[0].titleborderType + " " + titleStyles[0].titleborderColor + " !important" : "") + ";\n                    }\n                    #premium-title-" + block_id + " .premium-title-style2__wrap {\n                        background-color: " + titleStyles[0].BGColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style3__wrap {\n                        background-color: " + titleStyles[0].BGColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style5__wrap {\n                        border-bottom: 2px solid " + titleStyles[0].lineColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style6__wrap {\n                        border-bottom: 2px solid " + titleStyles[0].lineColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style6__wrap:before {\n                        border-bottom-color: " + titleStyles[0].triangleColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-icon {\n                        color: " + iconStyles[0].iconColor + " !important;\n                        background-color: " + (backgroundType === "solid" ? iconStyles[0].containerBack : "transparent") + " !important;\n                        background-image: " + btnbg + " !important;\n                        background-repeat: " + iconStyles[0].backgroundRepeat + " !important;\n                        background-position: " + iconStyles[0].backgroundPosition + " !important;\n                        background-size: " + iconStyles[0].backgroundSize + " !important;\n                        background-attachment: " + (iconStyles[0].fixed ? "fixed" : "unset") + " !important;\n                        font-size: " + IconSize + iconStyles[0].iconSizeType + " !important;\n                        border-style: " + iconStyles[0].iconborderType + " !important;\n                        border-width: " + (iconBorderUpdated ? iconBorderTop + "px " + iconBorderRight + "px " + iconBorderBottom + "px " + iconBorderLeft + "px" : iconBorderWidth + "px") + " !important;\n                        border-radius: " + (iconStyles[0].iconborderRadius || 0) + "px !important;\n                        border-color: " + iconStyles[0].iconborderColor + " !important;\n                        padding-top: " + IconPaddingTop + iconPadding.unit + " !important;\n                        padding-right: " + IconPaddingRight + iconPadding.unit + " !important;\n                        padding-bottom: " + IconPaddingBottom + iconPadding.unit + " !important;\n                        padding-left: " + IconPaddingLeft + iconPadding.unit + " !important;\n                        margin-top: " + IconMarginTop + iconPadding.unit + " !important;\n                        margin-right: " + IconMarginRight + iconPadding.unit + " !important;\n                        margin-bottom: " + IconMarginBottom + iconPadding.unit + " !important;\n                        margin-left: " + IconMarginLeft + iconPadding.unit + " !important;\n                        text-shadow: " + iconStyles[0].iconshadowHorizontal + "px " + iconStyles[0].iconshadowVertical + "px " + iconStyles[0].iconshadowBlur + "px " + iconStyles[0].iconshadowColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-lottie-animation svg {\n                        width: " + IconSize + iconStyles[0].iconSizeType + " !important;\n                        height: " + IconSize + iconStyles[0].iconSizeType + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-header img {\n                        width: " + IconSize + iconStyles[0].iconSizeType + " !important;\n                        height: " + IconSize + iconStyles[0].iconSizeType + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-bg-text:before {\n                        content: " + BackText + ";\n                        width: " + textWidth + ";\n                        color: " + textStyles[0].textBackColor + " !important;\n                        font-size: " + TextSize + textStyles[0].textBackfontSizeType + " !important;\n                        font-weight: " + textStyles[0].textBackWeight + " !important;\n                        letter-spacing: " + textStyles[0].textBackLetter + "px !important;\n                        line-height: " + textStyles[0].textBackLine + "px !important;\n                        font-style: " + textStyles[0].textBackStyle + " !important;\n                        text-transform: " + (textStyles[0].textBackUpper ? "uppercase" : "none") + " !important;\n                        font-family: " + textStyles[0].textBackFontFamily + " !important;\n                        text-shadow: " + textStyles[0].textBackshadowHorizontal + "px " + textStyles[0].textBackshadowVertical + "px " + textStyles[0].textBackshadowBlur + "px " + textStyles[0].textBackshadowColor + " !important;\n                        mix-blend-mode: " + blend + " !important;\n                        z-index: " + zIndex + " !important;\n                        top: " + TextVertical + textStyles[0].verticalTextType + " !important;\n                        left: " + TextHorizontal + textStyles[0].horizontalTextType + " !important;\n                        transform: rotate(" + TextRotate + "deg) !important;\n                        -webkit-text-stroke-color: " + strokeStyles[0].strokeColor + " !important;\n                        -webkit-text-stroke-width: " + StrokeFull + "px !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style7-stripe-span {\n                        width: " + StripeWidth + stripeStyles[0].stripeWidthType + " !important;\n                        height: " + StripeHeight + stripeStyles[0].stripeHeightType + " !important;\n                        background-color: " + titleStyles[0].stripeColor + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style7-stripe__wrap {\n                        margin-top: " + StripeMarginTop + stripeStyles[0].stripeTopSpacingType + " !important;\n                        margin-bottom: " + StripeMarginBottom + stripeStyles[0].stripeBottomSpacingType + " !important;\n                    }\n                    #premium-title-" + block_id + " .premium-title-style9__wrap .premium-letters-container .premium-title-style9-letter {\n                        font-size: " + TitleSize + titleStyles[0].titlefontSizeType + " !important;\n                        font-weight: " + titleStyles[0].titleWeight + " !important;\n                        letter-spacing: " + titleStyles[0].titleLetter + "px !important;\n                        line-height: " + (titleStyles[0].titleLine ? titleStyles[0].titleLine : '') + "px !important;\n                        font-style: " + titleStyles[0].titleStyle + " !important;\n                        text-transform: " + (titleStyles[0].titleUpper ? "uppercase" : "none") + " !important;\n                        font-family: " + titleStyles[0].titleFontFamily + " !important;\n                        text-shadow: " + titleStyles[0].titleShadowHorizontal + "px " + titleStyles[0].titleShadowVertical + "px " + titleStyles[0].titleShadowBlur + "px " + titleStyles[0].titleShadowColor + " !important;\n                    }\n                "
             );
 
             var saveStripeStyles = function saveStripeStyles(value) {
@@ -69608,14 +69608,14 @@ var edit = function (_Component) {
                                 textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
                                 fontFamily: titleStyles[0].titleFontFamily,
                                 textShadow: titleStyles[0].titleShadowHorizontal + "px " + titleStyles[0].titleShadowVertical + "px " + titleStyles[0].titleShadowBlur + "px " + titleStyles[0].titleShadowColor,
-                                marginTop: TitleMarginTop + titleStyles[0].titleMarginType,
-                                marginBottom: TitleMarginBottom + titleStyles[0].titleMarginType,
-                                marginLeft: TitleMarginLeft + titleStyles[0].titleMarginType,
-                                marginRight: TitleMarginRight + titleStyles[0].titleMarginType,
-                                paddingTop: TitlePaddingTop + titleStyles[0].titlePaddingType,
-                                paddingBottom: TitlePaddingBottom + titleStyles[0].titlePaddingType,
-                                paddingLeft: TitlePaddingLeft + titleStyles[0].titlePaddingType,
-                                paddingRight: TitlePaddingRight + titleStyles[0].titlePaddingType
+                                marginTop: TitleMarginTop && "" + TitleMarginTop + titleMargin.unit,
+                                marginBottom: TitleMarginBottom && "" + TitleMarginBottom + titleMargin.unit,
+                                marginLeft: TitleMarginLeft && "" + TitleMarginLeft + titleMargin.unit,
+                                marginRight: TitleMarginRight && "" + TitleMarginRight + titleMargin.unit,
+                                paddingTop: TitlePaddingTop && "" + TitlePaddingTop + titlePadding.unit,
+                                paddingBottom: TitlePaddingBottom && "" + TitlePaddingBottom + titlePadding.unit,
+                                paddingLeft: TitlePaddingLeft && "" + TitlePaddingLeft + titlePadding.unit,
+                                paddingRight: TitlePaddingRight && "" + TitlePaddingRight + titlePadding.unit
                             }
                         }, [React.createElement(
                             Fragment,
@@ -70872,83 +70872,87 @@ var deprecated = [{
         var newAttributes = {
             titleMargin: {
                 "Desktop": {
-                    top: attributes.titleMarginT,
-                    right: attributes.titleMarginR,
-                    bottom: attributes.titleMarginB,
-                    left: attributes.titleMarginL
+                    top: attributes.titleMarginT || '',
+                    right: attributes.titleMarginR || '',
+                    bottom: attributes.titleMarginB || '',
+                    left: attributes.titleMarginL || ''
                 },
                 "Tablet": {
-                    top: attributes.titleMarginTTablet,
-                    right: attributes.titleMarginRTablet,
-                    bottom: attributes.titleMarginBTablet,
-                    left: attributes.titleMarginLTablet
+                    top: attributes.titleMarginTTablet || '',
+                    right: attributes.titleMarginRTablet || '',
+                    bottom: attributes.titleMarginBTablet || '',
+                    left: attributes.titleMarginLTablet || ''
                 },
                 "Mobile": {
-                    top: attributes.titleMarginTMobile,
-                    right: attributes.titleMarginRMobile,
-                    bottom: attributes.titleMarginBMobile,
-                    left: attributes.titleMarginLMobile
-                }
+                    top: attributes.titleMarginTMobile || '',
+                    right: attributes.titleMarginRMobile || '',
+                    bottom: attributes.titleMarginBMobile || '',
+                    left: attributes.titleMarginLMobile || ''
+                },
+                "unit": "px"
             },
             iconMargin: {
                 "Desktop": {
-                    top: attributes.iconMarginT,
-                    right: attributes.iconMarginR,
-                    bottom: attributes.iconMarginB,
-                    left: attributes.iconMarginL
+                    top: attributes.iconMarginT || '',
+                    right: attributes.iconMarginR || '',
+                    bottom: attributes.iconMarginB || '',
+                    left: attributes.iconMarginL || ''
                 },
                 "Tablet": {
-                    top: attributes.iconMarginTTablet,
-                    right: attributes.iconMarginRTablet,
-                    bottom: attributes.iconMarginBTablet,
-                    left: attributes.iconMarginLTablet
+                    top: attributes.iconMarginTTablet || '',
+                    right: attributes.iconMarginRTablet || '',
+                    bottom: attributes.iconMarginBTablet || '',
+                    left: attributes.iconMarginLTablet || ''
                 },
                 "Mobile": {
-                    top: attributes.iconMarginTMobile,
-                    right: attributes.iconMarginRMobile,
-                    bottom: attributes.iconMarginBMobile,
-                    left: attributes.iconMarginLMobile
-                }
+                    top: attributes.iconMarginTMobile || '',
+                    right: attributes.iconMarginRMobile || '',
+                    bottom: attributes.iconMarginBMobile || '',
+                    left: attributes.iconMarginLMobile || ''
+                },
+                "unit": "px"
             },
             titlePadding: {
                 "Desktop": {
-                    top: attributes.titlePaddingT,
-                    right: attributes.titlePaddingR,
-                    bottom: attributes.titlePaddingB,
-                    left: attributes.titlePaddingL
+                    top: attributes.titlePaddingT || '',
+                    right: attributes.titlePaddingR || '',
+                    bottom: attributes.titlePaddingB || '',
+                    left: attributes.titlePaddingL || ''
                 },
                 "Tablet": {
-                    top: attributes.titlePaddingTTablet,
-                    right: attributes.titlePaddingRTablet,
-                    bottom: attributes.titlePaddingBTablet,
-                    left: attributes.titlePaddingLTablet
+                    top: attributes.titlePaddingTTablet || '',
+                    right: attributes.titlePaddingRTablet || '',
+                    bottom: attributes.titlePaddingBTablet || '',
+                    left: attributes.titlePaddingLTablet || ''
                 },
                 "Mobile": {
-                    top: attributes.titlePaddingTMobile,
-                    right: attributes.titlePaddingRMobile,
-                    bottom: attributes.titlePaddingBMobile,
-                    left: attributes.titlePaddingLMobile
-                }
+                    top: attributes.titlePaddingTMobile || '',
+                    right: attributes.titlePaddingRMobile || '',
+                    bottom: attributes.titlePaddingBMobile || '',
+                    left: attributes.titlePaddingLMobile || ''
+                },
+                "unit": "px"
             },
             iconPadding: {
                 "Desktop": {
-                    top: attributes.iconPaddingT,
-                    right: attributes.iconPaddingR,
-                    bottom: attributes.iconPaddingB,
-                    left: attributes.iconPaddingL
+                    top: attributes.iconPaddingT || '',
+                    right: attributes.iconPaddingR || '',
+                    bottom: attributes.iconPaddingB || '',
+                    left: attributes.iconPaddingL || ''
                 },
                 "Tablet": {
-                    top: attributes.iconPaddingTTablet,
-                    right: attributes.iconPaddingRTablet,
-                    bottom: attributes.iconPaddingBTablet,
-                    left: attributes.iconPaddingLTablet
+                    top: attributes.iconPaddingTTablet || '',
+                    right: attributes.iconPaddingRTablet || '',
+                    bottom: attributes.iconPaddingBTablet || '',
+                    left: attributes.iconPaddingLTablet || ''
                 },
                 "Mobile": {
-                    top: attributes.iconPaddingTMobile,
-                    right: attributes.iconPaddingRMobile,
-                    bottom: attributes.iconPaddingBMobile,
-                    left: attributes.iconPaddingLMobile
-                }
+                    top: attributes.iconPaddingTMobile || '',
+                    right: attributes.iconPaddingRMobile || '',
+                    bottom: attributes.iconPaddingBMobile || '',
+                    left: attributes.iconPaddingLMobile || ''
+                },
+                "unit": "px"
             }
         };
         return Object.assign(attributes, newAttributes);

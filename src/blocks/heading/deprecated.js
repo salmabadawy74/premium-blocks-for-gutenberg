@@ -601,83 +601,87 @@ const deprecated = [
             let newAttributes = {
                 titleMargin: {
                     "Desktop": {
-                        top: attributes.titleMarginT,
-                        right: attributes.titleMarginR,
-                        bottom: attributes.titleMarginB,
-                        left: attributes.titleMarginL
+                        top: attributes.titleMarginT || '',
+                        right: attributes.titleMarginR || '',
+                        bottom: attributes.titleMarginB || '',
+                        left: attributes.titleMarginL || ''
                     },
                     "Tablet": {
-                        top: attributes.titleMarginTTablet,
-                        right: attributes.titleMarginRTablet,
-                        bottom: attributes.titleMarginBTablet,
-                        left: attributes.titleMarginLTablet
+                        top: attributes.titleMarginTTablet || '',
+                        right: attributes.titleMarginRTablet || '',
+                        bottom: attributes.titleMarginBTablet || '',
+                        left: attributes.titleMarginLTablet || ''
                     },
                     "Mobile": {
-                        top: attributes.titleMarginTMobile,
-                        right: attributes.titleMarginRMobile,
-                        bottom: attributes.titleMarginBMobile,
-                        left: attributes.titleMarginLMobile
+                        top: attributes.titleMarginTMobile || '',
+                        right: attributes.titleMarginRMobile || '',
+                        bottom: attributes.titleMarginBMobile || '',
+                        left: attributes.titleMarginLMobile || ''
                     },
+                    "unit": "px"
                 },
                 iconMargin: {
                     "Desktop": {
-                        top: attributes.iconMarginT,
-                        right: attributes.iconMarginR,
-                        bottom: attributes.iconMarginB,
-                        left: attributes.iconMarginL
+                        top: attributes.iconMarginT || '',
+                        right: attributes.iconMarginR || '',
+                        bottom: attributes.iconMarginB || '',
+                        left: attributes.iconMarginL || ''
                     },
                     "Tablet": {
-                        top: attributes.iconMarginTTablet,
-                        right: attributes.iconMarginRTablet,
-                        bottom: attributes.iconMarginBTablet,
-                        left: attributes.iconMarginLTablet
+                        top: attributes.iconMarginTTablet || '',
+                        right: attributes.iconMarginRTablet || '',
+                        bottom: attributes.iconMarginBTablet || '',
+                        left: attributes.iconMarginLTablet || ''
                     },
                     "Mobile": {
-                        top: attributes.iconMarginTMobile,
-                        right: attributes.iconMarginRMobile,
-                        bottom: attributes.iconMarginBMobile,
-                        left: attributes.iconMarginLMobile
+                        top: attributes.iconMarginTMobile || '',
+                        right: attributes.iconMarginRMobile || '',
+                        bottom: attributes.iconMarginBMobile || '',
+                        left: attributes.iconMarginLMobile || ''
                     },
+                    "unit": "px"
                 },
                 titlePadding: {
                     "Desktop": {
-                        top: attributes.titlePaddingT,
-                        right: attributes.titlePaddingR,
-                        bottom: attributes.titlePaddingB,
-                        left: attributes.titlePaddingL
+                        top: attributes.titlePaddingT || '',
+                        right: attributes.titlePaddingR || '',
+                        bottom: attributes.titlePaddingB || '',
+                        left: attributes.titlePaddingL || ''
                     },
                     "Tablet": {
-                        top: attributes.titlePaddingTTablet,
-                        right: attributes.titlePaddingRTablet,
-                        bottom: attributes.titlePaddingBTablet,
-                        left: attributes.titlePaddingLTablet
+                        top: attributes.titlePaddingTTablet || '',
+                        right: attributes.titlePaddingRTablet || '',
+                        bottom: attributes.titlePaddingBTablet || '',
+                        left: attributes.titlePaddingLTablet || ''
                     },
                     "Mobile": {
-                        top: attributes.titlePaddingTMobile,
-                        right: attributes.titlePaddingRMobile,
-                        bottom: attributes.titlePaddingBMobile,
-                        left: attributes.titlePaddingLMobile
+                        top: attributes.titlePaddingTMobile || '',
+                        right: attributes.titlePaddingRMobile || '',
+                        bottom: attributes.titlePaddingBMobile || '',
+                        left: attributes.titlePaddingLMobile || ''
                     },
+                    "unit": "px"
                 },
                 iconPadding: {
                     "Desktop": {
-                        top: attributes.iconPaddingT,
-                        right: attributes.iconPaddingR,
-                        bottom: attributes.iconPaddingB,
-                        left: attributes.iconPaddingL
+                        top: attributes.iconPaddingT || '',
+                        right: attributes.iconPaddingR || '',
+                        bottom: attributes.iconPaddingB || '',
+                        left: attributes.iconPaddingL || ''
                     },
                     "Tablet": {
-                        top: attributes.iconPaddingTTablet,
-                        right: attributes.iconPaddingRTablet,
-                        bottom: attributes.iconPaddingBTablet,
-                        left: attributes.iconPaddingLTablet
+                        top: attributes.iconPaddingTTablet || '',
+                        right: attributes.iconPaddingRTablet || '',
+                        bottom: attributes.iconPaddingBTablet || '',
+                        left: attributes.iconPaddingLTablet || ''
                     },
                     "Mobile": {
-                        top: attributes.iconPaddingTMobile,
-                        right: attributes.iconPaddingRMobile,
-                        bottom: attributes.iconPaddingBMobile,
-                        left: attributes.iconPaddingLMobile
+                        top: attributes.iconPaddingTMobile || '',
+                        right: attributes.iconPaddingRMobile || '',
+                        bottom: attributes.iconPaddingBMobile || '',
+                        left: attributes.iconPaddingLMobile || ''
                     },
+                    "unit": "px"
                 }
             }
             return Object.assign(attributes, newAttributes)
