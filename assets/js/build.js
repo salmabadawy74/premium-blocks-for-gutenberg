@@ -64453,7 +64453,7 @@ var deprecated = [{
                     top: attributes.generalmarginTMobile || '',
                     right: attributes.generalmarginRMobile || '',
                     bottom: attributes.generalmarginBMobile || '',
-                    left: attributes.generalmarginLMobile
+                    left: attributes.generalmarginLMobile || ''
                 },
                 "unit": "px"
             },
