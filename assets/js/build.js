@@ -23808,6 +23808,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _ref;
+
 var _hexToRgba = __webpack_require__(17);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
@@ -24140,6 +24142,207 @@ var attributes = {
 };
 
 var newAttributes = {
+    block_id: {
+        type: "string"
+    },
+    borderCount: {
+        type: "boolean",
+        default: false
+    },
+    increment: {
+        type: "string",
+        default: 500
+    },
+    time: {
+        type: "string",
+        default: 1000
+    },
+    delay: {
+        type: "string",
+        default: 10
+    },
+    align: {
+        type: "string",
+        default: "center"
+    },
+    flexDir: {
+        type: "string",
+        default: "column"
+    },
+    prefix: {
+        type: "boolean",
+        default: true
+    },
+    suffix: {
+        type: "boolean",
+        default: true
+    },
+    icon: {
+        type: "string",
+        default: "icon"
+    },
+    iconSpacing: {
+        type: "number",
+        default: 10
+    },
+    imageID: {
+        type: "string"
+    },
+    imageURL: {
+        type: "string"
+    },
+    iconType: {
+        type: "string",
+        default: "dash"
+    },
+    iconCheck: {
+        type: "boolean",
+        default: true
+    },
+    iconSize: {
+        type: "number",
+        default: 40
+    },
+    iconColor: {
+        type: "string",
+        default: "#6ec1e4"
+    },
+    selfAlign: {
+        type: "string",
+        default: "center"
+    },
+    titleCheck: {
+        type: "boolean",
+        default: true
+    },
+    titleTxt: {
+        type: "string",
+        default: __("Premium Count Up", 'premium-blocks-for-gutenberg')
+    },
+    faIcon: {
+        type: "string",
+        default: "dashicons-clock"
+    },
+    counterFamily: {
+        type: "string",
+        default: __('Default', 'premium-blocks-for-gutenberg')
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    },
+    backgroundType: {
+        type: "string",
+        default: ""
+    },
+    numberStyles: {
+        type: "array",
+        default: [{
+            numberSizeUnit: "px",
+            numberSize: 30,
+            numberSizeTablet: '',
+            numberSizeMobile: '',
+            numberColor: "#6ec1e4",
+            numberWeight: ''
+        }]
+    },
+    titleStyles: {
+        type: "array",
+        default: [(_ref = {
+            titleFamily: __('Default', 'premium-blocks-for-gutenberg'),
+            titleSize: 20,
+            titleSizeUnit: 'px',
+            titleSizeTablet: '',
+            titleSizeMobile: '',
+            titleSpacing: '',
+            titleStyle: '',
+            titleUpper: false,
+            titleColor: '',
+            titleT: 1,
+            titleB: 1
+        }, _defineProperty(_ref, 'titleColor', ''), _defineProperty(_ref, 'titleWeight', ''), _ref)]
+    },
+    containerStyles: {
+        type: "array",
+        default: [{
+            containerBack: '',
+            containerOpacity: 1,
+            backgroundImageID: '',
+            backgroundImageURL: '',
+            backgroundRepeat: 'no-reapet',
+            backgroundPosition: 'top center',
+            backgroundSize: 'auto',
+            fixed: false,
+            borderType: 'none',
+            borderWidth: 1,
+            borderRadius: 0,
+            borderColor: '',
+            shadowColor: '',
+            shadowBlur: '0',
+            shadowHorizontal: '0',
+            shadowVertical: '0',
+            shadowPosition: '',
+            paddingU: '',
+            gradientLocationOne: '0',
+            gradientColorTwo: '',
+            gradientLocationTwo: '100',
+            gradientType: 'linear',
+            gradientAngle: '180',
+            gradientPosition: 'center center'
+        }]
+    },
+    borderTop: {
+        type: 'number',
+        default: '0'
+    },
+    borderRight: {
+        type: 'number',
+        default: '0'
+    },
+    borderBottom: {
+        type: 'number',
+        default: '0'
+    },
+    borderLeft: {
+        type: 'number',
+        default: '0'
+    },
+    suffixStyles: {
+        type: 'array',
+        default: [{
+            suffixTxt: "Suffix",
+            suffixSizeUnit: 'px',
+            suffixSize: 20,
+            suffixSizeTablet: '',
+            suffixSizeMobile: '',
+            suffixColor: '',
+            suffixWeight: '',
+            suffixGap: 2,
+            suffixFamily: __('Default', 'premium-blocks-for-gutenberg')
+        }]
+    },
+    prefixStyles: {
+        type: "array",
+        default: [{
+            prefixTxt: "Prefix",
+            prefixSize: 20,
+            prefixSizeUnit: 'px',
+            prefixSizeTablet: '',
+            prefixSizeMobile: '',
+            prefixColor: '',
+            prefixWeight: '',
+            prefixGap: 2,
+            prefixFamily: __('Default', 'premium-blocks-for-gutenberg')
+        }]
+    },
     padding: {
         type: "object",
         default: {
@@ -24192,7 +24395,8 @@ var deprecatedContent = [{
                     right: attributes.paddingRMobile || '',
                     bottom: attributes.paddingBMobile || '',
                     left: attributes.paddingLMobile || ''
-                }
+                },
+                "unit": "px"
             }
         };
         return Object.assign(attributes, newAttributes);
@@ -24399,7 +24603,7 @@ var deprecatedContent = [{
 }, {
     attributes: attributes,
     migrate: function migrate(attributes) {
-        var _ref;
+        var _ref2;
 
         var newAttributes = {
             numberStyles: [{
@@ -24410,7 +24614,7 @@ var deprecatedContent = [{
                 numberColor: attributes.numberColor,
                 numberWeight: attributes.numberWeight
             }],
-            titleStyles: [(_ref = {
+            titleStyles: [(_ref2 = {
                 titleFamily: attributes.titleFamily,
                 titleSize: attributes.titleSize,
                 titleSizeUnit: attributes.titleSizeUnit,
@@ -24422,7 +24626,7 @@ var deprecatedContent = [{
                 titleColor: attributes.titleColor,
                 titleT: attributes.titleT,
                 titleB: attributes.titleB
-            }, _defineProperty(_ref, 'titleColor', attributes.titleColor), _defineProperty(_ref, 'titleWeight', attributes.titleWeight), _ref)],
+            }, _defineProperty(_ref2, 'titleColor', attributes.titleColor), _defineProperty(_ref2, 'titleWeight', attributes.titleWeight), _ref2)],
             containerStyles: [{
                 containerBack: attributes.containerBack,
                 containerOpacity: attributes.containerOpacity,
