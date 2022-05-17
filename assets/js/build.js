@@ -724,15 +724,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 var _react = __webpack_require__(9);
-
-var _singleRangeControl = __webpack_require__(2);
-
-var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
 var _ColorComponent = __webpack_require__(3);
 
@@ -744,138 +740,143 @@ var _premiumResponsiveSpacing2 = _interopRequireDefault(_premiumResponsiveSpacin
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 var __ = wp.i18n.__;
-var SelectControl = wp.components.SelectControl;
+var Tooltip = wp.components.Tooltip;
 var _wp$element = wp.element,
     Fragment = _wp$element.Fragment,
-    useState = _wp$element.useState;
-
-var PremiumBorder = function (_Component) {
-    _inherits(PremiumBorder, _Component);
-
-    function PremiumBorder(props) {
-        _classCallCheck(this, PremiumBorder);
-
-        var _this = _possibleConstructorReturn(this, (PremiumBorder.__proto__ || Object.getPrototypeOf(PremiumBorder)).call(this, props));
-
-        var value = _this.props.value;
-        var defaultValues = {
-            'borderType': 'none',
-            'borderColor': '',
-            'borderWidth': {
-                'top': '',
-                'right': '',
-                'bottom': '',
-                'left': ''
-            },
-            'borderRadius': ''
-        };
-        var actualValue = value ? _extends({}, defaultValues, value) : defaultValues;
-        _this.state = {
-            borderValue: actualValue
-        };
-        return _this;
-    }
-
-    _createClass(PremiumBorder, [{
-        key: "render",
-        value: function render() {
-            var _this2 = this;
-
-            var onChange = this.props.onChange;
-            var _state$borderValue = this.state.borderValue,
-                borderColor = _state$borderValue.borderColor,
-                borderType = _state$borderValue.borderType,
-                borderWidth = _state$borderValue.borderWidth,
-                borderRadius = _state$borderValue.borderRadius;
+    useState = _wp$element.useState,
+    useEffect = _wp$element.useEffect;
 
 
-            var BORDER = [{
-                value: "none",
-                label: __("None", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "solid",
-                label: __("Solid", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "double",
-                label: __("Double", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "dotted",
-                label: __("Dotted", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "dashed",
-                label: __("Dashed", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "groove",
-                label: __("Groove", 'premium-blocks-for-gutenberg')
-            }];
-
-            var onChangeBorder = function onChangeBorder(item, value) {
-                var inialState = _extends({}, _this2.state.borderValue);
-
-                inialState[item] = value;
-                onChange(inialState);
-                _this2.setState({ borderValue: inialState });
-            };
-            return React.createElement(
-                "div",
-                { className: "premium-control-toggle" },
-                React.createElement(
-                    Fragment,
-                    null,
-                    React.createElement(SelectControl, {
-                        label: __("Border Type", 'premium-blocks-for-gutneberg'),
-                        options: BORDER,
-                        value: borderType,
-                        onChange: function onChange(value) {
-                            return onChangeBorder('borderType', value);
-                        }
-                    }),
-                    "none" != borderType && React.createElement(_premiumResponsiveSpacing2.default, {
-                        label: __("Border Width "),
-                        value: borderWidth,
-                        responsive: false,
-                        showUnits: false,
-                        onChange: function onChange(value) {
-                            return onChangeBorder('borderWidth', _extends({}, value));
-                        }
-
-                    }),
-                    "none" != borderType && React.createElement(
-                        Fragment,
-                        null,
-                        React.createElement(_ColorComponent2.default, {
-                            label: __("Border Color", 'premium-blocks-for-gutenberg'),
-                            colorValue: borderColor,
-                            colorDefault: '',
-                            onColorChange: function onColorChange(value) {
-                                return onChangeBorder('borderColor', value);
-                            }
-                        })
-                    ),
-                    React.createElement(_singleRangeControl2.default, {
-                        label: __("Border Radius", 'premium-blocks-for-gutenberg'),
-                        value: borderRadius,
-                        defaultValue: 0,
-                        onChange: function onChange(value) {
-                            return onChangeBorder('borderRadius', value);
-                        },
-                        showUnit: false
-                    })
-                )
-            );
+var PremiumBorder = function PremiumBorder(props) {
+    var value = props.value;
+    var directions = {
+        'top': '',
+        'right': '',
+        'bottom': '',
+        'left': ''
+    };
+    var defaultValues = {
+        'borderType': 'none',
+        'borderColor': '',
+        'borderWidth': {
+            Desktop: directions,
+            Tablet: directions,
+            Mobile: directions
+        },
+        'borderRadius': {
+            Desktop: directions,
+            Tablet: directions,
+            Mobile: directions
         }
-    }]);
+    };
+    value = value ? _extends({}, defaultValues, value) : defaultValues;
 
-    return PremiumBorder;
-}(_react.Component);
+    var _useState = useState(value),
+        _useState2 = _slicedToArray(_useState, 2),
+        borderValue = _useState2[0],
+        setBorderValue = _useState2[1];
 
+    var onChange = props.onChange;
+    var borderColor = borderValue.borderColor,
+        borderType = borderValue.borderType,
+        borderWidth = borderValue.borderWidth,
+        borderRadius = borderValue.borderRadius;
+
+    useEffect(function () {
+        if (borderValue !== value) {
+            setBorderValue(value);
+        }
+    }, [props]);
+
+    var onChangeBorder = function onChangeBorder(item, value) {
+        var inialState = _extends({}, borderValue);
+        inialState[item] = value;
+        onChange(inialState);
+        setBorderValue(inialState);
+    };
+    return React.createElement(
+        'div',
+        { className: 'premium-control-toggle' },
+        React.createElement(
+            Fragment,
+            null,
+            React.createElement(
+                'div',
+                { className: 'premium-blocks-border__control ', style: { display: "flex" } },
+                React.createElement(
+                    'div',
+                    null,
+                    props.label ? props.label : __('Border', 'premium-blocks-for-gutenberg')
+                ),
+                React.createElement(
+                    'div',
+                    { className: 'premium-blocks-border-button-list ' },
+                    [['none', __("None")], ['solid', __('Solid')], ['dotted', __('Dotted')], ['dashed', __('Dashed')], ['double', __('Double')]].map(function (data, index) {
+                        return React.createElement(
+                            Tooltip,
+                            { text: data[1] },
+                            React.createElement(
+                                'button',
+                                { className: (borderType == data[0] ? 'active' : '') + ' premium-border-button', key: index, onClick: function onClick() {
+                                        return onChangeBorder("borderType", data[0]);
+                                    } },
+                                React.createElement('span', { className: 'premium-blocks-border-type premium-blocks-border-type-' + data[0] })
+                            )
+                        );
+                    })
+                ),
+                "none" != borderType && React.createElement(
+                    Tooltip,
+                    { text: __('Clear') },
+                    React.createElement(
+                        'div',
+                        { className: 'premium-blocks-border-clear__container' },
+                        React.createElement(
+                            'span',
+                            { className: 'premium-blocks-border-clear', onClick: function onClick() {
+                                    return onChangeBorder("borderType", 'none');
+                                }, role: 'button' },
+                            React.createElement('i', { className: 'fas fa-undo' })
+                        )
+                    )
+                )
+            ),
+            "none" != borderType && React.createElement(_premiumResponsiveSpacing2.default, {
+                label: __("Border Width "),
+                value: borderWidth,
+                responsive: true,
+                showUnits: false,
+                onChange: function onChange(value) {
+                    return onChangeBorder('borderWidth', _extends({}, value));
+                }
+
+            }),
+            "none" != borderType && React.createElement(
+                Fragment,
+                null,
+                React.createElement(_ColorComponent2.default, {
+                    label: __("Border Color", 'premium-blocks-for-gutenberg'),
+                    colorValue: borderColor,
+                    colorDefault: '',
+                    onColorChange: function onColorChange(value) {
+                        return onChangeBorder('borderColor', value);
+                    }
+                })
+            ),
+            React.createElement(_premiumResponsiveSpacing2.default, {
+                label: __("Border Radius"),
+                value: borderRadius,
+                responsive: true,
+                showUnits: false,
+                onChange: function onChange(value) {
+                    return onChangeBorder('borderRadius', _extends({}, value));
+                }
+
+            })
+        )
+    );
+};
 exports.default = PremiumBorder;
 
 /***/ }),
