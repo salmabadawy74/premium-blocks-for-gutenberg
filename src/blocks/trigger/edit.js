@@ -69,15 +69,15 @@ const triggerSpacingRight = getPreviewSize(props.deviceType, triggerSpacing.Desk
 const triggerSpacingBottom = getPreviewSize(props.deviceType, triggerSpacing.Desktop.bottom, triggerSpacing.Tablet.bottom, triggerSpacing.Mobile.bottom);
 const triggerSpacingLeft = getPreviewSize(props.deviceType, triggerSpacing.Desktop.left, triggerSpacing.Tablet.left, triggerSpacing.Mobile.left);
 
-const setTriggerStyles = (color, value) => {
-    const newColors = { ...triggerStyles };
-    newColors[color] = value;
-    setAttributes({ triggerStyles: newColors });
+const setTriggerStyles = (style, value) => {
+    const newTStyles = { ...triggerStyles };
+    newTStyles[style] = value;
+    setAttributes({ triggerStyles: newTStyles });
 }
 const setCanvasStyles = (color, value) => {
-    const newColors = { ...canvasStyles };
-    newColors[color] = value;
-    setAttributes({ canvasStyles: newColors });
+    const newCStyles = { ...canvasStyles };
+    newCStyles[color] = value;
+    setAttributes({ canvasStyles: newCStyles });
 };
 function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
     if (device === 'Mobile') {
