@@ -122,78 +122,6 @@ const attributes = {
         type: "boolean",
         default: false
     },
-    socialIconMarginT: {
-        type: "number"
-    },
-    socialIconMarginR: {
-        type: "number"
-    },
-    socialIconMarginB: {
-        type: "number"
-    },
-    socialIconMarginL: {
-        type: "number"
-    },
-    socialIconMarginTTablet: {
-        type: "number"
-    },
-    socialIconMarginRTablet: {
-        type: "number"
-    },
-    socialIconMarginBTablet: {
-        type: "number"
-    },
-    socialIconMarginLTablet: {
-        type: "number"
-    },
-    socialIconMarginTMobile: {
-        type: "number"
-    },
-    socialIconMarginRMobile: {
-        type: "number"
-    },
-    socialIconMarginBMobile: {
-        type: "number"
-    },
-    socialIconMarginLMobile: {
-        type: "number"
-    },
-    socialIconPaddingTop: {
-        type: "number"
-    },
-    socialIconPaddingRight: {
-        type: "number"
-    },
-    socialIconPaddingBottom: {
-        type: "number"
-    },
-    socialIconPaddingLeft: {
-        type: "number"
-    },
-    socialIconPaddingTTablet: {
-        type: "number"
-    },
-    socialIconPaddingRTablet: {
-        type: "number"
-    },
-    socialIconPaddingBTablet: {
-        type: "number"
-    },
-    socialIconPaddingLTablet: {
-        type: "number"
-    },
-    socialIconPaddingTMobile: {
-        type: "number"
-    },
-    socialIconPaddingRMobile: {
-        type: "number"
-    },
-    socialIconPaddingBMobile: {
-        type: "number"
-    },
-    socialIconPaddingLMobile: {
-        type: "number"
-    },
     titleTag: {
         type: "string",
         default: "p"
@@ -294,5 +222,53 @@ const attributes = {
         type: "number",
         default: "0"
     },
+    socialIconMargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            unit: "px"
+        }
+    },
+    socialIconPadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            unit: "px"
+        }
+    }
 }
 export default attributes
