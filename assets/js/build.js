@@ -65741,6 +65741,10 @@ var _edit = __webpack_require__(390);
 
 var _edit2 = _interopRequireDefault(_edit);
 
+var _deprecated = __webpack_require__(410);
+
+var _deprecated2 = _interopRequireDefault(_deprecated);
+
 var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
@@ -65765,7 +65769,8 @@ registerBlockType("premium/person", {
     },
     example: {},
     edit: _edit2.default,
-    save: _save2.default
+    save: _save2.default,
+    deprecated: _deprecated2.default
 });
 
 /***/ }),
@@ -68689,6 +68694,621 @@ var SpacingComponent = function SpacingComponent(props) {
 };
 
 exports.default = SpacingComponent;
+
+/***/ }),
+/* 410 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _defaultImage = __webpack_require__(66);
+
+var _defaultImage2 = _interopRequireDefault(_defaultImage);
+
+var _classnames = __webpack_require__(0);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+
+
+var attributes = {
+    personSize: {
+        type: "string",
+        default: "md"
+    },
+    personAlign: {
+        type: "string",
+        default: "center"
+    },
+    imgSize: {
+        type: "number"
+    },
+    imgBorder: {
+        type: "number",
+        default: "1"
+    },
+    imgBorderColor: {
+        type: "string"
+    },
+    nameStyles: {
+        type: "array",
+        default: [{
+            nameColor: "rgb(110, 193, 228)",
+            nameLetter: 0,
+            nameStyle: '',
+            nameUpper: false,
+            nameWeight: 500,
+            nameLine: 0,
+            namefontSize: 20,
+            namefontSizeType: "px",
+            namefontSizeMobile: 20,
+            namefontSizeTablet: 20,
+            nameshadowColor: '',
+            nameshadowBlur: 0,
+            nameshadowHorizontal: 0,
+            nameshadowVertical: 0
+        }]
+    },
+    titleStyles: {
+        type: "array",
+        default: [{
+            titleColor: "",
+            titleLetter: 0,
+            titleStyle: '',
+            titleUpper: false,
+            titleWeight: 500,
+            titleLine: 0,
+            titleSize: 20,
+            titlefontSizeType: "px",
+            titlefontSizeMobile: 20,
+            titlefontSizeTablet: 20,
+            titleshadowColor: '',
+            titleshadowBlur: 0,
+            titleshadowHorizontal: 0,
+            titleshadowVertical: 0
+        }]
+    },
+    descStyles: {
+        type: "array",
+        default: [{
+            descColor: "",
+            descLetter: 0,
+            descStyle: '',
+            descUpper: false,
+            descWeight: '',
+            descLine: 0,
+            descSize: 20,
+            descfontSizeType: "px",
+            descfontSizeMobile: 20,
+            descfontSizeTablet: 20,
+            descshadowColor: '',
+            descshadowBlur: 0,
+            descshadowHorizontal: 0,
+            descshadowVertical: 0
+        }]
+    },
+    socialIconStyles: {
+        type: "array",
+        default: [{
+            socialIconColor: "",
+            socialIconHoverColor: '',
+            socialIconBackgroundColor: '',
+            defaultIconColor: false,
+            socialIconSize: 20,
+            socialIconfontSizeType: "px",
+            socialIconfontSizeMobile: 20,
+            socialIconfontSizeTablet: 20,
+            borderTypeIcon: 'none',
+            borderWidthIcon: '1',
+            borderRadiusIcon: '0',
+            borderColorIcon: '',
+            socialIconPaddingType: 'px',
+            socialIconMarginType: 'px'
+        }]
+    },
+    socialIconBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    socialIconBorderTop: {
+        type: "number"
+    },
+    socialIconBorderRight: {
+        type: "number"
+    },
+    socialIconBorderBottom: {
+        type: "number"
+    },
+    socialIconBorderLeft: {
+        type: "number"
+    },
+    socialIconBorderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    socialIconMarginT: {
+        type: "number"
+    },
+    socialIconMarginR: {
+        type: "number"
+    },
+    socialIconMarginB: {
+        type: "number"
+    },
+    socialIconMarginL: {
+        type: "number"
+    },
+    socialIconMarginTTablet: {
+        type: "number"
+    },
+    socialIconMarginRTablet: {
+        type: "number"
+    },
+    socialIconMarginBTablet: {
+        type: "number"
+    },
+    socialIconMarginLTablet: {
+        type: "number"
+    },
+    socialIconMarginTMobile: {
+        type: "number"
+    },
+    socialIconMarginRMobile: {
+        type: "number"
+    },
+    socialIconMarginBMobile: {
+        type: "number"
+    },
+    socialIconMarginLMobile: {
+        type: "number"
+    },
+    socialIconPaddingTop: {
+        type: "number"
+    },
+    socialIconPaddingRight: {
+        type: "number"
+    },
+    socialIconPaddingBottom: {
+        type: "number"
+    },
+    socialIconPaddingLeft: {
+        type: "number"
+    },
+    socialIconPaddingTTablet: {
+        type: "number"
+    },
+    socialIconPaddingRTablet: {
+        type: "number"
+    },
+    socialIconPaddingBTablet: {
+        type: "number"
+    },
+    socialIconPaddingLTablet: {
+        type: "number"
+    },
+    socialIconPaddingTMobile: {
+        type: "number"
+    },
+    socialIconPaddingRMobile: {
+        type: "number"
+    },
+    socialIconPaddingBMobile: {
+        type: "number"
+    },
+    socialIconPaddingLMobile: {
+        type: "number"
+    },
+    titleTag: {
+        type: "string",
+        default: "p"
+    },
+    contentColor: {
+        type: "string"
+    },
+    bottomInfo: {
+        type: "number",
+        default: 15
+    },
+    effect: {
+        type: "string",
+        default: "none"
+    },
+    effectDir: {
+        type: "string",
+        default: "top"
+    },
+    descColor: {
+        type: "string",
+        default: "#000"
+    },
+    multiPersonChecked: {
+        type: "number",
+        default: 1
+    },
+    borderHoverColor: {
+        type: "string"
+    },
+    personShadowPosition: {
+        type: "string",
+        default: ""
+    },
+    id: {
+        type: "string"
+    },
+    classMigrate: {
+        type: "boolean",
+        default: false
+    },
+    hoverEffectPerson: {
+        type: "string",
+        default: "none"
+    },
+    selectedSocialMediaIcon: {
+        type: "string"
+    },
+    effectPersonStyle: {
+        type: "string",
+        default: "effect1"
+    },
+    rowPerson: {
+        type: "string",
+        default: "column1"
+    },
+    multiPersonContent: {
+        type: "array",
+        default: [{
+            id: 1,
+            personImgUrl: "",
+            personImgId: '',
+            name: "John Doe",
+            title: "Senior Developer",
+            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla",
+            socialIcon: false,
+            items: [{ label: 'facebook', link: false, value: "#", changeinput: "#" }, { label: 'twitter', link: false, value: "#", changeinput: "#" }, { label: 'instagram', link: false, value: "#", changeinput: "#" }, { label: 'youtube', link: false, value: "#", changeinput: "#" }]
+        }]
+    },
+    change: {
+        type: "boolean",
+        default: false
+    },
+    blur: {
+        type: "number",
+        default: "0"
+    },
+    bright: {
+        type: "number",
+        default: "100"
+    },
+    contrast: {
+        type: "number",
+        default: "100"
+    },
+    saturation: {
+        type: "number",
+        default: "100"
+    },
+    hue: {
+        type: "number",
+        default: "0"
+    }
+};
+var newAttributes = {
+    socialIconMargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            unit: "px"
+        }
+    },
+    socialIconPadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            unit: "px"
+        }
+    }
+};
+
+var deprecated = [{
+    attributes: Object.assign(attributes, newAttributes),
+    isEligible: function isEligible() {
+        return true;
+    },
+
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            socialIconMargin: {
+                "Desktop": {
+                    top: attributes.socialIconMarginT,
+                    right: attributes.socialIconMarginR,
+                    bottom: attributes.socialIconMarginB,
+                    left: attributes.socialIconMarginL
+                },
+                "Tablet": {
+                    top: attributes.socialIconMarginTTablet,
+                    right: attributes.socialIconMarginRTablet,
+                    bottom: attributes.socialIconMarginBTablet,
+                    left: attributes.socialIconMarginLTablet
+                },
+                "Mobile": {
+                    top: attributes.socialIconMarginTMobile,
+                    right: attributes.socialIconMarginRMobile,
+                    bottom: attributes.socialIconMarginBMobile,
+                    left: attributes.socialIconMarginLMobile
+                }
+            },
+            socialIconPadding: {
+                "Desktop": {
+                    top: attributes.socialIconPaddingTop,
+                    right: attributes.socialIconPaddingRight,
+                    bottom: attributes.socialIconPaddingBottom,
+                    left: attributes.socialIconPaddingLeft
+                },
+                "Tablet": {
+                    top: attributes.socialIconPaddingTTablet,
+                    right: attributes.socialIconPaddingRTablet,
+                    bottom: attributes.socialIconPaddingBTablet,
+                    left: attributes.socialIconPaddingLTablet
+                },
+                "Mobile": {
+                    top: attributes.socialIconPaddingTMobile,
+                    right: attributes.socialIconPaddingRMobile,
+                    bottom: attributes.socialIconPaddingBMobile,
+                    left: attributes.socialIconPaddingLMobile
+                }
+            }
+        };
+        return Object.assign(attributes, newAttributes);
+    },
+    save: function save(props) {
+        var attributes = props.attributes,
+            className = props.className;
+        var id = attributes.id,
+            personAlign = attributes.personAlign,
+            imgBorder = attributes.imgBorder,
+            imgBorderColor = attributes.imgBorderColor,
+            imgSize = attributes.imgSize,
+            nameV = attributes.nameV,
+            titleStyles = attributes.titleStyles,
+            socialIconStyles = attributes.socialIconStyles,
+            socialIconBorderWidth = attributes.socialIconBorderWidth,
+            socialIconBorderTop = attributes.socialIconBorderTop,
+            socialIconBorderRight = attributes.socialIconBorderRight,
+            socialIconBorderBottom = attributes.socialIconBorderBottom,
+            socialIconBorderLeft = attributes.socialIconBorderLeft,
+            socialIconBorderUpdated = attributes.socialIconBorderUpdated,
+            nameStyles = attributes.nameStyles,
+            descStyles = attributes.descStyles,
+            titleV = attributes.titleV,
+            descV = attributes.descV,
+            socialIconHoverColor = attributes.socialIconHoverColor,
+            effect = attributes.effect,
+            effectDir = attributes.effectDir,
+            multiPersonChecked = attributes.multiPersonChecked,
+            borderHoverColor = attributes.borderHoverColor,
+            hoverEffectPerson = attributes.hoverEffectPerson,
+            effectPersonStyle = attributes.effectPersonStyle,
+            multiPersonContent = attributes.multiPersonContent,
+            rowPerson = attributes.rowPerson,
+            change = attributes.change,
+            blur = attributes.blur,
+            bright = attributes.bright,
+            contrast = attributes.contrast,
+            saturation = attributes.saturation,
+            hue = attributes.hue,
+            contentColor = attributes.contentColor,
+            bottomInfo = attributes.bottomInfo;
+
+
+        var mainClasses = (0, _classnames2.default)(className, 'premium-person');
+
+        var socialIconfn = function socialIconfn(v) {
+            return React.createElement(
+                "ul",
+                { className: "premium-person__social-List" },
+                v.map(function (value) {
+                    return React.createElement(
+                        "li",
+                        null,
+                        React.createElement(
+                            "a",
+                            { className: "premium-person__socialIcon__link_content " + (socialIconStyles[0].defaultIconColor ? value.label : ""), href: "" + value.value, style: {
+                                    borderStyle: socialIconStyles[0].borderTypeIcon,
+                                    borderWidth: socialIconBorderUpdated ? socialIconBorderTop + "px " + socialIconBorderRight + "px " + socialIconBorderBottom + "px " + socialIconBorderLeft + "px" : socialIconBorderWidth + "px",
+                                    borderRadius: socialIconStyles[0].borderRadiusIcon || 100 + "px",
+                                    borderColor: socialIconStyles[0].borderColorIcon,
+                                    background: socialIconStyles[0].socialIconBackgroundColor
+                                } },
+                            React.createElement("i", { className: "premium-person__socialIcon " + (value.label == "youtube" ? "fa fa-youtube-play" : "fa fa-" + value.label) + " premium-person__" + socialIconHoverColor,
+                                style: {
+                                    color: socialIconStyles[0].socialIconColor
+                                }
+                            })
+                        )
+                    );
+                })
+            );
+        };
+        var content = function content() {
+            return React.createElement(
+                "div",
+                { className: "premium-person-content " + id + " " + (multiPersonChecked > 1 ? "premium-person__" + rowPerson : "")
+                },
+                " ",
+                multiPersonContent.map(function (value) {
+                    return React.createElement(
+                        "div",
+                        { key: value.id, className: "premium-person__inner premium-persson__min premium-person__" + effectPersonStyle + " premium-person__" + hoverEffectPerson },
+                        React.createElement(
+                            "div",
+                            { className: "premium-person__img__container" },
+                            React.createElement(
+                                "div",
+                                {
+                                    className: "premium-person__img_wrap"
+                                },
+                                value.personImgUrl && React.createElement("img", {
+                                    className: "premium-person__img",
+                                    src: "" + value.personImgUrl,
+                                    alt: "Person",
+                                    style: {
+                                        borderWidth: imgBorder + "px",
+                                        borderColor: imgBorderColor,
+                                        width: imgSize + "px",
+                                        height: imgSize + "px",
+                                        filter: "" + (change ? "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )" : "")
+                                    }
+                                }),
+                                !value.personImgUrl && React.createElement(_defaultImage2.default, { className: className })
+                            ),
+                            effectPersonStyle === 'effect2' ? React.createElement(
+                                "div",
+                                { className: "premium-person__socialEffect2" },
+                                value.socialIcon && socialIconfn(value.items)
+                            ) : ""
+                        ),
+                        React.createElement(
+                            "div",
+                            {
+                                className: "premium-person__info",
+                                style: {
+                                    background: contentColor ? contentColor : "#f2f2f2",
+                                    bottom: effectPersonStyle === 'effect1' ? bottomInfo + "px" : ""
+                                }
+                            },
+                            React.createElement(
+                                "div",
+                                { className: "premium-person__name_wrap" },
+                                value.name && React.createElement(
+                                    "span",
+                                    {
+                                        className: "premium-person__name",
+                                        style: {
+                                            color: nameStyles[0].nameColor,
+                                            fontWeight: nameStyles[0].nameWeight,
+                                            alignSelf: nameV,
+                                            letterSpacing: nameStyles[0].nameLetter + "px",
+                                            lineHeight: nameStyles[0].nameLine + "px",
+                                            fontStyle: nameStyles[0].nameStyle,
+                                            textTransform: nameStyles[0].nameUpper ? "uppercase" : "none",
+                                            textShadow: nameStyles[0].nameshadowHorizontal + "px " + nameStyles[0].nameshadowVertical + "px " + nameStyles[0].nameshadowBlur + "px " + nameStyles[0].nameshadowColor
+                                        }
+                                    },
+                                    value.name
+                                )
+                            ),
+                            React.createElement(
+                                "div",
+                                { className: "premium-person__title_wrap" },
+                                value.title && React.createElement(
+                                    "span",
+                                    {
+                                        className: "premium-person__title",
+                                        style: {
+                                            color: titleStyles[0].titleColor,
+                                            fontWeight: titleStyles[0].titleWeight,
+                                            alignSelf: titleV,
+                                            letterSpacing: titleStyles[0].titleLetter + "px",
+                                            lineHeight: titleStyles[0].titleLine + "px",
+                                            fontStyle: titleStyles[0].titleStyle,
+                                            textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                            textShadow: titleStyles[0].titleshadowHorizontal + "px " + titleStyles[0].titleshadowVertical + "px " + titleStyles[0].titleshadowBlur + "px " + titleStyles[0].titleshadowColor
+                                        }
+                                    },
+                                    value.title
+                                )
+                            ),
+                            React.createElement(
+                                "div",
+                                { className: "premium-person__desc_wrap" },
+                                value.desc && React.createElement(
+                                    "span",
+                                    {
+                                        className: "premium-person__desc",
+                                        style: {
+                                            color: descStyles[0].descColor,
+                                            fontWeight: descStyles[0].descWeight,
+                                            alignSelf: descV,
+                                            letterSpacing: descStyles[0].descLetter + "px",
+                                            lineHeight: descStyles[0].descLine + "px",
+                                            fontStyle: descStyles[0].descStyle,
+                                            textTransform: descStyles[0].descUpper ? "uppercase" : "none",
+                                            textShadow: descStyles[0].descshadowHorizontal + "px " + descStyles[0].descshadowVertical + "px " + descStyles[0].descshadowBlur + "px " + descStyles[0].descshadowColor
+                                        }
+                                    },
+                                    value.desc
+                                )
+                            ),
+                            effectPersonStyle == 'effect1' ? React.createElement(
+                                "div",
+                                null,
+                                value.socialIcon && socialIconfn(value.items)
+                            ) : ""
+                        )
+                    );
+                })
+            );
+        };
+
+        return React.createElement(
+            "div",
+            {
+                id: "premium-person-" + id,
+                className: mainClasses + " premium-person__" + effect + " premium-person__" + effectDir,
+                style: { textAlign: personAlign }
+            },
+            React.createElement("style", {
+                dangerouslySetInnerHTML: {
+                    __html: ["#premium-person-" + id + " .premium-person:hover {", "border-color: " + borderHoverColor + " !important;", "}", "#premium-person-" + id + " .premium-person__social-List li:hover i{", "color: " + socialIconStyles[0].socialIconHoverColor + " !important;", "-webkit-transition: all .2s ease-in-out;", "transition: all .2s ease-in-out;", "}"].join("\n")
+                }
+            }),
+            content()
+        );
+    }
+}];
+exports.default = deprecated;
 
 /***/ })
 /******/ ]);
