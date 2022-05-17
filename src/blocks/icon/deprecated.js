@@ -1104,6 +1104,179 @@ const deprecatedContent = [
                 </div>
             );
         }
+    },
+    {
+        attributes: attributes,
+        migrate: attributes => {
+            let newAttributes = {
+                block_id: '',
+                classMigrate: '',
+                iconMargin: {
+                    "Desktop": {
+                        top: attributes.marginT,
+                        right: attributes.marginR,
+                        bottom: attributes.marginB,
+                        left: attributes.marginL
+                    },
+                    "Tablet": {
+                        top: attributes.marginTTablet,
+                        right: attributes.marginRTablet,
+                        bottom: attributes.marginBTablet,
+                        left: attributes.marginLTablet
+                    },
+                    "Mobile": {
+                        top: attributes.marginTMobile,
+                        right: attributes.marginRMobile,
+                        bottom: attributes.marginBMobile,
+                        left: attributes.marginLMobile
+                    },
+                },
+                iconPadding: {
+                    "Desktop": {
+                        top: attributes.paddingT,
+                        right: attributes.paddingR,
+                        bottom: attributes.paddingB,
+                        left: attributes.paddingL
+                    },
+                    "Tablet": {
+                        top: attributes.paddingTTablet,
+                        right: attributes.paddingRTablet,
+                        bottom: attributes.paddingBTablet,
+                        left: attributes.paddingLTablet
+                    },
+                    "Mobile": {
+                        top: attributes.paddingTMobile,
+                        right: attributes.paddingRMobile,
+                        bottom: attributes.paddingBMobile,
+                        left: attributes.paddingLMobile
+                    },
+                },
+                wrapMargin: {
+                    "Desktop": {
+                        top: attributes.wrapMarginT,
+                        right: attributes.wrapMarginR,
+                        bottom: attributes.wrapMarginB,
+                        left: attributes.wrapMarginL
+                    },
+                    "Tablet": {
+                        top: attributes.wrapMarginTTablet,
+                        right: attributes.wrapMarginRTablet,
+                        bottom: attributes.wrapMarginBTablet,
+                        left: attributes.wrapMarginLTablet
+                    },
+                    "Mobile": {
+                        top: attributes.wrapMarginTMobile,
+                        right: attributes.wrapMarginRMobile,
+                        bottom: attributes.wrapMarginBMobile,
+                        left: attributes.wrapMarginLMobile
+                    },
+                },
+                wrapPadding: {
+                    "Desktop": {
+                        top: attributes.wrapPaddingT,
+                        right: attributes.wrapPaddingR,
+                        bottom: attributes.wrapPaddingB,
+                        left: attributes.wrapPaddingL
+                    },
+                    "Tablet": {
+                        top: attributes.wrapPaddingTTablet,
+                        right: attributes.wrapPaddingRTablet,
+                        bottom: attributes.wrapPaddingBTablet,
+                        left: attributes.wrapPaddingLTablet
+                    },
+                    "Mobile": {
+                        top: attributes.wrapPaddingTMobile,
+                        right: attributes.wrapPaddingRMobile,
+                        bottom: attributes.wrapPaddingBMobile,
+                        left: attributes.wrapPaddingLMobile
+                    },
+                }
+            };
+            return Object.assign(attributes, newAttributes);
+        },
+        save: props => {
+            const {
+                block_id,
+                iconBorder,
+                wrapBorder,
+                selectedIcon,
+                align,
+                hoverEffect,
+                iconStyles,
+                containerStyles,
+                borderWidth,
+                iconBorderTop,
+                iconBorderRight,
+                iconBorderBottom,
+                iconBorderLeft,
+                wrapBorderWidth,
+                wrapBorderTop,
+                wrapBorderRight,
+                wrapBorderBottom,
+                wrapBorderLeft,
+                urlCheck,
+                link,
+                target,
+                hideDesktop,
+                hideTablet,
+                hideMobile,
+                backgroundType
+            } = props.attributes;
+
+            return (
+                <div
+                    className={`${mainClasses}__container ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                    id={`premium-icon-${block_id}`}
+                >
+                    <div
+                        className={`premium-icon-container`}
+                        style={{
+                            textAlign: align,
+                            backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
+                            backgroundImage: btnbg,
+                            backgroundRepeat: containerStyles[0].backgroundRepeat,
+                            backgroundPosition: containerStyles[0].backgroundPosition,
+                            backgroundSize: containerStyles[0].backgroundSize,
+                            backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
+                            borderStyle: containerStyles[0].wrapBorderType,
+                            borderWidth: wrapBorder
+                                ? `${wrapBorderTop}px ${wrapBorderRight}px ${wrapBorderBottom}px ${wrapBorderLeft}px`
+                                : wrapBorderWidth + "px",
+                            borderRadius: containerStyles[0].wrapBorderRadius + "px",
+                            borderColor: containerStyles[0].wrapBorderColor,
+                            boxShadow: `${containerStyles[0].wrapShadowHorizontal || 0}px ${containerStyles[0].wrapShadowVertical ||
+                                0}px ${containerStyles[0].wrapShadowBlur ||
+                                0}px ${containerStyles[0].wrapShadowColor} ${containerStyles[0].wrapShadowPosition}`,
+
+                        }}
+                    >
+                        <a
+                            className={`premium-icon__link`}
+                            href={urlCheck && link}
+                            rel="noopener noreferrer"
+                            target={target ? "_blank" : "_self"}
+                        >
+                            <i
+                                className={`premium-icon ${selectedIcon} premium-icon__${hoverEffect}`}
+                                style={{
+                                    color: iconStyles[0].iconColor || "#6ec1e4",
+                                    backgroundColor: iconStyles[0].iconBack,
+                                    fontSize: (iconStyles[0].iconSize || 50) + iconStyles[0].iconSizeUnit,
+                                    borderStyle: iconStyles[0].borderType,
+                                    borderWidth: iconBorder
+                                        ? `${iconBorderTop}px ${iconBorderRight}px ${iconBorderBottom}px ${iconBorderLeft}px`
+                                        : borderWidth + "px",
+                                    borderRadius: iconStyles[0].borderRadius || 100 + "px",
+                                    borderColor: iconStyles[0].borderColor,
+                                    textShadow: `${iconStyles[0].shadowHorizontal || 0}px ${iconStyles[0].shadowVertical ||
+                                        0}px ${iconStyles[0].shadowBlur || 0}px ${iconStyles[0].shadowColor}`
+                                }}
+                            />
+                        </a>
+                    </div>
+                </div>
+            );
+        }
     }
 ];
 

@@ -5,9 +5,9 @@ const save = props => {
     const { className } = props;
 
     const {
+        block_id,
         iconBorder,
         wrapBorder,
-        iconType,
         selectedIcon,
         align,
         hoverEffect,
@@ -50,49 +50,54 @@ const save = props => {
     return (
         <div
             className={`${mainClasses}__container ${hideDesktop} ${hideTablet} ${hideMobile}`}
-            style={{
-                textAlign: align,
-                backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
-                backgroundImage: btnbg,
-                backgroundRepeat: containerStyles[0].backgroundRepeat,
-                backgroundPosition: containerStyles[0].backgroundPosition,
-                backgroundSize: containerStyles[0].backgroundSize,
-                backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
-                borderStyle: containerStyles[0].wrapBorderType,
-                borderWidth: wrapBorder
-                    ? `${wrapBorderTop}px ${wrapBorderRight}px ${wrapBorderBottom}px ${wrapBorderLeft}px`
-                    : wrapBorderWidth + "px",
-                borderRadius: containerStyles[0].wrapBorderRadius + "px",
-                borderColor: containerStyles[0].wrapBorderColor,
-                boxShadow: `${containerStyles[0].wrapShadowHorizontal || 0}px ${containerStyles[0].wrapShadowVertical ||
-                    0}px ${containerStyles[0].wrapShadowBlur ||
-                    0}px ${containerStyles[0].wrapShadowColor} ${containerStyles[0].wrapShadowPosition}`,
-
-            }}
+            id={`premium-icon-${block_id}`}
         >
-            <a
-                className={`premium-icon__link`}
-                href={urlCheck && link}
-                rel="noopener noreferrer"
-                target={target ? "_blank" : "_self"}
+            <div
+                className={`premium-icon-container`}
+                style={{
+                    textAlign: align,
+                    backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
+                    backgroundImage: btnbg,
+                    backgroundRepeat: containerStyles[0].backgroundRepeat,
+                    backgroundPosition: containerStyles[0].backgroundPosition,
+                    backgroundSize: containerStyles[0].backgroundSize,
+                    backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
+                    borderStyle: containerStyles[0].wrapBorderType,
+                    borderWidth: wrapBorder
+                        ? `${wrapBorderTop}px ${wrapBorderRight}px ${wrapBorderBottom}px ${wrapBorderLeft}px`
+                        : wrapBorderWidth + "px",
+                    borderRadius: containerStyles[0].wrapBorderRadius + "px",
+                    borderColor: containerStyles[0].wrapBorderColor,
+                    boxShadow: `${containerStyles[0].wrapShadowHorizontal || 0}px ${containerStyles[0].wrapShadowVertical ||
+                        0}px ${containerStyles[0].wrapShadowBlur ||
+                        0}px ${containerStyles[0].wrapShadowColor} ${containerStyles[0].wrapShadowPosition}`,
+
+                }}
             >
-                <i
-                    className={`premium-icon ${selectedIcon} premium-icon__${hoverEffect}`}
-                    style={{
-                        color: iconStyles[0].iconColor || "#6ec1e4",
-                        backgroundColor: iconStyles[0].iconBack,
-                        fontSize: (iconStyles[0].iconSize || 50) + iconStyles[0].iconSizeUnit,
-                        borderStyle: iconStyles[0].borderType,
-                        borderWidth: iconBorder
-                            ? `${iconBorderTop}px ${iconBorderRight}px ${iconBorderBottom}px ${iconBorderLeft}px`
-                            : borderWidth + "px",
-                        borderRadius: iconStyles[0].borderRadius || 100 + "px",
-                        borderColor: iconStyles[0].borderColor,
-                        textShadow: `${iconStyles[0].shadowHorizontal || 0}px ${iconStyles[0].shadowVertical ||
-                            0}px ${iconStyles[0].shadowBlur || 0}px ${iconStyles[0].shadowColor}`
-                    }}
-                />
-            </a>
+                <a
+                    className={`premium-icon__link`}
+                    href={urlCheck && link}
+                    rel="noopener noreferrer"
+                    target={target ? "_blank" : "_self"}
+                >
+                    <i
+                        className={`premium-icon ${selectedIcon} premium-icon__${hoverEffect}`}
+                        style={{
+                            color: iconStyles[0].iconColor || "#6ec1e4",
+                            backgroundColor: iconStyles[0].iconBack,
+                            fontSize: (iconStyles[0].iconSize || 50) + iconStyles[0].iconSizeUnit,
+                            borderStyle: iconStyles[0].borderType,
+                            borderWidth: iconBorder
+                                ? `${iconBorderTop}px ${iconBorderRight}px ${iconBorderBottom}px ${iconBorderLeft}px`
+                                : borderWidth + "px",
+                            borderRadius: iconStyles[0].borderRadius || 100 + "px",
+                            borderColor: iconStyles[0].borderColor,
+                            textShadow: `${iconStyles[0].shadowHorizontal || 0}px ${iconStyles[0].shadowVertical ||
+                                0}px ${iconStyles[0].shadowBlur || 0}px ${iconStyles[0].shadowColor}`
+                        }}
+                    />
+                </a>
+            </div>
         </div>
     );
 };
