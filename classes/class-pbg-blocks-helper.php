@@ -1655,6 +1655,16 @@ class PBG_Blocks_Helper {
 			$css->set_selector( '#premium-countup-' . $unique_id );
 			$css->add_property( 'padding-left', ( $attr['paddingL'] . $attr['containerStyles'][0]['paddingU'] ) );
 		}
+
+		if(isset( $attr['padding'] )){
+			$padding = $attr['padding'];
+			$css->set_selector( '#premium-countup-' . $unique_id );
+			$css->add_property( 'padding-top', $css->render_color( $padding['Desktop']['top'] . $padding['unit'] ) );
+			$css->add_property( 'padding-right', $css->render_color( $padding['Desktop']['right'] . $padding['unit'] ) );
+			$css->add_property( 'padding-bottom', $css->render_color( $padding['Desktop']['bottom'] . $padding['unit'] ) );
+			$css->add_property( 'padding-left', $css->render_color( $padding['Desktop']['left'] . $padding['unit'] ) );
+		}
+
 		$css->start_media_query( $media_query['tablet'] );
 		// Number Style Tablet
 		if ( isset( $attr['numberStyles'] ) ) {
@@ -1701,6 +1711,16 @@ class PBG_Blocks_Helper {
 			$css->set_selector( '#premium-countup-' . $unique_id );
 			$css->add_property( 'padding-left', ( $attr['paddingLTablet'] . $attr['containerStyles'][0]['paddingU'] ) );
 		}
+
+		if(isset( $attr['padding'] )){
+			$padding = $attr['padding'];
+			$css->set_selector( '#premium-countup-' . $unique_id );
+			$css->add_property( 'padding-top', $css->render_color( $padding['Tablet']['top'] . $padding['unit'] ) );
+			$css->add_property( 'padding-right', $css->render_color( $padding['Tablet']['right'] . $padding['unit'] ) );
+			$css->add_property( 'padding-bottom', $css->render_color( $padding['Tablet']['bottom'] . $padding['unit'] ) );
+			$css->add_property( 'padding-left', $css->render_color( $padding['Tablet']['left'] . $padding['unit'] ) );
+		}
+
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['mobile'] );
 		// Number Style Mobile
@@ -1748,6 +1768,16 @@ class PBG_Blocks_Helper {
 			$css->set_selector( '#premium-countup-' . $unique_id );
 			$css->add_property( 'padding-left', ( $attr['paddingLMobile'] . $attr['containerStyles'][0]['paddingU'] ) );
 		}
+
+		if(isset( $attr['padding'] )){
+			$padding = $attr['padding'];
+			$css->set_selector( '#premium-countup-' . $unique_id );
+			$css->add_property( 'padding-top', $css->render_color( $padding['Mobile']['top'] . $padding['unit'] ) );
+			$css->add_property( 'padding-right', $css->render_color( $padding['Mobile']['right'] . $padding['unit'] ) );
+			$css->add_property( 'padding-bottom', $css->render_color( $padding['Mobile']['bottom'] . $padding['unit'] ) );
+			$css->add_property( 'padding-left', $css->render_color( $padding['Mobile']['left'] . $padding['unit'] ) );
+		}
+
 		$css->stop_media_query();
 		return $css->css_output();
 
