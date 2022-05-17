@@ -22709,15 +22709,16 @@ var edit = function (_Component) {
                 hideDesktop = _props$attributes.hideDesktop,
                 hideTablet = _props$attributes.hideTablet,
                 hideMobile = _props$attributes.hideMobile,
+                backgroundType = _props$attributes.backgroundType,
                 numberStyles = _props$attributes.numberStyles,
                 titleStyles = _props$attributes.titleStyles,
                 containerStyles = _props$attributes.containerStyles,
-                suffixStyles = _props$attributes.suffixStyles,
-                prefixStyles = _props$attributes.prefixStyles,
                 borderTop = _props$attributes.borderTop,
                 borderRight = _props$attributes.borderRight,
                 borderBottom = _props$attributes.borderBottom,
                 borderLeft = _props$attributes.borderLeft,
+                suffixStyles = _props$attributes.suffixStyles,
+                prefixStyles = _props$attributes.prefixStyles,
                 padding = _props$attributes.padding;
 
 

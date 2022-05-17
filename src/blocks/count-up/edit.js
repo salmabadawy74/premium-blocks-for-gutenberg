@@ -74,16 +74,17 @@ class edit extends Component {
             hideDesktop,
             hideTablet,
             hideMobile,
+            backgroundType,
             numberStyles,
             titleStyles,
             containerStyles,
-            suffixStyles,
-            prefixStyles,
             borderTop,
             borderRight,
             borderBottom,
             borderLeft,
-            padding,
+            suffixStyles,
+            prefixStyles,
+            padding
         } = this.props.attributes;
 
         let iconClass = "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
