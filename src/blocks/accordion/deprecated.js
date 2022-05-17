@@ -513,43 +513,45 @@ const deprecated = [
             let newAttributes = {
                 titlePadding: {
                     "Desktop": {
-                        top: attributes.titlePaddingT,
-                        right: attributes.titlePaddingR,
-                        bottom: attributes.titlePaddingB,
-                        left: attributes.titlePaddingL
+                        top: attributes.titlePaddingT || '',
+                        right: attributes.titlePaddingR || '',
+                        bottom: attributes.titlePaddingB || '',
+                        left: attributes.titlePaddingL || ''
                     },
                     "Tablet": {
-                        top: attributes.titlePaddingTTablet,
-                        right: attributes.titlePaddingRTablet,
-                        bottom: attributes.titlePaddingBTablet,
-                        left: attributes.titlePaddingLTablet
+                        top: attributes.titlePaddingTTablet || '',
+                        right: attributes.titlePaddingRTablet || '',
+                        bottom: attributes.titlePaddingBTablet || '',
+                        left: attributes.titlePaddingLTablet || ''
                     },
                     "Mobile": {
-                        top: attributes.titlePaddingTMobile,
-                        right: attributes.titlePaddingRMobile,
-                        bottom: attributes.titlePaddingBMobile,
-                        left: attributes.titlePaddingLMobile
+                        top: attributes.titlePaddingTMobile || '',
+                        right: attributes.titlePaddingRMobile || '',
+                        bottom: attributes.titlePaddingBMobile || '',
+                        left: attributes.titlePaddingLMobile || ''
                     },
+                    "unit": "px"
                 },
                 descPadding: {
                     "Desktop": {
-                        top: attributes.descPaddingT,
-                        right: attributes.descPaddingR,
-                        bottom: attributes.descPaddingB,
-                        left: attributes.descPaddingL
+                        top: attributes.descPaddingT || '',
+                        right: attributes.descPaddingR || '',
+                        bottom: attributes.descPaddingB || '',
+                        left: attributes.descPaddingL || ''
                     },
                     "Tablet": {
-                        top: attributes.descPaddingTTablet,
-                        right: attributes.descPaddingRTablet,
-                        bottom: attributes.descPaddingBTablet,
-                        left: attributes.descPaddingLTablet
+                        top: attributes.descPaddingTTablet || '',
+                        right: attributes.descPaddingRTablet || '',
+                        bottom: attributes.descPaddingBTablet || '',
+                        left: attributes.descPaddingLTablet || ''
                     },
                     "Mobile": {
-                        top: attributes.descPaddingTMobile,
-                        right: attributes.descPaddingRMobile,
-                        bottom: attributes.descPaddingBMobile,
-                        left: attributes.descPaddingLMobile
+                        top: attributes.descPaddingTMobile || '',
+                        right: attributes.descPaddingRMobile || '',
+                        bottom: attributes.descPaddingBMobile || '',
+                        left: attributes.descPaddingLMobile || ''
                     },
+                    "unit": "px"
                 }
             }
             return Object.assign(attributes, newAttributes)

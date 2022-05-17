@@ -263,10 +263,10 @@ class PremiumAccordion extends Component {
                                 : descBorderWidth + "px",
                             borderRadius: descStyles[0].descBorderRadius + "px",
                             borderColor: descStyles[0].descBorderColor,
-                            paddingTop: `${descPaddingTop}${descPadding.unit}`,
-                            paddingRight: `${descPaddingRight}${descPadding.unit}`,
-                            paddingBottom: `${descPaddingBottom}${descPadding.unit}`,
-                            paddingLeft: `${descPaddingLeft}${descPadding.unit}`
+                            paddingTop: descPaddingTop && `${descPaddingTop}${descPadding.unit}`,
+                            paddingRight: descPaddingRight && `${descPaddingRight}${descPadding.unit}`,
+                            paddingBottom: descPaddingBottom && `${descPaddingBottom}${descPadding.unit}`,
+                            paddingLeft: descPaddingLeft && `${descPaddingLeft}${descPadding.unit}`
                         }}
                     >
                         {"text" === contentType && (

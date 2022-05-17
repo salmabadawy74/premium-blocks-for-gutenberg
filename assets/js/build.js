@@ -10921,10 +10921,10 @@ var PremiumAccordion = function (_Component) {
                                 borderWidth: descBorderUpdated ? descBorderTop + "px " + descBorderRight + "px " + descBorderBottom + "px " + descBorderLeft + "px" : descBorderWidth + "px",
                                 borderRadius: descStyles[0].descBorderRadius + "px",
                                 borderColor: descStyles[0].descBorderColor,
-                                paddingTop: "" + descPaddingTop + descPadding.unit,
-                                paddingRight: "" + descPaddingRight + descPadding.unit,
-                                paddingBottom: "" + descPaddingBottom + descPadding.unit,
-                                paddingLeft: "" + descPaddingLeft + descPadding.unit
+                                paddingTop: descPaddingTop && "" + descPaddingTop + descPadding.unit,
+                                paddingRight: descPaddingRight && "" + descPaddingRight + descPadding.unit,
+                                paddingBottom: descPaddingBottom && "" + descPaddingBottom + descPadding.unit,
+                                paddingLeft: descPaddingLeft && "" + descPaddingLeft + descPadding.unit
                             }
                         },
                         "text" === contentType && React.createElement(RichText, {
@@ -16614,43 +16614,45 @@ var deprecated = [{
         var newAttributes = {
             titlePadding: {
                 "Desktop": {
-                    top: attributes.titlePaddingT,
-                    right: attributes.titlePaddingR,
-                    bottom: attributes.titlePaddingB,
-                    left: attributes.titlePaddingL
+                    top: attributes.titlePaddingT || '',
+                    right: attributes.titlePaddingR || '',
+                    bottom: attributes.titlePaddingB || '',
+                    left: attributes.titlePaddingL || ''
                 },
                 "Tablet": {
-                    top: attributes.titlePaddingTTablet,
-                    right: attributes.titlePaddingRTablet,
-                    bottom: attributes.titlePaddingBTablet,
-                    left: attributes.titlePaddingLTablet
+                    top: attributes.titlePaddingTTablet || '',
+                    right: attributes.titlePaddingRTablet || '',
+                    bottom: attributes.titlePaddingBTablet || '',
+                    left: attributes.titlePaddingLTablet || ''
                 },
                 "Mobile": {
-                    top: attributes.titlePaddingTMobile,
-                    right: attributes.titlePaddingRMobile,
-                    bottom: attributes.titlePaddingBMobile,
-                    left: attributes.titlePaddingLMobile
-                }
+                    top: attributes.titlePaddingTMobile || '',
+                    right: attributes.titlePaddingRMobile || '',
+                    bottom: attributes.titlePaddingBMobile || '',
+                    left: attributes.titlePaddingLMobile || ''
+                },
+                "unit": "px"
             },
             descPadding: {
                 "Desktop": {
-                    top: attributes.descPaddingT,
-                    right: attributes.descPaddingR,
-                    bottom: attributes.descPaddingB,
-                    left: attributes.descPaddingL
+                    top: attributes.descPaddingT || '',
+                    right: attributes.descPaddingR || '',
+                    bottom: attributes.descPaddingB || '',
+                    left: attributes.descPaddingL || ''
                 },
                 "Tablet": {
-                    top: attributes.descPaddingTTablet,
-                    right: attributes.descPaddingRTablet,
-                    bottom: attributes.descPaddingBTablet,
-                    left: attributes.descPaddingLTablet
+                    top: attributes.descPaddingTTablet || '',
+                    right: attributes.descPaddingRTablet || '',
+                    bottom: attributes.descPaddingBTablet || '',
+                    left: attributes.descPaddingLTablet || ''
                 },
                 "Mobile": {
-                    top: attributes.descPaddingTMobile,
-                    right: attributes.descPaddingRMobile,
-                    bottom: attributes.descPaddingBMobile,
-                    left: attributes.descPaddingLMobile
-                }
+                    top: attributes.descPaddingTMobile || '',
+                    right: attributes.descPaddingRMobile || '',
+                    bottom: attributes.descPaddingBMobile || '',
+                    left: attributes.descPaddingLMobile || ''
+                },
+                "unit": "px"
             }
         };
         return Object.assign(attributes, newAttributes);
