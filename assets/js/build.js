@@ -10855,10 +10855,10 @@ var PremiumAccordion = function (_Component) {
                                 borderWidth: titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px",
                                 borderRadius: titleStyles[0].titleBorderRadius + "px",
                                 borderColor: titleStyles[0].titleBorderColor,
-                                paddingTop: titlePaddingTop && "" + titlePaddingTop + (titlePadding.unit ? titlePadding.unit : 'px'),
-                                paddingRight: titlePaddingRight && "" + titlePaddingRight + (titlePadding.unit ? titlePadding.unit : 'px'),
-                                paddingBottom: titlePaddingBottom && "" + titlePaddingBottom + (titlePadding.unit ? titlePadding.unit : 'px'),
-                                paddingLeft: titlePaddingLeft && "" + titlePaddingLeft + (titlePadding.unit ? titlePadding.unit : 'px')
+                                paddingTop: titlePaddingTop && "" + titlePaddingTop + titlePadding.unit,
+                                paddingRight: titlePaddingRight && "" + titlePaddingRight + titlePadding.unit,
+                                paddingBottom: titlePaddingBottom && "" + titlePaddingBottom + titlePadding.unit,
+                                paddingLeft: titlePaddingLeft && "" + titlePaddingLeft + titlePadding.unit
                             }
                         },
                         React.createElement(
@@ -64438,103 +64438,108 @@ var deprecated = [{
         var newAttributes = {
             generalmargin: {
                 "Desktop": {
-                    top: attributes.generalmarginT,
-                    right: attributes.generalmarginR,
-                    bottom: attributes.generalmarginB,
-                    left: attributes.generalmarginL
+                    top: attributes.generalmarginT || '',
+                    right: attributes.generalmarginR || '',
+                    bottom: attributes.generalmarginB || '',
+                    left: attributes.generalmarginL || ''
                 },
                 "Tablet": {
-                    top: attributes.generalmarginTTablet,
-                    right: attributes.generalmarginRTablet,
-                    bottom: attributes.generalmarginBTablet,
-                    left: attributes.generalmarginLTablet
+                    top: attributes.generalmarginTTablet || '',
+                    right: attributes.generalmarginRTablet || '',
+                    bottom: attributes.generalmarginBTablet || '',
+                    left: attributes.generalmarginLTablet || ''
                 },
                 "Mobile": {
-                    top: attributes.generalmarginTMobile,
-                    right: attributes.generalmarginRMobile,
-                    bottom: attributes.generalmarginBMobile,
+                    top: attributes.generalmarginTMobile || '',
+                    right: attributes.generalmarginRMobile || '',
+                    bottom: attributes.generalmarginBMobile || '',
                     left: attributes.generalmarginLMobile
-                }
+                },
+                "unit": "px"
             },
             bulletIconmargin: {
                 "Desktop": {
-                    top: attributes.bulletIconmarginT,
-                    right: attributes.bulletIconmarginR,
-                    bottom: attributes.bulletIconmarginB,
-                    left: attributes.bulletIconmarginL
+                    top: attributes.bulletIconmarginT || '',
+                    right: attributes.bulletIconmarginR || '',
+                    bottom: attributes.bulletIconmarginB || '',
+                    left: attributes.bulletIconmarginL || ''
                 },
                 "Tablet": {
-                    top: attributes.bulletIconmarginTTablet,
-                    right: attributes.bulletIconmarginRTablet,
-                    bottom: attributes.bulletIconmarginBTablet,
-                    left: attributes.bulletIconmarginLTablet
+                    top: attributes.bulletIconmarginTTablet || '',
+                    right: attributes.bulletIconmarginRTablet || '',
+                    bottom: attributes.bulletIconmarginBTablet || '',
+                    left: attributes.bulletIconmarginLTablet || ''
                 },
                 "Mobile": {
-                    top: attributes.bulletIconmarginTMobile,
-                    right: attributes.bulletIconmarginRMobile,
-                    bottom: attributes.bulletIconmarginBMobile,
-                    left: attributes.bulletIconmarginLMobile
-                }
+                    top: attributes.bulletIconmarginTMobile || '',
+                    right: attributes.bulletIconmarginRMobile || '',
+                    bottom: attributes.bulletIconmarginBMobile || '',
+                    left: attributes.bulletIconmarginLMobile || ''
+                },
+                "unit": "px"
             },
             titlemargin: {
                 "Desktop": {
-                    top: attributes.titlemarginT,
-                    right: attributes.titlemarginR,
-                    bottom: attributes.titlemarginB,
-                    left: attributes.titlemarginL
+                    top: attributes.titlemarginT || '',
+                    right: attributes.titlemarginR || '',
+                    bottom: attributes.titlemarginB || '',
+                    left: attributes.titlemarginL || ''
                 },
                 "Tablet": {
-                    top: attributes.titlemarginTTablet,
-                    right: attributes.titlemarginRTablet,
-                    bottom: attributes.titlemarginBTablet,
-                    left: attributes.titlemarginLTablet
+                    top: attributes.titlemarginTTablet || '',
+                    right: attributes.titlemarginRTablet || '',
+                    bottom: attributes.titlemarginBTablet || '',
+                    left: attributes.titlemarginLTablet || ''
                 },
                 "Mobile": {
-                    top: attributes.titlemarginTMobile,
-                    right: attributes.titlemarginRMobile,
-                    bottom: attributes.titlemarginBMobile,
-                    left: attributes.titlemarginLMobile
-                }
+                    top: attributes.titlemarginTMobile || '',
+                    right: attributes.titlemarginRMobile || '',
+                    bottom: attributes.titlemarginBMobile || '',
+                    left: attributes.titlemarginLMobile || ''
+                },
+                "unit": "px"
             },
             generalpadding: {
                 "Desktop": {
-                    top: attributes.generalpaddingTop,
-                    right: attributes.generalpaddingRight,
-                    bottom: attributes.generalpaddingBottom,
-                    left: attributes.generalpaddingLeft
+                    top: attributes.generalpaddingTop || '',
+                    right: attributes.generalpaddingRight || '',
+                    bottom: attributes.generalpaddingBottom || '',
+                    left: attributes.generalpaddingLeft || ''
                 },
                 "Tablet": {
-                    top: attributes.generalpaddingTTablet,
-                    right: attributes.generalpaddingRTablet,
-                    bottom: attributes.generalpaddingBTablet,
-                    left: attributes.generalpaddingLTablet
+                    top: attributes.generalpaddingTTablet || '',
+                    right: attributes.generalpaddingRTablet || '',
+                    bottom: attributes.generalpaddingBTablet || '',
+                    left: attributes.generalpaddingLTablet || ''
                 },
                 "Mobile": {
-                    top: attributes.generalpaddingTMobile,
-                    right: attributes.generalpaddingRMobile,
-                    bottom: attributes.generalpaddingBMobile,
-                    left: attributes.generalpaddingLMobile
-                }
+                    top: attributes.generalpaddingTMobile || '',
+                    right: attributes.generalpaddingRMobile || '',
+                    bottom: attributes.generalpaddingBMobile || '',
+                    left: attributes.generalpaddingLMobile || ''
+                },
+                "unit": "px"
             },
             bulletIconpadding: {
                 "Desktop": {
-                    top: attributes.bulletIconpaddingTop,
-                    right: attributes.bulletIconpaddingRight,
-                    bottom: attributes.bulletIconpaddingBottom,
-                    left: attributes.bulletIconpaddingLeft
+                    top: attributes.bulletIconpaddingTop || '',
+                    right: attributes.bulletIconpaddingRight || '',
+                    bottom: attributes.bulletIconpaddingBottom || '',
+                    left: attributes.bulletIconpaddingLeft || ''
                 },
                 "Tablet": {
-                    top: attributes.bulletIconpaddingTTablet,
-                    right: attributes.bulletIconpaddingRTablet,
-                    bottom: attributes.bulletIconpaddingBTablet,
-                    left: attributes.bulletIconpaddingLTablet
+                    top: attributes.bulletIconpaddingTTablet || '',
+                    right: attributes.bulletIconpaddingRTablet || '',
+                    bottom: attributes.bulletIconpaddingBTablet || '',
+                    left: attributes.bulletIconpaddingLTablet || ''
                 },
                 "Mobile": {
-                    top: attributes.bulletIconpaddingTMobile,
-                    right: attributes.bulletIconpaddingRMobile,
-                    bottom: attributes.bulletIconpaddingBMobile,
-                    left: attributes.bulletIconpaddingLMobile
-                }
+                    top: attributes.bulletIconpaddingTMobile || '',
+                    right: attributes.bulletIconpaddingRMobile || '',
+                    bottom: attributes.bulletIconpaddingBMobile || '',
+                    left: attributes.bulletIconpaddingLMobile || ''
+                },
+                "unit": "px"
             }
         };
         return Object.assign(attributes, newAttributes);

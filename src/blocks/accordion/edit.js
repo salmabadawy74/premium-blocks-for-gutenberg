@@ -199,10 +199,10 @@ class PremiumAccordion extends Component {
                                 : titleBorderWidth + "px",
                             borderRadius: titleStyles[0].titleBorderRadius + "px",
                             borderColor: titleStyles[0].titleBorderColor,
-                            paddingTop: titlePaddingTop && `${titlePaddingTop}${titlePadding.unit ? titlePadding.unit : 'px'}`,
-                            paddingRight: titlePaddingRight && `${titlePaddingRight}${titlePadding.unit ? titlePadding.unit : 'px'}`,
-                            paddingBottom: titlePaddingBottom && `${titlePaddingBottom}${titlePadding.unit ? titlePadding.unit : 'px'}`,
-                            paddingLeft: titlePaddingLeft && `${titlePaddingLeft}${titlePadding.unit ? titlePadding.unit : 'px'}`
+                            paddingTop: titlePaddingTop && `${titlePaddingTop}${titlePadding.unit}`,
+                            paddingRight: titlePaddingRight && `${titlePaddingRight}${titlePadding.unit}`,
+                            paddingBottom: titlePaddingBottom && `${titlePaddingBottom}${titlePadding.unit}`,
+                            paddingLeft: titlePaddingLeft && `${titlePaddingLeft}${titlePadding.unit}`
                         }}
                     >
                         <div className={`premium-accordion__title`}>
