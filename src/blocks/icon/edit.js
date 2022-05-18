@@ -155,22 +155,6 @@ const edit = props => {
     const wrapMarginRight = getPreviewSize(props.deviceType, wrapMargin.Desktop.right, wrapMargin.Tablet.right, wrapMargin.Mobile.right);
     const wrapMarginBottom = getPreviewSize(props.deviceType, wrapMargin.Desktop.bottom, wrapMargin.Tablet.bottom, wrapMargin.Mobile.bottom);
     const wrapMarginLeft = getPreviewSize(props.deviceType, wrapMargin.Desktop.left, wrapMargin.Tablet.left, wrapMargin.Mobile.left);
-    // const iconBorderWidthTop = getPreviewSize(props.deviceType, iconBorder.borderWidth.Desktop.top, iconBorder.borderWidth.Tablet.top, iconBorder.borderWidth.Mobile.top);
-    // const iconBorderWidthRight = getPreviewSize(props.deviceType, iconBorder.borderWidth.Desktop.right, iconBorder.borderWidth.Tablet.right, iconBorder.borderWidth.Mobile.right);
-    // const iconBorderWidthBottom = getPreviewSize(props.deviceType, iconBorder.borderWidth.Desktop.bottom, iconBorder.borderWidth.Tablet.bottom, iconBorder.borderWidth.Mobile.bottom);
-    // const iconBorderWidthLeft = getPreviewSize(props.deviceType, iconBorder.borderWidth.Desktop.left, iconBorder.borderWidth.Tablet.left, iconBorder.borderWidth.Mobile.left);
-    const iconBorderRadiusTop = getPreviewSize(props.deviceType, iconBorder.borderRadius.Desktop.top, iconBorder.borderRadius.Tablet.top, iconBorder.borderRadius.Mobile.top);
-    const iconBorderRadiusRight = getPreviewSize(props.deviceType, iconBorder.borderRadius.Desktop.right, iconBorder.borderRadius.Tablet.right, iconBorder.borderRadius.Mobile.right);
-    const iconBorderRadiusBottom = getPreviewSize(props.deviceType, iconBorder.borderRadius.Desktop.bottom, iconBorder.borderRadius.Tablet.bottom, iconBorder.borderRadius.Mobile.bottom);
-    const iconBorderRadiusLeft = getPreviewSize(props.deviceType, iconBorder.borderRadius.Desktop.left, iconBorder.borderRadius.Tablet.left, iconBorder.borderRadius.Mobile.left);
-    const ContainerBorderWidthTop = getPreviewSize(props.deviceType, containerBorder.borderWidth.Desktop.top, containerBorder.borderWidth.Tablet.top, containerBorder.borderWidth.Mobile.top);
-    const ContainerBorderWidthRight = getPreviewSize(props.deviceType, containerBorder.borderWidth.Desktop.right, containerBorder.borderWidth.Tablet.right, containerBorder.borderWidth.Mobile.right);
-    const ContainerBorderWidthBottom = getPreviewSize(props.deviceType, containerBorder.borderWidth.Desktop.bottom, containerBorder.borderWidth.Tablet.bottom, containerBorder.borderWidth.Mobile.bottom);
-    const ContainerBorderWidthLeft = getPreviewSize(props.deviceType, containerBorder.borderWidth.Desktop.left, containerBorder.borderWidth.Tablet.left, containerBorder.borderWidth.Mobile.left);
-    const ContainerBorderRadiusTop = getPreviewSize(props.deviceType, containerBorder.borderRadius.Desktop.top, containerBorder.borderRadius.Tablet.top, containerBorder.borderRadius.Mobile.top);
-    const ContainerBorderRadiusRight = getPreviewSize(props.deviceType, containerBorder.borderRadius.Desktop.right, containerBorder.borderRadius.Tablet.right, containerBorder.borderRadius.Mobile.right);
-    const ContainerBorderRadiusBottom = getPreviewSize(props.deviceType, containerBorder.borderRadius.Desktop.bottom, containerBorder.borderRadius.Tablet.bottom, containerBorder.borderRadius.Mobile.bottom);
-    const ContainerBorderRadiusLeft = getPreviewSize(props.deviceType, containerBorder.borderRadius.Desktop.left, containerBorder.borderRadius.Tablet.left, containerBorder.borderRadius.Mobile.left);
 
     return [
         isSelected && (
@@ -356,14 +340,14 @@ const edit = props => {
                     backgroundSize: containerStyles[0].backgroundSize,
                     backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
                     borderStyle: containerBorder.borderType,
-                    borderTopWidth: ContainerBorderWidthTop && ContainerBorderWidthTop + "px",
-                    borderRightWidth: ContainerBorderWidthRight && ContainerBorderWidthRight + "px",
-                    borderBottomWidth: ContainerBorderWidthBottom && ContainerBorderWidthBottom + "px",
-                    borderLeftWidth: ContainerBorderWidthLeft && ContainerBorderWidthLeft + "px",
-                    borderBottomLeftRadius: ContainerBorderRadiusLeft && ContainerBorderRadiusLeft + "px",
-                    borderTopLeftRadius: ContainerBorderRadiusTop && ContainerBorderRadiusTop + "px",
-                    borderTopRightRadius: ContainerBorderRadiusRight && ContainerBorderRadiusRight + "px",
-                    borderBottomRightRadius: ContainerBorderRadiusBottom && ContainerBorderRadiusBottom + "px",
+                    borderTopWidth: containerBorder['borderWidth'][props.deviceType]['top'] && containerBorder['borderWidth'][props.deviceType]['top'] + "px",
+                    borderRightWidth: containerBorder['borderWidth'][props.deviceType]['right'] && containerBorder['borderWidth'][props.deviceType]['right'] + "px",
+                    borderBottomWidth: containerBorder['borderWidth'][props.deviceType]['bottom'] && containerBorder['borderWidth'][props.deviceType]['bottom'] + "px",
+                    borderLeftWidth: containerBorder['borderWidth'][props.deviceType]['left'] && containerBorder['borderWidth'][props.deviceType]['left'] + "px",
+                    borderBottomLeftRadius: containerBorder['borderRadius'][props.deviceType]['left'] && containerBorder['borderRadius'][props.deviceType]['left'] + "px",
+                    borderTopLeftRadius: containerBorder['borderRadius'][props.deviceType]['top'] && containerBorder['borderRadius'][props.deviceType]['top'] + "px",
+                    borderTopRightRadius: containerBorder['borderRadius'][props.deviceType]['right'] && containerBorder['borderRadius'][props.deviceType]['right'] + "px",
+                    borderBottomRightRadius: containerBorder['borderRadius'][props.deviceType]['bottom'] && containerBorder['borderRadius'][props.deviceType]['bottom'] + "px",
                     borderColor: containerBorder.borderColor,
                     boxShadow: `${containerStyles[0].wrapShadowHorizontal || 0}px ${containerStyles[0].wrapShadowVertical ||
                         0}px ${containerStyles[0].wrapShadowBlur ||
@@ -400,13 +384,13 @@ const edit = props => {
                             marginLeft: iconMarginLeft + iconMargin.unit,
                             borderStyle: iconBorder.borderType,
                             borderTopWidth: iconBorder['borderWidth'][props.deviceType]['top'] && iconBorder['borderWidth'][props.deviceType]['top'] + "px",
-                            // borderRightWidth: iconBorderWidthRight && iconBorderWidthRight + "px",
-                            // borderBottomWidth: iconBorderWidthBottom && iconBorderWidthBottom + "px",
-                            // borderLeftWidth: iconBorderWidthLeft && iconBorderWidthLeft + "px",
-                            borderBottomLeftRadius: iconBorderRadiusLeft && iconBorderRadiusLeft + "px",
-                            borderTopLeftRadius: iconBorderRadiusTop && iconBorderRadiusTop + "px",
-                            borderTopRightRadius: iconBorderRadiusRight && iconBorderRadiusRight + "px",
-                            borderBottomRightRadius: iconBorderRadiusBottom && iconBorderRadiusBottom + "px",
+                            borderRightWidth: iconBorder['borderWidth'][props.deviceType]['right'] && iconBorder['borderWidth'][props.deviceType]['right'] + "px",
+                            borderBottomWidth: iconBorder['borderWidth'][props.deviceType]['bottom'] && iconBorder['borderWidth'][props.deviceType]['bottom'] + "px",
+                            borderLeftWidth: iconBorder['borderWidth'][props.deviceType]['left'] && iconBorder['borderWidth'][props.deviceType]['left'] + "px",
+                            borderBottomLeftRadius: iconBorder['borderRadius'][props.deviceType]['left'] && iconBorder['borderRadius'][props.deviceType]['left'] + "px",
+                            borderTopLeftRadius: iconBorder['borderRadius'][props.deviceType]['top'] && iconBorder['borderRadius'][props.deviceType]['top'] + "px",
+                            borderTopRightRadius: iconBorder['borderRadius'][props.deviceType]['right'] && iconBorder['borderRadius'][props.deviceType]['right'] + "px",
+                            borderBottomRightRadius: iconBorder['borderRadius'][props.deviceType]['bottom'] && iconBorder['borderRadius'][props.deviceType]['bottom'] + "px",
                             borderColor: iconBorder.borderColor,
                             textShadow: `${iconStyles[0].shadowHorizontal || 0}px ${iconStyles[0].shadowVertical ||
                                 0}px ${iconStyles[0].shadowBlur || 0}px ${iconStyles[0].shadowColor}`
