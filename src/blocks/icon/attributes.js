@@ -222,19 +222,8 @@ const attributes = {
                     right: "",
                     bottom: "",
                     left: ""
-                },
-                Tablet: {
-                    top: "",
-                    right: "",
-                    bottom: "",
-                    left: ""
-                },
-                Mobile: {
-                    top: "",
-                    right: "",
-                    bottom: "",
-                    left: ""
                 }
+
             }
         }
     },

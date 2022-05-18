@@ -155,10 +155,10 @@ const edit = props => {
     const wrapMarginRight = getPreviewSize(props.deviceType, wrapMargin.Desktop.right, wrapMargin.Tablet.right, wrapMargin.Mobile.right);
     const wrapMarginBottom = getPreviewSize(props.deviceType, wrapMargin.Desktop.bottom, wrapMargin.Tablet.bottom, wrapMargin.Mobile.bottom);
     const wrapMarginLeft = getPreviewSize(props.deviceType, wrapMargin.Desktop.left, wrapMargin.Tablet.left, wrapMargin.Mobile.left);
-    const iconBorderWidthTop = getPreviewSize(props.deviceType, iconBorder.borderWidth.Desktop.top, iconBorder.borderWidth.Tablet.top, iconBorder.borderWidth.Mobile.top);
-    const iconBorderWidthRight = getPreviewSize(props.deviceType, iconBorder.borderWidth.Desktop.right, iconBorder.borderWidth.Tablet.right, iconBorder.borderWidth.Mobile.right);
-    const iconBorderWidthBottom = getPreviewSize(props.deviceType, iconBorder.borderWidth.Desktop.bottom, iconBorder.borderWidth.Tablet.bottom, iconBorder.borderWidth.Mobile.bottom);
-    const iconBorderWidthLeft = getPreviewSize(props.deviceType, iconBorder.borderWidth.Desktop.left, iconBorder.borderWidth.Tablet.left, iconBorder.borderWidth.Mobile.left);
+    // const iconBorderWidthTop = getPreviewSize(props.deviceType, iconBorder.borderWidth.Desktop.top, iconBorder.borderWidth.Tablet.top, iconBorder.borderWidth.Mobile.top);
+    // const iconBorderWidthRight = getPreviewSize(props.deviceType, iconBorder.borderWidth.Desktop.right, iconBorder.borderWidth.Tablet.right, iconBorder.borderWidth.Mobile.right);
+    // const iconBorderWidthBottom = getPreviewSize(props.deviceType, iconBorder.borderWidth.Desktop.bottom, iconBorder.borderWidth.Tablet.bottom, iconBorder.borderWidth.Mobile.bottom);
+    // const iconBorderWidthLeft = getPreviewSize(props.deviceType, iconBorder.borderWidth.Desktop.left, iconBorder.borderWidth.Tablet.left, iconBorder.borderWidth.Mobile.left);
     const iconBorderRadiusTop = getPreviewSize(props.deviceType, iconBorder.borderRadius.Desktop.top, iconBorder.borderRadius.Tablet.top, iconBorder.borderRadius.Mobile.top);
     const iconBorderRadiusRight = getPreviewSize(props.deviceType, iconBorder.borderRadius.Desktop.right, iconBorder.borderRadius.Tablet.right, iconBorder.borderRadius.Mobile.right);
     const iconBorderRadiusBottom = getPreviewSize(props.deviceType, iconBorder.borderRadius.Desktop.bottom, iconBorder.borderRadius.Tablet.bottom, iconBorder.borderRadius.Mobile.bottom);
@@ -399,10 +399,10 @@ const edit = props => {
                             marginBottom: iconMarginBottom + iconMargin.unit,
                             marginLeft: iconMarginLeft + iconMargin.unit,
                             borderStyle: iconBorder.borderType,
-                            borderTopWidth: iconBorderWidthTop && iconBorderWidthTop + "px",
-                            borderRightWidth: iconBorderWidthRight && iconBorderWidthRight + "px",
-                            borderBottomWidth: iconBorderWidthBottom && iconBorderWidthBottom + "px",
-                            borderLeftWidth: iconBorderWidthLeft && iconBorderWidthLeft + "px",
+                            borderTopWidth: iconBorder['borderWidth'][props.deviceType]['top'] && iconBorder['borderWidth'][props.deviceType]['top'] + "px",
+                            // borderRightWidth: iconBorderWidthRight && iconBorderWidthRight + "px",
+                            // borderBottomWidth: iconBorderWidthBottom && iconBorderWidthBottom + "px",
+                            // borderLeftWidth: iconBorderWidthLeft && iconBorderWidthLeft + "px",
                             borderBottomLeftRadius: iconBorderRadiusLeft && iconBorderRadiusLeft + "px",
                             borderTopLeftRadius: iconBorderRadiusTop && iconBorderRadiusTop + "px",
                             borderTopRightRadius: iconBorderRadiusRight && iconBorderRadiusRight + "px",
