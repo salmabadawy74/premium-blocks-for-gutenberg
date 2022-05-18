@@ -5855,7 +5855,7 @@ input[type="number"] {
     left: -16px;
     right: -16px;
     bottom: 0px;
-    background: #f2f4f5;
+    background: #fff;
     z-index: -1;
 }
 .components-panel[data-premium-tab]
@@ -5871,7 +5871,7 @@ input[type="number"] {
 .premium-inspector-tabs {
     display: flex;
     position: relative;
-    background: #f2f4f5;
+    background: #fff;
     z-index: 9;
 }
 .premium-inspector-tabs::after {
@@ -5895,8 +5895,7 @@ input[type="number"] {
     justify-content: center;
     border: none;
     position: relative;
-    border-radius: 10px;
-    background: #f2f4f5;
+    background: #fff;
     cursor: pointer;
 }
 .premium-inspector-tabs button::after,
@@ -5910,8 +5909,6 @@ input[type="number"] {
     bottom: 50%;
     border: 1px solid transparent;
     border-bottom: none;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
     pointer-events: none;
 }
 .premium-inspector-tabs button::after {
@@ -5920,10 +5917,9 @@ input[type="number"] {
     border-color: #d6d9dd;
     border-bottom: 1px solid #d6d9dd;
     border-top: none;
-    border-radius: 0 0 10px 10px;
 }
 .premium-inspector-tabs button:not(.premium-active)::after {
-    background: #f2f4f5;
+    background: #fff;
 }
 .premium-inspector-tabs button.premium-active {
     background: #fff;
@@ -5936,10 +5932,7 @@ input[type="number"] {
 .premium-inspector-tabs button.premium-active::after {
     border-color: transparent;
 }
-.premium-inspector-tabs button.premium-active + button {
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 10px;
-}
+
 .premium-inspector-tabs button.premium-active + button::after {
     border-bottom-right-radius: 0;
     border-right-color: transparent;
@@ -6030,11 +6023,8 @@ input[type="number"] {
     position: sticky;
     top: -3px;
     z-index: 9;
-    border-top: calc(0.1em + 1px) solid #f2f4f5;
 }
-.premium-inspector-tabs-container.premium-is-sticky .premium-inspector-tabs {
-    border-bottom: 1px solid #e2e4e7;
-}
+
 .premium-inspector-tabs-container.premium-is-sticky
     .premium-inspector-tabs::before,
 .premium-inspector-tabs-container.premium-is-sticky
@@ -6046,20 +6036,12 @@ input[type="number"] {
     button {
     border-radius: 0;
 }
-.premium-inspector-tabs-container.premium-is-sticky
-    .premium-inspector-tabs
-    button::before {
-    display: none;
-}
+
 .premium-inspector-tabs-container.premium-is-sticky
     .premium-inspector-tabs
     button::after {
     border-radius: 0;
-    background: #2184f9;
-    height: 3px;
-    top: auto;
     bottom: -1px;
-    opacity: 0;
 }
 .premium-inspector-tabs-container.premium-is-sticky
     .premium-inspector-tabs
