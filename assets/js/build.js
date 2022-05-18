@@ -63626,12 +63626,6 @@ var save = function save(props) {
         nameV = _props$attributes.nameV,
         titleStyles = _props$attributes.titleStyles,
         socialIconStyles = _props$attributes.socialIconStyles,
-        socialIconBorderWidth = _props$attributes.socialIconBorderWidth,
-        socialIconBorderTop = _props$attributes.socialIconBorderTop,
-        socialIconBorderRight = _props$attributes.socialIconBorderRight,
-        socialIconBorderBottom = _props$attributes.socialIconBorderBottom,
-        socialIconBorderLeft = _props$attributes.socialIconBorderLeft,
-        socialIconBorderUpdated = _props$attributes.socialIconBorderUpdated,
         nameStyles = _props$attributes.nameStyles,
         descStyles = _props$attributes.descStyles,
         titleV = _props$attributes.titleV,
@@ -63652,7 +63646,8 @@ var save = function save(props) {
         saturation = _props$attributes.saturation,
         hue = _props$attributes.hue,
         contentColor = _props$attributes.contentColor,
-        bottomInfo = _props$attributes.bottomInfo;
+        bottomInfo = _props$attributes.bottomInfo,
+        socialIconBorder = _props$attributes.socialIconBorder;
 
 
     var mainClasses = (0, _classnames2.default)(className, 'premium-person');
@@ -63668,10 +63663,8 @@ var save = function save(props) {
                     React.createElement(
                         'a',
                         { className: 'premium-person__socialIcon__link_content ' + (socialIconStyles[0].defaultIconColor ? value.label : ""), href: '' + value.value, style: {
-                                borderStyle: socialIconStyles[0].borderTypeIcon,
-                                borderWidth: socialIconBorderUpdated ? socialIconBorderTop + 'px ' + socialIconBorderRight + 'px ' + socialIconBorderBottom + 'px ' + socialIconBorderLeft + 'px' : socialIconBorderWidth + "px",
-                                borderRadius: socialIconStyles[0].borderRadiusIcon || 100 + "px",
-                                borderColor: socialIconStyles[0].borderColorIcon,
+                                borderStyle: socialIconBorder.borderType,
+                                borderColor: socialIconBorder.borderColor,
                                 background: socialIconStyles[0].socialIconBackgroundColor
                             } },
                         React.createElement('i', { className: 'premium-person__socialIcon ' + (value.label == "youtube" ? "fa fa-youtube-play" : 'fa fa-' + value.label) + ' premium-person__' + socialIconHoverColor,
@@ -64054,12 +64047,6 @@ var edit = function (_Component) {
                 titleStyles = _props$attributes.titleStyles,
                 descStyles = _props$attributes.descStyles,
                 socialIconStyles = _props$attributes.socialIconStyles,
-                socialIconBorderWidth = _props$attributes.socialIconBorderWidth,
-                socialIconBorderTop = _props$attributes.socialIconBorderTop,
-                socialIconBorderRight = _props$attributes.socialIconBorderRight,
-                socialIconBorderBottom = _props$attributes.socialIconBorderBottom,
-                socialIconBorderLeft = _props$attributes.socialIconBorderLeft,
-                socialIconBorderUpdated = _props$attributes.socialIconBorderUpdated,
                 nameV = _props$attributes.nameV,
                 titleV = _props$attributes.titleV,
                 descV = _props$attributes.descV,
@@ -64080,7 +64067,8 @@ var edit = function (_Component) {
                 hue = _props$attributes.hue,
                 bottomInfo = _props$attributes.bottomInfo,
                 socialIconPadding = _props$attributes.socialIconPadding,
-                socialIconMargin = _props$attributes.socialIconMargin;
+                socialIconMargin = _props$attributes.socialIconMargin,
+                socialIconBorder = _props$attributes.socialIconBorder;
 
 
             var HOVER = [{
@@ -64227,6 +64215,14 @@ var edit = function (_Component) {
             var SocialIconPaddingRight = this.getPreviewSize(this.props.deviceType, socialIconPadding.Desktop.right, socialIconPadding.Tablet.right, socialIconPadding.Mobile.right);
             var SocialIconPaddingBottom = this.getPreviewSize(this.props.deviceType, socialIconPadding.Desktop.bottom, socialIconPadding.Tablet.bottom, socialIconPadding.Mobile.bottom);
             var SocialIconPaddingLeft = this.getPreviewSize(this.props.deviceType, socialIconPadding.Desktop.left, socialIconPadding.Tablet.left, socialIconPadding.Mobile.left);
+            var SocialIconBorderWidthTop = this.getPreviewSize(this.props.deviceType, socialIconBorder.borderWidth.Desktop.top, socialIconBorder.borderWidth.Tablet.top, socialIconBorder.borderWidth.Mobile.top);
+            var SocialIconBorderWidthRight = this.getPreviewSize(this.props.deviceType, socialIconBorder.borderWidth.Desktop.right, socialIconBorder.borderWidth.Tablet.right, socialIconBorder.borderWidth.Mobile.right);
+            var SocialIconBorderWidthBottom = this.getPreviewSize(this.props.deviceType, socialIconBorder.borderWidth.Desktop.bottom, socialIconBorder.borderWidth.Tablet.bottom, socialIconBorder.borderWidth.Mobile.bottom);
+            var SocialIconBorderWidthLeft = this.getPreviewSize(this.props.deviceType, socialIconBorder.borderWidth.Desktop.left, socialIconBorder.borderWidth.Tablet.left, socialIconBorder.borderWidth.Mobile.left);
+            var SocialIconBorderRadiusTop = this.getPreviewSize(this.props.deviceType, socialIconBorder.borderRadius.Desktop.top, socialIconBorder.borderRadius.Tablet.top, socialIconBorder.borderRadius.Mobile.top);
+            var SocialIconBorderRadiusRight = this.getPreviewSize(this.props.deviceType, socialIconBorder.borderRadius.Desktop.right, socialIconBorder.borderRadius.Tablet.right, socialIconBorder.borderRadius.Mobile.right);
+            var SocialIconBorderRadiusBottom = this.getPreviewSize(this.props.deviceType, socialIconBorder.borderRadius.Desktop.bottom, socialIconBorder.borderRadius.Tablet.bottom, socialIconBorder.borderRadius.Mobile.bottom);
+            var SocialIconBorderRadiusLeft = this.getPreviewSize(this.props.deviceType, socialIconBorder.borderRadius.Desktop.left, socialIconBorder.borderRadius.Tablet.left, socialIconBorder.borderRadius.Mobile.left);
 
             var shouldCancelStart = function shouldCancelStart(e) {
                 // Prevent sorting from being triggered if target is input or button
@@ -64366,10 +64362,16 @@ var edit = function (_Component) {
                             React.createElement(
                                 "a",
                                 { className: "premium-person__socialIcon__link_content " + (socialIconStyles[0].defaultIconColor ? value.label : ""), href: "" + value.value, style: {
-                                        borderStyle: socialIconStyles[0].borderTypeIcon,
-                                        borderWidth: socialIconBorderUpdated ? socialIconBorderTop + "px " + socialIconBorderRight + "px " + socialIconBorderBottom + "px " + socialIconBorderLeft + "px" : socialIconBorderWidth + "px",
-                                        borderRadius: socialIconStyles[0].borderRadiusIcon || 100 + "px",
-                                        borderColor: socialIconStyles[0].borderColorIcon,
+                                        borderStyle: socialIconBorder.borderType,
+                                        borderTopWidth: SocialIconBorderWidthTop && SocialIconBorderWidthTop + "px",
+                                        borderRightWidth: SocialIconBorderWidthRight && SocialIconBorderWidthRight + "px",
+                                        borderBottomWidth: SocialIconBorderWidthBottom && SocialIconBorderWidthBottom + "px",
+                                        borderLeftWidth: SocialIconBorderWidthLeft && SocialIconBorderWidthLeft + "px",
+                                        borderBottomLeftRadius: SocialIconBorderRadiusLeft && SocialIconBorderRadiusLeft + "px",
+                                        borderTopLeftRadius: SocialIconBorderRadiusTop && SocialIconBorderRadiusTop + "px",
+                                        borderTopRightRadius: SocialIconBorderRadiusRight && SocialIconBorderRadiusRight + "px",
+                                        borderBottomRightRadius: SocialIconBorderRadiusBottom && SocialIconBorderRadiusBottom + "px",
+                                        borderColor: socialIconBorder.borderColor,
                                         marginTop: SocialIconMarginTop + socialIconMargin.unit,
                                         marginBottom: SocialIconMarginBottom + socialIconMargin.unit,
                                         marginLeft: SocialIconMarginLeft + socialIconMargin.unit,
@@ -65095,35 +65097,10 @@ var edit = function (_Component) {
                             }
                         }),
                         React.createElement(_premiumBorder2.default, {
-                            borderType: socialIconStyles[0].borderTypeIcon,
-                            borderWidth: socialIconBorderWidth,
-                            top: socialIconBorderTop,
-                            right: socialIconBorderRight,
-                            bottom: socialIconBorderBottom,
-                            left: socialIconBorderLeft,
-                            borderColor: socialIconStyles[0].borderColorIcon,
-                            borderRadius: socialIconStyles[0].borderRadiusIcon,
-                            onChangeType: function onChangeType(newType) {
-                                return saveSocialIconStyles({ borderTypeIcon: newType });
-                            },
-                            onChangeWidth: function onChangeWidth(_ref4) {
-                                var top = _ref4.top,
-                                    right = _ref4.right,
-                                    bottom = _ref4.bottom,
-                                    left = _ref4.left;
-                                return setAttributes({
-                                    socialIconBorderUpdated: true,
-                                    socialIconBorderTop: top,
-                                    socialIconBorderRight: right,
-                                    socialIconBorderBottom: bottom,
-                                    socialIconBorderLeft: left
-                                });
-                            },
-                            onChangeColor: function onChangeColor(colorValue) {
-                                return saveSocialIconStyles({ borderColorIcon: colorValue });
-                            },
-                            onChangeRadius: function onChangeRadius(newrRadius) {
-                                return saveSocialIconStyles({ borderRadiusIcon: newrRadius });
+                            label: __('Border', 'premium-blocks-for-gutenberg'),
+                            value: socialIconBorder,
+                            onChange: function onChange(value) {
+                                return setAttributes({ socialIconBorder: value });
                             }
                         }),
                         React.createElement(_premiumResponsiveSpacing2.default, {
@@ -65221,35 +65198,10 @@ var edit = function (_Component) {
                         }
                     }),
                     React.createElement(_premiumBorder2.default, {
-                        borderType: socialIconStyles[0].borderTypeIcon,
-                        borderWidth: socialIconBorderWidth,
-                        top: socialIconBorderTop,
-                        right: socialIconBorderRight,
-                        bottom: socialIconBorderBottom,
-                        left: socialIconBorderLeft,
-                        borderColor: socialIconStyles[0].borderColorIcon,
-                        borderRadius: socialIconStyles[0].borderRadiusIcon,
-                        onChangeType: function onChangeType(newType) {
-                            return saveSocialIconStyles({ borderTypeIcon: newType });
-                        },
-                        onChangeWidth: function onChangeWidth(_ref5) {
-                            var top = _ref5.top,
-                                right = _ref5.right,
-                                bottom = _ref5.bottom,
-                                left = _ref5.left;
-                            return setAttributes({
-                                socialIconBorderUpdated: true,
-                                socialIconBorderTop: top,
-                                socialIconBorderRight: right,
-                                socialIconBorderBottom: bottom,
-                                socialIconBorderLeft: left
-                            });
-                        },
-                        onChangeColor: function onChangeColor(colorValue) {
-                            return saveSocialIconStyles({ borderColorIcon: colorValue });
-                        },
-                        onChangeRadius: function onChangeRadius(newrRadius) {
-                            return saveSocialIconStyles({ borderRadiusIcon: newrRadius });
+                        label: __('Border', 'premium-blocks-for-gutenberg'),
+                        value: socialIconBorder,
+                        onChange: function onChange(value) {
+                            return setAttributes({ socialIconBorder: value });
                         }
                     }),
                     React.createElement(_premiumResponsiveSpacing2.default, {
@@ -66360,6 +66312,50 @@ var deprecated = [{
                     bottom: attributes.socialIconPaddingBMobile,
                     left: attributes.socialIconPaddingLMobile
                 }
+            },
+            socialIconBorder: {
+                borderColor: attributes.socialIconStyles[0].borderTypeIcon,
+                borderType: attributes.socialIconStyles[0].borderColorIcon,
+                borderRadius: {
+                    "Desktop": {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: ""
+                    },
+                    "Tablet": {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: ""
+                    },
+                    "Mobile": {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: ""
+                    }
+                },
+                borderWidth: {
+                    "Desktop": {
+                        top: attributes.socialIconBorderTop,
+                        right: attributes.socialIconBorderRight,
+                        bottom: attributes.socialIconBorderBottom,
+                        left: attributes.socialIconBorderLeft
+                    },
+                    "Tablet": {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: ""
+                    },
+                    "Mobile": {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: ""
+                    }
+                }
             }
         };
         return Object.assign(attributes, newAttributes);
@@ -66375,12 +66371,6 @@ var deprecated = [{
             nameV = attributes.nameV,
             titleStyles = attributes.titleStyles,
             socialIconStyles = attributes.socialIconStyles,
-            socialIconBorderWidth = attributes.socialIconBorderWidth,
-            socialIconBorderTop = attributes.socialIconBorderTop,
-            socialIconBorderRight = attributes.socialIconBorderRight,
-            socialIconBorderBottom = attributes.socialIconBorderBottom,
-            socialIconBorderLeft = attributes.socialIconBorderLeft,
-            socialIconBorderUpdated = attributes.socialIconBorderUpdated,
             nameStyles = attributes.nameStyles,
             descStyles = attributes.descStyles,
             titleV = attributes.titleV,
@@ -66401,7 +66391,8 @@ var deprecated = [{
             saturation = attributes.saturation,
             hue = attributes.hue,
             contentColor = attributes.contentColor,
-            bottomInfo = attributes.bottomInfo;
+            bottomInfo = attributes.bottomInfo,
+            socialIconBorder = attributes.socialIconBorder;
 
 
         var mainClasses = (0, _classnames2.default)(className, 'premium-person');
@@ -66417,10 +66408,8 @@ var deprecated = [{
                         React.createElement(
                             "a",
                             { className: "premium-person__socialIcon__link_content " + (socialIconStyles[0].defaultIconColor ? value.label : ""), href: "" + value.value, style: {
-                                    borderStyle: socialIconStyles[0].borderTypeIcon,
-                                    borderWidth: socialIconBorderUpdated ? socialIconBorderTop + "px " + socialIconBorderRight + "px " + socialIconBorderBottom + "px " + socialIconBorderLeft + "px" : socialIconBorderWidth + "px",
-                                    borderRadius: socialIconStyles[0].borderRadiusIcon || 100 + "px",
-                                    borderColor: socialIconStyles[0].borderColorIcon,
+                                    borderStyle: socialIconBorder.borderType,
+                                    borderColor: socialIconBorder.borderColor,
                                     background: socialIconStyles[0].socialIconBackgroundColor
                                 } },
                             React.createElement("i", { className: "premium-person__socialIcon " + (value.label == "youtube" ? "fa fa-youtube-play" : "fa fa-" + value.label) + " premium-person__" + socialIconHoverColor,
@@ -66679,26 +66668,6 @@ var attributes = {
             socialIconMarginType: 'px'
         }]
     },
-    socialIconBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    socialIconBorderTop: {
-        type: "number"
-    },
-    socialIconBorderRight: {
-        type: "number"
-    },
-    socialIconBorderBottom: {
-        type: "number"
-    },
-    socialIconBorderLeft: {
-        type: "number"
-    },
-    socialIconBorderUpdated: {
-        type: "boolean",
-        default: false
-    },
     titleTag: {
         type: "string",
         default: "p"
@@ -66838,6 +66807,53 @@ var attributes = {
                 left: ""
             },
             unit: "px"
+        }
+    },
+    socialIconBorder: {
+        type: "object",
+        default: {
+            borderColor: "",
+            borderType: "none",
+            borderRadius: {
+                Desktop: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Tablet: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Mobile: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                }
+            },
+            borderWidth: {
+                Desktop: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Tablet: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Mobile: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                }
+            }
         }
     }
 };

@@ -396,6 +396,50 @@ const deprecated = [
                         bottom: attributes.socialIconPaddingBMobile,
                         left: attributes.socialIconPaddingLMobile
                     },
+                },
+                socialIconBorder: {
+                    borderColor: attributes.socialIconStyles[0].borderTypeIcon,
+                    borderType: attributes.socialIconStyles[0].borderColorIcon,
+                    borderRadius: {
+                        "Desktop": {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: ""
+                        },
+                        "Tablet": {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: ""
+                        },
+                        "Mobile": {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: ""
+                        },
+                    },
+                    borderWidth: {
+                        "Desktop": {
+                            top: attributes.socialIconBorderTop,
+                            right: attributes.socialIconBorderRight,
+                            bottom: attributes.socialIconBorderBottom,
+                            left: attributes.socialIconBorderLeft
+                        },
+                        "Tablet": {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: ""
+                        },
+                        "Mobile": {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: ""
+                        },
+                    }
                 }
             }
             return Object.assign(attributes, newAttributes)
@@ -412,12 +456,6 @@ const deprecated = [
                 nameV,
                 titleStyles,
                 socialIconStyles,
-                socialIconBorderWidth,
-                socialIconBorderTop,
-                socialIconBorderRight,
-                socialIconBorderBottom,
-                socialIconBorderLeft,
-                socialIconBorderUpdated,
                 nameStyles,
                 descStyles,
                 titleV,
@@ -438,7 +476,8 @@ const deprecated = [
                 saturation,
                 hue,
                 contentColor,
-                bottomInfo
+                bottomInfo,
+                socialIconBorder
             } = attributes;
 
             const mainClasses = classnames(className, 'premium-person');
@@ -447,12 +486,8 @@ const deprecated = [
                 return <ul className="premium-person__social-List">{(v).map((value) => (
                     <li>
                         <a className={`premium-person__socialIcon__link_content ${socialIconStyles[0].defaultIconColor ? value.label : ""}`} href={`${value.value}`} style={{
-                            borderStyle: socialIconStyles[0].borderTypeIcon,
-                            borderWidth: socialIconBorderUpdated
-                                ? `${socialIconBorderTop}px ${socialIconBorderRight}px ${socialIconBorderBottom}px ${socialIconBorderLeft}px`
-                                : socialIconBorderWidth + "px",
-                            borderRadius: socialIconStyles[0].borderRadiusIcon || 100 + "px",
-                            borderColor: socialIconStyles[0].borderColorIcon,
+                            borderStyle: socialIconBorder.borderType,
+                            borderColor: socialIconBorder.borderColor,
                             background: socialIconStyles[0].socialIconBackgroundColor,
                         }}>
                             <i className={`premium-person__socialIcon ${value.label == "youtube" ? "fa fa-youtube-play" : `fa fa-${value.label}`} premium-person__${socialIconHoverColor}`}
