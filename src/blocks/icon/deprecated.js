@@ -1190,6 +1190,94 @@ const deprecatedContent = [
                         bottom: attributes.wrapPaddingBMobile,
                         left: attributes.wrapPaddingLMobile
                     },
+                },
+                iconBorder: {
+                    borderColor: attributes.iconStyles[0].btnBorderColor,
+                    borderType: attributes.iconStyles[0].borderColor,
+                    borderRadius: {
+                        "Desktop": {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: ""
+                        },
+                        "Tablet": {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: ""
+                        },
+                        "Mobile": {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: ""
+                        },
+                    },
+                    borderWidth: {
+                        "Desktop": {
+                            top: attributes.iconBorderTop,
+                            right: attributes.iconBorderRight,
+                            bottom: attributes.iconBorderBottom,
+                            left: attributes.iconBorderLeft
+                        },
+                        "Tablet": {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: ""
+                        },
+                        "Mobile": {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: ""
+                        },
+                    }
+                },
+                containerBorder: {
+                    borderColor: attributes.containerStyles[0].wrapBorderType,
+                    borderType: attributes.containerStyles[0].wrapBorderColor,
+                    borderRadius: {
+                        "Desktop": {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: ""
+                        },
+                        "Tablet": {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: ""
+                        },
+                        "Mobile": {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: ""
+                        },
+                    },
+                    borderWidth: {
+                        "Desktop": {
+                            top: attributes.wrapBorderTop,
+                            right: attributes.wrapBorderRight,
+                            bottom: attributes.wrapBorderBottom,
+                            left: attributes.wrapBorderLeft
+                        },
+                        "Tablet": {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: ""
+                        },
+                        "Mobile": {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: ""
+                        },
+                    }
                 }
             };
             return Object.assign(attributes, newAttributes);
@@ -1238,12 +1326,8 @@ const deprecatedContent = [
                             backgroundPosition: containerStyles[0].backgroundPosition,
                             backgroundSize: containerStyles[0].backgroundSize,
                             backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
-                            borderStyle: containerStyles[0].wrapBorderType,
-                            borderWidth: wrapBorder
-                                ? `${wrapBorderTop}px ${wrapBorderRight}px ${wrapBorderBottom}px ${wrapBorderLeft}px`
-                                : wrapBorderWidth + "px",
-                            borderRadius: containerStyles[0].wrapBorderRadius + "px",
-                            borderColor: containerStyles[0].wrapBorderColor,
+                            borderStyle: containerBorder.borderType,
+                            borderColor: containerBorder.borderColor,
                             boxShadow: `${containerStyles[0].wrapShadowHorizontal || 0}px ${containerStyles[0].wrapShadowVertical ||
                                 0}px ${containerStyles[0].wrapShadowBlur ||
                                 0}px ${containerStyles[0].wrapShadowColor} ${containerStyles[0].wrapShadowPosition}`,
@@ -1262,12 +1346,8 @@ const deprecatedContent = [
                                     color: iconStyles[0].iconColor || "#6ec1e4",
                                     backgroundColor: iconStyles[0].iconBack,
                                     fontSize: (iconStyles[0].iconSize || 50) + iconStyles[0].iconSizeUnit,
-                                    borderStyle: iconStyles[0].borderType,
-                                    borderWidth: iconBorder
-                                        ? `${iconBorderTop}px ${iconBorderRight}px ${iconBorderBottom}px ${iconBorderLeft}px`
-                                        : borderWidth + "px",
-                                    borderRadius: iconStyles[0].borderRadius || 100 + "px",
-                                    borderColor: iconStyles[0].borderColor,
+                                    borderStyle: iconBorder.borderType,
+                                    borderColor: iconBorder.borderColor,
                                     textShadow: `${iconStyles[0].shadowHorizontal || 0}px ${iconStyles[0].shadowVertical ||
                                         0}px ${iconStyles[0].shadowBlur || 0}px ${iconStyles[0].shadowColor}`
                                 }}

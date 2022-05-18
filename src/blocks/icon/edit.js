@@ -49,24 +49,12 @@ const edit = props => {
 
     const {
         block_id,
-        iconBorder,
-        wrapBorder,
         iconType,
         selectedIcon,
         align,
         hoverEffect,
         iconStyles,
         containerStyles,
-        borderWidth,
-        iconBorderTop,
-        iconBorderRight,
-        iconBorderBottom,
-        iconBorderLeft,
-        wrapBorderWidth,
-        wrapBorderTop,
-        wrapBorderRight,
-        wrapBorderBottom,
-        wrapBorderLeft,
         urlCheck,
         link,
         target,
@@ -77,7 +65,9 @@ const edit = props => {
         iconPadding,
         iconMargin,
         wrapPadding,
-        wrapMargin
+        wrapMargin,
+        containerBorder,
+        iconBorder
     } = props.attributes;
 
     const EFFECTS = [
@@ -165,6 +155,23 @@ const edit = props => {
     const wrapMarginRight = getPreviewSize(props.deviceType, wrapMargin.Desktop.right, wrapMargin.Tablet.right, wrapMargin.Mobile.right);
     const wrapMarginBottom = getPreviewSize(props.deviceType, wrapMargin.Desktop.bottom, wrapMargin.Tablet.bottom, wrapMargin.Mobile.bottom);
     const wrapMarginLeft = getPreviewSize(props.deviceType, wrapMargin.Desktop.left, wrapMargin.Tablet.left, wrapMargin.Mobile.left);
+    const iconBorderWidthTop = getPreviewSize(props.deviceType, iconBorder.borderWidth.Desktop.top, iconBorder.borderWidth.Tablet.top, iconBorder.borderWidth.Mobile.top);
+    const iconBorderWidthRight = getPreviewSize(props.deviceType, iconBorder.borderWidth.Desktop.right, iconBorder.borderWidth.Tablet.right, iconBorder.borderWidth.Mobile.right);
+    const iconBorderWidthBottom = getPreviewSize(props.deviceType, iconBorder.borderWidth.Desktop.bottom, iconBorder.borderWidth.Tablet.bottom, iconBorder.borderWidth.Mobile.bottom);
+    const iconBorderWidthLeft = getPreviewSize(props.deviceType, iconBorder.borderWidth.Desktop.left, iconBorder.borderWidth.Tablet.left, iconBorder.borderWidth.Mobile.left);
+    const iconBorderRadiusTop = getPreviewSize(props.deviceType, iconBorder.borderRadius.Desktop.top, iconBorder.borderRadius.Tablet.top, iconBorder.borderRadius.Mobile.top);
+    const iconBorderRadiusRight = getPreviewSize(props.deviceType, iconBorder.borderRadius.Desktop.right, iconBorder.borderRadius.Tablet.right, iconBorder.borderRadius.Mobile.right);
+    const iconBorderRadiusBottom = getPreviewSize(props.deviceType, iconBorder.borderRadius.Desktop.bottom, iconBorder.borderRadius.Tablet.bottom, iconBorder.borderRadius.Mobile.bottom);
+    const iconBorderRadiusLeft = getPreviewSize(props.deviceType, iconBorder.borderRadius.Desktop.left, iconBorder.borderRadius.Tablet.left, iconBorder.borderRadius.Mobile.left);
+    const ContainerBorderWidthTop = getPreviewSize(props.deviceType, containerBorder.borderWidth.Desktop.top, containerBorder.borderWidth.Tablet.top, containerBorder.borderWidth.Mobile.top);
+    const ContainerBorderWidthRight = getPreviewSize(props.deviceType, containerBorder.borderWidth.Desktop.right, containerBorder.borderWidth.Tablet.right, containerBorder.borderWidth.Mobile.right);
+    const ContainerBorderWidthBottom = getPreviewSize(props.deviceType, containerBorder.borderWidth.Desktop.bottom, containerBorder.borderWidth.Tablet.bottom, containerBorder.borderWidth.Mobile.bottom);
+    const ContainerBorderWidthLeft = getPreviewSize(props.deviceType, containerBorder.borderWidth.Desktop.left, containerBorder.borderWidth.Tablet.left, containerBorder.borderWidth.Mobile.left);
+    const ContainerBorderRadiusTop = getPreviewSize(props.deviceType, containerBorder.borderRadius.Desktop.top, containerBorder.borderRadius.Tablet.top, containerBorder.borderRadius.Mobile.top);
+    const ContainerBorderRadiusRight = getPreviewSize(props.deviceType, containerBorder.borderRadius.Desktop.right, containerBorder.borderRadius.Tablet.right, containerBorder.borderRadius.Mobile.right);
+    const ContainerBorderRadiusBottom = getPreviewSize(props.deviceType, containerBorder.borderRadius.Desktop.bottom, containerBorder.borderRadius.Tablet.bottom, containerBorder.borderRadius.Mobile.bottom);
+    const ContainerBorderRadiusLeft = getPreviewSize(props.deviceType, containerBorder.borderRadius.Desktop.left, containerBorder.borderRadius.Tablet.left, containerBorder.borderRadius.Mobile.left);
+
     return [
         isSelected && (
             <InspectorControls key={"inspector"}>
@@ -237,28 +244,10 @@ const edit = props => {
                         onColorChange={value => saveIconStyle({ iconBack: value })}
                     />
                     <PremiumBorder
-                        borderType={iconStyles[0].borderType}
-                        borderWidth={borderWidth}
-                        top={iconBorderTop}
-                        right={iconBorderRight}
-                        bottom={iconBorderBottom}
-                        left={iconBorderLeft}
-                        borderColor={iconStyles[0].borderColor}
-                        borderRadius={iconStyles[0].borderRadius}
-                        onChangeType={(newType) => saveIconStyle({ borderType: newType })}
-                        onChangeWidth={({ top, right, bottom, left }) =>
-                            setAttributes({
-                                iconBorder: true,
-                                iconBorderTop: top,
-                                iconBorderRight: right,
-                                iconBorderBottom: bottom,
-                                iconBorderLeft: left,
-                            })
-                        }
-                        onChangeColor={(colorValue) => saveIconStyle({ borderColor: colorValue })}
-                        onChangeRadius={(newrRadius) => saveIconStyle({ borderRadius: newrRadius })}
+                        label={__('Border', 'premium-blocks-for-gutenberg')}
+                        value={iconBorder}
+                        onChange={(value) => setAttributes({ iconBorder: value })}
                     />
-
                     <PremiumShadow
                         label={__("Text Shadow", "premium-blocks-for-gutenberg")}
                         color={iconStyles[0].shadowColor}
@@ -309,28 +298,10 @@ const edit = props => {
                         gradientType={containerStyles[0].gradientType}
                     />
                     <PremiumBorder
-                        borderType={containerStyles[0].wrapBorderType}
-                        borderWidth={containerStyles[0].wrapBorderWidth}
-                        top={wrapBorderTop}
-                        right={wrapBorderRight}
-                        bottom={wrapBorderBottom}
-                        left={wrapBorderLeft}
-                        borderColor={containerStyles[0].wrapBorderColor}
-                        borderRadius={containerStyles[0].wrapBorderRadius}
-                        onChangeType={(newType) => saveContainerStyle({ wrapBorderType: newType })}
-                        onChangeWidth={({ top, right, bottom, left }) =>
-                            setAttributes({
-                                wrapBorder: true,
-                                wrapBorderTop: top,
-                                wrapBorderRight: right,
-                                wrapBorderBottom: bottom,
-                                wrapBorderLeft: left,
-                            })
-                        }
-                        onChangeColor={(colorValue) => saveContainerStyle({ wrapBorderColor: colorValue })}
-                        onChangeRadius={(newrRadius) => saveContainerStyle({ wrapBorderRadius: newrRadius })}
+                        label={__('Border', 'premium-blocks-for-gutenberg')}
+                        value={containerBorder}
+                        onChange={(value) => setAttributes({ containerBorder: value })}
                     />
-
                     <PremiumShadow
                         label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
                         boxShadow={true}
@@ -384,12 +355,16 @@ const edit = props => {
                     backgroundPosition: containerStyles[0].backgroundPosition,
                     backgroundSize: containerStyles[0].backgroundSize,
                     backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
-                    borderStyle: containerStyles[0].wrapBorderType,
-                    borderWidth: wrapBorder
-                        ? `${wrapBorderTop}px ${wrapBorderRight}px ${wrapBorderBottom}px ${wrapBorderLeft}px`
-                        : wrapBorderWidth + "px",
-                    borderRadius: containerStyles[0].wrapBorderRadius + "px",
-                    borderColor: containerStyles[0].wrapBorderColor,
+                    borderStyle: containerBorder.borderType,
+                    borderTopWidth: ContainerBorderWidthTop && ContainerBorderWidthTop + "px",
+                    borderRightWidth: ContainerBorderWidthRight && ContainerBorderWidthRight + "px",
+                    borderBottomWidth: ContainerBorderWidthBottom && ContainerBorderWidthBottom + "px",
+                    borderLeftWidth: ContainerBorderWidthLeft && ContainerBorderWidthLeft + "px",
+                    borderBottomLeftRadius: ContainerBorderRadiusLeft && ContainerBorderRadiusLeft + "px",
+                    borderTopLeftRadius: ContainerBorderRadiusTop && ContainerBorderRadiusTop + "px",
+                    borderTopRightRadius: ContainerBorderRadiusRight && ContainerBorderRadiusRight + "px",
+                    borderBottomRightRadius: ContainerBorderRadiusBottom && ContainerBorderRadiusBottom + "px",
+                    borderColor: containerBorder.borderColor,
                     boxShadow: `${containerStyles[0].wrapShadowHorizontal || 0}px ${containerStyles[0].wrapShadowVertical ||
                         0}px ${containerStyles[0].wrapShadowBlur ||
                         0}px ${containerStyles[0].wrapShadowColor} ${containerStyles[0].wrapShadowPosition}`,
@@ -423,12 +398,16 @@ const edit = props => {
                             marginRight: iconMarginRight + iconMargin.unit,
                             marginBottom: iconMarginBottom + iconMargin.unit,
                             marginLeft: iconMarginLeft + iconMargin.unit,
-                            borderStyle: iconStyles[0].borderType,
-                            borderWidth: iconBorder
-                                ? `${iconBorderTop}px ${iconBorderRight}px ${iconBorderBottom}px ${iconBorderLeft}px`
-                                : borderWidth + "px",
-                            borderRadius: iconStyles[0].borderRadius || 100 + "px",
-                            borderColor: iconStyles[0].borderColor,
+                            borderStyle: iconBorder.borderType,
+                            borderTopWidth: iconBorderWidthTop && iconBorderWidthTop + "px",
+                            borderRightWidth: iconBorderWidthRight && iconBorderWidthRight + "px",
+                            borderBottomWidth: iconBorderWidthBottom && iconBorderWidthBottom + "px",
+                            borderLeftWidth: iconBorderWidthLeft && iconBorderWidthLeft + "px",
+                            borderBottomLeftRadius: iconBorderRadiusLeft && iconBorderRadiusLeft + "px",
+                            borderTopLeftRadius: iconBorderRadiusTop && iconBorderRadiusTop + "px",
+                            borderTopRightRadius: iconBorderRadiusRight && iconBorderRadiusRight + "px",
+                            borderBottomRightRadius: iconBorderRadiusBottom && iconBorderRadiusBottom + "px",
+                            borderColor: iconBorder.borderColor,
                             textShadow: `${iconStyles[0].shadowHorizontal || 0}px ${iconStyles[0].shadowVertical ||
                                 0}px ${iconStyles[0].shadowBlur || 0}px ${iconStyles[0].shadowColor}`
                         }}
