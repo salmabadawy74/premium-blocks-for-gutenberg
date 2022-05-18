@@ -109,6 +109,7 @@ export class edit extends Component {
             paddingRMobile,
             paddingBMobile,
             paddingLMobile,
+            titleSize
         } = this.props.attributes;
 
         const ALIGNS = [
@@ -242,7 +243,6 @@ export class edit extends Component {
         const containerPaddingRight = this.getPreviewSize(this.props.deviceType, paddingR, paddingRTablet, paddingRMobile);
         const containerPaddingBottom = this.getPreviewSize(this.props.deviceType, paddingB, paddingBTablet, paddingBMobile);
         const containerPaddingLeft = this.getPreviewSize(this.props.deviceType, paddingL, paddingLTablet, paddingLMobile);
-
         return [
             isSelected && (
                 <BlockControls key="controls">
@@ -389,12 +389,8 @@ export class edit extends Component {
                                 value: titleStyles[0].titleSizeUnit,
                                 label: __("titleSizeUnit", 'premium-blocks-for-gutenberg'),
                             }}
-                            fontSize={titleStyles[0].titleSize}
-                            fontSizeMobile={titleStyles[0].titleSizeMobile}
-                            fontSizeTablet={titleStyles[0].titleSizeTablet}
-                            onChangeSize={value => saveStyles({ titleSize: value })}
-                            onChangeTabletSize={value => saveStyles({ titleSizeTablet: value })}
-                            onChangeMobileSize={value => saveStyles({ titleSizeMobile: value })}
+                            fontSize={titleSize}
+                            onChange={value => setAttributes({ titleSize: value })}
                             weight={titleStyles[0].titleWeight}
                             line={titleStyles[0].titleLine}
                             onChangeWeight={newWeight => saveStyles({ titleWeight: newWeight === undefined ? 500 : newWeight })}
