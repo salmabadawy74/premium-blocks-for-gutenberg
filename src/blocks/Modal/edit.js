@@ -40,18 +40,7 @@ const edit = props => {
         triggerBorderRightH,
         triggerBorderBottomH,
         triggerBorderLeftH,
-        triggerPaddingT,
-        triggerPaddingR,
-        triggerPaddingB,
-        triggerPaddingL,
-        triggerPaddingTTablet,
-        triggerPaddingRTablet,
-        triggerPaddingBTablet,
-        triggerPaddingLTablet,
-        triggerPaddingTMobile,
-        triggerPaddingRMobile,
-        triggerPaddingBMobile,
-        triggerPaddingLMobile,
+        triggerPadding,
         headerStyles,
         headerBorderTop,
         headerBorderRight,
@@ -62,65 +51,21 @@ const edit = props => {
         upperBorderRight,
         upperBorderBottom,
         upperBorderLeft,
-        upperPaddingT,
-        upperPaddingR,
-        upperPaddingB,
-        upperPaddingL,
-        upperPaddingTTablet,
-        upperPaddingRTablet,
-        upperPaddingBTablet,
-        upperPaddingLTablet,
-        upperPaddingTMobile,
-        upperPaddingRMobile,
-        upperPaddingBMobile,
-        upperPaddingLMobile,
+        upperPadding,
         lowerStyles,
         lowerBorderTop,
         lowerBorderRight,
         lowerBorderBottom,
         lowerBorderLeft,
-        lowerPaddingT,
-        lowerPaddingR,
-        lowerPaddingB,
-        lowerPaddingL,
-        lowerPaddingTTablet,
-        lowerPaddingRTablet,
-        lowerPaddingBTablet,
-        lowerPaddingLTablet,
-        lowerPaddingTMobile,
-        lowerPaddingRMobile,
-        lowerPaddingBMobile,
-        lowerPaddingLMobile,
+        lowerPadding,
         modalStyles,
         backgroundType,
         modalBorderTop,
         modalBorderRight,
         modalBorderBottom,
         modalBorderLeft,
-        modalMarginT,
-        modalMarginR,
-        modalMarginB,
-        modalMarginL,
-        modalMarginTTablet,
-        modalMarginRTablet,
-        modalMarginBTablet,
-        modalMarginLTablet,
-        modalMarginTMobile,
-        modalMarginRMobile,
-        modalMarginBMobile,
-        modalMarginLMobile,
-        modalPaddingT,
-        modalPaddingR,
-        modalPaddingB,
-        modalPaddingL,
-        modalPaddingTTablet,
-        modalPaddingRTablet,
-        modalPaddingBTablet,
-        modalPaddingLTablet,
-        modalPaddingTMobile,
-        modalPaddingRMobile,
-        modalPaddingBMobile,
-        modalPaddingLMobile
+        modalMargin,
+        modalPadding,
     } = props.attributes;
 
     useEffect(() => {
@@ -190,31 +135,31 @@ const edit = props => {
     );
     const headerIconSize = getPreviewSize(props.deviceType, contentStyles[0].iconSize, contentStyles[0].iconSizeTablet, contentStyles[0].iconSizeMobile);
     const triggerFontSize = getPreviewSize(props.deviceType, triggerStyles[0].triggerSize, triggerStyles[0].triggerSizeTablet, triggerStyles[0].triggerSizeMobile);
-    const triggerPaddingTop = getPreviewSize(props.deviceType, triggerPaddingT, triggerPaddingTTablet, triggerPaddingTMobile);
-    const triggerPaddingRight = getPreviewSize(props.deviceType, triggerPaddingR, triggerPaddingRTablet, triggerPaddingRMobile);
-    const triggerPaddingBottom = getPreviewSize(props.deviceType, triggerPaddingB, triggerPaddingBTablet, triggerPaddingBMobile);
-    const triggerPaddingLeft = getPreviewSize(props.deviceType, triggerPaddingL, triggerPaddingLTablet, triggerPaddingLMobile);
+    const triggerPaddingTop = getPreviewSize(props.deviceType, triggerPadding.Desktop.top, triggerPadding.Tablet.top, triggerPadding.Mobile.top);
+    const triggerPaddingRight = getPreviewSize(props.deviceType, triggerPadding.Desktop.right, triggerPadding.Tablet.right, triggerPadding.Mobile.right);
+    const triggerPaddingBottom = getPreviewSize(props.deviceType, triggerPadding.Desktop.bottom, triggerPadding.Tablet.bottom, triggerPadding.Mobile.bottom);
+    const triggerPaddingLeft = getPreviewSize(props.deviceType, triggerPadding.Desktop.left, triggerPadding.Tablet.left, triggerPadding.Mobile.left);
     const headerFontSize = getPreviewSize(props.deviceType, headerStyles[0].headerSize, headerStyles[0].headerSizeTablet, headerStyles[0].headerSizeMobile);
-    const upperPaddingTop = getPreviewSize(props.deviceType, upperPaddingT, upperPaddingTTablet, upperPaddingTMobile);
-    const upperPaddingRight = getPreviewSize(props.deviceType, upperPaddingR, upperPaddingRTablet, upperPaddingRMobile);
-    const upperPaddingBottom = getPreviewSize(props.deviceType, upperPaddingB, upperPaddingBTablet, upperPaddingBMobile);
-    const upperPaddingLeft = getPreviewSize(props.deviceType, upperPaddingL, upperPaddingLTablet, upperPaddingLMobile);
+    const upperPaddingTop = getPreviewSize(props.deviceType, upperPadding.Desktop.top, upperPadding.Tablet.top, upperPadding.Mobile.top);
+    const upperPaddingRight = getPreviewSize(props.deviceType, upperPadding.Desktop.right, upperPadding.Tablet.right, upperPadding.Mobile.right);
+    const upperPaddingBottom = getPreviewSize(props.deviceType, upperPadding.Desktop.bottom, upperPadding.Tablet.bottom, upperPadding.Mobile.bottom);
+    const upperPaddingLeft = getPreviewSize(props.deviceType, upperPadding.Desktop.left, upperPadding.Tablet.left, upperPadding.Mobile.left);
     const lowerFontSize = getPreviewSize(props.deviceType, lowerStyles[0].lowerSize, lowerStyles[0].lowerSizeTablet, lowerStyles[0].lowerSizeMobile);
-    const lowerPaddingTop = getPreviewSize(props.deviceType, lowerPaddingT, lowerPaddingTTablet, lowerPaddingTMobile);
-    const lowerPaddingRight = getPreviewSize(props.deviceType, lowerPaddingR, lowerPaddingRTablet, lowerPaddingRMobile);
-    const lowerPaddingBottom = getPreviewSize(props.deviceType, lowerPaddingB, lowerPaddingBTablet, lowerPaddingBMobile);
-    const lowerPaddingLeft = getPreviewSize(props.deviceType, lowerPaddingL, lowerPaddingLTablet, lowerPaddingLMobile);
+    const lowerPaddingTop = getPreviewSize(props.deviceType, lowerPadding.Desktop.top, lowerPadding.Tablet.top, lowerPadding.Mobile.top);
+    const lowerPaddingRight = getPreviewSize(props.deviceType, lowerPadding.Desktop.right, lowerPadding.Tablet.right, lowerPadding.Mobile.right);
+    const lowerPaddingBottom = getPreviewSize(props.deviceType, lowerPadding.Desktop.bottom, lowerPadding.Tablet.bottom, lowerPadding.Mobile.bottom);
+    const lowerPaddingLeft = getPreviewSize(props.deviceType, lowerPadding.Desktop.left, lowerPadding.Tablet.left, lowerPadding.Mobile.left);
     const modalWidth = getPreviewSize(props.deviceType, modalStyles[0].modalWidth, modalStyles[0].modalWidthTablet, modalStyles[0].modalWidthMobile);
     const modalMaxHeight = getPreviewSize(props.deviceType, modalStyles[0].modalHeight, modalStyles[0].modalHeightTablet, modalStyles[0].modalHeightMobile);
     const modalFontSize = getPreviewSize(props.deviceType, modalStyles[0].modalSize, modalStyles[0].modalSizeTablet, modalStyles[0].modalSizeMobile);
-    const modalPaddingTop = getPreviewSize(props.deviceType, modalPaddingT, modalPaddingTTablet, modalPaddingTMobile);
-    const modalPaddingRight = getPreviewSize(props.deviceType, modalPaddingR, modalPaddingRTablet, modalPaddingRMobile);
-    const modalPaddingBottom = getPreviewSize(props.deviceType, modalPaddingB, modalPaddingBTablet, modalPaddingBMobile);
-    const modalPaddingLeft = getPreviewSize(props.deviceType, modalPaddingL, modalPaddingLTablet, modalPaddingLMobile);
-    const modalMarginTop = getPreviewSize(props.deviceType, modalMarginT, modalMarginTTablet, modalMarginTMobile);
-    const modalMarginRight = getPreviewSize(props.deviceType, modalMarginR, modalMarginRTablet, modalMarginRMobile);
-    const modalMarginBottom = getPreviewSize(props.deviceType, modalMarginB, modalMarginBTablet, modalMarginBMobile);
-    const modalMarginLeft = getPreviewSize(props.deviceType, modalMarginL, modalMarginLTablet, modalMarginLMobile);
+    const modalPaddingTop = getPreviewSize(props.deviceType, modalPadding.Desktop.top, modalPadding.Tablet.top, modalPadding.Mobile.top);
+    const modalPaddingRight = getPreviewSize(props.deviceType, modalPadding.Desktop.right, modalPadding.Tablet.right, modalPadding.Mobile.right);
+    const modalPaddingBottom = getPreviewSize(props.deviceType, modalPadding.Desktop.bottom, modalPadding.Tablet.bottom, modalPadding.Mobile.bottom);
+    const modalPaddingLeft = getPreviewSize(props.deviceType, modalPadding.Desktop.left, modalPadding.Tablet.left, modalPadding.Mobile.left);
+    const modalMarginTop = getPreviewSize(props.deviceType, modalMargin.Desktop.top, modalMargin.Tablet.top, modalMargin.Mobile.top);
+    const modalMarginRight = getPreviewSize(props.deviceType, modalMargin.Desktop.right, modalMargin.Tablet.right, modalMargin.Mobile.right);
+    const modalMarginBottom = getPreviewSize(props.deviceType, modalMargin.Desktop.bottom, modalMargin.Tablet.bottom, modalMargin.Mobile.bottom);
+    const modalMarginLeft = getPreviewSize(props.deviceType, modalMargin.Desktop.right, modalMargin.Tablet.right, modalMargin.Mobile.right);
     const triggerSize = getPreviewSize(props.deviceType, triggerSettings[0].imageWidth, triggerSettings[0].imageWidthTablet, triggerSettings[0].imageWidthMobile);
 
     let btnGrad, btnGrad2, btnbg;
@@ -278,10 +223,10 @@ const edit = props => {
             <div className={`premium-modal-trigger-container`} style={{ textAlign: triggerSettings[0].align }}>
                 {(triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === "load") && <button className={` premium-modal-trigger-btn premium-button__${triggerSettings[0].btnSize} `} onClick={() => setOpenModal(true)} style={{
                     fontSize: `${triggerFontSize}${triggerStyles[0].triggerSizeUnit}`,
-                    paddingTop: `${triggerPaddingTop}px`,
-                    paddingRight: `${triggerPaddingRight}px`,
-                    paddingBottom: `${triggerPaddingBottom}px`,
-                    paddingLeft: `${triggerPaddingLeft}px`,
+                    paddingTop: triggerPaddingTop && `${triggerPaddingTop}${triggerPadding.unit}`,
+                    paddingRight: triggerPaddingRight && `${triggerPaddingRight}${triggerPadding.unit}`,
+                    paddingBottom: triggerPaddingBottom && `${triggerPaddingBottom}${triggerPadding.unit}`,
+                    paddingLeft: triggerPaddingLeft && `${triggerPaddingLeft}${triggerPadding.unit}`,
                     backgroundColor: triggerStyles[0].triggerBack,
                     borderStyle: triggerStyles[0].borderType,
                     borderTopWidth: `${triggerBorderTop}px`,
@@ -332,10 +277,10 @@ const edit = props => {
                     <span onClick={() => setOpenModal(true)} className={`premium-modal-trigger-text`} style={{
                         color: triggerStyles[0].color,
                         fontSize: `${triggerFontSize}${triggerStyles[0].triggerSizeUnit}`,
-                        paddingTop: `${triggerPaddingTop}px`,
-                        paddingRight: `${triggerPaddingRight}px`,
-                        paddingBottom: `${triggerPaddingBottom}px`,
-                        paddingLeft: `${triggerPaddingLeft}px`,
+                        paddingTop: triggerPaddingTop && `${triggerPaddingTop}${triggerPadding.unit}`,
+                        paddingRight: triggerPaddingRight && `${triggerPaddingRight}${triggerPadding.unit}`,
+                        paddingBottom: triggerPaddingBottom && `${triggerPaddingBottom}${triggerPadding.unit}`,
+                        paddingLeft: triggerPaddingLeft && `${triggerPaddingLeft}${triggerPadding.unit}`,
                         borderStyle: triggerStyles[0].borderType,
                         borderTopWidth: `${triggerBorderTop}px`,
                         borderRightWidth: `${triggerBorderRight}px`,
@@ -406,10 +351,10 @@ const edit = props => {
                         style={{
                             width: `${modalWidth}${modalStyles[0].modalWidthUnit}`,
                             maxHeight: `${modalMaxHeight}${modalStyles[0].modalHeightUnit}`,
-                            marginTop: `${modalMarginTop}px`,
-                            marginRight: `${modalMarginRight}px`,
-                            marginBottom: `${modalMarginBottom}px`,
-                            marginLeft: `${modalMarginLeft}px`,
+                            marginTop: modalMarginTop && `${modalMarginTop}${modalMargin.unit}`,
+                            marginRight: modalMarginRight && `${modalMarginRight}${modalMargin.unit}`,
+                            marginBottom: modalMarginBottom && `${modalMarginBottom}${modalMargin.unit}`,
+                            marginLeft: modalMarginLeft && `${modalMarginLeft}${modalMargin.unit}`,
                             borderStyle: `${modalStyles[0].borderType}`,
                             borderColor: `${modalStyles[0].borderColor}`,
                             borderTopWidth: `${modalBorderTop}px`,
@@ -473,10 +418,10 @@ const edit = props => {
                                 borderLeftWidth: `${upperBorderLeft}px`,
                                 borderColor: `${upperStyles[0].borderColor}`,
                                 borderRadius: `${upperStyles[0].borderRadius}px`,
-                                paddingTop: `${upperPaddingTop}px`,
-                                paddingRight: `${upperPaddingRight}px`,
-                                paddingBottom: `${upperPaddingBottom}px`,
-                                paddingLeft: `${upperPaddingLeft}px`
+                                paddingTop: upperPaddingTop && `${upperPaddingTop}${upperPadding.unit}`,
+                                paddingRight: upperPaddingRight && `${upperPaddingRight}${upperPadding.unit}`,
+                                paddingBottom: upperPaddingBottom && `${upperPaddingBottom}${upperPadding.unit}`,
+                                paddingLeft: upperPaddingLeft && `${upperPaddingLeft}${upperPadding.unit}`
                             }}>
                                 <button role="button" className="premium-modal-box-modal-close close-button" onClick={() => setOpenModal(false)}
                                     style={{
@@ -488,10 +433,10 @@ const edit = props => {
                         </div>}
                         <div className={`premium-modal-box-modal-body`} style={{
                             background: modalStyles[0].textBackColor,
-                            paddingTop: `${modalPaddingTop}px`,
-                            paddingRight: `${modalPaddingRight}px`,
-                            paddingBottom: `${modalPaddingBottom}px`,
-                            paddingLeft: `${modalPaddingLeft}px`
+                            paddingTop: modalPaddingTop && `${modalPaddingTop}${modalPadding.unit}`,
+                            paddingRight: modalPaddingRight && `${modalPaddingRight}${modalPadding.unit}`,
+                            paddingBottom: modalPaddingBottom && `${modalPaddingBottom}${modalPadding.unit}`,
+                            paddingLeft: modalPaddingLeft && `${modalPaddingLeft}${modalPadding.unit}`
                         }}>
                             {modalStyles[0].contentType === "text" ? <p style={{
                                 fontSize: `${modalFontSize}${modalStyles[0].modalSizeUnit}`,
@@ -523,10 +468,10 @@ const edit = props => {
                                     borderLeftWidth: `${lowerBorderLeft}px`,
                                     borderColor: `${lowerStyles[0].borderColor}`,
                                     borderRadius: `${lowerStyles[0].borderRadius}px`,
-                                    paddingTop: `${lowerPaddingTop}px`,
-                                    paddingRight: `${lowerPaddingRight}px`,
-                                    paddingBottom: `${lowerPaddingBottom}px`,
-                                    paddingLeft: `${lowerPaddingLeft}px`
+                                    paddingTop: lowerPaddingTop && `${lowerPaddingTop}${lowerPadding.unit}`,
+                                    paddingRight: lowerPaddingRight && `${lowerPaddingRight}${lowerPadding.unit}`,
+                                    paddingBottom: lowerPaddingBottom && `${lowerPaddingBottom}${lowerPadding.unit}`,
+                                    paddingLeft: lowerPaddingLeft && `${lowerPaddingLeft}${lowerPadding.unit}`
                                 }}
                             >
                                 {contentStyles[0].lowerCloseText}

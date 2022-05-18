@@ -14,6 +14,8 @@ import ResponsiveRangeControl from "../../components/RangeControl/responsive-ran
 import PremiumBackgroundControl from '../../components/Premium-Background-Control'
 import PremiumFilters from "../../components/premium-filters";
 import { JsonUploadEnabled } from "../../../assets/js/settings";
+import SpacingComponent from '../../components/premium-responsive-spacing';
+
 const {
     PanelBody,
     SelectControl,
@@ -42,18 +44,7 @@ const Inspector = ({
         triggerBorderRightH,
         triggerBorderBottomH,
         triggerBorderLeftH,
-        triggerPaddingT,
-        triggerPaddingR,
-        triggerPaddingB,
-        triggerPaddingL,
-        triggerPaddingTTablet,
-        triggerPaddingRTablet,
-        triggerPaddingBTablet,
-        triggerPaddingLTablet,
-        triggerPaddingTMobile,
-        triggerPaddingRMobile,
-        triggerPaddingBMobile,
-        triggerPaddingLMobile,
+        triggerPadding,
         headerStyles,
         headerBorderTop,
         headerBorderRight,
@@ -64,65 +55,21 @@ const Inspector = ({
         upperBorderRight,
         upperBorderBottom,
         upperBorderLeft,
-        upperPaddingT,
-        upperPaddingR,
-        upperPaddingB,
-        upperPaddingL,
-        upperPaddingTTablet,
-        upperPaddingRTablet,
-        upperPaddingBTablet,
-        upperPaddingLTablet,
-        upperPaddingTMobile,
-        upperPaddingRMobile,
-        upperPaddingBMobile,
-        upperPaddingLMobile,
+        upperPadding,
         lowerStyles,
         lowerBorderTop,
         lowerBorderRight,
         lowerBorderBottom,
         lowerBorderLeft,
-        lowerPaddingT,
-        lowerPaddingR,
-        lowerPaddingB,
-        lowerPaddingL,
-        lowerPaddingTTablet,
-        lowerPaddingRTablet,
-        lowerPaddingBTablet,
-        lowerPaddingLTablet,
-        lowerPaddingTMobile,
-        lowerPaddingRMobile,
-        lowerPaddingBMobile,
-        lowerPaddingLMobile,
+        lowerPadding,
         modalStyles,
         backgroundType,
         modalBorderTop,
         modalBorderRight,
         modalBorderBottom,
         modalBorderLeft,
-        modalMarginT,
-        modalMarginR,
-        modalMarginB,
-        modalMarginL,
-        modalMarginTTablet,
-        modalMarginRTablet,
-        modalMarginBTablet,
-        modalMarginLTablet,
-        modalMarginTMobile,
-        modalMarginRMobile,
-        modalMarginBMobile,
-        modalMarginLMobile,
-        modalPaddingT,
-        modalPaddingR,
-        modalPaddingB,
-        modalPaddingL,
-        modalPaddingTTablet,
-        modalPaddingRTablet,
-        modalPaddingBTablet,
-        modalPaddingLTablet,
-        modalPaddingTMobile,
-        modalPaddingRMobile,
-        modalPaddingBMobile,
-        modalPaddingLMobile
+        modalMargin,
+        modalPadding
     } = attributes;
     const saveContentStyle = (value) => {
         const newUpdate = contentStyles.map((item, index) => {
@@ -239,7 +186,7 @@ const Inspector = ({
                                 />
                             </Fragment>
                         )}
-                        { contentStyles[0].iconType === "image" && (
+                        {contentStyles[0].iconType === "image" && (
                             <PremiumMediaUpload
                                 type="image"
                                 imageID={contentStyles[0].contentImgID}
@@ -745,64 +692,7 @@ const Inspector = ({
                     </TabPanel>
                 </Fragment>)}
                 {(triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === 'text') && (<Fragment>
-                    <PremiumResponsivePadding
-                        paddingT={triggerPaddingT}
-                        paddingR={triggerPaddingR}
-                        paddingB={triggerPaddingB}
-                        paddingL={triggerPaddingL}
-                        paddingTTablet={triggerPaddingTTablet}
-                        paddingRTablet={triggerPaddingRTablet}
-                        paddingBTablet={triggerPaddingBTablet}
-                        paddingLTablet={triggerPaddingLTablet}
-                        paddingTMobile={triggerPaddingTMobile}
-                        paddingRMobile={triggerPaddingRMobile}
-                        paddingBMobile={triggerPaddingBMobile}
-                        paddingLMobile={triggerPaddingLMobile}
-                        onChangePaddingTop={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ triggerPaddingT: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ triggerPaddingTTablet: newValue })
-                                } else {
-                                    setAttributes({ triggerPaddingTMobile: newValue })
-                                }
-                            }
-                        }
-                        onChangePaddingRight={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ triggerPaddingR: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ triggerPaddingRTablet: newValue })
-                                } else {
-                                    setAttributes({ triggerPaddingRMobile: newValue })
-                                }
-                            }
-                        }
-                        onChangePaddingBottom={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ triggerPaddingB: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ triggerPaddingBTablet: newValue })
-                                } else {
-                                    setAttributes({ triggerPaddingBMobile: newValue })
-                                }
-                            }
-                        }
-                        onChangePaddingLeft={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ triggerPaddingL: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ triggerPaddingLTablet: newValue })
-                                } else {
-                                    setAttributes({ triggerPaddingLMobile: newValue })
-                                }
-                            }
-                        }
-                    />
+                    <SpacingComponent value={triggerPadding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ triggerPadding: value })} />
                 </Fragment>)}
                 {(triggerSettings[0].triggerType === "image" || triggerSettings[0].triggerType === "button") && (
                     <PremiumShadow
@@ -974,64 +864,7 @@ const Inspector = ({
                     onChangeColor={(colorValue) => saveUpperStyles({ borderColor: colorValue })}
                     onChangeRadius={(newRadius) => saveUpperStyles({ borderRadius: newRadius })}
                 />
-                <PremiumResponsivePadding
-                    paddingT={upperPaddingT}
-                    paddingR={upperPaddingR}
-                    paddingB={upperPaddingB}
-                    paddingL={upperPaddingL}
-                    paddingTTablet={upperPaddingTTablet}
-                    paddingRTablet={upperPaddingRTablet}
-                    paddingBTablet={upperPaddingBTablet}
-                    paddingLTablet={upperPaddingLTablet}
-                    paddingTMobile={upperPaddingTMobile}
-                    paddingRMobile={upperPaddingRMobile}
-                    paddingBMobile={upperPaddingBMobile}
-                    paddingLMobile={upperPaddingLMobile}
-                    onChangePaddingTop={
-                        (device, newValue) => {
-                            if (device === "desktop") {
-                                setAttributes({ upperPaddingT: newValue })
-                            } else if (device === "tablet") {
-                                setAttributes({ upperPaddingTTablet: newValue })
-                            } else {
-                                setAttributes({ upperPaddingTMobile: newValue })
-                            }
-                        }
-                    }
-                    onChangePaddingRight={
-                        (device, newValue) => {
-                            if (device === "desktop") {
-                                setAttributes({ upperPaddingR: newValue })
-                            } else if (device === "tablet") {
-                                setAttributes({ upperPaddingRTablet: newValue })
-                            } else {
-                                setAttributes({ upperPaddingRMobile: newValue })
-                            }
-                        }
-                    }
-                    onChangePaddingBottom={
-                        (device, newValue) => {
-                            if (device === "desktop") {
-                                setAttributes({ upperPaddingB: newValue })
-                            } else if (device === "tablet") {
-                                setAttributes({ upperPaddingBTablet: newValue })
-                            } else {
-                                setAttributes({ upperPaddingBMobile: newValue })
-                            }
-                        }
-                    }
-                    onChangePaddingLeft={
-                        (device, newValue) => {
-                            if (device === "desktop") {
-                                setAttributes({ upperPaddingL: newValue })
-                            } else if (device === "tablet") {
-                                setAttributes({ upperPaddingLTablet: newValue })
-                            } else {
-                                setAttributes({ upperPaddingLMobile: newValue })
-                            }
-                        }
-                    }
-                />
+                <SpacingComponent value={upperPadding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ upperPadding: value })} />
             </PanelBody>}
             {contentStyles[0].showLowerClose && <PanelBody
                 title={__("Lower Close Button", 'premium-blocks-for-gutenberg')}
@@ -1104,64 +937,7 @@ const Inspector = ({
                     onChangeColor={(colorValue) => saveLowerStyles({ borderColor: colorValue })}
                     onChangeRadius={(newRadius) => saveLowerStyles({ borderRadius: newRadius })}
                 />
-                <PremiumResponsivePadding
-                    paddingT={lowerPaddingT}
-                    paddingR={lowerPaddingR}
-                    paddingB={lowerPaddingB}
-                    paddingL={lowerPaddingL}
-                    paddingTTablet={lowerPaddingTTablet}
-                    paddingRTablet={lowerPaddingRTablet}
-                    paddingBTablet={lowerPaddingBTablet}
-                    paddingLTablet={lowerPaddingLTablet}
-                    paddingTMobile={lowerPaddingTMobile}
-                    paddingRMobile={lowerPaddingRMobile}
-                    paddingBMobile={lowerPaddingBMobile}
-                    paddingLMobile={lowerPaddingLMobile}
-                    onChangePaddingTop={
-                        (device, newValue) => {
-                            if (device === "desktop") {
-                                setAttributes({ lowerPaddingT: newValue })
-                            } else if (device === "tablet") {
-                                setAttributes({ lowerPaddingTTablet: newValue })
-                            } else {
-                                setAttributes({ lowerPaddingTMobile: newValue })
-                            }
-                        }
-                    }
-                    onChangePaddingRight={
-                        (device, newValue) => {
-                            if (device === "desktop") {
-                                setAttributes({ lowerPaddingR: newValue })
-                            } else if (device === "tablet") {
-                                setAttributes({ lowerPaddingRTablet: newValue })
-                            } else {
-                                setAttributes({ lowerPaddingRMobile: newValue })
-                            }
-                        }
-                    }
-                    onChangePaddingBottom={
-                        (device, newValue) => {
-                            if (device === "desktop") {
-                                setAttributes({ lowerPaddingB: newValue })
-                            } else if (device === "tablet") {
-                                setAttributes({ lowerPaddingBTablet: newValue })
-                            } else {
-                                setAttributes({ lowerPaddingBMobile: newValue })
-                            }
-                        }
-                    }
-                    onChangePaddingLeft={
-                        (device, newValue) => {
-                            if (device === "desktop") {
-                                setAttributes({ lowerPaddingL: newValue })
-                            } else if (device === "tablet") {
-                                setAttributes({ lowerPaddingLTablet: newValue })
-                            } else {
-                                setAttributes({ lowerPaddingLMobile: newValue })
-                            }
-                        }
-                    }
-                />
+                <SpacingComponent value={lowerPadding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ lowerPadding: value })} />
             </PanelBody>}
             <PanelBody
                 title={__("Modal Body", 'premium-blocks-for-gutenberg')}
@@ -1301,123 +1077,8 @@ const Inspector = ({
                     onChangeVertical={newValue => saveModalStyles({ modalShadowVertical: newValue })}
                     onChangePosition={newValue => saveModalStyles({ modalShadowPosition: newValue })}
                 />
-                <PremiumResponsiveMargin
-                    directions={["all"]}
-                    marginTop={modalMarginT}
-                    marginRight={modalMarginR}
-                    marginBottom={modalMarginB}
-                    marginLeft={modalMarginL}
-                    marginTopTablet={modalMarginTTablet}
-                    marginRightTablet={modalMarginRTablet}
-                    marginBottomTablet={modalMarginBTablet}
-                    marginLeftTablet={modalMarginLTablet}
-                    marginTopMobile={modalMarginTMobile}
-                    marginRightMobile={modalMarginRMobile}
-                    marginBottomMobile={modalMarginBMobile}
-                    marginLeftMobile={modalMarginLMobile}
-                    onChangeMarginTop={
-                        (device, newValue) => {
-                            if (device === "desktop") {
-                                setAttributes({ modalMarginT: newValue })
-                            } else if (device === "tablet") {
-                                setAttributes({ modalMarginTTablet: newValue })
-                            } else {
-                                setAttributes({ modalMarginTMobile: newValue })
-                            }
-                        }
-                    }
-                    onChangeMarginRight={
-                        (device, newValue) => {
-                            if (device === "desktop") {
-                                setAttributes({ modalMarginR: newValue })
-                            } else if (device === "tablet") {
-                                setAttributes({ modalMarginRTablet: newValue })
-                            } else {
-                                setAttributes({ modalMarginRMobile: newValue })
-                            }
-                        }
-                    }
-                    onChangeMarginBottom={
-                        (device, newValue) => {
-                            if (device === "desktop") {
-                                setAttributes({ modalMarginB: newValue })
-                            } else if (device === "tablet") {
-                                setAttributes({ modalMarginBTablet: newValue })
-                            } else {
-                                setAttributes({ modalMarginBMobile: newValue })
-                            }
-                        }
-                    }
-                    onChangeMarginLeft={
-                        (device, newValue) => {
-                            if (device === "desktop") {
-                                setAttributes({ modalMarginL: newValue })
-                            } else if (device === "tablet") {
-                                setAttributes({ modalMarginLTablet: newValue })
-                            } else {
-                                setAttributes({ modalMarginLMobile: newValue })
-                            }
-                        }
-                    }
-                />
-                <PremiumResponsivePadding
-                    paddingT={modalPaddingT}
-                    paddingR={modalPaddingR}
-                    paddingB={modalPaddingB}
-                    paddingL={modalPaddingL}
-                    paddingTTablet={modalPaddingTTablet}
-                    paddingRTablet={modalPaddingRTablet}
-                    paddingBTablet={modalPaddingBTablet}
-                    paddingLTablet={modalPaddingLTablet}
-                    paddingTMobile={modalPaddingTMobile}
-                    paddingRMobile={modalPaddingRMobile}
-                    paddingBMobile={modalPaddingBMobile}
-                    paddingLMobile={modalPaddingLMobile}
-                    onChangePaddingTop={
-                        (device, newValue) => {
-                            if (device === "desktop") {
-                                setAttributes({ modalPaddingT: newValue })
-                            } else if (device === "tablet") {
-                                setAttributes({ modalPaddingTTablet: newValue })
-                            } else {
-                                setAttributes({ modalPaddingTMobile: newValue })
-                            }
-                        }
-                    }
-                    onChangePaddingRight={
-                        (device, newValue) => {
-                            if (device === "desktop") {
-                                setAttributes({ modalPaddingR: newValue })
-                            } else if (device === "tablet") {
-                                setAttributes({ modalPaddingRTablet: newValue })
-                            } else {
-                                setAttributes({ modalPaddingRMobile: newValue })
-                            }
-                        }
-                    }
-                    onChangePaddingBottom={
-                        (device, newValue) => {
-                            if (device === "desktop") {
-                                setAttributes({ modalPaddingB: newValue })
-                            } else if (device === "tablet") {
-                                setAttributes({ modalPaddingBTablet: newValue })
-                            } else {
-                                setAttributes({ modalPaddingBMobile: newValue })
-                            }
-                        }
-                    }
-                    onChangePaddingLeft={
-                        (device, newValue) => {
-                            if (device === "desktop") {
-                                setAttributes({ modalPaddingL: newValue })
-                            } else if (device === "tablet") {
-                                setAttributes({ modalPaddingLTablet: newValue })
-                            } else {
-                                setAttributes({ modalPaddingLMobile: newValue })
-                            }
-                        }
-                    }
-                />
+                <SpacingComponent value={modalMargin} responsive={true} showUnits={true} label={__("Margin")} onChange={(value) => setAttributes({ modalMargin: value })} />
+                <SpacingComponent value={modalPadding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ modalPadding: value })} />
             </PanelBody>
         </InspectorControls >
     )

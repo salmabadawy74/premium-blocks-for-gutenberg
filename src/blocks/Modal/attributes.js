@@ -127,42 +127,6 @@ const attributes = {
     triggerBorderLeftH: {
         type: 'number'
     },
-    triggerPaddingT: {
-        type: 'number'
-    },
-    triggerPaddingR: {
-        type: 'number'
-    },
-    triggerPaddingB: {
-        type: 'number'
-    },
-    triggerPaddingL: {
-        type: 'number'
-    },
-    triggerPaddingTTablet: {
-        type: 'number'
-    },
-    triggerPaddingRTablet: {
-        type: 'number'
-    },
-    triggerPaddingBTablet: {
-        type: 'number'
-    },
-    triggerPaddingLTablet: {
-        type: 'number'
-    },
-    triggerPaddingTMobile: {
-        type: 'number'
-    },
-    triggerPaddingRMobile: {
-        type: 'number'
-    },
-    triggerPaddingBMobile: {
-        type: 'number'
-    },
-    triggerPaddingLMobile: {
-        type: 'number'
-    },
     headerStyles: {
         type: 'array',
         default: [
@@ -222,42 +186,6 @@ const attributes = {
     upperBorderLeft: {
         type: 'number'
     },
-    upperPaddingT: {
-        type: 'number'
-    },
-    upperPaddingR: {
-        type: 'number'
-    },
-    upperPaddingB: {
-        type: 'number'
-    },
-    upperPaddingL: {
-        type: 'number'
-    },
-    upperPaddingTTablet: {
-        type: 'number'
-    },
-    upperPaddingRTablet: {
-        type: 'number'
-    },
-    upperPaddingBTablet: {
-        type: 'number'
-    },
-    upperPaddingLTablet: {
-        type: 'number'
-    },
-    upperPaddingTMobile: {
-        type: 'number'
-    },
-    upperPaddingRMobile: {
-        type: 'number'
-    },
-    upperPaddingBMobile: {
-        type: 'number'
-    },
-    upperPaddingLMobile: {
-        type: 'number'
-    },
     lowerStyles: {
         type: 'array',
         default: [
@@ -289,42 +217,6 @@ const attributes = {
         type: 'number'
     },
     lowerBorderLeft: {
-        type: 'number'
-    },
-    lowerPaddingT: {
-        type: 'number'
-    },
-    lowerPaddingR: {
-        type: 'number'
-    },
-    lowerPaddingB: {
-        type: 'number'
-    },
-    lowerPaddingL: {
-        type: 'number'
-    },
-    lowerPaddingTTablet: {
-        type: 'number'
-    },
-    lowerPaddingRTablet: {
-        type: 'number'
-    },
-    lowerPaddingBTablet: {
-        type: 'number'
-    },
-    lowerPaddingLTablet: {
-        type: 'number'
-    },
-    lowerPaddingTMobile: {
-        type: 'number'
-    },
-    lowerPaddingRMobile: {
-        type: 'number'
-    },
-    lowerPaddingBMobile: {
-        type: 'number'
-    },
-    lowerPaddingLMobile: {
         type: 'number'
     },
     modalStyles: {
@@ -393,78 +285,126 @@ const attributes = {
     modalBorderLeft: {
         type: 'number'
     },
-    modalMarginT: {
-        type: 'number'
+    triggerPadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
     },
-    modalMarginR: {
-        type: 'number'
+    upperPadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
     },
-    modalMarginB: {
-        type: 'number'
+    lowerPadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
     },
-    modalMarginL: {
-        type: 'number'
+    modalPadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
     },
-    modalMarginTTablet: {
-        type: 'number'
-    },
-    modalMarginRTablet: {
-        type: 'number'
-    },
-    modalMarginBTablet: {
-        type: 'number'
-    },
-    modalMarginLTablet: {
-        type: 'number'
-    },
-    modalMarginTMobile: {
-        type: 'number'
-    },
-    modalMarginRMobile: {
-        type: 'number'
-    },
-    modalMarginBMobile: {
-        type: 'number'
-    },
-    modalMarginLMobile: {
-        type: 'number'
-    },
-    modalPaddingT: {
-        type: 'number'
-    },
-    modalPaddingR: {
-        type: 'number'
-    },
-    modalPaddingB: {
-        type: 'number'
-    },
-    modalPaddingL: {
-        type: 'number'
-    },
-    modalPaddingTTablet: {
-        type: 'number'
-    },
-    modalPaddingRTablet: {
-        type: 'number'
-    },
-    modalPaddingBTablet: {
-        type: 'number'
-    },
-    modalPaddingLTablet: {
-        type: 'number'
-    },
-    modalPaddingTMobile: {
-        type: 'number'
-    },
-    modalPaddingRMobile: {
-        type: 'number'
-    },
-    modalPaddingBMobile: {
-        type: 'number'
-    },
-    modalPaddingLMobile: {
-        type: 'number'
-    },
+    modalMargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    }
 
 }
 export default attributes;

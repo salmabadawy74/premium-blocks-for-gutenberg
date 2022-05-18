@@ -11,8 +11,6 @@ import ResponsiveSingleRangeControl from "../../components/RangeControl/single-r
 import PremiumMediaUpload from '../../components/premium-media-upload';
 import Lottie from 'react-lottie-with-segments';
 import SpacingComponent from '../../components/premium-responsive-spacing';
-import PremiumResponsiveMargin from "../../components/Premium-Responsive-Margin";
-import PremiumResponsivePadding from "../../components/Premium-Responsive-Padding";
 
 const { __ } = wp.i18n
 
