@@ -262,34 +262,6 @@ const attributes = {
             }
         ]
     },
-    btnBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    btnBorderTop: {
-        type: "number"
-    },
-    btnBorderRight: {
-        type: "number"
-    },
-    btnBorderBottom: {
-        type: "number"
-    },
-    btnBorderLeft: {
-        type: "number"
-    },
-    borderTop: {
-        type: "number"
-    },
-    borderRight: {
-        type: "number"
-    },
-    borderBottom: {
-        type: "number"
-    },
-    borderLeft: {
-        type: "number"
-    },
     containerMargin: {
         type: "object",
         default: {
@@ -410,5 +382,99 @@ const attributes = {
             unit: "px"
         }
     },
+    btnBorder: {
+        type: "object",
+        default: {
+            borderColor: "",
+            borderType: "none",
+            borderRadius: {
+                Desktop: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Tablet: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Mobile: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                }
+            },
+            borderWidth: {
+                Desktop: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Tablet: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Mobile: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                }
+            }
+        }
+    },
+    containerBorder: {
+        type: "object",
+        default: {
+            borderColor: "",
+            borderType: "none",
+            borderRadius: {
+                Desktop: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Tablet: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Mobile: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                }
+            },
+            borderWidth: {
+                Desktop: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Tablet: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Mobile: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                }
+            }
+        }
+    }
 }
 export default attributes;

@@ -41,14 +41,8 @@ const save = props => {
         descStyles,
         btnStyles,
         containerStyles,
-        btnBorderTop,
-        btnBorderRight,
-        btnBorderBottom,
-        btnBorderLeft,
-        borderTop,
-        borderRight,
-        borderBottom,
-        borderLeft,
+        btnBorder,
+        containerBorder
     } = props.attributes;
 
     const mainClasses = classnames(className, 'premium-icon-box');
@@ -83,12 +77,8 @@ const save = props => {
                 className={`premium-icon-box-container`}
                 style={{
                     textAlign: align,
-                    borderStyle: containerStyles[0].borderType,
-                    borderWidth: borderIconBox
-                        ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
-                        : containerStyles[0].borderWidth + "px",
-                    borderRadius: containerStyles[0].borderRadius + "px",
-                    borderColor: containerStyles[0].borderColor,
+                    borderStyle: containerBorder.borderType,
+                    borderColor: containerBorder.borderColor,
                     boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px ${containerStyles[0].shadowColor} ${containerStyles[0].shadowPosition}`,
                     backgroundColor: containerStyles[0].backColor,
                     backgroundImage: containerStyles[0].imageURL ? `url('${containerStyles[0].imageURL}')` : 'none',
@@ -183,12 +173,8 @@ const save = props => {
                                     textTransform: btnStyles[0].btnUpper ? "uppercase" : "none",
                                     fontStyle: btnStyles[0].btnStyle,
                                     fontWeight: btnStyles[0].btnWeight,
-                                    borderStyle: btnStyles[0].btnBorderType,
-                                    borderWidth: btnBorderIconBox
-                                        ? `${btnBorderTop}px ${btnBorderRight}px ${btnBorderBottom}px ${btnBorderLeft}px`
-                                        : btnStyles[0].btnBorderWidth + "px",
-                                    borderRadius: btnStyles[0].btnBorderRadius + "px",
-                                    borderColor: btnStyles[0].btnBorderColor,
+                                    borderStyle: btnBorder.borderType,
+                                    borderColor: btnBorder.borderColor,
                                     padding: btnStyles[0].btnPadding + btnStyles[0].btnPaddingU,
                                     boxShadow: `${btnStyles[0].btnShadowHorizontal}px ${btnStyles[0].btnShadowVertical}px ${btnStyles[0].btnShadowBlur}px ${btnStyles[0].btnShadowColor} ${btnStyles[0].btnShadowPosition}`
                                 }}

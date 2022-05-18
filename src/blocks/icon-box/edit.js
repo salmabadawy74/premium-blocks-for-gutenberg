@@ -124,21 +124,14 @@ class edit extends Component {
             descStyles,
             btnStyles,
             containerStyles,
-            btnBorderWidth,
-            btnBorderTop,
-            btnBorderRight,
-            btnBorderBottom,
-            btnBorderLeft,
-            borderTop,
-            borderRight,
-            borderBottom,
-            borderLeft,
             iconType,
             containerPadding,
             containerMargin,
             btnMargin,
             descMargin,
-            titleMargin
+            titleMargin,
+            btnBorder,
+            containerBorder
         } = attributes;
 
         const imgIcon = [
@@ -300,6 +293,22 @@ class edit extends Component {
         const btnMarginRight = this.getPreviewSize(this.props.deviceType, btnMargin.Desktop.right, btnMargin.Tablet.right, btnMargin.Mobile.right);
         const btnMarginBottom = this.getPreviewSize(this.props.deviceType, btnMargin.Desktop.bottom, btnMargin.Tablet.bottom, btnMargin.Mobile.bottom);
         const btnMarginLeft = this.getPreviewSize(this.props.deviceType, btnMargin.Desktop.left, btnMargin.Tablet.left, btnMargin.Mobile.left);
+        const BtnBorderWidthTop = this.getPreviewSize(this.props.deviceType, btnBorder.borderWidth.Desktop.top, btnBorder.borderWidth.Tablet.top, btnBorder.borderWidth.Mobile.top);
+        const BtnBorderWidthRight = this.getPreviewSize(this.props.deviceType, btnBorder.borderWidth.Desktop.right, btnBorder.borderWidth.Tablet.right, btnBorder.borderWidth.Mobile.right);
+        const BtnBorderWidthBottom = this.getPreviewSize(this.props.deviceType, btnBorder.borderWidth.Desktop.bottom, btnBorder.borderWidth.Tablet.bottom, btnBorder.borderWidth.Mobile.bottom);
+        const BtnBorderWidthLeft = this.getPreviewSize(this.props.deviceType, btnBorder.borderWidth.Desktop.left, btnBorder.borderWidth.Tablet.left, btnBorder.borderWidth.Mobile.left);
+        const BtnBorderRadiusTop = this.getPreviewSize(this.props.deviceType, btnBorder.borderRadius.Desktop.top, btnBorder.borderRadius.Tablet.top, btnBorder.borderRadius.Mobile.top);
+        const BtnBorderRadiusRight = this.getPreviewSize(this.props.deviceType, btnBorder.borderRadius.Desktop.right, btnBorder.borderRadius.Tablet.right, btnBorder.borderRadius.Mobile.right);
+        const BtnBorderRadiusBottom = this.getPreviewSize(this.props.deviceType, btnBorder.borderRadius.Desktop.bottom, btnBorder.borderRadius.Tablet.bottom, btnBorder.borderRadius.Mobile.bottom);
+        const BtnBorderRadiusLeft = this.getPreviewSize(this.props.deviceType, btnBorder.borderRadius.Desktop.left, btnBorder.borderRadius.Tablet.left, btnBorder.borderRadius.Mobile.left);
+        const ContainerBorderWidthTop = this.getPreviewSize(this.props.deviceType, containerBorder.borderWidth.Desktop.top, containerBorder.borderWidth.Tablet.top, containerBorder.borderWidth.Mobile.top);
+        const ContainerBorderWidthRight = this.getPreviewSize(this.props.deviceType, containerBorder.borderWidth.Desktop.right, containerBorder.borderWidth.Tablet.right, containerBorder.borderWidth.Mobile.right);
+        const ContainerBorderWidthBottom = this.getPreviewSize(this.props.deviceType, containerBorder.borderWidth.Desktop.bottom, containerBorder.borderWidth.Tablet.bottom, containerBorder.borderWidth.Mobile.bottom);
+        const ContainerBorderWidthLeft = this.getPreviewSize(this.props.deviceType, containerBorder.borderWidth.Desktop.left, containerBorder.borderWidth.Tablet.left, containerBorder.borderWidth.Mobile.left);
+        const ContainerBorderRadiusTop = this.getPreviewSize(this.props.deviceType, containerBorder.borderRadius.Desktop.top, containerBorder.borderRadius.Tablet.top, containerBorder.borderRadius.Mobile.top);
+        const ContainerBorderRadiusRight = this.getPreviewSize(this.props.deviceType, containerBorder.borderRadius.Desktop.right, containerBorder.borderRadius.Tablet.right, containerBorder.borderRadius.Mobile.right);
+        const ContainerBorderRadiusBottom = this.getPreviewSize(this.props.deviceType, containerBorder.borderRadius.Desktop.bottom, containerBorder.borderRadius.Tablet.bottom, containerBorder.borderRadius.Mobile.bottom);
+        const ContainerBorderRadiusLeft = this.getPreviewSize(this.props.deviceType, containerBorder.borderRadius.Desktop.left, containerBorder.borderRadius.Tablet.left, containerBorder.borderRadius.Mobile.left);
 
         return [
             isSelected && (
@@ -581,26 +590,9 @@ class edit extends Component {
                                 onChangeMobileSize={newSize => saveButtonStyle({ btnSizeMobile: newSize })}
                             />
                             <PremiumBorder
-                                borderType={btnStyles[0].btnBorderType}
-                                borderWidth={btnBorderWidth}
-                                top={btnBorderTop}
-                                right={btnBorderRight}
-                                bottom={btnBorderBottom}
-                                left={btnBorderLeft}
-                                borderColor={btnStyles[0].btnBorderColor}
-                                borderRadius={btnStyles[0].btnBorderRadius}
-                                onChangeType={(newType) => saveButtonStyle({ btnBorderType: newType })}
-                                onChangeWidth={({ top, right, bottom, left }) =>
-                                    setAttributes({
-                                        btnBorderIconBox: true,
-                                        btnBorderTop: top,
-                                        btnBorderRight: right,
-                                        btnBorderBottom: bottom,
-                                        btnBorderLeft: left,
-                                    })
-                                }
-                                onChangeColor={(colorValue) => saveButtonStyle({ btnBorderColor: colorValue })}
-                                onChangeRadius={(newrRadius) => saveButtonStyle({ btnBorderRadius: newrRadius })}
+                                label={__('Border', 'premium-blocks-for-gutenberg')}
+                                value={btnBorder}
+                                onChange={(value) => setAttributes({ btnBorder: value })}
                             />
                             <PremiumShadow
                                 label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
@@ -660,26 +652,9 @@ class edit extends Component {
                             onChangeFixed={check => saveContainerStyle({ fixed: check })}
                         />
                         <PremiumBorder
-                            borderType={containerStyles[0].borderType}
-                            borderWidth={containerStyles[0].borderWidth}
-                            top={borderTop}
-                            right={borderRight}
-                            bottom={borderBottom}
-                            left={borderLeft}
-                            borderColor={containerStyles[0].borderColor}
-                            borderRadius={containerStyles[0].borderRadius}
-                            onChangeType={(newType) => saveContainerStyle({ borderType: newType })}
-                            onChangeWidth={({ top, right, bottom, left }) =>
-                                setAttributes({
-                                    borderIconBox: true,
-                                    borderTop: top,
-                                    borderRight: right,
-                                    borderBottom: bottom,
-                                    borderLeft: left,
-                                })
-                            }
-                            onChangeColor={(colorValue) => saveContainerStyle({ borderColor: colorValue })}
-                            onChangeRadius={(newrRadius) => saveContainerStyle({ borderRadius: newrRadius })}
+                            label={__('Border', 'premium-blocks-for-gutenberg')}
+                            value={containerBorder}
+                            onChange={(value) => setAttributes({ containerBorder: value })}
                         />
                         <PremiumShadow
                             label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
@@ -860,12 +835,16 @@ class edit extends Component {
                 className={`${mainClasses} premium-icon-box-${iconPos} premium-icon-box-${iconHPos} premium-icon-box-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
                 style={{
                     textAlign: align,
-                    borderStyle: containerStyles[0].borderType,
-                    borderWidth: borderIconBox
-                        ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
-                        : containerStyles[0].borderWidth + "px",
-                    borderRadius: containerStyles[0].borderRadius + "px",
-                    borderColor: containerStyles[0].borderColor,
+                    borderStyle: containerBorder.borderType,
+                    borderTopWidth: ContainerBorderWidthTop && ContainerBorderWidthTop + "px",
+                    borderRightWidth: ContainerBorderWidthRight && ContainerBorderWidthRight + "px",
+                    borderBottomWidth: ContainerBorderWidthBottom && ContainerBorderWidthBottom + "px",
+                    borderLeftWidth: ContainerBorderWidthLeft && ContainerBorderWidthLeft + "px",
+                    borderBottomLeftRadius: ContainerBorderRadiusLeft && ContainerBorderRadiusLeft + "px",
+                    borderTopLeftRadius: ContainerBorderRadiusTop && ContainerBorderRadiusTop + "px",
+                    borderTopRightRadius: ContainerBorderRadiusRight && ContainerBorderRadiusRight + "px",
+                    borderBottomRightRadius: ContainerBorderRadiusBottom && ContainerBorderRadiusBottom + "px",
+                    borderColor: containerBorder.borderColor,
                     marginTop: containerMarginTop,
                     marginRight: containerMarginRight,
                     marginBottom: containerMarginBottom,
@@ -1025,12 +1004,16 @@ class edit extends Component {
                                     textTransform: btnStyles[0].btnUpper ? "uppercase" : "none",
                                     fontStyle: btnStyles[0].btnStyle,
                                     fontWeight: btnStyles[0].btnWeight,
-                                    borderStyle: btnStyles[0].btnBorderType,
-                                    borderWidth: btnBorderIconBox
-                                        ? `${btnBorderTop}px ${btnBorderRight}px ${btnBorderBottom}px ${btnBorderLeft}px`
-                                        : btnStyles[0].btnBorderWidth + "px",
-                                    borderRadius: btnStyles[0].btnBorderRadius + "px",
-                                    borderColor: btnStyles[0].btnBorderColor,
+                                    borderStyle: btnBorder.borderType,
+                                    borderTopWidth: BtnBorderWidthTop && BtnBorderWidthTop + "px",
+                                    borderRightWidth: BtnBorderWidthRight && BtnBorderWidthRight + "px",
+                                    borderBottomWidth: BtnBorderWidthBottom && BtnBorderWidthBottom + "px",
+                                    borderLeftWidth: BtnBorderWidthLeft && BtnBorderWidthLeft + "px",
+                                    borderBottomLeftRadius: BtnBorderRadiusLeft && BtnBorderRadiusLeft + "px",
+                                    borderTopLeftRadius: BtnBorderRadiusTop && BtnBorderRadiusTop + "px",
+                                    borderTopRightRadius: BtnBorderRadiusRight && BtnBorderRadiusRight + "px",
+                                    borderBottomRightRadius: BtnBorderRadiusBottom && BtnBorderRadiusBottom + "px",
+                                    borderColor: btnBorder.borderColor,
                                     padding: btnStyles[0].btnPadding && btnStyles[0].btnPadding + (btnStyles[0].btnPaddingU ? btnStyles[0].btnPaddingU : 'px'),
                                     boxShadow: `${btnStyles[0].btnShadowHorizontal}px ${btnStyles[0].btnShadowVertical}px ${btnStyles[0].btnShadowBlur}px ${btnStyles[0].btnShadowColor} ${btnStyles[0].btnShadowPosition}`
                                 }}
