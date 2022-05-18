@@ -54,27 +54,27 @@ function get_breadcrumbs_css( $attributes, $unique_id ) {
 			$padding = $spacing['padding'];
 			error_log( wp_json_encode( $spacing['padding'] ) );
 			$css->set_selector( '#' . $unique_id . ' > .premium-breadcrumb-trail' );
-			$css->add_property( 'padding-top', $css->render_color( $padding['desktop']['top'] . 'px' ) );
-			$css->add_property( 'padding-right', $css->render_color( $padding['desktop']['right'] . 'px' ) );
-			$css->add_property( 'padding-bottom', $css->render_color( $padding['desktop']['bottom'] . 'px' ) );
-			$css->add_property( 'padding-left', $css->render_color( $padding['desktop']['left'] . 'px' ) );
+			$css->add_property( 'padding-top', $css->render_color( $padding['Desktop']['top'] . 'px' ) );
+			$css->add_property( 'padding-right', $css->render_color( $padding['Desktop']['right'] . 'px' ) );
+			$css->add_property( 'padding-bottom', $css->render_color( $padding['Desktop']['bottom'] . 'px' ) );
+			$css->add_property( 'padding-left', $css->render_color( $padding['Desktop']['left'] . 'px' ) );
 		}
 		if ( $spacing['margin'] ) {
 			$margin = $spacing['margin'];
 			$css->set_selector( '#' . $unique_id . ' > .premium-breadcrumb-trail' );
-			$css->add_property( 'margin-top', $css->render_color( $margin['desktop']['top'] . 'px' ) );
-			$css->add_property( 'margin-right', $css->render_color( $margin['desktop']['right'] . 'px' . '!important' ) );
-			$css->add_property( 'margin-bottom', $css->render_color( $margin['desktop']['bottom'] . 'px' ) );
-			$css->add_property( 'margin-left', $css->render_color( $margin['desktop']['left'] . 'px' . '!important' ) );
+			$css->add_property( 'margin-top', $css->render_color( $margin['Desktop']['top'] . 'px' ) );
+			$css->add_property( 'margin-right', $css->render_color( $margin['Desktop']['right'] . 'px' . '!important' ) );
+			$css->add_property( 'margin-bottom', $css->render_color( $margin['Desktop']['bottom'] . 'px' ) );
+			$css->add_property( 'margin-left', $css->render_color( $margin['Desktop']['left'] . 'px' . '!important' ) );
 		}
 
 		if ( $spacing['itemPadding'] ) {
 			$item_padding = $spacing['itemPadding'];
 			$css->set_selector( '#' . $unique_id . '.pbg-breadcrumbs-advanced .premium-breadcrumb-trail li > *' );
-			$css->add_property( 'padding-top', $css->render_color( $item_padding['desktop']['top'] . 'px' ) );
-			$css->add_property( 'padding-right', $css->render_color( $item_padding['desktop']['right'] . 'px' ) );
-			$css->add_property( 'padding-bottom', $css->render_color( $item_padding['desktop']['bottom'] . 'px' ) );
-			$css->add_property( 'padding-left', $css->render_color( $item_padding['desktop']['left'] . 'px' ) );
+			$css->add_property( 'padding-top', $css->render_color( $item_padding['Desktop']['top'] . 'px' ) );
+			$css->add_property( 'padding-right', $css->render_color( $item_padding['Desktop']['right'] . 'px' ) );
+			$css->add_property( 'padding-bottom', $css->render_color( $item_padding['Desktop']['bottom'] . 'px' ) );
+			$css->add_property( 'padding-left', $css->render_color( $item_padding['Desktop']['left'] . 'px' ) );
 		}
 
 		$css->start_media_query( $media_query['tablet'] );
@@ -88,28 +88,28 @@ function get_breadcrumbs_css( $attributes, $unique_id ) {
 		if ( $spacing['padding'] ) {
 			$padding = $spacing['padding'];
 			$css->set_selector( '#' . $unique_id . ' > .premium-breadcrumb-trail' );
-			$css->add_property( 'padding-top', $css->render_color( $padding['tablet']['top'] . 'px' ) );
-			$css->add_property( 'padding-right', $css->render_color( $padding['tablet']['right'] . 'px' ) );
-			$css->add_property( 'padding-bottom', $css->render_color( $padding['tablet']['bottom'] . 'px' ) );
-			$css->add_property( 'padding-left', $css->render_color( $padding['tablet']['left'] . 'px' ) );
+			$css->add_property( 'padding-top', $css->render_color( $padding['Tablet']['top'] . 'px' ) );
+			$css->add_property( 'padding-right', $css->render_color( $padding['Tablet']['right'] . 'px' ) );
+			$css->add_property( 'padding-bottom', $css->render_color( $padding['Tablet']['bottom'] . 'px' ) );
+			$css->add_property( 'padding-left', $css->render_color( $padding['Tablet']['left'] . 'px' ) );
 		}
 
 		if ( $spacing['margin'] ) {
 			$margin = $spacing['margin'];
 			$css->set_selector( '#' . $unique_id . ' > .premium-breadcrumb-trail' );
-			$css->add_property( 'margin-top', $css->render_color( $margin['tablet']['top'] . 'px' ) );
-			$css->add_property( 'margin-right', $css->render_color( $margin['tablet']['right'] . 'px' ) );
-			$css->add_property( 'margin-bottom', $css->render_color( $margin['tablet']['bottom'] . 'px' ) );
-			$css->add_property( 'margin-left', $css->render_color( $margin['tablet']['left'] . 'px' ) );
+			$css->add_property( 'margin-top', $css->render_color( $margin['Tablet']['top'] . 'px' ) );
+			$css->add_property( 'margin-right', $css->render_color( $margin['Tablet']['right'] . 'px' ) );
+			$css->add_property( 'margin-bottom', $css->render_color( $margin['Tablet']['bottom'] . 'px' ) );
+			$css->add_property( 'margin-left', $css->render_color( $margin['Tablet']['left'] . 'px' ) );
 		}
 
 		if ( $spacing['itemPadding'] ) {
 			$item_padding = $spacing['itemPadding'];
 			$css->set_selector( '#' . $unique_id . '.pbg-breadcrumbs-advanced .premium-breadcrumb-trail li > *' );
-			$css->add_property( 'padding-top', $css->render_color( $item_padding['tablet']['top'] . 'px' ) );
-			$css->add_property( 'padding-right', $css->render_color( $item_padding['tablet']['right'] . 'px' ) );
-			$css->add_property( 'padding-bottom', $css->render_color( $item_padding['tablet']['bottom'] . 'px' ) );
-			$css->add_property( 'padding-left', $css->render_color( $item_padding['tablet']['left'] . 'px' ) );
+			$css->add_property( 'padding-top', $css->render_color( $item_padding['Tablet']['top'] . 'px' ) );
+			$css->add_property( 'padding-right', $css->render_color( $item_padding['Tablet']['right'] . 'px' ) );
+			$css->add_property( 'padding-bottom', $css->render_color( $item_padding['Tablet']['bottom'] . 'px' ) );
+			$css->add_property( 'padding-left', $css->render_color( $item_padding['Tablet']['left'] . 'px' ) );
 		}
 
 		$css->stop_media_query();
@@ -124,28 +124,28 @@ function get_breadcrumbs_css( $attributes, $unique_id ) {
 		if ( $spacing['padding'] ) {
 			$padding = $spacing['padding'];
 			$css->set_selector( '#' . $unique_id . ' > .premium-breadcrumb-trail' );
-			$css->add_property( 'padding-top', $css->render_color( $padding['mobile']['top'] . 'px' ) );
-			$css->add_property( 'padding-right', $css->render_color( $padding['mobile']['right'] . 'px' ) );
-			$css->add_property( 'padding-bottom', $css->render_color( $padding['mobile']['bottom'] . 'px' ) );
-			$css->add_property( 'padding-left', $css->render_color( $padding['mobile']['left'] . 'px' ) );
+			$css->add_property( 'padding-top', $css->render_color( $padding['Mobile']['top'] . 'px' ) );
+			$css->add_property( 'padding-right', $css->render_color( $padding['Mobile']['right'] . 'px' ) );
+			$css->add_property( 'padding-bottom', $css->render_color( $padding['Mobile']['bottom'] . 'px' ) );
+			$css->add_property( 'padding-left', $css->render_color( $padding['Mobile']['left'] . 'px' ) );
 		}
 
 		if ( $spacing['margin'] ) {
 			$margin = $spacing['margin'];
 			$css->set_selector( '#' . $unique_id . ' > .premium-breadcrumb-trail' );
-			$css->add_property( 'margin-top', $css->render_color( $margin['mobile']['top'] . 'px' ) );
-			$css->add_property( 'margin-right', $css->render_color( $margin['mobile']['right'] . 'px' ) );
-			$css->add_property( 'margin-bottom', $css->render_color( $margin['mobile']['bottom'] . 'px' ) );
-			$css->add_property( 'margin-left', $css->render_color( $margin['mobile']['left'] . 'px' ) );
+			$css->add_property( 'margin-top', $css->render_color( $margin['Mobile']['top'] . 'px' ) );
+			$css->add_property( 'margin-right', $css->render_color( $margin['Mobile']['right'] . 'px' ) );
+			$css->add_property( 'margin-bottom', $css->render_color( $margin['Mobile']['bottom'] . 'px' ) );
+			$css->add_property( 'margin-left', $css->render_color( $margin['Mobile']['left'] . 'px' ) );
 		}
 
 		if ( $spacing['itemPadding'] ) {
 			$item_padding = $spacing['itemPadding'];
 			$css->set_selector( '#' . $unique_id . '.pbg-breadcrumbs-advanced .premium-breadcrumb-trail li > *' );
-			$css->add_property( 'padding-top', $css->render_color( $item_padding['mobile']['top'] . 'px' ) );
-			$css->add_property( 'padding-right', $css->render_color( $item_padding['mobile']['right'] . 'px' ) );
-			$css->add_property( 'padding-bottom', $css->render_color( $item_padding['mobile']['bottom'] . 'px' ) );
-			$css->add_property( 'padding-left', $css->render_color( $item_padding['mobile']['left'] . 'px' ) );
+			$css->add_property( 'padding-top', $css->render_color( $item_padding['Mobile']['top'] . 'px' ) );
+			$css->add_property( 'padding-right', $css->render_color( $item_padding['Mobile']['right'] . 'px' ) );
+			$css->add_property( 'padding-bottom', $css->render_color( $item_padding['Mobile']['bottom'] . 'px' ) );
+			$css->add_property( 'padding-left', $css->render_color( $item_padding['Mobile']['left'] . 'px' ) );
 		}
 
 		$css->stop_media_query();

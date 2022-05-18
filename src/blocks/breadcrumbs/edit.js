@@ -20,6 +20,7 @@ import { PanelBody, CustomSelectControl, TextControl, Dashicon, TabPanel } from 
  * Internal dependencies
  */
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
+import SpacingComponent from '../../components/premium-responsive-spacing';
 import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
 import PremiumResponsiveMargin from '../../components/Premium-Responsive-Margin';
 import PremiumTypo from "../../components/premium-typo"
@@ -56,26 +57,6 @@ export default function Edit({ attributes, setAttributes, context: { postType, p
         postType,
         term: selectedTerm,
     });
-    const defaultSpacingValue = {
-        desktop: {
-            top: '',
-            right: '',
-            bottom: '',
-            left: ''
-        },
-        tablet: {
-            top: '',
-            right: '',
-            bottom: '',
-            left: ''
-        },
-        mobile: {
-            top: '',
-            right: '',
-            bottom: '',
-            left: ''
-        }
-    };
     const defaultSize = {
         desktop: "",
         tablet: "",
@@ -84,9 +65,9 @@ export default function Edit({ attributes, setAttributes, context: { postType, p
     };
     const categoryName = hasPostTerms ? postTerms[0].name : __('Post Category');
     const { textAlign, colors, spacing, typography, breadcrumbsStyle } = attributes;
-    let margin = spacing.margin ? spacing.margin : defaultSpacingValue;
-    let padding = spacing.padding ? spacing.padding : defaultSpacingValue;
-    let itemPadding = spacing.itemPadding ? spacing.itemPadding : defaultSpacingValue;
+    let margin = spacing.margin ? spacing.margin : {};
+    let padding = spacing.padding ? spacing.padding : {};
+    let itemPadding = spacing.itemPadding ? spacing.itemPadding : {};
 
     const fontSize = typography.size ? typography.size : defaultSize;
     const blockProps = useBlockProps({
@@ -94,14 +75,14 @@ export default function Edit({ attributes, setAttributes, context: { postType, p
             [`has-text-align-${textAlign}`]: textAlign
         }),
         style: {
-            marginTop: `${margin.desktop.top}px`,
-            marginRight: `${margin.desktop.right}px`,
-            marginBottom: `${margin.desktop.bottom}px`,
-            marginLeft: `${margin.desktop.left}px`,
-            paddingTop: `${padding.desktop.top}px`,
-            paddingRight: `${padding.desktop.right}px`,
-            paddingBottom: `${padding.desktop.bottom}px`,
-            paddingLeft: `${padding.desktop.left}px`,
+            marginTop: `${margin?.Desktop?.top}${margin?.unit}`,
+            marginRight: `${margin?.Desktop?.right}${margin?.unit}`,
+            marginBottom: `${margin?.Desktop?.bottom}${margin?.unit}`,
+            marginLeft: `${margin?.Desktop?.left}${margin?.unit}`,
+            paddingTop: `${padding?.Desktop?.top}${padding?.unit}`,
+            paddingRight: `${padding?.Desktop?.right}${padding?.unit}`,
+            paddingBottom: `${padding?.Desktop?.bottom}${padding?.unit}`,
+            paddingLeft: `${padding?.Desktop?.left}${padding?.unit}`,
             color: colors.text,
             backgroundColor: colors.background,
             fontSize: `${fontSize.desktop}${fontSize.unit}`,
@@ -145,22 +126,9 @@ export default function Edit({ attributes, setAttributes, context: { postType, p
         setAttributes({ colors: newColors });
     }
 
-    const onChangeMargin = (side, value, device) => {
-        const newMargin = { ...margin };
-        newMargin[device][side] = value;
-        setAttributes({ spacing: { ...spacing, margin: newMargin } });
-    }
-
-    const onChangePadding = (side, value, device) => {
-        const newPadding = { ...padding };
-        newPadding[device][side] = value;
-        setAttributes({ spacing: { ...spacing, padding: newPadding } });
-    }
-
-    const onChangeItemPadding = (side, value, device) => {
-        const newPadding = { ...itemPadding };
-        newPadding[device][side] = value;
-        setAttributes({ spacing: { ...spacing, itemPadding: newPadding } });
+    const onChangeSpacing = (value) => {
+        const newSpacing = { ...spacing, ...value };
+        setAttributes({ spacing: newSpacing });
     }
 
     const onChangeFontSize = (value, device) => {
@@ -206,10 +174,10 @@ export default function Edit({ attributes, setAttributes, context: { postType, p
         `}`,
         `#${blockProps.id} .pbg-breadcrumbs-advanced .pbg-breadcrumbs-item > *{`,
         `background-color: var(--item-bg-color, hsla(34,85%,35%,1));`,
-        `padding-top: ${itemPadding.desktop.top};`,
-        `padding-right: ${itemPadding.desktop.right};`,
-        `padding-bottom: ${itemPadding.desktop.bottom};`,
-        `padding-left: ${itemPadding.desktop.left};`,
+        `padding-top: ${itemPadding?.Desktop?.top}${itemPadding?.unit};`,
+        `padding-right: ${itemPadding?.Desktop?.right}${itemPadding?.unit};`,
+        `padding-bottom: ${itemPadding?.Desktop?.bottom}${itemPadding?.unit};`,
+        `padding-left: ${itemPadding?.Desktop?.left}${itemPadding?.unit};`,
         `}`,
         `#${blockProps.id} .pbg-breadcrumbs-advanced .pbg-breadcrumbs-item::before {`,
         `content: " ";`,
@@ -384,119 +352,12 @@ export default function Edit({ attributes, setAttributes, context: { postType, p
                     title={__('Spacing', 'premium-blocks-for-gutenberg')}
                     initialOpen={false}
                 >
-                    <PremiumResponsiveMargin
-                        directions={["all"]}
-                        marginTop={margin.desktop.top}
-                        marginRight={margin.desktop.right}
-                        marginBottom={margin.desktop.bottom}
-                        marginLeft={margin.desktop.left}
-                        marginTopTablet={margin.tablet.top}
-                        marginRightTablet={margin.tablet.right}
-                        marginBottomTablet={margin.tablet.bottom}
-                        marginLeftTablet={margin.tablet.left}
-                        marginTopMobile={margin.mobile.top}
-                        marginRightMobile={margin.mobile.right}
-                        marginBottomMobile={margin.mobile.bottom}
-                        marginLeftMobile={margin.mobile.left}
-                        onChangeMarginTop={
-                            (device, newValue) => {
-                                onChangeMargin('top', newValue, device);
-                            }
-                        }
-                        onChangeMarginRight={
-                            (device, newValue) => {
-                                onChangeMargin('right', newValue, device);
-                            }
-                        }
-                        onChangeMarginBottom={
-                            (device, newValue) => {
-                                onChangeMargin('bottom', newValue, device);
-                            }
-                        }
-                        onChangeMarginLeft={
-                            (device, newValue) => {
-                                onChangeMargin('left', newValue, device);
-                            }
-                        }
-                    />
-                    <PremiumResponsivePadding
-                        directions={["all"]}
-                        marginTop={padding.desktop.top}
-                        paddingRight={padding.desktop.right}
-                        paddingBottom={padding.desktop.bottom}
-                        paddingLeft={padding.desktop.left}
-                        paddingTopTablet={padding.tablet.top}
-                        paddingRightTablet={padding.tablet.right}
-                        paddingBottomTablet={padding.tablet.bottom}
-                        paddingLeftTablet={padding.tablet.left}
-                        paddingTopMobile={padding.mobile.top}
-                        paddingRightMobile={padding.mobile.right}
-                        paddingBottomMobile={padding.mobile.bottom}
-                        paddingLeftMobile={padding.mobile.left}
-                        onChangePaddingTop={
-                            (device, newValue) => {
-                                onChangePadding('top', newValue, device);
-                            }
-                        }
-                        onChangePaddingRight={
-                            (device, newValue) => {
-                                onChangePadding('right', newValue, device);
-                            }
-                        }
-                        onChangePaddingBottom={
-                            (device, newValue) => {
-                                onChangePadding('bottom', newValue, device);
-                            }
-                        }
-                        onChangePaddingLeft={
-                            (device, newValue) => {
-                                onChangePadding('left', newValue, device);
-                            }
-                        }
-                    />
+                    <SpacingComponent value={margin} responsive={true} showUnits={true} label={__('Margin')} onChange={(value) => onChangeSpacing({ margin: value })} />
+                    <SpacingComponent value={padding} responsive={true} showUnits={true} label={__('Padding')} onChange={(value) => onChangeSpacing({ padding: value })} />
+                    {breadcrumbsStyle === 'advanced' && (
+                        <SpacingComponent value={itemPadding} responsive={true} showUnits={true} label={__('Item Padding')} onChange={(value) => onChangeSpacing({ itemPadding: value })} />
+                    )}
                 </PanelBody>
-                {breadcrumbsStyle === 'advanced' && (
-                    <PanelBody
-                        title={__('Item Spacing', 'premium-blocks-for-gutenberg')}
-                        initialOpen={false}
-                    >
-                        <PremiumResponsivePadding
-                            directions={["all"]}
-                            marginTop={itemPadding.desktop.top}
-                            paddingRight={itemPadding.desktop.right}
-                            paddingBottom={itemPadding.desktop.bottom}
-                            paddingLeft={itemPadding.desktop.left}
-                            paddingTopTablet={itemPadding.tablet.top}
-                            paddingRightTablet={itemPadding.tablet.right}
-                            paddingBottomTablet={itemPadding.tablet.bottom}
-                            paddingLeftTablet={itemPadding.tablet.left}
-                            paddingTopMobile={itemPadding.mobile.top}
-                            paddingRightMobile={itemPadding.mobile.right}
-                            paddingBottomMobile={itemPadding.mobile.bottom}
-                            paddingLeftMobile={itemPadding.mobile.left}
-                            onChangePaddingTop={
-                                (device, newValue) => {
-                                    onChangeItemPadding('top', newValue, device);
-                                }
-                            }
-                            onChangePaddingRight={
-                                (device, newValue) => {
-                                    onChangeItemPadding('right', newValue, device);
-                                }
-                            }
-                            onChangePaddingBottom={
-                                (device, newValue) => {
-                                    onChangeItemPadding('bottom', newValue, device);
-                                }
-                            }
-                            onChangePaddingLeft={
-                                (device, newValue) => {
-                                    onChangeItemPadding('left', newValue, device);
-                                }
-                            }
-                        />
-                    </PanelBody>
-                )}
                 <PanelBody
                     title={__("Typography", 'premium-blocks-for-gutenberg')}
                     className="premium-panel-body"

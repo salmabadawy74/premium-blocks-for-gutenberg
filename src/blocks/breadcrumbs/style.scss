@@ -48,3 +48,15 @@
         }
     }
 }
+
+.wp-block-premium-breadcrumbs {
+    [class^="pbg-"],
+    [class*=" pbg-"] {
+        font-family: inherit;
+        width: auto;
+        height: auto;
+        font-size: inherit;
+        color: inherit;
+        margin: 0;
+    }
+}
