@@ -1,106 +1,70 @@
 const attributes = {
-    block_id: {
-        type: 'string',
+    colWidth: {
+        type: 'object',
+        default: {
+            desktop: 50,
+            tablet: 50,
+            mobile: 100,
+            unit: '%',
+            device: 'desktop'
+        },
     },
-    classMigrate: {
+    padding: {
+        type: 'object',
+        default: {
+            desktop: {
+                top: 0,
+                right: 0,
+                bottom: 0,
+                left: 0
+            },
+            unit: 'px',
+        },
+    },
+    margin: {
+        type: 'object',
+        default: {
+            desktop: {
+                top: 0,
+                right: 0,
+                bottom: 0,
+                left: 0
+            },
+            unit: 'px',
+        },
+    },
+    colBg: {
+        type: 'object',
+        default: {},
+    },
+    colBorder: {
+        type: 'object',
+        default: {},
+    },
+    colShadow: {
+        type: 'object',
+        default: {},
+    },
+    borderRadius: {
+        type: 'object',
+        default: {},
+    },
+    hideTablet: {
         type: 'boolean',
         default: false,
     },
-    columnWidth: {
-        type: "string"
-    },
-    columnWidthTablet: {
-        type: "string"
-    },
-    columnWidthMobile: {
-        type: "string"
-    },
-    containerBack: {
-        type: "string"
-    },
-    backgroundType: {
-        type: "string"
-    },
-    backgroundImageID: {
-        type: "string"
-    },
-    backgroundImageURL: {
-        type: "string"
-    },
-    backgroundRepeat: {
-        type: "string",
-        value: 'no-reapet'
-    },
-    backgroundPosition: {
-        type: "string",
-        value: 'top center'
-    },
-    backgroundSize: {
-        type: "string",
-        value: 'auto'
-    },
-    fixed: {
+    hideMobile: {
         type: 'boolean',
-        default: false
+        default: false,
     },
-    gradientColorOne: {
-        type: "string",
+    colZindex: {
+        type: 'number',
+        default: '',
     },
-    gradientLocationOne: {
+    colCss: {
         type: 'string',
-        default: '0'
+        default: '',
     },
-    gradientColorTwo: {
-        type: "string",
-    },
-    gradientLocationTwo: {
-        type: "string",
-    },
-    gradientAngle: {
-        type: 'number',
-        default: '180'
-    },
-    gradientPosition: {
-        type: 'string',
-        default: 'center center'
-    },
-    borderTop: {
-        type: "number"
-    },
-    borderRight: {
-        type: "number"
-    },
-    borderBottom: {
-        type: "number"
-    },
-    borderLeft: {
-        type: "number"
-    },
-
-    shadowColor: {
-        type: 'string'
-    },
-    shadowBlur: {
-        type: 'number',
-        default: '0'
-    },
-    shadowHorizontal: {
-        type: 'number',
-        default: '0'
-    },
-    shadowVertical: {
-        type: "number",
-        default: '0'
-    },
-    shadowPosition: {
-        type: 'string'
-    },
-    columnPadding: {
-        type: 'object'
-    },
-    columnMargin: {
-        type: "object"
-    }
 };
 
 export default attributes;

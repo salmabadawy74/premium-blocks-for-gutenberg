@@ -724,302 +724,159 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 var _react = __webpack_require__(9);
-
-var _singleRangeControl = __webpack_require__(2);
-
-var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
 var _ColorComponent = __webpack_require__(3);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
+var _premiumResponsiveSpacing = __webpack_require__(397);
+
+var _premiumResponsiveSpacing2 = _interopRequireDefault(_premiumResponsiveSpacing);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 var __ = wp.i18n.__;
-var Fragment = wp.element.Fragment;
-var _wp$components = wp.components,
-    SelectControl = _wp$components.SelectControl,
-    ColorPicker = _wp$components.ColorPicker;
+var Tooltip = wp.components.Tooltip;
+var _wp$element = wp.element,
+    Fragment = _wp$element.Fragment,
+    useState = _wp$element.useState,
+    useEffect = _wp$element.useEffect;
 
-var PremiumBorder = function (_Component) {
-    _inherits(PremiumBorder, _Component);
 
-    function PremiumBorder(props) {
-        _classCallCheck(this, PremiumBorder);
-
-        var _this = _possibleConstructorReturn(this, (PremiumBorder.__proto__ || Object.getPrototypeOf(PremiumBorder)).call(this, props));
-
-        _this.state = {
-            isLinked: false,
-            top: _this.props.top || 0,
-            right: _this.props.right || 0,
-            bottom: _this.props.bottom || 0,
-            left: _this.props.left || 0
-        };
-
-        _this.onChangeInput = _this.onChangeInput.bind(_this);
-        _this.onButtonClick = _this.onButtonClick.bind(_this);
-        return _this;
-    }
-
-    _createClass(PremiumBorder, [{
-        key: "onChangeInput",
-        value: function onChangeInput(event) {
-            var _this2 = this;
-
-            var _state = this.state,
-                top = _state.top,
-                right = _state.right,
-                bottom = _state.bottom,
-                left = _state.left,
-                isLinked = _state.isLinked;
-            var _event$target = event.target,
-                name = _event$target.name,
-                value = _event$target.value;
-
-            if (isLinked) {
-                top = right = bottom = left = parseInt(value) || 0;
-                this.setState({ top: top, right: right, bottom: bottom, left: left }, function () {
-                    var _state2 = _this2.state,
-                        top = _state2.top,
-                        right = _state2.right,
-                        bottom = _state2.bottom,
-                        left = _state2.left;
-
-                    _this2.props.onChangeWidth({ top: top, right: right, bottom: bottom, left: left });
-                });
-            } else {
-                this.setState(_defineProperty({}, name, parseInt(value) || 0), function () {
-                    _this2.props.onChangeWidth({ top: top, right: right, bottom: bottom, left: left });
-                });
-            }
+var PremiumBorder = function PremiumBorder(props) {
+    var value = props.value;
+    var directions = {
+        'top': '',
+        'right': '',
+        'bottom': '',
+        'left': ''
+    };
+    var defaultValues = {
+        'borderType': 'none',
+        'borderColor': '',
+        'borderWidth': {
+            Desktop: directions,
+            Tablet: directions,
+            Mobile: directions
+        },
+        'borderRadius': {
+            Desktop: directions,
+            Tablet: directions,
+            Mobile: directions
         }
-    }, {
-        key: "onButtonClick",
-        value: function onButtonClick() {
-            this.setState({ isLinked: !this.state.isLinked });
+    };
+    value = value ? _extends({}, defaultValues, value) : defaultValues;
+
+    var _useState = useState(value),
+        _useState2 = _slicedToArray(_useState, 2),
+        borderValue = _useState2[0],
+        setBorderValue = _useState2[1];
+
+    var onChange = props.onChange;
+    var borderColor = borderValue.borderColor,
+        borderType = borderValue.borderType,
+        borderWidth = borderValue.borderWidth,
+        borderRadius = borderValue.borderRadius;
+
+    useEffect(function () {
+        if (borderValue !== value) {
+            setBorderValue(value);
         }
-    }, {
-        key: "render",
-        value: function render() {
-            var _this3 = this;
+    }, [props]);
 
-            var _props = this.props,
-                borderType = _props.borderType,
-                borderColor = _props.borderColor,
-                borderRadius = _props.borderRadius,
-                _props$onChangeType = _props.onChangeType,
-                onChangeType = _props$onChangeType === undefined ? function () {} : _props$onChangeType,
-                _props$onChangeColor = _props.onChangeColor,
-                onChangeColor = _props$onChangeColor === undefined ? function () {} : _props$onChangeColor,
-                _props$onChangeRadius = _props.onChangeRadius,
-                onChangeRadius = _props$onChangeRadius === undefined ? function () {} : _props$onChangeRadius;
-            var _state3 = this.state,
-                top = _state3.top,
-                right = _state3.right,
-                bottom = _state3.bottom,
-                left = _state3.left,
-                isLinked = _state3.isLinked;
-
-
-            var BORDER = [{
-                value: "none",
-                label: __("None", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "solid",
-                label: __("Solid", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "double",
-                label: __("Double", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "dotted",
-                label: __("Dotted", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "dashed",
-                label: __("Dashed", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "groove",
-                label: __("Groove", 'premium-blocks-for-gutenberg')
-            }];
-
-            var defauultValues = {
-                top: 0,
-                right: 0,
-                bottom: 0,
-                left: 0
-            };
-
-            return React.createElement(
-                "div",
-                { className: "premium-control-toggle" },
+    var onChangeBorder = function onChangeBorder(item, value) {
+        var inialState = _extends({}, borderValue);
+        inialState[item] = value;
+        onChange(inialState);
+        setBorderValue(inialState);
+    };
+    return React.createElement(
+        'div',
+        { className: 'premium-control-toggle' },
+        React.createElement(
+            Fragment,
+            null,
+            React.createElement(
+                'div',
+                { className: 'premium-blocks-border__control ', style: { display: "flex" } },
                 React.createElement(
-                    Fragment,
+                    'div',
                     null,
-                    React.createElement(SelectControl, {
-                        label: __("Border Type"),
-                        options: BORDER,
-                        value: borderType,
-                        onChange: onChangeType
-                    }),
-                    "none" != borderType && React.createElement(
-                        "div",
-                        { className: "premium-spacing-responsive" },
-                        React.createElement(
-                            "header",
-                            { className: "premium-control-label-container" },
+                    props.label ? props.label : __('Border', 'premium-blocks-for-gutenberg')
+                ),
+                React.createElement(
+                    'div',
+                    { className: 'premium-blocks-border-button-list ' },
+                    [['none', __("None")], ['solid', __('Solid')], ['dotted', __('Dotted')], ['dashed', __('Dashed')], ['double', __('Double')]].map(function (data, index) {
+                        return React.createElement(
+                            Tooltip,
+                            { text: data[1] },
                             React.createElement(
-                                "div",
-                                { className: "premium-control-label" },
-                                React.createElement(
-                                    "strong",
-                                    null,
-                                    __("Border Width ")
-                                )
+                                'button',
+                                { className: (borderType == data[0] ? 'active' : '') + ' premium-border-button', key: index, onClick: function onClick() {
+                                        return onChangeBorder("borderType", data[0]);
+                                    } },
+                                React.createElement('span', { className: 'premium-blocks-border-type premium-blocks-border-type-' + data[0] })
                             )
-                        ),
-                        React.createElement(
-                            "div",
-                            { className: "premium-spacing-responsive-outer-wrapper" },
-                            React.createElement(
-                                "div",
-                                { className: "input-wrapper premium-spacing-responsive-wrapper" },
-                                React.createElement(
-                                    "ul",
-                                    { className: "premium-spacing-wrapper" },
-                                    React.createElement(
-                                        "li",
-                                        { className: "premium-spacing-input-item" },
-                                        React.createElement("input", {
-                                            className: "premium-spacing-input",
-                                            type: "number",
-                                            name: "top",
-                                            value: top,
-                                            onChange: this.onChangeInput
-                                        }),
-                                        React.createElement(
-                                            "span",
-                                            { className: "premium-spacing-title" },
-                                            __("Top", 'premium-blocks-for-gutenberg')
-                                        )
-                                    ),
-                                    React.createElement(
-                                        "li",
-                                        { className: "premium-spacing-input-item" },
-                                        React.createElement("input", {
-                                            className: "premium-spacing-input",
-                                            type: "number",
-                                            name: "right",
-                                            value: right,
-                                            onChange: this.onChangeInput
-                                        }),
-                                        React.createElement(
-                                            "span",
-                                            { className: "premium-spacing-title" },
-                                            __("Right", 'premium-blocks-for-gutenberg')
-                                        )
-                                    ),
-                                    React.createElement(
-                                        "li",
-                                        { className: "premium-spacing-input-item" },
-                                        React.createElement("input", {
-                                            className: "premium-spacing-input",
-                                            type: "number",
-                                            name: "bottom",
-                                            value: bottom,
-                                            onChange: this.onChangeInput
-                                        }),
-                                        React.createElement(
-                                            "span",
-                                            { className: "premium-spacing-title" },
-                                            __("Bottom", 'premium-blocks-for-gutenberg')
-                                        )
-                                    ),
-                                    React.createElement(
-                                        "li",
-                                        { className: "premium-spacing-input-item" },
-                                        React.createElement("input", {
-                                            className: "premium-spacing-input",
-                                            type: "number",
-                                            name: "left",
-                                            value: left,
-                                            onChange: this.onChangeInput
-                                        }),
-                                        React.createElement(
-                                            "span",
-                                            { className: "premium-spacing-title" },
-                                            __("Right", 'premium-blocks-for-gutenberg')
-                                        )
-                                    ),
-                                    React.createElement(
-                                        "li",
-                                        null,
-                                        React.createElement("button", {
-                                            className: "linked-btn components-button is-button dashicons dashicons-" + (isLinked ? "admin-links" : "editor-unlink"),
-                                            onClick: this.onButtonClick
-                                        })
-                                    )
-                                )
-                            ),
-                            React.createElement(
-                                "div",
-                                { className: "premium-spacing-btn-reset-wrap" },
-                                React.createElement("button", {
-                                    className: "premium-reset-btn ",
-                                    disabled: JSON.stringify(this.state) === JSON.stringify(this.defaultValue),
-                                    onClick: function onClick(e) {
-                                        e.preventDefault();
-                                        _this3.setState(_extends({}, defauultValues));
-                                        var _state4 = _this3.state,
-                                            _state4$top = _state4.top,
-                                            top = _state4$top === undefined ? 0 : _state4$top,
-                                            right = _state4.right,
-                                            bottom = _state4.bottom,
-                                            left = _state4.left;
-
-                                        _this3.props.onChangeWidth(_extends({}, defauultValues));
-                                    }
-                                })
-                            )
-                        )
-                    ),
-                    "none" != borderType && React.createElement(
-                        Fragment,
-                        null,
-                        React.createElement(_ColorComponent2.default, {
-                            label: __("Border Color", 'premium-blocks-for-gutenberg'),
-                            colorValue: borderColor,
-                            colorDefault: '',
-                            onColorChange: onChangeColor
-                        })
-                    ),
-                    React.createElement(_singleRangeControl2.default, {
-                        label: __("Border Radius", 'premium-blocks-for-gutenberg'),
-                        value: borderRadius,
-                        defaultValue: 0,
-                        onChange: onChangeRadius,
-                        showUnit: false
+                        );
                     })
+                ),
+                "none" != borderType && React.createElement(
+                    Tooltip,
+                    { text: __('Clear') },
+                    React.createElement(
+                        'div',
+                        { className: 'premium-blocks-border-clear__container' },
+                        React.createElement(
+                            'span',
+                            { className: 'premium-blocks-border-clear', onClick: function onClick() {
+                                    return onChangeBorder("borderType", 'none');
+                                }, role: 'button' },
+                            React.createElement('i', { className: 'fas fa-undo' })
+                        )
+                    )
                 )
-            );
-        }
-    }]);
+            ),
+            "none" != borderType && React.createElement(_premiumResponsiveSpacing2.default, {
+                label: __("Border Width "),
+                value: borderWidth,
+                responsive: true,
+                showUnits: false,
+                onChange: function onChange(value) {
+                    return onChangeBorder('borderWidth', _extends({}, value));
+                }
 
-    return PremiumBorder;
-}(_react.Component);
+            }),
+            "none" != borderType && React.createElement(
+                Fragment,
+                null,
+                React.createElement(_ColorComponent2.default, {
+                    label: __("Border Color", 'premium-blocks-for-gutenberg'),
+                    colorValue: borderColor,
+                    colorDefault: '',
+                    onColorChange: function onColorChange(value) {
+                        return onChangeBorder('borderColor', value);
+                    }
+                })
+            ),
+            React.createElement(_premiumResponsiveSpacing2.default, {
+                label: __("Border Radius"),
+                value: borderRadius,
+                responsive: true,
+                showUnits: false,
+                onChange: function onChange(value) {
+                    return onChangeBorder('borderRadius', _extends({}, value));
+                }
 
+            })
+        )
+    );
+};
 exports.default = PremiumBorder;
 
 /***/ }),
@@ -68246,6 +68103,10 @@ var _attributes = __webpack_require__(396);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
+var _edit = __webpack_require__(398);
+
+var _edit2 = _interopRequireDefault(_edit);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var __ = wp.i18n.__;
@@ -68254,23 +68115,18 @@ var registerBlockType = wp.blocks.registerBlockType;
 
 registerBlockType("premium/column", {
     title: __("Column"),
-    icon: React.createElement(_icons2.default, { icon: "" }),
+    icon: React.createElement(_icons2.default, { icon: '' }),
     category: "premium-blocks",
     attributes: _attributes2.default,
     supports: {},
+    // parent: ['premium/row'],
     example: {},
-    edit: function edit() {
-        return React.createElement(
-            "div",
-            null,
-            "Hello"
-        );
-    },
+    edit: _edit2.default,
     save: function save() {
         return React.createElement(
-            "div",
+            'div',
             null,
-            "Hello"
+            'Hello'
         );
     }
 });
@@ -68286,111 +68142,1339 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 var attributes = {
-    block_id: {
-        type: 'string'
+    colWidth: {
+        type: 'object',
+        default: {
+            desktop: 50,
+            tablet: 50,
+            mobile: 100,
+            unit: '%',
+            device: 'desktop'
+        }
     },
-    classMigrate: {
+    padding: {
+        type: 'object',
+        default: {
+            desktop: {
+                top: 0,
+                right: 0,
+                bottom: 0,
+                left: 0
+            },
+            unit: 'px'
+        }
+    },
+    margin: {
+        type: 'object',
+        default: {
+            desktop: {
+                top: 0,
+                right: 0,
+                bottom: 0,
+                left: 0
+            },
+            unit: 'px'
+        }
+    },
+    colBg: {
+        type: 'object',
+        default: {}
+    },
+    colBorder: {
+        type: 'object',
+        default: {}
+    },
+    colShadow: {
+        type: 'object',
+        default: {}
+    },
+    borderRadius: {
+        type: 'object',
+        default: {}
+    },
+    hideTablet: {
         type: 'boolean',
         default: false
     },
-    columnWidth: {
-        type: "string"
-    },
-    columnWidthTablet: {
-        type: "string"
-    },
-    columnWidthMobile: {
-        type: "string"
-    },
-    containerBack: {
-        type: "string"
-    },
-    backgroundType: {
-        type: "string"
-    },
-    backgroundImageID: {
-        type: "string"
-    },
-    backgroundImageURL: {
-        type: "string"
-    },
-    backgroundRepeat: {
-        type: "string",
-        value: 'no-reapet'
-    },
-    backgroundPosition: {
-        type: "string",
-        value: 'top center'
-    },
-    backgroundSize: {
-        type: "string",
-        value: 'auto'
-    },
-    fixed: {
+    hideMobile: {
         type: 'boolean',
         default: false
     },
-    gradientColorOne: {
-        type: "string"
+    colZindex: {
+        type: 'number',
+        default: ''
     },
-    gradientLocationOne: {
+    colCss: {
         type: 'string',
-        default: '0'
-    },
-    gradientColorTwo: {
-        type: "string"
-    },
-    gradientLocationTwo: {
-        type: "string"
-    },
-    gradientAngle: {
-        type: 'number',
-        default: '180'
-    },
-    gradientPosition: {
-        type: 'string',
-        default: 'center center'
-    },
-    borderTop: {
-        type: "number"
-    },
-    borderRight: {
-        type: "number"
-    },
-    borderBottom: {
-        type: "number"
-    },
-    borderLeft: {
-        type: "number"
-    },
-
-    shadowColor: {
-        type: 'string'
-    },
-    shadowBlur: {
-        type: 'number',
-        default: '0'
-    },
-    shadowHorizontal: {
-        type: 'number',
-        default: '0'
-    },
-    shadowVertical: {
-        type: "number",
-        default: '0'
-    },
-    shadowPosition: {
-        type: 'string'
-    },
-    columnPadding: {
-        type: 'object'
-    },
-    columnMargin: {
-        type: "object"
+        default: ''
     }
 };
 
 exports.default = attributes;
+
+/***/ }),
+/* 397 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _premiumSizeUnits = __webpack_require__(29);
+
+var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+var _wp$element = wp.element,
+    useState = _wp$element.useState,
+    useEffect = _wp$element.useEffect,
+    Fragment = _wp$element.Fragment;
+var _wp$data = wp.data,
+    useSelect = _wp$data.useSelect,
+    useDispatch = _wp$data.useDispatch;
+
+var SpacingComponent = function SpacingComponent(props) {
+    var value = props.value,
+        responsive = props.responsive,
+        showUnits = props.showUnits,
+        label = props.label;
+
+    var _useState = useState("Desktop"),
+        _useState2 = _slicedToArray(_useState, 2),
+        device = _useState2[0],
+        setDevice = _useState2[1];
+
+    var defaultValue = {
+        value: {
+            top: "",
+            right: "",
+            bottom: "",
+            left: ""
+        },
+        unit: 'px'
+
+    };
+    var ResDefaultParam = {
+        Desktop: defaultValue.value,
+        Tablet: defaultValue.value,
+        Mobile: defaultValue.value,
+        unit: defaultValue.unit
+
+    };
+    var defaultValues = responsive ? ResDefaultParam : defaultValue.value;
+    value = value ? _extends({}, defaultValues, value) : defaultValues;
+
+    var _useState3 = useState(value),
+        _useState4 = _slicedToArray(_useState3, 2),
+        state = _useState4[0],
+        setState = _useState4[1];
+
+    var _useState5 = useState(false),
+        _useState6 = _slicedToArray(_useState5, 2),
+        link = _useState6[0],
+        setLink = _useState6[1];
+
+    useEffect(function () {
+        if (state !== value) {
+            setState(value);
+        }
+    }, [props]);
+
+    var onSpacingChange = function onSpacingChange(v, choiceID) {
+        var updateState = _extends({}, state);
+        var deviceUpdateState = responsive ? _extends({}, updateState[device]) : _extends({}, updateState);
+        if (link) {
+            deviceUpdateState['top'] = v;
+            deviceUpdateState['right'] = v;
+            deviceUpdateState['bottom'] = v;
+            deviceUpdateState['left'] = v;
+        } else {
+            deviceUpdateState[choiceID] = v;
+        }
+        responsive ? updateState[device] = deviceUpdateState : updateState = deviceUpdateState;
+        props.onChange(updateState);
+        setState(updateState);
+    };
+
+    var onLinkClickHandler = function onLinkClickHandler() {
+        var linkValue = responsive ? state[device]['top'] : state['top'];
+        var updateState = _extends({}, state);
+        var deviceUpdateState = responsive ? _extends({}, updateState[device]) : _extends({}, updateState);
+        var choices = ['top', 'right', 'bottom', "left"];
+        for (var choice in choices) {
+            deviceUpdateState[choices[choice]] = linkValue;
+        }
+        responsive ? updateState[device] = deviceUpdateState : updateState = deviceUpdateState;
+        props.onChange(updateState);
+        setState(updateState);
+    };
+
+    var renderInputHtml = function renderInputHtml(device) {
+        var active = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+
+        var htmlChoices = void 0;
+        htmlChoices = ['top', 'right', 'bottom', 'left'].map(function (side) {
+            var inputValue = responsive ? state[device][side] : state[side];
+            return React.createElement(
+                "li",
+                {
+                    key: side,
+                    className: "premium-spacing-input-item"
+                },
+                React.createElement("input", {
+                    type: "number",
+                    className: "premium-spacing-input",
+                    value: inputValue,
+                    onChange: function onChange(_ref) {
+                        var value = _ref.target.value;
+                        return onSpacingChange(Number(value), side);
+                    },
+                    "data-id": side,
+                    disabled: inputValue === "disabled" ? true : false
+                }),
+                React.createElement(
+                    "span",
+                    { className: "premium-spacing-title" },
+                    {
+                        top: __('Top', 'premium-blocks-for-gutenberg'),
+                        bottom: __('Bottom', 'premium-blocks-for-gutenberg'),
+                        left: __('Left', 'premium-blocks-for-gutenberg'),
+                        right: __('Right', 'premium-blocks-for-gutenberg')
+                    }[side]
+                )
+            );
+        });
+        var linkHtml = '';
+        if (link) {
+            linkHtml = React.createElement(
+                "li",
+                { className: "premium-spacing-input-item" },
+                React.createElement("button", {
+                    className: "linked-btn is-button dashicons dashicons-admin-links connected ",
+                    onClick: function onClick() {
+                        setLink(false);
+                    }
+                })
+            );
+        } else {
+            linkHtml = React.createElement(
+                "li",
+                { className: "premium-spacing-input-item" },
+                React.createElement("button", {
+                    className: "linked-btn is-button dashicons dashicons-editor-unlink disconnected",
+                    onClick: function onClick() {
+                        onLinkClickHandler();
+                        setLink(true);
+                    }
+                })
+            );
+        }
+
+        ;
+        return React.createElement(
+            "ul",
+            {
+                className: "premium-spacing-wrapper " + device + " " + active
+            },
+            htmlChoices,
+            linkHtml
+        );
+    };
+
+    var inputHtml = null;
+
+    inputHtml = React.createElement(
+        Fragment,
+        null,
+        renderInputHtml(device, "active")
+    );
+    var devices = ['Desktop', 'Tablet', 'Mobile'];
+
+    var customSetPreviewDeviceType = function customSetPreviewDeviceType(device) {
+        setDevice(device.toLowerCase());
+    };
+
+    if (wp.data.select('core/edit-post')) {
+        var theDevice = useSelect(function (select) {
+            var _select = select('core/edit-post'),
+                _select$__experimenta = _select.__experimentalGetPreviewDeviceType,
+                __experimentalGetPreviewDeviceType = _select$__experimenta === undefined ? null : _select$__experimenta;
+
+            return __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : 'Desktop';
+        }, []);
+        if (theDevice !== device) {
+            setDevice(theDevice);
+        }
+
+        var _useDispatch = useDispatch('core/edit-post'),
+            _useDispatch$__experi = _useDispatch.__experimentalSetPreviewDeviceType,
+            __experimentalSetPreviewDeviceType = _useDispatch$__experi === undefined ? null : _useDispatch$__experi;
+
+        customSetPreviewDeviceType = function customSetPreviewDeviceType(device) {
+            __experimentalSetPreviewDeviceType(device);
+            setDevice(device);
+        };
+    }
+    var onUnitChange = function onUnitChange(unitValue) {
+        var updateState = _extends({}, state);
+        updateState["unit"] = unitValue;
+        props.onChange(updateState);
+        setState(updateState);
+    };
+    return React.createElement(
+        "div",
+        { className: "premium-spacing-responsive" },
+        React.createElement(
+            "header",
+            null,
+            React.createElement(
+                "div",
+                { className: "premium-slider-title-wrap" },
+                React.createElement(
+                    "span",
+                    { className: "customize-control-title premium-control-title" },
+                    "  ",
+                    label
+                ),
+                responsive && React.createElement(
+                    "ul",
+                    { className: "premium-responsive-control-btns premium-responsive-slider-btns" },
+                    devices.map(function (deviceType, key) {
+                        var activeClass = deviceType === device ? ' active' : '';
+                        var icon = deviceType.toLowerCase() === 'mobile' ? 'smartphone' : deviceType.toLowerCase();
+                        return React.createElement(
+                            "li",
+                            { key: key, className: "" + deviceType + activeClass },
+                            React.createElement(
+                                "button",
+                                { type: "button", className: "preview-" + deviceType + activeClass, "data-device": deviceType },
+                                React.createElement("i", { "class": "dashicons dashicons-" + icon, onClick: function onClick() {
+                                        var nextDevice = key + 1 > devices.length - 1 ? devices[0] : devices[key + 1];
+                                        customSetPreviewDeviceType(nextDevice);
+                                    } })
+                            )
+                        );
+                    })
+                )
+            ),
+            showUnits && React.createElement(_premiumSizeUnits2.default, {
+                activeUnit: state["unit"],
+                onChangeSizeUnit: function onChangeSizeUnit(unitKey) {
+                    return onUnitChange(unitKey);
+                }
+            })
+        ),
+        React.createElement(
+            "div",
+            { className: "premium-spacing-responsive-outer-wrapper" },
+            React.createElement(
+                "div",
+                { className: "input-wrapper premium-spacing-responsive-wrapper" },
+                inputHtml
+            ),
+            React.createElement(
+                "div",
+                { className: "premium-spacing-btn-reset-wrap" },
+                React.createElement("button", {
+                    className: "premium-reset-btn ",
+                    disabled: JSON.stringify(state) === JSON.stringify(defaultValues),
+                    onClick: function onClick(e) {
+                        e.preventDefault();
+                        props.onChange(defaultValues);
+                        setState(defaultValues);
+                    }
+                })
+            )
+        )
+    );
+};
+
+exports.default = SpacingComponent;
+
+/***/ }),
+/* 398 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _premiumResponsiveSpacing = __webpack_require__(397);
+
+var _premiumResponsiveSpacing2 = _interopRequireDefault(_premiumResponsiveSpacing);
+
+var _PremiumShadow = __webpack_require__(5);
+
+var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
+
+var _PremiumBackgroundControl = __webpack_require__(22);
+
+var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
+
+var _classnames = __webpack_require__(0);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _premiumBorder = __webpack_require__(6);
+
+var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
+
+var _inspectorTabs = __webpack_require__(399);
+
+var _inspectorTabs2 = _interopRequireDefault(_inspectorTabs);
+
+var _inspectorTab = __webpack_require__(400);
+
+var _inspectorTab2 = _interopRequireDefault(_inspectorTab);
+
+var _Animation = __webpack_require__(401);
+
+var _Animation2 = _interopRequireDefault(_Animation);
+
+var _singleRangeControl = __webpack_require__(2);
+
+var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var __ = wp.i18n.__;
+var _wp$components = wp.components,
+    PanelBody = _wp$components.PanelBody,
+    Toolbar = _wp$components.Toolbar,
+    ResizableBox = _wp$components.ResizableBox,
+    IconButton = _wp$components.IconButton;
+var _wp$element = wp.element,
+    Component = _wp$element.Component,
+    Fragment = _wp$element.Fragment;
+var _wp$data = wp.data,
+    withSelect = _wp$data.withSelect,
+    select = _wp$data.select,
+    dispatch = _wp$data.dispatch;
+var _wp$blockEditor = wp.blockEditor,
+    InnerBlocks = _wp$blockEditor.InnerBlocks,
+    InspectorControls = _wp$blockEditor.InspectorControls,
+    BlockControls = _wp$blockEditor.BlockControls;
+var createBlock = wp.blocks.createBlock;
+
+var PremiumColumn = function (_Component) {
+    _inherits(PremiumColumn, _Component);
+
+    function PremiumColumn() {
+        _classCallCheck(this, PremiumColumn);
+
+        var _this = _possibleConstructorReturn(this, (PremiumColumn.__proto__ || Object.getPrototypeOf(PremiumColumn)).apply(this, arguments));
+
+        _this.state = {
+            colWidth: { desktop: 0, tablet: 0, mobile: 0, device: 'desktop' },
+            nextColWidth: { desktop: 0, tablet: 0, mobile: 0, device: 'desktop' },
+            prevColWidth: { desktop: 0, tablet: 0, mobile: 0, device: 'desktop' },
+            rowWidth: 0,
+            absWidth: 0,
+            maxResizeWidth: 0,
+            maxWidth: 999999999,
+            isHover: false,
+            resizing: false,
+            blockIndex: null,
+            responsiveDevice: 'desktop',
+            colWidthMax: 85
+        };
+        return _this;
+    }
+
+    _createClass(PremiumColumn, [{
+        key: "componentDidMount",
+        value: function componentDidMount() {
+            var _props = this.props,
+                setAttributes = _props.setAttributes,
+                clientId = _props.clientId,
+                uniqueId = _props.attributes.uniqueId;
+
+            var _client = clientId.substr(0, 6);
+            setTimeout(function () {
+                if (!uniqueId) {
+                    setAttributes({ uniqueId: _client });
+                } else if (uniqueId && uniqueId != _client) {
+                    setAttributes({ uniqueId: _client });
+                }
+            }, 100);
+            if (typeof $ === 'undefined') {
+                $ = jQuery;
+            }
+            this.updateColumnWidthAttribute();
+        }
+    }, {
+        key: "updateColumnWidthAttribute",
+        value: function updateColumnWidthAttribute() {
+            var _props2 = this.props,
+                colWidth = _props2.attributes.colWidth,
+                clientId = _props2.clientId;
+
+            var _select = select('core/block-editor'),
+                getPreviousBlockClientId = _select.getPreviousBlockClientId,
+                getNextBlockClientId = _select.getNextBlockClientId;
+
+            var currentColumn = $("#block-" + clientId);
+            var rowWidth = currentColumn.parents('.qubely-backend-row').width();
+            var nextBlockId = getNextBlockClientId(clientId);
+            var prevBlockId = getPreviousBlockClientId(clientId);
+            currentColumn.css({ width: colWidth.desktop + '%' });
+            this.setState({ rowWidth: rowWidth, nextBlockId: nextBlockId, prevBlockId: prevBlockId, maxResizeWidth: rowWidth, colWidth: _extends({}, colWidth, { device: 'desktop' }) });
+        }
+    }, {
+        key: "onResizeStartEvent",
+        value: function onResizeStartEvent(event, direction, elt) {
+            var _props3 = this.props,
+                toggleSelection = _props3.toggleSelection,
+                clientId = _props3.clientId,
+                setAttributes = _props3.setAttributes;
+            var _state = this.state,
+                rowWidth = _state.rowWidth,
+                nextColWidth = _state.nextColWidth,
+                prevColWidth = _state.prevColWidth;
+
+            toggleSelection(false);
+            var editorSelector = select('core/block-editor');
+            var colWidth = editorSelector.getBlockAttributes(clientId).colWidth;
+            var nextBlockClientId = editorSelector.getNextBlockClientId(clientId);
+            var prevBlockClientId = editorSelector.getPreviousBlockClientId(clientId);
+            if (nextBlockClientId !== null) {
+                nextColWidth.desktop = parseFloat(editorSelector.getBlockAttributes(nextBlockClientId).colWidth.desktop);
+            }
+            if (prevBlockClientId !== null) {
+                prevColWidth.desktop = parseFloat(editorSelector.getBlockAttributes(prevBlockClientId).colWidth.desktop);
+            }
+            var maxResizeWidth = 0;
+            if (direction === 'right' && nextBlockClientId !== null) {
+                var resizeNextColWidth = nextColWidth.desktop / 100 * rowWidth - 100;
+                var resizeCurrenColWidth = colWidth.desktop / 100 * rowWidth;
+                maxResizeWidth = resizeNextColWidth + resizeCurrenColWidth;
+            }
+            if (direction === 'left' && prevBlockClientId !== null) {
+                var resizePrevColWidth = prevColWidth.desktop / 100 * rowWidth - 100;
+                var _resizeCurrenColWidth = colWidth.desktop / 100 * rowWidth;
+                maxResizeWidth = resizePrevColWidth + _resizeCurrenColWidth;
+            }
+            setAttributes({ colWidth: colWidth });
+            var clmRect = document.getElementById("block-" + clientId).getBoundingClientRect();
+            this.setState({ colWidth: colWidth, prevColWidth: prevColWidth, nextColWidth: nextColWidth, maxResizeWidth: maxResizeWidth, resizing: true, absWidth: clmRect.width });
+        }
+    }, {
+        key: "onResize",
+        value: function onResize(event, direction, elt, delta) {
+            var _state2 = this.state,
+                colWidth = _state2.colWidth,
+                nextColWidth = _state2.nextColWidth,
+                rowWidth = _state2.rowWidth,
+                absWidth = _state2.absWidth;
+            var _props4 = this.props,
+                clientId = _props4.clientId,
+                setAttributes = _props4.setAttributes;
+
+            var currentcolumnId = $("#block-" + clientId);
+            var NextColumn = currentcolumnId.next();
+            var currentBlockWidth = absWidth + delta.width;
+            var calWidth = currentBlockWidth / rowWidth * 100;
+            var diff = parseFloat(colWidth.desktop) - calWidth;
+
+            var nextBlockWidth = 0;
+            if (direction === 'right') {
+                if (NextColumn.length > 0) {
+                    nextBlockWidth = parseFloat(nextColWidth.desktop) + diff;
+                    if (nextBlockWidth > 10 && calWidth > 10) {
+                        nextBlockWidth = Math.abs(nextBlockWidth);
+                        NextColumn.css({ width: nextBlockWidth.toFixed(2) + '%' });
+                        var editorSelector = select('core/block-editor');
+                        var nextBlockClientId = editorSelector.getNextBlockClientId(clientId);
+                        if (nextBlockClientId !== null) {
+                            var nextBlock = editorSelector.getBlock(nextBlockClientId);
+                            nextBlock.attributes.colWidth.desktop = nextBlockWidth.toFixed(2);
+                        }
+                    }
+                }
+            }
+            currentcolumnId.find('.components-resizable-box__container').css({ width: 'auto' });
+            if (nextBlockWidth > 10 && calWidth > 10) {
+                currentcolumnId.css({ width: calWidth.toFixed(2) + '%' });
+                setAttributes({ colWidth: _extends({}, colWidth, { desktop: calWidth.toFixed(2) }) });
+            }
+            console.log("Resize", calWidth);
+        }
+    }, {
+        key: "onResizeStop",
+        value: function onResizeStop(event, direction, elt, delta) {
+            var toggleSelection = this.props.toggleSelection;
+
+            toggleSelection(true);
+            this.setState({ resizing: false });
+        }
+    }, {
+        key: "updateColumns",
+        value: function updateColumns(updateType) {
+            var clientId = this.props.clientId;
+
+            var _select2 = select('core/block-editor'),
+                getBlockRootClientId = _select2.getBlockRootClientId,
+                getBlock = _select2.getBlock,
+                getBlocks = _select2.getBlocks,
+                getBlockIndex = _select2.getBlockIndex;
+
+            var _dispatch = dispatch('core/block-editor'),
+                replaceInnerBlocks = _dispatch.replaceInnerBlocks,
+                updateBlockAttributes = _dispatch.updateBlockAttributes;
+
+            var rootClientId = getBlockRootClientId(clientId);
+            var rootBlock = getBlock(rootClientId);
+            var selectedBlockIndex = getBlockIndex(clientId, rootClientId);
+            var columns = updateType === 'add' ? rootBlock.attributes.columns + 1 : rootBlock.attributes.columns - 1;
+            var columnFixedWidth = parseFloat((100 / columns).toFixed(3));
+            var equalWidth = _extends({}, this.state.colWidth, { desktop: columnFixedWidth, tablet: 100, mobile: 100 });
+
+            var innerBlocks = [].concat(_toConsumableArray(getBlocks(rootClientId)));
+            if (updateType === 'delete') {
+                innerBlocks.splice(selectedBlockIndex, 1);
+            } else {
+                innerBlocks.splice(selectedBlockIndex + 1, 0, createBlock('qubely/column', { colWidth: equalWidth }));
+            }
+
+            replaceInnerBlocks(rootClientId, innerBlocks, false);
+
+            updateBlockAttributes(rootClientId, Object.assign(rootBlock.attributes, { columns: columns }));
+
+            getBlocks(rootClientId).forEach(function (block) {
+                updateBlockAttributes(block.clientId, Object.assign(block.attributes, { colWidth: _extends({}, equalWidth) }));
+                $("#block-" + block.clientId).css({ width: equalWidth.desktop + '%' }); //update next block width
+            });
+        }
+    }, {
+        key: "checkColumnStatus",
+        value: function checkColumnStatus() {
+            var clientId = this.props.clientId;
+
+            var _select3 = select('core/block-editor'),
+                getBlockRootClientId = _select3.getBlockRootClientId,
+                getPreviousBlockClientId = _select3.getPreviousBlockClientId,
+                getNextBlockClientId = _select3.getNextBlockClientId,
+                getBlockIndex = _select3.getBlockIndex,
+                getBlock = _select3.getBlock;
+
+            var rootClientId = getBlockRootClientId(clientId);
+            var nextBlockId = getNextBlockClientId(clientId);
+            var prevBlockId = getPreviousBlockClientId(clientId);
+            var blockIndex = getBlockIndex(clientId, rootClientId);
+
+            return { nextBlockId: nextBlockId, prevBlockId: prevBlockId, blockIndex: blockIndex };
+        }
+    }, {
+        key: "_isActiveRow",
+        value: function _isActiveRow() {
+            var rootClientId = select('core/block-editor').getBlockRootClientId(this.props.clientId);
+            var selected = select('core/block-editor').getSelectedBlock();
+            if (selected && rootClientId && selected.clientId) {
+                return rootClientId == selected.clientId ? true : false;
+            } else {
+                return false;
+            }
+        }
+    }, {
+        key: "updateColumnWidth",
+        value: function updateColumnWidth(colWidth) {
+            var _props5 = this.props,
+                clientId = _props5.clientId,
+                setAttributes = _props5.setAttributes,
+                attributes = _props5.attributes;
+
+            this.setState({ colWidthMax: colWidth.device === 'desktop' ? 85 : 100, responsiveDevice: colWidth.device });
+            if (colWidth.device && colWidth.device !== 'desktop') {
+                setAttributes({ colWidth: _extends({}, colWidth) });
+                return;
+            }
+            if (colWidth.desktop < 10) {
+                return;
+            }
+            var currentcolumnId = $("#block-" + clientId);
+            var NextColumn = currentcolumnId.next();
+            var PrevColumn = currentcolumnId.prev();
+            var calWidth = parseFloat(colWidth.desktop);
+            var different = calWidth - parseFloat(attributes.colWidth.desktop);
+
+            var _select4 = select('core/block-editor'),
+                getPreviousBlockClientId = _select4.getPreviousBlockClientId,
+                getNextBlockClientId = _select4.getNextBlockClientId,
+                getBlock = _select4.getBlock;
+
+            var _dispatch2 = dispatch('core/block-editor'),
+                updateBlockAttributes = _dispatch2.updateBlockAttributes;
+
+            var nextColumnNewWidth = 0;
+            if (NextColumn.length > 0) {
+                var nextBlockClientId = getNextBlockClientId(clientId);
+                if (nextBlockClientId !== null) {
+                    var nextBlock = getBlock(nextBlockClientId);
+                    nextColumnNewWidth = _extends({}, nextBlock.attributes.colWidth);
+                    nextColumnNewWidth.desktop = parseFloat(nextColumnNewWidth.desktop) - different;
+                    if (nextColumnNewWidth.desktop > 10 && calWidth > 10) {
+                        NextColumn.css({ width: nextColumnNewWidth.desktop + '%' });
+                        updateBlockAttributes(nextBlockClientId, Object.assign(nextBlock.attributes, { colWidth: _extends({}, nextColumnNewWidth) }));
+                    }
+                }
+            } else if (PrevColumn.length > 0) {
+                var prevBlockClientId = getPreviousBlockClientId(clientId);
+                if (prevBlockClientId !== null) {
+                    var prevBlock = getBlock(prevBlockClientId);
+                    var prevColumnNewWidth = _extends({}, prevBlock.attributes.colWidth);
+                    prevColumnNewWidth.desktop = parseFloat(prevColumnNewWidth.desktop) - different; //calWidth > 0 ? calWidth-parseFloat(prevColWidth.desktop) : parseFloat(prevColWidth.desktop)-calWidth
+                    PrevColumn.css({ width: prevColumnNewWidth.desktop + '%' });
+                    updateBlockAttributes(prevBlockClientId, Object.assign(prevBlock.attributes, { colWidth: _extends({}, prevColumnNewWidth) }));
+                }
+            }
+            if (nextColumnNewWidth.desktop > 10 && calWidth > 10) {
+                var newWidth = Math.abs(calWidth);
+                currentcolumnId.css({ width: newWidth + '%' });
+                setAttributes({ colWidth: _extends({}, colWidth) });
+            }
+        }
+    }, {
+        key: "componentWillReceiveProps",
+        value: function componentWillReceiveProps(nextProps) {
+            document.getElementById("block-" + this.props.clientId).style.alignSelf = nextProps.attributes.position;
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var _this2 = this;
+
+            var _props6 = this.props,
+                _props6$attributes = _props6.attributes,
+                uniqueId = _props6$attributes.uniqueId,
+                className = _props6$attributes.className,
+                colWidth = _props6$attributes.colWidth,
+                padding = _props6$attributes.padding,
+                margin = _props6$attributes.margin,
+                colBg = _props6$attributes.colBg,
+                colBorder = _props6$attributes.colBorder,
+                colRadius = _props6$attributes.colRadius,
+                colShadow = _props6$attributes.colShadow,
+                corner = _props6$attributes.corner,
+                borderRadius = _props6$attributes.borderRadius,
+                animation = _props6$attributes.animation,
+                enablePosition = _props6$attributes.enablePosition,
+                selectPosition = _props6$attributes.selectPosition,
+                positionXaxis = _props6$attributes.positionXaxis,
+                positionYaxis = _props6$attributes.positionYaxis,
+                globalZindex = _props6$attributes.globalZindex,
+                hideTablet = _props6$attributes.hideTablet,
+                hideMobile = _props6$attributes.hideMobile,
+                globalCss = _props6$attributes.globalCss,
+                setAttributes = _props6.setAttributes,
+                isSelected = _props6.isSelected,
+                clientId = _props6.clientId;
+            var _state3 = this.state,
+                rowWidth = _state3.rowWidth,
+                resizing = _state3.resizing,
+                responsiveDevice = _state3.responsiveDevice;
+
+            var _select5 = select('core/block-editor'),
+                getBlockRootClientId = _select5.getBlockRootClientId,
+                getBlockAttributes = _select5.getBlockAttributes;
+
+            var rootClientId = getBlockRootClientId(clientId);
+            var rootBlockAttributes = getBlockAttributes(rootClientId);
+            var columns = void 0,
+                nextBlockId = void 0,
+                blockIndex = void 0;
+            if (rootBlockAttributes) {
+                var columnStatus = this.checkColumnStatus();
+                columns = rootBlockAttributes.columns;
+                nextBlockId = columnStatus.nextBlockId;
+                blockIndex = columnStatus.blockIndex;
+            }
+            var resigingClass = 'qubely-column-resizer';
+            if (nextBlockId !== null && isSelected) {
+                resigingClass += ' is-selected-column';
+            }
+            if (resizing) {
+                resigingClass += ' is-resizing';
+            }
+
+            var _select6 = select('core/block-editor'),
+                getBlockOrder = _select6.getBlockOrder;
+
+            return React.createElement(
+                Fragment,
+                null,
+                React.createElement(
+                    InspectorControls,
+                    null,
+                    React.createElement(
+                        _inspectorTabs2.default,
+                        { tabs: ['style', 'advance'] },
+                        React.createElement(
+                            _inspectorTab2.default,
+                            { key: 'style' },
+                            React.createElement(
+                                PanelBody,
+                                { initialOpen: true, title: __('Dimension') },
+                                React.createElement(_singleRangeControl2.default, {
+                                    label: __('Width'),
+                                    value: colWidth.desktop,
+                                    onChange: function onChange(val) {
+                                        return _this2.updateColumnWidth(val);
+                                    },
+                                    min: 15,
+                                    max: this.state.colWidthMax,
+                                    defaultValue: ''
+                                })
+                            ),
+                            React.createElement(PanelBody, { initialOpen: true, title: __('Design') })
+                        ),
+                        React.createElement(
+                            _inspectorTab2.default,
+                            { key: 'advance' },
+                            React.createElement(PanelBody, { initialOpen: true, title: __('Spacing') })
+                        )
+                    )
+                ),
+                React.createElement(
+                    BlockControls,
+                    null,
+                    React.createElement(
+                        Toolbar,
+                        null,
+                        columns < 6 && React.createElement(IconButton, {
+                            className: "components-icon-button components-toolbar__control",
+                            label: __('Add Column'),
+                            onClick: function onClick() {
+                                return _this2.updateColumns('add');
+                            },
+                            icon: "plus"
+                        }),
+                        columns > 1 && React.createElement(IconButton, {
+                            className: "components-icon-button components-toolbar__control",
+                            label: __('Delete Column'),
+                            onClick: function onClick() {
+                                return _this2.updateColumns('delete');
+                            },
+                            icon: "trash"
+                        })
+                    )
+                ),
+                rowWidth !== 0 && React.createElement(
+                    ResizableBox,
+                    {
+                        className: resigingClass,
+                        style: {},
+                        size: {},
+                        maxWidth: this.state.maxWidth,
+                        enable: {
+                            top: false,
+                            right: true,
+                            bottom: false,
+                            left: false,
+                            topRight: false,
+                            bottomRight: false,
+                            bottomLeft: false,
+                            topLeft: false
+                        },
+                        minHeight: "10",
+                        onResize: function onResize(event, direction, elt, delta) {
+                            return _this2.onResize(event, direction, elt, delta);
+                        },
+                        onResizeStop: function onResizeStop(event, direction, elt, delta) {
+                            return _this2.onResizeStop(event, direction, elt, delta);
+                        },
+                        onResizeStart: function onResizeStart(event, direction, elt) {
+                            return _this2.onResizeStartEvent(event, direction, elt);
+                        } },
+                    React.createElement(
+                        "div",
+                        { className: "qubely-column qubely-column-admin qubely-block-" + uniqueId + (className ? " " + className : ''), "data-column-width": this.props.attributes.colWidth.desktop },
+                        React.createElement(
+                            "div",
+                            { className: "qubely-column-inner" },
+                            React.createElement(InnerBlocks, {
+                                templateLock: false,
+                                renderAppender: getBlockOrder(clientId).length > 0 ? undefined : function () {
+                                    return React.createElement(InnerBlocks.ButtonBlockAppender, null);
+                                }
+                            })
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return PremiumColumn;
+}(Component);
+
+exports.default = withSelect(function (select, props) {
+    var _select7 = select('core/edit-post'),
+        _select7$__experiment = _select7.__experimentalGetPreviewDeviceType,
+        __experimentalGetPreviewDeviceType = _select7$__experiment === undefined ? null : _select7$__experiment;
+
+    var deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return { deviceType: deviceType };
+})(PremiumColumn);
+
+/***/ }),
+/* 399 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _classnames = __webpack_require__(0);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+var _wp$element = wp.element,
+    Fragment = _wp$element.Fragment,
+    cloneElement = _wp$element.cloneElement,
+    Children = _wp$element.Children;
+var Tooltip = wp.components.Tooltip;
+var _wp$element2 = wp.element,
+    useState = _wp$element2.useState,
+    useRef = _wp$element2.useRef,
+    useEffect = _wp$element2.useEffect,
+    LAYOUT = 'layout',
+    STYLE = 'style',
+    ADVANCE = 'advance';
+
+
+var InspectorTabs = function InspectorTabs(props) {
+    var defaultTab = props.defaultTab,
+        children = props.children,
+        tabs = props.tabs,
+        _useState = useState(defaultTab ? defaultTab : tabs[0]),
+        _useState2 = _slicedToArray(_useState, 2),
+        currentTab = _useState2[0],
+        setCurrentTab = _useState2[1],
+        tabContainer = useRef(),
+        offset = useRef(undefined);
+
+    var sidebarPanel = void 0;
+
+    useEffect(function () {
+        sidebarPanel = tabContainer.current.closest('.components-panel');
+    });
+
+    var observer = new IntersectionObserver(function (_ref) {
+        var _ref2 = _slicedToArray(_ref, 1),
+            e = _ref2[0];
+
+        return e.target.classList.toggle('premium-is-sticky', e.intersectionRatio < 1);
+    }, { threshold: [1] });
+
+    // component did mount
+    useEffect(function () {
+        // sticky tabs menu
+        var container = document.querySelector('.premium-inspector-tabs-container');
+        if (container) {
+            observer.observe(container);
+        }
+
+        // component will unmount
+        return function () {
+            sidebarPanel && sidebarPanel.removeAttribute('data-premium-tab');
+        };
+    }, []);
+
+    useEffect(function () {
+
+        sidebarPanel && sidebarPanel.setAttribute('data-premium-tab', defaultTab);
+    }, [defaultTab]);
+
+    var _onTabChange = function _onTabChange(tab) {
+        setCurrentTab(tab);
+        sidebarPanel && sidebarPanel.setAttribute('data-premium-tab', tab);
+    };
+
+    return React.createElement(
+        Fragment,
+        null,
+        React.createElement(
+            'div',
+            { className: 'premium-inspector-tabs-container' },
+            React.createElement(
+                'div',
+                { ref: tabContainer, className: (0, _classnames2.default)('premium-inspector-tabs', 'premium-inspector-tabs-count-' + tabs.length, currentTab) },
+                tabs.indexOf(LAYOUT) > -1 && React.createElement(
+                    Tooltip,
+                    { text: __('Layout', 'premium-blocks-for-gutenberg') },
+                    React.createElement(
+                        'button',
+                        { className: (0, _classnames2.default)({ 'premium-active': currentTab === LAYOUT }), onClick: function onClick() {
+                                return _onTabChange(LAYOUT);
+                            } },
+                        React.createElement(
+                            'svg',
+                            { id: 'Layer_1', 'data-name': 'Layer 1', xmlns: 'http://www.w3.org/2000/svg', width: '23.98', height: '23.99', viewBox: '0 0 23.98 23.99' },
+                            React.createElement('defs', null),
+                            React.createElement(
+                                'title',
+                                null,
+                                'layout-tab'
+                            ),
+                            React.createElement(
+                                'g',
+                                { id: 'Layout' },
+                                React.createElement('path', { 'class': 'cls-1', d: 'M23.84,2.9a4,4,0,0,0-1-1.74,4,4,0,0,0-1.75-1,3.85,3.85,0,0,0-2,0,31.93,31.93,0,0,0-9,4v8.48l6.29-6.3a1.19,1.19,0,0,1,.33-.22,1,1,0,0,1,.77,0,1,1,0,0,1,.55.55,1,1,0,0,1,0,.77,1.19,1.19,0,0,1-.22.33L14.41,11H21.6a30.63,30.63,0,0,0,2.28-6.07A4,4,0,0,0,23.84,2.9Z', transform: 'translate(-0.01 0)' }),
+                                React.createElement('path', { 'class': 'cls-1', d: 'M20.53,13a28.68,28.68,0,0,1-4,5.46,8.24,8.24,0,0,1-2.69,1.87,8.07,8.07,0,0,1-3.21.67A7.43,7.43,0,0,1,6,19.42L12.43,13h8.1Z', transform: 'translate(-0.01 0)' }),
+                                React.createElement('path', { 'class': 'cls-1', d: 'M5.82,19.31l.17.11L1.71,23.71A1,1,0,0,1,1,24a1,1,0,0,1-.69-.3A1,1,0,0,1,0,23a1,1,0,0,1,.28-.71L4.58,18A8,8,0,0,0,5.82,19.31Z', transform: 'translate(-0.01 0)' }),
+                                React.createElement('path', { 'class': 'cls-1', d: 'M4.58,18A7.72,7.72,0,0,1,5.26,7.87,25.63,25.63,0,0,1,8,5.51v9a.35.35,0,0,0,0,.06Z', transform: 'translate(-0.01 0)' })
+                            )
+                        ),
+                        '                                    ',
+                        React.createElement(
+                            'h5',
+                            null,
+                            __('Layout', 'premium-blocks-for-gutenberg')
+                        )
+                    )
+                ),
+                tabs.indexOf(STYLE) > -1 && React.createElement(
+                    Tooltip,
+                    { text: __('Style', 'premium-blocks-for-gutenberg') },
+                    React.createElement(
+                        'button',
+                        { className: (0, _classnames2.default)({ 'premium-active': currentTab === STYLE }), onClick: function onClick() {
+                                return _onTabChange(STYLE);
+                            } },
+                        React.createElement(
+                            'svg',
+                            { id: 'Layer_1', 'data-name': 'Layer 1', xmlns: 'http://www.w3.org/2000/svg', width: '24', height: '24', viewBox: '0 0 24 24' },
+                            React.createElement('defs', null),
+                            React.createElement(
+                                'title',
+                                null,
+                                'style-tab'
+                            ),
+                            React.createElement(
+                                'g',
+                                { id: 'Style' },
+                                React.createElement('path', { 'class': 'cls-1', d: 'M2.89,6.84a.93.93,0,0,0,.46-.12,1,1,0,0,0,.37-.32,10,10,0,0,1,2.8-2.77,1,1,0,0,0,.28-.27A.82.82,0,0,0,7,3a1,1,0,0,0,0-.39,1.2,1.2,0,0,0-.15-.37A1,1,0,0,0,6.54,2a1,1,0,0,0-.36-.16,1.27,1.27,0,0,0-.39,0A1.2,1.2,0,0,0,5.42,2,11.94,11.94,0,0,0,2.06,5.28a1,1,0,0,0-.17.5A1,1,0,0,0,2,6.3a1.07,1.07,0,0,0,.37.39A1,1,0,0,0,2.89,6.84Z', transform: 'translate(0)' }),
+                                React.createElement('path', { 'class': 'cls-1', d: 'M2,12a10,10,0,0,1,.19-2,1,1,0,0,0,0-.39,1.2,1.2,0,0,0-.15-.37A1.07,1.07,0,0,0,1.77,9a1.14,1.14,0,0,0-.36-.15.86.86,0,0,0-.39,0A1.2,1.2,0,0,0,.65,9a1,1,0,0,0-.27.28,1.2,1.2,0,0,0-.15.37,12.14,12.14,0,0,0,0,4.73,1,1,0,0,0,.35.57,1,1,0,0,0,.63.23l.2,0a1,1,0,0,0,.64-.43A1,1,0,0,0,2.2,14,10.05,10.05,0,0,1,2,12Z', transform: 'translate(0)' }),
+                                React.createElement('path', { 'class': 'cls-1', d: 'M6.53,20.37a9.85,9.85,0,0,1-2.81-2.76,1.07,1.07,0,0,0-.28-.28.93.93,0,0,0-.36-.14,1,1,0,0,0-1,1.54A11.94,11.94,0,0,0,5.43,22a1,1,0,0,0,.75.15,1.06,1.06,0,0,0,.64-.43A1,1,0,0,0,7,21a1,1,0,0,0-.43-.64Z', transform: 'translate(0)' }),
+                                React.createElement('path', { 'class': 'cls-1', d: 'M12,0A12.17,12.17,0,0,0,9.83.2a1,1,0,0,0-.62.38,1,1,0,0,0-.2.69,1,1,0,0,0,.32.65,1,1,0,0,0,.68.26h.18A10,10,0,0,1,12,2V22a10,10,0,0,1-1.81-.16,1,1,0,0,0-1.17.8,1.05,1.05,0,0,0,.17.75,1,1,0,0,0,.64.41A12.05,12.05,0,0,0,15,23.61a12.23,12.23,0,0,0,4.64-2.39A12,12,0,0,0,12,0Z', transform: 'translate(0)' })
+                            )
+                        ),
+                        React.createElement(
+                            'h5',
+                            null,
+                            __('Style', 'premium-blocks-for-gutenberg')
+                        )
+                    )
+                ),
+                tabs.indexOf(ADVANCE) > -1 && React.createElement(
+                    Tooltip,
+                    { text: __('Advanced', 'premium-blocks-for-gutenberg') },
+                    React.createElement(
+                        'button',
+                        { className: (0, _classnames2.default)({ 'premium-active': currentTab === ADVANCE }), onClick: function onClick() {
+                                return _onTabChange(ADVANCE);
+                            } },
+                        React.createElement(
+                            'svg',
+                            { id: 'Layer_1', 'data-name': 'Layer 1', xmlns: 'http://www.w3.org/2000/svg', width: '21.59', height: '24', viewBox: '0 0 21.59 24' },
+                            React.createElement('defs', null),
+                            React.createElement(
+                                'title',
+                                null,
+                                'advanced-tab'
+                            ),
+                            React.createElement('path', { id: 'Advanced', 'class': 'cls-1', d: 'M1.61,18A3,3,0,0,0,5.7,19.1h0l.44-.26A9,9,0,0,0,9,20.49V21a3,3,0,0,0,6,0v-.51a9,9,0,0,0,2.85-1.65l.45.26a3,3,0,0,0,3-5.2l-.45-.26a9.1,9.1,0,0,0,0-3.29l.45-.25a3,3,0,0,0-3-5.2l-.45.25A9.21,9.21,0,0,0,15,3.51V3A3,3,0,0,0,9,3v.51A9,9,0,0,0,6.15,5.16L5.71,4.9a3,3,0,1,0-3,5.2l.44.26a9.1,9.1,0,0,0,0,3.29l-.44.25A3,3,0,0,0,1.61,18ZM12,8a4,4,0,1,1-4,4A4,4,0,0,1,12,8Z', transform: 'translate(-1.2)' })
+                        ),
+                        React.createElement(
+                            'h5',
+                            null,
+                            __('Advanced', 'premium-blocks-for-gutenberg')
+                        )
+                    )
+                )
+            )
+        ),
+        Array.isArray(children) && Children.map(children, function (child, index) {
+            if (!child.key) {
+                throw new Error('props.key not found in <InspectorTab />, you must use `key` prop');
+                return;
+            }
+            return cloneElement(child, {
+                index: index,
+                isActive: child.key === currentTab
+            });
+        })
+    );
+};
+
+InspectorTabs.defaultProps = {
+    defaultTab: null,
+    tabs: ['layout', 'style', 'advance']
+};
+
+exports.default = InspectorTabs;
+
+/***/ }),
+/* 400 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var InspectorTab = function InspectorTab(props) {
+    var children = props.children,
+        isActive = props.isActive,
+        key = props.key;
+
+    return React.createElement(
+        'div',
+        {
+            style: {
+                display: isActive ? 'block' : 'none'
+            },
+            className: 'premium-inspector-tab'
+        },
+        Array.isArray(children) ? children.map(function (item) {
+            return item;
+        }) : children
+    );
+};
+
+exports.default = InspectorTab;
+
+/***/ }),
+/* 401 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _singleRangeControl = __webpack_require__(2);
+
+var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var __ = wp.i18n.__;
+var _wp$element = wp.element,
+    Component = _wp$element.Component,
+    Fragment = _wp$element.Fragment;
+var SelectControl = wp.components.SelectControl;
+
+
+var defaultData = { animation: '', name: 'fadeCenter', repeat: 'once', direction: 'center', duration: 1000, delay: 0, curve: 'ease-in-out' };
+
+var Animation = function (_Component) {
+    _inherits(Animation, _Component);
+
+    function Animation() {
+        _classCallCheck(this, Animation);
+
+        var _this = _possibleConstructorReturn(this, (Animation.__proto__ || Object.getPrototypeOf(Animation)).apply(this, arguments));
+
+        _this.state = {
+            isAnimate: false
+        };
+        return _this;
+    }
+
+    _createClass(Animation, [{
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+            this.props.onChange(Object.assign({}, defaultData, this.props.value || {}));
+        }
+    }, {
+        key: 'setSettings',
+        value: function setSettings(type, val) {
+            var _ref;
+
+            var openAnimation = val == '' ? { openAnimation: 0 } : { openAnimation: 1 };
+            var data = Object.assign({}, this.props.value, openAnimation, type == 'animation' ? (_ref = {}, _defineProperty(_ref, type, val), _defineProperty(_ref, 'direction', this._valueChange(val, 'change')), _ref) : _defineProperty({}, type, val));
+            data.name = data.animation + data.direction;
+            this.props.onChange(data);
+        }
+    }, {
+        key: '_valueChange',
+        value: function _valueChange(value, type) {
+            var returnData = value == 'rotate' ? [{ label: __('DownLeft'), value: 'DownLeft' }, { label: __('DownRight'), value: 'DownRight' }, { label: __('UpLeft'), value: 'UpLeft' }, { label: __('UpRight'), value: 'UpRight' }] : value == 'slide' || value == 'flip' || value == 'fold' ? [{ label: __('Right'), value: 'Right' }, { label: __('Left'), value: 'Left' }, { label: __('Up'), value: 'Up' }, { label: __('Down'), value: 'Down' }] : [{ label: __('Center'), value: 'center' }, { label: __('Right'), value: 'Right' }, { label: __('Left'), value: 'Left' }, { label: __('Up'), value: 'Up' }, { label: __('Down'), value: 'Down' }];
+            if (type == 'data') {
+                return returnData;
+            } else {
+                return returnData[0].value;
+            }
+        }
+    }, {
+        key: 'doAnimate',
+        value: function doAnimate() {
+            var _props = this.props,
+                value = _props.value,
+                uniqueId = _props.uniqueId;
+
+            if (typeof uniqueId !== 'undefined') {
+                var isAnimate = this.state.isAnimate;
+
+                var blockId = $('.premium-blocks-' + uniqueId);
+                if (isAnimate && value.repeat !== 'once') {
+                    blockId.css({ 'animation-name': '' });
+                } else {
+                    blockId.css({ 'animation-name': '' });
+                    var cssObject = {
+                        'animation-name': value.name,
+                        'animation-timing-function': value.curve,
+                        'animation-duration': value.duration + 'ms',
+                        'animation-delay': value.delay + 'ms',
+                        'animation-iteration-count': value.repeat === 'once' ? 1 : 'infinite'
+                    };
+                    if (typeof this.timer !== 'undefined' && this.timer > 0) {
+                        clearTimeout(this.timer);
+                    }
+                    this.timer = setTimeout(function () {
+                        blockId.css(cssObject);
+                    }, 300);
+                }
+                this.setState({ isAnimate: !isAnimate });
+            }
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            var _props2 = this.props,
+                value = _props2.value,
+                label = _props2.label,
+                uniqueId = _props2.uniqueId;
+
+            var isActive = value && value.openAnimation === 1 ? true : false;
+
+            return React.createElement(
+                'div',
+                { className: 'premium-fields premium-animation premium-field-alt' },
+                React.createElement(SelectControl, {
+                    label: label ? label : '',
+                    value: value.animation || '',
+                    options: [{ value: ' ', label: __('None', 'premium-blocks-for-gutenberg') }, { value: 'fade', label: __('Fade', 'premium-blocks-for-gutenberg') }, { value: 'slide', label: __('Slide', 'premium-blocks-for-gutenberg') }, { value: 'bounce', label: __('Bounce', 'premium-blocks-for-gutenberg') }, { value: 'zoom', label: __('Zoom', 'premium-blocks-for-gutenberg') }, { value: 'flip', label: __('Flip', 'premium-blocks-for-gutenberg') }, { value: 'fold', label: __('Fold', 'premium-blocks-for-gutenberg') }, { value: 'rotate', label: __('Rotate', 'premium-blocks-for-gutenberg') }],
+                    onChange: function onChange(val) {
+                        return _this2.setSettings('animation', val);
+                    }
+                }),
+                isActive && React.createElement(
+                    Fragment,
+                    null,
+                    React.createElement(SelectControl, {
+                        label: __('Direction', 'premium-blocks-for-gutenberg'),
+                        value: value.direction || 'center',
+                        options: this._valueChange(value.animation, 'data'),
+                        onChange: function onChange(val) {
+                            return _this2.setSettings('direction', val);
+                        }
+                    }),
+                    React.createElement(SelectControl, {
+                        label: __('Repeat', 'premium-blocks-for-gutenberg'),
+                        value: value.repeat || 'once',
+                        options: [{ value: 'once', label: __('Once') }, { value: 'loop', label: __('Loop') }],
+                        onChange: function onChange(val) {
+                            return _this2.setSettings('repeat', val);
+                        }
+                    }),
+                    React.createElement(_singleRangeControl2.default, {
+                        label: __("Duration", 'premium-blocks-for-gutenberg'),
+                        min: 0,
+                        max: 2000,
+                        value: value.duration || 1000,
+                        defaultValue: 1000,
+                        onChange: function onChange(val) {
+                            return _this2.setSettings('duration', val);
+                        },
+                        showUnit: false
+                    }),
+                    React.createElement(_singleRangeControl2.default, {
+                        label: __('Delay', 'premium-blocks-for-gutenberg'),
+                        min: 0,
+                        max: 3000,
+                        value: value.delay || 0,
+                        defaultValue: 0,
+                        onChange: function onChange(val) {
+                            return _this2.setSettings('delay', val);
+                        },
+                        showUnit: false
+                    }),
+                    value && value.animation != 'bounce' && value.animation != 'zoom' && React.createElement(SelectControl, {
+                        label: __('Curve', 'premium-blocks-for-gutenberg'),
+                        value: value.curve || 'ease-in-out',
+                        options: [{ value: 'ease-in-out', label: __('Ease-in-out', 'premium-blocks-for-gutenberg') }, { value: 'ease', label: __('Ease', 'premium-blocks-for-gutenberg') }, { value: 'ease-in', label: __('Ease-in', 'premium-blocks-for-gutenberg') }, { value: 'ease-out', label: __('Ease-out', 'premium-blocks-for-gutenberg') }, { value: 'linear', label: __('Linear', 'premium-blocks-for-gutenberg') }],
+                        onChange: function onChange(val) {
+                            return _this2.setSettings('curve', val);
+                        }
+                    }),
+                    typeof uniqueId !== 'undefined' && React.createElement(
+                        'button',
+                        { onClick: function onClick() {
+                                return _this2.doAnimate();
+                            }, className: 'components-button is-button is-default is-primary is-large' },
+                        ' ',
+                        this.state.isAnimate && value.repeat === 'loop' ? "Stop" : "Animate",
+                        ' '
+                    )
+                )
+            );
+        }
+    }]);
+
+    return Animation;
+}(Component);
+
+exports.default = Animation;
 
 /***/ })
 /******/ ]);
