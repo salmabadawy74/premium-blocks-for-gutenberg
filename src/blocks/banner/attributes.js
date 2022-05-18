@@ -230,6 +230,13 @@ const attributes = {
     paddingLMobile: {
         type: "number"
     },
+    titleSize: {
+        type: "object",
+        default: {
+            Desktop: '200',
+            unit: 'px'
+        }
+    }
 }
 
 export default attributes;
