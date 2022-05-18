@@ -157,5 +157,12 @@ const LottieAttr = {
     paddingLMobile: {
         type: 'number'
     },
+    lottieWidth: {
+        type: "object",
+        default: {
+            Desktop: '200',
+            unit: 'px'
+        }
+    }
 }
 export default LottieAttr;
