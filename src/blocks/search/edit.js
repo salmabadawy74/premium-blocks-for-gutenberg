@@ -56,7 +56,7 @@ import {
 import Modal from './Modal';
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 import PremiumBorder from "../../components/premium-border"
-import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
+import SpacingComponent from '../../components/premium-responsive-spacing';
 import PremiumTypo from "../../components/premium-typo"
 const MIN_WIDTH = 220;
 export default function SearchEdit({
@@ -119,26 +119,6 @@ export default function SearchEdit({
 	const hasNoButton = 'no-button' === buttonPosition;
 	const hasOnlyButton = 'button-only' === buttonPosition;
 
-	const defaultSpacingValue = {
-		desktop: {
-			top: '',
-			right: '',
-			bottom: '',
-			left: ''
-		},
-		tablet: {
-			top: '',
-			right: '',
-			bottom: '',
-			left: ''
-		},
-		mobile: {
-			top: '',
-			right: '',
-			bottom: '',
-			left: ''
-		}
-	};
 	const defaultSize = {
 		desktop: "",
 		tablet: "",
@@ -146,9 +126,9 @@ export default function SearchEdit({
 		unit: "px"
 	};
 
-	let padding = spacing.padding ? spacing.padding : defaultSpacingValue;
+	let padding = spacing.padding ? spacing.padding : {};
 	const fontSize = typography.size ? typography.size : defaultSize;
-	let buttonPadding = spacing.buttonPadding ? spacing.buttonPadding : defaultSpacingValue;
+	let buttonPadding = spacing.buttonPadding ? spacing.buttonPadding : {};
 	const buttonFontSize = buttonTypography.size ? buttonTypography.size : defaultSize;
 
 	const getBlockClassNames = () => {
@@ -243,16 +223,10 @@ export default function SearchEdit({
 		setAttributes({ border: { ...newBorder, ...value } })
 	};
 
-	const onChangePadding = (side, value, device) => {
-		const newPadding = { ...padding };
-		newPadding[device][side] = value;
-		setAttributes({ spacing: { ...spacing, padding: newPadding } });
-	}
-
-	const onChangeButtonPadding = (side, value, device) => {
-		const newPadding = { ...buttonPadding };
-		newPadding[device][side] = value;
-		setAttributes({ spacing: { ...spacing, buttonPadding: newPadding } });
+	const onChangeSpacing = (value) => {
+		const newSpacing = { ...spacing, ...value };
+		console.log(newSpacing);
+		setAttributes({ spacing: newSpacing });
 	}
 
 	const onChangePositionSide = (value) => {
@@ -305,10 +279,10 @@ export default function SearchEdit({
 		borderLeftWidth: border.left,
 		borderRadius: border.radius,
 		borderColor: border.color,
-		paddingTop: `${padding.desktop.top}px`,
-		paddingRight: `${padding.desktop.right}px`,
-		paddingBottom: `${padding.desktop.bottom}px`,
-		paddingLeft: `${padding.desktop.left}px`,
+		paddingTop: `${padding?.Desktop?.top}${padding?.unit}`,
+		paddingRight: `${padding?.Desktop?.right}${padding?.unit}`,
+		paddingBottom: `${padding.Desktop?.bottom}${padding?.unit}`,
+		paddingLeft: `${padding?.Desktop?.left}${padding?.unit}`,
 	};
 
 	const textTypoStyles = {
@@ -360,10 +334,10 @@ export default function SearchEdit({
 		const butttonStyles = {
 			color: colors.btnText,
 			backgroundColor: colors.btnBackground,
-			paddingTop: `${buttonPadding.desktop.top}px`,
-			paddingRight: `${buttonPadding.desktop.right}px`,
-			paddingBottom: `${buttonPadding.desktop.bottom}px`,
-			paddingLeft: `${buttonPadding.desktop.left}px`,
+			paddingTop: `${buttonPadding?.Desktop?.top}${buttonPadding?.unit}`,
+			paddingRight: `${buttonPadding?.Desktop?.right}${buttonPadding?.unit}`,
+			paddingBottom: `${buttonPadding?.Desktop?.bottom}${buttonPadding?.unit}`,
+			paddingLeft: `${buttonPadding?.Desktop?.left}${buttonPadding?.unit}`,
 			fontSize: `${buttonFontSize.desktop}${buttonFontSize.unit}`,
 			fontFamily: buttonTypography.family,
 			fontWeight: buttonTypography.weight,
@@ -649,87 +623,14 @@ export default function SearchEdit({
 						/>
 					</PanelBody>
 				)}
-				{formStyle === 'default' && (
-					<PanelBody
-						title={__('Input Spacing', 'premium-blocks-for-gutenberg')}
-						initialOpen={false}
-					>
-						<PremiumResponsivePadding
-							directions={["all"]}
-							paddingTop={padding.desktop.top}
-							paddingRight={padding.desktop.right}
-							paddingBottom={padding.desktop.bottom}
-							paddingLeft={padding.desktop.left}
-							paddingTopTablet={padding.tablet.top}
-							paddingRightTablet={padding.tablet.right}
-							paddingBottomTablet={padding.tablet.bottom}
-							paddingLeftTablet={padding.tablet.left}
-							paddingTopMobile={padding.mobile.top}
-							paddingRightMobile={padding.mobile.right}
-							paddingBottomMobile={padding.mobile.bottom}
-							paddingLeftMobile={padding.mobile.left}
-							onChangePaddingTop={
-								(device, newValue) => {
-									onChangePadding('top', newValue, device);
-								}
-							}
-							onChangePaddingRight={
-								(device, newValue) => {
-									onChangePadding('right', newValue, device);
-								}
-							}
-							onChangePaddingBottom={
-								(device, newValue) => {
-									onChangePadding('bottom', newValue, device);
-								}
-							}
-							onChangePaddingLeft={
-								(device, newValue) => {
-									onChangePadding('left', newValue, device);
-								}
-							}
-						/>
-					</PanelBody>
-				)}
 				<PanelBody
-					title={__('Button Spacing', 'premium-blocks-for-gutenberg')}
+					title={__('Spacing', 'premium-blocks-for-gutenberg')}
 					initialOpen={false}
 				>
-					<PremiumResponsivePadding
-						directions={["all"]}
-						paddingTop={buttonPadding.desktop.top}
-						paddingRight={buttonPadding.desktop.right}
-						paddingBottom={buttonPadding.desktop.bottom}
-						paddingLeft={buttonPadding.desktop.left}
-						paddingTopTablet={buttonPadding.tablet.top}
-						paddingRightTablet={buttonPadding.tablet.right}
-						paddingBottomTablet={buttonPadding.tablet.bottom}
-						paddingLeftTablet={buttonPadding.tablet.left}
-						paddingTopMobile={buttonPadding.mobile.top}
-						paddingRightMobile={buttonPadding.mobile.right}
-						paddingBottomMobile={buttonPadding.mobile.bottom}
-						paddingLeftMobile={buttonPadding.mobile.left}
-						onChangePaddingTop={
-							(device, newValue) => {
-								onChangeButtonPadding('top', newValue, device);
-							}
-						}
-						onChangePaddingRight={
-							(device, newValue) => {
-								onChangeButtonPadding('right', newValue, device);
-							}
-						}
-						onChangePaddingBottom={
-							(device, newValue) => {
-								onChangeButtonPadding('bottom', newValue, device);
-							}
-						}
-						onChangePaddingLeft={
-							(device, newValue) => {
-								onChangeButtonPadding('left', newValue, device);
-							}
-						}
-					/>
+					{formStyle === 'default' && (
+						<SpacingComponent value={padding} responsive={true} showUnits={true} label={__('Input Padding')} onChange={(value) => onChangeSpacing({ padding: value })} />
+					)}
+					<SpacingComponent value={buttonPadding} responsive={true} showUnits={true} label={__('Button Padding')} onChange={(value) => onChangeSpacing({ buttonPadding: value })} />
 				</PanelBody>
 				<PanelBody title={__('Colors')}>
 					<TabPanel

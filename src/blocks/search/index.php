@@ -9,9 +9,9 @@ function get_premium_search_css( $attributes, $unique_id ) {
 	$block_helpers          = new PBG_Blocks_Helper();
 	$css                    = new Premium_Blocks_css();
 	$media_query            = array();
-	$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
-	$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
-	$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
+	$media_query['Mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
+	$media_query['Tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
+	$media_query['Desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
 
 	if ( isset( $attributes['typography'] ) ) {
 		$typography = $attributes['typography'];
@@ -113,22 +113,22 @@ function get_premium_search_css( $attributes, $unique_id ) {
 		if ( $spacing['padding'] ) {
 			$padding = $spacing['padding'];
 			$css->set_selector( '#' . $unique_id . ':not(.wp-block-search__button-inside) .wp-block-premium-search__input, #' . $unique_id . '.wp-block-search__button-inside .wp-block-premium-search__inside-wrapper' );
-			$css->add_property( 'padding-top', $css->render_color( $padding['desktop']['top'] . 'px' ) );
-			$css->add_property( 'padding-right', $css->render_color( $padding['desktop']['right'] . 'px' ) );
-			$css->add_property( 'padding-bottom', $css->render_color( $padding['desktop']['bottom'] . 'px' ) );
-			$css->add_property( 'padding-left', $css->render_color( $padding['desktop']['left'] . 'px' ) );
+			$css->add_property( 'padding-top', $css->render_color( $padding['Desktop']['top'] . 'px' ) );
+			$css->add_property( 'padding-right', $css->render_color( $padding['Desktop']['right'] . 'px' ) );
+			$css->add_property( 'padding-bottom', $css->render_color( $padding['Desktop']['bottom'] . 'px' ) );
+			$css->add_property( 'padding-left', $css->render_color( $padding['Desktop']['left'] . 'px' ) );
 		}
 
 		if ( $spacing['buttonPadding'] ) {
 			$button_padding = $spacing['buttonPadding'];
 			$css->set_selector( '#' . $unique_id . ' .wp-block-premium-search__button' );
-			$css->add_property( 'padding-top', $css->render_color( $button_padding['desktop']['top'] . 'px' ) );
-			$css->add_property( 'padding-right', $css->render_color( $button_padding['desktop']['right'] . 'px' ) );
-			$css->add_property( 'padding-bottom', $css->render_color( $button_padding['desktop']['bottom'] . 'px' ) );
-			$css->add_property( 'padding-left', $css->render_color( $button_padding['desktop']['left'] . 'px' ) );
+			$css->add_property( 'padding-top', $css->render_color( $button_padding['Desktop']['top'] . 'px' ) );
+			$css->add_property( 'padding-right', $css->render_color( $button_padding['Desktop']['right'] . 'px' ) );
+			$css->add_property( 'padding-bottom', $css->render_color( $button_padding['Desktop']['bottom'] . 'px' ) );
+			$css->add_property( 'padding-left', $css->render_color( $button_padding['Desktop']['left'] . 'px' ) );
 		}
 
-		$css->start_media_query( $media_query['tablet'] );
+		$css->start_media_query( $media_query['Tablet'] );
 		if ( isset( $attributes['typography'] ) ) {
 			$typography = $attributes['typography'];
 			$css->set_selector( '#' . $unique_id . ' .wp-block-premium-search__input' );
@@ -148,23 +148,23 @@ function get_premium_search_css( $attributes, $unique_id ) {
 		if ( $spacing['padding'] ) {
 			$padding = $spacing['padding'];
 			$css->set_selector( '#' . $unique_id . ':not(.wp-block-search__button-inside) .wp-block-premium-search__input, #' . $unique_id . '.wp-block-search__button-inside .wp-block-premium-search__inside-wrapper' );
-			$css->add_property( 'padding-top', $css->render_color( $padding['tablet']['top'] . 'px' ) );
-			$css->add_property( 'padding-right', $css->render_color( $padding['tablet']['right'] . 'px' ) );
-			$css->add_property( 'padding-bottom', $css->render_color( $padding['tablet']['bottom'] . 'px' ) );
-			$css->add_property( 'padding-left', $css->render_color( $padding['tablet']['left'] . 'px' ) );
+			$css->add_property( 'padding-top', $css->render_color( $padding['Tablet']['top'] . 'px' ) );
+			$css->add_property( 'padding-right', $css->render_color( $padding['Tablet']['right'] . 'px' ) );
+			$css->add_property( 'padding-bottom', $css->render_color( $padding['Tablet']['bottom'] . 'px' ) );
+			$css->add_property( 'padding-left', $css->render_color( $padding['Tablet']['left'] . 'px' ) );
 		}
 
 		if ( $spacing['buttonPadding'] ) {
 			$button_padding = $spacing['buttonPadding'];
 			$css->set_selector( '#' . $unique_id . ' .wp-block-premium-search__button' );
-			$css->add_property( 'padding-top', $css->render_color( $button_padding['tablet']['top'] . 'px' ) );
-			$css->add_property( 'padding-right', $css->render_color( $button_padding['tablet']['right'] . 'px' ) );
-			$css->add_property( 'padding-bottom', $css->render_color( $button_padding['tablet']['bottom'] . 'px' ) );
-			$css->add_property( 'padding-left', $css->render_color( $button_padding['tablet']['left'] . 'px' ) );
+			$css->add_property( 'padding-top', $css->render_color( $button_padding['Tablet']['top'] . 'px' ) );
+			$css->add_property( 'padding-right', $css->render_color( $button_padding['Tablet']['right'] . 'px' ) );
+			$css->add_property( 'padding-bottom', $css->render_color( $button_padding['Tablet']['bottom'] . 'px' ) );
+			$css->add_property( 'padding-left', $css->render_color( $button_padding['Tablet']['left'] . 'px' ) );
 		}
 
 		$css->stop_media_query();
-		$css->start_media_query( $media_query['mobile'] );
+		$css->start_media_query( $media_query['Mobile'] );
 		if ( isset( $attributes['typography'] ) ) {
 			$typography = $attributes['typography'];
 			$css->set_selector( '#' . $unique_id . ' .wp-block-premium-search__input' );
@@ -184,19 +184,19 @@ function get_premium_search_css( $attributes, $unique_id ) {
 		if ( $spacing['padding'] ) {
 			$padding = $spacing['padding'];
 			$css->set_selector( '#' . $unique_id . ':not(.wp-block-search__button-inside) .wp-block-premium-search__input, #' . $unique_id . '.wp-block-search__button-inside .wp-block-premium-search__inside-wrapper' );
-			$css->add_property( 'padding-top', $css->render_color( $padding['mobile']['top'] . 'px' ) );
-			$css->add_property( 'padding-right', $css->render_color( $padding['mobile']['right'] . 'px' ) );
-			$css->add_property( 'padding-bottom', $css->render_color( $padding['mobile']['bottom'] . 'px' ) );
-			$css->add_property( 'padding-left', $css->render_color( $padding['mobile']['left'] . 'px' ) );
+			$css->add_property( 'padding-top', $css->render_color( $padding['Mobile']['top'] . 'px' ) );
+			$css->add_property( 'padding-right', $css->render_color( $padding['Mobile']['right'] . 'px' ) );
+			$css->add_property( 'padding-bottom', $css->render_color( $padding['Mobile']['bottom'] . 'px' ) );
+			$css->add_property( 'padding-left', $css->render_color( $padding['Mobile']['left'] . 'px' ) );
 		}
 
 		if ( $spacing['buttonPadding'] ) {
 			$button_padding = $spacing['buttonPadding'];
 			$css->set_selector( '#' . $unique_id . ' .wp-block-premium-search__button' );
-			$css->add_property( 'padding-top', $css->render_color( $button_padding['mobile']['top'] . 'px' ) );
-			$css->add_property( 'padding-right', $css->render_color( $button_padding['mobile']['right'] . 'px' ) );
-			$css->add_property( 'padding-bottom', $css->render_color( $button_padding['mobile']['bottom'] . 'px' ) );
-			$css->add_property( 'padding-left', $css->render_color( $button_padding['mobile']['left'] . 'px' ) );
+			$css->add_property( 'padding-top', $css->render_color( $button_padding['Mobile']['top'] . 'px' ) );
+			$css->add_property( 'padding-right', $css->render_color( $button_padding['Mobile']['right'] . 'px' ) );
+			$css->add_property( 'padding-bottom', $css->render_color( $button_padding['Mobile']['bottom'] . 'px' ) );
+			$css->add_property( 'padding-left', $css->render_color( $button_padding['Mobile']['left'] . 'px' ) );
 		}
 		$css->stop_media_query();
 	}

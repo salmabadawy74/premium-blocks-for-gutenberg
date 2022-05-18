@@ -4638,7 +4638,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Modal__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Modal */ "./search/Modal.js");
 /* harmony import */ var _components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/Color Control/ColorComponent */ "../components/Color Control/ColorComponent.js");
 /* harmony import */ var _components_premium_border__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/premium-border */ "../components/premium-border.js");
-/* harmony import */ var _components_Premium_Responsive_Padding__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/Premium-Responsive-Padding */ "../components/Premium-Responsive-Padding.js");
+/* harmony import */ var _components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/premium-responsive-spacing */ "../components/premium-responsive-spacing.js");
 /* harmony import */ var _components_premium_typo__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../components/premium-typo */ "../components/premium-typo.js");
 
 
@@ -4673,6 +4673,8 @@ __webpack_require__.r(__webpack_exports__);
 
 const MIN_WIDTH = 220;
 function SearchEdit(_ref) {
+  var _padding$Desktop, _padding$Desktop2, _padding$Desktop3, _padding$Desktop4;
+
   let {
     className,
     attributes,
@@ -4729,35 +4731,15 @@ function SearchEdit(_ref) {
   const isButtonPositionOutside = 'button-outside' === buttonPosition;
   const hasNoButton = 'no-button' === buttonPosition;
   const hasOnlyButton = 'button-only' === buttonPosition;
-  const defaultSpacingValue = {
-    desktop: {
-      top: '',
-      right: '',
-      bottom: '',
-      left: ''
-    },
-    tablet: {
-      top: '',
-      right: '',
-      bottom: '',
-      left: ''
-    },
-    mobile: {
-      top: '',
-      right: '',
-      bottom: '',
-      left: ''
-    }
-  };
   const defaultSize = {
     desktop: "",
     tablet: "",
     mobile: "",
     unit: "px"
   };
-  let padding = spacing.padding ? spacing.padding : defaultSpacingValue;
+  let padding = spacing.padding ? spacing.padding : {};
   const fontSize = typography.size ? typography.size : defaultSize;
-  let buttonPadding = spacing.buttonPadding ? spacing.buttonPadding : defaultSpacingValue;
+  let buttonPadding = spacing.buttonPadding ? spacing.buttonPadding : {};
   const buttonFontSize = buttonTypography.size ? buttonTypography.size : defaultSize;
 
   const getBlockClassNames = () => {
@@ -4842,25 +4824,13 @@ function SearchEdit(_ref) {
     });
   };
 
-  const onChangePadding = (side, value, device) => {
-    const newPadding = { ...padding
+  const onChangeSpacing = value => {
+    const newSpacing = { ...spacing,
+      ...value
     };
-    newPadding[device][side] = value;
+    console.log(newSpacing);
     setAttributes({
-      spacing: { ...spacing,
-        padding: newPadding
-      }
-    });
-  };
-
-  const onChangeButtonPadding = (side, value, device) => {
-    const newPadding = { ...buttonPadding
-    };
-    newPadding[device][side] = value;
-    setAttributes({
-      spacing: { ...spacing,
-        buttonPadding: newPadding
-      }
+      spacing: newSpacing
     });
   };
 
@@ -4942,10 +4912,10 @@ function SearchEdit(_ref) {
     borderLeftWidth: border.left,
     borderRadius: border.radius,
     borderColor: border.color,
-    paddingTop: `${padding.desktop.top}px`,
-    paddingRight: `${padding.desktop.right}px`,
-    paddingBottom: `${padding.desktop.bottom}px`,
-    paddingLeft: `${padding.desktop.left}px`
+    paddingTop: `${padding === null || padding === void 0 ? void 0 : (_padding$Desktop = padding.Desktop) === null || _padding$Desktop === void 0 ? void 0 : _padding$Desktop.top}${padding === null || padding === void 0 ? void 0 : padding.unit}`,
+    paddingRight: `${padding === null || padding === void 0 ? void 0 : (_padding$Desktop2 = padding.Desktop) === null || _padding$Desktop2 === void 0 ? void 0 : _padding$Desktop2.right}${padding === null || padding === void 0 ? void 0 : padding.unit}`,
+    paddingBottom: `${(_padding$Desktop3 = padding.Desktop) === null || _padding$Desktop3 === void 0 ? void 0 : _padding$Desktop3.bottom}${padding === null || padding === void 0 ? void 0 : padding.unit}`,
+    paddingLeft: `${padding === null || padding === void 0 ? void 0 : (_padding$Desktop4 = padding.Desktop) === null || _padding$Desktop4 === void 0 ? void 0 : _padding$Desktop4.left}${padding === null || padding === void 0 ? void 0 : padding.unit}`
   };
   const textTypoStyles = {
     fontSize: `${fontSize.desktop}${fontSize.unit}`,
@@ -4985,15 +4955,17 @@ function SearchEdit(_ref) {
   };
 
   const renderButton = () => {
+    var _buttonPadding$Deskto, _buttonPadding$Deskto2, _buttonPadding$Deskto3, _buttonPadding$Deskto4;
+
     // If the button is inside the wrapper, the wrapper gets the border color styles/classes, not the button.
     const buttonClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()('wp-block-premium-search__button', isButtonPositionInside ? undefined : '', buttonUseIcon ? 'has-icon' : undefined);
     const butttonStyles = {
       color: colors.btnText,
       backgroundColor: colors.btnBackground,
-      paddingTop: `${buttonPadding.desktop.top}px`,
-      paddingRight: `${buttonPadding.desktop.right}px`,
-      paddingBottom: `${buttonPadding.desktop.bottom}px`,
-      paddingLeft: `${buttonPadding.desktop.left}px`,
+      paddingTop: `${buttonPadding === null || buttonPadding === void 0 ? void 0 : (_buttonPadding$Deskto = buttonPadding.Desktop) === null || _buttonPadding$Deskto === void 0 ? void 0 : _buttonPadding$Deskto.top}${buttonPadding === null || buttonPadding === void 0 ? void 0 : buttonPadding.unit}`,
+      paddingRight: `${buttonPadding === null || buttonPadding === void 0 ? void 0 : (_buttonPadding$Deskto2 = buttonPadding.Desktop) === null || _buttonPadding$Deskto2 === void 0 ? void 0 : _buttonPadding$Deskto2.right}${buttonPadding === null || buttonPadding === void 0 ? void 0 : buttonPadding.unit}`,
+      paddingBottom: `${buttonPadding === null || buttonPadding === void 0 ? void 0 : (_buttonPadding$Deskto3 = buttonPadding.Desktop) === null || _buttonPadding$Deskto3 === void 0 ? void 0 : _buttonPadding$Deskto3.bottom}${buttonPadding === null || buttonPadding === void 0 ? void 0 : buttonPadding.unit}`,
+      paddingLeft: `${buttonPadding === null || buttonPadding === void 0 ? void 0 : (_buttonPadding$Deskto4 = buttonPadding.Desktop) === null || _buttonPadding$Deskto4 === void 0 ? void 0 : _buttonPadding$Deskto4.left}${buttonPadding === null || buttonPadding === void 0 ? void 0 : buttonPadding.unit}`,
       fontSize: `${buttonFontSize.desktop}${buttonFontSize.unit}`,
       fontFamily: buttonTypography.family,
       fontWeight: buttonTypography.weight,
@@ -5238,64 +5210,25 @@ function SearchEdit(_ref) {
     onChangeTextTransform: textTransform => onChangeButtonFont(textTransform, 'textTransform'),
     textDecoration: buttonTypography.textDecoration,
     onChangeTextDecoration: textDecoration => onChangeButtonFont(textDecoration, 'textDecoration')
-  })), formStyle === 'default' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Input Spacing', 'premium-blocks-for-gutenberg'),
-    initialOpen: false
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Premium_Responsive_Padding__WEBPACK_IMPORTED_MODULE_14__["default"], {
-    directions: ["all"],
-    paddingTop: padding.desktop.top,
-    paddingRight: padding.desktop.right,
-    paddingBottom: padding.desktop.bottom,
-    paddingLeft: padding.desktop.left,
-    paddingTopTablet: padding.tablet.top,
-    paddingRightTablet: padding.tablet.right,
-    paddingBottomTablet: padding.tablet.bottom,
-    paddingLeftTablet: padding.tablet.left,
-    paddingTopMobile: padding.mobile.top,
-    paddingRightMobile: padding.mobile.right,
-    paddingBottomMobile: padding.mobile.bottom,
-    paddingLeftMobile: padding.mobile.left,
-    onChangePaddingTop: (device, newValue) => {
-      onChangePadding('top', newValue, device);
-    },
-    onChangePaddingRight: (device, newValue) => {
-      onChangePadding('right', newValue, device);
-    },
-    onChangePaddingBottom: (device, newValue) => {
-      onChangePadding('bottom', newValue, device);
-    },
-    onChangePaddingLeft: (device, newValue) => {
-      onChangePadding('left', newValue, device);
-    }
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Button Spacing', 'premium-blocks-for-gutenberg'),
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Spacing', 'premium-blocks-for-gutenberg'),
     initialOpen: false
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Premium_Responsive_Padding__WEBPACK_IMPORTED_MODULE_14__["default"], {
-    directions: ["all"],
-    paddingTop: buttonPadding.desktop.top,
-    paddingRight: buttonPadding.desktop.right,
-    paddingBottom: buttonPadding.desktop.bottom,
-    paddingLeft: buttonPadding.desktop.left,
-    paddingTopTablet: buttonPadding.tablet.top,
-    paddingRightTablet: buttonPadding.tablet.right,
-    paddingBottomTablet: buttonPadding.tablet.bottom,
-    paddingLeftTablet: buttonPadding.tablet.left,
-    paddingTopMobile: buttonPadding.mobile.top,
-    paddingRightMobile: buttonPadding.mobile.right,
-    paddingBottomMobile: buttonPadding.mobile.bottom,
-    paddingLeftMobile: buttonPadding.mobile.left,
-    onChangePaddingTop: (device, newValue) => {
-      onChangeButtonPadding('top', newValue, device);
-    },
-    onChangePaddingRight: (device, newValue) => {
-      onChangeButtonPadding('right', newValue, device);
-    },
-    onChangePaddingBottom: (device, newValue) => {
-      onChangeButtonPadding('bottom', newValue, device);
-    },
-    onChangePaddingLeft: (device, newValue) => {
-      onChangeButtonPadding('left', newValue, device);
-    }
+  }, formStyle === 'default' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_14__["default"], {
+    value: padding,
+    responsive: true,
+    showUnits: true,
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Input Padding'),
+    onChange: value => onChangeSpacing({
+      padding: value
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_14__["default"], {
+    value: buttonPadding,
+    responsive: true,
+    showUnits: true,
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Button Padding'),
+    onChange: value => onChangeSpacing({
+      buttonPadding: value
+    })
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Colors')
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TabPanel, {
@@ -6182,155 +6115,6 @@ class AdvancedColorControl extends Component {
     disableCustomColors
   };
 })(AdvancedColorControl));
-
-/***/ }),
-
-/***/ "../components/Premium-Responsive-Padding.js":
-/*!***************************************************!*\
-  !*** ../components/Premium-Responsive-Padding.js ***!
-  \***************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _premium_padding__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./premium-padding */ "../components/premium-padding.js");
-/* harmony import */ var _premium_size_units__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./premium-size-units */ "../components/premium-size-units.js");
-
-
-
-const {
-  __
-} = wp.i18n;
-const {
-  useSelect,
-  useDispatch
-} = wp.data;
-const {
-  useState
-} = wp.element;
-
-function PremiumResponsivePadding(props) {
-  const {
-    showUnits,
-    selectedUnit,
-    onChangePadSizeUnit,
-    paddingTop,
-    paddingRight,
-    paddingBottom,
-    paddingLeft,
-    paddingTopTablet,
-    paddingRightTablet,
-    paddingBottomTablet,
-    paddingLeftTablet,
-    paddingTopMobile,
-    paddingRightMobile,
-    paddingBottomMobile,
-    paddingLeftMobile
-  } = props;
-  const [deviceType, setDeviceType] = useState('Desktop');
-
-  let customSetPreviewDeviceType = device => {
-    setDeviceType(device);
-  };
-
-  if (wp.data.select('core/edit-post')) {
-    const theDevice = useSelect(select => {
-      const {
-        __experimentalGetPreviewDeviceType = null
-      } = select('core/edit-post');
-      return __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : 'Desktop';
-    }, []);
-
-    if (theDevice !== deviceType) {
-      setDeviceType(theDevice);
-    }
-
-    const {
-      __experimentalSetPreviewDeviceType = null
-    } = useDispatch('core/edit-post');
-
-    customSetPreviewDeviceType = device => {
-      __experimentalSetPreviewDeviceType(device);
-
-      setDeviceType(device);
-    };
-  }
-
-  const devices = ['Desktop', 'Tablet', 'Mobile'];
-  const output = {};
-  output.Mobile = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_premium_padding__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    paddingTop: paddingTopMobile,
-    paddingRight: paddingRightMobile,
-    paddingBottom: paddingBottomMobile,
-    paddingLeft: paddingLeftMobile,
-    onChangePadTop: paddingTopMobile => props.onChangePaddingTop("mobile", paddingTopMobile),
-    onChangePadRight: paddingRightMobile => props.onChangePaddingRight("mobile", paddingRightMobile),
-    onChangePadBottom: paddingBottomMobile => props.onChangePaddingBottom("mobile", paddingBottomMobile),
-    onChangePadLeft: paddingLeftMobile => props.onChangePaddingLeft("mobile", paddingLeftMobile),
-    showUnits: false,
-    selectedUnit: selectedUnit,
-    onChangePadSizeUnit: onChangePadSizeUnit
-  });
-  output.Tablet = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_premium_padding__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    paddingTop: paddingTopTablet,
-    paddingRight: paddingRightTablet,
-    paddingBottom: paddingBottomTablet,
-    paddingLeft: paddingLeftTablet,
-    onChangePadTop: paddingTopTablet => props.onChangePaddingTop("tablet", paddingTopTablet),
-    onChangePadRight: paddingRightTablet => props.onChangePaddingRight("tablet", paddingRightTablet),
-    onChangePadBottom: paddingBottomTablet => props.onChangePaddingBottom("tablet", paddingBottomTablet),
-    onChangePadLeft: paddingLeftTablet => props.onChangePaddingLeft("tablet", paddingLeftTablet),
-    showUnits: false,
-    selectedUnit: selectedUnit,
-    onChangePadSizeUnit: onChangePadSizeUnit
-  });
-  output.Desktop = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_premium_padding__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    paddingTop: paddingTop,
-    paddingRight: paddingRight,
-    paddingBottom: paddingBottom,
-    paddingLeft: paddingLeft,
-    onChangePadTop: paddingTop => props.onChangePaddingTop("desktop", paddingTop),
-    onChangePadRight: paddingRight => props.onChangePaddingRight("desktop", paddingRight),
-    onChangePadBottom: paddingBottom => props.onChangePaddingBottom("desktop", paddingBottom),
-    onChangePadLeft: paddingLeft => props.onChangePaddingLeft("desktop", paddingLeft),
-    showUnits: false,
-    selectedUnit: selectedUnit,
-    onChangePadSizeUnit: onChangePadSizeUnit
-  });
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: 'premium-blocks-range-control'
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("header", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: `premium-slider-title-wrap`
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "customize-control-title premium-control-title"
-  }, "  ", __("Padding")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
-    className: "premium-responsive-control-btns premium-responsive-slider-btns"
-  }, devices.map((device, key) => {
-    const activeClass = device === deviceType ? ' active' : '';
-    const icon = device.toLowerCase() === 'mobile' ? 'smartphone' : device.toLowerCase();
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
-      key: key,
-      className: `${device}${activeClass}`
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-      type: "button",
-      className: `preview-${device}${activeClass}`,
-      "data-device": device
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
-      class: `dashicons dashicons-${icon}`,
-      onClick: () => {
-        const nextDevice = key + 1 > devices.length - 1 ? devices[0] : devices[key + 1];
-        customSetPreviewDeviceType(nextDevice);
-      }
-    })));
-  }))), showUnits && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_premium_size_units__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    activeUnit: selectedUnit,
-    onChangeSizeUnit: newValue => onChangePadSizeUnit(newValue)
-  })), output[deviceType] ? output[deviceType] : output.Desktop);
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (PremiumResponsivePadding);
 
 /***/ }),
 
@@ -12225,10 +12009,10 @@ fonts["Zilla Slab Highlight"] = {
 
 /***/ }),
 
-/***/ "../components/premium-padding.js":
-/*!****************************************!*\
-  !*** ../components/premium-padding.js ***!
-  \****************************************/
+/***/ "../components/premium-responsive-spacing.js":
+/*!***************************************************!*\
+  !*** ../components/premium-responsive-spacing.js ***!
+  \***************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12236,176 +12020,240 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _premium_size_units__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./premium-size-units */ "../components/premium-size-units.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-
 
 const {
   __
 } = wp.i18n;
+const {
+  useState,
+  useEffect,
+  Fragment
+} = wp.element;
+const {
+  useSelect,
+  useDispatch
+} = wp.data;
 
 
-class PremiumPadding extends react__WEBPACK_IMPORTED_MODULE_2__.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLinked: false,
-      top: this.props.paddingTop || '',
-      right: this.props.paddingRight || '',
-      bottom: this.props.paddingBottom || '',
-      left: this.props.paddingLeft || ''
-    };
-    this.defaultValue = {
-      isLinked: false,
-      top: '',
-      right: '',
-      bottom: '',
-      left: ''
-    };
-    this.onInputChange = this.onInputChange.bind(this);
-    this.onButtonClick = this.onButtonClick.bind(this);
-    this.changeFunction = this.changeFunction.bind(this);
-  }
-
-  onButtonClick() {
-    this.setState({
-      isLinked: !this.state.isLinked
-    });
-  }
-
-  changeFunction(value) {
-    let {
-      top,
-      right,
-      bottom,
-      left
-    } = value;
-    this.props.onChangePadTop(top);
-    this.props.onChangePadRight(right);
-    this.props.onChangePadBottom(bottom);
-    this.props.onChangePadLeft(left);
-  }
-
-  onInputChange(event) {
-    let {
-      isLinked,
-      top,
-      right,
-      bottom,
-      left
-    } = this.state;
-    let {
-      name,
-      value
-    } = event.target;
-
-    if (isLinked) {
-      top = right = bottom = left = parseInt(value) || 0;
-      this.setState({
-        top,
-        right,
-        bottom,
-        left
-      }, () => {
-        this.changeFunction(this.state);
-      });
-    } else {
-      this.setState({
-        [name]: parseInt(value) || 0
-      }, () => {
-        this.changeFunction(this.state);
-      });
+const SpacingComponent = props => {
+  let {
+    value,
+    responsive,
+    showUnits,
+    label
+  } = props;
+  const [device, setDevice] = useState("Desktop");
+  let defaultValue = {
+    value: {
+      top: "",
+      right: "",
+      bottom: "",
+      left: ""
+    },
+    unit: 'px'
+  };
+  let ResDefaultParam = {
+    Desktop: defaultValue.value,
+    Tablet: defaultValue.value,
+    Mobile: defaultValue.value,
+    unit: defaultValue.unit
+  };
+  let defaultValues = responsive ? ResDefaultParam : defaultValue.value;
+  value = value ? { ...defaultValues,
+    ...value
+  } : defaultValues;
+  const [state, setState] = useState(value);
+  const [link, setLink] = useState(false);
+  useEffect(() => {
+    if (state !== value) {
+      setState(value);
     }
+  }, [props]);
+
+  const onSpacingChange = (v, choiceID) => {
+    let updateState = { ...state
+    };
+    let deviceUpdateState = responsive ? { ...updateState[device]
+    } : { ...updateState
+    };
+
+    if (link) {
+      deviceUpdateState['top'] = v;
+      deviceUpdateState['right'] = v;
+      deviceUpdateState['bottom'] = v;
+      deviceUpdateState['left'] = v;
+    } else {
+      deviceUpdateState[choiceID] = v;
+    }
+
+    responsive ? updateState[device] = deviceUpdateState : updateState = deviceUpdateState;
+    props.onChange(updateState);
+    setState(updateState);
+  };
+
+  const onLinkClickHandler = () => {
+    let linkValue = responsive ? state[device]['top'] : state['top'];
+    let updateState = { ...state
+    };
+    let deviceUpdateState = responsive ? { ...updateState[device]
+    } : { ...updateState
+    };
+    const choices = ['top', 'right', 'bottom', "left"];
+
+    for (let choice in choices) {
+      deviceUpdateState[choices[choice]] = linkValue;
+    }
+
+    responsive ? updateState[device] = deviceUpdateState : updateState = deviceUpdateState;
+    props.onChange(updateState);
+    setState(updateState);
+  };
+
+  const renderInputHtml = function (device) {
+    let active = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+    let htmlChoices;
+    htmlChoices = ['top', 'right', 'bottom', 'left'].map(side => {
+      let inputValue = responsive ? state[device][side] : state[side];
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+        key: side,
+        className: `premium-spacing-input-item`
+      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+        type: "number",
+        className: `premium-spacing-input`,
+        value: inputValue,
+        onChange: _ref => {
+          let {
+            target: {
+              value
+            }
+          } = _ref;
+          return onSpacingChange(Number(value), side);
+        },
+        "data-id": side,
+        disabled: inputValue === "disabled" ? true : false
+      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+        className: `premium-spacing-title`
+      }, {
+        top: __('Top', 'premium-blocks-for-gutenberg'),
+        bottom: __('Bottom', 'premium-blocks-for-gutenberg'),
+        left: __('Left', 'premium-blocks-for-gutenberg'),
+        right: __('Right', 'premium-blocks-for-gutenberg')
+      }[side]));
+    });
+    let linkHtml = '';
+
+    if (link) {
+      linkHtml = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+        className: `premium-spacing-input-item`
+      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+        className: "linked-btn is-button dashicons dashicons-admin-links connected ",
+        onClick: () => {
+          setLink(false);
+        }
+      }));
+    } else {
+      linkHtml = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+        className: `premium-spacing-input-item`
+      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+        className: "linked-btn is-button dashicons dashicons-editor-unlink disconnected",
+        onClick: () => {
+          onLinkClickHandler();
+          setLink(true);
+        }
+      }));
+    }
+
+    ;
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
+      className: `premium-spacing-wrapper ${device} ${active}`
+    }, htmlChoices, linkHtml);
+  };
+
+  let inputHtml = null;
+  inputHtml = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, renderInputHtml(device, "active"));
+  const devices = ['Desktop', 'Tablet', 'Mobile'];
+
+  let customSetPreviewDeviceType = device => {
+    setDevice(device.toLowerCase());
+  };
+
+  if (wp.data.select('core/edit-post')) {
+    const theDevice = useSelect(select => {
+      const {
+        __experimentalGetPreviewDeviceType = null
+      } = select('core/edit-post');
+      return __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : 'Desktop';
+    }, []);
+
+    if (theDevice !== device) {
+      setDevice(theDevice);
+    }
+
+    const {
+      __experimentalSetPreviewDeviceType = null
+    } = useDispatch('core/edit-post');
+
+    customSetPreviewDeviceType = device => {
+      __experimentalSetPreviewDeviceType(device);
+
+      setDevice(device);
+    };
   }
 
-  render() {
-    const {
-      top,
-      right,
-      bottom,
-      left,
-      isLinked
-    } = this.state;
-    const {
-      onChangePadSizeUnit = () => {},
-      selectedUnit
-    } = this.props;
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `premium-spacing-responsive`
-    }, this.props.label && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("header", {
-      className: "premium-control-label-container"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `premium-slider-title-wrap`
-    }, __("Padding", 'premium-blocks-for-gutenberg')), this.props.showUnits && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_premium_size_units__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      activeUnit: selectedUnit,
-      onChangeSizeUnit: newValue => onChangePadSizeUnit(newValue)
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `premium-spacing-responsive-outer-wrapper`
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `input-wrapper premium-spacing-responsive-wrapper`
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
-      className: `premium-spacing-wrapper`
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
-      className: `premium-spacing-input-item`
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-      type: "number",
-      name: "top",
-      value: top,
-      onChange: this.onInputChange,
-      className: `premium-spacing-input`
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-      className: `premium-spacing-title`
-    }, __(`Top`))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
-      className: `premium-spacing-input-item`
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-      type: "number",
-      name: "right",
-      value: right,
-      onChange: this.onInputChange,
-      className: `premium-spacing-input`
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-      className: `premium-spacing-title`
-    }, __('Right'))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
-      className: `premium-spacing-input-item`
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-      type: "number",
-      name: "bottom",
-      value: bottom,
-      onChange: this.onInputChange,
-      className: `premium-spacing-input`
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-      className: `premium-spacing-title`
-    }, __('Bottom'))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
-      className: `premium-spacing-input-item`
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-      type: "number",
-      name: "left",
-      value: left,
-      onChange: this.onInputChange,
-      className: `premium-spacing-input`
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-      className: `premium-spacing-title`
-    }, __('Left'))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-      className: `linked-btn is-button dashicons dashicons-${isLinked ? "admin-links connected" : "editor-unlink disconnected"}`,
-      onClick: this.onButtonClick
-    })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "premium-spacing-btn-reset-wrap"
+  const onUnitChange = unitValue => {
+    let updateState = { ...state
+    };
+    updateState[`unit`] = unitValue;
+    props.onChange(updateState);
+    setState(updateState);
+  };
+
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "premium-spacing-responsive"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("header", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: `premium-slider-title-wrap`
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "customize-control-title premium-control-title"
+  }, "  ", label), responsive && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
+    className: "premium-responsive-control-btns premium-responsive-slider-btns"
+  }, devices.map((deviceType, key) => {
+    const activeClass = deviceType === device ? ' active' : '';
+    const icon = deviceType.toLowerCase() === 'mobile' ? 'smartphone' : deviceType.toLowerCase();
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+      key: key,
+      className: `${deviceType}${activeClass}`
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-      className: "premium-reset-btn ",
-      disabled: JSON.stringify(this.state) === JSON.stringify(this.defaultValue),
-      onClick: e => {
-        e.preventDefault();
-        this.setState({ ...this.state,
-          ...this.defaultValue
-        });
-        this.changeFunction(this.defaultValue);
+      type: "button",
+      className: `preview-${deviceType}${activeClass}`,
+      "data-device": deviceType
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
+      class: `dashicons dashicons-${icon}`,
+      onClick: () => {
+        const nextDevice = key + 1 > devices.length - 1 ? devices[0] : devices[key + 1];
+        customSetPreviewDeviceType(nextDevice);
       }
-    }))));
-  }
+    })));
+  }))), showUnits && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_premium_size_units__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    activeUnit: state[`unit`],
+    onChangeSizeUnit: unitKey => onUnitChange(unitKey)
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: `premium-spacing-responsive-outer-wrapper`
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: `input-wrapper premium-spacing-responsive-wrapper`
+  }, inputHtml), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "premium-spacing-btn-reset-wrap"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: "premium-reset-btn ",
+    disabled: JSON.stringify(state) === JSON.stringify(defaultValues),
+    onClick: e => {
+      e.preventDefault();
+      props.onChange(defaultValues);
+      setState(defaultValues);
+    }
+  }))));
+};
 
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (PremiumPadding);
+/* harmony default export */ __webpack_exports__["default"] = (SpacingComponent);
 
 /***/ }),
 
