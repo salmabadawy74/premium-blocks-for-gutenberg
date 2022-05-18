@@ -41,8 +41,7 @@ import { speak } from '@wordpress/a11y';
  * Internal dependencies
  */
 import AdvancedPopColorControl from '../../../components/Color Control/ColorComponent';
-import PremiumResponsivePadding from '../../../components/Premium-Responsive-Padding';
-import PremiumResponsiveMargin from '../../../components/Premium-Responsive-Margin';
+import SpacingComponent from '../../../components/premium-responsive-spacing';
 import PremiumBorder from "../../../components/premium-border"
 import PremiumTypo from "../../../components/premium-typo"
 import useNavigationMenu from '../use-navigation-menu';
@@ -277,36 +276,16 @@ function Navigation({
 		isCreatingNavigationMenu ||
 		!!(ref && !isEntityAvailable);
 
-	const defaultSpacingValue = {
-		desktop: {
-			top: '',
-			right: '',
-			bottom: '',
-			left: ''
-		},
-		tablet: {
-			top: '',
-			right: '',
-			bottom: '',
-			left: ''
-		},
-		mobile: {
-			top: '',
-			right: '',
-			bottom: '',
-			left: ''
-		}
-	};
 	const defaultSize = {
 		desktop: "",
 		tablet: "",
 		mobile: "",
 		unit: "px"
 	};
-	let margin = spacing.margin ? spacing.margin : defaultSpacingValue;
-	let padding = spacing.padding ? spacing.padding : defaultSpacingValue;
+	let margin = spacing.margin ? spacing.margin : {};
+	let padding = spacing.padding ? spacing.padding : {};
 	const fontSize = typography.size ? typography.size : defaultSize;
-	const itemPadding = spacing.itemPadding ? spacing.itemPadding : defaultSpacingValue;
+	const itemPadding = spacing.itemPadding ? spacing.itemPadding : {};
 	const submenuFontSize = submenuTypography.size ? submenuTypography.size : defaultSize;
 
 	const blockProps = useBlockProps({
@@ -323,14 +302,14 @@ function Navigation({
 		style: {
 			color: menuColors?.link,
 			backgroundColor: menuColors?.background,
-			marginTop: `${margin.desktop.top}px`,
-			marginRight: `${margin.desktop.right}px`,
-			marginBottom: `${margin.desktop.bottom}px`,
-			marginLeft: `${margin.desktop.left}px`,
-			paddingTop: `${padding.desktop.top}px`,
-			paddingRight: `${padding.desktop.right}px`,
-			paddingBottom: `${padding.desktop.bottom}px`,
-			paddingLeft: `${padding.desktop.left}px`,
+			marginTop: `${margin?.Desktop?.top}${margin?.unit}`,
+			marginRight: `${margin?.Desktop?.right}${margin?.unit}`,
+			marginBottom: `${margin?.Desktop?.bottom}${margin?.unit}`,
+			marginLeft: `${margin?.Desktop?.left}${margin?.unit}`,
+			paddingTop: `${padding?.Desktop?.top}${padding?.unit}`,
+			paddingRight: `${padding?.Desktop?.right}${padding?.unit}`,
+			paddingBottom: `${padding?.Desktop?.bottom}${padding?.unit}`,
+			paddingLeft: `${padding?.Desktop?.left}${padding?.unit}`,
 			fontSize: `${fontSize.desktop}${fontSize.unit}`,
 			fontFamily: typography.family,
 			fontWeight: typography.weight,
@@ -338,13 +317,13 @@ function Navigation({
 			textDecoration: typography.textDecoration,
 			textTransform: typography.textTransform,
 			lineHeight: `${typography.lineHeight}px`,
-			borderStyle: menuBorder.type,
-			borderTopWidth: menuBorder.top,
-			borderRightWidth: menuBorder.right,
-			borderBottomWidth: menuBorder.bottom,
-			borderLeftWidth: menuBorder.left,
-			borderRadius: menuBorder.radius,
-			borderColor: menuBorder.color
+			borderStyle: menuBorder?.borderType,
+			borderTopWidth: menuBorder?.borderWidth?.Desktop?.top,
+			borderRightWidth: menuBorder?.borderWidth?.Desktop?.right,
+			borderBottomWidth: menuBorder?.borderWidth?.Desktop?.bottom,
+			borderLeftWidth: menuBorder?.borderWidth?.Desktop?.left,
+			borderRadius: `${menuBorder?.borderRadius?.Desktop?.top || 0} ${menuBorder?.borderRadius?.Desktop?.right || 0} ${menuBorder?.borderRadius?.Desktop?.bottom || 0} ${menuBorder?.borderRadius?.Desktop?.left || 0}`,
+			borderColor: menuBorder?.borderColor
 		},
 	});
 
@@ -522,22 +501,9 @@ function Navigation({
 		setAttributes({ submenuColors: newColors });
 	}
 
-	const onChangeMargin = (side, value, device) => {
-		const newMargin = { ...margin };
-		newMargin[device][side] = value;
-		setAttributes({ spacing: { ...spacing, margin: newMargin } });
-	}
-
-	const onChangePadding = (side, value, device) => {
-		const newPadding = { ...padding };
-		newPadding[device][side] = value;
-		setAttributes({ spacing: { ...spacing, padding: newPadding } });
-	}
-
-	const onChangeItemPadding = (side, value, device) => {
-		const newPadding = { ...padding };
-		newPadding[device][side] = value;
-		setAttributes({ spacing: { ...spacing, itemPadding: newPadding } });
+	const onChangeSpacing = (value) => {
+		const newSpacing = { ...spacing, ...value };
+		setAttributes({ spacing: newSpacing });
 	}
 
 	const onChangeFontSize = (value, device) => {
@@ -590,10 +556,10 @@ function Navigation({
 		`--pbg-links-hover-color: ${menuColors?.linkHover};`,
 		`}`,
 		`#${blockProps.id} .premium-navigation__container > div > .premium-navigation-item__content{`,
-		`padding-top: ${itemPadding.desktop.top}px;`,
-		`padding-right: ${itemPadding.desktop.right}px;`,
-		`padding-bottom: ${itemPadding.desktop.bottom}px;`,
-		`padding-left: ${itemPadding.desktop.left}px;`,
+		`padding-top: ${itemPadding?.Desktop?.top}px;`,
+		`padding-right: ${itemPadding?.Desktop?.right}px;`,
+		`padding-bottom: ${itemPadding?.Desktop?.bottom}px;`,
+		`padding-left: ${itemPadding?.Desktop?.left}px;`,
 		`}`,
 		`#${blockProps.id} .premium-navigation__responsive-container-open {`,
 		`color: ${overlayColors.icon};`,
@@ -818,19 +784,12 @@ function Navigation({
 							}}
 						</TabPanel>
 						<PremiumBorder
-							borderType={menuBorder.type}
-							top={menuBorder.top}
-							right={menuBorder.right}
-							bottom={menuBorder.bottom}
-							left={menuBorder.left}
-							borderColor={menuBorder.color}
-							borderRadius={menuBorder.radius}
-							onChangeType={(newType) => menuBorderChange({ type: newType })}
-							onChangeWidth={({ top, right, bottom, left }) => {
-								menuBorderChange({ top, right, bottom, left });
-							}}
-							onChangeColor={(colorValue) => menuBorderChange({ color: colorValue })}
-							onChangeRadius={(newrRadius) => menuBorderChange({ radius: newrRadius })}
+							label={__("Border")}
+							borderType={menuBorder.borderType}
+							borderColor={menuBorder.borderColor}
+							borderWidth={menuBorder.borderWidth}
+							borderRadius={menuBorder.borderRadius}
+							onChange={(value) => setAttributes({ menuBorder: value })}
 						/>
 					</PanelBody>
 					<PanelBody title={__('Overlay Menu Colors')}>
@@ -896,135 +855,21 @@ function Navigation({
 							}}
 						</TabPanel>
 						<PremiumBorder
-							borderType={overlayMenuBorder.type}
-							top={overlayMenuBorder.top}
-							right={overlayMenuBorder.right}
-							bottom={overlayMenuBorder.bottom}
-							left={overlayMenuBorder.left}
-							borderColor={overlayMenuBorder.color}
-							borderRadius={overlayMenuBorder.radius}
-							onChangeType={(newType) => overlayMenuBorderChange({ type: newType })}
-							onChangeWidth={({ top, right, bottom, left }) => {
-								overlayMenuBorderChange({ top, right, bottom, left });
-							}}
-							onChangeColor={(colorValue) => overlayMenuBorderChange({ color: colorValue })}
-							onChangeRadius={(newrRadius) => overlayMenuBorderChange({ radius: newrRadius })}
+							label={__("Border")}
+							borderType={overlayMenuBorder.borderType}
+							borderColor={overlayMenuBorder.borderColor}
+							borderWidth={overlayMenuBorder.borderWidth}
+							borderRadius={overlayMenuBorder.borderRadius}
+							onChange={(value) => setAttributes({ overlayMenuBorder: value })}
 						/>
 					</PanelBody>
 					<PanelBody
 						title={__('Spacing', 'premium-blocks-for-gutenberg')}
 						initialOpen={false}
 					>
-						<PremiumResponsiveMargin
-							directions={["all"]}
-							marginTop={margin.desktop.top}
-							marginRight={margin.desktop.right}
-							marginBottom={margin.desktop.bottom}
-							marginLeft={margin.desktop.left}
-							marginTopTablet={margin.tablet.top}
-							marginRightTablet={margin.tablet.right}
-							marginBottomTablet={margin.tablet.bottom}
-							marginLeftTablet={margin.tablet.left}
-							marginTopMobile={margin.mobile.top}
-							marginRightMobile={margin.mobile.right}
-							marginBottomMobile={margin.mobile.bottom}
-							marginLeftMobile={margin.mobile.left}
-							onChangeMarginTop={
-								(device, newValue) => {
-									onChangeMargin('top', newValue, device);
-								}
-							}
-							onChangeMarginRight={
-								(device, newValue) => {
-									onChangeMargin('right', newValue, device);
-								}
-							}
-							onChangeMarginBottom={
-								(device, newValue) => {
-									onChangeMargin('bottom', newValue, device);
-								}
-							}
-							onChangeMarginLeft={
-								(device, newValue) => {
-									onChangeMargin('left', newValue, device);
-								}
-							}
-						/>
-						<PremiumResponsivePadding
-							directions={["all"]}
-							paddingTop={padding.desktop.top}
-							paddingRight={padding.desktop.right}
-							paddingBottom={padding.desktop.bottom}
-							paddingLeft={padding.desktop.left}
-							paddingTopTablet={padding.tablet.top}
-							paddingRightTablet={padding.tablet.right}
-							paddingBottomTablet={padding.tablet.bottom}
-							paddingLeftTablet={padding.tablet.left}
-							paddingTopMobile={padding.mobile.top}
-							paddingRightMobile={padding.mobile.right}
-							paddingBottomMobile={padding.mobile.bottom}
-							paddingLeftMobile={padding.mobile.left}
-							onChangePaddingTop={
-								(device, newValue) => {
-									onChangePadding('top', newValue, device);
-								}
-							}
-							onChangePaddingRight={
-								(device, newValue) => {
-									onChangePadding('right', newValue, device);
-								}
-							}
-							onChangePaddingBottom={
-								(device, newValue) => {
-									onChangePadding('bottom', newValue, device);
-								}
-							}
-							onChangePaddingLeft={
-								(device, newValue) => {
-									onChangePadding('left', newValue, device);
-								}
-							}
-						/>
-					</PanelBody>
-					<PanelBody
-						title={__('Menu Item Spacing', 'premium-blocks-for-gutenberg')}
-						initialOpen={false}
-					>
-						<PremiumResponsivePadding
-							directions={["all"]}
-							paddingTop={itemPadding.desktop.top}
-							paddingRight={itemPadding.desktop.right}
-							paddingBottom={itemPadding.desktop.bottom}
-							paddingLeft={itemPadding.desktop.left}
-							paddingTopTablet={itemPadding.tablet.top}
-							paddingRightTablet={itemPadding.tablet.right}
-							paddingBottomTablet={itemPadding.tablet.bottom}
-							paddingLeftTablet={itemPadding.tablet.left}
-							paddingTopMobile={itemPadding.mobile.top}
-							paddingRightMobile={itemPadding.mobile.right}
-							paddingBottomMobile={itemPadding.mobile.bottom}
-							paddingLeftMobile={itemPadding.mobile.left}
-							onChangePaddingTop={
-								(device, newValue) => {
-									onChangeItemPadding('top', newValue, device);
-								}
-							}
-							onChangePaddingRight={
-								(device, newValue) => {
-									onChangeItemPadding('right', newValue, device);
-								}
-							}
-							onChangePaddingBottom={
-								(device, newValue) => {
-									onChangeItemPadding('bottom', newValue, device);
-								}
-							}
-							onChangePaddingLeft={
-								(device, newValue) => {
-									onChangeItemPadding('left', newValue, device);
-								}
-							}
-						/>
+						<SpacingComponent value={padding} responsive={true} showUnits={true} label={__('Menu Padding')} onChange={(value) => onChangeSpacing({ padding: value })} />
+						<SpacingComponent value={itemPadding} responsive={true} showUnits={true} label={__('Menu Item Padding')} onChange={(value) => onChangeSpacing({ itemPadding: value })} />
+						<SpacingComponent value={margin} responsive={true} showUnits={true} label={__('Menu Margin')} onChange={(value) => onChangeSpacing({ margin: value })} />
 					</PanelBody>
 					<PanelBody
 						title={__("Typography", 'premium-blocks-for-gutenberg')}
@@ -1174,19 +1019,12 @@ function Navigation({
 									}}
 								</TabPanel>
 								<PremiumBorder
-									borderType={submenuBorder.type}
-									top={submenuBorder.top}
-									right={submenuBorder.right}
-									bottom={submenuBorder.bottom}
-									left={submenuBorder.left}
-									borderColor={submenuBorder.color}
-									borderRadius={submenuBorder.radius}
-									onChangeType={(newType) => submenuBorderChange({ type: newType })}
-									onChangeWidth={({ top, right, bottom, left }) => {
-										submenuBorderChange({ top, right, bottom, left });
-									}}
-									onChangeColor={(colorValue) => submenuBorderChange({ color: colorValue })}
-									onChangeRadius={(newrRadius) => submenuBorderChange({ radius: newrRadius })}
+									label={__("Border")}
+									borderType={submenuBorder.borderType}
+									borderColor={submenuBorder.borderColor}
+									borderWidth={submenuBorder.borderWidth}
+									borderRadius={submenuBorder.borderRadius}
+									onChange={(value) => setAttributes({ submenuBorder: value })}
 								/>
 							</PanelBody>
 
@@ -1230,13 +1068,12 @@ function Navigation({
 							isResponsive={isResponsive}
 							isHiddenByDefault={'always' === overlayMenu}
 							styles={{
-								borderStyle: overlayMenuBorder.type,
-								borderTopWidth: overlayMenuBorder.top,
-								borderRightWidth: overlayMenuBorder.right,
-								borderBottomWidth: overlayMenuBorder.bottom,
-								borderLeftWidth: overlayMenuBorder.left,
-								borderRadius: overlayMenuBorder.radius,
-								borderColor: overlayMenuBorder.color
+								borderTopWidth: overlayMenuBorder?.borderWidth?.Desktop?.top,
+								borderRightWidth: overlayMenuBorder?.borderWidth?.Desktop?.right,
+								borderBottomWidth: overlayMenuBorder?.borderWidth?.Desktop?.bottom,
+								borderLeftWidth: overlayMenuBorder?.borderWidth?.Desktop?.left,
+								borderRadius: `${overlayMenuBorder?.borderRadius?.Desktop?.top || 0} ${overlayMenuBorder?.borderRadius?.Desktop?.right || 0} ${overlayMenuBorder?.borderRadius?.Desktop?.bottom || 0} ${overlayMenuBorder?.borderRadius?.Desktop?.left || 0}`,
+								borderColor: overlayMenuBorder?.borderColor
 							}}
 						>
 							{isEntityAvailable && (

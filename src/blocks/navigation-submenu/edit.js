@@ -573,13 +573,12 @@ export default function NavigationSubmenuEdit({
 				backgroundPosition: megaMenu ? megaMenuBackground.backgroundPosition : '',
 				backgroundSize: megaMenu ? megaMenuBackground.backgroundSize : '',
 				backgroundAttachment: megaMenu && megaMenuBackground.fixed ? "fixed" : "unset",
-				borderStyle: submenuBorder.type,
-				borderTopWidth: submenuBorder.top,
-				borderRightWidth: submenuBorder.right,
-				borderBottomWidth: submenuBorder.bottom,
-				borderLeftWidth: submenuBorder.left,
-				borderRadius: submenuBorder.radius,
-				borderColor: submenuBorder.color
+				borderTopWidth: submenuBorder?.borderWidth?.Desktop?.top,
+				borderRightWidth: submenuBorder?.borderWidth?.Desktop?.right,
+				borderBottomWidth: submenuBorder?.borderWidth?.Desktop?.bottom,
+				borderLeftWidth: submenuBorder?.borderWidth?.Desktop?.left,
+				borderRadius: `${submenuBorder?.borderRadius?.Desktop?.top || 0} ${submenuBorder?.borderRadius?.Desktop?.right || 0} ${submenuBorder?.borderRadius?.Desktop?.bottom || 0} ${submenuBorder?.borderRadius?.Desktop?.left || 0}`,
+				borderColor: submenuBorder?.borderColor
 			},
 		},
 		{

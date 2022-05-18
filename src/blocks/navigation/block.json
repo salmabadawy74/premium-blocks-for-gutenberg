@@ -48,37 +48,28 @@
         "menuBorder": {
             "type": "object",
             "default": {
-                "type": "",
-                "top": "",
-                "right": "",
-                "bottom": "",
-                "left": "",
-                "color": "",
-                "radius": ""
+                "borderType": "",
+                "borderColor": "",
+                "borderWidth": "",
+                "borderRadius": ""
             }
         },
         "overlayMenuBorder": {
             "type": "object",
             "default": {
-                "type": "",
-                "top": "",
-                "right": "",
-                "bottom": "",
-                "left": "",
-                "color": "",
-                "radius": ""
+                "borderType": "",
+                "borderColor": "",
+                "borderWidth": "",
+                "borderRadius": ""
             }
         },
         "submenuBorder": {
             "type": "object",
             "default": {
-                "type": "",
-                "top": "",
-                "right": "",
-                "bottom": "",
-                "left": "",
-                "color": "",
-                "radius": ""
+                "borderType": "",
+                "borderColor": "",
+                "borderWidth": "",
+                "borderRadius": ""
             }
         },
         "spacing": {
