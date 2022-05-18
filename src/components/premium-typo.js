@@ -40,7 +40,7 @@ export default class PremiumTypo extends Component {
             fontFamily: this.props.fontFamily || 'Default',
             line: this.props.line,
             weight: this.props.weight || '400',
-            size: this.props.components.includes("responsiveSize") ? responsiveSize : this.props.size,
+            size: this.props.components.includes("responsiveSize") ? this.props.fontSize : this.props.size,
             textTransform: this.props.textTransform,
             textDecoration: this.props.textDecoration,
             sizeUnit: this.props.sizeUnit || 'px',
@@ -72,9 +72,8 @@ export default class PremiumTypo extends Component {
             onChangeTextTransform = () => { },
             onChangeTextDecoration = () => { },
             onChangeFamily = () => { },
-            onChangeSize = () => { },
-            onChangeTabletSize = () => { },
-            onChangeMobileSize = () => { },
+            onChange,
+
             onChangeWeight = () => { },
             onChangeStyle = () => { },
             onChangeSpacing = () => { },
@@ -253,11 +252,8 @@ export default class PremiumTypo extends Component {
                                                             <ResponsiveRangeControl
                                                                 label={__("Font Size", 'premium-blocks-for-gutenberg')}
                                                                 value={this.props.fontSize}
-                                                                onChange={value => { this.setState({ ...this.state.size, Desktop: value }), onChangeSize(value) }}
-                                                                tabletValue={this.props.fontSizeTablet}
-                                                                onChangeTablet={value => { onChangeTabletSize(value) }}
-                                                                mobileValue={this.props.fontSizeMobile}
-                                                                onChangeMobile={value => { onChangeMobileSize(value) }}
+                                                                onChange={value => onChange(value, "value")}
+
                                                                 onChangeUnit={key => setAttributes({ [this.props.fontSizeType.label]: key })}
                                                                 unit={this.props.fontSizeType.value}
                                                                 showUnit={true}

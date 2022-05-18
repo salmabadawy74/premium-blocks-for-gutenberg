@@ -159,8 +159,8 @@ class edit extends Component {
             paddingRMobile,
             paddingBMobile,
             paddingLMobile,
+            lottieWidth
         } = attributes
-
         let validJsonPath = 'invalid';
         if (lottieURl && lottieURl.endsWith('.json')) {
             validJsonPath = 'valid'
@@ -305,7 +305,7 @@ class edit extends Component {
                             max={100}
                         />
                     </Fragment>}
-                    <ResponsiveRangeControl
+                    {/* <ResponsiveRangeControl
                         label={__('Size', 'premium-blocks-for-gutenberg')}
                         value={lottieStyles[0].size}
                         onChange={(value) => saveLottieStyles({ size: (value !== "") ? value : 200 })}
@@ -318,6 +318,17 @@ class edit extends Component {
                         step={1}
                         onChangeUnit={newValue => saveLottieStyles({ sizeUnit: newValue })}
                         unit={lottieStyles[0].sizeUnit}
+                        showUnit={true}
+                        units={['px', 'em', 'rem']}
+                        defaultValue={200}
+                    /> */}
+                    <ResponsiveRangeControl
+                        label={__('Size', 'premium-blocks-for-gutenberg')}
+                        value={lottieWidth}
+                        onChange={(value) => setAttributes({ lottieWidth: value })}
+                        min={0}
+                        max={800}
+                        step={1}
                         showUnit={true}
                         units={['px', 'em', 'rem']}
                         defaultValue={200}
