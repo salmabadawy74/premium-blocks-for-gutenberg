@@ -119,12 +119,6 @@ class edit extends Component {
             titleStyles,
             descStyles,
             socialIconStyles,
-            socialIconBorderWidth,
-            socialIconBorderTop,
-            socialIconBorderRight,
-            socialIconBorderBottom,
-            socialIconBorderLeft,
-            socialIconBorderUpdated,
             nameV,
             titleV,
             descV,
@@ -145,7 +139,8 @@ class edit extends Component {
             hue,
             bottomInfo,
             socialIconPadding,
-            socialIconMargin
+            socialIconMargin,
+            socialIconBorder
         } = this.props.attributes;
 
         const HOVER = [
@@ -335,6 +330,14 @@ class edit extends Component {
         const SocialIconPaddingRight = this.getPreviewSize(this.props.deviceType, socialIconPadding.Desktop.right, socialIconPadding.Tablet.right, socialIconPadding.Mobile.right);
         const SocialIconPaddingBottom = this.getPreviewSize(this.props.deviceType, socialIconPadding.Desktop.bottom, socialIconPadding.Tablet.bottom, socialIconPadding.Mobile.bottom);
         const SocialIconPaddingLeft = this.getPreviewSize(this.props.deviceType, socialIconPadding.Desktop.left, socialIconPadding.Tablet.left, socialIconPadding.Mobile.left);
+        const SocialIconBorderWidthTop = this.getPreviewSize(this.props.deviceType, socialIconBorder.borderWidth.Desktop.top, socialIconBorder.borderWidth.Tablet.top, socialIconBorder.borderWidth.Mobile.top);
+        const SocialIconBorderWidthRight = this.getPreviewSize(this.props.deviceType, socialIconBorder.borderWidth.Desktop.right, socialIconBorder.borderWidth.Tablet.right, socialIconBorder.borderWidth.Mobile.right);
+        const SocialIconBorderWidthBottom = this.getPreviewSize(this.props.deviceType, socialIconBorder.borderWidth.Desktop.bottom, socialIconBorder.borderWidth.Tablet.bottom, socialIconBorder.borderWidth.Mobile.bottom);
+        const SocialIconBorderWidthLeft = this.getPreviewSize(this.props.deviceType, socialIconBorder.borderWidth.Desktop.left, socialIconBorder.borderWidth.Tablet.left, socialIconBorder.borderWidth.Mobile.left);
+        const SocialIconBorderRadiusTop = this.getPreviewSize(this.props.deviceType, socialIconBorder.borderRadius.Desktop.top, socialIconBorder.borderRadius.Tablet.top, socialIconBorder.borderRadius.Mobile.top);
+        const SocialIconBorderRadiusRight = this.getPreviewSize(this.props.deviceType, socialIconBorder.borderRadius.Desktop.right, socialIconBorder.borderRadius.Tablet.right, socialIconBorder.borderRadius.Mobile.right);
+        const SocialIconBorderRadiusBottom = this.getPreviewSize(this.props.deviceType, socialIconBorder.borderRadius.Desktop.bottom, socialIconBorder.borderRadius.Tablet.bottom, socialIconBorder.borderRadius.Mobile.bottom);
+        const SocialIconBorderRadiusLeft = this.getPreviewSize(this.props.deviceType, socialIconBorder.borderRadius.Desktop.left, socialIconBorder.borderRadius.Tablet.left, socialIconBorder.borderRadius.Mobile.left);
 
         const shouldCancelStart = (e) => {
             // Prevent sorting from being triggered if target is input or button
@@ -460,12 +463,16 @@ class edit extends Component {
             return <ul className="premium-person__social-List">{(v).map((value) => (
                 <li>
                     <a className={`premium-person__socialIcon__link_content ${socialIconStyles[0].defaultIconColor ? value.label : ""}`} href={`${value.value}`} style={{
-                        borderStyle: socialIconStyles[0].borderTypeIcon,
-                        borderWidth: socialIconBorderUpdated
-                            ? `${socialIconBorderTop}px ${socialIconBorderRight}px ${socialIconBorderBottom}px ${socialIconBorderLeft}px`
-                            : socialIconBorderWidth + "px",
-                        borderRadius: socialIconStyles[0].borderRadiusIcon || 100 + "px",
-                        borderColor: socialIconStyles[0].borderColorIcon,
+                        borderStyle: socialIconBorder.borderType,
+                        borderTopWidth: SocialIconBorderWidthTop && SocialIconBorderWidthTop + "px",
+                        borderRightWidth: SocialIconBorderWidthRight && SocialIconBorderWidthRight + "px",
+                        borderBottomWidth: SocialIconBorderWidthBottom && SocialIconBorderWidthBottom + "px",
+                        borderLeftWidth: SocialIconBorderWidthLeft && SocialIconBorderWidthLeft + "px",
+                        borderBottomLeftRadius: SocialIconBorderRadiusLeft && SocialIconBorderRadiusLeft + "px",
+                        borderTopLeftRadius: SocialIconBorderRadiusTop && SocialIconBorderRadiusTop + "px",
+                        borderTopRightRadius: SocialIconBorderRadiusRight && SocialIconBorderRadiusRight + "px",
+                        borderBottomRightRadius: SocialIconBorderRadiusBottom && SocialIconBorderRadiusBottom + "px",
+                        borderColor: socialIconBorder.borderColor,
                         marginTop: SocialIconMarginTop + socialIconMargin.unit,
                         marginBottom: SocialIconMarginBottom + socialIconMargin.unit,
                         marginLeft: SocialIconMarginLeft + socialIconMargin.unit,
@@ -1049,30 +1056,9 @@ class edit extends Component {
                             onChange={newCheck => saveSocialIconStyles({ defaultIconColor: newCheck })}
                         />
                         <PremiumBorder
-                            borderType={socialIconStyles[0].borderTypeIcon}
-                            borderWidth={socialIconBorderWidth}
-                            top={socialIconBorderTop}
-                            right={socialIconBorderRight}
-                            bottom={socialIconBorderBottom}
-                            left={socialIconBorderLeft}
-                            borderColor={socialIconStyles[0].borderColorIcon}
-                            borderRadius={socialIconStyles[0].borderRadiusIcon}
-                            onChangeType={newType => saveSocialIconStyles({ borderTypeIcon: newType })}
-                            onChangeWidth={({ top, right, bottom, left }) =>
-                                setAttributes({
-                                    socialIconBorderUpdated: true,
-                                    socialIconBorderTop: top,
-                                    socialIconBorderRight: right,
-                                    socialIconBorderBottom: bottom,
-                                    socialIconBorderLeft: left,
-                                })
-                            }
-                            onChangeColor={colorValue =>
-                                saveSocialIconStyles({ borderColorIcon: colorValue })
-                            }
-                            onChangeRadius={newrRadius =>
-                                saveSocialIconStyles({ borderRadiusIcon: newrRadius })
-                            }
+                            label={__('Border', 'premium-blocks-for-gutenberg')}
+                            value={socialIconBorder}
+                            onChange={(value) => setAttributes({ socialIconBorder: value })}
                         />
                         <SpacingControl
                             label={__('Margin', 'premium-blocks-for-gutenberg')}
@@ -1151,30 +1137,9 @@ class edit extends Component {
                                 onChange={newCheck => saveSocialIconStyles({ defaultIconColor: newCheck })}
                             />
                             <PremiumBorder
-                                borderType={socialIconStyles[0].borderTypeIcon}
-                                borderWidth={socialIconBorderWidth}
-                                top={socialIconBorderTop}
-                                right={socialIconBorderRight}
-                                bottom={socialIconBorderBottom}
-                                left={socialIconBorderLeft}
-                                borderColor={socialIconStyles[0].borderColorIcon}
-                                borderRadius={socialIconStyles[0].borderRadiusIcon}
-                                onChangeType={newType => saveSocialIconStyles({ borderTypeIcon: newType })}
-                                onChangeWidth={({ top, right, bottom, left }) =>
-                                    setAttributes({
-                                        socialIconBorderUpdated: true,
-                                        socialIconBorderTop: top,
-                                        socialIconBorderRight: right,
-                                        socialIconBorderBottom: bottom,
-                                        socialIconBorderLeft: left,
-                                    })
-                                }
-                                onChangeColor={colorValue =>
-                                    saveSocialIconStyles({ borderColorIcon: colorValue })
-                                }
-                                onChangeRadius={newrRadius =>
-                                    saveSocialIconStyles({ borderRadiusIcon: newrRadius })
-                                }
+                                label={__('Border', 'premium-blocks-for-gutenberg')}
+                                value={socialIconBorder}
+                                onChange={(value) => setAttributes({ socialIconBorder: value })}
                             />
                             <SpacingControl
                                 label={__('Margin', 'premium-blocks-for-gutenberg')}

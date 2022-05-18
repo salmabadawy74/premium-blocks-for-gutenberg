@@ -102,26 +102,6 @@ const attributes = {
             }
         ]
     },
-    socialIconBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    socialIconBorderTop: {
-        type: "number"
-    },
-    socialIconBorderRight: {
-        type: "number"
-    },
-    socialIconBorderBottom: {
-        type: "number"
-    },
-    socialIconBorderLeft: {
-        type: "number"
-    },
-    socialIconBorderUpdated: {
-        type: "boolean",
-        default: false
-    },
     titleTag: {
         type: "string",
         default: "p"
@@ -268,6 +248,53 @@ const attributes = {
                 left: ""
             },
             unit: "px"
+        }
+    },
+    socialIconBorder: {
+        type: "object",
+        default: {
+            borderColor: "",
+            borderType: "none",
+            borderRadius: {
+                Desktop: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Tablet: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Mobile: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                }
+            },
+            borderWidth: {
+                Desktop: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Tablet: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Mobile: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                }
+            }
         }
     }
 }

@@ -5158,6 +5158,38 @@ class PBG_Blocks_Helper {
 			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
 			$css->add_property( 'margin-left', $css->render_color( $attr['socialIconMargin']['Desktop']['left'] . ( isset( $attr['socialIconMargin']['unit'] ) ? $attr['socialIconMargin']['unit'] : 'px' ) . '!important' ) );
 		}
+		if ( isset( $attr['socialIconBorder']['borderWidth']['Desktop']['top'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'border-top-width', ( $attr['socialIconBorder']['borderWidth']['Desktop']['top'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderWidth']['Desktop']['right'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'border-right-width', ( $attr['socialIconBorder']['borderWidth']['Desktop']['right'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderWidth']['Desktop']['bottom'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'border-bottom-width', ( $attr['socialIconBorder']['borderWidth']['Desktop']['bottom'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderWidth']['Desktop']['left'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'border-left-width', ( $attr['socialIconBorder']['borderWidth']['Desktop']['left'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderRadius']['Desktop']['top'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'border-top-left-radius', ( $attr['socialIconBorder']['borderRadius']['Desktop']['top'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderRadius']['Desktop']['right'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'border-top-right-radius', ( $attr['socialIconBorder']['borderRadius']['Desktop']['right'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderRadius']['Desktop']['bottom'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'border-bottom-right-radius', ( $attr['socialIconBorder']['borderRadius']['Desktop']['bottom'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderRadius']['Desktop']['left'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'border-bottom-left-radius', ( $attr['socialIconBorder']['borderRadius']['Desktop']['left'] . 'px' ) );
+		}
 
 		// Style for Social Icon Effect1.
 		if ( isset( $attr['socialIconStyles'] ) ) {
@@ -5197,6 +5229,38 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['socialIconMargin']['Desktop']['left'] ) && isset( $attr['socialIconMargin']['unit'] ) ) {
 			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
 			$css->add_property( 'margin-left', $css->render_color( $attr['socialIconMargin']['Desktop']['left'] . ( isset( $attr['socialIconMargin']['unit'] ) ? $attr['socialIconMargin']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderWidth']['Desktop']['top'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'border-top-width', ( $attr['socialIconBorder']['borderWidth']['Desktop']['top'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderWidth']['Desktop']['right'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'border-right-width', ( $attr['socialIconBorder']['borderWidth']['Desktop']['right'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderWidth']['Desktop']['bottom'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'border-bottom-width', ( $attr['socialIconBorder']['borderWidth']['Desktop']['bottom'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderWidth']['Desktop']['left'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'border-left-width', ( $attr['socialIconBorder']['borderWidth']['Desktop']['left'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderRadius']['Desktop']['top'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'border-top-left-radius', ( $attr['socialIconBorder']['borderRadius']['Desktop']['top'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderRadius']['Desktop']['right'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'border-top-right-radius', ( $attr['socialIconBorder']['borderRadius']['Desktop']['right'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderRadius']['Desktop']['bottom'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'border-bottom-right-radius', ( $attr['socialIconBorder']['borderRadius']['Desktop']['bottom'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderRadius']['Desktop']['left'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'border-bottom-left-radius', ( $attr['socialIconBorder']['borderRadius']['Desktop']['left'] . 'px' ) );
 		}
 
 		$css->start_media_query( $media_query['tablet'] );
@@ -5264,6 +5328,38 @@ class PBG_Blocks_Helper {
 			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
 			$css->add_property( 'margin-left', $css->render_color( $attr['socialIconMargin']['Tablet']['left'] . ( isset( $attr['socialIconMargin']['unit'] ) ? $attr['socialIconMargin']['unit'] : 'px' ) . '!important' ) );
 		}
+		if ( isset( $attr['socialIconBorder']['borderWidth']['Tablet']['top'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'border-top-width', ( $attr['socialIconBorder']['borderWidth']['Tablet']['top'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderWidth']['Tablet']['right'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'border-right-width', ( $attr['socialIconBorder']['borderWidth']['Tablet']['right'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderWidth']['Tablet']['bottom'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'border-bottom-width', ( $attr['socialIconBorder']['borderWidth']['Tablet']['bottom'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderWidth']['Tablet']['left'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'border-left-width', ( $attr['socialIconBorder']['borderWidth']['Tablet']['left'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderRadius']['Tablet']['top'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'border-top-left-radius', ( $attr['socialIconBorder']['borderRadius']['Tablet']['top'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderRadius']['Tablet']['right'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'border-top-right-radius', ( $attr['socialIconBorder']['borderRadius']['Tablet']['right'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderRadius']['Tablet']['bottom'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'border-bottom-right-radius', ( $attr['socialIconBorder']['borderRadius']['Tablet']['bottom'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderRadius']['Tablet']['left'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'border-bottom-left-radius', ( $attr['socialIconBorder']['borderRadius']['Tablet']['left'] . 'px' ) );
+		}
 
 		// Style for Social Icon Effect1.
 		if ( isset( $attr['socialIconStyles'] ) ) {
@@ -5303,6 +5399,38 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['socialIconMargin']['Tablet']['left'] ) && isset( $attr['socialIconMargin']['unit'] ) ) {
 			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
 			$css->add_property( 'margin-left', $css->render_color( $attr['socialIconMargin']['Tablet']['left'] . ( isset( $attr['socialIconMargin']['unit'] ) ? $attr['socialIconMargin']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderWidth']['Tablet']['top'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'border-top-width', ( $attr['socialIconBorder']['borderWidth']['Tablet']['top'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderWidth']['Tablet']['right'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'border-right-width', ( $attr['socialIconBorder']['borderWidth']['Tablet']['right'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderWidth']['Tablet']['bottom'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'border-bottom-width', ( $attr['socialIconBorder']['borderWidth']['Tablet']['bottom'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderWidth']['Tablet']['left'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'border-left-width', ( $attr['socialIconBorder']['borderWidth']['Tablet']['left'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderRadius']['Tablet']['top'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'border-top-left-radius', ( $attr['socialIconBorder']['borderRadius']['Tablet']['top'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderRadius']['Tablet']['right'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'border-top-right-radius', ( $attr['socialIconBorder']['borderRadius']['Tablet']['right'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderRadius']['Tablet']['bottom'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'border-bottom-right-radius', ( $attr['socialIconBorder']['borderRadius']['Tablet']['bottom'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderRadius']['Tablet']['left'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'border-bottom-left-radius', ( $attr['socialIconBorder']['borderRadius']['Tablet']['left'] . 'px' ) );
 		}
 
 		$css->stop_media_query();
@@ -5372,6 +5500,38 @@ class PBG_Blocks_Helper {
 			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
 			$css->add_property( 'margin-left', ( $attr['socialIconMargin']['Mobile']['left'] . ( isset( $attr['socialIconMargin']['unit'] ) ? $attr['socialIconMargin']['unit'] : 'px' ) . '!important' ) );
 		}
+		if ( isset( $attr['socialIconBorder']['borderWidth']['Mobile']['top'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'border-top-width', ( $attr['socialIconBorder']['borderWidth']['Mobile']['top'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderWidth']['Mobile']['right'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'border-right-width', ( $attr['socialIconBorder']['borderWidth']['Mobile']['right'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderWidth']['Mobile']['bottom'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'border-bottom-width', ( $attr['socialIconBorder']['borderWidth']['Mobile']['bottom'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderWidth']['Mobile']['left'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'border-left-width', ( $attr['socialIconBorder']['borderWidth']['Mobile']['left'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderRadius']['Mobile']['top'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'border-top-left-radius', ( $attr['socialIconBorder']['borderRadius']['Mobile']['top'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderRadius']['Mobile']['right'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'border-top-right-radius', ( $attr['socialIconBorder']['borderRadius']['Mobile']['right'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderRadius']['Mobile']['bottom'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'border-bottom-right-radius', ( $attr['socialIconBorder']['borderRadius']['Mobile']['bottom'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderRadius']['Mobile']['left'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'border-bottom-left-radius', ( $attr['socialIconBorder']['borderRadius']['Mobile']['left'] . 'px' ) );
+		}
 
 		// Style for Social Icon Effect1.
 		if ( isset( $attr['socialIconStyles'] ) ) {
@@ -5411,6 +5571,38 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['socialIconMargin']['Mobile']['left'] ) && isset( $attr['socialIconMargin']['unit'] ) ) {
 			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
 			$css->add_property( 'margin-left', ( $attr['socialIconMargin']['Mobile']['left'] . ( isset( $attr['socialIconMargin']['unit'] ) ? $attr['socialIconMargin']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderWidth']['Mobile']['top'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'border-top-width', ( $attr['socialIconBorder']['borderWidth']['Mobile']['top'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderWidth']['Mobile']['right'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'border-right-width', ( $attr['socialIconBorder']['borderWidth']['Mobile']['right'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderWidth']['Mobile']['bottom'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'border-bottom-width', ( $attr['socialIconBorder']['borderWidth']['Mobile']['bottom'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderWidth']['Mobile']['left'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'border-left-width', ( $attr['socialIconBorder']['borderWidth']['Mobile']['left'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderRadius']['Mobile']['top'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'border-top-left-radius', ( $attr['socialIconBorder']['borderRadius']['Mobile']['top'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderRadius']['Mobile']['right'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'border-top-right-radius', ( $attr['socialIconBorder']['borderRadius']['Mobile']['right'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderRadius']['Mobile']['bottom'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'border-bottom-right-radius', ( $attr['socialIconBorder']['borderRadius']['Mobile']['bottom'] . 'px' ) );
+		}
+		if ( isset( $attr['socialIconBorder']['borderRadius']['Mobile']['left'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'border-bottom-left-radius', ( $attr['socialIconBorder']['borderRadius']['Mobile']['left'] . 'px' ) );
 		}
 
 		$css->stop_media_query();

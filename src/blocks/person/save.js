@@ -15,12 +15,6 @@ const save = props => {
         nameV,
         titleStyles,
         socialIconStyles,
-        socialIconBorderWidth,
-        socialIconBorderTop,
-        socialIconBorderRight,
-        socialIconBorderBottom,
-        socialIconBorderLeft,
-        socialIconBorderUpdated,
         nameStyles,
         descStyles,
         titleV,
@@ -41,7 +35,8 @@ const save = props => {
         saturation,
         hue,
         contentColor,
-        bottomInfo
+        bottomInfo,
+        socialIconBorder
     } = props.attributes;
 
 
@@ -51,12 +46,8 @@ const save = props => {
         return <ul className="premium-person__social-List">{(v).map((value) => (
             <li>
                 <a className={`premium-person__socialIcon__link_content ${socialIconStyles[0].defaultIconColor ? value.label : ""}`} href={`${value.value}`} style={{
-                    borderStyle: socialIconStyles[0].borderTypeIcon,
-                    borderWidth: socialIconBorderUpdated
-                        ? `${socialIconBorderTop}px ${socialIconBorderRight}px ${socialIconBorderBottom}px ${socialIconBorderLeft}px`
-                        : socialIconBorderWidth + "px",
-                    borderRadius: socialIconStyles[0].borderRadiusIcon || 100 + "px",
-                    borderColor: socialIconStyles[0].borderColorIcon,
+                    borderStyle: socialIconBorder.borderType,
+                    borderColor: socialIconBorder.borderColor,
                     background: socialIconStyles[0].socialIconBackgroundColor,
                 }}>
                     <i className={`premium-person__socialIcon ${value.label == "youtube" ? "fa fa-youtube-play" : `fa fa-${value.label}`} premium-person__${socialIconHoverColor}`}
