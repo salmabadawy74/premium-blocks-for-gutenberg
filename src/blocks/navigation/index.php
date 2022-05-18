@@ -38,42 +38,57 @@ function get_premium_navigation_css( $attributes, $unique_id ) {
 	}
 
 	if ( isset( $attributes['menuBorder'] ) ) {
-		$menu_border = $attributes['menuBorder'];
+		$menu_border        = $attributes['menuBorder'];
+		$menu_border_width  = $attributes['menuBorder']['borderWidth'];
+		$menu_border_radius = $attributes['menuBorder']['borderRadius'];
 
 		$css->set_selector( '#' . $unique_id );
-		$css->add_property( 'border-style', $css->render_color( $menu_border['type'] ) );
-		$css->add_property( 'border-top-width', $css->render_color( $menu_border['top'] . 'px' ) );
-		$css->add_property( 'border-right-width', $css->render_color( $menu_border['right'] . 'px' ) );
-		$css->add_property( 'border-bottom-width', $css->render_color( $menu_border['bottom'] . 'px' ) );
-		$css->add_property( 'border-left-width', $css->render_color( $menu_border['left'] . 'px' ) );
-		$css->add_property( 'border-color', $css->render_color( $menu_border['color'] ) );
-		$css->add_property( 'border-radius', $css->render_color( $menu_border['radius'] . 'px' ) );
+		$css->add_property( 'border-style', $css->render_color( $menu_border['borderType'] ) );
+		$css->add_property( 'border-top-width', $css->get_responsive_value( $menu_border_width, 'top', 'Desktop', 'px' ) );
+		$css->add_property( 'border-right-width', $css->get_responsive_value( $menu_border_width, 'right', 'Desktop', 'px' ) );
+		$css->add_property( 'border-bottom-width', $css->get_responsive_value( $menu_border_width, 'bottom', 'Desktop', 'px' ) );
+		$css->add_property( 'border-left-width', $css->get_responsive_value( $menu_border_width, 'left', 'Desktop', 'px' ) );
+		$css->add_property( 'border-color', $css->render_color( $menu_border['borderColor'] ) );
+		$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $menu_border_width, 'top', 'Desktop', 'px' ) );
+		$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $menu_border_width, 'top', 'Desktop', 'px' ) );
+		$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $menu_border_width, 'top', 'Desktop', 'px' ) );
+		$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $menu_border_width, 'top', 'Desktop', 'px' ) );
 	}
 
 	if ( isset( $attributes['submenuBorder'] ) ) {
-		$submenu_border = $attributes['submenuBorder'];
+		$submenu_border        = $attributes['submenuBorder'];
+		$submenu_border_width  = $attributes['submenuBorder']['borderWidth'];
+		$submenu_border_radius = $attributes['submenuBorder']['borderRadius'];
 
-		$css->set_selector( '#' . $unique_id . ' > div:not(.is-menu-open) .wp-block-premium-navigation-submenu .premium-navigation__submenu-container' );
-		$css->add_property( 'border-style', $css->render_color( $submenu_border['type'] ) );
-		$css->add_property( 'border-top-width', $css->render_color( $submenu_border['top'] . 'px' ) );
-		$css->add_property( 'border-right-width', $css->render_color( $submenu_border['right'] . 'px' ) );
-		$css->add_property( 'border-bottom-width', $css->render_color( $submenu_border['bottom'] . 'px' ) );
-		$css->add_property( 'border-left-width', $css->render_color( $submenu_border['left'] . 'px' ) );
-		$css->add_property( 'border-color', $css->render_color( $submenu_border['color'] ) );
-		$css->add_property( 'border-radius', $css->render_color( $submenu_border['radius'] . 'px' ) );
+		$css->set_selector( '#' . $unique_id );
+		$css->add_property( 'border-style', $css->render_color( $submenu_border['borderType'] ) );
+		$css->add_property( 'border-top-width', $css->get_responsive_value( $submenu_border_width, 'top', 'Desktop', 'px' ) );
+		$css->add_property( 'border-right-width', $css->get_responsive_value( $submenu_border_width, 'right', 'Desktop', 'px' ) );
+		$css->add_property( 'border-bottom-width', $css->get_responsive_value( $submenu_border_width, 'bottom', 'Desktop', 'px' ) );
+		$css->add_property( 'border-left-width', $css->get_responsive_value( $submenu_border_width, 'left', 'Desktop', 'px' ) );
+		$css->add_property( 'border-color', $css->render_color( $submenu_border['borderColor'] ) );
+		$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $submenu_border_width, 'top', 'Desktop', 'px' ) );
+		$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $submenu_border_width, 'top', 'Desktop', 'px' ) );
+		$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $submenu_border_width, 'top', 'Desktop', 'px' ) );
+		$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $submenu_border_width, 'top', 'Desktop', 'px' ) );
 	}
 
 	if ( isset( $attributes['overlayMenuBorder'] ) ) {
-		$overlay_menu_border = $attributes['overlayMenuBorder'];
+		$overlay_menu_border        = $attributes['overlayMenuBorder'];
+		$overlay_menu_border_width  = $attributes['overlayMenuBorder']['borderWidth'];
+		$overlay_menu_border_radius = $attributes['overlayMenuBorder']['borderRadius'];
 
-		$css->set_selector( '#' . $unique_id . ' > div.is-menu-open' );
-		$css->add_property( 'border-style', $css->render_color( $overlay_menu_border['type'] ) );
-		$css->add_property( 'border-top-width', $css->render_color( $overlay_menu_border['top'] . 'px' ) );
-		$css->add_property( 'border-right-width', $css->render_color( $overlay_menu_border['right'] . 'px' ) );
-		$css->add_property( 'border-bottom-width', $css->render_color( $overlay_menu_border['bottom'] . 'px' ) );
-		$css->add_property( 'border-left-width', $css->render_color( $overlay_menu_border['left'] . 'px' ) );
-		$css->add_property( 'border-color', $css->render_color( $overlay_menu_border['color'] ) );
-		$css->add_property( 'border-radius', $css->render_color( $overlay_menu_border['radius'] . 'px' ) );
+		$css->set_selector( '#' . $unique_id );
+		$css->add_property( 'border-style', $css->render_color( $overlay_menu_border['borderType'] ) );
+		$css->add_property( 'border-top-width', $css->get_responsive_value( $overlay_menu_border_width, 'top', 'Desktop', 'px' ) );
+		$css->add_property( 'border-right-width', $css->get_responsive_value( $overlay_menu_border_width, 'right', 'Desktop', 'px' ) );
+		$css->add_property( 'border-bottom-width', $css->get_responsive_value( $overlay_menu_border_width, 'bottom', 'Desktop', 'px' ) );
+		$css->add_property( 'border-left-width', $css->get_responsive_value( $overlay_menu_border_width, 'left', 'Desktop', 'px' ) );
+		$css->add_property( 'border-color', $css->render_color( $overlay_menu_border['borderColor'] ) );
+		$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $overlay_menu_border_width, 'top', 'Desktop', 'px' ) );
+		$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $overlay_menu_border_width, 'top', 'Desktop', 'px' ) );
+		$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $overlay_menu_border_width, 'top', 'Desktop', 'px' ) );
+		$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $overlay_menu_border_width, 'top', 'Desktop', 'px' ) );
 	}
 
 	if ( isset( $attributes['submenuTypography'] ) ) {
@@ -174,6 +189,53 @@ function get_premium_navigation_css( $attributes, $unique_id ) {
 			}
 		}
 
+		if ( isset( $attributes['menuBorder'] ) ) {
+			$menu_border        = $attributes['menuBorder'];
+			$menu_border_width  = $attributes['menuBorder']['borderWidth'];
+			$menu_border_radius = $attributes['menuBorder']['borderRadius'];
+
+			$css->set_selector( '#' . $unique_id );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $menu_border_width, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $menu_border_width, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $menu_border_width, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $menu_border_width, 'left', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $menu_border_width, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $menu_border_width, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $menu_border_width, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $menu_border_width, 'top', 'Tablet', 'px' ) );
+		}
+
+		if ( isset( $attributes['submenuBorder'] ) ) {
+			$submenu_border        = $attributes['submenuBorder'];
+			$submenu_border_width  = $attributes['submenuBorder']['borderWidth'];
+			$submenu_border_radius = $attributes['submenuBorder']['borderRadius'];
+
+			$css->set_selector( '#' . $unique_id );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $submenu_border_width, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $submenu_border_width, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $submenu_border_width, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $submenu_border_width, 'left', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $submenu_border_width, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $submenu_border_width, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $submenu_border_width, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $submenu_border_width, 'top', 'Tablet', 'px' ) );
+		}
+
+		if ( isset( $attributes['overlayMenuBorder'] ) ) {
+			$overlay_menu_border        = $attributes['overlayMenuBorder'];
+			$overlay_menu_border_width  = $attributes['overlayMenuBorder']['borderWidth'];
+			$overlay_menu_border_radius = $attributes['overlayMenuBorder']['borderRadius'];
+			$css->set_selector( '#' . $unique_id );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $overlay_menu_border_width, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $overlay_menu_border_width, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $overlay_menu_border_width, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $overlay_menu_border_width, 'left', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $overlay_menu_border_width, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $overlay_menu_border_width, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $overlay_menu_border_width, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $overlay_menu_border_width, 'top', 'Tablet', 'px' ) );
+		}
+
 		if ( isset( $attributes['submenuTypography'] ) ) {
 			$submenu_typography = $attributes['submenuTypography'];
 			$css->set_selector( '#' . $unique_id . ' .wp-block-premium-navigation-submenu, #' . $unique_id . ' .wp-block-premium-navigation-submenu .premium-navigation-item__content' );
@@ -210,6 +272,54 @@ function get_premium_navigation_css( $attributes, $unique_id ) {
 		}
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['mobile'] );
+
+		if ( isset( $attributes['menuBorder'] ) ) {
+			$menu_border        = $attributes['menuBorder'];
+			$menu_border_width  = $attributes['menuBorder']['borderWidth'];
+			$menu_border_radius = $attributes['menuBorder']['borderRadius'];
+
+			$css->set_selector( '#' . $unique_id );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $menu_border_width, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $menu_border_width, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $menu_border_width, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $menu_border_width, 'left', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $menu_border_width, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $menu_border_width, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $menu_border_width, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $menu_border_width, 'top', 'Mobile', 'px' ) );
+		}
+
+		if ( isset( $attributes['submenuBorder'] ) ) {
+			$submenu_border        = $attributes['submenuBorder'];
+			$submenu_border_width  = $attributes['submenuBorder']['borderWidth'];
+			$submenu_border_radius = $attributes['submenuBorder']['borderRadius'];
+
+			$css->set_selector( '#' . $unique_id );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $submenu_border_width, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $submenu_border_width, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $submenu_border_width, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $submenu_border_width, 'left', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $submenu_border_width, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $submenu_border_width, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $submenu_border_width, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $submenu_border_width, 'top', 'Mobile', 'px' ) );
+		}
+
+		if ( isset( $attributes['overlayMenuBorder'] ) ) {
+			$overlay_menu_border        = $attributes['overlayMenuBorder'];
+			$overlay_menu_border_width  = $attributes['overlayMenuBorder']['borderWidth'];
+			$overlay_menu_border_radius = $attributes['overlayMenuBorder']['borderRadius'];
+			$css->set_selector( '#' . $unique_id );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $overlay_menu_border_width, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $overlay_menu_border_width, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $overlay_menu_border_width, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $overlay_menu_border_width, 'left', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $overlay_menu_border_width, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $overlay_menu_border_width, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $overlay_menu_border_width, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $overlay_menu_border_width, 'top', 'Mobile', 'px' ) );
+		}
+
 		if ( isset( $attributes['typography'] ) ) {
 			$typography = $attributes['typography'];
 			$css->set_selector( '#' . $unique_id . ', #' . $unique_id . ' .premium-navigation-item__content' );

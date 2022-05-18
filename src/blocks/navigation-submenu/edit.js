@@ -53,7 +53,7 @@ import { createBlock } from '@wordpress/blocks';
  */
 import { ItemSubmenuIcon } from './icons';
 import { name } from './block.json';
-import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
+import SpacingComponent from '../../components/premium-responsive-spacing';
 import PremiumBackgroundControl from "../../components/Premium-Background-Control"
 import iconsList from "../../components/premium-icons-list";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
@@ -563,10 +563,10 @@ export default function NavigationSubmenuEdit({
 				textTransform: textTransform,
 				lineHeight: `${lineHeight}px`,
 				fontStyle: fontStyle,
-				paddingTop: megaMenu ? `${padding.desktop.top}px` : '',
-				paddingRight: megaMenu ? `${padding.desktop.right}px` : '',
-				paddingBottom: megaMenu ? `${padding.desktop.bottom}px` : '',
-				paddingLeft: megaMenu ? `${padding.desktop.left}px` : '',
+				paddingTop: megaMenu ? `${padding?.Desktop?.top}${padding?.unit}` : '',
+				paddingRight: megaMenu ? `${padding?.Desktop?.right}${padding?.unit}` : '',
+				paddingBottom: megaMenu ? `${padding?.Desktop?.bottom}${padding?.unit}` : '',
+				paddingLeft: megaMenu ? `${padding?.Desktop?.left}${padding?.unit}` : '',
 				backgroundColor: megaMenu && megaMenuBackground.backgroundType === "solid" ? megaMenuBackground.containerBack : "",
 				backgroundImage: megaMenu ? containerbg : '',
 				backgroundRepeat: megaMenu ? megaMenuBackground.backgroundRepeat : '',
@@ -577,8 +577,10 @@ export default function NavigationSubmenuEdit({
 				borderRightWidth: submenuBorder?.borderWidth?.Desktop?.right,
 				borderBottomWidth: submenuBorder?.borderWidth?.Desktop?.bottom,
 				borderLeftWidth: submenuBorder?.borderWidth?.Desktop?.left,
-				borderRadius: `${submenuBorder?.borderRadius?.Desktop?.top || 0} ${submenuBorder?.borderRadius?.Desktop?.right || 0} ${submenuBorder?.borderRadius?.Desktop?.bottom || 0} ${submenuBorder?.borderRadius?.Desktop?.left || 0}`,
-				borderColor: submenuBorder?.borderColor
+				borderTopLeftRadius: `${submenuBorder?.borderRadius?.Desktop?.top || 0}px`,
+				borderTopRightRadius: `${submenuBorder?.borderRadius?.Desktop?.right || 0}px`,
+				borderBottomLeftRadius: `${submenuBorder?.borderRadius?.Desktop?.bottom || 0}px`,
+				borderBottomRightRadius: `${submenuBorder?.borderRadius?.Desktop?.left || 0}px`,
 			},
 		},
 		{
@@ -621,16 +623,9 @@ export default function NavigationSubmenuEdit({
 		};
 	};
 
-	const onChangePadding = (side, value, device) => {
-		const newPadding = { ...padding };
-		newPadding[device][side] = value;
-		setAttributes({ spacing: { ...spacing, padding: newPadding } });
-	}
-
-	const onChangeItemPadding = (side, value, device) => {
-		const newPadding = { ...columnPadding };
-		newPadding[device][side] = value;
-		setAttributes({ spacing: { ...spacing, columnPadding: newPadding } });
+	const onChangeSpacing = (value) => {
+		const newSpacing = { ...spacing, ...value };
+		setAttributes({ spacing: newSpacing });
 	}
 
 	useEffect(() => {
@@ -667,10 +662,10 @@ export default function NavigationSubmenuEdit({
 
 	let styleArry = [
 		`#${blockProps.id}.premiun-mega-menu .premium-navigation__submenu-container > *{`,
-		`padding-top: ${columnPadding.desktop.top}px;`,
-		`padding-right: ${columnPadding.desktop.right}px;`,
-		`padding-bottom: ${columnPadding.desktop.bottom}px;`,
-		`padding-left: ${columnPadding.desktop.left}px;`,
+		`padding-top: ${columnPadding?.Desktop?.top}${columnPadding?.unit};`,
+		`padding-right: ${columnPadding?.Desktop?.right}${columnPadding?.unit};`,
+		`padding-bottom: ${columnPadding?.Desktop?.bottom}${columnPadding?.unit};`,
+		`padding-left: ${columnPadding?.Desktop?.left}${columnPadding?.unit};`,
 		`}`,
 		`#${blockProps.id} .premium-navigation__submenu-container a{`,
 		`--pbg-links-color: ${linkColor};`,
@@ -767,81 +762,8 @@ export default function NavigationSubmenuEdit({
 							title={__('Spacing', 'premium-blocks-for-gutenberg')}
 							initialOpen={false}
 						>
-							<PremiumResponsivePadding
-								directions={["all"]}
-								paddingTop={padding.desktop.top}
-								paddingRight={padding.desktop.right}
-								paddingBottom={padding.desktop.bottom}
-								paddingLeft={padding.desktop.left}
-								paddingTopTablet={padding.tablet.top}
-								paddingRightTablet={padding.tablet.right}
-								paddingBottomTablet={padding.tablet.bottom}
-								paddingLeftTablet={padding.tablet.left}
-								paddingTopMobile={padding.mobile.top}
-								paddingRightMobile={padding.mobile.right}
-								paddingBottomMobile={padding.mobile.bottom}
-								paddingLeftMobile={padding.mobile.left}
-								onChangePaddingTop={
-									(device, newValue) => {
-										onChangePadding('top', newValue, device);
-									}
-								}
-								onChangePaddingRight={
-									(device, newValue) => {
-										onChangePadding('right', newValue, device);
-									}
-								}
-								onChangePaddingBottom={
-									(device, newValue) => {
-										onChangePadding('bottom', newValue, device);
-									}
-								}
-								onChangePaddingLeft={
-									(device, newValue) => {
-										onChangePadding('left', newValue, device);
-									}
-								}
-							/>
-						</PanelBody>
-						<PanelBody
-							title={__('Mega Menu Columns Spacing', 'premium-blocks-for-gutenberg')}
-							initialOpen={false}
-						>
-							<PremiumResponsivePadding
-								directions={["all"]}
-								paddingTop={columnPadding.desktop.top}
-								paddingRight={columnPadding.desktop.right}
-								paddingBottom={columnPadding.desktop.bottom}
-								paddingLeft={columnPadding.desktop.left}
-								paddingTopTablet={columnPadding.tablet.top}
-								paddingRightTablet={columnPadding.tablet.right}
-								paddingBottomTablet={columnPadding.tablet.bottom}
-								paddingLeftTablet={columnPadding.tablet.left}
-								paddingTopMobile={columnPadding.mobile.top}
-								paddingRightMobile={columnPadding.mobile.right}
-								paddingBottomMobile={columnPadding.mobile.bottom}
-								paddingLeftMobile={columnPadding.mobile.left}
-								onChangePaddingTop={
-									(device, newValue) => {
-										onChangeItemPadding('top', newValue, device);
-									}
-								}
-								onChangePaddingRight={
-									(device, newValue) => {
-										onChangeItemPadding('right', newValue, device);
-									}
-								}
-								onChangePaddingBottom={
-									(device, newValue) => {
-										onChangeItemPadding('bottom', newValue, device);
-									}
-								}
-								onChangePaddingLeft={
-									(device, newValue) => {
-										onChangeItemPadding('left', newValue, device);
-									}
-								}
-							/>
+							<SpacingComponent value={padding} responsive={true} showUnits={true} label={__('Mega Menu Padding')} onChange={(value) => onChangeSpacing({ padding: value })} />
+							<SpacingComponent value={columnPadding} responsive={true} showUnits={true} label={__('Mega Menu Columns Padding')} onChange={(value) => onChangeSpacing({ columnPadding: value })} />
 						</PanelBody>
 					</>
 				)}

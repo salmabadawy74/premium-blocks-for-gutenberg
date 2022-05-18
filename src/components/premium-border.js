@@ -31,18 +31,12 @@ const PremiumBorder = (props) => {
     const [borderValue, setBorderValue] = useState(value)
     const { onChange } = props;
     const { borderColor, borderType, borderWidth, borderRadius } = borderValue
-    useEffect(() => {
-        if (borderValue !== value) {
-            setBorderValue(value);
-        }
-    }, [props]);
 
     const onChangeBorder = (item, value) => {
         const inialState = { ...borderValue }
         inialState[item] = value;
         onChange(inialState)
         setBorderValue(inialState)
-
     }
     return (
         <div className="premium-control-toggle">

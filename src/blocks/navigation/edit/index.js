@@ -322,8 +322,12 @@ function Navigation({
 			borderRightWidth: menuBorder?.borderWidth?.Desktop?.right,
 			borderBottomWidth: menuBorder?.borderWidth?.Desktop?.bottom,
 			borderLeftWidth: menuBorder?.borderWidth?.Desktop?.left,
-			borderRadius: `${menuBorder?.borderRadius?.Desktop?.top || 0} ${menuBorder?.borderRadius?.Desktop?.right || 0} ${menuBorder?.borderRadius?.Desktop?.bottom || 0} ${menuBorder?.borderRadius?.Desktop?.left || 0}`,
-			borderColor: menuBorder?.borderColor
+			borderRadius: `${menuBorder?.borderRadius?.Desktop?.top || 0}px ${menuBorder?.borderRadius?.Desktop?.right || 0}px ${menuBorder?.borderRadius?.Desktop?.bottom || 0}px ${menuBorder?.borderRadius?.Desktop?.left || 0}px`,
+			borderColor: menuBorder?.borderColor,
+			borderTopLeftRadius: `${menuBorder?.borderRadius?.Desktop?.top || 0}px`,
+			borderTopRightRadius: `${menuBorder?.borderRadius?.Desktop?.right || 0}px`,
+			borderBottomLeftRadius: `${menuBorder?.borderRadius?.Desktop?.bottom || 0}px`,
+			borderBottomRightRadius: `${menuBorder?.borderRadius?.Desktop?.left || 0}px`,
 		},
 	});
 
@@ -529,21 +533,6 @@ function Navigation({
 		return str.split(':')[1];
 	}
 
-	const menuBorderChange = (value) => {
-		const newBorder = { ...menuBorder };
-		setAttributes({ menuBorder: { ...newBorder, ...value } })
-	};
-
-	const submenuBorderChange = (value) => {
-		const newBorder = { ...submenuBorder };
-		setAttributes({ submenuBorder: { ...newBorder, ...value } })
-	};
-
-	const overlayMenuBorderChange = (value) => {
-		const newBorder = { ...overlayMenuBorder };
-		setAttributes({ overlayMenuBorder: { ...newBorder, ...value } })
-	};
-
 	let styleArry = [
 		`#${blockProps.id}.overlay-menu-slide .premium-navigation__responsive-container{`,
 		`--overlay-menu-width: ${overlayMenuWidth}px;`,
@@ -556,10 +545,10 @@ function Navigation({
 		`--pbg-links-hover-color: ${menuColors?.linkHover};`,
 		`}`,
 		`#${blockProps.id} .premium-navigation__container > div > .premium-navigation-item__content{`,
-		`padding-top: ${itemPadding?.Desktop?.top}px;`,
-		`padding-right: ${itemPadding?.Desktop?.right}px;`,
-		`padding-bottom: ${itemPadding?.Desktop?.bottom}px;`,
-		`padding-left: ${itemPadding?.Desktop?.left}px;`,
+		`padding-top: ${itemPadding?.Desktop?.top}${itemPadding?.unit};`,
+		`padding-right: ${itemPadding?.Desktop?.right}${itemPadding?.unit};`,
+		`padding-bottom: ${itemPadding?.Desktop?.bottom}${itemPadding?.unit};`,
+		`padding-left: ${itemPadding?.Desktop?.left}${itemPadding?.unit};`,
 		`}`,
 		`#${blockProps.id} .premium-navigation__responsive-container-open {`,
 		`color: ${overlayColors.icon};`,
@@ -785,6 +774,7 @@ function Navigation({
 						</TabPanel>
 						<PremiumBorder
 							label={__("Border")}
+							value={menuBorder}
 							borderType={menuBorder.borderType}
 							borderColor={menuBorder.borderColor}
 							borderWidth={menuBorder.borderWidth}
@@ -856,6 +846,7 @@ function Navigation({
 						</TabPanel>
 						<PremiumBorder
 							label={__("Border")}
+							value={overlayMenuBorder}
 							borderType={overlayMenuBorder.borderType}
 							borderColor={overlayMenuBorder.borderColor}
 							borderWidth={overlayMenuBorder.borderWidth}
@@ -1020,6 +1011,7 @@ function Navigation({
 								</TabPanel>
 								<PremiumBorder
 									label={__("Border")}
+									value={submenuBorder}
 									borderType={submenuBorder.borderType}
 									borderColor={submenuBorder.borderColor}
 									borderWidth={submenuBorder.borderWidth}
@@ -1072,7 +1064,10 @@ function Navigation({
 								borderRightWidth: overlayMenuBorder?.borderWidth?.Desktop?.right,
 								borderBottomWidth: overlayMenuBorder?.borderWidth?.Desktop?.bottom,
 								borderLeftWidth: overlayMenuBorder?.borderWidth?.Desktop?.left,
-								borderRadius: `${overlayMenuBorder?.borderRadius?.Desktop?.top || 0} ${overlayMenuBorder?.borderRadius?.Desktop?.right || 0} ${overlayMenuBorder?.borderRadius?.Desktop?.bottom || 0} ${overlayMenuBorder?.borderRadius?.Desktop?.left || 0}`,
+								borderTopLeftRadius: `${overlayMenuBorder?.borderRadius?.Desktop?.top || 0}px`,
+								borderTopRightRadius: `${overlayMenuBorder?.borderRadius?.Desktop?.right || 0}px`,
+								borderBottomLeftRadius: `${overlayMenuBorder?.borderRadius?.Desktop?.bottom || 0}px`,
+								borderBottomRightRadius: `${overlayMenuBorder?.borderRadius?.Desktop?.left || 0}px`,
 								borderColor: overlayMenuBorder?.borderColor
 							}}
 						>

@@ -4671,7 +4671,7 @@ __webpack_require__.r(__webpack_exports__);
 const EMPTY_ARRAY = [];
 
 function Navigation(_ref) {
-  var _margin$Desktop, _margin$Desktop2, _margin$Desktop3, _margin$Desktop4, _padding$Desktop, _padding$Desktop2, _padding$Desktop3, _padding$Desktop4, _menuBorder$borderWid, _menuBorder$borderWid2, _menuBorder$borderWid3, _menuBorder$borderWid4, _menuBorder$borderWid5, _menuBorder$borderWid6, _menuBorder$borderWid7, _menuBorder$borderWid8, _menuBorder$borderRad, _menuBorder$borderRad2, _menuBorder$borderRad3, _menuBorder$borderRad4, _menuBorder$borderRad5, _menuBorder$borderRad6, _menuBorder$borderRad7, _menuBorder$borderRad8, _itemPadding$Desktop, _itemPadding$Desktop2, _itemPadding$Desktop3, _itemPadding$Desktop4, _overlayMenuBorder$bo, _overlayMenuBorder$bo2, _overlayMenuBorder$bo3, _overlayMenuBorder$bo4, _overlayMenuBorder$bo5, _overlayMenuBorder$bo6, _overlayMenuBorder$bo7, _overlayMenuBorder$bo8, _overlayMenuBorder$bo9, _overlayMenuBorder$bo10, _overlayMenuBorder$bo11, _overlayMenuBorder$bo12, _overlayMenuBorder$bo13, _overlayMenuBorder$bo14, _overlayMenuBorder$bo15, _overlayMenuBorder$bo16;
+  var _margin$Desktop, _margin$Desktop2, _margin$Desktop3, _margin$Desktop4, _padding$Desktop, _padding$Desktop2, _padding$Desktop3, _padding$Desktop4, _menuBorder$borderWid, _menuBorder$borderWid2, _menuBorder$borderWid3, _menuBorder$borderWid4, _menuBorder$borderWid5, _menuBorder$borderWid6, _menuBorder$borderWid7, _menuBorder$borderWid8, _menuBorder$borderRad, _menuBorder$borderRad2, _menuBorder$borderRad3, _menuBorder$borderRad4, _menuBorder$borderRad5, _menuBorder$borderRad6, _menuBorder$borderRad7, _menuBorder$borderRad8, _menuBorder$borderRad9, _menuBorder$borderRad10, _menuBorder$borderRad11, _menuBorder$borderRad12, _menuBorder$borderRad13, _menuBorder$borderRad14, _menuBorder$borderRad15, _menuBorder$borderRad16, _itemPadding$Desktop, _itemPadding$Desktop2, _itemPadding$Desktop3, _itemPadding$Desktop4, _overlayMenuBorder$bo, _overlayMenuBorder$bo2, _overlayMenuBorder$bo3, _overlayMenuBorder$bo4, _overlayMenuBorder$bo5, _overlayMenuBorder$bo6, _overlayMenuBorder$bo7, _overlayMenuBorder$bo8, _overlayMenuBorder$bo9, _overlayMenuBorder$bo10, _overlayMenuBorder$bo11, _overlayMenuBorder$bo12, _overlayMenuBorder$bo13, _overlayMenuBorder$bo14, _overlayMenuBorder$bo15, _overlayMenuBorder$bo16;
 
   let {
     attributes,
@@ -4873,8 +4873,12 @@ function Navigation(_ref) {
       borderRightWidth: menuBorder === null || menuBorder === void 0 ? void 0 : (_menuBorder$borderWid3 = menuBorder.borderWidth) === null || _menuBorder$borderWid3 === void 0 ? void 0 : (_menuBorder$borderWid4 = _menuBorder$borderWid3.Desktop) === null || _menuBorder$borderWid4 === void 0 ? void 0 : _menuBorder$borderWid4.right,
       borderBottomWidth: menuBorder === null || menuBorder === void 0 ? void 0 : (_menuBorder$borderWid5 = menuBorder.borderWidth) === null || _menuBorder$borderWid5 === void 0 ? void 0 : (_menuBorder$borderWid6 = _menuBorder$borderWid5.Desktop) === null || _menuBorder$borderWid6 === void 0 ? void 0 : _menuBorder$borderWid6.bottom,
       borderLeftWidth: menuBorder === null || menuBorder === void 0 ? void 0 : (_menuBorder$borderWid7 = menuBorder.borderWidth) === null || _menuBorder$borderWid7 === void 0 ? void 0 : (_menuBorder$borderWid8 = _menuBorder$borderWid7.Desktop) === null || _menuBorder$borderWid8 === void 0 ? void 0 : _menuBorder$borderWid8.left,
-      borderRadius: `${(menuBorder === null || menuBorder === void 0 ? void 0 : (_menuBorder$borderRad = menuBorder.borderRadius) === null || _menuBorder$borderRad === void 0 ? void 0 : (_menuBorder$borderRad2 = _menuBorder$borderRad.Desktop) === null || _menuBorder$borderRad2 === void 0 ? void 0 : _menuBorder$borderRad2.top) || 0} ${(menuBorder === null || menuBorder === void 0 ? void 0 : (_menuBorder$borderRad3 = menuBorder.borderRadius) === null || _menuBorder$borderRad3 === void 0 ? void 0 : (_menuBorder$borderRad4 = _menuBorder$borderRad3.Desktop) === null || _menuBorder$borderRad4 === void 0 ? void 0 : _menuBorder$borderRad4.right) || 0} ${(menuBorder === null || menuBorder === void 0 ? void 0 : (_menuBorder$borderRad5 = menuBorder.borderRadius) === null || _menuBorder$borderRad5 === void 0 ? void 0 : (_menuBorder$borderRad6 = _menuBorder$borderRad5.Desktop) === null || _menuBorder$borderRad6 === void 0 ? void 0 : _menuBorder$borderRad6.bottom) || 0} ${(menuBorder === null || menuBorder === void 0 ? void 0 : (_menuBorder$borderRad7 = menuBorder.borderRadius) === null || _menuBorder$borderRad7 === void 0 ? void 0 : (_menuBorder$borderRad8 = _menuBorder$borderRad7.Desktop) === null || _menuBorder$borderRad8 === void 0 ? void 0 : _menuBorder$borderRad8.left) || 0}`,
-      borderColor: menuBorder === null || menuBorder === void 0 ? void 0 : menuBorder.borderColor
+      borderRadius: `${(menuBorder === null || menuBorder === void 0 ? void 0 : (_menuBorder$borderRad = menuBorder.borderRadius) === null || _menuBorder$borderRad === void 0 ? void 0 : (_menuBorder$borderRad2 = _menuBorder$borderRad.Desktop) === null || _menuBorder$borderRad2 === void 0 ? void 0 : _menuBorder$borderRad2.top) || 0}px ${(menuBorder === null || menuBorder === void 0 ? void 0 : (_menuBorder$borderRad3 = menuBorder.borderRadius) === null || _menuBorder$borderRad3 === void 0 ? void 0 : (_menuBorder$borderRad4 = _menuBorder$borderRad3.Desktop) === null || _menuBorder$borderRad4 === void 0 ? void 0 : _menuBorder$borderRad4.right) || 0}px ${(menuBorder === null || menuBorder === void 0 ? void 0 : (_menuBorder$borderRad5 = menuBorder.borderRadius) === null || _menuBorder$borderRad5 === void 0 ? void 0 : (_menuBorder$borderRad6 = _menuBorder$borderRad5.Desktop) === null || _menuBorder$borderRad6 === void 0 ? void 0 : _menuBorder$borderRad6.bottom) || 0}px ${(menuBorder === null || menuBorder === void 0 ? void 0 : (_menuBorder$borderRad7 = menuBorder.borderRadius) === null || _menuBorder$borderRad7 === void 0 ? void 0 : (_menuBorder$borderRad8 = _menuBorder$borderRad7.Desktop) === null || _menuBorder$borderRad8 === void 0 ? void 0 : _menuBorder$borderRad8.left) || 0}px`,
+      borderColor: menuBorder === null || menuBorder === void 0 ? void 0 : menuBorder.borderColor,
+      borderTopLeftRadius: `${(menuBorder === null || menuBorder === void 0 ? void 0 : (_menuBorder$borderRad9 = menuBorder.borderRadius) === null || _menuBorder$borderRad9 === void 0 ? void 0 : (_menuBorder$borderRad10 = _menuBorder$borderRad9.Desktop) === null || _menuBorder$borderRad10 === void 0 ? void 0 : _menuBorder$borderRad10.top) || 0}px`,
+      borderTopRightRadius: `${(menuBorder === null || menuBorder === void 0 ? void 0 : (_menuBorder$borderRad11 = menuBorder.borderRadius) === null || _menuBorder$borderRad11 === void 0 ? void 0 : (_menuBorder$borderRad12 = _menuBorder$borderRad11.Desktop) === null || _menuBorder$borderRad12 === void 0 ? void 0 : _menuBorder$borderRad12.right) || 0}px`,
+      borderBottomLeftRadius: `${(menuBorder === null || menuBorder === void 0 ? void 0 : (_menuBorder$borderRad13 = menuBorder.borderRadius) === null || _menuBorder$borderRad13 === void 0 ? void 0 : (_menuBorder$borderRad14 = _menuBorder$borderRad13.Desktop) === null || _menuBorder$borderRad14 === void 0 ? void 0 : _menuBorder$borderRad14.bottom) || 0}px`,
+      borderBottomRightRadius: `${(menuBorder === null || menuBorder === void 0 ? void 0 : (_menuBorder$borderRad15 = menuBorder.borderRadius) === null || _menuBorder$borderRad15 === void 0 ? void 0 : (_menuBorder$borderRad16 = _menuBorder$borderRad15.Desktop) === null || _menuBorder$borderRad16 === void 0 ? void 0 : _menuBorder$borderRad16.left) || 0}px`
     }
   }); // Spacer block needs orientation from context. This is a patch until
   // https://github.com/WordPress/gutenberg/issues/36197 is addressed.
@@ -5059,37 +5063,7 @@ function Navigation(_ref) {
     return str.split(':')[1];
   };
 
-  const menuBorderChange = value => {
-    const newBorder = { ...menuBorder
-    };
-    setAttributes({
-      menuBorder: { ...newBorder,
-        ...value
-      }
-    });
-  };
-
-  const submenuBorderChange = value => {
-    const newBorder = { ...submenuBorder
-    };
-    setAttributes({
-      submenuBorder: { ...newBorder,
-        ...value
-      }
-    });
-  };
-
-  const overlayMenuBorderChange = value => {
-    const newBorder = { ...overlayMenuBorder
-    };
-    setAttributes({
-      overlayMenuBorder: { ...newBorder,
-        ...value
-      }
-    });
-  };
-
-  let styleArry = [`#${blockProps.id}.overlay-menu-slide .premium-navigation__responsive-container{`, `--overlay-menu-width: ${overlayMenuWidth}px;`, `}`, `#${blockProps.id} > div.is-menu-open .wp-block-premium-navigation-submenu .premium-navigation__submenu-container{`, `border: none !important;`, `}`, `#${blockProps.id} .premium-navigation-item__content{`, `--pbg-links-color: ${menuColors === null || menuColors === void 0 ? void 0 : menuColors.link};`, `--pbg-links-hover-color: ${menuColors === null || menuColors === void 0 ? void 0 : menuColors.linkHover};`, `}`, `#${blockProps.id} .premium-navigation__container > div > .premium-navigation-item__content{`, `padding-top: ${itemPadding === null || itemPadding === void 0 ? void 0 : (_itemPadding$Desktop = itemPadding.Desktop) === null || _itemPadding$Desktop === void 0 ? void 0 : _itemPadding$Desktop.top}px;`, `padding-right: ${itemPadding === null || itemPadding === void 0 ? void 0 : (_itemPadding$Desktop2 = itemPadding.Desktop) === null || _itemPadding$Desktop2 === void 0 ? void 0 : _itemPadding$Desktop2.right}px;`, `padding-bottom: ${itemPadding === null || itemPadding === void 0 ? void 0 : (_itemPadding$Desktop3 = itemPadding.Desktop) === null || _itemPadding$Desktop3 === void 0 ? void 0 : _itemPadding$Desktop3.bottom}px;`, `padding-left: ${itemPadding === null || itemPadding === void 0 ? void 0 : (_itemPadding$Desktop4 = itemPadding.Desktop) === null || _itemPadding$Desktop4 === void 0 ? void 0 : _itemPadding$Desktop4.left}px;`, `}`, `#${blockProps.id} .premium-navigation__responsive-container-open {`, `color: ${overlayColors.icon};`, "}", `#${blockProps.id} .premium-navigation__responsive-container-open:hover {`, `color: ${overlayColors.iconHover};`, "}", `#${blockProps.id} .premium-navigation__responsive-container.is-menu-open {`, `background-color: ${overlayColors.background};`, "}", `#${blockProps.id} .premium-navigation__responsive-container.is-menu-open .premium-navigation-item__content{`, `--pbg-links-color: ${overlayColors.link};`, "}", `#${blockProps.id} .premium-navigation__responsive-container.is-menu-open .premium-navigation-item__content:hover{`, `--pbg-links-hover-color: ${overlayColors.linkHover};`, "}"];
+  let styleArry = [`#${blockProps.id}.overlay-menu-slide .premium-navigation__responsive-container{`, `--overlay-menu-width: ${overlayMenuWidth}px;`, `}`, `#${blockProps.id} > div.is-menu-open .wp-block-premium-navigation-submenu .premium-navigation__submenu-container{`, `border: none !important;`, `}`, `#${blockProps.id} .premium-navigation-item__content{`, `--pbg-links-color: ${menuColors === null || menuColors === void 0 ? void 0 : menuColors.link};`, `--pbg-links-hover-color: ${menuColors === null || menuColors === void 0 ? void 0 : menuColors.linkHover};`, `}`, `#${blockProps.id} .premium-navigation__container > div > .premium-navigation-item__content{`, `padding-top: ${itemPadding === null || itemPadding === void 0 ? void 0 : (_itemPadding$Desktop = itemPadding.Desktop) === null || _itemPadding$Desktop === void 0 ? void 0 : _itemPadding$Desktop.top}${itemPadding === null || itemPadding === void 0 ? void 0 : itemPadding.unit};`, `padding-right: ${itemPadding === null || itemPadding === void 0 ? void 0 : (_itemPadding$Desktop2 = itemPadding.Desktop) === null || _itemPadding$Desktop2 === void 0 ? void 0 : _itemPadding$Desktop2.right}${itemPadding === null || itemPadding === void 0 ? void 0 : itemPadding.unit};`, `padding-bottom: ${itemPadding === null || itemPadding === void 0 ? void 0 : (_itemPadding$Desktop3 = itemPadding.Desktop) === null || _itemPadding$Desktop3 === void 0 ? void 0 : _itemPadding$Desktop3.bottom}${itemPadding === null || itemPadding === void 0 ? void 0 : itemPadding.unit};`, `padding-left: ${itemPadding === null || itemPadding === void 0 ? void 0 : (_itemPadding$Desktop4 = itemPadding.Desktop) === null || _itemPadding$Desktop4 === void 0 ? void 0 : _itemPadding$Desktop4.left}${itemPadding === null || itemPadding === void 0 ? void 0 : itemPadding.unit};`, `}`, `#${blockProps.id} .premium-navigation__responsive-container-open {`, `color: ${overlayColors.icon};`, "}", `#${blockProps.id} .premium-navigation__responsive-container-open:hover {`, `color: ${overlayColors.iconHover};`, "}", `#${blockProps.id} .premium-navigation__responsive-container.is-menu-open {`, `background-color: ${overlayColors.background};`, "}", `#${blockProps.id} .premium-navigation__responsive-container.is-menu-open .premium-navigation-item__content{`, `--pbg-links-color: ${overlayColors.link};`, "}", `#${blockProps.id} .premium-navigation__responsive-container.is-menu-open .premium-navigation-item__content:hover{`, `--pbg-links-hover-color: ${overlayColors.linkHover};`, "}"];
   styleArry = styleArry.filter(styleLine => {
     const notAllowed = ['px;', 'undefined;', ';'];
     const style = getSecondPart(styleLine) ? getSecondPart(styleLine).replace(/\s/g, '') : styleLine;
@@ -5252,6 +5226,7 @@ function Navigation(_ref) {
     }
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_11__["default"], {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)("Border"),
+    value: menuBorder,
     borderType: menuBorder.borderType,
     borderColor: menuBorder.borderColor,
     borderWidth: menuBorder.borderWidth,
@@ -5308,6 +5283,7 @@ function Navigation(_ref) {
     }
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_11__["default"], {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)("Border"),
+    value: overlayMenuBorder,
     borderType: overlayMenuBorder.borderType,
     borderColor: overlayMenuBorder.borderColor,
     borderWidth: overlayMenuBorder.borderWidth,
@@ -5483,6 +5459,7 @@ function Navigation(_ref) {
     }
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_11__["default"], {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)("Border"),
+    value: submenuBorder,
     borderType: submenuBorder.borderType,
     borderColor: submenuBorder.borderColor,
     borderWidth: submenuBorder.borderWidth,
@@ -5513,7 +5490,10 @@ function Navigation(_ref) {
       borderRightWidth: overlayMenuBorder === null || overlayMenuBorder === void 0 ? void 0 : (_overlayMenuBorder$bo3 = overlayMenuBorder.borderWidth) === null || _overlayMenuBorder$bo3 === void 0 ? void 0 : (_overlayMenuBorder$bo4 = _overlayMenuBorder$bo3.Desktop) === null || _overlayMenuBorder$bo4 === void 0 ? void 0 : _overlayMenuBorder$bo4.right,
       borderBottomWidth: overlayMenuBorder === null || overlayMenuBorder === void 0 ? void 0 : (_overlayMenuBorder$bo5 = overlayMenuBorder.borderWidth) === null || _overlayMenuBorder$bo5 === void 0 ? void 0 : (_overlayMenuBorder$bo6 = _overlayMenuBorder$bo5.Desktop) === null || _overlayMenuBorder$bo6 === void 0 ? void 0 : _overlayMenuBorder$bo6.bottom,
       borderLeftWidth: overlayMenuBorder === null || overlayMenuBorder === void 0 ? void 0 : (_overlayMenuBorder$bo7 = overlayMenuBorder.borderWidth) === null || _overlayMenuBorder$bo7 === void 0 ? void 0 : (_overlayMenuBorder$bo8 = _overlayMenuBorder$bo7.Desktop) === null || _overlayMenuBorder$bo8 === void 0 ? void 0 : _overlayMenuBorder$bo8.left,
-      borderRadius: `${(overlayMenuBorder === null || overlayMenuBorder === void 0 ? void 0 : (_overlayMenuBorder$bo9 = overlayMenuBorder.borderRadius) === null || _overlayMenuBorder$bo9 === void 0 ? void 0 : (_overlayMenuBorder$bo10 = _overlayMenuBorder$bo9.Desktop) === null || _overlayMenuBorder$bo10 === void 0 ? void 0 : _overlayMenuBorder$bo10.top) || 0} ${(overlayMenuBorder === null || overlayMenuBorder === void 0 ? void 0 : (_overlayMenuBorder$bo11 = overlayMenuBorder.borderRadius) === null || _overlayMenuBorder$bo11 === void 0 ? void 0 : (_overlayMenuBorder$bo12 = _overlayMenuBorder$bo11.Desktop) === null || _overlayMenuBorder$bo12 === void 0 ? void 0 : _overlayMenuBorder$bo12.right) || 0} ${(overlayMenuBorder === null || overlayMenuBorder === void 0 ? void 0 : (_overlayMenuBorder$bo13 = overlayMenuBorder.borderRadius) === null || _overlayMenuBorder$bo13 === void 0 ? void 0 : (_overlayMenuBorder$bo14 = _overlayMenuBorder$bo13.Desktop) === null || _overlayMenuBorder$bo14 === void 0 ? void 0 : _overlayMenuBorder$bo14.bottom) || 0} ${(overlayMenuBorder === null || overlayMenuBorder === void 0 ? void 0 : (_overlayMenuBorder$bo15 = overlayMenuBorder.borderRadius) === null || _overlayMenuBorder$bo15 === void 0 ? void 0 : (_overlayMenuBorder$bo16 = _overlayMenuBorder$bo15.Desktop) === null || _overlayMenuBorder$bo16 === void 0 ? void 0 : _overlayMenuBorder$bo16.left) || 0}`,
+      borderTopLeftRadius: `${(overlayMenuBorder === null || overlayMenuBorder === void 0 ? void 0 : (_overlayMenuBorder$bo9 = overlayMenuBorder.borderRadius) === null || _overlayMenuBorder$bo9 === void 0 ? void 0 : (_overlayMenuBorder$bo10 = _overlayMenuBorder$bo9.Desktop) === null || _overlayMenuBorder$bo10 === void 0 ? void 0 : _overlayMenuBorder$bo10.top) || 0}px`,
+      borderTopRightRadius: `${(overlayMenuBorder === null || overlayMenuBorder === void 0 ? void 0 : (_overlayMenuBorder$bo11 = overlayMenuBorder.borderRadius) === null || _overlayMenuBorder$bo11 === void 0 ? void 0 : (_overlayMenuBorder$bo12 = _overlayMenuBorder$bo11.Desktop) === null || _overlayMenuBorder$bo12 === void 0 ? void 0 : _overlayMenuBorder$bo12.right) || 0}px`,
+      borderBottomLeftRadius: `${(overlayMenuBorder === null || overlayMenuBorder === void 0 ? void 0 : (_overlayMenuBorder$bo13 = overlayMenuBorder.borderRadius) === null || _overlayMenuBorder$bo13 === void 0 ? void 0 : (_overlayMenuBorder$bo14 = _overlayMenuBorder$bo13.Desktop) === null || _overlayMenuBorder$bo14 === void 0 ? void 0 : _overlayMenuBorder$bo14.bottom) || 0}px`,
+      borderBottomRightRadius: `${(overlayMenuBorder === null || overlayMenuBorder === void 0 ? void 0 : (_overlayMenuBorder$bo15 = overlayMenuBorder.borderRadius) === null || _overlayMenuBorder$bo15 === void 0 ? void 0 : (_overlayMenuBorder$bo16 = _overlayMenuBorder$bo15.Desktop) === null || _overlayMenuBorder$bo16 === void 0 ? void 0 : _overlayMenuBorder$bo16.left) || 0}px`,
       borderColor: overlayMenuBorder === null || overlayMenuBorder === void 0 ? void 0 : overlayMenuBorder.borderColor
     }
   }, isEntityAvailable && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_inner_blocks__WEBPACK_IMPORTED_MODULE_16__["default"], {
@@ -7412,11 +7392,6 @@ const PremiumBorder = props => {
     borderWidth,
     borderRadius
   } = borderValue;
-  useEffect(() => {
-    if (borderValue !== value) {
-      setBorderValue(value);
-    }
-  }, [props]);
 
   const onChangeBorder = (item, value) => {
     const inialState = { ...borderValue

@@ -783,11 +783,6 @@ var PremiumBorder = function PremiumBorder(props) {
         borderWidth = borderValue.borderWidth,
         borderRadius = borderValue.borderRadius;
 
-    useEffect(function () {
-        if (borderValue !== value) {
-            setBorderValue(value);
-        }
-    }, [props]);
 
     var onChangeBorder = function onChangeBorder(item, value) {
         var inialState = _extends({}, borderValue);
