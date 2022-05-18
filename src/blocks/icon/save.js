@@ -7,29 +7,19 @@ const save = props => {
     const {
         block_id,
         iconBorder,
-        wrapBorder,
         selectedIcon,
         align,
         hoverEffect,
         iconStyles,
         containerStyles,
-        borderWidth,
-        iconBorderTop,
-        iconBorderRight,
-        iconBorderBottom,
-        iconBorderLeft,
-        wrapBorderWidth,
-        wrapBorderTop,
-        wrapBorderRight,
-        wrapBorderBottom,
-        wrapBorderLeft,
         urlCheck,
         link,
         target,
         hideDesktop,
         hideTablet,
         hideMobile,
-        backgroundType
+        backgroundType,
+        containerBorder,
     } = props.attributes;
 
     const mainClasses = classnames(className, 'premium-icon');
@@ -62,12 +52,16 @@ const save = props => {
                     backgroundPosition: containerStyles[0].backgroundPosition,
                     backgroundSize: containerStyles[0].backgroundSize,
                     backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
-                    borderStyle: containerStyles[0].wrapBorderType,
-                    borderWidth: wrapBorder
-                        ? `${wrapBorderTop}px ${wrapBorderRight}px ${wrapBorderBottom}px ${wrapBorderLeft}px`
-                        : wrapBorderWidth + "px",
-                    borderRadius: containerStyles[0].wrapBorderRadius + "px",
-                    borderColor: containerStyles[0].wrapBorderColor,
+                    borderStyle: containerBorder.borderType,
+                    // borderTopWidth: ContainerBorderWidthTop && ContainerBorderWidthTop + "px",
+                    // borderRightWidth: ContainerBorderWidthRight && ContainerBorderWidthRight + "px",
+                    // borderBottomWidth: ContainerBorderWidthBottom && ContainerBorderWidthBottom + "px",
+                    // borderLeftWidth: ContainerBorderWidthLeft && ContainerBorderWidthLeft + "px",
+                    // borderBottomLeftRadius: ContainerBorderRadiusLeft && ContainerBorderRadiusLeft + "px",
+                    // borderTopLeftRadius: ContainerBorderRadiusTop && ContainerBorderRadiusTop + "px",
+                    // borderTopRightRadius: ContainerBorderRadiusRight && ContainerBorderRadiusRight + "px",
+                    // borderBottomRightRadius: ContainerBorderRadiusBottom && ContainerBorderRadiusBottom + "px",
+                    borderColor: containerBorder.borderColor,
                     boxShadow: `${containerStyles[0].wrapShadowHorizontal || 0}px ${containerStyles[0].wrapShadowVertical ||
                         0}px ${containerStyles[0].wrapShadowBlur ||
                         0}px ${containerStyles[0].wrapShadowColor} ${containerStyles[0].wrapShadowPosition}`,
@@ -86,12 +80,16 @@ const save = props => {
                             color: iconStyles[0].iconColor || "#6ec1e4",
                             backgroundColor: iconStyles[0].iconBack,
                             fontSize: (iconStyles[0].iconSize || 50) + iconStyles[0].iconSizeUnit,
-                            borderStyle: iconStyles[0].borderType,
-                            borderWidth: iconBorder
-                                ? `${iconBorderTop}px ${iconBorderRight}px ${iconBorderBottom}px ${iconBorderLeft}px`
-                                : borderWidth + "px",
-                            borderRadius: iconStyles[0].borderRadius || 100 + "px",
-                            borderColor: iconStyles[0].borderColor,
+                            borderStyle: iconBorder.borderType,
+                            // borderTopWidth: iconBorderWidthTop && iconBorderWidthTop + "px",
+                            // borderRightWidth: iconBorderWidthRight && iconBorderWidthRight + "px",
+                            // borderBottomWidth: iconBorderWidthBottom && iconBorderWidthBottom + "px",
+                            // borderLeftWidth: iconBorderWidthLeft && iconBorderWidthLeft + "px",
+                            // borderBottomLeftRadius: iconBorderRadiusLeft && iconBorderRadiusLeft + "px",
+                            // borderTopLeftRadius: iconBorderRadiusTop && iconBorderRadiusTop + "px",
+                            // borderTopRightRadius: iconBorderRadiusRight && iconBorderRadiusRight + "px",
+                            // borderBottomRightRadius: iconBorderRadiusBottom && iconBorderRadiusBottom + "px",
+                            borderColor: iconBorder.borderColor,
                             textShadow: `${iconStyles[0].shadowHorizontal || 0}px ${iconStyles[0].shadowVertical ||
                                 0}px ${iconStyles[0].shadowBlur || 0}px ${iconStyles[0].shadowColor}`
                         }}

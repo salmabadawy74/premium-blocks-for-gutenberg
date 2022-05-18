@@ -27931,24 +27931,12 @@ var edit = function edit(props) {
 
     var _props$attributes = props.attributes,
         block_id = _props$attributes.block_id,
-        iconBorder = _props$attributes.iconBorder,
-        wrapBorder = _props$attributes.wrapBorder,
         iconType = _props$attributes.iconType,
         selectedIcon = _props$attributes.selectedIcon,
         align = _props$attributes.align,
         hoverEffect = _props$attributes.hoverEffect,
         iconStyles = _props$attributes.iconStyles,
         containerStyles = _props$attributes.containerStyles,
-        borderWidth = _props$attributes.borderWidth,
-        iconBorderTop = _props$attributes.iconBorderTop,
-        iconBorderRight = _props$attributes.iconBorderRight,
-        iconBorderBottom = _props$attributes.iconBorderBottom,
-        iconBorderLeft = _props$attributes.iconBorderLeft,
-        wrapBorderWidth = _props$attributes.wrapBorderWidth,
-        wrapBorderTop = _props$attributes.wrapBorderTop,
-        wrapBorderRight = _props$attributes.wrapBorderRight,
-        wrapBorderBottom = _props$attributes.wrapBorderBottom,
-        wrapBorderLeft = _props$attributes.wrapBorderLeft,
         urlCheck = _props$attributes.urlCheck,
         link = _props$attributes.link,
         target = _props$attributes.target,
@@ -27959,7 +27947,9 @@ var edit = function edit(props) {
         iconPadding = _props$attributes.iconPadding,
         iconMargin = _props$attributes.iconMargin,
         wrapPadding = _props$attributes.wrapPadding,
-        wrapMargin = _props$attributes.wrapMargin;
+        wrapMargin = _props$attributes.wrapMargin,
+        containerBorder = _props$attributes.containerBorder,
+        iconBorder = _props$attributes.iconBorder;
 
 
     var EFFECTS = [{
@@ -28041,6 +28031,23 @@ var edit = function edit(props) {
     var wrapMarginRight = getPreviewSize(props.deviceType, wrapMargin.Desktop.right, wrapMargin.Tablet.right, wrapMargin.Mobile.right);
     var wrapMarginBottom = getPreviewSize(props.deviceType, wrapMargin.Desktop.bottom, wrapMargin.Tablet.bottom, wrapMargin.Mobile.bottom);
     var wrapMarginLeft = getPreviewSize(props.deviceType, wrapMargin.Desktop.left, wrapMargin.Tablet.left, wrapMargin.Mobile.left);
+    var iconBorderWidthTop = getPreviewSize(props.deviceType, iconBorder.borderWidth.Desktop.top, iconBorder.borderWidth.Tablet.top, iconBorder.borderWidth.Mobile.top);
+    var iconBorderWidthRight = getPreviewSize(props.deviceType, iconBorder.borderWidth.Desktop.right, iconBorder.borderWidth.Tablet.right, iconBorder.borderWidth.Mobile.right);
+    var iconBorderWidthBottom = getPreviewSize(props.deviceType, iconBorder.borderWidth.Desktop.bottom, iconBorder.borderWidth.Tablet.bottom, iconBorder.borderWidth.Mobile.bottom);
+    var iconBorderWidthLeft = getPreviewSize(props.deviceType, iconBorder.borderWidth.Desktop.left, iconBorder.borderWidth.Tablet.left, iconBorder.borderWidth.Mobile.left);
+    var iconBorderRadiusTop = getPreviewSize(props.deviceType, iconBorder.borderRadius.Desktop.top, iconBorder.borderRadius.Tablet.top, iconBorder.borderRadius.Mobile.top);
+    var iconBorderRadiusRight = getPreviewSize(props.deviceType, iconBorder.borderRadius.Desktop.right, iconBorder.borderRadius.Tablet.right, iconBorder.borderRadius.Mobile.right);
+    var iconBorderRadiusBottom = getPreviewSize(props.deviceType, iconBorder.borderRadius.Desktop.bottom, iconBorder.borderRadius.Tablet.bottom, iconBorder.borderRadius.Mobile.bottom);
+    var iconBorderRadiusLeft = getPreviewSize(props.deviceType, iconBorder.borderRadius.Desktop.left, iconBorder.borderRadius.Tablet.left, iconBorder.borderRadius.Mobile.left);
+    var ContainerBorderWidthTop = getPreviewSize(props.deviceType, containerBorder.borderWidth.Desktop.top, containerBorder.borderWidth.Tablet.top, containerBorder.borderWidth.Mobile.top);
+    var ContainerBorderWidthRight = getPreviewSize(props.deviceType, containerBorder.borderWidth.Desktop.right, containerBorder.borderWidth.Tablet.right, containerBorder.borderWidth.Mobile.right);
+    var ContainerBorderWidthBottom = getPreviewSize(props.deviceType, containerBorder.borderWidth.Desktop.bottom, containerBorder.borderWidth.Tablet.bottom, containerBorder.borderWidth.Mobile.bottom);
+    var ContainerBorderWidthLeft = getPreviewSize(props.deviceType, containerBorder.borderWidth.Desktop.left, containerBorder.borderWidth.Tablet.left, containerBorder.borderWidth.Mobile.left);
+    var ContainerBorderRadiusTop = getPreviewSize(props.deviceType, containerBorder.borderRadius.Desktop.top, containerBorder.borderRadius.Tablet.top, containerBorder.borderRadius.Mobile.top);
+    var ContainerBorderRadiusRight = getPreviewSize(props.deviceType, containerBorder.borderRadius.Desktop.right, containerBorder.borderRadius.Tablet.right, containerBorder.borderRadius.Mobile.right);
+    var ContainerBorderRadiusBottom = getPreviewSize(props.deviceType, containerBorder.borderRadius.Desktop.bottom, containerBorder.borderRadius.Tablet.bottom, containerBorder.borderRadius.Mobile.bottom);
+    var ContainerBorderRadiusLeft = getPreviewSize(props.deviceType, containerBorder.borderRadius.Desktop.left, containerBorder.borderRadius.Tablet.left, containerBorder.borderRadius.Mobile.left);
+
     return [isSelected && React.createElement(
         InspectorControls,
         { key: "inspector" },
@@ -28135,35 +28142,10 @@ var edit = function edit(props) {
                 }
             }),
             React.createElement(_premiumBorder2.default, {
-                borderType: iconStyles[0].borderType,
-                borderWidth: borderWidth,
-                top: iconBorderTop,
-                right: iconBorderRight,
-                bottom: iconBorderBottom,
-                left: iconBorderLeft,
-                borderColor: iconStyles[0].borderColor,
-                borderRadius: iconStyles[0].borderRadius,
-                onChangeType: function onChangeType(newType) {
-                    return saveIconStyle({ borderType: newType });
-                },
-                onChangeWidth: function onChangeWidth(_ref) {
-                    var top = _ref.top,
-                        right = _ref.right,
-                        bottom = _ref.bottom,
-                        left = _ref.left;
-                    return setAttributes({
-                        iconBorder: true,
-                        iconBorderTop: top,
-                        iconBorderRight: right,
-                        iconBorderBottom: bottom,
-                        iconBorderLeft: left
-                    });
-                },
-                onChangeColor: function onChangeColor(colorValue) {
-                    return saveIconStyle({ borderColor: colorValue });
-                },
-                onChangeRadius: function onChangeRadius(newrRadius) {
-                    return saveIconStyle({ borderRadius: newrRadius });
+                label: __('Border', 'premium-blocks-for-gutenberg'),
+                value: iconBorder,
+                onChange: function onChange(value) {
+                    return setAttributes({ iconBorder: value });
                 }
             }),
             React.createElement(_PremiumShadow2.default, {
@@ -28230,35 +28212,10 @@ var edit = function edit(props) {
                 gradientType: containerStyles[0].gradientType
             }),
             React.createElement(_premiumBorder2.default, {
-                borderType: containerStyles[0].wrapBorderType,
-                borderWidth: containerStyles[0].wrapBorderWidth,
-                top: wrapBorderTop,
-                right: wrapBorderRight,
-                bottom: wrapBorderBottom,
-                left: wrapBorderLeft,
-                borderColor: containerStyles[0].wrapBorderColor,
-                borderRadius: containerStyles[0].wrapBorderRadius,
-                onChangeType: function onChangeType(newType) {
-                    return saveContainerStyle({ wrapBorderType: newType });
-                },
-                onChangeWidth: function onChangeWidth(_ref2) {
-                    var top = _ref2.top,
-                        right = _ref2.right,
-                        bottom = _ref2.bottom,
-                        left = _ref2.left;
-                    return setAttributes({
-                        wrapBorder: true,
-                        wrapBorderTop: top,
-                        wrapBorderRight: right,
-                        wrapBorderBottom: bottom,
-                        wrapBorderLeft: left
-                    });
-                },
-                onChangeColor: function onChangeColor(colorValue) {
-                    return saveContainerStyle({ wrapBorderColor: colorValue });
-                },
-                onChangeRadius: function onChangeRadius(newrRadius) {
-                    return saveContainerStyle({ wrapBorderRadius: newrRadius });
+                label: __('Border', 'premium-blocks-for-gutenberg'),
+                value: containerBorder,
+                onChange: function onChange(value) {
+                    return setAttributes({ containerBorder: value });
                 }
             }),
             React.createElement(_PremiumShadow2.default, {
@@ -28336,10 +28293,16 @@ var edit = function edit(props) {
                     backgroundPosition: containerStyles[0].backgroundPosition,
                     backgroundSize: containerStyles[0].backgroundSize,
                     backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
-                    borderStyle: containerStyles[0].wrapBorderType,
-                    borderWidth: wrapBorder ? wrapBorderTop + "px " + wrapBorderRight + "px " + wrapBorderBottom + "px " + wrapBorderLeft + "px" : wrapBorderWidth + "px",
-                    borderRadius: containerStyles[0].wrapBorderRadius + "px",
-                    borderColor: containerStyles[0].wrapBorderColor,
+                    borderStyle: containerBorder.borderType,
+                    borderTopWidth: ContainerBorderWidthTop && ContainerBorderWidthTop + "px",
+                    borderRightWidth: ContainerBorderWidthRight && ContainerBorderWidthRight + "px",
+                    borderBottomWidth: ContainerBorderWidthBottom && ContainerBorderWidthBottom + "px",
+                    borderLeftWidth: ContainerBorderWidthLeft && ContainerBorderWidthLeft + "px",
+                    borderBottomLeftRadius: ContainerBorderRadiusLeft && ContainerBorderRadiusLeft + "px",
+                    borderTopLeftRadius: ContainerBorderRadiusTop && ContainerBorderRadiusTop + "px",
+                    borderTopRightRadius: ContainerBorderRadiusRight && ContainerBorderRadiusRight + "px",
+                    borderBottomRightRadius: ContainerBorderRadiusBottom && ContainerBorderRadiusBottom + "px",
+                    borderColor: containerBorder.borderColor,
                     boxShadow: (containerStyles[0].wrapShadowHorizontal || 0) + "px " + (containerStyles[0].wrapShadowVertical || 0) + "px " + (containerStyles[0].wrapShadowBlur || 0) + "px " + containerStyles[0].wrapShadowColor + " " + containerStyles[0].wrapShadowPosition,
                     paddingTop: wrapPaddingTop + wrapPadding.unit,
                     paddingRight: wrapPaddingRight + wrapPadding.unit,
@@ -28370,10 +28333,16 @@ var edit = function edit(props) {
                     marginRight: iconMarginRight + iconMargin.unit,
                     marginBottom: iconMarginBottom + iconMargin.unit,
                     marginLeft: iconMarginLeft + iconMargin.unit,
-                    borderStyle: iconStyles[0].borderType,
-                    borderWidth: iconBorder ? iconBorderTop + "px " + iconBorderRight + "px " + iconBorderBottom + "px " + iconBorderLeft + "px" : borderWidth + "px",
-                    borderRadius: iconStyles[0].borderRadius || 100 + "px",
-                    borderColor: iconStyles[0].borderColor,
+                    borderStyle: iconBorder.borderType,
+                    borderTopWidth: iconBorderWidthTop && iconBorderWidthTop + "px",
+                    borderRightWidth: iconBorderWidthRight && iconBorderWidthRight + "px",
+                    borderBottomWidth: iconBorderWidthBottom && iconBorderWidthBottom + "px",
+                    borderLeftWidth: iconBorderWidthLeft && iconBorderWidthLeft + "px",
+                    borderBottomLeftRadius: iconBorderRadiusLeft && iconBorderRadiusLeft + "px",
+                    borderTopLeftRadius: iconBorderRadiusTop && iconBorderRadiusTop + "px",
+                    borderTopRightRadius: iconBorderRadiusRight && iconBorderRadiusRight + "px",
+                    borderBottomRightRadius: iconBorderRadiusBottom && iconBorderRadiusBottom + "px",
+                    borderColor: iconBorder.borderColor,
                     textShadow: (iconStyles[0].shadowHorizontal || 0) + "px " + (iconStyles[0].shadowVertical || 0) + "px " + (iconStyles[0].shadowBlur || 0) + "px " + iconStyles[0].shadowColor
                 }
             }),
@@ -30355,29 +30324,19 @@ var save = function save(props) {
     var _props$attributes = props.attributes,
         block_id = _props$attributes.block_id,
         iconBorder = _props$attributes.iconBorder,
-        wrapBorder = _props$attributes.wrapBorder,
         selectedIcon = _props$attributes.selectedIcon,
         align = _props$attributes.align,
         hoverEffect = _props$attributes.hoverEffect,
         iconStyles = _props$attributes.iconStyles,
         containerStyles = _props$attributes.containerStyles,
-        borderWidth = _props$attributes.borderWidth,
-        iconBorderTop = _props$attributes.iconBorderTop,
-        iconBorderRight = _props$attributes.iconBorderRight,
-        iconBorderBottom = _props$attributes.iconBorderBottom,
-        iconBorderLeft = _props$attributes.iconBorderLeft,
-        wrapBorderWidth = _props$attributes.wrapBorderWidth,
-        wrapBorderTop = _props$attributes.wrapBorderTop,
-        wrapBorderRight = _props$attributes.wrapBorderRight,
-        wrapBorderBottom = _props$attributes.wrapBorderBottom,
-        wrapBorderLeft = _props$attributes.wrapBorderLeft,
         urlCheck = _props$attributes.urlCheck,
         link = _props$attributes.link,
         target = _props$attributes.target,
         hideDesktop = _props$attributes.hideDesktop,
         hideTablet = _props$attributes.hideTablet,
         hideMobile = _props$attributes.hideMobile,
-        backgroundType = _props$attributes.backgroundType;
+        backgroundType = _props$attributes.backgroundType,
+        containerBorder = _props$attributes.containerBorder;
 
 
     var mainClasses = (0, _classnames2.default)(className, 'premium-icon');
@@ -30415,10 +30374,16 @@ var save = function save(props) {
                     backgroundPosition: containerStyles[0].backgroundPosition,
                     backgroundSize: containerStyles[0].backgroundSize,
                     backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
-                    borderStyle: containerStyles[0].wrapBorderType,
-                    borderWidth: wrapBorder ? wrapBorderTop + 'px ' + wrapBorderRight + 'px ' + wrapBorderBottom + 'px ' + wrapBorderLeft + 'px' : wrapBorderWidth + "px",
-                    borderRadius: containerStyles[0].wrapBorderRadius + "px",
-                    borderColor: containerStyles[0].wrapBorderColor,
+                    borderStyle: containerBorder.borderType,
+                    // borderTopWidth: ContainerBorderWidthTop && ContainerBorderWidthTop + "px",
+                    // borderRightWidth: ContainerBorderWidthRight && ContainerBorderWidthRight + "px",
+                    // borderBottomWidth: ContainerBorderWidthBottom && ContainerBorderWidthBottom + "px",
+                    // borderLeftWidth: ContainerBorderWidthLeft && ContainerBorderWidthLeft + "px",
+                    // borderBottomLeftRadius: ContainerBorderRadiusLeft && ContainerBorderRadiusLeft + "px",
+                    // borderTopLeftRadius: ContainerBorderRadiusTop && ContainerBorderRadiusTop + "px",
+                    // borderTopRightRadius: ContainerBorderRadiusRight && ContainerBorderRadiusRight + "px",
+                    // borderBottomRightRadius: ContainerBorderRadiusBottom && ContainerBorderRadiusBottom + "px",
+                    borderColor: containerBorder.borderColor,
                     boxShadow: (containerStyles[0].wrapShadowHorizontal || 0) + 'px ' + (containerStyles[0].wrapShadowVertical || 0) + 'px ' + (containerStyles[0].wrapShadowBlur || 0) + 'px ' + containerStyles[0].wrapShadowColor + ' ' + containerStyles[0].wrapShadowPosition
 
                 }
@@ -30437,10 +30402,16 @@ var save = function save(props) {
                         color: iconStyles[0].iconColor || "#6ec1e4",
                         backgroundColor: iconStyles[0].iconBack,
                         fontSize: (iconStyles[0].iconSize || 50) + iconStyles[0].iconSizeUnit,
-                        borderStyle: iconStyles[0].borderType,
-                        borderWidth: iconBorder ? iconBorderTop + 'px ' + iconBorderRight + 'px ' + iconBorderBottom + 'px ' + iconBorderLeft + 'px' : borderWidth + "px",
-                        borderRadius: iconStyles[0].borderRadius || 100 + "px",
-                        borderColor: iconStyles[0].borderColor,
+                        borderStyle: iconBorder.borderType,
+                        // borderTopWidth: iconBorderWidthTop && iconBorderWidthTop + "px",
+                        // borderRightWidth: iconBorderWidthRight && iconBorderWidthRight + "px",
+                        // borderBottomWidth: iconBorderWidthBottom && iconBorderWidthBottom + "px",
+                        // borderLeftWidth: iconBorderWidthLeft && iconBorderWidthLeft + "px",
+                        // borderBottomLeftRadius: iconBorderRadiusLeft && iconBorderRadiusLeft + "px",
+                        // borderTopLeftRadius: iconBorderRadiusTop && iconBorderRadiusTop + "px",
+                        // borderTopRightRadius: iconBorderRadiusRight && iconBorderRadiusRight + "px",
+                        // borderBottomRightRadius: iconBorderRadiusBottom && iconBorderRadiusBottom + "px",
+                        borderColor: iconBorder.borderColor,
                         textShadow: (iconStyles[0].shadowHorizontal || 0) + 'px ' + (iconStyles[0].shadowVertical || 0) + 'px ' + (iconStyles[0].shadowBlur || 0) + 'px ' + iconStyles[0].shadowColor
                     }
                 })
@@ -31635,6 +31606,94 @@ var deprecatedContent = [{
                     bottom: attributes.wrapPaddingBMobile,
                     left: attributes.wrapPaddingLMobile
                 }
+            },
+            iconBorder: {
+                borderColor: attributes.iconStyles[0].btnBorderColor,
+                borderType: attributes.iconStyles[0].borderColor,
+                borderRadius: {
+                    "Desktop": {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: ""
+                    },
+                    "Tablet": {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: ""
+                    },
+                    "Mobile": {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: ""
+                    }
+                },
+                borderWidth: {
+                    "Desktop": {
+                        top: attributes.iconBorderTop,
+                        right: attributes.iconBorderRight,
+                        bottom: attributes.iconBorderBottom,
+                        left: attributes.iconBorderLeft
+                    },
+                    "Tablet": {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: ""
+                    },
+                    "Mobile": {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: ""
+                    }
+                }
+            },
+            containerBorder: {
+                borderColor: attributes.containerStyles[0].wrapBorderType,
+                borderType: attributes.containerStyles[0].wrapBorderColor,
+                borderRadius: {
+                    "Desktop": {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: ""
+                    },
+                    "Tablet": {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: ""
+                    },
+                    "Mobile": {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: ""
+                    }
+                },
+                borderWidth: {
+                    "Desktop": {
+                        top: attributes.wrapBorderTop,
+                        right: attributes.wrapBorderRight,
+                        bottom: attributes.wrapBorderBottom,
+                        left: attributes.wrapBorderLeft
+                    },
+                    "Tablet": {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: ""
+                    },
+                    "Mobile": {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: ""
+                    }
+                }
             }
         };
         return Object.assign(attributes, newAttributes);
@@ -31686,10 +31745,8 @@ var deprecatedContent = [{
                         backgroundPosition: containerStyles[0].backgroundPosition,
                         backgroundSize: containerStyles[0].backgroundSize,
                         backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
-                        borderStyle: containerStyles[0].wrapBorderType,
-                        borderWidth: wrapBorder ? wrapBorderTop + "px " + wrapBorderRight + "px " + wrapBorderBottom + "px " + wrapBorderLeft + "px" : wrapBorderWidth + "px",
-                        borderRadius: containerStyles[0].wrapBorderRadius + "px",
-                        borderColor: containerStyles[0].wrapBorderColor,
+                        borderStyle: containerBorder.borderType,
+                        borderColor: containerBorder.borderColor,
                         boxShadow: (containerStyles[0].wrapShadowHorizontal || 0) + "px " + (containerStyles[0].wrapShadowVertical || 0) + "px " + (containerStyles[0].wrapShadowBlur || 0) + "px " + containerStyles[0].wrapShadowColor + " " + containerStyles[0].wrapShadowPosition
 
                     }
@@ -31708,10 +31765,8 @@ var deprecatedContent = [{
                             color: iconStyles[0].iconColor || "#6ec1e4",
                             backgroundColor: iconStyles[0].iconBack,
                             fontSize: (iconStyles[0].iconSize || 50) + iconStyles[0].iconSizeUnit,
-                            borderStyle: iconStyles[0].borderType,
-                            borderWidth: iconBorder ? iconBorderTop + "px " + iconBorderRight + "px " + iconBorderBottom + "px " + iconBorderLeft + "px" : borderWidth + "px",
-                            borderRadius: iconStyles[0].borderRadius || 100 + "px",
-                            borderColor: iconStyles[0].borderColor,
+                            borderStyle: iconBorder.borderType,
+                            borderColor: iconBorder.borderColor,
                             textShadow: (iconStyles[0].shadowHorizontal || 0) + "px " + (iconStyles[0].shadowVertical || 0) + "px " + (iconStyles[0].shadowBlur || 0) + "px " + iconStyles[0].shadowColor
                         }
                     })
@@ -31741,10 +31796,6 @@ var attributes = {
         type: "boolean",
         default: false
     },
-    iconBorder: {
-        type: "boolean",
-        default: false
-    },
     wrapBorder: {
         type: "boolean",
         default: false
@@ -31765,46 +31816,6 @@ var attributes = {
         type: "string",
         default: "none"
     },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    iconBorderTop: {
-        type: "number",
-        default: 1
-    },
-    iconBorderRight: {
-        type: "number",
-        default: 1
-    },
-    iconBorderBottom: {
-        type: "number",
-        default: 1
-    },
-    iconBorderLeft: {
-        type: "number",
-        default: 1
-    },
-    wrapBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    wrapBorderTop: {
-        type: "number",
-        default: 1
-    },
-    wrapBorderRight: {
-        type: "number",
-        default: 1
-    },
-    wrapBorderBottom: {
-        type: "number",
-        default: 1
-    },
-    wrapBorderLeft: {
-        type: "number",
-        default: 1
-    },
     iconStyles: {
         type: "array",
         default: [{
@@ -31813,14 +31824,6 @@ var attributes = {
             iconColor: '',
             iconBack: '',
             iconOpacity: '1',
-            borderType: 'none',
-            borderWidth: '1',
-            iconBorderTop: '1',
-            iconBorderRight: '1',
-            iconBorderBottom: '1',
-            iconBorderLeft: '1',
-            borderColor: '',
-            borderRadius: '100',
             shadowColor: '',
             shadowBlur: '',
             shadowHorizontal: '',
@@ -31838,14 +31841,6 @@ var attributes = {
             backgroundPosition: 'top center',
             backgroundSize: 'auto',
             fixed: false,
-            wrapBorderType: 'none',
-            wrapBorderWidth: '1',
-            wrapBorderTop: '1',
-            wrapBorderRight: '1',
-            wrapBorderBottom: '1',
-            wrapBorderLeft: '1',
-            wrapBorderColor: '',
-            wrapBorderRadius: '',
             wrapShadowColor: '',
             wrapShadowBlur: '0',
             wrapShadowHorizontal: '0',
@@ -31981,6 +31976,100 @@ var attributes = {
                 left: ""
             },
             unit: "px"
+        }
+    },
+    iconBorder: {
+        type: "object",
+        default: {
+            borderColor: "",
+            borderType: "none",
+            borderRadius: {
+                Desktop: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Tablet: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Mobile: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                }
+            },
+            borderWidth: {
+                Desktop: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Tablet: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Mobile: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                }
+            }
+        }
+    },
+    containerBorder: {
+        type: "object",
+        default: {
+            borderColor: "",
+            borderType: "none",
+            borderRadius: {
+                Desktop: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Tablet: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Mobile: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                }
+            },
+            borderWidth: {
+                Desktop: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Tablet: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Mobile: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                }
+            }
         }
     }
 };

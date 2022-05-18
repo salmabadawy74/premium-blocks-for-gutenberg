@@ -1873,6 +1873,39 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', ( $attr['wrapPadding']['Desktop']['left'] . ( isset( $attr['wrapPadding']['unit'] ) ? $attr['wrapPadding']['unit'] : 'px' ) . '!important' ) );
 		}
 
+		if ( isset( $attr['containerBorder']['borderWidth']['Desktop']['top'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' );
+			$css->add_property( 'border-top-width', ( $attr['containerBorder']['borderWidth']['Desktop']['top'] . 'px' ) );
+		}
+		if ( isset( $attr['containerBorder']['borderWidth']['Desktop']['right'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' );
+			$css->add_property( 'border-right-width', ( $attr['containerBorder']['borderWidth']['Desktop']['right'] . 'px' ) );
+		}
+		if ( isset( $attr['containerBorder']['borderWidth']['Desktop']['bottom'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' );
+			$css->add_property( 'border-bottom-width', ( $attr['containerBorder']['borderWidth']['Desktop']['bottom'] . 'px' ) );
+		}
+		if ( isset( $attr['containerBorder']['borderWidth']['Desktop']['left'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' );
+			$css->add_property( 'border-left-width', ( $attr['containerBorder']['borderWidth']['Desktop']['left'] . 'px' ) );
+		}
+		if ( isset( $attr['containerBorder']['borderRadius']['Desktop']['top'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' );
+			$css->add_property( 'border-top-left-radius', ( $attr['containerBorder']['borderRadius']['Desktop']['top'] . 'px' ) );
+		}
+		if ( isset( $attr['containerBorder']['borderRadius']['Desktop']['right'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' );
+			$css->add_property( 'border-top-right-radius', ( $attr['containerBorder']['borderRadius']['Desktop']['right'] . 'px' ) );
+		}
+		if ( isset( $attr['containerBorder']['borderRadius']['Desktop']['bottom'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' );
+			$css->add_property( 'border-bottom-right-radius', ( $attr['containerBorder']['borderRadius']['Desktop']['bottom'] . 'px' ) );
+		}
+		if ( isset( $attr['containerBorder']['borderRadius']['Desktop']['left'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' );
+			$css->add_property( 'border-bottom-left-radius', ( $attr['containerBorder']['borderRadius']['Desktop']['left'] . 'px' ) );
+		}
+
 		//icon Styles
 		if ( isset( $attr['iconMargin']['Desktop']['top'] ) && isset( $attr['iconMargin']['unit'] ) ) {
 			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon' );
@@ -1906,6 +1939,39 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['iconPadding']['Desktop']['left'] ) && isset( $attr['iconPadding']['unit'] ) ) {
 			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon' );
 			$css->add_property( 'padding-left', ( $attr['iconPadding']['Desktop']['left'] . ( isset( $attr['iconPadding']['unit'] ) ? $attr['iconPadding']['unit'] : 'px' ) . '!important' ) );
+		}
+
+		if ( isset( $attr['iconBorder']['borderWidth']['Desktop']['top'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon' );
+			$css->add_property( 'border-top-width', ( $attr['iconBorder']['borderWidth']['Desktop']['top'] . 'px' ) );
+		}
+		if ( isset( $attr['iconBorder']['borderWidth']['Desktop']['right'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon' );
+			$css->add_property( 'border-right-width', ( $attr['iconBorder']['borderWidth']['Desktop']['right'] . 'px' ) );
+		}
+		if ( isset( $attr['iconBorder']['borderWidth']['Desktop']['bottom'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon' );
+			$css->add_property( 'border-bottom-width', ( $attr['iconBorder']['borderWidth']['Desktop']['bottom'] . 'px' ) );
+		}
+		if ( isset( $attr['iconBorder']['borderWidth']['Desktop']['left'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon' );
+			$css->add_property( 'border-left-width', ( $attr['iconBorder']['borderWidth']['Desktop']['left'] . 'px' ) );
+		}
+		if ( isset( $attr['iconBorder']['borderRadius']['Desktop']['top'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon' );
+			$css->add_property( 'border-top-left-radius', ( $attr['iconBorder']['borderRadius']['Desktop']['top'] . 'px' ) );
+		}
+		if ( isset( $attr['iconBorder']['borderRadius']['Desktop']['right'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon' );
+			$css->add_property( 'border-top-right-radius', ( $attr['iconBorder']['borderRadius']['Desktop']['right'] . 'px' ) );
+		}
+		if ( isset( $attr['iconBorder']['borderRadius']['Desktop']['bottom'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon' );
+			$css->add_property( 'border-bottom-right-radius', ( $attr['iconBorder']['borderRadius']['Desktop']['bottom'] . 'px' ) );
+		}
+		if ( isset( $attr['iconBorder']['borderRadius']['Desktop']['left'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon' );
+			$css->add_property( 'border-bottom-left-radius', ( $attr['iconBorder']['borderRadius']['Desktop']['left'] . 'px' ) );
 		}
 
 		$css->start_media_query( $media_query['tablet'] );
@@ -1945,6 +2011,39 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', ( $attr['wrapPadding']['Tablet']['left'] . ( isset( $attr['wrapPadding']['unit'] ) ? $attr['wrapPadding']['unit'] : 'px' ) . '!important' ) );
 		}
 
+		if ( isset( $attr['containerBorder']['borderWidth']['Tablet']['top'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' );
+			$css->add_property( 'border-top-width', ( $attr['containerBorder']['borderWidth']['Tablet']['top'] . 'px' ) );
+		}
+		if ( isset( $attr['containerBorder']['borderWidth']['Tablet']['right'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' );
+			$css->add_property( 'border-right-width', ( $attr['containerBorder']['borderWidth']['Tablet']['right'] . 'px' ) );
+		}
+		if ( isset( $attr['containerBorder']['borderWidth']['Tablet']['bottom'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' );
+			$css->add_property( 'border-bottom-width', ( $attr['containerBorder']['borderWidth']['Tablet']['bottom'] . 'px' ) );
+		}
+		if ( isset( $attr['containerBorder']['borderWidth']['Tablet']['left'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' );
+			$css->add_property( 'border-left-width', ( $attr['containerBorder']['borderWidth']['Tablet']['left'] . 'px' ) );
+		}
+		if ( isset( $attr['containerBorder']['borderRadius']['Tablet']['top'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' );
+			$css->add_property( 'border-top-left-radius', ( $attr['containerBorder']['borderRadius']['Tablet']['top'] . 'px' ) );
+		}
+		if ( isset( $attr['containerBorder']['borderRadius']['Tablet']['right'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' );
+			$css->add_property( 'border-top-right-radius', ( $attr['containerBorder']['borderRadius']['Tablet']['right'] . 'px' ) );
+		}
+		if ( isset( $attr['containerBorder']['borderRadius']['Tablet']['bottom'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' );
+			$css->add_property( 'border-bottom-right-radius', ( $attr['containerBorder']['borderRadius']['Tablet']['bottom'] . 'px' ) );
+		}
+		if ( isset( $attr['containerBorder']['borderRadius']['Tablet']['left'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' );
+			$css->add_property( 'border-bottom-left-radius', ( $attr['containerBorder']['borderRadius']['Tablet']['left'] . 'px' ) );
+		}
+
 		//icon Styles
 		if ( isset( $attr['iconMargin']['Tablet']['top'] ) && isset( $attr['iconMargin']['unit'] ) ) {
 			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon' );
@@ -1978,6 +2077,39 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['iconPadding']['Tablet']['left'] ) && isset( $attr['iconPadding']['unit'] ) ) {
 			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon' );
 			$css->add_property( 'padding-left', ( $attr['iconPadding']['Tablet']['left'] . ( isset( $attr['iconPadding']['unit'] ) ? $attr['iconPadding']['unit'] : 'px' ) . '!important' ) );
+		}
+
+		if ( isset( $attr['iconBorder']['borderWidth']['Tablet']['top'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon' );
+			$css->add_property( 'border-top-width', ( $attr['iconBorder']['borderWidth']['Tablet']['top'] . 'px' ) );
+		}
+		if ( isset( $attr['iconBorder']['borderWidth']['Tablet']['right'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon' );
+			$css->add_property( 'border-right-width', ( $attr['iconBorder']['borderWidth']['Tablet']['right'] . 'px' ) );
+		}
+		if ( isset( $attr['iconBorder']['borderWidth']['Tablet']['bottom'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon' );
+			$css->add_property( 'border-bottom-width', ( $attr['iconBorder']['borderWidth']['Tablet']['bottom'] . 'px' ) );
+		}
+		if ( isset( $attr['iconBorder']['borderWidth']['Tablet']['left'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon' );
+			$css->add_property( 'border-left-width', ( $attr['iconBorder']['borderWidth']['Tablet']['left'] . 'px' ) );
+		}
+		if ( isset( $attr['iconBorder']['borderRadius']['Tablet']['top'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon' );
+			$css->add_property( 'border-top-left-radius', ( $attr['iconBorder']['borderRadius']['Tablet']['top'] . 'px' ) );
+		}
+		if ( isset( $attr['iconBorder']['borderRadius']['Tablet']['right'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon' );
+			$css->add_property( 'border-top-right-radius', ( $attr['iconBorder']['borderRadius']['Tablet']['right'] . 'px' ) );
+		}
+		if ( isset( $attr['iconBorder']['borderRadius']['Tablet']['bottom'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon' );
+			$css->add_property( 'border-bottom-right-radius', ( $attr['iconBorder']['borderRadius']['Tablet']['bottom'] . 'px' ) );
+		}
+		if ( isset( $attr['iconBorder']['borderRadius']['Tablet']['left'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon' );
+			$css->add_property( 'border-bottom-left-radius', ( $attr['iconBorder']['borderRadius']['Tablet']['left'] . 'px' ) );
 		}
 
 		$css->stop_media_query();
@@ -2018,6 +2150,39 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', ( $attr['wrapPadding']['Mobile']['left'] . ( isset( $attr['wrapPadding']['unit'] ) ? $attr['wrapPadding']['unit'] : 'px' ) . '!important' ) );
 		}
 
+		if ( isset( $attr['containerBorder']['borderWidth']['Mobile']['top'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' );
+			$css->add_property( 'border-top-width', ( $attr['containerBorder']['borderWidth']['Mobile']['top'] . 'px' ) );
+		}
+		if ( isset( $attr['containerBorder']['borderWidth']['Mobile']['right'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' );
+			$css->add_property( 'border-right-width', ( $attr['containerBorder']['borderWidth']['Mobile']['right'] . 'px' ) );
+		}
+		if ( isset( $attr['containerBorder']['borderWidth']['Mobile']['bottom'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' );
+			$css->add_property( 'border-bottom-width', ( $attr['containerBorder']['borderWidth']['Mobile']['bottom'] . 'px' ) );
+		}
+		if ( isset( $attr['containerBorder']['borderWidth']['Mobile']['left'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' );
+			$css->add_property( 'border-left-width', ( $attr['containerBorder']['borderWidth']['Mobile']['left'] . 'px' ) );
+		}
+		if ( isset( $attr['containerBorder']['borderRadius']['Mobile']['top'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' );
+			$css->add_property( 'border-top-left-radius', ( $attr['containerBorder']['borderRadius']['Mobile']['top'] . 'px' ) );
+		}
+		if ( isset( $attr['containerBorder']['borderRadius']['Mobile']['right'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' );
+			$css->add_property( 'border-top-right-radius', ( $attr['containerBorder']['borderRadius']['Mobile']['right'] . 'px' ) );
+		}
+		if ( isset( $attr['containerBorder']['borderRadius']['Mobile']['bottom'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' );
+			$css->add_property( 'border-bottom-right-radius', ( $attr['containerBorder']['borderRadius']['Mobile']['bottom'] . 'px' ) );
+		}
+		if ( isset( $attr['containerBorder']['borderRadius']['Mobile']['left'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' );
+			$css->add_property( 'border-bottom-left-radius', ( $attr['containerBorder']['borderRadius']['Mobile']['left'] . 'px' ) );
+		}
+
 		//icon Styles
 		if ( isset( $attr['iconMargin']['Mobile']['top'] ) && isset( $attr['iconMargin']['unit'] ) ) {
 			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon' );
@@ -2051,6 +2216,39 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['iconPadding']['Mobile']['left'] ) && isset( $attr['iconPadding']['unit'] ) ) {
 			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon' );
 			$css->add_property( 'padding-left', ( $attr['iconPadding']['Mobile']['left'] . ( isset( $attr['iconPadding']['unit'] ) ? $attr['iconPadding']['unit'] : 'px' ) . '!important' ) );
+		}
+
+		if ( isset( $attr['iconBorder']['borderWidth']['Mobile']['top'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon' );
+			$css->add_property( 'border-top-width', ( $attr['iconBorder']['borderWidth']['Mobile']['top'] . 'px' ) );
+		}
+		if ( isset( $attr['iconBorder']['borderWidth']['Mobile']['right'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon' );
+			$css->add_property( 'border-right-width', ( $attr['iconBorder']['borderWidth']['Mobile']['right'] . 'px' ) );
+		}
+		if ( isset( $attr['iconBorder']['borderWidth']['Mobile']['bottom'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon' );
+			$css->add_property( 'border-bottom-width', ( $attr['iconBorder']['borderWidth']['Mobile']['bottom'] . 'px' ) );
+		}
+		if ( isset( $attr['iconBorder']['borderWidth']['Mobile']['left'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon' );
+			$css->add_property( 'border-left-width', ( $attr['iconBorder']['borderWidth']['Mobile']['left'] . 'px' ) );
+		}
+		if ( isset( $attr['iconBorder']['borderRadius']['Mobile']['top'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon' );
+			$css->add_property( 'border-top-left-radius', ( $attr['iconBorder']['borderRadius']['Mobile']['top'] . 'px' ) );
+		}
+		if ( isset( $attr['iconBorder']['borderRadius']['Mobile']['right'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon' );
+			$css->add_property( 'border-top-right-radius', ( $attr['iconBorder']['borderRadius']['Mobile']['right'] . 'px' ) );
+		}
+		if ( isset( $attr['iconBorder']['borderRadius']['Mobile']['bottom'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon' );
+			$css->add_property( 'border-bottom-right-radius', ( $attr['iconBorder']['borderRadius']['Mobile']['bottom'] . 'px' ) );
+		}
+		if ( isset( $attr['iconBorder']['borderRadius']['Mobile']['left'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon' );
+			$css->add_property( 'border-bottom-left-radius', ( $attr['iconBorder']['borderRadius']['Mobile']['left'] . 'px' ) );
 		}
 
 		$css->stop_media_query();

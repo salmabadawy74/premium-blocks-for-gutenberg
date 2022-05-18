@@ -6,10 +6,6 @@ const attributes = {
         type: "boolean",
         default: false
     },
-    iconBorder: {
-        type: "boolean",
-        default: false,
-    },
     wrapBorder: {
         type: "boolean",
         default: false,
@@ -30,46 +26,6 @@ const attributes = {
         type: "string",
         default: "none"
     },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    iconBorderTop: {
-        type: "number",
-        default: 1
-    },
-    iconBorderRight: {
-        type: "number",
-        default: 1
-    },
-    iconBorderBottom: {
-        type: "number",
-        default: 1
-    },
-    iconBorderLeft: {
-        type: "number",
-        default: 1
-    },
-    wrapBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    wrapBorderTop: {
-        type: "number",
-        default: 1
-    },
-    wrapBorderRight: {
-        type: "number",
-        default: 1
-    },
-    wrapBorderBottom: {
-        type: "number",
-        default: 1
-    },
-    wrapBorderLeft: {
-        type: "number",
-        default: 1
-    },
     iconStyles: {
         type: "array",
         default: [
@@ -79,14 +35,6 @@ const attributes = {
                 iconColor: '',
                 iconBack: '',
                 iconOpacity: '1',
-                borderType: 'none',
-                borderWidth: '1',
-                iconBorderTop: '1',
-                iconBorderRight: '1',
-                iconBorderBottom: '1',
-                iconBorderLeft: '1',
-                borderColor: '',
-                borderRadius: '100',
                 shadowColor: '',
                 shadowBlur: '',
                 shadowHorizontal: '',
@@ -106,14 +54,6 @@ const attributes = {
                 backgroundPosition: 'top center',
                 backgroundSize: 'auto',
                 fixed: false,
-                wrapBorderType: 'none',
-                wrapBorderWidth: '1',
-                wrapBorderTop: '1',
-                wrapBorderRight: '1',
-                wrapBorderBottom: '1',
-                wrapBorderLeft: '1',
-                wrapBorderColor: '',
-                wrapBorderRadius: '',
                 wrapShadowColor: '',
                 wrapShadowBlur: '0',
                 wrapShadowHorizontal: '0',
@@ -249,6 +189,100 @@ const attributes = {
                 left: ""
             },
             unit: "px"
+        }
+    },
+    iconBorder: {
+        type: "object",
+        default: {
+            borderColor: "",
+            borderType: "none",
+            borderRadius: {
+                Desktop: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Tablet: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Mobile: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                }
+            },
+            borderWidth: {
+                Desktop: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Tablet: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Mobile: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                }
+            }
+        }
+    },
+    containerBorder: {
+        type: "object",
+        default: {
+            borderColor: "",
+            borderType: "none",
+            borderRadius: {
+                Desktop: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Tablet: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Mobile: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                }
+            },
+            borderWidth: {
+                Desktop: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Tablet: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Mobile: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                }
+            }
         }
     }
 }
