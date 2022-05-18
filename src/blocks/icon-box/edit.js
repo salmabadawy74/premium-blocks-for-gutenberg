@@ -1031,7 +1031,7 @@ class edit extends Component {
                                         : btnStyles[0].btnBorderWidth + "px",
                                     borderRadius: btnStyles[0].btnBorderRadius + "px",
                                     borderColor: btnStyles[0].btnBorderColor,
-                                    padding: btnStyles[0].btnPadding + btnStyles[0].btnPaddingU,
+                                    padding: btnStyles[0].btnPadding && btnStyles[0].btnPadding + (btnStyles[0].btnPaddingU ? btnStyles[0].btnPaddingU : 'px'),
                                     boxShadow: `${btnStyles[0].btnShadowHorizontal}px ${btnStyles[0].btnShadowVertical}px ${btnStyles[0].btnShadowBlur}px ${btnStyles[0].btnShadowColor} ${btnStyles[0].btnShadowPosition}`
                                 }}
                                 keepPlaceholderOnFocus
