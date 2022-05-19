@@ -95,6 +95,13 @@ const attributes = {
         type: "string",
         default: ""
     },
+    iconSize: {
+        type: "object",
+        default: {
+            Desktop: '50',
+            unit: 'px'
+        }
+    },
     iconMargin: {
         type: "object",
         default: {
@@ -222,8 +229,19 @@ const attributes = {
                     right: "",
                     bottom: "",
                     left: ""
+                },
+                Tablet: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Mobile: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
                 }
-
             }
         }
     },
