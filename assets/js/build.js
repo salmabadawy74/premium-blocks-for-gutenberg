@@ -28009,7 +28009,7 @@ var edit = function edit(props) {
     }
 
     var mainClasses = (0, _classnames2.default)(className, "premium-icon");
-    console.log('edit', mainClasses);
+
     return [isSelected && React.createElement(
         InspectorControls,
         { key: "inspector" },
@@ -30313,12 +30313,10 @@ var save = function save(props) {
         hideTablet = _props$attributes.hideTablet,
         hideMobile = _props$attributes.hideMobile,
         backgroundType = _props$attributes.backgroundType,
-        containerBorder = _props$attributes.containerBorder,
-        iconSize = _props$attributes.iconSize;
+        containerBorder = _props$attributes.containerBorder;
 
 
     var mainClasses = (0, _classnames2.default)(className, 'premium-icon');
-    console.log(mainClasses, props.attributes);
 
     var btnGrad = void 0,
         btnGrad2 = void 0,
@@ -30370,7 +30368,6 @@ var save = function save(props) {
                 React.createElement('i', {
                     className: 'premium-icon ' + selectedIcon + ' premium-icon__' + hoverEffect,
                     style: {
-                        // fontSize: (iconSize[props.deviceType] || 50) + iconSize.unit,
                         color: iconStyles[0].iconColor || "#6ec1e4",
                         backgroundColor: iconStyles[0].iconBack,
                         borderStyle: iconBorder.borderType,
@@ -31735,7 +31732,6 @@ var deprecatedContent = [{
                         style: {
                             color: iconStyles[0].iconColor || "#6ec1e4",
                             backgroundColor: iconStyles[0].iconBack,
-                            fontSize: (iconStyles[0].iconSize || 50) + iconStyles[0].iconSizeUnit,
                             borderStyle: iconBorder.borderType,
                             borderColor: iconBorder.borderColor,
                             textShadow: (iconStyles[0].shadowHorizontal || 0) + "px " + (iconStyles[0].shadowVertical || 0) + "px " + (iconStyles[0].shadowBlur || 0) + "px " + iconStyles[0].shadowColor
@@ -32155,6 +32151,10 @@ var _singleRangeControl = __webpack_require__(3);
 
 var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
+var _responsiveRangeControl = __webpack_require__(19);
+
+var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
+
 var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
@@ -32175,6 +32175,14 @@ var _PremiumShadow = __webpack_require__(5);
 
 var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
+var _inspectorTabs = __webpack_require__(409);
+
+var _inspectorTabs2 = _interopRequireDefault(_inspectorTabs);
+
+var _inspectorTab = __webpack_require__(410);
+
+var _inspectorTab2 = _interopRequireDefault(_inspectorTab);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -32188,7 +32196,9 @@ var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     SelectControl = _wp$components.SelectControl,
     ToggleControl = _wp$components.ToggleControl,
-    TabPanel = _wp$components.TabPanel;
+    TabPanel = _wp$components.TabPanel,
+    TextControl = _wp$components.TextControl,
+    TextareaControl = _wp$components.TextareaControl;
 var _wp$element = wp.element,
     Fragment = _wp$element.Fragment,
     Component = _wp$element.Component;
@@ -32324,6 +32334,7 @@ var edit = function (_Component) {
                 containerPadding = attributes.containerPadding,
                 containerMargin = attributes.containerMargin,
                 btnMargin = attributes.btnMargin,
+                btnPadding = attributes.btnPadding,
                 descMargin = attributes.descMargin,
                 titleMargin = attributes.titleMargin,
                 btnBorder = attributes.btnBorder,
@@ -32433,26 +32444,6 @@ var edit = function (_Component) {
             var titleFontSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titleSizeTablet, titleStyles[0].titleSizeMobile);
             var descriptionFontSize = this.getPreviewSize(this.props.deviceType, descStyles[0].descSize, descStyles[0].descSizeTablet, descStyles[0].descSizeMobile);
             var buttonFontSize = this.getPreviewSize(this.props.deviceType, btnStyles[0].btnSize, btnStyles[0].btnSizeTablet, btnStyles[0].btnSizeMobile);
-            var containerPaddingTop = this.getPreviewSize(this.props.deviceType, containerPadding.Desktop.top, containerPadding.Tablet.top, containerPadding.Mobile.top);
-            var containerPaddingRight = this.getPreviewSize(this.props.deviceType, containerPadding.Desktop.right, containerPadding.Tablet.right, containerPadding.Mobile.right);
-            var containerPaddingBottom = this.getPreviewSize(this.props.deviceType, containerPadding.Desktop.bottom, containerPadding.Tablet.bottom, containerPadding.Mobile.bottom);
-            var containerPaddingLeft = this.getPreviewSize(this.props.deviceType, containerPadding.Desktop.left, containerPadding.Tablet.left, containerPadding.Mobile.left);
-            var containerMarginTop = this.getPreviewSize(this.props.deviceType, containerMargin.Desktop.top, containerMargin.Tablet.top, containerMargin.Mobile.top);
-            var containerMarginRight = this.getPreviewSize(this.props.deviceType, containerMargin.Desktop.right, containerMargin.Tablet.right, containerMargin.Mobile.right);
-            var containerMarginBottom = this.getPreviewSize(this.props.deviceType, containerMargin.Desktop.bottom, containerMargin.Tablet.bottom, containerMargin.Mobile.bottom);
-            var containerMarginLeft = this.getPreviewSize(this.props.deviceType, containerMargin.Desktop.left, containerMargin.Tablet.left, containerMargin.Mobile.left);
-            var titleMarginTop = this.getPreviewSize(this.props.deviceType, titleMargin.Desktop.top, titleMargin.Tablet.top, titleMargin.Mobile.top);
-            var titleMarginRight = this.getPreviewSize(this.props.deviceType, titleMargin.Desktop.right, titleMargin.Tablet.right, titleMargin.Mobile.right);
-            var titleMarginBottom = this.getPreviewSize(this.props.deviceType, titleMargin.Desktop.bottom, titleMargin.Tablet.bottom, titleMargin.Mobile.bottom);
-            var titlePaddingLeft = this.getPreviewSize(this.props.deviceType, titleMargin.Desktop.left, titleMargin.Tablet.left, titleMargin.Mobile.left);
-            var descMarginTop = this.getPreviewSize(this.props.deviceType, descMargin.Desktop.top, descMargin.Tablet.top, descMargin.Mobile.top);
-            var descMarginRight = this.getPreviewSize(this.props.deviceType, descMargin.Desktop.right, descMargin.Tablet.right, descMargin.Mobile.right);
-            var descMarginBottom = this.getPreviewSize(this.props.deviceType, descMargin.Desktop.bottom, descMargin.Tablet.bottom, descMargin.Mobile.bottom);
-            var descMarginLeft = this.getPreviewSize(this.props.deviceType, descMargin.Desktop.left, descMargin.Tablet.left, descMargin.Mobile.left);
-            var btnMarginTop = this.getPreviewSize(this.props.deviceType, btnMargin.Desktop.top, btnMargin.Tablet.top, btnMargin.Mobile.top);
-            var btnMarginRight = this.getPreviewSize(this.props.deviceType, btnMargin.Desktop.right, btnMargin.Tablet.right, btnMargin.Mobile.right);
-            var btnMarginBottom = this.getPreviewSize(this.props.deviceType, btnMargin.Desktop.bottom, btnMargin.Tablet.bottom, btnMargin.Mobile.bottom);
-            var btnMarginLeft = this.getPreviewSize(this.props.deviceType, btnMargin.Desktop.left, btnMargin.Tablet.left, btnMargin.Mobile.left);
 
             return [isSelected && React.createElement(
                 BlockControls,
@@ -32467,672 +32458,726 @@ var edit = function (_Component) {
                 InspectorControls,
                 { key: "inspector" },
                 React.createElement(
-                    PanelBody,
-                    {
-                        title: __("Display Options", 'premium-blocks-for-gutenberg'),
-                        className: "premium-panel-body",
-                        initialOpen: false
-                    },
-                    React.createElement(ToggleControl, {
-                        label: __("Icon", 'premium-blocks-for-gutenberg'),
-                        checked: iconChecked,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({ iconChecked: newValue });
-                        }
-                    }),
-                    React.createElement(ToggleControl, {
-                        label: __("Title", 'premium-blocks-for-gutenberg'),
-                        checked: titleChecked,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({ titleChecked: newValue });
-                        }
-                    }),
-                    React.createElement(ToggleControl, {
-                        label: __("Description", 'premium-blocks-for-gutenberg'),
-                        checked: descChecked,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({ descChecked: newValue });
-                        }
-                    }),
-                    React.createElement(ToggleControl, {
-                        label: __("Button", 'premium-blocks-for-gutenberg'),
-                        checked: btnChecked,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({ btnChecked: newValue });
-                        }
-                    })
-                ),
-                iconChecked && React.createElement(
-                    PanelBody,
-                    {
-                        title: __("Icon", 'premium-blocks-for-gutenberg'),
-                        className: "premium-panel-body",
-                        initialOpen: false
-                    },
-                    React.createElement(SelectControl, {
-                        label: __("Icon Position", 'premium-blocks-for-gutenberg'),
-                        options: ICON_POS,
-                        value: iconPos,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({ iconPos: newValue });
-                        }
-                    }),
-                    "inline" === iconPos && React.createElement(
-                        Fragment,
-                        null,
-                        React.createElement(SelectControl, {
-                            label: __("Horizontal Position", 'premium-blocks-for-gutenberg'),
-                            options: ICON_HPOS,
-                            value: iconHPos,
-                            onChange: function onChange(newValue) {
-                                return setAttributes({ iconHPos: newValue });
-                            }
-                        }),
-                        React.createElement(SelectControl, {
-                            label: __("Vertical Position", 'premium-blocks-for-gutenberg'),
-                            options: ICON_VPOS,
-                            value: iconVPos,
-                            onChange: function onChange(newValue) {
-                                return setAttributes({ iconVPos: newValue });
-                            }
-                        })
-                    ),
-                    React.createElement(SelectControl, {
-                        label: __("Icon Type", 'premium-blocks-for-gutenberg'),
-                        options: imgIcon,
-                        value: iconImage,
-                        onChange: function onChange(newType) {
-                            return setAttributes({ iconImage: newType });
-                        }
-                    }),
-                    "icon" === iconImage && React.createElement(
-                        Fragment,
-                        null,
-                        React.createElement(
-                            "p",
-                            { className: "premium-editor-paragraph" },
-                            __("Select Icon", 'premium-blocks-for-gutenberg')
-                        ),
-                        React.createElement(_reactFonticonpicker2.default, {
-                            icons: _premiumIconsList2.default,
-                            onChange: function onChange(newIcon) {
-                                return setAttributes({ selectedIcon: newIcon });
-                            },
-                            value: selectedIcon,
-                            isMulti: false,
-                            appendTo: "body",
-                            noSelectedPlaceholder: __("Select Icon", 'premium-blocks-for-gutenberg')
-                        })
-                    ),
-                    "image" === iconImage && React.createElement(
-                        Fragment,
-                        null,
-                        React.createElement(_premiumMediaUpload2.default, {
-                            type: "image",
-                            imageID: iconImgId,
-                            imageURL: iconImgUrl,
-                            onSelectMedia: function onSelectMedia(media) {
-                                setAttributes({
-                                    iconImgId: media.id,
-                                    iconImgUrl: media.url
-                                });
-                            },
-                            onRemoveImage: function onRemoveImage() {
-                                return setAttributes({
-                                    iconImgUrl: "",
-                                    iconImgId: ""
-                                });
-                            }
-                        }),
-                        React.createElement(_singleRangeControl2.default, {
-                            label: __("Border Radius (PX)", 'premium-blocks-for-gutenberg'),
-                            value: iconRadius,
-                            onChange: function onChange(newValue) {
-                                return setAttributes({ iconRadius: newValue || 0 });
-                            },
-                            showUnit: false,
-                            defaultValue: 0
-                        })
-                    ),
-                    React.createElement(SelectControl, {
-                        label: __("Hover Effect", 'premium-blocks-for-gutenberg'),
-                        options: EFFECTS,
-                        value: hoverEffect,
-                        onChange: function onChange(newEffect) {
-                            return setAttributes({ hoverEffect: newEffect });
-                        }
-                    }),
-                    React.createElement(_singleRangeControl2.default, {
-                        label: __("Size (PX)", 'premium-blocks-for-gutenberg'),
-                        value: iconSize,
-                        min: "10",
-                        max: "200",
-                        onChange: function onChange(newValue) {
-                            return setAttributes({ iconSize: newValue || 30 });
-                        },
-                        showUnit: false,
-                        defaultValue: ''
-                    })
-                ),
-                titleChecked && React.createElement(
-                    PanelBody,
-                    {
-                        title: __("Title", 'premium-blocks-for-gutenberg'),
-                        className: "premium-panel-body",
-                        initialOpen: false
-                    },
-                    React.createElement(_radioControl2.default, {
-                        label: __("Title", 'premium-blocks-for-gutenberg'),
-                        choices: ['H1', 'H2', 'H3', 'H4', 'H5', 'H6'],
-                        value: titleStyles[0].titleTag,
-                        onChange: function onChange(newValue) {
-                            return saveTitleStyle({ titleTag: newValue });
-                        }
-                    }),
-                    React.createElement(_premiumTypo2.default, {
-                        components: ["responsiveSize", "weight", "style", "upper", "spacing", "line", "family"],
-                        setAttributes: saveTitleStyle,
-                        fontSizeType: {
-                            value: titleStyles[0].titleSizeUnit,
-                            label: __("titleSizeUnit", 'premium-blocks-for-gutenberg')
-                        },
-                        fontSize: titleStyles[0].titleSize,
-                        fontSizeMobile: titleStyles[0].titleSizeMobile,
-                        fontSizeTablet: titleStyles[0].titleSizeTablet,
-                        onChangeSize: function onChangeSize(newSize) {
-                            return saveTitleStyle({ titleSize: newSize });
-                        },
-                        onChangeTabletSize: function onChangeTabletSize(newSize) {
-                            return saveTitleStyle({ titleSizeTablet: newSize });
-                        },
-                        onChangeMobileSize: function onChangeMobileSize(newSize) {
-                            return saveTitleStyle({ titleSizeMobile: newSize });
-                        },
-                        weight: titleStyles[0].titleWeight,
-                        style: titleStyles[0].titleStyle,
-                        spacing: titleStyles[0].titleLetter,
-                        line: titleStyles[0].titleLine,
-                        upper: titleStyles[0].titleUpper,
-                        fontFamily: titleStyles[0].titleFont,
-                        onChangeWeight: function onChangeWeight(newWeight) {
-                            return saveTitleStyle({ titleWeight: newWeight || 500 });
-                        },
-                        onChangeStyle: function onChangeStyle(newStyle) {
-                            return saveTitleStyle({ titleStyle: newStyle });
-                        },
-                        onChangeSpacing: function onChangeSpacing(newValue) {
-                            return saveTitleStyle({ titleLetter: newValue });
-                        },
-                        onChangeLine: function onChangeLine(newValue) {
-                            return saveTitleStyle({ titleLine: newValue });
-                        },
-                        onChangeUpper: function onChangeUpper(check) {
-                            return saveTitleStyle({ titleUpper: check });
-                        },
-                        onChangeFamily: function onChangeFamily(fontFamily) {
-                            return saveTitleStyle({ titleFont: fontFamily });
-                        }
-                    }),
-                    React.createElement(_PremiumShadow2.default, {
-                        label: __("Text Shadow", 'premium-blocks-for-gutenberg'),
-                        color: titleStyles[0].titleShadowColor,
-                        blur: titleStyles[0].titleShadowBlur,
-                        horizontal: titleStyles[0].titleShadowHorizontal,
-                        vertical: titleStyles[0].titleShadowVertical,
-                        onChangeColor: function onChangeColor(newColor) {
-                            return saveTitleStyle({ titleShadowColor: newColor || "transparent" });
-                        },
-                        onChangeBlur: function onChangeBlur(newBlur) {
-                            return saveTitleStyle({ titleShadowBlur: newBlur || 0 });
-                        },
-                        onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return saveTitleStyle({ titleShadowHorizontal: newValue || 0 });
-                        },
-                        onChangeVertical: function onChangeVertical(newValue) {
-                            return saveTitleStyle({ titleShadowVertical: newValue || 0 });
-                        }
-                    }),
-                    React.createElement(_premiumResponsiveSpacing2.default, {
-                        label: __('Margin', 'premium-blocks-for-gutenberg'),
-                        value: titleMargin,
-                        onChange: function onChange(value) {
-                            return setAttributes({ titleMargin: value });
-                        },
-                        showUnits: false,
-                        responsive: true
-                    })
-                ),
-                descChecked && React.createElement(
-                    PanelBody,
-                    {
-                        title: __("Description", 'premium-blocks-for-gutenberg'),
-                        className: "premium-panel-body",
-                        initialOpen: false
-                    },
-                    React.createElement(_premiumTypo2.default, {
-                        components: ["responsiveSize", "weight", "line", "family"],
-                        setAttributes: saveDescriptionStyle,
-                        fontSizeType: {
-                            value: descStyles[0].descSizeUnit,
-                            label: __("descSizeUnit", 'premium-blocks-for-gutenberg')
-                        },
-                        fontSize: descStyles[0].descSize,
-                        fontSizeMobile: descStyles[0].descSizeMobile,
-                        fontSizeTablet: descStyles[0].descSizeTablet,
-                        onChangeSize: function onChangeSize(newSize) {
-                            return saveDescriptionStyle({ descSize: newSize });
-                        },
-                        onChangeTabletSize: function onChangeTabletSize(newSize) {
-                            return saveDescriptionStyle({ descSizeTablet: newSize });
-                        },
-                        onChangeMobileSize: function onChangeMobileSize(newSize) {
-                            return saveDescriptionStyle({ descSizeMobile: newSize });
-                        },
-                        fontFamily: descStyles[0].descFont,
-                        weight: descStyles[0].descWeight,
-                        line: descStyles[0].descLine,
-                        onChangeWeight: function onChangeWeight(newWeight) {
-                            return saveDescriptionStyle({ descWeight: newWeight || 500 });
-                        },
-                        onChangeLine: function onChangeLine(newValue) {
-                            return saveDescriptionStyle({ descLine: newValue });
-                        },
-                        onChangeFamily: function onChangeFamily(fontFamily) {
-                            return saveDescriptionStyle({ descFont: fontFamily });
-                        }
-                    }),
-                    React.createElement(_premiumResponsiveSpacing2.default, {
-                        label: __('Margin', 'premium-blocks-for-gutenberg'),
-                        value: descMargin,
-                        onChange: function onChange(value) {
-                            return setAttributes({ descMargin: value });
-                        },
-                        showUnits: false,
-                        responsive: true
-                    })
-                ),
-                btnChecked && React.createElement(
-                    PanelBody,
-                    {
-                        title: __("Button", 'premium-blocks-for-gutenberg'),
-                        className: "premium-panel-body",
-                        initialOpen: false
-                    },
-                    React.createElement(SelectControl, {
-                        options: BTN_EFFECTS,
-                        label: __("Hover Effect", 'premium-blocks-for-gutenberg'),
-                        value: btnEffect,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({ btnEffect: newValue });
-                        }
-                    }),
-                    "slide" === btnEffect && React.createElement(SelectControl, {
-                        options: DIRECTION,
-                        label: __("Direction", 'premium-blocks-for-gutenberg'),
-                        value: effectDir,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({ effectDir: newValue });
-                        }
-                    }),
-                    React.createElement(ToggleControl, {
-                        label: __("Open link in new tab", 'premium-blocks-for-gutenberg'),
-                        checked: btnTarget,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({ btnTarget: newValue });
-                        }
-                    }),
-                    React.createElement(_premiumTypo2.default, {
-                        components: ["responsiveSize", "weight", "style", "upper", "spacing"],
-
-                        setAttributes: saveButtonStyle,
-                        fontSizeType: {
-                            value: btnStyles[0].btnSizeUnit,
-                            label: __("btnSizeUnit", 'premium-blocks-for-gutenberg')
-                        },
-                        fontSize: btnStyles[0].btnSize,
-                        fontSizeMobile: btnStyles[0].btnSizeMobile,
-                        fontSizeTablet: btnStyles[0].btnSizeTablet,
-                        weight: btnStyles[0].btnWeight,
-                        style: btnStyles[0].btnStyle,
-                        spacing: btnStyles[0].btnLetter,
-                        upper: btnStyles[0].btnUpper,
-                        onChangeWeight: function onChangeWeight(newWeight) {
-                            return saveButtonStyle({ btnWeight: newWeight || 500 });
-                        },
-                        onChangeStyle: function onChangeStyle(newStyle) {
-                            return saveButtonStyle({ btnStyle: newStyle });
-                        },
-                        onChangeSpacing: function onChangeSpacing(newValue) {
-                            return saveButtonStyle({ btnLetter: newValue });
-                        },
-                        onChangeUpper: function onChangeUpper(check) {
-                            return saveButtonStyle({ btnUpper: check });
-                        },
-                        onChangeSize: function onChangeSize(newSize) {
-                            return saveButtonStyle({ btnSize: newSize });
-                        },
-                        onChangeTabletSize: function onChangeTabletSize(newSize) {
-                            return saveButtonStyle({ btnSizeTablet: newSize });
-                        },
-                        onChangeMobileSize: function onChangeMobileSize(newSize) {
-                            return saveButtonStyle({ btnSizeMobile: newSize });
-                        }
-                    }),
-                    React.createElement(_premiumBorder2.default, {
-                        label: __('Border', 'premium-blocks-for-gutenberg'),
-                        value: btnBorder,
-                        onChange: function onChange(value) {
-                            return setAttributes({ btnBorder: value });
-                        }
-                    }),
-                    React.createElement(_PremiumShadow2.default, {
-                        label: __("Box Shadow", 'premium-blocks-for-gutenberg'),
-                        boxShadow: true,
-                        color: btnStyles[0].btnShadowColor,
-                        blur: btnStyles[0].btnShadowBlur,
-                        horizontal: btnStyles[0].btnShadowHorizontal,
-                        vertical: btnStyles[0].btnShadowVertical,
-                        position: btnStyles[0].btnShadowPosition,
-                        onChangeColor: function onChangeColor(newColor) {
-                            return saveButtonStyle({ btnShadowColor: newColor || "transparent" });
-                        },
-                        onChangeBlur: function onChangeBlur(newBlur) {
-                            return saveButtonStyle({ btnShadowBlur: newBlur || 0 });
-                        },
-                        onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return saveButtonStyle({ btnShadowHorizontal: newValue || 0 });
-                        },
-                        onChangeVertical: function onChangeVertical(newValue) {
-                            return saveButtonStyle({ btnShadowVertical: newValue || 0 });
-                        },
-                        onChangePosition: function onChangePosition(newValue) {
-                            return saveButtonStyle({ btnShadowPosition: newValue || 0 });
-                        }
-                    }),
-                    React.createElement(_singleRangeControl2.default, {
-                        label: __("Padding", 'premium-blocks-for-gutenberg'),
-                        value: btnStyles[0].btnPadding,
-                        onChange: function onChange(newValue) {
-                            return saveButtonStyle({ btnPadding: newValue });
-                        },
-                        showUnit: true,
-                        defaultValue: '',
-                        onChangeUnit: function onChangeUnit(newValue) {
-                            return saveButtonStyle({ btnPaddingU: newValue });
-                        },
-                        unit: btnStyles[0].btnPaddingU
-                    }),
-                    React.createElement(_premiumResponsiveSpacing2.default, {
-                        label: __('Margin', 'premium-blocks-for-gutenberg'),
-                        value: btnMargin,
-                        onChange: function onChange(value) {
-                            return setAttributes({ btnMargin: value });
-                        },
-                        showUnits: false,
-                        responsive: true
-                    })
-                ),
-                React.createElement(
-                    PanelBody,
-                    {
-                        title: __("Container", 'premium-blocks-for-gutenberg'),
-                        className: "premium-panel-body",
-                        initialOpen: false
-                    },
-                    React.createElement(_premiumBackground2.default, {
-                        imageID: containerStyles[0].imageID,
-                        imageURL: containerStyles[0].imageURL,
-                        backgroundPosition: containerStyles[0].backgroundPosition,
-                        backgroundRepeat: containerStyles[0].backgroundRepeat,
-                        backgroundSize: containerStyles[0].backgroundSize,
-                        fixed: containerStyles[0].fixed,
-                        onSelectMedia: function onSelectMedia(media) {
-                            saveContainerStyle({
-                                imageID: media.id,
-                                imageURL: media.url
-                            });
-                        },
-                        onRemoveImage: function onRemoveImage(value) {
-                            return saveContainerStyle({ imageURL: "", imageID: "" });
-                        },
-                        onChangeBackPos: function onChangeBackPos(newValue) {
-                            return saveContainerStyle({ backgroundPosition: newValue });
-                        },
-                        onchangeBackRepeat: function onchangeBackRepeat(newValue) {
-                            return saveContainerStyle({ backgroundRepeat: newValue });
-                        },
-                        onChangeBackSize: function onChangeBackSize(newValue) {
-                            return saveContainerStyle({ backgroundSize: newValue });
-                        },
-                        onChangeFixed: function onChangeFixed(check) {
-                            return saveContainerStyle({ fixed: check });
-                        }
-                    }),
-                    React.createElement(_premiumBorder2.default, {
-                        label: __('Border', 'premium-blocks-for-gutenberg'),
-                        value: containerBorder,
-                        onChange: function onChange(value) {
-                            return setAttributes({ containerBorder: value });
-                        }
-                    }),
-                    React.createElement(_PremiumShadow2.default, {
-                        label: __("Box Shadow", 'premium-blocks-for-gutenberg'),
-                        boxShadow: true,
-                        color: containerStyles[0].shadowColor,
-                        blur: containerStyles[0].shadowBlur,
-                        horizontal: containerStyles[0].shadowHorizontal,
-                        vertical: containerStyles[0].shadowVertical,
-                        position: containerStyles[0].shadowPosition,
-                        onChangeColor: function onChangeColor(newColor) {
-                            return saveContainerStyle({ shadowColor: newColor || "transparent" });
-                        },
-                        onChangeBlur: function onChangeBlur(newBlur) {
-                            return saveContainerStyle({ shadowBlur: newBlur || 0 });
-                        },
-                        onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return saveContainerStyle({ shadowHorizontal: newValue || 0 });
-                        },
-                        onChangeVertical: function onChangeVertical(newValue) {
-                            return saveContainerStyle({ shadowVertical: newValue || 0 });
-                        },
-                        onChangePosition: function onChangePosition(newValue) {
-                            return saveContainerStyle({ shadowPosition: newValue });
-                        }
-                    }),
-                    React.createElement(_PremiumShadow2.default, {
-                        label: __("Hover Box Shadow", 'premium-blocks-for-gutenberg'),
-                        boxShadow: true,
-                        color: containerStyles[0].hoverShadowColor,
-                        blur: containerStyles[0].hoverShadowBlur,
-                        horizontal: containerStyles[0].hoverShadowHorizontal,
-                        vertical: containerStyles[0].hoverShadowVertical,
-                        position: containerStyles[0].hoverShadowPosition,
-                        onChangeColor: function onChangeColor(newColor) {
-                            return saveContainerStyle({ hoverShadowColor: newColor });
-                        },
-                        onChangeBlur: function onChangeBlur(newBlur) {
-                            return saveContainerStyle({ hoverShadowBlur: newBlur });
-                        },
-                        onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return saveContainerStyle({ hoverShadowHorizontal: newValue });
-                        },
-                        onChangeVertical: function onChangeVertical(newValue) {
-                            return saveContainerStyle({ hoverShadowVertical: newValue });
-                        },
-                        onChangePosition: function onChangePosition(newValue) {
-                            return saveContainerStyle({ hoverShadowPosition: newValue });
-                        }
-                    }),
-                    React.createElement(_premiumResponsiveSpacing2.default, {
-                        label: __('Margin', 'premium-blocks-for-gutenberg'),
-                        value: containerMargin,
-                        onChange: function onChange(value) {
-                            return setAttributes({ containerMargin: value });
-                        },
-                        showUnits: false,
-                        responsive: true
-                    }),
-                    React.createElement(_premiumResponsiveSpacing2.default, {
-                        label: __('Padding', 'premium-blocks-for-gutenberg'),
-                        value: containerPadding,
-                        onChange: function onChange(value) {
-                            return setAttributes({ containerPadding: value });
-                        },
-                        showUnits: true,
-                        responsive: true
-                    })
-                ),
-                React.createElement(
-                    PanelBody,
-                    {
-                        title: __("Colors"),
-                        className: "premium-panel-body",
-                        initialOpen: false
-                    },
+                    _inspectorTabs2.default,
+                    { tabs: ['layout', 'style', 'advance'] },
                     React.createElement(
-                        TabPanel,
-                        {
-                            className: "premium-color-tabpanel",
-                            activeClass: "active-tab",
-                            tabs: [{
-                                name: "normal",
-                                title: "Normal",
-                                className: "premium-tab"
-                            }, {
-                                name: "hover",
-                                title: "Hover",
-                                className: "premium-tab"
-                            }]
-                        },
-                        function (tab) {
-                            var tabout = void 0;
-                            if ("normal" === tab.name) {
-                                tabout = React.createElement(
-                                    Fragment,
-                                    null,
-                                    iconChecked && React.createElement(
-                                        Fragment,
-                                        null,
-                                        React.createElement(_ColorComponent2.default, {
-                                            label: __("Icon Color", 'premium-blocks-for-gutenberg'),
-                                            colorValue: iconColor,
-                                            colorDefault: '',
-                                            onColorChange: function onColorChange(newValue) {
-                                                return setAttributes({ iconColor: newValue || "transparent" });
-                                            }
-                                        }),
-                                        React.createElement(_ColorComponent2.default, {
-                                            label: __("Icon Background Color"),
-                                            colorValue: iconBackColor,
-                                            onColorChange: function onColorChange(newvalue) {
-                                                return setAttributes({ iconBackColor: newvalue });
-                                            },
-                                            colorDefault: ""
-                                        })
-                                    ),
-                                    titleChecked && React.createElement(_ColorComponent2.default, {
-                                        label: __("Title Color", 'premium-blocks-for-gutenberg'),
-                                        colorValue: titleStyles[0].titleColor,
-                                        colorDefault: '',
-                                        onColorChange: function onColorChange(newValue) {
-                                            return saveTitleStyle({ titleColor: newValue || "transparent" });
-                                        }
-                                    }),
-                                    descChecked && React.createElement(_ColorComponent2.default, {
-                                        label: __("Description Color", 'premium-blocks-for-gutenberg'),
-                                        colorValue: descStyles[0].descColor,
-                                        colorDefault: '',
-                                        onColorChange: function onColorChange(newValue) {
-                                            return saveDescriptionStyle({ descColor: newValue || "transparent" });
-                                        }
-                                    }),
-                                    btnChecked && React.createElement(
-                                        Fragment,
-                                        null,
-                                        React.createElement(_ColorComponent2.default, {
-                                            label: __("Button Color", 'premium-blocks-for-gutenberg'),
-                                            colorValue: btnStyles[0].btnColor,
-                                            colorDefault: '',
-                                            onColorChange: function onColorChange(newValue) {
-                                                return saveButtonStyle({ btnColor: newValue || "#000" });
-                                            }
-                                        }),
-                                        React.createElement(_ColorComponent2.default, {
-                                            label: __("Button Background Color"),
-                                            colorValue: btnStyles[0].btnBack,
-                                            onColorChange: function onColorChange(newvalue) {
-                                                return saveButtonStyle({ btnBack: newvalue });
-                                            },
-                                            colorDefault: ""
-                                        })
-                                    ),
-                                    React.createElement(_ColorComponent2.default, {
-                                        label: __("Container Background Color"),
-                                        colorValue: containerStyles[0].backColor,
-                                        onColorChange: function onColorChange(newvalue) {
-                                            return saveContainerStyle({ backColor: newvalue });
-                                        },
-                                        colorDefault: ""
-                                    })
-                                );
-                            }
-                            if ("hover" === tab.name) {
-                                tabout = React.createElement(
-                                    Fragment,
-                                    null,
-                                    btnChecked && React.createElement(
-                                        Fragment,
-                                        null,
-                                        React.createElement(_ColorComponent2.default, {
-                                            label: __("Button Hover Color", 'premium-blocks-for-gutenberg'),
-                                            colorValue: btnStyles[0].btnHoverColor,
-                                            colorDefault: '',
-                                            onColorChange: function onColorChange(newValue) {
-                                                return saveButtonStyle({ btnHoverColor: newValue || "#000" });
-                                            }
-                                        }),
-                                        React.createElement(_ColorComponent2.default, {
-                                            label: __('Button Background Hover Color', 'premium-blocks-for-gutenberg'),
-                                            colorValue: btnStyles[0].btnHoverBack,
-                                            colorDefault: '',
-                                            onColorChange: function onColorChange(newValue) {
-                                                return saveButtonStyle({ btnHoverBack: newValue });
-                                            }
-                                        })
-                                    ),
-                                    React.createElement(_ColorComponent2.default, {
-                                        label: __('Button Border Hover Color', 'premium-blocks-for-gutenberg'),
-                                        colorValue: btnHoverBorder,
-                                        colorDefault: '',
-                                        onColorChange: function onColorChange(newValue) {
-                                            return setAttributes({ btnHoverBorder: newValue || "transparent" });
-                                        }
-                                    })
-                                );
-                            }
-                            return React.createElement(
-                                "div",
+                        _inspectorTab2.default,
+                        { key: 'layout' },
+                        React.createElement(
+                            PanelBody,
+                            {
+                                title: __("Display Options", 'premium-blocks-for-gutenberg'),
+                                className: "premium-panel-body",
+                                initialOpen: false
+                            },
+                            React.createElement(ToggleControl, {
+                                label: __("Icon", 'premium-blocks-for-gutenberg'),
+                                checked: iconChecked,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({ iconChecked: newValue });
+                                }
+                            }),
+                            React.createElement(ToggleControl, {
+                                label: __("Title", 'premium-blocks-for-gutenberg'),
+                                checked: titleChecked,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({ titleChecked: newValue });
+                                }
+                            }),
+                            React.createElement(ToggleControl, {
+                                label: __("Description", 'premium-blocks-for-gutenberg'),
+                                checked: descChecked,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({ descChecked: newValue });
+                                }
+                            }),
+                            React.createElement(ToggleControl, {
+                                label: __("Button", 'premium-blocks-for-gutenberg'),
+                                checked: btnChecked,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({ btnChecked: newValue });
+                                }
+                            })
+                        ),
+                        iconChecked && React.createElement(
+                            PanelBody,
+                            {
+                                title: __("Icon", 'premium-blocks-for-gutenberg'),
+                                className: "premium-panel-body",
+                                initialOpen: false
+                            },
+                            React.createElement(SelectControl, {
+                                label: __("Icon Position", 'premium-blocks-for-gutenberg'),
+                                options: ICON_POS,
+                                value: iconPos,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({ iconPos: newValue });
+                                }
+                            }),
+                            "inline" === iconPos && React.createElement(
+                                Fragment,
                                 null,
-                                tabout,
-                                React.createElement("hr", null)
-                            );
-                        }
+                                React.createElement(SelectControl, {
+                                    label: __("Horizontal Position", 'premium-blocks-for-gutenberg'),
+                                    options: ICON_HPOS,
+                                    value: iconHPos,
+                                    onChange: function onChange(newValue) {
+                                        return setAttributes({ iconHPos: newValue });
+                                    }
+                                }),
+                                React.createElement(SelectControl, {
+                                    label: __("Vertical Position", 'premium-blocks-for-gutenberg'),
+                                    options: ICON_VPOS,
+                                    value: iconVPos,
+                                    onChange: function onChange(newValue) {
+                                        return setAttributes({ iconVPos: newValue });
+                                    }
+                                })
+                            ),
+                            React.createElement(SelectControl, {
+                                label: __("Icon Type", 'premium-blocks-for-gutenberg'),
+                                options: imgIcon,
+                                value: iconImage,
+                                onChange: function onChange(newType) {
+                                    return setAttributes({ iconImage: newType });
+                                }
+                            }),
+                            "icon" === iconImage && React.createElement(
+                                Fragment,
+                                null,
+                                React.createElement(
+                                    "p",
+                                    { className: "premium-editor-paragraph" },
+                                    __("Select Icon", 'premium-blocks-for-gutenberg')
+                                ),
+                                React.createElement(_reactFonticonpicker2.default, {
+                                    icons: _premiumIconsList2.default,
+                                    onChange: function onChange(newIcon) {
+                                        return setAttributes({ selectedIcon: newIcon });
+                                    },
+                                    value: selectedIcon,
+                                    isMulti: false,
+                                    appendTo: "body",
+                                    noSelectedPlaceholder: __("Select Icon", 'premium-blocks-for-gutenberg')
+                                })
+                            ),
+                            "image" === iconImage && React.createElement(
+                                Fragment,
+                                null,
+                                React.createElement(_premiumMediaUpload2.default, {
+                                    type: "image",
+                                    imageID: iconImgId,
+                                    imageURL: iconImgUrl,
+                                    onSelectMedia: function onSelectMedia(media) {
+                                        setAttributes({
+                                            iconImgId: media.id,
+                                            iconImgUrl: media.url
+                                        });
+                                    },
+                                    onRemoveImage: function onRemoveImage() {
+                                        return setAttributes({
+                                            iconImgUrl: "",
+                                            iconImgId: ""
+                                        });
+                                    }
+                                }),
+                                React.createElement(_singleRangeControl2.default, {
+                                    label: __("Border Radius (PX)", 'premium-blocks-for-gutenberg'),
+                                    value: iconRadius,
+                                    onChange: function onChange(newValue) {
+                                        return setAttributes({ iconRadius: newValue || 0 });
+                                    },
+                                    showUnit: false,
+                                    defaultValue: 0
+                                })
+                            ),
+                            React.createElement(SelectControl, {
+                                label: __("Hover Effect", 'premium-blocks-for-gutenberg'),
+                                options: EFFECTS,
+                                value: hoverEffect,
+                                onChange: function onChange(newEffect) {
+                                    return setAttributes({ hoverEffect: newEffect });
+                                }
+                            })
+                        ),
+                        titleChecked && React.createElement(
+                            PanelBody,
+                            {
+                                title: __("Title", 'premium-blocks-for-gutenberg'),
+                                className: "premium-panel-body",
+                                initialOpen: false
+                            },
+                            React.createElement(TextControl, {
+                                label: __("Title", 'premium-block-for-gutenberg'),
+                                value: titleText,
+                                onChange: function onChange(newText) {
+                                    return setAttributes({ titleText: newText });
+                                }
+                            }),
+                            React.createElement(_radioControl2.default, {
+                                label: __("Title", 'premium-blocks-for-gutenberg'),
+                                choices: ['H1', 'H2', 'H3', 'H4', 'H5', 'H6'],
+                                value: titleStyles[0].titleTag,
+                                onChange: function onChange(newValue) {
+                                    return saveTitleStyle({ titleTag: newValue });
+                                }
+                            })
+                        ),
+                        descChecked && React.createElement(
+                            PanelBody,
+                            {
+                                title: __("Description", 'premium-blocks-for-gutenberg'),
+                                className: "premium-panel-body",
+                                initialOpen: false
+                            },
+                            React.createElement(TextareaControl, {
+                                label: __("Content", 'premium-block-for-gutenberg'),
+                                value: descText,
+                                onChange: function onChange(newText) {
+                                    return setAttributes({ descText: newText });
+                                }
+                            })
+                        ),
+                        btnChecked && React.createElement(
+                            PanelBody,
+                            {
+                                title: __("Button", 'premium-blocks-for-gutenberg'),
+                                className: "premium-panel-body",
+                                initialOpen: false
+                            },
+                            React.createElement(SelectControl, {
+                                options: BTN_EFFECTS,
+                                label: __("Hover Effect", 'premium-blocks-for-gutenberg'),
+                                value: btnEffect,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({ btnEffect: newValue });
+                                }
+                            }),
+                            "slide" === btnEffect && React.createElement(SelectControl, {
+                                options: DIRECTION,
+                                label: __("Direction", 'premium-blocks-for-gutenberg'),
+                                value: effectDir,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({ effectDir: newValue });
+                                }
+                            }),
+                            React.createElement(TextControl, {
+                                label: __("Text", 'premium-block-for-gutenberg'),
+                                value: btnText,
+                                onChange: function onChange(newText) {
+                                    return setAttributes({ btnText: newText });
+                                }
+                            }),
+                            React.createElement(ToggleControl, {
+                                label: __("Open link in new tab", 'premium-blocks-for-gutenberg'),
+                                checked: btnTarget,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({ btnTarget: newValue });
+                                }
+                            }),
+                            btnTarget && React.createElement(TextControl, {
+                                label: __("Link", 'premium-block-for-gutenberg'),
+                                value: btnLink,
+                                onChange: function onChange(newLink) {
+                                    return setAttributes({ btnLink: newLink });
+                                }
+                            })
+                        )
+                    ),
+                    React.createElement(
+                        _inspectorTab2.default,
+                        { key: 'style' },
+                        iconChecked && React.createElement(
+                            PanelBody,
+                            {
+                                title: __("Icon"),
+                                className: "premium-panel-body",
+                                initialOpen: false
+                            },
+                            React.createElement(_ColorComponent2.default, {
+                                label: __("Icon Color", 'premium-blocks-for-gutenberg'),
+                                colorValue: iconColor,
+                                colorDefault: '',
+                                onColorChange: function onColorChange(newValue) {
+                                    return setAttributes({ iconColor: newValue });
+                                }
+                            }),
+                            React.createElement(_ColorComponent2.default, {
+                                label: __("Icon Background Color"),
+                                colorValue: iconBackColor,
+                                onColorChange: function onColorChange(newvalue) {
+                                    return setAttributes({ iconBackColor: newvalue });
+                                },
+                                colorDefault: ""
+                            }),
+                            React.createElement(_responsiveRangeControl2.default, {
+                                label: __('Size', 'premium-blocks-for-gutenberg'),
+                                value: iconSize,
+                                onChange: function onChange(value) {
+                                    return setAttributes({ iconSize: value });
+                                },
+                                min: 10,
+                                max: 200,
+                                step: 1,
+                                showUnit: true,
+                                units: ['px', 'em', 'rem'],
+                                defaultValue: 40
+                            })
+                        ),
+                        titleChecked && React.createElement(
+                            PanelBody,
+                            {
+                                title: __("Title"),
+                                className: "premium-panel-body",
+                                initialOpen: false
+                            },
+                            React.createElement(_ColorComponent2.default, {
+                                label: __("Title Color", 'premium-blocks-for-gutenberg'),
+                                colorValue: titleStyles[0].titleColor,
+                                colorDefault: '',
+                                onColorChange: function onColorChange(newValue) {
+                                    return saveTitleStyle({ titleColor: newValue });
+                                }
+                            }),
+                            React.createElement(_premiumTypo2.default, {
+                                components: ["responsiveSize", "weight", "style", "upper", "spacing", "line", "family"],
+                                setAttributes: saveTitleStyle,
+                                fontSizeType: {
+                                    value: titleStyles[0].titleSizeUnit,
+                                    label: __("titleSizeUnit", 'premium-blocks-for-gutenberg')
+                                },
+                                fontSize: titleStyles[0].titleSize,
+                                fontSizeMobile: titleStyles[0].titleSizeMobile,
+                                fontSizeTablet: titleStyles[0].titleSizeTablet,
+                                onChangeSize: function onChangeSize(newSize) {
+                                    return saveTitleStyle({ titleSize: newSize });
+                                },
+                                onChangeTabletSize: function onChangeTabletSize(newSize) {
+                                    return saveTitleStyle({ titleSizeTablet: newSize });
+                                },
+                                onChangeMobileSize: function onChangeMobileSize(newSize) {
+                                    return saveTitleStyle({ titleSizeMobile: newSize });
+                                },
+                                weight: titleStyles[0].titleWeight,
+                                style: titleStyles[0].titleStyle,
+                                spacing: titleStyles[0].titleLetter,
+                                line: titleStyles[0].titleLine,
+                                upper: titleStyles[0].titleUpper,
+                                fontFamily: titleStyles[0].titleFont,
+                                onChangeWeight: function onChangeWeight(newWeight) {
+                                    return saveTitleStyle({ titleWeight: newWeight || 500 });
+                                },
+                                onChangeStyle: function onChangeStyle(newStyle) {
+                                    return saveTitleStyle({ titleStyle: newStyle });
+                                },
+                                onChangeSpacing: function onChangeSpacing(newValue) {
+                                    return saveTitleStyle({ titleLetter: newValue });
+                                },
+                                onChangeLine: function onChangeLine(newValue) {
+                                    return saveTitleStyle({ titleLine: newValue });
+                                },
+                                onChangeUpper: function onChangeUpper(check) {
+                                    return saveTitleStyle({ titleUpper: check });
+                                },
+                                onChangeFamily: function onChangeFamily(fontFamily) {
+                                    return saveTitleStyle({ titleFont: fontFamily });
+                                }
+                            }),
+                            React.createElement(_PremiumShadow2.default, {
+                                label: __("Text Shadow", 'premium-blocks-for-gutenberg'),
+                                color: titleStyles[0].titleShadowColor,
+                                blur: titleStyles[0].titleShadowBlur,
+                                horizontal: titleStyles[0].titleShadowHorizontal,
+                                vertical: titleStyles[0].titleShadowVertical,
+                                onChangeColor: function onChangeColor(newColor) {
+                                    return saveTitleStyle({ titleShadowColor: newColor });
+                                },
+                                onChangeBlur: function onChangeBlur(newBlur) {
+                                    return saveTitleStyle({ titleShadowBlur: newBlur || 0 });
+                                },
+                                onChangehHorizontal: function onChangehHorizontal(newValue) {
+                                    return saveTitleStyle({ titleShadowHorizontal: newValue || 0 });
+                                },
+                                onChangeVertical: function onChangeVertical(newValue) {
+                                    return saveTitleStyle({ titleShadowVertical: newValue || 0 });
+                                }
+                            }),
+                            React.createElement(_premiumResponsiveSpacing2.default, {
+                                label: __('Margin', 'premium-blocks-for-gutenberg'),
+                                value: titleMargin,
+                                onChange: function onChange(value) {
+                                    return setAttributes({ titleMargin: value });
+                                },
+                                showUnits: false,
+                                responsive: true
+                            })
+                        ),
+                        descChecked && React.createElement(
+                            PanelBody,
+                            {
+                                title: __("Description"),
+                                className: "premium-panel-body",
+                                initialOpen: false
+                            },
+                            React.createElement(_ColorComponent2.default, {
+                                label: __("Description Color", 'premium-blocks-for-gutenberg'),
+                                colorValue: descStyles[0].descColor,
+                                colorDefault: '',
+                                onColorChange: function onColorChange(newValue) {
+                                    return saveDescriptionStyle({ descColor: newValue });
+                                }
+                            }),
+                            React.createElement(_premiumTypo2.default, {
+                                components: ["responsiveSize", "weight", "line", "family"],
+                                setAttributes: saveDescriptionStyle,
+                                fontSizeType: {
+                                    value: descStyles[0].descSizeUnit,
+                                    label: __("descSizeUnit", 'premium-blocks-for-gutenberg')
+                                },
+                                fontSize: descStyles[0].descSize,
+                                fontSizeMobile: descStyles[0].descSizeMobile,
+                                fontSizeTablet: descStyles[0].descSizeTablet,
+                                onChangeSize: function onChangeSize(newSize) {
+                                    return saveDescriptionStyle({ descSize: newSize });
+                                },
+                                onChangeTabletSize: function onChangeTabletSize(newSize) {
+                                    return saveDescriptionStyle({ descSizeTablet: newSize });
+                                },
+                                onChangeMobileSize: function onChangeMobileSize(newSize) {
+                                    return saveDescriptionStyle({ descSizeMobile: newSize });
+                                },
+                                fontFamily: descStyles[0].descFont,
+                                weight: descStyles[0].descWeight,
+                                line: descStyles[0].descLine,
+                                onChangeWeight: function onChangeWeight(newWeight) {
+                                    return saveDescriptionStyle({ descWeight: newWeight || 500 });
+                                },
+                                onChangeLine: function onChangeLine(newValue) {
+                                    return saveDescriptionStyle({ descLine: newValue });
+                                },
+                                onChangeFamily: function onChangeFamily(fontFamily) {
+                                    return saveDescriptionStyle({ descFont: fontFamily });
+                                }
+                            }),
+                            React.createElement(_premiumResponsiveSpacing2.default, {
+                                label: __('Margin', 'premium-blocks-for-gutenberg'),
+                                value: descMargin,
+                                onChange: function onChange(value) {
+                                    return setAttributes({ descMargin: value });
+                                },
+                                showUnits: false,
+                                responsive: true
+                            })
+                        ),
+                        btnChecked && React.createElement(
+                            PanelBody,
+                            {
+                                title: __("Button"),
+                                className: "premium-panel-body",
+                                initialOpen: false
+                            },
+                            React.createElement(
+                                TabPanel,
+                                {
+                                    className: "premium-color-tabpanel",
+                                    activeClass: "active-tab",
+                                    tabs: [{
+                                        name: "normal",
+                                        title: "Normal",
+                                        className: "premium-tab"
+                                    }, {
+                                        name: "hover",
+                                        title: "Hover",
+                                        className: "premium-tab"
+                                    }]
+                                },
+                                function (tab) {
+                                    var tabout = void 0;
+                                    if ("normal" === tab.name) {
+                                        tabout = React.createElement(
+                                            Fragment,
+                                            null,
+                                            React.createElement(_ColorComponent2.default, {
+                                                label: __("Button Color", 'premium-blocks-for-gutenberg'),
+                                                colorValue: btnStyles[0].btnColor,
+                                                colorDefault: '',
+                                                onColorChange: function onColorChange(newValue) {
+                                                    return saveButtonStyle({ btnColor: newValue || "#000" });
+                                                }
+                                            }),
+                                            React.createElement(_ColorComponent2.default, {
+                                                label: __("Button Background Color"),
+                                                colorValue: btnStyles[0].btnBack,
+                                                onColorChange: function onColorChange(newvalue) {
+                                                    return saveButtonStyle({ btnBack: newvalue });
+                                                },
+                                                colorDefault: ""
+                                            })
+                                        );
+                                    }
+                                    if ("hover" === tab.name) {
+                                        tabout = React.createElement(
+                                            Fragment,
+                                            null,
+                                            React.createElement(_ColorComponent2.default, {
+                                                label: __("Button Hover Color", 'premium-blocks-for-gutenberg'),
+                                                colorValue: btnStyles[0].btnHoverColor,
+                                                colorDefault: '',
+                                                onColorChange: function onColorChange(newValue) {
+                                                    return saveButtonStyle({ btnHoverColor: newValue || "#000" });
+                                                }
+                                            }),
+                                            React.createElement(_ColorComponent2.default, {
+                                                label: __('Button Background Hover Color', 'premium-blocks-for-gutenberg'),
+                                                colorValue: btnStyles[0].btnHoverBack,
+                                                colorDefault: '',
+                                                onColorChange: function onColorChange(newValue) {
+                                                    return saveButtonStyle({ btnHoverBack: newValue });
+                                                }
+                                            }),
+                                            React.createElement(_ColorComponent2.default, {
+                                                label: __('Button Border Hover Color', 'premium-blocks-for-gutenberg'),
+                                                colorValue: btnHoverBorder,
+                                                colorDefault: '',
+                                                onColorChange: function onColorChange(newValue) {
+                                                    return setAttributes({ btnHoverBorder: newValue });
+                                                }
+                                            })
+                                        );
+                                    }
+                                    return React.createElement(
+                                        "div",
+                                        null,
+                                        tabout,
+                                        React.createElement("hr", null)
+                                    );
+                                }
+                            ),
+                            React.createElement(_premiumTypo2.default, {
+                                components: ["responsiveSize", "weight", "style", "upper", "spacing"],
+
+                                setAttributes: saveButtonStyle,
+                                fontSizeType: {
+                                    value: btnStyles[0].btnSizeUnit,
+                                    label: __("btnSizeUnit", 'premium-blocks-for-gutenberg')
+                                },
+                                fontSize: btnStyles[0].btnSize,
+                                fontSizeMobile: btnStyles[0].btnSizeMobile,
+                                fontSizeTablet: btnStyles[0].btnSizeTablet,
+                                weight: btnStyles[0].btnWeight,
+                                style: btnStyles[0].btnStyle,
+                                spacing: btnStyles[0].btnLetter,
+                                upper: btnStyles[0].btnUpper,
+                                onChangeWeight: function onChangeWeight(newWeight) {
+                                    return saveButtonStyle({ btnWeight: newWeight || 500 });
+                                },
+                                onChangeStyle: function onChangeStyle(newStyle) {
+                                    return saveButtonStyle({ btnStyle: newStyle });
+                                },
+                                onChangeSpacing: function onChangeSpacing(newValue) {
+                                    return saveButtonStyle({ btnLetter: newValue });
+                                },
+                                onChangeUpper: function onChangeUpper(check) {
+                                    return saveButtonStyle({ btnUpper: check });
+                                },
+                                onChangeSize: function onChangeSize(newSize) {
+                                    return saveButtonStyle({ btnSize: newSize });
+                                },
+                                onChangeTabletSize: function onChangeTabletSize(newSize) {
+                                    return saveButtonStyle({ btnSizeTablet: newSize });
+                                },
+                                onChangeMobileSize: function onChangeMobileSize(newSize) {
+                                    return saveButtonStyle({ btnSizeMobile: newSize });
+                                }
+                            }),
+                            React.createElement(_premiumBorder2.default, {
+                                label: __('Border', 'premium-blocks-for-gutenberg'),
+                                value: btnBorder,
+                                onChange: function onChange(value) {
+                                    return setAttributes({ btnBorder: value });
+                                }
+                            }),
+                            React.createElement(_PremiumShadow2.default, {
+                                label: __("Box Shadow", 'premium-blocks-for-gutenberg'),
+                                boxShadow: true,
+                                color: btnStyles[0].btnShadowColor,
+                                blur: btnStyles[0].btnShadowBlur,
+                                horizontal: btnStyles[0].btnShadowHorizontal,
+                                vertical: btnStyles[0].btnShadowVertical,
+                                position: btnStyles[0].btnShadowPosition,
+                                onChangeColor: function onChangeColor(newColor) {
+                                    return saveButtonStyle({ btnShadowColor: newColor });
+                                },
+                                onChangeBlur: function onChangeBlur(newBlur) {
+                                    return saveButtonStyle({ btnShadowBlur: newBlur || 0 });
+                                },
+                                onChangehHorizontal: function onChangehHorizontal(newValue) {
+                                    return saveButtonStyle({ btnShadowHorizontal: newValue || 0 });
+                                },
+                                onChangeVertical: function onChangeVertical(newValue) {
+                                    return saveButtonStyle({ btnShadowVertical: newValue || 0 });
+                                },
+                                onChangePosition: function onChangePosition(newValue) {
+                                    return saveButtonStyle({ btnShadowPosition: newValue || 0 });
+                                }
+                            }),
+                            React.createElement(_premiumResponsiveSpacing2.default, {
+                                label: __('Padding', 'premium-blocks-for-gutenberg'),
+                                value: btnPadding,
+                                onChange: function onChange(value) {
+                                    return setAttributes({ btnPadding: value });
+                                },
+                                showUnits: true,
+                                responsive: true
+                            }),
+                            React.createElement(_premiumResponsiveSpacing2.default, {
+                                label: __('Margin', 'premium-blocks-for-gutenberg'),
+                                value: btnMargin,
+                                onChange: function onChange(value) {
+                                    return setAttributes({ btnMargin: value });
+                                },
+                                showUnits: false,
+                                responsive: true
+                            })
+                        ),
+                        React.createElement(
+                            PanelBody,
+                            {
+                                title: __("Container", 'premium-blocks-for-gutenberg'),
+                                className: "premium-panel-body",
+                                initialOpen: false
+                            },
+                            React.createElement(_ColorComponent2.default, {
+                                label: __("Container Background Color"),
+                                colorValue: containerStyles[0].backColor,
+                                onColorChange: function onColorChange(newvalue) {
+                                    return saveContainerStyle({ backColor: newvalue });
+                                },
+                                colorDefault: ""
+                            }),
+                            React.createElement(_premiumBackground2.default, {
+                                imageID: containerStyles[0].imageID,
+                                imageURL: containerStyles[0].imageURL,
+                                backgroundPosition: containerStyles[0].backgroundPosition,
+                                backgroundRepeat: containerStyles[0].backgroundRepeat,
+                                backgroundSize: containerStyles[0].backgroundSize,
+                                fixed: containerStyles[0].fixed,
+                                onSelectMedia: function onSelectMedia(media) {
+                                    saveContainerStyle({
+                                        imageID: media.id,
+                                        imageURL: media.url
+                                    });
+                                },
+                                onRemoveImage: function onRemoveImage(value) {
+                                    return saveContainerStyle({ imageURL: "", imageID: "" });
+                                },
+                                onChangeBackPos: function onChangeBackPos(newValue) {
+                                    return saveContainerStyle({ backgroundPosition: newValue });
+                                },
+                                onchangeBackRepeat: function onchangeBackRepeat(newValue) {
+                                    return saveContainerStyle({ backgroundRepeat: newValue });
+                                },
+                                onChangeBackSize: function onChangeBackSize(newValue) {
+                                    return saveContainerStyle({ backgroundSize: newValue });
+                                },
+                                onChangeFixed: function onChangeFixed(check) {
+                                    return saveContainerStyle({ fixed: check });
+                                }
+                            }),
+                            React.createElement(_premiumBorder2.default, {
+                                label: __('Border', 'premium-blocks-for-gutenberg'),
+                                value: containerBorder,
+                                onChange: function onChange(value) {
+                                    return setAttributes({ containerBorder: value });
+                                }
+                            }),
+                            React.createElement(_PremiumShadow2.default, {
+                                label: __("Box Shadow", 'premium-blocks-for-gutenberg'),
+                                boxShadow: true,
+                                color: containerStyles[0].shadowColor,
+                                blur: containerStyles[0].shadowBlur,
+                                horizontal: containerStyles[0].shadowHorizontal,
+                                vertical: containerStyles[0].shadowVertical,
+                                position: containerStyles[0].shadowPosition,
+                                onChangeColor: function onChangeColor(newColor) {
+                                    return saveContainerStyle({ shadowColor: newColor || "transparent" });
+                                },
+                                onChangeBlur: function onChangeBlur(newBlur) {
+                                    return saveContainerStyle({ shadowBlur: newBlur || 0 });
+                                },
+                                onChangehHorizontal: function onChangehHorizontal(newValue) {
+                                    return saveContainerStyle({ shadowHorizontal: newValue || 0 });
+                                },
+                                onChangeVertical: function onChangeVertical(newValue) {
+                                    return saveContainerStyle({ shadowVertical: newValue || 0 });
+                                },
+                                onChangePosition: function onChangePosition(newValue) {
+                                    return saveContainerStyle({ shadowPosition: newValue });
+                                }
+                            }),
+                            React.createElement(_PremiumShadow2.default, {
+                                label: __("Hover Box Shadow", 'premium-blocks-for-gutenberg'),
+                                boxShadow: true,
+                                color: containerStyles[0].hoverShadowColor,
+                                blur: containerStyles[0].hoverShadowBlur,
+                                horizontal: containerStyles[0].hoverShadowHorizontal,
+                                vertical: containerStyles[0].hoverShadowVertical,
+                                position: containerStyles[0].hoverShadowPosition,
+                                onChangeColor: function onChangeColor(newColor) {
+                                    return saveContainerStyle({ hoverShadowColor: newColor });
+                                },
+                                onChangeBlur: function onChangeBlur(newBlur) {
+                                    return saveContainerStyle({ hoverShadowBlur: newBlur });
+                                },
+                                onChangehHorizontal: function onChangehHorizontal(newValue) {
+                                    return saveContainerStyle({ hoverShadowHorizontal: newValue });
+                                },
+                                onChangeVertical: function onChangeVertical(newValue) {
+                                    return saveContainerStyle({ hoverShadowVertical: newValue });
+                                },
+                                onChangePosition: function onChangePosition(newValue) {
+                                    return saveContainerStyle({ hoverShadowPosition: newValue });
+                                }
+                            }),
+                            React.createElement(_premiumResponsiveSpacing2.default, {
+                                label: __('Margin', 'premium-blocks-for-gutenberg'),
+                                value: containerMargin,
+                                onChange: function onChange(value) {
+                                    return setAttributes({ containerMargin: value });
+                                },
+                                showUnits: false,
+                                responsive: true
+                            }),
+                            React.createElement(_premiumResponsiveSpacing2.default, {
+                                label: __('Padding', 'premium-blocks-for-gutenberg'),
+                                value: containerPadding,
+                                onChange: function onChange(value) {
+                                    return setAttributes({ containerPadding: value });
+                                },
+                                showUnits: true,
+                                responsive: true
+                            })
+                        )
+                    ),
+                    React.createElement(
+                        _inspectorTab2.default,
+                        { key: 'advance' },
+                        React.createElement(_premiumResponsiveTabs2.default, {
+                            Desktop: hideDesktop,
+                            Tablet: hideTablet,
+                            Mobile: hideMobile,
+                            onChangeDesktop: function onChangeDesktop(value) {
+                                return setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" });
+                            },
+                            onChangeTablet: function onChangeTablet(value) {
+                                return setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" });
+                            },
+                            onChangeMobile: function onChangeMobile(value) {
+                                return setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" });
+                            }
+                        })
                     )
-                ),
-                React.createElement(_premiumResponsiveTabs2.default, {
-                    Desktop: hideDesktop,
-                    Tablet: hideTablet,
-                    Mobile: hideMobile,
-                    onChangeDesktop: function onChangeDesktop(value) {
-                        return setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" });
-                    },
-                    onChangeTablet: function onChangeTablet(value) {
-                        return setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" });
-                    },
-                    onChangeMobile: function onChangeMobile(value) {
-                        return setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" });
-                    }
-                })
+                )
             ), React.createElement(
                 "div",
                 {
@@ -33150,14 +33195,14 @@ var edit = function (_Component) {
                         borderTopRightRadius: containerBorder['borderRadius'][this.props.deviceType]['right'] && containerBorder['borderRadius'][this.props.deviceType]['right'] + "px",
                         borderBottomRightRadius: containerBorder['borderRadius'][this.props.deviceType]['bottom'] && containerBorder['borderRadius'][this.props.deviceType]['bottom'] + "px",
                         borderColor: containerBorder.borderColor,
-                        marginTop: containerMarginTop,
-                        marginRight: containerMarginRight,
-                        marginBottom: containerMarginBottom,
-                        marginLeft: containerMarginLeft,
-                        paddingTop: containerPaddingTop && containerPaddingTop + (containerPadding.unit ? containerPadding.unit : 'px'),
-                        paddingRight: containerPaddingRight && containerPaddingRight + (containerPadding.unit ? containerPadding.unit : 'px'),
-                        paddingBottom: containerPaddingBottom && containerPaddingBottom + (containerPadding.unit ? containerPadding.unit : 'px'),
-                        paddingLeft: containerPaddingLeft && containerPaddingLeft + (containerPadding.unit ? containerPadding.unit : 'px'),
+                        paddingTop: containerPadding[this.props.deviceType]['top'] && containerPadding[this.props.deviceType]['top'] + containerPadding.unit,
+                        paddingRight: containerPadding[this.props.deviceType]['right'] && containerPadding[this.props.deviceType]['right'] + containerPadding.unit,
+                        paddingBottom: containerPadding[this.props.deviceType]['bottom'] && containerPadding[this.props.deviceType]['bottom'] + containerPadding.unit,
+                        paddingLeft: containerPadding[this.props.deviceType]['left'] && containerPadding[this.props.deviceType]['left'] + containerPadding.unit,
+                        marginTop: containerMargin[this.props.deviceType]['top'] && containerMargin[this.props.deviceType]['top'] + containerMargin.unit,
+                        marginRight: containerMargin[this.props.deviceType]['right'] && containerMargin[this.props.deviceType]['right'] + containerMargin.unit,
+                        marginBottom: containerMargin[this.props.deviceType]['bottom'] && containerMargin[this.props.deviceType]['bottom'] + containerMargin.unit,
+                        marginLeft: containerMargin[this.props.deviceType]['left'] && containerMargin[this.props.deviceType]['left'] + containerMargin.unit,
                         boxShadow: containerStyles[0].shadowHorizontal + "px " + containerStyles[0].shadowVertical + "px " + containerStyles[0].shadowBlur + "px " + containerStyles[0].shadowColor + " " + containerStyles[0].shadowPosition,
                         backgroundColor: containerStyles[0].backColor,
                         backgroundImage: containerStyles[0].imageURL ? "url('" + containerStyles[0].imageURL + "')" : 'none',
@@ -33190,7 +33235,7 @@ var edit = function (_Component) {
                             style: {
                                 color: iconColor,
                                 backgroundColor: iconBackColor,
-                                fontSize: iconSize
+                                fontSize: (iconSize[this.props.deviceType] || 40) + iconSize.unit
                             }
                         })
                     ),
@@ -33199,8 +33244,8 @@ var edit = function (_Component) {
                         src: "" + iconImgUrl,
                         alt: "Image Icon",
                         style: {
-                            width: iconSize + "px",
-                            height: iconSize + "px",
+                            width: (iconSize[this.props.deviceType] || 40) + iconSize.unit,
+                            height: (iconSize[this.props.deviceType] || 40) + iconSize.unit,
                             borderRadius: iconRadius + "px"
                         }
                     })
@@ -33213,10 +33258,10 @@ var edit = function (_Component) {
                         {
                             className: "premium-icon-box__title_wrap",
                             style: {
-                                marginTop: titleMarginTop,
-                                marginRight: titleMarginRight,
-                                marginBottom: titleMarginBottom,
-                                marginLeft: titlePaddingLeft
+                                marginTop: titleMargin[this.props.deviceType]['top'] && titleMargin[this.props.deviceType]['top'] + titleMargin.unit,
+                                marginRight: titleMargin[this.props.deviceType]['right'] && titleMargin[this.props.deviceType]['right'] + titleMargin.unit,
+                                marginBottom: titleMargin[this.props.deviceType]['bottom'] && titleMargin[this.props.deviceType]['bottom'] + titleMargin.unit,
+                                marginLeft: titleMargin[this.props.deviceType]['left'] && titleMargin[this.props.deviceType]['left'] + titleMargin.unit
                             }
                         },
                         React.createElement(RichText, {
@@ -33246,10 +33291,10 @@ var edit = function (_Component) {
                         {
                             className: "premium-icon-box__desc_wrap",
                             style: {
-                                marginTop: descMarginTop,
-                                marginRight: descMarginRight,
-                                marginBottom: descMarginBottom,
-                                marginLeft: descMarginLeft
+                                marginTop: descMargin[this.props.deviceType]['top'] && descMargin[this.props.deviceType]['top'] + descMargin.unit,
+                                marginRight: descMargin[this.props.deviceType]['right'] && descMargin[this.props.deviceType]['right'] + descMargin.unit,
+                                marginBottom: descMargin[this.props.deviceType]['bottom'] && descMargin[this.props.deviceType]['bottom'] + descMargin.unit,
+                                marginLeft: descMargin[this.props.deviceType]['left'] && descMargin[this.props.deviceType]['left'] + descMargin.unit
                             }
                         },
                         React.createElement(RichText, {
@@ -33276,10 +33321,10 @@ var edit = function (_Component) {
                         {
                             className: "premium-icon-box__btn_wrap premium-button__" + btnEffect + " premium-button__" + effectDir,
                             style: {
-                                marginTop: btnMarginTop,
-                                marginRight: btnMarginRight,
-                                marginBottom: btnMarginBottom,
-                                marginLeft: btnMarginLeft
+                                marginTop: btnMargin[this.props.deviceType]['top'] && btnMargin[this.props.deviceType]['top'] + btnMargin.unit,
+                                marginRight: btnMargin[this.props.deviceType]['right'] && btnMargin[this.props.deviceType]['right'] + btnMargin.unit,
+                                marginBottom: btnMargin[this.props.deviceType]['bottom'] && btnMargin[this.props.deviceType]['bottom'] + btnMargin.unit,
+                                marginLeft: btnMargin[this.props.deviceType]['left'] && btnMargin[this.props.deviceType]['left'] + btnMargin.unit
                             }
                         },
                         React.createElement(RichText, {
@@ -33308,16 +33353,13 @@ var edit = function (_Component) {
                                 borderTopRightRadius: btnBorder['borderRadius'][this.props.deviceType]['right'] && btnBorder['borderRadius'][this.props.deviceType]['right'] + "px",
                                 borderBottomRightRadius: btnBorder['borderRadius'][this.props.deviceType]['bottom'] && btnBorder['borderRadius'][this.props.deviceType]['bottom'] + "px",
                                 borderColor: btnBorder.borderColor,
-                                padding: btnStyles[0].btnPadding && btnStyles[0].btnPadding + (btnStyles[0].btnPaddingU ? btnStyles[0].btnPaddingU : 'px'),
+                                paddingTop: btnPadding[this.props.deviceType]['top'] && btnPadding[this.props.deviceType]['top'] + btnPadding.unit,
+                                paddingRight: btnPadding[this.props.deviceType]['right'] && btnPadding[this.props.deviceType]['right'] + btnPadding.unit,
+                                paddingBottom: btnPadding[this.props.deviceType]['bottom'] && btnPadding[this.props.deviceType]['bottom'] + btnPadding.unit,
+                                paddingLeft: btnPadding[this.props.deviceType]['left'] && btnPadding[this.props.deviceType]['left'] + btnPadding.unit,
                                 boxShadow: btnStyles[0].btnShadowHorizontal + "px " + btnStyles[0].btnShadowVertical + "px " + btnStyles[0].btnShadowBlur + "px " + btnStyles[0].btnShadowColor + " " + btnStyles[0].btnShadowPosition
                             },
                             keepPlaceholderOnFocus: true
-                        }),
-                        isSelected && React.createElement(URLInput, {
-                            value: btnLink,
-                            onChange: function onChange(newLink) {
-                                return setAttributes({ btnLink: newLink });
-                            }
                         })
                     )
                 ),
@@ -33535,3014 +33577,10 @@ exports.default = save;
 
 /***/ }),
 /* 266 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _hexToRgba = __webpack_require__(17);
-
-var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var className = "premium-icon-box";
-var __ = wp.i18n.__;
-var RichText = wp.editor.RichText;
-
-
-var attributes = {
-    block_id: {
-        type: "string"
-    },
-    borderIconBox: {
-        type: "boolean",
-        default: false
-    },
-    btnBorderIconBox: {
-        type: "boolean",
-        default: false
-    },
-    align: {
-        type: "string",
-        default: "center"
-    },
-    iconImage: {
-        type: "string",
-        default: "icon"
-    },
-    iconImgId: {
-        type: "string"
-    },
-    iconImgUrl: {
-        type: "string"
-    },
-    hoverEffect: {
-        type: "string",
-        default: "none"
-    },
-    iconChecked: {
-        type: "boolean",
-        default: true
-    },
-    iconPos: {
-        type: "string",
-        default: "block"
-    },
-    iconHPos: {
-        type: "string",
-        default: "before"
-    },
-    iconVPos: {
-        type: "string",
-        default: "center"
-    },
-    iconSize: {
-        type: "number"
-    },
-    iconRadius: {
-        type: "number"
-    },
-    iconColor: {
-        type: "string"
-    },
-    iconBackColor: {
-        type: "string"
-    },
-    selectedIcon: {
-        type: "string",
-        default: "dashicons dashicons-admin-site"
-    },
-    titleChecked: {
-        type: "boolean",
-        default: true
-    },
-    titleText: {
-        type: "array",
-        source: "children",
-        selector: ".premium-icon-box__title",
-        default: __("Awesome Title")
-    },
-    titleTag: {
-        type: "string",
-        default: "H2"
-    },
-    titleFont: {
-        type: "string"
-    },
-    titleColor: {
-        type: "string"
-    },
-    titleSize: {
-        type: "number",
-        default: '20'
-    },
-    titleSizeUnit: {
-        type: 'string',
-        default: 'px'
-    },
-    titleSizeTablet: {
-        type: 'number',
-        default: '20'
-    },
-    titleSizeMobile: {
-        type: 'number',
-        default: '20'
-    },
-    titleLine: {
-        type: "number"
-    },
-    titleLetter: {
-        type: "number"
-    },
-    titleStyle: {
-        type: "string"
-    },
-    titleUpper: {
-        type: "boolean"
-    },
-    titleWeight: {
-        type: "number",
-        default: 500
-    },
-    titleShadowColor: {
-        type: "string"
-    },
-    titleShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    titleShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    titleShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    titleMarginT: {
-        type: "number"
-    },
-    titleMarginB: {
-        type: "number"
-    },
-    descText: {
-        type: "array",
-        source: "children",
-        selector: ".premium-icon-box__desc",
-        default: "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
-    },
-    descChecked: {
-        type: "boolean",
-        default: true
-    },
-    descFont: {
-        type: "string"
-    },
-    descColor: {
-        type: "string"
-    },
-    descSize: {
-        type: "number",
-        default: '20'
-    },
-    descSizeUnit: {
-        type: "string",
-        default: 'px'
-    },
-    descSizeTablet: {
-        type: "number",
-        default: '20'
-    },
-    descSizeMobile: {
-        type: "number",
-        default: '20'
-    },
-    descLine: {
-        type: "number"
-    },
-    descWeight: {
-        type: "number",
-        default: 500
-    },
-    descMarginT: {
-        type: "number"
-    },
-    descMarginB: {
-        type: "number"
-    },
-    btnChecked: {
-        type: "boolean",
-        default: true
-    },
-    btnEffect: {
-        type: "string",
-        default: "none"
-    },
-    effectDir: {
-        type: "string",
-        default: "top"
-    },
-    btnTarget: {
-        type: "boolean",
-        default: false
-    },
-    btnText: {
-        type: "array",
-        source: "children",
-        selector: ".premium-icon-box__btn",
-        default: __("Click Here")
-    },
-    btnLink: {
-        type: "string",
-        source: "attribute",
-        attribute: "href",
-        selector: ".premium-icon-box__btn"
-    },
-    btnColor: {
-        type: "string"
-    },
-    btnHoverColor: {
-        type: "string"
-    },
-    btnBack: {
-        type: "string"
-    },
-    btnHoverBack: {
-        type: "string"
-    },
-    btnHoverBorder: {
-        type: "string"
-    },
-    btnSize: {
-        type: "number",
-        default: '20'
-    },
-    btnSizeUnit: {
-        type: "string",
-        default: "px"
-    },
-    btnSizeTablet: {
-        type: "number",
-        default: '20'
-    },
-    btnSizeMobile: {
-        type: "number",
-        default: '20'
-    },
-    btnLine: {
-        type: "number"
-    },
-    btnLetter: {
-        type: "number"
-    },
-    btnStyle: {
-        type: "string"
-    },
-    btnUpper: {
-        type: "boolean"
-    },
-    btnWeight: {
-        type: "number",
-        default: 500
-    },
-    btnBorderType: {
-        type: "string",
-        default: "none"
-    },
-    btnBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    btnBorderTop: {
-        type: "number"
-    },
-    btnBorderRight: {
-        type: "number"
-    },
-    btnBorderBottom: {
-        type: "number"
-    },
-    btnBorderLeft: {
-        type: "number"
-    },
-    borderTop: {
-        type: "number"
-    },
-    borderRight: {
-        type: "number"
-    },
-    borderBottom: {
-        type: "number"
-    },
-    borderLeft: {
-        type: "number"
-    },
-    btnBorderRadius: {
-        type: "number"
-    },
-    btnBorderColor: {
-        type: "string"
-    },
-    btnPadding: {
-        type: "number"
-    },
-    btnPaddingU: {
-        type: "string"
-    },
-    btnMarginT: {
-        type: "number"
-    },
-    btnMarginB: {
-        type: "number"
-    },
-    btnShadowColor: {
-        type: "string"
-    },
-    btnShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    btnShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    btnShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    btnShadowPosition: {
-        type: "string",
-        default: ""
-    },
-    imageID: {
-        type: "string"
-    },
-    imageURL: {
-        type: "string"
-    },
-    backColor: {
-        type: "string"
-    },
-    backgroundRepeat: {
-        type: "string",
-        default: "no-repeat"
-    },
-    backgroundPosition: {
-        type: "string",
-        default: "top center"
-    },
-    backgroundSize: {
-        type: "string",
-        default: "auto"
-    },
-    fixed: {
-        type: "boolean",
-        default: false
-    },
-    borderType: {
-        type: "string",
-        default: "none"
-    },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    borderRadius: {
-        type: "number"
-    },
-    borderColor: {
-        type: "string"
-    },
-    marginT: {
-        type: "number"
-    },
-    marginR: {
-        type: "number"
-    },
-    marginB: {
-        type: "number"
-    },
-    marginL: {
-        type: "number"
-    },
-    paddingT: {
-        type: "number"
-    },
-    paddingR: {
-        type: "number"
-    },
-    paddingB: {
-        type: "number"
-    },
-    paddingL: {
-        type: "number"
-    },
-    paddingU: {
-        type: "string"
-    },
-    shadowColor: {
-        type: "string"
-    },
-    shadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    shadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    shadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    shadowPosition: {
-        type: "string",
-        default: ""
-    },
-    hoverShadowColor: {
-        type: "string"
-    },
-    hoverShadowBlur: {
-        type: "number"
-    },
-    hoverShadowHorizontal: {
-        type: "number"
-    },
-    hoverShadowVertical: {
-        type: "number"
-    },
-    hoverShadowPosition: {
-        type: "string"
-    },
-    classMigrate: {
-        type: "boolean",
-        default: false
-    },
-    hideDesktop: {
-        type: 'boolean',
-        default: false
-    },
-    hideTablet: {
-        type: 'boolean',
-        default: false
-    },
-    hideMobile: {
-        type: 'boolean',
-        default: false
-    },
-    backOpacity: {
-        type: "number",
-        default: "1"
-    },
-    iconOpacity: {
-        type: "number",
-        default: "1"
-    },
-    btnOpacity: {
-        type: "number",
-        default: "1"
-    }
-};
-
-var deprecatedContent = [{
-    attributes: attributes,
-    migrate: function migrate(attributes) {
-        var newAttributes = {
-            titleStyles: [{
-                titleTag: attributes.titleTag,
-                titleFont: attributes.titleFont,
-                titleColor: attributes.titleColor,
-                titleSize: attributes.titleSize,
-                titleSizeUnit: attributes.titleSize,
-                titleSizeTablet: attributes.titleSizeTablet,
-                titleSizeMobile: attributes.titleSizeMobile,
-                titleLine: attributes.titleLine,
-                titleLetter: attributes.titleLetter,
-                titleStyle: attributes.titleStyle,
-                titleUpper: attributes.titleUpper,
-                titleWeight: attributes.titleWeight,
-                titleShadowColor: attributes.titleShadowColor,
-                titleShadowBlur: attributes.titleShadowBlur,
-                titleShadowHorizontal: attributes.titleShadowHorizontal,
-                titleShadowVertical: attributes.titleShadowVertical,
-                titleMarginT: attributes.titleMarginT,
-                titleMarginB: attributes.titleMarginB
-            }],
-            descStyles: [{
-                descFont: attributes.descFont,
-                descColor: attributes.descColor,
-                descSize: attributes.descSize,
-                descSizeUnit: attributes.descSizeUnit,
-                descSizeTablet: attributes.descSizeTablet,
-                descSizeMobile: attributes.descSizeMobile,
-                descLine: attributes.descLine,
-                descWeight: attributes.descWeight,
-                descMarginT: attributes.descMarginT,
-                descMarginB: attributes.descMarginB
-            }],
-            btnStyles: [{
-                btnSize: attributes.btnSize,
-                btnSizeUnit: attributes.btnSizeUnit,
-                btnSizeTablet: attributes.btnSizeTablet,
-                btnSizeMobile: attributes.btnSizeMobile,
-                btnLine: attributes.btnLine,
-                btnLetter: attributes.btnLetter,
-                btnStyle: attributes.btnStyle,
-                btnUpper: attributes.btnUpper,
-                btnWeight: attributes.btnWeight,
-                btnBorderType: attributes.btnBorderType,
-                btnBorderWidth: attributes.btnBorderWidth,
-                btnBorderTop: attributes.btnBorderTop,
-                btnBorderRight: attributes.btnBorderRight,
-                btnBorderBottom: attributes.btnBorderBottom,
-                btnBorderLeft: attributes.btnBorderLeft,
-                btnBorderRadius: attributes.btnBorderRadius,
-                btnBorderColor: attributes.btnBorderColor,
-                btnPadding: attributes.btnPadding,
-                btnPaddingU: attributes.btnPaddingU,
-                btnMarginT: attributes.btnMarginT,
-                btnMarginB: attributes.btnMarginB,
-                btnShadowColor: attributes.btnShadowColor,
-                btnShadowBlur: attributes.btnShadowBlur,
-                btnShadowHorizontal: attributes.btnShadowHorizontal,
-                btnShadowVertical: attributes.btnShadowVertical,
-                btnShadowPosition: attributes.btnShadowPosition,
-                btnColor: attributes.btnColor,
-                btnHoverColor: attributes.btnHoverColor,
-                btnBack: attributes.btnBack,
-                btnHoverBack: attributes.btnHoverBack,
-                btnOpacity: attributes.btnOpacity
-            }],
-            containerStyles: [{
-                backOpacity: attributes.backOpacity,
-                backColor: attributes.backColor,
-                imageID: attributes.imageID,
-                imageURL: attributes.imageURL,
-                backgroundRepeat: attributes.backgroundRepeat,
-                backgroundPosition: attributes.backgroundPosition,
-                backgroundSize: attributes.backgroundSize,
-                fixed: attributes.fixed,
-                borderType: attributes.borderType,
-                borderWidth: attributes.borderWidth,
-                borderRadius: attributes.borderRadius,
-                borderColor: attributes.borderColor,
-                borderTop: attributes.borderTop,
-                borderRight: attributes.borderRight,
-                borderBottom: attributes.borderBottom,
-                borderLeft: attributes.borderLeft,
-                shadowColor: attributes.shadowColor,
-                shadowBlur: attributes.shadowBlur,
-                shadowHorizontal: attributes.shadowHorizontal,
-                shadowVertical: attributes.shadowVertical,
-                shadowPosition: attributes.shadowPosition,
-                hoverShadowColor: attributes.hoverShadowColor,
-                hoverShadowBlur: attributes.hoverShadowBlur,
-                hoverShadowHorizontal: attributes.hoverShadowHorizontal,
-                hoverShadowVertical: attributes.hoverShadowVertical,
-                hoverShadowPosition: attributes.hoverShadowPosition,
-                marginT: attributes.marginT,
-                marginR: attributes.marginR,
-                marginB: attributes.marginB,
-                marginL: attributes.marginL,
-                paddingT: attributes.paddingT,
-                paddingR: attributes.paddingR,
-                paddingB: attributes.paddingB,
-                paddingL: attributes.paddingL,
-                paddingU: attributes.paddingU,
-                gradientColorOne: '',
-                gradientLocationOne: '0',
-                gradientColorTwo: '',
-                gradientLocationTwo: '100',
-                gradientType: 'linear',
-                gradientAngle: '180',
-                gradientPosition: 'center center'
-            }],
-            marginTTablet: '',
-            marginRTablet: '',
-            marginBTablet: '',
-            marginLTablet: '',
-            marginTMobile: '',
-            marginRMobile: '',
-            marginBMobile: '',
-            marginLMobile: '',
-            paddingTTablet: '',
-            paddingRTablet: '',
-            paddingBTablet: '',
-            paddingLTablet: '',
-            paddingTMobile: '',
-            paddingRMobile: '',
-            paddingBMobile: '',
-            paddingLMobile: '',
-            btnMarginTTablet: '',
-            btnMarginBTablet: '',
-            btnMarginTMobile: '',
-            btnMarginBMobile: '',
-            titleMarginTTablet: '',
-            titleMarginBTablet: '',
-            titleMarginTMobile: '',
-            titleMarginBMobile: '',
-            descMarginTTablet: '',
-            descMarginBTablet: '',
-            descMarginTMobile: '',
-            descMarginBMobile: ''
-        };
-
-        return Object.assign(attributes, newAttributes);
-    },
-    save: function save(props) {
-        var _props$attributes = props.attributes,
-            block_id = _props$attributes.block_id,
-            borderIconBox = _props$attributes.borderIconBox,
-            btnBorderIconBox = _props$attributes.btnBorderIconBox,
-            align = _props$attributes.align,
-            iconImage = _props$attributes.iconImage,
-            iconImgUrl = _props$attributes.iconImgUrl,
-            iconRadius = _props$attributes.iconRadius,
-            selectedIcon = _props$attributes.selectedIcon,
-            iconChecked = _props$attributes.iconChecked,
-            hoverEffect = _props$attributes.hoverEffect,
-            iconPos = _props$attributes.iconPos,
-            iconHPos = _props$attributes.iconHPos,
-            iconVPos = _props$attributes.iconVPos,
-            iconSize = _props$attributes.iconSize,
-            iconColor = _props$attributes.iconColor,
-            iconBackColor = _props$attributes.iconBackColor,
-            titleChecked = _props$attributes.titleChecked,
-            titleText = _props$attributes.titleText,
-            titleTag = _props$attributes.titleTag,
-            titleColor = _props$attributes.titleColor,
-            titleFont = _props$attributes.titleFont,
-            titleLine = _props$attributes.titleLine,
-            titleLetter = _props$attributes.titleLetter,
-            titleStyle = _props$attributes.titleStyle,
-            titleUpper = _props$attributes.titleUpper,
-            titleWeight = _props$attributes.titleWeight,
-            titleShadowBlur = _props$attributes.titleShadowBlur,
-            titleShadowColor = _props$attributes.titleShadowColor,
-            titleShadowHorizontal = _props$attributes.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes.titleShadowVertical,
-            titleMarginT = _props$attributes.titleMarginT,
-            titleMarginB = _props$attributes.titleMarginB,
-            descChecked = _props$attributes.descChecked,
-            descText = _props$attributes.descText,
-            descColor = _props$attributes.descColor,
-            descFont = _props$attributes.descFont,
-            descLine = _props$attributes.descLine,
-            descWeight = _props$attributes.descWeight,
-            descMarginT = _props$attributes.descMarginT,
-            descMarginB = _props$attributes.descMarginB,
-            btnChecked = _props$attributes.btnChecked,
-            btnEffect = _props$attributes.btnEffect,
-            effectDir = _props$attributes.effectDir,
-            btnText = _props$attributes.btnText,
-            btnTarget = _props$attributes.btnTarget,
-            btnLink = _props$attributes.btnLink,
-            btnStyle = _props$attributes.btnStyle,
-            btnUpper = _props$attributes.btnUpper,
-            btnWeight = _props$attributes.btnWeight,
-            btnLetter = _props$attributes.btnLetter,
-            btnColor = _props$attributes.btnColor,
-            btnHoverColor = _props$attributes.btnHoverColor,
-            btnHoverBorder = _props$attributes.btnHoverBorder,
-            btnBack = _props$attributes.btnBack,
-            btnHoverBack = _props$attributes.btnHoverBack,
-            btnBorderWidth = _props$attributes.btnBorderWidth,
-            btnBorderTop = _props$attributes.btnBorderTop,
-            btnBorderRight = _props$attributes.btnBorderRight,
-            btnBorderBottom = _props$attributes.btnBorderBottom,
-            btnBorderLeft = _props$attributes.btnBorderLeft,
-            borderTop = _props$attributes.borderTop,
-            borderRight = _props$attributes.borderRight,
-            borderBottom = _props$attributes.borderBottom,
-            borderLeft = _props$attributes.borderLeft,
-            btnBorderRadius = _props$attributes.btnBorderRadius,
-            btnBorderColor = _props$attributes.btnBorderColor,
-            btnBorderType = _props$attributes.btnBorderType,
-            btnPadding = _props$attributes.btnPadding,
-            btnPaddingU = _props$attributes.btnPaddingU,
-            btnMarginT = _props$attributes.btnMarginT,
-            btnMarginB = _props$attributes.btnMarginB,
-            btnShadowBlur = _props$attributes.btnShadowBlur,
-            btnShadowColor = _props$attributes.btnShadowColor,
-            btnShadowHorizontal = _props$attributes.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes.btnShadowVertical,
-            btnShadowPosition = _props$attributes.btnShadowPosition,
-            backColor = _props$attributes.backColor,
-            imageURL = _props$attributes.imageURL,
-            fixed = _props$attributes.fixed,
-            backgroundRepeat = _props$attributes.backgroundRepeat,
-            backgroundPosition = _props$attributes.backgroundPosition,
-            backgroundSize = _props$attributes.backgroundSize,
-            borderType = _props$attributes.borderType,
-            borderWidth = _props$attributes.borderWidth,
-            borderRadius = _props$attributes.borderRadius,
-            borderColor = _props$attributes.borderColor,
-            marginT = _props$attributes.marginT,
-            marginR = _props$attributes.marginR,
-            marginB = _props$attributes.marginB,
-            marginL = _props$attributes.marginL,
-            paddingT = _props$attributes.paddingT,
-            paddingR = _props$attributes.paddingR,
-            paddingB = _props$attributes.paddingB,
-            paddingL = _props$attributes.paddingL,
-            paddingU = _props$attributes.paddingU,
-            shadowBlur = _props$attributes.shadowBlur,
-            shadowColor = _props$attributes.shadowColor,
-            shadowHorizontal = _props$attributes.shadowHorizontal,
-            shadowVertical = _props$attributes.shadowVertical,
-            shadowPosition = _props$attributes.shadowPosition,
-            hoverShadowBlur = _props$attributes.hoverShadowBlur,
-            hoverShadowColor = _props$attributes.hoverShadowColor,
-            hoverShadowHorizontal = _props$attributes.hoverShadowHorizontal,
-            hoverShadowVertical = _props$attributes.hoverShadowVertical,
-            hoverShadowPosition = _props$attributes.hoverShadowPosition,
-            iconOpacity = _props$attributes.iconOpacity,
-            btnOpacity = _props$attributes.btnOpacity,
-            backOpacity = _props$attributes.backOpacity,
-            hideDesktop = _props$attributes.hideDesktop,
-            hideTablet = _props$attributes.hideTablet,
-            hideMobile = _props$attributes.hideMobile;
-
-        return React.createElement(
-            "div",
-            {
-                id: "premium-icon-box-" + block_id,
-                className: className + " premium-icon-box-" + iconPos + " premium-icon-box-" + iconHPos + " premium-icon-box-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
-                style: {
-                    textAlign: align,
-                    borderStyle: borderType,
-                    borderWidth: borderIconBox ? borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px" : borderWidth + "px",
-                    borderRadius: borderRadius + "px",
-                    borderColor: borderColor,
-                    marginTop: marginT,
-                    marginRight: marginR,
-                    marginBottom: marginB,
-                    marginLeft: marginL,
-                    paddingTop: paddingT + paddingU,
-                    paddingRight: paddingR + paddingU,
-                    paddingBottom: paddingB + paddingU,
-                    paddingLeft: paddingL + paddingU,
-                    boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
-                    backgroundColor: backColor ? (0, _hexToRgba2.default)(backColor, backOpacity) : "transparent",
-                    backgroundImage: "url('" + imageURL + "')",
-                    backgroundRepeat: backgroundRepeat,
-                    backgroundPosition: backgroundPosition,
-                    backgroundSize: backgroundSize,
-                    backgroundAttachment: fixed ? "fixed" : "unset"
-                }
-            },
-            btnChecked && btnText && React.createElement("style", {
-                dangerouslySetInnerHTML: {
-                    __html: ["#premium-icon-box-" + block_id + ":hover {", "box-shadow: " + hoverShadowHorizontal + "px " + hoverShadowVertical + "px " + hoverShadowBlur + "px " + hoverShadowColor + " " + hoverShadowPosition + " !important", "}", "#premium-icon-box-" + block_id + " .premium-icon-box__btn:hover {", "color: " + btnHoverColor + " !important;", "border-color: " + btnHoverBorder + " !important;", "}", "#premium-icon-box-" + block_id + " .premium-button__none .premium-icon-box__btn:hover {", "background-color: " + btnHoverBack + " !important;", "}", "#premium-icon-box-" + block_id + " .premium-button__slide .premium-button::before {", "background-color: " + btnHoverBack + " !important;", "}"].join("\n")
-                }
-            }),
-            iconChecked && React.createElement(
-                "div",
-                {
-                    className: "premium-icon-box__icon_wrap premium-icon-box__icon_" + iconVPos
-                },
-                "icon" === iconImage && selectedIcon && React.createElement("i", {
-                    className: selectedIcon + " premium-icon-box__icon premium-icon__" + hoverEffect,
-                    style: {
-                        color: iconColor,
-                        backgroundColor: iconBackColor ? (0, _hexToRgba2.default)(iconBackColor, iconOpacity) : "transparent",
-                        fontSize: iconSize
-                    }
-                }),
-                "image" === iconImage && iconImgUrl && React.createElement("img", {
-                    className: "premium-icon-box__icon premium-icon__" + hoverEffect,
-                    src: "" + iconImgUrl,
-                    alt: "Image Icon",
-                    style: {
-                        width: iconSize + "px",
-                        height: iconSize + "px",
-                        borderRadius: iconRadius + "px"
-                    }
-                })
-            ),
-            React.createElement(
-                "div",
-                { className: "premium-icon-box__content_wrap" },
-                titleChecked && titleText && React.createElement(
-                    "div",
-                    {
-                        className: "premium-icon-box__title_wrap",
-                        style: {
-                            marginTop: titleMarginT,
-                            marginBottom: titleMarginB
-                        }
-                    },
-                    React.createElement(RichText.Content, {
-                        tagName: titleTag.toLowerCase(),
-                        className: "premium-icon-box__title",
-                        value: titleText,
-                        style: {
-                            color: titleColor,
-                            fontFamily: titleFont,
-                            letterSpacing: titleLetter + "px",
-                            textTransform: titleUpper ? "uppercase" : "none",
-                            fontStyle: titleStyle,
-                            fontWeight: titleWeight,
-                            textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor,
-                            lineHeight: titleLine + "px"
-                        }
-                    })
-                ),
-                descChecked && descText && React.createElement(
-                    "div",
-                    {
-                        className: "premium-icon-box__desc_wrap",
-                        style: {
-                            marginTop: descMarginT,
-                            marginBottom: descMarginB
-                        }
-                    },
-                    React.createElement(RichText.Content, {
-                        tagName: "p",
-                        className: "premium-icon-box__desc",
-                        value: descText,
-                        style: {
-                            color: descColor,
-                            fontFamily: descFont,
-                            lineHeight: descLine + "px",
-                            fontWeight: descWeight
-                        }
-                    })
-                ),
-                btnChecked && btnText && React.createElement(
-                    "div",
-                    {
-                        className: "premium-icon-box__btn_wrap premium-button__" + btnEffect + " premium-button__" + effectDir,
-                        style: {
-                            marginTop: btnMarginT,
-                            marginBottom: btnMarginB
-                        }
-                    },
-                    React.createElement(RichText.Content, {
-                        tagName: "a",
-                        className: "premium-icon-box__btn premium-button",
-                        href: btnLink,
-                        rel: "noopener noreferrer",
-                        target: btnTarget ? "_blank" : "_self",
-                        value: btnText,
-                        style: {
-                            color: btnColor,
-                            backgroundColor: btnBack ? (0, _hexToRgba2.default)(btnBack, btnOpacity) : "transparent",
-                            letterSpacing: btnLetter + "px",
-                            textTransform: btnUpper ? "uppercase" : "none",
-                            fontStyle: btnStyle,
-                            fontWeight: btnWeight,
-                            borderStyle: btnBorderType,
-                            borderWidth: btnBorderIconBox ? btnBorderTop + "px " + btnBorderRight + "px " + btnBorderBottom + "px " + btnBorderLeft + "px" : btnBorderWidth + "px",
-                            borderRadius: btnBorderRadius + "px",
-                            borderColor: btnBorderColor,
-                            padding: btnPadding + btnPaddingU,
-                            boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition
-                        }
-                    })
-                )
-            )
-        );
-    }
-}, {
-    attributes: attributes,
-    migrate: function migrate(attributes) {
-        var newAttributes = {
-            borderLeft: "",
-            borderTop: "",
-            borderRight: "",
-            borderBottom: "",
-            btnBorderBottom: "",
-            btnBorderLeft: "",
-            btnBorderTop: "",
-            btnBorderRight: "",
-            borderIconBox: "",
-            btnBorderIconBox: "",
-            classMigrate: false,
-            block_id: '',
-            titleSizeUnit: "px",
-            titleSizeTablet: '',
-            titleSizeMobile: '',
-            descSizeUnit: 'px',
-            descSizeTablet: '',
-            descSizeMobile: '',
-            btnSizeUnit: 'px',
-            btnSizeTablet: '',
-            btnSizeMobile: '',
-            btnOpacity: "",
-            iconOpacity: "",
-            backOpacity: "",
-            hideDesktop: false,
-            hideTablet: false,
-            hideMobile: false
-        };
-        return Object.assign(attributes, newAttributes);
-    },
-    save: function save(props) {
-        var _props$attributes2 = props.attributes,
-            id = _props$attributes2.id,
-            align = _props$attributes2.align,
-            iconImage = _props$attributes2.iconImage,
-            iconImgUrl = _props$attributes2.iconImgUrl,
-            iconRadius = _props$attributes2.iconRadius,
-            selectedIcon = _props$attributes2.selectedIcon,
-            iconChecked = _props$attributes2.iconChecked,
-            hoverEffect = _props$attributes2.hoverEffect,
-            iconPos = _props$attributes2.iconPos,
-            iconHPos = _props$attributes2.iconHPos,
-            iconVPos = _props$attributes2.iconVPos,
-            iconSize = _props$attributes2.iconSize,
-            iconColor = _props$attributes2.iconColor,
-            iconBackColor = _props$attributes2.iconBackColor,
-            titleChecked = _props$attributes2.titleChecked,
-            titleText = _props$attributes2.titleText,
-            titleTag = _props$attributes2.titleTag,
-            titleColor = _props$attributes2.titleColor,
-            titleFont = _props$attributes2.titleFont,
-            titleSize = _props$attributes2.titleSize,
-            titleLine = _props$attributes2.titleLine,
-            titleLetter = _props$attributes2.titleLetter,
-            titleStyle = _props$attributes2.titleStyle,
-            titleUpper = _props$attributes2.titleUpper,
-            titleWeight = _props$attributes2.titleWeight,
-            titleShadowBlur = _props$attributes2.titleShadowBlur,
-            titleShadowColor = _props$attributes2.titleShadowColor,
-            titleShadowHorizontal = _props$attributes2.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes2.titleShadowVertical,
-            titleMarginT = _props$attributes2.titleMarginT,
-            titleMarginB = _props$attributes2.titleMarginB,
-            descChecked = _props$attributes2.descChecked,
-            descText = _props$attributes2.descText,
-            descColor = _props$attributes2.descColor,
-            descFont = _props$attributes2.descFont,
-            descSize = _props$attributes2.descSize,
-            descLine = _props$attributes2.descLine,
-            descWeight = _props$attributes2.descWeight,
-            descMarginT = _props$attributes2.descMarginT,
-            descMarginB = _props$attributes2.descMarginB,
-            btnChecked = _props$attributes2.btnChecked,
-            btnEffect = _props$attributes2.btnEffect,
-            effectDir = _props$attributes2.effectDir,
-            btnText = _props$attributes2.btnText,
-            btnTarget = _props$attributes2.btnTarget,
-            btnLink = _props$attributes2.btnLink,
-            btnSize = _props$attributes2.btnSize,
-            btnStyle = _props$attributes2.btnStyle,
-            btnUpper = _props$attributes2.btnUpper,
-            btnWeight = _props$attributes2.btnWeight,
-            btnLetter = _props$attributes2.btnLetter,
-            btnColor = _props$attributes2.btnColor,
-            btnHoverColor = _props$attributes2.btnHoverColor,
-            btnHoverBorder = _props$attributes2.btnHoverBorder,
-            btnBack = _props$attributes2.btnBack,
-            btnHoverBack = _props$attributes2.btnHoverBack,
-            btnBorderWidth = _props$attributes2.btnBorderWidth,
-            btnBorderRadius = _props$attributes2.btnBorderRadius,
-            btnBorderColor = _props$attributes2.btnBorderColor,
-            btnBorderType = _props$attributes2.btnBorderType,
-            btnPadding = _props$attributes2.btnPadding,
-            btnPaddingU = _props$attributes2.btnPaddingU,
-            btnMarginT = _props$attributes2.btnMarginT,
-            btnMarginB = _props$attributes2.btnMarginB,
-            btnShadowBlur = _props$attributes2.btnShadowBlur,
-            btnShadowColor = _props$attributes2.btnShadowColor,
-            btnShadowHorizontal = _props$attributes2.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes2.btnShadowVertical,
-            btnShadowPosition = _props$attributes2.btnShadowPosition,
-            backColor = _props$attributes2.backColor,
-            imageURL = _props$attributes2.imageURL,
-            fixed = _props$attributes2.fixed,
-            backgroundRepeat = _props$attributes2.backgroundRepeat,
-            backgroundPosition = _props$attributes2.backgroundPosition,
-            backgroundSize = _props$attributes2.backgroundSize,
-            borderType = _props$attributes2.borderType,
-            borderWidth = _props$attributes2.borderWidth,
-            borderRadius = _props$attributes2.borderRadius,
-            borderColor = _props$attributes2.borderColor,
-            marginT = _props$attributes2.marginT,
-            marginR = _props$attributes2.marginR,
-            marginB = _props$attributes2.marginB,
-            marginL = _props$attributes2.marginL,
-            paddingT = _props$attributes2.paddingT,
-            paddingR = _props$attributes2.paddingR,
-            paddingB = _props$attributes2.paddingB,
-            paddingL = _props$attributes2.paddingL,
-            paddingU = _props$attributes2.paddingU,
-            shadowBlur = _props$attributes2.shadowBlur,
-            shadowColor = _props$attributes2.shadowColor,
-            shadowHorizontal = _props$attributes2.shadowHorizontal,
-            shadowVertical = _props$attributes2.shadowVertical,
-            shadowPosition = _props$attributes2.shadowPosition,
-            hoverShadowBlur = _props$attributes2.hoverShadowBlur,
-            hoverShadowColor = _props$attributes2.hoverShadowColor,
-            hoverShadowHorizontal = _props$attributes2.hoverShadowHorizontal,
-            hoverShadowVertical = _props$attributes2.hoverShadowVertical,
-            hoverShadowPosition = _props$attributes2.hoverShadowPosition;
-
-
-        return React.createElement(
-            "div",
-            {
-                id: "premium-icon-box-" + id,
-                className: className + " premium-icon-box-" + iconPos + " premium-icon-box-" + iconHPos,
-                style: {
-                    textAlign: align,
-                    border: borderType,
-                    borderWidth: borderWidth + "px",
-                    borderRadius: borderRadius + "px",
-                    borderColor: borderColor,
-                    marginTop: marginT,
-                    marginRight: marginR,
-                    marginBottom: marginB,
-                    marginLeft: marginL,
-                    paddingTop: paddingT + paddingU,
-                    paddingRight: paddingR + paddingU,
-                    paddingBottom: paddingB + paddingU,
-                    paddingLeft: paddingL + paddingU,
-                    boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
-                    backgroundColor: backColor,
-                    backgroundImage: "url('" + imageURL + "')",
-                    backgroundRepeat: backgroundRepeat,
-                    backgroundPosition: backgroundPosition,
-                    backgroundSize: backgroundSize,
-                    backgroundAttachment: fixed ? "fixed" : "unset"
-                }
-            },
-            btnChecked && btnText && React.createElement("style", {
-                dangerouslySetInnerHTML: {
-                    __html: ["#premium-icon-box-" + id + ":hover {", "box-shadow: " + hoverShadowHorizontal + "px " + hoverShadowVertical + "px " + hoverShadowBlur + "px " + hoverShadowColor + " " + hoverShadowPosition + " !important", "}", "#premium-icon-box-" + id + " .premium-icon-box__btn:hover {", "color: " + btnHoverColor + " !important;", "border-color: " + btnHoverBorder + " !important;", "}", "#premium-icon-box-" + id + " .premium-button__none .premium-icon-box__btn:hover {", "background-color: " + btnHoverBack + " !important;", "}", "#premium-icon-box-" + id + " .premium-button__slide .premium-button::before {", "background-color: " + btnHoverBack + " !important;", "}"].join("\n")
-                }
-            }),
-            iconChecked && React.createElement(
-                "div",
-                {
-                    className: "premium-icon-box__icon_wrap premium-icon-box__icon_" + iconVPos
-                },
-                "icon" === iconImage && selectedIcon && React.createElement("i", {
-                    className: selectedIcon + " premium-icon-box__icon premium-icon__" + hoverEffect,
-                    style: {
-                        color: iconColor,
-                        backgroundColor: iconBackColor,
-                        fontSize: iconSize
-                    }
-                }),
-                "image" === iconImage && iconImgUrl && React.createElement("img", {
-                    className: "premium-icon-box__icon premium-icon__" + hoverEffect,
-                    src: "" + iconImgUrl,
-                    alt: "Image Icon",
-                    style: {
-                        width: iconSize + "px",
-                        height: iconSize + "px",
-                        borderRadius: iconRadius + "px"
-                    }
-                })
-            ),
-            React.createElement(
-                "div",
-                { className: "premium-icon-box__content_wrap" },
-                titleChecked && titleText && React.createElement(
-                    "div",
-                    {
-                        className: "premium-icon-box__title_wrap",
-                        style: {
-                            marginTop: titleMarginT,
-                            marginBottom: titleMarginB
-                        }
-                    },
-                    React.createElement(RichText.Content, {
-                        tagName: titleTag.toLowerCase(),
-                        className: "premium-icon-box__title",
-                        value: titleText,
-                        style: {
-                            color: titleColor,
-                            fontSize: titleSize + "px",
-                            fontFamily: titleFont,
-                            letterSpacing: titleLetter + "px",
-                            textTransform: titleUpper ? "uppercase" : "none",
-                            fontStyle: titleStyle,
-                            fontWeight: titleWeight,
-                            textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor,
-                            lineHeight: titleLine + "px"
-                        }
-                    })
-                ),
-                descChecked && descText && React.createElement(
-                    "div",
-                    {
-                        className: "premium-icon-box__desc_wrap",
-                        style: {
-                            marginTop: descMarginT,
-                            marginBottom: descMarginB
-                        }
-                    },
-                    React.createElement(RichText.Content, {
-                        tagName: "p",
-                        className: "premium-icon-box__desc",
-                        value: descText,
-                        style: {
-                            color: descColor,
-                            fontSize: descSize + "px",
-                            fontFamily: descFont,
-                            lineHeight: descLine + "px",
-                            fontWeight: descWeight
-                        }
-                    })
-                ),
-                btnChecked && btnText && React.createElement(
-                    "div",
-                    {
-                        className: "premium-icon-box__btn_wrap premium-button__" + btnEffect + " premium-button__" + effectDir,
-                        style: {
-                            marginTop: btnMarginT,
-                            marginBottom: btnMarginB
-                        }
-                    },
-                    React.createElement(RichText.Content, {
-                        tagName: "a",
-                        className: "premium-icon-box__btn premium-button",
-                        href: btnLink,
-                        rel: "noopener noreferrer",
-                        target: btnTarget ? "_blank" : "_self",
-                        value: btnText,
-                        style: {
-                            color: btnColor,
-                            backgroundColor: btnBack,
-                            fontSize: btnSize + "px",
-                            letterSpacing: btnLetter + "px",
-                            textTransform: btnUpper ? "uppercase" : "none",
-                            fontStyle: btnStyle,
-                            fontWeight: btnWeight,
-                            border: btnBorderType,
-                            borderWidth: btnBorderWidth + "px",
-                            borderRadius: btnBorderRadius + "px",
-                            borderColor: btnBorderColor,
-                            padding: btnPadding + btnPaddingU,
-                            boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition
-                        }
-                    })
-                )
-            )
-        );
-    }
-}, {
-    attributes: attributes,
-    migrate: function migrate(attributes) {
-        var newAttributes = {
-            iconPos: "block",
-            iconHPos: "before",
-            iconVPos: "center"
-        };
-        return Object.assign(attributes, newAttributes);
-    },
-    save: function save(props) {
-        var _props$attributes3 = props.attributes,
-            id = _props$attributes3.id,
-            align = _props$attributes3.align,
-            iconImage = _props$attributes3.iconImage,
-            iconImgUrl = _props$attributes3.iconImgUrl,
-            iconRadius = _props$attributes3.iconRadius,
-            selectedIcon = _props$attributes3.selectedIcon,
-            iconChecked = _props$attributes3.iconChecked,
-            hoverEffect = _props$attributes3.hoverEffect,
-            iconSize = _props$attributes3.iconSize,
-            iconColor = _props$attributes3.iconColor,
-            iconBackColor = _props$attributes3.iconBackColor,
-            titleChecked = _props$attributes3.titleChecked,
-            titleText = _props$attributes3.titleText,
-            titleTag = _props$attributes3.titleTag,
-            titleColor = _props$attributes3.titleColor,
-            titleFont = _props$attributes3.titleFont,
-            titleSize = _props$attributes3.titleSize,
-            titleLine = _props$attributes3.titleLine,
-            titleLetter = _props$attributes3.titleLetter,
-            titleStyle = _props$attributes3.titleStyle,
-            titleUpper = _props$attributes3.titleUpper,
-            titleWeight = _props$attributes3.titleWeight,
-            titleShadowBlur = _props$attributes3.titleShadowBlur,
-            titleShadowColor = _props$attributes3.titleShadowColor,
-            titleShadowHorizontal = _props$attributes3.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes3.titleShadowVertical,
-            titleMarginT = _props$attributes3.titleMarginT,
-            titleMarginB = _props$attributes3.titleMarginB,
-            descChecked = _props$attributes3.descChecked,
-            descText = _props$attributes3.descText,
-            descColor = _props$attributes3.descColor,
-            descFont = _props$attributes3.descFont,
-            descSize = _props$attributes3.descSize,
-            descLine = _props$attributes3.descLine,
-            descWeight = _props$attributes3.descWeight,
-            descMarginT = _props$attributes3.descMarginT,
-            descMarginB = _props$attributes3.descMarginB,
-            btnChecked = _props$attributes3.btnChecked,
-            btnEffect = _props$attributes3.btnEffect,
-            effectDir = _props$attributes3.effectDir,
-            btnText = _props$attributes3.btnText,
-            btnTarget = _props$attributes3.btnTarget,
-            btnLink = _props$attributes3.btnLink,
-            btnSize = _props$attributes3.btnSize,
-            btnStyle = _props$attributes3.btnStyle,
-            btnUpper = _props$attributes3.btnUpper,
-            btnWeight = _props$attributes3.btnWeight,
-            btnLetter = _props$attributes3.btnLetter,
-            btnColor = _props$attributes3.btnColor,
-            btnHoverColor = _props$attributes3.btnHoverColor,
-            btnHoverBorder = _props$attributes3.btnHoverBorder,
-            btnBack = _props$attributes3.btnBack,
-            btnHoverBack = _props$attributes3.btnHoverBack,
-            btnBorderWidth = _props$attributes3.btnBorderWidth,
-            btnBorderRadius = _props$attributes3.btnBorderRadius,
-            btnBorderColor = _props$attributes3.btnBorderColor,
-            btnBorderType = _props$attributes3.btnBorderType,
-            btnPadding = _props$attributes3.btnPadding,
-            btnPaddingU = _props$attributes3.btnPaddingU,
-            btnMarginT = _props$attributes3.btnMarginT,
-            btnMarginB = _props$attributes3.btnMarginB,
-            btnShadowBlur = _props$attributes3.btnShadowBlur,
-            btnShadowColor = _props$attributes3.btnShadowColor,
-            btnShadowHorizontal = _props$attributes3.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes3.btnShadowVertical,
-            btnShadowPosition = _props$attributes3.btnShadowPosition,
-            backColor = _props$attributes3.backColor,
-            imageURL = _props$attributes3.imageURL,
-            fixed = _props$attributes3.fixed,
-            backgroundRepeat = _props$attributes3.backgroundRepeat,
-            backgroundPosition = _props$attributes3.backgroundPosition,
-            backgroundSize = _props$attributes3.backgroundSize,
-            borderType = _props$attributes3.borderType,
-            borderWidth = _props$attributes3.borderWidth,
-            borderRadius = _props$attributes3.borderRadius,
-            borderColor = _props$attributes3.borderColor,
-            marginT = _props$attributes3.marginT,
-            marginR = _props$attributes3.marginR,
-            marginB = _props$attributes3.marginB,
-            marginL = _props$attributes3.marginL,
-            paddingT = _props$attributes3.paddingT,
-            paddingR = _props$attributes3.paddingR,
-            paddingB = _props$attributes3.paddingB,
-            paddingL = _props$attributes3.paddingL,
-            paddingU = _props$attributes3.paddingU,
-            shadowBlur = _props$attributes3.shadowBlur,
-            shadowColor = _props$attributes3.shadowColor,
-            shadowHorizontal = _props$attributes3.shadowHorizontal,
-            shadowVertical = _props$attributes3.shadowVertical,
-            shadowPosition = _props$attributes3.shadowPosition,
-            hoverShadowBlur = _props$attributes3.hoverShadowBlur,
-            hoverShadowColor = _props$attributes3.hoverShadowColor,
-            hoverShadowHorizontal = _props$attributes3.hoverShadowHorizontal,
-            hoverShadowVertical = _props$attributes3.hoverShadowVertical,
-            hoverShadowPosition = _props$attributes3.hoverShadowPosition;
-
-
-        return React.createElement(
-            "div",
-            {
-                id: className + "-" + id,
-                className: "" + className,
-                style: {
-                    textAlign: align,
-                    border: borderType,
-                    borderWidth: borderWidth + "px",
-                    borderRadius: borderRadius + "px",
-                    borderColor: borderColor,
-                    marginTop: marginT,
-                    marginRight: marginR,
-                    marginBottom: marginB,
-                    marginLeft: marginL,
-                    paddingTop: paddingT + paddingU,
-                    paddingRight: paddingR + paddingU,
-                    paddingBottom: paddingB + paddingU,
-                    paddingLeft: paddingL + paddingU,
-                    boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
-                    backgroundColor: backColor,
-                    backgroundImage: "url('" + imageURL + "')",
-                    backgroundRepeat: backgroundRepeat,
-                    backgroundPosition: backgroundPosition,
-                    backgroundSize: backgroundSize,
-                    backgroundAttachment: fixed ? "fixed" : "unset"
-                }
-            },
-            btnChecked && btnText && React.createElement("style", {
-                dangerouslySetInnerHTML: {
-                    __html: ["#premium-icon-box-" + id + ":hover {", "box-shadow: " + hoverShadowHorizontal + "px " + hoverShadowVertical + "px " + hoverShadowBlur + "px " + hoverShadowColor + " " + hoverShadowPosition + " !important", "}", "#premium-icon-box-" + id + " .premium-icon-box__btn:hover {", "color: " + btnHoverColor + " !important;", "border-color: " + btnHoverBorder + " !important;", "}", "#premium-icon-box-" + id + " .premium-button__none .premium-icon-box__btn:hover {", "background-color: " + btnHoverBack + " !important;", "}", "#premium-icon-box-" + id + " .premium-button__slide .premium-button::before {", "background-color: " + btnHoverBack + " !important;", "}"].join("\n")
-                }
-            }),
-            iconChecked && React.createElement(
-                "div",
-                { className: className + "__icon_wrap" },
-                "icon" === iconImage && selectedIcon && React.createElement("i", {
-                    className: selectedIcon + " " + className + "__icon premium-icon__" + hoverEffect,
-                    style: {
-                        color: iconColor,
-                        backgroundColor: iconBackColor,
-                        fontSize: iconSize
-                    }
-                }),
-                "image" === iconImage && iconImgUrl && React.createElement("img", {
-                    className: className + "__icon premium-icon__" + hoverEffect,
-                    src: "" + iconImgUrl,
-                    alt: "Image Icon",
-                    style: {
-                        width: iconSize + "px",
-                        height: iconSize + "px",
-                        borderRadius: iconRadius + "px"
-                    }
-                })
-            ),
-            titleChecked && titleText && React.createElement(
-                "div",
-                {
-                    className: className + "__title_wrap",
-                    style: {
-                        marginTop: titleMarginT,
-                        marginBottom: titleMarginB
-                    }
-                },
-                React.createElement(RichText.Content, {
-                    tagName: titleTag.toLowerCase(),
-                    className: className + "__title",
-                    value: titleText,
-                    style: {
-                        color: titleColor,
-                        fontSize: titleSize + "px",
-                        fontFamily: titleFont,
-                        letterSpacing: titleLetter + "px",
-                        textTransform: titleUpper ? "uppercase" : "none",
-                        fontStyle: titleStyle,
-                        fontWeight: titleWeight,
-                        textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor,
-                        lineHeight: titleLine + "px"
-                    }
-                })
-            ),
-            descChecked && descText && React.createElement(
-                "div",
-                {
-                    className: className + "__desc_wrap",
-                    style: {
-                        marginTop: descMarginT,
-                        marginBottom: descMarginB
-                    }
-                },
-                React.createElement(RichText.Content, {
-                    tagName: "p",
-                    className: className + "__desc",
-                    value: descText,
-                    style: {
-                        color: descColor,
-                        fontSize: descSize + "px",
-                        fontFamily: descFont,
-                        lineHeight: descLine + "px",
-                        fontWeight: descWeight
-                    }
-                })
-            ),
-            btnChecked && btnText && React.createElement(
-                "div",
-                {
-                    className: className + "__btn_wrap premium-button__" + btnEffect + " premium-button__" + effectDir,
-                    style: {
-                        marginTop: btnMarginT,
-                        marginBottom: btnMarginB
-                    }
-                },
-                React.createElement(RichText.Content, {
-                    tagName: "a",
-                    className: className + "__btn premium-button",
-                    href: btnLink,
-                    rel: "noopener noreferrer",
-                    target: btnTarget ? "_blank" : "_self",
-                    value: btnText,
-                    style: {
-                        color: btnColor,
-                        backgroundColor: btnBack,
-                        fontSize: btnSize + "px",
-                        letterSpacing: btnLetter + "px",
-                        textTransform: btnUpper ? "uppercase" : "none",
-                        fontStyle: btnStyle,
-                        fontWeight: btnWeight,
-                        border: btnBorderType,
-                        borderWidth: btnBorderWidth + "px",
-                        borderRadius: btnBorderRadius + "px",
-                        borderColor: btnBorderColor,
-                        padding: btnPadding + btnPaddingU,
-                        boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition
-                    }
-                })
-            )
-        );
-    }
-}, {
-    attributes: attributes,
-    migrate: function migrate(attributes) {
-        var newAttributes = {
-            paddingU: "",
-            btnPaddingU: ""
-        };
-        return Object.assign(attributes, newAttributes);
-    },
-    save: function save(props) {
-        var _props$attributes4 = props.attributes,
-            id = _props$attributes4.id,
-            align = _props$attributes4.align,
-            iconImage = _props$attributes4.iconImage,
-            iconImgUrl = _props$attributes4.iconImgUrl,
-            iconRadius = _props$attributes4.iconRadius,
-            selectedIcon = _props$attributes4.selectedIcon,
-            iconChecked = _props$attributes4.iconChecked,
-            hoverEffect = _props$attributes4.hoverEffect,
-            iconSize = _props$attributes4.iconSize,
-            iconColor = _props$attributes4.iconColor,
-            iconBackColor = _props$attributes4.iconBackColor,
-            titleChecked = _props$attributes4.titleChecked,
-            titleText = _props$attributes4.titleText,
-            titleTag = _props$attributes4.titleTag,
-            titleColor = _props$attributes4.titleColor,
-            titleFont = _props$attributes4.titleFont,
-            titleSize = _props$attributes4.titleSize,
-            titleLine = _props$attributes4.titleLine,
-            titleLetter = _props$attributes4.titleLetter,
-            titleStyle = _props$attributes4.titleStyle,
-            titleUpper = _props$attributes4.titleUpper,
-            titleWeight = _props$attributes4.titleWeight,
-            titleShadowBlur = _props$attributes4.titleShadowBlur,
-            titleShadowColor = _props$attributes4.titleShadowColor,
-            titleShadowHorizontal = _props$attributes4.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes4.titleShadowVertical,
-            titleMarginT = _props$attributes4.titleMarginT,
-            titleMarginB = _props$attributes4.titleMarginB,
-            descChecked = _props$attributes4.descChecked,
-            descText = _props$attributes4.descText,
-            descColor = _props$attributes4.descColor,
-            descFont = _props$attributes4.descFont,
-            descSize = _props$attributes4.descSize,
-            descLine = _props$attributes4.descLine,
-            descWeight = _props$attributes4.descWeight,
-            descMarginT = _props$attributes4.descMarginT,
-            descMarginB = _props$attributes4.descMarginB,
-            btnChecked = _props$attributes4.btnChecked,
-            btnEffect = _props$attributes4.btnEffect,
-            effectDir = _props$attributes4.effectDir,
-            btnText = _props$attributes4.btnText,
-            btnTarget = _props$attributes4.btnTarget,
-            btnLink = _props$attributes4.btnLink,
-            btnSize = _props$attributes4.btnSize,
-            btnStyle = _props$attributes4.btnStyle,
-            btnUpper = _props$attributes4.btnUpper,
-            btnWeight = _props$attributes4.btnWeight,
-            btnLetter = _props$attributes4.btnLetter,
-            btnColor = _props$attributes4.btnColor,
-            btnHoverColor = _props$attributes4.btnHoverColor,
-            btnHoverBorder = _props$attributes4.btnHoverBorder,
-            btnBack = _props$attributes4.btnBack,
-            btnHoverBack = _props$attributes4.btnHoverBack,
-            btnBorderWidth = _props$attributes4.btnBorderWidth,
-            btnBorderRadius = _props$attributes4.btnBorderRadius,
-            btnBorderColor = _props$attributes4.btnBorderColor,
-            btnBorderType = _props$attributes4.btnBorderType,
-            btnPadding = _props$attributes4.btnPadding,
-            btnMarginT = _props$attributes4.btnMarginT,
-            btnMarginB = _props$attributes4.btnMarginB,
-            btnShadowBlur = _props$attributes4.btnShadowBlur,
-            btnShadowColor = _props$attributes4.btnShadowColor,
-            btnShadowHorizontal = _props$attributes4.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes4.btnShadowVertical,
-            btnShadowPosition = _props$attributes4.btnShadowPosition,
-            backColor = _props$attributes4.backColor,
-            imageURL = _props$attributes4.imageURL,
-            fixed = _props$attributes4.fixed,
-            backgroundRepeat = _props$attributes4.backgroundRepeat,
-            backgroundPosition = _props$attributes4.backgroundPosition,
-            backgroundSize = _props$attributes4.backgroundSize,
-            borderType = _props$attributes4.borderType,
-            borderWidth = _props$attributes4.borderWidth,
-            borderRadius = _props$attributes4.borderRadius,
-            borderColor = _props$attributes4.borderColor,
-            marginT = _props$attributes4.marginT,
-            marginR = _props$attributes4.marginR,
-            marginB = _props$attributes4.marginB,
-            marginL = _props$attributes4.marginL,
-            paddingT = _props$attributes4.paddingT,
-            paddingR = _props$attributes4.paddingR,
-            paddingB = _props$attributes4.paddingB,
-            paddingL = _props$attributes4.paddingL,
-            shadowBlur = _props$attributes4.shadowBlur,
-            shadowColor = _props$attributes4.shadowColor,
-            shadowHorizontal = _props$attributes4.shadowHorizontal,
-            shadowVertical = _props$attributes4.shadowVertical,
-            shadowPosition = _props$attributes4.shadowPosition,
-            hoverShadowBlur = _props$attributes4.hoverShadowBlur,
-            hoverShadowColor = _props$attributes4.hoverShadowColor,
-            hoverShadowHorizontal = _props$attributes4.hoverShadowHorizontal,
-            hoverShadowVertical = _props$attributes4.hoverShadowVertical,
-            hoverShadowPosition = _props$attributes4.hoverShadowPosition;
-
-
-        return React.createElement(
-            "div",
-            {
-                id: className + "-" + id,
-                className: "" + className,
-                style: {
-                    textAlign: align,
-                    border: borderType,
-                    borderWidth: borderWidth + "px",
-                    borderRadius: borderRadius + "px",
-                    borderColor: borderColor,
-                    marginTop: marginT,
-                    marginRight: marginR,
-                    marginBottom: marginB,
-                    marginLeft: marginL,
-                    paddingTop: paddingT,
-                    paddingRight: paddingR,
-                    paddingBottom: paddingB,
-                    paddingLeft: paddingL,
-                    boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
-                    backgroundColor: backColor,
-                    backgroundImage: "url('" + imageURL + "')",
-                    backgroundRepeat: backgroundRepeat,
-                    backgroundPosition: backgroundPosition,
-                    backgroundSize: backgroundSize,
-                    backgroundAttachment: fixed ? "fixed" : "unset"
-                }
-            },
-            btnChecked && btnText && React.createElement("style", {
-                dangerouslySetInnerHTML: {
-                    __html: ["#premium-icon-box-" + id + ":hover {", "box-shadow: " + hoverShadowHorizontal + "px " + hoverShadowVertical + "px " + hoverShadowBlur + "px " + hoverShadowColor + " " + hoverShadowPosition + " !important", "}", "#premium-icon-box-" + id + " .premium-icon-box__btn:hover {", "color: " + btnHoverColor + " !important;", "border-color: " + btnHoverBorder + " !important;", "}", "#premium-icon-box-" + id + " .premium-button__none .premium-icon-box__btn:hover {", "background-color: " + btnHoverBack + " !important;", "}", "#premium-icon-box-" + id + " .premium-button__slide .premium-button::before {", "background-color: " + btnHoverBack + " !important;", "}"].join("\n")
-                }
-            }),
-            iconChecked && React.createElement(
-                "div",
-                { className: className + "__icon_wrap" },
-                "icon" === iconImage && selectedIcon && React.createElement("i", {
-                    className: selectedIcon + " " + className + "__icon premium-icon__" + hoverEffect,
-                    style: {
-                        color: iconColor,
-                        backgroundColor: iconBackColor,
-                        fontSize: iconSize
-                    }
-                }),
-                "image" === iconImage && iconImgUrl && React.createElement("img", {
-                    className: className + "__icon premium-icon__" + hoverEffect,
-                    src: "" + iconImgUrl,
-                    alt: "Image Icon",
-                    style: {
-                        width: iconSize + "px",
-                        height: iconSize + "px",
-                        borderRadius: iconRadius + "px"
-                    }
-                })
-            ),
-            titleChecked && titleText && React.createElement(
-                "div",
-                {
-                    className: className + "__title_wrap",
-                    style: {
-                        marginTop: titleMarginT,
-                        marginBottom: titleMarginB
-                    }
-                },
-                React.createElement(RichText.Content, {
-                    tagName: titleTag.toLowerCase(),
-                    className: className + "__title",
-                    value: titleText,
-                    style: {
-                        color: titleColor,
-                        fontSize: titleSize + "px",
-                        fontFamily: titleFont,
-                        letterSpacing: titleLetter + "px",
-                        textTransform: titleUpper ? "uppercase" : "none",
-                        fontStyle: titleStyle,
-                        fontWeight: titleWeight,
-                        textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor,
-                        lineHeight: titleLine + "px"
-                    }
-                })
-            ),
-            descChecked && descText && React.createElement(
-                "div",
-                {
-                    className: className + "__desc_wrap",
-                    style: {
-                        marginTop: descMarginT,
-                        marginBottom: descMarginB
-                    }
-                },
-                React.createElement(RichText.Content, {
-                    tagName: "p",
-                    className: className + "__desc",
-                    value: descText,
-                    style: {
-                        color: descColor,
-                        fontSize: descSize + "px",
-                        fontFamily: descFont,
-                        lineHeight: descLine + "px",
-                        fontWeight: descWeight
-                    }
-                })
-            ),
-            btnChecked && btnText && React.createElement(
-                "div",
-                {
-                    className: className + "__btn_wrap premium-button__" + btnEffect + " premium-button__" + effectDir,
-                    style: {
-                        marginTop: btnMarginT,
-                        marginBottom: btnMarginB
-                    }
-                },
-                React.createElement(RichText.Content, {
-                    tagName: "a",
-                    className: className + "__btn premium-button",
-                    href: btnLink,
-                    rel: "noopener noreferrer",
-                    target: btnTarget ? "_blank" : "_self",
-                    value: btnText,
-                    style: {
-                        color: btnColor,
-                        backgroundColor: btnBack,
-                        fontSize: btnSize + "px",
-                        letterSpacing: btnLetter + "px",
-                        textTransform: btnUpper ? "uppercase" : "none",
-                        fontStyle: btnStyle,
-                        fontWeight: btnWeight,
-                        border: btnBorderType,
-                        borderWidth: btnBorderWidth + "px",
-                        borderRadius: btnBorderRadius + "px",
-                        borderColor: btnBorderColor,
-                        padding: btnPadding + "px",
-                        boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition
-                    }
-                })
-            )
-        );
-    }
-}, {
-    attribute: attributes,
-    migrate: function migrate(attributes) {
-        var newAttributes = {
-            titleFont: "",
-            descFont: ""
-        };
-        return Object.assign(attributes, newAttributes);
-    },
-    save: function save(props) {
-        var _props$attributes5 = props.attributes,
-            id = _props$attributes5.id,
-            align = _props$attributes5.align,
-            iconImage = _props$attributes5.iconImage,
-            iconImgUrl = _props$attributes5.iconImgUrl,
-            iconRadius = _props$attributes5.iconRadius,
-            selectedIcon = _props$attributes5.selectedIcon,
-            iconChecked = _props$attributes5.iconChecked,
-            hoverEffect = _props$attributes5.hoverEffect,
-            iconSize = _props$attributes5.iconSize,
-            iconColor = _props$attributes5.iconColor,
-            iconBackColor = _props$attributes5.iconBackColor,
-            titleChecked = _props$attributes5.titleChecked,
-            titleText = _props$attributes5.titleText,
-            titleTag = _props$attributes5.titleTag,
-            titleColor = _props$attributes5.titleColor,
-            titleSize = _props$attributes5.titleSize,
-            titleLine = _props$attributes5.titleLine,
-            titleLetter = _props$attributes5.titleLetter,
-            titleStyle = _props$attributes5.titleStyle,
-            titleUpper = _props$attributes5.titleUpper,
-            titleWeight = _props$attributes5.titleWeight,
-            titleShadowBlur = _props$attributes5.titleShadowBlur,
-            titleShadowColor = _props$attributes5.titleShadowColor,
-            titleShadowHorizontal = _props$attributes5.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes5.titleShadowVertical,
-            titleMarginT = _props$attributes5.titleMarginT,
-            titleMarginB = _props$attributes5.titleMarginB,
-            descChecked = _props$attributes5.descChecked,
-            descText = _props$attributes5.descText,
-            descColor = _props$attributes5.descColor,
-            descSize = _props$attributes5.descSize,
-            descLine = _props$attributes5.descLine,
-            descWeight = _props$attributes5.descWeight,
-            descMarginT = _props$attributes5.descMarginT,
-            descMarginB = _props$attributes5.descMarginB,
-            btnChecked = _props$attributes5.btnChecked,
-            btnEffect = _props$attributes5.btnEffect,
-            effectDir = _props$attributes5.effectDir,
-            btnText = _props$attributes5.btnText,
-            btnTarget = _props$attributes5.btnTarget,
-            btnLink = _props$attributes5.btnLink,
-            btnSize = _props$attributes5.btnSize,
-            btnStyle = _props$attributes5.btnStyle,
-            btnUpper = _props$attributes5.btnUpper,
-            btnWeight = _props$attributes5.btnWeight,
-            btnLetter = _props$attributes5.btnLetter,
-            btnColor = _props$attributes5.btnColor,
-            btnHoverColor = _props$attributes5.btnHoverColor,
-            btnHoverBorder = _props$attributes5.btnHoverBorder,
-            btnBack = _props$attributes5.btnBack,
-            btnHoverBack = _props$attributes5.btnHoverBack,
-            btnBorderWidth = _props$attributes5.btnBorderWidth,
-            btnBorderRadius = _props$attributes5.btnBorderRadius,
-            btnBorderColor = _props$attributes5.btnBorderColor,
-            btnBorderType = _props$attributes5.btnBorderType,
-            btnPadding = _props$attributes5.btnPadding,
-            btnMarginT = _props$attributes5.btnMarginT,
-            btnMarginB = _props$attributes5.btnMarginB,
-            btnShadowBlur = _props$attributes5.btnShadowBlur,
-            btnShadowColor = _props$attributes5.btnShadowColor,
-            btnShadowHorizontal = _props$attributes5.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes5.btnShadowVertical,
-            btnShadowPosition = _props$attributes5.btnShadowPosition,
-            backColor = _props$attributes5.backColor,
-            imageURL = _props$attributes5.imageURL,
-            fixed = _props$attributes5.fixed,
-            backgroundRepeat = _props$attributes5.backgroundRepeat,
-            backgroundPosition = _props$attributes5.backgroundPosition,
-            backgroundSize = _props$attributes5.backgroundSize,
-            borderType = _props$attributes5.borderType,
-            borderWidth = _props$attributes5.borderWidth,
-            borderRadius = _props$attributes5.borderRadius,
-            borderColor = _props$attributes5.borderColor,
-            marginT = _props$attributes5.marginT,
-            marginR = _props$attributes5.marginR,
-            marginB = _props$attributes5.marginB,
-            marginL = _props$attributes5.marginL,
-            paddingT = _props$attributes5.paddingT,
-            paddingR = _props$attributes5.paddingR,
-            paddingB = _props$attributes5.paddingB,
-            paddingL = _props$attributes5.paddingL,
-            shadowBlur = _props$attributes5.shadowBlur,
-            shadowColor = _props$attributes5.shadowColor,
-            shadowHorizontal = _props$attributes5.shadowHorizontal,
-            shadowVertical = _props$attributes5.shadowVertical,
-            shadowPosition = _props$attributes5.shadowPosition,
-            hoverShadowBlur = _props$attributes5.hoverShadowBlur,
-            hoverShadowColor = _props$attributes5.hoverShadowColor,
-            hoverShadowHorizontal = _props$attributes5.hoverShadowHorizontal,
-            hoverShadowVertical = _props$attributes5.hoverShadowVertical,
-            hoverShadowPosition = _props$attributes5.hoverShadowPosition;
-
-
-        return React.createElement(
-            "div",
-            {
-                id: className + "-" + id,
-                className: "" + className,
-                style: {
-                    textAlign: align,
-                    border: borderType,
-                    borderWidth: borderWidth + "px",
-                    borderRadius: borderRadius + "px",
-                    borderColor: borderColor,
-                    marginTop: marginT,
-                    marginRight: marginR,
-                    marginBottom: marginB,
-                    marginLeft: marginL,
-                    paddingTop: paddingT,
-                    paddingRight: paddingR,
-                    paddingBottom: paddingB,
-                    paddingLeft: paddingL,
-                    boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
-                    backgroundColor: backColor,
-                    backgroundImage: "url('" + imageURL + "')",
-                    backgroundRepeat: backgroundRepeat,
-                    backgroundPosition: backgroundPosition,
-                    backgroundSize: backgroundSize,
-                    backgroundAttachment: fixed ? "fixed" : "unset"
-                }
-            },
-            btnChecked && btnText && React.createElement("style", {
-                dangerouslySetInnerHTML: {
-                    __html: ["#premium-icon-box-" + id + ":hover {", "box-shadow: " + hoverShadowHorizontal + "px " + hoverShadowVertical + "px " + hoverShadowBlur + "px " + hoverShadowColor + " " + hoverShadowPosition + " !important", "}", "#premium-icon-box-" + id + " .premium-icon-box__btn:hover {", "color: " + btnHoverColor + " !important;", "border-color: " + btnHoverBorder + " !important;", "}", "#premium-icon-box-" + id + " .premium-button__none .premium-icon-box__btn:hover {", "background-color: " + btnHoverBack + " !important;", "}", "#premium-icon-box-" + id + " .premium-button__slide .premium-button::before {", "background-color: " + btnHoverBack + " !important;", "}"].join("\n")
-                }
-            }),
-            iconChecked && React.createElement(
-                "div",
-                { className: className + "__icon_wrap" },
-                "icon" === iconImage && selectedIcon && React.createElement("i", {
-                    className: selectedIcon + " " + className + "__icon premium-icon__" + hoverEffect,
-                    style: {
-                        color: iconColor,
-                        backgroundColor: iconBackColor,
-                        fontSize: iconSize
-                    }
-                }),
-                "image" === iconImage && iconImgUrl && React.createElement("img", {
-                    className: className + "__icon premium-icon__" + hoverEffect,
-                    src: "" + iconImgUrl,
-                    alt: "Image Icon",
-                    style: {
-                        width: iconSize + "px",
-                        height: iconSize + "px",
-                        borderRadius: iconRadius + "px"
-                    }
-                })
-            ),
-            titleChecked && titleText && React.createElement(
-                "div",
-                {
-                    className: className + "__title_wrap",
-                    style: {
-                        marginTop: titleMarginT,
-                        marginBottom: titleMarginB
-                    }
-                },
-                React.createElement(RichText.Content, {
-                    tagName: titleTag.toLowerCase(),
-                    className: className + "__title",
-                    value: titleText,
-                    style: {
-                        color: titleColor,
-                        fontSize: titleSize + "px",
-                        letterSpacing: titleLetter + "px",
-                        textTransform: titleUpper ? "uppercase" : "none",
-                        fontStyle: titleStyle,
-                        fontWeight: titleWeight,
-                        textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor,
-                        lineHeight: titleLine + "px"
-                    }
-                })
-            ),
-            descChecked && descText && React.createElement(
-                "div",
-                {
-                    className: className + "__desc_wrap",
-                    style: {
-                        marginTop: descMarginT,
-                        marginBottom: descMarginB
-                    }
-                },
-                React.createElement(RichText.Content, {
-                    tagName: "p",
-                    className: className + "__desc",
-                    value: descText,
-                    style: {
-                        color: descColor,
-                        fontSize: descSize + "px",
-                        lineHeight: descLine + "px",
-                        fontWeight: descWeight
-                    }
-                })
-            ),
-            btnChecked && btnText && React.createElement(
-                "div",
-                {
-                    className: className + "__btn_wrap premium-button__" + btnEffect + " premium-button__" + effectDir,
-                    style: {
-                        marginTop: btnMarginT,
-                        marginBottom: btnMarginB
-                    }
-                },
-                React.createElement(RichText.Content, {
-                    tagName: "a",
-                    className: className + "__btn premium-button",
-                    href: btnLink,
-                    rel: "noopener noreferrer",
-                    target: btnTarget ? "_blank" : "_self",
-                    value: btnText,
-                    style: {
-                        color: btnColor,
-                        backgroundColor: btnBack,
-                        fontSize: btnSize + "px",
-                        letterSpacing: btnLetter + "px",
-                        textTransform: btnUpper ? "uppercase" : "none",
-                        fontStyle: btnStyle,
-                        fontWeight: btnWeight,
-                        border: btnBorderType,
-                        borderWidth: btnBorderWidth + "px",
-                        borderRadius: btnBorderRadius + "px",
-                        borderColor: btnBorderColor,
-                        padding: btnPadding + "px",
-                        boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition
-                    }
-                })
-            )
-        );
-    }
-}, {
-    attributes: attributes,
-    migrate: function migrate(attributes) {
-        var newAttributes = {
-            iconBackColor: ""
-        };
-        return Object.assign(attributes, newAttributes);
-    },
-    save: function save(props) {
-        var _props$attributes6 = props.attributes,
-            id = _props$attributes6.id,
-            align = _props$attributes6.align,
-            iconImage = _props$attributes6.iconImage,
-            iconImgUrl = _props$attributes6.iconImgUrl,
-            iconRadius = _props$attributes6.iconRadius,
-            selectedIcon = _props$attributes6.selectedIcon,
-            iconChecked = _props$attributes6.iconChecked,
-            hoverEffect = _props$attributes6.hoverEffect,
-            iconSize = _props$attributes6.iconSize,
-            iconColor = _props$attributes6.iconColor,
-            titleChecked = _props$attributes6.titleChecked,
-            titleText = _props$attributes6.titleText,
-            titleTag = _props$attributes6.titleTag,
-            titleColor = _props$attributes6.titleColor,
-            titleSize = _props$attributes6.titleSize,
-            titleLine = _props$attributes6.titleLine,
-            titleLetter = _props$attributes6.titleLetter,
-            titleStyle = _props$attributes6.titleStyle,
-            titleUpper = _props$attributes6.titleUpper,
-            titleWeight = _props$attributes6.titleWeight,
-            titleShadowBlur = _props$attributes6.titleShadowBlur,
-            titleShadowColor = _props$attributes6.titleShadowColor,
-            titleShadowHorizontal = _props$attributes6.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes6.titleShadowVertical,
-            titleMarginT = _props$attributes6.titleMarginT,
-            titleMarginB = _props$attributes6.titleMarginB,
-            descChecked = _props$attributes6.descChecked,
-            descText = _props$attributes6.descText,
-            descColor = _props$attributes6.descColor,
-            descSize = _props$attributes6.descSize,
-            descLine = _props$attributes6.descLine,
-            descWeight = _props$attributes6.descWeight,
-            descMarginT = _props$attributes6.descMarginT,
-            descMarginB = _props$attributes6.descMarginB,
-            btnChecked = _props$attributes6.btnChecked,
-            btnEffect = _props$attributes6.btnEffect,
-            effectDir = _props$attributes6.effectDir,
-            btnText = _props$attributes6.btnText,
-            btnTarget = _props$attributes6.btnTarget,
-            btnLink = _props$attributes6.btnLink,
-            btnSize = _props$attributes6.btnSize,
-            btnStyle = _props$attributes6.btnStyle,
-            btnUpper = _props$attributes6.btnUpper,
-            btnWeight = _props$attributes6.btnWeight,
-            btnLetter = _props$attributes6.btnLetter,
-            btnColor = _props$attributes6.btnColor,
-            btnHoverColor = _props$attributes6.btnHoverColor,
-            btnHoverBorder = _props$attributes6.btnHoverBorder,
-            btnBack = _props$attributes6.btnBack,
-            btnHoverBack = _props$attributes6.btnHoverBack,
-            btnBorderWidth = _props$attributes6.btnBorderWidth,
-            btnBorderRadius = _props$attributes6.btnBorderRadius,
-            btnBorderColor = _props$attributes6.btnBorderColor,
-            btnBorderType = _props$attributes6.btnBorderType,
-            btnPadding = _props$attributes6.btnPadding,
-            btnMarginT = _props$attributes6.btnMarginT,
-            btnMarginB = _props$attributes6.btnMarginB,
-            btnShadowBlur = _props$attributes6.btnShadowBlur,
-            btnShadowColor = _props$attributes6.btnShadowColor,
-            btnShadowHorizontal = _props$attributes6.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes6.btnShadowVertical,
-            btnShadowPosition = _props$attributes6.btnShadowPosition,
-            backColor = _props$attributes6.backColor,
-            imageURL = _props$attributes6.imageURL,
-            fixed = _props$attributes6.fixed,
-            backgroundRepeat = _props$attributes6.backgroundRepeat,
-            backgroundPosition = _props$attributes6.backgroundPosition,
-            backgroundSize = _props$attributes6.backgroundSize,
-            borderType = _props$attributes6.borderType,
-            borderWidth = _props$attributes6.borderWidth,
-            borderRadius = _props$attributes6.borderRadius,
-            borderColor = _props$attributes6.borderColor,
-            marginT = _props$attributes6.marginT,
-            marginR = _props$attributes6.marginR,
-            marginB = _props$attributes6.marginB,
-            marginL = _props$attributes6.marginL,
-            paddingT = _props$attributes6.paddingT,
-            paddingR = _props$attributes6.paddingR,
-            paddingB = _props$attributes6.paddingB,
-            paddingL = _props$attributes6.paddingL,
-            shadowBlur = _props$attributes6.shadowBlur,
-            shadowColor = _props$attributes6.shadowColor,
-            shadowHorizontal = _props$attributes6.shadowHorizontal,
-            shadowVertical = _props$attributes6.shadowVertical,
-            shadowPosition = _props$attributes6.shadowPosition,
-            hoverShadowBlur = _props$attributes6.hoverShadowBlur,
-            hoverShadowColor = _props$attributes6.hoverShadowColor,
-            hoverShadowHorizontal = _props$attributes6.hoverShadowHorizontal,
-            hoverShadowVertical = _props$attributes6.hoverShadowVertical,
-            hoverShadowPosition = _props$attributes6.hoverShadowPosition;
-
-
-        return React.createElement(
-            "div",
-            {
-                id: className + "-" + id,
-                className: "" + className,
-                style: {
-                    textAlign: align,
-                    border: borderType,
-                    borderWidth: borderWidth + "px",
-                    borderRadius: borderRadius + "px",
-                    borderColor: borderColor,
-                    marginTop: marginT,
-                    marginRight: marginR,
-                    marginBottom: marginB,
-                    marginLeft: marginL,
-                    paddingTop: paddingT,
-                    paddingRight: paddingR,
-                    paddingBottom: paddingB,
-                    paddingLeft: paddingL,
-                    boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
-                    backgroundColor: backColor,
-                    backgroundImage: "url('" + imageURL + "')",
-                    backgroundRepeat: backgroundRepeat,
-                    backgroundPosition: backgroundPosition,
-                    backgroundSize: backgroundSize,
-                    backgroundAttachment: fixed ? "fixed" : "unset"
-                }
-            },
-            btnChecked && btnText && React.createElement("style", {
-                dangerouslySetInnerHTML: {
-                    __html: ["#premium-icon-box-" + id + ":hover {", "box-shadow: " + hoverShadowHorizontal + "px " + hoverShadowVertical + "px " + hoverShadowBlur + "px " + hoverShadowColor + " " + hoverShadowPosition + " !important", "}", "#premium-icon-box-" + id + " .premium-icon-box__btn:hover {", "color: " + btnHoverColor + " !important;", "border-color: " + btnHoverBorder + " !important;", "}", "#premium-icon-box-" + id + " .premium-button__none .premium-icon-box__btn:hover {", "background-color: " + btnHoverBack + " !important;", "}", "#premium-icon-box-" + id + " .premium-button__slide .premium-button::before {", "background-color: " + btnHoverBack + " !important;", "}"].join("\n")
-                }
-            }),
-            iconChecked && React.createElement(
-                "div",
-                { className: className + "__icon_wrap" },
-                "icon" === iconImage && selectedIcon && React.createElement("i", {
-                    className: selectedIcon + " " + className + "__icon premium-icon__" + hoverEffect,
-                    style: {
-                        color: iconColor,
-                        fontSize: iconSize
-                    }
-                }),
-                "image" === iconImage && iconImgUrl && React.createElement("img", {
-                    className: className + "__icon premium-icon__" + hoverEffect,
-                    src: "" + iconImgUrl,
-                    alt: "Image Icon",
-                    style: {
-                        width: iconSize + "px",
-                        height: iconSize + "px",
-                        borderRadius: iconRadius + "px"
-                    }
-                })
-            ),
-            titleChecked && titleText && React.createElement(
-                "div",
-                {
-                    className: className + "__title_wrap",
-                    style: {
-                        marginTop: titleMarginT,
-                        marginBottom: titleMarginB
-                    }
-                },
-                React.createElement(RichText.Content, {
-                    tagName: titleTag.toLowerCase(),
-                    className: className + "__title",
-                    value: titleText,
-                    style: {
-                        color: titleColor,
-                        fontSize: titleSize + "px",
-                        letterSpacing: titleLetter + "px",
-                        textTransform: titleUpper ? "uppercase" : "none",
-                        fontStyle: titleStyle,
-                        fontWeight: titleWeight,
-                        textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor,
-                        lineHeight: titleLine + "px"
-                    }
-                })
-            ),
-            descChecked && descText && React.createElement(
-                "div",
-                {
-                    className: className + "__desc_wrap",
-                    style: {
-                        marginTop: descMarginT,
-                        marginBottom: descMarginB
-                    }
-                },
-                React.createElement(RichText.Content, {
-                    tagName: "p",
-                    className: className + "__desc",
-                    value: descText,
-                    style: {
-                        color: descColor,
-                        fontSize: descSize + "px",
-                        lineHeight: descLine + "px",
-                        fontWeight: descWeight
-                    }
-                })
-            ),
-            btnChecked && btnText && React.createElement(
-                "div",
-                {
-                    className: className + "__btn_wrap premium-button__" + btnEffect + " premium-button__" + effectDir,
-                    style: {
-                        marginTop: btnMarginT,
-                        marginBottom: btnMarginB
-                    }
-                },
-                React.createElement(RichText.Content, {
-                    tagName: "a",
-                    className: className + "__btn premium-button",
-                    href: btnLink,
-                    target: btnTarget ? "_blank" : "_self",
-                    value: btnText,
-                    style: {
-                        color: btnColor,
-                        backgroundColor: btnBack,
-                        fontSize: btnSize + "px",
-                        letterSpacing: btnLetter + "px",
-                        textTransform: btnUpper ? "uppercase" : "none",
-                        fontStyle: btnStyle,
-                        fontWeight: btnWeight,
-                        border: btnBorderType,
-                        borderWidth: btnBorderWidth + "px",
-                        borderRadius: btnBorderRadius + "px",
-                        borderColor: btnBorderColor,
-                        padding: btnPadding + "px",
-                        boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition
-                    }
-                })
-            )
-        );
-    }
-}, {
-    attributes: attributes,
-    migrate: function migrate(attributes) {
-        var newAttributes = {
-            hoverShadowColor: "",
-            hoverShadowBlur: "",
-            hoverShadowHorizontal: "",
-            hoverShadowVertical: "",
-            hoverShadowPosition: ""
-        };
-        return Object.assign(attributes, newAttributes);
-    },
-    save: function save(props) {
-        var _props$attributes7 = props.attributes,
-            id = _props$attributes7.id,
-            align = _props$attributes7.align,
-            iconImage = _props$attributes7.iconImage,
-            iconImgUrl = _props$attributes7.iconImgUrl,
-            iconRadius = _props$attributes7.iconRadius,
-            selectedIcon = _props$attributes7.selectedIcon,
-            iconChecked = _props$attributes7.iconChecked,
-            hoverEffect = _props$attributes7.hoverEffect,
-            iconSize = _props$attributes7.iconSize,
-            iconColor = _props$attributes7.iconColor,
-            titleChecked = _props$attributes7.titleChecked,
-            titleText = _props$attributes7.titleText,
-            titleTag = _props$attributes7.titleTag,
-            titleColor = _props$attributes7.titleColor,
-            titleSize = _props$attributes7.titleSize,
-            titleLine = _props$attributes7.titleLine,
-            titleLetter = _props$attributes7.titleLetter,
-            titleStyle = _props$attributes7.titleStyle,
-            titleUpper = _props$attributes7.titleUpper,
-            titleWeight = _props$attributes7.titleWeight,
-            titleShadowBlur = _props$attributes7.titleShadowBlur,
-            titleShadowColor = _props$attributes7.titleShadowColor,
-            titleShadowHorizontal = _props$attributes7.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes7.titleShadowVertical,
-            titleMarginT = _props$attributes7.titleMarginT,
-            titleMarginB = _props$attributes7.titleMarginB,
-            descChecked = _props$attributes7.descChecked,
-            descText = _props$attributes7.descText,
-            descColor = _props$attributes7.descColor,
-            descSize = _props$attributes7.descSize,
-            descLine = _props$attributes7.descLine,
-            descWeight = _props$attributes7.descWeight,
-            descMarginT = _props$attributes7.descMarginT,
-            descMarginB = _props$attributes7.descMarginB,
-            btnChecked = _props$attributes7.btnChecked,
-            btnEffect = _props$attributes7.btnEffect,
-            effectDir = _props$attributes7.effectDir,
-            btnText = _props$attributes7.btnText,
-            btnTarget = _props$attributes7.btnTarget,
-            btnLink = _props$attributes7.btnLink,
-            btnSize = _props$attributes7.btnSize,
-            btnStyle = _props$attributes7.btnStyle,
-            btnUpper = _props$attributes7.btnUpper,
-            btnWeight = _props$attributes7.btnWeight,
-            btnLetter = _props$attributes7.btnLetter,
-            btnColor = _props$attributes7.btnColor,
-            btnHoverColor = _props$attributes7.btnHoverColor,
-            btnHoverBorder = _props$attributes7.btnHoverBorder,
-            btnBack = _props$attributes7.btnBack,
-            btnHoverBack = _props$attributes7.btnHoverBack,
-            btnBorderWidth = _props$attributes7.btnBorderWidth,
-            btnBorderRadius = _props$attributes7.btnBorderRadius,
-            btnBorderColor = _props$attributes7.btnBorderColor,
-            btnBorderType = _props$attributes7.btnBorderType,
-            btnPadding = _props$attributes7.btnPadding,
-            btnMarginT = _props$attributes7.btnMarginT,
-            btnMarginB = _props$attributes7.btnMarginB,
-            btnShadowBlur = _props$attributes7.btnShadowBlur,
-            btnShadowColor = _props$attributes7.btnShadowColor,
-            btnShadowHorizontal = _props$attributes7.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes7.btnShadowVertical,
-            btnShadowPosition = _props$attributes7.btnShadowPosition,
-            backColor = _props$attributes7.backColor,
-            imageURL = _props$attributes7.imageURL,
-            fixed = _props$attributes7.fixed,
-            backgroundRepeat = _props$attributes7.backgroundRepeat,
-            backgroundPosition = _props$attributes7.backgroundPosition,
-            backgroundSize = _props$attributes7.backgroundSize,
-            borderType = _props$attributes7.borderType,
-            borderWidth = _props$attributes7.borderWidth,
-            borderRadius = _props$attributes7.borderRadius,
-            borderColor = _props$attributes7.borderColor,
-            marginT = _props$attributes7.marginT,
-            marginR = _props$attributes7.marginR,
-            marginB = _props$attributes7.marginB,
-            marginL = _props$attributes7.marginL,
-            paddingT = _props$attributes7.paddingT,
-            paddingR = _props$attributes7.paddingR,
-            paddingB = _props$attributes7.paddingB,
-            paddingL = _props$attributes7.paddingL,
-            shadowBlur = _props$attributes7.shadowBlur,
-            shadowColor = _props$attributes7.shadowColor,
-            shadowHorizontal = _props$attributes7.shadowHorizontal,
-            shadowVertical = _props$attributes7.shadowVertical,
-            shadowPosition = _props$attributes7.shadowPosition;
-
-
-        return React.createElement(
-            "div",
-            {
-                id: className + "-" + id,
-                className: "" + className,
-                style: {
-                    textAlign: align,
-                    border: borderType,
-                    borderWidth: borderWidth + "px",
-                    borderRadius: borderRadius + "px",
-                    borderColor: borderColor,
-                    marginTop: marginT,
-                    marginRight: marginR,
-                    marginBottom: marginB,
-                    marginLeft: marginL,
-                    paddingTop: paddingT,
-                    paddingRight: paddingR,
-                    paddingBottom: paddingB,
-                    paddingLeft: paddingL,
-                    boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
-                    backgroundColor: backColor,
-                    backgroundImage: "url('" + imageURL + "')",
-                    backgroundRepeat: backgroundRepeat,
-                    backgroundPosition: backgroundPosition,
-                    backgroundSize: backgroundSize,
-                    backgroundAttachment: fixed ? "fixed" : "unset"
-                }
-            },
-            btnChecked && btnText && React.createElement("style", {
-                dangerouslySetInnerHTML: {
-                    __html: ["#premium-icon-box-" + id + " .premium-icon-box__btn:hover {", "color: " + btnHoverColor + " !important;", "border-color: " + btnHoverBorder + " !important;", "}", "#premium-icon-box-" + id + " .premium-button__none .premium-icon-box__btn:hover {", "background-color: " + btnHoverBack + " !important;", "}", "#premium-icon-box-" + id + " .premium-button__slide .premium-button::before {", "background-color: " + btnHoverBack + " !important;", "}"].join("\n")
-                }
-            }),
-            iconChecked && React.createElement(
-                "div",
-                { className: className + "__icon_wrap" },
-                "icon" === iconImage && selectedIcon && React.createElement("i", {
-                    className: selectedIcon + " " + className + "__icon premium-icon__" + hoverEffect,
-                    style: {
-                        color: iconColor,
-                        fontSize: iconSize
-                    }
-                }),
-                "image" === iconImage && iconImgUrl && React.createElement("img", {
-                    className: className + "__icon premium-icon__" + hoverEffect,
-                    src: "" + iconImgUrl,
-                    alt: "Image Icon",
-                    style: {
-                        width: iconSize + "px",
-                        height: iconSize + "px",
-                        borderRadius: iconRadius + "px"
-                    }
-                })
-            ),
-            titleChecked && titleText && React.createElement(
-                "div",
-                {
-                    className: className + "__title_wrap",
-                    style: {
-                        marginTop: titleMarginT,
-                        marginBottom: titleMarginB
-                    }
-                },
-                React.createElement(RichText.Content, {
-                    tagName: titleTag.toLowerCase(),
-                    className: className + "__title",
-                    value: titleText,
-                    style: {
-                        color: titleColor,
-                        fontSize: titleSize + "px",
-                        letterSpacing: titleLetter + "px",
-                        textTransform: titleUpper ? "uppercase" : "none",
-                        fontStyle: titleStyle,
-                        fontWeight: titleWeight,
-                        textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor,
-                        lineHeight: titleLine + "px"
-                    }
-                })
-            ),
-            descChecked && descText && React.createElement(
-                "div",
-                {
-                    className: className + "__desc_wrap",
-                    style: {
-                        marginTop: descMarginT,
-                        marginBottom: descMarginB
-                    }
-                },
-                React.createElement(RichText.Content, {
-                    tagName: "p",
-                    className: className + "__desc",
-                    value: descText,
-                    style: {
-                        color: descColor,
-                        fontSize: descSize + "px",
-                        lineHeight: descLine + "px",
-                        fontWeight: descWeight
-                    }
-                })
-            ),
-            btnChecked && btnText && React.createElement(
-                "div",
-                {
-                    className: className + "__btn_wrap premium-button__" + btnEffect + " premium-button__" + effectDir,
-                    style: {
-                        marginTop: btnMarginT,
-                        marginBottom: btnMarginB
-                    }
-                },
-                React.createElement(RichText.Content, {
-                    tagName: "a",
-                    className: className + "__btn premium-button",
-                    href: btnLink,
-                    target: btnTarget ? "_blank" : "_self",
-                    value: btnText,
-                    style: {
-                        color: btnColor,
-                        backgroundColor: btnBack,
-                        fontSize: btnSize + "px",
-                        letterSpacing: btnLetter + "px",
-                        textTransform: btnUpper ? "uppercase" : "none",
-                        fontStyle: btnStyle,
-                        fontWeight: btnWeight,
-                        border: btnBorderType,
-                        borderWidth: btnBorderWidth + "px",
-                        borderRadius: btnBorderRadius + "px",
-                        borderColor: btnBorderColor,
-                        padding: btnPadding + "px",
-                        boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition
-                    }
-                })
-            )
-        );
-    }
-}, {
-    attributes: attributes,
-    migrate: function migrate(attributes) {
-        return {
-            iconSize: attributes.iconSize
-        };
-    },
-    save: function save(props) {
-        var _props$attributes8 = props.attributes,
-            id = _props$attributes8.id,
-            align = _props$attributes8.align,
-            iconType = _props$attributes8.iconType,
-            iconImage = _props$attributes8.iconImage,
-            iconImgUrl = _props$attributes8.iconImgUrl,
-            iconRadius = _props$attributes8.iconRadius,
-            selectedIcon = _props$attributes8.selectedIcon,
-            iconChecked = _props$attributes8.iconChecked,
-            hoverEffect = _props$attributes8.hoverEffect,
-            iconSize = _props$attributes8.iconSize,
-            iconColor = _props$attributes8.iconColor,
-            titleChecked = _props$attributes8.titleChecked,
-            titleText = _props$attributes8.titleText,
-            titleTag = _props$attributes8.titleTag,
-            titleColor = _props$attributes8.titleColor,
-            titleSize = _props$attributes8.titleSize,
-            titleLine = _props$attributes8.titleLine,
-            titleLetter = _props$attributes8.titleLetter,
-            titleStyle = _props$attributes8.titleStyle,
-            titleUpper = _props$attributes8.titleUpper,
-            titleWeight = _props$attributes8.titleWeight,
-            titleShadowBlur = _props$attributes8.titleShadowBlur,
-            titleShadowColor = _props$attributes8.titleShadowColor,
-            titleShadowHorizontal = _props$attributes8.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes8.titleShadowVertical,
-            titleMarginT = _props$attributes8.titleMarginT,
-            titleMarginB = _props$attributes8.titleMarginB,
-            descChecked = _props$attributes8.descChecked,
-            descText = _props$attributes8.descText,
-            descColor = _props$attributes8.descColor,
-            descSize = _props$attributes8.descSize,
-            descLine = _props$attributes8.descLine,
-            descWeight = _props$attributes8.descWeight,
-            descMarginT = _props$attributes8.descMarginT,
-            descMarginB = _props$attributes8.descMarginB,
-            btnChecked = _props$attributes8.btnChecked,
-            btnText = _props$attributes8.btnText,
-            btnTarget = _props$attributes8.btnTarget,
-            btnLink = _props$attributes8.btnLink,
-            btnSize = _props$attributes8.btnSize,
-            btnStyle = _props$attributes8.btnStyle,
-            btnUpper = _props$attributes8.btnUpper,
-            btnWeight = _props$attributes8.btnWeight,
-            btnLetter = _props$attributes8.btnLetter,
-            btnColor = _props$attributes8.btnColor,
-            btnHoverColor = _props$attributes8.btnHoverColor,
-            btnHoverBorder = _props$attributes8.btnHoverBorder,
-            btnBack = _props$attributes8.btnBack,
-            btnHoverBack = _props$attributes8.btnHoverBack,
-            btnBorderWidth = _props$attributes8.btnBorderWidth,
-            btnBorderRadius = _props$attributes8.btnBorderRadius,
-            btnBorderColor = _props$attributes8.btnBorderColor,
-            btnBorderType = _props$attributes8.btnBorderType,
-            btnPadding = _props$attributes8.btnPadding,
-            btnMarginT = _props$attributes8.btnMarginT,
-            btnMarginB = _props$attributes8.btnMarginB,
-            btnShadowBlur = _props$attributes8.btnShadowBlur,
-            btnShadowColor = _props$attributes8.btnShadowColor,
-            btnShadowHorizontal = _props$attributes8.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes8.btnShadowVertical,
-            btnShadowPosition = _props$attributes8.btnShadowPosition,
-            backColor = _props$attributes8.backColor,
-            imageURL = _props$attributes8.imageURL,
-            fixed = _props$attributes8.fixed,
-            backgroundRepeat = _props$attributes8.backgroundRepeat,
-            backgroundPosition = _props$attributes8.backgroundPosition,
-            backgroundSize = _props$attributes8.backgroundSize,
-            borderType = _props$attributes8.borderType,
-            borderWidth = _props$attributes8.borderWidth,
-            borderRadius = _props$attributes8.borderRadius,
-            borderColor = _props$attributes8.borderColor,
-            marginT = _props$attributes8.marginT,
-            marginR = _props$attributes8.marginR,
-            marginB = _props$attributes8.marginB,
-            marginL = _props$attributes8.marginL,
-            paddingT = _props$attributes8.paddingT,
-            paddingR = _props$attributes8.paddingR,
-            paddingB = _props$attributes8.paddingB,
-            paddingL = _props$attributes8.paddingL,
-            shadowBlur = _props$attributes8.shadowBlur,
-            shadowColor = _props$attributes8.shadowColor,
-            shadowHorizontal = _props$attributes8.shadowHorizontal,
-            shadowVertical = _props$attributes8.shadowVertical,
-            shadowPosition = _props$attributes8.shadowPosition;
-
-
-        return React.createElement(
-            "div",
-            {
-                id: className + "-" + id,
-                className: "" + className,
-                style: {
-                    textAlign: align,
-                    border: borderType,
-                    borderWidth: borderWidth + "px",
-                    borderRadius: borderRadius + "px",
-                    borderColor: borderColor,
-                    marginTop: marginT,
-                    marginRight: marginR,
-                    marginBottom: marginB,
-                    marginLeft: marginL,
-                    paddingTop: paddingT,
-                    paddingRight: paddingR,
-                    paddingBottom: paddingB,
-                    paddingLeft: paddingL,
-                    boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
-                    backgroundColor: backColor,
-                    backgroundImage: "url('" + imageURL + "')",
-                    backgroundRepeat: backgroundRepeat,
-                    backgroundPosition: backgroundPosition,
-                    backgroundSize: backgroundSize,
-                    backgroundAttachment: fixed ? "fixed" : "unset"
-                }
-            },
-            btnChecked && btnText && React.createElement("style", {
-                dangerouslySetInnerHTML: {
-                    __html: ["#premium-icon-box-" + id + " .premium-icon-box__btn:hover {", "color: " + btnHoverColor + " !important;", "background-color: " + btnHoverBack + " !important;", "border-color: " + btnHoverBorder + " !important;", "}"].join("\n")
-                }
-            }),
-            iconChecked && React.createElement(
-                "div",
-                { className: className + "__icon_wrap" },
-                "icon" === iconImage && selectedIcon && React.createElement("i", {
-                    className: selectedIcon + " " + className + "__icon premium-icon__" + hoverEffect,
-                    style: {
-                        color: iconColor,
-                        fontSize: iconSize
-                    }
-                }),
-                "image" === iconImage && iconImgUrl && React.createElement("img", {
-                    className: className + "__icon premium-icon__" + hoverEffect,
-                    src: "" + iconImgUrl,
-                    alt: "Image Icon",
-                    style: {
-                        width: iconSize + "px",
-                        height: iconSize + "px",
-                        borderRadius: iconRadius + "px"
-                    }
-                })
-            ),
-            titleChecked && titleText && React.createElement(
-                "div",
-                {
-                    className: className + "__title_wrap",
-                    style: {
-                        marginTop: titleMarginT,
-                        marginBottom: titleMarginB
-                    }
-                },
-                React.createElement(RichText.Content, {
-                    tagName: titleTag.toLowerCase(),
-                    className: className + "__title",
-                    value: titleText,
-                    style: {
-                        color: titleColor,
-                        fontSize: titleSize + "px",
-                        letterSpacing: titleLetter + "px",
-                        textTransform: titleUpper ? "uppercase" : "none",
-                        fontStyle: titleStyle,
-                        fontWeight: titleWeight,
-                        textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor,
-                        lineHeight: titleLine + "px"
-                    }
-                })
-            ),
-            descChecked && descText && React.createElement(
-                "div",
-                {
-                    className: className + "__desc_wrap",
-                    style: {
-                        marginTop: descMarginT,
-                        marginBottom: descMarginB
-                    }
-                },
-                React.createElement(RichText.Content, {
-                    tagName: "p",
-                    className: className + "__desc",
-                    value: descText,
-                    style: {
-                        color: descColor,
-                        fontSize: descSize + "px",
-                        lineHeight: descLine + "px",
-                        fontWeight: descWeight
-                    }
-                })
-            ),
-            btnChecked && btnText && React.createElement(
-                "div",
-                {
-                    className: className + "__btn_wrap",
-                    style: {
-                        marginTop: btnMarginT,
-                        marginBottom: btnMarginB
-                    }
-                },
-                React.createElement(RichText.Content, {
-                    tagName: "a",
-                    className: className + "__btn",
-                    href: btnLink,
-                    target: btnTarget ? "_blank" : "_self",
-                    value: btnText,
-                    style: {
-                        color: btnColor,
-                        backgroundColor: btnBack,
-                        fontSize: btnSize + "px",
-                        letterSpacing: btnLetter + "px",
-                        textTransform: btnUpper ? "uppercase" : "none",
-                        fontStyle: btnStyle,
-                        fontWeight: btnWeight,
-                        border: btnBorderType,
-                        borderWidth: btnBorderWidth + "px",
-                        borderRadius: btnBorderRadius + "px",
-                        borderColor: btnBorderColor,
-                        padding: btnPadding + "px",
-                        boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition
-                    }
-                })
-            )
-        );
-    }
-}, {
-    attributes: attributes,
-    migrate: function migrate(attributes) {
-        return {
-            containerMargin: {
-                "Desktop": {
-                    top: attributes.marginT,
-                    right: attributes.marginR,
-                    bottom: attributes.marginB,
-                    left: attributes.marginL
-                },
-                "Tablet": {
-                    top: attributes.marginTTablet,
-                    right: attributes.marginRTablet,
-                    bottom: attributes.marginBTablet,
-                    left: attributes.marginLTablet
-                },
-                "Mobile": {
-                    top: attributes.marginTMobile,
-                    right: attributes.marginRMobile,
-                    bottom: attributes.marginBMobile,
-                    left: attributes.marginLMobile
-                }
-            },
-            containerPadding: {
-                "Desktop": {
-                    top: attributes.paddingT,
-                    right: attributes.paddingR,
-                    bottom: attributes.paddingB,
-                    left: attributes.paddingL
-                },
-                "Tablet": {
-                    top: attributes.paddingTTablet,
-                    right: attributes.paddingRTablet,
-                    bottom: attributes.paddingBTablet,
-                    left: attributes.paddingLTablet
-                },
-                "Mobile": {
-                    top: attributes.paddingTMobile,
-                    right: attributes.paddingRMobile,
-                    bottom: attributes.paddingBMobile,
-                    left: attributes.paddingLMobile
-                }
-            },
-            titleMargin: {
-                "Desktop": {
-                    top: attributes.titleMarginT,
-                    right: "",
-                    bottom: attributes.titleMarginB,
-                    left: ""
-                },
-                "Tablet": {
-                    top: "",
-                    right: "",
-                    bottom: "",
-                    left: ""
-                },
-                "Mobile": {
-                    top: "",
-                    right: "",
-                    bottom: "",
-                    left: ""
-                }
-            },
-            descMargin: {
-                "Desktop": {
-                    top: attributes.descMarginT,
-                    right: "",
-                    bottom: attributes.descMarginB,
-                    left: ""
-                },
-                "Tablet": {
-                    top: "",
-                    right: "",
-                    bottom: "",
-                    left: ""
-                },
-                "Mobile": {
-                    top: "",
-                    right: "",
-                    bottom: "",
-                    left: ""
-                }
-            },
-            btnMargin: {
-                "Desktop": {
-                    top: attributes.btnMarginT,
-                    right: "",
-                    bottom: attributes.btnMarginB,
-                    left: ""
-                },
-                "Tablet": {
-                    top: "",
-                    right: "",
-                    bottom: "",
-                    left: ""
-                },
-                "Mobile": {
-                    top: "",
-                    right: "",
-                    bottom: "",
-                    left: ""
-                }
-            },
-            btnBorder: {
-                borderColor: attributes.btnStyles[0].btnBorderColor,
-                borderType: attributes.btnStyles[0].btnBorderType,
-                borderRadius: {
-                    "Desktop": {
-                        top: "",
-                        right: "",
-                        bottom: "",
-                        left: ""
-                    },
-                    "Tablet": {
-                        top: "",
-                        right: "",
-                        bottom: "",
-                        left: ""
-                    },
-                    "Mobile": {
-                        top: "",
-                        right: "",
-                        bottom: "",
-                        left: ""
-                    }
-                },
-                borderWidth: {
-                    "Desktop": {
-                        top: attributes.btnBorderTop,
-                        right: attributes.btnBorderRight,
-                        bottom: attributes.btnBorderBottom,
-                        left: attributes.btnBorderLeft
-                    },
-                    "Tablet": {
-                        top: "",
-                        right: "",
-                        bottom: "",
-                        left: ""
-                    },
-                    "Mobile": {
-                        top: "",
-                        right: "",
-                        bottom: "",
-                        left: ""
-                    }
-                }
-            },
-            containerBorder: {
-                borderColor: attributes.containerStyles[0].btnBorderColor,
-                borderType: attributes.containerStyles[0].btnBorderType,
-                borderRadius: {
-                    "Desktop": {
-                        top: "",
-                        right: "",
-                        bottom: "",
-                        left: ""
-                    },
-                    "Tablet": {
-                        top: "",
-                        right: "",
-                        bottom: "",
-                        left: ""
-                    },
-                    "Mobile": {
-                        top: "",
-                        right: "",
-                        bottom: "",
-                        left: ""
-                    }
-                },
-                borderWidth: {
-                    "Desktop": {
-                        top: attributes.borderTop,
-                        right: attributes.borderRight,
-                        bottom: attributes.borderBottom,
-                        left: attributes.borderLeft
-                    },
-                    "Tablet": {
-                        top: "",
-                        right: "",
-                        bottom: "",
-                        left: ""
-                    },
-                    "Mobile": {
-                        top: "",
-                        right: "",
-                        bottom: "",
-                        left: ""
-                    }
-                }
-            }
-        };
-    },
-    save: function save(props) {
-        var _props$attributes9 = props.attributes,
-            block_id = _props$attributes9.block_id,
-            align = _props$attributes9.align,
-            iconType = _props$attributes9.iconType,
-            iconImage = _props$attributes9.iconImage,
-            iconImgUrl = _props$attributes9.iconImgUrl,
-            iconRadius = _props$attributes9.iconRadius,
-            selectedIcon = _props$attributes9.selectedIcon,
-            iconChecked = _props$attributes9.iconChecked,
-            hoverEffect = _props$attributes9.hoverEffect,
-            iconSize = _props$attributes9.iconSize,
-            iconColor = _props$attributes9.iconColor,
-            titleChecked = _props$attributes9.titleChecked,
-            titleText = _props$attributes9.titleText,
-            titleTag = _props$attributes9.titleTag,
-            titleColor = _props$attributes9.titleColor,
-            titleSize = _props$attributes9.titleSize,
-            titleLine = _props$attributes9.titleLine,
-            titleLetter = _props$attributes9.titleLetter,
-            titleStyle = _props$attributes9.titleStyle,
-            titleUpper = _props$attributes9.titleUpper,
-            titleWeight = _props$attributes9.titleWeight,
-            titleShadowBlur = _props$attributes9.titleShadowBlur,
-            titleShadowColor = _props$attributes9.titleShadowColor,
-            titleShadowHorizontal = _props$attributes9.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes9.titleShadowVertical,
-            titleMarginT = _props$attributes9.titleMarginT,
-            titleMarginB = _props$attributes9.titleMarginB,
-            descChecked = _props$attributes9.descChecked,
-            descText = _props$attributes9.descText,
-            descColor = _props$attributes9.descColor,
-            descSize = _props$attributes9.descSize,
-            descLine = _props$attributes9.descLine,
-            descWeight = _props$attributes9.descWeight,
-            descMarginT = _props$attributes9.descMarginT,
-            descMarginB = _props$attributes9.descMarginB,
-            btnChecked = _props$attributes9.btnChecked,
-            btnText = _props$attributes9.btnText,
-            btnTarget = _props$attributes9.btnTarget,
-            btnLink = _props$attributes9.btnLink,
-            btnSize = _props$attributes9.btnSize,
-            btnStyle = _props$attributes9.btnStyle,
-            btnUpper = _props$attributes9.btnUpper,
-            btnWeight = _props$attributes9.btnWeight,
-            btnLetter = _props$attributes9.btnLetter,
-            btnColor = _props$attributes9.btnColor,
-            btnHoverColor = _props$attributes9.btnHoverColor,
-            btnHoverBorder = _props$attributes9.btnHoverBorder,
-            btnBack = _props$attributes9.btnBack,
-            btnHoverBack = _props$attributes9.btnHoverBack,
-            btnBorderWidth = _props$attributes9.btnBorderWidth,
-            btnBorderRadius = _props$attributes9.btnBorderRadius,
-            btnBorderColor = _props$attributes9.btnBorderColor,
-            btnBorderType = _props$attributes9.btnBorderType,
-            btnPadding = _props$attributes9.btnPadding,
-            btnMarginT = _props$attributes9.btnMarginT,
-            btnMarginB = _props$attributes9.btnMarginB,
-            btnShadowBlur = _props$attributes9.btnShadowBlur,
-            btnShadowColor = _props$attributes9.btnShadowColor,
-            btnShadowHorizontal = _props$attributes9.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes9.btnShadowVertical,
-            btnShadowPosition = _props$attributes9.btnShadowPosition,
-            backColor = _props$attributes9.backColor,
-            imageURL = _props$attributes9.imageURL,
-            fixed = _props$attributes9.fixed,
-            backgroundRepeat = _props$attributes9.backgroundRepeat,
-            backgroundPosition = _props$attributes9.backgroundPosition,
-            backgroundSize = _props$attributes9.backgroundSize,
-            borderType = _props$attributes9.borderType,
-            borderWidth = _props$attributes9.borderWidth,
-            borderRadius = _props$attributes9.borderRadius,
-            borderColor = _props$attributes9.borderColor,
-            marginT = _props$attributes9.marginT,
-            marginR = _props$attributes9.marginR,
-            marginB = _props$attributes9.marginB,
-            marginL = _props$attributes9.marginL,
-            paddingT = _props$attributes9.paddingT,
-            paddingR = _props$attributes9.paddingR,
-            paddingB = _props$attributes9.paddingB,
-            paddingL = _props$attributes9.paddingL,
-            shadowBlur = _props$attributes9.shadowBlur,
-            shadowColor = _props$attributes9.shadowColor,
-            shadowHorizontal = _props$attributes9.shadowHorizontal,
-            shadowVertical = _props$attributes9.shadowVertical,
-            shadowPosition = _props$attributes9.shadowPosition,
-            btnBorder = _props$attributes9.btnBorder,
-            containerBorder = _props$attributes9.containerBorder;
-
-
-        return React.createElement(
-            "div",
-            {
-                id: className + "-" + block_id,
-                className: "" + className
-            },
-            btnChecked && btnText && React.createElement("style", {
-                dangerouslySetInnerHTML: {
-                    __html: ["#premium-icon-box-" + block_id + ":hover {", "box-shadow: " + containerStyles[0].hoverShadowHorizontal + "px " + containerStyles[0].hoverShadowVertical + "px " + containerStyles[0].hoverShadowBlur + "px " + containerStyles[0].hoverShadowColor + " " + containerStyles[0].hoverShadowPosition + " !important", "}", "#premium-icon-box-" + block_id + " .premium-icon-box__btn:hover {", "color: " + btnStyles[0].btnHoverColor + " !important;", "border-color: " + btnHoverBorder + " !important;", "}", "#premium-icon-box-" + block_id + " .premium-button__none .premium-icon-box__btn:hover {", "background-color: " + btnStyles[0].btnHoverBack + " !important;", "}", "#premium-icon-box-" + block_id + " .premium-button__slide .premium-button::before {", "background-color: " + btnStyles[0].btnHoverBack + " !important;", "}"].join("\n")
-                }
-            }),
-            React.createElement(
-                "div",
-                {
-                    className: "premium-icon-box-container",
-                    style: {
-                        textAlign: align,
-                        border: containerBorder.borderType,
-                        borderColor: containerBorder.borderColor,
-                        marginTop: marginT,
-                        marginRight: marginR,
-                        marginBottom: marginB,
-                        marginLeft: marginL,
-                        paddingTop: paddingT,
-                        paddingRight: paddingR,
-                        paddingBottom: paddingB,
-                        paddingLeft: paddingL,
-                        boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
-                        backgroundColor: backColor,
-                        backgroundImage: "url('" + imageURL + "')",
-                        backgroundRepeat: backgroundRepeat,
-                        backgroundPosition: backgroundPosition,
-                        backgroundSize: backgroundSize,
-                        backgroundAttachment: fixed ? "fixed" : "unset"
-                    }
-                },
-                iconChecked && React.createElement(
-                    "div",
-                    { className: className + "__icon_wrap" },
-                    "icon" === iconImage && selectedIcon && React.createElement("i", {
-                        className: selectedIcon + " " + className + "__icon premium-icon__" + hoverEffect,
-                        style: {
-                            color: iconColor,
-                            fontSize: iconSize
-                        }
-                    }),
-                    "image" === iconImage && iconImgUrl && React.createElement("img", {
-                        className: className + "__icon premium-icon__" + hoverEffect,
-                        src: "" + iconImgUrl,
-                        alt: "Image Icon",
-                        style: {
-                            width: iconSize + "px",
-                            height: iconSize + "px",
-                            borderRadius: iconRadius + "px"
-                        }
-                    })
-                ),
-                titleChecked && titleText && React.createElement(
-                    "div",
-                    {
-                        className: className + "__title_wrap",
-                        style: {
-                            marginTop: titleMarginT,
-                            marginBottom: titleMarginB
-                        }
-                    },
-                    React.createElement(RichText.Content, {
-                        tagName: titleTag.toLowerCase(),
-                        className: className + "__title",
-                        value: titleText,
-                        style: {
-                            color: titleColor,
-                            fontSize: titleSize + "px",
-                            letterSpacing: titleLetter + "px",
-                            textTransform: titleUpper ? "uppercase" : "none",
-                            fontStyle: titleStyle,
-                            fontWeight: titleWeight,
-                            textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor,
-                            lineHeight: titleLine + "px"
-                        }
-                    })
-                ),
-                descChecked && descText && React.createElement(
-                    "div",
-                    {
-                        className: className + "__desc_wrap",
-                        style: {
-                            marginTop: descMarginT,
-                            marginBottom: descMarginB
-                        }
-                    },
-                    React.createElement(RichText.Content, {
-                        tagName: "p",
-                        className: className + "__desc",
-                        value: descText,
-                        style: {
-                            color: descColor,
-                            fontSize: descSize + "px",
-                            lineHeight: descLine + "px",
-                            fontWeight: descWeight
-                        }
-                    })
-                ),
-                btnChecked && btnText && React.createElement(
-                    "div",
-                    {
-                        className: className + "__btn_wrap",
-                        style: {
-                            marginTop: btnMarginT,
-                            marginBottom: btnMarginB
-                        }
-                    },
-                    React.createElement(RichText.Content, {
-                        tagName: "a",
-                        className: className + "__btn",
-                        href: btnLink,
-                        target: btnTarget ? "_blank" : "_self",
-                        value: btnText,
-                        style: {
-                            color: btnColor,
-                            backgroundColor: btnBack,
-                            fontSize: btnSize + "px",
-                            letterSpacing: btnLetter + "px",
-                            textTransform: btnUpper ? "uppercase" : "none",
-                            fontStyle: btnStyle,
-                            fontWeight: btnWeight,
-                            borderStyle: btnBorder.borderType,
-                            borderColor: btnBorder.borderColor,
-                            padding: btnPadding + "px",
-                            boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition
-                        }
-                    })
-                )
-            )
-        );
-    }
-}];
-
-exports.default = deprecatedContent;
+throw new Error("Module build failed: Duplicate declaration \"btnPadding\"\n\n\u001b[0m \u001b[90m 3051 | \u001b[39m                btnBorder\u001b[33m,\u001b[39m\n \u001b[90m 3052 | \u001b[39m                containerBorder\u001b[33m,\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 3053 | \u001b[39m                btnPadding\n \u001b[90m      | \u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 3054 | \u001b[39m            } \u001b[33m=\u001b[39m props\u001b[33m.\u001b[39mattributes\u001b[33m;\u001b[39m\n \u001b[90m 3055 | \u001b[39m\n \u001b[90m 3056 | \u001b[39m            \u001b[36mreturn\u001b[39m (\u001b[0m\n");
 
 /***/ }),
 /* 267 */
@@ -36603,7 +33641,11 @@ var attributes = {
         default: "center"
     },
     iconSize: {
-        type: "number"
+        type: "object",
+        default: {
+            Desktop: '40',
+            unit: 'px'
+        }
     },
     iconRadius: {
         type: "number"
@@ -36748,8 +33790,8 @@ var attributes = {
             btnBorderLeft: '',
             btnBorderRadius: '',
             btnBorderColor: '',
-            btnPadding: '',
-            btnPaddingU: 'px',
+            // btnPadding: '',
+            // btnPaddingU: 'px',
             btnShadowColor: '',
             btnShadowBlur: '',
             btnShadowHorizontal: '0',
@@ -36907,6 +33949,30 @@ var attributes = {
         }
     },
     btnMargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            unit: "px"
+        }
+    },
+    btnPadding: {
         type: "object",
         default: {
             Desktop: {

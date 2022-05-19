@@ -19,12 +19,11 @@ const save = props => {
         hideTablet,
         hideMobile,
         backgroundType,
-        containerBorder,
-        iconSize
+        containerBorder
     } = props.attributes;
 
     const mainClasses = classnames(className, 'premium-icon');
-    console.log(mainClasses, props.attributes)
+
 
     let btnGrad, btnGrad2, btnbg;
     if ('gradient' === backgroundType) {
@@ -71,7 +70,6 @@ const save = props => {
                     <i
                         className={`premium-icon ${selectedIcon} premium-icon__${hoverEffect}`}
                         style={{
-                            // fontSize: (iconSize[props.deviceType] || 50) + iconSize.unit,
                             color: iconStyles[0].iconColor || "#6ec1e4",
                             backgroundColor: iconStyles[0].iconBack,
                             borderStyle: iconBorder.borderType,

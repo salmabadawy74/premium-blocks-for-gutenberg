@@ -2748,6 +2748,10 @@ const deprecatedContent = [
         attributes: attributes,
         migrate: (attributes) => {
             return {
+                iconSize: {
+                    Desktop: "",
+                    unit: ""
+                },
                 containerMargin: {
                     "Desktop": {
                         top: attributes.marginT,
@@ -2833,6 +2837,26 @@ const deprecatedContent = [
                         top: attributes.btnMarginT,
                         right: "",
                         bottom: attributes.btnMarginB,
+                        left: ""
+                    },
+                    "Tablet": {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: ""
+                    },
+                    "Mobile": {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: ""
+                    },
+                },
+                btnPadding: {
+                    "Desktop": {
+                        top: "",
+                        right: "",
+                        bottom: "",
                         left: ""
                     },
                     "Tablet": {
@@ -3025,7 +3049,8 @@ const deprecatedContent = [
                 shadowVertical,
                 shadowPosition,
                 btnBorder,
-                containerBorder
+                containerBorder,
+                btnPadding
             } = props.attributes;
 
             return (

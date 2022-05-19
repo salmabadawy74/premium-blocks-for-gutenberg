@@ -1353,7 +1353,6 @@ const deprecatedContent = [
                                 style={{
                                     color: iconStyles[0].iconColor || "#6ec1e4",
                                     backgroundColor: iconStyles[0].iconBack,
-                                    fontSize: (iconStyles[0].iconSize || 50) + iconStyles[0].iconSizeUnit,
                                     borderStyle: iconBorder.borderType,
                                     borderColor: iconBorder.borderColor,
                                     textShadow: `${iconStyles[0].shadowHorizontal || 0}px ${iconStyles[0].shadowVertical ||

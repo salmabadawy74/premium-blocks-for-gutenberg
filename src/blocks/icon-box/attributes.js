@@ -46,7 +46,11 @@ const attributes = {
         default: "center"
     },
     iconSize: {
-        type: "number"
+        type: "object",
+        default: {
+            Desktop: '40',
+            unit: 'px'
+        }
     },
     iconRadius: {
         type: "number"
@@ -197,8 +201,8 @@ const attributes = {
                 btnBorderLeft: '',
                 btnBorderRadius: '',
                 btnBorderColor: '',
-                btnPadding: '',
-                btnPaddingU: 'px',
+                // btnPadding: '',
+                // btnPaddingU: 'px',
                 btnShadowColor: '',
                 btnShadowBlur: '',
                 btnShadowHorizontal: '0',
@@ -359,6 +363,30 @@ const attributes = {
         }
     },
     btnMargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            unit: "px"
+        }
+    },
+    btnPadding: {
         type: "object",
         default: {
             Desktop: {
