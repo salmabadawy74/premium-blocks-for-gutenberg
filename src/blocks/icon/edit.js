@@ -128,7 +128,7 @@ const edit = props => {
     }
 
     const mainClasses = classnames(className, "premium-icon");
-    console.log('edit', mainClasses)
+
     return [
         isSelected && (
             <InspectorControls key={"inspector"}>
