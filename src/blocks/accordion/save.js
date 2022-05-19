@@ -16,23 +16,12 @@ const save = props => {
         arrowStyles,
         descStyles,
         contentType,
-        titleEditBorder,
         textShadowColor,
         textShadowBlur,
         textShadowHorizontal,
         textShadowVertical,
-        titleBorderWidth,
-        titleBorderTop,
-        titleBorderRight,
-        titleBorderBottom,
-        titleBorderLeft,
-        titleBorderUpdated,
-        descBorderWidth,
-        descBorderUpdated,
-        descBorderTop,
-        descBorderRight,
-        descBorderBottom,
-        descBorderLeft,
+        titleBorder,
+        descBorder,
     } = props.attributes;
     const mainClasses = classnames(className, 'premium-accordion');
 
@@ -46,12 +35,17 @@ const save = props => {
                     className={`premium-accordion__title_wrap premium-accordion__${direction} premium-accordion__${arrowStyles[0].arrowPos}`}
                     style={{
                         backgroundColor: titleStyles[0].titleBack,
-                        borderStyle: titleStyles[0].titleBorder,
-                        borderWidth: titleBorderUpdated
-                            ? `${titleBorderTop}px ${titleBorderRight}px ${titleBorderBottom}px ${titleBorderLeft}px`
-                            : titleBorderWidth + "px",
-                        borderRadius: titleStyles[0].titleBorderRadius + "px",
-                        borderColor: titleStyles[0].titleBorderColor
+                        borderStyle: titleBorder.borderType,
+                        borderTopWidth: titleBorder.borderWidth.Desktop.top,
+                        borderRightWidth: titleBorder.borderWidth.Desktop.right,
+                        borderBottomWidth: titleBorder.borderWidth.Desktop.bottom,
+                        borderLeftWidth: titleBorder.borderWidth.Desktop.left,
+                        borderRadius: `${titleBorder.borderRadius.Desktop.top || 0}px ${titleBorder.borderRadius.Desktop.right || 0}px ${titleBorder.borderRadius.Desktop.bottom || 0}px ${titleBorder.borderRadius.Desktop.left || 0}px`,
+                        borderColor: titleBorder.borderColor,
+                        borderTopLeftRadius: `${titleBorder.borderRadius.Desktop.top || 0}px`,
+                        borderTopRightRadius: `${titleBorder.borderRadius.Desktop.right || 0}px`,
+                        borderBottomLeftRadius: `${titleBorder.borderRadius.Desktop.bottom || 0}px`,
+                        borderBottomRightRadius: `${titleBorder.borderRadius.Desktop.left || 0}px`,
                     }}
                 >
                     <div className={`premium-accordion__title`}>
@@ -96,12 +90,17 @@ const save = props => {
                     style={{
                         textAlign: descStyles[0].descAlign,
                         backgroundColor: descStyles[0].descBack,
-                        borderStyle: descStyles[0].descBorder,
-                        borderWidth: descBorderUpdated
-                            ? `${descBorderTop}px ${descBorderRight}px ${descBorderBottom}px ${descBorderLeft}px`
-                            : descBorderWidth + "px",
-                        borderRadius: descStyles[0].descBorderRadius + "px",
-                        borderColor: descStyles[0].descBorderColor,
+                        borderStyle: descBorder.borderType,
+                        borderTopWidth: descBorder.borderWidth.Desktop.top,
+                        borderRightWidth: descBorder.borderWidth.Desktop.right,
+                        borderBottomWidth: descBorder.borderWidth.Desktop.bottom,
+                        borderLeftWidth: descBorder.borderWidth.Desktop.left,
+                        borderRadius: `${descBorder.borderRadius.Desktop.top || 0}px ${descBorder.borderRadius.Desktop.right || 0}px ${descBorder.borderRadius.Desktop.bottom || 0}px ${descBorder.borderRadius.Desktop.left || 0}px`,
+                        borderColor: descBorder.borderColor,
+                        borderTopLeftRadius: `${descBorder.borderRadius.Desktop.top || 0}px`,
+                        borderTopRightRadius: `${descBorder.borderRadius.Desktop.right || 0}px`,
+                        borderBottomLeftRadius: `${descBorder.borderRadius.Desktop.bottom || 0}px`,
+                        borderBottomRightRadius: `${descBorder.borderRadius.Desktop.left || 0}px`,
 
                     }}
                 >
