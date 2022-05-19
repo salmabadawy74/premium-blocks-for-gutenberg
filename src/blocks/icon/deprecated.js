@@ -1111,6 +1111,10 @@ const deprecatedContent = [
             let newAttributes = {
                 block_id: '',
                 classMigrate: '',
+                iconSize: {
+                    unit: attributes.iconStyles[0].iconSizeUnit,
+                    "Desktop": attributes.iconStyles[0].iconSize
+                },
                 iconMargin: {
                     "Desktop": {
                         top: attributes.marginT,
@@ -1130,6 +1134,7 @@ const deprecatedContent = [
                         bottom: attributes.marginBMobile,
                         left: attributes.marginLMobile
                     },
+                    unit: ""
                 },
                 iconPadding: {
                     "Desktop": {
@@ -1150,6 +1155,7 @@ const deprecatedContent = [
                         bottom: attributes.paddingBMobile,
                         left: attributes.paddingLMobile
                     },
+                    unit: attributes.paddingU
                 },
                 wrapMargin: {
                     "Desktop": {
@@ -1170,6 +1176,7 @@ const deprecatedContent = [
                         bottom: attributes.wrapMarginBMobile,
                         left: attributes.wrapMarginLMobile
                     },
+                    unit: ''
                 },
                 wrapPadding: {
                     "Desktop": {
@@ -1190,6 +1197,7 @@ const deprecatedContent = [
                         bottom: attributes.wrapPaddingBMobile,
                         left: attributes.wrapPaddingLMobile
                     },
+                    unit: ''
                 },
                 iconBorder: {
                     borderColor: attributes.iconStyles[0].btnBorderColor,

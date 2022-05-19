@@ -1907,6 +1907,10 @@ class PBG_Blocks_Helper {
 		}
 
 		//icon Styles
+		if ( isset( $attr['iconSize']['Desktop'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon' );
+			$css->add_property( 'font-size', ( $attr['iconSize']['Desktop'] . ( isset( $attr['iconSize']['unit'] ) ? $attr['iconSize']['unit'] : 'px' ) . '!important' ) );
+		}
 		if ( isset( $attr['iconMargin']['Desktop']['top'] ) && isset( $attr['iconMargin']['unit'] ) ) {
 			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon' );
 			$css->add_property( 'margin-top', ( $attr['iconMargin']['Desktop']['top'] . ( isset( $attr['iconMargin']['unit'] ) ? $attr['iconMargin']['unit'] : 'px' ) . '!important' ) );
@@ -2045,6 +2049,10 @@ class PBG_Blocks_Helper {
 		}
 
 		//icon Styles
+		if ( isset( $attr['iconSize']['Tablet'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon' );
+			$css->add_property( 'font-size', ( $attr['iconSize']['Tablet'] . ( isset( $attr['iconSize']['unit'] ) ? $attr['iconSize']['unit'] : 'px' ) . '!important' ) );
+		}
 		if ( isset( $attr['iconMargin']['Tablet']['top'] ) && isset( $attr['iconMargin']['unit'] ) ) {
 			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon' );
 			$css->add_property( 'margin-top', ( $attr['iconMargin']['Tablet']['top'] . ( isset( $attr['iconMargin']['unit'] ) ? $attr['iconMargin']['unit'] : 'px' ) . '!important' ) );
@@ -2184,6 +2192,10 @@ class PBG_Blocks_Helper {
 		}
 
 		//icon Styles
+		if ( isset( $attr['iconSize']['Mobile'] ) ) {
+			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon' );
+			$css->add_property( 'font-size', ( $attr['iconSize']['Mobile'] . ( isset( $attr['iconSize']['unit'] ) ? $attr['iconSize']['unit'] : 'px' ) . '!important' ) );
+		}
 		if ( isset( $attr['iconMargin']['Mobile']['top'] ) && isset( $attr['iconMargin']['unit'] ) ) {
 			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon' );
 			$css->add_property( 'margin-top', ( $attr['iconMargin']['Mobile']['top'] . ( isset( $attr['iconMargin']['unit'] ) ? $attr['iconMargin']['unit'] : 'px' ) . '!important' ) );

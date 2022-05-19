@@ -20,9 +20,11 @@ const save = props => {
         hideMobile,
         backgroundType,
         containerBorder,
+        iconSize
     } = props.attributes;
 
     const mainClasses = classnames(className, 'premium-icon');
+    console.log(mainClasses, props.attributes)
 
     let btnGrad, btnGrad2, btnbg;
     if ('gradient' === backgroundType) {
@@ -53,14 +55,6 @@ const save = props => {
                     backgroundSize: containerStyles[0].backgroundSize,
                     backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
                     borderStyle: containerBorder.borderType,
-                    // borderTopWidth: ContainerBorderWidthTop && ContainerBorderWidthTop + "px",
-                    // borderRightWidth: ContainerBorderWidthRight && ContainerBorderWidthRight + "px",
-                    // borderBottomWidth: ContainerBorderWidthBottom && ContainerBorderWidthBottom + "px",
-                    // borderLeftWidth: ContainerBorderWidthLeft && ContainerBorderWidthLeft + "px",
-                    // borderBottomLeftRadius: ContainerBorderRadiusLeft && ContainerBorderRadiusLeft + "px",
-                    // borderTopLeftRadius: ContainerBorderRadiusTop && ContainerBorderRadiusTop + "px",
-                    // borderTopRightRadius: ContainerBorderRadiusRight && ContainerBorderRadiusRight + "px",
-                    // borderBottomRightRadius: ContainerBorderRadiusBottom && ContainerBorderRadiusBottom + "px",
                     borderColor: containerBorder.borderColor,
                     boxShadow: `${containerStyles[0].wrapShadowHorizontal || 0}px ${containerStyles[0].wrapShadowVertical ||
                         0}px ${containerStyles[0].wrapShadowBlur ||
@@ -77,18 +71,10 @@ const save = props => {
                     <i
                         className={`premium-icon ${selectedIcon} premium-icon__${hoverEffect}`}
                         style={{
+                            // fontSize: (iconSize[props.deviceType] || 50) + iconSize.unit,
                             color: iconStyles[0].iconColor || "#6ec1e4",
                             backgroundColor: iconStyles[0].iconBack,
-                            fontSize: (iconStyles[0].iconSize || 50) + iconStyles[0].iconSizeUnit,
                             borderStyle: iconBorder.borderType,
-                            // borderTopWidth: iconBorderWidthTop && iconBorderWidthTop + "px",
-                            // borderRightWidth: iconBorderWidthRight && iconBorderWidthRight + "px",
-                            // borderBottomWidth: iconBorderWidthBottom && iconBorderWidthBottom + "px",
-                            // borderLeftWidth: iconBorderWidthLeft && iconBorderWidthLeft + "px",
-                            // borderBottomLeftRadius: iconBorderRadiusLeft && iconBorderRadiusLeft + "px",
-                            // borderTopLeftRadius: iconBorderRadiusTop && iconBorderRadiusTop + "px",
-                            // borderTopRightRadius: iconBorderRadiusRight && iconBorderRadiusRight + "px",
-                            // borderBottomRightRadius: iconBorderRadiusBottom && iconBorderRadiusBottom + "px",
                             borderColor: iconBorder.borderColor,
                             textShadow: `${iconStyles[0].shadowHorizontal || 0}px ${iconStyles[0].shadowVertical ||
                                 0}px ${iconStyles[0].shadowBlur || 0}px ${iconStyles[0].shadowColor}`
