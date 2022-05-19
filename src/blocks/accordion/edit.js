@@ -79,20 +79,10 @@ class PremiumAccordion extends Component {
             textShadowBlur,
             textShadowHorizontal,
             textShadowVertical,
-            titleBorderWidth,
-            titleBorderTop,
-            titleBorderRight,
-            titleBorderBottom,
-            titleBorderLeft,
-            titleBorderUpdated,
+            titleBorder,
             titlePadding,
             descPadding,
-            descBorderWidth,
-            descBorderUpdated,
-            descBorderTop,
-            descBorderRight,
-            descBorderBottom,
-            descBorderLeft,
+            descBorder,
         } = this.props.attributes;
 
         const DIRECTION = [

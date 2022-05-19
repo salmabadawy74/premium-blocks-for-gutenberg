@@ -10596,20 +10596,10 @@ var PremiumAccordion = function (_Component) {
                 textShadowBlur = _props$attributes.textShadowBlur,
                 textShadowHorizontal = _props$attributes.textShadowHorizontal,
                 textShadowVertical = _props$attributes.textShadowVertical,
-                titleBorderWidth = _props$attributes.titleBorderWidth,
-                titleBorderTop = _props$attributes.titleBorderTop,
-                titleBorderRight = _props$attributes.titleBorderRight,
-                titleBorderBottom = _props$attributes.titleBorderBottom,
-                titleBorderLeft = _props$attributes.titleBorderLeft,
-                titleBorderUpdated = _props$attributes.titleBorderUpdated,
+                titleBorder = _props$attributes.titleBorder,
                 titlePadding = _props$attributes.titlePadding,
                 descPadding = _props$attributes.descPadding,
-                descBorderWidth = _props$attributes.descBorderWidth,
-                descBorderUpdated = _props$attributes.descBorderUpdated,
-                descBorderTop = _props$attributes.descBorderTop,
-                descBorderRight = _props$attributes.descBorderRight,
-                descBorderBottom = _props$attributes.descBorderBottom,
-                descBorderLeft = _props$attributes.descBorderLeft;
+                descBorder = _props$attributes.descBorder;
 
 
             var DIRECTION = [{
@@ -11220,6 +11210,9 @@ var save = function save(props) {
         titleBorder = _props$attributes.titleBorder,
         descBorder = _props$attributes.descBorder;
 
+
+    console.log(titleBorder);
+
     var mainClasses = (0, _classnames2.default)(className, 'premium-accordion');
 
     var accordionItems = repeaterItems.map(function (item, index) {
@@ -11235,17 +11228,17 @@ var save = function save(props) {
                     className: 'premium-accordion__title_wrap premium-accordion__' + direction + ' premium-accordion__' + arrowStyles[0].arrowPos,
                     style: {
                         backgroundColor: titleStyles[0].titleBack,
-                        borderStyle: titleBorder.borderType,
-                        borderTopWidth: titleBorder.borderWidth.Desktop.top,
-                        borderRightWidth: titleBorder.borderWidth.Desktop.right,
-                        borderBottomWidth: titleBorder.borderWidth.Desktop.bottom,
-                        borderLeftWidth: titleBorder.borderWidth.Desktop.left,
-                        borderRadius: (titleBorder.borderRadius.Desktop.top || 0) + 'px ' + (titleBorder.borderRadius.Desktop.right || 0) + 'px ' + (titleBorder.borderRadius.Desktop.bottom || 0) + 'px ' + (titleBorder.borderRadius.Desktop.left || 0) + 'px',
-                        borderColor: titleBorder.borderColor,
-                        borderTopLeftRadius: (titleBorder.borderRadius.Desktop.top || 0) + 'px',
-                        borderTopRightRadius: (titleBorder.borderRadius.Desktop.right || 0) + 'px',
-                        borderBottomLeftRadius: (titleBorder.borderRadius.Desktop.bottom || 0) + 'px',
-                        borderBottomRightRadius: (titleBorder.borderRadius.Desktop.left || 0) + 'px'
+                        borderStyle: titleBorder && titleBorder.borderType,
+                        borderTopWidth: titleBorder && titleBorder.borderWidth.Desktop.top,
+                        borderRightWidth: titleBorder && titleBorder.borderWidth.Desktop.right,
+                        borderBottomWidth: titleBorder && titleBorder.borderWidth.Desktop.bottom,
+                        borderLeftWidth: titleBorder && titleBorder.borderWidth.Desktop.left,
+                        borderRadius: (titleBorder && titleBorder.borderRadius.Desktop.top || 0) + 'px ' + (titleBorder && titleBorder.borderRadius.Desktop.right || 0) + 'px ' + (titleBorder && titleBorder.borderRadius.Desktop.bottom || 0) + 'px ' + (titleBorder && titleBorder.borderRadius.Desktop.left || 0) + 'px',
+                        borderColor: titleBorder && titleBorder.borderColor,
+                        borderTopLeftRadius: (titleBorder && titleBorder.borderRadius.Desktop.top || 0) + 'px',
+                        borderTopRightRadius: (titleBorder && titleBorder.borderRadius.Desktop.right || 0) + 'px',
+                        borderBottomLeftRadius: (titleBorder && titleBorder.borderRadius.Desktop.bottom || 0) + 'px',
+                        borderBottomRightRadius: (titleBorder && titleBorder.borderRadius.Desktop.left || 0) + 'px'
                     }
                 },
                 React.createElement(
@@ -11298,17 +11291,17 @@ var save = function save(props) {
                     style: {
                         textAlign: descStyles[0].descAlign,
                         backgroundColor: descStyles[0].descBack,
-                        borderStyle: descBorder.borderType,
-                        borderTopWidth: descBorder.borderWidth.Desktop.top,
-                        borderRightWidth: descBorder.borderWidth.Desktop.right,
-                        borderBottomWidth: descBorder.borderWidth.Desktop.bottom,
-                        borderLeftWidth: descBorder.borderWidth.Desktop.left,
-                        borderRadius: (descBorder.borderRadius.Desktop.top || 0) + 'px ' + (descBorder.borderRadius.Desktop.right || 0) + 'px ' + (descBorder.borderRadius.Desktop.bottom || 0) + 'px ' + (descBorder.borderRadius.Desktop.left || 0) + 'px',
-                        borderColor: descBorder.borderColor,
-                        borderTopLeftRadius: (descBorder.borderRadius.Desktop.top || 0) + 'px',
-                        borderTopRightRadius: (descBorder.borderRadius.Desktop.right || 0) + 'px',
-                        borderBottomLeftRadius: (descBorder.borderRadius.Desktop.bottom || 0) + 'px',
-                        borderBottomRightRadius: (descBorder.borderRadius.Desktop.left || 0) + 'px'
+                        borderStyle: descBorder && descBorder.borderType,
+                        borderTopWidth: descBorder && descBorder.borderWidth.Desktop.top,
+                        borderRightWidth: descBorder && descBorder.borderWidth.Desktop.right,
+                        borderBottomWidth: descBorder && descBorder.borderWidth.Desktop.bottom,
+                        borderLeftWidth: descBorder && descBorder.borderWidth.Desktop.left,
+                        borderRadius: (descBorder && descBorder.borderRadius.Desktop.top || 0) + 'px ' + (descBorder && descBorder.borderRadius.Desktop.right || 0) + 'px ' + (descBorder && descBorder.borderRadius.Desktop.bottom || 0) + 'px ' + (descBorder && descBorder.borderRadius.Desktop.left || 0) + 'px',
+                        borderColor: descBorder && descBorder.borderColor,
+                        borderTopLeftRadius: (descBorder && descBorder.borderRadius.Desktop.top || 0) + 'px',
+                        borderTopRightRadius: (descBorder && descBorder.borderRadius.Desktop.right || 0) + 'px',
+                        borderBottomLeftRadius: (descBorder && descBorder.borderRadius.Desktop.bottom || 0) + 'px',
+                        borderBottomRightRadius: (descBorder && descBorder.borderRadius.Desktop.left || 0) + 'px'
 
                     }
                 },
