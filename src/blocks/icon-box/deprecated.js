@@ -3049,8 +3049,7 @@ const deprecatedContent = [
                 shadowVertical,
                 shadowPosition,
                 btnBorder,
-                containerBorder,
-                btnPadding
+                containerBorder
             } = props.attributes;
 
             return (
