@@ -296,6 +296,13 @@ const attributes = {
                 }
             }
         }
-    }
+    },
+    socialIconSize: {
+        type: "object",
+        default: {
+            Desktop: '20',
+            unit: 'px'
+        }
+    },
 }
 export default attributes

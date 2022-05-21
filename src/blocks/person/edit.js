@@ -140,7 +140,8 @@ class edit extends Component {
             bottomInfo,
             socialIconPadding,
             socialIconMargin,
-            socialIconBorder
+            socialIconBorder,
+            socialIconSize
         } = this.props.attributes;
 
         const HOVER = [
@@ -320,25 +321,6 @@ class edit extends Component {
 
         const DescSize = this.getPreviewSize(this.props.deviceType, descStyles[0].descSize, descStyles[0].descfontSizeTablet, descStyles[0].descfontSizeMobile);
 
-        const SocialIconSize = this.getPreviewSize(this.props.deviceType, socialIconStyles[0].socialIconSize, socialIconStyles[0].socialIconfontSizeTablet, socialIconStyles[0].socialIconfontSizeMobile);
-
-        const SocialIconMarginTop = this.getPreviewSize(this.props.deviceType, socialIconMargin.Desktop.top, socialIconMargin.Tablet.top, socialIconMargin.Mobile.top);
-        const SocialIconMarginRight = this.getPreviewSize(this.props.deviceType, socialIconMargin.Desktop.right, socialIconMargin.Tablet.right, socialIconMargin.Mobile.right);
-        const SocialIconMarginBottom = this.getPreviewSize(this.props.deviceType, socialIconMargin.Desktop.bottom, socialIconMargin.Tablet.bottom, socialIconMargin.Mobile.bottom);
-        const SocialIconMarginLeft = this.getPreviewSize(this.props.deviceType, socialIconMargin.Desktop.left, socialIconMargin.Tablet.left, socialIconMargin.Mobile.left);
-        const SocialIconPaddingTop = this.getPreviewSize(this.props.deviceType, socialIconPadding.Desktop.top, socialIconPadding.Tablet.top, socialIconPadding.Mobile.top);
-        const SocialIconPaddingRight = this.getPreviewSize(this.props.deviceType, socialIconPadding.Desktop.right, socialIconPadding.Tablet.right, socialIconPadding.Mobile.right);
-        const SocialIconPaddingBottom = this.getPreviewSize(this.props.deviceType, socialIconPadding.Desktop.bottom, socialIconPadding.Tablet.bottom, socialIconPadding.Mobile.bottom);
-        const SocialIconPaddingLeft = this.getPreviewSize(this.props.deviceType, socialIconPadding.Desktop.left, socialIconPadding.Tablet.left, socialIconPadding.Mobile.left);
-        const SocialIconBorderWidthTop = this.getPreviewSize(this.props.deviceType, socialIconBorder.borderWidth.Desktop.top, socialIconBorder.borderWidth.Tablet.top, socialIconBorder.borderWidth.Mobile.top);
-        const SocialIconBorderWidthRight = this.getPreviewSize(this.props.deviceType, socialIconBorder.borderWidth.Desktop.right, socialIconBorder.borderWidth.Tablet.right, socialIconBorder.borderWidth.Mobile.right);
-        const SocialIconBorderWidthBottom = this.getPreviewSize(this.props.deviceType, socialIconBorder.borderWidth.Desktop.bottom, socialIconBorder.borderWidth.Tablet.bottom, socialIconBorder.borderWidth.Mobile.bottom);
-        const SocialIconBorderWidthLeft = this.getPreviewSize(this.props.deviceType, socialIconBorder.borderWidth.Desktop.left, socialIconBorder.borderWidth.Tablet.left, socialIconBorder.borderWidth.Mobile.left);
-        const SocialIconBorderRadiusTop = this.getPreviewSize(this.props.deviceType, socialIconBorder.borderRadius.Desktop.top, socialIconBorder.borderRadius.Tablet.top, socialIconBorder.borderRadius.Mobile.top);
-        const SocialIconBorderRadiusRight = this.getPreviewSize(this.props.deviceType, socialIconBorder.borderRadius.Desktop.right, socialIconBorder.borderRadius.Tablet.right, socialIconBorder.borderRadius.Mobile.right);
-        const SocialIconBorderRadiusBottom = this.getPreviewSize(this.props.deviceType, socialIconBorder.borderRadius.Desktop.bottom, socialIconBorder.borderRadius.Tablet.bottom, socialIconBorder.borderRadius.Mobile.bottom);
-        const SocialIconBorderRadiusLeft = this.getPreviewSize(this.props.deviceType, socialIconBorder.borderRadius.Desktop.left, socialIconBorder.borderRadius.Tablet.left, socialIconBorder.borderRadius.Mobile.left);
-
         const shouldCancelStart = (e) => {
             // Prevent sorting from being triggered if target is input or button
             if (['div', 'button', 'input'].indexOf(e.target.tagName.toLowerCase()) !== -1) {
@@ -464,29 +446,29 @@ class edit extends Component {
                 <li>
                     <a className={`premium-person__socialIcon__link_content ${socialIconStyles[0].defaultIconColor ? value.label : ""}`} href={`${value.value}`} style={{
                         borderStyle: socialIconBorder.borderType,
-                        borderTopWidth: SocialIconBorderWidthTop && SocialIconBorderWidthTop + "px",
-                        borderRightWidth: SocialIconBorderWidthRight && SocialIconBorderWidthRight + "px",
-                        borderBottomWidth: SocialIconBorderWidthBottom && SocialIconBorderWidthBottom + "px",
-                        borderLeftWidth: SocialIconBorderWidthLeft && SocialIconBorderWidthLeft + "px",
-                        borderBottomLeftRadius: SocialIconBorderRadiusLeft && SocialIconBorderRadiusLeft + "px",
-                        borderTopLeftRadius: SocialIconBorderRadiusTop && SocialIconBorderRadiusTop + "px",
-                        borderTopRightRadius: SocialIconBorderRadiusRight && SocialIconBorderRadiusRight + "px",
-                        borderBottomRightRadius: SocialIconBorderRadiusBottom && SocialIconBorderRadiusBottom + "px",
+                        borderTopWidth: socialIconBorder['borderWidth'][this.props.deviceType]['top'] && socialIconBorder['borderWidth'][this.props.deviceType]['top'] + "px",
+                        borderRightWidth: socialIconBorder['borderWidth'][this.props.deviceType]['right'] && socialIconBorder['borderWidth'][this.props.deviceType]['right'] + "px",
+                        borderBottomWidth: socialIconBorder['borderWidth'][this.props.deviceType]['bottom'] && socialIconBorder['borderWidth'][this.props.deviceType]['bottom'] + "px",
+                        borderLeftWidth: socialIconBorder['borderWidth'][this.props.deviceType]['left'] && socialIconBorder['borderWidth'][this.props.deviceType]['left'] + "px",
+                        borderBottomLeftRadius: socialIconBorder['borderRadius'][this.props.deviceType]['left'] && socialIconBorder['borderRadius'][this.props.deviceType]['left'] + "px",
+                        borderTopLeftRadius: socialIconBorder['borderRadius'][this.props.deviceType]['top'] && socialIconBorder['borderRadius'][this.props.deviceType]['top'] + "px",
+                        borderTopRightRadius: socialIconBorder['borderRadius'][this.props.deviceType]['right'] && socialIconBorder['borderRadius'][this.props.deviceType]['right'] + "px",
+                        borderBottomRightRadius: socialIconBorder['borderRadius'][this.props.deviceType]['bottom'] && socialIconBorder['borderRadius'][this.props.deviceType]['bottom'] + "px",
                         borderColor: socialIconBorder.borderColor,
-                        marginTop: SocialIconMarginTop + socialIconMargin.unit,
-                        marginBottom: SocialIconMarginBottom + socialIconMargin.unit,
-                        marginLeft: SocialIconMarginLeft + socialIconMargin.unit,
-                        marginRight: SocialIconMarginRight + socialIconMargin.unit,
-                        paddingTop: SocialIconPaddingTop + socialIconPadding.unit,
-                        paddingBottom: SocialIconPaddingBottom + socialIconPadding.unit,
-                        paddingLeft: SocialIconPaddingLeft + socialIconPadding.unit,
-                        paddingRight: SocialIconPaddingRight + socialIconPadding.unit,
+                        paddingTop: socialIconPadding[this.props.deviceType]['top'] && socialIconPadding[this.props.deviceType]['top'] + socialIconPadding.unit,
+                        paddingRight: socialIconPadding[this.props.deviceType]['right'] && socialIconPadding[this.props.deviceType]['right'] + socialIconPadding.unit,
+                        paddingBottom: socialIconPadding[this.props.deviceType]['bottom'] && socialIconPadding[this.props.deviceType]['bottom'] + socialIconPadding.unit,
+                        paddingLeft: socialIconPadding[this.props.deviceType]['left'] && socialIconPadding[this.props.deviceType]['left'] + socialIconPadding.unit,
+                        marginTop: socialIconMargin[this.props.deviceType]['top'] && socialIconMargin[this.props.deviceType]['top'] + socialIconMargin.unit,
+                        marginRight: socialIconMargin[this.props.deviceType]['right'] && socialIconMargin[this.props.deviceType]['right'] + socialIconMargin.unit,
+                        marginBottom: socialIconMargin[this.props.deviceType]['bottom'] && socialIconMargin[this.props.deviceType]['bottom'] + socialIconMargin.unit,
+                        marginLeft: socialIconMargin[this.props.deviceType]['left'] && socialIconMargin[this.props.deviceType]['left'] + socialIconMargin.unit,
                         background: socialIconStyles[0].socialIconBackgroundColor,
                     }}>
                         <i className={`premium-person__socialIcon ${value.label == "youtube" ? "fa fa-youtube-play" : `fa fa-${value.label}`} premium-person__${socialIconStyles[0].socialIconHoverColor}`}
                             style={{
                                 color: socialIconStyles[0].socialIconColor,
-                                fontSize: (SocialIconSize || 50) + socialIconStyles[0].socialIconfontSizeType,
+                                fontSize: (socialIconSize[this.props.deviceType] || 20) + socialIconSize.unit
                             }}
                         />
                     </a>
@@ -1000,21 +982,15 @@ class edit extends Component {
                         initialOpen={false}
                     >
                         <ResponsiveRangeControl
-                            label={__("Size", 'premium-block-for-gutenberg')}
-                            value={socialIconStyles[0].socialIconSize}
-                            tabletValue={socialIconStyles[0].socialIconfontSizeTablet}
-                            mobileValue={socialIconStyles[0].socialIconfontSizeMobile}
-                            onChange={(value) => saveSocialIconStyles({ socialIconSize: value })}
-                            onChangeTablet={(value) => saveSocialIconStyles({ socialIconfontSizeTablet: value })}
-                            onChangeMobile={(value) => saveSocialIconStyles({ socialIconfontSizeMobile: value })}
-                            onChangeUnit={(key) =>
-                                saveSocialIconStyles({ socialIconfontSizeType: key })
-                            }
-                            unit={socialIconStyles[0].socialIconfontSizeType}
-                            showUnit={true}
-                            defaultValue={20}
+                            label={__('Size', 'premium-blocks-for-gutenberg')}
+                            value={socialIconSize}
+                            onChange={(value) => setAttributes({ socialIconSize: value })}
                             min={1}
                             max={100}
+                            step={1}
+                            showUnit={true}
+                            units={['px', 'em', 'rem']}
+                            defaultValue={20}
                         />
                         <div className="premium-control-toggle">
                             <AdvancedPopColorControl
@@ -1081,21 +1057,15 @@ class edit extends Component {
                             initialOpen={false}
                         >
                             <ResponsiveRangeControl
-                                label={__("Size", 'premium-block-for-gutenberg')}
-                                value={socialIconStyles[0].socialIconSize}
-                                tabletValue={socialIconStyles[0].socialIconfontSizeTablet}
-                                mobileValue={socialIconStyles[0].socialIconfontSizeMobile}
-                                onChange={(value) => saveSocialIconStyles({ socialIconSize: value })}
-                                onChangeTablet={(value) => saveSocialIconStyles({ socialIconfontSizeTablet: value })}
-                                onChangeMobile={(value) => saveSocialIconStyles({ socialIconfontSizeMobile: value })}
-                                onChangeUnit={(key) =>
-                                    saveSocialIconStyles({ socialIconfontSizeType: key })
-                                }
-                                unit={socialIconStyles[0].socialIconfontSizeType}
-                                showUnit={true}
-                                defaultValue={20}
+                                label={__('Size', 'premium-blocks-for-gutenberg')}
+                                value={socialIconSize}
+                                onChange={(value) => setAttributes({ socialIconSize: value })}
                                 min={1}
                                 max={100}
+                                step={1}
+                                showUnit={true}
+                                units={['px', 'em', 'rem']}
+                                defaultValue={20}
                             />
                             <div className="premium-control-toggle">
                                 <AdvancedPopColorControl
