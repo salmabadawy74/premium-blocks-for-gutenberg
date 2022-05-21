@@ -545,6 +545,39 @@
                 },
                 "unit": "px"
             }
+        },
+        "switchSize": {
+            "type": "object",
+            "default": {
+                "Desktop": 15
+            }
+        },
+        "containerRadius": {
+            "type": "object",
+            "default": {
+                "Desktop": "50",
+                "unit": "%"
+            }
+        },
+        "switchRadius": {
+            "type": "object",
+            "default": {
+                "Desktop": "1.5",
+                "unit": "em"
+            }
+        },
+        "labelSpacing": {
+            "type": "object",
+            "default": {
+                "Desktop": "15"
+            }
+        },
+        "contentHeight": {
+            "type": "object",
+            "default": {
+                "Desktop": "100",
+                "unit": "px"
+            }
         }
     }
 }

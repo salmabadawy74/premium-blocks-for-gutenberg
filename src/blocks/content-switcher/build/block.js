@@ -4556,6 +4556,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_premium_border__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/premium-border */ "../components/premium-border.js");
 /* harmony import */ var _components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/premium-responsive-spacing */ "../components/premium-responsive-spacing.js");
 /* harmony import */ var _components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/typography/fontLoader */ "../components/typography/fontLoader.js");
+/* harmony import */ var _components_inspectorTabs__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../components/inspectorTabs */ "../components/inspectorTabs.js");
+/* harmony import */ var _components_inspectorTab__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../components/inspectorTab */ "../components/inspectorTab.js");
 
 
 
@@ -4565,6 +4567,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
  // import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
+
+
 
 
 
@@ -4705,7 +4709,12 @@ function Edit(props) {
     contentPadding,
     containerPadding,
     firstContentMargin,
-    containerMargin
+    containerMargin,
+    switchSize,
+    containerRadius,
+    switchRadius,
+    labelSpacing,
+    contentHeight
   } = attributes;
   const DISPLAY = [{
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Block"),
@@ -4913,7 +4922,11 @@ function Edit(props) {
         align: value
       });
     }
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.PanelBody, {
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_inspectorTabs__WEBPACK_IMPORTED_MODULE_15__["default"], {
+    tabs: ['layout', 'style', 'advance']
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_16__["default"], {
+    key: 'layout'
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Switcher"),
     className: "premium-panel-body",
     initialOpen: false
@@ -5007,50 +5020,47 @@ function Edit(props) {
         secondcontentlign: contentAlign
       })
     }))
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.PanelBody, {
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_16__["default"], {
+    key: 'style'
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Switcher Style"),
     className: "premium-panel-body",
     initialOpen: false
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Size", 'premium-block-for-gutenberg'),
-    value: switcherStyles.switchSize,
-    tabletValue: switcherStyles.switchSizeTablet,
-    mobileValue: switcherStyles.switchSizeMobile,
-    onChange: value => saveSwitcherStyles('switchSize', value),
-    onChangeTablet: value => saveSwitcherStyles('switchSizeTablet', value),
-    onChangeMobile: value => saveSwitcherStyles('switchSizeMobile', value),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Size', 'premium-blocks-for-gutenberg'),
+    value: switchSize,
+    onChange: value => setAttributes({
+      switchSize: value
+    }),
+    min: 1,
+    max: 40,
+    step: 1,
     showUnit: false,
-    defaultValue: 15,
-    min: 1,
-    max: 40
+    defaultValue: 15
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Controller Border Radius", 'premium-block-for-gutenberg'),
-    value: switcherStyles.containerRadius,
-    tabletValue: switcherStyles.containerRadiusTablet,
-    mobileValue: switcherStyles.containerRadiusMobile,
-    onChange: value => saveSwitcherStyles('containerRadius', value),
-    onChangeTablet: value => saveSwitcherStyles('containerRadiusTablet', value),
-    onChangeMobile: value => saveSwitcherStyles('containerRadiusMobile', value),
-    onChangeUnit: key => saveSwitcherStyles('containerRadiusType', key),
-    unit: switcherStyles.containerRadiusType,
-    showUnit: true,
-    defaultValue: 50,
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Controller Border Radius', 'premium-blocks-for-gutenberg'),
+    value: containerRadius,
+    onChange: value => setAttributes({
+      containerRadius: value
+    }),
     min: 1,
-    max: 100
+    max: 100,
+    step: 1,
+    showUnit: true,
+    units: ['px', 'em', 'rem'],
+    defaultValue: 50
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Switcher Border Radius", 'premium-block-for-gutenberg'),
-    value: switcherStyles.switchRadius,
-    tabletValue: switcherStyles.switchRadiusTablet,
-    mobileValue: switcherStyles.switchRadiusMobile,
-    onChange: value => saveSwitcherStyles('switchRadius', value),
-    onChangeTablet: value => saveSwitcherStyles('switchRadiusTablet', value),
-    onChangeMobile: value => saveSwitcherStyles('switchRadiusMobile', value),
-    onChangeUnit: key => saveSwitcherStyles('switchRadiusType', key),
-    unit: switcherStyles.switchRadiusType,
-    showUnit: true,
-    defaultValue: 1.5,
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Switcher Border Radius', 'premium-blocks-for-gutenberg'),
+    value: switchRadius,
+    onChange: value => setAttributes({
+      switchRadius: value
+    }),
     min: 1,
-    max: 100
+    max: 100,
+    step: 1,
+    showUnit: true,
+    units: ['px', 'em', 'rem'],
+    defaultValue: 1.5
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_11__["default"], {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Controller Shadow", 'premium-blocks-for-gutenberg'),
     boxShadow: true,
@@ -5082,17 +5092,16 @@ function Edit(props) {
     className: "premium-panel-body",
     initialOpen: false
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Spacing", 'premium-block-for-gutenberg'),
-    value: labelStyles.labelSpacing,
-    tabletValue: labelStyles.labelSpacingTablet,
-    mobileValue: labelStyles.labelSpacingMobile,
-    onChange: value => saveLabelStyles('labelSpacing', value),
-    onChangeTablet: value => saveLabelStyles('labelSpacingTablet', value),
-    onChangeMobile: value => saveLabelStyles('labelSpacingMobile', value),
-    showUnit: false,
-    defaultValue: 15,
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Spacing', 'premium-blocks-for-gutenberg'),
+    value: labelSpacing,
+    onChange: value => setAttributes({
+      labelSpacing: value
+    }),
     min: 1,
-    max: 100
+    max: 100,
+    step: 1,
+    showUnit: false,
+    defaultValue: 15
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.TabPanel, {
     className: "premium-color-tabpanel",
     activeClass: "active-tab",
@@ -5298,19 +5307,17 @@ function Edit(props) {
     className: "premium-panel-body",
     initialOpen: false
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Height", 'premium-block-for-gutenberg'),
-    value: contentStyles.contentHeight,
-    tabletValue: contentStyles.contentHeightTablet,
-    mobileValue: contentStyles.contentHeightMobile,
-    onChange: value => saveContentStyles('contentHeight', value),
-    onChangeTablet: value => saveContentStyles('contentHeightTablet', value),
-    onChangeMobile: value => saveContentStyles('contentHeightMobile', value),
-    onChangeUnit: key => saveContentStyles('contentHeightType', key),
-    unit: contentStyles.contentHeightType,
-    showUnit: true,
-    defaultValue: 100,
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Height', 'premium-blocks-for-gutenberg'),
+    value: contentHeight,
+    onChange: value => setAttributes({
+      contentHeight: value
+    }),
     min: 1,
-    max: 1000
+    max: 1000,
+    step: 1,
+    showUnit: true,
+    units: ['px', 'em', 'rem'],
+    defaultValue: 100
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.TabPanel, {
     className: "premium-color-tabpanel",
     activeClass: "active-tab",
@@ -5581,26 +5588,28 @@ function Edit(props) {
     }),
     showUnits: true,
     responsive: true
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_16__["default"], {
+    key: 'advance'
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("style", null, `
                      #premium-content-switcher-${block_id} .premium-content-switcher-toggle-switch-slider:before {
-                         border-radius: ${ContainerBorderRadius}${switcherStyles.containerRadiusType} !important;
+                         border-radius: ${containerRadius[props.deviceType] || 50}${containerRadius.unit} !important;
                          box-shadow: ${switcherStyles.containerShadowHorizontal}px ${switcherStyles.containerShadowVertical}px ${switcherStyles.containerShadowBlur}px ${switcherStyles.containerShadowColor} ${switcherStyles.containerShadowPosition};
                      }
                     #premium-content-switcher-${block_id} .premium-content-switcher-toggle-switch-slider {
-                        border-radius: ${SwitcherBorderRadius}${switcherStyles.switchRadiusType} !important;
+                        border-radius: ${switchRadius[props.deviceType]}${switchRadius.unit} !important;
                          box-shadow: ${switcherStyles.switchShadowHorizontal}px ${switcherStyles.switchShadowVertical}px ${switcherStyles.switchShadowBlur}px ${switcherStyles.switchShadowColor} ${switcherStyles.switchShadowPosition};
                      }
                      #premium-content-switcher-${block_id} .premium-content-switcher-toggle-inline .premium-content-switcher-first-label {
-                         margin-right: ${LabelSpacing}px !important;
+                         margin-right: ${labelSpacing[props.deviceType]}px !important;
                     }
                     #premium-content-switcher-${block_id} .premium-content-switcher-toggle-inline .premium-content-switcher-second-label {
-                        margin-left: ${LabelSpacing}px !important;
+                        margin-left: ${labelSpacing[props.deviceType]}px !important;
                     }
                    #premium-content-switcher-${block_id} .premium-content-switcher-toggle-block .premium-content-switcher-first-label {
-                         margin-bottom: ${LabelSpacing}px !important;
+                         margin-bottom: ${labelSpacing[props.deviceType]}px !important;
                      }
                     #premium-content-switcher-${block_id} .premium-content-switcher-toggle-block .premium-content-switcher-second-label {
-                        margin-top: ${LabelSpacing}px !important;
+                        margin-top: ${labelSpacing[props.deviceType]}px !important;
                     }
                  `), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.useBlockProps)({
     className: classnames__WEBPACK_IMPORTED_MODULE_3___default()(className, `premium-block-${props.clientId}`)
@@ -5673,7 +5682,7 @@ function Edit(props) {
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "premium-content-switcher-toggle-switch",
     style: {
-      fontSize: SwitcherSize + 'px'
+      fontSize: (switchSize[props.deviceType] || 15) + "px"
     }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
     className: `premium-content-switcher-toggle-switch-label`
@@ -5732,7 +5741,7 @@ function Edit(props) {
       borderWidth: firstContentBorderUpdated ? `${firstContentBorderTop}px ${firstContentBorderRight}px ${firstContentBorderBottom}px ${firstContentBorderLeft}px` : firstContentBorderWidth + "px",
       borderRadius: firstContentStyles.firstContentborderRadius + "px",
       borderColor: firstContentStyles.firstContentborderColor,
-      minHeight: ContentHeight + contentStyles.contentHeightType,
+      minHeight: (contentHeight[props.deviceType] || 100) + contentHeight.unit,
       paddingTop: ContentPaddingTop + contentPadding.unit,
       paddingBottom: ContentPaddingBottom + contentPadding.unit,
       paddingLeft: ContentPaddingLeft + contentPadding.unit,
@@ -5770,7 +5779,7 @@ function Edit(props) {
       borderWidth: secondContentBorderUpdated ? `${secondContentBorderTop}px ${secondContentBorderRight}px ${secondContentBorderBottom}px ${secondContentBorderLeft}px` : secondContentBorderWidth + "px",
       borderRadius: secondContentStyles.secondContentborderRadius + "px",
       borderColor: secondContentStyles.secondContentborderColor,
-      minHeight: ContentHeight + contentStyles.contentHeightType,
+      minHeight: (contentHeight[props.deviceType] || 100) + contentHeight.unit,
       paddingTop: ContentPaddingTop + contentPadding.unit,
       paddingBottom: ContentPaddingBottom + contentPadding.unit,
       paddingLeft: ContentPaddingLeft + contentPadding.unit,
@@ -6810,20 +6819,25 @@ function ResponsiveRangeControl(_ref) {
   let {
     label,
     onChange,
-    onChangeTablet,
-    onChangeMobile,
-    mobileValue,
-    tabletValue,
     value,
     step = 1,
     max = 100,
     min = 0,
     unit = '',
-    onChangeUnit,
     showUnit = false,
     units = ['px', 'em', 'rem'],
     defaultValue
   } = _ref;
+  let defaultValues = {
+    'Desktop': '',
+    'Tablet': '',
+    'Mobile': '',
+    unit: 'px'
+  };
+  value = value ? { ...defaultValues,
+    ...value
+  } : defaultValues;
+  const [state, setState] = useState(value);
   const [deviceType, setDeviceType] = useState('Desktop');
 
   let customSetPreviewDeviceType = device => {
@@ -6854,47 +6868,55 @@ function ResponsiveRangeControl(_ref) {
   }
 
   const devices = ['Desktop', 'Tablet', 'Mobile'];
+
+  const onChangeValue = (value, device) => {
+    const updatedState = { ...state
+    };
+    updatedState[device] = value;
+    setState(updatedState);
+    onChange(updatedState);
+  };
+
+  const onChangeUnit = value => {
+    const updatedState = { ...state
+    };
+    updatedState['unit'] = value;
+    setState(updatedState);
+    onChange(updatedState);
+  };
+
   const output = {};
   output.Mobile = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_single_range_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
     device: 'mobile',
-    value: undefined !== mobileValue ? mobileValue : '',
-    onChange: size => onChangeMobile(size),
+    value: state['Mobile'],
+    onChange: size => onChangeValue(size, 'Mobile'),
     min: min,
     max: max,
-    step: unit === "em" ? .1 : 1,
-    unit: unit,
-    onChangeUnit: onChangeUnit,
+    step: state['unit'] === "em" || state['unit'] === "rem" ? .1 : 1,
     showUnit: false,
-    units: units,
     defaultValue: defaultValue
   });
   output.Tablet = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_single_range_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
     device: 'tablet',
-    value: undefined !== tabletValue ? tabletValue : '',
-    onChange: size => onChangeTablet(size),
+    value: state['Tablet'],
+    onChange: size => onChangeValue(size, 'Tablet'),
     min: min,
     max: max,
-    step: unit === "em" ? .1 : 1,
-    unit: unit,
-    onChangeUnit: onChangeUnit,
+    step: state['unit'] === "em" || state['unit'] === "rem" ? .1 : 1,
     showUnit: false,
-    units: units,
     defaultValue: defaultValue
   });
   output.Desktop = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_single_range_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
     device: 'desktop',
-    value: undefined !== value ? value : '',
-    onChange: size => onChange(size),
+    value: state['Desktop'],
+    onChange: size => onChangeValue(size, "Desktop"),
     min: min,
     max: max,
-    step: unit === "em" ? .1 : 1,
-    unit: unit,
-    onChangeUnit: onChangeUnit,
+    step: state['unit'] === "em" || state['unit'] === "rem" ? .1 : 1,
     showUnit: false,
-    units: units,
     defaultValue: defaultValue
   });
-  return [onChange && onChangeTablet && onChangeMobile && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  return [onChange && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-blocks-range-control`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("header", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-slider-title-wrap`
@@ -6921,7 +6943,7 @@ function ResponsiveRangeControl(_ref) {
     })));
   }))), showUnit && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_premium_size_units__WEBPACK_IMPORTED_MODULE_1__["default"], {
     units: units,
-    activeUnit: unit,
+    activeUnit: state['unit'],
     onChangeSizeUnit: newValue => onChangeUnit(newValue)
   })), output[deviceType] ? output[deviceType] : output.Desktop)];
 }
@@ -6987,6 +7009,224 @@ function ResponsiveSingleRangeControl(_ref) {
     defaultValue: defaultValue
   }))];
 }
+
+/***/ }),
+
+/***/ "../components/inspectorTab.js":
+/*!*************************************!*\
+  !*** ../components/inspectorTab.js ***!
+  \*************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+const {
+  Fragment
+} = wp.element;
+
+const InspectorTab = props => {
+  const {
+    children,
+    isActive,
+    key
+  } = props;
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      display: isActive ? 'block' : 'none'
+    },
+    className: "premium-inspector-tab"
+  }, Array.isArray(children) ? children.map(item => item) : children);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (InspectorTab);
+
+/***/ }),
+
+/***/ "../components/inspectorTabs.js":
+/*!**************************************!*\
+  !*** ../components/inspectorTabs.js ***!
+  \**************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "../../node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+
+
+const {
+  __
+} = wp.i18n;
+const {
+  Fragment,
+  cloneElement,
+  Children
+} = wp.element;
+const {
+  Tooltip
+} = wp.components;
+const {
+  useState,
+  useRef,
+  useEffect
+} = wp.element,
+      LAYOUT = 'layout',
+      STYLE = 'style',
+      ADVANCE = 'advance';
+
+const InspectorTabs = props => {
+  const {
+    defaultTab,
+    children,
+    tabs
+  } = props,
+        [currentTab, setCurrentTab] = useState(defaultTab ? defaultTab : tabs[0]),
+        tabContainer = useRef(),
+        offset = useRef(undefined);
+  let sidebarPanel;
+  useEffect(() => {
+    sidebarPanel = tabContainer.current.closest('.components-panel');
+  });
+  const observer = new IntersectionObserver(_ref => {
+    let [e] = _ref;
+    return e.target.classList.toggle('premium-is-sticky', e.intersectionRatio < 1);
+  }, {
+    threshold: [1]
+  }); // component did mount
+
+  useEffect(() => {
+    // sticky tabs menu
+    const container = document.querySelector('.premium-inspector-tabs-container');
+
+    if (container) {
+      observer.observe(container);
+    } // component will unmount
+
+
+    return () => {
+      sidebarPanel && sidebarPanel.removeAttribute('data-premium-tab');
+    };
+  }, []);
+  useEffect(() => {
+    sidebarPanel && sidebarPanel.setAttribute('data-premium-tab', defaultTab);
+  }, [defaultTab]);
+
+  const _onTabChange = tab => {
+    setCurrentTab(tab);
+    sidebarPanel && sidebarPanel.setAttribute('data-premium-tab', tab);
+  };
+
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: 'premium-inspector-tabs-container'
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    ref: tabContainer,
+    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()('premium-inspector-tabs', 'premium-inspector-tabs-count-' + tabs.length, currentTab)
+  }, tabs.indexOf(LAYOUT) > -1 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Tooltip, {
+    text: __('Layout', 'premium-blocks-for-gutenberg')
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()({
+      'premium-active': currentTab === LAYOUT
+    }),
+    onClick: () => _onTabChange(LAYOUT)
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    id: "Layer_1",
+    "data-name": "Layer 1",
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "23.98",
+    height: "23.99",
+    viewBox: "0 0 23.98 23.99"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("defs", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("title", null, "layout-tab"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("g", {
+    id: "Layout"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    class: "cls-1",
+    d: "M23.84,2.9a4,4,0,0,0-1-1.74,4,4,0,0,0-1.75-1,3.85,3.85,0,0,0-2,0,31.93,31.93,0,0,0-9,4v8.48l6.29-6.3a1.19,1.19,0,0,1,.33-.22,1,1,0,0,1,.77,0,1,1,0,0,1,.55.55,1,1,0,0,1,0,.77,1.19,1.19,0,0,1-.22.33L14.41,11H21.6a30.63,30.63,0,0,0,2.28-6.07A4,4,0,0,0,23.84,2.9Z",
+    transform: "translate(-0.01 0)"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    class: "cls-1",
+    d: "M20.53,13a28.68,28.68,0,0,1-4,5.46,8.24,8.24,0,0,1-2.69,1.87,8.07,8.07,0,0,1-3.21.67A7.43,7.43,0,0,1,6,19.42L12.43,13h8.1Z",
+    transform: "translate(-0.01 0)"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    class: "cls-1",
+    d: "M5.82,19.31l.17.11L1.71,23.71A1,1,0,0,1,1,24a1,1,0,0,1-.69-.3A1,1,0,0,1,0,23a1,1,0,0,1,.28-.71L4.58,18A8,8,0,0,0,5.82,19.31Z",
+    transform: "translate(-0.01 0)"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    class: "cls-1",
+    d: "M4.58,18A7.72,7.72,0,0,1,5.26,7.87,25.63,25.63,0,0,1,8,5.51v9a.35.35,0,0,0,0,.06Z",
+    transform: "translate(-0.01 0)"
+  }))), "                                    ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h5", null, __('Layout', 'premium-blocks-for-gutenberg')))), tabs.indexOf(STYLE) > -1 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Tooltip, {
+    text: __('Style', 'premium-blocks-for-gutenberg')
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()({
+      'premium-active': currentTab === STYLE
+    }),
+    onClick: () => _onTabChange(STYLE)
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    id: "Layer_1",
+    "data-name": "Layer 1",
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "24",
+    height: "24",
+    viewBox: "0 0 24 24"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("defs", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("title", null, "style-tab"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("g", {
+    id: "Style"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    class: "cls-1",
+    d: "M2.89,6.84a.93.93,0,0,0,.46-.12,1,1,0,0,0,.37-.32,10,10,0,0,1,2.8-2.77,1,1,0,0,0,.28-.27A.82.82,0,0,0,7,3a1,1,0,0,0,0-.39,1.2,1.2,0,0,0-.15-.37A1,1,0,0,0,6.54,2a1,1,0,0,0-.36-.16,1.27,1.27,0,0,0-.39,0A1.2,1.2,0,0,0,5.42,2,11.94,11.94,0,0,0,2.06,5.28a1,1,0,0,0-.17.5A1,1,0,0,0,2,6.3a1.07,1.07,0,0,0,.37.39A1,1,0,0,0,2.89,6.84Z",
+    transform: "translate(0)"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    class: "cls-1",
+    d: "M2,12a10,10,0,0,1,.19-2,1,1,0,0,0,0-.39,1.2,1.2,0,0,0-.15-.37A1.07,1.07,0,0,0,1.77,9a1.14,1.14,0,0,0-.36-.15.86.86,0,0,0-.39,0A1.2,1.2,0,0,0,.65,9a1,1,0,0,0-.27.28,1.2,1.2,0,0,0-.15.37,12.14,12.14,0,0,0,0,4.73,1,1,0,0,0,.35.57,1,1,0,0,0,.63.23l.2,0a1,1,0,0,0,.64-.43A1,1,0,0,0,2.2,14,10.05,10.05,0,0,1,2,12Z",
+    transform: "translate(0)"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    class: "cls-1",
+    d: "M6.53,20.37a9.85,9.85,0,0,1-2.81-2.76,1.07,1.07,0,0,0-.28-.28.93.93,0,0,0-.36-.14,1,1,0,0,0-1,1.54A11.94,11.94,0,0,0,5.43,22a1,1,0,0,0,.75.15,1.06,1.06,0,0,0,.64-.43A1,1,0,0,0,7,21a1,1,0,0,0-.43-.64Z",
+    transform: "translate(0)"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    class: "cls-1",
+    d: "M12,0A12.17,12.17,0,0,0,9.83.2a1,1,0,0,0-.62.38,1,1,0,0,0-.2.69,1,1,0,0,0,.32.65,1,1,0,0,0,.68.26h.18A10,10,0,0,1,12,2V22a10,10,0,0,1-1.81-.16,1,1,0,0,0-1.17.8,1.05,1.05,0,0,0,.17.75,1,1,0,0,0,.64.41A12.05,12.05,0,0,0,15,23.61a12.23,12.23,0,0,0,4.64-2.39A12,12,0,0,0,12,0Z",
+    transform: "translate(0)"
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h5", null, __('Style', 'premium-blocks-for-gutenberg')))), tabs.indexOf(ADVANCE) > -1 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Tooltip, {
+    text: __('Advanced', 'premium-blocks-for-gutenberg')
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()({
+      'premium-active': currentTab === ADVANCE
+    }),
+    onClick: () => _onTabChange(ADVANCE)
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    id: "Layer_1",
+    "data-name": "Layer 1",
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "21.59",
+    height: "24",
+    viewBox: "0 0 21.59 24"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("defs", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("title", null, "advanced-tab"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    id: "Advanced",
+    class: "cls-1",
+    d: "M1.61,18A3,3,0,0,0,5.7,19.1h0l.44-.26A9,9,0,0,0,9,20.49V21a3,3,0,0,0,6,0v-.51a9,9,0,0,0,2.85-1.65l.45.26a3,3,0,0,0,3-5.2l-.45-.26a9.1,9.1,0,0,0,0-3.29l.45-.25a3,3,0,0,0-3-5.2l-.45.25A9.21,9.21,0,0,0,15,3.51V3A3,3,0,0,0,9,3v.51A9,9,0,0,0,6.15,5.16L5.71,4.9a3,3,0,1,0-3,5.2l.44.26a9.1,9.1,0,0,0,0,3.29l-.44.25A3,3,0,0,0,1.61,18ZM12,8a4,4,0,1,1-4,4A4,4,0,0,1,12,8Z",
+    transform: "translate(-1.2)"
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h5", null, __('Advanced', 'premium-blocks-for-gutenberg')))))), Array.isArray(children) && Children.map(children, (child, index) => {
+    if (!child.key) {
+      throw new Error('props.key not found in <InspectorTab />, you must use `key` prop');
+      return;
+    }
+
+    return cloneElement(child, {
+      index,
+      isActive: child.key === currentTab
+    });
+  }));
+};
+
+InspectorTabs.defaultProps = {
+  defaultTab: null,
+  tabs: ['layout', 'style', 'advance']
+};
+/* harmony default export */ __webpack_exports__["default"] = (InspectorTabs);
 
 /***/ }),
 
@@ -7170,233 +7410,129 @@ function PremiumBackground(props) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": function() { return /* binding */ PremiumBorder; }
-/* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RangeControl/single-range-control */ "../components/RangeControl/single-range-control.js");
-/* harmony import */ var _Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Color Control/ColorComponent */ "../components/Color Control/ColorComponent.js");
-
+/* harmony import */ var _Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Color Control/ColorComponent */ "../components/Color Control/ColorComponent.js");
+/* harmony import */ var _premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./premium-responsive-spacing */ "../components/premium-responsive-spacing.js");
 
 
 const {
   __
 } = wp.i18n;
 const {
-  Fragment
-} = wp.element;
-const {
-  SelectControl,
-  ColorPicker
+  Tooltip
 } = wp.components;
 
-class PremiumBorder extends react__WEBPACK_IMPORTED_MODULE_1__.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLinked: false,
-      top: this.props.top || 0,
-      right: this.props.right || 0,
-      bottom: this.props.bottom || 0,
-      left: this.props.left || 0
-    };
-    this.onChangeInput = this.onChangeInput.bind(this);
-    this.onButtonClick = this.onButtonClick.bind(this);
-  }
 
-  onChangeInput(event) {
-    let {
-      top,
-      right,
-      bottom,
-      left,
-      isLinked
-    } = this.state;
-    let {
-      name,
-      value
-    } = event.target;
+const {
+  Fragment,
+  useState,
+  useEffect
+} = wp.element;
 
-    if (isLinked) {
-      top = right = bottom = left = parseInt(value) || 0;
-      this.setState({
-        top,
-        right,
-        bottom,
-        left
-      }, () => {
-        const {
-          top,
-          right,
-          bottom,
-          left
-        } = this.state;
-        this.props.onChangeWidth({
-          top,
-          right,
-          bottom,
-          left
-        });
-      });
-    } else {
-      this.setState({
-        [name]: parseInt(value) || 0
-      }, () => {
-        this.props.onChangeWidth({
-          top,
-          right,
-          bottom,
-          left
-        });
-      });
+const PremiumBorder = props => {
+  let value = props.value;
+  let directions = {
+    'top': '',
+    'right': '',
+    'bottom': '',
+    'left': ''
+  };
+  let defaultValues = {
+    'borderType': 'none',
+    'borderColor': '',
+    'borderWidth': {
+      Desktop: directions,
+      Tablet: directions,
+      Mobile: directions
+    },
+    'borderRadius': {
+      Desktop: directions,
+      Tablet: directions,
+      Mobile: directions
     }
-  }
+  };
+  value = value ? { ...defaultValues,
+    ...value
+  } : defaultValues;
+  const [borderValue, setBorderValue] = useState(value);
+  const {
+    onChange
+  } = props;
+  const {
+    borderColor,
+    borderType,
+    borderWidth,
+    borderRadius
+  } = borderValue;
+  useEffect(() => {
+    if (borderValue !== value) {
+      setBorderValue(value);
+    }
+  }, [props]);
 
-  onButtonClick() {
-    this.setState({
-      isLinked: !this.state.isLinked
-    });
-  }
-
-  render() {
-    const {
-      borderType,
-      borderColor,
-      borderRadius,
-      onChangeType = () => {},
-      onChangeColor = () => {},
-      onChangeRadius = () => {}
-    } = this.props;
-    const {
-      top,
-      right,
-      bottom,
-      left,
-      isLinked
-    } = this.state;
-    const BORDER = [{
-      value: "none",
-      label: __("None", 'premium-blocks-for-gutenberg')
-    }, {
-      value: "solid",
-      label: __("Solid", 'premium-blocks-for-gutenberg')
-    }, {
-      value: "double",
-      label: __("Double", 'premium-blocks-for-gutenberg')
-    }, {
-      value: "dotted",
-      label: __("Dotted", 'premium-blocks-for-gutenberg')
-    }, {
-      value: "dashed",
-      label: __("Dashed", 'premium-blocks-for-gutenberg')
-    }, {
-      value: "groove",
-      label: __("Groove", 'premium-blocks-for-gutenberg')
-    }];
-    const defauultValues = {
-      top: 0,
-      right: 0,
-      bottom: 0,
-      left: 0
+  const onChangeBorder = (item, value) => {
+    const inialState = { ...borderValue
     };
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "premium-control-toggle"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
-      label: __("Border Type"),
-      options: BORDER,
-      value: borderType,
-      onChange: onChangeType
-    }), "none" != borderType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `premium-spacing-responsive`
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("header", {
-      className: "premium-control-label-container"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `premium-control-label`
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, __("Border Width ")))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `premium-spacing-responsive-outer-wrapper`
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `input-wrapper premium-spacing-responsive-wrapper`
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
-      className: `premium-spacing-wrapper`
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
-      className: `premium-spacing-input-item`
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-      className: `premium-spacing-input`,
-      type: "number",
-      name: "top",
-      value: top,
-      onChange: this.onChangeInput
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-      className: `premium-spacing-title`
-    }, __(`Top`, 'premium-blocks-for-gutenberg'))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
-      className: `premium-spacing-input-item`
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-      className: `premium-spacing-input`,
-      type: "number",
-      name: "right",
-      value: right,
-      onChange: this.onChangeInput
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-      className: `premium-spacing-title`
-    }, __(`Right`, 'premium-blocks-for-gutenberg'))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
-      className: `premium-spacing-input-item`
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-      className: `premium-spacing-input`,
-      type: "number",
-      name: "bottom",
-      value: bottom,
-      onChange: this.onChangeInput
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-      className: `premium-spacing-title`
-    }, __(`Bottom`, 'premium-blocks-for-gutenberg'))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
-      className: `premium-spacing-input-item`
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-      className: `premium-spacing-input`,
-      type: "number",
-      name: "left",
-      value: left,
-      onChange: this.onChangeInput
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-      className: `premium-spacing-title`
-    }, __(`Right`, 'premium-blocks-for-gutenberg'))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-      className: `linked-btn components-button is-button dashicons dashicons-${isLinked ? "admin-links" : "editor-unlink"}`,
-      onClick: this.onButtonClick
-    })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "premium-spacing-btn-reset-wrap"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-      className: "premium-reset-btn ",
-      disabled: JSON.stringify(this.state) === JSON.stringify(this.defaultValue),
-      onClick: e => {
-        e.preventDefault();
-        this.setState({ ...defauultValues
-        });
-        const {
-          top = 0,
-          right,
-          bottom,
-          left
-        } = this.state;
-        this.props.onChangeWidth({ ...defauultValues
-        });
-      }
-    })))), "none" != borderType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      label: __("Border Color", 'premium-blocks-for-gutenberg'),
-      colorValue: borderColor,
-      colorDefault: '',
-      onColorChange: onChangeColor
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      label: __("Border Radius", 'premium-blocks-for-gutenberg'),
-      value: borderRadius,
-      defaultValue: 0,
-      onChange: onChangeRadius,
-      showUnit: false
-    })));
-  }
+    inialState[item] = value;
+    onChange(inialState);
+    setBorderValue(inialState);
+  };
 
-}
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "premium-control-toggle"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "premium-blocks-border__control ",
+    style: {
+      display: "flex"
+    }
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, props.label ? props.label : __('Border', 'premium-blocks-for-gutenberg')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "premium-blocks-border-button-list "
+  }, [['none', __("None")], ['solid', __('Solid')], ['dotted', __('Dotted')], ['dashed', __('Dashed')], ['double', __('Double')]].map((data, index) => {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Tooltip, {
+      text: data[1]
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+      className: (borderType == data[0] ? 'active' : '') + ' premium-border-button',
+      key: index,
+      onClick: () => onChangeBorder("borderType", data[0])
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+      className: `premium-blocks-border-type premium-blocks-border-type-${data[0]}`
+    })));
+  })), "none" != borderType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Tooltip, {
+    text: __('Clear')
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "premium-blocks-border-clear__container"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "premium-blocks-border-clear",
+    onClick: () => onChangeBorder("borderType", 'none'),
+    role: "button"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
+    className: "fas fa-undo"
+  }))))), "none" != borderType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    label: __("Border Width "),
+    value: borderWidth,
+    responsive: true,
+    showUnits: false,
+    onChange: value => onChangeBorder('borderWidth', { ...value
+    })
+  }), "none" != borderType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    label: __("Border Color", 'premium-blocks-for-gutenberg'),
+    colorValue: borderColor,
+    colorDefault: '',
+    onColorChange: value => onChangeBorder('borderColor', value)
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    label: __("Border Radius"),
+    value: borderRadius,
+    responsive: true,
+    showUnits: false,
+    onChange: value => onChangeBorder('borderRadius', { ...value
+    })
+  })));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (PremiumBorder);
 
 /***/ }),
 
@@ -13107,7 +13243,7 @@ class PremiumTypo extends Component {
       fontFamily: this.props.fontFamily || 'Default',
       line: this.props.line,
       weight: this.props.weight || '400',
-      size: this.props.components.includes("responsiveSize") ? responsiveSize : this.props.size,
+      size: this.props.components.includes("responsiveSize") ? this.props.fontSize : this.props.size,
       textTransform: this.props.textTransform,
       textDecoration: this.props.textDecoration,
       sizeUnit: this.props.sizeUnit || 'px',
@@ -13138,9 +13274,7 @@ class PremiumTypo extends Component {
       onChangeTextTransform = () => {},
       onChangeTextDecoration = () => {},
       onChangeFamily = () => {},
-      onChangeSize = () => {},
-      onChangeTabletSize = () => {},
-      onChangeMobileSize = () => {},
+      onChange,
       onChangeWeight = () => {},
       onChangeStyle = () => {},
       onChangeSpacing = () => {},
@@ -13360,19 +13494,7 @@ class PremiumTypo extends Component {
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
       label: __("Font Size", 'premium-blocks-for-gutenberg'),
       value: this.props.fontSize,
-      onChange: value => {
-        this.setState({ ...this.state.size,
-          Desktop: value
-        }), onChangeSize(value);
-      },
-      tabletValue: this.props.fontSizeTablet,
-      onChangeTablet: value => {
-        onChangeTabletSize(value);
-      },
-      mobileValue: this.props.fontSizeMobile,
-      onChangeMobile: value => {
-        onChangeMobileSize(value);
-      },
+      onChange: value => onChange(value, "value"),
       onChangeUnit: key => setAttributes({
         [this.props.fontSizeType.label]: key
       }),
@@ -13919,7 +14041,7 @@ function _extends() {
 /***/ (function(module) {
 
 "use strict";
-module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/content-switcher","title":"Content Switcher","icon":"content-switcher","category":"premium-blocks","description":"Example static block scaffolded with Create Block tool.","keywords":["content","switcher"],"supports":{"html":false},"editorScript":"file:./build/block.js","script":"gpb-content-switcher-block-script","editorStyle":"file:./build/index.css","style":"file:./build/style-block.css","attributes":{"block_id":{"type":"string"},"classMigrate":{"type":"boolean","default":false},"align":{"type":"string","default":"center"},"showLabel":{"type":"boolean","default":true},"firstLabel":{"type":"string","default":"Content #1"},"secondLabel":{"type":"string","default":"Content #2"},"display":{"type":"string","default":"inline"},"labelTag":{"type":"string","default":"h3"},"firstContent":{"type":"string","default":"Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."},"secondContent":{"type":"string","default":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."},"firstcontentlign":{"type":"string","default":"center"},"secondcontentlign":{"type":"string","default":"center"},"switcherStyles":{"type":"object","default":{"switchSize":15,"switchSizeMobile":15,"switchSizeTablet":15,"switchRadiusType":"em","switchRadius":1.5,"switchRadiusMobile":1.5,"switchRadiusTablet":1.5,"containerRadiusType":"%","containerRadius":50,"containerRadiusMobile":50,"containerRadiusTablet":50,"containerBackState1":"","backgroundImageIDState1":"","backgroundImageURLState1":"","backgroundRepeatState1":"no-reapet","backgroundPositionState1":"top center","backgroundSizeState1":"auto","fixedState1":false,"gradientLocationOneState1":"0","gradientColorTwoState1":"","gradientLocationTwoState1":"100","gradientTypeState1":"linear","gradientAngleState1":"180","gradientPositionState1":"center center","containerShadowColor":"","containerShadowBlur":"","containerShadowHorizontal":"","containerShadowVertical":"","containerShadowPosition":"inset","switchShadowColor":"","switchShadowBlur":"","switchShadowHorizontal":"","switchShadowVertical":"","switchShadowPosition":"inset"}},"backgroundTypeState2":{"type":"string","default":""},"labelStyles":{"type":"object","default":{"labelSpacing":15,"labelSpacingMobile":15,"labelSpacingTablet":15,"firstLabelColor":"rgb(84, 89, 95)","firstLabelLetter":0,"firstLabelLine":0,"firstLabelStyle":"normal","firstLabelUpper":false,"firstLabelWeight":"","firstLabelfontSize":23,"firstLabelfontSizeType":"px","firstLabelfontSizeMobile":23,"firstLabelfontSizeTablet":23,"firstLabelFontFamily":"Default","firstLabelShadowColor":"","firstLabelShadowBlur":"0","firstLabelShadowHorizontal":"0","firstLabelShadowVertical":"0","firstLabelborderType":"none","firstLabelborderRadius":0,"firstLabelborderColor":"","firstLabelBoxShadowColor":"","firstLabelBoxShadowBlur":"","firstLabelBoxShadowHorizontal":"","firstLabelBoxShadowVertical":"","firstLabelBoxShadowPosition":"inset","secondLabelColor":"rgb(84, 89, 95)","secondLabelLetter":0,"secondLabelLine":0,"secondLabelStyle":"normal","secondLabelUpper":false,"secondLabelWeight":"","secondLabelfontSize":23,"secondLabelfontSizeType":"px","secondLabelfontSizeMobile":23,"secondLabelfontSizeTablet":23,"secondLabelFontFamily":"Default","secondLabelShadowColor":"","secondLabelShadowBlur":"0","secondLabelShadowHorizontal":"0","secondLabelShadowVertical":"0","secondLabelborderType":"none","secondLabelborderRadius":0,"secondLabelborderColor":"","secondLabelBoxShadowColor":"","secondLabelBoxShadowBlur":"","secondLabelBoxShadowHorizontal":"","secondLabelBoxShadowVertical":"","secondLabelBoxShadowPosition":"inset"}},"firstLabelBorderTop":{"type":"number","default":"1"},"firstLabelBorderRight":{"type":"number","default":"1"},"firstLabelBorderBottom":{"type":"number","default":"1"},"firstLabelBorderLeft":{"type":"number","default":"1"},"firstLabelBorderUpdated":{"type":"boolean","default":false},"firstLabelBorderWidth":{"type":"number","default":"1"},"secondLabelBorderTop":{"type":"number","default":"1"},"secondLabelBorderRight":{"type":"number","default":"1"},"secondLabelBorderBottom":{"type":"number","default":"1"},"secondLabelBorderLeft":{"type":"number","default":"1"},"secondLabelBorderUpdated":{"type":"boolean","default":false},"secondLabelBorderWidth":{"type":"number","default":"1"},"contentStyles":{"type":"object","default":{"contentHeight":100,"contentHeightType":"px","contentHeightMobile":100,"contentHeightTablet":100}},"firstContentStyles":{"type":"object","default":{"firstContentColor":"#54595f","firstContentLetter":0,"firstContentLine":0,"firstContentStyle":"normal","firstContentUpper":false,"firstContentWeight":"","firstContentfontSize":"","firstContentfontSizeType":"px","firstContentfontSizeMobile":"","firstContentfontSizeTablet":"","firstContentFontFamily":"Default","firstContentShadowColor":"","firstContentShadowBlur":"0","firstContentShadowHorizontal":"0","firstContentShadowVertical":"0","firstContentBGColor":"","firstContentborderType":"none","firstContentborderRadius":0,"firstContentborderColor":"","firstContentBoxShadowColor":"","firstContentBoxShadowBlur":"","firstContentBoxShadowHorizontal":"","firstContentBoxShadowVertical":"","firstContentBoxShadowPosition":"inset"}},"firstContentBorderTop":{"type":"number","default":"1"},"firstContentBorderRight":{"type":"number","default":"1"},"firstContentBorderBottom":{"type":"number","default":"1"},"firstContentBorderLeft":{"type":"number","default":"1"},"firstContentBorderUpdated":{"type":"boolean","default":false},"firstContentBorderWidth":{"type":"number","default":"1"},"secondContentStyles":{"type":"object","default":{"secondContentColor":"#54595f","secondContentLetter":0,"secondContentLine":0,"secondContentStyle":"normal","secondContentUpper":false,"secondContentWeight":"","secondContentfontSize":"","secondContentfontSizeType":"px","secondContentfontSizeMobile":"","secondContentfontSizeTablet":"","secondContentFontFamily":"Default","secondContentShadowColor":"","secondContentShadowBlur":"0","secondContentShadowHorizontal":"0","secondContentShadowVertical":"0","secondContentBGColor":"","secondContentborderType":"none","secondContentborderRadius":0,"secondContentborderColor":"","secondContentBoxShadowColor":"","secondContentBoxShadowBlur":"","secondContentBoxShadowHorizontal":"","secondContentBoxShadowVertical":"","secondContentBoxShadowPosition":"inset"}},"secondContentBorderTop":{"type":"number","default":"1"},"secondContentBorderRight":{"type":"number","default":"1"},"secondContentBorderBottom":{"type":"number","default":"1"},"secondContentBorderLeft":{"type":"number","default":"1"},"secondContentBorderUpdated":{"type":"boolean","default":false},"secondContentBorderWidth":{"type":"number","default":"1"},"containerStyles":{"type":"object","default":{"containerBack":"","backgroundImageID":"","backgroundImageURL":"","backgroundRepeat":"no-reapet","backgroundPosition":"top center","backgroundSize":"auto","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientType":"linear","gradientAngle":"180","gradientPosition":"center center","containerborderType":"none","containerborderRadius":0,"containerborderColor":"","containerBoxShadowColor":"","containerBoxShadowBlur":"","containerBoxShadowHorizontal":"","containerBoxShadowVertical":"","containerBoxShadowPosition":"inset"}},"backgroundType":{"type":"string","default":""},"containerBorderTop":{"type":"number","default":"1"},"containerBorderRight":{"type":"number","default":"1"},"containerBorderBottom":{"type":"number","default":"1"},"containerBorderLeft":{"type":"number","default":"1"},"containerBorderUpdated":{"type":"boolean","default":false},"containerBorderWidth":{"type":"number","default":"1"},"firstStateColor":{"type":"string","default":"#6ec1e4"},"secondStateColor":{"type":"string","default":"#6ec1e4"},"switcherBGColor":{"type":"string","default":"#f2f2f2"},"effect":{"type":"string","default":"fade"},"slide":{"type":"string","default":"top"},"firstLabelborder":{"type":"object"},"firstLabelPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"secondLabelPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"contentPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"containerPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"firstContentMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"containerMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}}}}');
+module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/content-switcher","title":"Content Switcher","icon":"content-switcher","category":"premium-blocks","description":"Example static block scaffolded with Create Block tool.","keywords":["content","switcher"],"supports":{"html":false},"editorScript":"file:./build/block.js","script":"gpb-content-switcher-block-script","editorStyle":"file:./build/index.css","style":"file:./build/style-block.css","attributes":{"block_id":{"type":"string"},"classMigrate":{"type":"boolean","default":false},"align":{"type":"string","default":"center"},"showLabel":{"type":"boolean","default":true},"firstLabel":{"type":"string","default":"Content #1"},"secondLabel":{"type":"string","default":"Content #2"},"display":{"type":"string","default":"inline"},"labelTag":{"type":"string","default":"h3"},"firstContent":{"type":"string","default":"Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."},"secondContent":{"type":"string","default":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."},"firstcontentlign":{"type":"string","default":"center"},"secondcontentlign":{"type":"string","default":"center"},"switcherStyles":{"type":"object","default":{"switchSize":15,"switchSizeMobile":15,"switchSizeTablet":15,"switchRadiusType":"em","switchRadius":1.5,"switchRadiusMobile":1.5,"switchRadiusTablet":1.5,"containerRadiusType":"%","containerRadius":50,"containerRadiusMobile":50,"containerRadiusTablet":50,"containerBackState1":"","backgroundImageIDState1":"","backgroundImageURLState1":"","backgroundRepeatState1":"no-reapet","backgroundPositionState1":"top center","backgroundSizeState1":"auto","fixedState1":false,"gradientLocationOneState1":"0","gradientColorTwoState1":"","gradientLocationTwoState1":"100","gradientTypeState1":"linear","gradientAngleState1":"180","gradientPositionState1":"center center","containerShadowColor":"","containerShadowBlur":"","containerShadowHorizontal":"","containerShadowVertical":"","containerShadowPosition":"inset","switchShadowColor":"","switchShadowBlur":"","switchShadowHorizontal":"","switchShadowVertical":"","switchShadowPosition":"inset"}},"backgroundTypeState2":{"type":"string","default":""},"labelStyles":{"type":"object","default":{"labelSpacing":15,"labelSpacingMobile":15,"labelSpacingTablet":15,"firstLabelColor":"rgb(84, 89, 95)","firstLabelLetter":0,"firstLabelLine":0,"firstLabelStyle":"normal","firstLabelUpper":false,"firstLabelWeight":"","firstLabelfontSize":23,"firstLabelfontSizeType":"px","firstLabelfontSizeMobile":23,"firstLabelfontSizeTablet":23,"firstLabelFontFamily":"Default","firstLabelShadowColor":"","firstLabelShadowBlur":"0","firstLabelShadowHorizontal":"0","firstLabelShadowVertical":"0","firstLabelborderType":"none","firstLabelborderRadius":0,"firstLabelborderColor":"","firstLabelBoxShadowColor":"","firstLabelBoxShadowBlur":"","firstLabelBoxShadowHorizontal":"","firstLabelBoxShadowVertical":"","firstLabelBoxShadowPosition":"inset","secondLabelColor":"rgb(84, 89, 95)","secondLabelLetter":0,"secondLabelLine":0,"secondLabelStyle":"normal","secondLabelUpper":false,"secondLabelWeight":"","secondLabelfontSize":23,"secondLabelfontSizeType":"px","secondLabelfontSizeMobile":23,"secondLabelfontSizeTablet":23,"secondLabelFontFamily":"Default","secondLabelShadowColor":"","secondLabelShadowBlur":"0","secondLabelShadowHorizontal":"0","secondLabelShadowVertical":"0","secondLabelborderType":"none","secondLabelborderRadius":0,"secondLabelborderColor":"","secondLabelBoxShadowColor":"","secondLabelBoxShadowBlur":"","secondLabelBoxShadowHorizontal":"","secondLabelBoxShadowVertical":"","secondLabelBoxShadowPosition":"inset"}},"firstLabelBorderTop":{"type":"number","default":"1"},"firstLabelBorderRight":{"type":"number","default":"1"},"firstLabelBorderBottom":{"type":"number","default":"1"},"firstLabelBorderLeft":{"type":"number","default":"1"},"firstLabelBorderUpdated":{"type":"boolean","default":false},"firstLabelBorderWidth":{"type":"number","default":"1"},"secondLabelBorderTop":{"type":"number","default":"1"},"secondLabelBorderRight":{"type":"number","default":"1"},"secondLabelBorderBottom":{"type":"number","default":"1"},"secondLabelBorderLeft":{"type":"number","default":"1"},"secondLabelBorderUpdated":{"type":"boolean","default":false},"secondLabelBorderWidth":{"type":"number","default":"1"},"contentStyles":{"type":"object","default":{"contentHeight":100,"contentHeightType":"px","contentHeightMobile":100,"contentHeightTablet":100}},"firstContentStyles":{"type":"object","default":{"firstContentColor":"#54595f","firstContentLetter":0,"firstContentLine":0,"firstContentStyle":"normal","firstContentUpper":false,"firstContentWeight":"","firstContentfontSize":"","firstContentfontSizeType":"px","firstContentfontSizeMobile":"","firstContentfontSizeTablet":"","firstContentFontFamily":"Default","firstContentShadowColor":"","firstContentShadowBlur":"0","firstContentShadowHorizontal":"0","firstContentShadowVertical":"0","firstContentBGColor":"","firstContentborderType":"none","firstContentborderRadius":0,"firstContentborderColor":"","firstContentBoxShadowColor":"","firstContentBoxShadowBlur":"","firstContentBoxShadowHorizontal":"","firstContentBoxShadowVertical":"","firstContentBoxShadowPosition":"inset"}},"firstContentBorderTop":{"type":"number","default":"1"},"firstContentBorderRight":{"type":"number","default":"1"},"firstContentBorderBottom":{"type":"number","default":"1"},"firstContentBorderLeft":{"type":"number","default":"1"},"firstContentBorderUpdated":{"type":"boolean","default":false},"firstContentBorderWidth":{"type":"number","default":"1"},"secondContentStyles":{"type":"object","default":{"secondContentColor":"#54595f","secondContentLetter":0,"secondContentLine":0,"secondContentStyle":"normal","secondContentUpper":false,"secondContentWeight":"","secondContentfontSize":"","secondContentfontSizeType":"px","secondContentfontSizeMobile":"","secondContentfontSizeTablet":"","secondContentFontFamily":"Default","secondContentShadowColor":"","secondContentShadowBlur":"0","secondContentShadowHorizontal":"0","secondContentShadowVertical":"0","secondContentBGColor":"","secondContentborderType":"none","secondContentborderRadius":0,"secondContentborderColor":"","secondContentBoxShadowColor":"","secondContentBoxShadowBlur":"","secondContentBoxShadowHorizontal":"","secondContentBoxShadowVertical":"","secondContentBoxShadowPosition":"inset"}},"secondContentBorderTop":{"type":"number","default":"1"},"secondContentBorderRight":{"type":"number","default":"1"},"secondContentBorderBottom":{"type":"number","default":"1"},"secondContentBorderLeft":{"type":"number","default":"1"},"secondContentBorderUpdated":{"type":"boolean","default":false},"secondContentBorderWidth":{"type":"number","default":"1"},"containerStyles":{"type":"object","default":{"containerBack":"","backgroundImageID":"","backgroundImageURL":"","backgroundRepeat":"no-reapet","backgroundPosition":"top center","backgroundSize":"auto","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientType":"linear","gradientAngle":"180","gradientPosition":"center center","containerborderType":"none","containerborderRadius":0,"containerborderColor":"","containerBoxShadowColor":"","containerBoxShadowBlur":"","containerBoxShadowHorizontal":"","containerBoxShadowVertical":"","containerBoxShadowPosition":"inset"}},"backgroundType":{"type":"string","default":""},"containerBorderTop":{"type":"number","default":"1"},"containerBorderRight":{"type":"number","default":"1"},"containerBorderBottom":{"type":"number","default":"1"},"containerBorderLeft":{"type":"number","default":"1"},"containerBorderUpdated":{"type":"boolean","default":false},"containerBorderWidth":{"type":"number","default":"1"},"firstStateColor":{"type":"string","default":"#6ec1e4"},"secondStateColor":{"type":"string","default":"#6ec1e4"},"switcherBGColor":{"type":"string","default":"#f2f2f2"},"effect":{"type":"string","default":"fade"},"slide":{"type":"string","default":"top"},"firstLabelborder":{"type":"object"},"firstLabelPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"secondLabelPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"contentPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"containerPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"firstContentMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"containerMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"switchSize":{"type":"object","default":{"Desktop":15}},"containerRadius":{"type":"object","default":{"Desktop":"50","unit":"%"}},"switchRadius":{"type":"object","default":{"Desktop":"1.5","unit":"em"}},"labelSpacing":{"type":"object","default":{"Desktop":"15"}},"contentHeight":{"type":"object","default":{"Desktop":"100","unit":"px"}}}}');
 
 /***/ })
 
