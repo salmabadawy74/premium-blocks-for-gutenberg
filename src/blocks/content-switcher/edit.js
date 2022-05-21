@@ -32,6 +32,8 @@ import PremiumShadow from "../../components/PremiumShadow";
 import PremiumBorder from "../../components/premium-border";
 import SpacingControl from '../../components/premium-responsive-spacing'
 import WebfontLoader from "../../components/typography/fontLoader"
+import InspectorTabs from '../../components/inspectorTabs';
+import InspectorTab from '../../components/inspectorTab';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -167,7 +169,12 @@ function Edit(props) {
         contentPadding,
         containerPadding,
         firstContentMargin,
-        containerMargin
+        containerMargin,
+        switchSize,
+        containerRadius,
+        switchRadius,
+        labelSpacing,
+        contentHeight
     } = attributes
 
     const DISPLAY = [
@@ -385,157 +392,146 @@ function Edit(props) {
                 />
             </BlockControls>
             <InspectorControls>
-                <PanelBody
-                    title={__("Switcher")}
-                    className="premium-panel-body"
-                    initialOpen={false}
-                >
-                    <ToggleControl
-                        label={__("Show Labels")}
-                        checked={showLabel}
-                        onChange={newCheck => setAttributes({ showLabel: newCheck })}
-                    />
-                    {showLabel && (
-                        <Fragment>
-                            <TextControl
-                                label={__("First Label")}
-                                value={firstLabel}
-                                onChange={value => setAttributes({ firstLabel: value })}
+                <InspectorTabs tabs={['layout', 'style', 'advance']}>
+                    <InspectorTab key={'layout'}>
+                        <PanelBody
+                            title={__("Switcher")}
+                            className="premium-panel-body"
+                            initialOpen={false}
+                        >
+                            <ToggleControl
+                                label={__("Show Labels")}
+                                checked={showLabel}
+                                onChange={newCheck => setAttributes({ showLabel: newCheck })}
                             />
-                            <TextControl
-                                label={__("Second Label")}
-                                value={secondLabel}
-                                onChange={value => setAttributes({ secondLabel: value })}
+                            {showLabel && (
+                                <Fragment>
+                                    <TextControl
+                                        label={__("First Label")}
+                                        value={firstLabel}
+                                        onChange={value => setAttributes({ firstLabel: value })}
+                                    />
+                                    <TextControl
+                                        label={__("Second Label")}
+                                        value={secondLabel}
+                                        onChange={value => setAttributes({ secondLabel: value })}
+                                    />
+                                    <SelectControl
+                                        label={__("HTML Tag")}
+                                        options={TAGS}
+                                        value={labelTag}
+                                        onChange={(newValue) => setAttributes({ labelTag: newValue })}
+                                    />
+                                    <SelectControl
+                                        label={__("Display")}
+                                        options={DISPLAY}
+                                        value={display}
+                                        onChange={newValue => setAttributes({ display: newValue })}
+                                    />
+                                </Fragment>
+                            )}
+                            <p>{__("Alignment")}</p>
+                            <Toolbar
+                                controls={ALIGNS.map(contentAlign => ({
+                                    icon: "editor-align" + contentAlign,
+                                    isActive: contentAlign === align,
+                                    onClick: () => setAttributes({ align: contentAlign })
+                                }))}
                             />
                             <SelectControl
-                                label={__("HTML Tag")}
-                                options={TAGS}
-                                value={labelTag}
-                                onChange={(newValue) => setAttributes({ labelTag: newValue })}
+                                label={__("Effect")}
+                                options={EFFECTS}
+                                value={effect}
+                                onChange={newEffect => setAttributes({ effect: newEffect })}
                             />
-                            <SelectControl
-                                label={__("Display")}
-                                options={DISPLAY}
-                                value={display}
-                                onChange={newValue => setAttributes({ display: newValue })}
+                            {effect == 'slide' &&
+                                <SelectControl
+                                    label={__("Slide Direction")}
+                                    options={SLIDE}
+                                    value={slide}
+                                    onChange={newEffect => setAttributes({ slide: newEffect })}
+                                />
+                            }
+                        </PanelBody>
+                        <PanelBody
+                            title={__("Content 1")}
+                            className="premium-panel-body"
+                            initialOpen={false}
+                        >
+                            <TextareaControl
+                                label={__("Content", 'premium-block-for-gutenberg')}
+                                value={firstContent}
+                                onChange={newEffect => setAttributes({ firstContent: newEffect })}
                             />
-                        </Fragment>
-                    )}
-                    <p>{__("Alignment")}</p>
-                    <Toolbar
-                        controls={ALIGNS.map(contentAlign => ({
-                            icon: "editor-align" + contentAlign,
-                            isActive: contentAlign === align,
-                            onClick: () => setAttributes({ align: contentAlign })
-                        }))}
-                    />
-                    <SelectControl
-                        label={__("Effect")}
-                        options={EFFECTS}
-                        value={effect}
-                        onChange={newEffect => setAttributes({ effect: newEffect })}
-                    />
-                    {effect == 'slide' &&
-                        <SelectControl
-                            label={__("Slide Direction")}
-                            options={SLIDE}
-                            value={slide}
-                            onChange={newEffect => setAttributes({ slide: newEffect })}
-                        />
-                    }
-                </PanelBody>
-                <PanelBody
-                    title={__("Content 1")}
-                    className="premium-panel-body"
-                    initialOpen={false}
-                >
-                    <TextareaControl
-                        label={__("Content", 'premium-block-for-gutenberg')}
-                        value={firstContent}
-                        onChange={newEffect => setAttributes({ firstContent: newEffect })}
-                    />
-                    <p>{__("Alignment")}</p>
-                    <Toolbar
-                        controls={ALIGNS.map(contentAlign => ({
-                            icon: "editor-align" + contentAlign,
-                            isActive: contentAlign === firstcontentlign,
-                            onClick: () => setAttributes({ firstcontentlign: contentAlign })
-                        }))}
-                    />
-                </PanelBody>
-                <PanelBody
-                    title={__("Content 2")}
-                    className="premium-panel-body"
-                    initialOpen={false}
-                >
-                    <TextareaControl
-                        label={__("Content", 'premium-block-for-gutenberg')}
-                        value={secondContent}
-                        onChange={newEffect => setAttributes({ secondContent: newEffect })}
-                    />
-                    <p>{__("Alignment")}</p>
-                    <Toolbar
-                        controls={ALIGNS.map(contentAlign => ({
-                            icon: "editor-align" + contentAlign,
-                            isActive: contentAlign === secondcontentlign,
-                            onClick: () => setAttributes({ secondcontentlign: contentAlign })
-                        }))}
-                    />
-                </PanelBody>
-                <PanelBody
-                    title={__("Switcher Style")}
-                    className="premium-panel-body"
-                    initialOpen={false}
-                >
-                    <ResponsiveRangeControl
-                        label={__("Size", 'premium-block-for-gutenberg')}
-                        value={switcherStyles.switchSize}
-                        tabletValue={switcherStyles.switchSizeTablet}
-                        mobileValue={switcherStyles.switchSizeMobile}
-                        onChange={(value) => saveSwitcherStyles('switchSize', value)}
-                        onChangeTablet={(value) => saveSwitcherStyles('switchSizeTablet', value)}
-                        onChangeMobile={(value) => saveSwitcherStyles('switchSizeMobile', value)}
-                        showUnit={false}
-                        defaultValue={15}
-                        min={1}
-                        max={40}
-                    />
-                    <ResponsiveRangeControl
-                        label={__("Controller Border Radius", 'premium-block-for-gutenberg')}
-                        value={switcherStyles.containerRadius}
-                        tabletValue={switcherStyles.containerRadiusTablet}
-                        mobileValue={switcherStyles.containerRadiusMobile}
-                        onChange={(value) => saveSwitcherStyles('containerRadius', value)}
-                        onChangeTablet={(value) => saveSwitcherStyles('containerRadiusTablet', value)}
-                        onChangeMobile={(value) => saveSwitcherStyles('containerRadiusMobile', value)}
-                        onChangeUnit={(key) =>
-                            saveSwitcherStyles('containerRadiusType', key)
-                        }
-                        unit={switcherStyles.containerRadiusType}
-                        showUnit={true}
-                        defaultValue={50}
-                        min={1}
-                        max={100}
-                    />
-                    <ResponsiveRangeControl
-                        label={__("Switcher Border Radius", 'premium-block-for-gutenberg')}
-                        value={switcherStyles.switchRadius}
-                        tabletValue={switcherStyles.switchRadiusTablet}
-                        mobileValue={switcherStyles.switchRadiusMobile}
-                        onChange={(value) => saveSwitcherStyles('switchRadius', value)}
-                        onChangeTablet={(value) => saveSwitcherStyles('switchRadiusTablet', value)}
-                        onChangeMobile={(value) => saveSwitcherStyles('switchRadiusMobile', value)}
-                        onChangeUnit={(key) =>
-                            saveSwitcherStyles('switchRadiusType', key)
-                        }
-                        unit={switcherStyles.switchRadiusType}
-                        showUnit={true}
-                        defaultValue={1.5}
-                        min={1}
-                        max={100}
-                    />
-                    {/* <h3>{__("Controller State 1 Color")}</h3> */}
-                    {/* <PremiumBackgroundControl
+                            <p>{__("Alignment")}</p>
+                            <Toolbar
+                                controls={ALIGNS.map(contentAlign => ({
+                                    icon: "editor-align" + contentAlign,
+                                    isActive: contentAlign === firstcontentlign,
+                                    onClick: () => setAttributes({ firstcontentlign: contentAlign })
+                                }))}
+                            />
+                        </PanelBody>
+                        <PanelBody
+                            title={__("Content 2")}
+                            className="premium-panel-body"
+                            initialOpen={false}
+                        >
+                            <TextareaControl
+                                label={__("Content", 'premium-block-for-gutenberg')}
+                                value={secondContent}
+                                onChange={newEffect => setAttributes({ secondContent: newEffect })}
+                            />
+                            <p>{__("Alignment")}</p>
+                            <Toolbar
+                                controls={ALIGNS.map(contentAlign => ({
+                                    icon: "editor-align" + contentAlign,
+                                    isActive: contentAlign === secondcontentlign,
+                                    onClick: () => setAttributes({ secondcontentlign: contentAlign })
+                                }))}
+                            />
+                        </PanelBody>
+                    </InspectorTab>
+                    <InspectorTab key={'style'}>
+                        <PanelBody
+                            title={__("Switcher Style")}
+                            className="premium-panel-body"
+                            initialOpen={false}
+                        >
+                            <ResponsiveRangeControl
+                                label={__('Size', 'premium-blocks-for-gutenberg')}
+                                value={switchSize}
+                                onChange={(value) => setAttributes({ switchSize: value })}
+                                min={1}
+                                max={40}
+                                step={1}
+                                showUnit={false}
+                                defaultValue={15}
+                            />
+                            <ResponsiveRangeControl
+                                label={__('Controller Border Radius', 'premium-blocks-for-gutenberg')}
+                                value={containerRadius}
+                                onChange={(value) => setAttributes({ containerRadius: value })}
+                                min={1}
+                                max={100}
+                                step={1}
+                                showUnit={true}
+                                units={['px', 'em', 'rem']}
+                                defaultValue={50}
+                            />
+                            <ResponsiveRangeControl
+                                label={__('Switcher Border Radius', 'premium-blocks-for-gutenberg')}
+                                value={switchRadius}
+                                onChange={(value) => setAttributes({ switchRadius: value })}
+                                min={1}
+                                max={100}
+                                step={1}
+                                showUnit={true}
+                                units={['px', 'em', 'rem']}
+                                defaultValue={1.5}
+                            />
+                            {/* <h3>{__("Controller State 1 Color")}</h3> */}
+                            {/* <PremiumBackgroundControl
                         setAttributes={setAttributes}
                         saveContainerStyle={saveSwitcherStyles}
                         backgroundType={backgroundType}
@@ -553,8 +549,8 @@ function Edit(props) {
                         gradientPosition={switcherStyles[0].gradientPositionState1}
                         gradientType={switcherStyles[0].gradientTypeState1}
                     /> */}
-                    {/* <h3>{__("Controller State 2 Color")}</h3> */}
-                    {/* <PremiumBackgroundControl
+                            {/* <h3>{__("Controller State 2 Color")}</h3> */}
+                            {/* <PremiumBackgroundControl
                             setAttributes={setAttributes}
                             saveContainerStyle={saveSwitcherStyles}
                             backgroundType={backgroundTypeState2}
@@ -572,640 +568,631 @@ function Edit(props) {
                             gradientPosition={switcherStyles[0].gradientPositionState2}
                             gradientType={switcherStyles[0].gradientTypeState2}
                         /> */}
-                    <PremiumShadow
-                        label={__("Controller Shadow", 'premium-blocks-for-gutenberg')}
-                        boxShadow={true}
-                        color={switcherStyles.containerShadowColor}
-                        blur={switcherStyles.containerShadowBlur}
-                        horizontal={switcherStyles.containerShadowHorizontal}
-                        vertical={switcherStyles.containerShadowVertical}
-                        position={switcherStyles.containerShadowPosition}
-                        onChangeColor={newColor =>
-                            saveSwitcherStyles('containerShadowColor', newColor)
-                        }
-                        onChangeBlur={newBlur => saveSwitcherStyles('containerShadowBlur', newBlur)}
-                        onChangehHorizontal={newValue =>
-                            saveSwitcherStyles('containerShadowHorizontal', newValue)
-                        }
-                        onChangeVertical={newValue =>
-                            saveSwitcherStyles('containerShadowVertical', newValue)
-                        }
-                        onChangePosition={newValue =>
-                            saveSwitcherStyles('containerShadowPosition', newValue)
-                        }
-                    />
-                    <PremiumShadow
-                        label={__("Switcher Shadow", 'premium-blocks-for-gutenberg')}
-                        boxShadow={true}
-                        color={switcherStyles.switchShadowColor}
-                        blur={switcherStyles.switchShadowBlur}
-                        horizontal={switcherStyles.switchShadowHorizontal}
-                        vertical={switcherStyles.switchShadowVertical}
-                        position={switcherStyles.switchShadowPosition}
-                        onChangeColor={newColor =>
-                            saveSwitcherStyles('switchShadowColor', newColor)
-                        }
-                        onChangeBlur={newBlur => saveSwitcherStyles('switchShadowBlur', newBlur)}
-                        onChangehHorizontal={newValue =>
-                            saveSwitcherStyles('switchShadowHorizontal', newValue)
-                        }
-                        onChangeVertical={newValue =>
-                            saveSwitcherStyles('switchShadowVertical', newValue)
-                        }
-                        onChangePosition={newValue =>
-                            saveSwitcherStyles('switchShadowPosition', newValue)
-                        }
-                    />
-                </PanelBody>
-                {showLabel && (<PanelBody
-                    title={__("Labels Style")}
-                    className="premium-panel-body"
-                    initialOpen={false}
-                >
-                    <ResponsiveRangeControl
-                        label={__("Spacing", 'premium-block-for-gutenberg')}
-                        value={labelStyles.labelSpacing}
-                        tabletValue={labelStyles.labelSpacingTablet}
-                        mobileValue={labelStyles.labelSpacingMobile}
-                        onChange={(value) => saveLabelStyles('labelSpacing', value)}
-                        onChangeTablet={(value) => saveLabelStyles('labelSpacingTablet', value)}
-                        onChangeMobile={(value) => saveLabelStyles('labelSpacingMobile', value)}
-                        showUnit={false}
-                        defaultValue={15}
-                        min={1}
-                        max={100}
-                    />
-                    <TabPanel
-                        className="premium-color-tabpanel"
-                        activeClass="active-tab"
-                        tabs={[
-                            {
-                                name: "firstLabel",
-                                title: "First Label",
-                                className: "premium-tab",
-                            },
-                            {
-                                name: "secondLabel",
-                                title: "Second Label",
-                                className: "premium-tab",
-                            },
-                        ]}
-                    >
-                        {(tab) => {
-                            let tabout;
-                            if ("firstLabel" === tab.name) {
-                                tabout = (
-                                    <Fragment>
-                                        <AdvancedPopColorControl
-                                            label={__("Text Color", 'premium-block-for-gutenberg')}
-                                            colorValue={labelStyles.firstLabelColor}
-                                            colorDefault={''}
-                                            onColorChange={newValue =>
-                                                saveLabelStyles(
-                                                    'firstLabelColor', newValue
-                                                )
-                                            }
-                                        />
-                                        <PremiumTypo
-                                            components={["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"]}
-                                            setAttributes={saveLabelStyles}
-                                            fontSizeType={{ value: labelStyles.firstLabelfontSizeType, label: __("firstLabelfontSizeType") }}
-                                            fontSize={labelStyles.firstLabelfontSize}
-                                            fontSizeMobile={labelStyles.firstLabelfontSizeMobile}
-                                            fontSizeTablet={labelStyles.firstLabelfontSizeTablet}
-                                            onChangeSize={newSize => saveLabelStyles('firstLabelfontSize', newSize)}
-                                            onChangeTabletSize={newSize => saveLabelStyles('firstLabelfontSizeTablet', newSize)}
-                                            onChangeMobileSize={newSize => saveLabelStyles('firstLabelfontSizeMobile', newSize)}
-                                            weight={labelStyles.firstLabelWeight}
-                                            style={labelStyles.firstLabelStyle}
-                                            spacing={labelStyles.firstLabelLetter}
-                                            upper={labelStyles.firstLabelUpper}
-                                            line={labelStyles.firstLabelLine}
-                                            fontFamily={labelStyles.firstLabelFontFamily}
-                                            onChangeWeight={newWeight =>
-                                                saveLabelStyles('firstLabelWeight', newWeight || 500)
-                                            }
-                                            onChangeStyle={newStyle =>
-                                                saveLabelStyles('firstLabelStyle', newStyle)
-                                            }
-                                            onChangeSpacing={newValue =>
-                                                saveLabelStyles('firstLabelLetter', newValue)
-                                            }
-                                            onChangeUpper={check => saveLabelStyles('firstLabelUpper', check)}
-                                            onChangeLine={newValue => saveLabelStyles('firstLabelLine', newValue)}
-                                            onChangeFamily={(fontFamily) => saveLabelStyles('firstLabelFontFamily', fontFamily)}
-                                        />
-                                        <PremiumShadow
-                                            label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
-                                            color={labelStyles.firstLabelShadowColor}
-                                            blur={labelStyles.firstLabelShadowBlur}
-                                            horizontal={labelStyles.firstLabelShadowHorizontal}
-                                            vertical={labelStyles.firstLabelShadowVertical}
-                                            onChangeColor={newColor =>
-                                                saveLabelStyles('firstLabelShadowColor', newColor)
-                                            }
-                                            onChangeBlur={newBlur => saveLabelStyles('firstLabelShadowBlur', newBlur)}
-                                            onChangehHorizontal={newValue =>
-                                                saveLabelStyles('firstLabelShadowHorizontal', newValue)
-                                            }
-                                            onChangeVertical={newValue =>
-                                                saveLabelStyles('firstLabelShadowVertical', newValue)
-                                            }
-                                        />
-                                        <PremiumBorder
-                                            borderType={labelStyles.firstLabelborderType}
-                                            borderWidth={firstLabelBorderWidth}
-                                            top={firstLabelBorderTop}
-                                            right={firstLabelBorderRight}
-                                            bottom={firstLabelBorderBottom}
-                                            left={firstLabelBorderLeft}
-                                            borderColor={labelStyles.firstLabelborderColor}
-                                            borderRadius={labelStyles.firstLabelborderRadius}
-                                            onChangeType={newType => saveLabelStyles('firstLabelborderType', newType)}
-                                            onChangeWidth={({ top, right, bottom, left }) =>
-                                                setAttributes({
-                                                    firstLabelBorderUpdated: true,
-                                                    firstLabelBorderTop: top,
-                                                    firstLabelBorderRight: right,
-                                                    firstLabelBorderBottom: bottom,
-                                                    firstLabelBorderLeft: left,
-                                                })
-                                            }
-                                            onChangeColor={colorValue =>
-                                                saveLabelStyles('firstLabelborderColor', colorValue)
-                                            }
-                                            onChangeRadius={newrRadius =>
-                                                saveLabelStyles('firstLabelborderRadius', newrRadius)
-                                            }
-                                        />
-                                        <PremiumShadow
-                                            label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
-                                            boxShadow={true}
-                                            color={labelStyles.firstLabelBoxShadowColor}
-                                            blur={labelStyles.firstLabelBoxShadowBlur}
-                                            horizontal={labelStyles.firstLabelBoxShadowHorizontal}
-                                            vertical={labelStyles.firstLabelBoxShadowVertical}
-                                            position={labelStyles.firstLabelBoxShadowPosition}
-                                            onChangeColor={newColor =>
-                                                saveLabelStyles('firstLabelBoxShadowColor', newColor)
-                                            }
-                                            onChangeBlur={newBlur => saveLabelStyles('firstLabelBoxShadowBlur', newBlur)}
-                                            onChangehHorizontal={newValue =>
-                                                saveLabelStyles('firstLabelBoxShadowHorizontal', newValue)
-                                            }
-                                            onChangeVertical={newValue =>
-                                                saveLabelStyles('firstLabelBoxShadowVertical', newValue)
-                                            }
-                                            onChangePosition={newValue =>
-                                                saveLabelStyles('firstLabelBoxShadowPosition', newValue)
-                                            }
-                                        />
-                                        <SpacingControl
-                                            label={__('Padding', 'premium-blocks-for-gutenberg')}
-                                            value={firstLabelPadding}
-                                            onChange={(value) => setAttributes({ firstLabelPadding: value })}
-                                            showUnits={true}
-                                            responsive={true}
-                                        />
-                                    </Fragment>
-                                );
-                            }
-                            if ("secondLabel" === tab.name) {
-                                tabout = (
-                                    <Fragment>
-                                        <AdvancedPopColorControl
-                                            label={__("Text Color", 'premium-block-for-gutenberg')}
-                                            colorValue={labelStyles.secondLabelColor}
-                                            colorDefault={''}
-                                            onColorChange={newValue =>
-                                                saveLabelStyles(
-                                                    'secondLabelColor', newValue
-                                                )
-                                            }
-                                        />
-                                        <PremiumTypo
-                                            components={["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"]}
-                                            setAttributes={saveLabelStyles}
-                                            fontSizeType={{ value: labelStyles.secondLabelfontSizeType, label: __("secondLabelfontSizeType") }}
-                                            fontSize={labelStyles.secondLabelfontSize}
-                                            fontSizeMobile={labelStyles.secondLabelfontSizeMobile}
-                                            fontSizeTablet={labelStyles.secondLabelfontSizeTablet}
-                                            onChangeSize={newSize => saveLabelStyles('secondLabelfontSize', newSize)}
-                                            onChangeTabletSize={newSize => saveLabelStyles('secondLabelfontSizeTablet', newSize)}
-                                            onChangeMobileSize={newSize => saveLabelStyles('secondLabelfontSizeMobile', newSize)}
-                                            weight={labelStyles.secondLabelWeight}
-                                            style={labelStyles.secondLabelStyle}
-                                            spacing={labelStyles.secondLabelLetter}
-                                            upper={labelStyles.secondLabelUpper}
-                                            line={labelStyles.secondLabelLine}
-                                            fontFamily={labelStyles.secondLabelFontFamily}
-                                            onChangeWeight={newWeight =>
-                                                saveLabelStyles('secondLabelWeight', newWeight || 500)
-                                            }
-                                            onChangeStyle={newStyle =>
-                                                saveLabelStyles('secondLabelStyle', newStyle)
-                                            }
-                                            onChangeSpacing={newValue =>
-                                                saveLabelStyles('secondLabelLetter', newValue)
-                                            }
-                                            onChangeUpper={check => saveLabelStyles('secondLabelUpper', check)}
-                                            onChangeLine={newValue => saveLabelStyles('secondLabelLine', newValue)}
-                                            onChangeFamily={(fontFamily) => saveLabelStyles('secondLabelFontFamily', fontFamily)}
-                                        />
-                                        <PremiumShadow
-                                            label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
-                                            color={labelStyles.secondLabelShadowColor}
-                                            blur={labelStyles.secondLabelShadowBlur}
-                                            horizontal={labelStyles.secondLabelShadowHorizontal}
-                                            vertical={labelStyles.secondLabelShadowVertical}
-                                            onChangeColor={newColor =>
-                                                saveLabelStyles('secondLabelShadowColor', newColor)
-                                            }
-                                            onChangeBlur={newBlur => saveLabelStyles('secondLabelShadowBlur', newBlur)}
-                                            onChangehHorizontal={newValue =>
-                                                saveLabelStyles('secondLabelShadowHorizontal', newValue)
-                                            }
-                                            onChangeVertical={newValue =>
-                                                saveLabelStyles('secondLabelShadowVertical', newValue)
-                                            }
-                                        />
-                                        <PremiumBorder
-                                            borderType={labelStyles.secondLabelborderType}
-                                            borderWidth={secondLabelBorderWidth}
-                                            top={secondLabelBorderTop}
-                                            right={secondLabelBorderRight}
-                                            bottom={secondLabelBorderBottom}
-                                            left={secondLabelBorderLeft}
-                                            borderColor={labelStyles.secondLabelborderColor}
-                                            borderRadius={labelStyles.secondLabelborderRadius}
-                                            onChangeType={newType => saveLabelStyles('secondLabelborderType', newType)}
-                                            onChangeWidth={({ top, right, bottom, left }) =>
-                                                setAttributes({
-                                                    secondLabelBorderUpdated: true,
-                                                    secondLabelBorderTop: top,
-                                                    secondLabelBorderRight: right,
-                                                    secondLabelBorderBottom: bottom,
-                                                    secondLabelBorderLeft: left,
-                                                })
-                                            }
-                                            onChangeColor={colorValue =>
-                                                saveLabelStyles('secondLabelborderColor', colorValue)
-                                            }
-                                            onChangeRadius={newrRadius =>
-                                                saveLabelStyles('secondLabelborderRadius', newrRadius)
-                                            }
-                                        />
-                                        <PremiumShadow
-                                            label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
-                                            boxShadow={true}
-                                            color={labelStyles.secondLabelBoxShadowColor}
-                                            blur={labelStyles.secondLabelBoxShadowBlur}
-                                            horizontal={labelStyles.secondLabelBoxShadowHorizontal}
-                                            vertical={labelStyles.secondLabelBoxShadowVertical}
-                                            position={labelStyles.secondLabelBoxShadowPosition}
-                                            onChangeColor={newColor =>
-                                                saveLabelStyles('secondLabelBoxShadowColor', newColor)
-                                            }
-                                            onChangeBlur={newBlur => saveLabelStyles('secondLabelBoxShadowBlur', newBlur)}
-                                            onChangehHorizontal={newValue =>
-                                                saveLabelStyles('secondLabelBoxShadowHorizontal', newValue)
-                                            }
-                                            onChangeVertical={newValue =>
-                                                saveLabelStyles('secondLabelBoxShadowVertical', newValue)
-                                            }
-                                            onChangePosition={newValue =>
-                                                saveLabelStyles('secondLabelBoxShadowPosition', newValue)
-                                            }
-                                        />
-                                        <SpacingControl
-                                            label={__('Padding', 'premium-blocks-for-gutenberg')}
-                                            value={secondLabelPadding}
-                                            onChange={(value) => setAttributes({ secondLabelPadding: value })}
-                                            showUnits={true}
-                                            responsive={true}
-                                        />
-                                    </Fragment>
-                                );
-                            }
-                            return (
-                                <div>
-                                    {tabout}
-                                </div>
-                            );
-                        }}
-                    </TabPanel>
-                </PanelBody>
-                )}
-                <PanelBody
-                    title={__("Content Style")}
-                    className="premium-panel-body"
-                    initialOpen={false}
-                >
-                    <ResponsiveRangeControl
-                        label={__("Height", 'premium-block-for-gutenberg')}
-                        value={contentStyles.contentHeight}
-                        tabletValue={contentStyles.contentHeightTablet}
-                        mobileValue={contentStyles.contentHeightMobile}
-                        onChange={(value) => saveContentStyles('contentHeight', value)}
-                        onChangeTablet={(value) => saveContentStyles('contentHeightTablet', value)}
-                        onChangeMobile={(value) => saveContentStyles('contentHeightMobile', value)}
-                        onChangeUnit={(key) =>
-                            saveContentStyles('contentHeightType', key)
-                        }
-                        unit={contentStyles.contentHeightType}
-                        showUnit={true}
-                        defaultValue={100}
-                        min={1}
-                        max={1000}
-                    />
-                    <TabPanel
-                        className="premium-color-tabpanel"
-                        activeClass="active-tab"
-                        tabs={[
-                            {
-                                name: "first",
-                                title: "First Content",
-                                className: "premium-tab",
-                            },
-                            {
-                                name: "second",
-                                title: "Second Content",
-                                className: "premium-tab",
-                            },
-                        ]}
-                    >
-                        {(tab) => {
-                            let tabout;
-                            if ("first" === tab.name) {
-                                tabout = (
-                                    <Fragment>
-                                        <AdvancedPopColorControl
-                                            label={__("Text Color", 'premium-block-for-gutenberg')}
-                                            colorValue={firstContentStyles.firstContentColor}
-                                            colorDefault={''}
-                                            onColorChange={newValue =>
-                                                saveFirstContentStyles(
-                                                    'firstContentColor', newValue
-                                                )
-                                            }
-                                        />
-                                        <AdvancedPopColorControl
-                                            label={__("Background Color", 'premium-block-for-gutenberg')}
-                                            colorValue={firstContentStyles.firstContentBGColor}
-                                            colorDefault={''}
-                                            onColorChange={newValue =>
-                                                saveFirstContentStyles(
-                                                    'firstContentBGColor', newValue
-                                                )
-                                            }
-                                        />
-                                        <PremiumTypo
-                                            components={["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"]}
-                                            setAttributes={saveFirstContentStyles}
-                                            fontSizeType={{ value: firstContentStyles.firstContentfontSizeType, label: __("firstContentfontSizeType") }}
-                                            fontSize={firstContentStyles.firstContentfontSize}
-                                            fontSizeMobile={firstContentStyles.firstContentfontSizeMobile}
-                                            fontSizeTablet={firstContentStyles.firstContentfontSizeTablet}
-                                            onChangeSize={newSize => saveFirstContentStyles('firstContentfontSize', newSize)}
-                                            onChangeTabletSize={newSize => saveFirstContentStyles('firstContentfontSizeTablet', newSize)}
-                                            onChangeMobileSize={newSize => saveFirstContentStyles('firstContentfontSizeMobile', newSize)}
-                                            weight={firstContentStyles.firstContentWeight}
-                                            style={firstContentStyles.firstContentStyle}
-                                            spacing={firstContentStyles.firstContentLetter}
-                                            upper={firstContentStyles.firstContentUpper}
-                                            line={firstContentStyles.firstContentLine}
-                                            fontFamily={firstContentStyles.firstContentFontFamily}
-                                            onChangeWeight={newWeight =>
-                                                saveFirstContentStyles('firstContentWeight', newWeight || 500)
-                                            }
-                                            onChangeStyle={newStyle =>
-                                                saveFirstContentStyles('firstContentStyle', newStyle)
-                                            }
-                                            onChangeSpacing={newValue =>
-                                                saveFirstContentStyles('firstContentLetter', newValue)
-                                            }
-                                            onChangeUpper={check => saveFirstContentStyles('firstContentUpper', check)}
-                                            onChangeLine={newValue => saveFirstContentStyles('firstContentLine', newValue)}
-                                            onChangeFamily={(fontFamily) => saveFirstContentStyles('firstContentFontFamily', fontFamily)}
-                                        />
-                                        <PremiumShadow
-                                            label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
-                                            color={firstContentStyles.firstContentShadowColor}
-                                            blur={firstContentStyles.firstContentShadowBlur}
-                                            horizontal={firstContentStyles.firstContentShadowHorizontal}
-                                            vertical={firstContentStyles.firstContentShadowVertical}
-                                            onChangeColor={newColor =>
-                                                saveFirstContentStyles('firstContentShadowColor', newColor)
-                                            }
-                                            onChangeBlur={newBlur => saveFirstContentStyles('firstContentShadowBlur', newBlur)}
-                                            onChangehHorizontal={newValue =>
-                                                saveFirstContentStyles('firstContentShadowHorizontal', newValue)
-                                            }
-                                            onChangeVertical={newValue =>
-                                                saveFirstContentStyles('firstContentShadowVertical', newValue)
-                                            }
-                                        />
-                                        <PremiumBorder
-                                            borderType={firstContentStyles.firstContentborderType}
-                                            borderWidth={firstContentBorderWidth}
-                                            top={firstContentBorderTop}
-                                            right={firstContentBorderRight}
-                                            bottom={firstContentBorderBottom}
-                                            left={firstContentBorderLeft}
-                                            borderColor={firstContentStyles.firstContentborderColor}
-                                            borderRadius={firstContentStyles.firstContentborderRadius}
-                                            onChangeType={newType => saveFirstContentStyles('firstContentborderType', newType)}
-                                            onChangeWidth={({ top, right, bottom, left }) =>
-                                                setAttributes({
-                                                    firstContentBorderUpdated: true,
-                                                    firstContentBorderTop: top,
-                                                    firstContentBorderRight: right,
-                                                    firstContentBorderBottom: bottom,
-                                                    firstContentBorderLeft: left,
-                                                })
-                                            }
-                                            onChangeColor={colorValue =>
-                                                saveFirstContentStyles('firstContentborderColor', colorValue)
-                                            }
-                                            onChangeRadius={newrRadius =>
-                                                saveFirstContentStyles('firstContentborderRadius', newrRadius)
-                                            }
-                                        />
-                                        <PremiumShadow
-                                            label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
-                                            boxShadow={true}
-                                            color={firstContentStyles.firstContentBoxShadowColor}
-                                            blur={firstContentStyles.firstContentBoxShadowBlur}
-                                            horizontal={firstContentStyles.firstContentBoxShadowHorizontal}
-                                            vertical={firstContentStyles.firstContentBoxShadowVertical}
-                                            position={firstContentStyles.firstContentBoxShadowPosition}
-                                            onChangeColor={newColor =>
-                                                saveFirstContentStyles('firstContentBoxShadowColor', newColor)
-                                            }
-                                            onChangeBlur={newBlur => saveFirstContentStyles('firstContentBoxShadowBlur', newBlur)}
-                                            onChangehHorizontal={newValue =>
-                                                saveFirstContentStyles('firstContentBoxShadowHorizontal', newValue)
-                                            }
-                                            onChangeVertical={newValue =>
-                                                saveFirstContentStyles('firstContentBoxShadowVertical', newValue)
-                                            }
-                                            onChangePosition={newValue =>
-                                                saveFirstContentStyles('firstContentBoxShadowPosition', newValue)
-                                            }
-                                        />
-                                    </Fragment>
-                                );
-                            }
-                            if ("second" === tab.name) {
-                                tabout = (
-                                    <Fragment>
-                                        <AdvancedPopColorControl
-                                            label={__("Text Color", 'premium-block-for-gutenberg')}
-                                            colorValue={secondContentStyles.secondContentColor}
-                                            colorDefault={''}
-                                            onColorChange={newValue =>
-                                                saveSecondContentStyles(
-                                                    'secondContentColor', newValue
-                                                )
-                                            }
-                                        />
-                                        <AdvancedPopColorControl
-                                            label={__("Background Color", 'premium-block-for-gutenberg')}
-                                            colorValue={secondContentStyles.secondContentBGColor}
-                                            colorDefault={''}
-                                            onColorChange={newValue =>
-                                                saveSecondContentStyles(
-                                                    'secondContentBGColor', newValue
-                                                )
-                                            }
-                                        />
-                                        <PremiumTypo
-                                            components={["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"]}
-                                            setAttributes={saveSecondContentStyles}
-                                            fontSizeType={{ value: secondContentStyles.secondContentfontSizeType, label: __("secondContentfontSizeType") }}
-                                            fontSize={secondContentStyles.secondContentfontSize}
-                                            fontSizeMobile={secondContentStyles.secondContentfontSizeMobile}
-                                            fontSizeTablet={secondContentStyles.secondContentfontSizeTablet}
-                                            onChangeSize={newSize => saveSecondContentStyles('secondContentfontSize', newSize)}
-                                            onChangeTabletSize={newSize => saveSecondContentStyles('secondContentfontSizeTablet', newSize)}
-                                            onChangeMobileSize={newSize => saveSecondContentStyles('secondContentfontSizeMobile', newSize)}
-                                            weight={secondContentStyles.secondContentWeight}
-                                            style={secondContentStyles.secondContentStyle}
-                                            spacing={secondContentStyles.secondContentLetter}
-                                            upper={secondContentStyles.secondContentUpper}
-                                            line={secondContentStyles.secondContentLine}
-                                            fontFamily={secondContentStyles.secondContentFontFamily}
-                                            onChangeWeight={newWeight =>
-                                                saveSecondContentStyles('secondContentWeight', newWeight || 500)
-                                            }
-                                            onChangeStyle={newStyle =>
-                                                saveSecondContentStyles('secondContentStyle', newStyle)
-                                            }
-                                            onChangeSpacing={newValue =>
-                                                saveSecondContentStyles('secondContentLetter', newValue)
-                                            }
-                                            onChangeUpper={check => saveSecondContentStyles('secondContentUpper', check)}
-                                            onChangeLine={newValue => saveSecondContentStyles('secondContentLine', newValue)}
-                                            onChangeFamily={(fontFamily) => saveSecondContentStyles('secondContentFontFamily', fontFamily)}
-                                        />
-                                        <PremiumShadow
-                                            label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
-                                            color={secondContentStyles.secondContentShadowColor}
-                                            blur={secondContentStyles.secondContentShadowBlur}
-                                            horizontal={secondContentStyles.secondContentShadowHorizontal}
-                                            vertical={secondContentStyles.secondContentShadowVertical}
-                                            onChangeColor={newColor =>
-                                                saveSecondContentStyles('secondContentShadowColor', newColor)
-                                            }
-                                            onChangeBlur={newBlur => saveSecondContentStyles('secondContentShadowBlur', newBlur)}
-                                            onChangehHorizontal={newValue =>
-                                                saveSecondContentStyles('secondContentShadowHorizontal', newValue)
-                                            }
-                                            onChangeVertical={newValue =>
-                                                saveSecondContentStyles('secondContentShadowVertical', newValue)
-                                            }
-                                        />
-                                        <PremiumBorder
-                                            borderType={secondContentStyles.secondContentborderType}
-                                            borderWidth={secondContentBorderWidth}
-                                            top={secondContentBorderTop}
-                                            right={secondContentBorderRight}
-                                            bottom={secondContentBorderBottom}
-                                            left={secondContentBorderLeft}
-                                            borderColor={secondContentStyles.secondContentborderColor}
-                                            borderRadius={secondContentStyles.secondContentborderRadius}
-                                            onChangeType={newType => saveSecondContentStyles('secondContentborderType', newType)}
-                                            onChangeWidth={({ top, right, bottom, left }) =>
-                                                setAttributes({
-                                                    secondContentBorderUpdated: true,
-                                                    secondContentBorderTop: top,
-                                                    secondContentBorderRight: right,
-                                                    secondContentBorderBottom: bottom,
-                                                    secondContentBorderLeft: left,
-                                                })
-                                            }
-                                            onChangeColor={colorValue =>
-                                                saveSecondContentStyles('secondContentborderColor', colorValue)
-                                            }
-                                            onChangeRadius={newrRadius =>
-                                                saveSecondContentStyles('secondContentborderRadius', newrRadius)
-                                            }
-                                        />
-                                        <PremiumShadow
-                                            label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
-                                            boxShadow={true}
-                                            color={secondContentStyles.secondContentBoxShadowColor}
-                                            blur={secondContentStyles.secondContentBoxShadowBlur}
-                                            horizontal={secondContentStyles.secondContentBoxShadowHorizontal}
-                                            vertical={secondContentStyles.secondContentBoxShadowVertical}
-                                            position={secondContentStyles.secondContentBoxShadowPosition}
-                                            onChangeColor={newColor =>
-                                                saveSecondContentStyles('secondContentBoxShadowColor', newColor)
-                                            }
-                                            onChangeBlur={newBlur => saveSecondContentStyles('secondContentBoxShadowBlur', newBlur)}
-                                            onChangehHorizontal={newValue =>
-                                                saveSecondContentStyles('secondContentBoxShadowHorizontal', newValue)
-                                            }
-                                            onChangeVertical={newValue =>
-                                                saveSecondContentStyles('secondContentBoxShadowVertical', newValue)
-                                            }
-                                            onChangePosition={newValue =>
-                                                saveSecondContentStyles('secondContentBoxShadowPosition', newValue)
-                                            }
-                                        />
-                                    </Fragment>
-                                );
-                            }
-                            return (
-                                <div>
-                                    {tabout}
-                                </div>
-                            );
-                        }}
-                    </TabPanel>
-                    <hr />
-                    <SpacingControl
-                        label={__('Margin', 'premium-blocks-for-gutenberg')}
-                        value={firstContentMargin}
-                        onChange={(value) => setAttributes({ firstContentMargin: value })}
-                        showUnits={true}
-                        responsive={true}
-                    />
-                    <SpacingControl
-                        label={__('Padding', 'premium-blocks-for-gutenberg')}
-                        value={contentPadding}
-                        onChange={(value) => setAttributes({ contentPadding: value })}
-                        showUnits={true}
-                        responsive={true}
-                    />
-                </PanelBody>
+                            <PremiumShadow
+                                label={__("Controller Shadow", 'premium-blocks-for-gutenberg')}
+                                boxShadow={true}
+                                color={switcherStyles.containerShadowColor}
+                                blur={switcherStyles.containerShadowBlur}
+                                horizontal={switcherStyles.containerShadowHorizontal}
+                                vertical={switcherStyles.containerShadowVertical}
+                                position={switcherStyles.containerShadowPosition}
+                                onChangeColor={newColor =>
+                                    saveSwitcherStyles('containerShadowColor', newColor)
+                                }
+                                onChangeBlur={newBlur => saveSwitcherStyles('containerShadowBlur', newBlur)}
+                                onChangehHorizontal={newValue =>
+                                    saveSwitcherStyles('containerShadowHorizontal', newValue)
+                                }
+                                onChangeVertical={newValue =>
+                                    saveSwitcherStyles('containerShadowVertical', newValue)
+                                }
+                                onChangePosition={newValue =>
+                                    saveSwitcherStyles('containerShadowPosition', newValue)
+                                }
+                            />
+                            <PremiumShadow
+                                label={__("Switcher Shadow", 'premium-blocks-for-gutenberg')}
+                                boxShadow={true}
+                                color={switcherStyles.switchShadowColor}
+                                blur={switcherStyles.switchShadowBlur}
+                                horizontal={switcherStyles.switchShadowHorizontal}
+                                vertical={switcherStyles.switchShadowVertical}
+                                position={switcherStyles.switchShadowPosition}
+                                onChangeColor={newColor =>
+                                    saveSwitcherStyles('switchShadowColor', newColor)
+                                }
+                                onChangeBlur={newBlur => saveSwitcherStyles('switchShadowBlur', newBlur)}
+                                onChangehHorizontal={newValue =>
+                                    saveSwitcherStyles('switchShadowHorizontal', newValue)
+                                }
+                                onChangeVertical={newValue =>
+                                    saveSwitcherStyles('switchShadowVertical', newValue)
+                                }
+                                onChangePosition={newValue =>
+                                    saveSwitcherStyles('switchShadowPosition', newValue)
+                                }
+                            />
+                        </PanelBody>
+                        {showLabel && (<PanelBody
+                            title={__("Labels Style")}
+                            className="premium-panel-body"
+                            initialOpen={false}
+                        >
+                            <ResponsiveRangeControl
+                                label={__('Spacing', 'premium-blocks-for-gutenberg')}
+                                value={labelSpacing}
+                                onChange={(value) => setAttributes({ labelSpacing: value })}
+                                min={1}
+                                max={100}
+                                step={1}
+                                showUnit={false}
+                                defaultValue={15}
+                            />
+                            <TabPanel
+                                className="premium-color-tabpanel"
+                                activeClass="active-tab"
+                                tabs={[
+                                    {
+                                        name: "firstLabel",
+                                        title: "First Label",
+                                        className: "premium-tab",
+                                    },
+                                    {
+                                        name: "secondLabel",
+                                        title: "Second Label",
+                                        className: "premium-tab",
+                                    },
+                                ]}
+                            >
+                                {(tab) => {
+                                    let tabout;
+                                    if ("firstLabel" === tab.name) {
+                                        tabout = (
+                                            <Fragment>
+                                                <AdvancedPopColorControl
+                                                    label={__("Text Color", 'premium-block-for-gutenberg')}
+                                                    colorValue={labelStyles.firstLabelColor}
+                                                    colorDefault={''}
+                                                    onColorChange={newValue =>
+                                                        saveLabelStyles(
+                                                            'firstLabelColor', newValue
+                                                        )
+                                                    }
+                                                />
+                                                <PremiumTypo
+                                                    components={["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"]}
+                                                    setAttributes={saveLabelStyles}
+                                                    fontSizeType={{ value: labelStyles.firstLabelfontSizeType, label: __("firstLabelfontSizeType") }}
+                                                    fontSize={labelStyles.firstLabelfontSize}
+                                                    fontSizeMobile={labelStyles.firstLabelfontSizeMobile}
+                                                    fontSizeTablet={labelStyles.firstLabelfontSizeTablet}
+                                                    onChangeSize={newSize => saveLabelStyles('firstLabelfontSize', newSize)}
+                                                    onChangeTabletSize={newSize => saveLabelStyles('firstLabelfontSizeTablet', newSize)}
+                                                    onChangeMobileSize={newSize => saveLabelStyles('firstLabelfontSizeMobile', newSize)}
+                                                    weight={labelStyles.firstLabelWeight}
+                                                    style={labelStyles.firstLabelStyle}
+                                                    spacing={labelStyles.firstLabelLetter}
+                                                    upper={labelStyles.firstLabelUpper}
+                                                    line={labelStyles.firstLabelLine}
+                                                    fontFamily={labelStyles.firstLabelFontFamily}
+                                                    onChangeWeight={newWeight =>
+                                                        saveLabelStyles('firstLabelWeight', newWeight || 500)
+                                                    }
+                                                    onChangeStyle={newStyle =>
+                                                        saveLabelStyles('firstLabelStyle', newStyle)
+                                                    }
+                                                    onChangeSpacing={newValue =>
+                                                        saveLabelStyles('firstLabelLetter', newValue)
+                                                    }
+                                                    onChangeUpper={check => saveLabelStyles('firstLabelUpper', check)}
+                                                    onChangeLine={newValue => saveLabelStyles('firstLabelLine', newValue)}
+                                                    onChangeFamily={(fontFamily) => saveLabelStyles('firstLabelFontFamily', fontFamily)}
+                                                />
+                                                <PremiumShadow
+                                                    label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
+                                                    color={labelStyles.firstLabelShadowColor}
+                                                    blur={labelStyles.firstLabelShadowBlur}
+                                                    horizontal={labelStyles.firstLabelShadowHorizontal}
+                                                    vertical={labelStyles.firstLabelShadowVertical}
+                                                    onChangeColor={newColor =>
+                                                        saveLabelStyles('firstLabelShadowColor', newColor)
+                                                    }
+                                                    onChangeBlur={newBlur => saveLabelStyles('firstLabelShadowBlur', newBlur)}
+                                                    onChangehHorizontal={newValue =>
+                                                        saveLabelStyles('firstLabelShadowHorizontal', newValue)
+                                                    }
+                                                    onChangeVertical={newValue =>
+                                                        saveLabelStyles('firstLabelShadowVertical', newValue)
+                                                    }
+                                                />
+                                                <PremiumBorder
+                                                    borderType={labelStyles.firstLabelborderType}
+                                                    borderWidth={firstLabelBorderWidth}
+                                                    top={firstLabelBorderTop}
+                                                    right={firstLabelBorderRight}
+                                                    bottom={firstLabelBorderBottom}
+                                                    left={firstLabelBorderLeft}
+                                                    borderColor={labelStyles.firstLabelborderColor}
+                                                    borderRadius={labelStyles.firstLabelborderRadius}
+                                                    onChangeType={newType => saveLabelStyles('firstLabelborderType', newType)}
+                                                    onChangeWidth={({ top, right, bottom, left }) =>
+                                                        setAttributes({
+                                                            firstLabelBorderUpdated: true,
+                                                            firstLabelBorderTop: top,
+                                                            firstLabelBorderRight: right,
+                                                            firstLabelBorderBottom: bottom,
+                                                            firstLabelBorderLeft: left,
+                                                        })
+                                                    }
+                                                    onChangeColor={colorValue =>
+                                                        saveLabelStyles('firstLabelborderColor', colorValue)
+                                                    }
+                                                    onChangeRadius={newrRadius =>
+                                                        saveLabelStyles('firstLabelborderRadius', newrRadius)
+                                                    }
+                                                />
+                                                <PremiumShadow
+                                                    label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
+                                                    boxShadow={true}
+                                                    color={labelStyles.firstLabelBoxShadowColor}
+                                                    blur={labelStyles.firstLabelBoxShadowBlur}
+                                                    horizontal={labelStyles.firstLabelBoxShadowHorizontal}
+                                                    vertical={labelStyles.firstLabelBoxShadowVertical}
+                                                    position={labelStyles.firstLabelBoxShadowPosition}
+                                                    onChangeColor={newColor =>
+                                                        saveLabelStyles('firstLabelBoxShadowColor', newColor)
+                                                    }
+                                                    onChangeBlur={newBlur => saveLabelStyles('firstLabelBoxShadowBlur', newBlur)}
+                                                    onChangehHorizontal={newValue =>
+                                                        saveLabelStyles('firstLabelBoxShadowHorizontal', newValue)
+                                                    }
+                                                    onChangeVertical={newValue =>
+                                                        saveLabelStyles('firstLabelBoxShadowVertical', newValue)
+                                                    }
+                                                    onChangePosition={newValue =>
+                                                        saveLabelStyles('firstLabelBoxShadowPosition', newValue)
+                                                    }
+                                                />
+                                                <SpacingControl
+                                                    label={__('Padding', 'premium-blocks-for-gutenberg')}
+                                                    value={firstLabelPadding}
+                                                    onChange={(value) => setAttributes({ firstLabelPadding: value })}
+                                                    showUnits={true}
+                                                    responsive={true}
+                                                />
+                                            </Fragment>
+                                        );
+                                    }
+                                    if ("secondLabel" === tab.name) {
+                                        tabout = (
+                                            <Fragment>
+                                                <AdvancedPopColorControl
+                                                    label={__("Text Color", 'premium-block-for-gutenberg')}
+                                                    colorValue={labelStyles.secondLabelColor}
+                                                    colorDefault={''}
+                                                    onColorChange={newValue =>
+                                                        saveLabelStyles(
+                                                            'secondLabelColor', newValue
+                                                        )
+                                                    }
+                                                />
+                                                <PremiumTypo
+                                                    components={["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"]}
+                                                    setAttributes={saveLabelStyles}
+                                                    fontSizeType={{ value: labelStyles.secondLabelfontSizeType, label: __("secondLabelfontSizeType") }}
+                                                    fontSize={labelStyles.secondLabelfontSize}
+                                                    fontSizeMobile={labelStyles.secondLabelfontSizeMobile}
+                                                    fontSizeTablet={labelStyles.secondLabelfontSizeTablet}
+                                                    onChangeSize={newSize => saveLabelStyles('secondLabelfontSize', newSize)}
+                                                    onChangeTabletSize={newSize => saveLabelStyles('secondLabelfontSizeTablet', newSize)}
+                                                    onChangeMobileSize={newSize => saveLabelStyles('secondLabelfontSizeMobile', newSize)}
+                                                    weight={labelStyles.secondLabelWeight}
+                                                    style={labelStyles.secondLabelStyle}
+                                                    spacing={labelStyles.secondLabelLetter}
+                                                    upper={labelStyles.secondLabelUpper}
+                                                    line={labelStyles.secondLabelLine}
+                                                    fontFamily={labelStyles.secondLabelFontFamily}
+                                                    onChangeWeight={newWeight =>
+                                                        saveLabelStyles('secondLabelWeight', newWeight || 500)
+                                                    }
+                                                    onChangeStyle={newStyle =>
+                                                        saveLabelStyles('secondLabelStyle', newStyle)
+                                                    }
+                                                    onChangeSpacing={newValue =>
+                                                        saveLabelStyles('secondLabelLetter', newValue)
+                                                    }
+                                                    onChangeUpper={check => saveLabelStyles('secondLabelUpper', check)}
+                                                    onChangeLine={newValue => saveLabelStyles('secondLabelLine', newValue)}
+                                                    onChangeFamily={(fontFamily) => saveLabelStyles('secondLabelFontFamily', fontFamily)}
+                                                />
+                                                <PremiumShadow
+                                                    label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
+                                                    color={labelStyles.secondLabelShadowColor}
+                                                    blur={labelStyles.secondLabelShadowBlur}
+                                                    horizontal={labelStyles.secondLabelShadowHorizontal}
+                                                    vertical={labelStyles.secondLabelShadowVertical}
+                                                    onChangeColor={newColor =>
+                                                        saveLabelStyles('secondLabelShadowColor', newColor)
+                                                    }
+                                                    onChangeBlur={newBlur => saveLabelStyles('secondLabelShadowBlur', newBlur)}
+                                                    onChangehHorizontal={newValue =>
+                                                        saveLabelStyles('secondLabelShadowHorizontal', newValue)
+                                                    }
+                                                    onChangeVertical={newValue =>
+                                                        saveLabelStyles('secondLabelShadowVertical', newValue)
+                                                    }
+                                                />
+                                                <PremiumBorder
+                                                    borderType={labelStyles.secondLabelborderType}
+                                                    borderWidth={secondLabelBorderWidth}
+                                                    top={secondLabelBorderTop}
+                                                    right={secondLabelBorderRight}
+                                                    bottom={secondLabelBorderBottom}
+                                                    left={secondLabelBorderLeft}
+                                                    borderColor={labelStyles.secondLabelborderColor}
+                                                    borderRadius={labelStyles.secondLabelborderRadius}
+                                                    onChangeType={newType => saveLabelStyles('secondLabelborderType', newType)}
+                                                    onChangeWidth={({ top, right, bottom, left }) =>
+                                                        setAttributes({
+                                                            secondLabelBorderUpdated: true,
+                                                            secondLabelBorderTop: top,
+                                                            secondLabelBorderRight: right,
+                                                            secondLabelBorderBottom: bottom,
+                                                            secondLabelBorderLeft: left,
+                                                        })
+                                                    }
+                                                    onChangeColor={colorValue =>
+                                                        saveLabelStyles('secondLabelborderColor', colorValue)
+                                                    }
+                                                    onChangeRadius={newrRadius =>
+                                                        saveLabelStyles('secondLabelborderRadius', newrRadius)
+                                                    }
+                                                />
+                                                <PremiumShadow
+                                                    label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
+                                                    boxShadow={true}
+                                                    color={labelStyles.secondLabelBoxShadowColor}
+                                                    blur={labelStyles.secondLabelBoxShadowBlur}
+                                                    horizontal={labelStyles.secondLabelBoxShadowHorizontal}
+                                                    vertical={labelStyles.secondLabelBoxShadowVertical}
+                                                    position={labelStyles.secondLabelBoxShadowPosition}
+                                                    onChangeColor={newColor =>
+                                                        saveLabelStyles('secondLabelBoxShadowColor', newColor)
+                                                    }
+                                                    onChangeBlur={newBlur => saveLabelStyles('secondLabelBoxShadowBlur', newBlur)}
+                                                    onChangehHorizontal={newValue =>
+                                                        saveLabelStyles('secondLabelBoxShadowHorizontal', newValue)
+                                                    }
+                                                    onChangeVertical={newValue =>
+                                                        saveLabelStyles('secondLabelBoxShadowVertical', newValue)
+                                                    }
+                                                    onChangePosition={newValue =>
+                                                        saveLabelStyles('secondLabelBoxShadowPosition', newValue)
+                                                    }
+                                                />
+                                                <SpacingControl
+                                                    label={__('Padding', 'premium-blocks-for-gutenberg')}
+                                                    value={secondLabelPadding}
+                                                    onChange={(value) => setAttributes({ secondLabelPadding: value })}
+                                                    showUnits={true}
+                                                    responsive={true}
+                                                />
+                                            </Fragment>
+                                        );
+                                    }
+                                    return (
+                                        <div>
+                                            {tabout}
+                                        </div>
+                                    );
+                                }}
+                            </TabPanel>
+                        </PanelBody>
+                        )}
+                        <PanelBody
+                            title={__("Content Style")}
+                            className="premium-panel-body"
+                            initialOpen={false}
+                        >
+                            <ResponsiveRangeControl
+                                label={__('Height', 'premium-blocks-for-gutenberg')}
+                                value={contentHeight}
+                                onChange={(value) => setAttributes({ contentHeight: value })}
+                                min={1}
+                                max={1000}
+                                step={1}
+                                showUnit={true}
+                                units={['px', 'em', 'rem']}
+                                defaultValue={100}
+                            />
+                            <TabPanel
+                                className="premium-color-tabpanel"
+                                activeClass="active-tab"
+                                tabs={[
+                                    {
+                                        name: "first",
+                                        title: "First Content",
+                                        className: "premium-tab",
+                                    },
+                                    {
+                                        name: "second",
+                                        title: "Second Content",
+                                        className: "premium-tab",
+                                    },
+                                ]}
+                            >
+                                {(tab) => {
+                                    let tabout;
+                                    if ("first" === tab.name) {
+                                        tabout = (
+                                            <Fragment>
+                                                <AdvancedPopColorControl
+                                                    label={__("Text Color", 'premium-block-for-gutenberg')}
+                                                    colorValue={firstContentStyles.firstContentColor}
+                                                    colorDefault={''}
+                                                    onColorChange={newValue =>
+                                                        saveFirstContentStyles(
+                                                            'firstContentColor', newValue
+                                                        )
+                                                    }
+                                                />
+                                                <AdvancedPopColorControl
+                                                    label={__("Background Color", 'premium-block-for-gutenberg')}
+                                                    colorValue={firstContentStyles.firstContentBGColor}
+                                                    colorDefault={''}
+                                                    onColorChange={newValue =>
+                                                        saveFirstContentStyles(
+                                                            'firstContentBGColor', newValue
+                                                        )
+                                                    }
+                                                />
+                                                <PremiumTypo
+                                                    components={["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"]}
+                                                    setAttributes={saveFirstContentStyles}
+                                                    fontSizeType={{ value: firstContentStyles.firstContentfontSizeType, label: __("firstContentfontSizeType") }}
+                                                    fontSize={firstContentStyles.firstContentfontSize}
+                                                    fontSizeMobile={firstContentStyles.firstContentfontSizeMobile}
+                                                    fontSizeTablet={firstContentStyles.firstContentfontSizeTablet}
+                                                    onChangeSize={newSize => saveFirstContentStyles('firstContentfontSize', newSize)}
+                                                    onChangeTabletSize={newSize => saveFirstContentStyles('firstContentfontSizeTablet', newSize)}
+                                                    onChangeMobileSize={newSize => saveFirstContentStyles('firstContentfontSizeMobile', newSize)}
+                                                    weight={firstContentStyles.firstContentWeight}
+                                                    style={firstContentStyles.firstContentStyle}
+                                                    spacing={firstContentStyles.firstContentLetter}
+                                                    upper={firstContentStyles.firstContentUpper}
+                                                    line={firstContentStyles.firstContentLine}
+                                                    fontFamily={firstContentStyles.firstContentFontFamily}
+                                                    onChangeWeight={newWeight =>
+                                                        saveFirstContentStyles('firstContentWeight', newWeight || 500)
+                                                    }
+                                                    onChangeStyle={newStyle =>
+                                                        saveFirstContentStyles('firstContentStyle', newStyle)
+                                                    }
+                                                    onChangeSpacing={newValue =>
+                                                        saveFirstContentStyles('firstContentLetter', newValue)
+                                                    }
+                                                    onChangeUpper={check => saveFirstContentStyles('firstContentUpper', check)}
+                                                    onChangeLine={newValue => saveFirstContentStyles('firstContentLine', newValue)}
+                                                    onChangeFamily={(fontFamily) => saveFirstContentStyles('firstContentFontFamily', fontFamily)}
+                                                />
+                                                <PremiumShadow
+                                                    label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
+                                                    color={firstContentStyles.firstContentShadowColor}
+                                                    blur={firstContentStyles.firstContentShadowBlur}
+                                                    horizontal={firstContentStyles.firstContentShadowHorizontal}
+                                                    vertical={firstContentStyles.firstContentShadowVertical}
+                                                    onChangeColor={newColor =>
+                                                        saveFirstContentStyles('firstContentShadowColor', newColor)
+                                                    }
+                                                    onChangeBlur={newBlur => saveFirstContentStyles('firstContentShadowBlur', newBlur)}
+                                                    onChangehHorizontal={newValue =>
+                                                        saveFirstContentStyles('firstContentShadowHorizontal', newValue)
+                                                    }
+                                                    onChangeVertical={newValue =>
+                                                        saveFirstContentStyles('firstContentShadowVertical', newValue)
+                                                    }
+                                                />
+                                                <PremiumBorder
+                                                    borderType={firstContentStyles.firstContentborderType}
+                                                    borderWidth={firstContentBorderWidth}
+                                                    top={firstContentBorderTop}
+                                                    right={firstContentBorderRight}
+                                                    bottom={firstContentBorderBottom}
+                                                    left={firstContentBorderLeft}
+                                                    borderColor={firstContentStyles.firstContentborderColor}
+                                                    borderRadius={firstContentStyles.firstContentborderRadius}
+                                                    onChangeType={newType => saveFirstContentStyles('firstContentborderType', newType)}
+                                                    onChangeWidth={({ top, right, bottom, left }) =>
+                                                        setAttributes({
+                                                            firstContentBorderUpdated: true,
+                                                            firstContentBorderTop: top,
+                                                            firstContentBorderRight: right,
+                                                            firstContentBorderBottom: bottom,
+                                                            firstContentBorderLeft: left,
+                                                        })
+                                                    }
+                                                    onChangeColor={colorValue =>
+                                                        saveFirstContentStyles('firstContentborderColor', colorValue)
+                                                    }
+                                                    onChangeRadius={newrRadius =>
+                                                        saveFirstContentStyles('firstContentborderRadius', newrRadius)
+                                                    }
+                                                />
+                                                <PremiumShadow
+                                                    label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
+                                                    boxShadow={true}
+                                                    color={firstContentStyles.firstContentBoxShadowColor}
+                                                    blur={firstContentStyles.firstContentBoxShadowBlur}
+                                                    horizontal={firstContentStyles.firstContentBoxShadowHorizontal}
+                                                    vertical={firstContentStyles.firstContentBoxShadowVertical}
+                                                    position={firstContentStyles.firstContentBoxShadowPosition}
+                                                    onChangeColor={newColor =>
+                                                        saveFirstContentStyles('firstContentBoxShadowColor', newColor)
+                                                    }
+                                                    onChangeBlur={newBlur => saveFirstContentStyles('firstContentBoxShadowBlur', newBlur)}
+                                                    onChangehHorizontal={newValue =>
+                                                        saveFirstContentStyles('firstContentBoxShadowHorizontal', newValue)
+                                                    }
+                                                    onChangeVertical={newValue =>
+                                                        saveFirstContentStyles('firstContentBoxShadowVertical', newValue)
+                                                    }
+                                                    onChangePosition={newValue =>
+                                                        saveFirstContentStyles('firstContentBoxShadowPosition', newValue)
+                                                    }
+                                                />
+                                            </Fragment>
+                                        );
+                                    }
+                                    if ("second" === tab.name) {
+                                        tabout = (
+                                            <Fragment>
+                                                <AdvancedPopColorControl
+                                                    label={__("Text Color", 'premium-block-for-gutenberg')}
+                                                    colorValue={secondContentStyles.secondContentColor}
+                                                    colorDefault={''}
+                                                    onColorChange={newValue =>
+                                                        saveSecondContentStyles(
+                                                            'secondContentColor', newValue
+                                                        )
+                                                    }
+                                                />
+                                                <AdvancedPopColorControl
+                                                    label={__("Background Color", 'premium-block-for-gutenberg')}
+                                                    colorValue={secondContentStyles.secondContentBGColor}
+                                                    colorDefault={''}
+                                                    onColorChange={newValue =>
+                                                        saveSecondContentStyles(
+                                                            'secondContentBGColor', newValue
+                                                        )
+                                                    }
+                                                />
+                                                <PremiumTypo
+                                                    components={["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"]}
+                                                    setAttributes={saveSecondContentStyles}
+                                                    fontSizeType={{ value: secondContentStyles.secondContentfontSizeType, label: __("secondContentfontSizeType") }}
+                                                    fontSize={secondContentStyles.secondContentfontSize}
+                                                    fontSizeMobile={secondContentStyles.secondContentfontSizeMobile}
+                                                    fontSizeTablet={secondContentStyles.secondContentfontSizeTablet}
+                                                    onChangeSize={newSize => saveSecondContentStyles('secondContentfontSize', newSize)}
+                                                    onChangeTabletSize={newSize => saveSecondContentStyles('secondContentfontSizeTablet', newSize)}
+                                                    onChangeMobileSize={newSize => saveSecondContentStyles('secondContentfontSizeMobile', newSize)}
+                                                    weight={secondContentStyles.secondContentWeight}
+                                                    style={secondContentStyles.secondContentStyle}
+                                                    spacing={secondContentStyles.secondContentLetter}
+                                                    upper={secondContentStyles.secondContentUpper}
+                                                    line={secondContentStyles.secondContentLine}
+                                                    fontFamily={secondContentStyles.secondContentFontFamily}
+                                                    onChangeWeight={newWeight =>
+                                                        saveSecondContentStyles('secondContentWeight', newWeight || 500)
+                                                    }
+                                                    onChangeStyle={newStyle =>
+                                                        saveSecondContentStyles('secondContentStyle', newStyle)
+                                                    }
+                                                    onChangeSpacing={newValue =>
+                                                        saveSecondContentStyles('secondContentLetter', newValue)
+                                                    }
+                                                    onChangeUpper={check => saveSecondContentStyles('secondContentUpper', check)}
+                                                    onChangeLine={newValue => saveSecondContentStyles('secondContentLine', newValue)}
+                                                    onChangeFamily={(fontFamily) => saveSecondContentStyles('secondContentFontFamily', fontFamily)}
+                                                />
+                                                <PremiumShadow
+                                                    label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
+                                                    color={secondContentStyles.secondContentShadowColor}
+                                                    blur={secondContentStyles.secondContentShadowBlur}
+                                                    horizontal={secondContentStyles.secondContentShadowHorizontal}
+                                                    vertical={secondContentStyles.secondContentShadowVertical}
+                                                    onChangeColor={newColor =>
+                                                        saveSecondContentStyles('secondContentShadowColor', newColor)
+                                                    }
+                                                    onChangeBlur={newBlur => saveSecondContentStyles('secondContentShadowBlur', newBlur)}
+                                                    onChangehHorizontal={newValue =>
+                                                        saveSecondContentStyles('secondContentShadowHorizontal', newValue)
+                                                    }
+                                                    onChangeVertical={newValue =>
+                                                        saveSecondContentStyles('secondContentShadowVertical', newValue)
+                                                    }
+                                                />
+                                                <PremiumBorder
+                                                    borderType={secondContentStyles.secondContentborderType}
+                                                    borderWidth={secondContentBorderWidth}
+                                                    top={secondContentBorderTop}
+                                                    right={secondContentBorderRight}
+                                                    bottom={secondContentBorderBottom}
+                                                    left={secondContentBorderLeft}
+                                                    borderColor={secondContentStyles.secondContentborderColor}
+                                                    borderRadius={secondContentStyles.secondContentborderRadius}
+                                                    onChangeType={newType => saveSecondContentStyles('secondContentborderType', newType)}
+                                                    onChangeWidth={({ top, right, bottom, left }) =>
+                                                        setAttributes({
+                                                            secondContentBorderUpdated: true,
+                                                            secondContentBorderTop: top,
+                                                            secondContentBorderRight: right,
+                                                            secondContentBorderBottom: bottom,
+                                                            secondContentBorderLeft: left,
+                                                        })
+                                                    }
+                                                    onChangeColor={colorValue =>
+                                                        saveSecondContentStyles('secondContentborderColor', colorValue)
+                                                    }
+                                                    onChangeRadius={newrRadius =>
+                                                        saveSecondContentStyles('secondContentborderRadius', newrRadius)
+                                                    }
+                                                />
+                                                <PremiumShadow
+                                                    label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
+                                                    boxShadow={true}
+                                                    color={secondContentStyles.secondContentBoxShadowColor}
+                                                    blur={secondContentStyles.secondContentBoxShadowBlur}
+                                                    horizontal={secondContentStyles.secondContentBoxShadowHorizontal}
+                                                    vertical={secondContentStyles.secondContentBoxShadowVertical}
+                                                    position={secondContentStyles.secondContentBoxShadowPosition}
+                                                    onChangeColor={newColor =>
+                                                        saveSecondContentStyles('secondContentBoxShadowColor', newColor)
+                                                    }
+                                                    onChangeBlur={newBlur => saveSecondContentStyles('secondContentBoxShadowBlur', newBlur)}
+                                                    onChangehHorizontal={newValue =>
+                                                        saveSecondContentStyles('secondContentBoxShadowHorizontal', newValue)
+                                                    }
+                                                    onChangeVertical={newValue =>
+                                                        saveSecondContentStyles('secondContentBoxShadowVertical', newValue)
+                                                    }
+                                                    onChangePosition={newValue =>
+                                                        saveSecondContentStyles('secondContentBoxShadowPosition', newValue)
+                                                    }
+                                                />
+                                            </Fragment>
+                                        );
+                                    }
+                                    return (
+                                        <div>
+                                            {tabout}
+                                        </div>
+                                    );
+                                }}
+                            </TabPanel>
+                            <hr />
+                            <SpacingControl
+                                label={__('Margin', 'premium-blocks-for-gutenberg')}
+                                value={firstContentMargin}
+                                onChange={(value) => setAttributes({ firstContentMargin: value })}
+                                showUnits={true}
+                                responsive={true}
+                            />
+                            <SpacingControl
+                                label={__('Padding', 'premium-blocks-for-gutenberg')}
+                                value={contentPadding}
+                                onChange={(value) => setAttributes({ contentPadding: value })}
+                                showUnits={true}
+                                responsive={true}
+                            />
+                        </PanelBody>
 
-                <PanelBody
-                    title={__("Container Style")}
-                    className="premium-panel-body"
-                    initialOpen={false}
-                >
-                    {/* <PremiumBackgroundControl
+                        <PanelBody
+                            title={__("Container Style")}
+                            className="premium-panel-body"
+                            initialOpen={false}
+                        >
+                            {/* <PremiumBackgroundControl
                         setAttributes={setAttributes}
                         saveContainerStyle={saveContainerStyles}
                         backgroundType={backgroundType}
@@ -1223,92 +1210,95 @@ function Edit(props) {
                         gradientPosition={containerStyles.gradientPosition}
                         gradientType={containerStyles.gradientType}
                     /> */}
-                    <PremiumBorder
-                        borderType={containerStyles.containerborderType}
-                        borderWidth={containerBorderWidth}
-                        top={containerBorderTop}
-                        right={containerBorderRight}
-                        bottom={containerBorderBottom}
-                        left={containerBorderLeft}
-                        borderColor={containerStyles.containerborderColor}
-                        borderRadius={containerStyles.containerborderRadius}
-                        onChangeType={newType => saveContainerStyles('containerborderType', newType)}
-                        onChangeWidth={({ top, right, bottom, left }) =>
-                            setAttributes({
-                                containerBorderUpdated: true,
-                                containerBorderTop: top,
-                                containerBorderRight: right,
-                                containerBorderBottom: bottom,
-                                containerBorderLeft: left,
-                            })
-                        }
-                        onChangeColor={colorValue =>
-                            saveContainerStyles('containerborderColor', colorValue)
-                        }
-                        onChangeRadius={newrRadius =>
-                            saveContainerStyles('containerborderRadius', newrRadius)
-                        }
-                    />
-                    <PremiumShadow
-                        label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
-                        boxShadow={true}
-                        color={containerStyles.containerBoxShadowColor}
-                        blur={containerStyles.containerBoxShadowBlur}
-                        horizontal={containerStyles.containerBoxShadowHorizontal}
-                        vertical={containerStyles.containerBoxShadowVertical}
-                        position={containerStyles.containerBoxShadowPosition}
-                        onChangeColor={newColor =>
-                            saveContainerStyles('containerBoxShadowColor', newColor)
-                        }
-                        onChangeBlur={newBlur => saveContainerStyles('containerBoxShadowBlur', newBlur)}
-                        onChangehHorizontal={newValue =>
-                            saveContainerStyles('containerBoxShadowHorizontal', newValue)
-                        }
-                        onChangeVertical={newValue =>
-                            saveContainerStyles('containerBoxShadowVertical', newValue)
-                        }
-                        onChangePosition={newValue =>
-                            saveContainerStyles('containerBoxShadowPosition', newValue)
-                        }
-                    />
-                    <SpacingControl
-                        label={__('Margin', 'premium-blocks-for-gutenberg')}
-                        value={containerMargin}
-                        onChange={(value) => setAttributes({ containerMargin: value })}
-                        showUnits={true}
-                        responsive={true}
-                    />
-                    <SpacingControl
-                        label={__('Padding', 'premium-blocks-for-gutenberg')}
-                        value={containerPadding}
-                        onChange={(value) => setAttributes({ containerPadding: value })}
-                        showUnits={true}
-                        responsive={true}
-                    />
-                </PanelBody>
+                            <PremiumBorder
+                                borderType={containerStyles.containerborderType}
+                                borderWidth={containerBorderWidth}
+                                top={containerBorderTop}
+                                right={containerBorderRight}
+                                bottom={containerBorderBottom}
+                                left={containerBorderLeft}
+                                borderColor={containerStyles.containerborderColor}
+                                borderRadius={containerStyles.containerborderRadius}
+                                onChangeType={newType => saveContainerStyles('containerborderType', newType)}
+                                onChangeWidth={({ top, right, bottom, left }) =>
+                                    setAttributes({
+                                        containerBorderUpdated: true,
+                                        containerBorderTop: top,
+                                        containerBorderRight: right,
+                                        containerBorderBottom: bottom,
+                                        containerBorderLeft: left,
+                                    })
+                                }
+                                onChangeColor={colorValue =>
+                                    saveContainerStyles('containerborderColor', colorValue)
+                                }
+                                onChangeRadius={newrRadius =>
+                                    saveContainerStyles('containerborderRadius', newrRadius)
+                                }
+                            />
+                            <PremiumShadow
+                                label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
+                                boxShadow={true}
+                                color={containerStyles.containerBoxShadowColor}
+                                blur={containerStyles.containerBoxShadowBlur}
+                                horizontal={containerStyles.containerBoxShadowHorizontal}
+                                vertical={containerStyles.containerBoxShadowVertical}
+                                position={containerStyles.containerBoxShadowPosition}
+                                onChangeColor={newColor =>
+                                    saveContainerStyles('containerBoxShadowColor', newColor)
+                                }
+                                onChangeBlur={newBlur => saveContainerStyles('containerBoxShadowBlur', newBlur)}
+                                onChangehHorizontal={newValue =>
+                                    saveContainerStyles('containerBoxShadowHorizontal', newValue)
+                                }
+                                onChangeVertical={newValue =>
+                                    saveContainerStyles('containerBoxShadowVertical', newValue)
+                                }
+                                onChangePosition={newValue =>
+                                    saveContainerStyles('containerBoxShadowPosition', newValue)
+                                }
+                            />
+                            <SpacingControl
+                                label={__('Margin', 'premium-blocks-for-gutenberg')}
+                                value={containerMargin}
+                                onChange={(value) => setAttributes({ containerMargin: value })}
+                                showUnits={true}
+                                responsive={true}
+                            />
+                            <SpacingControl
+                                label={__('Padding', 'premium-blocks-for-gutenberg')}
+                                value={containerPadding}
+                                onChange={(value) => setAttributes({ containerPadding: value })}
+                                showUnits={true}
+                                responsive={true}
+                            />
+                        </PanelBody>
+                    </InspectorTab>
+                    <InspectorTab key={'advance'}></InspectorTab>
+                </InspectorTabs>
             </InspectorControls>
 
             <style>
                 {`
                      #premium-content-switcher-${block_id} .premium-content-switcher-toggle-switch-slider:before {
-                         border-radius: ${ContainerBorderRadius}${switcherStyles.containerRadiusType} !important;
+                         border-radius: ${containerRadius[props.deviceType] || 50}${containerRadius.unit} !important;
                          box-shadow: ${switcherStyles.containerShadowHorizontal}px ${switcherStyles.containerShadowVertical}px ${switcherStyles.containerShadowBlur}px ${switcherStyles.containerShadowColor} ${switcherStyles.containerShadowPosition};
                      }
                     #premium-content-switcher-${block_id} .premium-content-switcher-toggle-switch-slider {
-                        border-radius: ${SwitcherBorderRadius}${switcherStyles.switchRadiusType} !important;
+                        border-radius: ${switchRadius[props.deviceType]}${switchRadius.unit} !important;
                          box-shadow: ${switcherStyles.switchShadowHorizontal}px ${switcherStyles.switchShadowVertical}px ${switcherStyles.switchShadowBlur}px ${switcherStyles.switchShadowColor} ${switcherStyles.switchShadowPosition};
                      }
                      #premium-content-switcher-${block_id} .premium-content-switcher-toggle-inline .premium-content-switcher-first-label {
-                         margin-right: ${LabelSpacing}px !important;
+                         margin-right: ${labelSpacing[props.deviceType]}px !important;
                     }
                     #premium-content-switcher-${block_id} .premium-content-switcher-toggle-inline .premium-content-switcher-second-label {
-                        margin-left: ${LabelSpacing}px !important;
+                        margin-left: ${labelSpacing[props.deviceType]}px !important;
                     }
                    #premium-content-switcher-${block_id} .premium-content-switcher-toggle-block .premium-content-switcher-first-label {
-                         margin-bottom: ${LabelSpacing}px !important;
+                         margin-bottom: ${labelSpacing[props.deviceType]}px !important;
                      }
                     #premium-content-switcher-${block_id} .premium-content-switcher-toggle-block .premium-content-switcher-second-label {
-                        margin-top: ${LabelSpacing}px !important;
+                        margin-top: ${labelSpacing[props.deviceType]}px !important;
                     }
                  `}
             </style>
@@ -1390,7 +1380,7 @@ function Edit(props) {
                         <div
                             className="premium-content-switcher-toggle-switch"
                             style={{
-                                fontSize: SwitcherSize + 'px',
+                                fontSize: (switchSize[props.deviceType] || 15) + "px",
                             }}
                         >
                             <label className={`premium-content-switcher-toggle-switch-label`}>
@@ -1450,7 +1440,7 @@ function Edit(props) {
                                         : firstContentBorderWidth + "px",
                                     borderRadius: firstContentStyles.firstContentborderRadius + "px",
                                     borderColor: firstContentStyles.firstContentborderColor,
-                                    minHeight: ContentHeight + contentStyles.contentHeightType,
+                                    minHeight: (contentHeight[props.deviceType] || 100) + contentHeight.unit,
                                     paddingTop: ContentPaddingTop + contentPadding.unit,
                                     paddingBottom: ContentPaddingBottom + contentPadding.unit,
                                     paddingLeft: ContentPaddingLeft + contentPadding.unit,
@@ -1488,7 +1478,7 @@ function Edit(props) {
                                         : secondContentBorderWidth + "px",
                                     borderRadius: secondContentStyles.secondContentborderRadius + "px",
                                     borderColor: secondContentStyles.secondContentborderColor,
-                                    minHeight: ContentHeight + contentStyles.contentHeightType,
+                                    minHeight: (contentHeight[props.deviceType] || 100) + contentHeight.unit,
                                     paddingTop: ContentPaddingTop + contentPadding.unit,
                                     paddingBottom: ContentPaddingBottom + contentPadding.unit,
                                     paddingLeft: ContentPaddingLeft + contentPadding.unit,
