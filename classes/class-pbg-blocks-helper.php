@@ -5222,11 +5222,9 @@ class PBG_Blocks_Helper {
 		}
 
 		// Style for Social Icon Effect2.
-		if ( isset( $attr['socialIconStyles'] ) ) {
-			if ( isset( $attr['socialIconStyles'][0]['socialIconSize'] ) && isset( $attr['socialIconStyles'][0]['socialIconfontSizeType'] ) ) {
-				$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
-				$css->add_property( 'font-size', $css->render_color( $attr['socialIconStyles'][0]['socialIconSize'] . ( isset( $attr['socialIconStyles'][0]['socialIconfontSizeType'] ) ? $attr['socialIconStyles'][0]['socialIconfontSizeType'] : 'px' ) . '!important' ) );
-			}
+		if ( isset( $attr['socialIconSize']['Desktop'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'font-size', ( $attr['socialIconSize']['Desktop'] . ( isset( $attr['socialIconSize']['unit'] ) ? $attr['socialIconSize']['unit'] : 'px' ) . '!important' ) );
 		}
 		if ( isset( $attr['socialIconPadding']['Desktop']['top'] ) && isset( $attr['socialIconPadding']['unit']) ) {
 			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
@@ -5294,11 +5292,9 @@ class PBG_Blocks_Helper {
 		}
 
 		// Style for Social Icon Effect1.
-		if ( isset( $attr['socialIconStyles'] ) ) {
-			if ( isset( $attr['socialIconStyles'][0]['socialIconSize'] ) && isset( $attr['socialIconStyles'][0]['socialIconfontSizeType'] ) ) {
-				$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
-				$css->add_property( 'font-size', $css->render_color( $attr['socialIconStyles'][0]['socialIconSize'] . ( isset( $attr['socialIconStyles'][0]['socialIconfontSizeType'] ) ? $attr['socialIconStyles'][0]['socialIconfontSizeType'] : 'px' ) . '!important' ) );
-			}
+		if ( isset( $attr['socialIconSize']['Desktop'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'font-size', ( $attr['socialIconSize']['Desktop'] . ( isset( $attr['socialIconSize']['unit'] ) ? $attr['socialIconSize']['unit'] : 'px' ) . '!important' ) );
 		}
 		if ( isset( $attr['socialIconPadding']['Desktop']['top'] ) && isset( $attr['socialIconPadding']['unit']) ) {
 			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
@@ -5392,11 +5388,9 @@ class PBG_Blocks_Helper {
 		}
 
 		// Style for Social Icon Effect2.
-		if ( isset( $attr['socialIconStyles'] ) ) {
-			if ( isset( $attr['socialIconStyles'][0]['socialIconfontSizeTablet'] ) && isset( $attr['socialIconStyles'][0]['socialIconfontSizeType'] ) ) {
-				$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
-				$css->add_property( 'font-size', $css->render_color( $attr['socialIconStyles'][0]['socialIconfontSizeTablet'] . ( isset( $attr['socialIconStyles'][0]['socialIconfontSizeType'] ) ? $attr['socialIconStyles'][0]['socialIconfontSizeType'] : 'px' ) . '!important' ) );
-			}
+		if ( isset( $attr['socialIconSize']['Tablet'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'font-size', ( $attr['socialIconSize']['Tablet'] . ( isset( $attr['socialIconSize']['unit'] ) ? $attr['socialIconSize']['unit'] : 'px' ) . '!important' ) );
 		}
 		if ( isset( $attr['socialIconPadding']['Tablet']['top'] ) && isset( $attr['socialIconPadding']['unit']) ) {
 			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
@@ -5464,11 +5458,9 @@ class PBG_Blocks_Helper {
 		}
 
 		// Style for Social Icon Effect1.
-		if ( isset( $attr['socialIconStyles'] ) ) {
-			if ( isset( $attr['socialIconStyles'][0]['socialIconfontSizeTablet'] ) && isset( $attr['socialIconStyles'][0]['socialIconfontSizeType'] ) ) {
-				$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
-				$css->add_property( 'font-size', $css->render_color( $attr['socialIconStyles'][0]['socialIconfontSizeTablet'] . ( isset( $attr['socialIconStyles'][0]['socialIconfontSizeType'] ) ? $attr['socialIconStyles'][0]['socialIconfontSizeType'] : 'px' ) . '!important' ) );
-			}
+		if ( isset( $attr['socialIconSize']['Tablet'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'font-size', ( $attr['socialIconSize']['Tablet'] . ( isset( $attr['socialIconSize']['unit'] ) ? $attr['socialIconSize']['unit'] : 'px' ) . '!important' ) );
 		}
 		if ( isset( $attr['socialIconPadding']['Tablet']['top'] ) && isset( $attr['socialIconPadding']['unit']) ) {
 			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
@@ -5564,11 +5556,9 @@ class PBG_Blocks_Helper {
 		}
 
 		// Style for Social Icon Effect2.
-		if ( isset( $attr['socialIconStyles'] ) ) {
-			if ( isset( $attr['socialIconStyles'][0]['socialIconfontSizeMobile'] ) && isset( $attr['socialIconStyles'][0]['socialIconfontSizeType'] ) ) {
-				$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
-				$css->add_property( 'font-size', $css->render_color( $attr['socialIconStyles'][0]['socialIconfontSizeMobile'] . ( isset( $attr['socialIconStyles'][0]['socialIconfontSizeType'] ) ? $attr['socialIconStyles'][0]['socialIconfontSizeType'] : 'px' ) . '!important' ) );
-			}
+		if ( isset( $attr['socialIconSize']['Mobile'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
+			$css->add_property( 'font-size', ( $attr['socialIconSize']['Mobile'] . ( isset( $attr['socialIconSize']['unit'] ) ? $attr['socialIconSize']['unit'] : 'px' ) . '!important' ) );
 		}
 		if ( isset( $attr['socialIconPadding']['Mobile']['top'] ) && isset( $attr['socialIconPadding']['unit']) ) {
 			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
@@ -5636,11 +5626,9 @@ class PBG_Blocks_Helper {
 		}
 
 		// Style for Social Icon Effect1.
-		if ( isset( $attr['socialIconStyles'] ) ) {
-			if ( isset( $attr['socialIconStyles'][0]['socialIconfontSizeMobile'] ) && isset( $attr['socialIconStyles'][0]['socialIconfontSizeType'] ) ) {
-				$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
-				$css->add_property( 'font-size', $css->render_color( $attr['socialIconStyles'][0]['socialIconfontSizeMobile'] . ( isset( $attr['socialIconStyles'][0]['socialIconfontSizeType'] ) ? $attr['socialIconStyles'][0]['socialIconfontSizeType'] : 'px' ) . '!important' ) );
-			}
+		if ( isset( $attr['socialIconSize']['Mobile'] ) ) {
+			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
+			$css->add_property( 'font-size', ( $attr['socialIconSize']['Mobile'] . ( isset( $attr['socialIconSize']['unit'] ) ? $attr['socialIconSize']['unit'] : 'px' ) . '!important' ) );
 		}
 		if ( isset( $attr['socialIconPadding']['Mobile']['top'] ) && isset( $attr['socialIconPadding']['unit']) ) {
 			$css->set_selector( '#premium-person-' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );

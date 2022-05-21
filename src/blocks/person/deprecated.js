@@ -357,6 +357,10 @@ const deprecated = [
         },
         migrate: (attributes) => {
             let newAttributes = {
+                socialIconSize: {
+                    unit: attributes.socialIconStyles[0].socialIconfontSizeType,
+                    "Desktop": attributes.socialIconStyles[0].socialIconSize
+                },
                 socialIconMargin: {
                     "Desktop": {
                         top: attributes.socialIconMarginT,
@@ -398,8 +402,8 @@ const deprecated = [
                     },
                 },
                 socialIconBorder: {
-                    borderColor: attributes.socialIconStyles[0].borderTypeIcon,
-                    borderType: attributes.socialIconStyles[0].borderColorIcon,
+                    borderColor: attributes.socialIconStyles[0].borderColorIcon,
+                    borderType: attributes.socialIconStyles[0].borderTypeIcon,
                     borderRadius: {
                         "Desktop": {
                             top: "",
@@ -486,8 +490,8 @@ const deprecated = [
                 return <ul className="premium-person__social-List">{(v).map((value) => (
                     <li>
                         <a className={`premium-person__socialIcon__link_content ${socialIconStyles[0].defaultIconColor ? value.label : ""}`} href={`${value.value}`} style={{
-                            borderStyle: socialIconBorder.borderType,
-                            borderColor: socialIconBorder.borderColor,
+                            // borderStyle: socialIconBorder.borderType,
+                            // borderColor: socialIconBorder.borderColor,
                             background: socialIconStyles[0].socialIconBackgroundColor,
                         }}>
                             <i className={`premium-person__socialIcon ${value.label == "youtube" ? "fa fa-youtube-play" : `fa fa-${value.label}`} premium-person__${socialIconHoverColor}`}
