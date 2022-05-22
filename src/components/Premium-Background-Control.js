@@ -5,15 +5,28 @@ const { SelectControl, Button, ButtonGroup, Tooltip } = wp.components;
 import PremiumBackground from './premium-background'
 import map from 'lodash/map';
 const { __ } = wp.i18n;
-const { Fragment } = wp.element;
+const { Fragment, useState } = wp.element;
 import AdvancedPopColorControl from './Color Control/ColorComponent'
 import ResponsiveSingleRangeControl from "./RangeControl/single-range-control";
-export default function PremiumBackgroundControl({
-    backgroundType, backgroundColor, backgroundImageID,
-    backgroundImageURL, backgroundPosition, backgroundRepeat,
-    backgroundSize, fixed, gradientType, setAttributes,
-    saveContainerStyle, gradientLocationOne, gradientColorTwo,
-    gradientLocationTwo, gradientAngle, gradientPosition }) {
+export default function PremiumBackgroundControl({ value, onChange }) {
+    let defaultValues = {
+        'backgroundType': '',
+        'backgroundColor': '',
+        'backgroundImageID': '',
+        'backgroundImageURL': '',
+        'backgroundPosition': '',
+        'backgroundRepeat': '',
+        'backgroundSize': '',
+        'fixed': false,
+        'gradientLocationOne': "",
+        'gradientColorTwo': '',
+        'gradientLocationTwo': '',
+        'gradientAngle': '',
+        'gradientPosition': '',
+        'gradientType': ''
+    }
+    value = value ? { ...defaultValues, ...value } : defaultValues
+    const [state, setState] = useState(value)
 
     const gradTypes = [
         { key: 'linear', name: __('Linear') },
@@ -24,6 +37,17 @@ export default function PremiumBackgroundControl({
         { key: 'solid', icon: "fa fa-paint-brush", tooltip: __('Classic') },
         { key: 'gradient', icon: "fa fa-barcode", tooltip: __('Gradient') },
     ];
+    const onChangeBackground = (item, value) => {
+        const updatedState = { ...state };
+        updatedState[item] = value
+        setState(updatedState)
+        onChange(updatedState)
+    }
+    const { backgroundType, backgroundColor,
+        backgroundImageID, backgroundImageURL,
+        backgroundPosition, backgroundRepeat,
+        backgroundSize, fixed, gradientLocationOne, gradientColorTwo,
+        gradientLocationTwo, gradientAngle, gradientPosition, gradientType } = state
 
     return (
         <Fragment>
@@ -37,7 +61,7 @@ export default function PremiumBackgroundControl({
                                 className="Premium-btn-size-btn"
                                 isSmall
                                 isPrimary={backgroundType === key}
-                                onClick={() => setAttributes({ backgroundType: key })}
+                                onClick={() => onChangeBackground('backgroundType', key)}
                             >
                                 {1 == PremiumOptionsSettings.FontAwesomeEnabled ? <i className={icon}></i> : tooltip}
                             </Button>
@@ -50,11 +74,7 @@ export default function PremiumBackgroundControl({
                     <PremiumBackground
                         type="color"
                         colorValue={backgroundColor}
-                        onChangeColor={newValue =>
-                            saveContainerStyle({
-                                containerBack: newValue,
-                            })
-                        }
+                        onChangeColor={newValue => onChangeBackground('backgroundColor', newValue)}
                     />
                     <PremiumBackground
                         imageID={backgroundImageID}
@@ -63,28 +83,12 @@ export default function PremiumBackgroundControl({
                         backgroundRepeat={backgroundRepeat}
                         backgroundSize={backgroundSize}
                         fixed={fixed}
-                        onSelectMedia={media => {
-                            saveContainerStyle({
-                                backgroundImageID: media.id,
-                                backgroundImageURL: media.url
-                            });
-                        }}
-                        onRemoveImage={() =>
-                            saveContainerStyle({
-                                backgroundImageURL: "",
-                                backgroundImageID: ""
-                            })
-                        }
-                        onChangeBackPos={newValue =>
-                            saveContainerStyle({ backgroundPosition: newValue })
-                        }
-                        onchangeBackRepeat={newValue =>
-                            saveContainerStyle({ backgroundRepeat: newValue })
-                        }
-                        onChangeBackSize={newValue =>
-                            saveContainerStyle({ backgroundSize: newValue })
-                        }
-                        onChangeFixed={check => saveContainerStyle({ fixed: check })}
+                        onSelectMedia={media => { onChangeBackground('backgroundImageURL', media.url) }}
+                        onRemoveImage={() => onChangeBackground('backgroundImageURL', '')}
+                        onChangeBackPos={newValue => onChangeBackground('backgroundPosition', newValue)}
+                        onchangeBackRepeat={newValue => onChangeBackground('backgroundRepeat', newValue)}
+                        onChangeBackSize={newValue => onChangeBackground('backgroundSize', newValue)}
+                        onChangeFixed={check => onChangeBackground('fixed', check)}
                     />
                 </div>
             )}
@@ -94,16 +98,12 @@ export default function PremiumBackgroundControl({
                         label={__('Gradient Color 1', 'premium-blocks-for-gutenberg')}
                         colorValue={backgroundColor}
                         colorDefault={''}
-                        onColorChange={value => {
-                            saveContainerStyle({ containerBack: value })
-                        }}
+                        onColorChange={value => { onChangeBackground('backgroundColor', value) }}
                     />
                     <ResponsiveSingleRangeControl
                         label={__('Location', 'premium-blocks-for-gutenberg')}
                         value={gradientLocationOne}
-                        onChange={(value) => {
-                            saveContainerStyle({ gradientLocationOne: value })
-                        }}
+                        onChange={(value) => onChangeBackground('gradientLocationOne', value)}
                         showUnit={false}
                         defaultValue={0}
                     />
@@ -111,16 +111,12 @@ export default function PremiumBackgroundControl({
                         label={__('Gradient Color 2', 'premium-blocks-for-gutenberg')}
                         colorValue={gradientColorTwo}
                         colorDefault={'#777777'}
-                        onColorChange={value => {
-                            saveContainerStyle({ gradientColorTwo: value })
-                        }}
+                        onColorChange={value => onChangeBackground('gradientColorTwo', value)}
                     />
                     <ResponsiveSingleRangeControl
                         label={__('Location', 'premium-blocks-for-gutenberg')}
                         value={gradientLocationTwo}
-                        onChange={(value) => {
-                            saveContainerStyle({ gradientLocationTwo: value })
-                        }}
+                        onChange={(value) => onChangeBackground('gradientLocationTwo', value)}
                         showUnit={false}
                         defaultValue={0}
                     />
@@ -133,9 +129,7 @@ export default function PremiumBackgroundControl({
                                     className="Premium-btn-size-btn"
                                     isSmall
                                     isPrimary={gradientType === key}
-                                    onClick={() => {
-                                        saveContainerStyle({ gradientType: key })
-                                    }}
+                                    onClick={() => onChangeBackground('gradientType', key)}
                                 >
                                     {name}
                                 </Button>
@@ -146,9 +140,7 @@ export default function PremiumBackgroundControl({
                         <ResponsiveSingleRangeControl
                             label={__('Gradient Angle', 'premium-blocks-for-gutenberg')}
                             value={gradientAngle}
-                            onChange={(value) => {
-                                saveContainerStyle({ gradientAngle: value })
-                            }}
+                            onChange={(value) => onChangeBackground('gradientAngle', value)}
                             showUnit={false}
                             defaultValue={0}
                             min={0}
@@ -170,7 +162,7 @@ export default function PremiumBackgroundControl({
                                 { value: 'right center', label: __('Right Center', 'premium-blocks-for-gutenberg') },
                                 { value: 'right bottom', label: __('Right Bottom', 'premium-blocks-for-gutenberg') },
                             ]}
-                            onChange={value => saveContainerStyle({ gradientPosition: value })}
+                            onChange={value => onChangeBackground('gradientPosition', value)}
                         />
                     )}
                 </div>
