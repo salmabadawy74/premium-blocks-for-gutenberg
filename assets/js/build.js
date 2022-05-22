@@ -28162,6 +28162,8 @@ var _inspectorTab = __webpack_require__(113);
 
 var _inspectorTab2 = _interopRequireDefault(_inspectorTab);
 
+var _HelperFunction = __webpack_require__(411);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var __ = wp.i18n.__;
@@ -28194,21 +28196,22 @@ var edit = function edit(props) {
         align = _props$attributes.align,
         hoverEffect = _props$attributes.hoverEffect,
         iconStyles = _props$attributes.iconStyles,
-        containerStyles = _props$attributes.containerStyles,
         urlCheck = _props$attributes.urlCheck,
         link = _props$attributes.link,
         target = _props$attributes.target,
         hideDesktop = _props$attributes.hideDesktop,
         hideTablet = _props$attributes.hideTablet,
         hideMobile = _props$attributes.hideMobile,
-        backgroundType = _props$attributes.backgroundType,
         iconSize = _props$attributes.iconSize,
         iconPadding = _props$attributes.iconPadding,
         iconMargin = _props$attributes.iconMargin,
         wrapPadding = _props$attributes.wrapPadding,
         wrapMargin = _props$attributes.wrapMargin,
         containerBorder = _props$attributes.containerBorder,
-        iconBorder = _props$attributes.iconBorder;
+        iconBorder = _props$attributes.iconBorder,
+        containerBackground = _props$attributes.containerBackground,
+        containerShadow = _props$attributes.containerShadow,
+        iconShadow = _props$attributes.iconShadow;
 
 
     var EFFECTS = [{
@@ -28234,18 +28237,6 @@ var edit = function edit(props) {
         label: __("Wobble", 'premium-blocks-for-gutenberg')
     }];
 
-    var saveContainerStyle = function saveContainerStyle(value) {
-        var newUpdate = containerStyles.map(function (item, index) {
-            if (0 === index) {
-                item = _extends({}, item, value);
-            }
-            return item;
-        });
-        setAttributes({
-            containerStyles: newUpdate
-        });
-    };
-
     var saveIconStyle = function saveIconStyle(value) {
         var newUpdate = iconStyles.map(function (item, index) {
             if (0 === index) {
@@ -28257,21 +28248,6 @@ var edit = function edit(props) {
             iconStyles: newUpdate
         });
     };
-
-    var btnGrad = void 0,
-        btnGrad2 = void 0,
-        btnbg = void 0;
-    if (undefined !== backgroundType && 'gradient' === backgroundType) {
-        btnGrad = 'transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack;
-        btnGrad2 = undefined !== containerStyles[0].gradientColorTwo && undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777';
-        if ('radial' === containerStyles[0].gradientType) {
-            btnbg = "radial-gradient(at " + containerStyles[0].gradientPosition + ", " + btnGrad + " " + containerStyles[0].gradientLocationOne + "%, " + btnGrad2 + " " + containerStyles[0].gradientLocationTwo + "%)";
-        } else if ('radial' !== containerStyles[0].gradientType) {
-            btnbg = "linear-gradient(" + containerStyles[0].gradientAngle + "deg, " + btnGrad + " " + containerStyles[0].gradientLocationOne + "%, " + btnGrad2 + " " + containerStyles[0].gradientLocationTwo + "%)";
-        }
-    } else {
-        btnbg = containerStyles[0].backgroundImageURL ? "url('" + containerStyles[0].backgroundImageURL + "')" : "";
-    }
 
     var mainClasses = (0, _classnames2.default)(className, "premium-icon");
 
@@ -28386,21 +28362,9 @@ var edit = function edit(props) {
                     }),
                     React.createElement(_PremiumShadow2.default, {
                         label: __("Text Shadow", "premium-blocks-for-gutenberg"),
-                        color: iconStyles[0].shadowColor,
-                        blur: iconStyles[0].shadowBlur,
-                        horizontal: iconStyles[0].shadowHorizontal,
-                        vertical: iconStyles[0].shadowVertical,
-                        onChangeColor: function onChangeColor(newColor) {
-                            return saveIconStyle({ shadowColor: newColor });
-                        },
-                        onChangeBlur: function onChangeBlur(newBlur) {
-                            return saveIconStyle({ shadowBlur: newBlur });
-                        },
-                        onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return saveIconStyle({ shadowHorizontal: newValue });
-                        },
-                        onChangeVertical: function onChangeVertical(newValue) {
-                            return saveIconStyle({ shadowVertical: newValue });
+                        value: iconShadow,
+                        onChange: function onChange(value) {
+                            return setAttributes({ iconShadow: value });
                         }
                     }),
                     React.createElement(_premiumResponsiveSpacing2.default, {
@@ -28430,22 +28394,10 @@ var edit = function edit(props) {
                         initialOpen: false
                     },
                     React.createElement(_PremiumBackgroundControl2.default, {
-                        setAttributes: setAttributes,
-                        saveContainerStyle: saveContainerStyle,
-                        backgroundType: backgroundType,
-                        backgroundColor: containerStyles[0].containerBack,
-                        backgroundImageID: containerStyles[0].backgroundImageID,
-                        backgroundImageURL: containerStyles[0].backgroundImageURL,
-                        backgroundPosition: containerStyles[0].backgroundPosition,
-                        backgroundRepeat: containerStyles[0].backgroundRepeat,
-                        backgroundSize: containerStyles[0].backgroundSize,
-                        fixed: containerStyles[0].fixed,
-                        gradientLocationOne: containerStyles[0].gradientLocationOne,
-                        gradientColorTwo: containerStyles[0].gradientColorTwo,
-                        gradientLocationTwo: containerStyles[0].gradientLocationTwo,
-                        gradientAngle: containerStyles[0].gradientAngle,
-                        gradientPosition: containerStyles[0].gradientPosition,
-                        gradientType: containerStyles[0].gradientType
+                        value: containerBackground,
+                        onChange: function onChange(value) {
+                            return setAttributes({ containerBackground: value });
+                        }
                     }),
                     React.createElement(_premiumBorder2.default, {
                         label: __('Border', 'premium-blocks-for-gutenberg'),
@@ -28455,27 +28407,9 @@ var edit = function edit(props) {
                         }
                     }),
                     React.createElement(_PremiumShadow2.default, {
-                        label: __("Box Shadow", 'premium-blocks-for-gutenberg'),
-                        boxShadow: true,
-                        color: containerStyles[0].wrapShadowColor,
-                        blur: containerStyles[0].wrapShadowBlur,
-                        horizontal: containerStyles[0].wrapShadowHorizontal,
-                        vertical: containerStyles[0].wrapShadowVertical,
-                        position: containerStyles[0].wrapShadowPosition,
-                        onChangeColor: function onChangeColor(newColor) {
-                            return saveContainerStyle({ wrapShadowColor: newColor });
-                        },
-                        onChangeBlur: function onChangeBlur(newBlur) {
-                            return saveContainerStyle({ wrapShadowBlur: newBlur });
-                        },
-                        onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return saveContainerStyle({ wrapShadowHorizontal: newValue });
-                        },
-                        onChangeVertical: function onChangeVertical(newValue) {
-                            return saveContainerStyle({ wrapShadowVertical: newValue });
-                        },
-                        onChangePosition: function onChangePosition(newValue) {
-                            return saveContainerStyle({ wrapShadowPosition: newValue });
+                        value: containerShadow,
+                        onChange: function onChange(value) {
+                            return setAttributes({ containerShadow: value });
                         }
                     }),
                     React.createElement(_premiumResponsiveSpacing2.default, {
@@ -28527,14 +28461,9 @@ var edit = function edit(props) {
             "div",
             {
                 className: "premium-icon-container",
-                style: {
-                    textAlign: align,
-                    backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
-                    backgroundImage: btnbg,
-                    backgroundRepeat: containerStyles[0].backgroundRepeat,
-                    backgroundPosition: containerStyles[0].backgroundPosition,
-                    backgroundSize: containerStyles[0].backgroundSize,
-                    backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
+                style: _extends({
+                    textAlign: align
+                }, (0, _HelperFunction.gradientBackground)(containerBackground), {
                     borderStyle: containerBorder.borderType,
                     borderTopWidth: containerBorder['borderWidth'][props.deviceType]['top'] && containerBorder['borderWidth'][props.deviceType]['top'] + "px",
                     borderRightWidth: containerBorder['borderWidth'][props.deviceType]['right'] && containerBorder['borderWidth'][props.deviceType]['right'] + "px",
@@ -28545,7 +28474,7 @@ var edit = function edit(props) {
                     borderTopRightRadius: containerBorder['borderRadius'][props.deviceType]['right'] && containerBorder['borderRadius'][props.deviceType]['right'] + "px",
                     borderBottomRightRadius: containerBorder['borderRadius'][props.deviceType]['bottom'] && containerBorder['borderRadius'][props.deviceType]['bottom'] + "px",
                     borderColor: containerBorder.borderColor,
-                    boxShadow: (containerStyles[0].wrapShadowHorizontal || 0) + "px " + (containerStyles[0].wrapShadowVertical || 0) + "px " + (containerStyles[0].wrapShadowBlur || 0) + "px " + containerStyles[0].wrapShadowColor + " " + containerStyles[0].wrapShadowPosition,
+                    boxShadow: (containerShadow.horizontal || 0) + "px " + (containerShadow.vertical || 0) + "px " + (containerShadow.blur || 0) + "px " + containerShadow.color + " " + containerShadow.position,
                     paddingTop: wrapPadding[props.deviceType]['top'] && wrapPadding[props.deviceType]['top'] + wrapPadding.unit,
                     paddingRight: wrapPadding[props.deviceType]['right'] && wrapPadding[props.deviceType]['right'] + wrapPadding.unit,
                     paddingBottom: wrapPadding[props.deviceType]['bottom'] && wrapPadding[props.deviceType]['bottom'] + wrapPadding.unit,
@@ -28554,7 +28483,7 @@ var edit = function edit(props) {
                     marginRight: wrapMargin[props.deviceType]['right'] && wrapMargin[props.deviceType]['right'] + wrapMargin.unit,
                     marginBottom: wrapMargin[props.deviceType]['bottom'] && wrapMargin[props.deviceType]['bottom'] + wrapMargin.unit,
                     marginLeft: wrapMargin[props.deviceType]['left'] && wrapMargin[props.deviceType]['left'] + wrapMargin.unit
-                }
+                })
             },
             iconType === "fa" && 1 != _settings.FontAwesomeEnabled && React.createElement(
                 "p",
@@ -28585,7 +28514,7 @@ var edit = function edit(props) {
                     borderTopRightRadius: iconBorder['borderRadius'][props.deviceType]['right'] && iconBorder['borderRadius'][props.deviceType]['right'] + "px",
                     borderBottomRightRadius: iconBorder['borderRadius'][props.deviceType]['bottom'] && iconBorder['borderRadius'][props.deviceType]['bottom'] + "px",
                     borderColor: iconBorder.borderColor,
-                    textShadow: (iconStyles[0].shadowHorizontal || 0) + "px " + (iconStyles[0].shadowVertical || 0) + "px " + (iconStyles[0].shadowBlur || 0) + "px " + iconStyles[0].shadowColor
+                    textShadow: (iconShadow.horizontal || 0) + "px " + (iconShadow.vertical || 0) + "px " + (iconShadow.blur || 0) + "px " + iconShadow.color
                 }
             }),
             urlCheck && isSelected && React.createElement(URLInput, {
@@ -30555,9 +30484,13 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
+
+var _HelperFunction = __webpack_require__(411);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30570,33 +30503,20 @@ var save = function save(props) {
         align = _props$attributes.align,
         hoverEffect = _props$attributes.hoverEffect,
         iconStyles = _props$attributes.iconStyles,
-        containerStyles = _props$attributes.containerStyles,
         urlCheck = _props$attributes.urlCheck,
         link = _props$attributes.link,
         target = _props$attributes.target,
         hideDesktop = _props$attributes.hideDesktop,
         hideTablet = _props$attributes.hideTablet,
         hideMobile = _props$attributes.hideMobile,
-        backgroundType = _props$attributes.backgroundType,
-        containerBorder = _props$attributes.containerBorder;
+        containerBorder = _props$attributes.containerBorder,
+        containerBackground = _props$attributes.containerBackground,
+        containerShadow = _props$attributes.containerShadow,
+        iconShadow = _props$attributes.iconShadow,
+        iconSize = _props$attributes.iconSize;
 
 
     var mainClasses = (0, _classnames2.default)(className, 'premium-icon');
-
-    var btnGrad = void 0,
-        btnGrad2 = void 0,
-        btnbg = void 0;
-    if ('gradient' === backgroundType) {
-        btnGrad = 'transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack;
-        btnGrad2 = undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777';
-        if ('radial' === containerStyles[0].gradientType) {
-            btnbg = 'radial-gradient(at ' + containerStyles[0].gradientPosition + ', ' + btnGrad + ' ' + containerStyles[0].gradientLocationOne + '%, ' + btnGrad2 + ' ' + containerStyles[0].gradientLocationTwo + '%)';
-        } else if ('radial' !== containerStyles[0].gradientType) {
-            btnbg = 'linear-gradient(' + containerStyles[0].gradientAngle + 'deg, ' + btnGrad + ' ' + containerStyles[0].gradientLocationOne + '%, ' + btnGrad2 + ' ' + containerStyles[0].gradientLocationTwo + '%)';
-        }
-    } else {
-        btnbg = containerStyles[0].backgroundImageURL ? 'url(\'' + containerStyles[0].backgroundImageURL + '\')' : '';
-    }
 
     return React.createElement(
         'div',
@@ -30608,19 +30528,14 @@ var save = function save(props) {
             'div',
             {
                 className: 'premium-icon-container',
-                style: {
-                    textAlign: align,
-                    backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
-                    backgroundImage: btnbg,
-                    backgroundRepeat: containerStyles[0].backgroundRepeat,
-                    backgroundPosition: containerStyles[0].backgroundPosition,
-                    backgroundSize: containerStyles[0].backgroundSize,
-                    backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
+                style: _extends({
+                    textAlign: align
+                }, (0, _HelperFunction.gradientBackground)(containerBackground), {
                     borderStyle: containerBorder.borderType,
                     borderColor: containerBorder.borderColor,
-                    boxShadow: (containerStyles[0].wrapShadowHorizontal || 0) + 'px ' + (containerStyles[0].wrapShadowVertical || 0) + 'px ' + (containerStyles[0].wrapShadowBlur || 0) + 'px ' + containerStyles[0].wrapShadowColor + ' ' + containerStyles[0].wrapShadowPosition
+                    boxShadow: (containerShadow.horizontal || 0) + 'px ' + (containerShadow.vertical || 0) + 'px ' + (containerShadow.blur || 0) + 'px ' + containerShadow.color + ' ' + containerShadow.position
 
-                }
+                })
             },
             React.createElement(
                 'a',
@@ -30633,11 +30548,12 @@ var save = function save(props) {
                 React.createElement('i', {
                     className: 'premium-icon ' + selectedIcon + ' premium-icon__' + hoverEffect,
                     style: {
+                        fontSize: (iconSize[props.deviceType] || 50) + iconSize.unit,
                         color: iconStyles[0].iconColor || "#6ec1e4",
                         backgroundColor: iconStyles[0].iconBack,
                         borderStyle: iconBorder.borderType,
                         borderColor: iconBorder.borderColor,
-                        textShadow: (iconStyles[0].shadowHorizontal || 0) + 'px ' + (iconStyles[0].shadowVertical || 0) + 'px ' + (iconStyles[0].shadowBlur || 0) + 'px ' + iconStyles[0].shadowColor
+                        textShadow: (iconShadow.horizontal || 0) + 'px ' + (iconShadow.vertical || 0) + 'px ' + (iconShadow.blur || 0) + 'px ' + iconShadow.color
                     }
                 })
             )
@@ -30658,9 +30574,13 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _hexToRgba = __webpack_require__(18);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
+
+var _HelperFunction = __webpack_require__(411);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31245,22 +31165,22 @@ var deprecatedContent = [{
 
 
         return React.createElement(
-            "div",
+            'div',
             {
-                className: className + "__container " + hideDesktop + " " + hideTablet + " " + hideMobile,
+                className: className + '__container ' + hideDesktop + ' ' + hideTablet + ' ' + hideMobile,
                 style: {
                     textAlign: align,
                     backgroundColor: backgroundColor ? (0, _hexToRgba2.default)(backgroundColor, backgroundOpacity) : "transparent",
-                    backgroundImage: "url('" + imageURL + "')",
+                    backgroundImage: 'url(\'' + imageURL + '\')',
                     backgroundRepeat: backgroundRepeat,
                     backgroundPosition: backgroundPosition,
                     backgroundSize: backgroundSize,
                     backgroundAttachment: fixed ? "fixed" : "unset",
                     borderStyle: wrapBorderType,
-                    borderWidth: wrapBorder ? wrapBorderTop + "px " + wrapBorderRight + "px " + wrapBorderBottom + "px " + wrapBorderLeft + "px" : wrapBorderWidth + "px",
+                    borderWidth: wrapBorder ? wrapBorderTop + 'px ' + wrapBorderRight + 'px ' + wrapBorderBottom + 'px ' + wrapBorderLeft + 'px' : wrapBorderWidth + "px",
                     borderRadius: wrapBorderRadius + "px",
                     borderColor: wrapBorderColor,
-                    boxShadow: (wrapShadowHorizontal || 0) + "px " + (wrapShadowVertical || 0) + "px " + (wrapShadowBlur || 0) + "px " + wrapShadowColor + " " + wrapShadowPosition,
+                    boxShadow: (wrapShadowHorizontal || 0) + 'px ' + (wrapShadowVertical || 0) + 'px ' + (wrapShadowBlur || 0) + 'px ' + wrapShadowColor + ' ' + wrapShadowPosition,
                     paddingTop: wrapPaddingT,
                     paddingRight: wrapPaddingR,
                     paddingBottom: wrapPaddingB,
@@ -31272,15 +31192,15 @@ var deprecatedContent = [{
                 }
             },
             React.createElement(
-                "a",
+                'a',
                 {
-                    className: "premium-icon__link",
+                    className: 'premium-icon__link',
                     href: urlCheck && link,
-                    rel: "noopener noreferrer",
+                    rel: 'noopener noreferrer',
                     target: target ? "_blank" : "_self"
                 },
-                React.createElement("i", {
-                    className: "premium-icon " + selectedIcon + " premium-icon__" + hoverEffect,
+                React.createElement('i', {
+                    className: 'premium-icon ' + selectedIcon + ' premium-icon__' + hoverEffect,
                     style: {
                         color: iconColor || "#6ec1e4",
                         backgroundColor: iconBack ? (0, _hexToRgba2.default)(iconBack, iconOpacity) : "transparent",
@@ -31294,10 +31214,10 @@ var deprecatedContent = [{
                         marginBottom: marginB,
                         marginLeft: marginL,
                         borderStyle: borderType,
-                        borderWidth: iconBorder ? iconBorderTop + "px " + iconBorderRight + "px " + iconBorderBottom + "px " + iconBorderLeft + "px" : borderWidth + "px",
+                        borderWidth: iconBorder ? iconBorderTop + 'px ' + iconBorderRight + 'px ' + iconBorderBottom + 'px ' + iconBorderLeft + 'px' : borderWidth + "px",
                         borderRadius: borderRadius || 100 + "px",
                         borderColor: borderColor,
-                        textShadow: (shadowHorizontal || 0) + "px " + (shadowVertical || 0) + "px " + (shadowBlur || 0) + "px " + shadowColor
+                        textShadow: (shadowHorizontal || 0) + 'px ' + (shadowVertical || 0) + 'px ' + (shadowBlur || 0) + 'px ' + shadowColor
                     }
                 })
             )
@@ -31359,13 +31279,13 @@ var deprecatedContent = [{
 
 
         return React.createElement(
-            "div",
+            'div',
             {
-                className: className + "__container",
+                className: className + '__container',
                 style: {
                     textAlign: align,
                     backgroundColor: backgroundColor,
-                    backgroundImage: "url('" + imageURL + "')",
+                    backgroundImage: 'url(\'' + imageURL + '\')',
                     backgroundRepeat: backgroundRepeat,
                     backgroundPosition: backgroundPosition,
                     backgroundSize: backgroundSize,
@@ -31374,7 +31294,7 @@ var deprecatedContent = [{
                     borderWidth: wrapBorderWidth + "px",
                     borderRadius: wrapBorderRadius + "px",
                     borderColor: wrapBorderColor,
-                    boxShadow: (wrapShadowHorizontal || 0) + "px " + (wrapShadowVertical || 0) + "px " + (wrapShadowBlur || 0) + "px " + wrapShadowColor + " " + wrapShadowPosition,
+                    boxShadow: (wrapShadowHorizontal || 0) + 'px ' + (wrapShadowVertical || 0) + 'px ' + (wrapShadowBlur || 0) + 'px ' + wrapShadowColor + ' ' + wrapShadowPosition,
                     paddingTop: wrapPaddingT,
                     paddingRight: wrapPaddingR,
                     paddingBottom: wrapPaddingB,
@@ -31386,15 +31306,15 @@ var deprecatedContent = [{
                 }
             },
             React.createElement(
-                "a",
+                'a',
                 {
-                    className: className + "__link",
+                    className: className + '__link',
                     href: urlCheck && link,
-                    rel: "noopener noreferrer",
+                    rel: 'noopener noreferrer',
                     target: target ? "_blank" : "_self"
                 },
-                React.createElement("i", {
-                    className: className + " " + selectedIcon + " " + className + "__" + hoverEffect,
+                React.createElement('i', {
+                    className: className + ' ' + selectedIcon + ' ' + className + '__' + hoverEffect,
                     style: {
                         color: iconColor || "#6ec1e4",
                         backgroundColor: iconBack,
@@ -31411,7 +31331,7 @@ var deprecatedContent = [{
                         borderWidth: borderWidth + "px",
                         borderRadius: borderRadius || 100 + "px",
                         borderColor: borderColor,
-                        textShadow: (shadowHorizontal || 0) + "px " + (shadowVertical || 0) + "px " + (shadowBlur || 0) + "px " + shadowColor
+                        textShadow: (shadowHorizontal || 0) + 'px ' + (shadowVertical || 0) + 'px ' + (shadowBlur || 0) + 'px ' + shadowColor
                     }
                 })
             )
@@ -31478,13 +31398,13 @@ var deprecatedContent = [{
 
 
         return React.createElement(
-            "div",
+            'div',
             {
-                className: className + "__container",
+                className: className + '__container',
                 style: {
                     textAlign: align,
                     backgroundColor: backgroundColor,
-                    backgroundImage: "url('" + imageURL + "')",
+                    backgroundImage: 'url(\'' + imageURL + '\')',
                     backgroundRepeat: backgroundRepeat,
                     backgroundPosition: backgroundPosition,
                     backgroundSize: backgroundSize,
@@ -31493,7 +31413,7 @@ var deprecatedContent = [{
                     borderWidth: wrapBorderWidth + "px",
                     borderRadius: wrapBorderRadius + "px",
                     borderColor: wrapBorderColor,
-                    boxShadow: (wrapShadowHorizontal || 0) + "px " + (wrapShadowVertical || 0) + "px " + (wrapShadowBlur || 0) + "px " + wrapShadowColor + " " + wrapShadowPosition,
+                    boxShadow: (wrapShadowHorizontal || 0) + 'px ' + (wrapShadowVertical || 0) + 'px ' + (wrapShadowBlur || 0) + 'px ' + wrapShadowColor + ' ' + wrapShadowPosition,
                     paddingTop: wrapPaddingT,
                     paddingRight: wrapPaddingR,
                     paddingBottom: wrapPaddingB,
@@ -31505,15 +31425,15 @@ var deprecatedContent = [{
                 }
             },
             React.createElement(
-                "a",
+                'a',
                 {
-                    className: className + "__link",
+                    className: className + '__link',
                     href: urlCheck && link,
-                    rel: "noopener noreferrer",
+                    rel: 'noopener noreferrer',
                     target: target ? "_blank" : "_self"
                 },
-                React.createElement("i", {
-                    className: className + " " + selectedIcon + " " + className + "__" + hoverEffect,
+                React.createElement('i', {
+                    className: className + ' ' + selectedIcon + ' ' + className + '__' + hoverEffect,
                     style: {
                         color: iconColor || "#6ec1e4",
                         backgroundColor: iconBack,
@@ -31530,7 +31450,7 @@ var deprecatedContent = [{
                         borderWidth: borderWidth + "px",
                         borderRadius: borderRadius || 100 + "px",
                         borderColor: borderColor,
-                        textShadow: (shadowHorizontal || 0) + "px " + (shadowVertical || 0) + "px " + (shadowBlur || 0) + "px " + shadowColor
+                        textShadow: (shadowHorizontal || 0) + 'px ' + (shadowVertical || 0) + 'px ' + (shadowBlur || 0) + 'px ' + shadowColor
                     }
                 })
             )
@@ -31598,9 +31518,9 @@ var deprecatedContent = [{
 
 
         return React.createElement(
-            "div",
+            'div',
             {
-                className: className + "__container",
+                className: className + '__container',
                 style: {
                     textAlign: align,
                     backgroundColor: background,
@@ -31608,7 +31528,7 @@ var deprecatedContent = [{
                     borderWidth: wrapBorderWidth + "px",
                     borderRadius: wrapBorderRadius + "px",
                     borderColor: wrapBorderColor,
-                    boxShadow: (wrapShadowHorizontal || 0) + "px " + (wrapShadowVertical || 0) + "px " + (wrapShadowBlur || 0) + "px " + wrapShadowColor + " " + wrapShadowPosition,
+                    boxShadow: (wrapShadowHorizontal || 0) + 'px ' + (wrapShadowVertical || 0) + 'px ' + (wrapShadowBlur || 0) + 'px ' + wrapShadowColor + ' ' + wrapShadowPosition,
                     paddingTop: wrapPaddingT,
                     paddingRight: wrapPaddingR,
                     paddingBottom: wrapPaddingB,
@@ -31620,14 +31540,14 @@ var deprecatedContent = [{
                 }
             },
             React.createElement(
-                "a",
+                'a',
                 {
-                    className: className + "__link",
+                    className: className + '__link',
                     href: urlCheck && link,
                     target: target ? "_blank" : "_self"
                 },
-                React.createElement("i", {
-                    className: className + " " + selectedIcon + " " + className + "__" + hoverEffect,
+                React.createElement('i', {
+                    className: className + ' ' + selectedIcon + ' ' + className + '__' + hoverEffect,
                     style: {
                         color: iconColor || "#6ec1e4",
                         backgroundColor: iconBack,
@@ -31644,7 +31564,7 @@ var deprecatedContent = [{
                         borderWidth: borderWidth + "px",
                         borderRadius: borderRadius || 100 + "px",
                         borderColor: borderColor,
-                        textShadow: (shadowHorizontal || 0) + "px " + (shadowVertical || 0) + "px " + (shadowBlur || 0) + "px " + shadowColor
+                        textShadow: (shadowHorizontal || 0) + 'px ' + (shadowVertical || 0) + 'px ' + (shadowBlur || 0) + 'px ' + shadowColor
                     }
                 })
             )
@@ -31695,9 +31615,9 @@ var deprecatedContent = [{
 
 
         return React.createElement(
-            "div",
+            'div',
             {
-                className: className + "__container",
+                className: className + '__container',
                 style: {
                     textAlign: align,
                     backgroundColor: background,
@@ -31716,14 +31636,14 @@ var deprecatedContent = [{
                 }
             },
             React.createElement(
-                "a",
+                'a',
                 {
-                    className: className + "__link",
+                    className: className + '__link',
                     href: urlCheck && link,
                     target: target ? "_blank" : "_self"
                 },
-                React.createElement("i", {
-                    className: className + " " + selectedIcon + " " + className + "__" + hoverEffect,
+                React.createElement('i', {
+                    className: className + ' ' + selectedIcon + ' ' + className + '__' + hoverEffect,
                     style: {
                         color: iconColor,
                         backgroundColor: iconBack,
@@ -31740,7 +31660,7 @@ var deprecatedContent = [{
                         borderWidth: borderWidth + "px",
                         borderRadius: borderRadius + "px",
                         borderColor: borderColor,
-                        textShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor
+                        textShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor
                     }
                 })
             )
@@ -31927,6 +31847,35 @@ var deprecatedContent = [{
                         left: ""
                     }
                 }
+            },
+            containerBackground: {
+                'backgroundType': attributes.backgroundType,
+                'backgroundColor': attributes.containerStyles.containerBack,
+                'backgroundImageID': attributes.containerStyles.backgroundImageID,
+                'backgroundImageURL': attributes.containerStyles.backgroundImageURL,
+                'backgroundPosition': attributes.containerStyles.backgroundPosition,
+                'backgroundRepeat': attributes.containerStyles.backgroundRepeat,
+                'backgroundSize': attributes.containerStyles.backgroundSize,
+                'fixed': attributes.containerStyles.fixed,
+                'gradientLocationOne': attributes.containerStyles.gradientLocationOne,
+                'gradientColorTwo': attributes.containerStyles.gradientColorTwo,
+                'gradientLocationTwo': attributes.containerStyles.gradientLocationTwo,
+                'gradientAngle': attributes.containerStyles.gradientAngle,
+                'gradientPosition': attributes.containerStyles.gradientPosition,
+                'gradientType': attributes.containerStyles.gradientType
+            },
+            containerShadow: {
+                'color': attributes.containerStyles.wrapShadowColor,
+                'blur': attributes.containerStyles.wrapShadowBlur,
+                'horizontal': attributes.containerStyles.wrapShadowHorizontal,
+                'vertical': attributes.containerStyles.wrapShadowVertical,
+                'position': attributes.containerStyles.wrapShadowPosition
+            },
+            iconShadow: {
+                'color': attributes.iconStyles.shadowColor,
+                'blur': attributes.iconStyles.shadowBlur,
+                'horizontal': attributes.iconStyles.shadowHorizontal,
+                'vertical': attributes.iconStyles.shadowVertical
             }
         };
         return Object.assign(attributes, newAttributes);
@@ -31935,71 +31884,55 @@ var deprecatedContent = [{
         var _props$attributes6 = props.attributes,
             block_id = _props$attributes6.block_id,
             iconBorder = _props$attributes6.iconBorder,
-            wrapBorder = _props$attributes6.wrapBorder,
             selectedIcon = _props$attributes6.selectedIcon,
             align = _props$attributes6.align,
             hoverEffect = _props$attributes6.hoverEffect,
             iconStyles = _props$attributes6.iconStyles,
-            containerStyles = _props$attributes6.containerStyles,
-            borderWidth = _props$attributes6.borderWidth,
-            iconBorderTop = _props$attributes6.iconBorderTop,
-            iconBorderRight = _props$attributes6.iconBorderRight,
-            iconBorderBottom = _props$attributes6.iconBorderBottom,
-            iconBorderLeft = _props$attributes6.iconBorderLeft,
-            wrapBorderWidth = _props$attributes6.wrapBorderWidth,
-            wrapBorderTop = _props$attributes6.wrapBorderTop,
-            wrapBorderRight = _props$attributes6.wrapBorderRight,
-            wrapBorderBottom = _props$attributes6.wrapBorderBottom,
-            wrapBorderLeft = _props$attributes6.wrapBorderLeft,
             urlCheck = _props$attributes6.urlCheck,
             link = _props$attributes6.link,
             target = _props$attributes6.target,
             hideDesktop = _props$attributes6.hideDesktop,
             hideTablet = _props$attributes6.hideTablet,
             hideMobile = _props$attributes6.hideMobile,
-            backgroundType = _props$attributes6.backgroundType;
+            containerBackground = _props$attributes6.containerBackground,
+            containerShadow = _props$attributes6.containerShadow,
+            iconShadow = _props$attributes6.iconShadow;
 
 
         return React.createElement(
-            "div",
+            'div',
             {
-                className: mainClasses + "__container " + hideDesktop + " " + hideTablet + " " + hideMobile,
-                id: "premium-icon-" + block_id
+                className: mainClasses + '__container ' + hideDesktop + ' ' + hideTablet + ' ' + hideMobile,
+                id: 'premium-icon-' + block_id
             },
             React.createElement(
-                "div",
+                'div',
                 {
-                    className: "premium-icon-container",
-                    style: {
-                        textAlign: align,
-                        backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
-                        backgroundImage: btnbg,
-                        backgroundRepeat: containerStyles[0].backgroundRepeat,
-                        backgroundPosition: containerStyles[0].backgroundPosition,
-                        backgroundSize: containerStyles[0].backgroundSize,
-                        backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
+                    className: 'premium-icon-container',
+                    style: _extends({
+                        textAlign: align
+                    }, (0, _HelperFunction.gradientBackground)(containerBackground), {
                         borderStyle: containerBorder.borderType,
                         borderColor: containerBorder.borderColor,
-                        boxShadow: (containerStyles[0].wrapShadowHorizontal || 0) + "px " + (containerStyles[0].wrapShadowVertical || 0) + "px " + (containerStyles[0].wrapShadowBlur || 0) + "px " + containerStyles[0].wrapShadowColor + " " + containerStyles[0].wrapShadowPosition
-
-                    }
+                        boxShadow: (containerShadow.horizontal || 0) + 'px ' + (containerShadow.vertical || 0) + 'px ' + (containerShadow.blur || 0) + 'px ' + containerShadow.color + ' ' + containerShadow.position
+                    })
                 },
                 React.createElement(
-                    "a",
+                    'a',
                     {
-                        className: "premium-icon__link",
+                        className: 'premium-icon__link',
                         href: urlCheck && link,
-                        rel: "noopener noreferrer",
+                        rel: 'noopener noreferrer',
                         target: target ? "_blank" : "_self"
                     },
-                    React.createElement("i", {
-                        className: "premium-icon " + selectedIcon + " premium-icon__" + hoverEffect,
+                    React.createElement('i', {
+                        className: 'premium-icon ' + selectedIcon + ' premium-icon__' + hoverEffect,
                         style: {
                             color: iconStyles[0].iconColor || "#6ec1e4",
                             backgroundColor: iconStyles[0].iconBack,
                             borderStyle: iconBorder.borderType,
                             borderColor: iconBorder.borderColor,
-                            textShadow: (iconStyles[0].shadowHorizontal || 0) + "px " + (iconStyles[0].shadowVertical || 0) + "px " + (iconStyles[0].shadowBlur || 0) + "px " + iconStyles[0].shadowColor
+                            textShadow: (iconShadow.horizontal || 0) + 'px ' + (iconShadow.vertical || 0) + 'px ' + (iconShadow.blur || 0) + 'px ' + iconShadow.color
                         }
                     })
                 )
@@ -32055,35 +31988,7 @@ var attributes = {
             iconSize: '',
             iconColor: '',
             iconBack: '',
-            iconOpacity: '1',
-            shadowColor: '',
-            shadowBlur: '',
-            shadowHorizontal: '',
-            shadowVertical: ''
-        }]
-    },
-    containerStyles: {
-        type: "array",
-        default: [{
-            containerBack: '',
-            backgroundOpacity: 1,
-            backgroundImageID: '',
-            backgroundImageURL: '',
-            backgroundRepeat: 'no-reapet',
-            backgroundPosition: 'top center',
-            backgroundSize: 'auto',
-            fixed: false,
-            wrapShadowColor: '',
-            wrapShadowBlur: '0',
-            wrapShadowHorizontal: '0',
-            wrapShadowVertical: '0',
-            wrapShadowPosition: '',
-            gradientLocationOne: '0',
-            gradientColorTwo: '',
-            gradientLocationTwo: '100',
-            gradientType: 'linear',
-            gradientAngle: '180',
-            gradientPosition: 'center center'
+            iconOpacity: '1'
         }]
     },
     background: {
@@ -32109,10 +32014,6 @@ var attributes = {
     hideMobile: {
         type: 'boolean',
         default: false
-    },
-    backgroundType: {
-        type: "string",
-        default: ""
     },
     iconSize: {
         type: "object",
@@ -32309,6 +32210,44 @@ var attributes = {
                     left: ""
                 }
             }
+        }
+    },
+    containerBackground: {
+        type: "object",
+        default: {
+            'backgroundType': '',
+            'backgroundColor': '',
+            'backgroundImageID': '',
+            'backgroundImageURL': '',
+            'backgroundPosition': '',
+            'backgroundRepeat': '',
+            'backgroundSize': '',
+            'fixed': false,
+            'gradientLocationOne': "",
+            'gradientColorTwo': '',
+            'gradientLocationTwo': '',
+            'gradientAngle': '',
+            'gradientPosition': '',
+            'gradientType': ''
+        }
+    },
+    containerShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
+    },
+    iconShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': ''
         }
     }
 };
@@ -69740,6 +69679,55 @@ var attributes = (_attributes = {
     default: "h2"
 }), _attributes);
 exports.default = attributes;
+
+/***/ }),
+/* 411 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var gradientBackground = exports.gradientBackground = function gradientBackground(value) {
+    var backgroundType = value.backgroundType,
+        backgroundColor = value.backgroundColor,
+        backgroundRepeat = value.backgroundRepeat,
+        backgroundPosition = value.backgroundPosition,
+        fixed = value.fixed,
+        backgroundSize = value.backgroundSize,
+        gradientColorTwo = value.gradientColorTwo,
+        gradientPosition = value.gradientPosition,
+        gradientType = value.gradientType,
+        gradientLocationOne = value.gradientLocationOne,
+        gradientLocationTwo = value.gradientLocationTwo,
+        gradientAngle = value.gradientAngle,
+        backgroundImageURL = value.backgroundImageURL;
+
+    var btnGrad = void 0,
+        btnGrad2 = void 0,
+        btnbg = void 0;
+    if (undefined !== backgroundType && 'gradient' === backgroundType) {
+        btnGrad = 'transparent' === backgroundColor || undefined === backgroundColor ? 'rgba(255,255,255,0)' : backgroundColor;
+        btnGrad2 = undefined !== gradientColorTwo && undefined !== gradientColorTwo && '' !== gradientColorTwo ? gradientColorTwo : '#777';
+        if ('radial' === gradientType) {
+            btnbg = 'radial-gradient(at ' + gradientPosition + ', ' + btnGrad + ' ' + gradientLocationOne + '%, ' + btnGrad2 + ' ' + gradientLocationTwo + '%)';
+        } else if ('radial' !== gradientType) {
+            btnbg = 'linear-gradient(' + gradientAngle + 'deg, ' + btnGrad + ' ' + gradientLocationOne + '%, ' + btnGrad2 + ' ' + gradientLocationTwo + '%)';
+        }
+    } else {
+        btnbg = backgroundImageURL ? 'url(\'' + backgroundImageURL + '\')' : '';
+    }
+    return {
+        backgroundColor: backgroundType === "solid" ? backgroundColor : "transparent",
+        backgroundImage: btnbg,
+        backgroundRepeat: backgroundRepeat,
+        backgroundPosition: backgroundPosition,
+        backgroundSize: backgroundSize,
+        backgroundAttachment: fixed ? "fixed" : "unset"
+    };
+};
 
 /***/ })
 /******/ ]);

@@ -34,38 +34,9 @@ const attributes = {
                 iconSize: '',
                 iconColor: '',
                 iconBack: '',
-                iconOpacity: '1',
-                shadowColor: '',
-                shadowBlur: '',
-                shadowHorizontal: '',
-                shadowVertical: '',
+                iconOpacity: '1'
             }
         ]
-    },
-    containerStyles: {
-        type: "array",
-        default: [
-            {
-                containerBack: '',
-                backgroundOpacity: 1,
-                backgroundImageID: '',
-                backgroundImageURL: '',
-                backgroundRepeat: 'no-reapet',
-                backgroundPosition: 'top center',
-                backgroundSize: 'auto',
-                fixed: false,
-                wrapShadowColor: '',
-                wrapShadowBlur: '0',
-                wrapShadowHorizontal: '0',
-                wrapShadowVertical: '0',
-                wrapShadowPosition: '',
-                gradientLocationOne: '0',
-                gradientColorTwo: '',
-                gradientLocationTwo: '100',
-                gradientType: 'linear',
-                gradientAngle: '180',
-                gradientPosition: 'center center'
-            }]
     },
     background: {
         type: "string"
@@ -90,10 +61,6 @@ const attributes = {
     hideMobile: {
         type: 'boolean',
         default: false
-    },
-    backgroundType: {
-        type: "string",
-        default: ""
     },
     iconSize: {
         type: "object",
@@ -290,6 +257,44 @@ const attributes = {
                     left: ""
                 }
             }
+        }
+    },
+    containerBackground: {
+        type: "object",
+        default: {
+            'backgroundType': '',
+            'backgroundColor': '',
+            'backgroundImageID': '',
+            'backgroundImageURL': '',
+            'backgroundPosition': '',
+            'backgroundRepeat': '',
+            'backgroundSize': '',
+            'fixed': false,
+            'gradientLocationOne': "",
+            'gradientColorTwo': '',
+            'gradientLocationTwo': '',
+            'gradientAngle': '',
+            'gradientPosition': '',
+            'gradientType': ''
+        }
+    },
+    containerShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
+    },
+    iconShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': ''
         }
     }
 }

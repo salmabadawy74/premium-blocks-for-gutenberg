@@ -1,4 +1,5 @@
 import classnames from 'classnames'
+import { gradientBackground } from '../../components/HelperFunction'
 
 const save = props => {
 
@@ -11,32 +12,20 @@ const save = props => {
         align,
         hoverEffect,
         iconStyles,
-        containerStyles,
         urlCheck,
         link,
         target,
         hideDesktop,
         hideTablet,
         hideMobile,
-        backgroundType,
-        containerBorder
+        containerBorder,
+        containerBackground,
+        containerShadow,
+        iconShadow,
+        iconSize
     } = props.attributes;
 
     const mainClasses = classnames(className, 'premium-icon');
-
-
-    let btnGrad, btnGrad2, btnbg;
-    if ('gradient' === backgroundType) {
-        btnGrad = ('transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack);
-        btnGrad2 = (undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777');
-        if ('radial' === containerStyles[0].gradientType) {
-            btnbg = `radial-gradient(at ${containerStyles[0].gradientPosition}, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
-        } else if ('radial' !== containerStyles[0].gradientType) {
-            btnbg = `linear-gradient(${containerStyles[0].gradientAngle}deg, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
-        }
-    } else {
-        btnbg = containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : ''
-    }
 
     return (
         <div
@@ -47,17 +36,11 @@ const save = props => {
                 className={`premium-icon-container`}
                 style={{
                     textAlign: align,
-                    backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
-                    backgroundImage: btnbg,
-                    backgroundRepeat: containerStyles[0].backgroundRepeat,
-                    backgroundPosition: containerStyles[0].backgroundPosition,
-                    backgroundSize: containerStyles[0].backgroundSize,
-                    backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
+                    ...gradientBackground(containerBackground),
                     borderStyle: containerBorder.borderType,
                     borderColor: containerBorder.borderColor,
-                    boxShadow: `${containerStyles[0].wrapShadowHorizontal || 0}px ${containerStyles[0].wrapShadowVertical ||
-                        0}px ${containerStyles[0].wrapShadowBlur ||
-                        0}px ${containerStyles[0].wrapShadowColor} ${containerStyles[0].wrapShadowPosition}`,
+                    boxShadow: `${containerShadow.horizontal || 0}px ${containerShadow.vertical ||
+                        0}px ${containerShadow.blur || 0}px ${containerShadow.color} ${containerShadow.position}`,
 
                 }}
             >
@@ -70,12 +53,13 @@ const save = props => {
                     <i
                         className={`premium-icon ${selectedIcon} premium-icon__${hoverEffect}`}
                         style={{
+                            fontSize: (iconSize[props.deviceType] || 50) + iconSize.unit,
                             color: iconStyles[0].iconColor || "#6ec1e4",
                             backgroundColor: iconStyles[0].iconBack,
                             borderStyle: iconBorder.borderType,
                             borderColor: iconBorder.borderColor,
-                            textShadow: `${iconStyles[0].shadowHorizontal || 0}px ${iconStyles[0].shadowVertical ||
-                                0}px ${iconStyles[0].shadowBlur || 0}px ${iconStyles[0].shadowColor}`
+                            textShadow: `${iconShadow.horizontal || 0}px ${iconShadow.vertical ||
+                                0}px ${iconShadow.blur || 0}px ${iconShadow.color}`
                         }}
                     />
                 </a>
