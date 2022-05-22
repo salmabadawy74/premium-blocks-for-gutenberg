@@ -1909,7 +1909,7 @@ class PBG_Blocks_Helper {
 		//icon Styles
 		if ( isset( $attr['iconSize']['Desktop'] ) ) {
 			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon' );
-			$css->add_property( 'font-size', ( $attr['iconSize']['Desktop'] . ( isset( $attr['iconSize']['unit'] ) ? $attr['iconSize']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'font-size', ( ( isset( $attr['iconSize']['Desktop'] ) ? $attr['iconSize']['Desktop'] : '50' ) . ( isset( $attr['iconSize']['unit'] ) ? $attr['iconSize']['unit'] : 'px' ) . '!important' ) );
 		}
 		if ( isset( $attr['iconMargin']['Desktop']['top'] ) && isset( $attr['iconMargin']['unit'] ) ) {
 			$css->set_selector( '#premium-icon-' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon' );

@@ -1,6 +1,7 @@
 const className = "premium-icon";
 const { __ } = wp.i18n;
 import hexToRgba from 'hex-to-rgba'
+import { gradientBackground } from '../../components/HelperFunction'
 
 
 const attributes = {
@@ -1286,6 +1287,35 @@ const deprecatedContent = [
                             left: ""
                         },
                     }
+                },
+                containerBackground: {
+                    'backgroundType': attributes.backgroundType,
+                    'backgroundColor': attributes.containerStyles.containerBack,
+                    'backgroundImageID': attributes.containerStyles.backgroundImageID,
+                    'backgroundImageURL': attributes.containerStyles.backgroundImageURL,
+                    'backgroundPosition': attributes.containerStyles.backgroundPosition,
+                    'backgroundRepeat': attributes.containerStyles.backgroundRepeat,
+                    'backgroundSize': attributes.containerStyles.backgroundSize,
+                    'fixed': attributes.containerStyles.fixed,
+                    'gradientLocationOne': attributes.containerStyles.gradientLocationOne,
+                    'gradientColorTwo': attributes.containerStyles.gradientColorTwo,
+                    'gradientLocationTwo': attributes.containerStyles.gradientLocationTwo,
+                    'gradientAngle': attributes.containerStyles.gradientAngle,
+                    'gradientPosition': attributes.containerStyles.gradientPosition,
+                    'gradientType': attributes.containerStyles.gradientType,
+                },
+                containerShadow: {
+                    'color': attributes.containerStyles.wrapShadowColor,
+                    'blur': attributes.containerStyles.wrapShadowBlur,
+                    'horizontal': attributes.containerStyles.wrapShadowHorizontal,
+                    'vertical': attributes.containerStyles.wrapShadowVertical,
+                    'position': attributes.containerStyles.wrapShadowPosition
+                },
+                iconShadow: {
+                    'color': attributes.iconStyles.shadowColor,
+                    'blur': attributes.iconStyles.shadowBlur,
+                    'horizontal': attributes.iconStyles.shadowHorizontal,
+                    'vertical': attributes.iconStyles.shadowVertical
                 }
             };
             return Object.assign(attributes, newAttributes);
@@ -1294,29 +1324,19 @@ const deprecatedContent = [
             const {
                 block_id,
                 iconBorder,
-                wrapBorder,
                 selectedIcon,
                 align,
                 hoverEffect,
                 iconStyles,
-                containerStyles,
-                borderWidth,
-                iconBorderTop,
-                iconBorderRight,
-                iconBorderBottom,
-                iconBorderLeft,
-                wrapBorderWidth,
-                wrapBorderTop,
-                wrapBorderRight,
-                wrapBorderBottom,
-                wrapBorderLeft,
                 urlCheck,
                 link,
                 target,
                 hideDesktop,
                 hideTablet,
                 hideMobile,
-                backgroundType
+                containerBackground,
+                containerShadow,
+                iconShadow
             } = props.attributes;
 
             return (
@@ -1328,18 +1348,11 @@ const deprecatedContent = [
                         className={`premium-icon-container`}
                         style={{
                             textAlign: align,
-                            backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
-                            backgroundImage: btnbg,
-                            backgroundRepeat: containerStyles[0].backgroundRepeat,
-                            backgroundPosition: containerStyles[0].backgroundPosition,
-                            backgroundSize: containerStyles[0].backgroundSize,
-                            backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
+                            ...gradientBackground(containerBackground),
                             borderStyle: containerBorder.borderType,
                             borderColor: containerBorder.borderColor,
-                            boxShadow: `${containerStyles[0].wrapShadowHorizontal || 0}px ${containerStyles[0].wrapShadowVertical ||
-                                0}px ${containerStyles[0].wrapShadowBlur ||
-                                0}px ${containerStyles[0].wrapShadowColor} ${containerStyles[0].wrapShadowPosition}`,
-
+                            boxShadow: `${containerShadow.horizontal || 0}px ${containerShadow.vertical ||
+                                0}px ${containerShadow.blur || 0}px ${containerShadow.color} ${containerShadow.position}`
                         }}
                     >
                         <a
@@ -1355,8 +1368,8 @@ const deprecatedContent = [
                                     backgroundColor: iconStyles[0].iconBack,
                                     borderStyle: iconBorder.borderType,
                                     borderColor: iconBorder.borderColor,
-                                    textShadow: `${iconStyles[0].shadowHorizontal || 0}px ${iconStyles[0].shadowVertical ||
-                                        0}px ${iconStyles[0].shadowBlur || 0}px ${iconStyles[0].shadowColor}`
+                                    textShadow: `${iconShadow.horizontal || 0}px ${iconShadow.vertical ||
+                                        0}px ${iconShadow.blur || 0}px ${iconShadow.color}`
                                 }}
                             />
                         </a>

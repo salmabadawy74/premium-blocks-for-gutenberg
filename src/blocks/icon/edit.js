@@ -12,6 +12,7 @@ import PremiumShadow from "../../components/PremiumShadow";
 import SpacingControl from '../../components/premium-responsive-spacing'
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
+import { gradientBackground } from '../../components/HelperFunction'
 
 const { __ } = wp.i18n;
 
@@ -42,21 +43,22 @@ const edit = props => {
         align,
         hoverEffect,
         iconStyles,
-        containerStyles,
         urlCheck,
         link,
         target,
         hideDesktop,
         hideTablet,
         hideMobile,
-        backgroundType,
         iconSize,
         iconPadding,
         iconMargin,
         wrapPadding,
         wrapMargin,
         containerBorder,
-        iconBorder
+        iconBorder,
+        containerBackground,
+        containerShadow,
+        iconShadow
     } = props.attributes;
 
     const EFFECTS = [
@@ -90,18 +92,6 @@ const edit = props => {
         }
     ];
 
-    const saveContainerStyle = (value) => {
-        const newUpdate = containerStyles.map((item, index) => {
-            if (0 === index) {
-                item = { ...item, ...value };
-            }
-            return item;
-        });
-        setAttributes({
-            containerStyles: newUpdate,
-        });
-    }
-
     const saveIconStyle = (value) => {
         const newUpdate = iconStyles.map((item, index) => {
             if (0 === index) {
@@ -112,19 +102,6 @@ const edit = props => {
         setAttributes({
             iconStyles: newUpdate,
         });
-    }
-
-    let btnGrad, btnGrad2, btnbg;
-    if (undefined !== backgroundType && 'gradient' === backgroundType) {
-        btnGrad = ('transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack);
-        btnGrad2 = (undefined !== containerStyles[0].gradientColorTwo && undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777');
-        if ('radial' === containerStyles[0].gradientType) {
-            btnbg = `radial-gradient(at ${containerStyles[0].gradientPosition}, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
-        } else if ('radial' !== containerStyles[0].gradientType) {
-            btnbg = `linear-gradient(${containerStyles[0].gradientAngle}deg, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
-        }
-    } else {
-        btnbg = containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : ""
     }
 
     const mainClasses = classnames(className, "premium-icon");
@@ -210,14 +187,8 @@ const edit = props => {
                             />
                             <PremiumShadow
                                 label={__("Text Shadow", "premium-blocks-for-gutenberg")}
-                                color={iconStyles[0].shadowColor}
-                                blur={iconStyles[0].shadowBlur}
-                                horizontal={iconStyles[0].shadowHorizontal}
-                                vertical={iconStyles[0].shadowVertical}
-                                onChangeColor={newColor => saveIconStyle({ shadowColor: newColor })}
-                                onChangeBlur={newBlur => saveIconStyle({ shadowBlur: newBlur })}
-                                onChangehHorizontal={newValue => saveIconStyle({ shadowHorizontal: newValue })}
-                                onChangeVertical={newValue => saveIconStyle({ shadowVertical: newValue })}
+                                value={iconShadow}
+                                onChange={(value) => setAttributes({ iconShadow: value })}
                             />
                             <SpacingControl
                                 label={__('Margin', 'premium-blocks-for-gutenberg')}
@@ -240,22 +211,8 @@ const edit = props => {
                             initialOpen={false}
                         >
                             <PremiumBackgroundControl
-                                setAttributes={setAttributes}
-                                saveContainerStyle={saveContainerStyle}
-                                backgroundType={backgroundType}
-                                backgroundColor={containerStyles[0].containerBack}
-                                backgroundImageID={containerStyles[0].backgroundImageID}
-                                backgroundImageURL={containerStyles[0].backgroundImageURL}
-                                backgroundPosition={containerStyles[0].backgroundPosition}
-                                backgroundRepeat={containerStyles[0].backgroundRepeat}
-                                backgroundSize={containerStyles[0].backgroundSize}
-                                fixed={containerStyles[0].fixed}
-                                gradientLocationOne={containerStyles[0].gradientLocationOne}
-                                gradientColorTwo={containerStyles[0].gradientColorTwo}
-                                gradientLocationTwo={containerStyles[0].gradientLocationTwo}
-                                gradientAngle={containerStyles[0].gradientAngle}
-                                gradientPosition={containerStyles[0].gradientPosition}
-                                gradientType={containerStyles[0].gradientType}
+                                value={containerBackground}
+                                onChange={(value) => setAttributes({ containerBackground: value })}
                             />
                             <PremiumBorder
                                 label={__('Border', 'premium-blocks-for-gutenberg')}
@@ -263,18 +220,8 @@ const edit = props => {
                                 onChange={(value) => setAttributes({ containerBorder: value })}
                             />
                             <PremiumShadow
-                                label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
-                                boxShadow={true}
-                                color={containerStyles[0].wrapShadowColor}
-                                blur={containerStyles[0].wrapShadowBlur}
-                                horizontal={containerStyles[0].wrapShadowHorizontal}
-                                vertical={containerStyles[0].wrapShadowVertical}
-                                position={containerStyles[0].wrapShadowPosition}
-                                onChangeColor={newColor => saveContainerStyle({ wrapShadowColor: newColor })}
-                                onChangeBlur={newBlur => saveContainerStyle({ wrapShadowBlur: newBlur })}
-                                onChangehHorizontal={newValue => saveContainerStyle({ wrapShadowHorizontal: newValue })}
-                                onChangeVertical={newValue => saveContainerStyle({ wrapShadowVertical: newValue })}
-                                onChangePosition={newValue => saveContainerStyle({ wrapShadowPosition: newValue })}
+                                value={containerShadow}
+                                onChange={(value) => setAttributes({ containerShadow: value })}
                             />
                             <SpacingControl
                                 label={__('Margin', 'premium-blocks-for-gutenberg')}
@@ -313,12 +260,7 @@ const edit = props => {
                 className={`premium-icon-container`}
                 style={{
                     textAlign: align,
-                    backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
-                    backgroundImage: btnbg,
-                    backgroundRepeat: containerStyles[0].backgroundRepeat,
-                    backgroundPosition: containerStyles[0].backgroundPosition,
-                    backgroundSize: containerStyles[0].backgroundSize,
-                    backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
+                    ...gradientBackground(containerBackground),
                     borderStyle: containerBorder.borderType,
                     borderTopWidth: containerBorder['borderWidth'][props.deviceType]['top'] && containerBorder['borderWidth'][props.deviceType]['top'] + "px",
                     borderRightWidth: containerBorder['borderWidth'][props.deviceType]['right'] && containerBorder['borderWidth'][props.deviceType]['right'] + "px",
@@ -329,9 +271,8 @@ const edit = props => {
                     borderTopRightRadius: containerBorder['borderRadius'][props.deviceType]['right'] && containerBorder['borderRadius'][props.deviceType]['right'] + "px",
                     borderBottomRightRadius: containerBorder['borderRadius'][props.deviceType]['bottom'] && containerBorder['borderRadius'][props.deviceType]['bottom'] + "px",
                     borderColor: containerBorder.borderColor,
-                    boxShadow: `${containerStyles[0].wrapShadowHorizontal || 0}px ${containerStyles[0].wrapShadowVertical ||
-                        0}px ${containerStyles[0].wrapShadowBlur ||
-                        0}px ${containerStyles[0].wrapShadowColor} ${containerStyles[0].wrapShadowPosition}`,
+                    boxShadow: `${containerShadow.horizontal || 0}px ${containerShadow.vertical ||
+                        0}px ${containerShadow.blur || 0}px ${containerShadow.color} ${containerShadow.position}`,
                     paddingTop: wrapPadding[props.deviceType]['top'] && wrapPadding[props.deviceType]['top'] + wrapPadding.unit,
                     paddingRight: wrapPadding[props.deviceType]['right'] && wrapPadding[props.deviceType]['right'] + wrapPadding.unit,
                     paddingBottom: wrapPadding[props.deviceType]['bottom'] && wrapPadding[props.deviceType]['bottom'] + wrapPadding.unit,
@@ -372,8 +313,8 @@ const edit = props => {
                             borderTopRightRadius: iconBorder['borderRadius'][props.deviceType]['right'] && iconBorder['borderRadius'][props.deviceType]['right'] + "px",
                             borderBottomRightRadius: iconBorder['borderRadius'][props.deviceType]['bottom'] && iconBorder['borderRadius'][props.deviceType]['bottom'] + "px",
                             borderColor: iconBorder.borderColor,
-                            textShadow: `${iconStyles[0].shadowHorizontal || 0}px ${iconStyles[0].shadowVertical ||
-                                0}px ${iconStyles[0].shadowBlur || 0}px ${iconStyles[0].shadowColor}`
+                            textShadow: `${iconShadow.horizontal || 0}px ${iconShadow.vertical ||
+                                0}px ${iconShadow.blur || 0}px ${iconShadow.color}`
                         }}
                     />
                 )}
