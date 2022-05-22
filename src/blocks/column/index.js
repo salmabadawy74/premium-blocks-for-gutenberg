@@ -12,7 +12,7 @@ registerBlockType("premium/column", {
     category: "premium-blocks",
     attributes: attributes,
     supports: {},
-    // parent: ['premium/row'],
+    parent: ['premium/row'],
     example: {},
     edit: edit,
     save: () => <div>Hello</div>,

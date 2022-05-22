@@ -66,6 +66,7 @@ class PremiumColumn extends Component {
         const colWidth = editorSelector.getBlockAttributes(clientId).colWidth
         const nextBlockClientId = editorSelector.getNextBlockClientId(clientId)
         const prevBlockClientId = editorSelector.getPreviousBlockClientId(clientId)
+
         if (nextBlockClientId !== null) {
             nextColWidth.desktop = parseFloat(editorSelector.getBlockAttributes(nextBlockClientId).colWidth.desktop)
         }
@@ -287,23 +288,227 @@ class PremiumColumn extends Component {
         return (
             <Fragment>
                 <InspectorControls>
-                    <InspectorTabs tabs={['style', 'advance']}>
-                        <InspectorTab key={'style'}>
+                    <InspectorTabs tabs={['layout', 'style', 'advance']}>
+                        <InspectorTab key={'layout'}>
                             <PanelBody initialOpen={true} title={__('Dimension')}>
-                                <ResponsiveSingleRangeControl
-                                    label={__('Width')}
-                                    value={colWidth.desktop}
-                                    onChange={val => this.updateColumnWidth(val)}
-                                    min={15}
-                                    max={this.state.colWidthMax}
-                                    defaultValue={''}
+                                <ResponsiveRangeControl
+                                    label={__("Column Gutter", 'premium-blocks-for-gutenberg')}
+                                    value={colWidth}
+                                    min="0"
+                                    max="100"
+                                    onChange={newValue => setAttributes({ colWidth: newValue })}
+                                    defaultValue={0}
+                                    showUnit={true}
                                 />
                             </PanelBody>
-                            <PanelBody initialOpen={true} title={__('Design')}>
+
+                        </InspectorTab>
+                        <InspectorTab key={'style'}>
+                            <PanelBody
+                                title={__("Background", 'premium-blocks-for-gutenberg')}
+                                className="premium-panel-body"
+                                initialOpen={false}
+                            >
+                                <PremiumBackgroundControl
+                                    setAttributes={setAttributes}
+                                    saveContainerStyle={saveContainerStyle}
+                                    backgroundType={backgroundType}
+                                    backgroundColor={containerStyles[0].containerBack}
+                                    backgroundImageID={containerStyles[0].backgroundImageID}
+                                    backgroundImageURL={containerStyles[0].backgroundImageURL}
+                                    backgroundPosition={containerStyles[0].backgroundPosition}
+                                    backgroundRepeat={containerStyles[0].backgroundRepeat}
+                                    backgroundSize={containerStyles[0].backgroundSize}
+                                    fixed={containerStyles[0].fixed}
+                                    gradientLocationOne={containerStyles[0].gradientLocationOne}
+                                    gradientColorTwo={containerStyles[0].gradientColorTwo}
+                                    gradientLocationTwo={containerStyles[0].gradientLocationTwo}
+                                    gradientAngle={containerStyles[0].gradientAngle}
+                                    gradientPosition={containerStyles[0].gradientPosition}
+                                    gradientType={containerStyles[0].gradientType}
+                                />
+                            </PanelBody>
+                            <PanelBody
+                                title={__("Border", 'premium-blocks-for-gutenberg')}
+                                className="premium-panel-body"
+                                initialOpen={false}
+                            >
+                                <PremiumBorder
+                                    borderType={containerStyles[0].borderType}
+                                    borderWidth={containerStyles[0].borderWidth}
+                                    top={borderTop}
+                                    right={borderRight}
+                                    bottom={borderBottom}
+                                    left={borderLeft}
+                                    borderColor={containerStyles[0].borderColor}
+                                    borderRadius={containerStyles[0].borderRadius}
+                                    onChangeType={(newType) => saveContainerStyle({ borderType: newType })}
+                                    onChangeWidth={({ top, right, bottom, left }) =>
+                                        setAttributes({
+                                            borderTop: top,
+                                            borderRight: right,
+                                            borderBottom: bottom,
+                                            borderLeft: left,
+                                            isUpdated: true,
+                                        })
+                                    }
+                                    onChangeColor={(colorValue) => saveContainerStyle({ borderColor: colorValue })}
+                                    onChangeRadius={(newrRadius) => saveContainerStyle({ borderRadius: newrRadius })}
+                                />
+                                <PremiumShadow
+                                    boxShadow={true}
+                                    color={containerStyles[0].shadowColor}
+                                    blur={containerStyles[0].shadowBlur}
+                                    horizontal={containerStyles[0].shadowHorizontal}
+                                    vertical={containerStyles[0].shadowVertical}
+                                    position={containerStyles[0].shadowPosition}
+                                    onChangeColor={newColor =>
+                                        saveContainerStyle({
+                                            shadowColor:
+                                                newColor === undefined
+                                                    ? "transparent"
+                                                    : newColor
+                                        })
+                                    }
+                                    onChangeBlur={newBlur => saveContainerStyle({ shadowBlur: newBlur === undefined ? 0 : newBlur })}
+                                    onChangehHorizontal={newValue => saveContainerStyle({ shadowHorizontal: newValue === undefined ? 0 : newValue })}
+                                    onChangeVertical={newValue => saveContainerStyle({ shadowVertical: newValue === undefined ? 0 : newValue })}
+                                    onChangePosition={newValue => saveContainerStyle({ shadowPosition: newValue === undefined ? 0 : newValue })}
+                                />
                             </PanelBody>
                         </InspectorTab>
                         <InspectorTab key={'advance'}>
                             <PanelBody initialOpen={true} title={__('Spacing')}>
+                                <PremiumResponsiveMargin
+                                    directions={["all"]}
+                                    marginTop={marginTop}
+                                    marginRight={marginRight}
+                                    marginBottom={marginBottom}
+                                    marginLeft={marginLeft}
+                                    marginTopTablet={marginTTablet}
+                                    marginRightTablet={marginRTablet}
+                                    marginBottomTablet={marginBTablet}
+                                    marginLeftTablet={marginLTablet}
+                                    marginTopMobile={marginTMobile}
+                                    marginRightMobile={marginRMobile}
+                                    marginBottomMobile={marginBMobile}
+                                    marginLeftMobile={marginLMobile}
+                                    onChangeMarginTop={
+                                        (device, newValue) => {
+                                            if (device === "desktop") {
+                                                setAttributes({ marginTop: newValue })
+                                            } else if (device === "tablet") {
+                                                setAttributes({ marginTTablet: newValue })
+                                            } else {
+                                                setAttributes({ marginTMobile: newValue })
+                                            }
+                                        }
+                                    }
+                                    onChangeMarginRight={
+                                        (device, newValue) => {
+                                            if (device === "desktop") {
+                                                setAttributes({ marginRight: newValue })
+                                            } else if (device === "tablet") {
+                                                setAttributes({ marginRTablet: newValue })
+                                            } else {
+                                                setAttributes({ marginRMobile: newValue })
+                                            }
+                                        }
+                                    }
+                                    onChangeMarginBottom={
+                                        (device, newValue) => {
+                                            if (device === "desktop") {
+                                                setAttributes({ marginBottom: newValue })
+                                            } else if (device === "tablet") {
+                                                setAttributes({ marginBTablet: newValue })
+                                            } else {
+                                                setAttributes({ marginBMobile: newValue })
+                                            }
+                                        }
+                                    }
+                                    onChangeMarginLeft={
+                                        (device, newValue) => {
+                                            if (device === "desktop") {
+                                                setAttributes({ marginLeft: newValue })
+                                            } else if (device === "tablet") {
+                                                setAttributes({ marginLTablet: newValue })
+                                            } else {
+                                                setAttributes({ marginLMobile: newValue })
+                                            }
+                                        }
+                                    }
+                                    showUnits={true}
+                                    onChangeMarSizeUnit={newvalue => saveContainerStyle({ marginUnit: newvalue })}
+                                    selectedUnit={containerStyles[0].marginUnit}
+                                />
+                                <PremiumResponsivePadding
+                                    paddingTop={paddingTop}
+                                    paddingRight={paddingRight}
+                                    paddingBottom={paddingBottom}
+                                    paddingLeft={paddingLeft}
+                                    paddingTopTablet={paddingTTablet}
+                                    paddingRightTablet={paddingRTablet}
+                                    paddingBottomTablet={paddingBTablet}
+                                    paddingLeftTablet={paddingLTablet}
+                                    paddingTopMobile={paddingTMobile}
+                                    paddingRightMobile={paddingRMobile}
+                                    paddingBottomMobile={paddingBMobile}
+                                    paddingLeftMobile={paddingLMobile}
+                                    showUnits={true}
+                                    selectedUnit={containerStyles[0].paddingUnit}
+                                    onChangePadSizeUnit={newvalue => saveContainerStyle({ paddingUnit: newvalue })}
+                                    onChangePaddingTop={
+                                        (device, newValue) => {
+                                            if (device === "desktop") {
+                                                setAttributes({ paddingTop: newValue })
+                                            } else if (device === "tablet") {
+                                                setAttributes({ paddingTTablet: newValue })
+                                            } else {
+                                                setAttributes({ paddingTMobile: newValue })
+                                            }
+                                        }
+                                    }
+                                    onChangePaddingRight={
+                                        (device, newValue) => {
+                                            if (device === "desktop") {
+                                                setAttributes({ paddingRight: newValue })
+                                            } else if (device === "tablet") {
+                                                setAttributes({ paddingRTablet: newValue })
+                                            } else {
+                                                setAttributes({ paddingRMobile: newValue })
+                                            }
+                                        }
+                                    }
+                                    onChangePaddingBottom={
+                                        (device, newValue) => {
+                                            if (device === "desktop") {
+                                                setAttributes({ paddingBottom: newValue })
+                                            } else if (device === "tablet") {
+                                                setAttributes({ paddingBTablet: newValue })
+                                            } else {
+                                                setAttributes({ paddingBMobile: newValue })
+                                            }
+                                        }
+                                    }
+                                    onChangePaddingLeft={
+                                        (device, newValue) => {
+                                            if (device === "desktop") {
+                                                setAttributes({ paddingLeft: newValue })
+                                            } else if (device === "tablet") {
+                                                setAttributes({ paddingLTablet: newValue })
+                                            } else {
+                                                setAttributes({ paddingLMobile: newValue })
+                                            }
+                                        }
+                                    }
+                                />
+                            </PanelBody>
+                            <PanelBody title={__('Animation')} initialOpen={false}>
+                                <Animation
+                                    uniqueId={props.clientId}
+                                    label={__('Animation', 'premium-blocks-for-gutenberg')}
+                                    value={animation}
+                                    onChange={(value) => setAttributes({ animation: value })} />
                             </PanelBody>
                         </InspectorTab>
                     </InspectorTabs>

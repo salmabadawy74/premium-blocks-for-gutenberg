@@ -18,3 +18,4 @@ import "./blocks/bullet-list";
 import "./blocks/person";
 import "./blocks/heading";
 import "./blocks/column";
+import "./blocks/row"
