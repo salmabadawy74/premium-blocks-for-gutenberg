@@ -50,69 +50,67 @@
 		justify-content: center;
 		z-index: 1000;
 		transition: opacity .25s ease-in,left 0s .25s,right 0s .25s;
-	
-		.gpb-popup-content {
-			opacity: 0;
-			padding: 2em;
-			z-index: 100000;
-			max-width:400px;
-			width:400px;
-			right:-100%;
-			height: 100vh;
-			position:fixed;
-			z-index:9998;
-			transition: all 0.6s ease;
-			top:0;
-		}
-		&[data-layout="left"] {
 			.gpb-popup-content {
-				right: auto;
-				left: -100%;;
-				animation-duration: 0.65s;
-					animation-name: fadeInLeft;
+				opacity: 0;
+				padding: 2em;
+				z-index: 100000;
+				width:400px;
+				right:-100%;
+				height: 100vh;
+				position:fixed;
+				z-index:9998;
+				transition: all 0.6s ease;
+				top:0;
 			}
-		}
-		&[data-layout="right"] {
-			.gpb-popup-content {
-				right: auto;
-				right: -100%;;
-				animation-duration: 0.65s;
-				animation-name: fadeInRight;
+			&[data-layout="left"] {
+				.gpb-popup-content {
+					right: auto;
+					left: -100%;;
+					animation-duration: 0.65s;
+						animation-name: fadeInLeft;
+				}
 			}
+			&[data-layout="right"] {
+				.gpb-popup-content {
+					right: auto;
+					right: -100%;;
+					animation-duration: 0.65s;
+					animation-name: fadeInRight;
+				}
+			}
+			&[data-layout="full"] {
+				.gpb-popup-content {
+					width: 100%;
+					display: flex;
+					overflow-x: hidden;
+					overflow-y: auto;
+					flex-direction: column;
+					position: fixed;
+					top: 0;
+					right: 0;
+					bottom: 0;
+					width: 100%;
+					opacity: 0;
+					transition: transform .3s cubic-bezier(.77,.2,.05,1),opacity .4s cubic-bezier(.77,.2,.05,1),visibility .4s cubic-bezier(.77,.2,.05,1);
+				}
+			}
+		.gpb-popup-content * {
+			position: relative;
+			z-index: 20000;
 		}
-	
-	&[data-layout="full"] {
-		.gpb-popup-content {
-			width: 100%;
-			display: flex;
-			overflow-x: hidden;
-			overflow-y: auto;
-			flex-direction: column;
-			position: fixed;
-			top: 0;
-			right: 0;
+		.gpb-popup-overlay {
+			background-color: rgba(0,0,0,.5);
 			bottom: 0;
+			left: 0;
+			position: fixed;
+			right: 0;
+			top: 0;
 			width: 100%;
-			opacity: 0;
-			transition: transform .3s cubic-bezier(.77,.2,.05,1),opacity .4s cubic-bezier(.77,.2,.05,1),visibility .4s cubic-bezier(.77,.2,.05,1);
+			height: 100%;
+			display: none;
 		}
 	}
-	.gpb-popup-content * {
-		position: relative;
-		z-index: 20000;
-	}
-	.gpb-popup-overlay {
-		background-color: rgba(0,0,0,.5);
-		bottom: 0;
-		left: 0;
-		position: fixed;
-		right: 0;
-		top: 0;
-		width: 100%;
-		height: 100%;
-		display: none;
-	}
-}
+
 	&.active {
 		.gpb-trigger-canvas-container {
 		visibility: visible;
@@ -187,26 +185,7 @@
 				height: 6.15px;
 			}
 		}
-		&.float-position-topright  {
-			position: fixed;
-			top: 10px;
-			right: 10px
-		}
-		&.float-position-topleft {
-			position: fixed;
-			top: 10px;
-			left: 10px
-		}
-		&.float-position-bottomright {
-			position: fixed;
-			bottom: 10px;
-			right: 10px
-		}
-		&.float-position-bottomleft {
-			position: fixed;
-			bottom: 10px;
-			left: 10px
-		}
+
 	}
 	.toggle-button[data-label="right"] {
 		flex-direction: row-reverse;
@@ -222,6 +201,26 @@
 		padding: 10px;
 	}
  }
+ .float-position-topright  {
+	position: fixed !important;
+	top: 10px;
+	right: 10px
+}
+.float-position-topleft {
+	position: fixed !important;
+	top: 10px;
+	left: 10px
+}
+.float-position-bottomright {
+	position: fixed !important;
+	bottom: 10px;
+	right: 10px
+}
+.float-position-bottomleft {
+	position: fixed !important;
+	bottom: 10px;
+	left: 10px
+}
 
 @media (max-width: 767px) {
 	.wp-block-premium-trigger {
@@ -245,19 +244,27 @@
 .is-sidebar-opened {
     .float-position-topright,
     .float-position-bottomright {
-        margin-right: 281px;
+        margin-right: 281px !important;
+    }
+}
+.editor-styles-wrapper {
+    .edit-post-visual-editor__post-title-wrapper {
+        > .float-position-topright,
+        > .float-position-bottomright {
+            margin-right: 281px !important;
+        }
     }
 }
 @media (min-width: 782px) {
     .is-sidebar-opened {
         .gpb-trigger-canvas-container[data-layout="right"] {
             .gpb-popup-content {
-                margin-right: 281px;
+                margin-right: 281px !important;
             }
         }
 		.gpb-trigger-canvas-container{
             .gpb-popup-content {
-                margin-top: 61px;
+                margin-top: 61px !important;
             }
         }
         

@@ -14,114 +14,114 @@ function get_trigger_css_style( $attributes, $unique_id ) {
 	$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
 	$unique_id = $attributes['block_id'];
 
-	if ( isset( $attributes['triggerStyles']['iconSize'] ) ) {
-		$css->set_selector( '#premium-trigger-' . $unique_id . ' .toggle-button svg' );
-		$css->add_property( 'font-size', $css->render_color( $attributes['triggerStyles']['iconSize'] . 'px' . '!important' ) );
-	}
-	if ( isset( $attributes['triggerSpacing']['Desktop']['top'] ) && isset( $attributes['triggerSpacing']['unit'] ) ) {
-		$css->set_selector( '#premium-trigger-' . $unique_id . '  .gpb-popup-content' );
-		$css->add_property( 'padding-top', ( $attributes['triggerSpacing']['Desktop']['top'] . ( isset( $attributes['triggerSpacing']['unit'] ) ? $attributes['triggerSpacing']['unit'] : 'px' ) . '!important' ) );
-	}
-	if ( isset( $attributes['triggerSpacing']['Desktop']['right'] ) && isset( $attributes['triggerSpacing']['unit'] ) ) {
-		$css->set_selector( '#premium-trigger-' . $unique_id . ' .gpb-popup-content' );
-		$css->add_property( 'padding-right', ( $attributes['triggerSpacing']['Desktop']['right'] . ( isset( $attributes['triggerSpacing']['unit'] ) ? $attributes['triggerSpacing']['unit'] : 'px' ) . '!important' ) );
-	}
-	if ( isset( $attributes['triggerSpacing']['Desktop']['bottom'] ) && isset( $attributes['triggerSpacing']['unit'] ) ) {
-		$css->set_selector( '#premium-trigger-' . $unique_id . ' .gpb-popup-content' );
-		$css->add_property( 'padding-bottom', ( $attributes['triggerSpacing']['Desktop']['bottom'] . ( isset( $attributes['triggerSpacing']['unit'] ) ? $attributes['triggerSpacing']['unit'] : 'px' ) . '!important' ) );
-	}
-	if ( isset( $attributes['triggerSpacing']['Desktop']['left'] ) && isset( $attributes['triggerSpacing']['unit'] ) ) {
-		$css->set_selector( '#premium-trigger-' . $unique_id . ' .gpb-popup-content' );
-		$css->add_property( 'padding-left', ( $attributes['triggerSpacing']['Desktop']['left'] . ( isset( $attributes['triggerSpacing']['unit'] ) ? $attributes['triggerSpacing']['unit'] : 'px' ) . '!important' ) );
-	}
-	if ( isset( $attributes['triggerStyles']['vOffset'] ) ) {
-		$css->set_selector( '#premium-trigger-' . $unique_id . ' .float-position-topright, #premium-trigger-' . $unique_id . ' .float-position-topleft' );
-		$css->add_property( 'top', $css->render_color( $attributes['triggerStyles']['vOffset'] . 'px' . '!important' ) );
-		$css->set_selector( '#premium-trigger-' . $unique_id . ' .float-position-bottomright, #premium-trigger-' . $unique_id . ' .float-position-bottomleft' );
-		$css->add_property( 'bottom', $css->render_color( $attributes['triggerStyles']['vOffset'] . 'px' . '!important' ) );
-	}
-	if ( isset( $attributes['triggerStyles']['hOffset'] ) ) {
-		$css->set_selector( '#premium-trigger-' . $unique_id . ' .float-position-topright, #premium-trigger-' . $unique_id . ' .float-position-bottomright' );
-		$css->add_property( 'right', $css->render_color( $attributes['triggerStyles']['hOffset'] . 'px' . '!important' ) );
-		$css->set_selector( '#premium-trigger-' . $unique_id . ' .float-position-bottomright, #premium-trigger-' . $unique_id . ' .float-position-bottomleft' );
-		$css->add_property( 'left', $css->render_color( $attributes['triggerStyles']['hOffset'] . 'px' . '!important' ) );
-	}
+	// if ( isset( $attributes['iconSize'] ) ) {
+	// 	$css->set_selector( '#premium-trigger-' . $unique_id . ' .toggle-button svg' );
+	// 	$css->add_property( 'font-size', ( $attributes['iconSize']['Desktop']['unit'] . '!important' ) );
+	// }
+	// if ( isset( $attributes['triggerSpacing']['Desktop']['top'] ) && isset( $attributes['triggerSpacing']['unit'] ) ) {
+	// 	$css->set_selector( '#premium-trigger-' . $unique_id . '  .gpb-popup-content' );
+	// 	$css->add_property( 'padding-top', ( $attributes['triggerSpacing']['Desktop']['top'] . ( isset( $attributes['triggerSpacing']['unit'] ) ? $attributes['triggerSpacing']['unit'] : 'px' ) . '!important' ) );
+	// }
+	// if ( isset( $attributes['triggerSpacing']['Desktop']['right'] ) && isset( $attributes['triggerSpacing']['unit'] ) ) {
+	// 	$css->set_selector( '#premium-trigger-' . $unique_id . ' .gpb-popup-content' );
+	// 	$css->add_property( 'padding-right', ( $attributes['triggerSpacing']['Desktop']['right'] . ( isset( $attributes['triggerSpacing']['unit'] ) ? $attributes['triggerSpacing']['unit'] : 'px' ) . '!important' ) );
+	// }
+	// if ( isset( $attributes['triggerSpacing']['Desktop']['bottom'] ) && isset( $attributes['triggerSpacing']['unit'] ) ) {
+	// 	$css->set_selector( '#premium-trigger-' . $unique_id . ' .gpb-popup-content' );
+	// 	$css->add_property( 'padding-bottom', ( $attributes['triggerSpacing']['Desktop']['bottom'] . ( isset( $attributes['triggerSpacing']['unit'] ) ? $attributes['triggerSpacing']['unit'] : 'px' ) . '!important' ) );
+	// }
+	// if ( isset( $attributes['triggerSpacing']['Desktop']['left'] ) && isset( $attributes['triggerSpacing']['unit'] ) ) {
+	// 	$css->set_selector( '#premium-trigger-' . $unique_id . ' .gpb-popup-content' );
+	// 	$css->add_property( 'padding-left', ( $attributes['triggerSpacing']['Desktop']['left'] . ( isset( $attributes['triggerSpacing']['unit'] ) ? $attributes['triggerSpacing']['unit'] : 'px' ) . '!important' ) );
+	// }
+	// if ( isset( $attributes['vOffset'] ) ) {
+	// 	$css->set_selector( '#premium-trigger-' . $unique_id . ' .float-position-topright, #premium-trigger-' . $unique_id . ' .float-position-topleft' );
+	// 	$css->add_property( 'top', ( $attributes['vOffset']['Desktop'] . ( isset( $attributes['vOffset']['unit'] ) ? $attributes['vOffset']['unit'] : 'px' ) . '!important' ) );
+	// 	$css->set_selector( '#premium-trigger-' . $unique_id . ' .float-position-bottomright, #premium-trigger-' . $unique_id . ' .float-position-bottomleft' );
+	// 	$css->add_property( 'top', ( $attributes['vOffset']['Desktop'] . ( isset( $attributes['vOffset']['unit'] ) ? $attributes['vOffset']['unit'] : 'px' ) . '!important' ) );
+	// }
+	// if ( isset( $attributes['hOffset'] ) ) {
+	// 	$css->set_selector( '#premium-trigger-' . $unique_id . '.float-position-topright, #premium-trigger-' . $unique_id . '.float-position-bottomright' );
+	// 	$css->add_property( 'right', ( $attributes['hOffset']['Desktop'] . ( isset( $attributes['hOffset']['unit'] ) ? $attributes['hOffset']['unit'] : 'px' ) . '!important' ) );
+	// 	$css->set_selector( '#premium-trigger-' . $unique_id . '.float-position-bottomright, #premium-trigger-' . $unique_id . '.float-position-bottomleft' );
+	// 	$css->add_property( 'left', ( $attributes['hOffset']['Desktop'] . ( isset( $attributes['hOffset']['unit'] ) ? $attributes['hOffset']['unit'] : 'px' ) . '!important' ) );
+	// }
 
 
-	$css->start_media_query( $media_query['tablet'] );
+	// $css->start_media_query( $media_query['tablet'] );
 
-	if ( isset( $attributes['triggerStyles']['iconSizeTablet'] ) ) {
-		$css->set_selector( '#premium-trigger-' . $unique_id . ' .toggle-button svg' );
-		$css->add_property( 'font-size', $css->render_color( $attributes['triggerStyles']['iconSizeTablet'] . 'px' . '!important' ) );
-	}
-	if ( isset( $attributes['triggerSpacing']['Tablet']['top'] ) && isset( $attributes['triggerSpacing']['unit'] ) ) {
-		$css->set_selector( '#premium-trigger-' . $unique_id . '  .gpb-popup-content' );
-		$css->add_property( 'padding-top', ( $attributes['triggerSpacing']['Tablet']['top'] . ( isset( $attributes['triggerSpacing']['unit'] ) ? $attributes['triggerSpacing']['unit'] : 'px' ) . '!important' ) );
-	}
-	if ( isset( $attributes['triggerSpacing']['Tablet']['right'] ) && isset( $attributes['triggerSpacing']['unit'] ) ) {
-		$css->set_selector( '#premium-trigger-' . $unique_id . ' .gpb-popup-content' );
-		$css->add_property( 'padding-right', ( $attributes['triggerSpacing']['Tablet']['right'] . ( isset( $attributes['triggerSpacing']['unit'] ) ? $attributes['triggerSpacing']['unit'] : 'px' ) . '!important' ) );
-	}
-	if ( isset( $attributes['triggerSpacing']['Tablet']['bottom'] ) && isset( $attributes['triggerSpacing']['unit'] ) ) {
-		$css->set_selector( '#premium-trigger-' . $unique_id . ' .gpb-popup-content' );
-		$css->add_property( 'padding-bottom', ( $attributes['triggerSpacing']['Tablet']['bottom'] . ( isset( $attributes['triggerSpacing']['unit'] ) ? $attributes['triggerSpacing']['unit'] : 'px' ) . '!important' ) );
-	}
-	if ( isset( $attributes['triggerSpacing']['Tablet']['left'] ) && isset( $attributes['triggerSpacing']['unit'] ) ) {
-		$css->set_selector( '#premium-trigger-' . $unique_id . ' .gpb-popup-content' );
-		$css->add_property( 'padding-left', ( $attributes['triggerSpacing']['Tablet']['left'] . ( isset( $attributes['triggerSpacing']['unit'] ) ? $attributes['triggerSpacing']['unit'] : 'px' ) . '!important' ) );
-	}
-	if ( isset( $attributes['triggerStyles']['vOffsetTablet'] ) ) {
-		$css->set_selector( '#premium-trigger-' . $unique_id . ' .float-position-topright, #premium-trigger-' . $unique_id . ' .float-position-topleft' );
-		$css->add_property( 'top', $css->render_color( $attributes['triggerStyles']['vOffsetTablet'] . 'px' . '!important' ) );
-		$css->set_selector( '#premium-trigger-' . $unique_id . ' .float-position-bottomright, #premium-trigger-' . $unique_id . ' .float-position-bottomleft' );
-		$css->add_property( 'bottom', $css->render_color( $attributes['triggerStyles']['vOffsetTablet'] . 'px' . '!important' ) );
-	}
-	if ( isset( $attributes['triggerStyles']['hOffsetTablet'] ) ) {
-		$css->set_selector( '#premium-trigger-' . $unique_id . ' .float-position-topright, #premium-trigger-' . $unique_id . ' .float-position-bottomright' );
-		$css->add_property( 'right', $css->render_color( $attributes['triggerStyles']['hOffsetTablet'] . 'px' . '!important' ) );
-		$css->set_selector( '#premium-trigger-' . $unique_id . ' .float-position-bottomright, #premium-trigger-' . $unique_id . ' .float-position-bottomleft' );
-		$css->add_property( 'left', $css->render_color( $attributes['triggerStyles']['hOffsetTablet'] . 'px' . '!important' ) );
-	}
+	// if ( isset( $attributes['iconSizeTablet'] ) ) {
+	// 	$css->set_selector( '#premium-trigger-' . $unique_id . ' .toggle-button svg' );
+	// 	$css->add_property( 'font-size', $css->render_color( $attributes['iconSize']['Tablet']['unit'] . '!important' ) );
+	// }
+	// if ( isset( $attributes['triggerSpacing']['Tablet']['top'] ) && isset( $attributes['triggerSpacing']['unit'] ) ) {
+	// 	$css->set_selector( '#premium-trigger-' . $unique_id . '  .gpb-popup-content' );
+	// 	$css->add_property( 'padding-top', ( $attributes['triggerSpacing']['Tablet']['top'] . ( isset( $attributes['triggerSpacing']['unit'] ) ? $attributes['triggerSpacing']['unit'] : 'px' ) . '!important' ) );
+	// }
+	// if ( isset( $attributes['triggerSpacing']['Tablet']['right'] ) && isset( $attributes['triggerSpacing']['unit'] ) ) {
+	// 	$css->set_selector( '#premium-trigger-' . $unique_id . ' .gpb-popup-content' );
+	// 	$css->add_property( 'padding-right', ( $attributes['triggerSpacing']['Tablet']['right'] . ( isset( $attributes['triggerSpacing']['unit'] ) ? $attributes['triggerSpacing']['unit'] : 'px' ) . '!important' ) );
+	// }
+	// if ( isset( $attributes['triggerSpacing']['Tablet']['bottom'] ) && isset( $attributes['triggerSpacing']['unit'] ) ) {
+	// 	$css->set_selector( '#premium-trigger-' . $unique_id . ' .gpb-popup-content' );
+	// 	$css->add_property( 'padding-bottom', ( $attributes['triggerSpacing']['Tablet']['bottom'] . ( isset( $attributes['triggerSpacing']['unit'] ) ? $attributes['triggerSpacing']['unit'] : 'px' ) . '!important' ) );
+	// }
+	// if ( isset( $attributes['triggerSpacing']['Tablet']['left'] ) && isset( $attributes['triggerSpacing']['unit'] ) ) {
+	// 	$css->set_selector( '#premium-trigger-' . $unique_id . ' .gpb-popup-content' );
+	// 	$css->add_property( 'padding-left', ( $attributes['triggerSpacing']['Tablet']['left'] . ( isset( $attributes['triggerSpacing']['unit'] ) ? $attributes['triggerSpacing']['unit'] : 'px' ) . '!important' ) );
+	// }
+	// if ( isset( $attributes['vOffset'] ) ) {
+	// 	$css->set_selector( '#premium-trigger-' . $unique_id . ' .float-position-topright, #premium-trigger-' . $unique_id . ' .float-position-topleft' );
+	// 	$css->add_property( 'top', $css->render_color( $attributes['vOffset']['tablet']['unit'] . '!important' ) );
+	// 	$css->set_selector( '#premium-trigger-' . $unique_id . ' .float-position-bottomright, #premium-trigger-' . $unique_id . ' .float-position-bottomleft' );
+	// 	$css->add_property( 'bottom', $css->render_color( $attributes['vOffset']['tablet']['unit'] . '!important' ) );
+	// }
+	// if ( isset( $attributes['hOffset'] ) ) {
+	// 	$css->set_selector( '#premium-trigger-' . $unique_id . ' .float-position-topright, #premium-trigger-' . $unique_id . ' .float-position-bottomright' );
+	// 	$css->add_property( 'right', $css->render_color( $attributes['hOffset']['tablet']['unit'] . '!important' ) );
+	// 	$css->set_selector( '#premium-trigger-' . $unique_id . ' .float-position-bottomright, #premium-trigger-' . $unique_id . ' .float-position-bottomleft' );
+	// 	$css->add_property( 'left', $css->render_color( $attributes['hOffset']['tablet']['unit'] . '!important' ) );
+	// }
 
 
-	$css->stop_media_query();
+	// $css->stop_media_query();
 
-	$css->start_media_query( $media_query['mobile'] );
+	// $css->start_media_query( $media_query['mobile'] );
 
-	if ( isset( $attributes['triggerStyles']['iconSizeMobile'] ) ) {
-		$css->set_selector( '#premium-trigger-' . $unique_id . ' .toggle-button svg' );
-		$css->add_property( 'font-size', $css->render_color( $attributes['triggerStyles']['iconSizeMobile'] . 'px' . '!important' ) );
-	}
-	if ( isset( $attributes['triggerSpacing']['Mobile']['top'] ) && isset( $attributes['triggerSpacing']['unit'] ) ) {
-		$css->set_selector( '#premium-trigger-' . $unique_id . '  .gpb-popup-content' );
-		$css->add_property( 'padding-top', ( $attributes['triggerSpacing']['Mobile']['top'] . ( isset( $attributes['triggerSpacing']['unit'] ) ? $attributes['triggerSpacing']['unit'] : 'px' ) . '!important' ) );
-	}
-	if ( isset( $attributes['triggerSpacing']['Mobile']['right'] ) && isset( $attributes['triggerSpacing']['unit'] ) ) {
-		$css->set_selector( '#premium-trigger-' . $unique_id . ' .gpb-popup-content' );
-		$css->add_property( 'padding-right', ( $attributes['triggerSpacing']['Mobile']['right'] . ( isset( $attributes['triggerSpacing']['unit'] ) ? $attributes['triggerSpacing']['unit'] : 'px' ) . '!important' ) );
-	}
-	if ( isset( $attributes['triggerSpacing']['Mobile']['bottom'] ) && isset( $attributes['triggerSpacing']['unit'] ) ) {
-		$css->set_selector( '#premium-trigger-' . $unique_id . ' .gpb-popup-content' );
-		$css->add_property( 'padding-bottom', ( $attributes['triggerSpacing']['Mobile']['bottom'] . ( isset( $attributes['triggerSpacing']['unit'] ) ? $attributes['triggerSpacing']['unit'] : 'px' ) . '!important' ) );
-	}
-	if ( isset( $attributes['triggerSpacing']['Mobile']['left'] ) && isset( $attributes['triggerSpacing']['unit'] ) ) {
-		$css->set_selector( '#premium-trigger-' . $unique_id . ' .gpb-popup-content' );
-		$css->add_property( 'padding-left', ( $attributes['triggerSpacing']['Mobile']['left'] . ( isset( $attributes['triggerSpacing']['unit'] ) ? $attributes['triggerSpacing']['unit'] : 'px' ) . '!important' ) );
-	}
-	if ( isset( $attributes['triggerStyles']['vOffsetMobile'] ) ) {
-		$css->set_selector( '#premium-trigger-' . $unique_id . ' .float-position-topright, #premium-trigger-' . $unique_id . ' .float-position-topleft' );
-		$css->add_property( 'top', $css->render_color( $attributes['triggerStyles']['vOffsetMobile'] . 'px' . '!important' ) );
-		$css->set_selector( '#premium-trigger-' . $unique_id . ' .float-position-bottomright, #premium-trigger-' . $unique_id . ' .float-position-bottomleft' );
-		$css->add_property( 'bottom', $css->render_color( $attributes['triggerStyles']['vOffsetMobile'] . 'px' . '!important' ) );
-	}
-	if ( isset( $attributes['triggerStyles']['hOffsetMobile'] ) ) {
-		$css->set_selector( '#premium-trigger-' . $unique_id . ' .float-position-topright, #premium-trigger-' . $unique_id . ' .float-position-bottomright' );
-		$css->add_property( 'right', $css->render_color( $attributes['triggerStyles']['hOffsetMobile'] . 'px' . '!important' ) );
-		$css->set_selector( '#premium-trigger-' . $unique_id . ' .float-position-bottomright, #premium-trigger-' . $unique_id . ' .float-position-bottomleft' );
-		$css->add_property( 'left', $css->render_color( $attributes['triggerStyles']['hOffsetMobile'] . 'px' . '!important' ) );
-	}
+	// if ( isset( $attributes['triggerStyles']['iconSizeMobile'] ) ) {
+	// 	$css->set_selector( '#premium-trigger-' . $unique_id . ' .toggle-button svg' );
+	// 	$css->add_property( 'font-size', $css->render_color( $attributes['iconSize']['Desktop']['unit'] . '!important' ) );
+	// }
+	// if ( isset( $attributes['triggerSpacing']['Mobile']['top'] ) && isset( $attributes['triggerSpacing']['unit'] ) ) {
+	// 	$css->set_selector( '#premium-trigger-' . $unique_id . '  .gpb-popup-content' );
+	// 	$css->add_property( 'padding-top', ( $attributes['triggerSpacing']['Mobile']['top'] . ( isset( $attributes['triggerSpacing']['unit'] ) ? $attributes['triggerSpacing']['unit'] : 'px' ) . '!important' ) );
+	// }
+	// if ( isset( $attributes['triggerSpacing']['Mobile']['right'] ) && isset( $attributes['triggerSpacing']['unit'] ) ) {
+	// 	$css->set_selector( '#premium-trigger-' . $unique_id . ' .gpb-popup-content' );
+	// 	$css->add_property( 'padding-right', ( $attributes['triggerSpacing']['Mobile']['right'] . ( isset( $attributes['triggerSpacing']['unit'] ) ? $attributes['triggerSpacing']['unit'] : 'px' ) . '!important' ) );
+	// }
+	// if ( isset( $attributes['triggerSpacing']['Mobile']['bottom'] ) && isset( $attributes['triggerSpacing']['unit'] ) ) {
+	// 	$css->set_selector( '#premium-trigger-' . $unique_id . ' .gpb-popup-content' );
+	// 	$css->add_property( 'padding-bottom', ( $attributes['triggerSpacing']['Mobile']['bottom'] . ( isset( $attributes['triggerSpacing']['unit'] ) ? $attributes['triggerSpacing']['unit'] : 'px' ) . '!important' ) );
+	// }
+	// if ( isset( $attributes['triggerSpacing']['Mobile']['left'] ) && isset( $attributes['triggerSpacing']['unit'] ) ) {
+	// 	$css->set_selector( '#premium-trigger-' . $unique_id . ' .gpb-popup-content' );
+	// 	$css->add_property( 'padding-left', ( $attributes['triggerSpacing']['Mobile']['left'] . ( isset( $attributes['triggerSpacing']['unit'] ) ? $attributes['triggerSpacing']['unit'] : 'px' ) . '!important' ) );
+	// }
+	// if ( isset( $attributes['triggerStyles']['vOffsetMobile'] ) ) {
+	// 	$css->set_selector( '#premium-trigger-' . $unique_id . ' .float-position-topright, #premium-trigger-' . $unique_id . ' .float-position-topleft' );
+	// 	$css->add_property( 'top', $css->render_color( $attributes['triggerStyles']['vOffsetMobile'] . 'px' . '!important' ) );
+	// 	$css->set_selector( '#premium-trigger-' . $unique_id . ' .float-position-bottomright, #premium-trigger-' . $unique_id . ' .float-position-bottomleft' );
+	// 	$css->add_property( 'bottom', $css->render_color( $attributes['triggerStyles']['vOffsetMobile'] . 'px' . '!important' ) );
+	// }
+	// if ( isset( $attributes['triggerStyles']['hOffsetMobile'] ) ) {
+	// 	$css->set_selector( '#premium-trigger-' . $unique_id . ' .float-position-topright, #premium-trigger-' . $unique_id . ' .float-position-bottomright' );
+	// 	$css->add_property( 'right', $css->render_color( $attributes['triggerStyles']['hOffsetMobile'] . 'px' . '!important' ) );
+	// 	$css->set_selector( '#premium-trigger-' . $unique_id . ' .float-position-bottomright, #premium-trigger-' . $unique_id . ' .float-position-bottomleft' );
+	// 	$css->add_property( 'left', $css->render_color( $attributes['triggerStyles']['hOffsetMobile'] . 'px' . '!important' ) );
+	// }
 
-	$css->stop_media_query();
+	// $css->stop_media_query();
 
 	return $css->css_output();
 }

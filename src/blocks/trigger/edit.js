@@ -18,6 +18,8 @@ import PremiumBorder from "../../components/premium-border";
 import RadioComponent from '../../components/radio-control';
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import SpacingControl from '../../components/premium-responsive-spacing'
+import InspectorTabs from '../../components/inspectorTabs';
+import InspectorTab from '../../components/inspectorTab';
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
  * Those files can contain any CSS code that gets applied to the editor.
@@ -39,12 +41,13 @@ import './editor.scss';
 function Edit(props) {
 
 const [ isEditing, setEditing ] = useState(false);
-const {  attributes, setAttributes } = props;
+const {  attributes, setAttributes, className } = props;
 
 useEffect(() => {
     setAttributes({ block_id: props.clientId })
 }, [])
 const { triggerLabel, 
+    iconSize,
     iconAlignment, 
     displayFloat, 
     floatPosition, 
@@ -52,18 +55,16 @@ const { triggerLabel,
     triggerStyles, 
     canvasStyles, 
     triggerSpacing, 
-    triggerBorderTop,
-    triggerBorderRight, 
-    triggerBorderBottom, 
-    triggerBorderLeft
+    triggerBorder,
+    vOffset,
+    hOffset
     } = attributes;
 
 const onChangeText = ( newText ) => {
     setAttributes( { triggerLabel: newText } );
 };
-const triggerIconSize = getPreviewSize(props.deviceType, triggerStyles.iconSize, triggerStyles.iconSizeTablet, triggerStyles.iconSizeMobile);
-const triggerVOffset = getPreviewSize(props.deviceType, triggerStyles.vOffset, triggerStyles.vOffsetTablet, triggerStyles.vOffsetMobile);
-const triggerHOffset = getPreviewSize(props.deviceType, triggerStyles.hOffset, triggerStyles.hOffsetTablet, triggerStyles.hOffsetMobile);
+// const triggerVOffset = getPreviewSize(props.deviceType, triggerStyles.vOffset, triggerStyles.vOffsetTablet, triggerStyles.vOffsetMobile);
+// const triggerHOffset = getPreviewSize(props.deviceType, triggerStyles.hOffset, triggerStyles.hOffsetTablet, triggerStyles.hOffsetMobile);
 const triggerSpacingTop = getPreviewSize(props.deviceType, triggerSpacing.Desktop.top, triggerSpacing.Tablet.top, triggerSpacing.Mobile.top);
 const triggerSpacingRight = getPreviewSize(props.deviceType, triggerSpacing.Desktop.right, triggerSpacing.Tablet.right, triggerSpacing.Mobile.right);
 const triggerSpacingBottom = getPreviewSize(props.deviceType, triggerSpacing.Desktop.bottom, triggerSpacing.Tablet.bottom, triggerSpacing.Mobile.bottom);
@@ -96,257 +97,6 @@ function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
 
     return (
         <Fragment>
-            
-            <InspectorControls>
-                <PanelBody
-                    title={__('Trigger Icon Settings', 'premium-blocks-for-gutenberg')}
-                    initialOpen={true}
-                >
-                    <TextControl
-                        label={__('Trigger Label', 'premium-blocks-for-gutenberg')}
-                        value={attributes.triggerLabel}
-                        onChange={(val) => setAttributes({ triggerLabel: val })}
-                    />
-
-                    <ResponsiveRangeControl
-                        label={__('Icon Size', 'premium-blocks-for-gutenberg')}
-                        value={triggerStyles.iconSize}
-                        onChange={nvalue => setTriggerStyles('iconSize', nvalue )}
-                        tabletValue={triggerStyles.iconSizeTablet}
-                        onChangeTablet={nvalue => setTriggerStyles('iconSizeTablet', nvalue )}
-                        mobileValue={triggerStyles.iconSizeMobile}
-                        onChangeMobile={nvalue => setTriggerStyles('iconSizeMobile', nvalue )}
-                        min={0}
-                        max={100}
-                        step={1}
-                        showUnit={true}
-                        units={['px']}
-                        defaultValue={20}
-                    />
-                    <RadioComponent
-                        choices={["right", "left"]}
-                        value={triggerStyles.labelPosition}
-                        onChange={newValue => setTriggerStyles('labelPosition', newValue )}
-                        label={__("Label Position", 'premium-blocks-for-gutenberg')}
-                    />
-                    <TabPanel
-                        className="premium-color-tabpanel"
-                        activeClass="active-tab"
-                        tabs={[
-                            {
-                                name: "normal",
-                                title: "Normal",
-                                className: "premium-tab",
-                            },
-                            {
-                                name: "hover",
-                                title: "Hover",
-                                className: "premium-tab",
-                            },
-                        ]}
-                    >
-                        {(tab) => {
-                            let tabout;
-                            if ("normal" === tab.name) {
-                                tabout = (
-                                    <Fragment>
-                                        <AdvancedPopColorControl
-                                            label={__("Icon Color", 'premium-blocks-for-gutenberg')}
-                                            colorValue={triggerStyles.iconColor}
-                                            colorDefault={''}
-                                            onColorChange={(newValue) => setTriggerStyles('iconColor', newValue )}
-                                        />
-                                        <AdvancedPopColorControl
-                                            label={__("Label Color", 'premium-blocks-for-gutenberg')}
-                                            colorValue={triggerStyles.labelColor}
-                                            colorDefault={''}
-                                            onColorChange={newValue => setTriggerStyles('labelColor', newValue )}
-                                        /> 
-                                    </Fragment>
-                                );
-                            }
-                            if ("hover" === tab.name) {
-                                tabout = (
-                                    <Fragment>
-                                      <AdvancedPopColorControl
-                                            label={__("Icon Hover Color", 'premium-blocks-for-gutenberg')}
-                                            colorValue={triggerStyles.iconHoverColor}
-                                            colorDefault={''}
-                                            onColorChange={newValue => setTriggerStyles('iconHoverColor', newValue )}
-                                        />
-                                        <AdvancedPopColorControl
-                                            label={__("Label Hover Color", 'premium-blocks-for-gutenberg')}
-                                            colorValue={triggerStyles.labelHoverColor}
-                                            colorDefault={''}
-                                            onColorChange={newValue => setTriggerStyles('labelHoverColor', newValue )}
-                                        />
-                                    </Fragment>
-                                );
-                            }
-                            return (
-                                <div>
-                                    {tabout}
-                                </div>
-                            );
-                        }}
-                    </TabPanel>
-                    
-                    <RadioComponent
-                        choices={["simple", "outline", "solid"]}
-                        value={triggerStyles.style}
-                        onChange={newValue => setTriggerStyles('style', newValue )}
-                        label={__("Icon Style", 'premium-blocks-for-gutenberg')}
-                    />
-
-                    {triggerStyles.style === 'solid' && 
-                    <fragment>
-                        <AdvancedPopColorControl
-                        label={__("Background Color", 'premium-blocks-for-gutenberg')}
-                        colorValue={triggerStyles.iconBgColor}
-                        colorDefault={''} 
-                        onColorChange={newValue => setTriggerStyles('iconBgColor', newValue )}
-                        />
-                        <AdvancedPopColorControl
-                            label={__("Background Hover Color", 'premium-blocks-for-gutenberg')}
-                            colorValue={triggerStyles.iconBgHoverColor}
-                            colorDefault={''}
-                            onColorChange={newValue => setTriggerStyles('iconBgHoverColor', newValue )}
-                        />
-                    </fragment>
-                    }
-                    
-                    {triggerStyles.style === 'outline' && 
-                    <fragment>
-                    <PremiumBorder
-                        borderType={triggerStyles.borderType}
-                        top={triggerBorderTop}
-                        right={triggerBorderRight}
-                        bottom={triggerBorderBottom}
-                        left={triggerBorderLeft}
-                        borderColor={triggerStyles.borderColor}
-                        borderRadius={triggerStyles.borderRadius}
-                        onChangeType={(newType) => setTriggerStyles( 'borderType' , newType )}
-                        onChangeWidth={({ top, right, bottom, left }) =>
-                            setAttributes({
-                                triggerBorderTop: top,
-                                triggerBorderRight: right,
-                                triggerBorderBottom: bottom,
-                                triggerBorderLeft: left,
-                            })
-                        }
-                        onChangeColor={(colorValue) => setTriggerStyles( 'borderColor' , colorValue )}
-                        onChangeRadius={(newRadius) => setTriggerStyles( 'borderRadius' , newRadius )}
-                    />
-                    <AdvancedPopColorControl
-                            label={__("Border Hover Color", 'premium-blocks-for-gutenberg')}
-                            colorValue={triggerStyles.borderHoverColor}
-                            colorDefault={''}
-                            onColorChange={(newValue) => setTriggerStyles( 'borderHoverColor' , newValue )}
-                        />
-                        </fragment>
-                    }
-                    <ToggleControl
-                    label={__("Float", 'premium-blocks-for-gutenberg')}
-                    checked={displayFloat}
-                    onChange={value => setAttributes({ displayFloat: value })}
-                    />
-
-                    {attributes.displayFloat && (
-                        <fragment>
-                        <SelectControl
-                        label={__('Position', 'premium-blocks-for-gutenberg')}
-                        value={floatPosition}
-                        onChange={newValue => setAttributes({floatPosition: newValue })}
-                        options={[
-                            { label: __("Top Right", "premium-blocks-for-gutenberg"), value: "topright" },
-                            { label: __("Top Left", "premium-blocks-for-gutenberg"), value: "topleft" },
-                            { label: __("Bottom Right", "premium-blocks-for-gutenberg"), value: "bottomright" },
-                            { label: __("Bottom Left", "premium-blocks-for-gutenberg"), value: "bottomleft" }
-                        ]}
-                        
-                        
-                        />
-                        <ResponsiveRangeControl
-                            label={__('Vertical Offset', 'premium-blocks-for-gutenberg')}
-                            value={triggerStyles.vOffset}
-                            onChange={(value) => setTriggerStyles( 'vOffset', value )}
-                            tabletValue={triggerStyles.vOffsetTablet}
-                            onChangeTablet={(value) => setTriggerStyles( 'vOffsetTablet', value )}
-                            mobileValue={triggerStyles.vOffsetMobile}
-                            onChangeMobile={(value) => setTriggerStyles( 'vOffsetMobile', value )}
-                            min={0}
-                            max={200}
-                            step={1}
-                            showUnit={true}
-                            units={['px']}
-                            defaultValue={10}
-                        />
-                        <ResponsiveRangeControl
-                            label={__('Horizontal Offset', 'premium-blocks-for-gutenberg')}
-                            value={triggerStyles.hOffset}
-                            onChange={(value) => setTriggerStyles( 'hOffset', value )}
-                            tabletValue={triggerStyles.hOffsetTablet}
-                            onChangeTablet={(value) => setTriggerStyles( 'hOffsetTablet', value )}
-                            mobileValue={triggerStyles.hOffsetMobile}
-                            onChangeMobile={(value) => setTriggerStyles( 'hOffsetMobile', value )}
-                            min={0}
-                            max={200}
-                            step={1}
-                            showUnit={true}
-                            units={['px']}
-                            defaultValue={10}
-                        />
-                        </fragment>
-                    )}
-                                  
-                    
-                </PanelBody>
-                <PanelBody
-                    title={__('Canvas Area Settings', 'premium-blocks-for-gutenberg')}
-                    initialOpen={false}
-                >
-                    <AdvancedPopColorControl
-                        label={__("Background Canvas Area", 'premium-blocks-for-gutenberg')}
-                        colorValue={canvasStyles.canvasBgColor}
-                        colorDefault={''}
-                        onColorChange={newValue => setCanvasStyles('canvasBgColor', newValue )}
-                    />
-                    <AdvancedPopColorControl
-                        label={__("Overlay Background", 'premium-blocks-for-gutenberg')}
-                        colorValue={canvasStyles.overlayBgColor}
-                        colorDefault={''}
-                        onColorChange={newValue => setCanvasStyles('overlayBgColor', newValue )}
-                    />
-                    <RadioComponent
-                        choices={["right", "left", "full"]}
-                        value={canvasStyles.layout}
-                        onChange={newValue => setCanvasStyles('layout', newValue )}
-                        label={__("Layout style", 'premium-blocks-for-gutenberg')}
-                    />
-                    
-                    {(canvasStyles.layout === 'right' || canvasStyles.layout === 'left' ) && 
-                    (<ResponsiveSingleRangeControl
-                        label={__("Canvas Width", 'premium-blocks-for-gutenberg')}
-                        value={canvasStyles.width}
-                        onChange={newValue => setCanvasStyles('width', newValue )}
-                        min={0}
-                        max={700}
-                        step={1}
-                        showUnit={true}
-                        units={['px']}
-                        defaultValue={500}
-                    />)
-                   }
-                    <SpacingControl
-                    label={__('Padding', 'premium-blocks-for-gutenberg')}
-                    value={triggerSpacing}
-                    onChange={(value) => setAttributes({ triggerSpacing: value })}
-                    showUnits={true}
-                    responsive={true}
-                    />
-
-                </PanelBody>
-            </InspectorControls>  
             <BlockControls group="block">
                 <AlignmentToolbar
                     value={ iconAlignment }
@@ -354,9 +104,249 @@ function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
                         setAttributes({ iconAlignment: newAlignment });
                     }}
                     
-                />
-                
+            />   
             </BlockControls> 
+            
+            <InspectorControls>
+            <InspectorTabs tabs={['layout', 'style', 'advance']}>
+                    <InspectorTab key={'layout'}>
+                        <PanelBody
+                            title={__('Trigger', 'premium-blocks-for-gutenberg')}
+                            initialOpen={true}
+                        >
+                            <TextControl
+                                label={__('Trigger Label', 'premium-blocks-for-gutenberg')}
+                                value={attributes.triggerLabel}
+                                onChange={(val) => setAttributes({ triggerLabel: val })}
+                            />
+                            <RadioComponent
+                                choices={["right", "left"]}
+                                value={triggerStyles.labelPosition}
+                                onChange={newValue => setTriggerStyles('labelPosition', newValue )}
+                                label={__("Label Position", 'premium-blocks-for-gutenberg')}
+                            />
+                            
+                            
+                            <RadioComponent
+                                choices={["simple", "outline", "solid"]}
+                                value={triggerStyles.style}
+                                onChange={newValue => setTriggerStyles('style', newValue )}
+                                label={__("Icon Style", 'premium-blocks-for-gutenberg')}
+                            />
+
+                            <ToggleControl
+                            label={__("Float", 'premium-blocks-for-gutenberg')}
+                            checked={displayFloat}
+                            onChange={value => setAttributes({ displayFloat: value })}
+                            />
+
+                            {attributes.displayFloat && (
+                                <fragment>
+                                <SelectControl
+                                label={__('Position', 'premium-blocks-for-gutenberg')}
+                                value={floatPosition}
+                                onChange={newValue => setAttributes({floatPosition: newValue })}
+                                options={[
+                                    { label: __("Top Right", "premium-blocks-for-gutenberg"), value: "topright" },
+                                    { label: __("Top Left", "premium-blocks-for-gutenberg"), value: "topleft" },
+                                    { label: __("Bottom Right", "premium-blocks-for-gutenberg"), value: "bottomright" },
+                                    { label: __("Bottom Left", "premium-blocks-for-gutenberg"), value: "bottomleft" }
+                                ]}
+                                
+                                
+                                />
+                                <ResponsiveRangeControl
+                                    label={__('Vertical Offset', 'premium-blocks-for-gutenberg')}
+                                    value={vOffset}
+                                    onChange={value => setAttributes({ vOffset: value })}
+                                    min={0}
+                                    max={200}
+                                    step={1}
+                                    showUnit={true}
+                                    units={['px']}
+                                    defaultValue={20}
+                                />
+                                <ResponsiveRangeControl
+                                    label={__('Horizontal Offset', 'premium-blocks-for-gutenberg')}
+                                    value={hOffset}
+                                    onChange={value => setAttributes({ hOffset: value })}
+                                    min={0}
+                                    max={200}
+                                    step={1}
+                                    showUnit={true}
+                                    units={['px']}
+                                    defaultValue={20}
+                                />
+                                </fragment>
+                            )}
+                                        
+                            
+                </PanelBody>
+                <PanelBody
+                    title={__('Canvas', 'premium-blocks-for-gutenberg')}
+                    initialOpen={false}
+                >
+                    
+                    <RadioComponent
+                        choices={["right", "left", "full"]}
+                        value={canvasStyles.layout}
+                        onChange={newValue => setCanvasStyles('layout', newValue )}
+                        label={__("Layout style", 'premium-blocks-for-gutenberg')}
+                    />
+
+                </PanelBody>
+                </InspectorTab>
+                <InspectorTab key={'style'}>
+                    <PanelBody
+                        title={__('Trigger', 'premium-blocks-for-gutenberg')}
+                        initialOpen={true}
+                    >
+                        <ResponsiveRangeControl
+                                label={__('Icon Size', 'premium-blocks-for-gutenberg')}
+                                value={iconSize}
+                                onChange={value => setAttributes({ iconSize: value })}
+                                min={0}
+                                max={100}
+                                step={1}
+                                showUnit={true}
+                                units={['px']}
+                                defaultValue={20}
+                        />
+                        <TabPanel
+                                className="premium-color-tabpanel"
+                                activeClass="active-tab"
+                                tabs={[
+                                    {
+                                        name: "normal",
+                                        title: "Normal",
+                                        className: "premium-tab",
+                                    },
+                                    {
+                                        name: "hover",
+                                        title: "Hover",
+                                        className: "premium-tab",
+                                    },
+                                ]}
+                            >
+                                {(tab) => {
+                                    let tabout;
+                                    if ("normal" === tab.name) {
+                                        tabout = (
+                                            <Fragment>
+                                                <AdvancedPopColorControl
+                                                    label={__("Icon Color", 'premium-blocks-for-gutenberg')}
+                                                    colorValue={triggerStyles.iconColor}
+                                                    colorDefault={''}
+                                                    onColorChange={(newValue) => setTriggerStyles('iconColor', newValue )}
+                                                />
+                                                <AdvancedPopColorControl
+                                                    label={__("Label Color", 'premium-blocks-for-gutenberg')}
+                                                    colorValue={triggerStyles.labelColor}
+                                                    colorDefault={''}
+                                                    onColorChange={newValue => setTriggerStyles('labelColor', newValue )}
+                                                /> 
+                                                {triggerStyles.style === 'solid' && 
+                                                    <AdvancedPopColorControl
+                                                    label={__("Background Color", 'premium-blocks-for-gutenberg')}
+                                                    colorValue={triggerStyles.iconBgColor}
+                                                    colorDefault={''} 
+                                                    onColorChange={newValue => setTriggerStyles('iconBgColor', newValue )}
+                                                    />
+                                                }
+                                            </Fragment>
+                                        );
+                                    }
+                                    if ("hover" === tab.name) {
+                                        tabout = (
+                                            <Fragment>
+                                                <AdvancedPopColorControl
+                                                    label={__("Icon Hover Color", 'premium-blocks-for-gutenberg')}
+                                                    colorValue={triggerStyles.iconHoverColor}
+                                                    colorDefault={''}
+                                                    onColorChange={newValue => setTriggerStyles('iconHoverColor', newValue )}
+                                                />
+                                                <AdvancedPopColorControl
+                                                    label={__("Label Hover Color", 'premium-blocks-for-gutenberg')}
+                                                    colorValue={triggerStyles.labelHoverColor}
+                                                    colorDefault={''}
+                                                    onColorChange={newValue => setTriggerStyles('labelHoverColor', newValue )}
+                                                />
+                                                {triggerStyles.style === 'solid' && 
+                                                <AdvancedPopColorControl
+                                                    label={__("Background Hover Color", 'premium-blocks-for-gutenberg')}
+                                                    colorValue={triggerStyles.iconBgHoverColor}
+                                                    colorDefault={''}
+                                                    onColorChange={newValue => setTriggerStyles('iconBgHoverColor', newValue )}
+                                                />
+                                            }
+                                            </Fragment>
+                                        );
+                                    }
+                                    return (
+                                        <div>
+                                            {tabout}
+                                        </div>
+                                    );
+                                }}
+                            </TabPanel>
+                            {(triggerStyles.style === 'outline' ||  triggerStyles.style === 'solid')&& 
+                            <fragment>
+                            <PremiumBorder
+                                label={__('Border', 'premium-blocks-for-gutenberg')}
+                                value={triggerBorder}
+                                onChange={(value) => setAttributes({ triggerBorder: value })}
+                            />
+                            <AdvancedPopColorControl
+                                    label={__("Border Hover Color", 'premium-blocks-for-gutenberg')}
+                                    colorValue={triggerStyles.borderHoverColor}
+                                    colorDefault={''}
+                                    onColorChange={(newValue) => setTriggerStyles( 'borderHoverColor' , newValue )}
+                                />
+                                </fragment>
+                            }
+                    </PanelBody>
+                    <PanelBody
+                        title={__('Canvas Area', 'premium-blocks-for-gutenberg')}
+                        initialOpen={false}
+                    >
+                        <AdvancedPopColorControl
+                        label={__("Background Canvas Area", 'premium-blocks-for-gutenberg')}
+                        colorValue={canvasStyles.canvasBgColor}
+                        colorDefault={''}
+                        onColorChange={newValue => setCanvasStyles('canvasBgColor', newValue )}
+                        />
+                        <AdvancedPopColorControl
+                            label={__("Overlay Background", 'premium-blocks-for-gutenberg')}
+                            colorValue={canvasStyles.overlayBgColor}
+                            colorDefault={''}
+                            onColorChange={newValue => setCanvasStyles('overlayBgColor', newValue )}
+                        />
+                        {(canvasStyles.layout === 'right' || canvasStyles.layout === 'left' ) && 
+                            (<ResponsiveSingleRangeControl
+                                label={__("Canvas Width", 'premium-blocks-for-gutenberg')}
+                                value={canvasStyles.width}
+                                onChange={newValue => setCanvasStyles('width', newValue )}
+                                min={0}
+                                max={700}
+                                step={1}
+                                showUnit={true}
+                                units={['px']}
+                                defaultValue={400}
+                            />)
+                         }
+                        <SpacingControl
+                        label={__('Padding', 'premium-blocks-for-gutenberg')}
+                        value={triggerSpacing}
+                        onChange={(value) => setAttributes({ triggerSpacing: value })}
+                        showUnits={true}
+                        responsive={true}
+                        />
+                    </PanelBody>
+                </InspectorTab>
+                    <InspectorTab key={'advance'}></InspectorTab>
+                </InspectorTabs>
+            </InspectorControls>  
+
             <style>
             {`
             #block-${block_id} .toggle-button:hover {
@@ -372,45 +362,44 @@ function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
                 background-color: ${triggerStyles.iconBgColor} ;
             }
             #block-${block_id} .toggle-button[data-style="outline"] {
-                border-style: ${triggerStyles.borderType} !important;
-                border-top-width: ${triggerBorderTop}px !important;
-                border-right-width: ${triggerBorderRight}px !important;
-                border-bottom-width: ${triggerBorderBottom}px !important;
-                border-left-width: ${triggerBorderLeft}px !important;
-                border-color: ${triggerStyles.borderColor} !important;
-                border-radius: ${triggerStyles.borderRadius}px !important;
+                border-style: ${triggerBorder.borderType};
+                border-top-width: ${triggerBorder.borderWidth} + px;
             }
             #block-${block_id} .toggle-button[data-style="outline"]:hover {
                 border-color: ${triggerStyles.borderHoverColor} !important;
             }
-            #block-${block_id} .float-position-topright {
-                top: ${triggerVOffset}px;
-                right: ${triggerHOffset}px;
+            #block-${block_id}.float-position-topright {
+                top: ${(vOffset[props.deviceType] || 20) + vOffset.unit};
+                right: ${(hOffset[props.deviceType] || 20) + hOffset.unit};
             }
-            #block-${block_id} .float-position-topleft {
-                top: ${triggerVOffset}px;
-                left: ${triggerHOffset}px;
+            .is-sidebar-opened #block-${block_id}.float-position-topright,
+            .is-sidebar-opened #block-${block_id}.float-position-bottomright {
+                margin-right: 282px !important;
             }
-            #block-${block_id} .float-position-bottomright {
-                bottom: ${triggerVOffset}px;
-                right: ${triggerHOffset}px;
+             #block-${block_id}.float-position-topleft {
+                 top: ${(vOffset[props.deviceType] || 20) + vOffset.unit};
+                 left: ${(hOffset[props.deviceType] || 20) + hOffset.unit};
+             }
+             #block-${block_id}.float-position-bottomright {
+                bottom: ${(vOffset[props.deviceType] || 20) + vOffset.unit};
+                right: ${(hOffset[props.deviceType] || 20) + hOffset.unit};
             }
             #block-${block_id} .float-position-bottomleft {
-                bottom: ${triggerVOffset}px;
-                left: ${triggerHOffset}px;
+                bottom: ${(vOffset[props.deviceType] || 20) + vOffset.unit};
+                left: ${(hOffset[props.deviceType] || 20) + hOffset.unit};
             }
-
         `}
         </style>  
                
             <div { ...useBlockProps({
                 className: classnames(
-                    `${isEditing ? "active" : ""}`
+                    className,
+                    `${isEditing ? "active" : ""} ${attributes.displayFloat ? `float-position-${floatPosition}` : ""}`
                 ),
             }) }>
             <div className={`premium-trigger-container`}>
             <div className={`gpb-trigger-icon-container has-icon-align-${ iconAlignment }`}>
-                    <a className={`toggle-button ${isEditing ? "toggled" : ""} ${attributes.displayFloat ? `float-position-${floatPosition}` : ""}`} 
+                    <a className={`toggle-button ${isEditing ? "toggled" : ""}`} 
                     data-style={triggerStyles.style}
                     data-label={triggerStyles.labelPosition}
                         onClick={ () => setEditing( true )
@@ -424,7 +413,7 @@ function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
                             placeholder={ __( 'Menu', 'premium-blocks-for-gutenberg' ) }
                             style={{color: triggerStyles.labelColor }}
                         >{triggerLabel}</span>}
-                        <svg style={{fontSize: triggerIconSize + 'px', fill:`${triggerStyles.iconColor}`}} height="1.5em" viewBox="0 -53 384 384" width="1.5em" xmlns="http://www.w3.org/2000/svg">
+                        <svg style={{fontSize: (iconSize[props.deviceType] || 20) + iconSize.unit, fill:`${triggerStyles.iconColor}`}} height="1.5em" viewBox="0 -53 384 384" width="1.5em" xmlns="http://www.w3.org/2000/svg">
 					<path d="m368 154.667969h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"></path>
 					<path d="m368 32h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"></path>
 					<path d="m368 277.332031h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"></path></svg>
@@ -438,10 +427,10 @@ function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
                     }}></div>
                         <div className="gpb-popup-content gpb-desktop-popup-content"
                         style={{
-                            paddingTop: triggerSpacingTop + triggerSpacing.unit,
-                            paddingBottom: triggerSpacingBottom + triggerSpacing.unit,
-                            paddingLeft: triggerSpacingLeft + triggerSpacing.unit,
-                            paddingRight: triggerSpacingRight + triggerSpacing.unit,
+                            paddingTop: triggerSpacingTop && `${triggerSpacingTop}${triggerSpacing.unit ? triggerSpacing.unit : 'px'}`,
+                            paddingBottom: triggerSpacingBottom && `${triggerSpacingBottom}${triggerSpacing.unit ? triggerSpacing.unit : 'px'}`,
+                            paddingLeft: triggerSpacingLeft && `${triggerSpacingLeft}${triggerSpacing.unit ? triggerSpacing.unit : 'px'}`,
+                            paddingRight: triggerSpacingRight && `${triggerSpacingRight}${triggerSpacing.unit ? triggerSpacing.unit : 'px'}`,
                             backgroundColor: `${canvasStyles.canvasBgColor}`,
                             width: `${canvasStyles.width}px`,
                         }}

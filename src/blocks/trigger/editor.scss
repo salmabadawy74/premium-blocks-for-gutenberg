@@ -1,7 +1,15 @@
 .is-sidebar-opened {
     .float-position-topright,
     .float-position-bottomright {
-        margin-right: 281px;
+        margin-right: 281px !important;
+    }
+}
+.editor-styles-wrapper {
+    .edit-post-visual-editor__post-title-wrapper {
+        > .float-position-topright,
+        > .float-position-bottomright {
+            margin-right: 281px !important;
+        }
     }
 }
 @media (min-width: 782px) {

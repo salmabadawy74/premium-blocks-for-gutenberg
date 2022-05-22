@@ -1,3 +1,4 @@
+import { FontAwesomeEnabled } from "../assets/js/settings";
 import "./blocks/accordion";
 import "./blocks/banner";
 import "./blocks/button";
@@ -12,5 +13,8 @@ import "./blocks/testimonials";
 import "./blocks/video-box";
 import "./blocks/fancy-text"
 import "./blocks/lottie";
-import "./blocks/Modal"
-import "./blocks/image-separator"
+import "./blocks/Modal";
+import "./blocks/image-separator";
+window.PremiumOptionsSettings = {
+    FontAwesomeEnabled
+}

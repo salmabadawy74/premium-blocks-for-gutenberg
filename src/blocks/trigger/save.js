@@ -7,48 +7,21 @@
  } from '@wordpress/block-editor';
  export default function Save({attributes}) {
     const { block_id, 
+        iconSize,
         iconAlignment,
         triggerLabel,
         triggerStyles, 
         canvasStyles, 
-        triggerBorderTop, 
-        triggerBorderRight, 
-        triggerBorderLeft, 
-        triggerBorderBottom,
+        triggerBorder,
         displayFloat,
-        floatPosition
+        floatPosition,
+        vOffset,
+        hOffset
      } = attributes;
     const blockProps = useBlockProps.save({
          id: `premium-trigger-${block_id}`,
          className: ``,
      });
-    //  const defaultSpacingValue = {
-    //     desktop: {
-    //         top: '',
-    //         right: '',
-    //         bottom: '',
-    //         left: ''
-    //     },
-    //     tablet: {
-    //         top: '',
-    //         right: '',
-    //         bottom: '',
-    //         left: ''
-    //     },
-    //     mobile: {
-    //         top: '',
-    //         right: '',
-    //         bottom: '',
-    //         left: ''
-    //     }
-    // };
-    //  let padding = spacing.padding ? spacing.padding : defaultSpacingValue;
-    //  const onChangePadding = (side, value, device) => {
-    //      const newPadding = { ...padding };
-    //      newPadding[device][side] = value;
-    //      setAttributes({ spacing: { ...spacing, padding: newPadding } });
-    //  }
-    // const [ isEditing, setEditing ] = useState( false );
 
      return (
          <div { ...blockProps }>
@@ -67,13 +40,7 @@
                 background-color: ${triggerStyles.iconBgColor} ;
             }
             #premium-trigger-${block_id} .toggle-button[data-style="outline"] {
-                border-style: ${triggerStyles.borderType} !important;
-                border-top-width: ${triggerBorderTop}px !important;
-                border-right-width: ${triggerBorderRight}px !important;
-                border-bottom-width: ${triggerBorderBottom}px !important;
-                border-left-width: ${triggerBorderLeft}px !important;
-                border-color: ${triggerStyles.borderColor} !important;
-                border-radius: ${triggerStyles.borderRadius}px !important;
+    
             }
             #premium-trigger-${block_id} .toggle-button[data-style="outline"]:hover {
                 border-color: ${triggerStyles.borderHoverColor} !important;
