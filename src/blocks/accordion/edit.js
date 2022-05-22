@@ -1,6 +1,5 @@
 import classnames from "classnames";
 import PremiumBorder from "../../components/premium-border";
-import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
 import SpacingComponent from "../../components/premium-responsive-spacing";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumShadow from "../../components/PremiumShadow";
@@ -187,17 +186,17 @@ class PremiumAccordion extends Component {
                             paddingRight: titlePaddingRight && `${titlePaddingRight}${titlePadding.unit}`,
                             paddingBottom: titlePaddingBottom && `${titlePaddingBottom}${titlePadding.unit}`,
                             paddingLeft: titlePaddingLeft && `${titlePaddingLeft}${titlePadding.unit}`,
-                            borderStyle: titleBorder.borderType,
-                            borderTopWidth: titleBorder.borderWidth.Desktop.top,
-                            borderRightWidth: titleBorder.borderWidth.Desktop.right,
-                            borderBottomWidth: titleBorder.borderWidth.Desktop.bottom,
-                            borderLeftWidth: titleBorder.borderWidth.Desktop.left,
-                            borderRadius: `${titleBorder.borderRadius.Desktop.top || 0}px ${titleBorder.borderRadius.Desktop.right || 0}px ${titleBorder.borderRadius.Desktop.bottom || 0}px ${titleBorder.borderRadius.Desktop.left || 0}px`,
-                            borderColor: titleBorder.borderColor,
-                            borderTopLeftRadius: `${titleBorder.borderRadius.Desktop.top || 0}px`,
-                            borderTopRightRadius: `${titleBorder.borderRadius.Desktop.right || 0}px`,
-                            borderBottomLeftRadius: `${titleBorder.borderRadius.Desktop.bottom || 0}px`,
-                            borderBottomRightRadius: `${titleBorder.borderRadius.Desktop.left || 0}px`,
+                            borderStyle: titleBorder && titleBorder.borderType,
+                            borderTopWidth: titleBorder && titleBorder.borderWidth.Desktop.top,
+                            borderRightWidth: titleBorder && titleBorder.borderWidth.Desktop.right,
+                            borderBottomWidth: titleBorder && titleBorder.borderWidth.Desktop.bottom,
+                            borderLeftWidth: titleBorder && titleBorder.borderWidth.Desktop.left,
+                            borderRadius: `${titleBorder && titleBorder.borderRadius.Desktop.top || 0}px ${titleBorder && titleBorder.borderRadius.Desktop.right || 0}px ${titleBorder && titleBorder.borderRadius.Desktop.bottom || 0}px ${titleBorder && titleBorder.borderRadius.Desktop.left || 0}px`,
+                            borderColor: titleBorder && titleBorder.borderColor,
+                            borderTopLeftRadius: `${titleBorder && titleBorder.borderRadius.Desktop.top || 0}px`,
+                            borderTopRightRadius: `${titleBorder && titleBorder.borderRadius.Desktop.right || 0}px`,
+                            borderBottomLeftRadius: `${titleBorder && titleBorder.borderRadius.Desktop.bottom || 0}px`,
+                            borderBottomRightRadius: `${titleBorder && titleBorder.borderRadius.Desktop.left || 0}px`,
                         }}
                     >
                         <div className={`premium-accordion__title`}>
@@ -256,17 +255,17 @@ class PremiumAccordion extends Component {
                             paddingRight: descPaddingRight && `${descPaddingRight}${descPadding.unit}`,
                             paddingBottom: descPaddingBottom && `${descPaddingBottom}${descPadding.unit}`,
                             paddingLeft: descPaddingLeft && `${descPaddingLeft}${descPadding.unit}`,
-                            borderStyle: descBorder.borderType,
-                            borderTopWidth: descBorder.borderWidth.Desktop.top,
-                            borderRightWidth: descBorder.borderWidth.Desktop.right,
-                            borderBottomWidth: descBorder.borderWidth.Desktop.bottom,
-                            borderLeftWidth: descBorder.borderWidth.Desktop.left,
-                            borderRadius: `${descBorder.borderRadius.Desktop.top || 0}px ${descBorder.borderRadius.Desktop.right || 0}px ${descBorder.borderRadius.Desktop.bottom || 0}px ${descBorder.borderRadius.Desktop.left || 0}px`,
-                            borderColor: descBorder.borderColor,
-                            borderTopLeftRadius: `${descBorder.borderRadius.Desktop.top || 0}px`,
-                            borderTopRightRadius: `${descBorder.borderRadius.Desktop.right || 0}px`,
-                            borderBottomLeftRadius: `${descBorder.borderRadius.Desktop.bottom || 0}px`,
-                            borderBottomRightRadius: `${descBorder.borderRadius.Desktop.left || 0}px`,
+                            borderStyle: descBorder && descBorder.borderType,
+                            borderTopWidth: descBorder && descBorder.borderWidth.Desktop.top,
+                            borderRightWidth: descBorder && descBorder.borderWidth.Desktop.right,
+                            borderBottomWidth: descBorder && descBorder.borderWidth.Desktop.bottom,
+                            borderLeftWidth: descBorder && descBorder.borderWidth.Desktop.left,
+                            borderRadius: `${descBorder && descBorder.borderRadius.Desktop.top || 0}px ${descBorder && descBorder.borderRadius.Desktop.right || 0}px ${descBorder && descBorder.borderRadius.Desktop.bottom || 0}px ${descBorder && descBorder.borderRadius.Desktop.left || 0}px`,
+                            borderColor: descBorder && descBorder.borderColor,
+                            borderTopLeftRadius: `${descBorder && descBorder.borderRadius.Desktop.top || 0}px`,
+                            borderTopRightRadius: `${descBorder && descBorder.borderRadius.Desktop.right || 0}px`,
+                            borderBottomLeftRadius: `${descBorder && descBorder.borderRadius.Desktop.bottom || 0}px`,
+                            borderBottomRightRadius: `${descBorder && descBorder.borderRadius.Desktop.left || 0}px`,
                         }}
                     >
                         {"text" === contentType && (
@@ -353,26 +352,13 @@ class PremiumAccordion extends Component {
                             onColorChange={value => saveTitleStyles({ titleBack: value })}
                         />
                         <PremiumBorder
-                            borderType={titleStyles[0].titleBorder}
-                            borderWidth={titleBorderWidth}
-                            top={titleBorderTop}
-                            right={titleBorderRight}
-                            bottom={titleBorderBottom}
-                            left={titleBorderLeft}
-                            borderColor={titleStyles[0].titleBorderColor}
-                            borderRadius={titleStyles[0].titleBorderRadius}
-                            onChangeType={(newType) => saveTitleStyles({ titleBorder: newType })}
-                            onChangeWidth={({ top, right, bottom, left }) =>
-                                setAttributes({
-                                    titleBorderUpdated: true,
-                                    titleBorderTop: top,
-                                    titleBorderRight: right,
-                                    titleBorderBottom: bottom,
-                                    titleBorderLeft: left,
-                                })
-                            }
-                            onChangeColor={(colorValue) => saveTitleStyles({ titleBorderColor: colorValue })}
-                            onChangeRadius={(newrRadius) => saveTitleStyles({ titleBorderRadius: newrRadius })}
+                            label={__("Border")}
+                            value={titleBorder}
+                            borderType={titleBorder.borderType}
+                            borderColor={titleBorder.borderColor}
+                            borderWidth={titleBorder.borderWidth}
+                            borderRadius={titleBorder.borderRadius}
+                            onChange={(value) => setAttributes({ titleBorder: value })}
                         />
                         <PremiumShadow
                             label={__("Text Shadow", "premium-blocks-for-gutenberg")}
@@ -491,26 +477,13 @@ class PremiumAccordion extends Component {
                             </Fragment>
                         )}
                         <PremiumBorder
-                            borderType={descStyles[0].descBorder}
-                            borderWidth={descBorderWidth}
-                            top={descBorderTop}
-                            right={descBorderRight}
-                            bottom={descBorderBottom}
-                            left={descBorderLeft}
-                            borderColor={descStyles[0].descBorderColor}
-                            borderRadius={descStyles[0].descBorderRadius}
-                            onChangeType={(newType) => SaveDescStyles({ descBorder: newType })}
-                            onChangeWidth={({ top, right, bottom, left }) =>
-                                setAttributes({
-                                    descBorderUpdated: true,
-                                    descBorderTop: top,
-                                    descBorderRight: right,
-                                    descBorderBottom: bottom,
-                                    descBorderLeft: left,
-                                })
-                            }
-                            onChangeColor={(colorValue) => SaveDescStyles({ descBorderColor: colorValue })}
-                            onChangeRadius={(newrRadius) => SaveDescStyles({ descBorderRadius: newrRadius })}
+                            label={__("Border")}
+                            value={descBorder}
+                            borderType={descBorder.borderType}
+                            borderColor={descBorder.borderColor}
+                            borderWidth={descBorder.borderWidth}
+                            borderRadius={descBorder.borderRadius}
+                            onChange={(value) => setAttributes({ descBorder: value })}
                         />
                         {"text" === contentType && (
                             <PremiumShadow

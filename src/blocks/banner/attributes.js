@@ -57,10 +57,6 @@ const attributes = {
         type: "array",
         default: [
             {
-                borderType: "none",
-                borderWidth: '',
-                borderRadius: '',
-                borderColor: '',
                 containerShadowColor: '',
                 containerShadowBlur: '',
                 containerShadowHorizontal: '',
@@ -178,22 +174,6 @@ const attributes = {
         type: "boolean",
         default: false
     },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    borderTop: {
-        type: "number",
-    },
-    borderRight: {
-        type: "number",
-    },
-    borderBottom: {
-        type: "number",
-    },
-    borderLeft: {
-        type: "number",
-    },
     padding: {
         type: "object",
         default: {
@@ -216,6 +196,53 @@ const attributes = {
                 left: ''
             },
             unit: 'px'
+        }
+    },
+    border: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
         }
     }
 }

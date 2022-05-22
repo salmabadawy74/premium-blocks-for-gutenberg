@@ -21,13 +21,9 @@ const save = props => {
         hideTablet,
         hideMobile,
         containerStyles,
-        borderTop,
-        borderRight,
-        borderBottom,
-        borderLeft,
+        border,
         backgroundType
     } = props.attributes;
-
 
     const mainClasses = classnames(className, 'premium-container');
 
@@ -52,12 +48,8 @@ const save = props => {
                 minHeight:
                     "fit" === height ? "100vh" : minHeight + minHeightUnit,
                 backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
-                borderStyle: containerStyles[0].borderType,
-                borderWidth: isUpdated
-                    ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
-                    : containerStyles[0].borderWidth + "px",
-                borderRadius: containerStyles[0].borderRadius + "px",
-                borderColor: containerStyles[0].borderColor,
+                borderStyle: border && border.borderType,
+                borderColor: border && border.borderColor,
                 backgroundImage: btnbg,
                 backgroundRepeat: containerStyles[0].backgroundRepeat,
                 backgroundPosition: containerStyles[0].backgroundPosition,

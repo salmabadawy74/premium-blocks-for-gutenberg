@@ -69,18 +69,6 @@ class edit extends Component {
             hideDesktop,
             hideTablet,
             hideMobile,
-            containerBorderTop,
-            containerBorderRight,
-            containerBorderBottom,
-            containerBorderLeft,
-            firstBorderTop,
-            firstBorderRight,
-            firstBorderBottom,
-            firstBorderLeft,
-            secondBorderTop,
-            secondBorderRight,
-            secondBorderBottom,
-            secondBorderLeft,
             firstBorder,
             secondBorder,
             containerBorder,
@@ -304,30 +292,15 @@ class edit extends Component {
                             </Fragment>
 
                         )}
-
                         <PremiumBorder
-                            borderType={firstStyles[0].firstBorderType}
-                            borderWidth={firstStyles[0].firstBorderWidth}
-                            top={firstStyles[0].firstBorderTop}
-                            right={firstStyles[0].firstBorderRight}
-                            bottom={firstStyles[0].firstBorderBottom}
-                            left={firstStyles[0].firstBorderLeft}
-                            borderColor={firstStyles[0].firstBorderColor}
-                            borderRadius={firstStyles[0].firstBorderRadius}
-                            onChangeType={(newType) => saveFirstStyle({ firstBorderType: newType })}
-                            onChangeWidth={({ top, right, bottom, left }) =>
-                                setAttributes({
-                                    firstBorder: true,
-                                    firstBorderTop: top,
-                                    firstBorderRight: right,
-                                    firstBorderBottom: bottom,
-                                    firstBorderLeft: left,
-                                })
-                            }
-                            onChangeColor={(colorValue) => saveFirstStyle({ firstBorderColor: colorValue || "transparent", })}
-                            onChangeRadius={(newrRadius) => saveFirstStyle({ firstBorderRadius: newrRadius || "0" })}
+                            label={__("Border")}
+                            value={firstBorder}
+                            borderType={firstBorder.borderType}
+                            borderColor={firstBorder.borderColor}
+                            borderWidth={firstBorder.borderWidth}
+                            borderRadius={firstBorder.borderRadius}
+                            onChange={(value) => setAttributes({ firstBorder: value })}
                         />
-
                         <PremiumShadow
                             label={__("Text Shadow", "premium-blocks-for-gutenberg")}
                             color={firstStyles[0].firstShadowColor}
@@ -441,30 +414,15 @@ class edit extends Component {
                                 />
                             </Fragment>
                         )}
-
                         <PremiumBorder
-                            borderType={secondStyles[0].secondBorderType}
-                            borderWidth={secondStyles[0].secondBorderWidth}
-                            top={secondBorderTop}
-                            right={secondBorderRight}
-                            bottom={secondBorderBottom}
-                            left={secondBorderLeft}
-                            borderColor={secondStyles[0].secondBorderColor}
-                            borderRadius={secondStyles[0].secondBorderRadius}
-                            onChangeType={(newType) => saveSecondStyle({ secondBorderType: newType })}
-                            onChangeWidth={({ top, right, bottom, left }) =>
-                                setAttributes({
-                                    secondBorder: true,
-                                    secondBorderTop: top,
-                                    secondBorderRight: right,
-                                    secondBorderBottom: bottom,
-                                    secondBorderLeft: left,
-                                })
-                            }
-                            onChangeColor={(colorValue) => saveSecondStyle({ secondBorderColor: colorValue || "transparent", })}
-                            onChangeRadius={(newrRadius) => saveSecondStyle({ secondBorderRadius: newrRadius || "0" })}
+                            label={__("Border")}
+                            value={secondBorder}
+                            borderType={secondBorder.borderType}
+                            borderColor={secondBorder.borderColor}
+                            borderWidth={secondBorder.borderWidth}
+                            borderRadius={secondBorder.borderRadius}
+                            onChange={(value) => setAttributes({ secondBorder: value })}
                         />
-
                         <PremiumShadow
                             label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
                             color={secondStyles[0].secondShadowColor}
@@ -522,26 +480,13 @@ class edit extends Component {
                             gradientType={containerStyles[0].gradientType}
                         />
                         <PremiumBorder
-                            borderType={containerStyles[0].containerBorderType}
-                            borderWidth={containerStyles[0].containerBorderWidth}
-                            top={containerBorderTop}
-                            right={containerBorderRight}
-                            bottom={containerBorderBottom}
-                            left={containerBorderLeft}
-                            borderColor={containerStyles[0].containerBorderColor}
-                            borderRadius={containerStyles[0].containerBorderRadius}
-                            onChangeType={(newType) => saveContainerStyle({ containerBorderType: newType })}
-                            onChangeWidth={({ top, right, bottom, left }) =>
-                                setAttributes({
-                                    containerBorder: true,
-                                    containerBorderTop: top,
-                                    containerBorderRight: right,
-                                    containerBorderBottom: bottom,
-                                    containerBorderLeft: left,
-                                })
-                            }
-                            onChangeColor={(colorValue) => saveContainerStyle({ containerBorderColor: colorValue, })}
-                            onChangeRadius={(newrRadius) => saveContainerStyle({ containerBorderRadius: newrRadius })}
+                            label={__("Border")}
+                            value={containerBorder}
+                            borderType={containerBorder.borderType}
+                            borderColor={containerBorder.borderColor}
+                            borderWidth={containerBorder.borderWidth}
+                            borderRadius={containerBorder.borderRadius}
+                            onChange={(value) => setAttributes({ containerBorder: value })}
                         />
                     </PanelBody>
                     <PremiumResponsiveTabs
@@ -567,12 +512,17 @@ class edit extends Component {
                     backgroundPosition: containerStyles[0].backgroundPosition,
                     backgroundSize: containerStyles[0].backgroundSize,
                     backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
-                    borderStyle: containerStyles[0].containerBorderType,
-                    borderWidth: containerBorder
-                        ? `${containerBorderTop}px ${containerBorderRight}px ${containerBorderBottom}px ${containerBorderLeft}px`
-                        : containerStyles[0].containerBorderWidth + "px",
-                    borderRadius: containerStyles[0].containerBorderRadius + "px",
-                    borderColor: containerStyles[0].containerBorderColor
+                    borderStyle: containerBorder && containerBorder.borderType,
+                    borderTopWidth: containerBorder && containerBorder.borderWidth.Desktop.top,
+                    borderRightWidth: containerBorder && containerBorder.borderWidth.Desktop.right,
+                    borderBottomWidth: containerBorder && containerBorder.borderWidth.Desktop.bottom,
+                    borderLeftWidth: containerBorder && containerBorder.borderWidth.Desktop.left,
+                    borderRadius: `${containerBorder && containerBorder.borderRadius.Desktop.top || 0}px ${containerBorder && containerBorder.borderRadius.Desktop.right || 0}px ${containerBorder && containerBorder.borderRadius.Desktop.bottom || 0}px ${containerBorder && containerBorder.borderRadius.Desktop.left || 0}px`,
+                    borderColor: containerBorder && containerBorder.borderColor,
+                    borderTopLeftRadius: `${containerBorder && containerBorder.borderRadius.Desktop.top || 0}px`,
+                    borderTopRightRadius: `${containerBorder && containerBorder.borderRadius.Desktop.right || 0}px`,
+                    borderBottomLeftRadius: `${containerBorder && containerBorder.borderRadius.Desktop.bottom || 0}px`,
+                    borderBottomRightRadius: `${containerBorder && containerBorder.borderRadius.Desktop.left || 0}px`,
                 }}
             >
                 <div className={`premium-dheading-block__wrap`}>
@@ -592,12 +542,17 @@ class edit extends Component {
                                 textTransform: firstStyles[0].firstUpper ? "uppercase" : "none",
                                 fontStyle: firstStyles[0].firstStyle,
                                 fontWeight: firstStyles[0].firstWeight,
-                                borderStyle: firstStyles[0].firstBorderType,
-                                borderWidth: firstBorder
-                                    ? `${firstBorderTop}px ${firstBorderRight}px ${firstBorderBottom}px ${firstBorderLeft}px`
-                                    : firstStyles[0].firstBorderWidth + "px",
-                                borderRadius: firstStyles[0].firstBorderRadius + "px",
-                                borderColor: firstStyles[0].firstBorderColor,
+                                borderStyle: firstBorder && firstBorder.borderType,
+                                borderTopWidth: firstBorder && firstBorder.borderWidth.Desktop.top,
+                                borderRightWidth: firstBorder && firstBorder.borderWidth.Desktop.right,
+                                borderBottomWidth: firstBorder && firstBorder.borderWidth.Desktop.bottom,
+                                borderLeftWidth: firstBorder && firstBorder.borderWidth.Desktop.left,
+                                borderRadius: `${firstBorder && firstBorder.borderRadius.Desktop.top || 0}px ${firstBorder && firstBorder.borderRadius.Desktop.right || 0}px ${firstBorder && firstBorder.borderRadius.Desktop.bottom || 0}px ${firstBorder && firstBorder.borderRadius.Desktop.left || 0}px`,
+                                borderColor: firstBorder && firstBorder.borderColor,
+                                borderTopLeftRadius: `${firstBorder && firstBorder.borderRadius.Desktop.top || 0}px`,
+                                borderTopRightRadius: `${firstBorder && firstBorder.borderRadius.Desktop.right || 0}px`,
+                                borderBottomLeftRadius: `${firstBorder && firstBorder.borderRadius.Desktop.bottom || 0}px`,
+                                borderBottomRightRadius: `${firstBorder && firstBorder.borderRadius.Desktop.left || 0}px`,
                                 padding: firstStyles[0].firstPadding + "px",
                                 marginLeft: firstStyles[0].firstMarginL + "px",
                                 marginRight: firstStyles[0].firstMarginR + "px",
@@ -621,12 +576,17 @@ class edit extends Component {
                                 textTransform: secondStyles[0].secondUpper ? "uppercase" : "none",
                                 fontStyle: secondStyles[0].secondStyle,
                                 fontWeight: secondStyles[0].secondWeight,
-                                borderStyle: secondStyles[0].secondBorderType,
-                                borderWidth: secondBorder
-                                    ? `${secondBorderTop}px ${secondBorderRight}px ${secondBorderBottom}px ${secondBorderLeft}px`
-                                    : secondStyles[0].secondBorderWidth + "px",
-                                borderRadius: secondStyles[0].secondBorderRadius + "px",
-                                borderColor: secondStyles[0].secondBorderColor,
+                                borderStyle: secondBorder && secondBorder.borderType,
+                                borderTopWidth: secondBorder && secondBorder.borderWidth.Desktop.top,
+                                borderRightWidth: secondBorder && secondBorder.borderWidth.Desktop.right,
+                                borderBottomWidth: secondBorder && secondBorder.borderWidth.Desktop.bottom,
+                                borderLeftWidth: secondBorder && secondBorder.borderWidth.Desktop.left,
+                                borderRadius: `${secondBorder && secondBorder.borderRadius.Desktop.top || 0}px ${secondBorder && secondBorder.borderRadius.Desktop.right || 0}px ${secondBorder && secondBorder.borderRadius.Desktop.bottom || 0}px ${secondBorder && secondBorder.borderRadius.Desktop.left || 0}px`,
+                                borderColor: secondBorder && secondBorder.borderColor,
+                                borderTopLeftRadius: `${secondBorder && secondBorder.borderRadius.Desktop.top || 0}px`,
+                                borderTopRightRadius: `${secondBorder && secondBorder.borderRadius.Desktop.right || 0}px`,
+                                borderBottomLeftRadius: `${secondBorder && secondBorder.borderRadius.Desktop.bottom || 0}px`,
+                                borderBottomRightRadius: `${secondBorder && secondBorder.borderRadius.Desktop.left || 0}px`,
                                 padding: secondStyles[0].secondPadding + "px",
                                 marginLeft: secondStyles[0].secondMarginL + "px",
                                 marginRight: secondStyles[0].secondMarginR + "px",

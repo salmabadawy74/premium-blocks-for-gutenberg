@@ -56,22 +56,6 @@ const attributes = {
         type: 'boolean',
         default: false
     },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    borderTop: {
-        type: "number"
-    },
-    borderRight: {
-        type: "number"
-    },
-    borderBottom: {
-        type: "number"
-    },
-    borderLeft: {
-        type: "number"
-    },
     textStyles: {
         type: "array",
         default: [
@@ -102,9 +86,6 @@ const attributes = {
                 backColor: '',
                 backOpacity: 1,
                 backHoverColor: '',
-                borderType: "none",
-                borderRadius: '',
-                borderColor: '',
                 borderHoverColor: '',
                 btnShadowColor: '',
                 btnShadowBlur: 0,
@@ -115,6 +96,53 @@ const attributes = {
                 paddingU: 'px',
             }
         ]
+    },
+    border: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
     }
 }
 export default attributes

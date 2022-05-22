@@ -35,7 +35,6 @@ export class edit extends Component {
     render() {
         const { isSelected, setAttributes, className, clientId: blockId } = this.props;
         const {
-            borderButton,
             btnText,
             btnSize,
             btnAlign,
@@ -48,11 +47,7 @@ export class edit extends Component {
             hideDesktop,
             hideTablet,
             hideMobile,
-            borderWidth,
-            borderTop,
-            borderRight,
-            borderBottom,
-            borderLeft,
+            border,
             textStyles,
             btnStyles
         } = this.props.attributes;
@@ -298,7 +293,6 @@ export class edit extends Component {
                             onChangeMobileSize={newSize => saveTextStyles({ textSizeMobile: newSize })}
                             onChangeWeight={newWeight => saveTextStyles({ textWeight: newWeight })}
                             onChangeLine={newValue => saveTextStyles({ textLine: newValue })}
-                            onChangeSize={newSize => saveTextStyles({ textSize: newSize })}
                             onChangeStyle={newStyle => saveTextStyles({ textStyle: newStyle })}
                             onChangeSpacing={newValue => saveTextStyles({ textLetter: newValue })}
                             onChangeFamily={(fontFamily) => saveTextStyles({ textFontFamily: fontFamily })}
@@ -399,30 +393,13 @@ export class edit extends Component {
                             }}
                         </TabPanel>
                         <PremiumBorder
-                            borderType={btnStyles[0].borderType}
-                            borderWidth={borderWidth}
-                            top={borderTop}
-                            right={borderRight}
-                            bottom={borderBottom}
-                            left={borderLeft}
-                            borderColor={btnStyles[0].borderColor}
-                            borderRadius={btnStyles[0].borderRadius}
-                            onChangeType={(newType) => saveBtnStyles({ borderType: newType })}
-                            onChangeWidth={({ top, right, bottom, left }) =>
-                                setAttributes({
-                                    borderButton: true,
-                                    borderTop: top,
-                                    borderRight: right,
-                                    borderBottom: bottom,
-                                    borderLeft: left,
-                                })
-                            }
-                            onChangeColor={(colorValue) =>
-                                saveBtnStyles({ borderColor: colorValue })
-                            }
-                            onChangeRadius={(newrRadius) =>
-                                saveBtnStyles({ borderRadius: newrRadius })
-                            }
+                            label={__("Border")}
+                            value={border}
+                            borderType={border.borderType}
+                            borderColor={border.borderColor}
+                            borderWidth={border.borderWidth}
+                            borderRadius={border.borderRadius}
+                            onChange={(value) => setAttributes({ border: value })}
                         />
                         <PremiumShadow
                             label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
@@ -498,12 +475,17 @@ export class edit extends Component {
                         textShadow: `${textStyles[0].shadowHorizontal}px ${textStyles[0].shadowVertical}px ${textStyles[0].shadowBlur}px ${textStyles[0].shadowColor}`,
                         boxShadow: `${btnStyles[0].btnShadowHorizontal}px ${btnStyles[0].btnShadowVertical}px ${btnStyles[0].btnShadowBlur}px ${btnStyles[0].btnShadowColor} ${btnStyles[0].btnShadowPosition}`,
                         padding: btnStyles[0].padding + btnStyles[0].paddingU,
-                        borderStyle: btnStyles[0].borderType,
-                        borderWidth: borderButton
-                            ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
-                            : borderWidth + "px",
-                        borderRadius: btnStyles[0].borderRadius + "px",
-                        borderColor: btnStyles[0].borderColor
+                        borderStyle: border && border.borderType,
+                        borderTopWidth: border && border.borderWidth.Desktop.top,
+                        borderRightWidth: border && border.borderWidth.Desktop.right,
+                        borderBottomWidth: border && border.borderWidth.Desktop.bottom,
+                        borderLeftWidth: border && border.borderWidth.Desktop.left,
+                        borderRadius: `${border && border.borderRadius.Desktop.top || 0}px ${border && border.borderRadius.Desktop.right || 0}px ${border && border.borderRadius.Desktop.bottom || 0}px ${border && border.borderRadius.Desktop.left || 0}px`,
+                        borderColor: border && border.borderColor,
+                        borderTopLeftRadius: `${border && border.borderRadius.Desktop.top || 0}px`,
+                        borderTopRightRadius: `${border && border.borderRadius.Desktop.right || 0}px`,
+                        borderBottomLeftRadius: `${border && border.borderRadius.Desktop.bottom || 0}px`,
+                        borderBottomRightRadius: `${border && border.borderRadius.Desktop.left || 0}px`,
                     }}
                     keepPlaceholderOnFocus
                 />

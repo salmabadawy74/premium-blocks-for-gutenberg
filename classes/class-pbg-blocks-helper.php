@@ -1077,6 +1077,22 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $title_padding['Desktop']['left'] . $title_padding['unit'] ) );
 		}
 
+		if ( isset( $attr['titleBorder'] ) ) {
+			$title_border        = $attr['titleBorder'];
+			$title_border_width  = $attr['titleBorder']['borderWidth'];
+			$title_border_radius = $attr['titleBorder']['borderRadius'];
+	
+			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $title_border_width, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $title_border_width, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $title_border_width, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $title_border_width, 'left', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $title_border_radius, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $title_border_radius, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $title_border_radius, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $title_border_radius, 'left', 'Desktop', 'px' ) );
+		}
+
 		// Desc Style
 		if ( isset( $attr['descSize'] ) && isset( $attr['descSizeUnit'] ) ) {
 			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' . ' > .premium-accordion__desc' );
@@ -1106,6 +1122,22 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-right', $css->render_color( $desc_padding['Desktop']['right'] . $desc_padding['unit'] ) );
 			$css->add_property( 'padding-bottom', $css->render_color( $desc_padding['Desktop']['bottom'] . $desc_padding['unit'] ) );
 			$css->add_property( 'padding-left', $css->render_color( $desc_padding['Desktop']['left'] . $desc_padding['unit'] ) );
+		}
+
+		if ( isset( $attr['descPadding'] ) ) {
+			$desc_border        = $attr['descPadding'];
+			$desc_border_width  = $attr['descPadding']['borderWidth'];
+			$desc_border_radius = $attr['descPadding']['borderRadius'];
+	
+			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $desc_border_width, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $desc_border_width, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $desc_border_width, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $desc_border_width, 'left', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $desc_border_radius, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $desc_border_radius, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $desc_border_radius, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $desc_border_radius, 'left', 'Desktop', 'px' ) );
 		}
 
 		$css->start_media_query( $media_query['tablet'] );
@@ -1140,6 +1172,22 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $title_padding['Tablet']['left'] . $title_padding['unit'] ) );
 		}
 
+		if ( isset( $attr['titleBorder'] ) ) {
+			$title_border        = $attr['titleBorder'];
+			$title_border_width  = $attr['titleBorder']['borderWidth'];
+			$title_border_radius = $attr['titleBorder']['borderRadius'];
+	
+			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $title_border_width, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $title_border_width, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $title_border_width, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $title_border_width, 'left', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $title_border_radius, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $title_border_radius, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $title_border_radius, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $title_border_radius, 'left', 'Tablet', 'px' ) );
+		}
+
 		// Desc Style
 		if ( isset( $attr['descSizeTablet'] ) && isset( $attr['descSizeUnit'] ) ) {
 			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' . ' > .premium-accordion__desc' );
@@ -1169,6 +1217,22 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-right', $css->render_color( $desc_padding['Tablet']['right'] . $desc_padding['unit'] ) );
 			$css->add_property( 'padding-bottom', $css->render_color( $desc_padding['Tablet']['bottom'] . $desc_padding['unit'] ) );
 			$css->add_property( 'padding-left', $css->render_color( $desc_padding['Tablet']['left'] . $desc_padding['unit'] ) );
+		}
+
+		if ( isset( $attr['descBorder'] ) ) {
+			$desc_border        = $attr['descBorder'];
+			$desc_border_width  = $attr['descBorder']['borderWidth'];
+			$desc_border_radius = $attr['descBorder']['borderRadius'];
+	
+			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $desc_border_width, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $desc_border_width, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $desc_border_width, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $desc_border_width, 'left', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $desc_border_radius, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $desc_border_radius, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $desc_border_radius, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $desc_border_radius, 'left', 'Tablet', 'px' ) );
 		}
 
 		$css->stop_media_query();
@@ -1205,6 +1269,22 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $title_padding['Mobile']['left'] . $title_padding['unit'] ) );
 		}
 
+		if ( isset( $attr['titleBorder'] ) ) {
+			$title_border        = $attr['titleBorder'];
+			$title_border_width  = $attr['titleBorder']['borderWidth'];
+			$title_border_radius = $attr['titleBorder']['borderRadius'];
+	
+			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $title_border_width, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $title_border_width, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $title_border_width, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $title_border_width, 'left', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $title_border_radius, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $title_border_radius, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $title_border_radius, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $title_border_radius, 'left', 'Mobile', 'px' ) );
+		}
+
 		// Desc Style
 		if ( isset( $attr['descSizeMobile'] ) && isset( $attr['descSizeUnit'] ) ) {
 			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' . ' > .premium-accordion__desc' );
@@ -1234,6 +1314,22 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-right', $css->render_color( $desc_padding['Mobile']['right'] . $desc_padding['unit'] ) );
 			$css->add_property( 'padding-bottom', $css->render_color( $desc_padding['Mobile']['bottom'] . $desc_padding['unit'] ) );
 			$css->add_property( 'padding-left', $css->render_color( $desc_padding['Mobile']['left'] . $desc_padding['unit'] ) );
+		}
+
+		if ( isset( $attr['descBorder'] ) ) {
+			$desc_border        = $attr['descBorder'];
+			$desc_border_width  = $attr['descBorder']['borderWidth'];
+			$desc_border_radius = $attr['descBorder']['borderRadius'];
+	
+			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $desc_border_width, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $desc_border_width, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $desc_border_width, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $desc_border_width, 'left', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $desc_border_radius, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $desc_border_radius, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $desc_border_radius, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $desc_border_radius, 'left', 'Mobile', 'px' ) );
 		}
 
 		$css->stop_media_query();
@@ -1341,6 +1437,22 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $padding['Desktop']['left'] . $padding['unit'] ) );
 		}
 
+		if ( isset( $attr['border'] ) ) {
+			$border        = $attr['border'];
+			$border_width  = $attr['border']['borderWidth'];
+			$border_radius = $attr['border']['borderRadius'];
+	
+			$css->set_selector( '#premium-banner-' . $unique_id . ' > .premium-banner__inner' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $border_width, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $border_width, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $border_width, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $border_width, 'left', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $border_radius, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $border_radius, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $border_radius, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $border_radius, 'left', 'Desktop', 'px' ) );
+		}
+
 		$css->start_media_query( $media_query['tablet'] );
 
 		if ( isset( $attr['titleStyles'][0]['titleSizeTablet'] ) ) {
@@ -1380,6 +1492,22 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $padding['Tablet']['left'] . $padding['unit'] ) );
 		}
 
+		if ( isset( $attr['border'] ) ) {
+			$border        = $attr['border'];
+			$border_width  = $attr['border']['borderWidth'];
+			$border_radius = $attr['border']['borderRadius'];
+	
+			$css->set_selector( '#premium-banner-' . $unique_id . ' > .premium-banner__inner' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $border_width, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $border_width, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $border_width, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $border_width, 'left', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $border_radius, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $border_radius, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $border_radius, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $border_radius, 'left', 'Tablet', 'px' ) );
+		}
+
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['mobile'] );
 		if ( isset( $attr['titleStyles'][0]['titleSizeMobile'] ) ) {
@@ -1416,6 +1544,22 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-right', $css->render_color( $padding['Mobile']['right'] . $padding['unit'] ) );
 			$css->add_property( 'padding-bottom', $css->render_color( $padding['Mobile']['bottom'] . $padding['unit'] ) );
 			$css->add_property( 'padding-left', $css->render_color( $padding['Mobile']['left'] . $padding['unit'] ) );
+		}
+
+		if ( isset( $attr['border'] ) ) {
+			$border        = $attr['border'];
+			$border_width  = $attr['border']['borderWidth'];
+			$border_radius = $attr['border']['borderRadius'];
+	
+			$css->set_selector( '#premium-banner-' . $unique_id . ' > .premium-banner__inner' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $border_width, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $border_width, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $border_width, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $border_width, 'left', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $border_radius, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $border_radius, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $border_radius, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $border_radius, 'left', 'Mobile', 'px' ) );
 		}
 
 		$css->stop_media_query();
@@ -1488,11 +1632,45 @@ class PBG_Blocks_Helper {
 				$css->add_property( 'font-size', $css->render_color( $attr['textStyles'][0]['textSize'] . $attr['textStyles'][0]['textSizeUnit'] . '!important' ) );
 			}
 		}
+
+		if ( isset( $attr['border'] ) ) {
+			$border        = $attr['border'];
+			$border_width  = $attr['border']['borderWidth'];
+			$border_radius = $attr['border']['borderRadius'];
+	
+			$css->set_selector( '#premium-button-wrap-' . $unique_id . '> .premium-button' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $border_width, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $border_width, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $border_width, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $border_width, 'left', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $border_radius, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $border_radius, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $border_radius, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $border_radius, 'left', 'Desktop', 'px' ) );
+		}
+
 		$css->start_media_query( $media_query['tablet'] );
 		if ( isset( $attr['textStyles'][0]['textSizeTablet'] ) ) {
 			$css->set_selector( '#premium-button-wrap-' . $unique_id . '> .premium-button' );
 			$css->add_property( 'font-size', $css->render_color( $attr['textStyles'][0]['textSizeTablet'] . $attr['textStyles'][0]['textSizeUnit'] . '!important' ) );
 		}
+
+		if ( isset( $attr['border'] ) ) {
+			$border        = $attr['border'];
+			$border_width  = $attr['border']['borderWidth'];
+			$border_radius = $attr['border']['borderRadius'];
+	
+			$css->set_selector( '#premium-button-wrap-' . $unique_id . '> .premium-button' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $border_width, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $border_width, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $border_width, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $border_width, 'left', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $border_radius, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $border_radius, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $border_radius, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $border_radius, 'left', 'Tablet', 'px' ) );
+		}
+
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['mobile'] );
 		if ( isset( $attr['textStyles'][0]['textSizeMobile'] ) ) {
@@ -1500,6 +1678,23 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'font-size', $css->render_color( $attr['textStyles'][0]['textSizeMobile'] . $attr['textStyles'][0]['textSizeUnit'] . '!important' ) );
 
 		}
+
+		if ( isset( $attr['border'] ) ) {
+			$border        = $attr['border'];
+			$border_width  = $attr['border']['borderWidth'];
+			$border_radius = $attr['border']['borderRadius'];
+	
+			$css->set_selector( '#premium-button-wrap-' . $unique_id . '> .premium-button' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $border_width, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $border_width, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $border_width, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $border_width, 'left', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $border_radius, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $border_radius, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $border_radius, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $border_radius, 'left', 'Mobile', 'px' ) );
+		}
+
 		$css->stop_media_query();
 		return $css->css_output();
 
@@ -1849,6 +2044,23 @@ class PBG_Blocks_Helper {
 		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
 		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
 		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
+
+		if ( isset( $attr['containerBorder'] ) ) {
+			$container_border        = $attr['containerBorder'];
+			$container_border_width  = $attr['containerBorder']['borderWidth'];
+			$container_border_radius = $attr['containerBorder']['borderRadius'];
+	
+			$css->set_selector( '#premium-dheading-block-' . $unique_id );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $container_border_width, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $container_border_width, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $container_border_width, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $container_border_width, 'left', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $container_border_radius, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $container_border_radius, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $container_border_radius, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $container_border_radius, 'left', 'Desktop', 'px' ) );
+		}
+
 		// First Style FontSize.
 		if ( isset( $attr['firstStyles'] ) ) {
 			if ( isset( $attr['firstStyles'][0]['firstSize'] ) || isset( $attr['firstStyles'][0]['firstSizeUnit'] ) ) {
@@ -1856,6 +2068,23 @@ class PBG_Blocks_Helper {
 				$css->add_property( 'font-size', ( $attr['firstStyles'][0]['firstSize'] . $attr['firstStyles'][0]['firstSizeUnit'] ) );
 			}
 		}
+
+		if ( isset( $attr['firstBorder'] ) ) {
+			$first_border        = $attr['firstBorder'];
+			$first_border_width  = $attr['firstBorder']['borderWidth'];
+			$first_border_radius = $attr['firstBorder']['borderRadius'];
+	
+			$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first'  );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $first_border_width, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $first_border_width, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $first_border_width, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $first_border_width, 'left', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $first_border_radius, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $first_border_radius, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $first_border_radius, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $first_border_radius, 'left', 'Desktop', 'px' ) );
+		}
+
 		// Second Style FontSize.
 		if ( isset( $attr['secondStyles'] ) ) {
 			if ( isset( $attr['secondStyles'][0]['secondSize'] ) && isset( $attr['secondStyles'][0]['secondSizeUnit'] ) ) {
@@ -1863,7 +2092,41 @@ class PBG_Blocks_Helper {
 				$css->add_property( 'font-size', ( $attr['secondStyles'][0]['secondSize'] . $attr['secondStyles'][0]['secondSizeUnit'] ) );
 			}
 		}
+
+		if ( isset( $attr['secondBorder'] ) ) {
+			$second_border        = $attr['secondBorder'];
+			$second_border_width  = $attr['secondBorder']['borderWidth'];
+			$second_border_radius = $attr['secondBorder']['borderRadius'];
+	
+			$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second'  );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $second_border_width, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $second_border_width, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $second_border_width, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $second_border_width, 'left', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $second_border_radius, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $second_border_radius, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $second_border_radius, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $second_border_radius, 'left', 'Desktop', 'px' ) );
+		}
+
 		$css->start_media_query( $media_query['tablet'] );
+
+		if ( isset( $attr['containerBorder'] ) ) {
+			$container_border        = $attr['containerBorder'];
+			$container_border_width  = $attr['containerBorder']['borderWidth'];
+			$container_border_radius = $attr['containerBorder']['borderRadius'];
+	
+			$css->set_selector( '#premium-dheading-block-' . $unique_id );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $container_border_width, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $container_border_width, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $container_border_width, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $container_border_width, 'left', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $container_border_radius, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $container_border_radius, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $container_border_radius, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $container_border_radius, 'left', 'Tablet', 'px' ) );
+		}
+
 		// First Style FontSizeTablet.
 		if ( isset( $attr['firstStyles'] ) ) {
 			if ( isset( $attr['firstStyles'][0]['firstSize'] ) || isset( $attr['firstStyles'][0]['firstSizeUnit'] ) ) {
@@ -1871,6 +2134,23 @@ class PBG_Blocks_Helper {
 				$css->add_property( 'font-size', ( $attr['firstStyles'][0]['firstSize'] . $attr['firstStyles'][0]['firstSizeUnit'] ) );
 			}
 		}
+
+		if ( isset( $attr['firstBorder'] ) ) {
+			$first_border        = $attr['firstBorder'];
+			$first_border_width  = $attr['firstBorder']['borderWidth'];
+			$first_border_radius = $attr['firstBorder']['borderRadius'];
+	
+			$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first'  );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $first_border_width, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $first_border_width, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $first_border_width, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $first_border_width, 'left', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $first_border_radius, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $first_border_radius, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $first_border_radius, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $first_border_radius, 'left', 'Tablet', 'px' ) );
+		}
+
 		// Second Style FontSizeTablet.
 		if ( isset( $attr['secondStyles'] ) ) {
 			if ( isset( $attr['secondStyles'][0]['secondSize'] ) && isset( $attr['secondStyles'][0]['secondSizeUnit'] ) ) {
@@ -1878,8 +2158,42 @@ class PBG_Blocks_Helper {
 				$css->add_property( 'font-size', ( $attr['secondStyles'][0]['secondSize'] . $attr['secondStyles'][0]['secondSizeUnit'] ) );
 			}
 		}
+
+		if ( isset( $attr['secondBorder'] ) ) {
+			$second_border        = $attr['secondBorder'];
+			$second_border_width  = $attr['secondBorder']['borderWidth'];
+			$second_border_radius = $attr['secondBorder']['borderRadius'];
+	
+			$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second'  );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $second_border_width, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $second_border_width, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $second_border_width, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $second_border_width, 'left', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $second_border_radius, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $second_border_radius, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $second_border_radius, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $second_border_radius, 'left', 'Tablet', 'px' ) );
+		}
+
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['mobile'] );
+
+		if ( isset( $attr['containerBorder'] ) ) {
+			$container_border        = $attr['containerBorder'];
+			$container_border_width  = $attr['containerBorder']['borderWidth'];
+			$container_border_radius = $attr['containerBorder']['borderRadius'];
+	
+			$css->set_selector( '#premium-dheading-block-' . $unique_id );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $container_border_width, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $container_border_width, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $container_border_width, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $container_border_width, 'left', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $container_border_radius, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $container_border_radius, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $container_border_radius, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $container_border_radius, 'left', 'Mobile', 'px' ) );
+		}
+
 		// First Style FontSizeMobile.
 		if ( isset( $attr['firstStyles'] ) ) {
 			if ( isset( $attr['firstStyles'][0]['firstSize'] ) || isset( $attr['firstStyles'][0]['firstSizeUnit'] ) ) {
@@ -1887,6 +2201,23 @@ class PBG_Blocks_Helper {
 				$css->add_property( 'font-size', ( $attr['firstStyles'][0]['firstSize'] . $attr['firstStyles'][0]['firstSizeUnit'] ) );
 			}
 		}
+
+		if ( isset( $attr['firstBorder'] ) ) {
+			$first_border        = $attr['firstBorder'];
+			$first_border_width  = $attr['firstBorder']['borderWidth'];
+			$first_border_radius = $attr['firstBorder']['borderRadius'];
+	
+			$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first'  );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $first_border_width, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $first_border_width, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $first_border_width, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $first_border_width, 'left', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $first_border_radius, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $first_border_radius, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $first_border_radius, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $first_border_radius, 'left', 'Mobile', 'px' ) );
+		}
+
 		// Second Style FontSizeMobile.
 		if ( isset( $attr['secondStyles'] ) ) {
 			if ( isset( $attr['secondStyles'][0]['secondSize'] ) && isset( $attr['secondStyles'][0]['secondSizeUnit'] ) ) {
@@ -1894,6 +2225,23 @@ class PBG_Blocks_Helper {
 				$css->add_property( 'font-size', ( $attr['secondStyles'][0]['secondSize'] . $attr['secondStyles'][0]['secondSizeUnit'] ) );
 			}
 		}
+
+		if ( isset( $attr['secondBorder'] ) ) {
+			$second_border        = $attr['secondBorder'];
+			$second_border_width  = $attr['secondBorder']['borderWidth'];
+			$second_border_radius = $attr['secondBorder']['borderRadius'];
+	
+			$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second'  );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $second_border_width, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $second_border_width, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $second_border_width, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $second_border_width, 'left', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $second_border_radius, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $second_border_radius, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $second_border_radius, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $second_border_radius, 'left', 'Mobile', 'px' ) );
+		}
+
 		$css->stop_media_query();
 		return $css->css_output();
 
@@ -2793,6 +3141,23 @@ class PBG_Blocks_Helper {
 			$css->set_selector( '.premium-container' );
 			$css->add_property( 'margin-left', ( $attr['marginLeft'] . $attr['containerStyles'][0]['marginUnit'] ) );
 		}
+
+		if ( isset( $attr['border'] ) ) {
+			$border        = $attr['border'];
+			$border_width  = $attr['border']['borderWidth'];
+			$border_radius = $attr['border']['borderRadius'];
+	
+			$css->set_selector( '.premium-container' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $border_width, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $border_width, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $border_width, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $border_width, 'left', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $border_radius, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $border_radius, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $border_radius, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $border_radius, 'left', 'Desktop', 'px' ) );
+		}
+
 		$css->start_media_query( $media_query['tablet'] );
 		if ( isset( $attr['paddingTTablet'] ) && isset( $attr['containerStyles'][0]['paddingUnit'] ) ) {
 			$css->set_selector( '.premium-container' );
@@ -2826,6 +3191,23 @@ class PBG_Blocks_Helper {
 			$css->set_selector( '.premium-container' );
 			$css->add_property( 'margin-left', ( $attr['marginLTablet'] . $attr['containerStyles'][0]['marginUnit'] ) );
 		}
+
+		if ( isset( $attr['border'] ) ) {
+			$border        = $attr['border'];
+			$border_width  = $attr['border']['borderWidth'];
+			$border_radius = $attr['border']['borderRadius'];
+	
+			$css->set_selector( '.premium-container' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $border_width, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $border_width, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $border_width, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $border_width, 'left', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $border_radius, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $border_radius, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $border_radius, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $border_radius, 'left', 'Tablet', 'px' ) );
+		}
+
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['mobile'] );
 		if ( isset( $attr['paddingTMobile'] ) && isset( $attr['containerStyles'][0]['paddingUnit'] ) ) {
@@ -2860,6 +3242,23 @@ class PBG_Blocks_Helper {
 			$css->set_selector( '.premium-container' );
 			$css->add_property( 'margin-left', ( $attr['marginLMobile'] . $attr['containerStyles'][0]['marginUnit'] ) );
 		}
+
+		if ( isset( $attr['border'] ) ) {
+			$border        = $attr['border'];
+			$border_width  = $attr['border']['borderWidth'];
+			$border_radius = $attr['border']['borderRadius'];
+	
+			$css->set_selector( '.premium-container' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $border_width, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $border_width, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $border_width, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $border_width, 'left', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $border_radius, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $border_radius, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $border_radius, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $border_radius, 'left', 'Mobile', 'px' ) );
+		}
+
 		$css->stop_media_query();
 		return $css->css_output();
 
@@ -3952,6 +4351,22 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'margin-left', $css->render_color( $general_margin['Desktop']['left'] . $general_margin['unit'] ) );
 		}
 
+		if ( isset( $attr['generalBorder'] ) ) {
+			$general_border        = $attr['generalBorder'];
+			$general_border_width  = $attr['generalBorder']['borderWidth'];
+			$general_border_radius = $attr['generalBorder']['borderRadius'];
+	
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $general_border_width, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $general_border_width, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $general_border_width, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $general_border_width, 'left', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $general_border_radius, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $general_border_radius, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $general_border_radius, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $general_border_radius, 'left', 'Desktop', 'px' ) );
+		}
+
 		// Bullet Icon Style
 		if ( isset( $attr['bulletIconmarginT'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' );
@@ -3992,16 +4407,7 @@ class PBG_Blocks_Helper {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' );
 			$css->add_property( 'margin-left', ( $attr['titlemarginL'] . ( isset( $attr['titleStyles'][0]['titlemarginType'] ) ? $attr['titleStyles'][0]['titlemarginType'] : 'px' ) . '!important' ) );
 		}
-
-		if(isset( $attr['bulletIconpadding'] )){
-			$bullet_icon_padding = $attr['bulletIconpadding'];
-			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i, #premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img, #premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i, #premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
-			$css->add_property( 'padding-top', $css->render_color( $bullet_icon_padding['Desktop']['top'] . $bullet_icon_padding['unit'] ) );
-			$css->add_property( 'padding-right', $css->render_color( $bullet_icon_padding['Desktop']['right'] . $bullet_icon_padding['unit'] ) );
-			$css->add_property( 'padding-bottom', $css->render_color( $bullet_icon_padding['Desktop']['bottom'] . $bullet_icon_padding['unit'] ) );
-			$css->add_property( 'padding-left', $css->render_color( $bullet_icon_padding['Desktop']['left'] . $bullet_icon_padding['unit'] ) );
-		}
-
+		
 		// Style for divider.
 		if ( isset( $attr['dividerStyles'] ) ) {
 
@@ -4073,6 +4479,22 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-right', $css->render_color( $bullet_icon_padding['Desktop']['right'] . $bullet_icon_padding['unit'] ) );
 			$css->add_property( 'padding-bottom', $css->render_color( $bullet_icon_padding['Desktop']['bottom'] . $bullet_icon_padding['unit'] ) );
 			$css->add_property( 'padding-left', $css->render_color( $bullet_icon_padding['Desktop']['left'] . $bullet_icon_padding['unit'] ) );
+		}
+
+		if ( isset( $attr['bulletIconBorder'] ) ) {
+			$bullet_icon_border        = $attr['bulletIconBorder'];
+			$bullet_icon_border_width  = $attr['bulletIconBorder']['borderWidth'];
+			$bullet_icon_border_radius = $attr['bulletIconBorder']['borderRadius'];
+	
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i, #premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $bullet_icon_border_width, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $bullet_icon_border_width, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $bullet_icon_border_width, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $bullet_icon_border_width, 'left', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $bullet_icon_border_radius, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $bullet_icon_border_radius, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $bullet_icon_border_radius, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $bullet_icon_border_radius, 'left', 'Desktop', 'px' ) );
 		}
 
 		// Bullet Icon Style
@@ -4236,6 +4658,21 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'margin-left', $css->render_color( $general_margin['Tablet']['left'] . $general_margin['unit'] ) );
 		}
 
+		if ( isset( $attr['generalBorder'] ) ) {
+			$general_border        = $attr['generalBorder'];
+			$general_border_width  = $attr['generalBorder']['borderWidth'];
+			$general_border_radius = $attr['generalBorder']['borderRadius'];
+	
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $general_border_width, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $general_border_width, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $general_border_width, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $general_border_radius, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $general_border_radius, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $general_border_radius, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $general_border_radius, 'left', 'Tablet', 'px' ) );
+		}
+
 		// Bullet Icon Style
 		if ( isset( $attr['bulletIconmarginTTablet'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' );
@@ -4348,6 +4785,22 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-right', $css->render_color( $bullet_icon_padding['Tablet']['right'] . $bullet_icon_padding['unit'] ) );
 			$css->add_property( 'padding-bottom', $css->render_color( $bullet_icon_padding['Tablet']['bottom'] . $bullet_icon_padding['unit'] ) );
 			$css->add_property( 'padding-left', $css->render_color( $bullet_icon_padding['Tablet']['left'] . $bullet_icon_padding['unit'] ) );
+		}
+
+		if ( isset( $attr['bulletIconBorder'] ) ) {
+			$bullet_icon_border        = $attr['bulletIconBorder'];
+			$bullet_icon_border_width  = $attr['bulletIconBorder']['borderWidth'];
+			$bullet_icon_border_radius = $attr['bulletIconBorder']['borderRadius'];
+	
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i, #premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $bullet_icon_border_width, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $bullet_icon_border_width, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $bullet_icon_border_width, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $bullet_icon_border_width, 'left', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $bullet_icon_border_radius, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $bullet_icon_border_radius, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $bullet_icon_border_radius, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $bullet_icon_border_radius, 'left', 'Tablet', 'px' ) );
 		}
 
 		// Bullet Icon Style
@@ -4513,6 +4966,22 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'margin-left', $css->render_color( $general_margin['Mobile']['left'] . $general_margin['unit'] ) );
 		}
 
+		if ( isset( $attr['generalBorder'] ) ) {
+			$general_border        = $attr['generalBorder'];
+			$general_border_width  = $attr['generalBorder']['borderWidth'];
+			$general_border_radius = $attr['generalBorder']['borderRadius'];
+	
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $general_border_width, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $general_border_width, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $general_border_width, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $general_border_width, 'left', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $general_border_radius, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $general_border_radius, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $general_border_radius, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $general_border_radius, 'left', 'Mobile', 'px' ) );
+		}
+
 		// Bullet Icon Style
 		if ( isset( $attr['bulletIconmarginTMobile'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' );
@@ -4625,6 +5094,22 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-right', $css->render_color( $bullet_icon_padding['Mobile']['right'] . $bullet_icon_padding['unit'] ) );
 			$css->add_property( 'padding-bottom', $css->render_color( $bullet_icon_padding['Mobile']['bottom'] . $bullet_icon_padding['unit'] ) );
 			$css->add_property( 'padding-left', $css->render_color( $bullet_icon_padding['Mobile']['left'] . $bullet_icon_padding['unit'] ) );
+		}
+
+		if ( isset( $attr['bulletIconBorder'] ) ) {
+			$bullet_icon_border        = $attr['bulletIconBorder'];
+			$bullet_icon_border_width  = $attr['bulletIconBorder']['borderWidth'];
+			$bullet_icon_border_radius = $attr['bulletIconBorder']['borderRadius'];
+	
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i, #premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $bullet_icon_border_width, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $bullet_icon_border_width, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $bullet_icon_border_width, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $bullet_icon_border_width, 'left', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $bullet_icon_border_radius, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $bullet_icon_border_radius, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $bullet_icon_border_radius, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $bullet_icon_border_radius, 'left', 'Mobile', 'px' ) );
 		}
 
 		// Bullet Icon Style

@@ -18,11 +18,7 @@ const save = props => {
         hideMobile,
         textStyles,
         btnStyles,
-        borderTop,
-        borderRight,
-        borderBottom,
-        borderLeft,
-        borderWidth
+        border,
     } = props.attributes;
     const mainClasses = classnames(className, 'premium-button');
 
@@ -69,12 +65,17 @@ const save = props => {
                     textShadow: `${textStyles[0].shadowHorizontal}px ${textStyles[0].shadowVertical}px ${textStyles[0].shadowBlur}px ${textStyles[0].shadowColor}`,
                     boxShadow: `${btnStyles[0].btnShadowHorizontal}px ${btnStyles[0].btnShadowVertical}px ${btnStyles[0].btnShadowBlur}px ${btnStyles[0].btnShadowColor} ${btnStyles[0].btnShadowPosition}`,
                     padding: btnStyles[0].padding + btnStyles[0].paddingU,
-                    borderStyle: btnStyles[0].borderType,
-                    borderWidth: borderButton
-                        ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
-                        : borderWidth + "px",
-                    borderRadius: btnStyles[0].borderRadius + "px",
-                    borderColor: btnStyles[0].borderColor
+                    borderStyle: border && border.borderType,
+                    borderTopWidth: border && border.borderWidth.Desktop.top,
+                    borderRightWidth: border && border.borderWidth.Desktop.right,
+                    borderBottomWidth: border && border.borderWidth.Desktop.bottom,
+                    borderLeftWidth: border && border.borderWidth.Desktop.left,
+                    borderRadius: `${border && border.borderRadius.Desktop.top || 0}px ${border && border.borderRadius.Desktop.right || 0}px ${border && border.borderRadius.Desktop.bottom || 0}px ${border && border.borderRadius.Desktop.left || 0}px`,
+                    borderColor: border && border.borderColor,
+                    borderTopLeftRadius: `${border && border.borderRadius.Desktop.top || 0}px`,
+                    borderTopRightRadius: `${border && border.borderRadius.Desktop.right || 0}px`,
+                    borderBottomLeftRadius: `${border && border.borderRadius.Desktop.bottom || 0}px`,
+                    borderBottomRightRadius: `${border && border.borderRadius.Desktop.left || 0}px`,
                 }}
             />
         </div>

@@ -564,4 +564,8 @@ class Premium_Blocks_css {
 		return $this->_output;
 	}
 
+	public function get_responsive_value( $values, $side = '', $device = 'Desktop', $unit = 'px' ) {
+		return isset( $values[ $device ][ $side ] ) && $values[ $device ][ $side ] ? "{$values[ $device ][ $side ]}{$unit}" : '';
+	}
+
 }

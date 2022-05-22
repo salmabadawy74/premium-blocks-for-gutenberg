@@ -46,10 +46,6 @@ const attributes = {
                 firstBackground: '',
                 firstOpacity: '1',
                 firstClipColor: "#54595f",
-                firstBorderType: 'none',
-                firstBorderWidth: '',
-                firstBorderColor: '',
-                firstBorderRadius: 0,
                 firstShadowColor: '',
                 firstShadowBlur: 0,
                 firstShadowHorizontal: 0,
@@ -80,10 +76,6 @@ const attributes = {
                 secondBackground: '',
                 secondOpacity: '',
                 secondClipColor: "#6ec1e4",
-                secondBorderType: "none",
-                secondBorderWidth: '1',
-                secondBorderColor: '',
-                secondBorderRadius: '0',
                 secondShadowColor: '',
                 secondShadowBlur: '0',
                 secondShadowHorizontal: '0',
@@ -105,10 +97,6 @@ const attributes = {
                 backgroundPosition: 'top center',
                 backgroundSize: 'auto',
                 fixed: false,
-                containerBorderType: "none",
-                containerBorderWidth: "1",
-                containerBorderColor: '',
-                containerBorderRadius: '0',
                 containerBack: '',
                 containerOpacity: 1,
                 gradientLocationOne: '0',
@@ -123,50 +111,6 @@ const attributes = {
     containerBorder: {
         type: 'boolean',
         default: false
-    },
-    firstBorder: {
-        type: 'boolean',
-        default: false
-    },
-    secondBorder: {
-        type: 'boolean',
-        default: false
-    },
-    containerBorderTop: {
-        type: 'number'
-    },
-    containerBorderRight: {
-        type: 'number'
-    },
-    containerBorderBottom: {
-        type: 'number'
-    },
-    containerBorderLeft: {
-        type: 'number'
-    },
-    firstBorderTop: {
-        type: 'number'
-    },
-    firstBorderRight: {
-        type: 'number'
-    },
-    firstBorderBottom: {
-        type: 'number'
-    },
-    firstBorderLeft: {
-        type: 'number'
-    },
-    secondBorderTop: {
-        type: 'number'
-    },
-    secondBorderRight: {
-        type: 'number'
-    },
-    secondBorderBottom: {
-        type: 'number'
-    },
-    secondBorderLeft: {
-        type: 'number'
     },
     link: {
         type: "boolean",
@@ -191,13 +135,150 @@ const attributes = {
         type: 'boolean',
         default: false
     },
-    secondBorder: {
-        type: 'boolean',
-        default: false
-    },
     backgroundType: {
         type: "string",
         default: ""
     },
+    firstBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    secondBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    containerBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    }
 }
 export default attributes;

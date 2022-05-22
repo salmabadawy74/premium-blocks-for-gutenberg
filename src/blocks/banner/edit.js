@@ -92,11 +92,7 @@ export class edit extends Component {
             hideDesktop,
             hideTablet,
             hideMobile,
-            borderWidth,
-            borderTop,
-            borderRight,
-            borderBottom,
-            borderLeft,
+            border,
             padding,
         } = this.props.attributes;
 
@@ -471,26 +467,13 @@ export class edit extends Component {
                         initialOpen={false}
                     >
                         <PremiumBorder
-                            borderType={containerStyles[0].borderType}
-                            borderWidth={borderWidth}
-                            top={borderTop}
-                            right={borderRight}
-                            bottom={borderBottom}
-                            left={borderLeft}
-                            borderColor={containerStyles[0].borderColor}
-                            borderRadius={containerStyles[0].borderRadius}
-                            onChangeType={(newType) => containerStyle({ borderType: newType })}
-                            onChangeWidth={({ top, right, bottom, left }) =>
-                                setAttributes({
-                                    borderBanner: true,
-                                    borderTop: top,
-                                    borderRight: right,
-                                    borderBottom: bottom,
-                                    borderLeft: left,
-                                })
-                            }
-                            onChangeColor={(colorValue) => containerStyle({ borderColor: colorValue === undefined ? "transparent" : colorValue, })}
-                            onChangeRadius={(newRadius) => containerStyle({ borderRadius: newRadius === undefined ? 0 : newRadius, })}
+                            label={__("Border")}
+                            value={border}
+                            borderType={border.borderType}
+                            borderColor={border.borderColor}
+                            borderWidth={border.borderWidth}
+                            borderRadius={border.borderRadius}
+                            onChange={(value) => setAttributes({ border: value })}
                         />
                         <PremiumShadow
                             label={__("Box Shadow", "Premium-blocks-for-gutenberg")}
@@ -567,12 +550,17 @@ export class edit extends Component {
                         className={`premium-banner__inner premium-banner__min premium-banner__${effect} premium-banner__${hoverEffect} hover_${hovered}`}
                         style={{
                             boxShadow: `${containerStyles[0].containerShadowHorizontal}px ${containerStyles[0].containerShadowVertical}px ${containerStyles[0].containerShadowBlur}px ${containerStyles[0].containerShadowColor} ${containerStyles[0].containerShadowPosition}`,
-                            borderStyle: containerStyles[0].borderType,
-                            borderWidth: borderBanner
-                                ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
-                                : borderWidth + "px",
-                            borderRadius: containerStyles[0].borderRadius + "px",
-                            borderColor: containerStyles[0].borderColor
+                            borderStyle: border && border.borderType,
+                            borderTopWidth: border && border.borderWidth.Desktop.top,
+                            borderRightWidth: border && border.borderWidth.Desktop.right,
+                            borderBottomWidth: border && border.borderWidth.Desktop.bottom,
+                            borderLeftWidth: border && border.borderWidth.Desktop.left,
+                            borderRadius: `${border && border.borderRadius.Desktop.top || 0}px ${border && border.borderRadius.Desktop.right || 0}px ${border && border.borderRadius.Desktop.bottom || 0}px ${border && border.borderRadius.Desktop.left || 0}px`,
+                            borderColor: border && border.borderColor,
+                            borderTopLeftRadius: `${border && border.borderRadius.Desktop.top || 0}px`,
+                            borderTopRightRadius: `${border && border.borderRadius.Desktop.right || 0}px`,
+                            borderBottomLeftRadius: `${border && border.borderRadius.Desktop.bottom || 0}px`,
+                            borderBottomRightRadius: `${border && border.borderRadius.Desktop.left || 0}px`,
                         }}
                     >
                         <div

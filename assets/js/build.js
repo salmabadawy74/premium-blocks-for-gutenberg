@@ -218,7 +218,7 @@ var _classnames = __webpack_require__(52);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _colord = __webpack_require__(222);
+var _colord = __webpack_require__(217);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -468,11 +468,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = undefined;
 
-var _premiumSizeUnits = __webpack_require__(21);
+var _premiumSizeUnits = __webpack_require__(22);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
-var _rangeControl = __webpack_require__(224);
+var _rangeControl = __webpack_require__(219);
 
 var _rangeControl2 = _interopRequireDefault(_rangeControl);
 
@@ -734,13 +734,13 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _react = __webpack_require__(8);
+var _react = __webpack_require__(9);
 
 var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _premiumResponsiveSpacing = __webpack_require__(30);
+var _premiumResponsiveSpacing = __webpack_require__(21);
 
 var _premiumResponsiveSpacing2 = _interopRequireDefault(_premiumResponsiveSpacing);
 
@@ -890,71 +890,12 @@ exports.default = PremiumBorder;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-var __ = wp.i18n.__;
-var _wp$components = wp.components,
-    PanelBody = _wp$components.PanelBody,
-    ToggleControl = _wp$components.ToggleControl;
-
-function PremiumResponsiveTabs(props) {
-    var _props$onChangeDeskto = props.onChangeDesktop,
-        onChangeDesktop = _props$onChangeDeskto === undefined ? function () {} : _props$onChangeDeskto,
-        _props$onChangeTablet = props.onChangeTablet,
-        onChangeTablet = _props$onChangeTablet === undefined ? function () {} : _props$onChangeTablet,
-        _props$onChangeMobile = props.onChangeMobile,
-        onChangeMobile = _props$onChangeMobile === undefined ? function () {} : _props$onChangeMobile,
-        Desktop = props.Desktop,
-        Tablet = props.Tablet,
-        Mobile = props.Mobile;
-
-
-    return React.createElement(
-        PanelBody,
-        {
-            title: __("Responsive"),
-            className: "premium-panel-body",
-            initialOpen: false
-        },
-        React.createElement(ToggleControl, {
-            label: __('Hide in Desktop'),
-            checked: Desktop,
-            onChange: onChangeDesktop
-        }),
-        React.createElement(ToggleControl, {
-            label: __('Hide in Tablet'),
-            checked: Tablet,
-            onChange: onChangeTablet
-        }),
-        React.createElement(ToggleControl, {
-            label: __('Hide in Mobile'),
-            checked: Mobile,
-            onChange: onChangeMobile
-        })
-    );
-}
-exports.default = PremiumResponsiveTabs;
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports) {
-
-module.exports = React;
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _premiumFonts = __webpack_require__(223);
+var _premiumFonts = __webpack_require__(218);
 
 var _premiumFonts2 = _interopRequireDefault(_premiumFonts);
 
@@ -966,7 +907,7 @@ var _singleRangeControl = __webpack_require__(3);
 
 var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
-var _fontList = __webpack_require__(225);
+var _fontList = __webpack_require__(220);
 
 var _fontList2 = _interopRequireDefault(_fontList);
 
@@ -1447,6 +1388,65 @@ var PremiumTypo = function (_Component) {
 }(Component);
 
 exports.default = PremiumTypo;
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var __ = wp.i18n.__;
+var _wp$components = wp.components,
+    PanelBody = _wp$components.PanelBody,
+    ToggleControl = _wp$components.ToggleControl;
+
+function PremiumResponsiveTabs(props) {
+    var _props$onChangeDeskto = props.onChangeDesktop,
+        onChangeDesktop = _props$onChangeDeskto === undefined ? function () {} : _props$onChangeDeskto,
+        _props$onChangeTablet = props.onChangeTablet,
+        onChangeTablet = _props$onChangeTablet === undefined ? function () {} : _props$onChangeTablet,
+        _props$onChangeMobile = props.onChangeMobile,
+        onChangeMobile = _props$onChangeMobile === undefined ? function () {} : _props$onChangeMobile,
+        Desktop = props.Desktop,
+        Tablet = props.Tablet,
+        Mobile = props.Mobile;
+
+
+    return React.createElement(
+        PanelBody,
+        {
+            title: __("Responsive"),
+            className: "premium-panel-body",
+            initialOpen: false
+        },
+        React.createElement(ToggleControl, {
+            label: __('Hide in Desktop'),
+            checked: Desktop,
+            onChange: onChangeDesktop
+        }),
+        React.createElement(ToggleControl, {
+            label: __('Hide in Tablet'),
+            checked: Tablet,
+            onChange: onChangeTablet
+        }),
+        React.createElement(ToggleControl, {
+            label: __('Hide in Mobile'),
+            checked: Mobile,
+            onChange: onChangeMobile
+        })
+    );
+}
+exports.default = PremiumResponsiveTabs;
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports) {
+
+module.exports = React;
 
 /***/ }),
 /* 10 */
@@ -1988,7 +1988,7 @@ exports.default = undefined;
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-var _premiumSizeUnits = __webpack_require__(21);
+var _premiumSizeUnits = __webpack_require__(22);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
@@ -2167,7 +2167,7 @@ var _premiumPadding = __webpack_require__(237);
 
 var _premiumPadding2 = _interopRequireDefault(_premiumPadding);
 
-var _premiumSizeUnits = __webpack_require__(21);
+var _premiumSizeUnits = __webpack_require__(22);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
@@ -2362,6 +2362,294 @@ if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _premiumSizeUnits = __webpack_require__(22);
+
+var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+var _wp$element = wp.element,
+    useState = _wp$element.useState,
+    useEffect = _wp$element.useEffect,
+    Fragment = _wp$element.Fragment;
+var _wp$data = wp.data,
+    useSelect = _wp$data.useSelect,
+    useDispatch = _wp$data.useDispatch;
+
+var SpacingComponent = function SpacingComponent(props) {
+    var value = props.value,
+        responsive = props.responsive,
+        showUnits = props.showUnits,
+        label = props.label;
+
+    var _useState = useState("Desktop"),
+        _useState2 = _slicedToArray(_useState, 2),
+        device = _useState2[0],
+        setDevice = _useState2[1];
+
+    var defaultValue = {
+        value: {
+            top: "",
+            right: "",
+            bottom: "",
+            left: ""
+        },
+        unit: 'px'
+
+    };
+    var ResDefaultParam = {
+        Desktop: defaultValue.value,
+        Tablet: defaultValue.value,
+        Mobile: defaultValue.value,
+        unit: defaultValue.unit
+
+    };
+    var defaultValues = responsive ? ResDefaultParam : defaultValue.value;
+    value = value ? _extends({}, defaultValues, value) : defaultValues;
+
+    var _useState3 = useState(value),
+        _useState4 = _slicedToArray(_useState3, 2),
+        state = _useState4[0],
+        setState = _useState4[1];
+
+    var _useState5 = useState(false),
+        _useState6 = _slicedToArray(_useState5, 2),
+        link = _useState6[0],
+        setLink = _useState6[1];
+
+    useEffect(function () {
+        if (state !== value) {
+            setState(value);
+        }
+    }, [props]);
+
+    var onSpacingChange = function onSpacingChange(v, choiceID) {
+        var updateState = _extends({}, state);
+        var deviceUpdateState = responsive ? _extends({}, updateState[device]) : _extends({}, updateState);
+        if (link) {
+            deviceUpdateState['top'] = v;
+            deviceUpdateState['right'] = v;
+            deviceUpdateState['bottom'] = v;
+            deviceUpdateState['left'] = v;
+        } else {
+            deviceUpdateState[choiceID] = v;
+        }
+        responsive ? updateState[device] = deviceUpdateState : updateState = deviceUpdateState;
+        props.onChange(updateState);
+        setState(updateState);
+    };
+
+    var onLinkClickHandler = function onLinkClickHandler() {
+        var linkValue = responsive ? state[device]['top'] : state['top'];
+        var updateState = _extends({}, state);
+        var deviceUpdateState = responsive ? _extends({}, updateState[device]) : _extends({}, updateState);
+        var choices = ['top', 'right', 'bottom', "left"];
+        for (var choice in choices) {
+            deviceUpdateState[choices[choice]] = linkValue;
+        }
+        responsive ? updateState[device] = deviceUpdateState : updateState = deviceUpdateState;
+        props.onChange(updateState);
+        setState(updateState);
+    };
+
+    var renderInputHtml = function renderInputHtml(device) {
+        var active = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+
+        var htmlChoices = void 0;
+        htmlChoices = ['top', 'right', 'bottom', 'left'].map(function (side) {
+            var inputValue = responsive ? state[device][side] : state[side];
+            return React.createElement(
+                "li",
+                {
+                    key: side,
+                    className: "premium-spacing-input-item"
+                },
+                React.createElement("input", {
+                    type: "number",
+                    className: "premium-spacing-input",
+                    value: inputValue,
+                    onChange: function onChange(_ref) {
+                        var value = _ref.target.value;
+                        return onSpacingChange(Number(value), side);
+                    },
+                    "data-id": side,
+                    disabled: inputValue === "disabled" ? true : false
+                }),
+                React.createElement(
+                    "span",
+                    { className: "premium-spacing-title" },
+                    {
+                        top: __('Top', 'premium-blocks-for-gutenberg'),
+                        bottom: __('Bottom', 'premium-blocks-for-gutenberg'),
+                        left: __('Left', 'premium-blocks-for-gutenberg'),
+                        right: __('Right', 'premium-blocks-for-gutenberg')
+                    }[side]
+                )
+            );
+        });
+        var linkHtml = '';
+        if (link) {
+            linkHtml = React.createElement(
+                "li",
+                { className: "premium-spacing-input-item" },
+                React.createElement("button", {
+                    className: "linked-btn is-button dashicons dashicons-admin-links connected ",
+                    onClick: function onClick() {
+                        setLink(false);
+                    }
+                })
+            );
+        } else {
+            linkHtml = React.createElement(
+                "li",
+                { className: "premium-spacing-input-item" },
+                React.createElement("button", {
+                    className: "linked-btn is-button dashicons dashicons-editor-unlink disconnected",
+                    onClick: function onClick() {
+                        onLinkClickHandler();
+                        setLink(true);
+                    }
+                })
+            );
+        }
+
+        ;
+        return React.createElement(
+            "ul",
+            {
+                className: "premium-spacing-wrapper " + device + " " + active
+            },
+            htmlChoices,
+            linkHtml
+        );
+    };
+
+    var inputHtml = null;
+
+    inputHtml = React.createElement(
+        Fragment,
+        null,
+        renderInputHtml(device, "active")
+    );
+    var devices = ['Desktop', 'Tablet', 'Mobile'];
+
+    var customSetPreviewDeviceType = function customSetPreviewDeviceType(device) {
+        setDevice(device.toLowerCase());
+    };
+
+    if (wp.data.select('core/edit-post')) {
+        var theDevice = useSelect(function (select) {
+            var _select = select('core/edit-post'),
+                _select$__experimenta = _select.__experimentalGetPreviewDeviceType,
+                __experimentalGetPreviewDeviceType = _select$__experimenta === undefined ? null : _select$__experimenta;
+
+            return __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : 'Desktop';
+        }, []);
+        if (theDevice !== device) {
+            setDevice(theDevice);
+        }
+
+        var _useDispatch = useDispatch('core/edit-post'),
+            _useDispatch$__experi = _useDispatch.__experimentalSetPreviewDeviceType,
+            __experimentalSetPreviewDeviceType = _useDispatch$__experi === undefined ? null : _useDispatch$__experi;
+
+        customSetPreviewDeviceType = function customSetPreviewDeviceType(device) {
+            __experimentalSetPreviewDeviceType(device);
+            setDevice(device);
+        };
+    }
+    var onUnitChange = function onUnitChange(unitValue) {
+        var updateState = _extends({}, state);
+        updateState["unit"] = unitValue;
+        props.onChange(updateState);
+        setState(updateState);
+    };
+    return React.createElement(
+        "div",
+        { className: "premium-spacing-responsive" },
+        React.createElement(
+            "header",
+            null,
+            React.createElement(
+                "div",
+                { className: "premium-slider-title-wrap" },
+                React.createElement(
+                    "span",
+                    { className: "customize-control-title premium-control-title" },
+                    "  ",
+                    label
+                ),
+                responsive && React.createElement(
+                    "ul",
+                    { className: "premium-responsive-control-btns premium-responsive-slider-btns" },
+                    devices.map(function (deviceType, key) {
+                        var activeClass = deviceType === device ? ' active' : '';
+                        var icon = deviceType.toLowerCase() === 'mobile' ? 'smartphone' : deviceType.toLowerCase();
+                        return React.createElement(
+                            "li",
+                            { key: key, className: "" + deviceType + activeClass },
+                            React.createElement(
+                                "button",
+                                { type: "button", className: "preview-" + deviceType + activeClass, "data-device": deviceType },
+                                React.createElement("i", { "class": "dashicons dashicons-" + icon, onClick: function onClick() {
+                                        var nextDevice = key + 1 > devices.length - 1 ? devices[0] : devices[key + 1];
+                                        customSetPreviewDeviceType(nextDevice);
+                                    } })
+                            )
+                        );
+                    })
+                )
+            ),
+            showUnits && React.createElement(_premiumSizeUnits2.default, {
+                activeUnit: value.unit,
+                onChangeSizeUnit: function onChangeSizeUnit(unitKey) {
+                    return onUnitChange(unitKey);
+                }
+            })
+        ),
+        React.createElement(
+            "div",
+            { className: "premium-spacing-responsive-outer-wrapper" },
+            React.createElement(
+                "div",
+                { className: "input-wrapper premium-spacing-responsive-wrapper" },
+                inputHtml
+            ),
+            React.createElement(
+                "div",
+                { className: "premium-spacing-btn-reset-wrap" },
+                React.createElement("button", {
+                    className: "premium-reset-btn ",
+                    disabled: JSON.stringify(state) === JSON.stringify(defaultValues),
+                    onClick: function onClick(e) {
+                        e.preventDefault();
+                        props.onChange(defaultValues);
+                        setState(defaultValues);
+                    }
+                })
+            )
+        )
+    );
+};
+
+exports.default = SpacingComponent;
+
+/***/ }),
+/* 22 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 exports.default = PremiumSizeUnits;
 function PremiumSizeUnits(props) {
     var activeUnit = props.activeUnit,
@@ -2397,7 +2685,7 @@ function PremiumSizeUnits(props) {
 }
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2518,7 +2806,7 @@ WebfontLoader.defaultProps = {
 exports.default = WebfontLoader;
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2529,7 +2817,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = PremiumBackgroundControl;
 
-var _react = __webpack_require__(8);
+var _react = __webpack_require__(9);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -2757,7 +3045,7 @@ function PremiumBackgroundControl(_ref) {
 }
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2783,7 +3071,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
  * 
  */
 !function (e, t) {
-  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(17), __webpack_require__(8), __webpack_require__(52), __webpack_require__(40), __webpack_require__(107)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(17), __webpack_require__(8), __webpack_require__(52), __webpack_require__(40), __webpack_require__(107)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
+  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(17), __webpack_require__(9), __webpack_require__(52), __webpack_require__(40), __webpack_require__(107)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(17), __webpack_require__(9), __webpack_require__(52), __webpack_require__(40), __webpack_require__(107)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) ? exports.FontIconPicker = t(require("prop-types"), require("react"), require("classnames"), require("react-dom"), require("react-transition-group")) : e.FontIconPicker = t(e.PropTypes, e.React, e.classNames, e.ReactDOM, e.ReactTransitionGroup);
@@ -3328,7 +3616,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(51)(module)))
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3338,7 +3626,7 @@ var global = __webpack_require__(20);
 var core = __webpack_require__(13);
 var ctx = __webpack_require__(117);
 var hide = __webpack_require__(33);
-var has = __webpack_require__(28);
+var has = __webpack_require__(29);
 var PROTOTYPE = 'prototype';
 
 var $export = function $export(type, name, source) {
@@ -3401,7 +3689,7 @@ $export.R = 128; // real proto method for `library`
 module.exports = $export;
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3412,7 +3700,7 @@ var IE8_DOM_DEFINE = __webpack_require__(118);
 var toPrimitive = __webpack_require__(72);
 var dP = Object.defineProperty;
 
-exports.f = __webpack_require__(27) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
+exports.f = __webpack_require__(28) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
   anObject(O);
   P = toPrimitive(P, true);
   anObject(Attributes);
@@ -3425,7 +3713,7 @@ exports.f = __webpack_require__(27) ? Object.defineProperty : function definePro
 };
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3439,7 +3727,7 @@ module.exports = !__webpack_require__(35)(function () {
 });
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3451,14 +3739,14 @@ module.exports = function (it, key) {
 };
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseIsNative = __webpack_require__(146),
-    getValue = __webpack_require__(149);
+var baseIsNative = __webpack_require__(141),
+    getValue = __webpack_require__(144);
 
 /**
  * Gets the native function at `key` of `object`.
@@ -3474,294 +3762,6 @@ function getNative(object, key) {
 }
 
 module.exports = getNative;
-
-/***/ }),
-/* 30 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-var _premiumSizeUnits = __webpack_require__(21);
-
-var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var __ = wp.i18n.__;
-var _wp$element = wp.element,
-    useState = _wp$element.useState,
-    useEffect = _wp$element.useEffect,
-    Fragment = _wp$element.Fragment;
-var _wp$data = wp.data,
-    useSelect = _wp$data.useSelect,
-    useDispatch = _wp$data.useDispatch;
-
-var SpacingComponent = function SpacingComponent(props) {
-    var value = props.value,
-        responsive = props.responsive,
-        showUnits = props.showUnits,
-        label = props.label;
-
-    var _useState = useState("Desktop"),
-        _useState2 = _slicedToArray(_useState, 2),
-        device = _useState2[0],
-        setDevice = _useState2[1];
-
-    var defaultValue = {
-        value: {
-            top: "",
-            right: "",
-            bottom: "",
-            left: ""
-        },
-        unit: 'px'
-
-    };
-    var ResDefaultParam = {
-        Desktop: defaultValue.value,
-        Tablet: defaultValue.value,
-        Mobile: defaultValue.value,
-        unit: defaultValue.unit
-
-    };
-    var defaultValues = responsive ? ResDefaultParam : defaultValue.value;
-    value = value ? _extends({}, defaultValues, value) : defaultValues;
-
-    var _useState3 = useState(value),
-        _useState4 = _slicedToArray(_useState3, 2),
-        state = _useState4[0],
-        setState = _useState4[1];
-
-    var _useState5 = useState(false),
-        _useState6 = _slicedToArray(_useState5, 2),
-        link = _useState6[0],
-        setLink = _useState6[1];
-
-    useEffect(function () {
-        if (state !== value) {
-            setState(value);
-        }
-    }, [props]);
-
-    var onSpacingChange = function onSpacingChange(v, choiceID) {
-        var updateState = _extends({}, state);
-        var deviceUpdateState = responsive ? _extends({}, updateState[device]) : _extends({}, updateState);
-        if (link) {
-            deviceUpdateState['top'] = v;
-            deviceUpdateState['right'] = v;
-            deviceUpdateState['bottom'] = v;
-            deviceUpdateState['left'] = v;
-        } else {
-            deviceUpdateState[choiceID] = v;
-        }
-        responsive ? updateState[device] = deviceUpdateState : updateState = deviceUpdateState;
-        props.onChange(updateState);
-        setState(updateState);
-    };
-
-    var onLinkClickHandler = function onLinkClickHandler() {
-        var linkValue = responsive ? state[device]['top'] : state['top'];
-        var updateState = _extends({}, state);
-        var deviceUpdateState = responsive ? _extends({}, updateState[device]) : _extends({}, updateState);
-        var choices = ['top', 'right', 'bottom', "left"];
-        for (var choice in choices) {
-            deviceUpdateState[choices[choice]] = linkValue;
-        }
-        responsive ? updateState[device] = deviceUpdateState : updateState = deviceUpdateState;
-        props.onChange(updateState);
-        setState(updateState);
-    };
-
-    var renderInputHtml = function renderInputHtml(device) {
-        var active = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
-
-        var htmlChoices = void 0;
-        htmlChoices = ['top', 'right', 'bottom', 'left'].map(function (side) {
-            var inputValue = responsive ? state[device][side] : state[side];
-            return React.createElement(
-                "li",
-                {
-                    key: side,
-                    className: "premium-spacing-input-item"
-                },
-                React.createElement("input", {
-                    type: "number",
-                    className: "premium-spacing-input",
-                    value: inputValue,
-                    onChange: function onChange(_ref) {
-                        var value = _ref.target.value;
-                        return onSpacingChange(Number(value), side);
-                    },
-                    "data-id": side,
-                    disabled: inputValue === "disabled" ? true : false
-                }),
-                React.createElement(
-                    "span",
-                    { className: "premium-spacing-title" },
-                    {
-                        top: __('Top', 'premium-blocks-for-gutenberg'),
-                        bottom: __('Bottom', 'premium-blocks-for-gutenberg'),
-                        left: __('Left', 'premium-blocks-for-gutenberg'),
-                        right: __('Right', 'premium-blocks-for-gutenberg')
-                    }[side]
-                )
-            );
-        });
-        var linkHtml = '';
-        if (link) {
-            linkHtml = React.createElement(
-                "li",
-                { className: "premium-spacing-input-item" },
-                React.createElement("button", {
-                    className: "linked-btn is-button dashicons dashicons-admin-links connected ",
-                    onClick: function onClick() {
-                        setLink(false);
-                    }
-                })
-            );
-        } else {
-            linkHtml = React.createElement(
-                "li",
-                { className: "premium-spacing-input-item" },
-                React.createElement("button", {
-                    className: "linked-btn is-button dashicons dashicons-editor-unlink disconnected",
-                    onClick: function onClick() {
-                        onLinkClickHandler();
-                        setLink(true);
-                    }
-                })
-            );
-        }
-
-        ;
-        return React.createElement(
-            "ul",
-            {
-                className: "premium-spacing-wrapper " + device + " " + active
-            },
-            htmlChoices,
-            linkHtml
-        );
-    };
-
-    var inputHtml = null;
-
-    inputHtml = React.createElement(
-        Fragment,
-        null,
-        renderInputHtml(device, "active")
-    );
-    var devices = ['Desktop', 'Tablet', 'Mobile'];
-
-    var customSetPreviewDeviceType = function customSetPreviewDeviceType(device) {
-        setDevice(device.toLowerCase());
-    };
-
-    if (wp.data.select('core/edit-post')) {
-        var theDevice = useSelect(function (select) {
-            var _select = select('core/edit-post'),
-                _select$__experimenta = _select.__experimentalGetPreviewDeviceType,
-                __experimentalGetPreviewDeviceType = _select$__experimenta === undefined ? null : _select$__experimenta;
-
-            return __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : 'Desktop';
-        }, []);
-        if (theDevice !== device) {
-            setDevice(theDevice);
-        }
-
-        var _useDispatch = useDispatch('core/edit-post'),
-            _useDispatch$__experi = _useDispatch.__experimentalSetPreviewDeviceType,
-            __experimentalSetPreviewDeviceType = _useDispatch$__experi === undefined ? null : _useDispatch$__experi;
-
-        customSetPreviewDeviceType = function customSetPreviewDeviceType(device) {
-            __experimentalSetPreviewDeviceType(device);
-            setDevice(device);
-        };
-    }
-    var onUnitChange = function onUnitChange(unitValue) {
-        var updateState = _extends({}, state);
-        updateState["unit"] = unitValue;
-        props.onChange(updateState);
-        setState(updateState);
-    };
-    return React.createElement(
-        "div",
-        { className: "premium-spacing-responsive" },
-        React.createElement(
-            "header",
-            null,
-            React.createElement(
-                "div",
-                { className: "premium-slider-title-wrap" },
-                React.createElement(
-                    "span",
-                    { className: "customize-control-title premium-control-title" },
-                    "  ",
-                    label
-                ),
-                responsive && React.createElement(
-                    "ul",
-                    { className: "premium-responsive-control-btns premium-responsive-slider-btns" },
-                    devices.map(function (deviceType, key) {
-                        var activeClass = deviceType === device ? ' active' : '';
-                        var icon = deviceType.toLowerCase() === 'mobile' ? 'smartphone' : deviceType.toLowerCase();
-                        return React.createElement(
-                            "li",
-                            { key: key, className: "" + deviceType + activeClass },
-                            React.createElement(
-                                "button",
-                                { type: "button", className: "preview-" + deviceType + activeClass, "data-device": deviceType },
-                                React.createElement("i", { "class": "dashicons dashicons-" + icon, onClick: function onClick() {
-                                        var nextDevice = key + 1 > devices.length - 1 ? devices[0] : devices[key + 1];
-                                        customSetPreviewDeviceType(nextDevice);
-                                    } })
-                            )
-                        );
-                    })
-                )
-            ),
-            showUnits && React.createElement(_premiumSizeUnits2.default, {
-                activeUnit: value.unit,
-                onChangeSizeUnit: function onChangeSizeUnit(unitKey) {
-                    return onUnitChange(unitKey);
-                }
-            })
-        ),
-        React.createElement(
-            "div",
-            { className: "premium-spacing-responsive-outer-wrapper" },
-            React.createElement(
-                "div",
-                { className: "input-wrapper premium-spacing-responsive-wrapper" },
-                inputHtml
-            ),
-            React.createElement(
-                "div",
-                { className: "premium-spacing-btn-reset-wrap" },
-                React.createElement("button", {
-                    className: "premium-reset-btn ",
-                    disabled: JSON.stringify(state) === JSON.stringify(defaultValues),
-                    onClick: function onClick(e) {
-                        e.preventDefault();
-                        props.onChange(defaultValues);
-                        setState(defaultValues);
-                    }
-                })
-            )
-        )
-    );
-};
-
-exports.default = SpacingComponent;
 
 /***/ }),
 /* 31 */
@@ -3903,9 +3903,9 @@ exports.default = iconsList;
 "use strict";
 
 
-var dP = __webpack_require__(26);
+var dP = __webpack_require__(27);
 var createDesc = __webpack_require__(54);
-module.exports = __webpack_require__(27) ? function (object, key, value) {
+module.exports = __webpack_require__(28) ? function (object, key, value) {
   return dP.f(object, key, createDesc(1, value));
 } : function (object, key, value) {
   object[key] = value;
@@ -3980,8 +3980,8 @@ $exports.store = store;
 
 
 var _Symbol = __webpack_require__(45),
-    getRawTag = __webpack_require__(138),
-    objectToString = __webpack_require__(139);
+    getRawTag = __webpack_require__(133),
+    objectToString = __webpack_require__(134);
 
 /** `Object#toString` result references. */
 var nullTag = '[object Null]',
@@ -4068,7 +4068,7 @@ var _premiumMargin = __webpack_require__(260);
 
 var _premiumMargin2 = _interopRequireDefault(_premiumMargin);
 
-var _premiumSizeUnits = __webpack_require__(21);
+var _premiumSizeUnits = __webpack_require__(22);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
@@ -4331,7 +4331,7 @@ module.exports = _Symbol;
 "use strict";
 
 
-var getNative = __webpack_require__(29);
+var getNative = __webpack_require__(30);
 
 /* Built-in method references that are verified to be native. */
 var nativeCreate = getNative(Object, 'create');
@@ -4345,11 +4345,11 @@ module.exports = nativeCreate;
 "use strict";
 
 
-var listCacheClear = __webpack_require__(154),
-    listCacheDelete = __webpack_require__(155),
-    listCacheGet = __webpack_require__(156),
-    listCacheHas = __webpack_require__(157),
-    listCacheSet = __webpack_require__(158);
+var listCacheClear = __webpack_require__(149),
+    listCacheDelete = __webpack_require__(150),
+    listCacheGet = __webpack_require__(151),
+    listCacheHas = __webpack_require__(152),
+    listCacheSet = __webpack_require__(153);
 
 /**
  * Creates an list cache object.
@@ -4414,7 +4414,7 @@ module.exports = assocIndexOf;
 "use strict";
 
 
-var isKeyable = __webpack_require__(160);
+var isKeyable = __webpack_require__(155);
 
 /**
  * Gets the data for `map`.
@@ -4783,11 +4783,11 @@ module.exports = isSymbol;
 "use strict";
 
 
-var mapCacheClear = __webpack_require__(143),
-    mapCacheDelete = __webpack_require__(159),
-    mapCacheGet = __webpack_require__(161),
-    mapCacheHas = __webpack_require__(162),
-    mapCacheSet = __webpack_require__(163);
+var mapCacheClear = __webpack_require__(138),
+    mapCacheDelete = __webpack_require__(154),
+    mapCacheGet = __webpack_require__(156),
+    mapCacheHas = __webpack_require__(157),
+    mapCacheSet = __webpack_require__(158);
 
 /**
  * Creates a map cache object to store key-value pairs.
@@ -4864,7 +4864,7 @@ module.exports = isObject;
 "use strict";
 
 
-var getNative = __webpack_require__(29),
+var getNative = __webpack_require__(30),
     root = __webpack_require__(15);
 
 /* Built-in method references that are verified to be native. */
@@ -4879,8 +4879,8 @@ module.exports = Map;
 "use strict";
 
 
-var arrayLikeKeys = __webpack_require__(191),
-    baseKeys = __webpack_require__(198),
+var arrayLikeKeys = __webpack_require__(186),
+    baseKeys = __webpack_require__(193),
     isArrayLike = __webpack_require__(66);
 
 /**
@@ -5207,7 +5207,7 @@ var _defineProperty2 = __webpack_require__(115);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
-var _react = __webpack_require__(8);
+var _react = __webpack_require__(9);
 
 var _propTypes = __webpack_require__(17);
 
@@ -6839,7 +6839,7 @@ var _inherits2 = __webpack_require__(356);
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _react = __webpack_require__(8);
+var _react = __webpack_require__(9);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -7332,8 +7332,8 @@ module.exports = Object.create || function create(O, Properties) {
 "use strict";
 
 
-var def = __webpack_require__(26).f;
-var has = __webpack_require__(28);
+var def = __webpack_require__(27).f;
+var has = __webpack_require__(29);
 var TAG = __webpack_require__(37)('toStringTag');
 
 module.exports = function (it, tag, stat) {
@@ -7360,7 +7360,7 @@ var global = __webpack_require__(20);
 var core = __webpack_require__(13);
 var LIBRARY = __webpack_require__(56);
 var wksExt = __webpack_require__(83);
-var defineProperty = __webpack_require__(26).f;
+var defineProperty = __webpack_require__(27).f;
 module.exports = function (name) {
   var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
   if (name.charAt(0) != '_' && !(name in $Symbol)) defineProperty($Symbol, name, { value: wksExt.f(name) });
@@ -7448,8 +7448,8 @@ module.exports = baseGet;
 
 var isArray = __webpack_require__(14),
     isKey = __webpack_require__(59),
-    stringToPath = __webpack_require__(140),
-    toString = __webpack_require__(164);
+    stringToPath = __webpack_require__(135),
+    toString = __webpack_require__(159);
 
 /**
  * Casts `value` to a path array if it's not one.
@@ -7674,8 +7674,8 @@ module.exports = arrayMap;
 
 
 var arrayMap = __webpack_require__(93),
-    baseIteratee = __webpack_require__(166),
-    baseMap = __webpack_require__(216),
+    baseIteratee = __webpack_require__(161),
+    baseMap = __webpack_require__(211),
     isArray = __webpack_require__(14);
 
 /**
@@ -7735,11 +7735,11 @@ module.exports = map;
 
 
 var ListCache = __webpack_require__(47),
-    stackClear = __webpack_require__(169),
-    stackDelete = __webpack_require__(170),
-    stackGet = __webpack_require__(171),
-    stackHas = __webpack_require__(172),
-    stackSet = __webpack_require__(173);
+    stackClear = __webpack_require__(164),
+    stackDelete = __webpack_require__(165),
+    stackGet = __webpack_require__(166),
+    stackHas = __webpack_require__(167),
+    stackSet = __webpack_require__(168);
 
 /**
  * Creates a stack cache object to store key-value pairs.
@@ -7769,7 +7769,7 @@ module.exports = Stack;
 "use strict";
 
 
-var baseIsEqualDeep = __webpack_require__(174),
+var baseIsEqualDeep = __webpack_require__(169),
     isObjectLike = __webpack_require__(39);
 
 /**
@@ -7805,9 +7805,9 @@ module.exports = baseIsEqual;
 "use strict";
 
 
-var SetCache = __webpack_require__(175),
-    arraySome = __webpack_require__(178),
-    cacheHas = __webpack_require__(179);
+var SetCache = __webpack_require__(170),
+    arraySome = __webpack_require__(173),
+    cacheHas = __webpack_require__(174);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -7891,7 +7891,7 @@ module.exports = equalArrays;
 "use strict";
 
 
-var baseIsArguments = __webpack_require__(193),
+var baseIsArguments = __webpack_require__(188),
     isObjectLike = __webpack_require__(39);
 
 /** Used for built-in method references. */
@@ -7939,7 +7939,7 @@ module.exports = isArguments;
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var root = __webpack_require__(15),
-    stubFalse = __webpack_require__(194);
+    stubFalse = __webpack_require__(189);
 
 /** Detect free variable `exports`. */
 var freeExports = ( false ? 'undefined' : _typeof(exports)) == 'object' && exports && !exports.nodeType && exports;
@@ -8017,9 +8017,9 @@ module.exports = isIndex;
 "use strict";
 
 
-var baseIsTypedArray = __webpack_require__(195),
-    baseUnary = __webpack_require__(196),
-    nodeUtil = __webpack_require__(197);
+var baseIsTypedArray = __webpack_require__(190),
+    baseUnary = __webpack_require__(191),
+    nodeUtil = __webpack_require__(192);
 
 /* Node.js helper references. */
 var nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
@@ -8724,7 +8724,7 @@ exports.default = exports.EXITING = exports.ENTERED = exports.ENTERING = exports
 
 var PropTypes = _interopRequireWildcard(__webpack_require__(17));
 
-var _react = _interopRequireDefault(__webpack_require__(8));
+var _react = _interopRequireDefault(__webpack_require__(9));
 
 var _reactDom = _interopRequireDefault(__webpack_require__(40));
 
@@ -9536,7 +9536,7 @@ exports.default = void 0;
 
 var _propTypes = _interopRequireDefault(__webpack_require__(17));
 
-var _react = _interopRequireDefault(__webpack_require__(8));
+var _react = _interopRequireDefault(__webpack_require__(9));
 
 var _reactLifecyclesCompat = __webpack_require__(109);
 
@@ -10065,7 +10065,7 @@ module.exports = function (fn, that, length) {
 "use strict";
 
 
-module.exports = !__webpack_require__(27) && !__webpack_require__(35)(function () {
+module.exports = !__webpack_require__(28) && !__webpack_require__(35)(function () {
   return Object.defineProperty(__webpack_require__(119)('div'), 'a', { get: function get() {
       return 7;
     } }).a != 7;
@@ -10093,7 +10093,7 @@ module.exports = function (it) {
 "use strict";
 
 
-var has = __webpack_require__(28);
+var has = __webpack_require__(29);
 var toIObject = __webpack_require__(36);
 var arrayIndexOf = __webpack_require__(322)(false);
 var IE_PROTO = __webpack_require__(75)('IE_PROTO');
@@ -10148,7 +10148,7 @@ module.exports = function (it) {
 
 
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
-var has = __webpack_require__(28);
+var has = __webpack_require__(29);
 var toObject = __webpack_require__(79);
 var IE_PROTO = __webpack_require__(75)('IE_PROTO');
 var ObjectProto = Object.prototype;
@@ -10204,7 +10204,7 @@ exports.default = typeof _symbol2.default === "function" && _typeof(_iterator2.d
 
 
 var LIBRARY = __webpack_require__(56);
-var $export = __webpack_require__(25);
+var $export = __webpack_require__(26);
 var redefine = __webpack_require__(126);
 var hide = __webpack_require__(33);
 var Iterators = __webpack_require__(80);
@@ -10319,11 +10319,11 @@ var pIE = __webpack_require__(58);
 var createDesc = __webpack_require__(54);
 var toIObject = __webpack_require__(36);
 var toPrimitive = __webpack_require__(72);
-var has = __webpack_require__(28);
+var has = __webpack_require__(29);
 var IE8_DOM_DEFINE = __webpack_require__(118);
 var gOPD = Object.getOwnPropertyDescriptor;
 
-exports.f = __webpack_require__(27) ? gOPD : function getOwnPropertyDescriptor(O, P) {
+exports.f = __webpack_require__(28) ? gOPD : function getOwnPropertyDescriptor(O, P) {
   O = toIObject(O);
   P = toPrimitive(P, true);
   if (IE8_DOM_DEFINE) try {
@@ -10355,7 +10355,7 @@ module.exports = _Symbol;
 
 __webpack_require__(131);
 
-__webpack_require__(136);
+__webpack_require__(224);
 
 __webpack_require__(229);
 
@@ -10408,15 +10408,15 @@ var _edit = __webpack_require__(132);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(133);
+var _save = __webpack_require__(221);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _attributes = __webpack_require__(134);
+var _attributes = __webpack_require__(222);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
-var _deprecated = __webpack_require__(135);
+var _deprecated = __webpack_require__(223);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -10463,15 +10463,11 @@ var _premiumBorder = __webpack_require__(6);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _PremiumResponsivePadding = __webpack_require__(19);
-
-var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
-
-var _premiumResponsiveSpacing = __webpack_require__(30);
+var _premiumResponsiveSpacing = __webpack_require__(21);
 
 var _premiumResponsiveSpacing2 = _interopRequireDefault(_premiumResponsiveSpacing);
 
-var _premiumTypo = __webpack_require__(9);
+var _premiumTypo = __webpack_require__(7);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
@@ -10697,17 +10693,17 @@ var PremiumAccordion = function (_Component) {
                                 paddingRight: titlePaddingRight && "" + titlePaddingRight + titlePadding.unit,
                                 paddingBottom: titlePaddingBottom && "" + titlePaddingBottom + titlePadding.unit,
                                 paddingLeft: titlePaddingLeft && "" + titlePaddingLeft + titlePadding.unit,
-                                borderStyle: titleBorder.borderType,
-                                borderTopWidth: titleBorder.borderWidth.Desktop.top,
-                                borderRightWidth: titleBorder.borderWidth.Desktop.right,
-                                borderBottomWidth: titleBorder.borderWidth.Desktop.bottom,
-                                borderLeftWidth: titleBorder.borderWidth.Desktop.left,
-                                borderRadius: (titleBorder.borderRadius.Desktop.top || 0) + "px " + (titleBorder.borderRadius.Desktop.right || 0) + "px " + (titleBorder.borderRadius.Desktop.bottom || 0) + "px " + (titleBorder.borderRadius.Desktop.left || 0) + "px",
-                                borderColor: titleBorder.borderColor,
-                                borderTopLeftRadius: (titleBorder.borderRadius.Desktop.top || 0) + "px",
-                                borderTopRightRadius: (titleBorder.borderRadius.Desktop.right || 0) + "px",
-                                borderBottomLeftRadius: (titleBorder.borderRadius.Desktop.bottom || 0) + "px",
-                                borderBottomRightRadius: (titleBorder.borderRadius.Desktop.left || 0) + "px"
+                                borderStyle: titleBorder && titleBorder.borderType,
+                                borderTopWidth: titleBorder && titleBorder.borderWidth.Desktop.top,
+                                borderRightWidth: titleBorder && titleBorder.borderWidth.Desktop.right,
+                                borderBottomWidth: titleBorder && titleBorder.borderWidth.Desktop.bottom,
+                                borderLeftWidth: titleBorder && titleBorder.borderWidth.Desktop.left,
+                                borderRadius: (titleBorder && titleBorder.borderRadius.Desktop.top || 0) + "px " + (titleBorder && titleBorder.borderRadius.Desktop.right || 0) + "px " + (titleBorder && titleBorder.borderRadius.Desktop.bottom || 0) + "px " + (titleBorder && titleBorder.borderRadius.Desktop.left || 0) + "px",
+                                borderColor: titleBorder && titleBorder.borderColor,
+                                borderTopLeftRadius: (titleBorder && titleBorder.borderRadius.Desktop.top || 0) + "px",
+                                borderTopRightRadius: (titleBorder && titleBorder.borderRadius.Desktop.right || 0) + "px",
+                                borderBottomLeftRadius: (titleBorder && titleBorder.borderRadius.Desktop.bottom || 0) + "px",
+                                borderBottomRightRadius: (titleBorder && titleBorder.borderRadius.Desktop.left || 0) + "px"
                             }
                         },
                         React.createElement(
@@ -10770,17 +10766,17 @@ var PremiumAccordion = function (_Component) {
                                 paddingRight: descPaddingRight && "" + descPaddingRight + descPadding.unit,
                                 paddingBottom: descPaddingBottom && "" + descPaddingBottom + descPadding.unit,
                                 paddingLeft: descPaddingLeft && "" + descPaddingLeft + descPadding.unit,
-                                borderStyle: descBorder.borderType,
-                                borderTopWidth: descBorder.borderWidth.Desktop.top,
-                                borderRightWidth: descBorder.borderWidth.Desktop.right,
-                                borderBottomWidth: descBorder.borderWidth.Desktop.bottom,
-                                borderLeftWidth: descBorder.borderWidth.Desktop.left,
-                                borderRadius: (descBorder.borderRadius.Desktop.top || 0) + "px " + (descBorder.borderRadius.Desktop.right || 0) + "px " + (descBorder.borderRadius.Desktop.bottom || 0) + "px " + (descBorder.borderRadius.Desktop.left || 0) + "px",
-                                borderColor: descBorder.borderColor,
-                                borderTopLeftRadius: (descBorder.borderRadius.Desktop.top || 0) + "px",
-                                borderTopRightRadius: (descBorder.borderRadius.Desktop.right || 0) + "px",
-                                borderBottomLeftRadius: (descBorder.borderRadius.Desktop.bottom || 0) + "px",
-                                borderBottomRightRadius: (descBorder.borderRadius.Desktop.left || 0) + "px"
+                                borderStyle: descBorder && descBorder.borderType,
+                                borderTopWidth: descBorder && descBorder.borderWidth.Desktop.top,
+                                borderRightWidth: descBorder && descBorder.borderWidth.Desktop.right,
+                                borderBottomWidth: descBorder && descBorder.borderWidth.Desktop.bottom,
+                                borderLeftWidth: descBorder && descBorder.borderWidth.Desktop.left,
+                                borderRadius: (descBorder && descBorder.borderRadius.Desktop.top || 0) + "px " + (descBorder && descBorder.borderRadius.Desktop.right || 0) + "px " + (descBorder && descBorder.borderRadius.Desktop.bottom || 0) + "px " + (descBorder && descBorder.borderRadius.Desktop.left || 0) + "px",
+                                borderColor: descBorder && descBorder.borderColor,
+                                borderTopLeftRadius: (descBorder && descBorder.borderRadius.Desktop.top || 0) + "px",
+                                borderTopRightRadius: (descBorder && descBorder.borderRadius.Desktop.right || 0) + "px",
+                                borderBottomLeftRadius: (descBorder && descBorder.borderRadius.Desktop.bottom || 0) + "px",
+                                borderBottomRightRadius: (descBorder && descBorder.borderRadius.Desktop.left || 0) + "px"
                             }
                         },
                         "text" === contentType && React.createElement(RichText, {
@@ -10878,35 +10874,14 @@ var PremiumAccordion = function (_Component) {
                         }
                     }),
                     React.createElement(_premiumBorder2.default, {
-                        borderType: titleStyles[0].titleBorder,
-                        borderWidth: titleBorderWidth,
-                        top: titleBorderTop,
-                        right: titleBorderRight,
-                        bottom: titleBorderBottom,
-                        left: titleBorderLeft,
-                        borderColor: titleStyles[0].titleBorderColor,
-                        borderRadius: titleStyles[0].titleBorderRadius,
-                        onChangeType: function onChangeType(newType) {
-                            return saveTitleStyles({ titleBorder: newType });
-                        },
-                        onChangeWidth: function onChangeWidth(_ref) {
-                            var top = _ref.top,
-                                right = _ref.right,
-                                bottom = _ref.bottom,
-                                left = _ref.left;
-                            return setAttributes({
-                                titleBorderUpdated: true,
-                                titleBorderTop: top,
-                                titleBorderRight: right,
-                                titleBorderBottom: bottom,
-                                titleBorderLeft: left
-                            });
-                        },
-                        onChangeColor: function onChangeColor(colorValue) {
-                            return saveTitleStyles({ titleBorderColor: colorValue });
-                        },
-                        onChangeRadius: function onChangeRadius(newrRadius) {
-                            return saveTitleStyles({ titleBorderRadius: newrRadius });
+                        label: __("Border"),
+                        value: titleBorder,
+                        borderType: titleBorder.borderType,
+                        borderColor: titleBorder.borderColor,
+                        borderWidth: titleBorder.borderWidth,
+                        borderRadius: titleBorder.borderRadius,
+                        onChange: function onChange(value) {
+                            return setAttributes({ titleBorder: value });
                         }
                     }),
                     React.createElement(_PremiumShadow2.default, {
@@ -11063,35 +11038,14 @@ var PremiumAccordion = function (_Component) {
                         })
                     ),
                     React.createElement(_premiumBorder2.default, {
-                        borderType: descStyles[0].descBorder,
-                        borderWidth: descBorderWidth,
-                        top: descBorderTop,
-                        right: descBorderRight,
-                        bottom: descBorderBottom,
-                        left: descBorderLeft,
-                        borderColor: descStyles[0].descBorderColor,
-                        borderRadius: descStyles[0].descBorderRadius,
-                        onChangeType: function onChangeType(newType) {
-                            return SaveDescStyles({ descBorder: newType });
-                        },
-                        onChangeWidth: function onChangeWidth(_ref2) {
-                            var top = _ref2.top,
-                                right = _ref2.right,
-                                bottom = _ref2.bottom,
-                                left = _ref2.left;
-                            return setAttributes({
-                                descBorderUpdated: true,
-                                descBorderTop: top,
-                                descBorderRight: right,
-                                descBorderBottom: bottom,
-                                descBorderLeft: left
-                            });
-                        },
-                        onChangeColor: function onChangeColor(colorValue) {
-                            return SaveDescStyles({ descBorderColor: colorValue });
-                        },
-                        onChangeRadius: function onChangeRadius(newrRadius) {
-                            return SaveDescStyles({ descBorderRadius: newrRadius });
+                        label: __("Border"),
+                        value: descBorder,
+                        borderType: descBorder.borderType,
+                        borderColor: descBorder.borderColor,
+                        borderWidth: descBorder.borderWidth,
+                        borderRadius: descBorder.borderRadius,
+                        onChange: function onChange(value) {
+                            return setAttributes({ descBorder: value });
                         }
                     }),
                     "text" === contentType && React.createElement(_PremiumShadow2.default, {
@@ -11176,2695 +11130,6 @@ exports.default = withSelect(function (select, props) {
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _classnames = __webpack_require__(0);
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var __ = wp.i18n.__;
-var _wp$blockEditor = wp.blockEditor,
-    RichText = _wp$blockEditor.RichText,
-    InnerBlocks = _wp$blockEditor.InnerBlocks;
-
-
-var save = function save(props) {
-    var className = props.className;
-    var _props$attributes = props.attributes,
-        accordionId = _props$attributes.accordionId,
-        repeaterItems = _props$attributes.repeaterItems,
-        direction = _props$attributes.direction,
-        titleTag = _props$attributes.titleTag,
-        titleStyles = _props$attributes.titleStyles,
-        arrowStyles = _props$attributes.arrowStyles,
-        descStyles = _props$attributes.descStyles,
-        contentType = _props$attributes.contentType,
-        textShadowColor = _props$attributes.textShadowColor,
-        textShadowBlur = _props$attributes.textShadowBlur,
-        textShadowHorizontal = _props$attributes.textShadowHorizontal,
-        textShadowVertical = _props$attributes.textShadowVertical,
-        titleBorder = _props$attributes.titleBorder,
-        descBorder = _props$attributes.descBorder;
-
-
-    console.log(titleBorder);
-
-    var mainClasses = (0, _classnames2.default)(className, 'premium-accordion');
-
-    var accordionItems = repeaterItems.map(function (item, index) {
-        return React.createElement(
-            'div',
-            {
-                id: 'premium-accordion__layer' + index,
-                className: 'premium-accordion__content_wrap'
-            },
-            React.createElement(
-                'div',
-                {
-                    className: 'premium-accordion__title_wrap premium-accordion__' + direction + ' premium-accordion__' + arrowStyles[0].arrowPos,
-                    style: {
-                        backgroundColor: titleStyles[0].titleBack,
-                        borderStyle: titleBorder && titleBorder.borderType,
-                        borderTopWidth: titleBorder && titleBorder.borderWidth.Desktop.top,
-                        borderRightWidth: titleBorder && titleBorder.borderWidth.Desktop.right,
-                        borderBottomWidth: titleBorder && titleBorder.borderWidth.Desktop.bottom,
-                        borderLeftWidth: titleBorder && titleBorder.borderWidth.Desktop.left,
-                        borderRadius: (titleBorder && titleBorder.borderRadius.Desktop.top || 0) + 'px ' + (titleBorder && titleBorder.borderRadius.Desktop.right || 0) + 'px ' + (titleBorder && titleBorder.borderRadius.Desktop.bottom || 0) + 'px ' + (titleBorder && titleBorder.borderRadius.Desktop.left || 0) + 'px',
-                        borderColor: titleBorder && titleBorder.borderColor,
-                        borderTopLeftRadius: (titleBorder && titleBorder.borderRadius.Desktop.top || 0) + 'px',
-                        borderTopRightRadius: (titleBorder && titleBorder.borderRadius.Desktop.right || 0) + 'px',
-                        borderBottomLeftRadius: (titleBorder && titleBorder.borderRadius.Desktop.bottom || 0) + 'px',
-                        borderBottomRightRadius: (titleBorder && titleBorder.borderRadius.Desktop.left || 0) + 'px'
-                    }
-                },
-                React.createElement(
-                    'div',
-                    { className: 'premium-accordion__title' },
-                    React.createElement(RichText.Content, {
-                        tagName: titleTag.toLowerCase(),
-                        className: 'premium-accordion__title_text',
-                        value: item.titleText,
-                        style: {
-                            color: titleStyles[0].titleColor,
-                            fontSize: titleStyles[0].titleSize + "px",
-                            letterSpacing: titleStyles[0].titleLetter + "px",
-                            textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
-                            fontStyle: titleStyles[0].titleStyle,
-                            fontWeight: titleStyles[0].titleWeight,
-                            textShadow: titleStyles[0].titleShadowHorizontal + 'px ' + titleStyles[0].titleShadowVertical + 'px ' + titleStyles[0].titleShadowBlur + 'px ' + titleStyles[0].titleShadowColor,
-                            lineHeight: titleStyles[0].titleLine + "px"
-                        }
-                    })
-                ),
-                React.createElement(
-                    'div',
-                    { className: 'premium-accordion__icon_wrap' },
-                    React.createElement(
-                        'svg',
-                        {
-                            className: 'premium-accordion__icon premium-accordion__closed',
-                            role: 'img',
-                            focusable: 'false',
-                            xmlns: 'http://www.w3.org/2000/svg',
-                            width: arrowStyles[0].arrowSize,
-                            height: arrowStyles[0].arrowSize,
-                            viewBox: '0 0 20 20',
-                            style: {
-                                fill: arrowStyles[0].arrowColor,
-                                backgroundColor: arrowStyles[0].arrowBack,
-                                padding: arrowStyles[0].arrowPadding + "px",
-                                borderRadius: arrowStyles[0].arrowRadius + "px"
-                            }
-                        },
-                        React.createElement('polygon', { points: '16.7,3.3 10,10 3.3,3.4 0,6.7 10,16.7 10,16.6 20,6.7 ' })
-                    )
-                )
-            ),
-            React.createElement(
-                'div',
-                {
-                    className: 'premium-accordion__desc_wrap premium-accordion__desc_close',
-                    style: {
-                        textAlign: descStyles[0].descAlign,
-                        backgroundColor: descStyles[0].descBack,
-                        borderStyle: descBorder && descBorder.borderType,
-                        borderTopWidth: descBorder && descBorder.borderWidth.Desktop.top,
-                        borderRightWidth: descBorder && descBorder.borderWidth.Desktop.right,
-                        borderBottomWidth: descBorder && descBorder.borderWidth.Desktop.bottom,
-                        borderLeftWidth: descBorder && descBorder.borderWidth.Desktop.left,
-                        borderRadius: (descBorder && descBorder.borderRadius.Desktop.top || 0) + 'px ' + (descBorder && descBorder.borderRadius.Desktop.right || 0) + 'px ' + (descBorder && descBorder.borderRadius.Desktop.bottom || 0) + 'px ' + (descBorder && descBorder.borderRadius.Desktop.left || 0) + 'px',
-                        borderColor: descBorder && descBorder.borderColor,
-                        borderTopLeftRadius: (descBorder && descBorder.borderRadius.Desktop.top || 0) + 'px',
-                        borderTopRightRadius: (descBorder && descBorder.borderRadius.Desktop.right || 0) + 'px',
-                        borderBottomLeftRadius: (descBorder && descBorder.borderRadius.Desktop.bottom || 0) + 'px',
-                        borderBottomRightRadius: (descBorder && descBorder.borderRadius.Desktop.left || 0) + 'px'
-
-                    }
-                },
-                "text" === contentType && React.createElement(RichText.Content, {
-                    tagName: 'p',
-                    className: 'premium-accordion__desc',
-                    value: item.descText,
-                    style: {
-                        color: descStyles[0].descColor,
-                        fontSize: descStyles[0].descSize + "px",
-                        letterSpacing: descStyles[0].descLetter + "px",
-                        textTransform: descStyles[0].descUpper ? "uppercase" : "none",
-                        textShadow: textShadowHorizontal + 'px ' + textShadowVertical + 'px ' + textShadowBlur + 'px ' + textShadowColor,
-                        fontStyle: descStyles[0].descStyle,
-                        fontWeight: descStyles[0].descWeight,
-                        lineHeight: descStyles[0].descLine + "px"
-                    }
-                }),
-                "block" === contentType && React.createElement(InnerBlocks.Content, null)
-            )
-        );
-    });
-    return React.createElement(
-        'div',
-        { id: accordionId, className: '' + mainClasses },
-        accordionItems
-    );
-};
-exports.default = save;
-
-/***/ }),
-/* 134 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-var __ = wp.i18n.__;
-
-
-var attributes = {
-    accordionId: {
-        type: "string"
-    },
-    repeaterItems: {
-        type: "array",
-        default: [{
-            titleText: __("Awesome Title", 'premium-blocks-for-gutenberg'),
-            descText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-        }]
-    },
-    direction: {
-        type: "string",
-        default: "ltr"
-    },
-    titleTag: {
-        type: "string",
-        default: "H4"
-    },
-    titleStyles: {
-        type: "array",
-        default: [{
-            titleColor: "",
-            titleSize: '',
-            titleLine: '',
-            titleLetter: '',
-            titleStyle: '',
-            titleUpper: '',
-            titleWeight: '500',
-            titleBorder: 'none',
-            titleBorderRadius: '',
-            titleBorderColor: '',
-            titleBack: '',
-            titleShadowColor: '',
-            titleShadowBlur: 0,
-            titleShadowHorizontal: 0,
-            titleShadowVertical: 0
-        }]
-    },
-    arrowStyles: {
-        type: "array",
-        default: [{
-            arrowColor: '',
-            arrowBack: '',
-            arrowPos: 'out',
-            arrowPadding: '',
-            arrowRadius: '',
-            arrowSize: 20
-        }]
-    },
-    descStyles: {
-        type: 'array',
-        default: [{
-            descAlign: 'left',
-            descColor: '',
-            descBack: '',
-            descBorder: 'none',
-            descBorderWidth: 1,
-            descBorderUpdated: false,
-            descBorderTop: '',
-            descBorderRight: '',
-            descBorderBottom: '',
-            descBorderLeft: '',
-            descBorderRadius: 0,
-            descBorderColor: '',
-            descSize: '',
-            descLine: '',
-            descLetter: '',
-            descStyle: '',
-            descUpper: false,
-            descWeight: 500,
-            descPaddingT: '',
-            descPaddingR: '',
-            descPaddingB: '',
-            descPaddingL: ''
-        }]
-    },
-
-    contentType: {
-        type: "string",
-        default: "text"
-    },
-
-    titleEditBorder: {
-        type: "boolean"
-    },
-
-    textShadowColor: {
-        type: "string"
-    },
-    textShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    textShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    textShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    titleBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    titleBorderTop: {
-        type: "number"
-    },
-    titleBorderRight: {
-        type: "number"
-    },
-    titleBorderBottom: {
-        type: "number"
-    },
-    titleBorderLeft: {
-        type: "number"
-    },
-    titleBorderUpdated: {
-        type: "boolean",
-        default: false
-    },
-    descBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    descBorderUpdated: {
-        type: "boolean",
-        default: false
-    },
-    descBorderTop: {
-        type: "number"
-    },
-    descBorderRight: {
-        type: "number"
-    },
-    descBorderBottom: {
-        type: "number"
-    },
-    descBorderLeft: {
-        type: "number"
-    },
-    titlePadding: {
-        type: "object",
-        default: {
-            Desktop: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            Tablet: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            Mobile: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            unit: 'px'
-        }
-    },
-    descPadding: {
-        type: "object",
-        default: {
-            Desktop: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            Tablet: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            Mobile: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            unit: 'px'
-        }
-    }
-};
-exports.default = attributes;
-
-/***/ }),
-/* 135 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _classnames = __webpack_require__(0);
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var className = "premium-accordion";
-
-var __ = wp.i18n.__;
-var _wp$editor = wp.editor,
-    RichText = _wp$editor.RichText,
-    InnerBlocks = _wp$editor.InnerBlocks;
-
-
-var attributes = {
-    accordionId: {
-        type: "string"
-    },
-    repeaterItems: {
-        type: "array",
-        default: [{
-            titleText: __("Awesome Title"),
-            descText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-        }]
-    },
-    direction: {
-        type: "string",
-        default: "ltr"
-    },
-    titleTag: {
-        type: "string",
-        default: "H4"
-    },
-    titleColor: {
-        type: "string"
-    },
-    titleSize: {
-        type: "number"
-    },
-    titleLine: {
-        type: "number"
-    },
-    titleLetter: {
-        type: "number"
-    },
-    titleStyle: {
-        type: "string"
-    },
-    titleUpper: {
-        type: "boolean"
-    },
-    titleWeight: {
-        type: "number",
-        default: 500
-    },
-    titleBorder: {
-        type: "string",
-        default: "none"
-    },
-    titleBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    titleBorderTop: {
-        type: "number"
-    },
-    titleBorderRight: {
-        type: "number"
-    },
-    titleBorderBottom: {
-        type: "number"
-    },
-    titleBorderLeft: {
-        type: "number"
-    },
-    titleBorderUpdated: {
-        type: "boolean",
-        default: false
-    },
-    titleBorderRadius: {
-        type: "number",
-        default: "0"
-    },
-    titleBorderColor: {
-        type: "string"
-    },
-    titleBack: {
-        type: "string"
-    },
-    titleShadowColor: {
-        type: "string"
-    },
-    titleShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    titleShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    titleShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    titlePaddingT: {
-        type: "number"
-    },
-    titlePaddingR: {
-        type: "number"
-    },
-    titlePaddingB: {
-        type: "number"
-    },
-    titlePaddingL: {
-        type: "number"
-    },
-    arrowColor: {
-        type: "string"
-    },
-    arrowBack: {
-        type: "string"
-    },
-    arrowPos: {
-        type: "string",
-        default: "out"
-    },
-    arrowPadding: {
-        type: "number"
-    },
-    arrowRadius: {
-        type: "number"
-    },
-    arrowSize: {
-        type: "number",
-        default: 20
-    },
-    contentType: {
-        type: "string",
-        default: "text"
-    },
-    descAlign: {
-        type: "string",
-        default: "left"
-    },
-    descColor: {
-        type: "string"
-    },
-    descBack: {
-        type: "string"
-    },
-    descBorder: {
-        type: "string",
-        default: "none"
-    },
-    descBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    descBorderUpdated: {
-        type: "boolean",
-        default: false
-    },
-    descBorderTop: {
-        type: "number"
-    },
-    descBorderRight: {
-        type: "number"
-    },
-    descBorderBottom: {
-        type: "number"
-    },
-    descBorderLeft: {
-        type: "number"
-    },
-    titleEditBorder: {
-        type: "boolean"
-    },
-    descBorderRadius: {
-        type: "number",
-        default: "0"
-    },
-    descBorderColor: {
-        type: "string"
-    },
-    descSize: {
-        type: "number"
-    },
-    descLine: {
-        type: "number"
-    },
-    descLetter: {
-        type: "number"
-    },
-    descStyle: {
-        type: "string"
-    },
-    descUpper: {
-        type: "boolean"
-    },
-    descWeight: {
-        type: "number",
-        default: 500
-    },
-    textShadowColor: {
-        type: "string"
-    },
-    textShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    textShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    textShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    descPaddingT: {
-        type: "number"
-    },
-    descPaddingR: {
-        type: "number"
-    },
-    descPaddingB: {
-        type: "number"
-    },
-    descPaddingL: {
-        type: "number",
-        default: 10
-    }
-};
-
-var newAttributes = {
-    accordionId: {
-        type: "string"
-    },
-    repeaterItems: {
-        type: "array",
-        default: [{
-            titleText: __("Awesome Title", 'premium-blocks-for-gutenberg'),
-            descText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-        }]
-    },
-    direction: {
-        type: "string",
-        default: "ltr"
-    },
-    titleTag: {
-        type: "string",
-        default: "H4"
-    },
-    titleStyles: {
-        type: "array",
-        default: [{
-            titleColor: "",
-            titleSize: '',
-            titleLine: '',
-            titleLetter: '',
-            titleStyle: '',
-            titleUpper: '',
-            titleWeight: '500',
-            titleBorder: 'none',
-            titleBorderRadius: '',
-            titleBorderColor: '',
-            titleBack: '',
-            titleShadowColor: '',
-            titleShadowBlur: 0,
-            titleShadowHorizontal: 0,
-            titleShadowVertical: 0
-        }]
-    },
-    arrowStyles: {
-        type: "array",
-        default: [{
-            arrowColor: '',
-            arrowBack: '',
-            arrowPos: 'out',
-            arrowPadding: '',
-            arrowRadius: '',
-            arrowSize: 20
-        }]
-    },
-    descStyles: {
-        type: 'array',
-        default: [{
-            descAlign: 'left',
-            descColor: '',
-            descBack: '',
-            descBorder: 'none',
-            descBorderWidth: 1,
-            descBorderUpdated: false,
-            descBorderTop: '',
-            descBorderRight: '',
-            descBorderBottom: '',
-            descBorderLeft: '',
-            descBorderRadius: 0,
-            descBorderColor: '',
-            descSize: '',
-            descLine: '',
-            descLetter: '',
-            descStyle: '',
-            descUpper: false,
-            descWeight: 500,
-            descPaddingT: '',
-            descPaddingR: '',
-            descPaddingB: '',
-            descPaddingL: ''
-        }]
-    },
-
-    contentType: {
-        type: "string",
-        default: "text"
-    },
-
-    titleEditBorder: {
-        type: "boolean"
-    },
-
-    textShadowColor: {
-        type: "string"
-    },
-    textShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    textShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    textShadowVertical: {
-        type: "number",
-        default: "0"
-    },
-    titleBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    titleBorderTop: {
-        type: "number"
-    },
-    titleBorderRight: {
-        type: "number"
-    },
-    titleBorderBottom: {
-        type: "number"
-    },
-    titleBorderLeft: {
-        type: "number"
-    },
-    titleBorderUpdated: {
-        type: "boolean",
-        default: false
-    },
-    titlePaddingT: {
-        type: "number"
-    },
-    titlePaddingR: {
-        type: "number"
-    },
-    titlePaddingB: {
-        type: "number"
-    },
-    titlePaddingL: {
-        type: "number"
-    },
-    descBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    descBorderUpdated: {
-        type: "boolean",
-        default: false
-    },
-    descBorderTop: {
-        type: "number"
-    },
-    descBorderRight: {
-        type: "number"
-    },
-    descBorderBottom: {
-        type: "number"
-    },
-    descBorderLeft: {
-        type: "number"
-    },
-    descPaddingT: {
-        type: "number"
-    },
-    descPaddingR: {
-        type: "number"
-    },
-    descPaddingB: {
-        type: "number"
-    },
-    descPaddingL: {
-        type: "number",
-        default: 10
-    },
-    titlePaddingTTablet: {
-        type: "number"
-    },
-    titlePaddingRTablet: {
-        type: "number"
-    },
-    titlePaddingBTablet: {
-        type: "number"
-    },
-    titlePaddingLTablet: {
-        type: "number"
-    },
-    titlePaddingTMobile: {
-        type: "number"
-    },
-    titlePaddingRMobile: {
-        type: "number"
-    },
-    titlePaddingBMobile: {
-        type: "number"
-    },
-    titlePaddingLMobile: {
-        type: "number"
-    },
-    descPaddingTTablet: {
-        type: "number"
-    },
-    descPaddingRTablet: {
-        type: "number"
-    },
-    descPaddingBTablet: {
-        type: "number"
-    },
-    descPaddingLTablet: {
-        type: "number"
-    },
-    descPaddingTMobile: {
-        type: "number"
-    },
-    descPaddingRMobile: {
-        type: "number"
-    },
-    descPaddingBMobile: {
-        type: "number"
-    },
-    descPaddingLMobile: {
-        type: "number"
-    },
-    titlePadding: {
-        type: "object",
-        default: {
-            Desktop: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            Tablet: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            Mobile: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            unit: 'px'
-        }
-    },
-    descPadding: {
-        type: "object",
-        default: {
-            Desktop: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            Tablet: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            Mobile: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            unit: 'px'
-        }
-    },
-    titleBorder: {
-        "borderType": "",
-        "borderColor": "",
-        "borderWidth": {
-            Desktop: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            Tablet: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            Mobile: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            }
-        },
-        "borderRadius": {
-            Desktop: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            Tablet: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            Mobile: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            }
-        }
-    },
-    descBorder: {
-        "borderType": "",
-        "borderColor": "",
-        "borderWidth": {
-            Desktop: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            Tablet: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            Mobile: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            }
-        },
-        "borderRadius": {
-            Desktop: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            Tablet: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            Mobile: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            }
-        }
-    }
-};
-
-var deprecated = [{
-    attributes: Object.assign(attributes, newAttributes),
-    isEligible: function isEligible() {
-        return true;
-    },
-
-    migrate: function migrate(attributes) {
-        var newAttributes = {
-            titlePadding: {
-                "Desktop": {
-                    top: attributes.titlePaddingT || '',
-                    right: attributes.titlePaddingR || '',
-                    bottom: attributes.titlePaddingB || '',
-                    left: attributes.titlePaddingL || ''
-                },
-                "Tablet": {
-                    top: attributes.titlePaddingTTablet || '',
-                    right: attributes.titlePaddingRTablet || '',
-                    bottom: attributes.titlePaddingBTablet || '',
-                    left: attributes.titlePaddingLTablet || ''
-                },
-                "Mobile": {
-                    top: attributes.titlePaddingTMobile || '',
-                    right: attributes.titlePaddingRMobile || '',
-                    bottom: attributes.titlePaddingBMobile || '',
-                    left: attributes.titlePaddingLMobile || ''
-                },
-                "unit": "px"
-            },
-            descPadding: {
-                "Desktop": {
-                    top: attributes.descPaddingT || '',
-                    right: attributes.descPaddingR || '',
-                    bottom: attributes.descPaddingB || '',
-                    left: attributes.descPaddingL || ''
-                },
-                "Tablet": {
-                    top: attributes.descPaddingTTablet || '',
-                    right: attributes.descPaddingRTablet || '',
-                    bottom: attributes.descPaddingBTablet || '',
-                    left: attributes.descPaddingLTablet || ''
-                },
-                "Mobile": {
-                    top: attributes.descPaddingTMobile || '',
-                    right: attributes.descPaddingRMobile || '',
-                    bottom: attributes.descPaddingBMobile || '',
-                    left: attributes.descPaddingLMobile || ''
-                },
-                "unit": "px"
-            },
-            titleBorder: {
-                "borderType": attributes.titleStyles[0].titleBorder || '',
-                "borderColor": attributes.titleStyles[0].titleBorderColor || '',
-                "borderWidth": {
-                    Desktop: {
-                        top: attributes.titleBorderTop || '',
-                        right: attributes.titleBorderRight || '',
-                        bottom: attributes.titleBorderBottom || '',
-                        left: attributes.titleBorderLeft || ''
-                    },
-                    Tablet: {
-                        top: '',
-                        right: '',
-                        bottom: '',
-                        left: ''
-                    },
-                    Mobile: {
-                        top: '',
-                        right: '',
-                        bottom: '',
-                        left: ''
-                    }
-                },
-                "borderRadius": {
-                    Desktop: {
-                        top: attributes.titleStyles[0].titleBorderRadius || '',
-                        right: attributes.titleStyles[0].titleBorderRadius || '',
-                        bottom: attributes.titleStyles[0].titleBorderRadius || '',
-                        left: attributes.titleStyles[0].titleBorderRadius || ''
-                    },
-                    Tablet: {
-                        top: '',
-                        right: '',
-                        bottom: '',
-                        left: ''
-                    },
-                    Mobile: {
-                        top: '',
-                        right: '',
-                        bottom: '',
-                        left: ''
-                    }
-                }
-            },
-            descBorder: {
-                "borderType": attributes.descStyles[0].descBorder || '',
-                "borderColor": attributes.descStyles[0].descBorderColor || '',
-                "borderWidth": {
-                    Desktop: {
-                        top: attributes.descBorderTop || '',
-                        right: attributes.descBorderRight || '',
-                        bottom: attributes.descBorderBottom || '',
-                        left: attributes.descBorderLeft || ''
-                    },
-                    Tablet: {
-                        top: '',
-                        right: '',
-                        bottom: '',
-                        left: ''
-                    },
-                    Mobile: {
-                        top: '',
-                        right: '',
-                        bottom: '',
-                        left: ''
-                    }
-                },
-                "borderRadius": {
-                    Desktop: {
-                        top: attributes.descStyles[0].descBorderRadius || '',
-                        right: attributes.descStyles[0].descBorderRadius || '',
-                        bottom: attributes.descStyles[0].descBorderRadius || '',
-                        left: attributes.descStyles[0].descBorderRadius || ''
-                    },
-                    Tablet: {
-                        top: '',
-                        right: '',
-                        bottom: '',
-                        left: ''
-                    },
-                    Mobile: {
-                        top: '',
-                        right: '',
-                        bottom: '',
-                        left: ''
-                    }
-                }
-            }
-        };
-        return Object.assign(attributes, newAttributes);
-    },
-    save: function save(props) {
-        var className = props.className;
-        var _props$attributes = props.attributes,
-            accordionId = _props$attributes.accordionId,
-            repeaterItems = _props$attributes.repeaterItems,
-            direction = _props$attributes.direction,
-            titleTag = _props$attributes.titleTag,
-            titleStyles = _props$attributes.titleStyles,
-            _props$attributes$arr = _props$attributes.arrowStyles,
-            arrowStyles = _props$attributes$arr === undefined ? [] : _props$attributes$arr,
-            descStyles = _props$attributes.descStyles,
-            contentType = _props$attributes.contentType,
-            titleEditBorder = _props$attributes.titleEditBorder,
-            textShadowColor = _props$attributes.textShadowColor,
-            textShadowBlur = _props$attributes.textShadowBlur,
-            textShadowHorizontal = _props$attributes.textShadowHorizontal,
-            textShadowVertical = _props$attributes.textShadowVertical,
-            titleBorderWidth = _props$attributes.titleBorderWidth,
-            titleBorderTop = _props$attributes.titleBorderTop,
-            titleBorderRight = _props$attributes.titleBorderRight,
-            titleBorderBottom = _props$attributes.titleBorderBottom,
-            titleBorderLeft = _props$attributes.titleBorderLeft,
-            titleBorderUpdated = _props$attributes.titleBorderUpdated,
-            descBorderWidth = _props$attributes.descBorderWidth,
-            descBorderUpdated = _props$attributes.descBorderUpdated,
-            descBorderTop = _props$attributes.descBorderTop,
-            descBorderRight = _props$attributes.descBorderRight,
-            descBorderBottom = _props$attributes.descBorderBottom,
-            descBorderLeft = _props$attributes.descBorderLeft;
-
-
-        var mainClasses = (0, _classnames2.default)(className, 'premium-accordion');
-
-        var accordionItems = repeaterItems.map(function (item, index) {
-            return React.createElement(
-                "div",
-                {
-                    id: "premium-accordion__layer" + index,
-                    className: "premium-accordion__content_wrap"
-                },
-                React.createElement(
-                    "div",
-                    {
-                        className: "premium-accordion__title_wrap premium-accordion__" + direction + " premium-accordion__" + arrowStyles[0].arrowPos,
-                        style: {
-                            backgroundColor: titleStyles[0].titleBack,
-                            borderStyle: titleStyles[0].titleBorder,
-                            borderWidth: titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px",
-                            borderRadius: titleStyles[0].titleBorderRadius + "px",
-                            borderColor: titleStyles[0].titleBorderColor
-                        }
-                    },
-                    React.createElement(
-                        "div",
-                        { className: "premium-accordion__title" },
-                        React.createElement(RichText.Content, {
-                            tagName: titleTag.toLowerCase(),
-                            className: "premium-accordion__title_text",
-                            value: item.titleText,
-                            style: {
-                                color: titleStyles[0].titleColor,
-                                fontSize: titleStyles[0].titleSize + "px",
-                                letterSpacing: titleStyles[0].titleLetter + "px",
-                                textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
-                                fontStyle: titleStyles[0].titleStyle,
-                                fontWeight: titleStyles[0].titleWeight,
-                                textShadow: titleStyles[0].titleShadowHorizontal + "px " + titleStyles[0].titleShadowVertical + "px " + titleStyles[0].titleShadowBlur + "px " + titleStyles[0].titleShadowColor,
-                                lineHeight: titleStyles[0].titleLine + "px"
-                            }
-                        })
-                    ),
-                    React.createElement(
-                        "div",
-                        { className: "premium-accordion__icon_wrap" },
-                        React.createElement(
-                            "svg",
-                            {
-                                className: "premium-accordion__icon premium-accordion__closed",
-                                role: "img",
-                                focusable: "false",
-                                xmlns: "http://www.w3.org/2000/svg",
-                                width: arrowStyles[0].arrowSize,
-                                height: arrowStyles[0].arrowSize,
-                                viewBox: "0 0 20 20",
-                                style: {
-                                    fill: arrowStyles[0].arrowColor,
-                                    backgroundColor: arrowStyles[0].arrowBack,
-                                    padding: arrowStyles[0].arrowPadding + "px",
-                                    borderRadius: arrowStyles[0].arrowRadius + "px"
-                                }
-                            },
-                            React.createElement("polygon", { points: "16.7,3.3 10,10 3.3,3.4 0,6.7 10,16.7 10,16.6 20,6.7 " })
-                        )
-                    )
-                ),
-                React.createElement(
-                    "div",
-                    {
-                        className: "premium-accordion__desc_wrap premium-accordion__desc_close",
-                        style: {
-                            textAlign: descStyles[0].descAlign,
-                            backgroundColor: descStyles[0].descBack,
-                            borderStyle: descStyles[0].descBorder,
-                            borderWidth: descBorderUpdated ? descBorderTop + "px " + descBorderRight + "px " + descBorderBottom + "px " + descBorderLeft + "px" : descBorderWidth + "px",
-                            borderRadius: descStyles[0].descBorderRadius + "px",
-                            borderColor: descStyles[0].descBorderColor
-
-                        }
-                    },
-                    "text" === contentType && React.createElement(RichText.Content, {
-                        tagName: "p",
-                        className: "premium-accordion__desc",
-                        value: item.descText,
-                        style: {
-                            color: descStyles[0].descColor,
-                            fontSize: descStyles[0].descSize + "px",
-                            letterSpacing: descStyles[0].descLetter + "px",
-                            textTransform: descStyles[0].descUpper ? "uppercase" : "none",
-                            textShadow: textShadowHorizontal + "px " + textShadowVertical + "px " + textShadowBlur + "px " + textShadowColor,
-                            fontStyle: descStyles[0].descStyle,
-                            fontWeight: descStyles[0].descWeight,
-                            lineHeight: descStyles[0].descLine + "px"
-                        }
-                    }),
-                    "block" === contentType && React.createElement(InnerBlocks.Content, null)
-                )
-            );
-        });
-        return React.createElement(
-            "div",
-            { id: accordionId, className: "" + mainClasses },
-            accordionItems
-        );
-    }
-}, {
-    attributes: attributes,
-    migrate: function migrate(attributes) {
-        var newAttributes = {
-            titleStyles: [{
-                titleColor: attributes.titleColor,
-                titleSize: attributes.titleSize,
-                titleLine: attributes.titleLine,
-                titleLetter: attributes.titleLetter,
-                titleStyle: attributes.titleStyle,
-                titleUpper: attributes.titleUpper,
-                titleWeight: attributes.titleWeight,
-                titleBorder: attributes.titleBorder,
-                titleBorderRadius: attributes.titleBorderRadius,
-                titleBorderColor: attributes.titleBorderColor,
-                titleBack: attributes.titleBack,
-                titleShadowColor: attributes.titleShadowColor,
-                titleShadowBlur: attributes.titleShadowBlur,
-                titleShadowHorizontal: attributes.titleShadowHorizontal,
-                titleShadowVertical: attributes.titleShadowVertical
-            }],
-
-            arrowStyles: [{
-                arrowColor: attributes.arrowColor,
-                arrowBack: attributes.arrowBack,
-                arrowPos: attributes.arrowPos,
-                arrowPadding: attributes.arrowPadding,
-                arrowRadius: attributes.arrowRadius,
-                arrowSize: attributes.arrowSize
-            }],
-
-            descStyles: [{
-                descAlign: attributes.descAlign,
-                descColor: attributes.descColor,
-                descBack: attributes.descBack,
-                descBorder: attributes.descBorder,
-                descBorderWidth: attributes.descBorderWidth,
-                descBorderUpdated: attributes.descBorderUpdated,
-                descBorderTop: attributes.descBorderTop,
-                descBorderRight: attributes.descBorderRight,
-                descBorderBottom: attributes.descBorderBottom,
-                descBorderLeft: attributes.descBorderLeft,
-                descBorderRadius: attributes.descBorderRadius,
-                descBorderColor: attributes.descBorderColor,
-                descSize: attributes.descSize,
-                descLine: attributes.descLine,
-                descLetter: attributes.descLetter,
-                descStyle: attributes.descStyle,
-                descUpper: attributes.descUpper,
-                descWeight: attributes.descWeight,
-                descPaddingT: attributes.descPaddingT,
-                descPaddingR: attributes.descPaddingR,
-                descPaddingB: attributes.descPaddingB,
-                descPaddingL: attributes.descPaddingL
-            }],
-            titlePaddingTTablet: "0",
-            titlePaddingRTablet: "0",
-            titlePaddingBTablet: "0",
-            titlePaddingLTablet: "0",
-            titlePaddingTMobile: "0",
-            titlePaddingRMobile: "0",
-            titlePaddingBMobile: "0",
-            titlePaddingLMobile: "0",
-            arrowPaddingTTablet: "0",
-            arrowPaddingRTablet: "0",
-            arrowPaddingBTablet: "0",
-            arrowPaddingLTablet: "0",
-            arrowPaddingTMobile: "0",
-            arrowPaddingRMobile: "0",
-            arrowPaddingBMobile: "0",
-            arrowPaddingLMobile: "0",
-            descPaddingTTablet: "0",
-            descPaddingRTablet: "0",
-            descPaddingBTablet: "0",
-            descPaddingLTablet: "0",
-            descPaddingTMobile: "0",
-            descPaddingRMobile: "0",
-            descPaddingBMobile: "0",
-            descPaddingLMobile: "0"
-
-        };
-        return Object.assign(attributes, newAttributes);
-    },
-    save: function save(props) {
-        var _props$attributes2 = props.attributes,
-            accordionId = _props$attributes2.accordionId,
-            repeaterItems = _props$attributes2.repeaterItems,
-            direction = _props$attributes2.direction,
-            titleTag = _props$attributes2.titleTag,
-            titleSize = _props$attributes2.titleSize,
-            titleLine = _props$attributes2.titleLine,
-            titleLetter = _props$attributes2.titleLetter,
-            titleStyle = _props$attributes2.titleStyle,
-            titleUpper = _props$attributes2.titleUpper,
-            titleWeight = _props$attributes2.titleWeight,
-            titleColor = _props$attributes2.titleColor,
-            titleBorder = _props$attributes2.titleBorder,
-            titleBorderWidth = _props$attributes2.titleBorderWidth,
-            titleBorderColor = _props$attributes2.titleBorderColor,
-            titleBorderTop = _props$attributes2.titleBorderTop,
-            titleBorderRight = _props$attributes2.titleBorderRight,
-            titleBorderBottom = _props$attributes2.titleBorderBottom,
-            titleBorderLeft = _props$attributes2.titleBorderLeft,
-            titleBorderRadius = _props$attributes2.titleBorderRadius,
-            titleBack = _props$attributes2.titleBack,
-            titleShadowBlur = _props$attributes2.titleShadowBlur,
-            titleShadowColor = _props$attributes2.titleShadowColor,
-            titleShadowHorizontal = _props$attributes2.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes2.titleShadowVertical,
-            titlePaddingT = _props$attributes2.titlePaddingT,
-            titlePaddingR = _props$attributes2.titlePaddingR,
-            titlePaddingB = _props$attributes2.titlePaddingB,
-            titlePaddingL = _props$attributes2.titlePaddingL,
-            arrowColor = _props$attributes2.arrowColor,
-            arrowBack = _props$attributes2.arrowBack,
-            arrowPos = _props$attributes2.arrowPos,
-            arrowPadding = _props$attributes2.arrowPadding,
-            arrowSize = _props$attributes2.arrowSize,
-            arrowRadius = _props$attributes2.arrowRadius,
-            contentType = _props$attributes2.contentType,
-            descAlign = _props$attributes2.descAlign,
-            descSize = _props$attributes2.descSize,
-            descLine = _props$attributes2.descLine,
-            descLetter = _props$attributes2.descLetter,
-            descStyle = _props$attributes2.descStyle,
-            descUpper = _props$attributes2.descUpper,
-            descWeight = _props$attributes2.descWeight,
-            descColor = _props$attributes2.descColor,
-            descBack = _props$attributes2.descBack,
-            descBorder = _props$attributes2.descBorder,
-            descBorderColor = _props$attributes2.descBorderColor,
-            descBorderRadius = _props$attributes2.descBorderRadius,
-            descBorderWidth = _props$attributes2.descBorderWidth,
-            descBorderTop = _props$attributes2.descBorderTop,
-            descBorderRight = _props$attributes2.descBorderRight,
-            descBorderBottom = _props$attributes2.descBorderBottom,
-            descBorderLeft = _props$attributes2.descBorderLeft,
-            textShadowBlur = _props$attributes2.textShadowBlur,
-            textShadowColor = _props$attributes2.textShadowColor,
-            textShadowHorizontal = _props$attributes2.textShadowHorizontal,
-            textShadowVertical = _props$attributes2.textShadowVertical,
-            descPaddingT = _props$attributes2.descPaddingT,
-            descPaddingR = _props$attributes2.descPaddingR,
-            descPaddingB = _props$attributes2.descPaddingB,
-            descPaddingL = _props$attributes2.descPaddingL,
-            titleBorderUpdated = _props$attributes2.titleBorderUpdated,
-            descBorderUpdated = _props$attributes2.descBorderUpdated;
-
-
-        var mainClasses = (0, _classnames2.default)(className, 'premium-accordion');
-
-        var accordionItems = repeaterItems.map(function (item, index) {
-            return React.createElement(
-                "div",
-                {
-                    id: "premium-accordion__layer" + index,
-                    className: "premium-accordion__content_wrap"
-                },
-                React.createElement(
-                    "div",
-                    {
-                        className: "premium-accordion__title_wrap premium-accordion__" + direction + " premium-accordion__" + arrowPos,
-                        style: {
-                            backgroundColor: titleBack,
-                            borderStyle: titleBorder,
-                            borderWidth: titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px",
-                            borderRadius: titleBorderRadius + "px",
-                            borderColor: titleBorderColor,
-                            paddingTop: titlePaddingT,
-                            paddingRight: titlePaddingR,
-                            paddingBottom: titlePaddingB,
-                            paddingLeft: titlePaddingL
-                        }
-                    },
-                    React.createElement(
-                        "div",
-                        { className: "premium-accordion__title" },
-                        React.createElement(RichText.Content, {
-                            tagName: titleTag.toLowerCase(),
-                            className: "premium-accordion__title_text",
-                            value: item.titleText,
-                            style: {
-                                color: titleColor,
-                                fontSize: titleSize + "px",
-                                letterSpacing: titleLetter + "px",
-                                textTransform: titleUpper ? "uppercase" : "none",
-                                fontStyle: titleStyle,
-                                fontWeight: titleWeight,
-                                textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor,
-                                lineHeight: titleLine + "px"
-                            }
-                        })
-                    ),
-                    React.createElement(
-                        "div",
-                        { className: "premium-accordion__icon_wrap" },
-                        React.createElement(
-                            "svg",
-                            {
-                                className: "premium-accordion__icon premium-accordion__closed",
-                                role: "img",
-                                focusable: "false",
-                                xmlns: "http://www.w3.org/2000/svg",
-                                width: arrowSize,
-                                height: arrowSize,
-                                viewBox: "0 0 20 20",
-                                style: {
-                                    fill: arrowColor,
-                                    backgroundColor: arrowBack,
-                                    padding: arrowPadding + "px",
-                                    borderRadius: arrowRadius + "px"
-                                }
-                            },
-                            React.createElement("polygon", { points: "16.7,3.3 10,10 3.3,3.4 0,6.7 10,16.7 10,16.6 20,6.7 " })
-                        )
-                    )
-                ),
-                React.createElement(
-                    "div",
-                    {
-                        className: "premium-accordion__desc_wrap premium-accordion__desc_close",
-                        style: {
-                            textAlign: descAlign,
-                            backgroundColor: descBack,
-                            borderStyle: descBorder,
-                            borderWidth: descBorderUpdated ? descBorderTop + "px " + descBorderRight + "px " + descBorderBottom + "px " + descBorderLeft + "px" : descBorderWidth + "px",
-                            borderRadius: descBorderRadius + "px",
-                            borderColor: descBorderColor,
-                            paddingTop: descPaddingT,
-                            paddingRight: descPaddingR,
-                            paddingBottom: descPaddingB,
-                            paddingLeft: descPaddingL
-                        }
-                    },
-                    "text" === contentType && React.createElement(RichText.Content, {
-                        tagName: "p",
-                        className: "premium-accordion__desc",
-                        value: item.descText,
-                        style: {
-                            color: descColor,
-                            fontSize: descSize + "px",
-                            letterSpacing: descLetter + "px",
-                            textTransform: descUpper ? "uppercase" : "none",
-                            textShadow: textShadowHorizontal + "px " + textShadowVertical + "px " + textShadowBlur + "px " + textShadowColor,
-                            fontStyle: descStyle,
-                            fontWeight: descWeight,
-                            lineHeight: descLine + "px"
-                        }
-                    }),
-                    "block" === contentType && React.createElement(InnerBlocks.Content, null)
-                )
-            );
-        });
-        return React.createElement(
-            "div",
-            { id: accordionId, className: "" + mainClasses },
-            accordionItems
-        );
-    }
-}, {
-    attributes: attributes,
-
-    save: function save(props) {
-        var _props$attributes3 = props.attributes,
-            accordionId = _props$attributes3.accordionId,
-            repeaterItems = _props$attributes3.repeaterItems,
-            direction = _props$attributes3.direction,
-            titleTag = _props$attributes3.titleTag,
-            titleSize = _props$attributes3.titleSize,
-            titleLine = _props$attributes3.titleLine,
-            titleLetter = _props$attributes3.titleLetter,
-            titleStyle = _props$attributes3.titleStyle,
-            titleUpper = _props$attributes3.titleUpper,
-            titleWeight = _props$attributes3.titleWeight,
-            titleColor = _props$attributes3.titleColor,
-            titleBorder = _props$attributes3.titleBorder,
-            titleBorderColor = _props$attributes3.titleBorderColor,
-            titleBorderWidth = _props$attributes3.titleBorderWidth,
-            titleBorderRadius = _props$attributes3.titleBorderRadius,
-            titleBack = _props$attributes3.titleBack,
-            titleShadowBlur = _props$attributes3.titleShadowBlur,
-            titleShadowColor = _props$attributes3.titleShadowColor,
-            titleShadowHorizontal = _props$attributes3.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes3.titleShadowVertical,
-            titlePaddingT = _props$attributes3.titlePaddingT,
-            titlePaddingR = _props$attributes3.titlePaddingR,
-            titlePaddingB = _props$attributes3.titlePaddingB,
-            titlePaddingL = _props$attributes3.titlePaddingL,
-            arrowColor = _props$attributes3.arrowColor,
-            arrowBack = _props$attributes3.arrowBack,
-            arrowPos = _props$attributes3.arrowPos,
-            arrowPadding = _props$attributes3.arrowPadding,
-            arrowSize = _props$attributes3.arrowSize,
-            arrowRadius = _props$attributes3.arrowRadius,
-            contentType = _props$attributes3.contentType,
-            descAlign = _props$attributes3.descAlign,
-            descSize = _props$attributes3.descSize,
-            descLine = _props$attributes3.descLine,
-            descLetter = _props$attributes3.descLetter,
-            descStyle = _props$attributes3.descStyle,
-            descUpper = _props$attributes3.descUpper,
-            descWeight = _props$attributes3.descWeight,
-            descColor = _props$attributes3.descColor,
-            descBack = _props$attributes3.descBack,
-            descBorder = _props$attributes3.descBorder,
-            descBorderColor = _props$attributes3.descBorderColor,
-            descBorderRadius = _props$attributes3.descBorderRadius,
-            descBorderWidth = _props$attributes3.descBorderWidth,
-            textShadowBlur = _props$attributes3.textShadowBlur,
-            textShadowColor = _props$attributes3.textShadowColor,
-            textShadowHorizontal = _props$attributes3.textShadowHorizontal,
-            textShadowVertical = _props$attributes3.textShadowVertical,
-            descPaddingT = _props$attributes3.descPaddingT,
-            descPaddingR = _props$attributes3.descPaddingR,
-            descPaddingB = _props$attributes3.descPaddingB,
-            descPaddingL = _props$attributes3.descPaddingL;
-
-        var accordionItems = repeaterItems.map(function (item, index) {
-            return React.createElement(
-                "div",
-                {
-                    id: "premium-accordion__layer" + index,
-                    className: "premium-accordion__content_wrap"
-                },
-                React.createElement(
-                    "div",
-                    {
-                        className: "premium-accordion__title_wrap premium-accordion__" + direction + " premium-accordion__" + arrowPos,
-                        style: {
-                            backgroundColor: titleBack,
-                            border: titleBorder,
-                            borderWidth: titleBorderWidth + "px",
-                            borderRadius: titleBorderRadius + "px",
-                            borderColor: titleBorderColor,
-                            paddingTop: titlePaddingT,
-                            paddingRight: titlePaddingR,
-                            paddingBottom: titlePaddingB,
-                            paddingLeft: titlePaddingL
-                        }
-                    },
-                    React.createElement(
-                        "div",
-                        { className: "premium-accordion__title" },
-                        React.createElement(RichText.Content, {
-                            tagName: titleTag.toLowerCase(),
-                            className: "premium-accordion__title_text",
-                            value: item.titleText,
-                            style: {
-                                color: titleColor,
-                                fontSize: titleSize + "px",
-                                letterSpacing: titleLetter + "px",
-                                textTransform: titleUpper ? "uppercase" : "none",
-                                fontStyle: titleStyle,
-                                fontWeight: titleWeight,
-                                textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor,
-                                lineHeight: titleLine + "px"
-                            }
-                        })
-                    ),
-                    React.createElement(
-                        "div",
-                        { className: "premium-accordion__icon_wrap" },
-                        React.createElement(
-                            "svg",
-                            {
-                                className: "premium-accordion__icon premium-accordion__closed",
-                                role: "img",
-                                focusable: "false",
-                                xmlns: "http://www.w3.org/2000/svg",
-                                width: arrowSize,
-                                height: arrowSize,
-                                viewBox: "0 0 20 20",
-                                style: {
-                                    fill: arrowColor,
-                                    backgroundColor: arrowBack,
-                                    padding: arrowPadding + "px",
-                                    borderRadius: arrowRadius + "px"
-                                }
-                            },
-                            React.createElement("polygon", { points: "16.7,3.3 10,10 3.3,3.4 0,6.7 10,16.7 10,16.6 20,6.7 " })
-                        )
-                    )
-                ),
-                React.createElement(
-                    "div",
-                    {
-                        className: "premium-accordion__desc_wrap premium-accordion__desc_close",
-                        style: {
-                            textAlign: descAlign,
-                            backgroundColor: descBack,
-                            border: descBorder,
-                            borderWidth: descBorderWidth + "px",
-                            borderRadius: descBorderRadius + "px",
-                            borderColor: descBorderColor,
-                            paddingTop: descPaddingT,
-                            paddingRight: descPaddingR,
-                            paddingBottom: descPaddingB,
-                            paddingLeft: descPaddingL
-                        }
-                    },
-                    "text" === contentType && React.createElement(RichText.Content, {
-                        tagName: "p",
-                        className: "premium-accordion__desc",
-                        value: item.descText,
-                        style: {
-                            color: descColor,
-                            fontSize: descSize + "px",
-                            letterSpacing: descLetter + "px",
-                            textTransform: descUpper ? "uppercase" : "none",
-                            textShadow: textShadowHorizontal + "px " + textShadowVertical + "px " + textShadowBlur + "px " + textShadowColor,
-                            fontStyle: descStyle,
-                            fontWeight: descWeight,
-                            lineHeight: descLine + "px"
-                        }
-                    }),
-                    "block" === contentType && React.createElement(InnerBlocks.Content, null)
-                )
-            );
-        });
-        return React.createElement(
-            "div",
-            { id: accordionId, className: "" + className },
-            accordionItems
-        );
-    }
-}, {
-    attributes: attributes,
-    save: function save(props) {
-        var _props$attributes4 = props.attributes,
-            accordionId = _props$attributes4.accordionId,
-            repeaterItems = _props$attributes4.repeaterItems,
-            direction = _props$attributes4.direction,
-            titleTag = _props$attributes4.titleTag,
-            titleSize = _props$attributes4.titleSize,
-            titleLine = _props$attributes4.titleLine,
-            titleLetter = _props$attributes4.titleLetter,
-            titleStyle = _props$attributes4.titleStyle,
-            titleUpper = _props$attributes4.titleUpper,
-            titleWeight = _props$attributes4.titleWeight,
-            titleColor = _props$attributes4.titleColor,
-            titleBorder = _props$attributes4.titleBorder,
-            titleBorderColor = _props$attributes4.titleBorderColor,
-            titleBorderWidth = _props$attributes4.titleBorderWidth,
-            titleBorderRadius = _props$attributes4.titleBorderRadius,
-            titleBack = _props$attributes4.titleBack,
-            titleShadowBlur = _props$attributes4.titleShadowBlur,
-            titleShadowColor = _props$attributes4.titleShadowColor,
-            titleShadowHorizontal = _props$attributes4.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes4.titleShadowVertical,
-            titlePaddingT = _props$attributes4.titlePaddingT,
-            titlePaddingR = _props$attributes4.titlePaddingR,
-            titlePaddingB = _props$attributes4.titlePaddingB,
-            titlePaddingL = _props$attributes4.titlePaddingL,
-            arrowColor = _props$attributes4.arrowColor,
-            arrowBack = _props$attributes4.arrowBack,
-            arrowPos = _props$attributes4.arrowPos,
-            arrowPadding = _props$attributes4.arrowPadding,
-            arrowSize = _props$attributes4.arrowSize,
-            arrowRadius = _props$attributes4.arrowRadius,
-            contentType = _props$attributes4.contentType,
-            descAlign = _props$attributes4.descAlign,
-            descSize = _props$attributes4.descSize,
-            descLine = _props$attributes4.descLine,
-            descLetter = _props$attributes4.descLetter,
-            descStyle = _props$attributes4.descStyle,
-            descUpper = _props$attributes4.descUpper,
-            descWeight = _props$attributes4.descWeight,
-            descColor = _props$attributes4.descColor,
-            descBack = _props$attributes4.descBack,
-            descBorder = _props$attributes4.descBorder,
-            descBorderColor = _props$attributes4.descBorderColor,
-            descBorderRadius = _props$attributes4.descBorderRadius,
-            descBorderWidth = _props$attributes4.descBorderWidth,
-            descPaddingT = _props$attributes4.descPaddingT,
-            descPaddingR = _props$attributes4.descPaddingR,
-            descPaddingB = _props$attributes4.descPaddingB,
-            descPaddingL = _props$attributes4.descPaddingL;
-
-
-        var accordionItems = repeaterItems.map(function (item, index) {
-            return React.createElement(
-                "div",
-                {
-                    id: className + "__layer" + index,
-                    className: className + "__content_wrap"
-                },
-                React.createElement(
-                    "div",
-                    {
-                        className: className + "__title_wrap " + className + "__" + direction + " " + className + "__" + arrowPos,
-                        style: {
-                            backgroundColor: titleBack,
-                            border: titleBorder,
-                            borderWidth: titleBorderWidth + "px",
-                            borderRadius: titleBorderRadius + "px",
-                            borderColor: titleBorderColor,
-                            paddingTop: titlePaddingT,
-                            paddingRight: titlePaddingR,
-                            paddingBottom: titlePaddingB,
-                            paddingLeft: titlePaddingL
-                        }
-                    },
-                    React.createElement(
-                        "div",
-                        { className: className + "__title" },
-                        React.createElement(RichText.Content, {
-                            tagName: titleTag.toLowerCase(),
-                            className: className + "__title_text",
-                            value: item.titleText,
-                            style: {
-                                color: titleColor,
-                                fontSize: titleSize + "px",
-                                letterSpacing: titleLetter + "px",
-                                textTransform: titleUpper ? "uppercase" : "none",
-                                fontStyle: titleStyle,
-                                fontWeight: titleWeight,
-                                textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor,
-                                lineHeight: titleLine + "px"
-                            }
-                        })
-                    ),
-                    React.createElement(
-                        "div",
-                        { className: className + "__icon_wrap" },
-                        React.createElement(
-                            "svg",
-                            {
-                                className: className + "__icon premium-accordion__closed",
-                                role: "img",
-                                focusable: "false",
-                                xmlns: "http://www.w3.org/2000/svg",
-                                width: arrowSize,
-                                height: arrowSize,
-                                viewBox: "0 0 20 20",
-                                style: {
-                                    fill: arrowColor,
-                                    backgroundColor: arrowBack,
-                                    padding: arrowPadding + "px",
-                                    borderRadius: arrowRadius + "px"
-                                }
-                            },
-                            React.createElement("polygon", { points: "16.7,3.3 10,10 3.3,3.4 0,6.7 10,16.7 10,16.6 20,6.7 " })
-                        )
-                    )
-                ),
-                React.createElement(
-                    "div",
-                    {
-                        className: className + "__desc_wrap premium-accordion__desc_close",
-                        style: {
-                            textAlign: descAlign,
-                            backgroundColor: descBack,
-                            border: descBorder,
-                            borderWidth: descBorderWidth + "px",
-                            borderRadius: descBorderRadius + "px",
-                            borderColor: descBorderColor,
-                            paddingTop: descPaddingT,
-                            paddingRight: descPaddingR,
-                            paddingBottom: descPaddingB,
-                            paddingLeft: descPaddingL
-                        }
-                    },
-                    "text" === contentType && React.createElement(RichText.Content, {
-                        tagName: "p",
-                        className: className + "__desc",
-                        value: item.descText,
-                        style: {
-                            color: descColor,
-                            fontSize: descSize + "px",
-                            letterSpacing: descLetter + "px",
-                            textTransform: descUpper ? "uppercase" : "none",
-                            fontStyle: descStyle,
-                            fontWeight: descWeight,
-                            lineHeight: descLine + "px"
-                        }
-                    }),
-                    "block" === contentType && React.createElement(InnerBlocks.Content, null)
-                )
-            );
-        });
-        return React.createElement(
-            "div",
-            { id: accordionId, className: "" + className },
-            accordionItems
-        );
-    }
-}];
-exports.default = deprecated;
-
-/***/ }),
-/* 136 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _settings = __webpack_require__(1);
-
-var _icons = __webpack_require__(4);
-
-var _icons2 = _interopRequireDefault(_icons);
-
-var _edit = __webpack_require__(137);
-
-var _edit2 = _interopRequireDefault(_edit);
-
-var _save = __webpack_require__(226);
-
-var _save2 = _interopRequireDefault(_save);
-
-var _deprecated = __webpack_require__(227);
-
-var _deprecated2 = _interopRequireDefault(_deprecated);
-
-var _attributes = __webpack_require__(228);
-
-var _attributes2 = _interopRequireDefault(_attributes);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var __ = wp.i18n.__;
-var registerBlockType = wp.blocks.registerBlockType;
-
-registerBlockType("premium/banner", {
-    title: __("Banner"),
-    icon: React.createElement(_icons2.default, { icon: "banner" }),
-    category: "premium-blocks",
-    attributes: _attributes2.default,
-    supports: {
-        inserter: _settings.banner
-    },
-    example: {},
-    edit: _edit2.default,
-    save: _save2.default,
-    deprecated: _deprecated2.default
-});
-
-/***/ }),
-/* 137 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.edit = undefined;
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _classnames = __webpack_require__(0);
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
-var _premiumBorder = __webpack_require__(6);
-
-var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
-
-var _premiumTypo = __webpack_require__(9);
-
-var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
-
-var _premiumFilters = __webpack_require__(31);
-
-var _premiumFilters2 = _interopRequireDefault(_premiumFilters);
-
-var _premiumResponsiveSpacing = __webpack_require__(30);
-
-var _premiumResponsiveSpacing2 = _interopRequireDefault(_premiumResponsiveSpacing);
-
-var _premiumMediaUpload = __webpack_require__(12);
-
-var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
-
-var _premiumResponsiveTabs = __webpack_require__(7);
-
-var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
-
-var _singleRangeControl = __webpack_require__(3);
-
-var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
-
-var _ColorComponent = __webpack_require__(2);
-
-var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
-
-var _radioControl = __webpack_require__(10);
-
-var _radioControl2 = _interopRequireDefault(_radioControl);
-
-var _PremiumShadow = __webpack_require__(5);
-
-var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var withSelect = wp.data.withSelect;
-var __ = wp.i18n.__;
-var Component = wp.element.Component;
-var _wp$components = wp.components,
-    IconButton = _wp$components.IconButton,
-    Toolbar = _wp$components.Toolbar,
-    PanelBody = _wp$components.PanelBody,
-    SelectControl = _wp$components.SelectControl,
-    TextControl = _wp$components.TextControl,
-    ToggleControl = _wp$components.ToggleControl;
-var _wp$blockEditor = wp.blockEditor,
-    BlockControls = _wp$blockEditor.BlockControls,
-    InspectorControls = _wp$blockEditor.InspectorControls,
-    AlignmentToolbar = _wp$blockEditor.AlignmentToolbar,
-    RichText = _wp$blockEditor.RichText,
-    MediaPlaceholder = _wp$blockEditor.MediaPlaceholder;
-
-var edit = exports.edit = function (_Component) {
-    _inherits(edit, _Component);
-
-    function edit() {
-        _classCallCheck(this, edit);
-
-        var _this = _possibleConstructorReturn(this, (edit.__proto__ || Object.getPrototypeOf(edit)).apply(this, arguments));
-
-        _this.getPreviewSize = _this.getPreviewSize.bind(_this);
-        return _this;
-    }
-
-    _createClass(edit, [{
-        key: "getPreviewSize",
-        value: function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
-            if (device === 'Mobile') {
-                if (undefined !== mobileSize && '' !== mobileSize) {
-                    return mobileSize;
-                } else if (undefined !== tabletSize && '' !== tabletSize) {
-                    return tabletSize;
-                }
-            } else if (device === 'Tablet') {
-                if (undefined !== tabletSize && '' !== tabletSize) {
-                    return tabletSize;
-                }
-            }
-            return desktopSize;
-        }
-    }, {
-        key: "componentDidMount",
-        value: function componentDidMount() {
-            this.props.setAttributes({ block_id: this.props.clientId });
-            this.props.setAttributes({ classMigrate: true });
-        }
-    }, {
-        key: "render",
-        value: function render() {
-            var _props = this.props,
-                isSelected = _props.isSelected,
-                setAttributes = _props.setAttributes,
-                className = _props.className,
-                blockID = _props.clientId;
-            var _props$attributes = this.props.attributes,
-                block_id = _props$attributes.block_id,
-                borderBanner = _props$attributes.borderBanner,
-                imageID = _props$attributes.imageID,
-                imageURL = _props$attributes.imageURL,
-                titleStyles = _props$attributes.titleStyles,
-                descStyles = _props$attributes.descStyles,
-                containerStyles = _props$attributes.containerStyles,
-                title = _props$attributes.title,
-                titleTag = _props$attributes.titleTag,
-                desc = _props$attributes.desc,
-                contentAlign = _props$attributes.contentAlign,
-                effect = _props$attributes.effect,
-                hoverEffect = _props$attributes.hoverEffect,
-                height = _props$attributes.height,
-                minHeight = _props$attributes.minHeight,
-                verAlign = _props$attributes.verAlign,
-                hovered = _props$attributes.hovered,
-                responsive = _props$attributes.responsive,
-                background = _props$attributes.background,
-                opacity = _props$attributes.opacity,
-                urlCheck = _props$attributes.urlCheck,
-                target = _props$attributes.target,
-                url = _props$attributes.url,
-                sepColor = _props$attributes.sepColor,
-                blur = _props$attributes.blur,
-                bright = _props$attributes.bright,
-                contrast = _props$attributes.contrast,
-                saturation = _props$attributes.saturation,
-                hue = _props$attributes.hue,
-                hideDesktop = _props$attributes.hideDesktop,
-                hideTablet = _props$attributes.hideTablet,
-                hideMobile = _props$attributes.hideMobile,
-                borderWidth = _props$attributes.borderWidth,
-                borderTop = _props$attributes.borderTop,
-                borderRight = _props$attributes.borderRight,
-                borderBottom = _props$attributes.borderBottom,
-                borderLeft = _props$attributes.borderLeft,
-                padding = _props$attributes.padding;
-
-
-            var ALIGNS = [{
-                value: "flex-start",
-                label: __("Top", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "center",
-                label: __("Middle", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "flex-end",
-                label: __("Bottom", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "inherit",
-                label: __("Full", 'premium-blocks-for-gutenberg')
-            }];
-
-            var EFFECTS = [{
-                value: "effect1",
-                label: __("Style 1", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "effect2",
-                label: __("Style 2", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "effect3",
-                label: __("Style 3", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "effect4",
-                label: __("Style 4", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "effect5",
-                label: __("Style 5", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "effect6",
-                label: __("Style 6", 'premium-blocks-for-gutenberg')
-            }];
-
-            var HOVER = [{
-                value: "none",
-                label: __("None", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "zoomin",
-                label: __("Zoom In", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "zoomout",
-                label: __("Zoom Out", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "scale",
-                label: __("Scale", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "gray",
-                label: __("Gray Scale", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "blur",
-                label: __("Blur", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "bright",
-                label: __("Bright", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "sepia",
-                label: __("Sepia", 'premium-blocks-for-gutenberg')
-            }];
-
-            var HEIGHT = [{
-                value: "default",
-                label: __("Default", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "custom",
-                label: __("Custom", 'premium-blocks-for-gutenberg')
-            }];
-
-            var mainClasses = (0, _classnames2.default)(className, "premium-banner");
-            var titleFontSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titleSizeTablet, titleStyles[0].titleSizeMobile);
-            var descFontSize = this.getPreviewSize(this.props.deviceType, descStyles[0].descSize, descStyles[0].descSizeTablet, descStyles[0].descSizeMobile);
-
-            var saveStyles = function saveStyles(value) {
-                var newUpdate = titleStyles.map(function (item, index) {
-                    if (0 === index) {
-                        item = _extends({}, item, value);
-                    }
-                    return item;
-                });
-
-                setAttributes({ titleStyles: newUpdate });
-            };
-
-            var descriptionStyles = function descriptionStyles(value) {
-                var newUpdate = descStyles.map(function (item, index) {
-                    if (0 === index) {
-                        item = _extends({}, item, value);
-                    }
-                    return item;
-                });
-                setAttributes({ descStyles: newUpdate });
-            };
-
-            var containerStyle = function containerStyle(value) {
-                var newUpdate = containerStyles.map(function (item, index) {
-                    if (0 === index) {
-                        item = _extends({}, item, value);
-                    }
-                    return item;
-                });
-                setAttributes({ containerStyles: newUpdate });
-            };
-
-            var containerPaddingTop = this.getPreviewSize(this.props.deviceType, padding.Desktop.top, padding.Tablet.top, padding.Mobile.top);
-            var containerPaddingRight = this.getPreviewSize(this.props.deviceType, padding.Desktop.right, padding.Tablet.right, padding.Mobile.right);
-            var containerPaddingBottom = this.getPreviewSize(this.props.deviceType, padding.Desktop.bottom, padding.Tablet.bottom, padding.Mobile.bottom);
-            var containerPaddingLeft = this.getPreviewSize(this.props.deviceType, padding.Desktop.left, padding.Tablet.left, padding.Mobile.left);
-
-            return [isSelected && React.createElement(
-                BlockControls,
-                { key: "controls" },
-                React.createElement(
-                    Toolbar,
-                    null,
-                    React.createElement(IconButton, {
-                        label: __("Refresh this button when it conflict with other buttons styles", 'premium-blocks-for-gutenberg'),
-                        icon: "update",
-                        className: "components-toolbar__control",
-                        onClick: function onClick() {
-                            return setAttributes({ block_id: blockID });
-                        }
-                    })
-                ),
-                React.createElement(AlignmentToolbar, {
-                    value: contentAlign,
-                    onChange: function onChange(newAlign) {
-                        return setAttributes({ contentAlign: newAlign });
-                    }
-                })
-            ), isSelected && imageURL && React.createElement(
-                InspectorControls,
-                { key: "inspector" },
-                React.createElement(
-                    PanelBody,
-                    {
-                        title: __("General Settings", 'premium-blocks-for-gutenberg'),
-                        className: "premium-panel-body",
-                        initialOpen: true
-                    },
-                    React.createElement(
-                        "button",
-                        { className: "lottie-remove", onClick: function onClick(e) {
-                                e.preventDefault();
-                                setAttributes(_defineProperty({
-                                    imageURL: ""
-                                }, "imageURL", ""));
-                            } },
-                        __('Remove Image', 'premium-blocks-for-gutenberg')
-                    ),
-                    React.createElement(_premiumFilters2.default, {
-                        blur: blur,
-                        bright: bright,
-                        contrast: contrast,
-                        saturation: saturation,
-                        hue: hue,
-                        onChangeBlur: function onChangeBlur(value) {
-                            return setAttributes({ blur: value });
-                        },
-                        onChangeBright: function onChangeBright(value) {
-                            return setAttributes({ bright: value });
-                        },
-                        onChangeContrast: function onChangeContrast(value) {
-                            return setAttributes({ contrast: value });
-                        },
-                        onChangeSat: function onChangeSat(value) {
-                            return setAttributes({ saturation: value });
-                        },
-                        onChangeHue: function onChangeHue(value) {
-                            return setAttributes({ hue: value });
-                        }
-                    }),
-                    React.createElement(SelectControl, {
-                        label: __("Banner Style", 'premium-blocks-for-gutenberg'),
-                        value: effect,
-                        onChange: function onChange(newEffect) {
-                            return setAttributes({ effect: newEffect });
-                        },
-                        options: EFFECTS
-                    }),
-                    React.createElement(SelectControl, {
-                        label: __("Image Hover Effect", 'premium-blocks-for-gutenberg'),
-                        options: HOVER,
-                        value: hoverEffect,
-                        onChange: function onChange(newEffect) {
-                            return setAttributes({ hoverEffect: newEffect });
-                        }
-                    }),
-                    React.createElement(ToggleControl, {
-                        label: __("Always Hovered", 'premium-blocks-for-gutenberg'),
-                        checked: hovered,
-                        onChange: function onChange(check) {
-                            return setAttributes({ hovered: check });
-                        }
-                    }),
-                    React.createElement(SelectControl, {
-                        label: __("Height", 'premium-blocks-for-gutenberg'),
-                        options: HEIGHT,
-                        value: height,
-                        onChange: function onChange(newHeight) {
-                            return setAttributes({ height: newHeight });
-                        }
-                    }),
-                    "custom" === height && React.createElement(_singleRangeControl2.default, {
-                        label: __("Min Height (PX)", 'premium-blocks-for-gutenberg'),
-                        value: minHeight,
-                        min: "10",
-                        max: "800",
-                        onChange: function onChange(newSize) {
-                            return setAttributes({ minHeight: newSize });
-                        },
-                        showUnit: false,
-                        defaultValue: 100
-                    }),
-                    "custom" === height && React.createElement(SelectControl, {
-                        label: __("Vertical Align", 'premium-blocks-for-gutenberg'),
-                        options: ALIGNS,
-                        value: verAlign,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({ verAlign: newValue });
-                        }
-                    }),
-                    React.createElement(_ColorComponent2.default, {
-                        label: __("Overlay", 'premium-blocks-for-gutenberg'),
-                        colorValue: background,
-                        colorDefault: '',
-                        onColorChange: function onColorChange(newValue) {
-                            return setAttributes({ background: newValue === undefined ? "transparent" : newValue });
-                        }
-                    }),
-                    React.createElement(_singleRangeControl2.default, {
-                        label: __("Overlay Opacity", 'premium-blocks-for-gutenberg'),
-                        value: opacity,
-                        min: "1",
-                        max: "100",
-                        onChange: function onChange(newOpacity) {
-                            return setAttributes({ opacity: newOpacity === undefined ? 50 : newOpacity });
-                        },
-                        showUnit: false,
-                        defaultValue: ''
-                    }),
-                    React.createElement(ToggleControl, {
-                        label: __("Link", 'premium-blocks-for-gutenberg'),
-                        checked: urlCheck,
-                        onChange: function onChange(newCheck) {
-                            return setAttributes({ urlCheck: newCheck });
-                        }
-                    }),
-                    urlCheck && React.createElement(TextControl, {
-                        value: url,
-                        onChange: function onChange(newURL) {
-                            return setAttributes({ url: newURL });
-                        }
-                    }),
-                    urlCheck && React.createElement(ToggleControl, {
-                        label: __("Open link in new tab", 'premium-blocks-for-gutenberg'),
-                        checked: target,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({ target: newValue });
-                        }
-                    }),
-                    React.createElement(ToggleControl, {
-                        label: __("Hide Description on Mobiles", 'premium-blocks-for-gutenberg'),
-                        checked: responsive,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({ responsive: newValue });
-                        }
-                    })
-                ),
-                React.createElement(
-                    PanelBody,
-                    {
-                        title: __("Title Settings", 'premium-blocks-for-gutenberg'),
-                        className: "premium-panel-body",
-                        initialOpen: false
-                    },
-                    React.createElement(_radioControl2.default, {
-                        choices: ['H1', 'H2', 'H3', 'H4', 'H5', 'H6'],
-                        value: titleTag,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({ titleTag: newValue });
-                        },
-                        label: __("HTML Tag", 'premium-blocks-for-gutenberg')
-                    }),
-                    React.createElement(_premiumTypo2.default, {
-                        components: ["responsiveSize", "weight", "line"],
-                        setAttributes: saveStyles,
-                        fontSizeType: {
-                            value: titleStyles[0].titleSizeUnit,
-                            label: __("titleSizeUnit", 'premium-blocks-for-gutenberg')
-                        },
-                        fontSize: titleStyles[0].titleSize,
-                        fontSizeMobile: titleStyles[0].titleSizeMobile,
-                        fontSizeTablet: titleStyles[0].titleSizeTablet,
-                        onChangeSize: function onChangeSize(value) {
-                            return saveStyles({ titleSize: value });
-                        },
-                        onChangeTabletSize: function onChangeTabletSize(value) {
-                            return saveStyles({ titleSizeTablet: value });
-                        },
-                        onChangeMobileSize: function onChangeMobileSize(value) {
-                            return saveStyles({ titleSizeMobile: value });
-                        },
-                        weight: titleStyles[0].titleWeight,
-                        line: titleStyles[0].titleLine,
-                        onChangeWeight: function onChangeWeight(newWeight) {
-                            return saveStyles({ titleWeight: newWeight === undefined ? 500 : newWeight });
-                        },
-                        onChangeLine: function onChangeLine(newValue) {
-                            return saveStyles({ titleLine: newValue === undefined ? 10 : newValue });
-                        }
-                    }),
-                    React.createElement(_ColorComponent2.default, {
-                        label: __("Text Color", 'premium-blocks-for-gutenberg'),
-                        colorValue: titleStyles[0].titleColor,
-                        colorDefault: '',
-                        onColorChange: function onColorChange(newValue) {
-                            return saveStyles({ titleColor: newValue === undefined ? "transparent" : newValue });
-                        }
-                    }),
-                    "effect3" === effect && React.createElement(_ColorComponent2.default, {
-                        label: __("Separator Color", 'premium-blocks-for-gutenberg'),
-                        colorValue: sepColor,
-                        colorDefault: '',
-                        onColorChange: function onColorChange(newValue) {
-                            return setAttributes({ sepColor: newValue === undefined ? "transparent" : newValue });
-                        }
-                    }),
-                    "effect2" === effect && React.createElement(_ColorComponent2.default, {
-                        label: __("Background Color", 'premium-blocks-for-gutenberg'),
-                        colorValue: titleStyles[0].titleBack,
-                        colorDefault: '',
-                        onColorChange: function onColorChange(newValue) {
-                            return saveStyles({ titleBack: newValue === undefined ? "transparent" : newValue });
-                        }
-                    }),
-                    React.createElement(_PremiumShadow2.default, {
-                        label: __("Text Shadow", 'premium-blocks-for-gutenberg'),
-                        color: titleStyles[0].shadowColor,
-                        blur: titleStyles[0].shadowBlur,
-                        horizontal: titleStyles[0].shadowHorizontal,
-                        vertical: titleStyles[0].shadowVertical,
-                        onChangeColor: function onChangeColor(newColor) {
-                            return saveStyles({ shadowColor: newColor === undefined ? "transparent" : newColor });
-                        },
-                        onChangeBlur: function onChangeBlur(newBlur) {
-                            return saveStyles({ shadowBlur: newBlur === undefined ? 0 : newBlur });
-                        },
-                        onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return saveStyles({ shadowHorizontal: newValue === undefined ? 0 : newValue });
-                        },
-                        onChangeVertical: function onChangeVertical(newValue) {
-                            return saveStyles({ shadowVertical: newValue === undefined ? 0 : newValue });
-                        }
-                    })
-                ),
-                React.createElement(
-                    PanelBody,
-                    {
-                        title: __("Description Settings", 'premium-blocks-for-gutenberg'),
-                        className: "premium-panel-body",
-                        initialOpen: false
-                    },
-                    React.createElement(_premiumTypo2.default, {
-                        components: ["responsiveSize", "weight", "line"],
-                        setAttributes: descriptionStyles,
-                        fontSizeType: {
-                            value: descStyles[0].descSizeUnit,
-                            label: __("descSizeUnit", 'premium-blocks-for-gutenberg')
-                        },
-                        fontSize: descStyles[0].descSize,
-                        fontSizeMobile: descStyles[0].descSizeMobile,
-                        fontSizeTablet: descStyles[0].descSizeTablet,
-                        onChangeSize: function onChangeSize(value) {
-                            descriptionStyles({ descSize: value });
-                        },
-                        onChangeTabletSize: function onChangeTabletSize(value) {
-                            return descriptionStyles({ descSizeTablet: value });
-                        },
-                        onChangeMobileSize: function onChangeMobileSize(value) {
-                            return descriptionStyles({ descSizeMobile: value });
-                        },
-                        weight: descStyles[0].descWeight,
-                        line: descStyles[0].descLine,
-                        onChangeWeight: function onChangeWeight(newWeight) {
-                            return descriptionStyles({ descWeight: newWeight === undefined ? 500 : newWeight });
-                        },
-                        onChangeLine: function onChangeLine(newValue) {
-                            return descriptionStyles({ descLine: newValue === undefined ? 10 : newValue });
-                        }
-                    }),
-                    React.createElement(_ColorComponent2.default, {
-                        label: __("Text Color", 'premium-blocks-for-gutenberg'),
-                        colorValue: descStyles[0].descColor,
-                        colorDefault: '',
-                        onColorChange: function onColorChange(newValue) {
-                            return descriptionStyles({ descColor: newValue === undefined ? "transparent" : newValue });
-                        }
-                    }),
-                    React.createElement(_PremiumShadow2.default, {
-                        label: __("Text Shadow", 'premium-blocks-for-gutenberg'),
-                        color: descStyles[0].descShadowColor,
-                        blur: descStyles[0].descShadowBlur,
-                        horizontal: descStyles[0].descShadowHorizontal,
-                        vertical: descStyles[0].descShadowVertical,
-                        onChangeColor: function onChangeColor(newColor) {
-                            return descriptionStyles({ descShadowColor: newColor === undefined ? "transparent" : newColor });
-                        },
-                        onChangeBlur: function onChangeBlur(newBlur) {
-                            return descriptionStyles({ descShadowBlur: newBlur === undefined ? 0 : newBlur });
-                        },
-                        onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return descriptionStyles({ descShadowHorizontal: newValue === undefined ? 0 : newValue });
-                        },
-                        onChangeVertical: function onChangeVertical(newValue) {
-                            return descriptionStyles({ descShadowVertical: newValue === undefined ? 0 : newValue });
-                        }
-                    })
-                ),
-                React.createElement(
-                    PanelBody,
-                    {
-                        title: __("Container Style", 'premium-blocks-for-gutenberg'),
-                        className: "premium-panel-body",
-                        initialOpen: false
-                    },
-                    React.createElement(_premiumBorder2.default, {
-                        borderType: containerStyles[0].borderType,
-                        borderWidth: borderWidth,
-                        top: borderTop,
-                        right: borderRight,
-                        bottom: borderBottom,
-                        left: borderLeft,
-                        borderColor: containerStyles[0].borderColor,
-                        borderRadius: containerStyles[0].borderRadius,
-                        onChangeType: function onChangeType(newType) {
-                            return containerStyle({ borderType: newType });
-                        },
-                        onChangeWidth: function onChangeWidth(_ref) {
-                            var top = _ref.top,
-                                right = _ref.right,
-                                bottom = _ref.bottom,
-                                left = _ref.left;
-                            return setAttributes({
-                                borderBanner: true,
-                                borderTop: top,
-                                borderRight: right,
-                                borderBottom: bottom,
-                                borderLeft: left
-                            });
-                        },
-                        onChangeColor: function onChangeColor(colorValue) {
-                            return containerStyle({ borderColor: colorValue === undefined ? "transparent" : colorValue });
-                        },
-                        onChangeRadius: function onChangeRadius(newRadius) {
-                            return containerStyle({ borderRadius: newRadius === undefined ? 0 : newRadius });
-                        }
-                    }),
-                    React.createElement(_PremiumShadow2.default, {
-                        label: __("Box Shadow", "Premium-blocks-for-gutenberg"),
-                        boxShadow: true,
-                        color: containerStyles[0].containerShadowColor,
-                        blur: containerStyles[0].containerShadowBlur,
-                        horizontal: containerStyles[0].containerShadowHorizontal,
-                        vertical: containerStyles[0].containerShadowVertical,
-                        position: containerStyles[0].containerShadowPosition,
-                        onChangeColor: function onChangeColor(newColor) {
-                            return containerStyle({ containerShadowColor: newColor });
-                        },
-                        onChangeBlur: function onChangeBlur(newBlur) {
-                            return containerStyle({ containerShadowBlur: newBlur });
-                        },
-                        onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return containerStyle({ containerShadowHorizontal: newValue });
-                        },
-                        onChangeVertical: function onChangeVertical(newValue) {
-                            return containerStyle({ containerShadowVertical: newValue });
-                        },
-                        onChangePosition: function onChangePosition(newValue) {
-                            return containerStyle({ containerShadowPosition: newValue });
-                        }
-                    }),
-                    React.createElement(_premiumResponsiveSpacing2.default, { value: padding, responsive: true, showUnits: true, label: __("Padding"), onChange: function onChange(value) {
-                            return setAttributes({ padding: value });
-                        } })
-                ),
-                React.createElement(_premiumResponsiveTabs2.default, {
-                    Desktop: hideDesktop,
-                    Tablet: hideTablet,
-                    Mobile: hideMobile,
-                    onChangeDesktop: function onChangeDesktop(value) {
-                        return setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" });
-                    },
-                    onChangeTablet: function onChangeTablet(value) {
-                        return setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" });
-                    },
-                    onChangeMobile: function onChangeMobile(value) {
-                        return setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" });
-                    }
-                })
-            ), !imageURL && React.createElement(MediaPlaceholder, {
-                labels: {
-                    title: __('Premium Banner ', 'premium-blocks-for-gutenberg'),
-                    instructions: __('Upload an image file, pick one from your media library, or add one with a URL.', 'premium-blocks-for-gutenberg')
-                },
-                accept: ['image'],
-                allowedTypes: ['image'],
-                value: imageURL,
-                onSelectURL: function onSelectURL(value) {
-                    return setAttributes({ imageURL: value });
-                },
-                onSelect: function onSelect(media) {
-                    setAttributes({
-                        imageID: media.id,
-                        imageURL: media.url
-                    });
-                }
-            }), imageURL && React.createElement(
-                "div",
-                {
-                    id: "premium-banner-" + block_id,
-                    className: mainClasses + " premium-banner__responsive_" + responsive + " premium-banner-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
-                    style: {
-                        paddingTop: containerPaddingTop && "" + containerPaddingTop + padding.unit,
-                        paddingRight: containerPaddingRight && "" + containerPaddingRight + padding.unit,
-                        paddingBottom: containerPaddingBottom && "" + containerPaddingBottom + padding.unit,
-                        paddingLeft: containerPaddingLeft && "" + containerPaddingLeft + padding.unit
-                    }
-                },
-                React.createElement("style", {
-                    dangerouslySetInnerHTML: {
-                        __html: ["#premium-banner-" + block_id + " .premium-banner__effect3 .premium-banner__title_wrap::after{", "background: " + sepColor, "}", "#premium-banner-" + block_id + " .premium-banner__inner {", "background: " + background, "}", "#premium-banner-" + block_id + " .premium-banner__img.premium-banner__active {", "opacity: " + (background ? 1 - opacity / 100 : 1) + " ", "}"].join("\n")
-                    }
-                }),
-                React.createElement(
-                    "div",
-                    {
-                        className: "premium-banner__inner premium-banner__min premium-banner__" + effect + " premium-banner__" + hoverEffect + " hover_" + hovered,
-                        style: {
-                            boxShadow: containerStyles[0].containerShadowHorizontal + "px " + containerStyles[0].containerShadowVertical + "px " + containerStyles[0].containerShadowBlur + "px " + containerStyles[0].containerShadowColor + " " + containerStyles[0].containerShadowPosition,
-                            borderStyle: containerStyles[0].borderType,
-                            borderWidth: borderBanner ? borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px" : borderWidth + "px",
-                            borderRadius: containerStyles[0].borderRadius + "px",
-                            borderColor: containerStyles[0].borderColor
-                        }
-                    },
-                    React.createElement(
-                        "div",
-                        {
-                            className: "premium-banner__img_wrap premium-banner__" + height,
-                            style: {
-                                minHeight: minHeight,
-                                alignItems: verAlign
-                            }
-                        },
-                        React.createElement("img", {
-                            className: "premium-banner__img",
-                            alt: "Banner Image",
-                            src: imageURL,
-                            style: {
-                                filter: "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )"
-                            }
-                        })
-                    ),
-                    React.createElement(
-                        "div",
-                        {
-                            className: "premium-banner__content",
-                            style: {
-                                background: "effect2" === effect ? titleStyles[0].titleBack : "transparent"
-                            }
-                        },
-                        React.createElement(
-                            "div",
-                            {
-                                className: "premium-banner__title_wrap",
-                                style: {
-                                    textAlign: contentAlign
-                                }
-                            },
-                            React.createElement(RichText, {
-                                tagName: titleTag.toLowerCase(),
-                                className: "premium-banner__title",
-                                value: title,
-                                isSelected: false,
-                                onChange: function onChange(newText) {
-                                    return setAttributes({ title: newText });
-                                },
-                                style: {
-                                    fontSize: "" + titleFontSize + titleStyles[0].titleSizeUnit,
-                                    color: titleStyles[0].titleColor,
-                                    fontWeight: titleStyles[0].titleWeight,
-                                    lineHeight: titleStyles[0].titleLine + "px",
-                                    textShadow: titleStyles[0].shadowHorizontal + "px " + titleStyles[0].shadowVertical + "px " + titleStyles[0].shadowBlur + "px " + titleStyles[0].shadowColor
-                                }
-                            })
-                        ),
-                        React.createElement(
-                            "div",
-                            {
-                                className: "premium-banner__desc_wrap",
-                                style: {
-                                    textAlign: contentAlign
-                                }
-                            },
-                            React.createElement(RichText, {
-                                tagName: "p",
-                                className: "premium-banner__desc",
-                                value: desc,
-                                isSelected: false,
-                                onChange: function onChange(newText) {
-                                    return setAttributes({ desc: newText });
-                                },
-                                style: {
-                                    fontSize: "" + descFontSize + descStyles[0].descSizeUnit,
-                                    color: descStyles[0].descColor,
-                                    fontWeight: descStyles[0].descWeight,
-                                    lineHeight: descStyles[0].descLine + "px",
-                                    textShadow: descStyles[0].descShadowHorizontal + "px " + descStyles[0].descShadowVertical + "px " + descStyles[0].descShadowBlur + "px " + descStyles[0].descShadowColor
-                                }
-                            })
-                        )
-                    )
-                )
-            )];
-        }
-    }]);
-
-    return edit;
-}(Component);
-
-;
-exports.default = withSelect(function (select, props) {
-    var _select = select('core/edit-post'),
-        _select$__experimenta = _select.__experimentalGetPreviewDeviceType,
-        __experimentalGetPreviewDeviceType = _select$__experimenta === undefined ? null : _select$__experimenta;
-
-    var deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
-
-    return { deviceType: deviceType };
-})(edit);
-
-/***/ }),
-/* 138 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
 var _Symbol = __webpack_require__(45);
 
 /** Used for built-in method references. */
@@ -13913,7 +11178,7 @@ function getRawTag(value) {
 module.exports = getRawTag;
 
 /***/ }),
-/* 139 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13943,13 +11208,13 @@ function objectToString(value) {
 module.exports = objectToString;
 
 /***/ }),
-/* 140 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var memoizeCapped = __webpack_require__(141);
+var memoizeCapped = __webpack_require__(136);
 
 /** Used to match property names within property paths. */
 var rePropName = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
@@ -13978,13 +11243,13 @@ var stringToPath = memoizeCapped(function (string) {
 module.exports = stringToPath;
 
 /***/ }),
-/* 141 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var memoize = __webpack_require__(142);
+var memoize = __webpack_require__(137);
 
 /** Used as the maximum memoize cache size. */
 var MAX_MEMOIZE_SIZE = 500;
@@ -14012,7 +11277,7 @@ function memoizeCapped(func) {
 module.exports = memoizeCapped;
 
 /***/ }),
-/* 142 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14093,13 +11358,13 @@ memoize.Cache = MapCache;
 module.exports = memoize;
 
 /***/ }),
-/* 143 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var Hash = __webpack_require__(144),
+var Hash = __webpack_require__(139),
     ListCache = __webpack_require__(47),
     Map = __webpack_require__(63);
 
@@ -14122,17 +11387,17 @@ function mapCacheClear() {
 module.exports = mapCacheClear;
 
 /***/ }),
-/* 144 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var hashClear = __webpack_require__(145),
-    hashDelete = __webpack_require__(150),
-    hashGet = __webpack_require__(151),
-    hashHas = __webpack_require__(152),
-    hashSet = __webpack_require__(153);
+var hashClear = __webpack_require__(140),
+    hashDelete = __webpack_require__(145),
+    hashGet = __webpack_require__(146),
+    hashHas = __webpack_require__(147),
+    hashSet = __webpack_require__(148);
 
 /**
  * Creates a hash object.
@@ -14162,7 +11427,7 @@ Hash.prototype.set = hashSet;
 module.exports = Hash;
 
 /***/ }),
-/* 145 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14185,14 +11450,14 @@ function hashClear() {
 module.exports = hashClear;
 
 /***/ }),
-/* 146 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var isFunction = __webpack_require__(90),
-    isMasked = __webpack_require__(147),
+    isMasked = __webpack_require__(142),
     isObject = __webpack_require__(62),
     toSource = __webpack_require__(91);
 
@@ -14237,13 +11502,13 @@ function baseIsNative(value) {
 module.exports = baseIsNative;
 
 /***/ }),
-/* 147 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var coreJsData = __webpack_require__(148);
+var coreJsData = __webpack_require__(143);
 
 /** Used to detect methods masquerading as native. */
 var maskSrcKey = function () {
@@ -14265,7 +11530,7 @@ function isMasked(func) {
 module.exports = isMasked;
 
 /***/ }),
-/* 148 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14279,7 +11544,7 @@ var coreJsData = root['__core-js_shared__'];
 module.exports = coreJsData;
 
 /***/ }),
-/* 149 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14300,7 +11565,7 @@ function getValue(object, key) {
 module.exports = getValue;
 
 /***/ }),
-/* 150 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14325,7 +11590,7 @@ function hashDelete(key) {
 module.exports = hashDelete;
 
 /***/ }),
-/* 151 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14363,7 +11628,7 @@ function hashGet(key) {
 module.exports = hashGet;
 
 /***/ }),
-/* 152 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14394,7 +11659,7 @@ function hashHas(key) {
 module.exports = hashHas;
 
 /***/ }),
-/* 153 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14425,7 +11690,7 @@ function hashSet(key, value) {
 module.exports = hashSet;
 
 /***/ }),
-/* 154 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14446,7 +11711,7 @@ function listCacheClear() {
 module.exports = listCacheClear;
 
 /***/ }),
-/* 155 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14489,7 +11754,7 @@ function listCacheDelete(key) {
 module.exports = listCacheDelete;
 
 /***/ }),
-/* 156 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14516,7 +11781,7 @@ function listCacheGet(key) {
 module.exports = listCacheGet;
 
 /***/ }),
-/* 157 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14540,7 +11805,7 @@ function listCacheHas(key) {
 module.exports = listCacheHas;
 
 /***/ }),
-/* 158 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14574,7 +11839,7 @@ function listCacheSet(key, value) {
 module.exports = listCacheSet;
 
 /***/ }),
-/* 159 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14600,7 +11865,7 @@ function mapCacheDelete(key) {
 module.exports = mapCacheDelete;
 
 /***/ }),
-/* 160 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14623,7 +11888,7 @@ function isKeyable(value) {
 module.exports = isKeyable;
 
 /***/ }),
-/* 161 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14647,7 +11912,7 @@ function mapCacheGet(key) {
 module.exports = mapCacheGet;
 
 /***/ }),
-/* 162 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14671,7 +11936,7 @@ function mapCacheHas(key) {
 module.exports = mapCacheHas;
 
 /***/ }),
-/* 163 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14701,13 +11966,13 @@ function mapCacheSet(key, value) {
 module.exports = mapCacheSet;
 
 /***/ }),
-/* 164 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseToString = __webpack_require__(165);
+var baseToString = __webpack_require__(160);
 
 /**
  * Converts `value` to a string. An empty string is returned for `null`
@@ -14737,7 +12002,7 @@ function toString(value) {
 module.exports = toString;
 
 /***/ }),
-/* 165 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14782,7 +12047,7 @@ function baseToString(value) {
 module.exports = baseToString;
 
 /***/ }),
-/* 166 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14790,11 +12055,11 @@ module.exports = baseToString;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var baseMatches = __webpack_require__(167),
-    baseMatchesProperty = __webpack_require__(208),
-    identity = __webpack_require__(212),
+var baseMatches = __webpack_require__(162),
+    baseMatchesProperty = __webpack_require__(203),
+    identity = __webpack_require__(207),
     isArray = __webpack_require__(14),
-    property = __webpack_require__(213);
+    property = __webpack_require__(208);
 
 /**
  * The base implementation of `_.iteratee`.
@@ -14821,14 +12086,14 @@ function baseIteratee(value) {
 module.exports = baseIteratee;
 
 /***/ }),
-/* 167 */
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseIsMatch = __webpack_require__(168),
-    getMatchData = __webpack_require__(207),
+var baseIsMatch = __webpack_require__(163),
+    getMatchData = __webpack_require__(202),
     matchesStrictComparable = __webpack_require__(103);
 
 /**
@@ -14851,7 +12116,7 @@ function baseMatches(source) {
 module.exports = baseMatches;
 
 /***/ }),
-/* 168 */
+/* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14915,7 +12180,7 @@ function baseIsMatch(object, source, matchData, customizer) {
 module.exports = baseIsMatch;
 
 /***/ }),
-/* 169 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14938,7 +12203,7 @@ function stackClear() {
 module.exports = stackClear;
 
 /***/ }),
-/* 170 */
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14964,7 +12229,7 @@ function stackDelete(key) {
 module.exports = stackDelete;
 
 /***/ }),
-/* 171 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14986,7 +12251,7 @@ function stackGet(key) {
 module.exports = stackGet;
 
 /***/ }),
-/* 172 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15008,7 +12273,7 @@ function stackHas(key) {
 module.exports = stackHas;
 
 /***/ }),
-/* 173 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15050,7 +12315,7 @@ function stackSet(key, value) {
 module.exports = stackSet;
 
 /***/ }),
-/* 174 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15058,9 +12323,9 @@ module.exports = stackSet;
 
 var Stack = __webpack_require__(95),
     equalArrays = __webpack_require__(97),
-    equalByTag = __webpack_require__(180),
-    equalObjects = __webpack_require__(184),
-    getTag = __webpack_require__(202),
+    equalByTag = __webpack_require__(175),
+    equalObjects = __webpack_require__(179),
+    getTag = __webpack_require__(197),
     isArray = __webpack_require__(14),
     isBuffer = __webpack_require__(99),
     isTypedArray = __webpack_require__(101);
@@ -15139,15 +12404,15 @@ function baseIsEqualDeep(object, other, bitmask, customizer, equalFunc, stack) {
 module.exports = baseIsEqualDeep;
 
 /***/ }),
-/* 175 */
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var MapCache = __webpack_require__(61),
-    setCacheAdd = __webpack_require__(176),
-    setCacheHas = __webpack_require__(177);
+    setCacheAdd = __webpack_require__(171),
+    setCacheHas = __webpack_require__(172);
 
 /**
  *
@@ -15174,7 +12439,7 @@ SetCache.prototype.has = setCacheHas;
 module.exports = SetCache;
 
 /***/ }),
-/* 176 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15201,7 +12466,7 @@ function setCacheAdd(value) {
 module.exports = setCacheAdd;
 
 /***/ }),
-/* 177 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15223,7 +12488,7 @@ function setCacheHas(value) {
 module.exports = setCacheHas;
 
 /***/ }),
-/* 178 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15254,7 +12519,7 @@ function arraySome(array, predicate) {
 module.exports = arraySome;
 
 /***/ }),
-/* 179 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15275,18 +12540,18 @@ function cacheHas(cache, key) {
 module.exports = cacheHas;
 
 /***/ }),
-/* 180 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var _Symbol = __webpack_require__(45),
-    Uint8Array = __webpack_require__(181),
+    Uint8Array = __webpack_require__(176),
     eq = __webpack_require__(92),
     equalArrays = __webpack_require__(97),
-    mapToArray = __webpack_require__(182),
-    setToArray = __webpack_require__(183);
+    mapToArray = __webpack_require__(177),
+    setToArray = __webpack_require__(178);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -15393,7 +12658,7 @@ function equalByTag(object, other, tag, bitmask, customizer, equalFunc, stack) {
 module.exports = equalByTag;
 
 /***/ }),
-/* 181 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15407,7 +12672,7 @@ var Uint8Array = root.Uint8Array;
 module.exports = Uint8Array;
 
 /***/ }),
-/* 182 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15433,7 +12698,7 @@ function mapToArray(map) {
 module.exports = mapToArray;
 
 /***/ }),
-/* 183 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15459,13 +12724,13 @@ function setToArray(set) {
 module.exports = setToArray;
 
 /***/ }),
-/* 184 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var getAllKeys = __webpack_require__(185);
+var getAllKeys = __webpack_require__(180);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1;
@@ -15549,14 +12814,14 @@ function equalObjects(object, other, bitmask, customizer, equalFunc, stack) {
 module.exports = equalObjects;
 
 /***/ }),
-/* 185 */
+/* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseGetAllKeys = __webpack_require__(186),
-    getSymbols = __webpack_require__(188),
+var baseGetAllKeys = __webpack_require__(181),
+    getSymbols = __webpack_require__(183),
     keys = __webpack_require__(64);
 
 /**
@@ -15573,13 +12838,13 @@ function getAllKeys(object) {
 module.exports = getAllKeys;
 
 /***/ }),
-/* 186 */
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var arrayPush = __webpack_require__(187),
+var arrayPush = __webpack_require__(182),
     isArray = __webpack_require__(14);
 
 /**
@@ -15601,7 +12866,7 @@ function baseGetAllKeys(object, keysFunc, symbolsFunc) {
 module.exports = baseGetAllKeys;
 
 /***/ }),
-/* 187 */
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15629,14 +12894,14 @@ function arrayPush(array, values) {
 module.exports = arrayPush;
 
 /***/ }),
-/* 188 */
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var arrayFilter = __webpack_require__(189),
-    stubArray = __webpack_require__(190);
+var arrayFilter = __webpack_require__(184),
+    stubArray = __webpack_require__(185);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -15667,7 +12932,7 @@ var getSymbols = !nativeGetSymbols ? stubArray : function (object) {
 module.exports = getSymbols;
 
 /***/ }),
-/* 189 */
+/* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15700,7 +12965,7 @@ function arrayFilter(array, predicate) {
 module.exports = arrayFilter;
 
 /***/ }),
-/* 190 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15731,13 +12996,13 @@ function stubArray() {
 module.exports = stubArray;
 
 /***/ }),
-/* 191 */
+/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseTimes = __webpack_require__(192),
+var baseTimes = __webpack_require__(187),
     isArguments = __webpack_require__(98),
     isArray = __webpack_require__(14),
     isBuffer = __webpack_require__(99),
@@ -15786,7 +13051,7 @@ function arrayLikeKeys(value, inherited) {
 module.exports = arrayLikeKeys;
 
 /***/ }),
-/* 192 */
+/* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15814,7 +13079,7 @@ function baseTimes(n, iteratee) {
 module.exports = baseTimes;
 
 /***/ }),
-/* 193 */
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15840,7 +13105,7 @@ function baseIsArguments(value) {
 module.exports = baseIsArguments;
 
 /***/ }),
-/* 194 */
+/* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15866,7 +13131,7 @@ function stubFalse() {
 module.exports = stubFalse;
 
 /***/ }),
-/* 195 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15922,7 +13187,7 @@ function baseIsTypedArray(value) {
 module.exports = baseIsTypedArray;
 
 /***/ }),
-/* 196 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15944,7 +13209,7 @@ function baseUnary(func) {
 module.exports = baseUnary;
 
 /***/ }),
-/* 197 */
+/* 192 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15985,14 +13250,14 @@ module.exports = nodeUtil;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(51)(module)))
 
 /***/ }),
-/* 198 */
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var isPrototype = __webpack_require__(199),
-    nativeKeys = __webpack_require__(200);
+var isPrototype = __webpack_require__(194),
+    nativeKeys = __webpack_require__(195);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -16023,7 +13288,7 @@ function baseKeys(object) {
 module.exports = baseKeys;
 
 /***/ }),
-/* 199 */
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16049,13 +13314,13 @@ function isPrototype(value) {
 module.exports = isPrototype;
 
 /***/ }),
-/* 200 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var overArg = __webpack_require__(201);
+var overArg = __webpack_require__(196);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeKeys = overArg(Object.keys, Object);
@@ -16063,7 +13328,7 @@ var nativeKeys = overArg(Object.keys, Object);
 module.exports = nativeKeys;
 
 /***/ }),
-/* 201 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16086,17 +13351,17 @@ function overArg(func, transform) {
 module.exports = overArg;
 
 /***/ }),
-/* 202 */
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var DataView = __webpack_require__(203),
+var DataView = __webpack_require__(198),
     Map = __webpack_require__(63),
-    Promise = __webpack_require__(204),
-    Set = __webpack_require__(205),
-    WeakMap = __webpack_require__(206),
+    Promise = __webpack_require__(199),
+    Set = __webpack_require__(200),
+    WeakMap = __webpack_require__(201),
     baseGetTag = __webpack_require__(38),
     toSource = __webpack_require__(91);
 
@@ -16153,13 +13418,13 @@ if (DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag || Map &
 module.exports = getTag;
 
 /***/ }),
-/* 203 */
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var getNative = __webpack_require__(29),
+var getNative = __webpack_require__(30),
     root = __webpack_require__(15);
 
 /* Built-in method references that are verified to be native. */
@@ -16168,13 +13433,13 @@ var DataView = getNative(root, 'DataView');
 module.exports = DataView;
 
 /***/ }),
-/* 204 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var getNative = __webpack_require__(29),
+var getNative = __webpack_require__(30),
     root = __webpack_require__(15);
 
 /* Built-in method references that are verified to be native. */
@@ -16183,13 +13448,13 @@ var Promise = getNative(root, 'Promise');
 module.exports = Promise;
 
 /***/ }),
-/* 205 */
+/* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var getNative = __webpack_require__(29),
+var getNative = __webpack_require__(30),
     root = __webpack_require__(15);
 
 /* Built-in method references that are verified to be native. */
@@ -16198,13 +13463,13 @@ var Set = getNative(root, 'Set');
 module.exports = Set;
 
 /***/ }),
-/* 206 */
+/* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var getNative = __webpack_require__(29),
+var getNative = __webpack_require__(30),
     root = __webpack_require__(15);
 
 /* Built-in method references that are verified to be native. */
@@ -16213,7 +13478,7 @@ var WeakMap = getNative(root, 'WeakMap');
 module.exports = WeakMap;
 
 /***/ }),
-/* 207 */
+/* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16245,7 +13510,7 @@ function getMatchData(object) {
 module.exports = getMatchData;
 
 /***/ }),
-/* 208 */
+/* 203 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16253,7 +13518,7 @@ module.exports = getMatchData;
 
 var baseIsEqual = __webpack_require__(96),
     get = __webpack_require__(85),
-    hasIn = __webpack_require__(209),
+    hasIn = __webpack_require__(204),
     isKey = __webpack_require__(59),
     isStrictComparable = __webpack_require__(102),
     matchesStrictComparable = __webpack_require__(103),
@@ -16284,14 +13549,14 @@ function baseMatchesProperty(path, srcValue) {
 module.exports = baseMatchesProperty;
 
 /***/ }),
-/* 209 */
+/* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseHasIn = __webpack_require__(210),
-    hasPath = __webpack_require__(211);
+var baseHasIn = __webpack_require__(205),
+    hasPath = __webpack_require__(206);
 
 /**
  * Checks if `path` is a direct or inherited property of `object`.
@@ -16326,7 +13591,7 @@ function hasIn(object, path) {
 module.exports = hasIn;
 
 /***/ }),
-/* 210 */
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16347,7 +13612,7 @@ function baseHasIn(object, key) {
 module.exports = baseHasIn;
 
 /***/ }),
-/* 211 */
+/* 206 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16393,7 +13658,7 @@ function hasPath(object, path, hasFunc) {
 module.exports = hasPath;
 
 /***/ }),
-/* 212 */
+/* 207 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16422,14 +13687,14 @@ function identity(value) {
 module.exports = identity;
 
 /***/ }),
-/* 213 */
+/* 208 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseProperty = __webpack_require__(214),
-    basePropertyDeep = __webpack_require__(215),
+var baseProperty = __webpack_require__(209),
+    basePropertyDeep = __webpack_require__(210),
     isKey = __webpack_require__(59),
     toKey = __webpack_require__(50);
 
@@ -16462,7 +13727,7 @@ function property(path) {
 module.exports = property;
 
 /***/ }),
-/* 214 */
+/* 209 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16484,7 +13749,7 @@ function baseProperty(key) {
 module.exports = baseProperty;
 
 /***/ }),
-/* 215 */
+/* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16508,13 +13773,13 @@ function basePropertyDeep(path) {
 module.exports = basePropertyDeep;
 
 /***/ }),
-/* 216 */
+/* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseEach = __webpack_require__(217),
+var baseEach = __webpack_require__(212),
     isArrayLike = __webpack_require__(66);
 
 /**
@@ -16538,14 +13803,14 @@ function baseMap(collection, iteratee) {
 module.exports = baseMap;
 
 /***/ }),
-/* 217 */
+/* 212 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseForOwn = __webpack_require__(218),
-    createBaseEach = __webpack_require__(221);
+var baseForOwn = __webpack_require__(213),
+    createBaseEach = __webpack_require__(216);
 
 /**
  * The base implementation of `_.forEach` without support for iteratee shorthands.
@@ -16560,13 +13825,13 @@ var baseEach = createBaseEach(baseForOwn);
 module.exports = baseEach;
 
 /***/ }),
-/* 218 */
+/* 213 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseFor = __webpack_require__(219),
+var baseFor = __webpack_require__(214),
     keys = __webpack_require__(64);
 
 /**
@@ -16584,13 +13849,13 @@ function baseForOwn(object, iteratee) {
 module.exports = baseForOwn;
 
 /***/ }),
-/* 219 */
+/* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var createBaseFor = __webpack_require__(220);
+var createBaseFor = __webpack_require__(215);
 
 /**
  * The base implementation of `baseForOwn` which iterates over `object`
@@ -16608,7 +13873,7 @@ var baseFor = createBaseFor();
 module.exports = baseFor;
 
 /***/ }),
-/* 220 */
+/* 215 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16641,7 +13906,7 @@ function createBaseFor(fromRight) {
 module.exports = createBaseFor;
 
 /***/ }),
-/* 221 */
+/* 216 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16681,7 +13946,7 @@ function createBaseEach(eachFunc, fromRight) {
 module.exports = createBaseEach;
 
 /***/ }),
-/* 222 */
+/* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16863,7 +14128,7 @@ exports.getFormat = I;
 exports.random = E;
 
 /***/ }),
-/* 223 */
+/* 218 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17768,7 +15033,7 @@ fonts["Zilla Slab Highlight"] = { "v": ["regular", "700"], "subset": ["latin-ext
 exports.default = fonts;
 
 /***/ }),
-/* 224 */
+/* 219 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17865,7 +15130,7 @@ function PremiumRange(_ref) {
 exports.default = PremiumRange;
 
 /***/ }),
-/* 225 */
+/* 220 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18029,6 +15294,2705 @@ var FontsList = function FontsList(_ref3) {
 exports.default = FontsList;
 
 /***/ }),
+/* 221 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _classnames = __webpack_require__(0);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+var _wp$blockEditor = wp.blockEditor,
+    RichText = _wp$blockEditor.RichText,
+    InnerBlocks = _wp$blockEditor.InnerBlocks;
+
+
+var save = function save(props) {
+    var className = props.className;
+    var _props$attributes = props.attributes,
+        accordionId = _props$attributes.accordionId,
+        repeaterItems = _props$attributes.repeaterItems,
+        direction = _props$attributes.direction,
+        titleTag = _props$attributes.titleTag,
+        titleStyles = _props$attributes.titleStyles,
+        arrowStyles = _props$attributes.arrowStyles,
+        descStyles = _props$attributes.descStyles,
+        contentType = _props$attributes.contentType,
+        textShadowColor = _props$attributes.textShadowColor,
+        textShadowBlur = _props$attributes.textShadowBlur,
+        textShadowHorizontal = _props$attributes.textShadowHorizontal,
+        textShadowVertical = _props$attributes.textShadowVertical,
+        titleBorder = _props$attributes.titleBorder,
+        descBorder = _props$attributes.descBorder;
+
+
+    var mainClasses = (0, _classnames2.default)(className, 'premium-accordion');
+
+    var accordionItems = repeaterItems.map(function (item, index) {
+        return React.createElement(
+            'div',
+            {
+                id: 'premium-accordion__layer' + index,
+                className: 'premium-accordion__content_wrap'
+            },
+            React.createElement(
+                'div',
+                {
+                    className: 'premium-accordion__title_wrap premium-accordion__' + direction + ' premium-accordion__' + arrowStyles[0].arrowPos,
+                    style: {
+                        backgroundColor: titleStyles[0].titleBack,
+                        borderStyle: titleBorder && titleBorder.borderType,
+                        borderColor: titleBorder && titleBorder.borderColor
+                    }
+                },
+                React.createElement(
+                    'div',
+                    { className: 'premium-accordion__title' },
+                    React.createElement(RichText.Content, {
+                        tagName: titleTag.toLowerCase(),
+                        className: 'premium-accordion__title_text',
+                        value: item.titleText,
+                        style: {
+                            color: titleStyles[0].titleColor,
+                            fontSize: titleStyles[0].titleSize + "px",
+                            letterSpacing: titleStyles[0].titleLetter + "px",
+                            textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                            fontStyle: titleStyles[0].titleStyle,
+                            fontWeight: titleStyles[0].titleWeight,
+                            textShadow: titleStyles[0].titleShadowHorizontal + 'px ' + titleStyles[0].titleShadowVertical + 'px ' + titleStyles[0].titleShadowBlur + 'px ' + titleStyles[0].titleShadowColor,
+                            lineHeight: titleStyles[0].titleLine + "px"
+                        }
+                    })
+                ),
+                React.createElement(
+                    'div',
+                    { className: 'premium-accordion__icon_wrap' },
+                    React.createElement(
+                        'svg',
+                        {
+                            className: 'premium-accordion__icon premium-accordion__closed',
+                            role: 'img',
+                            focusable: 'false',
+                            xmlns: 'http://www.w3.org/2000/svg',
+                            width: arrowStyles[0].arrowSize,
+                            height: arrowStyles[0].arrowSize,
+                            viewBox: '0 0 20 20',
+                            style: {
+                                fill: arrowStyles[0].arrowColor,
+                                backgroundColor: arrowStyles[0].arrowBack,
+                                padding: arrowStyles[0].arrowPadding + "px",
+                                borderRadius: arrowStyles[0].arrowRadius + "px"
+                            }
+                        },
+                        React.createElement('polygon', { points: '16.7,3.3 10,10 3.3,3.4 0,6.7 10,16.7 10,16.6 20,6.7 ' })
+                    )
+                )
+            ),
+            React.createElement(
+                'div',
+                {
+                    className: 'premium-accordion__desc_wrap premium-accordion__desc_close',
+                    style: {
+                        textAlign: descStyles[0].descAlign,
+                        backgroundColor: descStyles[0].descBack,
+                        borderStyle: descBorder && descBorder.borderType,
+                        borderColor: descBorder && descBorder.borderColor
+
+                    }
+                },
+                "text" === contentType && React.createElement(RichText.Content, {
+                    tagName: 'p',
+                    className: 'premium-accordion__desc',
+                    value: item.descText,
+                    style: {
+                        color: descStyles[0].descColor,
+                        fontSize: descStyles[0].descSize + "px",
+                        letterSpacing: descStyles[0].descLetter + "px",
+                        textTransform: descStyles[0].descUpper ? "uppercase" : "none",
+                        textShadow: textShadowHorizontal + 'px ' + textShadowVertical + 'px ' + textShadowBlur + 'px ' + textShadowColor,
+                        fontStyle: descStyles[0].descStyle,
+                        fontWeight: descStyles[0].descWeight,
+                        lineHeight: descStyles[0].descLine + "px"
+                    }
+                }),
+                "block" === contentType && React.createElement(InnerBlocks.Content, null)
+            )
+        );
+    });
+    return React.createElement(
+        'div',
+        { id: accordionId, className: '' + mainClasses },
+        accordionItems
+    );
+};
+exports.default = save;
+
+/***/ }),
+/* 222 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var __ = wp.i18n.__;
+
+
+var attributes = {
+    accordionId: {
+        type: "string"
+    },
+    repeaterItems: {
+        type: "array",
+        default: [{
+            titleText: __("Awesome Title", 'premium-blocks-for-gutenberg'),
+            descText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        }]
+    },
+    direction: {
+        type: "string",
+        default: "ltr"
+    },
+    titleTag: {
+        type: "string",
+        default: "H4"
+    },
+    titleStyles: {
+        type: "array",
+        default: [{
+            titleColor: "",
+            titleSize: '',
+            titleLine: '',
+            titleLetter: '',
+            titleStyle: '',
+            titleUpper: '',
+            titleWeight: '500',
+            titleBack: '',
+            titleShadowColor: '',
+            titleShadowBlur: 0,
+            titleShadowHorizontal: 0,
+            titleShadowVertical: 0
+        }]
+    },
+    arrowStyles: {
+        type: "array",
+        default: [{
+            arrowColor: '',
+            arrowBack: '',
+            arrowPos: 'out',
+            arrowPadding: '',
+            arrowRadius: '',
+            arrowSize: 20
+        }]
+    },
+    descStyles: {
+        type: 'array',
+        default: [{
+            descAlign: 'left',
+            descColor: '',
+            descBack: '',
+            descSize: '',
+            descLine: '',
+            descLetter: '',
+            descStyle: '',
+            descUpper: false,
+            descWeight: 500,
+            descPaddingT: '',
+            descPaddingR: '',
+            descPaddingB: '',
+            descPaddingL: ''
+        }]
+    },
+
+    contentType: {
+        type: "string",
+        default: "text"
+    },
+
+    titleEditBorder: {
+        type: "boolean"
+    },
+
+    textShadowColor: {
+        type: "string"
+    },
+    textShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    textShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    textShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    titlePadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
+    descPadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
+    titleBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    descBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    }
+};
+exports.default = attributes;
+
+/***/ }),
+/* 223 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _classnames = __webpack_require__(0);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var className = "premium-accordion";
+
+var __ = wp.i18n.__;
+var _wp$editor = wp.editor,
+    RichText = _wp$editor.RichText,
+    InnerBlocks = _wp$editor.InnerBlocks;
+
+
+var attributes = {
+    accordionId: {
+        type: "string"
+    },
+    repeaterItems: {
+        type: "array",
+        default: [{
+            titleText: __("Awesome Title"),
+            descText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        }]
+    },
+    direction: {
+        type: "string",
+        default: "ltr"
+    },
+    titleTag: {
+        type: "string",
+        default: "H4"
+    },
+    titleColor: {
+        type: "string"
+    },
+    titleSize: {
+        type: "number"
+    },
+    titleLine: {
+        type: "number"
+    },
+    titleLetter: {
+        type: "number"
+    },
+    titleStyle: {
+        type: "string"
+    },
+    titleUpper: {
+        type: "boolean"
+    },
+    titleWeight: {
+        type: "number",
+        default: 500
+    },
+    titleBorder: {
+        type: "string",
+        default: "none"
+    },
+    titleBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    titleBorderTop: {
+        type: "number"
+    },
+    titleBorderRight: {
+        type: "number"
+    },
+    titleBorderBottom: {
+        type: "number"
+    },
+    titleBorderLeft: {
+        type: "number"
+    },
+    titleBorderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    titleBorderRadius: {
+        type: "number",
+        default: "0"
+    },
+    titleBorderColor: {
+        type: "string"
+    },
+    titleBack: {
+        type: "string"
+    },
+    titleShadowColor: {
+        type: "string"
+    },
+    titleShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    titleShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    titleShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    titlePaddingT: {
+        type: "number"
+    },
+    titlePaddingR: {
+        type: "number"
+    },
+    titlePaddingB: {
+        type: "number"
+    },
+    titlePaddingL: {
+        type: "number"
+    },
+    arrowColor: {
+        type: "string"
+    },
+    arrowBack: {
+        type: "string"
+    },
+    arrowPos: {
+        type: "string",
+        default: "out"
+    },
+    arrowPadding: {
+        type: "number"
+    },
+    arrowRadius: {
+        type: "number"
+    },
+    arrowSize: {
+        type: "number",
+        default: 20
+    },
+    contentType: {
+        type: "string",
+        default: "text"
+    },
+    descAlign: {
+        type: "string",
+        default: "left"
+    },
+    descColor: {
+        type: "string"
+    },
+    descBack: {
+        type: "string"
+    },
+    descBorder: {
+        type: "string",
+        default: "none"
+    },
+    descBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    descBorderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    descBorderTop: {
+        type: "number"
+    },
+    descBorderRight: {
+        type: "number"
+    },
+    descBorderBottom: {
+        type: "number"
+    },
+    descBorderLeft: {
+        type: "number"
+    },
+    titleEditBorder: {
+        type: "boolean"
+    },
+    descBorderRadius: {
+        type: "number",
+        default: "0"
+    },
+    descBorderColor: {
+        type: "string"
+    },
+    descSize: {
+        type: "number"
+    },
+    descLine: {
+        type: "number"
+    },
+    descLetter: {
+        type: "number"
+    },
+    descStyle: {
+        type: "string"
+    },
+    descUpper: {
+        type: "boolean"
+    },
+    descWeight: {
+        type: "number",
+        default: 500
+    },
+    textShadowColor: {
+        type: "string"
+    },
+    textShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    textShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    textShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    descPaddingT: {
+        type: "number"
+    },
+    descPaddingR: {
+        type: "number"
+    },
+    descPaddingB: {
+        type: "number"
+    },
+    descPaddingL: {
+        type: "number",
+        default: 10
+    }
+};
+
+var newAttributes = {
+    accordionId: {
+        type: "string"
+    },
+    repeaterItems: {
+        type: "array",
+        default: [{
+            titleText: __("Awesome Title", 'premium-blocks-for-gutenberg'),
+            descText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        }]
+    },
+    direction: {
+        type: "string",
+        default: "ltr"
+    },
+    titleTag: {
+        type: "string",
+        default: "H4"
+    },
+    titleStyles: {
+        type: "array",
+        default: [{
+            titleColor: "",
+            titleSize: '',
+            titleLine: '',
+            titleLetter: '',
+            titleStyle: '',
+            titleUpper: '',
+            titleWeight: '500',
+            titleBorder: 'none',
+            titleBorderRadius: '',
+            titleBorderColor: '',
+            titleBack: '',
+            titleShadowColor: '',
+            titleShadowBlur: 0,
+            titleShadowHorizontal: 0,
+            titleShadowVertical: 0
+        }]
+    },
+    arrowStyles: {
+        type: "array",
+        default: [{
+            arrowColor: '',
+            arrowBack: '',
+            arrowPos: 'out',
+            arrowPadding: '',
+            arrowRadius: '',
+            arrowSize: 20
+        }]
+    },
+    descStyles: {
+        type: 'array',
+        default: [{
+            descAlign: 'left',
+            descColor: '',
+            descBack: '',
+            descBorder: 'none',
+            descBorderWidth: 1,
+            descBorderUpdated: false,
+            descBorderTop: '',
+            descBorderRight: '',
+            descBorderBottom: '',
+            descBorderLeft: '',
+            descBorderRadius: 0,
+            descBorderColor: '',
+            descSize: '',
+            descLine: '',
+            descLetter: '',
+            descStyle: '',
+            descUpper: false,
+            descWeight: 500,
+            descPaddingT: '',
+            descPaddingR: '',
+            descPaddingB: '',
+            descPaddingL: ''
+        }]
+    },
+
+    contentType: {
+        type: "string",
+        default: "text"
+    },
+
+    titleEditBorder: {
+        type: "boolean"
+    },
+
+    textShadowColor: {
+        type: "string"
+    },
+    textShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    textShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    textShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    titleBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    titleBorderTop: {
+        type: "number"
+    },
+    titleBorderRight: {
+        type: "number"
+    },
+    titleBorderBottom: {
+        type: "number"
+    },
+    titleBorderLeft: {
+        type: "number"
+    },
+    titleBorderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    titlePaddingT: {
+        type: "number"
+    },
+    titlePaddingR: {
+        type: "number"
+    },
+    titlePaddingB: {
+        type: "number"
+    },
+    titlePaddingL: {
+        type: "number"
+    },
+    descBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    descBorderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    descBorderTop: {
+        type: "number"
+    },
+    descBorderRight: {
+        type: "number"
+    },
+    descBorderBottom: {
+        type: "number"
+    },
+    descBorderLeft: {
+        type: "number"
+    },
+    descPaddingT: {
+        type: "number"
+    },
+    descPaddingR: {
+        type: "number"
+    },
+    descPaddingB: {
+        type: "number"
+    },
+    descPaddingL: {
+        type: "number",
+        default: 10
+    },
+    titlePaddingTTablet: {
+        type: "number"
+    },
+    titlePaddingRTablet: {
+        type: "number"
+    },
+    titlePaddingBTablet: {
+        type: "number"
+    },
+    titlePaddingLTablet: {
+        type: "number"
+    },
+    titlePaddingTMobile: {
+        type: "number"
+    },
+    titlePaddingRMobile: {
+        type: "number"
+    },
+    titlePaddingBMobile: {
+        type: "number"
+    },
+    titlePaddingLMobile: {
+        type: "number"
+    },
+    descPaddingTTablet: {
+        type: "number"
+    },
+    descPaddingRTablet: {
+        type: "number"
+    },
+    descPaddingBTablet: {
+        type: "number"
+    },
+    descPaddingLTablet: {
+        type: "number"
+    },
+    descPaddingTMobile: {
+        type: "number"
+    },
+    descPaddingRMobile: {
+        type: "number"
+    },
+    descPaddingBMobile: {
+        type: "number"
+    },
+    descPaddingLMobile: {
+        type: "number"
+    },
+    titlePadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
+    descPadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
+    titleBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    descBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    }
+};
+
+var deprecated = [{
+    attributes: Object.assign(attributes, newAttributes),
+    isEligible: function isEligible() {
+        return true;
+    },
+
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            titlePadding: {
+                "Desktop": {
+                    top: attributes.titlePaddingT || '',
+                    right: attributes.titlePaddingR || '',
+                    bottom: attributes.titlePaddingB || '',
+                    left: attributes.titlePaddingL || ''
+                },
+                "Tablet": {
+                    top: attributes.titlePaddingTTablet || '',
+                    right: attributes.titlePaddingRTablet || '',
+                    bottom: attributes.titlePaddingBTablet || '',
+                    left: attributes.titlePaddingLTablet || ''
+                },
+                "Mobile": {
+                    top: attributes.titlePaddingTMobile || '',
+                    right: attributes.titlePaddingRMobile || '',
+                    bottom: attributes.titlePaddingBMobile || '',
+                    left: attributes.titlePaddingLMobile || ''
+                },
+                "unit": "px"
+            },
+            descPadding: {
+                "Desktop": {
+                    top: attributes.descPaddingT || '',
+                    right: attributes.descPaddingR || '',
+                    bottom: attributes.descPaddingB || '',
+                    left: attributes.descPaddingL || ''
+                },
+                "Tablet": {
+                    top: attributes.descPaddingTTablet || '',
+                    right: attributes.descPaddingRTablet || '',
+                    bottom: attributes.descPaddingBTablet || '',
+                    left: attributes.descPaddingLTablet || ''
+                },
+                "Mobile": {
+                    top: attributes.descPaddingTMobile || '',
+                    right: attributes.descPaddingRMobile || '',
+                    bottom: attributes.descPaddingBMobile || '',
+                    left: attributes.descPaddingLMobile || ''
+                },
+                "unit": "px"
+            },
+            titleBorder: {
+                "borderType": attributes.titleStyles[0].titleBorder || '',
+                "borderColor": attributes.titleStyles[0].titleBorderColor || '',
+                "borderWidth": {
+                    Desktop: {
+                        top: attributes.titleBorderTop || '',
+                        right: attributes.titleBorderRight || '',
+                        bottom: attributes.titleBorderBottom || '',
+                        left: attributes.titleBorderLeft || ''
+                    },
+                    Tablet: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    Mobile: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    }
+                },
+                "borderRadius": {
+                    Desktop: {
+                        top: attributes.titleStyles[0].titleBorderRadius || '',
+                        right: attributes.titleStyles[0].titleBorderRadius || '',
+                        bottom: attributes.titleStyles[0].titleBorderRadius || '',
+                        left: attributes.titleStyles[0].titleBorderRadius || ''
+                    },
+                    Tablet: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    Mobile: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    }
+                }
+            },
+            descBorder: {
+                "borderType": attributes.descStyles[0].descBorder || '',
+                "borderColor": attributes.descStyles[0].descBorderColor || '',
+                "borderWidth": {
+                    Desktop: {
+                        top: attributes.descBorderTop || '',
+                        right: attributes.descBorderRight || '',
+                        bottom: attributes.descBorderBottom || '',
+                        left: attributes.descBorderLeft || ''
+                    },
+                    Tablet: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    Mobile: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    }
+                },
+                "borderRadius": {
+                    Desktop: {
+                        top: attributes.descStyles[0].descBorderRadius || '',
+                        right: attributes.descStyles[0].descBorderRadius || '',
+                        bottom: attributes.descStyles[0].descBorderRadius || '',
+                        left: attributes.descStyles[0].descBorderRadius || ''
+                    },
+                    Tablet: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    Mobile: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    }
+                }
+            }
+        };
+        return Object.assign(attributes, newAttributes);
+    },
+    save: function save(props) {
+        var className = props.className;
+        var _props$attributes = props.attributes,
+            accordionId = _props$attributes.accordionId,
+            repeaterItems = _props$attributes.repeaterItems,
+            direction = _props$attributes.direction,
+            titleTag = _props$attributes.titleTag,
+            titleStyles = _props$attributes.titleStyles,
+            _props$attributes$arr = _props$attributes.arrowStyles,
+            arrowStyles = _props$attributes$arr === undefined ? [] : _props$attributes$arr,
+            descStyles = _props$attributes.descStyles,
+            contentType = _props$attributes.contentType,
+            titleEditBorder = _props$attributes.titleEditBorder,
+            textShadowColor = _props$attributes.textShadowColor,
+            textShadowBlur = _props$attributes.textShadowBlur,
+            textShadowHorizontal = _props$attributes.textShadowHorizontal,
+            textShadowVertical = _props$attributes.textShadowVertical,
+            titleBorderWidth = _props$attributes.titleBorderWidth,
+            titleBorderTop = _props$attributes.titleBorderTop,
+            titleBorderRight = _props$attributes.titleBorderRight,
+            titleBorderBottom = _props$attributes.titleBorderBottom,
+            titleBorderLeft = _props$attributes.titleBorderLeft,
+            titleBorderUpdated = _props$attributes.titleBorderUpdated,
+            descBorderWidth = _props$attributes.descBorderWidth,
+            descBorderUpdated = _props$attributes.descBorderUpdated,
+            descBorderTop = _props$attributes.descBorderTop,
+            descBorderRight = _props$attributes.descBorderRight,
+            descBorderBottom = _props$attributes.descBorderBottom,
+            descBorderLeft = _props$attributes.descBorderLeft;
+
+
+        var mainClasses = (0, _classnames2.default)(className, 'premium-accordion');
+
+        var accordionItems = repeaterItems.map(function (item, index) {
+            return React.createElement(
+                "div",
+                {
+                    id: "premium-accordion__layer" + index,
+                    className: "premium-accordion__content_wrap"
+                },
+                React.createElement(
+                    "div",
+                    {
+                        className: "premium-accordion__title_wrap premium-accordion__" + direction + " premium-accordion__" + arrowStyles[0].arrowPos,
+                        style: {
+                            backgroundColor: titleStyles[0].titleBack,
+                            borderStyle: titleStyles[0].titleBorder,
+                            borderWidth: titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px",
+                            borderRadius: titleStyles[0].titleBorderRadius + "px",
+                            borderColor: titleStyles[0].titleBorderColor
+                        }
+                    },
+                    React.createElement(
+                        "div",
+                        { className: "premium-accordion__title" },
+                        React.createElement(RichText.Content, {
+                            tagName: titleTag.toLowerCase(),
+                            className: "premium-accordion__title_text",
+                            value: item.titleText,
+                            style: {
+                                color: titleStyles[0].titleColor,
+                                fontSize: titleStyles[0].titleSize + "px",
+                                letterSpacing: titleStyles[0].titleLetter + "px",
+                                textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                fontStyle: titleStyles[0].titleStyle,
+                                fontWeight: titleStyles[0].titleWeight,
+                                textShadow: titleStyles[0].titleShadowHorizontal + "px " + titleStyles[0].titleShadowVertical + "px " + titleStyles[0].titleShadowBlur + "px " + titleStyles[0].titleShadowColor,
+                                lineHeight: titleStyles[0].titleLine + "px"
+                            }
+                        })
+                    ),
+                    React.createElement(
+                        "div",
+                        { className: "premium-accordion__icon_wrap" },
+                        React.createElement(
+                            "svg",
+                            {
+                                className: "premium-accordion__icon premium-accordion__closed",
+                                role: "img",
+                                focusable: "false",
+                                xmlns: "http://www.w3.org/2000/svg",
+                                width: arrowStyles[0].arrowSize,
+                                height: arrowStyles[0].arrowSize,
+                                viewBox: "0 0 20 20",
+                                style: {
+                                    fill: arrowStyles[0].arrowColor,
+                                    backgroundColor: arrowStyles[0].arrowBack,
+                                    padding: arrowStyles[0].arrowPadding + "px",
+                                    borderRadius: arrowStyles[0].arrowRadius + "px"
+                                }
+                            },
+                            React.createElement("polygon", { points: "16.7,3.3 10,10 3.3,3.4 0,6.7 10,16.7 10,16.6 20,6.7 " })
+                        )
+                    )
+                ),
+                React.createElement(
+                    "div",
+                    {
+                        className: "premium-accordion__desc_wrap premium-accordion__desc_close",
+                        style: {
+                            textAlign: descStyles[0].descAlign,
+                            backgroundColor: descStyles[0].descBack,
+                            borderStyle: descStyles[0].descBorder,
+                            borderWidth: descBorderUpdated ? descBorderTop + "px " + descBorderRight + "px " + descBorderBottom + "px " + descBorderLeft + "px" : descBorderWidth + "px",
+                            borderRadius: descStyles[0].descBorderRadius + "px",
+                            borderColor: descStyles[0].descBorderColor
+
+                        }
+                    },
+                    "text" === contentType && React.createElement(RichText.Content, {
+                        tagName: "p",
+                        className: "premium-accordion__desc",
+                        value: item.descText,
+                        style: {
+                            color: descStyles[0].descColor,
+                            fontSize: descStyles[0].descSize + "px",
+                            letterSpacing: descStyles[0].descLetter + "px",
+                            textTransform: descStyles[0].descUpper ? "uppercase" : "none",
+                            textShadow: textShadowHorizontal + "px " + textShadowVertical + "px " + textShadowBlur + "px " + textShadowColor,
+                            fontStyle: descStyles[0].descStyle,
+                            fontWeight: descStyles[0].descWeight,
+                            lineHeight: descStyles[0].descLine + "px"
+                        }
+                    }),
+                    "block" === contentType && React.createElement(InnerBlocks.Content, null)
+                )
+            );
+        });
+        return React.createElement(
+            "div",
+            { id: accordionId, className: "" + mainClasses },
+            accordionItems
+        );
+    }
+}, {
+    attributes: attributes,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            titleStyles: [{
+                titleColor: attributes.titleColor,
+                titleSize: attributes.titleSize,
+                titleLine: attributes.titleLine,
+                titleLetter: attributes.titleLetter,
+                titleStyle: attributes.titleStyle,
+                titleUpper: attributes.titleUpper,
+                titleWeight: attributes.titleWeight,
+                titleBorder: attributes.titleBorder,
+                titleBorderRadius: attributes.titleBorderRadius,
+                titleBorderColor: attributes.titleBorderColor,
+                titleBack: attributes.titleBack,
+                titleShadowColor: attributes.titleShadowColor,
+                titleShadowBlur: attributes.titleShadowBlur,
+                titleShadowHorizontal: attributes.titleShadowHorizontal,
+                titleShadowVertical: attributes.titleShadowVertical
+            }],
+
+            arrowStyles: [{
+                arrowColor: attributes.arrowColor,
+                arrowBack: attributes.arrowBack,
+                arrowPos: attributes.arrowPos,
+                arrowPadding: attributes.arrowPadding,
+                arrowRadius: attributes.arrowRadius,
+                arrowSize: attributes.arrowSize
+            }],
+
+            descStyles: [{
+                descAlign: attributes.descAlign,
+                descColor: attributes.descColor,
+                descBack: attributes.descBack,
+                descBorder: attributes.descBorder,
+                descBorderWidth: attributes.descBorderWidth,
+                descBorderUpdated: attributes.descBorderUpdated,
+                descBorderTop: attributes.descBorderTop,
+                descBorderRight: attributes.descBorderRight,
+                descBorderBottom: attributes.descBorderBottom,
+                descBorderLeft: attributes.descBorderLeft,
+                descBorderRadius: attributes.descBorderRadius,
+                descBorderColor: attributes.descBorderColor,
+                descSize: attributes.descSize,
+                descLine: attributes.descLine,
+                descLetter: attributes.descLetter,
+                descStyle: attributes.descStyle,
+                descUpper: attributes.descUpper,
+                descWeight: attributes.descWeight,
+                descPaddingT: attributes.descPaddingT,
+                descPaddingR: attributes.descPaddingR,
+                descPaddingB: attributes.descPaddingB,
+                descPaddingL: attributes.descPaddingL
+            }],
+            titlePaddingTTablet: "0",
+            titlePaddingRTablet: "0",
+            titlePaddingBTablet: "0",
+            titlePaddingLTablet: "0",
+            titlePaddingTMobile: "0",
+            titlePaddingRMobile: "0",
+            titlePaddingBMobile: "0",
+            titlePaddingLMobile: "0",
+            arrowPaddingTTablet: "0",
+            arrowPaddingRTablet: "0",
+            arrowPaddingBTablet: "0",
+            arrowPaddingLTablet: "0",
+            arrowPaddingTMobile: "0",
+            arrowPaddingRMobile: "0",
+            arrowPaddingBMobile: "0",
+            arrowPaddingLMobile: "0",
+            descPaddingTTablet: "0",
+            descPaddingRTablet: "0",
+            descPaddingBTablet: "0",
+            descPaddingLTablet: "0",
+            descPaddingTMobile: "0",
+            descPaddingRMobile: "0",
+            descPaddingBMobile: "0",
+            descPaddingLMobile: "0"
+
+        };
+        return Object.assign(attributes, newAttributes);
+    },
+    save: function save(props) {
+        var _props$attributes2 = props.attributes,
+            accordionId = _props$attributes2.accordionId,
+            repeaterItems = _props$attributes2.repeaterItems,
+            direction = _props$attributes2.direction,
+            titleTag = _props$attributes2.titleTag,
+            titleSize = _props$attributes2.titleSize,
+            titleLine = _props$attributes2.titleLine,
+            titleLetter = _props$attributes2.titleLetter,
+            titleStyle = _props$attributes2.titleStyle,
+            titleUpper = _props$attributes2.titleUpper,
+            titleWeight = _props$attributes2.titleWeight,
+            titleColor = _props$attributes2.titleColor,
+            titleBorder = _props$attributes2.titleBorder,
+            titleBorderWidth = _props$attributes2.titleBorderWidth,
+            titleBorderColor = _props$attributes2.titleBorderColor,
+            titleBorderTop = _props$attributes2.titleBorderTop,
+            titleBorderRight = _props$attributes2.titleBorderRight,
+            titleBorderBottom = _props$attributes2.titleBorderBottom,
+            titleBorderLeft = _props$attributes2.titleBorderLeft,
+            titleBorderRadius = _props$attributes2.titleBorderRadius,
+            titleBack = _props$attributes2.titleBack,
+            titleShadowBlur = _props$attributes2.titleShadowBlur,
+            titleShadowColor = _props$attributes2.titleShadowColor,
+            titleShadowHorizontal = _props$attributes2.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes2.titleShadowVertical,
+            titlePaddingT = _props$attributes2.titlePaddingT,
+            titlePaddingR = _props$attributes2.titlePaddingR,
+            titlePaddingB = _props$attributes2.titlePaddingB,
+            titlePaddingL = _props$attributes2.titlePaddingL,
+            arrowColor = _props$attributes2.arrowColor,
+            arrowBack = _props$attributes2.arrowBack,
+            arrowPos = _props$attributes2.arrowPos,
+            arrowPadding = _props$attributes2.arrowPadding,
+            arrowSize = _props$attributes2.arrowSize,
+            arrowRadius = _props$attributes2.arrowRadius,
+            contentType = _props$attributes2.contentType,
+            descAlign = _props$attributes2.descAlign,
+            descSize = _props$attributes2.descSize,
+            descLine = _props$attributes2.descLine,
+            descLetter = _props$attributes2.descLetter,
+            descStyle = _props$attributes2.descStyle,
+            descUpper = _props$attributes2.descUpper,
+            descWeight = _props$attributes2.descWeight,
+            descColor = _props$attributes2.descColor,
+            descBack = _props$attributes2.descBack,
+            descBorder = _props$attributes2.descBorder,
+            descBorderColor = _props$attributes2.descBorderColor,
+            descBorderRadius = _props$attributes2.descBorderRadius,
+            descBorderWidth = _props$attributes2.descBorderWidth,
+            descBorderTop = _props$attributes2.descBorderTop,
+            descBorderRight = _props$attributes2.descBorderRight,
+            descBorderBottom = _props$attributes2.descBorderBottom,
+            descBorderLeft = _props$attributes2.descBorderLeft,
+            textShadowBlur = _props$attributes2.textShadowBlur,
+            textShadowColor = _props$attributes2.textShadowColor,
+            textShadowHorizontal = _props$attributes2.textShadowHorizontal,
+            textShadowVertical = _props$attributes2.textShadowVertical,
+            descPaddingT = _props$attributes2.descPaddingT,
+            descPaddingR = _props$attributes2.descPaddingR,
+            descPaddingB = _props$attributes2.descPaddingB,
+            descPaddingL = _props$attributes2.descPaddingL,
+            titleBorderUpdated = _props$attributes2.titleBorderUpdated,
+            descBorderUpdated = _props$attributes2.descBorderUpdated;
+
+
+        var mainClasses = (0, _classnames2.default)(className, 'premium-accordion');
+
+        var accordionItems = repeaterItems.map(function (item, index) {
+            return React.createElement(
+                "div",
+                {
+                    id: "premium-accordion__layer" + index,
+                    className: "premium-accordion__content_wrap"
+                },
+                React.createElement(
+                    "div",
+                    {
+                        className: "premium-accordion__title_wrap premium-accordion__" + direction + " premium-accordion__" + arrowPos,
+                        style: {
+                            backgroundColor: titleBack,
+                            borderStyle: titleBorder,
+                            borderWidth: titleBorderUpdated ? titleBorderTop + "px " + titleBorderRight + "px " + titleBorderBottom + "px " + titleBorderLeft + "px" : titleBorderWidth + "px",
+                            borderRadius: titleBorderRadius + "px",
+                            borderColor: titleBorderColor,
+                            paddingTop: titlePaddingT,
+                            paddingRight: titlePaddingR,
+                            paddingBottom: titlePaddingB,
+                            paddingLeft: titlePaddingL
+                        }
+                    },
+                    React.createElement(
+                        "div",
+                        { className: "premium-accordion__title" },
+                        React.createElement(RichText.Content, {
+                            tagName: titleTag.toLowerCase(),
+                            className: "premium-accordion__title_text",
+                            value: item.titleText,
+                            style: {
+                                color: titleColor,
+                                fontSize: titleSize + "px",
+                                letterSpacing: titleLetter + "px",
+                                textTransform: titleUpper ? "uppercase" : "none",
+                                fontStyle: titleStyle,
+                                fontWeight: titleWeight,
+                                textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor,
+                                lineHeight: titleLine + "px"
+                            }
+                        })
+                    ),
+                    React.createElement(
+                        "div",
+                        { className: "premium-accordion__icon_wrap" },
+                        React.createElement(
+                            "svg",
+                            {
+                                className: "premium-accordion__icon premium-accordion__closed",
+                                role: "img",
+                                focusable: "false",
+                                xmlns: "http://www.w3.org/2000/svg",
+                                width: arrowSize,
+                                height: arrowSize,
+                                viewBox: "0 0 20 20",
+                                style: {
+                                    fill: arrowColor,
+                                    backgroundColor: arrowBack,
+                                    padding: arrowPadding + "px",
+                                    borderRadius: arrowRadius + "px"
+                                }
+                            },
+                            React.createElement("polygon", { points: "16.7,3.3 10,10 3.3,3.4 0,6.7 10,16.7 10,16.6 20,6.7 " })
+                        )
+                    )
+                ),
+                React.createElement(
+                    "div",
+                    {
+                        className: "premium-accordion__desc_wrap premium-accordion__desc_close",
+                        style: {
+                            textAlign: descAlign,
+                            backgroundColor: descBack,
+                            borderStyle: descBorder,
+                            borderWidth: descBorderUpdated ? descBorderTop + "px " + descBorderRight + "px " + descBorderBottom + "px " + descBorderLeft + "px" : descBorderWidth + "px",
+                            borderRadius: descBorderRadius + "px",
+                            borderColor: descBorderColor,
+                            paddingTop: descPaddingT,
+                            paddingRight: descPaddingR,
+                            paddingBottom: descPaddingB,
+                            paddingLeft: descPaddingL
+                        }
+                    },
+                    "text" === contentType && React.createElement(RichText.Content, {
+                        tagName: "p",
+                        className: "premium-accordion__desc",
+                        value: item.descText,
+                        style: {
+                            color: descColor,
+                            fontSize: descSize + "px",
+                            letterSpacing: descLetter + "px",
+                            textTransform: descUpper ? "uppercase" : "none",
+                            textShadow: textShadowHorizontal + "px " + textShadowVertical + "px " + textShadowBlur + "px " + textShadowColor,
+                            fontStyle: descStyle,
+                            fontWeight: descWeight,
+                            lineHeight: descLine + "px"
+                        }
+                    }),
+                    "block" === contentType && React.createElement(InnerBlocks.Content, null)
+                )
+            );
+        });
+        return React.createElement(
+            "div",
+            { id: accordionId, className: "" + mainClasses },
+            accordionItems
+        );
+    }
+}, {
+    attributes: attributes,
+
+    save: function save(props) {
+        var _props$attributes3 = props.attributes,
+            accordionId = _props$attributes3.accordionId,
+            repeaterItems = _props$attributes3.repeaterItems,
+            direction = _props$attributes3.direction,
+            titleTag = _props$attributes3.titleTag,
+            titleSize = _props$attributes3.titleSize,
+            titleLine = _props$attributes3.titleLine,
+            titleLetter = _props$attributes3.titleLetter,
+            titleStyle = _props$attributes3.titleStyle,
+            titleUpper = _props$attributes3.titleUpper,
+            titleWeight = _props$attributes3.titleWeight,
+            titleColor = _props$attributes3.titleColor,
+            titleBorder = _props$attributes3.titleBorder,
+            titleBorderColor = _props$attributes3.titleBorderColor,
+            titleBorderWidth = _props$attributes3.titleBorderWidth,
+            titleBorderRadius = _props$attributes3.titleBorderRadius,
+            titleBack = _props$attributes3.titleBack,
+            titleShadowBlur = _props$attributes3.titleShadowBlur,
+            titleShadowColor = _props$attributes3.titleShadowColor,
+            titleShadowHorizontal = _props$attributes3.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes3.titleShadowVertical,
+            titlePaddingT = _props$attributes3.titlePaddingT,
+            titlePaddingR = _props$attributes3.titlePaddingR,
+            titlePaddingB = _props$attributes3.titlePaddingB,
+            titlePaddingL = _props$attributes3.titlePaddingL,
+            arrowColor = _props$attributes3.arrowColor,
+            arrowBack = _props$attributes3.arrowBack,
+            arrowPos = _props$attributes3.arrowPos,
+            arrowPadding = _props$attributes3.arrowPadding,
+            arrowSize = _props$attributes3.arrowSize,
+            arrowRadius = _props$attributes3.arrowRadius,
+            contentType = _props$attributes3.contentType,
+            descAlign = _props$attributes3.descAlign,
+            descSize = _props$attributes3.descSize,
+            descLine = _props$attributes3.descLine,
+            descLetter = _props$attributes3.descLetter,
+            descStyle = _props$attributes3.descStyle,
+            descUpper = _props$attributes3.descUpper,
+            descWeight = _props$attributes3.descWeight,
+            descColor = _props$attributes3.descColor,
+            descBack = _props$attributes3.descBack,
+            descBorder = _props$attributes3.descBorder,
+            descBorderColor = _props$attributes3.descBorderColor,
+            descBorderRadius = _props$attributes3.descBorderRadius,
+            descBorderWidth = _props$attributes3.descBorderWidth,
+            textShadowBlur = _props$attributes3.textShadowBlur,
+            textShadowColor = _props$attributes3.textShadowColor,
+            textShadowHorizontal = _props$attributes3.textShadowHorizontal,
+            textShadowVertical = _props$attributes3.textShadowVertical,
+            descPaddingT = _props$attributes3.descPaddingT,
+            descPaddingR = _props$attributes3.descPaddingR,
+            descPaddingB = _props$attributes3.descPaddingB,
+            descPaddingL = _props$attributes3.descPaddingL;
+
+        var accordionItems = repeaterItems.map(function (item, index) {
+            return React.createElement(
+                "div",
+                {
+                    id: "premium-accordion__layer" + index,
+                    className: "premium-accordion__content_wrap"
+                },
+                React.createElement(
+                    "div",
+                    {
+                        className: "premium-accordion__title_wrap premium-accordion__" + direction + " premium-accordion__" + arrowPos,
+                        style: {
+                            backgroundColor: titleBack,
+                            border: titleBorder,
+                            borderWidth: titleBorderWidth + "px",
+                            borderRadius: titleBorderRadius + "px",
+                            borderColor: titleBorderColor,
+                            paddingTop: titlePaddingT,
+                            paddingRight: titlePaddingR,
+                            paddingBottom: titlePaddingB,
+                            paddingLeft: titlePaddingL
+                        }
+                    },
+                    React.createElement(
+                        "div",
+                        { className: "premium-accordion__title" },
+                        React.createElement(RichText.Content, {
+                            tagName: titleTag.toLowerCase(),
+                            className: "premium-accordion__title_text",
+                            value: item.titleText,
+                            style: {
+                                color: titleColor,
+                                fontSize: titleSize + "px",
+                                letterSpacing: titleLetter + "px",
+                                textTransform: titleUpper ? "uppercase" : "none",
+                                fontStyle: titleStyle,
+                                fontWeight: titleWeight,
+                                textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor,
+                                lineHeight: titleLine + "px"
+                            }
+                        })
+                    ),
+                    React.createElement(
+                        "div",
+                        { className: "premium-accordion__icon_wrap" },
+                        React.createElement(
+                            "svg",
+                            {
+                                className: "premium-accordion__icon premium-accordion__closed",
+                                role: "img",
+                                focusable: "false",
+                                xmlns: "http://www.w3.org/2000/svg",
+                                width: arrowSize,
+                                height: arrowSize,
+                                viewBox: "0 0 20 20",
+                                style: {
+                                    fill: arrowColor,
+                                    backgroundColor: arrowBack,
+                                    padding: arrowPadding + "px",
+                                    borderRadius: arrowRadius + "px"
+                                }
+                            },
+                            React.createElement("polygon", { points: "16.7,3.3 10,10 3.3,3.4 0,6.7 10,16.7 10,16.6 20,6.7 " })
+                        )
+                    )
+                ),
+                React.createElement(
+                    "div",
+                    {
+                        className: "premium-accordion__desc_wrap premium-accordion__desc_close",
+                        style: {
+                            textAlign: descAlign,
+                            backgroundColor: descBack,
+                            border: descBorder,
+                            borderWidth: descBorderWidth + "px",
+                            borderRadius: descBorderRadius + "px",
+                            borderColor: descBorderColor,
+                            paddingTop: descPaddingT,
+                            paddingRight: descPaddingR,
+                            paddingBottom: descPaddingB,
+                            paddingLeft: descPaddingL
+                        }
+                    },
+                    "text" === contentType && React.createElement(RichText.Content, {
+                        tagName: "p",
+                        className: "premium-accordion__desc",
+                        value: item.descText,
+                        style: {
+                            color: descColor,
+                            fontSize: descSize + "px",
+                            letterSpacing: descLetter + "px",
+                            textTransform: descUpper ? "uppercase" : "none",
+                            textShadow: textShadowHorizontal + "px " + textShadowVertical + "px " + textShadowBlur + "px " + textShadowColor,
+                            fontStyle: descStyle,
+                            fontWeight: descWeight,
+                            lineHeight: descLine + "px"
+                        }
+                    }),
+                    "block" === contentType && React.createElement(InnerBlocks.Content, null)
+                )
+            );
+        });
+        return React.createElement(
+            "div",
+            { id: accordionId, className: "" + className },
+            accordionItems
+        );
+    }
+}, {
+    attributes: attributes,
+    save: function save(props) {
+        var _props$attributes4 = props.attributes,
+            accordionId = _props$attributes4.accordionId,
+            repeaterItems = _props$attributes4.repeaterItems,
+            direction = _props$attributes4.direction,
+            titleTag = _props$attributes4.titleTag,
+            titleSize = _props$attributes4.titleSize,
+            titleLine = _props$attributes4.titleLine,
+            titleLetter = _props$attributes4.titleLetter,
+            titleStyle = _props$attributes4.titleStyle,
+            titleUpper = _props$attributes4.titleUpper,
+            titleWeight = _props$attributes4.titleWeight,
+            titleColor = _props$attributes4.titleColor,
+            titleBorder = _props$attributes4.titleBorder,
+            titleBorderColor = _props$attributes4.titleBorderColor,
+            titleBorderWidth = _props$attributes4.titleBorderWidth,
+            titleBorderRadius = _props$attributes4.titleBorderRadius,
+            titleBack = _props$attributes4.titleBack,
+            titleShadowBlur = _props$attributes4.titleShadowBlur,
+            titleShadowColor = _props$attributes4.titleShadowColor,
+            titleShadowHorizontal = _props$attributes4.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes4.titleShadowVertical,
+            titlePaddingT = _props$attributes4.titlePaddingT,
+            titlePaddingR = _props$attributes4.titlePaddingR,
+            titlePaddingB = _props$attributes4.titlePaddingB,
+            titlePaddingL = _props$attributes4.titlePaddingL,
+            arrowColor = _props$attributes4.arrowColor,
+            arrowBack = _props$attributes4.arrowBack,
+            arrowPos = _props$attributes4.arrowPos,
+            arrowPadding = _props$attributes4.arrowPadding,
+            arrowSize = _props$attributes4.arrowSize,
+            arrowRadius = _props$attributes4.arrowRadius,
+            contentType = _props$attributes4.contentType,
+            descAlign = _props$attributes4.descAlign,
+            descSize = _props$attributes4.descSize,
+            descLine = _props$attributes4.descLine,
+            descLetter = _props$attributes4.descLetter,
+            descStyle = _props$attributes4.descStyle,
+            descUpper = _props$attributes4.descUpper,
+            descWeight = _props$attributes4.descWeight,
+            descColor = _props$attributes4.descColor,
+            descBack = _props$attributes4.descBack,
+            descBorder = _props$attributes4.descBorder,
+            descBorderColor = _props$attributes4.descBorderColor,
+            descBorderRadius = _props$attributes4.descBorderRadius,
+            descBorderWidth = _props$attributes4.descBorderWidth,
+            descPaddingT = _props$attributes4.descPaddingT,
+            descPaddingR = _props$attributes4.descPaddingR,
+            descPaddingB = _props$attributes4.descPaddingB,
+            descPaddingL = _props$attributes4.descPaddingL;
+
+
+        var accordionItems = repeaterItems.map(function (item, index) {
+            return React.createElement(
+                "div",
+                {
+                    id: className + "__layer" + index,
+                    className: className + "__content_wrap"
+                },
+                React.createElement(
+                    "div",
+                    {
+                        className: className + "__title_wrap " + className + "__" + direction + " " + className + "__" + arrowPos,
+                        style: {
+                            backgroundColor: titleBack,
+                            border: titleBorder,
+                            borderWidth: titleBorderWidth + "px",
+                            borderRadius: titleBorderRadius + "px",
+                            borderColor: titleBorderColor,
+                            paddingTop: titlePaddingT,
+                            paddingRight: titlePaddingR,
+                            paddingBottom: titlePaddingB,
+                            paddingLeft: titlePaddingL
+                        }
+                    },
+                    React.createElement(
+                        "div",
+                        { className: className + "__title" },
+                        React.createElement(RichText.Content, {
+                            tagName: titleTag.toLowerCase(),
+                            className: className + "__title_text",
+                            value: item.titleText,
+                            style: {
+                                color: titleColor,
+                                fontSize: titleSize + "px",
+                                letterSpacing: titleLetter + "px",
+                                textTransform: titleUpper ? "uppercase" : "none",
+                                fontStyle: titleStyle,
+                                fontWeight: titleWeight,
+                                textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor,
+                                lineHeight: titleLine + "px"
+                            }
+                        })
+                    ),
+                    React.createElement(
+                        "div",
+                        { className: className + "__icon_wrap" },
+                        React.createElement(
+                            "svg",
+                            {
+                                className: className + "__icon premium-accordion__closed",
+                                role: "img",
+                                focusable: "false",
+                                xmlns: "http://www.w3.org/2000/svg",
+                                width: arrowSize,
+                                height: arrowSize,
+                                viewBox: "0 0 20 20",
+                                style: {
+                                    fill: arrowColor,
+                                    backgroundColor: arrowBack,
+                                    padding: arrowPadding + "px",
+                                    borderRadius: arrowRadius + "px"
+                                }
+                            },
+                            React.createElement("polygon", { points: "16.7,3.3 10,10 3.3,3.4 0,6.7 10,16.7 10,16.6 20,6.7 " })
+                        )
+                    )
+                ),
+                React.createElement(
+                    "div",
+                    {
+                        className: className + "__desc_wrap premium-accordion__desc_close",
+                        style: {
+                            textAlign: descAlign,
+                            backgroundColor: descBack,
+                            border: descBorder,
+                            borderWidth: descBorderWidth + "px",
+                            borderRadius: descBorderRadius + "px",
+                            borderColor: descBorderColor,
+                            paddingTop: descPaddingT,
+                            paddingRight: descPaddingR,
+                            paddingBottom: descPaddingB,
+                            paddingLeft: descPaddingL
+                        }
+                    },
+                    "text" === contentType && React.createElement(RichText.Content, {
+                        tagName: "p",
+                        className: className + "__desc",
+                        value: item.descText,
+                        style: {
+                            color: descColor,
+                            fontSize: descSize + "px",
+                            letterSpacing: descLetter + "px",
+                            textTransform: descUpper ? "uppercase" : "none",
+                            fontStyle: descStyle,
+                            fontWeight: descWeight,
+                            lineHeight: descLine + "px"
+                        }
+                    }),
+                    "block" === contentType && React.createElement(InnerBlocks.Content, null)
+                )
+            );
+        });
+        return React.createElement(
+            "div",
+            { id: accordionId, className: "" + className },
+            accordionItems
+        );
+    }
+}];
+exports.default = deprecated;
+
+/***/ }),
+/* 224 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _settings = __webpack_require__(1);
+
+var _icons = __webpack_require__(4);
+
+var _icons2 = _interopRequireDefault(_icons);
+
+var _edit = __webpack_require__(225);
+
+var _edit2 = _interopRequireDefault(_edit);
+
+var _save = __webpack_require__(226);
+
+var _save2 = _interopRequireDefault(_save);
+
+var _deprecated = __webpack_require__(227);
+
+var _deprecated2 = _interopRequireDefault(_deprecated);
+
+var _attributes = __webpack_require__(228);
+
+var _attributes2 = _interopRequireDefault(_attributes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+var registerBlockType = wp.blocks.registerBlockType;
+
+registerBlockType("premium/banner", {
+    title: __("Banner"),
+    icon: React.createElement(_icons2.default, { icon: "banner" }),
+    category: "premium-blocks",
+    attributes: _attributes2.default,
+    supports: {
+        inserter: _settings.banner
+    },
+    example: {},
+    edit: _edit2.default,
+    save: _save2.default,
+    deprecated: _deprecated2.default
+});
+
+/***/ }),
+/* 225 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.edit = undefined;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _classnames = __webpack_require__(0);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _premiumBorder = __webpack_require__(6);
+
+var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
+
+var _premiumTypo = __webpack_require__(7);
+
+var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
+
+var _premiumFilters = __webpack_require__(31);
+
+var _premiumFilters2 = _interopRequireDefault(_premiumFilters);
+
+var _premiumResponsiveSpacing = __webpack_require__(21);
+
+var _premiumResponsiveSpacing2 = _interopRequireDefault(_premiumResponsiveSpacing);
+
+var _premiumMediaUpload = __webpack_require__(12);
+
+var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
+
+var _premiumResponsiveTabs = __webpack_require__(8);
+
+var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
+
+var _singleRangeControl = __webpack_require__(3);
+
+var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
+
+var _ColorComponent = __webpack_require__(2);
+
+var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
+
+var _radioControl = __webpack_require__(10);
+
+var _radioControl2 = _interopRequireDefault(_radioControl);
+
+var _PremiumShadow = __webpack_require__(5);
+
+var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var withSelect = wp.data.withSelect;
+var __ = wp.i18n.__;
+var Component = wp.element.Component;
+var _wp$components = wp.components,
+    IconButton = _wp$components.IconButton,
+    Toolbar = _wp$components.Toolbar,
+    PanelBody = _wp$components.PanelBody,
+    SelectControl = _wp$components.SelectControl,
+    TextControl = _wp$components.TextControl,
+    ToggleControl = _wp$components.ToggleControl;
+var _wp$blockEditor = wp.blockEditor,
+    BlockControls = _wp$blockEditor.BlockControls,
+    InspectorControls = _wp$blockEditor.InspectorControls,
+    AlignmentToolbar = _wp$blockEditor.AlignmentToolbar,
+    RichText = _wp$blockEditor.RichText,
+    MediaPlaceholder = _wp$blockEditor.MediaPlaceholder;
+
+var edit = exports.edit = function (_Component) {
+    _inherits(edit, _Component);
+
+    function edit() {
+        _classCallCheck(this, edit);
+
+        var _this = _possibleConstructorReturn(this, (edit.__proto__ || Object.getPrototypeOf(edit)).apply(this, arguments));
+
+        _this.getPreviewSize = _this.getPreviewSize.bind(_this);
+        return _this;
+    }
+
+    _createClass(edit, [{
+        key: "getPreviewSize",
+        value: function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
+            if (device === 'Mobile') {
+                if (undefined !== mobileSize && '' !== mobileSize) {
+                    return mobileSize;
+                } else if (undefined !== tabletSize && '' !== tabletSize) {
+                    return tabletSize;
+                }
+            } else if (device === 'Tablet') {
+                if (undefined !== tabletSize && '' !== tabletSize) {
+                    return tabletSize;
+                }
+            }
+            return desktopSize;
+        }
+    }, {
+        key: "componentDidMount",
+        value: function componentDidMount() {
+            this.props.setAttributes({ block_id: this.props.clientId });
+            this.props.setAttributes({ classMigrate: true });
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var _props = this.props,
+                isSelected = _props.isSelected,
+                setAttributes = _props.setAttributes,
+                className = _props.className,
+                blockID = _props.clientId;
+            var _props$attributes = this.props.attributes,
+                block_id = _props$attributes.block_id,
+                borderBanner = _props$attributes.borderBanner,
+                imageID = _props$attributes.imageID,
+                imageURL = _props$attributes.imageURL,
+                titleStyles = _props$attributes.titleStyles,
+                descStyles = _props$attributes.descStyles,
+                containerStyles = _props$attributes.containerStyles,
+                title = _props$attributes.title,
+                titleTag = _props$attributes.titleTag,
+                desc = _props$attributes.desc,
+                contentAlign = _props$attributes.contentAlign,
+                effect = _props$attributes.effect,
+                hoverEffect = _props$attributes.hoverEffect,
+                height = _props$attributes.height,
+                minHeight = _props$attributes.minHeight,
+                verAlign = _props$attributes.verAlign,
+                hovered = _props$attributes.hovered,
+                responsive = _props$attributes.responsive,
+                background = _props$attributes.background,
+                opacity = _props$attributes.opacity,
+                urlCheck = _props$attributes.urlCheck,
+                target = _props$attributes.target,
+                url = _props$attributes.url,
+                sepColor = _props$attributes.sepColor,
+                blur = _props$attributes.blur,
+                bright = _props$attributes.bright,
+                contrast = _props$attributes.contrast,
+                saturation = _props$attributes.saturation,
+                hue = _props$attributes.hue,
+                hideDesktop = _props$attributes.hideDesktop,
+                hideTablet = _props$attributes.hideTablet,
+                hideMobile = _props$attributes.hideMobile,
+                border = _props$attributes.border,
+                padding = _props$attributes.padding;
+
+
+            var ALIGNS = [{
+                value: "flex-start",
+                label: __("Top", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "center",
+                label: __("Middle", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "flex-end",
+                label: __("Bottom", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "inherit",
+                label: __("Full", 'premium-blocks-for-gutenberg')
+            }];
+
+            var EFFECTS = [{
+                value: "effect1",
+                label: __("Style 1", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "effect2",
+                label: __("Style 2", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "effect3",
+                label: __("Style 3", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "effect4",
+                label: __("Style 4", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "effect5",
+                label: __("Style 5", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "effect6",
+                label: __("Style 6", 'premium-blocks-for-gutenberg')
+            }];
+
+            var HOVER = [{
+                value: "none",
+                label: __("None", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "zoomin",
+                label: __("Zoom In", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "zoomout",
+                label: __("Zoom Out", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "scale",
+                label: __("Scale", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "gray",
+                label: __("Gray Scale", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "blur",
+                label: __("Blur", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "bright",
+                label: __("Bright", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "sepia",
+                label: __("Sepia", 'premium-blocks-for-gutenberg')
+            }];
+
+            var HEIGHT = [{
+                value: "default",
+                label: __("Default", 'premium-blocks-for-gutenberg')
+            }, {
+                value: "custom",
+                label: __("Custom", 'premium-blocks-for-gutenberg')
+            }];
+
+            var mainClasses = (0, _classnames2.default)(className, "premium-banner");
+            var titleFontSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titleSizeTablet, titleStyles[0].titleSizeMobile);
+            var descFontSize = this.getPreviewSize(this.props.deviceType, descStyles[0].descSize, descStyles[0].descSizeTablet, descStyles[0].descSizeMobile);
+
+            var saveStyles = function saveStyles(value) {
+                var newUpdate = titleStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+
+                setAttributes({ titleStyles: newUpdate });
+            };
+
+            var descriptionStyles = function descriptionStyles(value) {
+                var newUpdate = descStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({ descStyles: newUpdate });
+            };
+
+            var containerStyle = function containerStyle(value) {
+                var newUpdate = containerStyles.map(function (item, index) {
+                    if (0 === index) {
+                        item = _extends({}, item, value);
+                    }
+                    return item;
+                });
+                setAttributes({ containerStyles: newUpdate });
+            };
+
+            var containerPaddingTop = this.getPreviewSize(this.props.deviceType, padding.Desktop.top, padding.Tablet.top, padding.Mobile.top);
+            var containerPaddingRight = this.getPreviewSize(this.props.deviceType, padding.Desktop.right, padding.Tablet.right, padding.Mobile.right);
+            var containerPaddingBottom = this.getPreviewSize(this.props.deviceType, padding.Desktop.bottom, padding.Tablet.bottom, padding.Mobile.bottom);
+            var containerPaddingLeft = this.getPreviewSize(this.props.deviceType, padding.Desktop.left, padding.Tablet.left, padding.Mobile.left);
+
+            return [isSelected && React.createElement(
+                BlockControls,
+                { key: "controls" },
+                React.createElement(
+                    Toolbar,
+                    null,
+                    React.createElement(IconButton, {
+                        label: __("Refresh this button when it conflict with other buttons styles", 'premium-blocks-for-gutenberg'),
+                        icon: "update",
+                        className: "components-toolbar__control",
+                        onClick: function onClick() {
+                            return setAttributes({ block_id: blockID });
+                        }
+                    })
+                ),
+                React.createElement(AlignmentToolbar, {
+                    value: contentAlign,
+                    onChange: function onChange(newAlign) {
+                        return setAttributes({ contentAlign: newAlign });
+                    }
+                })
+            ), isSelected && imageURL && React.createElement(
+                InspectorControls,
+                { key: "inspector" },
+                React.createElement(
+                    PanelBody,
+                    {
+                        title: __("General Settings", 'premium-blocks-for-gutenberg'),
+                        className: "premium-panel-body",
+                        initialOpen: true
+                    },
+                    React.createElement(
+                        "button",
+                        { className: "lottie-remove", onClick: function onClick(e) {
+                                e.preventDefault();
+                                setAttributes(_defineProperty({
+                                    imageURL: ""
+                                }, "imageURL", ""));
+                            } },
+                        __('Remove Image', 'premium-blocks-for-gutenberg')
+                    ),
+                    React.createElement(_premiumFilters2.default, {
+                        blur: blur,
+                        bright: bright,
+                        contrast: contrast,
+                        saturation: saturation,
+                        hue: hue,
+                        onChangeBlur: function onChangeBlur(value) {
+                            return setAttributes({ blur: value });
+                        },
+                        onChangeBright: function onChangeBright(value) {
+                            return setAttributes({ bright: value });
+                        },
+                        onChangeContrast: function onChangeContrast(value) {
+                            return setAttributes({ contrast: value });
+                        },
+                        onChangeSat: function onChangeSat(value) {
+                            return setAttributes({ saturation: value });
+                        },
+                        onChangeHue: function onChangeHue(value) {
+                            return setAttributes({ hue: value });
+                        }
+                    }),
+                    React.createElement(SelectControl, {
+                        label: __("Banner Style", 'premium-blocks-for-gutenberg'),
+                        value: effect,
+                        onChange: function onChange(newEffect) {
+                            return setAttributes({ effect: newEffect });
+                        },
+                        options: EFFECTS
+                    }),
+                    React.createElement(SelectControl, {
+                        label: __("Image Hover Effect", 'premium-blocks-for-gutenberg'),
+                        options: HOVER,
+                        value: hoverEffect,
+                        onChange: function onChange(newEffect) {
+                            return setAttributes({ hoverEffect: newEffect });
+                        }
+                    }),
+                    React.createElement(ToggleControl, {
+                        label: __("Always Hovered", 'premium-blocks-for-gutenberg'),
+                        checked: hovered,
+                        onChange: function onChange(check) {
+                            return setAttributes({ hovered: check });
+                        }
+                    }),
+                    React.createElement(SelectControl, {
+                        label: __("Height", 'premium-blocks-for-gutenberg'),
+                        options: HEIGHT,
+                        value: height,
+                        onChange: function onChange(newHeight) {
+                            return setAttributes({ height: newHeight });
+                        }
+                    }),
+                    "custom" === height && React.createElement(_singleRangeControl2.default, {
+                        label: __("Min Height (PX)", 'premium-blocks-for-gutenberg'),
+                        value: minHeight,
+                        min: "10",
+                        max: "800",
+                        onChange: function onChange(newSize) {
+                            return setAttributes({ minHeight: newSize });
+                        },
+                        showUnit: false,
+                        defaultValue: 100
+                    }),
+                    "custom" === height && React.createElement(SelectControl, {
+                        label: __("Vertical Align", 'premium-blocks-for-gutenberg'),
+                        options: ALIGNS,
+                        value: verAlign,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ verAlign: newValue });
+                        }
+                    }),
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Overlay", 'premium-blocks-for-gutenberg'),
+                        colorValue: background,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
+                            return setAttributes({ background: newValue === undefined ? "transparent" : newValue });
+                        }
+                    }),
+                    React.createElement(_singleRangeControl2.default, {
+                        label: __("Overlay Opacity", 'premium-blocks-for-gutenberg'),
+                        value: opacity,
+                        min: "1",
+                        max: "100",
+                        onChange: function onChange(newOpacity) {
+                            return setAttributes({ opacity: newOpacity === undefined ? 50 : newOpacity });
+                        },
+                        showUnit: false,
+                        defaultValue: ''
+                    }),
+                    React.createElement(ToggleControl, {
+                        label: __("Link", 'premium-blocks-for-gutenberg'),
+                        checked: urlCheck,
+                        onChange: function onChange(newCheck) {
+                            return setAttributes({ urlCheck: newCheck });
+                        }
+                    }),
+                    urlCheck && React.createElement(TextControl, {
+                        value: url,
+                        onChange: function onChange(newURL) {
+                            return setAttributes({ url: newURL });
+                        }
+                    }),
+                    urlCheck && React.createElement(ToggleControl, {
+                        label: __("Open link in new tab", 'premium-blocks-for-gutenberg'),
+                        checked: target,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ target: newValue });
+                        }
+                    }),
+                    React.createElement(ToggleControl, {
+                        label: __("Hide Description on Mobiles", 'premium-blocks-for-gutenberg'),
+                        checked: responsive,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ responsive: newValue });
+                        }
+                    })
+                ),
+                React.createElement(
+                    PanelBody,
+                    {
+                        title: __("Title Settings", 'premium-blocks-for-gutenberg'),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    React.createElement(_radioControl2.default, {
+                        choices: ['H1', 'H2', 'H3', 'H4', 'H5', 'H6'],
+                        value: titleTag,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ titleTag: newValue });
+                        },
+                        label: __("HTML Tag", 'premium-blocks-for-gutenberg')
+                    }),
+                    React.createElement(_premiumTypo2.default, {
+                        components: ["responsiveSize", "weight", "line"],
+                        setAttributes: saveStyles,
+                        fontSizeType: {
+                            value: titleStyles[0].titleSizeUnit,
+                            label: __("titleSizeUnit", 'premium-blocks-for-gutenberg')
+                        },
+                        fontSize: titleStyles[0].titleSize,
+                        fontSizeMobile: titleStyles[0].titleSizeMobile,
+                        fontSizeTablet: titleStyles[0].titleSizeTablet,
+                        onChangeSize: function onChangeSize(value) {
+                            return saveStyles({ titleSize: value });
+                        },
+                        onChangeTabletSize: function onChangeTabletSize(value) {
+                            return saveStyles({ titleSizeTablet: value });
+                        },
+                        onChangeMobileSize: function onChangeMobileSize(value) {
+                            return saveStyles({ titleSizeMobile: value });
+                        },
+                        weight: titleStyles[0].titleWeight,
+                        line: titleStyles[0].titleLine,
+                        onChangeWeight: function onChangeWeight(newWeight) {
+                            return saveStyles({ titleWeight: newWeight === undefined ? 500 : newWeight });
+                        },
+                        onChangeLine: function onChangeLine(newValue) {
+                            return saveStyles({ titleLine: newValue === undefined ? 10 : newValue });
+                        }
+                    }),
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Text Color", 'premium-blocks-for-gutenberg'),
+                        colorValue: titleStyles[0].titleColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
+                            return saveStyles({ titleColor: newValue === undefined ? "transparent" : newValue });
+                        }
+                    }),
+                    "effect3" === effect && React.createElement(_ColorComponent2.default, {
+                        label: __("Separator Color", 'premium-blocks-for-gutenberg'),
+                        colorValue: sepColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
+                            return setAttributes({ sepColor: newValue === undefined ? "transparent" : newValue });
+                        }
+                    }),
+                    "effect2" === effect && React.createElement(_ColorComponent2.default, {
+                        label: __("Background Color", 'premium-blocks-for-gutenberg'),
+                        colorValue: titleStyles[0].titleBack,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
+                            return saveStyles({ titleBack: newValue === undefined ? "transparent" : newValue });
+                        }
+                    }),
+                    React.createElement(_PremiumShadow2.default, {
+                        label: __("Text Shadow", 'premium-blocks-for-gutenberg'),
+                        color: titleStyles[0].shadowColor,
+                        blur: titleStyles[0].shadowBlur,
+                        horizontal: titleStyles[0].shadowHorizontal,
+                        vertical: titleStyles[0].shadowVertical,
+                        onChangeColor: function onChangeColor(newColor) {
+                            return saveStyles({ shadowColor: newColor === undefined ? "transparent" : newColor });
+                        },
+                        onChangeBlur: function onChangeBlur(newBlur) {
+                            return saveStyles({ shadowBlur: newBlur === undefined ? 0 : newBlur });
+                        },
+                        onChangehHorizontal: function onChangehHorizontal(newValue) {
+                            return saveStyles({ shadowHorizontal: newValue === undefined ? 0 : newValue });
+                        },
+                        onChangeVertical: function onChangeVertical(newValue) {
+                            return saveStyles({ shadowVertical: newValue === undefined ? 0 : newValue });
+                        }
+                    })
+                ),
+                React.createElement(
+                    PanelBody,
+                    {
+                        title: __("Description Settings", 'premium-blocks-for-gutenberg'),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    React.createElement(_premiumTypo2.default, {
+                        components: ["responsiveSize", "weight", "line"],
+                        setAttributes: descriptionStyles,
+                        fontSizeType: {
+                            value: descStyles[0].descSizeUnit,
+                            label: __("descSizeUnit", 'premium-blocks-for-gutenberg')
+                        },
+                        fontSize: descStyles[0].descSize,
+                        fontSizeMobile: descStyles[0].descSizeMobile,
+                        fontSizeTablet: descStyles[0].descSizeTablet,
+                        onChangeSize: function onChangeSize(value) {
+                            descriptionStyles({ descSize: value });
+                        },
+                        onChangeTabletSize: function onChangeTabletSize(value) {
+                            return descriptionStyles({ descSizeTablet: value });
+                        },
+                        onChangeMobileSize: function onChangeMobileSize(value) {
+                            return descriptionStyles({ descSizeMobile: value });
+                        },
+                        weight: descStyles[0].descWeight,
+                        line: descStyles[0].descLine,
+                        onChangeWeight: function onChangeWeight(newWeight) {
+                            return descriptionStyles({ descWeight: newWeight === undefined ? 500 : newWeight });
+                        },
+                        onChangeLine: function onChangeLine(newValue) {
+                            return descriptionStyles({ descLine: newValue === undefined ? 10 : newValue });
+                        }
+                    }),
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Text Color", 'premium-blocks-for-gutenberg'),
+                        colorValue: descStyles[0].descColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
+                            return descriptionStyles({ descColor: newValue === undefined ? "transparent" : newValue });
+                        }
+                    }),
+                    React.createElement(_PremiumShadow2.default, {
+                        label: __("Text Shadow", 'premium-blocks-for-gutenberg'),
+                        color: descStyles[0].descShadowColor,
+                        blur: descStyles[0].descShadowBlur,
+                        horizontal: descStyles[0].descShadowHorizontal,
+                        vertical: descStyles[0].descShadowVertical,
+                        onChangeColor: function onChangeColor(newColor) {
+                            return descriptionStyles({ descShadowColor: newColor === undefined ? "transparent" : newColor });
+                        },
+                        onChangeBlur: function onChangeBlur(newBlur) {
+                            return descriptionStyles({ descShadowBlur: newBlur === undefined ? 0 : newBlur });
+                        },
+                        onChangehHorizontal: function onChangehHorizontal(newValue) {
+                            return descriptionStyles({ descShadowHorizontal: newValue === undefined ? 0 : newValue });
+                        },
+                        onChangeVertical: function onChangeVertical(newValue) {
+                            return descriptionStyles({ descShadowVertical: newValue === undefined ? 0 : newValue });
+                        }
+                    })
+                ),
+                React.createElement(
+                    PanelBody,
+                    {
+                        title: __("Container Style", 'premium-blocks-for-gutenberg'),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    React.createElement(_premiumBorder2.default, {
+                        label: __("Border"),
+                        value: border,
+                        borderType: border.borderType,
+                        borderColor: border.borderColor,
+                        borderWidth: border.borderWidth,
+                        borderRadius: border.borderRadius,
+                        onChange: function onChange(value) {
+                            return setAttributes({ border: value });
+                        }
+                    }),
+                    React.createElement(_PremiumShadow2.default, {
+                        label: __("Box Shadow", "Premium-blocks-for-gutenberg"),
+                        boxShadow: true,
+                        color: containerStyles[0].containerShadowColor,
+                        blur: containerStyles[0].containerShadowBlur,
+                        horizontal: containerStyles[0].containerShadowHorizontal,
+                        vertical: containerStyles[0].containerShadowVertical,
+                        position: containerStyles[0].containerShadowPosition,
+                        onChangeColor: function onChangeColor(newColor) {
+                            return containerStyle({ containerShadowColor: newColor });
+                        },
+                        onChangeBlur: function onChangeBlur(newBlur) {
+                            return containerStyle({ containerShadowBlur: newBlur });
+                        },
+                        onChangehHorizontal: function onChangehHorizontal(newValue) {
+                            return containerStyle({ containerShadowHorizontal: newValue });
+                        },
+                        onChangeVertical: function onChangeVertical(newValue) {
+                            return containerStyle({ containerShadowVertical: newValue });
+                        },
+                        onChangePosition: function onChangePosition(newValue) {
+                            return containerStyle({ containerShadowPosition: newValue });
+                        }
+                    }),
+                    React.createElement(_premiumResponsiveSpacing2.default, { value: padding, responsive: true, showUnits: true, label: __("Padding"), onChange: function onChange(value) {
+                            return setAttributes({ padding: value });
+                        } })
+                ),
+                React.createElement(_premiumResponsiveTabs2.default, {
+                    Desktop: hideDesktop,
+                    Tablet: hideTablet,
+                    Mobile: hideMobile,
+                    onChangeDesktop: function onChangeDesktop(value) {
+                        return setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" });
+                    },
+                    onChangeTablet: function onChangeTablet(value) {
+                        return setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" });
+                    },
+                    onChangeMobile: function onChangeMobile(value) {
+                        return setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" });
+                    }
+                })
+            ), !imageURL && React.createElement(MediaPlaceholder, {
+                labels: {
+                    title: __('Premium Banner ', 'premium-blocks-for-gutenberg'),
+                    instructions: __('Upload an image file, pick one from your media library, or add one with a URL.', 'premium-blocks-for-gutenberg')
+                },
+                accept: ['image'],
+                allowedTypes: ['image'],
+                value: imageURL,
+                onSelectURL: function onSelectURL(value) {
+                    return setAttributes({ imageURL: value });
+                },
+                onSelect: function onSelect(media) {
+                    setAttributes({
+                        imageID: media.id,
+                        imageURL: media.url
+                    });
+                }
+            }), imageURL && React.createElement(
+                "div",
+                {
+                    id: "premium-banner-" + block_id,
+                    className: mainClasses + " premium-banner__responsive_" + responsive + " premium-banner-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
+                    style: {
+                        paddingTop: containerPaddingTop && "" + containerPaddingTop + padding.unit,
+                        paddingRight: containerPaddingRight && "" + containerPaddingRight + padding.unit,
+                        paddingBottom: containerPaddingBottom && "" + containerPaddingBottom + padding.unit,
+                        paddingLeft: containerPaddingLeft && "" + containerPaddingLeft + padding.unit
+                    }
+                },
+                React.createElement("style", {
+                    dangerouslySetInnerHTML: {
+                        __html: ["#premium-banner-" + block_id + " .premium-banner__effect3 .premium-banner__title_wrap::after{", "background: " + sepColor, "}", "#premium-banner-" + block_id + " .premium-banner__inner {", "background: " + background, "}", "#premium-banner-" + block_id + " .premium-banner__img.premium-banner__active {", "opacity: " + (background ? 1 - opacity / 100 : 1) + " ", "}"].join("\n")
+                    }
+                }),
+                React.createElement(
+                    "div",
+                    {
+                        className: "premium-banner__inner premium-banner__min premium-banner__" + effect + " premium-banner__" + hoverEffect + " hover_" + hovered,
+                        style: {
+                            boxShadow: containerStyles[0].containerShadowHorizontal + "px " + containerStyles[0].containerShadowVertical + "px " + containerStyles[0].containerShadowBlur + "px " + containerStyles[0].containerShadowColor + " " + containerStyles[0].containerShadowPosition,
+                            borderStyle: border && border.borderType,
+                            borderTopWidth: border && border.borderWidth.Desktop.top,
+                            borderRightWidth: border && border.borderWidth.Desktop.right,
+                            borderBottomWidth: border && border.borderWidth.Desktop.bottom,
+                            borderLeftWidth: border && border.borderWidth.Desktop.left,
+                            borderRadius: (border && border.borderRadius.Desktop.top || 0) + "px " + (border && border.borderRadius.Desktop.right || 0) + "px " + (border && border.borderRadius.Desktop.bottom || 0) + "px " + (border && border.borderRadius.Desktop.left || 0) + "px",
+                            borderColor: border && border.borderColor,
+                            borderTopLeftRadius: (border && border.borderRadius.Desktop.top || 0) + "px",
+                            borderTopRightRadius: (border && border.borderRadius.Desktop.right || 0) + "px",
+                            borderBottomLeftRadius: (border && border.borderRadius.Desktop.bottom || 0) + "px",
+                            borderBottomRightRadius: (border && border.borderRadius.Desktop.left || 0) + "px"
+                        }
+                    },
+                    React.createElement(
+                        "div",
+                        {
+                            className: "premium-banner__img_wrap premium-banner__" + height,
+                            style: {
+                                minHeight: minHeight,
+                                alignItems: verAlign
+                            }
+                        },
+                        React.createElement("img", {
+                            className: "premium-banner__img",
+                            alt: "Banner Image",
+                            src: imageURL,
+                            style: {
+                                filter: "brightness( " + bright + "% ) contrast( " + contrast + "% ) saturate( " + saturation + "% ) blur( " + blur + "px ) hue-rotate( " + hue + "deg )"
+                            }
+                        })
+                    ),
+                    React.createElement(
+                        "div",
+                        {
+                            className: "premium-banner__content",
+                            style: {
+                                background: "effect2" === effect ? titleStyles[0].titleBack : "transparent"
+                            }
+                        },
+                        React.createElement(
+                            "div",
+                            {
+                                className: "premium-banner__title_wrap",
+                                style: {
+                                    textAlign: contentAlign
+                                }
+                            },
+                            React.createElement(RichText, {
+                                tagName: titleTag.toLowerCase(),
+                                className: "premium-banner__title",
+                                value: title,
+                                isSelected: false,
+                                onChange: function onChange(newText) {
+                                    return setAttributes({ title: newText });
+                                },
+                                style: {
+                                    fontSize: "" + titleFontSize + titleStyles[0].titleSizeUnit,
+                                    color: titleStyles[0].titleColor,
+                                    fontWeight: titleStyles[0].titleWeight,
+                                    lineHeight: titleStyles[0].titleLine + "px",
+                                    textShadow: titleStyles[0].shadowHorizontal + "px " + titleStyles[0].shadowVertical + "px " + titleStyles[0].shadowBlur + "px " + titleStyles[0].shadowColor
+                                }
+                            })
+                        ),
+                        React.createElement(
+                            "div",
+                            {
+                                className: "premium-banner__desc_wrap",
+                                style: {
+                                    textAlign: contentAlign
+                                }
+                            },
+                            React.createElement(RichText, {
+                                tagName: "p",
+                                className: "premium-banner__desc",
+                                value: desc,
+                                isSelected: false,
+                                onChange: function onChange(newText) {
+                                    return setAttributes({ desc: newText });
+                                },
+                                style: {
+                                    fontSize: "" + descFontSize + descStyles[0].descSizeUnit,
+                                    color: descStyles[0].descColor,
+                                    fontWeight: descStyles[0].descWeight,
+                                    lineHeight: descStyles[0].descLine + "px",
+                                    textShadow: descStyles[0].descShadowHorizontal + "px " + descStyles[0].descShadowVertical + "px " + descStyles[0].descShadowBlur + "px " + descStyles[0].descShadowColor
+                                }
+                            })
+                        )
+                    )
+                )
+            )];
+        }
+    }]);
+
+    return edit;
+}(Component);
+
+;
+exports.default = withSelect(function (select, props) {
+    var _select = select('core/edit-post'),
+        _select$__experimenta = _select.__experimentalGetPreviewDeviceType,
+        __experimentalGetPreviewDeviceType = _select$__experimenta === undefined ? null : _select$__experimenta;
+
+    var deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return { deviceType: deviceType };
+})(edit);
+
+/***/ }),
 /* 226 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18082,11 +18046,7 @@ var save = function save(props) {
         hideDesktop = _props$attributes.hideDesktop,
         hideTablet = _props$attributes.hideTablet,
         hideMobile = _props$attributes.hideMobile,
-        borderWidth = _props$attributes.borderWidth,
-        borderTop = _props$attributes.borderTop,
-        borderRight = _props$attributes.borderRight,
-        borderBottom = _props$attributes.borderBottom,
-        borderLeft = _props$attributes.borderLeft;
+        border = _props$attributes.border;
 
 
     var mainClasses = (0, _classnames2.default)(className, 'premium-banner');
@@ -18108,10 +18068,8 @@ var save = function save(props) {
                 className: 'premium-banner__inner premium-banner__min premium-banner__' + effect + ' premium-banner__' + hoverEffect + ' hover_' + hovered,
                 style: {
                     boxShadow: containerStyles[0].containerShadowHorizontal + 'px ' + containerStyles[0].containerShadowVertical + 'px ' + containerStyles[0].containerShadowBlur + 'px ' + containerStyles[0].containerShadowColor + ' ' + containerStyles[0].containerShadowPosition,
-                    borderStyle: containerStyles[0].borderType,
-                    borderWidth: borderBanner ? borderTop + 'px ' + borderRight + 'px ' + borderBottom + 'px ' + borderLeft + 'px' : borderWidth + "px",
-                    borderRadius: containerStyles[0].borderRadius + "px",
-                    borderColor: containerStyles[0].borderColor
+                    borderStyle: border && border.borderType,
+                    borderColor: border && border.borderColor
                 }
             },
             React.createElement(
@@ -18732,6 +18690,53 @@ var newAttributes = {
             },
             unit: 'px'
         }
+    },
+    border: {
+        type: "object",
+        default: {
+            "borderType": '',
+            "borderColor": '',
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
     }
 };
 
@@ -18763,6 +18768,53 @@ var deprecatedContent = [{
                     left: attributes.paddingLMobile || ''
                 },
                 "unit": "px"
+            },
+            border: {
+                type: "object",
+                default: {
+                    "borderType": attributes.containerStyles[0].borderType || '',
+                    "borderColor": attributes.containerStyles[0].borderColor || '',
+                    "borderWidth": {
+                        Desktop: {
+                            top: attributes.borderTop || '',
+                            right: attributes.borderRight || '',
+                            bottom: attributes.borderBottom || '',
+                            left: attributes.borderLeft || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    },
+                    "borderRadius": {
+                        Desktop: {
+                            top: attributes.containerStyles[0].borderRadius || '',
+                            right: attributes.containerStyles[0].borderRadius || '',
+                            bottom: attributes.containerStyles[0].borderRadius || '',
+                            left: attributes.containerStyles[0].borderRadius || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    }
+                }
             }
         };
         return Object.assign(attributes, newAttributes);
@@ -20153,10 +20205,6 @@ var attributes = {
     containerStyles: {
         type: "array",
         default: [{
-            borderType: "none",
-            borderWidth: '',
-            borderRadius: '',
-            borderColor: '',
             containerShadowColor: '',
             containerShadowBlur: '',
             containerShadowHorizontal: '',
@@ -20273,22 +20321,6 @@ var attributes = {
         type: "boolean",
         default: false
     },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    borderTop: {
-        type: "number"
-    },
-    borderRight: {
-        type: "number"
-    },
-    borderBottom: {
-        type: "number"
-    },
-    borderLeft: {
-        type: "number"
-    },
     padding: {
         type: "object",
         default: {
@@ -20311,6 +20343,53 @@ var attributes = {
                 left: ''
             },
             unit: 'px'
+        }
+    },
+    border: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
         }
     }
 };
@@ -20386,7 +20465,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _premiumTypo = __webpack_require__(9);
+var _premiumTypo = __webpack_require__(7);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
@@ -20394,7 +20473,7 @@ var _premiumBorder = __webpack_require__(6);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumResponsiveTabs = __webpack_require__(7);
+var _premiumResponsiveTabs = __webpack_require__(8);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
@@ -20406,7 +20485,7 @@ var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _fontLoader = __webpack_require__(22);
+var _fontLoader = __webpack_require__(23);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
 
@@ -20415,8 +20494,6 @@ var _PremiumShadow = __webpack_require__(5);
 var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -20472,8 +20549,7 @@ var edit = exports.edit = function (_Component) {
     }, {
         key: "render",
         value: function render() {
-            var _this2 = this,
-                _React$createElement;
+            var _this2 = this;
 
             var _props = this.props,
                 isSelected = _props.isSelected,
@@ -20481,7 +20557,6 @@ var edit = exports.edit = function (_Component) {
                 className = _props.className,
                 blockId = _props.clientId;
             var _props$attributes = this.props.attributes,
-                borderButton = _props$attributes.borderButton,
                 btnText = _props$attributes.btnText,
                 btnSize = _props$attributes.btnSize,
                 btnAlign = _props$attributes.btnAlign,
@@ -20494,11 +20569,7 @@ var edit = exports.edit = function (_Component) {
                 hideDesktop = _props$attributes.hideDesktop,
                 hideTablet = _props$attributes.hideTablet,
                 hideMobile = _props$attributes.hideMobile,
-                borderWidth = _props$attributes.borderWidth,
-                borderTop = _props$attributes.borderTop,
-                borderRight = _props$attributes.borderRight,
-                borderBottom = _props$attributes.borderBottom,
-                borderLeft = _props$attributes.borderLeft,
+                border = _props$attributes.border,
                 textStyles = _props$attributes.textStyles,
                 btnStyles = _props$attributes.btnStyles;
 
@@ -20702,7 +20773,7 @@ var edit = exports.edit = function (_Component) {
                         className: "premium-panel-body",
                         initialOpen: false
                     },
-                    React.createElement(_premiumTypo2.default, (_React$createElement = {
+                    React.createElement(_premiumTypo2.default, {
                         components: ["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"],
                         setAttributes: saveTextStyles,
                         fontSizeType: {
@@ -20732,18 +20803,20 @@ var edit = exports.edit = function (_Component) {
                         },
                         onChangeLine: function onChangeLine(newValue) {
                             return saveTextStyles({ textLine: newValue });
+                        },
+                        onChangeStyle: function onChangeStyle(newStyle) {
+                            return saveTextStyles({ textStyle: newStyle });
+                        },
+                        onChangeSpacing: function onChangeSpacing(newValue) {
+                            return saveTextStyles({ textLetter: newValue });
+                        },
+                        onChangeFamily: function onChangeFamily(fontFamily) {
+                            return saveTextStyles({ textFontFamily: fontFamily });
+                        },
+                        onChangeUpper: function onChangeUpper(check) {
+                            return saveTextStyles({ textUpper: check });
                         }
-                    }, _defineProperty(_React$createElement, "onChangeSize", function onChangeSize(newSize) {
-                        return saveTextStyles({ textSize: newSize });
-                    }), _defineProperty(_React$createElement, "onChangeStyle", function onChangeStyle(newStyle) {
-                        return saveTextStyles({ textStyle: newStyle });
-                    }), _defineProperty(_React$createElement, "onChangeSpacing", function onChangeSpacing(newValue) {
-                        return saveTextStyles({ textLetter: newValue });
-                    }), _defineProperty(_React$createElement, "onChangeFamily", function onChangeFamily(fontFamily) {
-                        return saveTextStyles({ textFontFamily: fontFamily });
-                    }), _defineProperty(_React$createElement, "onChangeUpper", function onChangeUpper(check) {
-                        return saveTextStyles({ textUpper: check });
-                    }), _React$createElement)),
+                    }),
                     React.createElement(_PremiumShadow2.default, {
                         label: __("Text Shadow", 'premium-blocks-for-gutenberg'),
                         color: textStyles[0].shadowColor,
@@ -20857,35 +20930,14 @@ var edit = exports.edit = function (_Component) {
                         }
                     ),
                     React.createElement(_premiumBorder2.default, {
-                        borderType: btnStyles[0].borderType,
-                        borderWidth: borderWidth,
-                        top: borderTop,
-                        right: borderRight,
-                        bottom: borderBottom,
-                        left: borderLeft,
-                        borderColor: btnStyles[0].borderColor,
-                        borderRadius: btnStyles[0].borderRadius,
-                        onChangeType: function onChangeType(newType) {
-                            return saveBtnStyles({ borderType: newType });
-                        },
-                        onChangeWidth: function onChangeWidth(_ref) {
-                            var top = _ref.top,
-                                right = _ref.right,
-                                bottom = _ref.bottom,
-                                left = _ref.left;
-                            return setAttributes({
-                                borderButton: true,
-                                borderTop: top,
-                                borderRight: right,
-                                borderBottom: bottom,
-                                borderLeft: left
-                            });
-                        },
-                        onChangeColor: function onChangeColor(colorValue) {
-                            return saveBtnStyles({ borderColor: colorValue });
-                        },
-                        onChangeRadius: function onChangeRadius(newrRadius) {
-                            return saveBtnStyles({ borderRadius: newrRadius });
+                        label: __("Border"),
+                        value: border,
+                        borderType: border.borderType,
+                        borderColor: border.borderColor,
+                        borderWidth: border.borderWidth,
+                        borderRadius: border.borderRadius,
+                        onChange: function onChange(value) {
+                            return setAttributes({ border: value });
                         }
                     }),
                     React.createElement(_PremiumShadow2.default, {
@@ -20971,10 +21023,17 @@ var edit = exports.edit = function (_Component) {
                         textShadow: textStyles[0].shadowHorizontal + "px " + textStyles[0].shadowVertical + "px " + textStyles[0].shadowBlur + "px " + textStyles[0].shadowColor,
                         boxShadow: btnStyles[0].btnShadowHorizontal + "px " + btnStyles[0].btnShadowVertical + "px " + btnStyles[0].btnShadowBlur + "px " + btnStyles[0].btnShadowColor + " " + btnStyles[0].btnShadowPosition,
                         padding: btnStyles[0].padding + btnStyles[0].paddingU,
-                        borderStyle: btnStyles[0].borderType,
-                        borderWidth: borderButton ? borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px" : borderWidth + "px",
-                        borderRadius: btnStyles[0].borderRadius + "px",
-                        borderColor: btnStyles[0].borderColor
+                        borderStyle: border && border.borderType,
+                        borderTopWidth: border && border.borderWidth.Desktop.top,
+                        borderRightWidth: border && border.borderWidth.Desktop.right,
+                        borderBottomWidth: border && border.borderWidth.Desktop.bottom,
+                        borderLeftWidth: border && border.borderWidth.Desktop.left,
+                        borderRadius: (border && border.borderRadius.Desktop.top || 0) + "px " + (border && border.borderRadius.Desktop.right || 0) + "px " + (border && border.borderRadius.Desktop.bottom || 0) + "px " + (border && border.borderRadius.Desktop.left || 0) + "px",
+                        borderColor: border && border.borderColor,
+                        borderTopLeftRadius: (border && border.borderRadius.Desktop.top || 0) + "px",
+                        borderTopRightRadius: (border && border.borderRadius.Desktop.right || 0) + "px",
+                        borderBottomLeftRadius: (border && border.borderRadius.Desktop.bottom || 0) + "px",
+                        borderBottomRightRadius: (border && border.borderRadius.Desktop.left || 0) + "px"
                     },
                     keepPlaceholderOnFocus: true
                 }),
@@ -21043,11 +21102,7 @@ var save = function save(props) {
         hideMobile = _props$attributes.hideMobile,
         textStyles = _props$attributes.textStyles,
         btnStyles = _props$attributes.btnStyles,
-        borderTop = _props$attributes.borderTop,
-        borderRight = _props$attributes.borderRight,
-        borderBottom = _props$attributes.borderBottom,
-        borderLeft = _props$attributes.borderLeft,
-        borderWidth = _props$attributes.borderWidth;
+        border = _props$attributes.border;
 
     var mainClasses = (0, _classnames2.default)(className, 'premium-button');
 
@@ -21082,10 +21137,17 @@ var save = function save(props) {
                 textShadow: textStyles[0].shadowHorizontal + 'px ' + textStyles[0].shadowVertical + 'px ' + textStyles[0].shadowBlur + 'px ' + textStyles[0].shadowColor,
                 boxShadow: btnStyles[0].btnShadowHorizontal + 'px ' + btnStyles[0].btnShadowVertical + 'px ' + btnStyles[0].btnShadowBlur + 'px ' + btnStyles[0].btnShadowColor + ' ' + btnStyles[0].btnShadowPosition,
                 padding: btnStyles[0].padding + btnStyles[0].paddingU,
-                borderStyle: btnStyles[0].borderType,
-                borderWidth: borderButton ? borderTop + 'px ' + borderRight + 'px ' + borderBottom + 'px ' + borderLeft + 'px' : borderWidth + "px",
-                borderRadius: btnStyles[0].borderRadius + "px",
-                borderColor: btnStyles[0].borderColor
+                borderStyle: border && border.borderType,
+                borderTopWidth: border && border.borderWidth.Desktop.top,
+                borderRightWidth: border && border.borderWidth.Desktop.right,
+                borderBottomWidth: border && border.borderWidth.Desktop.bottom,
+                borderLeftWidth: border && border.borderWidth.Desktop.left,
+                borderRadius: (border && border.borderRadius.Desktop.top || 0) + 'px ' + (border && border.borderRadius.Desktop.right || 0) + 'px ' + (border && border.borderRadius.Desktop.bottom || 0) + 'px ' + (border && border.borderRadius.Desktop.left || 0) + 'px',
+                borderColor: border && border.borderColor,
+                borderTopLeftRadius: (border && border.borderRadius.Desktop.top || 0) + 'px',
+                borderTopRightRadius: (border && border.borderRadius.Desktop.right || 0) + 'px',
+                borderBottomLeftRadius: (border && border.borderRadius.Desktop.bottom || 0) + 'px',
+                borderBottomRightRadius: (border && border.borderRadius.Desktop.left || 0) + 'px'
             }
         })
     );
@@ -21112,6 +21174,8 @@ var _hexToRgba = __webpack_require__(16);
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var className = "premium-button";
 var __ = wp.i18n.__;
@@ -21295,635 +21359,7 @@ var attributes = {
     }
 };
 
-var deprecatedContent = [{
-    attributes: attributes,
-    migrate: function migrate(attributes) {
-        var newAttributes = {
-            textStyles: [{
-                textSizeUnit: attributes.textSizeUnit,
-                textSize: attributes.textSize,
-                textSizeTablet: attributes.textSizeTablet,
-                textSizeMobile: attributes.textSizeMobile,
-                textFontFamily: attributes.textFontFamily,
-                textLetter: attributes.textLetter,
-                textStyle: attributes.textStyle,
-                textUpper: attributes.textUpper,
-                textWeight: attributes.textWeight,
-                textLine: attributes.textLine,
-                shadowColor: attributes.shadowColor,
-                shadowBlur: attributes.shadowBlur,
-                shadowHorizontal: attributes.shadowHorizontal,
-                shadowVertical: attributes.shadowVertical
-            }],
-
-            btnStyles: [{
-                textColor: attributes.textColor,
-                textHoverColor: attributes.textHoverColor,
-                backColor: attributes.backColor,
-                backOpacity: attributes.backOpacity,
-                backHoverColor: attributes.backHoverColor,
-                borderType: attributes.borderType,
-                borderRadius: attributes.borderRadius,
-                borderColor: attributes.borderColor,
-                borderHoverColor: attributes.borderHoverColor,
-                btnShadowColor: attributes.btnShadowColor,
-                btnShadowBlur: attributes.btnShadowBlur,
-                btnShadowHorizontal: attributes.btnShadowHorizontal,
-                btnShadowVertical: attributes.btnShadowVertical,
-                btnShadowPosition: attributes.btnShadowPosition,
-                padding: attributes.padding,
-                paddingU: attributes.paddingU
-            }]
-
-        };
-        return Object.assign(attributes, newAttributes);
-    },
-    save: function save(props) {
-        var _props$attributes = props.attributes,
-            block_id = _props$attributes.block_id,
-            borderButton = _props$attributes.borderButton,
-            btnText = _props$attributes.btnText,
-            btnSize = _props$attributes.btnSize,
-            btnAlign = _props$attributes.btnAlign,
-            btnLink = _props$attributes.btnLink,
-            btnTarget = _props$attributes.btnTarget,
-            effect = _props$attributes.effect,
-            effectDir = _props$attributes.effectDir,
-            textColor = _props$attributes.textColor,
-            textHoverColor = _props$attributes.textHoverColor,
-            backColor = _props$attributes.backColor,
-            backHoverColor = _props$attributes.backHoverColor,
-            slideColor = _props$attributes.slideColor,
-            textFontFamily = _props$attributes.textFontFamily,
-            textWeight = _props$attributes.textWeight,
-            textLine = _props$attributes.textLine,
-            textLetter = _props$attributes.textLetter,
-            textStyle = _props$attributes.textStyle,
-            backOpacity = _props$attributes.backOpacity,
-            textUpper = _props$attributes.textUpper,
-            borderType = _props$attributes.borderType,
-            borderWidth = _props$attributes.borderWidth,
-            borderTop = _props$attributes.borderTop,
-            borderRight = _props$attributes.borderRight,
-            borderBottom = _props$attributes.borderBottom,
-            borderLeft = _props$attributes.borderLeft,
-            borderRadius = _props$attributes.borderRadius,
-            borderColor = _props$attributes.borderColor,
-            borderHoverColor = _props$attributes.borderHoverColor,
-            padding = _props$attributes.padding,
-            paddingU = _props$attributes.paddingU,
-            shadowBlur = _props$attributes.shadowBlur,
-            shadowColor = _props$attributes.shadowColor,
-            shadowHorizontal = _props$attributes.shadowHorizontal,
-            shadowVertical = _props$attributes.shadowVertical,
-            btnShadowBlur = _props$attributes.btnShadowBlur,
-            btnShadowColor = _props$attributes.btnShadowColor,
-            btnShadowHorizontal = _props$attributes.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes.btnShadowVertical,
-            btnShadowPosition = _props$attributes.btnShadowPosition,
-            hideDesktop = _props$attributes.hideDesktop,
-            hideTablet = _props$attributes.hideTablet,
-            hideMobile = _props$attributes.hideMobile;
-
-        return React.createElement(
-            'div',
-            {
-                id: className + '-wrap-' + block_id,
-                className: className + '__wrap premium-button__' + effect + ' premium-button__' + effectDir + ' premium-button-' + block_id + ' ' + hideDesktop + ' ' + hideTablet + ' ' + hideMobile,
-                style: { textAlign: btnAlign }
-            },
-            React.createElement('style', {
-                dangerouslySetInnerHTML: {
-                    __html: ['#premium-button-wrap-' + block_id + ' .premium-button:hover {', 'color: ' + textHoverColor + ' !important;', 'border-color: ' + borderHoverColor + ' !important;', "}", '#premium-button-wrap-' + block_id + '.premium-button__none .premium-button:hover {', 'background-color: ' + backHoverColor + ' !important;', "}", '#premium-button-wrap-' + block_id + '.premium-button__slide .premium-button::before,', '#premium-button-wrap-' + block_id + '.premium-button__shutter .premium-button::before,', '#premium-button-wrap-' + block_id + '.premium-button__radial .premium-button::before {', 'background-color: ' + slideColor, "}"].join("\n")
-                }
-            }),
-            React.createElement(RichText.Content, {
-                tagName: 'a',
-                value: btnText,
-                className: 'premium-button premium-button__' + btnSize,
-                href: btnLink,
-                rel: 'noopener noreferrer',
-                target: btnTarget ? "_blank" : "_self",
-                style: {
-                    color: textColor,
-                    backgroundColor: backColor ? (0, _hexToRgba2.default)(backColor, backOpacity) : "transparent",
-                    fontFamily: textFontFamily,
-                    letterSpacing: textLetter + "px",
-                    textTransform: textUpper ? "uppercase" : "none",
-                    fontStyle: textStyle,
-                    lineHeight: textLine + "px",
-                    fontWeight: textWeight,
-                    textShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor,
-                    boxShadow: btnShadowHorizontal + 'px ' + btnShadowVertical + 'px ' + btnShadowBlur + 'px ' + btnShadowColor + ' ' + btnShadowPosition,
-                    padding: padding + paddingU,
-                    borderStyle: borderType,
-                    borderWidth: borderButton ? borderTop + 'px ' + borderRight + 'px ' + borderBottom + 'px ' + borderLeft + 'px' : borderWidth + "px",
-                    borderRadius: borderRadius + "px",
-                    borderColor: borderColor
-                }
-            })
-        );
-    }
-}, {
-    attributes: attributes,
-
-    save: function save(props) {
-        var _props$attributes2 = props.attributes,
-            id = _props$attributes2.id,
-            btnText = _props$attributes2.btnText,
-            btnSize = _props$attributes2.btnSize,
-            btnAlign = _props$attributes2.btnAlign,
-            btnLink = _props$attributes2.btnLink,
-            btnTarget = _props$attributes2.btnTarget,
-            effect = _props$attributes2.effect,
-            effectDir = _props$attributes2.effectDir,
-            textColor = _props$attributes2.textColor,
-            textHoverColor = _props$attributes2.textHoverColor,
-            backColor = _props$attributes2.backColor,
-            backHoverColor = _props$attributes2.backHoverColor,
-            slideColor = _props$attributes2.slideColor,
-            textSize = _props$attributes2.textSize,
-            textFontFamily = _props$attributes2.textFontFamily,
-            textWeight = _props$attributes2.textWeight,
-            textLine = _props$attributes2.textLine,
-            textLetter = _props$attributes2.textLetter,
-            textStyle = _props$attributes2.textStyle,
-            textUpper = _props$attributes2.textUpper,
-            borderType = _props$attributes2.borderType,
-            borderWidth = _props$attributes2.borderWidth,
-            borderRadius = _props$attributes2.borderRadius,
-            borderColor = _props$attributes2.borderColor,
-            borderHoverColor = _props$attributes2.borderHoverColor,
-            padding = _props$attributes2.padding,
-            paddingU = _props$attributes2.paddingU,
-            shadowBlur = _props$attributes2.shadowBlur,
-            shadowColor = _props$attributes2.shadowColor,
-            shadowHorizontal = _props$attributes2.shadowHorizontal,
-            shadowVertical = _props$attributes2.shadowVertical,
-            btnShadowBlur = _props$attributes2.btnShadowBlur,
-            btnShadowColor = _props$attributes2.btnShadowColor,
-            btnShadowHorizontal = _props$attributes2.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes2.btnShadowVertical,
-            btnShadowPosition = _props$attributes2.btnShadowPosition;
-
-        return React.createElement(
-            'div',
-            {
-                id: className + '-wrap-' + id,
-                className: className + '__wrap premium-button__' + effect + ' premium-button__' + effectDir,
-                style: { textAlign: btnAlign }
-            },
-            React.createElement('style', {
-                dangerouslySetInnerHTML: {
-                    __html: ['#premium-button-wrap-' + id + ' .premium-button:hover {', 'color: ' + textHoverColor + ' !important;', 'border-color: ' + borderHoverColor + ' !important;', "}", '#premium-button-wrap-' + id + '.premium-button__none .premium-button:hover {', 'background-color: ' + backHoverColor + ' !important;', "}", '#premium-button-wrap-' + id + '.premium-button__slide .premium-button::before,', '#premium-button-wrap-' + id + '.premium-button__shutter .premium-button::before,', '#premium-button-wrap-' + id + '.premium-button__radial .premium-button::before {', 'background-color: ' + slideColor, "}"].join("\n")
-                }
-            }),
-            React.createElement(RichText.Content, {
-                tagName: 'a',
-                value: btnText,
-                className: 'premium-button premium-button__' + btnSize,
-                href: btnLink,
-                rel: 'noopener noreferrer',
-                target: btnTarget ? "_blank" : "_self",
-                style: {
-                    color: textColor,
-                    backgroundColor: backColor,
-                    fontSize: textSize + "px",
-                    fontFamily: textFontFamily,
-                    letterSpacing: textLetter + "px",
-                    textTransform: textUpper ? "uppercase" : "none",
-                    fontStyle: textStyle,
-                    lineHeight: textLine + "px",
-                    fontWeight: textWeight,
-                    textShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor,
-                    boxShadow: btnShadowHorizontal + 'px ' + btnShadowVertical + 'px ' + btnShadowBlur + 'px ' + btnShadowColor + ' ' + btnShadowPosition,
-                    padding: padding + paddingU,
-                    border: borderType,
-                    borderWidth: borderWidth + "px",
-                    borderRadius: borderRadius + "px",
-                    borderColor: borderColor
-                }
-            })
-        );
-    }
-}, {
-    attributes: attributes,
-    migrate: function migrate(attributes) {
-        return Object.assign(attributes, { paddingU: "" });
-    },
-    save: function save(props) {
-        var _props$attributes3 = props.attributes,
-            id = _props$attributes3.id,
-            btnText = _props$attributes3.btnText,
-            btnSize = _props$attributes3.btnSize,
-            btnAlign = _props$attributes3.btnAlign,
-            btnLink = _props$attributes3.btnLink,
-            btnTarget = _props$attributes3.btnTarget,
-            effect = _props$attributes3.effect,
-            effectDir = _props$attributes3.effectDir,
-            textColor = _props$attributes3.textColor,
-            textHoverColor = _props$attributes3.textHoverColor,
-            backColor = _props$attributes3.backColor,
-            backHoverColor = _props$attributes3.backHoverColor,
-            slideColor = _props$attributes3.slideColor,
-            textSize = _props$attributes3.textSize,
-            textFontFamily = _props$attributes3.textFontFamily,
-            textWeight = _props$attributes3.textWeight,
-            textLine = _props$attributes3.textLine,
-            textLetter = _props$attributes3.textLetter,
-            textStyle = _props$attributes3.textStyle,
-            textUpper = _props$attributes3.textUpper,
-            borderType = _props$attributes3.borderType,
-            borderWidth = _props$attributes3.borderWidth,
-            borderRadius = _props$attributes3.borderRadius,
-            borderColor = _props$attributes3.borderColor,
-            borderHoverColor = _props$attributes3.borderHoverColor,
-            padding = _props$attributes3.padding,
-            shadowBlur = _props$attributes3.shadowBlur,
-            shadowColor = _props$attributes3.shadowColor,
-            shadowHorizontal = _props$attributes3.shadowHorizontal,
-            shadowVertical = _props$attributes3.shadowVertical,
-            btnShadowBlur = _props$attributes3.btnShadowBlur,
-            btnShadowColor = _props$attributes3.btnShadowColor,
-            btnShadowHorizontal = _props$attributes3.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes3.btnShadowVertical,
-            btnShadowPosition = _props$attributes3.btnShadowPosition;
-
-        return React.createElement(
-            'div',
-            {
-                id: className + '-wrap-' + id,
-                className: className + '__wrap ' + className + '__' + effect + ' ' + className + '__' + effectDir,
-                style: { textAlign: btnAlign }
-            },
-            React.createElement('style', {
-                dangerouslySetInnerHTML: {
-                    __html: ['#premium-button-wrap-' + id + ' .premium-button:hover {', 'color: ' + textHoverColor + ' !important;', 'border-color: ' + borderHoverColor + ' !important;', "}", '#premium-button-wrap-' + id + '.premium-button__none .premium-button:hover {', 'background-color: ' + backHoverColor + ' !important;', "}", '#premium-button-wrap-' + id + '.premium-button__slide .premium-button::before,', '#premium-button-wrap-' + id + '.premium-button__shutter .premium-button::before,', '#premium-button-wrap-' + id + '.premium-button__radial .premium-button::before {', 'background-color: ' + slideColor, "}"].join("\n")
-                }
-            }),
-            React.createElement(RichText.Content, {
-                tagName: 'a',
-                value: btnText,
-                className: className + ' ' + className + '__' + btnSize,
-                href: btnLink,
-                rel: 'noopener noreferrer',
-                target: btnTarget ? "_blank" : "_self",
-                style: {
-                    color: textColor,
-                    backgroundColor: backColor,
-                    fontSize: textSize + "px",
-                    fontFamily: textFontFamily,
-                    letterSpacing: textLetter + "px",
-                    textTransform: textUpper ? "uppercase" : "none",
-                    fontStyle: textStyle,
-                    lineHeight: textLine + "px",
-                    fontWeight: textWeight,
-                    textShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor,
-                    boxShadow: btnShadowHorizontal + 'px ' + btnShadowVertical + 'px ' + btnShadowBlur + 'px ' + btnShadowColor + ' ' + btnShadowPosition,
-                    padding: padding + "px",
-                    border: borderType,
-                    borderWidth: borderWidth + "px",
-                    borderRadius: borderRadius + "px",
-                    borderColor: borderColor
-                }
-            })
-        );
-    }
-}, {
-    attributes: attributes,
-    save: function save(props) {
-        var _props$attributes4 = props.attributes,
-            id = _props$attributes4.id,
-            btnText = _props$attributes4.btnText,
-            btnSize = _props$attributes4.btnSize,
-            btnAlign = _props$attributes4.btnAlign,
-            btnLink = _props$attributes4.btnLink,
-            btnTarget = _props$attributes4.btnTarget,
-            effect = _props$attributes4.effect,
-            effectDir = _props$attributes4.effectDir,
-            textColor = _props$attributes4.textColor,
-            textHoverColor = _props$attributes4.textHoverColor,
-            backColor = _props$attributes4.backColor,
-            backHoverColor = _props$attributes4.backHoverColor,
-            slideColor = _props$attributes4.slideColor,
-            textSize = _props$attributes4.textSize,
-            textFontFamily = _props$attributes4.textFontFamily,
-            textWeight = _props$attributes4.textWeight,
-            textLine = _props$attributes4.textLine,
-            textLetter = _props$attributes4.textLetter,
-            textStyle = _props$attributes4.textStyle,
-            textUpper = _props$attributes4.textUpper,
-            borderType = _props$attributes4.borderType,
-            borderWidth = _props$attributes4.borderWidth,
-            borderRadius = _props$attributes4.borderRadius,
-            borderColor = _props$attributes4.borderColor,
-            borderHoverColor = _props$attributes4.borderHoverColor,
-            padding = _props$attributes4.padding,
-            shadowBlur = _props$attributes4.shadowBlur,
-            shadowColor = _props$attributes4.shadowColor,
-            shadowHorizontal = _props$attributes4.shadowHorizontal,
-            shadowVertical = _props$attributes4.shadowVertical,
-            btnShadowBlur = _props$attributes4.btnShadowBlur,
-            btnShadowColor = _props$attributes4.btnShadowColor,
-            btnShadowHorizontal = _props$attributes4.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes4.btnShadowVertical,
-            btnShadowPosition = _props$attributes4.btnShadowPosition;
-
-        return React.createElement(
-            'div',
-            {
-                id: className + '-wrap-' + id,
-                className: className + '__wrap ' + className + '__' + effect + ' ' + className + '__' + effectDir,
-                style: { textAlign: btnAlign }
-            },
-            React.createElement('style', {
-                dangerouslySetInnerHTML: {
-                    __html: ['#premium-button-wrap-' + id + ' .premium-button:hover {', 'color: ' + textHoverColor + ' !important;', 'border-color: ' + borderHoverColor + ' !important;', "}", '#premium-button-wrap-' + id + '.premium-button__none .premium-button:hover {', 'background-color: ' + backHoverColor + ' !important;', "}", '#premium-button-wrap-' + id + '.premium-button__slide .premium-button::before,', '#premium-button-wrap-' + id + '.premium-button__shutter .premium-button::before,', '#premium-button-wrap-' + id + '.premium-button__radial .premium-button::before {', 'background-color: ' + slideColor, "}"].join("\n")
-                }
-            }),
-            React.createElement(RichText.Content, {
-                tagName: 'a',
-                value: btnText,
-                className: className + ' ' + className + '__' + btnSize,
-                href: btnLink,
-                target: btnTarget ? "_blank" : "_self",
-                style: {
-                    color: textColor,
-                    backgroundColor: backColor,
-                    fontSize: textSize + "px",
-                    fontFamily: textFontFamily,
-                    letterSpacing: textLetter + "px",
-                    textTransform: textUpper ? "uppercase" : "none",
-                    fontStyle: textStyle,
-                    lineHeight: textLine + "px",
-                    fontWeight: textWeight,
-                    textShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor,
-                    boxShadow: btnShadowHorizontal + 'px ' + btnShadowVertical + 'px ' + btnShadowBlur + 'px ' + btnShadowColor + ' ' + btnShadowPosition,
-                    padding: padding + "px",
-                    border: borderType,
-                    borderWidth: borderWidth + "px",
-                    borderRadius: borderRadius + "px",
-                    borderColor: borderColor
-                }
-            })
-        );
-    }
-}, {
-    attributes: attributes,
-    migrate: function migrate(attributes) {
-        return Object.assign(attributes, { textFontFamily: "" });
-    },
-    save: function save(props) {
-        var _props$attributes5 = props.attributes,
-            id = _props$attributes5.id,
-            btnText = _props$attributes5.btnText,
-            btnSize = _props$attributes5.btnSize,
-            btnAlign = _props$attributes5.btnAlign,
-            btnLink = _props$attributes5.btnLink,
-            btnTarget = _props$attributes5.btnTarget,
-            effect = _props$attributes5.effect,
-            effectDir = _props$attributes5.effectDir,
-            textColor = _props$attributes5.textColor,
-            textHoverColor = _props$attributes5.textHoverColor,
-            backColor = _props$attributes5.backColor,
-            backHoverColor = _props$attributes5.backHoverColor,
-            slideColor = _props$attributes5.slideColor,
-            textSize = _props$attributes5.textSize,
-            textWeight = _props$attributes5.textWeight,
-            textLine = _props$attributes5.textLine,
-            textLetter = _props$attributes5.textLetter,
-            textStyle = _props$attributes5.textStyle,
-            textUpper = _props$attributes5.textUpper,
-            borderType = _props$attributes5.borderType,
-            borderWidth = _props$attributes5.borderWidth,
-            borderRadius = _props$attributes5.borderRadius,
-            borderColor = _props$attributes5.borderColor,
-            borderHoverColor = _props$attributes5.borderHoverColor,
-            padding = _props$attributes5.padding,
-            shadowBlur = _props$attributes5.shadowBlur,
-            shadowColor = _props$attributes5.shadowColor,
-            shadowHorizontal = _props$attributes5.shadowHorizontal,
-            shadowVertical = _props$attributes5.shadowVertical,
-            btnShadowBlur = _props$attributes5.btnShadowBlur,
-            btnShadowColor = _props$attributes5.btnShadowColor,
-            btnShadowHorizontal = _props$attributes5.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes5.btnShadowVertical,
-            btnShadowPosition = _props$attributes5.btnShadowPosition;
-
-        return React.createElement(
-            'div',
-            {
-                id: className + '-wrap-' + id,
-                className: className + '__wrap ' + className + '__' + effect + ' ' + className + '__' + effectDir,
-                style: { textAlign: btnAlign }
-            },
-            React.createElement('style', {
-                dangerouslySetInnerHTML: {
-                    __html: ['#premium-button-wrap-' + id + ' .premium-button:hover {', 'color: ' + textHoverColor + ' !important;', 'border-color: ' + borderHoverColor + ' !important;', "}", '#premium-button-wrap-' + id + '.premium-button__none .premium-button:hover {', 'background-color: ' + backHoverColor + ' !important;', "}", '#premium-button-wrap-' + id + '.premium-button__slide .premium-button::before,', '#premium-button-wrap-' + id + '.premium-button__shutter .premium-button::before,', '#premium-button-wrap-' + id + '.premium-button__radial .premium-button::before {', 'background-color: ' + slideColor, "}"].join("\n")
-                }
-            }),
-            React.createElement(RichText.Content, {
-                tagName: 'a',
-                value: btnText,
-                className: className + ' ' + className + '__' + btnSize,
-                href: btnLink,
-                target: btnTarget ? "_blank" : "_self",
-                style: {
-                    color: textColor,
-                    backgroundColor: backColor,
-                    fontSize: textSize + "px",
-                    letterSpacing: textLetter + "px",
-                    textTransform: textUpper ? "uppercase" : "none",
-                    fontStyle: textStyle,
-                    lineHeight: textLine + "px",
-                    fontWeight: textWeight,
-                    textShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor,
-                    boxShadow: btnShadowHorizontal + 'px ' + btnShadowVertical + 'px ' + btnShadowBlur + 'px ' + btnShadowColor + ' ' + btnShadowPosition,
-                    padding: padding + "px",
-                    border: borderType,
-                    borderWidth: borderWidth + "px",
-                    borderRadius: borderRadius + "px",
-                    borderColor: borderColor
-                }
-            })
-        );
-    }
-}, {
-    attributes: attributes,
-    migrate: function migrate(attributes) {
-        return Object.assign(attributes, { borderHoverColor: "" });
-    },
-    save: function save(props) {
-        var _props$attributes6 = props.attributes,
-            id = _props$attributes6.id,
-            btnText = _props$attributes6.btnText,
-            btnSize = _props$attributes6.btnSize,
-            btnAlign = _props$attributes6.btnAlign,
-            btnLink = _props$attributes6.btnLink,
-            btnTarget = _props$attributes6.btnTarget,
-            effect = _props$attributes6.effect,
-            effectDir = _props$attributes6.effectDir,
-            textColor = _props$attributes6.textColor,
-            textHoverColor = _props$attributes6.textHoverColor,
-            backColor = _props$attributes6.backColor,
-            backHoverColor = _props$attributes6.backHoverColor,
-            slideColor = _props$attributes6.slideColor,
-            textSize = _props$attributes6.textSize,
-            textWeight = _props$attributes6.textWeight,
-            textLine = _props$attributes6.textLine,
-            textLetter = _props$attributes6.textLetter,
-            textStyle = _props$attributes6.textStyle,
-            textUpper = _props$attributes6.textUpper,
-            borderType = _props$attributes6.borderType,
-            borderWidth = _props$attributes6.borderWidth,
-            borderRadius = _props$attributes6.borderRadius,
-            borderColor = _props$attributes6.borderColor,
-            padding = _props$attributes6.padding,
-            shadowBlur = _props$attributes6.shadowBlur,
-            shadowColor = _props$attributes6.shadowColor,
-            shadowHorizontal = _props$attributes6.shadowHorizontal,
-            shadowVertical = _props$attributes6.shadowVertical,
-            btnShadowBlur = _props$attributes6.btnShadowBlur,
-            btnShadowColor = _props$attributes6.btnShadowColor,
-            btnShadowHorizontal = _props$attributes6.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes6.btnShadowVertical,
-            btnShadowPosition = _props$attributes6.btnShadowPosition;
-
-        return React.createElement(
-            'div',
-            {
-                id: className + '-wrap-' + id,
-                className: className + '__wrap ' + className + '__' + effect + ' ' + className + '__' + effectDir,
-                style: { textAlign: btnAlign }
-            },
-            React.createElement('style', {
-                dangerouslySetInnerHTML: {
-                    __html: ['#premium-button-wrap-' + id + ' .premium-button:hover {', 'color: ' + textHoverColor + ' !important;', "}", '#premium-button-wrap-' + id + '.premium-button__none .premium-button:hover {', 'background-color: ' + backHoverColor + ' !important;', "}", '#premium-button-wrap-' + id + '.premium-button__slide .premium-button::before,', '#premium-button-wrap-' + id + '.premium-button__shutter .premium-button::before,', '#premium-button-wrap-' + id + '.premium-button__radial .premium-button::before {', 'background-color: ' + slideColor, "}"].join("\n")
-                }
-            }),
-            React.createElement(RichText.Content, {
-                tagName: 'a',
-                value: btnText,
-                className: className + ' ' + className + '__' + btnSize,
-                href: btnLink,
-                target: btnTarget ? "_blank" : "_self",
-                style: {
-                    color: textColor,
-                    backgroundColor: backColor,
-                    fontSize: textSize + "px",
-                    letterSpacing: textLetter + "px",
-                    textTransform: textUpper ? "uppercase" : "none",
-                    fontStyle: textStyle,
-                    lineHeight: textLine + "px",
-                    fontWeight: textWeight,
-                    textShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor,
-                    boxShadow: btnShadowHorizontal + 'px ' + btnShadowVertical + 'px ' + btnShadowBlur + 'px ' + btnShadowColor + ' ' + btnShadowPosition,
-                    padding: padding + "px",
-                    border: borderType,
-                    borderWidth: borderWidth + "px",
-                    borderRadius: borderRadius + "px",
-                    borderColor: borderColor
-                }
-            })
-        );
-    }
-}, {
-    attributes: attributes,
-    migrate: function migrate(attributes) {
-        var newAttributes = {
-            btnShadowColor: "",
-            btnShadowBlur: "0",
-            btnShadowHorizontal: "0",
-            btnShadowVertical: "0",
-            btnShadowPosition: ""
-        };
-        return Object.assign(attributes, newAttributes);
-    },
-    save: function save(props) {
-        var _props$attributes7 = props.attributes,
-            id = _props$attributes7.id,
-            btnText = _props$attributes7.btnText,
-            btnSize = _props$attributes7.btnSize,
-            btnAlign = _props$attributes7.btnAlign,
-            btnLink = _props$attributes7.btnLink,
-            btnTarget = _props$attributes7.btnTarget,
-            effect = _props$attributes7.effect,
-            effectDir = _props$attributes7.effectDir,
-            textColor = _props$attributes7.textColor,
-            textHoverColor = _props$attributes7.textHoverColor,
-            backColor = _props$attributes7.backColor,
-            backHoverColor = _props$attributes7.backHoverColor,
-            slideColor = _props$attributes7.slideColor,
-            textSize = _props$attributes7.textSize,
-            textWeight = _props$attributes7.textWeight,
-            textLine = _props$attributes7.textLine,
-            textLetter = _props$attributes7.textLetter,
-            textStyle = _props$attributes7.textStyle,
-            textUpper = _props$attributes7.textUpper,
-            borderType = _props$attributes7.borderType,
-            borderWidth = _props$attributes7.borderWidth,
-            borderRadius = _props$attributes7.borderRadius,
-            borderColor = _props$attributes7.borderColor,
-            padding = _props$attributes7.padding,
-            shadowBlur = _props$attributes7.shadowBlur,
-            shadowColor = _props$attributes7.shadowColor,
-            shadowHorizontal = _props$attributes7.shadowHorizontal,
-            shadowVertical = _props$attributes7.shadowVertical;
-
-        return React.createElement(
-            'div',
-            {
-                id: className + '-wrap-' + id,
-                className: className + '__wrap ' + className + '__' + effect + ' ' + className + '__' + effectDir,
-                style: { textAlign: btnAlign }
-            },
-            React.createElement('style', {
-                dangerouslySetInnerHTML: {
-                    __html: ['#premium-button-wrap-' + id + ' .premium-button:hover {', 'color: ' + textHoverColor + ' !important;', "}", '#premium-button-wrap-' + id + '.premium-button__none .premium-button:hover {', 'background-color: ' + backHoverColor + ' !important;', "}", '#premium-button-wrap-' + id + '.premium-button__slide .premium-button::before,', '#premium-button-wrap-' + id + '.premium-button__shutter .premium-button::before,', '#premium-button-wrap-' + id + '.premium-button__radial .premium-button::before {', 'background-color: ' + slideColor, "}"].join("\n")
-                }
-            }),
-            React.createElement(RichText.Content, {
-                tagName: 'a',
-                value: btnText,
-                className: className + ' ' + className + '__' + btnSize,
-                href: btnLink,
-                target: btnTarget ? "_blank" : "_self",
-                style: {
-                    color: textColor,
-                    backgroundColor: backColor,
-                    fontSize: textSize + "px",
-                    letterSpacing: textLetter + "px",
-                    textTransform: textUpper ? "uppercase" : "none",
-                    fontStyle: textStyle,
-                    lineHeight: textLine + "px",
-                    fontWeight: textWeight,
-                    textShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor,
-                    padding: padding + "px",
-                    border: borderType,
-                    borderWidth: borderWidth + "px",
-                    borderRadius: borderRadius + "px",
-                    borderColor: borderColor
-                }
-            })
-        );
-    }
-}];
-
-exports.default = deprecatedContent;
-
-/***/ }),
-/* 233 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-var __ = wp.i18n.__;
-
-var attributes = {
+var v7Attrinutes = _defineProperty({
     borderButton: {
         type: "boolean",
         default: false
@@ -22035,6 +21471,986 @@ var attributes = {
             padding: '',
             paddingU: 'px'
         }]
+    },
+    border: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    }
+}, 'border', {
+    type: "object",
+    default: {
+        "borderType": "",
+        "borderColor": "",
+        "borderWidth": {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            }
+        },
+        "borderRadius": {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            }
+        }
+    }
+});
+
+var deprecatedContent = [{
+    attributes: v7Attrinutes,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            border: {
+                "borderType": attributes.btnStyles[0].borderType || '',
+                "borderColor": attributes.btnStyles[0].borderColor || '',
+                "borderWidth": {
+                    Desktop: {
+                        top: attributes.borderTop || '',
+                        right: attributes.borderRight || '',
+                        bottom: attributes.borderBottom || '',
+                        left: attributes.borderLeft || ''
+                    },
+                    Tablet: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    Mobile: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    }
+                },
+                "borderRadius": {
+                    Desktop: {
+                        top: attributes.btnStyles[0].borderRadius || '',
+                        right: attributes.btnStyles[0].borderRadius || '',
+                        bottom: attributes.btnStyles[0].borderRadius || '',
+                        left: attributes.btnStyles[0].borderRadius || ''
+                    },
+                    Tablet: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    Mobile: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    }
+                }
+            }
+        };
+        return Object.assign(attributes, newAttributes);
+    },
+    save: function save(props) {
+        var className = props.className;
+        var _props$attributes = props.attributes,
+            borderButton = _props$attributes.borderButton,
+            btnText = _props$attributes.btnText,
+            btnSize = _props$attributes.btnSize,
+            btnAlign = _props$attributes.btnAlign,
+            btnLink = _props$attributes.btnLink,
+            btnTarget = _props$attributes.btnTarget,
+            effect = _props$attributes.effect,
+            effectDir = _props$attributes.effectDir,
+            slideColor = _props$attributes.slideColor,
+            block_id = _props$attributes.block_id,
+            hideDesktop = _props$attributes.hideDesktop,
+            hideTablet = _props$attributes.hideTablet,
+            hideMobile = _props$attributes.hideMobile,
+            textStyles = _props$attributes.textStyles,
+            btnStyles = _props$attributes.btnStyles,
+            borderTop = _props$attributes.borderTop,
+            borderRight = _props$attributes.borderRight,
+            borderBottom = _props$attributes.borderBottom,
+            borderLeft = _props$attributes.borderLeft,
+            borderWidth = _props$attributes.borderWidth;
+
+        var mainClasses = (0, _classnames2.default)(className, 'premium-button');
+
+        return React.createElement(
+            'div',
+            {
+                id: mainClasses + '-wrap-' + block_id,
+                className: mainClasses + '__wrap premium-button__' + effect + ' premium-button__' + effectDir + ' premium-button-' + block_id + ' ' + hideDesktop + ' ' + hideTablet + ' ' + hideMobile,
+                style: { textAlign: btnAlign }
+            },
+            React.createElement('style', {
+                dangerouslySetInnerHTML: {
+                    __html: ['#premium-button-wrap-' + block_id + ' .premium-button:hover {', 'color: ' + btnStyles[0].textHoverColor + ' !important;', 'border-color: ' + btnStyles[0].borderHoverColor + ' !important;', "}", '#premium-button-wrap-' + block_id + '.premium-button__none .premium-button:hover {', 'background-color: ' + btnStyles[0].backHoverColor + ' !important;', "}", '#premium-button-wrap-' + block_id + '.premium-button__slide .premium-button::before,', '#premium-button-wrap-' + block_id + '.premium-button__shutter .premium-button::before,', '#premium-button-wrap-' + block_id + '.premium-button__radial .premium-button::before {', 'background-color: ' + slideColor, "}"].join("\n")
+                }
+            }),
+            React.createElement(RichText.Content, {
+                tagName: 'a',
+                value: btnText,
+                className: 'premium-button premium-button__' + btnSize,
+                href: btnLink,
+                rel: 'noopener noreferrer',
+                target: btnTarget ? "_blank" : "_self",
+                style: {
+                    color: btnStyles[0].textColor,
+                    backgroundColor: btnStyles[0].backColor,
+                    fontFamily: textStyles[0].textFontFamily,
+                    letterSpacing: textStyles[0].textLetter + "px",
+                    textTransform: textStyles[0].textUpper ? "uppercase" : "none",
+                    fontStyle: textStyles[0].textStyle,
+                    lineHeight: textStyles[0].textLine + "px",
+                    fontWeight: textStyles[0].textWeight,
+                    textShadow: textStyles[0].shadowHorizontal + 'px ' + textStyles[0].shadowVertical + 'px ' + textStyles[0].shadowBlur + 'px ' + textStyles[0].shadowColor,
+                    boxShadow: btnStyles[0].btnShadowHorizontal + 'px ' + btnStyles[0].btnShadowVertical + 'px ' + btnStyles[0].btnShadowBlur + 'px ' + btnStyles[0].btnShadowColor + ' ' + btnStyles[0].btnShadowPosition,
+                    padding: btnStyles[0].padding + btnStyles[0].paddingU,
+                    borderStyle: btnStyles[0].borderType,
+                    borderWidth: borderButton ? borderTop + 'px ' + borderRight + 'px ' + borderBottom + 'px ' + borderLeft + 'px' : borderWidth + "px",
+                    borderRadius: btnStyles[0].borderRadius + "px",
+                    borderColor: btnStyles[0].borderColor
+                }
+            })
+        );
+    }
+}, {
+    attributes: attributes,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            textStyles: [{
+                textSizeUnit: attributes.textSizeUnit,
+                textSize: attributes.textSize,
+                textSizeTablet: attributes.textSizeTablet,
+                textSizeMobile: attributes.textSizeMobile,
+                textFontFamily: attributes.textFontFamily,
+                textLetter: attributes.textLetter,
+                textStyle: attributes.textStyle,
+                textUpper: attributes.textUpper,
+                textWeight: attributes.textWeight,
+                textLine: attributes.textLine,
+                shadowColor: attributes.shadowColor,
+                shadowBlur: attributes.shadowBlur,
+                shadowHorizontal: attributes.shadowHorizontal,
+                shadowVertical: attributes.shadowVertical
+            }],
+
+            btnStyles: [{
+                textColor: attributes.textColor,
+                textHoverColor: attributes.textHoverColor,
+                backColor: attributes.backColor,
+                backOpacity: attributes.backOpacity,
+                backHoverColor: attributes.backHoverColor,
+                borderType: attributes.borderType,
+                borderRadius: attributes.borderRadius,
+                borderColor: attributes.borderColor,
+                borderHoverColor: attributes.borderHoverColor,
+                btnShadowColor: attributes.btnShadowColor,
+                btnShadowBlur: attributes.btnShadowBlur,
+                btnShadowHorizontal: attributes.btnShadowHorizontal,
+                btnShadowVertical: attributes.btnShadowVertical,
+                btnShadowPosition: attributes.btnShadowPosition,
+                padding: attributes.padding,
+                paddingU: attributes.paddingU
+            }]
+
+        };
+        return Object.assign(attributes, newAttributes);
+    },
+    save: function save(props) {
+        var _props$attributes2 = props.attributes,
+            block_id = _props$attributes2.block_id,
+            borderButton = _props$attributes2.borderButton,
+            btnText = _props$attributes2.btnText,
+            btnSize = _props$attributes2.btnSize,
+            btnAlign = _props$attributes2.btnAlign,
+            btnLink = _props$attributes2.btnLink,
+            btnTarget = _props$attributes2.btnTarget,
+            effect = _props$attributes2.effect,
+            effectDir = _props$attributes2.effectDir,
+            textColor = _props$attributes2.textColor,
+            textHoverColor = _props$attributes2.textHoverColor,
+            backColor = _props$attributes2.backColor,
+            backHoverColor = _props$attributes2.backHoverColor,
+            slideColor = _props$attributes2.slideColor,
+            textFontFamily = _props$attributes2.textFontFamily,
+            textWeight = _props$attributes2.textWeight,
+            textLine = _props$attributes2.textLine,
+            textLetter = _props$attributes2.textLetter,
+            textStyle = _props$attributes2.textStyle,
+            backOpacity = _props$attributes2.backOpacity,
+            textUpper = _props$attributes2.textUpper,
+            borderType = _props$attributes2.borderType,
+            borderWidth = _props$attributes2.borderWidth,
+            borderTop = _props$attributes2.borderTop,
+            borderRight = _props$attributes2.borderRight,
+            borderBottom = _props$attributes2.borderBottom,
+            borderLeft = _props$attributes2.borderLeft,
+            borderRadius = _props$attributes2.borderRadius,
+            borderColor = _props$attributes2.borderColor,
+            borderHoverColor = _props$attributes2.borderHoverColor,
+            padding = _props$attributes2.padding,
+            paddingU = _props$attributes2.paddingU,
+            shadowBlur = _props$attributes2.shadowBlur,
+            shadowColor = _props$attributes2.shadowColor,
+            shadowHorizontal = _props$attributes2.shadowHorizontal,
+            shadowVertical = _props$attributes2.shadowVertical,
+            btnShadowBlur = _props$attributes2.btnShadowBlur,
+            btnShadowColor = _props$attributes2.btnShadowColor,
+            btnShadowHorizontal = _props$attributes2.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes2.btnShadowVertical,
+            btnShadowPosition = _props$attributes2.btnShadowPosition,
+            hideDesktop = _props$attributes2.hideDesktop,
+            hideTablet = _props$attributes2.hideTablet,
+            hideMobile = _props$attributes2.hideMobile;
+
+        return React.createElement(
+            'div',
+            {
+                id: className + '-wrap-' + block_id,
+                className: className + '__wrap premium-button__' + effect + ' premium-button__' + effectDir + ' premium-button-' + block_id + ' ' + hideDesktop + ' ' + hideTablet + ' ' + hideMobile,
+                style: { textAlign: btnAlign }
+            },
+            React.createElement('style', {
+                dangerouslySetInnerHTML: {
+                    __html: ['#premium-button-wrap-' + block_id + ' .premium-button:hover {', 'color: ' + textHoverColor + ' !important;', 'border-color: ' + borderHoverColor + ' !important;', "}", '#premium-button-wrap-' + block_id + '.premium-button__none .premium-button:hover {', 'background-color: ' + backHoverColor + ' !important;', "}", '#premium-button-wrap-' + block_id + '.premium-button__slide .premium-button::before,', '#premium-button-wrap-' + block_id + '.premium-button__shutter .premium-button::before,', '#premium-button-wrap-' + block_id + '.premium-button__radial .premium-button::before {', 'background-color: ' + slideColor, "}"].join("\n")
+                }
+            }),
+            React.createElement(RichText.Content, {
+                tagName: 'a',
+                value: btnText,
+                className: 'premium-button premium-button__' + btnSize,
+                href: btnLink,
+                rel: 'noopener noreferrer',
+                target: btnTarget ? "_blank" : "_self",
+                style: {
+                    color: textColor,
+                    backgroundColor: backColor ? (0, _hexToRgba2.default)(backColor, backOpacity) : "transparent",
+                    fontFamily: textFontFamily,
+                    letterSpacing: textLetter + "px",
+                    textTransform: textUpper ? "uppercase" : "none",
+                    fontStyle: textStyle,
+                    lineHeight: textLine + "px",
+                    fontWeight: textWeight,
+                    textShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor,
+                    boxShadow: btnShadowHorizontal + 'px ' + btnShadowVertical + 'px ' + btnShadowBlur + 'px ' + btnShadowColor + ' ' + btnShadowPosition,
+                    padding: padding + paddingU,
+                    borderStyle: borderType,
+                    borderWidth: borderButton ? borderTop + 'px ' + borderRight + 'px ' + borderBottom + 'px ' + borderLeft + 'px' : borderWidth + "px",
+                    borderRadius: borderRadius + "px",
+                    borderColor: borderColor
+                }
+            })
+        );
+    }
+}, {
+    attributes: attributes,
+
+    save: function save(props) {
+        var _props$attributes3 = props.attributes,
+            id = _props$attributes3.id,
+            btnText = _props$attributes3.btnText,
+            btnSize = _props$attributes3.btnSize,
+            btnAlign = _props$attributes3.btnAlign,
+            btnLink = _props$attributes3.btnLink,
+            btnTarget = _props$attributes3.btnTarget,
+            effect = _props$attributes3.effect,
+            effectDir = _props$attributes3.effectDir,
+            textColor = _props$attributes3.textColor,
+            textHoverColor = _props$attributes3.textHoverColor,
+            backColor = _props$attributes3.backColor,
+            backHoverColor = _props$attributes3.backHoverColor,
+            slideColor = _props$attributes3.slideColor,
+            textSize = _props$attributes3.textSize,
+            textFontFamily = _props$attributes3.textFontFamily,
+            textWeight = _props$attributes3.textWeight,
+            textLine = _props$attributes3.textLine,
+            textLetter = _props$attributes3.textLetter,
+            textStyle = _props$attributes3.textStyle,
+            textUpper = _props$attributes3.textUpper,
+            borderType = _props$attributes3.borderType,
+            borderWidth = _props$attributes3.borderWidth,
+            borderRadius = _props$attributes3.borderRadius,
+            borderColor = _props$attributes3.borderColor,
+            borderHoverColor = _props$attributes3.borderHoverColor,
+            padding = _props$attributes3.padding,
+            paddingU = _props$attributes3.paddingU,
+            shadowBlur = _props$attributes3.shadowBlur,
+            shadowColor = _props$attributes3.shadowColor,
+            shadowHorizontal = _props$attributes3.shadowHorizontal,
+            shadowVertical = _props$attributes3.shadowVertical,
+            btnShadowBlur = _props$attributes3.btnShadowBlur,
+            btnShadowColor = _props$attributes3.btnShadowColor,
+            btnShadowHorizontal = _props$attributes3.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes3.btnShadowVertical,
+            btnShadowPosition = _props$attributes3.btnShadowPosition;
+
+        return React.createElement(
+            'div',
+            {
+                id: className + '-wrap-' + id,
+                className: className + '__wrap premium-button__' + effect + ' premium-button__' + effectDir,
+                style: { textAlign: btnAlign }
+            },
+            React.createElement('style', {
+                dangerouslySetInnerHTML: {
+                    __html: ['#premium-button-wrap-' + id + ' .premium-button:hover {', 'color: ' + textHoverColor + ' !important;', 'border-color: ' + borderHoverColor + ' !important;', "}", '#premium-button-wrap-' + id + '.premium-button__none .premium-button:hover {', 'background-color: ' + backHoverColor + ' !important;', "}", '#premium-button-wrap-' + id + '.premium-button__slide .premium-button::before,', '#premium-button-wrap-' + id + '.premium-button__shutter .premium-button::before,', '#premium-button-wrap-' + id + '.premium-button__radial .premium-button::before {', 'background-color: ' + slideColor, "}"].join("\n")
+                }
+            }),
+            React.createElement(RichText.Content, {
+                tagName: 'a',
+                value: btnText,
+                className: 'premium-button premium-button__' + btnSize,
+                href: btnLink,
+                rel: 'noopener noreferrer',
+                target: btnTarget ? "_blank" : "_self",
+                style: {
+                    color: textColor,
+                    backgroundColor: backColor,
+                    fontSize: textSize + "px",
+                    fontFamily: textFontFamily,
+                    letterSpacing: textLetter + "px",
+                    textTransform: textUpper ? "uppercase" : "none",
+                    fontStyle: textStyle,
+                    lineHeight: textLine + "px",
+                    fontWeight: textWeight,
+                    textShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor,
+                    boxShadow: btnShadowHorizontal + 'px ' + btnShadowVertical + 'px ' + btnShadowBlur + 'px ' + btnShadowColor + ' ' + btnShadowPosition,
+                    padding: padding + paddingU,
+                    border: borderType,
+                    borderWidth: borderWidth + "px",
+                    borderRadius: borderRadius + "px",
+                    borderColor: borderColor
+                }
+            })
+        );
+    }
+}, {
+    attributes: attributes,
+    migrate: function migrate(attributes) {
+        return Object.assign(attributes, { paddingU: "" });
+    },
+    save: function save(props) {
+        var _props$attributes4 = props.attributes,
+            id = _props$attributes4.id,
+            btnText = _props$attributes4.btnText,
+            btnSize = _props$attributes4.btnSize,
+            btnAlign = _props$attributes4.btnAlign,
+            btnLink = _props$attributes4.btnLink,
+            btnTarget = _props$attributes4.btnTarget,
+            effect = _props$attributes4.effect,
+            effectDir = _props$attributes4.effectDir,
+            textColor = _props$attributes4.textColor,
+            textHoverColor = _props$attributes4.textHoverColor,
+            backColor = _props$attributes4.backColor,
+            backHoverColor = _props$attributes4.backHoverColor,
+            slideColor = _props$attributes4.slideColor,
+            textSize = _props$attributes4.textSize,
+            textFontFamily = _props$attributes4.textFontFamily,
+            textWeight = _props$attributes4.textWeight,
+            textLine = _props$attributes4.textLine,
+            textLetter = _props$attributes4.textLetter,
+            textStyle = _props$attributes4.textStyle,
+            textUpper = _props$attributes4.textUpper,
+            borderType = _props$attributes4.borderType,
+            borderWidth = _props$attributes4.borderWidth,
+            borderRadius = _props$attributes4.borderRadius,
+            borderColor = _props$attributes4.borderColor,
+            borderHoverColor = _props$attributes4.borderHoverColor,
+            padding = _props$attributes4.padding,
+            shadowBlur = _props$attributes4.shadowBlur,
+            shadowColor = _props$attributes4.shadowColor,
+            shadowHorizontal = _props$attributes4.shadowHorizontal,
+            shadowVertical = _props$attributes4.shadowVertical,
+            btnShadowBlur = _props$attributes4.btnShadowBlur,
+            btnShadowColor = _props$attributes4.btnShadowColor,
+            btnShadowHorizontal = _props$attributes4.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes4.btnShadowVertical,
+            btnShadowPosition = _props$attributes4.btnShadowPosition;
+
+        return React.createElement(
+            'div',
+            {
+                id: className + '-wrap-' + id,
+                className: className + '__wrap ' + className + '__' + effect + ' ' + className + '__' + effectDir,
+                style: { textAlign: btnAlign }
+            },
+            React.createElement('style', {
+                dangerouslySetInnerHTML: {
+                    __html: ['#premium-button-wrap-' + id + ' .premium-button:hover {', 'color: ' + textHoverColor + ' !important;', 'border-color: ' + borderHoverColor + ' !important;', "}", '#premium-button-wrap-' + id + '.premium-button__none .premium-button:hover {', 'background-color: ' + backHoverColor + ' !important;', "}", '#premium-button-wrap-' + id + '.premium-button__slide .premium-button::before,', '#premium-button-wrap-' + id + '.premium-button__shutter .premium-button::before,', '#premium-button-wrap-' + id + '.premium-button__radial .premium-button::before {', 'background-color: ' + slideColor, "}"].join("\n")
+                }
+            }),
+            React.createElement(RichText.Content, {
+                tagName: 'a',
+                value: btnText,
+                className: className + ' ' + className + '__' + btnSize,
+                href: btnLink,
+                rel: 'noopener noreferrer',
+                target: btnTarget ? "_blank" : "_self",
+                style: {
+                    color: textColor,
+                    backgroundColor: backColor,
+                    fontSize: textSize + "px",
+                    fontFamily: textFontFamily,
+                    letterSpacing: textLetter + "px",
+                    textTransform: textUpper ? "uppercase" : "none",
+                    fontStyle: textStyle,
+                    lineHeight: textLine + "px",
+                    fontWeight: textWeight,
+                    textShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor,
+                    boxShadow: btnShadowHorizontal + 'px ' + btnShadowVertical + 'px ' + btnShadowBlur + 'px ' + btnShadowColor + ' ' + btnShadowPosition,
+                    padding: padding + "px",
+                    border: borderType,
+                    borderWidth: borderWidth + "px",
+                    borderRadius: borderRadius + "px",
+                    borderColor: borderColor
+                }
+            })
+        );
+    }
+}, {
+    attributes: attributes,
+    save: function save(props) {
+        var _props$attributes5 = props.attributes,
+            id = _props$attributes5.id,
+            btnText = _props$attributes5.btnText,
+            btnSize = _props$attributes5.btnSize,
+            btnAlign = _props$attributes5.btnAlign,
+            btnLink = _props$attributes5.btnLink,
+            btnTarget = _props$attributes5.btnTarget,
+            effect = _props$attributes5.effect,
+            effectDir = _props$attributes5.effectDir,
+            textColor = _props$attributes5.textColor,
+            textHoverColor = _props$attributes5.textHoverColor,
+            backColor = _props$attributes5.backColor,
+            backHoverColor = _props$attributes5.backHoverColor,
+            slideColor = _props$attributes5.slideColor,
+            textSize = _props$attributes5.textSize,
+            textFontFamily = _props$attributes5.textFontFamily,
+            textWeight = _props$attributes5.textWeight,
+            textLine = _props$attributes5.textLine,
+            textLetter = _props$attributes5.textLetter,
+            textStyle = _props$attributes5.textStyle,
+            textUpper = _props$attributes5.textUpper,
+            borderType = _props$attributes5.borderType,
+            borderWidth = _props$attributes5.borderWidth,
+            borderRadius = _props$attributes5.borderRadius,
+            borderColor = _props$attributes5.borderColor,
+            borderHoverColor = _props$attributes5.borderHoverColor,
+            padding = _props$attributes5.padding,
+            shadowBlur = _props$attributes5.shadowBlur,
+            shadowColor = _props$attributes5.shadowColor,
+            shadowHorizontal = _props$attributes5.shadowHorizontal,
+            shadowVertical = _props$attributes5.shadowVertical,
+            btnShadowBlur = _props$attributes5.btnShadowBlur,
+            btnShadowColor = _props$attributes5.btnShadowColor,
+            btnShadowHorizontal = _props$attributes5.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes5.btnShadowVertical,
+            btnShadowPosition = _props$attributes5.btnShadowPosition;
+
+        return React.createElement(
+            'div',
+            {
+                id: className + '-wrap-' + id,
+                className: className + '__wrap ' + className + '__' + effect + ' ' + className + '__' + effectDir,
+                style: { textAlign: btnAlign }
+            },
+            React.createElement('style', {
+                dangerouslySetInnerHTML: {
+                    __html: ['#premium-button-wrap-' + id + ' .premium-button:hover {', 'color: ' + textHoverColor + ' !important;', 'border-color: ' + borderHoverColor + ' !important;', "}", '#premium-button-wrap-' + id + '.premium-button__none .premium-button:hover {', 'background-color: ' + backHoverColor + ' !important;', "}", '#premium-button-wrap-' + id + '.premium-button__slide .premium-button::before,', '#premium-button-wrap-' + id + '.premium-button__shutter .premium-button::before,', '#premium-button-wrap-' + id + '.premium-button__radial .premium-button::before {', 'background-color: ' + slideColor, "}"].join("\n")
+                }
+            }),
+            React.createElement(RichText.Content, {
+                tagName: 'a',
+                value: btnText,
+                className: className + ' ' + className + '__' + btnSize,
+                href: btnLink,
+                target: btnTarget ? "_blank" : "_self",
+                style: {
+                    color: textColor,
+                    backgroundColor: backColor,
+                    fontSize: textSize + "px",
+                    fontFamily: textFontFamily,
+                    letterSpacing: textLetter + "px",
+                    textTransform: textUpper ? "uppercase" : "none",
+                    fontStyle: textStyle,
+                    lineHeight: textLine + "px",
+                    fontWeight: textWeight,
+                    textShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor,
+                    boxShadow: btnShadowHorizontal + 'px ' + btnShadowVertical + 'px ' + btnShadowBlur + 'px ' + btnShadowColor + ' ' + btnShadowPosition,
+                    padding: padding + "px",
+                    border: borderType,
+                    borderWidth: borderWidth + "px",
+                    borderRadius: borderRadius + "px",
+                    borderColor: borderColor
+                }
+            })
+        );
+    }
+}, {
+    attributes: attributes,
+    migrate: function migrate(attributes) {
+        return Object.assign(attributes, { textFontFamily: "" });
+    },
+    save: function save(props) {
+        var _props$attributes6 = props.attributes,
+            id = _props$attributes6.id,
+            btnText = _props$attributes6.btnText,
+            btnSize = _props$attributes6.btnSize,
+            btnAlign = _props$attributes6.btnAlign,
+            btnLink = _props$attributes6.btnLink,
+            btnTarget = _props$attributes6.btnTarget,
+            effect = _props$attributes6.effect,
+            effectDir = _props$attributes6.effectDir,
+            textColor = _props$attributes6.textColor,
+            textHoverColor = _props$attributes6.textHoverColor,
+            backColor = _props$attributes6.backColor,
+            backHoverColor = _props$attributes6.backHoverColor,
+            slideColor = _props$attributes6.slideColor,
+            textSize = _props$attributes6.textSize,
+            textWeight = _props$attributes6.textWeight,
+            textLine = _props$attributes6.textLine,
+            textLetter = _props$attributes6.textLetter,
+            textStyle = _props$attributes6.textStyle,
+            textUpper = _props$attributes6.textUpper,
+            borderType = _props$attributes6.borderType,
+            borderWidth = _props$attributes6.borderWidth,
+            borderRadius = _props$attributes6.borderRadius,
+            borderColor = _props$attributes6.borderColor,
+            borderHoverColor = _props$attributes6.borderHoverColor,
+            padding = _props$attributes6.padding,
+            shadowBlur = _props$attributes6.shadowBlur,
+            shadowColor = _props$attributes6.shadowColor,
+            shadowHorizontal = _props$attributes6.shadowHorizontal,
+            shadowVertical = _props$attributes6.shadowVertical,
+            btnShadowBlur = _props$attributes6.btnShadowBlur,
+            btnShadowColor = _props$attributes6.btnShadowColor,
+            btnShadowHorizontal = _props$attributes6.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes6.btnShadowVertical,
+            btnShadowPosition = _props$attributes6.btnShadowPosition;
+
+        return React.createElement(
+            'div',
+            {
+                id: className + '-wrap-' + id,
+                className: className + '__wrap ' + className + '__' + effect + ' ' + className + '__' + effectDir,
+                style: { textAlign: btnAlign }
+            },
+            React.createElement('style', {
+                dangerouslySetInnerHTML: {
+                    __html: ['#premium-button-wrap-' + id + ' .premium-button:hover {', 'color: ' + textHoverColor + ' !important;', 'border-color: ' + borderHoverColor + ' !important;', "}", '#premium-button-wrap-' + id + '.premium-button__none .premium-button:hover {', 'background-color: ' + backHoverColor + ' !important;', "}", '#premium-button-wrap-' + id + '.premium-button__slide .premium-button::before,', '#premium-button-wrap-' + id + '.premium-button__shutter .premium-button::before,', '#premium-button-wrap-' + id + '.premium-button__radial .premium-button::before {', 'background-color: ' + slideColor, "}"].join("\n")
+                }
+            }),
+            React.createElement(RichText.Content, {
+                tagName: 'a',
+                value: btnText,
+                className: className + ' ' + className + '__' + btnSize,
+                href: btnLink,
+                target: btnTarget ? "_blank" : "_self",
+                style: {
+                    color: textColor,
+                    backgroundColor: backColor,
+                    fontSize: textSize + "px",
+                    letterSpacing: textLetter + "px",
+                    textTransform: textUpper ? "uppercase" : "none",
+                    fontStyle: textStyle,
+                    lineHeight: textLine + "px",
+                    fontWeight: textWeight,
+                    textShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor,
+                    boxShadow: btnShadowHorizontal + 'px ' + btnShadowVertical + 'px ' + btnShadowBlur + 'px ' + btnShadowColor + ' ' + btnShadowPosition,
+                    padding: padding + "px",
+                    border: borderType,
+                    borderWidth: borderWidth + "px",
+                    borderRadius: borderRadius + "px",
+                    borderColor: borderColor
+                }
+            })
+        );
+    }
+}, {
+    attributes: attributes,
+    migrate: function migrate(attributes) {
+        return Object.assign(attributes, { borderHoverColor: "" });
+    },
+    save: function save(props) {
+        var _props$attributes7 = props.attributes,
+            id = _props$attributes7.id,
+            btnText = _props$attributes7.btnText,
+            btnSize = _props$attributes7.btnSize,
+            btnAlign = _props$attributes7.btnAlign,
+            btnLink = _props$attributes7.btnLink,
+            btnTarget = _props$attributes7.btnTarget,
+            effect = _props$attributes7.effect,
+            effectDir = _props$attributes7.effectDir,
+            textColor = _props$attributes7.textColor,
+            textHoverColor = _props$attributes7.textHoverColor,
+            backColor = _props$attributes7.backColor,
+            backHoverColor = _props$attributes7.backHoverColor,
+            slideColor = _props$attributes7.slideColor,
+            textSize = _props$attributes7.textSize,
+            textWeight = _props$attributes7.textWeight,
+            textLine = _props$attributes7.textLine,
+            textLetter = _props$attributes7.textLetter,
+            textStyle = _props$attributes7.textStyle,
+            textUpper = _props$attributes7.textUpper,
+            borderType = _props$attributes7.borderType,
+            borderWidth = _props$attributes7.borderWidth,
+            borderRadius = _props$attributes7.borderRadius,
+            borderColor = _props$attributes7.borderColor,
+            padding = _props$attributes7.padding,
+            shadowBlur = _props$attributes7.shadowBlur,
+            shadowColor = _props$attributes7.shadowColor,
+            shadowHorizontal = _props$attributes7.shadowHorizontal,
+            shadowVertical = _props$attributes7.shadowVertical,
+            btnShadowBlur = _props$attributes7.btnShadowBlur,
+            btnShadowColor = _props$attributes7.btnShadowColor,
+            btnShadowHorizontal = _props$attributes7.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes7.btnShadowVertical,
+            btnShadowPosition = _props$attributes7.btnShadowPosition;
+
+        return React.createElement(
+            'div',
+            {
+                id: className + '-wrap-' + id,
+                className: className + '__wrap ' + className + '__' + effect + ' ' + className + '__' + effectDir,
+                style: { textAlign: btnAlign }
+            },
+            React.createElement('style', {
+                dangerouslySetInnerHTML: {
+                    __html: ['#premium-button-wrap-' + id + ' .premium-button:hover {', 'color: ' + textHoverColor + ' !important;', "}", '#premium-button-wrap-' + id + '.premium-button__none .premium-button:hover {', 'background-color: ' + backHoverColor + ' !important;', "}", '#premium-button-wrap-' + id + '.premium-button__slide .premium-button::before,', '#premium-button-wrap-' + id + '.premium-button__shutter .premium-button::before,', '#premium-button-wrap-' + id + '.premium-button__radial .premium-button::before {', 'background-color: ' + slideColor, "}"].join("\n")
+                }
+            }),
+            React.createElement(RichText.Content, {
+                tagName: 'a',
+                value: btnText,
+                className: className + ' ' + className + '__' + btnSize,
+                href: btnLink,
+                target: btnTarget ? "_blank" : "_self",
+                style: {
+                    color: textColor,
+                    backgroundColor: backColor,
+                    fontSize: textSize + "px",
+                    letterSpacing: textLetter + "px",
+                    textTransform: textUpper ? "uppercase" : "none",
+                    fontStyle: textStyle,
+                    lineHeight: textLine + "px",
+                    fontWeight: textWeight,
+                    textShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor,
+                    boxShadow: btnShadowHorizontal + 'px ' + btnShadowVertical + 'px ' + btnShadowBlur + 'px ' + btnShadowColor + ' ' + btnShadowPosition,
+                    padding: padding + "px",
+                    border: borderType,
+                    borderWidth: borderWidth + "px",
+                    borderRadius: borderRadius + "px",
+                    borderColor: borderColor
+                }
+            })
+        );
+    }
+}, {
+    attributes: attributes,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            btnShadowColor: "",
+            btnShadowBlur: "0",
+            btnShadowHorizontal: "0",
+            btnShadowVertical: "0",
+            btnShadowPosition: ""
+        };
+        return Object.assign(attributes, newAttributes);
+    },
+    save: function save(props) {
+        var _props$attributes8 = props.attributes,
+            id = _props$attributes8.id,
+            btnText = _props$attributes8.btnText,
+            btnSize = _props$attributes8.btnSize,
+            btnAlign = _props$attributes8.btnAlign,
+            btnLink = _props$attributes8.btnLink,
+            btnTarget = _props$attributes8.btnTarget,
+            effect = _props$attributes8.effect,
+            effectDir = _props$attributes8.effectDir,
+            textColor = _props$attributes8.textColor,
+            textHoverColor = _props$attributes8.textHoverColor,
+            backColor = _props$attributes8.backColor,
+            backHoverColor = _props$attributes8.backHoverColor,
+            slideColor = _props$attributes8.slideColor,
+            textSize = _props$attributes8.textSize,
+            textWeight = _props$attributes8.textWeight,
+            textLine = _props$attributes8.textLine,
+            textLetter = _props$attributes8.textLetter,
+            textStyle = _props$attributes8.textStyle,
+            textUpper = _props$attributes8.textUpper,
+            borderType = _props$attributes8.borderType,
+            borderWidth = _props$attributes8.borderWidth,
+            borderRadius = _props$attributes8.borderRadius,
+            borderColor = _props$attributes8.borderColor,
+            padding = _props$attributes8.padding,
+            shadowBlur = _props$attributes8.shadowBlur,
+            shadowColor = _props$attributes8.shadowColor,
+            shadowHorizontal = _props$attributes8.shadowHorizontal,
+            shadowVertical = _props$attributes8.shadowVertical;
+
+        return React.createElement(
+            'div',
+            {
+                id: className + '-wrap-' + id,
+                className: className + '__wrap ' + className + '__' + effect + ' ' + className + '__' + effectDir,
+                style: { textAlign: btnAlign }
+            },
+            React.createElement('style', {
+                dangerouslySetInnerHTML: {
+                    __html: ['#premium-button-wrap-' + id + ' .premium-button:hover {', 'color: ' + textHoverColor + ' !important;', "}", '#premium-button-wrap-' + id + '.premium-button__none .premium-button:hover {', 'background-color: ' + backHoverColor + ' !important;', "}", '#premium-button-wrap-' + id + '.premium-button__slide .premium-button::before,', '#premium-button-wrap-' + id + '.premium-button__shutter .premium-button::before,', '#premium-button-wrap-' + id + '.premium-button__radial .premium-button::before {', 'background-color: ' + slideColor, "}"].join("\n")
+                }
+            }),
+            React.createElement(RichText.Content, {
+                tagName: 'a',
+                value: btnText,
+                className: className + ' ' + className + '__' + btnSize,
+                href: btnLink,
+                target: btnTarget ? "_blank" : "_self",
+                style: {
+                    color: textColor,
+                    backgroundColor: backColor,
+                    fontSize: textSize + "px",
+                    letterSpacing: textLetter + "px",
+                    textTransform: textUpper ? "uppercase" : "none",
+                    fontStyle: textStyle,
+                    lineHeight: textLine + "px",
+                    fontWeight: textWeight,
+                    textShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor,
+                    padding: padding + "px",
+                    border: borderType,
+                    borderWidth: borderWidth + "px",
+                    borderRadius: borderRadius + "px",
+                    borderColor: borderColor
+                }
+            })
+        );
+    }
+}];
+
+exports.default = deprecatedContent;
+
+/***/ }),
+/* 233 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var __ = wp.i18n.__;
+
+var attributes = {
+    borderButton: {
+        type: "boolean",
+        default: false
+    },
+    btnText: {
+        type: "string",
+        default: __("Premium Button", 'premium-blocks-for-gutenberg')
+    },
+    btnSize: {
+        type: "string",
+        default: "md"
+    },
+    btnAlign: {
+        type: "string",
+        default: "center"
+    },
+    btnLink: {
+        type: "string",
+        source: "attribute",
+        attribute: "href",
+        selector: ".premium-button"
+    },
+    btnTarget: {
+        type: "boolean",
+        default: false
+    },
+    effect: {
+        type: "string",
+        default: "none"
+    },
+    effectDir: {
+        type: "string",
+        default: "top"
+    },
+    slideColor: {
+        type: "string"
+    },
+    block_id: {
+        type: "string"
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    classMigrate: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    },
+    textStyles: {
+        type: "array",
+        default: [{
+            textSizeUnit: 'px',
+            textSize: 20,
+            textSizeTablet: '',
+            textSizeMobile: '',
+            textFontFamily: __('Default', 'premium-blocks-for-gutenberg'),
+            textLetter: '',
+            textStyle: '',
+            textUpper: false,
+            textWeight: '',
+            textLine: '',
+            shadowColor: '',
+            shadowBlur: '0',
+            shadowHorizontal: '0',
+            shadowVertical: '0'
+        }]
+    },
+    btnStyles: {
+        type: 'array',
+        default: [{
+            textColor: '',
+            textHoverColor: '',
+            backColor: '',
+            backOpacity: 1,
+            backHoverColor: '',
+            borderHoverColor: '',
+            btnShadowColor: '',
+            btnShadowBlur: 0,
+            btnShadowHorizontal: 0,
+            btnShadowVertical: 0,
+            btnShadowPosition: '',
+            padding: '',
+            paddingU: 'px'
+        }]
+    },
+    border: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
     }
 };
 exports.default = attributes;
@@ -22358,7 +22774,7 @@ var _classnames2 = _interopRequireDefault(_classnames);
 
 var _settings = __webpack_require__(1);
 
-var _premiumTypo = __webpack_require__(9);
+var _premiumTypo = __webpack_require__(7);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
@@ -22374,7 +22790,7 @@ var _premiumMediaUpload = __webpack_require__(12);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
-var _premiumResponsiveTabs = __webpack_require__(7);
+var _premiumResponsiveTabs = __webpack_require__(8);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
@@ -22386,7 +22802,7 @@ var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _PremiumBackgroundControl = __webpack_require__(23);
+var _PremiumBackgroundControl = __webpack_require__(24);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
@@ -22398,11 +22814,11 @@ var _PremiumResponsivePadding = __webpack_require__(19);
 
 var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
 
-var _premiumResponsiveSpacing = __webpack_require__(30);
+var _premiumResponsiveSpacing = __webpack_require__(21);
 
 var _premiumResponsiveSpacing2 = _interopRequireDefault(_premiumResponsiveSpacing);
 
-var _fontLoader = __webpack_require__(22);
+var _fontLoader = __webpack_require__(23);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
 
@@ -23383,11 +23799,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _premiumSizeUnits = __webpack_require__(21);
+var _premiumSizeUnits = __webpack_require__(22);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
-var _react = __webpack_require__(8);
+var _react = __webpack_require__(9);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -26182,11 +26598,11 @@ var _premiumBorder = __webpack_require__(6);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumTypo = __webpack_require__(9);
+var _premiumTypo = __webpack_require__(7);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumResponsiveTabs = __webpack_require__(7);
+var _premiumResponsiveTabs = __webpack_require__(8);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
@@ -26198,11 +26614,11 @@ var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _PremiumBackgroundControl = __webpack_require__(23);
+var _PremiumBackgroundControl = __webpack_require__(24);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
-var _fontLoader = __webpack_require__(22);
+var _fontLoader = __webpack_require__(23);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
 
@@ -26289,18 +26705,6 @@ var edit = function (_Component) {
                 hideDesktop = _props$attributes.hideDesktop,
                 hideTablet = _props$attributes.hideTablet,
                 hideMobile = _props$attributes.hideMobile,
-                containerBorderTop = _props$attributes.containerBorderTop,
-                containerBorderRight = _props$attributes.containerBorderRight,
-                containerBorderBottom = _props$attributes.containerBorderBottom,
-                containerBorderLeft = _props$attributes.containerBorderLeft,
-                firstBorderTop = _props$attributes.firstBorderTop,
-                firstBorderRight = _props$attributes.firstBorderRight,
-                firstBorderBottom = _props$attributes.firstBorderBottom,
-                firstBorderLeft = _props$attributes.firstBorderLeft,
-                secondBorderTop = _props$attributes.secondBorderTop,
-                secondBorderRight = _props$attributes.secondBorderRight,
-                secondBorderBottom = _props$attributes.secondBorderBottom,
-                secondBorderLeft = _props$attributes.secondBorderLeft,
                 firstBorder = _props$attributes.firstBorder,
                 secondBorder = _props$attributes.secondBorder,
                 containerBorder = _props$attributes.containerBorder,
@@ -26556,35 +26960,14 @@ var edit = function (_Component) {
                         })
                     ),
                     React.createElement(_premiumBorder2.default, {
-                        borderType: firstStyles[0].firstBorderType,
-                        borderWidth: firstStyles[0].firstBorderWidth,
-                        top: firstStyles[0].firstBorderTop,
-                        right: firstStyles[0].firstBorderRight,
-                        bottom: firstStyles[0].firstBorderBottom,
-                        left: firstStyles[0].firstBorderLeft,
-                        borderColor: firstStyles[0].firstBorderColor,
-                        borderRadius: firstStyles[0].firstBorderRadius,
-                        onChangeType: function onChangeType(newType) {
-                            return saveFirstStyle({ firstBorderType: newType });
-                        },
-                        onChangeWidth: function onChangeWidth(_ref) {
-                            var top = _ref.top,
-                                right = _ref.right,
-                                bottom = _ref.bottom,
-                                left = _ref.left;
-                            return setAttributes({
-                                firstBorder: true,
-                                firstBorderTop: top,
-                                firstBorderRight: right,
-                                firstBorderBottom: bottom,
-                                firstBorderLeft: left
-                            });
-                        },
-                        onChangeColor: function onChangeColor(colorValue) {
-                            return saveFirstStyle({ firstBorderColor: colorValue || "transparent" });
-                        },
-                        onChangeRadius: function onChangeRadius(newrRadius) {
-                            return saveFirstStyle({ firstBorderRadius: newrRadius || "0" });
+                        label: __("Border"),
+                        value: firstBorder,
+                        borderType: firstBorder.borderType,
+                        borderColor: firstBorder.borderColor,
+                        borderWidth: firstBorder.borderWidth,
+                        borderRadius: firstBorder.borderRadius,
+                        onChange: function onChange(value) {
+                            return setAttributes({ firstBorder: value });
                         }
                     }),
                     React.createElement(_PremiumShadow2.default, {
@@ -26747,35 +27130,14 @@ var edit = function (_Component) {
                         })
                     ),
                     React.createElement(_premiumBorder2.default, {
-                        borderType: secondStyles[0].secondBorderType,
-                        borderWidth: secondStyles[0].secondBorderWidth,
-                        top: secondBorderTop,
-                        right: secondBorderRight,
-                        bottom: secondBorderBottom,
-                        left: secondBorderLeft,
-                        borderColor: secondStyles[0].secondBorderColor,
-                        borderRadius: secondStyles[0].secondBorderRadius,
-                        onChangeType: function onChangeType(newType) {
-                            return saveSecondStyle({ secondBorderType: newType });
-                        },
-                        onChangeWidth: function onChangeWidth(_ref2) {
-                            var top = _ref2.top,
-                                right = _ref2.right,
-                                bottom = _ref2.bottom,
-                                left = _ref2.left;
-                            return setAttributes({
-                                secondBorder: true,
-                                secondBorderTop: top,
-                                secondBorderRight: right,
-                                secondBorderBottom: bottom,
-                                secondBorderLeft: left
-                            });
-                        },
-                        onChangeColor: function onChangeColor(colorValue) {
-                            return saveSecondStyle({ secondBorderColor: colorValue || "transparent" });
-                        },
-                        onChangeRadius: function onChangeRadius(newrRadius) {
-                            return saveSecondStyle({ secondBorderRadius: newrRadius || "0" });
+                        label: __("Border"),
+                        value: secondBorder,
+                        borderType: secondBorder.borderType,
+                        borderColor: secondBorder.borderColor,
+                        borderWidth: secondBorder.borderWidth,
+                        borderRadius: secondBorder.borderRadius,
+                        onChange: function onChange(value) {
+                            return setAttributes({ secondBorder: value });
                         }
                     }),
                     React.createElement(_PremiumShadow2.default, {
@@ -26851,35 +27213,14 @@ var edit = function (_Component) {
                         gradientType: containerStyles[0].gradientType
                     }),
                     React.createElement(_premiumBorder2.default, {
-                        borderType: containerStyles[0].containerBorderType,
-                        borderWidth: containerStyles[0].containerBorderWidth,
-                        top: containerBorderTop,
-                        right: containerBorderRight,
-                        bottom: containerBorderBottom,
-                        left: containerBorderLeft,
-                        borderColor: containerStyles[0].containerBorderColor,
-                        borderRadius: containerStyles[0].containerBorderRadius,
-                        onChangeType: function onChangeType(newType) {
-                            return saveContainerStyle({ containerBorderType: newType });
-                        },
-                        onChangeWidth: function onChangeWidth(_ref3) {
-                            var top = _ref3.top,
-                                right = _ref3.right,
-                                bottom = _ref3.bottom,
-                                left = _ref3.left;
-                            return setAttributes({
-                                containerBorder: true,
-                                containerBorderTop: top,
-                                containerBorderRight: right,
-                                containerBorderBottom: bottom,
-                                containerBorderLeft: left
-                            });
-                        },
-                        onChangeColor: function onChangeColor(colorValue) {
-                            return saveContainerStyle({ containerBorderColor: colorValue });
-                        },
-                        onChangeRadius: function onChangeRadius(newrRadius) {
-                            return saveContainerStyle({ containerBorderRadius: newrRadius });
+                        label: __("Border"),
+                        value: containerBorder,
+                        borderType: containerBorder.borderType,
+                        borderColor: containerBorder.borderColor,
+                        borderWidth: containerBorder.borderWidth,
+                        borderRadius: containerBorder.borderRadius,
+                        onChange: function onChange(value) {
+                            return setAttributes({ containerBorder: value });
                         }
                     })
                 ),
@@ -26910,10 +27251,17 @@ var edit = function (_Component) {
                         backgroundPosition: containerStyles[0].backgroundPosition,
                         backgroundSize: containerStyles[0].backgroundSize,
                         backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
-                        borderStyle: containerStyles[0].containerBorderType,
-                        borderWidth: containerBorder ? containerBorderTop + "px " + containerBorderRight + "px " + containerBorderBottom + "px " + containerBorderLeft + "px" : containerStyles[0].containerBorderWidth + "px",
-                        borderRadius: containerStyles[0].containerBorderRadius + "px",
-                        borderColor: containerStyles[0].containerBorderColor
+                        borderStyle: containerBorder && containerBorder.borderType,
+                        borderTopWidth: containerBorder && containerBorder.borderWidth.Desktop.top,
+                        borderRightWidth: containerBorder && containerBorder.borderWidth.Desktop.right,
+                        borderBottomWidth: containerBorder && containerBorder.borderWidth.Desktop.bottom,
+                        borderLeftWidth: containerBorder && containerBorder.borderWidth.Desktop.left,
+                        borderRadius: (containerBorder && containerBorder.borderRadius.Desktop.top || 0) + "px " + (containerBorder && containerBorder.borderRadius.Desktop.right || 0) + "px " + (containerBorder && containerBorder.borderRadius.Desktop.bottom || 0) + "px " + (containerBorder && containerBorder.borderRadius.Desktop.left || 0) + "px",
+                        borderColor: containerBorder && containerBorder.borderColor,
+                        borderTopLeftRadius: (containerBorder && containerBorder.borderRadius.Desktop.top || 0) + "px",
+                        borderTopRightRadius: (containerBorder && containerBorder.borderRadius.Desktop.right || 0) + "px",
+                        borderBottomLeftRadius: (containerBorder && containerBorder.borderRadius.Desktop.bottom || 0) + "px",
+                        borderBottomRightRadius: (containerBorder && containerBorder.borderRadius.Desktop.left || 0) + "px"
                     }
                 },
                 React.createElement(
@@ -26937,10 +27285,17 @@ var edit = function (_Component) {
                                     textTransform: firstStyles[0].firstUpper ? "uppercase" : "none",
                                     fontStyle: firstStyles[0].firstStyle,
                                     fontWeight: firstStyles[0].firstWeight,
-                                    borderStyle: firstStyles[0].firstBorderType,
-                                    borderWidth: firstBorder ? firstBorderTop + "px " + firstBorderRight + "px " + firstBorderBottom + "px " + firstBorderLeft + "px" : firstStyles[0].firstBorderWidth + "px",
-                                    borderRadius: firstStyles[0].firstBorderRadius + "px",
-                                    borderColor: firstStyles[0].firstBorderColor,
+                                    borderStyle: firstBorder && firstBorder.borderType,
+                                    borderTopWidth: firstBorder && firstBorder.borderWidth.Desktop.top,
+                                    borderRightWidth: firstBorder && firstBorder.borderWidth.Desktop.right,
+                                    borderBottomWidth: firstBorder && firstBorder.borderWidth.Desktop.bottom,
+                                    borderLeftWidth: firstBorder && firstBorder.borderWidth.Desktop.left,
+                                    borderRadius: (firstBorder && firstBorder.borderRadius.Desktop.top || 0) + "px " + (firstBorder && firstBorder.borderRadius.Desktop.right || 0) + "px " + (firstBorder && firstBorder.borderRadius.Desktop.bottom || 0) + "px " + (firstBorder && firstBorder.borderRadius.Desktop.left || 0) + "px",
+                                    borderColor: firstBorder && firstBorder.borderColor,
+                                    borderTopLeftRadius: (firstBorder && firstBorder.borderRadius.Desktop.top || 0) + "px",
+                                    borderTopRightRadius: (firstBorder && firstBorder.borderRadius.Desktop.right || 0) + "px",
+                                    borderBottomLeftRadius: (firstBorder && firstBorder.borderRadius.Desktop.bottom || 0) + "px",
+                                    borderBottomRightRadius: (firstBorder && firstBorder.borderRadius.Desktop.left || 0) + "px",
                                     padding: firstStyles[0].firstPadding + "px",
                                     marginLeft: firstStyles[0].firstMarginL + "px",
                                     marginRight: firstStyles[0].firstMarginR + "px",
@@ -26964,10 +27319,17 @@ var edit = function (_Component) {
                                     textTransform: secondStyles[0].secondUpper ? "uppercase" : "none",
                                     fontStyle: secondStyles[0].secondStyle,
                                     fontWeight: secondStyles[0].secondWeight,
-                                    borderStyle: secondStyles[0].secondBorderType,
-                                    borderWidth: secondBorder ? secondBorderTop + "px " + secondBorderRight + "px " + secondBorderBottom + "px " + secondBorderLeft + "px" : secondStyles[0].secondBorderWidth + "px",
-                                    borderRadius: secondStyles[0].secondBorderRadius + "px",
-                                    borderColor: secondStyles[0].secondBorderColor,
+                                    borderStyle: secondBorder && secondBorder.borderType,
+                                    borderTopWidth: secondBorder && secondBorder.borderWidth.Desktop.top,
+                                    borderRightWidth: secondBorder && secondBorder.borderWidth.Desktop.right,
+                                    borderBottomWidth: secondBorder && secondBorder.borderWidth.Desktop.bottom,
+                                    borderLeftWidth: secondBorder && secondBorder.borderWidth.Desktop.left,
+                                    borderRadius: (secondBorder && secondBorder.borderRadius.Desktop.top || 0) + "px " + (secondBorder && secondBorder.borderRadius.Desktop.right || 0) + "px " + (secondBorder && secondBorder.borderRadius.Desktop.bottom || 0) + "px " + (secondBorder && secondBorder.borderRadius.Desktop.left || 0) + "px",
+                                    borderColor: secondBorder && secondBorder.borderColor,
+                                    borderTopLeftRadius: (secondBorder && secondBorder.borderRadius.Desktop.top || 0) + "px",
+                                    borderTopRightRadius: (secondBorder && secondBorder.borderRadius.Desktop.right || 0) + "px",
+                                    borderBottomLeftRadius: (secondBorder && secondBorder.borderRadius.Desktop.bottom || 0) + "px",
+                                    borderBottomRightRadius: (secondBorder && secondBorder.borderRadius.Desktop.left || 0) + "px",
                                     padding: secondStyles[0].secondPadding + "px",
                                     marginLeft: secondStyles[0].secondMarginL + "px",
                                     marginRight: secondStyles[0].secondMarginR + "px",
@@ -27040,18 +27402,6 @@ var save = function save(props) {
         hideDesktop = _props$attributes.hideDesktop,
         hideTablet = _props$attributes.hideTablet,
         hideMobile = _props$attributes.hideMobile,
-        containerBorderTop = _props$attributes.containerBorderTop,
-        containerBorderRight = _props$attributes.containerBorderRight,
-        containerBorderBottom = _props$attributes.containerBorderBottom,
-        containerBorderLeft = _props$attributes.containerBorderLeft,
-        firstBorderTop = _props$attributes.firstBorderTop,
-        firstBorderRight = _props$attributes.firstBorderRight,
-        firstBorderBottom = _props$attributes.firstBorderBottom,
-        firstBorderLeft = _props$attributes.firstBorderLeft,
-        secondBorderTop = _props$attributes.secondBorderTop,
-        secondBorderRight = _props$attributes.secondBorderRight,
-        secondBorderBottom = _props$attributes.secondBorderBottom,
-        secondBorderLeft = _props$attributes.secondBorderLeft,
         firstBorder = _props$attributes.firstBorder,
         secondBorder = _props$attributes.secondBorder,
         containerBorder = _props$attributes.containerBorder,
@@ -27087,10 +27437,8 @@ var save = function save(props) {
                 backgroundPosition: containerStyles[0].backgroundPosition,
                 backgroundSize: containerStyles[0].backgroundSize,
                 backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
-                borderStyle: containerStyles[0].containerBorderType,
-                borderWidth: containerBorder ? containerBorderTop + "px " + containerBorderRight + "px " + containerBorderBottom + "px " + containerBorderLeft + "px" : containerStyles[0].containerBorderWidth + "px",
-                borderRadius: containerStyles[0].containerBorderRadius + "px",
-                borderColor: containerStyles[0].containerBorderColor
+                borderStyle: containerBorder && containerBorder.borderType,
+                borderColor: containerBorder && containerBorder.borderColor
             }
         },
         React.createElement(
@@ -27113,10 +27461,8 @@ var save = function save(props) {
                             textTransform: firstStyles[0].firstUpper ? "uppercase" : "none",
                             fontStyle: firstStyles[0].firstStyle,
                             fontWeight: firstStyles[0].firstWeight,
-                            borderStyle: firstStyles[0].firstBorderType,
-                            borderWidth: firstBorder ? firstBorderTop + "px " + firstBorderRight + "px " + firstBorderBottom + "px " + firstBorderLeft + "px" : firstStyles[0].firstBorderWidth + "px",
-                            borderRadius: firstStyles[0].firstBorderRadius + "px",
-                            borderColor: firstStyles[0].firstBorderColor,
+                            borderStyle: firstBorder && firstBorder.borderType,
+                            borderColor: firstBorder && firstBorder.borderColor,
                             padding: firstStyles[0].firstPadding + "px",
                             marginLeft: firstStyles[0].firstMarginL + "px",
                             marginRight: firstStyles[0].firstMarginR + "px",
@@ -27139,10 +27485,8 @@ var save = function save(props) {
                             textTransform: secondStyles[0].secondUpper ? "uppercase" : "none",
                             fontStyle: secondStyles[0].secondStyle,
                             fontWeight: secondStyles[0].secondWeight,
-                            borderStyle: secondStyles[0].secondBorderType,
-                            borderWidth: secondBorder ? secondBorderTop + "px " + secondBorderRight + "px " + secondBorderBottom + "px " + secondBorderLeft + "px" : secondStyles[0].secondBorderWidth + "px",
-                            borderRadius: secondStyles[0].secondBorderRadius + "px",
-                            borderColor: secondStyles[0].secondBorderColor,
+                            borderStyle: secondBorder && secondBorder.borderType,
+                            borderColor: secondBorder && secondBorder.borderColor,
                             padding: secondStyles[0].secondPadding + "px",
                             marginLeft: secondStyles[0].secondMarginL + "px",
                             marginRight: secondStyles[0].secondMarginR + "px",
@@ -27175,6 +27519,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _v8Attriutes;
+
 var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
@@ -27184,6 +27530,8 @@ var _hexToRgba = __webpack_require__(16);
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var __ = wp.i18n.__;
 
@@ -27626,1199 +27974,8 @@ var new_attributes = {
     }
 };
 var deprecated_attributes = Object.assign(attributes, new_attributes);
-var deprecatedContent = [{
-    attributes: deprecated_attributes,
-    migrate: function migrate(attributes) {
-        var newAttributes = {
-            firstStyles: [{
-                firstClip: attributes.firstClip,
-                firstAnim: attributes.firstAnim,
-                firstStroke: attributes.firstStroke,
-                firstFamily: attributes.firstFamily,
-                firstSizeUnit: attributes.firstSizeUnit,
-                firstSize: attributes.firstSize,
-                firstSizeMobile: attributes.firstSizeMobile,
-                firstWeight: attributes.firstWeight,
-                firstStyle: attributes.firstStyle,
-                firstLetter: attributes.firstLetter,
-                firstUpper: attributes.firstUpper,
-                firstColor: attributes.firstColor,
-                firstBackground: attributes.firstBackground,
-                firstOpacity: attributes.firstOpacity,
-                firstClipColor: attributes.firstClipColor,
-                firstBorderType: attributes.firstBorderType,
-                firstBorderWidth: attributes.firstBorderWidth,
-                firstBorderColor: attributes.firstBorderColor,
-                firstBorderRadius: attributes.firstBorderRadius,
-                firstShadowColor: attributes.firstShadowColor,
-                firstShadowBlur: attributes.firstShadowBlur,
-                firstShadowHorizontal: attributes.firstShadowHorizontal,
-                firstShadowVertical: attributes.firstShadowVertical,
-                firstMarginL: attributes.firstMarginL,
-                firstMarginR: attributes.firstMarginR,
-                firstPadding: attributes.firstPadding
-            }],
-            secondStyles: [{
-                secondClip: attributes.secondClip,
-                secondAnim: attributes.secondAnim,
-                secondStroke: attributes.secondStroke,
-                secondFamily: attributes.secondFamily,
-                secondSizeUnit: attributes.secondSizeUnit,
-                secondSize: attributes.secondSize,
-                secondSizeTablet: attributes.secondSizeTablet,
-                secondSizeMobile: attributes.secondSizeMobile,
-                secondWeight: attributes.secondWeight,
-                secondStyle: attributes.secondStyle,
-                secondLetter: attributes.secondLetter,
-                secondUpper: attributes.secondUpper,
-                secondColor: attributes.secondColor,
-                secondBackground: attributes.secondBackground,
-                secondOpacity: attributes.secondOpacity,
-                secondClipColor: attributes.secondClipColor,
-                secondBorderType: attributes.secondBorderType,
-                secondBorderWidth: attributes.secondBorderWidth,
-                secondBorderColor: attributes.secondBorderColor,
-                secondBorderRadius: attributes.secondBorderRadius,
-                secondShadowColor: attributes.secondShadowColor,
-                secondShadowBlur: attributes.secondShadowBlur,
-                secondShadowHorizontal: attributes.secondShadowHorizontal,
-                secondShadowVertical: attributes.secondShadowVertical,
-                secondMarginL: attributes.secondMarginL,
-                secondMarginR: attributes.secondMarginR,
-                secondPadding: attributes.secondPadding
 
-            }],
-            containerStyles: [{
-                backgroundImageID: attributes.imageID,
-                backgroundImageURL: attributes.imageURL,
-                backgroundRepeat: attributes.backgroundRepeat,
-                backgroundPosition: attributes.backgroundPosition,
-                backgroundSize: attributes.backgroundSize,
-                fixed: attributes.fixed,
-                containerBorderType: attributes.containerBorderType,
-                containerBorderWidth: attributes.containerBorderWidth,
-                containerBorderColor: attributes.containerBorderColor,
-                containerBorderRadius: attributes.containerBorderRadius,
-                containerBack: attributes.containerBack,
-                containerOpacity: attributes.containerOpacity,
-                gradientLocationOne: '0',
-                gradientColorTwo: '',
-                gradientLocationTwo: '100',
-                gradientType: 'linear',
-                gradientAngle: '180',
-                gradientPosition: 'center center'
-            }],
-            backgroundType: ''
-        };
-        return Object.assign(attributes, newAttributes);
-    },
-    save: function save(props) {
-        var className = props.className;
-        var _props$attributes = props.attributes,
-            block_id = _props$attributes.block_id,
-            contentAlign = _props$attributes.contentAlign,
-            firstHeading = _props$attributes.firstHeading,
-            secondHeading = _props$attributes.secondHeading,
-            display = _props$attributes.display,
-            firstColor = _props$attributes.firstColor,
-            firstBackground = _props$attributes.firstBackground,
-            firstFamily = _props$attributes.firstFamily,
-            firstStyle = _props$attributes.firstStyle,
-            firstUpper = _props$attributes.firstUpper,
-            firstLetter = _props$attributes.firstLetter,
-            firstWeight = _props$attributes.firstWeight,
-            firstBorderType = _props$attributes.firstBorderType,
-            firstBorderWidth = _props$attributes.firstBorderWidth,
-            firstBorderTop = _props$attributes.firstBorderTop,
-            firstBorderRight = _props$attributes.firstBorderRight,
-            firstBorderBottom = _props$attributes.firstBorderBottom,
-            firstBorderLeft = _props$attributes.firstBorderLeft,
-            firstBorderRadius = _props$attributes.firstBorderRadius,
-            firstBorderColor = _props$attributes.firstBorderColor,
-            firstPadding = _props$attributes.firstPadding,
-            firstMargin = _props$attributes.firstMargin,
-            firstClip = _props$attributes.firstClip,
-            firstAnim = _props$attributes.firstAnim,
-            firstStroke = _props$attributes.firstStroke,
-            firstClipColor = _props$attributes.firstClipColor,
-            firstShadowBlur = _props$attributes.firstShadowBlur,
-            firstShadowColor = _props$attributes.firstShadowColor,
-            firstShadowHorizontal = _props$attributes.firstShadowHorizontal,
-            firstShadowVertical = _props$attributes.firstShadowVertical,
-            secondColor = _props$attributes.secondColor,
-            secondBackground = _props$attributes.secondBackground,
-            secondFamily = _props$attributes.secondFamily,
-            secondLetter = _props$attributes.secondLetter,
-            secondUpper = _props$attributes.secondUpper,
-            secondWeight = _props$attributes.secondWeight,
-            secondStyle = _props$attributes.secondStyle,
-            secondBorderType = _props$attributes.secondBorderType,
-            secondBorderWidth = _props$attributes.secondBorderWidth,
-            secondBorderTop = _props$attributes.secondBorderTop,
-            secondBorderRight = _props$attributes.secondBorderRight,
-            secondBorderBottom = _props$attributes.secondBorderBottom,
-            secondBorderLeft = _props$attributes.secondBorderLeft,
-            secondBorderRadius = _props$attributes.secondBorderRadius,
-            secondBorderColor = _props$attributes.secondBorderColor,
-            secondPadding = _props$attributes.secondPadding,
-            secondMargin = _props$attributes.secondMargin,
-            secondClip = _props$attributes.secondClip,
-            secondStroke = _props$attributes.secondStroke,
-            secondAnim = _props$attributes.secondAnim,
-            secondClipColor = _props$attributes.secondClipColor,
-            secondShadowBlur = _props$attributes.secondShadowBlur,
-            secondShadowColor = _props$attributes.secondShadowColor,
-            secondShadowHorizontal = _props$attributes.secondShadowHorizontal,
-            secondShadowVertical = _props$attributes.secondShadowVertical,
-            link = _props$attributes.link,
-            target = _props$attributes.target,
-            headingURL = _props$attributes.headingURL,
-            containerBack = _props$attributes.containerBack,
-            imageURL = _props$attributes.imageURL,
-            fixed = _props$attributes.fixed,
-            backgroundRepeat = _props$attributes.backgroundRepeat,
-            backgroundPosition = _props$attributes.backgroundPosition,
-            backgroundSize = _props$attributes.backgroundSize,
-            containerBorderType = _props$attributes.containerBorderType,
-            containerBorderWidth = _props$attributes.containerBorderWidth,
-            containerBorderTop = _props$attributes.containerBorderTop,
-            containerBorderRight = _props$attributes.containerBorderRight,
-            containerBorderBottom = _props$attributes.containerBorderBottom,
-            containerBorderLeft = _props$attributes.containerBorderLeft,
-            containerBorderRadius = _props$attributes.containerBorderRadius,
-            containerBorderColor = _props$attributes.containerBorderColor,
-            firstBorder = _props$attributes.firstBorder,
-            secondBorder = _props$attributes.secondBorder,
-            containerBorder = _props$attributes.containerBorder,
-            firstOpacity = _props$attributes.firstOpacity,
-            secondOpacity = _props$attributes.secondOpacity,
-            containerOpacity = _props$attributes.containerOpacity,
-            hideDesktop = _props$attributes.hideDesktop,
-            hideTablet = _props$attributes.hideTablet,
-            hideMobile = _props$attributes.hideMobile;
-
-
-        var mainClasses = (0, _classnames2.default)(className, "premium-dheading-block__container");
-
-        return React.createElement(
-            "div",
-            {
-                id: "premium-dheading-block-" + block_id,
-                className: mainClasses + " premium-dheading-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
-                style: {
-                    textAlign: contentAlign,
-                    backgroundColor: containerBack ? (0, _hexToRgba2.default)(containerBack, containerOpacity) : "transparent",
-                    backgroundImage: "url('" + imageURL + "')",
-                    backgroundRepeat: backgroundRepeat,
-                    backgroundPosition: backgroundPosition,
-                    backgroundSize: backgroundSize,
-                    backgroundAttachment: fixed ? "fixed" : "unset",
-                    borderStyle: containerBorderType,
-                    borderWidth: containerBorder ? containerBorderTop + "px " + containerBorderRight + "px " + containerBorderBottom + "px " + containerBorderLeft + "px" : containerBorderWidth + "px",
-                    borderRadius: containerBorderRadius + "px",
-                    borderColor: containerBorderColor
-                }
-            },
-            React.createElement(
-                "div",
-                { className: "premium-dheading-block__wrap" },
-                React.createElement(
-                    "h2",
-                    { className: "premium-dheading-block__title" },
-                    React.createElement(
-                        "span",
-                        {
-                            className: "premium-dheading-block__first premium-headingc-" + firstClip + " premium-headinga-" + firstAnim + " premium-headings-" + firstStroke,
-                            style: {
-                                display: display,
-                                color: firstColor,
-                                backgroundColor: firstClip ? "none" : firstBackground ? (0, _hexToRgba2.default)(firstBackground, firstOpacity) : "transparent",
-                                backgroundImage: firstClip ? "linear-gradient(to left, " + firstColor + ", " + firstClipColor + ")" : "none",
-                                fontFamily: firstFamily,
-                                letterSpacing: firstLetter + "px",
-                                textTransform: firstUpper ? "uppercase" : "none",
-                                fontStyle: firstStyle,
-                                fontWeight: firstWeight,
-                                borderStyle: firstBorderType,
-                                borderWidth: firstBorder ? firstBorderTop + "px " + firstBorderRight + "px " + firstBorderBottom + "px " + firstBorderLeft + "px" : firstBorderWidth + "px",
-                                borderRadius: firstBorderRadius + "px",
-                                borderColor: firstBorderColor,
-                                padding: firstPadding + "px",
-                                margin: firstMargin + "px",
-                                textShadow: firstShadowHorizontal + "px " + firstShadowVertical + "px " + firstShadowBlur + "px " + firstShadowColor
-                            }
-                        },
-                        firstHeading
-                    ),
-                    React.createElement(
-                        "span",
-                        {
-                            className: "premium-dheading-block__second premium-headingc-" + secondClip + " premium-headinga-" + secondAnim + " premium-headings-" + secondStroke,
-                            style: {
-                                display: display,
-                                color: secondColor,
-                                backgroundColor: secondClip ? "none" : secondBackground ? (0, _hexToRgba2.default)(secondBackground, secondOpacity) : "transparent",
-                                backgroundImage: secondClip ? "linear-gradient(to left, " + secondColor + ", " + secondClipColor + ")" : "none",
-                                fontFamily: secondFamily,
-                                letterSpacing: secondLetter + "px",
-                                textTransform: secondUpper ? "uppercase" : "none",
-                                fontStyle: secondStyle,
-                                fontWeight: secondWeight,
-                                borderStyle: secondBorderType,
-                                borderWidth: secondBorder ? secondBorderTop + "px " + secondBorderRight + "px " + secondBorderBottom + "px " + secondBorderLeft + "px" : secondBorderWidth + "px",
-                                borderRadius: secondBorderRadius + "px",
-                                borderColor: secondBorderColor,
-                                padding: secondPadding + "px",
-                                margin: secondMargin + "px",
-                                textShadow: secondShadowHorizontal + "px " + secondShadowVertical + "px " + secondShadowBlur + "px " + secondShadowColor
-                            }
-                        },
-                        secondHeading
-                    )
-                ),
-                link && headingURL && React.createElement("a", {
-                    className: "premium-dheading-block__link",
-                    href: link && headingURL,
-                    target: target && "_blank"
-                })
-            )
-        );
-    }
-}, {
-    attributes: attributes,
-    migrate: function migrate(attributes) {
-        var newAttributes = {
-            firstBorder: attributes.firstBorder,
-            secondBorder: attributes.secondBorder,
-            containerBorder: attributes.containerBorder,
-            containerBorderTop: "",
-            containerBorderRight: "",
-            containerBorderBottom: "",
-            containerBorderLeft: "",
-            firstBorderTop: "",
-            firstBorderRight: "",
-            firstBorderBottom: "",
-            firstBorderLeft: "",
-            secondBorderTop: "",
-            secondBorderRight: "",
-            secondBorderBottom: "",
-            secondBorderLeft: "",
-            classMigrate: false,
-            block_id: '',
-            secondSizeUnit: 'px',
-            secondSizeTablet: '',
-            secondSizeMobile: '',
-            firstSizeUnit: 'px',
-            firstSizeTablet: '',
-            firstSizeMobile: '',
-            firstOpacity: "",
-            secondOpacity: "",
-            containerOpacity: "",
-            hideDesktop: false,
-            hideTablet: false,
-            hideMobile: false
-        };
-        return Object.assign(attributes, newAttributes);
-    },
-    save: function save(props) {
-        var className = props.className;
-        var _props$attributes2 = props.attributes,
-            contentAlign = _props$attributes2.contentAlign,
-            firstHeading = _props$attributes2.firstHeading,
-            secondHeading = _props$attributes2.secondHeading,
-            display = _props$attributes2.display,
-            firstColor = _props$attributes2.firstColor,
-            firstBackground = _props$attributes2.firstBackground,
-            firstSize = _props$attributes2.firstSize,
-            firstFamily = _props$attributes2.firstFamily,
-            firstStyle = _props$attributes2.firstStyle,
-            firstUpper = _props$attributes2.firstUpper,
-            firstLetter = _props$attributes2.firstLetter,
-            firstWeight = _props$attributes2.firstWeight,
-            firstBorderType = _props$attributes2.firstBorderType,
-            firstBorderWidth = _props$attributes2.firstBorderWidth,
-            firstBorderRadius = _props$attributes2.firstBorderRadius,
-            firstBorderColor = _props$attributes2.firstBorderColor,
-            firstPadding = _props$attributes2.firstPadding,
-            firstMargin = _props$attributes2.firstMargin,
-            firstClip = _props$attributes2.firstClip,
-            firstAnim = _props$attributes2.firstAnim,
-            firstStroke = _props$attributes2.firstStroke,
-            firstClipColor = _props$attributes2.firstClipColor,
-            firstShadowBlur = _props$attributes2.firstShadowBlur,
-            firstShadowColor = _props$attributes2.firstShadowColor,
-            firstShadowHorizontal = _props$attributes2.firstShadowHorizontal,
-            firstShadowVertical = _props$attributes2.firstShadowVertical,
-            secondColor = _props$attributes2.secondColor,
-            secondBackground = _props$attributes2.secondBackground,
-            secondSize = _props$attributes2.secondSize,
-            secondFamily = _props$attributes2.secondFamily,
-            secondLetter = _props$attributes2.secondLetter,
-            secondUpper = _props$attributes2.secondUpper,
-            secondWeight = _props$attributes2.secondWeight,
-            secondStyle = _props$attributes2.secondStyle,
-            secondBorderType = _props$attributes2.secondBorderType,
-            secondBorderWidth = _props$attributes2.secondBorderWidth,
-            secondBorderRadius = _props$attributes2.secondBorderRadius,
-            secondBorderColor = _props$attributes2.secondBorderColor,
-            secondPadding = _props$attributes2.secondPadding,
-            secondMargin = _props$attributes2.secondMargin,
-            secondClip = _props$attributes2.secondClip,
-            secondStroke = _props$attributes2.secondStroke,
-            secondAnim = _props$attributes2.secondAnim,
-            secondClipColor = _props$attributes2.secondClipColor,
-            secondShadowBlur = _props$attributes2.secondShadowBlur,
-            secondShadowColor = _props$attributes2.secondShadowColor,
-            secondShadowHorizontal = _props$attributes2.secondShadowHorizontal,
-            secondShadowVertical = _props$attributes2.secondShadowVertical,
-            link = _props$attributes2.link,
-            target = _props$attributes2.target,
-            headingURL = _props$attributes2.headingURL,
-            containerBack = _props$attributes2.containerBack,
-            imageURL = _props$attributes2.imageURL,
-            fixed = _props$attributes2.fixed,
-            backgroundRepeat = _props$attributes2.backgroundRepeat,
-            backgroundPosition = _props$attributes2.backgroundPosition,
-            backgroundSize = _props$attributes2.backgroundSize,
-            containerBorderType = _props$attributes2.containerBorderType,
-            containerBorderWidth = _props$attributes2.containerBorderWidth,
-            containerBorderRadius = _props$attributes2.containerBorderRadius,
-            containerBorderColor = _props$attributes2.containerBorderColor;
-
-
-        var mainClasses = (0, _classnames2.default)(className, "premium-dheading-block__container");
-
-        return React.createElement(
-            "div",
-            {
-                className: "" + mainClasses,
-                style: {
-                    textAlign: contentAlign,
-                    backgroundColor: containerBack,
-                    backgroundImage: "url('" + imageURL + "')",
-                    backgroundRepeat: backgroundRepeat,
-                    backgroundPosition: backgroundPosition,
-                    backgroundSize: backgroundSize,
-                    backgroundAttachment: fixed ? "fixed" : "unset",
-                    border: containerBorderType,
-                    borderWidth: containerBorderWidth + "px",
-                    borderRadius: containerBorderRadius + "px",
-                    borderColor: containerBorderColor
-                }
-            },
-            React.createElement(
-                "div",
-                { className: "premium-dheading-block__wrap" },
-                React.createElement(
-                    "h2",
-                    { className: "premium-dheading-block__title" },
-                    React.createElement(
-                        "span",
-                        {
-                            className: "premium-dheading-block__first premium-headingc-" + firstClip + " premium-headinga-" + firstAnim + " premium-headings-" + firstStroke,
-                            style: {
-                                display: display,
-                                color: firstColor,
-                                backgroundColor: firstClip ? "none" : firstBackground,
-                                backgroundImage: firstClip ? "linear-gradient(to left, " + firstColor + ", " + firstClipColor + ")" : "none",
-                                fontSize: firstSize + "px",
-                                fontFamily: firstFamily,
-                                letterSpacing: firstLetter + "px",
-                                textTransform: firstUpper ? "uppercase" : "none",
-                                fontStyle: firstStyle,
-                                fontWeight: firstWeight,
-                                border: firstBorderType,
-                                borderWidth: firstBorderWidth + "px",
-                                borderRadius: firstBorderRadius + "px",
-                                borderColor: firstBorderColor,
-                                padding: firstPadding + "px",
-                                margin: firstMargin + "px",
-                                textShadow: firstShadowHorizontal + "px " + firstShadowVertical + "px " + firstShadowBlur + "px " + firstShadowColor
-                            }
-                        },
-                        firstHeading
-                    ),
-                    React.createElement(
-                        "span",
-                        {
-                            className: "premium-dheading-block__second premium-headingc-" + secondClip + " premium-headinga-" + secondAnim + " premium-headings-" + secondStroke,
-                            style: {
-                                display: display,
-                                color: secondColor,
-                                backgroundColor: secondClip ? "none" : secondBackground,
-                                backgroundImage: secondClip ? "linear-gradient(to left, " + secondColor + ", " + secondClipColor + ")" : "none",
-                                fontSize: secondSize + "px",
-                                fontFamily: secondFamily,
-                                letterSpacing: secondLetter + "px",
-                                textTransform: secondUpper ? "uppercase" : "none",
-                                fontStyle: secondStyle,
-                                fontWeight: secondWeight,
-                                border: secondBorderType,
-                                borderWidth: secondBorderWidth + "px",
-                                borderRadius: secondBorderRadius + "px",
-                                borderColor: secondBorderColor,
-                                padding: secondPadding + "px",
-                                margin: secondMargin + "px",
-                                textShadow: secondShadowHorizontal + "px " + secondShadowVertical + "px " + secondShadowBlur + "px " + secondShadowColor
-                            }
-                        },
-                        secondHeading
-                    )
-                ),
-                link && headingURL && React.createElement("a", {
-                    className: "premium-dheading-block__link",
-                    href: link && headingURL,
-                    target: target && "_blank"
-                })
-            )
-        );
-    }
-}, {
-    attributes: attributes,
-    migrate: function migrate(attributes) {
-        var newAttributes = {
-            firstStroke: false,
-            secondStroke: false
-        };
-        return Object.assign(attributes, newAttributes);
-    },
-    save: function save(props) {
-        var className = props.className;
-        var _props$attributes3 = props.attributes,
-            contentAlign = _props$attributes3.contentAlign,
-            firstHeading = _props$attributes3.firstHeading,
-            secondHeading = _props$attributes3.secondHeading,
-            display = _props$attributes3.display,
-            firstColor = _props$attributes3.firstColor,
-            firstBackground = _props$attributes3.firstBackground,
-            firstSize = _props$attributes3.firstSize,
-            firstFamily = _props$attributes3.firstFamily,
-            firstStyle = _props$attributes3.firstStyle,
-            firstUpper = _props$attributes3.firstUpper,
-            firstLetter = _props$attributes3.firstLetter,
-            firstWeight = _props$attributes3.firstWeight,
-            firstBorderType = _props$attributes3.firstBorderType,
-            firstBorderWidth = _props$attributes3.firstBorderWidth,
-            firstBorderRadius = _props$attributes3.firstBorderRadius,
-            firstBorderColor = _props$attributes3.firstBorderColor,
-            firstPadding = _props$attributes3.firstPadding,
-            firstMargin = _props$attributes3.firstMargin,
-            firstClip = _props$attributes3.firstClip,
-            firstAnim = _props$attributes3.firstAnim,
-            firstClipColor = _props$attributes3.firstClipColor,
-            firstShadowBlur = _props$attributes3.firstShadowBlur,
-            firstShadowColor = _props$attributes3.firstShadowColor,
-            firstShadowHorizontal = _props$attributes3.firstShadowHorizontal,
-            firstShadowVertical = _props$attributes3.firstShadowVertical,
-            secondColor = _props$attributes3.secondColor,
-            secondBackground = _props$attributes3.secondBackground,
-            secondSize = _props$attributes3.secondSize,
-            secondFamily = _props$attributes3.secondFamily,
-            secondLetter = _props$attributes3.secondLetter,
-            secondUpper = _props$attributes3.secondUpper,
-            secondWeight = _props$attributes3.secondWeight,
-            secondStyle = _props$attributes3.secondStyle,
-            secondBorderType = _props$attributes3.secondBorderType,
-            secondBorderWidth = _props$attributes3.secondBorderWidth,
-            secondBorderRadius = _props$attributes3.secondBorderRadius,
-            secondBorderColor = _props$attributes3.secondBorderColor,
-            secondPadding = _props$attributes3.secondPadding,
-            secondMargin = _props$attributes3.secondMargin,
-            secondClip = _props$attributes3.secondClip,
-            secondAnim = _props$attributes3.secondAnim,
-            secondClipColor = _props$attributes3.secondClipColor,
-            secondShadowBlur = _props$attributes3.secondShadowBlur,
-            secondShadowColor = _props$attributes3.secondShadowColor,
-            secondShadowHorizontal = _props$attributes3.secondShadowHorizontal,
-            secondShadowVertical = _props$attributes3.secondShadowVertical,
-            link = _props$attributes3.link,
-            target = _props$attributes3.target,
-            headingURL = _props$attributes3.headingURL,
-            containerBack = _props$attributes3.containerBack,
-            imageURL = _props$attributes3.imageURL,
-            fixed = _props$attributes3.fixed,
-            backgroundRepeat = _props$attributes3.backgroundRepeat,
-            backgroundPosition = _props$attributes3.backgroundPosition,
-            backgroundSize = _props$attributes3.backgroundSize,
-            containerBorderType = _props$attributes3.containerBorderType,
-            containerBorderWidth = _props$attributes3.containerBorderWidth,
-            containerBorderRadius = _props$attributes3.containerBorderRadius,
-            containerBorderColor = _props$attributes3.containerBorderColor;
-
-
-        var mainClasses = (0, _classnames2.default)(className, "premium-dheading-block__container");
-
-        return React.createElement(
-            "div",
-            {
-                className: "" + mainClasses,
-                style: {
-                    textAlign: contentAlign,
-                    backgroundColor: containerBack,
-                    backgroundImage: "url('" + imageURL + "')",
-                    backgroundRepeat: backgroundRepeat,
-                    backgroundPosition: backgroundPosition,
-                    backgroundSize: backgroundSize,
-                    backgroundAttachment: fixed ? "fixed" : "unset",
-                    border: containerBorderType,
-                    borderWidth: containerBorderWidth + "px",
-                    borderRadius: containerBorderRadius + "px",
-                    borderColor: containerBorderColor
-                }
-            },
-            React.createElement(
-                "div",
-                { className: "premium-dheading-block__wrap" },
-                React.createElement(
-                    "h2",
-                    { className: "premium-dheading-block__title" },
-                    React.createElement(
-                        "span",
-                        {
-                            className: "premium-dheading-block__first premium-headingc-" + firstClip + " premium-headinga-" + firstAnim,
-                            style: {
-                                display: display,
-                                color: firstColor,
-                                backgroundColor: firstClip ? "none" : firstBackground,
-                                backgroundImage: firstClip ? "linear-gradient(to left, " + firstColor + ", " + firstClipColor + ")" : "none",
-                                fontSize: firstSize + "px",
-                                fontFamily: firstFamily,
-                                letterSpacing: firstLetter + "px",
-                                textTransform: firstUpper ? "uppercase" : "none",
-                                fontStyle: firstStyle,
-                                fontWeight: firstWeight,
-                                border: firstBorderType,
-                                borderWidth: firstBorderWidth + "px",
-                                borderRadius: firstBorderRadius + "px",
-                                borderColor: firstBorderColor,
-                                padding: firstPadding + "px",
-                                margin: firstMargin + "px",
-                                textShadow: firstShadowHorizontal + "px " + firstShadowVertical + "px " + firstShadowBlur + "px " + firstShadowColor
-                            }
-                        },
-                        firstHeading
-                    ),
-                    React.createElement(
-                        "span",
-                        {
-                            className: "premium-dheading-block__second premium-headingc-" + secondClip + " premium-headinga-" + secondAnim,
-                            style: {
-                                display: display,
-                                color: secondColor,
-                                backgroundColor: secondClip ? "none" : secondBackground,
-                                backgroundImage: secondClip ? "linear-gradient(to left, " + secondColor + ", " + secondClipColor + ")" : "none",
-                                fontSize: secondSize + "px",
-                                fontFamily: secondFamily,
-                                letterSpacing: secondLetter + "px",
-                                textTransform: secondUpper ? "uppercase" : "none",
-                                fontStyle: secondStyle,
-                                fontWeight: secondWeight,
-                                border: secondBorderType,
-                                borderWidth: secondBorderWidth + "px",
-                                borderRadius: secondBorderRadius + "px",
-                                borderColor: secondBorderColor,
-                                padding: secondPadding + "px",
-                                margin: secondMargin + "px",
-                                textShadow: secondShadowHorizontal + "px " + secondShadowVertical + "px " + secondShadowBlur + "px " + secondShadowColor
-                            }
-                        },
-                        secondHeading
-                    )
-                ),
-                link && headingURL && React.createElement("a", {
-                    className: "premium-dheading-block__link",
-                    href: link && headingURL,
-                    target: target && "_blank"
-                })
-            )
-        );
-    }
-}, {
-    attributes: attributes,
-    migrate: function migrate(attributes) {
-        var newAttributes = {
-            containerBorderType: "none",
-            containerBorderWidth: "1",
-            containerBorderRadius: "0",
-            containerBorderColor: ""
-        };
-        return Object.assign(attributes, newAttributes);
-    },
-    save: function save(props) {
-        var _props$attributes4 = props.attributes,
-            contentAlign = _props$attributes4.contentAlign,
-            firstHeading = _props$attributes4.firstHeading,
-            secondHeading = _props$attributes4.secondHeading,
-            display = _props$attributes4.display,
-            firstColor = _props$attributes4.firstColor,
-            firstBackground = _props$attributes4.firstBackground,
-            firstSize = _props$attributes4.firstSize,
-            firstFamily = _props$attributes4.firstFamily,
-            firstStyle = _props$attributes4.firstStyle,
-            firstUpper = _props$attributes4.firstUpper,
-            firstLetter = _props$attributes4.firstLetter,
-            firstWeight = _props$attributes4.firstWeight,
-            firstBorderType = _props$attributes4.firstBorderType,
-            firstBorderWidth = _props$attributes4.firstBorderWidth,
-            firstBorderRadius = _props$attributes4.firstBorderRadius,
-            firstBorderColor = _props$attributes4.firstBorderColor,
-            firstPadding = _props$attributes4.firstPadding,
-            firstMargin = _props$attributes4.firstMargin,
-            firstClip = _props$attributes4.firstClip,
-            firstAnim = _props$attributes4.firstAnim,
-            firstClipColor = _props$attributes4.firstClipColor,
-            firstShadowBlur = _props$attributes4.firstShadowBlur,
-            firstShadowColor = _props$attributes4.firstShadowColor,
-            firstShadowHorizontal = _props$attributes4.firstShadowHorizontal,
-            firstShadowVertical = _props$attributes4.firstShadowVertical,
-            secondColor = _props$attributes4.secondColor,
-            secondBackground = _props$attributes4.secondBackground,
-            secondSize = _props$attributes4.secondSize,
-            secondFamily = _props$attributes4.secondFamily,
-            secondLetter = _props$attributes4.secondLetter,
-            secondUpper = _props$attributes4.secondUpper,
-            secondWeight = _props$attributes4.secondWeight,
-            secondStyle = _props$attributes4.secondStyle,
-            secondBorderType = _props$attributes4.secondBorderType,
-            secondBorderWidth = _props$attributes4.secondBorderWidth,
-            secondBorderRadius = _props$attributes4.secondBorderRadius,
-            secondBorderColor = _props$attributes4.secondBorderColor,
-            secondPadding = _props$attributes4.secondPadding,
-            secondMargin = _props$attributes4.secondMargin,
-            secondClip = _props$attributes4.secondClip,
-            secondAnim = _props$attributes4.secondAnim,
-            secondClipColor = _props$attributes4.secondClipColor,
-            secondShadowBlur = _props$attributes4.secondShadowBlur,
-            secondShadowColor = _props$attributes4.secondShadowColor,
-            secondShadowHorizontal = _props$attributes4.secondShadowHorizontal,
-            secondShadowVertical = _props$attributes4.secondShadowVertical,
-            link = _props$attributes4.link,
-            target = _props$attributes4.target,
-            headingURL = _props$attributes4.headingURL,
-            containerBack = _props$attributes4.containerBack,
-            imageURL = _props$attributes4.imageURL,
-            fixed = _props$attributes4.fixed,
-            backgroundRepeat = _props$attributes4.backgroundRepeat,
-            backgroundPosition = _props$attributes4.backgroundPosition,
-            backgroundSize = _props$attributes4.backgroundSize;
-
-
-        return React.createElement(
-            "div",
-            {
-                className: className + "__container",
-                style: {
-                    textAlign: contentAlign,
-                    backgroundColor: containerBack,
-                    backgroundImage: "url('" + imageURL + "')",
-                    backgroundRepeat: backgroundRepeat,
-                    backgroundPosition: backgroundPosition,
-                    backgroundSize: backgroundSize,
-                    backgroundAttachment: fixed ? "fixed" : "unset"
-                }
-            },
-            React.createElement(
-                "div",
-                { className: className + "__wrap" },
-                React.createElement(
-                    "h2",
-                    { className: className + "__title" },
-                    React.createElement(
-                        "span",
-                        {
-                            className: className + "__first premium-headingc-" + firstClip + " premium-headinga-" + firstAnim,
-                            style: {
-                                display: display,
-                                color: firstColor,
-                                backgroundColor: firstClip ? "none" : firstBackground,
-                                backgroundImage: firstClip ? "linear-gradient(to left, " + firstColor + ", " + firstClipColor + ")" : "none",
-                                fontSize: firstSize + "px",
-                                fontFamily: firstFamily,
-                                letterSpacing: firstLetter + "px",
-                                textTransform: firstUpper ? "uppercase" : "none",
-                                fontStyle: firstStyle,
-                                fontWeight: firstWeight,
-                                border: firstBorderType,
-                                borderWidth: firstBorderWidth + "px",
-                                borderRadius: firstBorderRadius + "px",
-                                borderColor: firstBorderColor,
-                                padding: firstPadding + "px",
-                                margin: firstMargin + "px",
-                                textShadow: firstShadowHorizontal + "px " + firstShadowVertical + "px " + firstShadowBlur + "px " + firstShadowColor
-                            }
-                        },
-                        firstHeading
-                    ),
-                    React.createElement(
-                        "span",
-                        {
-                            className: className + "__second premium-headingc-" + secondClip + " premium-headinga-" + secondAnim,
-                            style: {
-                                display: display,
-                                color: secondColor,
-                                backgroundColor: secondClip ? "none" : secondBackground,
-                                backgroundImage: secondClip ? "linear-gradient(to left, " + secondColor + ", " + secondClipColor + ")" : "none",
-                                fontSize: secondSize + "px",
-                                fontFamily: secondFamily,
-                                letterSpacing: secondLetter + "px",
-                                textTransform: secondUpper ? "uppercase" : "none",
-                                fontStyle: secondStyle,
-                                fontWeight: secondWeight,
-                                border: secondBorderType,
-                                borderWidth: secondBorderWidth + "px",
-                                borderRadius: secondBorderRadius + "px",
-                                borderColor: secondBorderColor,
-                                padding: secondPadding + "px",
-                                margin: secondMargin + "px",
-                                textShadow: secondShadowHorizontal + "px " + secondShadowVertical + "px " + secondShadowBlur + "px " + secondShadowColor
-                            }
-                        },
-                        secondHeading
-                    )
-                ),
-                link && headingURL && React.createElement("a", {
-                    className: className + "__link",
-                    href: link && headingURL,
-                    target: target && "_blank"
-                })
-            )
-        );
-    }
-}, {
-    attributes: attributes,
-    migrate: function migrate(attributes) {
-        var newAttributes = {
-            firstFamily: "",
-            secondFamily: ""
-        };
-        return Object.assign(attributes, newAttributes);
-    },
-    save: function save(props) {
-        var _props$attributes5 = props.attributes,
-            contentAlign = _props$attributes5.contentAlign,
-            firstHeading = _props$attributes5.firstHeading,
-            secondHeading = _props$attributes5.secondHeading,
-            display = _props$attributes5.display,
-            firstColor = _props$attributes5.firstColor,
-            firstBackground = _props$attributes5.firstBackground,
-            firstSize = _props$attributes5.firstSize,
-            firstStyle = _props$attributes5.firstStyle,
-            firstUpper = _props$attributes5.firstUpper,
-            firstLetter = _props$attributes5.firstLetter,
-            firstWeight = _props$attributes5.firstWeight,
-            firstBorderType = _props$attributes5.firstBorderType,
-            firstBorderWidth = _props$attributes5.firstBorderWidth,
-            firstBorderRadius = _props$attributes5.firstBorderRadius,
-            firstBorderColor = _props$attributes5.firstBorderColor,
-            firstPadding = _props$attributes5.firstPadding,
-            firstMargin = _props$attributes5.firstMargin,
-            firstClip = _props$attributes5.firstClip,
-            firstAnim = _props$attributes5.firstAnim,
-            firstClipColor = _props$attributes5.firstClipColor,
-            firstShadowBlur = _props$attributes5.firstShadowBlur,
-            firstShadowColor = _props$attributes5.firstShadowColor,
-            firstShadowHorizontal = _props$attributes5.firstShadowHorizontal,
-            firstShadowVertical = _props$attributes5.firstShadowVertical,
-            secondColor = _props$attributes5.secondColor,
-            secondBackground = _props$attributes5.secondBackground,
-            secondSize = _props$attributes5.secondSize,
-            secondLetter = _props$attributes5.secondLetter,
-            secondUpper = _props$attributes5.secondUpper,
-            secondWeight = _props$attributes5.secondWeight,
-            secondStyle = _props$attributes5.secondStyle,
-            secondBorderType = _props$attributes5.secondBorderType,
-            secondBorderWidth = _props$attributes5.secondBorderWidth,
-            secondBorderRadius = _props$attributes5.secondBorderRadius,
-            secondBorderColor = _props$attributes5.secondBorderColor,
-            secondPadding = _props$attributes5.secondPadding,
-            secondMargin = _props$attributes5.secondMargin,
-            secondClip = _props$attributes5.secondClip,
-            secondAnim = _props$attributes5.secondAnim,
-            secondClipColor = _props$attributes5.secondClipColor,
-            secondShadowBlur = _props$attributes5.secondShadowBlur,
-            secondShadowColor = _props$attributes5.secondShadowColor,
-            secondShadowHorizontal = _props$attributes5.secondShadowHorizontal,
-            secondShadowVertical = _props$attributes5.secondShadowVertical,
-            link = _props$attributes5.link,
-            target = _props$attributes5.target,
-            headingURL = _props$attributes5.headingURL,
-            containerBack = _props$attributes5.containerBack,
-            imageURL = _props$attributes5.imageURL,
-            fixed = _props$attributes5.fixed,
-            backgroundRepeat = _props$attributes5.backgroundRepeat,
-            backgroundPosition = _props$attributes5.backgroundPosition,
-            backgroundSize = _props$attributes5.backgroundSize;
-
-
-        return React.createElement(
-            "div",
-            {
-                className: className + "__container",
-                style: {
-                    textAlign: contentAlign,
-                    backgroundColor: containerBack,
-                    backgroundImage: "url('" + imageURL + "')",
-                    backgroundRepeat: backgroundRepeat,
-                    backgroundPosition: backgroundPosition,
-                    backgroundSize: backgroundSize,
-                    backgroundAttachment: fixed ? "fixed" : "unset"
-                }
-            },
-            React.createElement(
-                "div",
-                { className: className + "__wrap" },
-                React.createElement(
-                    "h2",
-                    { className: className + "__title" },
-                    React.createElement(
-                        "span",
-                        {
-                            className: className + "__first premium-headingc-" + firstClip + " premium-headinga-" + firstAnim,
-                            style: {
-                                display: display,
-                                color: firstColor,
-                                backgroundColor: firstClip ? "none" : firstBackground,
-                                backgroundImage: firstClip ? "linear-gradient(to left, " + firstColor + ", " + firstClipColor + ")" : "none",
-                                fontSize: firstSize + "px",
-                                letterSpacing: firstLetter + "px",
-                                textTransform: firstUpper ? "uppercase" : "none",
-                                fontStyle: firstStyle,
-                                fontWeight: firstWeight,
-                                border: firstBorderType,
-                                borderWidth: firstBorderWidth + "px",
-                                borderRadius: firstBorderRadius + "px",
-                                borderColor: firstBorderColor,
-                                padding: firstPadding + "px",
-                                margin: firstMargin + "px",
-                                textShadow: firstShadowHorizontal + "px " + firstShadowVertical + "px " + firstShadowBlur + "px " + firstShadowColor
-                            }
-                        },
-                        firstHeading
-                    ),
-                    React.createElement(
-                        "span",
-                        {
-                            className: className + "__second premium-headingc-" + secondClip + " premium-headinga-" + secondAnim,
-                            style: {
-                                display: display,
-                                color: secondColor,
-                                backgroundColor: secondClip ? "none" : secondBackground,
-                                backgroundImage: secondClip ? "linear-gradient(to left, " + secondColor + ", " + secondClipColor + ")" : "none",
-                                fontSize: secondSize + "px",
-                                letterSpacing: secondLetter + "px",
-                                textTransform: secondUpper ? "uppercase" : "none",
-                                fontStyle: secondStyle,
-                                fontWeight: secondWeight,
-                                border: secondBorderType,
-                                borderWidth: secondBorderWidth + "px",
-                                borderRadius: secondBorderRadius + "px",
-                                borderColor: secondBorderColor,
-                                padding: secondPadding + "px",
-                                margin: secondMargin + "px",
-                                textShadow: secondShadowHorizontal + "px " + secondShadowVertical + "px " + secondShadowBlur + "px " + secondShadowColor
-                            }
-                        },
-                        secondHeading
-                    )
-                ),
-                link && headingURL && React.createElement("a", {
-                    className: className + "__link",
-                    href: link && headingURL,
-                    target: target && "_blank"
-                })
-            )
-        );
-    }
-}, {
-    attributes: attributes,
-    migrate: function migrate(attributes) {
-        var newAttributes = {
-            imageID: "",
-            imageURL: "",
-            fixed: false,
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "top center",
-            backgroundSize: "auto"
-        };
-        return Object.assign(attributes, newAttributes);
-    },
-    save: function save(props) {
-        var _props$attributes6 = props.attributes,
-            contentAlign = _props$attributes6.contentAlign,
-            firstHeading = _props$attributes6.firstHeading,
-            secondHeading = _props$attributes6.secondHeading,
-            display = _props$attributes6.display,
-            firstColor = _props$attributes6.firstColor,
-            firstBackground = _props$attributes6.firstBackground,
-            firstSize = _props$attributes6.firstSize,
-            firstStyle = _props$attributes6.firstStyle,
-            firstUpper = _props$attributes6.firstUpper,
-            firstLetter = _props$attributes6.firstLetter,
-            firstWeight = _props$attributes6.firstWeight,
-            firstBorderType = _props$attributes6.firstBorderType,
-            firstBorderWidth = _props$attributes6.firstBorderWidth,
-            firstBorderRadius = _props$attributes6.firstBorderRadius,
-            firstBorderColor = _props$attributes6.firstBorderColor,
-            firstPadding = _props$attributes6.firstPadding,
-            firstMargin = _props$attributes6.firstMargin,
-            firstClip = _props$attributes6.firstClip,
-            firstAnim = _props$attributes6.firstAnim,
-            firstClipColor = _props$attributes6.firstClipColor,
-            firstShadowBlur = _props$attributes6.firstShadowBlur,
-            firstShadowColor = _props$attributes6.firstShadowColor,
-            firstShadowHorizontal = _props$attributes6.firstShadowHorizontal,
-            firstShadowVertical = _props$attributes6.firstShadowVertical,
-            secondColor = _props$attributes6.secondColor,
-            secondBackground = _props$attributes6.secondBackground,
-            secondSize = _props$attributes6.secondSize,
-            secondLetter = _props$attributes6.secondLetter,
-            secondUpper = _props$attributes6.secondUpper,
-            secondWeight = _props$attributes6.secondWeight,
-            secondStyle = _props$attributes6.secondStyle,
-            secondBorderType = _props$attributes6.secondBorderType,
-            secondBorderWidth = _props$attributes6.secondBorderWidth,
-            secondBorderRadius = _props$attributes6.secondBorderRadius,
-            secondBorderColor = _props$attributes6.secondBorderColor,
-            secondPadding = _props$attributes6.secondPadding,
-            secondMargin = _props$attributes6.secondMargin,
-            secondClip = _props$attributes6.secondClip,
-            secondAnim = _props$attributes6.secondAnim,
-            secondClipColor = _props$attributes6.secondClipColor,
-            secondShadowBlur = _props$attributes6.secondShadowBlur,
-            secondShadowColor = _props$attributes6.secondShadowColor,
-            secondShadowHorizontal = _props$attributes6.secondShadowHorizontal,
-            secondShadowVertical = _props$attributes6.secondShadowVertical,
-            link = _props$attributes6.link,
-            target = _props$attributes6.target,
-            headingURL = _props$attributes6.headingURL,
-            containerBack = _props$attributes6.containerBack;
-
-
-        return React.createElement(
-            "div",
-            {
-                className: className + "__container",
-                style: {
-                    textAlign: contentAlign,
-                    backgroundColor: containerBack
-                }
-            },
-            React.createElement(
-                "div",
-                { className: className + "__wrap" },
-                React.createElement(
-                    "h2",
-                    { className: className + "__title" },
-                    React.createElement(
-                        "span",
-                        {
-                            className: className + "__first premium-headingc-" + firstClip + " premium-headinga-" + firstAnim,
-                            style: {
-                                display: display,
-                                color: firstColor,
-                                backgroundColor: firstClip ? "none" : firstBackground,
-                                backgroundImage: firstClip ? "linear-gradient(to left, " + firstColor + ", " + firstClipColor + ")" : "none",
-                                fontSize: firstSize + "px",
-                                letterSpacing: firstLetter + "px",
-                                textTransform: firstUpper ? "uppercase" : "none",
-                                fontStyle: firstStyle,
-                                fontWeight: firstWeight,
-                                border: firstBorderType,
-                                borderWidth: firstBorderWidth + "px",
-                                borderRadius: firstBorderRadius + "px",
-                                borderColor: firstBorderColor,
-                                padding: firstPadding + "px",
-                                margin: firstMargin + "px",
-                                textShadow: firstShadowHorizontal + "px " + firstShadowVertical + "px " + firstShadowBlur + "px " + firstShadowColor
-                            }
-                        },
-                        firstHeading
-                    ),
-                    React.createElement(
-                        "span",
-                        {
-                            className: className + "__second premium-headingc-" + secondClip + " premium-headinga-" + secondAnim,
-                            style: {
-                                display: display,
-                                color: secondColor,
-                                backgroundColor: secondClip ? "none" : secondBackground,
-                                backgroundImage: secondClip ? "linear-gradient(to left, " + secondColor + ", " + secondClipColor + ")" : "none",
-                                fontSize: secondSize + "px",
-                                letterSpacing: secondLetter + "px",
-                                textTransform: secondUpper ? "uppercase" : "none",
-                                fontStyle: secondStyle,
-                                fontWeight: secondWeight,
-                                border: secondBorderType,
-                                borderWidth: secondBorderWidth + "px",
-                                borderRadius: secondBorderRadius + "px",
-                                borderColor: secondBorderColor,
-                                padding: secondPadding + "px",
-                                margin: secondMargin + "px",
-                                textShadow: secondShadowHorizontal + "px " + secondShadowVertical + "px " + secondShadowBlur + "px " + secondShadowColor
-                            }
-                        },
-                        secondHeading
-                    )
-                ),
-                link && headingURL && React.createElement("a", {
-                    className: className + "__link",
-                    href: link && headingURL,
-                    target: target && "_blank"
-                })
-            )
-        );
-    }
-}, {
-    attributes: attributes,
-    save: function save(props) {
-        {
-            var _props$attributes7 = props.attributes,
-                contentAlign = _props$attributes7.contentAlign,
-                firstHeading = _props$attributes7.firstHeading,
-                secondHeading = _props$attributes7.secondHeading,
-                display = _props$attributes7.display,
-                firstColor = _props$attributes7.firstColor,
-                firstBackground = _props$attributes7.firstBackground,
-                firstSize = _props$attributes7.firstSize,
-                firstStyle = _props$attributes7.firstStyle,
-                firstUpper = _props$attributes7.firstUpper,
-                firstLetter = _props$attributes7.firstLetter,
-                firstWeight = _props$attributes7.firstWeight,
-                firstBorderType = _props$attributes7.firstBorderType,
-                firstBorderWidth = _props$attributes7.firstBorderWidth,
-                firstBorderRadius = _props$attributes7.firstBorderRadius,
-                firstBorderColor = _props$attributes7.firstBorderColor,
-                firstPadding = _props$attributes7.firstPadding,
-                firstMargin = _props$attributes7.firstMargin,
-                firstClip = _props$attributes7.firstClip,
-                firstAnim = _props$attributes7.firstAnim,
-                firstClipColor = _props$attributes7.firstClipColor,
-                firstShadowBlur = _props$attributes7.firstShadowBlur,
-                firstShadowColor = _props$attributes7.firstShadowColor,
-                firstShadowHorizontal = _props$attributes7.firstShadowHorizontal,
-                firstShadowVertical = _props$attributes7.firstShadowVertical,
-                secondColor = _props$attributes7.secondColor,
-                secondBackground = _props$attributes7.secondBackground,
-                secondSize = _props$attributes7.secondSize,
-                secondLetter = _props$attributes7.secondLetter,
-                secondUpper = _props$attributes7.secondUpper,
-                secondWeight = _props$attributes7.secondWeight,
-                secondStyle = _props$attributes7.secondStyle,
-                secondBorderType = _props$attributes7.secondBorderType,
-                secondBorderWidth = _props$attributes7.secondBorderWidth,
-                secondBorderRadius = _props$attributes7.secondBorderRadius,
-                secondBorderColor = _props$attributes7.secondBorderColor,
-                secondPadding = _props$attributes7.secondPadding,
-                secondMargin = _props$attributes7.secondMargin,
-                secondClip = _props$attributes7.secondClip,
-                secondAnim = _props$attributes7.secondAnim,
-                secondClipColor = _props$attributes7.secondClipColor,
-                secondShadowBlur = _props$attributes7.secondShadowBlur,
-                secondShadowColor = _props$attributes7.secondShadowColor,
-                secondShadowHorizontal = _props$attributes7.secondShadowHorizontal,
-                secondShadowVertical = _props$attributes7.secondShadowVertical,
-                link = _props$attributes7.link,
-                target = _props$attributes7.target,
-                headingURL = _props$attributes7.headingURL,
-                containerBack = _props$attributes7.containerBack;
-
-
-            return React.createElement(
-                "a",
-                {
-                    className: className + "__link",
-                    href: link && headingURL,
-                    target: target && "_blank"
-                },
-                React.createElement(
-                    "div",
-                    {
-                        className: className + "__container",
-                        style: {
-                            textAlign: contentAlign,
-                            backgroundColor: containerBack
-                        }
-                    },
-                    React.createElement(
-                        "h2",
-                        { className: className + "__title" },
-                        React.createElement(
-                            "span",
-                            {
-                                className: className + "__first premium-headingc-" + firstClip + " premium-headinga-" + firstAnim,
-                                style: {
-                                    display: display,
-                                    color: firstColor,
-                                    backgroundColor: firstClip ? "none" : firstBackground,
-                                    backgroundImage: firstClip ? "linear-gradient(to left, " + firstColor + ", " + firstClipColor + ")" : "none",
-                                    fontSize: firstSize + "px",
-                                    letterSpacing: firstLetter + "px",
-                                    textTransform: firstUpper ? "uppercase" : "none",
-                                    fontStyle: firstStyle,
-                                    fontWeight: firstWeight,
-                                    border: firstBorderType,
-                                    borderWidth: firstBorderWidth + "px",
-                                    borderRadius: firstBorderRadius + "px",
-                                    borderColor: firstBorderColor,
-                                    padding: firstPadding + "px",
-                                    margin: firstMargin + "px",
-                                    textShadow: firstShadowHorizontal + "px " + firstShadowVertical + "px " + firstShadowBlur + "px " + firstShadowColor
-                                }
-                            },
-                            firstHeading
-                        ),
-                        React.createElement(
-                            "span",
-                            {
-                                className: className + "__second premium-headingc-" + secondClip + " premium-headinga-" + secondAnim,
-                                style: {
-                                    display: display,
-                                    color: secondColor,
-                                    backgroundColor: secondClip ? "none" : secondBackground,
-                                    backgroundImage: secondClip ? "linear-gradient(to left, " + secondColor + ", " + secondClipColor + ")" : "none",
-                                    fontSize: secondSize + "px",
-                                    letterSpacing: secondLetter + "px",
-                                    textTransform: secondUpper ? "uppercase" : "none",
-                                    fontStyle: secondStyle,
-                                    fontWeight: secondWeight,
-                                    border: secondBorderType,
-                                    borderWidth: secondBorderWidth + "px",
-                                    borderRadius: secondBorderRadius + "px",
-                                    borderColor: secondBorderColor,
-                                    padding: secondPadding + "px",
-                                    margin: secondMargin + "px",
-                                    textShadow: secondShadowHorizontal + "px " + secondShadowVertical + "px " + secondShadowBlur + "px " + secondShadowColor
-                                }
-                            },
-                            secondHeading
-                        )
-                    )
-                )
-            );
-        }
-    }
-}];
-
-exports.default = deprecatedContent;
-
-/***/ }),
-/* 244 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _attributes;
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var __ = wp.i18n.__;
-
-var attributes = (_attributes = {
+var v8Attriutes = (_v8Attriutes = {
     block_id: {
         type: "string"
     },
@@ -29004,13 +28161,1903 @@ var attributes = (_attributes = {
         type: 'boolean',
         default: false
     }
-}, _defineProperty(_attributes, "secondBorder", {
+}, _defineProperty(_v8Attriutes, "secondBorder", {
     type: 'boolean',
     default: false
-}), _defineProperty(_attributes, "backgroundType", {
+}), _defineProperty(_v8Attriutes, "backgroundType", {
     type: "string",
     default: ""
-}), _attributes);
+}), _defineProperty(_v8Attriutes, "firstBorder", {
+    type: "object",
+    default: {
+        "borderType": "",
+        "borderColor": "",
+        "borderWidth": {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            }
+        },
+        "borderRadius": {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            }
+        }
+    }
+}), _defineProperty(_v8Attriutes, "secondBorder", {
+    type: "object",
+    default: {
+        "borderType": "",
+        "borderColor": "",
+        "borderWidth": {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            }
+        },
+        "borderRadius": {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            }
+        }
+    }
+}), _defineProperty(_v8Attriutes, "containerBorder", {
+    type: "object",
+    default: {
+        "borderType": "",
+        "borderColor": "",
+        "borderWidth": {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            }
+        },
+        "borderRadius": {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            }
+        }
+    }
+}), _v8Attriutes);
+
+var deprecatedContent = [{
+    attributes: v8Attriutes,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            firstBorder: {
+                type: "object",
+                default: {
+                    "borderType": attributes.firstStyles[0].firstBorderType || '',
+                    "borderColor": attributes.firstStyles[0].firstBorderColor || '',
+                    "borderWidth": {
+                        Desktop: {
+                            top: attributes.firstBorderTop || '',
+                            right: attributes.firstBorderRight || '',
+                            bottom: attributes.firstBorderBottom || '',
+                            left: attributes.firstBorderLeft || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    },
+                    "borderRadius": {
+                        Desktop: {
+                            top: attributes.firstStyles[0].firstBorderRadius || '',
+                            right: attributes.firstStyles[0].firstBorderRadius || '',
+                            bottom: attributes.firstStyles[0].firstBorderRadius || '',
+                            left: attributes.firstStyles[0].firstBorderRadius || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    }
+                }
+            },
+            secondBorder: {
+                type: "object",
+                default: {
+                    "borderType": attributes.secondStyles[0].secondBorderType || '',
+                    "borderColor": attributes.secondStyles[0].secondBorderColor || '',
+                    "borderWidth": {
+                        Desktop: {
+                            top: attributes.secondBorderTop || '',
+                            right: attributes.secondBorderRight || '',
+                            bottom: attributes.secondBorderBottom || '',
+                            left: attributes.secondBorderLeft || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    },
+                    "borderRadius": {
+                        Desktop: {
+                            top: attributes.secondStyles[0].secondBorderRadius || '',
+                            right: attributes.secondStyles[0].secondBorderRadius || '',
+                            bottom: attributes.secondStyles[0].secondBorderRadius || '',
+                            left: attributes.secondStyles[0].secondBorderRadius || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    }
+                }
+            },
+            containerBorder: {
+                type: "object",
+                default: {
+                    "borderType": attributes.containerStyles[0].containerBorderType || '',
+                    "borderColor": attributes.containerStyles[0].containerBorderColor || '',
+                    "borderWidth": {
+                        Desktop: {
+                            top: attributes.containerBorderTop || '',
+                            right: attributes.containerBorderRight || '',
+                            bottom: attributes.containerBorderBottom || '',
+                            left: attributes.containerBorderLeft || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    },
+                    "borderRadius": {
+                        Desktop: {
+                            top: attributes.containerStyles[0].containerBorderRadius || '',
+                            right: attributes.containerStyles[0].containerBorderRadius || '',
+                            bottom: attributes.containerStyles[0].containerBorderRadius || '',
+                            left: attributes.containerStyles[0].containerBorderRadius || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    }
+                }
+            }
+        };
+        return Object.assign(attributes, newAttributes);
+    },
+    save: function save(props) {
+        var className = props.className;
+        var _props$attributes = props.attributes,
+            block_id = _props$attributes.block_id,
+            contentAlign = _props$attributes.contentAlign,
+            firstHeading = _props$attributes.firstHeading,
+            secondHeading = _props$attributes.secondHeading,
+            display = _props$attributes.display,
+            firstStyles = _props$attributes.firstStyles,
+            secondStyles = _props$attributes.secondStyles,
+            containerStyles = _props$attributes.containerStyles,
+            link = _props$attributes.link,
+            target = _props$attributes.target,
+            headingURL = _props$attributes.headingURL,
+            hideDesktop = _props$attributes.hideDesktop,
+            hideTablet = _props$attributes.hideTablet,
+            hideMobile = _props$attributes.hideMobile,
+            containerBorderTop = _props$attributes.containerBorderTop,
+            containerBorderRight = _props$attributes.containerBorderRight,
+            containerBorderBottom = _props$attributes.containerBorderBottom,
+            containerBorderLeft = _props$attributes.containerBorderLeft,
+            firstBorderTop = _props$attributes.firstBorderTop,
+            firstBorderRight = _props$attributes.firstBorderRight,
+            firstBorderBottom = _props$attributes.firstBorderBottom,
+            firstBorderLeft = _props$attributes.firstBorderLeft,
+            secondBorderTop = _props$attributes.secondBorderTop,
+            secondBorderRight = _props$attributes.secondBorderRight,
+            secondBorderBottom = _props$attributes.secondBorderBottom,
+            secondBorderLeft = _props$attributes.secondBorderLeft,
+            firstBorder = _props$attributes.firstBorder,
+            secondBorder = _props$attributes.secondBorder,
+            containerBorder = _props$attributes.containerBorder,
+            backgroundType = _props$attributes.backgroundType;
+
+
+        var mainClasses = (0, _classnames2.default)(className, "premium-dheading-block__container");
+        var btnGrad = void 0,
+            btnGrad2 = void 0,
+            btnbg = void 0;
+        if (undefined !== backgroundType && 'gradient' === backgroundType) {
+            btnGrad = 'transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack;
+            btnGrad2 = undefined !== containerStyles[0].gradientColorTwo && undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777';
+            if ('radial' === containerStyles[0].gradientType) {
+                btnbg = "radial-gradient(at " + containerStyles[0].gradientPosition + ", " + btnGrad + " " + containerStyles[0].gradientLocationOne + "%, " + btnGrad2 + " " + containerStyles[0].gradientLocationTwo + "%)";
+            } else if ('radial' !== containerStyles[0].gradientType) {
+                btnbg = "linear-gradient(" + containerStyles[0].gradientAngle + "deg, " + btnGrad + " " + containerStyles[0].gradientLocationOne + "%, " + btnGrad2 + " " + containerStyles[0].gradientLocationTwo + "%)";
+            }
+        } else {
+            btnbg = containerStyles[0].backgroundImageURL ? "url('" + containerStyles[0].backgroundImageURL + "')" : '';
+        }
+
+        return React.createElement(
+            "div",
+            {
+                id: "premium-dheading-block-" + block_id,
+                className: (0, _classnames2.default)(className, "premium-dheading-block__container", "premium-dheading-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile),
+                style: {
+                    textAlign: contentAlign,
+                    backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
+                    backgroundImage: btnbg,
+                    backgroundRepeat: containerStyles[0].backgroundRepeat,
+                    backgroundPosition: containerStyles[0].backgroundPosition,
+                    backgroundSize: containerStyles[0].backgroundSize,
+                    backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
+                    borderStyle: containerStyles[0].containerBorderType,
+                    borderWidth: containerBorder ? containerBorderTop + "px " + containerBorderRight + "px " + containerBorderBottom + "px " + containerBorderLeft + "px" : containerStyles[0].containerBorderWidth + "px",
+                    borderRadius: containerStyles[0].containerBorderRadius + "px",
+                    borderColor: containerStyles[0].containerBorderColor
+                }
+            },
+            React.createElement(
+                "div",
+                { className: "premium-dheading-block__wrap" },
+                React.createElement(
+                    "h2",
+                    { className: "premium-dheading-block__title" },
+                    React.createElement(
+                        "span",
+                        {
+                            className: "premium-dheading-block__first premium-headingc-" + firstStyles[0].firstClip + " premium-headinga-" + firstStyles[0].firstAnim + " premium-headings-" + firstStyles[0].firstStroke,
+                            style: {
+                                display: display,
+                                color: firstStyles[0].firstColor,
+                                backgroundColor: firstStyles[0].firstClip ? "none" : firstStyles[0].firstBackground,
+                                backgroundImage: firstStyles[0].firstClip ? "linear-gradient(to left, " + firstStyles[0].firstColor + ", " + firstStyles[0].firstClipColor + ")" : "none",
+                                fontFamily: firstStyles[0].firstFamily,
+                                letterSpacing: firstStyles[0].firstLetter + "px",
+                                textTransform: firstStyles[0].firstUpper ? "uppercase" : "none",
+                                fontStyle: firstStyles[0].firstStyle,
+                                fontWeight: firstStyles[0].firstWeight,
+                                borderStyle: firstStyles[0].firstBorderType,
+                                borderWidth: firstBorder ? firstBorderTop + "px " + firstBorderRight + "px " + firstBorderBottom + "px " + firstBorderLeft + "px" : firstStyles[0].firstBorderWidth + "px",
+                                borderRadius: firstStyles[0].firstBorderRadius + "px",
+                                borderColor: firstStyles[0].firstBorderColor,
+                                padding: firstStyles[0].firstPadding + "px",
+                                marginLeft: firstStyles[0].firstMarginL + "px",
+                                marginRight: firstStyles[0].firstMarginR + "px",
+                                textShadow: firstStyles[0].firstShadowHorizontal + "px " + firstStyles[0].firstShadowVertical + "px " + firstStyles[0].firstShadowBlur + "px " + firstStyles[0].firstShadowColor
+                            }
+                        },
+                        firstHeading
+                    ),
+                    React.createElement(
+                        "span",
+                        {
+                            className: "premium-dheading-block__second premium-headingc-" + secondStyles[0].secondClip + " premium-headinga-" + secondStyles[0].secondAnim + " premium-headings-" + secondStyles[0].secondStroke,
+                            style: {
+                                display: display,
+                                color: secondStyles[0].secondColor,
+                                backgroundColor: secondStyles[0].secondClip ? "none" : secondStyles[0].secondBackground,
+                                backgroundImage: secondStyles[0].secondClip ? "linear-gradient(to left, " + secondStyles[0].secondColor + ", " + secondStyles[0].secondClipColor + ")" : "none",
+                                fontFamily: secondStyles[0].secondFamily,
+                                letterSpacing: secondStyles[0].secondLetter + "px",
+                                textTransform: secondStyles[0].secondUpper ? "uppercase" : "none",
+                                fontStyle: secondStyles[0].secondStyle,
+                                fontWeight: secondStyles[0].secondWeight,
+                                borderStyle: secondStyles[0].secondBorderType,
+                                borderWidth: secondBorder ? secondBorderTop + "px " + secondBorderRight + "px " + secondBorderBottom + "px " + secondBorderLeft + "px" : secondStyles[0].secondBorderWidth + "px",
+                                borderRadius: secondStyles[0].secondBorderRadius + "px",
+                                borderColor: secondStyles[0].secondBorderColor,
+                                padding: secondStyles[0].secondPadding + "px",
+                                marginLeft: secondStyles[0].secondMarginL + "px",
+                                marginRight: secondStyles[0].secondMarginR + "px",
+                                textShadow: secondStyles[0].secondShadowHorizontal + "px " + secondStyles[0].secondShadowVertical + "px " + secondStyles[0].secondShadowBlur + "px " + secondStyles[0].secondShadowColor
+                            }
+                        },
+                        secondHeading
+                    )
+                ),
+                link && headingURL && React.createElement("a", {
+                    className: "premium-dheading-block__link",
+                    href: link && headingURL,
+                    target: target && "_blank",
+                    rel: "noopener noreferrer"
+                })
+            )
+        );
+    }
+}, {
+    attributes: deprecated_attributes,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            firstStyles: [{
+                firstClip: attributes.firstClip,
+                firstAnim: attributes.firstAnim,
+                firstStroke: attributes.firstStroke,
+                firstFamily: attributes.firstFamily,
+                firstSizeUnit: attributes.firstSizeUnit,
+                firstSize: attributes.firstSize,
+                firstSizeMobile: attributes.firstSizeMobile,
+                firstWeight: attributes.firstWeight,
+                firstStyle: attributes.firstStyle,
+                firstLetter: attributes.firstLetter,
+                firstUpper: attributes.firstUpper,
+                firstColor: attributes.firstColor,
+                firstBackground: attributes.firstBackground,
+                firstOpacity: attributes.firstOpacity,
+                firstClipColor: attributes.firstClipColor,
+                firstBorderType: attributes.firstBorderType,
+                firstBorderWidth: attributes.firstBorderWidth,
+                firstBorderColor: attributes.firstBorderColor,
+                firstBorderRadius: attributes.firstBorderRadius,
+                firstShadowColor: attributes.firstShadowColor,
+                firstShadowBlur: attributes.firstShadowBlur,
+                firstShadowHorizontal: attributes.firstShadowHorizontal,
+                firstShadowVertical: attributes.firstShadowVertical,
+                firstMarginL: attributes.firstMarginL,
+                firstMarginR: attributes.firstMarginR,
+                firstPadding: attributes.firstPadding
+            }],
+            secondStyles: [{
+                secondClip: attributes.secondClip,
+                secondAnim: attributes.secondAnim,
+                secondStroke: attributes.secondStroke,
+                secondFamily: attributes.secondFamily,
+                secondSizeUnit: attributes.secondSizeUnit,
+                secondSize: attributes.secondSize,
+                secondSizeTablet: attributes.secondSizeTablet,
+                secondSizeMobile: attributes.secondSizeMobile,
+                secondWeight: attributes.secondWeight,
+                secondStyle: attributes.secondStyle,
+                secondLetter: attributes.secondLetter,
+                secondUpper: attributes.secondUpper,
+                secondColor: attributes.secondColor,
+                secondBackground: attributes.secondBackground,
+                secondOpacity: attributes.secondOpacity,
+                secondClipColor: attributes.secondClipColor,
+                secondBorderType: attributes.secondBorderType,
+                secondBorderWidth: attributes.secondBorderWidth,
+                secondBorderColor: attributes.secondBorderColor,
+                secondBorderRadius: attributes.secondBorderRadius,
+                secondShadowColor: attributes.secondShadowColor,
+                secondShadowBlur: attributes.secondShadowBlur,
+                secondShadowHorizontal: attributes.secondShadowHorizontal,
+                secondShadowVertical: attributes.secondShadowVertical,
+                secondMarginL: attributes.secondMarginL,
+                secondMarginR: attributes.secondMarginR,
+                secondPadding: attributes.secondPadding
+
+            }],
+            containerStyles: [{
+                backgroundImageID: attributes.imageID,
+                backgroundImageURL: attributes.imageURL,
+                backgroundRepeat: attributes.backgroundRepeat,
+                backgroundPosition: attributes.backgroundPosition,
+                backgroundSize: attributes.backgroundSize,
+                fixed: attributes.fixed,
+                containerBorderType: attributes.containerBorderType,
+                containerBorderWidth: attributes.containerBorderWidth,
+                containerBorderColor: attributes.containerBorderColor,
+                containerBorderRadius: attributes.containerBorderRadius,
+                containerBack: attributes.containerBack,
+                containerOpacity: attributes.containerOpacity,
+                gradientLocationOne: '0',
+                gradientColorTwo: '',
+                gradientLocationTwo: '100',
+                gradientType: 'linear',
+                gradientAngle: '180',
+                gradientPosition: 'center center'
+            }],
+            backgroundType: ''
+        };
+        return Object.assign(attributes, newAttributes);
+    },
+    save: function save(props) {
+        var className = props.className;
+        var _props$attributes2 = props.attributes,
+            block_id = _props$attributes2.block_id,
+            contentAlign = _props$attributes2.contentAlign,
+            firstHeading = _props$attributes2.firstHeading,
+            secondHeading = _props$attributes2.secondHeading,
+            display = _props$attributes2.display,
+            firstColor = _props$attributes2.firstColor,
+            firstBackground = _props$attributes2.firstBackground,
+            firstFamily = _props$attributes2.firstFamily,
+            firstStyle = _props$attributes2.firstStyle,
+            firstUpper = _props$attributes2.firstUpper,
+            firstLetter = _props$attributes2.firstLetter,
+            firstWeight = _props$attributes2.firstWeight,
+            firstBorderType = _props$attributes2.firstBorderType,
+            firstBorderWidth = _props$attributes2.firstBorderWidth,
+            firstBorderTop = _props$attributes2.firstBorderTop,
+            firstBorderRight = _props$attributes2.firstBorderRight,
+            firstBorderBottom = _props$attributes2.firstBorderBottom,
+            firstBorderLeft = _props$attributes2.firstBorderLeft,
+            firstBorderRadius = _props$attributes2.firstBorderRadius,
+            firstBorderColor = _props$attributes2.firstBorderColor,
+            firstPadding = _props$attributes2.firstPadding,
+            firstMargin = _props$attributes2.firstMargin,
+            firstClip = _props$attributes2.firstClip,
+            firstAnim = _props$attributes2.firstAnim,
+            firstStroke = _props$attributes2.firstStroke,
+            firstClipColor = _props$attributes2.firstClipColor,
+            firstShadowBlur = _props$attributes2.firstShadowBlur,
+            firstShadowColor = _props$attributes2.firstShadowColor,
+            firstShadowHorizontal = _props$attributes2.firstShadowHorizontal,
+            firstShadowVertical = _props$attributes2.firstShadowVertical,
+            secondColor = _props$attributes2.secondColor,
+            secondBackground = _props$attributes2.secondBackground,
+            secondFamily = _props$attributes2.secondFamily,
+            secondLetter = _props$attributes2.secondLetter,
+            secondUpper = _props$attributes2.secondUpper,
+            secondWeight = _props$attributes2.secondWeight,
+            secondStyle = _props$attributes2.secondStyle,
+            secondBorderType = _props$attributes2.secondBorderType,
+            secondBorderWidth = _props$attributes2.secondBorderWidth,
+            secondBorderTop = _props$attributes2.secondBorderTop,
+            secondBorderRight = _props$attributes2.secondBorderRight,
+            secondBorderBottom = _props$attributes2.secondBorderBottom,
+            secondBorderLeft = _props$attributes2.secondBorderLeft,
+            secondBorderRadius = _props$attributes2.secondBorderRadius,
+            secondBorderColor = _props$attributes2.secondBorderColor,
+            secondPadding = _props$attributes2.secondPadding,
+            secondMargin = _props$attributes2.secondMargin,
+            secondClip = _props$attributes2.secondClip,
+            secondStroke = _props$attributes2.secondStroke,
+            secondAnim = _props$attributes2.secondAnim,
+            secondClipColor = _props$attributes2.secondClipColor,
+            secondShadowBlur = _props$attributes2.secondShadowBlur,
+            secondShadowColor = _props$attributes2.secondShadowColor,
+            secondShadowHorizontal = _props$attributes2.secondShadowHorizontal,
+            secondShadowVertical = _props$attributes2.secondShadowVertical,
+            link = _props$attributes2.link,
+            target = _props$attributes2.target,
+            headingURL = _props$attributes2.headingURL,
+            containerBack = _props$attributes2.containerBack,
+            imageURL = _props$attributes2.imageURL,
+            fixed = _props$attributes2.fixed,
+            backgroundRepeat = _props$attributes2.backgroundRepeat,
+            backgroundPosition = _props$attributes2.backgroundPosition,
+            backgroundSize = _props$attributes2.backgroundSize,
+            containerBorderType = _props$attributes2.containerBorderType,
+            containerBorderWidth = _props$attributes2.containerBorderWidth,
+            containerBorderTop = _props$attributes2.containerBorderTop,
+            containerBorderRight = _props$attributes2.containerBorderRight,
+            containerBorderBottom = _props$attributes2.containerBorderBottom,
+            containerBorderLeft = _props$attributes2.containerBorderLeft,
+            containerBorderRadius = _props$attributes2.containerBorderRadius,
+            containerBorderColor = _props$attributes2.containerBorderColor,
+            firstBorder = _props$attributes2.firstBorder,
+            secondBorder = _props$attributes2.secondBorder,
+            containerBorder = _props$attributes2.containerBorder,
+            firstOpacity = _props$attributes2.firstOpacity,
+            secondOpacity = _props$attributes2.secondOpacity,
+            containerOpacity = _props$attributes2.containerOpacity,
+            hideDesktop = _props$attributes2.hideDesktop,
+            hideTablet = _props$attributes2.hideTablet,
+            hideMobile = _props$attributes2.hideMobile;
+
+
+        var mainClasses = (0, _classnames2.default)(className, "premium-dheading-block__container");
+
+        return React.createElement(
+            "div",
+            {
+                id: "premium-dheading-block-" + block_id,
+                className: mainClasses + " premium-dheading-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
+                style: {
+                    textAlign: contentAlign,
+                    backgroundColor: containerBack ? (0, _hexToRgba2.default)(containerBack, containerOpacity) : "transparent",
+                    backgroundImage: "url('" + imageURL + "')",
+                    backgroundRepeat: backgroundRepeat,
+                    backgroundPosition: backgroundPosition,
+                    backgroundSize: backgroundSize,
+                    backgroundAttachment: fixed ? "fixed" : "unset",
+                    borderStyle: containerBorderType,
+                    borderWidth: containerBorder ? containerBorderTop + "px " + containerBorderRight + "px " + containerBorderBottom + "px " + containerBorderLeft + "px" : containerBorderWidth + "px",
+                    borderRadius: containerBorderRadius + "px",
+                    borderColor: containerBorderColor
+                }
+            },
+            React.createElement(
+                "div",
+                { className: "premium-dheading-block__wrap" },
+                React.createElement(
+                    "h2",
+                    { className: "premium-dheading-block__title" },
+                    React.createElement(
+                        "span",
+                        {
+                            className: "premium-dheading-block__first premium-headingc-" + firstClip + " premium-headinga-" + firstAnim + " premium-headings-" + firstStroke,
+                            style: {
+                                display: display,
+                                color: firstColor,
+                                backgroundColor: firstClip ? "none" : firstBackground ? (0, _hexToRgba2.default)(firstBackground, firstOpacity) : "transparent",
+                                backgroundImage: firstClip ? "linear-gradient(to left, " + firstColor + ", " + firstClipColor + ")" : "none",
+                                fontFamily: firstFamily,
+                                letterSpacing: firstLetter + "px",
+                                textTransform: firstUpper ? "uppercase" : "none",
+                                fontStyle: firstStyle,
+                                fontWeight: firstWeight,
+                                borderStyle: firstBorderType,
+                                borderWidth: firstBorder ? firstBorderTop + "px " + firstBorderRight + "px " + firstBorderBottom + "px " + firstBorderLeft + "px" : firstBorderWidth + "px",
+                                borderRadius: firstBorderRadius + "px",
+                                borderColor: firstBorderColor,
+                                padding: firstPadding + "px",
+                                margin: firstMargin + "px",
+                                textShadow: firstShadowHorizontal + "px " + firstShadowVertical + "px " + firstShadowBlur + "px " + firstShadowColor
+                            }
+                        },
+                        firstHeading
+                    ),
+                    React.createElement(
+                        "span",
+                        {
+                            className: "premium-dheading-block__second premium-headingc-" + secondClip + " premium-headinga-" + secondAnim + " premium-headings-" + secondStroke,
+                            style: {
+                                display: display,
+                                color: secondColor,
+                                backgroundColor: secondClip ? "none" : secondBackground ? (0, _hexToRgba2.default)(secondBackground, secondOpacity) : "transparent",
+                                backgroundImage: secondClip ? "linear-gradient(to left, " + secondColor + ", " + secondClipColor + ")" : "none",
+                                fontFamily: secondFamily,
+                                letterSpacing: secondLetter + "px",
+                                textTransform: secondUpper ? "uppercase" : "none",
+                                fontStyle: secondStyle,
+                                fontWeight: secondWeight,
+                                borderStyle: secondBorderType,
+                                borderWidth: secondBorder ? secondBorderTop + "px " + secondBorderRight + "px " + secondBorderBottom + "px " + secondBorderLeft + "px" : secondBorderWidth + "px",
+                                borderRadius: secondBorderRadius + "px",
+                                borderColor: secondBorderColor,
+                                padding: secondPadding + "px",
+                                margin: secondMargin + "px",
+                                textShadow: secondShadowHorizontal + "px " + secondShadowVertical + "px " + secondShadowBlur + "px " + secondShadowColor
+                            }
+                        },
+                        secondHeading
+                    )
+                ),
+                link && headingURL && React.createElement("a", {
+                    className: "premium-dheading-block__link",
+                    href: link && headingURL,
+                    target: target && "_blank"
+                })
+            )
+        );
+    }
+}, {
+    attributes: attributes,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            firstBorder: attributes.firstBorder,
+            secondBorder: attributes.secondBorder,
+            containerBorder: attributes.containerBorder,
+            containerBorderTop: "",
+            containerBorderRight: "",
+            containerBorderBottom: "",
+            containerBorderLeft: "",
+            firstBorderTop: "",
+            firstBorderRight: "",
+            firstBorderBottom: "",
+            firstBorderLeft: "",
+            secondBorderTop: "",
+            secondBorderRight: "",
+            secondBorderBottom: "",
+            secondBorderLeft: "",
+            classMigrate: false,
+            block_id: '',
+            secondSizeUnit: 'px',
+            secondSizeTablet: '',
+            secondSizeMobile: '',
+            firstSizeUnit: 'px',
+            firstSizeTablet: '',
+            firstSizeMobile: '',
+            firstOpacity: "",
+            secondOpacity: "",
+            containerOpacity: "",
+            hideDesktop: false,
+            hideTablet: false,
+            hideMobile: false
+        };
+        return Object.assign(attributes, newAttributes);
+    },
+    save: function save(props) {
+        var className = props.className;
+        var _props$attributes3 = props.attributes,
+            contentAlign = _props$attributes3.contentAlign,
+            firstHeading = _props$attributes3.firstHeading,
+            secondHeading = _props$attributes3.secondHeading,
+            display = _props$attributes3.display,
+            firstColor = _props$attributes3.firstColor,
+            firstBackground = _props$attributes3.firstBackground,
+            firstSize = _props$attributes3.firstSize,
+            firstFamily = _props$attributes3.firstFamily,
+            firstStyle = _props$attributes3.firstStyle,
+            firstUpper = _props$attributes3.firstUpper,
+            firstLetter = _props$attributes3.firstLetter,
+            firstWeight = _props$attributes3.firstWeight,
+            firstBorderType = _props$attributes3.firstBorderType,
+            firstBorderWidth = _props$attributes3.firstBorderWidth,
+            firstBorderRadius = _props$attributes3.firstBorderRadius,
+            firstBorderColor = _props$attributes3.firstBorderColor,
+            firstPadding = _props$attributes3.firstPadding,
+            firstMargin = _props$attributes3.firstMargin,
+            firstClip = _props$attributes3.firstClip,
+            firstAnim = _props$attributes3.firstAnim,
+            firstStroke = _props$attributes3.firstStroke,
+            firstClipColor = _props$attributes3.firstClipColor,
+            firstShadowBlur = _props$attributes3.firstShadowBlur,
+            firstShadowColor = _props$attributes3.firstShadowColor,
+            firstShadowHorizontal = _props$attributes3.firstShadowHorizontal,
+            firstShadowVertical = _props$attributes3.firstShadowVertical,
+            secondColor = _props$attributes3.secondColor,
+            secondBackground = _props$attributes3.secondBackground,
+            secondSize = _props$attributes3.secondSize,
+            secondFamily = _props$attributes3.secondFamily,
+            secondLetter = _props$attributes3.secondLetter,
+            secondUpper = _props$attributes3.secondUpper,
+            secondWeight = _props$attributes3.secondWeight,
+            secondStyle = _props$attributes3.secondStyle,
+            secondBorderType = _props$attributes3.secondBorderType,
+            secondBorderWidth = _props$attributes3.secondBorderWidth,
+            secondBorderRadius = _props$attributes3.secondBorderRadius,
+            secondBorderColor = _props$attributes3.secondBorderColor,
+            secondPadding = _props$attributes3.secondPadding,
+            secondMargin = _props$attributes3.secondMargin,
+            secondClip = _props$attributes3.secondClip,
+            secondStroke = _props$attributes3.secondStroke,
+            secondAnim = _props$attributes3.secondAnim,
+            secondClipColor = _props$attributes3.secondClipColor,
+            secondShadowBlur = _props$attributes3.secondShadowBlur,
+            secondShadowColor = _props$attributes3.secondShadowColor,
+            secondShadowHorizontal = _props$attributes3.secondShadowHorizontal,
+            secondShadowVertical = _props$attributes3.secondShadowVertical,
+            link = _props$attributes3.link,
+            target = _props$attributes3.target,
+            headingURL = _props$attributes3.headingURL,
+            containerBack = _props$attributes3.containerBack,
+            imageURL = _props$attributes3.imageURL,
+            fixed = _props$attributes3.fixed,
+            backgroundRepeat = _props$attributes3.backgroundRepeat,
+            backgroundPosition = _props$attributes3.backgroundPosition,
+            backgroundSize = _props$attributes3.backgroundSize,
+            containerBorderType = _props$attributes3.containerBorderType,
+            containerBorderWidth = _props$attributes3.containerBorderWidth,
+            containerBorderRadius = _props$attributes3.containerBorderRadius,
+            containerBorderColor = _props$attributes3.containerBorderColor;
+
+
+        var mainClasses = (0, _classnames2.default)(className, "premium-dheading-block__container");
+
+        return React.createElement(
+            "div",
+            {
+                className: "" + mainClasses,
+                style: {
+                    textAlign: contentAlign,
+                    backgroundColor: containerBack,
+                    backgroundImage: "url('" + imageURL + "')",
+                    backgroundRepeat: backgroundRepeat,
+                    backgroundPosition: backgroundPosition,
+                    backgroundSize: backgroundSize,
+                    backgroundAttachment: fixed ? "fixed" : "unset",
+                    border: containerBorderType,
+                    borderWidth: containerBorderWidth + "px",
+                    borderRadius: containerBorderRadius + "px",
+                    borderColor: containerBorderColor
+                }
+            },
+            React.createElement(
+                "div",
+                { className: "premium-dheading-block__wrap" },
+                React.createElement(
+                    "h2",
+                    { className: "premium-dheading-block__title" },
+                    React.createElement(
+                        "span",
+                        {
+                            className: "premium-dheading-block__first premium-headingc-" + firstClip + " premium-headinga-" + firstAnim + " premium-headings-" + firstStroke,
+                            style: {
+                                display: display,
+                                color: firstColor,
+                                backgroundColor: firstClip ? "none" : firstBackground,
+                                backgroundImage: firstClip ? "linear-gradient(to left, " + firstColor + ", " + firstClipColor + ")" : "none",
+                                fontSize: firstSize + "px",
+                                fontFamily: firstFamily,
+                                letterSpacing: firstLetter + "px",
+                                textTransform: firstUpper ? "uppercase" : "none",
+                                fontStyle: firstStyle,
+                                fontWeight: firstWeight,
+                                border: firstBorderType,
+                                borderWidth: firstBorderWidth + "px",
+                                borderRadius: firstBorderRadius + "px",
+                                borderColor: firstBorderColor,
+                                padding: firstPadding + "px",
+                                margin: firstMargin + "px",
+                                textShadow: firstShadowHorizontal + "px " + firstShadowVertical + "px " + firstShadowBlur + "px " + firstShadowColor
+                            }
+                        },
+                        firstHeading
+                    ),
+                    React.createElement(
+                        "span",
+                        {
+                            className: "premium-dheading-block__second premium-headingc-" + secondClip + " premium-headinga-" + secondAnim + " premium-headings-" + secondStroke,
+                            style: {
+                                display: display,
+                                color: secondColor,
+                                backgroundColor: secondClip ? "none" : secondBackground,
+                                backgroundImage: secondClip ? "linear-gradient(to left, " + secondColor + ", " + secondClipColor + ")" : "none",
+                                fontSize: secondSize + "px",
+                                fontFamily: secondFamily,
+                                letterSpacing: secondLetter + "px",
+                                textTransform: secondUpper ? "uppercase" : "none",
+                                fontStyle: secondStyle,
+                                fontWeight: secondWeight,
+                                border: secondBorderType,
+                                borderWidth: secondBorderWidth + "px",
+                                borderRadius: secondBorderRadius + "px",
+                                borderColor: secondBorderColor,
+                                padding: secondPadding + "px",
+                                margin: secondMargin + "px",
+                                textShadow: secondShadowHorizontal + "px " + secondShadowVertical + "px " + secondShadowBlur + "px " + secondShadowColor
+                            }
+                        },
+                        secondHeading
+                    )
+                ),
+                link && headingURL && React.createElement("a", {
+                    className: "premium-dheading-block__link",
+                    href: link && headingURL,
+                    target: target && "_blank"
+                })
+            )
+        );
+    }
+}, {
+    attributes: attributes,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            firstStroke: false,
+            secondStroke: false
+        };
+        return Object.assign(attributes, newAttributes);
+    },
+    save: function save(props) {
+        var className = props.className;
+        var _props$attributes4 = props.attributes,
+            contentAlign = _props$attributes4.contentAlign,
+            firstHeading = _props$attributes4.firstHeading,
+            secondHeading = _props$attributes4.secondHeading,
+            display = _props$attributes4.display,
+            firstColor = _props$attributes4.firstColor,
+            firstBackground = _props$attributes4.firstBackground,
+            firstSize = _props$attributes4.firstSize,
+            firstFamily = _props$attributes4.firstFamily,
+            firstStyle = _props$attributes4.firstStyle,
+            firstUpper = _props$attributes4.firstUpper,
+            firstLetter = _props$attributes4.firstLetter,
+            firstWeight = _props$attributes4.firstWeight,
+            firstBorderType = _props$attributes4.firstBorderType,
+            firstBorderWidth = _props$attributes4.firstBorderWidth,
+            firstBorderRadius = _props$attributes4.firstBorderRadius,
+            firstBorderColor = _props$attributes4.firstBorderColor,
+            firstPadding = _props$attributes4.firstPadding,
+            firstMargin = _props$attributes4.firstMargin,
+            firstClip = _props$attributes4.firstClip,
+            firstAnim = _props$attributes4.firstAnim,
+            firstClipColor = _props$attributes4.firstClipColor,
+            firstShadowBlur = _props$attributes4.firstShadowBlur,
+            firstShadowColor = _props$attributes4.firstShadowColor,
+            firstShadowHorizontal = _props$attributes4.firstShadowHorizontal,
+            firstShadowVertical = _props$attributes4.firstShadowVertical,
+            secondColor = _props$attributes4.secondColor,
+            secondBackground = _props$attributes4.secondBackground,
+            secondSize = _props$attributes4.secondSize,
+            secondFamily = _props$attributes4.secondFamily,
+            secondLetter = _props$attributes4.secondLetter,
+            secondUpper = _props$attributes4.secondUpper,
+            secondWeight = _props$attributes4.secondWeight,
+            secondStyle = _props$attributes4.secondStyle,
+            secondBorderType = _props$attributes4.secondBorderType,
+            secondBorderWidth = _props$attributes4.secondBorderWidth,
+            secondBorderRadius = _props$attributes4.secondBorderRadius,
+            secondBorderColor = _props$attributes4.secondBorderColor,
+            secondPadding = _props$attributes4.secondPadding,
+            secondMargin = _props$attributes4.secondMargin,
+            secondClip = _props$attributes4.secondClip,
+            secondAnim = _props$attributes4.secondAnim,
+            secondClipColor = _props$attributes4.secondClipColor,
+            secondShadowBlur = _props$attributes4.secondShadowBlur,
+            secondShadowColor = _props$attributes4.secondShadowColor,
+            secondShadowHorizontal = _props$attributes4.secondShadowHorizontal,
+            secondShadowVertical = _props$attributes4.secondShadowVertical,
+            link = _props$attributes4.link,
+            target = _props$attributes4.target,
+            headingURL = _props$attributes4.headingURL,
+            containerBack = _props$attributes4.containerBack,
+            imageURL = _props$attributes4.imageURL,
+            fixed = _props$attributes4.fixed,
+            backgroundRepeat = _props$attributes4.backgroundRepeat,
+            backgroundPosition = _props$attributes4.backgroundPosition,
+            backgroundSize = _props$attributes4.backgroundSize,
+            containerBorderType = _props$attributes4.containerBorderType,
+            containerBorderWidth = _props$attributes4.containerBorderWidth,
+            containerBorderRadius = _props$attributes4.containerBorderRadius,
+            containerBorderColor = _props$attributes4.containerBorderColor;
+
+
+        var mainClasses = (0, _classnames2.default)(className, "premium-dheading-block__container");
+
+        return React.createElement(
+            "div",
+            {
+                className: "" + mainClasses,
+                style: {
+                    textAlign: contentAlign,
+                    backgroundColor: containerBack,
+                    backgroundImage: "url('" + imageURL + "')",
+                    backgroundRepeat: backgroundRepeat,
+                    backgroundPosition: backgroundPosition,
+                    backgroundSize: backgroundSize,
+                    backgroundAttachment: fixed ? "fixed" : "unset",
+                    border: containerBorderType,
+                    borderWidth: containerBorderWidth + "px",
+                    borderRadius: containerBorderRadius + "px",
+                    borderColor: containerBorderColor
+                }
+            },
+            React.createElement(
+                "div",
+                { className: "premium-dheading-block__wrap" },
+                React.createElement(
+                    "h2",
+                    { className: "premium-dheading-block__title" },
+                    React.createElement(
+                        "span",
+                        {
+                            className: "premium-dheading-block__first premium-headingc-" + firstClip + " premium-headinga-" + firstAnim,
+                            style: {
+                                display: display,
+                                color: firstColor,
+                                backgroundColor: firstClip ? "none" : firstBackground,
+                                backgroundImage: firstClip ? "linear-gradient(to left, " + firstColor + ", " + firstClipColor + ")" : "none",
+                                fontSize: firstSize + "px",
+                                fontFamily: firstFamily,
+                                letterSpacing: firstLetter + "px",
+                                textTransform: firstUpper ? "uppercase" : "none",
+                                fontStyle: firstStyle,
+                                fontWeight: firstWeight,
+                                border: firstBorderType,
+                                borderWidth: firstBorderWidth + "px",
+                                borderRadius: firstBorderRadius + "px",
+                                borderColor: firstBorderColor,
+                                padding: firstPadding + "px",
+                                margin: firstMargin + "px",
+                                textShadow: firstShadowHorizontal + "px " + firstShadowVertical + "px " + firstShadowBlur + "px " + firstShadowColor
+                            }
+                        },
+                        firstHeading
+                    ),
+                    React.createElement(
+                        "span",
+                        {
+                            className: "premium-dheading-block__second premium-headingc-" + secondClip + " premium-headinga-" + secondAnim,
+                            style: {
+                                display: display,
+                                color: secondColor,
+                                backgroundColor: secondClip ? "none" : secondBackground,
+                                backgroundImage: secondClip ? "linear-gradient(to left, " + secondColor + ", " + secondClipColor + ")" : "none",
+                                fontSize: secondSize + "px",
+                                fontFamily: secondFamily,
+                                letterSpacing: secondLetter + "px",
+                                textTransform: secondUpper ? "uppercase" : "none",
+                                fontStyle: secondStyle,
+                                fontWeight: secondWeight,
+                                border: secondBorderType,
+                                borderWidth: secondBorderWidth + "px",
+                                borderRadius: secondBorderRadius + "px",
+                                borderColor: secondBorderColor,
+                                padding: secondPadding + "px",
+                                margin: secondMargin + "px",
+                                textShadow: secondShadowHorizontal + "px " + secondShadowVertical + "px " + secondShadowBlur + "px " + secondShadowColor
+                            }
+                        },
+                        secondHeading
+                    )
+                ),
+                link && headingURL && React.createElement("a", {
+                    className: "premium-dheading-block__link",
+                    href: link && headingURL,
+                    target: target && "_blank"
+                })
+            )
+        );
+    }
+}, {
+    attributes: attributes,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            containerBorderType: "none",
+            containerBorderWidth: "1",
+            containerBorderRadius: "0",
+            containerBorderColor: ""
+        };
+        return Object.assign(attributes, newAttributes);
+    },
+    save: function save(props) {
+        var _props$attributes5 = props.attributes,
+            contentAlign = _props$attributes5.contentAlign,
+            firstHeading = _props$attributes5.firstHeading,
+            secondHeading = _props$attributes5.secondHeading,
+            display = _props$attributes5.display,
+            firstColor = _props$attributes5.firstColor,
+            firstBackground = _props$attributes5.firstBackground,
+            firstSize = _props$attributes5.firstSize,
+            firstFamily = _props$attributes5.firstFamily,
+            firstStyle = _props$attributes5.firstStyle,
+            firstUpper = _props$attributes5.firstUpper,
+            firstLetter = _props$attributes5.firstLetter,
+            firstWeight = _props$attributes5.firstWeight,
+            firstBorderType = _props$attributes5.firstBorderType,
+            firstBorderWidth = _props$attributes5.firstBorderWidth,
+            firstBorderRadius = _props$attributes5.firstBorderRadius,
+            firstBorderColor = _props$attributes5.firstBorderColor,
+            firstPadding = _props$attributes5.firstPadding,
+            firstMargin = _props$attributes5.firstMargin,
+            firstClip = _props$attributes5.firstClip,
+            firstAnim = _props$attributes5.firstAnim,
+            firstClipColor = _props$attributes5.firstClipColor,
+            firstShadowBlur = _props$attributes5.firstShadowBlur,
+            firstShadowColor = _props$attributes5.firstShadowColor,
+            firstShadowHorizontal = _props$attributes5.firstShadowHorizontal,
+            firstShadowVertical = _props$attributes5.firstShadowVertical,
+            secondColor = _props$attributes5.secondColor,
+            secondBackground = _props$attributes5.secondBackground,
+            secondSize = _props$attributes5.secondSize,
+            secondFamily = _props$attributes5.secondFamily,
+            secondLetter = _props$attributes5.secondLetter,
+            secondUpper = _props$attributes5.secondUpper,
+            secondWeight = _props$attributes5.secondWeight,
+            secondStyle = _props$attributes5.secondStyle,
+            secondBorderType = _props$attributes5.secondBorderType,
+            secondBorderWidth = _props$attributes5.secondBorderWidth,
+            secondBorderRadius = _props$attributes5.secondBorderRadius,
+            secondBorderColor = _props$attributes5.secondBorderColor,
+            secondPadding = _props$attributes5.secondPadding,
+            secondMargin = _props$attributes5.secondMargin,
+            secondClip = _props$attributes5.secondClip,
+            secondAnim = _props$attributes5.secondAnim,
+            secondClipColor = _props$attributes5.secondClipColor,
+            secondShadowBlur = _props$attributes5.secondShadowBlur,
+            secondShadowColor = _props$attributes5.secondShadowColor,
+            secondShadowHorizontal = _props$attributes5.secondShadowHorizontal,
+            secondShadowVertical = _props$attributes5.secondShadowVertical,
+            link = _props$attributes5.link,
+            target = _props$attributes5.target,
+            headingURL = _props$attributes5.headingURL,
+            containerBack = _props$attributes5.containerBack,
+            imageURL = _props$attributes5.imageURL,
+            fixed = _props$attributes5.fixed,
+            backgroundRepeat = _props$attributes5.backgroundRepeat,
+            backgroundPosition = _props$attributes5.backgroundPosition,
+            backgroundSize = _props$attributes5.backgroundSize;
+
+
+        return React.createElement(
+            "div",
+            {
+                className: className + "__container",
+                style: {
+                    textAlign: contentAlign,
+                    backgroundColor: containerBack,
+                    backgroundImage: "url('" + imageURL + "')",
+                    backgroundRepeat: backgroundRepeat,
+                    backgroundPosition: backgroundPosition,
+                    backgroundSize: backgroundSize,
+                    backgroundAttachment: fixed ? "fixed" : "unset"
+                }
+            },
+            React.createElement(
+                "div",
+                { className: className + "__wrap" },
+                React.createElement(
+                    "h2",
+                    { className: className + "__title" },
+                    React.createElement(
+                        "span",
+                        {
+                            className: className + "__first premium-headingc-" + firstClip + " premium-headinga-" + firstAnim,
+                            style: {
+                                display: display,
+                                color: firstColor,
+                                backgroundColor: firstClip ? "none" : firstBackground,
+                                backgroundImage: firstClip ? "linear-gradient(to left, " + firstColor + ", " + firstClipColor + ")" : "none",
+                                fontSize: firstSize + "px",
+                                fontFamily: firstFamily,
+                                letterSpacing: firstLetter + "px",
+                                textTransform: firstUpper ? "uppercase" : "none",
+                                fontStyle: firstStyle,
+                                fontWeight: firstWeight,
+                                border: firstBorderType,
+                                borderWidth: firstBorderWidth + "px",
+                                borderRadius: firstBorderRadius + "px",
+                                borderColor: firstBorderColor,
+                                padding: firstPadding + "px",
+                                margin: firstMargin + "px",
+                                textShadow: firstShadowHorizontal + "px " + firstShadowVertical + "px " + firstShadowBlur + "px " + firstShadowColor
+                            }
+                        },
+                        firstHeading
+                    ),
+                    React.createElement(
+                        "span",
+                        {
+                            className: className + "__second premium-headingc-" + secondClip + " premium-headinga-" + secondAnim,
+                            style: {
+                                display: display,
+                                color: secondColor,
+                                backgroundColor: secondClip ? "none" : secondBackground,
+                                backgroundImage: secondClip ? "linear-gradient(to left, " + secondColor + ", " + secondClipColor + ")" : "none",
+                                fontSize: secondSize + "px",
+                                fontFamily: secondFamily,
+                                letterSpacing: secondLetter + "px",
+                                textTransform: secondUpper ? "uppercase" : "none",
+                                fontStyle: secondStyle,
+                                fontWeight: secondWeight,
+                                border: secondBorderType,
+                                borderWidth: secondBorderWidth + "px",
+                                borderRadius: secondBorderRadius + "px",
+                                borderColor: secondBorderColor,
+                                padding: secondPadding + "px",
+                                margin: secondMargin + "px",
+                                textShadow: secondShadowHorizontal + "px " + secondShadowVertical + "px " + secondShadowBlur + "px " + secondShadowColor
+                            }
+                        },
+                        secondHeading
+                    )
+                ),
+                link && headingURL && React.createElement("a", {
+                    className: className + "__link",
+                    href: link && headingURL,
+                    target: target && "_blank"
+                })
+            )
+        );
+    }
+}, {
+    attributes: attributes,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            firstFamily: "",
+            secondFamily: ""
+        };
+        return Object.assign(attributes, newAttributes);
+    },
+    save: function save(props) {
+        var _props$attributes6 = props.attributes,
+            contentAlign = _props$attributes6.contentAlign,
+            firstHeading = _props$attributes6.firstHeading,
+            secondHeading = _props$attributes6.secondHeading,
+            display = _props$attributes6.display,
+            firstColor = _props$attributes6.firstColor,
+            firstBackground = _props$attributes6.firstBackground,
+            firstSize = _props$attributes6.firstSize,
+            firstStyle = _props$attributes6.firstStyle,
+            firstUpper = _props$attributes6.firstUpper,
+            firstLetter = _props$attributes6.firstLetter,
+            firstWeight = _props$attributes6.firstWeight,
+            firstBorderType = _props$attributes6.firstBorderType,
+            firstBorderWidth = _props$attributes6.firstBorderWidth,
+            firstBorderRadius = _props$attributes6.firstBorderRadius,
+            firstBorderColor = _props$attributes6.firstBorderColor,
+            firstPadding = _props$attributes6.firstPadding,
+            firstMargin = _props$attributes6.firstMargin,
+            firstClip = _props$attributes6.firstClip,
+            firstAnim = _props$attributes6.firstAnim,
+            firstClipColor = _props$attributes6.firstClipColor,
+            firstShadowBlur = _props$attributes6.firstShadowBlur,
+            firstShadowColor = _props$attributes6.firstShadowColor,
+            firstShadowHorizontal = _props$attributes6.firstShadowHorizontal,
+            firstShadowVertical = _props$attributes6.firstShadowVertical,
+            secondColor = _props$attributes6.secondColor,
+            secondBackground = _props$attributes6.secondBackground,
+            secondSize = _props$attributes6.secondSize,
+            secondLetter = _props$attributes6.secondLetter,
+            secondUpper = _props$attributes6.secondUpper,
+            secondWeight = _props$attributes6.secondWeight,
+            secondStyle = _props$attributes6.secondStyle,
+            secondBorderType = _props$attributes6.secondBorderType,
+            secondBorderWidth = _props$attributes6.secondBorderWidth,
+            secondBorderRadius = _props$attributes6.secondBorderRadius,
+            secondBorderColor = _props$attributes6.secondBorderColor,
+            secondPadding = _props$attributes6.secondPadding,
+            secondMargin = _props$attributes6.secondMargin,
+            secondClip = _props$attributes6.secondClip,
+            secondAnim = _props$attributes6.secondAnim,
+            secondClipColor = _props$attributes6.secondClipColor,
+            secondShadowBlur = _props$attributes6.secondShadowBlur,
+            secondShadowColor = _props$attributes6.secondShadowColor,
+            secondShadowHorizontal = _props$attributes6.secondShadowHorizontal,
+            secondShadowVertical = _props$attributes6.secondShadowVertical,
+            link = _props$attributes6.link,
+            target = _props$attributes6.target,
+            headingURL = _props$attributes6.headingURL,
+            containerBack = _props$attributes6.containerBack,
+            imageURL = _props$attributes6.imageURL,
+            fixed = _props$attributes6.fixed,
+            backgroundRepeat = _props$attributes6.backgroundRepeat,
+            backgroundPosition = _props$attributes6.backgroundPosition,
+            backgroundSize = _props$attributes6.backgroundSize;
+
+
+        return React.createElement(
+            "div",
+            {
+                className: className + "__container",
+                style: {
+                    textAlign: contentAlign,
+                    backgroundColor: containerBack,
+                    backgroundImage: "url('" + imageURL + "')",
+                    backgroundRepeat: backgroundRepeat,
+                    backgroundPosition: backgroundPosition,
+                    backgroundSize: backgroundSize,
+                    backgroundAttachment: fixed ? "fixed" : "unset"
+                }
+            },
+            React.createElement(
+                "div",
+                { className: className + "__wrap" },
+                React.createElement(
+                    "h2",
+                    { className: className + "__title" },
+                    React.createElement(
+                        "span",
+                        {
+                            className: className + "__first premium-headingc-" + firstClip + " premium-headinga-" + firstAnim,
+                            style: {
+                                display: display,
+                                color: firstColor,
+                                backgroundColor: firstClip ? "none" : firstBackground,
+                                backgroundImage: firstClip ? "linear-gradient(to left, " + firstColor + ", " + firstClipColor + ")" : "none",
+                                fontSize: firstSize + "px",
+                                letterSpacing: firstLetter + "px",
+                                textTransform: firstUpper ? "uppercase" : "none",
+                                fontStyle: firstStyle,
+                                fontWeight: firstWeight,
+                                border: firstBorderType,
+                                borderWidth: firstBorderWidth + "px",
+                                borderRadius: firstBorderRadius + "px",
+                                borderColor: firstBorderColor,
+                                padding: firstPadding + "px",
+                                margin: firstMargin + "px",
+                                textShadow: firstShadowHorizontal + "px " + firstShadowVertical + "px " + firstShadowBlur + "px " + firstShadowColor
+                            }
+                        },
+                        firstHeading
+                    ),
+                    React.createElement(
+                        "span",
+                        {
+                            className: className + "__second premium-headingc-" + secondClip + " premium-headinga-" + secondAnim,
+                            style: {
+                                display: display,
+                                color: secondColor,
+                                backgroundColor: secondClip ? "none" : secondBackground,
+                                backgroundImage: secondClip ? "linear-gradient(to left, " + secondColor + ", " + secondClipColor + ")" : "none",
+                                fontSize: secondSize + "px",
+                                letterSpacing: secondLetter + "px",
+                                textTransform: secondUpper ? "uppercase" : "none",
+                                fontStyle: secondStyle,
+                                fontWeight: secondWeight,
+                                border: secondBorderType,
+                                borderWidth: secondBorderWidth + "px",
+                                borderRadius: secondBorderRadius + "px",
+                                borderColor: secondBorderColor,
+                                padding: secondPadding + "px",
+                                margin: secondMargin + "px",
+                                textShadow: secondShadowHorizontal + "px " + secondShadowVertical + "px " + secondShadowBlur + "px " + secondShadowColor
+                            }
+                        },
+                        secondHeading
+                    )
+                ),
+                link && headingURL && React.createElement("a", {
+                    className: className + "__link",
+                    href: link && headingURL,
+                    target: target && "_blank"
+                })
+            )
+        );
+    }
+}, {
+    attributes: attributes,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            imageID: "",
+            imageURL: "",
+            fixed: false,
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "top center",
+            backgroundSize: "auto"
+        };
+        return Object.assign(attributes, newAttributes);
+    },
+    save: function save(props) {
+        var _props$attributes7 = props.attributes,
+            contentAlign = _props$attributes7.contentAlign,
+            firstHeading = _props$attributes7.firstHeading,
+            secondHeading = _props$attributes7.secondHeading,
+            display = _props$attributes7.display,
+            firstColor = _props$attributes7.firstColor,
+            firstBackground = _props$attributes7.firstBackground,
+            firstSize = _props$attributes7.firstSize,
+            firstStyle = _props$attributes7.firstStyle,
+            firstUpper = _props$attributes7.firstUpper,
+            firstLetter = _props$attributes7.firstLetter,
+            firstWeight = _props$attributes7.firstWeight,
+            firstBorderType = _props$attributes7.firstBorderType,
+            firstBorderWidth = _props$attributes7.firstBorderWidth,
+            firstBorderRadius = _props$attributes7.firstBorderRadius,
+            firstBorderColor = _props$attributes7.firstBorderColor,
+            firstPadding = _props$attributes7.firstPadding,
+            firstMargin = _props$attributes7.firstMargin,
+            firstClip = _props$attributes7.firstClip,
+            firstAnim = _props$attributes7.firstAnim,
+            firstClipColor = _props$attributes7.firstClipColor,
+            firstShadowBlur = _props$attributes7.firstShadowBlur,
+            firstShadowColor = _props$attributes7.firstShadowColor,
+            firstShadowHorizontal = _props$attributes7.firstShadowHorizontal,
+            firstShadowVertical = _props$attributes7.firstShadowVertical,
+            secondColor = _props$attributes7.secondColor,
+            secondBackground = _props$attributes7.secondBackground,
+            secondSize = _props$attributes7.secondSize,
+            secondLetter = _props$attributes7.secondLetter,
+            secondUpper = _props$attributes7.secondUpper,
+            secondWeight = _props$attributes7.secondWeight,
+            secondStyle = _props$attributes7.secondStyle,
+            secondBorderType = _props$attributes7.secondBorderType,
+            secondBorderWidth = _props$attributes7.secondBorderWidth,
+            secondBorderRadius = _props$attributes7.secondBorderRadius,
+            secondBorderColor = _props$attributes7.secondBorderColor,
+            secondPadding = _props$attributes7.secondPadding,
+            secondMargin = _props$attributes7.secondMargin,
+            secondClip = _props$attributes7.secondClip,
+            secondAnim = _props$attributes7.secondAnim,
+            secondClipColor = _props$attributes7.secondClipColor,
+            secondShadowBlur = _props$attributes7.secondShadowBlur,
+            secondShadowColor = _props$attributes7.secondShadowColor,
+            secondShadowHorizontal = _props$attributes7.secondShadowHorizontal,
+            secondShadowVertical = _props$attributes7.secondShadowVertical,
+            link = _props$attributes7.link,
+            target = _props$attributes7.target,
+            headingURL = _props$attributes7.headingURL,
+            containerBack = _props$attributes7.containerBack;
+
+
+        return React.createElement(
+            "div",
+            {
+                className: className + "__container",
+                style: {
+                    textAlign: contentAlign,
+                    backgroundColor: containerBack
+                }
+            },
+            React.createElement(
+                "div",
+                { className: className + "__wrap" },
+                React.createElement(
+                    "h2",
+                    { className: className + "__title" },
+                    React.createElement(
+                        "span",
+                        {
+                            className: className + "__first premium-headingc-" + firstClip + " premium-headinga-" + firstAnim,
+                            style: {
+                                display: display,
+                                color: firstColor,
+                                backgroundColor: firstClip ? "none" : firstBackground,
+                                backgroundImage: firstClip ? "linear-gradient(to left, " + firstColor + ", " + firstClipColor + ")" : "none",
+                                fontSize: firstSize + "px",
+                                letterSpacing: firstLetter + "px",
+                                textTransform: firstUpper ? "uppercase" : "none",
+                                fontStyle: firstStyle,
+                                fontWeight: firstWeight,
+                                border: firstBorderType,
+                                borderWidth: firstBorderWidth + "px",
+                                borderRadius: firstBorderRadius + "px",
+                                borderColor: firstBorderColor,
+                                padding: firstPadding + "px",
+                                margin: firstMargin + "px",
+                                textShadow: firstShadowHorizontal + "px " + firstShadowVertical + "px " + firstShadowBlur + "px " + firstShadowColor
+                            }
+                        },
+                        firstHeading
+                    ),
+                    React.createElement(
+                        "span",
+                        {
+                            className: className + "__second premium-headingc-" + secondClip + " premium-headinga-" + secondAnim,
+                            style: {
+                                display: display,
+                                color: secondColor,
+                                backgroundColor: secondClip ? "none" : secondBackground,
+                                backgroundImage: secondClip ? "linear-gradient(to left, " + secondColor + ", " + secondClipColor + ")" : "none",
+                                fontSize: secondSize + "px",
+                                letterSpacing: secondLetter + "px",
+                                textTransform: secondUpper ? "uppercase" : "none",
+                                fontStyle: secondStyle,
+                                fontWeight: secondWeight,
+                                border: secondBorderType,
+                                borderWidth: secondBorderWidth + "px",
+                                borderRadius: secondBorderRadius + "px",
+                                borderColor: secondBorderColor,
+                                padding: secondPadding + "px",
+                                margin: secondMargin + "px",
+                                textShadow: secondShadowHorizontal + "px " + secondShadowVertical + "px " + secondShadowBlur + "px " + secondShadowColor
+                            }
+                        },
+                        secondHeading
+                    )
+                ),
+                link && headingURL && React.createElement("a", {
+                    className: className + "__link",
+                    href: link && headingURL,
+                    target: target && "_blank"
+                })
+            )
+        );
+    }
+}, {
+    attributes: attributes,
+    save: function save(props) {
+        {
+            var _props$attributes8 = props.attributes,
+                contentAlign = _props$attributes8.contentAlign,
+                firstHeading = _props$attributes8.firstHeading,
+                secondHeading = _props$attributes8.secondHeading,
+                display = _props$attributes8.display,
+                firstColor = _props$attributes8.firstColor,
+                firstBackground = _props$attributes8.firstBackground,
+                firstSize = _props$attributes8.firstSize,
+                firstStyle = _props$attributes8.firstStyle,
+                firstUpper = _props$attributes8.firstUpper,
+                firstLetter = _props$attributes8.firstLetter,
+                firstWeight = _props$attributes8.firstWeight,
+                firstBorderType = _props$attributes8.firstBorderType,
+                firstBorderWidth = _props$attributes8.firstBorderWidth,
+                firstBorderRadius = _props$attributes8.firstBorderRadius,
+                firstBorderColor = _props$attributes8.firstBorderColor,
+                firstPadding = _props$attributes8.firstPadding,
+                firstMargin = _props$attributes8.firstMargin,
+                firstClip = _props$attributes8.firstClip,
+                firstAnim = _props$attributes8.firstAnim,
+                firstClipColor = _props$attributes8.firstClipColor,
+                firstShadowBlur = _props$attributes8.firstShadowBlur,
+                firstShadowColor = _props$attributes8.firstShadowColor,
+                firstShadowHorizontal = _props$attributes8.firstShadowHorizontal,
+                firstShadowVertical = _props$attributes8.firstShadowVertical,
+                secondColor = _props$attributes8.secondColor,
+                secondBackground = _props$attributes8.secondBackground,
+                secondSize = _props$attributes8.secondSize,
+                secondLetter = _props$attributes8.secondLetter,
+                secondUpper = _props$attributes8.secondUpper,
+                secondWeight = _props$attributes8.secondWeight,
+                secondStyle = _props$attributes8.secondStyle,
+                secondBorderType = _props$attributes8.secondBorderType,
+                secondBorderWidth = _props$attributes8.secondBorderWidth,
+                secondBorderRadius = _props$attributes8.secondBorderRadius,
+                secondBorderColor = _props$attributes8.secondBorderColor,
+                secondPadding = _props$attributes8.secondPadding,
+                secondMargin = _props$attributes8.secondMargin,
+                secondClip = _props$attributes8.secondClip,
+                secondAnim = _props$attributes8.secondAnim,
+                secondClipColor = _props$attributes8.secondClipColor,
+                secondShadowBlur = _props$attributes8.secondShadowBlur,
+                secondShadowColor = _props$attributes8.secondShadowColor,
+                secondShadowHorizontal = _props$attributes8.secondShadowHorizontal,
+                secondShadowVertical = _props$attributes8.secondShadowVertical,
+                link = _props$attributes8.link,
+                target = _props$attributes8.target,
+                headingURL = _props$attributes8.headingURL,
+                containerBack = _props$attributes8.containerBack;
+
+
+            return React.createElement(
+                "a",
+                {
+                    className: className + "__link",
+                    href: link && headingURL,
+                    target: target && "_blank"
+                },
+                React.createElement(
+                    "div",
+                    {
+                        className: className + "__container",
+                        style: {
+                            textAlign: contentAlign,
+                            backgroundColor: containerBack
+                        }
+                    },
+                    React.createElement(
+                        "h2",
+                        { className: className + "__title" },
+                        React.createElement(
+                            "span",
+                            {
+                                className: className + "__first premium-headingc-" + firstClip + " premium-headinga-" + firstAnim,
+                                style: {
+                                    display: display,
+                                    color: firstColor,
+                                    backgroundColor: firstClip ? "none" : firstBackground,
+                                    backgroundImage: firstClip ? "linear-gradient(to left, " + firstColor + ", " + firstClipColor + ")" : "none",
+                                    fontSize: firstSize + "px",
+                                    letterSpacing: firstLetter + "px",
+                                    textTransform: firstUpper ? "uppercase" : "none",
+                                    fontStyle: firstStyle,
+                                    fontWeight: firstWeight,
+                                    border: firstBorderType,
+                                    borderWidth: firstBorderWidth + "px",
+                                    borderRadius: firstBorderRadius + "px",
+                                    borderColor: firstBorderColor,
+                                    padding: firstPadding + "px",
+                                    margin: firstMargin + "px",
+                                    textShadow: firstShadowHorizontal + "px " + firstShadowVertical + "px " + firstShadowBlur + "px " + firstShadowColor
+                                }
+                            },
+                            firstHeading
+                        ),
+                        React.createElement(
+                            "span",
+                            {
+                                className: className + "__second premium-headingc-" + secondClip + " premium-headinga-" + secondAnim,
+                                style: {
+                                    display: display,
+                                    color: secondColor,
+                                    backgroundColor: secondClip ? "none" : secondBackground,
+                                    backgroundImage: secondClip ? "linear-gradient(to left, " + secondColor + ", " + secondClipColor + ")" : "none",
+                                    fontSize: secondSize + "px",
+                                    letterSpacing: secondLetter + "px",
+                                    textTransform: secondUpper ? "uppercase" : "none",
+                                    fontStyle: secondStyle,
+                                    fontWeight: secondWeight,
+                                    border: secondBorderType,
+                                    borderWidth: secondBorderWidth + "px",
+                                    borderRadius: secondBorderRadius + "px",
+                                    borderColor: secondBorderColor,
+                                    padding: secondPadding + "px",
+                                    margin: secondMargin + "px",
+                                    textShadow: secondShadowHorizontal + "px " + secondShadowVertical + "px " + secondShadowBlur + "px " + secondShadowColor
+                                }
+                            },
+                            secondHeading
+                        )
+                    )
+                )
+            );
+        }
+    }
+}];
+
+exports.default = deprecatedContent;
+
+/***/ }),
+/* 244 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var __ = wp.i18n.__;
+
+var attributes = _defineProperty({
+    block_id: {
+        type: "string"
+    },
+    contentAlign: {
+        type: "string",
+        default: "center"
+    },
+    firstHeading: {
+        type: "array",
+        source: "children",
+        default: "Premium ",
+        selector: ".premium-dheading-block__first"
+    },
+    secondHeading: {
+        type: "array",
+        source: "children",
+        default: "Blocks",
+        selector: ".premium-dheading-block__second"
+    },
+    titleTag: {
+        type: "string",
+        default: "h1"
+    },
+    display: {
+        type: "string",
+        default: "inline"
+    },
+    firstStyles: {
+        type: "array",
+        default: [{
+            firstClip: false,
+            firstAnim: false,
+            firstStroke: false,
+            firstFamily: __('Default', 'premium-blocks-for-gutenebrg'),
+            firstSizeUnit: 'px',
+            firstSize: '',
+            firstSizeMobile: '',
+            firstWeight: '',
+            firstStyle: '',
+            firstLetter: '',
+            firstUpper: false,
+            firstColor: '',
+            firstBackground: '',
+            firstOpacity: '1',
+            firstClipColor: "#54595f",
+            firstShadowColor: '',
+            firstShadowBlur: 0,
+            firstShadowHorizontal: 0,
+            firstShadowVertical: 0,
+            firstMarginL: 0,
+            firstMarginR: 0,
+            firstPadding: 0
+        }]
+    },
+    secondStyles: {
+        type: "array",
+        default: [{
+            secondClip: false,
+            secondAnim: false,
+            secondStroke: false,
+            secondFamily: __('Default', 'premium-blocks-for-gutenberg'),
+            secondSizeUnit: 'px',
+            secondSize: '20',
+            secondSizeTablet: '',
+            secondSizeMobile: '',
+            secondWeight: '',
+            secondStyle: '',
+            secondLetter: '',
+            secondUpper: false,
+            secondColor: "#54595f",
+            secondBackground: '',
+            secondOpacity: '',
+            secondClipColor: "#6ec1e4",
+            secondShadowColor: '',
+            secondShadowBlur: '0',
+            secondShadowHorizontal: '0',
+            secondShadowVertical: '0',
+            secondMarginL: '0',
+            secondMarginR: '0',
+            secondPadding: '0'
+
+        }]
+    },
+    containerStyles: {
+        type: 'array',
+        default: [{
+            backgroundImageID: '',
+            backgroundImageURL: '',
+            backgroundRepeat: 'no-reapet',
+            backgroundPosition: 'top center',
+            backgroundSize: 'auto',
+            fixed: false,
+            containerBack: '',
+            containerOpacity: 1,
+            gradientLocationOne: '0',
+            gradientColorTwo: '',
+            gradientLocationTwo: '100',
+            gradientType: 'linear',
+            gradientAngle: '180',
+            gradientPosition: 'center center'
+        }]
+    },
+    containerBorder: {
+        type: 'boolean',
+        default: false
+    },
+    link: {
+        type: "boolean",
+        default: false
+    },
+    target: {
+        type: "boolean",
+        default: false
+    },
+    headingURL: {
+        type: "string"
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    },
+    backgroundType: {
+        type: "string",
+        default: ""
+    },
+    firstBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    secondBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    }
+}, "containerBorder", {
+    type: "object",
+    default: {
+        "borderType": "",
+        "borderColor": "",
+        "borderWidth": {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            }
+        },
+        "borderRadius": {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            }
+        }
+    }
+});
 exports.default = attributes;
 
 /***/ }),
@@ -29081,7 +30128,7 @@ var _classnames2 = _interopRequireDefault(_classnames);
 
 var _settings = __webpack_require__(1);
 
-var _reactFonticonpicker = __webpack_require__(24);
+var _reactFonticonpicker = __webpack_require__(25);
 
 var _reactFonticonpicker2 = _interopRequireDefault(_reactFonticonpicker);
 
@@ -29093,11 +30140,11 @@ var _premiumBorder = __webpack_require__(6);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _PremiumBackgroundControl = __webpack_require__(23);
+var _PremiumBackgroundControl = __webpack_require__(24);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
-var _premiumResponsiveTabs = __webpack_require__(7);
+var _premiumResponsiveTabs = __webpack_require__(8);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
@@ -30995,7 +32042,7 @@ var _addClass = _interopRequireDefault(__webpack_require__(254));
 
 var _removeClass = _interopRequireDefault(__webpack_require__(257));
 
-var _react = _interopRequireDefault(__webpack_require__(8));
+var _react = _interopRequireDefault(__webpack_require__(9));
 
 var _Transition = _interopRequireDefault(__webpack_require__(108));
 
@@ -31457,7 +32504,7 @@ exports.default = void 0;
 
 var _propTypes = _interopRequireDefault(__webpack_require__(17));
 
-var _react = _interopRequireDefault(__webpack_require__(8));
+var _react = _interopRequireDefault(__webpack_require__(9));
 
 var _reactDom = __webpack_require__(40);
 
@@ -31623,7 +32670,7 @@ exports.mergeChildMappings = mergeChildMappings;
 exports.getInitialChildMapping = getInitialChildMapping;
 exports.getNextChildMapping = getNextChildMapping;
 
-var _react = __webpack_require__(8);
+var _react = __webpack_require__(9);
 
 /**
  * Given `this.props.children`, return an object mapping key to child.
@@ -31780,11 +32827,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(8);
+var _react = __webpack_require__(9);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _premiumSizeUnits = __webpack_require__(21);
+var _premiumSizeUnits = __webpack_require__(22);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
@@ -33644,11 +34691,11 @@ var _classnames2 = _interopRequireDefault(_classnames);
 
 var _settings = __webpack_require__(1);
 
-var _premiumTypo = __webpack_require__(9);
+var _premiumTypo = __webpack_require__(7);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _reactFonticonpicker = __webpack_require__(24);
+var _reactFonticonpicker = __webpack_require__(25);
 
 var _reactFonticonpicker2 = _interopRequireDefault(_reactFonticonpicker);
 
@@ -33668,7 +34715,7 @@ var _premiumMediaUpload = __webpack_require__(12);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
-var _premiumResponsiveTabs = __webpack_require__(7);
+var _premiumResponsiveTabs = __webpack_require__(8);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
@@ -33692,7 +34739,7 @@ var _PremiumResponsiveMargin = __webpack_require__(41);
 
 var _PremiumResponsiveMargin2 = _interopRequireDefault(_PremiumResponsiveMargin);
 
-var _fontLoader = __webpack_require__(22);
+var _fontLoader = __webpack_require__(23);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
 
@@ -38310,7 +39357,7 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _premiumResponsiveTabs = __webpack_require__(7);
+var _premiumResponsiveTabs = __webpack_require__(8);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
@@ -39486,7 +40533,7 @@ var _premiumBorder = __webpack_require__(6);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumTypo = __webpack_require__(9);
+var _premiumTypo = __webpack_require__(7);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
@@ -39494,7 +40541,7 @@ var _PremiumShadow = __webpack_require__(5);
 
 var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
-var _premiumResponsiveTabs = __webpack_require__(7);
+var _premiumResponsiveTabs = __webpack_require__(8);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
@@ -44374,7 +45421,7 @@ var _PremiumShadow = __webpack_require__(5);
 
 var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
-var _premiumResponsiveTabs = __webpack_require__(7);
+var _premiumResponsiveTabs = __webpack_require__(8);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
@@ -44382,7 +45429,7 @@ var _singleRangeControl = __webpack_require__(3);
 
 var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
-var _PremiumBackgroundControl = __webpack_require__(23);
+var _PremiumBackgroundControl = __webpack_require__(24);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
@@ -44446,10 +45493,7 @@ var edit = function edit(props) {
         hideTablet = _props$attributes.hideTablet,
         hideMobile = _props$attributes.hideMobile,
         containerStyles = _props$attributes.containerStyles,
-        borderTop = _props$attributes.borderTop,
-        borderRight = _props$attributes.borderRight,
-        borderBottom = _props$attributes.borderBottom,
-        borderLeft = _props$attributes.borderLeft,
+        border = _props$attributes.border,
         marginTop = _props$attributes.marginTop,
         marginBottom = _props$attributes.marginBottom,
         marginLeft = _props$attributes.marginLeft,
@@ -44657,35 +45701,14 @@ var edit = function edit(props) {
                 initialOpen: false
             },
             React.createElement(_premiumBorder2.default, {
-                borderType: containerStyles[0].borderType,
-                borderWidth: containerStyles[0].borderWidth,
-                top: borderTop,
-                right: borderRight,
-                bottom: borderBottom,
-                left: borderLeft,
-                borderColor: containerStyles[0].borderColor,
-                borderRadius: containerStyles[0].borderRadius,
-                onChangeType: function onChangeType(newType) {
-                    return saveContainerStyle({ borderType: newType });
-                },
-                onChangeWidth: function onChangeWidth(_ref) {
-                    var top = _ref.top,
-                        right = _ref.right,
-                        bottom = _ref.bottom,
-                        left = _ref.left;
-                    return setAttributes({
-                        borderTop: top,
-                        borderRight: right,
-                        borderBottom: bottom,
-                        borderLeft: left,
-                        isUpdated: true
-                    });
-                },
-                onChangeColor: function onChangeColor(colorValue) {
-                    return saveContainerStyle({ borderColor: colorValue });
-                },
-                onChangeRadius: function onChangeRadius(newrRadius) {
-                    return saveContainerStyle({ borderRadius: newrRadius });
+                label: __("Border"),
+                value: border,
+                borderType: border.borderType,
+                borderColor: border.borderColor,
+                borderWidth: border.borderWidth,
+                borderRadius: border.borderRadius,
+                onChange: function onChange(value) {
+                    return setAttributes({ border: value });
                 }
             }),
             React.createElement(_PremiumShadow2.default, {
@@ -44855,10 +45878,17 @@ var edit = function edit(props) {
                 textAlign: horAlign,
                 minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
                 backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
-                borderStyle: containerStyles[0].borderType,
-                borderWidth: isUpdated ? borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px" : containerStyles[0].borderWidth + "px",
-                borderRadius: containerStyles[0].borderRadius + "px",
-                borderColor: containerStyles[0].borderColor,
+                borderStyle: border && border.borderType,
+                borderTopWidth: border && border.borderWidth.Desktop.top,
+                borderRightWidth: border && border.borderWidth.Desktop.right,
+                borderBottomWidth: border && border.borderWidth.Desktop.bottom,
+                borderLeftWidth: border && border.borderWidth.Desktop.left,
+                borderRadius: (border && border.borderRadius.Desktop.top || 0) + "px " + (border && border.borderRadius.Desktop.right || 0) + "px " + (border && border.borderRadius.Desktop.bottom || 0) + "px " + (border && border.borderRadius.Desktop.left || 0) + "px",
+                borderColor: border && border.borderColor,
+                borderTopLeftRadius: (border && border.borderRadius.Desktop.top || 0) + "px",
+                borderTopRightRadius: (border && border.borderRadius.Desktop.right || 0) + "px",
+                borderBottomLeftRadius: (border && border.borderRadius.Desktop.bottom || 0) + "px",
+                borderBottomRightRadius: (border && border.borderRadius.Desktop.left || 0) + "px",
                 backgroundImage: btnbg,
                 backgroundRepeat: containerStyles[0].backgroundRepeat,
                 backgroundPosition: containerStyles[0].backgroundPosition,
@@ -44941,10 +45971,7 @@ var save = function save(props) {
         hideTablet = _props$attributes.hideTablet,
         hideMobile = _props$attributes.hideMobile,
         containerStyles = _props$attributes.containerStyles,
-        borderTop = _props$attributes.borderTop,
-        borderRight = _props$attributes.borderRight,
-        borderBottom = _props$attributes.borderBottom,
-        borderLeft = _props$attributes.borderLeft,
+        border = _props$attributes.border,
         backgroundType = _props$attributes.backgroundType;
 
 
@@ -44973,10 +46000,8 @@ var save = function save(props) {
                 textAlign: horAlign,
                 minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
                 backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
-                borderStyle: containerStyles[0].borderType,
-                borderWidth: isUpdated ? borderTop + 'px ' + borderRight + 'px ' + borderBottom + 'px ' + borderLeft + 'px' : containerStyles[0].borderWidth + "px",
-                borderRadius: containerStyles[0].borderRadius + "px",
-                borderColor: containerStyles[0].borderColor,
+                borderStyle: border && border.borderType,
+                borderColor: border && border.borderColor,
                 backgroundImage: btnbg,
                 backgroundRepeat: containerStyles[0].backgroundRepeat,
                 backgroundPosition: containerStyles[0].backgroundPosition,
@@ -45019,6 +46044,10 @@ Object.defineProperty(exports, "__esModule", {
 var _hexToRgba = __webpack_require__(16);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
+
+var _classnames = __webpack_require__(0);
+
+var _classnames2 = _interopRequireDefault(_classnames);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -45216,9 +46245,113 @@ var new_Attributes = {
 };
 var deprecated_Attributes = Object.assign(attributes, new_Attributes);
 
+var v3Attributes = {
+    border: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    }
+};
+
 var deprecatedContent = [{
-    attributes: deprecated_Attributes,
+    attributes: Object.assign(deprecated_Attributes, v3Attributes),
+    isEligible: function isEligible() {
+        return true;
+    },
+
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            border: {
+                "borderType": attributes.containerStyles[0].borderType || '',
+                "borderColor": attributes.containerStyles[0].borderColor || '',
+                "borderWidth": {
+                    Desktop: {
+                        top: attributes.borderTop || '',
+                        right: attributes.borderRight || '',
+                        bottom: attributes.borderBottom || '',
+                        left: attributes.borderLeft || ''
+                    },
+                    Tablet: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    Mobile: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    }
+                },
+                "borderRadius": {
+                    Desktop: {
+                        top: attributes.containerStyles[0].borderRadius || '',
+                        right: attributes.containerStyles[0].borderRadius || '',
+                        bottom: attributes.containerStyles[0].borderRadius || '',
+                        left: attributes.containerStyles[0].borderRadius || ''
+                    },
+                    Tablet: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    Mobile: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    }
+                }
+            }
+        };
+        return Object.assign(attributes, newAttributes);
+    },
     save: function save(props) {
+        var className = props.className;
         var _props$attributes = props.attributes,
             stretchSection = _props$attributes.stretchSection,
             innerWidthType = _props$attributes.innerWidthType,
@@ -45238,15 +46371,94 @@ var deprecatedContent = [{
             borderRight = _props$attributes.borderRight,
             borderBottom = _props$attributes.borderBottom,
             borderLeft = _props$attributes.borderLeft,
-            marginTop = _props$attributes.marginTop,
-            marginBottom = _props$attributes.marginBottom,
-            marginLeft = _props$attributes.marginLeft,
-            marginRight = _props$attributes.marginRight,
-            paddingTop = _props$attributes.paddingTop,
-            paddingRight = _props$attributes.paddingRight,
-            paddingBottom = _props$attributes.paddingBottom,
-            paddingLeft = _props$attributes.paddingLeft,
             backgroundType = _props$attributes.backgroundType;
+
+
+        var mainClasses = (0, _classnames2.default)(className, 'premium-container');
+
+        var btnGrad = void 0,
+            btnGrad2 = void 0,
+            btnbg = void 0;
+        if (undefined !== backgroundType && 'gradient' === backgroundType) {
+            btnGrad = 'transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack;
+            btnGrad2 = undefined !== containerStyles[0].gradientColorTwo && undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777';
+            if ('radial' === containerStyles[0].gradientType) {
+                btnbg = "radial-gradient(at " + containerStyles[0].gradientPosition + ", " + btnGrad + " " + containerStyles[0].gradientLocationOne + "%, " + btnGrad2 + " " + containerStyles[0].gradientLocationTwo + "%)";
+            } else if ('radial' !== containerStyles[0].gradientType) {
+                btnbg = "linear-gradient(" + containerStyles[0].gradientAngle + "deg, " + btnGrad + " " + containerStyles[0].gradientLocationOne + "%, " + btnGrad2 + " " + containerStyles[0].gradientLocationTwo + "%)";
+            }
+        } else {
+            btnbg = containerStyles[0].backgroundImageURL ? "url('" + containerStyles[0].backgroundImageURL + "')" : '';
+        }
+
+        return React.createElement(
+            "div",
+            {
+                className: mainClasses + " premium-container__stretch_" + stretchSection + " premium-container__" + innerWidthType + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
+                style: {
+                    textAlign: horAlign,
+                    minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
+                    backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
+                    borderStyle: containerStyles[0].borderType,
+                    borderWidth: isUpdated ? borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px" : containerStyles[0].borderWidth + "px",
+                    borderRadius: containerStyles[0].borderRadius + "px",
+                    borderColor: containerStyles[0].borderColor,
+                    backgroundImage: btnbg,
+                    backgroundRepeat: containerStyles[0].backgroundRepeat,
+                    backgroundPosition: containerStyles[0].backgroundPosition,
+                    backgroundSize: containerStyles[0].backgroundSize,
+                    backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
+                    boxShadow: containerStyles[0].shadowHorizontal + "px " + containerStyles[0].shadowVertical + "px " + containerStyles[0].shadowBlur + "px " + containerStyles[0].shadowColor + " " + containerStyles[0].shadowPosition
+                }
+            },
+            React.createElement(
+                "div",
+                {
+                    className: "premium-container__content_wrap premium-container__" + vPos,
+                    style: {
+                        maxWidth: "boxed" == innerWidthType && stretchSection ? innerWidth ? innerWidth + "px" : "1140px" : "100%",
+                        minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit
+                    }
+                },
+                React.createElement(
+                    "div",
+                    { className: "premium-container__content_inner" },
+                    React.createElement(InnerBlocks.Content, null)
+                )
+            )
+        );
+    }
+}, {
+    attributes: deprecated_Attributes,
+    save: function save(props) {
+        var _props$attributes2 = props.attributes,
+            stretchSection = _props$attributes2.stretchSection,
+            innerWidthType = _props$attributes2.innerWidthType,
+            isUpdated = _props$attributes2.isUpdated,
+            horAlign = _props$attributes2.horAlign,
+            height = _props$attributes2.height,
+            innerWidth = _props$attributes2.innerWidth,
+            minHeight = _props$attributes2.minHeight,
+            minHeightUnit = _props$attributes2.minHeightUnit,
+            vPos = _props$attributes2.vPos,
+            block_id = _props$attributes2.block_id,
+            hideDesktop = _props$attributes2.hideDesktop,
+            hideTablet = _props$attributes2.hideTablet,
+            hideMobile = _props$attributes2.hideMobile,
+            containerStyles = _props$attributes2.containerStyles,
+            borderTop = _props$attributes2.borderTop,
+            borderRight = _props$attributes2.borderRight,
+            borderBottom = _props$attributes2.borderBottom,
+            borderLeft = _props$attributes2.borderLeft,
+            marginTop = _props$attributes2.marginTop,
+            marginBottom = _props$attributes2.marginBottom,
+            marginLeft = _props$attributes2.marginLeft,
+            marginRight = _props$attributes2.marginRight,
+            paddingTop = _props$attributes2.paddingTop,
+            paddingRight = _props$attributes2.paddingRight,
+            paddingBottom = _props$attributes2.paddingBottom,
+            paddingLeft = _props$attributes2.paddingLeft,
+            backgroundType = _props$attributes2.backgroundType;
 
 
         var btnGrad = void 0,
@@ -45353,50 +46565,50 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes2 = props.attributes,
-            block_id = _props$attributes2.block_id,
-            isUpdated = _props$attributes2.isUpdated,
-            stretchSection = _props$attributes2.stretchSection,
-            horAlign = _props$attributes2.horAlign,
-            innerWidthType = _props$attributes2.innerWidthType,
-            innerWidth = _props$attributes2.innerWidth,
-            height = _props$attributes2.height,
-            vPos = _props$attributes2.vPos,
-            minHeight = _props$attributes2.minHeight,
-            minHeightUnit = _props$attributes2.minHeightUnit,
-            color = _props$attributes2.color,
-            opacity = _props$attributes2.opacity,
-            imageURL = _props$attributes2.imageURL,
-            fixed = _props$attributes2.fixed,
-            backgroundRepeat = _props$attributes2.backgroundRepeat,
-            backgroundPosition = _props$attributes2.backgroundPosition,
-            backgroundSize = _props$attributes2.backgroundSize,
-            borderType = _props$attributes2.borderType,
-            borderWidth = _props$attributes2.borderWidth,
-            borderTop = _props$attributes2.borderTop,
-            borderRight = _props$attributes2.borderRight,
-            borderBottom = _props$attributes2.borderBottom,
-            borderLeft = _props$attributes2.borderLeft,
-            borderColor = _props$attributes2.borderColor,
-            borderRadius = _props$attributes2.borderRadius,
-            marginTop = _props$attributes2.marginTop,
-            marginBottom = _props$attributes2.marginBottom,
-            marginLeft = _props$attributes2.marginLeft,
-            marginRight = _props$attributes2.marginRight,
-            marginUnit = _props$attributes2.marginUnit,
-            paddingTop = _props$attributes2.paddingTop,
-            paddingRight = _props$attributes2.paddingRight,
-            paddingBottom = _props$attributes2.paddingBottom,
-            paddingLeft = _props$attributes2.paddingLeft,
-            paddingUnit = _props$attributes2.paddingUnit,
-            shadowBlur = _props$attributes2.shadowBlur,
-            shadowColor = _props$attributes2.shadowColor,
-            shadowHorizontal = _props$attributes2.shadowHorizontal,
-            shadowVertical = _props$attributes2.shadowVertical,
-            shadowPosition = _props$attributes2.shadowPosition,
-            hideDesktop = _props$attributes2.hideDesktop,
-            hideTablet = _props$attributes2.hideTablet,
-            hideMobile = _props$attributes2.hideMobile;
+        var _props$attributes3 = props.attributes,
+            block_id = _props$attributes3.block_id,
+            isUpdated = _props$attributes3.isUpdated,
+            stretchSection = _props$attributes3.stretchSection,
+            horAlign = _props$attributes3.horAlign,
+            innerWidthType = _props$attributes3.innerWidthType,
+            innerWidth = _props$attributes3.innerWidth,
+            height = _props$attributes3.height,
+            vPos = _props$attributes3.vPos,
+            minHeight = _props$attributes3.minHeight,
+            minHeightUnit = _props$attributes3.minHeightUnit,
+            color = _props$attributes3.color,
+            opacity = _props$attributes3.opacity,
+            imageURL = _props$attributes3.imageURL,
+            fixed = _props$attributes3.fixed,
+            backgroundRepeat = _props$attributes3.backgroundRepeat,
+            backgroundPosition = _props$attributes3.backgroundPosition,
+            backgroundSize = _props$attributes3.backgroundSize,
+            borderType = _props$attributes3.borderType,
+            borderWidth = _props$attributes3.borderWidth,
+            borderTop = _props$attributes3.borderTop,
+            borderRight = _props$attributes3.borderRight,
+            borderBottom = _props$attributes3.borderBottom,
+            borderLeft = _props$attributes3.borderLeft,
+            borderColor = _props$attributes3.borderColor,
+            borderRadius = _props$attributes3.borderRadius,
+            marginTop = _props$attributes3.marginTop,
+            marginBottom = _props$attributes3.marginBottom,
+            marginLeft = _props$attributes3.marginLeft,
+            marginRight = _props$attributes3.marginRight,
+            marginUnit = _props$attributes3.marginUnit,
+            paddingTop = _props$attributes3.paddingTop,
+            paddingRight = _props$attributes3.paddingRight,
+            paddingBottom = _props$attributes3.paddingBottom,
+            paddingLeft = _props$attributes3.paddingLeft,
+            paddingUnit = _props$attributes3.paddingUnit,
+            shadowBlur = _props$attributes3.shadowBlur,
+            shadowColor = _props$attributes3.shadowColor,
+            shadowHorizontal = _props$attributes3.shadowHorizontal,
+            shadowVertical = _props$attributes3.shadowVertical,
+            shadowPosition = _props$attributes3.shadowPosition,
+            hideDesktop = _props$attributes3.hideDesktop,
+            hideTablet = _props$attributes3.hideTablet,
+            hideMobile = _props$attributes3.hideMobile;
 
 
         return React.createElement(
@@ -45447,39 +46659,39 @@ var deprecatedContent = [{
     attributes: attributes,
 
     save: function save(props) {
-        var _props$attributes3 = props.attributes,
-            stretchSection = _props$attributes3.stretchSection,
-            horAlign = _props$attributes3.horAlign,
-            innerWidthType = _props$attributes3.innerWidthType,
-            innerWidth = _props$attributes3.innerWidth,
-            height = _props$attributes3.height,
-            vPos = _props$attributes3.vPos,
-            minHeight = _props$attributes3.minHeight,
-            color = _props$attributes3.color,
-            imageURL = _props$attributes3.imageURL,
-            fixed = _props$attributes3.fixed,
-            backgroundRepeat = _props$attributes3.backgroundRepeat,
-            backgroundPosition = _props$attributes3.backgroundPosition,
-            backgroundSize = _props$attributes3.backgroundSize,
-            borderType = _props$attributes3.borderType,
-            borderWidth = _props$attributes3.borderWidth,
-            borderColor = _props$attributes3.borderColor,
-            borderRadius = _props$attributes3.borderRadius,
-            marginTop = _props$attributes3.marginTop,
-            marginBottom = _props$attributes3.marginBottom,
-            marginLeft = _props$attributes3.marginLeft,
-            marginRight = _props$attributes3.marginRight,
-            marginUnit = _props$attributes3.marginUnit,
-            paddingTop = _props$attributes3.paddingTop,
-            paddingRight = _props$attributes3.paddingRight,
-            paddingBottom = _props$attributes3.paddingBottom,
-            paddingLeft = _props$attributes3.paddingLeft,
-            paddingUnit = _props$attributes3.paddingUnit,
-            shadowBlur = _props$attributes3.shadowBlur,
-            shadowColor = _props$attributes3.shadowColor,
-            shadowHorizontal = _props$attributes3.shadowHorizontal,
-            shadowVertical = _props$attributes3.shadowVertical,
-            shadowPosition = _props$attributes3.shadowPosition;
+        var _props$attributes4 = props.attributes,
+            stretchSection = _props$attributes4.stretchSection,
+            horAlign = _props$attributes4.horAlign,
+            innerWidthType = _props$attributes4.innerWidthType,
+            innerWidth = _props$attributes4.innerWidth,
+            height = _props$attributes4.height,
+            vPos = _props$attributes4.vPos,
+            minHeight = _props$attributes4.minHeight,
+            color = _props$attributes4.color,
+            imageURL = _props$attributes4.imageURL,
+            fixed = _props$attributes4.fixed,
+            backgroundRepeat = _props$attributes4.backgroundRepeat,
+            backgroundPosition = _props$attributes4.backgroundPosition,
+            backgroundSize = _props$attributes4.backgroundSize,
+            borderType = _props$attributes4.borderType,
+            borderWidth = _props$attributes4.borderWidth,
+            borderColor = _props$attributes4.borderColor,
+            borderRadius = _props$attributes4.borderRadius,
+            marginTop = _props$attributes4.marginTop,
+            marginBottom = _props$attributes4.marginBottom,
+            marginLeft = _props$attributes4.marginLeft,
+            marginRight = _props$attributes4.marginRight,
+            marginUnit = _props$attributes4.marginUnit,
+            paddingTop = _props$attributes4.paddingTop,
+            paddingRight = _props$attributes4.paddingRight,
+            paddingBottom = _props$attributes4.paddingBottom,
+            paddingLeft = _props$attributes4.paddingLeft,
+            paddingUnit = _props$attributes4.paddingUnit,
+            shadowBlur = _props$attributes4.shadowBlur,
+            shadowColor = _props$attributes4.shadowColor,
+            shadowHorizontal = _props$attributes4.shadowHorizontal,
+            shadowVertical = _props$attributes4.shadowVertical,
+            shadowPosition = _props$attributes4.shadowPosition;
 
         return React.createElement(
             "div",
@@ -45534,38 +46746,38 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes4 = props.attributes,
-            stretchSection = _props$attributes4.stretchSection,
-            horAlign = _props$attributes4.horAlign,
-            innerWidthType = _props$attributes4.innerWidthType,
-            innerWidth = _props$attributes4.innerWidth,
-            height = _props$attributes4.height,
-            vPos = _props$attributes4.vPos,
-            minHeight = _props$attributes4.minHeight,
-            color = _props$attributes4.color,
-            imageURL = _props$attributes4.imageURL,
-            fixed = _props$attributes4.fixed,
-            backgroundRepeat = _props$attributes4.backgroundRepeat,
-            backgroundPosition = _props$attributes4.backgroundPosition,
-            backgroundSize = _props$attributes4.backgroundSize,
-            borderType = _props$attributes4.borderType,
-            borderWidth = _props$attributes4.borderWidth,
-            borderColor = _props$attributes4.borderColor,
-            borderRadius = _props$attributes4.borderRadius,
-            marginTop = _props$attributes4.marginTop,
-            marginBottom = _props$attributes4.marginBottom,
-            marginLeft = _props$attributes4.marginLeft,
-            marginRight = _props$attributes4.marginRight,
-            paddingTop = _props$attributes4.paddingTop,
-            paddingRight = _props$attributes4.paddingRight,
-            paddingBottom = _props$attributes4.paddingBottom,
-            paddingLeft = _props$attributes4.paddingLeft,
-            paddingUnit = _props$attributes4.paddingUnit,
-            shadowBlur = _props$attributes4.shadowBlur,
-            shadowColor = _props$attributes4.shadowColor,
-            shadowHorizontal = _props$attributes4.shadowHorizontal,
-            shadowVertical = _props$attributes4.shadowVertical,
-            shadowPosition = _props$attributes4.shadowPosition;
+        var _props$attributes5 = props.attributes,
+            stretchSection = _props$attributes5.stretchSection,
+            horAlign = _props$attributes5.horAlign,
+            innerWidthType = _props$attributes5.innerWidthType,
+            innerWidth = _props$attributes5.innerWidth,
+            height = _props$attributes5.height,
+            vPos = _props$attributes5.vPos,
+            minHeight = _props$attributes5.minHeight,
+            color = _props$attributes5.color,
+            imageURL = _props$attributes5.imageURL,
+            fixed = _props$attributes5.fixed,
+            backgroundRepeat = _props$attributes5.backgroundRepeat,
+            backgroundPosition = _props$attributes5.backgroundPosition,
+            backgroundSize = _props$attributes5.backgroundSize,
+            borderType = _props$attributes5.borderType,
+            borderWidth = _props$attributes5.borderWidth,
+            borderColor = _props$attributes5.borderColor,
+            borderRadius = _props$attributes5.borderRadius,
+            marginTop = _props$attributes5.marginTop,
+            marginBottom = _props$attributes5.marginBottom,
+            marginLeft = _props$attributes5.marginLeft,
+            marginRight = _props$attributes5.marginRight,
+            paddingTop = _props$attributes5.paddingTop,
+            paddingRight = _props$attributes5.paddingRight,
+            paddingBottom = _props$attributes5.paddingBottom,
+            paddingLeft = _props$attributes5.paddingLeft,
+            paddingUnit = _props$attributes5.paddingUnit,
+            shadowBlur = _props$attributes5.shadowBlur,
+            shadowColor = _props$attributes5.shadowColor,
+            shadowHorizontal = _props$attributes5.shadowHorizontal,
+            shadowVertical = _props$attributes5.shadowVertical,
+            shadowPosition = _props$attributes5.shadowPosition;
 
         return React.createElement(
             "div",
@@ -45620,37 +46832,37 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes5 = props.attributes,
-            stretchSection = _props$attributes5.stretchSection,
-            horAlign = _props$attributes5.horAlign,
-            innerWidthType = _props$attributes5.innerWidthType,
-            innerWidth = _props$attributes5.innerWidth,
-            height = _props$attributes5.height,
-            vPos = _props$attributes5.vPos,
-            minHeight = _props$attributes5.minHeight,
-            color = _props$attributes5.color,
-            imageURL = _props$attributes5.imageURL,
-            fixed = _props$attributes5.fixed,
-            backgroundRepeat = _props$attributes5.backgroundRepeat,
-            backgroundPosition = _props$attributes5.backgroundPosition,
-            backgroundSize = _props$attributes5.backgroundSize,
-            borderType = _props$attributes5.borderType,
-            borderWidth = _props$attributes5.borderWidth,
-            borderColor = _props$attributes5.borderColor,
-            borderRadius = _props$attributes5.borderRadius,
-            marginTop = _props$attributes5.marginTop,
-            marginBottom = _props$attributes5.marginBottom,
-            marginLeft = _props$attributes5.marginLeft,
-            marginRight = _props$attributes5.marginRight,
-            paddingTop = _props$attributes5.paddingTop,
-            paddingRight = _props$attributes5.paddingRight,
-            paddingBottom = _props$attributes5.paddingBottom,
-            paddingLeft = _props$attributes5.paddingLeft,
-            shadowBlur = _props$attributes5.shadowBlur,
-            shadowColor = _props$attributes5.shadowColor,
-            shadowHorizontal = _props$attributes5.shadowHorizontal,
-            shadowVertical = _props$attributes5.shadowVertical,
-            shadowPosition = _props$attributes5.shadowPosition;
+        var _props$attributes6 = props.attributes,
+            stretchSection = _props$attributes6.stretchSection,
+            horAlign = _props$attributes6.horAlign,
+            innerWidthType = _props$attributes6.innerWidthType,
+            innerWidth = _props$attributes6.innerWidth,
+            height = _props$attributes6.height,
+            vPos = _props$attributes6.vPos,
+            minHeight = _props$attributes6.minHeight,
+            color = _props$attributes6.color,
+            imageURL = _props$attributes6.imageURL,
+            fixed = _props$attributes6.fixed,
+            backgroundRepeat = _props$attributes6.backgroundRepeat,
+            backgroundPosition = _props$attributes6.backgroundPosition,
+            backgroundSize = _props$attributes6.backgroundSize,
+            borderType = _props$attributes6.borderType,
+            borderWidth = _props$attributes6.borderWidth,
+            borderColor = _props$attributes6.borderColor,
+            borderRadius = _props$attributes6.borderRadius,
+            marginTop = _props$attributes6.marginTop,
+            marginBottom = _props$attributes6.marginBottom,
+            marginLeft = _props$attributes6.marginLeft,
+            marginRight = _props$attributes6.marginRight,
+            paddingTop = _props$attributes6.paddingTop,
+            paddingRight = _props$attributes6.paddingRight,
+            paddingBottom = _props$attributes6.paddingBottom,
+            paddingLeft = _props$attributes6.paddingLeft,
+            shadowBlur = _props$attributes6.shadowBlur,
+            shadowColor = _props$attributes6.shadowColor,
+            shadowHorizontal = _props$attributes6.shadowHorizontal,
+            shadowVertical = _props$attributes6.shadowVertical,
+            shadowPosition = _props$attributes6.shadowPosition;
 
         return React.createElement(
             "div",
@@ -45699,35 +46911,35 @@ var deprecatedContent = [{
 }, {
     attributes: attributes,
     save: function save(props) {
-        var _props$attributes6 = props.attributes,
-            horAlign = _props$attributes6.horAlign,
-            innerWidth = _props$attributes6.innerWidth,
-            height = _props$attributes6.height,
-            vPos = _props$attributes6.vPos,
-            minHeight = _props$attributes6.minHeight,
-            color = _props$attributes6.color,
-            imageURL = _props$attributes6.imageURL,
-            fixed = _props$attributes6.fixed,
-            backgroundRepeat = _props$attributes6.backgroundRepeat,
-            backgroundPosition = _props$attributes6.backgroundPosition,
-            backgroundSize = _props$attributes6.backgroundSize,
-            borderType = _props$attributes6.borderType,
-            borderWidth = _props$attributes6.borderWidth,
-            borderColor = _props$attributes6.borderColor,
-            borderRadius = _props$attributes6.borderRadius,
-            marginTop = _props$attributes6.marginTop,
-            marginBottom = _props$attributes6.marginBottom,
-            marginLeft = _props$attributes6.marginLeft,
-            marginRight = _props$attributes6.marginRight,
-            paddingTop = _props$attributes6.paddingTop,
-            paddingRight = _props$attributes6.paddingRight,
-            paddingBottom = _props$attributes6.paddingBottom,
-            paddingLeft = _props$attributes6.paddingLeft,
-            shadowBlur = _props$attributes6.shadowBlur,
-            shadowColor = _props$attributes6.shadowColor,
-            shadowHorizontal = _props$attributes6.shadowHorizontal,
-            shadowVertical = _props$attributes6.shadowVertical,
-            shadowPosition = _props$attributes6.shadowPosition;
+        var _props$attributes7 = props.attributes,
+            horAlign = _props$attributes7.horAlign,
+            innerWidth = _props$attributes7.innerWidth,
+            height = _props$attributes7.height,
+            vPos = _props$attributes7.vPos,
+            minHeight = _props$attributes7.minHeight,
+            color = _props$attributes7.color,
+            imageURL = _props$attributes7.imageURL,
+            fixed = _props$attributes7.fixed,
+            backgroundRepeat = _props$attributes7.backgroundRepeat,
+            backgroundPosition = _props$attributes7.backgroundPosition,
+            backgroundSize = _props$attributes7.backgroundSize,
+            borderType = _props$attributes7.borderType,
+            borderWidth = _props$attributes7.borderWidth,
+            borderColor = _props$attributes7.borderColor,
+            borderRadius = _props$attributes7.borderRadius,
+            marginTop = _props$attributes7.marginTop,
+            marginBottom = _props$attributes7.marginBottom,
+            marginLeft = _props$attributes7.marginLeft,
+            marginRight = _props$attributes7.marginRight,
+            paddingTop = _props$attributes7.paddingTop,
+            paddingRight = _props$attributes7.paddingRight,
+            paddingBottom = _props$attributes7.paddingBottom,
+            paddingLeft = _props$attributes7.paddingLeft,
+            shadowBlur = _props$attributes7.shadowBlur,
+            shadowColor = _props$attributes7.shadowColor,
+            shadowHorizontal = _props$attributes7.shadowHorizontal,
+            shadowVertical = _props$attributes7.shadowVertical,
+            shadowPosition = _props$attributes7.shadowPosition;
 
         return React.createElement(
             "div",
@@ -45834,18 +47046,6 @@ var attributes = {
         type: 'boolean',
         default: false
     },
-    borderTop: {
-        type: "number"
-    },
-    borderRight: {
-        type: "number"
-    },
-    borderBottom: {
-        type: "number"
-    },
-    borderLeft: {
-        type: "number"
-    },
     marginTop: {
         type: "number"
     },
@@ -45881,10 +47081,6 @@ var attributes = {
             backgroundPosition: 'top center',
             backgroundSize: 'auto',
             fixed: false,
-            borderType: "none",
-            borderWidth: 1,
-            borderRadius: '',
-            borderColor: '',
             shadowColor: '',
             shadowBlur: '0',
             shadowHorizontal: '0',
@@ -45952,6 +47148,53 @@ var attributes = {
     },
     paddingBMobile: {
         type: "number"
+    },
+    border: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
     }
 };
 exports.default = attributes;
@@ -46024,7 +47267,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _premiumTypo = __webpack_require__(9);
+var _premiumTypo = __webpack_require__(7);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
@@ -46048,7 +47291,7 @@ var _premiumMediaUpload = __webpack_require__(12);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
-var _premiumResponsiveTabs = __webpack_require__(7);
+var _premiumResponsiveTabs = __webpack_require__(8);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
@@ -46060,7 +47303,7 @@ var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _PremiumBackgroundControl = __webpack_require__(23);
+var _PremiumBackgroundControl = __webpack_require__(24);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
@@ -48687,7 +49930,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _premiumTypo = __webpack_require__(9);
+var _premiumTypo = __webpack_require__(7);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
@@ -48707,7 +49950,7 @@ var _premiumMediaUpload = __webpack_require__(12);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
-var _premiumResponsiveTabs = __webpack_require__(7);
+var _premiumResponsiveTabs = __webpack_require__(8);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
@@ -48719,7 +49962,7 @@ var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _fontLoader = __webpack_require__(22);
+var _fontLoader = __webpack_require__(23);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
 
@@ -51540,7 +52783,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _premiumTypo = __webpack_require__(9);
+var _premiumTypo = __webpack_require__(7);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
@@ -51548,7 +52791,7 @@ var _typed = __webpack_require__(291);
 
 var _typed2 = _interopRequireDefault(_typed);
 
-var _premiumResponsiveTabs = __webpack_require__(7);
+var _premiumResponsiveTabs = __webpack_require__(8);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
@@ -54743,7 +55986,7 @@ var _PremiumResponsivePadding = __webpack_require__(19);
 
 var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
 
-var _premiumResponsiveTabs = __webpack_require__(7);
+var _premiumResponsiveTabs = __webpack_require__(8);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
@@ -55549,7 +56792,7 @@ module.exports = __webpack_require__(13).Object.assign;
 
 
 // 19.1.3.1 Object.assign(target, source)
-var $export = __webpack_require__(25);
+var $export = __webpack_require__(26);
 
 $export($export.S + $export.F, 'Object', { assign: __webpack_require__(321) });
 
@@ -55717,7 +56960,7 @@ __webpack_require__(328)('getPrototypeOf', function () {
 
 
 // most Object methods by ES6 should accept primitives
-var $export = __webpack_require__(25);
+var $export = __webpack_require__(26);
 var core = __webpack_require__(13);
 var fails = __webpack_require__(35);
 module.exports = function (KEY, exec) {
@@ -55808,9 +57051,9 @@ module.exports = function defineProperty(it, key, desc) {
 "use strict";
 
 
-var $export = __webpack_require__(25);
+var $export = __webpack_require__(26);
 // 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
-$export($export.S + $export.F * !__webpack_require__(27), 'Object', { defineProperty: __webpack_require__(26).f });
+$export($export.S + $export.F * !__webpack_require__(28), 'Object', { defineProperty: __webpack_require__(27).f });
 
 /***/ }),
 /* 334 */
@@ -55933,11 +57176,11 @@ module.exports = function (Constructor, NAME, next) {
 "use strict";
 
 
-var dP = __webpack_require__(26);
+var dP = __webpack_require__(27);
 var anObject = __webpack_require__(43);
 var getKeys = __webpack_require__(55);
 
-module.exports = __webpack_require__(27) ? Object.defineProperties : function defineProperties(O, Properties) {
+module.exports = __webpack_require__(28) ? Object.defineProperties : function defineProperties(O, Properties) {
   anObject(O);
   var keys = getKeys(Properties);
   var length = keys.length;
@@ -56075,9 +57318,9 @@ module.exports = __webpack_require__(13).Symbol;
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var global = __webpack_require__(20);
-var has = __webpack_require__(28);
-var DESCRIPTORS = __webpack_require__(27);
-var $export = __webpack_require__(25);
+var has = __webpack_require__(29);
+var DESCRIPTORS = __webpack_require__(28);
+var $export = __webpack_require__(26);
 var redefine = __webpack_require__(126);
 var META = __webpack_require__(349).KEY;
 var $fails = __webpack_require__(35);
@@ -56097,7 +57340,7 @@ var createDesc = __webpack_require__(54);
 var _create = __webpack_require__(81);
 var gOPNExt = __webpack_require__(352);
 var $GOPD = __webpack_require__(128);
-var $DP = __webpack_require__(26);
+var $DP = __webpack_require__(27);
 var $keys = __webpack_require__(55);
 var gOPD = $GOPD.f;
 var dP = $DP.f;
@@ -56325,8 +57568,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var META = __webpack_require__(57)('meta');
 var isObject = __webpack_require__(34);
-var has = __webpack_require__(28);
-var setDesc = __webpack_require__(26).f;
+var has = __webpack_require__(29);
+var setDesc = __webpack_require__(27).f;
 var id = 0;
 var isExtensible = Object.isExtensible || function () {
   return true;
@@ -56536,7 +57779,7 @@ module.exports = __webpack_require__(13).Object.setPrototypeOf;
 
 
 // 19.1.3.19 Object.setPrototypeOf(O, proto)
-var $export = __webpack_require__(25);
+var $export = __webpack_require__(26);
 $export($export.S, 'Object', { setPrototypeOf: __webpack_require__(360).set });
 
 /***/ }),
@@ -56602,7 +57845,7 @@ module.exports = function create(P, D) {
 "use strict";
 
 
-var $export = __webpack_require__(25);
+var $export = __webpack_require__(26);
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 $export($export.S, 'Object', { create: __webpack_require__(81) });
 
@@ -57977,7 +59220,7 @@ var _inspector = __webpack_require__(371);
 
 var _inspector2 = _interopRequireDefault(_inspector);
 
-var _fontLoader = __webpack_require__(22);
+var _fontLoader = __webpack_require__(23);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
 
@@ -58493,7 +59736,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _reactFonticonpicker = __webpack_require__(24);
+var _reactFonticonpicker = __webpack_require__(25);
 
 var _reactFonticonpicker2 = _interopRequireDefault(_reactFonticonpicker);
 
@@ -58521,7 +59764,7 @@ var _radioControl = __webpack_require__(10);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
-var _premiumTypo = __webpack_require__(9);
+var _premiumTypo = __webpack_require__(7);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
@@ -58541,7 +59784,7 @@ var _responsiveRangeControl = __webpack_require__(18);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
-var _PremiumBackgroundControl = __webpack_require__(23);
+var _PremiumBackgroundControl = __webpack_require__(24);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
@@ -58551,7 +59794,7 @@ var _premiumFilters2 = _interopRequireDefault(_premiumFilters);
 
 var _settings = __webpack_require__(1);
 
-var _premiumResponsiveSpacing = __webpack_require__(30);
+var _premiumResponsiveSpacing = __webpack_require__(21);
 
 var _premiumResponsiveSpacing2 = _interopRequireDefault(_premiumResponsiveSpacing);
 
@@ -58583,38 +59826,20 @@ var Inspector = function Inspector(_ref) {
         contentStyles = attributes.contentStyles,
         triggerSettings = attributes.triggerSettings,
         triggerStyles = attributes.triggerStyles,
-        triggerBorderTop = attributes.triggerBorderTop,
-        triggerBorderRight = attributes.triggerBorderRight,
-        triggerBorderBottom = attributes.triggerBorderBottom,
-        triggerBorderLeft = attributes.triggerBorderLeft,
-        triggerBorderTopH = attributes.triggerBorderTopH,
-        triggerBorderRightH = attributes.triggerBorderRightH,
-        triggerBorderBottomH = attributes.triggerBorderBottomH,
-        triggerBorderLeftH = attributes.triggerBorderLeftH,
+        triggerBorder = attributes.triggerBorder,
+        triggerBorderH = attributes.triggerBorderH,
         triggerPadding = attributes.triggerPadding,
         headerStyles = attributes.headerStyles,
-        headerBorderTop = attributes.headerBorderTop,
-        headerBorderRight = attributes.headerBorderRight,
-        headerBorderBottom = attributes.headerBorderBottom,
-        headerBorderLeft = attributes.headerBorderLeft,
+        headerBorder = attributes.headerBorder,
         upperStyles = attributes.upperStyles,
-        upperBorderTop = attributes.upperBorderTop,
-        upperBorderRight = attributes.upperBorderRight,
-        upperBorderBottom = attributes.upperBorderBottom,
-        upperBorderLeft = attributes.upperBorderLeft,
+        upperBorder = attributes.upperBorder,
         upperPadding = attributes.upperPadding,
         lowerStyles = attributes.lowerStyles,
-        lowerBorderTop = attributes.lowerBorderTop,
-        lowerBorderRight = attributes.lowerBorderRight,
-        lowerBorderBottom = attributes.lowerBorderBottom,
-        lowerBorderLeft = attributes.lowerBorderLeft,
+        lowerBorder = attributes.lowerBorder,
         lowerPadding = attributes.lowerPadding,
         modalStyles = attributes.modalStyles,
         backgroundType = attributes.backgroundType,
-        modalBorderTop = attributes.modalBorderTop,
-        modalBorderRight = attributes.modalBorderRight,
-        modalBorderBottom = attributes.modalBorderBottom,
-        modalBorderLeft = attributes.modalBorderLeft,
+        modalBorder = attributes.modalBorder,
         modalMargin = attributes.modalMargin,
         modalPadding = attributes.modalPadding;
 
@@ -59225,33 +60450,14 @@ var Inspector = function Inspector(_ref) {
                                     }
                                 }),
                                 React.createElement(_premiumBorder2.default, {
-                                    borderType: triggerStyles[0].borderType,
-                                    top: triggerBorderTop,
-                                    right: triggerBorderRight,
-                                    bottom: triggerBorderBottom,
-                                    left: triggerBorderLeft,
-                                    borderColor: triggerStyles[0].borderColor,
-                                    borderRadius: triggerStyles[0].borderRadius,
-                                    onChangeType: function onChangeType(newType) {
-                                        return saveTriggerStyles({ borderType: newType });
-                                    },
-                                    onChangeWidth: function onChangeWidth(_ref2) {
-                                        var top = _ref2.top,
-                                            right = _ref2.right,
-                                            bottom = _ref2.bottom,
-                                            left = _ref2.left;
-                                        return setAttributes({
-                                            triggerBorderTop: top,
-                                            triggerBorderRight: right,
-                                            triggerBorderBottom: bottom,
-                                            triggerBorderLeft: left
-                                        });
-                                    },
-                                    onChangeColor: function onChangeColor(colorValue) {
-                                        return saveTriggerStyles({ borderColor: colorValue });
-                                    },
-                                    onChangeRadius: function onChangeRadius(newRadius) {
-                                        return saveTriggerStyles({ borderRadius: newRadius });
+                                    label: __("Border"),
+                                    value: triggerBorder,
+                                    borderType: triggerBorder.borderType,
+                                    borderColor: triggerBorder.borderColor,
+                                    borderWidth: triggerBorder.borderWidth,
+                                    borderRadius: triggerBorder.borderRadius,
+                                    onChange: function onChange(value) {
+                                        return setAttributes({ triggerBorder: value });
                                     }
                                 })
                             );
@@ -59269,33 +60475,14 @@ var Inspector = function Inspector(_ref) {
                                     }
                                 }),
                                 React.createElement(_premiumBorder2.default, {
-                                    borderType: triggerStyles[0].borderTypeH,
-                                    top: triggerBorderTopH,
-                                    right: triggerBorderRightH,
-                                    bottom: triggerBorderBottomH,
-                                    left: triggerBorderLeftH,
-                                    borderColor: triggerStyles[0].borderColorH,
-                                    borderRadius: triggerStyles[0].borderRadiusH,
-                                    onChangeType: function onChangeType(newType) {
-                                        return saveTriggerStyles({ borderTypeH: newType });
-                                    },
-                                    onChangeWidth: function onChangeWidth(_ref3) {
-                                        var top = _ref3.top,
-                                            right = _ref3.right,
-                                            bottom = _ref3.bottom,
-                                            left = _ref3.left;
-                                        return setAttributes({
-                                            triggerBorderTopH: top,
-                                            triggerBorderRightH: right,
-                                            triggerBorderBottomH: bottom,
-                                            triggerBorderLeftH: left
-                                        });
-                                    },
-                                    onChangeColor: function onChangeColor(colorValue) {
-                                        return saveTriggerStyles({ borderColorH: colorValue });
-                                    },
-                                    onChangeRadius: function onChangeRadius(newRadius) {
-                                        return saveTriggerStyles({ borderRadiusH: newRadius });
+                                    label: __("Border"),
+                                    value: triggerBorderH,
+                                    borderType: triggerBorderH.borderType,
+                                    borderColor: triggerBorderH.borderColor,
+                                    borderWidth: triggerBorderH.borderWidth,
+                                    borderRadius: triggerBorderH.borderRadius,
+                                    onChange: function onChange(value) {
+                                        return setAttributes({ triggerBorderH: value });
                                     }
                                 })
                             );
@@ -59471,33 +60658,14 @@ var Inspector = function Inspector(_ref) {
                 }
             }),
             React.createElement(_premiumBorder2.default, {
-                borderType: headerStyles[0].borderType,
-                top: headerBorderTop,
-                right: headerBorderRight,
-                bottom: headerBorderBottom,
-                left: headerBorderLeft,
-                borderColor: headerStyles[0].borderColor,
-                borderRadius: headerStyles[0].borderRadius,
-                onChangeType: function onChangeType(newType) {
-                    return saveHeaderStyles({ borderType: newType });
-                },
-                onChangeWidth: function onChangeWidth(_ref4) {
-                    var top = _ref4.top,
-                        right = _ref4.right,
-                        bottom = _ref4.bottom,
-                        left = _ref4.left;
-                    return setAttributes({
-                        headerBorderTop: top,
-                        headerBorderRight: right,
-                        headerBorderBottom: bottom,
-                        headerBorderLeft: left
-                    });
-                },
-                onChangeColor: function onChangeColor(colorValue) {
-                    return saveHeaderStyles({ borderColor: colorValue });
-                },
-                onChangeRadius: function onChangeRadius(newRadius) {
-                    return saveHeaderStyles({ borderRadius: newRadius });
+                label: __("Border"),
+                value: headerBorder,
+                borderType: headerBorder.borderType,
+                borderColor: headerBorder.borderColor,
+                borderWidth: headerBorder.borderWidth,
+                borderRadius: headerBorder.borderRadius,
+                onChange: function onChange(value) {
+                    return setAttributes({ headerBorder: value });
                 }
             })
         ),
@@ -59539,33 +60707,14 @@ var Inspector = function Inspector(_ref) {
                 colorDefault: ""
             }),
             React.createElement(_premiumBorder2.default, {
-                borderType: upperStyles[0].borderType,
-                top: upperBorderTop,
-                right: upperBorderRight,
-                bottom: upperBorderBottom,
-                left: upperBorderLeft,
-                borderColor: upperStyles[0].borderColor,
-                borderRadius: upperStyles[0].borderRadius,
-                onChangeType: function onChangeType(newType) {
-                    return saveUpperStyles({ borderType: newType });
-                },
-                onChangeWidth: function onChangeWidth(_ref5) {
-                    var top = _ref5.top,
-                        right = _ref5.right,
-                        bottom = _ref5.bottom,
-                        left = _ref5.left;
-                    return setAttributes({
-                        upperBorderTop: top,
-                        upperBorderRight: right,
-                        upperBorderBottom: bottom,
-                        upperBorderLeft: left
-                    });
-                },
-                onChangeColor: function onChangeColor(colorValue) {
-                    return saveUpperStyles({ borderColor: colorValue });
-                },
-                onChangeRadius: function onChangeRadius(newRadius) {
-                    return saveUpperStyles({ borderRadius: newRadius });
+                label: __("Border"),
+                value: upperBorder,
+                borderType: upperBorder.borderType,
+                borderColor: upperBorder.borderColor,
+                borderWidth: upperBorder.borderWidth,
+                borderRadius: upperBorder.borderRadius,
+                onChange: function onChange(value) {
+                    return setAttributes({ upperBorder: value });
                 }
             }),
             React.createElement(_premiumResponsiveSpacing2.default, { value: upperPadding, responsive: true, showUnits: true, label: __("Padding"), onChange: function onChange(value) {
@@ -59644,33 +60793,14 @@ var Inspector = function Inspector(_ref) {
                 colorDefault: ""
             }),
             React.createElement(_premiumBorder2.default, {
-                borderType: lowerStyles[0].borderType,
-                top: lowerBorderTop,
-                right: lowerBorderRight,
-                bottom: lowerBorderBottom,
-                left: lowerBorderLeft,
-                borderColor: lowerStyles[0].borderColor,
-                borderRadius: lowerStyles[0].borderRadius,
-                onChangeType: function onChangeType(newType) {
-                    return saveLowerStyles({ borderType: newType });
-                },
-                onChangeWidth: function onChangeWidth(_ref6) {
-                    var top = _ref6.top,
-                        right = _ref6.right,
-                        bottom = _ref6.bottom,
-                        left = _ref6.left;
-                    return setAttributes({
-                        lowerBorderTop: top,
-                        lowerBorderRight: right,
-                        lowerBorderBottom: bottom,
-                        lowerBorderLeft: left
-                    });
-                },
-                onChangeColor: function onChangeColor(colorValue) {
-                    return saveLowerStyles({ borderColor: colorValue });
-                },
-                onChangeRadius: function onChangeRadius(newRadius) {
-                    return saveLowerStyles({ borderRadius: newRadius });
+                label: __("Border"),
+                value: lowerBorder,
+                borderType: lowerBorder.borderType,
+                borderColor: lowerBorder.borderColor,
+                borderWidth: lowerBorder.borderWidth,
+                borderRadius: lowerBorder.borderRadius,
+                onChange: function onChange(value) {
+                    return setAttributes({ lowerBorder: value });
                 }
             }),
             React.createElement(_premiumResponsiveSpacing2.default, { value: lowerPadding, responsive: true, showUnits: true, label: __("Padding"), onChange: function onChange(value) {
@@ -59822,34 +60952,14 @@ var Inspector = function Inspector(_ref) {
                 }
             }),
             React.createElement(_premiumBorder2.default, {
-                borderType: modalStyles[0].borderType,
-                borderWidth: modalStyles[0].borderWidth,
-                top: modalBorderTop,
-                right: modalBorderRight,
-                bottom: modalBorderBottom,
-                left: modalBorderLeft,
-                borderColor: modalStyles[0].borderColor,
-                borderRadius: modalStyles[0].borderRadius,
-                onChangeType: function onChangeType(newType) {
-                    return saveModalStyles({ borderType: newType });
-                },
-                onChangeWidth: function onChangeWidth(_ref7) {
-                    var top = _ref7.top,
-                        right = _ref7.right,
-                        bottom = _ref7.bottom,
-                        left = _ref7.left;
-                    return setAttributes({
-                        modalBorderTop: top,
-                        modalBorderRight: right,
-                        modalBorderBottom: bottom,
-                        modalBorderLeft: left
-                    });
-                },
-                onChangeColor: function onChangeColor(colorValue) {
-                    return saveModalStyles({ borderColor: colorValue });
-                },
-                onChangeRadius: function onChangeRadius(newRadius) {
-                    return saveModalStyles({ borderRadius: newRadius });
+                label: __("Border"),
+                value: modalBorder,
+                borderType: modalBorder.borderType,
+                borderColor: modalBorder.borderColor,
+                borderWidth: modalBorder.borderWidth,
+                borderRadius: modalBorder.borderRadius,
+                onChange: function onChange(value) {
+                    return setAttributes({ modalBorder: value });
                 }
             }),
             React.createElement(_PremiumShadow2.default, {
@@ -59973,13 +61083,7 @@ var attributes = {
             triggerSpacing: '',
             triggerUpper: '',
             triggerBack: '',
-            borderType: 'none',
-            borderColor: '',
-            borderRadius: '',
             triggerHoverBack: '',
-            borderTypeH: 'none',
-            borderColorH: '',
-            borderRadiusH: '',
             triggerShadowColor: '',
             triggerShadowBlur: '',
             triggerShadowHorizontal: '',
@@ -60001,30 +61105,6 @@ var attributes = {
             hueH: ''
         }]
     },
-    triggerBorderTop: {
-        type: 'number'
-    },
-    triggerBorderRight: {
-        type: 'number'
-    },
-    triggerBorderBottom: {
-        type: 'number'
-    },
-    triggerBorderLeft: {
-        type: 'number'
-    },
-    triggerBorderTopH: {
-        type: 'number'
-    },
-    triggerBorderRightH: {
-        type: 'number'
-    },
-    triggerBorderBottomH: {
-        type: 'number'
-    },
-    triggerBorderLeftH: {
-        type: 'number'
-    },
     headerStyles: {
         type: 'array',
         default: [{
@@ -60038,24 +61118,9 @@ var attributes = {
             headerWeight: '',
             headerStyle: '',
             headerSpacing: '',
-            headerUpper: '',
-            borderType: 'none',
-            borderColor: '',
-            borderRadius: ''
+            headerUpper: ''
 
         }]
-    },
-    headerBorderTop: {
-        type: 'number'
-    },
-    headerBorderRight: {
-        type: 'number'
-    },
-    headerBorderBottom: {
-        type: 'number'
-    },
-    headerBorderLeft: {
-        type: 'number'
     },
     upperStyles: {
         type: "array",
@@ -60063,24 +61128,9 @@ var attributes = {
             iconWidth: '',
             iconWidthUnit: 'px',
             color: '',
-            backColor: '',
-            borderType: 'none',
-            borderColor: '',
-            borderRadius: ''
+            backColor: ''
 
         }]
-    },
-    upperBorderTop: {
-        type: 'number'
-    },
-    upperBorderRight: {
-        type: 'number'
-    },
-    upperBorderBottom: {
-        type: 'number'
-    },
-    upperBorderLeft: {
-        type: 'number'
     },
     lowerStyles: {
         type: 'array',
@@ -60095,23 +61145,8 @@ var attributes = {
             iconWidth: '',
             iconWidthUnit: 'px',
             color: '',
-            backColor: '',
-            borderType: 'none',
-            borderColor: '',
-            borderRadius: ''
+            backColor: ''
         }]
-    },
-    lowerBorderTop: {
-        type: 'number'
-    },
-    lowerBorderRight: {
-        type: 'number'
-    },
-    lowerBorderBottom: {
-        type: 'number'
-    },
-    lowerBorderLeft: {
-        type: 'number'
     },
     modalStyles: {
         type: "array",
@@ -60150,22 +61185,10 @@ var attributes = {
             gradientType: 'linear',
             gradientAngle: '180',
             gradientPosition: 'center center'
-        }, _defineProperty(_ref, 'gradientType', ''), _defineProperty(_ref, 'footerBackColor', ''), _defineProperty(_ref, 'borderType', 'none'), _defineProperty(_ref, 'borderColor', ''), _defineProperty(_ref, 'borderRadius', ''), _defineProperty(_ref, 'modalShadowColor', ''), _defineProperty(_ref, 'modalShadowBlur', ''), _defineProperty(_ref, 'modalShadowHorizontal', ''), _defineProperty(_ref, 'modalShadowVertical', ''), _defineProperty(_ref, 'modalShadowPosition', ''), _ref)]
+        }, _defineProperty(_ref, 'gradientType', ''), _defineProperty(_ref, 'footerBackColor', ''), _defineProperty(_ref, 'modalShadowColor', ''), _defineProperty(_ref, 'modalShadowBlur', ''), _defineProperty(_ref, 'modalShadowHorizontal', ''), _defineProperty(_ref, 'modalShadowVertical', ''), _defineProperty(_ref, 'modalShadowPosition', ''), _ref)]
     },
     backgroundType: {
         type: "string"
-    },
-    modalBorderTop: {
-        type: 'number'
-    },
-    modalBorderRight: {
-        type: 'number'
-    },
-    modalBorderBottom: {
-        type: 'number'
-    },
-    modalBorderLeft: {
-        type: 'number'
     },
     triggerPadding: {
         type: "object",
@@ -60286,8 +61309,289 @@ var attributes = {
             },
             unit: 'px'
         }
+    },
+    triggerBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    triggerBorderH: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    headerBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    upperBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    lowerBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    modalBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
     }
-
 };
 exports.default = attributes;
 
@@ -60318,36 +61622,22 @@ var save = function save(props) {
         contentStyles = _props$attributes.contentStyles,
         triggerSettings = _props$attributes.triggerSettings,
         triggerStyles = _props$attributes.triggerStyles,
-        triggerBorderTop = _props$attributes.triggerBorderTop,
-        triggerBorderRight = _props$attributes.triggerBorderRight,
-        triggerBorderBottom = _props$attributes.triggerBorderBottom,
-        triggerBorderLeft = _props$attributes.triggerBorderLeft,
+        triggerBorder = _props$attributes.triggerBorder,
         headerStyles = _props$attributes.headerStyles,
-        headerBorderTop = _props$attributes.headerBorderTop,
-        headerBorderRight = _props$attributes.headerBorderRight,
-        headerBorderBottom = _props$attributes.headerBorderBottom,
-        headerBorderLeft = _props$attributes.headerBorderLeft,
+        headerBorder = _props$attributes.headerBorder,
         upperStyles = _props$attributes.upperStyles,
-        upperBorderTop = _props$attributes.upperBorderTop,
-        upperBorderRight = _props$attributes.upperBorderRight,
-        upperBorderBottom = _props$attributes.upperBorderBottom,
-        upperBorderLeft = _props$attributes.upperBorderLeft,
+        upperBorder = _props$attributes.upperBorder,
         lowerStyles = _props$attributes.lowerStyles,
-        lowerBorderTop = _props$attributes.lowerBorderTop,
-        lowerBorderRight = _props$attributes.lowerBorderRight,
-        lowerBorderBottom = _props$attributes.lowerBorderBottom,
-        lowerBorderLeft = _props$attributes.lowerBorderLeft,
+        lowerBorder = _props$attributes.lowerBorder,
         modalStyles = _props$attributes.modalStyles,
         backgroundType = _props$attributes.backgroundType,
-        modalBorderTop = _props$attributes.modalBorderTop,
-        modalBorderRight = _props$attributes.modalBorderRight,
-        modalBorderBottom = _props$attributes.modalBorderBottom,
-        modalBorderLeft = _props$attributes.modalBorderLeft;
+        modalBorder = _props$attributes.modalBorder,
+        triggerBorderH = _props$attributes.triggerBorderH;
 
     var renderCss = React.createElement(
         'style',
         null,
-        '\n            #premium-modal-box-' + block_id + ' .premium-modal-trigger-container button:hover {\n              background-color: ' + triggerStyles[0].triggerHoverBack + ' !important;\n              border-style: ' + triggerStyles[0].borderTypeH + ' !important;\n            \n              border-color: ' + triggerStyles[0].borderColorH + ' !important;\n              border-radius: ' + triggerStyles[0].borderRadiusH + 'px !important;\n            }\n            #premium-modal-box-' + block_id + ' .premium-modal-trigger-container button:hover i{\n                color:' + triggerStyles[0].iconHoverColor + ' !important;\n            }\n            #premium-modal-box-' + block_id + ' .premium-modal-trigger-container button:hover span{\n                color:' + triggerStyles[0].hoverColor + ' !important;\n            }\n             #premium-modal-box-' + block_id + ' .premium-modal-trigger-container:hover .premium-modal-trigger-text {\n                color:' + triggerStyles[0].hoverColor + ' !important;\n            }\n            #premium-modal-box-' + block_id + ' .premium-modal-trigger-container .premium-lottie-animation{\n            filter: brightness( ' + triggerStyles[0].bright + '% ) contrast( ' + triggerStyles[0].contrast + '% ) saturate( ' + triggerStyles[0].saturation + '% ) blur( ' + triggerStyles[0].blur + 'px ) hue-rotate( ' + triggerStyles[0].hue + 'deg );\n            }\n            #premium-modal-box-' + block_id + ' .premium-modal-trigger-container:hover .premium-lottie-animation{\n            filter: brightness( ' + triggerStyles[0].brightH + '% ) contrast( ' + triggerStyles[0].contrastH + '% ) saturate( ' + triggerStyles[0].saturationH + '% ) blur( ' + triggerStyles[0].blurH + 'px ) hue-rotate( ' + triggerStyles[0].hueH + 'deg ) !important;\n            }\n            #premium-modal-box-' + block_id + ' .premium-modal-trigger-container img:hover {\n              border-style: ' + triggerStyles[0].borderTypeH + ' !important;\n              border-color: ' + triggerStyles[0].borderColorH + ' !important;\n              border-radius: ' + triggerStyles[0].borderRadiusH + 'px !important;\n            }\n             #premium-modal-box-' + block_id + ' .premium-modal-trigger-container:hover .premium-modal-trigger-text {\n              border-style: ' + triggerStyles[0].borderTypeH + ' !important;\n              border-color: ' + triggerStyles[0].borderColorH + ' !important;\n              border-radius: ' + triggerStyles[0].borderRadiusH + 'px !important;\n            }\n\n        '
+        '\n            #premium-modal-box-' + block_id + ' .premium-modal-trigger-container button:hover {\n              background-color: ' + triggerStyles[0].triggerHoverBack + ' !important;\n              border-style: ' + triggerStyles[0].borderTypeH + ' !important;\n            \n              border-color: ' + triggerStyles[0].borderColorH + ' !important;\n              border-radius: ' + triggerStyles[0].borderRadiusH + 'px !important;\n            }\n            #premium-modal-box-' + block_id + ' .premium-modal-trigger-container button:hover i{\n                color:' + triggerStyles[0].iconHoverColor + ' !important;\n            }\n            #premium-modal-box-' + block_id + ' .premium-modal-trigger-container button:hover span{\n                color:' + triggerStyles[0].hoverColor + ' !important;\n            }\n             #premium-modal-box-' + block_id + ' .premium-modal-trigger-container:hover .premium-modal-trigger-text {\n                color:' + triggerStyles[0].hoverColor + ' !important;\n            }\n            #premium-modal-box-' + block_id + ' .premium-modal-trigger-container .premium-lottie-animation{\n            filter: brightness( ' + triggerStyles[0].bright + '% ) contrast( ' + triggerStyles[0].contrast + '% ) saturate( ' + triggerStyles[0].saturation + '% ) blur( ' + triggerStyles[0].blur + 'px ) hue-rotate( ' + triggerStyles[0].hue + 'deg );\n            }\n            #premium-modal-box-' + block_id + ' .premium-modal-trigger-container:hover .premium-lottie-animation{\n            filter: brightness( ' + triggerStyles[0].brightH + '% ) contrast( ' + triggerStyles[0].contrastH + '% ) saturate( ' + triggerStyles[0].saturationH + '% ) blur( ' + triggerStyles[0].blurH + 'px ) hue-rotate( ' + triggerStyles[0].hueH + 'deg ) !important;\n            }\n            #premium-modal-box-' + block_id + ' .premium-modal-trigger-container img:hover {\n              border-style: ' + triggerBorderH.borderType + ' !important;\n              border-color: ' + triggerBorderH.borderColor + ' !important;\n            }\n             #premium-modal-box-' + block_id + ' .premium-modal-trigger-container:hover .premium-modal-trigger-text {\n                border-style: ' + triggerBorderH.borderType + ' !important;\n                border-color: ' + triggerBorderH.borderColor + ' !important;\n            }\n\n        '
     );
 
     var btnGrad = void 0,
@@ -60376,13 +61666,8 @@ var save = function save(props) {
                 'button',
                 { className: ' premium-modal-trigger-btn premium-button__' + triggerSettings[0].btnSize + ' ', style: {
                         backgroundColor: triggerStyles[0].triggerBack,
-                        borderStyle: triggerStyles[0].borderType,
-                        borderTopWidth: triggerBorderTop + 'px',
-                        borderRightWidth: triggerBorderRight + 'px',
-                        borderBottomWidth: triggerBorderBottom + 'px',
-                        borderLeftWidth: triggerBorderLeft + 'px',
-                        borderColor: triggerStyles[0].borderColor,
-                        borderRadius: triggerStyles[0].borderRadius + 'px',
+                        borderStyle: triggerBorder.borderType,
+                        borderColor: triggerBorder.borderColor,
                         boxShadow: triggerStyles[0].triggerShadowHorizontal + 'px ' + triggerStyles[0].triggerShadowVertical + 'px ' + triggerStyles[0].triggerShadowBlur + 'px ' + triggerStyles[0].triggerShadowColor + ' ' + triggerStyles[0].triggerShadowPosition
                     } },
                 triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "before" && React.createElement('i', { className: ' premium-modal-box-icon ' + triggerSettings[0].icon, style: { fontSize: triggerSettings[0].iconSize + 'px', marginRight: triggerSettings[0].iconSpacing + 'px', color: triggerStyles[0].iconColor } }),
@@ -60396,26 +61681,16 @@ var save = function save(props) {
             ),
             triggerSettings[0].triggerType === "image" && React.createElement('img', { src: triggerSettings[0].triggerImgURL, className: 'premium-modal-trigger-img',
                 style: {
-                    borderStyle: triggerStyles[0].borderType,
-                    borderTopWidth: triggerBorderTop + 'px',
-                    borderRightWidth: triggerBorderRight + 'px',
-                    borderBottomWidth: triggerBorderBottom + 'px',
-                    borderLeftWidth: triggerBorderLeft + 'px',
-                    borderColor: triggerStyles[0].borderColor,
-                    borderRadius: triggerStyles[0].borderRadius + 'px',
+                    borderStyle: triggerBorder.borderType,
+                    borderColor: triggerBorder.borderColor,
                     boxShadow: triggerStyles[0].triggerShadowHorizontal + 'px ' + triggerStyles[0].triggerShadowVertical + 'px ' + triggerStyles[0].triggerShadowBlur + 'px ' + triggerStyles[0].triggerShadowColor + ' ' + triggerStyles[0].triggerShadowPosition
                 } }),
             triggerSettings[0].triggerType === "text" && React.createElement(
                 'span',
                 { className: 'premium-modal-trigger-text', style: {
                         color: triggerStyles[0].color,
-                        borderStyle: triggerStyles[0].borderType,
-                        borderTopWidth: triggerBorderTop + 'px',
-                        borderRightWidth: triggerBorderRight + 'px',
-                        borderBottomWidth: triggerBorderBottom + 'px',
-                        borderLeftWidth: triggerBorderLeft + 'px',
-                        borderColor: triggerStyles[0].borderColor,
-                        borderRadius: triggerStyles[0].borderRadius + 'px',
+                        borderStyle: triggerBorder.borderType,
+                        borderColor: triggerBorder.borderColor,
                         textShadow: triggerStyles[0].textShadowHorizontal + 'px ' + triggerStyles[0].textShadowVertical + 'px ' + triggerStyles[0].textShadowBlur + 'px ' + triggerStyles[0].textShadowColor,
                         fontFamily: triggerStyles[0].triggerFamily,
                         fontWeight: triggerStyles[0].triggerWeight,
@@ -60449,26 +61724,16 @@ var save = function save(props) {
                     'data-animation': contentStyles[0].animationType + ' ' + contentStyles[0].animationSpeed,
                     style: {
 
-                        borderStyle: '' + modalStyles[0].borderType,
-                        borderColor: '' + modalStyles[0].borderColor,
-                        borderTopWidth: modalBorderTop + 'px',
-                        borderRightWidth: modalBorderRight + 'px',
-                        borderBottomWidth: modalBorderBottom + 'px',
-                        borderLeftWidth: modalBorderLeft + 'px',
-                        borderRadius: modalStyles[0].borderRadius + 'px',
+                        borderStyle: '' + modalBorder.borderType,
+                        borderColor: '' + modalBorder.borderColor,
                         boxShadow: modalStyles[0].modalShadowHorizontal + 'px ' + modalStyles[0].modalShadowVertical + 'px ' + modalStyles[0].modalShadowBlur + 'px ' + modalStyles[0].modalShadowColor + ' ' + modalStyles[0].modalShadowPosition
                     } },
                 contentStyles[0].showHeader && React.createElement(
                     'div',
                     { className: 'premium-modal-box-modal-header', style: {
                             backgroundColor: headerStyles[0].backColor,
-                            borderStyle: headerStyles[0].borderType,
-                            borderTopWidth: headerBorderTop + 'px',
-                            borderRightWidth: headerBorderRight + 'px',
-                            borderBottomWidth: headerBorderBottom + 'px',
-                            borderLeftWidth: headerBorderLeft + 'px',
-                            borderColor: '' + headerStyles[0].borderColor,
-                            borderRadius: headerStyles[0].borderRadius + 'px'
+                            borderStyle: headerBorder.borderType,
+                            borderColor: '' + headerBorder.borderColor
                         } },
                     React.createElement(
                         'h3',
@@ -60493,13 +61758,8 @@ var save = function save(props) {
                         'div',
                         { className: 'premium-modal-box-close-button-container', style: {
                                 backgroundColor: '' + upperStyles[0].backColor,
-                                borderStyle: '' + upperStyles[0].borderType,
-                                borderTopWidth: upperBorderTop + 'px',
-                                borderRightWidth: upperBorderRight + 'px',
-                                borderBottomWidth: upperBorderBottom + 'px',
-                                borderLeftWidth: upperBorderLeft + 'px',
-                                borderColor: '' + upperStyles[0].borderColor,
-                                borderRadius: upperStyles[0].borderRadius + 'px'
+                                borderStyle: '' + upperBorder.borderType,
+                                borderColor: '' + upperBorder.borderColor
 
                             } },
                         React.createElement(
@@ -60546,13 +61806,8 @@ var save = function save(props) {
                                 width: '' + lowerStyles[0].iconWidth + lowerStyles[0].iconWidthUnit,
                                 color: '' + lowerStyles[0].color,
                                 backgroundColor: '' + lowerStyles[0].backColor,
-                                borderStyle: '' + lowerStyles[0].borderType,
-                                borderTopWidth: lowerBorderTop + 'px',
-                                borderRightWidth: lowerBorderRight + 'px',
-                                borderBottomWidth: lowerBorderBottom + 'px',
-                                borderLeftWidth: lowerBorderLeft + 'px',
-                                borderColor: '' + lowerStyles[0].borderColor,
-                                borderRadius: lowerStyles[0].borderRadius + 'px'
+                                borderStyle: '' + lowerBorder.borderType,
+                                borderColor: '' + lowerBorder.borderColor
                             }
                         },
                         contentStyles[0].lowerCloseText
@@ -61154,6 +62409,288 @@ var newAttributes = {
             },
             unit: 'px'
         }
+    },
+    triggerBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    triggerBorderH: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    headerBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    upperBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    lowerBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    modalBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
     }
 };
 
@@ -61269,6 +62806,288 @@ var deprecated = [{
                     left: attributes.modalMarginLMobile || ''
                 },
                 "unit": "px"
+            },
+            triggerBorder: {
+                type: "object",
+                default: {
+                    "borderType": attributes.triggerStyles[0].borderType || '',
+                    "borderColor": attributes.triggerStyles[0].borderColor || '',
+                    "borderWidth": {
+                        Desktop: {
+                            top: attributes.triggerBorderTop || '',
+                            right: attributes.triggerBorderRight || '',
+                            bottom: attributes.triggerBorderBottom || '',
+                            left: attributes.triggerBorderLeft || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    },
+                    "borderRadius": {
+                        Desktop: {
+                            top: attributes.triggerStyles[0].borderRadius || '',
+                            right: attributes.triggerStyles[0].borderRadius || '',
+                            bottom: attributes.triggerStyles[0].borderRadius || '',
+                            left: attributes.triggerStyles[0].borderRadius || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    }
+                }
+            },
+            triggerBorderH: {
+                type: "object",
+                default: {
+                    "borderType": attributes.triggerStyles[0].borderTypeH || '',
+                    "borderColor": attributes.triggerStyles[0].borderColorH || '',
+                    "borderWidth": {
+                        Desktop: {
+                            top: attributes.triggerBorderTopH || '',
+                            right: attributes.triggerBorderRightH || '',
+                            bottom: attributes.triggerBorderBottomH || '',
+                            left: attributes.triggerBorderLeftH || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    },
+                    "borderRadius": {
+                        Desktop: {
+                            top: attributes.triggerStyles[0].borderRadiusH || '',
+                            right: attributes.triggerStyles[0].borderRadiusH || '',
+                            bottom: attributes.triggerStyles[0].borderRadiusH || '',
+                            left: attributes.triggerStyles[0].borderRadiusH || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    }
+                }
+            },
+            headerBorder: {
+                type: "object",
+                default: {
+                    "borderType": attributes.headerStyles[0].borderType || '',
+                    "borderColor": attributes.headerStyles[0].borderColor || '',
+                    "borderWidth": {
+                        Desktop: {
+                            top: attributes.headerBorderTop || '',
+                            right: attributes.headerBorderRight || '',
+                            bottom: attributes.headerBorderBottom || '',
+                            left: attributes.headerBorderLeft || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    },
+                    "borderRadius": {
+                        Desktop: {
+                            top: attributes.headerStyles[0].borderRadius || '',
+                            right: attributes.headerStyles[0].borderRadius || '',
+                            bottom: attributes.headerStyles[0].borderRadius || '',
+                            left: attributes.headerStyles[0].borderRadius || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    }
+                }
+            },
+            upperBorder: {
+                type: "object",
+                default: {
+                    "borderType": attributes.upperStyles[0].borderType || '',
+                    "borderColor": attributes.upperStyles[0].borderColor || '',
+                    "borderWidth": {
+                        Desktop: {
+                            top: attributes.upperBorderTop || '',
+                            right: attributes.upperBorderRight || '',
+                            bottom: attributes.upperBorderBottom || '',
+                            left: attributes.upperBorderLeft || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    },
+                    "borderRadius": {
+                        Desktop: {
+                            top: attributes.upperStyles[0].borderRadius || '',
+                            right: attributes.upperStyles[0].borderRadius || '',
+                            bottom: attributes.upperStyles[0].borderRadius || '',
+                            left: attributes.upperStyles[0].borderRadius || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    }
+                }
+            },
+            lowerBorder: {
+                type: "object",
+                default: {
+                    "borderType": attributes.lowerStyles[0].borderType || '',
+                    "borderColor": attributes.lowerStyles[0].borderColor || '',
+                    "borderWidth": {
+                        Desktop: {
+                            top: attributes.lowerBorderTop || '',
+                            right: attributes.lowerBorderRight || '',
+                            bottom: attributes.lowerBorderBottom || '',
+                            left: attributes.lowerBorderLeft || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    },
+                    "borderRadius": {
+                        Desktop: {
+                            top: attributes.lowerStyles[0].borderRadius || '',
+                            right: attributes.lowerStyles[0].borderRadius || '',
+                            bottom: attributes.lowerStyles[0].borderRadius || '',
+                            left: attributes.lowerStyles[0].borderRadius || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    }
+                }
+            },
+            modalBorder: {
+                type: "object",
+                default: {
+                    "borderType": attributes.modalStyles[0].borderType || '',
+                    "borderColor": attributes.modalStyles[0].borderColor || '',
+                    "borderWidth": {
+                        Desktop: {
+                            top: attributes.modalBorderTop || '',
+                            right: attributes.modalBorderRight || '',
+                            bottom: attributes.modalBorderBottom || '',
+                            left: attributes.modalBorderLeft || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    },
+                    "borderRadius": {
+                        Desktop: {
+                            top: attributes.modalStyles[0].borderRadius || '',
+                            right: attributes.modalStyles[0].borderRadius || '',
+                            bottom: attributes.modalStyles[0].borderRadius || '',
+                            left: attributes.modalStyles[0].borderRadius || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    }
+                }
             }
         };
         return Object.assign(attributes, newAttributes);
@@ -61674,7 +63493,7 @@ var _premiumIconsList = __webpack_require__(32);
 
 var _premiumIconsList2 = _interopRequireDefault(_premiumIconsList);
 
-var _reactFonticonpicker = __webpack_require__(24);
+var _reactFonticonpicker = __webpack_require__(25);
 
 var _reactFonticonpicker2 = _interopRequireDefault(_reactFonticonpicker);
 
@@ -62609,20 +64428,10 @@ function save(props) {
         repeaterBulletList = attributes.repeaterBulletList,
         bulletAlign = attributes.bulletAlign,
         bulletIconStyles = attributes.bulletIconStyles,
-        bulletIconBorderUpdated = attributes.bulletIconBorderUpdated,
-        bulletIconBorderTop = attributes.bulletIconBorderTop,
-        bulletIconBorderRight = attributes.bulletIconBorderRight,
-        bulletIconBorderBottom = attributes.bulletIconBorderBottom,
-        bulletIconBorderLeft = attributes.bulletIconBorderLeft,
-        bulletIconBorderWidth = attributes.bulletIconBorderWidth,
+        bulletIconBorder = attributes.bulletIconBorder,
         titleStyles = attributes.titleStyles,
         generalStyles = attributes.generalStyles,
-        generalBorderWidth = attributes.generalBorderWidth,
-        generalBorderTop = attributes.generalBorderTop,
-        generalBorderRight = attributes.generalBorderRight,
-        generalBorderBottom = attributes.generalBorderBottom,
-        generalBorderLeft = attributes.generalBorderLeft,
-        generalBorderUpdated = attributes.generalBorderUpdated,
+        generalBorder = attributes.generalBorder,
         titleFont = attributes.titleFont,
         dividerStyles = attributes.dividerStyles,
         divider = attributes.divider,
@@ -62663,10 +64472,8 @@ function save(props) {
                                         overflow: 'hidden',
                                         color: bulletIconStyles[0].bulletIconColor,
                                         backgroundColor: bulletIconStyles[0].bulletIconBackgroundColor,
-                                        borderStyle: bulletIconStyles[0].bulletIconborderType,
-                                        borderWidth: bulletIconBorderUpdated ? bulletIconBorderTop + "px " + bulletIconBorderRight + "px " + bulletIconBorderBottom + "px " + bulletIconBorderLeft + "px" : bulletIconBorderWidth + "px",
-                                        borderRadius: bulletIconStyles[0].bulletIconborderRadius || 0 + "px",
-                                        borderColor: bulletIconStyles[0].bulletIconborderColor,
+                                        borderStyle: bulletIconBorder && bulletIconBorder.borderType,
+                                        borderColor: bulletIconBorder && bulletIconBorder.borderColor,
                                         verticalAlign: bulletAlign == 'flex-start' ? 'top' : bulletAlign == 'flex-end' ? 'bottom' : 'middle'
                                     }
                                 })
@@ -62681,10 +64488,8 @@ function save(props) {
                                     width: '20px',
                                     height: '20px',
                                     overflow: 'hidden',
-                                    borderStyle: bulletIconStyles[0].bulletIconborderType,
-                                    borderWidth: bulletIconBorderUpdated ? bulletIconBorderTop + "px " + bulletIconBorderRight + "px " + bulletIconBorderBottom + "px " + bulletIconBorderLeft + "px" : bulletIconBorderWidth + "px",
-                                    borderRadius: bulletIconStyles[0].bulletIconborderRadius || 0 + "px",
-                                    borderColor: bulletIconStyles[0].bulletIconborderColor,
+                                    borderStyle: bulletIconBorder && bulletIconBorder.borderType,
+                                    borderColor: bulletIconBorder && bulletIconBorder.borderColor,
                                     verticalAlign: bulletAlign == 'flex-start' ? 'top' : bulletAlign == 'flex-end' ? 'bottom' : 'middle'
                                 }
                             });
@@ -62711,10 +64516,8 @@ function save(props) {
                                     overflow: 'hidden',
                                     justifyContent: align == "right" ? "flex-end" : align,
                                     backgroundColor: generalStyles[0].generalBackgroundColor,
-                                    borderStyle: generalStyles[0].generalborderType,
-                                    borderWidth: generalBorderUpdated ? generalBorderTop + "px " + generalBorderRight + "px " + generalBorderBottom + "px " + generalBorderLeft + "px" : generalBorderWidth + "px",
-                                    borderRadius: generalStyles[0].generalborderRadius || 0 + "px",
-                                    borderColor: generalStyles[0].generalborderColor,
+                                    borderStyle: generalBorder && generalBorder.borderType,
+                                    borderColor: generalBorder && generalBorder.borderColor,
                                     boxShadow: generalStyles[0].generalShadowHorizontal + "px " + generalStyles[0].generalShadowVertical + "px " + generalStyles[0].generalShadowBlur + "px " + generalStyles[0].generalShadowColor + " " + generalStyles[0].generalShadowPosition
                                 }
                             },
@@ -62775,10 +64578,8 @@ function save(props) {
                                     textAlign: align,
                                     justifyContent: align == "right" ? "flex-end" : align,
                                     backgroundColor: generalStyles[0].generalBackgroundColor,
-                                    borderStyle: generalStyles[0].generalborderType,
-                                    borderWidth: generalBorderUpdated ? generalBorderTop + "px " + generalBorderRight + "px " + generalBorderBottom + "px " + generalBorderLeft + "px" : generalBorderWidth + "px",
-                                    borderRadius: generalStyles[0].generalborderRadius || 0 + "px",
-                                    borderColor: generalStyles[0].generalborderColor,
+                                    borderStyle: generalBorder && generalBorder.borderType,
+                                    borderColor: generalBorder && generalBorder.borderColor,
                                     boxShadow: generalStyles[0].generalShadowHorizontal + "px " + generalStyles[0].generalShadowVertical + "px " + generalStyles[0].generalShadowBlur + "px " + generalStyles[0].generalShadowColor + " " + generalStyles[0].generalShadowPosition
                                 }
                             },
@@ -62855,7 +64656,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _reactFonticonpicker = __webpack_require__(24);
+var _reactFonticonpicker = __webpack_require__(25);
 
 var _reactFonticonpicker2 = _interopRequireDefault(_reactFonticonpicker);
 
@@ -62863,7 +64664,7 @@ var _premiumIconsList = __webpack_require__(32);
 
 var _premiumIconsList2 = _interopRequireDefault(_premiumIconsList);
 
-var _premiumTypo = __webpack_require__(9);
+var _premiumTypo = __webpack_require__(7);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
@@ -62875,7 +64676,7 @@ var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _premiumResponsiveSpacing = __webpack_require__(30);
+var _premiumResponsiveSpacing = __webpack_require__(21);
 
 var _premiumResponsiveSpacing2 = _interopRequireDefault(_premiumResponsiveSpacing);
 
@@ -62897,7 +64698,7 @@ var _PremiumShadow = __webpack_require__(5);
 
 var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
-var _fontLoader = __webpack_require__(22);
+var _fontLoader = __webpack_require__(23);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
 
@@ -63231,12 +65032,7 @@ var edit = function (_Component) {
                 repeaterBulletList = attributes.repeaterBulletList,
                 bulletAlign = attributes.bulletAlign,
                 bulletIconStyles = attributes.bulletIconStyles,
-                bulletIconBorderUpdated = attributes.bulletIconBorderUpdated,
-                bulletIconBorderTop = attributes.bulletIconBorderTop,
-                bulletIconBorderRight = attributes.bulletIconBorderRight,
-                bulletIconBorderBottom = attributes.bulletIconBorderBottom,
-                bulletIconBorderLeft = attributes.bulletIconBorderLeft,
-                bulletIconBorderWidth = attributes.bulletIconBorderWidth,
+                bulletIconBorder = attributes.bulletIconBorder,
                 generalmargin = attributes.generalmargin,
                 bulletIconmargin = attributes.bulletIconmargin,
                 titlemargin = attributes.titlemargin,
@@ -63244,12 +65040,7 @@ var edit = function (_Component) {
                 bulletIconpadding = attributes.bulletIconpadding,
                 titleStyles = attributes.titleStyles,
                 generalStyles = attributes.generalStyles,
-                generalBorderWidth = attributes.generalBorderWidth,
-                generalBorderTop = attributes.generalBorderTop,
-                generalBorderRight = attributes.generalBorderRight,
-                generalBorderBottom = attributes.generalBorderBottom,
-                generalBorderLeft = attributes.generalBorderLeft,
-                generalBorderUpdated = attributes.generalBorderUpdated,
+                generalBorder = attributes.generalBorder,
                 titleFont = attributes.titleFont,
                 divider = attributes.divider,
                 dividerStyle = attributes.dividerStyle,
@@ -63778,35 +65569,14 @@ var edit = function (_Component) {
                         }
                     }),
                     React.createElement(_premiumBorder2.default, {
-                        borderType: generalStyles[0].generalborderType,
-                        borderWidth: generalBorderWidth,
-                        top: generalBorderTop,
-                        right: generalBorderRight,
-                        bottom: generalBorderBottom,
-                        left: generalBorderLeft,
-                        borderColor: generalStyles[0].generalborderColor,
-                        borderRadius: generalStyles[0].generalborderRadius,
-                        onChangeType: function onChangeType(newType) {
-                            return saveGeneralStyles({ generalborderType: newType });
-                        },
-                        onChangeWidth: function onChangeWidth(_ref4) {
-                            var top = _ref4.top,
-                                right = _ref4.right,
-                                bottom = _ref4.bottom,
-                                left = _ref4.left;
-                            return setAttributes({
-                                generalBorderUpdated: true,
-                                generalBorderTop: top,
-                                generalBorderRight: right,
-                                generalBorderBottom: bottom,
-                                generalBorderLeft: left
-                            });
-                        },
-                        onChangeColor: function onChangeColor(colorValue) {
-                            return saveGeneralStyles({ generalborderColor: colorValue });
-                        },
-                        onChangeRadius: function onChangeRadius(newrRadius) {
-                            return saveGeneralStyles({ generalborderRadius: newrRadius });
+                        label: __("Border"),
+                        value: generalBorder,
+                        borderType: generalBorder.borderType,
+                        borderColor: generalBorder.borderColor,
+                        borderWidth: generalBorder.borderWidth,
+                        borderRadius: generalBorder.borderRadius,
+                        onChange: function onChange(value) {
+                            return setAttributes({ generalBorder: value });
                         }
                     }),
                     React.createElement(_premiumResponsiveSpacing2.default, { value: generalmargin, responsive: true, showUnits: true, label: __("Margin"), onChange: function onChange(value) {
@@ -63887,35 +65657,14 @@ var edit = function (_Component) {
                         }
                     }),
                     React.createElement(_premiumBorder2.default, {
-                        borderType: bulletIconStyles[0].bulletIconborderType,
-                        borderWidth: bulletIconBorderWidth,
-                        top: bulletIconBorderTop,
-                        right: bulletIconBorderRight,
-                        bottom: bulletIconBorderBottom,
-                        left: bulletIconBorderLeft,
-                        borderColor: bulletIconStyles[0].bulletIconborderColor,
-                        borderRadius: bulletIconStyles[0].bulletIconborderRadius,
-                        onChangeType: function onChangeType(newType) {
-                            return saveBulletIconStyles({ bulletIconborderType: newType });
-                        },
-                        onChangeWidth: function onChangeWidth(_ref5) {
-                            var top = _ref5.top,
-                                right = _ref5.right,
-                                bottom = _ref5.bottom,
-                                left = _ref5.left;
-                            return setAttributes({
-                                bulletIconBorderUpdated: true,
-                                bulletIconBorderTop: top,
-                                bulletIconBorderRight: right,
-                                bulletIconBorderBottom: bottom,
-                                bulletIconBorderLeft: left
-                            });
-                        },
-                        onChangeColor: function onChangeColor(colorValue) {
-                            return saveBulletIconStyles({ bulletIconborderColor: colorValue });
-                        },
-                        onChangeRadius: function onChangeRadius(newrRadius) {
-                            return saveBulletIconStyles({ bulletIconborderRadius: newrRadius });
+                        label: __("Border"),
+                        value: bulletIconBorder,
+                        borderType: bulletIconBorder.borderType,
+                        borderColor: bulletIconBorder.borderColor,
+                        borderWidth: bulletIconBorder.borderWidth,
+                        borderRadius: bulletIconBorder.borderRadius,
+                        onChange: function onChange(value) {
+                            return setAttributes({ bulletIconBorder: value });
                         }
                     }),
                     React.createElement(_premiumResponsiveSpacing2.default, { value: bulletIconmargin, responsive: true, showUnits: true, label: __("Margin"), onChange: function onChange(value) {
@@ -64134,10 +65883,17 @@ var edit = function (_Component) {
                                                 paddingBottom: BulletIconPaddingBottom + bulletIconStyles[0].bulletIconpaddingUnit,
                                                 paddingLeft: BulletIconPaddingLeft + bulletIconStyles[0].bulletIconpaddingUnit,
                                                 paddingRight: BulletIconPaddingRight + bulletIconStyles[0].bulletIconpaddingUnit,
-                                                borderStyle: bulletIconStyles[0].bulletIconborderType,
-                                                borderWidth: bulletIconBorderUpdated ? bulletIconBorderTop + "px " + bulletIconBorderRight + "px " + bulletIconBorderBottom + "px " + bulletIconBorderLeft + "px" : bulletIconBorderWidth + "px",
-                                                borderRadius: bulletIconStyles[0].bulletIconborderRadius || 0 + "px",
-                                                borderColor: bulletIconStyles[0].bulletIconborderColor,
+                                                borderStyle: bulletIconBorder && bulletIconBorder.borderType,
+                                                borderTopWidth: bulletIconBorder && bulletIconBorder.borderWidth.Desktop.top,
+                                                borderRightWidth: bulletIconBorder && bulletIconBorder.borderWidth.Desktop.right,
+                                                borderBottomWidth: bulletIconBorder && bulletIconBorder.borderWidth.Desktop.bottom,
+                                                borderLeftWidth: bulletIconBorder && bulletIconBorder.borderWidth.Desktop.left,
+                                                borderRadius: (bulletIconBorder && bulletIconBorder.borderRadius.Desktop.top || 0) + "px " + (bulletIconBorder && bulletIconBorder.borderRadius.Desktop.right || 0) + "px " + (bulletIconBorder && bulletIconBorder.borderRadius.Desktop.bottom || 0) + "px " + (bulletIconBorder && bulletIconBorder.borderRadius.Desktop.left || 0) + "px",
+                                                borderColor: bulletIconBorder && bulletIconBorder.borderColor,
+                                                borderTopLeftRadius: (bulletIconBorder && bulletIconBorder.borderRadius.Desktop.top || 0) + "px",
+                                                borderTopRightRadius: (bulletIconBorder && bulletIconBorder.borderRadius.Desktop.right || 0) + "px",
+                                                borderBottomLeftRadius: (bulletIconBorder && bulletIconBorder.borderRadius.Desktop.bottom || 0) + "px",
+                                                borderBottomRightRadius: (bulletIconBorder && bulletIconBorder.borderRadius.Desktop.left || 0) + "px",
                                                 verticalAlign: bulletAlign == 'flex-start' ? 'top' : bulletAlign == 'flex-end' ? 'bottom' : 'middle'
                                             }
                                         })
@@ -64157,10 +65913,17 @@ var edit = function (_Component) {
                                             paddingBottom: BulletIconPaddingBottom + bulletIconStyles[0].bulletIconpaddingUnit,
                                             paddingLeft: BulletIconPaddingLeft + bulletIconStyles[0].bulletIconpaddingUnit,
                                             paddingRight: BulletIconPaddingRight + bulletIconStyles[0].bulletIconpaddingUnit,
-                                            borderStyle: bulletIconStyles[0].bulletIconborderType,
-                                            borderWidth: bulletIconBorderUpdated ? bulletIconBorderTop + "px " + bulletIconBorderRight + "px " + bulletIconBorderBottom + "px " + bulletIconBorderLeft + "px" : bulletIconBorderWidth + "px",
-                                            borderRadius: bulletIconStyles[0].bulletIconborderRadius || 0 + "px",
-                                            borderColor: bulletIconStyles[0].bulletIconborderColor,
+                                            borderStyle: bulletIconBorder && bulletIconBorder.borderType,
+                                            borderTopWidth: bulletIconBorder && bulletIconBorder.borderWidth.Desktop.top,
+                                            borderRightWidth: bulletIconBorder && bulletIconBorder.borderWidth.Desktop.right,
+                                            borderBottomWidth: bulletIconBorder && bulletIconBorder.borderWidth.Desktop.bottom,
+                                            borderLeftWidth: bulletIconBorder && bulletIconBorder.borderWidth.Desktop.left,
+                                            borderRadius: (bulletIconBorder && bulletIconBorder.borderRadius.Desktop.top || 0) + "px " + (bulletIconBorder && bulletIconBorder.borderRadius.Desktop.right || 0) + "px " + (bulletIconBorder && bulletIconBorder.borderRadius.Desktop.bottom || 0) + "px " + (bulletIconBorder && bulletIconBorder.borderRadius.Desktop.left || 0) + "px",
+                                            borderColor: bulletIconBorder && bulletIconBorder.borderColor,
+                                            borderTopLeftRadius: (bulletIconBorder && bulletIconBorder.borderRadius.Desktop.top || 0) + "px",
+                                            borderTopRightRadius: (bulletIconBorder && bulletIconBorder.borderRadius.Desktop.right || 0) + "px",
+                                            borderBottomLeftRadius: (bulletIconBorder && bulletIconBorder.borderRadius.Desktop.bottom || 0) + "px",
+                                            borderBottomRightRadius: (bulletIconBorder && bulletIconBorder.borderRadius.Desktop.left || 0) + "px",
                                             verticalAlign: bulletAlign == 'flex-start' ? 'top' : bulletAlign == 'flex-end' ? 'bottom' : 'middle'
                                         }
                                     });
@@ -64185,10 +65948,17 @@ var edit = function (_Component) {
                                         overflow: 'hidden',
                                         justifyContent: align == "right" ? "flex-end" : align,
                                         backgroundColor: generalStyles[0].generalBackgroundColor,
-                                        borderStyle: generalStyles[0].generalborderType,
-                                        borderWidth: generalBorderUpdated ? generalBorderTop + "px " + generalBorderRight + "px " + generalBorderBottom + "px " + generalBorderLeft + "px" : generalBorderWidth + "px",
-                                        borderRadius: generalStyles[0].generalborderRadius || 0 + "px",
-                                        borderColor: generalStyles[0].generalborderColor,
+                                        borderStyle: generalBorder && generalBorder.borderType,
+                                        borderTopWidth: generalBorder && generalBorder.borderWidth.Desktop.top,
+                                        borderRightWidth: generalBorder && generalBorder.borderWidth.Desktop.right,
+                                        borderBottomWidth: generalBorder && generalBorder.borderWidth.Desktop.bottom,
+                                        borderLeftWidth: generalBorder && generalBorder.borderWidth.Desktop.left,
+                                        borderRadius: (generalBorder && generalBorder.borderRadius.Desktop.top || 0) + "px " + (generalBorder && generalBorder.borderRadius.Desktop.right || 0) + "px " + (generalBorder && generalBorder.borderRadius.Desktop.bottom || 0) + "px " + (generalBorder && generalBorder.borderRadius.Desktop.left || 0) + "px",
+                                        borderColor: generalBorder && generalBorder.borderColor,
+                                        borderTopLeftRadius: (generalBorder && generalBorder.borderRadius.Desktop.top || 0) + "px",
+                                        borderTopRightRadius: (generalBorder && generalBorder.borderRadius.Desktop.right || 0) + "px",
+                                        borderBottomLeftRadius: (generalBorder && generalBorder.borderRadius.Desktop.bottom || 0) + "px",
+                                        borderBottomRightRadius: (generalBorder && generalBorder.borderRadius.Desktop.left || 0) + "px",
                                         paddingTop: GeneralPaddingTop + generalStyles[0].generalpaddingUnit,
                                         paddingBottom: GeneralPaddingBottom + generalStyles[0].generalpaddingUnit,
                                         paddingLeft: GeneralPaddingLeft + generalStyles[0].generalpaddingUnit,
@@ -64435,32 +66205,9 @@ var attributes = {
             bulletIconColor: "#6EC1E4",
             bulletIconBackgroundColor: '',
             bulletIconHoverBackgroundColor: '',
-            bulletIconborderType: "none",
-            bulletIconborderRadius: 0,
-            bulletIconborderColor: '',
             bulletIconpaddingUnit: 'px',
             bulletIconmarginType: 'px'
         }]
-    },
-    bulletIconBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    bulletIconBorderTop: {
-        type: "number"
-    },
-    bulletIconBorderRight: {
-        type: "number"
-    },
-    bulletIconBorderBottom: {
-        type: "number"
-    },
-    bulletIconBorderLeft: {
-        type: "number"
-    },
-    bulletIconBorderUpdated: {
-        type: "boolean",
-        default: false
     },
     titleStyles: {
         type: "array",
@@ -64489,9 +66236,6 @@ var attributes = {
         default: [{
             generalBackgroundColor: "",
             generalHoverBackgroundColor: '',
-            generalborderType: "none",
-            generalborderRadius: 0,
-            generalborderColor: '',
             generalShadowColor: '',
             generalShadowBlur: 0,
             generalShadowHorizontal: 0,
@@ -64505,26 +66249,6 @@ var attributes = {
             generalpaddingUnit: 'px',
             generalmarginType: 'px'
         }]
-    },
-    generalBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    generalBorderTop: {
-        type: "number"
-    },
-    generalBorderRight: {
-        type: "number"
-    },
-    generalBorderBottom: {
-        type: "number"
-    },
-    generalBorderLeft: {
-        type: "number"
-    },
-    generalBorderUpdated: {
-        type: "boolean",
-        default: false
     },
     classMigrate: {
         type: "boolean",
@@ -64685,6 +66409,100 @@ var attributes = {
                 left: ''
             },
             unit: 'px'
+        }
+    },
+    generalBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    bulletIconBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
         }
     }
 };
@@ -65233,6 +67051,100 @@ var newAttributes = {
             },
             unit: 'px'
         }
+    },
+    generalBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    bulletIconBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
     }
 };
 
@@ -65348,6 +67260,100 @@ var deprecated = [{
                     left: attributes.bulletIconpaddingLMobile || ''
                 },
                 "unit": "px"
+            },
+            generalBorder: {
+                type: "object",
+                default: {
+                    "borderType": attributes.generalStyles[0].generalborderType || '',
+                    "borderColor": attributes.generalStyles[0].generalborderColor || '',
+                    "borderWidth": {
+                        Desktop: {
+                            top: attributes.generalBorderTop || '',
+                            right: attributes.generalBorderRight || '',
+                            bottom: attributes.generalBorderBottom || '',
+                            left: attributes.generalBorderLeft || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    },
+                    "borderRadius": {
+                        Desktop: {
+                            top: attributes.generalStyles[0].generalborderRadius || '',
+                            right: attributes.generalStyles[0].generalborderRadius || '',
+                            bottom: attributes.generalStyles[0].generalborderRadius || '',
+                            left: attributes.generalStyles[0].generalborderRadius || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    }
+                }
+            },
+            bulletIconBorder: {
+                type: "object",
+                default: {
+                    "borderType": attributes.bulletIconStyles[0].bulletIconborderType || '',
+                    "borderColor": attributes.bulletIconStyles[0].bulletIconborderColor || '',
+                    "borderWidth": {
+                        Desktop: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    },
+                    "borderRadius": {
+                        Desktop: {
+                            top: attributes.bulletIconStyles[0].bulletIconborderRadius || '',
+                            right: attributes.bulletIconStyles[0].bulletIconborderRadius || '',
+                            bottom: attributes.bulletIconStyles[0].bulletIconborderRadius || '',
+                            left: attributes.bulletIconStyles[0].bulletIconborderRadius || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    }
+                }
             }
         };
         return Object.assign(attributes, newAttributes);
@@ -65883,7 +67889,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _premiumTypo = __webpack_require__(9);
+var _premiumTypo = __webpack_require__(7);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
@@ -65907,7 +67913,7 @@ var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _reactFonticonpicker = __webpack_require__(24);
+var _reactFonticonpicker = __webpack_require__(25);
 
 var _reactFonticonpicker2 = _interopRequireDefault(_reactFonticonpicker);
 
@@ -68795,7 +70801,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _premiumTypo = __webpack_require__(9);
+var _premiumTypo = __webpack_require__(7);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
@@ -68807,7 +70813,7 @@ var _premiumIconsList = __webpack_require__(32);
 
 var _premiumIconsList2 = _interopRequireDefault(_premiumIconsList);
 
-var _reactFonticonpicker = __webpack_require__(24);
+var _reactFonticonpicker = __webpack_require__(25);
 
 var _reactFonticonpicker2 = _interopRequireDefault(_reactFonticonpicker);
 
@@ -68819,7 +70825,7 @@ var _PremiumShadow = __webpack_require__(5);
 
 var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
-var _premiumResponsiveTabs = __webpack_require__(7);
+var _premiumResponsiveTabs = __webpack_require__(8);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
@@ -68827,7 +70833,7 @@ var _responsiveRangeControl = __webpack_require__(18);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
-var _PremiumBackgroundControl = __webpack_require__(23);
+var _PremiumBackgroundControl = __webpack_require__(24);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
@@ -68843,7 +70849,7 @@ var _reactLottieWithSegments = __webpack_require__(71);
 
 var _reactLottieWithSegments2 = _interopRequireDefault(_reactLottieWithSegments);
 
-var _premiumResponsiveSpacing = __webpack_require__(30);
+var _premiumResponsiveSpacing = __webpack_require__(21);
 
 var _premiumResponsiveSpacing2 = _interopRequireDefault(_premiumResponsiveSpacing);
 

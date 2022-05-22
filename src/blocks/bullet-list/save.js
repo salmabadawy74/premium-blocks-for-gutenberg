@@ -19,20 +19,10 @@ export default function save(props) {
         repeaterBulletList,
         bulletAlign,
         bulletIconStyles,
-        bulletIconBorderUpdated,
-        bulletIconBorderTop,
-        bulletIconBorderRight,
-        bulletIconBorderBottom,
-        bulletIconBorderLeft,
-        bulletIconBorderWidth,
+        bulletIconBorder,
         titleStyles,
         generalStyles,
-        generalBorderWidth,
-        generalBorderTop,
-        generalBorderRight,
-        generalBorderBottom,
-        generalBorderLeft,
-        generalBorderUpdated,
+        generalBorder,
         titleFont,
         dividerStyles,
         divider,
@@ -92,12 +82,8 @@ export default function save(props) {
                                                 overflow: 'hidden',
                                                 color: bulletIconStyles[0].bulletIconColor,
                                                 backgroundColor: bulletIconStyles[0].bulletIconBackgroundColor,
-                                                borderStyle: bulletIconStyles[0].bulletIconborderType,
-                                                borderWidth: bulletIconBorderUpdated
-                                                    ? `${bulletIconBorderTop}px ${bulletIconBorderRight}px ${bulletIconBorderBottom}px ${bulletIconBorderLeft}px`
-                                                    : bulletIconBorderWidth + "px",
-                                                borderRadius: bulletIconStyles[0].bulletIconborderRadius || 0 + "px",
-                                                borderColor: bulletIconStyles[0].bulletIconborderColor,
+                                                borderStyle: bulletIconBorder && bulletIconBorder.borderType,
+                                                borderColor: bulletIconBorder && bulletIconBorder.borderColor,
                                                 verticalAlign: bulletAlign == 'flex-start' ? 'top' : bulletAlign == 'flex-end' ? 'bottom' : 'middle'
                                             }}
                                         />
@@ -112,12 +98,8 @@ export default function save(props) {
                                             width: '20px',
                                             height: '20px',
                                             overflow: 'hidden',
-                                            borderStyle: bulletIconStyles[0].bulletIconborderType,
-                                            borderWidth: bulletIconBorderUpdated
-                                                ? `${bulletIconBorderTop}px ${bulletIconBorderRight}px ${bulletIconBorderBottom}px ${bulletIconBorderLeft}px`
-                                                : bulletIconBorderWidth + "px",
-                                            borderRadius: bulletIconStyles[0].bulletIconborderRadius || 0 + "px",
-                                            borderColor: bulletIconStyles[0].bulletIconborderColor,
+                                            borderStyle: bulletIconBorder && bulletIconBorder.borderType,
+                                            borderColor: bulletIconBorder && bulletIconBorder.borderColor,
                                             verticalAlign: bulletAlign == 'flex-start' ? 'top' : bulletAlign == 'flex-end' ? 'bottom' : 'middle'
                                         }}
                                     />
@@ -142,12 +124,8 @@ export default function save(props) {
                                             overflow: 'hidden',
                                             justifyContent: align == "right" ? "flex-end" : align,
                                             backgroundColor: generalStyles[0].generalBackgroundColor,
-                                            borderStyle: generalStyles[0].generalborderType,
-                                            borderWidth: generalBorderUpdated
-                                                ? `${generalBorderTop}px ${generalBorderRight}px ${generalBorderBottom}px ${generalBorderLeft}px`
-                                                : generalBorderWidth + "px",
-                                            borderRadius: generalStyles[0].generalborderRadius || 0 + "px",
-                                            borderColor: generalStyles[0].generalborderColor,
+                                            borderStyle: generalBorder && generalBorder.borderType,
+                                            borderColor: generalBorder && generalBorder.borderColor,
                                             boxShadow: `${generalStyles[0].generalShadowHorizontal}px ${generalStyles[0].generalShadowVertical}px ${generalStyles[0].generalShadowBlur}px ${generalStyles[0].generalShadowColor} ${generalStyles[0].generalShadowPosition}`,
                                         }}
                                     >
@@ -205,12 +183,8 @@ export default function save(props) {
                                             textAlign: align,
                                             justifyContent: align == "right" ? "flex-end" : align,
                                             backgroundColor: generalStyles[0].generalBackgroundColor,
-                                            borderStyle: generalStyles[0].generalborderType,
-                                            borderWidth: generalBorderUpdated
-                                                ? `${generalBorderTop}px ${generalBorderRight}px ${generalBorderBottom}px ${generalBorderLeft}px`
-                                                : generalBorderWidth + "px",
-                                            borderRadius: generalStyles[0].generalborderRadius || 0 + "px",
-                                            borderColor: generalStyles[0].generalborderColor,
+                                            borderStyle: generalBorder && generalBorder.borderType,
+                                            borderColor: generalBorder && generalBorder.borderColor,
                                             boxShadow: `${generalStyles[0].generalShadowHorizontal}px ${generalStyles[0].generalShadowVertical}px ${generalStyles[0].generalShadowBlur}px ${generalStyles[0].generalShadowColor} ${generalStyles[0].generalShadowPosition}`,
                                         }}
                                     >

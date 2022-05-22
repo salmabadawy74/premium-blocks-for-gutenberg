@@ -529,6 +529,53 @@ const newAttributes = {
             },
             unit: 'px'
         }
+    },
+    border: {
+        type: "object",
+        default: {
+            "borderType": '',
+            "borderColor": '',
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
     }
 }
 
@@ -560,6 +607,53 @@ const deprecatedContent = [
                         left: attributes.paddingLMobile || ''
                     },
                     "unit": "px"
+                },
+                border: {
+                    type: "object",
+                    default: {
+                        "borderType": attributes.containerStyles[0].borderType || '',
+                        "borderColor": attributes.containerStyles[0].borderColor || '',
+                        "borderWidth": {
+                            Desktop: {
+                                top: attributes.borderTop || '',
+                                right: attributes.borderRight || '',
+                                bottom: attributes.borderBottom || '',
+                                left: attributes.borderLeft || ''
+                            },
+                            Tablet: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            },
+                            Mobile: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            }
+                        },
+                        "borderRadius": {
+                            Desktop: {
+                                top: attributes.containerStyles[0].borderRadius || '',
+                                right: attributes.containerStyles[0].borderRadius || '',
+                                bottom: attributes.containerStyles[0].borderRadius || '',
+                                left: attributes.containerStyles[0].borderRadius || ''
+                            },
+                            Tablet: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            },
+                            Mobile: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            }
+                        }
+                    }
                 }
             }
             return Object.assign(attributes, newAttributes)

@@ -18,18 +18,6 @@ const save = props => {
         hideDesktop,
         hideTablet,
         hideMobile,
-        containerBorderTop,
-        containerBorderRight,
-        containerBorderBottom,
-        containerBorderLeft,
-        firstBorderTop,
-        firstBorderRight,
-        firstBorderBottom,
-        firstBorderLeft,
-        secondBorderTop,
-        secondBorderRight,
-        secondBorderBottom,
-        secondBorderLeft,
         firstBorder,
         secondBorder,
         containerBorder,
@@ -66,12 +54,8 @@ const save = props => {
                 backgroundPosition: containerStyles[0].backgroundPosition,
                 backgroundSize: containerStyles[0].backgroundSize,
                 backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
-                borderStyle: containerStyles[0].containerBorderType,
-                borderWidth: containerBorder
-                    ? `${containerBorderTop}px ${containerBorderRight}px ${containerBorderBottom}px ${containerBorderLeft}px`
-                    : containerStyles[0].containerBorderWidth + "px",
-                borderRadius: containerStyles[0].containerBorderRadius + "px",
-                borderColor: containerStyles[0].containerBorderColor
+                borderStyle: containerBorder && containerBorder.borderType,
+                borderColor: containerBorder && containerBorder.borderColor,
             }}
         >
             <div className={`premium-dheading-block__wrap`}>
@@ -90,12 +74,8 @@ const save = props => {
                             textTransform: firstStyles[0].firstUpper ? "uppercase" : "none",
                             fontStyle: firstStyles[0].firstStyle,
                             fontWeight: firstStyles[0].firstWeight,
-                            borderStyle: firstStyles[0].firstBorderType,
-                            borderWidth: firstBorder
-                                ? `${firstBorderTop}px ${firstBorderRight}px ${firstBorderBottom}px ${firstBorderLeft}px`
-                                : firstStyles[0].firstBorderWidth + "px",
-                            borderRadius: firstStyles[0].firstBorderRadius + "px",
-                            borderColor: firstStyles[0].firstBorderColor,
+                            borderStyle: firstBorder && firstBorder.borderType,
+                            borderColor: firstBorder && firstBorder.borderColor,
                             padding: firstStyles[0].firstPadding + "px",
                             marginLeft: firstStyles[0].firstMarginL + "px",
                             marginRight: firstStyles[0].firstMarginR + "px",
@@ -118,12 +98,8 @@ const save = props => {
                             textTransform: secondStyles[0].secondUpper ? "uppercase" : "none",
                             fontStyle: secondStyles[0].secondStyle,
                             fontWeight: secondStyles[0].secondWeight,
-                            borderStyle: secondStyles[0].secondBorderType,
-                            borderWidth: secondBorder
-                                ? `${secondBorderTop}px ${secondBorderRight}px ${secondBorderBottom}px ${secondBorderLeft}px`
-                                : secondStyles[0].secondBorderWidth + "px",
-                            borderRadius: secondStyles[0].secondBorderRadius + "px",
-                            borderColor: secondStyles[0].secondBorderColor,
+                            borderStyle: secondBorder && secondBorder.borderType,
+                            borderColor: secondBorder && secondBorder.borderColor,
                             padding: secondStyles[0].secondPadding + "px",
                             marginLeft: secondStyles[0].secondMarginL + "px",
                             marginRight: secondStyles[0].secondMarginR + "px",

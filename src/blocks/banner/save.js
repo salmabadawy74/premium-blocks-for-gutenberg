@@ -36,11 +36,7 @@ const save = props => {
         hideDesktop,
         hideTablet,
         hideMobile,
-        borderWidth,
-        borderTop,
-        borderRight,
-        borderBottom,
-        borderLeft,
+        border,
     } = props.attributes;
 
     const mainClasses = classnames(className, 'premium-banner');
@@ -70,12 +66,8 @@ const save = props => {
                 className={`premium-banner__inner premium-banner__min premium-banner__${effect} premium-banner__${hoverEffect} hover_${hovered}`}
                 style={{
                     boxShadow: `${containerStyles[0].containerShadowHorizontal}px ${containerStyles[0].containerShadowVertical}px ${containerStyles[0].containerShadowBlur}px ${containerStyles[0].containerShadowColor} ${containerStyles[0].containerShadowPosition}`,
-                    borderStyle: containerStyles[0].borderType,
-                    borderWidth: borderBanner
-                        ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
-                        : borderWidth + "px",
-                    borderRadius: containerStyles[0].borderRadius + "px",
-                    borderColor: containerStyles[0].borderColor
+                    borderStyle: border && border.borderType,
+                    borderColor: border && border.borderColor,
                 }}
             >
                 <div

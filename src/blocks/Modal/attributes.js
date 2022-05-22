@@ -74,13 +74,7 @@ const attributes = {
                 triggerSpacing: '',
                 triggerUpper: '',
                 triggerBack: '',
-                borderType: 'none',
-                borderColor: '',
-                borderRadius: '',
                 triggerHoverBack: '',
-                borderTypeH: 'none',
-                borderColorH: '',
-                borderRadiusH: '',
                 triggerShadowColor: '',
                 triggerShadowBlur: '',
                 triggerShadowHorizontal: '',
@@ -103,30 +97,6 @@ const attributes = {
             }
         ]
     },
-    triggerBorderTop: {
-        type: 'number'
-    },
-    triggerBorderRight: {
-        type: 'number'
-    },
-    triggerBorderBottom: {
-        type: 'number'
-    },
-    triggerBorderLeft: {
-        type: 'number'
-    },
-    triggerBorderTopH: {
-        type: 'number'
-    },
-    triggerBorderRightH: {
-        type: 'number'
-    },
-    triggerBorderBottomH: {
-        type: 'number'
-    },
-    triggerBorderLeftH: {
-        type: 'number'
-    },
     headerStyles: {
         type: 'array',
         default: [
@@ -142,24 +112,9 @@ const attributes = {
                 headerStyle: '',
                 headerSpacing: '',
                 headerUpper: '',
-                borderType: 'none',
-                borderColor: '',
-                borderRadius: '',
 
             }
         ]
-    },
-    headerBorderTop: {
-        type: 'number'
-    },
-    headerBorderRight: {
-        type: 'number'
-    },
-    headerBorderBottom: {
-        type: 'number'
-    },
-    headerBorderLeft: {
-        type: 'number'
     },
     upperStyles: {
         type: "array",
@@ -168,23 +123,8 @@ const attributes = {
             iconWidthUnit: 'px',
             color: '',
             backColor: '',
-            borderType: 'none',
-            borderColor: '',
-            borderRadius: '',
 
         }]
-    },
-    upperBorderTop: {
-        type: 'number'
-    },
-    upperBorderRight: {
-        type: 'number'
-    },
-    upperBorderBottom: {
-        type: 'number'
-    },
-    upperBorderLeft: {
-        type: 'number'
     },
     lowerStyles: {
         type: 'array',
@@ -201,23 +141,8 @@ const attributes = {
                 iconWidthUnit: 'px',
                 color: '',
                 backColor: '',
-                borderType: 'none',
-                borderColor: '',
-                borderRadius: '',
             }
         ]
-    },
-    lowerBorderTop: {
-        type: 'number'
-    },
-    lowerBorderRight: {
-        type: 'number'
-    },
-    lowerBorderBottom: {
-        type: 'number'
-    },
-    lowerBorderLeft: {
-        type: 'number'
     },
     modalStyles: {
         type: "array",
@@ -259,9 +184,6 @@ const attributes = {
                 gradientPosition: 'center center',
                 gradientType: '',
                 footerBackColor: '',
-                borderType: 'none',
-                borderColor: '',
-                borderRadius: '',
                 modalShadowColor: '',
                 modalShadowBlur: '',
                 modalShadowHorizontal: '',
@@ -272,18 +194,6 @@ const attributes = {
     },
     backgroundType: {
         type: "string"
-    },
-    modalBorderTop: {
-        type: 'number'
-    },
-    modalBorderRight: {
-        type: 'number'
-    },
-    modalBorderBottom: {
-        type: 'number'
-    },
-    modalBorderLeft: {
-        type: 'number'
     },
     triggerPadding: {
         type: "object",
@@ -404,7 +314,288 @@ const attributes = {
             },
             unit: 'px'
         }
+    },
+    triggerBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    triggerBorderH: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    headerBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    upperBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    lowerBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    modalBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
     }
-
 }
 export default attributes;

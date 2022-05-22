@@ -183,7 +183,352 @@ const attributes = {
     }
 }
 
+const v7Attrinutes = {
+    borderButton: {
+        type: "boolean",
+        default: false,
+    },
+    btnText: {
+        type: "string",
+        default: __("Premium Button", 'premium-blocks-for-gutenberg')
+    },
+    btnSize: {
+        type: "string",
+        default: "md"
+    },
+    btnAlign: {
+        type: "string",
+        default: "center"
+    },
+    btnLink: {
+        type: "string",
+        source: "attribute",
+        attribute: "href",
+        selector: ".premium-button"
+    },
+    btnTarget: {
+        type: "boolean",
+        default: false
+    },
+    effect: {
+        type: "string",
+        default: "none"
+    },
+    effectDir: {
+        type: "string",
+        default: "top"
+    },
+    slideColor: {
+        type: "string"
+    },
+    block_id: {
+        type: "string"
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    classMigrate: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    },
+    borderWidth: {
+        type: "number",
+        default: "1"
+    },
+    borderTop: {
+        type: "number"
+    },
+    borderRight: {
+        type: "number"
+    },
+    borderBottom: {
+        type: "number"
+    },
+    borderLeft: {
+        type: "number"
+    },
+    textStyles: {
+        type: "array",
+        default: [
+            {
+                textSizeUnit: 'px',
+                textSize: 20,
+                textSizeTablet: '',
+                textSizeMobile: '',
+                textFontFamily: __('Default', 'premium-blocks-for-gutenberg'),
+                textLetter: '',
+                textStyle: '',
+                textUpper: false,
+                textWeight: '',
+                textLine: '',
+                shadowColor: '',
+                shadowBlur: '0',
+                shadowHorizontal: '0',
+                shadowVertical: '0',
+            }
+        ]
+    },
+    btnStyles: {
+        type: 'array',
+        default: [
+            {
+                textColor: '',
+                textHoverColor: '',
+                backColor: '',
+                backOpacity: 1,
+                backHoverColor: '',
+                borderType: "none",
+                borderRadius: '',
+                borderColor: '',
+                borderHoverColor: '',
+                btnShadowColor: '',
+                btnShadowBlur: 0,
+                btnShadowHorizontal: 0,
+                btnShadowVertical: 0,
+                btnShadowPosition: '',
+                padding: '',
+                paddingU: 'px',
+            }
+        ]
+    },
+    border: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    border: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    }
+};
+
 const deprecatedContent = [
+    {
+        attributes: v7Attrinutes,
+        migrate: (attributes) => {
+            let newAttributes = {
+                border: {
+                    "borderType": attributes.btnStyles[0].borderType || '',
+                    "borderColor": attributes.btnStyles[0].borderColor || '',
+                    "borderWidth": {
+                        Desktop: {
+                            top: attributes.borderTop || '',
+                            right: attributes.borderRight || '',
+                            bottom: attributes.borderBottom || '',
+                            left: attributes.borderLeft || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    },
+                    "borderRadius": {
+                        Desktop: {
+                            top: attributes.btnStyles[0].borderRadius || '',
+                            right: attributes.btnStyles[0].borderRadius || '',
+                            bottom: attributes.btnStyles[0].borderRadius || '',
+                            left: attributes.btnStyles[0].borderRadius || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    }
+                },
+            }
+            return Object.assign(attributes, newAttributes)
+        },
+        save: props => {
+            const { className } = props;
+            const {
+                borderButton,
+                btnText,
+                btnSize,
+                btnAlign,
+                btnLink,
+                btnTarget,
+                effect,
+                effectDir,
+                slideColor,
+                block_id,
+                hideDesktop,
+                hideTablet,
+                hideMobile,
+                textStyles,
+                btnStyles,
+                borderTop,
+                borderRight,
+                borderBottom,
+                borderLeft,
+                borderWidth
+            } = props.attributes;
+            const mainClasses = classnames(className, 'premium-button');
+
+            return (
+                <div
+                    id={`${mainClasses}-wrap-${block_id}`}
+                    className={`${mainClasses}__wrap premium-button__${effect} premium-button__${effectDir} premium-button-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                    style={{ textAlign: btnAlign }}
+                >
+                    <style
+                        dangerouslySetInnerHTML={{
+                            __html: [
+                                `#premium-button-wrap-${block_id} .premium-button:hover {`,
+                                `color: ${btnStyles[0].textHoverColor} !important;`,
+                                `border-color: ${btnStyles[0].borderHoverColor} !important;`,
+                                "}",
+                                `#premium-button-wrap-${block_id}.premium-button__none .premium-button:hover {`,
+                                `background-color: ${btnStyles[0].backHoverColor} !important;`,
+                                "}",
+                                `#premium-button-wrap-${block_id}.premium-button__slide .premium-button::before,`,
+                                `#premium-button-wrap-${block_id}.premium-button__shutter .premium-button::before,`,
+                                `#premium-button-wrap-${block_id}.premium-button__radial .premium-button::before {`,
+                                `background-color: ${slideColor}`,
+                                "}"
+                            ].join("\n")
+                        }}
+                    />
+                    <RichText.Content
+                        tagName="a"
+                        value={btnText}
+                        className={`premium-button premium-button__${btnSize}`}
+                        href={btnLink}
+                        rel="noopener noreferrer"
+                        target={btnTarget ? "_blank" : "_self"}
+                        style={{
+                            color: btnStyles[0].textColor,
+                            backgroundColor: btnStyles[0].backColor,
+                            fontFamily: textStyles[0].textFontFamily,
+                            letterSpacing: textStyles[0].textLetter + "px",
+                            textTransform: textStyles[0].textUpper ? "uppercase" : "none",
+                            fontStyle: textStyles[0].textStyle,
+                            lineHeight: textStyles[0].textLine + "px",
+                            fontWeight: textStyles[0].textWeight,
+                            textShadow: `${textStyles[0].shadowHorizontal}px ${textStyles[0].shadowVertical}px ${textStyles[0].shadowBlur}px ${textStyles[0].shadowColor}`,
+                            boxShadow: `${btnStyles[0].btnShadowHorizontal}px ${btnStyles[0].btnShadowVertical}px ${btnStyles[0].btnShadowBlur}px ${btnStyles[0].btnShadowColor} ${btnStyles[0].btnShadowPosition}`,
+                            padding: btnStyles[0].padding + btnStyles[0].paddingU,
+                            borderStyle: btnStyles[0].borderType,
+                            borderWidth: borderButton
+                                ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
+                                : borderWidth + "px",
+                            borderRadius: btnStyles[0].borderRadius + "px",
+                            borderColor: btnStyles[0].borderColor
+                        }}
+                    />
+                </div>
+            );
+        }
+    },
     {
         attributes: attributes,
         migrate: (attributes) => {

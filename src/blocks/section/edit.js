@@ -57,10 +57,7 @@ const edit = props => {
         hideTablet,
         hideMobile,
         containerStyles,
-        borderTop,
-        borderRight,
-        borderBottom,
-        borderLeft,
+        border,
         marginTop,
         marginBottom,
         marginLeft,
@@ -262,26 +259,13 @@ const edit = props => {
                     initialOpen={false}
                 >
                     <PremiumBorder
-                        borderType={containerStyles[0].borderType}
-                        borderWidth={containerStyles[0].borderWidth}
-                        top={borderTop}
-                        right={borderRight}
-                        bottom={borderBottom}
-                        left={borderLeft}
-                        borderColor={containerStyles[0].borderColor}
-                        borderRadius={containerStyles[0].borderRadius}
-                        onChangeType={(newType) => saveContainerStyle({ borderType: newType })}
-                        onChangeWidth={({ top, right, bottom, left }) =>
-                            setAttributes({
-                                borderTop: top,
-                                borderRight: right,
-                                borderBottom: bottom,
-                                borderLeft: left,
-                                isUpdated: true,
-                            })
-                        }
-                        onChangeColor={(colorValue) => saveContainerStyle({ borderColor: colorValue })}
-                        onChangeRadius={(newrRadius) => saveContainerStyle({ borderRadius: newrRadius })}
+                        label={__("Border")}
+                        value={border}
+                        borderType={border.borderType}
+                        borderColor={border.borderColor}
+                        borderWidth={border.borderWidth}
+                        borderRadius={border.borderRadius}
+                        onChange={(value) => setAttributes({ border: value })}
                     />
                     <PremiumShadow
                         boxShadow={true}
@@ -450,12 +434,17 @@ const edit = props => {
                 minHeight:
                     "fit" === height ? "100vh" : minHeight + minHeightUnit,
                 backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
-                borderStyle: containerStyles[0].borderType,
-                borderWidth: isUpdated
-                    ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
-                    : containerStyles[0].borderWidth + "px",
-                borderRadius: containerStyles[0].borderRadius + "px",
-                borderColor: containerStyles[0].borderColor,
+                borderStyle: border && border.borderType,
+                borderTopWidth: border && border.borderWidth.Desktop.top,
+                borderRightWidth: border && border.borderWidth.Desktop.right,
+                borderBottomWidth: border && border.borderWidth.Desktop.bottom,
+                borderLeftWidth: border && border.borderWidth.Desktop.left,
+                borderRadius: `${border && border.borderRadius.Desktop.top || 0}px ${border && border.borderRadius.Desktop.right || 0}px ${border && border.borderRadius.Desktop.bottom || 0}px ${border && border.borderRadius.Desktop.left || 0}px`,
+                borderColor: border && border.borderColor,
+                borderTopLeftRadius: `${border && border.borderRadius.Desktop.top || 0}px`,
+                borderTopRightRadius: `${border && border.borderRadius.Desktop.right || 0}px`,
+                borderBottomLeftRadius: `${border && border.borderRadius.Desktop.bottom || 0}px`,
+                borderBottomRightRadius: `${border && border.borderRadius.Desktop.left || 0}px`,
                 backgroundImage: btnbg,
                 backgroundRepeat: containerStyles[0].backgroundRepeat,
                 backgroundPosition: containerStyles[0].backgroundPosition,

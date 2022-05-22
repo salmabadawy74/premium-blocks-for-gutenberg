@@ -36,38 +36,20 @@ const Inspector = ({
         contentStyles,
         triggerSettings,
         triggerStyles,
-        triggerBorderTop,
-        triggerBorderRight,
-        triggerBorderBottom,
-        triggerBorderLeft,
-        triggerBorderTopH,
-        triggerBorderRightH,
-        triggerBorderBottomH,
-        triggerBorderLeftH,
+        triggerBorder,
+        triggerBorderH,
         triggerPadding,
         headerStyles,
-        headerBorderTop,
-        headerBorderRight,
-        headerBorderBottom,
-        headerBorderLeft,
+        headerBorder,
         upperStyles,
-        upperBorderTop,
-        upperBorderRight,
-        upperBorderBottom,
-        upperBorderLeft,
+        upperBorder,
         upperPadding,
         lowerStyles,
-        lowerBorderTop,
-        lowerBorderRight,
-        lowerBorderBottom,
-        lowerBorderLeft,
+        lowerBorder,
         lowerPadding,
         modalStyles,
         backgroundType,
-        modalBorderTop,
-        modalBorderRight,
-        modalBorderBottom,
-        modalBorderLeft,
+        modalBorder,
         modalMargin,
         modalPadding
     } = attributes;
@@ -625,26 +607,14 @@ const Inspector = ({
                                             colorDefault={''}
                                             onColorChange={newValue => saveTriggerStyles({ triggerBack: newValue || "transparent", })}
                                         />}
-
                                         <PremiumBorder
-                                            borderType={triggerStyles[0].borderType}
-                                            top={triggerBorderTop}
-                                            right={triggerBorderRight}
-                                            bottom={triggerBorderBottom}
-                                            left={triggerBorderLeft}
-                                            borderColor={triggerStyles[0].borderColor}
-                                            borderRadius={triggerStyles[0].borderRadius}
-                                            onChangeType={(newType) => saveTriggerStyles({ borderType: newType })}
-                                            onChangeWidth={({ top, right, bottom, left }) =>
-                                                setAttributes({
-                                                    triggerBorderTop: top,
-                                                    triggerBorderRight: right,
-                                                    triggerBorderBottom: bottom,
-                                                    triggerBorderLeft: left,
-                                                })
-                                            }
-                                            onChangeColor={(colorValue) => saveTriggerStyles({ borderColor: colorValue })}
-                                            onChangeRadius={(newRadius) => saveTriggerStyles({ borderRadius: newRadius })}
+                                            label={__("Border")}
+                                            value={triggerBorder}
+                                            borderType={triggerBorder.borderType}
+                                            borderColor={triggerBorder.borderColor}
+                                            borderWidth={triggerBorder.borderWidth}
+                                            borderRadius={triggerBorder.borderRadius}
+                                            onChange={(value) => setAttributes({ triggerBorder: value })}
                                         />
                                     </Fragment>
                                 );
@@ -660,24 +630,13 @@ const Inspector = ({
                                                 onColorChange={newValue => saveTriggerStyles({ triggerHoverBack: newValue || "transparent", })}
                                             />}
                                         <PremiumBorder
-                                            borderType={triggerStyles[0].borderTypeH}
-                                            top={triggerBorderTopH}
-                                            right={triggerBorderRightH}
-                                            bottom={triggerBorderBottomH}
-                                            left={triggerBorderLeftH}
-                                            borderColor={triggerStyles[0].borderColorH}
-                                            borderRadius={triggerStyles[0].borderRadiusH}
-                                            onChangeType={(newType) => saveTriggerStyles({ borderTypeH: newType })}
-                                            onChangeWidth={({ top, right, bottom, left }) =>
-                                                setAttributes({
-                                                    triggerBorderTopH: top,
-                                                    triggerBorderRightH: right,
-                                                    triggerBorderBottomH: bottom,
-                                                    triggerBorderLeftH: left,
-                                                })
-                                            }
-                                            onChangeColor={(colorValue) => saveTriggerStyles({ borderColorH: colorValue })}
-                                            onChangeRadius={(newRadius) => saveTriggerStyles({ borderRadiusH: newRadius })}
+                                            label={__("Border")}
+                                            value={triggerBorderH}
+                                            borderType={triggerBorderH.borderType}
+                                            borderColor={triggerBorderH.borderColor}
+                                            borderWidth={triggerBorderH.borderWidth}
+                                            borderRadius={triggerBorderH.borderRadius}
+                                            onChange={(value) => setAttributes({ triggerBorderH: value })}
                                         />
                                     </Fragment>
                                 );
@@ -795,24 +754,13 @@ const Inspector = ({
                     onChangeUpper={check => saveHeaderStyles({ headerUpper: check })}
                 />
                 <PremiumBorder
-                    borderType={headerStyles[0].borderType}
-                    top={headerBorderTop}
-                    right={headerBorderRight}
-                    bottom={headerBorderBottom}
-                    left={headerBorderLeft}
-                    borderColor={headerStyles[0].borderColor}
-                    borderRadius={headerStyles[0].borderRadius}
-                    onChangeType={(newType) => saveHeaderStyles({ borderType: newType })}
-                    onChangeWidth={({ top, right, bottom, left }) =>
-                        setAttributes({
-                            headerBorderTop: top,
-                            headerBorderRight: right,
-                            headerBorderBottom: bottom,
-                            headerBorderLeft: left,
-                        })
-                    }
-                    onChangeColor={(colorValue) => saveHeaderStyles({ borderColor: colorValue })}
-                    onChangeRadius={(newRadius) => saveHeaderStyles({ borderRadius: newRadius })}
+                    label={__("Border")}
+                    value={headerBorder}
+                    borderType={headerBorder.borderType}
+                    borderColor={headerBorder.borderColor}
+                    borderWidth={headerBorder.borderWidth}
+                    borderRadius={headerBorder.borderRadius}
+                    onChange={(value) => setAttributes({ headerBorder: value })}
                 />
             </PanelBody>}
             {contentStyles[0].showUpperClose && contentStyles[0].showHeader && <PanelBody
@@ -845,24 +793,13 @@ const Inspector = ({
                     colorDefault={``}
                 />
                 <PremiumBorder
-                    borderType={upperStyles[0].borderType}
-                    top={upperBorderTop}
-                    right={upperBorderRight}
-                    bottom={upperBorderBottom}
-                    left={upperBorderLeft}
-                    borderColor={upperStyles[0].borderColor}
-                    borderRadius={upperStyles[0].borderRadius}
-                    onChangeType={(newType) => saveUpperStyles({ borderType: newType })}
-                    onChangeWidth={({ top, right, bottom, left }) =>
-                        setAttributes({
-                            upperBorderTop: top,
-                            upperBorderRight: right,
-                            upperBorderBottom: bottom,
-                            upperBorderLeft: left,
-                        })
-                    }
-                    onChangeColor={(colorValue) => saveUpperStyles({ borderColor: colorValue })}
-                    onChangeRadius={(newRadius) => saveUpperStyles({ borderRadius: newRadius })}
+                    label={__("Border")}
+                    value={upperBorder}
+                    borderType={upperBorder.borderType}
+                    borderColor={upperBorder.borderColor}
+                    borderWidth={upperBorder.borderWidth}
+                    borderRadius={upperBorder.borderRadius}
+                    onChange={(value) => setAttributes({ upperBorder: value })}
                 />
                 <SpacingComponent value={upperPadding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ upperPadding: value })} />
             </PanelBody>}
@@ -918,24 +855,13 @@ const Inspector = ({
                     colorDefault={``}
                 />
                 <PremiumBorder
-                    borderType={lowerStyles[0].borderType}
-                    top={lowerBorderTop}
-                    right={lowerBorderRight}
-                    bottom={lowerBorderBottom}
-                    left={lowerBorderLeft}
-                    borderColor={lowerStyles[0].borderColor}
-                    borderRadius={lowerStyles[0].borderRadius}
-                    onChangeType={(newType) => saveLowerStyles({ borderType: newType })}
-                    onChangeWidth={({ top, right, bottom, left }) =>
-                        setAttributes({
-                            lowerBorderTop: top,
-                            lowerBorderRight: right,
-                            lowerBorderBottom: bottom,
-                            lowerBorderLeft: left,
-                        })
-                    }
-                    onChangeColor={(colorValue) => saveLowerStyles({ borderColor: colorValue })}
-                    onChangeRadius={(newRadius) => saveLowerStyles({ borderRadius: newRadius })}
+                    label={__("Border")}
+                    value={lowerBorder}
+                    borderType={lowerBorder.borderType}
+                    borderColor={lowerBorder.borderColor}
+                    borderWidth={lowerBorder.borderWidth}
+                    borderRadius={lowerBorder.borderRadius}
+                    onChange={(value) => setAttributes({ lowerBorder: value })}
                 />
                 <SpacingComponent value={lowerPadding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ lowerPadding: value })} />
             </PanelBody>}
@@ -1044,25 +970,13 @@ const Inspector = ({
                     onColorChange={(newValue) => saveModalStyles({ footerBackColor: newValue })}
                 />
                 <PremiumBorder
-                    borderType={modalStyles[0].borderType}
-                    borderWidth={modalStyles[0].borderWidth}
-                    top={modalBorderTop}
-                    right={modalBorderRight}
-                    bottom={modalBorderBottom}
-                    left={modalBorderLeft}
-                    borderColor={modalStyles[0].borderColor}
-                    borderRadius={modalStyles[0].borderRadius}
-                    onChangeType={(newType) => saveModalStyles({ borderType: newType })}
-                    onChangeWidth={({ top, right, bottom, left }) =>
-                        setAttributes({
-                            modalBorderTop: top,
-                            modalBorderRight: right,
-                            modalBorderBottom: bottom,
-                            modalBorderLeft: left,
-                        })
-                    }
-                    onChangeColor={(colorValue) => saveModalStyles({ borderColor: colorValue })}
-                    onChangeRadius={(newRadius) => saveModalStyles({ borderRadius: newRadius })}
+                    label={__("Border")}
+                    value={modalBorder}
+                    borderType={modalBorder.borderType}
+                    borderColor={modalBorder.borderColor}
+                    borderWidth={modalBorder.borderWidth}
+                    borderRadius={modalBorder.borderRadius}
+                    onChange={(value) => setAttributes({ modalBorder: value })}
                 />
                 <PremiumShadow
                     boxShadow={true}

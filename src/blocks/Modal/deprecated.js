@@ -588,6 +588,288 @@ const newAttributes = {
             },
             unit: 'px'
         }
+    },
+    triggerBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    triggerBorderH: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    headerBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    upperBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    lowerBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    modalBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
     }
 }
 
@@ -703,6 +985,288 @@ const deprecated = [
                         left: attributes.modalMarginLMobile || ''
                     },
                     "unit": "px"
+                },
+                triggerBorder: {
+                    type: "object",
+                    default: {
+                        "borderType": attributes.triggerStyles[0].borderType || '',
+                        "borderColor": attributes.triggerStyles[0].borderColor || '',
+                        "borderWidth": {
+                            Desktop: {
+                                top: attributes.triggerBorderTop || '',
+                                right: attributes.triggerBorderRight || '',
+                                bottom: attributes.triggerBorderBottom || '',
+                                left: attributes.triggerBorderLeft || ''
+                            },
+                            Tablet: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            },
+                            Mobile: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            }
+                        },
+                        "borderRadius": {
+                            Desktop: {
+                                top: attributes.triggerStyles[0].borderRadius || '',
+                                right: attributes.triggerStyles[0].borderRadius || '',
+                                bottom: attributes.triggerStyles[0].borderRadius || '',
+                                left: attributes.triggerStyles[0].borderRadius || ''
+                            },
+                            Tablet: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            },
+                            Mobile: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            }
+                        }
+                    }
+                },
+                triggerBorderH: {
+                    type: "object",
+                    default: {
+                        "borderType": attributes.triggerStyles[0].borderTypeH || '',
+                        "borderColor": attributes.triggerStyles[0].borderColorH || '',
+                        "borderWidth": {
+                            Desktop: {
+                                top: attributes.triggerBorderTopH || '',
+                                right: attributes.triggerBorderRightH || '',
+                                bottom: attributes.triggerBorderBottomH || '',
+                                left: attributes.triggerBorderLeftH || ''
+                            },
+                            Tablet: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            },
+                            Mobile: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            }
+                        },
+                        "borderRadius": {
+                            Desktop: {
+                                top: attributes.triggerStyles[0].borderRadiusH || '',
+                                right: attributes.triggerStyles[0].borderRadiusH || '',
+                                bottom: attributes.triggerStyles[0].borderRadiusH || '',
+                                left: attributes.triggerStyles[0].borderRadiusH || ''
+                            },
+                            Tablet: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            },
+                            Mobile: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            }
+                        }
+                    }
+                },
+                headerBorder: {
+                    type: "object",
+                    default: {
+                        "borderType": attributes.headerStyles[0].borderType || '',
+                        "borderColor": attributes.headerStyles[0].borderColor || '',
+                        "borderWidth": {
+                            Desktop: {
+                                top: attributes.headerBorderTop || '',
+                                right: attributes.headerBorderRight || '',
+                                bottom: attributes.headerBorderBottom || '',
+                                left: attributes.headerBorderLeft || ''
+                            },
+                            Tablet: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            },
+                            Mobile: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            }
+                        },
+                        "borderRadius": {
+                            Desktop: {
+                                top: attributes.headerStyles[0].borderRadius || '',
+                                right: attributes.headerStyles[0].borderRadius || '',
+                                bottom: attributes.headerStyles[0].borderRadius || '',
+                                left: attributes.headerStyles[0].borderRadius || ''
+                            },
+                            Tablet: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            },
+                            Mobile: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            }
+                        }
+                    }
+                },
+                upperBorder: {
+                    type: "object",
+                    default: {
+                        "borderType": attributes.upperStyles[0].borderType || '',
+                        "borderColor": attributes.upperStyles[0].borderColor || '',
+                        "borderWidth": {
+                            Desktop: {
+                                top: attributes.upperBorderTop || '',
+                                right: attributes.upperBorderRight || '',
+                                bottom: attributes.upperBorderBottom || '',
+                                left: attributes.upperBorderLeft || ''
+                            },
+                            Tablet: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            },
+                            Mobile: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            }
+                        },
+                        "borderRadius": {
+                            Desktop: {
+                                top: attributes.upperStyles[0].borderRadius || '',
+                                right: attributes.upperStyles[0].borderRadius || '',
+                                bottom: attributes.upperStyles[0].borderRadius || '',
+                                left: attributes.upperStyles[0].borderRadius || ''
+                            },
+                            Tablet: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            },
+                            Mobile: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            }
+                        }
+                    }
+                },
+                lowerBorder: {
+                    type: "object",
+                    default: {
+                        "borderType": attributes.lowerStyles[0].borderType || '',
+                        "borderColor": attributes.lowerStyles[0].borderColor || '',
+                        "borderWidth": {
+                            Desktop: {
+                                top: attributes.lowerBorderTop || '',
+                                right: attributes.lowerBorderRight || '',
+                                bottom: attributes.lowerBorderBottom || '',
+                                left: attributes.lowerBorderLeft || ''
+                            },
+                            Tablet: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            },
+                            Mobile: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            }
+                        },
+                        "borderRadius": {
+                            Desktop: {
+                                top: attributes.lowerStyles[0].borderRadius || '',
+                                right: attributes.lowerStyles[0].borderRadius || '',
+                                bottom: attributes.lowerStyles[0].borderRadius || '',
+                                left: attributes.lowerStyles[0].borderRadius || ''
+                            },
+                            Tablet: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            },
+                            Mobile: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            }
+                        }
+                    }
+                },
+                modalBorder: {
+                    type: "object",
+                    default: {
+                        "borderType": attributes.modalStyles[0].borderType || '',
+                        "borderColor": attributes.modalStyles[0].borderColor || '',
+                        "borderWidth": {
+                            Desktop: {
+                                top: attributes.modalBorderTop || '',
+                                right: attributes.modalBorderRight || '',
+                                bottom: attributes.modalBorderBottom || '',
+                                left: attributes.modalBorderLeft || ''
+                            },
+                            Tablet: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            },
+                            Mobile: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            }
+                        },
+                        "borderRadius": {
+                            Desktop: {
+                                top: attributes.modalStyles[0].borderRadius || '',
+                                right: attributes.modalStyles[0].borderRadius || '',
+                                bottom: attributes.modalStyles[0].borderRadius || '',
+                                left: attributes.modalStyles[0].borderRadius || ''
+                            },
+                            Tablet: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            },
+                            Mobile: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            }
+                        }
+                    }
                 }
             }
             return Object.assign(attributes, newAttributes)

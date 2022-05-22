@@ -274,12 +274,7 @@ class edit extends Component {
             repeaterBulletList,
             bulletAlign,
             bulletIconStyles,
-            bulletIconBorderUpdated,
-            bulletIconBorderTop,
-            bulletIconBorderRight,
-            bulletIconBorderBottom,
-            bulletIconBorderLeft,
-            bulletIconBorderWidth,
+            bulletIconBorder,
             generalmargin,
             bulletIconmargin,
             titlemargin,
@@ -287,12 +282,7 @@ class edit extends Component {
             bulletIconpadding,
             titleStyles,
             generalStyles,
-            generalBorderWidth,
-            generalBorderTop,
-            generalBorderRight,
-            generalBorderBottom,
-            generalBorderLeft,
-            generalBorderUpdated,
+            generalBorder,
             titleFont,
             divider,
             dividerStyle,
@@ -793,30 +783,13 @@ class edit extends Component {
                             onChangePosition={newValue => saveGeneralStyles({ generalHoverShadowPosition: newValue === undefined ? 0 : newValue })}
                         />
                         <PremiumBorder
-                            borderType={generalStyles[0].generalborderType}
-                            borderWidth={generalBorderWidth}
-                            top={generalBorderTop}
-                            right={generalBorderRight}
-                            bottom={generalBorderBottom}
-                            left={generalBorderLeft}
-                            borderColor={generalStyles[0].generalborderColor}
-                            borderRadius={generalStyles[0].generalborderRadius}
-                            onChangeType={newType => saveGeneralStyles({ generalborderType: newType })}
-                            onChangeWidth={({ top, right, bottom, left }) =>
-                                setAttributes({
-                                    generalBorderUpdated: true,
-                                    generalBorderTop: top,
-                                    generalBorderRight: right,
-                                    generalBorderBottom: bottom,
-                                    generalBorderLeft: left,
-                                })
-                            }
-                            onChangeColor={colorValue =>
-                                saveGeneralStyles({ generalborderColor: colorValue })
-                            }
-                            onChangeRadius={newrRadius =>
-                                saveGeneralStyles({ generalborderRadius: newrRadius })
-                            }
+                            label={__("Border")}
+                            value={generalBorder}
+                            borderType={generalBorder.borderType}
+                            borderColor={generalBorder.borderColor}
+                            borderWidth={generalBorder.borderWidth}
+                            borderRadius={generalBorder.borderRadius}
+                            onChange={(value) => setAttributes({ generalBorder: value })}
                         />
                         <SpacingComponent value={generalmargin} responsive={true} showUnits={true} label={__("Margin")} onChange={(value) => setAttributes({ generalmargin: value })} />
                         <SpacingComponent value={generalpadding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ generalpadding: value })} />
@@ -884,30 +857,13 @@ class edit extends Component {
                             }
                         />
                         <PremiumBorder
-                            borderType={bulletIconStyles[0].bulletIconborderType}
-                            borderWidth={bulletIconBorderWidth}
-                            top={bulletIconBorderTop}
-                            right={bulletIconBorderRight}
-                            bottom={bulletIconBorderBottom}
-                            left={bulletIconBorderLeft}
-                            borderColor={bulletIconStyles[0].bulletIconborderColor}
-                            borderRadius={bulletIconStyles[0].bulletIconborderRadius}
-                            onChangeType={newType => saveBulletIconStyles({ bulletIconborderType: newType })}
-                            onChangeWidth={({ top, right, bottom, left }) =>
-                                setAttributes({
-                                    bulletIconBorderUpdated: true,
-                                    bulletIconBorderTop: top,
-                                    bulletIconBorderRight: right,
-                                    bulletIconBorderBottom: bottom,
-                                    bulletIconBorderLeft: left,
-                                })
-                            }
-                            onChangeColor={colorValue =>
-                                saveBulletIconStyles({ bulletIconborderColor: colorValue })
-                            }
-                            onChangeRadius={newrRadius =>
-                                saveBulletIconStyles({ bulletIconborderRadius: newrRadius })
-                            }
+                            label={__("Border")}
+                            value={bulletIconBorder}
+                            borderType={bulletIconBorder.borderType}
+                            borderColor={bulletIconBorder.borderColor}
+                            borderWidth={bulletIconBorder.borderWidth}
+                            borderRadius={bulletIconBorder.borderRadius}
+                            onChange={(value) => setAttributes({ bulletIconBorder: value })}
                         />
                         <SpacingComponent value={bulletIconmargin} responsive={true} showUnits={true} label={__("Margin")} onChange={(value) => setAttributes({ bulletIconmargin: value })} />
                         <SpacingComponent value={bulletIconpadding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ bulletIconpadding: value })} />
@@ -1106,12 +1062,17 @@ class edit extends Component {
                                                     paddingBottom: BulletIconPaddingBottom + bulletIconStyles[0].bulletIconpaddingUnit,
                                                     paddingLeft: BulletIconPaddingLeft + bulletIconStyles[0].bulletIconpaddingUnit,
                                                     paddingRight: BulletIconPaddingRight + bulletIconStyles[0].bulletIconpaddingUnit,
-                                                    borderStyle: bulletIconStyles[0].bulletIconborderType,
-                                                    borderWidth: bulletIconBorderUpdated
-                                                        ? `${bulletIconBorderTop}px ${bulletIconBorderRight}px ${bulletIconBorderBottom}px ${bulletIconBorderLeft}px`
-                                                        : bulletIconBorderWidth + "px",
-                                                    borderRadius: bulletIconStyles[0].bulletIconborderRadius || 0 + "px",
-                                                    borderColor: bulletIconStyles[0].bulletIconborderColor,
+                                                    borderStyle: bulletIconBorder && bulletIconBorder.borderType,
+                                                    borderTopWidth: bulletIconBorder && bulletIconBorder.borderWidth.Desktop.top,
+                                                    borderRightWidth: bulletIconBorder && bulletIconBorder.borderWidth.Desktop.right,
+                                                    borderBottomWidth: bulletIconBorder && bulletIconBorder.borderWidth.Desktop.bottom,
+                                                    borderLeftWidth: bulletIconBorder && bulletIconBorder.borderWidth.Desktop.left,
+                                                    borderRadius: `${bulletIconBorder && bulletIconBorder.borderRadius.Desktop.top || 0}px ${bulletIconBorder && bulletIconBorder.borderRadius.Desktop.right || 0}px ${bulletIconBorder && bulletIconBorder.borderRadius.Desktop.bottom || 0}px ${bulletIconBorder && bulletIconBorder.borderRadius.Desktop.left || 0}px`,
+                                                    borderColor: bulletIconBorder && bulletIconBorder.borderColor,
+                                                    borderTopLeftRadius: `${bulletIconBorder && bulletIconBorder.borderRadius.Desktop.top || 0}px`,
+                                                    borderTopRightRadius: `${bulletIconBorder && bulletIconBorder.borderRadius.Desktop.right || 0}px`,
+                                                    borderBottomLeftRadius: `${bulletIconBorder && bulletIconBorder.borderRadius.Desktop.bottom || 0}px`,
+                                                    borderBottomRightRadius: `${bulletIconBorder && bulletIconBorder.borderRadius.Desktop.left || 0}px`,
                                                     verticalAlign: bulletAlign == 'flex-start' ? 'top' : bulletAlign == 'flex-end' ? 'bottom' : 'middle'
                                                 }}
                                             />
@@ -1131,12 +1092,17 @@ class edit extends Component {
                                                 paddingBottom: BulletIconPaddingBottom + bulletIconStyles[0].bulletIconpaddingUnit,
                                                 paddingLeft: BulletIconPaddingLeft + bulletIconStyles[0].bulletIconpaddingUnit,
                                                 paddingRight: BulletIconPaddingRight + bulletIconStyles[0].bulletIconpaddingUnit,
-                                                borderStyle: bulletIconStyles[0].bulletIconborderType,
-                                                borderWidth: bulletIconBorderUpdated
-                                                    ? `${bulletIconBorderTop}px ${bulletIconBorderRight}px ${bulletIconBorderBottom}px ${bulletIconBorderLeft}px`
-                                                    : bulletIconBorderWidth + "px",
-                                                borderRadius: bulletIconStyles[0].bulletIconborderRadius || 0 + "px",
-                                                borderColor: bulletIconStyles[0].bulletIconborderColor,
+                                                borderStyle: bulletIconBorder && bulletIconBorder.borderType,
+                                                borderTopWidth: bulletIconBorder && bulletIconBorder.borderWidth.Desktop.top,
+                                                borderRightWidth: bulletIconBorder && bulletIconBorder.borderWidth.Desktop.right,
+                                                borderBottomWidth: bulletIconBorder && bulletIconBorder.borderWidth.Desktop.bottom,
+                                                borderLeftWidth: bulletIconBorder && bulletIconBorder.borderWidth.Desktop.left,
+                                                borderRadius: `${bulletIconBorder && bulletIconBorder.borderRadius.Desktop.top || 0}px ${bulletIconBorder && bulletIconBorder.borderRadius.Desktop.right || 0}px ${bulletIconBorder && bulletIconBorder.borderRadius.Desktop.bottom || 0}px ${bulletIconBorder && bulletIconBorder.borderRadius.Desktop.left || 0}px`,
+                                                borderColor: bulletIconBorder && bulletIconBorder.borderColor,
+                                                borderTopLeftRadius: `${bulletIconBorder && bulletIconBorder.borderRadius.Desktop.top || 0}px`,
+                                                borderTopRightRadius: `${bulletIconBorder && bulletIconBorder.borderRadius.Desktop.right || 0}px`,
+                                                borderBottomLeftRadius: `${bulletIconBorder && bulletIconBorder.borderRadius.Desktop.bottom || 0}px`,
+                                                borderBottomRightRadius: `${bulletIconBorder && bulletIconBorder.borderRadius.Desktop.left || 0}px`,
                                                 verticalAlign: bulletAlign == 'flex-start' ? 'top' : bulletAlign == 'flex-end' ? 'bottom' : 'middle'
                                             }}
                                         />
@@ -1161,12 +1127,17 @@ class edit extends Component {
                                             overflow: 'hidden',
                                             justifyContent: align == "right" ? "flex-end" : align,
                                             backgroundColor: generalStyles[0].generalBackgroundColor,
-                                            borderStyle: generalStyles[0].generalborderType,
-                                            borderWidth: generalBorderUpdated
-                                                ? `${generalBorderTop}px ${generalBorderRight}px ${generalBorderBottom}px ${generalBorderLeft}px`
-                                                : generalBorderWidth + "px",
-                                            borderRadius: generalStyles[0].generalborderRadius || 0 + "px",
-                                            borderColor: generalStyles[0].generalborderColor,
+                                            borderStyle: generalBorder && generalBorder.borderType,
+                                            borderTopWidth: generalBorder && generalBorder.borderWidth.Desktop.top,
+                                            borderRightWidth: generalBorder && generalBorder.borderWidth.Desktop.right,
+                                            borderBottomWidth: generalBorder && generalBorder.borderWidth.Desktop.bottom,
+                                            borderLeftWidth: generalBorder && generalBorder.borderWidth.Desktop.left,
+                                            borderRadius: `${generalBorder && generalBorder.borderRadius.Desktop.top || 0}px ${generalBorder && generalBorder.borderRadius.Desktop.right || 0}px ${generalBorder && generalBorder.borderRadius.Desktop.bottom || 0}px ${generalBorder && generalBorder.borderRadius.Desktop.left || 0}px`,
+                                            borderColor: generalBorder && generalBorder.borderColor,
+                                            borderTopLeftRadius: `${generalBorder && generalBorder.borderRadius.Desktop.top || 0}px`,
+                                            borderTopRightRadius: `${generalBorder && generalBorder.borderRadius.Desktop.right || 0}px`,
+                                            borderBottomLeftRadius: `${generalBorder && generalBorder.borderRadius.Desktop.bottom || 0}px`,
+                                            borderBottomRightRadius: `${generalBorder && generalBorder.borderRadius.Desktop.left || 0}px`,
                                             paddingTop: GeneralPaddingTop + generalStyles[0].generalpaddingUnit,
                                             paddingBottom: GeneralPaddingBottom + generalStyles[0].generalpaddingUnit,
                                             paddingLeft: GeneralPaddingLeft + generalStyles[0].generalpaddingUnit,

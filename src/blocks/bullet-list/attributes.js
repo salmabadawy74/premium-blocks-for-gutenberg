@@ -88,32 +88,9 @@ const attributes = {
             bulletIconColor: "#6EC1E4",
             bulletIconBackgroundColor: '',
             bulletIconHoverBackgroundColor: '',
-            bulletIconborderType: "none",
-            bulletIconborderRadius: 0,
-            bulletIconborderColor: '',
             bulletIconpaddingUnit: 'px',
             bulletIconmarginType: 'px'
         }],
-    },
-    bulletIconBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    bulletIconBorderTop: {
-        type: "number"
-    },
-    bulletIconBorderRight: {
-        type: "number"
-    },
-    bulletIconBorderBottom: {
-        type: "number"
-    },
-    bulletIconBorderLeft: {
-        type: "number"
-    },
-    bulletIconBorderUpdated: {
-        type: "boolean",
-        default: false
     },
     titleStyles: {
         type: "array",
@@ -142,9 +119,6 @@ const attributes = {
         default: [{
             generalBackgroundColor: "",
             generalHoverBackgroundColor: '',
-            generalborderType: "none",
-            generalborderRadius: 0,
-            generalborderColor: '',
             generalShadowColor: '',
             generalShadowBlur: 0,
             generalShadowHorizontal: 0,
@@ -158,26 +132,6 @@ const attributes = {
             generalpaddingUnit: 'px',
             generalmarginType: 'px'
         }],
-    },
-    generalBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    generalBorderTop: {
-        type: "number"
-    },
-    generalBorderRight: {
-        type: "number"
-    },
-    generalBorderBottom: {
-        type: "number"
-    },
-    generalBorderLeft: {
-        type: "number"
-    },
-    generalBorderUpdated: {
-        type: "boolean",
-        default: false
     },
     classMigrate: {
         type: "boolean",
@@ -340,5 +294,99 @@ const attributes = {
             unit: 'px'
         }
     },
+    generalBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    bulletIconBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    }
 }
 export default attributes
