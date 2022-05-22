@@ -224,5 +224,19 @@ const attributes = {
     descPaddingLMobile: {
         type: "number"
     },
+    descriptionHeading: {
+        type: "object",
+        default: {
+            "font-weight": '',
+            'font-style': '',
+            'text-transform': '',
+            'letter-spacing': '',
+            'font-family': 'Default',
+            'line-height': '',
+            'text-decoration': '',
+            'font-size': ''
+
+        }
+    }
 }
 export default attributes;

@@ -10,7 +10,7 @@ import AdvancedPopColorControl from '../../components/Color Control/ColorCompone
 import RadioComponent from '../../components/radio-control';
 import PremiumShadow from "../../components/PremiumShadow";
 import SpacingControl from '../../components/premium-responsive-spacing'
-
+import { gradientBackground } from '../../components/HelperFunction'
 const { __ } = wp.i18n;
 
 const {
@@ -67,51 +67,32 @@ const edit = props => {
         wrapPadding,
         wrapMargin,
         containerBorder,
-        iconBorder
+        iconBorder,
+        containerBackground,
+        containerShadow
     } = props.attributes;
 
     const EFFECTS = [
-        {
-            value: "none",
-            label: __("None", 'premium-blocks-for-gutenberg')
-        },
-        {
-            value: "pulse",
-            label: __("Pulse", 'premium-blocks-for-gutenberg')
-        },
-        {
-            value: "rotate",
-            label: __("Rotate", 'premium-blocks-for-gutenberg')
-        },
-        {
-            value: "drotate",
-            label: __("3D Rotate", 'premium-blocks-for-gutenberg')
-        },
-        {
-            value: "buzz",
-            label: __("Buzz", 'premium-blocks-for-gutenberg')
-        },
-        {
-            value: "drop",
-            label: __("Drop Shadow", 'premium-blocks-for-gutenberg')
-        },
-        {
-            value: "wobble",
-            label: __("Wobble", 'premium-blocks-for-gutenberg')
-        }
+        { value: "none", label: __("None", 'premium-blocks-for-gutenberg') },
+        { value: "pulse", label: __("Pulse", 'premium-blocks-for-gutenberg') },
+        { value: "rotate", label: __("Rotate", 'premium-blocks-for-gutenberg') },
+        { value: "drotate", label: __("3D Rotate", 'premium-blocks-for-gutenberg') },
+        { value: "buzz", label: __("Buzz", 'premium-blocks-for-gutenberg') },
+        { value: "drop", label: __("Drop Shadow", 'premium-blocks-for-gutenberg') },
+        { value: "wobble", label: __("Wobble", 'premium-blocks-for-gutenberg') }
     ];
 
-    const saveContainerStyle = (value) => {
-        const newUpdate = containerStyles.map((item, index) => {
-            if (0 === index) {
-                item = { ...item, ...value };
-            }
-            return item;
-        });
-        setAttributes({
-            containerStyles: newUpdate,
-        });
-    }
+    // const saveContainerStyle = (value) => {
+    //     const newUpdate = containerStyles.map((item, index) => {
+    //         if (0 === index) {
+    //             item = { ...item, ...value };
+    //         }
+    //         return item;
+    //     });
+    //     setAttributes({
+    //         containerStyles: newUpdate,
+    //     });
+    // }
 
     const saveIconStyle = (value) => {
         const newUpdate = iconStyles.map((item, index) => {
@@ -124,20 +105,7 @@ const edit = props => {
             iconStyles: newUpdate,
         });
     }
-
-    let btnGrad, btnGrad2, btnbg;
-    if (undefined !== backgroundType && 'gradient' === backgroundType) {
-        btnGrad = ('transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack);
-        btnGrad2 = (undefined !== containerStyles[0].gradientColorTwo && undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777');
-        if ('radial' === containerStyles[0].gradientType) {
-            btnbg = `radial-gradient(at ${containerStyles[0].gradientPosition}, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
-        } else if ('radial' !== containerStyles[0].gradientType) {
-            btnbg = `linear-gradient(${containerStyles[0].gradientAngle}deg, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
-        }
-    } else {
-        btnbg = containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : ""
-    }
-
+    console.log(gradientBackground(containerBackground))
     const mainClasses = classnames(className, "premium-icon");
     const iconPaddingTop = getPreviewSize(props.deviceType, iconPadding.Desktop.top, iconPadding.Tablet.top, iconPadding.Mobile.top);
     const iconPaddingRight = getPreviewSize(props.deviceType, iconPadding.Desktop.right, iconPadding.Tablet.right, iconPadding.Mobile.right);
@@ -171,7 +139,6 @@ const edit = props => {
     const ContainerBorderRadiusRight = getPreviewSize(props.deviceType, containerBorder.borderRadius.Desktop.right, containerBorder.borderRadius.Tablet.right, containerBorder.borderRadius.Mobile.right);
     const ContainerBorderRadiusBottom = getPreviewSize(props.deviceType, containerBorder.borderRadius.Desktop.bottom, containerBorder.borderRadius.Tablet.bottom, containerBorder.borderRadius.Mobile.bottom);
     const ContainerBorderRadiusLeft = getPreviewSize(props.deviceType, containerBorder.borderRadius.Desktop.left, containerBorder.borderRadius.Tablet.left, containerBorder.borderRadius.Mobile.left);
-
     return [
         isSelected && (
             <InspectorControls key={"inspector"}>
@@ -280,22 +247,8 @@ const edit = props => {
                     initialOpen={false}
                 >
                     <PremiumBackgroundControl
-                        setAttributes={setAttributes}
-                        saveContainerStyle={saveContainerStyle}
-                        backgroundType={backgroundType}
-                        backgroundColor={containerStyles[0].containerBack}
-                        backgroundImageID={containerStyles[0].backgroundImageID}
-                        backgroundImageURL={containerStyles[0].backgroundImageURL}
-                        backgroundPosition={containerStyles[0].backgroundPosition}
-                        backgroundRepeat={containerStyles[0].backgroundRepeat}
-                        backgroundSize={containerStyles[0].backgroundSize}
-                        fixed={containerStyles[0].fixed}
-                        gradientLocationOne={containerStyles[0].gradientLocationOne}
-                        gradientColorTwo={containerStyles[0].gradientColorTwo}
-                        gradientLocationTwo={containerStyles[0].gradientLocationTwo}
-                        gradientAngle={containerStyles[0].gradientAngle}
-                        gradientPosition={containerStyles[0].gradientPosition}
-                        gradientType={containerStyles[0].gradientType}
+                        value={containerBackground}
+                        onChange={(value) => setAttributes({ containerBackground: value })}
                     />
                     <PremiumBorder
                         label={__('Border', 'premium-blocks-for-gutenberg')}
@@ -305,16 +258,8 @@ const edit = props => {
                     <PremiumShadow
                         label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
                         boxShadow={true}
-                        color={containerStyles[0].wrapShadowColor}
-                        blur={containerStyles[0].wrapShadowBlur}
-                        horizontal={containerStyles[0].wrapShadowHorizontal}
-                        vertical={containerStyles[0].wrapShadowVertical}
-                        position={containerStyles[0].wrapShadowPosition}
-                        onChangeColor={newColor => saveContainerStyle({ wrapShadowColor: newColor })}
-                        onChangeBlur={newBlur => saveContainerStyle({ wrapShadowBlur: newBlur })}
-                        onChangehHorizontal={newValue => saveContainerStyle({ wrapShadowHorizontal: newValue })}
-                        onChangeVertical={newValue => saveContainerStyle({ wrapShadowVertical: newValue })}
-                        onChangePosition={newValue => saveContainerStyle({ wrapShadowPosition: newValue })}
+                        value={containerShadow}
+                        onChange={(value) => setAttributes({ containerShadow: value })}
                     />
                     <SpacingControl
                         label={__('Margin', 'premium-blocks-for-gutenberg')}
@@ -348,13 +293,8 @@ const edit = props => {
             <div
                 className={`premium-icon-container`}
                 style={{
+                    ...gradientBackground(containerBackground),
                     textAlign: align,
-                    backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
-                    backgroundImage: btnbg,
-                    backgroundRepeat: containerStyles[0].backgroundRepeat,
-                    backgroundPosition: containerStyles[0].backgroundPosition,
-                    backgroundSize: containerStyles[0].backgroundSize,
-                    backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
                     borderStyle: containerBorder.borderType,
                     borderTopWidth: ContainerBorderWidthTop && ContainerBorderWidthTop + "px",
                     borderRightWidth: ContainerBorderWidthRight && ContainerBorderWidthRight + "px",
@@ -420,7 +360,7 @@ const edit = props => {
                     />
                 )}
             </div>
-        </div>
+        </div >
     ];
 };
 

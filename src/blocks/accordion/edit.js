@@ -114,6 +114,7 @@ class PremiumAccordion extends Component {
             descPaddingRMobile,
             descPaddingBMobile,
             descPaddingLMobile,
+            descriptionHeading
         } = this.props.attributes;
 
         const DIRECTION = [
@@ -543,18 +544,8 @@ class PremiumAccordion extends Component {
                                         "spacing",
                                         "line"
                                     ]}
-                                    size={descStyles[0].descSize}
-                                    weight={descStyles[0].descWeight}
-                                    style={descStyles[0].descStyle}
-                                    spacing={descStyles[0].descLetter}
-                                    line={descStyles[0].descLine}
-                                    upper={descStyles[0].descUpper}
-                                    onChangeSize={newSize => SaveDescStyles({ descSize: newSize })}
-                                    onChangeWeight={newWeight => SaveDescStyles({ descWeight: newWeight })}
-                                    onChangeStyle={newStyle => SaveDescStyles({ descStyle: newStyle })}
-                                    onChangeSpacing={newValue => SaveDescStyles({ descLetter: newValue })}
-                                    onChangeLine={newValue => SaveDescStyles({ descLine: newValue })}
-                                    onChangeUpper={check => SaveDescStyles({ descUpper: check })}
+                                    value={descriptionHeading}
+                                    onChange={(value) => setAttributes({ descriptionHeading: value })}
                                 />
                                 <AdvancedPopColorControl
                                     label={__("Text Color", 'premium-blocks-for-gutenberg')}

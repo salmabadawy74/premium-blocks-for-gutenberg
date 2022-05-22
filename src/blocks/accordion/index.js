@@ -15,6 +15,10 @@ registerBlockType("premium/accordion", {
     icon: <PbgIcon icon="accordion" />,
     category: "premium-blocks",
     attributes: attributes,
+    description: __(
+        'This block lets you add a combination of a heading and a sub-heading with a separator in between.',
+        'premium-blocks-for-gutenberg'
+    ),
     supports: {
         inserter: accordion
     },

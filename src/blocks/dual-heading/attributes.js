@@ -199,5 +199,22 @@ const attributes = {
         type: "string",
         default: ""
     },
+    firstTypography: {
+        type: "object",
+        default: {
+            "font-weight": '',
+            'font-style': '',
+            'text-transform': '',
+            'letter-spacing': '',
+            'font-family': '',
+            'line-height': '',
+            'text-decoration': '',
+            'font-size': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": ''
+            }
+        }
+    }
 }
 export default attributes;

@@ -62,6 +62,7 @@ export default function ResponsiveRangeControl({
         onChange(updatedState)
     }
     const output = {};
+    console.log(state, "state from responsive range control")
     output.Mobile = (
         <ResponsiveSingleRangeControl
             device={'mobile'}

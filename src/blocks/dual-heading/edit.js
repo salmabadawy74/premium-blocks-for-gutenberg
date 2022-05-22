@@ -84,7 +84,8 @@ class edit extends Component {
             firstBorder,
             secondBorder,
             containerBorder,
-            backgroundType
+            backgroundType,
+            firstTypography
         } = this.props.attributes;
 
         const DISPLAY = [
@@ -172,6 +173,7 @@ class edit extends Component {
         } else {
             btnbg = containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : ''
         }
+
         return [
             isSelected && (
                 <BlockControls key="controls">
@@ -246,29 +248,9 @@ class edit extends Component {
                         )}
                         <PremiumTypo
                             components={["responsiveSize", "weight", "style", "upper", "spacing", "family"]}
-                            setAttributes={saveFirstStyle}
-                            fontSizeType={{
-                                value: firstStyles[0].firstSizeUnit,
-                                label: __("firstSizeUnit", 'premium-blocks-for-gutenberg'),
-                            }}
-                            fontSize={firstStyles[0].firstSize}
-                            fontSizeMobile={firstStyles[0].firstSizeMobile}
-                            fontSizeTablet={firstStyles[0].firstSizeTablet}
-                            onChangeSize={newSize => saveFirstStyle({ firstSize: newSize })}
-                            onChangeTabletSize={newSize => saveFirstStyle({ firstSizeTablet: newSize })}
-                            onChangeMobileSize={newSize => saveFirstStyle({ firstSizeMobile: newSize })}
-                            fontFamily={firstStyles[0].firstFamily}
-                            weight={firstStyles[0].firstWeight}
-                            style={firstStyles[0].firstStyle}
-                            spacing={firstStyles[0].firstLetter}
-                            upper={firstStyles[0].firstUpper}
-                            onChangeWeight={newWeight => saveFirstStyle({ firstWeight: newWeight || 500 })}
-                            onChangeStyle={newStyle => saveFirstStyle({ firstStyle: newStyle })}
-                            onChangeSpacing={newValue => saveFirstStyle({ firstLetter: newValue })}
-                            onChangeUpper={check => saveFirstStyle({ firstUpper: check })}
-                            onChangeFamily={(fontFamily) => saveFirstStyle({ firstFamily: fontFamily })}
+                            value={firstTypography}
+                            onChange={newValue => setAttributes({ firstTypography: newValue })}
                         />
-
                         {!firstStyles[0].firstClip && (
                             <Fragment>
                                 <AdvancedPopColorControl
