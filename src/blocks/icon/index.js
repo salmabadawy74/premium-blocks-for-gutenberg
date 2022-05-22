@@ -18,6 +18,7 @@ registerBlockType("premium/icon", {
     supports: {
         inserter: icon
     },
+    description: __('Place icons of various preset styles with Premium Blocks icons.'),
     example: {},
     edit: edit,
     save: save,
