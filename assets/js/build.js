@@ -598,6 +598,11 @@ exports.default = PbgIcon;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 exports.default = PremiumShadow;
 
 var _singleRangeControl = __webpack_require__(3);
@@ -616,65 +621,76 @@ var _wp$components = wp.components,
     Dropdown = _wp$components.Dropdown,
     Button = _wp$components.Button,
     ColorPicker = _wp$components.ColorPicker;
-var Fragment = wp.element.Fragment;
-function PremiumShadow(props) {
-    var label = props.label,
-        color = props.color,
-        blur = props.blur,
-        horizontal = props.horizontal,
-        vertical = props.vertical,
-        _props$position = props.position,
-        position = _props$position === undefined ? "outline" : _props$position,
-        _props$onChangeColor = props.onChangeColor,
-        onChangeColor = _props$onChangeColor === undefined ? function () {} : _props$onChangeColor,
-        _props$onChangeBlur = props.onChangeBlur,
-        onChangeBlur = _props$onChangeBlur === undefined ? function () {} : _props$onChangeBlur,
-        _props$onChangehHoriz = props.onChangehHorizontal,
-        onChangehHorizontal = _props$onChangehHoriz === undefined ? function () {} : _props$onChangehHoriz,
-        _props$onChangeVertic = props.onChangeVertical,
-        onChangeVertical = _props$onChangeVertic === undefined ? function () {} : _props$onChangeVertic,
-        _props$onChangePositi = props.onChangePosition,
-        onChangePosition = _props$onChangePositi === undefined ? function () {} : _props$onChangePositi,
-        _props$boxShadow = props.boxShadow,
-        boxShadow = _props$boxShadow === undefined ? false : _props$boxShadow;
+var _wp$element = wp.element,
+    Fragment = _wp$element.Fragment,
+    useState = _wp$element.useState;
+function PremiumShadow(_ref) {
+    var label = _ref.label,
+        value = _ref.value,
+        onChange = _ref.onChange,
+        _ref$boxShadow = _ref.boxShadow,
+        boxShadow = _ref$boxShadow === undefined ? false : _ref$boxShadow;
 
+    var defaultValues = {
+        'color': '',
+        'blur': '',
+        'horizontal': '',
+        'vertical': '',
+        'position': ' '
+    };
+    value = value ? _extends({}, defaultValues, value) : defaultValues;
 
-    var POSITION = [{
-        value: "inset",
-        label: __("Inset", 'premium-blocks-for-gutenberg')
-    }, {
-        value: "",
-        label: __("Outline", 'premium-blocks-for-gutenberg')
-    }];
+    var _useState = useState(value),
+        _useState2 = _slicedToArray(_useState, 2),
+        state = _useState2[0],
+        setState = _useState2[1];
+
+    var onChangeShadow = function onChangeShadow(item, value) {
+        var updatedState = _extends({}, state);
+        updatedState[item] = value;
+        setState(updatedState);
+        onChange(updatedState);
+    };
+
+    var POSITION = [{ value: "inset", label: __("Inset", 'premium-blocks-for-gutenberg') }, { value: "", label: __("Outline", 'premium-blocks-for-gutenberg') }];
+
+    var color = state.color,
+        blur = state.blur,
+        horizontal = state.horizontal,
+        vertical = state.vertical,
+        position = state.position;
+
 
     return React.createElement(
-        "div",
-        { className: "premium-control-toggle premium-shadow-control__container" },
+        'div',
+        { className: 'premium-control-toggle premium-shadow-control__container' },
         React.createElement(
-            "strong",
+            'strong',
             null,
             __(label || "Box Shadow")
         ),
         React.createElement(
-            "div",
-            { className: "premium-shadow-control__wrapper" },
+            'div',
+            { className: 'premium-shadow-control__wrapper' },
             React.createElement(_ColorComponent2.default, {
                 colorValue: color,
                 colorDefault: '',
-                onColorChange: onChangeColor,
+                onColorChange: function onColorChange(value) {
+                    return onChangeShadow('color', value);
+                },
                 disableReset: true
             }),
             React.createElement(Dropdown, {
-                className: "premium-control-toggle-btn",
-                contentClassName: "premium-control-toggle-content",
-                position: "bottom right",
-                renderToggle: function renderToggle(_ref) {
-                    var isOpen = _ref.isOpen,
-                        onToggle = _ref.onToggle;
+                className: 'premium-control-toggle-btn',
+                contentClassName: 'premium-control-toggle-content',
+                position: 'bottom right',
+                renderToggle: function renderToggle(_ref2) {
+                    var isOpen = _ref2.isOpen,
+                        onToggle = _ref2.onToggle;
                     return React.createElement(
                         Button,
-                        { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
-                        React.createElement("i", { className: "dashicons dashicons-edit" })
+                        { isSmall: true, onClick: onToggle, 'aria-expanded': isOpen },
+                        React.createElement('i', { className: 'dashicons dashicons-edit' })
                     );
                 },
                 renderContent: function renderContent() {
@@ -684,7 +700,9 @@ function PremiumShadow(props) {
                         React.createElement(_singleRangeControl2.default, {
                             label: __("Horizontal"),
                             value: horizontal,
-                            onChange: onChangehHorizontal,
+                            onChange: function onChange(value) {
+                                return onChangeShadow('horizontal', value);
+                            },
                             showUnit: false,
                             defaultValue: 0,
                             min: -100,
@@ -693,7 +711,9 @@ function PremiumShadow(props) {
                         React.createElement(_singleRangeControl2.default, {
                             label: __("Vertical"),
                             value: vertical,
-                            onChange: onChangeVertical,
+                            onChange: function onChange(value) {
+                                return onChangeShadow('vertical', value);
+                            },
                             showUnit: false,
                             defaultValue: 0,
                             min: -100,
@@ -702,7 +722,9 @@ function PremiumShadow(props) {
                         React.createElement(_singleRangeControl2.default, {
                             label: __("Blur"),
                             value: blur,
-                            onChange: onChangeBlur,
+                            onChange: function onChange(value) {
+                                return onChangeShadow('blur', value);
+                            },
                             showUnit: false,
                             defaultValue: 0
                         }),
@@ -710,7 +732,9 @@ function PremiumShadow(props) {
                             label: __("Position"),
                             options: POSITION,
                             value: position,
-                            onChange: onChangePosition
+                            onChange: function onChange(value) {
+                                return onChangeShadow('position', value);
+                            }
                         })
                     );
                 }
@@ -896,6 +920,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _premiumFonts = __webpack_require__(221);
@@ -915,8 +941,6 @@ var _fontList = __webpack_require__(223);
 var _fontList2 = _interopRequireDefault(_fontList);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -954,34 +978,40 @@ function fuzzysearch(needle, haystack) {
 var PremiumTypo = function (_Component) {
     _inherits(PremiumTypo, _Component);
 
-    function PremiumTypo(props) {
+    function PremiumTypo() {
         _classCallCheck(this, PremiumTypo);
 
-        var _this = _possibleConstructorReturn(this, (PremiumTypo.__proto__ || Object.getPrototypeOf(PremiumTypo)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (PremiumTypo.__proto__ || Object.getPrototypeOf(PremiumTypo)).apply(this, arguments));
 
-        var responsiveSize = void 0;
+        var FontSize = void 0;
         if (_this.props.components.includes("responsiveSize")) {
-            responsiveSize = {
-                Desktop: _this.props.fontSize || '',
-                Tablet: _this.props.fontSizeTablet || '',
-                Mobile: _this.props.fontSizeMobile || ''
+            FontSize = {
+                'Desktop': '',
+                'Tablet': '',
+                'Mobile': '',
+                unit: 'px'
             };
+        } else {
+            FontSize = '';
         }
+        var defaultValues = {
+            "font-weight": '',
+            'font-style': '',
+            'text-transform': '',
+            'letter-spacing': '',
+            'font-family': 'Default',
+            'line-height': '',
+            'text-decoration': '',
+            'font-size': FontSize
+        };
         _this.state = {
-            fontFamily: _this.props.fontFamily || 'Default',
-            line: _this.props.line,
-            weight: _this.props.weight || '400',
-            size: _this.props.components.includes("responsiveSize") ? _this.props.fontSize : _this.props.size,
-            textTransform: _this.props.textTransform,
-            textDecoration: _this.props.textDecoration,
-            sizeUnit: _this.props.sizeUnit || 'px',
+            sizeUnit: FontSize['unit'] || 'px',
             isVisible: false,
             currentView: '',
             search: "",
             showUnit: _this.props.showUnit || false,
-            spacing: _this.props.spacing,
-            style: _this.props.style,
-            device: 'Desktop'
+            device: 'Desktop',
+            value: _this.props.value ? _extends({}, defaultValues, _this.props.value) : _this.props.value
         };
         return _this;
     }
@@ -1001,55 +1031,21 @@ var PremiumTypo = function (_Component) {
 
             var _props = this.props,
                 components = _props.components,
-                setAttributes = _props.setAttributes,
-                _props$onChangeTextTr = _props.onChangeTextTransform,
-                onChangeTextTransform = _props$onChangeTextTr === undefined ? function () {} : _props$onChangeTextTr,
-                _props$onChangeTextDe = _props.onChangeTextDecoration,
-                onChangeTextDecoration = _props$onChangeTextDe === undefined ? function () {} : _props$onChangeTextDe,
-                _props$onChangeFamily = _props.onChangeFamily,
-                onChangeFamily = _props$onChangeFamily === undefined ? function () {} : _props$onChangeFamily,
-                _onChange = _props.onChange,
-                _props$onChangeWeight = _props.onChangeWeight,
-                onChangeWeight = _props$onChangeWeight === undefined ? function () {} : _props$onChangeWeight,
-                _props$onChangeStyle = _props.onChangeStyle,
-                onChangeStyle = _props$onChangeStyle === undefined ? function () {} : _props$onChangeStyle,
-                _props$onChangeSpacin = _props.onChangeSpacing,
-                onChangeSpacing = _props$onChangeSpacin === undefined ? function () {} : _props$onChangeSpacin,
-                _props$onChangeLine = _props.onChangeLine,
-                onChangeLine = _props$onChangeLine === undefined ? function () {} : _props$onChangeLine,
-                _props$onResetClick = _props.onResetClick,
-                onResetClick = _props$onResetClick === undefined ? function () {} : _props$onResetClick;
+                onChange = _props.onChange;
             var _state = this.state,
-                fontFamily = _state.fontFamily,
-                line = _state.line,
-                weight = _state.weight,
-                size = _state.size,
-                textTransform = _state.textTransform,
-                textDecoration = _state.textDecoration,
+                value = _state.value,
                 sizeUnit = _state.sizeUnit,
                 isVisible = _state.isVisible,
                 currentView = _state.currentView,
                 search = _state.search,
-                showUnit = _state.showUnit,
-                spacing = _state.spacing,
-                style = _state.style,
                 device = _state.device;
 
-            var STYLE = [{
-                value: "normal",
-                label: __("Normal", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "italic",
-                label: __("Italic", 'premium-blocks-for-gutenberg')
-            }, {
-                value: "oblique",
-                label: __("Oblique", 'premium-blocks-for-gutenberg')
-            }];
+            var STYLE = [{ value: "normal", label: __("Normal", 'premium-blocks-for-gutenberg') }, { value: "italic", label: __("Italic", 'premium-blocks-for-gutenberg') }, { value: "oblique", label: __("Oblique", 'premium-blocks-for-gutenberg') }];
             var fonts = [{ value: "Default", label: __("Default", 'premium-blocks-for-gutenberg'), weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Arial", label: "Arial", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Helvetica", label: "Helvetica", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Times New Roman", label: "Times New Roman", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }, { value: "Georgia", label: "Georgia", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false }];
             var fontWeight = "";
             Object.keys(_premiumFonts2.default).map(function (k, v) {
                 fonts.push({ value: k, label: k, weight: _premiumFonts2.default[k].weight, google: true });
-                if (k === fontFamily) {
+                if (k === value['font-family']) {
                     fontWeight = _premiumFonts2.default[k].weight;
                 }
             });
@@ -1071,12 +1067,12 @@ var PremiumTypo = function (_Component) {
                 }
             };
             var renderVariations = fonts.map(function (item, index) {
-                if (item.value == fontFamily) {
+                if (item.value == value['font-family']) {
                     return (item.weight || []).map(function (weights, i) {
                         return React.createElement(
                             "li",
-                            { key: i, className: "" + (weights == weight ? 'active' : ''), onClick: function onClick() {
-                                    _this2.setState({ weight: weights }), onChangeWeight(weights);
+                            { key: i, className: "" + (weights == value['font-weight'] ? 'active' : ''), onClick: function onClick() {
+                                    return changeTypography('font-weight', weights);
                                 } },
                             React.createElement(
                                 "span",
@@ -1087,10 +1083,16 @@ var PremiumTypo = function (_Component) {
                     });
                 }
             });
+            var changeTypography = function changeTypography(item, value) {
+                var initialState = _extends({}, _this2.state.value);
+                initialState[item] = value;
+                onChange(initialState);
+                _this2.setState({ value: initialState });
+            };
             var linearFonts = fonts.filter(function (family) {
                 return fuzzysearch(search.toLowerCase(), family['value'].toLowerCase());
             });
-            var fontSize = components.includes("responsiveSize") ? size[device] : size;
+            var fontSize = components.includes("responsiveSize") ? value['font-size'][device] : value['font-size'];
             return React.createElement(
                 "div",
                 { className: "premium-control-toggle premium-typography" },
@@ -1127,7 +1129,7 @@ var PremiumTypo = function (_Component) {
                                 React.createElement(
                                     "span",
                                     null,
-                                    fontFamily
+                                    value['font-family']
                                 ),
                                 isVisible && currentView == 'fonts' && components.includes('family') && React.createElement(
                                     Popover,
@@ -1153,7 +1155,7 @@ var PremiumTypo = function (_Component) {
                                                             onKeyUp: function onKeyUp(e) {
                                                                 if (e.keyCode == 13) {
                                                                     if (linearFonts.length > 0) {
-                                                                        onChangeFamily(linearFonts[0]);
+                                                                        changeTypography("font-family", linearFonts[0]);
                                                                         _this2.setState({ search: '' });
                                                                     }
                                                                 }
@@ -1176,9 +1178,9 @@ var PremiumTypo = function (_Component) {
                                                 ),
                                                 React.createElement(_fontList2.default, {
                                                     linearFontsList: linearFonts,
-                                                    value: fontFamily,
+                                                    value: value['font-family'],
                                                     onPickFamily: function onPickFamily(value) {
-                                                        _this2.setState({ fontFamily: value }), onChangeFamily(value);
+                                                        changeTypography('font-family', value);
                                                     }
                                                 })
                                             )
@@ -1213,12 +1215,12 @@ var PremiumTypo = function (_Component) {
                                                     { className: "customize-control-premium-slider" },
                                                     React.createElement(_singleRangeControl2.default, {
                                                         label: __("Font Size (PX)", 'premium-blocks-for-gutenberg'),
-                                                        value: size,
+                                                        value: value['font-size'],
                                                         min: "10",
                                                         max: "80",
                                                         defaultValue: 20,
                                                         onChange: function onChange(value) {
-                                                            _this2.setState({ size: value }), onChangeSize(value);
+                                                            changeTypography('font-size', value);
                                                         },
                                                         showUnit: false
                                                     })
@@ -1228,15 +1230,10 @@ var PremiumTypo = function (_Component) {
                                                     { className: "customize-control-premium-slider" },
                                                     React.createElement(_responsiveRangeControl2.default, {
                                                         label: __("Font Size", 'premium-blocks-for-gutenberg'),
-                                                        value: this.props.fontSize,
+                                                        value: value['font-size'],
                                                         onChange: function onChange(value) {
-                                                            return _onChange(value, "value");
+                                                            return changeTypography('font-size', value);
                                                         },
-
-                                                        onChangeUnit: function onChangeUnit(key) {
-                                                            return setAttributes(_defineProperty({}, _this2.props.fontSizeType.label, key));
-                                                        },
-                                                        unit: this.props.fontSizeType.value,
                                                         showUnit: true,
                                                         defaultValue: 20,
                                                         units: ["px", "em"]
@@ -1247,9 +1244,9 @@ var PremiumTypo = function (_Component) {
                                                     { className: "customize-control-premium-slider" },
                                                     React.createElement(_singleRangeControl2.default, {
                                                         label: __("Line Height (PX)", 'premium-blocks-for-gutenberg'),
-                                                        value: line,
+                                                        value: value['line-height'],
                                                         onChange: function onChange(value) {
-                                                            _this2.setState({ line: value }), onChangeLine(value);
+                                                            changeTypography('line-height', value);
                                                         },
                                                         defaultValue: 1,
                                                         showUnit: false,
@@ -1262,9 +1259,9 @@ var PremiumTypo = function (_Component) {
                                                     { className: "customize-control-premium-slider" },
                                                     React.createElement(_singleRangeControl2.default, {
                                                         label: __("Letter Spacing (PX)", 'premium-blocks-for-gutenberg'),
-                                                        value: spacing,
+                                                        value: value['letter-spacing'],
                                                         onChange: function onChange(value) {
-                                                            _this2.setState({ spacing: value }), onChangeSpacing(value);
+                                                            changeTypography('letter-spacing', value);
                                                         },
                                                         defaultValue: '',
                                                         showUnit: false,
@@ -1279,11 +1276,11 @@ var PremiumTypo = function (_Component) {
                                                     React.createElement(SelectControl, {
                                                         label: __("Style", 'premium-blocks-for-gutenberg'),
                                                         options: STYLE,
-                                                        value: style,
+                                                        value: value['font-style'],
                                                         onChange: function onChange(value) {
-                                                            _this2.setState({ style: value }), onChangeStyle(value);
-                                                        },
-                                                        onResetClick: onResetClick
+                                                            changeTypography('font-style', value);
+                                                        }
+                                                        // onResetClick={onResetClick}
                                                     })
                                                 ),
                                                 components.includes("Upper") && React.createElement(
@@ -1298,9 +1295,9 @@ var PremiumTypo = function (_Component) {
                                                                 {
                                                                     key: variant,
                                                                     onClick: function onClick() {
-                                                                        _this2.setState({ textTransform: variant }), onChangeTextTransform(variant);
+                                                                        changeTypography('text-transform', variant);
                                                                     },
-                                                                    className: "" + (textTransform == variant ? 'active' : ''),
+                                                                    className: "" + (value['text-transform'] == variant ? 'active' : ''),
                                                                     "data-variant": variant },
                                                                 React.createElement(
                                                                     "i",
@@ -1323,9 +1320,9 @@ var PremiumTypo = function (_Component) {
                                                                 {
                                                                     key: variant,
                                                                     onClick: function onClick() {
-                                                                        _this2.setState({ textDecoration: variant }), onChangeTextDecoration(variant);
+                                                                        changeTypography('text-decoration', variant);
                                                                     },
-                                                                    className: "" + (textDecoration == variant ? 'active' : ''),
+                                                                    className: "" + (value['text-decoration'] == variant ? 'active' : ''),
                                                                     "data-variant": variant },
                                                                 React.createElement(
                                                                     "i",
@@ -1349,7 +1346,7 @@ var PremiumTypo = function (_Component) {
                                         toggleVisible("variations");
                                     }
                                 },
-                                weight,
+                                value['font-weight'],
                                 isVisible && currentView == 'variations' && React.createElement(
                                     Popover,
                                     { className: "premium-typography-option", onClose: toggleClose },
@@ -2532,6 +2529,11 @@ exports.default = WebfontLoader;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 exports.default = PremiumBackgroundControl;
 
 var _react = __webpack_require__(9);
@@ -2564,29 +2566,60 @@ var _wp$components = wp.components,
 // import { FontAwesomeEnabled } from "../../assets/js/settings";
 
 var __ = wp.i18n.__;
-var Fragment = wp.element.Fragment;
+var _wp$element = wp.element,
+    Fragment = _wp$element.Fragment,
+    useState = _wp$element.useState;
 function PremiumBackgroundControl(_ref) {
-    var backgroundType = _ref.backgroundType,
-        backgroundColor = _ref.backgroundColor,
-        backgroundImageID = _ref.backgroundImageID,
-        backgroundImageURL = _ref.backgroundImageURL,
-        backgroundPosition = _ref.backgroundPosition,
-        backgroundRepeat = _ref.backgroundRepeat,
-        backgroundSize = _ref.backgroundSize,
-        fixed = _ref.fixed,
-        gradientType = _ref.gradientType,
-        setAttributes = _ref.setAttributes,
-        saveContainerStyle = _ref.saveContainerStyle,
-        gradientLocationOne = _ref.gradientLocationOne,
-        gradientColorTwo = _ref.gradientColorTwo,
-        gradientLocationTwo = _ref.gradientLocationTwo,
-        gradientAngle = _ref.gradientAngle,
-        gradientPosition = _ref.gradientPosition;
+    var value = _ref.value,
+        onChange = _ref.onChange;
 
+    var defaultValues = {
+        'backgroundType': '',
+        'backgroundColor': '',
+        'backgroundImageID': '',
+        'backgroundImageURL': '',
+        'backgroundPosition': '',
+        'backgroundRepeat': '',
+        'backgroundSize': '',
+        'fixed': false,
+        'gradientLocationOne': "",
+        'gradientColorTwo': '',
+        'gradientLocationTwo': '',
+        'gradientAngle': '',
+        'gradientPosition': '',
+        'gradientType': ''
+    };
+    value = value ? _extends({}, defaultValues, value) : defaultValues;
+
+    var _useState = useState(value),
+        _useState2 = _slicedToArray(_useState, 2),
+        state = _useState2[0],
+        setState = _useState2[1];
 
     var gradTypes = [{ key: 'linear', name: __('Linear') }, { key: 'radial', name: __('Radial') }];
 
     var bgType = [{ key: 'solid', icon: "fa fa-paint-brush", tooltip: __('Classic') }, { key: 'gradient', icon: "fa fa-barcode", tooltip: __('Gradient') }];
+    var onChangeBackground = function onChangeBackground(item, value) {
+        var updatedState = _extends({}, state);
+        updatedState[item] = value;
+        setState(updatedState);
+        onChange(updatedState);
+    };
+    var backgroundType = state.backgroundType,
+        backgroundColor = state.backgroundColor,
+        backgroundImageID = state.backgroundImageID,
+        backgroundImageURL = state.backgroundImageURL,
+        backgroundPosition = state.backgroundPosition,
+        backgroundRepeat = state.backgroundRepeat,
+        backgroundSize = state.backgroundSize,
+        fixed = state.fixed,
+        gradientLocationOne = state.gradientLocationOne,
+        gradientColorTwo = state.gradientColorTwo,
+        gradientLocationTwo = state.gradientLocationTwo,
+        gradientAngle = state.gradientAngle,
+        gradientPosition = state.gradientPosition,
+        gradientType = state.gradientType;
+
 
     return _react2.default.createElement(
         Fragment,
@@ -2617,7 +2650,7 @@ function PremiumBackgroundControl(_ref) {
                                 isSmall: true,
                                 isPrimary: backgroundType === key,
                                 onClick: function onClick() {
-                                    return setAttributes({ backgroundType: key });
+                                    return onChangeBackground('backgroundType', key);
                                 }
                             },
                             1 == PremiumOptionsSettings.FontAwesomeEnabled ? _react2.default.createElement('i', { className: icon }) : tooltip
@@ -2633,9 +2666,7 @@ function PremiumBackgroundControl(_ref) {
                 type: 'color',
                 colorValue: backgroundColor,
                 onChangeColor: function onChangeColor(newValue) {
-                    return saveContainerStyle({
-                        containerBack: newValue
-                    });
+                    return onChangeBackground('backgroundColor', newValue);
                 }
             }),
             _react2.default.createElement(_premiumBackground2.default, {
@@ -2646,28 +2677,22 @@ function PremiumBackgroundControl(_ref) {
                 backgroundSize: backgroundSize,
                 fixed: fixed,
                 onSelectMedia: function onSelectMedia(media) {
-                    saveContainerStyle({
-                        backgroundImageID: media.id,
-                        backgroundImageURL: media.url
-                    });
+                    onChangeBackground('backgroundImageURL', media.url);
                 },
                 onRemoveImage: function onRemoveImage() {
-                    return saveContainerStyle({
-                        backgroundImageURL: "",
-                        backgroundImageID: ""
-                    });
+                    return onChangeBackground('backgroundImageURL', '');
                 },
                 onChangeBackPos: function onChangeBackPos(newValue) {
-                    return saveContainerStyle({ backgroundPosition: newValue });
+                    return onChangeBackground('backgroundPosition', newValue);
                 },
                 onchangeBackRepeat: function onchangeBackRepeat(newValue) {
-                    return saveContainerStyle({ backgroundRepeat: newValue });
+                    return onChangeBackground('backgroundRepeat', newValue);
                 },
                 onChangeBackSize: function onChangeBackSize(newValue) {
-                    return saveContainerStyle({ backgroundSize: newValue });
+                    return onChangeBackground('backgroundSize', newValue);
                 },
                 onChangeFixed: function onChangeFixed(check) {
-                    return saveContainerStyle({ fixed: check });
+                    return onChangeBackground('fixed', check);
                 }
             })
         ),
@@ -2679,14 +2704,14 @@ function PremiumBackgroundControl(_ref) {
                 colorValue: backgroundColor,
                 colorDefault: '',
                 onColorChange: function onColorChange(value) {
-                    saveContainerStyle({ containerBack: value });
+                    onChangeBackground('backgroundColor', value);
                 }
             }),
             _react2.default.createElement(_singleRangeControl2.default, {
                 label: __('Location', 'premium-blocks-for-gutenberg'),
                 value: gradientLocationOne,
                 onChange: function onChange(value) {
-                    saveContainerStyle({ gradientLocationOne: value });
+                    return onChangeBackground('gradientLocationOne', value);
                 },
                 showUnit: false,
                 defaultValue: 0
@@ -2696,14 +2721,14 @@ function PremiumBackgroundControl(_ref) {
                 colorValue: gradientColorTwo,
                 colorDefault: '#777777',
                 onColorChange: function onColorChange(value) {
-                    saveContainerStyle({ gradientColorTwo: value });
+                    return onChangeBackground('gradientColorTwo', value);
                 }
             }),
             _react2.default.createElement(_singleRangeControl2.default, {
                 label: __('Location', 'premium-blocks-for-gutenberg'),
                 value: gradientLocationTwo,
                 onChange: function onChange(value) {
-                    saveContainerStyle({ gradientLocationTwo: value });
+                    return onChangeBackground('gradientLocationTwo', value);
                 },
                 showUnit: false,
                 defaultValue: 0
@@ -2730,7 +2755,7 @@ function PremiumBackgroundControl(_ref) {
                                 isSmall: true,
                                 isPrimary: gradientType === key,
                                 onClick: function onClick() {
-                                    saveContainerStyle({ gradientType: key });
+                                    return onChangeBackground('gradientType', key);
                                 }
                             },
                             name
@@ -2742,7 +2767,7 @@ function PremiumBackgroundControl(_ref) {
                 label: __('Gradient Angle', 'premium-blocks-for-gutenberg'),
                 value: gradientAngle,
                 onChange: function onChange(value) {
-                    saveContainerStyle({ gradientAngle: value });
+                    return onChangeBackground('gradientAngle', value);
                 },
                 showUnit: false,
                 defaultValue: 0,
@@ -2754,7 +2779,7 @@ function PremiumBackgroundControl(_ref) {
                 value: gradientPosition,
                 options: [{ value: 'center top', label: __('Center Top', 'premium-blocks-for-gutenberg') }, { value: 'center center', label: __('Center Center', 'premium-blocks-for-gutenberg') }, { value: 'center bottom', label: __('Center Bottom', 'premium-blocks-for-gutenberg') }, { value: 'left top', label: __('Left Top', 'premium-blocks-for-gutenberg') }, { value: 'left center', label: __('Left Center', 'premium-blocks-for-gutenberg') }, { value: 'left bottom', label: __('Left Bottom', 'premium-blocks-for-gutenberg') }, { value: 'right top', label: __('Right Top', 'premium-blocks-for-gutenberg') }, { value: 'right center', label: __('Right Center', 'premium-blocks-for-gutenberg') }, { value: 'right bottom', label: __('Right Bottom', 'premium-blocks-for-gutenberg') }],
                 onChange: function onChange(value) {
-                    return saveContainerStyle({ gradientPosition: value });
+                    return onChangeBackground('gradientPosition', value);
                 }
             })
         )
