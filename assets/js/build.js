@@ -33826,6 +33826,120 @@ var attributes = {
     }
 };
 
+var new_attributes = {
+    titleStyles: [{
+        titleTag: attributes.titleTag,
+        titleFont: attributes.titleFont,
+        titleColor: attributes.titleColor,
+        titleSize: attributes.titleSize,
+        titleSizeUnit: attributes.titleSize,
+        titleSizeTablet: attributes.titleSizeTablet,
+        titleSizeMobile: attributes.titleSizeMobile,
+        titleLine: attributes.titleLine,
+        titleLetter: attributes.titleLetter,
+        titleStyle: attributes.titleStyle,
+        titleUpper: attributes.titleUpper,
+        titleWeight: attributes.titleWeight,
+        titleShadowColor: attributes.titleShadowColor,
+        titleShadowBlur: attributes.titleShadowBlur,
+        titleShadowHorizontal: attributes.titleShadowHorizontal,
+        titleShadowVertical: attributes.titleShadowVertical,
+        titleMarginT: attributes.titleMarginT,
+        titleMarginB: attributes.titleMarginB
+    }],
+    descStyles: [{
+        descFont: attributes.descFont,
+        descColor: attributes.descColor,
+        descSize: attributes.descSize,
+        descSizeUnit: attributes.descSizeUnit,
+        descSizeTablet: attributes.descSizeTablet,
+        descSizeMobile: attributes.descSizeMobile,
+        descLine: attributes.descLine,
+        descWeight: attributes.descWeight,
+        descMarginT: attributes.descMarginT,
+        descMarginB: attributes.descMarginB
+    }],
+    btnStyles: [{
+        btnSize: attributes.btnSize,
+        btnSizeUnit: attributes.btnSizeUnit,
+        btnSizeTablet: attributes.btnSizeTablet,
+        btnSizeMobile: attributes.btnSizeMobile,
+        btnLine: attributes.btnLine,
+        btnLetter: attributes.btnLetter,
+        btnStyle: attributes.btnStyle,
+        btnUpper: attributes.btnUpper,
+        btnWeight: attributes.btnWeight,
+        btnBorderType: attributes.btnBorderType,
+        btnBorderWidth: attributes.btnBorderWidth,
+        btnBorderTop: attributes.btnBorderTop,
+        btnBorderRight: attributes.btnBorderRight,
+        btnBorderBottom: attributes.btnBorderBottom,
+        btnBorderLeft: attributes.btnBorderLeft,
+        btnBorderRadius: attributes.btnBorderRadius,
+        btnBorderColor: attributes.btnBorderColor,
+        btnPadding: attributes.btnPadding,
+        btnPaddingU: attributes.btnPaddingU,
+        btnMarginT: attributes.btnMarginT,
+        btnMarginB: attributes.btnMarginB,
+        btnShadowColor: attributes.btnShadowColor,
+        btnShadowBlur: attributes.btnShadowBlur,
+        btnShadowHorizontal: attributes.btnShadowHorizontal,
+        btnShadowVertical: attributes.btnShadowVertical,
+        btnShadowPosition: attributes.btnShadowPosition,
+        btnColor: attributes.btnColor,
+        btnHoverColor: attributes.btnHoverColor,
+        btnBack: attributes.btnBack,
+        btnHoverBack: attributes.btnHoverBack,
+        btnOpacity: attributes.btnOpacity
+    }],
+    containerStyles: [{
+        backOpacity: attributes.backOpacity,
+        backColor: attributes.backColor,
+        imageID: attributes.imageID,
+        imageURL: attributes.imageURL,
+        backgroundRepeat: attributes.backgroundRepeat,
+        backgroundPosition: attributes.backgroundPosition,
+        backgroundSize: attributes.backgroundSize,
+        fixed: attributes.fixed,
+        borderType: attributes.borderType,
+        borderWidth: attributes.borderWidth,
+        borderRadius: attributes.borderRadius,
+        borderColor: attributes.borderColor,
+        borderTop: attributes.borderTop,
+        borderRight: attributes.borderRight,
+        borderBottom: attributes.borderBottom,
+        borderLeft: attributes.borderLeft,
+        shadowColor: attributes.shadowColor,
+        shadowBlur: attributes.shadowBlur,
+        shadowHorizontal: attributes.shadowHorizontal,
+        shadowVertical: attributes.shadowVertical,
+        shadowPosition: attributes.shadowPosition,
+        hoverShadowColor: attributes.hoverShadowColor,
+        hoverShadowBlur: attributes.hoverShadowBlur,
+        hoverShadowHorizontal: attributes.hoverShadowHorizontal,
+        hoverShadowVertical: attributes.hoverShadowVertical,
+        hoverShadowPosition: attributes.hoverShadowPosition,
+        marginT: attributes.marginT,
+        marginR: attributes.marginR,
+        marginB: attributes.marginB,
+        marginL: attributes.marginL,
+        paddingT: attributes.paddingT,
+        paddingR: attributes.paddingR,
+        paddingB: attributes.paddingB,
+        paddingL: attributes.paddingL,
+        paddingU: attributes.paddingU,
+        gradientColorOne: '',
+        gradientLocationOne: '0',
+        gradientColorTwo: '',
+        gradientLocationTwo: '100',
+        gradientType: 'linear',
+        gradientAngle: '180',
+        gradientPosition: 'center center'
+    }]
+};
+
+var deprecated_attributes = Object.assign(attributes, new_attributes);
+
 var deprecatedContent = [{
     attributes: attributes,
     migrate: function migrate(attributes) {
@@ -35938,7 +36052,7 @@ var deprecatedContent = [{
         );
     }
 }, {
-    attributes: attributes,
+    attributes: deprecated_attributes,
     migrate: function migrate(attributes) {
         return {
             iconSize: {
@@ -36282,7 +36396,7 @@ var deprecatedContent = [{
 
 
         var mainClasses = (0, _classnames2.default)(className);
-
+        console.log(containerStyles);
         return React.createElement(
             'div',
             {
@@ -36381,10 +36495,11 @@ var deprecatedContent = [{
                     React.createElement(RichText.Content, {
                         tagName: 'a',
                         className: 'premium-icon-box__btn premium-button',
-                        href: btnLink,
-                        rel: 'noopener noreferrer',
+                        href: btnLink
+                        // rel="noopener noreferrer"
+                        // // target="_self"
+                        , value: btnText,
                         target: btnTarget ? "_blank" : "_self",
-                        value: btnText,
                         style: {
                             color: btnStyles[0].btnColor,
                             backgroundColor: btnStyles[0].btnBack,
