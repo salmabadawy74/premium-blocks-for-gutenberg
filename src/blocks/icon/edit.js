@@ -7,7 +7,6 @@ import PremiumBackgroundControl from "../../components/Premium-Background-Contro
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
-import RadioComponent from '../../components/radio-control';
 import PremiumShadow from "../../components/PremiumShadow";
 import SpacingControl from '../../components/premium-responsive-spacing'
 import InspectorTabs from '../../components/inspectorTabs';
@@ -134,12 +133,6 @@ const edit = props => {
                                 value={hoverEffect}
                                 onChange={newEffect => setAttributes({ hoverEffect: newEffect })}
                             />
-                            {/* <RadioComponent
-                                choices={["left", "center", "right"]}
-                                value={align}
-                                onChange={newValue => setAttributes({ align: newValue })}
-                                label={__("Align", 'premium-blocks-for-gutenberg')}
-                            /> */}
                             <p> {__('Alignment')}</p>
                             <Toolbar
                                 controls={ALIGNS.map(contentAlign => ({
