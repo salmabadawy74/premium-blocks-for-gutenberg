@@ -216,56 +216,6 @@ const attributes = {
             }
         ]
     },
-    containerStyles: {
-        type: "array",
-        default: [
-            {
-                backOpacity: 1,
-                backColor: '',
-                imageID: '',
-                imageURL: '',
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "top center",
-                backgroundSize: "auto",
-                fixed: false,
-                borderType: "none",
-                borderWidth: 1,
-                borderRadius: '',
-                borderColor: '',
-                borderTop: '',
-                borderRight: '',
-                borderBottom: '',
-                borderLeft: '',
-                shadowColor: '',
-                shadowBlur: '',
-                shadowHorizontal: '',
-                shadowVertical: '',
-                shadowPosition: '',
-                hoverShadowColor: '',
-                hoverShadowBlur: '',
-                hoverShadowHorizontal: '',
-                hoverShadowVertical: '',
-                hoverShadowPosition: '',
-                marginT: '',
-                marginR: '',
-                marginB: '',
-                marginL: '',
-                paddingT: '',
-                paddingR: '',
-                paddingB: '',
-                paddingL: '',
-                paddingU: 'px',
-                gradientColorOne: '',
-                gradientLocationOne: '0',
-                gradientColorTwo: '',
-                gradientLocationTwo: '100',
-                gradientType: 'linear',
-                gradientAngle: '180',
-                gradientPosition: 'center center'
-
-            }
-        ]
-    },
     containerMargin: {
         type: "object",
         default: {
@@ -501,6 +451,110 @@ const attributes = {
                     bottom: "",
                     left: ""
                 }
+            }
+        }
+    },
+    containerBackground: {
+        type: "object",
+        default: {
+            'backgroundType': '',
+            'backgroundColor': '',
+            'backgroundImageID': '',
+            'backgroundImageURL': '',
+            'backgroundPosition': '',
+            'backgroundRepeat': '',
+            'backgroundSize': '',
+            'fixed': false,
+            'gradientLocationOne': "",
+            'gradientColorTwo': '',
+            'gradientLocationTwo': '',
+            'gradientAngle': '',
+            'gradientPosition': '',
+            'gradientType': ''
+        }
+    },
+    titleShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': ''
+        }
+    },
+    btnShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
+    },
+    containerShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
+    },
+    containerHoverShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
+    },
+    titleTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
+            'lineHeight': '',
+            'fontSize': {
+                'Desktop': 20,
+                "Tablet": 20,
+                "Mobile": 20,
+                unit: 'px'
+            }
+        }
+    },
+    descTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
+            'lineHeight': '',
+            'fontSize': {
+                'Desktop': 20,
+                "Tablet": 20,
+                "Mobile": 20,
+                unit: 'px'
+            }
+        }
+    },
+    btnTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontSize': {
+                'Desktop': 20,
+                "Tablet": 20,
+                "Mobile": 20,
+                unit: 'px'
             }
         }
     }

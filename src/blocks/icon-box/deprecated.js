@@ -2,7 +2,7 @@ const className = "premium-icon-box";
 const { __ } = wp.i18n;
 const { RichText } = wp.editor;
 import hexToRgba from 'hex-to-rgba'
-
+import classnames from 'classnames'
 
 const attributes = {
     block_id: {
@@ -2917,14 +2917,14 @@ const deprecatedContent = [
                     }
                 },
                 containerBorder: {
-                    borderColor: attributes.containerStyles[0].btnBorderColor,
-                    borderType: attributes.containerStyles[0].btnBorderType,
+                    borderColor: attributes.containerStyles[0].borderColor,
+                    borderType: attributes.containerStyles[0].borderType,
                     borderRadius: {
                         "Desktop": {
-                            top: "",
-                            right: "",
-                            bottom: "",
-                            left: ""
+                            top: attributes.containerStyles[0].borderRadius,
+                            right: attributes.containerStyles[0].borderRadius,
+                            bottom: attributes.containerStyles[0].borderRadius,
+                            left: attributes.containerStyles[0].borderRadius,
                         },
                         "Tablet": {
                             top: "",
@@ -2965,76 +2965,55 @@ const deprecatedContent = [
         save: (props) => {
             const {
                 block_id,
+                borderIconBox,
+                btnBorderIconBox,
                 align,
-                iconType,
                 iconImage,
                 iconImgUrl,
-                iconRadius,
-                selectedIcon,
-                iconChecked,
                 hoverEffect,
+                iconChecked,
+                iconPos,
+                iconHPos,
+                iconVPos,
                 iconSize,
+                iconRadius,
                 iconColor,
+                iconBackColor,
+                selectedIcon,
                 titleChecked,
                 titleText,
-                titleTag,
-                titleColor,
-                titleSize,
-                titleLine,
-                titleLetter,
-                titleStyle,
-                titleUpper,
-                titleWeight,
-                titleShadowBlur,
-                titleShadowColor,
-                titleShadowHorizontal,
-                titleShadowVertical,
+                descText,
+                descChecked,
+                btnChecked,
+                btnEffect,
+                effectDir,
+                btnTarget,
+                btnText,
+                btnLink,
+                btnHoverBorder,
+                hideDesktop,
+                hideTablet,
+                hideMobile,
+                iconOpacity,
+                titleStyles,
+                descStyles,
+                btnStyles,
+                containerStyles,
                 titleMarginT,
                 titleMarginB,
-                descChecked,
-                descText,
-                descColor,
-                descSize,
-                descLine,
-                descWeight,
                 descMarginT,
                 descMarginB,
-                btnChecked,
-                btnText,
-                btnTarget,
-                btnLink,
-                btnSize,
-                btnStyle,
-                btnUpper,
-                btnWeight,
-                btnLetter,
-                btnColor,
-                btnHoverColor,
-                btnHoverBorder,
-                btnBack,
-                btnHoverBack,
                 btnBorderWidth,
-                btnBorderRadius,
-                btnBorderColor,
-                btnBorderType,
-                btnPadding,
+                btnBorderTop,
+                btnBorderRight,
+                btnBorderBottom,
+                btnBorderLeft,
+                borderTop,
+                borderRight,
+                borderBottom,
+                borderLeft,
                 btnMarginT,
                 btnMarginB,
-                btnShadowBlur,
-                btnShadowColor,
-                btnShadowHorizontal,
-                btnShadowVertical,
-                btnShadowPosition,
-                backColor,
-                imageURL,
-                fixed,
-                backgroundRepeat,
-                backgroundPosition,
-                backgroundSize,
-                borderType,
-                borderWidth,
-                borderRadius,
-                borderColor,
                 marginT,
                 marginR,
                 marginB,
@@ -3043,19 +3022,31 @@ const deprecatedContent = [
                 paddingR,
                 paddingB,
                 paddingL,
-                shadowBlur,
-                shadowColor,
-                shadowHorizontal,
-                shadowVertical,
-                shadowPosition,
-                btnBorder,
-                containerBorder
+                iconType
             } = props.attributes;
+
+            const mainClasses = classnames(className, 'premium-icon-box');
 
             return (
                 <div
-                    id={`${className}-${block_id}`}
-                    className={`${className}`}
+                    id={`premium-icon-box-${block_id}`}
+                    className={`${mainClasses} premium-icon-box-${iconPos} premium-icon-box-${iconHPos} premium-icon-box-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                    style={{
+                        textAlign: align,
+                        borderStyle: containerStyles[0].borderType,
+                        borderWidth: borderIconBox
+                            ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
+                            : containerStyles[0].borderWidth + "px",
+                        borderRadius: containerStyles[0].borderRadius + "px",
+                        borderColor: containerStyles[0].borderColor,
+                        boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px ${containerStyles[0].shadowColor} ${containerStyles[0].shadowPosition}`,
+                        backgroundColor: containerStyles[0].backColor,
+                        backgroundImage: containerStyles[0].imageURL ? `url('${containerStyles[0].imageURL}')` : 'none',
+                        backgroundRepeat: containerStyles[0].backgroundRepeat,
+                        backgroundPosition: containerStyles[0].backgroundPosition,
+                        backgroundSize: containerStyles[0].backgroundSize,
+                        backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset"
+                    }}
                 >
                     {btnChecked && btnText && (
                         <style
@@ -3078,126 +3069,99 @@ const deprecatedContent = [
                             }}
                         />
                     )}
-                    <div
-                        className={`premium-icon-box-container`}
-                        style={{
-                            textAlign: align,
-                            border: containerBorder.borderType,
-                            borderColor: containerBorder.borderColor,
-                            marginTop: marginT,
-                            marginRight: marginR,
-                            marginBottom: marginB,
-                            marginLeft: marginL,
-                            paddingTop: paddingT,
-                            paddingRight: paddingR,
-                            paddingBottom: paddingB,
-                            paddingLeft: paddingL,
-                            boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
-                            backgroundColor: backColor,
-                            backgroundImage: `url('${imageURL}')`,
-                            backgroundRepeat: backgroundRepeat,
-                            backgroundPosition: backgroundPosition,
-                            backgroundSize: backgroundSize,
-                            backgroundAttachment: fixed ? "fixed" : "unset",
-                        }}
-                    >
-                        {iconChecked && (
-                            <div className={`${className}__icon_wrap`}>
-                                {"icon" === iconImage && selectedIcon && (
-                                    <i
-                                        className={`${selectedIcon} ${className}__icon premium-icon__${hoverEffect}`}
-                                        style={{
-                                            color: iconColor,
-                                            fontSize: iconSize,
-                                        }}
-                                    />
-                                )}
-                                {"image" === iconImage && iconImgUrl && (
-                                    <img
-                                        className={`${className}__icon premium-icon__${hoverEffect}`}
-                                        src={`${iconImgUrl}`}
-                                        alt="Image Icon"
-                                        style={{
-                                            width: iconSize + "px",
-                                            height: iconSize + "px",
-                                            borderRadius: iconRadius + "px",
-                                        }}
-                                    />
-                                )}
-                            </div>
-                        )}
+                    {iconChecked && (
+                        <div
+                            className={`premium-icon-box__icon_wrap premium-icon-box__icon_${iconVPos}`}
+                        >
+                            {"icon" === iconImage && selectedIcon && (
+                                <i
+                                    className={`${selectedIcon} premium-icon-box__icon premium-icon__${hoverEffect}`}
+                                    style={{
+                                        color: iconColor,
+                                        backgroundColor: iconBackColor,
+                                        fontSize: iconSize
+                                    }}
+                                />
+                            )}
+                            {"image" === iconImage && iconImgUrl && (
+                                <img
+                                    className={`premium-icon-box__icon premium-icon__${hoverEffect}`}
+                                    src={`${iconImgUrl}`}
+                                    alt="Image Icon"
+                                    style={{
+                                        width: iconSize + "px",
+                                        height: iconSize + "px",
+                                        borderRadius: iconRadius + "px"
+                                    }}
+                                />
+                            )}
+                        </div>
+                    )}
+                    <div className={`premium-icon-box__content_wrap`}>
                         {titleChecked && titleText && (
                             <div
-                                className={`${className}__title_wrap`}
-                                style={{
-                                    marginTop: titleMarginT,
-                                    marginBottom: titleMarginB,
-                                }}
+                                className={`premium-icon-box__title_wrap`}
                             >
                                 <RichText.Content
-                                    tagName={titleTag.toLowerCase()}
-                                    className={`${className}__title`}
+                                    tagName={titleStyles[0].titleTag.toLowerCase()}
+                                    className={`premium-icon-box__title`}
                                     value={titleText}
                                     style={{
-                                        color: titleColor,
-                                        fontSize: titleSize + "px",
-                                        letterSpacing: titleLetter + "px",
-                                        textTransform: titleUpper ? "uppercase" : "none",
-                                        fontStyle: titleStyle,
-                                        fontWeight: titleWeight,
-                                        textShadow: `${titleShadowHorizontal}px ${titleShadowVertical}px ${titleShadowBlur}px ${titleShadowColor}`,
-                                        lineHeight: titleLine + "px",
+                                        color: titleStyles[0].titleColor,
+                                        fontFamily: titleStyles[0].titleFont,
+                                        letterSpacing: titleStyles[0].titleLetter + "px",
+                                        textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                        fontStyle: titleStyles[0].titleStyle,
+                                        fontWeight: titleStyles[0].titleWeight,
+                                        textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`,
+                                        lineHeight: titleStyles[0].titleLine + "px"
                                     }}
                                 />
                             </div>
                         )}
                         {descChecked && descText && (
                             <div
-                                className={`${className}__desc_wrap`}
-                                style={{
-                                    marginTop: descMarginT,
-                                    marginBottom: descMarginB,
-                                }}
+                                className={`premium-icon-box__desc_wrap`}
                             >
                                 <RichText.Content
                                     tagName="p"
-                                    className={`${className}__desc`}
+                                    className={`premium-icon-box__desc`}
                                     value={descText}
                                     style={{
-                                        color: descColor,
-                                        fontSize: descSize + "px",
-                                        lineHeight: descLine + "px",
-                                        fontWeight: descWeight,
+                                        color: descStyles[0].descColor,
+                                        fontFamily: descStyles[0].descFont,
+                                        lineHeight: descStyles[0].descLine + "px",
+                                        fontWeight: descStyles[0].descWeight
                                     }}
                                 />
                             </div>
                         )}
                         {btnChecked && btnText && (
                             <div
-                                className={`${className}__btn_wrap`}
-                                style={{
-                                    marginTop: btnMarginT,
-                                    marginBottom: btnMarginB,
-                                }}
+                                className={`premium-icon-box__btn_wrap premium-button__${btnEffect} premium-button__${effectDir}`}
                             >
                                 <RichText.Content
                                     tagName="a"
-                                    className={`${className}__btn`}
+                                    className={`premium-icon-box__btn premium-button`}
                                     href={btnLink}
+                                    rel="noopener noreferrer"
                                     target={btnTarget ? "_blank" : "_self"}
                                     value={btnText}
                                     style={{
-                                        color: btnColor,
-                                        backgroundColor: btnBack,
-                                        fontSize: btnSize + "px",
-                                        letterSpacing: btnLetter + "px",
-                                        textTransform: btnUpper ? "uppercase" : "none",
-                                        fontStyle: btnStyle,
-                                        fontWeight: btnWeight,
-                                        borderStyle: btnBorder.borderType,
-                                        borderColor: btnBorder.borderColor,
-                                        padding: btnPadding + "px",
-                                        boxShadow: `${btnShadowHorizontal}px ${btnShadowVertical}px ${btnShadowBlur}px ${btnShadowColor} ${btnShadowPosition}`,
+                                        color: btnStyles[0].btnColor,
+                                        backgroundColor: btnStyles[0].btnBack,
+                                        letterSpacing: btnStyles[0].btnLetter + "px",
+                                        textTransform: btnStyles[0].btnUpper ? "uppercase" : "none",
+                                        fontStyle: btnStyles[0].btnStyle,
+                                        fontWeight: btnStyles[0].btnWeight,
+                                        borderStyle: btnStyles[0].btnBorderType,
+                                        borderWidth: btnBorderIconBox
+                                            ? `${btnBorderTop}px ${btnBorderRight}px ${btnBorderBottom}px ${btnBorderLeft}px`
+                                            : btnStyles[0].btnBorderWidth + "px",
+                                        borderRadius: btnStyles[0].btnBorderRadius + "px",
+                                        borderColor: btnStyles[0].btnBorderColor,
+                                        padding: btnStyles[0].btnPadding + btnStyles[0].btnPaddingU,
+                                        boxShadow: `${btnStyles[0].btnShadowHorizontal}px ${btnStyles[0].btnShadowVertical}px ${btnStyles[0].btnShadowBlur}px ${btnStyles[0].btnShadowColor} ${btnStyles[0].btnShadowPosition}`
                                     }}
                                 />
                             </div>
