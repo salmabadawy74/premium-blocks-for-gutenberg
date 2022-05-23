@@ -64,32 +64,8 @@ const attributes = {
                 hoverColor: '',
                 iconColor: '',
                 iconHoverColor: '',
-                triggerSizeUnit: 'px',
-                triggerSize: '',
-                triggerSizeMobile: '',
-                triggerSizeTablet: '',
-                triggerFamily: '',
-                triggerWeight: '',
-                triggerStyle: '',
-                triggerSpacing: '',
-                triggerUpper: '',
                 triggerBack: '',
-                borderType: 'none',
-                borderColor: '',
-                borderRadius: '',
                 triggerHoverBack: '',
-                borderTypeH: 'none',
-                borderColorH: '',
-                borderRadiusH: '',
-                triggerShadowColor: '',
-                triggerShadowBlur: '',
-                triggerShadowHorizontal: '',
-                triggerShadowVertical: '',
-                triggerShadowPosition: '',
-                textShadowColor: '',
-                textShadowBlur: '',
-                textShadowHorizontal: '',
-                textShadowVertical: '',
                 blur: '',
                 bright: '',
                 contrast: '',
@@ -103,66 +79,6 @@ const attributes = {
             }
         ]
     },
-    triggerBorderTop: {
-        type: 'number'
-    },
-    triggerBorderRight: {
-        type: 'number'
-    },
-    triggerBorderBottom: {
-        type: 'number'
-    },
-    triggerBorderLeft: {
-        type: 'number'
-    },
-    triggerBorderTopH: {
-        type: 'number'
-    },
-    triggerBorderRightH: {
-        type: 'number'
-    },
-    triggerBorderBottomH: {
-        type: 'number'
-    },
-    triggerBorderLeftH: {
-        type: 'number'
-    },
-    triggerPaddingT: {
-        type: 'number'
-    },
-    triggerPaddingR: {
-        type: 'number'
-    },
-    triggerPaddingB: {
-        type: 'number'
-    },
-    triggerPaddingL: {
-        type: 'number'
-    },
-    triggerPaddingTTablet: {
-        type: 'number'
-    },
-    triggerPaddingRTablet: {
-        type: 'number'
-    },
-    triggerPaddingBTablet: {
-        type: 'number'
-    },
-    triggerPaddingLTablet: {
-        type: 'number'
-    },
-    triggerPaddingTMobile: {
-        type: 'number'
-    },
-    triggerPaddingRMobile: {
-        type: 'number'
-    },
-    triggerPaddingBMobile: {
-        type: 'number'
-    },
-    triggerPaddingLMobile: {
-        type: 'number'
-    },
     headerStyles: {
         type: 'array',
         default: [
@@ -170,32 +86,8 @@ const attributes = {
                 color: '',
                 backColor: '',
                 headerSizeUnit: 'px',
-                headerSize: '',
-                headerSizeTablet: '',
-                headerSizeMobile: '',
-                headerFamily: 'Default',
-                headerWeight: '',
-                headerStyle: '',
-                headerSpacing: '',
-                headerUpper: '',
-                borderType: 'none',
-                borderColor: '',
-                borderRadius: '',
-
             }
         ]
-    },
-    headerBorderTop: {
-        type: 'number'
-    },
-    headerBorderRight: {
-        type: 'number'
-    },
-    headerBorderBottom: {
-        type: 'number'
-    },
-    headerBorderLeft: {
-        type: 'number'
     },
     upperStyles: {
         type: "array",
@@ -204,128 +96,19 @@ const attributes = {
             iconWidthUnit: 'px',
             color: '',
             backColor: '',
-            borderType: 'none',
-            borderColor: '',
-            borderRadius: '',
 
         }]
-    },
-    upperBorderTop: {
-        type: 'number'
-    },
-    upperBorderRight: {
-        type: 'number'
-    },
-    upperBorderBottom: {
-        type: 'number'
-    },
-    upperBorderLeft: {
-        type: 'number'
-    },
-    upperPaddingT: {
-        type: 'number'
-    },
-    upperPaddingR: {
-        type: 'number'
-    },
-    upperPaddingB: {
-        type: 'number'
-    },
-    upperPaddingL: {
-        type: 'number'
-    },
-    upperPaddingTTablet: {
-        type: 'number'
-    },
-    upperPaddingRTablet: {
-        type: 'number'
-    },
-    upperPaddingBTablet: {
-        type: 'number'
-    },
-    upperPaddingLTablet: {
-        type: 'number'
-    },
-    upperPaddingTMobile: {
-        type: 'number'
-    },
-    upperPaddingRMobile: {
-        type: 'number'
-    },
-    upperPaddingBMobile: {
-        type: 'number'
-    },
-    upperPaddingLMobile: {
-        type: 'number'
     },
     lowerStyles: {
         type: 'array',
         default: [
             {
-                lowerSizeUnit: 'px',
-                lowerSize: '',
-                lowerSizeMobile: '',
-                lowerSizeTablet: '',
-                lowerWeight: '',
-                lowerStyle: '',
-                lowerSpacing: '',
                 iconWidth: '',
                 iconWidthUnit: 'px',
                 color: '',
                 backColor: '',
-                borderType: 'none',
-                borderColor: '',
-                borderRadius: '',
             }
         ]
-    },
-    lowerBorderTop: {
-        type: 'number'
-    },
-    lowerBorderRight: {
-        type: 'number'
-    },
-    lowerBorderBottom: {
-        type: 'number'
-    },
-    lowerBorderLeft: {
-        type: 'number'
-    },
-    lowerPaddingT: {
-        type: 'number'
-    },
-    lowerPaddingR: {
-        type: 'number'
-    },
-    lowerPaddingB: {
-        type: 'number'
-    },
-    lowerPaddingL: {
-        type: 'number'
-    },
-    lowerPaddingTTablet: {
-        type: 'number'
-    },
-    lowerPaddingRTablet: {
-        type: 'number'
-    },
-    lowerPaddingBTablet: {
-        type: 'number'
-    },
-    lowerPaddingLTablet: {
-        type: 'number'
-    },
-    lowerPaddingTMobile: {
-        type: 'number'
-    },
-    lowerPaddingRMobile: {
-        type: 'number'
-    },
-    lowerPaddingBMobile: {
-        type: 'number'
-    },
-    lowerPaddingLMobile: {
-        type: 'number'
     },
     modalStyles: {
         type: "array",
@@ -335,15 +118,6 @@ const attributes = {
                 contentText: __('Modal Box Content', 'premium-blocks-for-gutenberg'),
                 textColor: '',
                 textBackColor: '',
-                modalSizeUnit: 'px',
-                modalSize: '',
-                modalSizeMobile: '',
-                modalSizeTablet: '',
-                modalFamily: '',
-                modalWeight: '',
-                modalStyle: '',
-                modalSpacing: '',
-                modalUpper: '',
                 modalWidth: '',
                 modalWidthTablet: '',
                 modalWidthMobile: '',
@@ -352,119 +126,570 @@ const attributes = {
                 modalHeightTablet: '',
                 modalHeightMobile: '',
                 modalHeightUnit: 'px',
-                containerBack: '',
-                backgroundImageID: '',
-                backgroundImageURL: '',
-                backgroundPosition: 'center center',
-                backgroundRepeat: 'no-repeat',
-                backgroundSize: 'auto',
-                fixed: false,
-                gradientLocationOne: '0',
-                gradientColorTwo: '',
-                gradientLocationTwo: '100',
-                gradientType: 'linear',
-                gradientAngle: '180',
-                gradientPosition: 'center center',
-                gradientType: '',
                 footerBackColor: '',
-                borderType: 'none',
-                borderColor: '',
-                borderRadius: '',
-                modalShadowColor: '',
-                modalShadowBlur: '',
-                modalShadowHorizontal: '',
-                modalShadowVertical: '',
-                modalShadowPosition: '',
             }
         ]
+    },
+    modalBackground: {
+        type: "object",
+        default: {
+            'backgroundType': '',
+            'backgroundColor': '',
+            'backgroundImageID': '',
+            'backgroundImageURL': '',
+            'backgroundPosition': '',
+            'backgroundRepeat': '',
+            'backgroundSize': '',
+            'fixed': false,
+            'gradientLocationOne': "",
+            'gradientColorTwo': '',
+            'gradientLocationTwo': '',
+            'gradientAngle': '',
+            'gradientPosition': '',
+            'gradientType': ''
+        }
+    },
+    modalShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
+    },
+    triggerShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
+    },
+    triggerTextShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+        }
     },
     backgroundType: {
         type: "string"
     },
-    modalBorderTop: {
-        type: 'number'
+    triggerPadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
     },
-    modalBorderRight: {
-        type: 'number'
+    upperPadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
     },
-    modalBorderBottom: {
-        type: 'number'
+    lowerPadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
     },
-    modalBorderLeft: {
-        type: 'number'
+    modalPadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
     },
-    modalMarginT: {
-        type: 'number'
+    modalMargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
     },
-    modalMarginR: {
-        type: 'number'
+    triggerBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
     },
-    modalMarginB: {
-        type: 'number'
+    triggerBorderH: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
     },
-    modalMarginL: {
-        type: 'number'
+    headerBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
     },
-    modalMarginTTablet: {
-        type: 'number'
+    upperBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
     },
-    modalMarginRTablet: {
-        type: 'number'
+    lowerBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
     },
-    modalMarginBTablet: {
-        type: 'number'
+    modalBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
     },
-    modalMarginLTablet: {
-        type: 'number'
+    triggerTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
     },
-    modalMarginTMobile: {
-        type: 'number'
+    headerTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
     },
-    modalMarginRMobile: {
-        type: 'number'
+    lowerTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
     },
-    modalMarginBMobile: {
-        type: 'number'
+    modalTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
     },
-    modalMarginLMobile: {
-        type: 'number'
+    iconSize: {
+        type: "object",
+        default: {
+            "Desktop": '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': 'px',
+        }
     },
-    modalPaddingT: {
-        type: 'number'
+    imageWidth: {
+        type: "object",
+        default: {
+            "Desktop": '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': '',
+        }
     },
-    modalPaddingR: {
-        type: 'number'
+    modalWidth: {
+        type: "object",
+        default: {
+            "Desktop": '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': 'px',
+        }
     },
-    modalPaddingB: {
-        type: 'number'
+    modalHeight: {
+        type: "object",
+        default: {
+            "Desktop": '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': 'px',
+        }
     },
-    modalPaddingL: {
-        type: 'number'
-    },
-    modalPaddingTTablet: {
-        type: 'number'
-    },
-    modalPaddingRTablet: {
-        type: 'number'
-    },
-    modalPaddingBTablet: {
-        type: 'number'
-    },
-    modalPaddingLTablet: {
-        type: 'number'
-    },
-    modalPaddingTMobile: {
-        type: 'number'
-    },
-    modalPaddingRMobile: {
-        type: 'number'
-    },
-    modalPaddingBMobile: {
-        type: 'number'
-    },
-    modalPaddingLMobile: {
-        type: 'number'
-    },
-
 }
 export default attributes;
