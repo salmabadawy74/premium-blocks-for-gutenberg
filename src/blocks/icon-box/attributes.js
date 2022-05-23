@@ -135,33 +135,16 @@ const attributes = {
         type: 'boolean',
         default: false
     },
-
     iconOpacity: {
         type: "number",
         default: "1"
     },
-
     titleStyles: {
         type: "array",
         default: [
             {
-
                 titleTag: "H2",
-                titleFont: __('Default', 'premium - blocks -for-gutenberg'),
                 titleColor: '',
-                titleSize: 20,
-                titleSizeUnit: 'px',
-                titleSizeTablet: 20,
-                titleSizeMobile: 20,
-                titleLine: '',
-                titleLetter: '',
-                titleStyle: '',
-                titleUpper: false,
-                titleWeight: '',
-                titleShadowColor: '',
-                titleShadowBlur: '0',
-                titleShadowHorizontal: '0',
-                titleShadowVertical: '0'
             }
         ]
     },
@@ -169,14 +152,7 @@ const attributes = {
         type: "array",
         default: [
             {
-                descFont: __('Default', 'premium-blocks-for-gutenberg'),
                 descColor: '',
-                descSize: 20,
-                descSizeUnit: 'px',
-                descSizeTablet: 20,
-                descSizeMobile: 20,
-                descLine: '',
-                descWeight: ''
             }
         ]
     },
@@ -184,30 +160,8 @@ const attributes = {
         type: 'array',
         default: [
             {
-                btnSize: 20,
-                btnSizeUnit: 'px',
-                btnSizeTablet: 20,
-                btnSizeMobile: 20,
-                btnLine: '',
-                btnLetter: '',
-                btnStyle: '',
-                btnUpper: false,
-                btnWeight: '',
-                btnBorderType: 'none',
                 btnBorderWidth: 1,
-                btnBorderTop: '',
-                btnBorderRight: '',
-                btnBorderBottom: '',
-                btnBorderLeft: '',
                 btnBorderRadius: '',
-                btnBorderColor: '',
-                // btnPadding: '',
-                // btnPaddingU: 'px',
-                btnShadowColor: '',
-                btnShadowBlur: '',
-                btnShadowHorizontal: '0',
-                btnShadowVertical: '0',
-                btnShadowPosition: '',
                 btnColor: '',
                 btnHoverColor: '',
                 btnBack: '',
