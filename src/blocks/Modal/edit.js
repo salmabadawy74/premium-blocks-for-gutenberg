@@ -32,38 +32,20 @@ const edit = props => {
         contentStyles,
         triggerSettings,
         triggerStyles,
-        triggerBorderTop,
-        triggerBorderRight,
-        triggerBorderBottom,
-        triggerBorderLeft,
-        triggerBorderTopH,
-        triggerBorderRightH,
-        triggerBorderBottomH,
-        triggerBorderLeftH,
+        triggerBorder,
+        triggerBorderH,
         triggerPadding,
         headerStyles,
-        headerBorderTop,
-        headerBorderRight,
-        headerBorderBottom,
-        headerBorderLeft,
+        headerBorder,
         upperStyles,
-        upperBorderTop,
-        upperBorderRight,
-        upperBorderBottom,
-        upperBorderLeft,
+        upperBorder,
         upperPadding,
         lowerStyles,
-        lowerBorderTop,
-        lowerBorderRight,
-        lowerBorderBottom,
-        lowerBorderLeft,
+        lowerBorder,
         lowerPadding,
         modalStyles,
         backgroundType,
-        modalBorderTop,
-        modalBorderRight,
-        modalBorderBottom,
-        modalBorderLeft,
+        modalBorder,
         modalMargin,
         modalPadding,
     } = props.attributes;
@@ -87,14 +69,14 @@ const edit = props => {
         <style>
             {`
             #premium-modal-box-${block_id} .premium-modal-trigger-container button.premium-modal-trigger-btn:hover {
-              background-color: ${triggerStyles[0].triggerHoverBack} !important;
-              border-style: ${triggerStyles[0].borderTypeH} !important;
-              border-top-width: ${triggerBorderTopH}px !important;
-              border-right-width: ${triggerBorderRightH}px !important;
-              border-bottom-width: ${triggerBorderBottomH}px !important;
-              border-left-width: ${triggerBorderLeftH}px !important;
-              border-color: ${triggerStyles[0].borderColorH} !important;
-              border-radius: ${triggerStyles[0].borderRadiusH}px !important;
+                background-color: ${triggerStyles[0].triggerHoverBack} !important;
+                border-style: ${triggerBorderH && triggerBorderH.borderType} !important;
+                border-top-width: ${triggerBorderH && triggerBorderH.borderWidth.Desktop.top}px !important;
+                border-right-width: ${triggerBorderH && triggerBorderH.borderWidth.Desktop.right}px !important;
+                border-bottom-width: ${triggerBorderH && triggerBorderH.borderWidth.Desktop.bottom}px !important;
+                border-left-width: $${triggerBorderH && triggerBorderH.borderWidth.Desktop.width}px !important;
+                border-radius: ${triggerBorderH && triggerBorderH.borderRadius.Desktop.top || 0}px ${triggerBorderH && triggerBorderH.borderRadius.Desktop.right || 0}px ${triggerBorderH && triggerBorderH.borderRadius.Desktop.bottom || 0}px ${triggerBorderH && triggerBorderH.borderRadius.Desktop.left || 0}px !important;
+                border-color: ${triggerBorderH && triggerBorderH.borderColor} px !important;
             }
             #premium-modal-box-${block_id} .premium-modal-trigger-container button.premium-modal-trigger-btn:hover i{
                 color:${triggerStyles[0].iconHoverColor} !important;
@@ -112,22 +94,22 @@ const edit = props => {
             filter: brightness( ${triggerStyles[0].brightH}% ) contrast( ${triggerStyles[0].contrastH}% ) saturate( ${triggerStyles[0].saturationH}% ) blur( ${triggerStyles[0].blurH}px ) hue-rotate( ${triggerStyles[0].hueH}deg ) !important;
             }
             #premium-modal-box-${block_id} .premium-modal-trigger-container img:hover {
-              border-style: ${triggerStyles[0].borderTypeH} !important;
-              border-top-width: ${triggerBorderTopH}px !important;
-              border-right-width: ${triggerBorderRightH}px !important;
-              border-bottom-width: ${triggerBorderBottomH}px !important;
-              border-left-width: ${triggerBorderLeftH}px !important;
-              border-color: ${triggerStyles[0].borderColorH} !important;
-              border-radius: ${triggerStyles[0].borderRadiusH}px !important;
+              border-style: ${triggerBorderH && triggerBorderH.borderType} !important;
+              border-top-width: ${triggerBorderH && triggerBorderH.borderWidth.Desktop.top}px !important;
+              border-right-width: ${triggerBorderH && triggerBorderH.borderWidth.Desktop.right}px !important;
+              border-bottom-width: ${triggerBorderH && triggerBorderH.borderWidth.Desktop.bottom}px !important;
+              border-left-width: $${triggerBorderH && triggerBorderH.borderWidth.Desktop.width}px !important;
+              border-radius: ${triggerBorderH && triggerBorderH.borderRadius.Desktop.top || 0}px ${triggerBorderH && triggerBorderH.borderRadius.Desktop.right || 0}px ${triggerBorderH && triggerBorderH.borderRadius.Desktop.bottom || 0}px ${triggerBorderH && triggerBorderH.borderRadius.Desktop.left || 0}px !important;
+              border-color: ${triggerBorderH && triggerBorderH.borderColor} px !important;
             }
              #premium-modal-box-${block_id} .premium-modal-trigger-container:hover .premium-modal-trigger-text {
-              border-style: ${triggerStyles[0].borderTypeH} !important;
-              border-top-width: ${triggerBorderTopH}px !important;
-              border-right-width: ${triggerBorderRightH}px !important;
-              border-bottom-width: ${triggerBorderBottomH}px !important;
-              border-left-width: ${triggerBorderLeftH}px !important;
-              border-color: ${triggerStyles[0].borderColorH} !important;
-              border-radius: ${triggerStyles[0].borderRadiusH}px !important;
+                border-style: ${triggerBorderH && triggerBorderH.borderType} !important;
+                border-top-width: ${triggerBorderH && triggerBorderH.borderWidth.Desktop.top}px !important;
+                border-right-width: ${triggerBorderH && triggerBorderH.borderWidth.Desktop.right}px !important;
+                border-bottom-width: ${triggerBorderH && triggerBorderH.borderWidth.Desktop.bottom}px !important;
+                border-left-width: $${triggerBorderH && triggerBorderH.borderWidth.Desktop.width}px !important;
+                border-radius: ${triggerBorderH && triggerBorderH.borderRadius.Desktop.top || 0}px ${triggerBorderH && triggerBorderH.borderRadius.Desktop.right || 0}px ${triggerBorderH && triggerBorderH.borderRadius.Desktop.bottom || 0}px ${triggerBorderH && triggerBorderH.borderRadius.Desktop.left || 0}px !important;
+                border-color: ${triggerBorderH && triggerBorderH.borderColor} px !important;
             }
 
         `}
@@ -228,13 +210,16 @@ const edit = props => {
                     paddingBottom: triggerPaddingBottom && `${triggerPaddingBottom}${triggerPadding.unit}`,
                     paddingLeft: triggerPaddingLeft && `${triggerPaddingLeft}${triggerPadding.unit}`,
                     backgroundColor: triggerStyles[0].triggerBack,
-                    borderStyle: triggerStyles[0].borderType,
-                    borderTopWidth: `${triggerBorderTop}px`,
-                    borderRightWidth: `${triggerBorderRight}px`,
-                    borderBottomWidth: `${triggerBorderBottom}px`,
-                    borderLeftWidth: `${triggerBorderLeft}px`,
-                    borderColor: triggerStyles[0].borderColor,
-                    borderRadius: `${triggerStyles[0].borderRadius}px`,
+                    borderStyle: triggerBorder && triggerBorder.borderType,
+                    borderTopWidth: triggerBorder && triggerBorder.borderWidth.Desktop.top,
+                    borderRightWidth: triggerBorder && triggerBorder.borderWidth.Desktop.right,
+                    borderBottomWidth: triggerBorder && triggerBorder.borderWidth.Desktop.bottom,
+                    borderLeftWidth: triggerBorder && triggerBorder.borderWidth.Desktop.left,
+                    borderColor: triggerBorder && triggerBorder.borderColor,
+                    borderTopLeftRadius: `${triggerBorder && triggerBorder.borderRadius.Desktop.top || 0}px`,
+                    borderTopRightRadius: `${triggerBorder && triggerBorder.borderRadius.Desktop.right || 0}px`,
+                    borderBottomLeftRadius: `${triggerBorder && triggerBorder.borderRadius.Desktop.bottom || 0}px`,
+                    borderBottomRightRadius: `${triggerBorder && triggerBorder.borderRadius.Desktop.left || 0}px`,
                     boxShadow: `${triggerStyles[0].triggerShadowHorizontal}px ${triggerStyles[0].triggerShadowVertical}px ${triggerStyles[0].triggerShadowBlur}px ${triggerStyles[0].triggerShadowColor} ${triggerStyles[0].triggerShadowPosition}`,
                 }}>
                     {triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "before" && <i className={` premium-modal-box-icon ${triggerSettings[0].icon}`} style={{ fontSize: `${triggerSettings[0].iconSize}px`, marginRight: `${triggerSettings[0].iconSpacing}px`, color: triggerStyles[0].iconColor }}></i>}
@@ -246,13 +231,16 @@ const edit = props => {
                     {triggerSettings[0].triggerImgURL ? <img className={`premium-modal-trigger-img`} onClick={() => setOpenModal(true)} src={triggerSettings[0].triggerImgURL} style={{
                         width: `${triggerSize}px`,
                         height: `${triggerSize}px`,
-                        borderStyle: triggerStyles[0].borderType,
-                        borderTopWidth: `${triggerBorderTop}px`,
-                        borderRightWidth: `${triggerBorderRight}px`,
-                        borderBottomWidth: `${triggerBorderBottom}px`,
-                        borderLeftWidth: `${triggerBorderLeft}px`,
-                        borderColor: triggerStyles[0].borderColor,
-                        borderRadius: `${triggerStyles[0].borderRadius}px`,
+                        borderStyle: triggerBorder && triggerBorder.borderType,
+                        borderTopWidth: triggerBorder && triggerBorder.borderWidth.Desktop.top,
+                        borderRightWidth: triggerBorder && triggerBorder.borderWidth.Desktop.right,
+                        borderBottomWidth: triggerBorder && triggerBorder.borderWidth.Desktop.bottom,
+                        borderLeftWidth: triggerBorder && triggerBorder.borderWidth.Desktop.left,
+                        borderColor: triggerBorder && triggerBorder.borderColor,
+                        borderTopLeftRadius: `${triggerBorder && triggerBorder.borderRadius.Desktop.top || 0}px`,
+                        borderTopRightRadius: `${triggerBorder && triggerBorder.borderRadius.Desktop.right || 0}px`,
+                        borderBottomLeftRadius: `${triggerBorder && triggerBorder.borderRadius.Desktop.bottom || 0}px`,
+                        borderBottomRightRadius: `${triggerBorder && triggerBorder.borderRadius.Desktop.left || 0}px`,
                         boxShadow: `${triggerStyles[0].triggerShadowHorizontal}px ${triggerStyles[0].triggerShadowVertical}px ${triggerStyles[0].triggerShadowBlur}px ${triggerStyles[0].triggerShadowColor} ${triggerStyles[0].triggerShadowPosition}`,
                     }} /> : <MediaPlaceholder
                         labels={{
@@ -281,13 +269,16 @@ const edit = props => {
                         paddingRight: triggerPaddingRight && `${triggerPaddingRight}${triggerPadding.unit}`,
                         paddingBottom: triggerPaddingBottom && `${triggerPaddingBottom}${triggerPadding.unit}`,
                         paddingLeft: triggerPaddingLeft && `${triggerPaddingLeft}${triggerPadding.unit}`,
-                        borderStyle: triggerStyles[0].borderType,
-                        borderTopWidth: `${triggerBorderTop}px`,
-                        borderRightWidth: `${triggerBorderRight}px`,
-                        borderBottomWidth: `${triggerBorderBottom}px`,
-                        borderLeftWidth: `${triggerBorderLeft}px`,
-                        borderColor: triggerStyles[0].borderColor,
-                        borderRadius: `${triggerStyles[0].borderRadius}px`,
+                        borderStyle: triggerBorder && triggerBorder.borderType,
+                        borderTopWidth: triggerBorder && triggerBorder.borderWidth.Desktop.top,
+                        borderRightWidth: triggerBorder && triggerBorder.borderWidth.Desktop.right,
+                        borderBottomWidth: triggerBorder && triggerBorder.borderWidth.Desktop.bottom,
+                        borderLeftWidth: triggerBorder && triggerBorder.borderWidth.Desktop.left,
+                        borderColor: triggerBorder && triggerBorder.borderColor,
+                        borderTopLeftRadius: `${triggerBorder && triggerBorder.borderRadius.Desktop.top || 0}px`,
+                        borderTopRightRadius: `${triggerBorder && triggerBorder.borderRadius.Desktop.right || 0}px`,
+                        borderBottomLeftRadius: `${triggerBorder && triggerBorder.borderRadius.Desktop.bottom || 0}px`,
+                        borderBottomRightRadius: `${triggerBorder && triggerBorder.borderRadius.Desktop.left || 0}px`,
                         textShadow: `${triggerStyles[0].textShadowHorizontal}px ${triggerStyles[0].textShadowVertical}px ${triggerStyles[0].textShadowBlur}px ${triggerStyles[0].textShadowColor}`,
                         fontFamily: triggerStyles[0].triggerFamily,
                         fontWeight: triggerStyles[0].triggerWeight,
@@ -355,24 +346,30 @@ const edit = props => {
                             marginRight: modalMarginRight && `${modalMarginRight}${modalMargin.unit}`,
                             marginBottom: modalMarginBottom && `${modalMarginBottom}${modalMargin.unit}`,
                             marginLeft: modalMarginLeft && `${modalMarginLeft}${modalMargin.unit}`,
-                            borderStyle: `${modalStyles[0].borderType}`,
-                            borderColor: `${modalStyles[0].borderColor}`,
-                            borderTopWidth: `${modalBorderTop}px`,
-                            borderRightWidth: `${modalBorderRight}px`,
-                            borderBottomWidth: `${modalBorderBottom}px`,
-                            borderLeftWidth: `${modalBorderLeft}px`,
-                            borderRadius: `${modalStyles[0].borderRadius}px`,
+                            borderStyle: modalBorder && modalBorder.borderType,
+                            borderTopWidth: modalBorder && modalBorder.borderWidth.Desktop.top,
+                            borderRightWidth: modalBorder && modalBorder.borderWidth.Desktop.right,
+                            borderBottomWidth: modalBorder && modalBorder.borderWidth.Desktop.bottom,
+                            borderLeftWidth: modalBorder && modalBorder.borderWidth.Desktop.left,
+                            borderColor: modalBorder && modalBorder.borderColor,
+                            borderTopLeftRadius: `${modalBorder && modalBorder.borderRadius.Desktop.top || 0}px`,
+                            borderTopRightRadius: `${modalBorder && modalBorder.borderRadius.Desktop.right || 0}px`,
+                            borderBottomLeftRadius: `${modalBorder && modalBorder.borderRadius.Desktop.bottom || 0}px`,
+                            borderBottomRightRadius: `${modalBorder && modalBorder.borderRadius.Desktop.left || 0}px`,
                             boxShadow: `${modalStyles[0].modalShadowHorizontal}px ${modalStyles[0].modalShadowVertical}px ${modalStyles[0].modalShadowBlur}px ${modalStyles[0].modalShadowColor} ${modalStyles[0].modalShadowPosition}`,
                         }}>
                         {contentStyles[0].showHeader && <div className={`premium-modal-box-modal-header`} style={{
                             backgroundColor: headerStyles[0].backColor,
-                            borderStyle: headerStyles[0].borderType,
-                            borderTopWidth: `${headerBorderTop}px`,
-                            borderRightWidth: `${headerBorderRight}px`,
-                            borderBottomWidth: `${headerBorderBottom}px`,
-                            borderLeftWidth: `${headerBorderLeft}px`,
-                            borderColor: `${headerStyles[0].borderColor}`,
-                            borderRadius: `${headerStyles[0].borderRadius}px`,
+                            borderStyle: headerBorder && headerBorder.borderType,
+                            borderTopWidth: headerBorder && headerBorder.borderWidth.Desktop.top,
+                            borderRightWidth: headerBorder && headerBorder.borderWidth.Desktop.right,
+                            borderBottomWidth: headerBorder && headerBorder.borderWidth.Desktop.bottom,
+                            borderLeftWidth: headerBorder && headerBorder.borderWidth.Desktop.left,
+                            borderColor: headerBorder && headerBorder.borderColor,
+                            borderTopLeftRadius: `${headerBorder && headerBorder.borderRadius.Desktop.top || 0}px`,
+                            borderTopRightRadius: `${headerBorder && headerBorder.borderRadius.Desktop.right || 0}px`,
+                            borderBottomLeftRadius: `${headerBorder && headerBorder.borderRadius.Desktop.bottom || 0}px`,
+                            borderBottomRightRadius: `${headerBorder && headerBorder.borderRadius.Desktop.left || 0}px`,
                         }}>
                             <h3 className={`premium-modal-box-modal-title`} style={{
                                 color: headerStyles[0].color,
@@ -411,13 +408,16 @@ const edit = props => {
                             </h3>
                             {contentStyles[0].showUpperClose && contentStyles[0].showHeader && (<div className="premium-modal-box-close-button-container" style={{
                                 backgroundColor: `${upperStyles[0].backColor}`,
-                                borderStyle: `${upperStyles[0].borderType}`,
-                                borderTopWidth: `${upperBorderTop}px`,
-                                borderRightWidth: `${upperBorderRight}px`,
-                                borderBottomWidth: `${upperBorderBottom}px`,
-                                borderLeftWidth: `${upperBorderLeft}px`,
-                                borderColor: `${upperStyles[0].borderColor}`,
-                                borderRadius: `${upperStyles[0].borderRadius}px`,
+                                borderStyle: upperBorder && upperBorder.borderType,
+                                borderTopWidth: upperBorder && upperBorder.borderWidth.Desktop.top,
+                                borderRightWidth: upperBorder && upperBorder.borderWidth.Desktop.right,
+                                borderBottomWidth: upperBorder && upperBorder.borderWidth.Desktop.bottom,
+                                borderLeftWidth: upperBorder && upperBorder.borderWidth.Desktop.left,
+                                borderColor: upperBorder && upperBorder.borderColor,
+                                borderTopLeftRadius: `${upperBorder && upperBorder.borderRadius.Desktop.top || 0}px`,
+                                borderTopRightRadius: `${upperBorder && upperBorder.borderRadius.Desktop.right || 0}px`,
+                                borderBottomLeftRadius: `${upperBorder && upperBorder.borderRadius.Desktop.bottom || 0}px`,
+                                borderBottomRightRadius: `${upperBorder && upperBorder.borderRadius.Desktop.left || 0}px`,
                                 paddingTop: upperPaddingTop && `${upperPaddingTop}${upperPadding.unit}`,
                                 paddingRight: upperPaddingRight && `${upperPaddingRight}${upperPadding.unit}`,
                                 paddingBottom: upperPaddingBottom && `${upperPaddingBottom}${upperPadding.unit}`,
@@ -461,13 +461,16 @@ const edit = props => {
                                     width: `${lowerStyles[0].iconWidth}${lowerStyles[0].iconWidthUnit}`,
                                     color: `${lowerStyles[0].color}`,
                                     backgroundColor: `${lowerStyles[0].backColor}`,
-                                    borderStyle: `${lowerStyles[0].borderType}`,
-                                    borderTopWidth: `${lowerBorderTop}px`,
-                                    borderRightWidth: `${lowerBorderRight}px`,
-                                    borderBottomWidth: `${lowerBorderBottom}px`,
-                                    borderLeftWidth: `${lowerBorderLeft}px`,
-                                    borderColor: `${lowerStyles[0].borderColor}`,
-                                    borderRadius: `${lowerStyles[0].borderRadius}px`,
+                                    borderStyle: lowerBorder && lowerBorder.borderType,
+                                    borderTopWidth: lowerBorder && lowerBorder.borderWidth.Desktop.top,
+                                    borderRightWidth: lowerBorder && lowerBorder.borderWidth.Desktop.right,
+                                    borderBottomWidth: lowerBorder && lowerBorder.borderWidth.Desktop.bottom,
+                                    borderLeftWidth: lowerBorder && lowerBorder.borderWidth.Desktop.left,
+                                    borderColor: lowerBorder && lowerBorder.borderColor,
+                                    borderTopLeftRadius: `${lowerBorder && lowerBorder.borderRadius.Desktop.top || 0}px`,
+                                    borderTopRightRadius: `${lowerBorder && lowerBorder.borderRadius.Desktop.right || 0}px`,
+                                    borderBottomLeftRadius: `${lowerBorder && lowerBorder.borderRadius.Desktop.bottom || 0}px`,
+                                    borderBottomRightRadius: `${lowerBorder && lowerBorder.borderRadius.Desktop.left || 0}px`,
                                     paddingTop: lowerPaddingTop && `${lowerPaddingTop}${lowerPadding.unit}`,
                                     paddingRight: lowerPaddingRight && `${lowerPaddingRight}${lowerPadding.unit}`,
                                     paddingBottom: lowerPaddingBottom && `${lowerPaddingBottom}${lowerPadding.unit}`,

@@ -59266,38 +59266,20 @@ var edit = function edit(props) {
         contentStyles = _props$attributes.contentStyles,
         triggerSettings = _props$attributes.triggerSettings,
         triggerStyles = _props$attributes.triggerStyles,
-        triggerBorderTop = _props$attributes.triggerBorderTop,
-        triggerBorderRight = _props$attributes.triggerBorderRight,
-        triggerBorderBottom = _props$attributes.triggerBorderBottom,
-        triggerBorderLeft = _props$attributes.triggerBorderLeft,
-        triggerBorderTopH = _props$attributes.triggerBorderTopH,
-        triggerBorderRightH = _props$attributes.triggerBorderRightH,
-        triggerBorderBottomH = _props$attributes.triggerBorderBottomH,
-        triggerBorderLeftH = _props$attributes.triggerBorderLeftH,
+        triggerBorder = _props$attributes.triggerBorder,
+        triggerBorderH = _props$attributes.triggerBorderH,
         triggerPadding = _props$attributes.triggerPadding,
         headerStyles = _props$attributes.headerStyles,
-        headerBorderTop = _props$attributes.headerBorderTop,
-        headerBorderRight = _props$attributes.headerBorderRight,
-        headerBorderBottom = _props$attributes.headerBorderBottom,
-        headerBorderLeft = _props$attributes.headerBorderLeft,
+        headerBorder = _props$attributes.headerBorder,
         upperStyles = _props$attributes.upperStyles,
-        upperBorderTop = _props$attributes.upperBorderTop,
-        upperBorderRight = _props$attributes.upperBorderRight,
-        upperBorderBottom = _props$attributes.upperBorderBottom,
-        upperBorderLeft = _props$attributes.upperBorderLeft,
+        upperBorder = _props$attributes.upperBorder,
         upperPadding = _props$attributes.upperPadding,
         lowerStyles = _props$attributes.lowerStyles,
-        lowerBorderTop = _props$attributes.lowerBorderTop,
-        lowerBorderRight = _props$attributes.lowerBorderRight,
-        lowerBorderBottom = _props$attributes.lowerBorderBottom,
-        lowerBorderLeft = _props$attributes.lowerBorderLeft,
+        lowerBorder = _props$attributes.lowerBorder,
         lowerPadding = _props$attributes.lowerPadding,
         modalStyles = _props$attributes.modalStyles,
         backgroundType = _props$attributes.backgroundType,
-        modalBorderTop = _props$attributes.modalBorderTop,
-        modalBorderRight = _props$attributes.modalBorderRight,
-        modalBorderBottom = _props$attributes.modalBorderBottom,
-        modalBorderLeft = _props$attributes.modalBorderLeft,
+        modalBorder = _props$attributes.modalBorder,
         modalMargin = _props$attributes.modalMargin,
         modalPadding = _props$attributes.modalPadding;
 
@@ -59320,7 +59302,7 @@ var edit = function edit(props) {
     var renderCss = React.createElement(
         "style",
         null,
-        "\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container button.premium-modal-trigger-btn:hover {\n              background-color: " + triggerStyles[0].triggerHoverBack + " !important;\n              border-style: " + triggerStyles[0].borderTypeH + " !important;\n              border-top-width: " + triggerBorderTopH + "px !important;\n              border-right-width: " + triggerBorderRightH + "px !important;\n              border-bottom-width: " + triggerBorderBottomH + "px !important;\n              border-left-width: " + triggerBorderLeftH + "px !important;\n              border-color: " + triggerStyles[0].borderColorH + " !important;\n              border-radius: " + triggerStyles[0].borderRadiusH + "px !important;\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container button.premium-modal-trigger-btn:hover i{\n                color:" + triggerStyles[0].iconHoverColor + " !important;\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container button.premium-modal-trigger-btn:hover span{\n                color:" + triggerStyles[0].hoverColor + " !important;\n            }\n             #premium-modal-box-" + block_id + " .premium-modal-trigger-container:hover .premium-modal-trigger-text {\n                color:" + triggerStyles[0].hoverColor + " !important;\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container .premium-lottie-animation{\n            filter: brightness( " + triggerStyles[0].bright + "% ) contrast( " + triggerStyles[0].contrast + "% ) saturate( " + triggerStyles[0].saturation + "% ) blur( " + triggerStyles[0].blur + "px ) hue-rotate( " + triggerStyles[0].hue + "deg );\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container:hover .premium-lottie-animation{\n            filter: brightness( " + triggerStyles[0].brightH + "% ) contrast( " + triggerStyles[0].contrastH + "% ) saturate( " + triggerStyles[0].saturationH + "% ) blur( " + triggerStyles[0].blurH + "px ) hue-rotate( " + triggerStyles[0].hueH + "deg ) !important;\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container img:hover {\n              border-style: " + triggerStyles[0].borderTypeH + " !important;\n              border-top-width: " + triggerBorderTopH + "px !important;\n              border-right-width: " + triggerBorderRightH + "px !important;\n              border-bottom-width: " + triggerBorderBottomH + "px !important;\n              border-left-width: " + triggerBorderLeftH + "px !important;\n              border-color: " + triggerStyles[0].borderColorH + " !important;\n              border-radius: " + triggerStyles[0].borderRadiusH + "px !important;\n            }\n             #premium-modal-box-" + block_id + " .premium-modal-trigger-container:hover .premium-modal-trigger-text {\n              border-style: " + triggerStyles[0].borderTypeH + " !important;\n              border-top-width: " + triggerBorderTopH + "px !important;\n              border-right-width: " + triggerBorderRightH + "px !important;\n              border-bottom-width: " + triggerBorderBottomH + "px !important;\n              border-left-width: " + triggerBorderLeftH + "px !important;\n              border-color: " + triggerStyles[0].borderColorH + " !important;\n              border-radius: " + triggerStyles[0].borderRadiusH + "px !important;\n            }\n\n        "
+        "\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container button.premium-modal-trigger-btn:hover {\n                background-color: " + triggerStyles[0].triggerHoverBack + " !important;\n                border-style: " + (triggerBorderH && triggerBorderH.borderType) + " !important;\n                border-top-width: " + (triggerBorderH && triggerBorderH.borderWidth.Desktop.top) + "px !important;\n                border-right-width: " + (triggerBorderH && triggerBorderH.borderWidth.Desktop.right) + "px !important;\n                border-bottom-width: " + (triggerBorderH && triggerBorderH.borderWidth.Desktop.bottom) + "px !important;\n                border-left-width: $" + (triggerBorderH && triggerBorderH.borderWidth.Desktop.width) + "px !important;\n                border-radius: " + (triggerBorderH && triggerBorderH.borderRadius.Desktop.top || 0) + "px " + (triggerBorderH && triggerBorderH.borderRadius.Desktop.right || 0) + "px " + (triggerBorderH && triggerBorderH.borderRadius.Desktop.bottom || 0) + "px " + (triggerBorderH && triggerBorderH.borderRadius.Desktop.left || 0) + "px !important;\n                border-color: " + (triggerBorderH && triggerBorderH.borderColor) + " px !important;\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container button.premium-modal-trigger-btn:hover i{\n                color:" + triggerStyles[0].iconHoverColor + " !important;\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container button.premium-modal-trigger-btn:hover span{\n                color:" + triggerStyles[0].hoverColor + " !important;\n            }\n             #premium-modal-box-" + block_id + " .premium-modal-trigger-container:hover .premium-modal-trigger-text {\n                color:" + triggerStyles[0].hoverColor + " !important;\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container .premium-lottie-animation{\n            filter: brightness( " + triggerStyles[0].bright + "% ) contrast( " + triggerStyles[0].contrast + "% ) saturate( " + triggerStyles[0].saturation + "% ) blur( " + triggerStyles[0].blur + "px ) hue-rotate( " + triggerStyles[0].hue + "deg );\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container:hover .premium-lottie-animation{\n            filter: brightness( " + triggerStyles[0].brightH + "% ) contrast( " + triggerStyles[0].contrastH + "% ) saturate( " + triggerStyles[0].saturationH + "% ) blur( " + triggerStyles[0].blurH + "px ) hue-rotate( " + triggerStyles[0].hueH + "deg ) !important;\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container img:hover {\n              border-style: " + (triggerBorderH && triggerBorderH.borderType) + " !important;\n              border-top-width: " + (triggerBorderH && triggerBorderH.borderWidth.Desktop.top) + "px !important;\n              border-right-width: " + (triggerBorderH && triggerBorderH.borderWidth.Desktop.right) + "px !important;\n              border-bottom-width: " + (triggerBorderH && triggerBorderH.borderWidth.Desktop.bottom) + "px !important;\n              border-left-width: $" + (triggerBorderH && triggerBorderH.borderWidth.Desktop.width) + "px !important;\n              border-radius: " + (triggerBorderH && triggerBorderH.borderRadius.Desktop.top || 0) + "px " + (triggerBorderH && triggerBorderH.borderRadius.Desktop.right || 0) + "px " + (triggerBorderH && triggerBorderH.borderRadius.Desktop.bottom || 0) + "px " + (triggerBorderH && triggerBorderH.borderRadius.Desktop.left || 0) + "px !important;\n              border-color: " + (triggerBorderH && triggerBorderH.borderColor) + " px !important;\n            }\n             #premium-modal-box-" + block_id + " .premium-modal-trigger-container:hover .premium-modal-trigger-text {\n                border-style: " + (triggerBorderH && triggerBorderH.borderType) + " !important;\n                border-top-width: " + (triggerBorderH && triggerBorderH.borderWidth.Desktop.top) + "px !important;\n                border-right-width: " + (triggerBorderH && triggerBorderH.borderWidth.Desktop.right) + "px !important;\n                border-bottom-width: " + (triggerBorderH && triggerBorderH.borderWidth.Desktop.bottom) + "px !important;\n                border-left-width: $" + (triggerBorderH && triggerBorderH.borderWidth.Desktop.width) + "px !important;\n                border-radius: " + (triggerBorderH && triggerBorderH.borderRadius.Desktop.top || 0) + "px " + (triggerBorderH && triggerBorderH.borderRadius.Desktop.right || 0) + "px " + (triggerBorderH && triggerBorderH.borderRadius.Desktop.bottom || 0) + "px " + (triggerBorderH && triggerBorderH.borderRadius.Desktop.left || 0) + "px !important;\n                border-color: " + (triggerBorderH && triggerBorderH.borderColor) + " px !important;\n            }\n\n        "
     );
     var headerIconSize = getPreviewSize(props.deviceType, contentStyles[0].iconSize, contentStyles[0].iconSizeTablet, contentStyles[0].iconSizeMobile);
     var triggerFontSize = getPreviewSize(props.deviceType, triggerStyles[0].triggerSize, triggerStyles[0].triggerSizeTablet, triggerStyles[0].triggerSizeMobile);
@@ -59413,13 +59395,16 @@ var edit = function edit(props) {
                         paddingBottom: triggerPaddingBottom && "" + triggerPaddingBottom + triggerPadding.unit,
                         paddingLeft: triggerPaddingLeft && "" + triggerPaddingLeft + triggerPadding.unit,
                         backgroundColor: triggerStyles[0].triggerBack,
-                        borderStyle: triggerStyles[0].borderType,
-                        borderTopWidth: triggerBorderTop + "px",
-                        borderRightWidth: triggerBorderRight + "px",
-                        borderBottomWidth: triggerBorderBottom + "px",
-                        borderLeftWidth: triggerBorderLeft + "px",
-                        borderColor: triggerStyles[0].borderColor,
-                        borderRadius: triggerStyles[0].borderRadius + "px",
+                        borderStyle: triggerBorder && triggerBorder.borderType,
+                        borderTopWidth: triggerBorder && triggerBorder.borderWidth.Desktop.top,
+                        borderRightWidth: triggerBorder && triggerBorder.borderWidth.Desktop.right,
+                        borderBottomWidth: triggerBorder && triggerBorder.borderWidth.Desktop.bottom,
+                        borderLeftWidth: triggerBorder && triggerBorder.borderWidth.Desktop.left,
+                        borderColor: triggerBorder && triggerBorder.borderColor,
+                        borderTopLeftRadius: (triggerBorder && triggerBorder.borderRadius.Desktop.top || 0) + "px",
+                        borderTopRightRadius: (triggerBorder && triggerBorder.borderRadius.Desktop.right || 0) + "px",
+                        borderBottomLeftRadius: (triggerBorder && triggerBorder.borderRadius.Desktop.bottom || 0) + "px",
+                        borderBottomRightRadius: (triggerBorder && triggerBorder.borderRadius.Desktop.left || 0) + "px",
                         boxShadow: triggerStyles[0].triggerShadowHorizontal + "px " + triggerStyles[0].triggerShadowVertical + "px " + triggerStyles[0].triggerShadowBlur + "px " + triggerStyles[0].triggerShadowColor + " " + triggerStyles[0].triggerShadowPosition
                     } },
                 triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "before" && React.createElement("i", { className: " premium-modal-box-icon " + triggerSettings[0].icon, style: { fontSize: triggerSettings[0].iconSize + "px", marginRight: triggerSettings[0].iconSpacing + "px", color: triggerStyles[0].iconColor } }),
@@ -59439,13 +59424,16 @@ var edit = function edit(props) {
                     }, src: triggerSettings[0].triggerImgURL, style: {
                         width: triggerSize + "px",
                         height: triggerSize + "px",
-                        borderStyle: triggerStyles[0].borderType,
-                        borderTopWidth: triggerBorderTop + "px",
-                        borderRightWidth: triggerBorderRight + "px",
-                        borderBottomWidth: triggerBorderBottom + "px",
-                        borderLeftWidth: triggerBorderLeft + "px",
-                        borderColor: triggerStyles[0].borderColor,
-                        borderRadius: triggerStyles[0].borderRadius + "px",
+                        borderStyle: triggerBorder && triggerBorder.borderType,
+                        borderTopWidth: triggerBorder && triggerBorder.borderWidth.Desktop.top,
+                        borderRightWidth: triggerBorder && triggerBorder.borderWidth.Desktop.right,
+                        borderBottomWidth: triggerBorder && triggerBorder.borderWidth.Desktop.bottom,
+                        borderLeftWidth: triggerBorder && triggerBorder.borderWidth.Desktop.left,
+                        borderColor: triggerBorder && triggerBorder.borderColor,
+                        borderTopLeftRadius: (triggerBorder && triggerBorder.borderRadius.Desktop.top || 0) + "px",
+                        borderTopRightRadius: (triggerBorder && triggerBorder.borderRadius.Desktop.right || 0) + "px",
+                        borderBottomLeftRadius: (triggerBorder && triggerBorder.borderRadius.Desktop.bottom || 0) + "px",
+                        borderBottomRightRadius: (triggerBorder && triggerBorder.borderRadius.Desktop.left || 0) + "px",
                         boxShadow: triggerStyles[0].triggerShadowHorizontal + "px " + triggerStyles[0].triggerShadowVertical + "px " + triggerStyles[0].triggerShadowBlur + "px " + triggerStyles[0].triggerShadowColor + " " + triggerStyles[0].triggerShadowPosition
                     } }) : React.createElement(MediaPlaceholder, {
                     labels: {
@@ -59477,13 +59465,16 @@ var edit = function edit(props) {
                         paddingRight: triggerPaddingRight && "" + triggerPaddingRight + triggerPadding.unit,
                         paddingBottom: triggerPaddingBottom && "" + triggerPaddingBottom + triggerPadding.unit,
                         paddingLeft: triggerPaddingLeft && "" + triggerPaddingLeft + triggerPadding.unit,
-                        borderStyle: triggerStyles[0].borderType,
-                        borderTopWidth: triggerBorderTop + "px",
-                        borderRightWidth: triggerBorderRight + "px",
-                        borderBottomWidth: triggerBorderBottom + "px",
-                        borderLeftWidth: triggerBorderLeft + "px",
-                        borderColor: triggerStyles[0].borderColor,
-                        borderRadius: triggerStyles[0].borderRadius + "px",
+                        borderStyle: triggerBorder && triggerBorder.borderType,
+                        borderTopWidth: triggerBorder && triggerBorder.borderWidth.Desktop.top,
+                        borderRightWidth: triggerBorder && triggerBorder.borderWidth.Desktop.right,
+                        borderBottomWidth: triggerBorder && triggerBorder.borderWidth.Desktop.bottom,
+                        borderLeftWidth: triggerBorder && triggerBorder.borderWidth.Desktop.left,
+                        borderColor: triggerBorder && triggerBorder.borderColor,
+                        borderTopLeftRadius: (triggerBorder && triggerBorder.borderRadius.Desktop.top || 0) + "px",
+                        borderTopRightRadius: (triggerBorder && triggerBorder.borderRadius.Desktop.right || 0) + "px",
+                        borderBottomLeftRadius: (triggerBorder && triggerBorder.borderRadius.Desktop.bottom || 0) + "px",
+                        borderBottomRightRadius: (triggerBorder && triggerBorder.borderRadius.Desktop.left || 0) + "px",
                         textShadow: triggerStyles[0].textShadowHorizontal + "px " + triggerStyles[0].textShadowVertical + "px " + triggerStyles[0].textShadowBlur + "px " + triggerStyles[0].textShadowColor,
                         fontFamily: triggerStyles[0].triggerFamily,
                         fontWeight: triggerStyles[0].triggerWeight,
@@ -59559,26 +59550,32 @@ var edit = function edit(props) {
                         marginRight: modalMarginRight && "" + modalMarginRight + modalMargin.unit,
                         marginBottom: modalMarginBottom && "" + modalMarginBottom + modalMargin.unit,
                         marginLeft: modalMarginLeft && "" + modalMarginLeft + modalMargin.unit,
-                        borderStyle: "" + modalStyles[0].borderType,
-                        borderColor: "" + modalStyles[0].borderColor,
-                        borderTopWidth: modalBorderTop + "px",
-                        borderRightWidth: modalBorderRight + "px",
-                        borderBottomWidth: modalBorderBottom + "px",
-                        borderLeftWidth: modalBorderLeft + "px",
-                        borderRadius: modalStyles[0].borderRadius + "px",
+                        borderStyle: modalBorder && modalBorder.borderType,
+                        borderTopWidth: modalBorder && modalBorder.borderWidth.Desktop.top,
+                        borderRightWidth: modalBorder && modalBorder.borderWidth.Desktop.right,
+                        borderBottomWidth: modalBorder && modalBorder.borderWidth.Desktop.bottom,
+                        borderLeftWidth: modalBorder && modalBorder.borderWidth.Desktop.left,
+                        borderColor: modalBorder && modalBorder.borderColor,
+                        borderTopLeftRadius: (modalBorder && modalBorder.borderRadius.Desktop.top || 0) + "px",
+                        borderTopRightRadius: (modalBorder && modalBorder.borderRadius.Desktop.right || 0) + "px",
+                        borderBottomLeftRadius: (modalBorder && modalBorder.borderRadius.Desktop.bottom || 0) + "px",
+                        borderBottomRightRadius: (modalBorder && modalBorder.borderRadius.Desktop.left || 0) + "px",
                         boxShadow: modalStyles[0].modalShadowHorizontal + "px " + modalStyles[0].modalShadowVertical + "px " + modalStyles[0].modalShadowBlur + "px " + modalStyles[0].modalShadowColor + " " + modalStyles[0].modalShadowPosition
                     } },
                 contentStyles[0].showHeader && React.createElement(
                     "div",
                     { className: "premium-modal-box-modal-header", style: {
                             backgroundColor: headerStyles[0].backColor,
-                            borderStyle: headerStyles[0].borderType,
-                            borderTopWidth: headerBorderTop + "px",
-                            borderRightWidth: headerBorderRight + "px",
-                            borderBottomWidth: headerBorderBottom + "px",
-                            borderLeftWidth: headerBorderLeft + "px",
-                            borderColor: "" + headerStyles[0].borderColor,
-                            borderRadius: headerStyles[0].borderRadius + "px"
+                            borderStyle: headerBorder && headerBorder.borderType,
+                            borderTopWidth: headerBorder && headerBorder.borderWidth.Desktop.top,
+                            borderRightWidth: headerBorder && headerBorder.borderWidth.Desktop.right,
+                            borderBottomWidth: headerBorder && headerBorder.borderWidth.Desktop.bottom,
+                            borderLeftWidth: headerBorder && headerBorder.borderWidth.Desktop.left,
+                            borderColor: headerBorder && headerBorder.borderColor,
+                            borderTopLeftRadius: (headerBorder && headerBorder.borderRadius.Desktop.top || 0) + "px",
+                            borderTopRightRadius: (headerBorder && headerBorder.borderRadius.Desktop.right || 0) + "px",
+                            borderBottomLeftRadius: (headerBorder && headerBorder.borderRadius.Desktop.bottom || 0) + "px",
+                            borderBottomRightRadius: (headerBorder && headerBorder.borderRadius.Desktop.left || 0) + "px"
                         } },
                     React.createElement(
                         "h3",
@@ -59621,13 +59618,16 @@ var edit = function edit(props) {
                         "div",
                         { className: "premium-modal-box-close-button-container", style: {
                                 backgroundColor: "" + upperStyles[0].backColor,
-                                borderStyle: "" + upperStyles[0].borderType,
-                                borderTopWidth: upperBorderTop + "px",
-                                borderRightWidth: upperBorderRight + "px",
-                                borderBottomWidth: upperBorderBottom + "px",
-                                borderLeftWidth: upperBorderLeft + "px",
-                                borderColor: "" + upperStyles[0].borderColor,
-                                borderRadius: upperStyles[0].borderRadius + "px",
+                                borderStyle: upperBorder && upperBorder.borderType,
+                                borderTopWidth: upperBorder && upperBorder.borderWidth.Desktop.top,
+                                borderRightWidth: upperBorder && upperBorder.borderWidth.Desktop.right,
+                                borderBottomWidth: upperBorder && upperBorder.borderWidth.Desktop.bottom,
+                                borderLeftWidth: upperBorder && upperBorder.borderWidth.Desktop.left,
+                                borderColor: upperBorder && upperBorder.borderColor,
+                                borderTopLeftRadius: (upperBorder && upperBorder.borderRadius.Desktop.top || 0) + "px",
+                                borderTopRightRadius: (upperBorder && upperBorder.borderRadius.Desktop.right || 0) + "px",
+                                borderBottomLeftRadius: (upperBorder && upperBorder.borderRadius.Desktop.bottom || 0) + "px",
+                                borderBottomRightRadius: (upperBorder && upperBorder.borderRadius.Desktop.left || 0) + "px",
                                 paddingTop: upperPaddingTop && "" + upperPaddingTop + upperPadding.unit,
                                 paddingRight: upperPaddingRight && "" + upperPaddingRight + upperPadding.unit,
                                 paddingBottom: upperPaddingBottom && "" + upperPaddingBottom + upperPadding.unit,
@@ -59688,13 +59688,16 @@ var edit = function edit(props) {
                                 width: "" + lowerStyles[0].iconWidth + lowerStyles[0].iconWidthUnit,
                                 color: "" + lowerStyles[0].color,
                                 backgroundColor: "" + lowerStyles[0].backColor,
-                                borderStyle: "" + lowerStyles[0].borderType,
-                                borderTopWidth: lowerBorderTop + "px",
-                                borderRightWidth: lowerBorderRight + "px",
-                                borderBottomWidth: lowerBorderBottom + "px",
-                                borderLeftWidth: lowerBorderLeft + "px",
-                                borderColor: "" + lowerStyles[0].borderColor,
-                                borderRadius: lowerStyles[0].borderRadius + "px",
+                                borderStyle: lowerBorder && lowerBorder.borderType,
+                                borderTopWidth: lowerBorder && lowerBorder.borderWidth.Desktop.top,
+                                borderRightWidth: lowerBorder && lowerBorder.borderWidth.Desktop.right,
+                                borderBottomWidth: lowerBorder && lowerBorder.borderWidth.Desktop.bottom,
+                                borderLeftWidth: lowerBorder && lowerBorder.borderWidth.Desktop.left,
+                                borderColor: lowerBorder && lowerBorder.borderColor,
+                                borderTopLeftRadius: (lowerBorder && lowerBorder.borderRadius.Desktop.top || 0) + "px",
+                                borderTopRightRadius: (lowerBorder && lowerBorder.borderRadius.Desktop.right || 0) + "px",
+                                borderBottomLeftRadius: (lowerBorder && lowerBorder.borderRadius.Desktop.bottom || 0) + "px",
+                                borderBottomRightRadius: (lowerBorder && lowerBorder.borderRadius.Desktop.left || 0) + "px",
                                 paddingTop: lowerPaddingTop && "" + lowerPaddingTop + lowerPadding.unit,
                                 paddingRight: lowerPaddingRight && "" + lowerPaddingRight + lowerPadding.unit,
                                 paddingBottom: lowerPaddingBottom && "" + lowerPaddingBottom + lowerPadding.unit,
@@ -62808,284 +62811,266 @@ var deprecated = [{
                 "unit": "px"
             },
             triggerBorder: {
-                type: "object",
-                default: {
-                    "borderType": attributes.triggerStyles[0].borderType || '',
-                    "borderColor": attributes.triggerStyles[0].borderColor || '',
-                    "borderWidth": {
-                        Desktop: {
-                            top: attributes.triggerBorderTop || '',
-                            right: attributes.triggerBorderRight || '',
-                            bottom: attributes.triggerBorderBottom || '',
-                            left: attributes.triggerBorderLeft || ''
-                        },
-                        Tablet: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        },
-                        Mobile: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        }
+                "borderType": attributes.triggerStyles[0].borderType || '',
+                "borderColor": attributes.triggerStyles[0].borderColor || '',
+                "borderWidth": {
+                    Desktop: {
+                        top: attributes.triggerBorderTop || '',
+                        right: attributes.triggerBorderRight || '',
+                        bottom: attributes.triggerBorderBottom || '',
+                        left: attributes.triggerBorderLeft || ''
                     },
-                    "borderRadius": {
-                        Desktop: {
-                            top: attributes.triggerStyles[0].borderRadius || '',
-                            right: attributes.triggerStyles[0].borderRadius || '',
-                            bottom: attributes.triggerStyles[0].borderRadius || '',
-                            left: attributes.triggerStyles[0].borderRadius || ''
-                        },
-                        Tablet: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        },
-                        Mobile: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        }
+                    Tablet: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    Mobile: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    }
+                },
+                "borderRadius": {
+                    Desktop: {
+                        top: attributes.triggerStyles[0].borderRadius || '',
+                        right: attributes.triggerStyles[0].borderRadius || '',
+                        bottom: attributes.triggerStyles[0].borderRadius || '',
+                        left: attributes.triggerStyles[0].borderRadius || ''
+                    },
+                    Tablet: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    Mobile: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
                     }
                 }
             },
             triggerBorderH: {
-                type: "object",
-                default: {
-                    "borderType": attributes.triggerStyles[0].borderTypeH || '',
-                    "borderColor": attributes.triggerStyles[0].borderColorH || '',
-                    "borderWidth": {
-                        Desktop: {
-                            top: attributes.triggerBorderTopH || '',
-                            right: attributes.triggerBorderRightH || '',
-                            bottom: attributes.triggerBorderBottomH || '',
-                            left: attributes.triggerBorderLeftH || ''
-                        },
-                        Tablet: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        },
-                        Mobile: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        }
+                "borderType": attributes.triggerStyles[0].borderTypeH || '',
+                "borderColor": attributes.triggerStyles[0].borderColorH || '',
+                "borderWidth": {
+                    Desktop: {
+                        top: attributes.triggerBorderTopH || '',
+                        right: attributes.triggerBorderRightH || '',
+                        bottom: attributes.triggerBorderBottomH || '',
+                        left: attributes.triggerBorderLeftH || ''
                     },
-                    "borderRadius": {
-                        Desktop: {
-                            top: attributes.triggerStyles[0].borderRadiusH || '',
-                            right: attributes.triggerStyles[0].borderRadiusH || '',
-                            bottom: attributes.triggerStyles[0].borderRadiusH || '',
-                            left: attributes.triggerStyles[0].borderRadiusH || ''
-                        },
-                        Tablet: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        },
-                        Mobile: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        }
+                    Tablet: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    Mobile: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    }
+                },
+                "borderRadius": {
+                    Desktop: {
+                        top: attributes.triggerStyles[0].borderRadiusH || '',
+                        right: attributes.triggerStyles[0].borderRadiusH || '',
+                        bottom: attributes.triggerStyles[0].borderRadiusH || '',
+                        left: attributes.triggerStyles[0].borderRadiusH || ''
+                    },
+                    Tablet: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    Mobile: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
                     }
                 }
             },
             headerBorder: {
-                type: "object",
-                default: {
-                    "borderType": attributes.headerStyles[0].borderType || '',
-                    "borderColor": attributes.headerStyles[0].borderColor || '',
-                    "borderWidth": {
-                        Desktop: {
-                            top: attributes.headerBorderTop || '',
-                            right: attributes.headerBorderRight || '',
-                            bottom: attributes.headerBorderBottom || '',
-                            left: attributes.headerBorderLeft || ''
-                        },
-                        Tablet: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        },
-                        Mobile: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        }
+                "borderType": attributes.headerStyles[0].borderType || '',
+                "borderColor": attributes.headerStyles[0].borderColor || '',
+                "borderWidth": {
+                    Desktop: {
+                        top: attributes.headerBorderTop || '',
+                        right: attributes.headerBorderRight || '',
+                        bottom: attributes.headerBorderBottom || '',
+                        left: attributes.headerBorderLeft || ''
                     },
-                    "borderRadius": {
-                        Desktop: {
-                            top: attributes.headerStyles[0].borderRadius || '',
-                            right: attributes.headerStyles[0].borderRadius || '',
-                            bottom: attributes.headerStyles[0].borderRadius || '',
-                            left: attributes.headerStyles[0].borderRadius || ''
-                        },
-                        Tablet: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        },
-                        Mobile: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        }
+                    Tablet: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    Mobile: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    }
+                },
+                "borderRadius": {
+                    Desktop: {
+                        top: attributes.headerStyles[0].borderRadius || '',
+                        right: attributes.headerStyles[0].borderRadius || '',
+                        bottom: attributes.headerStyles[0].borderRadius || '',
+                        left: attributes.headerStyles[0].borderRadius || ''
+                    },
+                    Tablet: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    Mobile: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
                     }
                 }
             },
             upperBorder: {
-                type: "object",
-                default: {
-                    "borderType": attributes.upperStyles[0].borderType || '',
-                    "borderColor": attributes.upperStyles[0].borderColor || '',
-                    "borderWidth": {
-                        Desktop: {
-                            top: attributes.upperBorderTop || '',
-                            right: attributes.upperBorderRight || '',
-                            bottom: attributes.upperBorderBottom || '',
-                            left: attributes.upperBorderLeft || ''
-                        },
-                        Tablet: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        },
-                        Mobile: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        }
+                "borderType": attributes.upperStyles[0].borderType || '',
+                "borderColor": attributes.upperStyles[0].borderColor || '',
+                "borderWidth": {
+                    Desktop: {
+                        top: attributes.upperBorderTop || '',
+                        right: attributes.upperBorderRight || '',
+                        bottom: attributes.upperBorderBottom || '',
+                        left: attributes.upperBorderLeft || ''
                     },
-                    "borderRadius": {
-                        Desktop: {
-                            top: attributes.upperStyles[0].borderRadius || '',
-                            right: attributes.upperStyles[0].borderRadius || '',
-                            bottom: attributes.upperStyles[0].borderRadius || '',
-                            left: attributes.upperStyles[0].borderRadius || ''
-                        },
-                        Tablet: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        },
-                        Mobile: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        }
+                    Tablet: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    Mobile: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    }
+                },
+                "borderRadius": {
+                    Desktop: {
+                        top: attributes.upperStyles[0].borderRadius || '',
+                        right: attributes.upperStyles[0].borderRadius || '',
+                        bottom: attributes.upperStyles[0].borderRadius || '',
+                        left: attributes.upperStyles[0].borderRadius || ''
+                    },
+                    Tablet: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    Mobile: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
                     }
                 }
             },
             lowerBorder: {
-                type: "object",
-                default: {
-                    "borderType": attributes.lowerStyles[0].borderType || '',
-                    "borderColor": attributes.lowerStyles[0].borderColor || '',
-                    "borderWidth": {
-                        Desktop: {
-                            top: attributes.lowerBorderTop || '',
-                            right: attributes.lowerBorderRight || '',
-                            bottom: attributes.lowerBorderBottom || '',
-                            left: attributes.lowerBorderLeft || ''
-                        },
-                        Tablet: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        },
-                        Mobile: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        }
+                "borderType": attributes.lowerStyles[0].borderType || '',
+                "borderColor": attributes.lowerStyles[0].borderColor || '',
+                "borderWidth": {
+                    Desktop: {
+                        top: attributes.lowerBorderTop || '',
+                        right: attributes.lowerBorderRight || '',
+                        bottom: attributes.lowerBorderBottom || '',
+                        left: attributes.lowerBorderLeft || ''
                     },
-                    "borderRadius": {
-                        Desktop: {
-                            top: attributes.lowerStyles[0].borderRadius || '',
-                            right: attributes.lowerStyles[0].borderRadius || '',
-                            bottom: attributes.lowerStyles[0].borderRadius || '',
-                            left: attributes.lowerStyles[0].borderRadius || ''
-                        },
-                        Tablet: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        },
-                        Mobile: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        }
+                    Tablet: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    Mobile: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    }
+                },
+                "borderRadius": {
+                    Desktop: {
+                        top: attributes.lowerStyles[0].borderRadius || '',
+                        right: attributes.lowerStyles[0].borderRadius || '',
+                        bottom: attributes.lowerStyles[0].borderRadius || '',
+                        left: attributes.lowerStyles[0].borderRadius || ''
+                    },
+                    Tablet: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    Mobile: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
                     }
                 }
             },
             modalBorder: {
-                type: "object",
-                default: {
-                    "borderType": attributes.modalStyles[0].borderType || '',
-                    "borderColor": attributes.modalStyles[0].borderColor || '',
-                    "borderWidth": {
-                        Desktop: {
-                            top: attributes.modalBorderTop || '',
-                            right: attributes.modalBorderRight || '',
-                            bottom: attributes.modalBorderBottom || '',
-                            left: attributes.modalBorderLeft || ''
-                        },
-                        Tablet: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        },
-                        Mobile: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        }
+                "borderType": attributes.modalStyles[0].borderType || '',
+                "borderColor": attributes.modalStyles[0].borderColor || '',
+                "borderWidth": {
+                    Desktop: {
+                        top: attributes.modalBorderTop || '',
+                        right: attributes.modalBorderRight || '',
+                        bottom: attributes.modalBorderBottom || '',
+                        left: attributes.modalBorderLeft || ''
                     },
-                    "borderRadius": {
-                        Desktop: {
-                            top: attributes.modalStyles[0].borderRadius || '',
-                            right: attributes.modalStyles[0].borderRadius || '',
-                            bottom: attributes.modalStyles[0].borderRadius || '',
-                            left: attributes.modalStyles[0].borderRadius || ''
-                        },
-                        Tablet: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        },
-                        Mobile: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        }
+                    Tablet: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    Mobile: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    }
+                },
+                "borderRadius": {
+                    Desktop: {
+                        top: attributes.modalStyles[0].borderRadius || '',
+                        right: attributes.modalStyles[0].borderRadius || '',
+                        bottom: attributes.modalStyles[0].borderRadius || '',
+                        left: attributes.modalStyles[0].borderRadius || ''
+                    },
+                    Tablet: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    Mobile: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
                     }
                 }
             }

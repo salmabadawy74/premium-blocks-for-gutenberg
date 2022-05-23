@@ -3652,6 +3652,38 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $trigger_padding['Desktop']['left'] . $trigger_padding['unit'] ) );
 		}
 
+		if(isset( $attr['triggerBorder'] )){
+			$trigger_border        = $attr['triggerBorder'];
+			$trigger_border_width  = $attr['triggerBorder']['borderWidth'];
+			$trigger_border_radius = $attr['triggerBorder']['borderRadius'];
+
+			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > button, #premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > img, #premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > .premium-modal-trigger-text'  );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $trigger_border_width, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $trigger_border_width, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $trigger_border_width, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $trigger_border_width, 'left', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $trigger_border_radius, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $trigger_border_radius, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $trigger_border_radius, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $trigger_border_radius, 'left', 'Desktop', 'px' ) );
+		}
+
+		if(isset( $attr['triggerBorderH'] )){
+			$trigger_border_h        = $attr['triggerBorderH'];
+			$trigger_border_h_width  = $attr['triggerBorderH']['borderWidth'];
+			$trigger_border_h_radius = $attr['triggerBorderH']['borderRadius'];
+
+			$css->set_selector( '#premium-modal-box-' . $unique_id . ' .premium-modal-trigger-container img:hover, #premium-modal-box-' . $unique_id . ' .premium-modal-trigger-container:hover .premium-modal-trigger-text' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $trigger_border_h_width, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $trigger_border_h_width, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $trigger_border_h_width, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $trigger_border_h_width, 'left', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $trigger_border_h_radius, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $trigger_border_h_radius, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $trigger_border_h_radius, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $trigger_border_h_radius, 'left', 'Desktop', 'px' ) );
+		}
+
 		 // Style For Header in Modal
 		if ( isset( $attr['headerStyles'] ) ) {
 			if ( isset( $attr['headerStyles'][0]['headerSize'] ) && isset( $attr['headerStyles'][0]['headerSizeUnit'] ) ) {
@@ -3659,6 +3691,23 @@ class PBG_Blocks_Helper {
 				$css->add_property( 'font-size', ( $attr['headerStyles'][0]['headerSize'] . $attr['headerStyles'][0]['headerSizeUnit'] ) );
 			}
 		}
+
+		if(isset( $attr['headerBorder'] )){
+			$header_border        = $attr['headerBorder'];
+			$header_border_width  = $attr['headerBorder']['borderWidth'];
+			$header_border_radius = $attr['headerBorder']['borderRadius'];
+
+			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $header_border_width, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $header_border_width, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $header_border_width, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $header_border_width, 'left', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $header_border_radius, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $header_border_radius, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $header_border_radius, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $header_border_radius, 'left', 'Desktop', 'px' ) );
+		}
+
 		// style for upper close button
 		if ( isset( $attr['upperPaddingT'] ) ) {
 			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header' . '> .premium-modal-box-close-button-container button' );
@@ -3686,6 +3735,22 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $upper_padding['Desktop']['left'] . $upper_padding['unit'] ) );
 		}
 
+		if(isset( $attr['upperBorder'] )){
+			$upper_border        = $attr['upperBorder'];
+			$upper_border_width  = $attr['upperBorder']['borderWidth'];
+			$upper_border_radius = $attr['upperBorder']['borderRadius'];
+
+			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header' . '> .premium-modal-box-close-button-container button' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $upper_border_width, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $upper_border_width, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $upper_border_width, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $upper_border_width, 'left', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $upper_border_radius, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $upper_border_radius, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $upper_border_radius, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $upper_border_radius, 'left', 'Desktop', 'px' ) );
+		}
+
 		// Style For font Size in  lower Close Button
 		if ( isset( $attr['lowerStyles'] ) ) {
 			if ( isset( $attr['lowerStyles'][0]['lowerSize'] ) && isset( $attr['lowerStyles'][0]['lowerSizeUnit'] ) ) {
@@ -3693,6 +3758,23 @@ class PBG_Blocks_Helper {
 				$css->add_property( 'font-size', ( $attr['lowerStyles'][0]['lowerSize'] . $attr['lowerStyles'][0]['lowerSizeUnit'] ) );
 			}
 		}
+
+		if(isset( $attr['lowerBorder'] )){
+			$lower_border        = $attr['lowerBorder'];
+			$lower_border_width  = $attr['lowerBorder']['borderWidth'];
+			$lower_border_radius = $attr['lowerBorder']['borderRadius'];
+
+			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-footer  button' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $lower_border_width, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $lower_border_width, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $lower_border_width, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $lower_border_width, 'left', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $lower_border_radius, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $lower_border_radius, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $lower_border_radius, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $lower_border_radius, 'left', 'Desktop', 'px' ) );
+		}
+
 		// style for Padding in lower Close Button
 		if ( isset( $attr['lowerPaddingT'] ) ) {
 			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header' . '> .premium-modal-box-close-button-container button' );
@@ -3787,6 +3869,22 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'margin-left', $css->render_color( $modal_margin['Desktop']['left'] . $modal_margin['unit'] ) );
 		}
 
+		if(isset( $attr['modalBorder'] )){
+			$lower_border        = $attr['modalBorder'];
+			$lower_border_width  = $attr['modalBorder']['borderWidth'];
+			$lower_border_radius = $attr['modalBorder']['borderRadius'];
+
+			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $lower_border_width, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $lower_border_width, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $lower_border_width, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $lower_border_width, 'left', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $lower_border_radius, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $lower_border_radius, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $lower_border_radius, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $lower_border_radius, 'left', 'Desktop', 'px' ) );
+		}
+
 		$css->start_media_query( $media_query['tablet'] );
 		// style For Icon /Image/Lottie in Header
 		if ( isset( $attr['contentStyles'] ) ) {
@@ -3848,6 +3946,38 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $trigger_padding['Tablet']['left'] . $trigger_padding['unit'] ) );
 		}
 
+		if(isset( $attr['triggerBorder'] )){
+			$trigger_border        = $attr['triggerBorder'];
+			$trigger_border_width  = $attr['triggerBorder']['borderWidth'];
+			$trigger_border_radius = $attr['triggerBorder']['borderRadius'];
+
+			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > button, #premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > img, #premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > .premium-modal-trigger-text'  );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $trigger_border_width, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $trigger_border_width, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $trigger_border_width, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $trigger_border_width, 'left', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $trigger_border_radius, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $trigger_border_radius, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $trigger_border_radius, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $trigger_border_radius, 'left', 'Tablet', 'px' ) );
+		}
+
+		if(isset( $attr['triggerBorderH'] )){
+			$trigger_border_h        = $attr['triggerBorderH'];
+			$trigger_border_h_width  = $attr['triggerBorderH']['borderWidth'];
+			$trigger_border_h_radius = $attr['triggerBorderH']['borderRadius'];
+
+			$css->set_selector( '#premium-modal-box-' . $unique_id . ' .premium-modal-trigger-container img:hover, #premium-modal-box-' . $unique_id . ' .premium-modal-trigger-container:hover .premium-modal-trigger-text' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $trigger_border_h_width, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $trigger_border_h_width, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $trigger_border_h_width, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $trigger_border_h_width, 'left', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $trigger_border_h_radius, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $trigger_border_h_radius, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $trigger_border_h_radius, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $trigger_border_h_radius, 'left', 'Tablet', 'px' ) );
+		}
+
 		 // Style For Header in Modal
 
 		if ( isset( $attr['headerStyles'] ) ) {
@@ -3856,6 +3986,23 @@ class PBG_Blocks_Helper {
 				$css->add_property( 'font-size', ( $attr['headerStyles'][0]['headerSizeTablet'] . $attr['headerStyles'][0]['headerSizeUnit'] ) );
 			}
 		}
+
+		if(isset( $attr['headerBorder'] )){
+			$header_border        = $attr['headerBorder'];
+			$header_border_width  = $attr['headerBorder']['borderWidth'];
+			$header_border_radius = $attr['headerBorder']['borderRadius'];
+
+			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $header_border_width, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $header_border_width, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $header_border_width, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $header_border_width, 'left', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $header_border_radius, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $header_border_radius, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $header_border_radius, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $header_border_radius, 'left', 'Tablet', 'px' ) );
+		}
+
 		// style for upper close button
 		if ( isset( $attr['upperPaddingTTablet'] ) ) {
 			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header' . '> .premium-modal-box-close-button-container button' );
@@ -3883,6 +4030,22 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $upper_padding['Tablet']['left'] . $upper_padding['unit'] ) );
 		}
 
+		if(isset( $attr['upperBorder'] )){
+			$upper_border        = $attr['upperBorder'];
+			$upper_border_width  = $attr['upperBorder']['borderWidth'];
+			$upper_border_radius = $attr['upperBorder']['borderRadius'];
+
+			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header' . '> .premium-modal-box-close-button-container button' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $upper_border_width, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $upper_border_width, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $upper_border_width, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $upper_border_width, 'left', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $upper_border_radius, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $upper_border_radius, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $upper_border_radius, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $upper_border_radius, 'left', 'Tablet', 'px' ) );
+		}
+
 		// Style For font Size in  lower Close Button
 		if ( isset( $attr['lowerStyles'] ) ) {
 			if ( isset( $attr['lowerStyles'][0]['lowerSizeTablet'] ) && isset( $attr['lowerStyles'][0]['lowerSizeUnit'] ) ) {
@@ -3890,6 +4053,23 @@ class PBG_Blocks_Helper {
 				$css->add_property( 'font-size', ( $attr['lowerStyles'][0]['lowerSizeTablet'] . $attr['lowerStyles'][0]['lowerSizeUnit'] ) );
 			}
 		}
+
+		if(isset( $attr['lowerBorder'] )){
+			$lower_border        = $attr['lowerBorder'];
+			$lower_border_width  = $attr['lowerBorder']['borderWidth'];
+			$lower_border_radius = $attr['lowerBorder']['borderRadius'];
+
+			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-footer  button' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $lower_border_width, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $lower_border_width, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $lower_border_width, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $lower_border_width, 'left', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $lower_border_radius, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $lower_border_radius, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $lower_border_radius, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $lower_border_radius, 'left', 'Tablet', 'px' ) );
+		}
+
 		// style for Padding in lower Close Button
 		if ( isset( $attr['lowerPaddingTTablet'] ) ) {
 			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header' . '> .premium-modal-box-close-button-container button' );
@@ -3984,6 +4164,22 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'margin-left', $css->render_color( $modal_margin['Tablet']['left'] . $modal_margin['unit'] ) );
 		}
 
+		if(isset( $attr['modalBorder'] )){
+			$lower_border        = $attr['modalBorder'];
+			$lower_border_width  = $attr['modalBorder']['borderWidth'];
+			$lower_border_radius = $attr['modalBorder']['borderRadius'];
+
+			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $lower_border_width, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $lower_border_width, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $lower_border_width, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $lower_border_width, 'left', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $lower_border_radius, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $lower_border_radius, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $lower_border_radius, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $lower_border_radius, 'left', 'Tablet', 'px' ) );
+		}
+
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['mobile'] );
 		// style For Icon /Image/Lottie in Header
@@ -4047,6 +4243,38 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $trigger_padding['Mobile']['left'] . $trigger_padding['unit'] ) );
 		}
 
+		if(isset( $attr['triggerBorder'] )){
+			$trigger_border        = $attr['triggerBorder'];
+			$trigger_border_width  = $attr['triggerBorder']['borderWidth'];
+			$trigger_border_radius = $attr['triggerBorder']['borderRadius'];
+
+			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > button, #premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > img, #premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > .premium-modal-trigger-text'  );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $trigger_border_width, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $trigger_border_width, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $trigger_border_width, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $trigger_border_width, 'left', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $trigger_border_radius, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $trigger_border_radius, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $trigger_border_radius, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $trigger_border_radius, 'left', 'Mobile', 'px' ) );
+		}
+
+		if(isset( $attr['triggerBorderH'] )){
+			$trigger_border_h        = $attr['triggerBorderH'];
+			$trigger_border_h_width  = $attr['triggerBorderH']['borderWidth'];
+			$trigger_border_h_radius = $attr['triggerBorderH']['borderRadius'];
+
+			$css->set_selector( '#premium-modal-box-' . $unique_id . ' .premium-modal-trigger-container img:hover, #premium-modal-box-' . $unique_id . ' .premium-modal-trigger-container:hover .premium-modal-trigger-text' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $trigger_border_h_width, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $trigger_border_h_width, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $trigger_border_h_width, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $trigger_border_h_width, 'left', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $trigger_border_h_radius, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $trigger_border_h_radius, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $trigger_border_h_radius, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $trigger_border_h_radius, 'left', 'Mobile', 'px' ) );
+		}
+
 		// Style For Header in Modal
 		if ( isset( $attr['headerStyles'] ) ) {
 			if ( isset( $attr['headerStyles'][0]['headerSizeMobile'] ) && isset( $attr['headerStyles'][0]['headerSizeUnit'] ) ) {
@@ -4054,6 +4282,23 @@ class PBG_Blocks_Helper {
 				$css->add_property( 'font-size', ( $attr['headerStyles'][0]['headerSizeMobile'] . $attr['headerStyles'][0]['headerSizeUnit'] ) );
 			}
 		}
+
+		if(isset( $attr['headerBorder'] )){
+			$header_border        = $attr['headerBorder'];
+			$header_border_width  = $attr['headerBorder']['borderWidth'];
+			$header_border_radius = $attr['headerBorder']['borderRadius'];
+
+			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $header_border_width, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $header_border_width, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $header_border_width, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $header_border_width, 'left', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $header_border_radius, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $header_border_radius, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $header_border_radius, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $header_border_radius, 'left', 'Mobile', 'px' ) );
+		}
+
 		// style for upper close button
 		if ( isset( $attr['upperPaddingTMobile'] ) ) {
 			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header' . '> .premium-modal-box-close-button-container button' );
@@ -4081,6 +4326,22 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $upper_padding['Mobile']['left'] . $upper_padding['unit'] ) );
 		}
 
+		if(isset( $attr['upperBorder'] )){
+			$upper_border        = $attr['upperBorder'];
+			$upper_border_width  = $attr['upperBorder']['borderWidth'];
+			$upper_border_radius = $attr['upperBorder']['borderRadius'];
+
+			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header' . '> .premium-modal-box-close-button-container button' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $upper_border_width, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $upper_border_width, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $upper_border_width, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $upper_border_width, 'left', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $upper_border_radius, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $upper_border_radius, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $upper_border_radius, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $upper_border_radius, 'left', 'Mobile', 'px' ) );
+		}
+
 		// Style For font Size in  lower Close Button
 		if ( isset( $attr['lowerStyles'] ) ) {
 			if ( isset( $attr['lowerStyles'][0]['lowerSizeMobile'] ) && isset( $attr['lowerStyles'][0]['lowerSizeUnit'] ) ) {
@@ -4088,6 +4349,23 @@ class PBG_Blocks_Helper {
 				$css->add_property( 'font-size', ( $attr['lowerStyles'][0]['lowerSizeMobile'] . $attr['lowerStyles'][0]['lowerSizeUnit'] ) );
 			}
 		}
+
+		if(isset( $attr['lowerBorder'] )){
+			$lower_border        = $attr['lowerBorder'];
+			$lower_border_width  = $attr['lowerBorder']['borderWidth'];
+			$lower_border_radius = $attr['lowerBorder']['borderRadius'];
+
+			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-footer  button' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $lower_border_width, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $lower_border_width, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $lower_border_width, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $lower_border_width, 'left', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $lower_border_radius, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $lower_border_radius, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $lower_border_radius, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $lower_border_radius, 'left', 'Mobile', 'px' ) );
+		}
+
 		// style for Padding in lower Close Button
 		if ( isset( $attr['lowerPaddingTMobile'] ) ) {
 			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header' . '> .premium-modal-box-close-button-container button' );
@@ -4180,6 +4458,22 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'margin-right', $css->render_color( $modal_margin['Mobile']['right'] . $modal_margin['unit'] ) );
 			$css->add_property( 'margin-bottom', $css->render_color( $modal_margin['Mobile']['bottom'] . $modal_margin['unit'] ) );
 			$css->add_property( 'margin-left', $css->render_color( $modal_margin['Mobile']['left'] . $modal_margin['unit'] ) );
+		}
+
+		if(isset( $attr['modalBorder'] )){
+			$lower_border        = $attr['modalBorder'];
+			$lower_border_width  = $attr['modalBorder']['borderWidth'];
+			$lower_border_radius = $attr['modalBorder']['borderRadius'];
+
+			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $lower_border_width, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $lower_border_width, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $lower_border_width, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $lower_border_width, 'left', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $lower_border_radius, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $lower_border_radius, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $lower_border_radius, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $lower_border_radius, 'left', 'Mobile', 'px' ) );
 		}
 
 		$css->stop_media_query();
