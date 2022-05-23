@@ -64,15 +64,6 @@ const attributes = {
                 hoverColor: '',
                 iconColor: '',
                 iconHoverColor: '',
-                triggerSizeUnit: 'px',
-                triggerSize: '',
-                triggerSizeMobile: '',
-                triggerSizeTablet: '',
-                triggerFamily: '',
-                triggerWeight: '',
-                triggerStyle: '',
-                triggerSpacing: '',
-                triggerUpper: '',
                 triggerBack: '',
                 triggerHoverBack: '',
                 blur: '',
@@ -95,15 +86,6 @@ const attributes = {
                 color: '',
                 backColor: '',
                 headerSizeUnit: 'px',
-                headerSize: '',
-                headerSizeTablet: '',
-                headerSizeMobile: '',
-                headerFamily: 'Default',
-                headerWeight: '',
-                headerStyle: '',
-                headerSpacing: '',
-                headerUpper: '',
-
             }
         ]
     },
@@ -121,13 +103,6 @@ const attributes = {
         type: 'array',
         default: [
             {
-                lowerSizeUnit: 'px',
-                lowerSize: '',
-                lowerSizeMobile: '',
-                lowerSizeTablet: '',
-                lowerWeight: '',
-                lowerStyle: '',
-                lowerSpacing: '',
                 iconWidth: '',
                 iconWidthUnit: 'px',
                 color: '',
@@ -143,15 +118,6 @@ const attributes = {
                 contentText: __('Modal Box Content', 'premium-blocks-for-gutenberg'),
                 textColor: '',
                 textBackColor: '',
-                modalSizeUnit: 'px',
-                modalSize: '',
-                modalSizeMobile: '',
-                modalSizeTablet: '',
-                modalFamily: '',
-                modalWeight: '',
-                modalStyle: '',
-                modalSpacing: '',
-                modalUpper: '',
                 modalWidth: '',
                 modalWidthTablet: '',
                 modalWidthMobile: '',
@@ -616,6 +582,114 @@ const attributes = {
                 }
             }
         }
-    }
+    },
+    triggerTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
+    },
+    headerTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
+    },
+    lowerTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
+    },
+    modalTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
+    },
+    iconSize: {
+        type: "object",
+        default: {
+            "Desktop": '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': 'px',
+        }
+    },
+    imageWidth: {
+        type: "object",
+        default: {
+            "Desktop": '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': '',
+        }
+    },
+    modalWidth: {
+        type: "object",
+        default: {
+            "Desktop": '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': 'px',
+        }
+    },
+    modalHeight: {
+        type: "object",
+        default: {
+            "Desktop": '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': 'px',
+        }
+    },
 }
 export default attributes;

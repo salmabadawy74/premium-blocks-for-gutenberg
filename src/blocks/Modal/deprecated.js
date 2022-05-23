@@ -918,6 +918,110 @@ const newAttributes = {
             'horizontal': '',
             'vertical': '',
         }
+    },
+    triggerTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": ''
+            }
+        }
+    },
+    headerTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": ''
+            }
+        }
+    },
+    lowerTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": ''
+            }
+        }
+    },
+    modalTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": ''
+            }
+        }
+    },
+    iconSize: {
+        type: "object",
+        default: {
+            "Desktop": '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': 'px',
+        }
+    },
+    imageWidth: {
+        type: "object",
+        default: {
+            "Desktop": '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': 'px',
+        }
+    },
+    modalWidth: {
+        type: "object",
+        default: {
+            "Desktop": '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': 'px',
+        }
+    },
+    modalHeight: {
+        type: "object",
+        default: {
+            "Desktop": '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': 'px',
+        }
     }
 }
 
@@ -1333,6 +1437,90 @@ const deprecated = [
                     'blur': attributes.triggerStyles[0].textShadowBlur || '',
                     'horizontal': attributes.triggerStyles[0].textShadowHorizontal || '',
                     'vertical': attributes.triggerStyles[0].textShadowVertical || '',
+                },
+                triggerTypography: {
+                    "fontWeight": attributes.triggerStyles[0].triggerWeight || '',
+                    'fontStyle': attributes.triggerStyles[0].triggerStyle || '',
+                    'textTransform': attributes.triggerStyles[0].triggerUpper || '',
+                    'letterSpacing': attributes.triggerStyles[0].triggerSpacing || '',
+                    'fontFamily': attributes.triggerStyles[0].triggerFamily || '',
+                    'lineHeight': '',
+                    'textDecoration': '',
+                    'fontSize': {
+                        'Desktop': attributes.triggerStyles[0].triggerSize || '',
+                        "Tablet": attributes.triggerStyles[0].triggerSizeTablet || '',
+                        "Mobile": attributes.triggerStyles[0].triggerSizeMobile || '',
+                        "unit": attributes.modalStyles[0].triggerSizeUnit || ''
+                    }
+                },
+                headerTypography: {
+                    "fontWeight": attributes.headerStyles[0].headerWeight || '',
+                    'fontStyle': attributes.headerStyles[0].headerStyle || '',
+                    'textTransform': attributes.headerStyles[0].headerUpper || '',
+                    'letterSpacing': attributes.headerStyles[0].headerSpacing || '',
+                    'fontFamily': attributes.headerStyles[0].headerFamily || '',
+                    'lineHeight': '',
+                    'textDecoration': '',
+                    'fontSize': {
+                        'Desktop': attributes.headerStyles[0].headerSize || '',
+                        "Tablet": attributes.headerStyles[0].headerSizeTablet || '',
+                        "Mobile": attributes.headerStyles[0].headerSizeMobile || '',
+                        "unit": attributes.modalStyles[0].headerSizeUnit || ''
+                    }
+                },
+                lowerTypography: {
+                    "fontWeight": attributes.lowerStyles[0].lowerSizeWeight || '',
+                    'fontStyle': attributes.lowerStyles[0].lowerSizeStyle || '',
+                    'textTransform': '',
+                    'letterSpacing': attributes.lowerStyles[0].lowerSizeSpacing || '',
+                    'fontFamily': '',
+                    'lineHeight': '',
+                    'textDecoration': '',
+                    'fontSize': {
+                        'Desktop': attributes.lowerStyles[0].lowerSizeSize || '',
+                        "Tablet": attributes.lowerStyles[0].lowerSizeSizeTablet || '',
+                        "Mobile": attributes.lowerStyles[0].lowerSizeSizeMobile || '',
+                        "unit": attributes.modalStyles[0].lowerSizeUnit || ''
+                    }
+                },
+                modalTypography: {
+                    "fontWeight": attributes.modalStyles[0].modalWeight || '',
+                    'fontStyle': attributes.modalStyles[0].modalStyle || '',
+                    'textTransform': attributes.modalStyles[0].modalUpper || '',
+                    'letterSpacing': attributes.modalStyles[0].modalSpacing || '',
+                    'fontFamily': attributes.modalStyles[0].modalFamily || '',
+                    'lineHeight': '',
+                    'textDecoration': '',
+                    'fontSize': {
+                        'Desktop': attributes.modalStyles[0].modalSize || '',
+                        "Tablet": attributes.modalStyles[0].modalSizeMobile || '',
+                        "Mobile": attributes.modalStyles[0].modalSizeTablet || '',
+                        "unit": attributes.modalStyles[0].modalSizeUnit || ''
+                    }
+                },
+                iconSize: {
+                    "Desktop": attributes.contentStyles[0].iconSize || '',
+                    'Tablet': attributes.contentStyles[0].iconSizeTablet || '',
+                    'Mobile': attributes.contentStyles[0].iconSizeMobile || '',
+                    'unit': attributes.contentStyles[0].iconSizeUnit || '',
+                },
+                imageWidth: {
+                    "Desktop": attributes.triggerSettings[0].imageWidth || '',
+                    'Tablet': attributes.triggerSettings[0].imageWidthTablet || '',
+                    'Mobile': attributes.triggerSettings[0].imageWidthMobile || '',
+                    'unit': '',
+                },
+                modalWidth: {
+                    "Desktop": attributes.modalStyles[0].modalWidth || '',
+                    'Tablet': attributes.modalStyles[0].modalWidthTablet || '',
+                    'Mobile': attributes.modalStyles[0].modalWidthMobile || '',
+                    'unit': attributes.modalStyles[0].modalWidthUnit || 'px',
+                },
+                modalHeight: {
+                    "Desktop": attributes.modalStyles[0].modalHeight || '',
+                    'Tablet': attributes.modalStyles[0].modalHeightTablet || '',
+                    'Mobile': attributes.modalStyles[0].modalHeightMobile || '',
+                    'unit': attributes.modalStyles[0].modalHeightUnit || 'px',
                 }
             }
             return Object.assign(attributes, newAttributes)

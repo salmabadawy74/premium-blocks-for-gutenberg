@@ -1040,7 +1040,7 @@ var PremiumTypo = function (_Component) {
             var fontWeight = "";
             Object.keys(_premiumFonts2.default).map(function (k, v) {
                 fonts.push({ value: k, label: k, weight: _premiumFonts2.default[k].weight, google: true });
-                if (k === value['font-family']) {
+                if (k === value['fontFamily']) {
                     fontWeight = _premiumFonts2.default[k].weight;
                 }
             });
@@ -1062,12 +1062,12 @@ var PremiumTypo = function (_Component) {
                 }
             };
             var renderVariations = fonts.map(function (item, index) {
-                if (item.value == value['font-family']) {
+                if (item.value == value['fontFamily']) {
                     return (item.weight || []).map(function (weights, i) {
                         return React.createElement(
                             "li",
-                            { key: i, className: "" + (weights == value['font-weight'] ? 'active' : ''), onClick: function onClick() {
-                                    return changeTypography('font-weight', weights);
+                            { key: i, className: "" + (weights == value['fontWeight'] ? 'active' : ''), onClick: function onClick() {
+                                    return changeTypography('fontWeight', weights);
                                 } },
                             React.createElement(
                                 "span",
@@ -1087,7 +1087,7 @@ var PremiumTypo = function (_Component) {
             var linearFonts = fonts.filter(function (family) {
                 return fuzzysearch(search.toLowerCase(), family['value'].toLowerCase());
             });
-            var fontSize = components.includes("responsiveSize") ? value['font-size'][device] : value['font-size'];
+            var fontSize = components.includes("responsiveSize") ? value['fontSize'][device] : value['fontSize'];
             return React.createElement(
                 "div",
                 { className: "premium-control-toggle premium-typography" },
@@ -1124,7 +1124,7 @@ var PremiumTypo = function (_Component) {
                                 React.createElement(
                                     "span",
                                     null,
-                                    value['font-family']
+                                    value['fontFamily']
                                 ),
                                 isVisible && currentView == 'fonts' && components.includes('family') && React.createElement(
                                     Popover,
@@ -1150,7 +1150,7 @@ var PremiumTypo = function (_Component) {
                                                             onKeyUp: function onKeyUp(e) {
                                                                 if (e.keyCode == 13) {
                                                                     if (linearFonts.length > 0) {
-                                                                        changeTypography("font-family", linearFonts[0]);
+                                                                        changeTypography("fontFamily", linearFonts[0]);
                                                                         _this2.setState({ search: '' });
                                                                     }
                                                                 }
@@ -1173,9 +1173,9 @@ var PremiumTypo = function (_Component) {
                                                 ),
                                                 React.createElement(_fontList2.default, {
                                                     linearFontsList: linearFonts,
-                                                    value: value['font-family'],
+                                                    value: value['fontFamily'],
                                                     onPickFamily: function onPickFamily(value) {
-                                                        changeTypography('font-family', value);
+                                                        changeTypography('fontFamily', value);
                                                     }
                                                 })
                                             )
@@ -1210,24 +1210,24 @@ var PremiumTypo = function (_Component) {
                                                     { className: "customize-control-premium-slider" },
                                                     React.createElement(_singleRangeControl2.default, {
                                                         label: __("Font Size (PX)", 'premium-blocks-for-gutenberg'),
-                                                        value: value['font-size'],
+                                                        value: value['fontSize'],
                                                         min: "10",
                                                         max: "80",
                                                         defaultValue: 20,
                                                         onChange: function onChange(value) {
-                                                            changeTypography('font-size', value);
+                                                            changeTypography('fontSize', value);
                                                         },
                                                         showUnit: false
                                                     })
                                                 ),
                                                 components.includes("responsiveSize") && React.createElement(
                                                     "li",
-                                                    { className: "customize-control-premium-slider" },
+                                                    { className: "customize-control-premium-slider 33" },
                                                     React.createElement(_responsiveRangeControl2.default, {
                                                         label: __("Font Size", 'premium-blocks-for-gutenberg'),
-                                                        value: value['font-size'],
+                                                        value: value['fontSize'],
                                                         onChange: function onChange(value) {
-                                                            return changeTypography('font-size', value);
+                                                            return changeTypography('fontSize', value);
                                                         },
                                                         showUnit: true,
                                                         defaultValue: 20,
@@ -1239,9 +1239,9 @@ var PremiumTypo = function (_Component) {
                                                     { className: "customize-control-premium-slider" },
                                                     React.createElement(_singleRangeControl2.default, {
                                                         label: __("Line Height (PX)", 'premium-blocks-for-gutenberg'),
-                                                        value: value['line-height'],
+                                                        value: value['lineHeight'],
                                                         onChange: function onChange(value) {
-                                                            changeTypography('line-height', value);
+                                                            changeTypography('lineHeight', value);
                                                         },
                                                         defaultValue: 1,
                                                         showUnit: false,
@@ -1254,9 +1254,9 @@ var PremiumTypo = function (_Component) {
                                                     { className: "customize-control-premium-slider" },
                                                     React.createElement(_singleRangeControl2.default, {
                                                         label: __("Letter Spacing (PX)", 'premium-blocks-for-gutenberg'),
-                                                        value: value['letter-spacing'],
+                                                        value: value['letterSpacing'],
                                                         onChange: function onChange(value) {
-                                                            changeTypography('letter-spacing', value);
+                                                            changeTypography('letterSpacing', value);
                                                         },
                                                         defaultValue: '',
                                                         showUnit: false,
@@ -1271,11 +1271,10 @@ var PremiumTypo = function (_Component) {
                                                     React.createElement(SelectControl, {
                                                         label: __("Style", 'premium-blocks-for-gutenberg'),
                                                         options: STYLE,
-                                                        value: value['font-style'],
+                                                        value: value['fontStyle'],
                                                         onChange: function onChange(value) {
-                                                            changeTypography('font-style', value);
+                                                            changeTypography('fontStyle', value);
                                                         }
-                                                        // onResetClick={onResetClick}
                                                     })
                                                 ),
                                                 components.includes("Upper") && React.createElement(
@@ -1290,9 +1289,9 @@ var PremiumTypo = function (_Component) {
                                                                 {
                                                                     key: variant,
                                                                     onClick: function onClick() {
-                                                                        changeTypography('text-transform', variant);
+                                                                        changeTypography('textTransform', variant);
                                                                     },
-                                                                    className: "" + (value['text-transform'] == variant ? 'active' : ''),
+                                                                    className: "" + (value['textTransform'] == variant ? 'active' : ''),
                                                                     "data-variant": variant },
                                                                 React.createElement(
                                                                     "i",
@@ -1315,9 +1314,9 @@ var PremiumTypo = function (_Component) {
                                                                 {
                                                                     key: variant,
                                                                     onClick: function onClick() {
-                                                                        changeTypography('text-decoration', variant);
+                                                                        changeTypography('textDecoration', variant);
                                                                     },
-                                                                    className: "" + (value['text-decoration'] == variant ? 'active' : ''),
+                                                                    className: "" + (value['textDecoration'] == variant ? 'active' : ''),
                                                                     "data-variant": variant },
                                                                 React.createElement(
                                                                     "i",
@@ -1341,7 +1340,7 @@ var PremiumTypo = function (_Component) {
                                         toggleVisible("variations");
                                     }
                                 },
-                                value['font-weight'],
+                                value['fontWeight'],
                                 isVisible && currentView == 'variations' && React.createElement(
                                     Popover,
                                     { className: "premium-typography-option", onClose: toggleClose },
@@ -1967,9 +1966,12 @@ if (process.env.NODE_ENV !== 'production') {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.default = undefined;
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+exports.default = ResponsiveRangeControl;
 
 var _premiumSizeUnits = __webpack_require__(22);
 
@@ -1988,11 +1990,7 @@ var useState = wp.element.useState;
 var __ = wp.i18n.__;
 function ResponsiveRangeControl(_ref) {
     var label = _ref.label,
-        _onChange = _ref.onChange,
-        onChangeTablet = _ref.onChangeTablet,
-        onChangeMobile = _ref.onChangeMobile,
-        mobileValue = _ref.mobileValue,
-        tabletValue = _ref.tabletValue,
+        onChange = _ref.onChange,
         value = _ref.value,
         _ref$step = _ref.step,
         step = _ref$step === undefined ? 1 : _ref$step,
@@ -2002,17 +2000,30 @@ function ResponsiveRangeControl(_ref) {
         min = _ref$min === undefined ? 0 : _ref$min,
         _ref$unit = _ref.unit,
         unit = _ref$unit === undefined ? '' : _ref$unit,
-        onChangeUnit = _ref.onChangeUnit,
         _ref$showUnit = _ref.showUnit,
         showUnit = _ref$showUnit === undefined ? false : _ref$showUnit,
         _ref$units = _ref.units,
         units = _ref$units === undefined ? ['px', 'em', 'rem'] : _ref$units,
         defaultValue = _ref.defaultValue;
 
-    var _useState = useState('Desktop'),
+    var defaultValues = {
+        'Desktop': '',
+        'Tablet': '',
+        'Mobile': '',
+        unit: 'px'
+
+    };
+    value = value ? _extends({}, defaultValues, value) : defaultValues;
+
+    var _useState = useState(value),
         _useState2 = _slicedToArray(_useState, 2),
-        deviceType = _useState2[0],
-        setDeviceType = _useState2[1];
+        state = _useState2[0],
+        setState = _useState2[1];
+
+    var _useState3 = useState('Desktop'),
+        _useState4 = _slicedToArray(_useState3, 2),
+        deviceType = _useState4[0],
+        setDeviceType = _useState4[1];
 
     var customSetPreviewDeviceType = function customSetPreviewDeviceType(device) {
         setDeviceType(device);
@@ -2039,53 +2050,57 @@ function ResponsiveRangeControl(_ref) {
         };
     }
     var devices = ['Desktop', 'Tablet', 'Mobile'];
+    var onChangeValue = function onChangeValue(value, device) {
+        var updatedState = _extends({}, state);
+        updatedState[device] = value;
+        setState(updatedState);
+        onChange(updatedState);
+    };
+    var onChangeUnit = function onChangeUnit(value) {
+        var updatedState = _extends({}, state);
+        updatedState['unit'] = value;
+        setState(updatedState);
+        onChange(updatedState);
+    };
     var output = {};
+    console.log(state, "state from responsive range control");
     output.Mobile = React.createElement(_singleRangeControl2.default, {
         device: 'mobile',
-        value: undefined !== mobileValue ? mobileValue : '',
+        value: state['Mobile'],
         onChange: function onChange(size) {
-            return onChangeMobile(size);
+            return onChangeValue(size, 'Mobile');
         },
         min: min,
         max: max,
-        step: unit === "em" ? .1 : 1,
-        unit: unit,
-        onChangeUnit: onChangeUnit,
+        step: state['unit'] === "em" || state['unit'] === "rem" ? .1 : 1,
         showUnit: false,
-        units: units,
         defaultValue: defaultValue
     });
     output.Tablet = React.createElement(_singleRangeControl2.default, {
         device: 'tablet',
-        value: undefined !== tabletValue ? tabletValue : '',
+        value: state['Tablet'],
         onChange: function onChange(size) {
-            return onChangeTablet(size);
+            return onChangeValue(size, 'Tablet');
         },
         min: min,
         max: max,
-        step: unit === "em" ? .1 : 1,
-        unit: unit,
-        onChangeUnit: onChangeUnit,
+        step: state['unit'] === "em" || state['unit'] === "rem" ? .1 : 1,
         showUnit: false,
-        units: units,
         defaultValue: defaultValue
     });
     output.Desktop = React.createElement(_singleRangeControl2.default, {
         device: 'desktop',
-        value: undefined !== value ? value : '',
+        value: state['Desktop'],
         onChange: function onChange(size) {
-            return _onChange(size);
+            return onChangeValue(size, "Desktop");
         },
         min: min,
         max: max,
-        step: unit === "em" ? .1 : 1,
-        unit: unit,
-        onChangeUnit: onChangeUnit,
+        step: state['unit'] === "em" || state['unit'] === "rem" ? .1 : 1,
         showUnit: false,
-        units: units,
         defaultValue: defaultValue
     });
-    return [_onChange && onChangeTablet && onChangeMobile && React.createElement(
+    return [onChange && React.createElement(
         'div',
         { className: 'premium-blocks-range-control' },
         React.createElement(
@@ -2122,7 +2137,7 @@ function ResponsiveRangeControl(_ref) {
             ),
             showUnit && React.createElement(_premiumSizeUnits2.default, {
                 units: units,
-                activeUnit: unit,
+                activeUnit: state['unit'],
                 onChangeSizeUnit: function onChangeSizeUnit(newValue) {
                     return onChangeUnit(newValue);
                 }
@@ -2131,7 +2146,6 @@ function ResponsiveRangeControl(_ref) {
         output[deviceType] ? output[deviceType] : output.Desktop
     )];
 }
-exports.default = ResponsiveRangeControl;
 
 /***/ }),
 /* 19 */
@@ -59250,21 +59264,6 @@ var _wp$blockEditor = wp.blockEditor,
     MediaPlaceholder = _wp$blockEditor.MediaPlaceholder;
 
 
-function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
-    if (device === 'Mobile') {
-        if (undefined !== mobileSize && '' !== mobileSize) {
-            return mobileSize;
-        } else if (undefined !== tabletSize && '' !== tabletSize) {
-            return tabletSize;
-        }
-    } else if (device === 'Tablet') {
-        if (undefined !== tabletSize && '' !== tabletSize) {
-            return tabletSize;
-        }
-    }
-    return desktopSize;
-}
-
 var edit = function edit(props) {
     var _useState = useState(false),
         _useState2 = _slicedToArray(_useState, 2),
@@ -59297,8 +59296,18 @@ var edit = function edit(props) {
         modalBackground = _props$attributes.modalBackground,
         triggerShadow = _props$attributes.triggerShadow,
         modalShadow = _props$attributes.modalShadow,
-        triggerTextShadow = _props$attributes.triggerTextShadow;
+        triggerTextShadow = _props$attributes.triggerTextShadow,
+        triggerTypography = _props$attributes.triggerTypography,
+        headerTypography = _props$attributes.headerTypography,
+        lowerTypography = _props$attributes.lowerTypography,
+        modalTypography = _props$attributes.modalTypography,
+        iconSize = _props$attributes.iconSize,
+        imageWidth = _props$attributes.imageWidth,
+        modalWidth = _props$attributes.modalWidth,
+        modalHeight = _props$attributes.modalHeight;
 
+
+    var currentDevice = props.deviceType;
 
     useEffect(function () {
         setAttributes({ block_id: props.clientId });
@@ -59318,60 +59327,56 @@ var edit = function edit(props) {
     var renderCss = React.createElement(
         "style",
         null,
-        "\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container button.premium-modal-trigger-btn:hover {\n                background-color: " + triggerStyles[0].triggerHoverBack + " !important;\n                border-style: " + (triggerBorderH && triggerBorderH.borderType) + " !important;\n                border-top-width: " + (triggerBorderH && triggerBorderH.borderWidth.Desktop.top) + "px !important;\n                border-right-width: " + (triggerBorderH && triggerBorderH.borderWidth.Desktop.right) + "px !important;\n                border-bottom-width: " + (triggerBorderH && triggerBorderH.borderWidth.Desktop.bottom) + "px !important;\n                border-left-width: $" + (triggerBorderH && triggerBorderH.borderWidth.Desktop.width) + "px !important;\n                border-radius: " + (triggerBorderH && triggerBorderH.borderRadius.Desktop.top || 0) + "px " + (triggerBorderH && triggerBorderH.borderRadius.Desktop.right || 0) + "px " + (triggerBorderH && triggerBorderH.borderRadius.Desktop.bottom || 0) + "px " + (triggerBorderH && triggerBorderH.borderRadius.Desktop.left || 0) + "px !important;\n                border-color: " + (triggerBorderH && triggerBorderH.borderColor) + " px !important;\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container button.premium-modal-trigger-btn:hover i{\n                color:" + triggerStyles[0].iconHoverColor + " !important;\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container button.premium-modal-trigger-btn:hover span{\n                color:" + triggerStyles[0].hoverColor + " !important;\n            }\n             #premium-modal-box-" + block_id + " .premium-modal-trigger-container:hover .premium-modal-trigger-text {\n                color:" + triggerStyles[0].hoverColor + " !important;\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container .premium-lottie-animation{\n            filter: brightness( " + triggerStyles[0].bright + "% ) contrast( " + triggerStyles[0].contrast + "% ) saturate( " + triggerStyles[0].saturation + "% ) blur( " + triggerStyles[0].blur + "px ) hue-rotate( " + triggerStyles[0].hue + "deg );\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container:hover .premium-lottie-animation{\n            filter: brightness( " + triggerStyles[0].brightH + "% ) contrast( " + triggerStyles[0].contrastH + "% ) saturate( " + triggerStyles[0].saturationH + "% ) blur( " + triggerStyles[0].blurH + "px ) hue-rotate( " + triggerStyles[0].hueH + "deg ) !important;\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container img:hover {\n              border-style: " + (triggerBorderH && triggerBorderH.borderType) + " !important;\n              border-top-width: " + (triggerBorderH && triggerBorderH.borderWidth.Desktop.top) + "px !important;\n              border-right-width: " + (triggerBorderH && triggerBorderH.borderWidth.Desktop.right) + "px !important;\n              border-bottom-width: " + (triggerBorderH && triggerBorderH.borderWidth.Desktop.bottom) + "px !important;\n              border-left-width: $" + (triggerBorderH && triggerBorderH.borderWidth.Desktop.width) + "px !important;\n              border-radius: " + (triggerBorderH && triggerBorderH.borderRadius.Desktop.top || 0) + "px " + (triggerBorderH && triggerBorderH.borderRadius.Desktop.right || 0) + "px " + (triggerBorderH && triggerBorderH.borderRadius.Desktop.bottom || 0) + "px " + (triggerBorderH && triggerBorderH.borderRadius.Desktop.left || 0) + "px !important;\n              border-color: " + (triggerBorderH && triggerBorderH.borderColor) + " px !important;\n            }\n             #premium-modal-box-" + block_id + " .premium-modal-trigger-container:hover .premium-modal-trigger-text {\n                border-style: " + (triggerBorderH && triggerBorderH.borderType) + " !important;\n                border-top-width: " + (triggerBorderH && triggerBorderH.borderWidth.Desktop.top) + "px !important;\n                border-right-width: " + (triggerBorderH && triggerBorderH.borderWidth.Desktop.right) + "px !important;\n                border-bottom-width: " + (triggerBorderH && triggerBorderH.borderWidth.Desktop.bottom) + "px !important;\n                border-left-width: $" + (triggerBorderH && triggerBorderH.borderWidth.Desktop.width) + "px !important;\n                border-radius: " + (triggerBorderH && triggerBorderH.borderRadius.Desktop.top || 0) + "px " + (triggerBorderH && triggerBorderH.borderRadius.Desktop.right || 0) + "px " + (triggerBorderH && triggerBorderH.borderRadius.Desktop.bottom || 0) + "px " + (triggerBorderH && triggerBorderH.borderRadius.Desktop.left || 0) + "px !important;\n                border-color: " + (triggerBorderH && triggerBorderH.borderColor) + " px !important;\n            }\n\n        "
+        "\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container button.premium-modal-trigger-btn:hover {\n                background-color: " + triggerStyles[0].triggerHoverBack + " !important;\n                border-style: " + (triggerBorderH && triggerBorderH.borderType) + " !important;\n                border-top-width: " + (triggerBorderH && triggerBorderH.borderWidth[currentDevice].top) + "px !important;\n                border-right-width: " + (triggerBorderH && triggerBorderH.borderWidth[currentDevice].right) + "px !important;\n                border-bottom-width: " + (triggerBorderH && triggerBorderH.borderWidth[currentDevice].bottom) + "px !important;\n                border-left-width: $" + (triggerBorderH && triggerBorderH.borderWidth[currentDevice].width) + "px !important;\n                border-radius: " + (triggerBorderH && triggerBorderH.borderRadius[currentDevice].top || 0) + "px " + (triggerBorderH && triggerBorderH.borderRadius[currentDevice].right || 0) + "px " + (triggerBorderH && triggerBorderH.borderRadius[currentDevice].bottom || 0) + "px " + (triggerBorderH && triggerBorderH.borderRadius[currentDevice].left || 0) + "px !important;\n                border-color: " + (triggerBorderH && triggerBorderH.borderColor) + " px !important;\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container button.premium-modal-trigger-btn:hover i{\n                color:" + triggerStyles[0].iconHoverColor + " !important;\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container button.premium-modal-trigger-btn:hover span{\n                color:" + triggerStyles[0].hoverColor + " !important;\n            }\n             #premium-modal-box-" + block_id + " .premium-modal-trigger-container:hover .premium-modal-trigger-text {\n                color:" + triggerStyles[0].hoverColor + " !important;\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container .premium-lottie-animation{\n            filter: brightness( " + triggerStyles[0].bright + "% ) contrast( " + triggerStyles[0].contrast + "% ) saturate( " + triggerStyles[0].saturation + "% ) blur( " + triggerStyles[0].blur + "px ) hue-rotate( " + triggerStyles[0].hue + "deg );\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container:hover .premium-lottie-animation{\n            filter: brightness( " + triggerStyles[0].brightH + "% ) contrast( " + triggerStyles[0].contrastH + "% ) saturate( " + triggerStyles[0].saturationH + "% ) blur( " + triggerStyles[0].blurH + "px ) hue-rotate( " + triggerStyles[0].hueH + "deg ) !important;\n            }\n            #premium-modal-box-" + block_id + " .premium-modal-trigger-container img:hover {\n              border-style: " + (triggerBorderH && triggerBorderH.borderType) + " !important;\n              border-top-width: " + (triggerBorderH && triggerBorderH.borderWidth[currentDevice].top) + "px !important;\n              border-right-width: " + (triggerBorderH && triggerBorderH.borderWidth[currentDevice].right) + "px !important;\n              border-bottom-width: " + (triggerBorderH && triggerBorderH.borderWidth[currentDevice].bottom) + "px !important;\n              border-left-width: $" + (triggerBorderH && triggerBorderH.borderWidth[currentDevice].width) + "px !important;\n              border-radius: " + (triggerBorderH && triggerBorderH.borderRadius[currentDevice].top || 0) + "px " + (triggerBorderH && triggerBorderH.borderRadius[currentDevice].right || 0) + "px " + (triggerBorderH && triggerBorderH.borderRadius[currentDevice].bottom || 0) + "px " + (triggerBorderH && triggerBorderH.borderRadius[currentDevice].left || 0) + "px !important;\n              border-color: " + (triggerBorderH && triggerBorderH.borderColor) + " px !important;\n            }\n             #premium-modal-box-" + block_id + " .premium-modal-trigger-container:hover .premium-modal-trigger-text {\n                border-style: " + (triggerBorderH && triggerBorderH.borderType) + " !important;\n                border-top-width: " + (triggerBorderH && triggerBorderH.borderWidth[currentDevice].top) + "px !important;\n                border-right-width: " + (triggerBorderH && triggerBorderH.borderWidth[currentDevice].right) + "px !important;\n                border-bottom-width: " + (triggerBorderH && triggerBorderH.borderWidth[currentDevice].bottom) + "px !important;\n                border-left-width: $" + (triggerBorderH && triggerBorderH.borderWidth[currentDevice].width) + "px !important;\n                border-radius: " + (triggerBorderH && triggerBorderH.borderRadius[currentDevice].top || 0) + "px " + (triggerBorderH && triggerBorderH.borderRadius[currentDevice].right || 0) + "px " + (triggerBorderH && triggerBorderH.borderRadius[currentDevice].bottom || 0) + "px " + (triggerBorderH && triggerBorderH.borderRadius[currentDevice].left || 0) + "px !important;\n                border-color: " + (triggerBorderH && triggerBorderH.borderColor) + " px !important;\n            }\n\n        "
     );
-    var headerIconSize = getPreviewSize(props.deviceType, contentStyles[0].iconSize, contentStyles[0].iconSizeTablet, contentStyles[0].iconSizeMobile);
-    var triggerFontSize = getPreviewSize(props.deviceType, triggerStyles[0].triggerSize, triggerStyles[0].triggerSizeTablet, triggerStyles[0].triggerSizeMobile);
-    var triggerPaddingTop = getPreviewSize(props.deviceType, triggerPadding.Desktop.top, triggerPadding.Tablet.top, triggerPadding.Mobile.top);
-    var triggerPaddingRight = getPreviewSize(props.deviceType, triggerPadding.Desktop.right, triggerPadding.Tablet.right, triggerPadding.Mobile.right);
-    var triggerPaddingBottom = getPreviewSize(props.deviceType, triggerPadding.Desktop.bottom, triggerPadding.Tablet.bottom, triggerPadding.Mobile.bottom);
-    var triggerPaddingLeft = getPreviewSize(props.deviceType, triggerPadding.Desktop.left, triggerPadding.Tablet.left, triggerPadding.Mobile.left);
-    var headerFontSize = getPreviewSize(props.deviceType, headerStyles[0].headerSize, headerStyles[0].headerSizeTablet, headerStyles[0].headerSizeMobile);
-    var upperPaddingTop = getPreviewSize(props.deviceType, upperPadding.Desktop.top, upperPadding.Tablet.top, upperPadding.Mobile.top);
-    var upperPaddingRight = getPreviewSize(props.deviceType, upperPadding.Desktop.right, upperPadding.Tablet.right, upperPadding.Mobile.right);
-    var upperPaddingBottom = getPreviewSize(props.deviceType, upperPadding.Desktop.bottom, upperPadding.Tablet.bottom, upperPadding.Mobile.bottom);
-    var upperPaddingLeft = getPreviewSize(props.deviceType, upperPadding.Desktop.left, upperPadding.Tablet.left, upperPadding.Mobile.left);
-    var lowerFontSize = getPreviewSize(props.deviceType, lowerStyles[0].lowerSize, lowerStyles[0].lowerSizeTablet, lowerStyles[0].lowerSizeMobile);
-    var lowerPaddingTop = getPreviewSize(props.deviceType, lowerPadding.Desktop.top, lowerPadding.Tablet.top, lowerPadding.Mobile.top);
-    var lowerPaddingRight = getPreviewSize(props.deviceType, lowerPadding.Desktop.right, lowerPadding.Tablet.right, lowerPadding.Mobile.right);
-    var lowerPaddingBottom = getPreviewSize(props.deviceType, lowerPadding.Desktop.bottom, lowerPadding.Tablet.bottom, lowerPadding.Mobile.bottom);
-    var lowerPaddingLeft = getPreviewSize(props.deviceType, lowerPadding.Desktop.left, lowerPadding.Tablet.left, lowerPadding.Mobile.left);
-    var modalWidth = getPreviewSize(props.deviceType, modalStyles[0].modalWidth, modalStyles[0].modalWidthTablet, modalStyles[0].modalWidthMobile);
-    var modalMaxHeight = getPreviewSize(props.deviceType, modalStyles[0].modalHeight, modalStyles[0].modalHeightTablet, modalStyles[0].modalHeightMobile);
-    var modalFontSize = getPreviewSize(props.deviceType, modalStyles[0].modalSize, modalStyles[0].modalSizeTablet, modalStyles[0].modalSizeMobile);
-    var modalPaddingTop = getPreviewSize(props.deviceType, modalPadding.Desktop.top, modalPadding.Tablet.top, modalPadding.Mobile.top);
-    var modalPaddingRight = getPreviewSize(props.deviceType, modalPadding.Desktop.right, modalPadding.Tablet.right, modalPadding.Mobile.right);
-    var modalPaddingBottom = getPreviewSize(props.deviceType, modalPadding.Desktop.bottom, modalPadding.Tablet.bottom, modalPadding.Mobile.bottom);
-    var modalPaddingLeft = getPreviewSize(props.deviceType, modalPadding.Desktop.left, modalPadding.Tablet.left, modalPadding.Mobile.left);
-    var modalMarginTop = getPreviewSize(props.deviceType, modalMargin.Desktop.top, modalMargin.Tablet.top, modalMargin.Mobile.top);
-    var modalMarginRight = getPreviewSize(props.deviceType, modalMargin.Desktop.right, modalMargin.Tablet.right, modalMargin.Mobile.right);
-    var modalMarginBottom = getPreviewSize(props.deviceType, modalMargin.Desktop.bottom, modalMargin.Tablet.bottom, modalMargin.Mobile.bottom);
-    var modalMarginLeft = getPreviewSize(props.deviceType, modalMargin.Desktop.right, modalMargin.Tablet.right, modalMargin.Mobile.right);
-    var triggerSize = getPreviewSize(props.deviceType, triggerSettings[0].imageWidth, triggerSettings[0].imageWidthTablet, triggerSettings[0].imageWidthMobile);
+    var headerIconSize = iconSize[currentDevice];
+    var triggerPaddingTop = triggerPadding[currentDevice].top;
+    var triggerPaddingRight = triggerPadding[currentDevice].right;
+    var triggerPaddingBottom = triggerPadding[currentDevice].bottom;
+    var triggerPaddingLeft = triggerPadding[currentDevice].left;
+    var upperPaddingTop = upperPadding[currentDevice].top;
+    var upperPaddingRight = upperPadding[currentDevice].right;
+    var upperPaddingBottom = upperPadding[currentDevice].bottom;
+    var upperPaddingLeft = upperPadding[currentDevice].left;
+    var lowerPaddingTop = lowerPadding[currentDevice].top;
+    var lowerPaddingRight = lowerPadding[currentDevice].right;
+    var lowerPaddingBottom = lowerPadding[currentDevice].bottom;
+    var lowerPaddingLeft = lowerPadding[currentDevice].left;
+    var modalWidthValue = modalWidth[currentDevice];
+    var modalMaxHeight = modalHeight[currentDevice];
+    var modalPaddingTop = modalPadding[currentDevice].top;
+    var modalPaddingRight = modalPadding[currentDevice].right;
+    var modalPaddingBottom = modalPadding[currentDevice].bottom;
+    var modalPaddingLeft = modalPadding[currentDevice].left;
+    var modalMarginTop = modalMargin[currentDevice].top;
+    var modalMarginRight = modalMargin[currentDevice].right;
+    var modalMarginBottom = modalMargin[currentDevice].bottom;
+    var modalMarginLeft = modalMargin[currentDevice].left;
+    var triggerSize = imageWidth[currentDevice];
 
     var loadTriggerGoogleFonts = void 0;
     var loadHeaderGoogleFonts = void 0;
     var loadModalGoogleFonts = void 0;
-    if (triggerStyles[0].triggerFamily !== 'Default') {
+    if (triggerTypography.fontFamily !== 'Default') {
         var triggerConfig = {
             google: {
-                families: [triggerStyles[0].triggerFamily]
+                families: [triggerTypography.fontFamily]
             }
         };
         loadTriggerGoogleFonts = React.createElement(_fontLoader2.default, { config: triggerConfig });
     }
-    if (headerStyles[0].headerFamily !== 'Default') {
+    if (headerTypography.fontFamily !== 'Default') {
         var headerConfig = {
             google: {
-                families: [headerStyles[0].headerFamily]
+                families: [headerTypography.fontFamily]
             }
         };
         loadHeaderGoogleFonts = React.createElement(_fontLoader2.default, { config: headerConfig });
     }
-    if (modalStyles[0].modalFamily !== 'Default') {
+    if (modalTypography.fontFamily !== 'Default') {
         var modalConfig = {
             google: {
-                families: [modalStyles[0].modalFamily]
+                families: [modalTypography.fontFamily]
             }
         };
         loadModalGoogleFonts = React.createElement(_fontLoader2.default, { config: modalConfig });
@@ -59391,28 +59396,34 @@ var edit = function edit(props) {
                 { className: " premium-modal-trigger-btn premium-button__" + triggerSettings[0].btnSize + " ", onClick: function onClick() {
                         return setOpenModal(true);
                     }, style: {
-                        fontSize: "" + triggerFontSize + triggerStyles[0].triggerSizeUnit,
+                        fontSize: "" + triggerTypography.fontSize[currentDevice] + triggerTypography.fontSize.unit,
                         paddingTop: triggerPaddingTop && "" + triggerPaddingTop + triggerPadding.unit,
                         paddingRight: triggerPaddingRight && "" + triggerPaddingRight + triggerPadding.unit,
                         paddingBottom: triggerPaddingBottom && "" + triggerPaddingBottom + triggerPadding.unit,
                         paddingLeft: triggerPaddingLeft && "" + triggerPaddingLeft + triggerPadding.unit,
                         backgroundColor: triggerStyles[0].triggerBack,
                         borderStyle: triggerBorder && triggerBorder.borderType,
-                        borderTopWidth: triggerBorder && triggerBorder.borderWidth.Desktop.top,
-                        borderRightWidth: triggerBorder && triggerBorder.borderWidth.Desktop.right,
-                        borderBottomWidth: triggerBorder && triggerBorder.borderWidth.Desktop.bottom,
-                        borderLeftWidth: triggerBorder && triggerBorder.borderWidth.Desktop.left,
+                        borderTopWidth: triggerBorder && triggerBorder.borderWidth[currentDevice].top,
+                        borderRightWidth: triggerBorder && triggerBorder.borderWidth[currentDevice].right,
+                        borderBottomWidth: triggerBorder && triggerBorder.borderWidth[currentDevice].bottom,
+                        borderLeftWidth: triggerBorder && triggerBorder.borderWidth[currentDevice].left,
                         borderColor: triggerBorder && triggerBorder.borderColor,
-                        borderTopLeftRadius: (triggerBorder && triggerBorder.borderRadius.Desktop.top || 0) + "px",
-                        borderTopRightRadius: (triggerBorder && triggerBorder.borderRadius.Desktop.right || 0) + "px",
-                        borderBottomLeftRadius: (triggerBorder && triggerBorder.borderRadius.Desktop.bottom || 0) + "px",
-                        borderBottomRightRadius: (triggerBorder && triggerBorder.borderRadius.Desktop.left || 0) + "px",
+                        borderTopLeftRadius: (triggerBorder && triggerBorder.borderRadius[currentDevice].top || 0) + "px",
+                        borderTopRightRadius: (triggerBorder && triggerBorder.borderRadius[currentDevice].right || 0) + "px",
+                        borderBottomLeftRadius: (triggerBorder && triggerBorder.borderRadius[currentDevice].bottom || 0) + "px",
+                        borderBottomRightRadius: (triggerBorder && triggerBorder.borderRadius[currentDevice].left || 0) + "px",
                         boxShadow: triggerShadow.horizontal + "px " + triggerShadow.vertical + "px " + triggerShadow.blur + "px " + triggerShadow.color + " " + triggerShadow.position
                     } },
                 triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "before" && React.createElement("i", { className: " premium-modal-box-icon " + triggerSettings[0].icon, style: { fontSize: triggerSettings[0].iconSize + "px", marginRight: triggerSettings[0].iconSpacing + "px", color: triggerStyles[0].iconColor } }),
                 React.createElement(
                     "span",
-                    { style: { color: triggerStyles[0].color, fontFamily: triggerStyles[0].triggerFamily, fontWeight: triggerStyles[0].triggerWeight, fontStyle: triggerStyles[0].triggerStyle, letterSpacing: triggerStyles[0].triggerSpacing } },
+                    { style: {
+                            color: triggerStyles[0].color,
+                            fontFamily: triggerTypography.fontFamily,
+                            fontWeight: triggerTypography.fontWeight,
+                            fontStyle: triggerTypography.fontStyle,
+                            letterSpacing: triggerTypography.letterSpacing
+                        } },
                     " ",
                     triggerSettings[0].btnText
                 ),
@@ -59427,15 +59438,15 @@ var edit = function edit(props) {
                         width: triggerSize + "px",
                         height: triggerSize + "px",
                         borderStyle: triggerBorder && triggerBorder.borderType,
-                        borderTopWidth: triggerBorder && triggerBorder.borderWidth.Desktop.top,
-                        borderRightWidth: triggerBorder && triggerBorder.borderWidth.Desktop.right,
-                        borderBottomWidth: triggerBorder && triggerBorder.borderWidth.Desktop.bottom,
-                        borderLeftWidth: triggerBorder && triggerBorder.borderWidth.Desktop.left,
+                        borderTopWidth: triggerBorder && triggerBorder.borderWidth[currentDevice].top,
+                        borderRightWidth: triggerBorder && triggerBorder.borderWidth[currentDevice].right,
+                        borderBottomWidth: triggerBorder && triggerBorder.borderWidth[currentDevice].bottom,
+                        borderLeftWidth: triggerBorder && triggerBorder.borderWidth[currentDevice].left,
                         borderColor: triggerBorder && triggerBorder.borderColor,
-                        borderTopLeftRadius: (triggerBorder && triggerBorder.borderRadius.Desktop.top || 0) + "px",
-                        borderTopRightRadius: (triggerBorder && triggerBorder.borderRadius.Desktop.right || 0) + "px",
-                        borderBottomLeftRadius: (triggerBorder && triggerBorder.borderRadius.Desktop.bottom || 0) + "px",
-                        borderBottomRightRadius: (triggerBorder && triggerBorder.borderRadius.Desktop.left || 0) + "px",
+                        borderTopLeftRadius: (triggerBorder && triggerBorder.borderRadius[currentDevice].top || 0) + "px",
+                        borderTopRightRadius: (triggerBorder && triggerBorder.borderRadius[currentDevice].right || 0) + "px",
+                        borderBottomLeftRadius: (triggerBorder && triggerBorder.borderRadius[currentDevice].bottom || 0) + "px",
+                        borderBottomRightRadius: (triggerBorder && triggerBorder.borderRadius[currentDevice].left || 0) + "px",
                         boxShadow: triggerShadow.horizontal + "px " + triggerShadow.vertical + "px " + triggerShadow.blur + "px " + triggerShadow.color + " " + triggerShadow.position
                     } }) : React.createElement(MediaPlaceholder, {
                     labels: {
@@ -59462,26 +59473,26 @@ var edit = function edit(props) {
                         return setOpenModal(true);
                     }, className: "premium-modal-trigger-text", style: {
                         color: triggerStyles[0].color,
-                        fontSize: "" + triggerFontSize + triggerStyles[0].triggerSizeUnit,
+                        fontSize: "" + triggerTypography.fontSize[currentDevice] + triggerTypography.fontSize.unit,
                         paddingTop: triggerPaddingTop && "" + triggerPaddingTop + triggerPadding.unit,
                         paddingRight: triggerPaddingRight && "" + triggerPaddingRight + triggerPadding.unit,
                         paddingBottom: triggerPaddingBottom && "" + triggerPaddingBottom + triggerPadding.unit,
                         paddingLeft: triggerPaddingLeft && "" + triggerPaddingLeft + triggerPadding.unit,
                         borderStyle: triggerBorder && triggerBorder.borderType,
-                        borderTopWidth: triggerBorder && triggerBorder.borderWidth.Desktop.top,
-                        borderRightWidth: triggerBorder && triggerBorder.borderWidth.Desktop.right,
-                        borderBottomWidth: triggerBorder && triggerBorder.borderWidth.Desktop.bottom,
-                        borderLeftWidth: triggerBorder && triggerBorder.borderWidth.Desktop.left,
+                        borderTopWidth: triggerBorder && triggerBorder.borderWidth[currentDevice].top,
+                        borderRightWidth: triggerBorder && triggerBorder.borderWidth[currentDevice].right,
+                        borderBottomWidth: triggerBorder && triggerBorder.borderWidth[currentDevice].bottom,
+                        borderLeftWidth: triggerBorder && triggerBorder.borderWidth[currentDevice].left,
                         borderColor: triggerBorder && triggerBorder.borderColor,
-                        borderTopLeftRadius: (triggerBorder && triggerBorder.borderRadius.Desktop.top || 0) + "px",
-                        borderTopRightRadius: (triggerBorder && triggerBorder.borderRadius.Desktop.right || 0) + "px",
-                        borderBottomLeftRadius: (triggerBorder && triggerBorder.borderRadius.Desktop.bottom || 0) + "px",
-                        borderBottomRightRadius: (triggerBorder && triggerBorder.borderRadius.Desktop.left || 0) + "px",
+                        borderTopLeftRadius: (triggerBorder && triggerBorder.borderRadius[currentDevice].top || 0) + "px",
+                        borderTopRightRadius: (triggerBorder && triggerBorder.borderRadius[currentDevice].right || 0) + "px",
+                        borderBottomLeftRadius: (triggerBorder && triggerBorder.borderRadius[currentDevice].bottom || 0) + "px",
+                        borderBottomRightRadius: (triggerBorder && triggerBorder.borderRadius[currentDevice].left || 0) + "px",
                         textShadow: triggerTextShadow.horizontal + "px " + triggerTextShadow.vertical + "px " + triggerTextShadow.blur + "px " + triggerTextShadow.color,
-                        fontFamily: triggerStyles[0].triggerFamily,
-                        fontWeight: triggerStyles[0].triggerWeight,
-                        fontStyle: triggerStyles[0].triggerStyle,
-                        letterSpacing: triggerStyles[0].triggerSpacing
+                        fontFamily: triggerTypography.fontFamily,
+                        fontWeight: triggerTypography.fontWeight,
+                        fontStyle: triggerTypography.fontStyle,
+                        letterSpacing: triggerTypography.letterSpacing
                     } },
                 triggerSettings[0].triggerText
             ),
@@ -59539,22 +59550,22 @@ var edit = function edit(props) {
                     "data-delay": triggerSettings[0].delayTime,
                     "data-animation": contentStyles[0].animationType + " " + contentStyles[0].animationSpeed,
                     style: {
-                        width: "" + modalWidth + modalStyles[0].modalWidthUnit,
-                        maxHeight: "" + modalMaxHeight + modalStyles[0].modalHeightUnit,
+                        width: "" + modalWidthValue + modalWidth.unit,
+                        maxHeight: "" + modalMaxHeight + modalHeight.unit,
                         marginTop: modalMarginTop && "" + modalMarginTop + modalMargin.unit,
                         marginRight: modalMarginRight && "" + modalMarginRight + modalMargin.unit,
                         marginBottom: modalMarginBottom && "" + modalMarginBottom + modalMargin.unit,
                         marginLeft: modalMarginLeft && "" + modalMarginLeft + modalMargin.unit,
                         borderStyle: modalBorder && modalBorder.borderType,
-                        borderTopWidth: modalBorder && modalBorder.borderWidth.Desktop.top,
-                        borderRightWidth: modalBorder && modalBorder.borderWidth.Desktop.right,
-                        borderBottomWidth: modalBorder && modalBorder.borderWidth.Desktop.bottom,
-                        borderLeftWidth: modalBorder && modalBorder.borderWidth.Desktop.left,
+                        borderTopWidth: modalBorder && modalBorder.borderWidth[currentDevice].top,
+                        borderRightWidth: modalBorder && modalBorder.borderWidth[currentDevice].right,
+                        borderBottomWidth: modalBorder && modalBorder.borderWidth[currentDevice].bottom,
+                        borderLeftWidth: modalBorder && modalBorder.borderWidth[currentDevice].left,
                         borderColor: modalBorder && modalBorder.borderColor,
-                        borderTopLeftRadius: (modalBorder && modalBorder.borderRadius.Desktop.top || 0) + "px",
-                        borderTopRightRadius: (modalBorder && modalBorder.borderRadius.Desktop.right || 0) + "px",
-                        borderBottomLeftRadius: (modalBorder && modalBorder.borderRadius.Desktop.bottom || 0) + "px",
-                        borderBottomRightRadius: (modalBorder && modalBorder.borderRadius.Desktop.left || 0) + "px",
+                        borderTopLeftRadius: (modalBorder && modalBorder.borderRadius[currentDevice].top || 0) + "px",
+                        borderTopRightRadius: (modalBorder && modalBorder.borderRadius[currentDevice].right || 0) + "px",
+                        borderBottomLeftRadius: (modalBorder && modalBorder.borderRadius[currentDevice].bottom || 0) + "px",
+                        borderBottomRightRadius: (modalBorder && modalBorder.borderRadius[currentDevice].left || 0) + "px",
                         boxShadow: modalShadow.horizontal + "px " + modalShadow.vertical + "px " + modalShadow.blur + "px " + modalShadow.color + " " + modalShadow.position
                     } },
                 contentStyles[0].showHeader && React.createElement(
@@ -59562,37 +59573,37 @@ var edit = function edit(props) {
                     { className: "premium-modal-box-modal-header", style: {
                             backgroundColor: headerStyles[0].backColor,
                             borderStyle: headerBorder && headerBorder.borderType,
-                            borderTopWidth: headerBorder && headerBorder.borderWidth.Desktop.top,
-                            borderRightWidth: headerBorder && headerBorder.borderWidth.Desktop.right,
-                            borderBottomWidth: headerBorder && headerBorder.borderWidth.Desktop.bottom,
-                            borderLeftWidth: headerBorder && headerBorder.borderWidth.Desktop.left,
+                            borderTopWidth: headerBorder && headerBorder.borderWidth[currentDevice].top,
+                            borderRightWidth: headerBorder && headerBorder.borderWidth[currentDevice].right,
+                            borderBottomWidth: headerBorder && headerBorder.borderWidth[currentDevice].bottom,
+                            borderLeftWidth: headerBorder && headerBorder.borderWidth[currentDevice].left,
                             borderColor: headerBorder && headerBorder.borderColor,
-                            borderTopLeftRadius: (headerBorder && headerBorder.borderRadius.Desktop.top || 0) + "px",
-                            borderTopRightRadius: (headerBorder && headerBorder.borderRadius.Desktop.right || 0) + "px",
-                            borderBottomLeftRadius: (headerBorder && headerBorder.borderRadius.Desktop.bottom || 0) + "px",
-                            borderBottomRightRadius: (headerBorder && headerBorder.borderRadius.Desktop.left || 0) + "px"
+                            borderTopLeftRadius: (headerBorder && headerBorder.borderRadius[currentDevice].top || 0) + "px",
+                            borderTopRightRadius: (headerBorder && headerBorder.borderRadius[currentDevice].right || 0) + "px",
+                            borderBottomLeftRadius: (headerBorder && headerBorder.borderRadius[currentDevice].bottom || 0) + "px",
+                            borderBottomRightRadius: (headerBorder && headerBorder.borderRadius[currentDevice].left || 0) + "px"
                         } },
                     React.createElement(
                         "h3",
                         { className: "premium-modal-box-modal-title", style: {
                                 color: headerStyles[0].color,
-                                fontFamily: headerStyles[0].headerFamily,
-                                fontStyle: headerStyles[0].headerStyle,
-                                letterSpacing: headerStyles[0].headerSpacing,
-                                fontWeight: headerStyles[0].headerWeight,
-                                fontSize: "" + headerFontSize + headerStyles[0].headerSizeUnit
+                                fontSize: "" + headerTypography.fontSize[currentDevice] + headerTypography.fontSize.unit,
+                                fontFamily: headerTypography.fontFamily,
+                                fontWeight: headerTypography.fontWeight,
+                                fontStyle: headerTypography.fontStyle,
+                                letterSpacing: headerTypography.letterSpacing
                             } },
-                        contentStyles[0].iconType === "icon" && React.createElement("i", { className: contentStyles[0].contentIcon, style: { fontSize: "" + headerIconSize + contentStyles[0].iconSizeUnit } }),
+                        contentStyles[0].iconType === "icon" && React.createElement("i", { className: contentStyles[0].contentIcon, style: { fontSize: "" + headerIconSize + iconSize.unit } }),
                         contentStyles[0].iconType === "image" && React.createElement("img", { src: contentStyles[0].contentImgURL, style: {
-                                width: "" + headerIconSize + contentStyles[0].iconSizeUnit,
-                                height: "" + headerIconSize + contentStyles[0].iconSizeUnit
+                                width: "" + headerIconSize + iconSize.unit,
+                                height: "" + headerIconSize + iconSize.unit
                             } }),
                         contentStyles[0].iconType === "lottie" && React.createElement(
                             "div",
                             { className: "premium-lottie-animation",
                                 style: {
-                                    width: "" + headerIconSize + contentStyles[0].iconSizeUnit,
-                                    height: "" + headerIconSize + contentStyles[0].iconSizeUnit
+                                    width: "" + headerIconSize + iconSize.unit,
+                                    height: "" + headerIconSize + iconSize.unit
                                 }
                             },
                             React.createElement(_reactLottieWithSegments2.default, {
@@ -59614,15 +59625,15 @@ var edit = function edit(props) {
                         { className: "premium-modal-box-close-button-container", style: {
                                 backgroundColor: "" + upperStyles[0].backColor,
                                 borderStyle: upperBorder && upperBorder.borderType,
-                                borderTopWidth: upperBorder && upperBorder.borderWidth.Desktop.top,
-                                borderRightWidth: upperBorder && upperBorder.borderWidth.Desktop.right,
-                                borderBottomWidth: upperBorder && upperBorder.borderWidth.Desktop.bottom,
-                                borderLeftWidth: upperBorder && upperBorder.borderWidth.Desktop.left,
+                                borderTopWidth: upperBorder && upperBorder.borderWidth[currentDevice].top,
+                                borderRightWidth: upperBorder && upperBorder.borderWidth[currentDevice].right,
+                                borderBottomWidth: upperBorder && upperBorder.borderWidth[currentDevice].bottom,
+                                borderLeftWidth: upperBorder && upperBorder.borderWidth[currentDevice].left,
                                 borderColor: upperBorder && upperBorder.borderColor,
-                                borderTopLeftRadius: (upperBorder && upperBorder.borderRadius.Desktop.top || 0) + "px",
-                                borderTopRightRadius: (upperBorder && upperBorder.borderRadius.Desktop.right || 0) + "px",
-                                borderBottomLeftRadius: (upperBorder && upperBorder.borderRadius.Desktop.bottom || 0) + "px",
-                                borderBottomRightRadius: (upperBorder && upperBorder.borderRadius.Desktop.left || 0) + "px",
+                                borderTopLeftRadius: (upperBorder && upperBorder.borderRadius[currentDevice].top || 0) + "px",
+                                borderTopRightRadius: (upperBorder && upperBorder.borderRadius[currentDevice].right || 0) + "px",
+                                borderBottomLeftRadius: (upperBorder && upperBorder.borderRadius[currentDevice].bottom || 0) + "px",
+                                borderBottomRightRadius: (upperBorder && upperBorder.borderRadius[currentDevice].left || 0) + "px",
                                 paddingTop: upperPaddingTop && "" + upperPaddingTop + upperPadding.unit,
                                 paddingRight: upperPaddingRight && "" + upperPaddingRight + upperPadding.unit,
                                 paddingBottom: upperPaddingBottom && "" + upperPaddingBottom + upperPadding.unit,
@@ -59654,12 +59665,12 @@ var edit = function edit(props) {
                     modalStyles[0].contentType === "text" ? React.createElement(
                         "p",
                         { style: {
-                                fontSize: "" + modalFontSize + modalStyles[0].modalSizeUnit,
                                 color: modalStyles[0].textColor,
-                                fontWeight: modalStyles[0].modalWeight,
-                                fontFamily: modalStyles[0].modalFamily,
-                                letterSpacing: modalStyles[0].modalSpacing,
-                                fontStyle: modalStyles[0].modalStyle
+                                fontSize: "" + modalTypography.fontSize[currentDevice] + modalTypography.fontSize.unit,
+                                fontFamily: modalTypography.fontFamily,
+                                fontWeight: modalTypography.fontWeight,
+                                fontStyle: modalTypography.fontStyle,
+                                letterSpacing: modalTypography.letterSpacing
                             } },
                         modalStyles[0].contentText
                     ) : React.createElement(InnerBlocks, null)
@@ -59676,23 +59687,23 @@ var edit = function edit(props) {
                                 return setOpenModal(false);
                             },
                             style: {
-                                fontStyle: lowerStyles[0].lowerStyle,
-                                fontWeight: lowerStyles[0].lowerWeight,
-                                letterSpacing: lowerStyles[0].lowerSpacing,
-                                fontSize: "" + lowerFontSize + lowerStyles[0].lowerSizeUnit,
+                                fontSize: "" + lowerTypography.fontSize[currentDevice] + lowerTypography.fontSize.unit,
+                                fontWeight: lowerTypography.fontWeight,
+                                fontStyle: lowerTypography.fontStyle,
+                                letterSpacing: lowerTypography.letterSpacing,
                                 width: "" + lowerStyles[0].iconWidth + lowerStyles[0].iconWidthUnit,
                                 color: "" + lowerStyles[0].color,
                                 backgroundColor: "" + lowerStyles[0].backColor,
                                 borderStyle: lowerBorder && lowerBorder.borderType,
-                                borderTopWidth: lowerBorder && lowerBorder.borderWidth.Desktop.top,
-                                borderRightWidth: lowerBorder && lowerBorder.borderWidth.Desktop.right,
-                                borderBottomWidth: lowerBorder && lowerBorder.borderWidth.Desktop.bottom,
-                                borderLeftWidth: lowerBorder && lowerBorder.borderWidth.Desktop.left,
+                                borderTopWidth: lowerBorder && lowerBorder.borderWidth[currentDevice].top,
+                                borderRightWidth: lowerBorder && lowerBorder.borderWidth[currentDevice].right,
+                                borderBottomWidth: lowerBorder && lowerBorder.borderWidth[currentDevice].bottom,
+                                borderLeftWidth: lowerBorder && lowerBorder.borderWidth[currentDevice].left,
                                 borderColor: lowerBorder && lowerBorder.borderColor,
-                                borderTopLeftRadius: (lowerBorder && lowerBorder.borderRadius.Desktop.top || 0) + "px",
-                                borderTopRightRadius: (lowerBorder && lowerBorder.borderRadius.Desktop.right || 0) + "px",
-                                borderBottomLeftRadius: (lowerBorder && lowerBorder.borderRadius.Desktop.bottom || 0) + "px",
-                                borderBottomRightRadius: (lowerBorder && lowerBorder.borderRadius.Desktop.left || 0) + "px",
+                                borderTopLeftRadius: (lowerBorder && lowerBorder.borderRadius[currentDevice].top || 0) + "px",
+                                borderTopRightRadius: (lowerBorder && lowerBorder.borderRadius[currentDevice].right || 0) + "px",
+                                borderBottomLeftRadius: (lowerBorder && lowerBorder.borderRadius[currentDevice].bottom || 0) + "px",
+                                borderBottomRightRadius: (lowerBorder && lowerBorder.borderRadius[currentDevice].left || 0) + "px",
                                 paddingTop: lowerPaddingTop && "" + lowerPaddingTop + lowerPadding.unit,
                                 paddingRight: lowerPaddingRight && "" + lowerPaddingRight + lowerPadding.unit,
                                 paddingBottom: lowerPaddingBottom && "" + lowerPaddingBottom + lowerPadding.unit,
@@ -59850,7 +59861,15 @@ var Inspector = function Inspector(_ref) {
         modalMargin = attributes.modalMargin,
         modalPadding = attributes.modalPadding,
         modalShadow = attributes.modalShadow,
-        triggerTextShadow = attributes.triggerTextShadow;
+        triggerTextShadow = attributes.triggerTextShadow,
+        triggerTypography = attributes.triggerTypography,
+        headerTypography = attributes.headerTypography,
+        lowerTypography = attributes.lowerTypography,
+        modalTypography = attributes.modalTypography,
+        iconSize = attributes.iconSize,
+        imageWidth = attributes.imageWidth,
+        modalWidth = attributes.modalWidth,
+        modalHeight = attributes.modalHeight;
 
     var saveContentStyle = function saveContentStyle(value) {
         var newUpdate = contentStyles.map(function (item, index) {
@@ -60036,29 +60055,13 @@ var Inspector = function Inspector(_ref) {
                             })
                         ),
                         contentStyles[0].iconType !== "none" && React.createElement(_responsiveRangeControl2.default, {
-                            label: __('Icon Size', 'premium-blocks-for-gutenberg'),
-                            value: contentStyles[0].iconSize,
-                            onChange: function onChange(value) {
-                                return saveContentStyle({ iconSize: value });
+                            label: __("Size", 'premium-blocks-for-gutenberg'),
+                            value: iconSize,
+                            onChange: function onChange(newValue) {
+                                return setAttributes({ iconSize: newValue });
                             },
-                            tabletValue: contentStyles[0].iconSizeTablet,
-                            onChangeTablet: function onChangeTablet(value) {
-                                return saveContentStyle({ iconSizeTablet: value });
-                            },
-                            mobileValue: contentStyles[0].iconSizeMobile,
-                            onChangeMobile: function onChangeMobile(value) {
-                                return saveContentStyle({ iconSizeMobile: value });
-                            },
-                            min: 0,
-                            max: 100,
-                            step: 1,
-                            onChangeUnit: function onChangeUnit(newValue) {
-                                return saveContentStyle({ iconSizeUnit: newValue });
-                            },
-                            unit: contentStyles[0].iconSizeUnit,
-                            showUnit: true,
-                            units: ['px', 'em'],
-                            defaultValue: 0
+                            units: ['px', 'em', 'rem'],
+                            showUnit: true
                         }),
                         React.createElement(TextControl, {
                             label: __("Title", 'premium-blocks-for-gutenberg'),
@@ -60293,24 +60296,13 @@ var Inspector = function Inspector(_ref) {
                         })
                     ),
                     (triggerSettings[0].triggerType === "image" || triggerSettings[0].triggerType === "lottie") && React.createElement(_responsiveRangeControl2.default, {
-                        label: __('Size', 'premium-blocks-for-gutenberg'),
-                        value: triggerSettings[0].imageWidth,
-                        onChange: function onChange(value) {
-                            return saveTriggerSettings({ imageWidth: value });
+                        label: __("Size", 'premium-blocks-for-gutenberg'),
+                        value: imageWidth,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ imageWidth: newValue });
                         },
-                        tabletValue: triggerSettings[0].imageWidthTablet,
-                        onChangeTablet: function onChangeTablet(value) {
-                            return saveTriggerSettings({ imageWidthTablet: value });
-                        },
-                        mobileValue: triggerSettings[0].imageWidthMobile,
-                        onChangeMobile: function onChangeMobile(value) {
-                            return saveTriggerSettings({ imageWidthMobile: value });
-                        },
-                        min: 0,
-                        max: 800,
-                        step: 1,
                         showUnit: false,
-                        defaultValue: 0
+                        max: 800
                     }),
                     triggerSettings[0].triggerType === "load" && React.createElement(
                         Fragment,
@@ -60395,54 +60387,24 @@ var Inspector = function Inspector(_ref) {
                         initialOpen: false
                     },
                     React.createElement(_responsiveRangeControl2.default, {
-                        label: __('Width', 'premium-blocks-for-gutenberg'),
-                        value: modalStyles[0].modalWidth,
-                        onChange: function onChange(value) {
-                            return saveModalStyles({ modalWidth: value !== "" ? value : 200 });
+                        label: __("Width", 'premium-blocks-for-gutenberg'),
+                        value: modalWidth,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ modalWidth: newValue });
                         },
-                        tabletValue: modalStyles[0].modalWidthTablet,
-                        onChangeTablet: function onChangeTablet(value) {
-                            return saveModalStyles({ modalWidthTablet: value !== "" ? value : 200 });
-                        },
-                        mobileValue: modalStyles[0].modalWidthMobile,
-                        onChangeMobile: function onChangeMobile(value) {
-                            return saveModalStyles({ modalWidthMobile: value !== "" ? value : 200 });
-                        },
-                        min: 0,
-                        max: 1500,
-                        step: 1,
-                        onChangeUnit: function onChangeUnit(newValue) {
-                            return saveModalStyles({ modalWidthUnit: newValue });
-                        },
-                        unit: modalStyles[0].modalWidthUnit,
+                        units: ['px', 'em', 'rem'],
                         showUnit: true,
-                        units: ['px', '%', 'em'],
-                        defaultValue: 0
+                        max: 1500
                     }),
                     React.createElement(_responsiveRangeControl2.default, {
-                        label: __('Max Height', 'premium-blocks-for-gutenberg'),
-                        value: modalStyles[0].modalHeight,
-                        onChange: function onChange(value) {
-                            return saveModalStyles({ modalHeight: value !== "" ? value : 200 });
+                        label: __("Max Height", 'premium-blocks-for-gutenberg'),
+                        value: modalHeight,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ modalHeight: newValue });
                         },
-                        tabletValue: modalStyles[0].modalHeightTablet,
-                        onChangeTablet: function onChangeTablet(value) {
-                            return saveModalStyles({ modalHeightTablet: value !== "" ? value : 200 });
-                        },
-                        mobileValue: modalStyles[0].modalHeightMobile,
-                        onChangeMobile: function onChangeMobile(value) {
-                            return saveModalStyles({ modalHeightMobile: value !== "" ? value : 200 });
-                        },
-                        min: 0,
-                        max: 1500,
-                        step: 1,
-                        onChangeUnit: function onChangeUnit(newValue) {
-                            return saveModalStyles({ modalHeightUnit: newValue });
-                        },
-                        unit: modalStyles[0].modalHeightUnit,
+                        units: ['px', 'em', 'rem'],
                         showUnit: true,
-                        units: ['px', '%', 'em'],
-                        defaultValue: 0
+                        max: 1500
                     })
                 )
             ),
@@ -60501,42 +60463,9 @@ var Inspector = function Inspector(_ref) {
                         null,
                         React.createElement(_premiumTypo2.default, {
                             components: ["responsiveSize", "weight", "spacing", "style", "upper", "family"],
-                            setAttributes: saveTriggerStyles,
-                            fontSizeType: {
-                                value: triggerStyles[0].triggerSizeUnit,
-                                label: __("triggerSizeUnit", 'premium-blocks-for-gutenberg')
-                            },
-                            fontSize: triggerStyles[0].triggerSize,
-                            fontSizeMobile: triggerStyles[0].triggerSizeMobile,
-                            fontSizeTablet: triggerStyles[0].triggerSizeTablet,
-                            onChangeSize: function onChangeSize(newSize) {
-                                return saveTriggerStyles({ triggerSize: newSize });
-                            },
-                            onChangeTabletSize: function onChangeTabletSize(newSize) {
-                                return saveTriggerStyles({ triggerSizeTablet: newSize });
-                            },
-                            onChangeMobileSize: function onChangeMobileSize(newSize) {
-                                return saveTriggerStyles({ triggerSizeMobile: newSize });
-                            },
-                            fontFamily: triggerStyles[0].triggerFamily,
-                            weight: triggerStyles[0].triggerWeight,
-                            style: triggerStyles[0].triggerStyle,
-                            spacing: triggerStyles[0].triggerSpacing,
-                            upper: triggerStyles[0].triggerUpper,
-                            onChangeWeight: function onChangeWeight(newWeight) {
-                                return saveTriggerStyles({ triggerWeight: newWeight });
-                            },
-                            onChangeStyle: function onChangeStyle(newStyle) {
-                                return saveTriggerStyles({ triggerStyle: newStyle });
-                            },
-                            onChangeSpacing: function onChangeSpacing(newValue) {
-                                return saveTriggerStyles({ triggerSpacing: newValue });
-                            },
-                            onChangeFamily: function onChangeFamily(fontFamily) {
-                                return saveTriggerStyles({ triggerFamily: fontFamily });
-                            },
-                            onChangeUpper: function onChangeUpper(check) {
-                                return saveTriggerStyles({ triggerUpper: check });
+                            value: triggerTypography,
+                            onChange: function onChange(newValue) {
+                                return setAttributes({ triggerTypography: newValue });
                             }
                         })
                     ),
@@ -60716,42 +60645,9 @@ var Inspector = function Inspector(_ref) {
                     }),
                     React.createElement(_premiumTypo2.default, {
                         components: ["responsiveSize", "weight", "spacing", "style", "upper", "family"],
-                        setAttributes: saveHeaderStyles,
-                        fontSizeType: {
-                            value: headerStyles[0].headerSizeUnit,
-                            label: __("headerSizeUnit", 'premium-blocks-for-gutenberg')
-                        },
-                        fontSize: headerStyles[0].headerSize,
-                        fontSizeMobile: headerStyles[0].headerSizeMobile,
-                        fontSizeTablet: headerStyles[0].headerSizeTablet,
-                        onChangeSize: function onChangeSize(newSize) {
-                            return saveHeaderStyles({ headerSize: newSize });
-                        },
-                        onChangeTabletSize: function onChangeTabletSize(newSize) {
-                            return saveHeaderStyles({ headerSizeTablet: newSize });
-                        },
-                        onChangeMobileSize: function onChangeMobileSize(newSize) {
-                            return saveHeaderStyles({ headerSizeMobile: newSize });
-                        },
-                        fontFamily: headerStyles[0].headerFamily,
-                        weight: headerStyles[0].headerWeight,
-                        style: headerStyles[0].headerStyle,
-                        spacing: headerStyles[0].headerSpacing,
-                        upper: headerStyles[0].headerUpper,
-                        onChangeWeight: function onChangeWeight(newWeight) {
-                            return saveHeaderStyles({ headerWeight: newWeight });
-                        },
-                        onChangeStyle: function onChangeStyle(newStyle) {
-                            return saveHeaderStyles({ headerStyle: newStyle });
-                        },
-                        onChangeSpacing: function onChangeSpacing(newValue) {
-                            return saveHeaderStyles({ headerSpacing: newValue });
-                        },
-                        onChangeFamily: function onChangeFamily(fontFamily) {
-                            return saveHeaderStyles({ headerFamily: fontFamily });
-                        },
-                        onChangeUpper: function onChangeUpper(check) {
-                            return saveHeaderStyles({ headerUpper: check });
+                        value: headerTypography,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ headerTypography: newValue });
                         }
                     }),
                     React.createElement(_premiumBorder2.default, {
@@ -60813,34 +60709,9 @@ var Inspector = function Inspector(_ref) {
                     },
                     React.createElement(_premiumTypo2.default, {
                         components: ["responsiveSize", "weight", "spacing", "style"],
-                        setAttributes: saveLowerStyles,
-                        fontSizeType: {
-                            value: lowerStyles[0].lowerSizeUnit,
-                            label: __("lowerSizeUnit", 'premium-blocks-for-gutenberg')
-                        },
-                        fontSize: lowerStyles[0].lowerSize,
-                        fontSizeMobile: lowerStyles[0].lowerSizeMobile,
-                        fontSizeTablet: lowerStyles[0].lowerSizeTablet,
-                        onChangeSize: function onChangeSize(newSize) {
-                            return saveLowerStyles({ lowerSize: newSize });
-                        },
-                        onChangeTabletSize: function onChangeTabletSize(newSize) {
-                            return saveLowerStyles({ lowerSizeTablet: newSize });
-                        },
-                        onChangeMobileSize: function onChangeMobileSize(newSize) {
-                            return saveLowerStyles({ lowerSizeMobile: newSize });
-                        },
-                        weight: lowerStyles[0].lowerWeight,
-                        style: lowerStyles[0].lowerStyle,
-                        spacing: lowerStyles[0].lowerSpacing,
-                        onChangeWeight: function onChangeWeight(newWeight) {
-                            return saveLowerStyles({ lowerWeight: newWeight });
-                        },
-                        onChangeStyle: function onChangeStyle(newStyle) {
-                            return saveLowerStyles({ lowerStyle: newStyle });
-                        },
-                        onChangeSpacing: function onChangeSpacing(newValue) {
-                            return saveLowerStyles({ lowerSpacing: newValue });
+                        value: lowerTypography,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ lowerTypography: newValue });
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
@@ -60902,45 +60773,11 @@ var Inspector = function Inspector(_ref) {
                         }),
                         React.createElement(_premiumTypo2.default, {
                             components: ["responsiveSize", "weight", "spacing", "style", "upper", "family"],
-                            setAttributes: saveModalStyles,
-                            fontSizeType: {
-                                value: modalStyles[0].modalSizeUnit,
-                                label: __("modalSizeUnit", 'premium-blocks-for-gutenberg')
-                            },
-                            fontSize: modalStyles[0].modalSize,
-                            fontSizeMobile: modalStyles[0].modalSizeMobile,
-                            fontSizeTablet: modalStyles[0].modalSizeTablet,
-                            onChangeSize: function onChangeSize(newSize) {
-                                return saveModalStyles({ modalSize: newSize });
-                            },
-                            onChangeTabletSize: function onChangeTabletSize(newSize) {
-                                return saveModalStyles({ modalSizeTablet: newSize });
-                            },
-                            onChangeMobileSize: function onChangeMobileSize(newSize) {
-                                return saveModalStyles({ modalSizeMobile: newSize });
-                            },
-                            fontFamily: modalStyles[0].modalFamily,
-                            weight: modalStyles[0].modalWeight,
-                            style: modalStyles[0].modalStyle,
-                            spacing: modalStyles[0].modalSpacing,
-                            upper: modalStyles[0].modalUpper,
-                            onChangeWeight: function onChangeWeight(newWeight) {
-                                return saveModalStyles({ modalWeight: newWeight });
-                            },
-                            onChangeStyle: function onChangeStyle(newStyle) {
-                                return saveModalStyles({ modalStyle: newStyle });
-                            },
-                            onChangeSpacing: function onChangeSpacing(newValue) {
-                                return saveModalStyles({ modalSpacing: newValue });
-                            },
-                            onChangeFamily: function onChangeFamily(fontFamily) {
-                                return saveModalStyles({ modalFamily: fontFamily });
-                            },
-                            onChangeUpper: function onChangeUpper(check) {
-                                return saveModalStyles({ modalUpper: check });
+                            value: modalTypography,
+                            onChange: function onChange(newValue) {
+                                return setAttributes({ modalTypography: newValue });
                             }
-                        }),
-                        React.createElement("hr", null)
+                        })
                     ),
                     React.createElement(_PremiumBackgroundControl2.default, {
                         value: modalBackground,
@@ -61301,15 +61138,6 @@ var attributes = {
             hoverColor: '',
             iconColor: '',
             iconHoverColor: '',
-            triggerSizeUnit: 'px',
-            triggerSize: '',
-            triggerSizeMobile: '',
-            triggerSizeTablet: '',
-            triggerFamily: '',
-            triggerWeight: '',
-            triggerStyle: '',
-            triggerSpacing: '',
-            triggerUpper: '',
             triggerBack: '',
             triggerHoverBack: '',
             blur: '',
@@ -61329,16 +61157,7 @@ var attributes = {
         default: [{
             color: '',
             backColor: '',
-            headerSizeUnit: 'px',
-            headerSize: '',
-            headerSizeTablet: '',
-            headerSizeMobile: '',
-            headerFamily: 'Default',
-            headerWeight: '',
-            headerStyle: '',
-            headerSpacing: '',
-            headerUpper: ''
-
+            headerSizeUnit: 'px'
         }]
     },
     upperStyles: {
@@ -61354,13 +61173,6 @@ var attributes = {
     lowerStyles: {
         type: 'array',
         default: [{
-            lowerSizeUnit: 'px',
-            lowerSize: '',
-            lowerSizeMobile: '',
-            lowerSizeTablet: '',
-            lowerWeight: '',
-            lowerStyle: '',
-            lowerSpacing: '',
             iconWidth: '',
             iconWidthUnit: 'px',
             color: '',
@@ -61374,15 +61186,6 @@ var attributes = {
             contentText: __('Modal Box Content', 'premium-blocks-for-gutenberg'),
             textColor: '',
             textBackColor: '',
-            modalSizeUnit: 'px',
-            modalSize: '',
-            modalSizeMobile: '',
-            modalSizeTablet: '',
-            modalFamily: '',
-            modalWeight: '',
-            modalStyle: '',
-            modalSpacing: '',
-            modalUpper: '',
             modalWidth: '',
             modalWidthTablet: '',
             modalWidthMobile: '',
@@ -61846,6 +61649,114 @@ var attributes = {
                 }
             }
         }
+    },
+    triggerTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
+    },
+    headerTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
+    },
+    lowerTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
+    },
+    modalTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
+    },
+    iconSize: {
+        type: "object",
+        default: {
+            "Desktop": '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': 'px'
+        }
+    },
+    imageWidth: {
+        type: "object",
+        default: {
+            "Desktop": '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': ''
+        }
+    },
+    modalWidth: {
+        type: "object",
+        default: {
+            "Desktop": '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': 'px'
+        }
+    },
+    modalHeight: {
+        type: "object",
+        default: {
+            "Desktop": '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': 'px'
+        }
     }
 };
 exports.default = attributes;
@@ -61894,7 +61805,15 @@ var save = function save(props) {
         modalBackground = _props$attributes.modalBackground,
         triggerShadow = _props$attributes.triggerShadow,
         triggerTextShadow = _props$attributes.triggerTextShadow,
-        modalShadow = _props$attributes.modalShadow;
+        modalShadow = _props$attributes.modalShadow,
+        triggerTypography = _props$attributes.triggerTypography,
+        headerTypography = _props$attributes.headerTypography,
+        lowerTypography = _props$attributes.lowerTypography,
+        modalTypography = _props$attributes.modalTypography,
+        iconSize = _props$attributes.iconSize,
+        imageWidth = _props$attributes.imageWidth,
+        modalWidth = _props$attributes.modalWidth,
+        modalHeight = _props$attributes.modalHeight;
 
 
     var renderCss = React.createElement(
@@ -61921,7 +61840,13 @@ var save = function save(props) {
                 triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "before" && React.createElement('i', { className: ' premium-modal-box-icon ' + triggerSettings[0].icon, style: { fontSize: triggerSettings[0].iconSize + 'px', marginRight: triggerSettings[0].iconSpacing + 'px', color: triggerStyles[0].iconColor } }),
                 React.createElement(
                     'span',
-                    { style: { color: triggerStyles[0].color, fontFamily: triggerStyles[0].triggerFamily, fontWeight: triggerStyles[0].triggerWeight, fontStyle: triggerStyles[0].triggerStyle, letterSpacing: triggerStyles[0].triggerSpacing } },
+                    { style: {
+                            color: triggerStyles[0].color,
+                            fontFamily: triggerTypography.fontFamily,
+                            fontWeight: triggerTypography.fontWeight,
+                            fontStyle: triggerTypography.fontStyle,
+                            letterSpacing: triggerTypography.letterSpacing
+                        } },
                     ' ',
                     triggerSettings[0].btnText
                 ),
@@ -61940,10 +61865,10 @@ var save = function save(props) {
                         borderStyle: triggerBorder.borderType,
                         borderColor: triggerBorder.borderColor,
                         textShadow: triggerTextShadow.horizontal + 'px ' + triggerTextShadow.vertical + 'px ' + triggerTextShadow.blur + 'px ' + triggerTextShadow.color,
-                        fontFamily: triggerStyles[0].triggerFamily,
-                        fontWeight: triggerStyles[0].triggerWeight,
-                        fontStyle: triggerStyles[0].triggerStyle,
-                        letterSpacing: triggerStyles[0].triggerSpacing
+                        fontFamily: triggerTypography.fontFamily,
+                        fontWeight: triggerTypography.fontWeight,
+                        fontStyle: triggerTypography.fontStyle,
+                        letterSpacing: triggerTypography.letterSpacing
                     } },
                 triggerSettings[0].triggerText
             ),
@@ -61980,10 +61905,10 @@ var save = function save(props) {
                         'h3',
                         { className: 'premium-modal-box-modal-title', style: {
                                 color: headerStyles[0].color,
-                                fontFamily: headerStyles[0].headerFamily,
-                                fontStyle: headerStyles[0].headerStyle,
-                                letterSpacing: headerStyles[0].headerSpacing,
-                                fontWeight: headerStyles[0].headerWeight
+                                fontFamily: headerTypography.fontFamily,
+                                fontWeight: headerTypography.fontWeight,
+                                fontStyle: headerTypography.fontStyle,
+                                letterSpacing: headerTypography.letterSpacing
                             } },
                         contentStyles[0].iconType === "icon" && React.createElement('i', { className: contentStyles[0].contentIcon }),
                         contentStyles[0].iconType === "image" && React.createElement('img', { src: contentStyles[0].contentImgURL, style: {} }),
@@ -62024,10 +61949,10 @@ var save = function save(props) {
                         'p',
                         { style: {
                                 color: modalStyles[0].textColor,
-                                fontWeight: modalStyles[0].modalWeight,
-                                fontFamily: modalStyles[0].modalFamily,
-                                letterSpacing: modalStyles[0].modalSpacing,
-                                fontStyle: modalStyles[0].modalStyle
+                                fontFamily: modalTypography.fontFamily,
+                                fontWeight: modalTypography.fontWeight,
+                                fontStyle: modalTypography.fontStyle,
+                                letterSpacing: modalTypography.letterSpacing
                             } },
                         modalStyles[0].contentText
                     ) : React.createElement(InnerBlocks.Content, null)
@@ -62041,9 +61966,9 @@ var save = function save(props) {
                         'button',
                         { className: 'premium-modal-box-modal-lower-close close-button', role: 'button', 'data-dismiss': 'premium-modal',
                             style: {
-                                fontStyle: lowerStyles[0].lowerStyle,
-                                fontWeight: lowerStyles[0].lowerWeight,
-                                letterSpacing: lowerStyles[0].lowerSpacing,
+                                fontWeight: lowerTypography.fontWeight,
+                                fontStyle: lowerTypography.fontStyle,
+                                letterSpacing: lowerTypography.letterSpacing,
                                 width: '' + lowerStyles[0].iconWidth + lowerStyles[0].iconWidthUnit,
                                 color: '' + lowerStyles[0].color,
                                 backgroundColor: '' + lowerStyles[0].backColor,
@@ -62980,6 +62905,110 @@ var newAttributes = {
             'horizontal': '',
             'vertical': ''
         }
+    },
+    triggerTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": ''
+            }
+        }
+    },
+    headerTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": ''
+            }
+        }
+    },
+    lowerTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": ''
+            }
+        }
+    },
+    modalTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": ''
+            }
+        }
+    },
+    iconSize: {
+        type: "object",
+        default: {
+            "Desktop": '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': 'px'
+        }
+    },
+    imageWidth: {
+        type: "object",
+        default: {
+            "Desktop": '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': 'px'
+        }
+    },
+    modalWidth: {
+        type: "object",
+        default: {
+            "Desktop": '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': 'px'
+        }
+    },
+    modalHeight: {
+        type: "object",
+        default: {
+            "Desktop": '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': 'px'
+        }
     }
 };
 
@@ -63395,6 +63424,90 @@ var deprecated = [{
                 'blur': attributes.triggerStyles[0].textShadowBlur || '',
                 'horizontal': attributes.triggerStyles[0].textShadowHorizontal || '',
                 'vertical': attributes.triggerStyles[0].textShadowVertical || ''
+            },
+            triggerTypography: {
+                "fontWeight": attributes.triggerStyles[0].triggerWeight || '',
+                'fontStyle': attributes.triggerStyles[0].triggerStyle || '',
+                'textTransform': attributes.triggerStyles[0].triggerUpper || '',
+                'letterSpacing': attributes.triggerStyles[0].triggerSpacing || '',
+                'fontFamily': attributes.triggerStyles[0].triggerFamily || '',
+                'lineHeight': '',
+                'textDecoration': '',
+                'fontSize': {
+                    'Desktop': attributes.triggerStyles[0].triggerSize || '',
+                    "Tablet": attributes.triggerStyles[0].triggerSizeTablet || '',
+                    "Mobile": attributes.triggerStyles[0].triggerSizeMobile || '',
+                    "unit": attributes.modalStyles[0].triggerSizeUnit || ''
+                }
+            },
+            headerTypography: {
+                "fontWeight": attributes.headerStyles[0].headerWeight || '',
+                'fontStyle': attributes.headerStyles[0].headerStyle || '',
+                'textTransform': attributes.headerStyles[0].headerUpper || '',
+                'letterSpacing': attributes.headerStyles[0].headerSpacing || '',
+                'fontFamily': attributes.headerStyles[0].headerFamily || '',
+                'lineHeight': '',
+                'textDecoration': '',
+                'fontSize': {
+                    'Desktop': attributes.headerStyles[0].headerSize || '',
+                    "Tablet": attributes.headerStyles[0].headerSizeTablet || '',
+                    "Mobile": attributes.headerStyles[0].headerSizeMobile || '',
+                    "unit": attributes.modalStyles[0].headerSizeUnit || ''
+                }
+            },
+            lowerTypography: {
+                "fontWeight": attributes.lowerStyles[0].lowerSizeWeight || '',
+                'fontStyle': attributes.lowerStyles[0].lowerSizeStyle || '',
+                'textTransform': '',
+                'letterSpacing': attributes.lowerStyles[0].lowerSizeSpacing || '',
+                'fontFamily': '',
+                'lineHeight': '',
+                'textDecoration': '',
+                'fontSize': {
+                    'Desktop': attributes.lowerStyles[0].lowerSizeSize || '',
+                    "Tablet": attributes.lowerStyles[0].lowerSizeSizeTablet || '',
+                    "Mobile": attributes.lowerStyles[0].lowerSizeSizeMobile || '',
+                    "unit": attributes.modalStyles[0].lowerSizeUnit || ''
+                }
+            },
+            modalTypography: {
+                "fontWeight": attributes.modalStyles[0].modalWeight || '',
+                'fontStyle': attributes.modalStyles[0].modalStyle || '',
+                'textTransform': attributes.modalStyles[0].modalUpper || '',
+                'letterSpacing': attributes.modalStyles[0].modalSpacing || '',
+                'fontFamily': attributes.modalStyles[0].modalFamily || '',
+                'lineHeight': '',
+                'textDecoration': '',
+                'fontSize': {
+                    'Desktop': attributes.modalStyles[0].modalSize || '',
+                    "Tablet": attributes.modalStyles[0].modalSizeMobile || '',
+                    "Mobile": attributes.modalStyles[0].modalSizeTablet || '',
+                    "unit": attributes.modalStyles[0].modalSizeUnit || ''
+                }
+            },
+            iconSize: {
+                "Desktop": attributes.contentStyles[0].iconSize || '',
+                'Tablet': attributes.contentStyles[0].iconSizeTablet || '',
+                'Mobile': attributes.contentStyles[0].iconSizeMobile || '',
+                'unit': attributes.contentStyles[0].iconSizeUnit || ''
+            },
+            imageWidth: {
+                "Desktop": attributes.triggerSettings[0].imageWidth || '',
+                'Tablet': attributes.triggerSettings[0].imageWidthTablet || '',
+                'Mobile': attributes.triggerSettings[0].imageWidthMobile || '',
+                'unit': ''
+            },
+            modalWidth: {
+                "Desktop": attributes.modalStyles[0].modalWidth || '',
+                'Tablet': attributes.modalStyles[0].modalWidthTablet || '',
+                'Mobile': attributes.modalStyles[0].modalWidthMobile || '',
+                'unit': attributes.modalStyles[0].modalWidthUnit || 'px'
+            },
+            modalHeight: {
+                "Desktop": attributes.modalStyles[0].modalHeight || '',
+                'Tablet': attributes.modalStyles[0].modalHeightTablet || '',
+                'Mobile': attributes.modalStyles[0].modalHeightMobile || '',
+                'unit': attributes.modalStyles[0].modalHeightUnit || 'px'
             }
         };
         return Object.assign(attributes, newAttributes);

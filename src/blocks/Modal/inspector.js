@@ -56,7 +56,15 @@ const Inspector = ({
         modalMargin,
         modalPadding,
         modalShadow,
-        triggerTextShadow
+        triggerTextShadow,
+        triggerTypography,
+        headerTypography,
+        lowerTypography,
+        modalTypography,
+        iconSize,
+        imageWidth,
+        modalWidth,
+        modalHeight
     } = attributes;
     const saveContentStyle = (value) => {
         const newUpdate = contentStyles.map((item, index) => {
@@ -217,21 +225,11 @@ const Inspector = ({
 
                                 {contentStyles[0].iconType !== "none" && (
                                     <ResponsiveRangeControl
-                                        label={__('Icon Size', 'premium-blocks-for-gutenberg')}
-                                        value={contentStyles[0].iconSize}
-                                        onChange={(value) => saveContentStyle({ iconSize: value })}
-                                        tabletValue={contentStyles[0].iconSizeTablet}
-                                        onChangeTablet={(value) => saveContentStyle({ iconSizeTablet: value })}
-                                        mobileValue={contentStyles[0].iconSizeMobile}
-                                        onChangeMobile={(value) => saveContentStyle({ iconSizeMobile: value })}
-                                        min={0}
-                                        max={100}
-                                        step={1}
-                                        onChangeUnit={newValue => saveContentStyle({ iconSizeUnit: newValue })}
-                                        unit={contentStyles[0].iconSizeUnit}
+                                        label={__("Size", 'premium-blocks-for-gutenberg')}
+                                        value={iconSize}
+                                        onChange={newValue => setAttributes({ iconSize: newValue })}
+                                        units={['px', 'em', 'rem']}
                                         showUnit={true}
-                                        units={['px', 'em']}
-                                        defaultValue={0}
                                     />)
                                 }
                                 <TextControl
@@ -487,20 +485,14 @@ const Inspector = ({
 
                             </Fragment>
                         )}
-                        {(triggerSettings[0].triggerType === "image" || triggerSettings[0].triggerType === "lottie") && (<ResponsiveRangeControl
-                            label={__('Size', 'premium-blocks-for-gutenberg')}
-                            value={triggerSettings[0].imageWidth}
-                            onChange={(value) => saveTriggerSettings({ imageWidth: value })}
-                            tabletValue={triggerSettings[0].imageWidthTablet}
-                            onChangeTablet={(value) => saveTriggerSettings({ imageWidthTablet: value })}
-                            mobileValue={triggerSettings[0].imageWidthMobile}
-                            onChangeMobile={(value) => saveTriggerSettings({ imageWidthMobile: value })}
-                            min={0}
-                            max={800}
-                            step={1}
-                            showUnit={false}
-                            defaultValue={0}
-                        />)}
+                        {(triggerSettings[0].triggerType === "image" || triggerSettings[0].triggerType === "lottie") && (
+                            <ResponsiveRangeControl
+                                label={__("Size", 'premium-blocks-for-gutenberg')}
+                                value={imageWidth}
+                                onChange={newValue => setAttributes({ imageWidth: newValue })}
+                                showUnit={false}
+                                max={800}
+                            />)}
 
                         {triggerSettings[0].triggerType === "load" && (
                             <Fragment>
@@ -569,38 +561,20 @@ const Inspector = ({
                         initialOpen={false}
                     >
                         <ResponsiveRangeControl
-                            label={__('Width', 'premium-blocks-for-gutenberg')}
-                            value={modalStyles[0].modalWidth}
-                            onChange={(value) => saveModalStyles({ modalWidth: (value !== "") ? value : 200 })}
-                            tabletValue={modalStyles[0].modalWidthTablet}
-                            onChangeTablet={(value) => saveModalStyles({ modalWidthTablet: (value !== "") ? value : 200 })}
-                            mobileValue={modalStyles[0].modalWidthMobile}
-                            onChangeMobile={(value) => saveModalStyles({ modalWidthMobile: (value !== "") ? value : 200 })}
-                            min={0}
-                            max={1500}
-                            step={1}
-                            onChangeUnit={newValue => saveModalStyles({ modalWidthUnit: newValue })}
-                            unit={modalStyles[0].modalWidthUnit}
+                            label={__("Width", 'premium-blocks-for-gutenberg')}
+                            value={modalWidth}
+                            onChange={newValue => setAttributes({ modalWidth: newValue })}
+                            units={['px', 'em', 'rem']}
                             showUnit={true}
-                            units={['px', '%', 'em']}
-                            defaultValue={0}
+                            max={1500}
                         />
                         <ResponsiveRangeControl
-                            label={__('Max Height', 'premium-blocks-for-gutenberg')}
-                            value={modalStyles[0].modalHeight}
-                            onChange={(value) => saveModalStyles({ modalHeight: (value !== "") ? value : 200 })}
-                            tabletValue={modalStyles[0].modalHeightTablet}
-                            onChangeTablet={(value) => saveModalStyles({ modalHeightTablet: (value !== "") ? value : 200 })}
-                            mobileValue={modalStyles[0].modalHeightMobile}
-                            onChangeMobile={(value) => saveModalStyles({ modalHeightMobile: (value !== "") ? value : 200 })}
-                            min={0}
-                            max={1500}
-                            step={1}
-                            onChangeUnit={newValue => saveModalStyles({ modalHeightUnit: newValue })}
-                            unit={modalStyles[0].modalHeightUnit}
+                            label={__("Max Height", 'premium-blocks-for-gutenberg')}
+                            value={modalHeight}
+                            onChange={newValue => setAttributes({ modalHeight: newValue })}
+                            units={['px', 'em', 'rem']}
                             showUnit={true}
-                            units={['px', '%', 'em']}
-                            defaultValue={0}
+                            max={1500}
                         />
                     </PanelBody>
                 </InspectorTab>
@@ -639,30 +613,10 @@ const Inspector = ({
                             />
                         </Fragment>)}
                         {(triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === 'text') && (<Fragment>
-
                             <PremiumTypo
                                 components={["responsiveSize", "weight", "spacing", "style", "upper", "family"]}
-                                setAttributes={saveTriggerStyles}
-                                fontSizeType={{
-                                    value: triggerStyles[0].triggerSizeUnit,
-                                    label: __("triggerSizeUnit", 'premium-blocks-for-gutenberg'),
-                                }}
-                                fontSize={triggerStyles[0].triggerSize}
-                                fontSizeMobile={triggerStyles[0].triggerSizeMobile}
-                                fontSizeTablet={triggerStyles[0].triggerSizeTablet}
-                                onChangeSize={newSize => saveTriggerStyles({ triggerSize: newSize })}
-                                onChangeTabletSize={newSize => saveTriggerStyles({ triggerSizeTablet: newSize })}
-                                onChangeMobileSize={newSize => saveTriggerStyles({ triggerSizeMobile: newSize })}
-                                fontFamily={triggerStyles[0].triggerFamily}
-                                weight={triggerStyles[0].triggerWeight}
-                                style={triggerStyles[0].triggerStyle}
-                                spacing={triggerStyles[0].triggerSpacing}
-                                upper={triggerStyles[0].triggerUpper}
-                                onChangeWeight={newWeight => saveTriggerStyles({ triggerWeight: newWeight })}
-                                onChangeStyle={newStyle => saveTriggerStyles({ triggerStyle: newStyle })}
-                                onChangeSpacing={newValue => saveTriggerStyles({ triggerSpacing: newValue })}
-                                onChangeFamily={(fontFamily) => saveTriggerStyles({ triggerFamily: fontFamily })}
-                                onChangeUpper={check => saveTriggerStyles({ triggerUpper: check })}
+                                value={triggerTypography}
+                                onChange={newValue => setAttributes({ triggerTypography: newValue })}
                             />
                         </Fragment>)}
                         {(triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === 'text' || triggerSettings[0].triggerType === 'image') && (<Fragment>
@@ -807,27 +761,8 @@ const Inspector = ({
                         />
                         <PremiumTypo
                             components={["responsiveSize", "weight", "spacing", "style", "upper", "family"]}
-                            setAttributes={saveHeaderStyles}
-                            fontSizeType={{
-                                value: headerStyles[0].headerSizeUnit,
-                                label: __("headerSizeUnit", 'premium-blocks-for-gutenberg'),
-                            }}
-                            fontSize={headerStyles[0].headerSize}
-                            fontSizeMobile={headerStyles[0].headerSizeMobile}
-                            fontSizeTablet={headerStyles[0].headerSizeTablet}
-                            onChangeSize={newSize => saveHeaderStyles({ headerSize: newSize })}
-                            onChangeTabletSize={newSize => saveHeaderStyles({ headerSizeTablet: newSize })}
-                            onChangeMobileSize={newSize => saveHeaderStyles({ headerSizeMobile: newSize })}
-                            fontFamily={headerStyles[0].headerFamily}
-                            weight={headerStyles[0].headerWeight}
-                            style={headerStyles[0].headerStyle}
-                            spacing={headerStyles[0].headerSpacing}
-                            upper={headerStyles[0].headerUpper}
-                            onChangeWeight={newWeight => saveHeaderStyles({ headerWeight: newWeight })}
-                            onChangeStyle={newStyle => saveHeaderStyles({ headerStyle: newStyle })}
-                            onChangeSpacing={newValue => saveHeaderStyles({ headerSpacing: newValue })}
-                            onChangeFamily={(fontFamily) => saveHeaderStyles({ headerFamily: fontFamily })}
-                            onChangeUpper={check => saveHeaderStyles({ headerUpper: check })}
+                            value={headerTypography}
+                            onChange={newValue => setAttributes({ headerTypography: newValue })}
                         />
                         <PremiumBorder
                             label={__("Border")}
@@ -874,23 +809,8 @@ const Inspector = ({
                     >
                         <PremiumTypo
                             components={["responsiveSize", "weight", "spacing", "style"]}
-                            setAttributes={saveLowerStyles}
-                            fontSizeType={{
-                                value: lowerStyles[0].lowerSizeUnit,
-                                label: __("lowerSizeUnit", 'premium-blocks-for-gutenberg'),
-                            }}
-                            fontSize={lowerStyles[0].lowerSize}
-                            fontSizeMobile={lowerStyles[0].lowerSizeMobile}
-                            fontSizeTablet={lowerStyles[0].lowerSizeTablet}
-                            onChangeSize={newSize => saveLowerStyles({ lowerSize: newSize })}
-                            onChangeTabletSize={newSize => saveLowerStyles({ lowerSizeTablet: newSize })}
-                            onChangeMobileSize={newSize => saveLowerStyles({ lowerSizeMobile: newSize })}
-                            weight={lowerStyles[0].lowerWeight}
-                            style={lowerStyles[0].lowerStyle}
-                            spacing={lowerStyles[0].lowerSpacing}
-                            onChangeWeight={newWeight => saveLowerStyles({ lowerWeight: newWeight })}
-                            onChangeStyle={newStyle => saveLowerStyles({ lowerStyle: newStyle })}
-                            onChangeSpacing={newValue => saveLowerStyles({ lowerSpacing: newValue })}
+                            value={lowerTypography}
+                            onChange={newValue => setAttributes({ lowerTypography: newValue })}
                         />
                         <AdvancedPopColorControl
                             label={__("Color", 'premium-blocks-for-gutenberg')}
@@ -936,29 +856,9 @@ const Inspector = ({
                                 />
                                 <PremiumTypo
                                     components={["responsiveSize", "weight", "spacing", "style", "upper", "family"]}
-                                    setAttributes={saveModalStyles}
-                                    fontSizeType={{
-                                        value: modalStyles[0].modalSizeUnit,
-                                        label: __("modalSizeUnit", 'premium-blocks-for-gutenberg'),
-                                    }}
-                                    fontSize={modalStyles[0].modalSize}
-                                    fontSizeMobile={modalStyles[0].modalSizeMobile}
-                                    fontSizeTablet={modalStyles[0].modalSizeTablet}
-                                    onChangeSize={newSize => saveModalStyles({ modalSize: newSize })}
-                                    onChangeTabletSize={newSize => saveModalStyles({ modalSizeTablet: newSize })}
-                                    onChangeMobileSize={newSize => saveModalStyles({ modalSizeMobile: newSize })}
-                                    fontFamily={modalStyles[0].modalFamily}
-                                    weight={modalStyles[0].modalWeight}
-                                    style={modalStyles[0].modalStyle}
-                                    spacing={modalStyles[0].modalSpacing}
-                                    upper={modalStyles[0].modalUpper}
-                                    onChangeWeight={newWeight => saveModalStyles({ modalWeight: newWeight })}
-                                    onChangeStyle={newStyle => saveModalStyles({ modalStyle: newStyle })}
-                                    onChangeSpacing={newValue => saveModalStyles({ modalSpacing: newValue })}
-                                    onChangeFamily={(fontFamily) => saveModalStyles({ modalFamily: fontFamily })}
-                                    onChangeUpper={check => saveModalStyles({ modalUpper: check })}
+                                    value={modalTypography}
+                                    onChange={newValue => setAttributes({ modalTypography: newValue })}
                                 />
-                                <hr />
                             </Fragment>
                         )}
                         <PremiumBackgroundControl

@@ -24,7 +24,15 @@ const save = props => {
         modalBackground,
         triggerShadow,
         triggerTextShadow,
-        modalShadow
+        modalShadow,
+        triggerTypography,
+        headerTypography,
+        lowerTypography,
+        modalTypography,
+        iconSize,
+        imageWidth,
+        modalWidth,
+        modalHeight
     } = props.attributes;
 
     const renderCss = (
@@ -76,7 +84,13 @@ const save = props => {
                     boxShadow: `${triggerShadow.horizontal}px ${triggerShadow.vertical}px ${triggerShadow.blur}px ${triggerShadow.color} ${triggerShadow.position}`,
                 }}>
                     {triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "before" && <i className={` premium-modal-box-icon ${triggerSettings[0].icon}`} style={{ fontSize: `${triggerSettings[0].iconSize}px`, marginRight: `${triggerSettings[0].iconSpacing}px`, color: triggerStyles[0].iconColor }}></i>}
-                    <span style={{ color: triggerStyles[0].color, fontFamily: triggerStyles[0].triggerFamily, fontWeight: triggerStyles[0].triggerWeight, fontStyle: triggerStyles[0].triggerStyle, letterSpacing: triggerStyles[0].triggerSpacing }}> {triggerSettings[0].btnText}</span>
+                    <span style={{
+                        color: triggerStyles[0].color,
+                        fontFamily: triggerTypography.fontFamily,
+                        fontWeight: triggerTypography.fontWeight,
+                        fontStyle: triggerTypography.fontStyle,
+                        letterSpacing: triggerTypography.letterSpacing
+                    }}> {triggerSettings[0].btnText}</span>
                     {triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "after" && <i className={`premium-modal-box-icon ${triggerSettings[0].icon}`} style={{ fontSize: `${triggerSettings[0].iconSize}px`, marginLeft: `${triggerSettings[0].iconSpacing}px`, color: triggerStyles[0].iconColor }} ></i>}
                 </button>
                 }
@@ -95,10 +109,10 @@ const save = props => {
                         borderStyle: triggerBorder.borderType,
                         borderColor: triggerBorder.borderColor,
                         textShadow: `${triggerTextShadow.horizontal}px ${triggerTextShadow.vertical}px ${triggerTextShadow.blur}px ${triggerTextShadow.color}`,
-                        fontFamily: triggerStyles[0].triggerFamily,
-                        fontWeight: triggerStyles[0].triggerWeight,
-                        fontStyle: triggerStyles[0].triggerStyle,
-                        letterSpacing: triggerStyles[0].triggerSpacing
+                        fontFamily: triggerTypography.fontFamily,
+                        fontWeight: triggerTypography.fontWeight,
+                        fontStyle: triggerTypography.fontStyle,
+                        letterSpacing: triggerTypography.letterSpacing
                     }}>
                         {triggerSettings[0].triggerText}
                     </span>
@@ -134,10 +148,10 @@ const save = props => {
                     }}>
                         <h3 className={`premium-modal-box-modal-title`} style={{
                             color: headerStyles[0].color,
-                            fontFamily: headerStyles[0].headerFamily,
-                            fontStyle: headerStyles[0].headerStyle,
-                            letterSpacing: headerStyles[0].headerSpacing,
-                            fontWeight: headerStyles[0].headerWeight,
+                            fontFamily: headerTypography.fontFamily,
+                            fontWeight: headerTypography.fontWeight,
+                            fontStyle: headerTypography.fontStyle,
+                            letterSpacing: headerTypography.letterSpacing
                         }}>
                             {contentStyles[0].iconType === "icon" && <i className={contentStyles[0].contentIcon}  ></i>}
                             {contentStyles[0].iconType === "image" && <img src={contentStyles[0].contentImgURL} style={{
@@ -172,10 +186,10 @@ const save = props => {
                     }}>
                         {modalStyles[0].contentType === "text" ? <p style={{
                             color: modalStyles[0].textColor,
-                            fontWeight: modalStyles[0].modalWeight,
-                            fontFamily: modalStyles[0].modalFamily,
-                            letterSpacing: modalStyles[0].modalSpacing,
-                            fontStyle: modalStyles[0].modalStyle,
+                            fontFamily: modalTypography.fontFamily,
+                            fontWeight: modalTypography.fontWeight,
+                            fontStyle: modalTypography.fontStyle,
+                            letterSpacing: modalTypography.letterSpacing
                         }} >{modalStyles[0].contentText}</p> : <InnerBlocks.Content />}
 
                     </div>
@@ -184,9 +198,9 @@ const save = props => {
                     }}>
                         <button className={`premium-modal-box-modal-lower-close close-button`} role="button" data-dismiss="premium-modal"
                             style={{
-                                fontStyle: lowerStyles[0].lowerStyle,
-                                fontWeight: lowerStyles[0].lowerWeight,
-                                letterSpacing: lowerStyles[0].lowerSpacing,
+                                fontWeight: lowerTypography.fontWeight,
+                                fontStyle: lowerTypography.fontStyle,
+                                letterSpacing: lowerTypography.letterSpacing,
                                 width: `${lowerStyles[0].iconWidth}${lowerStyles[0].iconWidthUnit}`,
                                 color: `${lowerStyles[0].color}`,
                                 backgroundColor: `${lowerStyles[0].backColor}`,
