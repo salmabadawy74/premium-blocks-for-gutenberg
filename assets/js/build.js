@@ -59801,6 +59801,14 @@ var _premiumResponsiveSpacing = __webpack_require__(21);
 
 var _premiumResponsiveSpacing2 = _interopRequireDefault(_premiumResponsiveSpacing);
 
+var _inspectorTabs = __webpack_require__(412);
+
+var _inspectorTabs2 = _interopRequireDefault(_inspectorTabs);
+
+var _inspectorTab = __webpack_require__(413);
+
+var _inspectorTab2 = _interopRequireDefault(_inspectorTab);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var __ = wp.i18n.__;
@@ -59927,1073 +59935,1110 @@ var Inspector = function Inspector(_ref) {
         InspectorControls,
         { key: "inspector" },
         React.createElement(
-            PanelBody,
-            {
-                title: __("Content", 'premium-blocks-for-gutenberg'),
-                className: "premium-panel-body",
-                initialOpen: true
-            },
-            React.createElement(ToggleControl, {
-                label: __('Header', 'premium-blocks-for-gutenberg'),
-                checked: contentStyles[0].showHeader,
-                onChange: function onChange(value) {
-                    return saveContentStyle({ showHeader: value });
-                }
-            }),
-            contentStyles[0].showHeader && React.createElement(
-                Fragment,
-                null,
-                React.createElement(SelectControl, {
-                    label: __('Icon Type', 'premium-blocks-for-gutenberg'),
-                    options: [{ label: __("None", "premium-blocks-for-gutenberg"), value: 'none' }, { label: __("Icon", "premium-blocks-for-gutenberg"), value: 'icon' }, { label: __('Custom Image', 'premium-blocks-for-gutenberg'), value: 'image' }, { label: __('Lottie Animations', 'premium-blocks-for-gutenberg'), value: 'lottie' }],
-                    value: contentStyles[0].iconType,
-                    onChange: function onChange(value) {
-                        return saveContentStyle({ iconType: value });
-                    }
-                }),
-                contentStyles[0].iconType === "icon" && React.createElement(
-                    Fragment,
-                    null,
-                    React.createElement(
-                        "p",
-                        { className: "premium-editor-paragraph" },
-                        __("Select Icon", 'premium-blocks-for-gutenberg')
-                    ),
-                    React.createElement(_reactFonticonpicker2.default, {
-                        icons: _premiumIconsList2.default,
-                        onChange: function onChange(newIcon) {
-                            return saveContentStyle({ contentIcon: newIcon });
-                        },
-                        value: contentStyles[0].contentIcon,
-                        isMulti: false,
-                        appendTo: "body",
-                        noSelectedPlaceholder: __("Select Icon", 'premium-blocks-for-gutenberg')
-                    })
-                ),
-                contentStyles[0].iconType === "image" && React.createElement(_premiumMediaUpload2.default, {
-                    type: "image",
-                    imageID: contentStyles[0].contentImgID,
-                    imageURL: contentStyles[0].contentImgURL,
-                    onSelectMedia: function onSelectMedia(media) {
-                        saveContentStyle({
-                            contentImgID: media.id,
-                            contentImgURL: media.url
-                        });
+            _inspectorTabs2.default,
+            { tabs: ['layout', 'style', 'advance'] },
+            React.createElement(
+                _inspectorTab2.default,
+                { key: 'layout' },
+                React.createElement(
+                    PanelBody,
+                    {
+                        title: __("Content", 'premium-blocks-for-gutenberg'),
+                        className: "premium-panel-body",
+                        initialOpen: true
                     },
-                    onRemoveImage: function onRemoveImage() {
-                        return saveContentStyle({
-                            contentImgID: "",
-                            contentImgURL: ""
-                        });
-                    }
-                }),
-                contentStyles[0].iconType === "lottie" && React.createElement(
-                    Fragment,
-                    null,
-                    _settings.JsonUploadEnabled == 1 ? '' : React.createElement(
-                        "p",
+                    React.createElement(ToggleControl, {
+                        label: __('Header', 'premium-blocks-for-gutenberg'),
+                        checked: contentStyles[0].showHeader,
+                        onChange: function onChange(value) {
+                            return saveContentStyle({ showHeader: value });
+                        }
+                    }),
+                    contentStyles[0].showHeader && React.createElement(
+                        Fragment,
                         null,
-                        __('Make Sure that allow "JSON file Upload " from '),
-                        " ",
-                        React.createElement(
-                            ExternalLink,
-                            { href: window.PremiumBlocksSettings.settingPath },
-                            "plugin Settings"
-                        )
+                        React.createElement(SelectControl, {
+                            label: __('Icon Type', 'premium-blocks-for-gutenberg'),
+                            options: [{ label: __("None", "premium-blocks-for-gutenberg"), value: 'none' }, { label: __("Icon", "premium-blocks-for-gutenberg"), value: 'icon' }, { label: __('Custom Image', 'premium-blocks-for-gutenberg'), value: 'image' }, { label: __('Lottie Animations', 'premium-blocks-for-gutenberg'), value: 'lottie' }],
+                            value: contentStyles[0].iconType,
+                            onChange: function onChange(value) {
+                                return saveContentStyle({ iconType: value });
+                            }
+                        }),
+                        contentStyles[0].iconType === "icon" && React.createElement(
+                            Fragment,
+                            null,
+                            React.createElement(
+                                "p",
+                                { className: "premium-editor-paragraph" },
+                                __("Select Icon", 'premium-blocks-for-gutenberg')
+                            ),
+                            React.createElement(_reactFonticonpicker2.default, {
+                                icons: _premiumIconsList2.default,
+                                onChange: function onChange(newIcon) {
+                                    return saveContentStyle({ contentIcon: newIcon });
+                                },
+                                value: contentStyles[0].contentIcon,
+                                isMulti: false,
+                                appendTo: "body",
+                                noSelectedPlaceholder: __("Select Icon", 'premium-blocks-for-gutenberg')
+                            })
+                        ),
+                        contentStyles[0].iconType === "image" && React.createElement(_premiumMediaUpload2.default, {
+                            type: "image",
+                            imageID: contentStyles[0].contentImgID,
+                            imageURL: contentStyles[0].contentImgURL,
+                            onSelectMedia: function onSelectMedia(media) {
+                                saveContentStyle({
+                                    contentImgID: media.id,
+                                    contentImgURL: media.url
+                                });
+                            },
+                            onRemoveImage: function onRemoveImage() {
+                                return saveContentStyle({
+                                    contentImgID: "",
+                                    contentImgURL: ""
+                                });
+                            }
+                        }),
+                        contentStyles[0].iconType === "lottie" && React.createElement(
+                            Fragment,
+                            null,
+                            _settings.JsonUploadEnabled == 1 ? '' : React.createElement(
+                                "p",
+                                null,
+                                __('Make Sure that allow "JSON file Upload " from '),
+                                " ",
+                                React.createElement(
+                                    ExternalLink,
+                                    { href: window.PremiumBlocksSettings.settingPath },
+                                    "plugin Settings"
+                                )
+                            ),
+                            React.createElement(TextControl, {
+                                label: __("Animation JSON URL", "premium-blocks-for-gutenberg"),
+                                value: contentStyles[0].lottieURL,
+                                onChange: function onChange(value) {
+                                    return saveContentStyle({ lottieURL: value });
+                                }
+                            }),
+                            React.createElement(ToggleControl, {
+                                label: __("Loop", 'premium-blocks-for-gutenberg'),
+                                checked: contentStyles[0].loopLottie,
+                                onChange: function onChange(value) {
+                                    return saveContentStyle({ loopLottie: value });
+                                }
+                            }),
+                            React.createElement(ToggleControl, {
+                                label: __("Reverse", 'premium-blocks-for-gutenberg'),
+                                checked: contentStyles[0].reverseLottie,
+                                onChange: function onChange(value) {
+                                    return saveContentStyle({ reverseLottie: value });
+                                }
+                            })
+                        ),
+                        contentStyles[0].iconType !== "none" && React.createElement(_responsiveRangeControl2.default, {
+                            label: __('Icon Size', 'premium-blocks-for-gutenberg'),
+                            value: contentStyles[0].iconSize,
+                            onChange: function onChange(value) {
+                                return saveContentStyle({ iconSize: value });
+                            },
+                            tabletValue: contentStyles[0].iconSizeTablet,
+                            onChangeTablet: function onChangeTablet(value) {
+                                return saveContentStyle({ iconSizeTablet: value });
+                            },
+                            mobileValue: contentStyles[0].iconSizeMobile,
+                            onChangeMobile: function onChangeMobile(value) {
+                                return saveContentStyle({ iconSizeMobile: value });
+                            },
+                            min: 0,
+                            max: 100,
+                            step: 1,
+                            onChangeUnit: function onChangeUnit(newValue) {
+                                return saveContentStyle({ iconSizeUnit: newValue });
+                            },
+                            unit: contentStyles[0].iconSizeUnit,
+                            showUnit: true,
+                            units: ['px', 'em'],
+                            defaultValue: 0
+                        }),
+                        React.createElement(TextControl, {
+                            label: __("Title", 'premium-blocks-for-gutenberg'),
+                            value: contentStyles[0].titleText,
+                            onChange: function onChange(value) {
+                                return saveContentStyle({ titleText: value });
+                            }
+                        })
                     ),
-                    React.createElement(TextControl, {
-                        label: __("Animation JSON URL", "premium-blocks-for-gutenberg"),
-                        value: contentStyles[0].lottieURL,
+                    React.createElement("hr", null),
+                    React.createElement(SelectControl, {
+                        label: __("Content to Show", 'premium-blocks-for-gutenberg'),
+                        value: modalStyles[0].contentType,
                         onChange: function onChange(value) {
-                            return saveContentStyle({ lottieURL: value });
-                        }
-                    }),
-                    React.createElement(ToggleControl, {
-                        label: __("Loop", 'premium-blocks-for-gutenberg'),
-                        checked: contentStyles[0].loopLottie,
-                        onChange: function onChange(value) {
-                            return saveContentStyle({ loopLottie: value });
-                        }
-                    }),
-                    React.createElement(ToggleControl, {
-                        label: __("Reverse", 'premium-blocks-for-gutenberg'),
-                        checked: contentStyles[0].reverseLottie,
-                        onChange: function onChange(value) {
-                            return saveContentStyle({ reverseLottie: value });
-                        }
-                    })
-                ),
-                contentStyles[0].iconType !== "none" && React.createElement(_responsiveRangeControl2.default, {
-                    label: __('Icon Size', 'premium-blocks-for-gutenberg'),
-                    value: contentStyles[0].iconSize,
-                    onChange: function onChange(value) {
-                        return saveContentStyle({ iconSize: value });
-                    },
-                    tabletValue: contentStyles[0].iconSizeTablet,
-                    onChangeTablet: function onChangeTablet(value) {
-                        return saveContentStyle({ iconSizeTablet: value });
-                    },
-                    mobileValue: contentStyles[0].iconSizeMobile,
-                    onChangeMobile: function onChangeMobile(value) {
-                        return saveContentStyle({ iconSizeMobile: value });
-                    },
-                    min: 0,
-                    max: 100,
-                    step: 1,
-                    onChangeUnit: function onChangeUnit(newValue) {
-                        return saveContentStyle({ iconSizeUnit: newValue });
-                    },
-                    unit: contentStyles[0].iconSizeUnit,
-                    showUnit: true,
-                    units: ['px', 'em'],
-                    defaultValue: 0
-                }),
-                React.createElement(TextControl, {
-                    label: __("Title", 'premium-blocks-for-gutenberg'),
-                    value: contentStyles[0].titleText,
-                    onChange: function onChange(value) {
-                        return saveContentStyle({ titleText: value });
-                    }
-                })
-            ),
-            React.createElement("hr", null),
-            React.createElement(SelectControl, {
-                label: __("Content to Show", 'premium-blocks-for-gutenberg'),
-                value: modalStyles[0].contentType,
-                onChange: function onChange(value) {
-                    return saveModalStyles({ contentType: value });
-                },
-                options: [{
-                    value: "text",
-                    label: __("Text", 'premium-blocks-for-gutenberg')
-                }, {
-                    value: "block",
-                    label: __("Gutenberg Block", 'premium-blocks-for-gutenberg')
-                }]
-            }),
-            modalStyles[0].contentType == "text" && React.createElement(TextControl, {
-                label: __("Text", "premium-blocks-for-gutenberg"),
-                value: modalStyles[0].contentText,
-                onChange: function onChange(value) {
-                    return saveModalStyles({ contentText: value });
-                }
-            }),
-            contentStyles[0].showHeader && React.createElement(ToggleControl, {
-                label: __("Upper Close Button", 'premium-blocks-for-gutenberg'),
-                checked: contentStyles[0].showUpperClose,
-                onChange: function onChange(value) {
-                    return saveContentStyle({ showUpperClose: value });
-                }
-            }),
-            React.createElement(ToggleControl, {
-                label: __("Lower Close Button", 'premium-blocks-for-gutenberg'),
-                checked: contentStyles[0].showLowerClose,
-                onChange: function onChange(value) {
-                    return saveContentStyle({ showLowerClose: value });
-                }
-            }),
-            contentStyles[0].showLowerClose && React.createElement(TextControl, {
-                label: __("Text", 'premium-blocks-for-gutenberg'),
-                value: contentStyles[0].lowerCloseText,
-                onChange: function onChange(value) {
-                    return saveContentStyle({ lowerCloseText: value });
-                }
-            }),
-            React.createElement(SelectControl, {
-                label: __("Animation"),
-                value: contentStyles[0].animationType,
-                onChange: function onChange(value) {
-                    return saveContentStyle({ animationType: value });
-                },
-                options: [{ value: "none", label: __("None", 'premium-blocks-for-gutenberg') }, { value: "fadeInDown", label: __("Fade In Down", 'premium-blocks-for-gutenberg') }, { value: "fadeInUp", label: __("Fade In Up", 'premium-blocks-for-gutenberg') }, { value: "fadeIn", label: __("Fade In", 'premium-blocks-for-gutenberg') }, { value: "fadeInLeft", label: __("Fade In Left", 'premium-blocks-for-gutenberg') }, { value: "fadeInRight", label: __("Fade In Right", 'premium-blocks-for-gutenberg') }, { value: "zoomInDown", label: __("Zoom In Down", 'premium-blocks-for-gutenberg') }, { value: "zoomInUp", label: __("Zoom In Up", 'premium-blocks-for-gutenberg') }, { value: "zoomIn", label: __("Zoom In", 'premium-blocks-for-gutenberg') }, { value: "zoomInLeft", label: __("Zoom In Left", 'premium-blocks-for-gutenberg') }, { value: "zoomInRight", label: __("Zoom In Right", 'premium-blocks-for-gutenberg') }, { value: "bounceInDown", label: __("Bouncing In Down", 'premium-blocks-for-gutenberg') }, { value: "bounceInUp", label: __("Bouncing In Up", 'premium-blocks-for-gutenberg') }, { value: "bounceIn", label: __("Bouncing In", 'premium-blocks-for-gutenberg') }, { value: "bounceInLeft", label: __("Bouncing In Left", 'premium-blocks-for-gutenberg') }, { value: "bounceInRight", label: __("Bouncing In Right", 'premium-blocks-for-gutenberg') }, { value: "slideInUp", label: __("Slide In Up", 'premium-blocks-for-gutenberg') }, { value: "slideInLeft", label: __("Slide In Left", 'premium-blocks-for-gutenberg') }, { value: "slideInRight", label: __("Slide In Right", 'premium-blocks-for-gutenberg') }, { value: "slideInDown", label: __("Slide In Down", 'premium-blocks-for-gutenberg') }, { value: "rotateInUpLeft", label: __("Rotating Up Left", 'premium-blocks-for-gutenberg') }, { value: "rotateInUpRight", label: __("Rotating Up Right", 'premium-blocks-for-gutenberg') }, { value: "rotateIn", label: __("Rotating In", 'premium-blocks-for-gutenberg') }, { value: "rotateInDownLeft", label: __("Rotating In Left", 'premium-blocks-for-gutenberg') }, { value: "rotateInDownRight", label: __("Rotating In Right", 'premium-blocks-for-gutenberg') }, { value: "bounce", label: __("Bounce", 'premium-blocks-for-gutenberg') }, { value: "flash", label: __("Flash", 'premium-blocks-for-gutenberg') }, { value: "pulse", label: __("Pulse", 'premium-blocks-for-gutenberg') }, { value: "rubberBand", label: __("Rubber Band", 'premium-blocks-for-gutenberg') }, { value: "headShake", label: __("Head Shake", 'premium-blocks-for-gutenberg') }, { value: "swing", label: __("Swing", 'premium-blocks-for-gutenberg') }, { value: "tada", label: __("Tada", 'premium-blocks-for-gutenberg') }, { value: "wobble", label: __("Wobble", 'premium-blocks-for-gutenberg') }, { value: "jello", label: __("Jolle", 'premium-blocks-for-gutenberg') }, { value: "lightSpeedIn", label: __("Light Speed", 'premium-blocks-for-gutenberg') }, { value: "rollIn", label: __("Roll In", 'premium-blocks-for-gutenberg') }]
-            }),
-            React.createElement(SelectControl, {
-                label: __("Animation Duration", 'premium-blocks-for-gutenberg'),
-                value: contentStyles[0].animationSpeed,
-                options: [{
-                    label: __("Fast", 'premium-blocks-for-gutenberg'),
-                    value: "fast"
-                }, {
-                    label: __("Normal", 'premium-blocks-for-gutenberg'),
-                    value: "normal"
-                }, {
-                    label: __("Slow", 'premium-blocks-for-gutenberg'),
-                    value: 'slow'
-                }],
-                onChange: function onChange(value) {
-                    return saveContentStyle({ animationSpeed: value });
-                }
-            })
-        ),
-        React.createElement(
-            PanelBody,
-            {
-                title: __("Trigger Option", 'premium-blocks-for-gutenberg'),
-                className: "premium-panel-body",
-                initialOpen: false
-            },
-            React.createElement(SelectControl, {
-                label: __("Trigger", "premium-blocks-for-gutenberg"),
-                value: triggerSettings[0].triggerType,
-                options: [{ label: __("Button", 'premium-blocks-for-gutenberg'), value: 'button' }, { label: __("Image", 'premium-blocks-for-gutenberg'), value: 'image' }, { label: __("Text", 'premium-blocks-for-gutenberg'), value: 'text' }, { label: __("Lottie Animation", 'premium-blocks-for-gutenberg'), value: 'lottie' }, { label: __("On Page Load", 'premium-blocks-for-gutenberg'), value: 'load' }],
-                onChange: function onChange(value) {
-                    return saveTriggerSettings({ triggerType: value });
-                }
-            }),
-            triggerSettings[0].triggerType === "button" && React.createElement(
-                Fragment,
-                null,
-                React.createElement(TextControl, {
-                    label: __("Button text", 'premium-blocks-for-gutenberg'),
-                    value: triggerSettings[0].btnText,
-                    onChange: function onChange(newValue) {
-                        return saveTriggerSettings({ btnText: newValue });
-                    }
-                }),
-                React.createElement(ToggleControl, {
-                    label: __("Icon", 'premium-blocks-for-gutenberg'),
-                    checked: triggerSettings[0].showIcon,
-                    onChange: function onChange(newValue) {
-                        return saveTriggerSettings({ showIcon: newValue });
-                    }
-                }),
-                triggerSettings[0].showIcon && React.createElement(
-                    Fragment,
-                    null,
-                    React.createElement(_reactFonticonpicker2.default, {
-                        icons: _premiumIconsList2.default,
-                        onChange: function onChange(newIcon) {
-                            return saveTriggerSettings({ icon: newIcon });
+                            return saveModalStyles({ contentType: value });
                         },
-                        value: triggerSettings[0].icon,
-                        isMulti: false,
-                        appendTo: "body",
-                        noSelectedPlaceholder: __("Select Icon", 'premium-blocks-for-gutenberg')
+                        options: [{
+                            value: "text",
+                            label: __("Text", 'premium-blocks-for-gutenberg')
+                        }, {
+                            value: "block",
+                            label: __("Gutenberg Block", 'premium-blocks-for-gutenberg')
+                        }]
+                    }),
+                    modalStyles[0].contentType == "text" && React.createElement(TextControl, {
+                        label: __("Text", "premium-blocks-for-gutenberg"),
+                        value: modalStyles[0].contentText,
+                        onChange: function onChange(value) {
+                            return saveModalStyles({ contentText: value });
+                        }
+                    }),
+                    contentStyles[0].showHeader && React.createElement(ToggleControl, {
+                        label: __("Upper Close Button", 'premium-blocks-for-gutenberg'),
+                        checked: contentStyles[0].showUpperClose,
+                        onChange: function onChange(value) {
+                            return saveContentStyle({ showUpperClose: value });
+                        }
+                    }),
+                    React.createElement(ToggleControl, {
+                        label: __("Lower Close Button", 'premium-blocks-for-gutenberg'),
+                        checked: contentStyles[0].showLowerClose,
+                        onChange: function onChange(value) {
+                            return saveContentStyle({ showLowerClose: value });
+                        }
+                    }),
+                    contentStyles[0].showLowerClose && React.createElement(TextControl, {
+                        label: __("Text", 'premium-blocks-for-gutenberg'),
+                        value: contentStyles[0].lowerCloseText,
+                        onChange: function onChange(value) {
+                            return saveContentStyle({ lowerCloseText: value });
+                        }
                     }),
                     React.createElement(SelectControl, {
-                        label: __('Icon Position', 'premium-blocks-for-gutenberg'),
-                        value: triggerSettings[0].iconPosition,
+                        label: __("Animation"),
+                        value: contentStyles[0].animationType,
+                        onChange: function onChange(value) {
+                            return saveContentStyle({ animationType: value });
+                        },
+                        options: [{ value: "none", label: __("None", 'premium-blocks-for-gutenberg') }, { value: "fadeInDown", label: __("Fade In Down", 'premium-blocks-for-gutenberg') }, { value: "fadeInUp", label: __("Fade In Up", 'premium-blocks-for-gutenberg') }, { value: "fadeIn", label: __("Fade In", 'premium-blocks-for-gutenberg') }, { value: "fadeInLeft", label: __("Fade In Left", 'premium-blocks-for-gutenberg') }, { value: "fadeInRight", label: __("Fade In Right", 'premium-blocks-for-gutenberg') }, { value: "zoomInDown", label: __("Zoom In Down", 'premium-blocks-for-gutenberg') }, { value: "zoomInUp", label: __("Zoom In Up", 'premium-blocks-for-gutenberg') }, { value: "zoomIn", label: __("Zoom In", 'premium-blocks-for-gutenberg') }, { value: "zoomInLeft", label: __("Zoom In Left", 'premium-blocks-for-gutenberg') }, { value: "zoomInRight", label: __("Zoom In Right", 'premium-blocks-for-gutenberg') }, { value: "bounceInDown", label: __("Bouncing In Down", 'premium-blocks-for-gutenberg') }, { value: "bounceInUp", label: __("Bouncing In Up", 'premium-blocks-for-gutenberg') }, { value: "bounceIn", label: __("Bouncing In", 'premium-blocks-for-gutenberg') }, { value: "bounceInLeft", label: __("Bouncing In Left", 'premium-blocks-for-gutenberg') }, { value: "bounceInRight", label: __("Bouncing In Right", 'premium-blocks-for-gutenberg') }, { value: "slideInUp", label: __("Slide In Up", 'premium-blocks-for-gutenberg') }, { value: "slideInLeft", label: __("Slide In Left", 'premium-blocks-for-gutenberg') }, { value: "slideInRight", label: __("Slide In Right", 'premium-blocks-for-gutenberg') }, { value: "slideInDown", label: __("Slide In Down", 'premium-blocks-for-gutenberg') }, { value: "rotateInUpLeft", label: __("Rotating Up Left", 'premium-blocks-for-gutenberg') }, { value: "rotateInUpRight", label: __("Rotating Up Right", 'premium-blocks-for-gutenberg') }, { value: "rotateIn", label: __("Rotating In", 'premium-blocks-for-gutenberg') }, { value: "rotateInDownLeft", label: __("Rotating In Left", 'premium-blocks-for-gutenberg') }, { value: "rotateInDownRight", label: __("Rotating In Right", 'premium-blocks-for-gutenberg') }, { value: "bounce", label: __("Bounce", 'premium-blocks-for-gutenberg') }, { value: "flash", label: __("Flash", 'premium-blocks-for-gutenberg') }, { value: "pulse", label: __("Pulse", 'premium-blocks-for-gutenberg') }, { value: "rubberBand", label: __("Rubber Band", 'premium-blocks-for-gutenberg') }, { value: "headShake", label: __("Head Shake", 'premium-blocks-for-gutenberg') }, { value: "swing", label: __("Swing", 'premium-blocks-for-gutenberg') }, { value: "tada", label: __("Tada", 'premium-blocks-for-gutenberg') }, { value: "wobble", label: __("Wobble", 'premium-blocks-for-gutenberg') }, { value: "jello", label: __("Jolle", 'premium-blocks-for-gutenberg') }, { value: "lightSpeedIn", label: __("Light Speed", 'premium-blocks-for-gutenberg') }, { value: "rollIn", label: __("Roll In", 'premium-blocks-for-gutenberg') }]
+                    }),
+                    React.createElement(SelectControl, {
+                        label: __("Animation Duration", 'premium-blocks-for-gutenberg'),
+                        value: contentStyles[0].animationSpeed,
                         options: [{
-                            label: __("Before", "premium-blocks-for-gutenberg"),
-                            value: 'before'
+                            label: __("Fast", 'premium-blocks-for-gutenberg'),
+                            value: "fast"
                         }, {
-                            label: __("After", "premium-blocks-for-gutenberg"),
-                            value: 'after'
+                            label: __("Normal", 'premium-blocks-for-gutenberg'),
+                            value: "normal"
+                        }, {
+                            label: __("Slow", 'premium-blocks-for-gutenberg'),
+                            value: 'slow'
                         }],
-                        onChange: function onChange(newValue) {
-                            return saveTriggerSettings({ iconPosition: newValue });
+                        onChange: function onChange(value) {
+                            return saveContentStyle({ animationSpeed: value });
                         }
-                    }),
-                    React.createElement(_singleRangeControl2.default, {
-                        label: __("Icon Size", 'premium-blocks-for-gutenberg'),
-                        value: triggerSettings[0].iconSize,
-                        min: "1",
-                        max: "100",
-                        onChange: function onChange(newValue) {
-                            return saveTriggerSettings({ iconSize: newValue });
-                        },
-                        defaultValue: 0,
-                        showUnit: false
-                    }),
-                    React.createElement(_singleRangeControl2.default, {
-                        label: __("Icon Spacing", 'premium-blocks-for-gutenberg'),
-                        value: triggerSettings[0].iconSpacing,
-                        min: "1",
-                        max: "100",
-                        onChange: function onChange(newValue) {
-                            return saveTriggerSettings({ iconSpacing: newValue });
-                        },
-                        defaultValue: 0,
-                        showUnit: false
                     })
                 ),
-                React.createElement(SelectControl, {
-                    label: __("Button Size", "premium-blocks-for-gutenberg"),
-                    value: triggerSettings[0].btnSize,
-                    options: [{ label: __("Small", "premium-blocks-for-gutenberg"), value: 'sm' }, { label: __("Medium", "premium-blocks-for-gutenberg"), value: 'md' }, { label: __("Large", "premium-blocks-for-gutenberg"), value: 'lg' }, { label: __("Block", "premium-blocks-for-gutenberg"), value: 'block' }],
-                    onChange: function onChange(newValue) {
-                        return saveTriggerSettings({ btnSize: newValue });
-                    }
-                })
-            ),
-            triggerSettings[0].triggerType === "image" && React.createElement(
-                Fragment,
-                null,
-                React.createElement(_premiumMediaUpload2.default, {
-                    type: "image",
-                    imageID: triggerSettings[0].triggerImgID,
-                    imageURL: triggerSettings[0].triggerImgURL,
-                    onSelectMedia: function onSelectMedia(media) {
-                        saveTriggerSettings({
-                            triggerImgID: media.id,
-                            triggerImgURL: media.url
-                        });
-                    },
-                    onRemoveImage: function onRemoveImage() {
-                        return saveTriggerSettings({
-                            triggerImgID: "",
-                            triggerImgURL: ""
-                        });
-                    }
-                })
-            ),
-            triggerSettings[0].triggerType === "text" && React.createElement(TextControl, {
-                label: __("Text", 'premium-blocks-for-gutenberg'),
-                value: triggerSettings[0].triggerText,
-                onChange: function onChange(value) {
-                    return saveTriggerSettings({ triggerText: value });
-                }
-            }),
-            triggerSettings[0].triggerType === "lottie" && React.createElement(
-                Fragment,
-                null,
-                _settings.JsonUploadEnabled == 1 ? '' : React.createElement(
-                    "p",
-                    null,
-                    __('Make Sure that allow "JSON file Upload " from '),
-                    " ",
-                    React.createElement(
-                        ExternalLink,
-                        { href: window.PremiumBlocksSettings.settingPath },
-                        "plugin Settings"
-                    )
-                ),
-                React.createElement(ToggleControl, {
-                    label: __("Loop", 'premium-blocks-for-gutenberg'),
-                    checked: triggerSettings[0].triggerLoopLottie,
-                    onChange: function onChange(value) {
-                        return saveTriggerSettings({ triggerLoopLottie: value });
-                    }
-                }),
-                React.createElement(ToggleControl, {
-                    label: __("Reverse", 'premium-blocks-for-gutenberg'),
-                    checked: triggerSettings[0].triggerReverseLottie,
-                    onChange: function onChange(value) {
-                        return saveTriggerSettings({ triggerReverseLottie: value });
-                    }
-                }),
-                React.createElement(ToggleControl, {
-                    label: __("Only Play on Hover", 'premium-blocks-for-gutenberg'),
-                    checked: triggerSettings[0].triggerPlayLottie,
-                    onChange: function onChange(value) {
-                        return saveTriggerSettings({ triggerPlayLottie: value });
-                    }
-                })
-            ),
-            (triggerSettings[0].triggerType === "image" || triggerSettings[0].triggerType === "lottie") && React.createElement(_responsiveRangeControl2.default, {
-                label: __('Size', 'premium-blocks-for-gutenberg'),
-                value: triggerSettings[0].imageWidth,
-                onChange: function onChange(value) {
-                    return saveTriggerSettings({ imageWidth: value });
-                },
-                tabletValue: triggerSettings[0].imageWidthTablet,
-                onChangeTablet: function onChangeTablet(value) {
-                    return saveTriggerSettings({ imageWidthTablet: value });
-                },
-                mobileValue: triggerSettings[0].imageWidthMobile,
-                onChangeMobile: function onChangeMobile(value) {
-                    return saveTriggerSettings({ imageWidthMobile: value });
-                },
-                min: 0,
-                max: 800,
-                step: 1,
-                showUnit: false,
-                defaultValue: 0
-            }),
-            triggerSettings[0].triggerType === "load" && React.createElement(
-                Fragment,
-                null,
                 React.createElement(
-                    "p",
-                    null,
-                    __('the Button will be removed in the preview mode ', "premium-blocks-for-gutenberg")
-                ),
-                React.createElement(_singleRangeControl2.default, {
-                    label: __("Delay in Popup Display (Sec)", 'premium-blocks-for-gutenberg'),
-                    value: triggerSettings[0].delayTime,
-                    min: "1",
-                    max: "100",
-                    onChange: function onChange(newValue) {
-                        return saveTriggerSettings({ delayTime: newValue });
-                    },
-                    defaultValue: 0,
-                    showUnit: false
-                })
-            ),
-            triggerSettings[0].triggerType !== "load" && React.createElement(_radioControl2.default, {
-                choices: ["right", "center", "left"],
-                value: triggerSettings[0].align,
-                onChange: function onChange(newValue) {
-                    return saveTriggerSettings({ align: newValue });
-                },
-                label: __("Align", 'premium-blocks-for-gutenberg')
-            })
-        ),
-        triggerSettings[0].triggerType !== "load" && React.createElement(
-            PanelBody,
-            {
-                title: __("Triger", 'premium-blocks-for-gutenberg'),
-                className: "premium-panel-body",
-                initialOpen: false
-            },
-            (triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === 'text') && React.createElement(
-                Fragment,
-                null,
-                React.createElement(_ColorComponent2.default, {
-                    label: __("Color", 'premium-blocks-for-gutenberg'),
-                    colorValue: triggerStyles[0].color,
-                    colorDefault: '',
-                    onColorChange: function onColorChange(newValue) {
-                        return saveTriggerStyles({ color: newValue });
-                    }
-                }),
-                React.createElement(_ColorComponent2.default, {
-                    label: __("Hover Color", 'premium-blocks-for-gutenberg'),
-                    colorValue: triggerStyles[0].hoverColor,
-                    colorDefault: '',
-                    onColorChange: function onColorChange(newValue) {
-                        return saveTriggerStyles({ hoverColor: newValue });
-                    }
-                })
-            ),
-            triggerSettings[0].triggerType === "button" && React.createElement(
-                Fragment,
-                null,
-                React.createElement(_ColorComponent2.default, {
-                    label: __("Icon Color", 'premium-blocks-for-gutenberg'),
-                    colorValue: triggerStyles[0].iconColor,
-                    colorDefault: '',
-                    onColorChange: function onColorChange(newValue) {
-                        return saveTriggerStyles({ iconColor: newValue });
-                    }
-                }),
-                React.createElement(_ColorComponent2.default, {
-                    label: __("Icon Hover Color", 'premium-blocks-for-gutenberg'),
-                    colorValue: triggerStyles[0].iconHoverColor,
-                    colorDefault: '',
-                    onColorChange: function onColorChange(newValue) {
-                        return saveTriggerStyles({ iconHoverColor: newValue });
-                    }
-                })
-            ),
-            (triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === 'text') && React.createElement(
-                Fragment,
-                null,
-                React.createElement(_premiumTypo2.default, {
-                    components: ["responsiveSize", "weight", "spacing", "style", "upper", "family"],
-                    setAttributes: saveTriggerStyles,
-                    fontSizeType: {
-                        value: triggerStyles[0].triggerSizeUnit,
-                        label: __("triggerSizeUnit", 'premium-blocks-for-gutenberg')
-                    },
-                    fontSize: triggerStyles[0].triggerSize,
-                    fontSizeMobile: triggerStyles[0].triggerSizeMobile,
-                    fontSizeTablet: triggerStyles[0].triggerSizeTablet,
-                    onChangeSize: function onChangeSize(newSize) {
-                        return saveTriggerStyles({ triggerSize: newSize });
-                    },
-                    onChangeTabletSize: function onChangeTabletSize(newSize) {
-                        return saveTriggerStyles({ triggerSizeTablet: newSize });
-                    },
-                    onChangeMobileSize: function onChangeMobileSize(newSize) {
-                        return saveTriggerStyles({ triggerSizeMobile: newSize });
-                    },
-                    fontFamily: triggerStyles[0].triggerFamily,
-                    weight: triggerStyles[0].triggerWeight,
-                    style: triggerStyles[0].triggerStyle,
-                    spacing: triggerStyles[0].triggerSpacing,
-                    upper: triggerStyles[0].triggerUpper,
-                    onChangeWeight: function onChangeWeight(newWeight) {
-                        return saveTriggerStyles({ triggerWeight: newWeight });
-                    },
-                    onChangeStyle: function onChangeStyle(newStyle) {
-                        return saveTriggerStyles({ triggerStyle: newStyle });
-                    },
-                    onChangeSpacing: function onChangeSpacing(newValue) {
-                        return saveTriggerStyles({ triggerSpacing: newValue });
-                    },
-                    onChangeFamily: function onChangeFamily(fontFamily) {
-                        return saveTriggerStyles({ triggerFamily: fontFamily });
-                    },
-                    onChangeUpper: function onChangeUpper(check) {
-                        return saveTriggerStyles({ triggerUpper: check });
-                    }
-                })
-            ),
-            (triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === 'text' || triggerSettings[0].triggerType === 'image') && React.createElement(
-                Fragment,
-                null,
-                React.createElement(
-                    TabPanel,
+                    PanelBody,
                     {
-                        className: "premium-color-tabpanel",
-                        activeClass: "active-tab",
-                        tabs: [{
-                            name: "normal",
-                            title: "Normal",
-                            className: "premium-tab"
-                        }, {
-                            name: "hover",
-                            title: "Hover",
-                            className: "premium-tab"
-                        }]
+                        title: __("Trigger", 'premium-blocks-for-gutenberg'),
+                        className: "premium-panel-body",
+                        initialOpen: false
                     },
-                    function (tab) {
-                        var tabout = void 0;
-                        if ("normal" === tab.name) {
-                            tabout = React.createElement(
-                                Fragment,
-                                null,
-                                triggerSettings[0].triggerType === 'button' && React.createElement(_ColorComponent2.default, {
-                                    label: __("Background Color", 'premium-blocks-for-gutenberg'),
-                                    colorValue: triggerStyles[0].triggerBack,
-                                    colorDefault: '',
-                                    onColorChange: function onColorChange(newValue) {
-                                        return saveTriggerStyles({ triggerBack: newValue || "transparent" });
-                                    }
-                                }),
-                                React.createElement(_premiumBorder2.default, {
-                                    label: __("Border"),
-                                    value: triggerBorder,
-                                    borderType: triggerBorder.borderType,
-                                    borderColor: triggerBorder.borderColor,
-                                    borderWidth: triggerBorder.borderWidth,
-                                    borderRadius: triggerBorder.borderRadius,
-                                    onChange: function onChange(value) {
-                                        return setAttributes({ triggerBorder: value });
-                                    }
-                                })
-                            );
+                    React.createElement(SelectControl, {
+                        label: __("Trigger", "premium-blocks-for-gutenberg"),
+                        value: triggerSettings[0].triggerType,
+                        options: [{ label: __("Button", 'premium-blocks-for-gutenberg'), value: 'button' }, { label: __("Image", 'premium-blocks-for-gutenberg'), value: 'image' }, { label: __("Text", 'premium-blocks-for-gutenberg'), value: 'text' }, { label: __("Lottie Animation", 'premium-blocks-for-gutenberg'), value: 'lottie' }, { label: __("On Page Load", 'premium-blocks-for-gutenberg'), value: 'load' }],
+                        onChange: function onChange(value) {
+                            return saveTriggerSettings({ triggerType: value });
                         }
-                        if ("hover" === tab.name) {
-                            tabout = React.createElement(
-                                Fragment,
-                                null,
-                                triggerSettings[0].triggerType === 'button' && React.createElement(_ColorComponent2.default, {
-                                    label: __("Background Hover Color", 'premium-blocks-for-gutenberg'),
-                                    colorValue: triggerStyles[0].triggerHoverBack,
-                                    colorDefault: '',
-                                    onColorChange: function onColorChange(newValue) {
-                                        return saveTriggerStyles({ triggerHoverBack: newValue || "transparent" });
-                                    }
-                                }),
-                                React.createElement(_premiumBorder2.default, {
-                                    label: __("Border"),
-                                    value: triggerBorderH,
-                                    borderType: triggerBorderH.borderType,
-                                    borderColor: triggerBorderH.borderColor,
-                                    borderWidth: triggerBorderH.borderWidth,
-                                    borderRadius: triggerBorderH.borderRadius,
-                                    onChange: function onChange(value) {
-                                        return setAttributes({ triggerBorderH: value });
-                                    }
-                                })
-                            );
-                        }
-                        return React.createElement(
-                            "div",
+                    }),
+                    triggerSettings[0].triggerType === "button" && React.createElement(
+                        Fragment,
+                        null,
+                        React.createElement(TextControl, {
+                            label: __("Button text", 'premium-blocks-for-gutenberg'),
+                            value: triggerSettings[0].btnText,
+                            onChange: function onChange(newValue) {
+                                return saveTriggerSettings({ btnText: newValue });
+                            }
+                        }),
+                        React.createElement(ToggleControl, {
+                            label: __("Icon", 'premium-blocks-for-gutenberg'),
+                            checked: triggerSettings[0].showIcon,
+                            onChange: function onChange(newValue) {
+                                return saveTriggerSettings({ showIcon: newValue });
+                            }
+                        }),
+                        triggerSettings[0].showIcon && React.createElement(
+                            Fragment,
                             null,
-                            tabout,
-                            React.createElement("hr", null)
-                        );
-                    }
+                            React.createElement(_reactFonticonpicker2.default, {
+                                icons: _premiumIconsList2.default,
+                                onChange: function onChange(newIcon) {
+                                    return saveTriggerSettings({ icon: newIcon });
+                                },
+                                value: triggerSettings[0].icon,
+                                isMulti: false,
+                                appendTo: "body",
+                                noSelectedPlaceholder: __("Select Icon", 'premium-blocks-for-gutenberg')
+                            }),
+                            React.createElement(SelectControl, {
+                                label: __('Icon Position', 'premium-blocks-for-gutenberg'),
+                                value: triggerSettings[0].iconPosition,
+                                options: [{
+                                    label: __("Before", "premium-blocks-for-gutenberg"),
+                                    value: 'before'
+                                }, {
+                                    label: __("After", "premium-blocks-for-gutenberg"),
+                                    value: 'after'
+                                }],
+                                onChange: function onChange(newValue) {
+                                    return saveTriggerSettings({ iconPosition: newValue });
+                                }
+                            }),
+                            React.createElement(_singleRangeControl2.default, {
+                                label: __("Icon Size", 'premium-blocks-for-gutenberg'),
+                                value: triggerSettings[0].iconSize,
+                                min: "1",
+                                max: "100",
+                                onChange: function onChange(newValue) {
+                                    return saveTriggerSettings({ iconSize: newValue });
+                                },
+                                defaultValue: 0,
+                                showUnit: false
+                            }),
+                            React.createElement(_singleRangeControl2.default, {
+                                label: __("Icon Spacing", 'premium-blocks-for-gutenberg'),
+                                value: triggerSettings[0].iconSpacing,
+                                min: "1",
+                                max: "100",
+                                onChange: function onChange(newValue) {
+                                    return saveTriggerSettings({ iconSpacing: newValue });
+                                },
+                                defaultValue: 0,
+                                showUnit: false
+                            })
+                        ),
+                        React.createElement(SelectControl, {
+                            label: __("Button Size", "premium-blocks-for-gutenberg"),
+                            value: triggerSettings[0].btnSize,
+                            options: [{ label: __("Small", "premium-blocks-for-gutenberg"), value: 'sm' }, { label: __("Medium", "premium-blocks-for-gutenberg"), value: 'md' }, { label: __("Large", "premium-blocks-for-gutenberg"), value: 'lg' }, { label: __("Block", "premium-blocks-for-gutenberg"), value: 'block' }],
+                            onChange: function onChange(newValue) {
+                                return saveTriggerSettings({ btnSize: newValue });
+                            }
+                        })
+                    ),
+                    triggerSettings[0].triggerType === "image" && React.createElement(
+                        Fragment,
+                        null,
+                        React.createElement(_premiumMediaUpload2.default, {
+                            type: "image",
+                            imageID: triggerSettings[0].triggerImgID,
+                            imageURL: triggerSettings[0].triggerImgURL,
+                            onSelectMedia: function onSelectMedia(media) {
+                                saveTriggerSettings({
+                                    triggerImgID: media.id,
+                                    triggerImgURL: media.url
+                                });
+                            },
+                            onRemoveImage: function onRemoveImage() {
+                                return saveTriggerSettings({
+                                    triggerImgID: "",
+                                    triggerImgURL: ""
+                                });
+                            }
+                        })
+                    ),
+                    triggerSettings[0].triggerType === "text" && React.createElement(TextControl, {
+                        label: __("Text", 'premium-blocks-for-gutenberg'),
+                        value: triggerSettings[0].triggerText,
+                        onChange: function onChange(value) {
+                            return saveTriggerSettings({ triggerText: value });
+                        }
+                    }),
+                    triggerSettings[0].triggerType === "lottie" && React.createElement(
+                        Fragment,
+                        null,
+                        _settings.JsonUploadEnabled == 1 ? '' : React.createElement(
+                            "p",
+                            null,
+                            __('Make Sure that allow "JSON file Upload " from '),
+                            " ",
+                            React.createElement(
+                                ExternalLink,
+                                { href: window.PremiumBlocksSettings.settingPath },
+                                "plugin Settings"
+                            )
+                        ),
+                        React.createElement(ToggleControl, {
+                            label: __("Loop", 'premium-blocks-for-gutenberg'),
+                            checked: triggerSettings[0].triggerLoopLottie,
+                            onChange: function onChange(value) {
+                                return saveTriggerSettings({ triggerLoopLottie: value });
+                            }
+                        }),
+                        React.createElement(ToggleControl, {
+                            label: __("Reverse", 'premium-blocks-for-gutenberg'),
+                            checked: triggerSettings[0].triggerReverseLottie,
+                            onChange: function onChange(value) {
+                                return saveTriggerSettings({ triggerReverseLottie: value });
+                            }
+                        }),
+                        React.createElement(ToggleControl, {
+                            label: __("Only Play on Hover", 'premium-blocks-for-gutenberg'),
+                            checked: triggerSettings[0].triggerPlayLottie,
+                            onChange: function onChange(value) {
+                                return saveTriggerSettings({ triggerPlayLottie: value });
+                            }
+                        })
+                    ),
+                    (triggerSettings[0].triggerType === "image" || triggerSettings[0].triggerType === "lottie") && React.createElement(_responsiveRangeControl2.default, {
+                        label: __('Size', 'premium-blocks-for-gutenberg'),
+                        value: triggerSettings[0].imageWidth,
+                        onChange: function onChange(value) {
+                            return saveTriggerSettings({ imageWidth: value });
+                        },
+                        tabletValue: triggerSettings[0].imageWidthTablet,
+                        onChangeTablet: function onChangeTablet(value) {
+                            return saveTriggerSettings({ imageWidthTablet: value });
+                        },
+                        mobileValue: triggerSettings[0].imageWidthMobile,
+                        onChangeMobile: function onChangeMobile(value) {
+                            return saveTriggerSettings({ imageWidthMobile: value });
+                        },
+                        min: 0,
+                        max: 800,
+                        step: 1,
+                        showUnit: false,
+                        defaultValue: 0
+                    }),
+                    triggerSettings[0].triggerType === "load" && React.createElement(
+                        Fragment,
+                        null,
+                        React.createElement(
+                            "p",
+                            null,
+                            __('the Button will be removed in the preview mode ', "premium-blocks-for-gutenberg")
+                        ),
+                        React.createElement(_singleRangeControl2.default, {
+                            label: __("Delay in Popup Display (Sec)", 'premium-blocks-for-gutenberg'),
+                            value: triggerSettings[0].delayTime,
+                            min: "1",
+                            max: "100",
+                            onChange: function onChange(newValue) {
+                                return saveTriggerSettings({ delayTime: newValue });
+                            },
+                            defaultValue: 0,
+                            showUnit: false
+                        })
+                    ),
+                    triggerSettings[0].triggerType !== "load" && React.createElement(_radioControl2.default, {
+                        choices: ["right", "center", "left"],
+                        value: triggerSettings[0].align,
+                        onChange: function onChange(newValue) {
+                            return saveTriggerSettings({ align: newValue });
+                        },
+                        label: __("Align", 'premium-blocks-for-gutenberg')
+                    })
+                ),
+                contentStyles[0].showUpperClose && contentStyles[0].showHeader && React.createElement(
+                    PanelBody,
+                    {
+                        title: __("Upper Close Button", 'premium-blocks-for-gutenberg'),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    React.createElement(_singleRangeControl2.default, {
+                        label: __("Width", 'premium-blocks-for-gutenberg'),
+                        value: upperStyles[0].iconWidth,
+                        onChange: function onChange(newValue) {
+                            return saveUpperStyles({ iconWidth: newValue });
+                        },
+                        units: ['px', '%', 'em'],
+                        defaultValue: 0,
+                        onChangeUnit: function onChangeUnit(newValue) {
+                            return saveUpperStyles({ iconWidthUnit: newValue });
+                        },
+                        showUnit: true,
+                        unit: upperStyles[0].iconWidthUnit
+                    })
+                ),
+                contentStyles[0].showLowerClose && React.createElement(
+                    PanelBody,
+                    {
+                        title: __("Lower Close Button", 'premium-blocks-for-gutenberg'),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    React.createElement(_singleRangeControl2.default, {
+                        label: __("Width", 'premium-blocks-for-gutenberg'),
+                        value: lowerStyles[0].iconWidth,
+                        onChange: function onChange(newValue) {
+                            return saveLowerStyles({ iconWidth: newValue });
+                        },
+                        units: ['px', '%', 'em'],
+                        defaultValue: 0,
+                        onChangeUnit: function onChangeUnit(newValue) {
+                            return saveLowerStyles({ iconWidthUnit: newValue });
+                        },
+                        min: 1,
+                        max: 500,
+                        showUnit: true,
+                        unit: lowerStyles[0].iconWidthUnit
+                    })
+                ),
+                React.createElement(
+                    PanelBody,
+                    {
+                        title: __("Modal Body", 'premium-blocks-for-gutenberg'),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    React.createElement(_responsiveRangeControl2.default, {
+                        label: __('Width', 'premium-blocks-for-gutenberg'),
+                        value: modalStyles[0].modalWidth,
+                        onChange: function onChange(value) {
+                            return saveModalStyles({ modalWidth: value !== "" ? value : 200 });
+                        },
+                        tabletValue: modalStyles[0].modalWidthTablet,
+                        onChangeTablet: function onChangeTablet(value) {
+                            return saveModalStyles({ modalWidthTablet: value !== "" ? value : 200 });
+                        },
+                        mobileValue: modalStyles[0].modalWidthMobile,
+                        onChangeMobile: function onChangeMobile(value) {
+                            return saveModalStyles({ modalWidthMobile: value !== "" ? value : 200 });
+                        },
+                        min: 0,
+                        max: 1500,
+                        step: 1,
+                        onChangeUnit: function onChangeUnit(newValue) {
+                            return saveModalStyles({ modalWidthUnit: newValue });
+                        },
+                        unit: modalStyles[0].modalWidthUnit,
+                        showUnit: true,
+                        units: ['px', '%', 'em'],
+                        defaultValue: 0
+                    }),
+                    React.createElement(_responsiveRangeControl2.default, {
+                        label: __('Max Height', 'premium-blocks-for-gutenberg'),
+                        value: modalStyles[0].modalHeight,
+                        onChange: function onChange(value) {
+                            return saveModalStyles({ modalHeight: value !== "" ? value : 200 });
+                        },
+                        tabletValue: modalStyles[0].modalHeightTablet,
+                        onChangeTablet: function onChangeTablet(value) {
+                            return saveModalStyles({ modalHeightTablet: value !== "" ? value : 200 });
+                        },
+                        mobileValue: modalStyles[0].modalHeightMobile,
+                        onChangeMobile: function onChangeMobile(value) {
+                            return saveModalStyles({ modalHeightMobile: value !== "" ? value : 200 });
+                        },
+                        min: 0,
+                        max: 1500,
+                        step: 1,
+                        onChangeUnit: function onChangeUnit(newValue) {
+                            return saveModalStyles({ modalHeightUnit: newValue });
+                        },
+                        unit: modalStyles[0].modalHeightUnit,
+                        showUnit: true,
+                        units: ['px', '%', 'em'],
+                        defaultValue: 0
+                    })
                 )
             ),
-            (triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === 'text') && React.createElement(
-                Fragment,
-                null,
-                React.createElement(_premiumResponsiveSpacing2.default, { value: triggerPadding, responsive: true, showUnits: true, label: __("Padding"), onChange: function onChange(value) {
-                        return setAttributes({ triggerPadding: value });
-                    } })
+            React.createElement(
+                _inspectorTab2.default,
+                { key: 'style' },
+                triggerSettings[0].triggerType !== "load" && React.createElement(
+                    PanelBody,
+                    {
+                        title: __("Triger", 'premium-blocks-for-gutenberg'),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    (triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === 'text') && React.createElement(
+                        Fragment,
+                        null,
+                        React.createElement(_ColorComponent2.default, {
+                            label: __("Color", 'premium-blocks-for-gutenberg'),
+                            colorValue: triggerStyles[0].color,
+                            colorDefault: '',
+                            onColorChange: function onColorChange(newValue) {
+                                return saveTriggerStyles({ color: newValue });
+                            }
+                        }),
+                        React.createElement(_ColorComponent2.default, {
+                            label: __("Hover Color", 'premium-blocks-for-gutenberg'),
+                            colorValue: triggerStyles[0].hoverColor,
+                            colorDefault: '',
+                            onColorChange: function onColorChange(newValue) {
+                                return saveTriggerStyles({ hoverColor: newValue });
+                            }
+                        })
+                    ),
+                    triggerSettings[0].triggerType === "button" && React.createElement(
+                        Fragment,
+                        null,
+                        React.createElement(_ColorComponent2.default, {
+                            label: __("Icon Color", 'premium-blocks-for-gutenberg'),
+                            colorValue: triggerStyles[0].iconColor,
+                            colorDefault: '',
+                            onColorChange: function onColorChange(newValue) {
+                                return saveTriggerStyles({ iconColor: newValue });
+                            }
+                        }),
+                        React.createElement(_ColorComponent2.default, {
+                            label: __("Icon Hover Color", 'premium-blocks-for-gutenberg'),
+                            colorValue: triggerStyles[0].iconHoverColor,
+                            colorDefault: '',
+                            onColorChange: function onColorChange(newValue) {
+                                return saveTriggerStyles({ iconHoverColor: newValue });
+                            }
+                        })
+                    ),
+                    (triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === 'text') && React.createElement(
+                        Fragment,
+                        null,
+                        React.createElement(_premiumTypo2.default, {
+                            components: ["responsiveSize", "weight", "spacing", "style", "upper", "family"],
+                            setAttributes: saveTriggerStyles,
+                            fontSizeType: {
+                                value: triggerStyles[0].triggerSizeUnit,
+                                label: __("triggerSizeUnit", 'premium-blocks-for-gutenberg')
+                            },
+                            fontSize: triggerStyles[0].triggerSize,
+                            fontSizeMobile: triggerStyles[0].triggerSizeMobile,
+                            fontSizeTablet: triggerStyles[0].triggerSizeTablet,
+                            onChangeSize: function onChangeSize(newSize) {
+                                return saveTriggerStyles({ triggerSize: newSize });
+                            },
+                            onChangeTabletSize: function onChangeTabletSize(newSize) {
+                                return saveTriggerStyles({ triggerSizeTablet: newSize });
+                            },
+                            onChangeMobileSize: function onChangeMobileSize(newSize) {
+                                return saveTriggerStyles({ triggerSizeMobile: newSize });
+                            },
+                            fontFamily: triggerStyles[0].triggerFamily,
+                            weight: triggerStyles[0].triggerWeight,
+                            style: triggerStyles[0].triggerStyle,
+                            spacing: triggerStyles[0].triggerSpacing,
+                            upper: triggerStyles[0].triggerUpper,
+                            onChangeWeight: function onChangeWeight(newWeight) {
+                                return saveTriggerStyles({ triggerWeight: newWeight });
+                            },
+                            onChangeStyle: function onChangeStyle(newStyle) {
+                                return saveTriggerStyles({ triggerStyle: newStyle });
+                            },
+                            onChangeSpacing: function onChangeSpacing(newValue) {
+                                return saveTriggerStyles({ triggerSpacing: newValue });
+                            },
+                            onChangeFamily: function onChangeFamily(fontFamily) {
+                                return saveTriggerStyles({ triggerFamily: fontFamily });
+                            },
+                            onChangeUpper: function onChangeUpper(check) {
+                                return saveTriggerStyles({ triggerUpper: check });
+                            }
+                        })
+                    ),
+                    (triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === 'text' || triggerSettings[0].triggerType === 'image') && React.createElement(
+                        Fragment,
+                        null,
+                        React.createElement(
+                            TabPanel,
+                            {
+                                className: "premium-color-tabpanel",
+                                activeClass: "active-tab",
+                                tabs: [{
+                                    name: "normal",
+                                    title: "Normal",
+                                    className: "premium-tab"
+                                }, {
+                                    name: "hover",
+                                    title: "Hover",
+                                    className: "premium-tab"
+                                }]
+                            },
+                            function (tab) {
+                                var tabout = void 0;
+                                if ("normal" === tab.name) {
+                                    tabout = React.createElement(
+                                        Fragment,
+                                        null,
+                                        triggerSettings[0].triggerType === 'button' && React.createElement(_ColorComponent2.default, {
+                                            label: __("Background Color", 'premium-blocks-for-gutenberg'),
+                                            colorValue: triggerStyles[0].triggerBack,
+                                            colorDefault: '',
+                                            onColorChange: function onColorChange(newValue) {
+                                                return saveTriggerStyles({ triggerBack: newValue || "transparent" });
+                                            }
+                                        }),
+                                        React.createElement(_premiumBorder2.default, {
+                                            label: __("Border"),
+                                            value: triggerBorder,
+                                            borderType: triggerBorder.borderType,
+                                            borderColor: triggerBorder.borderColor,
+                                            borderWidth: triggerBorder.borderWidth,
+                                            borderRadius: triggerBorder.borderRadius,
+                                            onChange: function onChange(value) {
+                                                return setAttributes({ triggerBorder: value });
+                                            }
+                                        })
+                                    );
+                                }
+                                if ("hover" === tab.name) {
+                                    tabout = React.createElement(
+                                        Fragment,
+                                        null,
+                                        triggerSettings[0].triggerType === 'button' && React.createElement(_ColorComponent2.default, {
+                                            label: __("Background Hover Color", 'premium-blocks-for-gutenberg'),
+                                            colorValue: triggerStyles[0].triggerHoverBack,
+                                            colorDefault: '',
+                                            onColorChange: function onColorChange(newValue) {
+                                                return saveTriggerStyles({ triggerHoverBack: newValue || "transparent" });
+                                            }
+                                        }),
+                                        React.createElement(_premiumBorder2.default, {
+                                            label: __("Border"),
+                                            value: triggerBorderH,
+                                            borderType: triggerBorderH.borderType,
+                                            borderColor: triggerBorderH.borderColor,
+                                            borderWidth: triggerBorderH.borderWidth,
+                                            borderRadius: triggerBorderH.borderRadius,
+                                            onChange: function onChange(value) {
+                                                return setAttributes({ triggerBorderH: value });
+                                            }
+                                        })
+                                    );
+                                }
+                                return React.createElement(
+                                    "div",
+                                    null,
+                                    tabout,
+                                    React.createElement("hr", null)
+                                );
+                            }
+                        )
+                    ),
+                    (triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === 'text') && React.createElement(
+                        Fragment,
+                        null,
+                        React.createElement(_premiumResponsiveSpacing2.default, { value: triggerPadding, responsive: true, showUnits: true, label: __("Padding"), onChange: function onChange(value) {
+                                return setAttributes({ triggerPadding: value });
+                            } })
+                    ),
+                    (triggerSettings[0].triggerType === "image" || triggerSettings[0].triggerType === "button") && React.createElement(_PremiumShadow2.default, {
+                        boxShadow: true,
+                        color: triggerStyles[0].triggerShadowColor,
+                        blur: triggerStyles[0].triggerShadowBlur,
+                        horizontal: triggerStyles[0].triggerShadowHorizontal,
+                        vertical: triggerStyles[0].triggerShadowVertical,
+                        position: triggerStyles[0].triggerShadowPosition,
+                        onChangeColor: function onChangeColor(newColor) {
+                            return saveTriggerStyles({ triggerShadowColor: newColor });
+                        },
+                        onChangeBlur: function onChangeBlur(newBlur) {
+                            return saveTriggerStyles({ triggerShadowBlur: newBlur });
+                        },
+                        onChangehHorizontal: function onChangehHorizontal(newValue) {
+                            return saveTriggerStyles({ triggerShadowHorizontal: newValue });
+                        },
+                        onChangeVertical: function onChangeVertical(newValue) {
+                            return saveTriggerStyles({ triggerShadowVertical: newValue });
+                        },
+                        onChangePosition: function onChangePosition(newValue) {
+                            return saveTriggerStyles({ triggerShadowPosition: newValue });
+                        }
+                    }),
+                    triggerSettings[0].triggerType === "text" && React.createElement(_PremiumShadow2.default, {
+                        label: __("Text Shadow", 'premium-blocks-for-gutenberg'),
+                        color: triggerStyles[0].textShadowColor,
+                        blur: triggerStyles[0].textShadowBlur,
+                        horizontal: triggerStyles[0].textShadowHorizontal,
+                        vertical: triggerStyles[0].textShadowVertical,
+                        onChangeColor: function onChangeColor(newColor) {
+                            return saveTriggerStyles({ textShadowColor: newColor || "transparent" });
+                        },
+                        onChangeBlur: function onChangeBlur(newBlur) {
+                            return saveTriggerStyles({ textShadowBlur: newBlur || "0" });
+                        },
+                        onChangehHorizontal: function onChangehHorizontal(newValue) {
+                            return saveTriggerStyles({ textShadowHorizontal: newValue || "0" });
+                        },
+                        onChangeVertical: function onChangeVertical(newValue) {
+                            return saveTriggerStyles({ textShadowVertical: newValue || "0" });
+                        }
+                    }),
+                    triggerSettings[0].triggerType === "lottie" && React.createElement(
+                        Fragment,
+                        null,
+                        React.createElement(_premiumFilters2.default, {
+                            blur: triggerStyles[0].blur,
+                            bright: triggerStyles[0].bright,
+                            contrast: triggerStyles[0].contrast,
+                            saturation: triggerStyles[0].saturation,
+                            hue: triggerStyles[0].hue,
+                            onChangeBlur: function onChangeBlur(value) {
+                                return saveTriggerStyles({ blur: value });
+                            },
+                            onChangeBright: function onChangeBright(value) {
+                                return saveTriggerStyles({ bright: value });
+                            },
+                            onChangeContrast: function onChangeContrast(value) {
+                                return saveTriggerStyles({ contrast: value });
+                            },
+                            onChangeSat: function onChangeSat(value) {
+                                return saveTriggerStyles({ saturation: value });
+                            },
+                            onChangeHue: function onChangeHue(value) {
+                                return saveTriggerStyles({ hue: value });
+                            }
+                        }),
+                        React.createElement(_premiumFilters2.default, {
+                            blur: triggerStyles[0].blurH,
+                            bright: triggerStyles[0].brightH,
+                            contrast: triggerStyles[0].contrastH,
+                            saturation: triggerStyles[0].saturationH,
+                            hue: triggerStyles[0].hueH,
+                            onChangeBlur: function onChangeBlur(value) {
+                                return saveTriggerStyles({ blurH: value });
+                            },
+                            onChangeBright: function onChangeBright(value) {
+                                return saveTriggerStyles({ brightH: value });
+                            },
+                            onChangeContrast: function onChangeContrast(value) {
+                                return saveTriggerStyles({ contrastH: value });
+                            },
+                            onChangeSat: function onChangeSat(value) {
+                                return saveTriggerStyles({ saturationH: value });
+                            },
+                            onChangeHue: function onChangeHue(value) {
+                                return saveTriggerStyles({ hueH: value });
+                            }
+                        })
+                    )
+                ),
+                contentStyles[0].showHeader && React.createElement(
+                    PanelBody,
+                    {
+                        title: __("Header", 'premium-blocks-for-gutenberg'),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Color", 'premium-blocks-for-gutenberg'),
+                        colorValue: headerStyles[0].color,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
+                            return saveHeaderStyles({ color: newValue });
+                        }
+                    }),
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Background Color", 'premium-blocks-for-gutenberg'),
+                        colorValue: headerStyles[0].backColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
+                            return saveHeaderStyles({ backColor: newValue });
+                        }
+                    }),
+                    React.createElement(_premiumTypo2.default, {
+                        components: ["responsiveSize", "weight", "spacing", "style", "upper", "family"],
+                        setAttributes: saveHeaderStyles,
+                        fontSizeType: {
+                            value: headerStyles[0].headerSizeUnit,
+                            label: __("headerSizeUnit", 'premium-blocks-for-gutenberg')
+                        },
+                        fontSize: headerStyles[0].headerSize,
+                        fontSizeMobile: headerStyles[0].headerSizeMobile,
+                        fontSizeTablet: headerStyles[0].headerSizeTablet,
+                        onChangeSize: function onChangeSize(newSize) {
+                            return saveHeaderStyles({ headerSize: newSize });
+                        },
+                        onChangeTabletSize: function onChangeTabletSize(newSize) {
+                            return saveHeaderStyles({ headerSizeTablet: newSize });
+                        },
+                        onChangeMobileSize: function onChangeMobileSize(newSize) {
+                            return saveHeaderStyles({ headerSizeMobile: newSize });
+                        },
+                        fontFamily: headerStyles[0].headerFamily,
+                        weight: headerStyles[0].headerWeight,
+                        style: headerStyles[0].headerStyle,
+                        spacing: headerStyles[0].headerSpacing,
+                        upper: headerStyles[0].headerUpper,
+                        onChangeWeight: function onChangeWeight(newWeight) {
+                            return saveHeaderStyles({ headerWeight: newWeight });
+                        },
+                        onChangeStyle: function onChangeStyle(newStyle) {
+                            return saveHeaderStyles({ headerStyle: newStyle });
+                        },
+                        onChangeSpacing: function onChangeSpacing(newValue) {
+                            return saveHeaderStyles({ headerSpacing: newValue });
+                        },
+                        onChangeFamily: function onChangeFamily(fontFamily) {
+                            return saveHeaderStyles({ headerFamily: fontFamily });
+                        },
+                        onChangeUpper: function onChangeUpper(check) {
+                            return saveHeaderStyles({ headerUpper: check });
+                        }
+                    }),
+                    React.createElement(_premiumBorder2.default, {
+                        label: __("Border"),
+                        value: headerBorder,
+                        borderType: headerBorder.borderType,
+                        borderColor: headerBorder.borderColor,
+                        borderWidth: headerBorder.borderWidth,
+                        borderRadius: headerBorder.borderRadius,
+                        onChange: function onChange(value) {
+                            return setAttributes({ headerBorder: value });
+                        }
+                    })
+                ),
+                contentStyles[0].showUpperClose && contentStyles[0].showHeader && React.createElement(
+                    PanelBody,
+                    {
+                        title: __("Upper Close Button", 'premium-blocks-for-gutenberg'),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Color", 'premium-blocks-for-gutenberg'),
+                        colorValue: upperStyles[0].color,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
+                            return saveUpperStyles({ color: newValue || "transparent" });
+                        }
+                    }),
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Background Color"),
+                        colorValue: upperStyles[0].backColor,
+                        onColorChange: function onColorChange(newvalue) {
+                            return saveUpperStyles({ backColor: newvalue });
+                        },
+                        colorDefault: ""
+                    }),
+                    React.createElement(_premiumBorder2.default, {
+                        label: __("Border"),
+                        value: upperBorder,
+                        borderType: upperBorder.borderType,
+                        borderColor: upperBorder.borderColor,
+                        borderWidth: upperBorder.borderWidth,
+                        borderRadius: upperBorder.borderRadius,
+                        onChange: function onChange(value) {
+                            return setAttributes({ upperBorder: value });
+                        }
+                    }),
+                    React.createElement(_premiumResponsiveSpacing2.default, { value: upperPadding, responsive: true, showUnits: true, label: __("Padding"), onChange: function onChange(value) {
+                            return setAttributes({ upperPadding: value });
+                        } })
+                ),
+                contentStyles[0].showLowerClose && React.createElement(
+                    PanelBody,
+                    {
+                        title: __("Lower Close Button", 'premium-blocks-for-gutenberg'),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    React.createElement(_premiumTypo2.default, {
+                        components: ["responsiveSize", "weight", "spacing", "style"],
+                        setAttributes: saveLowerStyles,
+                        fontSizeType: {
+                            value: lowerStyles[0].lowerSizeUnit,
+                            label: __("lowerSizeUnit", 'premium-blocks-for-gutenberg')
+                        },
+                        fontSize: lowerStyles[0].lowerSize,
+                        fontSizeMobile: lowerStyles[0].lowerSizeMobile,
+                        fontSizeTablet: lowerStyles[0].lowerSizeTablet,
+                        onChangeSize: function onChangeSize(newSize) {
+                            return saveLowerStyles({ lowerSize: newSize });
+                        },
+                        onChangeTabletSize: function onChangeTabletSize(newSize) {
+                            return saveLowerStyles({ lowerSizeTablet: newSize });
+                        },
+                        onChangeMobileSize: function onChangeMobileSize(newSize) {
+                            return saveLowerStyles({ lowerSizeMobile: newSize });
+                        },
+                        weight: lowerStyles[0].lowerWeight,
+                        style: lowerStyles[0].lowerStyle,
+                        spacing: lowerStyles[0].lowerSpacing,
+                        onChangeWeight: function onChangeWeight(newWeight) {
+                            return saveLowerStyles({ lowerWeight: newWeight });
+                        },
+                        onChangeStyle: function onChangeStyle(newStyle) {
+                            return saveLowerStyles({ lowerStyle: newStyle });
+                        },
+                        onChangeSpacing: function onChangeSpacing(newValue) {
+                            return saveLowerStyles({ lowerSpacing: newValue });
+                        }
+                    }),
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Color", 'premium-blocks-for-gutenberg'),
+                        colorValue: lowerStyles[0].color,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
+                            return saveLowerStyles({ color: newValue || "transparent" });
+                        }
+                    }),
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Background Color", 'premium-blocks-for-gutenberg'),
+                        colorValue: lowerStyles[0].backColor,
+                        onColorChange: function onColorChange(newvalue) {
+                            return saveLowerStyles({ backColor: newvalue });
+                        },
+                        colorDefault: ""
+                    }),
+                    React.createElement(_premiumBorder2.default, {
+                        label: __("Border"),
+                        value: lowerBorder,
+                        borderType: lowerBorder.borderType,
+                        borderColor: lowerBorder.borderColor,
+                        borderWidth: lowerBorder.borderWidth,
+                        borderRadius: lowerBorder.borderRadius,
+                        onChange: function onChange(value) {
+                            return setAttributes({ lowerBorder: value });
+                        }
+                    }),
+                    React.createElement(_premiumResponsiveSpacing2.default, { value: lowerPadding, responsive: true, showUnits: true, label: __("Padding"), onChange: function onChange(value) {
+                            return setAttributes({ lowerPadding: value });
+                        } })
+                ),
+                React.createElement(
+                    PanelBody,
+                    {
+                        title: __("Modal Body", 'premium-blocks-for-gutenberg'),
+                        className: "premium-panel-body",
+                        initialOpen: false
+                    },
+                    "text" == modalStyles[0].contentType && React.createElement(
+                        Fragment,
+                        null,
+                        React.createElement(_ColorComponent2.default, {
+                            label: __("Text Color", 'premium-blocks-for-gutenberg'),
+                            colorValue: modalStyles[0].textColor,
+                            colorDefault: '',
+                            onColorChange: function onColorChange(newValue) {
+                                return saveModalStyles({ textColor: newValue });
+                            }
+                        }),
+                        React.createElement(_ColorComponent2.default, {
+                            label: __("Content Background Color", 'premium-blocks-for-gutenberg'),
+                            colorValue: modalStyles[0].textBackColor,
+                            colorDefault: '',
+                            onColorChange: function onColorChange(newValue) {
+                                return saveModalStyles({ textBackColor: newValue });
+                            }
+                        }),
+                        React.createElement(_premiumTypo2.default, {
+                            components: ["responsiveSize", "weight", "spacing", "style", "upper", "family"],
+                            setAttributes: saveModalStyles,
+                            fontSizeType: {
+                                value: modalStyles[0].modalSizeUnit,
+                                label: __("modalSizeUnit", 'premium-blocks-for-gutenberg')
+                            },
+                            fontSize: modalStyles[0].modalSize,
+                            fontSizeMobile: modalStyles[0].modalSizeMobile,
+                            fontSizeTablet: modalStyles[0].modalSizeTablet,
+                            onChangeSize: function onChangeSize(newSize) {
+                                return saveModalStyles({ modalSize: newSize });
+                            },
+                            onChangeTabletSize: function onChangeTabletSize(newSize) {
+                                return saveModalStyles({ modalSizeTablet: newSize });
+                            },
+                            onChangeMobileSize: function onChangeMobileSize(newSize) {
+                                return saveModalStyles({ modalSizeMobile: newSize });
+                            },
+                            fontFamily: modalStyles[0].modalFamily,
+                            weight: modalStyles[0].modalWeight,
+                            style: modalStyles[0].modalStyle,
+                            spacing: modalStyles[0].modalSpacing,
+                            upper: modalStyles[0].modalUpper,
+                            onChangeWeight: function onChangeWeight(newWeight) {
+                                return saveModalStyles({ modalWeight: newWeight });
+                            },
+                            onChangeStyle: function onChangeStyle(newStyle) {
+                                return saveModalStyles({ modalStyle: newStyle });
+                            },
+                            onChangeSpacing: function onChangeSpacing(newValue) {
+                                return saveModalStyles({ modalSpacing: newValue });
+                            },
+                            onChangeFamily: function onChangeFamily(fontFamily) {
+                                return saveModalStyles({ modalFamily: fontFamily });
+                            },
+                            onChangeUpper: function onChangeUpper(check) {
+                                return saveModalStyles({ modalUpper: check });
+                            }
+                        }),
+                        React.createElement("hr", null)
+                    ),
+                    React.createElement(_PremiumBackgroundControl2.default, {
+                        setAttributes: setAttributes,
+                        saveContainerStyle: saveModalStyles,
+                        backgroundType: backgroundType,
+                        backgroundColor: modalStyles[0].containerBack,
+                        backgroundImageID: modalStyles[0].backgroundImageID,
+                        backgroundImageURL: modalStyles[0].backgroundImageURL,
+                        backgroundPosition: modalStyles[0].backgroundPosition,
+                        backgroundRepeat: modalStyles[0].backgroundRepeat,
+                        backgroundSize: modalStyles[0].backgroundSize,
+                        fixed: modalStyles[0].fixed,
+                        gradientLocationOne: modalStyles[0].gradientLocationOne,
+                        gradientColorTwo: modalStyles[0].gradientColorTwo,
+                        gradientLocationTwo: modalStyles[0].gradientLocationTwo,
+                        gradientAngle: modalStyles[0].gradientAngle,
+                        gradientPosition: modalStyles[0].gradientPosition,
+                        gradientType: modalStyles[0].gradientType
+                    }),
+                    React.createElement(_ColorComponent2.default, {
+                        label: __("Footer Background Color", 'premium-blocks-for-gutenberg'),
+                        colorValue: modalStyles[0].footerBackColor,
+                        colorDefault: '',
+                        onColorChange: function onColorChange(newValue) {
+                            return saveModalStyles({ footerBackColor: newValue });
+                        }
+                    }),
+                    React.createElement(_premiumBorder2.default, {
+                        label: __("Border"),
+                        value: modalBorder,
+                        borderType: modalBorder.borderType,
+                        borderColor: modalBorder.borderColor,
+                        borderWidth: modalBorder.borderWidth,
+                        borderRadius: modalBorder.borderRadius,
+                        onChange: function onChange(value) {
+                            return setAttributes({ modalBorder: value });
+                        }
+                    }),
+                    React.createElement(_PremiumShadow2.default, {
+                        boxShadow: true,
+                        color: modalStyles[0].modalShadowColor,
+                        blur: modalStyles[0].modalShadowBlur,
+                        horizontal: modalStyles[0].modalShadowHorizontal,
+                        vertical: modalStyles[0].modalShadowVertical,
+                        position: modalStyles[0].modalShadowPosition,
+                        onChangeColor: function onChangeColor(newColor) {
+                            return saveModalStyles({ modalShadowColor: newColor });
+                        },
+                        onChangeBlur: function onChangeBlur(newBlur) {
+                            return saveModalStyles({ modalShadowBlur: newBlur });
+                        },
+                        onChangehHorizontal: function onChangehHorizontal(newValue) {
+                            return saveModalStyles({ modalShadowHorizontal: newValue });
+                        },
+                        onChangeVertical: function onChangeVertical(newValue) {
+                            return saveModalStyles({ modalShadowVertical: newValue });
+                        },
+                        onChangePosition: function onChangePosition(newValue) {
+                            return saveModalStyles({ modalShadowPosition: newValue });
+                        }
+                    }),
+                    React.createElement(_premiumResponsiveSpacing2.default, { value: modalMargin, responsive: true, showUnits: true, label: __("Margin"), onChange: function onChange(value) {
+                            return setAttributes({ modalMargin: value });
+                        } }),
+                    React.createElement(_premiumResponsiveSpacing2.default, { value: modalPadding, responsive: true, showUnits: true, label: __("Padding"), onChange: function onChange(value) {
+                            return setAttributes({ modalPadding: value });
+                        } })
+                )
             ),
-            (triggerSettings[0].triggerType === "image" || triggerSettings[0].triggerType === "button") && React.createElement(_PremiumShadow2.default, {
-                boxShadow: true,
-                color: triggerStyles[0].triggerShadowColor,
-                blur: triggerStyles[0].triggerShadowBlur,
-                horizontal: triggerStyles[0].triggerShadowHorizontal,
-                vertical: triggerStyles[0].triggerShadowVertical,
-                position: triggerStyles[0].triggerShadowPosition,
-                onChangeColor: function onChangeColor(newColor) {
-                    return saveTriggerStyles({ triggerShadowColor: newColor });
-                },
-                onChangeBlur: function onChangeBlur(newBlur) {
-                    return saveTriggerStyles({ triggerShadowBlur: newBlur });
-                },
-                onChangehHorizontal: function onChangehHorizontal(newValue) {
-                    return saveTriggerStyles({ triggerShadowHorizontal: newValue });
-                },
-                onChangeVertical: function onChangeVertical(newValue) {
-                    return saveTriggerStyles({ triggerShadowVertical: newValue });
-                },
-                onChangePosition: function onChangePosition(newValue) {
-                    return saveTriggerStyles({ triggerShadowPosition: newValue });
-                }
-            }),
-            triggerSettings[0].triggerType === "text" && React.createElement(_PremiumShadow2.default, {
-                label: __("Text Shadow", 'premium-blocks-for-gutenberg'),
-                color: triggerStyles[0].textShadowColor,
-                blur: triggerStyles[0].textShadowBlur,
-                horizontal: triggerStyles[0].textShadowHorizontal,
-                vertical: triggerStyles[0].textShadowVertical,
-                onChangeColor: function onChangeColor(newColor) {
-                    return saveTriggerStyles({ textShadowColor: newColor || "transparent" });
-                },
-                onChangeBlur: function onChangeBlur(newBlur) {
-                    return saveTriggerStyles({ textShadowBlur: newBlur || "0" });
-                },
-                onChangehHorizontal: function onChangehHorizontal(newValue) {
-                    return saveTriggerStyles({ textShadowHorizontal: newValue || "0" });
-                },
-                onChangeVertical: function onChangeVertical(newValue) {
-                    return saveTriggerStyles({ textShadowVertical: newValue || "0" });
-                }
-            }),
-            triggerSettings[0].triggerType === "lottie" && React.createElement(
-                Fragment,
-                null,
-                React.createElement(_premiumFilters2.default, {
-                    blur: triggerStyles[0].blur,
-                    bright: triggerStyles[0].bright,
-                    contrast: triggerStyles[0].contrast,
-                    saturation: triggerStyles[0].saturation,
-                    hue: triggerStyles[0].hue,
-                    onChangeBlur: function onChangeBlur(value) {
-                        return saveTriggerStyles({ blur: value });
-                    },
-                    onChangeBright: function onChangeBright(value) {
-                        return saveTriggerStyles({ bright: value });
-                    },
-                    onChangeContrast: function onChangeContrast(value) {
-                        return saveTriggerStyles({ contrast: value });
-                    },
-                    onChangeSat: function onChangeSat(value) {
-                        return saveTriggerStyles({ saturation: value });
-                    },
-                    onChangeHue: function onChangeHue(value) {
-                        return saveTriggerStyles({ hue: value });
-                    }
-                }),
-                React.createElement(_premiumFilters2.default, {
-                    blur: triggerStyles[0].blurH,
-                    bright: triggerStyles[0].brightH,
-                    contrast: triggerStyles[0].contrastH,
-                    saturation: triggerStyles[0].saturationH,
-                    hue: triggerStyles[0].hueH,
-                    onChangeBlur: function onChangeBlur(value) {
-                        return saveTriggerStyles({ blurH: value });
-                    },
-                    onChangeBright: function onChangeBright(value) {
-                        return saveTriggerStyles({ brightH: value });
-                    },
-                    onChangeContrast: function onChangeContrast(value) {
-                        return saveTriggerStyles({ contrastH: value });
-                    },
-                    onChangeSat: function onChangeSat(value) {
-                        return saveTriggerStyles({ saturationH: value });
-                    },
-                    onChangeHue: function onChangeHue(value) {
-                        return saveTriggerStyles({ hueH: value });
-                    }
-                })
-            )
-        ),
-        contentStyles[0].showHeader && React.createElement(
-            PanelBody,
-            {
-                title: __("Header", 'premium-blocks-for-gutenberg'),
-                className: "premium-panel-body",
-                initialOpen: false
-            },
-            React.createElement(_ColorComponent2.default, {
-                label: __("Color", 'premium-blocks-for-gutenberg'),
-                colorValue: headerStyles[0].color,
-                colorDefault: '',
-                onColorChange: function onColorChange(newValue) {
-                    return saveHeaderStyles({ color: newValue });
-                }
-            }),
-            React.createElement(_ColorComponent2.default, {
-                label: __("Background Color", 'premium-blocks-for-gutenberg'),
-                colorValue: headerStyles[0].backColor,
-                colorDefault: '',
-                onColorChange: function onColorChange(newValue) {
-                    return saveHeaderStyles({ backColor: newValue });
-                }
-            }),
-            React.createElement(_premiumTypo2.default, {
-                components: ["responsiveSize", "weight", "spacing", "style", "upper", "family"],
-                setAttributes: saveHeaderStyles,
-                fontSizeType: {
-                    value: headerStyles[0].headerSizeUnit,
-                    label: __("headerSizeUnit", 'premium-blocks-for-gutenberg')
-                },
-                fontSize: headerStyles[0].headerSize,
-                fontSizeMobile: headerStyles[0].headerSizeMobile,
-                fontSizeTablet: headerStyles[0].headerSizeTablet,
-                onChangeSize: function onChangeSize(newSize) {
-                    return saveHeaderStyles({ headerSize: newSize });
-                },
-                onChangeTabletSize: function onChangeTabletSize(newSize) {
-                    return saveHeaderStyles({ headerSizeTablet: newSize });
-                },
-                onChangeMobileSize: function onChangeMobileSize(newSize) {
-                    return saveHeaderStyles({ headerSizeMobile: newSize });
-                },
-                fontFamily: headerStyles[0].headerFamily,
-                weight: headerStyles[0].headerWeight,
-                style: headerStyles[0].headerStyle,
-                spacing: headerStyles[0].headerSpacing,
-                upper: headerStyles[0].headerUpper,
-                onChangeWeight: function onChangeWeight(newWeight) {
-                    return saveHeaderStyles({ headerWeight: newWeight });
-                },
-                onChangeStyle: function onChangeStyle(newStyle) {
-                    return saveHeaderStyles({ headerStyle: newStyle });
-                },
-                onChangeSpacing: function onChangeSpacing(newValue) {
-                    return saveHeaderStyles({ headerSpacing: newValue });
-                },
-                onChangeFamily: function onChangeFamily(fontFamily) {
-                    return saveHeaderStyles({ headerFamily: fontFamily });
-                },
-                onChangeUpper: function onChangeUpper(check) {
-                    return saveHeaderStyles({ headerUpper: check });
-                }
-            }),
-            React.createElement(_premiumBorder2.default, {
-                label: __("Border"),
-                value: headerBorder,
-                borderType: headerBorder.borderType,
-                borderColor: headerBorder.borderColor,
-                borderWidth: headerBorder.borderWidth,
-                borderRadius: headerBorder.borderRadius,
-                onChange: function onChange(value) {
-                    return setAttributes({ headerBorder: value });
-                }
-            })
-        ),
-        contentStyles[0].showUpperClose && contentStyles[0].showHeader && React.createElement(
-            PanelBody,
-            {
-                title: __("Upper Close Button", 'premium-blocks-for-gutenberg'),
-                className: "premium-panel-body",
-                initialOpen: false
-            },
-            React.createElement(_singleRangeControl2.default, {
-                label: __("Width", 'premium-blocks-for-gutenberg'),
-                value: upperStyles[0].iconWidth,
-                onChange: function onChange(newValue) {
-                    return saveUpperStyles({ iconWidth: newValue });
-                },
-                units: ['px', '%', 'em'],
-                defaultValue: 0,
-                onChangeUnit: function onChangeUnit(newValue) {
-                    return saveUpperStyles({ iconWidthUnit: newValue });
-                },
-                showUnit: true,
-                unit: upperStyles[0].iconWidthUnit
-            }),
-            React.createElement(_ColorComponent2.default, {
-                label: __("Color", 'premium-blocks-for-gutenberg'),
-                colorValue: upperStyles[0].color,
-                colorDefault: '',
-                onColorChange: function onColorChange(newValue) {
-                    return saveUpperStyles({ color: newValue || "transparent" });
-                }
-            }),
-            React.createElement(_ColorComponent2.default, {
-                label: __("Background Color"),
-                colorValue: upperStyles[0].backColor,
-                onColorChange: function onColorChange(newvalue) {
-                    return saveUpperStyles({ backColor: newvalue });
-                },
-                colorDefault: ""
-            }),
-            React.createElement(_premiumBorder2.default, {
-                label: __("Border"),
-                value: upperBorder,
-                borderType: upperBorder.borderType,
-                borderColor: upperBorder.borderColor,
-                borderWidth: upperBorder.borderWidth,
-                borderRadius: upperBorder.borderRadius,
-                onChange: function onChange(value) {
-                    return setAttributes({ upperBorder: value });
-                }
-            }),
-            React.createElement(_premiumResponsiveSpacing2.default, { value: upperPadding, responsive: true, showUnits: true, label: __("Padding"), onChange: function onChange(value) {
-                    return setAttributes({ upperPadding: value });
-                } })
-        ),
-        contentStyles[0].showLowerClose && React.createElement(
-            PanelBody,
-            {
-                title: __("Lower Close Button", 'premium-blocks-for-gutenberg'),
-                className: "premium-panel-body",
-                initialOpen: false
-            },
-            React.createElement(_premiumTypo2.default, {
-                components: ["responsiveSize", "weight", "spacing", "style"],
-                setAttributes: saveLowerStyles,
-                fontSizeType: {
-                    value: lowerStyles[0].lowerSizeUnit,
-                    label: __("lowerSizeUnit", 'premium-blocks-for-gutenberg')
-                },
-                fontSize: lowerStyles[0].lowerSize,
-                fontSizeMobile: lowerStyles[0].lowerSizeMobile,
-                fontSizeTablet: lowerStyles[0].lowerSizeTablet,
-                onChangeSize: function onChangeSize(newSize) {
-                    return saveLowerStyles({ lowerSize: newSize });
-                },
-                onChangeTabletSize: function onChangeTabletSize(newSize) {
-                    return saveLowerStyles({ lowerSizeTablet: newSize });
-                },
-                onChangeMobileSize: function onChangeMobileSize(newSize) {
-                    return saveLowerStyles({ lowerSizeMobile: newSize });
-                },
-                weight: lowerStyles[0].lowerWeight,
-                style: lowerStyles[0].lowerStyle,
-                spacing: lowerStyles[0].lowerSpacing,
-                onChangeWeight: function onChangeWeight(newWeight) {
-                    return saveLowerStyles({ lowerWeight: newWeight });
-                },
-                onChangeStyle: function onChangeStyle(newStyle) {
-                    return saveLowerStyles({ lowerStyle: newStyle });
-                },
-                onChangeSpacing: function onChangeSpacing(newValue) {
-                    return saveLowerStyles({ lowerSpacing: newValue });
-                }
-            }),
-            React.createElement(_singleRangeControl2.default, {
-                label: __("Width", 'premium-blocks-for-gutenberg'),
-                value: lowerStyles[0].iconWidth,
-                onChange: function onChange(newValue) {
-                    return saveLowerStyles({ iconWidth: newValue });
-                },
-                units: ['px', '%', 'em'],
-                defaultValue: 0,
-                onChangeUnit: function onChangeUnit(newValue) {
-                    return saveLowerStyles({ iconWidthUnit: newValue });
-                },
-                min: 1,
-                max: 500,
-                showUnit: true,
-                unit: lowerStyles[0].iconWidthUnit
-            }),
-            React.createElement(_ColorComponent2.default, {
-                label: __("Color", 'premium-blocks-for-gutenberg'),
-                colorValue: lowerStyles[0].color,
-                colorDefault: '',
-                onColorChange: function onColorChange(newValue) {
-                    return saveLowerStyles({ color: newValue || "transparent" });
-                }
-            }),
-            React.createElement(_ColorComponent2.default, {
-                label: __("Background Color", 'premium-blocks-for-gutenberg'),
-                colorValue: lowerStyles[0].backColor,
-                onColorChange: function onColorChange(newvalue) {
-                    return saveLowerStyles({ backColor: newvalue });
-                },
-                colorDefault: ""
-            }),
-            React.createElement(_premiumBorder2.default, {
-                label: __("Border"),
-                value: lowerBorder,
-                borderType: lowerBorder.borderType,
-                borderColor: lowerBorder.borderColor,
-                borderWidth: lowerBorder.borderWidth,
-                borderRadius: lowerBorder.borderRadius,
-                onChange: function onChange(value) {
-                    return setAttributes({ lowerBorder: value });
-                }
-            }),
-            React.createElement(_premiumResponsiveSpacing2.default, { value: lowerPadding, responsive: true, showUnits: true, label: __("Padding"), onChange: function onChange(value) {
-                    return setAttributes({ lowerPadding: value });
-                } })
-        ),
-        React.createElement(
-            PanelBody,
-            {
-                title: __("Modal Body", 'premium-blocks-for-gutenberg'),
-                className: "premium-panel-body",
-                initialOpen: false
-            },
-            "text" == modalStyles[0].contentType && React.createElement(
-                Fragment,
-                null,
-                React.createElement(_ColorComponent2.default, {
-                    label: __("Text Color", 'premium-blocks-for-gutenberg'),
-                    colorValue: modalStyles[0].textColor,
-                    colorDefault: '',
-                    onColorChange: function onColorChange(newValue) {
-                        return saveModalStyles({ textColor: newValue });
-                    }
-                }),
-                React.createElement(_ColorComponent2.default, {
-                    label: __("Content Background Color", 'premium-blocks-for-gutenberg'),
-                    colorValue: modalStyles[0].textBackColor,
-                    colorDefault: '',
-                    onColorChange: function onColorChange(newValue) {
-                        return saveModalStyles({ textBackColor: newValue });
-                    }
-                }),
-                React.createElement(_premiumTypo2.default, {
-                    components: ["responsiveSize", "weight", "spacing", "style", "upper", "family"],
-                    setAttributes: saveModalStyles,
-                    fontSizeType: {
-                        value: modalStyles[0].modalSizeUnit,
-                        label: __("modalSizeUnit", 'premium-blocks-for-gutenberg')
-                    },
-                    fontSize: modalStyles[0].modalSize,
-                    fontSizeMobile: modalStyles[0].modalSizeMobile,
-                    fontSizeTablet: modalStyles[0].modalSizeTablet,
-                    onChangeSize: function onChangeSize(newSize) {
-                        return saveModalStyles({ modalSize: newSize });
-                    },
-                    onChangeTabletSize: function onChangeTabletSize(newSize) {
-                        return saveModalStyles({ modalSizeTablet: newSize });
-                    },
-                    onChangeMobileSize: function onChangeMobileSize(newSize) {
-                        return saveModalStyles({ modalSizeMobile: newSize });
-                    },
-                    fontFamily: modalStyles[0].modalFamily,
-                    weight: modalStyles[0].modalWeight,
-                    style: modalStyles[0].modalStyle,
-                    spacing: modalStyles[0].modalSpacing,
-                    upper: modalStyles[0].modalUpper,
-                    onChangeWeight: function onChangeWeight(newWeight) {
-                        return saveModalStyles({ modalWeight: newWeight });
-                    },
-                    onChangeStyle: function onChangeStyle(newStyle) {
-                        return saveModalStyles({ modalStyle: newStyle });
-                    },
-                    onChangeSpacing: function onChangeSpacing(newValue) {
-                        return saveModalStyles({ modalSpacing: newValue });
-                    },
-                    onChangeFamily: function onChangeFamily(fontFamily) {
-                        return saveModalStyles({ modalFamily: fontFamily });
-                    },
-                    onChangeUpper: function onChangeUpper(check) {
-                        return saveModalStyles({ modalUpper: check });
-                    }
-                }),
-                React.createElement("hr", null)
-            ),
-            React.createElement(_responsiveRangeControl2.default, {
-                label: __('Width', 'premium-blocks-for-gutenberg'),
-                value: modalStyles[0].modalWidth,
-                onChange: function onChange(value) {
-                    return saveModalStyles({ modalWidth: value !== "" ? value : 200 });
-                },
-                tabletValue: modalStyles[0].modalWidthTablet,
-                onChangeTablet: function onChangeTablet(value) {
-                    return saveModalStyles({ modalWidthTablet: value !== "" ? value : 200 });
-                },
-                mobileValue: modalStyles[0].modalWidthMobile,
-                onChangeMobile: function onChangeMobile(value) {
-                    return saveModalStyles({ modalWidthMobile: value !== "" ? value : 200 });
-                },
-                min: 0,
-                max: 1500,
-                step: 1,
-                onChangeUnit: function onChangeUnit(newValue) {
-                    return saveModalStyles({ modalWidthUnit: newValue });
-                },
-                unit: modalStyles[0].modalWidthUnit,
-                showUnit: true,
-                units: ['px', '%', 'em'],
-                defaultValue: 0
-            }),
-            React.createElement(_responsiveRangeControl2.default, {
-                label: __('Max Height', 'premium-blocks-for-gutenberg'),
-                value: modalStyles[0].modalHeight,
-                onChange: function onChange(value) {
-                    return saveModalStyles({ modalHeight: value !== "" ? value : 200 });
-                },
-                tabletValue: modalStyles[0].modalHeightTablet,
-                onChangeTablet: function onChangeTablet(value) {
-                    return saveModalStyles({ modalHeightTablet: value !== "" ? value : 200 });
-                },
-                mobileValue: modalStyles[0].modalHeightMobile,
-                onChangeMobile: function onChangeMobile(value) {
-                    return saveModalStyles({ modalHeightMobile: value !== "" ? value : 200 });
-                },
-                min: 0,
-                max: 1500,
-                step: 1,
-                onChangeUnit: function onChangeUnit(newValue) {
-                    return saveModalStyles({ modalHeightUnit: newValue });
-                },
-                unit: modalStyles[0].modalHeightUnit,
-                showUnit: true,
-                units: ['px', '%', 'em'],
-                defaultValue: 0
-            }),
-            React.createElement(_PremiumBackgroundControl2.default, {
-                setAttributes: setAttributes,
-                saveContainerStyle: saveModalStyles,
-                backgroundType: backgroundType,
-                backgroundColor: modalStyles[0].containerBack,
-                backgroundImageID: modalStyles[0].backgroundImageID,
-                backgroundImageURL: modalStyles[0].backgroundImageURL,
-                backgroundPosition: modalStyles[0].backgroundPosition,
-                backgroundRepeat: modalStyles[0].backgroundRepeat,
-                backgroundSize: modalStyles[0].backgroundSize,
-                fixed: modalStyles[0].fixed,
-                gradientLocationOne: modalStyles[0].gradientLocationOne,
-                gradientColorTwo: modalStyles[0].gradientColorTwo,
-                gradientLocationTwo: modalStyles[0].gradientLocationTwo,
-                gradientAngle: modalStyles[0].gradientAngle,
-                gradientPosition: modalStyles[0].gradientPosition,
-                gradientType: modalStyles[0].gradientType
-            }),
-            React.createElement(_ColorComponent2.default, {
-                label: __("Footer Background Color", 'premium-blocks-for-gutenberg'),
-                colorValue: modalStyles[0].footerBackColor,
-                colorDefault: '',
-                onColorChange: function onColorChange(newValue) {
-                    return saveModalStyles({ footerBackColor: newValue });
-                }
-            }),
-            React.createElement(_premiumBorder2.default, {
-                label: __("Border"),
-                value: modalBorder,
-                borderType: modalBorder.borderType,
-                borderColor: modalBorder.borderColor,
-                borderWidth: modalBorder.borderWidth,
-                borderRadius: modalBorder.borderRadius,
-                onChange: function onChange(value) {
-                    return setAttributes({ modalBorder: value });
-                }
-            }),
-            React.createElement(_PremiumShadow2.default, {
-                boxShadow: true,
-                color: modalStyles[0].modalShadowColor,
-                blur: modalStyles[0].modalShadowBlur,
-                horizontal: modalStyles[0].modalShadowHorizontal,
-                vertical: modalStyles[0].modalShadowVertical,
-                position: modalStyles[0].modalShadowPosition,
-                onChangeColor: function onChangeColor(newColor) {
-                    return saveModalStyles({ modalShadowColor: newColor });
-                },
-                onChangeBlur: function onChangeBlur(newBlur) {
-                    return saveModalStyles({ modalShadowBlur: newBlur });
-                },
-                onChangehHorizontal: function onChangehHorizontal(newValue) {
-                    return saveModalStyles({ modalShadowHorizontal: newValue });
-                },
-                onChangeVertical: function onChangeVertical(newValue) {
-                    return saveModalStyles({ modalShadowVertical: newValue });
-                },
-                onChangePosition: function onChangePosition(newValue) {
-                    return saveModalStyles({ modalShadowPosition: newValue });
-                }
-            }),
-            React.createElement(_premiumResponsiveSpacing2.default, { value: modalMargin, responsive: true, showUnits: true, label: __("Margin"), onChange: function onChange(value) {
-                    return setAttributes({ modalMargin: value });
-                } }),
-            React.createElement(_premiumResponsiveSpacing2.default, { value: modalPadding, responsive: true, showUnits: true, label: __("Padding"), onChange: function onChange(value) {
-                    return setAttributes({ modalPadding: value });
-                } })
+            React.createElement(_inspectorTab2.default, { key: 'advance' })
         )
     );
 };
@@ -73781,6 +73826,247 @@ var deprecated = [{
     }
 }];
 exports.default = deprecated;
+
+/***/ }),
+/* 411 */,
+/* 412 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _classnames = __webpack_require__(52);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+var _wp$element = wp.element,
+    Fragment = _wp$element.Fragment,
+    cloneElement = _wp$element.cloneElement,
+    Children = _wp$element.Children;
+var Tooltip = wp.components.Tooltip;
+var _wp$element2 = wp.element,
+    useState = _wp$element2.useState,
+    useRef = _wp$element2.useRef,
+    useEffect = _wp$element2.useEffect,
+    LAYOUT = 'layout',
+    STYLE = 'style',
+    ADVANCE = 'advance';
+
+
+var InspectorTabs = function InspectorTabs(props) {
+    var defaultTab = props.defaultTab,
+        children = props.children,
+        tabs = props.tabs,
+        _useState = useState(defaultTab ? defaultTab : tabs[0]),
+        _useState2 = _slicedToArray(_useState, 2),
+        currentTab = _useState2[0],
+        setCurrentTab = _useState2[1],
+        tabContainer = useRef(),
+        offset = useRef(undefined);
+
+    var sidebarPanel = void 0;
+
+    useEffect(function () {
+        sidebarPanel = tabContainer.current.closest('.components-panel');
+    });
+
+    var observer = new IntersectionObserver(function (_ref) {
+        var _ref2 = _slicedToArray(_ref, 1),
+            e = _ref2[0];
+
+        return e.target.classList.toggle('premium-is-sticky', e.intersectionRatio < 1);
+    }, { threshold: [1] });
+
+    // component did mount
+    useEffect(function () {
+        // sticky tabs menu
+        var container = document.querySelector('.premium-inspector-tabs-container');
+        if (container) {
+            observer.observe(container);
+        }
+
+        // component will unmount
+        return function () {
+            sidebarPanel && sidebarPanel.removeAttribute('data-premium-tab');
+        };
+    }, []);
+
+    useEffect(function () {
+
+        sidebarPanel && sidebarPanel.setAttribute('data-premium-tab', defaultTab);
+    }, [defaultTab]);
+
+    var _onTabChange = function _onTabChange(tab) {
+        setCurrentTab(tab);
+        sidebarPanel && sidebarPanel.setAttribute('data-premium-tab', tab);
+    };
+
+    return React.createElement(
+        Fragment,
+        null,
+        React.createElement(
+            'div',
+            { className: 'premium-inspector-tabs-container' },
+            React.createElement(
+                'div',
+                { ref: tabContainer, className: (0, _classnames2.default)('premium-inspector-tabs', 'premium-inspector-tabs-count-' + tabs.length, currentTab) },
+                tabs.indexOf(LAYOUT) > -1 && React.createElement(
+                    Tooltip,
+                    { text: __('Layout', 'premium-blocks-for-gutenberg') },
+                    React.createElement(
+                        'button',
+                        { className: (0, _classnames2.default)({ 'premium-active': currentTab === LAYOUT }), onClick: function onClick() {
+                                return _onTabChange(LAYOUT);
+                            } },
+                        React.createElement(
+                            'svg',
+                            { id: 'Layer_1', 'data-name': 'Layer 1', xmlns: 'http://www.w3.org/2000/svg', width: '18', height: '21', viewBox: '0 0 23.98 23.99' },
+                            React.createElement('defs', null),
+                            React.createElement(
+                                'title',
+                                null,
+                                'layout-tab'
+                            ),
+                            React.createElement(
+                                'g',
+                                { id: 'Layout' },
+                                React.createElement('path', { 'class': 'cls-1', d: 'M23.84,2.9a4,4,0,0,0-1-1.74,4,4,0,0,0-1.75-1,3.85,3.85,0,0,0-2,0,31.93,31.93,0,0,0-9,4v8.48l6.29-6.3a1.19,1.19,0,0,1,.33-.22,1,1,0,0,1,.77,0,1,1,0,0,1,.55.55,1,1,0,0,1,0,.77,1.19,1.19,0,0,1-.22.33L14.41,11H21.6a30.63,30.63,0,0,0,2.28-6.07A4,4,0,0,0,23.84,2.9Z', transform: 'translate(-0.01 0)' }),
+                                React.createElement('path', { 'class': 'cls-1', d: 'M20.53,13a28.68,28.68,0,0,1-4,5.46,8.24,8.24,0,0,1-2.69,1.87,8.07,8.07,0,0,1-3.21.67A7.43,7.43,0,0,1,6,19.42L12.43,13h8.1Z', transform: 'translate(-0.01 0)' }),
+                                React.createElement('path', { 'class': 'cls-1', d: 'M5.82,19.31l.17.11L1.71,23.71A1,1,0,0,1,1,24a1,1,0,0,1-.69-.3A1,1,0,0,1,0,23a1,1,0,0,1,.28-.71L4.58,18A8,8,0,0,0,5.82,19.31Z', transform: 'translate(-0.01 0)' }),
+                                React.createElement('path', { 'class': 'cls-1', d: 'M4.58,18A7.72,7.72,0,0,1,5.26,7.87,25.63,25.63,0,0,1,8,5.51v9a.35.35,0,0,0,0,.06Z', transform: 'translate(-0.01 0)' })
+                            )
+                        ),
+                        '                                    ',
+                        React.createElement(
+                            'h5',
+                            null,
+                            __('Layout', 'premium-blocks-for-gutenberg')
+                        )
+                    )
+                ),
+                tabs.indexOf(STYLE) > -1 && React.createElement(
+                    Tooltip,
+                    { text: __('Style', 'premium-blocks-for-gutenberg') },
+                    React.createElement(
+                        'button',
+                        { className: (0, _classnames2.default)({ 'premium-active': currentTab === STYLE }), onClick: function onClick() {
+                                return _onTabChange(STYLE);
+                            } },
+                        React.createElement(
+                            'svg',
+                            { id: 'Layer_1', 'data-name': 'Layer 1', xmlns: 'http://www.w3.org/2000/svg', width: '18', height: '21', viewBox: '0 0 24 24' },
+                            React.createElement('defs', null),
+                            React.createElement(
+                                'title',
+                                null,
+                                'style-tab'
+                            ),
+                            React.createElement(
+                                'g',
+                                { id: 'Style' },
+                                React.createElement('path', { 'class': 'cls-1', d: 'M2.89,6.84a.93.93,0,0,0,.46-.12,1,1,0,0,0,.37-.32,10,10,0,0,1,2.8-2.77,1,1,0,0,0,.28-.27A.82.82,0,0,0,7,3a1,1,0,0,0,0-.39,1.2,1.2,0,0,0-.15-.37A1,1,0,0,0,6.54,2a1,1,0,0,0-.36-.16,1.27,1.27,0,0,0-.39,0A1.2,1.2,0,0,0,5.42,2,11.94,11.94,0,0,0,2.06,5.28a1,1,0,0,0-.17.5A1,1,0,0,0,2,6.3a1.07,1.07,0,0,0,.37.39A1,1,0,0,0,2.89,6.84Z', transform: 'translate(0)' }),
+                                React.createElement('path', { 'class': 'cls-1', d: 'M2,12a10,10,0,0,1,.19-2,1,1,0,0,0,0-.39,1.2,1.2,0,0,0-.15-.37A1.07,1.07,0,0,0,1.77,9a1.14,1.14,0,0,0-.36-.15.86.86,0,0,0-.39,0A1.2,1.2,0,0,0,.65,9a1,1,0,0,0-.27.28,1.2,1.2,0,0,0-.15.37,12.14,12.14,0,0,0,0,4.73,1,1,0,0,0,.35.57,1,1,0,0,0,.63.23l.2,0a1,1,0,0,0,.64-.43A1,1,0,0,0,2.2,14,10.05,10.05,0,0,1,2,12Z', transform: 'translate(0)' }),
+                                React.createElement('path', { 'class': 'cls-1', d: 'M6.53,20.37a9.85,9.85,0,0,1-2.81-2.76,1.07,1.07,0,0,0-.28-.28.93.93,0,0,0-.36-.14,1,1,0,0,0-1,1.54A11.94,11.94,0,0,0,5.43,22a1,1,0,0,0,.75.15,1.06,1.06,0,0,0,.64-.43A1,1,0,0,0,7,21a1,1,0,0,0-.43-.64Z', transform: 'translate(0)' }),
+                                React.createElement('path', { 'class': 'cls-1', d: 'M12,0A12.17,12.17,0,0,0,9.83.2a1,1,0,0,0-.62.38,1,1,0,0,0-.2.69,1,1,0,0,0,.32.65,1,1,0,0,0,.68.26h.18A10,10,0,0,1,12,2V22a10,10,0,0,1-1.81-.16,1,1,0,0,0-1.17.8,1.05,1.05,0,0,0,.17.75,1,1,0,0,0,.64.41A12.05,12.05,0,0,0,15,23.61a12.23,12.23,0,0,0,4.64-2.39A12,12,0,0,0,12,0Z', transform: 'translate(0)' })
+                            )
+                        ),
+                        React.createElement(
+                            'h5',
+                            null,
+                            __('Style', 'premium-blocks-for-gutenberg')
+                        )
+                    )
+                ),
+                tabs.indexOf(ADVANCE) > -1 && React.createElement(
+                    Tooltip,
+                    { text: __('Advanced', 'premium-blocks-for-gutenberg') },
+                    React.createElement(
+                        'button',
+                        { className: (0, _classnames2.default)({ 'premium-active': currentTab === ADVANCE }), onClick: function onClick() {
+                                return _onTabChange(ADVANCE);
+                            } },
+                        React.createElement(
+                            'svg',
+                            { id: 'Layer_1', 'data-name': 'Layer 1', xmlns: 'http://www.w3.org/2000/svg', width: '18', height: '21', viewBox: '0 0 21.59 24' },
+                            React.createElement('defs', null),
+                            React.createElement(
+                                'title',
+                                null,
+                                'advanced-tab'
+                            ),
+                            React.createElement('path', { id: 'Advanced', 'class': 'cls-1', d: 'M1.61,18A3,3,0,0,0,5.7,19.1h0l.44-.26A9,9,0,0,0,9,20.49V21a3,3,0,0,0,6,0v-.51a9,9,0,0,0,2.85-1.65l.45.26a3,3,0,0,0,3-5.2l-.45-.26a9.1,9.1,0,0,0,0-3.29l.45-.25a3,3,0,0,0-3-5.2l-.45.25A9.21,9.21,0,0,0,15,3.51V3A3,3,0,0,0,9,3v.51A9,9,0,0,0,6.15,5.16L5.71,4.9a3,3,0,1,0-3,5.2l.44.26a9.1,9.1,0,0,0,0,3.29l-.44.25A3,3,0,0,0,1.61,18ZM12,8a4,4,0,1,1-4,4A4,4,0,0,1,12,8Z', transform: 'translate(-1.2)' })
+                        ),
+                        React.createElement(
+                            'h5',
+                            null,
+                            __('Advanced', 'premium-blocks-for-gutenberg')
+                        )
+                    )
+                )
+            )
+        ),
+        Array.isArray(children) && Children.map(children, function (child, index) {
+            if (!child.key) {
+                throw new Error('props.key not found in <InspectorTab />, you must use `key` prop');
+                return;
+            }
+            return cloneElement(child, {
+                index: index,
+                isActive: child.key === currentTab
+            });
+        })
+    );
+};
+
+InspectorTabs.defaultProps = {
+    defaultTab: null,
+    tabs: ['layout', 'style', 'advance']
+};
+
+exports.default = InspectorTabs;
+
+/***/ }),
+/* 413 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var Fragment = wp.element.Fragment;
+
+
+var InspectorTab = function InspectorTab(props) {
+    var children = props.children,
+        isActive = props.isActive,
+        key = props.key;
+
+    return React.createElement(
+        'div',
+        {
+            style: {
+                display: isActive ? 'block' : 'none'
+            },
+            className: 'premium-inspector-tab'
+        },
+        Array.isArray(children) ? children.map(function (item) {
+            return item;
+        }) : children
+    );
+};
+
+exports.default = InspectorTab;
 
 /***/ })
 /******/ ]);
