@@ -7,7 +7,6 @@ import PremiumBackgroundControl from "../../components/Premium-Background-Contro
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
-import RadioComponent from '../../components/radio-control';
 import PremiumShadow from "../../components/PremiumShadow";
 import SpacingControl from '../../components/premium-responsive-spacing'
 import InspectorTabs from '../../components/inspectorTabs';
@@ -20,6 +19,7 @@ const {
     PanelBody,
     SelectControl,
     ToggleControl,
+    Toolbar
 } = wp.components;
 
 const { useEffect } = wp.element;
@@ -92,6 +92,8 @@ const edit = props => {
         }
     ];
 
+    const ALIGNS = ["left", "center", "right"];
+
     const saveIconStyle = (value) => {
         const newUpdate = iconStyles.map((item, index) => {
             if (0 === index) {
@@ -131,11 +133,13 @@ const edit = props => {
                                 value={hoverEffect}
                                 onChange={newEffect => setAttributes({ hoverEffect: newEffect })}
                             />
-                            <RadioComponent
-                                choices={["left", "center", "right"]}
-                                value={align}
-                                onChange={newValue => setAttributes({ align: newValue })}
-                                label={__("Align", 'premium-blocks-for-gutenberg')}
+                            <p> {__('Alignment')}</p>
+                            <Toolbar
+                                controls={ALIGNS.map(contentAlign => ({
+                                    icon: "editor-align" + contentAlign,
+                                    isActive: align === align,
+                                    onClick: () => setAttributes({ align: contentAlign })
+                                }))}
                             />
                             <ToggleControl
                                 label={__("Link", 'premium-blocks-for-gutenberg')}
