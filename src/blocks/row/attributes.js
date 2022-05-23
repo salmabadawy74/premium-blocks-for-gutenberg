@@ -31,6 +31,30 @@ const attributes = {
             unit: 'px',
         },
     },
+    margin: {
+        type: 'object',
+        default: {
+            Desktop: {
+                top: 0,
+                right: 0,
+                bottom: 0,
+                left: 0
+            },
+            Tablet: {
+                top: 0,
+                right: 0,
+                bottom: 0,
+                left: 0
+            },
+            Mobile: {
+                top: 0,
+                right: 0,
+                bottom: 0,
+                left: 0
+            },
+            unit: 'px',
+        },
+    },
 
     marginTop: {
         type: 'object',

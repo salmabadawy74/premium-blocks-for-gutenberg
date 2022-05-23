@@ -8,6 +8,7 @@ const { InspectorControls, InnerBlocks, InspectorAdvancedControls } = wp.blockEd
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
+import SpacingControl from '../../components/premium-responsive-spacing'
 
 const colOption = [
     { label: '100', columns: 1, layout: { desktop: [100], tablet: [100], mobile: [100] } },
@@ -110,6 +111,7 @@ class Edit extends Component {
                 rowContainerWidth,
                 position,
                 padding,
+                margin,
                 marginTop,
                 marginBottom,
                 rowBg,
@@ -314,141 +316,38 @@ class Edit extends Component {
                             </PanelBody>
                         </InspectorTab>
                         <InspectorTab key={'advance'}>
-                            <PanelBody title={__('Spacing')} initialOpen={true}>
-                                <PremiumResponsiveMargin
-                                    directions={["top", 'bottom']}
-                                    marginTop={marginTop}
-                                    marginRight={marginRight}
-                                    marginBottom={marginBottom}
-                                    marginLeft={marginLeft}
-                                    marginTopTablet={marginTTablet}
-                                    marginRightTablet={marginRTablet}
-                                    marginBottomTablet={marginBTablet}
-                                    marginLeftTablet={marginLTablet}
-                                    marginTopMobile={marginTMobile}
-                                    marginRightMobile={marginRMobile}
-                                    marginBottomMobile={marginBMobile}
-                                    marginLeftMobile={marginLMobile}
-                                    onChangeMarginTop={
-                                        (device, newValue) => {
-                                            if (device === "desktop") {
-                                                setAttributes({ marginTop: newValue })
-                                            } else if (device === "tablet") {
-                                                setAttributes({ marginTTablet: newValue })
-                                            } else {
-                                                setAttributes({ marginTMobile: newValue })
-                                            }
-                                        }
-                                    }
-                                    onChangeMarginRight={
-                                        (device, newValue) => {
-                                            if (device === "desktop") {
-                                                setAttributes({ marginRight: newValue })
-                                            } else if (device === "tablet") {
-                                                setAttributes({ marginRTablet: newValue })
-                                            } else {
-                                                setAttributes({ marginRMobile: newValue })
-                                            }
-                                        }
-                                    }
-                                    onChangeMarginBottom={
-                                        (device, newValue) => {
-                                            if (device === "desktop") {
-                                                setAttributes({ marginBottom: newValue })
-                                            } else if (device === "tablet") {
-                                                setAttributes({ marginBTablet: newValue })
-                                            } else {
-                                                setAttributes({ marginBMobile: newValue })
-                                            }
-                                        }
-                                    }
-                                    onChangeMarginLeft={
-                                        (device, newValue) => {
-                                            if (device === "desktop") {
-                                                setAttributes({ marginLeft: newValue })
-                                            } else if (device === "tablet") {
-                                                setAttributes({ marginLTablet: newValue })
-                                            } else {
-                                                setAttributes({ marginLMobile: newValue })
-                                            }
-                                        }
-                                    }
+                            <PanelBody
+                                title={__('Spacing', 'premium-blocks-for-gutenberg')}
+                                initialOpen={false}
+                            >
+                                <SpacingControl
+                                    label={__('Margin', 'premium-blocks-for-gutenberg')}
+                                    value={margin}
+                                    onChange={(value) => setAttributes({ margin: value })}
                                     showUnits={true}
-                                    onChangeMarSizeUnit={newvalue => saveContainerStyle({ marginUnit: newvalue })}
-                                    selectedUnit={containerStyles[0].marginUnit}
+                                    responsive={true}
                                 />
-                                <PremiumResponsivePadding
-                                    paddingTop={paddingTop}
-                                    paddingRight={paddingRight}
-                                    paddingBottom={paddingBottom}
-                                    paddingLeft={paddingLeft}
-                                    paddingTopTablet={paddingTTablet}
-                                    paddingRightTablet={paddingRTablet}
-                                    paddingBottomTablet={paddingBTablet}
-                                    paddingLeftTablet={paddingLTablet}
-                                    paddingTopMobile={paddingTMobile}
-                                    paddingRightMobile={paddingRMobile}
-                                    paddingBottomMobile={paddingBMobile}
-                                    paddingLeftMobile={paddingLMobile}
+                                <SpacingControl
+                                    label={__('Padding', 'premium-blocks-for-gutenberg')}
+                                    value={padding}
+                                    onChange={(value) => setAttributes({ padding: value })}
                                     showUnits={true}
-                                    selectedUnit={containerStyles[0].paddingUnit}
-                                    onChangePadSizeUnit={newvalue => saveContainerStyle({ paddingUnit: newvalue })}
-                                    onChangePaddingTop={
-                                        (device, newValue) => {
-                                            if (device === "desktop") {
-                                                setAttributes({ paddingTop: newValue })
-                                            } else if (device === "tablet") {
-                                                setAttributes({ paddingTTablet: newValue })
-                                            } else {
-                                                setAttributes({ paddingTMobile: newValue })
-                                            }
-                                        }
-                                    }
-                                    onChangePaddingRight={
-                                        (device, newValue) => {
-                                            if (device === "desktop") {
-                                                setAttributes({ paddingRight: newValue })
-                                            } else if (device === "tablet") {
-                                                setAttributes({ paddingRTablet: newValue })
-                                            } else {
-                                                setAttributes({ paddingRMobile: newValue })
-                                            }
-                                        }
-                                    }
-                                    onChangePaddingBottom={
-                                        (device, newValue) => {
-                                            if (device === "desktop") {
-                                                setAttributes({ paddingBottom: newValue })
-                                            } else if (device === "tablet") {
-                                                setAttributes({ paddingBTablet: newValue })
-                                            } else {
-                                                setAttributes({ paddingBMobile: newValue })
-                                            }
-                                        }
-                                    }
-                                    onChangePaddingLeft={
-                                        (device, newValue) => {
-                                            if (device === "desktop") {
-                                                setAttributes({ paddingLeft: newValue })
-                                            } else if (device === "tablet") {
-                                                setAttributes({ paddingLTablet: newValue })
-                                            } else {
-                                                setAttributes({ paddingLMobile: newValue })
-                                            }
-                                        }
-                                    }
+                                    responsive={true}
                                 />
                             </PanelBody>
-                            <PanelBody title={__('Animation')} initialOpen={false}>
+                            <PanelBody
+                                title={__('Animation', 'premium-blocks-for-gutenberg')}
+                                initialOpen={false}
+                            >
                                 <Animation
-                                    uniqueId={props.clientId}
+                                    uniqueId={uniqueId}
                                     label={__('Animation', 'premium-blocks-for-gutenberg')}
                                     value={animation}
-                                    onChange={(value) => setAttributes({ animation: value })} />
+                                    onChange={(value) => setAttributes({ animation: value })}
+                                />
                             </PanelBody>
                         </InspectorTab>
                     </InspectorTabs>
-
                 </InspectorControls>
 
 
