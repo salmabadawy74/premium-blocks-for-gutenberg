@@ -25,8 +25,8 @@ const save = props => {
         iconSize
     } = props.attributes;
 
-    const mainClasses = classnames(className, 'premium-icon');
-
+    const mainClasses = classnames(className);
+    console.log(mainClasses)
     return (
         <div
             className={`${mainClasses}__container ${hideDesktop} ${hideTablet} ${hideMobile}`}

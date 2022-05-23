@@ -1201,14 +1201,14 @@ const deprecatedContent = [
                     unit: ''
                 },
                 iconBorder: {
-                    borderColor: attributes.iconStyles[0].btnBorderColor,
-                    borderType: attributes.iconStyles[0].borderColor,
+                    borderColor: attributes.iconStyles[0].borderColor,
+                    borderType: attributes.iconStyles[0].borderType,
                     borderRadius: {
                         "Desktop": {
-                            top: "",
-                            right: "",
-                            bottom: "",
-                            left: ""
+                            top: attributes.iconStyles[0].borderRadius,
+                            right: attributes.iconStyles[0].borderRadius,
+                            bottom: attributes.iconStyles[0].borderRadius,
+                            left: attributes.iconStyles[0].borderRadius
                         },
                         "Tablet": {
                             top: "",
@@ -1245,14 +1245,14 @@ const deprecatedContent = [
                     }
                 },
                 containerBorder: {
-                    borderColor: attributes.containerStyles[0].wrapBorderType,
-                    borderType: attributes.containerStyles[0].wrapBorderColor,
+                    borderColor: attributes.containerStyles[0].wrapBorderColor,
+                    borderType: attributes.containerStyles[0].wrapBorderType,
                     borderRadius: {
                         "Desktop": {
-                            top: "",
-                            right: "",
-                            bottom: "",
-                            left: ""
+                            top: attributes.containerStyles[0].wrapBorderRadius,
+                            right: attributes.containerStyles[0].wrapBorderRadius,
+                            bottom: attributes.containerStyles[0].wrapBorderRadius,
+                            left: attributes.containerStyles[0].wrapBorderRadius
                         },
                         "Tablet": {
                             top: "",
@@ -1290,32 +1290,32 @@ const deprecatedContent = [
                 },
                 containerBackground: {
                     'backgroundType': attributes.backgroundType,
-                    'backgroundColor': attributes.containerStyles.containerBack,
-                    'backgroundImageID': attributes.containerStyles.backgroundImageID,
-                    'backgroundImageURL': attributes.containerStyles.backgroundImageURL,
-                    'backgroundPosition': attributes.containerStyles.backgroundPosition,
-                    'backgroundRepeat': attributes.containerStyles.backgroundRepeat,
-                    'backgroundSize': attributes.containerStyles.backgroundSize,
-                    'fixed': attributes.containerStyles.fixed,
-                    'gradientLocationOne': attributes.containerStyles.gradientLocationOne,
-                    'gradientColorTwo': attributes.containerStyles.gradientColorTwo,
-                    'gradientLocationTwo': attributes.containerStyles.gradientLocationTwo,
-                    'gradientAngle': attributes.containerStyles.gradientAngle,
-                    'gradientPosition': attributes.containerStyles.gradientPosition,
-                    'gradientType': attributes.containerStyles.gradientType,
+                    'backgroundColor': attributes.containerStyles[0].containerBack,
+                    'backgroundImageID': attributes.containerStyles[0].backgroundImageID,
+                    'backgroundImageURL': attributes.containerStyles[0].backgroundImageURL,
+                    'backgroundPosition': attributes.containerStyles[0].backgroundPosition,
+                    'backgroundRepeat': attributes.containerStyles[0].backgroundRepeat,
+                    'backgroundSize': attributes.containerStyles[0].backgroundSize,
+                    'fixed': attributes.containerStyles[0].fixed,
+                    'gradientLocationOne': attributes.containerStyles[0].gradientLocationOne,
+                    'gradientColorTwo': attributes.containerStyles[0].gradientColorTwo,
+                    'gradientLocationTwo': attributes.containerStyles[0].gradientLocationTwo,
+                    'gradientAngle': attributes.containerStyles[0].gradientAngle,
+                    'gradientPosition': attributes.containerStyles[0].gradientPosition,
+                    'gradientType': attributes.containerStyles[0].gradientType,
                 },
                 containerShadow: {
-                    'color': attributes.containerStyles.wrapShadowColor,
-                    'blur': attributes.containerStyles.wrapShadowBlur,
-                    'horizontal': attributes.containerStyles.wrapShadowHorizontal,
-                    'vertical': attributes.containerStyles.wrapShadowVertical,
-                    'position': attributes.containerStyles.wrapShadowPosition
+                    'color': attributes.containerStyles[0].wrapShadowColor,
+                    'blur': attributes.containerStyles[0].wrapShadowBlur,
+                    'horizontal': attributes.containerStyles[0].wrapShadowHorizontal,
+                    'vertical': attributes.containerStyles[0].wrapShadowVertical,
+                    'position': attributes.containerStyles[0].wrapShadowPosition
                 },
                 iconShadow: {
-                    'color': attributes.iconStyles.shadowColor,
-                    'blur': attributes.iconStyles.shadowBlur,
-                    'horizontal': attributes.iconStyles.shadowHorizontal,
-                    'vertical': attributes.iconStyles.shadowVertical
+                    'color': attributes.iconStyles[0].shadowColor,
+                    'blur': attributes.iconStyles[0].shadowBlur,
+                    'horizontal': attributes.iconStyles[0].shadowHorizontal,
+                    'vertical': attributes.iconStyles[0].shadowVertical
                 }
             };
             return Object.assign(attributes, newAttributes);
@@ -1349,7 +1349,7 @@ const deprecatedContent = [
                 backgroundType
             } = props.attributes;
 
-            const mainClasses = classnames(className, 'premium-icon');
+            const mainClasses = classnames(className);
 
             let btnGrad, btnGrad2, btnbg;
             if ('gradient' === backgroundType) {
