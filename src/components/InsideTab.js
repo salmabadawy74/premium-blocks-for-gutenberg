@@ -9,4 +9,4 @@ class InsideTab extends Component {
         )
     }
 }
-export default Tab
+export default InsideTab

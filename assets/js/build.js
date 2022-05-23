@@ -592,6 +592,11 @@ exports.default = PbgIcon;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 exports.default = PremiumShadow;
 
 var _singleRangeControl = __webpack_require__(2);
@@ -610,65 +615,76 @@ var _wp$components = wp.components,
     Dropdown = _wp$components.Dropdown,
     Button = _wp$components.Button,
     ColorPicker = _wp$components.ColorPicker;
-var Fragment = wp.element.Fragment;
-function PremiumShadow(props) {
-    var label = props.label,
-        color = props.color,
-        blur = props.blur,
-        horizontal = props.horizontal,
-        vertical = props.vertical,
-        _props$position = props.position,
-        position = _props$position === undefined ? "outline" : _props$position,
-        _props$onChangeColor = props.onChangeColor,
-        onChangeColor = _props$onChangeColor === undefined ? function () {} : _props$onChangeColor,
-        _props$onChangeBlur = props.onChangeBlur,
-        onChangeBlur = _props$onChangeBlur === undefined ? function () {} : _props$onChangeBlur,
-        _props$onChangehHoriz = props.onChangehHorizontal,
-        onChangehHorizontal = _props$onChangehHoriz === undefined ? function () {} : _props$onChangehHoriz,
-        _props$onChangeVertic = props.onChangeVertical,
-        onChangeVertical = _props$onChangeVertic === undefined ? function () {} : _props$onChangeVertic,
-        _props$onChangePositi = props.onChangePosition,
-        onChangePosition = _props$onChangePositi === undefined ? function () {} : _props$onChangePositi,
-        _props$boxShadow = props.boxShadow,
-        boxShadow = _props$boxShadow === undefined ? false : _props$boxShadow;
+var _wp$element = wp.element,
+    Fragment = _wp$element.Fragment,
+    useState = _wp$element.useState;
+function PremiumShadow(_ref) {
+    var label = _ref.label,
+        value = _ref.value,
+        onChange = _ref.onChange,
+        _ref$boxShadow = _ref.boxShadow,
+        boxShadow = _ref$boxShadow === undefined ? false : _ref$boxShadow;
 
+    var defaultValues = {
+        'color': '',
+        'blur': '',
+        'horizontal': '',
+        'vertical': '',
+        'position': ''
+    };
+    value = value ? _extends({}, defaultValues, value) : defaultValues;
 
-    var POSITION = [{
-        value: "inset",
-        label: __("Inset", 'premium-blocks-for-gutenberg')
-    }, {
-        value: "",
-        label: __("Outline", 'premium-blocks-for-gutenberg')
-    }];
+    var _useState = useState(value),
+        _useState2 = _slicedToArray(_useState, 2),
+        state = _useState2[0],
+        setState = _useState2[1];
+
+    var onChangeShadow = function onChangeShadow(item, value) {
+        var updatedState = _extends({}, state);
+        updatedState[item] = value;
+        setState(updatedState);
+        onChange(updatedState);
+    };
+
+    var POSITION = [{ value: "inset", label: __("Inset", 'premium-blocks-for-gutenberg') }, { value: "", label: __("Outline", 'premium-blocks-for-gutenberg') }];
+
+    var color = state.color,
+        blur = state.blur,
+        horizontal = state.horizontal,
+        vertical = state.vertical,
+        position = state.position;
+
 
     return React.createElement(
-        "div",
-        { className: "premium-control-toggle premium-shadow-control__container" },
+        'div',
+        { className: 'premium-control-toggle premium-shadow-control__container' },
         React.createElement(
-            "strong",
+            'strong',
             null,
             __(label || "Box Shadow")
         ),
         React.createElement(
-            "div",
-            { className: "premium-shadow-control__wrapper" },
+            'div',
+            { className: 'premium-shadow-control__wrapper' },
             React.createElement(_ColorComponent2.default, {
                 colorValue: color,
                 colorDefault: '',
-                onColorChange: onChangeColor,
+                onColorChange: function onColorChange(value) {
+                    return onChangeShadow('color', value);
+                },
                 disableReset: true
             }),
             React.createElement(Dropdown, {
-                className: "premium-control-toggle-btn",
-                contentClassName: "premium-control-toggle-content",
-                position: "bottom right",
-                renderToggle: function renderToggle(_ref) {
-                    var isOpen = _ref.isOpen,
-                        onToggle = _ref.onToggle;
+                className: 'premium-control-toggle-btn',
+                contentClassName: 'premium-control-toggle-content',
+                position: 'bottom right',
+                renderToggle: function renderToggle(_ref2) {
+                    var isOpen = _ref2.isOpen,
+                        onToggle = _ref2.onToggle;
                     return React.createElement(
                         Button,
-                        { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
-                        React.createElement("i", { className: "dashicons dashicons-edit" })
+                        { isSmall: true, onClick: onToggle, 'aria-expanded': isOpen },
+                        React.createElement('i', { className: 'dashicons dashicons-edit' })
                     );
                 },
                 renderContent: function renderContent() {
@@ -678,7 +694,9 @@ function PremiumShadow(props) {
                         React.createElement(_singleRangeControl2.default, {
                             label: __("Horizontal"),
                             value: horizontal,
-                            onChange: onChangehHorizontal,
+                            onChange: function onChange(value) {
+                                return onChangeShadow('horizontal', value);
+                            },
                             showUnit: false,
                             defaultValue: 0,
                             min: -100,
@@ -687,7 +705,9 @@ function PremiumShadow(props) {
                         React.createElement(_singleRangeControl2.default, {
                             label: __("Vertical"),
                             value: vertical,
-                            onChange: onChangeVertical,
+                            onChange: function onChange(value) {
+                                return onChangeShadow('vertical', value);
+                            },
                             showUnit: false,
                             defaultValue: 0,
                             min: -100,
@@ -696,7 +716,9 @@ function PremiumShadow(props) {
                         React.createElement(_singleRangeControl2.default, {
                             label: __("Blur"),
                             value: blur,
-                            onChange: onChangeBlur,
+                            onChange: function onChange(value) {
+                                return onChangeShadow('blur', value);
+                            },
                             showUnit: false,
                             defaultValue: 0
                         }),
@@ -704,7 +726,9 @@ function PremiumShadow(props) {
                             label: __("Position"),
                             options: POSITION,
                             value: position,
-                            onChange: onChangePosition
+                            onChange: function onChange(value) {
+                                return onChangeShadow('position', value);
+                            }
                         })
                     );
                 }
@@ -727,8 +751,6 @@ Object.defineProperty(exports, "__esModule", {
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _react = __webpack_require__(9);
 
 var _ColorComponent = __webpack_require__(3);
 
@@ -872,7 +894,6 @@ var PremiumBorder = function PremiumBorder(props) {
                 onChange: function onChange(value) {
                     return onChangeBorder('borderRadius', _extends({}, value));
                 }
-
             })
         )
     );
@@ -2348,13 +2369,16 @@ if (process.env.NODE_ENV !== 'production') {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 exports.default = PremiumBackgroundControl;
 
 var _react = __webpack_require__(9);
 
 var _react2 = _interopRequireDefault(_react);
-
-var _settings = __webpack_require__(1);
 
 var _premiumBackground = __webpack_require__(105);
 
@@ -2379,34 +2403,87 @@ var _wp$components = wp.components,
     Button = _wp$components.Button,
     ButtonGroup = _wp$components.ButtonGroup,
     Tooltip = _wp$components.Tooltip;
-var __ = wp.i18n.__;
-var Fragment = wp.element.Fragment;
-function PremiumBackgroundControl(_ref) {
-    var backgroundType = _ref.backgroundType,
-        backgroundColor = _ref.backgroundColor,
-        backgroundImageID = _ref.backgroundImageID,
-        backgroundImageURL = _ref.backgroundImageURL,
-        backgroundPosition = _ref.backgroundPosition,
-        backgroundRepeat = _ref.backgroundRepeat,
-        backgroundSize = _ref.backgroundSize,
-        fixed = _ref.fixed,
-        gradientType = _ref.gradientType,
-        setAttributes = _ref.setAttributes,
-        saveContainerStyle = _ref.saveContainerStyle,
-        gradientLocationOne = _ref.gradientLocationOne,
-        gradientColorTwo = _ref.gradientColorTwo,
-        gradientLocationTwo = _ref.gradientLocationTwo,
-        gradientAngle = _ref.gradientAngle,
-        gradientPosition = _ref.gradientPosition;
+// import { FontAwesomeEnabled } from "../../assets/js/settings";
 
+var __ = wp.i18n.__;
+var _wp$element = wp.element,
+    Fragment = _wp$element.Fragment,
+    useState = _wp$element.useState;
+function PremiumBackgroundControl(_ref) {
+    var value = _ref.value,
+        onChange = _ref.onChange;
+
+    var defaultValues = {
+        'backgroundType': '',
+        'backgroundColor': '',
+        'backgroundImageID': '',
+        'backgroundImageURL': '',
+        'backgroundPosition': '',
+        'backgroundRepeat': '',
+        'backgroundSize': '',
+        'fixed': false,
+        'gradientLocationOne': "",
+        'gradientColorTwo': '',
+        'gradientLocationTwo': '',
+        'gradientAngle': '',
+        'gradientPosition': '',
+        'gradientType': '',
+        'videoSource': 'local',
+        'bgExternalVideo': '',
+        'videoURL': '',
+        'videoID': '',
+        'bgVideoFallbackID': '',
+        'bgVideoFallbackURL': ''
+
+    };
+    value = value ? _extends({}, defaultValues, value) : defaultValues;
+
+    var _useState = useState(value),
+        _useState2 = _slicedToArray(_useState, 2),
+        state = _useState2[0],
+        setState = _useState2[1];
 
     var gradTypes = [{ key: 'linear', name: __('Linear') }, { key: 'radial', name: __('Radial') }];
 
-    var bgType = [{ key: 'solid', icon: "fa fa-paint-brush", tooltip: __('Classic') }, { key: 'gradient', icon: "fa fa-barcode", tooltip: __('Gradient') }];
+    var bgType = [{ key: 'solid', icon: "fa fa-image", tooltip: __('Classic', 'premium-blocks-for-gutenberg') }, { key: 'gradient', icon: "fa fa-barcode", tooltip: __('Gradient', 'premium-blocks-for-gutenberg') }, { key: "video", icon: 'fa fa-video-camera', tooltip: __('Video', 'premium-blocks-for-gutenberg') }];
+    var onChangeBackground = function onChangeBackground(item, value) {
+        var updatedState = _extends({}, state);
+        updatedState[item] = value;
+        setState(updatedState);
+        onChange(updatedState);
+    };
+    var backgroundType = state.backgroundType,
+        backgroundColor = state.backgroundColor,
+        backgroundImageID = state.backgroundImageID,
+        backgroundImageURL = state.backgroundImageURL,
+        backgroundPosition = state.backgroundPosition,
+        backgroundRepeat = state.backgroundRepeat,
+        backgroundSize = state.backgroundSize,
+        fixed = state.fixed,
+        bgExternalVideo = state.bgExternalVideo,
+        gradientLocationOne = state.gradientLocationOne,
+        gradientColorTwo = state.gradientColorTwo,
+        gradientLocationTwo = state.gradientLocationTwo,
+        videoURL = state.videoURL,
+        videoID = state.videoID,
+        gradientAngle = state.gradientAngle,
+        gradientPosition = state.gradientPosition,
+        gradientType = state.gradientType,
+        videoSource = state.videoSource,
+        bgVideoFallbackID = state.bgVideoFallbackID,
+        bgVideoFallbackURL = state.bgVideoFallbackURL;
+
 
     return _react2.default.createElement(
         Fragment,
         null,
+        _react2.default.createElement(_premiumBackground2.default, {
+            type: 'color',
+            colorValue: backgroundColor,
+            onChangeColor: function onChangeColor(newValue) {
+                return onChangeBackground('backgroundColor', newValue);
+            }
+        }),
         _react2.default.createElement(
             'div',
             { className: 'Premium-btn-size-settings-container' },
@@ -2433,10 +2510,10 @@ function PremiumBackgroundControl(_ref) {
                                 isSmall: true,
                                 isPrimary: backgroundType === key,
                                 onClick: function onClick() {
-                                    return setAttributes({ backgroundType: key });
+                                    return onChangeBackground('backgroundType', key);
                                 }
                             },
-                            1 == _settings.FontAwesomeEnabled ? _react2.default.createElement('i', { className: icon }) : tooltip
+                            1 == PremiumOptionsSettings.FontAwesomeEnabled ? _react2.default.createElement('i', { className: icon }) : tooltip
                         )
                     );
                 })
@@ -2446,15 +2523,6 @@ function PremiumBackgroundControl(_ref) {
             'div',
             { className: 'Premium-inner-sub-section' },
             _react2.default.createElement(_premiumBackground2.default, {
-                type: 'color',
-                colorValue: backgroundColor,
-                onChangeColor: function onChangeColor(newValue) {
-                    return saveContainerStyle({
-                        containerBack: newValue
-                    });
-                }
-            }),
-            _react2.default.createElement(_premiumBackground2.default, {
                 imageID: backgroundImageID,
                 imageURL: backgroundImageURL,
                 backgroundPosition: backgroundPosition,
@@ -2462,28 +2530,22 @@ function PremiumBackgroundControl(_ref) {
                 backgroundSize: backgroundSize,
                 fixed: fixed,
                 onSelectMedia: function onSelectMedia(media) {
-                    saveContainerStyle({
-                        backgroundImageID: media.id,
-                        backgroundImageURL: media.url
-                    });
+                    onChangeBackground('backgroundImageURL', media.url);
                 },
                 onRemoveImage: function onRemoveImage() {
-                    return saveContainerStyle({
-                        backgroundImageURL: "",
-                        backgroundImageID: ""
-                    });
+                    return onChangeBackground('backgroundImageURL', '');
                 },
                 onChangeBackPos: function onChangeBackPos(newValue) {
-                    return saveContainerStyle({ backgroundPosition: newValue });
+                    return onChangeBackground('backgroundPosition', newValue);
                 },
                 onchangeBackRepeat: function onchangeBackRepeat(newValue) {
-                    return saveContainerStyle({ backgroundRepeat: newValue });
+                    return onChangeBackground('backgroundRepeat', newValue);
                 },
                 onChangeBackSize: function onChangeBackSize(newValue) {
-                    return saveContainerStyle({ backgroundSize: newValue });
+                    return onChangeBackground('backgroundSize', newValue);
                 },
                 onChangeFixed: function onChangeFixed(check) {
-                    return saveContainerStyle({ fixed: check });
+                    return onChangeBackground('fixed', check);
                 }
             })
         ),
@@ -2495,14 +2557,14 @@ function PremiumBackgroundControl(_ref) {
                 colorValue: backgroundColor,
                 colorDefault: '',
                 onColorChange: function onColorChange(value) {
-                    saveContainerStyle({ containerBack: value });
+                    return onChangeBackground('backgroundColor', value);
                 }
             }),
             _react2.default.createElement(_singleRangeControl2.default, {
                 label: __('Location', 'premium-blocks-for-gutenberg'),
                 value: gradientLocationOne,
                 onChange: function onChange(value) {
-                    saveContainerStyle({ gradientLocationOne: value });
+                    return onChangeBackground('gradientLocationOne', value);
                 },
                 showUnit: false,
                 defaultValue: 0
@@ -2512,14 +2574,14 @@ function PremiumBackgroundControl(_ref) {
                 colorValue: gradientColorTwo,
                 colorDefault: '#777777',
                 onColorChange: function onColorChange(value) {
-                    saveContainerStyle({ gradientColorTwo: value });
+                    return onChangeBackground('gradientColorTwo', value);
                 }
             }),
             _react2.default.createElement(_singleRangeControl2.default, {
                 label: __('Location', 'premium-blocks-for-gutenberg'),
                 value: gradientLocationTwo,
                 onChange: function onChange(value) {
-                    saveContainerStyle({ gradientLocationTwo: value });
+                    return onChangeBackground('gradientLocationTwo', value);
                 },
                 showUnit: false,
                 defaultValue: 0
@@ -2546,7 +2608,7 @@ function PremiumBackgroundControl(_ref) {
                                 isSmall: true,
                                 isPrimary: gradientType === key,
                                 onClick: function onClick() {
-                                    saveContainerStyle({ gradientType: key });
+                                    return onChangeBackground('gradientType', key);
                                 }
                             },
                             name
@@ -2558,7 +2620,7 @@ function PremiumBackgroundControl(_ref) {
                 label: __('Gradient Angle', 'premium-blocks-for-gutenberg'),
                 value: gradientAngle,
                 onChange: function onChange(value) {
-                    saveContainerStyle({ gradientAngle: value });
+                    return onChangeBackground('gradientAngle', value);
                 },
                 showUnit: false,
                 defaultValue: 0,
@@ -2570,7 +2632,61 @@ function PremiumBackgroundControl(_ref) {
                 value: gradientPosition,
                 options: [{ value: 'center top', label: __('Center Top', 'premium-blocks-for-gutenberg') }, { value: 'center center', label: __('Center Center', 'premium-blocks-for-gutenberg') }, { value: 'center bottom', label: __('Center Bottom', 'premium-blocks-for-gutenberg') }, { value: 'left top', label: __('Left Top', 'premium-blocks-for-gutenberg') }, { value: 'left center', label: __('Left Center', 'premium-blocks-for-gutenberg') }, { value: 'left bottom', label: __('Left Bottom', 'premium-blocks-for-gutenberg') }, { value: 'right top', label: __('Right Top', 'premium-blocks-for-gutenberg') }, { value: 'right center', label: __('Right Center', 'premium-blocks-for-gutenberg') }, { value: 'right bottom', label: __('Right Bottom', 'premium-blocks-for-gutenberg') }],
                 onChange: function onChange(value) {
-                    return saveContainerStyle({ gradientPosition: value });
+                    return onChangeBackground('gradientPosition', value);
+                }
+            })
+        ),
+        'video' === backgroundType && _react2.default.createElement(
+            Fragment,
+            null,
+            _react2.default.createElement(SelectControl, {
+                label: __('Video Source', 'premium-blocks-for-gutenberg'),
+                value: videoSource,
+                options: [{ value: 'local', label: __('Local', 'premium-blocks-for-gutenberg') }, { value: 'external', label: __('External', 'premium-blocks-for-gutenberg') }],
+                onChange: function onChange(val) {
+                    return onChangeBackground('videoSource', val);
+                }
+            }),
+            videoSource === 'external' ? _react2.default.createElement(TextControl, {
+                label: __('Video URL', "premium-blocks-for-gutenberg"),
+                value: bgExternalVideo || "",
+                onChange: function onChange(val) {
+                    return onChangeBackground('bgExternalVideo', val);
+                }
+            }) : _react2.default.createElement(
+                Fragment,
+                null,
+                _react2.default.createElement(
+                    'p',
+                    null,
+                    __('Video', "premium-blocks-for-gutenberg")
+                ),
+                _react2.default.createElement(PremiumMediaUpload, {
+                    type: 'video',
+                    imageID: videoID,
+                    imageURL: videoURL,
+                    onSelectMedia: function onSelectMedia(media) {
+                        return onChangeBackground('videoURL', media.url);
+                    },
+                    onRemoveImage: function onRemoveImage() {
+                        return onChangeBackground('videoURL', "");
+                    }
+                })
+            ),
+            _react2.default.createElement(
+                'p',
+                null,
+                __('Fallback Image (Poster)', 'premium-blocks-for-gutenberg')
+            ),
+            _react2.default.createElement(PremiumMediaUpload, {
+                type: 'image',
+                imageID: bgVideoFallbackID,
+                imageURL: bgVideoFallbackURL,
+                onSelectMedia: function onSelectMedia(media) {
+                    return onChangeBackground('bgVideoFallbackURL', media.url);
+                },
+                onRemoveImage: function onRemoveImage() {
+                    return onChangeBackground('bgVideoFallbackURL', "");
                 }
             })
         )
@@ -69744,8 +69860,9 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var attributes = {
+var attributes = _defineProperty({
     uniqueId: {
         type: 'string',
         default: ''
@@ -69767,7 +69884,7 @@ var attributes = {
     padding: {
         type: 'object',
         default: {
-            desktop: {
+            Desktop: {
                 top: 70,
                 right: 0,
                 bottom: 70,
@@ -69779,17 +69896,22 @@ var attributes = {
 
     marginTop: {
         type: 'object',
-        default: { desktop: 0, unit: 'px' }
+        default: { Desktop: 0, unit: 'px' }
 
     },
     marginBottom: {
         type: 'object',
-        default: { desktop: 0, unit: 'px' }
+        default: { Desktop: 0, unit: 'px' }
     },
 
     rowGutter: {
         type: 'object',
-        default: { desktop: 30, tablet: 30, mobile: 30, unit: 'px' }
+        default: {
+            Desktop: 30,
+            Tablet: 30,
+            Mobile: 30,
+            unit: 'px'
+        }
 
     },
 
@@ -69820,26 +69942,115 @@ var attributes = {
             externalImageUrl: {}
         }
     },
-    heightOptions: {
+    height: {
         type: 'string',
         default: 'auto'
     },
-    rowHeight: {
-        type: 'object', default: {}
+    minHeight: {
+        type: 'object',
+        default: {
+            Desktop: '',
+            Tablet: '',
+            Mobile: "",
+            unit: 'px'
+        }
 
     },
-
-    borderRadius: {
-        type: 'object', default: {}
-
+    vPos: {
+        type: "string",
+        default: 'middle'
+    },
+    overflow: {
+        type: "string",
+        value: "default"
+    },
+    stretchSection: {
+        type: 'boolean',
+        default: false
+    },
+    backgroundOptions: {
+        type: "object",
+        default: {
+            'backgroundType': '',
+            'backgroundColor': '',
+            'backgroundImageID': '',
+            'backgroundImageURL': '',
+            'backgroundPosition': '',
+            'backgroundRepeat': '',
+            'backgroundSize': '',
+            'fixed': false,
+            'gradientLocationOne': "",
+            'gradientColorTwo': '',
+            'gradientLocationTwo': '',
+            'gradientAngle': '',
+            'gradientPosition': '',
+            'gradientType': '',
+            'videoSource': 'local',
+            'bgExternalVideo': '',
+            'videoURL': '',
+            'videoID': '',
+            'bgVideoFallbackID': '',
+            'bgVideoFallbackURL': ''
+        }
     },
 
-    rowShadow: {
-        type: 'object', default: {}
-    },
     border: {
-        type: 'object', default: {}
+        type: 'object',
+        default: {
+            'borderType': 'none',
+            'borderColor': '',
+            'borderWidth': {
+                Desktop: {
+                    'top': '',
+                    'right': '',
+                    'bottom': '',
+                    'left': ''
+                },
+                Tablet: {
+                    'top': '',
+                    'right': '',
+                    'bottom': '',
+                    'left': ''
+                },
+                Mobile: {
+                    'top': '',
+                    'right': '',
+                    'bottom': '',
+                    'left': ''
+                }
+            },
+            'borderRadius': {
+                Desktop: {
+                    'top': '',
+                    'right': '',
+                    'bottom': '',
+                    'left': ''
+                },
+                Tablet: {
+                    'top': '',
+                    'right': '',
+                    'bottom': '',
+                    'left': ''
+                },
+                Mobile: {
+                    'top': '',
+                    'right': '',
+                    'bottom': '',
+                    'left': ''
+                }
+            }
+        }
 
+    },
+    boxShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ''
+        }
     },
 
     // Overlay
@@ -69914,12 +70125,11 @@ var attributes = {
             "Mobile": '',
             unit: 'px'
         }
-    },
-    height: {
-        type: "string",
-        default: 'auto'
     }
-};
+}, 'height', {
+    type: "string",
+    default: 'auto'
+});
 
 exports.default = attributes;
 
@@ -70066,7 +70276,7 @@ var Edit = function (_Component) {
                 clientId = _props2.clientId,
                 removeBlock = _props2.removeBlock;
 
-            removeBlock(clientId); //remove row block
+            removeBlock(clientId);
         }
     }, {
         key: 'render',
@@ -70222,21 +70432,17 @@ var Edit = function (_Component) {
                                         return setAttributes({ height: newValue });
                                     }
                                 }),
-                                "min" === height && React.createElement(
-                                    Fragment,
-                                    null,
-                                    React.createElement(_responsiveRangeControl2.default, {
-                                        label: __("Column Gutter", 'premium-blocks-for-gutenberg'),
-                                        value: minHeight,
-                                        min: '40',
-                                        max: '1200',
-                                        onChange: function onChange(newValue) {
-                                            return setAttributes({ minHeight: newValue });
-                                        },
-                                        defaultValue: 0,
-                                        showUnit: true
-                                    })
-                                ),
+                                "min" === height && React.createElement(_responsiveRangeControl2.default, {
+                                    label: __("Column Gutter", 'premium-blocks-for-gutenberg'),
+                                    value: minHeight,
+                                    min: '40',
+                                    max: '1200',
+                                    onChange: function onChange(newValue) {
+                                        return setAttributes({ minHeight: newValue });
+                                    },
+                                    defaultValue: 0,
+                                    showUnit: true
+                                }),
                                 React.createElement(SelectControl, {
                                     label: __("Content Position", 'premium-blocks-for-gutenberg'),
                                     help: __("If you have two or more inner columns then this option will work only on the preview page", 'premium-blocks-for-gutenberg'),
@@ -70284,90 +70490,28 @@ var Edit = function (_Component) {
                             { key: "style" },
                             React.createElement(
                                 PanelBody,
-                                { initialOpen: false, title: __('Background') },
+                                { initialOpen: false, title: __('Background', 'premium-blocks-for-gutenberg') },
                                 React.createElement(PremiumBackgroundControl, {
-                                    setAttributes: setAttributes,
-                                    saveContainerStyle: saveContainerStyle,
-                                    backgroundType: backgroundType,
-                                    backgroundColor: containerStyles[0].containerBack,
-                                    backgroundImageID: containerStyles[0].backgroundImageID,
-                                    backgroundImageURL: containerStyles[0].backgroundImageURL,
-                                    backgroundPosition: containerStyles[0].backgroundPosition,
-                                    backgroundRepeat: containerStyles[0].backgroundRepeat,
-                                    backgroundSize: containerStyles[0].backgroundSize,
-                                    fixed: containerStyles[0].fixed,
-                                    gradientLocationOne: containerStyles[0].gradientLocationOne,
-                                    gradientColorTwo: containerStyles[0].gradientColorTwo,
-                                    gradientLocationTwo: containerStyles[0].gradientLocationTwo,
-                                    gradientAngle: containerStyles[0].gradientAngle,
-                                    gradientPosition: containerStyles[0].gradientPosition,
-                                    gradientType: containerStyles[0].gradientType,
-                                    videoSource: containerStyles[0].videoSource,
-                                    bgExternalVideo: containerStyles[0].bgExternalVideo,
-                                    videoURL: containerStyles[0].videoURL,
-                                    videoID: containerStyles[0].videoID,
-                                    bgVideoFallbackID: containerStyles[0].bgVideoFallbackID,
-                                    bgVideoFallbackURL: containerStyles[0].bgVideoFallbackURL
+                                    value: backgroundOptions,
+                                    onChange: function onChange(value) {
+                                        return setAttributes({ backgroundOptions: value });
+                                    }
                                 })
                             ),
                             React.createElement(
                                 PanelBody,
                                 { initialOpen: false, title: __('Border') },
                                 React.createElement(PremiumBorder, {
-                                    borderType: containerStyles[0].borderType,
-                                    borderWidth: containerStyles[0].borderWidth,
-                                    top: borderTop,
-                                    right: borderRight,
-                                    bottom: borderBottom,
-                                    left: borderLeft,
-                                    borderColor: containerStyles[0].borderColor,
-                                    borderRadius: containerStyles[0].borderRadius,
-                                    onChangeType: function onChangeType(newType) {
-                                        return saveContainerStyle({ borderType: newType });
-                                    },
-                                    onChangeWidth: function onChangeWidth(_ref) {
-                                        var top = _ref.top,
-                                            right = _ref.right,
-                                            bottom = _ref.bottom,
-                                            left = _ref.left;
-                                        return setAttributes({
-                                            borderTop: top,
-                                            borderRight: right,
-                                            borderBottom: bottom,
-                                            borderLeft: left,
-                                            isUpdated: true
-                                        });
-                                    },
-                                    onChangeColor: function onChangeColor(colorValue) {
-                                        return saveContainerStyle({ borderColor: colorValue });
-                                    },
-                                    onChangeRadius: function onChangeRadius(newrRadius) {
-                                        return saveContainerStyle({ borderRadius: newrRadius });
+                                    value: border,
+                                    onChange: function onChange(value) {
+                                        return setAttributes({ border: value });
                                     }
                                 }),
                                 React.createElement(PremiumShadow, {
                                     boxShadow: true,
-                                    color: containerStyles[0].shadowColor,
-                                    blur: containerStyles[0].shadowBlur,
-                                    horizontal: containerStyles[0].shadowHorizontal,
-                                    vertical: containerStyles[0].shadowVertical,
-                                    position: containerStyles[0].shadowPosition,
-                                    onChangeColor: function onChangeColor(newColor) {
-                                        return saveContainerStyle({
-                                            shadowColor: newColor === undefined ? "transparent" : newColor
-                                        });
-                                    },
-                                    onChangeBlur: function onChangeBlur(newBlur) {
-                                        return saveContainerStyle({ shadowBlur: newBlur === undefined ? 0 : newBlur });
-                                    },
-                                    onChangehHorizontal: function onChangehHorizontal(newValue) {
-                                        return saveContainerStyle({ shadowHorizontal: newValue === undefined ? 0 : newValue });
-                                    },
-                                    onChangeVertical: function onChangeVertical(newValue) {
-                                        return saveContainerStyle({ shadowVertical: newValue === undefined ? 0 : newValue });
-                                    },
-                                    onChangePosition: function onChangePosition(newValue) {
-                                        return saveContainerStyle({ shadowPosition: newValue === undefined ? 0 : newValue });
+                                    value: boxShadow,
+                                    onChange: function onChange(value) {
+                                        return setAttributes({ boxShadow: value });
                                     }
                                 })
                             ),
@@ -70380,16 +70524,26 @@ var Edit = function (_Component) {
                                     React.createElement(
                                         Tab,
                                         { tabTitle: __('Top Shape') },
-                                        React.createElement(Shape, { shapeType: 'top', value: shapeTop, responsive: true, onChange: function onChange(val) {
+                                        React.createElement(Shape, {
+                                            shapeType: 'top',
+                                            value: shapeTop,
+                                            responsive: true,
+                                            onChange: function onChange(val) {
                                                 return setAttributes({ shapeTop: val });
-                                            } })
+                                            }
+                                        })
                                     ),
                                     React.createElement(
                                         Tab,
                                         { tabTitle: __('Bottom Shape') },
-                                        React.createElement(Shape, { shapeType: 'bottom', value: shapeBottom, responsive: true, onChange: function onChange(val) {
+                                        React.createElement(Shape, {
+                                            shapeType: 'bottom',
+                                            value: shapeBottom,
+                                            responsive: true,
+                                            onChange: function onChange(val) {
                                                 return setAttributes({ shapeBottom: val });
-                                            } })
+                                            }
+                                        })
                                     )
                                 )
                             )
@@ -70783,7 +70937,7 @@ var InsideTab = function (_Component) {
     return InsideTab;
 }(Component);
 
-exports.default = Tab;
+exports.default = InsideTab;
 
 /***/ })
 /******/ ]);

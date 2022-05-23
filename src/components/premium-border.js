@@ -1,4 +1,3 @@
-import { Component } from "react";
 const { __ } = wp.i18n;
 const { Tooltip } = wp.components;
 import AdvancedColorControl from './Color Control/ColorComponent'
@@ -51,7 +50,6 @@ const PremiumBorder = (props) => {
                     <div>
                         {props.label ? props.label : __('Border', 'premium-blocks-for-gutenberg')}
                     </div>
-
                     <div className="premium-blocks-border-button-list ">
                         {[['none', __("None")], ['solid', __('Solid')], ['dotted', __('Dotted')], ['dashed', __('Dashed')], ['double', __('Double')]].map((data, index) => {
                             return (
@@ -61,8 +59,7 @@ const PremiumBorder = (props) => {
                                     </button>
                                 </Tooltip>
                             )
-                        })
-                        }
+                        })}
                     </div>
                     {("none" != borderType) &&
                         <Tooltip text={__('Clear')}>
@@ -81,7 +78,6 @@ const PremiumBorder = (props) => {
                         onChange={(value) => onChangeBorder('borderWidth', { ...value })}
 
                     />
-
                 )}
                 {"none" != borderType && (
                     <Fragment>
@@ -100,10 +96,10 @@ const PremiumBorder = (props) => {
                     responsive={true}
                     showUnits={false}
                     onChange={(value) => onChangeBorder('borderRadius', { ...value })}
-
                 />
             </Fragment>
         </div>
     );
+
 }
 export default PremiumBorder

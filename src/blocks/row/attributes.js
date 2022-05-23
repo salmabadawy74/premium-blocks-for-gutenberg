@@ -22,7 +22,7 @@ const attributes = {
     padding: {
         type: 'object',
         default: {
-            desktop: {
+            Desktop: {
                 top: 70,
                 right: 0,
                 bottom: 70,
@@ -34,17 +34,22 @@ const attributes = {
 
     marginTop: {
         type: 'object',
-        default: { desktop: 0, unit: 'px' },
+        default: { Desktop: 0, unit: 'px' },
 
     },
     marginBottom: {
         type: 'object',
-        default: { desktop: 0, unit: 'px' },
+        default: { Desktop: 0, unit: 'px' },
     },
 
     rowGutter: {
         type: 'object',
-        default: { desktop: 30, tablet: 30, mobile: 30, unit: 'px' },
+        default: {
+            Desktop: 30,
+            Tablet: 30,
+            Mobile: 30,
+            unit: 'px'
+        },
 
     },
 
@@ -75,26 +80,116 @@ const attributes = {
             externalImageUrl: {}
         },
     },
-    heightOptions: {
+    height: {
         type: 'string',
         default: 'auto'
     },
-    rowHeight: {
-        type: 'object', default: {},
+    minHeight: {
+        type: 'object',
+        default: {
+            Desktop: '',
+            Tablet: '',
+            Mobile: "",
+            unit: 'px'
+        },
 
     },
-
-    borderRadius: {
-        type: 'object', default: {},
-
+    vPos: {
+        type: "string",
+        default: 'middle'
+    },
+    overflow: {
+        type: "string",
+        value: "default"
+    },
+    stretchSection: {
+        type: 'boolean',
+        default: false
+    },
+    backgroundOptions: {
+        type: "object",
+        default: {
+            'backgroundType': '',
+            'backgroundColor': '',
+            'backgroundImageID': '',
+            'backgroundImageURL': '',
+            'backgroundPosition': '',
+            'backgroundRepeat': '',
+            'backgroundSize': '',
+            'fixed': false,
+            'gradientLocationOne': "",
+            'gradientColorTwo': '',
+            'gradientLocationTwo': '',
+            'gradientAngle': '',
+            'gradientPosition': '',
+            'gradientType': '',
+            'videoSource': 'local',
+            'bgExternalVideo': '',
+            'videoURL': '',
+            'videoID': '',
+            'bgVideoFallbackID': '',
+            'bgVideoFallbackURL': ''
+        }
     },
 
-    rowShadow: {
-        type: 'object', default: {},
-    },
+
     border: {
-        type: 'object', default: {},
+        type: 'object',
+        default: {
+            'borderType': 'none',
+            'borderColor': '',
+            'borderWidth': {
+                Desktop: {
+                    'top': '',
+                    'right': '',
+                    'bottom': '',
+                    'left': ''
+                },
+                Tablet: {
+                    'top': '',
+                    'right': '',
+                    'bottom': '',
+                    'left': ''
+                },
+                Mobile: {
+                    'top': '',
+                    'right': '',
+                    'bottom': '',
+                    'left': ''
+                },
+            },
+            'borderRadius': {
+                Desktop: {
+                    'top': '',
+                    'right': '',
+                    'bottom': '',
+                    'left': ''
+                },
+                Tablet: {
+                    'top': '',
+                    'right': '',
+                    'bottom': '',
+                    'left': ''
+                },
+                Mobile: {
+                    'top': '',
+                    'right': '',
+                    'bottom': '',
+                    'left': ''
+                },
+            }
+        },
 
+    },
+    boxShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ''
+        }
     },
 
     // Overlay

@@ -1,19 +1,39 @@
 import React from 'react'
 const { SelectControl, Button, ButtonGroup, Tooltip } = wp.components;
-import { FontAwesomeEnabled } from "../../assets/js/settings";
+// import { FontAwesomeEnabled } from "../../assets/js/settings";
 
 import PremiumBackground from './premium-background'
 import map from 'lodash/map';
 const { __ } = wp.i18n;
-const { Fragment } = wp.element;
+const { Fragment, useState } = wp.element;
 import AdvancedPopColorControl from './Color Control/ColorComponent'
 import ResponsiveSingleRangeControl from "./RangeControl/single-range-control";
-export default function PremiumBackgroundControl({
-    backgroundType, backgroundColor, backgroundImageID,
-    backgroundImageURL, backgroundPosition, backgroundRepeat,
-    backgroundSize, fixed, gradientType, setAttributes,
-    saveContainerStyle, gradientLocationOne, gradientColorTwo,
-    gradientLocationTwo, gradientAngle, gradientPosition }) {
+export default function PremiumBackgroundControl({ value, onChange }) {
+    let defaultValues = {
+        'backgroundType': '',
+        'backgroundColor': '',
+        'backgroundImageID': '',
+        'backgroundImageURL': '',
+        'backgroundPosition': '',
+        'backgroundRepeat': '',
+        'backgroundSize': '',
+        'fixed': false,
+        'gradientLocationOne': "",
+        'gradientColorTwo': '',
+        'gradientLocationTwo': '',
+        'gradientAngle': '',
+        'gradientPosition': '',
+        'gradientType': '',
+        'videoSource': 'local',
+        'bgExternalVideo': '',
+        'videoURL': '',
+        'videoID': '',
+        'bgVideoFallbackID': '',
+        'bgVideoFallbackURL': ''
+
+    }
+    value = value ? { ...defaultValues, ...value } : defaultValues
+    const [state, setState] = useState(value)
 
     const gradTypes = [
         { key: 'linear', name: __('Linear') },
@@ -21,12 +41,30 @@ export default function PremiumBackgroundControl({
     ];
 
     const bgType = [
-        { key: 'solid', icon: "fa fa-paint-brush", tooltip: __('Classic') },
-        { key: 'gradient', icon: "fa fa-barcode", tooltip: __('Gradient') },
+        { key: 'solid', icon: "fa fa-image", tooltip: __('Classic', 'premium-blocks-for-gutenberg') },
+        { key: 'gradient', icon: "fa fa-barcode", tooltip: __('Gradient', 'premium-blocks-for-gutenberg') },
+        { key: "video", icon: 'fa fa-video-camera', tooltip: __('Video', 'premium-blocks-for-gutenberg') }
     ];
+    const onChangeBackground = (item, value) => {
+        const updatedState = { ...state };
+        updatedState[item] = value
+        setState(updatedState)
+        onChange(updatedState)
+    }
+    const {
+        backgroundType, backgroundColor, backgroundImageID, backgroundImageURL,
+        backgroundPosition, backgroundRepeat, backgroundSize, fixed, bgExternalVideo,
+        gradientLocationOne, gradientColorTwo, gradientLocationTwo, videoURL, videoID,
+        gradientAngle, gradientPosition, gradientType, videoSource, bgVideoFallbackID,
+        bgVideoFallbackURL } = state
 
     return (
         <Fragment>
+            <PremiumBackground
+                type="color"
+                colorValue={backgroundColor}
+                onChangeColor={newValue => onChangeBackground('backgroundColor', newValue)}
+            />
             <div className="Premium-btn-size-settings-container">
                 <h2 className="Premium-beside-btn-group">{__('Background Type', 'premium-blocks-for-gutenberg')}</h2>
                 <ButtonGroup className="Premium-button-size-type-options" aria-label={__('Background Type', 'premium-blocks-for-gutenberg')}>
@@ -37,9 +75,9 @@ export default function PremiumBackgroundControl({
                                 className="Premium-btn-size-btn"
                                 isSmall
                                 isPrimary={backgroundType === key}
-                                onClick={() => setAttributes({ backgroundType: key })}
+                                onClick={() => onChangeBackground('backgroundType', key)}
                             >
-                                {1 == FontAwesomeEnabled ? <i className={icon}></i> : tooltip}
+                                {1 == PremiumOptionsSettings.FontAwesomeEnabled ? <i className={icon}></i> : tooltip}
                             </Button>
                         </Tooltip>
                     ))}
@@ -47,15 +85,7 @@ export default function PremiumBackgroundControl({
             </div>
             {'solid' === backgroundType && (
                 <div className="Premium-inner-sub-section">
-                    <PremiumBackground
-                        type="color"
-                        colorValue={backgroundColor}
-                        onChangeColor={newValue =>
-                            saveContainerStyle({
-                                containerBack: newValue,
-                            })
-                        }
-                    />
+
                     <PremiumBackground
                         imageID={backgroundImageID}
                         imageURL={backgroundImageURL}
@@ -63,28 +93,12 @@ export default function PremiumBackgroundControl({
                         backgroundRepeat={backgroundRepeat}
                         backgroundSize={backgroundSize}
                         fixed={fixed}
-                        onSelectMedia={media => {
-                            saveContainerStyle({
-                                backgroundImageID: media.id,
-                                backgroundImageURL: media.url
-                            });
-                        }}
-                        onRemoveImage={() =>
-                            saveContainerStyle({
-                                backgroundImageURL: "",
-                                backgroundImageID: ""
-                            })
-                        }
-                        onChangeBackPos={newValue =>
-                            saveContainerStyle({ backgroundPosition: newValue })
-                        }
-                        onchangeBackRepeat={newValue =>
-                            saveContainerStyle({ backgroundRepeat: newValue })
-                        }
-                        onChangeBackSize={newValue =>
-                            saveContainerStyle({ backgroundSize: newValue })
-                        }
-                        onChangeFixed={check => saveContainerStyle({ fixed: check })}
+                        onSelectMedia={media => { onChangeBackground('backgroundImageURL', media.url) }}
+                        onRemoveImage={() => onChangeBackground('backgroundImageURL', '')}
+                        onChangeBackPos={newValue => onChangeBackground('backgroundPosition', newValue)}
+                        onchangeBackRepeat={newValue => onChangeBackground('backgroundRepeat', newValue)}
+                        onChangeBackSize={newValue => onChangeBackground('backgroundSize', newValue)}
+                        onChangeFixed={check => onChangeBackground('fixed', check)}
                     />
                 </div>
             )}
@@ -94,16 +108,12 @@ export default function PremiumBackgroundControl({
                         label={__('Gradient Color 1', 'premium-blocks-for-gutenberg')}
                         colorValue={backgroundColor}
                         colorDefault={''}
-                        onColorChange={value => {
-                            saveContainerStyle({ containerBack: value })
-                        }}
+                        onColorChange={value => onChangeBackground('backgroundColor', value)}
                     />
                     <ResponsiveSingleRangeControl
                         label={__('Location', 'premium-blocks-for-gutenberg')}
                         value={gradientLocationOne}
-                        onChange={(value) => {
-                            saveContainerStyle({ gradientLocationOne: value })
-                        }}
+                        onChange={(value) => onChangeBackground('gradientLocationOne', value)}
                         showUnit={false}
                         defaultValue={0}
                     />
@@ -111,16 +121,12 @@ export default function PremiumBackgroundControl({
                         label={__('Gradient Color 2', 'premium-blocks-for-gutenberg')}
                         colorValue={gradientColorTwo}
                         colorDefault={'#777777'}
-                        onColorChange={value => {
-                            saveContainerStyle({ gradientColorTwo: value })
-                        }}
+                        onColorChange={value => onChangeBackground('gradientColorTwo', value)}
                     />
                     <ResponsiveSingleRangeControl
                         label={__('Location', 'premium-blocks-for-gutenberg')}
                         value={gradientLocationTwo}
-                        onChange={(value) => {
-                            saveContainerStyle({ gradientLocationTwo: value })
-                        }}
+                        onChange={(value) => onChangeBackground('gradientLocationTwo', value)}
                         showUnit={false}
                         defaultValue={0}
                     />
@@ -133,9 +139,7 @@ export default function PremiumBackgroundControl({
                                     className="Premium-btn-size-btn"
                                     isSmall
                                     isPrimary={gradientType === key}
-                                    onClick={() => {
-                                        saveContainerStyle({ gradientType: key })
-                                    }}
+                                    onClick={() => onChangeBackground('gradientType', key)}
                                 >
                                     {name}
                                 </Button>
@@ -146,9 +150,7 @@ export default function PremiumBackgroundControl({
                         <ResponsiveSingleRangeControl
                             label={__('Gradient Angle', 'premium-blocks-for-gutenberg')}
                             value={gradientAngle}
-                            onChange={(value) => {
-                                saveContainerStyle({ gradientAngle: value })
-                            }}
+                            onChange={(value) => onChangeBackground('gradientAngle', value)}
                             showUnit={false}
                             defaultValue={0}
                             min={0}
@@ -170,11 +172,52 @@ export default function PremiumBackgroundControl({
                                 { value: 'right center', label: __('Right Center', 'premium-blocks-for-gutenberg') },
                                 { value: 'right bottom', label: __('Right Bottom', 'premium-blocks-for-gutenberg') },
                             ]}
-                            onChange={value => saveContainerStyle({ gradientPosition: value })}
+                            onChange={value => onChangeBackground('gradientPosition', value)}
                         />
                     )}
                 </div>
             )}
+            {
+                'video' === backgroundType && (
+                    <Fragment>
+                        <SelectControl
+                            label={__('Video Source', 'premium-blocks-for-gutenberg')}
+                            value={videoSource}
+                            options={[
+                                { value: 'local', label: __('Local', 'premium-blocks-for-gutenberg') },
+                                { value: 'external', label: __('External', 'premium-blocks-for-gutenberg') }
+                            ]}
+                            onChange={(val) => onChangeBackground('videoSource', val)}
+                        />
+                        {videoSource === 'external' ?
+                            <TextControl
+                                label={__('Video URL', "premium-blocks-for-gutenberg")}
+                                value={bgExternalVideo || ""}
+                                onChange={val => onChangeBackground('bgExternalVideo', val)}
+                            />
+                            :
+                            <Fragment>
+                                <p>{__('Video', "premium-blocks-for-gutenberg")}</p>
+                                <PremiumMediaUpload
+                                    type="video"
+                                    imageID={videoID}
+                                    imageURL={videoURL}
+                                    onSelectMedia={media => onChangeBackground('videoURL', media.url)}
+                                    onRemoveImage={() => onChangeBackground('videoURL', "")}
+                                />
+                            </Fragment>
+                        }
+                        <p>{__('Fallback Image (Poster)', 'premium-blocks-for-gutenberg')}</p>
+                        <PremiumMediaUpload
+                            type="image"
+                            imageID={bgVideoFallbackID}
+                            imageURL={bgVideoFallbackURL}
+                            onSelectMedia={media => onChangeBackground('bgVideoFallbackURL', media.url)}
+                            onRemoveImage={() => onChangeBackground('bgVideoFallbackURL', "")}
+                        />
+                    </Fragment>
+                )
+            }
         </Fragment>
     )
 }

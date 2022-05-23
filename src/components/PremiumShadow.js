@@ -1,35 +1,33 @@
 const { __ } = wp.i18n;
 const { SelectControl, Dropdown, Button, ColorPicker } = wp.components;
-const { Fragment } = wp.element;
+const { Fragment, useState } = wp.element;
 import ResponsiveSingleRangeControl from "./RangeControl/single-range-control";
-import AdvancedColorControl from './Color Control/ColorComponent'
+import AdvancedColorControl from './Color Control/ColorComponent';
 
-export default function PremiumShadow(props) {
-    const {
-        label,
-        color,
-        blur,
-        horizontal,
-        vertical,
-        position = "outline",
-        onChangeColor = () => { },
-        onChangeBlur = () => { },
-        onChangehHorizontal = () => { },
-        onChangeVertical = () => { },
-        onChangePosition = () => { },
-        boxShadow = false
-    } = props;
+export default function PremiumShadow({ label, value, onChange, boxShadow = false }) {
+    let defaultValues = {
+        'color': '',
+        'blur': '',
+        'horizontal': '',
+        'vertical': '',
+        'position': ''
+    }
+    value = value ? { ...defaultValues, ...value } : defaultValues;
+    const [state, setState] = useState(value);
+
+    const onChangeShadow = (item, value) => {
+        const updatedState = { ...state };
+        updatedState[item] = value;
+        setState(updatedState)
+        onChange(updatedState)
+    }
 
     const POSITION = [
-        {
-            value: "inset",
-            label: __("Inset", 'premium-blocks-for-gutenberg')
-        },
-        {
-            value: "",
-            label: __("Outline", 'premium-blocks-for-gutenberg')
-        }
+        { value: "inset", label: __("Inset", 'premium-blocks-for-gutenberg') },
+        { value: "", label: __("Outline", 'premium-blocks-for-gutenberg') }
     ];
+
+    const { color, blur, horizontal, vertical, position } = state
 
     return (
         <div className="premium-control-toggle premium-shadow-control__container">
@@ -38,7 +36,7 @@ export default function PremiumShadow(props) {
                 <AdvancedColorControl
                     colorValue={color}
                     colorDefault={''}
-                    onColorChange={onChangeColor}
+                    onColorChange={value => onChangeShadow('color', value)}
                     disableReset={true}
                 />
                 <Dropdown
@@ -55,7 +53,7 @@ export default function PremiumShadow(props) {
                             <ResponsiveSingleRangeControl
                                 label={__("Horizontal")}
                                 value={horizontal}
-                                onChange={onChangehHorizontal}
+                                onChange={value => onChangeShadow('horizontal', value)}
                                 showUnit={false}
                                 defaultValue={0}
                                 min={-100}
@@ -64,7 +62,7 @@ export default function PremiumShadow(props) {
                             <ResponsiveSingleRangeControl
                                 label={__("Vertical")}
                                 value={vertical}
-                                onChange={onChangeVertical}
+                                onChange={value => onChangeShadow('vertical', value)}
                                 showUnit={false}
                                 defaultValue={0}
                                 min={-100}
@@ -73,7 +71,7 @@ export default function PremiumShadow(props) {
                             <ResponsiveSingleRangeControl
                                 label={__("Blur")}
                                 value={blur}
-                                onChange={onChangeBlur}
+                                onChange={value => onChangeShadow('blur', value)}
                                 showUnit={false}
                                 defaultValue={0}
                             />
@@ -81,7 +79,7 @@ export default function PremiumShadow(props) {
                                 label={__("Position")}
                                 options={POSITION}
                                 value={position}
-                                onChange={onChangePosition}
+                                onChange={value => onChangeShadow('position', value)}
                             />}
                         </Fragment>
                     )}

@@ -62,7 +62,7 @@ class Edit extends Component {
 
     removeRowBlock() {
         const { clientId, removeBlock } = this.props;
-        removeBlock(clientId); //remove row block
+        removeBlock(clientId);
     }
 
 
@@ -172,10 +172,12 @@ class Edit extends Component {
                             <PanelBody initialOpen={true} title={__('General', "premium-blocks-for-gutenberg")}>
                                 <SelectControl
                                     label={__("Content Width", 'premium-blocks-for-gutenberg')}
-                                    options={[
-                                        { value: "boxed", label: __("Boxed", 'premium-blocks-for-gutenberg') },
-                                        { value: "full", label: __("Full Width", 'premium-blocks-for-gutenberg') }
-                                    ]}
+                                    options={
+                                        [
+                                            { value: "boxed", label: __("Boxed", 'premium-blocks-for-gutenberg') },
+                                            { value: "full", label: __("Full Width", 'premium-blocks-for-gutenberg') }
+                                        ]
+                                    }
                                     value={innerWidthType}
                                     onChange={newValue => setAttributes({ innerWidthType: newValue })}
                                 />
@@ -217,23 +219,20 @@ class Edit extends Component {
                                     onChange={newValue => setAttributes({ height: newValue })}
                                 />
                                 {"min" === height && (
-                                    <Fragment>
-                                        <ResponsiveRangeControl
-                                            label={__("Column Gutter", 'premium-blocks-for-gutenberg')}
-                                            value={minHeight}
-                                            min="40"
-                                            max="1200"
-                                            onChange={newValue => setAttributes({ minHeight: newValue })}
-                                            defaultValue={0}
-                                            showUnit={true}
-                                        />
-                                    </Fragment>
+                                    <ResponsiveRangeControl
+                                        label={__("Column Gutter", 'premium-blocks-for-gutenberg')}
+                                        value={minHeight}
+                                        min="40"
+                                        max="1200"
+                                        onChange={newValue => setAttributes({ minHeight: newValue })}
+                                        defaultValue={0}
+                                        showUnit={true}
+                                    />
+
                                 )}
                                 <SelectControl
                                     label={__("Content Position", 'premium-blocks-for-gutenberg')}
-                                    help={__(
-                                        "If you have two or more inner columns then this option will work only on the preview page", 'premium-blocks-for-gutenberg'
-                                    )}
+                                    help={__("If you have two or more inner columns then this option will work only on the preview page", 'premium-blocks-for-gutenberg')}
                                     options={[
                                         {
                                             value: "top",
@@ -275,84 +274,41 @@ class Edit extends Component {
                             </PanelBody>
                         </InspectorTab>
                         <InspectorTab key={"style"}>
-                            <PanelBody initialOpen={false} title={__('Background')}>
+                            <PanelBody initialOpen={false} title={__('Background', 'premium-blocks-for-gutenberg')}>
                                 <PremiumBackgroundControl
-                                    setAttributes={setAttributes}
-                                    saveContainerStyle={saveContainerStyle}
-                                    backgroundType={backgroundType}
-                                    backgroundColor={containerStyles[0].containerBack}
-                                    backgroundImageID={containerStyles[0].backgroundImageID}
-                                    backgroundImageURL={containerStyles[0].backgroundImageURL}
-                                    backgroundPosition={containerStyles[0].backgroundPosition}
-                                    backgroundRepeat={containerStyles[0].backgroundRepeat}
-                                    backgroundSize={containerStyles[0].backgroundSize}
-                                    fixed={containerStyles[0].fixed}
-                                    gradientLocationOne={containerStyles[0].gradientLocationOne}
-                                    gradientColorTwo={containerStyles[0].gradientColorTwo}
-                                    gradientLocationTwo={containerStyles[0].gradientLocationTwo}
-                                    gradientAngle={containerStyles[0].gradientAngle}
-                                    gradientPosition={containerStyles[0].gradientPosition}
-                                    gradientType={containerStyles[0].gradientType}
-                                    videoSource={containerStyles[0].videoSource}
-                                    bgExternalVideo={containerStyles[0].bgExternalVideo}
-                                    videoURL={containerStyles[0].videoURL}
-                                    videoID={containerStyles[0].videoID}
-                                    bgVideoFallbackID={containerStyles[0].bgVideoFallbackID}
-                                    bgVideoFallbackURL={containerStyles[0].bgVideoFallbackURL}
+                                    value={backgroundOptions}
+                                    onChange={(value) => setAttributes({ backgroundOptions: value })}
                                 />
                             </PanelBody>
                             <PanelBody initialOpen={false} title={__('Border')}>
                                 <PremiumBorder
-                                    borderType={containerStyles[0].borderType}
-                                    borderWidth={containerStyles[0].borderWidth}
-                                    top={borderTop}
-                                    right={borderRight}
-                                    bottom={borderBottom}
-                                    left={borderLeft}
-                                    borderColor={containerStyles[0].borderColor}
-                                    borderRadius={containerStyles[0].borderRadius}
-                                    onChangeType={(newType) => saveContainerStyle({ borderType: newType })}
-                                    onChangeWidth={({ top, right, bottom, left }) =>
-                                        setAttributes({
-                                            borderTop: top,
-                                            borderRight: right,
-                                            borderBottom: bottom,
-                                            borderLeft: left,
-                                            isUpdated: true,
-                                        })
-                                    }
-                                    onChangeColor={(colorValue) => saveContainerStyle({ borderColor: colorValue })}
-                                    onChangeRadius={(newrRadius) => saveContainerStyle({ borderRadius: newrRadius })}
+                                    value={border}
+                                    onChange={(value) => setAttributes({ border: value })}
                                 />
                                 <PremiumShadow
                                     boxShadow={true}
-                                    color={containerStyles[0].shadowColor}
-                                    blur={containerStyles[0].shadowBlur}
-                                    horizontal={containerStyles[0].shadowHorizontal}
-                                    vertical={containerStyles[0].shadowVertical}
-                                    position={containerStyles[0].shadowPosition}
-                                    onChangeColor={newColor =>
-                                        saveContainerStyle({
-                                            shadowColor:
-                                                newColor === undefined
-                                                    ? "transparent"
-                                                    : newColor
-                                        })
-                                    }
-                                    onChangeBlur={newBlur => saveContainerStyle({ shadowBlur: newBlur === undefined ? 0 : newBlur })}
-                                    onChangehHorizontal={newValue => saveContainerStyle({ shadowHorizontal: newValue === undefined ? 0 : newValue })}
-                                    onChangeVertical={newValue => saveContainerStyle({ shadowVertical: newValue === undefined ? 0 : newValue })}
-                                    onChangePosition={newValue => saveContainerStyle({ shadowPosition: newValue === undefined ? 0 : newValue })}
+                                    value={boxShadow}
+                                    onChange={(value) => setAttributes({ boxShadow: value })}
                                 />
                             </PanelBody>
 
                             <PanelBody initialOpen={false} title={__('Shape Divider')}>
                                 <Tabs>
                                     <Tab tabTitle={__('Top Shape')}>
-                                        <Shape shapeType="top" value={shapeTop} responsive onChange={val => setAttributes({ shapeTop: val })} />
+                                        <Shape
+                                            shapeType="top"
+                                            value={shapeTop}
+                                            responsive
+                                            onChange={val => setAttributes({ shapeTop: val })}
+                                        />
                                     </Tab>
                                     <Tab tabTitle={__('Bottom Shape')}>
-                                        <Shape shapeType="bottom" value={shapeBottom} responsive onChange={val => setAttributes({ shapeBottom: val })} />
+                                        <Shape
+                                            shapeType="bottom"
+                                            value={shapeBottom}
+                                            responsive
+                                            onChange={val => setAttributes({ shapeBottom: val })}
+                                        />
                                     </Tab>
                                 </Tabs>
                             </PanelBody>
