@@ -5957,3 +5957,83 @@ input[type="number"] {
     margin-top: 0;
     border-top: none !important;
 }
+/* ******************** Panel Body Tab ****************************/
+/* ****************************************************************/
+.premium-field-tabs {
+    margin-left: -16px;
+    margin-right: -16px;
+}
+.premium-field-tabs:last-child {
+    margin-bottom: -16px !important;
+}
+.premium-field-tabs.premium-has-label {
+    border-top: 1px solid #e9e9e9;
+}
+.premium-field-tabs.premium-has-label .premium-field-tab-header {
+    padding-top: 10px;
+}
+.premium-field-tabs.premium-has-label .premium-field-tab-header label {
+    margin: 0 15px;
+}
+.premium-field-tabs.premium-has-label .premium-field-tab-menus {
+    margin-top: 10px;
+}
+.premium-field-tabs.panel-group {
+    margin-top: 20px;
+}
+.premium-field-tabs.panel-group .premium-field-tab-menus {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-evenly;
+}
+.premium-field-tabs.panel-group .premium-field-tab-menus .tab-menu-wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.premium-field-tabs.panel-group
+    .premium-field-tab-menus
+    .tab-menu-wrapper
+    .premium-tab-menu {
+    flex-grow: 1;
+}
+.premium-field-tabs:not(.panel-group) .premium-field-tab-menus {
+    display: flex;
+}
+.premium-field-tabs:not(.panel-group) .premium-field-tab-menus button {
+    display: block;
+    text-align: center;
+    border: 1px solid #f0f0f0;
+    box-sizing: border-box;
+    align-items: center;
+    border-radius: 2px;
+    width: 50%;
+    height: 40px !important;
+    margin: 10px 1px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: none !important;
+    cursor: pointer;
+    background-color: #fff;
+}
+.premium-field-tabs:not(.panel-group)
+    .premium-field-tab-menus
+    button:not(:last-child) {
+    border-right: none;
+}
+.premium-field-tabs:not(.panel-group) .premium-field-tab-menus button.active {
+    border: none;
+    color: #000;
+    background-color: #f0f0f0;
+}
+
+.premium-field-tabs:not(.panel-group) .premium-field-tab-items {
+    padding: 15px;
+}
+.premium-field .premium-field-boxshadow,
+.premium-field.premium-field-typography {
+    border: 1px solid #e9e9e9;
+    padding: 12px;
+    border-radius: 5px;
+    background-color: #fff;
+}

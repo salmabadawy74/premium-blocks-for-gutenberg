@@ -14,7 +14,8 @@ import PremiumResponsivePadding from '../../components/Premium-Responsive-Paddin
 import PremiumResponsiveMargin from '../../components/Premium-Responsive-Margin';
 import WebfontLoader from "../../components/typography/fontLoader"
 import PremiumShadow from "../../components/PremiumShadow";
-
+import Tabs from '../../components/InsideTabs'
+import Tab from '../../components/InsideTab';
 const { __ } = wp.i18n;
 
 const { PanelBody, SelectControl, ToggleControl, TabPanel } = wp.components;
@@ -945,7 +946,7 @@ class edit extends Component {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <TabPanel
+                        {/* <TabPanel
                             className="premium-color-tabpanel"
                             activeClass="active-tab"
                             tabs={[
@@ -1059,7 +1060,94 @@ class edit extends Component {
                                     </div>
                                 );
                             }}
-                        </TabPanel>
+                        </TabPanel> */}
+                        <Tabs>
+                            <Tab tabTitle={__('Normal')}>
+                                <Fragment>
+                                    {iconChecked && (
+                                        <Fragment>
+                                            <AdvancedPopColorControl
+                                                label={__("Icon Color", 'premium-blocks-for-gutenberg')}
+                                                colorValue={iconColor}
+                                                colorDefault={''}
+                                                onColorChange={newValue => setAttributes({ iconColor: newValue || "transparent", })}
+                                            />
+                                            <AdvancedPopColorControl
+                                                label={__(`Icon Background Color`)}
+                                                colorValue={iconBackColor}
+                                                onColorChange={newvalue => setAttributes({ iconBackColor: newvalue, })}
+                                                colorDefault={``}
+                                            />
+                                        </Fragment>
+                                    )}
+                                    {titleChecked && (
+                                        <AdvancedPopColorControl
+                                            label={__("Title Color", 'premium-blocks-for-gutenberg')}
+                                            colorValue={titleStyles[0].titleColor}
+                                            colorDefault={''}
+                                            onColorChange={newValue => saveTitleStyle({ titleColor: newValue || "transparent", })}
+                                        />
+                                    )}
+                                    {descChecked && (
+                                        <AdvancedPopColorControl
+                                            label={__("Description Color", 'premium-blocks-for-gutenberg')}
+                                            colorValue={descStyles[0].descColor}
+                                            colorDefault={''}
+                                            onColorChange={newValue => saveDescriptionStyle({ descColor: newValue || "transparent", })}
+                                        />
+                                    )}
+                                    {btnChecked && (
+                                        <Fragment>
+                                            <AdvancedPopColorControl
+                                                label={__("Button Color", 'premium-blocks-for-gutenberg')}
+                                                colorValue={btnStyles[0].btnColor}
+                                                colorDefault={''}
+                                                onColorChange={newValue => saveButtonStyle({ btnColor: newValue || "#000", })}
+                                            />
+
+                                            <AdvancedPopColorControl
+                                                label={__(`Button Background Color`)}
+                                                colorValue={btnStyles[0].btnBack}
+                                                onColorChange={newvalue => saveButtonStyle({ btnBack: newvalue, })}
+                                                colorDefault={``}
+                                            />
+                                        </Fragment>
+                                    )}
+                                    <AdvancedPopColorControl
+                                        label={__(`Container Background Color`)}
+                                        colorValue={containerStyles[0].backColor}
+                                        onColorChange={newvalue => saveContainerStyle({ backColor: newvalue })}
+                                        colorDefault={``}
+                                    />
+                                </Fragment>
+                            </Tab>
+                            <Tab tabTitle={__('Hover')}>
+                                <Fragment>
+                                    {btnChecked && (
+                                        <Fragment>
+                                            <AdvancedPopColorControl
+                                                label={__("Button Hover Color", 'premium-blocks-for-gutenberg')}
+                                                colorValue={btnStyles[0].btnHoverColor}
+                                                colorDefault={''}
+                                                onColorChange={newValue => saveButtonStyle({ btnHoverColor: newValue || "#000", })}
+                                            />
+                                            <AdvancedPopColorControl
+                                                label={__('Button Background Hover Color', 'premium-blocks-for-gutenberg')}
+                                                colorValue={btnStyles[0].btnHoverBack}
+                                                colorDefault={''}
+                                                onColorChange={newValue => saveButtonStyle({ btnHoverBack: newValue, })}
+                                            />
+                                        </Fragment>
+                                    )}
+                                    <AdvancedPopColorControl
+                                        label={__('Button Border Hover Color', 'premium-blocks-for-gutenberg')}
+                                        colorValue={btnHoverBorder}
+                                        colorDefault={''}
+                                        onColorChange={newValue => setAttributes({ btnHoverBorder: newValue || "transparent", })}
+                                    />
+                                </Fragment>
+                            </Tab>
+                        </Tabs>
                     </PanelBody>
                     <PremiumResponsiveTabs
                         Desktop={hideDesktop}
