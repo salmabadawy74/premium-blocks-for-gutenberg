@@ -870,6 +870,54 @@ const newAttributes = {
                 }
             }
         }
+    },
+    modalBackground: {
+        type: "object",
+        default: {
+            'backgroundType': '',
+            'backgroundColor': '',
+            'backgroundImageID': '',
+            'backgroundImageURL': '',
+            'backgroundPosition': '',
+            'backgroundRepeat': '',
+            'backgroundSize': '',
+            'fixed': false,
+            'gradientLocationOne': "",
+            'gradientColorTwo': '',
+            'gradientLocationTwo': '',
+            'gradientAngle': '',
+            'gradientPosition': '',
+            'gradientType': ''
+        }
+    },
+    modalShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
+    },
+    triggerShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
+    },
+    triggerTextShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+        }
     }
 }
 
@@ -1249,6 +1297,42 @@ const deprecated = [
                             left: ''
                         }
                     }
+                },
+                modalBackground: {
+                    'backgroundType': attributes.backgroundType || '',
+                    'backgroundColor': attributes.modalStyles[0].containerBack || '',
+                    'backgroundImageID': attributes.modalStyles[0].backgroundImageID || '',
+                    'backgroundImageURL': attributes.modalStyles[0].backgroundImageURL || '',
+                    'backgroundPosition': attributes.modalStyles[0].backgroundPosition || '',
+                    'backgroundRepeat': attributes.modalStyles[0].backgroundRepeat || '',
+                    'backgroundSize': attributes.modalStyles[0].backgroundSize || '',
+                    'fixed': attributes.modalStyles[0].fixed || '',
+                    'gradientLocationOne': attributes.modalStyles[0].gradientLocationOne || '',
+                    'gradientColorTwo': attributes.modalStyles[0].gradientColorTwo || '',
+                    'gradientLocationTwo': attributes.modalStyles[0].gradientLocationTwo || '',
+                    'gradientAngle': attributes.modalStyles[0].gradientAngle || '',
+                    'gradientPosition': attributes.modalStyles[0].gradientPosition || '',
+                    'gradientType': attributes.modalStyles[0].gradientType || ''
+                },
+                triggerShadow: {
+                    'color': attributes.triggerStyles[0].triggerShadowColor || '',
+                    'blur': attributes.triggerStyles[0].triggerShadowBlur || '',
+                    'horizontal': attributes.triggerStyles[0].triggerShadowHorizontal || '',
+                    'vertical': attributes.triggerStyles[0].triggerShadowVertical || '',
+                    'position': attributes.triggerStyles[0].triggerShadowPosition || ''
+                },
+                modalShadow: {
+                    'color': attributes.modalStyles[0].triggerShadowColor || '',
+                    'blur': attributes.modalStyles[0].triggerShadowBlur || '',
+                    'horizontal': attributes.modalStyles[0].triggerShadowHorizontal || '',
+                    'vertical': attributes.modalStyles[0].triggerShadowVertical || '',
+                    'position': attributes.modalStyles[0].triggerShadowPosition || ''
+                },
+                triggerTextShadow: {
+                    'color': attributes.triggerStyles[0].textShadowColor || '',
+                    'blur': attributes.triggerStyles[0].textShadowBlur || '',
+                    'horizontal': attributes.triggerStyles[0].textShadowHorizontal || '',
+                    'vertical': attributes.triggerStyles[0].textShadowVertical || '',
                 }
             }
             return Object.assign(attributes, newAttributes)

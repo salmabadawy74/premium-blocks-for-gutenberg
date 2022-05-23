@@ -50,10 +50,13 @@ const Inspector = ({
         lowerBorder,
         lowerPadding,
         modalStyles,
-        backgroundType,
+        modalBackground,
+        triggerShadow,
         modalBorder,
         modalMargin,
-        modalPadding
+        modalPadding,
+        modalShadow,
+        triggerTextShadow
     } = attributes;
     const saveContentStyle = (value) => {
         const newUpdate = contentStyles.map((item, index) => {
@@ -739,30 +742,18 @@ const Inspector = ({
                         </Fragment>)}
                         {(triggerSettings[0].triggerType === "image" || triggerSettings[0].triggerType === "button") && (
                             <PremiumShadow
+                                label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
                                 boxShadow={true}
-                                color={triggerStyles[0].triggerShadowColor}
-                                blur={triggerStyles[0].triggerShadowBlur}
-                                horizontal={triggerStyles[0].triggerShadowHorizontal}
-                                vertical={triggerStyles[0].triggerShadowVertical}
-                                position={triggerStyles[0].triggerShadowPosition}
-                                onChangeColor={newColor => saveTriggerStyles({ triggerShadowColor: newColor })}
-                                onChangeBlur={newBlur => saveTriggerStyles({ triggerShadowBlur: newBlur })}
-                                onChangehHorizontal={newValue => saveTriggerStyles({ triggerShadowHorizontal: newValue })}
-                                onChangeVertical={newValue => saveTriggerStyles({ triggerShadowVertical: newValue })}
-                                onChangePosition={newValue => saveTriggerStyles({ triggerShadowPosition: newValue })}
+                                value={triggerShadow}
+                                onChange={(value) => setAttributes({ triggerShadow: value })}
                             />
                         )}
                         {triggerSettings[0].triggerType === "text" &&
                             <PremiumShadow
                                 label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
-                                color={triggerStyles[0].textShadowColor}
-                                blur={triggerStyles[0].textShadowBlur}
-                                horizontal={triggerStyles[0].textShadowHorizontal}
-                                vertical={triggerStyles[0].textShadowVertical}
-                                onChangeColor={newColor => saveTriggerStyles({ textShadowColor: newColor || "transparent" })}
-                                onChangeBlur={newBlur => saveTriggerStyles({ textShadowBlur: newBlur || "0" })}
-                                onChangehHorizontal={newValue => saveTriggerStyles({ textShadowHorizontal: newValue || "0" })}
-                                onChangeVertical={newValue => saveTriggerStyles({ textShadowVertical: newValue || "0" })}
+                                value={triggerTextShadow}
+                                onChange={(value) => setAttributes({ triggerTextShadow: value })}
+                                boxShadow={false}
                             />
                         }
                         {triggerSettings[0].triggerType === "lottie" && (
@@ -971,22 +962,8 @@ const Inspector = ({
                             </Fragment>
                         )}
                         <PremiumBackgroundControl
-                            setAttributes={setAttributes}
-                            saveContainerStyle={saveModalStyles}
-                            backgroundType={backgroundType}
-                            backgroundColor={modalStyles[0].containerBack}
-                            backgroundImageID={modalStyles[0].backgroundImageID}
-                            backgroundImageURL={modalStyles[0].backgroundImageURL}
-                            backgroundPosition={modalStyles[0].backgroundPosition}
-                            backgroundRepeat={modalStyles[0].backgroundRepeat}
-                            backgroundSize={modalStyles[0].backgroundSize}
-                            fixed={modalStyles[0].fixed}
-                            gradientLocationOne={modalStyles[0].gradientLocationOne}
-                            gradientColorTwo={modalStyles[0].gradientColorTwo}
-                            gradientLocationTwo={modalStyles[0].gradientLocationTwo}
-                            gradientAngle={modalStyles[0].gradientAngle}
-                            gradientPosition={modalStyles[0].gradientPosition}
-                            gradientType={modalStyles[0].gradientType}
+                            value={modalBackground}
+                            onChange={(value) => setAttributes({ modalBackground: value })}
                         />
                         <AdvancedPopColorControl
                             label={__("Footer Background Color", 'premium-blocks-for-gutenberg')}
@@ -1004,18 +981,12 @@ const Inspector = ({
                             onChange={(value) => setAttributes({ modalBorder: value })}
                         />
                         <PremiumShadow
+                            label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
                             boxShadow={true}
-                            color={modalStyles[0].modalShadowColor}
-                            blur={modalStyles[0].modalShadowBlur}
-                            horizontal={modalStyles[0].modalShadowHorizontal}
-                            vertical={modalStyles[0].modalShadowVertical}
-                            position={modalStyles[0].modalShadowPosition}
-                            onChangeColor={newColor => saveModalStyles({ modalShadowColor: newColor })}
-                            onChangeBlur={newBlur => saveModalStyles({ modalShadowBlur: newBlur })}
-                            onChangehHorizontal={newValue => saveModalStyles({ modalShadowHorizontal: newValue })}
-                            onChangeVertical={newValue => saveModalStyles({ modalShadowVertical: newValue })}
-                            onChangePosition={newValue => saveModalStyles({ modalShadowPosition: newValue })}
+                            value={modalShadow}
+                            onChange={(value) => setAttributes({ modalShadow: value })}
                         />
+
                         <SpacingComponent value={modalMargin} responsive={true} showUnits={true} label={__("Margin")} onChange={(value) => setAttributes({ modalMargin: value })} />
                         <SpacingComponent value={modalPadding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ modalPadding: value })} />
                     </PanelBody>

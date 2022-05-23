@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-
+import { gradientBackground } from '../../components/HelperFunction';
 const { InnerBlocks } = wp.blockEditor;
 
 const save = props => {
@@ -19,10 +19,14 @@ const save = props => {
         lowerStyles,
         lowerBorder,
         modalStyles,
-        backgroundType,
         modalBorder,
-        triggerBorderH
+        triggerBorderH,
+        modalBackground,
+        triggerShadow,
+        triggerTextShadow,
+        modalShadow
     } = props.attributes;
+
     const renderCss = (
         <style>
             {`
@@ -61,19 +65,6 @@ const save = props => {
         </style>
     );
 
-    let btnGrad, btnGrad2, btnbg;
-    if (undefined !== backgroundType && 'gradient' === backgroundType) {
-        btnGrad = ('transparent' === modalStyles[0].containerBack || undefined === modalStyles[0].containerBack ? 'rgba(255,255,255,0)' : modalStyles[0].containerBack);
-        btnGrad2 = (undefined !== modalStyles[0].gradientColorTwo && undefined !== modalStyles[0].gradientColorTwo && '' !== modalStyles[0].gradientColorTwo ? modalStyles[0].gradientColorTwo : '#777');
-        if ('radial' === modalStyles[0].gradientType) {
-            btnbg = `radial-gradient(at ${modalStyles[0].gradientPosition}, ${btnGrad} ${modalStyles[0].gradientLocationOne}%, ${btnGrad2} ${modalStyles[0].gradientLocationTwo}%)`;
-        } else if ('radial' !== modalStyles[0].gradientType) {
-            btnbg = `linear-gradient(${modalStyles[0].gradientAngle}deg, ${btnGrad} ${modalStyles[0].gradientLocationOne}%, ${btnGrad2} ${modalStyles[0].gradientLocationTwo}%)`;
-        }
-    } else {
-        btnbg = modalStyles[0].backgroundImageURL ? `url('${modalStyles[0].backgroundImageURL}')` : ''
-    }
-
     return (
         <div id={`premium-modal-box-${block_id}`} className={classnames(className, "premium-modal-box")} data-trigger={triggerSettings[0].triggerType}>
             {renderCss}
@@ -82,7 +73,7 @@ const save = props => {
                     backgroundColor: triggerStyles[0].triggerBack,
                     borderStyle: triggerBorder.borderType,
                     borderColor: triggerBorder.borderColor,
-                    boxShadow: `${triggerStyles[0].triggerShadowHorizontal}px ${triggerStyles[0].triggerShadowVertical}px ${triggerStyles[0].triggerShadowBlur}px ${triggerStyles[0].triggerShadowColor} ${triggerStyles[0].triggerShadowPosition}`,
+                    boxShadow: `${triggerShadow.horizontal}px ${triggerShadow.vertical}px ${triggerShadow.blur}px ${triggerShadow.color} ${triggerShadow.position}`,
                 }}>
                     {triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "before" && <i className={` premium-modal-box-icon ${triggerSettings[0].icon}`} style={{ fontSize: `${triggerSettings[0].iconSize}px`, marginRight: `${triggerSettings[0].iconSpacing}px`, color: triggerStyles[0].iconColor }}></i>}
                     <span style={{ color: triggerStyles[0].color, fontFamily: triggerStyles[0].triggerFamily, fontWeight: triggerStyles[0].triggerWeight, fontStyle: triggerStyles[0].triggerStyle, letterSpacing: triggerStyles[0].triggerSpacing }}> {triggerSettings[0].btnText}</span>
@@ -94,7 +85,7 @@ const save = props => {
                         style={{
                             borderStyle: triggerBorder.borderType,
                             borderColor: triggerBorder.borderColor,
-                            boxShadow: `${triggerStyles[0].triggerShadowHorizontal}px ${triggerStyles[0].triggerShadowVertical}px ${triggerStyles[0].triggerShadowBlur}px ${triggerStyles[0].triggerShadowColor} ${triggerStyles[0].triggerShadowPosition}`,
+                            boxShadow: `${triggerShadow.horizontal}px ${triggerShadow.vertical}px ${triggerShadow.blur}px ${triggerShadow.color} ${triggerShadow.position}`,
                         }} />
                 )
                 }
@@ -103,7 +94,7 @@ const save = props => {
                         color: triggerStyles[0].color,
                         borderStyle: triggerBorder.borderType,
                         borderColor: triggerBorder.borderColor,
-                        textShadow: `${triggerStyles[0].textShadowHorizontal}px ${triggerStyles[0].textShadowVertical}px ${triggerStyles[0].textShadowBlur}px ${triggerStyles[0].textShadowColor}`,
+                        textShadow: `${triggerTextShadow.horizontal}px ${triggerTextShadow.vertical}px ${triggerTextShadow.blur}px ${triggerTextShadow.color}`,
                         fontFamily: triggerStyles[0].triggerFamily,
                         fontWeight: triggerStyles[0].triggerWeight,
                         fontStyle: triggerStyles[0].triggerStyle,
@@ -124,12 +115,7 @@ const save = props => {
             </div>
             <div className="premium-popup__modal_wrap" style={{ display: "none" }} role="dialog">
                 <div role="presentation" className="premium-popup__modal_wrap_overlay" style={{
-                    backgroundColor: backgroundType === "solid" ? modalStyles[0].containerBack : '',
-                    backgroundImage: btnbg,
-                    backgroundRepeat: modalStyles[0].backgroundRepeat,
-                    backgroundPosition: modalStyles[0].backgroundPosition,
-                    backgroundSize: modalStyles[0].backgroundSize,
-                    backgroundAttachment: modalStyles[0].fixed ? "fixed" : "unset",
+                    ...gradientBackground(modalBackground)
                 }} >
                 </div>
                 <div className={`premium-popup__modal_content animated animation-${contentStyles[0].animationType} animation-${contentStyles[0].animationSpeed}`}
@@ -139,7 +125,7 @@ const save = props => {
 
                         borderStyle: `${modalBorder.borderType}`,
                         borderColor: `${modalBorder.borderColor}`,
-                        boxShadow: `${modalStyles[0].modalShadowHorizontal}px ${modalStyles[0].modalShadowVertical}px ${modalStyles[0].modalShadowBlur}px ${modalStyles[0].modalShadowColor} ${modalStyles[0].modalShadowPosition}`,
+                        boxShadow: `${modalShadow.horizontal}px ${modalShadow.vertical}px ${modalShadow.blur}px ${modalShadow.color} ${modalShadow.position}`,
                     }}>
                     {contentStyles[0].showHeader && <div className={`premium-modal-box-modal-header`} style={{
                         backgroundColor: headerStyles[0].backColor,

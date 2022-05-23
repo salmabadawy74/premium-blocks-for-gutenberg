@@ -75,15 +75,6 @@ const attributes = {
                 triggerUpper: '',
                 triggerBack: '',
                 triggerHoverBack: '',
-                triggerShadowColor: '',
-                triggerShadowBlur: '',
-                triggerShadowHorizontal: '',
-                triggerShadowVertical: '',
-                triggerShadowPosition: '',
-                textShadowColor: '',
-                textShadowBlur: '',
-                textShadowHorizontal: '',
-                textShadowVertical: '',
                 blur: '',
                 bright: '',
                 contrast: '',
@@ -169,28 +160,57 @@ const attributes = {
                 modalHeightTablet: '',
                 modalHeightMobile: '',
                 modalHeightUnit: 'px',
-                containerBack: '',
-                backgroundImageID: '',
-                backgroundImageURL: '',
-                backgroundPosition: 'center center',
-                backgroundRepeat: 'no-repeat',
-                backgroundSize: 'auto',
-                fixed: false,
-                gradientLocationOne: '0',
-                gradientColorTwo: '',
-                gradientLocationTwo: '100',
-                gradientType: 'linear',
-                gradientAngle: '180',
-                gradientPosition: 'center center',
-                gradientType: '',
                 footerBackColor: '',
-                modalShadowColor: '',
-                modalShadowBlur: '',
-                modalShadowHorizontal: '',
-                modalShadowVertical: '',
-                modalShadowPosition: '',
             }
         ]
+    },
+    modalBackground: {
+        type: "object",
+        default: {
+            'backgroundType': '',
+            'backgroundColor': '',
+            'backgroundImageID': '',
+            'backgroundImageURL': '',
+            'backgroundPosition': '',
+            'backgroundRepeat': '',
+            'backgroundSize': '',
+            'fixed': false,
+            'gradientLocationOne': "",
+            'gradientColorTwo': '',
+            'gradientLocationTwo': '',
+            'gradientAngle': '',
+            'gradientPosition': '',
+            'gradientType': ''
+        }
+    },
+    modalShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
+    },
+    triggerShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
+    },
+    triggerTextShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+        }
     },
     backgroundType: {
         type: "string"

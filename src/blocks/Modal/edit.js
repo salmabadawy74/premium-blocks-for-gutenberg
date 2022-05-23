@@ -7,6 +7,7 @@ import Inspector from "./inspector";
 const { Fragment, useEffect, useState } = wp.element;
 const { InnerBlocks, MediaPlaceholder } = wp.blockEditor;
 import WebfontLoader from "../../components/typography/fontLoader"
+import { gradientBackground } from "../../components/HelperFunction";
 
 function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
     if (device === 'Mobile') {
@@ -44,10 +45,13 @@ const edit = props => {
         lowerBorder,
         lowerPadding,
         modalStyles,
-        backgroundType,
         modalBorder,
         modalMargin,
         modalPadding,
+        modalBackground,
+        triggerShadow,
+        modalShadow,
+        triggerTextShadow
     } = props.attributes;
 
     useEffect(() => {
@@ -144,18 +148,6 @@ const edit = props => {
     const modalMarginLeft = getPreviewSize(props.deviceType, modalMargin.Desktop.right, modalMargin.Tablet.right, modalMargin.Mobile.right);
     const triggerSize = getPreviewSize(props.deviceType, triggerSettings[0].imageWidth, triggerSettings[0].imageWidthTablet, triggerSettings[0].imageWidthMobile);
 
-    let btnGrad, btnGrad2, btnbg;
-    if (undefined !== backgroundType && 'gradient' === backgroundType) {
-        btnGrad = ('transparent' === modalStyles[0].containerBack || undefined === modalStyles[0].containerBack ? 'rgba(255,255,255,0)' : modalStyles[0].containerBack);
-        btnGrad2 = (undefined !== modalStyles[0].gradientColorTwo && undefined !== modalStyles[0].gradientColorTwo && '' !== modalStyles[0].gradientColorTwo ? modalStyles[0].gradientColorTwo : '#777');
-        if ('radial' === modalStyles[0].gradientType) {
-            btnbg = `radial-gradient(at ${modalStyles[0].gradientPosition}, ${btnGrad} ${modalStyles[0].gradientLocationOne}%, ${btnGrad2} ${modalStyles[0].gradientLocationTwo}%)`;
-        } else if ('radial' !== modalStyles[0].gradientType) {
-            btnbg = `linear-gradient(${modalStyles[0].gradientAngle}deg, ${btnGrad} ${modalStyles[0].gradientLocationOne}%, ${btnGrad2} ${modalStyles[0].gradientLocationTwo}%)`;
-        }
-    } else {
-        btnbg = modalStyles[0].backgroundImageURL ? `url('${modalStyles[0].backgroundImageURL}')` : ''
-    }
     let loadTriggerGoogleFonts;
     let loadHeaderGoogleFonts;
     let loadModalGoogleFonts;
@@ -220,7 +212,7 @@ const edit = props => {
                     borderTopRightRadius: `${triggerBorder && triggerBorder.borderRadius.Desktop.right || 0}px`,
                     borderBottomLeftRadius: `${triggerBorder && triggerBorder.borderRadius.Desktop.bottom || 0}px`,
                     borderBottomRightRadius: `${triggerBorder && triggerBorder.borderRadius.Desktop.left || 0}px`,
-                    boxShadow: `${triggerStyles[0].triggerShadowHorizontal}px ${triggerStyles[0].triggerShadowVertical}px ${triggerStyles[0].triggerShadowBlur}px ${triggerStyles[0].triggerShadowColor} ${triggerStyles[0].triggerShadowPosition}`,
+                    boxShadow: `${triggerShadow.horizontal}px ${triggerShadow.vertical}px ${triggerShadow.blur}px ${triggerShadow.color} ${triggerShadow.position}`,
                 }}>
                     {triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "before" && <i className={` premium-modal-box-icon ${triggerSettings[0].icon}`} style={{ fontSize: `${triggerSettings[0].iconSize}px`, marginRight: `${triggerSettings[0].iconSpacing}px`, color: triggerStyles[0].iconColor }}></i>}
                     <span style={{ color: triggerStyles[0].color, fontFamily: triggerStyles[0].triggerFamily, fontWeight: triggerStyles[0].triggerWeight, fontStyle: triggerStyles[0].triggerStyle, letterSpacing: triggerStyles[0].triggerSpacing }}> {triggerSettings[0].btnText}</span>
@@ -241,7 +233,7 @@ const edit = props => {
                         borderTopRightRadius: `${triggerBorder && triggerBorder.borderRadius.Desktop.right || 0}px`,
                         borderBottomLeftRadius: `${triggerBorder && triggerBorder.borderRadius.Desktop.bottom || 0}px`,
                         borderBottomRightRadius: `${triggerBorder && triggerBorder.borderRadius.Desktop.left || 0}px`,
-                        boxShadow: `${triggerStyles[0].triggerShadowHorizontal}px ${triggerStyles[0].triggerShadowVertical}px ${triggerStyles[0].triggerShadowBlur}px ${triggerStyles[0].triggerShadowColor} ${triggerStyles[0].triggerShadowPosition}`,
+                        boxShadow: `${triggerShadow.horizontal}px ${triggerShadow.vertical}px ${triggerShadow.blur}px ${triggerShadow.color} ${triggerShadow.position}`,
                     }} /> : <MediaPlaceholder
                         labels={{
                             title: __('Premium Modal ', 'premium-blocks-for-gutenberg'),
@@ -279,7 +271,7 @@ const edit = props => {
                         borderTopRightRadius: `${triggerBorder && triggerBorder.borderRadius.Desktop.right || 0}px`,
                         borderBottomLeftRadius: `${triggerBorder && triggerBorder.borderRadius.Desktop.bottom || 0}px`,
                         borderBottomRightRadius: `${triggerBorder && triggerBorder.borderRadius.Desktop.left || 0}px`,
-                        textShadow: `${triggerStyles[0].textShadowHorizontal}px ${triggerStyles[0].textShadowVertical}px ${triggerStyles[0].textShadowBlur}px ${triggerStyles[0].textShadowColor}`,
+                        textShadow: `${triggerTextShadow.horizontal}px ${triggerTextShadow.vertical}px ${triggerTextShadow.blur}px ${triggerTextShadow.color}`,
                         fontFamily: triggerStyles[0].triggerFamily,
                         fontWeight: triggerStyles[0].triggerWeight,
                         fontStyle: triggerStyles[0].triggerStyle,
@@ -328,12 +320,7 @@ const edit = props => {
             {openModal && (
                 <div className="premium-popup__modal_wrap" role="dialog">
                     <div role="presentation" className="premium-popup__modal_wrap_overlay" onClick={() => setOpenModal(false)} style={{
-                        backgroundColor: backgroundType === "solid" ? modalStyles[0].containerBack : '',
-                        backgroundImage: btnbg,
-                        backgroundRepeat: modalStyles[0].backgroundRepeat,
-                        backgroundPosition: modalStyles[0].backgroundPosition,
-                        backgroundSize: modalStyles[0].backgroundSize,
-                        backgroundAttachment: modalStyles[0].fixed ? "fixed" : "unset",
+                        ...gradientBackground(modalBackground)
                     }} >
                     </div>
                     <div className={`premium-popup__modal_content animated animation-${contentStyles[0].animationType} animation-${contentStyles[0].animationSpeed}`}
@@ -356,7 +343,7 @@ const edit = props => {
                             borderTopRightRadius: `${modalBorder && modalBorder.borderRadius.Desktop.right || 0}px`,
                             borderBottomLeftRadius: `${modalBorder && modalBorder.borderRadius.Desktop.bottom || 0}px`,
                             borderBottomRightRadius: `${modalBorder && modalBorder.borderRadius.Desktop.left || 0}px`,
-                            boxShadow: `${modalStyles[0].modalShadowHorizontal}px ${modalStyles[0].modalShadowVertical}px ${modalStyles[0].modalShadowBlur}px ${modalStyles[0].modalShadowColor} ${modalStyles[0].modalShadowPosition}`,
+                            boxShadow: `${modalShadow.horizontal}px ${modalShadow.vertical}px ${modalShadow.blur}px ${modalShadow.color} ${modalShadow.position}`,
                         }}>
                         {contentStyles[0].showHeader && <div className={`premium-modal-box-modal-header`} style={{
                             backgroundColor: headerStyles[0].backColor,
