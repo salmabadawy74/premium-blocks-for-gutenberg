@@ -40,14 +40,14 @@ export default class PremiumTypo extends Component {
             FontSize = ''
         }
         let defaultValues = {
-            "font-weight": '',
-            'font-style': '',
-            'text-transform': '',
-            'letter-spacing': '',
-            'font-family': 'Default',
-            'line-height': '',
-            'text-decoration': '',
-            'font-size': FontSize
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': 'Default',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': FontSize
         }
         this.state = {
             sizeUnit: FontSize['unit'] || 'px',
