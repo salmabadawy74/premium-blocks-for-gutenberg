@@ -60060,7 +60060,7 @@ var Inspector = function Inspector(_ref) {
                             onChange: function onChange(newValue) {
                                 return setAttributes({ iconSize: newValue });
                             },
-                            units: ['px', 'em', 'rem'],
+                            units: ['px', 'em', '%'],
                             showUnit: true
                         }),
                         React.createElement(TextControl, {
@@ -60392,7 +60392,7 @@ var Inspector = function Inspector(_ref) {
                         onChange: function onChange(newValue) {
                             return setAttributes({ modalWidth: newValue });
                         },
-                        units: ['px', 'em', 'rem'],
+                        units: ['px', 'em', '%'],
                         showUnit: true,
                         max: 1500
                     }),
@@ -60402,7 +60402,7 @@ var Inspector = function Inspector(_ref) {
                         onChange: function onChange(newValue) {
                             return setAttributes({ modalHeight: newValue });
                         },
-                        units: ['px', 'em', 'rem'],
+                        units: ['px', 'em', '%'],
                         showUnit: true,
                         max: 1500
                     })

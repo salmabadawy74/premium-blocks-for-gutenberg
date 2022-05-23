@@ -228,7 +228,7 @@ const Inspector = ({
                                         label={__("Size", 'premium-blocks-for-gutenberg')}
                                         value={iconSize}
                                         onChange={newValue => setAttributes({ iconSize: newValue })}
-                                        units={['px', 'em', 'rem']}
+                                        units={['px', 'em', '%']}
                                         showUnit={true}
                                     />)
                                 }
@@ -564,7 +564,7 @@ const Inspector = ({
                             label={__("Width", 'premium-blocks-for-gutenberg')}
                             value={modalWidth}
                             onChange={newValue => setAttributes({ modalWidth: newValue })}
-                            units={['px', 'em', 'rem']}
+                            units={['px', 'em', '%']}
                             showUnit={true}
                             max={1500}
                         />
@@ -572,7 +572,7 @@ const Inspector = ({
                             label={__("Max Height", 'premium-blocks-for-gutenberg')}
                             value={modalHeight}
                             onChange={newValue => setAttributes({ modalHeight: newValue })}
-                            units={['px', 'em', 'rem']}
+                            units={['px', 'em', '%']}
                             showUnit={true}
                             max={1500}
                         />
