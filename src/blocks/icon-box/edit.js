@@ -14,8 +14,8 @@ import PremiumResponsivePadding from '../../components/Premium-Responsive-Paddin
 import PremiumResponsiveMargin from '../../components/Premium-Responsive-Margin';
 import WebfontLoader from "../../components/typography/fontLoader"
 import PremiumShadow from "../../components/PremiumShadow";
-import Tabs from '../../components/InsideTabs'
-import Tab from '../../components/InsideTab';
+import InsideTabs from '../../components/InsideTabs'
+import InsideTab from '../../components/InsideTab';
 const { __ } = wp.i18n;
 
 const { PanelBody, SelectControl, ToggleControl, TabPanel } = wp.components;
@@ -1061,8 +1061,8 @@ class edit extends Component {
                                 );
                             }}
                         </TabPanel> */}
-                        <Tabs>
-                            <Tab tabTitle={__('Normal')}>
+                        <InsideTabs>
+                            <InsideTab tabTitle={__('Normal')}>
                                 <Fragment>
                                     {iconChecked && (
                                         <Fragment>
@@ -1120,8 +1120,8 @@ class edit extends Component {
                                         colorDefault={``}
                                     />
                                 </Fragment>
-                            </Tab>
-                            <Tab tabTitle={__('Hover')}>
+                            </InsideTab>
+                            <InsideTab tabTitle={__('Hover')}>
                                 <Fragment>
                                     {btnChecked && (
                                         <Fragment>
@@ -1146,8 +1146,8 @@ class edit extends Component {
                                         onColorChange={newValue => setAttributes({ btnHoverBorder: newValue || "transparent", })}
                                     />
                                 </Fragment>
-                            </Tab>
-                        </Tabs>
+                            </InsideTab>
+                        </InsideTabs>
                     </PanelBody>
                     <PremiumResponsiveTabs
                         Desktop={hideDesktop}

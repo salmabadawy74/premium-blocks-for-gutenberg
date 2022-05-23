@@ -4,7 +4,7 @@ const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { Tooltip } = wp.components;
 
-export default class Tabs extends Component {
+export default class InsideTabs extends Component {
     constructor(props) {
         super(props);
         this.state = {

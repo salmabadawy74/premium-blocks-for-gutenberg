@@ -1,6 +1,6 @@
 const { Component, Fragment } = wp.element
 
-class Tab extends Component {
+class InsideTab extends Component {
     render() {
         const { children, onTabChange } = this.props
         onTabChange && onTabChange()

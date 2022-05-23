@@ -70634,13 +70634,13 @@ var _wp$element = wp.element,
     Fragment = _wp$element.Fragment;
 var Tooltip = wp.components.Tooltip;
 
-var Tabs = function (_Component) {
-    _inherits(Tabs, _Component);
+var InsideTabs = function (_Component) {
+    _inherits(InsideTabs, _Component);
 
-    function Tabs(props) {
-        _classCallCheck(this, Tabs);
+    function InsideTabs(props) {
+        _classCallCheck(this, InsideTabs);
 
-        var _this = _possibleConstructorReturn(this, (Tabs.__proto__ || Object.getPrototypeOf(Tabs)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (InsideTabs.__proto__ || Object.getPrototypeOf(InsideTabs)).call(this, props));
 
         _this.state = {
             activeTab: _this.props.children[0].props.tabTitle
@@ -70648,7 +70648,7 @@ var Tabs = function (_Component) {
         return _this;
     }
 
-    _createClass(Tabs, [{
+    _createClass(InsideTabs, [{
         key: 'render',
         value: function render() {
             var _this2 = this;
@@ -70723,10 +70723,10 @@ var Tabs = function (_Component) {
         }
     }]);
 
-    return Tabs;
+    return InsideTabs;
 }(Component);
 
-exports.default = Tabs;
+exports.default = InsideTabs;
 
 /***/ }),
 /* 406 */
@@ -70751,16 +70751,16 @@ var _wp$element = wp.element,
     Component = _wp$element.Component,
     Fragment = _wp$element.Fragment;
 
-var Tab = function (_Component) {
-    _inherits(Tab, _Component);
+var InsideTab = function (_Component) {
+    _inherits(InsideTab, _Component);
 
-    function Tab() {
-        _classCallCheck(this, Tab);
+    function InsideTab() {
+        _classCallCheck(this, InsideTab);
 
-        return _possibleConstructorReturn(this, (Tab.__proto__ || Object.getPrototypeOf(Tab)).apply(this, arguments));
+        return _possibleConstructorReturn(this, (InsideTab.__proto__ || Object.getPrototypeOf(InsideTab)).apply(this, arguments));
     }
 
-    _createClass(Tab, [{
+    _createClass(InsideTab, [{
         key: "render",
         value: function render() {
             var _props = this.props,
@@ -70780,7 +70780,7 @@ var Tab = function (_Component) {
         }
     }]);
 
-    return Tab;
+    return InsideTab;
 }(Component);
 
 exports.default = Tab;
