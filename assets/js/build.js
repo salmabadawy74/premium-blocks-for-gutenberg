@@ -32701,16 +32701,22 @@ var edit = function (_Component) {
                     google: {
                         families: [titleTypography.fontFamily]
                     }
+                    // loadTitleGoogleFonts = (
+                    //     // <WebfontLoader config={titleConfig}>
+                    //     // </WebfontLoader>
+                    // )
                 };
-                loadTitleGoogleFonts = React.createElement(_fontLoader2.default, { config: titleConfig });
             }
             if (descTypography.fontFamily !== 'Default') {
                 var descriptionConfig = {
                     google: {
                         families: [descTypography.fontFamily]
                     }
+                    // loadDescriptionGoogleFonts = (
+                    //     // <WebfontLoader config={descriptionConfig}>
+                    //     // </WebfontLoader>
+                    // )
                 };
-                loadDescriptionGoogleFonts = React.createElement(_fontLoader2.default, { config: descriptionConfig });
             }
 
             var mainClasses = (0, _classnames2.default)(className, "premium-icon-box");
@@ -34138,115 +34144,129 @@ var attributes = {
 };
 
 var new_attributes = {
-    titleStyles: [{
-        titleTag: "H2",
-        titleFont: __('Default', 'premium - blocks -for-gutenberg'),
-        titleColor: '',
-        titleSize: 20,
-        titleSizeUnit: 'px',
-        titleSizeTablet: 20,
-        titleSizeMobile: 20,
-        titleLine: '',
-        titleLetter: '',
-        titleStyle: '',
-        titleUpper: false,
-        titleWeight: '',
-        titleShadowColor: '',
-        titleShadowBlur: '0',
-        titleShadowHorizontal: '0',
-        titleShadowVertical: '0',
-        titleMarginT: '',
-        titleMarginB: ''
-    }],
-    descStyles: [{
-        descFont: __('Default', 'premium-blocks-for-gutenberg'),
-        descColor: '',
-        descSize: 20,
-        descSizeUnit: 'px',
-        descSizeTablet: 20,
-        descSizeMobile: 20,
-        descLine: '',
-        descWeight: '',
-        descMarginT: '',
-        descMarginB: ''
-    }],
-    btnStyles: [{
-        btnSize: 20,
-        btnSizeUnit: 'px',
-        btnSizeTablet: 20,
-        btnSizeMobile: 20,
-        btnLine: '',
-        btnLetter: '',
-        btnStyle: '',
-        btnUpper: false,
-        btnWeight: '',
-        btnBorderType: 'none',
-        btnBorderWidth: 1,
-        btnBorderTop: '',
-        btnBorderRight: '',
-        btnBorderBottom: '',
-        btnBorderLeft: '',
-        btnBorderRadius: '',
-        btnBorderColor: '',
-        btnPadding: '',
-        btnPaddingU: 'px',
-        btnMarginT: '',
-        btnMarginB: '',
-        btnShadowColor: '',
-        btnShadowBlur: '',
-        btnShadowHorizontal: '0',
-        btnShadowVertical: '0',
-        btnShadowPosition: '',
-        btnColor: '',
-        btnHoverColor: '',
-        btnBack: '',
-        btnHoverBack: '',
-        btnOpacity: 1
-    }],
-    containerStyles: [{
-        backOpacity: 1,
-        backColor: '',
-        imageID: '',
-        imageURL: '',
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "top center",
-        backgroundSize: "auto",
-        fixed: false,
-        borderType: "none",
-        borderWidth: 1,
-        borderRadius: '',
-        borderColor: '',
-        borderTop: '',
-        borderRight: '',
-        borderBottom: '',
-        borderLeft: '',
-        shadowColor: '',
-        shadowBlur: '',
-        shadowHorizontal: '',
-        shadowVertical: '',
-        shadowPosition: '',
-        hoverShadowColor: '',
-        hoverShadowBlur: '',
-        hoverShadowHorizontal: '',
-        hoverShadowVertical: '',
-        hoverShadowPosition: '',
-        marginT: '',
-        marginR: '',
-        marginB: '',
-        marginL: '',
-        paddingT: '',
-        paddingR: '',
-        paddingB: '',
-        paddingL: '',
-        paddingU: 'px',
-        gradientColorOne: '',
-        gradientLocationOne: '0',
-        gradientColorTwo: '',
-        gradientLocationTwo: '100',
-        gradientType: 'linear',
-        gradientAngle: '180',
-        gradientPosition: 'center center'
-    }]
+    titleStyles: {
+        type: "array",
+        default: [{
+
+            titleTag: "H2",
+            titleFont: __('Default', 'premium - blocks -for-gutenberg'),
+            titleColor: '',
+            titleSize: 20,
+            titleSizeUnit: 'px',
+            titleSizeTablet: 20,
+            titleSizeMobile: 20,
+            titleLine: '',
+            titleLetter: '',
+            titleStyle: '',
+            titleUpper: false,
+            titleWeight: '',
+            titleShadowColor: '',
+            titleShadowBlur: '0',
+            titleShadowHorizontal: '0',
+            titleShadowVertical: '0',
+            titleMarginT: '',
+            titleMarginB: ''
+        }]
+    },
+    descStyles: {
+        type: "array",
+        default: [{
+            descFont: __('Default', 'premium-blocks-for-gutenberg'),
+            descColor: '',
+            descSize: 20,
+            descSizeUnit: 'px',
+            descSizeTablet: 20,
+            descSizeMobile: 20,
+            descLine: '',
+            descWeight: '',
+            descMarginT: '',
+            descMarginB: ''
+        }]
+    },
+    btnStyles: {
+        type: 'array',
+        default: [{
+            btnSize: 20,
+            btnSizeUnit: 'px',
+            btnSizeTablet: 20,
+            btnSizeMobile: 20,
+            btnLine: '',
+            btnLetter: '',
+            btnStyle: '',
+            btnUpper: false,
+            btnWeight: '',
+            btnBorderType: 'none',
+            btnBorderWidth: 1,
+            btnBorderTop: '',
+            btnBorderRight: '',
+            btnBorderBottom: '',
+            btnBorderLeft: '',
+            btnBorderRadius: '',
+            btnBorderColor: '',
+            btnPadding: '',
+            btnPaddingU: 'px',
+            btnMarginT: '',
+            btnMarginB: '',
+            btnShadowColor: '',
+            btnShadowBlur: '',
+            btnShadowHorizontal: '0',
+            btnShadowVertical: '0',
+            btnShadowPosition: '',
+            btnColor: '',
+            btnHoverColor: '',
+            btnBack: '',
+            btnHoverBack: '',
+            btnOpacity: 1
+        }]
+    },
+    containerStyles: {
+        type: "array",
+        default: [{
+            backOpacity: 1,
+            backColor: '',
+            imageID: '',
+            imageURL: '',
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "top center",
+            backgroundSize: "auto",
+            fixed: false,
+            borderType: "none",
+            borderWidth: 1,
+            borderRadius: '',
+            borderColor: '',
+            borderTop: '',
+            borderRight: '',
+            borderBottom: '',
+            borderLeft: '',
+            shadowColor: '',
+            shadowBlur: '',
+            shadowHorizontal: '',
+            shadowVertical: '',
+            shadowPosition: '',
+            hoverShadowColor: '',
+            hoverShadowBlur: '',
+            hoverShadowHorizontal: '',
+            hoverShadowVertical: '',
+            hoverShadowPosition: '',
+            marginT: '',
+            marginR: '',
+            marginB: '',
+            marginL: '',
+            paddingT: '',
+            paddingR: '',
+            paddingB: '',
+            paddingL: '',
+            paddingU: 'px',
+            gradientColorOne: '',
+            gradientLocationOne: '0',
+            gradientColorTwo: '',
+            gradientLocationTwo: '100',
+            gradientType: 'linear',
+            gradientAngle: '180',
+            gradientPosition: 'center center'
+
+        }]
+    }
 };
 
 var deprecated_attributes = Object.assign(attributes, new_attributes);
@@ -34595,8 +34615,7 @@ var deprecatedContent = [{
             borderLeft = _props$attributes.borderLeft;
 
 
-        var mainClasses = (0, _classnames2.default)(className);
-        console.log(containerStyles);
+        var mainClasses = (0, _classnames2.default)(className, 'premium-icon-box');
         return React.createElement(
             'div',
             {
@@ -34697,8 +34716,8 @@ var deprecatedContent = [{
                         className: 'premium-icon-box__btn premium-button',
                         href: btnLink,
                         rel: 'noopener noreferrer',
-                        value: btnText,
                         target: btnTarget ? "_blank" : "_self",
+                        value: btnText,
                         style: {
                             color: btnStyles[0].btnColor,
                             backgroundColor: btnStyles[0].btnBack,

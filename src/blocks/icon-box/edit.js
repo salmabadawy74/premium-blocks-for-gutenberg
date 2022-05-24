@@ -237,10 +237,10 @@ class edit extends Component {
                     families: [titleTypography.fontFamily],
                 },
             }
-            loadTitleGoogleFonts = (
-                <WebfontLoader config={titleConfig}>
-                </WebfontLoader>
-            )
+            // loadTitleGoogleFonts = (
+            //     // <WebfontLoader config={titleConfig}>
+            //     // </WebfontLoader>
+            // )
         }
         if (descTypography.fontFamily !== 'Default') {
             const descriptionConfig = {
@@ -248,10 +248,10 @@ class edit extends Component {
                     families: [descTypography.fontFamily],
                 },
             }
-            loadDescriptionGoogleFonts = (
-                <WebfontLoader config={descriptionConfig}>
-                </WebfontLoader>
-            )
+            // loadDescriptionGoogleFonts = (
+            //     // <WebfontLoader config={descriptionConfig}>
+            //     // </WebfontLoader>
+            // )
         }
 
 
