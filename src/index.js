@@ -1,3 +1,4 @@
+import { FontAwesomeEnabled } from "../assets/js/settings";
 import "./blocks/accordion";
 import "./blocks/banner";
 import "./blocks/button";
@@ -19,3 +20,6 @@ import "./blocks/person";
 import "./blocks/heading";
 import "./blocks/column";
 import "./blocks/row";
+window.PremiumOptionsSettings = {
+    FontAwesomeEnabled
+}

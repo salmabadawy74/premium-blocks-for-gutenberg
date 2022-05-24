@@ -2,29 +2,29 @@ const attributes = {
     colWidth: {
         type: 'object',
         default: {
-            desktop: 50,
-            tablet: 50,
-            mobile: 100,
+            Desktop: 50,
+            Tablet: 50,
+            Mobile: 100,
             unit: '%',
-            device: 'desktop'
+
         },
     },
-    padding: {
+    columnPadding: {
         type: 'object',
         default: {
-            desktop: {
-                top: 0,
-                right: 0,
-                bottom: 0,
-                left: 0
+            'Desktop': {
+                'top': 0,
+                'right': 0,
+                'bottom': 0,
+                'left': 0
             },
-            unit: 'px',
+            'unit': 'px',
         },
     },
-    margin: {
+    columnMargin: {
         type: 'object',
         default: {
-            desktop: {
+            Desktop: {
                 top: 0,
                 right: 0,
                 bottom: 0,
@@ -65,6 +65,86 @@ const attributes = {
         type: 'string',
         default: '',
     },
+    columnAnimation: {
+        type: "object",
+        default: {}
+    },
+    columnBackground: {
+        type: "object",
+        default: {
+            'backgroundType': '',
+            'backgroundColor': '',
+            'backgroundImageID': '',
+            'backgroundImageURL': '',
+            'backgroundPosition': '',
+            'backgroundRepeat': '',
+            'backgroundSize': '',
+            'fixed': false,
+            'gradientLocationOne': "",
+            'gradientColorTwo': '',
+            'gradientLocationTwo': '',
+            'gradientAngle': '',
+            'gradientPosition': '',
+            'gradientType': '',
+            'videoSource': 'local',
+            'bgExternalVideo': '',
+            'videoURL': '',
+            'videoID': '',
+            'bgVideoFallbackID': '',
+            'bgVideoFallbackURL': ''
+        }
+    },
+    columnBorder: {
+        type: "object",
+        default: {
+            'borderType': 'none',
+            'borderColor': '',
+            'borderWidth': {
+                Desktop: {
+                    top: 0,
+                    right: 0,
+                    bottom: 0,
+                    left: 0
+                },
+                Tablet: {
+                    top: 0,
+                    right: 0,
+                    bottom: 0,
+                    left: 0
+                },
+                Mobile: {
+                    top: 0,
+                    right: 0,
+                    bottom: 0,
+                    left: 0
+                },
+            },
+            'borderRadius': {
+                Desktop: {
+                    top: 0,
+                    right: 0,
+                    bottom: 0,
+                    left: 0
+                },
+                Tablet: {
+                    top: 0,
+                    right: 0,
+                    bottom: 0,
+                    left: 0
+                },
+                Mobile: {
+                    top: 0,
+                    right: 0,
+                    bottom: 0,
+                    left: 0
+                },
+            }
+        }
+    },
+    ColumnAnimation: {
+        type: "object",
+        default: {}
+    }
 };
 
 export default attributes;

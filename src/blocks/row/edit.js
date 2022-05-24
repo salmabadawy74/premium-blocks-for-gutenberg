@@ -16,27 +16,27 @@ import InsideTabs from '../../components/InsideTabs';
 import InsideTab from '../../components/InsideTab';
 import Shape from '../../components/premium-shape'
 const colOption = [
-    { label: '100', columns: 1, layout: { desktop: [100], tablet: [100], mobile: [100] } },
-    { label: '50/50', columns: 2, layout: { desktop: [50, 50], tablet: [100, 100], mobile: [100, 100] } },
-    { label: '33/33/33', columns: 3, layout: { desktop: [33.33, 33.33, 33.34], tablet: [100, 100, 100], mobile: [100, 100, 100] } },
-    { label: '25/25/25/25', columns: 4, layout: { desktop: [25, 25, 25, 25], tablet: [50, 50, 50, 50], mobile: [100, 100, 100, 100] } },
-    { label: '34/66', columns: 2, layout: { desktop: [34, 66], tablet: [50, 50], mobile: [100, 100] } },
-    { label: '66/34', columns: 2, layout: { desktop: [66, 34], tablet: [100, 100], mobile: [100, 100] } },
-    { label: '25/25/50', columns: 3, layout: { desktop: [25, 25, 50], tablet: [50, 50, 100], mobile: [100, 100, 100] } },
-    { label: '50/25/25', columns: 3, layout: { desktop: [50, 25, 25], tablet: [100, 50, 50], mobile: [100, 100, 100] } },
-    { label: '25/50/25', columns: 3, layout: { desktop: [25, 50, 25], tablet: [100, 100, 100], mobile: [100, 100, 100] } },
-    { label: '20/20/20/20/20', columns: 5, layout: { desktop: [20, 20, 20, 20, 20], tablet: [20, 20, 20, 20, 20], mobile: [20, 20, 20, 20, 20] } },
-    { label: '16/16/16/16/16/16', columns: 6, layout: { desktop: [16.66, 16.67, 16.66, 16.67, 16.67, 16.67], tablet: [33.33, 33.33, 33.34, 33.33, 33.33, 33.34], mobile: [50, 50, 50, 50, 50, 50] } },
-    { label: '16/66/16', columns: 3, layout: { desktop: [16.66, 66.68, 16.66], tablet: [100, 100, 100], mobile: [100, 100, 100] } },
+    { label: '100', columns: 1, layout: { Desktop: [100], Tablet: [100], Mobile: [100] } },
+    { label: '50/50', columns: 2, layout: { Desktop: [50, 50], Tablet: [100, 100], Mobile: [100, 100] } },
+    { label: '33/33/33', columns: 3, layout: { Desktop: [33.33, 33.33, 33.34], Tablet: [100, 100, 100], Mobile: [100, 100, 100] } },
+    { label: '25/25/25/25', columns: 4, layout: { Desktop: [25, 25, 25, 25], Tablet: [50, 50, 50, 50], Mobile: [100, 100, 100, 100] } },
+    { label: '34/66', columns: 2, layout: { Desktop: [34, 66], Tablet: [50, 50], Mobile: [100, 100] } },
+    { label: '66/34', columns: 2, layout: { Desktop: [66, 34], Tablet: [100, 100], Mobile: [100, 100] } },
+    { label: '25/25/50', columns: 3, layout: { Desktop: [25, 25, 50], Tablet: [50, 50, 100], Mobile: [100, 100, 100] } },
+    { label: '50/25/25', columns: 3, layout: { Desktop: [50, 25, 25], Tablet: [100, 50, 50], Mobile: [100, 100, 100] } },
+    { label: '25/50/25', columns: 3, layout: { Desktop: [25, 50, 25], Tablet: [100, 100, 100], Mobile: [100, 100, 100] } },
+    { label: '20/20/20/20/20', columns: 5, layout: { Desktop: [20, 20, 20, 20, 20], Tablet: [20, 20, 20, 20, 20], Mobile: [20, 20, 20, 20, 20] } },
+    { label: '16/16/16/16/16/16', columns: 6, layout: { Desktop: [16.66, 16.67, 16.66, 16.67, 16.67, 16.67], Tablet: [33.33, 33.33, 33.34, 33.33, 33.33, 33.34], Mobile: [50, 50, 50, 50, 50, 50] } },
+    { label: '16/66/16', columns: 3, layout: { Desktop: [16.66, 66.68, 16.66], Tablet: [100, 100, 100], Mobile: [100, 100, 100] } },
 ];
 
-let defaultLayout = { desktop: [100], tablet: [100], mobile: [100] }
+let defaultLayout = { Desktop: [100], Tablet: [100], Mobile: [100] }
 
 class Edit extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            device: 'desktop',
+            device: 'Desktop',
             hideRowSettings: false
         };
         this.qubelyContextMenu = createRef();
@@ -61,7 +61,7 @@ class Edit extends Component {
 
     getTemplate(columns) {
         return [...Array(parseInt(columns))].map((data, index) => {
-            const columnWidth = { desktop: defaultLayout.desktop[index], tablet: defaultLayout.tablet[index], mobile: defaultLayout.mobile[index], unit: '%', device: 'desktop' }
+            const columnWidth = { Desktop: defaultLayout.Desktop[index], Tablet: defaultLayout.Tablet[index], Mobile: defaultLayout.Mobile[index], unit: '%', device: 'Desktop' }
             return ['premium/column', { colWidth: columnWidth }]
         })
     }
@@ -168,7 +168,7 @@ class Edit extends Component {
                                         setAttributes({ columns: data.columns });
                                         defaultLayout = data.layout
                                     }}>
-                                        {data.layout.desktop.map(d => <i style={{ width: d + '%' }} />)}
+                                        {data.layout.Desktop.map(d => <i style={{ width: d + '%' }} />)}
                                     </button>
                                 </Tooltip>
                             ))}
@@ -379,11 +379,11 @@ class Edit extends Component {
                         </span>
                     </div>
                     <div className="qubley-margin-indicator">
-                        <span className="qubely-indicator-top" style={{ height: marginTop.desktop ? marginTop.desktop + marginTop.unit : 0 }} >
-                            {marginTop.desktop && marginTop.desktop > 20 ? marginTop.desktop + ' ' + marginTop.unit : ''}
+                        <span className="qubely-indicator-top" style={{ height: marginTop.Desktop ? marginTop.Desktop + marginTop.unit : 0 }} >
+                            {marginTop.Desktop && marginTop.Desktop > 20 ? marginTop.Desktop + ' ' + marginTop.unit : ''}
                         </span>
-                        <span className="qubely-indicator-bottom" style={{ height: marginBottom.desktop ? marginBottom.desktop + marginBottom.unit : 0 }} >
-                            {marginBottom.desktop && marginBottom.desktop > 20 ? marginBottom.desktop + ' ' + marginBottom.unit : ''}
+                        <span className="qubely-indicator-bottom" style={{ height: marginBottom.Desktop ? marginBottom.Desktop + marginBottom.unit : 0 }} >
+                            {marginBottom.Desktop && marginBottom.Desktop > 20 ? marginBottom.Desktop + ' ' + marginBottom.unit : ''}
                         </span>
 
                     </div>
