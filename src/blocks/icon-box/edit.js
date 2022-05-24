@@ -16,6 +16,8 @@ import WebfontLoader from "../../components/typography/fontLoader"
 import PremiumShadow from "../../components/PremiumShadow";
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
+import InsideTabs from '../../components/InsideTabs'
+import InsideTab from '../../components/InsideTab';
 import { gradientBackground } from '../../components/HelperFunction'
 
 const { __ } = wp.i18n;
@@ -550,75 +552,47 @@ class edit extends Component {
                                 className="premium-panel-body"
                                 initialOpen={false}
                             >
-                                <TabPanel
-                                    className="premium-color-tabpanel"
-                                    activeClass="active-tab"
-                                    tabs={[
-                                        {
-                                            name: "normal",
-                                            title: "Normal",
-                                            className: "premium-tab",
-                                        },
-                                        {
-                                            name: "hover",
-                                            title: "Hover",
-                                            className: "premium-tab",
-                                        },
-                                    ]}
-                                >
-                                    {(tab) => {
-                                        let tabout;
-                                        if ("normal" === tab.name) {
-                                            tabout = (
-                                                <Fragment>
-                                                    <AdvancedPopColorControl
-                                                        label={__("Button Color", 'premium-blocks-for-gutenberg')}
-                                                        colorValue={btnStyles[0].btnColor}
-                                                        colorDefault={''}
-                                                        onColorChange={newValue => saveButtonStyle({ btnColor: newValue || "#000", })}
-                                                    />
+                                <InsideTabs>
+                                    <InsideTab tabTitle={__('Normal')}>
+                                        <Fragment>
+                                            <AdvancedPopColorControl
+                                                label={__("Button Color", 'premium-blocks-for-gutenberg')}
+                                                colorValue={btnStyles[0].btnColor}
+                                                colorDefault={''}
+                                                onColorChange={newValue => saveButtonStyle({ btnColor: newValue || "#000", })}
+                                            />
 
-                                                    <AdvancedPopColorControl
-                                                        label={__(`Button Background Color`)}
-                                                        colorValue={btnStyles[0].btnBack}
-                                                        onColorChange={newvalue => saveButtonStyle({ btnBack: newvalue, })}
-                                                        colorDefault={``}
-                                                    />
-                                                </Fragment>
-                                            );
-                                        }
-                                        if ("hover" === tab.name) {
-                                            tabout = (
-                                                <Fragment>
-                                                    <AdvancedPopColorControl
-                                                        label={__("Button Hover Color", 'premium-blocks-for-gutenberg')}
-                                                        colorValue={btnStyles[0].btnHoverColor}
-                                                        colorDefault={''}
-                                                        onColorChange={newValue => saveButtonStyle({ btnHoverColor: newValue || "#000", })}
-                                                    />
-                                                    <AdvancedPopColorControl
-                                                        label={__('Button Background Hover Color', 'premium-blocks-for-gutenberg')}
-                                                        colorValue={btnStyles[0].btnHoverBack}
-                                                        colorDefault={''}
-                                                        onColorChange={newValue => saveButtonStyle({ btnHoverBack: newValue, })}
-                                                    />
-                                                    <AdvancedPopColorControl
-                                                        label={__('Button Border Hover Color', 'premium-blocks-for-gutenberg')}
-                                                        colorValue={btnHoverBorder}
-                                                        colorDefault={''}
-                                                        onColorChange={newValue => setAttributes({ btnHoverBorder: newValue })}
-                                                    />
-                                                </Fragment>
-                                            );
-                                        }
-                                        return (
-                                            <div>
-                                                {tabout}
-                                                <hr />
-                                            </div>
-                                        );
-                                    }}
-                                </TabPanel>
+                                            <AdvancedPopColorControl
+                                                label={__(`Button Background Color`)}
+                                                colorValue={btnStyles[0].btnBack}
+                                                onColorChange={newvalue => saveButtonStyle({ btnBack: newvalue, })}
+                                                colorDefault={``}
+                                            />
+                                        </Fragment>
+                                    </InsideTab>
+                                    <InsideTab tabTitle={__('Hover')}>
+                                        <Fragment>
+                                            <AdvancedPopColorControl
+                                                label={__("Button Hover Color", 'premium-blocks-for-gutenberg')}
+                                                colorValue={btnStyles[0].btnHoverColor}
+                                                colorDefault={''}
+                                                onColorChange={newValue => saveButtonStyle({ btnHoverColor: newValue || "#000", })}
+                                            />
+                                            <AdvancedPopColorControl
+                                                label={__('Button Background Hover Color', 'premium-blocks-for-gutenberg')}
+                                                colorValue={btnStyles[0].btnHoverBack}
+                                                colorDefault={''}
+                                                onColorChange={newValue => saveButtonStyle({ btnHoverBack: newValue, })}
+                                            />
+                                            <AdvancedPopColorControl
+                                                label={__('Button Border Hover Color', 'premium-blocks-for-gutenberg')}
+                                                colorValue={btnHoverBorder}
+                                                colorDefault={''}
+                                                onColorChange={newValue => setAttributes({ btnHoverBorder: newValue })}
+                                            />
+                                        </Fragment>
+                                    </InsideTab>
+                                </InsideTabs>
                                 <PremiumTypo
                                     components={["responsiveSize", "weight", "style", "upper", "spacing"]}
                                     value={btnTypography}
@@ -699,7 +673,7 @@ class edit extends Component {
                             />
                         </InspectorTab>
                     </InspectorTabs>
-                </InspectorControls>
+                </InspectorControls >
             ),
             <div
                 id={`premium-icon-box-${block_id}`}
