@@ -464,7 +464,6 @@ const new_attributes = {
         type: "array",
         default: [
             {
-
                 titleTag: "H2",
                 titleFont: __('Default', 'premium - blocks -for-gutenberg'),
                 titleColor: '',
@@ -863,7 +862,7 @@ const deprecatedContent = [
                     'textTransform': attributes.titleStyles[0].titleUpper,
                     'letterSpacing': attributes.titleStyles[0].titleLetter,
                     'fontFamily': attributes.titleStyles[0].titleFont,
-                    'lineHeight': attributes.containerStyles[0].hoverShadowColor,
+                    'lineHeight': attributes.titleStyles[0].titleLine,
                     'fontSize': {
                         'Desktop': attributes.titleStyles[0].titleSize,
                         "Tablet": attributes.titleStyles[0].titleSizeTablet,
@@ -872,26 +871,26 @@ const deprecatedContent = [
                     }
                 },
                 descTypography: {
-                    'fontWeight': attributes.titleStyles[0].descWeight,
-                    'fontFamily': attributes.titleStyles[0].descFont,
-                    'lineHeight': attributes.containerStyles[0].descLine,
+                    'fontWeight': attributes.descStyles[0].descWeight,
+                    'fontFamily': attributes.descStyles[0].descFont,
+                    'lineHeight': attributes.descStyles[0].descLine,
                     'fontSize': {
-                        'Desktop': attributes.titleStyles[0].descSize,
-                        "Tablet": attributes.titleStyles[0].descSizeTablet,
-                        "Mobile": attributes.titleStyles[0].descSizeMobile,
-                        'unit': attributes.titleStyles[0].descSizeUnit,
+                        'Desktop': attributes.descStyles[0].descSize,
+                        "Tablet": attributes.descStyles[0].descSizeTablet,
+                        "Mobile": attributes.descStyles[0].descSizeMobile,
+                        'unit': attributes.descStyles[0].descSizeUnit,
                     }
                 },
                 btnTypography: {
-                    'fontWeight': attributes.titleStyles[0].btnWeight,
-                    'fontStyle': attributes.containerStyles[0].btnStyle,
-                    'textTransform': attributes.containerStyles[0].btnUpper,
-                    'letterSpacing': attributes.containerStyles[0].btnLetter,
+                    'fontWeight': attributes.btnStyles[0].btnWeight,
+                    'fontStyle': attributes.btnStyles[0].btnStyle,
+                    'textTransform': attributes.btnStyles[0].btnUpper,
+                    'letterSpacing': attributes.btnStyles[0].btnLetter,
                     'fontSize': {
-                        'Desktop': attributes.titleStyles[0].btnSize,
-                        "Tablet": attributes.titleStyles[0].btnSizeTablet,
-                        "Mobile": attributes.titleStyles[0].btnSizeMobile,
-                        'unit': attributes.titleStyles[0].btnSizeUnit,
+                        'Desktop': attributes.btnStyles[0].btnSize,
+                        "Tablet": attributes.btnStyles[0].btnSizeTablet,
+                        "Mobile": attributes.btnStyles[0].btnSizeMobile,
+                        'unit': attributes.btnStyles[0].btnSizeUnit,
                     }
                 }
             };
