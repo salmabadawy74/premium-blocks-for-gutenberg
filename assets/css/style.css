@@ -1100,6 +1100,10 @@ a.premium-dheading-block__link:hover {
     height: auto;
 }
 
+.premium-icon-container .dashicons{
+    display: inline !important;
+}
+
 /*
 * Hover Effects
 */

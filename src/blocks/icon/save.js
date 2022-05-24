@@ -25,7 +25,7 @@ const save = props => {
         iconSize
     } = props.attributes;
 
-    const mainClasses = classnames(className, 'premium-icon');
+    const mainClasses = classnames(className);
 
     return (
         <div

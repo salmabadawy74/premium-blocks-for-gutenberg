@@ -1,4 +1,5 @@
 import classnames from 'classnames'
+import { gradientBackground } from '../../components/HelperFunction'
 
 const { RichText } = wp.blockEditor;
 
@@ -42,7 +43,15 @@ const save = props => {
         btnStyles,
         containerStyles,
         btnBorder,
-        containerBorder
+        containerBorder,
+        containerBackground,
+        titleShadow,
+        btnShadow,
+        containerShadow,
+        containerHoverShadow,
+        titleTypography,
+        descTypography,
+        btnTypography
     } = props.attributes;
 
     const mainClasses = classnames(className, 'premium-icon-box');
@@ -57,7 +66,10 @@ const save = props => {
                     dangerouslySetInnerHTML={{
                         __html: [
                             `#premium-icon-box-${block_id}:hover {`,
-                            `box-shadow: ${containerStyles[0].hoverShadowHorizontal}px ${containerStyles[0].hoverShadowVertical}px ${containerStyles[0].hoverShadowBlur}px ${containerStyles[0].hoverShadowColor} ${containerStyles[0].hoverShadowPosition} !important`,
+                            `box-shadow: ${containerHoverShadow.horizontal}px ${containerHoverShadow.vertical}px ${containerHoverShadow.blur}px ${containerHoverShadow.color} ${containerHoverShadow.position} !important`,
+                            "}",
+                            `#premium-icon-box-${block_id} {`,
+                            `box-shadow: ${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position} !important`,
                             "}",
                             `#premium-icon-box-${block_id} .premium-icon-box__btn:hover {`,
                             `color: ${btnStyles[0].btnHoverColor} !important;`,
@@ -79,13 +91,7 @@ const save = props => {
                     textAlign: align,
                     borderStyle: containerBorder.borderType,
                     borderColor: containerBorder.borderColor,
-                    boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px ${containerStyles[0].shadowColor} ${containerStyles[0].shadowPosition}`,
-                    backgroundColor: containerStyles[0].backColor,
-                    backgroundImage: containerStyles[0].imageURL ? `url('${containerStyles[0].imageURL}')` : 'none',
-                    backgroundRepeat: containerStyles[0].backgroundRepeat,
-                    backgroundPosition: containerStyles[0].backgroundPosition,
-                    backgroundSize: containerStyles[0].backgroundSize,
-                    backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset"
+                    ...gradientBackground(containerBackground),
                 }}
             >
                 {iconChecked && (
@@ -98,7 +104,7 @@ const save = props => {
                                 style={{
                                     color: iconColor,
                                     backgroundColor: iconBackColor,
-                                    fontSize: iconSize
+                                    fontSize: (iconSize[props.deviceType] || 40) + iconSize.unit,
                                 }}
                             />
                         )}
@@ -108,8 +114,8 @@ const save = props => {
                                 src={`${iconImgUrl}`}
                                 alt="Image Icon"
                                 style={{
-                                    width: iconSize + "px",
-                                    height: iconSize + "px",
+                                    width: (iconSize[props.deviceType] || 40) + iconSize.unit,
+                                    height: (iconSize[props.deviceType] || 40) + iconSize.unit,
                                     borderRadius: iconRadius + "px"
                                 }}
                             />
@@ -126,14 +132,16 @@ const save = props => {
                                 className={`premium-icon-box__title`}
                                 value={titleText}
                                 style={{
+                                    fontSize: `${titleTypography.fontSize[props.deviceType] || 20}${titleTypography.fontSize.unit}`,
+                                    fontFamily: titleTypography.fontFamily,
+                                    letterSpacing: titleTypography.letterSpacing + "px",
+                                    textTransform: titleTypography.textTransform ? "uppercase" : "none",
+                                    fontStyle: titleTypography.fontStyle,
+                                    fontWeight: titleTypography.fontWeight,
+                                    lineHeight: titleTypography.lineHeight + "px",
                                     color: titleStyles[0].titleColor,
-                                    fontFamily: titleStyles[0].titleFont,
-                                    letterSpacing: titleStyles[0].titleLetter + "px",
-                                    textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
-                                    fontStyle: titleStyles[0].titleStyle,
-                                    fontWeight: titleStyles[0].titleWeight,
-                                    textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`,
-                                    lineHeight: titleStyles[0].titleLine + "px"
+                                    textShadow: `${titleShadow.horizontal || 0}px ${titleShadow.vertical ||
+                                        0}px ${titleShadow.blur || 0}px ${titleShadow.color}`,
                                 }}
                             />
                         </div>
@@ -148,9 +156,10 @@ const save = props => {
                                 value={descText}
                                 style={{
                                     color: descStyles[0].descColor,
-                                    fontFamily: descStyles[0].descFont,
-                                    lineHeight: descStyles[0].descLine + "px",
-                                    fontWeight: descStyles[0].descWeight
+                                    fontSize: `${descTypography.fontSize[props.deviceType] || 20}${descTypography.fontSize.unit}`,
+                                    fontFamily: descTypography.fontFamily,
+                                    fontWeight: descTypography.fontWeight,
+                                    lineHeight: descTypography.lineHeight + "px"
                                 }}
                             />
                         </div>
@@ -167,16 +176,17 @@ const save = props => {
                                 target={btnTarget ? "_blank" : "_self"}
                                 value={btnText}
                                 style={{
+                                    fontSize: `${btnTypography.fontSize[props.deviceType] || 20}${btnTypography.fontSize.unit}`,
+                                    letterSpacing: btnTypography.letterSpacing + "px",
+                                    textTransform: btnTypography.textTransform ? "uppercase" : "none",
+                                    fontStyle: btnTypography.fontStyle,
+                                    fontWeight: btnTypography.fontWeight,
                                     color: btnStyles[0].btnColor,
                                     backgroundColor: btnStyles[0].btnBack,
-                                    letterSpacing: btnStyles[0].btnLetter + "px",
-                                    textTransform: btnStyles[0].btnUpper ? "uppercase" : "none",
-                                    fontStyle: btnStyles[0].btnStyle,
-                                    fontWeight: btnStyles[0].btnWeight,
                                     borderStyle: btnBorder.borderType,
                                     borderColor: btnBorder.borderColor,
-                                    padding: btnStyles[0].btnPadding + btnStyles[0].btnPaddingU,
-                                    boxShadow: `${btnStyles[0].btnShadowHorizontal}px ${btnStyles[0].btnShadowVertical}px ${btnStyles[0].btnShadowBlur}px ${btnStyles[0].btnShadowColor} ${btnStyles[0].btnShadowPosition}`
+                                    boxShadow: `${btnShadow.horizontal || 0}px ${btnShadow.vertical ||
+                                        0}px ${btnShadow.blur || 0}px ${btnShadow.color} ${btnShadow.position}`
                                 }}
                             />
                         </div>
