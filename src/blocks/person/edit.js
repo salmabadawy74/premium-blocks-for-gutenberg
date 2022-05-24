@@ -73,22 +73,6 @@ class edit extends Component {
         // Assigning id in the attribute.
         this.props.setAttributes({ id: this.props.clientId })
         this.props.setAttributes({ classMigrate: true })
-        this.getPreviewSize = this.getPreviewSize.bind(this);
-    }
-
-    getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
-        if (device === 'Mobile') {
-            if (undefined !== mobileSize && '' !== mobileSize) {
-                return mobileSize;
-            } else if (undefined !== tabletSize && '' !== tabletSize) {
-                return tabletSize;
-            }
-        } else if (device === 'Tablet') {
-            if (undefined !== tabletSize && '' !== tabletSize) {
-                return tabletSize;
-            }
-        }
-        return desktopSize;
     }
 
     save(value, index) {
@@ -141,7 +125,10 @@ class edit extends Component {
             socialIconPadding,
             socialIconMargin,
             socialIconBorder,
-            socialIconSize
+            socialIconSize,
+            descTypography,
+            titleTypography,
+            nameTypography
         } = this.props.attributes;
 
         const HOVER = [
@@ -314,12 +301,6 @@ class edit extends Component {
         setAttributes({ id: blockId });
 
         const mainClasses = classnames(className, "premium-person");
-
-        const NameSize = this.getPreviewSize(this.props.deviceType, nameStyles[0].namefontSize, nameStyles[0].namefontSizeTablet, nameStyles[0].namefontSizeMobile);
-
-        const TitleSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titlefontSizeTablet, titleStyles[0].titlefontSizeMobile);
-
-        const DescSize = this.getPreviewSize(this.props.deviceType, descStyles[0].descSize, descStyles[0].descfontSizeTablet, descStyles[0].descfontSizeMobile);
 
         const shouldCancelStart = (e) => {
             // Prevent sorting from being triggered if target is input or button
@@ -516,7 +497,7 @@ class edit extends Component {
                         <div
                             className={`premium-person__name_wrap`}
                             style={{
-                                fontSize: NameSize + nameStyles[0].namefontSizeType,
+                                fontSize: `${nameTypography.fontSize[this.props.deviceType] || 20}${nameTypography.fontSize.unit}`,
                             }}
                         >
                             {value.name && (
@@ -524,13 +505,13 @@ class edit extends Component {
                                     className={`premium-person__name`}
                                     style={{
                                         color: nameStyles[0].nameColor,
-                                        fontSize: NameSize + nameStyles[0].namefontSizeType,
-                                        fontWeight: nameStyles[0].nameWeight,
+                                        fontSize: `${nameTypography.fontSize[this.props.deviceType] || 20}${nameTypography.fontSize.unit}`,
+                                        letterSpacing: nameTypography.letterSpacing + "px",
+                                        textTransform: nameTypography.textTransform ? "uppercase" : "none",
+                                        fontStyle: nameTypography.fontStyle,
+                                        fontWeight: nameTypography.fontWeight,
+                                        lineHeight: nameTypography.lineHeight + "px",
                                         alignSelf: nameV,
-                                        letterSpacing: nameStyles[0].nameLetter + "px",
-                                        lineHeight: nameStyles[0].nameLine + "px",
-                                        fontStyle: nameStyles[0].nameStyle,
-                                        textTransform: nameStyles[0].nameUpper ? "uppercase" : "none",
                                         textShadow: `${nameStyles[0].nameshadowHorizontal}px ${nameStyles[0].nameshadowVertical}px ${nameStyles[0].nameshadowBlur}px ${nameStyles[0].nameshadowColor}`
                                     }}
                                 >
@@ -541,7 +522,7 @@ class edit extends Component {
                         <div
                             className={`premium-person__title_wrap`}
                             style={{
-                                fontSize: TitleSize + titleStyles[0].titlefontSizeType,
+                                fontSize: `${titleTypography.fontSize[this.props.deviceType] || 20}${titleTypography.fontSize.unit}`,
                             }}
                         >
                             {value.title && (
@@ -549,13 +530,13 @@ class edit extends Component {
                                     className={`premium-person__title`}
                                     style={{
                                         color: titleStyles[0].titleColor,
-                                        fontSize: TitleSize + titleStyles[0].titlefontSizeType,
-                                        fontWeight: titleStyles[0].titleWeight,
+                                        fontSize: `${titleTypography.fontSize[this.props.deviceType] || 20}${titleTypography.fontSize.unit}`,
+                                        letterSpacing: titleTypography.letterSpacing + "px",
+                                        textTransform: titleTypography.textTransform ? "uppercase" : "none",
+                                        fontStyle: titleTypography.fontStyle,
+                                        fontWeight: titleTypography.fontWeight,
+                                        lineHeight: titleTypography.lineHeight + "px",
                                         alignSelf: titleV,
-                                        letterSpacing: titleStyles[0].titleLetter + "px",
-                                        lineHeight: titleStyles[0].titleLine + "px",
-                                        fontStyle: titleStyles[0].titleStyle,
-                                        textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
                                         textShadow: `${titleStyles[0].titleshadowHorizontal}px ${titleStyles[0].titleshadowVertical}px ${titleStyles[0].titleshadowBlur}px ${titleStyles[0].titleshadowColor}`,
                                     }}
                                 >
@@ -566,7 +547,7 @@ class edit extends Component {
                         <div
                             className={`premium-person__desc_wrap`}
                             style={{
-                                fontSize: DescSize + descStyles[0].descfontSizeType,
+                                fontSize: `${descTypography.fontSize[this.props.deviceType] || 20}${descTypography.fontSize.unit}`,
                             }}
                         >
                             {value.desc && (
@@ -574,13 +555,13 @@ class edit extends Component {
                                     className={`premium-person__desc`}
                                     style={{
                                         color: descStyles[0].descColor,
-                                        fontSize: DescSize + descStyles[0].descfontSizeType,
-                                        fontWeight: descStyles[0].descWeight,
+                                        fontSize: `${descTypography.fontSize[this.props.deviceType] || 20}${descTypography.fontSize.unit}`,
+                                        letterSpacing: descTypography.letterSpacing + "px",
+                                        textTransform: descTypography.textTransform ? "uppercase" : "none",
+                                        fontStyle: descTypography.fontStyle,
+                                        fontWeight: descTypography.fontWeight,
+                                        lineHeight: descTypography.lineHeight + "px",
                                         alignSelf: descV,
-                                        letterSpacing: descStyles[0].descLetter + "px",
-                                        lineHeight: descStyles[0].descLine + "px",
-                                        fontStyle: descStyles[0].descStyle,
-                                        textTransform: descStyles[0].descUpper ? "uppercase" : "none",
                                         textShadow: `${descStyles[0].descshadowHorizontal}px ${descStyles[0].descshadowVertical}px ${descStyles[0].descshadowBlur}px ${descStyles[0].descshadowColor}`,
                                     }}
                                 >
@@ -795,30 +776,8 @@ class edit extends Component {
                     >
                         <PremiumTypo
                             components={["responsiveSize", "weight", "line", "style", "upper", "spacing"]}
-                            setAttributes={saveNameStyles}
-                            fontSizeType={{ value: nameStyles[0].namefontSizeType, label: __("namefontSizeType") }}
-                            fontSize={nameStyles[0].namefontSize}
-                            fontSizeMobile={nameStyles[0].namefontSizeMobile}
-                            fontSizeTablet={nameStyles[0].namefontSizeTablet}
-                            onChangeSize={newSize => saveNameStyles({ namefontSize: newSize })}
-                            onChangeTabletSize={newSize => saveNameStyles({ namefontSizeTablet: newSize })}
-                            onChangeMobileSize={newSize => saveNameStyles({ namefontSizeMobile: newSize })}
-                            weight={nameStyles[0].nameWeight}
-                            style={nameStyles[0].nameStyle}
-                            spacing={nameStyles[0].nameLetter}
-                            upper={nameStyles[0].nameUpper}
-                            line={nameStyles[0].nameLine}
-                            onChangeWeight={newWeight =>
-                                saveNameStyles({ nameWeight: newWeight || 500 })
-                            }
-                            onChangeStyle={newStyle =>
-                                saveNameStyles({ nameStyle: newStyle })
-                            }
-                            onChangeSpacing={newValue =>
-                                saveNameStyles({ nameLetter: newValue })
-                            }
-                            onChangeUpper={check => saveNameStyles({ nameUpper: check })}
-                            onChangeLine={newValue => saveNameStyles({ nameLine: newValue })}
+                            value={nameTypography}
+                            onChange={newValue => setAttributes({ nameTypography: newValue })}
                         />
                         <div className="premium-control-toggle">
                             <AdvancedPopColorControl
@@ -857,30 +816,8 @@ class edit extends Component {
                     >
                         <PremiumTypo
                             components={["responsiveSize", "weight", "line", "style", "upper", "spacing"]}
-                            setAttributes={saveTitleStyles}
-                            fontSizeType={{ value: titleStyles[0].titlefontSizeType, label: __("titlefontSizeType") }}
-                            fontSize={titleStyles[0].titleSize}
-                            fontSizeMobile={titleStyles[0].titlefontSizeMobile}
-                            fontSizeTablet={titleStyles[0].titlefontSizeTablet}
-                            onChangeSize={newSize => saveTitleStyles({ titleSize: newSize })}
-                            onChangeTabletSize={newSize => saveTitleStyles({ titlefontSizeTablet: newSize })}
-                            onChangeMobileSize={newSize => saveTitleStyles({ titlefontSizeMobile: newSize })}
-                            weight={titleStyles[0].titleWeight}
-                            style={titleStyles[0].titleStyle}
-                            spacing={titleStyles[0].titleLetter}
-                            upper={titleStyles[0].titleUpper}
-                            line={titleStyles[0].titleLine}
-                            onChangeWeight={newWeight =>
-                                saveTitleStyles({ titleWeight: newWeight || 500 })
-                            }
-                            onChangeStyle={newStyle =>
-                                saveTitleStyles({ titleStyle: newStyle })
-                            }
-                            onChangeSpacing={newValue =>
-                                saveTitleStyles({ titleLetter: newValue })
-                            }
-                            onChangeUpper={check => saveTitleStyles({ titleUpper: check })}
-                            onChangeLine={newValue => saveTitleStyles({ titleLine: newValue })}
+                            value={titleTypography}
+                            onChange={newValue => setAttributes({ titleTypography: newValue })}
                         />
                         <div className="premium-control-toggle">
                             <AdvancedPopColorControl
@@ -920,30 +857,8 @@ class edit extends Component {
                     >
                         <PremiumTypo
                             components={["responsiveSize", "weight", "line", "style", "upper", "spacing"]}
-                            setAttributes={saveDescStyles}
-                            fontSizeType={{ value: descStyles[0].descfontSizeType, label: __("descfontSizeType") }}
-                            fontSize={descStyles[0].descSize}
-                            fontSizeMobile={descStyles[0].descfontSizeMobile}
-                            fontSizeTablet={descStyles[0].descfontSizeTablet}
-                            onChangeSize={newSize => saveDescStyles({ descSize: newSize })}
-                            onChangeTabletSize={newSize => saveDescStyles({ descfontSizeTablet: newSize })}
-                            onChangeMobileSize={newSize => saveDescStyles({ descfontSizeMobile: newSize })}
-                            weight={descStyles[0].descWeight}
-                            style={descStyles[0].descStyle}
-                            spacing={descStyles[0].descLetter}
-                            upper={descStyles[0].descUpper}
-                            line={descStyles[0].descLine}
-                            onChangeWeight={newWeight =>
-                                saveDescStyles({ descWeight: newWeight || 500 })
-                            }
-                            onChangeStyle={newStyle =>
-                                saveDescStyles({ descStyle: newStyle })
-                            }
-                            onChangeSpacing={newValue =>
-                                saveDescStyles({ descLetter: newValue })
-                            }
-                            onChangeUpper={check => saveDescStyles({ descUpper: check })}
-                            onChangeLine={newValue => saveDescStyles({ descLine: newValue })}
+                            value={descTypography}
+                            onChange={newValue => setAttributes({ descTypography: newValue })}
                         />
                         <div className="premium-control-toggle">
                             <AdvancedPopColorControl

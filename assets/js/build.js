@@ -63926,7 +63926,10 @@ var save = function save(props) {
         hue = _props$attributes.hue,
         contentColor = _props$attributes.contentColor,
         bottomInfo = _props$attributes.bottomInfo,
-        socialIconBorder = _props$attributes.socialIconBorder;
+        socialIconBorder = _props$attributes.socialIconBorder,
+        descTypography = _props$attributes.descTypography,
+        titleTypography = _props$attributes.titleTypography,
+        nameTypography = _props$attributes.nameTypography;
 
 
     var mainClasses = (0, _classnames2.default)(className, 'premium-person');
@@ -64012,12 +64015,13 @@ var save = function save(props) {
                                     className: 'premium-person__name',
                                     style: {
                                         color: nameStyles[0].nameColor,
-                                        fontWeight: nameStyles[0].nameWeight,
                                         alignSelf: nameV,
-                                        letterSpacing: nameStyles[0].nameLetter + "px",
-                                        lineHeight: nameStyles[0].nameLine + "px",
-                                        fontStyle: nameStyles[0].nameStyle,
-                                        textTransform: nameStyles[0].nameUpper ? "uppercase" : "none",
+                                        fontSize: '' + (nameTypography.fontSize[undefined.props.deviceType] || 20) + nameTypography.fontSize.unit,
+                                        letterSpacing: nameTypography.letterSpacing + "px",
+                                        textTransform: nameTypography.textTransform ? "uppercase" : "none",
+                                        fontStyle: nameTypography.fontStyle,
+                                        fontWeight: nameTypography.fontWeight,
+                                        lineHeight: nameTypography.lineHeight + "px",
                                         textShadow: nameStyles[0].nameshadowHorizontal + 'px ' + nameStyles[0].nameshadowVertical + 'px ' + nameStyles[0].nameshadowBlur + 'px ' + nameStyles[0].nameshadowColor
                                     }
                                 },
@@ -64033,12 +64037,13 @@ var save = function save(props) {
                                     className: 'premium-person__title',
                                     style: {
                                         color: titleStyles[0].titleColor,
-                                        fontWeight: titleStyles[0].titleWeight,
                                         alignSelf: titleV,
-                                        letterSpacing: titleStyles[0].titleLetter + "px",
-                                        lineHeight: titleStyles[0].titleLine + "px",
-                                        fontStyle: titleStyles[0].titleStyle,
-                                        textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                        fontSize: '' + (titleTypography.fontSize[undefined.props.deviceType] || 20) + titleTypography.fontSize.unit,
+                                        letterSpacing: titleTypography.letterSpacing + "px",
+                                        textTransform: titleTypography.textTransform ? "uppercase" : "none",
+                                        fontStyle: titleTypography.fontStyle,
+                                        fontWeight: titleTypography.fontWeight,
+                                        lineHeight: titleTypography.lineHeight + "px",
                                         textShadow: titleStyles[0].titleshadowHorizontal + 'px ' + titleStyles[0].titleshadowVertical + 'px ' + titleStyles[0].titleshadowBlur + 'px ' + titleStyles[0].titleshadowColor
                                     }
                                 },
@@ -64054,12 +64059,13 @@ var save = function save(props) {
                                     className: 'premium-person__desc',
                                     style: {
                                         color: descStyles[0].descColor,
-                                        fontWeight: descStyles[0].descWeight,
                                         alignSelf: descV,
-                                        letterSpacing: descStyles[0].descLetter + "px",
-                                        lineHeight: descStyles[0].descLine + "px",
-                                        fontStyle: descStyles[0].descStyle,
-                                        textTransform: descStyles[0].descUpper ? "uppercase" : "none",
+                                        fontSize: '' + (descTypography.fontSize[undefined.props.deviceType] || 20) + descTypography.fontSize.unit,
+                                        letterSpacing: descTypography.letterSpacing + "px",
+                                        textTransform: descTypography.textTransform ? "uppercase" : "none",
+                                        fontStyle: descTypography.fontStyle,
+                                        fontWeight: descTypography.fontWeight,
+                                        lineHeight: descTypography.lineHeight + "px",
                                         textShadow: descStyles[0].descshadowHorizontal + 'px ' + descStyles[0].descshadowVertical + 'px ' + descStyles[0].descshadowBlur + 'px ' + descStyles[0].descshadowColor
                                     }
                                 },
@@ -64269,23 +64275,6 @@ var edit = function (_Component) {
             // Assigning id in the attribute.
             this.props.setAttributes({ id: this.props.clientId });
             this.props.setAttributes({ classMigrate: true });
-            this.getPreviewSize = this.getPreviewSize.bind(this);
-        }
-    }, {
-        key: "getPreviewSize",
-        value: function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
-            if (device === 'Mobile') {
-                if (undefined !== mobileSize && '' !== mobileSize) {
-                    return mobileSize;
-                } else if (undefined !== tabletSize && '' !== tabletSize) {
-                    return tabletSize;
-                }
-            } else if (device === 'Tablet') {
-                if (undefined !== tabletSize && '' !== tabletSize) {
-                    return tabletSize;
-                }
-            }
-            return desktopSize;
         }
     }, {
         key: "save",
@@ -64348,7 +64337,10 @@ var edit = function (_Component) {
                 socialIconPadding = _props$attributes.socialIconPadding,
                 socialIconMargin = _props$attributes.socialIconMargin,
                 socialIconBorder = _props$attributes.socialIconBorder,
-                socialIconSize = _props$attributes.socialIconSize;
+                socialIconSize = _props$attributes.socialIconSize,
+                descTypography = _props$attributes.descTypography,
+                titleTypography = _props$attributes.titleTypography,
+                nameTypography = _props$attributes.nameTypography;
 
 
             var HOVER = [{
@@ -64478,12 +64470,6 @@ var edit = function (_Component) {
             setAttributes({ id: blockId });
 
             var mainClasses = (0, _classnames2.default)(className, "premium-person");
-
-            var NameSize = this.getPreviewSize(this.props.deviceType, nameStyles[0].namefontSize, nameStyles[0].namefontSizeTablet, nameStyles[0].namefontSizeMobile);
-
-            var TitleSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titlefontSizeTablet, titleStyles[0].titlefontSizeMobile);
-
-            var DescSize = this.getPreviewSize(this.props.deviceType, descStyles[0].descSize, descStyles[0].descfontSizeTablet, descStyles[0].descfontSizeMobile);
 
             var shouldCancelStart = function shouldCancelStart(e) {
                 // Prevent sorting from being triggered if target is input or button
@@ -64708,7 +64694,7 @@ var edit = function (_Component) {
                                     {
                                         className: "premium-person__name_wrap",
                                         style: {
-                                            fontSize: NameSize + nameStyles[0].namefontSizeType
+                                            fontSize: "" + (nameTypography.fontSize[_this2.props.deviceType] || 20) + nameTypography.fontSize.unit
                                         }
                                     },
                                     value.name && React.createElement(
@@ -64717,13 +64703,13 @@ var edit = function (_Component) {
                                             className: "premium-person__name",
                                             style: {
                                                 color: nameStyles[0].nameColor,
-                                                fontSize: NameSize + nameStyles[0].namefontSizeType,
-                                                fontWeight: nameStyles[0].nameWeight,
+                                                fontSize: "" + (nameTypography.fontSize[_this2.props.deviceType] || 20) + nameTypography.fontSize.unit,
+                                                letterSpacing: nameTypography.letterSpacing + "px",
+                                                textTransform: nameTypography.textTransform ? "uppercase" : "none",
+                                                fontStyle: nameTypography.fontStyle,
+                                                fontWeight: nameTypography.fontWeight,
+                                                lineHeight: nameTypography.lineHeight + "px",
                                                 alignSelf: nameV,
-                                                letterSpacing: nameStyles[0].nameLetter + "px",
-                                                lineHeight: nameStyles[0].nameLine + "px",
-                                                fontStyle: nameStyles[0].nameStyle,
-                                                textTransform: nameStyles[0].nameUpper ? "uppercase" : "none",
                                                 textShadow: nameStyles[0].nameshadowHorizontal + "px " + nameStyles[0].nameshadowVertical + "px " + nameStyles[0].nameshadowBlur + "px " + nameStyles[0].nameshadowColor
                                             }
                                         },
@@ -64735,7 +64721,7 @@ var edit = function (_Component) {
                                     {
                                         className: "premium-person__title_wrap",
                                         style: {
-                                            fontSize: TitleSize + titleStyles[0].titlefontSizeType
+                                            fontSize: "" + (titleTypography.fontSize[_this2.props.deviceType] || 20) + titleTypography.fontSize.unit
                                         }
                                     },
                                     value.title && React.createElement(
@@ -64744,13 +64730,13 @@ var edit = function (_Component) {
                                             className: "premium-person__title",
                                             style: {
                                                 color: titleStyles[0].titleColor,
-                                                fontSize: TitleSize + titleStyles[0].titlefontSizeType,
-                                                fontWeight: titleStyles[0].titleWeight,
+                                                fontSize: "" + (titleTypography.fontSize[_this2.props.deviceType] || 20) + titleTypography.fontSize.unit,
+                                                letterSpacing: titleTypography.letterSpacing + "px",
+                                                textTransform: titleTypography.textTransform ? "uppercase" : "none",
+                                                fontStyle: titleTypography.fontStyle,
+                                                fontWeight: titleTypography.fontWeight,
+                                                lineHeight: titleTypography.lineHeight + "px",
                                                 alignSelf: titleV,
-                                                letterSpacing: titleStyles[0].titleLetter + "px",
-                                                lineHeight: titleStyles[0].titleLine + "px",
-                                                fontStyle: titleStyles[0].titleStyle,
-                                                textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
                                                 textShadow: titleStyles[0].titleshadowHorizontal + "px " + titleStyles[0].titleshadowVertical + "px " + titleStyles[0].titleshadowBlur + "px " + titleStyles[0].titleshadowColor
                                             }
                                         },
@@ -64762,7 +64748,7 @@ var edit = function (_Component) {
                                     {
                                         className: "premium-person__desc_wrap",
                                         style: {
-                                            fontSize: DescSize + descStyles[0].descfontSizeType
+                                            fontSize: "" + (descTypography.fontSize[_this2.props.deviceType] || 20) + descTypography.fontSize.unit
                                         }
                                     },
                                     value.desc && React.createElement(
@@ -64771,13 +64757,13 @@ var edit = function (_Component) {
                                             className: "premium-person__desc",
                                             style: {
                                                 color: descStyles[0].descColor,
-                                                fontSize: DescSize + descStyles[0].descfontSizeType,
-                                                fontWeight: descStyles[0].descWeight,
+                                                fontSize: "" + (descTypography.fontSize[_this2.props.deviceType] || 20) + descTypography.fontSize.unit,
+                                                letterSpacing: descTypography.letterSpacing + "px",
+                                                textTransform: descTypography.textTransform ? "uppercase" : "none",
+                                                fontStyle: descTypography.fontStyle,
+                                                fontWeight: descTypography.fontWeight,
+                                                lineHeight: descTypography.lineHeight + "px",
                                                 alignSelf: descV,
-                                                letterSpacing: descStyles[0].descLetter + "px",
-                                                lineHeight: descStyles[0].descLine + "px",
-                                                fontStyle: descStyles[0].descStyle,
-                                                textTransform: descStyles[0].descUpper ? "uppercase" : "none",
                                                 textShadow: descStyles[0].descshadowHorizontal + "px " + descStyles[0].descshadowVertical + "px " + descStyles[0].descshadowBlur + "px " + descStyles[0].descshadowColor
                                             }
                                         },
@@ -65053,39 +65039,9 @@ var edit = function (_Component) {
                     },
                     React.createElement(_premiumTypo2.default, {
                         components: ["responsiveSize", "weight", "line", "style", "upper", "spacing"],
-                        setAttributes: saveNameStyles,
-                        fontSizeType: { value: nameStyles[0].namefontSizeType, label: __("namefontSizeType") },
-                        fontSize: nameStyles[0].namefontSize,
-                        fontSizeMobile: nameStyles[0].namefontSizeMobile,
-                        fontSizeTablet: nameStyles[0].namefontSizeTablet,
-                        onChangeSize: function onChangeSize(newSize) {
-                            return saveNameStyles({ namefontSize: newSize });
-                        },
-                        onChangeTabletSize: function onChangeTabletSize(newSize) {
-                            return saveNameStyles({ namefontSizeTablet: newSize });
-                        },
-                        onChangeMobileSize: function onChangeMobileSize(newSize) {
-                            return saveNameStyles({ namefontSizeMobile: newSize });
-                        },
-                        weight: nameStyles[0].nameWeight,
-                        style: nameStyles[0].nameStyle,
-                        spacing: nameStyles[0].nameLetter,
-                        upper: nameStyles[0].nameUpper,
-                        line: nameStyles[0].nameLine,
-                        onChangeWeight: function onChangeWeight(newWeight) {
-                            return saveNameStyles({ nameWeight: newWeight || 500 });
-                        },
-                        onChangeStyle: function onChangeStyle(newStyle) {
-                            return saveNameStyles({ nameStyle: newStyle });
-                        },
-                        onChangeSpacing: function onChangeSpacing(newValue) {
-                            return saveNameStyles({ nameLetter: newValue });
-                        },
-                        onChangeUpper: function onChangeUpper(check) {
-                            return saveNameStyles({ nameUpper: check });
-                        },
-                        onChangeLine: function onChangeLine(newValue) {
-                            return saveNameStyles({ nameLine: newValue });
+                        value: nameTypography,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ nameTypography: newValue });
                         }
                     }),
                     React.createElement(
@@ -65132,39 +65088,9 @@ var edit = function (_Component) {
                     },
                     React.createElement(_premiumTypo2.default, {
                         components: ["responsiveSize", "weight", "line", "style", "upper", "spacing"],
-                        setAttributes: saveTitleStyles,
-                        fontSizeType: { value: titleStyles[0].titlefontSizeType, label: __("titlefontSizeType") },
-                        fontSize: titleStyles[0].titleSize,
-                        fontSizeMobile: titleStyles[0].titlefontSizeMobile,
-                        fontSizeTablet: titleStyles[0].titlefontSizeTablet,
-                        onChangeSize: function onChangeSize(newSize) {
-                            return saveTitleStyles({ titleSize: newSize });
-                        },
-                        onChangeTabletSize: function onChangeTabletSize(newSize) {
-                            return saveTitleStyles({ titlefontSizeTablet: newSize });
-                        },
-                        onChangeMobileSize: function onChangeMobileSize(newSize) {
-                            return saveTitleStyles({ titlefontSizeMobile: newSize });
-                        },
-                        weight: titleStyles[0].titleWeight,
-                        style: titleStyles[0].titleStyle,
-                        spacing: titleStyles[0].titleLetter,
-                        upper: titleStyles[0].titleUpper,
-                        line: titleStyles[0].titleLine,
-                        onChangeWeight: function onChangeWeight(newWeight) {
-                            return saveTitleStyles({ titleWeight: newWeight || 500 });
-                        },
-                        onChangeStyle: function onChangeStyle(newStyle) {
-                            return saveTitleStyles({ titleStyle: newStyle });
-                        },
-                        onChangeSpacing: function onChangeSpacing(newValue) {
-                            return saveTitleStyles({ titleLetter: newValue });
-                        },
-                        onChangeUpper: function onChangeUpper(check) {
-                            return saveTitleStyles({ titleUpper: check });
-                        },
-                        onChangeLine: function onChangeLine(newValue) {
-                            return saveTitleStyles({ titleLine: newValue });
+                        value: titleTypography,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ titleTypography: newValue });
                         }
                     }),
                     React.createElement(
@@ -65211,39 +65137,9 @@ var edit = function (_Component) {
                     },
                     React.createElement(_premiumTypo2.default, {
                         components: ["responsiveSize", "weight", "line", "style", "upper", "spacing"],
-                        setAttributes: saveDescStyles,
-                        fontSizeType: { value: descStyles[0].descfontSizeType, label: __("descfontSizeType") },
-                        fontSize: descStyles[0].descSize,
-                        fontSizeMobile: descStyles[0].descfontSizeMobile,
-                        fontSizeTablet: descStyles[0].descfontSizeTablet,
-                        onChangeSize: function onChangeSize(newSize) {
-                            return saveDescStyles({ descSize: newSize });
-                        },
-                        onChangeTabletSize: function onChangeTabletSize(newSize) {
-                            return saveDescStyles({ descfontSizeTablet: newSize });
-                        },
-                        onChangeMobileSize: function onChangeMobileSize(newSize) {
-                            return saveDescStyles({ descfontSizeMobile: newSize });
-                        },
-                        weight: descStyles[0].descWeight,
-                        style: descStyles[0].descStyle,
-                        spacing: descStyles[0].descLetter,
-                        upper: descStyles[0].descUpper,
-                        line: descStyles[0].descLine,
-                        onChangeWeight: function onChangeWeight(newWeight) {
-                            return saveDescStyles({ descWeight: newWeight || 500 });
-                        },
-                        onChangeStyle: function onChangeStyle(newStyle) {
-                            return saveDescStyles({ descStyle: newStyle });
-                        },
-                        onChangeSpacing: function onChangeSpacing(newValue) {
-                            return saveDescStyles({ descLetter: newValue });
-                        },
-                        onChangeUpper: function onChangeUpper(check) {
-                            return saveDescStyles({ descUpper: check });
-                        },
-                        onChangeLine: function onChangeLine(newValue) {
-                            return saveDescStyles({ descLine: newValue });
+                        value: descTypography,
+                        onChange: function onChange(newValue) {
+                            return setAttributes({ descTypography: newValue });
                         }
                     }),
                     React.createElement(
@@ -67106,6 +67002,54 @@ var attributes = {
         default: {
             Desktop: '20',
             unit: 'px'
+        }
+    },
+    titleTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'lineHeight': '',
+            'fontSize': {
+                'Desktop': 20,
+                "Tablet": 20,
+                "Mobile": 20,
+                unit: 'px'
+            }
+        }
+    },
+    descTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'lineHeight': '',
+            'fontSize': {
+                'Desktop': 20,
+                "Tablet": 20,
+                "Mobile": 20,
+                unit: 'px'
+            }
+        }
+    },
+    nameTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'lineHeight': '',
+            'fontSize': {
+                'Desktop': 20,
+                "Tablet": 20,
+                "Mobile": 20,
+                unit: 'px'
+            }
         }
     }
 };

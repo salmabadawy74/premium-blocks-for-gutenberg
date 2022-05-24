@@ -36,7 +36,10 @@ const save = props => {
         hue,
         contentColor,
         bottomInfo,
-        socialIconBorder
+        socialIconBorder,
+        descTypography,
+        titleTypography,
+        nameTypography
     } = props.attributes;
 
 
@@ -101,12 +104,13 @@ const save = props => {
                                 className={`premium-person__name`}
                                 style={{
                                     color: nameStyles[0].nameColor,
-                                    fontWeight: nameStyles[0].nameWeight,
                                     alignSelf: nameV,
-                                    letterSpacing: nameStyles[0].nameLetter + "px",
-                                    lineHeight: nameStyles[0].nameLine + "px",
-                                    fontStyle: nameStyles[0].nameStyle,
-                                    textTransform: nameStyles[0].nameUpper ? "uppercase" : "none",
+                                    fontSize: `${nameTypography.fontSize[this.props.deviceType] || 20}${nameTypography.fontSize.unit}`,
+                                    letterSpacing: nameTypography.letterSpacing + "px",
+                                    textTransform: nameTypography.textTransform ? "uppercase" : "none",
+                                    fontStyle: nameTypography.fontStyle,
+                                    fontWeight: nameTypography.fontWeight,
+                                    lineHeight: nameTypography.lineHeight + "px",
                                     textShadow: `${nameStyles[0].nameshadowHorizontal}px ${nameStyles[0].nameshadowVertical}px ${nameStyles[0].nameshadowBlur}px ${nameStyles[0].nameshadowColor}`
                                 }}
                             >
@@ -120,12 +124,13 @@ const save = props => {
                                 className={`premium-person__title`}
                                 style={{
                                     color: titleStyles[0].titleColor,
-                                    fontWeight: titleStyles[0].titleWeight,
                                     alignSelf: titleV,
-                                    letterSpacing: titleStyles[0].titleLetter + "px",
-                                    lineHeight: titleStyles[0].titleLine + "px",
-                                    fontStyle: titleStyles[0].titleStyle,
-                                    textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                    fontSize: `${titleTypography.fontSize[this.props.deviceType] || 20}${titleTypography.fontSize.unit}`,
+                                    letterSpacing: titleTypography.letterSpacing + "px",
+                                    textTransform: titleTypography.textTransform ? "uppercase" : "none",
+                                    fontStyle: titleTypography.fontStyle,
+                                    fontWeight: titleTypography.fontWeight,
+                                    lineHeight: titleTypography.lineHeight + "px",
                                     textShadow: `${titleStyles[0].titleshadowHorizontal}px ${titleStyles[0].titleshadowVertical}px ${titleStyles[0].titleshadowBlur}px ${titleStyles[0].titleshadowColor}`,
                                 }}
                             >
@@ -139,12 +144,13 @@ const save = props => {
                                 className={`premium-person__desc`}
                                 style={{
                                     color: descStyles[0].descColor,
-                                    fontWeight: descStyles[0].descWeight,
                                     alignSelf: descV,
-                                    letterSpacing: descStyles[0].descLetter + "px",
-                                    lineHeight: descStyles[0].descLine + "px",
-                                    fontStyle: descStyles[0].descStyle,
-                                    textTransform: descStyles[0].descUpper ? "uppercase" : "none",
+                                    fontSize: `${descTypography.fontSize[this.props.deviceType] || 20}${descTypography.fontSize.unit}`,
+                                    letterSpacing: descTypography.letterSpacing + "px",
+                                    textTransform: descTypography.textTransform ? "uppercase" : "none",
+                                    fontStyle: descTypography.fontStyle,
+                                    fontWeight: descTypography.fontWeight,
+                                    lineHeight: descTypography.lineHeight + "px",
                                     textShadow: `${descStyles[0].descshadowHorizontal}px ${descStyles[0].descshadowVertical}px ${descStyles[0].descshadowBlur}px ${descStyles[0].descshadowColor}`,
                                 }}
                             >
