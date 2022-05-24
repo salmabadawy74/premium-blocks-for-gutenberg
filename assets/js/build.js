@@ -32464,6 +32464,14 @@ var _inspectorTab = __webpack_require__(114);
 
 var _inspectorTab2 = _interopRequireDefault(_inspectorTab);
 
+var _InsideTabs = __webpack_require__(414);
+
+var _InsideTabs2 = _interopRequireDefault(_InsideTabs);
+
+var _InsideTab = __webpack_require__(415);
+
+var _InsideTab2 = _interopRequireDefault(_InsideTab);
+
 var _HelperFunction = __webpack_require__(52);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -33062,81 +33070,64 @@ var edit = function (_Component) {
                                 initialOpen: false
                             },
                             React.createElement(
-                                TabPanel,
-                                {
-                                    className: "premium-color-tabpanel",
-                                    activeClass: "active-tab",
-                                    tabs: [{
-                                        name: "normal",
-                                        title: "Normal",
-                                        className: "premium-tab"
-                                    }, {
-                                        name: "hover",
-                                        title: "Hover",
-                                        className: "premium-tab"
-                                    }]
-                                },
-                                function (tab) {
-                                    var tabout = void 0;
-                                    if ("normal" === tab.name) {
-                                        tabout = React.createElement(
-                                            Fragment,
-                                            null,
-                                            React.createElement(_ColorComponent2.default, {
-                                                label: __("Button Color", 'premium-blocks-for-gutenberg'),
-                                                colorValue: btnStyles[0].btnColor,
-                                                colorDefault: '',
-                                                onColorChange: function onColorChange(newValue) {
-                                                    return saveButtonStyle({ btnColor: newValue || "#000" });
-                                                }
-                                            }),
-                                            React.createElement(_ColorComponent2.default, {
-                                                label: __("Button Background Color"),
-                                                colorValue: btnStyles[0].btnBack,
-                                                onColorChange: function onColorChange(newvalue) {
-                                                    return saveButtonStyle({ btnBack: newvalue });
-                                                },
-                                                colorDefault: ""
-                                            })
-                                        );
-                                    }
-                                    if ("hover" === tab.name) {
-                                        tabout = React.createElement(
-                                            Fragment,
-                                            null,
-                                            React.createElement(_ColorComponent2.default, {
-                                                label: __("Button Hover Color", 'premium-blocks-for-gutenberg'),
-                                                colorValue: btnStyles[0].btnHoverColor,
-                                                colorDefault: '',
-                                                onColorChange: function onColorChange(newValue) {
-                                                    return saveButtonStyle({ btnHoverColor: newValue || "#000" });
-                                                }
-                                            }),
-                                            React.createElement(_ColorComponent2.default, {
-                                                label: __('Button Background Hover Color', 'premium-blocks-for-gutenberg'),
-                                                colorValue: btnStyles[0].btnHoverBack,
-                                                colorDefault: '',
-                                                onColorChange: function onColorChange(newValue) {
-                                                    return saveButtonStyle({ btnHoverBack: newValue });
-                                                }
-                                            }),
-                                            React.createElement(_ColorComponent2.default, {
-                                                label: __('Button Border Hover Color', 'premium-blocks-for-gutenberg'),
-                                                colorValue: btnHoverBorder,
-                                                colorDefault: '',
-                                                onColorChange: function onColorChange(newValue) {
-                                                    return setAttributes({ btnHoverBorder: newValue });
-                                                }
-                                            })
-                                        );
-                                    }
-                                    return React.createElement(
-                                        "div",
+                                _InsideTabs2.default,
+                                null,
+                                React.createElement(
+                                    _InsideTab2.default,
+                                    { tabTitle: __('Normal') },
+                                    React.createElement(
+                                        Fragment,
                                         null,
-                                        tabout,
-                                        React.createElement("hr", null)
-                                    );
-                                }
+                                        React.createElement(_ColorComponent2.default, {
+                                            label: __("Button Color", 'premium-blocks-for-gutenberg'),
+                                            colorValue: btnStyles[0].btnColor,
+                                            colorDefault: '',
+                                            onColorChange: function onColorChange(newValue) {
+                                                return saveButtonStyle({ btnColor: newValue || "#000" });
+                                            }
+                                        }),
+                                        React.createElement(_ColorComponent2.default, {
+                                            label: __("Button Background Color"),
+                                            colorValue: btnStyles[0].btnBack,
+                                            onColorChange: function onColorChange(newvalue) {
+                                                return saveButtonStyle({ btnBack: newvalue });
+                                            },
+                                            colorDefault: ""
+                                        })
+                                    )
+                                ),
+                                React.createElement(
+                                    _InsideTab2.default,
+                                    { tabTitle: __('Hover') },
+                                    React.createElement(
+                                        Fragment,
+                                        null,
+                                        React.createElement(_ColorComponent2.default, {
+                                            label: __("Button Hover Color", 'premium-blocks-for-gutenberg'),
+                                            colorValue: btnStyles[0].btnHoverColor,
+                                            colorDefault: '',
+                                            onColorChange: function onColorChange(newValue) {
+                                                return saveButtonStyle({ btnHoverColor: newValue || "#000" });
+                                            }
+                                        }),
+                                        React.createElement(_ColorComponent2.default, {
+                                            label: __('Button Background Hover Color', 'premium-blocks-for-gutenberg'),
+                                            colorValue: btnStyles[0].btnHoverBack,
+                                            colorDefault: '',
+                                            onColorChange: function onColorChange(newValue) {
+                                                return saveButtonStyle({ btnHoverBack: newValue });
+                                            }
+                                        }),
+                                        React.createElement(_ColorComponent2.default, {
+                                            label: __('Button Border Hover Color', 'premium-blocks-for-gutenberg'),
+                                            colorValue: btnHoverBorder,
+                                            colorDefault: '',
+                                            onColorChange: function onColorChange(newValue) {
+                                                return setAttributes({ btnHoverBorder: newValue });
+                                            }
+                                        })
+                                    )
+                                )
                             ),
                             React.createElement(_premiumTypo2.default, {
                                 components: ["responsiveSize", "weight", "style", "upper", "spacing"],
@@ -71008,6 +70999,192 @@ var deprecated = [{
     }
 }];
 exports.default = deprecated;
+
+/***/ }),
+/* 414 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _propTypes = __webpack_require__(19);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _classnames = __webpack_require__(40);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var __ = wp.i18n.__;
+var _wp$element = wp.element,
+    Component = _wp$element.Component,
+    Fragment = _wp$element.Fragment;
+var Tooltip = wp.components.Tooltip;
+
+var InsideTabs = function (_Component) {
+    _inherits(InsideTabs, _Component);
+
+    function InsideTabs(props) {
+        _classCallCheck(this, InsideTabs);
+
+        var _this = _possibleConstructorReturn(this, (InsideTabs.__proto__ || Object.getPrototypeOf(InsideTabs)).call(this, props));
+
+        _this.state = {
+            activeTab: _this.props.children[0].props.tabTitle
+        };
+        return _this;
+    }
+
+    _createClass(InsideTabs, [{
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            var TEMPTAG = Fragment;
+            var tabs = this.props.children,
+                activeTab = this.state.activeTab,
+                _props = this.props,
+                label = _props.label,
+                panelGroup = _props.panelGroup;
+
+
+            var className = (0, _classnames2.default)('premium-field', 'premium-field-tabs', { 'panel-group': panelGroup }, { 'premium-has-label': typeof label !== 'undefined' });
+
+            if (panelGroup) {
+                TEMPTAG = 'Div';
+            }
+            return React.createElement(
+                'div',
+                { className: className },
+                React.createElement(
+                    'div',
+                    { className: 'premium-field-tab-header' },
+                    label && React.createElement(
+                        'label',
+                        null,
+                        label
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'premium-field-tab-menus' },
+                        tabs.map(function (tab) {
+                            return React.createElement(
+                                Tooltip,
+                                { text: __(tab.props.tabTitle) },
+                                React.createElement(
+                                    TEMPTAG,
+                                    panelGroup && { className: 'tab-menu-wrapper' },
+                                    panelGroup && React.createElement(
+                                        'svg',
+                                        { width: '21', height: '18', viewBox: '0 0 21 18', xmlns: 'http://www.w3.org/2000/svg' },
+                                        React.createElement(
+                                            'g',
+                                            { transform: 'translate(-29 -4) translate(29 4)', fill: 'none' },
+                                            React.createElement('path', { d: 'M1 .708v15.851', className: 'premium-svg-stroke', 'stroke-linecap': 'square' }),
+                                            React.createElement('rect', { className: 'premium-svg-fill', x: '5', y: '5', width: '16', height: '7', rx: '1' })
+                                        )
+                                    ),
+                                    React.createElement(
+                                        'button',
+                                        {
+                                            onClick: function onClick() {
+                                                return _this2.setState({ activeTab: tab.props.tabTitle });
+                                            },
+                                            className: 'premium-tab-menu ' + (tab.props.tabTitle === activeTab ? 'active' : '')
+                                        },
+                                        tab.props.tabTitle
+                                    )
+                                )
+                            );
+                        })
+                    )
+                ),
+                React.createElement(
+                    'div',
+                    { className: 'premium-field-tab-items' },
+                    tabs.map(function (tab) {
+                        return tab.props.tabTitle === activeTab ? tab : '';
+                    })
+                )
+            );
+        }
+    }]);
+
+    return InsideTabs;
+}(Component);
+
+exports.default = InsideTabs;
+
+/***/ }),
+/* 415 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _wp$element = wp.element,
+    Component = _wp$element.Component,
+    Fragment = _wp$element.Fragment;
+
+var InsideTab = function (_Component) {
+    _inherits(InsideTab, _Component);
+
+    function InsideTab() {
+        _classCallCheck(this, InsideTab);
+
+        return _possibleConstructorReturn(this, (InsideTab.__proto__ || Object.getPrototypeOf(InsideTab)).apply(this, arguments));
+    }
+
+    _createClass(InsideTab, [{
+        key: "render",
+        value: function render() {
+            var _props = this.props,
+                children = _props.children,
+                onTabChange = _props.onTabChange;
+
+            onTabChange && onTabChange();
+            return React.createElement(
+                Fragment,
+                null,
+                " ",
+                Array.isArray(children) ? children.map(function (item) {
+                    return item;
+                }) : children,
+                " "
+            );
+        }
+    }]);
+
+    return InsideTab;
+}(Component);
+
+exports.default = InsideTab;
 
 /***/ })
 /******/ ]);
