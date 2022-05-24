@@ -462,112 +462,112 @@ const attributes = {
 const new_attributes = {
     titleStyles: [
         {
-            titleTag: attributes.titleTag,
-            titleFont: attributes.titleFont,
-            titleColor: attributes.titleColor,
-            titleSize: attributes.titleSize,
-            titleSizeUnit: attributes.titleSize,
-            titleSizeTablet: attributes.titleSizeTablet,
-            titleSizeMobile: attributes.titleSizeMobile,
-            titleLine: attributes.titleLine,
-            titleLetter: attributes.titleLetter,
-            titleStyle: attributes.titleStyle,
-            titleUpper: attributes.titleUpper,
-            titleWeight: attributes.titleWeight,
-            titleShadowColor: attributes.titleShadowColor,
-            titleShadowBlur: attributes.titleShadowBlur,
-            titleShadowHorizontal: attributes.titleShadowHorizontal,
-            titleShadowVertical: attributes.titleShadowVertical,
-            titleMarginT: attributes.titleMarginT,
-            titleMarginB: attributes.titleMarginB,
+            titleTag: "H2",
+            titleFont: __('Default', 'premium - blocks -for-gutenberg'),
+            titleColor: '',
+            titleSize: 20,
+            titleSizeUnit: 'px',
+            titleSizeTablet: 20,
+            titleSizeMobile: 20,
+            titleLine: '',
+            titleLetter: '',
+            titleStyle: '',
+            titleUpper: false,
+            titleWeight: '',
+            titleShadowColor: '',
+            titleShadowBlur: '0',
+            titleShadowHorizontal: '0',
+            titleShadowVertical: '0',
+            titleMarginT: '',
+            titleMarginB: '',
         }
     ],
     descStyles: [
         {
-            descFont: attributes.descFont,
-            descColor: attributes.descColor,
-            descSize: attributes.descSize,
-            descSizeUnit: attributes.descSizeUnit,
-            descSizeTablet: attributes.descSizeTablet,
-            descSizeMobile: attributes.descSizeMobile,
-            descLine: attributes.descLine,
-            descWeight: attributes.descWeight,
-            descMarginT: attributes.descMarginT,
-            descMarginB: attributes.descMarginB,
+            descFont: __('Default', 'premium-blocks-for-gutenberg'),
+            descColor: '',
+            descSize: 20,
+            descSizeUnit: 'px',
+            descSizeTablet: 20,
+            descSizeMobile: 20,
+            descLine: '',
+            descWeight: '',
+            descMarginT: '',
+            descMarginB: '',
         }
     ],
     btnStyles: [
         {
-            btnSize: attributes.btnSize,
-            btnSizeUnit: attributes.btnSizeUnit,
-            btnSizeTablet: attributes.btnSizeTablet,
-            btnSizeMobile: attributes.btnSizeMobile,
-            btnLine: attributes.btnLine,
-            btnLetter: attributes.btnLetter,
-            btnStyle: attributes.btnStyle,
-            btnUpper: attributes.btnUpper,
-            btnWeight: attributes.btnWeight,
-            btnBorderType: attributes.btnBorderType,
-            btnBorderWidth: attributes.btnBorderWidth,
-            btnBorderTop: attributes.btnBorderTop,
-            btnBorderRight: attributes.btnBorderRight,
-            btnBorderBottom: attributes.btnBorderBottom,
-            btnBorderLeft: attributes.btnBorderLeft,
-            btnBorderRadius: attributes.btnBorderRadius,
-            btnBorderColor: attributes.btnBorderColor,
-            btnPadding: attributes.btnPadding,
-            btnPaddingU: attributes.btnPaddingU,
-            btnMarginT: attributes.btnMarginT,
-            btnMarginB: attributes.btnMarginB,
-            btnShadowColor: attributes.btnShadowColor,
-            btnShadowBlur: attributes.btnShadowBlur,
-            btnShadowHorizontal: attributes.btnShadowHorizontal,
-            btnShadowVertical: attributes.btnShadowVertical,
-            btnShadowPosition: attributes.btnShadowPosition,
-            btnColor: attributes.btnColor,
-            btnHoverColor: attributes.btnHoverColor,
-            btnBack: attributes.btnBack,
-            btnHoverBack: attributes.btnHoverBack,
-            btnOpacity: attributes.btnOpacity,
+            btnSize: 20,
+            btnSizeUnit: 'px',
+            btnSizeTablet: 20,
+            btnSizeMobile: 20,
+            btnLine: '',
+            btnLetter: '',
+            btnStyle: '',
+            btnUpper: false,
+            btnWeight: '',
+            btnBorderType: 'none',
+            btnBorderWidth: 1,
+            btnBorderTop: '',
+            btnBorderRight: '',
+            btnBorderBottom: '',
+            btnBorderLeft: '',
+            btnBorderRadius: '',
+            btnBorderColor: '',
+            btnPadding: '',
+            btnPaddingU: 'px',
+            btnMarginT: '',
+            btnMarginB: '',
+            btnShadowColor: '',
+            btnShadowBlur: '',
+            btnShadowHorizontal: '0',
+            btnShadowVertical: '0',
+            btnShadowPosition: '',
+            btnColor: '',
+            btnHoverColor: '',
+            btnBack: '',
+            btnHoverBack: '',
+            btnOpacity: 1,
         }
     ],
     containerStyles: [
         {
-            backOpacity: attributes.backOpacity,
-            backColor: attributes.backColor,
-            imageID: attributes.imageID,
-            imageURL: attributes.imageURL,
-            backgroundRepeat: attributes.backgroundRepeat,
-            backgroundPosition: attributes.backgroundPosition,
-            backgroundSize: attributes.backgroundSize,
-            fixed: attributes.fixed,
-            borderType: attributes.borderType,
-            borderWidth: attributes.borderWidth,
-            borderRadius: attributes.borderRadius,
-            borderColor: attributes.borderColor,
-            borderTop: attributes.borderTop,
-            borderRight: attributes.borderRight,
-            borderBottom: attributes.borderBottom,
-            borderLeft: attributes.borderLeft,
-            shadowColor: attributes.shadowColor,
-            shadowBlur: attributes.shadowBlur,
-            shadowHorizontal: attributes.shadowHorizontal,
-            shadowVertical: attributes.shadowVertical,
-            shadowPosition: attributes.shadowPosition,
-            hoverShadowColor: attributes.hoverShadowColor,
-            hoverShadowBlur: attributes.hoverShadowBlur,
-            hoverShadowHorizontal: attributes.hoverShadowHorizontal,
-            hoverShadowVertical: attributes.hoverShadowVertical,
-            hoverShadowPosition: attributes.hoverShadowPosition,
-            marginT: attributes.marginT,
-            marginR: attributes.marginR,
-            marginB: attributes.marginB,
-            marginL: attributes.marginL,
-            paddingT: attributes.paddingT,
-            paddingR: attributes.paddingR,
-            paddingB: attributes.paddingB,
-            paddingL: attributes.paddingL,
-            paddingU: attributes.paddingU,
+            backOpacity: 1,
+            backColor: '',
+            imageID: '',
+            imageURL: '',
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "top center",
+            backgroundSize: "auto",
+            fixed: false,
+            borderType: "none",
+            borderWidth: 1,
+            borderRadius: '',
+            borderColor: '',
+            borderTop: '',
+            borderRight: '',
+            borderBottom: '',
+            borderLeft: '',
+            shadowColor: '',
+            shadowBlur: '',
+            shadowHorizontal: '',
+            shadowVertical: '',
+            shadowPosition: '',
+            hoverShadowColor: '',
+            hoverShadowBlur: '',
+            hoverShadowHorizontal: '',
+            hoverShadowVertical: '',
+            hoverShadowPosition: '',
+            marginT: '',
+            marginR: '',
+            marginB: '',
+            marginL: '',
+            paddingT: '',
+            paddingR: '',
+            paddingB: '',
+            paddingL: '',
+            paddingU: 'px',
             gradientColorOne: '',
             gradientLocationOne: '0',
             gradientColorTwo: '',
@@ -581,7 +581,499 @@ const new_attributes = {
 
 const deprecated_attributes = Object.assign(attributes, new_attributes);
 
+
+
 const deprecatedContent = [
+    {
+        attributes: deprecated_attributes,
+        migrate: (attributes) => {
+            return {
+                iconSize: {
+                    Desktop: "",
+                    unit: ""
+                },
+                containerMargin: {
+                    "Desktop": {
+                        top: attributes.marginT,
+                        right: attributes.marginR,
+                        bottom: attributes.marginB,
+                        left: attributes.marginL
+                    },
+                    "Tablet": {
+                        top: attributes.marginTTablet,
+                        right: attributes.marginRTablet,
+                        bottom: attributes.marginBTablet,
+                        left: attributes.marginLTablet
+                    },
+                    "Mobile": {
+                        top: attributes.marginTMobile,
+                        right: attributes.marginRMobile,
+                        bottom: attributes.marginBMobile,
+                        left: attributes.marginLMobile
+                    },
+                },
+                containerPadding: {
+                    "Desktop": {
+                        top: attributes.paddingT,
+                        right: attributes.paddingR,
+                        bottom: attributes.paddingB,
+                        left: attributes.paddingL
+                    },
+                    "Tablet": {
+                        top: attributes.paddingTTablet,
+                        right: attributes.paddingRTablet,
+                        bottom: attributes.paddingBTablet,
+                        left: attributes.paddingLTablet
+                    },
+                    "Mobile": {
+                        top: attributes.paddingTMobile,
+                        right: attributes.paddingRMobile,
+                        bottom: attributes.paddingBMobile,
+                        left: attributes.paddingLMobile
+                    },
+                },
+                titleMargin: {
+                    "Desktop": {
+                        top: attributes.titleMarginT,
+                        right: "",
+                        bottom: attributes.titleMarginB,
+                        left: ""
+                    },
+                    "Tablet": {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: ""
+                    },
+                    "Mobile": {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: ""
+                    },
+                },
+                descMargin: {
+                    "Desktop": {
+                        top: attributes.descMarginT,
+                        right: "",
+                        bottom: attributes.descMarginB,
+                        left: ""
+                    },
+                    "Tablet": {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: ""
+                    },
+                    "Mobile": {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: ""
+                    },
+                },
+                btnMargin: {
+                    "Desktop": {
+                        top: attributes.btnMarginT,
+                        right: "",
+                        bottom: attributes.btnMarginB,
+                        left: ""
+                    },
+                    "Tablet": {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: ""
+                    },
+                    "Mobile": {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: ""
+                    },
+                },
+                btnPadding: {
+                    "Desktop": {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: ""
+                    },
+                    "Tablet": {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: ""
+                    },
+                    "Mobile": {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: ""
+                    },
+                },
+                btnBorder: {
+                    borderColor: attributes.btnStyles[0].btnBorderColor,
+                    borderType: attributes.btnStyles[0].btnBorderType,
+                    borderRadius: {
+                        "Desktop": {
+                            top: attributes.btnStyles[0].btnBorderRadius,
+                            right: attributes.btnStyles[0].btnBorderRadius,
+                            bottom: attributes.btnStyles[0].btnBorderRadius,
+                            left: attributes.btnStyles[0].btnBorderRadius,
+                        },
+                        "Tablet": {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: ""
+                        },
+                        "Mobile": {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: ""
+                        },
+                    },
+                    borderWidth: {
+                        "Desktop": {
+                            top: attributes.btnBorderTop,
+                            right: attributes.btnBorderRight,
+                            bottom: attributes.btnBorderBottom,
+                            left: attributes.btnBorderLeft
+                        },
+                        "Tablet": {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: ""
+                        },
+                        "Mobile": {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: ""
+                        },
+                    }
+                },
+                containerBorder: {
+                    borderColor: attributes.containerStyles[0].borderColor,
+                    borderType: attributes.containerStyles[0].borderType,
+                    borderRadius: {
+                        "Desktop": {
+                            top: attributes.containerStyles[0].borderRadius,
+                            right: attributes.containerStyles[0].borderRadius,
+                            bottom: attributes.containerStyles[0].borderRadius,
+                            left: attributes.containerStyles[0].borderRadius,
+                        },
+                        "Tablet": {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: ""
+                        },
+                        "Mobile": {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: ""
+                        },
+                    },
+                    borderWidth: {
+                        "Desktop": {
+                            top: attributes.borderTop,
+                            right: attributes.borderRight,
+                            bottom: attributes.borderBottom,
+                            left: attributes.borderLeft
+                        },
+                        "Tablet": {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: ""
+                        },
+                        "Mobile": {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: ""
+                        },
+                    }
+                },
+                containerBackground: {
+                    'backgroundType': "",
+                    'backgroundColor': attributes.containerStyles[0].backColor,
+                    'backgroundImageID': attributes.containerStyles[0].imageID,
+                    'backgroundImageURL': attributes.containerStyles[0].imageURL,
+                    'backgroundPosition': attributes.containerStyles[0].backgroundPosition,
+                    'backgroundRepeat': attributes.containerStyles[0].backgroundRepeat,
+                    'backgroundSize': attributes.containerStyles[0].backgroundSize,
+                    'fixed': attributes.containerStyles[0].fixed,
+                    'gradientLocationOne': attributes.containerStyles[0].gradientLocationOne,
+                    'gradientColorTwo': attributes.containerStyles[0].gradientColorTwo,
+                    'gradientLocationTwo': attributes.containerStyles[0].gradientLocationTwo,
+                    'gradientAngle': attributes.containerStyles[0].gradientAngle,
+                    'gradientPosition': attributes.containerStyles[0].gradientPosition,
+                    'gradientType': attributes.containerStyles[0].gradientType,
+                },
+                titleShadow: {
+                    'color': attributes.titleStyles[0].titleShadowColor,
+                    'blur': attributes.titleStyles[0].titleShadowBlur,
+                    'horizontal': attributes.titleStyles[0].titleShadowHorizontal,
+                    'vertical': attributes.titleStyles[0].titleShadowVertical
+                },
+                btnShadow: {
+                    'color': attributes.btnStyles[0].btnShadowColor,
+                    'blur': attributes.btnStyles[0].btnShadowBlur,
+                    'horizontal': attributes.btnStyles[0].btnShadowHorizontal,
+                    'vertical': attributes.btnStyles[0].btnShadowVertical,
+                    'position': attributes.btnStyles[0].btnShadowPosition
+                },
+                containerShadow: {
+                    'color': attributes.containerStyles[0].shadowColor,
+                    'blur': attributes.containerStyles[0].shadowBlur,
+                    'horizontal': attributes.containerStyles[0].shadowHorizontal,
+                    'vertical': attributes.containerStyles[0].shadowVertical,
+                    'position': attributes.containerStyles[0].shadowPosition
+                },
+                containerHoverShadow: {
+                    'color': attributes.containerStyles[0].hoverShadowColor,
+                    'blur': attributes.containerStyles[0].hoverShadowBlur,
+                    'horizontal': attributes.containerStyles[0].hoverShadowHorizontal,
+                    'vertical': attributes.containerStyles[0].hoverShadowVertical,
+                    'position': attributes.containerStyles[0].hoverShadowPosition
+                },
+                titleTypography: {
+                    'fontWeight': attributes.titleStyles[0].titleWeight,
+                    'fontStyle': attributes.titleStyles[0].titleStyle,
+                    'textTransform': attributes.titleStyles[0].titleUpper,
+                    'letterSpacing': attributes.titleStyles[0].titleLetter,
+                    'fontFamily': attributes.titleStyles[0].titleFont,
+                    'lineHeight': attributes.containerStyles[0].hoverShadowColor,
+                    'fontSize': {
+                        'Desktop': attributes.titleStyles[0].titleSize,
+                        "Tablet": attributes.titleStyles[0].titleSizeTablet,
+                        "Mobile": attributes.titleStyles[0].titleSizeMobile,
+                        'unit': attributes.titleStyles[0].titleSizeUnit,
+                    }
+                },
+                descTypography: {
+                    'fontWeight': attributes.titleStyles[0].descWeight,
+                    'fontFamily': attributes.titleStyles[0].descFont,
+                    'lineHeight': attributes.containerStyles[0].descLine,
+                    'fontSize': {
+                        'Desktop': attributes.titleStyles[0].descSize,
+                        "Tablet": attributes.titleStyles[0].descSizeTablet,
+                        "Mobile": attributes.titleStyles[0].descSizeMobile,
+                        'unit': attributes.titleStyles[0].descSizeUnit,
+                    }
+                },
+                btnTypography: {
+                    'fontWeight': attributes.titleStyles[0].btnWeight,
+                    'fontStyle': attributes.containerStyles[0].btnStyle,
+                    'textTransform': attributes.containerStyles[0].btnUpper,
+                    'letterSpacing': attributes.containerStyles[0].btnLetter,
+                    'fontSize': {
+                        'Desktop': attributes.titleStyles[0].btnSize,
+                        "Tablet": attributes.titleStyles[0].btnSizeTablet,
+                        "Mobile": attributes.titleStyles[0].btnSizeMobile,
+                        'unit': attributes.titleStyles[0].btnSizeUnit,
+                    }
+                }
+            };
+        },
+        save: (props) => {
+            const {
+                block_id,
+                borderIconBox,
+                btnBorderIconBox,
+                align,
+                iconImage,
+                iconImgUrl,
+                hoverEffect,
+                iconChecked,
+                iconPos,
+                iconHPos,
+                iconVPos,
+                iconSize,
+                iconRadius,
+                iconColor,
+                iconBackColor,
+                selectedIcon,
+                titleChecked,
+                titleText,
+                descText,
+                descChecked,
+                btnChecked,
+                btnEffect,
+                effectDir,
+                btnTarget,
+                btnText,
+                btnLink,
+                btnHoverBorder,
+                hideDesktop,
+                hideTablet,
+                hideMobile,
+                titleStyles,
+                descStyles,
+                btnStyles,
+                containerStyles,
+                btnBorderTop,
+                btnBorderRight,
+                btnBorderBottom,
+                btnBorderLeft,
+                borderTop,
+                borderRight,
+                borderBottom,
+                borderLeft
+            } = props.attributes;
+
+            const mainClasses = classnames(className);
+            console.log(containerStyles)
+            return (
+                <div
+                    id={`premium-icon-box-${block_id}`}
+                    className={`${mainClasses} premium-icon-box-${iconPos} premium-icon-box-${iconHPos} premium-icon-box-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                    style={{
+                        textAlign: align,
+                        borderStyle: containerStyles[0].borderType,
+                        borderWidth: borderIconBox
+                            ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
+                            : containerStyles[0].borderWidth + "px",
+                        borderRadius: containerStyles[0].borderRadius + "px",
+                        borderColor: containerStyles[0].borderColor,
+                        boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px ${containerStyles[0].shadowColor} ${containerStyles[0].shadowPosition}`,
+                        backgroundColor: containerStyles[0].backColor,
+                        backgroundImage: containerStyles[0].imageURL ? `url('${containerStyles[0].imageURL}')` : 'none',
+                        backgroundRepeat: containerStyles[0].backgroundRepeat,
+                        backgroundPosition: containerStyles[0].backgroundPosition,
+                        backgroundSize: containerStyles[0].backgroundSize,
+                        backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset"
+                    }}
+                >
+                    {btnChecked && btnText && (
+                        <style
+                            dangerouslySetInnerHTML={{
+                                __html: [
+                                    `#premium-icon-box-${block_id}:hover {`,
+                                    `box-shadow: ${containerStyles[0].hoverShadowHorizontal}px ${containerStyles[0].hoverShadowVertical}px ${containerStyles[0].hoverShadowBlur}px ${containerStyles[0].hoverShadowColor} ${containerStyles[0].hoverShadowPosition} !important`,
+                                    "}",
+                                    `#premium-icon-box-${block_id} .premium-icon-box__btn:hover {`,
+                                    `color: ${btnStyles[0].btnHoverColor} !important;`,
+                                    `border-color: ${btnHoverBorder} !important;`,
+                                    "}",
+                                    `#premium-icon-box-${block_id} .premium-button__none .premium-icon-box__btn:hover {`,
+                                    `background-color: ${btnStyles[0].btnHoverBack} !important;`,
+                                    "}",
+                                    `#premium-icon-box-${block_id} .premium-button__slide .premium-button::before {`,
+                                    `background-color: ${btnStyles[0].btnHoverBack} !important;`,
+                                    "}"
+                                ].join("\n")
+                            }}
+                        />
+                    )}
+                    {iconChecked && (
+                        <div
+                            className={`premium-icon-box__icon_wrap premium-icon-box__icon_${iconVPos}`}
+                        >
+                            {"icon" === iconImage && selectedIcon && (
+                                <i
+                                    className={`${selectedIcon} premium-icon-box__icon premium-icon__${hoverEffect}`}
+                                    style={{
+                                        color: iconColor,
+                                        backgroundColor: iconBackColor,
+                                        fontSize: iconSize
+                                    }}
+                                />
+                            )}
+                            {"image" === iconImage && iconImgUrl && (
+                                <img
+                                    className={`premium-icon-box__icon premium-icon__${hoverEffect}`}
+                                    src={`${iconImgUrl}`}
+                                    alt="Image Icon"
+                                    style={{
+                                        width: iconSize + "px",
+                                        height: iconSize + "px",
+                                        borderRadius: iconRadius + "px"
+                                    }}
+                                />
+                            )}
+                        </div>
+                    )}
+                    <div className={`premium-icon-box__content_wrap`}>
+                        {titleChecked && titleText && (
+                            <div
+                                className={`premium-icon-box__title_wrap`}
+                            >
+                                <RichText.Content
+                                    tagName={titleStyles[0].titleTag.toLowerCase()}
+                                    className={`premium-icon-box__title`}
+                                    value={titleText}
+                                    style={{
+                                        color: titleStyles[0].titleColor,
+                                        fontFamily: titleStyles[0].titleFont,
+                                        letterSpacing: titleStyles[0].titleLetter + "px",
+                                        textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                        fontStyle: titleStyles[0].titleStyle,
+                                        fontWeight: titleStyles[0].titleWeight,
+                                        textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`,
+                                        lineHeight: titleStyles[0].titleLine + "px"
+                                    }}
+                                />
+                            </div>
+                        )}
+                        {descChecked && descText && (
+                            <div
+                                className={`premium-icon-box__desc_wrap`}
+                            >
+                                <RichText.Content
+                                    tagName="p"
+                                    className={`premium-icon-box__desc`}
+                                    value={descText}
+                                    style={{
+                                        color: descStyles[0].descColor,
+                                        fontFamily: descStyles[0].descFont,
+                                        lineHeight: descStyles[0].descLine + "px",
+                                        fontWeight: descStyles[0].descWeight
+                                    }}
+                                />
+                            </div>
+                        )}
+                        {btnChecked && btnText && (
+                            <div
+                                className={`premium-icon-box__btn_wrap premium-button__${btnEffect} premium-button__${effectDir}`}
+                            >
+                                <RichText.Content
+                                    tagName="a"
+                                    className={`premium-icon-box__btn premium-button`}
+                                    href={btnLink}
+                                    rel="noopener noreferrer"
+                                    value={btnText}
+                                    target={btnTarget ? "_blank" : "_self"}
+                                    style={{
+                                        color: btnStyles[0].btnColor,
+                                        backgroundColor: btnStyles[0].btnBack,
+                                        letterSpacing: btnStyles[0].btnLetter + "px",
+                                        textTransform: btnStyles[0].btnUpper ? "uppercase" : "none",
+                                        fontStyle: btnStyles[0].btnStyle,
+                                        fontWeight: btnStyles[0].btnWeight,
+                                        borderStyle: btnStyles[0].btnBorderType,
+                                        borderWidth: btnBorderIconBox
+                                            ? `${btnBorderTop}px ${btnBorderRight}px ${btnBorderBottom}px ${btnBorderLeft}px`
+                                            : btnStyles[0].btnBorderWidth + "px",
+                                        borderRadius: btnStyles[0].btnBorderRadius + "px",
+                                        borderColor: btnStyles[0].btnBorderColor,
+                                        padding: btnStyles[0].btnPadding + btnStyles[0].btnPaddingU,
+                                        boxShadow: `${btnStyles[0].btnShadowHorizontal}px ${btnStyles[0].btnShadowVertical}px ${btnStyles[0].btnShadowBlur}px ${btnStyles[0].btnShadowColor} ${btnStyles[0].btnShadowPosition}`
+                                    }}
+                                />
+                            </div>
+                        )}
+                    </div>
+                </div>
+            );
+        },
+    },
     {
         attributes: attributes,
         migrate: attributes => {
@@ -2864,497 +3356,7 @@ const deprecatedContent = [
             );
         },
     },
-    {
-        attributes: deprecated_attributes,
-        migrate: (attributes) => {
-            return {
-                iconSize: {
-                    Desktop: "",
-                    unit: ""
-                },
-                containerMargin: {
-                    "Desktop": {
-                        top: attributes.marginT,
-                        right: attributes.marginR,
-                        bottom: attributes.marginB,
-                        left: attributes.marginL
-                    },
-                    "Tablet": {
-                        top: attributes.marginTTablet,
-                        right: attributes.marginRTablet,
-                        bottom: attributes.marginBTablet,
-                        left: attributes.marginLTablet
-                    },
-                    "Mobile": {
-                        top: attributes.marginTMobile,
-                        right: attributes.marginRMobile,
-                        bottom: attributes.marginBMobile,
-                        left: attributes.marginLMobile
-                    },
-                },
-                containerPadding: {
-                    "Desktop": {
-                        top: attributes.paddingT,
-                        right: attributes.paddingR,
-                        bottom: attributes.paddingB,
-                        left: attributes.paddingL
-                    },
-                    "Tablet": {
-                        top: attributes.paddingTTablet,
-                        right: attributes.paddingRTablet,
-                        bottom: attributes.paddingBTablet,
-                        left: attributes.paddingLTablet
-                    },
-                    "Mobile": {
-                        top: attributes.paddingTMobile,
-                        right: attributes.paddingRMobile,
-                        bottom: attributes.paddingBMobile,
-                        left: attributes.paddingLMobile
-                    },
-                },
-                titleMargin: {
-                    "Desktop": {
-                        top: attributes.titleMarginT,
-                        right: "",
-                        bottom: attributes.titleMarginB,
-                        left: ""
-                    },
-                    "Tablet": {
-                        top: "",
-                        right: "",
-                        bottom: "",
-                        left: ""
-                    },
-                    "Mobile": {
-                        top: "",
-                        right: "",
-                        bottom: "",
-                        left: ""
-                    },
-                },
-                descMargin: {
-                    "Desktop": {
-                        top: attributes.descMarginT,
-                        right: "",
-                        bottom: attributes.descMarginB,
-                        left: ""
-                    },
-                    "Tablet": {
-                        top: "",
-                        right: "",
-                        bottom: "",
-                        left: ""
-                    },
-                    "Mobile": {
-                        top: "",
-                        right: "",
-                        bottom: "",
-                        left: ""
-                    },
-                },
-                btnMargin: {
-                    "Desktop": {
-                        top: attributes.btnMarginT,
-                        right: "",
-                        bottom: attributes.btnMarginB,
-                        left: ""
-                    },
-                    "Tablet": {
-                        top: "",
-                        right: "",
-                        bottom: "",
-                        left: ""
-                    },
-                    "Mobile": {
-                        top: "",
-                        right: "",
-                        bottom: "",
-                        left: ""
-                    },
-                },
-                btnPadding: {
-                    "Desktop": {
-                        top: "",
-                        right: "",
-                        bottom: "",
-                        left: ""
-                    },
-                    "Tablet": {
-                        top: "",
-                        right: "",
-                        bottom: "",
-                        left: ""
-                    },
-                    "Mobile": {
-                        top: "",
-                        right: "",
-                        bottom: "",
-                        left: ""
-                    },
-                },
-                btnBorder: {
-                    borderColor: attributes.btnStyles[0].btnBorderColor,
-                    borderType: attributes.btnStyles[0].btnBorderType,
-                    borderRadius: {
-                        "Desktop": {
-                            top: attributes.btnStyles[0].btnBorderRadius,
-                            right: attributes.btnStyles[0].btnBorderRadius,
-                            bottom: attributes.btnStyles[0].btnBorderRadius,
-                            left: attributes.btnStyles[0].btnBorderRadius,
-                        },
-                        "Tablet": {
-                            top: "",
-                            right: "",
-                            bottom: "",
-                            left: ""
-                        },
-                        "Mobile": {
-                            top: "",
-                            right: "",
-                            bottom: "",
-                            left: ""
-                        },
-                    },
-                    borderWidth: {
-                        "Desktop": {
-                            top: attributes.btnBorderTop,
-                            right: attributes.btnBorderRight,
-                            bottom: attributes.btnBorderBottom,
-                            left: attributes.btnBorderLeft
-                        },
-                        "Tablet": {
-                            top: "",
-                            right: "",
-                            bottom: "",
-                            left: ""
-                        },
-                        "Mobile": {
-                            top: "",
-                            right: "",
-                            bottom: "",
-                            left: ""
-                        },
-                    }
-                },
-                containerBorder: {
-                    borderColor: attributes.containerStyles[0].borderColor,
-                    borderType: attributes.containerStyles[0].borderType,
-                    borderRadius: {
-                        "Desktop": {
-                            top: attributes.containerStyles[0].borderRadius,
-                            right: attributes.containerStyles[0].borderRadius,
-                            bottom: attributes.containerStyles[0].borderRadius,
-                            left: attributes.containerStyles[0].borderRadius,
-                        },
-                        "Tablet": {
-                            top: "",
-                            right: "",
-                            bottom: "",
-                            left: ""
-                        },
-                        "Mobile": {
-                            top: "",
-                            right: "",
-                            bottom: "",
-                            left: ""
-                        },
-                    },
-                    borderWidth: {
-                        "Desktop": {
-                            top: attributes.borderTop,
-                            right: attributes.borderRight,
-                            bottom: attributes.borderBottom,
-                            left: attributes.borderLeft
-                        },
-                        "Tablet": {
-                            top: "",
-                            right: "",
-                            bottom: "",
-                            left: ""
-                        },
-                        "Mobile": {
-                            top: "",
-                            right: "",
-                            bottom: "",
-                            left: ""
-                        },
-                    }
-                },
-                containerBackground: {
-                    'backgroundType': "",
-                    'backgroundColor': attributes.containerStyles[0].backColor,
-                    'backgroundImageID': attributes.containerStyles[0].imageID,
-                    'backgroundImageURL': attributes.containerStyles[0].imageURL,
-                    'backgroundPosition': attributes.containerStyles[0].backgroundPosition,
-                    'backgroundRepeat': attributes.containerStyles[0].backgroundRepeat,
-                    'backgroundSize': attributes.containerStyles[0].backgroundSize,
-                    'fixed': attributes.containerStyles[0].fixed,
-                    'gradientLocationOne': attributes.containerStyles[0].gradientLocationOne,
-                    'gradientColorTwo': attributes.containerStyles[0].gradientColorTwo,
-                    'gradientLocationTwo': attributes.containerStyles[0].gradientLocationTwo,
-                    'gradientAngle': attributes.containerStyles[0].gradientAngle,
-                    'gradientPosition': attributes.containerStyles[0].gradientPosition,
-                    'gradientType': attributes.containerStyles[0].gradientType,
-                },
-                titleShadow: {
-                    'color': attributes.titleStyles[0].titleShadowColor,
-                    'blur': attributes.titleStyles[0].titleShadowBlur,
-                    'horizontal': attributes.titleStyles[0].titleShadowHorizontal,
-                    'vertical': attributes.titleStyles[0].titleShadowVertical
-                },
-                btnShadow: {
-                    'color': attributes.btnStyles[0].btnShadowColor,
-                    'blur': attributes.btnStyles[0].btnShadowBlur,
-                    'horizontal': attributes.btnStyles[0].btnShadowHorizontal,
-                    'vertical': attributes.btnStyles[0].btnShadowVertical,
-                    'position': attributes.btnStyles[0].btnShadowPosition
-                },
-                containerShadow: {
-                    'color': attributes.containerStyles[0].shadowColor,
-                    'blur': attributes.containerStyles[0].shadowBlur,
-                    'horizontal': attributes.containerStyles[0].shadowHorizontal,
-                    'vertical': attributes.containerStyles[0].shadowVertical,
-                    'position': attributes.containerStyles[0].shadowPosition
-                },
-                containerHoverShadow: {
-                    'color': attributes.containerStyles[0].hoverShadowColor,
-                    'blur': attributes.containerStyles[0].hoverShadowBlur,
-                    'horizontal': attributes.containerStyles[0].hoverShadowHorizontal,
-                    'vertical': attributes.containerStyles[0].hoverShadowVertical,
-                    'position': attributes.containerStyles[0].hoverShadowPosition
-                },
-                titleTypography: {
-                    'fontWeight': attributes.titleStyles[0].titleWeight,
-                    'fontStyle': attributes.titleStyles[0].titleStyle,
-                    'textTransform': attributes.titleStyles[0].titleUpper,
-                    'letterSpacing': attributes.titleStyles[0].titleLetter,
-                    'fontFamily': attributes.titleStyles[0].titleFont,
-                    'lineHeight': attributes.containerStyles[0].hoverShadowColor,
-                    'fontSize': {
-                        'Desktop': attributes.titleStyles[0].titleSize,
-                        "Tablet": attributes.titleStyles[0].titleSizeTablet,
-                        "Mobile": attributes.titleStyles[0].titleSizeMobile,
-                        'unit': attributes.titleStyles[0].titleSizeUnit,
-                    }
-                },
-                descTypography: {
-                    'fontWeight': attributes.titleStyles[0].descWeight,
-                    'fontFamily': attributes.titleStyles[0].descFont,
-                    'lineHeight': attributes.containerStyles[0].descLine,
-                    'fontSize': {
-                        'Desktop': attributes.titleStyles[0].descSize,
-                        "Tablet": attributes.titleStyles[0].descSizeTablet,
-                        "Mobile": attributes.titleStyles[0].descSizeMobile,
-                        'unit': attributes.titleStyles[0].descSizeUnit,
-                    }
-                },
-                btnTypography: {
-                    'fontWeight': attributes.titleStyles[0].btnWeight,
-                    'fontStyle': attributes.containerStyles[0].btnStyle,
-                    'textTransform': attributes.containerStyles[0].btnUpper,
-                    'letterSpacing': attributes.containerStyles[0].btnLetter,
-                    'fontSize': {
-                        'Desktop': attributes.titleStyles[0].btnSize,
-                        "Tablet": attributes.titleStyles[0].btnSizeTablet,
-                        "Mobile": attributes.titleStyles[0].btnSizeMobile,
-                        'unit': attributes.titleStyles[0].btnSizeUnit,
-                    }
-                }
-            };
-        },
-        save: (props) => {
-            const {
-                block_id,
-                borderIconBox,
-                btnBorderIconBox,
-                align,
-                iconImage,
-                iconImgUrl,
-                hoverEffect,
-                iconChecked,
-                iconPos,
-                iconHPos,
-                iconVPos,
-                iconSize,
-                iconRadius,
-                iconColor,
-                iconBackColor,
-                selectedIcon,
-                titleChecked,
-                titleText,
-                descText,
-                descChecked,
-                btnChecked,
-                btnEffect,
-                effectDir,
-                btnTarget,
-                btnText,
-                btnLink,
-                btnHoverBorder,
-                hideDesktop,
-                hideTablet,
-                hideMobile,
-                titleStyles,
-                descStyles,
-                btnStyles,
-                containerStyles,
-                btnBorderTop,
-                btnBorderRight,
-                btnBorderBottom,
-                btnBorderLeft,
-                borderTop,
-                borderRight,
-                borderBottom,
-                borderLeft
-            } = props.attributes;
 
-            const mainClasses = classnames(className);
-            console.log(containerStyles)
-            return (
-                <div
-                    id={`premium-icon-box-${block_id}`}
-                    className={`${mainClasses} premium-icon-box-${iconPos} premium-icon-box-${iconHPos} premium-icon-box-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
-                    style={{
-                        textAlign: align,
-                        borderStyle: containerStyles[0].borderType,
-                        borderWidth: borderIconBox
-                            ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
-                            : containerStyles[0].borderWidth + "px",
-                        borderRadius: containerStyles[0].borderRadius + "px",
-                        borderColor: containerStyles[0].borderColor,
-                        boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px ${containerStyles[0].shadowColor} ${containerStyles[0].shadowPosition}`,
-                        backgroundColor: containerStyles[0].backColor,
-                        backgroundImage: containerStyles[0].imageURL ? `url('${containerStyles[0].imageURL}')` : 'none',
-                        backgroundRepeat: containerStyles[0].backgroundRepeat,
-                        backgroundPosition: containerStyles[0].backgroundPosition,
-                        backgroundSize: containerStyles[0].backgroundSize,
-                        backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset"
-                    }}
-                >
-                    {btnChecked && btnText && (
-                        <style
-                            dangerouslySetInnerHTML={{
-                                __html: [
-                                    `#premium-icon-box-${block_id}:hover {`,
-                                    `box-shadow: ${containerStyles[0].hoverShadowHorizontal}px ${containerStyles[0].hoverShadowVertical}px ${containerStyles[0].hoverShadowBlur}px ${containerStyles[0].hoverShadowColor} ${containerStyles[0].hoverShadowPosition} !important`,
-                                    "}",
-                                    `#premium-icon-box-${block_id} .premium-icon-box__btn:hover {`,
-                                    `color: ${btnStyles[0].btnHoverColor} !important;`,
-                                    `border-color: ${btnHoverBorder} !important;`,
-                                    "}",
-                                    `#premium-icon-box-${block_id} .premium-button__none .premium-icon-box__btn:hover {`,
-                                    `background-color: ${btnStyles[0].btnHoverBack} !important;`,
-                                    "}",
-                                    `#premium-icon-box-${block_id} .premium-button__slide .premium-button::before {`,
-                                    `background-color: ${btnStyles[0].btnHoverBack} !important;`,
-                                    "}"
-                                ].join("\n")
-                            }}
-                        />
-                    )}
-                    {iconChecked && (
-                        <div
-                            className={`premium-icon-box__icon_wrap premium-icon-box__icon_${iconVPos}`}
-                        >
-                            {"icon" === iconImage && selectedIcon && (
-                                <i
-                                    className={`${selectedIcon} premium-icon-box__icon premium-icon__${hoverEffect}`}
-                                    style={{
-                                        color: iconColor,
-                                        backgroundColor: iconBackColor,
-                                        fontSize: iconSize
-                                    }}
-                                />
-                            )}
-                            {"image" === iconImage && iconImgUrl && (
-                                <img
-                                    className={`premium-icon-box__icon premium-icon__${hoverEffect}`}
-                                    src={`${iconImgUrl}`}
-                                    alt="Image Icon"
-                                    style={{
-                                        width: iconSize + "px",
-                                        height: iconSize + "px",
-                                        borderRadius: iconRadius + "px"
-                                    }}
-                                />
-                            )}
-                        </div>
-                    )}
-                    <div className={`premium-icon-box__content_wrap`}>
-                        {titleChecked && titleText && (
-                            <div
-                                className={`premium-icon-box__title_wrap`}
-                            >
-                                <RichText.Content
-                                    tagName={titleStyles[0].titleTag.toLowerCase()}
-                                    className={`premium-icon-box__title`}
-                                    value={titleText}
-                                    style={{
-                                        color: titleStyles[0].titleColor,
-                                        fontFamily: titleStyles[0].titleFont,
-                                        letterSpacing: titleStyles[0].titleLetter + "px",
-                                        textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
-                                        fontStyle: titleStyles[0].titleStyle,
-                                        fontWeight: titleStyles[0].titleWeight,
-                                        textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`,
-                                        lineHeight: titleStyles[0].titleLine + "px"
-                                    }}
-                                />
-                            </div>
-                        )}
-                        {descChecked && descText && (
-                            <div
-                                className={`premium-icon-box__desc_wrap`}
-                            >
-                                <RichText.Content
-                                    tagName="p"
-                                    className={`premium-icon-box__desc`}
-                                    value={descText}
-                                    style={{
-                                        color: descStyles[0].descColor,
-                                        fontFamily: descStyles[0].descFont,
-                                        lineHeight: descStyles[0].descLine + "px",
-                                        fontWeight: descStyles[0].descWeight
-                                    }}
-                                />
-                            </div>
-                        )}
-                        {btnChecked && btnText && (
-                            <div
-                                className={`premium-icon-box__btn_wrap premium-button__${btnEffect} premium-button__${effectDir}`}
-                            >
-                                <RichText.Content
-                                    tagName="a"
-                                    className={`premium-icon-box__btn premium-button`}
-                                    href={btnLink}
-                                    // rel="noopener noreferrer"
-                                    // // target="_self"
-                                    value={btnText}
-                                    target={btnTarget ? "_blank" : "_self"}
-                                    style={{
-                                        color: btnStyles[0].btnColor,
-                                        backgroundColor: btnStyles[0].btnBack,
-                                        letterSpacing: btnStyles[0].btnLetter + "px",
-                                        textTransform: btnStyles[0].btnUpper ? "uppercase" : "none",
-                                        fontStyle: btnStyles[0].btnStyle,
-                                        fontWeight: btnStyles[0].btnWeight,
-                                        borderStyle: btnStyles[0].btnBorderType,
-                                        borderWidth: btnBorderIconBox
-                                            ? `${btnBorderTop}px ${btnBorderRight}px ${btnBorderBottom}px ${btnBorderLeft}px`
-                                            : btnStyles[0].btnBorderWidth + "px",
-                                        borderRadius: btnStyles[0].btnBorderRadius + "px",
-                                        borderColor: btnStyles[0].btnBorderColor,
-                                        padding: btnStyles[0].btnPadding + btnStyles[0].btnPaddingU,
-                                        boxShadow: `${btnStyles[0].btnShadowHorizontal}px ${btnStyles[0].btnShadowVertical}px ${btnStyles[0].btnShadowBlur}px ${btnStyles[0].btnShadowColor} ${btnStyles[0].btnShadowPosition}`
-                                    }}
-                                />
-                            </div>
-                        )}
-                    </div>
-                </div>
-            );
-        },
-    },
 ];
 
 export default deprecatedContent;
