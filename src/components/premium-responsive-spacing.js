@@ -194,7 +194,7 @@ const SpacingComponent = (props) => {
                 </div>
                 {showUnits && (
                     <PremiumSizeUnits
-                        activeUnit={state[`unit`]}
+                        activeUnit={value.unit}
                         onChangeSizeUnit={(unitKey) => onUnitChange(unitKey)}
                     />
                 )}

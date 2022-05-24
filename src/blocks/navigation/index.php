@@ -21,16 +21,16 @@ function get_premium_navigation_css( $attributes, $unique_id ) {
 		$typography = $attributes['typography'];
 		$block_helpers->add_gfont(
 			array(
-				'fontFamily'  => ( isset( $typography['family'] ) ? $typography['family'] : '' ),
-				'fontVariant' => ( isset( $typography['weight'] ) ? $typography['weight'] : '' ),
+				'fontFamily'  => ( isset( $typography['fontFamily'] ) ? $typography['fontFamily'] : '' ),
+				'fontVariant' => ( isset( $typography['fontWeight'] ) ? $typography['fontWeight'] : '' ),
 			)
 		);
 		$css->set_selector( '#' . $unique_id . ', #' . $unique_id . ' .premium-navigation-item__content' );
-		$css->add_property( 'font-family', $css->render_color( $typography['family'] ) );
-		$css->add_property( 'font-weight', $css->render_color( $typography['weight'] ) );
-		$css->add_property( 'font-style', $css->render_color( $typography['style'] ) );
-		if ( isset( $typography['size'] ) ) {
-			$css->add_property( 'font-size', $css->render_color( $typography['size']['desktop'] . $typography['size']['unit'] ) );
+		$css->add_property( 'font-family', $css->render_color( $typography['fontFamily'] ) );
+		$css->add_property( 'font-weight', $css->render_color( $typography['fontWeight'] ) );
+		$css->add_property( 'font-style', $css->render_color( $typography['fontStyle'] ) );
+		if ( isset( $typography['fontSize'] ) ) {
+			$css->add_property( 'font-size', $css->render_color( $typography['fontSize']['Desktop'] . $typography['fontSize']['unit'] ) );
 		}
 		$css->add_property( 'line-height', $css->render_color( $typography['lineHeight'] . 'px' ) );
 		$css->add_property( 'text-transform', $css->render_color( $typography['textTransform'] ) );
@@ -95,16 +95,16 @@ function get_premium_navigation_css( $attributes, $unique_id ) {
 		$submenu_typography = $attributes['submenuTypography'];
 		$block_helpers->add_gfont(
 			array(
-				'fontFamily'  => ( isset( $submenu_typography['family'] ) ? $submenu_typography['family'] : '' ),
-				'fontVariant' => ( isset( $submenu_typography['weight'] ) ? $submenu_typography['weight'] : '' ),
+				'fontFamily'  => ( isset( $submenu_typography['fontFamily'] ) ? $submenu_typography['fontFamily'] : '' ),
+				'fontVariant' => ( isset( $submenu_typography['fontWeight'] ) ? $submenu_typography['fontWeight'] : '' ),
 			)
 		);
 		$css->set_selector( '#' . $unique_id . ' .wp-block-premium-navigation-submenu, #' . $unique_id . ' .wp-block-premium-navigation-submenu .premium-navigation-item__content' );
-		$css->add_property( 'font-family', $css->render_color( $submenu_typography['family'] ) );
-		$css->add_property( 'font-weight', $css->render_color( $submenu_typography['weight'] ) );
-		$css->add_property( 'font-style', $css->render_color( $submenu_typography['style'] ) );
-		if ( isset( $submenu_typography['size'] ) ) {
-			$css->add_property( 'font-size', $css->render_color( $submenu_typography['size']['desktop'] . $submenu_typography['size']['unit'] ) );
+		$css->add_property( 'font-family', $css->render_color( $submenu_typography['fontFamily'] ) );
+		$css->add_property( 'font-weight', $css->render_color( $submenu_typography['fontWeight'] ) );
+		$css->add_property( 'font-style', $css->render_color( $submenu_typography['fontStyle'] ) );
+		if ( isset( $submenu_typography['fontSize'] ) ) {
+			$css->add_property( 'font-size', $css->render_color( $submenu_typography['fontSize']['Desktop'] . $submenu_typography['fontSize']['unit'] ) );
 		}
 		$css->add_property( 'line-height', $css->render_color( $submenu_typography['lineHeight'] . 'px' ) );
 		$css->add_property( 'text-transform', $css->render_color( $submenu_typography['textTransform'] ) );
@@ -184,8 +184,8 @@ function get_premium_navigation_css( $attributes, $unique_id ) {
 		if ( isset( $attributes['typography'] ) ) {
 			$typography = $attributes['typography'];
 			$css->set_selector( '#' . $unique_id . ', #' . $unique_id . ' .premium-navigation-item__content' );
-			if ( isset( $typography['size'] ) ) {
-				$css->add_property( 'font-size', $css->render_color( $typography['size']['tablet'] . $typography['size']['unit'] ) );
+			if ( isset( $typography['fontSize'] ) ) {
+				$css->add_property( 'font-size', $css->render_color( $typography['fontSize']['Tablet'] . $typography['fontSize']['unit'] ) );
 			}
 		}
 
@@ -239,8 +239,8 @@ function get_premium_navigation_css( $attributes, $unique_id ) {
 		if ( isset( $attributes['submenuTypography'] ) ) {
 			$submenu_typography = $attributes['submenuTypography'];
 			$css->set_selector( '#' . $unique_id . ' .wp-block-premium-navigation-submenu, #' . $unique_id . ' .wp-block-premium-navigation-submenu .premium-navigation-item__content' );
-			if ( isset( $submenu_typography['size'] ) ) {
-				$css->add_property( 'font-size', $css->render_color( $submenu_typography['size']['tablet'] . $submenu_typography['size']['unit'] ) );
+			if ( isset( $submenu_typography['fontSize'] ) ) {
+				$css->add_property( 'font-size', $css->render_color( $submenu_typography['fontSize']['Tablet'] . $submenu_typography['fontSize']['unit'] ) );
 			}
 		}
 
@@ -323,16 +323,16 @@ function get_premium_navigation_css( $attributes, $unique_id ) {
 		if ( isset( $attributes['typography'] ) ) {
 			$typography = $attributes['typography'];
 			$css->set_selector( '#' . $unique_id . ', #' . $unique_id . ' .premium-navigation-item__content' );
-			if ( isset( $typography['size'] ) ) {
-				$css->add_property( 'font-size', $css->render_color( $typography['size']['mobile'] . $typography['size']['unit'] ) );
+			if ( isset( $typography['fontSize'] ) ) {
+				$css->add_property( 'font-size', $css->render_color( $typography['fontSize']['Mobile'] . $typography['fontSize']['unit'] ) );
 			}
 		}
 
 		if ( isset( $attributes['submenuTypography'] ) ) {
 			$submenu_typography = $attributes['submenuTypography'];
 			$css->set_selector( '#' . $unique_id . ' .wp-block-premium-navigation-submenu, #' . $unique_id . ' .wp-block-premium-navigation-submenu .premium-navigation-item__content' );
-			if ( isset( $submenu_typography['size'] ) ) {
-				$css->add_property( 'font-size', $css->render_color( $submenu_typography['size']['mobile'] . $submenu_typography['size']['unit'] ) );
+			if ( isset( $submenu_typography['fontSize'] ) ) {
+				$css->add_property( 'font-size', $css->render_color( $submenu_typography['fontSize']['Mobile'] . $submenu_typography['fontSize']['unit'] ) );
 			}
 		}
 
@@ -541,7 +541,7 @@ function premium_render_block_navigation( $attributes, $content, $block ) {
 	$wrapper_attributes = get_block_wrapper_attributes(
 		array(
 			'class'            => implode( ' ', $classes ),
-			'style'            => $block_styles,
+			'fontStyle'        => $block_styles,
 			'id'               => $id,
 			'data-break-point' => $break_point,
 		)

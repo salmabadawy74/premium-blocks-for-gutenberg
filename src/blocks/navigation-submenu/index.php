@@ -16,7 +16,7 @@ function get_premium_submenu_navigation_css( $attributes, $unique_id ) {
 			$container_grid2 = '';
 			$container_bg    = '';
 			if ( 'gradient' === $background['backgroundType'] ) {
-				$container_grid  = $background['containerBack'] ? $background['containerBack'] : 'rgba(255,255,255,0)';
+				$container_grid  = $background['backgroundColor'] ? $background['backgroundColor'] : 'rgba(255,255,255,0)';
 				$container_grid2 = $background['gradientColorTwo'] ? $background['gradientColorTwo'] : '#777';
 				if ( 'radial' === $background['gradientType'] ) {
 					$container_bg = 'radial-gradient(at ' . $background['gradientPosition'] . ', ' . $container_grid . ' ' . $background['gradientLocationOne'] . '%, ' . $container_grid2 . ' ' . $background['gradientLocationTwo'] . '%)';
@@ -28,7 +28,7 @@ function get_premium_submenu_navigation_css( $attributes, $unique_id ) {
 			}
 
 			$css->set_selector( '#' . $unique_id . ' > .premium-navigation__submenu-container' );
-			$css->add_property( 'background-color', $css->render_color( 'solid' === $background['backgroundType'] ? $background['containerBack'] : '' ) );
+			$css->add_property( 'background-color', $css->render_color( 'solid' === $background['backgroundType'] ? $background['backgroundColor'] : '' ) );
 			$css->add_property( 'background-image', $css->render_color( $container_bg ) );
 			$css->add_property( 'background-repeat', $css->render_color( $background['backgroundRepeat'] ) );
 			$css->add_property( 'background-size', $css->render_color( $background['backgroundSize'] ) );

@@ -49,6 +49,8 @@ import { store as coreStore } from '@wordpress/core-data';
  */
 import iconsList from "../../components/premium-icons-list";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
+import InspectorTabs from '../../components/inspectorTabs';
+import InspectorTab from '../../components/inspectorTab';
 import { name } from './block.json';
 
 const MAX_NESTING = 5;
@@ -587,74 +589,83 @@ export default function NavigationLinkEdit({
 				</ToolbarGroup>
 			</BlockControls>
 			<InspectorControls>
-				<PanelBody title={__('Link Badge')}>
-					<TextControl
-						value={badgeText || ''}
-						onChange={(badgeTextValue) => {
-							setAttributes({
-								badgeText: badgeTextValue,
-							});
-						}}
-						label={__('Link Badge Text')}
-					/>
-					<AdvancedPopColorControl
-						label={__(`Text Color`, 'premium-blocks-for-gutenberg')}
-						colorValue={badgeColors.text}
-						onColorChange={newValue => setBadgeColor('text', newValue)}
-						colorDefault={''}
-					/>
-					<AdvancedPopColorControl
-						label={__(`Background Color`, 'premium-blocks-for-gutenberg')}
-						colorValue={badgeColors.background}
-						onColorChange={newValue => setBadgeColor('background', newValue)}
-						colorDefault={''}
-					/>
-				</PanelBody>
-				<PanelBody title={__('Link settings')}>
-					{megaMenu && overlayMenu !== 'always' && (
-						<>
-							{<ToggleControl
-								label={__("Make This Item As Column Heading", 'premium-blocks-for-gutenberg')}
-								checked={makeHeading}
-								onChange={check => setAttributes({ makeHeading: check })}
-							/>}
-						</>
-					)}
-					<FontIconPicker
-						icons={iconsList}
-						onChange={newIcon => setAttributes({ linkCustomIcon: newIcon })}
-						value={linkCustomIcon}
-						isMulti={false}
-						appendTo="body"
-						noSelectedPlaceholder={__("Select Icon", 'premium-blocks-for-gutenberg')}
-					/>
-					<TextareaControl
-						value={description || ''}
-						onChange={(descriptionValue) => {
-							setAttributes({ description: descriptionValue });
-						}}
-						label={__('Description')}
-						help={__(
-							'The description will be displayed in the menu if the current theme supports it.'
-						)}
-					/>
-					<TextControl
-						value={title || ''}
-						onChange={(titleValue) => {
-							setAttributes({ title: titleValue });
-						}}
-						label={__('Link title')}
-						autoComplete="off"
-					/>
-					<TextControl
-						value={rel || ''}
-						onChange={(relValue) => {
-							setAttributes({ rel: relValue });
-						}}
-						label={__('Link rel')}
-						autoComplete="off"
-					/>
-				</PanelBody>
+				<InspectorTabs tabs={['layout', 'style', 'advance']}>
+					<InspectorTab key={'layout'}>
+						<PanelBody title={__('Link Badge')}>
+							<TextControl
+								value={badgeText || ''}
+								onChange={(badgeTextValue) => {
+									setAttributes({
+										badgeText: badgeTextValue,
+									});
+								}}
+								label={__('Link Badge Text')}
+							/>
+						</PanelBody>
+						<PanelBody title={__('Link settings')}>
+							{megaMenu && overlayMenu !== 'always' && (
+								<>
+									{<ToggleControl
+										label={__("Make This Item As Column Heading", 'premium-blocks-for-gutenberg')}
+										checked={makeHeading}
+										onChange={check => setAttributes({ makeHeading: check })}
+									/>}
+								</>
+							)}
+							<FontIconPicker
+								icons={iconsList}
+								onChange={newIcon => setAttributes({ linkCustomIcon: newIcon })}
+								value={linkCustomIcon}
+								isMulti={false}
+								appendTo="body"
+								noSelectedPlaceholder={__("Select Icon", 'premium-blocks-for-gutenberg')}
+							/>
+							<TextareaControl
+								value={description || ''}
+								onChange={(descriptionValue) => {
+									setAttributes({ description: descriptionValue });
+								}}
+								label={__('Description')}
+								help={__(
+									'The description will be displayed in the menu if the current theme supports it.'
+								)}
+							/>
+							<TextControl
+								value={title || ''}
+								onChange={(titleValue) => {
+									setAttributes({ title: titleValue });
+								}}
+								label={__('Link title')}
+								autoComplete="off"
+							/>
+							<TextControl
+								value={rel || ''}
+								onChange={(relValue) => {
+									setAttributes({ rel: relValue });
+								}}
+								label={__('Link rel')}
+								autoComplete="off"
+							/>
+						</PanelBody>
+					</InspectorTab>
+					<InspectorTab key={'style'}>
+						<PanelBody title={__('Link Badge')}>
+							<AdvancedPopColorControl
+								label={__(`Text Color`, 'premium-blocks-for-gutenberg')}
+								colorValue={badgeColors.text}
+								onColorChange={newValue => setBadgeColor('text', newValue)}
+								colorDefault={''}
+							/>
+							<AdvancedPopColorControl
+								label={__(`Background Color`, 'premium-blocks-for-gutenberg')}
+								colorValue={badgeColors.background}
+								onColorChange={newValue => setBadgeColor('background', newValue)}
+								colorDefault={''}
+							/>
+						</PanelBody>
+					</InspectorTab>
+					<InspectorTab key={'advance'} />
+				</InspectorTabs>
 			</InspectorControls>
 			<div {...blockProps}>
 				{ /* eslint-disable jsx-a11y/anchor-is-valid */}

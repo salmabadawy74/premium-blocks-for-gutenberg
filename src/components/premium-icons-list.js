@@ -526,7 +526,7 @@ const iconsList = {
 
         "fa fa-twitter",
 
-        "fa fa-facebook",
+        "fa-brands fa-facebook",
 
         "fa fa-github",
 

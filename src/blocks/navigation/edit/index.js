@@ -23,7 +23,7 @@ import {
 } from '@wordpress/block-editor';
 import { EntityProvider, useEntityProp } from '@wordpress/core-data';
 
-import { useDispatch, useSelect, useRegistry } from '@wordpress/data';
+import { useDispatch, useSelect, useRegistry, withSelect } from '@wordpress/data';
 import {
 	PanelBody,
 	ToggleControl,
@@ -44,6 +44,8 @@ import AdvancedPopColorControl from '../../../components/Color Control/ColorComp
 import SpacingComponent from '../../../components/premium-responsive-spacing';
 import PremiumBorder from "../../../components/premium-border"
 import PremiumTypo from "../../../components/premium-typo"
+import InspectorTabs from '../../../components/inspectorTabs';
+import InspectorTab from '../../../components/inspectorTab';
 import useNavigationMenu from '../use-navigation-menu';
 import useNavigationEntities from '../use-navigation-entities';
 import Placeholder from './placeholder';
@@ -100,7 +102,8 @@ function Navigation({
 		submenuBorder,
 		overlayMenuBorder,
 		overlayMenuWidth,
-		overlayMenuStyle
+		overlayMenuStyle,
+		deviceType = 'Desktop'
 	} = attributes;
 
 	let areaMenu,
@@ -284,9 +287,8 @@ function Navigation({
 	};
 	let margin = spacing.margin ? spacing.margin : {};
 	let padding = spacing.padding ? spacing.padding : {};
-	const fontSize = typography.size ? typography.size : defaultSize;
+	const fontSize = typography.fontSize ? typography.fontSize : defaultSize;
 	const itemPadding = spacing.itemPadding ? spacing.itemPadding : {};
-	const submenuFontSize = submenuTypography.size ? submenuTypography.size : defaultSize;
 
 	const blockProps = useBlockProps({
 		ref: navRef,
@@ -302,32 +304,33 @@ function Navigation({
 		style: {
 			color: menuColors?.link,
 			backgroundColor: menuColors?.background,
-			marginTop: `${margin?.Desktop?.top}${margin?.unit}`,
-			marginRight: `${margin?.Desktop?.right}${margin?.unit}`,
-			marginBottom: `${margin?.Desktop?.bottom}${margin?.unit}`,
-			marginLeft: `${margin?.Desktop?.left}${margin?.unit}`,
-			paddingTop: `${padding?.Desktop?.top}${padding?.unit}`,
-			paddingRight: `${padding?.Desktop?.right}${padding?.unit}`,
-			paddingBottom: `${padding?.Desktop?.bottom}${padding?.unit}`,
-			paddingLeft: `${padding?.Desktop?.left}${padding?.unit}`,
-			fontSize: `${fontSize.desktop}${fontSize.unit}`,
-			fontFamily: typography.family,
-			fontWeight: typography.weight,
+			marginTop: `${margin?.[deviceType]?.top}${margin?.unit}`,
+			marginRight: `${margin?.[deviceType]?.right}${margin?.unit}`,
+			marginBottom: `${margin?.[deviceType]?.bottom}${margin?.unit}`,
+			marginLeft: `${margin?.[deviceType]?.left}${margin?.unit}`,
+			paddingTop: `${padding?.[deviceType]?.top}${padding?.unit}`,
+			paddingRight: `${padding?.[deviceType]?.right}${padding?.unit}`,
+			paddingBottom: `${padding?.[deviceType]?.bottom}${padding?.unit}`,
+			paddingLeft: `${padding?.[deviceType]?.left}${padding?.unit}`,
+			fontSize: `${fontSize?.[deviceType]}${fontSize.unit}`,
+			fontStyle: typography.fontStyle,
+			fontFamily: typography.fontFamily,
+			fontWeight: typography.fontWeight,
 			letterSpacing: typography.letterSpacing,
 			textDecoration: typography.textDecoration,
 			textTransform: typography.textTransform,
 			lineHeight: `${typography.lineHeight}px`,
 			borderStyle: menuBorder?.borderType,
-			borderTopWidth: menuBorder?.borderWidth?.Desktop?.top,
-			borderRightWidth: menuBorder?.borderWidth?.Desktop?.right,
-			borderBottomWidth: menuBorder?.borderWidth?.Desktop?.bottom,
-			borderLeftWidth: menuBorder?.borderWidth?.Desktop?.left,
-			borderRadius: `${menuBorder?.borderRadius?.Desktop?.top || 0}px ${menuBorder?.borderRadius?.Desktop?.right || 0}px ${menuBorder?.borderRadius?.Desktop?.bottom || 0}px ${menuBorder?.borderRadius?.Desktop?.left || 0}px`,
+			borderTopWidth: menuBorder?.borderWidth?.[deviceType]?.top,
+			borderRightWidth: menuBorder?.borderWidth?.[deviceType]?.right,
+			borderBottomWidth: menuBorder?.borderWidth?.[deviceType]?.bottom,
+			borderLeftWidth: menuBorder?.borderWidth?.[deviceType]?.left,
+			borderRadius: `${menuBorder?.borderRadius?.[deviceType]?.top || 0}px ${menuBorder?.borderRadius?.[deviceType]?.right || 0}px ${menuBorder?.borderRadius?.[deviceType]?.bottom || 0}px ${menuBorder?.borderRadius?.[deviceType]?.left || 0}px`,
 			borderColor: menuBorder?.borderColor,
-			borderTopLeftRadius: `${menuBorder?.borderRadius?.Desktop?.top || 0}px`,
-			borderTopRightRadius: `${menuBorder?.borderRadius?.Desktop?.right || 0}px`,
-			borderBottomLeftRadius: `${menuBorder?.borderRadius?.Desktop?.bottom || 0}px`,
-			borderBottomRightRadius: `${menuBorder?.borderRadius?.Desktop?.left || 0}px`,
+			borderTopLeftRadius: `${menuBorder?.borderRadius?.[deviceType]?.top || 0}px`,
+			borderTopRightRadius: `${menuBorder?.borderRadius?.[deviceType]?.right || 0}px`,
+			borderBottomLeftRadius: `${menuBorder?.borderRadius?.[deviceType]?.bottom || 0}px`,
+			borderBottomRightRadius: `${menuBorder?.borderRadius?.[deviceType]?.left || 0}px`,
 		},
 	});
 
@@ -510,25 +513,6 @@ function Navigation({
 		setAttributes({ spacing: newSpacing });
 	}
 
-	const onChangeFontSize = (value, device) => {
-		const newSize = { ...fontSize };
-		newSize[device] = value;
-		setAttributes({ typography: { ...typography, size: newSize } });
-	}
-
-	const onChangeFont = (value, attr) => {
-		setAttributes({ typography: { ...typography, [attr]: value } });
-	}
-
-	const onChangeSubmenuFontSize = (value, device) => {
-		const newSize = { ...submenuFontSize };
-		newSize[device] = value;
-		setAttributes({ submenuTypography: { ...submenuTypography, size: newSize } });
-	}
-
-	const onChangeSubmenuFont = (value, attr) => {
-		setAttributes({ submenuTypography: { ...submenuTypography, [attr]: value } });
-	}
 	const getSecondPart = (str) => {
 		return str.split(':')[1];
 	}
@@ -545,10 +529,10 @@ function Navigation({
 		`--pbg-links-hover-color: ${menuColors?.linkHover};`,
 		`}`,
 		`#${blockProps.id} .premium-navigation__container > div > .premium-navigation-item__content{`,
-		`padding-top: ${itemPadding?.Desktop?.top}${itemPadding?.unit};`,
-		`padding-right: ${itemPadding?.Desktop?.right}${itemPadding?.unit};`,
-		`padding-bottom: ${itemPadding?.Desktop?.bottom}${itemPadding?.unit};`,
-		`padding-left: ${itemPadding?.Desktop?.left}${itemPadding?.unit};`,
+		`padding-top: ${itemPadding?.[deviceType]?.top}${itemPadding?.unit};`,
+		`padding-right: ${itemPadding?.[deviceType]?.right}${itemPadding?.unit};`,
+		`padding-bottom: ${itemPadding?.[deviceType]?.bottom}${itemPadding?.unit};`,
+		`padding-left: ${itemPadding?.[deviceType]?.left}${itemPadding?.unit};`,
 		`}`,
 		`#${blockProps.id} .premium-navigation__responsive-container-open {`,
 		`color: ${overlayColors.icon};`,
@@ -579,387 +563,154 @@ function Navigation({
 		<EntityProvider kind="postType" type="wp_navigation" id={ref}>
 			<RecursionProvider>
 				<InspectorControls>
-					<PanelBody title={__('Display')}>
-						{(
-							<>
-								{isResponsive && (
-									<Button
-										className={overlayMenuPreviewClasses}
-										onClick={() => {
-											setOverlayMenuPreview(
-												!overlayMenuPreview
-											);
-										}}
-									>
-										{hasIcon && <OverlayMenuIcon />}
-										{!hasIcon && (
-											<span>{__('Menu')}</span>
-										)}
-									</Button>
-								)}
-								{overlayMenuPreview && (
-									<ToggleControl
-										label={__('Show icon button')}
-										help={__(
-											'Configure the visual appearance of the button opening the overlay menu.'
-										)}
-										onChange={(value) =>
-											setAttributes({ hasIcon: value })
-										}
-										checked={hasIcon}
-									/>
-								)}
-								<h3>{__('Overlay Menu')}</h3>
-								<ToggleGroupControl
-									label={__('Configure overlay menu')}
-									value={overlayMenu}
-									help={__(
-										'Collapses the navigation options in a menu icon opening an overlay.'
-									)}
-									onChange={(value) =>
-										setAttributes({ overlayMenu: value })
-									}
-									isBlock
-									hideLabelFromVision
-								>
-									<ToggleGroupControlOption
-										value="never"
-										label={__('Off')}
-									/>
-									<ToggleGroupControlOption
-										value="mobile"
-										label={__('Mobile')}
-									/>
-									<ToggleGroupControlOption
-										value="always"
-										label={__('Always')}
-									/>
-									<ToggleGroupControlOption
-										value="custom"
-										label={__('Custom')}
-									/>
-								</ToggleGroupControl>
-								{overlayMenu === 'custom' && <RangeControl
-									label={__('Width', 'premium-blocks-for-gutenberg')}
-									value={mobileBreakPoint}
-									onChange={(size) => setAttributes({ mobileBreakPoint: size })}
-									min={200}
-									max={3000}
-								/>}
-								{overlayMenu !== 'never' && (
+					<InspectorTabs tabs={['layout', 'style', 'advance']}>
+						<InspectorTab key={'layout'}>
+							<PanelBody title={__('Display')}>
+								{(
 									<>
-										<h3>{__('Overlay Menu Style')}</h3>
+										{isResponsive && (
+											<Button
+												className={overlayMenuPreviewClasses}
+												onClick={() => {
+													setOverlayMenuPreview(
+														!overlayMenuPreview
+													);
+												}}
+											>
+												{hasIcon && <OverlayMenuIcon />}
+												{!hasIcon && (
+													<span>{__('Menu')}</span>
+												)}
+											</Button>
+										)}
+										{overlayMenuPreview && (
+											<ToggleControl
+												label={__('Show icon button')}
+												help={__(
+													'Configure the visual appearance of the button opening the overlay menu.'
+												)}
+												onChange={(value) =>
+													setAttributes({ hasIcon: value })
+												}
+												checked={hasIcon}
+											/>
+										)}
+										<h3>{__('Overlay Menu')}</h3>
 										<ToggleGroupControl
-											label={__('Overlay menu styles')}
-											value={overlayMenuStyle}
+											label={__('Configure overlay menu')}
+											value={overlayMenu}
+											help={__(
+												'Collapses the navigation options in a menu icon opening an overlay.'
+											)}
 											onChange={(value) =>
-												setAttributes({ overlayMenuStyle: value })
+												setAttributes({ overlayMenu: value })
 											}
 											isBlock
 											hideLabelFromVision
 										>
 											<ToggleGroupControlOption
-												value="full"
-												label={__('Full Width')}
+												value="never"
+												label={__('Off')}
 											/>
 											<ToggleGroupControlOption
-												value="slide"
-												label={__('Slide')}
+												value="mobile"
+												label={__('Mobile')}
+											/>
+											<ToggleGroupControlOption
+												value="always"
+												label={__('Always')}
+											/>
+											<ToggleGroupControlOption
+												value="custom"
+												label={__('Custom')}
 											/>
 										</ToggleGroupControl>
-									</>
-								)}
-								{overlayMenu !== 'never' && overlayMenuStyle === 'slide' && <RangeControl
-									label={__('Overlay Menu Width', 'premium-blocks-for-gutenberg')}
-									value={overlayMenuWidth}
-									onChange={(size) => setAttributes({ overlayMenuWidth: size })}
-									min={300}
-									max={2000}
-								/>}
-								{hasSubmenus && hasSubmenuIndicatorSetting && (
-									<>
-										<h3>{__('Submenus')}</h3>
-										<ToggleControl
-											checked={openSubmenusOnClick}
-											onChange={(value) => {
-												setAttributes({
-													openSubmenusOnClick: value,
-													...(value && {
-														showSubmenuIcon: true,
-													}), // Make sure arrows are shown when we toggle this on.
-												});
-											}}
-											label={__('Open on click')}
-										/>
+										{overlayMenu === 'custom' && <RangeControl
+											label={__('Width', 'premium-blocks-for-gutenberg')}
+											value={mobileBreakPoint}
+											onChange={(size) => setAttributes({ mobileBreakPoint: size })}
+											min={200}
+											max={3000}
+										/>}
+										{overlayMenu !== 'never' && (
+											<>
+												<h3>{__('Overlay Menu Style')}</h3>
+												<ToggleGroupControl
+													label={__('Overlay menu styles')}
+													value={overlayMenuStyle}
+													onChange={(value) =>
+														setAttributes({ overlayMenuStyle: value })
+													}
+													isBlock
+													hideLabelFromVision
+												>
+													<ToggleGroupControlOption
+														value="full"
+														label={__('Full Width')}
+													/>
+													<ToggleGroupControlOption
+														value="slide"
+														label={__('Slide')}
+													/>
+												</ToggleGroupControl>
+											</>
+										)}
+										{overlayMenu !== 'never' && overlayMenuStyle === 'slide' && <RangeControl
+											label={__('Overlay Menu Width', 'premium-blocks-for-gutenberg')}
+											value={overlayMenuWidth}
+											onChange={(size) => setAttributes({ overlayMenuWidth: size })}
+											min={300}
+											max={2000}
+										/>}
+										{hasSubmenus && hasSubmenuIndicatorSetting && (
+											<>
+												<h3>{__('Submenus')}</h3>
+												<ToggleControl
+													checked={openSubmenusOnClick}
+													onChange={(value) => {
+														setAttributes({
+															openSubmenusOnClick: value,
+															...(value && {
+																showSubmenuIcon: true,
+															}), // Make sure arrows are shown when we toggle this on.
+														});
+													}}
+													label={__('Open on click')}
+												/>
 
-										<ToggleControl
-											checked={showSubmenuIcon}
-											onChange={(value) => {
-												setAttributes({
-													showSubmenuIcon: value,
-												});
-											}}
-											disabled={
-												attributes.openSubmenusOnClick
-											}
-											label={__('Show arrow')}
-										/>
+												<ToggleControl
+													checked={showSubmenuIcon}
+													onChange={(value) => {
+														setAttributes({
+															showSubmenuIcon: value,
+														});
+													}}
+													disabled={
+														attributes.openSubmenusOnClick
+													}
+													label={__('Show arrow')}
+												/>
+											</>
+										)}
 									</>
 								)}
-							</>
-						)}
-					</PanelBody>
-					<PanelBody title={__('Menu Settings')}>
-						<div className='menu-styles'>
-							<label>{__('Hover Effect', 'premium-blocks-for-gutenberg')}</label>
-							<select style={{ display: "block", width: "100%" }} onChange={(e) => setAttributes({ menuStyle: e.target.value })} value={menuStyle}>
-								<option value="none">{__('None', 'premium-blocks-for-gutenberg')}</option>
-								<option value="underline-stroke">{__('Underline Stroke', 'premium-blocks-for-gutenberg')}</option>
-								<option value="underline-fill">{__('Underline Fill', 'premium-blocks-for-gutenberg')}</option>
-								<option value="underline-dots">{__('Underline Dots', 'premium-blocks-for-gutenberg')}</option>
-								<option value="textcolor-fill">{__('Text Color Fill', 'premium-blocks-for-gutenberg')}</option>
-								<option value="topbottom-lines">{__('Top Bottom Lines', 'premium-blocks-for-gutenberg')}</option>
-							</select>
-						</div>
-					</PanelBody>
-					<PanelBody title={__('Menu Styles')}>
-						<TabPanel
-							className="premium-color-tabpanel"
-							activeClass="active-tab"
-							tabs={[
-								{
-									name: "normal",
-									title: "Normal",
-									className: "premium-tab",
-								},
-								{
-									name: "hover",
-									title: "Hover",
-									className: "premium-tab",
-								},
-							]}
-						>
-							{(tab) => {
-								if ("normal" === tab.name) {
-									return (
-										<Fragment>
-											<AdvancedPopColorControl
-												label={__(`Links Color`, 'premium-blocks-for-gutenberg')}
-												colorValue={menuColors.link}
-												onColorChange={newValue => setMenuColor('link', newValue)}
-												colorDefault={''}
-											/>
-											<AdvancedPopColorControl
-												label={__(`Background Color`, 'premium-blocks-for-gutenberg')}
-												colorValue={menuColors.background}
-												onColorChange={newValue => setMenuColor('background', newValue)}
-												colorDefault={''}
-											/>
-										</Fragment>
-									);
-								}
-								if ("hover" === tab.name) {
-									return (
-										<Fragment>
-											<AdvancedPopColorControl
-												label={__(`Links Color`, 'premium-blocks-for-gutenberg')}
-												colorValue={menuColors.linkHover}
-												onColorChange={newValue => setMenuColor('linkHover', newValue)}
-												colorDefault={''}
-											/>
-										</Fragment>
-									);
-								}
-							}}
-						</TabPanel>
-						<PremiumBorder
-							label={__("Border")}
-							value={menuBorder}
-							borderType={menuBorder.borderType}
-							borderColor={menuBorder.borderColor}
-							borderWidth={menuBorder.borderWidth}
-							borderRadius={menuBorder.borderRadius}
-							onChange={(value) => setAttributes({ menuBorder: value })}
-						/>
-					</PanelBody>
-					<PanelBody title={__('Overlay Menu Colors')}>
-						<TabPanel
-							className="premium-color-tabpanel"
-							activeClass="active-tab"
-							tabs={[
-								{
-									name: "normal",
-									title: "Normal",
-									className: "premium-tab",
-								},
-								{
-									name: "hover",
-									title: "Hover",
-									className: "premium-tab",
-								},
-							]}
-						>
-							{(tab) => {
-								if ("normal" === tab.name) {
-									return (
-										<Fragment>
-											<AdvancedPopColorControl
-												label={__(`Links Color`, 'premium-blocks-for-gutenberg')}
-												colorValue={overlayColors.link}
-												onColorChange={newValue => setOverlayMenuColor('link', newValue)}
-												colorDefault={''}
-											/>
-											<AdvancedPopColorControl
-												label={__(`Background Color`, 'premium-blocks-for-gutenberg')}
-												colorValue={overlayColors.background}
-												onColorChange={newValue => setOverlayMenuColor('background', newValue)}
-												colorDefault={''}
-											/>
-											<AdvancedPopColorControl
-												label={__(`Icon`, 'premium-blocks-for-gutenberg')}
-												colorValue={overlayColors.icon}
-												onColorChange={newValue => setOverlayMenuColor('icon', newValue)}
-												colorDefault={''}
-											/>
-										</Fragment>
-									);
-								}
-								if ("hover" === tab.name) {
-									return (
-										<Fragment>
-											<AdvancedPopColorControl
-												label={__(`Links Color`, 'premium-blocks-for-gutenberg')}
-												colorValue={overlayColors.linkHover}
-												onColorChange={newValue => setOverlayMenuColor('linkHover', newValue)}
-												colorDefault={''}
-											/>
-											<AdvancedPopColorControl
-												label={__(`Icon`, 'premium-blocks-for-gutenberg')}
-												colorValue={overlayColors.iconHover}
-												onColorChange={newValue => setOverlayMenuColor('iconHover', newValue)}
-												colorDefault={''}
-											/>
-										</Fragment>
-									);
-								}
-							}}
-						</TabPanel>
-						<PremiumBorder
-							label={__("Border")}
-							value={overlayMenuBorder}
-							borderType={overlayMenuBorder.borderType}
-							borderColor={overlayMenuBorder.borderColor}
-							borderWidth={overlayMenuBorder.borderWidth}
-							borderRadius={overlayMenuBorder.borderRadius}
-							onChange={(value) => setAttributes({ overlayMenuBorder: value })}
-						/>
-					</PanelBody>
-					<PanelBody
-						title={__('Spacing', 'premium-blocks-for-gutenberg')}
-						initialOpen={false}
-					>
-						<SpacingComponent value={padding} responsive={true} showUnits={true} label={__('Menu Padding')} onChange={(value) => onChangeSpacing({ padding: value })} />
-						<SpacingComponent value={itemPadding} responsive={true} showUnits={true} label={__('Menu Item Padding')} onChange={(value) => onChangeSpacing({ itemPadding: value })} />
-						<SpacingComponent value={margin} responsive={true} showUnits={true} label={__('Menu Margin')} onChange={(value) => onChangeSpacing({ margin: value })} />
-					</PanelBody>
-					<PanelBody
-						title={__("Typography", 'premium-blocks-for-gutenberg')}
-						className="premium-panel-body"
-						initialOpen={false}
-					>
-						<PremiumTypo
-							components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
-							setAttributes={value => onChangeFontSize(value.SizeUnit, 'unit')}
-							fontSizeType={{
-								value: fontSize.unit,
-								label: __("SizeUnit", 'premium-blocks-for-gutenberg'),
-							}}
-							fontSize={fontSize.desktop}
-							fontSizeMobile={fontSize.mobile}
-							fontSizeTablet={fontSize.tablet}
-							onChangeSize={newSize => onChangeFontSize(newSize, 'desktop')}
-							onChangeTabletSize={newSize => onChangeFontSize(newSize, 'tablet')}
-							onChangeMobileSize={newSize => onChangeFontSize(newSize, 'mobile')}
-							fontFamily={typography.family}
-							weight={typography.weight}
-							onChangeWeight={newWeight =>
-								onChangeFont(newWeight, 'weight')
-							}
-							onChangeFamily={(fontFamily) => onChangeFont(fontFamily, 'family')}
-							line={typography.lineHeight}
-							onChangeLine={(lineHeight) => onChangeFont(lineHeight, 'lineHeight')}
-							style={typography.style}
-							onChangeStyle={(newStyle) => onChangeFont(newStyle, 'style')}
-							spacing={typography.letterSpacing}
-							onChangeSpacing={(letterSpacing) => onChangeFont(letterSpacing, 'letterSpacing')}
-							textTransform={typography.textTransform}
-							onChangeTextTransform={(textTransform) => onChangeFont(textTransform, 'textTransform')}
-							textDecoration={typography.textDecoration}
-							onChangeTextDecoration={(textDecoration) => onChangeFont(textDecoration, 'textDecoration')}
-						/>
-					</PanelBody>
-					{hasSubmenus && hasSubmenuIndicatorSetting && (
-						<>
-							<PanelBody
-								title={__("Submenu Typography", 'premium-blocks-for-gutenberg')}
-								className="premium-panel-body"
-								initialOpen={false}
-							>
-								<PremiumTypo
-									components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
-									setAttributes={value => onChangeSubmenuFontSize(value.SizeUnit, 'unit')}
-									fontSizeType={{
-										value: submenuFontSize.unit,
-										label: __("SizeUnit", 'premium-blocks-for-gutenberg'),
-									}}
-									fontSize={submenuFontSize.desktop}
-									fontSizeMobile={submenuFontSize.mobile}
-									fontSizeTablet={submenuFontSize.tablet}
-									onChangeSize={newSize => onChangeSubmenuFontSize(newSize, 'desktop')}
-									onChangeTabletSize={newSize => onChangeSubmenuFontSize(newSize, 'tablet')}
-									onChangeMobileSize={newSize => onChangeSubmenuFontSize(newSize, 'mobile')}
-									fontFamily={submenuTypography.family}
-									weight={submenuTypography.weight}
-									onChangeWeight={newWeight =>
-										onChangeSubmenuFont(newWeight, 'weight')
-									}
-									onChangeFamily={(fontFamily) => onChangeSubmenuFont(fontFamily, 'family')}
-									line={submenuTypography.lineHeight}
-									onChangeLine={(lineHeight) => onChangeSubmenuFont(lineHeight, 'lineHeight')}
-									style={submenuTypography.style}
-									onChangeStyle={(newStyle) => onChangeSubmenuFont(newStyle, 'style')}
-									spacing={submenuTypography.letterSpacing}
-									onChangeSpacing={(letterSpacing) => onChangeSubmenuFont(letterSpacing, 'letterSpacing')}
-									textTransform={submenuTypography.textTransform}
-									onChangeTextTransform={(textTransform) => onChangeSubmenuFont(textTransform, 'textTransform')}
-									textDecoration={submenuTypography.textDecoration}
-									onChangeTextDecoration={(textDecoration) => onChangeSubmenuFont(textDecoration, 'textDecoration')}
-								/>
 							</PanelBody>
-							<PanelBody title={__('Submenu Settings')}>
-								<div className='menu-styles' style={{ marginBottom: '20px' }}>
-									<label className='components-base-control__label'>{__('Dropdown Reveal', 'premium-blocks-for-gutenberg')}</label>
-									<select style={{ display: "block", width: "100%" }} onChange={(e) => setAttributes({ dropdownReveal: e.target.value })} value={dropdownReveal}>
+						</InspectorTab>
+						<InspectorTab key={'style'}>
+							<PanelBody title={__('Menu Settings')}>
+								<div className='menu-styles'>
+									<label>{__('Hover Effect', 'premium-blocks-for-gutenberg')}</label>
+									<select style={{ display: "block", width: "100%" }} onChange={(e) => setAttributes({ menuStyle: e.target.value })} value={menuStyle}>
 										<option value="none">{__('None', 'premium-blocks-for-gutenberg')}</option>
-										<option value="fade">{__('Fade', 'premium-blocks-for-gutenberg')}</option>
-										<option value="fade-up">{__('Fade Up', 'premium-blocks-for-gutenberg')}</option>
-										<option value="fade-down">{__('Fade Down', 'premium-blocks-for-gutenberg')}</option>
+										<option value="underline-stroke">{__('Underline Stroke', 'premium-blocks-for-gutenberg')}</option>
+										<option value="underline-fill">{__('Underline Fill', 'premium-blocks-for-gutenberg')}</option>
+										<option value="underline-dots">{__('Underline Dots', 'premium-blocks-for-gutenberg')}</option>
+										<option value="textcolor-fill">{__('Text Color Fill', 'premium-blocks-for-gutenberg')}</option>
+										<option value="topbottom-lines">{__('Top Bottom Lines', 'premium-blocks-for-gutenberg')}</option>
 									</select>
 								</div>
-								<RangeControl
-									label={__('Submenu Width', 'premium-blocks-for-gutenberg')}
-									value={submenuWidth}
-									onChange={(size) => setAttributes({ submenuWidth: size })}
-									min={200}
-									max={500}
-								/>
-								<ToggleControl
-									label={__("Submenu Box Shadow", 'premium-blocks-for-gutenberg')}
-									checked={submenuShadow}
-									onChange={check => setAttributes({ submenuShadow: check })}
-								/>
 							</PanelBody>
-							<PanelBody title={__('Submenu Styles')}>
+							<PanelBody title={__('Menu Styles')}>
 								<TabPanel
 									className="premium-color-tabpanel"
 									activeClass="active-tab"
@@ -982,14 +733,14 @@ function Navigation({
 												<Fragment>
 													<AdvancedPopColorControl
 														label={__(`Links Color`, 'premium-blocks-for-gutenberg')}
-														colorValue={submenuColors.link}
-														onColorChange={newValue => setSubmenuColor('link', newValue)}
+														colorValue={menuColors.link}
+														onColorChange={newValue => setMenuColor('link', newValue)}
 														colorDefault={''}
 													/>
 													<AdvancedPopColorControl
 														label={__(`Background Color`, 'premium-blocks-for-gutenberg')}
-														colorValue={submenuColors.background}
-														onColorChange={newValue => setSubmenuColor('background', newValue)}
+														colorValue={menuColors.background}
+														onColorChange={newValue => setMenuColor('background', newValue)}
 														colorDefault={''}
 													/>
 												</Fragment>
@@ -1000,8 +751,8 @@ function Navigation({
 												<Fragment>
 													<AdvancedPopColorControl
 														label={__(`Links Color`, 'premium-blocks-for-gutenberg')}
-														colorValue={submenuColors.linkHover}
-														onColorChange={newValue => setSubmenuColor('linkHover', newValue)}
+														colorValue={menuColors.linkHover}
+														onColorChange={newValue => setMenuColor('linkHover', newValue)}
 														colorDefault={''}
 													/>
 												</Fragment>
@@ -1011,17 +762,207 @@ function Navigation({
 								</TabPanel>
 								<PremiumBorder
 									label={__("Border")}
-									value={submenuBorder}
-									borderType={submenuBorder.borderType}
-									borderColor={submenuBorder.borderColor}
-									borderWidth={submenuBorder.borderWidth}
-									borderRadius={submenuBorder.borderRadius}
-									onChange={(value) => setAttributes({ submenuBorder: value })}
+									value={menuBorder}
+									borderType={menuBorder.borderType}
+									borderColor={menuBorder.borderColor}
+									borderWidth={menuBorder.borderWidth}
+									borderRadius={menuBorder.borderRadius}
+									onChange={(value) => setAttributes({ menuBorder: value })}
 								/>
 							</PanelBody>
+							<PanelBody title={__('Overlay Menu Colors')}>
+								<TabPanel
+									className="premium-color-tabpanel"
+									activeClass="active-tab"
+									tabs={[
+										{
+											name: "normal",
+											title: "Normal",
+											className: "premium-tab",
+										},
+										{
+											name: "hover",
+											title: "Hover",
+											className: "premium-tab",
+										},
+									]}
+								>
+									{(tab) => {
+										if ("normal" === tab.name) {
+											return (
+												<Fragment>
+													<AdvancedPopColorControl
+														label={__(`Links Color`, 'premium-blocks-for-gutenberg')}
+														colorValue={overlayColors.link}
+														onColorChange={newValue => setOverlayMenuColor('link', newValue)}
+														colorDefault={''}
+													/>
+													<AdvancedPopColorControl
+														label={__(`Background Color`, 'premium-blocks-for-gutenberg')}
+														colorValue={overlayColors.background}
+														onColorChange={newValue => setOverlayMenuColor('background', newValue)}
+														colorDefault={''}
+													/>
+													<AdvancedPopColorControl
+														label={__(`Icon`, 'premium-blocks-for-gutenberg')}
+														colorValue={overlayColors.icon}
+														onColorChange={newValue => setOverlayMenuColor('icon', newValue)}
+														colorDefault={''}
+													/>
+												</Fragment>
+											);
+										}
+										if ("hover" === tab.name) {
+											return (
+												<Fragment>
+													<AdvancedPopColorControl
+														label={__(`Links Color`, 'premium-blocks-for-gutenberg')}
+														colorValue={overlayColors.linkHover}
+														onColorChange={newValue => setOverlayMenuColor('linkHover', newValue)}
+														colorDefault={''}
+													/>
+													<AdvancedPopColorControl
+														label={__(`Icon`, 'premium-blocks-for-gutenberg')}
+														colorValue={overlayColors.iconHover}
+														onColorChange={newValue => setOverlayMenuColor('iconHover', newValue)}
+														colorDefault={''}
+													/>
+												</Fragment>
+											);
+										}
+									}}
+								</TabPanel>
+								<PremiumBorder
+									label={__("Border")}
+									value={overlayMenuBorder}
+									borderType={overlayMenuBorder.borderType}
+									borderColor={overlayMenuBorder.borderColor}
+									borderWidth={overlayMenuBorder.borderWidth}
+									borderRadius={overlayMenuBorder.borderRadius}
+									onChange={(value) => setAttributes({ overlayMenuBorder: value })}
+								/>
+							</PanelBody>
+							<PanelBody
+								title={__('Spacing', 'premium-blocks-for-gutenberg')}
+								initialOpen={false}
+							>
+								<SpacingComponent value={padding} responsive={true} showUnits={true} label={__('Menu Padding')} onChange={(value) => onChangeSpacing({ padding: value })} />
+								<SpacingComponent value={itemPadding} responsive={true} showUnits={true} label={__('Menu Item Padding')} onChange={(value) => onChangeSpacing({ itemPadding: value })} />
+								<SpacingComponent value={margin} responsive={true} showUnits={true} label={__('Menu Margin')} onChange={(value) => onChangeSpacing({ margin: value })} />
+							</PanelBody>
+							<PanelBody
+								title={__("Typography", 'premium-blocks-for-gutenberg')}
+								className="premium-panel-body"
+								initialOpen={false}
+							>
+								<PremiumTypo
+									components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
+									value={typography}
+									onChange={newValue => setAttributes({ typography: newValue })}
+								/>
+							</PanelBody>
+							{hasSubmenus && hasSubmenuIndicatorSetting && (
+								<>
+									<PanelBody
+										title={__("Submenu Typography", 'premium-blocks-for-gutenberg')}
+										className="premium-panel-body"
+										initialOpen={false}
+									>
+										<PremiumTypo
+											components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
+											value={typography}
+											onChange={newValue => setAttributes({ submenuTypography: newValue })}
+										/>
+									</PanelBody>
+									<PanelBody title={__('Submenu Settings')}>
+										<div className='menu-styles' style={{ marginBottom: '20px' }}>
+											<label className='components-base-control__label'>{__('Dropdown Reveal', 'premium-blocks-for-gutenberg')}</label>
+											<select style={{ display: "block", width: "100%" }} onChange={(e) => setAttributes({ dropdownReveal: e.target.value })} value={dropdownReveal}>
+												<option value="none">{__('None', 'premium-blocks-for-gutenberg')}</option>
+												<option value="fade">{__('Fade', 'premium-blocks-for-gutenberg')}</option>
+												<option value="fade-up">{__('Fade Up', 'premium-blocks-for-gutenberg')}</option>
+												<option value="fade-down">{__('Fade Down', 'premium-blocks-for-gutenberg')}</option>
+											</select>
+										</div>
+										<RangeControl
+											label={__('Submenu Width', 'premium-blocks-for-gutenberg')}
+											value={submenuWidth}
+											onChange={(size) => setAttributes({ submenuWidth: size })}
+											min={200}
+											max={500}
+										/>
+										<ToggleControl
+											label={__("Submenu Box Shadow", 'premium-blocks-for-gutenberg')}
+											checked={submenuShadow}
+											onChange={check => setAttributes({ submenuShadow: check })}
+										/>
+									</PanelBody>
+									<PanelBody title={__('Submenu Styles')}>
+										<TabPanel
+											className="premium-color-tabpanel"
+											activeClass="active-tab"
+											tabs={[
+												{
+													name: "normal",
+													title: "Normal",
+													className: "premium-tab",
+												},
+												{
+													name: "hover",
+													title: "Hover",
+													className: "premium-tab",
+												},
+											]}
+										>
+											{(tab) => {
+												if ("normal" === tab.name) {
+													return (
+														<Fragment>
+															<AdvancedPopColorControl
+																label={__(`Links Color`, 'premium-blocks-for-gutenberg')}
+																colorValue={submenuColors.link}
+																onColorChange={newValue => setSubmenuColor('link', newValue)}
+																colorDefault={''}
+															/>
+															<AdvancedPopColorControl
+																label={__(`Background Color`, 'premium-blocks-for-gutenberg')}
+																colorValue={submenuColors.background}
+																onColorChange={newValue => setSubmenuColor('background', newValue)}
+																colorDefault={''}
+															/>
+														</Fragment>
+													);
+												}
+												if ("hover" === tab.name) {
+													return (
+														<Fragment>
+															<AdvancedPopColorControl
+																label={__(`Links Color`, 'premium-blocks-for-gutenberg')}
+																colorValue={submenuColors.linkHover}
+																onColorChange={newValue => setSubmenuColor('linkHover', newValue)}
+																colorDefault={''}
+															/>
+														</Fragment>
+													);
+												}
+											}}
+										</TabPanel>
+										<PremiumBorder
+											label={__("Border")}
+											value={submenuBorder}
+											borderType={submenuBorder.borderType}
+											borderColor={submenuBorder.borderColor}
+											borderWidth={submenuBorder.borderWidth}
+											borderRadius={submenuBorder.borderRadius}
+											onChange={(value) => setAttributes({ submenuBorder: value })}
+										/>
+									</PanelBody>
 
-						</>
-					)}
+								</>
+							)}
+						</InspectorTab>
+						<InspectorTab key={'advance'} />
+					</InspectorTabs>
 				</InspectorControls>
 				{isEntityAvailable && (
 					<InspectorControls __experimentalGroup="advanced">
@@ -1060,14 +1001,14 @@ function Navigation({
 							isResponsive={isResponsive}
 							isHiddenByDefault={'always' === overlayMenu}
 							styles={{
-								borderTopWidth: overlayMenuBorder?.borderWidth?.Desktop?.top,
-								borderRightWidth: overlayMenuBorder?.borderWidth?.Desktop?.right,
-								borderBottomWidth: overlayMenuBorder?.borderWidth?.Desktop?.bottom,
-								borderLeftWidth: overlayMenuBorder?.borderWidth?.Desktop?.left,
-								borderTopLeftRadius: `${overlayMenuBorder?.borderRadius?.Desktop?.top || 0}px`,
-								borderTopRightRadius: `${overlayMenuBorder?.borderRadius?.Desktop?.right || 0}px`,
-								borderBottomLeftRadius: `${overlayMenuBorder?.borderRadius?.Desktop?.bottom || 0}px`,
-								borderBottomRightRadius: `${overlayMenuBorder?.borderRadius?.Desktop?.left || 0}px`,
+								borderTopWidth: overlayMenuBorder?.borderWidth?.[deviceType]?.top,
+								borderRightWidth: overlayMenuBorder?.borderWidth?.[deviceType]?.right,
+								borderBottomWidth: overlayMenuBorder?.borderWidth?.[deviceType]?.bottom,
+								borderLeftWidth: overlayMenuBorder?.borderWidth?.[deviceType]?.left,
+								borderTopLeftRadius: `${overlayMenuBorder?.borderRadius?.[deviceType]?.top || 0}px`,
+								borderTopRightRadius: `${overlayMenuBorder?.borderRadius?.[deviceType]?.right || 0}px`,
+								borderBottomLeftRadius: `${overlayMenuBorder?.borderRadius?.[deviceType]?.bottom || 0}px`,
+								borderBottomRightRadius: `${overlayMenuBorder?.borderRadius?.[deviceType]?.left || 0}px`,
 								borderColor: overlayMenuBorder?.borderColor
 							}}
 						>
@@ -1088,7 +1029,11 @@ function Navigation({
 	);
 }
 
-export default withColors(
-	{ textColor: 'color' },
-	{ backgroundColor: 'color' },
-)(Navigation);
+export default withSelect((select, props) => {
+	const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
+	let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+	return {
+		deviceType: deviceType
+	}
+})(Navigation)

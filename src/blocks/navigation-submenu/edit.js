@@ -8,7 +8,7 @@ import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 /**
  * WordPress dependencies
  */
-import { useSelect, useDispatch } from '@wordpress/data';
+import { useSelect, useDispatch, withSelect } from '@wordpress/data';
 import {
 	PanelBody,
 	Popover,
@@ -47,6 +47,8 @@ import { link as linkIcon, removeSubmenu } from '@wordpress/icons';
 import { store as coreStore } from '@wordpress/core-data';
 import { speak } from '@wordpress/a11y';
 import { createBlock } from '@wordpress/blocks';
+import InspectorTabs from '../../components/inspectorTabs';
+import InspectorTab from '../../components/inspectorTab';
 
 /**
  * Internal dependencies
@@ -57,6 +59,7 @@ import SpacingComponent from '../../components/premium-responsive-spacing';
 import PremiumBackgroundControl from "../../components/Premium-Background-Control"
 import iconsList from "../../components/premium-icons-list";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
+import { gradientBackground } from "../../components/HelperFunction";
 
 const ALLOWED_BLOCKS = ['premium/navigation-link', 'premium/navigation-submenu'];
 
@@ -275,7 +278,7 @@ const getTypography = (menuTypography, submenuTypography) => {
 	return typography;
 }
 
-export default function NavigationSubmenuEdit({
+function NavigationSubmenuEdit({
 	attributes,
 	isSelected,
 	setAttributes,
@@ -299,7 +302,8 @@ export default function NavigationSubmenuEdit({
 		megaMenuBackground,
 		linkCustomIcon,
 		badgeText,
-		badgeColors
+		badgeColors,
+		deviceType = 'Desktop'
 	} = attributes;
 	const link = {
 		url,
@@ -309,28 +313,8 @@ export default function NavigationSubmenuEdit({
 		submenuTypography: typography, overlayMenu, submenuBorder } = context;
 	const { saveEntityRecord } = useDispatch(coreStore);
 	const { contentSize } = useSetting('layout');
-	const defaultSpacingValue = {
-		desktop: {
-			top: '',
-			right: '',
-			bottom: '',
-			left: ''
-		},
-		tablet: {
-			top: '',
-			right: '',
-			bottom: '',
-			left: ''
-		},
-		mobile: {
-			top: '',
-			right: '',
-			bottom: '',
-			left: ''
-		}
-	};
-	let columnPadding = spacing.columnPadding ? spacing.columnPadding : defaultSpacingValue;
-	let padding = spacing.padding ? spacing.padding : defaultSpacingValue;
+	let columnPadding = spacing.columnPadding ? spacing.columnPadding : {};
+	let padding = spacing.padding ? spacing.padding : {};
 
 	const {
 		__unstableMarkNextChangeAsNotPersistent,
@@ -507,14 +491,14 @@ export default function NavigationSubmenuEdit({
 	}
 
 	const defaultSize = {
-		desktop: "",
-		tablet: "",
-		mobile: "",
+		Desktop: "",
+		Tablet: "",
+		Mobile: "",
 		unit: "px"
 	};
 
 	const { link: linkColor, linkHover: linkHoverColor, background: backgroundColor } = getColors(menuColors, submenuColors);
-	const { size: fontSizeValue = defaultSize, family, weight, letterSpacing, textTransform, textDecoration, lineHeight, style: fontStyle } = getTypography(menuTypography, typography);
+	const { fontSize: fontSizeValue = defaultSize, fontFamily: family, fontWeight: weight, letterSpacing, textTransform, textDecoration, lineHeight, fontStyle } = getTypography(menuTypography, typography);
 	const fontSize = fontSizeValue ? fontSizeValue : defaultSize;
 	const blockProps = useBlockProps({
 		ref: listItemRef,
@@ -533,20 +517,6 @@ export default function NavigationSubmenuEdit({
 		pull(ALLOWED_BLOCKS, 'premium/navigation-submenu');
 	}
 
-	let containerGrad, containerGrad2, containerbg;
-
-	if (undefined !== megaMenuBackground.backgroundType && 'gradient' === megaMenuBackground.backgroundType) {
-		containerGrad = ('transparent' === megaMenuBackground.containerBack || undefined === megaMenuBackground.containerBack ? 'rgba(255,255,255,0)' : megaMenuBackground.containerBack);
-		containerGrad2 = (undefined !== megaMenuBackground.gradientColorTwo && undefined !== megaMenuBackground.gradientColorTwo && '' !== megaMenuBackground.gradientColorTwo ? megaMenuBackground.gradientColorTwo : '#777');
-		if ('radial' === megaMenuBackground.gradientType) {
-			containerbg = `radial-gradient(at ${megaMenuBackground.gradientPosition}, ${containerGrad} ${megaMenuBackground.gradientLocationOne}%, ${containerGrad2} ${megaMenuBackground.gradientLocationTwo}%)`;
-		} else if ('radial' !== megaMenuBackground.gradientType) {
-			containerbg = `linear-gradient(${megaMenuBackground.gradientAngle}deg, ${containerGrad} ${megaMenuBackground.gradientLocationOne}%, ${containerGrad2} ${megaMenuBackground.gradientLocationTwo}%)`;
-		}
-	} else {
-		containerbg = megaMenuBackground.backgroundImageURL ? `url('${megaMenuBackground.backgroundImageURL}')` : ''
-	}
-
 	const innerBlocksProps = useInnerBlocksProps(
 		{
 			className: classnames('premium-navigation__submenu-container', {
@@ -555,7 +525,7 @@ export default function NavigationSubmenuEdit({
 			style: {
 				color: linkColor,
 				backgroundColor: backgroundColor,
-				fontSize: `${fontSize.desktop}${fontSize.unit}`,
+				fontSize: `${fontSize?.[deviceType]}${fontSize?.unit}`,
 				fontFamily: family,
 				fontWeight: weight,
 				letterSpacing: letterSpacing,
@@ -563,24 +533,19 @@ export default function NavigationSubmenuEdit({
 				textTransform: textTransform,
 				lineHeight: `${lineHeight}px`,
 				fontStyle: fontStyle,
-				paddingTop: megaMenu ? `${padding?.Desktop?.top}${padding?.unit}` : '',
-				paddingRight: megaMenu ? `${padding?.Desktop?.right}${padding?.unit}` : '',
-				paddingBottom: megaMenu ? `${padding?.Desktop?.bottom}${padding?.unit}` : '',
-				paddingLeft: megaMenu ? `${padding?.Desktop?.left}${padding?.unit}` : '',
-				backgroundColor: megaMenu && megaMenuBackground.backgroundType === "solid" ? megaMenuBackground.containerBack : "",
-				backgroundImage: megaMenu ? containerbg : '',
-				backgroundRepeat: megaMenu ? megaMenuBackground.backgroundRepeat : '',
-				backgroundPosition: megaMenu ? megaMenuBackground.backgroundPosition : '',
-				backgroundSize: megaMenu ? megaMenuBackground.backgroundSize : '',
-				backgroundAttachment: megaMenu && megaMenuBackground.fixed ? "fixed" : "unset",
-				borderTopWidth: submenuBorder?.borderWidth?.Desktop?.top,
-				borderRightWidth: submenuBorder?.borderWidth?.Desktop?.right,
-				borderBottomWidth: submenuBorder?.borderWidth?.Desktop?.bottom,
-				borderLeftWidth: submenuBorder?.borderWidth?.Desktop?.left,
-				borderTopLeftRadius: `${submenuBorder?.borderRadius?.Desktop?.top || 0}px`,
-				borderTopRightRadius: `${submenuBorder?.borderRadius?.Desktop?.right || 0}px`,
-				borderBottomLeftRadius: `${submenuBorder?.borderRadius?.Desktop?.bottom || 0}px`,
-				borderBottomRightRadius: `${submenuBorder?.borderRadius?.Desktop?.left || 0}px`,
+				paddingTop: megaMenu ? `${padding?.[deviceType]?.top}${padding?.unit}` : '',
+				paddingRight: megaMenu ? `${padding?.[deviceType]?.right}${padding?.unit}` : '',
+				paddingBottom: megaMenu ? `${padding?.[deviceType]?.bottom}${padding?.unit}` : '',
+				paddingLeft: megaMenu ? `${padding?.[deviceType]?.left}${padding?.unit}` : '',
+				borderTopWidth: submenuBorder?.borderWidth?.[deviceType]?.top,
+				borderRightWidth: submenuBorder?.borderWidth?.[deviceType]?.right,
+				borderBottomWidth: submenuBorder?.borderWidth?.[deviceType]?.bottom,
+				borderLeftWidth: submenuBorder?.borderWidth?.[deviceType]?.left,
+				borderTopLeftRadius: `${submenuBorder?.borderRadius?.[deviceType]?.top || 0}px`,
+				borderTopRightRadius: `${submenuBorder?.borderRadius?.[deviceType]?.right || 0}px`,
+				borderBottomLeftRadius: `${submenuBorder?.borderRadius?.[deviceType]?.bottom || 0}px`,
+				borderBottomRightRadius: `${submenuBorder?.borderRadius?.[deviceType]?.left || 0}px`,
+				...gradientBackground(megaMenuBackground)
 			},
 		},
 		{
@@ -645,11 +610,6 @@ export default function NavigationSubmenuEdit({
 		}
 	}, [isSelected, megaMenu, megaMenuWidth, submenuWidth, overlayMenu])
 
-	const setBackgroundAttr = (attr) => {
-		const newBackground = { ...megaMenuBackground, ...attr };
-		setAttributes({ megaMenuBackground: newBackground });
-	}
-
 	const setBadgeColor = (color, value) => {
 		const newColors = { ...badgeColors };
 		newColors[color] = value;
@@ -662,10 +622,10 @@ export default function NavigationSubmenuEdit({
 
 	let styleArry = [
 		`#${blockProps.id}.premiun-mega-menu .premium-navigation__submenu-container > *{`,
-		`padding-top: ${columnPadding?.Desktop?.top}${columnPadding?.unit};`,
-		`padding-right: ${columnPadding?.Desktop?.right}${columnPadding?.unit};`,
-		`padding-bottom: ${columnPadding?.Desktop?.bottom}${columnPadding?.unit};`,
-		`padding-left: ${columnPadding?.Desktop?.left}${columnPadding?.unit};`,
+		`padding-top: ${columnPadding?.[deviceType]?.top}${columnPadding?.unit};`,
+		`padding-right: ${columnPadding?.[deviceType]?.right}${columnPadding?.unit};`,
+		`padding-bottom: ${columnPadding?.[deviceType]?.bottom}${columnPadding?.unit};`,
+		`padding-left: ${columnPadding?.[deviceType]?.left}${columnPadding?.unit};`,
 		`}`,
 		`#${blockProps.id} .premium-navigation__submenu-container a{`,
 		`--pbg-links-color: ${linkColor};`,
@@ -707,127 +667,122 @@ export default function NavigationSubmenuEdit({
 				</ToolbarGroup>
 			</BlockControls>
 			<InspectorControls>
-				{isTopLevelItem && <PanelBody title={__('Mega Menu Settings')}>
-					{<ToggleControl
-						label={__("Enable Mega Menu", 'premium-blocks-for-gutenberg')}
-						checked={megaMenu}
-						onChange={check => setAttributes({ megaMenu: check })}
-					/>}
-					{megaMenu && overlayMenu !== 'always' && (
-						<>
-							<SelectControl
-								label={__("Mega Menu Width", 'premium-blocks-for-gutenberg')}
-								options={[
-									{
-										value: "content",
-										label: __("Content", 'premium-blocks-for-gutenberg')
-									},
-									{
-										value: "full",
-										label: __("Full", 'premium-blocks-for-gutenberg')
-									},
-									{
-										value: "menu-container",
-										label: __("Menu Container", 'premium-blocks-for-gutenberg')
-									}
-								]}
-								value={megaMenuWidth}
-								onChange={newWidth => setAttributes({ megaMenuWidth: newWidth })}
-							/>
-							<PremiumBackgroundControl
-								setAttributes={setBackgroundAttr}
-								saveContainerStyle={setBackgroundAttr}
-								backgroundType={megaMenuBackground.backgroundType}
-								backgroundColor={megaMenuBackground.backgroundColor}
-								backgroundImageID={megaMenuBackground.backgroundImageID}
-								backgroundImageURL={megaMenuBackground.backgroundImageURL}
-								backgroundPosition={megaMenuBackground.backgroundPosition}
-								backgroundRepeat={megaMenuBackground.backgroundRepeat}
-								backgroundSize={megaMenuBackground.backgroundSize}
-								fixed={megaMenuBackground.fixed}
-								gradientLocationOne={megaMenuBackground.gradientLocationOne}
-								gradientColorTwo={megaMenuBackground.gradientColorTwo}
-								gradientLocationTwo={megaMenuBackground.gradientLocationTwo}
-								gradientAngle={megaMenuBackground.gradientAngle}
-								gradientPosition={megaMenuBackground.gradientPosition}
-								gradientType={megaMenuBackground.gradientType}
-							/>
-						</>
-					)}
+				<InspectorTabs tabs={['layout', 'style', 'advance']}>
+					<InspectorTab key={'layout'}>
+						{isTopLevelItem && <PanelBody title={__('Mega Menu Settings')}>
+							{<ToggleControl
+								label={__("Enable Mega Menu", 'premium-blocks-for-gutenberg')}
+								checked={megaMenu}
+								onChange={check => setAttributes({ megaMenu: check })}
+							/>}
+							{megaMenu && overlayMenu !== 'always' && (
+								<>
+									<SelectControl
+										label={__("Mega Menu Width", 'premium-blocks-for-gutenberg')}
+										options={[
+											{
+												value: "content",
+												label: __("Content", 'premium-blocks-for-gutenberg')
+											},
+											{
+												value: "full",
+												label: __("Full", 'premium-blocks-for-gutenberg')
+											},
+											{
+												value: "menu-container",
+												label: __("Menu Container", 'premium-blocks-for-gutenberg')
+											}
+										]}
+										value={megaMenuWidth}
+										onChange={newWidth => setAttributes({ megaMenuWidth: newWidth })}
+									/>
+									<PremiumBackgroundControl
+										value={megaMenuBackground}
+										onChange={(value) => setAttributes({ megaMenuBackground: value })}
+									/>
+								</>
+							)}
 
-				</PanelBody>}
-				{megaMenu && (
-					<>
-						<PanelBody
-							title={__('Spacing', 'premium-blocks-for-gutenberg')}
-							initialOpen={false}
-						>
-							<SpacingComponent value={padding} responsive={true} showUnits={true} label={__('Mega Menu Padding')} onChange={(value) => onChangeSpacing({ padding: value })} />
-							<SpacingComponent value={columnPadding} responsive={true} showUnits={true} label={__('Mega Menu Columns Padding')} onChange={(value) => onChangeSpacing({ columnPadding: value })} />
+						</PanelBody>}
+						<PanelBody title={__('Link Badge')}>
+							<TextControl
+								value={badgeText || ''}
+								onChange={(badgeTextValue) => {
+									setAttributes({
+										badgeText: badgeTextValue,
+									});
+								}}
+								label={__('Link Badge Text')}
+							/>
 						</PanelBody>
-					</>
-				)}
-				<PanelBody title={__('Link Badge')}>
-					<TextControl
-						value={badgeText || ''}
-						onChange={(badgeTextValue) => {
-							setAttributes({
-								badgeText: badgeTextValue,
-							});
-						}}
-						label={__('Link Badge Text')}
-					/>
-					<AdvancedPopColorControl
-						label={__(`Text Color`, 'premium-blocks-for-gutenberg')}
-						colorValue={badgeColors.text}
-						onColorChange={newValue => setBadgeColor('text', newValue)}
-						colorDefault={''}
-					/>
-					<AdvancedPopColorControl
-						label={__(`Background Color`, 'premium-blocks-for-gutenberg')}
-						colorValue={badgeColors.background}
-						onColorChange={newValue => setBadgeColor('background', newValue)}
-						colorDefault={''}
-					/>
-				</PanelBody>
-				<PanelBody title={__('Link settings')}>
-					<FontIconPicker
-						icons={iconsList}
-						onChange={newIcon => setAttributes({ linkCustomIcon: newIcon })}
-						value={linkCustomIcon}
-						isMulti={false}
-						appendTo="body"
-						noSelectedPlaceholder={__("Select Icon", 'premium-blocks-for-gutenberg')}
-					/>
-					<TextareaControl
-						value={description || ''}
-						onChange={(descriptionValue) => {
-							setAttributes({
-								description: descriptionValue,
-							});
-						}}
-						label={__('Description')}
-						help={__(
-							'The description will be displayed in the menu if the current theme supports it.'
+						<PanelBody title={__('Link settings')}>
+							<FontIconPicker
+								icons={iconsList}
+								onChange={newIcon => setAttributes({ linkCustomIcon: newIcon })}
+								value={linkCustomIcon}
+								isMulti={false}
+								appendTo="body"
+								noSelectedPlaceholder={__("Select Icon", 'premium-blocks-for-gutenberg')}
+							/>
+							<TextareaControl
+								value={description || ''}
+								onChange={(descriptionValue) => {
+									setAttributes({
+										description: descriptionValue,
+									});
+								}}
+								label={__('Description')}
+								help={__(
+									'The description will be displayed in the menu if the current theme supports it.'
+								)}
+							/>
+							<TextControl
+								value={title || ''}
+								onChange={(titleValue) => {
+									setAttributes({ title: titleValue });
+								}}
+								label={__('Link title')}
+								autoComplete="off"
+							/>
+							<TextControl
+								value={rel || ''}
+								onChange={(relValue) => {
+									setAttributes({ rel: relValue });
+								}}
+								label={__('Link rel')}
+								autoComplete="off"
+							/>
+						</PanelBody>
+					</InspectorTab>
+					<InspectorTab key={'style'}>
+						{megaMenu && (
+							<>
+								<PanelBody
+									title={__('Spacing', 'premium-blocks-for-gutenberg')}
+									initialOpen={false}
+								>
+									<SpacingComponent value={padding} responsive={true} showUnits={true} label={__('Mega Menu Padding')} onChange={(value) => onChangeSpacing({ padding: value })} />
+									<SpacingComponent value={columnPadding} responsive={true} showUnits={true} label={__('Mega Menu Columns Padding')} onChange={(value) => onChangeSpacing({ columnPadding: value })} />
+								</PanelBody>
+							</>
 						)}
-					/>
-					<TextControl
-						value={title || ''}
-						onChange={(titleValue) => {
-							setAttributes({ title: titleValue });
-						}}
-						label={__('Link title')}
-						autoComplete="off"
-					/>
-					<TextControl
-						value={rel || ''}
-						onChange={(relValue) => {
-							setAttributes({ rel: relValue });
-						}}
-						label={__('Link rel')}
-						autoComplete="off"
-					/>
-				</PanelBody>
+						<PanelBody title={__('Link Badge')}>
+							<AdvancedPopColorControl
+								label={__(`Text Color`, 'premium-blocks-for-gutenberg')}
+								colorValue={badgeColors.text}
+								onColorChange={newValue => setBadgeColor('text', newValue)}
+								colorDefault={''}
+							/>
+							<AdvancedPopColorControl
+								label={__(`Background Color`, 'premium-blocks-for-gutenberg')}
+								colorValue={badgeColors.background}
+								onColorChange={newValue => setBadgeColor('background', newValue)}
+								colorDefault={''}
+							/>
+						</PanelBody>
+					</InspectorTab>
+					<InspectorTab key={'advance'} />
+				</InspectorTabs>
 			</InspectorControls>
 			<div {...blockProps}>
 				<style
@@ -928,3 +883,12 @@ export default function NavigationSubmenuEdit({
 		</Fragment>
 	);
 }
+
+export default withSelect((select, props) => {
+	const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
+	let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+	return {
+		deviceType: deviceType
+	}
+})(NavigationSubmenuEdit)

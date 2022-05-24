@@ -83,27 +83,37 @@
         "typography": {
             "type": "object",
             "default": {
-                "size": null,
-                "weight": 400,
-                "family": "Default",
-                "letterSpacing": "",
+                "fontWeight": "",
+                "fontStyle": "",
                 "textTransform": "",
-                "textDecoration": "",
+                "letterSpacing": "",
+                "fontFamily": "",
                 "lineHeight": "",
-                "style": ""
+                "textDecoration": "",
+                "fontSize": {
+                    "Desktop": "",
+                    "Tablet": "",
+                    "Mobile": "",
+                    "unit": "px"
+                }
             }
         },
         "submenuTypography": {
             "type": "object",
             "default": {
-                "size": null,
-                "weight": 400,
-                "family": "Default",
-                "letterSpacing": "",
+                "fontWeight": "",
+                "fontStyle": "",
                 "textTransform": "",
-                "textDecoration": "",
+                "letterSpacing": "",
+                "fontFamily": "",
                 "lineHeight": "",
-                "style": ""
+                "textDecoration": "",
+                "fontSize": {
+                    "Desktop": "",
+                    "Tablet": "",
+                    "Mobile": "",
+                    "unit": "px"
+                }
             }
         },
         "showSubmenuIcon": {
