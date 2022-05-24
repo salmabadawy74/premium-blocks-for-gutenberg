@@ -78,7 +78,7 @@
                             
                     <div className="gpb-trigger-canvas-container" data-layout={canvasStyles.layout}>
                         <div role="presentation" className="gpb-popup-overlay" style={{backgroundColor: `${canvasStyles.overlayBgColor}`,}}></div>
-                        <div className="gpb-popup-content gpb-desktop-popup-content"
+                        <div className="gpb-popup-content"
                         style={{
                             backgroundColor: `${canvasStyles.canvasBgColor}`
                         }}>

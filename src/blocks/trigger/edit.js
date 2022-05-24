@@ -448,7 +448,7 @@ function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
                         <div role="presentation" className="gpb-popup-overlay" onClick={() => setEditing(false)} style={{
                         backgroundColor: `${canvasStyles.overlayBgColor}`,
                     }}></div>
-                        <div className="gpb-popup-content gpb-desktop-popup-content"
+                        <div className="gpb-popup-content"
                         style={{
                             paddingTop: triggerSpacingTop && `${triggerSpacingTop}${triggerSpacing.unit ? triggerSpacing.unit : 'px'}`,
                             paddingBottom: triggerSpacingBottom && `${triggerSpacingBottom}${triggerSpacing.unit ? triggerSpacing.unit : 'px'}`,
