@@ -19,16 +19,16 @@ function get_breadcrumbs_css( $attributes, $unique_id ) {
 		$typography = $attributes['typography'];
 		$block_helpers->add_gfont(
 			array(
-				'fontFamily'  => ( isset( $typography['family'] ) ? $typography['family'] : '' ),
-				'fontVariant' => ( isset( $typography['weight'] ) ? $typography['weight'] : '' ),
+				'fontFamily'  => ( isset( $typography['fontFamily'] ) ? $typography['fontFamily'] : '' ),
+				'fontVariant' => ( isset( $typography['fontWeight'] ) ? $typography['fontWeight'] : '' ),
 			)
 		);
 		$css->set_selector( '#' . $unique_id . ' > .premium-breadcrumb-trail, #' . $unique_id . ' > .premium-breadcrumb-trail a, #' . $unique_id . ' > .premium-breadcrumb-trail span' );
-		$css->add_property( 'font-family', $css->render_color( $typography['family'] ) );
-		$css->add_property( 'font-weight', $css->render_color( $typography['weight'] ) );
-		$css->add_property( 'font-style', $css->render_color( $typography['style'] ) );
+		$css->add_property( 'font-family', $css->render_color( $typography['fontFamily'] ) );
+		$css->add_property( 'font-weight', $css->render_color( $typography['fontWeight'] ) );
+		$css->add_property( 'font-style', $css->render_color( $typography['fontStyle'] ) );
 		if ( isset( $typography['size'] ) ) {
-			$css->add_property( 'font-size', $css->render_color( $typography['size']['desktop'] . $typography['size']['unit'] ) );
+			$css->add_property( 'font-size', $css->render_color( $typography['size']['Desktop'] . $typography['size']['unit'] ) );
 		}
 		$css->add_property( 'line-height', $css->render_color( $typography['lineHeight'] . 'px' ) );
 		$css->add_property( 'text-transform', $css->render_color( $typography['textTransform'] ) );
@@ -82,7 +82,7 @@ function get_breadcrumbs_css( $attributes, $unique_id ) {
 			$typography = $attributes['typography'];
 			$css->set_selector( '#' . $unique_id . ' > .premium-breadcrumb-trail, #' . $unique_id . ' > .premium-breadcrumb-trail a, #' . $unique_id . ' > .premium-breadcrumb-trail span' );
 			if ( isset( $typography['size'] ) ) {
-				$css->add_property( 'font-size', $css->render_color( $typography['size']['tablet'] . $typography['size']['unit'] ) );
+				$css->add_property( 'font-size', $css->render_color( $typography['size']['Tablet'] . $typography['size']['unit'] ) );
 			}
 		}
 		if ( $spacing['padding'] ) {
@@ -118,7 +118,7 @@ function get_breadcrumbs_css( $attributes, $unique_id ) {
 			$typography = $attributes['typography'];
 			$css->set_selector( '#' . $unique_id . ' > .premium-breadcrumb-trail, #' . $unique_id . ' > .premium-breadcrumb-trail a, #' . $unique_id . ' > .premium-breadcrumb-trail span' );
 			if ( isset( $typography['size'] ) ) {
-				$css->add_property( 'font-size', $css->render_color( $typography['size']['mobile'] . $typography['size']['unit'] ) );
+				$css->add_property( 'font-size', $css->render_color( $typography['size']['Mobile'] . $typography['size']['unit'] ) );
 			}
 		}
 		if ( $spacing['padding'] ) {

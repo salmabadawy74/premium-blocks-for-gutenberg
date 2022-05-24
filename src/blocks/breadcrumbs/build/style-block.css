@@ -48,12 +48,13 @@
 
 .wp-block-premium-breadcrumbs [class^=pbg-],
 .wp-block-premium-breadcrumbs [class*=" pbg-"] {
-  font-family: inherit;
+  font-family: inherit !important;
   width: auto;
   height: auto;
-  font-size: inherit;
+  font-size: inherit !important;
   color: inherit;
   margin: 0;
+  text-decoration: inherit !important;
 }
 
 /*# sourceMappingURL=style-block.css.map*/

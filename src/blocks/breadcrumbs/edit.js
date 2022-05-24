@@ -13,7 +13,7 @@ import {
     useBlockProps,
     InspectorControls
 } from '@wordpress/block-editor';
-import { useSelect } from '@wordpress/data';
+import { useSelect, withSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import { PanelBody, CustomSelectControl, TextControl, Dashicon, TabPanel } from '@wordpress/components';
 /**
@@ -21,11 +21,12 @@ import { PanelBody, CustomSelectControl, TextControl, Dashicon, TabPanel } from 
  */
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 import SpacingComponent from '../../components/premium-responsive-spacing';
-import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
-import PremiumResponsiveMargin from '../../components/Premium-Responsive-Margin';
 import PremiumTypo from "../../components/premium-typo"
+import InspectorTabs from '../../components/inspectorTabs';
+import InspectorTab from '../../components/inspectorTab';
+import RadioComponent from '../../components/radio-control';
 
-export default function Edit({ attributes, setAttributes, context: { postType, postId } }) {
+function Edit({ attributes, setAttributes, context: { postType, postId } }, deviceType) {
     const [fullTitle] = useEntityProp('postType', postType, 'title', postId);
     const selectedTerm = useSelect(
         (select) => {
@@ -57,37 +58,33 @@ export default function Edit({ attributes, setAttributes, context: { postType, p
         postType,
         term: selectedTerm,
     });
-    const defaultSize = {
-        desktop: "",
-        tablet: "",
-        mobile: "",
-        unit: "px"
-    };
+
     const categoryName = hasPostTerms ? postTerms[0].name : __('Post Category');
     const { textAlign, colors, spacing, typography, breadcrumbsStyle } = attributes;
     let margin = spacing.margin ? spacing.margin : {};
     let padding = spacing.padding ? spacing.padding : {};
     let itemPadding = spacing.itemPadding ? spacing.itemPadding : {};
 
-    const fontSize = typography.size ? typography.size : defaultSize;
+    const fontSize = typography.size ? typography.size : {};
     const blockProps = useBlockProps({
         className: classnames({
             [`has-text-align-${textAlign}`]: textAlign
         }),
         style: {
-            marginTop: `${margin?.Desktop?.top}${margin?.unit}`,
-            marginRight: `${margin?.Desktop?.right}${margin?.unit}`,
-            marginBottom: `${margin?.Desktop?.bottom}${margin?.unit}`,
-            marginLeft: `${margin?.Desktop?.left}${margin?.unit}`,
-            paddingTop: `${padding?.Desktop?.top}${padding?.unit}`,
-            paddingRight: `${padding?.Desktop?.right}${padding?.unit}`,
-            paddingBottom: `${padding?.Desktop?.bottom}${padding?.unit}`,
-            paddingLeft: `${padding?.Desktop?.left}${padding?.unit}`,
+            marginTop: `${margin?.[deviceType]?.top}${margin?.unit}`,
+            marginRight: `${margin?.[deviceType]?.right}${margin?.unit}`,
+            marginBottom: `${margin?.[deviceType]?.bottom}${margin?.unit}`,
+            marginLeft: `${margin?.[deviceType]?.left}${margin?.unit}`,
+            paddingTop: `${padding?.[deviceType]?.top}${padding?.unit}`,
+            paddingRight: `${padding?.[deviceType]?.right}${padding?.unit}`,
+            paddingBottom: `${padding?.[deviceType]?.bottom}${padding?.unit}`,
+            paddingLeft: `${padding?.[deviceType]?.left}${padding?.unit}`,
             color: colors.text,
             backgroundColor: colors.background,
-            fontSize: `${fontSize.desktop}${fontSize.unit}`,
-            fontFamily: typography.family,
-            fontWeight: typography.weight,
+            fontSize: `${fontSize?.[deviceType]}${fontSize?.unit}`,
+            fontFamily: typography.fontFamily,
+            fontWeight: typography.fontWeight,
+            fontStyle: typography.fontStyle,
             letterSpacing: typography.letterSpacing,
             textDecoration: typography.textDecoration,
             textTransform: typography.textTransform,
@@ -100,26 +97,6 @@ export default function Edit({ attributes, setAttributes, context: { postType, p
     const prefix = attributes.prefix;
     const separator = <span class="breadcrumb-sep" style={{ padding: '0 .4em' }}>{divider}</span>;
     const homeItemType = attributes.homeItemType === 'text' ? __('Home') : <Dashicon style={{ lineHeight: 'inherit' }} icon='admin-home' />;
-    const selectOptions = [
-        {
-            key: 'text',
-            name: __('Text', 'premium-blocks-for-gutenberg'),
-        },
-        {
-            key: 'icon',
-            name: __('Icon', 'premium-blocks-for-gutenberg'),
-        },
-    ];
-    const StylesSelectOptions = [
-        {
-            key: 'normal',
-            name: __('Normal', 'premium-blocks-for-gutenberg'),
-        },
-        {
-            key: 'advanced',
-            name: __('Advanced', 'premium-blocks-for-gutenberg'),
-        },
-    ];
     const setColor = (color, value) => {
         const newColors = { ...colors };
         newColors[color] = value;
@@ -131,16 +108,6 @@ export default function Edit({ attributes, setAttributes, context: { postType, p
         setAttributes({ spacing: newSpacing });
     }
 
-    const onChangeFontSize = (value, device) => {
-        const newSize = { ...fontSize };
-        newSize[device] = value;
-        setAttributes({ typography: { ...typography, size: newSize } });
-    }
-
-    const onChangeFont = (value, attr) => {
-        setAttributes({ typography: { ...typography, [attr]: value } });
-    }
-
     const getSecondPart = (str) => {
         return str.split(':')[1];
     }
@@ -148,11 +115,11 @@ export default function Edit({ attributes, setAttributes, context: { postType, p
     let styleArry = [
         `#${blockProps.id} a {`,
         `color: ${colors.link};`,
-        `font-family: ${typography.family};`,
-        `font-weight: ${typography.weight};`,
-        `font-size: ${fontSize.desktop}${fontSize.unit};`,
+        `font-family: ${typography.fontFamily};`,
+        `font-weight: ${typography.fontWeight};`,
+        `font-size: ${fontSize?.[deviceType]}${fontSize?.unit};`,
         `text-decoration: ${typography.textDecoration};`,
-        `font-style: ${typography.style || 'normal'};`,
+        `font-style: ${typography.fontStyle || 'normal'};`,
         "}",
         `#${blockProps.id} a:hover {`,
         `color: ${colors.linkHover};`,
@@ -174,10 +141,10 @@ export default function Edit({ attributes, setAttributes, context: { postType, p
         `}`,
         `#${blockProps.id} .pbg-breadcrumbs-advanced .pbg-breadcrumbs-item > *{`,
         `background-color: var(--item-bg-color, hsla(34,85%,35%,1));`,
-        `padding-top: ${itemPadding?.Desktop?.top}${itemPadding?.unit};`,
-        `padding-right: ${itemPadding?.Desktop?.right}${itemPadding?.unit};`,
-        `padding-bottom: ${itemPadding?.Desktop?.bottom}${itemPadding?.unit};`,
-        `padding-left: ${itemPadding?.Desktop?.left}${itemPadding?.unit};`,
+        `padding-top: ${itemPadding?.[deviceType]?.top}${itemPadding?.unit};`,
+        `padding-right: ${itemPadding?.[deviceType]?.right}${itemPadding?.unit};`,
+        `padding-bottom: ${itemPadding?.[deviceType]?.bottom}${itemPadding?.unit};`,
+        `padding-left: ${itemPadding?.[deviceType]?.left}${itemPadding?.unit};`,
         `}`,
         `#${blockProps.id} .pbg-breadcrumbs-advanced .pbg-breadcrumbs-item::before {`,
         `content: " ";`,
@@ -194,7 +161,7 @@ export default function Edit({ attributes, setAttributes, context: { postType, p
     ];
 
     styleArry = styleArry.filter(styleLine => {
-        const notAllowed = ['px;', 'undefined;', ';'];
+        const notAllowed = ['px;', 'undefined;', ';', 'undefinedundefined;'];
         const style = getSecondPart(styleLine) ? getSecondPart(styleLine).replace(/\s/g, '') : styleLine;
         if (!notAllowed.includes(style)) {
             return style;
@@ -245,159 +212,155 @@ export default function Edit({ attributes, setAttributes, context: { postType, p
                 </div>
             </div>
             <InspectorControls>
-                <PanelBody
-                    title={__('General Settings', 'premium-blocks-for-gutenberg')}
-                    initialOpen={true}
-                >
-                    <CustomSelectControl
-                        label={__('Breadcrumbs Styles', 'premium-blocks-for-gutenberg')}
-                        options={StylesSelectOptions}
-                        onChange={({ selectedItem }) => setAttributes({ breadcrumbsStyle: selectedItem.key })}
-                        value={StylesSelectOptions.find((option) => option.key === attributes.breadcrumbsStyle)}
-                    />
-                    <TextControl
-                        label={__('Breadcrumbs Prefix Text', 'premium-blocks-for-gutenberg')}
-                        value={attributes.prefix}
-                        onChange={(val) => setAttributes({ prefix: val })}
-                    />
-                    <TextControl
-                        label={__('Custom Levels Divider', 'premium-blocks-for-gutenberg')}
-                        value={attributes.divider}
-                        onChange={(val) => setAttributes({ divider: val })}
-                    />
-                    <CustomSelectControl
-                        label={__('Home Item', 'premium-blocks-for-gutenberg')}
-                        options={selectOptions}
-                        onChange={({ selectedItem }) => setAttributes({ homeItemType: selectedItem.key })}
-                        value={selectOptions.find((option) => option.key === attributes.homeItemType)}
-                    />
-                </PanelBody>
-                <PanelBody
-                    title={__('Colors', 'premium-blocks-for-gutenberg')}
-                    initialOpen={true}
-                >
-                    <TabPanel
-                        className="premium-color-tabpanel"
-                        activeClass="active-tab"
-                        tabs={[
-                            {
-                                name: "normal",
-                                title: "Normal",
-                                className: "premium-tab",
-                            },
-                            {
-                                name: "hover",
-                                title: "Hover",
-                                className: "premium-tab",
-                            },
-                        ]}
-                    >
-                        {(tab) => {
-                            if ("normal" === tab.name) {
-                                return (
-                                    <Fragment>
-                                        <AdvancedPopColorControl
-                                            label={__("Text Color", 'premium-blocks-for-gutenberg')}
-                                            colorValue={colors.text}
-                                            colorDefault={''}
-                                            onColorChange={newValue => setColor('text', newValue)}
-                                        />
-                                        <AdvancedPopColorControl
-                                            label={__(`Background Color`, 'premium-blocks-for-gutenberg')}
-                                            colorValue={colors.background}
-                                            onColorChange={newValue => setColor('background', newValue)}
-                                            colorDefault={''}
-                                        />
-                                        <AdvancedPopColorControl
-                                            label={__(`Links Color`, 'premium-blocks-for-gutenberg')}
-                                            colorValue={colors.link}
-                                            onColorChange={newValue => setColor('link', newValue)}
-                                            colorDefault={''}
-                                        />
-                                        {breadcrumbsStyle === 'advanced' && (
-                                            <>
+                <InspectorTabs tabs={['layout', 'style', 'advance']}>
+                    <InspectorTab key={'layout'}>
+                        <PanelBody
+                            title={__('General Settings', 'premium-blocks-for-gutenberg')}
+                            initialOpen={true}
+                        >
+                            <TextControl
+                                label={__('Breadcrumbs Prefix Text', 'premium-blocks-for-gutenberg')}
+                                value={attributes.prefix}
+                                onChange={(val) => setAttributes({ prefix: val })}
+                            />
+                            <TextControl
+                                label={__('Custom Levels Divider', 'premium-blocks-for-gutenberg')}
+                                value={attributes.divider}
+                                onChange={(val) => setAttributes({ divider: val })}
+                            />
+                            <RadioComponent
+                                choices={["icon", "text"]}
+                                value={homeItemType}
+                                onChange={newValue => setAttributes({ homeItemType: newValue })}
+                                label={__("Home Item", 'premium-blocks-for-gutenberg')}
+                            />
+                        </PanelBody>
+                    </InspectorTab>
+                    <InspectorTab key={'style'}>
+                        <PanelBody
+                            title={__('General Styles', 'premium-blocks-for-gutenberg')}
+                            initialOpen={true}
+                        >
+                            <RadioComponent
+                                choices={["normal", "advanced"]}
+                                value={breadcrumbsStyle}
+                                onChange={newValue => setAttributes({ breadcrumbsStyle: newValue })}
+                                label={__("Breadcrumbs Style", 'premium-blocks-for-gutenberg')}
+                            />
+                        </PanelBody>
+                        <PanelBody
+                            title={__('Colors', 'premium-blocks-for-gutenberg')}
+                            initialOpen={true}
+                        >
+                            <TabPanel
+                                className="premium-color-tabpanel"
+                                activeClass="active-tab"
+                                tabs={[
+                                    {
+                                        name: "normal",
+                                        title: "Normal",
+                                        className: "premium-tab",
+                                    },
+                                    {
+                                        name: "hover",
+                                        title: "Hover",
+                                        className: "premium-tab",
+                                    },
+                                ]}
+                            >
+                                {(tab) => {
+                                    if ("normal" === tab.name) {
+                                        return (
+                                            <Fragment>
                                                 <AdvancedPopColorControl
-                                                    label={__(`Separator Color`, 'premium-blocks-for-gutenberg')}
-                                                    colorValue={colors.separator}
-                                                    onColorChange={newValue => setColor('separator', newValue)}
+                                                    label={__("Text Color", 'premium-blocks-for-gutenberg')}
+                                                    colorValue={colors.text}
+                                                    colorDefault={''}
+                                                    onColorChange={newValue => setColor('text', newValue)}
+                                                />
+                                                <AdvancedPopColorControl
+                                                    label={__(`Background Color`, 'premium-blocks-for-gutenberg')}
+                                                    colorValue={colors.background}
+                                                    onColorChange={newValue => setColor('background', newValue)}
                                                     colorDefault={''}
                                                 />
                                                 <AdvancedPopColorControl
-                                                    label={__(`Item Background Color`, 'premium-blocks-for-gutenberg')}
-                                                    colorValue={colors.item}
-                                                    onColorChange={newValue => setColor('item', newValue)}
+                                                    label={__(`Links Color`, 'premium-blocks-for-gutenberg')}
+                                                    colorValue={colors.link}
+                                                    onColorChange={newValue => setColor('link', newValue)}
                                                     colorDefault={''}
                                                 />
-                                            </>
-                                        )}
-                                    </Fragment>
-                                );
-                            }
-                            if ("hover" === tab.name) {
-                                return (
-                                    <Fragment>
-                                        <AdvancedPopColorControl
-                                            label={__(`Links Hover Color`, 'premium-blocks-for-gutenberg')}
-                                            colorValue={colors.linkHover}
-                                            onColorChange={newValue => setColor('linkHover', newValue)}
-                                            colorDefault={''}
-                                        />
-                                    </Fragment>
-                                );
-                            }
-                        }}
-                    </TabPanel>
-                </PanelBody>
-                <PanelBody
-                    title={__('Spacing', 'premium-blocks-for-gutenberg')}
-                    initialOpen={false}
-                >
-                    <SpacingComponent value={margin} responsive={true} showUnits={true} label={__('Margin')} onChange={(value) => onChangeSpacing({ margin: value })} />
-                    <SpacingComponent value={padding} responsive={true} showUnits={true} label={__('Padding')} onChange={(value) => onChangeSpacing({ padding: value })} />
-                    {breadcrumbsStyle === 'advanced' && (
-                        <SpacingComponent value={itemPadding} responsive={true} showUnits={true} label={__('Item Padding')} onChange={(value) => onChangeSpacing({ itemPadding: value })} />
-                    )}
-                </PanelBody>
-                <PanelBody
-                    title={__("Typography", 'premium-blocks-for-gutenberg')}
-                    className="premium-panel-body"
-                    initialOpen={false}
-                >
-                    <PremiumTypo
-                        components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
-                        setAttributes={value => onChangeFontSize(value.SizeUnit, 'unit')}
-                        fontSizeType={{
-                            value: fontSize.unit,
-                            label: __("SizeUnit", 'premium-blocks-for-gutenberg'),
-                        }}
-                        fontSize={fontSize.desktop}
-                        fontSizeMobile={fontSize.mobile}
-                        fontSizeTablet={fontSize.tablet}
-                        onChangeSize={newSize => onChangeFontSize(newSize, 'desktop')}
-                        onChangeTabletSize={newSize => onChangeFontSize(newSize, 'tablet')}
-                        onChangeMobileSize={newSize => onChangeFontSize(newSize, 'mobile')}
-                        fontFamily={typography.family}
-                        weight={typography.weight}
-                        onChangeWeight={newWeight =>
-                            onChangeFont(newWeight, 'weight')
-                        }
-                        onChangeFamily={(fontFamily) => onChangeFont(fontFamily, 'family')}
-                        line={typography.lineHeight}
-                        onChangeLine={(lineHeight) => onChangeFont(lineHeight, 'lineHeight')}
-                        style={typography.style}
-                        onChangeStyle={(newStyle) => onChangeFont(newStyle, 'style')}
-                        spacing={typography.letterSpacing}
-                        onChangeSpacing={(letterSpacing) => onChangeFont(letterSpacing, 'letterSpacing')}
-                        textTransform={typography.textTransform}
-                        onChangeTextTransform={(textTransform) => onChangeFont(textTransform, 'textTransform')}
-                        textDecoration={typography.textDecoration}
-                        onChangeTextDecoration={(textDecoration) => onChangeFont(textDecoration, 'textDecoration')}
-                    />
-                </PanelBody>
+                                                {breadcrumbsStyle === 'advanced' && (
+                                                    <>
+                                                        <AdvancedPopColorControl
+                                                            label={__(`Separator Color`, 'premium-blocks-for-gutenberg')}
+                                                            colorValue={colors.separator}
+                                                            onColorChange={newValue => setColor('separator', newValue)}
+                                                            colorDefault={''}
+                                                        />
+                                                        <AdvancedPopColorControl
+                                                            label={__(`Item Background Color`, 'premium-blocks-for-gutenberg')}
+                                                            colorValue={colors.item}
+                                                            onColorChange={newValue => setColor('item', newValue)}
+                                                            colorDefault={''}
+                                                        />
+                                                    </>
+                                                )}
+                                            </Fragment>
+                                        );
+                                    }
+                                    if ("hover" === tab.name) {
+                                        return (
+                                            <Fragment>
+                                                <AdvancedPopColorControl
+                                                    label={__(`Links Hover Color`, 'premium-blocks-for-gutenberg')}
+                                                    colorValue={colors.linkHover}
+                                                    onColorChange={newValue => setColor('linkHover', newValue)}
+                                                    colorDefault={''}
+                                                />
+                                            </Fragment>
+                                        );
+                                    }
+                                }}
+                            </TabPanel>
+                        </PanelBody>
+                        <PanelBody
+                            title={__('Spacing', 'premium-blocks-for-gutenberg')}
+                            initialOpen={false}
+                        >
+                            <SpacingComponent value={margin} responsive={true} showUnits={true} label={__('Margin')} onChange={(value) => onChangeSpacing({ margin: value })} />
+                            <SpacingComponent value={padding} responsive={true} showUnits={true} label={__('Padding')} onChange={(value) => onChangeSpacing({ padding: value })} />
+                            {breadcrumbsStyle === 'advanced' && (
+                                <SpacingComponent value={itemPadding} responsive={true} showUnits={true} label={__('Item Padding')} onChange={(value) => onChangeSpacing({ itemPadding: value })} />
+                            )}
+                        </PanelBody>
+                        <PanelBody
+                            title={__("Typography", 'premium-blocks-for-gutenberg')}
+                            className="premium-panel-body"
+                            initialOpen={false}
+                        >
+                            <PremiumTypo
+                                components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
+                                value={typography}
+                                onChange={newValue => setAttributes({ typography: newValue })}
+                            />
+                        </PanelBody>
+                    </InspectorTab>
+                    <InspectorTab key={'advance'} />
+                </InspectorTabs>
             </InspectorControls>
         </>
     )
 }
+
+export default withSelect((select, props) => {
+    const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
+    let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return {
+        deviceType: deviceType
+    }
+})(Edit)
 
 export function usePostTerms({ postId, postType, term }) {
     const { rest_base: restBase, slug } = term;

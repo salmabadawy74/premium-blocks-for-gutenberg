@@ -9,22 +9,22 @@ class PremiumMargin extends Component {
         super(props);
         this.state = {
             isLinked: false,
-            top: this.props.marginTop || 0,
-            right: this.props.marginRight || 0,
-            bottom: this.props.marginBottom || 0,
-            left: this.props.marginLeft || 0,
+            top: this.props.marginTop || '',
+            right: this.props.marginRight || '',
+            bottom: this.props.marginBottom || '',
+            left: this.props.marginLeft || '',
             directions: this.props.directions,
             showUnits: this.props.showUnits || false,
-            unit: this.props.unit || 'px',
-            label: this.props.label
+
         };
         this.defaultValue = {
             isLinked: false,
-            top: 0,
-            right: 0,
-            bottom: 0,
-            left: 0,
+            top: '',
+            right: '',
+            bottom: '',
+            left: '',
             directions: this.props.directions,
+            showUnits: this.props.showUnits || false
         }
         this.onInputChange = this.onInputChange.bind(this);
         this.onButtonClick = this.onButtonClick.bind(this);
@@ -83,9 +83,9 @@ class PremiumMargin extends Component {
 
         return (
             <div className={`premium-spacing-responsive`}>
-                {label && <header className="premium-control-label-container">
+                {this.props.label && <header className="premium-control-label-container">
                     <div className={`premium-slider-title-wrap`}>
-                        {__("Margin")}
+                        {__("Margin", 'premium-blocks-for-gutenberg')}
                     </div>
                     {showUnits && (
                         <PremiumSizeUnits
@@ -104,7 +104,7 @@ class PremiumMargin extends Component {
                                     <input
                                         type="number"
                                         name="top"
-                                        value={top || 0}
+                                        value={top}
                                         onChange={this.onInputChange}
                                         className={`premium-spacing-input`}
                                     />
@@ -116,7 +116,7 @@ class PremiumMargin extends Component {
                                     <input
                                         type="number"
                                         name="right"
-                                        value={right || 0}
+                                        value={right}
                                         onChange={this.onInputChange}
                                         className={`premium-spacing-input`}
                                     />
@@ -128,7 +128,7 @@ class PremiumMargin extends Component {
                                     <input
                                         type="number"
                                         name="bottom"
-                                        value={bottom || 0}
+                                        value={bottom}
                                         onChange={this.onInputChange}
                                         className={`premium-spacing-input`}
                                     />
@@ -140,7 +140,7 @@ class PremiumMargin extends Component {
                                     <input
                                         type="number"
                                         name="left"
-                                        value={left || 0}
+                                        value={left}
                                         onChange={this.onInputChange}
                                         className={`premium-spacing-input`}
                                     />
@@ -162,7 +162,7 @@ class PremiumMargin extends Component {
                         <button
                             className="premium-reset-btn "
                             disabled={
-                                JSON.stringify(this.state) ===
+                                JSON.stringify(this.state) ==
                                 JSON.stringify(this.defaultValue)
                             }
                             onClick={(e) => {
