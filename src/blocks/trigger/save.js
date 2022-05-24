@@ -5,6 +5,7 @@
      InnerBlocks,
      useBlockProps
  } from '@wordpress/block-editor';
+ import classnames from "classnames";
  export default function Save({attributes}) {
     const { block_id, 
         iconSize,
@@ -16,11 +17,16 @@
         displayFloat,
         floatPosition,
         vOffset,
-        hOffset
+        hOffset,
+        hideDesktop,
+        hideTablet,
+        hideMobile
      } = attributes;
     const blockProps = useBlockProps.save({
          id: `premium-trigger-${block_id}`,
-         className: ``,
+         className: classnames(
+            `${hideDesktop} ${hideTablet} ${hideMobile} ${attributes.displayFloat ? `float-position-${floatPosition}` : ""}`
+         )
      });
 
      return (
@@ -40,16 +46,21 @@
                 background-color: ${triggerStyles.iconBgColor} ;
             }
             #premium-trigger-${block_id} .toggle-button[data-style="outline"] {
-    
+                border-style: ${triggerBorder.borderType};
+                border-color: ${triggerBorder.borderColor};
             }
             #premium-trigger-${block_id} .toggle-button[data-style="outline"]:hover {
                 border-color: ${triggerStyles.borderHoverColor} !important;
+            }
+            #premium-trigger-${block_id} .gpb-trigger-canvas-container[data-layout="right"] .gpb-popup-content,
+            #premium-trigger-${block_id} .gpb-trigger-canvas-container[data-layout="left"] .gpb-popup-content {
+                width: ${canvasStyles.width}px;
             }
         `}
         </style>  
                         <div className={`premium-trigger-container`}>
                         <div className={`gpb-trigger-icon-container has-icon-align-${ iconAlignment }`} data-label={triggerStyles.labelPosition}>
-                            <a className={`toggle-button ${displayFloat ? `float-position-${floatPosition}` : ""}`} 
+                            <a className={`toggle-button`} 
                                 data-style={triggerStyles.style} 
                                 data-label={triggerStyles.labelPosition}
                                 onClick={ () => setEditing( true ) }
@@ -65,17 +76,11 @@
                             </a>
                         </div>
                             
-                    <div className="gpb-trigger-canvas-container" data-layout={canvasStyles.layout} 
-                    style={ {
-                        //display: "none",
-                        width: canvasStyles.width + 'px',
-                        
-                    }}    
-                    >
+                    <div className="gpb-trigger-canvas-container" data-layout={canvasStyles.layout}>
                         <div role="presentation" className="gpb-popup-overlay" style={{backgroundColor: `${canvasStyles.overlayBgColor}`,}}></div>
                         <div className="gpb-popup-content gpb-desktop-popup-content"
                         style={{
-                            backgroundColor: `${canvasStyles.canvasBgColor}`,
+                            backgroundColor: `${canvasStyles.canvasBgColor}`
                         }}>
                             <div className="gpb-popup-header">
 

@@ -20,6 +20,7 @@ import ResponsiveSingleRangeControl from "../../components/RangeControl/single-r
 import SpacingControl from '../../components/premium-responsive-spacing'
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
+import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
  * Those files can contain any CSS code that gets applied to the editor.
@@ -57,14 +58,16 @@ const { triggerLabel,
     triggerSpacing, 
     triggerBorder,
     vOffset,
-    hOffset
+    hOffset,
+    hideDesktop,
+    hideTablet,
+    hideMobile
     } = attributes;
 
 const onChangeText = ( newText ) => {
     setAttributes( { triggerLabel: newText } );
 };
-// const triggerVOffset = getPreviewSize(props.deviceType, triggerStyles.vOffset, triggerStyles.vOffsetTablet, triggerStyles.vOffsetMobile);
-// const triggerHOffset = getPreviewSize(props.deviceType, triggerStyles.hOffset, triggerStyles.hOffsetTablet, triggerStyles.hOffsetMobile);
+
 const triggerSpacingTop = getPreviewSize(props.deviceType, triggerSpacing.Desktop.top, triggerSpacing.Tablet.top, triggerSpacing.Mobile.top);
 const triggerSpacingRight = getPreviewSize(props.deviceType, triggerSpacing.Desktop.right, triggerSpacing.Tablet.right, triggerSpacing.Mobile.right);
 const triggerSpacingBottom = getPreviewSize(props.deviceType, triggerSpacing.Desktop.bottom, triggerSpacing.Tablet.bottom, triggerSpacing.Mobile.bottom);
@@ -123,10 +126,8 @@ function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
                                 choices={["right", "left"]}
                                 value={triggerStyles.labelPosition}
                                 onChange={newValue => setTriggerStyles('labelPosition', newValue )}
-                                label={__("Label Position", 'premium-blocks-for-gutenberg')}
+                                label={__("Label Alignment", 'premium-blocks-for-gutenberg')}
                             />
-                            
-                            
                             <RadioComponent
                                 choices={["simple", "outline", "solid"]}
                                 value={triggerStyles.style}
@@ -163,7 +164,7 @@ function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
                                     max={200}
                                     step={1}
                                     showUnit={true}
-                                    units={['px']}
+                                    units={['px', '%']}
                                     defaultValue={20}
                                 />
                                 <ResponsiveRangeControl
@@ -174,7 +175,7 @@ function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
                                     max={200}
                                     step={1}
                                     showUnit={true}
-                                    units={['px']}
+                                    units={['px', '%']}
                                     defaultValue={20}
                                 />
                                 </fragment>
@@ -343,7 +344,16 @@ function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
                         />
                     </PanelBody>
                 </InspectorTab>
-                    <InspectorTab key={'advance'}></InspectorTab>
+                    <InspectorTab key={'advance'}>
+                        <PremiumResponsiveTabs
+                        Desktop={hideDesktop}
+                        Tablet={hideTablet}
+                        Mobile={hideMobile}
+                        onChangeDesktop={(value) => setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" })}
+                        onChangeTablet={(value) => setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" })}
+                        onChangeMobile={(value) => setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" })}
+                        />
+                    </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>  
 
@@ -363,7 +373,12 @@ function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
             }
             #block-${block_id} .toggle-button[data-style="outline"] {
                 border-style: ${triggerBorder.borderType};
-                border-top-width: ${triggerBorder.borderWidth} + px;
+                border-top-width: ${triggerBorder && triggerBorder.borderWidth.Desktop.top}px;
+                border-right-width: ${triggerBorder && triggerBorder.borderWidth.Desktop.right}px;
+                border-bottom-width: ${triggerBorder && triggerBorder.borderWidth.Desktop.bottom}px;
+                border-left-width: ${triggerBorder && triggerBorder.borderWidth.Desktop.left}px;
+                border-radius: ${triggerBorder && triggerBorder.borderRadius.Desktop.top || 0}px ${triggerBorder && triggerBorder.borderRadius.Desktop.right || 0}px ${triggerBorder && triggerBorder.borderRadius.Desktop.bottom || 0}px ${triggerBorder && triggerBorder.borderRadius.Desktop.left || 0}px !important;
+                border-color: ${triggerBorder && triggerBorder.borderColor};
             }
             #block-${block_id} .toggle-button[data-style="outline"]:hover {
                 border-color: ${triggerStyles.borderHoverColor} !important;
@@ -376,6 +391,10 @@ function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
             .is-sidebar-opened #block-${block_id}.float-position-bottomright {
                 margin-right: 282px !important;
             }
+            .is-sidebar-opened #block-${block_id}.float-position-bottomright,
+            .is-sidebar-opened #block-${block_id}.float-position-bottomright {
+                margin-top: 40px !important;
+            }
              #block-${block_id}.float-position-topleft {
                  top: ${(vOffset[props.deviceType] || 20) + vOffset.unit};
                  left: ${(hOffset[props.deviceType] || 20) + hOffset.unit};
@@ -384,17 +403,21 @@ function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
                 bottom: ${(vOffset[props.deviceType] || 20) + vOffset.unit};
                 right: ${(hOffset[props.deviceType] || 20) + hOffset.unit};
             }
-            #block-${block_id} .float-position-bottomleft {
+            #block-${block_id}.float-position-bottomleft {
                 bottom: ${(vOffset[props.deviceType] || 20) + vOffset.unit};
                 left: ${(hOffset[props.deviceType] || 20) + hOffset.unit};
+            }
+            #block-${block_id} .gpb-trigger-canvas-container[data-layout="right"] .gpb-popup-content,
+            #block-${block_id} .gpb-trigger-canvas-container[data-layout="left"] .gpb-popup-content {
+                width: ${canvasStyles.width}px;
             }
         `}
         </style>  
                
             <div { ...useBlockProps({
                 className: classnames(
-                    className,
-                    `${isEditing ? "active" : ""} ${attributes.displayFloat ? `float-position-${floatPosition}` : ""}`
+                        className,
+                        `${isEditing ? "active" : ""} ${hideDesktop} ${hideTablet} ${hideMobile} ${attributes.displayFloat ? `float-position-${floatPosition}` : ""}`
                 ),
             }) }>
             <div className={`premium-trigger-container`}>
@@ -432,7 +455,7 @@ function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
                             paddingLeft: triggerSpacingLeft && `${triggerSpacingLeft}${triggerSpacing.unit ? triggerSpacing.unit : 'px'}`,
                             paddingRight: triggerSpacingRight && `${triggerSpacingRight}${triggerSpacing.unit ? triggerSpacing.unit : 'px'}`,
                             backgroundColor: `${canvasStyles.canvasBgColor}`,
-                            width: `${canvasStyles.width}px`,
+                            
                         }}
                         >
                         <div className="gpb-popup-header">

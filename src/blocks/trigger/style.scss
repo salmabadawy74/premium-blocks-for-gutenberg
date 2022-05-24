@@ -27,6 +27,7 @@
 	}
 }
  .wp-block-premium-trigger {
+	 z-index: 999;
 	.has-icon-align-center {
 		text-align: center;
 	}
@@ -203,23 +204,23 @@
  }
  .float-position-topright  {
 	position: fixed !important;
-	top: 10px;
-	right: 10px
+	top: 20px;
+	right: 20px
 }
 .float-position-topleft {
 	position: fixed !important;
-	top: 10px;
-	left: 10px
+	top: 20px;
+	left: 20px
 }
 .float-position-bottomright {
 	position: fixed !important;
-	bottom: 10px;
-	right: 10px
+	bottom: 20px;
+	right: 20px
 }
 .float-position-bottomleft {
 	position: fixed !important;
-	bottom: 10px;
-	left: 10px
+	bottom: 20px;
+	left: 20px
 }
 
 @media (max-width: 767px) {
