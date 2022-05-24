@@ -6062,7 +6062,6 @@ input[type="number"] {
 .premium-field-tabs {
     margin-left: -16px;
     margin-right: -16px;
-    background: #f7f8fc;
 }
 .premium-field-tabs:last-child {
     margin-bottom: -16px !important;
@@ -6102,14 +6101,20 @@ input[type="number"] {
     display: flex;
 }
 .premium-field-tabs:not(.panel-group) .premium-field-tab-menus button {
-    flex-grow: 1;
-    justify-content: center;
-    padding: 7px 15px;
-    box-shadow: none;
-    border: none;
-    transition: 400ms;
-    border: 1px solid #e9e9e9;
+    display: block;
+    text-align: center;
+    border: 1px solid #f0f0f0;
+    box-sizing: border-box;
+    align-items: center;
+    border-radius: 2px;
+    width: 50%;
+    height: 40px !important;
+    margin: 10px 1px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: none !important;
     cursor: pointer;
+    background-color: #fff;
 }
 .premium-field-tabs:not(.panel-group)
     .premium-field-tab-menus
@@ -6117,16 +6122,11 @@ input[type="number"] {
     border-right: none;
 }
 .premium-field-tabs:not(.panel-group) .premium-field-tab-menus button.active {
-    background: #d2e7ff;
-    color: #2184f9;
-    border-color: #a9d0ff;
+    border: none;
+    color: #000;
+    background-color: #f0f0f0;
 }
-.premium-field-tabs:not(.panel-group)
-    .premium-field-tab-menus
-    button.active
-    + button {
-    border-left-color: #a9d0ff;
-}
+
 .premium-field-tabs:not(.panel-group) .premium-field-tab-items {
     padding: 15px;
 }
@@ -6136,68 +6136,4 @@ input[type="number"] {
     padding: 12px;
     border-radius: 5px;
     background-color: #fff;
-}
-/*********************  Shape Control  *************************/
-/**************************************************************/
-.premium-shape-picker-wrapper {
-    display: flex;
-}
-.premium-shape-picker-wrapper .premium-shape-picker {
-    width: 100%;
-}
-.premium-shape-picker-wrapper .has-value {
-    width: 90%;
-}
-.premium-shape-picker-options {
-    width: 230px;
-}
-.premium-shape-picker-options .premium-shape-picker-option {
-    padding: 10px 10px 10px 10px;
-}
-.premium-shape-picker-options .premium-shape-picker-option:hover {
-    background-color: #e8eaeb;
-    border-radius: 4px;
-}
-.premium-field-shape-placeholder {
-    -webkit-box-align: center;
-    align-items: center;
-    background-color: #fff;
-    cursor: default;
-    display: flex;
-    flex-wrap: wrap;
-    -webkit-box-pack: justify;
-    justify-content: space-between;
-    position: relative;
-    box-sizing: border-box;
-    border-color: #ccc;
-    border-radius: 4px;
-    border-style: solid;
-    border-width: 1px;
-    transition: all 100ms ease 0s;
-    outline: 0px !important;
-    line-height: 28px;
-    height: 30px;
-    vertical-align: middle;
-    padding-left: 10px;
-}
-.premium-field-shape-placeholder .premium-icon {
-    display: flex;
-    padding-right: 5px;
-}
-.premium-field-shape-value:hover {
-    cursor: pointer;
-}
-.shape-divider-options button {
-    display: block;
-    width: 100%;
-    margin: 0px;
-    padding: 0px;
-    color: inherit;
-    background: none;
-    box-shadow: none;
-    border: none;
-    outline: none;
-}
-.shape-divider-options button:focus {
-    outline: none !important;
 }
