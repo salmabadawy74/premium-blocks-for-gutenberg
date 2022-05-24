@@ -206,11 +206,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _get = __webpack_require__(85);
+var _get = __webpack_require__(86);
 
 var _get2 = _interopRequireDefault(_get);
 
-var _map = __webpack_require__(94);
+var _map = __webpack_require__(95);
 
 var _map2 = _interopRequireDefault(_map);
 
@@ -468,7 +468,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = undefined;
 
-var _premiumSizeUnits = __webpack_require__(21);
+var _premiumSizeUnits = __webpack_require__(22);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
@@ -1823,7 +1823,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 exports.default = ResponsiveRangeControl;
 
-var _premiumSizeUnits = __webpack_require__(21);
+var _premiumSizeUnits = __webpack_require__(22);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
@@ -2039,7 +2039,7 @@ module.exports = isArray;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var freeGlobal = __webpack_require__(88);
+var freeGlobal = __webpack_require__(89);
 
 /** Detect free variable `self`. */
 var freeSelf = (typeof self === 'undefined' ? 'undefined' : _typeof(self)) == 'object' && self && self.Object === Object && self;
@@ -2066,7 +2066,7 @@ var _premiumPadding = __webpack_require__(221);
 
 var _premiumPadding2 = _interopRequireDefault(_premiumPadding);
 
-var _premiumSizeUnits = __webpack_require__(21);
+var _premiumSizeUnits = __webpack_require__(22);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
@@ -2333,194 +2333,16 @@ if (process.env.NODE_ENV !== 'production') {
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(252)(ReactIs.isElement, throwOnDirectAccess);
+  module.exports = __webpack_require__(253)(ReactIs.isElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(255)();
+  module.exports = __webpack_require__(256)();
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
 /***/ }),
 /* 20 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-var global = module.exports = typeof window != 'undefined' && window.Math == Math ? window : typeof self != 'undefined' && self.Math == Math ? self
-// eslint-disable-next-line no-new-func
-: Function('return this')();
-if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
-
-/***/ }),
-/* 21 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.default = PremiumSizeUnits;
-function PremiumSizeUnits(props) {
-    var activeUnit = props.activeUnit,
-        units = props.units,
-        _props$onChangeSizeUn = props.onChangeSizeUnit,
-        onChangeSizeUnit = _props$onChangeSizeUn === undefined ? function (unit) {} : _props$onChangeSizeUn;
-
-    var sizeUnits = ["px", "em", "%"];
-    if (undefined !== units) {
-        sizeUnits = units;
-    }
-    return React.createElement(
-        "ul",
-        { className: "premium-slider-units" },
-        sizeUnits.map(function (unit, index) {
-            return React.createElement(
-                "li",
-                {
-                    className: "single-unit " + (unit === activeUnit && "active"),
-                    onClick: function onClick() {
-                        return onChangeSizeUnit(unit);
-                    }
-                },
-                React.createElement(
-                    "span",
-                    { className: "unit-text" },
-                    " ",
-                    unit
-                )
-            );
-        })
-    );
-}
-
-/***/ }),
-/* 22 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _webfontloader = __webpack_require__(104);
-
-var _webfontloader2 = _interopRequireDefault(_webfontloader);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-if (googlefonts === undefined) {
-    var googlefonts = [];
-}
-var Component = wp.element.Component;
-
-var statuses = {
-    inactive: "inactive",
-    active: "active",
-    loading: "loading"
-};
-
-var noop = function noop() {};
-
-var WebfontLoader = function (_Component) {
-    _inherits(WebfontLoader, _Component);
-
-    function WebfontLoader(props) {
-        _classCallCheck(this, WebfontLoader);
-
-        var _this = _possibleConstructorReturn(this, (WebfontLoader.__proto__ || Object.getPrototypeOf(WebfontLoader)).call(this, props));
-
-        _this.state = {
-            status: undefined
-        };
-
-        _this.handleLoading = function () {
-            _this.setState({ status: statuses.loading });
-        };
-
-        _this.addFont = function (font) {
-            if (!googlefonts.includes(font)) {
-                googlefonts.push(font);
-            }
-        };
-
-        _this.handleActive = function () {
-            _this.setState({ status: statuses.active });
-        };
-
-        _this.handleInactive = function () {
-            _this.setState({ status: statuses.inactive });
-        };
-
-        _this.loadFonts = function () {
-            if (!googlefonts.includes(_this.props.config.google.families[0])) {
-                _webfontloader2.default.load(_extends({}, _this.props.config, {
-                    loading: _this.handleLoading,
-                    active: _this.handleActive,
-                    inactive: _this.handleInactive
-                }));
-                _this.addFont(_this.props.config.google.families[0]);
-            }
-        };
-        return _this;
-    }
-
-    _createClass(WebfontLoader, [{
-        key: "componentDidMount",
-        value: function componentDidMount() {
-            this.loadFonts();
-        }
-    }, {
-        key: "componentDidUpdate",
-        value: function componentDidUpdate(prevProps, prevState) {
-            var _props = this.props,
-                onStatus = _props.onStatus,
-                config = _props.config;
-
-
-            if (prevState.status !== this.state.status) {
-                onStatus(this.state.status);
-            }
-            if (prevProps.config !== config) {
-                this.loadFonts();
-            }
-        }
-    }, {
-        key: "render",
-        value: function render() {
-            var children = this.props.children;
-
-            return children || null;
-        }
-    }]);
-
-    return WebfontLoader;
-}(Component);
-
-WebfontLoader.defaultProps = {
-    onStatus: noop
-};
-
-exports.default = WebfontLoader;
-
-/***/ }),
-/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2540,11 +2362,11 @@ var _react = __webpack_require__(9);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _premiumBackground = __webpack_require__(105);
+var _premiumBackground = __webpack_require__(241);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
-var _map = __webpack_require__(94);
+var _map = __webpack_require__(95);
 
 var _map2 = _interopRequireDefault(_map);
 
@@ -2787,6 +2609,184 @@ function PremiumBackgroundControl(_ref) {
 }
 
 /***/ }),
+/* 21 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
+var global = module.exports = typeof window != 'undefined' && window.Math == Math ? window : typeof self != 'undefined' && self.Math == Math ? self
+// eslint-disable-next-line no-new-func
+: Function('return this')();
+if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
+
+/***/ }),
+/* 22 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = PremiumSizeUnits;
+function PremiumSizeUnits(props) {
+    var activeUnit = props.activeUnit,
+        units = props.units,
+        _props$onChangeSizeUn = props.onChangeSizeUnit,
+        onChangeSizeUnit = _props$onChangeSizeUn === undefined ? function (unit) {} : _props$onChangeSizeUn;
+
+    var sizeUnits = ["px", "em", "%"];
+    if (undefined !== units) {
+        sizeUnits = units;
+    }
+    return React.createElement(
+        "ul",
+        { className: "premium-slider-units" },
+        sizeUnits.map(function (unit, index) {
+            return React.createElement(
+                "li",
+                {
+                    className: "single-unit " + (unit === activeUnit && "active"),
+                    onClick: function onClick() {
+                        return onChangeSizeUnit(unit);
+                    }
+                },
+                React.createElement(
+                    "span",
+                    { className: "unit-text" },
+                    " ",
+                    unit
+                )
+            );
+        })
+    );
+}
+
+/***/ }),
+/* 23 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _webfontloader = __webpack_require__(105);
+
+var _webfontloader2 = _interopRequireDefault(_webfontloader);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+if (googlefonts === undefined) {
+    var googlefonts = [];
+}
+var Component = wp.element.Component;
+
+var statuses = {
+    inactive: "inactive",
+    active: "active",
+    loading: "loading"
+};
+
+var noop = function noop() {};
+
+var WebfontLoader = function (_Component) {
+    _inherits(WebfontLoader, _Component);
+
+    function WebfontLoader(props) {
+        _classCallCheck(this, WebfontLoader);
+
+        var _this = _possibleConstructorReturn(this, (WebfontLoader.__proto__ || Object.getPrototypeOf(WebfontLoader)).call(this, props));
+
+        _this.state = {
+            status: undefined
+        };
+
+        _this.handleLoading = function () {
+            _this.setState({ status: statuses.loading });
+        };
+
+        _this.addFont = function (font) {
+            if (!googlefonts.includes(font)) {
+                googlefonts.push(font);
+            }
+        };
+
+        _this.handleActive = function () {
+            _this.setState({ status: statuses.active });
+        };
+
+        _this.handleInactive = function () {
+            _this.setState({ status: statuses.inactive });
+        };
+
+        _this.loadFonts = function () {
+            if (!googlefonts.includes(_this.props.config.google.families[0])) {
+                _webfontloader2.default.load(_extends({}, _this.props.config, {
+                    loading: _this.handleLoading,
+                    active: _this.handleActive,
+                    inactive: _this.handleInactive
+                }));
+                _this.addFont(_this.props.config.google.families[0]);
+            }
+        };
+        return _this;
+    }
+
+    _createClass(WebfontLoader, [{
+        key: "componentDidMount",
+        value: function componentDidMount() {
+            this.loadFonts();
+        }
+    }, {
+        key: "componentDidUpdate",
+        value: function componentDidUpdate(prevProps, prevState) {
+            var _props = this.props,
+                onStatus = _props.onStatus,
+                config = _props.config;
+
+
+            if (prevState.status !== this.state.status) {
+                onStatus(this.state.status);
+            }
+            if (prevProps.config !== config) {
+                this.loadFonts();
+            }
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var children = this.props.children;
+
+            return children || null;
+        }
+    }]);
+
+    return WebfontLoader;
+}(Component);
+
+WebfontLoader.defaultProps = {
+    onStatus: noop
+};
+
+exports.default = WebfontLoader;
+
+/***/ }),
 /* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2813,7 +2813,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
  * 
  */
 !function (e, t) {
-  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(19), __webpack_require__(9), __webpack_require__(40), __webpack_require__(41), __webpack_require__(107)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(19), __webpack_require__(9), __webpack_require__(40), __webpack_require__(41), __webpack_require__(107)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
+  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(19), __webpack_require__(9), __webpack_require__(40), __webpack_require__(41), __webpack_require__(108)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(19), __webpack_require__(9), __webpack_require__(40), __webpack_require__(41), __webpack_require__(108)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) ? exports.FontIconPicker = t(require("prop-types"), require("react"), require("classnames"), require("react-dom"), require("react-transition-group")) : e.FontIconPicker = t(e.PropTypes, e.React, e.classNames, e.ReactDOM, e.ReactTransitionGroup);
@@ -3364,7 +3364,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 "use strict";
 
 
-var global = __webpack_require__(20);
+var global = __webpack_require__(21);
 var core = __webpack_require__(13);
 var ctx = __webpack_require__(120);
 var hide = __webpack_require__(33);
@@ -3439,7 +3439,7 @@ module.exports = $export;
 
 var anObject = __webpack_require__(42);
 var IE8_DOM_DEFINE = __webpack_require__(121);
-var toPrimitive = __webpack_require__(72);
+var toPrimitive = __webpack_require__(73);
 var dP = Object.defineProperty;
 
 exports.f = __webpack_require__(27) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
@@ -3690,7 +3690,7 @@ exports.default = DefaultImage;
 
 
 var dP = __webpack_require__(26);
-var createDesc = __webpack_require__(54);
+var createDesc = __webpack_require__(55);
 module.exports = __webpack_require__(27) ? function (object, key, value) {
   return dP.f(object, key, createDesc(1, value));
 } : function (object, key, value) {
@@ -3735,7 +3735,7 @@ module.exports = function (exec) {
 
 // to indexed object, toObject with fallback for non-array-like ES3 strings
 var IObject = __webpack_require__(124);
-var defined = __webpack_require__(73);
+var defined = __webpack_require__(74);
 module.exports = function (it) {
   return IObject(defined(it));
 };
@@ -3747,9 +3747,9 @@ module.exports = function (it) {
 "use strict";
 
 
-var store = __webpack_require__(76)('wks');
-var uid = __webpack_require__(57);
-var _Symbol = __webpack_require__(20).Symbol;
+var store = __webpack_require__(77)('wks');
+var uid = __webpack_require__(58);
+var _Symbol = __webpack_require__(21).Symbol;
 var USE_SYMBOL = typeof _Symbol == 'function';
 
 var $exports = module.exports = function (name) {
@@ -3841,7 +3841,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 /*!
-  Copyright (c) 2017 Jed Watson.
+  Copyright (c) 2018 Jed Watson.
   Licensed under the MIT License (MIT), see
   http://jedwatson.github.io/classnames
 */
@@ -3863,16 +3863,22 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 			if (argType === 'string' || argType === 'number') {
 				classes.push(arg);
-			} else if (Array.isArray(arg) && arg.length) {
-				var inner = classNames.apply(null, arg);
-				if (inner) {
-					classes.push(inner);
+			} else if (Array.isArray(arg)) {
+				if (arg.length) {
+					var inner = classNames.apply(null, arg);
+					if (inner) {
+						classes.push(inner);
+					}
 				}
 			} else if (argType === 'object') {
-				for (var key in arg) {
-					if (hasOwn.call(arg, key) && arg[key]) {
-						classes.push(key);
+				if (arg.toString === Object.prototype.toString) {
+					for (var key in arg) {
+						if (hasOwn.call(arg, key) && arg[key]) {
+							classes.push(key);
+						}
 					}
+				} else {
+					classes.push(arg.toString());
 				}
 			}
 		}
@@ -3997,7 +4003,7 @@ module.exports = ListCache;
 "use strict";
 
 
-var eq = __webpack_require__(92);
+var eq = __webpack_require__(93);
 
 /**
  * Gets the index at which the `key` is found in `array` of key-value pairs.
@@ -4050,7 +4056,7 @@ module.exports = getMapData;
 "use strict";
 
 
-var isSymbol = __webpack_require__(60);
+var isSymbol = __webpack_require__(61);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0;
@@ -4117,7 +4123,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-var _premiumSizeUnits = __webpack_require__(21);
+var _premiumSizeUnits = __webpack_require__(22);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
@@ -4400,14 +4406,63 @@ exports.default = SpacingComponent;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+var gradientBackground = exports.gradientBackground = function gradientBackground(value) {
+    var backgroundType = value.backgroundType,
+        backgroundColor = value.backgroundColor,
+        backgroundRepeat = value.backgroundRepeat,
+        backgroundPosition = value.backgroundPosition,
+        fixed = value.fixed,
+        backgroundSize = value.backgroundSize,
+        gradientColorTwo = value.gradientColorTwo,
+        gradientPosition = value.gradientPosition,
+        gradientType = value.gradientType,
+        gradientLocationOne = value.gradientLocationOne,
+        gradientLocationTwo = value.gradientLocationTwo,
+        gradientAngle = value.gradientAngle,
+        backgroundImageURL = value.backgroundImageURL;
+
+    var btnGrad = void 0,
+        btnGrad2 = void 0,
+        btnbg = void 0;
+    if (undefined !== backgroundType && 'gradient' === backgroundType) {
+        btnGrad = 'transparent' === backgroundColor || undefined === backgroundColor ? 'rgba(255,255,255,0)' : backgroundColor;
+        btnGrad2 = undefined !== gradientColorTwo && undefined !== gradientColorTwo && '' !== gradientColorTwo ? gradientColorTwo : '#777';
+        if ('radial' === gradientType) {
+            btnbg = 'radial-gradient(at ' + gradientPosition + ', ' + btnGrad + ' ' + gradientLocationOne + '%, ' + btnGrad2 + ' ' + gradientLocationTwo + '%)';
+        } else if ('radial' !== gradientType) {
+            btnbg = 'linear-gradient(' + gradientAngle + 'deg, ' + btnGrad + ' ' + gradientLocationOne + '%, ' + btnGrad2 + ' ' + gradientLocationTwo + '%)';
+        }
+    } else {
+        btnbg = backgroundImageURL ? 'url(\'' + backgroundImageURL + '\')' : '';
+    }
+    return {
+        backgroundColor: backgroundType === "solid" ? backgroundColor : "transparent",
+        backgroundImage: btnbg,
+        backgroundRepeat: backgroundRepeat,
+        backgroundPosition: backgroundPosition,
+        backgroundSize: backgroundSize,
+        backgroundAttachment: fixed ? "fixed" : "unset"
+    };
+};
+
+/***/ }),
+/* 53 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-var _premiumMargin = __webpack_require__(279);
+var _premiumMargin = __webpack_require__(280);
 
 var _premiumMargin2 = _interopRequireDefault(_premiumMargin);
 
-var _premiumSizeUnits = __webpack_require__(21);
+var _premiumSizeUnits = __webpack_require__(22);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
@@ -4584,7 +4639,7 @@ function PremiumResponsiveMargin(props) {
 exports.default = PremiumResponsiveMargin;
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4600,15 +4655,15 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(288);
+var _edit = __webpack_require__(289);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(289);
+var _save = __webpack_require__(290);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(290);
+var _deprecated = __webpack_require__(291);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -4670,7 +4725,7 @@ registerBlockType("premium/video-box", {
 });
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4686,7 +4741,7 @@ module.exports = function (bitmap, value) {
 };
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4694,14 +4749,14 @@ module.exports = function (bitmap, value) {
 
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
 var $keys = __webpack_require__(123);
-var enumBugKeys = __webpack_require__(77);
+var enumBugKeys = __webpack_require__(78);
 
 module.exports = Object.keys || function keys(O) {
   return $keys(O, enumBugKeys);
 };
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4710,7 +4765,7 @@ module.exports = Object.keys || function keys(O) {
 module.exports = true;
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4723,7 +4778,7 @@ module.exports = function (key) {
 };
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4732,7 +4787,7 @@ module.exports = function (key) {
 exports.f = {}.propertyIsEnumerable;
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4741,7 +4796,7 @@ exports.f = {}.propertyIsEnumerable;
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var isArray = __webpack_require__(15),
-    isSymbol = __webpack_require__(60);
+    isSymbol = __webpack_require__(61);
 
 /** Used to match property names within property paths. */
 var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,
@@ -4769,7 +4824,7 @@ function isKey(value, object) {
 module.exports = isKey;
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4807,7 +4862,7 @@ function isSymbol(value) {
 module.exports = isSymbol;
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4847,7 +4902,7 @@ MapCache.prototype.set = mapCacheSet;
 module.exports = MapCache;
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4888,7 +4943,7 @@ function isObject(value) {
 module.exports = isObject;
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4903,7 +4958,7 @@ var Map = getNative(root, 'Map');
 module.exports = Map;
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4911,7 +4966,7 @@ module.exports = Map;
 
 var arrayLikeKeys = __webpack_require__(189),
     baseKeys = __webpack_require__(196),
-    isArrayLike = __webpack_require__(66);
+    isArrayLike = __webpack_require__(67);
 
 /**
  * Creates an array of the own enumerable property names of `object`.
@@ -4948,7 +5003,7 @@ function keys(object) {
 module.exports = keys;
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4990,14 +5045,14 @@ function isLength(value) {
 module.exports = isLength;
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var isFunction = __webpack_require__(90),
-    isLength = __webpack_require__(65);
+var isFunction = __webpack_require__(91),
+    isLength = __webpack_require__(66);
 
 /**
  * Checks if `value` is array-like. A value is considered array-like if it's
@@ -5031,7 +5086,7 @@ function isArrayLike(value) {
 module.exports = isArrayLike;
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5049,7 +5104,7 @@ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 module.exports = ReactPropTypesSecret;
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5117,7 +5172,7 @@ var PremiumLowerQuote = function (_Component) {
 exports.default = PremiumLowerQuote;
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5186,7 +5241,7 @@ var PremiumUpperQuote = function (_Component) {
 exports.default = PremiumUpperQuote;
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5197,35 +5252,35 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.arrayMove = exports.sortableHandle = exports.SortableHandle = exports.sortableElement = exports.SortableElement = exports.sortableContainer = exports.SortableContainer = undefined;
 
-var _extends2 = __webpack_require__(295);
+var _extends2 = __webpack_require__(296);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _slicedToArray2 = __webpack_require__(296);
+var _slicedToArray2 = __webpack_require__(297);
 
 var _slicedToArray3 = _interopRequireDefault(_slicedToArray2);
 
-var _objectSpread2 = __webpack_require__(300);
+var _objectSpread2 = __webpack_require__(301);
 
 var _objectSpread3 = _interopRequireDefault(_objectSpread2);
 
-var _classCallCheck2 = __webpack_require__(301);
+var _classCallCheck2 = __webpack_require__(302);
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
-var _createClass2 = __webpack_require__(302);
+var _createClass2 = __webpack_require__(303);
 
 var _createClass3 = _interopRequireDefault(_createClass2);
 
-var _possibleConstructorReturn2 = __webpack_require__(303);
+var _possibleConstructorReturn2 = __webpack_require__(304);
 
 var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
 
-var _getPrototypeOf2 = __webpack_require__(305);
+var _getPrototypeOf2 = __webpack_require__(306);
 
 var _getPrototypeOf3 = _interopRequireDefault(_getPrototypeOf2);
 
-var _inherits2 = __webpack_require__(306);
+var _inherits2 = __webpack_require__(307);
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
@@ -5245,11 +5300,11 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _reactDom = __webpack_require__(41);
 
-var _invariant = __webpack_require__(308);
+var _invariant = __webpack_require__(309);
 
 var _invariant2 = _interopRequireDefault(_invariant);
 
-var _toConsumableArray2 = __webpack_require__(309);
+var _toConsumableArray2 = __webpack_require__(310);
 
 var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
 
@@ -6831,7 +6886,7 @@ exports.arrayMove = arrayMove;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6841,31 +6896,31 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _stringify = __webpack_require__(317);
+var _stringify = __webpack_require__(318);
 
 var _stringify2 = _interopRequireDefault(_stringify);
 
-var _extends2 = __webpack_require__(319);
+var _extends2 = __webpack_require__(320);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _getPrototypeOf = __webpack_require__(328);
+var _getPrototypeOf = __webpack_require__(329);
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
 
-var _classCallCheck2 = __webpack_require__(332);
+var _classCallCheck2 = __webpack_require__(333);
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
-var _createClass2 = __webpack_require__(333);
+var _createClass2 = __webpack_require__(334);
 
 var _createClass3 = _interopRequireDefault(_createClass2);
 
-var _possibleConstructorReturn2 = __webpack_require__(337);
+var _possibleConstructorReturn2 = __webpack_require__(338);
 
 var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
 
-var _inherits2 = __webpack_require__(359);
+var _inherits2 = __webpack_require__(360);
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
@@ -6877,7 +6932,7 @@ var _propTypes = __webpack_require__(19);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _lottieWeb = __webpack_require__(367);
+var _lottieWeb = __webpack_require__(368);
 
 var _lottieWeb2 = _interopRequireDefault(_lottieWeb);
 
@@ -7185,7 +7240,7 @@ Lottie.defaultProps = {
 };
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7205,7 +7260,7 @@ module.exports = function (it, S) {
 };
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7218,7 +7273,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7232,27 +7287,27 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 75 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var shared = __webpack_require__(76)('keys');
-var uid = __webpack_require__(57);
-module.exports = function (key) {
-  return shared[key] || (shared[key] = uid(key));
-};
-
-/***/ }),
 /* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
+var shared = __webpack_require__(77)('keys');
+var uid = __webpack_require__(58);
+module.exports = function (key) {
+  return shared[key] || (shared[key] = uid(key));
+};
+
+/***/ }),
+/* 77 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 var core = __webpack_require__(13);
-var global = __webpack_require__(20);
+var global = __webpack_require__(21);
 var SHARED = '__core-js_shared__';
 var store = global[SHARED] || (global[SHARED] = {});
 
@@ -7260,12 +7315,12 @@ var store = global[SHARED] || (global[SHARED] = {});
   return store[key] || (store[key] = value !== undefined ? value : {});
 })('versions', []).push({
   version: core.version,
-  mode: __webpack_require__(56) ? 'pure' : 'global',
+  mode: __webpack_require__(57) ? 'pure' : 'global',
   copyright: '© 2018 Denis Pushkarev (zloirock.ru)'
 });
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7275,7 +7330,7 @@ var store = global[SHARED] || (global[SHARED] = {});
 module.exports = 'constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf'.split(',');
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7284,26 +7339,17 @@ module.exports = 'constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,
 exports.f = Object.getOwnPropertySymbols;
 
 /***/ }),
-/* 79 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// 7.1.13 ToObject(argument)
-var defined = __webpack_require__(73);
-module.exports = function (it) {
-  return Object(defined(it));
-};
-
-/***/ }),
 /* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = {};
+// 7.1.13 ToObject(argument)
+var defined = __webpack_require__(74);
+module.exports = function (it) {
+  return Object(defined(it));
+};
 
 /***/ }),
 /* 81 */
@@ -7312,11 +7358,20 @@ module.exports = {};
 "use strict";
 
 
+module.exports = {};
+
+/***/ }),
+/* 82 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 var anObject = __webpack_require__(42);
-var dPs = __webpack_require__(343);
-var enumBugKeys = __webpack_require__(77);
-var IE_PROTO = __webpack_require__(75)('IE_PROTO');
+var dPs = __webpack_require__(344);
+var enumBugKeys = __webpack_require__(78);
+var IE_PROTO = __webpack_require__(76)('IE_PROTO');
 var Empty = function Empty() {/* empty */};
 var PROTOTYPE = 'prototype';
 
@@ -7329,7 +7384,7 @@ var _createDict = function createDict() {
   var gt = '>';
   var iframeDocument;
   iframe.style.display = 'none';
-  __webpack_require__(344).appendChild(iframe);
+  __webpack_require__(345).appendChild(iframe);
   iframe.src = 'javascript:'; // eslint-disable-line no-script-url
   // createDict = iframe.contentWindow.Object;
   // html.removeChild(iframe);
@@ -7356,7 +7411,7 @@ module.exports = Object.create || function create(O, Properties) {
 };
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7371,7 +7426,7 @@ module.exports = function (it, tag, stat) {
 };
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7380,16 +7435,16 @@ module.exports = function (it, tag, stat) {
 exports.f = __webpack_require__(37);
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var global = __webpack_require__(20);
+var global = __webpack_require__(21);
 var core = __webpack_require__(13);
-var LIBRARY = __webpack_require__(56);
-var wksExt = __webpack_require__(83);
+var LIBRARY = __webpack_require__(57);
+var wksExt = __webpack_require__(84);
 var defineProperty = __webpack_require__(26).f;
 module.exports = function (name) {
   var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
@@ -7397,13 +7452,13 @@ module.exports = function (name) {
 };
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseGet = __webpack_require__(86);
+var baseGet = __webpack_require__(87);
 
 /**
  * Gets the value at `path` of `object`. If the resolved value is
@@ -7438,13 +7493,13 @@ function get(object, path, defaultValue) {
 module.exports = get;
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var castPath = __webpack_require__(87),
+var castPath = __webpack_require__(88),
     toKey = __webpack_require__(49);
 
 /**
@@ -7470,14 +7525,14 @@ function baseGet(object, path) {
 module.exports = baseGet;
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var isArray = __webpack_require__(15),
-    isKey = __webpack_require__(59),
+    isKey = __webpack_require__(60),
     stringToPath = __webpack_require__(138),
     toString = __webpack_require__(162);
 
@@ -7499,7 +7554,7 @@ function castPath(value, object) {
 module.exports = castPath;
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7511,10 +7566,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 var freeGlobal = (typeof global === 'undefined' ? 'undefined' : _typeof(global)) == 'object' && global && global.Object === Object && global;
 
 module.exports = freeGlobal;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(89)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(90)))
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7544,14 +7599,14 @@ try {
 module.exports = g;
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var baseGetTag = __webpack_require__(38),
-    isObject = __webpack_require__(62);
+    isObject = __webpack_require__(63);
 
 /** `Object#toString` result references. */
 var asyncTag = '[object AsyncFunction]',
@@ -7589,7 +7644,7 @@ function isFunction(value) {
 module.exports = isFunction;
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7623,7 +7678,7 @@ function toSource(func) {
 module.exports = toSource;
 
 /***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7668,7 +7723,7 @@ function eq(value, other) {
 module.exports = eq;
 
 /***/ }),
-/* 93 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7697,13 +7752,13 @@ function arrayMap(array, iteratee) {
 module.exports = arrayMap;
 
 /***/ }),
-/* 94 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var arrayMap = __webpack_require__(93),
+var arrayMap = __webpack_require__(94),
     baseIteratee = __webpack_require__(164),
     baseMap = __webpack_require__(214),
     isArray = __webpack_require__(15);
@@ -7758,7 +7813,7 @@ function map(collection, iteratee) {
 module.exports = map;
 
 /***/ }),
-/* 95 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7793,7 +7848,7 @@ Stack.prototype.set = stackSet;
 module.exports = Stack;
 
 /***/ }),
-/* 96 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7829,7 +7884,7 @@ function baseIsEqual(value, other, bitmask, customizer, stack) {
 module.exports = baseIsEqual;
 
 /***/ }),
-/* 97 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7915,7 +7970,7 @@ function equalArrays(array, other, bitmask, customizer, equalFunc, stack) {
 module.exports = equalArrays;
 
 /***/ }),
-/* 98 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7960,7 +8015,7 @@ var isArguments = baseIsArguments(function () {
 module.exports = isArguments;
 
 /***/ }),
-/* 99 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8009,7 +8064,7 @@ module.exports = isBuffer;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(50)(module)))
 
 /***/ }),
-/* 100 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8041,7 +8096,7 @@ function isIndex(value, length) {
 module.exports = isIndex;
 
 /***/ }),
-/* 101 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8076,13 +8131,13 @@ var isTypedArray = nodeIsTypedArray ? baseUnary(nodeIsTypedArray) : baseIsTypedA
 module.exports = isTypedArray;
 
 /***/ }),
-/* 102 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var isObject = __webpack_require__(62);
+var isObject = __webpack_require__(63);
 
 /**
  * Checks if `value` is suitable for strict equality comparisons, i.e. `===`.
@@ -8099,7 +8154,7 @@ function isStrictComparable(value) {
 module.exports = isStrictComparable;
 
 /***/ }),
-/* 103 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8126,7 +8181,7 @@ function matchesStrictComparable(key, srcValue) {
 module.exports = matchesStrictComparable;
 
 /***/ }),
-/* 104 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8484,225 +8539,6 @@ var __WEBPACK_AMD_DEFINE_RESULT__;
 })();
 
 /***/ }),
-/* 105 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.default = PremiumBackground;
-
-var _ColorComponent = __webpack_require__(2);
-
-var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var __ = wp.i18n.__;
-var Fragment = wp.element.Fragment;
-var _wp$components = wp.components,
-    SelectControl = _wp$components.SelectControl,
-    ToggleControl = _wp$components.ToggleControl,
-    Tooltip = _wp$components.Tooltip,
-    Dashicon = _wp$components.Dashicon;
-var MediaUpload = wp.blockEditor.MediaUpload;
-function PremiumBackground(props) {
-    var type = props.type,
-        colorValue = props.colorValue,
-        imageID = props.imageID,
-        imageURL = props.imageURL,
-        backgroundPosition = props.backgroundPosition,
-        backgroundRepeat = props.backgroundRepeat,
-        backgroundSize = props.backgroundSize,
-        fixed = props.fixed,
-        _props$onChangeColor = props.onChangeColor,
-        onChangeColor = _props$onChangeColor === undefined ? function () {} : _props$onChangeColor,
-        _props$onSelectMedia = props.onSelectMedia,
-        onSelectMedia = _props$onSelectMedia === undefined ? function () {} : _props$onSelectMedia,
-        _props$onRemoveImage = props.onRemoveImage,
-        onRemoveImage = _props$onRemoveImage === undefined ? function () {} : _props$onRemoveImage,
-        _props$onChangeBackPo = props.onChangeBackPos,
-        onChangeBackPos = _props$onChangeBackPo === undefined ? function () {} : _props$onChangeBackPo,
-        _props$onchangeBackRe = props.onchangeBackRepeat,
-        onchangeBackRepeat = _props$onchangeBackRe === undefined ? function () {} : _props$onchangeBackRe,
-        _props$onChangeBackSi = props.onChangeBackSize,
-        onChangeBackSize = _props$onChangeBackSi === undefined ? function () {} : _props$onChangeBackSi,
-        _props$onChangeFixed = props.onChangeFixed,
-        onChangeFixed = _props$onChangeFixed === undefined ? function () {} : _props$onChangeFixed;
-
-
-    var POSITION = [{
-        value: "top left",
-        label: __("Top Left")
-    }, {
-        value: "top center",
-        label: __("Top Center")
-    }, {
-        value: "top right",
-        label: __("Top Right")
-    }, {
-        value: "center left",
-        label: __("Center Left")
-    }, {
-        value: "center center",
-        label: __("Center Center")
-    }, {
-        value: "center right",
-        label: __("Center Right")
-    }, {
-        value: "bottom left",
-        label: __("Bottom Left")
-    }, {
-        value: "bottom center",
-        label: __("Bottom Center")
-    }, {
-        value: "bottom right",
-        label: __("Bottom Right")
-    }];
-
-    var REPEAT = [{
-        value: "no-repeat",
-        label: __("No Repeat")
-    }, {
-        value: "repeat",
-        label: __("Repeat")
-    }, {
-        value: "repeat-x",
-        label: __("Repeat Horizontally")
-    }, {
-        value: "repeat-y",
-        label: __("Repeat Vertically")
-    }];
-
-    var SIZE = [{
-        value: "auto",
-        label: __("Auto")
-    }, {
-        value: "cover",
-        label: __("Cover")
-    }, {
-        value: "contain",
-        label: __("Contain")
-    }];
-
-    return type === "color" ? React.createElement(
-        Fragment,
-        null,
-        React.createElement(_ColorComponent2.default, {
-            label: __("Background Color", ''),
-            colorValue: colorValue,
-            colorDefault: '',
-            onColorChange: onChangeColor
-        })
-    ) : React.createElement(
-        Fragment,
-        null,
-        React.createElement(MediaUpload, {
-            allowedTypes: ["image"],
-            onSelect: onSelectMedia,
-            type: "image",
-            value: imageID,
-            render: function render(_ref) {
-                var open = _ref.open;
-                return React.createElement(
-                    Fragment,
-                    null,
-                    imageURL && React.createElement(
-                        "span",
-                        { className: "premium-image-media" },
-                        React.createElement("img", {
-                            src: imageURL,
-                            className: "premium-image-upload"
-                        }),
-                        React.createElement(
-                            "div",
-                            { className: "premium-image-actions" },
-                            React.createElement(
-                                Tooltip,
-                                { text: __("Edit") },
-                                React.createElement(
-                                    "button",
-                                    {
-                                        className: "premium-image-button",
-                                        "aria-label": __("Edit"),
-                                        onClick: open,
-                                        role: "button"
-                                    },
-                                    React.createElement("span", {
-                                        "aria-label": __("Edit"),
-                                        className: "fa fa-pencil"
-                                    })
-                                )
-                            ),
-                            React.createElement(
-                                Tooltip,
-                                { text: __("Remove") },
-                                React.createElement(
-                                    "button",
-                                    {
-                                        className: "premium-image-button",
-                                        "aria-label": __("Remove"),
-                                        onClick: onRemoveImage,
-                                        role: "button"
-                                    },
-                                    React.createElement("span", {
-                                        "aria-label": __("Close"),
-                                        className: "fa fa-trash-o"
-                                    })
-                                )
-                            )
-                        )
-                    ),
-                    !imageURL && React.createElement(
-                        "div",
-                        {
-                            onClick: open,
-                            className: "premium-placeholder-image"
-                        },
-                        React.createElement(Dashicon, { icon: "insert" }),
-                        React.createElement(
-                            "span",
-                            null,
-                            __("Insert Background ")
-                        )
-                    )
-                );
-            }
-        }),
-        imageURL && React.createElement(
-            Fragment,
-            null,
-            React.createElement(SelectControl, {
-                label: __("Position"),
-                options: POSITION,
-                value: backgroundPosition,
-                onChange: onChangeBackPos
-            }),
-            React.createElement(SelectControl, {
-                label: __("Repeat"),
-                options: REPEAT,
-                value: backgroundRepeat,
-                onChange: onchangeBackRepeat
-            }),
-            React.createElement(SelectControl, {
-                label: __("Size"),
-                options: SIZE,
-                value: backgroundSize,
-                onChange: onChangeBackSize
-            }),
-            React.createElement(ToggleControl, {
-                label: __("Fixed Background"),
-                checked: fixed,
-                onChange: onChangeFixed
-            })
-        )
-    );
-}
-
-/***/ }),
 /* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8710,9 +8546,9 @@ function PremiumBackground(props) {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(250);
-} else {
   module.exports = __webpack_require__(251);
+} else {
+  module.exports = __webpack_require__(252);
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
@@ -8723,13 +8559,22 @@ if (process.env.NODE_ENV === 'production') {
 "use strict";
 
 
-var _CSSTransition = _interopRequireDefault(__webpack_require__(256));
+module.exports = Function.call.bind(Object.prototype.hasOwnProperty);
 
-var _ReplaceTransition = _interopRequireDefault(__webpack_require__(261));
+/***/ }),
+/* 108 */
+/***/ (function(module, exports, __webpack_require__) {
 
-var _TransitionGroup = _interopRequireDefault(__webpack_require__(111));
+"use strict";
 
-var _Transition = _interopRequireDefault(__webpack_require__(108));
+
+var _CSSTransition = _interopRequireDefault(__webpack_require__(257));
+
+var _ReplaceTransition = _interopRequireDefault(__webpack_require__(262));
+
+var _TransitionGroup = _interopRequireDefault(__webpack_require__(112));
+
+var _Transition = _interopRequireDefault(__webpack_require__(109));
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -8743,7 +8588,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 108 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8758,9 +8603,9 @@ var _react = _interopRequireDefault(__webpack_require__(9));
 
 var _reactDom = _interopRequireDefault(__webpack_require__(41));
 
-var _reactLifecyclesCompat = __webpack_require__(109);
+var _reactLifecyclesCompat = __webpack_require__(110);
 
-var _PropTypes = __webpack_require__(110);
+var _PropTypes = __webpack_require__(111);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -9383,7 +9228,7 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
 /***/ }),
-/* 109 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9518,7 +9363,7 @@ function polyfill(Component) {
 exports.polyfill = polyfill;
 
 /***/ }),
-/* 110 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9555,7 +9400,7 @@ exports.classNamesShape = classNamesShape;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
 /***/ }),
-/* 111 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9568,9 +9413,9 @@ var _propTypes = _interopRequireDefault(__webpack_require__(19));
 
 var _react = _interopRequireDefault(__webpack_require__(9));
 
-var _reactLifecyclesCompat = __webpack_require__(109);
+var _reactLifecyclesCompat = __webpack_require__(110);
 
-var _ChildMapping = __webpack_require__(262);
+var _ChildMapping = __webpack_require__(263);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -9792,7 +9637,7 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
 /***/ }),
-/* 112 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9998,7 +9843,7 @@ InspectorTabs.defaultProps = {
 exports.default = InspectorTabs;
 
 /***/ }),
-/* 113 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10030,55 +9875,6 @@ var InspectorTab = function InspectorTab(props) {
 };
 
 exports.default = InspectorTab;
-
-/***/ }),
-/* 114 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-var gradientBackground = exports.gradientBackground = function gradientBackground(value) {
-    var backgroundType = value.backgroundType,
-        backgroundColor = value.backgroundColor,
-        backgroundRepeat = value.backgroundRepeat,
-        backgroundPosition = value.backgroundPosition,
-        fixed = value.fixed,
-        backgroundSize = value.backgroundSize,
-        gradientColorTwo = value.gradientColorTwo,
-        gradientPosition = value.gradientPosition,
-        gradientType = value.gradientType,
-        gradientLocationOne = value.gradientLocationOne,
-        gradientLocationTwo = value.gradientLocationTwo,
-        gradientAngle = value.gradientAngle,
-        backgroundImageURL = value.backgroundImageURL;
-
-    var btnGrad = void 0,
-        btnGrad2 = void 0,
-        btnbg = void 0;
-    if (undefined !== backgroundType && 'gradient' === backgroundType) {
-        btnGrad = 'transparent' === backgroundColor || undefined === backgroundColor ? 'rgba(255,255,255,0)' : backgroundColor;
-        btnGrad2 = undefined !== gradientColorTwo && undefined !== gradientColorTwo && '' !== gradientColorTwo ? gradientColorTwo : '#777';
-        if ('radial' === gradientType) {
-            btnbg = 'radial-gradient(at ' + gradientPosition + ', ' + btnGrad + ' ' + gradientLocationOne + '%, ' + btnGrad2 + ' ' + gradientLocationTwo + '%)';
-        } else if ('radial' !== gradientType) {
-            btnbg = 'linear-gradient(' + gradientAngle + 'deg, ' + btnGrad + ' ' + gradientLocationOne + '%, ' + btnGrad2 + ' ' + gradientLocationTwo + '%)';
-        }
-    } else {
-        btnbg = backgroundImageURL ? 'url(\'' + backgroundImageURL + '\')' : '';
-    }
-    return {
-        backgroundColor: backgroundType === "solid" ? backgroundColor : "transparent",
-        backgroundImage: btnbg,
-        backgroundRepeat: backgroundRepeat,
-        backgroundPosition: backgroundPosition,
-        backgroundSize: backgroundSize,
-        backgroundAttachment: fixed ? "fixed" : "unset"
-    };
-};
 
 /***/ }),
 /* 115 */
@@ -10354,7 +10150,7 @@ function _assertThisInitialized(self) {
 
 
 // optional / simple context binding
-var aFunction = __webpack_require__(323);
+var aFunction = __webpack_require__(324);
 module.exports = function (fn, that, length) {
   aFunction(fn);
   if (that === undefined) return fn;
@@ -10398,7 +10194,7 @@ module.exports = !__webpack_require__(27) && !__webpack_require__(35)(function (
 
 
 var isObject = __webpack_require__(34);
-var document = __webpack_require__(20).document;
+var document = __webpack_require__(21).document;
 // typeof document.createElement is 'object' in old IE
 var is = isObject(document) && isObject(document.createElement);
 module.exports = function (it) {
@@ -10414,8 +10210,8 @@ module.exports = function (it) {
 
 var has = __webpack_require__(28);
 var toIObject = __webpack_require__(36);
-var arrayIndexOf = __webpack_require__(325)(false);
-var IE_PROTO = __webpack_require__(75)('IE_PROTO');
+var arrayIndexOf = __webpack_require__(326)(false);
+var IE_PROTO = __webpack_require__(76)('IE_PROTO');
 
 module.exports = function (object, names) {
   var O = toIObject(object);
@@ -10468,8 +10264,8 @@ module.exports = function (it) {
 
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
 var has = __webpack_require__(28);
-var toObject = __webpack_require__(79);
-var IE_PROTO = __webpack_require__(75)('IE_PROTO');
+var toObject = __webpack_require__(80);
+var IE_PROTO = __webpack_require__(76)('IE_PROTO');
 var ObjectProto = Object.prototype;
 
 module.exports = Object.getPrototypeOf || function (O) {
@@ -10491,11 +10287,11 @@ var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbo
 
 exports.__esModule = true;
 
-var _iterator = __webpack_require__(338);
+var _iterator = __webpack_require__(339);
 
 var _iterator2 = _interopRequireDefault(_iterator);
 
-var _symbol = __webpack_require__(349);
+var _symbol = __webpack_require__(350);
 
 var _symbol2 = _interopRequireDefault(_symbol);
 
@@ -10522,13 +10318,13 @@ exports.default = typeof _symbol2.default === "function" && _typeof(_iterator2.d
 "use strict";
 
 
-var LIBRARY = __webpack_require__(56);
+var LIBRARY = __webpack_require__(57);
 var $export = __webpack_require__(25);
 var redefine = __webpack_require__(129);
 var hide = __webpack_require__(33);
-var Iterators = __webpack_require__(80);
-var $iterCreate = __webpack_require__(342);
-var setToStringTag = __webpack_require__(82);
+var Iterators = __webpack_require__(81);
+var $iterCreate = __webpack_require__(343);
+var setToStringTag = __webpack_require__(83);
 var getPrototypeOf = __webpack_require__(126);
 var ITERATOR = __webpack_require__(37)('iterator');
 var BUGGY = !([].keys && 'next' in [].keys()); // Safari has buggy iterators w/o `next`
@@ -10621,7 +10417,7 @@ module.exports = __webpack_require__(33);
 
 // 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
 var $keys = __webpack_require__(123);
-var hiddenKeys = __webpack_require__(77).concat('length', 'prototype');
+var hiddenKeys = __webpack_require__(78).concat('length', 'prototype');
 
 exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
   return $keys(O, hiddenKeys);
@@ -10634,10 +10430,10 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 "use strict";
 
 
-var pIE = __webpack_require__(58);
-var createDesc = __webpack_require__(54);
+var pIE = __webpack_require__(59);
+var createDesc = __webpack_require__(55);
 var toIObject = __webpack_require__(36);
-var toPrimitive = __webpack_require__(72);
+var toPrimitive = __webpack_require__(73);
 var has = __webpack_require__(28);
 var IE8_DOM_DEFINE = __webpack_require__(121);
 var gOPD = Object.getOwnPropertyDescriptor;
@@ -10658,7 +10454,7 @@ exports.f = __webpack_require__(27) ? gOPD : function getOwnPropertyDescriptor(O
 "use strict";
 
 
-var root = __webpack_require__(401);
+var root = __webpack_require__(402);
 
 /** Built-in value references. */
 var _Symbol = root.Symbol;
@@ -10682,35 +10478,35 @@ __webpack_require__(233);
 
 __webpack_require__(238);
 
-__webpack_require__(243);
+__webpack_require__(244);
 
-__webpack_require__(248);
+__webpack_require__(249);
 
-__webpack_require__(266);
-
-__webpack_require__(271);
+__webpack_require__(267);
 
 __webpack_require__(272);
 
-__webpack_require__(277);
+__webpack_require__(273);
 
-__webpack_require__(283);
+__webpack_require__(278);
 
-__webpack_require__(53);
+__webpack_require__(284);
 
-__webpack_require__(291);
+__webpack_require__(54);
 
-__webpack_require__(315);
+__webpack_require__(292);
 
-__webpack_require__(372);
+__webpack_require__(316);
 
-__webpack_require__(377);
+__webpack_require__(373);
 
-__webpack_require__(381);
+__webpack_require__(378);
 
-__webpack_require__(386);
+__webpack_require__(382);
 
-__webpack_require__(408);
+__webpack_require__(387);
+
+__webpack_require__(409);
 
 window.PremiumOptionsSettings = {
     FontAwesomeEnabled: _settings.FontAwesomeEnabled
@@ -11763,7 +11559,7 @@ module.exports = memoizeCapped;
 "use strict";
 
 
-var MapCache = __webpack_require__(61);
+var MapCache = __webpack_require__(62);
 
 /** Error message constants. */
 var FUNC_ERROR_TEXT = 'Expected a function';
@@ -11846,7 +11642,7 @@ module.exports = memoize;
 
 var Hash = __webpack_require__(142),
     ListCache = __webpack_require__(46),
-    Map = __webpack_require__(63);
+    Map = __webpack_require__(64);
 
 /**
  * Removes all key-value entries from the map.
@@ -11936,10 +11732,10 @@ module.exports = hashClear;
 "use strict";
 
 
-var isFunction = __webpack_require__(90),
+var isFunction = __webpack_require__(91),
     isMasked = __webpack_require__(145),
-    isObject = __webpack_require__(62),
-    toSource = __webpack_require__(91);
+    isObject = __webpack_require__(63),
+    toSource = __webpack_require__(92);
 
 /**
  * Used to match `RegExp`
@@ -12489,9 +12285,9 @@ module.exports = toString;
 
 
 var _Symbol = __webpack_require__(44),
-    arrayMap = __webpack_require__(93),
+    arrayMap = __webpack_require__(94),
     isArray = __webpack_require__(15),
-    isSymbol = __webpack_require__(60);
+    isSymbol = __webpack_require__(61);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0;
@@ -12574,7 +12370,7 @@ module.exports = baseIteratee;
 
 var baseIsMatch = __webpack_require__(166),
     getMatchData = __webpack_require__(205),
-    matchesStrictComparable = __webpack_require__(103);
+    matchesStrictComparable = __webpack_require__(104);
 
 /**
  * The base implementation of `_.matches` which doesn't clone `source`.
@@ -12602,8 +12398,8 @@ module.exports = baseMatches;
 "use strict";
 
 
-var Stack = __webpack_require__(95),
-    baseIsEqual = __webpack_require__(96);
+var Stack = __webpack_require__(96),
+    baseIsEqual = __webpack_require__(97);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -12760,8 +12556,8 @@ module.exports = stackHas;
 
 
 var ListCache = __webpack_require__(46),
-    Map = __webpack_require__(63),
-    MapCache = __webpack_require__(61);
+    Map = __webpack_require__(64),
+    MapCache = __webpack_require__(62);
 
 /** Used as the size to enable large array optimizations. */
 var LARGE_ARRAY_SIZE = 200;
@@ -12801,14 +12597,14 @@ module.exports = stackSet;
 "use strict";
 
 
-var Stack = __webpack_require__(95),
-    equalArrays = __webpack_require__(97),
+var Stack = __webpack_require__(96),
+    equalArrays = __webpack_require__(98),
     equalByTag = __webpack_require__(178),
     equalObjects = __webpack_require__(182),
     getTag = __webpack_require__(200),
     isArray = __webpack_require__(15),
-    isBuffer = __webpack_require__(99),
-    isTypedArray = __webpack_require__(101);
+    isBuffer = __webpack_require__(100),
+    isTypedArray = __webpack_require__(102);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1;
@@ -12890,7 +12686,7 @@ module.exports = baseIsEqualDeep;
 "use strict";
 
 
-var MapCache = __webpack_require__(61),
+var MapCache = __webpack_require__(62),
     setCacheAdd = __webpack_require__(174),
     setCacheHas = __webpack_require__(175);
 
@@ -13028,8 +12824,8 @@ module.exports = cacheHas;
 
 var _Symbol = __webpack_require__(44),
     Uint8Array = __webpack_require__(179),
-    eq = __webpack_require__(92),
-    equalArrays = __webpack_require__(97),
+    eq = __webpack_require__(93),
+    equalArrays = __webpack_require__(98),
     mapToArray = __webpack_require__(180),
     setToArray = __webpack_require__(181);
 
@@ -13302,7 +13098,7 @@ module.exports = equalObjects;
 
 var baseGetAllKeys = __webpack_require__(184),
     getSymbols = __webpack_require__(186),
-    keys = __webpack_require__(64);
+    keys = __webpack_require__(65);
 
 /**
  * Creates an array of own enumerable property names and symbols of `object`.
@@ -13483,11 +13279,11 @@ module.exports = stubArray;
 
 
 var baseTimes = __webpack_require__(190),
-    isArguments = __webpack_require__(98),
+    isArguments = __webpack_require__(99),
     isArray = __webpack_require__(15),
-    isBuffer = __webpack_require__(99),
-    isIndex = __webpack_require__(100),
-    isTypedArray = __webpack_require__(101);
+    isBuffer = __webpack_require__(100),
+    isIndex = __webpack_require__(101),
+    isTypedArray = __webpack_require__(102);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -13618,7 +13414,7 @@ module.exports = stubFalse;
 
 
 var baseGetTag = __webpack_require__(38),
-    isLength = __webpack_require__(65),
+    isLength = __webpack_require__(66),
     isObjectLike = __webpack_require__(39);
 
 /** `Object#toString` result references. */
@@ -13697,7 +13493,7 @@ module.exports = baseUnary;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var freeGlobal = __webpack_require__(88);
+var freeGlobal = __webpack_require__(89);
 
 /** Detect free variable `exports`. */
 var freeExports = ( false ? 'undefined' : _typeof(exports)) == 'object' && exports && !exports.nodeType && exports;
@@ -13838,12 +13634,12 @@ module.exports = overArg;
 
 
 var DataView = __webpack_require__(201),
-    Map = __webpack_require__(63),
+    Map = __webpack_require__(64),
     Promise = __webpack_require__(202),
     Set = __webpack_require__(203),
     WeakMap = __webpack_require__(204),
     baseGetTag = __webpack_require__(38),
-    toSource = __webpack_require__(91);
+    toSource = __webpack_require__(92);
 
 /** `Object#toString` result references. */
 var mapTag = '[object Map]',
@@ -13964,8 +13760,8 @@ module.exports = WeakMap;
 "use strict";
 
 
-var isStrictComparable = __webpack_require__(102),
-    keys = __webpack_require__(64);
+var isStrictComparable = __webpack_require__(103),
+    keys = __webpack_require__(65);
 
 /**
  * Gets the property names, values, and compare flags of `object`.
@@ -13996,12 +13792,12 @@ module.exports = getMatchData;
 "use strict";
 
 
-var baseIsEqual = __webpack_require__(96),
-    get = __webpack_require__(85),
+var baseIsEqual = __webpack_require__(97),
+    get = __webpack_require__(86),
     hasIn = __webpack_require__(207),
-    isKey = __webpack_require__(59),
-    isStrictComparable = __webpack_require__(102),
-    matchesStrictComparable = __webpack_require__(103),
+    isKey = __webpack_require__(60),
+    isStrictComparable = __webpack_require__(103),
+    matchesStrictComparable = __webpack_require__(104),
     toKey = __webpack_require__(49);
 
 /** Used to compose bitmasks for value comparisons. */
@@ -14098,11 +13894,11 @@ module.exports = baseHasIn;
 "use strict";
 
 
-var castPath = __webpack_require__(87),
-    isArguments = __webpack_require__(98),
+var castPath = __webpack_require__(88),
+    isArguments = __webpack_require__(99),
     isArray = __webpack_require__(15),
-    isIndex = __webpack_require__(100),
-    isLength = __webpack_require__(65),
+    isIndex = __webpack_require__(101),
+    isLength = __webpack_require__(66),
     toKey = __webpack_require__(49);
 
 /**
@@ -14175,7 +13971,7 @@ module.exports = identity;
 
 var baseProperty = __webpack_require__(212),
     basePropertyDeep = __webpack_require__(213),
-    isKey = __webpack_require__(59),
+    isKey = __webpack_require__(60),
     toKey = __webpack_require__(49);
 
 /**
@@ -14235,7 +14031,7 @@ module.exports = baseProperty;
 "use strict";
 
 
-var baseGet = __webpack_require__(86);
+var baseGet = __webpack_require__(87);
 
 /**
  * A specialized version of `baseProperty` which supports deep paths.
@@ -14260,7 +14056,7 @@ module.exports = basePropertyDeep;
 
 
 var baseEach = __webpack_require__(215),
-    isArrayLike = __webpack_require__(66);
+    isArrayLike = __webpack_require__(67);
 
 /**
  * The base implementation of `_.map` without support for iteratee shorthands.
@@ -14312,7 +14108,7 @@ module.exports = baseEach;
 
 
 var baseFor = __webpack_require__(217),
-    keys = __webpack_require__(64);
+    keys = __webpack_require__(65);
 
 /**
  * The base implementation of `_.forOwn` without support for iteratee shorthands.
@@ -14392,7 +14188,7 @@ module.exports = createBaseFor;
 "use strict";
 
 
-var isArrayLike = __webpack_require__(66);
+var isArrayLike = __webpack_require__(67);
 
 /**
  * Creates a `baseEach` or `baseEachRight` function.
@@ -14622,7 +14418,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _premiumSizeUnits = __webpack_require__(21);
+var _premiumSizeUnits = __webpack_require__(22);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
@@ -15877,7 +15673,7 @@ var _classnames = __webpack_require__(40);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _webfontloader = __webpack_require__(104);
+var _webfontloader = __webpack_require__(105);
 
 var _webfontloader2 = _interopRequireDefault(_webfontloader);
 
@@ -20130,7 +19926,7 @@ var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _fontLoader = __webpack_require__(22);
+var _fontLoader = __webpack_require__(23);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
 
@@ -21780,7 +21576,7 @@ var _edit = __webpack_require__(240);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(241);
+var _save = __webpack_require__(242);
 
 var _save2 = _interopRequireDefault(_save);
 
@@ -21788,7 +21584,7 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _deprecated = __webpack_require__(242);
+var _deprecated = __webpack_require__(243);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -22126,7 +21922,7 @@ var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _PremiumBackgroundControl = __webpack_require__(23);
+var _PremiumBackgroundControl = __webpack_require__(20);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
@@ -22138,7 +21934,7 @@ var _PremiumResponsivePadding = __webpack_require__(17);
 
 var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
 
-var _fontLoader = __webpack_require__(22);
+var _fontLoader = __webpack_require__(23);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
 
@@ -23172,6 +22968,225 @@ exports.default = withSelect(function (select, props) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.default = PremiumBackground;
+
+var _ColorComponent = __webpack_require__(2);
+
+var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+var Fragment = wp.element.Fragment;
+var _wp$components = wp.components,
+    SelectControl = _wp$components.SelectControl,
+    ToggleControl = _wp$components.ToggleControl,
+    Tooltip = _wp$components.Tooltip,
+    Dashicon = _wp$components.Dashicon;
+var MediaUpload = wp.blockEditor.MediaUpload;
+function PremiumBackground(props) {
+    var type = props.type,
+        colorValue = props.colorValue,
+        imageID = props.imageID,
+        imageURL = props.imageURL,
+        backgroundPosition = props.backgroundPosition,
+        backgroundRepeat = props.backgroundRepeat,
+        backgroundSize = props.backgroundSize,
+        fixed = props.fixed,
+        _props$onChangeColor = props.onChangeColor,
+        onChangeColor = _props$onChangeColor === undefined ? function () {} : _props$onChangeColor,
+        _props$onSelectMedia = props.onSelectMedia,
+        onSelectMedia = _props$onSelectMedia === undefined ? function () {} : _props$onSelectMedia,
+        _props$onRemoveImage = props.onRemoveImage,
+        onRemoveImage = _props$onRemoveImage === undefined ? function () {} : _props$onRemoveImage,
+        _props$onChangeBackPo = props.onChangeBackPos,
+        onChangeBackPos = _props$onChangeBackPo === undefined ? function () {} : _props$onChangeBackPo,
+        _props$onchangeBackRe = props.onchangeBackRepeat,
+        onchangeBackRepeat = _props$onchangeBackRe === undefined ? function () {} : _props$onchangeBackRe,
+        _props$onChangeBackSi = props.onChangeBackSize,
+        onChangeBackSize = _props$onChangeBackSi === undefined ? function () {} : _props$onChangeBackSi,
+        _props$onChangeFixed = props.onChangeFixed,
+        onChangeFixed = _props$onChangeFixed === undefined ? function () {} : _props$onChangeFixed;
+
+
+    var POSITION = [{
+        value: "top left",
+        label: __("Top Left")
+    }, {
+        value: "top center",
+        label: __("Top Center")
+    }, {
+        value: "top right",
+        label: __("Top Right")
+    }, {
+        value: "center left",
+        label: __("Center Left")
+    }, {
+        value: "center center",
+        label: __("Center Center")
+    }, {
+        value: "center right",
+        label: __("Center Right")
+    }, {
+        value: "bottom left",
+        label: __("Bottom Left")
+    }, {
+        value: "bottom center",
+        label: __("Bottom Center")
+    }, {
+        value: "bottom right",
+        label: __("Bottom Right")
+    }];
+
+    var REPEAT = [{
+        value: "no-repeat",
+        label: __("No Repeat")
+    }, {
+        value: "repeat",
+        label: __("Repeat")
+    }, {
+        value: "repeat-x",
+        label: __("Repeat Horizontally")
+    }, {
+        value: "repeat-y",
+        label: __("Repeat Vertically")
+    }];
+
+    var SIZE = [{
+        value: "auto",
+        label: __("Auto")
+    }, {
+        value: "cover",
+        label: __("Cover")
+    }, {
+        value: "contain",
+        label: __("Contain")
+    }];
+
+    return type === "color" ? React.createElement(
+        Fragment,
+        null,
+        React.createElement(_ColorComponent2.default, {
+            label: __("Background Color", ''),
+            colorValue: colorValue,
+            colorDefault: '',
+            onColorChange: onChangeColor
+        })
+    ) : React.createElement(
+        Fragment,
+        null,
+        React.createElement(MediaUpload, {
+            allowedTypes: ["image"],
+            onSelect: onSelectMedia,
+            type: "image",
+            value: imageID,
+            render: function render(_ref) {
+                var open = _ref.open;
+                return React.createElement(
+                    Fragment,
+                    null,
+                    imageURL && React.createElement(
+                        "span",
+                        { className: "premium-image-media" },
+                        React.createElement("img", {
+                            src: imageURL,
+                            className: "premium-image-upload"
+                        }),
+                        React.createElement(
+                            "div",
+                            { className: "premium-image-actions" },
+                            React.createElement(
+                                Tooltip,
+                                { text: __("Edit") },
+                                React.createElement(
+                                    "button",
+                                    {
+                                        className: "premium-image-button",
+                                        "aria-label": __("Edit"),
+                                        onClick: open,
+                                        role: "button"
+                                    },
+                                    React.createElement("span", {
+                                        "aria-label": __("Edit"),
+                                        className: "fa fa-pencil"
+                                    })
+                                )
+                            ),
+                            React.createElement(
+                                Tooltip,
+                                { text: __("Remove") },
+                                React.createElement(
+                                    "button",
+                                    {
+                                        className: "premium-image-button",
+                                        "aria-label": __("Remove"),
+                                        onClick: onRemoveImage,
+                                        role: "button"
+                                    },
+                                    React.createElement("span", {
+                                        "aria-label": __("Close"),
+                                        className: "fa fa-trash-o"
+                                    })
+                                )
+                            )
+                        )
+                    ),
+                    !imageURL && React.createElement(
+                        "div",
+                        {
+                            onClick: open,
+                            className: "premium-placeholder-image"
+                        },
+                        React.createElement(Dashicon, { icon: "insert" }),
+                        React.createElement(
+                            "span",
+                            null,
+                            __("Insert Background ")
+                        )
+                    )
+                );
+            }
+        }),
+        imageURL && React.createElement(
+            Fragment,
+            null,
+            React.createElement(SelectControl, {
+                label: __("Position"),
+                options: POSITION,
+                value: backgroundPosition,
+                onChange: onChangeBackPos
+            }),
+            React.createElement(SelectControl, {
+                label: __("Repeat"),
+                options: REPEAT,
+                value: backgroundRepeat,
+                onChange: onchangeBackRepeat
+            }),
+            React.createElement(SelectControl, {
+                label: __("Size"),
+                options: SIZE,
+                value: backgroundSize,
+                onChange: onChangeBackSize
+            }),
+            React.createElement(ToggleControl, {
+                label: __("Fixed Background"),
+                checked: fixed,
+                onChange: onChangeFixed
+            })
+        )
+    );
+}
+
+/***/ }),
+/* 242 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 
 var _classnames = __webpack_require__(0);
 
@@ -23382,7 +23397,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 242 */
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25193,7 +25208,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 243 */
+/* 244 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25205,19 +25220,19 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(244);
+var _edit = __webpack_require__(245);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(245);
+var _save = __webpack_require__(246);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(246);
+var _deprecated = __webpack_require__(247);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(247);
+var _attributes = __webpack_require__(248);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -25242,7 +25257,7 @@ registerBlockType("premium/dheading-block", {
 });
 
 /***/ }),
-/* 244 */
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25280,11 +25295,11 @@ var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _PremiumBackgroundControl = __webpack_require__(23);
+var _PremiumBackgroundControl = __webpack_require__(20);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
-var _fontLoader = __webpack_require__(22);
+var _fontLoader = __webpack_require__(23);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
 
@@ -26089,7 +26104,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 245 */
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26247,7 +26262,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 246 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27884,7 +27899,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 247 */
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28096,7 +28111,7 @@ var attributes = (_attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 248 */
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28108,19 +28123,19 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(249);
+var _edit = __webpack_require__(250);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(263);
+var _save = __webpack_require__(264);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(264);
+var _deprecated = __webpack_require__(265);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(265);
+var _attributes = __webpack_require__(266);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -28145,7 +28160,7 @@ registerBlockType("premium/icon", {
 });
 
 /***/ }),
-/* 249 */
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28175,7 +28190,7 @@ var _premiumBorder = __webpack_require__(6);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _PremiumBackgroundControl = __webpack_require__(23);
+var _PremiumBackgroundControl = __webpack_require__(20);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
@@ -28199,15 +28214,15 @@ var _premiumResponsiveSpacing = __webpack_require__(51);
 
 var _premiumResponsiveSpacing2 = _interopRequireDefault(_premiumResponsiveSpacing);
 
-var _inspectorTabs = __webpack_require__(112);
+var _inspectorTabs = __webpack_require__(113);
 
 var _inspectorTabs2 = _interopRequireDefault(_inspectorTabs);
 
-var _inspectorTab = __webpack_require__(113);
+var _inspectorTab = __webpack_require__(114);
 
 var _inspectorTab2 = _interopRequireDefault(_inspectorTab);
 
-var _HelperFunction = __webpack_require__(114);
+var _HelperFunction = __webpack_require__(52);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28313,7 +28328,7 @@ var edit = function edit(props) {
                     {
                         title: __("Icon", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
-                        initialOpen: false
+                        initialOpen: true
                     },
                     React.createElement(
                         "p",
@@ -28379,7 +28394,7 @@ var edit = function edit(props) {
                     {
                         title: __("Icon Style", 'premium-blocks-for-gutenberg'),
                         className: "premium-panel-body",
-                        initialOpen: false
+                        initialOpen: true
                     },
                     React.createElement(_responsiveRangeControl2.default, {
                         label: __('Size', 'premium-blocks-for-gutenberg'),
@@ -28597,11 +28612,11 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 250 */
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/** @license React v16.8.6
+/** @license React v16.13.1
  * react-is.production.min.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
@@ -28614,7 +28629,6 @@ exports.default = withSelect(function (select, props) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-Object.defineProperty(exports, "__esModule", { value: !0 });
 var b = "function" === typeof Symbol && Symbol.for,
     c = b ? Symbol.for("react.element") : 60103,
     d = b ? Symbol.for("react.portal") : 60106,
@@ -28627,56 +28641,62 @@ var b = "function" === typeof Symbol && Symbol.for,
     m = b ? Symbol.for("react.concurrent_mode") : 60111,
     n = b ? Symbol.for("react.forward_ref") : 60112,
     p = b ? Symbol.for("react.suspense") : 60113,
-    q = b ? Symbol.for("react.memo") : 60115,
-    r = b ? Symbol.for("react.lazy") : 60116;function t(a) {
+    q = b ? Symbol.for("react.suspense_list") : 60120,
+    r = b ? Symbol.for("react.memo") : 60115,
+    t = b ? Symbol.for("react.lazy") : 60116,
+    v = b ? Symbol.for("react.block") : 60121,
+    w = b ? Symbol.for("react.fundamental") : 60117,
+    x = b ? Symbol.for("react.responder") : 60118,
+    y = b ? Symbol.for("react.scope") : 60119;
+function z(a) {
   if ("object" === (typeof a === "undefined" ? "undefined" : _typeof(a)) && null !== a) {
     var u = a.$$typeof;switch (u) {case c:
         switch (a = a.type, a) {case l:case m:case e:case g:case f:case p:
             return a;default:
-            switch (a = a && a.$$typeof, a) {case k:case n:case h:
+            switch (a = a && a.$$typeof, a) {case k:case n:case t:case r:case h:
                 return a;default:
-                return u;}}case r:case q:case d:
+                return u;}}case d:
         return u;}
   }
-}function v(a) {
-  return t(a) === m;
-}exports.typeOf = t;exports.AsyncMode = l;exports.ConcurrentMode = m;exports.ContextConsumer = k;exports.ContextProvider = h;exports.Element = c;exports.ForwardRef = n;
-exports.Fragment = e;exports.Lazy = r;exports.Memo = q;exports.Portal = d;exports.Profiler = g;exports.StrictMode = f;exports.Suspense = p;exports.isValidElementType = function (a) {
-  return "string" === typeof a || "function" === typeof a || a === e || a === m || a === g || a === f || a === p || "object" === (typeof a === "undefined" ? "undefined" : _typeof(a)) && null !== a && (a.$$typeof === r || a.$$typeof === q || a.$$typeof === h || a.$$typeof === k || a.$$typeof === n);
-};exports.isAsyncMode = function (a) {
-  return v(a) || t(a) === l;
-};exports.isConcurrentMode = v;exports.isContextConsumer = function (a) {
-  return t(a) === k;
-};
-exports.isContextProvider = function (a) {
-  return t(a) === h;
+}function A(a) {
+  return z(a) === m;
+}exports.AsyncMode = l;exports.ConcurrentMode = m;exports.ContextConsumer = k;exports.ContextProvider = h;exports.Element = c;exports.ForwardRef = n;exports.Fragment = e;exports.Lazy = t;exports.Memo = r;exports.Portal = d;
+exports.Profiler = g;exports.StrictMode = f;exports.Suspense = p;exports.isAsyncMode = function (a) {
+  return A(a) || z(a) === l;
+};exports.isConcurrentMode = A;exports.isContextConsumer = function (a) {
+  return z(a) === k;
+};exports.isContextProvider = function (a) {
+  return z(a) === h;
 };exports.isElement = function (a) {
   return "object" === (typeof a === "undefined" ? "undefined" : _typeof(a)) && null !== a && a.$$typeof === c;
 };exports.isForwardRef = function (a) {
-  return t(a) === n;
+  return z(a) === n;
 };exports.isFragment = function (a) {
-  return t(a) === e;
+  return z(a) === e;
 };exports.isLazy = function (a) {
-  return t(a) === r;
-};exports.isMemo = function (a) {
-  return t(a) === q;
+  return z(a) === t;
+};
+exports.isMemo = function (a) {
+  return z(a) === r;
 };exports.isPortal = function (a) {
-  return t(a) === d;
+  return z(a) === d;
 };exports.isProfiler = function (a) {
-  return t(a) === g;
+  return z(a) === g;
 };exports.isStrictMode = function (a) {
-  return t(a) === f;
+  return z(a) === f;
+};exports.isSuspense = function (a) {
+  return z(a) === p;
 };
-exports.isSuspense = function (a) {
-  return t(a) === p;
-};
+exports.isValidElementType = function (a) {
+  return "string" === typeof a || "function" === typeof a || a === e || a === m || a === g || a === f || a === p || a === q || "object" === (typeof a === "undefined" ? "undefined" : _typeof(a)) && null !== a && (a.$$typeof === t || a.$$typeof === r || a.$$typeof === h || a.$$typeof === k || a.$$typeof === n || a.$$typeof === w || a.$$typeof === x || a.$$typeof === y || a.$$typeof === v);
+};exports.typeOf = z;
 
 /***/ }),
-/* 251 */
+/* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {/** @license React v16.8.6
+/* WEBPACK VAR INJECTION */(function(process) {/** @license React v16.13.1
  * react-is.development.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
@@ -28693,88 +28713,40 @@ if (process.env.NODE_ENV !== "production") {
   (function () {
     'use strict';
 
-    Object.defineProperty(exports, '__esModule', { value: true });
-
     // The Symbol used to tag the ReactElement-like types. If there is no native Symbol
     // nor polyfill, then a plain number is used for performance.
-    var hasSymbol = typeof Symbol === 'function' && Symbol.for;
 
+    var hasSymbol = typeof Symbol === 'function' && Symbol.for;
     var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;
     var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
     var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
     var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
     var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
     var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
-    var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace;
+    var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace; // TODO: We don't use AsyncMode or ConcurrentMode anymore. They were temporary
+    // (unstable) APIs that have been removed. Can we remove the symbols?
+
     var REACT_ASYNC_MODE_TYPE = hasSymbol ? Symbol.for('react.async_mode') : 0xeacf;
     var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
     var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
     var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
+    var REACT_SUSPENSE_LIST_TYPE = hasSymbol ? Symbol.for('react.suspense_list') : 0xead8;
     var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
     var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
+    var REACT_BLOCK_TYPE = hasSymbol ? Symbol.for('react.block') : 0xead9;
+    var REACT_FUNDAMENTAL_TYPE = hasSymbol ? Symbol.for('react.fundamental') : 0xead5;
+    var REACT_RESPONDER_TYPE = hasSymbol ? Symbol.for('react.responder') : 0xead6;
+    var REACT_SCOPE_TYPE = hasSymbol ? Symbol.for('react.scope') : 0xead7;
 
     function isValidElementType(type) {
-      return typeof type === 'string' || typeof type === 'function' ||
-      // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
-      type === REACT_FRAGMENT_TYPE || type === REACT_CONCURRENT_MODE_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || (typeof type === 'undefined' ? 'undefined' : _typeof(type)) === 'object' && type !== null && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE);
+      return typeof type === 'string' || typeof type === 'function' || // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
+      type === REACT_FRAGMENT_TYPE || type === REACT_CONCURRENT_MODE_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || (typeof type === 'undefined' ? 'undefined' : _typeof(type)) === 'object' && type !== null && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_FUNDAMENTAL_TYPE || type.$$typeof === REACT_RESPONDER_TYPE || type.$$typeof === REACT_SCOPE_TYPE || type.$$typeof === REACT_BLOCK_TYPE);
     }
-
-    /**
-     * Forked from fbjs/warning:
-     * https://github.com/facebook/fbjs/blob/e66ba20ad5be433eb54423f2b097d829324d9de6/packages/fbjs/src/__forks__/warning.js
-     *
-     * Only change is we use console.warn instead of console.error,
-     * and do nothing when 'console' is not supported.
-     * This really simplifies the code.
-     * ---
-     * Similar to invariant but only logs a warning if the condition is not met.
-     * This can be used to log issues in development environments in critical
-     * paths. Removing the logging code for production environments will keep the
-     * same logic and follow the same code paths.
-     */
-
-    var lowPriorityWarning = function lowPriorityWarning() {};
-
-    {
-      var printWarning = function printWarning(format) {
-        for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-          args[_key - 1] = arguments[_key];
-        }
-
-        var argIndex = 0;
-        var message = 'Warning: ' + format.replace(/%s/g, function () {
-          return args[argIndex++];
-        });
-        if (typeof console !== 'undefined') {
-          console.warn(message);
-        }
-        try {
-          // --- Welcome to debugging React ---
-          // This error was thrown as a convenience so that you can use this stack
-          // to find the callsite that caused this warning to fire.
-          throw new Error(message);
-        } catch (x) {}
-      };
-
-      lowPriorityWarning = function lowPriorityWarning(condition, format) {
-        if (format === undefined) {
-          throw new Error('`lowPriorityWarning(condition, format, ...args)` requires a warning ' + 'message argument');
-        }
-        if (!condition) {
-          for (var _len2 = arguments.length, args = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
-            args[_key2 - 2] = arguments[_key2];
-          }
-
-          printWarning.apply(undefined, [format].concat(args));
-        }
-      };
-    }
-
-    var lowPriorityWarning$1 = lowPriorityWarning;
 
     function typeOf(object) {
       if ((typeof object === 'undefined' ? 'undefined' : _typeof(object)) === 'object' && object !== null) {
         var $$typeof = object.$$typeof;
+
         switch ($$typeof) {
           case REACT_ELEMENT_TYPE:
             var type = object.type;
@@ -28787,29 +28759,32 @@ if (process.env.NODE_ENV !== "production") {
               case REACT_STRICT_MODE_TYPE:
               case REACT_SUSPENSE_TYPE:
                 return type;
+
               default:
                 var $$typeofType = type && type.$$typeof;
 
                 switch ($$typeofType) {
                   case REACT_CONTEXT_TYPE:
                   case REACT_FORWARD_REF_TYPE:
+                  case REACT_LAZY_TYPE:
+                  case REACT_MEMO_TYPE:
                   case REACT_PROVIDER_TYPE:
                     return $$typeofType;
+
                   default:
                     return $$typeof;
                 }
+
             }
-          case REACT_LAZY_TYPE:
-          case REACT_MEMO_TYPE:
+
           case REACT_PORTAL_TYPE:
             return $$typeof;
         }
       }
 
       return undefined;
-    }
+    } // AsyncMode is deprecated along with isAsyncMode
 
-    // AsyncMode is deprecated along with isAsyncMode
     var AsyncMode = REACT_ASYNC_MODE_TYPE;
     var ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;
     var ContextConsumer = REACT_CONTEXT_TYPE;
@@ -28823,17 +28798,17 @@ if (process.env.NODE_ENV !== "production") {
     var Profiler = REACT_PROFILER_TYPE;
     var StrictMode = REACT_STRICT_MODE_TYPE;
     var Suspense = REACT_SUSPENSE_TYPE;
+    var hasWarnedAboutDeprecatedIsAsyncMode = false; // AsyncMode should be deprecated
 
-    var hasWarnedAboutDeprecatedIsAsyncMode = false;
-
-    // AsyncMode should be deprecated
     function isAsyncMode(object) {
       {
         if (!hasWarnedAboutDeprecatedIsAsyncMode) {
-          hasWarnedAboutDeprecatedIsAsyncMode = true;
-          lowPriorityWarning$1(false, 'The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 17+. Update your code to use ' + 'ReactIs.isConcurrentMode() instead. It has the exact same API.');
+          hasWarnedAboutDeprecatedIsAsyncMode = true; // Using console['warn'] to evade Babel and ESLint
+
+          console['warn']('The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 17+. Update your code to use ' + 'ReactIs.isConcurrentMode() instead. It has the exact same API.');
         }
       }
+
       return isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
     }
     function isConcurrentMode(object) {
@@ -28873,7 +28848,6 @@ if (process.env.NODE_ENV !== "production") {
       return typeOf(object) === REACT_SUSPENSE_TYPE;
     }
 
-    exports.typeOf = typeOf;
     exports.AsyncMode = AsyncMode;
     exports.ConcurrentMode = ConcurrentMode;
     exports.ContextConsumer = ContextConsumer;
@@ -28887,7 +28861,6 @@ if (process.env.NODE_ENV !== "production") {
     exports.Profiler = Profiler;
     exports.StrictMode = StrictMode;
     exports.Suspense = Suspense;
-    exports.isValidElementType = isValidElementType;
     exports.isAsyncMode = isAsyncMode;
     exports.isConcurrentMode = isConcurrentMode;
     exports.isContextConsumer = isContextConsumer;
@@ -28901,12 +28874,14 @@ if (process.env.NODE_ENV !== "production") {
     exports.isProfiler = isProfiler;
     exports.isStrictMode = isStrictMode;
     exports.isSuspense = isSuspense;
+    exports.isValidElementType = isValidElementType;
+    exports.typeOf = typeOf;
   })();
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
 /***/ }),
-/* 252 */
+/* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28922,12 +28897,12 @@ if (process.env.NODE_ENV !== "production") {
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var ReactIs = __webpack_require__(106);
-var assign = __webpack_require__(253);
+var assign = __webpack_require__(254);
 
-var ReactPropTypesSecret = __webpack_require__(67);
-var checkPropTypes = __webpack_require__(254);
+var ReactPropTypesSecret = __webpack_require__(68);
+var has = __webpack_require__(107);
+var checkPropTypes = __webpack_require__(255);
 
-var has = Function.call.bind(Object.prototype.hasOwnProperty);
 var printWarning = function printWarning() {};
 
 if (process.env.NODE_ENV !== 'production') {
@@ -29028,6 +29003,7 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
   // Keep this list in sync with production version in `./factoryWithThrowingShims.js`.
   var ReactPropTypes = {
     array: createPrimitiveTypeChecker('array'),
+    bigint: createPrimitiveTypeChecker('bigint'),
     bool: createPrimitiveTypeChecker('boolean'),
     func: createPrimitiveTypeChecker('function'),
     number: createPrimitiveTypeChecker('number'),
@@ -29073,8 +29049,9 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
    * is prohibitively expensive if they are created too often, such as what
    * happens in oneOfType() for any type before the one that matched.
    */
-  function PropTypeError(message) {
+  function PropTypeError(message, data) {
     this.message = message;
+    this.data = data && (typeof data === 'undefined' ? 'undefined' : _typeof(data)) === 'object' ? data : {};
     this.stack = '';
   }
   // Make `instanceof Error` still work for returned errors.
@@ -29136,7 +29113,7 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
         // 'of type `object`'.
         var preciseType = getPreciseType(propValue);
 
-        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + preciseType + '` supplied to `' + componentName + '`, expected ') + ('`' + expectedType + '`.'));
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + preciseType + '` supplied to `' + componentName + '`, expected ') + ('`' + expectedType + '`.'), { expectedType: expectedType });
       }
       return null;
     }
@@ -29274,14 +29251,19 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
     }
 
     function validate(props, propName, componentName, location, propFullName) {
+      var expectedTypes = [];
       for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
         var checker = arrayOfTypeCheckers[i];
-        if (checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret) == null) {
+        var checkerResult = checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret);
+        if (checkerResult == null) {
           return null;
         }
+        if (checkerResult.data && has(checkerResult.data, 'expectedType')) {
+          expectedTypes.push(checkerResult.data.expectedType);
+        }
       }
-
-      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`.'));
+      var expectedTypesMessage = expectedTypes.length > 0 ? ', expected one of type [' + expectedTypes.join(', ') + ']' : '';
+      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`' + expectedTypesMessage + '.'));
     }
     return createChainableTypeChecker(validate);
   }
@@ -29296,6 +29278,10 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
     return createChainableTypeChecker(validate);
   }
 
+  function invalidValidatorError(componentName, location, propFullName, key, type) {
+    return new PropTypeError((componentName || 'React class') + ': ' + location + ' type `' + propFullName + '.' + key + '` is invalid; ' + 'it must be a function, usually from the `prop-types` package, but received `' + type + '`.');
+  }
+
   function createShapeTypeChecker(shapeTypes) {
     function validate(props, propName, componentName, location, propFullName) {
       var propValue = props[propName];
@@ -29305,8 +29291,8 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
       }
       for (var key in shapeTypes) {
         var checker = shapeTypes[key];
-        if (!checker) {
-          continue;
+        if (typeof checker !== 'function') {
+          return invalidValidatorError(componentName, location, propFullName, key, getPreciseType(checker));
         }
         var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
         if (error) {
@@ -29325,11 +29311,13 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
       if (propType !== 'object') {
         return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
       }
-      // We need to check all keys in case some are required but missing from
-      // props.
+      // We need to check all keys in case some are required but missing from props.
       var allKeys = assign({}, props[propName], shapeTypes);
       for (var key in allKeys) {
         var checker = shapeTypes[key];
+        if (has(shapeTypes, key) && typeof checker !== 'function') {
+          return invalidValidatorError(componentName, location, propFullName, key, getPreciseType(checker));
+        }
         if (!checker) {
           return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` key `' + key + '` supplied to `' + componentName + '`.' + '\nBad object: ' + JSON.stringify(props[propName], null, '  ') + '\nValid keys: ' + JSON.stringify(Object.keys(shapeTypes), null, '  '));
         }
@@ -29484,7 +29472,7 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
 /***/ }),
-/* 253 */
+/* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29580,7 +29568,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 };
 
 /***/ }),
-/* 254 */
+/* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29598,9 +29586,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 var printWarning = function printWarning() {};
 
 if (process.env.NODE_ENV !== 'production') {
-  var ReactPropTypesSecret = __webpack_require__(67);
+  var ReactPropTypesSecret = __webpack_require__(68);
   var loggedTypeFailures = {};
-  var has = Function.call.bind(Object.prototype.hasOwnProperty);
+  var has = __webpack_require__(107);
 
   printWarning = function printWarning(text) {
     var message = 'Warning: ' + text;
@@ -29612,7 +29600,7 @@ if (process.env.NODE_ENV !== 'production') {
       // This error was thrown as a convenience so that you can use this stack
       // to find the callsite that caused this warning to fire.
       throw new Error(message);
-    } catch (x) {}
+    } catch (x) {/**/}
   };
 }
 
@@ -29639,7 +29627,7 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
           // This is intentionally an invariant that gets caught. It's the same
           // behavior as without this statement except with a better message.
           if (typeof typeSpecs[typeSpecName] !== 'function') {
-            var err = Error((componentName || 'React class') + ': ' + location + ' type `' + typeSpecName + '` is invalid; ' + 'it must be a function, usually from the `prop-types` package, but received `' + _typeof(typeSpecs[typeSpecName]) + '`.');
+            var err = Error((componentName || 'React class') + ': ' + location + ' type `' + typeSpecName + '` is invalid; ' + 'it must be a function, usually from the `prop-types` package, but received `' + _typeof(typeSpecs[typeSpecName]) + '`.' + 'This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.');
             err.name = 'Invariant Violation';
             throw err;
           }
@@ -29679,7 +29667,7 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
 /***/ }),
-/* 255 */
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29692,7 +29680,7 @@ module.exports = checkPropTypes;
 
 
 
-var ReactPropTypesSecret = __webpack_require__(67);
+var ReactPropTypesSecret = __webpack_require__(68);
 
 function emptyFunction() {}
 function emptyFunctionWithReset() {}
@@ -29716,6 +29704,7 @@ module.exports = function () {
   // Keep this list in sync with production version in `./factoryWithTypeCheckers.js`.
   var ReactPropTypes = {
     array: shim,
+    bigint: shim,
     bool: shim,
     func: shim,
     number: shim,
@@ -29745,7 +29734,7 @@ module.exports = function () {
 };
 
 /***/ }),
-/* 256 */
+/* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29756,15 +29745,15 @@ exports.default = void 0;
 
 var PropTypes = _interopRequireWildcard(__webpack_require__(19));
 
-var _addClass = _interopRequireDefault(__webpack_require__(257));
+var _addClass = _interopRequireDefault(__webpack_require__(258));
 
-var _removeClass = _interopRequireDefault(__webpack_require__(260));
+var _removeClass = _interopRequireDefault(__webpack_require__(261));
 
 var _react = _interopRequireDefault(__webpack_require__(9));
 
-var _Transition = _interopRequireDefault(__webpack_require__(108));
+var _Transition = _interopRequireDefault(__webpack_require__(109));
 
-var _PropTypes = __webpack_require__(110);
+var _PropTypes = __webpack_require__(111);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -30145,18 +30134,18 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
 /***/ }),
-/* 257 */
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(258);
+var _interopRequireDefault = __webpack_require__(259);
 
 exports.__esModule = true;
 exports.default = addClass;
 
-var _hasClass = _interopRequireDefault(__webpack_require__(259));
+var _hasClass = _interopRequireDefault(__webpack_require__(260));
 
 function addClass(element, className) {
   if (element.classList) element.classList.add(className);else if (!(0, _hasClass.default)(element, className)) if (typeof element.className === 'string') element.className = element.className + ' ' + className;else element.setAttribute('class', (element.className && element.className.baseVal || '') + ' ' + className);
@@ -30165,7 +30154,7 @@ function addClass(element, className) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 258 */
+/* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30180,7 +30169,7 @@ function _interopRequireDefault(obj) {
 module.exports = _interopRequireDefault, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
-/* 259 */
+/* 260 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30196,7 +30185,7 @@ function hasClass(element, className) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 260 */
+/* 261 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30211,7 +30200,7 @@ module.exports = function removeClass(element, className) {
 };
 
 /***/ }),
-/* 261 */
+/* 262 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30226,7 +30215,7 @@ var _react = _interopRequireDefault(__webpack_require__(9));
 
 var _reactDom = __webpack_require__(41);
 
-var _TransitionGroup = _interopRequireDefault(__webpack_require__(111));
+var _TransitionGroup = _interopRequireDefault(__webpack_require__(112));
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -30376,7 +30365,7 @@ module.exports = exports["default"];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
 /***/ }),
-/* 262 */
+/* 263 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30531,7 +30520,7 @@ function getNextChildMapping(nextProps, prevChildMapping, onExited) {
 }
 
 /***/ }),
-/* 263 */
+/* 264 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30547,7 +30536,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _HelperFunction = __webpack_require__(114);
+var _HelperFunction = __webpack_require__(52);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30573,7 +30562,7 @@ var save = function save(props) {
         iconSize = _props$attributes.iconSize;
 
 
-    var mainClasses = (0, _classnames2.default)(className, 'premium-icon');
+    var mainClasses = (0, _classnames2.default)(className);
 
     return React.createElement(
         'div',
@@ -30621,7 +30610,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 264 */
+/* 265 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31818,14 +31807,14 @@ var deprecatedContent = [{
                 unit: ''
             },
             iconBorder: {
-                borderColor: attributes.iconStyles[0].btnBorderColor,
-                borderType: attributes.iconStyles[0].borderColor,
+                borderColor: attributes.iconStyles[0].borderColor,
+                borderType: attributes.iconStyles[0].borderType,
                 borderRadius: {
                     "Desktop": {
-                        top: "",
-                        right: "",
-                        bottom: "",
-                        left: ""
+                        top: attributes.iconStyles[0].borderRadius,
+                        right: attributes.iconStyles[0].borderRadius,
+                        bottom: attributes.iconStyles[0].borderRadius,
+                        left: attributes.iconStyles[0].borderRadius
                     },
                     "Tablet": {
                         top: "",
@@ -31862,14 +31851,14 @@ var deprecatedContent = [{
                 }
             },
             containerBorder: {
-                borderColor: attributes.containerStyles[0].wrapBorderType,
-                borderType: attributes.containerStyles[0].wrapBorderColor,
+                borderColor: attributes.containerStyles[0].wrapBorderColor,
+                borderType: attributes.containerStyles[0].wrapBorderType,
                 borderRadius: {
                     "Desktop": {
-                        top: "",
-                        right: "",
-                        bottom: "",
-                        left: ""
+                        top: attributes.containerStyles[0].wrapBorderRadius,
+                        right: attributes.containerStyles[0].wrapBorderRadius,
+                        bottom: attributes.containerStyles[0].wrapBorderRadius,
+                        left: attributes.containerStyles[0].wrapBorderRadius
                     },
                     "Tablet": {
                         top: "",
@@ -31907,32 +31896,32 @@ var deprecatedContent = [{
             },
             containerBackground: {
                 'backgroundType': attributes.backgroundType,
-                'backgroundColor': attributes.containerStyles.containerBack,
-                'backgroundImageID': attributes.containerStyles.backgroundImageID,
-                'backgroundImageURL': attributes.containerStyles.backgroundImageURL,
-                'backgroundPosition': attributes.containerStyles.backgroundPosition,
-                'backgroundRepeat': attributes.containerStyles.backgroundRepeat,
-                'backgroundSize': attributes.containerStyles.backgroundSize,
-                'fixed': attributes.containerStyles.fixed,
-                'gradientLocationOne': attributes.containerStyles.gradientLocationOne,
-                'gradientColorTwo': attributes.containerStyles.gradientColorTwo,
-                'gradientLocationTwo': attributes.containerStyles.gradientLocationTwo,
-                'gradientAngle': attributes.containerStyles.gradientAngle,
-                'gradientPosition': attributes.containerStyles.gradientPosition,
-                'gradientType': attributes.containerStyles.gradientType
+                'backgroundColor': attributes.containerStyles[0].containerBack,
+                'backgroundImageID': attributes.containerStyles[0].backgroundImageID,
+                'backgroundImageURL': attributes.containerStyles[0].backgroundImageURL,
+                'backgroundPosition': attributes.containerStyles[0].backgroundPosition,
+                'backgroundRepeat': attributes.containerStyles[0].backgroundRepeat,
+                'backgroundSize': attributes.containerStyles[0].backgroundSize,
+                'fixed': attributes.containerStyles[0].fixed,
+                'gradientLocationOne': attributes.containerStyles[0].gradientLocationOne,
+                'gradientColorTwo': attributes.containerStyles[0].gradientColorTwo,
+                'gradientLocationTwo': attributes.containerStyles[0].gradientLocationTwo,
+                'gradientAngle': attributes.containerStyles[0].gradientAngle,
+                'gradientPosition': attributes.containerStyles[0].gradientPosition,
+                'gradientType': attributes.containerStyles[0].gradientType
             },
             containerShadow: {
-                'color': attributes.containerStyles.wrapShadowColor,
-                'blur': attributes.containerStyles.wrapShadowBlur,
-                'horizontal': attributes.containerStyles.wrapShadowHorizontal,
-                'vertical': attributes.containerStyles.wrapShadowVertical,
-                'position': attributes.containerStyles.wrapShadowPosition
+                'color': attributes.containerStyles[0].wrapShadowColor,
+                'blur': attributes.containerStyles[0].wrapShadowBlur,
+                'horizontal': attributes.containerStyles[0].wrapShadowHorizontal,
+                'vertical': attributes.containerStyles[0].wrapShadowVertical,
+                'position': attributes.containerStyles[0].wrapShadowPosition
             },
             iconShadow: {
-                'color': attributes.iconStyles.shadowColor,
-                'blur': attributes.iconStyles.shadowBlur,
-                'horizontal': attributes.iconStyles.shadowHorizontal,
-                'vertical': attributes.iconStyles.shadowVertical
+                'color': attributes.iconStyles[0].shadowColor,
+                'blur': attributes.iconStyles[0].shadowBlur,
+                'horizontal': attributes.iconStyles[0].shadowHorizontal,
+                'vertical': attributes.iconStyles[0].shadowVertical
             }
         };
         return Object.assign(attributes, newAttributes);
@@ -31966,7 +31955,7 @@ var deprecatedContent = [{
             backgroundType = _props$attributes6.backgroundType;
 
 
-        var mainClasses = (0, _classnames2.default)(className, 'premium-icon');
+        var mainClasses = (0, _classnames2.default)(className);
 
         var btnGrad = void 0,
             btnGrad2 = void 0,
@@ -32032,7 +32021,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 265 */
+/* 266 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32342,7 +32331,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 266 */
+/* 267 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32354,19 +32343,19 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(267);
+var _edit = __webpack_require__(268);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(268);
+var _save = __webpack_require__(269);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(269);
+var _deprecated = __webpack_require__(270);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(270);
+var _attributes = __webpack_require__(271);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -32391,7 +32380,7 @@ registerBlockType("premium/icon-box", {
 });
 
 /***/ }),
-/* 267 */
+/* 268 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32427,9 +32416,9 @@ var _premiumBorder = __webpack_require__(6);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumBackground = __webpack_require__(105);
+var _PremiumBackgroundControl = __webpack_require__(20);
 
-var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
+var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
 var _premiumMediaUpload = __webpack_require__(12);
 
@@ -32459,7 +32448,7 @@ var _premiumResponsiveSpacing = __webpack_require__(51);
 
 var _premiumResponsiveSpacing2 = _interopRequireDefault(_premiumResponsiveSpacing);
 
-var _fontLoader = __webpack_require__(22);
+var _fontLoader = __webpack_require__(23);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
 
@@ -32467,13 +32456,15 @@ var _PremiumShadow = __webpack_require__(5);
 
 var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
-var _inspectorTabs = __webpack_require__(112);
+var _inspectorTabs = __webpack_require__(113);
 
 var _inspectorTabs2 = _interopRequireDefault(_inspectorTabs);
 
-var _inspectorTab = __webpack_require__(113);
+var _inspectorTab = __webpack_require__(114);
 
 var _inspectorTab2 = _interopRequireDefault(_inspectorTab);
+
+var _HelperFunction = __webpack_require__(52);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -32519,23 +32510,6 @@ var edit = function (_Component) {
                 clientId = _props.clientId;
 
             setAttributes({ block_id: clientId });
-            this.getPreviewSize = this.getPreviewSize.bind(this);
-        }
-    }, {
-        key: "getPreviewSize",
-        value: function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
-            if (device === 'Mobile') {
-                if (undefined !== mobileSize && '' !== mobileSize) {
-                    return mobileSize;
-                } else if (undefined !== tabletSize && '' !== tabletSize) {
-                    return tabletSize;
-                }
-            } else if (device === 'Tablet') {
-                if (undefined !== tabletSize && '' !== tabletSize) {
-                    return tabletSize;
-                }
-            }
-            return desktopSize;
         }
     }, {
         key: "render",
@@ -32547,15 +32521,6 @@ var edit = function (_Component) {
                 blockId = _props2.clientId,
                 attributes = _props2.attributes;
 
-            var saveContainerStyle = function saveContainerStyle(value) {
-                var newUpdate = containerStyles.map(function (item, index) {
-                    if (0 === index) {
-                        item = _extends({}, item, value);
-                    }
-                    return item;
-                });
-                setAttributes({ containerStyles: newUpdate });
-            };
 
             var saveTitleStyle = function saveTitleStyle(value) {
                 var newUpdate = titleStyles.map(function (item, index) {
@@ -32588,8 +32553,6 @@ var edit = function (_Component) {
             };
 
             var block_id = attributes.block_id,
-                borderIconBox = attributes.borderIconBox,
-                btnBorderIconBox = attributes.btnBorderIconBox,
                 align = attributes.align,
                 iconImage = attributes.iconImage,
                 iconImgId = attributes.iconImgId,
@@ -32621,7 +32584,6 @@ var edit = function (_Component) {
                 titleStyles = attributes.titleStyles,
                 descStyles = attributes.descStyles,
                 btnStyles = attributes.btnStyles,
-                containerStyles = attributes.containerStyles,
                 iconType = attributes.iconType,
                 containerPadding = attributes.containerPadding,
                 containerMargin = attributes.containerMargin,
@@ -32630,7 +32592,15 @@ var edit = function (_Component) {
                 descMargin = attributes.descMargin,
                 titleMargin = attributes.titleMargin,
                 btnBorder = attributes.btnBorder,
-                containerBorder = attributes.containerBorder;
+                containerBorder = attributes.containerBorder,
+                containerBackground = attributes.containerBackground,
+                titleShadow = attributes.titleShadow,
+                btnShadow = attributes.btnShadow,
+                containerShadow = attributes.containerShadow,
+                containerHoverShadow = attributes.containerHoverShadow,
+                titleTypography = attributes.titleTypography,
+                descTypography = attributes.descTypography,
+                btnTypography = attributes.btnTypography;
 
 
             var imgIcon = [{
@@ -32715,27 +32685,24 @@ var edit = function (_Component) {
 
             var loadTitleGoogleFonts = void 0;
             var loadDescriptionGoogleFonts = void 0;
-            if (titleStyles[0].titleFont !== 'Default') {
+            if (titleTypography.fontFamily !== 'Default') {
                 var titleConfig = {
                     google: {
-                        families: [titleStyles[0].titleFont]
+                        families: [titleTypography.fontFamily]
                     }
                 };
                 loadTitleGoogleFonts = React.createElement(_fontLoader2.default, { config: titleConfig });
             }
-            if (descStyles[0].descFont !== 'Default') {
+            if (descTypography.fontFamily !== 'Default') {
                 var descriptionConfig = {
                     google: {
-                        families: [descStyles[0].descFont]
+                        families: [descTypography.fontFamily]
                     }
                 };
                 loadDescriptionGoogleFonts = React.createElement(_fontLoader2.default, { config: descriptionConfig });
             }
 
             var mainClasses = (0, _classnames2.default)(className, "premium-icon-box");
-            var titleFontSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titleSizeTablet, titleStyles[0].titleSizeMobile);
-            var descriptionFontSize = this.getPreviewSize(this.props.deviceType, descStyles[0].descSize, descStyles[0].descSizeTablet, descStyles[0].descSizeMobile);
-            var buttonFontSize = this.getPreviewSize(this.props.deviceType, btnStyles[0].btnSize, btnStyles[0].btnSizeTablet, btnStyles[0].btnSizeMobile);
 
             return [isSelected && React.createElement(
                 BlockControls,
@@ -32760,7 +32727,7 @@ var edit = function (_Component) {
                             {
                                 title: __("Display Options", 'premium-blocks-for-gutenberg'),
                                 className: "premium-panel-body",
-                                initialOpen: false
+                                initialOpen: true
                             },
                             React.createElement(ToggleControl, {
                                 label: __("Icon", 'premium-blocks-for-gutenberg'),
@@ -32984,7 +32951,7 @@ var edit = function (_Component) {
                             {
                                 title: __("Icon"),
                                 className: "premium-panel-body",
-                                initialOpen: false
+                                initialOpen: true
                             },
                             React.createElement(_ColorComponent2.default, {
                                 label: __("Icon Color", 'premium-blocks-for-gutenberg'),
@@ -33033,65 +33000,16 @@ var edit = function (_Component) {
                             }),
                             React.createElement(_premiumTypo2.default, {
                                 components: ["responsiveSize", "weight", "style", "upper", "spacing", "line", "family"],
-                                setAttributes: saveTitleStyle,
-                                fontSizeType: {
-                                    value: titleStyles[0].titleSizeUnit,
-                                    label: __("titleSizeUnit", 'premium-blocks-for-gutenberg')
-                                },
-                                fontSize: titleStyles[0].titleSize,
-                                fontSizeMobile: titleStyles[0].titleSizeMobile,
-                                fontSizeTablet: titleStyles[0].titleSizeTablet,
-                                onChangeSize: function onChangeSize(newSize) {
-                                    return saveTitleStyle({ titleSize: newSize });
-                                },
-                                onChangeTabletSize: function onChangeTabletSize(newSize) {
-                                    return saveTitleStyle({ titleSizeTablet: newSize });
-                                },
-                                onChangeMobileSize: function onChangeMobileSize(newSize) {
-                                    return saveTitleStyle({ titleSizeMobile: newSize });
-                                },
-                                weight: titleStyles[0].titleWeight,
-                                style: titleStyles[0].titleStyle,
-                                spacing: titleStyles[0].titleLetter,
-                                line: titleStyles[0].titleLine,
-                                upper: titleStyles[0].titleUpper,
-                                fontFamily: titleStyles[0].titleFont,
-                                onChangeWeight: function onChangeWeight(newWeight) {
-                                    return saveTitleStyle({ titleWeight: newWeight || 500 });
-                                },
-                                onChangeStyle: function onChangeStyle(newStyle) {
-                                    return saveTitleStyle({ titleStyle: newStyle });
-                                },
-                                onChangeSpacing: function onChangeSpacing(newValue) {
-                                    return saveTitleStyle({ titleLetter: newValue });
-                                },
-                                onChangeLine: function onChangeLine(newValue) {
-                                    return saveTitleStyle({ titleLine: newValue });
-                                },
-                                onChangeUpper: function onChangeUpper(check) {
-                                    return saveTitleStyle({ titleUpper: check });
-                                },
-                                onChangeFamily: function onChangeFamily(fontFamily) {
-                                    return saveTitleStyle({ titleFont: fontFamily });
+                                value: titleTypography,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({ titleTypography: newValue });
                                 }
                             }),
                             React.createElement(_PremiumShadow2.default, {
-                                label: __("Text Shadow", 'premium-blocks-for-gutenberg'),
-                                color: titleStyles[0].titleShadowColor,
-                                blur: titleStyles[0].titleShadowBlur,
-                                horizontal: titleStyles[0].titleShadowHorizontal,
-                                vertical: titleStyles[0].titleShadowVertical,
-                                onChangeColor: function onChangeColor(newColor) {
-                                    return saveTitleStyle({ titleShadowColor: newColor });
-                                },
-                                onChangeBlur: function onChangeBlur(newBlur) {
-                                    return saveTitleStyle({ titleShadowBlur: newBlur || 0 });
-                                },
-                                onChangehHorizontal: function onChangehHorizontal(newValue) {
-                                    return saveTitleStyle({ titleShadowHorizontal: newValue || 0 });
-                                },
-                                onChangeVertical: function onChangeVertical(newValue) {
-                                    return saveTitleStyle({ titleShadowVertical: newValue || 0 });
+                                label: __("Text Shadow", "premium-blocks-for-gutenberg"),
+                                value: titleShadow,
+                                onChange: function onChange(value) {
+                                    return setAttributes({ titleShadow: value });
                                 }
                             }),
                             React.createElement(_premiumResponsiveSpacing2.default, {
@@ -33121,34 +33039,9 @@ var edit = function (_Component) {
                             }),
                             React.createElement(_premiumTypo2.default, {
                                 components: ["responsiveSize", "weight", "line", "family"],
-                                setAttributes: saveDescriptionStyle,
-                                fontSizeType: {
-                                    value: descStyles[0].descSizeUnit,
-                                    label: __("descSizeUnit", 'premium-blocks-for-gutenberg')
-                                },
-                                fontSize: descStyles[0].descSize,
-                                fontSizeMobile: descStyles[0].descSizeMobile,
-                                fontSizeTablet: descStyles[0].descSizeTablet,
-                                onChangeSize: function onChangeSize(newSize) {
-                                    return saveDescriptionStyle({ descSize: newSize });
-                                },
-                                onChangeTabletSize: function onChangeTabletSize(newSize) {
-                                    return saveDescriptionStyle({ descSizeTablet: newSize });
-                                },
-                                onChangeMobileSize: function onChangeMobileSize(newSize) {
-                                    return saveDescriptionStyle({ descSizeMobile: newSize });
-                                },
-                                fontFamily: descStyles[0].descFont,
-                                weight: descStyles[0].descWeight,
-                                line: descStyles[0].descLine,
-                                onChangeWeight: function onChangeWeight(newWeight) {
-                                    return saveDescriptionStyle({ descWeight: newWeight || 500 });
-                                },
-                                onChangeLine: function onChangeLine(newValue) {
-                                    return saveDescriptionStyle({ descLine: newValue });
-                                },
-                                onChangeFamily: function onChangeFamily(fontFamily) {
-                                    return saveDescriptionStyle({ descFont: fontFamily });
+                                value: descTypography,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({ descTypography: newValue });
                                 }
                             }),
                             React.createElement(_premiumResponsiveSpacing2.default, {
@@ -33247,39 +33140,9 @@ var edit = function (_Component) {
                             ),
                             React.createElement(_premiumTypo2.default, {
                                 components: ["responsiveSize", "weight", "style", "upper", "spacing"],
-
-                                setAttributes: saveButtonStyle,
-                                fontSizeType: {
-                                    value: btnStyles[0].btnSizeUnit,
-                                    label: __("btnSizeUnit", 'premium-blocks-for-gutenberg')
-                                },
-                                fontSize: btnStyles[0].btnSize,
-                                fontSizeMobile: btnStyles[0].btnSizeMobile,
-                                fontSizeTablet: btnStyles[0].btnSizeTablet,
-                                weight: btnStyles[0].btnWeight,
-                                style: btnStyles[0].btnStyle,
-                                spacing: btnStyles[0].btnLetter,
-                                upper: btnStyles[0].btnUpper,
-                                onChangeWeight: function onChangeWeight(newWeight) {
-                                    return saveButtonStyle({ btnWeight: newWeight || 500 });
-                                },
-                                onChangeStyle: function onChangeStyle(newStyle) {
-                                    return saveButtonStyle({ btnStyle: newStyle });
-                                },
-                                onChangeSpacing: function onChangeSpacing(newValue) {
-                                    return saveButtonStyle({ btnLetter: newValue });
-                                },
-                                onChangeUpper: function onChangeUpper(check) {
-                                    return saveButtonStyle({ btnUpper: check });
-                                },
-                                onChangeSize: function onChangeSize(newSize) {
-                                    return saveButtonStyle({ btnSize: newSize });
-                                },
-                                onChangeTabletSize: function onChangeTabletSize(newSize) {
-                                    return saveButtonStyle({ btnSizeTablet: newSize });
-                                },
-                                onChangeMobileSize: function onChangeMobileSize(newSize) {
-                                    return saveButtonStyle({ btnSizeMobile: newSize });
+                                value: btnTypography,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({ btnTypography: newValue });
                                 }
                             }),
                             React.createElement(_premiumBorder2.default, {
@@ -33290,27 +33153,9 @@ var edit = function (_Component) {
                                 }
                             }),
                             React.createElement(_PremiumShadow2.default, {
-                                label: __("Box Shadow", 'premium-blocks-for-gutenberg'),
-                                boxShadow: true,
-                                color: btnStyles[0].btnShadowColor,
-                                blur: btnStyles[0].btnShadowBlur,
-                                horizontal: btnStyles[0].btnShadowHorizontal,
-                                vertical: btnStyles[0].btnShadowVertical,
-                                position: btnStyles[0].btnShadowPosition,
-                                onChangeColor: function onChangeColor(newColor) {
-                                    return saveButtonStyle({ btnShadowColor: newColor });
-                                },
-                                onChangeBlur: function onChangeBlur(newBlur) {
-                                    return saveButtonStyle({ btnShadowBlur: newBlur || 0 });
-                                },
-                                onChangehHorizontal: function onChangehHorizontal(newValue) {
-                                    return saveButtonStyle({ btnShadowHorizontal: newValue || 0 });
-                                },
-                                onChangeVertical: function onChangeVertical(newValue) {
-                                    return saveButtonStyle({ btnShadowVertical: newValue || 0 });
-                                },
-                                onChangePosition: function onChangePosition(newValue) {
-                                    return saveButtonStyle({ btnShadowPosition: newValue || 0 });
+                                value: btnShadow,
+                                onChange: function onChange(value) {
+                                    return setAttributes({ btnShadow: value });
                                 }
                             }),
                             React.createElement(_premiumResponsiveSpacing2.default, {
@@ -33339,41 +33184,10 @@ var edit = function (_Component) {
                                 className: "premium-panel-body",
                                 initialOpen: false
                             },
-                            React.createElement(_ColorComponent2.default, {
-                                label: __("Container Background Color"),
-                                colorValue: containerStyles[0].backColor,
-                                onColorChange: function onColorChange(newvalue) {
-                                    return saveContainerStyle({ backColor: newvalue });
-                                },
-                                colorDefault: ""
-                            }),
-                            React.createElement(_premiumBackground2.default, {
-                                imageID: containerStyles[0].imageID,
-                                imageURL: containerStyles[0].imageURL,
-                                backgroundPosition: containerStyles[0].backgroundPosition,
-                                backgroundRepeat: containerStyles[0].backgroundRepeat,
-                                backgroundSize: containerStyles[0].backgroundSize,
-                                fixed: containerStyles[0].fixed,
-                                onSelectMedia: function onSelectMedia(media) {
-                                    saveContainerStyle({
-                                        imageID: media.id,
-                                        imageURL: media.url
-                                    });
-                                },
-                                onRemoveImage: function onRemoveImage(value) {
-                                    return saveContainerStyle({ imageURL: "", imageID: "" });
-                                },
-                                onChangeBackPos: function onChangeBackPos(newValue) {
-                                    return saveContainerStyle({ backgroundPosition: newValue });
-                                },
-                                onchangeBackRepeat: function onchangeBackRepeat(newValue) {
-                                    return saveContainerStyle({ backgroundRepeat: newValue });
-                                },
-                                onChangeBackSize: function onChangeBackSize(newValue) {
-                                    return saveContainerStyle({ backgroundSize: newValue });
-                                },
-                                onChangeFixed: function onChangeFixed(check) {
-                                    return saveContainerStyle({ fixed: check });
+                            React.createElement(_PremiumBackgroundControl2.default, {
+                                value: containerBackground,
+                                onChange: function onChange(value) {
+                                    return setAttributes({ containerBackground: value });
                                 }
                             }),
                             React.createElement(_premiumBorder2.default, {
@@ -33384,51 +33198,16 @@ var edit = function (_Component) {
                                 }
                             }),
                             React.createElement(_PremiumShadow2.default, {
-                                label: __("Box Shadow", 'premium-blocks-for-gutenberg'),
-                                boxShadow: true,
-                                color: containerStyles[0].shadowColor,
-                                blur: containerStyles[0].shadowBlur,
-                                horizontal: containerStyles[0].shadowHorizontal,
-                                vertical: containerStyles[0].shadowVertical,
-                                position: containerStyles[0].shadowPosition,
-                                onChangeColor: function onChangeColor(newColor) {
-                                    return saveContainerStyle({ shadowColor: newColor || "transparent" });
-                                },
-                                onChangeBlur: function onChangeBlur(newBlur) {
-                                    return saveContainerStyle({ shadowBlur: newBlur || 0 });
-                                },
-                                onChangehHorizontal: function onChangehHorizontal(newValue) {
-                                    return saveContainerStyle({ shadowHorizontal: newValue || 0 });
-                                },
-                                onChangeVertical: function onChangeVertical(newValue) {
-                                    return saveContainerStyle({ shadowVertical: newValue || 0 });
-                                },
-                                onChangePosition: function onChangePosition(newValue) {
-                                    return saveContainerStyle({ shadowPosition: newValue });
+                                value: containerShadow,
+                                onChange: function onChange(value) {
+                                    return setAttributes({ containerShadow: value });
                                 }
                             }),
                             React.createElement(_PremiumShadow2.default, {
-                                label: __("Hover Box Shadow", 'premium-blocks-for-gutenberg'),
-                                boxShadow: true,
-                                color: containerStyles[0].hoverShadowColor,
-                                blur: containerStyles[0].hoverShadowBlur,
-                                horizontal: containerStyles[0].hoverShadowHorizontal,
-                                vertical: containerStyles[0].hoverShadowVertical,
-                                position: containerStyles[0].hoverShadowPosition,
-                                onChangeColor: function onChangeColor(newColor) {
-                                    return saveContainerStyle({ hoverShadowColor: newColor });
-                                },
-                                onChangeBlur: function onChangeBlur(newBlur) {
-                                    return saveContainerStyle({ hoverShadowBlur: newBlur });
-                                },
-                                onChangehHorizontal: function onChangehHorizontal(newValue) {
-                                    return saveContainerStyle({ hoverShadowHorizontal: newValue });
-                                },
-                                onChangeVertical: function onChangeVertical(newValue) {
-                                    return saveContainerStyle({ hoverShadowVertical: newValue });
-                                },
-                                onChangePosition: function onChangePosition(newValue) {
-                                    return saveContainerStyle({ hoverShadowPosition: newValue });
+                                label: __("Hover Box Shadow", "premium-blocks-for-gutenberg"),
+                                value: containerHoverShadow,
+                                onChange: function onChange(value) {
+                                    return setAttributes({ containerHoverShadow: value });
                                 }
                             }),
                             React.createElement(_premiumResponsiveSpacing2.default, {
@@ -33475,7 +33254,7 @@ var edit = function (_Component) {
                 {
                     id: "premium-icon-box-" + block_id,
                     className: mainClasses + " premium-icon-box-" + iconPos + " premium-icon-box-" + iconHPos + " premium-icon-box-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
-                    style: {
+                    style: _extends({
                         textAlign: align,
                         borderStyle: containerBorder.borderType,
                         borderTopWidth: containerBorder['borderWidth'][this.props.deviceType]['top'] && containerBorder['borderWidth'][this.props.deviceType]['top'] + "px",
@@ -33494,19 +33273,12 @@ var edit = function (_Component) {
                         marginTop: containerMargin[this.props.deviceType]['top'] && containerMargin[this.props.deviceType]['top'] + containerMargin.unit,
                         marginRight: containerMargin[this.props.deviceType]['right'] && containerMargin[this.props.deviceType]['right'] + containerMargin.unit,
                         marginBottom: containerMargin[this.props.deviceType]['bottom'] && containerMargin[this.props.deviceType]['bottom'] + containerMargin.unit,
-                        marginLeft: containerMargin[this.props.deviceType]['left'] && containerMargin[this.props.deviceType]['left'] + containerMargin.unit,
-                        boxShadow: containerStyles[0].shadowHorizontal + "px " + containerStyles[0].shadowVertical + "px " + containerStyles[0].shadowBlur + "px " + containerStyles[0].shadowColor + " " + containerStyles[0].shadowPosition,
-                        backgroundColor: containerStyles[0].backColor,
-                        backgroundImage: containerStyles[0].imageURL ? "url('" + containerStyles[0].imageURL + "')" : 'none',
-                        backgroundRepeat: containerStyles[0].backgroundRepeat,
-                        backgroundPosition: containerStyles[0].backgroundPosition,
-                        backgroundSize: containerStyles[0].backgroundSize,
-                        backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset"
-                    }
+                        marginLeft: containerMargin[this.props.deviceType]['left'] && containerMargin[this.props.deviceType]['left'] + containerMargin.unit
+                    }, (0, _HelperFunction.gradientBackground)(containerBackground))
                 },
                 btnChecked && btnText && React.createElement("style", {
                     dangerouslySetInnerHTML: {
-                        __html: ["#premium-icon-box-" + block_id + ":hover {", "box-shadow: " + containerStyles[0].hoverShadowHorizontal + "px " + containerStyles[0].hoverShadowVertical + "px " + containerStyles[0].hoverShadowBlur + "px " + containerStyles[0].hoverShadowColor + " " + containerStyles[0].hoverShadowPosition + " !important", "}", "#premium-icon-box-" + block_id + " .premium-icon-box__btn:hover {", "color: " + btnStyles[0].btnHoverColor + " !important;", "border-color: " + btnHoverBorder + " !important;", "}", "#premium-icon-box-" + block_id + " .premium-button__none .premium-icon-box__btn:hover {", "background-color: " + btnStyles[0].btnHoverBack + " !important;", "}", "#premium-icon-box-" + block_id + " .premium-button__slide .premium-button::before {", "background-color: " + btnStyles[0].btnHoverBack + " !important;", "}"].join("\n")
+                        __html: ["#premium-icon-box-" + block_id + ":hover {", "box-shadow: " + containerHoverShadow.horizontal + "px " + containerHoverShadow.vertical + "px " + containerHoverShadow.blur + "px " + containerHoverShadow.color + " " + containerHoverShadow.position + " !important", "}", "#premium-icon-box-" + block_id + " {", "box-shadow: " + containerShadow.horizontal + "px " + containerShadow.vertical + "px " + containerShadow.blur + "px " + containerShadow.color + " " + containerShadow.position + " !important", "}", "#premium-icon-box-" + block_id + " .premium-icon-box__btn:hover {", "color: " + btnStyles[0].btnHoverColor + " !important;", "border-color: " + btnHoverBorder + " !important;", "}", "#premium-icon-box-" + block_id + " .premium-button__none .premium-icon-box__btn:hover {", "background-color: " + btnStyles[0].btnHoverBack + " !important;", "}", "#premium-icon-box-" + block_id + " .premium-button__slide .premium-button::before {", "background-color: " + btnStyles[0].btnHoverBack + " !important;", "}"].join("\n")
                     }
                 }),
                 iconChecked && React.createElement(
@@ -33565,15 +33337,15 @@ var edit = function (_Component) {
                             placeholder: __("Awesome Title"),
                             value: titleText,
                             style: {
-                                fontSize: "" + titleFontSize + titleStyles[0].titleSizeUnit,
+                                fontSize: "" + (titleTypography.fontSize[this.props.deviceType] || 20) + titleTypography.fontSize.unit,
+                                fontFamily: titleTypography.fontFamily,
+                                letterSpacing: titleTypography.letterSpacing + "px",
+                                textTransform: titleTypography.textTransform ? "uppercase" : "none",
+                                fontStyle: titleTypography.fontStyle,
+                                fontWeight: titleTypography.fontWeight,
+                                lineHeight: titleTypography.lineHeight + "px",
                                 color: titleStyles[0].titleColor,
-                                fontFamily: titleStyles[0].titleFont,
-                                letterSpacing: titleStyles[0].titleLetter + "px",
-                                textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
-                                fontStyle: titleStyles[0].titleStyle,
-                                fontWeight: titleStyles[0].titleWeight,
-                                textShadow: titleStyles[0].titleShadowHorizontal + "px " + titleStyles[0].titleShadowVertical + "px " + titleStyles[0].titleShadowBlur + "px " + titleStyles[0].titleShadowColor,
-                                lineHeight: titleStyles[0].titleLine + "px"
+                                textShadow: (titleShadow.horizontal || 0) + "px " + (titleShadow.vertical || 0) + "px " + (titleShadow.blur || 0) + "px " + titleShadow.color
                             },
                             keepPlaceholderOnFocus: true
                         })
@@ -33600,10 +33372,10 @@ var edit = function (_Component) {
                             },
                             style: {
                                 color: descStyles[0].descColor,
-                                fontFamily: descStyles[0].descFont,
-                                lineHeight: descStyles[0].descLine + "px",
-                                fontWeight: descStyles[0].descWeight,
-                                fontSize: "" + descriptionFontSize + descStyles[0].descSizeUnit
+                                fontSize: "" + (descTypography.fontSize[this.props.deviceType] || 20) + descTypography.fontSize.unit,
+                                fontFamily: descTypography.fontFamily,
+                                fontWeight: descTypography.fontWeight,
+                                lineHeight: descTypography.lineHeight + "px"
                             },
                             keepPlaceholderOnFocus: true
                         })
@@ -33628,13 +33400,13 @@ var edit = function (_Component) {
                             placeholder: __("Click Here"),
                             value: btnText,
                             style: {
-                                fontSize: "" + buttonFontSize + btnStyles[0].btnSizeUnit,
+                                fontSize: "" + (btnTypography.fontSize[this.props.deviceType] || 20) + btnTypography.fontSize.unit,
+                                letterSpacing: btnTypography.letterSpacing + "px",
+                                textTransform: btnTypography.textTransform ? "uppercase" : "none",
+                                fontStyle: btnTypography.fontStyle,
+                                fontWeight: btnTypography.fontWeight,
                                 color: btnStyles[0].btnColor,
                                 backgroundColor: btnStyles[0].btnBack,
-                                letterSpacing: btnStyles[0].btnLetter + "px",
-                                textTransform: btnStyles[0].btnUpper ? "uppercase" : "none",
-                                fontStyle: btnStyles[0].btnStyle,
-                                fontWeight: btnStyles[0].btnWeight,
                                 borderStyle: btnBorder.borderType,
                                 borderTopWidth: btnBorder['borderWidth'][this.props.deviceType]['top'] && btnBorder['borderWidth'][this.props.deviceType]['top'] + "px",
                                 borderRightWidth: btnBorder['borderWidth'][this.props.deviceType]['right'] && btnBorder['borderWidth'][this.props.deviceType]['right'] + "px",
@@ -33649,7 +33421,7 @@ var edit = function (_Component) {
                                 paddingRight: btnPadding[this.props.deviceType]['right'] && btnPadding[this.props.deviceType]['right'] + btnPadding.unit,
                                 paddingBottom: btnPadding[this.props.deviceType]['bottom'] && btnPadding[this.props.deviceType]['bottom'] + btnPadding.unit,
                                 paddingLeft: btnPadding[this.props.deviceType]['left'] && btnPadding[this.props.deviceType]['left'] + btnPadding.unit,
-                                boxShadow: btnStyles[0].btnShadowHorizontal + "px " + btnStyles[0].btnShadowVertical + "px " + btnStyles[0].btnShadowBlur + "px " + btnStyles[0].btnShadowColor + " " + btnStyles[0].btnShadowPosition
+                                boxShadow: (btnShadow.horizontal || 0) + "px " + (btnShadow.vertical || 0) + "px " + (btnShadow.blur || 0) + "px " + btnShadow.color + " " + btnShadow.position
                             },
                             keepPlaceholderOnFocus: true
                         })
@@ -33679,7 +33451,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 268 */
+/* 269 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33689,9 +33461,13 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
+
+var _HelperFunction = __webpack_require__(52);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -33736,7 +33512,15 @@ var save = function save(props) {
         btnStyles = _props$attributes.btnStyles,
         containerStyles = _props$attributes.containerStyles,
         btnBorder = _props$attributes.btnBorder,
-        containerBorder = _props$attributes.containerBorder;
+        containerBorder = _props$attributes.containerBorder,
+        containerBackground = _props$attributes.containerBackground,
+        titleShadow = _props$attributes.titleShadow,
+        btnShadow = _props$attributes.btnShadow,
+        containerShadow = _props$attributes.containerShadow,
+        containerHoverShadow = _props$attributes.containerHoverShadow,
+        titleTypography = _props$attributes.titleTypography,
+        descTypography = _props$attributes.descTypography,
+        btnTypography = _props$attributes.btnTypography;
 
 
     var mainClasses = (0, _classnames2.default)(className, 'premium-icon-box');
@@ -33749,25 +33533,18 @@ var save = function save(props) {
         },
         btnChecked && btnText && React.createElement('style', {
             dangerouslySetInnerHTML: {
-                __html: ['#premium-icon-box-' + block_id + ':hover {', 'box-shadow: ' + containerStyles[0].hoverShadowHorizontal + 'px ' + containerStyles[0].hoverShadowVertical + 'px ' + containerStyles[0].hoverShadowBlur + 'px ' + containerStyles[0].hoverShadowColor + ' ' + containerStyles[0].hoverShadowPosition + ' !important', "}", '#premium-icon-box-' + block_id + ' .premium-icon-box__btn:hover {', 'color: ' + btnStyles[0].btnHoverColor + ' !important;', 'border-color: ' + btnHoverBorder + ' !important;', "}", '#premium-icon-box-' + block_id + ' .premium-button__none .premium-icon-box__btn:hover {', 'background-color: ' + btnStyles[0].btnHoverBack + ' !important;', "}", '#premium-icon-box-' + block_id + ' .premium-button__slide .premium-button::before {', 'background-color: ' + btnStyles[0].btnHoverBack + ' !important;', "}"].join("\n")
+                __html: ['#premium-icon-box-' + block_id + ':hover {', 'box-shadow: ' + containerHoverShadow.horizontal + 'px ' + containerHoverShadow.vertical + 'px ' + containerHoverShadow.blur + 'px ' + containerHoverShadow.color + ' ' + containerHoverShadow.position + ' !important', "}", '#premium-icon-box-' + block_id + ' {', 'box-shadow: ' + containerShadow.horizontal + 'px ' + containerShadow.vertical + 'px ' + containerShadow.blur + 'px ' + containerShadow.color + ' ' + containerShadow.position + ' !important', "}", '#premium-icon-box-' + block_id + ' .premium-icon-box__btn:hover {', 'color: ' + btnStyles[0].btnHoverColor + ' !important;', 'border-color: ' + btnHoverBorder + ' !important;', "}", '#premium-icon-box-' + block_id + ' .premium-button__none .premium-icon-box__btn:hover {', 'background-color: ' + btnStyles[0].btnHoverBack + ' !important;', "}", '#premium-icon-box-' + block_id + ' .premium-button__slide .premium-button::before {', 'background-color: ' + btnStyles[0].btnHoverBack + ' !important;', "}"].join("\n")
             }
         }),
         React.createElement(
             'div',
             {
                 className: 'premium-icon-box-container',
-                style: {
+                style: _extends({
                     textAlign: align,
                     borderStyle: containerBorder.borderType,
-                    borderColor: containerBorder.borderColor,
-                    boxShadow: containerStyles[0].shadowHorizontal + 'px ' + containerStyles[0].shadowVertical + 'px ' + containerStyles[0].shadowBlur + 'px ' + containerStyles[0].shadowColor + ' ' + containerStyles[0].shadowPosition,
-                    backgroundColor: containerStyles[0].backColor,
-                    backgroundImage: containerStyles[0].imageURL ? 'url(\'' + containerStyles[0].imageURL + '\')' : 'none',
-                    backgroundRepeat: containerStyles[0].backgroundRepeat,
-                    backgroundPosition: containerStyles[0].backgroundPosition,
-                    backgroundSize: containerStyles[0].backgroundSize,
-                    backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset"
-                }
+                    borderColor: containerBorder.borderColor
+                }, (0, _HelperFunction.gradientBackground)(containerBackground))
             },
             iconChecked && React.createElement(
                 'div',
@@ -33779,7 +33556,7 @@ var save = function save(props) {
                     style: {
                         color: iconColor,
                         backgroundColor: iconBackColor,
-                        fontSize: iconSize
+                        fontSize: (iconSize[props.deviceType] || 40) + iconSize.unit
                     }
                 }),
                 "image" === iconImage && iconImgUrl && React.createElement('img', {
@@ -33787,8 +33564,8 @@ var save = function save(props) {
                     src: '' + iconImgUrl,
                     alt: 'Image Icon',
                     style: {
-                        width: iconSize + "px",
-                        height: iconSize + "px",
+                        width: (iconSize[props.deviceType] || 40) + iconSize.unit,
+                        height: (iconSize[props.deviceType] || 40) + iconSize.unit,
                         borderRadius: iconRadius + "px"
                     }
                 })
@@ -33806,14 +33583,15 @@ var save = function save(props) {
                         className: 'premium-icon-box__title',
                         value: titleText,
                         style: {
+                            fontSize: '' + (titleTypography.fontSize[props.deviceType] || 20) + titleTypography.fontSize.unit,
+                            fontFamily: titleTypography.fontFamily,
+                            letterSpacing: titleTypography.letterSpacing + "px",
+                            textTransform: titleTypography.textTransform ? "uppercase" : "none",
+                            fontStyle: titleTypography.fontStyle,
+                            fontWeight: titleTypography.fontWeight,
+                            lineHeight: titleTypography.lineHeight + "px",
                             color: titleStyles[0].titleColor,
-                            fontFamily: titleStyles[0].titleFont,
-                            letterSpacing: titleStyles[0].titleLetter + "px",
-                            textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
-                            fontStyle: titleStyles[0].titleStyle,
-                            fontWeight: titleStyles[0].titleWeight,
-                            textShadow: titleStyles[0].titleShadowHorizontal + 'px ' + titleStyles[0].titleShadowVertical + 'px ' + titleStyles[0].titleShadowBlur + 'px ' + titleStyles[0].titleShadowColor,
-                            lineHeight: titleStyles[0].titleLine + "px"
+                            textShadow: (titleShadow.horizontal || 0) + 'px ' + (titleShadow.vertical || 0) + 'px ' + (titleShadow.blur || 0) + 'px ' + titleShadow.color
                         }
                     })
                 ),
@@ -33828,9 +33606,10 @@ var save = function save(props) {
                         value: descText,
                         style: {
                             color: descStyles[0].descColor,
-                            fontFamily: descStyles[0].descFont,
-                            lineHeight: descStyles[0].descLine + "px",
-                            fontWeight: descStyles[0].descWeight
+                            fontSize: '' + (descTypography.fontSize[props.deviceType] || 20) + descTypography.fontSize.unit,
+                            fontFamily: descTypography.fontFamily,
+                            fontWeight: descTypography.fontWeight,
+                            lineHeight: descTypography.lineHeight + "px"
                         }
                     })
                 ),
@@ -33847,16 +33626,16 @@ var save = function save(props) {
                         target: btnTarget ? "_blank" : "_self",
                         value: btnText,
                         style: {
+                            fontSize: '' + (btnTypography.fontSize[props.deviceType] || 20) + btnTypography.fontSize.unit,
+                            letterSpacing: btnTypography.letterSpacing + "px",
+                            textTransform: btnTypography.textTransform ? "uppercase" : "none",
+                            fontStyle: btnTypography.fontStyle,
+                            fontWeight: btnTypography.fontWeight,
                             color: btnStyles[0].btnColor,
                             backgroundColor: btnStyles[0].btnBack,
-                            letterSpacing: btnStyles[0].btnLetter + "px",
-                            textTransform: btnStyles[0].btnUpper ? "uppercase" : "none",
-                            fontStyle: btnStyles[0].btnStyle,
-                            fontWeight: btnStyles[0].btnWeight,
                             borderStyle: btnBorder.borderType,
                             borderColor: btnBorder.borderColor,
-                            padding: btnStyles[0].btnPadding + btnStyles[0].btnPaddingU,
-                            boxShadow: btnStyles[0].btnShadowHorizontal + 'px ' + btnStyles[0].btnShadowVertical + 'px ' + btnStyles[0].btnShadowBlur + 'px ' + btnStyles[0].btnShadowColor + ' ' + btnStyles[0].btnShadowPosition
+                            boxShadow: (btnShadow.horizontal || 0) + 'px ' + (btnShadow.vertical || 0) + 'px ' + (btnShadow.blur || 0) + 'px ' + btnShadow.color + ' ' + btnShadow.position
                         }
                     })
                 )
@@ -33868,7 +33647,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 269 */
+/* 270 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33881,6 +33660,10 @@ Object.defineProperty(exports, "__esModule", {
 var _hexToRgba = __webpack_require__(18);
 
 var _hexToRgba2 = _interopRequireDefault(_hexToRgba);
+
+var _classnames = __webpack_require__(0);
+
+var _classnames2 = _interopRequireDefault(_classnames);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -34343,7 +34126,602 @@ var attributes = {
     }
 };
 
+var new_attributes = {
+    titleStyles: {
+        type: "array",
+        default: [{
+            titleTag: "H2",
+            titleFont: __('Default', 'premium - blocks -for-gutenberg'),
+            titleColor: '',
+            titleSize: 20,
+            titleSizeUnit: 'px',
+            titleSizeTablet: 20,
+            titleSizeMobile: 20,
+            titleLine: '',
+            titleLetter: '',
+            titleStyle: '',
+            titleUpper: false,
+            titleWeight: '',
+            titleShadowColor: '',
+            titleShadowBlur: '0',
+            titleShadowHorizontal: '0',
+            titleShadowVertical: '0',
+            titleMarginT: '',
+            titleMarginB: ''
+        }]
+    },
+    descStyles: {
+        type: "array",
+        default: [{
+            descFont: __('Default', 'premium-blocks-for-gutenberg'),
+            descColor: '',
+            descSize: 20,
+            descSizeUnit: 'px',
+            descSizeTablet: 20,
+            descSizeMobile: 20,
+            descLine: '',
+            descWeight: '',
+            descMarginT: '',
+            descMarginB: ''
+        }]
+    },
+    btnStyles: {
+        type: 'array',
+        default: [{
+            btnSize: 20,
+            btnSizeUnit: 'px',
+            btnSizeTablet: 20,
+            btnSizeMobile: 20,
+            btnLine: '',
+            btnLetter: '',
+            btnStyle: '',
+            btnUpper: false,
+            btnWeight: '',
+            btnBorderType: 'none',
+            btnBorderWidth: 1,
+            btnBorderTop: '',
+            btnBorderRight: '',
+            btnBorderBottom: '',
+            btnBorderLeft: '',
+            btnBorderRadius: '',
+            btnBorderColor: '',
+            btnPadding: '',
+            btnPaddingU: 'px',
+            btnMarginT: '',
+            btnMarginB: '',
+            btnShadowColor: '',
+            btnShadowBlur: '',
+            btnShadowHorizontal: '0',
+            btnShadowVertical: '0',
+            btnShadowPosition: '',
+            btnColor: '',
+            btnHoverColor: '',
+            btnBack: '',
+            btnHoverBack: '',
+            btnOpacity: 1
+        }]
+    },
+    containerStyles: {
+        type: "array",
+        default: [{
+            backOpacity: 1,
+            backColor: '',
+            imageID: '',
+            imageURL: '',
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "top center",
+            backgroundSize: "auto",
+            fixed: false,
+            borderType: "none",
+            borderWidth: 1,
+            borderRadius: '',
+            borderColor: '',
+            borderTop: '',
+            borderRight: '',
+            borderBottom: '',
+            borderLeft: '',
+            shadowColor: '',
+            shadowBlur: '',
+            shadowHorizontal: '',
+            shadowVertical: '',
+            shadowPosition: '',
+            hoverShadowColor: '',
+            hoverShadowBlur: '',
+            hoverShadowHorizontal: '',
+            hoverShadowVertical: '',
+            hoverShadowPosition: '',
+            marginT: '',
+            marginR: '',
+            marginB: '',
+            marginL: '',
+            paddingT: '',
+            paddingR: '',
+            paddingB: '',
+            paddingL: '',
+            paddingU: 'px',
+            gradientColorOne: '',
+            gradientLocationOne: '0',
+            gradientColorTwo: '',
+            gradientLocationTwo: '100',
+            gradientType: 'linear',
+            gradientAngle: '180',
+            gradientPosition: 'center center'
+
+        }]
+    }
+};
+
+var deprecated_attributes = Object.assign(attributes, new_attributes);
+
 var deprecatedContent = [{
+    attributes: deprecated_attributes,
+    migrate: function migrate(attributes) {
+        var newAttributes = {
+            iconSize: {
+                Desktop: attributes.iconSize,
+                unit: "px"
+            },
+            containerMargin: {
+                "Desktop": {
+                    top: attributes.marginT,
+                    right: attributes.marginR,
+                    bottom: attributes.marginB,
+                    left: attributes.marginL
+                },
+                "Tablet": {
+                    top: attributes.marginTTablet,
+                    right: attributes.marginRTablet,
+                    bottom: attributes.marginBTablet,
+                    left: attributes.marginLTablet
+                },
+                "Mobile": {
+                    top: attributes.marginTMobile,
+                    right: attributes.marginRMobile,
+                    bottom: attributes.marginBMobile,
+                    left: attributes.marginLMobile
+                }
+            },
+            containerPadding: {
+                "Desktop": {
+                    top: attributes.paddingT,
+                    right: attributes.paddingR,
+                    bottom: attributes.paddingB,
+                    left: attributes.paddingL
+                },
+                "Tablet": {
+                    top: attributes.paddingTTablet,
+                    right: attributes.paddingRTablet,
+                    bottom: attributes.paddingBTablet,
+                    left: attributes.paddingLTablet
+                },
+                "Mobile": {
+                    top: attributes.paddingTMobile,
+                    right: attributes.paddingRMobile,
+                    bottom: attributes.paddingBMobile,
+                    left: attributes.paddingLMobile
+                }
+            },
+            titleMargin: {
+                "Desktop": {
+                    top: attributes.titleMarginT,
+                    right: "",
+                    bottom: attributes.titleMarginB,
+                    left: ""
+                },
+                "Tablet": {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                "Mobile": {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                }
+            },
+            descMargin: {
+                "Desktop": {
+                    top: attributes.descMarginT,
+                    right: "",
+                    bottom: attributes.descMarginB,
+                    left: ""
+                },
+                "Tablet": {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                "Mobile": {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                }
+            },
+            btnMargin: {
+                "Desktop": {
+                    top: attributes.btnMarginT,
+                    right: "",
+                    bottom: attributes.btnMarginB,
+                    left: ""
+                },
+                "Tablet": {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                "Mobile": {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                }
+            },
+            btnPadding: {
+                "Desktop": {
+                    top: attributes.btnStyles[0].btnPadding,
+                    right: attributes.btnStyles[0].btnPadding,
+                    bottom: attributes.btnStyles[0].btnPadding,
+                    left: attributes.btnStyles[0].btnPadding
+                },
+                "Tablet": {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                "Mobile": {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                unit: 'px'
+            },
+            btnBorder: {
+                borderColor: attributes.btnStyles[0].btnBorderColor,
+                borderType: attributes.btnStyles[0].btnBorderType,
+                borderRadius: {
+                    "Desktop": {
+                        top: attributes.btnStyles[0].btnBorderRadius,
+                        right: attributes.btnStyles[0].btnBorderRadius,
+                        bottom: attributes.btnStyles[0].btnBorderRadius,
+                        left: attributes.btnStyles[0].btnBorderRadius
+                    },
+                    "Tablet": {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: ""
+                    },
+                    "Mobile": {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: ""
+                    }
+                },
+                borderWidth: {
+                    "Desktop": {
+                        top: attributes.btnBorderTop,
+                        right: attributes.btnBorderRight,
+                        bottom: attributes.btnBorderBottom,
+                        left: attributes.btnBorderLeft
+                    },
+                    "Tablet": {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: ""
+                    },
+                    "Mobile": {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: ""
+                    }
+                }
+            },
+            containerBorder: {
+                borderColor: attributes.containerStyles[0].borderColor,
+                borderType: attributes.containerStyles[0].borderType,
+                borderRadius: {
+                    "Desktop": {
+                        top: attributes.containerStyles[0].borderRadius,
+                        right: attributes.containerStyles[0].borderRadius,
+                        bottom: attributes.containerStyles[0].borderRadius,
+                        left: attributes.containerStyles[0].borderRadius
+                    },
+                    "Tablet": {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: ""
+                    },
+                    "Mobile": {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: ""
+                    }
+                },
+                borderWidth: {
+                    "Desktop": {
+                        top: attributes.borderTop,
+                        right: attributes.borderRight,
+                        bottom: attributes.borderBottom,
+                        left: attributes.borderLeft
+                    },
+                    "Tablet": {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: ""
+                    },
+                    "Mobile": {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: ""
+                    }
+                }
+            },
+            containerBackground: {
+                'backgroundType': "",
+                'backgroundColor': attributes.containerStyles[0].backColor,
+                'backgroundImageID': attributes.containerStyles[0].imageID,
+                'backgroundImageURL': attributes.containerStyles[0].imageURL,
+                'backgroundPosition': attributes.containerStyles[0].backgroundPosition,
+                'backgroundRepeat': attributes.containerStyles[0].backgroundRepeat,
+                'backgroundSize': attributes.containerStyles[0].backgroundSize,
+                'fixed': attributes.containerStyles[0].fixed,
+                'gradientLocationOne': attributes.containerStyles[0].gradientLocationOne,
+                'gradientColorTwo': attributes.containerStyles[0].gradientColorTwo,
+                'gradientLocationTwo': attributes.containerStyles[0].gradientLocationTwo,
+                'gradientAngle': attributes.containerStyles[0].gradientAngle,
+                'gradientPosition': attributes.containerStyles[0].gradientPosition,
+                'gradientType': attributes.containerStyles[0].gradientType
+            },
+            titleShadow: {
+                'color': attributes.titleStyles[0].titleShadowColor,
+                'blur': attributes.titleStyles[0].titleShadowBlur,
+                'horizontal': attributes.titleStyles[0].titleShadowHorizontal,
+                'vertical': attributes.titleStyles[0].titleShadowVertical
+            },
+            btnShadow: {
+                'color': attributes.btnStyles[0].btnShadowColor,
+                'blur': attributes.btnStyles[0].btnShadowBlur,
+                'horizontal': attributes.btnStyles[0].btnShadowHorizontal,
+                'vertical': attributes.btnStyles[0].btnShadowVertical,
+                'position': attributes.btnStyles[0].btnShadowPosition
+            },
+            containerShadow: {
+                'color': attributes.containerStyles[0].shadowColor,
+                'blur': attributes.containerStyles[0].shadowBlur,
+                'horizontal': attributes.containerStyles[0].shadowHorizontal,
+                'vertical': attributes.containerStyles[0].shadowVertical,
+                'position': attributes.containerStyles[0].shadowPosition
+            },
+            containerHoverShadow: {
+                'color': attributes.containerStyles[0].hoverShadowColor,
+                'blur': attributes.containerStyles[0].hoverShadowBlur,
+                'horizontal': attributes.containerStyles[0].hoverShadowHorizontal,
+                'vertical': attributes.containerStyles[0].hoverShadowVertical,
+                'position': attributes.containerStyles[0].hoverShadowPosition
+            },
+            titleTypography: {
+                'fontWeight': attributes.titleStyles[0].titleWeight,
+                'fontStyle': attributes.titleStyles[0].titleStyle,
+                'textTransform': attributes.titleStyles[0].titleUpper,
+                'letterSpacing': attributes.titleStyles[0].titleLetter,
+                'fontFamily': attributes.titleStyles[0].titleFont,
+                'lineHeight': attributes.titleStyles[0].titleLine,
+                'fontSize': {
+                    'Desktop': attributes.titleStyles[0].titleSize,
+                    "Tablet": attributes.titleStyles[0].titleSizeTablet,
+                    "Mobile": attributes.titleStyles[0].titleSizeMobile,
+                    'unit': attributes.titleStyles[0].titleSizeUnit
+                }
+            },
+            descTypography: {
+                'fontWeight': attributes.descStyles[0].descWeight,
+                'fontFamily': attributes.descStyles[0].descFont,
+                'lineHeight': attributes.descStyles[0].descLine,
+                'fontSize': {
+                    'Desktop': attributes.descStyles[0].descSize,
+                    "Tablet": attributes.descStyles[0].descSizeTablet,
+                    "Mobile": attributes.descStyles[0].descSizeMobile,
+                    'unit': attributes.descStyles[0].descSizeUnit
+                }
+            },
+            btnTypography: {
+                'fontWeight': attributes.btnStyles[0].btnWeight,
+                'fontStyle': attributes.btnStyles[0].btnStyle,
+                'textTransform': attributes.btnStyles[0].btnUpper,
+                'letterSpacing': attributes.btnStyles[0].btnLetter,
+                'fontSize': {
+                    'Desktop': attributes.btnStyles[0].btnSize,
+                    "Tablet": attributes.btnStyles[0].btnSizeTablet,
+                    "Mobile": attributes.btnStyles[0].btnSizeMobile,
+                    'unit': attributes.btnStyles[0].btnSizeUnit
+                }
+            }
+        };
+        return Object.assign(attributes, newAttributes);
+    },
+    save: function save(props) {
+        var _props$attributes = props.attributes,
+            block_id = _props$attributes.block_id,
+            borderIconBox = _props$attributes.borderIconBox,
+            btnBorderIconBox = _props$attributes.btnBorderIconBox,
+            align = _props$attributes.align,
+            iconImage = _props$attributes.iconImage,
+            iconImgUrl = _props$attributes.iconImgUrl,
+            hoverEffect = _props$attributes.hoverEffect,
+            iconChecked = _props$attributes.iconChecked,
+            iconPos = _props$attributes.iconPos,
+            iconHPos = _props$attributes.iconHPos,
+            iconVPos = _props$attributes.iconVPos,
+            iconSize = _props$attributes.iconSize,
+            iconRadius = _props$attributes.iconRadius,
+            iconColor = _props$attributes.iconColor,
+            iconBackColor = _props$attributes.iconBackColor,
+            selectedIcon = _props$attributes.selectedIcon,
+            titleChecked = _props$attributes.titleChecked,
+            titleText = _props$attributes.titleText,
+            descText = _props$attributes.descText,
+            descChecked = _props$attributes.descChecked,
+            btnChecked = _props$attributes.btnChecked,
+            btnEffect = _props$attributes.btnEffect,
+            effectDir = _props$attributes.effectDir,
+            btnTarget = _props$attributes.btnTarget,
+            btnText = _props$attributes.btnText,
+            btnLink = _props$attributes.btnLink,
+            btnHoverBorder = _props$attributes.btnHoverBorder,
+            hideDesktop = _props$attributes.hideDesktop,
+            hideTablet = _props$attributes.hideTablet,
+            hideMobile = _props$attributes.hideMobile,
+            titleStyles = _props$attributes.titleStyles,
+            descStyles = _props$attributes.descStyles,
+            btnStyles = _props$attributes.btnStyles,
+            containerStyles = _props$attributes.containerStyles,
+            btnBorderTop = _props$attributes.btnBorderTop,
+            btnBorderRight = _props$attributes.btnBorderRight,
+            btnBorderBottom = _props$attributes.btnBorderBottom,
+            btnBorderLeft = _props$attributes.btnBorderLeft,
+            borderTop = _props$attributes.borderTop,
+            borderRight = _props$attributes.borderRight,
+            borderBottom = _props$attributes.borderBottom,
+            borderLeft = _props$attributes.borderLeft;
+
+
+        var mainClasses = (0, _classnames2.default)(className, 'premium-icon-box');
+        return React.createElement(
+            'div',
+            {
+                id: 'premium-icon-box-' + block_id,
+                className: mainClasses + ' premium-icon-box-' + iconPos + ' premium-icon-box-' + iconHPos + ' premium-icon-box-' + block_id + ' ' + hideDesktop + ' ' + hideTablet + ' ' + hideMobile,
+                style: {
+                    textAlign: align,
+                    borderStyle: containerStyles[0].borderType,
+                    borderWidth: borderIconBox ? borderTop + 'px ' + borderRight + 'px ' + borderBottom + 'px ' + borderLeft + 'px' : containerStyles[0].borderWidth + "px",
+                    borderRadius: containerStyles[0].borderRadius + "px",
+                    borderColor: containerStyles[0].borderColor,
+                    boxShadow: containerStyles[0].shadowHorizontal + 'px ' + containerStyles[0].shadowVertical + 'px ' + containerStyles[0].shadowBlur + 'px ' + containerStyles[0].shadowColor + ' ' + containerStyles[0].shadowPosition,
+                    backgroundColor: containerStyles[0].backColor,
+                    backgroundImage: containerStyles[0].imageURL ? 'url(\'' + containerStyles[0].imageURL + '\')' : 'none',
+                    backgroundRepeat: containerStyles[0].backgroundRepeat,
+                    backgroundPosition: containerStyles[0].backgroundPosition,
+                    backgroundSize: containerStyles[0].backgroundSize,
+                    backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset"
+                }
+            },
+            btnChecked && btnText && React.createElement('style', {
+                dangerouslySetInnerHTML: {
+                    __html: ['#premium-icon-box-' + block_id + ':hover {', 'box-shadow: ' + containerStyles[0].hoverShadowHorizontal + 'px ' + containerStyles[0].hoverShadowVertical + 'px ' + containerStyles[0].hoverShadowBlur + 'px ' + containerStyles[0].hoverShadowColor + ' ' + containerStyles[0].hoverShadowPosition + ' !important', "}", '#premium-icon-box-' + block_id + ' .premium-icon-box__btn:hover {', 'color: ' + btnStyles[0].btnHoverColor + ' !important;', 'border-color: ' + btnHoverBorder + ' !important;', "}", '#premium-icon-box-' + block_id + ' .premium-button__none .premium-icon-box__btn:hover {', 'background-color: ' + btnStyles[0].btnHoverBack + ' !important;', "}", '#premium-icon-box-' + block_id + ' .premium-button__slide .premium-button::before {', 'background-color: ' + btnStyles[0].btnHoverBack + ' !important;', "}"].join("\n")
+                }
+            }),
+            iconChecked && React.createElement(
+                'div',
+                {
+                    className: 'premium-icon-box__icon_wrap premium-icon-box__icon_' + iconVPos
+                },
+                "icon" === iconImage && selectedIcon && React.createElement('i', {
+                    className: selectedIcon + ' premium-icon-box__icon premium-icon__' + hoverEffect,
+                    style: {
+                        color: iconColor,
+                        backgroundColor: iconBackColor,
+                        fontSize: iconSize
+                    }
+                }),
+                "image" === iconImage && iconImgUrl && React.createElement('img', {
+                    className: 'premium-icon-box__icon premium-icon__' + hoverEffect,
+                    src: '' + iconImgUrl,
+                    alt: 'Image Icon',
+                    style: {
+                        width: iconSize + "px",
+                        height: iconSize + "px",
+                        borderRadius: iconRadius + "px"
+                    }
+                })
+            ),
+            React.createElement(
+                'div',
+                { className: 'premium-icon-box__content_wrap' },
+                titleChecked && titleText && React.createElement(
+                    'div',
+                    {
+                        className: 'premium-icon-box__title_wrap'
+                    },
+                    React.createElement(RichText.Content, {
+                        tagName: titleStyles[0].titleTag.toLowerCase(),
+                        className: 'premium-icon-box__title',
+                        value: titleText,
+                        style: {
+                            color: titleStyles[0].titleColor,
+                            fontFamily: titleStyles[0].titleFont,
+                            letterSpacing: titleStyles[0].titleLetter + "px",
+                            textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                            fontStyle: titleStyles[0].titleStyle,
+                            fontWeight: titleStyles[0].titleWeight,
+                            textShadow: titleStyles[0].titleShadowHorizontal + 'px ' + titleStyles[0].titleShadowVertical + 'px ' + titleStyles[0].titleShadowBlur + 'px ' + titleStyles[0].titleShadowColor,
+                            lineHeight: titleStyles[0].titleLine + "px"
+                        }
+                    })
+                ),
+                descChecked && descText && React.createElement(
+                    'div',
+                    {
+                        className: 'premium-icon-box__desc_wrap'
+                    },
+                    React.createElement(RichText.Content, {
+                        tagName: 'p',
+                        className: 'premium-icon-box__desc',
+                        value: descText,
+                        style: {
+                            color: descStyles[0].descColor,
+                            fontFamily: descStyles[0].descFont,
+                            lineHeight: descStyles[0].descLine + "px",
+                            fontWeight: descStyles[0].descWeight
+                        }
+                    })
+                ),
+                btnChecked && btnText && React.createElement(
+                    'div',
+                    {
+                        className: 'premium-icon-box__btn_wrap premium-button__' + btnEffect + ' premium-button__' + effectDir
+                    },
+                    React.createElement(RichText.Content, {
+                        tagName: 'a',
+                        className: 'premium-icon-box__btn premium-button',
+                        href: btnLink,
+                        rel: 'noopener noreferrer',
+                        target: btnTarget ? "_blank" : "_self",
+                        value: btnText,
+                        style: {
+                            color: btnStyles[0].btnColor,
+                            backgroundColor: btnStyles[0].btnBack,
+                            letterSpacing: btnStyles[0].btnLetter + "px",
+                            textTransform: btnStyles[0].btnUpper ? "uppercase" : "none",
+                            fontStyle: btnStyles[0].btnStyle,
+                            fontWeight: btnStyles[0].btnWeight,
+                            borderStyle: btnStyles[0].btnBorderType,
+                            borderWidth: btnBorderIconBox ? btnBorderTop + 'px ' + btnBorderRight + 'px ' + btnBorderBottom + 'px ' + btnBorderLeft + 'px' : btnStyles[0].btnBorderWidth + "px",
+                            borderRadius: btnStyles[0].btnBorderRadius + "px",
+                            borderColor: btnStyles[0].btnBorderColor,
+                            padding: btnStyles[0].btnPadding + btnStyles[0].btnPaddingU,
+                            boxShadow: btnStyles[0].btnShadowHorizontal + 'px ' + btnStyles[0].btnShadowVertical + 'px ' + btnStyles[0].btnShadowBlur + 'px ' + btnStyles[0].btnShadowColor + ' ' + btnStyles[0].btnShadowPosition
+                        }
+                    })
+                )
+            )
+        );
+    }
+}, {
     attributes: attributes,
     migrate: function migrate(attributes) {
         var newAttributes = {
@@ -34489,128 +34867,128 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes = props.attributes,
-            block_id = _props$attributes.block_id,
-            borderIconBox = _props$attributes.borderIconBox,
-            btnBorderIconBox = _props$attributes.btnBorderIconBox,
-            align = _props$attributes.align,
-            iconImage = _props$attributes.iconImage,
-            iconImgUrl = _props$attributes.iconImgUrl,
-            iconRadius = _props$attributes.iconRadius,
-            selectedIcon = _props$attributes.selectedIcon,
-            iconChecked = _props$attributes.iconChecked,
-            hoverEffect = _props$attributes.hoverEffect,
-            iconPos = _props$attributes.iconPos,
-            iconHPos = _props$attributes.iconHPos,
-            iconVPos = _props$attributes.iconVPos,
-            iconSize = _props$attributes.iconSize,
-            iconColor = _props$attributes.iconColor,
-            iconBackColor = _props$attributes.iconBackColor,
-            titleChecked = _props$attributes.titleChecked,
-            titleText = _props$attributes.titleText,
-            titleTag = _props$attributes.titleTag,
-            titleColor = _props$attributes.titleColor,
-            titleFont = _props$attributes.titleFont,
-            titleLine = _props$attributes.titleLine,
-            titleLetter = _props$attributes.titleLetter,
-            titleStyle = _props$attributes.titleStyle,
-            titleUpper = _props$attributes.titleUpper,
-            titleWeight = _props$attributes.titleWeight,
-            titleShadowBlur = _props$attributes.titleShadowBlur,
-            titleShadowColor = _props$attributes.titleShadowColor,
-            titleShadowHorizontal = _props$attributes.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes.titleShadowVertical,
-            titleMarginT = _props$attributes.titleMarginT,
-            titleMarginB = _props$attributes.titleMarginB,
-            descChecked = _props$attributes.descChecked,
-            descText = _props$attributes.descText,
-            descColor = _props$attributes.descColor,
-            descFont = _props$attributes.descFont,
-            descLine = _props$attributes.descLine,
-            descWeight = _props$attributes.descWeight,
-            descMarginT = _props$attributes.descMarginT,
-            descMarginB = _props$attributes.descMarginB,
-            btnChecked = _props$attributes.btnChecked,
-            btnEffect = _props$attributes.btnEffect,
-            effectDir = _props$attributes.effectDir,
-            btnText = _props$attributes.btnText,
-            btnTarget = _props$attributes.btnTarget,
-            btnLink = _props$attributes.btnLink,
-            btnStyle = _props$attributes.btnStyle,
-            btnUpper = _props$attributes.btnUpper,
-            btnWeight = _props$attributes.btnWeight,
-            btnLetter = _props$attributes.btnLetter,
-            btnColor = _props$attributes.btnColor,
-            btnHoverColor = _props$attributes.btnHoverColor,
-            btnHoverBorder = _props$attributes.btnHoverBorder,
-            btnBack = _props$attributes.btnBack,
-            btnHoverBack = _props$attributes.btnHoverBack,
-            btnBorderWidth = _props$attributes.btnBorderWidth,
-            btnBorderTop = _props$attributes.btnBorderTop,
-            btnBorderRight = _props$attributes.btnBorderRight,
-            btnBorderBottom = _props$attributes.btnBorderBottom,
-            btnBorderLeft = _props$attributes.btnBorderLeft,
-            borderTop = _props$attributes.borderTop,
-            borderRight = _props$attributes.borderRight,
-            borderBottom = _props$attributes.borderBottom,
-            borderLeft = _props$attributes.borderLeft,
-            btnBorderRadius = _props$attributes.btnBorderRadius,
-            btnBorderColor = _props$attributes.btnBorderColor,
-            btnBorderType = _props$attributes.btnBorderType,
-            btnPadding = _props$attributes.btnPadding,
-            btnPaddingU = _props$attributes.btnPaddingU,
-            btnMarginT = _props$attributes.btnMarginT,
-            btnMarginB = _props$attributes.btnMarginB,
-            btnShadowBlur = _props$attributes.btnShadowBlur,
-            btnShadowColor = _props$attributes.btnShadowColor,
-            btnShadowHorizontal = _props$attributes.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes.btnShadowVertical,
-            btnShadowPosition = _props$attributes.btnShadowPosition,
-            backColor = _props$attributes.backColor,
-            imageURL = _props$attributes.imageURL,
-            fixed = _props$attributes.fixed,
-            backgroundRepeat = _props$attributes.backgroundRepeat,
-            backgroundPosition = _props$attributes.backgroundPosition,
-            backgroundSize = _props$attributes.backgroundSize,
-            borderType = _props$attributes.borderType,
-            borderWidth = _props$attributes.borderWidth,
-            borderRadius = _props$attributes.borderRadius,
-            borderColor = _props$attributes.borderColor,
-            marginT = _props$attributes.marginT,
-            marginR = _props$attributes.marginR,
-            marginB = _props$attributes.marginB,
-            marginL = _props$attributes.marginL,
-            paddingT = _props$attributes.paddingT,
-            paddingR = _props$attributes.paddingR,
-            paddingB = _props$attributes.paddingB,
-            paddingL = _props$attributes.paddingL,
-            paddingU = _props$attributes.paddingU,
-            shadowBlur = _props$attributes.shadowBlur,
-            shadowColor = _props$attributes.shadowColor,
-            shadowHorizontal = _props$attributes.shadowHorizontal,
-            shadowVertical = _props$attributes.shadowVertical,
-            shadowPosition = _props$attributes.shadowPosition,
-            hoverShadowBlur = _props$attributes.hoverShadowBlur,
-            hoverShadowColor = _props$attributes.hoverShadowColor,
-            hoverShadowHorizontal = _props$attributes.hoverShadowHorizontal,
-            hoverShadowVertical = _props$attributes.hoverShadowVertical,
-            hoverShadowPosition = _props$attributes.hoverShadowPosition,
-            iconOpacity = _props$attributes.iconOpacity,
-            btnOpacity = _props$attributes.btnOpacity,
-            backOpacity = _props$attributes.backOpacity,
-            hideDesktop = _props$attributes.hideDesktop,
-            hideTablet = _props$attributes.hideTablet,
-            hideMobile = _props$attributes.hideMobile;
+        var _props$attributes2 = props.attributes,
+            block_id = _props$attributes2.block_id,
+            borderIconBox = _props$attributes2.borderIconBox,
+            btnBorderIconBox = _props$attributes2.btnBorderIconBox,
+            align = _props$attributes2.align,
+            iconImage = _props$attributes2.iconImage,
+            iconImgUrl = _props$attributes2.iconImgUrl,
+            iconRadius = _props$attributes2.iconRadius,
+            selectedIcon = _props$attributes2.selectedIcon,
+            iconChecked = _props$attributes2.iconChecked,
+            hoverEffect = _props$attributes2.hoverEffect,
+            iconPos = _props$attributes2.iconPos,
+            iconHPos = _props$attributes2.iconHPos,
+            iconVPos = _props$attributes2.iconVPos,
+            iconSize = _props$attributes2.iconSize,
+            iconColor = _props$attributes2.iconColor,
+            iconBackColor = _props$attributes2.iconBackColor,
+            titleChecked = _props$attributes2.titleChecked,
+            titleText = _props$attributes2.titleText,
+            titleTag = _props$attributes2.titleTag,
+            titleColor = _props$attributes2.titleColor,
+            titleFont = _props$attributes2.titleFont,
+            titleLine = _props$attributes2.titleLine,
+            titleLetter = _props$attributes2.titleLetter,
+            titleStyle = _props$attributes2.titleStyle,
+            titleUpper = _props$attributes2.titleUpper,
+            titleWeight = _props$attributes2.titleWeight,
+            titleShadowBlur = _props$attributes2.titleShadowBlur,
+            titleShadowColor = _props$attributes2.titleShadowColor,
+            titleShadowHorizontal = _props$attributes2.titleShadowHorizontal,
+            titleShadowVertical = _props$attributes2.titleShadowVertical,
+            titleMarginT = _props$attributes2.titleMarginT,
+            titleMarginB = _props$attributes2.titleMarginB,
+            descChecked = _props$attributes2.descChecked,
+            descText = _props$attributes2.descText,
+            descColor = _props$attributes2.descColor,
+            descFont = _props$attributes2.descFont,
+            descLine = _props$attributes2.descLine,
+            descWeight = _props$attributes2.descWeight,
+            descMarginT = _props$attributes2.descMarginT,
+            descMarginB = _props$attributes2.descMarginB,
+            btnChecked = _props$attributes2.btnChecked,
+            btnEffect = _props$attributes2.btnEffect,
+            effectDir = _props$attributes2.effectDir,
+            btnText = _props$attributes2.btnText,
+            btnTarget = _props$attributes2.btnTarget,
+            btnLink = _props$attributes2.btnLink,
+            btnStyle = _props$attributes2.btnStyle,
+            btnUpper = _props$attributes2.btnUpper,
+            btnWeight = _props$attributes2.btnWeight,
+            btnLetter = _props$attributes2.btnLetter,
+            btnColor = _props$attributes2.btnColor,
+            btnHoverColor = _props$attributes2.btnHoverColor,
+            btnHoverBorder = _props$attributes2.btnHoverBorder,
+            btnBack = _props$attributes2.btnBack,
+            btnHoverBack = _props$attributes2.btnHoverBack,
+            btnBorderWidth = _props$attributes2.btnBorderWidth,
+            btnBorderTop = _props$attributes2.btnBorderTop,
+            btnBorderRight = _props$attributes2.btnBorderRight,
+            btnBorderBottom = _props$attributes2.btnBorderBottom,
+            btnBorderLeft = _props$attributes2.btnBorderLeft,
+            borderTop = _props$attributes2.borderTop,
+            borderRight = _props$attributes2.borderRight,
+            borderBottom = _props$attributes2.borderBottom,
+            borderLeft = _props$attributes2.borderLeft,
+            btnBorderRadius = _props$attributes2.btnBorderRadius,
+            btnBorderColor = _props$attributes2.btnBorderColor,
+            btnBorderType = _props$attributes2.btnBorderType,
+            btnPadding = _props$attributes2.btnPadding,
+            btnPaddingU = _props$attributes2.btnPaddingU,
+            btnMarginT = _props$attributes2.btnMarginT,
+            btnMarginB = _props$attributes2.btnMarginB,
+            btnShadowBlur = _props$attributes2.btnShadowBlur,
+            btnShadowColor = _props$attributes2.btnShadowColor,
+            btnShadowHorizontal = _props$attributes2.btnShadowHorizontal,
+            btnShadowVertical = _props$attributes2.btnShadowVertical,
+            btnShadowPosition = _props$attributes2.btnShadowPosition,
+            backColor = _props$attributes2.backColor,
+            imageURL = _props$attributes2.imageURL,
+            fixed = _props$attributes2.fixed,
+            backgroundRepeat = _props$attributes2.backgroundRepeat,
+            backgroundPosition = _props$attributes2.backgroundPosition,
+            backgroundSize = _props$attributes2.backgroundSize,
+            borderType = _props$attributes2.borderType,
+            borderWidth = _props$attributes2.borderWidth,
+            borderRadius = _props$attributes2.borderRadius,
+            borderColor = _props$attributes2.borderColor,
+            marginT = _props$attributes2.marginT,
+            marginR = _props$attributes2.marginR,
+            marginB = _props$attributes2.marginB,
+            marginL = _props$attributes2.marginL,
+            paddingT = _props$attributes2.paddingT,
+            paddingR = _props$attributes2.paddingR,
+            paddingB = _props$attributes2.paddingB,
+            paddingL = _props$attributes2.paddingL,
+            paddingU = _props$attributes2.paddingU,
+            shadowBlur = _props$attributes2.shadowBlur,
+            shadowColor = _props$attributes2.shadowColor,
+            shadowHorizontal = _props$attributes2.shadowHorizontal,
+            shadowVertical = _props$attributes2.shadowVertical,
+            shadowPosition = _props$attributes2.shadowPosition,
+            hoverShadowBlur = _props$attributes2.hoverShadowBlur,
+            hoverShadowColor = _props$attributes2.hoverShadowColor,
+            hoverShadowHorizontal = _props$attributes2.hoverShadowHorizontal,
+            hoverShadowVertical = _props$attributes2.hoverShadowVertical,
+            hoverShadowPosition = _props$attributes2.hoverShadowPosition,
+            iconOpacity = _props$attributes2.iconOpacity,
+            btnOpacity = _props$attributes2.btnOpacity,
+            backOpacity = _props$attributes2.backOpacity,
+            hideDesktop = _props$attributes2.hideDesktop,
+            hideTablet = _props$attributes2.hideTablet,
+            hideMobile = _props$attributes2.hideMobile;
 
         return React.createElement(
-            "div",
+            'div',
             {
-                id: "premium-icon-box-" + block_id,
-                className: className + " premium-icon-box-" + iconPos + " premium-icon-box-" + iconHPos + " premium-icon-box-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
+                id: 'premium-icon-box-' + block_id,
+                className: className + ' premium-icon-box-' + iconPos + ' premium-icon-box-' + iconHPos + ' premium-icon-box-' + block_id + ' ' + hideDesktop + ' ' + hideTablet + ' ' + hideMobile,
                 style: {
                     textAlign: align,
                     borderStyle: borderType,
-                    borderWidth: borderIconBox ? borderTop + "px " + borderRight + "px " + borderBottom + "px " + borderLeft + "px" : borderWidth + "px",
+                    borderWidth: borderIconBox ? borderTop + 'px ' + borderRight + 'px ' + borderBottom + 'px ' + borderLeft + 'px' : borderWidth + "px",
                     borderRadius: borderRadius + "px",
                     borderColor: borderColor,
                     marginTop: marginT,
@@ -34621,37 +34999,37 @@ var deprecatedContent = [{
                     paddingRight: paddingR + paddingU,
                     paddingBottom: paddingB + paddingU,
                     paddingLeft: paddingL + paddingU,
-                    boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
+                    boxShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor + ' ' + shadowPosition,
                     backgroundColor: backColor ? (0, _hexToRgba2.default)(backColor, backOpacity) : "transparent",
-                    backgroundImage: "url('" + imageURL + "')",
+                    backgroundImage: 'url(\'' + imageURL + '\')',
                     backgroundRepeat: backgroundRepeat,
                     backgroundPosition: backgroundPosition,
                     backgroundSize: backgroundSize,
                     backgroundAttachment: fixed ? "fixed" : "unset"
                 }
             },
-            btnChecked && btnText && React.createElement("style", {
+            btnChecked && btnText && React.createElement('style', {
                 dangerouslySetInnerHTML: {
-                    __html: ["#premium-icon-box-" + block_id + ":hover {", "box-shadow: " + hoverShadowHorizontal + "px " + hoverShadowVertical + "px " + hoverShadowBlur + "px " + hoverShadowColor + " " + hoverShadowPosition + " !important", "}", "#premium-icon-box-" + block_id + " .premium-icon-box__btn:hover {", "color: " + btnHoverColor + " !important;", "border-color: " + btnHoverBorder + " !important;", "}", "#premium-icon-box-" + block_id + " .premium-button__none .premium-icon-box__btn:hover {", "background-color: " + btnHoverBack + " !important;", "}", "#premium-icon-box-" + block_id + " .premium-button__slide .premium-button::before {", "background-color: " + btnHoverBack + " !important;", "}"].join("\n")
+                    __html: ['#premium-icon-box-' + block_id + ':hover {', 'box-shadow: ' + hoverShadowHorizontal + 'px ' + hoverShadowVertical + 'px ' + hoverShadowBlur + 'px ' + hoverShadowColor + ' ' + hoverShadowPosition + ' !important', "}", '#premium-icon-box-' + block_id + ' .premium-icon-box__btn:hover {', 'color: ' + btnHoverColor + ' !important;', 'border-color: ' + btnHoverBorder + ' !important;', "}", '#premium-icon-box-' + block_id + ' .premium-button__none .premium-icon-box__btn:hover {', 'background-color: ' + btnHoverBack + ' !important;', "}", '#premium-icon-box-' + block_id + ' .premium-button__slide .premium-button::before {', 'background-color: ' + btnHoverBack + ' !important;', "}"].join("\n")
                 }
             }),
             iconChecked && React.createElement(
-                "div",
+                'div',
                 {
-                    className: "premium-icon-box__icon_wrap premium-icon-box__icon_" + iconVPos
+                    className: 'premium-icon-box__icon_wrap premium-icon-box__icon_' + iconVPos
                 },
-                "icon" === iconImage && selectedIcon && React.createElement("i", {
-                    className: selectedIcon + " premium-icon-box__icon premium-icon__" + hoverEffect,
+                "icon" === iconImage && selectedIcon && React.createElement('i', {
+                    className: selectedIcon + ' premium-icon-box__icon premium-icon__' + hoverEffect,
                     style: {
                         color: iconColor,
                         backgroundColor: iconBackColor ? (0, _hexToRgba2.default)(iconBackColor, iconOpacity) : "transparent",
                         fontSize: iconSize
                     }
                 }),
-                "image" === iconImage && iconImgUrl && React.createElement("img", {
-                    className: "premium-icon-box__icon premium-icon__" + hoverEffect,
-                    src: "" + iconImgUrl,
-                    alt: "Image Icon",
+                "image" === iconImage && iconImgUrl && React.createElement('img', {
+                    className: 'premium-icon-box__icon premium-icon__' + hoverEffect,
+                    src: '' + iconImgUrl,
+                    alt: 'Image Icon',
                     style: {
                         width: iconSize + "px",
                         height: iconSize + "px",
@@ -34660,12 +35038,12 @@ var deprecatedContent = [{
                 })
             ),
             React.createElement(
-                "div",
-                { className: "premium-icon-box__content_wrap" },
+                'div',
+                { className: 'premium-icon-box__content_wrap' },
                 titleChecked && titleText && React.createElement(
-                    "div",
+                    'div',
                     {
-                        className: "premium-icon-box__title_wrap",
+                        className: 'premium-icon-box__title_wrap',
                         style: {
                             marginTop: titleMarginT,
                             marginBottom: titleMarginB
@@ -34673,7 +35051,7 @@ var deprecatedContent = [{
                     },
                     React.createElement(RichText.Content, {
                         tagName: titleTag.toLowerCase(),
-                        className: "premium-icon-box__title",
+                        className: 'premium-icon-box__title',
                         value: titleText,
                         style: {
                             color: titleColor,
@@ -34682,23 +35060,23 @@ var deprecatedContent = [{
                             textTransform: titleUpper ? "uppercase" : "none",
                             fontStyle: titleStyle,
                             fontWeight: titleWeight,
-                            textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor,
+                            textShadow: titleShadowHorizontal + 'px ' + titleShadowVertical + 'px ' + titleShadowBlur + 'px ' + titleShadowColor,
                             lineHeight: titleLine + "px"
                         }
                     })
                 ),
                 descChecked && descText && React.createElement(
-                    "div",
+                    'div',
                     {
-                        className: "premium-icon-box__desc_wrap",
+                        className: 'premium-icon-box__desc_wrap',
                         style: {
                             marginTop: descMarginT,
                             marginBottom: descMarginB
                         }
                     },
                     React.createElement(RichText.Content, {
-                        tagName: "p",
-                        className: "premium-icon-box__desc",
+                        tagName: 'p',
+                        className: 'premium-icon-box__desc',
                         value: descText,
                         style: {
                             color: descColor,
@@ -34709,19 +35087,19 @@ var deprecatedContent = [{
                     })
                 ),
                 btnChecked && btnText && React.createElement(
-                    "div",
+                    'div',
                     {
-                        className: "premium-icon-box__btn_wrap premium-button__" + btnEffect + " premium-button__" + effectDir,
+                        className: 'premium-icon-box__btn_wrap premium-button__' + btnEffect + ' premium-button__' + effectDir,
                         style: {
                             marginTop: btnMarginT,
                             marginBottom: btnMarginB
                         }
                     },
                     React.createElement(RichText.Content, {
-                        tagName: "a",
-                        className: "premium-icon-box__btn premium-button",
+                        tagName: 'a',
+                        className: 'premium-icon-box__btn premium-button',
                         href: btnLink,
-                        rel: "noopener noreferrer",
+                        rel: 'noopener noreferrer',
                         target: btnTarget ? "_blank" : "_self",
                         value: btnText,
                         style: {
@@ -34732,11 +35110,11 @@ var deprecatedContent = [{
                             fontStyle: btnStyle,
                             fontWeight: btnWeight,
                             borderStyle: btnBorderType,
-                            borderWidth: btnBorderIconBox ? btnBorderTop + "px " + btnBorderRight + "px " + btnBorderBottom + "px " + btnBorderLeft + "px" : btnBorderWidth + "px",
+                            borderWidth: btnBorderIconBox ? btnBorderTop + 'px ' + btnBorderRight + 'px ' + btnBorderBottom + 'px ' + btnBorderLeft + 'px' : btnBorderWidth + "px",
                             borderRadius: btnBorderRadius + "px",
                             borderColor: btnBorderColor,
                             padding: btnPadding + btnPaddingU,
-                            boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition
+                            boxShadow: btnShadowHorizontal + 'px ' + btnShadowVertical + 'px ' + btnShadowBlur + 'px ' + btnShadowColor + ' ' + btnShadowPosition
                         }
                     })
                 )
@@ -34778,262 +35156,6 @@ var deprecatedContent = [{
         return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
-        var _props$attributes2 = props.attributes,
-            id = _props$attributes2.id,
-            align = _props$attributes2.align,
-            iconImage = _props$attributes2.iconImage,
-            iconImgUrl = _props$attributes2.iconImgUrl,
-            iconRadius = _props$attributes2.iconRadius,
-            selectedIcon = _props$attributes2.selectedIcon,
-            iconChecked = _props$attributes2.iconChecked,
-            hoverEffect = _props$attributes2.hoverEffect,
-            iconPos = _props$attributes2.iconPos,
-            iconHPos = _props$attributes2.iconHPos,
-            iconVPos = _props$attributes2.iconVPos,
-            iconSize = _props$attributes2.iconSize,
-            iconColor = _props$attributes2.iconColor,
-            iconBackColor = _props$attributes2.iconBackColor,
-            titleChecked = _props$attributes2.titleChecked,
-            titleText = _props$attributes2.titleText,
-            titleTag = _props$attributes2.titleTag,
-            titleColor = _props$attributes2.titleColor,
-            titleFont = _props$attributes2.titleFont,
-            titleSize = _props$attributes2.titleSize,
-            titleLine = _props$attributes2.titleLine,
-            titleLetter = _props$attributes2.titleLetter,
-            titleStyle = _props$attributes2.titleStyle,
-            titleUpper = _props$attributes2.titleUpper,
-            titleWeight = _props$attributes2.titleWeight,
-            titleShadowBlur = _props$attributes2.titleShadowBlur,
-            titleShadowColor = _props$attributes2.titleShadowColor,
-            titleShadowHorizontal = _props$attributes2.titleShadowHorizontal,
-            titleShadowVertical = _props$attributes2.titleShadowVertical,
-            titleMarginT = _props$attributes2.titleMarginT,
-            titleMarginB = _props$attributes2.titleMarginB,
-            descChecked = _props$attributes2.descChecked,
-            descText = _props$attributes2.descText,
-            descColor = _props$attributes2.descColor,
-            descFont = _props$attributes2.descFont,
-            descSize = _props$attributes2.descSize,
-            descLine = _props$attributes2.descLine,
-            descWeight = _props$attributes2.descWeight,
-            descMarginT = _props$attributes2.descMarginT,
-            descMarginB = _props$attributes2.descMarginB,
-            btnChecked = _props$attributes2.btnChecked,
-            btnEffect = _props$attributes2.btnEffect,
-            effectDir = _props$attributes2.effectDir,
-            btnText = _props$attributes2.btnText,
-            btnTarget = _props$attributes2.btnTarget,
-            btnLink = _props$attributes2.btnLink,
-            btnSize = _props$attributes2.btnSize,
-            btnStyle = _props$attributes2.btnStyle,
-            btnUpper = _props$attributes2.btnUpper,
-            btnWeight = _props$attributes2.btnWeight,
-            btnLetter = _props$attributes2.btnLetter,
-            btnColor = _props$attributes2.btnColor,
-            btnHoverColor = _props$attributes2.btnHoverColor,
-            btnHoverBorder = _props$attributes2.btnHoverBorder,
-            btnBack = _props$attributes2.btnBack,
-            btnHoverBack = _props$attributes2.btnHoverBack,
-            btnBorderWidth = _props$attributes2.btnBorderWidth,
-            btnBorderRadius = _props$attributes2.btnBorderRadius,
-            btnBorderColor = _props$attributes2.btnBorderColor,
-            btnBorderType = _props$attributes2.btnBorderType,
-            btnPadding = _props$attributes2.btnPadding,
-            btnPaddingU = _props$attributes2.btnPaddingU,
-            btnMarginT = _props$attributes2.btnMarginT,
-            btnMarginB = _props$attributes2.btnMarginB,
-            btnShadowBlur = _props$attributes2.btnShadowBlur,
-            btnShadowColor = _props$attributes2.btnShadowColor,
-            btnShadowHorizontal = _props$attributes2.btnShadowHorizontal,
-            btnShadowVertical = _props$attributes2.btnShadowVertical,
-            btnShadowPosition = _props$attributes2.btnShadowPosition,
-            backColor = _props$attributes2.backColor,
-            imageURL = _props$attributes2.imageURL,
-            fixed = _props$attributes2.fixed,
-            backgroundRepeat = _props$attributes2.backgroundRepeat,
-            backgroundPosition = _props$attributes2.backgroundPosition,
-            backgroundSize = _props$attributes2.backgroundSize,
-            borderType = _props$attributes2.borderType,
-            borderWidth = _props$attributes2.borderWidth,
-            borderRadius = _props$attributes2.borderRadius,
-            borderColor = _props$attributes2.borderColor,
-            marginT = _props$attributes2.marginT,
-            marginR = _props$attributes2.marginR,
-            marginB = _props$attributes2.marginB,
-            marginL = _props$attributes2.marginL,
-            paddingT = _props$attributes2.paddingT,
-            paddingR = _props$attributes2.paddingR,
-            paddingB = _props$attributes2.paddingB,
-            paddingL = _props$attributes2.paddingL,
-            paddingU = _props$attributes2.paddingU,
-            shadowBlur = _props$attributes2.shadowBlur,
-            shadowColor = _props$attributes2.shadowColor,
-            shadowHorizontal = _props$attributes2.shadowHorizontal,
-            shadowVertical = _props$attributes2.shadowVertical,
-            shadowPosition = _props$attributes2.shadowPosition,
-            hoverShadowBlur = _props$attributes2.hoverShadowBlur,
-            hoverShadowColor = _props$attributes2.hoverShadowColor,
-            hoverShadowHorizontal = _props$attributes2.hoverShadowHorizontal,
-            hoverShadowVertical = _props$attributes2.hoverShadowVertical,
-            hoverShadowPosition = _props$attributes2.hoverShadowPosition;
-
-
-        return React.createElement(
-            "div",
-            {
-                id: "premium-icon-box-" + id,
-                className: className + " premium-icon-box-" + iconPos + " premium-icon-box-" + iconHPos,
-                style: {
-                    textAlign: align,
-                    border: borderType,
-                    borderWidth: borderWidth + "px",
-                    borderRadius: borderRadius + "px",
-                    borderColor: borderColor,
-                    marginTop: marginT,
-                    marginRight: marginR,
-                    marginBottom: marginB,
-                    marginLeft: marginL,
-                    paddingTop: paddingT + paddingU,
-                    paddingRight: paddingR + paddingU,
-                    paddingBottom: paddingB + paddingU,
-                    paddingLeft: paddingL + paddingU,
-                    boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
-                    backgroundColor: backColor,
-                    backgroundImage: "url('" + imageURL + "')",
-                    backgroundRepeat: backgroundRepeat,
-                    backgroundPosition: backgroundPosition,
-                    backgroundSize: backgroundSize,
-                    backgroundAttachment: fixed ? "fixed" : "unset"
-                }
-            },
-            btnChecked && btnText && React.createElement("style", {
-                dangerouslySetInnerHTML: {
-                    __html: ["#premium-icon-box-" + id + ":hover {", "box-shadow: " + hoverShadowHorizontal + "px " + hoverShadowVertical + "px " + hoverShadowBlur + "px " + hoverShadowColor + " " + hoverShadowPosition + " !important", "}", "#premium-icon-box-" + id + " .premium-icon-box__btn:hover {", "color: " + btnHoverColor + " !important;", "border-color: " + btnHoverBorder + " !important;", "}", "#premium-icon-box-" + id + " .premium-button__none .premium-icon-box__btn:hover {", "background-color: " + btnHoverBack + " !important;", "}", "#premium-icon-box-" + id + " .premium-button__slide .premium-button::before {", "background-color: " + btnHoverBack + " !important;", "}"].join("\n")
-                }
-            }),
-            iconChecked && React.createElement(
-                "div",
-                {
-                    className: "premium-icon-box__icon_wrap premium-icon-box__icon_" + iconVPos
-                },
-                "icon" === iconImage && selectedIcon && React.createElement("i", {
-                    className: selectedIcon + " premium-icon-box__icon premium-icon__" + hoverEffect,
-                    style: {
-                        color: iconColor,
-                        backgroundColor: iconBackColor,
-                        fontSize: iconSize
-                    }
-                }),
-                "image" === iconImage && iconImgUrl && React.createElement("img", {
-                    className: "premium-icon-box__icon premium-icon__" + hoverEffect,
-                    src: "" + iconImgUrl,
-                    alt: "Image Icon",
-                    style: {
-                        width: iconSize + "px",
-                        height: iconSize + "px",
-                        borderRadius: iconRadius + "px"
-                    }
-                })
-            ),
-            React.createElement(
-                "div",
-                { className: "premium-icon-box__content_wrap" },
-                titleChecked && titleText && React.createElement(
-                    "div",
-                    {
-                        className: "premium-icon-box__title_wrap",
-                        style: {
-                            marginTop: titleMarginT,
-                            marginBottom: titleMarginB
-                        }
-                    },
-                    React.createElement(RichText.Content, {
-                        tagName: titleTag.toLowerCase(),
-                        className: "premium-icon-box__title",
-                        value: titleText,
-                        style: {
-                            color: titleColor,
-                            fontSize: titleSize + "px",
-                            fontFamily: titleFont,
-                            letterSpacing: titleLetter + "px",
-                            textTransform: titleUpper ? "uppercase" : "none",
-                            fontStyle: titleStyle,
-                            fontWeight: titleWeight,
-                            textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor,
-                            lineHeight: titleLine + "px"
-                        }
-                    })
-                ),
-                descChecked && descText && React.createElement(
-                    "div",
-                    {
-                        className: "premium-icon-box__desc_wrap",
-                        style: {
-                            marginTop: descMarginT,
-                            marginBottom: descMarginB
-                        }
-                    },
-                    React.createElement(RichText.Content, {
-                        tagName: "p",
-                        className: "premium-icon-box__desc",
-                        value: descText,
-                        style: {
-                            color: descColor,
-                            fontSize: descSize + "px",
-                            fontFamily: descFont,
-                            lineHeight: descLine + "px",
-                            fontWeight: descWeight
-                        }
-                    })
-                ),
-                btnChecked && btnText && React.createElement(
-                    "div",
-                    {
-                        className: "premium-icon-box__btn_wrap premium-button__" + btnEffect + " premium-button__" + effectDir,
-                        style: {
-                            marginTop: btnMarginT,
-                            marginBottom: btnMarginB
-                        }
-                    },
-                    React.createElement(RichText.Content, {
-                        tagName: "a",
-                        className: "premium-icon-box__btn premium-button",
-                        href: btnLink,
-                        rel: "noopener noreferrer",
-                        target: btnTarget ? "_blank" : "_self",
-                        value: btnText,
-                        style: {
-                            color: btnColor,
-                            backgroundColor: btnBack,
-                            fontSize: btnSize + "px",
-                            letterSpacing: btnLetter + "px",
-                            textTransform: btnUpper ? "uppercase" : "none",
-                            fontStyle: btnStyle,
-                            fontWeight: btnWeight,
-                            border: btnBorderType,
-                            borderWidth: btnBorderWidth + "px",
-                            borderRadius: btnBorderRadius + "px",
-                            borderColor: btnBorderColor,
-                            padding: btnPadding + btnPaddingU,
-                            boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition
-                        }
-                    })
-                )
-            )
-        );
-    }
-}, {
-    attributes: attributes,
-    migrate: function migrate(attributes) {
-        var newAttributes = {
-            iconPos: "block",
-            iconHPos: "before",
-            iconVPos: "center"
-        };
-        return Object.assign(attributes, newAttributes);
-    },
-    save: function save(props) {
         var _props$attributes3 = props.attributes,
             id = _props$attributes3.id,
             align = _props$attributes3.align,
@@ -35043,6 +35165,9 @@ var deprecatedContent = [{
             selectedIcon = _props$attributes3.selectedIcon,
             iconChecked = _props$attributes3.iconChecked,
             hoverEffect = _props$attributes3.hoverEffect,
+            iconPos = _props$attributes3.iconPos,
+            iconHPos = _props$attributes3.iconHPos,
+            iconVPos = _props$attributes3.iconVPos,
             iconSize = _props$attributes3.iconSize,
             iconColor = _props$attributes3.iconColor,
             iconBackColor = _props$attributes3.iconBackColor,
@@ -35133,10 +35258,10 @@ var deprecatedContent = [{
 
 
         return React.createElement(
-            "div",
+            'div',
             {
-                id: className + "-" + id,
-                className: "" + className,
+                id: 'premium-icon-box-' + id,
+                className: className + ' premium-icon-box-' + iconPos + ' premium-icon-box-' + iconHPos,
                 style: {
                     textAlign: align,
                     border: borderType,
@@ -35151,35 +35276,37 @@ var deprecatedContent = [{
                     paddingRight: paddingR + paddingU,
                     paddingBottom: paddingB + paddingU,
                     paddingLeft: paddingL + paddingU,
-                    boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
+                    boxShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor + ' ' + shadowPosition,
                     backgroundColor: backColor,
-                    backgroundImage: "url('" + imageURL + "')",
+                    backgroundImage: 'url(\'' + imageURL + '\')',
                     backgroundRepeat: backgroundRepeat,
                     backgroundPosition: backgroundPosition,
                     backgroundSize: backgroundSize,
                     backgroundAttachment: fixed ? "fixed" : "unset"
                 }
             },
-            btnChecked && btnText && React.createElement("style", {
+            btnChecked && btnText && React.createElement('style', {
                 dangerouslySetInnerHTML: {
-                    __html: ["#premium-icon-box-" + id + ":hover {", "box-shadow: " + hoverShadowHorizontal + "px " + hoverShadowVertical + "px " + hoverShadowBlur + "px " + hoverShadowColor + " " + hoverShadowPosition + " !important", "}", "#premium-icon-box-" + id + " .premium-icon-box__btn:hover {", "color: " + btnHoverColor + " !important;", "border-color: " + btnHoverBorder + " !important;", "}", "#premium-icon-box-" + id + " .premium-button__none .premium-icon-box__btn:hover {", "background-color: " + btnHoverBack + " !important;", "}", "#premium-icon-box-" + id + " .premium-button__slide .premium-button::before {", "background-color: " + btnHoverBack + " !important;", "}"].join("\n")
+                    __html: ['#premium-icon-box-' + id + ':hover {', 'box-shadow: ' + hoverShadowHorizontal + 'px ' + hoverShadowVertical + 'px ' + hoverShadowBlur + 'px ' + hoverShadowColor + ' ' + hoverShadowPosition + ' !important', "}", '#premium-icon-box-' + id + ' .premium-icon-box__btn:hover {', 'color: ' + btnHoverColor + ' !important;', 'border-color: ' + btnHoverBorder + ' !important;', "}", '#premium-icon-box-' + id + ' .premium-button__none .premium-icon-box__btn:hover {', 'background-color: ' + btnHoverBack + ' !important;', "}", '#premium-icon-box-' + id + ' .premium-button__slide .premium-button::before {', 'background-color: ' + btnHoverBack + ' !important;', "}"].join("\n")
                 }
             }),
             iconChecked && React.createElement(
-                "div",
-                { className: className + "__icon_wrap" },
-                "icon" === iconImage && selectedIcon && React.createElement("i", {
-                    className: selectedIcon + " " + className + "__icon premium-icon__" + hoverEffect,
+                'div',
+                {
+                    className: 'premium-icon-box__icon_wrap premium-icon-box__icon_' + iconVPos
+                },
+                "icon" === iconImage && selectedIcon && React.createElement('i', {
+                    className: selectedIcon + ' premium-icon-box__icon premium-icon__' + hoverEffect,
                     style: {
                         color: iconColor,
                         backgroundColor: iconBackColor,
                         fontSize: iconSize
                     }
                 }),
-                "image" === iconImage && iconImgUrl && React.createElement("img", {
-                    className: className + "__icon premium-icon__" + hoverEffect,
-                    src: "" + iconImgUrl,
-                    alt: "Image Icon",
+                "image" === iconImage && iconImgUrl && React.createElement('img', {
+                    className: 'premium-icon-box__icon premium-icon__' + hoverEffect,
+                    src: '' + iconImgUrl,
+                    alt: 'Image Icon',
                     style: {
                         width: iconSize + "px",
                         height: iconSize + "px",
@@ -35187,86 +35314,90 @@ var deprecatedContent = [{
                     }
                 })
             ),
-            titleChecked && titleText && React.createElement(
-                "div",
-                {
-                    className: className + "__title_wrap",
-                    style: {
-                        marginTop: titleMarginT,
-                        marginBottom: titleMarginB
-                    }
-                },
-                React.createElement(RichText.Content, {
-                    tagName: titleTag.toLowerCase(),
-                    className: className + "__title",
-                    value: titleText,
-                    style: {
-                        color: titleColor,
-                        fontSize: titleSize + "px",
-                        fontFamily: titleFont,
-                        letterSpacing: titleLetter + "px",
-                        textTransform: titleUpper ? "uppercase" : "none",
-                        fontStyle: titleStyle,
-                        fontWeight: titleWeight,
-                        textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor,
-                        lineHeight: titleLine + "px"
-                    }
-                })
-            ),
-            descChecked && descText && React.createElement(
-                "div",
-                {
-                    className: className + "__desc_wrap",
-                    style: {
-                        marginTop: descMarginT,
-                        marginBottom: descMarginB
-                    }
-                },
-                React.createElement(RichText.Content, {
-                    tagName: "p",
-                    className: className + "__desc",
-                    value: descText,
-                    style: {
-                        color: descColor,
-                        fontSize: descSize + "px",
-                        fontFamily: descFont,
-                        lineHeight: descLine + "px",
-                        fontWeight: descWeight
-                    }
-                })
-            ),
-            btnChecked && btnText && React.createElement(
-                "div",
-                {
-                    className: className + "__btn_wrap premium-button__" + btnEffect + " premium-button__" + effectDir,
-                    style: {
-                        marginTop: btnMarginT,
-                        marginBottom: btnMarginB
-                    }
-                },
-                React.createElement(RichText.Content, {
-                    tagName: "a",
-                    className: className + "__btn premium-button",
-                    href: btnLink,
-                    rel: "noopener noreferrer",
-                    target: btnTarget ? "_blank" : "_self",
-                    value: btnText,
-                    style: {
-                        color: btnColor,
-                        backgroundColor: btnBack,
-                        fontSize: btnSize + "px",
-                        letterSpacing: btnLetter + "px",
-                        textTransform: btnUpper ? "uppercase" : "none",
-                        fontStyle: btnStyle,
-                        fontWeight: btnWeight,
-                        border: btnBorderType,
-                        borderWidth: btnBorderWidth + "px",
-                        borderRadius: btnBorderRadius + "px",
-                        borderColor: btnBorderColor,
-                        padding: btnPadding + btnPaddingU,
-                        boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition
-                    }
-                })
+            React.createElement(
+                'div',
+                { className: 'premium-icon-box__content_wrap' },
+                titleChecked && titleText && React.createElement(
+                    'div',
+                    {
+                        className: 'premium-icon-box__title_wrap',
+                        style: {
+                            marginTop: titleMarginT,
+                            marginBottom: titleMarginB
+                        }
+                    },
+                    React.createElement(RichText.Content, {
+                        tagName: titleTag.toLowerCase(),
+                        className: 'premium-icon-box__title',
+                        value: titleText,
+                        style: {
+                            color: titleColor,
+                            fontSize: titleSize + "px",
+                            fontFamily: titleFont,
+                            letterSpacing: titleLetter + "px",
+                            textTransform: titleUpper ? "uppercase" : "none",
+                            fontStyle: titleStyle,
+                            fontWeight: titleWeight,
+                            textShadow: titleShadowHorizontal + 'px ' + titleShadowVertical + 'px ' + titleShadowBlur + 'px ' + titleShadowColor,
+                            lineHeight: titleLine + "px"
+                        }
+                    })
+                ),
+                descChecked && descText && React.createElement(
+                    'div',
+                    {
+                        className: 'premium-icon-box__desc_wrap',
+                        style: {
+                            marginTop: descMarginT,
+                            marginBottom: descMarginB
+                        }
+                    },
+                    React.createElement(RichText.Content, {
+                        tagName: 'p',
+                        className: 'premium-icon-box__desc',
+                        value: descText,
+                        style: {
+                            color: descColor,
+                            fontSize: descSize + "px",
+                            fontFamily: descFont,
+                            lineHeight: descLine + "px",
+                            fontWeight: descWeight
+                        }
+                    })
+                ),
+                btnChecked && btnText && React.createElement(
+                    'div',
+                    {
+                        className: 'premium-icon-box__btn_wrap premium-button__' + btnEffect + ' premium-button__' + effectDir,
+                        style: {
+                            marginTop: btnMarginT,
+                            marginBottom: btnMarginB
+                        }
+                    },
+                    React.createElement(RichText.Content, {
+                        tagName: 'a',
+                        className: 'premium-icon-box__btn premium-button',
+                        href: btnLink,
+                        rel: 'noopener noreferrer',
+                        target: btnTarget ? "_blank" : "_self",
+                        value: btnText,
+                        style: {
+                            color: btnColor,
+                            backgroundColor: btnBack,
+                            fontSize: btnSize + "px",
+                            letterSpacing: btnLetter + "px",
+                            textTransform: btnUpper ? "uppercase" : "none",
+                            fontStyle: btnStyle,
+                            fontWeight: btnWeight,
+                            border: btnBorderType,
+                            borderWidth: btnBorderWidth + "px",
+                            borderRadius: btnBorderRadius + "px",
+                            borderColor: btnBorderColor,
+                            padding: btnPadding + btnPaddingU,
+                            boxShadow: btnShadowHorizontal + 'px ' + btnShadowVertical + 'px ' + btnShadowBlur + 'px ' + btnShadowColor + ' ' + btnShadowPosition
+                        }
+                    })
+                )
             )
         );
     }
@@ -35274,8 +35405,9 @@ var deprecatedContent = [{
     attributes: attributes,
     migrate: function migrate(attributes) {
         var newAttributes = {
-            paddingU: "",
-            btnPaddingU: ""
+            iconPos: "block",
+            iconHPos: "before",
+            iconVPos: "center"
         };
         return Object.assign(attributes, newAttributes);
     },
@@ -35339,6 +35471,7 @@ var deprecatedContent = [{
             btnBorderColor = _props$attributes4.btnBorderColor,
             btnBorderType = _props$attributes4.btnBorderType,
             btnPadding = _props$attributes4.btnPadding,
+            btnPaddingU = _props$attributes4.btnPaddingU,
             btnMarginT = _props$attributes4.btnMarginT,
             btnMarginB = _props$attributes4.btnMarginB,
             btnShadowBlur = _props$attributes4.btnShadowBlur,
@@ -35364,6 +35497,7 @@ var deprecatedContent = [{
             paddingR = _props$attributes4.paddingR,
             paddingB = _props$attributes4.paddingB,
             paddingL = _props$attributes4.paddingL,
+            paddingU = _props$attributes4.paddingU,
             shadowBlur = _props$attributes4.shadowBlur,
             shadowColor = _props$attributes4.shadowColor,
             shadowHorizontal = _props$attributes4.shadowHorizontal,
@@ -35377,10 +35511,10 @@ var deprecatedContent = [{
 
 
         return React.createElement(
-            "div",
+            'div',
             {
-                id: className + "-" + id,
-                className: "" + className,
+                id: className + '-' + id,
+                className: '' + className,
                 style: {
                     textAlign: align,
                     border: borderType,
@@ -35391,39 +35525,39 @@ var deprecatedContent = [{
                     marginRight: marginR,
                     marginBottom: marginB,
                     marginLeft: marginL,
-                    paddingTop: paddingT,
-                    paddingRight: paddingR,
-                    paddingBottom: paddingB,
-                    paddingLeft: paddingL,
-                    boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
+                    paddingTop: paddingT + paddingU,
+                    paddingRight: paddingR + paddingU,
+                    paddingBottom: paddingB + paddingU,
+                    paddingLeft: paddingL + paddingU,
+                    boxShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor + ' ' + shadowPosition,
                     backgroundColor: backColor,
-                    backgroundImage: "url('" + imageURL + "')",
+                    backgroundImage: 'url(\'' + imageURL + '\')',
                     backgroundRepeat: backgroundRepeat,
                     backgroundPosition: backgroundPosition,
                     backgroundSize: backgroundSize,
                     backgroundAttachment: fixed ? "fixed" : "unset"
                 }
             },
-            btnChecked && btnText && React.createElement("style", {
+            btnChecked && btnText && React.createElement('style', {
                 dangerouslySetInnerHTML: {
-                    __html: ["#premium-icon-box-" + id + ":hover {", "box-shadow: " + hoverShadowHorizontal + "px " + hoverShadowVertical + "px " + hoverShadowBlur + "px " + hoverShadowColor + " " + hoverShadowPosition + " !important", "}", "#premium-icon-box-" + id + " .premium-icon-box__btn:hover {", "color: " + btnHoverColor + " !important;", "border-color: " + btnHoverBorder + " !important;", "}", "#premium-icon-box-" + id + " .premium-button__none .premium-icon-box__btn:hover {", "background-color: " + btnHoverBack + " !important;", "}", "#premium-icon-box-" + id + " .premium-button__slide .premium-button::before {", "background-color: " + btnHoverBack + " !important;", "}"].join("\n")
+                    __html: ['#premium-icon-box-' + id + ':hover {', 'box-shadow: ' + hoverShadowHorizontal + 'px ' + hoverShadowVertical + 'px ' + hoverShadowBlur + 'px ' + hoverShadowColor + ' ' + hoverShadowPosition + ' !important', "}", '#premium-icon-box-' + id + ' .premium-icon-box__btn:hover {', 'color: ' + btnHoverColor + ' !important;', 'border-color: ' + btnHoverBorder + ' !important;', "}", '#premium-icon-box-' + id + ' .premium-button__none .premium-icon-box__btn:hover {', 'background-color: ' + btnHoverBack + ' !important;', "}", '#premium-icon-box-' + id + ' .premium-button__slide .premium-button::before {', 'background-color: ' + btnHoverBack + ' !important;', "}"].join("\n")
                 }
             }),
             iconChecked && React.createElement(
-                "div",
-                { className: className + "__icon_wrap" },
-                "icon" === iconImage && selectedIcon && React.createElement("i", {
-                    className: selectedIcon + " " + className + "__icon premium-icon__" + hoverEffect,
+                'div',
+                { className: className + '__icon_wrap' },
+                "icon" === iconImage && selectedIcon && React.createElement('i', {
+                    className: selectedIcon + ' ' + className + '__icon premium-icon__' + hoverEffect,
                     style: {
                         color: iconColor,
                         backgroundColor: iconBackColor,
                         fontSize: iconSize
                     }
                 }),
-                "image" === iconImage && iconImgUrl && React.createElement("img", {
-                    className: className + "__icon premium-icon__" + hoverEffect,
-                    src: "" + iconImgUrl,
-                    alt: "Image Icon",
+                "image" === iconImage && iconImgUrl && React.createElement('img', {
+                    className: className + '__icon premium-icon__' + hoverEffect,
+                    src: '' + iconImgUrl,
+                    alt: 'Image Icon',
                     style: {
                         width: iconSize + "px",
                         height: iconSize + "px",
@@ -35432,9 +35566,9 @@ var deprecatedContent = [{
                 })
             ),
             titleChecked && titleText && React.createElement(
-                "div",
+                'div',
                 {
-                    className: className + "__title_wrap",
+                    className: className + '__title_wrap',
                     style: {
                         marginTop: titleMarginT,
                         marginBottom: titleMarginB
@@ -35442,7 +35576,7 @@ var deprecatedContent = [{
                 },
                 React.createElement(RichText.Content, {
                     tagName: titleTag.toLowerCase(),
-                    className: className + "__title",
+                    className: className + '__title',
                     value: titleText,
                     style: {
                         color: titleColor,
@@ -35452,23 +35586,23 @@ var deprecatedContent = [{
                         textTransform: titleUpper ? "uppercase" : "none",
                         fontStyle: titleStyle,
                         fontWeight: titleWeight,
-                        textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor,
+                        textShadow: titleShadowHorizontal + 'px ' + titleShadowVertical + 'px ' + titleShadowBlur + 'px ' + titleShadowColor,
                         lineHeight: titleLine + "px"
                     }
                 })
             ),
             descChecked && descText && React.createElement(
-                "div",
+                'div',
                 {
-                    className: className + "__desc_wrap",
+                    className: className + '__desc_wrap',
                     style: {
                         marginTop: descMarginT,
                         marginBottom: descMarginB
                     }
                 },
                 React.createElement(RichText.Content, {
-                    tagName: "p",
-                    className: className + "__desc",
+                    tagName: 'p',
+                    className: className + '__desc',
                     value: descText,
                     style: {
                         color: descColor,
@@ -35480,19 +35614,19 @@ var deprecatedContent = [{
                 })
             ),
             btnChecked && btnText && React.createElement(
-                "div",
+                'div',
                 {
-                    className: className + "__btn_wrap premium-button__" + btnEffect + " premium-button__" + effectDir,
+                    className: className + '__btn_wrap premium-button__' + btnEffect + ' premium-button__' + effectDir,
                     style: {
                         marginTop: btnMarginT,
                         marginBottom: btnMarginB
                     }
                 },
                 React.createElement(RichText.Content, {
-                    tagName: "a",
-                    className: className + "__btn premium-button",
+                    tagName: 'a',
+                    className: className + '__btn premium-button',
                     href: btnLink,
-                    rel: "noopener noreferrer",
+                    rel: 'noopener noreferrer',
                     target: btnTarget ? "_blank" : "_self",
                     value: btnText,
                     style: {
@@ -35507,19 +35641,19 @@ var deprecatedContent = [{
                         borderWidth: btnBorderWidth + "px",
                         borderRadius: btnBorderRadius + "px",
                         borderColor: btnBorderColor,
-                        padding: btnPadding + "px",
-                        boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition
+                        padding: btnPadding + btnPaddingU,
+                        boxShadow: btnShadowHorizontal + 'px ' + btnShadowVertical + 'px ' + btnShadowBlur + 'px ' + btnShadowColor + ' ' + btnShadowPosition
                     }
                 })
             )
         );
     }
 }, {
-    attribute: attributes,
+    attributes: attributes,
     migrate: function migrate(attributes) {
         var newAttributes = {
-            titleFont: "",
-            descFont: ""
+            paddingU: "",
+            btnPaddingU: ""
         };
         return Object.assign(attributes, newAttributes);
     },
@@ -35540,6 +35674,7 @@ var deprecatedContent = [{
             titleText = _props$attributes5.titleText,
             titleTag = _props$attributes5.titleTag,
             titleColor = _props$attributes5.titleColor,
+            titleFont = _props$attributes5.titleFont,
             titleSize = _props$attributes5.titleSize,
             titleLine = _props$attributes5.titleLine,
             titleLetter = _props$attributes5.titleLetter,
@@ -35555,6 +35690,7 @@ var deprecatedContent = [{
             descChecked = _props$attributes5.descChecked,
             descText = _props$attributes5.descText,
             descColor = _props$attributes5.descColor,
+            descFont = _props$attributes5.descFont,
             descSize = _props$attributes5.descSize,
             descLine = _props$attributes5.descLine,
             descWeight = _props$attributes5.descWeight,
@@ -35619,10 +35755,10 @@ var deprecatedContent = [{
 
 
         return React.createElement(
-            "div",
+            'div',
             {
-                id: className + "-" + id,
-                className: "" + className,
+                id: className + '-' + id,
+                className: '' + className,
                 style: {
                     textAlign: align,
                     border: borderType,
@@ -35637,35 +35773,35 @@ var deprecatedContent = [{
                     paddingRight: paddingR,
                     paddingBottom: paddingB,
                     paddingLeft: paddingL,
-                    boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
+                    boxShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor + ' ' + shadowPosition,
                     backgroundColor: backColor,
-                    backgroundImage: "url('" + imageURL + "')",
+                    backgroundImage: 'url(\'' + imageURL + '\')',
                     backgroundRepeat: backgroundRepeat,
                     backgroundPosition: backgroundPosition,
                     backgroundSize: backgroundSize,
                     backgroundAttachment: fixed ? "fixed" : "unset"
                 }
             },
-            btnChecked && btnText && React.createElement("style", {
+            btnChecked && btnText && React.createElement('style', {
                 dangerouslySetInnerHTML: {
-                    __html: ["#premium-icon-box-" + id + ":hover {", "box-shadow: " + hoverShadowHorizontal + "px " + hoverShadowVertical + "px " + hoverShadowBlur + "px " + hoverShadowColor + " " + hoverShadowPosition + " !important", "}", "#premium-icon-box-" + id + " .premium-icon-box__btn:hover {", "color: " + btnHoverColor + " !important;", "border-color: " + btnHoverBorder + " !important;", "}", "#premium-icon-box-" + id + " .premium-button__none .premium-icon-box__btn:hover {", "background-color: " + btnHoverBack + " !important;", "}", "#premium-icon-box-" + id + " .premium-button__slide .premium-button::before {", "background-color: " + btnHoverBack + " !important;", "}"].join("\n")
+                    __html: ['#premium-icon-box-' + id + ':hover {', 'box-shadow: ' + hoverShadowHorizontal + 'px ' + hoverShadowVertical + 'px ' + hoverShadowBlur + 'px ' + hoverShadowColor + ' ' + hoverShadowPosition + ' !important', "}", '#premium-icon-box-' + id + ' .premium-icon-box__btn:hover {', 'color: ' + btnHoverColor + ' !important;', 'border-color: ' + btnHoverBorder + ' !important;', "}", '#premium-icon-box-' + id + ' .premium-button__none .premium-icon-box__btn:hover {', 'background-color: ' + btnHoverBack + ' !important;', "}", '#premium-icon-box-' + id + ' .premium-button__slide .premium-button::before {', 'background-color: ' + btnHoverBack + ' !important;', "}"].join("\n")
                 }
             }),
             iconChecked && React.createElement(
-                "div",
-                { className: className + "__icon_wrap" },
-                "icon" === iconImage && selectedIcon && React.createElement("i", {
-                    className: selectedIcon + " " + className + "__icon premium-icon__" + hoverEffect,
+                'div',
+                { className: className + '__icon_wrap' },
+                "icon" === iconImage && selectedIcon && React.createElement('i', {
+                    className: selectedIcon + ' ' + className + '__icon premium-icon__' + hoverEffect,
                     style: {
                         color: iconColor,
                         backgroundColor: iconBackColor,
                         fontSize: iconSize
                     }
                 }),
-                "image" === iconImage && iconImgUrl && React.createElement("img", {
-                    className: className + "__icon premium-icon__" + hoverEffect,
-                    src: "" + iconImgUrl,
-                    alt: "Image Icon",
+                "image" === iconImage && iconImgUrl && React.createElement('img', {
+                    className: className + '__icon premium-icon__' + hoverEffect,
+                    src: '' + iconImgUrl,
+                    alt: 'Image Icon',
                     style: {
                         width: iconSize + "px",
                         height: iconSize + "px",
@@ -35674,9 +35810,9 @@ var deprecatedContent = [{
                 })
             ),
             titleChecked && titleText && React.createElement(
-                "div",
+                'div',
                 {
-                    className: className + "__title_wrap",
+                    className: className + '__title_wrap',
                     style: {
                         marginTop: titleMarginT,
                         marginBottom: titleMarginB
@@ -35684,55 +35820,57 @@ var deprecatedContent = [{
                 },
                 React.createElement(RichText.Content, {
                     tagName: titleTag.toLowerCase(),
-                    className: className + "__title",
+                    className: className + '__title',
                     value: titleText,
                     style: {
                         color: titleColor,
                         fontSize: titleSize + "px",
+                        fontFamily: titleFont,
                         letterSpacing: titleLetter + "px",
                         textTransform: titleUpper ? "uppercase" : "none",
                         fontStyle: titleStyle,
                         fontWeight: titleWeight,
-                        textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor,
+                        textShadow: titleShadowHorizontal + 'px ' + titleShadowVertical + 'px ' + titleShadowBlur + 'px ' + titleShadowColor,
                         lineHeight: titleLine + "px"
                     }
                 })
             ),
             descChecked && descText && React.createElement(
-                "div",
+                'div',
                 {
-                    className: className + "__desc_wrap",
+                    className: className + '__desc_wrap',
                     style: {
                         marginTop: descMarginT,
                         marginBottom: descMarginB
                     }
                 },
                 React.createElement(RichText.Content, {
-                    tagName: "p",
-                    className: className + "__desc",
+                    tagName: 'p',
+                    className: className + '__desc',
                     value: descText,
                     style: {
                         color: descColor,
                         fontSize: descSize + "px",
+                        fontFamily: descFont,
                         lineHeight: descLine + "px",
                         fontWeight: descWeight
                     }
                 })
             ),
             btnChecked && btnText && React.createElement(
-                "div",
+                'div',
                 {
-                    className: className + "__btn_wrap premium-button__" + btnEffect + " premium-button__" + effectDir,
+                    className: className + '__btn_wrap premium-button__' + btnEffect + ' premium-button__' + effectDir,
                     style: {
                         marginTop: btnMarginT,
                         marginBottom: btnMarginB
                     }
                 },
                 React.createElement(RichText.Content, {
-                    tagName: "a",
-                    className: className + "__btn premium-button",
+                    tagName: 'a',
+                    className: className + '__btn premium-button',
                     href: btnLink,
-                    rel: "noopener noreferrer",
+                    rel: 'noopener noreferrer',
                     target: btnTarget ? "_blank" : "_self",
                     value: btnText,
                     style: {
@@ -35748,17 +35886,18 @@ var deprecatedContent = [{
                         borderRadius: btnBorderRadius + "px",
                         borderColor: btnBorderColor,
                         padding: btnPadding + "px",
-                        boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition
+                        boxShadow: btnShadowHorizontal + 'px ' + btnShadowVertical + 'px ' + btnShadowBlur + 'px ' + btnShadowColor + ' ' + btnShadowPosition
                     }
                 })
             )
         );
     }
 }, {
-    attributes: attributes,
+    attribute: attributes,
     migrate: function migrate(attributes) {
         var newAttributes = {
-            iconBackColor: ""
+            titleFont: "",
+            descFont: ""
         };
         return Object.assign(attributes, newAttributes);
     },
@@ -35774,6 +35913,7 @@ var deprecatedContent = [{
             hoverEffect = _props$attributes6.hoverEffect,
             iconSize = _props$attributes6.iconSize,
             iconColor = _props$attributes6.iconColor,
+            iconBackColor = _props$attributes6.iconBackColor,
             titleChecked = _props$attributes6.titleChecked,
             titleText = _props$attributes6.titleText,
             titleTag = _props$attributes6.titleTag,
@@ -35857,10 +35997,10 @@ var deprecatedContent = [{
 
 
         return React.createElement(
-            "div",
+            'div',
             {
-                id: className + "-" + id,
-                className: "" + className,
+                id: className + '-' + id,
+                className: '' + className,
                 style: {
                     textAlign: align,
                     border: borderType,
@@ -35875,34 +36015,35 @@ var deprecatedContent = [{
                     paddingRight: paddingR,
                     paddingBottom: paddingB,
                     paddingLeft: paddingL,
-                    boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
+                    boxShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor + ' ' + shadowPosition,
                     backgroundColor: backColor,
-                    backgroundImage: "url('" + imageURL + "')",
+                    backgroundImage: 'url(\'' + imageURL + '\')',
                     backgroundRepeat: backgroundRepeat,
                     backgroundPosition: backgroundPosition,
                     backgroundSize: backgroundSize,
                     backgroundAttachment: fixed ? "fixed" : "unset"
                 }
             },
-            btnChecked && btnText && React.createElement("style", {
+            btnChecked && btnText && React.createElement('style', {
                 dangerouslySetInnerHTML: {
-                    __html: ["#premium-icon-box-" + id + ":hover {", "box-shadow: " + hoverShadowHorizontal + "px " + hoverShadowVertical + "px " + hoverShadowBlur + "px " + hoverShadowColor + " " + hoverShadowPosition + " !important", "}", "#premium-icon-box-" + id + " .premium-icon-box__btn:hover {", "color: " + btnHoverColor + " !important;", "border-color: " + btnHoverBorder + " !important;", "}", "#premium-icon-box-" + id + " .premium-button__none .premium-icon-box__btn:hover {", "background-color: " + btnHoverBack + " !important;", "}", "#premium-icon-box-" + id + " .premium-button__slide .premium-button::before {", "background-color: " + btnHoverBack + " !important;", "}"].join("\n")
+                    __html: ['#premium-icon-box-' + id + ':hover {', 'box-shadow: ' + hoverShadowHorizontal + 'px ' + hoverShadowVertical + 'px ' + hoverShadowBlur + 'px ' + hoverShadowColor + ' ' + hoverShadowPosition + ' !important', "}", '#premium-icon-box-' + id + ' .premium-icon-box__btn:hover {', 'color: ' + btnHoverColor + ' !important;', 'border-color: ' + btnHoverBorder + ' !important;', "}", '#premium-icon-box-' + id + ' .premium-button__none .premium-icon-box__btn:hover {', 'background-color: ' + btnHoverBack + ' !important;', "}", '#premium-icon-box-' + id + ' .premium-button__slide .premium-button::before {', 'background-color: ' + btnHoverBack + ' !important;', "}"].join("\n")
                 }
             }),
             iconChecked && React.createElement(
-                "div",
-                { className: className + "__icon_wrap" },
-                "icon" === iconImage && selectedIcon && React.createElement("i", {
-                    className: selectedIcon + " " + className + "__icon premium-icon__" + hoverEffect,
+                'div',
+                { className: className + '__icon_wrap' },
+                "icon" === iconImage && selectedIcon && React.createElement('i', {
+                    className: selectedIcon + ' ' + className + '__icon premium-icon__' + hoverEffect,
                     style: {
                         color: iconColor,
+                        backgroundColor: iconBackColor,
                         fontSize: iconSize
                     }
                 }),
-                "image" === iconImage && iconImgUrl && React.createElement("img", {
-                    className: className + "__icon premium-icon__" + hoverEffect,
-                    src: "" + iconImgUrl,
-                    alt: "Image Icon",
+                "image" === iconImage && iconImgUrl && React.createElement('img', {
+                    className: className + '__icon premium-icon__' + hoverEffect,
+                    src: '' + iconImgUrl,
+                    alt: 'Image Icon',
                     style: {
                         width: iconSize + "px",
                         height: iconSize + "px",
@@ -35911,9 +36052,9 @@ var deprecatedContent = [{
                 })
             ),
             titleChecked && titleText && React.createElement(
-                "div",
+                'div',
                 {
-                    className: className + "__title_wrap",
+                    className: className + '__title_wrap',
                     style: {
                         marginTop: titleMarginT,
                         marginBottom: titleMarginB
@@ -35921,7 +36062,7 @@ var deprecatedContent = [{
                 },
                 React.createElement(RichText.Content, {
                     tagName: titleTag.toLowerCase(),
-                    className: className + "__title",
+                    className: className + '__title',
                     value: titleText,
                     style: {
                         color: titleColor,
@@ -35930,23 +36071,23 @@ var deprecatedContent = [{
                         textTransform: titleUpper ? "uppercase" : "none",
                         fontStyle: titleStyle,
                         fontWeight: titleWeight,
-                        textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor,
+                        textShadow: titleShadowHorizontal + 'px ' + titleShadowVertical + 'px ' + titleShadowBlur + 'px ' + titleShadowColor,
                         lineHeight: titleLine + "px"
                     }
                 })
             ),
             descChecked && descText && React.createElement(
-                "div",
+                'div',
                 {
-                    className: className + "__desc_wrap",
+                    className: className + '__desc_wrap',
                     style: {
                         marginTop: descMarginT,
                         marginBottom: descMarginB
                     }
                 },
                 React.createElement(RichText.Content, {
-                    tagName: "p",
-                    className: className + "__desc",
+                    tagName: 'p',
+                    className: className + '__desc',
                     value: descText,
                     style: {
                         color: descColor,
@@ -35957,18 +36098,19 @@ var deprecatedContent = [{
                 })
             ),
             btnChecked && btnText && React.createElement(
-                "div",
+                'div',
                 {
-                    className: className + "__btn_wrap premium-button__" + btnEffect + " premium-button__" + effectDir,
+                    className: className + '__btn_wrap premium-button__' + btnEffect + ' premium-button__' + effectDir,
                     style: {
                         marginTop: btnMarginT,
                         marginBottom: btnMarginB
                     }
                 },
                 React.createElement(RichText.Content, {
-                    tagName: "a",
-                    className: className + "__btn premium-button",
+                    tagName: 'a',
+                    className: className + '__btn premium-button',
                     href: btnLink,
+                    rel: 'noopener noreferrer',
                     target: btnTarget ? "_blank" : "_self",
                     value: btnText,
                     style: {
@@ -35984,7 +36126,7 @@ var deprecatedContent = [{
                         borderRadius: btnBorderRadius + "px",
                         borderColor: btnBorderColor,
                         padding: btnPadding + "px",
-                        boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition
+                        boxShadow: btnShadowHorizontal + 'px ' + btnShadowVertical + 'px ' + btnShadowBlur + 'px ' + btnShadowColor + ' ' + btnShadowPosition
                     }
                 })
             )
@@ -35994,11 +36136,7 @@ var deprecatedContent = [{
     attributes: attributes,
     migrate: function migrate(attributes) {
         var newAttributes = {
-            hoverShadowColor: "",
-            hoverShadowBlur: "",
-            hoverShadowHorizontal: "",
-            hoverShadowVertical: "",
-            hoverShadowPosition: ""
+            iconBackColor: ""
         };
         return Object.assign(attributes, newAttributes);
     },
@@ -36088,14 +36226,19 @@ var deprecatedContent = [{
             shadowColor = _props$attributes7.shadowColor,
             shadowHorizontal = _props$attributes7.shadowHorizontal,
             shadowVertical = _props$attributes7.shadowVertical,
-            shadowPosition = _props$attributes7.shadowPosition;
+            shadowPosition = _props$attributes7.shadowPosition,
+            hoverShadowBlur = _props$attributes7.hoverShadowBlur,
+            hoverShadowColor = _props$attributes7.hoverShadowColor,
+            hoverShadowHorizontal = _props$attributes7.hoverShadowHorizontal,
+            hoverShadowVertical = _props$attributes7.hoverShadowVertical,
+            hoverShadowPosition = _props$attributes7.hoverShadowPosition;
 
 
         return React.createElement(
-            "div",
+            'div',
             {
-                id: className + "-" + id,
-                className: "" + className,
+                id: className + '-' + id,
+                className: '' + className,
                 style: {
                     textAlign: align,
                     border: borderType,
@@ -36110,34 +36253,34 @@ var deprecatedContent = [{
                     paddingRight: paddingR,
                     paddingBottom: paddingB,
                     paddingLeft: paddingL,
-                    boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
+                    boxShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor + ' ' + shadowPosition,
                     backgroundColor: backColor,
-                    backgroundImage: "url('" + imageURL + "')",
+                    backgroundImage: 'url(\'' + imageURL + '\')',
                     backgroundRepeat: backgroundRepeat,
                     backgroundPosition: backgroundPosition,
                     backgroundSize: backgroundSize,
                     backgroundAttachment: fixed ? "fixed" : "unset"
                 }
             },
-            btnChecked && btnText && React.createElement("style", {
+            btnChecked && btnText && React.createElement('style', {
                 dangerouslySetInnerHTML: {
-                    __html: ["#premium-icon-box-" + id + " .premium-icon-box__btn:hover {", "color: " + btnHoverColor + " !important;", "border-color: " + btnHoverBorder + " !important;", "}", "#premium-icon-box-" + id + " .premium-button__none .premium-icon-box__btn:hover {", "background-color: " + btnHoverBack + " !important;", "}", "#premium-icon-box-" + id + " .premium-button__slide .premium-button::before {", "background-color: " + btnHoverBack + " !important;", "}"].join("\n")
+                    __html: ['#premium-icon-box-' + id + ':hover {', 'box-shadow: ' + hoverShadowHorizontal + 'px ' + hoverShadowVertical + 'px ' + hoverShadowBlur + 'px ' + hoverShadowColor + ' ' + hoverShadowPosition + ' !important', "}", '#premium-icon-box-' + id + ' .premium-icon-box__btn:hover {', 'color: ' + btnHoverColor + ' !important;', 'border-color: ' + btnHoverBorder + ' !important;', "}", '#premium-icon-box-' + id + ' .premium-button__none .premium-icon-box__btn:hover {', 'background-color: ' + btnHoverBack + ' !important;', "}", '#premium-icon-box-' + id + ' .premium-button__slide .premium-button::before {', 'background-color: ' + btnHoverBack + ' !important;', "}"].join("\n")
                 }
             }),
             iconChecked && React.createElement(
-                "div",
-                { className: className + "__icon_wrap" },
-                "icon" === iconImage && selectedIcon && React.createElement("i", {
-                    className: selectedIcon + " " + className + "__icon premium-icon__" + hoverEffect,
+                'div',
+                { className: className + '__icon_wrap' },
+                "icon" === iconImage && selectedIcon && React.createElement('i', {
+                    className: selectedIcon + ' ' + className + '__icon premium-icon__' + hoverEffect,
                     style: {
                         color: iconColor,
                         fontSize: iconSize
                     }
                 }),
-                "image" === iconImage && iconImgUrl && React.createElement("img", {
-                    className: className + "__icon premium-icon__" + hoverEffect,
-                    src: "" + iconImgUrl,
-                    alt: "Image Icon",
+                "image" === iconImage && iconImgUrl && React.createElement('img', {
+                    className: className + '__icon premium-icon__' + hoverEffect,
+                    src: '' + iconImgUrl,
+                    alt: 'Image Icon',
                     style: {
                         width: iconSize + "px",
                         height: iconSize + "px",
@@ -36146,9 +36289,9 @@ var deprecatedContent = [{
                 })
             ),
             titleChecked && titleText && React.createElement(
-                "div",
+                'div',
                 {
-                    className: className + "__title_wrap",
+                    className: className + '__title_wrap',
                     style: {
                         marginTop: titleMarginT,
                         marginBottom: titleMarginB
@@ -36156,7 +36299,7 @@ var deprecatedContent = [{
                 },
                 React.createElement(RichText.Content, {
                     tagName: titleTag.toLowerCase(),
-                    className: className + "__title",
+                    className: className + '__title',
                     value: titleText,
                     style: {
                         color: titleColor,
@@ -36165,23 +36308,23 @@ var deprecatedContent = [{
                         textTransform: titleUpper ? "uppercase" : "none",
                         fontStyle: titleStyle,
                         fontWeight: titleWeight,
-                        textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor,
+                        textShadow: titleShadowHorizontal + 'px ' + titleShadowVertical + 'px ' + titleShadowBlur + 'px ' + titleShadowColor,
                         lineHeight: titleLine + "px"
                     }
                 })
             ),
             descChecked && descText && React.createElement(
-                "div",
+                'div',
                 {
-                    className: className + "__desc_wrap",
+                    className: className + '__desc_wrap',
                     style: {
                         marginTop: descMarginT,
                         marginBottom: descMarginB
                     }
                 },
                 React.createElement(RichText.Content, {
-                    tagName: "p",
-                    className: className + "__desc",
+                    tagName: 'p',
+                    className: className + '__desc',
                     value: descText,
                     style: {
                         color: descColor,
@@ -36192,17 +36335,17 @@ var deprecatedContent = [{
                 })
             ),
             btnChecked && btnText && React.createElement(
-                "div",
+                'div',
                 {
-                    className: className + "__btn_wrap premium-button__" + btnEffect + " premium-button__" + effectDir,
+                    className: className + '__btn_wrap premium-button__' + btnEffect + ' premium-button__' + effectDir,
                     style: {
                         marginTop: btnMarginT,
                         marginBottom: btnMarginB
                     }
                 },
                 React.createElement(RichText.Content, {
-                    tagName: "a",
-                    className: className + "__btn premium-button",
+                    tagName: 'a',
+                    className: className + '__btn premium-button',
                     href: btnLink,
                     target: btnTarget ? "_blank" : "_self",
                     value: btnText,
@@ -36219,7 +36362,7 @@ var deprecatedContent = [{
                         borderRadius: btnBorderRadius + "px",
                         borderColor: btnBorderColor,
                         padding: btnPadding + "px",
-                        boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition
+                        boxShadow: btnShadowHorizontal + 'px ' + btnShadowVertical + 'px ' + btnShadowBlur + 'px ' + btnShadowColor + ' ' + btnShadowPosition
                     }
                 })
             )
@@ -36228,15 +36371,19 @@ var deprecatedContent = [{
 }, {
     attributes: attributes,
     migrate: function migrate(attributes) {
-        return {
-            iconSize: attributes.iconSize
+        var newAttributes = {
+            hoverShadowColor: "",
+            hoverShadowBlur: "",
+            hoverShadowHorizontal: "",
+            hoverShadowVertical: "",
+            hoverShadowPosition: ""
         };
+        return Object.assign(attributes, newAttributes);
     },
     save: function save(props) {
         var _props$attributes8 = props.attributes,
             id = _props$attributes8.id,
             align = _props$attributes8.align,
-            iconType = _props$attributes8.iconType,
             iconImage = _props$attributes8.iconImage,
             iconImgUrl = _props$attributes8.iconImgUrl,
             iconRadius = _props$attributes8.iconRadius,
@@ -36270,6 +36417,8 @@ var deprecatedContent = [{
             descMarginT = _props$attributes8.descMarginT,
             descMarginB = _props$attributes8.descMarginB,
             btnChecked = _props$attributes8.btnChecked,
+            btnEffect = _props$attributes8.btnEffect,
+            effectDir = _props$attributes8.effectDir,
             btnText = _props$attributes8.btnText,
             btnTarget = _props$attributes8.btnTarget,
             btnLink = _props$attributes8.btnLink,
@@ -36321,10 +36470,10 @@ var deprecatedContent = [{
 
 
         return React.createElement(
-            "div",
+            'div',
             {
-                id: className + "-" + id,
-                className: "" + className,
+                id: className + '-' + id,
+                className: '' + className,
                 style: {
                     textAlign: align,
                     border: borderType,
@@ -36339,34 +36488,34 @@ var deprecatedContent = [{
                     paddingRight: paddingR,
                     paddingBottom: paddingB,
                     paddingLeft: paddingL,
-                    boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
+                    boxShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor + ' ' + shadowPosition,
                     backgroundColor: backColor,
-                    backgroundImage: "url('" + imageURL + "')",
+                    backgroundImage: 'url(\'' + imageURL + '\')',
                     backgroundRepeat: backgroundRepeat,
                     backgroundPosition: backgroundPosition,
                     backgroundSize: backgroundSize,
                     backgroundAttachment: fixed ? "fixed" : "unset"
                 }
             },
-            btnChecked && btnText && React.createElement("style", {
+            btnChecked && btnText && React.createElement('style', {
                 dangerouslySetInnerHTML: {
-                    __html: ["#premium-icon-box-" + id + " .premium-icon-box__btn:hover {", "color: " + btnHoverColor + " !important;", "background-color: " + btnHoverBack + " !important;", "border-color: " + btnHoverBorder + " !important;", "}"].join("\n")
+                    __html: ['#premium-icon-box-' + id + ' .premium-icon-box__btn:hover {', 'color: ' + btnHoverColor + ' !important;', 'border-color: ' + btnHoverBorder + ' !important;', "}", '#premium-icon-box-' + id + ' .premium-button__none .premium-icon-box__btn:hover {', 'background-color: ' + btnHoverBack + ' !important;', "}", '#premium-icon-box-' + id + ' .premium-button__slide .premium-button::before {', 'background-color: ' + btnHoverBack + ' !important;', "}"].join("\n")
                 }
             }),
             iconChecked && React.createElement(
-                "div",
-                { className: className + "__icon_wrap" },
-                "icon" === iconImage && selectedIcon && React.createElement("i", {
-                    className: selectedIcon + " " + className + "__icon premium-icon__" + hoverEffect,
+                'div',
+                { className: className + '__icon_wrap' },
+                "icon" === iconImage && selectedIcon && React.createElement('i', {
+                    className: selectedIcon + ' ' + className + '__icon premium-icon__' + hoverEffect,
                     style: {
                         color: iconColor,
                         fontSize: iconSize
                     }
                 }),
-                "image" === iconImage && iconImgUrl && React.createElement("img", {
-                    className: className + "__icon premium-icon__" + hoverEffect,
-                    src: "" + iconImgUrl,
-                    alt: "Image Icon",
+                "image" === iconImage && iconImgUrl && React.createElement('img', {
+                    className: className + '__icon premium-icon__' + hoverEffect,
+                    src: '' + iconImgUrl,
+                    alt: 'Image Icon',
                     style: {
                         width: iconSize + "px",
                         height: iconSize + "px",
@@ -36375,9 +36524,9 @@ var deprecatedContent = [{
                 })
             ),
             titleChecked && titleText && React.createElement(
-                "div",
+                'div',
                 {
-                    className: className + "__title_wrap",
+                    className: className + '__title_wrap',
                     style: {
                         marginTop: titleMarginT,
                         marginBottom: titleMarginB
@@ -36385,7 +36534,7 @@ var deprecatedContent = [{
                 },
                 React.createElement(RichText.Content, {
                     tagName: titleTag.toLowerCase(),
-                    className: className + "__title",
+                    className: className + '__title',
                     value: titleText,
                     style: {
                         color: titleColor,
@@ -36394,23 +36543,23 @@ var deprecatedContent = [{
                         textTransform: titleUpper ? "uppercase" : "none",
                         fontStyle: titleStyle,
                         fontWeight: titleWeight,
-                        textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor,
+                        textShadow: titleShadowHorizontal + 'px ' + titleShadowVertical + 'px ' + titleShadowBlur + 'px ' + titleShadowColor,
                         lineHeight: titleLine + "px"
                     }
                 })
             ),
             descChecked && descText && React.createElement(
-                "div",
+                'div',
                 {
-                    className: className + "__desc_wrap",
+                    className: className + '__desc_wrap',
                     style: {
                         marginTop: descMarginT,
                         marginBottom: descMarginB
                     }
                 },
                 React.createElement(RichText.Content, {
-                    tagName: "p",
-                    className: className + "__desc",
+                    tagName: 'p',
+                    className: className + '__desc',
                     value: descText,
                     style: {
                         color: descColor,
@@ -36421,17 +36570,17 @@ var deprecatedContent = [{
                 })
             ),
             btnChecked && btnText && React.createElement(
-                "div",
+                'div',
                 {
-                    className: className + "__btn_wrap",
+                    className: className + '__btn_wrap premium-button__' + btnEffect + ' premium-button__' + effectDir,
                     style: {
                         marginTop: btnMarginT,
                         marginBottom: btnMarginB
                     }
                 },
                 React.createElement(RichText.Content, {
-                    tagName: "a",
-                    className: className + "__btn",
+                    tagName: 'a',
+                    className: className + '__btn premium-button',
                     href: btnLink,
                     target: btnTarget ? "_blank" : "_self",
                     value: btnText,
@@ -36448,7 +36597,7 @@ var deprecatedContent = [{
                         borderRadius: btnBorderRadius + "px",
                         borderColor: btnBorderColor,
                         padding: btnPadding + "px",
-                        boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition
+                        boxShadow: btnShadowHorizontal + 'px ' + btnShadowVertical + 'px ' + btnShadowBlur + 'px ' + btnShadowColor + ' ' + btnShadowPosition
                     }
                 })
             )
@@ -36458,223 +36607,12 @@ var deprecatedContent = [{
     attributes: attributes,
     migrate: function migrate(attributes) {
         return {
-            iconSize: {
-                Desktop: "",
-                unit: ""
-            },
-            containerMargin: {
-                "Desktop": {
-                    top: attributes.marginT,
-                    right: attributes.marginR,
-                    bottom: attributes.marginB,
-                    left: attributes.marginL
-                },
-                "Tablet": {
-                    top: attributes.marginTTablet,
-                    right: attributes.marginRTablet,
-                    bottom: attributes.marginBTablet,
-                    left: attributes.marginLTablet
-                },
-                "Mobile": {
-                    top: attributes.marginTMobile,
-                    right: attributes.marginRMobile,
-                    bottom: attributes.marginBMobile,
-                    left: attributes.marginLMobile
-                }
-            },
-            containerPadding: {
-                "Desktop": {
-                    top: attributes.paddingT,
-                    right: attributes.paddingR,
-                    bottom: attributes.paddingB,
-                    left: attributes.paddingL
-                },
-                "Tablet": {
-                    top: attributes.paddingTTablet,
-                    right: attributes.paddingRTablet,
-                    bottom: attributes.paddingBTablet,
-                    left: attributes.paddingLTablet
-                },
-                "Mobile": {
-                    top: attributes.paddingTMobile,
-                    right: attributes.paddingRMobile,
-                    bottom: attributes.paddingBMobile,
-                    left: attributes.paddingLMobile
-                }
-            },
-            titleMargin: {
-                "Desktop": {
-                    top: attributes.titleMarginT,
-                    right: "",
-                    bottom: attributes.titleMarginB,
-                    left: ""
-                },
-                "Tablet": {
-                    top: "",
-                    right: "",
-                    bottom: "",
-                    left: ""
-                },
-                "Mobile": {
-                    top: "",
-                    right: "",
-                    bottom: "",
-                    left: ""
-                }
-            },
-            descMargin: {
-                "Desktop": {
-                    top: attributes.descMarginT,
-                    right: "",
-                    bottom: attributes.descMarginB,
-                    left: ""
-                },
-                "Tablet": {
-                    top: "",
-                    right: "",
-                    bottom: "",
-                    left: ""
-                },
-                "Mobile": {
-                    top: "",
-                    right: "",
-                    bottom: "",
-                    left: ""
-                }
-            },
-            btnMargin: {
-                "Desktop": {
-                    top: attributes.btnMarginT,
-                    right: "",
-                    bottom: attributes.btnMarginB,
-                    left: ""
-                },
-                "Tablet": {
-                    top: "",
-                    right: "",
-                    bottom: "",
-                    left: ""
-                },
-                "Mobile": {
-                    top: "",
-                    right: "",
-                    bottom: "",
-                    left: ""
-                }
-            },
-            btnPadding: {
-                "Desktop": {
-                    top: "",
-                    right: "",
-                    bottom: "",
-                    left: ""
-                },
-                "Tablet": {
-                    top: "",
-                    right: "",
-                    bottom: "",
-                    left: ""
-                },
-                "Mobile": {
-                    top: "",
-                    right: "",
-                    bottom: "",
-                    left: ""
-                }
-            },
-            btnBorder: {
-                borderColor: attributes.btnStyles[0].btnBorderColor,
-                borderType: attributes.btnStyles[0].btnBorderType,
-                borderRadius: {
-                    "Desktop": {
-                        top: "",
-                        right: "",
-                        bottom: "",
-                        left: ""
-                    },
-                    "Tablet": {
-                        top: "",
-                        right: "",
-                        bottom: "",
-                        left: ""
-                    },
-                    "Mobile": {
-                        top: "",
-                        right: "",
-                        bottom: "",
-                        left: ""
-                    }
-                },
-                borderWidth: {
-                    "Desktop": {
-                        top: attributes.btnBorderTop,
-                        right: attributes.btnBorderRight,
-                        bottom: attributes.btnBorderBottom,
-                        left: attributes.btnBorderLeft
-                    },
-                    "Tablet": {
-                        top: "",
-                        right: "",
-                        bottom: "",
-                        left: ""
-                    },
-                    "Mobile": {
-                        top: "",
-                        right: "",
-                        bottom: "",
-                        left: ""
-                    }
-                }
-            },
-            containerBorder: {
-                borderColor: attributes.containerStyles[0].btnBorderColor,
-                borderType: attributes.containerStyles[0].btnBorderType,
-                borderRadius: {
-                    "Desktop": {
-                        top: "",
-                        right: "",
-                        bottom: "",
-                        left: ""
-                    },
-                    "Tablet": {
-                        top: "",
-                        right: "",
-                        bottom: "",
-                        left: ""
-                    },
-                    "Mobile": {
-                        top: "",
-                        right: "",
-                        bottom: "",
-                        left: ""
-                    }
-                },
-                borderWidth: {
-                    "Desktop": {
-                        top: attributes.borderTop,
-                        right: attributes.borderRight,
-                        bottom: attributes.borderBottom,
-                        left: attributes.borderLeft
-                    },
-                    "Tablet": {
-                        top: "",
-                        right: "",
-                        bottom: "",
-                        left: ""
-                    },
-                    "Mobile": {
-                        top: "",
-                        right: "",
-                        bottom: "",
-                        left: ""
-                    }
-                }
-            }
+            iconSize: attributes.iconSize
         };
     },
     save: function save(props) {
         var _props$attributes9 = props.attributes,
-            block_id = _props$attributes9.block_id,
+            id = _props$attributes9.id,
             align = _props$attributes9.align,
             iconType = _props$attributes9.iconType,
             iconImage = _props$attributes9.iconImage,
@@ -36757,144 +36695,140 @@ var deprecatedContent = [{
             shadowColor = _props$attributes9.shadowColor,
             shadowHorizontal = _props$attributes9.shadowHorizontal,
             shadowVertical = _props$attributes9.shadowVertical,
-            shadowPosition = _props$attributes9.shadowPosition,
-            btnBorder = _props$attributes9.btnBorder,
-            containerBorder = _props$attributes9.containerBorder;
+            shadowPosition = _props$attributes9.shadowPosition;
 
 
         return React.createElement(
-            "div",
+            'div',
             {
-                id: className + "-" + block_id,
-                className: "" + className
+                id: className + '-' + id,
+                className: '' + className,
+                style: {
+                    textAlign: align,
+                    border: borderType,
+                    borderWidth: borderWidth + "px",
+                    borderRadius: borderRadius + "px",
+                    borderColor: borderColor,
+                    marginTop: marginT,
+                    marginRight: marginR,
+                    marginBottom: marginB,
+                    marginLeft: marginL,
+                    paddingTop: paddingT,
+                    paddingRight: paddingR,
+                    paddingBottom: paddingB,
+                    paddingLeft: paddingL,
+                    boxShadow: shadowHorizontal + 'px ' + shadowVertical + 'px ' + shadowBlur + 'px ' + shadowColor + ' ' + shadowPosition,
+                    backgroundColor: backColor,
+                    backgroundImage: 'url(\'' + imageURL + '\')',
+                    backgroundRepeat: backgroundRepeat,
+                    backgroundPosition: backgroundPosition,
+                    backgroundSize: backgroundSize,
+                    backgroundAttachment: fixed ? "fixed" : "unset"
+                }
             },
-            btnChecked && btnText && React.createElement("style", {
+            btnChecked && btnText && React.createElement('style', {
                 dangerouslySetInnerHTML: {
-                    __html: ["#premium-icon-box-" + block_id + ":hover {", "box-shadow: " + containerStyles[0].hoverShadowHorizontal + "px " + containerStyles[0].hoverShadowVertical + "px " + containerStyles[0].hoverShadowBlur + "px " + containerStyles[0].hoverShadowColor + " " + containerStyles[0].hoverShadowPosition + " !important", "}", "#premium-icon-box-" + block_id + " .premium-icon-box__btn:hover {", "color: " + btnStyles[0].btnHoverColor + " !important;", "border-color: " + btnHoverBorder + " !important;", "}", "#premium-icon-box-" + block_id + " .premium-button__none .premium-icon-box__btn:hover {", "background-color: " + btnStyles[0].btnHoverBack + " !important;", "}", "#premium-icon-box-" + block_id + " .premium-button__slide .premium-button::before {", "background-color: " + btnStyles[0].btnHoverBack + " !important;", "}"].join("\n")
+                    __html: ['#premium-icon-box-' + id + ' .premium-icon-box__btn:hover {', 'color: ' + btnHoverColor + ' !important;', 'background-color: ' + btnHoverBack + ' !important;', 'border-color: ' + btnHoverBorder + ' !important;', "}"].join("\n")
                 }
             }),
-            React.createElement(
-                "div",
-                {
-                    className: "premium-icon-box-container",
+            iconChecked && React.createElement(
+                'div',
+                { className: className + '__icon_wrap' },
+                "icon" === iconImage && selectedIcon && React.createElement('i', {
+                    className: selectedIcon + ' ' + className + '__icon premium-icon__' + hoverEffect,
                     style: {
-                        textAlign: align,
-                        border: containerBorder.borderType,
-                        borderColor: containerBorder.borderColor,
-                        marginTop: marginT,
-                        marginRight: marginR,
-                        marginBottom: marginB,
-                        marginLeft: marginL,
-                        paddingTop: paddingT,
-                        paddingRight: paddingR,
-                        paddingBottom: paddingB,
-                        paddingLeft: paddingL,
-                        boxShadow: shadowHorizontal + "px " + shadowVertical + "px " + shadowBlur + "px " + shadowColor + " " + shadowPosition,
-                        backgroundColor: backColor,
-                        backgroundImage: "url('" + imageURL + "')",
-                        backgroundRepeat: backgroundRepeat,
-                        backgroundPosition: backgroundPosition,
-                        backgroundSize: backgroundSize,
-                        backgroundAttachment: fixed ? "fixed" : "unset"
+                        color: iconColor,
+                        fontSize: iconSize
+                    }
+                }),
+                "image" === iconImage && iconImgUrl && React.createElement('img', {
+                    className: className + '__icon premium-icon__' + hoverEffect,
+                    src: '' + iconImgUrl,
+                    alt: 'Image Icon',
+                    style: {
+                        width: iconSize + "px",
+                        height: iconSize + "px",
+                        borderRadius: iconRadius + "px"
+                    }
+                })
+            ),
+            titleChecked && titleText && React.createElement(
+                'div',
+                {
+                    className: className + '__title_wrap',
+                    style: {
+                        marginTop: titleMarginT,
+                        marginBottom: titleMarginB
                     }
                 },
-                iconChecked && React.createElement(
-                    "div",
-                    { className: className + "__icon_wrap" },
-                    "icon" === iconImage && selectedIcon && React.createElement("i", {
-                        className: selectedIcon + " " + className + "__icon premium-icon__" + hoverEffect,
-                        style: {
-                            color: iconColor,
-                            fontSize: iconSize
-                        }
-                    }),
-                    "image" === iconImage && iconImgUrl && React.createElement("img", {
-                        className: className + "__icon premium-icon__" + hoverEffect,
-                        src: "" + iconImgUrl,
-                        alt: "Image Icon",
-                        style: {
-                            width: iconSize + "px",
-                            height: iconSize + "px",
-                            borderRadius: iconRadius + "px"
-                        }
-                    })
-                ),
-                titleChecked && titleText && React.createElement(
-                    "div",
-                    {
-                        className: className + "__title_wrap",
-                        style: {
-                            marginTop: titleMarginT,
-                            marginBottom: titleMarginB
-                        }
-                    },
-                    React.createElement(RichText.Content, {
-                        tagName: titleTag.toLowerCase(),
-                        className: className + "__title",
-                        value: titleText,
-                        style: {
-                            color: titleColor,
-                            fontSize: titleSize + "px",
-                            letterSpacing: titleLetter + "px",
-                            textTransform: titleUpper ? "uppercase" : "none",
-                            fontStyle: titleStyle,
-                            fontWeight: titleWeight,
-                            textShadow: titleShadowHorizontal + "px " + titleShadowVertical + "px " + titleShadowBlur + "px " + titleShadowColor,
-                            lineHeight: titleLine + "px"
-                        }
-                    })
-                ),
-                descChecked && descText && React.createElement(
-                    "div",
-                    {
-                        className: className + "__desc_wrap",
-                        style: {
-                            marginTop: descMarginT,
-                            marginBottom: descMarginB
-                        }
-                    },
-                    React.createElement(RichText.Content, {
-                        tagName: "p",
-                        className: className + "__desc",
-                        value: descText,
-                        style: {
-                            color: descColor,
-                            fontSize: descSize + "px",
-                            lineHeight: descLine + "px",
-                            fontWeight: descWeight
-                        }
-                    })
-                ),
-                btnChecked && btnText && React.createElement(
-                    "div",
-                    {
-                        className: className + "__btn_wrap",
-                        style: {
-                            marginTop: btnMarginT,
-                            marginBottom: btnMarginB
-                        }
-                    },
-                    React.createElement(RichText.Content, {
-                        tagName: "a",
-                        className: className + "__btn",
-                        href: btnLink,
-                        target: btnTarget ? "_blank" : "_self",
-                        value: btnText,
-                        style: {
-                            color: btnColor,
-                            backgroundColor: btnBack,
-                            fontSize: btnSize + "px",
-                            letterSpacing: btnLetter + "px",
-                            textTransform: btnUpper ? "uppercase" : "none",
-                            fontStyle: btnStyle,
-                            fontWeight: btnWeight,
-                            borderStyle: btnBorder.borderType,
-                            borderColor: btnBorder.borderColor,
-                            padding: btnPadding + "px",
-                            boxShadow: btnShadowHorizontal + "px " + btnShadowVertical + "px " + btnShadowBlur + "px " + btnShadowColor + " " + btnShadowPosition
-                        }
-                    })
-                )
+                React.createElement(RichText.Content, {
+                    tagName: titleTag.toLowerCase(),
+                    className: className + '__title',
+                    value: titleText,
+                    style: {
+                        color: titleColor,
+                        fontSize: titleSize + "px",
+                        letterSpacing: titleLetter + "px",
+                        textTransform: titleUpper ? "uppercase" : "none",
+                        fontStyle: titleStyle,
+                        fontWeight: titleWeight,
+                        textShadow: titleShadowHorizontal + 'px ' + titleShadowVertical + 'px ' + titleShadowBlur + 'px ' + titleShadowColor,
+                        lineHeight: titleLine + "px"
+                    }
+                })
+            ),
+            descChecked && descText && React.createElement(
+                'div',
+                {
+                    className: className + '__desc_wrap',
+                    style: {
+                        marginTop: descMarginT,
+                        marginBottom: descMarginB
+                    }
+                },
+                React.createElement(RichText.Content, {
+                    tagName: 'p',
+                    className: className + '__desc',
+                    value: descText,
+                    style: {
+                        color: descColor,
+                        fontSize: descSize + "px",
+                        lineHeight: descLine + "px",
+                        fontWeight: descWeight
+                    }
+                })
+            ),
+            btnChecked && btnText && React.createElement(
+                'div',
+                {
+                    className: className + '__btn_wrap',
+                    style: {
+                        marginTop: btnMarginT,
+                        marginBottom: btnMarginB
+                    }
+                },
+                React.createElement(RichText.Content, {
+                    tagName: 'a',
+                    className: className + '__btn',
+                    href: btnLink,
+                    target: btnTarget ? "_blank" : "_self",
+                    value: btnText,
+                    style: {
+                        color: btnColor,
+                        backgroundColor: btnBack,
+                        fontSize: btnSize + "px",
+                        letterSpacing: btnLetter + "px",
+                        textTransform: btnUpper ? "uppercase" : "none",
+                        fontStyle: btnStyle,
+                        fontWeight: btnWeight,
+                        border: btnBorderType,
+                        borderWidth: btnBorderWidth + "px",
+                        borderRadius: btnBorderRadius + "px",
+                        borderColor: btnBorderColor,
+                        padding: btnPadding + "px",
+                        boxShadow: btnShadowHorizontal + 'px ' + btnShadowVertical + 'px ' + btnShadowBlur + 'px ' + btnShadowColor + ' ' + btnShadowPosition
+                    }
+                })
             )
         );
     }
@@ -36903,7 +36837,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 270 */
+/* 271 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37049,127 +36983,33 @@ var attributes = {
         type: 'boolean',
         default: false
     },
-
     iconOpacity: {
         type: "number",
         default: "1"
     },
-
     titleStyles: {
         type: "array",
         default: [{
-
             titleTag: "H2",
-            titleFont: __('Default', 'premium - blocks -for-gutenberg'),
-            titleColor: '',
-            titleSize: 20,
-            titleSizeUnit: 'px',
-            titleSizeTablet: 20,
-            titleSizeMobile: 20,
-            titleLine: '',
-            titleLetter: '',
-            titleStyle: '',
-            titleUpper: false,
-            titleWeight: '',
-            titleShadowColor: '',
-            titleShadowBlur: '0',
-            titleShadowHorizontal: '0',
-            titleShadowVertical: '0'
+            titleColor: ''
         }]
     },
     descStyles: {
         type: "array",
         default: [{
-            descFont: __('Default', 'premium-blocks-for-gutenberg'),
-            descColor: '',
-            descSize: 20,
-            descSizeUnit: 'px',
-            descSizeTablet: 20,
-            descSizeMobile: 20,
-            descLine: '',
-            descWeight: ''
+            descColor: ''
         }]
     },
     btnStyles: {
         type: 'array',
         default: [{
-            btnSize: 20,
-            btnSizeUnit: 'px',
-            btnSizeTablet: 20,
-            btnSizeMobile: 20,
-            btnLine: '',
-            btnLetter: '',
-            btnStyle: '',
-            btnUpper: false,
-            btnWeight: '',
-            btnBorderType: 'none',
             btnBorderWidth: 1,
-            btnBorderTop: '',
-            btnBorderRight: '',
-            btnBorderBottom: '',
-            btnBorderLeft: '',
             btnBorderRadius: '',
-            btnBorderColor: '',
-            // btnPadding: '',
-            // btnPaddingU: 'px',
-            btnShadowColor: '',
-            btnShadowBlur: '',
-            btnShadowHorizontal: '0',
-            btnShadowVertical: '0',
-            btnShadowPosition: '',
             btnColor: '',
             btnHoverColor: '',
             btnBack: '',
             btnHoverBack: '',
             btnOpacity: 1
-        }]
-    },
-    containerStyles: {
-        type: "array",
-        default: [{
-            backOpacity: 1,
-            backColor: '',
-            imageID: '',
-            imageURL: '',
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "top center",
-            backgroundSize: "auto",
-            fixed: false,
-            borderType: "none",
-            borderWidth: 1,
-            borderRadius: '',
-            borderColor: '',
-            borderTop: '',
-            borderRight: '',
-            borderBottom: '',
-            borderLeft: '',
-            shadowColor: '',
-            shadowBlur: '',
-            shadowHorizontal: '',
-            shadowVertical: '',
-            shadowPosition: '',
-            hoverShadowColor: '',
-            hoverShadowBlur: '',
-            hoverShadowHorizontal: '',
-            hoverShadowVertical: '',
-            hoverShadowPosition: '',
-            marginT: '',
-            marginR: '',
-            marginB: '',
-            marginL: '',
-            paddingT: '',
-            paddingR: '',
-            paddingB: '',
-            paddingL: '',
-            paddingU: 'px',
-            gradientColorOne: '',
-            gradientLocationOne: '0',
-            gradientColorTwo: '',
-            gradientLocationTwo: '100',
-            gradientType: 'linear',
-            gradientAngle: '180',
-            gradientPosition: 'center center'
-
         }]
     },
     containerMargin: {
@@ -37409,12 +37249,116 @@ var attributes = {
                 }
             }
         }
+    },
+    containerBackground: {
+        type: "object",
+        default: {
+            'backgroundType': '',
+            'backgroundColor': '',
+            'backgroundImageID': '',
+            'backgroundImageURL': '',
+            'backgroundPosition': '',
+            'backgroundRepeat': '',
+            'backgroundSize': '',
+            'fixed': false,
+            'gradientLocationOne': "",
+            'gradientColorTwo': '',
+            'gradientLocationTwo': '',
+            'gradientAngle': '',
+            'gradientPosition': '',
+            'gradientType': ''
+        }
+    },
+    titleShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': ''
+        }
+    },
+    btnShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
+    },
+    containerShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
+    },
+    containerHoverShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
+    },
+    titleTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
+            'lineHeight': '',
+            'fontSize': {
+                'Desktop': 20,
+                "Tablet": 20,
+                "Mobile": 20,
+                unit: 'px'
+            }
+        }
+    },
+    descTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
+            'lineHeight': '',
+            'fontSize': {
+                'Desktop': 20,
+                "Tablet": 20,
+                "Mobile": 20,
+                unit: 'px'
+            }
+        }
+    },
+    btnTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontSize': {
+                'Desktop': 20,
+                "Tablet": 20,
+                "Mobile": 20,
+                unit: 'px'
+            }
+        }
     }
 };
 exports.default = attributes;
 
 /***/ }),
-/* 271 */
+/* 272 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38538,7 +38482,7 @@ registerBlockType("premium/maps", {
 });
 
 /***/ }),
-/* 272 */
+/* 273 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38550,19 +38494,19 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(273);
+var _edit = __webpack_require__(274);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(274);
+var _save = __webpack_require__(275);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(275);
+var _deprecated = __webpack_require__(276);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(276);
+var _attributes = __webpack_require__(277);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -38586,7 +38530,7 @@ registerBlockType("premium/pricing-table", {
 });
 
 /***/ }),
-/* 273 */
+/* 274 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40424,7 +40368,7 @@ exports.default = withSelect(function (select) {
 })(PremiumPricingTable);
 
 /***/ }),
-/* 274 */
+/* 275 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40743,7 +40687,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 275 */
+/* 276 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43111,7 +43055,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 276 */
+/* 277 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43416,7 +43360,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 277 */
+/* 278 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43424,15 +43368,15 @@ exports.default = attributes;
 
 var _settings = __webpack_require__(1);
 
-var _edit = __webpack_require__(278);
+var _edit = __webpack_require__(279);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(280);
+var _save = __webpack_require__(281);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(281);
+var _deprecated = __webpack_require__(282);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -43440,7 +43384,7 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(282);
+var _attributes = __webpack_require__(283);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -43472,7 +43416,7 @@ registerBlockType("premium/container", {
 });
 
 /***/ }),
-/* 278 */
+/* 279 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43504,7 +43448,7 @@ var _singleRangeControl = __webpack_require__(3);
 
 var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
-var _PremiumBackgroundControl = __webpack_require__(23);
+var _PremiumBackgroundControl = __webpack_require__(20);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
@@ -43512,7 +43456,7 @@ var _PremiumResponsivePadding = __webpack_require__(17);
 
 var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
 
-var _PremiumResponsiveMargin = __webpack_require__(52);
+var _PremiumResponsiveMargin = __webpack_require__(53);
 
 var _PremiumResponsiveMargin2 = _interopRequireDefault(_PremiumResponsiveMargin);
 
@@ -44027,7 +43971,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 279 */
+/* 280 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44045,7 +43989,7 @@ var _react = __webpack_require__(9);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _premiumSizeUnits = __webpack_require__(21);
+var _premiumSizeUnits = __webpack_require__(22);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
@@ -44293,7 +44237,7 @@ var PremiumMargin = function (_Component) {
 exports.default = PremiumMargin;
 
 /***/ }),
-/* 280 */
+/* 281 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44394,7 +44338,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 281 */
+/* 282 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45164,7 +45108,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 282 */
+/* 283 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45345,7 +45289,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 283 */
+/* 284 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45353,15 +45297,15 @@ exports.default = attributes;
 
 var _settings = __webpack_require__(1);
 
-var _edit = __webpack_require__(284);
+var _edit = __webpack_require__(285);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(285);
+var _save = __webpack_require__(286);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(286);
+var _deprecated = __webpack_require__(287);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -45369,7 +45313,7 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(287);
+var _attributes = __webpack_require__(288);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -45394,7 +45338,7 @@ registerBlockType("premium/testimonial", {
 });
 
 /***/ }),
-/* 284 */
+/* 285 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45420,11 +45364,11 @@ var _defaultImage = __webpack_require__(32);
 
 var _defaultImage2 = _interopRequireDefault(_defaultImage);
 
-var _upperQuote = __webpack_require__(68);
+var _upperQuote = __webpack_require__(69);
 
 var _upperQuote2 = _interopRequireDefault(_upperQuote);
 
-var _lowerQuote = __webpack_require__(69);
+var _lowerQuote = __webpack_require__(70);
 
 var _lowerQuote2 = _interopRequireDefault(_lowerQuote);
 
@@ -45448,7 +45392,7 @@ var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _PremiumBackgroundControl = __webpack_require__(23);
+var _PremiumBackgroundControl = __webpack_require__(20);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
@@ -46251,7 +46195,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 285 */
+/* 286 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46269,11 +46213,11 @@ var _defaultImage = __webpack_require__(32);
 
 var _defaultImage2 = _interopRequireDefault(_defaultImage);
 
-var _upperQuote = __webpack_require__(68);
+var _upperQuote = __webpack_require__(69);
 
 var _upperQuote2 = _interopRequireDefault(_upperQuote);
 
-var _lowerQuote = __webpack_require__(69);
+var _lowerQuote = __webpack_require__(70);
 
 var _lowerQuote2 = _interopRequireDefault(_lowerQuote);
 
@@ -46457,7 +46401,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 286 */
+/* 287 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46471,11 +46415,11 @@ var _defaultImage = __webpack_require__(32);
 
 var _defaultImage2 = _interopRequireDefault(_defaultImage);
 
-var _upperQuote = __webpack_require__(68);
+var _upperQuote = __webpack_require__(69);
 
 var _upperQuote2 = _interopRequireDefault(_upperQuote);
 
-var _lowerQuote = __webpack_require__(69);
+var _lowerQuote = __webpack_require__(70);
 
 var _lowerQuote2 = _interopRequireDefault(_lowerQuote);
 
@@ -47861,7 +47805,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 287 */
+/* 288 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -48057,7 +48001,7 @@ var testimonialsAttrs = {
 exports.default = testimonialsAttrs;
 
 /***/ }),
-/* 288 */
+/* 289 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -48087,7 +48031,7 @@ var _premiumFilters = __webpack_require__(30);
 
 var _premiumFilters2 = _interopRequireDefault(_premiumFilters);
 
-var _index = __webpack_require__(53);
+var _index = __webpack_require__(54);
 
 var _index2 = _interopRequireDefault(_index);
 
@@ -48107,7 +48051,7 @@ var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _fontLoader = __webpack_require__(22);
+var _fontLoader = __webpack_require__(23);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
 
@@ -49033,7 +48977,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 289 */
+/* 290 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -49047,7 +48991,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _index = __webpack_require__(53);
+var _index = __webpack_require__(54);
 
 var _index2 = _interopRequireDefault(_index);
 
@@ -49213,7 +49157,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 290 */
+/* 291 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -49227,7 +49171,7 @@ var _attributes = __webpack_require__(115);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
-var _index = __webpack_require__(53);
+var _index = __webpack_require__(54);
 
 var _index2 = _interopRequireDefault(_index);
 
@@ -50659,7 +50603,7 @@ var deprecatedContent = [{
 exports.default = deprecatedContent;
 
 /***/ }),
-/* 291 */
+/* 292 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50667,15 +50611,15 @@ exports.default = deprecatedContent;
 
 var _settings = __webpack_require__(1);
 
-var _save = __webpack_require__(292);
+var _save = __webpack_require__(293);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _edit = __webpack_require__(293);
+var _edit = __webpack_require__(294);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _deprecated = __webpack_require__(313);
+var _deprecated = __webpack_require__(314);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -50683,7 +50627,7 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(314);
+var _attributes = __webpack_require__(315);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -50706,7 +50650,7 @@ registerBlockType("premium/fancy-text", {
 });
 
 /***/ }),
-/* 292 */
+/* 293 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50910,7 +50854,7 @@ function save(props) {
 }
 
 /***/ }),
-/* 293 */
+/* 294 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50932,7 +50876,7 @@ var _premiumTypo = __webpack_require__(7);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _typed = __webpack_require__(294);
+var _typed = __webpack_require__(295);
 
 var _typed2 = _interopRequireDefault(_typed);
 
@@ -50948,7 +50892,7 @@ var _radioControl = __webpack_require__(10);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
-var _reactSortableHoc = __webpack_require__(70);
+var _reactSortableHoc = __webpack_require__(71);
 
 var _PremiumShadow = __webpack_require__(5);
 
@@ -51765,7 +51709,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 294 */
+/* 295 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51777,7 +51721,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
  * 
  *   typed.js - A JavaScript Typing Animation Library
  *   Author: Matt Boldt <me@mattboldt.com>
- *   Version: v2.0.11
+ *   Version: v2.0.12
  *   Url: https://github.com/mattboldt/typed.js
  *   License(s): MIT
  * 
@@ -52133,7 +52077,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 						var _this4 = this;
 
 						if (this.pause.status === true) {
-							this.setPauseStatus(curString, curStrPos, true);
+							this.setPauseStatus(curString, curStrPos, false);
 							return;
 						}
 						if (this.fadeOut) return this.initFadeOut();
@@ -52337,6 +52281,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 						if (this.cursor) return;
 						this.cursor = document.createElement('span');
 						this.cursor.className = 'typed-cursor';
+						this.cursor.setAttribute('aria-hidden', true);
 						this.cursor.innerHTML = this.cursorChar;
 						this.el.parentNode && this.el.parentNode.insertBefore(this.cursor, this.el.nextSibling);
 					}
@@ -52877,7 +52822,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(50)(module)))
 
 /***/ }),
-/* 295 */
+/* 296 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52906,7 +52851,7 @@ function _extends() {
 }
 
 /***/ }),
-/* 296 */
+/* 297 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52917,11 +52862,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _slicedToArray;
 
-var _arrayWithHoles = __webpack_require__(297);
+var _arrayWithHoles = __webpack_require__(298);
 
 var _arrayWithHoles2 = _interopRequireDefault(_arrayWithHoles);
 
-var _iterableToArrayLimit = __webpack_require__(298);
+var _iterableToArrayLimit = __webpack_require__(299);
 
 var _iterableToArrayLimit2 = _interopRequireDefault(_iterableToArrayLimit);
 
@@ -52929,7 +52874,7 @@ var _unsupportedIterableToArray = __webpack_require__(116);
 
 var _unsupportedIterableToArray2 = _interopRequireDefault(_unsupportedIterableToArray);
 
-var _nonIterableRest = __webpack_require__(299);
+var _nonIterableRest = __webpack_require__(300);
 
 var _nonIterableRest2 = _interopRequireDefault(_nonIterableRest);
 
@@ -52940,7 +52885,7 @@ function _slicedToArray(arr, i) {
 }
 
 /***/ }),
-/* 297 */
+/* 298 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52955,7 +52900,7 @@ function _arrayWithHoles(arr) {
 }
 
 /***/ }),
-/* 298 */
+/* 299 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52996,7 +52941,7 @@ function _iterableToArrayLimit(arr, i) {
 }
 
 /***/ }),
-/* 299 */
+/* 300 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53011,7 +52956,7 @@ function _nonIterableRest() {
 }
 
 /***/ }),
-/* 300 */
+/* 301 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53048,7 +52993,7 @@ function _objectSpread(target) {
 }
 
 /***/ }),
-/* 301 */
+/* 302 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53065,7 +53010,7 @@ function _classCallCheck(instance, Constructor) {
 }
 
 /***/ }),
-/* 302 */
+/* 303 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53095,7 +53040,7 @@ function _createClass(Constructor, protoProps, staticProps) {
 }
 
 /***/ }),
-/* 303 */
+/* 304 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53106,7 +53051,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _possibleConstructorReturn;
 
-var _typeof2 = __webpack_require__(304);
+var _typeof2 = __webpack_require__(305);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
@@ -53127,7 +53072,7 @@ function _possibleConstructorReturn(self, call) {
 }
 
 /***/ }),
-/* 304 */
+/* 305 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53151,7 +53096,7 @@ function _typeof(obj) {
 }
 
 /***/ }),
-/* 305 */
+/* 306 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53169,7 +53114,7 @@ function _getPrototypeOf(o) {
 }
 
 /***/ }),
-/* 306 */
+/* 307 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53180,7 +53125,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _inherits;
 
-var _setPrototypeOf = __webpack_require__(307);
+var _setPrototypeOf = __webpack_require__(308);
 
 var _setPrototypeOf2 = _interopRequireDefault(_setPrototypeOf);
 
@@ -53205,7 +53150,7 @@ function _inherits(subClass, superClass) {
 }
 
 /***/ }),
-/* 307 */
+/* 308 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53225,7 +53170,7 @@ function _setPrototypeOf(o, p) {
 }
 
 /***/ }),
-/* 308 */
+/* 309 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53278,7 +53223,7 @@ module.exports = invariant;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
 /***/ }),
-/* 309 */
+/* 310 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53289,11 +53234,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _toConsumableArray;
 
-var _arrayWithoutHoles = __webpack_require__(310);
+var _arrayWithoutHoles = __webpack_require__(311);
 
 var _arrayWithoutHoles2 = _interopRequireDefault(_arrayWithoutHoles);
 
-var _iterableToArray = __webpack_require__(311);
+var _iterableToArray = __webpack_require__(312);
 
 var _iterableToArray2 = _interopRequireDefault(_iterableToArray);
 
@@ -53301,7 +53246,7 @@ var _unsupportedIterableToArray = __webpack_require__(116);
 
 var _unsupportedIterableToArray2 = _interopRequireDefault(_unsupportedIterableToArray);
 
-var _nonIterableSpread = __webpack_require__(312);
+var _nonIterableSpread = __webpack_require__(313);
 
 var _nonIterableSpread2 = _interopRequireDefault(_nonIterableSpread);
 
@@ -53312,7 +53257,7 @@ function _toConsumableArray(arr) {
 }
 
 /***/ }),
-/* 310 */
+/* 311 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53334,7 +53279,7 @@ function _arrayWithoutHoles(arr) {
 }
 
 /***/ }),
-/* 311 */
+/* 312 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53349,7 +53294,7 @@ function _iterableToArray(iter) {
 }
 
 /***/ }),
-/* 312 */
+/* 313 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53364,7 +53309,7 @@ function _nonIterableSpread() {
 }
 
 /***/ }),
-/* 313 */
+/* 314 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53903,7 +53848,7 @@ var deprecated = [{
 exports.default = deprecated;
 
 /***/ }),
-/* 314 */
+/* 315 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54048,7 +53993,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 315 */
+/* 316 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54058,21 +54003,21 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(316);
+var _edit = __webpack_require__(317);
 
 var _edit2 = _interopRequireDefault(_edit);
 
 var _settings = __webpack_require__(1);
 
-var _save = __webpack_require__(369);
+var _save = __webpack_require__(370);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _deprecated = __webpack_require__(370);
+var _deprecated = __webpack_require__(371);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
-var _attributes = __webpack_require__(371);
+var _attributes = __webpack_require__(372);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -54097,7 +54042,7 @@ registerBlockType("premium/lottie", {
 });
 
 /***/ }),
-/* 316 */
+/* 317 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54115,7 +54060,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _reactLottieWithSegments = __webpack_require__(71);
+var _reactLottieWithSegments = __webpack_require__(72);
 
 var _reactLottieWithSegments2 = _interopRequireDefault(_reactLottieWithSegments);
 
@@ -54151,7 +54096,7 @@ var _responsiveRangeControl = __webpack_require__(14);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
-var _container = __webpack_require__(368);
+var _container = __webpack_require__(369);
 
 var _container2 = _interopRequireDefault(_container);
 
@@ -54845,16 +54790,16 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 317 */
+/* 318 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(318), __esModule: true };
+module.exports = { "default": __webpack_require__(319), __esModule: true };
 
 /***/ }),
-/* 318 */
+/* 319 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54868,7 +54813,7 @@ module.exports = function stringify(it) {
 };
 
 /***/ }),
-/* 319 */
+/* 320 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54876,7 +54821,7 @@ module.exports = function stringify(it) {
 
 exports.__esModule = true;
 
-var _assign = __webpack_require__(320);
+var _assign = __webpack_require__(321);
 
 var _assign2 = _interopRequireDefault(_assign);
 
@@ -54899,23 +54844,13 @@ exports.default = _assign2.default || function (target) {
 };
 
 /***/ }),
-/* 320 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = { "default": __webpack_require__(321), __esModule: true };
-
-/***/ }),
 /* 321 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(322);
-module.exports = __webpack_require__(13).Object.assign;
+module.exports = { "default": __webpack_require__(322), __esModule: true };
 
 /***/ }),
 /* 322 */
@@ -54924,13 +54859,23 @@ module.exports = __webpack_require__(13).Object.assign;
 "use strict";
 
 
-// 19.1.3.1 Object.assign(target, source)
-var $export = __webpack_require__(25);
-
-$export($export.S + $export.F, 'Object', { assign: __webpack_require__(324) });
+__webpack_require__(323);
+module.exports = __webpack_require__(13).Object.assign;
 
 /***/ }),
 /* 323 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// 19.1.3.1 Object.assign(target, source)
+var $export = __webpack_require__(25);
+
+$export($export.S + $export.F, 'Object', { assign: __webpack_require__(325) });
+
+/***/ }),
+/* 324 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54942,17 +54887,17 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 324 */
+/* 325 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 // 19.1.2.1 Object.assign(target, source, ...)
 
-var getKeys = __webpack_require__(55);
-var gOPS = __webpack_require__(78);
-var pIE = __webpack_require__(58);
-var toObject = __webpack_require__(79);
+var getKeys = __webpack_require__(56);
+var gOPS = __webpack_require__(79);
+var pIE = __webpack_require__(59);
+var toObject = __webpack_require__(80);
 var IObject = __webpack_require__(124);
 var $assign = Object.assign;
 
@@ -54988,7 +54933,7 @@ module.exports = !$assign || __webpack_require__(35)(function () {
 } : $assign;
 
 /***/ }),
-/* 325 */
+/* 326 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54997,8 +54942,8 @@ module.exports = !$assign || __webpack_require__(35)(function () {
 // false -> Array#indexOf
 // true  -> Array#includes
 var toIObject = __webpack_require__(36);
-var toLength = __webpack_require__(326);
-var toAbsoluteIndex = __webpack_require__(327);
+var toLength = __webpack_require__(327);
+var toAbsoluteIndex = __webpack_require__(328);
 module.exports = function (IS_INCLUDES) {
   return function ($this, el, fromIndex) {
     var O = toIObject($this);
@@ -55021,32 +54966,17 @@ module.exports = function (IS_INCLUDES) {
 };
 
 /***/ }),
-/* 326 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// 7.1.15 ToLength
-var toInteger = __webpack_require__(74);
-var min = Math.min;
-module.exports = function (it) {
-  return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
-};
-
-/***/ }),
 /* 327 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var toInteger = __webpack_require__(74);
-var max = Math.max;
+// 7.1.15 ToLength
+var toInteger = __webpack_require__(75);
 var min = Math.min;
-module.exports = function (index, length) {
-  index = toInteger(index);
-  return index < 0 ? max(index + length, 0) : min(index, length);
+module.exports = function (it) {
+  return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
 };
 
 /***/ }),
@@ -55056,7 +54986,13 @@ module.exports = function (index, length) {
 "use strict";
 
 
-module.exports = { "default": __webpack_require__(329), __esModule: true };
+var toInteger = __webpack_require__(75);
+var max = Math.max;
+var min = Math.min;
+module.exports = function (index, length) {
+  index = toInteger(index);
+  return index < 0 ? max(index + length, 0) : min(index, length);
+};
 
 /***/ }),
 /* 329 */
@@ -55065,8 +55001,7 @@ module.exports = { "default": __webpack_require__(329), __esModule: true };
 "use strict";
 
 
-__webpack_require__(330);
-module.exports = __webpack_require__(13).Object.getPrototypeOf;
+module.exports = { "default": __webpack_require__(330), __esModule: true };
 
 /***/ }),
 /* 330 */
@@ -55075,18 +55010,28 @@ module.exports = __webpack_require__(13).Object.getPrototypeOf;
 "use strict";
 
 
+__webpack_require__(331);
+module.exports = __webpack_require__(13).Object.getPrototypeOf;
+
+/***/ }),
+/* 331 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 // 19.1.2.9 Object.getPrototypeOf(O)
-var toObject = __webpack_require__(79);
+var toObject = __webpack_require__(80);
 var $getPrototypeOf = __webpack_require__(126);
 
-__webpack_require__(331)('getPrototypeOf', function () {
+__webpack_require__(332)('getPrototypeOf', function () {
   return function getPrototypeOf(it) {
     return $getPrototypeOf(toObject(it));
   };
 });
 
 /***/ }),
-/* 331 */
+/* 332 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55106,7 +55051,7 @@ module.exports = function (KEY, exec) {
 };
 
 /***/ }),
-/* 332 */
+/* 333 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55121,7 +55066,7 @@ exports.default = function (instance, Constructor) {
 };
 
 /***/ }),
-/* 333 */
+/* 334 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55129,7 +55074,7 @@ exports.default = function (instance, Constructor) {
 
 exports.__esModule = true;
 
-var _defineProperty = __webpack_require__(334);
+var _defineProperty = __webpack_require__(335);
 
 var _defineProperty2 = _interopRequireDefault(_defineProperty);
 
@@ -55156,29 +55101,29 @@ exports.default = function () {
 }();
 
 /***/ }),
-/* 334 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = { "default": __webpack_require__(335), __esModule: true };
-
-/***/ }),
 /* 335 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(336);
+module.exports = { "default": __webpack_require__(336), __esModule: true };
+
+/***/ }),
+/* 336 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(337);
 var $Object = __webpack_require__(13).Object;
 module.exports = function defineProperty(it, key, desc) {
   return $Object.defineProperty(it, key, desc);
 };
 
 /***/ }),
-/* 336 */
+/* 337 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55189,7 +55134,7 @@ var $export = __webpack_require__(25);
 $export($export.S + $export.F * !__webpack_require__(27), 'Object', { defineProperty: __webpack_require__(26).f });
 
 /***/ }),
-/* 337 */
+/* 338 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55214,24 +55159,13 @@ exports.default = function (self, call) {
 };
 
 /***/ }),
-/* 338 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = { "default": __webpack_require__(339), __esModule: true };
-
-/***/ }),
 /* 339 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(340);
-__webpack_require__(345);
-module.exports = __webpack_require__(83).f('iterator');
+module.exports = { "default": __webpack_require__(340), __esModule: true };
 
 /***/ }),
 /* 340 */
@@ -55240,7 +55174,18 @@ module.exports = __webpack_require__(83).f('iterator');
 "use strict";
 
 
-var $at = __webpack_require__(341)(true);
+__webpack_require__(341);
+__webpack_require__(346);
+module.exports = __webpack_require__(84).f('iterator');
+
+/***/ }),
+/* 341 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var $at = __webpack_require__(342)(true);
 
 // 21.1.3.27 String.prototype[@@iterator]()
 __webpack_require__(128)(String, 'String', function (iterated) {
@@ -55258,14 +55203,14 @@ __webpack_require__(128)(String, 'String', function (iterated) {
 });
 
 /***/ }),
-/* 341 */
+/* 342 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var toInteger = __webpack_require__(74);
-var defined = __webpack_require__(73);
+var toInteger = __webpack_require__(75);
+var defined = __webpack_require__(74);
 // true  -> String#at
 // false -> String#codePointAt
 module.exports = function (TO_STRING) {
@@ -55281,15 +55226,15 @@ module.exports = function (TO_STRING) {
 };
 
 /***/ }),
-/* 342 */
+/* 343 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var create = __webpack_require__(81);
-var descriptor = __webpack_require__(54);
-var setToStringTag = __webpack_require__(82);
+var create = __webpack_require__(82);
+var descriptor = __webpack_require__(55);
+var setToStringTag = __webpack_require__(83);
 var IteratorPrototype = {};
 
 // 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
@@ -55303,7 +55248,7 @@ module.exports = function (Constructor, NAME, next) {
 };
 
 /***/ }),
-/* 343 */
+/* 344 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55311,7 +55256,7 @@ module.exports = function (Constructor, NAME, next) {
 
 var dP = __webpack_require__(26);
 var anObject = __webpack_require__(42);
-var getKeys = __webpack_require__(55);
+var getKeys = __webpack_require__(56);
 
 module.exports = __webpack_require__(27) ? Object.defineProperties : function defineProperties(O, Properties) {
   anObject(O);
@@ -55325,26 +55270,26 @@ module.exports = __webpack_require__(27) ? Object.defineProperties : function de
 };
 
 /***/ }),
-/* 344 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var document = __webpack_require__(20).document;
-module.exports = document && document.documentElement;
-
-/***/ }),
 /* 345 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(346);
-var global = __webpack_require__(20);
+var document = __webpack_require__(21).document;
+module.exports = document && document.documentElement;
+
+/***/ }),
+/* 346 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(347);
+var global = __webpack_require__(21);
 var hide = __webpack_require__(33);
-var Iterators = __webpack_require__(80);
+var Iterators = __webpack_require__(81);
 var TO_STRING_TAG = __webpack_require__(37)('toStringTag');
 
 var DOMIterables = ('CSSRuleList,CSSStyleDeclaration,CSSValueList,ClientRectList,DOMRectList,DOMStringList,' + 'DOMTokenList,DataTransferItemList,FileList,HTMLAllCollection,HTMLCollection,HTMLFormElement,HTMLSelectElement,' + 'MediaList,MimeTypeArray,NamedNodeMap,NodeList,PaintRequestList,Plugin,PluginArray,SVGLengthList,SVGNumberList,' + 'SVGPathSegList,SVGPointList,SVGStringList,SVGTransformList,SourceBufferList,StyleSheetList,TextTrackCueList,' + 'TextTrackList,TouchList').split(',');
@@ -55358,15 +55303,15 @@ for (var i = 0; i < DOMIterables.length; i++) {
 }
 
 /***/ }),
-/* 346 */
+/* 347 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var addToUnscopables = __webpack_require__(347);
-var step = __webpack_require__(348);
-var Iterators = __webpack_require__(80);
+var addToUnscopables = __webpack_require__(348);
+var step = __webpack_require__(349);
+var Iterators = __webpack_require__(81);
 var toIObject = __webpack_require__(36);
 
 // 22.1.3.4 Array.prototype.entries()
@@ -55399,7 +55344,7 @@ addToUnscopables('values');
 addToUnscopables('entries');
 
 /***/ }),
-/* 347 */
+/* 348 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55408,7 +55353,7 @@ addToUnscopables('entries');
 module.exports = function () {/* empty */};
 
 /***/ }),
-/* 348 */
+/* 349 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55419,29 +55364,29 @@ module.exports = function (done, value) {
 };
 
 /***/ }),
-/* 349 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = { "default": __webpack_require__(350), __esModule: true };
-
-/***/ }),
 /* 350 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(351);
-__webpack_require__(356);
-__webpack_require__(357);
-__webpack_require__(358);
-module.exports = __webpack_require__(13).Symbol;
+module.exports = { "default": __webpack_require__(351), __esModule: true };
 
 /***/ }),
 /* 351 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(352);
+__webpack_require__(357);
+__webpack_require__(358);
+__webpack_require__(359);
+module.exports = __webpack_require__(13).Symbol;
+
+/***/ }),
+/* 352 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55450,31 +55395,31 @@ module.exports = __webpack_require__(13).Symbol;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var global = __webpack_require__(20);
+var global = __webpack_require__(21);
 var has = __webpack_require__(28);
 var DESCRIPTORS = __webpack_require__(27);
 var $export = __webpack_require__(25);
 var redefine = __webpack_require__(129);
-var META = __webpack_require__(352).KEY;
+var META = __webpack_require__(353).KEY;
 var $fails = __webpack_require__(35);
-var shared = __webpack_require__(76);
-var setToStringTag = __webpack_require__(82);
-var uid = __webpack_require__(57);
+var shared = __webpack_require__(77);
+var setToStringTag = __webpack_require__(83);
+var uid = __webpack_require__(58);
 var wks = __webpack_require__(37);
-var wksExt = __webpack_require__(83);
-var wksDefine = __webpack_require__(84);
-var enumKeys = __webpack_require__(353);
-var isArray = __webpack_require__(354);
+var wksExt = __webpack_require__(84);
+var wksDefine = __webpack_require__(85);
+var enumKeys = __webpack_require__(354);
+var isArray = __webpack_require__(355);
 var anObject = __webpack_require__(42);
 var isObject = __webpack_require__(34);
 var toIObject = __webpack_require__(36);
-var toPrimitive = __webpack_require__(72);
-var createDesc = __webpack_require__(54);
-var _create = __webpack_require__(81);
-var gOPNExt = __webpack_require__(355);
+var toPrimitive = __webpack_require__(73);
+var createDesc = __webpack_require__(55);
+var _create = __webpack_require__(82);
+var gOPNExt = __webpack_require__(356);
 var $GOPD = __webpack_require__(131);
 var $DP = __webpack_require__(26);
-var $keys = __webpack_require__(55);
+var $keys = __webpack_require__(56);
 var gOPD = $GOPD.f;
 var dP = $DP.f;
 var gOPN = gOPNExt.f;
@@ -55601,10 +55546,10 @@ if (!USE_NATIVE) {
   $GOPD.f = $getOwnPropertyDescriptor;
   $DP.f = $defineProperty;
   __webpack_require__(130).f = gOPNExt.f = $getOwnPropertyNames;
-  __webpack_require__(58).f = $propertyIsEnumerable;
-  __webpack_require__(78).f = $getOwnPropertySymbols;
+  __webpack_require__(59).f = $propertyIsEnumerable;
+  __webpack_require__(79).f = $getOwnPropertySymbols;
 
-  if (DESCRIPTORS && !__webpack_require__(56)) {
+  if (DESCRIPTORS && !__webpack_require__(57)) {
     redefine(ObjectProto, 'propertyIsEnumerable', $propertyIsEnumerable, true);
   }
 
@@ -55691,7 +55636,7 @@ setToStringTag(Math, 'Math', true);
 setToStringTag(global.JSON, 'JSON', true);
 
 /***/ }),
-/* 352 */
+/* 353 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55699,7 +55644,7 @@ setToStringTag(global.JSON, 'JSON', true);
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var META = __webpack_require__(57)('meta');
+var META = __webpack_require__(58)('meta');
 var isObject = __webpack_require__(34);
 var has = __webpack_require__(28);
 var setDesc = __webpack_require__(26).f;
@@ -55754,16 +55699,16 @@ var meta = module.exports = {
 };
 
 /***/ }),
-/* 353 */
+/* 354 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 // all enumerable object keys, includes symbols
-var getKeys = __webpack_require__(55);
-var gOPS = __webpack_require__(78);
-var pIE = __webpack_require__(58);
+var getKeys = __webpack_require__(56);
+var gOPS = __webpack_require__(79);
+var pIE = __webpack_require__(59);
 module.exports = function (it) {
   var result = getKeys(it);
   var getSymbols = gOPS.f;
@@ -55779,7 +55724,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 354 */
+/* 355 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55792,7 +55737,7 @@ module.exports = Array.isArray || function isArray(arg) {
 };
 
 /***/ }),
-/* 355 */
+/* 356 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55820,20 +55765,11 @@ module.exports.f = function getOwnPropertyNames(it) {
 };
 
 /***/ }),
-/* 356 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/***/ }),
 /* 357 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-
-__webpack_require__(84)('asyncIterator');
 
 /***/ }),
 /* 358 */
@@ -55842,7 +55778,7 @@ __webpack_require__(84)('asyncIterator');
 "use strict";
 
 
-__webpack_require__(84)('observable');
+__webpack_require__(85)('asyncIterator');
 
 /***/ }),
 /* 359 */
@@ -55851,13 +55787,22 @@ __webpack_require__(84)('observable');
 "use strict";
 
 
+__webpack_require__(85)('observable');
+
+/***/ }),
+/* 360 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 exports.__esModule = true;
 
-var _setPrototypeOf = __webpack_require__(360);
+var _setPrototypeOf = __webpack_require__(361);
 
 var _setPrototypeOf2 = _interopRequireDefault(_setPrototypeOf);
 
-var _create = __webpack_require__(364);
+var _create = __webpack_require__(365);
 
 var _create2 = _interopRequireDefault(_create);
 
@@ -55886,23 +55831,13 @@ exports.default = function (subClass, superClass) {
 };
 
 /***/ }),
-/* 360 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = { "default": __webpack_require__(361), __esModule: true };
-
-/***/ }),
 /* 361 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(362);
-module.exports = __webpack_require__(13).Object.setPrototypeOf;
+module.exports = { "default": __webpack_require__(362), __esModule: true };
 
 /***/ }),
 /* 362 */
@@ -55911,12 +55846,22 @@ module.exports = __webpack_require__(13).Object.setPrototypeOf;
 "use strict";
 
 
-// 19.1.3.19 Object.setPrototypeOf(O, proto)
-var $export = __webpack_require__(25);
-$export($export.S, 'Object', { setPrototypeOf: __webpack_require__(363).set });
+__webpack_require__(363);
+module.exports = __webpack_require__(13).Object.setPrototypeOf;
 
 /***/ }),
 /* 363 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// 19.1.3.19 Object.setPrototypeOf(O, proto)
+var $export = __webpack_require__(25);
+$export($export.S, 'Object', { setPrototypeOf: __webpack_require__(364).set });
+
+/***/ }),
+/* 364 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55950,26 +55895,13 @@ module.exports = {
 };
 
 /***/ }),
-/* 364 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = { "default": __webpack_require__(365), __esModule: true };
-
-/***/ }),
 /* 365 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(366);
-var $Object = __webpack_require__(13).Object;
-module.exports = function create(P, D) {
-  return $Object.create(P, D);
-};
+module.exports = { "default": __webpack_require__(366), __esModule: true };
 
 /***/ }),
 /* 366 */
@@ -55978,12 +55910,25 @@ module.exports = function create(P, D) {
 "use strict";
 
 
-var $export = __webpack_require__(25);
-// 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-$export($export.S, 'Object', { create: __webpack_require__(81) });
+__webpack_require__(367);
+var $Object = __webpack_require__(13).Object;
+module.exports = function create(P, D) {
+  return $Object.create(P, D);
+};
 
 /***/ }),
 /* 367 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var $export = __webpack_require__(25);
+// 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
+$export($export.S, 'Object', { create: __webpack_require__(82) });
+
+/***/ }),
+/* 368 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56574,7 +56519,7 @@ return decodeURIComponent(pair[1]);}}return null;}var standalone='__[STANDALONE]
 renderer=getQueryVariable('renderer');}var readyStateCheckInterval=setInterval(checkReady,100);return lottie;});
 
 /***/ }),
-/* 368 */
+/* 369 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56710,7 +56655,7 @@ var BlockPlaceholder = function BlockPlaceholder(_ref) {
 exports.default = BlockPlaceholder;
 
 /***/ }),
-/* 369 */
+/* 370 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56779,7 +56724,7 @@ function save(props) {
 }
 
 /***/ }),
-/* 370 */
+/* 371 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57108,7 +57053,7 @@ var deprecated = [{
 exports.default = deprecated;
 
 /***/ }),
-/* 371 */
+/* 372 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57285,7 +57230,7 @@ var LottieAttr = {
 exports.default = LottieAttr;
 
 /***/ }),
-/* 372 */
+/* 373 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57297,15 +57242,15 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _edit = __webpack_require__(373);
+var _edit = __webpack_require__(374);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _attributes = __webpack_require__(375);
+var _attributes = __webpack_require__(376);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
-var _save = __webpack_require__(376);
+var _save = __webpack_require__(377);
 
 var _save2 = _interopRequireDefault(_save);
 
@@ -57329,7 +57274,7 @@ registerBlockType("premium/modal", {
 });
 
 /***/ }),
-/* 373 */
+/* 374 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57347,15 +57292,15 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _reactLottieWithSegments = __webpack_require__(71);
+var _reactLottieWithSegments = __webpack_require__(72);
 
 var _reactLottieWithSegments2 = _interopRequireDefault(_reactLottieWithSegments);
 
-var _inspector = __webpack_require__(374);
+var _inspector = __webpack_require__(375);
 
 var _inspector2 = _interopRequireDefault(_inspector);
 
-var _fontLoader = __webpack_require__(22);
+var _fontLoader = __webpack_require__(23);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
 
@@ -57914,7 +57859,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 374 */
+/* 375 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57962,7 +57907,7 @@ var _premiumMediaUpload = __webpack_require__(12);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
-var _PremiumResponsiveMargin = __webpack_require__(52);
+var _PremiumResponsiveMargin = __webpack_require__(53);
 
 var _PremiumResponsiveMargin2 = _interopRequireDefault(_PremiumResponsiveMargin);
 
@@ -57974,7 +57919,7 @@ var _responsiveRangeControl = __webpack_require__(14);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
-var _PremiumBackgroundControl = __webpack_require__(23);
+var _PremiumBackgroundControl = __webpack_require__(20);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
@@ -59607,7 +59552,7 @@ var Inspector = function Inspector(_ref) {
 exports.default = Inspector;
 
 /***/ }),
-/* 375 */
+/* 376 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60072,7 +60017,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 376 */
+/* 377 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60346,7 +60291,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 377 */
+/* 378 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60354,11 +60299,11 @@ exports.default = save;
 
 var _settings = __webpack_require__(1);
 
-var _save = __webpack_require__(378);
+var _save = __webpack_require__(379);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _edit = __webpack_require__(379);
+var _edit = __webpack_require__(380);
 
 var _edit2 = _interopRequireDefault(_edit);
 
@@ -60366,7 +60311,7 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(380);
+var _attributes = __webpack_require__(381);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -60386,7 +60331,7 @@ registerBlockType("premium/image-separator", {
 });
 
 /***/ }),
-/* 378 */
+/* 379 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60470,7 +60415,7 @@ function save(props) {
 }
 
 /***/ }),
-/* 379 */
+/* 380 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61188,7 +61133,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 380 */
+/* 381 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61348,7 +61293,7 @@ var imageSeparatorAttrs = {
 exports.default = imageSeparatorAttrs;
 
 /***/ }),
-/* 381 */
+/* 382 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61356,11 +61301,11 @@ exports.default = imageSeparatorAttrs;
 
 var _settings = __webpack_require__(1);
 
-var _save = __webpack_require__(382);
+var _save = __webpack_require__(383);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _edit = __webpack_require__(383);
+var _edit = __webpack_require__(384);
 
 var _edit2 = _interopRequireDefault(_edit);
 
@@ -61368,7 +61313,7 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(385);
+var _attributes = __webpack_require__(386);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -61391,7 +61336,7 @@ registerBlockType("premium/bullet-list", {
 });
 
 /***/ }),
-/* 382 */
+/* 383 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61650,7 +61595,7 @@ function save(props) {
 }
 
 /***/ }),
-/* 383 */
+/* 384 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61688,7 +61633,7 @@ var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _PremiumResponsiveMargin = __webpack_require__(52);
+var _PremiumResponsiveMargin = __webpack_require__(53);
 
 var _PremiumResponsiveMargin2 = _interopRequireDefault(_PremiumResponsiveMargin);
 
@@ -61704,9 +61649,9 @@ var _responsiveRangeControl = __webpack_require__(14);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
-var _reactSortableHoc = __webpack_require__(70);
+var _reactSortableHoc = __webpack_require__(71);
 
-var _align = __webpack_require__(384);
+var _align = __webpack_require__(385);
 
 var _align2 = _interopRequireDefault(_align);
 
@@ -61714,7 +61659,7 @@ var _PremiumShadow = __webpack_require__(5);
 
 var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
-var _fontLoader = __webpack_require__(22);
+var _fontLoader = __webpack_require__(23);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
 
@@ -63424,7 +63369,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 384 */
+/* 385 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63476,7 +63421,7 @@ icons.vertical_bottom = React.createElement(
 exports.default = icons;
 
 /***/ }),
-/* 385 */
+/* 386 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63889,7 +63834,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 386 */
+/* 387 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63897,15 +63842,15 @@ exports.default = attributes;
 
 var _settings = __webpack_require__(1);
 
-var _save = __webpack_require__(387);
+var _save = __webpack_require__(388);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _edit = __webpack_require__(388);
+var _edit = __webpack_require__(389);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _deprecated = __webpack_require__(406);
+var _deprecated = __webpack_require__(407);
 
 var _deprecated2 = _interopRequireDefault(_deprecated);
 
@@ -63913,7 +63858,7 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(407);
+var _attributes = __webpack_require__(408);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -63938,7 +63883,7 @@ registerBlockType("premium/person", {
 });
 
 /***/ }),
-/* 387 */
+/* 388 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64160,7 +64105,7 @@ var save = function save(props) {
 exports.default = save;
 
 /***/ }),
-/* 388 */
+/* 389 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64222,9 +64167,9 @@ var _premiumMediaUpload = __webpack_require__(12);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
-var _reactSortableHoc = __webpack_require__(70);
+var _reactSortableHoc = __webpack_require__(71);
 
-var _times = __webpack_require__(389);
+var _times = __webpack_require__(390);
 
 var _times2 = _interopRequireDefault(_times);
 
@@ -65591,15 +65536,15 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 389 */
+/* 390 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseTimes = __webpack_require__(390),
-    castFunction = __webpack_require__(391),
-    toInteger = __webpack_require__(393);
+var baseTimes = __webpack_require__(391),
+    castFunction = __webpack_require__(392),
+    toInteger = __webpack_require__(394);
 
 /** Used as references for various `Number` constants. */
 var MAX_SAFE_INTEGER = 9007199254740991;
@@ -65650,7 +65595,7 @@ function times(n, iteratee) {
 module.exports = times;
 
 /***/ }),
-/* 390 */
+/* 391 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65678,13 +65623,13 @@ function baseTimes(n, iteratee) {
 module.exports = baseTimes;
 
 /***/ }),
-/* 391 */
+/* 392 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var identity = __webpack_require__(392);
+var identity = __webpack_require__(393);
 
 /**
  * Casts `value` to `identity` if it's not a function.
@@ -65700,7 +65645,7 @@ function castFunction(value) {
 module.exports = castFunction;
 
 /***/ }),
-/* 392 */
+/* 393 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65729,13 +65674,13 @@ function identity(value) {
 module.exports = identity;
 
 /***/ }),
-/* 393 */
+/* 394 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var toFinite = __webpack_require__(394);
+var toFinite = __webpack_require__(395);
 
 /**
  * Converts `value` to an integer.
@@ -65773,13 +65718,13 @@ function toInteger(value) {
 module.exports = toInteger;
 
 /***/ }),
-/* 394 */
+/* 395 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var toNumber = __webpack_require__(395);
+var toNumber = __webpack_require__(396);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0,
@@ -65823,15 +65768,15 @@ function toFinite(value) {
 module.exports = toFinite;
 
 /***/ }),
-/* 395 */
+/* 396 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseTrim = __webpack_require__(396),
-    isObject = __webpack_require__(398),
-    isSymbol = __webpack_require__(399);
+var baseTrim = __webpack_require__(397),
+    isObject = __webpack_require__(399),
+    isSymbol = __webpack_require__(400);
 
 /** Used as references for various `Number` constants. */
 var NAN = 0 / 0;
@@ -65893,13 +65838,13 @@ function toNumber(value) {
 module.exports = toNumber;
 
 /***/ }),
-/* 396 */
+/* 397 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var trimmedEndIndex = __webpack_require__(397);
+var trimmedEndIndex = __webpack_require__(398);
 
 /** Used to match leading whitespace. */
 var reTrimStart = /^\s+/;
@@ -65918,7 +65863,7 @@ function baseTrim(string) {
 module.exports = baseTrim;
 
 /***/ }),
-/* 397 */
+/* 398 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65945,7 +65890,7 @@ function trimmedEndIndex(string) {
 module.exports = trimmedEndIndex;
 
 /***/ }),
-/* 398 */
+/* 399 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65986,7 +65931,7 @@ function isObject(value) {
 module.exports = isObject;
 
 /***/ }),
-/* 399 */
+/* 400 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65994,8 +65939,8 @@ module.exports = isObject;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var baseGetTag = __webpack_require__(400),
-    isObjectLike = __webpack_require__(405);
+var baseGetTag = __webpack_require__(401),
+    isObjectLike = __webpack_require__(406);
 
 /** `Object#toString` result references. */
 var symbolTag = '[object Symbol]';
@@ -66024,15 +65969,15 @@ function isSymbol(value) {
 module.exports = isSymbol;
 
 /***/ }),
-/* 400 */
+/* 401 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var _Symbol = __webpack_require__(132),
-    getRawTag = __webpack_require__(403),
-    objectToString = __webpack_require__(404);
+    getRawTag = __webpack_require__(404),
+    objectToString = __webpack_require__(405);
 
 /** `Object#toString` result references. */
 var nullTag = '[object Null]',
@@ -66058,7 +66003,7 @@ function baseGetTag(value) {
 module.exports = baseGetTag;
 
 /***/ }),
-/* 401 */
+/* 402 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66066,7 +66011,7 @@ module.exports = baseGetTag;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var freeGlobal = __webpack_require__(402);
+var freeGlobal = __webpack_require__(403);
 
 /** Detect free variable `self`. */
 var freeSelf = (typeof self === 'undefined' ? 'undefined' : _typeof(self)) == 'object' && self && self.Object === Object && self;
@@ -66077,7 +66022,7 @@ var root = freeGlobal || freeSelf || Function('return this')();
 module.exports = root;
 
 /***/ }),
-/* 402 */
+/* 403 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66089,10 +66034,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 var freeGlobal = (typeof global === 'undefined' ? 'undefined' : _typeof(global)) == 'object' && global && global.Object === Object && global;
 
 module.exports = freeGlobal;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(89)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(90)))
 
 /***/ }),
-/* 403 */
+/* 404 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66146,7 +66091,7 @@ function getRawTag(value) {
 module.exports = getRawTag;
 
 /***/ }),
-/* 404 */
+/* 405 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66176,7 +66121,7 @@ function objectToString(value) {
 module.exports = objectToString;
 
 /***/ }),
-/* 405 */
+/* 406 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66215,7 +66160,7 @@ function isObjectLike(value) {
 module.exports = isObjectLike;
 
 /***/ }),
-/* 406 */
+/* 407 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66871,7 +66816,7 @@ var deprecated = [{
 exports.default = deprecated;
 
 /***/ }),
-/* 407 */
+/* 408 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67176,7 +67121,7 @@ var attributes = {
 exports.default = attributes;
 
 /***/ }),
-/* 408 */
+/* 409 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67184,11 +67129,11 @@ exports.default = attributes;
 
 var _settings = __webpack_require__(1);
 
-var _save = __webpack_require__(409);
+var _save = __webpack_require__(410);
 
 var _save2 = _interopRequireDefault(_save);
 
-var _edit = __webpack_require__(410);
+var _edit = __webpack_require__(411);
 
 var _edit2 = _interopRequireDefault(_edit);
 
@@ -67196,7 +67141,7 @@ var _icons = __webpack_require__(4);
 
 var _icons2 = _interopRequireDefault(_icons);
 
-var _attributes = __webpack_require__(411);
+var _attributes = __webpack_require__(412);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
@@ -67219,7 +67164,7 @@ registerBlockType("premium/heading", {
 });
 
 /***/ }),
-/* 409 */
+/* 410 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67438,7 +67383,7 @@ function save(props) {
 }
 
 /***/ }),
-/* 410 */
+/* 411 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67484,7 +67429,7 @@ var _responsiveRangeControl = __webpack_require__(14);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
-var _PremiumBackgroundControl = __webpack_require__(23);
+var _PremiumBackgroundControl = __webpack_require__(20);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
@@ -67496,11 +67441,11 @@ var _premiumMediaUpload = __webpack_require__(12);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
-var _reactLottieWithSegments = __webpack_require__(71);
+var _reactLottieWithSegments = __webpack_require__(72);
 
 var _reactLottieWithSegments2 = _interopRequireDefault(_reactLottieWithSegments);
 
-var _PremiumResponsiveMargin = __webpack_require__(52);
+var _PremiumResponsiveMargin = __webpack_require__(53);
 
 var _PremiumResponsiveMargin2 = _interopRequireDefault(_PremiumResponsiveMargin);
 
@@ -69270,7 +69215,7 @@ exports.default = withSelect(function (select, props) {
 })(edit);
 
 /***/ }),
-/* 411 */
+/* 412 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

@@ -116,7 +116,7 @@ const edit = props => {
                         <PanelBody
                             title={__("Icon", 'premium-blocks-for-gutenberg')}
                             className="premium-panel-body"
-                            initialOpen={false}
+                            initialOpen={true}
                         >
                             <p className="premium-editor-paragraph">{__("Select Icon", 'premium-blocks-for-gutenberg')}</p>
                             <FontIconPicker
@@ -159,7 +159,7 @@ const edit = props => {
                         <PanelBody
                             title={__("Icon Style", 'premium-blocks-for-gutenberg')}
                             className="premium-panel-body"
-                            initialOpen={false}
+                            initialOpen={true}
                         >
                             <ResponsiveRangeControl
                                 label={__('Size', 'premium-blocks-for-gutenberg')}
