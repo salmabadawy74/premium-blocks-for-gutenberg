@@ -5,7 +5,10 @@ import classnames from "classnames";
 import PremiumBorder from "../../components/premium-border";
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
-import Animation from '../../components/Animation'
+import Animation from '../../components/Animation';
+import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
+import SpacingControl from '../../components/premium-responsive-spacing'
+
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 const { __ } = wp.i18n;
 const { PanelBody, Toolbar, ResizableBox, IconButton } = wp.components;
@@ -259,7 +262,12 @@ class PremiumColumn extends Component {
                 globalZindex,
                 hideTablet,
                 hideMobile,
-                globalCss
+                globalCss,
+                columnBackground,
+                columnBorder,
+                columnShadow,
+                columnMargin,
+                columnPadding
             },
             setAttributes,
             isSelected,
@@ -310,22 +318,8 @@ class PremiumColumn extends Component {
                                 initialOpen={false}
                             >
                                 <PremiumBackgroundControl
-                                    setAttributes={setAttributes}
-                                    saveContainerStyle={saveContainerStyle}
-                                    backgroundType={backgroundType}
-                                    backgroundColor={containerStyles[0].containerBack}
-                                    backgroundImageID={containerStyles[0].backgroundImageID}
-                                    backgroundImageURL={containerStyles[0].backgroundImageURL}
-                                    backgroundPosition={containerStyles[0].backgroundPosition}
-                                    backgroundRepeat={containerStyles[0].backgroundRepeat}
-                                    backgroundSize={containerStyles[0].backgroundSize}
-                                    fixed={containerStyles[0].fixed}
-                                    gradientLocationOne={containerStyles[0].gradientLocationOne}
-                                    gradientColorTwo={containerStyles[0].gradientColorTwo}
-                                    gradientLocationTwo={containerStyles[0].gradientLocationTwo}
-                                    gradientAngle={containerStyles[0].gradientAngle}
-                                    gradientPosition={containerStyles[0].gradientPosition}
-                                    gradientType={containerStyles[0].gradientType}
+                                    value={columnBackground}
+                                    onChange={(value) => setAttributes({ columnBackground: value })}
                                 />
                             </PanelBody>
                             <PanelBody
@@ -334,173 +328,31 @@ class PremiumColumn extends Component {
                                 initialOpen={false}
                             >
                                 <PremiumBorder
-                                    borderType={containerStyles[0].borderType}
-                                    borderWidth={containerStyles[0].borderWidth}
-                                    top={borderTop}
-                                    right={borderRight}
-                                    bottom={borderBottom}
-                                    left={borderLeft}
-                                    borderColor={containerStyles[0].borderColor}
-                                    borderRadius={containerStyles[0].borderRadius}
-                                    onChangeType={(newType) => saveContainerStyle({ borderType: newType })}
-                                    onChangeWidth={({ top, right, bottom, left }) =>
-                                        setAttributes({
-                                            borderTop: top,
-                                            borderRight: right,
-                                            borderBottom: bottom,
-                                            borderLeft: left,
-                                            isUpdated: true,
-                                        })
-                                    }
-                                    onChangeColor={(colorValue) => saveContainerStyle({ borderColor: colorValue })}
-                                    onChangeRadius={(newrRadius) => saveContainerStyle({ borderRadius: newrRadius })}
+                                    value={columnBorder}
+                                    onChange={(value) => setAttributes({ columnBorder: value })}
                                 />
                                 <PremiumShadow
                                     boxShadow={true}
-                                    color={containerStyles[0].shadowColor}
-                                    blur={containerStyles[0].shadowBlur}
-                                    horizontal={containerStyles[0].shadowHorizontal}
-                                    vertical={containerStyles[0].shadowVertical}
-                                    position={containerStyles[0].shadowPosition}
-                                    onChangeColor={newColor =>
-                                        saveContainerStyle({
-                                            shadowColor:
-                                                newColor === undefined
-                                                    ? "transparent"
-                                                    : newColor
-                                        })
-                                    }
-                                    onChangeBlur={newBlur => saveContainerStyle({ shadowBlur: newBlur === undefined ? 0 : newBlur })}
-                                    onChangehHorizontal={newValue => saveContainerStyle({ shadowHorizontal: newValue === undefined ? 0 : newValue })}
-                                    onChangeVertical={newValue => saveContainerStyle({ shadowVertical: newValue === undefined ? 0 : newValue })}
-                                    onChangePosition={newValue => saveContainerStyle({ shadowPosition: newValue === undefined ? 0 : newValue })}
+                                    value={columnShadow}
+                                    onChange={(value) => setAttributes({ columnShadow: value })}
                                 />
                             </PanelBody>
                         </InspectorTab>
                         <InspectorTab key={'advance'}>
                             <PanelBody initialOpen={true} title={__('Spacing')}>
-                                <PremiumResponsiveMargin
-                                    directions={["all"]}
-                                    marginTop={marginTop}
-                                    marginRight={marginRight}
-                                    marginBottom={marginBottom}
-                                    marginLeft={marginLeft}
-                                    marginTopTablet={marginTTablet}
-                                    marginRightTablet={marginRTablet}
-                                    marginBottomTablet={marginBTablet}
-                                    marginLeftTablet={marginLTablet}
-                                    marginTopMobile={marginTMobile}
-                                    marginRightMobile={marginRMobile}
-                                    marginBottomMobile={marginBMobile}
-                                    marginLeftMobile={marginLMobile}
-                                    onChangeMarginTop={
-                                        (device, newValue) => {
-                                            if (device === "desktop") {
-                                                setAttributes({ marginTop: newValue })
-                                            } else if (device === "tablet") {
-                                                setAttributes({ marginTTablet: newValue })
-                                            } else {
-                                                setAttributes({ marginTMobile: newValue })
-                                            }
-                                        }
-                                    }
-                                    onChangeMarginRight={
-                                        (device, newValue) => {
-                                            if (device === "desktop") {
-                                                setAttributes({ marginRight: newValue })
-                                            } else if (device === "tablet") {
-                                                setAttributes({ marginRTablet: newValue })
-                                            } else {
-                                                setAttributes({ marginRMobile: newValue })
-                                            }
-                                        }
-                                    }
-                                    onChangeMarginBottom={
-                                        (device, newValue) => {
-                                            if (device === "desktop") {
-                                                setAttributes({ marginBottom: newValue })
-                                            } else if (device === "tablet") {
-                                                setAttributes({ marginBTablet: newValue })
-                                            } else {
-                                                setAttributes({ marginBMobile: newValue })
-                                            }
-                                        }
-                                    }
-                                    onChangeMarginLeft={
-                                        (device, newValue) => {
-                                            if (device === "desktop") {
-                                                setAttributes({ marginLeft: newValue })
-                                            } else if (device === "tablet") {
-                                                setAttributes({ marginLTablet: newValue })
-                                            } else {
-                                                setAttributes({ marginLMobile: newValue })
-                                            }
-                                        }
-                                    }
+                                <SpacingControl
+                                    label={__('Margin', 'premium-blocks-for-gutenberg')}
+                                    value={columnMargin}
+                                    onChange={(value) => setAttributes({ columnMargin: value })}
                                     showUnits={true}
-                                    onChangeMarSizeUnit={newvalue => saveContainerStyle({ marginUnit: newvalue })}
-                                    selectedUnit={containerStyles[0].marginUnit}
+                                    responsive={true}
                                 />
-                                <PremiumResponsivePadding
-                                    paddingTop={paddingTop}
-                                    paddingRight={paddingRight}
-                                    paddingBottom={paddingBottom}
-                                    paddingLeft={paddingLeft}
-                                    paddingTopTablet={paddingTTablet}
-                                    paddingRightTablet={paddingRTablet}
-                                    paddingBottomTablet={paddingBTablet}
-                                    paddingLeftTablet={paddingLTablet}
-                                    paddingTopMobile={paddingTMobile}
-                                    paddingRightMobile={paddingRMobile}
-                                    paddingBottomMobile={paddingBMobile}
-                                    paddingLeftMobile={paddingLMobile}
+                                <SpacingControl
+                                    label={__('Padding', 'premium-blocks-for-gutenberg')}
+                                    value={columnPadding}
+                                    onChange={(value) => setAttributes({ columnPadding: value })}
                                     showUnits={true}
-                                    selectedUnit={containerStyles[0].paddingUnit}
-                                    onChangePadSizeUnit={newvalue => saveContainerStyle({ paddingUnit: newvalue })}
-                                    onChangePaddingTop={
-                                        (device, newValue) => {
-                                            if (device === "desktop") {
-                                                setAttributes({ paddingTop: newValue })
-                                            } else if (device === "tablet") {
-                                                setAttributes({ paddingTTablet: newValue })
-                                            } else {
-                                                setAttributes({ paddingTMobile: newValue })
-                                            }
-                                        }
-                                    }
-                                    onChangePaddingRight={
-                                        (device, newValue) => {
-                                            if (device === "desktop") {
-                                                setAttributes({ paddingRight: newValue })
-                                            } else if (device === "tablet") {
-                                                setAttributes({ paddingRTablet: newValue })
-                                            } else {
-                                                setAttributes({ paddingRMobile: newValue })
-                                            }
-                                        }
-                                    }
-                                    onChangePaddingBottom={
-                                        (device, newValue) => {
-                                            if (device === "desktop") {
-                                                setAttributes({ paddingBottom: newValue })
-                                            } else if (device === "tablet") {
-                                                setAttributes({ paddingBTablet: newValue })
-                                            } else {
-                                                setAttributes({ paddingBMobile: newValue })
-                                            }
-                                        }
-                                    }
-                                    onChangePaddingLeft={
-                                        (device, newValue) => {
-                                            if (device === "desktop") {
-                                                setAttributes({ paddingLeft: newValue })
-                                            } else if (device === "tablet") {
-                                                setAttributes({ paddingLTablet: newValue })
-                                            } else {
-                                                setAttributes({ paddingLMobile: newValue })
-                                            }
-                                        }
-                                    }
+                                    responsive={true}
                                 />
                             </PanelBody>
                             <PanelBody title={__('Animation')} initialOpen={false}>

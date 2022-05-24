@@ -1,15 +1,20 @@
-/* eslint-disable react/react-in-jsx-scope */
 const { __ } = wp.i18n
 const { compose } = wp.compose;
 const { select, withDispatch } = wp.data
-const { PanelBody, TextControl, SelectControl, Tooltip, Button, RangeControl } = wp.components
+const { PanelBody, SelectControl, Tooltip, Button, ToggleControl } = wp.components
 const { Component, Fragment, createRef } = wp.element
-const { InspectorControls, InnerBlocks, InspectorAdvancedControls } = wp.blockEditor
+const { InspectorControls, InnerBlocks } = wp.blockEditor
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
 import SpacingControl from '../../components/premium-responsive-spacing'
-
+import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
+import PremiumBackgroundControl from '../../components/Premium-Background-Control'
+import PremiumBorder from "../../components/premium-border";
+import PremiumShadow from "../../components/PremiumShadow";
+import InsideTabs from '../../components/InsideTabs';
+import InsideTab from '../../components/InsideTab';
+import Shape from '../../components/premium-shape'
 const colOption = [
     { label: '100', columns: 1, layout: { desktop: [100], tablet: [100], mobile: [100] } },
     { label: '50/50', columns: 2, layout: { desktop: [50, 50], tablet: [100, 100], mobile: [100, 100] } },
@@ -46,7 +51,7 @@ class Edit extends Component {
             this.setState({ hideRowSettings: true })
         }
 
-        const _client = clientId.substr(0, 6)
+        const _client = clientId.substr(0, 9)
         if (!uniqueId) {
             setAttributes({ uniqueId: _client, childRow: parentClientId ? true : false });
         } else if (uniqueId && uniqueId != _client) {
@@ -137,7 +142,13 @@ class Edit extends Component {
                 globalCss,
                 innerWidthType,
                 innerWidth,
-                columnGutter
+                columnGutter,
+                height,
+                vPos,
+                overflow,
+                stretchSection,
+                backgroundOptions,
+                boxShadow
             },
             setAttributes } = this.props;
 
@@ -295,24 +306,24 @@ class Edit extends Component {
                             </PanelBody>
 
                             <PanelBody initialOpen={false} title={__('Shape Divider')}>
-                                <Tabs>
-                                    <Tab tabTitle={__('Top Shape')}>
+                                <InsideTabs>
+                                    <InsideTab tabTitle={__('Top Shape')}>
                                         <Shape
                                             shapeType="top"
                                             value={shapeTop}
                                             responsive
                                             onChange={val => setAttributes({ shapeTop: val })}
                                         />
-                                    </Tab>
-                                    <Tab tabTitle={__('Bottom Shape')}>
+                                    </InsideTab>
+                                    <InsideTab tabTitle={__('Bottom Shape')}>
                                         <Shape
                                             shapeType="bottom"
                                             value={shapeBottom}
                                             responsive
                                             onChange={val => setAttributes({ shapeBottom: val })}
                                         />
-                                    </Tab>
-                                </Tabs>
+                                    </InsideTab>
+                                </InsideTabs>
                             </PanelBody>
                         </InspectorTab>
                         <InspectorTab key={'advance'}>
@@ -354,17 +365,17 @@ class Edit extends Component {
 
                 <div className={`qubely-section qubely-block-${uniqueId} ${className ? ` ${className}` : ''}`} {...rowId ? { id: rowId } : ''}>
                     <div className="qubley-padding-indicator">
-                        <span className="qubely-indicator-top" style={{ height: padding.desktop.top ? padding.desktop.top + padding.unit : 0 }} >
-                            {(padding.desktop.top && padding.desktop.top > 20) ? padding.desktop.top + ' ' + padding.unit : ''}
+                        <span className="qubely-indicator-top" style={{ height: padding.Desktop.top ? padding.Desktop.top + padding.unit : 0 }} >
+                            {(padding.Desktop.top && padding.Desktop.top > 20) ? padding.Desktop.top + ' ' + padding.unit : ''}
                         </span>
-                        <span className="qubely-indicator-right" style={{ width: padding.desktop.right ? padding.desktop.right + padding.unit : 0 }} >
-                            {(padding.desktop.right && padding.desktop.right > 40) ? padding.desktop.right + ' ' + padding.unit : ''}
+                        <span className="qubely-indicator-right" style={{ width: padding.Desktop.right ? padding.Desktop.right + padding.unit : 0 }} >
+                            {(padding.Desktop.right && padding.Desktop.right > 40) ? padding.Desktop.right + ' ' + padding.unit : ''}
                         </span>
-                        <span className="qubely-indicator-bottom" style={{ height: padding.desktop.bottom ? padding.desktop.bottom + padding.unit : 0 }} >
-                            {(padding.desktop.bottom && padding.desktop.bottom > 20) ? padding.desktop.bottom + ' ' + padding.unit : ''}
+                        <span className="qubely-indicator-bottom" style={{ height: padding.Desktop.bottom ? padding.Desktop.bottom + padding.unit : 0 }} >
+                            {(padding.Desktop.bottom && padding.Desktop.bottom > 20) ? padding.Desktop.bottom + ' ' + padding.unit : ''}
                         </span>
-                        <span className="qubely-indicator-left" style={{ width: padding.desktop.left ? padding.desktop.left + padding.unit : 0 }} >
-                            {(padding.desktop.left && padding.desktop.left > 40) ? padding.desktop.left + ' ' + padding.unit : ''}
+                        <span className="qubely-indicator-left" style={{ width: padding.Desktop.left ? padding.Desktop.left + padding.unit : 0 }} >
+                            {(padding.Desktop.left && padding.Desktop.left > 40) ? padding.Desktop.left + ' ' + padding.unit : ''}
                         </span>
                     </div>
                     <div className="qubley-margin-indicator">
