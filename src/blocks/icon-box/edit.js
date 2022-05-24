@@ -248,12 +248,11 @@ class edit extends Component {
                     families: [descTypography.fontFamily],
                 },
             }
-            // loadDescriptionGoogleFonts = (
-            //     // <WebfontLoader config={descriptionConfig}>
-            //     // </WebfontLoader>
-            // )
+            loadDescriptionGoogleFonts = (
+                <WebfontLoader config={descriptionConfig}>
+                </WebfontLoader>
+            )
         }
-
 
         const mainClasses = classnames(className, "premium-icon-box");
 

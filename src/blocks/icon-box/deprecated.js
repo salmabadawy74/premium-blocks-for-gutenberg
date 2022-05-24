@@ -600,7 +600,7 @@ const deprecatedContent = [
     {
         attributes: deprecated_attributes,
         migrate: (attributes) => {
-            return {
+            let newAttributes = {
                 iconSize: {
                     Desktop: "",
                     unit: ""
@@ -894,6 +894,7 @@ const deprecatedContent = [
                     }
                 }
             };
+            return Object.assign(attributes, newAttributes)
         },
         save: (props) => {
             const {
