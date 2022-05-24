@@ -33947,8 +33947,8 @@ var deprecatedContent = [{
     migrate: function migrate(attributes) {
         var newAttributes = {
             iconSize: {
-                Desktop: "",
-                unit: ""
+                Desktop: attributes.iconSize,
+                unit: "px"
             },
             containerMargin: {
                 "Desktop": {
@@ -34052,10 +34052,10 @@ var deprecatedContent = [{
             },
             btnPadding: {
                 "Desktop": {
-                    top: "",
-                    right: "",
-                    bottom: "",
-                    left: ""
+                    top: attributes.btnStyles[0].btnPadding,
+                    right: attributes.btnStyles[0].btnPadding,
+                    bottom: attributes.btnStyles[0].btnPadding,
+                    left: attributes.btnStyles[0].btnPadding
                 },
                 "Tablet": {
                     top: "",
@@ -34068,7 +34068,8 @@ var deprecatedContent = [{
                     right: "",
                     bottom: "",
                     left: ""
-                }
+                },
+                unit: 'px'
             },
             btnBorder: {
                 borderColor: attributes.btnStyles[0].btnBorderColor,
