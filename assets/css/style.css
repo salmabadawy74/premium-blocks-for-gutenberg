@@ -2491,6 +2491,10 @@ a.premium-dheading-block__link:hover {
     -ms-transform: translate3d(0, 100%, 0);
     transform: translate3d(0, 100%, 0);
 }
+.premium-person__name_wrap .premium-person__name,
+.premium-person__title_wrap .premium-person__title {
+    margin: 0 !important;
+}
 .premium-person__effect1 .premium-person__name_wrap,
 .premium-person__effect1 .premium-person__title_wrap,
 .premium-person__effect1 .premium-person__desc_wrap {

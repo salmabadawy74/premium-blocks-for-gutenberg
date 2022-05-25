@@ -1,5 +1,6 @@
 import classnames from 'classnames'
 import DefaultImage from "../../components/default-image";
+import { gradientBackground, borderCss, padddingCss, marginCss } from '../../components/HelperFunction'
 
 
 const save = props => {
@@ -42,7 +43,8 @@ const save = props => {
         nameTypography,
         nameShadow,
         titleShadow,
-        descShadow
+        descShadow,
+        namePadding
     } = props.attributes;
 
 
@@ -106,6 +108,7 @@ const save = props => {
                             <span
                                 className={`premium-person__name`}
                                 style={{
+                                    // ...padddingCss(namePadding, props.deviceType),
                                     color: nameStyles[0].nameColor,
                                     alignSelf: nameV,
                                     fontSize: `${nameTypography.fontSize[props.deviceType] || 20}${nameTypography.fontSize.unit}`,

@@ -202,6 +202,14 @@ const attributes = {
         type: "number",
         default: "0"
     },
+    nameTag: {
+        type: "string",
+        default: "span"
+    },
+    titleTag: {
+        type: "string",
+        default: "span"
+    },
     socialIconMargin: {
         type: "object",
         default: {
@@ -313,9 +321,9 @@ const attributes = {
             'letterSpacing': '',
             'lineHeight': '',
             'fontSize': {
-                'Desktop': 20,
-                "Tablet": 20,
-                "Mobile": 20,
+                'Desktop': "",
+                "Tablet": "",
+                "Mobile": "",
                 unit: 'px'
             }
         }
@@ -345,9 +353,9 @@ const attributes = {
             'letterSpacing': '',
             'lineHeight': '',
             'fontSize': {
-                'Desktop': 20,
-                "Tablet": 20,
-                "Mobile": 20,
+                'Desktop': "",
+                "Tablet": "",
+                "Mobile": "",
                 unit: 'px'
             }
         }
@@ -379,5 +387,29 @@ const attributes = {
             'vertical': ''
         }
     },
+    namePadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: 0,
+                right: 0,
+                bottom: 0,
+                left: 0
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            unit: "px"
+        }
+    }
 }
 export default attributes

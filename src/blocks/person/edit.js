@@ -13,6 +13,7 @@ import PremiumMediaUpload from "../../components/premium-media-upload"
 import { SortableContainer, SortableElement, arrayMove } from 'react-sortable-hoc';
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
+import RadioComponent from '../../components/radio-control';
 import { gradientBackground, borderCss, padddingCss, marginCss } from '../../components/HelperFunction'
 import times from "lodash/times"
 
@@ -135,7 +136,10 @@ class edit extends Component {
             nameTypography,
             nameShadow,
             titleShadow,
-            descShadow
+            descShadow,
+            titleTag,
+            nameTag,
+            namePadding
         } = this.props.attributes;
 
         const HOVER = [
@@ -401,6 +405,7 @@ class edit extends Component {
                 let newData = (arrayItem[0].items).filter(b => {
                     return b
                 })
+                console.log(newData)
                 arrayItem[0].items = newData
                 multiPersonContent[personIndex] = arrayItem[0]
                 setAttributes(multiPersonContent[personIndex] = arrayItem[0]);
@@ -489,35 +494,20 @@ class edit extends Component {
                         <div
                             className={`premium-person__name_wrap`}
                             style={{
-                                fontSize: `${nameTypography.fontSize[this.props.deviceType] || 20}${nameTypography.fontSize.unit}`,
+                                fontSize: `${nameTypography.fontSize[this.props.deviceType] || ''}${nameTypography.fontSize.unit}`,
+                                ...padddingCss(namePadding, this.props.deviceType),
                             }}
                         >
                             {value.name && (
-                                // <span
-                                //     className={`premium-person__name`}
-                                //     style={{
-                                //         color: nameStyles[0].nameColor,
-                                //         fontSize: `${nameTypography.fontSize[this.props.deviceType] || 20}${nameTypography.fontSize.unit}`,
-                                //         letterSpacing: nameTypography.letterSpacing + "px",
-                                //         textTransform: nameTypography.textTransform ? "uppercase" : "none",
-                                //         fontStyle: nameTypography.fontStyle,
-                                //         fontWeight: nameTypography.fontWeight,
-                                //         lineHeight: nameTypography.lineHeight + "px",
-                                //         alignSelf: nameV,
-                                //         textShadow: `${nameShadow.horizontal}px ${nameShadow.vertical}px ${nameShadow.blur}px ${nameShadow.color}`
-                                //     }}
-                                // >
-                                //     {value.name}
-                                // </span>
                                 <RichText
-                                    tagName="SPAN"
+                                    tagName={nameTag.toLowerCase()}
                                     className={`premium-person__name`}
                                     value={value.name}
                                     isSelected={false}
                                     onChange={value => { this.save({ name: value }, index) }}
                                     style={{
                                         color: nameStyles[0].nameColor,
-                                        fontSize: `${nameTypography.fontSize[this.props.deviceType] || 20}${nameTypography.fontSize.unit}`,
+                                        fontSize: `${nameTypography.fontSize[this.props.deviceType] || ''}${nameTypography.fontSize.unit}`,
                                         letterSpacing: nameTypography.letterSpacing + "px",
                                         textTransform: nameTypography.textTransform ? "uppercase" : "none",
                                         fontStyle: nameTypography.fontStyle,
@@ -533,15 +523,19 @@ class edit extends Component {
                         <div
                             className={`premium-person__title_wrap`}
                             style={{
-                                fontSize: `${titleTypography.fontSize[this.props.deviceType] || 20}${titleTypography.fontSize.unit}`,
+                                fontSize: `${titleTypography.fontSize[this.props.deviceType] || ''}${titleTypography.fontSize.unit}`,
                             }}
                         >
                             {value.title && (
-                                <span
+                                <RichText
+                                    tagName={titleTag.toLowerCase()}
                                     className={`premium-person__title`}
+                                    value={value.title}
+                                    isSelected={false}
+                                    onChange={value => { this.save({ title: value }, index) }}
                                     style={{
                                         color: titleStyles[0].titleColor,
-                                        fontSize: `${titleTypography.fontSize[this.props.deviceType] || 20}${titleTypography.fontSize.unit}`,
+                                        fontSize: `${titleTypography.fontSize[this.props.deviceType] || ''}${titleTypography.fontSize.unit}`,
                                         letterSpacing: titleTypography.letterSpacing + "px",
                                         textTransform: titleTypography.textTransform ? "uppercase" : "none",
                                         fontStyle: titleTypography.fontStyle,
@@ -550,9 +544,8 @@ class edit extends Component {
                                         alignSelf: titleV,
                                         textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`
                                     }}
-                                >
-                                    {value.title}
-                                </span>
+                                    keepPlaceholderOnFocus
+                                />
                             )}
                         </div>
                         <div
@@ -562,8 +555,12 @@ class edit extends Component {
                             }}
                         >
                             {value.desc && (
-                                <span
+                                <RichText
+                                    tagName="span"
                                     className={`premium-person__desc`}
+                                    value={value.desc}
+                                    isSelected={false}
+                                    onChange={value => { this.save({ desc: value }, index) }}
                                     style={{
                                         color: descStyles[0].descColor,
                                         fontSize: `${descTypography.fontSize[this.props.deviceType] || 20}${descTypography.fontSize.unit}`,
@@ -575,9 +572,8 @@ class edit extends Component {
                                         alignSelf: descV,
                                         textShadow: `${descShadow.horizontal}px ${descShadow.vertical}px ${descShadow.blur}px ${descShadow.color}`
                                     }}
-                                >
-                                    {value.desc}
-                                </span>
+                                    keepPlaceholderOnFocus
+                                />
                             )}
                         </div>
                         {effectPersonStyle == 'effect1' ? <div>{value.socialIcon && (
@@ -677,21 +673,6 @@ class edit extends Component {
                         this.save({ personImgUrl: '' }, index)
                     }}
                 />
-                <TextControl
-                    label={__("Name", 'premium-block-for-gutenberg')}
-                    value={multiPersonContent[index].name}
-                    onChange={value => { this.save({ name: value }, index) }}
-                />
-                <TextControl
-                    label={__("Title", 'premium-block-for-gutenberg')}
-                    value={multiPersonContent[index].title}
-                    onChange={value => { this.save({ title: value }, index) }}
-                />
-                <TextareaControl
-                    label={__("Description", 'premium-block-for-gutenberg')}
-                    value={multiPersonContent[index].desc}
-                    onChange={value => { this.save({ desc: value }, index) }}
-                />
                 <ToggleControl
                     label={__("Enable Social Icons", 'premium-block-for-gutenberg')}
                     checked={multiPersonContent[index].socialIcon}
@@ -755,6 +736,18 @@ class edit extends Component {
                                     onChange={newEffect => setAttributes({ effectPersonStyle: newEffect })}
                                     options={EFFECTS}
                                 />
+                                <RadioComponent
+                                    label={__("Name Tag", 'premium-blocks-for-gutenberg')}
+                                    choices={['H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'div', 'span']}
+                                    value={nameTag}
+                                    onChange={(newValue) => setAttributes({ nameTag: newValue })}
+                                />
+                                <RadioComponent
+                                    label={__("Title Tag", 'premium-blocks-for-gutenberg')}
+                                    choices={['H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'div', 'span']}
+                                    value={titleTag}
+                                    onChange={(newValue) => setAttributes({ titleTag: newValue })}
+                                />
                                 <SelectControl
                                     label={__("Image Hover Effect", 'premium-block-for-gutenberg')}
                                     options={HOVER}
@@ -789,11 +782,6 @@ class edit extends Component {
                                 className="premium-panel-body"
                                 initialOpen={false}
                             >
-                                <PremiumTypo
-                                    components={["responsiveSize", "weight", "line", "style", "upper", "spacing"]}
-                                    value={nameTypography}
-                                    onChange={newValue => setAttributes({ nameTypography: newValue })}
-                                />
                                 <div className="premium-control-toggle">
                                     <AdvancedPopColorControl
                                         label={__("Color", 'premium-block-for-gutenberg')}
@@ -806,10 +794,22 @@ class edit extends Component {
                                         }
                                     />
                                 </div>
+                                <PremiumTypo
+                                    components={["responsiveSize", "weight", "line", "style", "upper", "spacing"]}
+                                    value={nameTypography}
+                                    onChange={newValue => setAttributes({ nameTypography: newValue })}
+                                />
                                 <PremiumShadow
                                     label={__("Text Shadow", "premium-blocks-for-gutenberg")}
                                     value={nameShadow}
                                     onChange={(value) => setAttributes({ nameShadow: value })}
+                                />
+                                <SpacingControl
+                                    label={__('Padding', 'premium-blocks-for-gutenberg')}
+                                    value={namePadding}
+                                    onChange={(value) => setAttributes({ namePadding: value })}
+                                    showUnits={true}
+                                    responsive={true}
                                 />
                             </PanelBody>
                             <PanelBody
