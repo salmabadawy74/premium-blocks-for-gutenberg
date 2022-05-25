@@ -7,7 +7,7 @@
     --primaryColor: #007cba;
     --accentColorHover: #135e96;
     --optionBorderColor: #e1e1e1;
-    --inputBorderColor: #dcdddf;
+    --inputBorderColor: #e1e1e1;
 }
 .premium-panel-body {
     p.premium-editor-paragraph {
@@ -300,7 +300,8 @@
     transition-property: background, color, opacity, -webkit-box-shadow;
     -o-transition-property: background, color, box-shadow, opacity;
     transition-property: background, color, box-shadow, opacity;
-    transition-property: background, color, box-shadow, opacity, -webkit-box-shadow;
+    transition-property: background, color, box-shadow, opacity,
+        -webkit-box-shadow;
     -webkit-transition-duration: 0.3s;
     -o-transition-duration: 0.3s;
     transition-duration: 0.3s;
@@ -350,7 +351,8 @@
     transition-property: background, color, opacity, -webkit-box-shadow;
     -o-transition-property: background, color, box-shadow, opacity;
     transition-property: background, color, box-shadow, opacity;
-    transition-property: background, color, box-shadow, opacity, -webkit-box-shadow;
+    transition-property: background, color, box-shadow, opacity,
+        -webkit-box-shadow;
     -webkit-transition-duration: 0.3s;
     -o-transition-duration: 0.3s;
     transition-duration: 0.3s;
@@ -442,8 +444,8 @@
     margin-left: 10px;
 }
 .rfipbtn {
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
-        Helvetica Neue, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+        Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     font-size: 14px;
     line-height: 1.71429;
     vertical-align: baseline;
@@ -485,8 +487,8 @@
     }
 }
 .rfipdropdown {
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
-        Helvetica Neue, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+        Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     font-size: 14px;
     line-height: 1.71429;
     vertical-align: baseline;
@@ -894,13 +896,17 @@
     background-color: #fff;
     border: 1px solid #81c784;
     &:active {
-        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
-        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
         border: 1px solid #66bb6a;
     }
     &:focus {
-        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
-        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
         border: 1px solid #66bb6a;
     }
     .rfipbtn__button {
@@ -937,7 +943,8 @@
     }
 }
 .rfipdropdown--green {
-    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22),
+        0 19px 76px rgba(0, 0, 0, 0.3);
     box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
     color: #424242;
     background-color: #fff;
@@ -1071,13 +1078,17 @@
     background-color: #fff;
     border: 1px solid #90a4ae;
     &:active {
-        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
-        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
         border: 1px solid #78909c;
     }
     &:focus {
-        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
-        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
         border: 1px solid #78909c;
     }
     .rfipbtn__button {
@@ -1114,7 +1125,8 @@
     }
 }
 .rfipdropdown--bluegrey {
-    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22),
+        0 19px 76px rgba(0, 0, 0, 0.3);
     box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
     color: #424242;
     background-color: #fff;
@@ -1248,13 +1260,17 @@
     background-color: #fff;
     border: 1px solid #a1887f;
     &:active {
-        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
-        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
         border: 1px solid #8d6e63;
     }
     &:focus {
-        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
-        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
         border: 1px solid #8d6e63;
     }
     .rfipbtn__button {
@@ -1291,7 +1307,8 @@
     }
 }
 .rfipdropdown--brown {
-    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22),
+        0 19px 76px rgba(0, 0, 0, 0.3);
     box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
     color: #424242;
     background-color: #fff;
@@ -1425,13 +1442,17 @@
     background-color: #fff;
     border: 1px solid #4dd0e1;
     &:active {
-        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
-        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
         border: 1px solid #26c6da;
     }
     &:focus {
-        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
-        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
         border: 1px solid #26c6da;
     }
     .rfipbtn__button {
@@ -1468,7 +1489,8 @@
     }
 }
 .rfipdropdown--cyan {
-    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22),
+        0 19px 76px rgba(0, 0, 0, 0.3);
     box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
     color: #424242;
     background-color: #fff;
@@ -1602,13 +1624,17 @@
     background-color: #fff;
     border: 1px solid #ff8a65;
     &:active {
-        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
-        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
         border: 1px solid #ff7043;
     }
     &:focus {
-        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
-        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
         border: 1px solid #ff7043;
     }
     .rfipbtn__button {
@@ -1645,7 +1671,8 @@
     }
 }
 .rfipdropdown--deeporange {
-    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22),
+        0 19px 76px rgba(0, 0, 0, 0.3);
     box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
     color: #424242;
     background-color: #fff;
@@ -1779,13 +1806,17 @@
     background-color: #fff;
     border: 1px solid #9575cd;
     &:active {
-        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
-        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
         border: 1px solid #7e57c2;
     }
     &:focus {
-        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
-        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
         border: 1px solid #7e57c2;
     }
     .rfipbtn__button {
@@ -1822,7 +1853,8 @@
     }
 }
 .rfipdropdown--deeppurple {
-    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22),
+        0 19px 76px rgba(0, 0, 0, 0.3);
     box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
     color: #424242;
     background-color: #fff;
@@ -1957,13 +1989,17 @@
     border: 1px solid #e0e0e0;
     width: 100%;
     &:active {
-        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
-        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
         border: 1px solid #bdbdbd;
     }
     &:focus {
-        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
-        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
         border: 1px solid #bdbdbd;
     }
     .rfipbtn__button {
@@ -2003,7 +2039,8 @@
     }
 }
 .rfipdropdown--default {
-    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22),
+        0 19px 76px rgba(0, 0, 0, 0.3);
     box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
     color: #424242;
     background-color: #fff;
@@ -2137,13 +2174,17 @@
     background-color: #fff;
     border: 1px solid #64b5f6;
     &:active {
-        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
-        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
         border: 1px solid #42a5f5;
     }
     &:focus {
-        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
-        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
         border: 1px solid #42a5f5;
     }
     .rfipbtn__button {
@@ -2180,7 +2221,8 @@
     }
 }
 .rfipdropdown--blue {
-    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22),
+        0 19px 76px rgba(0, 0, 0, 0.3);
     box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
     color: #424242;
     background-color: #fff;
@@ -2314,13 +2356,17 @@
     background-color: #fff;
     border: 1px solid #7986cb;
     &:active {
-        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
-        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
         border: 1px solid #5c6bc0;
     }
     &:focus {
-        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
-        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
         border: 1px solid #5c6bc0;
     }
     .rfipbtn__button {
@@ -2357,7 +2403,8 @@
     }
 }
 .rfipdropdown--indigo {
-    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22),
+        0 19px 76px rgba(0, 0, 0, 0.3);
     box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
     color: #424242;
     background-color: #fff;
@@ -2491,13 +2538,17 @@
     background-color: #fff;
     border: 1px solid #4fc3f7;
     &:active {
-        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
-        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
         border: 1px solid #29b6f6;
     }
     &:focus {
-        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
-        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
         border: 1px solid #29b6f6;
     }
     .rfipbtn__button {
@@ -2534,7 +2585,8 @@
     }
 }
 .rfipdropdown--lightblue {
-    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22),
+        0 19px 76px rgba(0, 0, 0, 0.3);
     box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
     color: #424242;
     background-color: #fff;
@@ -2668,13 +2720,17 @@
     background-color: #fff;
     border: 1px solid #f06292;
     &:active {
-        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
-        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
         border: 1px solid #ec407a;
     }
     &:focus {
-        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
-        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
         border: 1px solid #ec407a;
     }
     .rfipbtn__button {
@@ -2711,7 +2767,8 @@
     }
 }
 .rfipdropdown--pink {
-    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22),
+        0 19px 76px rgba(0, 0, 0, 0.3);
     box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
     color: #424242;
     background-color: #fff;
@@ -2845,13 +2902,17 @@
     background-color: #fff;
     border: 1px solid #ffb74d;
     &:active {
-        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
-        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
         border: 1px solid #ffa726;
     }
     &:focus {
-        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
-        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
         border: 1px solid #ffa726;
     }
     .rfipbtn__button {
@@ -2888,7 +2949,8 @@
     }
 }
 .rfipdropdown--orange {
-    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22),
+        0 19px 76px rgba(0, 0, 0, 0.3);
     box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
     color: #424242;
     background-color: #fff;
@@ -3022,13 +3084,17 @@
     background-color: #fff;
     border: 1px solid #ba68c8;
     &:active {
-        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
-        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
         border: 1px solid #ab47bc;
     }
     &:focus {
-        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
-        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
         border: 1px solid #ab47bc;
     }
     .rfipbtn__button {
@@ -3065,7 +3131,8 @@
     }
 }
 .rfipdropdown--purple {
-    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22),
+        0 19px 76px rgba(0, 0, 0, 0.3);
     box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
     color: #424242;
     background-color: #fff;
@@ -3199,13 +3266,17 @@
     background-color: #fff;
     border: 1px solid #e57373;
     &:active {
-        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
-        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
         border: 1px solid #ef5350;
     }
     &:focus {
-        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
-        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
         border: 1px solid #ef5350;
     }
     .rfipbtn__button {
@@ -3242,7 +3313,8 @@
     }
 }
 .rfipdropdown--red {
-    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22),
+        0 19px 76px rgba(0, 0, 0, 0.3);
     box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
     color: #424242;
     background-color: #fff;
@@ -3376,13 +3448,17 @@
     background-color: #fff;
     border: 1px solid #4db6ac;
     &:active {
-        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
-        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
         border: 1px solid #26a69a;
     }
     &:focus {
-        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
-        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+        -webkit-box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24),
+            0 1.5px 6px rgba(0, 0, 0, 0.12);
         border: 1px solid #26a69a;
     }
     .rfipbtn__button {
@@ -3419,7 +3495,8 @@
     }
 }
 .rfipdropdown--teal {
-    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22),
+        0 19px 76px rgba(0, 0, 0, 0.3);
     box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
     color: #424242;
     background-color: #fff;

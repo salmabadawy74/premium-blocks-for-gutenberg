@@ -1,7 +1,7 @@
 import PbgIcon from "../icons";
 import attributes from './attributes'
 const { __ } = wp.i18n;
-import edit from './edit'
+import edit from './edit';
 
 const { registerBlockType } = wp.blocks;
 

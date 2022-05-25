@@ -52,6 +52,7 @@ class Animation extends Component {
         if (typeof uniqueId !== 'undefined') {
             const { isAnimate } = this.state
             const blockId = $(`.premium-blocks-${uniqueId}`)
+            console.log(blockId)
             if (isAnimate && value.repeat !== 'once') {
                 blockId.css({ 'animation-name': '' })
             } else {

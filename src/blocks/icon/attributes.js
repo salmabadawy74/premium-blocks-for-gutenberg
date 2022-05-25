@@ -208,15 +208,15 @@ const attributes = {
     },
     hideDesktop: {
         type: 'boolean',
-        default: false
+        default: 'false'
     },
     hideTablet: {
         type: 'boolean',
-        default: false
+        default: 'false'
     },
     hideMobile: {
         type: 'boolean',
-        default: false
+        default: 'false'
     },
     backgroundType: {
         type: "string",

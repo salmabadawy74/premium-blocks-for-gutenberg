@@ -1,0 +1,86 @@
+.premium-title-style7-stripe__wrap {
+    justify-content: center;
+    order: initial;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    -js-display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: flex;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.premium-title-style7-stripe-span {
+    background-color: #6ec1e4;
+    width: 120px;
+    height: 5px;
+}
+.premium-title-style7-inner-title {
+    -js-display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.premium-title-style7-inner-title .premium-title-text-title {
+    margin: 0;
+}
+.after .premium-title-style7-inner-title {
+    flex-direction: row-reverse;
+}
+.premium-title .top .premium-title-style7-inner-title {
+    flex-direction: column;
+}
+.premium-title .style1 .premium-title-center,
+.premium-title .style2 .premium-title-center,
+.premium-title .style5 .premium-title-center,
+.premium-title .style6 .premium-title-center,
+.premium-title .style8 .premium-title-center,
+.premium-title .style9 .premium-title-center {
+    align-items: center !important;
+}
+.premium-title .style1 .premium-title-left,
+.premium-title .style2 .premium-title-left,
+.premium-title .style5 .premium-title-left,
+.premium-title .style6 .premium-title-left,
+.premium-title .style8 .premium-title-left,
+.premium-title .style9 .premium-title-left {
+    align-items: flex-start !important;
+}
+.premium-title .style1 .premium-title-right,
+.premium-title .style2 .premium-title-right,
+.premium-title .style5 .premium-title-right,
+.premium-title .style6 .premium-title-right,
+.premium-title .style8 .premium-title-right,
+.premium-title .style9 .premium-title-right {
+    align-items: flex-end !important;
+}
+.premium-title .style7 .premium-title-center .premium-title-icon {
+    align-self: center !important;
+}
+.premium-title .style7 .premium-title-left .premium-title-icon {
+    align-self: flex-start !important;
+}
+.premium-title .style7 .premium-title-right .premium-title-icon {
+    align-self: flex-end !important;
+}
+.premium-title .style2 {
+    overflow: hidden;
+}
+.premium-title-style7__wrap .premium-stripe-bottom {
+    order: 2;
+}
+.premium-stripe-left {
+    justify-content: flex-start !important;
+}
+.premium-stripe-right {
+    justify-content: flex-end !important;
+}

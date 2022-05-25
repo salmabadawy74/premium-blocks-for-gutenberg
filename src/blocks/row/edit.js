@@ -14,7 +14,8 @@ import PremiumBorder from "../../components/premium-border";
 import PremiumShadow from "../../components/PremiumShadow";
 import InsideTabs from '../../components/InsideTabs';
 import InsideTab from '../../components/InsideTab';
-import Shape from '../../components/premium-shape'
+import Shape from '../../components/premium-shape';
+import Animation from '../../components/Animation'
 const colOption = [
     { label: '100', columns: 1, layout: { Desktop: [100], Tablet: [100], Mobile: [100] } },
     { label: '50/50', columns: 2, layout: { Desktop: [50, 50], Tablet: [100, 100], Mobile: [100, 100] } },

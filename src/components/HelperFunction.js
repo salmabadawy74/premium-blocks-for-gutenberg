@@ -53,3 +53,10 @@ export const marginCss = (value, device) => {
         marginLeft: value[device]['left'] && value[device]['left'] + value.unit,
     }
 }
+export const animationAttr = (data) => {
+    if (typeof data !== 'undefined' && typeof data.name !== 'undefined' && data.openAnimation) {
+        return { 'data-premiumanimation': JSON.stringify(data) }
+    } else {
+        return {}
+    }
+}

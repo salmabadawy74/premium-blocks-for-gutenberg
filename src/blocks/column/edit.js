@@ -402,14 +402,12 @@ class PremiumColumn extends Component {
                         onResize={(event, direction, elt, delta) => this.onResize(event, direction, elt, delta)}
                         onResizeStop={(event, direction, elt, delta) => this.onResizeStop(event, direction, elt, delta)}
                         onResizeStart={(event, direction, elt) => this.onResizeStartEvent(event, direction, elt)} >
-                        <div className={`qubely-column qubely-column-admin qubely-block-${uniqueId}${className ? ` ${className}` : ''}`} data-column-width={this.props.attributes.colWidth.Desktop}>
+                        <div className={`qubely-column qubely-column-admin premium-blocks-${this.props.clientId} qubely-block-${uniqueId}${className ? ` ${className}` : ''}`} data-column-width={this.props.attributes.colWidth.Desktop}>
                             <div className={`qubely-column-inner`} style={{
                                 ...gradientBackground(columnBackground),
                                 ...borderCss(columnBorder, this.props.deviceType),
                                 ...padddingCss(columnPadding, this.props.deviceType),
                                 ...marginCss(columnMargin, this.props.deviceType)
-
-
                             }}>
                                 <InnerBlocks
                                     templateLock={false}

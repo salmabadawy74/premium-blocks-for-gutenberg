@@ -61,13 +61,17 @@ const PremiumBorder = (props) => {
                             )
                         })}
                     </div>
-                    {("none" != borderType) &&
-                        <Tooltip text={__('Clear')}>
-                            <div className="premium-blocks-border-clear__container">
-                                <span className="premium-blocks-border-clear" onClick={() => onChangeBorder("borderType", 'none')} role="button"><i className="fas fa-undo" /></span>
-                            </div>
-                        </Tooltip>
-                    }
+
+                    <div className="premium-spacing-btn-reset-wrap">
+                        <button
+                            className="premium-reset-btn "
+                            disabled={"none" === borderType}
+
+                            onClick={() => onChangeBorder("borderType", 'none')}
+
+                        ></button>
+                    </div>
+
                 </div >
                 {"none" != borderType && (
                     <SpacingControl
@@ -98,7 +102,7 @@ const PremiumBorder = (props) => {
                     onChange={(value) => onChangeBorder('borderRadius', { ...value })}
                 />
             </Fragment>
-        </div>
+        </div >
     );
 
 }
