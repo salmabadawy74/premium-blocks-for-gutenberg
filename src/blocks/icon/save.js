@@ -26,7 +26,7 @@ const save = props => {
     } = props.attributes;
 
     const mainClasses = classnames(className);
-    console.log(mainClasses)
+
     return (
         <div
             className={`${mainClasses}__container ${hideDesktop} ${hideTablet} ${hideMobile}`}

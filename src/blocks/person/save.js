@@ -39,7 +39,10 @@ const save = props => {
         socialIconBorder,
         descTypography,
         titleTypography,
-        nameTypography
+        nameTypography,
+        nameShadow,
+        titleShadow,
+        descShadow
     } = props.attributes;
 
 
@@ -105,13 +108,13 @@ const save = props => {
                                 style={{
                                     color: nameStyles[0].nameColor,
                                     alignSelf: nameV,
-                                    fontSize: `${nameTypography.fontSize[this.props.deviceType] || 20}${nameTypography.fontSize.unit}`,
+                                    fontSize: `${nameTypography.fontSize[props.deviceType] || 20}${nameTypography.fontSize.unit}`,
                                     letterSpacing: nameTypography.letterSpacing + "px",
                                     textTransform: nameTypography.textTransform ? "uppercase" : "none",
                                     fontStyle: nameTypography.fontStyle,
                                     fontWeight: nameTypography.fontWeight,
                                     lineHeight: nameTypography.lineHeight + "px",
-                                    textShadow: `${nameStyles[0].nameshadowHorizontal}px ${nameStyles[0].nameshadowVertical}px ${nameStyles[0].nameshadowBlur}px ${nameStyles[0].nameshadowColor}`
+                                    textShadow: `${nameShadow.horizontal}px ${nameShadow.vertical}px ${nameShadow.blur}px ${nameShadow.color}`
                                 }}
                             >
                                 {value.name}
@@ -125,13 +128,13 @@ const save = props => {
                                 style={{
                                     color: titleStyles[0].titleColor,
                                     alignSelf: titleV,
-                                    fontSize: `${titleTypography.fontSize[this.props.deviceType] || 20}${titleTypography.fontSize.unit}`,
+                                    fontSize: `${titleTypography.fontSize[props.deviceType] || 20}${titleTypography.fontSize.unit}`,
                                     letterSpacing: titleTypography.letterSpacing + "px",
                                     textTransform: titleTypography.textTransform ? "uppercase" : "none",
                                     fontStyle: titleTypography.fontStyle,
                                     fontWeight: titleTypography.fontWeight,
                                     lineHeight: titleTypography.lineHeight + "px",
-                                    textShadow: `${titleStyles[0].titleshadowHorizontal}px ${titleStyles[0].titleshadowVertical}px ${titleStyles[0].titleshadowBlur}px ${titleStyles[0].titleshadowColor}`,
+                                    textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`
                                 }}
                             >
                                 {value.title}
@@ -145,13 +148,13 @@ const save = props => {
                                 style={{
                                     color: descStyles[0].descColor,
                                     alignSelf: descV,
-                                    fontSize: `${descTypography.fontSize[this.props.deviceType] || 20}${descTypography.fontSize.unit}`,
+                                    fontSize: `${descTypography.fontSize[props.deviceType] || 20}${descTypography.fontSize.unit}`,
                                     letterSpacing: descTypography.letterSpacing + "px",
                                     textTransform: descTypography.textTransform ? "uppercase" : "none",
                                     fontStyle: descTypography.fontStyle,
                                     fontWeight: descTypography.fontWeight,
                                     lineHeight: descTypography.lineHeight + "px",
-                                    textShadow: `${descStyles[0].descshadowHorizontal}px ${descStyles[0].descshadowVertical}px ${descStyles[0].descshadowBlur}px ${descStyles[0].descshadowColor}`,
+                                    textShadow: `${descShadow.horizontal}px ${descShadow.vertical}px ${descShadow.blur}px ${descShadow.color}`
                                 }}
                             >
                                 {value.desc}

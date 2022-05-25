@@ -307,7 +307,7 @@ const attributes = {
     titleTypography: {
         type: "object",
         default: {
-            "fontWeight": '',
+            "fontWeight": 500,
             'fontStyle': '',
             'textTransform': '',
             'letterSpacing': '',
@@ -339,7 +339,7 @@ const attributes = {
     nameTypography: {
         type: "object",
         default: {
-            "fontWeight": '',
+            "fontWeight": 500,
             'fontStyle': '',
             'textTransform': '',
             'letterSpacing': '',
@@ -351,6 +351,33 @@ const attributes = {
                 unit: 'px'
             }
         }
-    }
+    },
+    titleShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': ''
+        }
+    },
+    nameShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': ''
+        }
+    },
+    descShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': ''
+        }
+    },
 }
 export default attributes
