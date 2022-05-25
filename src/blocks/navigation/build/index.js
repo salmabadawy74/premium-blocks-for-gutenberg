@@ -5418,7 +5418,7 @@ function Navigation(_ref) {
     isOpen: isResponsiveMenuOpen,
     isResponsive: isResponsive,
     isHiddenByDefault: 'always' === overlayMenu,
-    styles: {
+    styles: isResponsiveMenuOpen ? {
       borderTopWidth: overlayMenuBorder === null || overlayMenuBorder === void 0 ? void 0 : (_overlayMenuBorder$bo = overlayMenuBorder.borderWidth) === null || _overlayMenuBorder$bo === void 0 ? void 0 : (_overlayMenuBorder$bo2 = _overlayMenuBorder$bo[deviceType]) === null || _overlayMenuBorder$bo2 === void 0 ? void 0 : _overlayMenuBorder$bo2.top,
       borderRightWidth: overlayMenuBorder === null || overlayMenuBorder === void 0 ? void 0 : (_overlayMenuBorder$bo3 = overlayMenuBorder.borderWidth) === null || _overlayMenuBorder$bo3 === void 0 ? void 0 : (_overlayMenuBorder$bo4 = _overlayMenuBorder$bo3[deviceType]) === null || _overlayMenuBorder$bo4 === void 0 ? void 0 : _overlayMenuBorder$bo4.right,
       borderBottomWidth: overlayMenuBorder === null || overlayMenuBorder === void 0 ? void 0 : (_overlayMenuBorder$bo5 = overlayMenuBorder.borderWidth) === null || _overlayMenuBorder$bo5 === void 0 ? void 0 : (_overlayMenuBorder$bo6 = _overlayMenuBorder$bo5[deviceType]) === null || _overlayMenuBorder$bo6 === void 0 ? void 0 : _overlayMenuBorder$bo6.bottom,
@@ -5429,7 +5429,7 @@ function Navigation(_ref) {
       borderBottomRightRadius: `${(overlayMenuBorder === null || overlayMenuBorder === void 0 ? void 0 : (_overlayMenuBorder$bo15 = overlayMenuBorder.borderRadius) === null || _overlayMenuBorder$bo15 === void 0 ? void 0 : (_overlayMenuBorder$bo16 = _overlayMenuBorder$bo15[deviceType]) === null || _overlayMenuBorder$bo16 === void 0 ? void 0 : _overlayMenuBorder$bo16.left) || 0}px`,
       borderColor: overlayMenuBorder === null || overlayMenuBorder === void 0 ? void 0 : overlayMenuBorder.borderColor,
       borderStyle: overlayMenuBorder === null || overlayMenuBorder === void 0 ? void 0 : overlayMenuBorder.borderType
-    }
+    } : {}
   }, isEntityAvailable && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_inner_blocks__WEBPACK_IMPORTED_MODULE_18__["default"], {
     clientId: clientId,
     hasCustomPlaceholder: !!CustomPlaceholder,

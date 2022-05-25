@@ -984,7 +984,6 @@ function Navigation({
 						<Spinner className="premium-navigation__loading-indicator" />
 					</TagName>
 				)}
-
 				{!isLoading && (
 					<TagName {...blockProps}>
 						<style
@@ -1000,7 +999,7 @@ function Navigation({
 							isOpen={isResponsiveMenuOpen}
 							isResponsive={isResponsive}
 							isHiddenByDefault={'always' === overlayMenu}
-							styles={{
+							styles={isResponsiveMenuOpen ? {
 								borderTopWidth: overlayMenuBorder?.borderWidth?.[deviceType]?.top,
 								borderRightWidth: overlayMenuBorder?.borderWidth?.[deviceType]?.right,
 								borderBottomWidth: overlayMenuBorder?.borderWidth?.[deviceType]?.bottom,
@@ -1011,7 +1010,7 @@ function Navigation({
 								borderBottomRightRadius: `${overlayMenuBorder?.borderRadius?.[deviceType]?.left || 0}px`,
 								borderColor: overlayMenuBorder?.borderColor,
 								borderStyle: overlayMenuBorder?.borderType
-							}}
+							} : {}}
 						>
 							{isEntityAvailable && (
 								<NavigationInnerBlocks

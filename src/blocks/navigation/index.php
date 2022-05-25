@@ -78,7 +78,7 @@ function get_premium_navigation_css( $attributes, $unique_id ) {
 		$overlay_menu_border_width  = $attributes['overlayMenuBorder']['borderWidth'];
 		$overlay_menu_border_radius = $attributes['overlayMenuBorder']['borderRadius'];
 
-		$css->set_selector( '#' . $unique_id );
+		$css->set_selector( '#' . $unique_id . ' .premium-navigation__responsive-container.is-menu-open' );
 		$css->add_property( 'border-style', $css->render_color( $overlay_menu_border['borderType'] ) );
 		$css->add_property( 'border-top-width', $css->get_responsive_value( $overlay_menu_border_width, 'top', 'Desktop', 'px' ) );
 		$css->add_property( 'border-right-width', $css->get_responsive_value( $overlay_menu_border_width, 'right', 'Desktop', 'px' ) );
@@ -225,7 +225,7 @@ function get_premium_navigation_css( $attributes, $unique_id ) {
 			$overlay_menu_border        = $attributes['overlayMenuBorder'];
 			$overlay_menu_border_width  = $attributes['overlayMenuBorder']['borderWidth'];
 			$overlay_menu_border_radius = $attributes['overlayMenuBorder']['borderRadius'];
-			$css->set_selector( '#' . $unique_id );
+			$css->set_selector( '#' . $unique_id . ' .premium-navigation__responsive-container.is-menu-open' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $overlay_menu_border_width, 'top', 'Tablet', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $overlay_menu_border_width, 'right', 'Tablet', 'px' ) );
 			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $overlay_menu_border_width, 'bottom', 'Tablet', 'px' ) );
@@ -309,7 +309,7 @@ function get_premium_navigation_css( $attributes, $unique_id ) {
 			$overlay_menu_border        = $attributes['overlayMenuBorder'];
 			$overlay_menu_border_width  = $attributes['overlayMenuBorder']['borderWidth'];
 			$overlay_menu_border_radius = $attributes['overlayMenuBorder']['borderRadius'];
-			$css->set_selector( '#' . $unique_id );
+			$css->set_selector( '#' . $unique_id . ' .premium-navigation__responsive-container.is-menu-open' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $overlay_menu_border_width, 'top', 'Mobile', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $overlay_menu_border_width, 'right', 'Mobile', 'px' ) );
 			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $overlay_menu_border_width, 'bottom', 'Mobile', 'px' ) );
