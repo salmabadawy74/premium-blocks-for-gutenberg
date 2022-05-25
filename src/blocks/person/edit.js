@@ -14,13 +14,15 @@ import { SortableContainer, SortableElement, arrayMove } from 'react-sortable-ho
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
 import RadioComponent from '../../components/radio-control';
+import InsideTabs from '../../components/InsideTabs'
+import InsideTab from '../../components/InsideTab';
 import { gradientBackground, borderCss, padddingCss, marginCss } from '../../components/HelperFunction'
 import times from "lodash/times"
 
 const { withSelect } = wp.data
 
 const { __ } = wp.i18n;
-const { Component } = wp.element;
+const { Component, Fragment } = wp.element;
 
 const {
     PanelBody,
@@ -139,7 +141,11 @@ class edit extends Component {
             descShadow,
             titleTag,
             nameTag,
-            namePadding
+            namePadding,
+            titlePadding,
+            titleMargin,
+            descPadding,
+            contentPadding
         } = this.props.attributes;
 
         const HOVER = [
@@ -487,6 +493,7 @@ class edit extends Component {
                     <div
                         className={`premium-person__info`}
                         style={{
+                            ...padddingCss(contentPadding, this.props.deviceType),
                             background: contentColor ? contentColor : "#f2f2f2",
                             bottom: effectPersonStyle === 'effect1' ? bottomInfo + "px" : ""
                         }}
@@ -523,6 +530,8 @@ class edit extends Component {
                         <div
                             className={`premium-person__title_wrap`}
                             style={{
+                                ...marginCss(titleMargin, this.props.deviceType),
+                                ...padddingCss(titlePadding, this.props.deviceType),
                                 fontSize: `${titleTypography.fontSize[this.props.deviceType] || ''}${titleTypography.fontSize.unit}`,
                             }}
                         >
@@ -551,6 +560,7 @@ class edit extends Component {
                         <div
                             className={`premium-person__desc_wrap`}
                             style={{
+                                ...padddingCss(descPadding, this.props.deviceType),
                                 fontSize: `${descTypography.fontSize[this.props.deviceType] || 20}${descTypography.fontSize.unit}`,
                             }}
                         >
@@ -817,11 +827,6 @@ class edit extends Component {
                                 className="premium-panel-body"
                                 initialOpen={false}
                             >
-                                <PremiumTypo
-                                    components={["responsiveSize", "weight", "line", "style", "upper", "spacing"]}
-                                    value={titleTypography}
-                                    onChange={newValue => setAttributes({ titleTypography: newValue })}
-                                />
                                 <div className="premium-control-toggle">
                                     <AdvancedPopColorControl
                                         label={__("Color", 'premium-block-for-gutenberg')}
@@ -834,10 +839,29 @@ class edit extends Component {
                                         }
                                     />
                                 </div>
+                                <PremiumTypo
+                                    components={["responsiveSize", "weight", "line", "style", "upper", "spacing"]}
+                                    value={titleTypography}
+                                    onChange={newValue => setAttributes({ titleTypography: newValue })}
+                                />
                                 <PremiumShadow
                                     label={__("Text Shadow", "premium-blocks-for-gutenberg")}
                                     value={titleShadow}
                                     onChange={(value) => setAttributes({ titleShadow: value })}
+                                />
+                                <SpacingControl
+                                    label={__('Margin', 'premium-blocks-for-gutenberg')}
+                                    value={titleMargin}
+                                    onChange={(value) => setAttributes({ titleMargin: value })}
+                                    showUnits={true}
+                                    responsive={true}
+                                />
+                                <SpacingControl
+                                    label={__('Padding', 'premium-blocks-for-gutenberg')}
+                                    value={titlePadding}
+                                    onChange={(value) => setAttributes({ titlePadding: value })}
+                                    showUnits={true}
+                                    responsive={true}
                                 />
                             </PanelBody>
                             <PanelBody
@@ -845,11 +869,6 @@ class edit extends Component {
                                 className="premium-panel-body"
                                 initialOpen={false}
                             >
-                                <PremiumTypo
-                                    components={["responsiveSize", "weight", "line", "style", "upper", "spacing"]}
-                                    value={descTypography}
-                                    onChange={newValue => setAttributes({ descTypography: newValue })}
-                                />
                                 <div className="premium-control-toggle">
                                     <AdvancedPopColorControl
                                         label={__("Color", 'premium-block-for-gutenberg')}
@@ -862,10 +881,22 @@ class edit extends Component {
                                         }
                                     />
                                 </div>
+                                <PremiumTypo
+                                    components={["responsiveSize", "weight", "line", "style", "upper", "spacing"]}
+                                    value={descTypography}
+                                    onChange={newValue => setAttributes({ descTypography: newValue })}
+                                />
                                 <PremiumShadow
                                     label={__("Text Shadow", "premium-blocks-for-gutenberg")}
                                     value={descShadow}
                                     onChange={(value) => setAttributes({ descShadow: value })}
+                                />
+                                <SpacingControl
+                                    label={__('Padding', 'premium-blocks-for-gutenberg')}
+                                    value={descPadding}
+                                    onChange={(value) => setAttributes({ descPadding: value })}
+                                    showUnits={true}
+                                    responsive={true}
                                 />
                             </PanelBody>
                             {multiPersonChecked > 1 ? (multiPersonContent.map(i => i.socialIcon && (<PanelBody
@@ -884,7 +915,48 @@ class edit extends Component {
                                     units={['px', 'em', 'rem']}
                                     defaultValue={20}
                                 />
-                                <div className="premium-control-toggle">
+                                <InsideTabs>
+                                    <InsideTab tabTitle={__('Normal')}>
+                                        <Fragment>
+                                            <AdvancedPopColorControl
+                                                label={__("Social Icon Color", 'premium-block-for-gutenberg')}
+                                                colorValue={socialIconStyles[0].socialIconColor}
+                                                colorDefault={''}
+                                                onColorChange={newValue =>
+                                                    saveSocialIconStyles({
+                                                        socialIconColor: newValue
+                                                    })
+                                                }
+                                            />
+                                            <AdvancedPopColorControl
+                                                label={__("Social Icon Background Color", 'premium-block-for-gutenberg')}
+                                                colorValue={socialIconStyles[0].socialIconBackgroundColor}
+                                                colorDefault={''}
+                                                onColorChange={newValue =>
+                                                    saveSocialIconStyles({
+                                                        socialIconBackgroundColor: newValue
+                                                    })
+                                                }
+                                            />
+                                        </Fragment>
+                                    </InsideTab>
+                                    <InsideTab tabTitle={__('Hover')}>
+                                        <Fragment>
+                                            <AdvancedPopColorControl
+                                                label={__("Social Icon Hover Color", 'premium-block-for-gutenberg')}
+                                                colorValue={socialIconStyles[0].socialIconHoverColor}
+                                                colorDefault={''}
+                                                onColorChange={newValue =>
+                                                    saveSocialIconStyles({
+                                                        socialIconHoverColor: newValue
+                                                    })
+                                                }
+                                            />
+                                        </Fragment>
+                                    </InsideTab>
+                                </InsideTabs>
+                                <hr />
+                                {/* <div className="premium-control-toggle">
                                     <AdvancedPopColorControl
                                         label={__("Social Icon Color", 'premium-block-for-gutenberg')}
                                         colorValue={socialIconStyles[0].socialIconColor}
@@ -917,7 +989,7 @@ class edit extends Component {
                                             })
                                         }
                                     />
-                                </div>
+                                </div> */}
                                 <ToggleControl
                                     label={__("Brands Default Colors", 'premium-block-for-gutenberg')}
                                     checked={socialIconStyles[0].defaultIconColor}
@@ -928,6 +1000,7 @@ class edit extends Component {
                                     value={socialIconBorder}
                                     onChange={(value) => setAttributes({ socialIconBorder: value })}
                                 />
+                                <hr />
                                 <SpacingControl
                                     label={__('Margin', 'premium-blocks-for-gutenberg')}
                                     value={socialIconMargin}
@@ -1047,6 +1120,13 @@ class edit extends Component {
                                     />
                                     : ""
                                 }
+                                <SpacingControl
+                                    label={__('Padding', 'premium-blocks-for-gutenberg')}
+                                    value={contentPadding}
+                                    onChange={(value) => setAttributes({ contentPadding: value })}
+                                    showUnits={true}
+                                    responsive={true}
+                                />
                             </PanelBody>
                         </InspectorTab>
                         <InspectorTab key={'advance'}></InspectorTab>
