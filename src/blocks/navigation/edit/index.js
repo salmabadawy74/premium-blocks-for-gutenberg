@@ -697,7 +697,7 @@ function Navigation({
 							</PanelBody>
 						</InspectorTab>
 						<InspectorTab key={'style'}>
-							<PanelBody title={__('Menu Settings')}>
+							<PanelBody title={__('Menu')}>
 								<div className='menu-styles'>
 									<label>{__('Hover Effect', 'premium-blocks-for-gutenberg')}</label>
 									<select style={{ display: "block", width: "100%" }} onChange={(e) => setAttributes({ menuStyle: e.target.value })} value={menuStyle}>
@@ -770,7 +770,7 @@ function Navigation({
 									onChange={(value) => setAttributes({ menuBorder: value })}
 								/>
 							</PanelBody>
-							<PanelBody title={__('Overlay Menu Colors')}>
+							<PanelBody title={__('Overlay Menu')}>
 								<TabPanel
 									className="premium-color-tabpanel"
 									activeClass="active-tab"
@@ -870,7 +870,7 @@ function Navigation({
 									>
 										<PremiumTypo
 											components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
-											value={typography}
+											value={submenuTypography}
 											onChange={newValue => setAttributes({ submenuTypography: newValue })}
 										/>
 									</PanelBody>
@@ -1009,7 +1009,8 @@ function Navigation({
 								borderTopRightRadius: `${overlayMenuBorder?.borderRadius?.[deviceType]?.right || 0}px`,
 								borderBottomLeftRadius: `${overlayMenuBorder?.borderRadius?.[deviceType]?.bottom || 0}px`,
 								borderBottomRightRadius: `${overlayMenuBorder?.borderRadius?.[deviceType]?.left || 0}px`,
-								borderColor: overlayMenuBorder?.borderColor
+								borderColor: overlayMenuBorder?.borderColor,
+								borderStyle: overlayMenuBorder?.borderType
 							}}
 						>
 							{isEntityAvailable && (

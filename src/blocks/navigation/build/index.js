@@ -5136,7 +5136,7 @@ function Navigation(_ref) {
   }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_14__["default"], {
     key: 'style'
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Menu Settings')
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Menu')
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "menu-styles"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Hover Effect', 'premium-blocks-for-gutenberg')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("select", {
@@ -5208,7 +5208,7 @@ function Navigation(_ref) {
       menuBorder: value
     })
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Overlay Menu Colors')
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Overlay Menu')
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.TabPanel, {
     className: "premium-color-tabpanel",
     activeClass: "active-tab",
@@ -5307,7 +5307,7 @@ function Navigation(_ref) {
     initialOpen: false
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_12__["default"], {
     components: ["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"],
-    value: typography,
+    value: submenuTypography,
     onChange: newValue => setAttributes({
       submenuTypography: newValue
     })
@@ -5427,7 +5427,8 @@ function Navigation(_ref) {
       borderTopRightRadius: `${(overlayMenuBorder === null || overlayMenuBorder === void 0 ? void 0 : (_overlayMenuBorder$bo11 = overlayMenuBorder.borderRadius) === null || _overlayMenuBorder$bo11 === void 0 ? void 0 : (_overlayMenuBorder$bo12 = _overlayMenuBorder$bo11[deviceType]) === null || _overlayMenuBorder$bo12 === void 0 ? void 0 : _overlayMenuBorder$bo12.right) || 0}px`,
       borderBottomLeftRadius: `${(overlayMenuBorder === null || overlayMenuBorder === void 0 ? void 0 : (_overlayMenuBorder$bo13 = overlayMenuBorder.borderRadius) === null || _overlayMenuBorder$bo13 === void 0 ? void 0 : (_overlayMenuBorder$bo14 = _overlayMenuBorder$bo13[deviceType]) === null || _overlayMenuBorder$bo14 === void 0 ? void 0 : _overlayMenuBorder$bo14.bottom) || 0}px`,
       borderBottomRightRadius: `${(overlayMenuBorder === null || overlayMenuBorder === void 0 ? void 0 : (_overlayMenuBorder$bo15 = overlayMenuBorder.borderRadius) === null || _overlayMenuBorder$bo15 === void 0 ? void 0 : (_overlayMenuBorder$bo16 = _overlayMenuBorder$bo15[deviceType]) === null || _overlayMenuBorder$bo16 === void 0 ? void 0 : _overlayMenuBorder$bo16.left) || 0}px`,
-      borderColor: overlayMenuBorder === null || overlayMenuBorder === void 0 ? void 0 : overlayMenuBorder.borderColor
+      borderColor: overlayMenuBorder === null || overlayMenuBorder === void 0 ? void 0 : overlayMenuBorder.borderColor,
+      borderStyle: overlayMenuBorder === null || overlayMenuBorder === void 0 ? void 0 : overlayMenuBorder.borderType
     }
   }, isEntityAvailable && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_inner_blocks__WEBPACK_IMPORTED_MODULE_18__["default"], {
     clientId: clientId,
