@@ -15,13 +15,10 @@
         "border": {
             "type": "object",
             "default": {
-                "type": "",
-                "top": "",
-                "right": "",
-                "bottom": "",
-                "left": "",
-                "color": "",
-                "radius": ""
+                "borderType": "",
+                "borderColor": "",
+                "borderWidth": "",
+                "borderRadius": ""
             }
         },
         "colors": {
@@ -89,27 +86,37 @@
         "typography": {
             "type": "object",
             "default": {
-                "size": null,
-                "weight": 400,
-                "family": "Default",
-                "letterSpacing": "",
+                "fontWeight": "",
+                "fontStyle": "",
                 "textTransform": "",
-                "textDecoration": "",
+                "letterSpacing": "",
+                "fontFamily": "",
                 "lineHeight": "",
-                "style": ""
+                "textDecoration": "",
+                "fontSize": {
+                    "Desktop": "",
+                    "Tablet": "",
+                    "Mobile": "",
+                    "unit": "px"
+                }
             }
         },
         "buttonTypography": {
             "type": "object",
             "default": {
-                "size": null,
-                "weight": 400,
-                "family": "Default",
-                "letterSpacing": "",
+                "fontWeight": "",
+                "fontStyle": "",
                 "textTransform": "",
-                "textDecoration": "",
+                "letterSpacing": "",
+                "fontFamily": "",
                 "lineHeight": "",
-                "style": ""
+                "textDecoration": "",
+                "fontSize": {
+                    "Desktop": "",
+                    "Tablet": "",
+                    "Mobile": "",
+                    "unit": "px"
+                }
             }
         },
         "spacing": {

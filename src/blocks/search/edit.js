@@ -11,35 +11,24 @@ import {
 	BlockControls,
 	InspectorControls,
 	RichText,
-	__experimentalUseBorderProps as useBorderProps,
-	__experimentalUseColorProps as useColorProps,
 	store as blockEditorStore,
 } from '@wordpress/block-editor';
-import { useDispatch, useSelect } from '@wordpress/data';
+import { useDispatch, useSelect, withSelect } from '@wordpress/data';
 import { useEffect, useState } from '@wordpress/element';
 import {
 	ToolbarDropdownMenu,
 	ToolbarGroup,
-	Button,
-	ButtonGroup,
 	ToolbarButton,
 	ResizableBox,
 	PanelBody,
-	BaseControl,
-	__experimentalUseCustomUnits as useCustomUnits,
-	__experimentalUnitControl as UnitControl,
 	TabPanel,
 	SelectControl,
 	RangeControl,
 	ToggleControl,
 } from '@wordpress/components';
-import { useInstanceId } from '@wordpress/compose';
 import { Icon, search } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 import { __unstableStripHTML as stripHTML } from '@wordpress/dom';
-import { store as coreStore, useEntityRecords, useEntityProp } from '@wordpress/core-data';
-// , __experimentalFetchLinkSuggestions as fetchLinkSuggestions, useEntityProp
-
 import fetchLinkSuggestions from './fetchLinkSuggestions';
 
 /**
@@ -58,14 +47,18 @@ import AdvancedPopColorControl from '../../components/Color Control/ColorCompone
 import PremiumBorder from "../../components/premium-border"
 import SpacingComponent from '../../components/premium-responsive-spacing';
 import PremiumTypo from "../../components/premium-typo"
+import InspectorTabs from '../../components/inspectorTabs';
+import InspectorTab from '../../components/inspectorTab';
 const MIN_WIDTH = 220;
-export default function SearchEdit({
+
+function SearchEdit({
 	className,
 	attributes,
 	setAttributes,
 	toggleSelection,
 	isSelected,
 	clientId,
+	deviceType
 }) {
 	const {
 		label,
@@ -119,17 +112,10 @@ export default function SearchEdit({
 	const hasNoButton = 'no-button' === buttonPosition;
 	const hasOnlyButton = 'button-only' === buttonPosition;
 
-	const defaultSize = {
-		desktop: "",
-		tablet: "",
-		mobile: "",
-		unit: "px"
-	};
-
 	let padding = spacing.padding ? spacing.padding : {};
-	const fontSize = typography.size ? typography.size : defaultSize;
+	const fontSize = typography.size ? typography.size : {};
 	let buttonPadding = spacing.buttonPadding ? spacing.buttonPadding : {};
-	const buttonFontSize = buttonTypography.size ? buttonTypography.size : defaultSize;
+	const buttonFontSize = buttonTypography.size ? buttonTypography.size : {};
 
 	const getBlockClassNames = () => {
 		return classnames(
@@ -218,11 +204,6 @@ export default function SearchEdit({
 		setAttributes({ colors: newColors });
 	}
 
-	const borderChange = (value) => {
-		const newBorder = { ...border };
-		setAttributes({ border: { ...newBorder, ...value } })
-	};
-
 	const onChangeSpacing = (value) => {
 		const newSpacing = { ...spacing, ...value };
 		console.log(newSpacing);
@@ -232,26 +213,6 @@ export default function SearchEdit({
 	const onChangePositionSide = (value) => {
 		const newFloatValues = { ...floatValues };
 		setAttributes({ floatValues: { ...newFloatValues, ...value } });
-	}
-
-	const onChangeFontSize = (value, device) => {
-		const newSize = { ...fontSize };
-		newSize[device] = value;
-		setAttributes({ typography: { ...typography, size: newSize } });
-	}
-
-	const onChangeFont = (value, attr) => {
-		setAttributes({ typography: { ...typography, [attr]: value } });
-	}
-
-	const onChangeButtonFontSize = (value, device) => {
-		const newSize = { ...buttonFontSize };
-		newSize[device] = value;
-		setAttributes({ buttonTypography: { ...buttonTypography, size: newSize } });
-	}
-
-	const onChangeButtonFont = (value, attr) => {
-		setAttributes({ buttonTypography: { ...buttonTypography, [attr]: value } });
 	}
 
 	const getPostsByName = async (name) => {
@@ -272,23 +233,27 @@ export default function SearchEdit({
 	const textFieldStyles = {
 		color: colors.text,
 		backgroundColor: colors.background,
-		borderStyle: border.type,
-		borderTopWidth: border.top,
-		borderRightWidth: border.right,
-		borderBottomWidth: border.bottom,
-		borderLeftWidth: border.left,
-		borderRadius: border.radius,
-		borderColor: border.color,
-		paddingTop: `${padding?.Desktop?.top}${padding?.unit}`,
-		paddingRight: `${padding?.Desktop?.right}${padding?.unit}`,
-		paddingBottom: `${padding.Desktop?.bottom}${padding?.unit}`,
-		paddingLeft: `${padding?.Desktop?.left}${padding?.unit}`,
+		borderTopWidth: border?.borderWidth?.[deviceType]?.top,
+		borderRightWidth: border?.borderWidth?.[deviceType]?.right,
+		borderBottomWidth: border?.borderWidth?.[deviceType]?.bottom,
+		borderLeftWidth: border?.borderWidth?.[deviceType]?.left,
+		borderTopLeftRadius: `${border?.borderRadius?.[deviceType]?.top || 0}px`,
+		borderTopRightRadius: `${border?.borderRadius?.[deviceType]?.right || 0}px`,
+		borderBottomLeftRadius: `${border?.borderRadius?.[deviceType]?.bottom || 0}px`,
+		borderBottomRightRadius: `${border?.borderRadius?.[deviceType]?.left || 0}px`,
+		borderColor: border?.borderColor,
+		borderStyle: border?.borderType,
+		paddingTop: `${padding?.[deviceType]?.top}${padding?.unit}`,
+		paddingRight: `${padding?.[deviceType]?.right}${padding?.unit}`,
+		paddingBottom: `${padding?.[deviceType]?.bottom}${padding?.unit}`,
+		paddingLeft: `${padding?.[deviceType]?.left}${padding?.unit}`,
 	};
 
 	const textTypoStyles = {
-		fontSize: `${fontSize.desktop}${fontSize.unit}`,
-		fontFamily: typography.family,
-		fontWeight: typography.weight,
+		fontSize: `${fontSize?.[deviceType]}${fontSize?.unit}`,
+		fontFamily: typography.fontFamily,
+		fontStyle: typography.fontStyle,
+		fontWeight: typography.fontWeight,
 		letterSpacing: typography.letterSpacing,
 		textDecoration: typography.textDecoration,
 		textTransform: typography.textTransform,
@@ -334,13 +299,14 @@ export default function SearchEdit({
 		const butttonStyles = {
 			color: colors.btnText,
 			backgroundColor: colors.btnBackground,
-			paddingTop: `${buttonPadding?.Desktop?.top}${buttonPadding?.unit}`,
-			paddingRight: `${buttonPadding?.Desktop?.right}${buttonPadding?.unit}`,
-			paddingBottom: `${buttonPadding?.Desktop?.bottom}${buttonPadding?.unit}`,
-			paddingLeft: `${buttonPadding?.Desktop?.left}${buttonPadding?.unit}`,
-			fontSize: `${buttonFontSize.desktop}${buttonFontSize.unit}`,
-			fontFamily: buttonTypography.family,
-			fontWeight: buttonTypography.weight,
+			paddingTop: `${buttonPadding?.[deviceType]?.top}${buttonPadding?.unit}`,
+			paddingRight: `${buttonPadding?.[deviceType]?.right}${buttonPadding?.unit}`,
+			paddingBottom: `${buttonPadding?.[deviceType]?.bottom}${buttonPadding?.unit}`,
+			paddingLeft: `${buttonPadding?.[deviceType]?.left}${buttonPadding?.unit}`,
+			fontSize: `${buttonFontSize?.[deviceType]}${buttonFontSize?.unit}`,
+			fontFamily: buttonTypography.fontFamily,
+			fontStyle: buttonTypography.fontStyle,
+			fontWeight: buttonTypography.fontWeight,
 			letterSpacing: buttonTypography.letterSpacing,
 			textDecoration: buttonTypography.textDecoration,
 			textTransform: buttonTypography.textTransform,
@@ -427,323 +393,275 @@ export default function SearchEdit({
 			</BlockControls>
 
 			<InspectorControls>
-				<PanelBody title={__('Display Settings')}>
-					<ToggleControl
-						checked={ajaxSearch}
-						onChange={(value) => {
-							setAttributes({
-								ajaxSearch: value,
-							});
-						}}
-						label={__('Enable Ajax Search')}
-					/>
-					<SelectControl
-						label={__("From Style", 'premium-blocks-for-gutenberg')}
-						options={[
-							{
-								value: "default",
-								label: __("Form", 'premium-blocks-for-gutenberg')
-							},
-							{
-								value: "button",
-								label: __("Button", 'premium-blocks-for-gutenberg')
-							}
-						]}
-						value={formStyle}
-						onChange={style => {
-							setAttributes({
-								buttonPosition: 'button-outside',
-								formStyle: style
-							});
-						}}
-					/>
-					{formStyle === 'button' && (
-						<SelectControl
-							label={__("Button Position", 'premium-blocks-for-gutenberg')}
-							options={[
-								{
-									value: "static",
-									label: __("Static", 'premium-blocks-for-gutenberg')
-								},
-								{
-									value: "float",
-									label: __("Float", 'premium-blocks-for-gutenberg')
-								}
-							]}
-							value={position}
-							onChange={style => setAttributes({ position: style })}
-						/>
-					)}
-					{formStyle === 'button' && position === 'float' && (
-						<>
+				<InspectorTabs tabs={['layout', 'style', 'advance']}>
+					<InspectorTab key={'layout'}>
+						<PanelBody title={__('Display Settings')}>
+							<ToggleControl
+								checked={ajaxSearch}
+								onChange={(value) => {
+									setAttributes({
+										ajaxSearch: value,
+									});
+								}}
+								label={__('Enable Ajax Search')}
+							/>
+						</PanelBody>
+					</InspectorTab>
+					<InspectorTab key={'style'}>
+						<PanelBody title={__('General')}>
 							<SelectControl
-								label={__("Float Position", 'premium-blocks-for-gutenberg')}
+								label={__("From Style", 'premium-blocks-for-gutenberg')}
 								options={[
 									{
-										value: "top-right",
-										label: __("Top Right", 'premium-blocks-for-gutenberg')
+										value: "default",
+										label: __("Form", 'premium-blocks-for-gutenberg')
 									},
 									{
-										value: "top-left",
-										label: __("Top Left", 'premium-blocks-for-gutenberg')
+										value: "button",
+										label: __("Button", 'premium-blocks-for-gutenberg')
+									}
+								]}
+								value={formStyle}
+								onChange={style => {
+									setAttributes({
+										buttonPosition: 'button-outside',
+										formStyle: style
+									});
+								}}
+							/>
+							{formStyle === 'button' && (
+								<SelectControl
+									label={__("Button Position", 'premium-blocks-for-gutenberg')}
+									options={[
+										{
+											value: "static",
+											label: __("Static", 'premium-blocks-for-gutenberg')
+										},
+										{
+											value: "float",
+											label: __("Float", 'premium-blocks-for-gutenberg')
+										}
+									]}
+									value={position}
+									onChange={style => setAttributes({ position: style })}
+								/>
+							)}
+							{formStyle === 'button' && position === 'float' && (
+								<>
+									<SelectControl
+										label={__("Float Position", 'premium-blocks-for-gutenberg')}
+										options={[
+											{
+												value: "top-right",
+												label: __("Top Right", 'premium-blocks-for-gutenberg')
+											},
+											{
+												value: "top-left",
+												label: __("Top Left", 'premium-blocks-for-gutenberg')
+											},
+											{
+												value: "bottom-right",
+												label: __("Bottom Right", 'premium-blocks-for-gutenberg')
+											},
+											{
+												value: "bottom-left",
+												label: __("Bottom Left", 'premium-blocks-for-gutenberg')
+											},
+										]}
+										value={floatPosition}
+										onChange={style => setAttributes({ floatPosition: style })}
+									/>
+									{floatPosition.includes('top') && <RangeControl
+										label={__('Top', 'premium-blocks-for-gutenberg')}
+										value={floatValues.top}
+										onChange={(size) => onChangePositionSide({ top: size })}
+										min={0}
+										max={1000}
+									/>}
+									{floatPosition.includes('bottom') && <RangeControl
+										label={__('Bottom', 'premium-blocks-for-gutenberg')}
+										value={floatValues.bottom}
+										onChange={(size) => onChangePositionSide({ bottom: size })}
+										min={0}
+										max={1000}
+									/>}
+									{floatPosition.includes('right') && <RangeControl
+										label={__('Right', 'premium-blocks-for-gutenberg')}
+										value={floatValues.right}
+										onChange={(size) => onChangePositionSide({ right: size })}
+										min={0}
+										max={1000}
+									/>}
+									{floatPosition.includes('left') && <RangeControl
+										label={__('Left', 'premium-blocks-for-gutenberg')}
+										value={floatValues.left}
+										onChange={(size) => onChangePositionSide({ left: size })}
+										min={0}
+										max={1000}
+									/>}
+								</>
+							)}
+							{formStyle === 'default' && (
+								<PremiumBorder
+									label={__("Border")}
+									value={border}
+									borderType={border.borderType}
+									borderColor={border.borderColor}
+									borderWidth={border.borderWidth}
+									borderRadius={border.borderRadius}
+									onChange={(value) => setAttributes({ border: value })}
+								/>
+							)}
+						</PanelBody>
+						{formStyle === 'default' && (
+							<PanelBody
+								title={__("Input Typography", 'premium-blocks-for-gutenberg')}
+								className="premium-panel-body"
+								initialOpen={false}
+							>
+								<PremiumTypo
+									components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
+									value={typography}
+									onChange={newValue => setAttributes({ submenuTypography: newValue })}
+								/>
+							</PanelBody>
+						)}
+						{!buttonWithIcon && (
+							<PanelBody
+								title={__("Button Typography", 'premium-blocks-for-gutenberg')}
+								className="premium-panel-body"
+								initialOpen={false}
+							>
+								<PremiumTypo
+									components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
+									value={buttonTypography}
+									onChange={newValue => setAttributes({ buttonTypography: newValue })}
+								/>
+							</PanelBody>
+						)}
+						<PanelBody
+							title={__('Spacing', 'premium-blocks-for-gutenberg')}
+							initialOpen={false}
+						>
+							{formStyle === 'default' && (
+								<SpacingComponent value={padding} responsive={true} showUnits={true} label={__('Input Padding')} onChange={(value) => onChangeSpacing({ padding: value })} />
+							)}
+							<SpacingComponent value={buttonPadding} responsive={true} showUnits={true} label={__('Button Padding')} onChange={(value) => onChangeSpacing({ buttonPadding: value })} />
+						</PanelBody>
+						<PanelBody title={__('Colors')}>
+							<TabPanel
+								className="premium-color-tabpanel"
+								activeClass="active-tab"
+								tabs={[
+									{
+										name: "normal",
+										title: "Normal",
+										className: "premium-tab",
 									},
 									{
-										value: "bottom-right",
-										label: __("Bottom Right", 'premium-blocks-for-gutenberg')
-									},
-									{
-										value: "bottom-left",
-										label: __("Bottom Left", 'premium-blocks-for-gutenberg')
+										name: "hover",
+										title: "Hover",
+										className: "premium-tab",
 									},
 								]}
-								value={floatPosition}
-								onChange={style => setAttributes({ floatPosition: style })}
-							/>
-							{floatPosition.includes('top') && <RangeControl
-								label={__('Top', 'premium-blocks-for-gutenberg')}
-								value={floatValues.top}
-								onChange={(size) => onChangePositionSide({ top: size })}
-								min={0}
-								max={1000}
-							/>}
-							{floatPosition.includes('bottom') && <RangeControl
-								label={__('Bottom', 'premium-blocks-for-gutenberg')}
-								value={floatValues.bottom}
-								onChange={(size) => onChangePositionSide({ bottom: size })}
-								min={0}
-								max={1000}
-							/>}
-							{floatPosition.includes('right') && <RangeControl
-								label={__('Right', 'premium-blocks-for-gutenberg')}
-								value={floatValues.right}
-								onChange={(size) => onChangePositionSide({ right: size })}
-								min={0}
-								max={1000}
-							/>}
-							{floatPosition.includes('left') && <RangeControl
-								label={__('Left', 'premium-blocks-for-gutenberg')}
-								value={floatValues.left}
-								onChange={(size) => onChangePositionSide({ left: size })}
-								min={0}
-								max={1000}
-							/>}
-						</>
-					)}
-					{formStyle === 'default' && (
-						<PremiumBorder
-							borderType={border.type}
-							top={border.top}
-							right={border.right}
-							bottom={border.bottom}
-							left={border.left}
-							borderColor={border.color}
-							borderRadius={border.radius}
-							onChangeType={(newType) => borderChange({ type: newType })}
-							onChangeWidth={({ top, right, bottom, left }) => {
-								borderChange({ top, right, bottom, left });
-							}}
-							onChangeColor={(colorValue) => borderChange({ color: colorValue })}
-							onChangeRadius={(newrRadius) => borderChange({ radius: newrRadius })}
-						/>
-					)}
-				</PanelBody>
-				{formStyle === 'default' && (
-					<PanelBody
-						title={__("Input Typography", 'premium-blocks-for-gutenberg')}
-						className="premium-panel-body"
-						initialOpen={false}
-					>
-						<PremiumTypo
-							components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
-							setAttributes={value => onChangeFontSize(value.SizeUnit, 'unit')}
-							fontSizeType={{
-								value: fontSize.unit,
-								label: __("SizeUnit", 'premium-blocks-for-gutenberg'),
-							}}
-							fontSize={fontSize.desktop}
-							fontSizeMobile={fontSize.mobile}
-							fontSizeTablet={fontSize.tablet}
-							onChangeSize={newSize => onChangeFontSize(newSize, 'desktop')}
-							onChangeTabletSize={newSize => onChangeFontSize(newSize, 'tablet')}
-							onChangeMobileSize={newSize => onChangeFontSize(newSize, 'mobile')}
-							fontFamily={typography.family}
-							weight={typography.weight}
-							onChangeWeight={newWeight =>
-								onChangeFont(newWeight, 'weight')
-							}
-							onChangeFamily={(fontFamily) => onChangeFont(fontFamily, 'family')}
-							line={typography.lineHeight}
-							onChangeLine={(lineHeight) => onChangeFont(lineHeight, 'lineHeight')}
-							style={typography.style}
-							onChangeStyle={(newStyle) => onChangeFont(newStyle, 'style')}
-							spacing={typography.letterSpacing}
-							onChangeSpacing={(letterSpacing) => onChangeFont(letterSpacing, 'letterSpacing')}
-							textTransform={typography.textTransform}
-							onChangeTextTransform={(textTransform) => onChangeFont(textTransform, 'textTransform')}
-							textDecoration={typography.textDecoration}
-							onChangeTextDecoration={(textDecoration) => onChangeFont(textDecoration, 'textDecoration')}
-						/>
-					</PanelBody>
-				)}
-				{!buttonWithIcon && (
-					<PanelBody
-						title={__("Button Typography", 'premium-blocks-for-gutenberg')}
-						className="premium-panel-body"
-						initialOpen={false}
-					>
-						<PremiumTypo
-							components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
-							setAttributes={value => onChangeButtonFontSize(value.SizeUnit, 'unit')}
-							fontSizeType={{
-								value: buttonFontSize.unit,
-								label: __("SizeUnit", 'premium-blocks-for-gutenberg'),
-							}}
-							fontSize={buttonFontSize.desktop}
-							fontSizeMobile={buttonFontSize.mobile}
-							fontSizeTablet={buttonFontSize.tablet}
-							onChangeSize={newSize => onChangeButtonFontSize(newSize, 'desktop')}
-							onChangeTabletSize={newSize => onChangeButtonFontSize(newSize, 'tablet')}
-							onChangeMobileSize={newSize => onChangeButtonFontSize(newSize, 'mobile')}
-							fontFamily={buttonTypography.family}
-							weight={buttonTypography.weight}
-							onChangeWeight={newWeight =>
-								onChangeButtonFont(newWeight, 'weight')
-							}
-							onChangeFamily={(fontFamily) => onChangeButtonFont(fontFamily, 'family')}
-							line={buttonTypography.lineHeight}
-							onChangeLine={(lineHeight) => onChangeButtonFont(lineHeight, 'lineHeight')}
-							style={buttonTypography.style}
-							onChangeStyle={(newStyle) => onChangeButtonFont(newStyle, 'style')}
-							spacing={buttonTypography.letterSpacing}
-							onChangeSpacing={(letterSpacing) => onChangeButtonFont(letterSpacing, 'letterSpacing')}
-							textTransform={buttonTypography.textTransform}
-							onChangeTextTransform={(textTransform) => onChangeButtonFont(textTransform, 'textTransform')}
-							textDecoration={buttonTypography.textDecoration}
-							onChangeTextDecoration={(textDecoration) => onChangeButtonFont(textDecoration, 'textDecoration')}
-						/>
-					</PanelBody>
-				)}
-				<PanelBody
-					title={__('Spacing', 'premium-blocks-for-gutenberg')}
-					initialOpen={false}
-				>
-					{formStyle === 'default' && (
-						<SpacingComponent value={padding} responsive={true} showUnits={true} label={__('Input Padding')} onChange={(value) => onChangeSpacing({ padding: value })} />
-					)}
-					<SpacingComponent value={buttonPadding} responsive={true} showUnits={true} label={__('Button Padding')} onChange={(value) => onChangeSpacing({ buttonPadding: value })} />
-				</PanelBody>
-				<PanelBody title={__('Colors')}>
-					<TabPanel
-						className="premium-color-tabpanel"
-						activeClass="active-tab"
-						tabs={[
-							{
-								name: "normal",
-								title: "Normal",
-								className: "premium-tab",
-							},
-							{
-								name: "hover",
-								title: "Hover",
-								className: "premium-tab",
-							},
-						]}
-					>
-						{(tab) => {
-							if ("normal" === tab.name) {
-								return (
-									<Fragment>
-										{ajaxSearch && (
-											<AdvancedPopColorControl
-												label={__(`Links Color`, 'premium-blocks-for-gutenberg')}
-												colorValue={colors.link}
-												onColorChange={newValue => setColor('link', newValue)}
-												colorDefault={''}
-											/>
-										)}
-										{formStyle === 'button' && (
-											<AdvancedPopColorControl
-												label={__(`Modal Background Color`, 'premium-blocks-for-gutenberg')}
-												colorValue={colors.modal}
-												onColorChange={newValue => setColor('modal', newValue)}
-												colorDefault={''}
-											/>
-										)}
-										{formStyle === 'default' && (
-											<>
+							>
+								{(tab) => {
+									if ("normal" === tab.name) {
+										return (
+											<Fragment>
 												{ajaxSearch && (
 													<AdvancedPopColorControl
-														label={__(`Dropdown Background Color`, 'premium-blocks-for-gutenberg')}
-														colorValue={colors.dropdown}
-														onColorChange={newValue => setColor('dropdown', newValue)}
+														label={__(`Links Color`, 'premium-blocks-for-gutenberg')}
+														colorValue={colors.link}
+														onColorChange={newValue => setColor('link', newValue)}
+														colorDefault={''}
+													/>
+												)}
+												{formStyle === 'button' && (
+													<AdvancedPopColorControl
+														label={__(`Modal Background Color`, 'premium-blocks-for-gutenberg')}
+														colorValue={colors.modal}
+														onColorChange={newValue => setColor('modal', newValue)}
+														colorDefault={''}
+													/>
+												)}
+												{formStyle === 'default' && (
+													<>
+														{ajaxSearch && (
+															<AdvancedPopColorControl
+																label={__(`Dropdown Background Color`, 'premium-blocks-for-gutenberg')}
+																colorValue={colors.dropdown}
+																onColorChange={newValue => setColor('dropdown', newValue)}
+																colorDefault={''}
+															/>
+														)}
+														<AdvancedPopColorControl
+															label={__(`Form Text Color`, 'premium-blocks-for-gutenberg')}
+															colorValue={colors.text}
+															onColorChange={newValue => setColor('text', newValue)}
+															colorDefault={''}
+														/>
+														<AdvancedPopColorControl
+															label={__(`Form Background Color`, 'premium-blocks-for-gutenberg')}
+															colorValue={colors.background}
+															onColorChange={newValue => setColor('background', newValue)}
+															colorDefault={''}
+														/>
+													</>
+												)}
+												<AdvancedPopColorControl
+													label={__(`Button Text Color`, 'premium-blocks-for-gutenberg')}
+													colorValue={colors.btnText}
+													onColorChange={newValue => setColor('btnText', newValue)}
+													colorDefault={''}
+												/>
+												<AdvancedPopColorControl
+													label={__(`Button Background Color`, 'premium-blocks-for-gutenberg')}
+													colorValue={colors.btnBackground}
+													onColorChange={newValue => setColor('btnBackground', newValue)}
+													colorDefault={''}
+												/>
+												{showLabel && <AdvancedPopColorControl
+													label={__(`Label Color`, 'premium-blocks-for-gutenberg')}
+													colorValue={colors.label}
+													onColorChange={newValue => setColor('label', newValue)}
+													colorDefault={''}
+												/>}
+											</Fragment>
+										);
+									}
+									if ("hover" === tab.name) {
+										return (
+											<Fragment>
+												{ajaxSearch && (
+													<AdvancedPopColorControl
+														label={__(`Links Color`, 'premium-blocks-for-gutenberg')}
+														colorValue={colors.linkHover}
+														onColorChange={newValue => setColor('linkHover', newValue)}
 														colorDefault={''}
 													/>
 												)}
 												<AdvancedPopColorControl
-													label={__(`Form Text Color`, 'premium-blocks-for-gutenberg')}
-													colorValue={colors.text}
-													onColorChange={newValue => setColor('text', newValue)}
+													label={__(`Button Text Color`, 'premium-blocks-for-gutenberg')}
+													colorValue={colors.btnHoverText}
+													onColorChange={newValue => setColor('btnHoverText', newValue)}
 													colorDefault={''}
 												/>
 												<AdvancedPopColorControl
-													label={__(`Form Background Color`, 'premium-blocks-for-gutenberg')}
-													colorValue={colors.background}
-													onColorChange={newValue => setColor('background', newValue)}
+													label={__(`Button Background Color`, 'premium-blocks-for-gutenberg')}
+													colorValue={colors.btnHoverBackground}
+													onColorChange={newValue => setColor('btnHoverBackground', newValue)}
 													colorDefault={''}
 												/>
-											</>
-										)}
-										<AdvancedPopColorControl
-											label={__(`Button Text Color`, 'premium-blocks-for-gutenberg')}
-											colorValue={colors.btnText}
-											onColorChange={newValue => setColor('btnText', newValue)}
-											colorDefault={''}
-										/>
-										<AdvancedPopColorControl
-											label={__(`Button Background Color`, 'premium-blocks-for-gutenberg')}
-											colorValue={colors.btnBackground}
-											onColorChange={newValue => setColor('btnBackground', newValue)}
-											colorDefault={''}
-										/>
-										{showLabel && <AdvancedPopColorControl
-											label={__(`Label Color`, 'premium-blocks-for-gutenberg')}
-											colorValue={colors.label}
-											onColorChange={newValue => setColor('label', newValue)}
-											colorDefault={''}
-										/>}
-									</Fragment>
-								);
-							}
-							if ("hover" === tab.name) {
-								return (
-									<Fragment>
-										{ajaxSearch && (
-											<AdvancedPopColorControl
-												label={__(`Links Color`, 'premium-blocks-for-gutenberg')}
-												colorValue={colors.linkHover}
-												onColorChange={newValue => setColor('linkHover', newValue)}
-												colorDefault={''}
-											/>
-										)}
-										<AdvancedPopColorControl
-											label={__(`Button Text Color`, 'premium-blocks-for-gutenberg')}
-											colorValue={colors.btnHoverText}
-											onColorChange={newValue => setColor('btnHoverText', newValue)}
-											colorDefault={''}
-										/>
-										<AdvancedPopColorControl
-											label={__(`Button Background Color`, 'premium-blocks-for-gutenberg')}
-											colorValue={colors.btnHoverBackground}
-											onColorChange={newValue => setColor('btnHoverBackground', newValue)}
-											colorDefault={''}
-										/>
-									</Fragment>
-								);
-							}
-						}}
-					</TabPanel>
-
-				</PanelBody>
+											</Fragment>
+										);
+									}
+								}}
+							</TabPanel>
+						</PanelBody>
+					</InspectorTab>
+					<InspectorTab key={'advance'} />
+				</InspectorTabs>
 			</InspectorControls>
 		</>
 	);
@@ -949,3 +867,11 @@ export default function SearchEdit({
 		</div>
 	);
 }
+export default withSelect((select, props) => {
+	const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
+	let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+	return {
+		deviceType: deviceType
+	}
+})(SearchEdit)
