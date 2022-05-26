@@ -64328,8 +64328,7 @@ var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     SelectControl = _wp$components.SelectControl,
     ToggleControl = _wp$components.ToggleControl,
-    TextControl = _wp$components.TextControl,
-    TextareaControl = _wp$components.TextareaControl;
+    TextControl = _wp$components.TextControl;
 var _wp$editor = wp.editor,
     InspectorControls = _wp$editor.InspectorControls,
     AlignmentToolbar = _wp$editor.AlignmentToolbar,
@@ -64339,29 +64338,39 @@ var _wp$editor = wp.editor,
 
 var SortableItem = (0, _reactSortableHoc.SortableElement)(function (_ref) {
     var onRemove = _ref.onRemove,
-        saveLink = _ref.saveLink,
         changeLinkValue = _ref.changeLinkValue,
         value = _ref.value,
         addLink = _ref.addLink,
-        personIndex = _ref.personIndex;
+        personIndex = _ref.personIndex,
+        newIndex = _ref.newIndex;
     return React.createElement(
-        "li",
-        { tabIndex: 0 },
+        "span",
+        { tabIndex: 0, key: newIndex, className: "premium-repeater-row-wrapper " + (value.link ? 'active' : '') },
         React.createElement(
             "span",
-            { className: "premium-person__socialIcon__container" },
-            React.createElement("span", { className: "premium-person__socialIcon__dragHandle" }),
+            { className: "premium-repeater-row-inner" },
             React.createElement(
-                "div",
-                { className: "premium-person__socialIcon__content", onClick: function onClick() {
-                        return addLink(value);
-                    } },
-                React.createElement("span", { className: "premium-person__socialIcon__iconvalue fa fa-" + value.label }),
-                value.label
-            ),
-            React.createElement("button", { className: "premium-person__socialIcon__trashicon fa fa-trash", onClick: function onClick() {
-                    return onRemove(value.label);
-                } })
+                "span",
+                { className: "premium-repeater-row-tools" },
+                React.createElement(
+                    "span",
+                    { className: "premium-repeater-item-title", onClick: function onClick() {
+                            return addLink(value, personIndex);
+                        } },
+                    value.label
+                ),
+                React.createElement(
+                    "div",
+                    { className: "premium-repeater-row-item-remove" },
+                    React.createElement(
+                        "button",
+                        { className: "premium-repeater-item-remove is-tertiary", onClick: function onClick() {
+                                return onRemove(value.label);
+                            } },
+                        "x"
+                    )
+                )
+            )
         ),
         value.link && React.createElement(
             "div",
@@ -64373,14 +64382,7 @@ var SortableItem = (0, _reactSortableHoc.SortableElement)(function (_ref) {
                     return changeLinkValue(val, value, personIndex);
                 },
                 className: "premium-person__socialIcon__textInput"
-            }),
-            React.createElement(
-                "button",
-                { className: "premium-person__socialIcon__saveButton", onClick: function onClick() {
-                        return saveLink(value.changeinput, value, personIndex);
-                    } },
-                "Save"
-            )
+            })
         )
     );
 });
@@ -64388,16 +64390,15 @@ var SortableItem = (0, _reactSortableHoc.SortableElement)(function (_ref) {
 var SortableList = (0, _reactSortableHoc.SortableContainer)(function (_ref2) {
     var items = _ref2.items,
         onRemove = _ref2.onRemove,
-        saveLink = _ref2.saveLink,
         changeLinkValue = _ref2.changeLinkValue,
         addLink = _ref2.addLink,
         personIndex = _ref2.personIndex;
 
     return React.createElement(
-        "ul",
-        null,
+        "span",
+        { className: "premium-repeater-rows" },
         items.map(function (value, index) {
-            return React.createElement(SortableItem, { key: "item-" + value, index: index, newIndex: index, personIndex: personIndex, value: value, onRemove: onRemove, saveLink: saveLink, addLink: addLink, changeLinkValue: changeLinkValue });
+            return React.createElement(SortableItem, { key: "item-" + value, index: index, newIndex: index, personIndex: personIndex, value: value, onRemove: onRemove, addLink: addLink, changeLinkValue: changeLinkValue });
         })
     );
 });
@@ -64414,6 +64415,20 @@ var edit = function (_Component) {
     _createClass(edit, [{
         key: "componentDidMount",
         value: function componentDidMount() {
+            if (!this.props.attributes.classMigrate) {
+                this.props.setAttributes({
+                    multiPersonContent: [{
+                        id: 1,
+                        personImgUrl: "",
+                        personImgId: '',
+                        name: "John Doe",
+                        title: "Senior Developer",
+                        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla",
+                        socialIcon: false,
+                        items: [{ label: 'facebook', link: false, value: "#", changeinput: "#" }, { label: 'twitter', link: false, value: "#", changeinput: "#" }, { label: 'instagram', link: false, value: "#", changeinput: "#" }, { label: 'youtube', link: false, value: "#", changeinput: "#" }]
+                    }]
+                });
+            }
             // Assigning id in the attribute.
             this.props.setAttributes({ id: this.props.clientId });
             this.props.setAttributes({ classMigrate: true });
@@ -64694,47 +64709,49 @@ var edit = function (_Component) {
                 setAttributes(multiPersonContent[i] = array[0]);
             };
 
-            var _saveLink = function _saveLink(value, i, personIndex) {
+            var _changeLinkValue = function _changeLinkValue(value, i, personIndex) {
+                i.changeinput = value;
                 i.value = value;
+                console.log(value, i, personIndex);
                 var arrayItem = multiPersonContent.map(function (cont) {
                     return cont;
                 }).filter(function (f) {
                     return f.id == personIndex + 1;
                 });
-                i.link = false;
+                console.log(arrayItem);
                 var newData = arrayItem[0].items.filter(function (b) {
                     return b;
                 });
+                console.log(newData);
                 arrayItem[0].items = newData;
                 multiPersonContent[personIndex] = arrayItem[0];
                 setAttributes(multiPersonContent[personIndex] = arrayItem[0]);
-            };
-
-            var _changeLinkValue = function _changeLinkValue(value, i, personIndex) {
-                if (personIndex + 1 > 0) {
-                    i.changeinput = value;
-                    var arrayItem = multiPersonContent.map(function (cont) {
-                        return cont;
-                    }).filter(function (f) {
-                        return f.id == personIndex + 1;
-                    });
-                    var newData = arrayItem[0].items.filter(function (b) {
-                        return b;
-                    });
-                    console.log(newData);
-                    arrayItem[0].items = newData;
-                    multiPersonContent[personIndex] = arrayItem[0];
-                    setAttributes(multiPersonContent[personIndex] = arrayItem[0]);
-                } else {
-                    i.changeinput = value;
-                    var _arrayItem = multiPersonContent.map(function (cont) {
-                        return cont;
-                    });
-                    var _newData = _arrayItem[0].items.filter(function (b) {
-                        return b;
-                    });
-                    setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: _arrayItem[0].personImgUrl, name: _arrayItem[0].name, title: _arrayItem[0].title, desc: _arrayItem[0].desc, socialIcon: _arrayItem[0].socialIcon, items: _newData }] });
-                }
+                // if (personIndex + 1 > 0) {
+                //     i.changeinput = value
+                //     i.value = value
+                //     let arrayItem = multiPersonContent.map((cont) => (
+                //         cont
+                //     )).filter(f => f.id == personIndex + 1)
+                //     let newData = (arrayItem[0].items).filter(b => {
+                //         return b
+                //     })
+                //     console.log(newData)
+                //     arrayItem[0].items = newData
+                //     multiPersonContent[personIndex] = arrayItem[0]
+                //     setAttributes(multiPersonContent[personIndex] = arrayItem[0]);
+                // }
+                // else {
+                //     i.changeinput = value
+                //     i.value = value
+                //     let arrayItem = multiPersonContent.map((cont) => (
+                //         cont
+                //     ))
+                //     let newData = (arrayItem[0].items).filter(b => {
+                //         return b
+                //     })
+                //     console.log(arrayItem[0])
+                //     setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: newData }] });
+                // }
             };
 
             var _onRemove = function _onRemove(value, i) {
@@ -64824,96 +64841,69 @@ var edit = function (_Component) {
                                         bottom: effectPersonStyle === 'effect1' ? bottomInfo + "px" : ""
                                     })
                                 },
-                                React.createElement(
-                                    "div",
-                                    {
-                                        className: "premium-person__name_wrap",
-                                        style: _extends({
-                                            fontSize: "" + (nameTypography.fontSize[_this2.props.deviceType] || '') + nameTypography.fontSize.unit
-                                        }, (0, _HelperFunction.padddingCss)(namePadding, _this2.props.deviceType))
+                                value.name && React.createElement(RichText, {
+                                    tagName: nameTag.toLowerCase(),
+                                    className: "premium-person__name",
+                                    value: value.name,
+                                    isSelected: false,
+                                    onChange: function onChange(value) {
+                                        _this2.save({ name: value }, index);
                                     },
-                                    value.name && React.createElement(RichText, {
-                                        tagName: nameTag.toLowerCase(),
-                                        className: "premium-person__name",
-                                        value: value.name,
-                                        isSelected: false,
-                                        onChange: function onChange(value) {
-                                            _this2.save({ name: value }, index);
-                                        },
-                                        style: {
-                                            color: nameStyles[0].nameColor,
-                                            fontSize: "" + (nameTypography.fontSize[_this2.props.deviceType] || '') + nameTypography.fontSize.unit,
-                                            letterSpacing: nameTypography.letterSpacing + "px",
-                                            textTransform: nameTypography.textTransform ? "uppercase" : "none",
-                                            fontStyle: nameTypography.fontStyle,
-                                            fontWeight: nameTypography.fontWeight,
-                                            lineHeight: nameTypography.lineHeight + "px",
-                                            alignSelf: nameV,
-                                            textShadow: nameShadow.horizontal + "px " + nameShadow.vertical + "px " + nameShadow.blur + "px " + nameShadow.color
-                                        },
-                                        keepPlaceholderOnFocus: true
-                                    })
-                                ),
-                                React.createElement(
-                                    "div",
-                                    {
-                                        className: "premium-person__title_wrap",
-                                        style: _extends({}, (0, _HelperFunction.marginCss)(titleMargin, _this2.props.deviceType), (0, _HelperFunction.padddingCss)(titlePadding, _this2.props.deviceType), {
-                                            fontSize: "" + (titleTypography.fontSize[_this2.props.deviceType] || '') + titleTypography.fontSize.unit
-                                        })
+                                    style: {
+                                        color: nameStyles[0].nameColor,
+                                        fontSize: "" + (nameTypography.fontSize[_this2.props.deviceType] || '') + nameTypography.fontSize.unit,
+                                        letterSpacing: nameTypography.letterSpacing + "px",
+                                        textTransform: nameTypography.textTransform ? "uppercase" : "none",
+                                        fontStyle: nameTypography.fontStyle,
+                                        fontWeight: nameTypography.fontWeight,
+                                        lineHeight: nameTypography.lineHeight + "px",
+                                        alignSelf: nameV,
+                                        textShadow: nameShadow.horizontal + "px " + nameShadow.vertical + "px " + nameShadow.blur + "px " + nameShadow.color
                                     },
-                                    value.title && React.createElement(RichText, {
-                                        tagName: titleTag.toLowerCase(),
-                                        className: "premium-person__title",
-                                        value: value.title,
-                                        isSelected: false,
-                                        onChange: function onChange(value) {
-                                            _this2.save({ title: value }, index);
-                                        },
-                                        style: {
-                                            color: titleStyles[0].titleColor,
-                                            fontSize: "" + (titleTypography.fontSize[_this2.props.deviceType] || '') + titleTypography.fontSize.unit,
-                                            letterSpacing: titleTypography.letterSpacing + "px",
-                                            textTransform: titleTypography.textTransform ? "uppercase" : "none",
-                                            fontStyle: titleTypography.fontStyle,
-                                            fontWeight: titleTypography.fontWeight,
-                                            lineHeight: titleTypography.lineHeight + "px",
-                                            alignSelf: titleV,
-                                            textShadow: titleShadow.horizontal + "px " + titleShadow.vertical + "px " + titleShadow.blur + "px " + titleShadow.color
-                                        },
-                                        keepPlaceholderOnFocus: true
-                                    })
-                                ),
-                                React.createElement(
-                                    "div",
-                                    {
-                                        className: "premium-person__desc_wrap",
-                                        style: _extends({}, (0, _HelperFunction.padddingCss)(descPadding, _this2.props.deviceType), {
-                                            fontSize: "" + (descTypography.fontSize[_this2.props.deviceType] || 20) + descTypography.fontSize.unit
-                                        })
+                                    keepPlaceholderOnFocus: true
+                                }),
+                                value.title && React.createElement(RichText, {
+                                    tagName: titleTag.toLowerCase(),
+                                    className: "premium-person__title",
+                                    value: value.title,
+                                    isSelected: false,
+                                    onChange: function onChange(value) {
+                                        _this2.save({ title: value }, index);
                                     },
-                                    value.desc && React.createElement(RichText, {
-                                        tagName: "span",
-                                        className: "premium-person__desc",
-                                        value: value.desc,
-                                        isSelected: false,
-                                        onChange: function onChange(value) {
-                                            _this2.save({ desc: value }, index);
-                                        },
-                                        style: {
-                                            color: descStyles[0].descColor,
-                                            fontSize: "" + (descTypography.fontSize[_this2.props.deviceType] || 20) + descTypography.fontSize.unit,
-                                            letterSpacing: descTypography.letterSpacing + "px",
-                                            textTransform: descTypography.textTransform ? "uppercase" : "none",
-                                            fontStyle: descTypography.fontStyle,
-                                            fontWeight: descTypography.fontWeight,
-                                            lineHeight: descTypography.lineHeight + "px",
-                                            alignSelf: descV,
-                                            textShadow: descShadow.horizontal + "px " + descShadow.vertical + "px " + descShadow.blur + "px " + descShadow.color
-                                        },
-                                        keepPlaceholderOnFocus: true
-                                    })
-                                ),
+                                    style: {
+                                        color: titleStyles[0].titleColor,
+                                        fontSize: "" + (titleTypography.fontSize[_this2.props.deviceType] || '') + titleTypography.fontSize.unit,
+                                        letterSpacing: titleTypography.letterSpacing + "px",
+                                        textTransform: titleTypography.textTransform ? "uppercase" : "none",
+                                        fontStyle: titleTypography.fontStyle,
+                                        fontWeight: titleTypography.fontWeight,
+                                        lineHeight: titleTypography.lineHeight + "px",
+                                        alignSelf: titleV,
+                                        textShadow: titleShadow.horizontal + "px " + titleShadow.vertical + "px " + titleShadow.blur + "px " + titleShadow.color
+                                    },
+                                    keepPlaceholderOnFocus: true
+                                }),
+                                value.desc && React.createElement(RichText, {
+                                    tagName: "span",
+                                    className: "premium-person__desc",
+                                    value: value.desc,
+                                    isSelected: false,
+                                    onChange: function onChange(value) {
+                                        _this2.save({ desc: value }, index);
+                                    },
+                                    style: {
+                                        color: descStyles[0].descColor,
+                                        fontSize: "" + (descTypography.fontSize[_this2.props.deviceType] || 20) + descTypography.fontSize.unit,
+                                        letterSpacing: descTypography.letterSpacing + "px",
+                                        textTransform: descTypography.textTransform ? "uppercase" : "none",
+                                        fontStyle: descTypography.fontStyle,
+                                        fontWeight: descTypography.fontWeight,
+                                        lineHeight: descTypography.lineHeight + "px",
+                                        alignSelf: descV,
+                                        textShadow: descShadow.horizontal + "px " + descShadow.vertical + "px " + descShadow.blur + "px " + descShadow.color
+                                    },
+                                    keepPlaceholderOnFocus: true
+                                }),
                                 effectPersonStyle == 'effect1' ? React.createElement(
                                     "div",
                                     null,
@@ -65032,10 +65022,10 @@ var edit = function (_Component) {
                     }),
                     multiPersonContent[index].socialIcon && React.createElement(
                         "div",
-                        null,
+                        { className: "premium-repeater-rows" },
                         React.createElement(
                             "label",
-                            { className: "premium-person-paragraph" },
+                            { className: "premium-repeater-label" },
                             __("Social Media")
                         ),
                         React.createElement(_reactFonticonpicker2.default, {
@@ -65055,8 +65045,6 @@ var edit = function (_Component) {
                                 return onSortEndMulti(index, o, n);
                             }, onRemove: function onRemove(value) {
                                 return _onRemove(value, index);
-                            }, saveLink: function saveLink(value, i) {
-                                return _saveLink(value, i, index);
                             }, changeLinkValue: function changeLinkValue(value, i) {
                                 return _changeLinkValue(value, i, index);
                             }, addLink: function addLink(value) {
@@ -65186,6 +65174,13 @@ var edit = function (_Component) {
                                 className: "premium-panel-body",
                                 initialOpen: false
                             },
+                            React.createElement(_premiumTypo2.default, {
+                                components: ["responsiveSize", "weight", "line", "style", "upper", "spacing"],
+                                value: nameTypography,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({ nameTypography: newValue });
+                                }
+                            }),
                             React.createElement(
                                 "div",
                                 { className: "premium-control-toggle" },
@@ -65200,13 +65195,6 @@ var edit = function (_Component) {
                                     }
                                 })
                             ),
-                            React.createElement(_premiumTypo2.default, {
-                                components: ["responsiveSize", "weight", "line", "style", "upper", "spacing"],
-                                value: nameTypography,
-                                onChange: function onChange(newValue) {
-                                    return setAttributes({ nameTypography: newValue });
-                                }
-                            }),
                             React.createElement(_PremiumShadow2.default, {
                                 label: __("Text Shadow", "premium-blocks-for-gutenberg"),
                                 value: nameShadow,
@@ -65231,6 +65219,13 @@ var edit = function (_Component) {
                                 className: "premium-panel-body",
                                 initialOpen: false
                             },
+                            React.createElement(_premiumTypo2.default, {
+                                components: ["responsiveSize", "weight", "line", "style", "upper", "spacing"],
+                                value: titleTypography,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({ titleTypography: newValue });
+                                }
+                            }),
                             React.createElement(
                                 "div",
                                 { className: "premium-control-toggle" },
@@ -65245,13 +65240,6 @@ var edit = function (_Component) {
                                     }
                                 })
                             ),
-                            React.createElement(_premiumTypo2.default, {
-                                components: ["responsiveSize", "weight", "line", "style", "upper", "spacing"],
-                                value: titleTypography,
-                                onChange: function onChange(newValue) {
-                                    return setAttributes({ titleTypography: newValue });
-                                }
-                            }),
                             React.createElement(_PremiumShadow2.default, {
                                 label: __("Text Shadow", "premium-blocks-for-gutenberg"),
                                 value: titleShadow,
@@ -65285,6 +65273,13 @@ var edit = function (_Component) {
                                 className: "premium-panel-body",
                                 initialOpen: false
                             },
+                            React.createElement(_premiumTypo2.default, {
+                                components: ["responsiveSize", "weight", "line", "style", "upper", "spacing"],
+                                value: descTypography,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({ descTypography: newValue });
+                                }
+                            }),
                             React.createElement(
                                 "div",
                                 { className: "premium-control-toggle" },
@@ -65299,13 +65294,6 @@ var edit = function (_Component) {
                                     }
                                 })
                             ),
-                            React.createElement(_premiumTypo2.default, {
-                                components: ["responsiveSize", "weight", "line", "style", "upper", "spacing"],
-                                value: descTypography,
-                                onChange: function onChange(newValue) {
-                                    return setAttributes({ descTypography: newValue });
-                                }
-                            }),
                             React.createElement(_PremiumShadow2.default, {
                                 label: __("Text Shadow", "premium-blocks-for-gutenberg"),
                                 value: descShadow,
@@ -66754,11 +66742,11 @@ var attributes = (_attributes = {
     },
     nameTag: {
         type: "string",
-        default: "span"
+        default: "H2"
     }
 }, _defineProperty(_attributes, "titleTag", {
     type: "string",
-    default: "span"
+    default: "H4"
 }), _defineProperty(_attributes, "socialIconMargin", {
     type: "object",
     default: {

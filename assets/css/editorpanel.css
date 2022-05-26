@@ -6153,4 +6153,98 @@ input[type="number"] {
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
+    margin-top: 12px;
+}
+
+/******************* Sortable element  *************************/
+.premium-repeater-rows{
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+.premium-repeater-rows .active{
+    -webkit-box-shadow: 0 5px 10px rgb(0 0 0 / 10%);
+    box-shadow: 0 5px 10px rgb(0 0 0 / 10%);
+    border-color: #a2a2a2;
+}
+.premium-repeater-label{
+    font-size: 13px;
+    line-height: 20px;
+    color: #555d66;
+    font-weight: 400;
+}
+.premium-repeater-row-wrapper{
+    margin: 6px 0;
+    -webkit-box-shadow: 0 0 0 transparent;
+    box-shadow: 0 0 0 transparent;
+    border: 1px solid #e6e6e6;
+    background: #fff;
+    border-radius: 3px;
+}
+.premium-repeater-row-tools{
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    color: #555d66;
+    height: 33px;
+    -webkit-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+    -ms-touch-action: none;
+    touch-action: none;
+}
+.premium-repeater-row-inner .premium-repeater-row-tools>div {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.premium-repeater-row-inner .premium-repeater-row-tools>span {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.premium-repeater-item-title{
+    text-align: left!important;
+    text-transform: capitalize;
+    padding: 0 10px;
+    font-size: 12px;
+    color: #555d66;
+    white-space: nowrap;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    line-height: 33px;
+}
+.premium-repeater-row-item-remove{
+    border-left: 1px solid #e6e6e6;
+    width: 40px;
+}
+.premium-repeater-item-remove{
+    display: inline-flex;
+    text-decoration: none;
+    font-family: inherit;
+    font-weight: 400;
+    font-size: 13px;
+    margin: 0;
+    border: 0;
+    cursor: pointer;
+    -webkit-appearance: none;
+    background: none;
+    transition: box-shadow .1s linear;
+    height: 36px;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 6px 12px;
+    border-radius: 2px;
+    color: #1e1e1e;
+}
+.is-tertiary{
+    padding: 6px;
+    white-space: nowrap;
+    color: #888;
+    background: transparent;
+    outline: 1px solid transparent;
 }

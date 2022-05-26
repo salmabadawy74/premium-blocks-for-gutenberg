@@ -28,8 +28,7 @@ const {
     PanelBody,
     SelectControl,
     ToggleControl,
-    TextControl,
-    TextareaControl
+    TextControl
 } = wp.components;
 
 const {
@@ -39,35 +38,44 @@ const {
     RichText
 } = wp.editor;
 
-const SortableItem = SortableElement(({ onRemove, saveLink, changeLinkValue, value, addLink, personIndex }) => <li tabIndex={0}>
-    <span className="premium-person__socialIcon__container">
-        <span className="premium-person__socialIcon__dragHandle"></span>
-        <div className="premium-person__socialIcon__content" onClick={() => addLink(value)}>
-            <span className={`premium-person__socialIcon__iconvalue fa fa-${value.label}`}></span>
-            {value.label}
-        </div>
-        <button className="premium-person__socialIcon__trashicon fa fa-trash" onClick={() => onRemove(value.label)}></button>
-    </span>
-    {value.link && (
-        <div className="premium-person__socialIcon__link">
-            <TextControl
-                placeholder={__(`Enter ${value.label} link`)}
-                value={value.changeinput}
-                onChange={(val) => changeLinkValue(val, value, personIndex)}
-                className="premium-person__socialIcon__textInput"
-            />
-            <button className="premium-person__socialIcon__saveButton" onClick={() => saveLink(value.changeinput, value, personIndex)}>Save</button>
-        </div>
-    )}
-</li>);
+const SortableItem = SortableElement(({ onRemove, changeLinkValue, value, addLink, personIndex, newIndex }) =>
+    <span tabIndex={0} key={newIndex} className={`premium-repeater-row-wrapper ${value.link ? 'active' : ''}`}>
+        <span className="premium-repeater-row-inner">
+            <span className="premium-repeater-row-tools">
+                <span className="premium-repeater-item-title" onClick={() => addLink(value, personIndex)}>{value.label}</span>
+                <div className="premium-repeater-row-item-remove">
+                    <button className="premium-repeater-item-remove is-tertiary" onClick={() => onRemove(value.label)}>x</button>
+                </div>
+            </span>
+        </span>
+        {/* <span className="premium-person__socialIcon__container">
+            <span className="premium-person__socialIcon__dragHandle"></span>
+            <div className="premium-person__socialIcon__content" onClick={() => addLink(value, personIndex)}>
+                <span className={`premium-person__socialIcon__iconvalue fa fa-${value.label}`}></span>
+                {value.label}
+            </div>
+            <button className="premium-person__socialIcon__trashicon fa fa-trash" onClick={() => onRemove(value.label)}></button>
+        </span> */}
+        {value.link && (
+            <div className="premium-person__socialIcon__link">
+                <TextControl
+                    placeholder={__(`Enter ${value.label} link`)}
+                    value={value.changeinput}
+                    onChange={(val) => changeLinkValue(val, value, personIndex)}
+                    className="premium-person__socialIcon__textInput"
+                />
+                {/* <button className="premium-person__socialIcon__saveButton" onClick={() => saveLink(value.changeinput, value, personIndex)}>Save</button> */}
+            </div>
+        )}
+    </span>);
 
-const SortableList = SortableContainer(({ items, onRemove, saveLink, changeLinkValue, addLink, personIndex }) => {
+const SortableList = SortableContainer(({ items, onRemove, changeLinkValue, addLink, personIndex }) => {
     return (
-        <ul>
+        <span className="premium-repeater-rows">
             {(items).map((value, index) => (
-                <SortableItem key={`item-${value}`} index={index} newIndex={index} personIndex={personIndex} value={value} onRemove={onRemove} saveLink={saveLink} addLink={addLink} changeLinkValue={changeLinkValue} />
+                <SortableItem key={`item-${value}`} index={index} newIndex={index} personIndex={personIndex} value={value} onRemove={onRemove} addLink={addLink} changeLinkValue={changeLinkValue} />
             ))}
-        </ul>
+        </span>
     );
 });
 
@@ -77,6 +85,25 @@ class edit extends Component {
     }
 
     componentDidMount() {
+        if (!this.props.attributes.classMigrate) {
+            this.props.setAttributes({
+                multiPersonContent: [{
+                    id: 1,
+                    personImgUrl: "",
+                    personImgId: '',
+                    name: "John Doe",
+                    title: "Senior Developer",
+                    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla",
+                    socialIcon: false,
+                    items: [
+                        { label: 'facebook', link: false, value: "#", changeinput: "#" },
+                        { label: 'twitter', link: false, value: "#", changeinput: "#" },
+                        { label: 'instagram', link: false, value: "#", changeinput: "#" },
+                        { label: 'youtube', link: false, value: "#", changeinput: "#" }
+                    ]
+                }]
+            })
+        }
         // Assigning id in the attribute.
         this.props.setAttributes({ id: this.props.clientId })
         this.props.setAttributes({ classMigrate: true })
@@ -385,47 +412,52 @@ class edit extends Component {
             })
             array[0].items = newData
             multiPersonContent[i] = array[0]
-            setAttributes(multiPersonContent[i] = array[0]);
-        }
-
-        const saveLink = (value, i, personIndex) => {
-            i.value = value
-            let arrayItem = multiPersonContent.map((cont) => (
-                cont
-            )).filter(f => f.id == personIndex + 1)
-            i.link = false
-            let newData = (arrayItem[0].items).filter(b => {
-                return b
-            })
-            arrayItem[0].items = newData
-            multiPersonContent[personIndex] = arrayItem[0]
-            setAttributes(multiPersonContent[personIndex] = arrayItem[0]);
+            setAttributes(
+                multiPersonContent[i] = array[0]
+            );
         }
 
         const changeLinkValue = (value, i, personIndex) => {
-            if (personIndex + 1 > 0) {
-                i.changeinput = value
-                let arrayItem = multiPersonContent.map((cont) => (
-                    cont
-                )).filter(f => f.id == personIndex + 1)
-                let newData = (arrayItem[0].items).filter(b => {
-                    return b
-                })
-                console.log(newData)
-                arrayItem[0].items = newData
-                multiPersonContent[personIndex] = arrayItem[0]
-                setAttributes(multiPersonContent[personIndex] = arrayItem[0]);
-            }
-            else {
-                i.changeinput = value
-                let arrayItem = multiPersonContent.map((cont) => (
-                    cont
-                ))
-                let newData = (arrayItem[0].items).filter(b => {
-                    return b
-                })
-                setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: newData }] });
-            }
+            i.changeinput = value
+            i.value = value
+            console.log(value, i, personIndex)
+            let arrayItem = multiPersonContent.map((cont) => (
+                cont
+            )).filter(f => f.id == personIndex + 1)
+            console.log(arrayItem)
+            let newData = (arrayItem[0].items).filter(b => {
+                return b
+            })
+            console.log(newData)
+            arrayItem[0].items = newData
+            multiPersonContent[personIndex] = arrayItem[0]
+            setAttributes(multiPersonContent[personIndex] = arrayItem[0]);
+            // if (personIndex + 1 > 0) {
+            //     i.changeinput = value
+            //     i.value = value
+            //     let arrayItem = multiPersonContent.map((cont) => (
+            //         cont
+            //     )).filter(f => f.id == personIndex + 1)
+            //     let newData = (arrayItem[0].items).filter(b => {
+            //         return b
+            //     })
+            //     console.log(newData)
+            //     arrayItem[0].items = newData
+            //     multiPersonContent[personIndex] = arrayItem[0]
+            //     setAttributes(multiPersonContent[personIndex] = arrayItem[0]);
+            // }
+            // else {
+            //     i.changeinput = value
+            //     i.value = value
+            //     let arrayItem = multiPersonContent.map((cont) => (
+            //         cont
+            //     ))
+            //     let newData = (arrayItem[0].items).filter(b => {
+            //         return b
+            //     })
+            //     console.log(arrayItem[0])
+            //     setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: newData }] });
+            // }
         }
 
         const onRemove = (value, i) => {
@@ -498,35 +530,35 @@ class edit extends Component {
                             bottom: effectPersonStyle === 'effect1' ? bottomInfo + "px" : ""
                         }}
                     >
-                        <div
+                        {/* <div
                             className={`premium-person__name_wrap`}
                             style={{
                                 fontSize: `${nameTypography.fontSize[this.props.deviceType] || ''}${nameTypography.fontSize.unit}`,
                                 ...padddingCss(namePadding, this.props.deviceType),
                             }}
-                        >
-                            {value.name && (
-                                <RichText
-                                    tagName={nameTag.toLowerCase()}
-                                    className={`premium-person__name`}
-                                    value={value.name}
-                                    isSelected={false}
-                                    onChange={value => { this.save({ name: value }, index) }}
-                                    style={{
-                                        color: nameStyles[0].nameColor,
-                                        fontSize: `${nameTypography.fontSize[this.props.deviceType] || ''}${nameTypography.fontSize.unit}`,
-                                        letterSpacing: nameTypography.letterSpacing + "px",
-                                        textTransform: nameTypography.textTransform ? "uppercase" : "none",
-                                        fontStyle: nameTypography.fontStyle,
-                                        fontWeight: nameTypography.fontWeight,
-                                        lineHeight: nameTypography.lineHeight + "px",
-                                        alignSelf: nameV,
-                                        textShadow: `${nameShadow.horizontal}px ${nameShadow.vertical}px ${nameShadow.blur}px ${nameShadow.color}`
-                                    }}
-                                    keepPlaceholderOnFocus
-                                />
-                            )}
-                        </div>
+                        > */}
+                        {value.name && (
+                            <RichText
+                                tagName={nameTag.toLowerCase()}
+                                className={`premium-person__name`}
+                                value={value.name}
+                                isSelected={false}
+                                onChange={value => { this.save({ name: value }, index) }}
+                                style={{
+                                    color: nameStyles[0].nameColor,
+                                    fontSize: `${nameTypography.fontSize[this.props.deviceType] || ''}${nameTypography.fontSize.unit}`,
+                                    letterSpacing: nameTypography.letterSpacing + "px",
+                                    textTransform: nameTypography.textTransform ? "uppercase" : "none",
+                                    fontStyle: nameTypography.fontStyle,
+                                    fontWeight: nameTypography.fontWeight,
+                                    lineHeight: nameTypography.lineHeight + "px",
+                                    alignSelf: nameV,
+                                    textShadow: `${nameShadow.horizontal}px ${nameShadow.vertical}px ${nameShadow.blur}px ${nameShadow.color}`
+                                }}
+                                keepPlaceholderOnFocus
+                            />
+                        )}
+                        {/* </div>
                         <div
                             className={`premium-person__title_wrap`}
                             style={{
@@ -534,58 +566,58 @@ class edit extends Component {
                                 ...padddingCss(titlePadding, this.props.deviceType),
                                 fontSize: `${titleTypography.fontSize[this.props.deviceType] || ''}${titleTypography.fontSize.unit}`,
                             }}
-                        >
-                            {value.title && (
-                                <RichText
-                                    tagName={titleTag.toLowerCase()}
-                                    className={`premium-person__title`}
-                                    value={value.title}
-                                    isSelected={false}
-                                    onChange={value => { this.save({ title: value }, index) }}
-                                    style={{
-                                        color: titleStyles[0].titleColor,
-                                        fontSize: `${titleTypography.fontSize[this.props.deviceType] || ''}${titleTypography.fontSize.unit}`,
-                                        letterSpacing: titleTypography.letterSpacing + "px",
-                                        textTransform: titleTypography.textTransform ? "uppercase" : "none",
-                                        fontStyle: titleTypography.fontStyle,
-                                        fontWeight: titleTypography.fontWeight,
-                                        lineHeight: titleTypography.lineHeight + "px",
-                                        alignSelf: titleV,
-                                        textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`
-                                    }}
-                                    keepPlaceholderOnFocus
-                                />
-                            )}
-                        </div>
-                        <div
+                        > */}
+                        {value.title && (
+                            <RichText
+                                tagName={titleTag.toLowerCase()}
+                                className={`premium-person__title`}
+                                value={value.title}
+                                isSelected={false}
+                                onChange={value => { this.save({ title: value }, index) }}
+                                style={{
+                                    color: titleStyles[0].titleColor,
+                                    fontSize: `${titleTypography.fontSize[this.props.deviceType] || ''}${titleTypography.fontSize.unit}`,
+                                    letterSpacing: titleTypography.letterSpacing + "px",
+                                    textTransform: titleTypography.textTransform ? "uppercase" : "none",
+                                    fontStyle: titleTypography.fontStyle,
+                                    fontWeight: titleTypography.fontWeight,
+                                    lineHeight: titleTypography.lineHeight + "px",
+                                    alignSelf: titleV,
+                                    textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`
+                                }}
+                                keepPlaceholderOnFocus
+                            />
+                        )}
+                        {/* </div> */}
+                        {/* <div
                             className={`premium-person__desc_wrap`}
                             style={{
                                 ...padddingCss(descPadding, this.props.deviceType),
                                 fontSize: `${descTypography.fontSize[this.props.deviceType] || 20}${descTypography.fontSize.unit}`,
                             }}
-                        >
-                            {value.desc && (
-                                <RichText
-                                    tagName="span"
-                                    className={`premium-person__desc`}
-                                    value={value.desc}
-                                    isSelected={false}
-                                    onChange={value => { this.save({ desc: value }, index) }}
-                                    style={{
-                                        color: descStyles[0].descColor,
-                                        fontSize: `${descTypography.fontSize[this.props.deviceType] || 20}${descTypography.fontSize.unit}`,
-                                        letterSpacing: descTypography.letterSpacing + "px",
-                                        textTransform: descTypography.textTransform ? "uppercase" : "none",
-                                        fontStyle: descTypography.fontStyle,
-                                        fontWeight: descTypography.fontWeight,
-                                        lineHeight: descTypography.lineHeight + "px",
-                                        alignSelf: descV,
-                                        textShadow: `${descShadow.horizontal}px ${descShadow.vertical}px ${descShadow.blur}px ${descShadow.color}`
-                                    }}
-                                    keepPlaceholderOnFocus
-                                />
-                            )}
-                        </div>
+                        > */}
+                        {value.desc && (
+                            <RichText
+                                tagName="span"
+                                className={`premium-person__desc`}
+                                value={value.desc}
+                                isSelected={false}
+                                onChange={value => { this.save({ desc: value }, index) }}
+                                style={{
+                                    color: descStyles[0].descColor,
+                                    fontSize: `${descTypography.fontSize[this.props.deviceType] || 20}${descTypography.fontSize.unit}`,
+                                    letterSpacing: descTypography.letterSpacing + "px",
+                                    textTransform: descTypography.textTransform ? "uppercase" : "none",
+                                    fontStyle: descTypography.fontStyle,
+                                    fontWeight: descTypography.fontWeight,
+                                    lineHeight: descTypography.lineHeight + "px",
+                                    alignSelf: descV,
+                                    textShadow: `${descShadow.horizontal}px ${descShadow.vertical}px ${descShadow.blur}px ${descShadow.color}`
+                                }}
+                                keepPlaceholderOnFocus
+                            />
+                        )}
+                        {/* </div> */}
                         {effectPersonStyle == 'effect1' ? <div>{value.socialIcon && (
                             socialIconfn(value.items)
                         )}</div> : ""}
@@ -689,8 +721,8 @@ class edit extends Component {
                     onChange={value => { this.save({ socialIcon: value }, index) }}
                 />
                 {multiPersonContent[index].socialIcon && (
-                    <div>
-                        <label className="premium-person-paragraph">{__("Social Media")}</label>
+                    <div className="premium-repeater-rows">
+                        <label className="premium-repeater-label">{__("Social Media")}</label>
                         <FontIconPicker
                             icons={iconsList.map((i) => (
                                 i.value
@@ -702,7 +734,7 @@ class edit extends Component {
                             iconsPerPage={25}
                             noSelectedPlaceholder={__("Select Icon")}
                         />
-                        <SortableList items={multiPersonContent[index].items} personIndex={index} onSortEnd={(o, n) => onSortEndMulti(index, o, n)} onRemove={(value) => onRemove(value, index)} saveLink={(value, i) => saveLink(value, i, index)} changeLinkValue={(value, i) => changeLinkValue(value, i, index)} addLink={(value) => addLink(value, index)} shouldCancelStart={shouldCancelStart} helperClass='premium-person__sortableHelper' />
+                        <SortableList items={multiPersonContent[index].items} personIndex={index} onSortEnd={(o, n) => onSortEndMulti(index, o, n)} onRemove={(value) => onRemove(value, index)} changeLinkValue={(value, i) => changeLinkValue(value, i, index)} addLink={(value) => addLink(value, index)} shouldCancelStart={shouldCancelStart} helperClass='premium-person__sortableHelper' />
                     </div>
                 )}
             </PanelBody>
@@ -792,6 +824,11 @@ class edit extends Component {
                                 className="premium-panel-body"
                                 initialOpen={false}
                             >
+                                <PremiumTypo
+                                    components={["responsiveSize", "weight", "line", "style", "upper", "spacing"]}
+                                    value={nameTypography}
+                                    onChange={newValue => setAttributes({ nameTypography: newValue })}
+                                />
                                 <div className="premium-control-toggle">
                                     <AdvancedPopColorControl
                                         label={__("Color", 'premium-block-for-gutenberg')}
@@ -804,11 +841,6 @@ class edit extends Component {
                                         }
                                     />
                                 </div>
-                                <PremiumTypo
-                                    components={["responsiveSize", "weight", "line", "style", "upper", "spacing"]}
-                                    value={nameTypography}
-                                    onChange={newValue => setAttributes({ nameTypography: newValue })}
-                                />
                                 <PremiumShadow
                                     label={__("Text Shadow", "premium-blocks-for-gutenberg")}
                                     value={nameShadow}
@@ -827,6 +859,11 @@ class edit extends Component {
                                 className="premium-panel-body"
                                 initialOpen={false}
                             >
+                                <PremiumTypo
+                                    components={["responsiveSize", "weight", "line", "style", "upper", "spacing"]}
+                                    value={titleTypography}
+                                    onChange={newValue => setAttributes({ titleTypography: newValue })}
+                                />
                                 <div className="premium-control-toggle">
                                     <AdvancedPopColorControl
                                         label={__("Color", 'premium-block-for-gutenberg')}
@@ -839,11 +876,6 @@ class edit extends Component {
                                         }
                                     />
                                 </div>
-                                <PremiumTypo
-                                    components={["responsiveSize", "weight", "line", "style", "upper", "spacing"]}
-                                    value={titleTypography}
-                                    onChange={newValue => setAttributes({ titleTypography: newValue })}
-                                />
                                 <PremiumShadow
                                     label={__("Text Shadow", "premium-blocks-for-gutenberg")}
                                     value={titleShadow}
@@ -869,6 +901,11 @@ class edit extends Component {
                                 className="premium-panel-body"
                                 initialOpen={false}
                             >
+                                <PremiumTypo
+                                    components={["responsiveSize", "weight", "line", "style", "upper", "spacing"]}
+                                    value={descTypography}
+                                    onChange={newValue => setAttributes({ descTypography: newValue })}
+                                />
                                 <div className="premium-control-toggle">
                                     <AdvancedPopColorControl
                                         label={__("Color", 'premium-block-for-gutenberg')}
@@ -881,11 +918,6 @@ class edit extends Component {
                                         }
                                     />
                                 </div>
-                                <PremiumTypo
-                                    components={["responsiveSize", "weight", "line", "style", "upper", "spacing"]}
-                                    value={descTypography}
-                                    onChange={newValue => setAttributes({ descTypography: newValue })}
-                                />
                                 <PremiumShadow
                                     label={__("Text Shadow", "premium-blocks-for-gutenberg")}
                                     value={descShadow}

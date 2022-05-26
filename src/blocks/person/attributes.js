@@ -204,11 +204,11 @@ const attributes = {
     },
     nameTag: {
         type: "string",
-        default: "span"
+        default: "H2"
     },
     titleTag: {
         type: "string",
-        default: "span"
+        default: "H4"
     },
     socialIconMargin: {
         type: "object",
