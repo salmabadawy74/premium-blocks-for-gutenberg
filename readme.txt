@@ -63,6 +63,7 @@ Yes it will work with any WordPress theme as long as you are using Gutenberg as 
 
 - Fixed: Reset color button not working in Icon Box Block.
 - Fixed: Console error when trying to get plugin settings in background control.
+- Fixed: Selecting colors from color palettes in color control not changing the color value.
 
 = 1.9.8 =
 
