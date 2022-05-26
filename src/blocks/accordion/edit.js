@@ -329,10 +329,18 @@ class PremiumAccordion extends Component {
                         initialOpen={false}
                     >
                         <RadioComponent
-                            choices={['H1', 'H2', 'H3', 'H4', 'H5', 'H6']}
+                            choices={[
+                                { label: 'H1', value: 'H1' },
+                                { label: 'H2', value: 'H2' },
+                                { label: 'H3', value: 'H3' },
+                                { label: 'H4', value: 'H4' },
+                                { label: 'H5', value: 'H5' },
+                                { label: 'H6', value: 'H6' }
+                            ]}
                             value={titleTag}
                             onChange={(newValue) => setAttributes({ titleTag: newValue })}
                             label={__("Title Tag", 'premium-blocks-for-gutenberg')}
+                            showIcons={false}
                         />
                         <SelectControl
                             label={__("Direction", 'premium-blocks-for-gutenberg')}

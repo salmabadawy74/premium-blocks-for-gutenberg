@@ -3,7 +3,7 @@ const { useState, Fragment } = wp.element;
 const { __ } = wp.i18n;
 const { ButtonGroup, Button } = wp.components;
 
-const RadioComponent = ({ value, onChange, label, choices }) => {
+const RadioComponent = ({ value, onChange, label, choices, showIcons = false }) => {
     const HandleChange = (newVal) => {
         onChange(newVal);
         setState(newVal);
@@ -18,12 +18,12 @@ const RadioComponent = ({ value, onChange, label, choices }) => {
                 const currentValue = state
                 return <Button
                     isTertiary
-                    className={choice === currentValue ? 'active-radio' : ''}
+                    className={choice.value === currentValue ? 'active-radio' : ''}
                     onClick={() => {
-                        HandleChange(choice)
+                        HandleChange(choice.value)
                     }}
                 >
-                    {choice}
+                    {showIcons ? choice.icon : choice.label}
                 </Button>
             })}
         </Fragment>
