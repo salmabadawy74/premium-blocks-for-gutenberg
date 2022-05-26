@@ -1318,10 +1318,7 @@ class edit extends Component {
                             <PremiumBackgroundControl
                                 setAttributes={setAttributes}
                                 saveContainerStyle={saveIconStyles}
-                                backgroundType={{
-                                    label: 'backgroundType',
-                                    value: backgroundType
-                                }}
+                                backgroundType={backgroundType}
                                 backgroundColor={iconStyles[0].containerBack}
                                 backgroundImageID={iconStyles[0].backgroundImageID}
                                 backgroundImageURL={iconStyles[0].backgroundImageURL}

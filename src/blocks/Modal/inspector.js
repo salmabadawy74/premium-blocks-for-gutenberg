@@ -1246,7 +1246,7 @@ const Inspector = ({
                 <PremiumBackgroundControl
                     setAttributes={setAttributes}
                     saveContainerStyle={saveModalStyles}
-                    backgroundType={{ label: 'backgroundType', value: backgroundType }}
+                    backgroundType={backgroundType}
                     backgroundColor={modalStyles[0].containerBack}
                     backgroundImageID={modalStyles[0].backgroundImageID}
                     backgroundImageURL={modalStyles[0].backgroundImageURL}

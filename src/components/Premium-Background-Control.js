@@ -37,7 +37,7 @@ export default function PremiumBackgroundControl({
                                 className="Premium-btn-size-btn"
                                 isSmall
                                 isPrimary={backgroundType === key}
-                                onClick={() => setAttributes({ [backgroundType.label]: key })}
+                                onClick={() => setAttributes({ backgroundType: key })}
                             >
                                 {1 == FontAwesomeEnabled ? <i className={icon}></i> : tooltip}
                             </Button>
@@ -46,7 +46,7 @@ export default function PremiumBackgroundControl({
                 </ButtonGroup>
             </div>
             {
-                'solid' === backgroundType.value && (
+                'solid' === backgroundType && (
                     <div className="Premium-inner-sub-section">
                         <PremiumBackground
                             type="color"
@@ -91,7 +91,7 @@ export default function PremiumBackgroundControl({
                 )
             }
             {
-                'gradient' === backgroundType.value && (
+                'gradient' === backgroundType && (
                     <div className="Premium-inner-sub-section">
                         <AdvancedPopColorControl
                             label={__('Gradient Color 1', 'premium-blocks-for-gutenberg')}
