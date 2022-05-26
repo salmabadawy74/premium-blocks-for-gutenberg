@@ -6,7 +6,7 @@
     --primaryColor: #007cba;
     --accentColorHover: #135e96;
     --optionBorderColor: #e1e1e1;
-    --inputBorderColor: #dcdddf;
+    --inputBorderColor: #e1e1e1;
 }
 
 .premium-panel-body p.premium-editor-paragraph {
@@ -3930,7 +3930,13 @@ i.fipicon-angle-left:before {
     .input-wrapper
     .premium-spacing-wrapper
     li:first-child {
-    margin: 0 2px 0 0;
+        margin: 0 1px 0 0;
+}
+.premium-spacing-responsive
+    .input-wrapper
+    .premium-spacing-wrapper
+    li:last-child {
+    margin: 0 0 0 2px;
 }
 .premium-spacing-responsive
     .input-wrapper
@@ -3941,14 +3947,14 @@ i.fipicon-angle-left:before {
     padding: 0 3px;
     width: 100% !important;
     height: 32px;
-    border: 1px solid #dcdddf !important;
+    border: 1px solid #e1e1e1 !important;
     border-radius: 0 !important;
 }
 .premium-spacing-responsive .input-wrapper .premium-spacing-wrapper li button {
     text-align: center;
     width: 100% !important;
     height: 32px;
-    border: 1px solid #dcdddf !important;
+    border: 1px solid #e1e1e1 !important;
     border-radius: 0 !important;
     background-color: #fff;
     font-size: 12px;
@@ -4011,7 +4017,7 @@ i.fipicon-angle-left:before {
     height: 30px;
     line-height: 30px;
     font-size: 14px;
-    border: 1px solid #dcdddf;
+    border: 1px solid #e1e1e1 !important;
     background-color: #fff;
     font-size: 12px;
     cursor: pointer;
@@ -5005,7 +5011,7 @@ input[type="number"] {
     border-radius: 0px;
     margin-left: 5px;
     cursor: pointer;
-    border: 1px solid #dcdddf;
+    border: 1px solid #e1e1e1;
     transition: border-color 0.1s linear;
 }
 .premium-popover-color
@@ -5480,7 +5486,7 @@ input[type="number"] {
     li.customize-control-premiumslider
     .premium-range-value__input {
     width: 100%;
-    border: 1px solid #dcdddf !important;
+    border: 1px solid #e1e1e1 !important;
     border-radius: 0 !important;
 }
 .premium-typography-options > li:not(.premium-typography-variant) {
@@ -5750,6 +5756,7 @@ input[type="number"] {
     margin-left: auto;
     display: inline-flex;
     vertical-align: middle;
+    margin-right: 6px;
 }
 .premium-blocks-border-button-list .premium-border-button {
     position: relative;
@@ -6136,4 +6143,14 @@ input[type="number"] {
     padding: 12px;
     border-radius: 5px;
     background-color: #fff;
+}
+
+/******************* Toggle Control  *************************/
+/************************************************************/
+.premium-inspector-tab
+    .components-toggle-control
+    .components-base-control__field {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
 }

@@ -4899,9 +4899,9 @@ animation-fast {
 @keyframes premium_blurshadow {
     from {
         text-shadow: 0 0 var(--shadow-value) var(--shadow-color);
-        color: transparent; 
+        color: transparent;
     }
     to {
-        text-shadow: 0; 
-    } 
+        text-shadow: 0;
+    }
 }
