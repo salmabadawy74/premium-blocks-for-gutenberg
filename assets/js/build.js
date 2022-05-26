@@ -57721,7 +57721,7 @@ var Inspector = function Inspector(_ref) {
         triggerSettings[0].triggerType !== "load" && React.createElement(
             PanelBody,
             {
-                title: __("Triger", 'premium-blocks-for-gutenberg'),
+                title: __("Trigger", 'premium-blocks-for-gutenberg'),
                 className: "premium-panel-body",
                 initialOpen: false
             },

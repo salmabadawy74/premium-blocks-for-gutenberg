@@ -590,7 +590,7 @@ const Inspector = ({
                 )}
             </PanelBody>
             {triggerSettings[0].triggerType !== "load" && <PanelBody
-                title={__("Triger", 'premium-blocks-for-gutenberg')}
+                title={__("Trigger", 'premium-blocks-for-gutenberg')}
                 className="premium-panel-body"
                 initialOpen={false}
             >
