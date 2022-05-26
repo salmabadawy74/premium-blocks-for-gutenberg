@@ -417,6 +417,7 @@ var AdvancedColorControl = function (_Component) {
                                                 }),
                                                 style: { backgroundColor: color },
                                                 onClick: function onClick() {
+                                                    _this2.setState({ currentColor: color });
                                                     _this2.props.onColorChange(color);
                                                 }
                                             },
@@ -2622,8 +2623,6 @@ var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 var _wp$components = wp.components,
     SelectControl = _wp$components.SelectControl,
     Button = _wp$components.Button,
@@ -2683,7 +2682,7 @@ function PremiumBackgroundControl(_ref) {
                                 isSmall: true,
                                 isPrimary: backgroundType === key,
                                 onClick: function onClick() {
-                                    return setAttributes(_defineProperty({}, backgroundType.label, key));
+                                    return setAttributes({ backgroundType: key });
                                 }
                             },
                             1 == _settings.FontAwesomeEnabled ? _react2.default.createElement('i', { className: icon }) : tooltip
@@ -2692,7 +2691,7 @@ function PremiumBackgroundControl(_ref) {
                 })
             )
         ),
-        'solid' === backgroundType.value && _react2.default.createElement(
+        'solid' === backgroundType && _react2.default.createElement(
             'div',
             { className: 'Premium-inner-sub-section' },
             _react2.default.createElement(_premiumBackground2.default, {
@@ -2737,7 +2736,7 @@ function PremiumBackgroundControl(_ref) {
                 }
             })
         ),
-        'gradient' === backgroundType.value && _react2.default.createElement(
+        'gradient' === backgroundType && _react2.default.createElement(
             'div',
             { className: 'Premium-inner-sub-section' },
             _react2.default.createElement(_ColorComponent2.default, {
@@ -22284,10 +22283,7 @@ var edit = function (_Component) {
                     React.createElement(_PremiumBackgroundControl2.default, {
                         setAttributes: setAttributes,
                         saveContainerStyle: saveContainerStyle,
-                        backgroundType: {
-                            label: 'backgroundType',
-                            value: backgroundType
-                        },
+                        backgroundType: backgroundType,
                         backgroundColor: containerStyles[0].containerBack,
                         backgroundImageID: containerStyles[0].backgroundImageID,
                         backgroundImageURL: containerStyles[0].backgroundImageURL,
@@ -25353,10 +25349,7 @@ var edit = function (_Component) {
                     React.createElement(_PremiumBackgroundControl2.default, {
                         setAttributes: setAttributes,
                         saveContainerStyle: saveContainerStyle,
-                        backgroundType: {
-                            label: 'backgroundType',
-                            value: backgroundType
-                        },
+                        backgroundType: backgroundType,
                         backgroundColor: containerStyles[0].containerBack,
                         backgroundImageID: containerStyles[0].backgroundImageID,
                         backgroundImageURL: containerStyles[0].backgroundImageURL,
@@ -28090,10 +28083,7 @@ var edit = function edit(props) {
             React.createElement(_PremiumBackgroundControl2.default, {
                 setAttributes: setAttributes,
                 saveContainerStyle: saveContainerStyle,
-                backgroundType: {
-                    label: 'backgroundType',
-                    value: backgroundType
-                },
+                backgroundType: backgroundType,
                 backgroundColor: containerStyles[0].containerBack,
                 backgroundImageID: containerStyles[0].backgroundImageID,
                 backgroundImageURL: containerStyles[0].backgroundImageURL,
@@ -43159,10 +43149,7 @@ var edit = function edit(props) {
             React.createElement(_PremiumBackgroundControl2.default, {
                 setAttributes: setAttributes,
                 saveContainerStyle: saveContainerStyle,
-                backgroundType: {
-                    label: "backgroundType",
-                    value: backgroundType
-                },
+                backgroundType: backgroundType,
                 backgroundColor: containerStyles[0].containerBack,
                 backgroundImageID: containerStyles[0].backgroundImageID,
                 backgroundImageURL: containerStyles[0].backgroundImageURL,
@@ -45122,7 +45109,7 @@ var edit = function (_Component) {
                     React.createElement(_PremiumBackgroundControl2.default, {
                         setAttributes: setAttributes,
                         saveContainerStyle: saveContainerStyle,
-                        backgroundType: { label: 'backgroundType', value: backgroundType },
+                        backgroundType: backgroundType,
                         backgroundColor: containerStyles[0].containerBack,
                         backgroundImageID: containerStyles[0].backgroundImageID,
                         backgroundImageURL: containerStyles[0].backgroundImageURL,
@@ -58569,7 +58556,7 @@ var Inspector = function Inspector(_ref) {
             React.createElement(_PremiumBackgroundControl2.default, {
                 setAttributes: setAttributes,
                 saveContainerStyle: saveModalStyles,
-                backgroundType: { label: 'backgroundType', value: backgroundType },
+                backgroundType: backgroundType,
                 backgroundColor: modalStyles[0].containerBack,
                 backgroundImageID: modalStyles[0].backgroundImageID,
                 backgroundImageURL: modalStyles[0].backgroundImageURL,
@@ -67213,10 +67200,7 @@ var edit = function (_Component) {
                     React.createElement(_PremiumBackgroundControl2.default, {
                         setAttributes: setAttributes,
                         saveContainerStyle: saveIconStyles,
-                        backgroundType: {
-                            label: 'backgroundType',
-                            value: backgroundType
-                        },
+                        backgroundType: backgroundType,
                         backgroundColor: iconStyles[0].containerBack,
                         backgroundImageID: iconStyles[0].backgroundImageID,
                         backgroundImageURL: iconStyles[0].backgroundImageURL,

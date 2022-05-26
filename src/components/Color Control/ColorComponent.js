@@ -80,6 +80,7 @@ class AdvancedColorControl extends Component {
                                                     })}
                                                         style={{ backgroundColor: color }}
                                                         onClick={() => {
+                                                            this.setState({ currentColor: color })
                                                             this.props.onColorChange(color);
 
 
@@ -114,9 +115,7 @@ class AdvancedColorControl extends Component {
                                     <div className="premium-color-picker-value">
                                         <input
                                             onChange={({ target: { value: color } }) => {
-                                                this.props.onColorChange(
-                                                    normalizeColor(color)
-                                                )
+                                                this.props.onColorChange(normalizeColor(color))
                                                 this.setState({ currentColor: color })
                                             }}
                                             value={normalizeColor(this.state.currentColor)}
