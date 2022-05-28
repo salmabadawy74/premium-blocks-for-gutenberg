@@ -16,7 +16,7 @@ import InspectorTab from '../../components/inspectorTab';
 import RadioComponent from '../../components/radio-control';
 import InsideTabs from '../../components/InsideTabs'
 import InsideTab from '../../components/InsideTab';
-import { gradientBackground, borderCss, padddingCss, marginCss } from '../../components/HelperFunction'
+import { borderCss, padddingCss, marginCss } from '../../components/HelperFunction'
 import times from "lodash/times"
 
 const { withSelect } = wp.data
@@ -420,44 +420,18 @@ class edit extends Component {
         const changeLinkValue = (value, i, personIndex) => {
             i.changeinput = value
             i.value = value
-            console.log(value, i, personIndex)
+
             let arrayItem = multiPersonContent.map((cont) => (
                 cont
             )).filter(f => f.id == personIndex + 1)
-            console.log(arrayItem)
+
             let newData = (arrayItem[0].items).filter(b => {
                 return b
             })
-            console.log(newData)
+
             arrayItem[0].items = newData
             multiPersonContent[personIndex] = arrayItem[0]
             setAttributes(multiPersonContent[personIndex] = arrayItem[0]);
-            // if (personIndex + 1 > 0) {
-            //     i.changeinput = value
-            //     i.value = value
-            //     let arrayItem = multiPersonContent.map((cont) => (
-            //         cont
-            //     )).filter(f => f.id == personIndex + 1)
-            //     let newData = (arrayItem[0].items).filter(b => {
-            //         return b
-            //     })
-            //     console.log(newData)
-            //     arrayItem[0].items = newData
-            //     multiPersonContent[personIndex] = arrayItem[0]
-            //     setAttributes(multiPersonContent[personIndex] = arrayItem[0]);
-            // }
-            // else {
-            //     i.changeinput = value
-            //     i.value = value
-            //     let arrayItem = multiPersonContent.map((cont) => (
-            //         cont
-            //     ))
-            //     let newData = (arrayItem[0].items).filter(b => {
-            //         return b
-            //     })
-            //     console.log(arrayItem[0])
-            //     setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: newData }] });
-            // }
         }
 
         const onRemove = (value, i) => {
@@ -530,13 +504,6 @@ class edit extends Component {
                             bottom: effectPersonStyle === 'effect1' ? bottomInfo + "px" : ""
                         }}
                     >
-                        {/* <div
-                            className={`premium-person__name_wrap`}
-                            style={{
-                                fontSize: `${nameTypography.fontSize[this.props.deviceType] || ''}${nameTypography.fontSize.unit}`,
-                                ...padddingCss(namePadding, this.props.deviceType),
-                            }}
-                        > */}
                         {value.name && (
                             <RichText
                                 tagName={nameTag.toLowerCase()}
@@ -545,6 +512,7 @@ class edit extends Component {
                                 isSelected={false}
                                 onChange={value => { this.save({ name: value }, index) }}
                                 style={{
+                                    ...padddingCss(namePadding, this.props.deviceType),
                                     color: nameStyles[0].nameColor,
                                     fontSize: `${nameTypography.fontSize[this.props.deviceType] || ''}${nameTypography.fontSize.unit}`,
                                     letterSpacing: nameTypography.letterSpacing + "px",
@@ -558,15 +526,6 @@ class edit extends Component {
                                 keepPlaceholderOnFocus
                             />
                         )}
-                        {/* </div>
-                        <div
-                            className={`premium-person__title_wrap`}
-                            style={{
-                                ...marginCss(titleMargin, this.props.deviceType),
-                                ...padddingCss(titlePadding, this.props.deviceType),
-                                fontSize: `${titleTypography.fontSize[this.props.deviceType] || ''}${titleTypography.fontSize.unit}`,
-                            }}
-                        > */}
                         {value.title && (
                             <RichText
                                 tagName={titleTag.toLowerCase()}
@@ -575,6 +534,8 @@ class edit extends Component {
                                 isSelected={false}
                                 onChange={value => { this.save({ title: value }, index) }}
                                 style={{
+                                    ...marginCss(titleMargin, this.props.deviceType),
+                                    ...padddingCss(titlePadding, this.props.deviceType),
                                     color: titleStyles[0].titleColor,
                                     fontSize: `${titleTypography.fontSize[this.props.deviceType] || ''}${titleTypography.fontSize.unit}`,
                                     letterSpacing: titleTypography.letterSpacing + "px",
@@ -588,14 +549,6 @@ class edit extends Component {
                                 keepPlaceholderOnFocus
                             />
                         )}
-                        {/* </div> */}
-                        {/* <div
-                            className={`premium-person__desc_wrap`}
-                            style={{
-                                ...padddingCss(descPadding, this.props.deviceType),
-                                fontSize: `${descTypography.fontSize[this.props.deviceType] || 20}${descTypography.fontSize.unit}`,
-                            }}
-                        > */}
                         {value.desc && (
                             <RichText
                                 tagName="span"
@@ -604,6 +557,7 @@ class edit extends Component {
                                 isSelected={false}
                                 onChange={value => { this.save({ desc: value }, index) }}
                                 style={{
+                                    ...padddingCss(descPadding, this.props.deviceType),
                                     color: descStyles[0].descColor,
                                     fontSize: `${descTypography.fontSize[this.props.deviceType] || 20}${descTypography.fontSize.unit}`,
                                     letterSpacing: descTypography.letterSpacing + "px",
@@ -617,7 +571,6 @@ class edit extends Component {
                                 keepPlaceholderOnFocus
                             />
                         )}
-                        {/* </div> */}
                         {effectPersonStyle == 'effect1' ? <div>{value.socialIcon && (
                             socialIconfn(value.items)
                         )}</div> : ""}
@@ -988,40 +941,6 @@ class edit extends Component {
                                     </InsideTab>
                                 </InsideTabs>
                                 <hr />
-                                {/* <div className="premium-control-toggle">
-                                    <AdvancedPopColorControl
-                                        label={__("Social Icon Color", 'premium-block-for-gutenberg')}
-                                        colorValue={socialIconStyles[0].socialIconColor}
-                                        colorDefault={''}
-                                        onColorChange={newValue =>
-                                            saveSocialIconStyles({
-                                                socialIconColor: newValue
-                                            })
-                                        }
-                                    />
-                                    <AdvancedPopColorControl
-                                        label={__("Social Icon Hover Color", 'premium-block-for-gutenberg')}
-                                        colorValue={socialIconStyles[0].socialIconHoverColor}
-                                        colorDefault={''}
-                                        onColorChange={newValue =>
-                                            saveSocialIconStyles({
-                                                socialIconHoverColor: newValue
-                                            })
-                                        }
-                                    />
-                                </div>
-                                <div className="premium-control-toggle">
-                                    <AdvancedPopColorControl
-                                        label={__("Social Icon Background Color", 'premium-block-for-gutenberg')}
-                                        colorValue={socialIconStyles[0].socialIconBackgroundColor}
-                                        colorDefault={''}
-                                        onColorChange={newValue =>
-                                            saveSocialIconStyles({
-                                                socialIconBackgroundColor: newValue
-                                            })
-                                        }
-                                    />
-                                </div> */}
                                 <ToggleControl
                                     label={__("Brands Default Colors", 'premium-block-for-gutenberg')}
                                     checked={socialIconStyles[0].defaultIconColor}

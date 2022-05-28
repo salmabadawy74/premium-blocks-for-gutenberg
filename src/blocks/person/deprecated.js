@@ -299,54 +299,56 @@ const attributes = {
     }
 }
 const newAttributes = {
-    socialIconMargin: {
-        type: "object",
-        default: {
-            Desktop: {
-                top: "",
-                right: "",
-                bottom: "",
-                left: ""
-            },
-            Tablet: {
-                top: "",
-                right: "",
-                bottom: "",
-                left: ""
-            },
-            Mobile: {
-                top: "",
-                right: "",
-                bottom: "",
-                left: ""
-            },
-            unit: "px"
-        }
-    },
-    socialIconPadding: {
-        type: "object",
-        default: {
-            Desktop: {
-                top: "",
-                right: "",
-                bottom: "",
-                left: ""
-            },
-            Tablet: {
-                top: "",
-                right: "",
-                bottom: "",
-                left: ""
-            },
-            Mobile: {
-                top: "",
-                right: "",
-                bottom: "",
-                left: ""
-            },
-            unit: "px"
-        }
-    }
+    // nameTag: '',
+    // titleTag: '',
+    // socialIconMargin: {
+    //     type: "object",
+    //     default: {
+    //         Desktop: {
+    //             top: "",
+    //             right: "",
+    //             bottom: "",
+    //             left: ""
+    //         },
+    //         Tablet: {
+    //             top: "",
+    //             right: "",
+    //             bottom: "",
+    //             left: ""
+    //         },
+    //         Mobile: {
+    //             top: "",
+    //             right: "",
+    //             bottom: "",
+    //             left: ""
+    //         },
+    //         unit: "px"
+    //     }
+    // },
+    // socialIconPadding: {
+    //     type: "object",
+    //     default: {
+    //         Desktop: {
+    //             top: "",
+    //             right: "",
+    //             bottom: "",
+    //             left: ""
+    //         },
+    //         Tablet: {
+    //             top: "",
+    //             right: "",
+    //             bottom: "",
+    //             left: ""
+    //         },
+    //         Mobile: {
+    //             top: "",
+    //             right: "",
+    //             bottom: "",
+    //             left: ""
+    //         },
+    //         unit: "px"
+    //     }
+    // }
 }
 
 const deprecated = [
@@ -357,6 +359,8 @@ const deprecated = [
         },
         migrate: (attributes) => {
             let newAttributes = {
+                nameTag: '',
+                titleTag: '',
                 socialIconSize: {
                     unit: attributes.socialIconStyles[0].socialIconfontSizeType,
                     "Desktop": attributes.socialIconStyles[0].socialIconSize
@@ -406,10 +410,10 @@ const deprecated = [
                     borderType: attributes.socialIconStyles[0].borderTypeIcon,
                     borderRadius: {
                         "Desktop": {
-                            top: "",
-                            right: "",
-                            bottom: "",
-                            left: ""
+                            top: attributes.socialIconStyles[0].borderRadiusIcon,
+                            right: attributes.socialIconStyles[0].borderRadiusIcon,
+                            bottom: attributes.socialIconStyles[0].borderRadiusIcon,
+                            left: attributes.socialIconStyles[0].borderRadiusIcon
                         },
                         "Tablet": {
                             top: "",
@@ -444,7 +448,167 @@ const deprecated = [
                             left: ""
                         },
                     }
-                }
+                },
+                nameTypography: {
+                    'fontWeight': attributes.nameStyles[0].nameWeight,
+                    'fontStyle': attributes.nameStyles[0].nameStyle,
+                    'textTransform': attributes.nameStyles[0].nameUpper,
+                    'letterSpacing': attributes.nameStyles[0].nameLetter,
+                    'fontFamily': '',
+                    'lineHeight': '',
+                    'fontSize': {
+                        'Desktop': attributes.nameStyles[0].namefontSize,
+                        "Tablet": attributes.nameStyles[0].namefontSizeTablet,
+                        "Mobile": attributes.nameStyles[0].namefontSizeMobile,
+                        'unit': attributes.nameStyles[0].namefontSizeType,
+                    }
+                },
+                titleTypography: {
+                    'fontWeight': attributes.titleStyles[0].titleWeight,
+                    'fontStyle': attributes.titleStyles[0].titleStyle,
+                    'textTransform': attributes.titleStyles[0].titleUpper,
+                    'letterSpacing': attributes.titleStyles[0].titleLetter,
+                    'fontFamily': '',
+                    'lineHeight': '',
+                    'fontSize': {
+                        'Desktop': attributes.titleStyles[0].titleSize,
+                        "Tablet": attributes.titleStyles[0].titlefontSizeTablet,
+                        "Mobile": attributes.titleStyles[0].titlefontSizeMobile,
+                        'unit': attributes.titleStyles[0].titlefontSizeType,
+                    }
+                },
+                descTypography: {
+                    'fontWeight': attributes.descStyles[0].descWeight,
+                    'fontStyle': attributes.descStyles[0].descStyle,
+                    'textTransform': attributes.descStyles[0].descUpper,
+                    'letterSpacing': attributes.descStyles[0].descLetter,
+                    'fontFamily': '',
+                    'lineHeight': '',
+                    'fontSize': {
+                        'Desktop': attributes.descStyles[0].descSize,
+                        "Tablet": attributes.descStyles[0].descfontSizeTablet,
+                        "Mobile": attributes.descStyles[0].descfontSizeMobile,
+                        'unit': attributes.descStyles[0].descfontSizeType,
+                    }
+                },
+                titleShadow: {
+                    'color': attributes.titleStyles[0].titleshadowColor,
+                    'blur': attributes.titleStyles[0].titleShadowBlur,
+                    'horizontal': attributes.titleStyles[0].titleShadowHorizontal,
+                    'vertical': attributes.titleStyles[0].titleShadowVertical
+                },
+                nameShadow: {
+                    'color': attributes.titleStyles[0].nameshadowColor,
+                    'blur': attributes.titleStyles[0].nameshadowBlur,
+                    'horizontal': attributes.titleStyles[0].nameshadowHorizontal,
+                    'vertical': attributes.titleStyles[0].nameshadowVertical
+                },
+                descShadow: {
+                    'color': attributes.titleStyles[0].descshadowColor,
+                    'blur': attributes.titleStyles[0].descshadowBlur,
+                    'horizontal': attributes.titleStyles[0].descshadowHorizontal,
+                    'vertical': attributes.titleStyles[0].descshadowVertical
+                },
+                namePadding: {
+                    "Desktop": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "Tablet": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "Mobile": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                },
+                titlePadding: {
+                    "Desktop": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "Tablet": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "Mobile": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                },
+                titleMargin: {
+                    "Desktop": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "Tablet": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "Mobile": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                },
+                descPadding: {
+                    "Desktop": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "Tablet": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "Mobile": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                },
+                contentPadding: {
+                    "Desktop": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "Tablet": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "Mobile": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                },
             }
             return Object.assign(attributes, newAttributes)
         },

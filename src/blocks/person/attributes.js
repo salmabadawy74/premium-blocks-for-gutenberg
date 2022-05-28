@@ -214,22 +214,22 @@ const attributes = {
         type: "object",
         default: {
             Desktop: {
-                top: "",
-                right: "",
-                bottom: "",
-                left: ""
+                top: "0",
+                right: "0",
+                bottom: "0",
+                left: "0"
             },
             Tablet: {
-                top: "",
-                right: "",
-                bottom: "",
-                left: ""
+                top: "0",
+                right: "0",
+                bottom: "0",
+                left: "0"
             },
             Mobile: {
-                top: "",
-                right: "",
-                bottom: "",
-                left: ""
+                top: "0",
+                right: "0",
+                bottom: "0",
+                left: "0"
             },
             unit: "px"
         }
@@ -238,22 +238,22 @@ const attributes = {
         type: "object",
         default: {
             Desktop: {
-                top: "",
-                right: "",
-                bottom: "",
-                left: ""
+                top: "0",
+                right: "0",
+                bottom: "0",
+                left: "0"
             },
             Tablet: {
-                top: "",
-                right: "",
-                bottom: "",
-                left: ""
+                top: "0",
+                right: "0",
+                bottom: "0",
+                left: "0"
             },
             Mobile: {
-                top: "",
-                right: "",
-                bottom: "",
-                left: ""
+                top: "0",
+                right: "0",
+                bottom: "0",
+                left: "0"
             },
             unit: "px"
         }
@@ -415,10 +415,10 @@ const attributes = {
         type: "object",
         default: {
             Desktop: {
-                top: "",
-                right: "",
-                bottom: "",
-                left: ""
+                top: "0",
+                right: "0",
+                bottom: "0",
+                left: "0"
             },
             Tablet: {
                 top: "",
@@ -439,10 +439,10 @@ const attributes = {
         type: "object",
         default: {
             Desktop: {
-                top: "",
-                right: "",
-                bottom: "",
-                left: ""
+                top: "0",
+                right: "0",
+                bottom: "0",
+                left: "0"
             },
             Tablet: {
                 top: "",
@@ -463,10 +463,10 @@ const attributes = {
         type: "object",
         default: {
             Desktop: {
-                top: "",
-                right: "",
-                bottom: "",
-                left: ""
+                top: "0",
+                right: "0",
+                bottom: "0",
+                left: "0"
             },
             Tablet: {
                 top: "",
@@ -487,10 +487,10 @@ const attributes = {
         type: "object",
         default: {
             Desktop: {
-                top: "",
-                right: "",
-                bottom: "",
-                left: ""
+                top: "0",
+                right: "0",
+                bottom: "0",
+                left: "0"
             },
             Tablet: {
                 top: "",

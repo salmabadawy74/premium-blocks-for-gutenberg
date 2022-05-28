@@ -1,7 +1,9 @@
 import classnames from 'classnames'
 import DefaultImage from "../../components/default-image";
-import { gradientBackground, borderCss, padddingCss, marginCss } from '../../components/HelperFunction'
 
+const {
+    RichText
+} = wp.editor;
 
 const save = props => {
 
@@ -44,7 +46,8 @@ const save = props => {
         nameShadow,
         titleShadow,
         descShadow,
-        namePadding
+        titleTag,
+        nameTag,
     } = props.attributes;
 
 
@@ -103,67 +106,66 @@ const save = props => {
                         bottom: effectPersonStyle === 'effect1' ? bottomInfo + "px" : ""
                     }}
                 >
-                    <div className={`premium-person__name_wrap`}>
-                        {value.name && (
-                            <span
-                                className={`premium-person__name`}
-                                style={{
-                                    // ...padddingCss(namePadding, props.deviceType),
-                                    color: nameStyles[0].nameColor,
-                                    alignSelf: nameV,
-                                    fontSize: `${nameTypography.fontSize[props.deviceType] || 20}${nameTypography.fontSize.unit}`,
-                                    letterSpacing: nameTypography.letterSpacing + "px",
-                                    textTransform: nameTypography.textTransform ? "uppercase" : "none",
-                                    fontStyle: nameTypography.fontStyle,
-                                    fontWeight: nameTypography.fontWeight,
-                                    lineHeight: nameTypography.lineHeight + "px",
-                                    textShadow: `${nameShadow.horizontal}px ${nameShadow.vertical}px ${nameShadow.blur}px ${nameShadow.color}`
-                                }}
-                            >
-                                {value.name}
-                            </span>
-                        )}
-                    </div>
-                    <div className={`premium-person__title_wrap`}>
-                        {value.title && (
-                            <span
-                                className={`premium-person__title`}
-                                style={{
-                                    color: titleStyles[0].titleColor,
-                                    alignSelf: titleV,
-                                    fontSize: `${titleTypography.fontSize[props.deviceType] || 20}${titleTypography.fontSize.unit}`,
-                                    letterSpacing: titleTypography.letterSpacing + "px",
-                                    textTransform: titleTypography.textTransform ? "uppercase" : "none",
-                                    fontStyle: titleTypography.fontStyle,
-                                    fontWeight: titleTypography.fontWeight,
-                                    lineHeight: titleTypography.lineHeight + "px",
-                                    textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`
-                                }}
-                            >
-                                {value.title}
-                            </span>
-                        )}
-                    </div>
-                    <div className={`premium-person__desc_wrap`}>
-                        {value.desc && (
-                            <span
-                                className={`premium-person__desc`}
-                                style={{
-                                    color: descStyles[0].descColor,
-                                    alignSelf: descV,
-                                    fontSize: `${descTypography.fontSize[props.deviceType] || 20}${descTypography.fontSize.unit}`,
-                                    letterSpacing: descTypography.letterSpacing + "px",
-                                    textTransform: descTypography.textTransform ? "uppercase" : "none",
-                                    fontStyle: descTypography.fontStyle,
-                                    fontWeight: descTypography.fontWeight,
-                                    lineHeight: descTypography.lineHeight + "px",
-                                    textShadow: `${descShadow.horizontal}px ${descShadow.vertical}px ${descShadow.blur}px ${descShadow.color}`
-                                }}
-                            >
-                                {value.desc}
-                            </span>
-                        )}
-                    </div>
+                    {value.name && (
+                        <RichText.content
+                            tagName={nameTag.toLowerCase()}
+                            className={`premium-person__name`}
+                            value={value.name}
+                            isSelected={false}
+                            onChange={value => { this.save({ name: value }, index) }}
+                            style={{
+                                color: nameStyles[0].nameColor,
+                                alignSelf: nameV,
+                                letterSpacing: nameTypography.letterSpacing + "px",
+                                textTransform: nameTypography.textTransform ? "uppercase" : "none",
+                                fontStyle: nameTypography.fontStyle,
+                                fontWeight: nameTypography.fontWeight,
+                                lineHeight: nameTypography.lineHeight + "px",
+                                textShadow: `${nameShadow.horizontal}px ${nameShadow.vertical}px ${nameShadow.blur}px ${nameShadow.color}`
+                            }}
+                            keepPlaceholderOnFocus
+                        />
+                    )}
+                    {value.title && (
+                        <RichText.content
+                            tagName={titleTag.toLowerCase()}
+                            className={`premium-person__title`}
+                            value={value.title}
+                            isSelected={false}
+                            onChange={value => { this.save({ title: value }, index) }}
+                            style={{
+                                color: titleStyles[0].titleColor,
+                                letterSpacing: titleTypography.letterSpacing + "px",
+                                textTransform: titleTypography.textTransform ? "uppercase" : "none",
+                                fontStyle: titleTypography.fontStyle,
+                                fontWeight: titleTypography.fontWeight,
+                                lineHeight: titleTypography.lineHeight + "px",
+                                alignSelf: titleV,
+                                textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`
+                            }}
+                            keepPlaceholderOnFocus
+                        />
+                    )}
+                    {value.desc && (
+                        <RichText.content
+                            tagName="span"
+                            className={`premium-person__desc`}
+                            value={value.desc}
+                            isSelected={false}
+                            onChange={value => { this.save({ desc: value }, index) }}
+                            style={{
+                                color: descStyles[0].descColor,
+                                letterSpacing: descTypography.letterSpacing + "px",
+                                textTransform: descTypography.textTransform ? "uppercase" : "none",
+                                fontStyle: descTypography.fontStyle,
+                                fontWeight: descTypography.fontWeight,
+                                lineHeight: descTypography.lineHeight + "px",
+                                alignSelf: descV,
+                                textShadow: `${descShadow.horizontal}px ${descShadow.vertical}px ${descShadow.blur}px ${descShadow.color}`
+                            }}
+                            keepPlaceholderOnFocus
+                        />
+                    )}
                     {effectPersonStyle == 'effect1' ? <div>{value.socialIcon && (
                         socialIconfn(value.items)
                     )}</div> : ""}
