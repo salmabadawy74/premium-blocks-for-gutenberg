@@ -332,7 +332,7 @@ const attributes = {
     descTypography: {
         type: "object",
         default: {
-            "fontWeight": 500,
+            "fontWeight": 400,
             'fontStyle': '',
             'textTransform': '',
             'letterSpacing': '',

@@ -16,6 +16,7 @@ import InspectorTab from '../../components/inspectorTab';
 import RadioComponent from '../../components/radio-control';
 import InsideTabs from '../../components/InsideTabs'
 import InsideTab from '../../components/InsideTab';
+import WebfontLoader from "../../components/typography/fontLoader"
 import { borderCss, padddingCss, marginCss } from '../../components/HelperFunction'
 import times from "lodash/times"
 
@@ -347,6 +348,43 @@ class edit extends Component {
         setAttributes({ id: blockId });
 
         const mainClasses = classnames(className, "premium-person");
+
+        let loadTitleGoogleFonts;
+        let loadNameGoogleFonts;
+        let loadDescriptionGoogleFonts;
+        if (nameTypography.fontFamily !== 'Default') {
+            const nameConfig = {
+                google: {
+                    families: [nameTypography.fontFamily],
+                },
+            }
+            loadNameGoogleFonts = (
+                <WebfontLoader config={nameConfig}>
+                </WebfontLoader>
+            )
+        }
+        if (titleTypography.fontFamily !== 'Default') {
+            const titleConfig = {
+                google: {
+                    families: [titleTypography.fontFamily],
+                },
+            }
+            loadTitleGoogleFonts = (
+                <WebfontLoader config={titleConfig}>
+                </WebfontLoader>
+            )
+        }
+        if (descTypography.fontFamily !== 'Default') {
+            const descriptionConfig = {
+                google: {
+                    families: [descTypography.fontFamily],
+                },
+            }
+            loadDescriptionGoogleFonts = (
+                <WebfontLoader config={descriptionConfig}>
+                </WebfontLoader>
+            )
+        }
 
         const shouldCancelStart = (e) => {
             // Prevent sorting from being triggered if target is input or button
@@ -1042,6 +1080,9 @@ class edit extends Component {
                     }}
                 />
                 {content()}
+                {loadNameGoogleFonts}
+                {loadTitleGoogleFonts}
+                {loadDescriptionGoogleFonts}
             </div>
         ];
     };

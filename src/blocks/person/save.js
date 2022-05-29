@@ -116,6 +116,7 @@ const save = props => {
                             style={{
                                 color: nameStyles[0].nameColor,
                                 alignSelf: nameV,
+                                fontFamily: nameTypography.fontFamily,
                                 letterSpacing: nameTypography.letterSpacing + "px",
                                 textTransform: nameTypography.textTransform ? "uppercase" : "none",
                                 fontStyle: nameTypography.fontStyle,
@@ -135,6 +136,7 @@ const save = props => {
                             onChange={value => { this.save({ title: value }, index) }}
                             style={{
                                 color: titleStyles[0].titleColor,
+                                fontFamily: titleTypography.fontFamily,
                                 letterSpacing: titleTypography.letterSpacing + "px",
                                 textTransform: titleTypography.textTransform ? "uppercase" : "none",
                                 fontStyle: titleTypography.fontStyle,
@@ -155,6 +157,7 @@ const save = props => {
                             onChange={value => { this.save({ desc: value }, index) }}
                             style={{
                                 color: descStyles[0].descColor,
+                                fontFamily: descTypography.fontFamily,
                                 letterSpacing: descTypography.letterSpacing + "px",
                                 textTransform: descTypography.textTransform ? "uppercase" : "none",
                                 fontStyle: descTypography.fontStyle,

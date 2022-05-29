@@ -2312,22 +2312,23 @@ class PBG_Blocks_Helper {
 	 */
 	public function get_iconbox_css_style( $attr, $unique_id ) {
 
-		// if ( isset( $attr['titleTypography']['fontFamily'] ) ) {
-		// 	$this->add_gfont(
-		// 		array(
-		// 			'fontFamily'  => ( isset( $attr['titleTypography']['fontFamily'] ) ? $attr['titleTypography']['fontFamily'] : '' ),
-		// 			'fontVariant' => ( isset( $attr['titleTypography']['fontWeight'] ) ? $attr['titleTypography']['fontWeight'] : '' ),
-		// 		)
-		// 	);
-		// }
-		// if ( isset( $attr['descTypography']['fontFamily'] ) ) {
-		// 	$this->add_gfont(
-		// 		array(
-		// 			'fontFamily'  => ( isset( $attr['descTypography']['fontFamily'] ) ? $attr['descTypography']['fontFamily'] : '' ),
-		// 			'fontVariant' => ( isset( $attr['descTypography']['fontWeight'] ) ? $attr['descTypography']['fontWeight'] : '' ),
-		// 		)
-		// 	);
-		// }
+		if ( isset( $attr['titleTypography']['fontFamily'] ) ) {
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $attr['titleTypography']['fontFamily'] ) ? $attr['titleTypography']['fontFamily'] : '' ),
+					'fontVariant' => ( isset( $attr['titleTypography']['fontWeight'] ) ? $attr['titleTypography']['fontWeight'] : '' ),
+				)
+			);
+		}
+		if ( isset( $attr['descTypography']['fontFamily'] ) ) {
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $attr['descTypography']['fontFamily'] ) ? $attr['descTypography']['fontFamily'] : '' ),
+					'fontVariant' => ( isset( $attr['descTypography']['fontWeight'] ) ? $attr['descTypography']['fontWeight'] : '' ),
+				)
+			);
+		}
+
 		$css                    = new Premium_Blocks_css();
 		$media_query            = array();
 		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
@@ -5172,6 +5173,31 @@ class PBG_Blocks_Helper {
 	 * @param string $unique_id option For block ID.
 	 */
 	public function get_person_css_style( $attr, $unique_id ) {
+
+		if ( isset( $attr['nameTypography']['fontFamily'] ) ) {
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $attr['nameTypography']['fontFamily'] ) ? $attr['nameTypography']['fontFamily'] : '' ),
+					'fontVariant' => ( isset( $attr['nameTypography']['fontWeight'] ) ? $attr['nameTypography']['fontWeight'] : '' ),
+				)
+			);
+		}
+		if ( isset( $attr['titleTypography']['fontFamily'] ) ) {
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $attr['titleTypography']['fontFamily'] ) ? $attr['titleTypography']['fontFamily'] : '' ),
+					'fontVariant' => ( isset( $attr['titleTypography']['fontWeight'] ) ? $attr['titleTypography']['fontWeight'] : '' ),
+				)
+			);
+		}
+		if ( isset( $attr['descTypography']['fontFamily'] ) ) {
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $attr['descTypography']['fontFamily'] ) ? $attr['descTypography']['fontFamily'] : '' ),
+					'fontVariant' => ( isset( $attr['descTypography']['fontWeight'] ) ? $attr['descTypography']['fontWeight'] : '' ),
+				)
+			);
+		}
 
 		$css                    = new Premium_Blocks_css();
 		$media_query            = array();
