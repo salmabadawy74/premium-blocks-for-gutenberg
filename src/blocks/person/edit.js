@@ -112,12 +112,14 @@ class edit extends Component {
     save(value, index) {
         const { attributes, setAttributes } = this.props
         const { multiPersonContent } = attributes
+
         const newItems = multiPersonContent.map((item, thisIndex) => {
             if (index === thisIndex) {
                 item = { ...item, ...value }
             }
             return item
         })
+
         setAttributes({
             multiPersonContent: newItems,
         })
@@ -515,6 +517,7 @@ class edit extends Component {
                                     ...padddingCss(namePadding, this.props.deviceType),
                                     color: nameStyles[0].nameColor,
                                     fontSize: `${nameTypography.fontSize[this.props.deviceType] || ''}${nameTypography.fontSize.unit}`,
+                                    fontFamily: nameTypography.fontFamily,
                                     letterSpacing: nameTypography.letterSpacing + "px",
                                     textTransform: nameTypography.textTransform ? "uppercase" : "none",
                                     fontStyle: nameTypography.fontStyle,
@@ -538,6 +541,7 @@ class edit extends Component {
                                     ...padddingCss(titlePadding, this.props.deviceType),
                                     color: titleStyles[0].titleColor,
                                     fontSize: `${titleTypography.fontSize[this.props.deviceType] || ''}${titleTypography.fontSize.unit}`,
+                                    fontFamily: titleTypography.fontFamily,
                                     letterSpacing: titleTypography.letterSpacing + "px",
                                     textTransform: titleTypography.textTransform ? "uppercase" : "none",
                                     fontStyle: titleTypography.fontStyle,
@@ -560,6 +564,7 @@ class edit extends Component {
                                     ...padddingCss(descPadding, this.props.deviceType),
                                     color: descStyles[0].descColor,
                                     fontSize: `${descTypography.fontSize[this.props.deviceType] || 20}${descTypography.fontSize.unit}`,
+                                    fontFamily: descTypography.fontFamily,
                                     letterSpacing: descTypography.letterSpacing + "px",
                                     textTransform: descTypography.textTransform ? "uppercase" : "none",
                                     fontStyle: descTypography.fontStyle,
@@ -581,27 +586,34 @@ class edit extends Component {
         }
 
         const addSocialIcon = (newsocial, index) => {
+
             let array = iconsList.map((i) => (
                 i
             )).filter(f => f.value == newsocial)
+
             if (array[0] != undefined) {
+
                 newsocial = array[0];
                 setAttributes({ selectedSocialMediaIcon: newsocial.label });
+
                 const newicon = newsocial.label;
+
                 let arrayItem = multiPersonContent.map((cont) => (
                     cont
                 )).filter(f => f.id == index + 1)
+
                 let repeat = arrayItem[0].items.filter(d => d.label == newicon)
+
                 if (repeat[0] != undefined) {
                     arrayItem[0].items.filter(d => d.label != newicon)
-                    multiPersonContent[index - 1] = arrayItem[0]
-                    setAttributes(multiPersonContent[index - 1] = arrayItem[0]);
+                    multiPersonContent[index] = arrayItem[0]
+                    setAttributes(multiPersonContent[index] = arrayItem[0]);
                 }
                 else {
                     arrayItem[0].items.push({ label: newicon, link: false, value: "", changeinput: "#" })
                     arrayItem[0].items.filter(d => d.label != newicon)
-                    multiPersonContent[index - 1] = arrayItem[0]
-                    setAttributes(multiPersonContent[index - 1] = arrayItem[0]);
+                    multiPersonContent[index] = arrayItem[0]
+                    setAttributes(multiPersonContent[index] = arrayItem[0]);
                 }
             }
         };
@@ -778,7 +790,7 @@ class edit extends Component {
                                 initialOpen={false}
                             >
                                 <PremiumTypo
-                                    components={["responsiveSize", "weight", "line", "style", "upper", "spacing"]}
+                                    components={["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"]}
                                     value={nameTypography}
                                     onChange={newValue => setAttributes({ nameTypography: newValue })}
                                 />
@@ -813,7 +825,7 @@ class edit extends Component {
                                 initialOpen={false}
                             >
                                 <PremiumTypo
-                                    components={["responsiveSize", "weight", "line", "style", "upper", "spacing"]}
+                                    components={["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"]}
                                     value={titleTypography}
                                     onChange={newValue => setAttributes({ titleTypography: newValue })}
                                 />
@@ -834,6 +846,7 @@ class edit extends Component {
                                     value={titleShadow}
                                     onChange={(value) => setAttributes({ titleShadow: value })}
                                 />
+                                <hr />
                                 <SpacingControl
                                     label={__('Margin', 'premium-blocks-for-gutenberg')}
                                     value={titleMargin}
@@ -855,7 +868,7 @@ class edit extends Component {
                                 initialOpen={false}
                             >
                                 <PremiumTypo
-                                    components={["responsiveSize", "weight", "line", "style", "upper", "spacing"]}
+                                    components={["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"]}
                                     value={descTypography}
                                     onChange={newValue => setAttributes({ descTypography: newValue })}
                                 />
@@ -884,7 +897,7 @@ class edit extends Component {
                                     responsive={true}
                                 />
                             </PanelBody>
-                            {multiPersonChecked > 1 ? (multiPersonContent.map(i => i.socialIcon && (<PanelBody
+                            <PanelBody
                                 title={__("Social Icon")}
                                 className="premium-panel-body"
                                 initialOpen={false}
@@ -946,6 +959,7 @@ class edit extends Component {
                                     checked={socialIconStyles[0].defaultIconColor}
                                     onChange={newCheck => saveSocialIconStyles({ defaultIconColor: newCheck })}
                                 />
+                                <hr />
                                 <PremiumBorder
                                     label={__('Border', 'premium-blocks-for-gutenberg')}
                                     value={socialIconBorder}
@@ -966,83 +980,7 @@ class edit extends Component {
                                     showUnits={true}
                                     responsive={true}
                                 />
-                            </PanelBody>)))
-                                : multiPersonContent[0].socialIcon && (<PanelBody
-                                    title={__("Social Icon")}
-                                    className="premium-panel-body"
-                                    initialOpen={false}
-                                >
-                                    <ResponsiveRangeControl
-                                        label={__('Size', 'premium-blocks-for-gutenberg')}
-                                        value={socialIconSize}
-                                        onChange={(value) => setAttributes({ socialIconSize: value })}
-                                        min={1}
-                                        max={100}
-                                        step={1}
-                                        showUnit={true}
-                                        units={['px', 'em', 'rem']}
-                                        defaultValue={20}
-                                    />
-                                    <div className="premium-control-toggle">
-                                        <AdvancedPopColorControl
-                                            label={__("Social Icon Color", 'premium-block-for-gutenberg')}
-                                            colorValue={socialIconStyles[0].socialIconColor}
-                                            colorDefault={''}
-                                            onColorChange={newValue =>
-                                                saveSocialIconStyles({
-                                                    socialIconColor: newValue
-                                                })
-                                            }
-                                        />
-                                        <AdvancedPopColorControl
-                                            label={__("Social Icon Hover Color", 'premium-block-for-gutenberg')}
-                                            colorValue={socialIconStyles[0].socialIconHoverColor}
-                                            colorDefault={''}
-                                            onColorChange={newValue =>
-                                                saveSocialIconStyles({
-                                                    socialIconHoverColor: newValue
-                                                })
-                                            }
-                                        />
-                                    </div>
-                                    <div className="premium-control-toggle">
-                                        <AdvancedPopColorControl
-                                            label={__("Social Icon Background Color", 'premium-block-for-gutenberg')}
-                                            colorValue={socialIconStyles[0].socialIconBackgroundColor}
-                                            colorDefault={''}
-                                            onColorChange={newValue =>
-                                                saveSocialIconStyles({
-                                                    socialIconBackgroundColor: newValue
-                                                })
-                                            }
-                                        />
-                                    </div>
-                                    <ToggleControl
-                                        label={__("Brands Default Colors", "premium-blocks-for-gutenberg")}
-                                        checked={socialIconStyles[0].defaultIconColor}
-                                        onChange={newCheck => saveSocialIconStyles({ defaultIconColor: newCheck })}
-                                    />
-                                    <PremiumBorder
-                                        label={__('Border', 'premium-blocks-for-gutenberg')}
-                                        value={socialIconBorder}
-                                        onChange={(value) => setAttributes({ socialIconBorder: value })}
-                                    />
-                                    <SpacingControl
-                                        label={__('Margin', 'premium-blocks-for-gutenberg')}
-                                        value={socialIconMargin}
-                                        onChange={(value) => setAttributes({ socialIconMargin: value })}
-                                        showUnits={true}
-                                        responsive={true}
-                                    />
-                                    <SpacingControl
-                                        label={__('Padding', 'premium-blocks-for-gutenberg')}
-                                        value={socialIconPadding}
-                                        onChange={(value) => setAttributes({ socialIconPadding: value })}
-                                        showUnits={true}
-                                        responsive={true}
-                                    />
-                                </PanelBody>
-                                )}
+                            </PanelBody>
                             <PanelBody
                                 title={__("Content")}
                                 className="premium-panel-body"

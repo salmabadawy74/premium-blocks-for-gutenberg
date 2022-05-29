@@ -13,7 +13,7 @@ const attributes = {
     },
     imgBorder: {
         type: "number",
-        default: "1"
+        default: ""
     },
     imgBorderColor: {
         type: "string"
@@ -320,8 +320,9 @@ const attributes = {
             'textTransform': '',
             'letterSpacing': '',
             'lineHeight': '',
+            'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
             'fontSize': {
-                'Desktop': "",
+                'Desktop': '',
                 "Tablet": "",
                 "Mobile": "",
                 unit: 'px'
@@ -331,11 +332,12 @@ const attributes = {
     descTypography: {
         type: "object",
         default: {
-            "fontWeight": '',
+            "fontWeight": 500,
             'fontStyle': '',
             'textTransform': '',
             'letterSpacing': '',
             'lineHeight': '',
+            'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
             'fontSize': {
                 'Desktop': 20,
                 "Tablet": 20,
@@ -352,6 +354,7 @@ const attributes = {
             'textTransform': '',
             'letterSpacing': '',
             'lineHeight': '',
+            'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
             'fontSize': {
                 'Desktop': "",
                 "Tablet": "",

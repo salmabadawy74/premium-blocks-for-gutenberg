@@ -107,7 +107,7 @@ const save = props => {
                     }}
                 >
                     {value.name && (
-                        <RichText.content
+                        <RichText.Content
                             tagName={nameTag.toLowerCase()}
                             className={`premium-person__name`}
                             value={value.name}
@@ -127,7 +127,7 @@ const save = props => {
                         />
                     )}
                     {value.title && (
-                        <RichText.content
+                        <RichText.Content
                             tagName={titleTag.toLowerCase()}
                             className={`premium-person__title`}
                             value={value.title}
@@ -147,7 +147,7 @@ const save = props => {
                         />
                     )}
                     {value.desc && (
-                        <RichText.content
+                        <RichText.Content
                             tagName="span"
                             className={`premium-person__desc`}
                             value={value.desc}

@@ -298,69 +298,17 @@ const attributes = {
         default: "0"
     }
 }
-const newAttributes = {
-    // nameTag: '',
-    // titleTag: '',
-    // socialIconMargin: {
-    //     type: "object",
-    //     default: {
-    //         Desktop: {
-    //             top: "",
-    //             right: "",
-    //             bottom: "",
-    //             left: ""
-    //         },
-    //         Tablet: {
-    //             top: "",
-    //             right: "",
-    //             bottom: "",
-    //             left: ""
-    //         },
-    //         Mobile: {
-    //             top: "",
-    //             right: "",
-    //             bottom: "",
-    //             left: ""
-    //         },
-    //         unit: "px"
-    //     }
-    // },
-    // socialIconPadding: {
-    //     type: "object",
-    //     default: {
-    //         Desktop: {
-    //             top: "",
-    //             right: "",
-    //             bottom: "",
-    //             left: ""
-    //         },
-    //         Tablet: {
-    //             top: "",
-    //             right: "",
-    //             bottom: "",
-    //             left: ""
-    //         },
-    //         Mobile: {
-    //             top: "",
-    //             right: "",
-    //             bottom: "",
-    //             left: ""
-    //         },
-    //         unit: "px"
-    //     }
-    // }
-}
 
 const deprecated = [
     {
-        attributes: Object.assign(attributes, newAttributes),
+        attributes: attributes,
         isEligible() {
             return true;
         },
         migrate: (attributes) => {
             let newAttributes = {
-                nameTag: '',
-                titleTag: '',
+                nameTag: 'H2',
+                titleTag: 'H4',
                 socialIconSize: {
                     unit: attributes.socialIconStyles[0].socialIconfontSizeType,
                     "Desktop": attributes.socialIconStyles[0].socialIconSize
@@ -384,6 +332,7 @@ const deprecated = [
                         bottom: attributes.socialIconMarginBMobile,
                         left: attributes.socialIconMarginLMobile
                     },
+                    unit: attributes.socialIconStyles[0].socialIconMarginType,
                 },
                 socialIconPadding: {
                     "Desktop": {
@@ -404,6 +353,7 @@ const deprecated = [
                         bottom: attributes.socialIconPaddingBMobile,
                         left: attributes.socialIconPaddingLMobile
                     },
+                    unit: attributes.socialIconStyles[0].socialIconPaddingType,
                 },
                 socialIconBorder: {
                     borderColor: attributes.socialIconStyles[0].borderColorIcon,
@@ -493,21 +443,21 @@ const deprecated = [
                 },
                 titleShadow: {
                     'color': attributes.titleStyles[0].titleshadowColor,
-                    'blur': attributes.titleStyles[0].titleShadowBlur,
-                    'horizontal': attributes.titleStyles[0].titleShadowHorizontal,
-                    'vertical': attributes.titleStyles[0].titleShadowVertical
+                    'blur': attributes.titleStyles[0].titleshadowBlur,
+                    'horizontal': attributes.titleStyles[0].titleshadowHorizontal,
+                    'vertical': attributes.titleStyles[0].titleshadowVertical
                 },
                 nameShadow: {
-                    'color': attributes.titleStyles[0].nameshadowColor,
-                    'blur': attributes.titleStyles[0].nameshadowBlur,
-                    'horizontal': attributes.titleStyles[0].nameshadowHorizontal,
-                    'vertical': attributes.titleStyles[0].nameshadowVertical
+                    'color': attributes.nameStyles[0].nameshadowColor,
+                    'blur': attributes.nameStyles[0].nameshadowBlur,
+                    'horizontal': attributes.nameStyles[0].nameshadowHorizontal,
+                    'vertical': attributes.nameStyles[0].nameshadowVertical
                 },
                 descShadow: {
-                    'color': attributes.titleStyles[0].descshadowColor,
-                    'blur': attributes.titleStyles[0].descshadowBlur,
-                    'horizontal': attributes.titleStyles[0].descshadowHorizontal,
-                    'vertical': attributes.titleStyles[0].descshadowVertical
+                    'color': attributes.descStyles[0].descshadowColor,
+                    'blur': attributes.descStyles[0].descshadowBlur,
+                    'horizontal': attributes.descStyles[0].descshadowHorizontal,
+                    'vertical': attributes.descStyles[0].descshadowVertical
                 },
                 namePadding: {
                     "Desktop": {
@@ -624,6 +574,12 @@ const deprecated = [
                 nameV,
                 titleStyles,
                 socialIconStyles,
+                socialIconBorderWidth,
+                socialIconBorderTop,
+                socialIconBorderRight,
+                socialIconBorderBottom,
+                socialIconBorderLeft,
+                socialIconBorderUpdated,
                 nameStyles,
                 descStyles,
                 titleV,
@@ -644,8 +600,7 @@ const deprecated = [
                 saturation,
                 hue,
                 contentColor,
-                bottomInfo,
-                socialIconBorder
+                bottomInfo
             } = attributes;
 
             const mainClasses = classnames(className, 'premium-person');
@@ -654,8 +609,12 @@ const deprecated = [
                 return <ul className="premium-person__social-List">{(v).map((value) => (
                     <li>
                         <a className={`premium-person__socialIcon__link_content ${socialIconStyles[0].defaultIconColor ? value.label : ""}`} href={`${value.value}`} style={{
-                            // borderStyle: socialIconBorder.borderType,
-                            // borderColor: socialIconBorder.borderColor,
+                            borderStyle: socialIconStyles[0].borderTypeIcon,
+                            borderWidth: socialIconBorderUpdated
+                                ? `${socialIconBorderTop}px ${socialIconBorderRight}px ${socialIconBorderBottom}px ${socialIconBorderLeft}px`
+                                : socialIconBorderWidth + "px",
+                            borderRadius: socialIconStyles[0].borderRadiusIcon || 100 + "px",
+                            borderColor: socialIconStyles[0].borderColorIcon,
                             background: socialIconStyles[0].socialIconBackgroundColor,
                         }}>
                             <i className={`premium-person__socialIcon ${value.label == "youtube" ? "fa fa-youtube-play" : `fa fa-${value.label}`} premium-person__${socialIconHoverColor}`}
