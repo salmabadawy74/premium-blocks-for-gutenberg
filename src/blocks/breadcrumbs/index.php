@@ -165,7 +165,7 @@ function render_block_pbg_breadcrumbs( $attributes ) {
 	$breadcrumb = apply_filters( 'breadcrumb_trail_object', null );
 	$style      = isset( $attributes['breadcrumbsStyle'] ) ? $attributes['breadcrumbsStyle'] : 'normal';
 	$args       = array();
-	if ( isset( $attributes['prefix'] ) ) {
+	if ( isset( $attributes['enablePrefix'] ) && $attributes['enablePrefix'] ) {
 		$args['prefix'] = $attributes['prefix'];
 	}
 	if ( isset( $attributes['divider'] ) ) {

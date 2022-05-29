@@ -15,6 +15,9 @@
             "type": "string",
             "default": "normal"
         },
+        "enablePrefix": {
+            "type": "boolean"
+        },
         "prefix": {
             "type": "string"
         },

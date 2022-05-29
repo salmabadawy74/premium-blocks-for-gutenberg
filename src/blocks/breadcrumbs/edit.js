@@ -11,11 +11,12 @@ import {
     AlignmentControl,
     BlockControls,
     useBlockProps,
-    InspectorControls
+    InspectorControls,
+    RichText
 } from '@wordpress/block-editor';
 import { useSelect, withSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
-import { PanelBody, CustomSelectControl, TextControl, Dashicon, TabPanel } from '@wordpress/components';
+import { PanelBody, ToggleControl, TextControl, Dashicon, TabPanel } from '@wordpress/components';
 /**
  * Internal dependencies
  */
@@ -60,7 +61,7 @@ function Edit({ attributes, setAttributes, context: { postType, postId } }, devi
     });
 
     const categoryName = hasPostTerms ? postTerms[0].name : __('Post Category');
-    const { textAlign, colors, spacing, typography, breadcrumbsStyle } = attributes;
+    const { textAlign, colors, spacing, typography, breadcrumbsStyle, enablePrefix } = attributes;
     let margin = spacing.margin ? spacing.margin : {};
     let padding = spacing.padding ? spacing.padding : {};
     let itemPadding = spacing.itemPadding ? spacing.itemPadding : {};
@@ -185,7 +186,15 @@ function Edit({ attributes, setAttributes, context: { postType, postId } }, devi
                     }}
                 />
                 <div className={`pbg-breadcrumbs pbg-breadcrumbs-${breadcrumbsStyle}`} style={{ display: breadcrumbsStyle === 'normal' ? 'flex' : '' }}>
-                    {prefix && <span className='prefix' style={{ padding: '0 .4em' }}>{prefix}</span>}
+                    {enablePrefix && <RichText
+                        tagName="span"
+                        className={`prefix`}
+                        placeholder={__('You Are Here: ')}
+                        value={prefix}
+                        isSelected={false}
+                        onChange={newText => setAttributes({ prefix: newText })}
+                        style={{ padding: '0 .4em' }}
+                    />}
                     <div className='pbg-breadcrumbs-item'>
                         <a
                             href="#home-pseudo-link"
@@ -218,6 +227,11 @@ function Edit({ attributes, setAttributes, context: { postType, postId } }, devi
                             title={__('General Settings', 'premium-blocks-for-gutenberg')}
                             initialOpen={true}
                         >
+                            <ToggleControl
+                                label={__("Enable Breadcrumbs Prefix", 'premium-blocks-for-gutenberg')}
+                                checked={enablePrefix}
+                                onChange={check => setAttributes({ enablePrefix: check })}
+                            />
                             <TextControl
                                 label={__('Breadcrumbs Prefix Text', 'premium-blocks-for-gutenberg')}
                                 value={attributes.prefix}
@@ -246,6 +260,17 @@ function Edit({ attributes, setAttributes, context: { postType, postId } }, devi
                                 value={breadcrumbsStyle}
                                 onChange={newValue => setAttributes({ breadcrumbsStyle: newValue })}
                                 label={__("Breadcrumbs Style", 'premium-blocks-for-gutenberg')}
+                            />
+                        </PanelBody>
+                        <PanelBody
+                            title={__("Typography", 'premium-blocks-for-gutenberg')}
+                            className="premium-panel-body"
+                            initialOpen={false}
+                        >
+                            <PremiumTypo
+                                components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
+                                value={typography}
+                                onChange={newValue => setAttributes({ typography: newValue })}
                             />
                         </PanelBody>
                         <PanelBody
@@ -333,17 +358,6 @@ function Edit({ attributes, setAttributes, context: { postType, postId } }, devi
                             {breadcrumbsStyle === 'advanced' && (
                                 <SpacingComponent value={itemPadding} responsive={true} showUnits={true} label={__('Item Padding')} onChange={(value) => onChangeSpacing({ itemPadding: value })} />
                             )}
-                        </PanelBody>
-                        <PanelBody
-                            title={__("Typography", 'premium-blocks-for-gutenberg')}
-                            className="premium-panel-body"
-                            initialOpen={false}
-                        >
-                            <PremiumTypo
-                                components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
-                                value={typography}
-                                onChange={newValue => setAttributes({ typography: newValue })}
-                            />
                         </PanelBody>
                     </InspectorTab>
                     <InspectorTab key={'advance'} />
