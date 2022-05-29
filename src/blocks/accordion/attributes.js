@@ -27,12 +27,6 @@ const attributes = {
         default: [
             {
                 titleColor: "",
-                titleSize: '',
-                titleLine: '',
-                titleLetter: '',
-                titleStyle: '',
-                titleUpper: '',
-                titleWeight: '500',
                 titleBack: '',
                 titleShadowColor: '',
                 titleShadowBlur: 0,
@@ -60,12 +54,6 @@ const attributes = {
                 descAlign: 'left',
                 descColor: '',
                 descBack: '',
-                descSize: '',
-                descLine: '',
-                descLetter: '',
-                descStyle: '',
-                descUpper: false,
-                descWeight: 500,
                 descPaddingT: '',
                 descPaddingR: '',
                 descPaddingB: '',
@@ -240,6 +228,42 @@ const attributes = {
                 }
             }
         }
-    }
+    },
+    titleTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
+    },
+    descTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
+    },
 }
 export default attributes;

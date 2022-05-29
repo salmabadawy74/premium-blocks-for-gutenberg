@@ -232,11 +232,6 @@ const Inspector = ({
                                         showUnit={true}
                                     />)
                                 }
-                                <TextControl
-                                    label={__("Title", 'premium-blocks-for-gutenberg')}
-                                    value={contentStyles[0].titleText}
-                                    onChange={(value) => saveContentStyle({ titleText: value })}
-                                />
                             </Fragment>
                         )}
                         <hr />
@@ -257,13 +252,6 @@ const Inspector = ({
                                 ]
                             }
                         />
-                        {modalStyles[0].contentType == "text" && (
-                            <TextControl
-                                label={__("Text", "premium-blocks-for-gutenberg")}
-                                value={modalStyles[0].contentText}
-                                onChange={(value) => saveModalStyles({ contentText: value })}
-                            />
-                        )}
                         {contentStyles[0].showHeader && <ToggleControl
                             label={__("Upper Close Button", 'premium-blocks-for-gutenberg')}
                             checked={contentStyles[0].showUpperClose}

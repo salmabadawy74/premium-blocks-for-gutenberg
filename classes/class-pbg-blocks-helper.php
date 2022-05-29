@@ -1047,6 +1047,21 @@ class PBG_Blocks_Helper {
 		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
 		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
 		// Style.
+		if ( isset( $attr['titleTypography'] ) ) {
+			$title_typography = $attr['titleTypography'];
+			$title_size = $title_typography['fontSize'];
+
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $title_typography['fontFamily'] ) ? $title_typography['fontFamily'] : '' ),
+					'fontVariant' => ( isset( $title_typography['fontWeight'] ) ? $title_typography['fontWeight'] : '' ),
+				)
+			);
+
+			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' . ' > .premium-accordion__title' . ' > .premium-accordion__title_text' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Desktop', $title_size['unit'] )  );
+		}
+
 		if ( isset( $attr['titleSize'] ) && isset( $attr['titleSizeUnit'] ) ) {
 			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' . ' > .premium-accordion__title' . ' > .premium-accordion__title_text' );
 			$css->add_property( 'font-size', $css->render_color( $attr['titleSize'] . 'px' . '!important' ) );
@@ -1094,6 +1109,21 @@ class PBG_Blocks_Helper {
 		}
 
 		// Desc Style
+		if ( isset( $attr['descTypography'] ) ) {
+			$desc_typography = $attr['descTypography'];
+			$desc_size = $desc_typography['fontSize'];
+
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $desc_typography['fontFamily'] ) ? $desc_typography['fontFamily'] : '' ),
+					'fontVariant' => ( isset( $desc_typography['fontWeight'] ) ? $desc_typography['fontWeight'] : '' ),
+				)
+			);
+
+			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' . ' > .premium-accordion__desc' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $desc_size, 'Desktop', $desc_size['unit'] )  );
+		}
+
 		if ( isset( $attr['descSize'] ) && isset( $attr['descSizeUnit'] ) ) {
 			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' . ' > .premium-accordion__desc' );
 			$css->add_property( 'font-size', $css->render_color( $attr['descSize'] . 'px' . '!important' ) );
@@ -1142,6 +1172,14 @@ class PBG_Blocks_Helper {
 
 		$css->start_media_query( $media_query['tablet'] );
 
+		if ( isset( $attr['titleTypography'] ) ) {
+			$title_typography = $attr['titleTypography'];
+			$title_size = $title_typography['fontSize'];
+
+			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' . ' > .premium-accordion__title' . ' > .premium-accordion__title_text' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Tablet', $title_size['unit'] )  );
+		}
+
 		if ( isset( $attr['titleSizeTablet'] ) && isset( $attr['descSizeUnit'] ) ) {
 			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' . ' > .premium-accordion__title' . ' > .premium-accordion__title_text' );
 			$css->add_property( 'font-size', $css->render_color( $attr['titleSizeTablet'] . 'px' . '!important' ) );
@@ -1189,6 +1227,13 @@ class PBG_Blocks_Helper {
 		}
 
 		// Desc Style
+		if ( isset( $attr['descTypography'] ) ) {
+			$desc_typography = $attr['descTypography'];
+			$desc_size = $desc_typography['fontSize'];
+
+			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' . ' > .premium-accordion__desc' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $desc_size, 'Tablet', $desc_size['unit'] )  );
+		}
 		if ( isset( $attr['descSizeTablet'] ) && isset( $attr['descSizeUnit'] ) ) {
 			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' . ' > .premium-accordion__desc' );
 			$css->add_property( 'font-size', $css->render_color( $attr['descSizeTablet'] . 'px' . '!important' ) );
@@ -1237,7 +1282,13 @@ class PBG_Blocks_Helper {
 
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['mobile'] );
+		if ( isset( $attr['titleTypography'] ) ) {
+			$title_typography = $attr['titleTypography'];
+			$title_size = $title_typography['fontSize'];
 
+			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' . ' > .premium-accordion__title' . ' > .premium-accordion__title_text' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Mobile', $title_size['unit'] )  );
+		}
 		if ( isset( $attr['titleSizeMobile'] ) && isset( $attr['descSizeUnit'] ) ) {
 			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' . ' > .premium-accordion__title' . ' > .premium-accordion__title_text' );
 			$css->add_property( 'font-size', $css->render_color( $attr['titleSizeMobile'] . 'px' . '!important' ) );
@@ -1286,6 +1337,13 @@ class PBG_Blocks_Helper {
 		}
 
 		// Desc Style
+		if ( isset( $attr['descTypography'] ) ) {
+			$desc_typography = $attr['descTypography'];
+			$desc_size = $desc_typography['fontSize'];
+
+			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' . ' > .premium-accordion__desc' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $desc_size, 'Mobile', $desc_size['unit'] )  );
+		}
 		if ( isset( $attr['descSizeMobile'] ) && isset( $attr['descSizeUnit'] ) ) {
 			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' . ' > .premium-accordion__desc' );
 			$css->add_property( 'font-size', $css->render_color( $attr['descSizeMobile'] . 'px' . '!important' ) );
@@ -1396,7 +1454,20 @@ class PBG_Blocks_Helper {
 		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
 		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
 		// Style.
-		
+		if ( isset( $attr['titleTypography'] ) ) {
+			$title_typography = $attr['titleTypography'];
+			$title_size = $title_typography['fontSize'];
+
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $title_typography['fontFamily'] ) ? $title_typography['fontFamily'] : '' ),
+					'fontVariant' => ( isset( $title_typography['fontWeight'] ) ? $title_typography['fontWeight'] : '' ),
+				)
+			);
+
+			$css->set_selector( '#premium-banner-' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__title_wrap' . ' > .premium-banner__title' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Desktop', $title_size['unit'] )  );
+		}
 		if ( isset( $attr['titleStyles'] ) ) {
 			if ( isset( $attr['titleStyles'][0]['titleSize'] ) && isset( $attr['titleStyles'][0]['titleSizeUnit'] ) ) {
 				$css->set_selector( '#premium-banner-' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__title_wrap' . ' > .premium-banner__title' );
@@ -1404,6 +1475,20 @@ class PBG_Blocks_Helper {
 			}
 		}
 		// Desc Style
+		if ( isset( $attr['descTypography'] ) ) {
+			$desc_typography = $attr['descTypography'];
+			$desc_size = $desc_typography['fontSize'];
+
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $desc_typography['fontFamily'] ) ? $desc_typography['fontFamily'] : '' ),
+					'fontVariant' => ( isset( $desc_typography['fontWeight'] ) ? $desc_typography['fontWeight'] : '' ),
+				)
+			);
+
+			$css->set_selector( '#premium-banner-' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__desc_wrap' . ' > .premium-banner__desc' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $desc_size, 'Desktop', $desc_size['unit'] )  );
+		}
 		if ( isset( $attr['descStyles'] ) ) {
 			if ( isset( $attr['descStyles'][0]['descSize'] ) && isset( $attr['descStyles'][0]['descSizeUnit'] ) ) {
 				$css->set_selector( '#premium-banner-' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__desc_wrap' . ' > .premium-banner__desc' );
@@ -1455,11 +1540,26 @@ class PBG_Blocks_Helper {
 
 		$css->start_media_query( $media_query['tablet'] );
 
+		if ( isset( $attr['titleTypography'] ) ) {
+			$title_typography = $attr['titleTypography'];
+			$title_size = $title_typography['fontSize'];
+
+			$css->set_selector( '#premium-banner-' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__title_wrap' . ' > .premium-banner__title' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Tablet', $title_size['unit'] )  );
+		}
+
 		if ( isset( $attr['titleStyles'][0]['titleSizeTablet'] ) ) {
 			$css->set_selector( '#premium-banner-' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__title_wrap' . ' > .premium-banner__title' );
 			$css->add_property( 'font-size', $css->render_color( $attr['titleStyles'][0]['titleSizeTablet'] . 'px' . '!important' ) );
 		}
 		// Desc Style
+		if ( isset( $attr['descTypography'] ) ) {
+			$desc_typography = $attr['descTypography'];
+			$desc_size = $desc_typography['fontSize'];
+
+			$css->set_selector( '#premium-banner-' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__desc_wrap' . ' > .premium-banner__desc' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $desc_size, 'Tablet', $desc_size['unit'] )  );
+		}
 		if ( isset( $attr['descStyles'][0]['descSizeTablet'] ) ) {
 			$css->set_selector( '#premium-banner-' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__desc_wrap' . ' > .premium-banner__desc' );
 			$css->add_property( 'font-size', $css->render_color( $attr['descStyles'][0]['descSizeTablet'] . 'px' . '!important' ) );
@@ -1509,12 +1609,28 @@ class PBG_Blocks_Helper {
 		}
 
 		$css->stop_media_query();
+
+		if ( isset( $attr['titleTypography'] ) ) {
+			$title_typography = $attr['titleTypography'];
+			$title_size = $title_typography['fontSize'];
+			
+			$css->set_selector( '#premium-banner-' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__title_wrap' . ' > .premium-banner__title' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Mobile', $title_size['unit'] )  );
+		}
+
 		$css->start_media_query( $media_query['mobile'] );
 		if ( isset( $attr['titleStyles'][0]['titleSizeMobile'] ) ) {
 			$css->set_selector( '#premium-banner-' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__title_wrap' . ' > .premium-banner__title' );
 			$css->add_property( 'font-size', $css->render_color( $attr['titleStyles'][0]['titleSizeMobile'] . 'px' . '!important' ) );
 		}
 		// Desc Style
+		if ( isset( $attr['descTypography'] ) ) {
+			$desc_typography = $attr['descTypography'];
+			$desc_size = $desc_typography['fontSize'];
+
+			$css->set_selector( '#premium-banner-' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__desc_wrap' . ' > .premium-banner__desc' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $desc_size, 'Mobile', $desc_size['unit'] )  );
+		}
 		if ( isset( $attr['descStyles'][0]['descSizeMobile'] ) ) {
 			$css->set_selector( '#premium-banner-' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__desc_wrap' . ' > .premium-banner__desc' );
 			$css->add_property( 'font-size', $css->render_color( $attr['descStyles'][0]['descSizeMobile'] . 'px' . '!important' ) );

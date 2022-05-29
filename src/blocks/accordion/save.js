@@ -22,6 +22,8 @@ const save = props => {
         textShadowVertical,
         titleBorder,
         descBorder,
+        titleTypography,
+        descTypography
     } = props.attributes;
 
     const mainClasses = classnames(className, 'premium-accordion');
@@ -47,13 +49,13 @@ const save = props => {
                             value={item.titleText}
                             style={{
                                 color: titleStyles[0].titleColor,
-                                fontSize: titleStyles[0].titleSize + "px",
-                                letterSpacing: titleStyles[0].titleLetter + "px",
-                                textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
-                                fontStyle: titleStyles[0].titleStyle,
-                                fontWeight: titleStyles[0].titleWeight,
-                                textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`,
-                                lineHeight: titleStyles[0].titleLine + "px"
+                                fontStyle: titleTypography.fontStyle,
+                                fontFamily: titleTypography.fontFamily,
+                                fontWeight: titleTypography.fontWeight,
+                                letterSpacing: titleTypography.letterSpacing,
+                                textDecoration: titleTypography.textDecoration,
+                                textTransform: titleTypography.textTransform,
+                                lineHeight: `${titleTypography.lineHeight}px`,
                             }}
                         />
                     </div>
@@ -94,13 +96,13 @@ const save = props => {
                             value={item.descText}
                             style={{
                                 color: descStyles[0].descColor,
-                                fontSize: descStyles[0].descSize + "px",
-                                letterSpacing: descStyles[0].descLetter + "px",
-                                textTransform: descStyles[0].descUpper ? "uppercase" : "none",
-                                textShadow: `${textShadowHorizontal}px ${textShadowVertical}px ${textShadowBlur}px ${textShadowColor}`,
-                                fontStyle: descStyles[0].descStyle,
-                                fontWeight: descStyles[0].descWeight,
-                                lineHeight: descStyles[0].descLine + "px"
+                                fontStyle: descTypography.fontStyle,
+                                fontFamily: descTypography.fontFamily,
+                                fontWeight: descTypography.fontWeight,
+                                letterSpacing: descTypography.letterSpacing,
+                                textDecoration: descTypography.textDecoration,
+                                textTransform: descTypography.textTransform,
+                                lineHeight: `${descTypography.lineHeight}px`,
                             }}
                         />
                     )}

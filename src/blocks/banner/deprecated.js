@@ -576,6 +576,71 @@ const newAttributes = {
                 }
             }
         }
+    },
+    titleTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
+    },
+    descTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
+    },
+    titleTextShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+        }
+    },
+    descTextShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
+    },
+    containerShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
     }
 }
 
@@ -654,6 +719,55 @@ const deprecatedContent = [
                             }
                         }
                     }
+                },
+                titleTypography: {
+                    "fontWeight": attributes.titleStyles[0].titleWeight || '',
+                    'fontStyle': '',
+                    'textTransform': '',
+                    'letterSpacing': '',
+                    'fontFamily': '',
+                    'lineHeight': attributes.titleStyles[0].titleLine || '',
+                    'textDecoration': '',
+                    'fontSize': {
+                        'Desktop': attributes.titleStyles[0].titleSize || '',
+                        "Tablet": attributes.titleStyles[0].titleSizeTablet || '',
+                        "Mobile": attributes.titleStyles[0].titleSizeMobile || '',
+                        "unit": 'px'
+                    }
+                },
+                descTypography: {
+                    "fontWeight": attributes.descStyles[0].descWeight || '',
+                    'fontStyle': '',
+                    'textTransform': '',
+                    'letterSpacing': '',
+                    'fontFamily': '',
+                    'lineHeight': attributes.descStyles[0].descLine || '',
+                    'textDecoration': '',
+                    'fontSize': {
+                        'Desktop': attributes.descStyles[0].descSize || '',
+                        "Tablet": attributes.descStyles[0].descSizeTablet || '',
+                        "Mobile": attributes.descStyles[0].descSizeMobile || '',
+                        "unit": 'px'
+                    }
+                },
+                titleTextShadow: {
+                    'color': attributes.titleStyles[0].shadowColor || '',
+                    'blur': attributes.titleStyles[0].shadowBlur || '',
+                    'horizontal': attributes.titleStyles[0].shadowHorizontal || '',
+                    'vertical': attributes.titleStyles[0].shadowVertical || '',
+                },
+                descTextShadow: {
+                    'color': attributes.descStyles[0].descShadowColor || '',
+                    'blur': attributes.descStyles[0].descShadowBlur || '',
+                    'horizontal': attributes.descStyles[0].descShadowHorizontal || '',
+                    'vertical': attributes.descStyles[0].descShadowVertical || '',
+                },
+                containerShadow: {
+                    'color': attributes.containerStyles[0].containerShadowColor || '',
+                    'blur': attributes.containerStyles[0].containerShadowBlur || '',
+                    'horizontal': attributes.containerStyles[0].containerShadowHorizontal || '',
+                    'vertical': attributes.containerStyles[0].containerShadowVertical || '',
+                    'position': attributes.containerStyles[0].containerShadowPosition || ''
                 }
             }
             return Object.assign(attributes, newAttributes)

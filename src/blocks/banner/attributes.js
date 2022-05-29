@@ -20,51 +20,55 @@ const attributes = {
         type: "array",
         default: [
             {
-                titleSizeUnit: 'px',
-                titleSize: '20',
-                titleSizeMobile: '',
-                titleSizeTablet: '',
-                titleWeight: '',
-                titleLine: '',
                 titleColor: '',
                 titleBack: '',
-                shadowColor: '',
-                shadowBlur: '',
-                shadowHorizontal: '',
-                shadowVertical: ''
             }
         ]
+    },
+    titleTextShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+        }
     },
     descStyles: {
         type: "array",
         default: [
             {
-                descSizeUnit: 'px',
-                descSize: '20',
-                descSizeTablet: '',
-                descSizeMobile: '',
-                descWeight: '',
-                descLine: '',
                 descColor: '#000',
-                descShadowColor: '',
-                descShadowBlur: '',
-                descShadowHorizontal: '',
-                descShadowVertical: '',
             }
         ]
+    },
+    descTextShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
     },
     containerStyles: {
         type: "array",
         default: [
             {
-                containerShadowColor: '',
-                containerShadowBlur: '',
-                containerShadowHorizontal: '',
-                containerShadowVertical: '',
-                containerShadowPosition: '',
                 paddingU: 'px'
             }
         ]
+    },
+    containerShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
     },
     title: {
         type: "array",
@@ -242,6 +246,42 @@ const attributes = {
                     bottom: '',
                     left: ''
                 }
+            }
+        }
+    },
+    titleTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
+    },
+    descTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
             }
         }
     }

@@ -37,6 +37,11 @@ const save = props => {
         hideTablet,
         hideMobile,
         border,
+        titleTypography,
+        descTypography,
+        titleTextShadow,
+        descTextShadow,
+        containerShadow
     } = props.attributes;
 
     const mainClasses = classnames(className, 'premium-banner');
@@ -65,7 +70,7 @@ const save = props => {
             <div
                 className={`premium-banner__inner premium-banner__min premium-banner__${effect} premium-banner__${hoverEffect} hover_${hovered}`}
                 style={{
-                    boxShadow: `${containerStyles[0].containerShadowHorizontal}px ${containerStyles[0].containerShadowVertical}px ${containerStyles[0].containerShadowBlur}px ${containerStyles[0].containerShadowColor} ${containerStyles[0].containerShadowPosition}`,
+                    boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`,
                     borderStyle: border && border.borderType,
                     borderColor: border && border.borderColor,
                 }}
@@ -105,9 +110,14 @@ const save = props => {
                             value={title}
                             style={{
                                 color: titleStyles[0].titleColor,
-                                fontWeight: titleStyles[0].titleWeight,
-                                lineHeight: titleStyles[0].titleLine + "px",
-                                textShadow: `${titleStyles[0].shadowHorizontal}px ${titleStyles[0].shadowVertical}px ${titleStyles[0].shadowBlur}px ${titleStyles[0].shadowColor}`
+                                fontStyle: titleTypography.fontStyle,
+                                fontFamily: titleTypography.fontFamily,
+                                fontWeight: titleTypography.fontWeight,
+                                letterSpacing: titleTypography.letterSpacing,
+                                textDecoration: titleTypography.textDecoration,
+                                textTransform: titleTypography.textTransform,
+                                lineHeight: `${titleTypography.lineHeight}px`,
+                                textShadow: `${titleTextShadow.horizontal}px ${titleTextShadow.vertical}px ${titleTextShadow.blur}px ${titleTextShadow.color}`,
                             }}
                         />
                     </div>
@@ -123,9 +133,14 @@ const save = props => {
                             value={desc}
                             style={{
                                 color: descStyles[0].descColor,
-                                fontWeight: descStyles[0].descWeight,
-                                lineHeight: descStyles[0].descLine + "px",
-                                textShadow: `${descStyles[0].descShadowHorizontal}px ${descStyles[0].descShadowVertical}px ${descStyles[0].descShadowBlur}px ${descStyles[0].descShadowColor}`
+                                fontStyle: descTypography.fontStyle,
+                                fontFamily: descTypography.fontFamily,
+                                fontWeight: descTypography.fontWeight,
+                                letterSpacing: descTypography.letterSpacing,
+                                textDecoration: descTypography.textDecoration,
+                                textTransform: descTypography.textTransform,
+                                lineHeight: `${descTypography.lineHeight}px`,
+                                textShadow: `${descTextShadow.horizontal}px ${descTextShadow.vertical}px ${descTextShadow.blur}px ${descTextShadow.color}`,
                             }}
                         />
                     </div>

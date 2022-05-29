@@ -595,6 +595,42 @@ const newAttributes = {
             }
         }
     },
+    titleTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
+    },
+    descTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
+    }
 }
 
 const deprecated = [
@@ -733,6 +769,36 @@ const deprecated = [
                             bottom: '',
                             left: ''
                         }
+                    }
+                },
+                titleTypography: {
+                    "fontWeight": attributes.titleStyles[0].titleWeight || '',
+                    'fontStyle': attributes.titleStyles[0].titleStyle || '',
+                    'textTransform': attributes.titleStyles[0].titleUpper || '',
+                    'letterSpacing': attributes.titleStyles[0].titleLetter || '',
+                    'fontFamily': '',
+                    'lineHeight': attributes.titleStyles[0].titleLine || '',
+                    'textDecoration': '',
+                    'fontSize': {
+                        'Desktop': attributes.titleStyles[0].titleSize || '',
+                        "Tablet": attributes.titleStyles[0].titleSize || '',
+                        "Mobile": attributes.titleStyles[0].titleSize || '',
+                        "unit": 'px'
+                    }
+                },
+                descTypography: {
+                    "fontWeight": attributes.descStyles[0].descWeight || '',
+                    'fontStyle': attributes.descStyles[0].descStyle || '',
+                    'textTransform': attributes.descStyles[0].descUpper || '',
+                    'letterSpacing': attributes.descStyles[0].descLetter || '',
+                    'fontFamily': '',
+                    'lineHeight': attributes.descStyles[0].descLine || '',
+                    'textDecoration': '',
+                    'fontSize': {
+                        'Desktop': attributes.descStyles[0].descSize || '',
+                        "Tablet": attributes.descStyles[0].descSize || '',
+                        "Mobile": attributes.descStyles[0].descSize || '',
+                        "unit": 'px'
                     }
                 }
             }

@@ -8,6 +8,7 @@ const { Fragment, useEffect, useState } = wp.element;
 const { InnerBlocks, MediaPlaceholder } = wp.blockEditor;
 import WebfontLoader from "../../components/typography/fontLoader"
 import { gradientBackground } from "../../components/HelperFunction";
+const { RichText } = wp.blockEditor;
 
 const edit = props => {
 
@@ -61,6 +62,30 @@ const edit = props => {
         });
         setAttributes({
             triggerSettings: newUpdate,
+        });
+    }
+
+    const saveContentStyle = (value) => {
+        const newUpdate = contentStyles.map((item, index) => {
+            if (0 === index) {
+                item = { ...item, ...value };
+            }
+            return item;
+        });
+        setAttributes({
+            contentStyles: newUpdate,
+        });
+    }
+
+    const saveModalStyles = (value) => {
+        const newUpdate = modalStyles.map((item, index) => {
+            if (0 === index) {
+                item = { ...item, ...value };
+            }
+            return item;
+        });
+        setAttributes({
+            modalStyles: newUpdate,
         });
     }
 
@@ -186,7 +211,12 @@ const edit = props => {
         renderCss,
         <div id={`premium-modal-box-${block_id}`} className={classnames(className, "premium-modal-box")} data-trigger={triggerSettings[0].triggerType}>
             <div className={`premium-modal-trigger-container`} style={{ textAlign: triggerSettings[0].align }}>
-                {(triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === "load") && <button className={` premium-modal-trigger-btn premium-button__${triggerSettings[0].btnSize} `} onClick={() => setOpenModal(true)} style={{
+                {(triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === "load") && <button className={` premium-modal-trigger-btn premium-button__${triggerSettings[0].btnSize} `} onClick={(e) => {
+                    if (e.target.classList.contains('rich-text')) {
+                        return;
+                    }
+                    setOpenModal(true)
+                }} style={{
                     fontSize: `${triggerTypography.fontSize[currentDevice]}${triggerTypography.fontSize.unit}`,
                     paddingTop: triggerPaddingTop && `${triggerPaddingTop}${triggerPadding.unit}`,
                     paddingRight: triggerPaddingRight && `${triggerPaddingRight}${triggerPadding.unit}`,
@@ -206,13 +236,19 @@ const edit = props => {
                     boxShadow: `${triggerShadow.horizontal}px ${triggerShadow.vertical}px ${triggerShadow.blur}px ${triggerShadow.color} ${triggerShadow.position}`,
                 }}>
                     {triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "before" && <i className={` premium-modal-box-icon ${triggerSettings[0].icon}`} style={{ fontSize: `${triggerSettings[0].iconSize}px`, marginRight: `${triggerSettings[0].iconSpacing}px`, color: triggerStyles[0].iconColor }}></i>}
-                    <span style={{
-                        color: triggerStyles[0].color,
-                        fontFamily: triggerTypography.fontFamily,
-                        fontWeight: triggerTypography.fontWeight,
-                        fontStyle: triggerTypography.fontStyle,
-                        letterSpacing: triggerTypography.letterSpacing
-                    }}> {triggerSettings[0].btnText}</span>
+                    <RichText
+                        tagName='span'
+                        onChange={newText => saveTriggerSettings({ btnText: newText })}
+                        placeholder={__("Premium Blocks", 'premium-blocks-for-gutenberg')}
+                        value={triggerSettings[0].btnText}
+                        style={{
+                            color: triggerStyles[0].color,
+                            fontFamily: triggerTypography.fontFamily,
+                            fontWeight: triggerTypography.fontWeight,
+                            fontStyle: triggerTypography.fontStyle,
+                            letterSpacing: triggerTypography.letterSpacing
+                        }}
+                    />
                     {triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "after" && <i className={` premium-modal-box-icon ${triggerSettings[0].icon}`} style={{ fontSize: `${triggerSettings[0].iconSize}px`, marginLeft: `${triggerSettings[0].iconSpacing}px`, color: triggerStyles[0].iconColor }} ></i>}
                 </button>
                 }
@@ -251,31 +287,37 @@ const edit = props => {
                 </Fragment>)
                 }
                 {triggerSettings[0].triggerType === "text" && (
-                    <span onClick={() => setOpenModal(true)} className={`premium-modal-trigger-text`} style={{
-                        color: triggerStyles[0].color,
-                        fontSize: `${triggerTypography.fontSize[currentDevice]}${triggerTypography.fontSize.unit}`,
-                        paddingTop: triggerPaddingTop && `${triggerPaddingTop}${triggerPadding.unit}`,
-                        paddingRight: triggerPaddingRight && `${triggerPaddingRight}${triggerPadding.unit}`,
-                        paddingBottom: triggerPaddingBottom && `${triggerPaddingBottom}${triggerPadding.unit}`,
-                        paddingLeft: triggerPaddingLeft && `${triggerPaddingLeft}${triggerPadding.unit}`,
-                        borderStyle: triggerBorder && triggerBorder.borderType,
-                        borderTopWidth: triggerBorder && triggerBorder.borderWidth[currentDevice].top,
-                        borderRightWidth: triggerBorder && triggerBorder.borderWidth[currentDevice].right,
-                        borderBottomWidth: triggerBorder && triggerBorder.borderWidth[currentDevice].bottom,
-                        borderLeftWidth: triggerBorder && triggerBorder.borderWidth[currentDevice].left,
-                        borderColor: triggerBorder && triggerBorder.borderColor,
-                        borderTopLeftRadius: `${triggerBorder && triggerBorder.borderRadius[currentDevice].top || 0}px`,
-                        borderTopRightRadius: `${triggerBorder && triggerBorder.borderRadius[currentDevice].right || 0}px`,
-                        borderBottomLeftRadius: `${triggerBorder && triggerBorder.borderRadius[currentDevice].bottom || 0}px`,
-                        borderBottomRightRadius: `${triggerBorder && triggerBorder.borderRadius[currentDevice].left || 0}px`,
-                        textShadow: `${triggerTextShadow.horizontal}px ${triggerTextShadow.vertical}px ${triggerTextShadow.blur}px ${triggerTextShadow.color}`,
-                        fontFamily: triggerTypography.fontFamily,
-                        fontWeight: triggerTypography.fontWeight,
-                        fontStyle: triggerTypography.fontStyle,
-                        letterSpacing: triggerTypography.letterSpacing
-                    }}>
-                        {triggerSettings[0].triggerText}
-                    </span>
+                    <RichText
+                        tagName='span'
+                        className={`premium-modal-trigger-text`}
+                        onClick={() => setOpenModal(true)}
+                        onChange={newText => saveTriggerSettings({ triggerText: newText })}
+                        placeholder={__("Premium Blocks", 'premium-blocks-for-gutenberg')}
+                        value={triggerSettings[0].triggerText}
+                        style={{
+                            color: triggerStyles[0].color,
+                            fontSize: `${triggerTypography.fontSize[currentDevice]}${triggerTypography.fontSize.unit}`,
+                            paddingTop: triggerPaddingTop && `${triggerPaddingTop}${triggerPadding.unit}`,
+                            paddingRight: triggerPaddingRight && `${triggerPaddingRight}${triggerPadding.unit}`,
+                            paddingBottom: triggerPaddingBottom && `${triggerPaddingBottom}${triggerPadding.unit}`,
+                            paddingLeft: triggerPaddingLeft && `${triggerPaddingLeft}${triggerPadding.unit}`,
+                            borderStyle: triggerBorder && triggerBorder.borderType,
+                            borderTopWidth: triggerBorder && triggerBorder.borderWidth[currentDevice].top,
+                            borderRightWidth: triggerBorder && triggerBorder.borderWidth[currentDevice].right,
+                            borderBottomWidth: triggerBorder && triggerBorder.borderWidth[currentDevice].bottom,
+                            borderLeftWidth: triggerBorder && triggerBorder.borderWidth[currentDevice].left,
+                            borderColor: triggerBorder && triggerBorder.borderColor,
+                            borderTopLeftRadius: `${triggerBorder && triggerBorder.borderRadius[currentDevice].top || 0}px`,
+                            borderTopRightRadius: `${triggerBorder && triggerBorder.borderRadius[currentDevice].right || 0}px`,
+                            borderBottomLeftRadius: `${triggerBorder && triggerBorder.borderRadius[currentDevice].bottom || 0}px`,
+                            borderBottomRightRadius: `${triggerBorder && triggerBorder.borderRadius[currentDevice].left || 0}px`,
+                            textShadow: `${triggerTextShadow.horizontal}px ${triggerTextShadow.vertical}px ${triggerTextShadow.blur}px ${triggerTextShadow.color}`,
+                            fontFamily: triggerTypography.fontFamily,
+                            fontWeight: triggerTypography.fontWeight,
+                            fontStyle: triggerTypography.fontStyle,
+                            letterSpacing: triggerTypography.letterSpacing
+                        }}
+                    />
                 )}
                 {triggerSettings[0].triggerType === "lottie" && (
                     <Fragment>
@@ -387,8 +429,12 @@ const edit = props => {
                                             direction={(contentStyles[0].reverseLottie) ? -1 : 1}
                                         />
                                     </div>}
-
-                                {contentStyles[0].titleText}
+                                <RichText
+                                    tagName='span'
+                                    onChange={(value) => saveContentStyle({ titleText: value })}
+                                    placeholder={__("Modal Box Title", 'premium-blocks-for-gutenberg')}
+                                    value={contentStyles[0].titleText}
+                                />
                             </h3>
                             {contentStyles[0].showUpperClose && contentStyles[0].showHeader && (<div className="premium-modal-box-close-button-container" style={{
                                 backgroundColor: `${upperStyles[0].backColor}`,
@@ -422,14 +468,20 @@ const edit = props => {
                             paddingBottom: modalPaddingBottom && `${modalPaddingBottom}${modalPadding.unit}`,
                             paddingLeft: modalPaddingLeft && `${modalPaddingLeft}${modalPadding.unit}`
                         }}>
-                            {modalStyles[0].contentType === "text" ? <p style={{
-                                color: modalStyles[0].textColor,
-                                fontSize: `${modalTypography.fontSize[currentDevice]}${modalTypography.fontSize.unit}`,
-                                fontFamily: modalTypography.fontFamily,
-                                fontWeight: modalTypography.fontWeight,
-                                fontStyle: modalTypography.fontStyle,
-                                letterSpacing: modalTypography.letterSpacing
-                            }} >{modalStyles[0].contentText}</p> : <InnerBlocks />}
+                            {modalStyles[0].contentType === "text" ? <RichText
+                                tagName='p'
+                                onChange={(value) => saveModalStyles({ contentText: value })}
+                                placeholder={__("Modal Box Content", 'premium-blocks-for-gutenberg')}
+                                value={modalStyles[0].contentText}
+                                style={{
+                                    color: modalStyles[0].textColor,
+                                    fontSize: `${modalTypography.fontSize[currentDevice]}${modalTypography.fontSize.unit}`,
+                                    fontFamily: modalTypography.fontFamily,
+                                    fontWeight: modalTypography.fontWeight,
+                                    fontStyle: modalTypography.fontStyle,
+                                    letterSpacing: modalTypography.letterSpacing
+                                }}
+                            /> : <InnerBlocks />}
 
                         </div>
                         {contentStyles[0].showLowerClose && (<div className={`premium-modal-box-modal-footer`} style={{
