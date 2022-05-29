@@ -22,7 +22,19 @@ const attributes = {
     padding: {
         type: 'object',
         default: {
-            Desktop: {
+            'Desktop': {
+                top: 70,
+                right: 0,
+                bottom: 70,
+                left: 0
+            },
+            'Tablet': {
+                top: 70,
+                right: 0,
+                bottom: 70,
+                left: 0
+            },
+            'Mobile': {
                 top: 70,
                 right: 0,
                 bottom: 70,

@@ -159,7 +159,7 @@ export default class PremiumTypo extends Component {
         const linearFonts = fonts.filter(family => fuzzysearch(search.toLowerCase(), family['value'].toLowerCase()))
         const fontSize = components.includes("responsiveSize") ? size[device] : size
         return (
-            <div className="premium-control-toggle premium-typography">
+            <div className="premium-control-toggle premium-typography premium-blocks-field">
                 <header>
                     <span className="customize-control-title premium-control-title">
                         <strong>{__('Typography', 'premium-blocks-for-gutenberg')}</strong>
@@ -235,6 +235,17 @@ export default class PremiumTypo extends Component {
                                         <div className=" ">
                                             <div className="premium-typography-container">
                                                 <ul className="premium-typography-options" style={{ width: `100%` }}>
+                                                    {components.includes("style") && (
+                                                        <li className="customize-control-premium-slider">
+                                                            <SelectControl
+                                                                label={__("Style", 'premium-blocks-for-gutenberg')}
+                                                                options={STYLE}
+                                                                value={style}
+                                                                onChange={(value) => { this.setState({ style: value }), onChangeStyle(value) }}
+                                                                onResetClick={onResetClick}
+                                                            />
+                                                        </li>
+                                                    )}
                                                     {components.includes("size") && (
                                                         <li className="customize-control-premium-slider">
                                                             <ResponsiveSingleRangeControl
@@ -293,17 +304,7 @@ export default class PremiumTypo extends Component {
                                                             />
                                                         </li>
                                                     )}
-                                                    {components.includes("style") && (
-                                                        <li className="customize-control-premium-slider">
-                                                            <SelectControl
-                                                                label={__("Style", 'premium-blocks-for-gutenberg')}
-                                                                options={STYLE}
-                                                                value={style}
-                                                                onChange={(value) => { this.setState({ style: value }), onChangeStyle(value) }}
-                                                                onResetClick={onResetClick}
-                                                            />
-                                                        </li>
-                                                    )}
+
                                                     {components.includes("Upper") && (<li className="premium-typography-variant">
                                                         <ul className="premium-text-transform">
                                                             {['capitalize', 'uppercase'].map((variant) => (

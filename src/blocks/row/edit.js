@@ -1,6 +1,6 @@
 const { __ } = wp.i18n
 const { compose } = wp.compose;
-const { select, withDispatch } = wp.data
+const { select, withDispatch, withSelect } = wp.data
 const { PanelBody, SelectControl, Tooltip, Button, ToggleControl } = wp.components
 const { Component, Fragment, createRef } = wp.element
 const { InspectorControls, InnerBlocks } = wp.blockEditor
@@ -37,7 +37,7 @@ class Edit extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            device: 'Desktop',
+            device: this.props.deviceType,
             hideRowSettings: false
         };
         this.qubelyContextMenu = createRef();
@@ -101,6 +101,7 @@ class Edit extends Component {
     }
 
     render() {
+        console.log(this.state.device)
         const {
             attributes: {
                 uniqueId,
@@ -161,7 +162,7 @@ class Edit extends Component {
                         <Button onClick={() => this.removeRowBlock()} className="qubely-component-remove-button" >
                             <i className="fa fa-times" />
                         </Button>
-                        <div className="qubely-row-preset-title">{__('Select Column Layout')}</div>
+                        <div className="qubely-row-preset-title">{__('Select Column Layout', 'premium-blocks-for-gutenberg')}</div>
                         <div className="qubely-row-preset-group">
                             {colOption.map((data) => (
                                 <Tooltip text={data.label}>
@@ -169,7 +170,7 @@ class Edit extends Component {
                                         setAttributes({ columns: data.columns });
                                         defaultLayout = data.layout
                                     }}>
-                                        {data.layout.Desktop.map(d => <i style={{ width: d + '%' }} />)}
+                                        {data.layout.device.map(d => <i style={{ width: d + '%' }} />)}
                                     </button>
                                 </Tooltip>
                             ))}
@@ -420,4 +421,10 @@ export default compose([
 
         return { removeBlock };
     }),
+    withSelect((select, props) => {
+        const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
+        let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+        return { deviceType: deviceType }
+    })
 ])(Edit);
