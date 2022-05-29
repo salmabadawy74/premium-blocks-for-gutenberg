@@ -83,6 +83,9 @@
         "linkCustomIcon": {
             "type": "string"
         },
+        "linkBadge": {
+            "type": "boolean"
+        },
         "badgeText": {
             "type": "string"
         },

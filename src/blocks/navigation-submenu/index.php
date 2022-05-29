@@ -122,6 +122,7 @@ function render_block_premium_navigation_submenu( $attributes, $content, $block 
 	$is_post_type           = $is_post_type || isset( $attributes['type'] ) && ( 'post' === $attributes['type'] || 'page' === $attributes['type'] );
 	$navigation_link_icon   = isset( $attributes['linkCustomIcon'] ) ? $attributes['linkCustomIcon'] : '';
 	$navigation_link_badge  = isset( $attributes['badgeText'] ) ? $attributes['badgeText'] : '';
+	$enable_link_badge      = isset( $attributes['linkBadge'] ) ? $attributes['linkBadge'] : false;
 	$badge_colors           = isset( $attributes['badgeColors'] ) ? $attributes['badgeColors'] : '';
 	$layout                 = wp_get_global_settings( array( 'layout' ) );
 
@@ -233,7 +234,7 @@ function render_block_premium_navigation_submenu( $attributes, $content, $block 
 			$html .= '<button aria-label="' . esc_attr( $aria_label ) . '" class="premium-navigation__submenu-icon premium-navigation-submenu__toggle" aria-expanded="false">' . block_core_navigation_submenu_render_submenu_icon() . '</button>';
 		}
 
-		if ( $navigation_link_badge ) {
+		if ( $enable_link_badge ) {
 			$html .= '<span class="pbg-navigation-link-label" ' . ( $badge_style ? 'style="' . esc_attr( $badge_style ) . '"' : '' ) . '>' . esc_html( $navigation_link_badge ) . '</span>';
 		}
 

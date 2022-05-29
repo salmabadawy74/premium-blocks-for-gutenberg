@@ -303,7 +303,8 @@ function NavigationSubmenuEdit({
 		linkCustomIcon,
 		badgeText,
 		badgeColors,
-		deviceType = 'Desktop'
+		deviceType = 'Desktop',
+		linkBadge
 	} = attributes;
 	const link = {
 		url,
@@ -704,18 +705,12 @@ function NavigationSubmenuEdit({
 							)}
 
 						</PanelBody>}
-						<PanelBody title={__('Link Badge')}>
-							<TextControl
-								value={badgeText || ''}
-								onChange={(badgeTextValue) => {
-									setAttributes({
-										badgeText: badgeTextValue,
-									});
-								}}
-								label={__('Link Badge Text')}
-							/>
-						</PanelBody>
 						<PanelBody title={__('Link settings')}>
+							<ToggleControl
+								label={__("Enable Badge", 'premium-blocks-for-gutenberg')}
+								checked={linkBadge}
+								onChange={check => setAttributes({ linkBadge: check })}
+							/>
 							<FontIconPicker
 								icons={iconsList}
 								onChange={newIcon => setAttributes({ linkCustomIcon: newIcon })}
@@ -755,17 +750,6 @@ function NavigationSubmenuEdit({
 						</PanelBody>
 					</InspectorTab>
 					<InspectorTab key={'style'}>
-						{megaMenu && (
-							<>
-								<PanelBody
-									title={__('Spacing', 'premium-blocks-for-gutenberg')}
-									initialOpen={false}
-								>
-									<SpacingComponent value={padding} responsive={true} showUnits={true} label={__('Mega Menu Padding')} onChange={(value) => onChangeSpacing({ padding: value })} />
-									<SpacingComponent value={columnPadding} responsive={true} showUnits={true} label={__('Mega Menu Columns Padding')} onChange={(value) => onChangeSpacing({ columnPadding: value })} />
-								</PanelBody>
-							</>
-						)}
 						<PanelBody title={__('Link Badge')}>
 							<AdvancedPopColorControl
 								label={__(`Text Color`, 'premium-blocks-for-gutenberg')}
@@ -780,6 +764,17 @@ function NavigationSubmenuEdit({
 								colorDefault={''}
 							/>
 						</PanelBody>
+						{megaMenu && (
+							<>
+								<PanelBody
+									title={__('Mega Menu', 'premium-blocks-for-gutenberg')}
+									initialOpen={false}
+								>
+									<SpacingComponent value={padding} responsive={true} showUnits={true} label={__('Mega Menu Padding')} onChange={(value) => onChangeSpacing({ padding: value })} />
+									<SpacingComponent value={columnPadding} responsive={true} showUnits={true} label={__('Mega Menu Columns Padding')} onChange={(value) => onChangeSpacing({ columnPadding: value })} />
+								</PanelBody>
+							</>
+						)}
 					</InspectorTab>
 					<InspectorTab key={'advance'} />
 				</InspectorTabs>
@@ -876,7 +871,19 @@ function NavigationSubmenuEdit({
 							<ItemSubmenuIcon />
 						</span>
 					)}
-					{badgeText ? <span style={{ color: badgeColors.text, backgroundColor: badgeColors.background }} className='pbg-navigation-link-label'>{badgeText}</span> : ''}
+					{linkBadge ? <RichText
+						tagName={'span'}
+						className={`pbg-navigation-link-label`}
+						placeholder={__('Badge')}
+						value={badgeText}
+						isSelected={false}
+						onChange={(badgeTextValue) => {
+							setAttributes({
+								badgeText: badgeTextValue,
+							});
+						}}
+						style={{ color: badgeColors.text, backgroundColor: badgeColors.background }}
+					/> : ''}
 				</ParentElement>
 				<div {...innerBlocksProps} />
 			</div>

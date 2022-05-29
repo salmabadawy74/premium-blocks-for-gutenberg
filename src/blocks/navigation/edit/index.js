@@ -709,8 +709,13 @@ function Navigation({
 										<option value="topbottom-lines">{__('Top Bottom Lines', 'premium-blocks-for-gutenberg')}</option>
 									</select>
 								</div>
-							</PanelBody>
-							<PanelBody title={__('Menu Styles')}>
+								<hr />
+								<PremiumTypo
+									components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
+									value={typography}
+									onChange={newValue => setAttributes({ typography: newValue })}
+								/>
+								<hr />
 								<TabPanel
 									className="premium-color-tabpanel"
 									activeClass="active-tab"
@@ -760,6 +765,7 @@ function Navigation({
 										}
 									}}
 								</TabPanel>
+								<hr />
 								<PremiumBorder
 									label={__("Border")}
 									value={menuBorder}
@@ -769,6 +775,10 @@ function Navigation({
 									borderRadius={menuBorder.borderRadius}
 									onChange={(value) => setAttributes({ menuBorder: value })}
 								/>
+								<hr />
+								<SpacingComponent value={margin} responsive={true} showUnits={true} label={__('Menu Margin')} onChange={(value) => onChangeSpacing({ margin: value })} />
+								<SpacingComponent value={padding} responsive={true} showUnits={true} label={__('Menu Padding')} onChange={(value) => onChangeSpacing({ padding: value })} />
+								<SpacingComponent value={itemPadding} responsive={true} showUnits={true} label={__('Menu Item Padding')} onChange={(value) => onChangeSpacing({ itemPadding: value })} />
 							</PanelBody>
 							<PanelBody title={__('Overlay Menu')}>
 								<TabPanel
@@ -832,6 +842,7 @@ function Navigation({
 										}
 									}}
 								</TabPanel>
+								<hr />
 								<PremiumBorder
 									label={__("Border")}
 									value={overlayMenuBorder}
@@ -842,39 +853,9 @@ function Navigation({
 									onChange={(value) => setAttributes({ overlayMenuBorder: value })}
 								/>
 							</PanelBody>
-							<PanelBody
-								title={__('Spacing', 'premium-blocks-for-gutenberg')}
-								initialOpen={false}
-							>
-								<SpacingComponent value={padding} responsive={true} showUnits={true} label={__('Menu Padding')} onChange={(value) => onChangeSpacing({ padding: value })} />
-								<SpacingComponent value={itemPadding} responsive={true} showUnits={true} label={__('Menu Item Padding')} onChange={(value) => onChangeSpacing({ itemPadding: value })} />
-								<SpacingComponent value={margin} responsive={true} showUnits={true} label={__('Menu Margin')} onChange={(value) => onChangeSpacing({ margin: value })} />
-							</PanelBody>
-							<PanelBody
-								title={__("Typography", 'premium-blocks-for-gutenberg')}
-								className="premium-panel-body"
-								initialOpen={false}
-							>
-								<PremiumTypo
-									components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
-									value={typography}
-									onChange={newValue => setAttributes({ typography: newValue })}
-								/>
-							</PanelBody>
 							{hasSubmenus && hasSubmenuIndicatorSetting && (
 								<>
-									<PanelBody
-										title={__("Submenu Typography", 'premium-blocks-for-gutenberg')}
-										className="premium-panel-body"
-										initialOpen={false}
-									>
-										<PremiumTypo
-											components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
-											value={submenuTypography}
-											onChange={newValue => setAttributes({ submenuTypography: newValue })}
-										/>
-									</PanelBody>
-									<PanelBody title={__('Submenu Settings')}>
+									<PanelBody title={__('Submenu')}>
 										<div className='menu-styles' style={{ marginBottom: '20px' }}>
 											<label className='components-base-control__label'>{__('Dropdown Reveal', 'premium-blocks-for-gutenberg')}</label>
 											<select style={{ display: "block", width: "100%" }} onChange={(e) => setAttributes({ dropdownReveal: e.target.value })} value={dropdownReveal}>
@@ -884,6 +865,7 @@ function Navigation({
 												<option value="fade-down">{__('Fade Down', 'premium-blocks-for-gutenberg')}</option>
 											</select>
 										</div>
+										<hr />
 										<RangeControl
 											label={__('Submenu Width', 'premium-blocks-for-gutenberg')}
 											value={submenuWidth}
@@ -891,13 +873,13 @@ function Navigation({
 											min={200}
 											max={500}
 										/>
-										<ToggleControl
-											label={__("Submenu Box Shadow", 'premium-blocks-for-gutenberg')}
-											checked={submenuShadow}
-											onChange={check => setAttributes({ submenuShadow: check })}
+										<hr />
+										<PremiumTypo
+											components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
+											value={submenuTypography}
+											onChange={newValue => setAttributes({ submenuTypography: newValue })}
 										/>
-									</PanelBody>
-									<PanelBody title={__('Submenu Styles')}>
+										<hr />
 										<TabPanel
 											className="premium-color-tabpanel"
 											activeClass="active-tab"
@@ -947,6 +929,13 @@ function Navigation({
 												}
 											}}
 										</TabPanel>
+										<hr />
+										<ToggleControl
+											label={__("Submenu Box Shadow", 'premium-blocks-for-gutenberg')}
+											checked={submenuShadow}
+											onChange={check => setAttributes({ submenuShadow: check })}
+										/>
+										<hr />
 										<PremiumBorder
 											label={__("Border")}
 											value={submenuBorder}

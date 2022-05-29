@@ -8020,7 +8020,8 @@ function NavigationLinkEdit(_ref2) {
     makeHeading,
     linkCustomIcon,
     badgeText,
-    badgeColors
+    badgeColors,
+    linkBadge
   } = attributes;
   const {
     megaMenu,
@@ -8287,18 +8288,14 @@ function NavigationLinkEdit(_ref2) {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_16__["default"], {
     key: 'layout'
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__.__)('Link Badge')
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.TextControl, {
-    value: badgeText || '',
-    onChange: badgeTextValue => {
-      setAttributes({
-        badgeText: badgeTextValue
-      });
-    },
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__.__)('Link Badge Text')
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__.__)('Link settings')
-  }, megaMenu && overlayMenu !== 'always' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.ToggleControl, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.ToggleControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__.__)("Enable Badge", 'premium-blocks-for-gutenberg'),
+    checked: linkBadge,
+    onChange: check => setAttributes({
+      linkBadge: check
+    })
+  }), megaMenu && overlayMenu !== 'always' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.ToggleControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__.__)("Make This Item As Column Heading", 'premium-blocks-for-gutenberg'),
     checked: makeHeading,
     onChange: check => setAttributes({
@@ -8422,13 +8419,22 @@ function NavigationLinkEdit(_ref2) {
       transforms: featuredTransforms,
       replace: replaceBlock
     }) : null
-  })), badgeText ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+  })), linkBadge ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_9__.RichText, {
+    tagName: 'span',
+    className: `pbg-navigation-link-label`,
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__.__)('Badge'),
+    value: badgeText,
+    isSelected: false,
+    onChange: badgeTextValue => {
+      setAttributes({
+        badgeText: badgeTextValue
+      });
+    },
     style: {
       color: badgeColors.text,
       backgroundColor: badgeColors.background
-    },
-    className: "pbg-navigation-link-label"
-  }, badgeText) : '')));
+    }
+  }) : '')));
 }
 
 /***/ }),
@@ -9628,7 +9634,7 @@ var r={grad:.9,turn:360,rad:360/(2*Math.PI)},t=function(r){return"string"==typeo
 /***/ (function(module) {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/navigation-link","title":"Custom Link","category":"design","parent":["premium/navigation"],"description":"Add a page, link, or another item to your navigation.","textdomain":"default","attributes":{"label":{"type":"string"},"type":{"type":"string"},"description":{"type":"string"},"rel":{"type":"string"},"id":{"type":"number"},"opensInNewTab":{"type":"boolean","default":false},"url":{"type":"string"},"title":{"type":"string"},"kind":{"type":"string"},"isTopLevelLink":{"type":"boolean"},"makeHeading":{"type":"boolean"},"linkCustomIcon":{"type":"string"},"badgeText":{"type":"string"},"badgeColors":{"type":"object","default":{"text":"","background":""}}},"usesContext":["showSubmenuIcon","style","megaMenu","overlayMenu"],"supports":{"reusable":false,"html":false,"__experimentalSlashInserter":true},"editorScript":"file:./build/index.js","editorStyle":"file:./build/index.css","style":"file:./build/style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/navigation-link","title":"Custom Link","category":"design","parent":["premium/navigation"],"description":"Add a page, link, or another item to your navigation.","textdomain":"default","attributes":{"label":{"type":"string"},"type":{"type":"string"},"description":{"type":"string"},"rel":{"type":"string"},"id":{"type":"number"},"opensInNewTab":{"type":"boolean","default":false},"url":{"type":"string"},"title":{"type":"string"},"kind":{"type":"string"},"isTopLevelLink":{"type":"boolean"},"makeHeading":{"type":"boolean"},"linkCustomIcon":{"type":"string"},"linkBadge":{"type":"boolean"},"badgeText":{"type":"string"},"badgeColors":{"type":"object","default":{"text":"","background":""}}},"usesContext":["showSubmenuIcon","style","megaMenu","overlayMenu"],"supports":{"reusable":false,"html":false,"__experimentalSlashInserter":true},"editorScript":"file:./build/index.js","editorStyle":"file:./build/index.css","style":"file:./build/style-index.css"}');
 
 /***/ })
 

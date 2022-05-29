@@ -14,6 +14,7 @@ function render_block_premium_navigation_link( $attributes, $content, $block ) {
 	$make_heading           = isset( $attributes['makeHeading'] ) && $attributes['makeHeading'];
 	$is_post_type           = isset( $attributes['kind'] ) && 'post-type' === $attributes['kind'];
 	$navigation_link_icon   = isset( $attributes['linkCustomIcon'] ) ? $attributes['linkCustomIcon'] : '';
+	$enable_link_badge      = isset( $attributes['linkBadge'] ) ? $attributes['linkBadge'] : false;
 	$navigation_link_badge  = isset( $attributes['badgeText'] ) ? $attributes['badgeText'] : '';
 	$badge_colors           = isset( $attributes['badgeColors'] ) ? $attributes['badgeColors'] : '';
 	$is_post_type           = $is_post_type || isset( $attributes['type'] ) && ( 'post' === $attributes['type'] || 'page' === $attributes['type'] );
@@ -89,7 +90,7 @@ function render_block_premium_navigation_link( $attributes, $content, $block ) {
 
 	$html .= '</span>';
 
-	if ( $navigation_link_badge ) {
+	if ( $enable_link_badge ) {
 		$html .= '<span class="pbg-navigation-link-label" ' . ( $badge_style ? 'style="' . esc_attr( $badge_style ) . '"' : '' ) . '>' . esc_html( $navigation_link_badge ) . '</span>';
 	}
 

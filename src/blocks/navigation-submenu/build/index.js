@@ -7903,7 +7903,8 @@ function NavigationSubmenuEdit(_ref) {
     linkCustomIcon,
     badgeText,
     badgeColors,
-    deviceType = 'Desktop'
+    deviceType = 'Desktop',
+    linkBadge
   } = attributes;
   const link = {
     url,
@@ -8270,18 +8271,14 @@ function NavigationSubmenuEdit(_ref) {
       megaMenuBackground: value
     })
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Link Badge')
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.TextControl, {
-    value: badgeText || '',
-    onChange: badgeTextValue => {
-      setAttributes({
-        badgeText: badgeTextValue
-      });
-    },
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Link Badge Text')
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Link settings')
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)((_fonticonpicker_react_fonticonpicker__WEBPACK_IMPORTED_MODULE_3___default()), {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.ToggleControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)("Enable Badge", 'premium-blocks-for-gutenberg'),
+    checked: linkBadge,
+    onChange: check => setAttributes({
+      linkBadge: check
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)((_fonticonpicker_react_fonticonpicker__WEBPACK_IMPORTED_MODULE_3___default()), {
     icons: _components_premium_icons_list__WEBPACK_IMPORTED_MODULE_20__["default"],
     onChange: newIcon => setAttributes({
       linkCustomIcon: newIcon
@@ -8319,8 +8316,20 @@ function NavigationSubmenuEdit(_ref) {
     autoComplete: "off"
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_15__["default"], {
     key: 'style'
-  }, megaMenu && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Spacing', 'premium-blocks-for-gutenberg'),
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Link Badge')
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_21__["default"], {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)(`Text Color`, 'premium-blocks-for-gutenberg'),
+    colorValue: badgeColors.text,
+    onColorChange: newValue => setBadgeColor('text', newValue),
+    colorDefault: ''
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_21__["default"], {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)(`Background Color`, 'premium-blocks-for-gutenberg'),
+    colorValue: badgeColors.background,
+    onColorChange: newValue => setBadgeColor('background', newValue),
+    colorDefault: ''
+  })), megaMenu && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Mega Menu', 'premium-blocks-for-gutenberg'),
     initialOpen: false
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_18__["default"], {
     value: padding,
@@ -8338,19 +8347,7 @@ function NavigationSubmenuEdit(_ref) {
     onChange: value => onChangeSpacing({
       columnPadding: value
     })
-  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Link Badge')
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_21__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)(`Text Color`, 'premium-blocks-for-gutenberg'),
-    colorValue: badgeColors.text,
-    onColorChange: newValue => setBadgeColor('text', newValue),
-    colorDefault: ''
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_21__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)(`Background Color`, 'premium-blocks-for-gutenberg'),
-    colorValue: badgeColors.background,
-    onColorChange: newValue => setBadgeColor('background', newValue),
-    colorDefault: ''
-  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_15__["default"], {
+  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_15__["default"], {
     key: 'advance'
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", blockProps, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
     dangerouslySetInnerHTML: {
@@ -8416,13 +8413,22 @@ function NavigationSubmenuEdit(_ref) {
     }
   })), (showSubmenuIcon || openSubmenusOnClick) && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "premium-navigation__submenu-icon"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_icons__WEBPACK_IMPORTED_MODULE_16__.ItemSubmenuIcon, null)), badgeText ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_icons__WEBPACK_IMPORTED_MODULE_16__.ItemSubmenuIcon, null)), linkBadge ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_8__.RichText, {
+    tagName: 'span',
+    className: `pbg-navigation-link-label`,
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Badge'),
+    value: badgeText,
+    isSelected: false,
+    onChange: badgeTextValue => {
+      setAttributes({
+        badgeText: badgeTextValue
+      });
+    },
     style: {
       color: badgeColors.text,
       backgroundColor: badgeColors.background
-    },
-    className: "pbg-navigation-link-label"
-  }, badgeText) : ''), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", innerBlocksProps)));
+    }
+  }) : ''), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", innerBlocksProps)));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = ((0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.withSelect)((select, props) => {
@@ -10326,7 +10332,7 @@ var r={grad:.9,turn:360,rad:360/(2*Math.PI)},t=function(r){return"string"==typeo
 /***/ (function(module) {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/navigation-submenu","title":"Submenu","category":"design","parent":["premium/navigation"],"description":"Add a submenu to your navigation.","textdomain":"default","attributes":{"label":{"type":"string"},"type":{"type":"string"},"description":{"type":"string"},"rel":{"type":"string"},"id":{"type":"number"},"opensInNewTab":{"type":"boolean","default":false},"url":{"type":"string"},"title":{"type":"string"},"kind":{"type":"string"},"isTopLevelItem":{"type":"boolean"},"megaMenu":{"type":"boolean"},"megaMenuWidth":{"type":"string","default":"content"},"megaMenuColumns":{"type":"string","default":"2"},"megaMenuLayout":{"type":"string","default":"equal"},"spacing":{"type":"object","default":{"padding":null,"columnPadding":null}},"megaMenuBackground":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"","gradientColorTwo":"","gradientLocationTwo":"","gradientAngle":"","gradientPosition":"","gradientType":""}},"linkCustomIcon":{"type":"string"},"badgeText":{"type":"string"},"badgeColors":{"type":"object","default":{"text":"","background":""}}},"providesContext":{"megaMenu":"megaMenu"},"usesContext":["showSubmenuIcon","openSubmenusOnClick","style","menuColors","submenuColors","submenuWidth","submenuTypography","menuTypography","overlayMenu","submenuBorder"],"supports":{"reusable":false,"html":false},"editorScript":"file:./build/index.js","editorStyle":"file:./build/index.css","style":"file:./build/style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/navigation-submenu","title":"Submenu","category":"design","parent":["premium/navigation"],"description":"Add a submenu to your navigation.","textdomain":"default","attributes":{"label":{"type":"string"},"type":{"type":"string"},"description":{"type":"string"},"rel":{"type":"string"},"id":{"type":"number"},"opensInNewTab":{"type":"boolean","default":false},"url":{"type":"string"},"title":{"type":"string"},"kind":{"type":"string"},"isTopLevelItem":{"type":"boolean"},"megaMenu":{"type":"boolean"},"megaMenuWidth":{"type":"string","default":"content"},"megaMenuColumns":{"type":"string","default":"2"},"megaMenuLayout":{"type":"string","default":"equal"},"spacing":{"type":"object","default":{"padding":null,"columnPadding":null}},"megaMenuBackground":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"","gradientColorTwo":"","gradientLocationTwo":"","gradientAngle":"","gradientPosition":"","gradientType":""}},"linkCustomIcon":{"type":"string"},"linkBadge":{"type":"boolean"},"badgeText":{"type":"string"},"badgeColors":{"type":"object","default":{"text":"","background":""}}},"providesContext":{"megaMenu":"megaMenu"},"usesContext":["showSubmenuIcon","openSubmenusOnClick","style","menuColors","submenuColors","submenuWidth","submenuTypography","menuTypography","overlayMenu","submenuBorder"],"supports":{"reusable":false,"html":false},"editorScript":"file:./build/index.js","editorStyle":"file:./build/index.css","style":"file:./build/style-index.css"}');
 
 /***/ })
 
