@@ -229,9 +229,9 @@ class PremiumColumn extends Component {
 
     }
 
-    componentWillReceiveProps(nextProps) {
-        document.getElementById("block-" + this.props.clientId).style.alignSelf = nextProps.attributes.position
-    }
+    // componentWillReceiveProps(nextProps) {
+    //     document.getElementById("block-" + this.props.clientId).style.alignSelf = nextProps.attributes.position
+    // }
     render() {
         const {
             attributes: {

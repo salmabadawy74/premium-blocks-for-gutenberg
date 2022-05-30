@@ -155,6 +155,7 @@ class Edit extends Component {
             setAttributes } = this.props;
 
         const { device, hideRowSettings } = this.state;
+        console.log(device, "ColOptions")
         if (!columns) {
             return (
                 <Fragment>
@@ -170,7 +171,7 @@ class Edit extends Component {
                                         setAttributes({ columns: data.columns });
                                         defaultLayout = data.layout
                                     }}>
-                                        {data.layout.device.map(d => <i style={{ width: d + '%' }} />)}
+                                        {data.layout.Desktop.map(d => <i style={{ width: d + '%' }} />)}
                                     </button>
                                 </Tooltip>
                             ))}

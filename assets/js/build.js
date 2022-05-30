@@ -367,17 +367,13 @@ var AdvancedColorControl = function (_Component) {
             };
 
             var normalizeColor = function normalizeColor(color) {
-                console.log(color);
                 var parsedColor = (0, _colord.colord)(color);
-
                 if (!parsedColor.parsed) {
                     return color;
                 }
-
                 if (parsedColor.rgba.a === 1) {
                     return parsedColor.toHex();
                 }
-
                 return parsedColor.toRgbString();
             };
 
@@ -890,7 +886,7 @@ var _premiumFonts = __webpack_require__(225);
 
 var _premiumFonts2 = _interopRequireDefault(_premiumFonts);
 
-var _responsiveRangeControl = __webpack_require__(13);
+var _responsiveRangeControl = __webpack_require__(14);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
@@ -1716,6 +1712,94 @@ exports.default = PremiumResponsivePadding;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = PremiumMediaUpload;
+var __ = wp.i18n.__;
+var Fragment = wp.element.Fragment;
+var _wp$components = wp.components,
+    Tooltip = _wp$components.Tooltip,
+    Dashicon = _wp$components.Dashicon;
+var MediaUpload = wp.blockEditor.MediaUpload;
+function PremiumMediaUpload(props) {
+    var type = props.type,
+        imageID = props.imageID,
+        imageURL = props.imageURL,
+        _props$onSelectMedia = props.onSelectMedia,
+        onSelectMedia = _props$onSelectMedia === undefined ? function () {} : _props$onSelectMedia,
+        _props$onRemoveImage = props.onRemoveImage,
+        onRemoveImage = _props$onRemoveImage === undefined ? function () {} : _props$onRemoveImage;
+
+    return React.createElement(MediaUpload, {
+        allowedTypes: ["" + type],
+        onSelect: onSelectMedia,
+        type: type,
+        value: imageID,
+        render: function render(_ref) {
+            var open = _ref.open;
+            return React.createElement(
+                Fragment,
+                null,
+                imageURL && React.createElement(
+                    "div",
+                    { className: "premium-image-media" },
+                    type === "image" ? React.createElement("img", { src: imageURL, className: "premium-image-upload" }) : React.createElement("iframe", { src: imageURL, className: "premium-image-upload" }),
+                    React.createElement(
+                        "div",
+                        { className: "premium-image-actions" },
+                        React.createElement(
+                            Tooltip,
+                            { text: __("Edit") },
+                            React.createElement(
+                                "button",
+                                {
+                                    className: "premium-image-button",
+                                    "aria-label": __("Edit"),
+                                    onClick: open,
+                                    role: "button"
+                                },
+                                React.createElement("div", { "aria-label": __("Edit"), className: "fa fa-pencil" })
+                            )
+                        ),
+                        React.createElement(
+                            Tooltip,
+                            { text: __("Remove") },
+                            React.createElement(
+                                "button",
+                                {
+                                    className: "premium-image-button",
+                                    "aria-label": __("Remove"),
+                                    onClick: onRemoveImage,
+                                    role: "button"
+                                },
+                                React.createElement("div", { "aria-label": __("Close"), className: "fa fa-trash-o" })
+                            )
+                        )
+                    )
+                ),
+                !imageURL && React.createElement(
+                    "div",
+                    { onClick: open, className: "premium-placeholder-image" },
+                    React.createElement(Dashicon, { icon: "insert" }),
+                    React.createElement(
+                        "div",
+                        null,
+                        __("Insert")
+                    )
+                )
+            );
+        }
+    });
+}
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -1903,7 +1987,7 @@ process.umask = function () {
 };
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2042,94 +2126,6 @@ function ResponsiveRangeControl(_ref) {
 exports.default = ResponsiveRangeControl;
 
 /***/ }),
-/* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.default = PremiumMediaUpload;
-var __ = wp.i18n.__;
-var Fragment = wp.element.Fragment;
-var _wp$components = wp.components,
-    Tooltip = _wp$components.Tooltip,
-    Dashicon = _wp$components.Dashicon;
-var MediaUpload = wp.blockEditor.MediaUpload;
-function PremiumMediaUpload(props) {
-    var type = props.type,
-        imageID = props.imageID,
-        imageURL = props.imageURL,
-        _props$onSelectMedia = props.onSelectMedia,
-        onSelectMedia = _props$onSelectMedia === undefined ? function () {} : _props$onSelectMedia,
-        _props$onRemoveImage = props.onRemoveImage,
-        onRemoveImage = _props$onRemoveImage === undefined ? function () {} : _props$onRemoveImage;
-
-    return React.createElement(MediaUpload, {
-        allowedTypes: ["" + type],
-        onSelect: onSelectMedia,
-        type: type,
-        value: imageID,
-        render: function render(_ref) {
-            var open = _ref.open;
-            return React.createElement(
-                Fragment,
-                null,
-                imageURL && React.createElement(
-                    "div",
-                    { className: "premium-image-media" },
-                    type === "image" ? React.createElement("img", { src: imageURL, className: "premium-image-upload" }) : React.createElement("iframe", { src: imageURL, className: "premium-image-upload" }),
-                    React.createElement(
-                        "div",
-                        { className: "premium-image-actions" },
-                        React.createElement(
-                            Tooltip,
-                            { text: __("Edit") },
-                            React.createElement(
-                                "button",
-                                {
-                                    className: "premium-image-button",
-                                    "aria-label": __("Edit"),
-                                    onClick: open,
-                                    role: "button"
-                                },
-                                React.createElement("div", { "aria-label": __("Edit"), className: "fa fa-pencil" })
-                            )
-                        ),
-                        React.createElement(
-                            Tooltip,
-                            { text: __("Remove") },
-                            React.createElement(
-                                "button",
-                                {
-                                    className: "premium-image-button",
-                                    "aria-label": __("Remove"),
-                                    onClick: onRemoveImage,
-                                    role: "button"
-                                },
-                                React.createElement("div", { "aria-label": __("Close"), className: "fa fa-trash-o" })
-                            )
-                        )
-                    )
-                ),
-                !imageURL && React.createElement(
-                    "div",
-                    { onClick: open, className: "premium-placeholder-image" },
-                    React.createElement(Dashicon, { icon: "insert" }),
-                    React.createElement(
-                        "div",
-                        null,
-                        __("Insert")
-                    )
-                )
-            );
-        }
-    });
-}
-
-/***/ }),
 /* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2165,7 +2161,7 @@ if (process.env.NODE_ENV !== 'production') {
   // http://fb.me/prop-types-in-prod
   module.exports = __webpack_require__(258)();
 }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ }),
 /* 17 */
@@ -2316,7 +2312,7 @@ var _react = __webpack_require__(9);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _premiumMediaUpload = __webpack_require__(14);
+var _premiumMediaUpload = __webpack_require__(12);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
@@ -6796,7 +6792,7 @@ exports.sortableElement = sortableElement;
 exports.SortableHandle = sortableHandle;
 exports.sortableHandle = sortableHandle;
 exports.arrayMove = arrayMove;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ }),
 /* 70 */
@@ -8797,7 +8793,7 @@ if (process.env.NODE_ENV === 'production') {
 } else {
   module.exports = __webpack_require__(254);
 }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ }),
 /* 108 */
@@ -9472,7 +9468,7 @@ Transition.EXITING = 4;
 var _default = (0, _reactLifecyclesCompat.polyfill)(Transition);
 
 exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ }),
 /* 111 */
@@ -9644,7 +9640,7 @@ var classNamesShape = process.env.NODE_ENV !== 'production' ? _propTypes.default
   exitActive: _propTypes.default.string
 })]) : null;
 exports.classNamesShape = classNamesShape;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ }),
 /* 113 */
@@ -9881,7 +9877,7 @@ var _default = (0, _reactLifecyclesCompat.polyfill)(TransitionGroup);
 
 exports.default = _default;
 module.exports = exports["default"];
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ }),
 /* 114 */
@@ -10963,7 +10959,6 @@ var Animation = function (_Component) {
                 var isAnimate = this.state.isAnimate;
 
                 var blockId = $('.premium-blocks-' + uniqueId);
-                console.log(blockId);
                 if (isAnimate && value.repeat !== 'once') {
                     blockId.css({ 'animation-name': '' });
                 } else {
@@ -17803,7 +17798,7 @@ var _PremiumResponsivePadding = __webpack_require__(11);
 
 var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
 
-var _premiumMediaUpload = __webpack_require__(14);
+var _premiumMediaUpload = __webpack_require__(12);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
@@ -22586,7 +22581,7 @@ var _premiumBorder = __webpack_require__(6);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumMediaUpload = __webpack_require__(14);
+var _premiumMediaUpload = __webpack_require__(12);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
@@ -29658,7 +29653,7 @@ if (process.env.NODE_ENV !== "production") {
     exports.typeOf = typeOf;
   })();
 }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ }),
 /* 255 */
@@ -30249,7 +30244,7 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
 
   return ReactPropTypes;
 };
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ }),
 /* 256 */
@@ -30444,7 +30439,7 @@ checkPropTypes.resetWarningCache = function () {
 };
 
 module.exports = checkPropTypes;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ }),
 /* 258 */
@@ -30911,7 +30906,7 @@ CSSTransition.propTypes = process.env.NODE_ENV !== "production" ? _extends({}, _
 var _default = CSSTransition;
 exports.default = _default;
 module.exports = exports["default"];
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ }),
 /* 260 */
@@ -31142,7 +31137,7 @@ ReplaceTransition.propTypes = process.env.NODE_ENV !== "production" ? {
 var _default = ReplaceTransition;
 exports.default = _default;
 module.exports = exports["default"];
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ }),
 /* 265 */
@@ -33198,7 +33193,7 @@ var _premiumBackground = __webpack_require__(106);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
-var _premiumMediaUpload = __webpack_require__(14);
+var _premiumMediaUpload = __webpack_require__(12);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
@@ -37827,7 +37822,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _settings = __webpack_require__(1);
 
-var _premiumMediaUpload = __webpack_require__(14);
+var _premiumMediaUpload = __webpack_require__(12);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
@@ -45570,7 +45565,7 @@ var _PremiumResponsivePadding = __webpack_require__(11);
 
 var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
 
-var _premiumMediaUpload = __webpack_require__(14);
+var _premiumMediaUpload = __webpack_require__(12);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
@@ -45594,7 +45589,7 @@ var _radioControl = __webpack_require__(10);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
-var _responsiveRangeControl = __webpack_require__(13);
+var _responsiveRangeControl = __webpack_require__(14);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
@@ -48229,7 +48224,7 @@ var _index = __webpack_require__(52);
 
 var _index2 = _interopRequireDefault(_index);
 
-var _premiumMediaUpload = __webpack_require__(14);
+var _premiumMediaUpload = __webpack_require__(12);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
@@ -53413,7 +53408,7 @@ var invariant = function invariant(condition, format, a, b, c, d, e, f) {
 };
 
 module.exports = invariant;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
 
 /***/ }),
 /* 312 */
@@ -54285,7 +54280,7 @@ var _radioControl = __webpack_require__(10);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
-var _responsiveRangeControl = __webpack_require__(13);
+var _responsiveRangeControl = __webpack_require__(14);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
@@ -58117,7 +58112,7 @@ var _premiumTypo = __webpack_require__(7);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumMediaUpload = __webpack_require__(14);
+var _premiumMediaUpload = __webpack_require__(12);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
@@ -58129,7 +58124,7 @@ var _PremiumShadow = __webpack_require__(5);
 
 var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
-var _responsiveRangeControl = __webpack_require__(13);
+var _responsiveRangeControl = __webpack_require__(14);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
@@ -60655,7 +60650,7 @@ var _reactFonticonpicker = __webpack_require__(25);
 
 var _reactFonticonpicker2 = _interopRequireDefault(_reactFonticonpicker);
 
-var _responsiveRangeControl = __webpack_require__(13);
+var _responsiveRangeControl = __webpack_require__(14);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
@@ -60667,7 +60662,7 @@ var _premiumFilters = __webpack_require__(31);
 
 var _premiumFilters2 = _interopRequireDefault(_premiumFilters);
 
-var _premiumMediaUpload = __webpack_require__(14);
+var _premiumMediaUpload = __webpack_require__(12);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
@@ -61855,11 +61850,11 @@ var _PremiumResponsivePadding = __webpack_require__(11);
 
 var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
 
-var _premiumMediaUpload = __webpack_require__(14);
+var _premiumMediaUpload = __webpack_require__(12);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
-var _responsiveRangeControl = __webpack_require__(13);
+var _responsiveRangeControl = __webpack_require__(14);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
@@ -64371,7 +64366,7 @@ var _singleRangeControl = __webpack_require__(2);
 
 var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
-var _responsiveRangeControl = __webpack_require__(13);
+var _responsiveRangeControl = __webpack_require__(14);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
@@ -64383,7 +64378,7 @@ var _PremiumResponsivePadding = __webpack_require__(11);
 
 var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
 
-var _premiumMediaUpload = __webpack_require__(14);
+var _premiumMediaUpload = __webpack_require__(12);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
@@ -66947,7 +66942,7 @@ var _premiumResponsiveTabs = __webpack_require__(8);
 
 var _premiumResponsiveTabs2 = _interopRequireDefault(_premiumResponsiveTabs);
 
-var _responsiveRangeControl = __webpack_require__(13);
+var _responsiveRangeControl = __webpack_require__(14);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
@@ -66959,7 +66954,7 @@ var _singleRangeControl = __webpack_require__(2);
 
 var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
-var _premiumMediaUpload = __webpack_require__(14);
+var _premiumMediaUpload = __webpack_require__(12);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
@@ -69508,7 +69503,7 @@ var _Animation = __webpack_require__(135);
 
 var _Animation2 = _interopRequireDefault(_Animation);
 
-var _responsiveRangeControl = __webpack_require__(13);
+var _responsiveRangeControl = __webpack_require__(14);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
@@ -69819,11 +69814,11 @@ var PremiumColumn = function (_Component) {
                 setAttributes({ colWidth: _extends({}, colWidth) });
             }
         }
-    }, {
-        key: "componentWillReceiveProps",
-        value: function componentWillReceiveProps(nextProps) {
-            document.getElementById("block-" + this.props.clientId).style.alignSelf = nextProps.attributes.position;
-        }
+
+        // componentWillReceiveProps(nextProps) {
+        //     document.getElementById("block-" + this.props.clientId).style.alignSelf = nextProps.attributes.position
+        // }
+
     }, {
         key: "render",
         value: function render() {
@@ -70500,7 +70495,7 @@ var _inspectorTab = __webpack_require__(134);
 
 var _inspectorTab2 = _interopRequireDefault(_inspectorTab);
 
-var _responsiveRangeControl = __webpack_require__(13);
+var _responsiveRangeControl = __webpack_require__(14);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
@@ -70713,6 +70708,7 @@ var Edit = function (_Component) {
                 device = _state.device,
                 hideRowSettings = _state.hideRowSettings;
 
+            console.log(device, "ColOptions");
             if (!columns) {
                 return React.createElement(
                     Fragment,
@@ -70745,7 +70741,7 @@ var Edit = function (_Component) {
                                                 setAttributes({ columns: data.columns });
                                                 defaultLayout = data.layout;
                                             } },
-                                        data.layout.device.map(function (d) {
+                                        data.layout.Desktop.map(function (d) {
                                             return React.createElement('i', { style: { width: d + '%' } });
                                         })
                                     )
@@ -71073,7 +71069,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _responsiveRangeControl = __webpack_require__(13);
+var _responsiveRangeControl = __webpack_require__(14);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
