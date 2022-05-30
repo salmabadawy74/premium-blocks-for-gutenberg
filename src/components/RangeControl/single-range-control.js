@@ -1,4 +1,3 @@
-
 const { __ } = wp.i18n;
 import PremiumSizeUnits from '../premium-size-units';
 import PremiumRange from './range-control';
@@ -20,7 +19,7 @@ export default function ResponsiveSingleRangeControl({
 }) {
     return [
         onChange && (
-            <div className={`premium-blocks-range-control`}>
+            <div className={`premium-blocks-range-control premium-blocks-field`}>
                 {label && <header>
                     <div className={`premium-slider-title-wrap`}>
                         {label && (

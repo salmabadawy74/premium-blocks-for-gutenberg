@@ -471,7 +471,7 @@ function ResponsiveSingleRangeControl(_ref) {
 
     return [_onChange && React.createElement(
         'div',
-        { className: 'premium-blocks-range-control' },
+        { className: 'premium-blocks-range-control premium-blocks-field' },
         label && React.createElement(
             'header',
             null,
@@ -602,7 +602,7 @@ function PremiumShadow(_ref) {
         'blur': '',
         'horizontal': '',
         'vertical': '',
-        'position': ' '
+        'position': ''
     };
     value = value ? _extends({}, defaultValues, value) : defaultValues;
 
@@ -629,7 +629,7 @@ function PremiumShadow(_ref) {
 
     return React.createElement(
         'div',
-        { className: 'premium-control-toggle premium-shadow-control__container' },
+        { className: ' premium-shadow-control__container premium-blocks-field' },
         React.createElement(
             'strong',
             null,
@@ -791,7 +791,7 @@ var PremiumBorder = function PremiumBorder(props) {
     };
     return React.createElement(
         'div',
-        { className: 'premium-control-toggle' },
+        { className: ' premium-blocks-field' },
         React.createElement(
             Fragment,
             null,
@@ -806,13 +806,13 @@ var PremiumBorder = function PremiumBorder(props) {
                 React.createElement(
                     'div',
                     { className: 'premium-blocks-border-button-list ' },
-                    [['none', __("None")], ['solid', __('Solid')], ['dotted', __('Dotted')], ['dashed', __('Dashed')], ['double', __('Double')]].map(function (data, index) {
+                    [['solid', __('Solid')], ['dotted', __('Dotted')], ['dashed', __('Dashed')], ['double', __('Double')]].map(function (data, index) {
                         return React.createElement(
                             Tooltip,
                             { text: data[1] },
                             React.createElement(
                                 'button',
-                                { className: (borderType == data[0] ? 'active' : '') + ' premium-border-button', key: index, onClick: function onClick() {
+                                { className: (borderType == data[0] ? 'active' : '') + ' premium-border-button is-tertiary"', key: index, onClick: function onClick() {
                                         return onChangeBorder("borderType", data[0]);
                                     } },
                                 React.createElement('span', { className: 'premium-blocks-border-type premium-blocks-border-type-' + data[0] })
@@ -1056,7 +1056,7 @@ var PremiumTypo = function (_Component) {
             var fontSize = components.includes("responsiveSize") ? value['fontSize'][device] : value['fontSize'];
             return React.createElement(
                 "div",
-                { className: "premium-control-toggle premium-typography" },
+                { className: "premium-control-toggle premium-typography premium-blocks-field" },
                 React.createElement(
                     "header",
                     null,
@@ -1792,6 +1792,10 @@ var _singleRangeControl = __webpack_require__(3);
 
 var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
+var _responsive = __webpack_require__(402);
+
+var _responsive2 = _interopRequireDefault(_responsive);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _wp$data = wp.data,
@@ -1822,7 +1826,6 @@ function ResponsiveRangeControl(_ref) {
         'Tablet': '',
         'Mobile': '',
         unit: 'px'
-
     };
     value = value ? _extends({}, defaultValues, value) : defaultValues;
 
@@ -1861,6 +1864,7 @@ function ResponsiveRangeControl(_ref) {
         };
     }
     var devices = ['Desktop', 'Tablet', 'Mobile'];
+
     var onChangeValue = function onChangeValue(value, device) {
         var updatedState = _extends({}, state);
         updatedState[device] = value;
@@ -1882,7 +1886,7 @@ function ResponsiveRangeControl(_ref) {
         },
         min: min,
         max: max,
-        step: state['unit'] === "em" || state['unit'] === "rem" ? .1 : 1,
+        step: state['unit'] === 'em' || state['unit'] === 'rem' ? .1 : 1,
         showUnit: false,
         defaultValue: defaultValue
     });
@@ -1894,7 +1898,7 @@ function ResponsiveRangeControl(_ref) {
         },
         min: min,
         max: max,
-        step: state['unit'] === "em" || state['unit'] === "rem" ? .1 : 1,
+        step: state['unit'] === 'em' || state['unit'] === 'rem' ? .1 : 1,
         showUnit: false,
         defaultValue: defaultValue
     });
@@ -1902,11 +1906,11 @@ function ResponsiveRangeControl(_ref) {
         device: 'desktop',
         value: state['Desktop'],
         onChange: function onChange(size) {
-            return onChangeValue(size, "Desktop");
+            return onChangeValue(size, 'Desktop');
         },
         min: min,
         max: max,
-        step: state['unit'] === "em" || state['unit'] === "rem" ? .1 : 1,
+        step: state['unit'] === 'em' || state['unit'] === 'rem' ? .1 : 1,
         showUnit: false,
         defaultValue: defaultValue
     });
@@ -1918,32 +1922,15 @@ function ResponsiveRangeControl(_ref) {
             null,
             React.createElement(
                 'div',
-                { className: 'premium-slider-title-wrap' },
+                { className: 'premium-slider-title-wrap', style: { display: "flex", alignItems: 'center' } },
                 label && React.createElement(
                     'span',
                     { className: 'customize-control-title premium-control-title' },
                     label
                 ),
-                React.createElement(
-                    'ul',
-                    { className: 'premium-responsive-control-btns premium-responsive-slider-btns' },
-                    devices.map(function (device, key) {
-                        var activeClass = device === deviceType ? ' active' : '';
-                        var icon = device.toLowerCase() === 'mobile' ? 'smartphone' : device.toLowerCase();
-                        return React.createElement(
-                            'li',
-                            { key: key, className: '' + device + activeClass },
-                            React.createElement(
-                                'button',
-                                { type: 'button', className: 'preview-' + device + activeClass, 'data-device': device },
-                                React.createElement('i', { 'class': 'dashicons dashicons-' + icon, onClick: function onClick() {
-                                        var nextDevice = key + 1 > devices.length - 1 ? devices[0] : devices[key + 1];
-                                        customSetPreviewDeviceType(nextDevice);
-                                    } })
-                            )
-                        );
-                    })
-                )
+                React.createElement(_responsive2.default, { onChange: function onChange(newDevice) {
+                        return setDeviceType(newDevice);
+                    } })
             ),
             showUnit && React.createElement(_premiumSizeUnits2.default, {
                 units: units,
@@ -2444,6 +2431,10 @@ var _react = __webpack_require__(10);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _premiumMediaUpload = __webpack_require__(12);
+
+var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
+
 var _premiumBackground = __webpack_require__(240);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
@@ -2475,7 +2466,9 @@ var _wp$element = wp.element,
     useState = _wp$element.useState;
 function PremiumBackgroundControl(_ref) {
     var value = _ref.value,
-        onChange = _ref.onChange;
+        onChange = _ref.onChange,
+        _ref$backgroundVedio = _ref.backgroundVedio,
+        backgroundVedio = _ref$backgroundVedio === undefined ? false : _ref$backgroundVedio;
 
     var defaultValues = {
         'backgroundType': '',
@@ -2491,7 +2484,14 @@ function PremiumBackgroundControl(_ref) {
         'gradientLocationTwo': '',
         'gradientAngle': '',
         'gradientPosition': '',
-        'gradientType': ''
+        'gradientType': '',
+        'videoSource': 'local',
+        'bgExternalVideo': '',
+        'videoURL': '',
+        'videoID': '',
+        'bgVideoFallbackID': '',
+        'bgVideoFallbackURL': ''
+
     };
     value = value ? _extends({}, defaultValues, value) : defaultValues;
 
@@ -2502,7 +2502,48 @@ function PremiumBackgroundControl(_ref) {
 
     var gradTypes = [{ key: 'linear', name: __('Linear') }, { key: 'radial', name: __('Radial') }];
 
-    var bgType = [{ key: 'solid', icon: "fa fa-paint-brush", tooltip: __('Classic') }, { key: 'gradient', icon: "fa fa-barcode", tooltip: __('Gradient') }];
+    var bgType = [{ key: 'solid', icon: _react2.default.createElement(
+            'svg',
+            { id: 'Accordion', xmlns: 'http://www.w3.org/2000/svg', width: '14.44', height: '14.5', viewBox: '0 0 21.44 21.5' },
+            _react2.default.createElement('defs', null),
+            _react2.default.createElement(
+                'title',
+                null,
+                'classic-background-icon'
+            ),
+            _react2.default.createElement(
+                'g',
+                { id: 'Classic_Background', 'data-name': 'Classic Background' },
+                _react2.default.createElement('path', { 'class': 'cls-1', d: 'M9.26,15.78h0a3.21,3.21,0,0,1,.95,1.88v-.08A3.23,3.23,0,0,0,9.26,15.78Z', transform: 'translate(-1.78 -1.75)' }),
+                _react2.default.createElement('path', { 'class': 'cls-1', d: 'M22.58,2.38a2.18,2.18,0,0,0-2.34-.48,34.56,34.56,0,0,0-12,8.87L6.74,12.71a3.75,3.75,0,0,0-.42.62A4.79,4.79,0,0,0,2.07,17.6L1.8,20.05a2.88,2.88,0,0,0,.82,2.36,2.85,2.85,0,0,0,2,.84,1.72,1.72,0,0,0,.32,0L7.44,23a4.81,4.81,0,0,0,2.86-1.38,4.93,4.93,0,0,0,1.41-3,3.89,3.89,0,0,0,.52-.34l2-1.58A34.59,34.59,0,0,0,23.05,4.71,2.1,2.1,0,0,0,22.58,2.38ZM9.24,20.53a3.44,3.44,0,0,1-2,.94l-2.47.27a1.33,1.33,0,0,1-1.11-.39,1.39,1.39,0,0,1-.39-1.13l.27-2.46a3.33,3.33,0,0,1,3.24-3h.53l.33.07.2.05a3.24,3.24,0,0,1,1.39.86h0a3.23,3.23,0,0,1,.94,1.8v.2c0,.11,0,.22,0,.33A3.43,3.43,0,0,1,9.24,20.53Zm4-5-1.69,1.36a4,4,0,0,0-.2-.58,4.85,4.85,0,0,0-.63-1.07c-.13-.16-.28-.32-.43-.48a4,4,0,0,0-.49-.44l-.27-.19A3.16,3.16,0,0,0,9,13.76c-.19-.09-.38-.16-.57-.23l-.33-.1,1.36-1.72c.19-.24.4-.48.61-.73h0a4,4,0,0,1,4,3.84C13.77,15.07,13.51,15.29,13.26,15.49ZM21.67,4.14a0,0,0,0,0,0,0,33.73,33.73,0,0,1-6.31,9.4,5.47,5.47,0,0,0-4-3.91A33.16,33.16,0,0,1,20.78,3.3a.66.66,0,0,1,.73.15A.61.61,0,0,1,21.67,4.14Z', transform: 'translate(-1.78 -1.75)' }),
+                _react2.default.createElement('path', { 'class': 'cls-1', d: 'M6.9,14.79h0Zm3.42-.07h0c.15.16.3.32.43.48A3.8,3.8,0,0,0,10.32,14.72Zm.42.48a4.85,4.85,0,0,1,.63,1.07A4,4,0,0,0,10.74,15.2Z', transform: 'translate(-1.78 -1.75)' })
+            )
+        ), tooltip: __('Classic', 'premium-blocks-for-gutenberg') }, { key: 'gradient', icon: _react2.default.createElement(
+            'svg',
+            { id: 'Accordion', xmlns: 'http://www.w3.org/2000/svg', width: '14.44', height: '14.5', viewBox: '0 0 21.75 19.7' },
+            _react2.default.createElement('defs', null),
+            _react2.default.createElement(
+                'title',
+                null,
+                'gradient-background-icon'
+            ),
+            _react2.default.createElement('path', { 'class': 'cls-1', d: 'M19.47,8,16,4.57c-1.43-1.43-2.57-2-3.68-1.91a5.41,5.41,0,0,0-3,1.91L3.71,10.15c-2.63,2.64-2.93,3.78,0,6.72l3.46,3.46c1.34,1.34,2.35,2,3.35,2s2-.68,3.37-2l5.57-5.58a5.24,5.24,0,0,0,1.85-3.12C21.4,10.51,20.83,9.4,19.47,8ZM4.78,11.21l5.57-5.57c.92-.93,1.54-1.49,2.24-1.49S13.91,4.6,15,5.64L18.41,9.1c1.33,1.33,1.45,2,1.42,2.43a1.46,1.46,0,0,1-.19.63,34,34,0,0,0-15.48-.32Zm13.63,2.48-5.57,5.57c-2.13,2.13-2.48,2.13-4.6,0L4.78,15.8c-1-1-1.57-1.64-1.65-2.18a32.55,32.55,0,0,1,15.51-.17Z', transform: 'translate(-1.62 -2.65)' }),
+            _react2.default.createElement('path', { 'class': 'cls-1', d: 'M20.62,22.22A2.72,2.72,0,0,1,18.13,21a2.72,2.72,0,0,1,.24-2.74L19,17.18a1.87,1.87,0,0,1,1.58-1h0a1.9,1.9,0,0,1,1.59,1l.66,1.09A2.72,2.72,0,0,1,23.1,21,2.71,2.71,0,0,1,20.62,22.22Zm0-4.55s-.17.07-.29.28h0L19.66,19a1.32,1.32,0,0,0-.22,1.24,1.32,1.32,0,0,0,1.18.44,1.31,1.31,0,0,0,1.17-.44A1.32,1.32,0,0,0,21.57,19L20.91,18C20.79,17.75,20.67,17.67,20.61,17.67Zm-.93-.1h0Z', transform: 'translate(-1.62 -2.65)' })
+        ), tooltip: __('Gradient', 'premium-blocks-for-gutenberg') }];
+    if (backgroundVedio) {
+        bgType.push({ key: "video", icon: _react2.default.createElement(
+                'svg',
+                { id: 'Accordion', xmlns: 'http://www.w3.org/2000/svg', width: '14.44', height: '14.5', viewBox: '0 0 21.5 18.34' },
+                _react2.default.createElement('defs', null),
+                _react2.default.createElement(
+                    'title',
+                    null,
+                    'video-background-icon'
+                ),
+                _react2.default.createElement('path', { 'class': 'cls-1', d: 'M22.12,6.39a2.36,2.36,0,0,0-2.53.39L18,7.91c-.09-3.29-1.51-4.58-5-4.58H6.71c-3.57,0-5,1.39-5,5v8.42c0,2.4,1.3,5,5,5H13c3.44,0,4.86-1.29,5-4.59l1.61,1.13a2.86,2.86,0,0,0,1.65.6,1.89,1.89,0,0,0,.87-.2,2.34,2.34,0,0,0,1.14-2.3V8.69A2.37,2.37,0,0,0,22.12,6.39ZM16.49,16.71c0,2.75-.71,3.46-3.46,3.46H6.71a3.14,3.14,0,0,1-3.46-3.46V8.29c0-2.75.71-3.46,3.46-3.46H13c2.75,0,3.46.71,3.46,3.46Zm5.26-.4c0,.59-.17.88-.33,1a.39.39,0,0,1-.17,0,1.55,1.55,0,0,1-.8-.33L18,15.26V9.73L20.45,8c.4-.27.77-.38,1-.28s.33.48.33,1Z', transform: 'translate(-1.75 -3.33)' }),
+                _react2.default.createElement('path', { 'class': 'cls-1', d: 'M12,12.25A2.25,2.25,0,1,1,14.25,10,2.25,2.25,0,0,1,12,12.25Zm0-3a.75.75,0,1,0,.75.75A.76.76,0,0,0,12,9.25Z', transform: 'translate(-1.75 -3.33)' })
+            ), tooltip: __('Video', 'premium-blocks-for-gutenberg') });
+    }
     var onChangeBackground = function onChangeBackground(item, value) {
         var updatedState = _extends({}, state);
         updatedState[item] = value;
@@ -2517,17 +2558,30 @@ function PremiumBackgroundControl(_ref) {
         backgroundRepeat = state.backgroundRepeat,
         backgroundSize = state.backgroundSize,
         fixed = state.fixed,
+        bgExternalVideo = state.bgExternalVideo,
         gradientLocationOne = state.gradientLocationOne,
         gradientColorTwo = state.gradientColorTwo,
         gradientLocationTwo = state.gradientLocationTwo,
+        videoURL = state.videoURL,
+        videoID = state.videoID,
         gradientAngle = state.gradientAngle,
         gradientPosition = state.gradientPosition,
-        gradientType = state.gradientType;
+        gradientType = state.gradientType,
+        videoSource = state.videoSource,
+        bgVideoFallbackID = state.bgVideoFallbackID,
+        bgVideoFallbackURL = state.bgVideoFallbackURL;
 
 
     return _react2.default.createElement(
         Fragment,
         null,
+        _react2.default.createElement(_premiumBackground2.default, {
+            type: 'color',
+            colorValue: backgroundColor,
+            onChangeColor: function onChangeColor(newValue) {
+                return onChangeBackground('backgroundColor', newValue);
+            }
+        }),
         _react2.default.createElement(
             'div',
             { className: 'Premium-btn-size-settings-container' },
@@ -2557,7 +2611,7 @@ function PremiumBackgroundControl(_ref) {
                                     return onChangeBackground('backgroundType', key);
                                 }
                             },
-                            1 == PremiumOptionsSettings.FontAwesomeEnabled ? _react2.default.createElement('i', { className: icon }) : tooltip
+                            icon
                         )
                     );
                 })
@@ -2565,14 +2619,7 @@ function PremiumBackgroundControl(_ref) {
         ),
         'solid' === backgroundType && _react2.default.createElement(
             'div',
-            { className: 'Premium-inner-sub-section' },
-            _react2.default.createElement(_premiumBackground2.default, {
-                type: 'color',
-                colorValue: backgroundColor,
-                onChangeColor: function onChangeColor(newValue) {
-                    return onChangeBackground('backgroundColor', newValue);
-                }
-            }),
+            { className: 'Premium-inner-sub-section premium-blocks-field' },
             _react2.default.createElement(_premiumBackground2.default, {
                 imageID: backgroundImageID,
                 imageURL: backgroundImageURL,
@@ -2602,13 +2649,13 @@ function PremiumBackgroundControl(_ref) {
         ),
         'gradient' === backgroundType && _react2.default.createElement(
             'div',
-            { className: 'Premium-inner-sub-section' },
+            { className: 'Premium-inner-sub-section premium-blocks-field' },
             _react2.default.createElement(_ColorComponent2.default, {
                 label: __('Gradient Color 1', 'premium-blocks-for-gutenberg'),
                 colorValue: backgroundColor,
                 colorDefault: '',
                 onColorChange: function onColorChange(value) {
-                    onChangeBackground('backgroundColor', value);
+                    return onChangeBackground('backgroundColor', value);
                 }
             }),
             _react2.default.createElement(_singleRangeControl2.default, {
@@ -2684,6 +2731,60 @@ function PremiumBackgroundControl(_ref) {
                 options: [{ value: 'center top', label: __('Center Top', 'premium-blocks-for-gutenberg') }, { value: 'center center', label: __('Center Center', 'premium-blocks-for-gutenberg') }, { value: 'center bottom', label: __('Center Bottom', 'premium-blocks-for-gutenberg') }, { value: 'left top', label: __('Left Top', 'premium-blocks-for-gutenberg') }, { value: 'left center', label: __('Left Center', 'premium-blocks-for-gutenberg') }, { value: 'left bottom', label: __('Left Bottom', 'premium-blocks-for-gutenberg') }, { value: 'right top', label: __('Right Top', 'premium-blocks-for-gutenberg') }, { value: 'right center', label: __('Right Center', 'premium-blocks-for-gutenberg') }, { value: 'right bottom', label: __('Right Bottom', 'premium-blocks-for-gutenberg') }],
                 onChange: function onChange(value) {
                     return onChangeBackground('gradientPosition', value);
+                }
+            })
+        ),
+        'video' === backgroundType && _react2.default.createElement(
+            Fragment,
+            null,
+            _react2.default.createElement(SelectControl, {
+                label: __('Video Source', 'premium-blocks-for-gutenberg'),
+                value: videoSource,
+                options: [{ value: 'local', label: __('Local', 'premium-blocks-for-gutenberg') }, { value: 'external', label: __('External', 'premium-blocks-for-gutenberg') }],
+                onChange: function onChange(val) {
+                    return onChangeBackground('videoSource', val);
+                }
+            }),
+            videoSource === 'external' ? _react2.default.createElement(TextControl, {
+                label: __('Video URL', "premium-blocks-for-gutenberg"),
+                value: bgExternalVideo || "",
+                onChange: function onChange(val) {
+                    return onChangeBackground('bgExternalVideo', val);
+                }
+            }) : _react2.default.createElement(
+                Fragment,
+                null,
+                _react2.default.createElement(
+                    'p',
+                    null,
+                    __('Video', "premium-blocks-for-gutenberg")
+                ),
+                _react2.default.createElement(_premiumMediaUpload2.default, {
+                    type: 'video',
+                    imageID: videoID,
+                    imageURL: videoURL,
+                    onSelectMedia: function onSelectMedia(media) {
+                        return onChangeBackground('videoURL', media.url);
+                    },
+                    onRemoveImage: function onRemoveImage() {
+                        return onChangeBackground('videoURL', "");
+                    }
+                })
+            ),
+            _react2.default.createElement(
+                'p',
+                null,
+                __('Fallback Image (Poster)', 'premium-blocks-for-gutenberg')
+            ),
+            _react2.default.createElement(_premiumMediaUpload2.default, {
+                type: 'image',
+                imageID: bgVideoFallbackID,
+                imageURL: bgVideoFallbackURL,
+                onSelectMedia: function onSelectMedia(media) {
+                    return onChangeBackground('bgVideoFallbackURL', media.url);
+                },
+                onRemoveImage: function onRemoveImage() {
+                    return onChangeBackground('bgVideoFallbackURL', "");
                 }
             })
         )
@@ -3510,7 +3611,7 @@ function PremiumFilters(props) {
 
     return React.createElement(
         "div",
-        { className: "premium-control-toggle" },
+        { className: " premium-blocks-field" },
         React.createElement(
             "strong",
             null,
@@ -4179,6 +4280,10 @@ var _premiumSizeUnits = __webpack_require__(23);
 
 var _premiumSizeUnits2 = _interopRequireDefault(_premiumSizeUnits);
 
+var _responsive = __webpack_require__(402);
+
+var _responsive2 = _interopRequireDefault(_responsive);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var __ = wp.i18n.__;
@@ -4325,9 +4430,7 @@ var SpacingComponent = function SpacingComponent(props) {
                     }
                 })
             );
-        }
-
-        ;
+        };
         return React.createElement(
             "ul",
             {
@@ -4345,33 +4448,7 @@ var SpacingComponent = function SpacingComponent(props) {
         null,
         renderInputHtml(device, "active")
     );
-    var devices = ['Desktop', 'Tablet', 'Mobile'];
 
-    var customSetPreviewDeviceType = function customSetPreviewDeviceType(device) {
-        setDevice(device.toLowerCase());
-    };
-
-    if (wp.data.select('core/edit-post')) {
-        var theDevice = useSelect(function (select) {
-            var _select = select('core/edit-post'),
-                _select$__experimenta = _select.__experimentalGetPreviewDeviceType,
-                __experimentalGetPreviewDeviceType = _select$__experimenta === undefined ? null : _select$__experimenta;
-
-            return __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : 'Desktop';
-        }, []);
-        if (theDevice !== device) {
-            setDevice(theDevice);
-        }
-
-        var _useDispatch = useDispatch('core/edit-post'),
-            _useDispatch$__experi = _useDispatch.__experimentalSetPreviewDeviceType,
-            __experimentalSetPreviewDeviceType = _useDispatch$__experi === undefined ? null : _useDispatch$__experi;
-
-        customSetPreviewDeviceType = function customSetPreviewDeviceType(device) {
-            __experimentalSetPreviewDeviceType(device);
-            setDevice(device);
-        };
-    }
     var onUnitChange = function onUnitChange(unitValue) {
         var updateState = _extends({}, state);
         updateState["unit"] = unitValue;
@@ -4380,39 +4457,22 @@ var SpacingComponent = function SpacingComponent(props) {
     };
     return React.createElement(
         "div",
-        { className: "premium-spacing-responsive" },
+        { className: "premium-spacing-responsive premium-blocks-field" },
         React.createElement(
             "header",
             null,
             React.createElement(
                 "div",
-                { className: "premium-slider-title-wrap" },
+                { className: "premium-slider-title-wrap", style: { display: "flex", alignItems: 'center' } },
                 React.createElement(
                     "span",
                     { className: "customize-control-title premium-control-title" },
                     "  ",
                     label
                 ),
-                responsive && React.createElement(
-                    "ul",
-                    { className: "premium-responsive-control-btns premium-responsive-slider-btns" },
-                    devices.map(function (deviceType, key) {
-                        var activeClass = deviceType === device ? ' active' : '';
-                        var icon = deviceType.toLowerCase() === 'mobile' ? 'smartphone' : deviceType.toLowerCase();
-                        return React.createElement(
-                            "li",
-                            { key: key, className: "" + deviceType + activeClass },
-                            React.createElement(
-                                "button",
-                                { type: "button", className: "preview-" + deviceType + activeClass, "data-device": deviceType },
-                                React.createElement("i", { "class": "dashicons dashicons-" + icon, onClick: function onClick() {
-                                        var nextDevice = key + 1 > devices.length - 1 ? devices[0] : devices[key + 1];
-                                        customSetPreviewDeviceType(nextDevice);
-                                    } })
-                            )
-                        );
-                    })
-                )
+                responsive && React.createElement(_responsive2.default, { onChange: function onChange(newValue) {
+                        return setDevice(newValue);
+                    } })
             ),
             showUnits && React.createElement(_premiumSizeUnits2.default, {
                 activeUnit: state["unit"],
@@ -69656,6 +69716,97 @@ var attributes = (_attributes = {
     default: "h2"
 }), _attributes);
 exports.default = attributes;
+
+/***/ }),
+/* 402 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(10);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _wp$data = wp.data,
+    useSelect = _wp$data.useSelect,
+    useDispatch = _wp$data.useDispatch;
+
+
+function Responsive(props) {
+    var previewDevice = wp.customize ? wp.customize.previewedDevice.get() : wp.data && wp.data.select && wp.data.select('core/edit-post') && wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType ? wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType() : 'Desktop';
+
+    var customSetPreviewDeviceType = function customSetPreviewDeviceType(device) {
+        props.onChange(device);
+    };
+    if (wp.data.select('core/edit-post')) {
+        var theDevice = useSelect(function (select) {
+            var _select = select('core/edit-post'),
+                _select$__experimenta = _select.__experimentalGetPreviewDeviceType,
+                __experimentalGetPreviewDeviceType = _select$__experimenta === undefined ? null : _select$__experimenta;
+
+            return __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : 'Desktop';
+        }, []);
+
+        var _useDispatch = useDispatch('core/edit-post'),
+            _useDispatch$__experi = _useDispatch.__experimentalSetPreviewDeviceType,
+            __experimentalSetPreviewDeviceType = _useDispatch$__experi === undefined ? null : _useDispatch$__experi;
+
+        customSetPreviewDeviceType = function customSetPreviewDeviceType(device) {
+            __experimentalSetPreviewDeviceType(device);
+            props.onChange(device);
+        };
+    }
+
+    return _react2.default.createElement(
+        'ul',
+        { className: 'premium-blocks-device' },
+        _react2.default.createElement(
+            'button',
+            {
+                type: 'button',
+                className: 'premium-blocks-device-desktop ' + (previewDevice === "Desktop" ? "active" : ''),
+                onClick: function onClick() {
+                    return customSetPreviewDeviceType("Desktop");
+                } },
+            _react2.default.createElement(
+                'svg',
+                { 'class': 'fa-desktop', 'aria-hidden': 'true', focusable: 'false', 'data-prefix': 'far', 'data-icon': 'desktop', role: 'img', xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 576 512', 'data-fa-i2svg': '' },
+                _react2.default.createElement('path', { fill: 'currentColor', d: 'M528 0H48C21.5 0 0 21.5 0 48v288c0 26.5 21.5 48 48 48h480c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48zm-6 336H54c-3.3 0-6-2.7-6-6V54c0-3.3 2.7-6 6-6h468c3.3 0 6 2.7 6 6v276c0 3.3-2.7 6-6 6zm-42 152c0 13.3-10.7 24-24 24H120c-13.3 0-24-10.7-24-24s10.7-24 24-24h98.7l18.6-55.8c1.6-4.9 6.2-8.2 11.4-8.2h78.7c5.2 0 9.8 3.3 11.4 8.2l18.6 55.8H456c13.3 0 24 10.7 24 24z' })
+            )
+        ),
+        _react2.default.createElement(
+            'button',
+            { type: 'button', className: 'premium-blocks-device-tablet ' + (previewDevice === "Tablet" ? "active" : ''), onClick: function onClick() {
+                    return customSetPreviewDeviceType("Tablet");
+                } },
+            _react2.default.createElement(
+                'svg',
+                { 'class': 'fa-tablet-alt', 'aria-hidden': 'true', focusable: 'false', 'data-prefix': 'fas', 'data-icon': 'tablet-alt', role: 'img', xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 448 512', 'data-fa-i2svg': '' },
+                _react2.default.createElement('path', { fill: 'currentColor', d: 'M400 0H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48zM224 480c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm176-108c0 6.6-5.4 12-12 12H60c-6.6 0-12-5.4-12-12V60c0-6.6 5.4-12 12-12h328c6.6 0 12 5.4 12 12v312z' })
+            )
+        ),
+        _react2.default.createElement(
+            'button',
+            { type: 'button', className: 'premium-blocks-device-mobile ' + (previewDevice === "Mobile" ? "active" : ''), onClick: function onClick() {
+                    return customSetPreviewDeviceType("Mobile");
+                } },
+            _react2.default.createElement(
+                'svg',
+                { 'class': 'fa-mobile-alt', 'aria-hidden': 'true', focusable: 'false', 'data-prefix': 'fas', 'data-icon': 'mobile-alt', role: 'img', xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 320 512', 'data-fa-i2svg': '' },
+                _react2.default.createElement('path', { fill: 'currentColor', d: 'M272 0H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h224c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48zM160 480c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm112-108c0 6.6-5.4 12-12 12H60c-6.6 0-12-5.4-12-12V60c0-6.6 5.4-12 12-12h200c6.6 0 12 5.4 12 12v312z' })
+            )
+        )
+    );
+}
+
+exports.default = Responsive;
 
 /***/ })
 /******/ ]);
