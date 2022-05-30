@@ -298,65 +298,17 @@ const attributes = {
         default: "0"
     }
 }
-const newAttributes = {
-    socialIconMargin: {
-        type: "object",
-        default: {
-            Desktop: {
-                top: "",
-                right: "",
-                bottom: "",
-                left: ""
-            },
-            Tablet: {
-                top: "",
-                right: "",
-                bottom: "",
-                left: ""
-            },
-            Mobile: {
-                top: "",
-                right: "",
-                bottom: "",
-                left: ""
-            },
-            unit: "px"
-        }
-    },
-    socialIconPadding: {
-        type: "object",
-        default: {
-            Desktop: {
-                top: "",
-                right: "",
-                bottom: "",
-                left: ""
-            },
-            Tablet: {
-                top: "",
-                right: "",
-                bottom: "",
-                left: ""
-            },
-            Mobile: {
-                top: "",
-                right: "",
-                bottom: "",
-                left: ""
-            },
-            unit: "px"
-        }
-    }
-}
 
 const deprecated = [
     {
-        attributes: Object.assign(attributes, newAttributes),
+        attributes: attributes,
         isEligible() {
             return true;
         },
         migrate: (attributes) => {
             let newAttributes = {
+                nameTag: 'H2',
+                titleTag: 'H4',
                 socialIconSize: {
                     unit: attributes.socialIconStyles[0].socialIconfontSizeType,
                     "Desktop": attributes.socialIconStyles[0].socialIconSize
@@ -380,6 +332,7 @@ const deprecated = [
                         bottom: attributes.socialIconMarginBMobile,
                         left: attributes.socialIconMarginLMobile
                     },
+                    unit: attributes.socialIconStyles[0].socialIconMarginType,
                 },
                 socialIconPadding: {
                     "Desktop": {
@@ -400,16 +353,17 @@ const deprecated = [
                         bottom: attributes.socialIconPaddingBMobile,
                         left: attributes.socialIconPaddingLMobile
                     },
+                    unit: attributes.socialIconStyles[0].socialIconPaddingType,
                 },
                 socialIconBorder: {
                     borderColor: attributes.socialIconStyles[0].borderColorIcon,
                     borderType: attributes.socialIconStyles[0].borderTypeIcon,
                     borderRadius: {
                         "Desktop": {
-                            top: "",
-                            right: "",
-                            bottom: "",
-                            left: ""
+                            top: attributes.socialIconStyles[0].borderRadiusIcon,
+                            right: attributes.socialIconStyles[0].borderRadiusIcon,
+                            bottom: attributes.socialIconStyles[0].borderRadiusIcon,
+                            left: attributes.socialIconStyles[0].borderRadiusIcon
                         },
                         "Tablet": {
                             top: "",
@@ -444,7 +398,169 @@ const deprecated = [
                             left: ""
                         },
                     }
-                }
+                },
+                nameTypography: {
+                    'fontWeight': attributes.nameStyles[0].nameWeight,
+                    'fontStyle': attributes.nameStyles[0].nameStyle,
+                    'textTransform': attributes.nameStyles[0].nameUpper,
+                    'letterSpacing': attributes.nameStyles[0].nameLetter,
+                    'fontFamily': '',
+                    'lineHeight': '',
+                    'fontSize': {
+                        'Desktop': attributes.nameStyles[0].namefontSize,
+                        "Tablet": attributes.nameStyles[0].namefontSizeTablet,
+                        "Mobile": attributes.nameStyles[0].namefontSizeMobile,
+                        'unit': attributes.nameStyles[0].namefontSizeType,
+                    }
+                },
+                titleTypography: {
+                    'fontWeight': attributes.titleStyles[0].titleWeight,
+                    'fontStyle': attributes.titleStyles[0].titleStyle,
+                    'textTransform': attributes.titleStyles[0].titleUpper,
+                    'letterSpacing': attributes.titleStyles[0].titleLetter,
+                    'fontFamily': '',
+                    'lineHeight': '',
+                    'fontSize': {
+                        'Desktop': attributes.titleStyles[0].titleSize,
+                        "Tablet": attributes.titleStyles[0].titlefontSizeTablet,
+                        "Mobile": attributes.titleStyles[0].titlefontSizeMobile,
+                        'unit': attributes.titleStyles[0].titlefontSizeType,
+                    }
+                },
+                descTypography: {
+                    'fontWeight': attributes.descStyles[0].descWeight,
+                    'fontStyle': attributes.descStyles[0].descStyle,
+                    'textTransform': attributes.descStyles[0].descUpper,
+                    'letterSpacing': attributes.descStyles[0].descLetter,
+                    'fontFamily': '',
+                    'lineHeight': '',
+                    'fontSize': {
+                        'Desktop': attributes.descStyles[0].descSize,
+                        "Tablet": attributes.descStyles[0].descfontSizeTablet,
+                        "Mobile": attributes.descStyles[0].descfontSizeMobile,
+                        'unit': attributes.descStyles[0].descfontSizeType,
+                    }
+                },
+                titleShadow: {
+                    'color': attributes.titleStyles[0].titleshadowColor,
+                    'blur': attributes.titleStyles[0].titleshadowBlur,
+                    'horizontal': attributes.titleStyles[0].titleshadowHorizontal,
+                    'vertical': attributes.titleStyles[0].titleshadowVertical
+                },
+                nameShadow: {
+                    'color': attributes.nameStyles[0].nameshadowColor,
+                    'blur': attributes.nameStyles[0].nameshadowBlur,
+                    'horizontal': attributes.nameStyles[0].nameshadowHorizontal,
+                    'vertical': attributes.nameStyles[0].nameshadowVertical
+                },
+                descShadow: {
+                    'color': attributes.descStyles[0].descshadowColor,
+                    'blur': attributes.descStyles[0].descshadowBlur,
+                    'horizontal': attributes.descStyles[0].descshadowHorizontal,
+                    'vertical': attributes.descStyles[0].descshadowVertical
+                },
+                namePadding: {
+                    "Desktop": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "Tablet": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "Mobile": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                },
+                titlePadding: {
+                    "Desktop": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "Tablet": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "Mobile": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                },
+                titleMargin: {
+                    "Desktop": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "Tablet": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "Mobile": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                },
+                descPadding: {
+                    "Desktop": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "Tablet": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "Mobile": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                },
+                contentPadding: {
+                    "Desktop": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "Tablet": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "Mobile": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                },
+                imgHeight: '',
+                socialIcon: false
             }
             return Object.assign(attributes, newAttributes)
         },
@@ -460,6 +576,12 @@ const deprecated = [
                 nameV,
                 titleStyles,
                 socialIconStyles,
+                socialIconBorderWidth,
+                socialIconBorderTop,
+                socialIconBorderRight,
+                socialIconBorderBottom,
+                socialIconBorderLeft,
+                socialIconBorderUpdated,
                 nameStyles,
                 descStyles,
                 titleV,
@@ -480,8 +602,7 @@ const deprecated = [
                 saturation,
                 hue,
                 contentColor,
-                bottomInfo,
-                socialIconBorder
+                bottomInfo
             } = attributes;
 
             const mainClasses = classnames(className, 'premium-person');
@@ -490,8 +611,12 @@ const deprecated = [
                 return <ul className="premium-person__social-List">{(v).map((value) => (
                     <li>
                         <a className={`premium-person__socialIcon__link_content ${socialIconStyles[0].defaultIconColor ? value.label : ""}`} href={`${value.value}`} style={{
-                            // borderStyle: socialIconBorder.borderType,
-                            // borderColor: socialIconBorder.borderColor,
+                            borderStyle: socialIconStyles[0].borderTypeIcon,
+                            borderWidth: socialIconBorderUpdated
+                                ? `${socialIconBorderTop}px ${socialIconBorderRight}px ${socialIconBorderBottom}px ${socialIconBorderLeft}px`
+                                : socialIconBorderWidth + "px",
+                            borderRadius: socialIconStyles[0].borderRadiusIcon || 100 + "px",
+                            borderColor: socialIconStyles[0].borderColorIcon,
                             background: socialIconStyles[0].socialIconBackgroundColor,
                         }}>
                             <i className={`premium-person__socialIcon ${value.label == "youtube" ? "fa fa-youtube-play" : `fa fa-${value.label}`} premium-person__${socialIconHoverColor}`}

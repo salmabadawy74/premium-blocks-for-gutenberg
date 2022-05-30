@@ -10,7 +10,7 @@ export default function PremiumShadow({ label, value, onChange, boxShadow = fals
         'blur': '',
         'horizontal': '',
         'vertical': '',
-        'position': ' '
+        'position': ''
     }
     value = value ? { ...defaultValues, ...value } : defaultValues;
     const [state, setState] = useState(value);
@@ -30,7 +30,7 @@ export default function PremiumShadow({ label, value, onChange, boxShadow = fals
     const { color, blur, horizontal, vertical, position } = state
 
     return (
-        <div className="premium-control-toggle premium-shadow-control__container">
+        <div className=" premium-shadow-control__container premium-blocks-field">
             <strong>{__(label || "Box Shadow")}</strong>
             <div className={`premium-shadow-control__wrapper`}>
                 <AdvancedColorControl
