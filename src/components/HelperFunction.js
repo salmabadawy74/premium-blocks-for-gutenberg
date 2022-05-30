@@ -53,3 +53,14 @@ export const marginCss = (value, device) => {
         marginLeft: value[device]['left'] && value[device]['left'] + value.unit,
     }
 }
+export const typographyCss = (value, device) => {
+    return {
+        fontSize: `${value.fontSize[device] || ''}${value.fontSize.unit}`,
+        fontFamily: value.fontFamily,
+        letterSpacing: value.letterSpacing + "px",
+        textTransform: value.textTransform ? "uppercase" : "none",
+        fontStyle: value.fontStyle,
+        fontWeight: value.fontWeight,
+        lineHeight: value.lineHeight + "px",
+    }
+}

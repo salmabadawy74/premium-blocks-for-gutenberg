@@ -17,7 +17,7 @@ import RadioComponent from '../../components/radio-control';
 import InsideTabs from '../../components/InsideTabs'
 import InsideTab from '../../components/InsideTab';
 import WebfontLoader from "../../components/typography/fontLoader"
-import { borderCss, padddingCss, marginCss } from '../../components/HelperFunction'
+import { borderCss, padddingCss, marginCss, typographyCss } from '../../components/HelperFunction'
 import times from "lodash/times"
 
 const { withSelect } = wp.data
@@ -554,13 +554,14 @@ class edit extends Component {
                                 style={{
                                     ...padddingCss(namePadding, this.props.deviceType),
                                     color: nameStyles[0].nameColor,
-                                    fontSize: `${nameTypography.fontSize[this.props.deviceType] || ''}${nameTypography.fontSize.unit}`,
-                                    fontFamily: nameTypography.fontFamily,
-                                    letterSpacing: nameTypography.letterSpacing + "px",
-                                    textTransform: nameTypography.textTransform ? "uppercase" : "none",
-                                    fontStyle: nameTypography.fontStyle,
-                                    fontWeight: nameTypography.fontWeight,
-                                    lineHeight: nameTypography.lineHeight + "px",
+                                    ...typographyCss(nameTypography, this.props.deviceType),
+                                    // fontSize: `${nameTypography.fontSize[this.props.deviceType] || ''}${nameTypography.fontSize.unit}`,
+                                    // fontFamily: nameTypography.fontFamily,
+                                    // letterSpacing: nameTypography.letterSpacing + "px",
+                                    // textTransform: nameTypography.textTransform ? "uppercase" : "none",
+                                    // fontStyle: nameTypography.fontStyle,
+                                    // fontWeight: nameTypography.fontWeight,
+                                    // lineHeight: nameTypography.lineHeight + "px",
                                     alignSelf: nameV,
                                     textShadow: `${nameShadow.horizontal}px ${nameShadow.vertical}px ${nameShadow.blur}px ${nameShadow.color}`
                                 }}
