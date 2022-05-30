@@ -48,26 +48,17 @@ const SortableItem = SortableElement(({ onRemove, changeLinkValue, value, addLin
                     <button className="premium-repeater-item-remove is-tertiary" onClick={() => onRemove(value.label)}>x</button>
                 </div>
             </span>
+            {value.link && (
+                <div className="premium-repeater-row-controls">
+                    <TextControl
+                        placeholder={__(`Enter ${value.label} link`)}
+                        value={value.changeinput}
+                        onChange={(val) => changeLinkValue(val, value, personIndex)}
+                        className="premium-person__socialIcon__textInput"
+                    />
+                </div>
+            )}
         </span>
-        {/* <span className="premium-person__socialIcon__container">
-            <span className="premium-person__socialIcon__dragHandle"></span>
-            <div className="premium-person__socialIcon__content" onClick={() => addLink(value, personIndex)}>
-                <span className={`premium-person__socialIcon__iconvalue fa fa-${value.label}`}></span>
-                {value.label}
-            </div>
-            <button className="premium-person__socialIcon__trashicon fa fa-trash" onClick={() => onRemove(value.label)}></button>
-        </span> */}
-        {value.link && (
-            <div className="premium-person__socialIcon__link">
-                <TextControl
-                    placeholder={__(`Enter ${value.label} link`)}
-                    value={value.changeinput}
-                    onChange={(val) => changeLinkValue(val, value, personIndex)}
-                    className="premium-person__socialIcon__textInput"
-                />
-                {/* <button className="premium-person__socialIcon__saveButton" onClick={() => saveLink(value.changeinput, value, personIndex)}>Save</button> */}
-            </div>
-        )}
     </span>);
 
 const SortableList = SortableContainer(({ items, onRemove, changeLinkValue, addLink, personIndex }) => {
@@ -133,9 +124,6 @@ class edit extends Component {
             id,
             personSize,
             personAlign,
-            imgSize,
-            imgBorder,
-            imgBorderColor,
             nameStyles,
             titleStyles,
             descStyles,
@@ -152,7 +140,6 @@ class edit extends Component {
             effectPersonStyle,
             rowPerson,
             multiPersonContent,
-            change,
             blur,
             bright,
             contrast,
@@ -175,7 +162,8 @@ class edit extends Component {
             titlePadding,
             titleMargin,
             descPadding,
-            contentPadding
+            contentPadding,
+            imgHeight
         } = this.props.attributes;
 
         const HOVER = [
@@ -352,6 +340,7 @@ class edit extends Component {
         let loadTitleGoogleFonts;
         let loadNameGoogleFonts;
         let loadDescriptionGoogleFonts;
+
         if (nameTypography.fontFamily !== 'Default') {
             const nameConfig = {
                 google: {
@@ -363,6 +352,7 @@ class edit extends Component {
                 </WebfontLoader>
             )
         }
+
         if (titleTypography.fontFamily !== 'Default') {
             const titleConfig = {
                 google: {
@@ -374,6 +364,7 @@ class edit extends Component {
                 </WebfontLoader>
             )
         }
+
         if (descTypography.fontFamily !== 'Default') {
             const descriptionConfig = {
                 google: {
@@ -385,6 +376,25 @@ class edit extends Component {
                 </WebfontLoader>
             )
         }
+
+        const renderCss = (
+            <style>
+                {`
+                    #premium-person-${id} .premium-person:hover {
+                        border-color: ${borderHoverColor} !important;
+                    }
+                    #premium-person-${id} .premium-person__social-List li:hover i{
+                        color: ${socialIconStyles[0].socialIconHoverColor} !important;
+                        -webkit-transition: all .2s ease-in-out;
+                        transition: all .2s ease-in-out;
+                    }
+                    #premium-person-${id} .premium-person__img_wrap img {
+                        height: ${imgHeight}px !important;
+                        filter: ${`brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`} !important;
+                    }
+                `}
+            </style>
+        );
 
         const shouldCancelStart = (e) => {
             // Prevent sorting from being triggered if target is input or button
@@ -444,12 +454,15 @@ class edit extends Component {
         const addLink = (value, i) => {
             value.link = !value.link
             value.link == false ? value.changeinput = value.value : value.changeinput
+
             let array = multiPersonContent.map((cont) => (
                 cont
             )).filter(f => f.id == i + 1)
+
             let newData = (array[0].items).filter(b => {
                 return b
             })
+
             array[0].items = newData
             multiPersonContent[i] = array[0]
             setAttributes(
@@ -478,9 +491,11 @@ class edit extends Component {
             let array = multiPersonContent.map((cont) => (
                 cont
             )).filter(f => f.id == i + 1)
+
             let newData = (array[0].items).filter(b => {
                 return b.label != value
             })
+
             array[0].items = newData
             multiPersonContent[i] = array[0]
             setAttributes(multiPersonContent[i] = array[0]);
@@ -521,13 +536,6 @@ class edit extends Component {
                                     className={`premium-person__img`}
                                     src={`${value.personImgUrl}`}
                                     alt="Person"
-                                    style={{
-                                        borderWidth: imgBorder + "px",
-                                        borderColor: imgBorderColor,
-                                        width: imgSize + "px",
-                                        height: imgSize + "px",
-                                        filter: `${change ? `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )` : ""}`
-                                    }}
                                 />
                             )}
                             {!value.personImgUrl && <DefaultImage className={className} />}
@@ -555,13 +563,6 @@ class edit extends Component {
                                     ...padddingCss(namePadding, this.props.deviceType),
                                     color: nameStyles[0].nameColor,
                                     ...typographyCss(nameTypography, this.props.deviceType),
-                                    // fontSize: `${nameTypography.fontSize[this.props.deviceType] || ''}${nameTypography.fontSize.unit}`,
-                                    // fontFamily: nameTypography.fontFamily,
-                                    // letterSpacing: nameTypography.letterSpacing + "px",
-                                    // textTransform: nameTypography.textTransform ? "uppercase" : "none",
-                                    // fontStyle: nameTypography.fontStyle,
-                                    // fontWeight: nameTypography.fontWeight,
-                                    // lineHeight: nameTypography.lineHeight + "px",
                                     alignSelf: nameV,
                                     textShadow: `${nameShadow.horizontal}px ${nameShadow.vertical}px ${nameShadow.blur}px ${nameShadow.color}`
                                 }}
@@ -578,14 +579,8 @@ class edit extends Component {
                                 style={{
                                     ...marginCss(titleMargin, this.props.deviceType),
                                     ...padddingCss(titlePadding, this.props.deviceType),
+                                    ...typographyCss(titleTypography, this.props.deviceType),
                                     color: titleStyles[0].titleColor,
-                                    fontSize: `${titleTypography.fontSize[this.props.deviceType] || ''}${titleTypography.fontSize.unit}`,
-                                    fontFamily: titleTypography.fontFamily,
-                                    letterSpacing: titleTypography.letterSpacing + "px",
-                                    textTransform: titleTypography.textTransform ? "uppercase" : "none",
-                                    fontStyle: titleTypography.fontStyle,
-                                    fontWeight: titleTypography.fontWeight,
-                                    lineHeight: titleTypography.lineHeight + "px",
                                     alignSelf: titleV,
                                     textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`
                                 }}
@@ -601,14 +596,8 @@ class edit extends Component {
                                 onChange={value => { this.save({ desc: value }, index) }}
                                 style={{
                                     ...padddingCss(descPadding, this.props.deviceType),
+                                    ...typographyCss(descTypography, this.props.deviceType),
                                     color: descStyles[0].descColor,
-                                    fontSize: `${descTypography.fontSize[this.props.deviceType] || 20}${descTypography.fontSize.unit}`,
-                                    fontFamily: descTypography.fontFamily,
-                                    letterSpacing: descTypography.letterSpacing + "px",
-                                    textTransform: descTypography.textTransform ? "uppercase" : "none",
-                                    fontStyle: descTypography.fontStyle,
-                                    fontWeight: descTypography.fontWeight,
-                                    lineHeight: descTypography.lineHeight + "px",
                                     alignSelf: descV,
                                     textShadow: `${descShadow.horizontal}px ${descShadow.vertical}px ${descShadow.blur}px ${descShadow.color}`
                                 }}
@@ -660,6 +649,7 @@ class edit extends Component {
         const addMultiPerson = (newP) => {
             let multi = [...multiPersonContent]
             if (multi.length < newP) {
+
                 const incAmount = Math.abs(newP - multi.length)
                 {
                     times(incAmount, n => {
@@ -694,7 +684,9 @@ class edit extends Component {
             let arrayItem = multiPersonContent.map((cont) => (
                 cont
             )).filter(f => f.id == i + 1);
+
             const array = arrayMove(arrayItem[0].items, oldIndex, newIndex)
+
             arrayItem[0].items = array
             multiPersonContent[i] = arrayItem[0]
             setAttributes(multiPersonContent[i] = arrayItem[0]);
@@ -794,6 +786,15 @@ class edit extends Component {
                                     value={titleTag}
                                     onChange={(newValue) => setAttributes({ titleTag: newValue })}
                                 />
+                                <ResponsiveSingleRangeControl
+                                    label={__("Custom Image Height", 'premium-block-for-gutenberg')}
+                                    value={imgHeight}
+                                    onChange={value => setAttributes({ imgHeight: value })}
+                                    showUnit={false}
+                                    defaultValue={200}
+                                    min={1}
+                                    max={500}
+                                />
                                 <SelectControl
                                     label={__("Image Hover Effect", 'premium-block-for-gutenberg')}
                                     options={HOVER}
@@ -816,11 +817,11 @@ class edit extends Component {
                                     contrast={contrast}
                                     saturation={saturation}
                                     hue={hue}
-                                    onChangeBlur={newSize => setAttributes({ blur: newSize, change: true })}
-                                    onChangeBright={newSize => setAttributes({ bright: newSize, change: true })}
-                                    onChangeContrast={newSize => setAttributes({ contrast: newSize, change: true })}
-                                    onChangeSat={newSize => setAttributes({ saturation: newSize, change: true })}
-                                    onChangeHue={newSize => setAttributes({ hue: newSize, change: true })}
+                                    onChangeBlur={newSize => setAttributes({ blur: newSize })}
+                                    onChangeBright={newSize => setAttributes({ bright: newSize })}
+                                    onChangeContrast={newSize => setAttributes({ contrast: newSize })}
+                                    onChangeSat={newSize => setAttributes({ saturation: newSize })}
+                                    onChangeHue={newSize => setAttributes({ hue: newSize })}
                                 />
                             </PanelBody>
                             <PanelBody
@@ -1061,6 +1062,7 @@ class edit extends Component {
                     </InspectorTabs>
                 </InspectorControls>
             ),
+            renderCss,
             <div
                 id={`premium-person-${id}`}
                 className={`${mainClasses} premium-person__${effect} premium-person__${effectDir}`}

@@ -1,5 +1,6 @@
 import classnames from 'classnames'
 import DefaultImage from "../../components/default-image";
+import { typographyCss } from '../../components/HelperFunction'
 
 const {
     RichText
@@ -12,9 +13,6 @@ const save = props => {
     const {
         id,
         personAlign,
-        imgBorder,
-        imgBorderColor,
-        imgSize,
         nameV,
         titleStyles,
         socialIconStyles,
@@ -31,7 +29,6 @@ const save = props => {
         effectPersonStyle,
         multiPersonContent,
         rowPerson,
-        change,
         blur,
         bright,
         contrast,
@@ -48,10 +45,30 @@ const save = props => {
         descShadow,
         titleTag,
         nameTag,
+        imgHeight
     } = props.attributes;
 
 
     const mainClasses = classnames(className, 'premium-person');
+
+    const renderCss = (
+        <style>
+            {`
+                #premium-person-${id} .premium-person:hover {
+                    border-color: ${borderHoverColor} !important;
+                }
+                #premium-person-${id} .premium-person__social-List li:hover i{
+                    color: ${socialIconStyles[0].socialIconHoverColor} !important;
+                    -webkit-transition: all .2s ease-in-out;
+                    transition: all .2s ease-in-out;
+                }
+                #premium-person-${id} .premium-person__img_wrap img {
+                    height: ${imgHeight}px !important;
+                    filter: ${`brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`} !important;
+                }
+            `}
+        </style>
+    );
 
     const socialIconfn = (v) => {
         return <ul className="premium-person__social-List">{(v).map((value) => (
@@ -84,13 +101,6 @@ const save = props => {
                                 className={`premium-person__img`}
                                 src={`${value.personImgUrl}`}
                                 alt="Person"
-                                style={{
-                                    borderWidth: imgBorder + "px",
-                                    borderColor: imgBorderColor,
-                                    width: imgSize + "px",
-                                    height: imgSize + "px",
-                                    filter: `${change ? `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )` : ""}`
-                                }}
                             />
                         )}
                         {!value.personImgUrl && <DefaultImage className={className} />}
@@ -116,12 +126,7 @@ const save = props => {
                             style={{
                                 color: nameStyles[0].nameColor,
                                 alignSelf: nameV,
-                                fontFamily: nameTypography.fontFamily,
-                                letterSpacing: nameTypography.letterSpacing + "px",
-                                textTransform: nameTypography.textTransform ? "uppercase" : "none",
-                                fontStyle: nameTypography.fontStyle,
-                                fontWeight: nameTypography.fontWeight,
-                                lineHeight: nameTypography.lineHeight + "px",
+                                ...typographyCss(nameTypography, props.deviceType),
                                 textShadow: `${nameShadow.horizontal}px ${nameShadow.vertical}px ${nameShadow.blur}px ${nameShadow.color}`
                             }}
                             keepPlaceholderOnFocus
@@ -136,12 +141,7 @@ const save = props => {
                             onChange={value => { this.save({ title: value }, index) }}
                             style={{
                                 color: titleStyles[0].titleColor,
-                                fontFamily: titleTypography.fontFamily,
-                                letterSpacing: titleTypography.letterSpacing + "px",
-                                textTransform: titleTypography.textTransform ? "uppercase" : "none",
-                                fontStyle: titleTypography.fontStyle,
-                                fontWeight: titleTypography.fontWeight,
-                                lineHeight: titleTypography.lineHeight + "px",
+                                ...typographyCss(titleTypography, props.deviceType),
                                 alignSelf: titleV,
                                 textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`
                             }}
@@ -157,12 +157,7 @@ const save = props => {
                             onChange={value => { this.save({ desc: value }, index) }}
                             style={{
                                 color: descStyles[0].descColor,
-                                fontFamily: descTypography.fontFamily,
-                                letterSpacing: descTypography.letterSpacing + "px",
-                                textTransform: descTypography.textTransform ? "uppercase" : "none",
-                                fontStyle: descTypography.fontStyle,
-                                fontWeight: descTypography.fontWeight,
-                                lineHeight: descTypography.lineHeight + "px",
+                                ...typographyCss(descTypography, props.deviceType),
                                 alignSelf: descV,
                                 textShadow: `${descShadow.horizontal}px ${descShadow.vertical}px ${descShadow.blur}px ${descShadow.color}`
                             }}
@@ -184,20 +179,7 @@ const save = props => {
             className={`${mainClasses} premium-person__${effect} premium-person__${effectDir}`}
             style={{ textAlign: personAlign }}
         >
-            <style
-                dangerouslySetInnerHTML={{
-                    __html: [
-                        `#premium-person-${id} .premium-person:hover {`,
-                        `border-color: ${borderHoverColor} !important;`,
-                        "}",
-                        `#premium-person-${id} .premium-person__social-List li:hover i{`,
-                        `color: ${socialIconStyles[0].socialIconHoverColor} !important;`,
-                        `-webkit-transition: all .2s ease-in-out;`,
-                        `transition: all .2s ease-in-out;`,
-                        "}"
-                    ].join("\n")
-                }}
-            />
+            {renderCss}
             {content()}
         </div>
     );

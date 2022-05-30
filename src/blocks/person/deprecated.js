@@ -559,6 +559,7 @@ const deprecated = [
                         left: ''
                     },
                 },
+                imgHeight: ''
             }
             return Object.assign(attributes, newAttributes)
         },

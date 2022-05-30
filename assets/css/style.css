@@ -2186,10 +2186,6 @@ a.premium-dheading-block__link:hover {
     transition: all 0.5s ease-in-out;
 }
 
-.premium-person__img_wrap img {
-    height: 133.312px !important;
-}
-
 .premium-person__img {
     min-width: 100%;
     max-width: 100%;

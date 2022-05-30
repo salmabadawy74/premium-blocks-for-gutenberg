@@ -6248,3 +6248,7 @@ input[type="number"] {
     background: transparent;
     outline: 1px solid transparent;
 }
+.premium-repeater-row-controls{
+    padding: 12px;
+    border-top: 1px solid #e6e6e6;
+}

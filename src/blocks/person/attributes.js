@@ -8,16 +8,6 @@ const attributes = {
         type: "string",
         default: "center"
     },
-    imgSize: {
-        type: "number"
-    },
-    imgBorder: {
-        type: "number",
-        default: ""
-    },
-    imgBorderColor: {
-        type: "string"
-    },
     nameStyles: {
         type: "array",
         default: [
@@ -177,10 +167,6 @@ const attributes = {
                 ]
             }
         ]
-    },
-    change: {
-        type: "boolean",
-        default: false
     },
     blur: {
         type: "number",
@@ -509,6 +495,9 @@ const attributes = {
             },
             unit: "px"
         }
+    },
+    imgHeight: {
+        type: "string"
     }
 }
 export default attributes
