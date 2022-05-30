@@ -638,7 +638,7 @@
             .components-color-picker__hue-pointer,
             .components-color-picker__alpha-pointer,
             .components-color-picker__saturation-pointer {
-                border: 3px solid #fff;
+                border: 3px solid #e1e1e1;
                 background: transparent !important;
                 box-shadow: 0 1px 4px rgba(0, 0, 0, 0.37),
                     inset 0 0 3px rgba(0, 0, 0, 0.2) !important;
@@ -670,7 +670,7 @@
                     height: 28px !important;
                     font-size: 11px !important;
                     padding-left: 38px !important;
-                    border: 1px solid #dcdddf !important;
+                    border: 1px solid #e1e1e1 !important;
                     border-radius: 0 !important;
                 }
 
@@ -738,7 +738,7 @@
                 border-radius: 0px;
                 margin-left: 5px;
                 cursor: pointer;
-                border: 1px solid #dcdddf;
+                border: 1px solid #e1e1e1;
                 transition: border-color 0.1s linear;
 
                 &:hover {

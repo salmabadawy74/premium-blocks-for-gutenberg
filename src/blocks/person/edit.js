@@ -11,56 +11,63 @@ import ResponsiveRangeControl from "../../components/RangeControl/responsive-ran
 import SpacingControl from '../../components/premium-responsive-spacing'
 import PremiumMediaUpload from "../../components/premium-media-upload"
 import { SortableContainer, SortableElement, arrayMove } from 'react-sortable-hoc';
+import InspectorTabs from '../../components/inspectorTabs';
+import InspectorTab from '../../components/inspectorTab';
+import RadioComponent from '../../components/radio-control';
+import InsideTabs from '../../components/InsideTabs'
+import InsideTab from '../../components/InsideTab';
+import WebfontLoader from "../../components/typography/fontLoader"
+import { borderCss, padddingCss, marginCss, typographyCss } from '../../components/HelperFunction'
 import times from "lodash/times"
 
 const { withSelect } = wp.data
 
 const { __ } = wp.i18n;
-const { Component } = wp.element;
+const { Component, Fragment } = wp.element;
 
 const {
     PanelBody,
     SelectControl,
     ToggleControl,
-    TextControl,
-    TextareaControl
+    TextControl
 } = wp.components;
 
 const {
     InspectorControls,
     AlignmentToolbar,
-    BlockControls
+    BlockControls,
+    RichText
 } = wp.editor;
 
-const SortableItem = SortableElement(({ onRemove, saveLink, changeLinkValue, value, addLink, personIndex }) => <li tabIndex={0}>
-    <span className="premium-person__socialIcon__container">
-        <span className="premium-person__socialIcon__dragHandle"></span>
-        <div className="premium-person__socialIcon__content" onClick={() => addLink(value)}>
-            <span className={`premium-person__socialIcon__iconvalue fa fa-${value.label}`}></span>
-            {value.label}
-        </div>
-        <button className="premium-person__socialIcon__trashicon fa fa-trash" onClick={() => onRemove(value.label)}></button>
-    </span>
-    {value.link && (
-        <div className="premium-person__socialIcon__link">
-            <TextControl
-                placeholder={__(`Enter ${value.label} link`)}
-                value={value.changeinput}
-                onChange={(val) => changeLinkValue(val, value, personIndex)}
-                className="premium-person__socialIcon__textInput"
-            />
-            <button className="premium-person__socialIcon__saveButton" onClick={() => saveLink(value.changeinput, value, personIndex)}>Save</button>
-        </div>
-    )}
-</li>);
+const SortableItem = SortableElement(({ onRemove, changeLinkValue, value, addLink, personIndex, newIndex }) =>
+    <span tabIndex={0} key={newIndex} className={`premium-repeater-row-wrapper ${value.link ? 'active' : ''}`}>
+        <span className="premium-repeater-row-inner">
+            <span className="premium-repeater-row-tools">
+                <span className="premium-repeater-item-title" onClick={() => addLink(value, personIndex)}>{value.label}</span>
+                <div className="premium-repeater-row-item-remove">
+                    <button className="premium-repeater-item-remove is-tertiary" onClick={() => onRemove(value.label)}>x</button>
+                </div>
+            </span>
+            {value.link && (
+                <div className="premium-repeater-row-controls">
+                    <TextControl
+                        placeholder={__(`Enter ${value.label} link`)}
+                        value={value.changeinput}
+                        onChange={(val) => changeLinkValue(val, value, personIndex)}
+                        className="premium-person__socialIcon__textInput"
+                    />
+                </div>
+            )}
+        </span>
+    </span>);
 
-const SortableList = SortableContainer(({ items, onRemove, saveLink, changeLinkValue, addLink, personIndex }) => {
+const SortableList = SortableContainer(({ items, onRemove, changeLinkValue, addLink, personIndex }) => {
     return (
-        <ul>
+        <span className="premium-repeater-rows">
             {(items).map((value, index) => (
-                <SortableItem key={`item-${value}`} index={index} newIndex={index} personIndex={personIndex} value={value} onRemove={onRemove} saveLink={saveLink} addLink={addLink} changeLinkValue={changeLinkValue} />
+                <SortableItem key={`item-${value}`} index={index} newIndex={index} personIndex={personIndex} value={value} onRemove={onRemove} addLink={addLink} changeLinkValue={changeLinkValue} />
             ))}
-        </ul>
+        </span>
     );
 });
 
@@ -70,36 +77,56 @@ class edit extends Component {
     }
 
     componentDidMount() {
+        if (!this.props.attributes.classMigrate) {
+            this.props.setAttributes({
+                multiPersonContent: [{
+                    id: 1,
+                    personImgUrl: "",
+                    personImgId: '',
+                    name: "John Doe",
+                    title: "Senior Developer",
+                    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla",
+                    socialIcon: false,
+                    items: [
+                        { label: 'facebook', link: false, value: "#", changeinput: "#" },
+                        { label: 'twitter', link: false, value: "#", changeinput: "#" },
+                        { label: 'instagram', link: false, value: "#", changeinput: "#" },
+                        { label: 'youtube', link: false, value: "#", changeinput: "#" }
+                    ]
+                }]
+            })
+        }
         // Assigning id in the attribute.
         this.props.setAttributes({ id: this.props.clientId })
         this.props.setAttributes({ classMigrate: true })
-        this.getPreviewSize = this.getPreviewSize.bind(this);
-    }
-
-    getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
-        if (device === 'Mobile') {
-            if (undefined !== mobileSize && '' !== mobileSize) {
-                return mobileSize;
-            } else if (undefined !== tabletSize && '' !== tabletSize) {
-                return tabletSize;
-            }
-        } else if (device === 'Tablet') {
-            if (undefined !== tabletSize && '' !== tabletSize) {
-                return tabletSize;
-            }
-        }
-        return desktopSize;
     }
 
     save(value, index) {
         const { attributes, setAttributes } = this.props
         const { multiPersonContent } = attributes
+
+        let array = [];
+
         const newItems = multiPersonContent.map((item, thisIndex) => {
             if (index === thisIndex) {
                 item = { ...item, ...value }
             }
+            if (item.socialIcon) {
+                array.push(true);
+            }
+            if (array.length != 0) {
+                setAttributes({
+                    socialIcon: true,
+                })
+            }
+            else {
+                setAttributes({
+                    socialIcon: false,
+                })
+            }
             return item
         })
+
         setAttributes({
             multiPersonContent: newItems,
         })
@@ -112,9 +139,6 @@ class edit extends Component {
             id,
             personSize,
             personAlign,
-            imgSize,
-            imgBorder,
-            imgBorderColor,
             nameStyles,
             titleStyles,
             descStyles,
@@ -131,7 +155,6 @@ class edit extends Component {
             effectPersonStyle,
             rowPerson,
             multiPersonContent,
-            change,
             blur,
             bright,
             contrast,
@@ -141,7 +164,22 @@ class edit extends Component {
             socialIconPadding,
             socialIconMargin,
             socialIconBorder,
-            socialIconSize
+            socialIconSize,
+            descTypography,
+            titleTypography,
+            nameTypography,
+            nameShadow,
+            titleShadow,
+            descShadow,
+            titleTag,
+            nameTag,
+            namePadding,
+            titlePadding,
+            titleMargin,
+            descPadding,
+            contentPadding,
+            imgHeight,
+            socialIcon
         } = this.props.attributes;
 
         const HOVER = [
@@ -315,11 +353,64 @@ class edit extends Component {
 
         const mainClasses = classnames(className, "premium-person");
 
-        const NameSize = this.getPreviewSize(this.props.deviceType, nameStyles[0].namefontSize, nameStyles[0].namefontSizeTablet, nameStyles[0].namefontSizeMobile);
+        let loadTitleGoogleFonts;
+        let loadNameGoogleFonts;
+        let loadDescriptionGoogleFonts;
 
-        const TitleSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titlefontSizeTablet, titleStyles[0].titlefontSizeMobile);
+        if (nameTypography.fontFamily !== 'Default') {
+            const nameConfig = {
+                google: {
+                    families: [nameTypography.fontFamily],
+                },
+            }
+            loadNameGoogleFonts = (
+                <WebfontLoader config={nameConfig}>
+                </WebfontLoader>
+            )
+        }
 
-        const DescSize = this.getPreviewSize(this.props.deviceType, descStyles[0].descSize, descStyles[0].descfontSizeTablet, descStyles[0].descfontSizeMobile);
+        if (titleTypography.fontFamily !== 'Default') {
+            const titleConfig = {
+                google: {
+                    families: [titleTypography.fontFamily],
+                },
+            }
+            loadTitleGoogleFonts = (
+                <WebfontLoader config={titleConfig}>
+                </WebfontLoader>
+            )
+        }
+
+        if (descTypography.fontFamily !== 'Default') {
+            const descriptionConfig = {
+                google: {
+                    families: [descTypography.fontFamily],
+                },
+            }
+            loadDescriptionGoogleFonts = (
+                <WebfontLoader config={descriptionConfig}>
+                </WebfontLoader>
+            )
+        }
+
+        const renderCss = (
+            <style>
+                {`
+                    #premium-person-${id} .premium-person:hover {
+                        border-color: ${borderHoverColor} !important;
+                    }
+                    #premium-person-${id} .premium-person__social-List li:hover i{
+                        color: ${socialIconStyles[0].socialIconHoverColor} !important;
+                        -webkit-transition: all .2s ease-in-out;
+                        transition: all .2s ease-in-out;
+                    }
+                    #premium-person-${id} .premium-person__img_wrap img {
+                        height: ${imgHeight}px !important;
+                        filter: ${`brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`} !important;
+                    }
+                `}
+            </style>
+        );
 
         const shouldCancelStart = (e) => {
             // Prevent sorting from being triggered if target is input or button
@@ -379,63 +470,48 @@ class edit extends Component {
         const addLink = (value, i) => {
             value.link = !value.link
             value.link == false ? value.changeinput = value.value : value.changeinput
+
             let array = multiPersonContent.map((cont) => (
                 cont
             )).filter(f => f.id == i + 1)
+
             let newData = (array[0].items).filter(b => {
                 return b
             })
+
             array[0].items = newData
             multiPersonContent[i] = array[0]
-            setAttributes(multiPersonContent[i] = array[0]);
-        }
-
-        const saveLink = (value, i, personIndex) => {
-            i.value = value
-            let arrayItem = multiPersonContent.map((cont) => (
-                cont
-            )).filter(f => f.id == personIndex + 1)
-            i.link = false
-            let newData = (arrayItem[0].items).filter(b => {
-                return b
-            })
-            arrayItem[0].items = newData
-            multiPersonContent[personIndex] = arrayItem[0]
-            setAttributes(multiPersonContent[personIndex] = arrayItem[0]);
+            setAttributes(
+                multiPersonContent[i] = array[0]
+            );
         }
 
         const changeLinkValue = (value, i, personIndex) => {
-            if (personIndex + 1 > 0) {
-                i.changeinput = value
-                let arrayItem = multiPersonContent.map((cont) => (
-                    cont
-                )).filter(f => f.id == personIndex + 1)
-                let newData = (arrayItem[0].items).filter(b => {
-                    return b
-                })
-                arrayItem[0].items = newData
-                multiPersonContent[personIndex] = arrayItem[0]
-                setAttributes(multiPersonContent[personIndex] = arrayItem[0]);
-            }
-            else {
-                i.changeinput = value
-                let arrayItem = multiPersonContent.map((cont) => (
-                    cont
-                ))
-                let newData = (arrayItem[0].items).filter(b => {
-                    return b
-                })
-                setAttributes({ multiPersonContent: [{ id: 1, personImgUrl: arrayItem[0].personImgUrl, name: arrayItem[0].name, title: arrayItem[0].title, desc: arrayItem[0].desc, socialIcon: arrayItem[0].socialIcon, items: newData }] });
-            }
+            i.changeinput = value
+            i.value = value
+
+            let arrayItem = multiPersonContent.map((cont) => (
+                cont
+            )).filter(f => f.id == personIndex + 1)
+
+            let newData = (arrayItem[0].items).filter(b => {
+                return b
+            })
+
+            arrayItem[0].items = newData
+            multiPersonContent[personIndex] = arrayItem[0]
+            setAttributes(multiPersonContent[personIndex] = arrayItem[0]);
         }
 
         const onRemove = (value, i) => {
             let array = multiPersonContent.map((cont) => (
                 cont
             )).filter(f => f.id == i + 1)
+
             let newData = (array[0].items).filter(b => {
                 return b.label != value
             })
+
             array[0].items = newData
             multiPersonContent[i] = array[0]
             setAttributes(multiPersonContent[i] = array[0]);
@@ -444,27 +520,13 @@ class edit extends Component {
         const socialIconfn = (v) => {
             return <ul className="premium-person__social-List">{(v).map((value) => (
                 <li>
-                    <a className={`premium-person__socialIcon__link_content ${socialIconStyles[0].defaultIconColor ? value.label : ""}`} href={`${value.value}`} style={{
-                        borderStyle: socialIconBorder.borderType,
-                        borderTopWidth: socialIconBorder['borderWidth'][this.props.deviceType]['top'] && socialIconBorder['borderWidth'][this.props.deviceType]['top'] + "px",
-                        borderRightWidth: socialIconBorder['borderWidth'][this.props.deviceType]['right'] && socialIconBorder['borderWidth'][this.props.deviceType]['right'] + "px",
-                        borderBottomWidth: socialIconBorder['borderWidth'][this.props.deviceType]['bottom'] && socialIconBorder['borderWidth'][this.props.deviceType]['bottom'] + "px",
-                        borderLeftWidth: socialIconBorder['borderWidth'][this.props.deviceType]['left'] && socialIconBorder['borderWidth'][this.props.deviceType]['left'] + "px",
-                        borderBottomLeftRadius: socialIconBorder['borderRadius'][this.props.deviceType]['left'] && socialIconBorder['borderRadius'][this.props.deviceType]['left'] + "px",
-                        borderTopLeftRadius: socialIconBorder['borderRadius'][this.props.deviceType]['top'] && socialIconBorder['borderRadius'][this.props.deviceType]['top'] + "px",
-                        borderTopRightRadius: socialIconBorder['borderRadius'][this.props.deviceType]['right'] && socialIconBorder['borderRadius'][this.props.deviceType]['right'] + "px",
-                        borderBottomRightRadius: socialIconBorder['borderRadius'][this.props.deviceType]['bottom'] && socialIconBorder['borderRadius'][this.props.deviceType]['bottom'] + "px",
-                        borderColor: socialIconBorder.borderColor,
-                        paddingTop: socialIconPadding[this.props.deviceType]['top'] && socialIconPadding[this.props.deviceType]['top'] + socialIconPadding.unit,
-                        paddingRight: socialIconPadding[this.props.deviceType]['right'] && socialIconPadding[this.props.deviceType]['right'] + socialIconPadding.unit,
-                        paddingBottom: socialIconPadding[this.props.deviceType]['bottom'] && socialIconPadding[this.props.deviceType]['bottom'] + socialIconPadding.unit,
-                        paddingLeft: socialIconPadding[this.props.deviceType]['left'] && socialIconPadding[this.props.deviceType]['left'] + socialIconPadding.unit,
-                        marginTop: socialIconMargin[this.props.deviceType]['top'] && socialIconMargin[this.props.deviceType]['top'] + socialIconMargin.unit,
-                        marginRight: socialIconMargin[this.props.deviceType]['right'] && socialIconMargin[this.props.deviceType]['right'] + socialIconMargin.unit,
-                        marginBottom: socialIconMargin[this.props.deviceType]['bottom'] && socialIconMargin[this.props.deviceType]['bottom'] + socialIconMargin.unit,
-                        marginLeft: socialIconMargin[this.props.deviceType]['left'] && socialIconMargin[this.props.deviceType]['left'] + socialIconMargin.unit,
-                        background: socialIconStyles[0].socialIconBackgroundColor,
-                    }}>
+                    <a className={`premium-person__socialIcon__link_content ${socialIconStyles[0].defaultIconColor ? value.label : ""}`} href={`${value.value}`}
+                        style={{
+                            ...borderCss(socialIconBorder, this.props.deviceType),
+                            ...padddingCss(socialIconPadding, this.props.deviceType),
+                            ...marginCss(socialIconMargin, this.props.deviceType),
+                            background: socialIconStyles[0].socialIconBackgroundColor,
+                        }}>
                         <i className={`premium-person__socialIcon ${value.label == "youtube" ? "fa fa-youtube-play" : `fa fa-${value.label}`} premium-person__${socialIconStyles[0].socialIconHoverColor}`}
                             style={{
                                 color: socialIconStyles[0].socialIconColor,
@@ -479,7 +541,7 @@ class edit extends Component {
 
         const content = () => {
             return <div className={`premium-person-content ${id} ${multiPersonChecked > 1 ? `premium-person__${rowPerson}` : ""}`}
-            > {multiPersonContent.map((value) => (
+            > {multiPersonContent.map((value, index) => (
                 <div key={value.id} className={`premium-person__inner premium-persson__min premium-person__${effectPersonStyle} premium-person__${hoverEffectPerson}`}>
                     <div className={`premium-person__img__container`}>
                         <div
@@ -490,14 +552,6 @@ class edit extends Component {
                                     className={`premium-person__img`}
                                     src={`${value.personImgUrl}`}
                                     alt="Person"
-                                    style={{
-
-                                        borderWidth: imgBorder + "px",
-                                        borderColor: imgBorderColor,
-                                        width: imgSize + "px",
-                                        height: imgSize + "px",
-                                        filter: `${change ? `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )` : ""}`
-                                    }}
                                 />
                             )}
                             {!value.personImgUrl && <DefaultImage className={className} />}
@@ -509,85 +563,63 @@ class edit extends Component {
                     <div
                         className={`premium-person__info`}
                         style={{
+                            ...padddingCss(contentPadding, this.props.deviceType),
                             background: contentColor ? contentColor : "#f2f2f2",
                             bottom: effectPersonStyle === 'effect1' ? bottomInfo + "px" : ""
                         }}
                     >
-                        <div
-                            className={`premium-person__name_wrap`}
-                            style={{
-                                fontSize: NameSize + nameStyles[0].namefontSizeType,
-                            }}
-                        >
-                            {value.name && (
-                                <span
-                                    className={`premium-person__name`}
-                                    style={{
-                                        color: nameStyles[0].nameColor,
-                                        fontSize: NameSize + nameStyles[0].namefontSizeType,
-                                        fontWeight: nameStyles[0].nameWeight,
-                                        alignSelf: nameV,
-                                        letterSpacing: nameStyles[0].nameLetter + "px",
-                                        lineHeight: nameStyles[0].nameLine + "px",
-                                        fontStyle: nameStyles[0].nameStyle,
-                                        textTransform: nameStyles[0].nameUpper ? "uppercase" : "none",
-                                        textShadow: `${nameStyles[0].nameshadowHorizontal}px ${nameStyles[0].nameshadowVertical}px ${nameStyles[0].nameshadowBlur}px ${nameStyles[0].nameshadowColor}`
-                                    }}
-                                >
-                                    {value.name}
-                                </span>
-                            )}
-                        </div>
-                        <div
-                            className={`premium-person__title_wrap`}
-                            style={{
-                                fontSize: TitleSize + titleStyles[0].titlefontSizeType,
-                            }}
-                        >
-                            {value.title && (
-                                <span
-                                    className={`premium-person__title`}
-                                    style={{
-                                        color: titleStyles[0].titleColor,
-                                        fontSize: TitleSize + titleStyles[0].titlefontSizeType,
-                                        fontWeight: titleStyles[0].titleWeight,
-                                        alignSelf: titleV,
-                                        letterSpacing: titleStyles[0].titleLetter + "px",
-                                        lineHeight: titleStyles[0].titleLine + "px",
-                                        fontStyle: titleStyles[0].titleStyle,
-                                        textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
-                                        textShadow: `${titleStyles[0].titleshadowHorizontal}px ${titleStyles[0].titleshadowVertical}px ${titleStyles[0].titleshadowBlur}px ${titleStyles[0].titleshadowColor}`,
-                                    }}
-                                >
-                                    {value.title}
-                                </span>
-                            )}
-                        </div>
-                        <div
-                            className={`premium-person__desc_wrap`}
-                            style={{
-                                fontSize: DescSize + descStyles[0].descfontSizeType,
-                            }}
-                        >
-                            {value.desc && (
-                                <span
-                                    className={`premium-person__desc`}
-                                    style={{
-                                        color: descStyles[0].descColor,
-                                        fontSize: DescSize + descStyles[0].descfontSizeType,
-                                        fontWeight: descStyles[0].descWeight,
-                                        alignSelf: descV,
-                                        letterSpacing: descStyles[0].descLetter + "px",
-                                        lineHeight: descStyles[0].descLine + "px",
-                                        fontStyle: descStyles[0].descStyle,
-                                        textTransform: descStyles[0].descUpper ? "uppercase" : "none",
-                                        textShadow: `${descStyles[0].descshadowHorizontal}px ${descStyles[0].descshadowVertical}px ${descStyles[0].descshadowBlur}px ${descStyles[0].descshadowColor}`,
-                                    }}
-                                >
-                                    {value.desc}
-                                </span>
-                            )}
-                        </div>
+                        {value.name && (
+                            <RichText
+                                tagName={nameTag.toLowerCase()}
+                                className={`premium-person__name`}
+                                value={value.name}
+                                isSelected={false}
+                                onChange={value => { this.save({ name: value }, index) }}
+                                style={{
+                                    ...padddingCss(namePadding, this.props.deviceType),
+                                    color: nameStyles[0].nameColor,
+                                    ...typographyCss(nameTypography, this.props.deviceType),
+                                    alignSelf: nameV,
+                                    textShadow: `${nameShadow.horizontal}px ${nameShadow.vertical}px ${nameShadow.blur}px ${nameShadow.color}`
+                                }}
+                                keepPlaceholderOnFocus
+                            />
+                        )}
+                        {value.title && (
+                            <RichText
+                                tagName={titleTag.toLowerCase()}
+                                className={`premium-person__title`}
+                                value={value.title}
+                                isSelected={false}
+                                onChange={value => { this.save({ title: value }, index) }}
+                                style={{
+                                    ...marginCss(titleMargin, this.props.deviceType),
+                                    ...padddingCss(titlePadding, this.props.deviceType),
+                                    ...typographyCss(titleTypography, this.props.deviceType),
+                                    color: titleStyles[0].titleColor,
+                                    alignSelf: titleV,
+                                    textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`
+                                }}
+                                keepPlaceholderOnFocus
+                            />
+                        )}
+                        {value.desc && (
+                            <RichText
+                                tagName="span"
+                                className={`premium-person__desc`}
+                                value={value.desc}
+                                isSelected={false}
+                                onChange={value => { this.save({ desc: value }, index) }}
+                                style={{
+                                    ...padddingCss(descPadding, this.props.deviceType),
+                                    ...typographyCss(descTypography, this.props.deviceType),
+                                    color: descStyles[0].descColor,
+                                    alignSelf: descV,
+                                    textShadow: `${descShadow.horizontal}px ${descShadow.vertical}px ${descShadow.blur}px ${descShadow.color}`
+                                }}
+                                keepPlaceholderOnFocus
+                            />
+                        )}
                         {effectPersonStyle == 'effect1' ? <div>{value.socialIcon && (
                             socialIconfn(value.items)
                         )}</div> : ""}
@@ -598,27 +630,34 @@ class edit extends Component {
         }
 
         const addSocialIcon = (newsocial, index) => {
+
             let array = iconsList.map((i) => (
                 i
             )).filter(f => f.value == newsocial)
+
             if (array[0] != undefined) {
+
                 newsocial = array[0];
                 setAttributes({ selectedSocialMediaIcon: newsocial.label });
+
                 const newicon = newsocial.label;
+
                 let arrayItem = multiPersonContent.map((cont) => (
                     cont
                 )).filter(f => f.id == index + 1)
+
                 let repeat = arrayItem[0].items.filter(d => d.label == newicon)
+
                 if (repeat[0] != undefined) {
                     arrayItem[0].items.filter(d => d.label != newicon)
-                    multiPersonContent[index - 1] = arrayItem[0]
-                    setAttributes(multiPersonContent[index - 1] = arrayItem[0]);
+                    multiPersonContent[index] = arrayItem[0]
+                    setAttributes(multiPersonContent[index] = arrayItem[0]);
                 }
                 else {
                     arrayItem[0].items.push({ label: newicon, link: false, value: "", changeinput: "#" })
                     arrayItem[0].items.filter(d => d.label != newicon)
-                    multiPersonContent[index - 1] = arrayItem[0]
-                    setAttributes(multiPersonContent[index - 1] = arrayItem[0]);
+                    multiPersonContent[index] = arrayItem[0]
+                    setAttributes(multiPersonContent[index] = arrayItem[0]);
                 }
             }
         };
@@ -626,6 +665,7 @@ class edit extends Component {
         const addMultiPerson = (newP) => {
             let multi = [...multiPersonContent]
             if (multi.length < newP) {
+
                 const incAmount = Math.abs(newP - multi.length)
                 {
                     times(incAmount, n => {
@@ -660,7 +700,9 @@ class edit extends Component {
             let arrayItem = multiPersonContent.map((cont) => (
                 cont
             )).filter(f => f.id == i + 1);
+
             const array = arrayMove(arrayItem[0].items, oldIndex, newIndex)
+
             arrayItem[0].items = array
             multiPersonContent[i] = arrayItem[0]
             setAttributes(multiPersonContent[i] = arrayItem[0]);
@@ -685,29 +727,14 @@ class edit extends Component {
                         this.save({ personImgUrl: '' }, index)
                     }}
                 />
-                <TextControl
-                    label={__("Name", 'premium-block-for-gutenberg')}
-                    value={multiPersonContent[index].name}
-                    onChange={value => { this.save({ name: value }, index) }}
-                />
-                <TextControl
-                    label={__("Title", 'premium-block-for-gutenberg')}
-                    value={multiPersonContent[index].title}
-                    onChange={value => { this.save({ title: value }, index) }}
-                />
-                <TextareaControl
-                    label={__("Description", 'premium-block-for-gutenberg')}
-                    value={multiPersonContent[index].desc}
-                    onChange={value => { this.save({ desc: value }, index) }}
-                />
                 <ToggleControl
                     label={__("Enable Social Icons", 'premium-block-for-gutenberg')}
                     checked={multiPersonContent[index].socialIcon}
                     onChange={value => { this.save({ socialIcon: value }, index) }}
                 />
                 {multiPersonContent[index].socialIcon && (
-                    <div>
-                        <label className="premium-person-paragraph">{__("Social Media")}</label>
+                    <div className="premium-repeater-rows">
+                        <label className="premium-repeater-label">{__("Social Media")}</label>
                         <FontIconPicker
                             icons={iconsList.map((i) => (
                                 i.value
@@ -719,7 +746,7 @@ class edit extends Component {
                             iconsPerPage={25}
                             noSelectedPlaceholder={__("Select Icon")}
                         />
-                        <SortableList items={multiPersonContent[index].items} personIndex={index} onSortEnd={(o, n) => onSortEndMulti(index, o, n)} onRemove={(value) => onRemove(value, index)} saveLink={(value, i) => saveLink(value, i, index)} changeLinkValue={(value, i) => changeLinkValue(value, i, index)} addLink={(value) => addLink(value, index)} shouldCancelStart={shouldCancelStart} helperClass='premium-person__sortableHelper' />
+                        <SortableList items={multiPersonContent[index].items} personIndex={index} onSortEnd={(o, n) => onSortEndMulti(index, o, n)} onRemove={(value) => onRemove(value, index)} changeLinkValue={(value, i) => changeLinkValue(value, i, index)} addLink={(value) => addLink(value, index)} shouldCancelStart={shouldCancelStart} helperClass='premium-person__sortableHelper' />
                     </div>
                 )}
             </PanelBody>
@@ -736,428 +763,322 @@ class edit extends Component {
             ),
             isSelected && (
                 <InspectorControls key={"inspector"}>
-                    <PanelBody
-                        title={__("General Settings")}
-                        className="premium-panel-body"
-                        initialOpen={false}
-                    >
-                        <ResponsiveSingleRangeControl
-                            label={__("Person Number", 'premium-block-for-gutenberg')}
-                            value={multiPersonChecked}
-                            onChange={value => addMultiPerson(value)}
-                            showUnit={false}
-                            defaultValue={1}
-                            min={1}
-                        />
-                        {multiPersonChecked > 1 ? <SelectControl
-                            label={__("Persons/Row", 'premium-block-for-gutenberg')}
-                            value={rowPerson}
-                            onChange={newColumn => setAttributes({ rowPerson: newColumn })}
-                            options={ROWS}
-                        /> : ""}
-                        <SelectControl
-                            label={__("Style", 'premium-block-for-gutenberg')}
-                            value={effectPersonStyle}
-                            onChange={newEffect => setAttributes({ effectPersonStyle: newEffect })}
-                            options={EFFECTS}
-                        />
-                        <SelectControl
-                            label={__("Image Hover Effect", 'premium-block-for-gutenberg')}
-                            options={HOVER}
-                            value={hoverEffectPerson}
-                            onChange={newEffect => setAttributes({ hoverEffectPerson: newEffect })}
-                        />
+                    <InspectorTabs tabs={['layout', 'style', 'advance']}>
+                        <InspectorTab key={'layout'}>
+                            <PanelBody
+                                title={__("General Settings")}
+                                className="premium-panel-body"
+                                initialOpen={true}
+                            >
+                                <ResponsiveSingleRangeControl
+                                    label={__("Person Number", 'premium-block-for-gutenberg')}
+                                    value={multiPersonChecked}
+                                    onChange={value => addMultiPerson(value)}
+                                    showUnit={false}
+                                    defaultValue={1}
+                                    min={1}
+                                />
+                                {multiPersonChecked > 1 ? <SelectControl
+                                    label={__("Persons/Row", 'premium-block-for-gutenberg')}
+                                    value={rowPerson}
+                                    onChange={newColumn => setAttributes({ rowPerson: newColumn })}
+                                    options={ROWS}
+                                /> : ""}
+                                <SelectControl
+                                    label={__("Style", 'premium-block-for-gutenberg')}
+                                    value={effectPersonStyle}
+                                    onChange={newEffect => setAttributes({ effectPersonStyle: newEffect })}
+                                    options={EFFECTS}
+                                />
+                                <RadioComponent
+                                    label={__("Name Tag", 'premium-blocks-for-gutenberg')}
+                                    choices={['H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'div', 'span']}
+                                    value={nameTag}
+                                    onChange={(newValue) => setAttributes({ nameTag: newValue })}
+                                />
+                                <RadioComponent
+                                    label={__("Title Tag", 'premium-blocks-for-gutenberg')}
+                                    choices={['H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'div', 'span']}
+                                    value={titleTag}
+                                    onChange={(newValue) => setAttributes({ titleTag: newValue })}
+                                />
+                                <ResponsiveSingleRangeControl
+                                    label={__("Custom Image Height", 'premium-block-for-gutenberg')}
+                                    value={imgHeight}
+                                    onChange={value => setAttributes({ imgHeight: value })}
+                                    showUnit={false}
+                                    defaultValue={200}
+                                    min={1}
+                                    max={500}
+                                />
+                                <SelectControl
+                                    label={__("Image Hover Effect", 'premium-block-for-gutenberg')}
+                                    options={HOVER}
+                                    value={hoverEffectPerson}
+                                    onChange={newEffect => setAttributes({ hoverEffectPerson: newEffect })}
+                                />
 
-                    </PanelBody>
-                    {times(multiPersonChecked, n => MultiPersonSetting(n))}
-                    <PanelBody
-                        title={__("Image Style")}
-                        className="premium-panel-body"
-                        initialOpen={false}
-                    >
-                        <PremiumFilters
-                            blur={blur}
-                            bright={bright}
-                            contrast={contrast}
-                            saturation={saturation}
-                            hue={hue}
-                            onChangeBlur={newSize => setAttributes({ blur: newSize, change: true })}
-                            onChangeBright={newSize => setAttributes({ bright: newSize, change: true })}
-                            onChangeContrast={newSize => setAttributes({ contrast: newSize, change: true })}
-                            onChangeSat={newSize => setAttributes({ saturation: newSize, change: true })}
-                            onChangeHue={newSize => setAttributes({ hue: newSize, change: true })}
-                        />
-                    </PanelBody>
-                    <PanelBody
-                        title={__("Name")}
-                        className="premium-panel-body"
-                        initialOpen={false}
-                    >
-                        <PremiumTypo
-                            components={["responsiveSize", "weight", "line", "style", "upper", "spacing"]}
-                            setAttributes={saveNameStyles}
-                            fontSizeType={{ value: nameStyles[0].namefontSizeType, label: __("namefontSizeType") }}
-                            fontSize={nameStyles[0].namefontSize}
-                            fontSizeMobile={nameStyles[0].namefontSizeMobile}
-                            fontSizeTablet={nameStyles[0].namefontSizeTablet}
-                            onChangeSize={newSize => saveNameStyles({ namefontSize: newSize })}
-                            onChangeTabletSize={newSize => saveNameStyles({ namefontSizeTablet: newSize })}
-                            onChangeMobileSize={newSize => saveNameStyles({ namefontSizeMobile: newSize })}
-                            weight={nameStyles[0].nameWeight}
-                            style={nameStyles[0].nameStyle}
-                            spacing={nameStyles[0].nameLetter}
-                            upper={nameStyles[0].nameUpper}
-                            line={nameStyles[0].nameLine}
-                            onChangeWeight={newWeight =>
-                                saveNameStyles({ nameWeight: newWeight || 500 })
-                            }
-                            onChangeStyle={newStyle =>
-                                saveNameStyles({ nameStyle: newStyle })
-                            }
-                            onChangeSpacing={newValue =>
-                                saveNameStyles({ nameLetter: newValue })
-                            }
-                            onChangeUpper={check => saveNameStyles({ nameUpper: check })}
-                            onChangeLine={newValue => saveNameStyles({ nameLine: newValue })}
-                        />
-                        <div className="premium-control-toggle">
-                            <AdvancedPopColorControl
-                                label={__("Color", 'premium-block-for-gutenberg')}
-                                colorValue={nameStyles[0].nameColor}
-                                colorDefault={''}
-                                onColorChange={newValue =>
-                                    saveNameStyles({
-                                        nameColor: newValue
-                                    })
-                                }
-                            />
-                        </div>
-                        <PremiumShadow
-                            label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
-                            boxShadow={false}
-                            color={nameStyles[0].nameshadowColor}
-                            blur={nameStyles[0].nameshadowBlur}
-                            horizontal={nameStyles[0].nameshadowHorizontal}
-                            vertical={nameStyles[0].nameshadowVertical}
-                            onChangeColor={newColor =>
-                                saveNameStyles({ nameshadowColor: newColor })}
-                            onChangeBlur={newBlur => saveNameStyles({ nameshadowBlur: newBlur })}
-                            onChangehHorizontal={newValue =>
-                                saveNameStyles({ nameshadowHorizontal: newValue })
-                            }
-                            onChangeVertical={newValue =>
-                                saveNameStyles({ nameshadowVertical: newValue })
-                            }
-                        />
-                    </PanelBody>
-                    <PanelBody
-                        title={__("Title")}
-                        className="premium-panel-body"
-                        initialOpen={false}
-                    >
-                        <PremiumTypo
-                            components={["responsiveSize", "weight", "line", "style", "upper", "spacing"]}
-                            setAttributes={saveTitleStyles}
-                            fontSizeType={{ value: titleStyles[0].titlefontSizeType, label: __("titlefontSizeType") }}
-                            fontSize={titleStyles[0].titleSize}
-                            fontSizeMobile={titleStyles[0].titlefontSizeMobile}
-                            fontSizeTablet={titleStyles[0].titlefontSizeTablet}
-                            onChangeSize={newSize => saveTitleStyles({ titleSize: newSize })}
-                            onChangeTabletSize={newSize => saveTitleStyles({ titlefontSizeTablet: newSize })}
-                            onChangeMobileSize={newSize => saveTitleStyles({ titlefontSizeMobile: newSize })}
-                            weight={titleStyles[0].titleWeight}
-                            style={titleStyles[0].titleStyle}
-                            spacing={titleStyles[0].titleLetter}
-                            upper={titleStyles[0].titleUpper}
-                            line={titleStyles[0].titleLine}
-                            onChangeWeight={newWeight =>
-                                saveTitleStyles({ titleWeight: newWeight || 500 })
-                            }
-                            onChangeStyle={newStyle =>
-                                saveTitleStyles({ titleStyle: newStyle })
-                            }
-                            onChangeSpacing={newValue =>
-                                saveTitleStyles({ titleLetter: newValue })
-                            }
-                            onChangeUpper={check => saveTitleStyles({ titleUpper: check })}
-                            onChangeLine={newValue => saveTitleStyles({ titleLine: newValue })}
-                        />
-                        <div className="premium-control-toggle">
-                            <AdvancedPopColorControl
-                                label={__("Color", 'premium-block-for-gutenberg')}
-                                colorValue={titleStyles[0].titleColor}
-                                colorDefault={''}
-                                onColorChange={newValue =>
-                                    saveTitleStyles({
-                                        titleColor: newValue
-                                    })
-                                }
-                            />
-                        </div>
-                        <PremiumShadow
-                            label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
-                            boxShadow={false}
-                            color={titleStyles[0].titleshadowColor}
-                            blur={titleStyles[0].titleshadowBlur}
-                            horizontal={titleStyles[0].titleshadowHorizontal}
-                            vertical={titleStyles[0].titleshadowVertical}
-                            onChangeColor={newColor =>
-                                saveTitleStyles({ titleshadowColor: newColor })
-                            }
-                            onChangeBlur={newBlur => saveTitleStyles({ titleshadowBlur: newBlur })}
-                            onChangehHorizontal={newValue =>
-                                saveTitleStyles({ titleshadowHorizontal: newValue })
-                            }
-                            onChangeVertical={newValue =>
-                                saveTitleStyles({ titleshadowVertical: newValue })
-                            }
-                        />
-                    </PanelBody>
-                    <PanelBody
-                        title={__("Description")}
-                        className="premium-panel-body"
-                        initialOpen={false}
-                    >
-                        <PremiumTypo
-                            components={["responsiveSize", "weight", "line", "style", "upper", "spacing"]}
-                            setAttributes={saveDescStyles}
-                            fontSizeType={{ value: descStyles[0].descfontSizeType, label: __("descfontSizeType") }}
-                            fontSize={descStyles[0].descSize}
-                            fontSizeMobile={descStyles[0].descfontSizeMobile}
-                            fontSizeTablet={descStyles[0].descfontSizeTablet}
-                            onChangeSize={newSize => saveDescStyles({ descSize: newSize })}
-                            onChangeTabletSize={newSize => saveDescStyles({ descfontSizeTablet: newSize })}
-                            onChangeMobileSize={newSize => saveDescStyles({ descfontSizeMobile: newSize })}
-                            weight={descStyles[0].descWeight}
-                            style={descStyles[0].descStyle}
-                            spacing={descStyles[0].descLetter}
-                            upper={descStyles[0].descUpper}
-                            line={descStyles[0].descLine}
-                            onChangeWeight={newWeight =>
-                                saveDescStyles({ descWeight: newWeight || 500 })
-                            }
-                            onChangeStyle={newStyle =>
-                                saveDescStyles({ descStyle: newStyle })
-                            }
-                            onChangeSpacing={newValue =>
-                                saveDescStyles({ descLetter: newValue })
-                            }
-                            onChangeUpper={check => saveDescStyles({ descUpper: check })}
-                            onChangeLine={newValue => saveDescStyles({ descLine: newValue })}
-                        />
-                        <div className="premium-control-toggle">
-                            <AdvancedPopColorControl
-                                label={__("Color", 'premium-block-for-gutenberg')}
-                                colorValue={descStyles[0].descColor}
-                                colorDefault={''}
-                                onColorChange={newValue =>
-                                    saveDescStyles({
-                                        descColor: newValue
-                                    })
-                                }
-                            />
-                        </div>
-                        <PremiumShadow
-                            label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
-                            boxShadow={false}
-                            color={descStyles[0].descshadowColor}
-                            blur={descStyles[0].descshadowBlur}
-                            horizontal={descStyles[0].descshadowHorizontal}
-                            vertical={descStyles[0].descshadowVertical}
-                            onChangeColor={newColor =>
-                                saveDescStyles({ descshadowColor: newColor })
-                            }
-                            onChangeBlur={newBlur => saveDescStyles({ descshadowBlur: newBlur })}
-                            onChangehHorizontal={newValue =>
-                                saveDescStyles({ descshadowHorizontal: newValue })
-                            }
-                            onChangeVertical={newValue =>
-                                saveDescStyles({ descshadowVertical: newValue })
-                            }
-                        />
-                    </PanelBody>
-                    {multiPersonChecked > 1 ? (multiPersonContent.map(i => i.socialIcon && (<PanelBody
-                        title={__("Social Icon")}
-                        className="premium-panel-body"
-                        initialOpen={false}
-                    >
-                        <ResponsiveRangeControl
-                            label={__('Size', 'premium-blocks-for-gutenberg')}
-                            value={socialIconSize}
-                            onChange={(value) => setAttributes({ socialIconSize: value })}
-                            min={1}
-                            max={100}
-                            step={1}
-                            showUnit={true}
-                            units={['px', 'em', 'rem']}
-                            defaultValue={20}
-                        />
-                        <div className="premium-control-toggle">
-                            <AdvancedPopColorControl
-                                label={__("Social Icon Color", 'premium-block-for-gutenberg')}
-                                colorValue={socialIconStyles[0].socialIconColor}
-                                colorDefault={''}
-                                onColorChange={newValue =>
-                                    saveSocialIconStyles({
-                                        socialIconColor: newValue
-                                    })
-                                }
-                            />
-                            <AdvancedPopColorControl
-                                label={__("Social Icon Hover Color", 'premium-block-for-gutenberg')}
-                                colorValue={socialIconStyles[0].socialIconHoverColor}
-                                colorDefault={''}
-                                onColorChange={newValue =>
-                                    saveSocialIconStyles({
-                                        socialIconHoverColor: newValue
-                                    })
-                                }
-                            />
-                        </div>
-                        <div className="premium-control-toggle">
-                            <AdvancedPopColorControl
-                                label={__("Social Icon Background Color", 'premium-block-for-gutenberg')}
-                                colorValue={socialIconStyles[0].socialIconBackgroundColor}
-                                colorDefault={''}
-                                onColorChange={newValue =>
-                                    saveSocialIconStyles({
-                                        socialIconBackgroundColor: newValue
-                                    })
-                                }
-                            />
-                        </div>
-                        <ToggleControl
-                            label={__("Brands Default Colors", 'premium-block-for-gutenberg')}
-                            checked={socialIconStyles[0].defaultIconColor}
-                            onChange={newCheck => saveSocialIconStyles({ defaultIconColor: newCheck })}
-                        />
-                        <PremiumBorder
-                            label={__('Border', 'premium-blocks-for-gutenberg')}
-                            value={socialIconBorder}
-                            onChange={(value) => setAttributes({ socialIconBorder: value })}
-                        />
-                        <SpacingControl
-                            label={__('Margin', 'premium-blocks-for-gutenberg')}
-                            value={socialIconMargin}
-                            onChange={(value) => setAttributes({ socialIconMargin: value })}
-                            showUnits={true}
-                            responsive={true}
-                        />
-                        <SpacingControl
-                            label={__('Padding', 'premium-blocks-for-gutenberg')}
-                            value={socialIconPadding}
-                            onChange={(value) => setAttributes({ socialIconPadding: value })}
-                            showUnits={true}
-                            responsive={true}
-                        />
-                    </PanelBody>)))
-                        : multiPersonContent[0].socialIcon && (<PanelBody
-                            title={__("Social Icon")}
-                            className="premium-panel-body"
-                            initialOpen={false}
-                        >
-                            <ResponsiveRangeControl
-                                label={__('Size', 'premium-blocks-for-gutenberg')}
-                                value={socialIconSize}
-                                onChange={(value) => setAttributes({ socialIconSize: value })}
-                                min={1}
-                                max={100}
-                                step={1}
-                                showUnit={true}
-                                units={['px', 'em', 'rem']}
-                                defaultValue={20}
-                            />
-                            <div className="premium-control-toggle">
-                                <AdvancedPopColorControl
-                                    label={__("Social Icon Color", 'premium-block-for-gutenberg')}
-                                    colorValue={socialIconStyles[0].socialIconColor}
-                                    colorDefault={''}
-                                    onColorChange={newValue =>
-                                        saveSocialIconStyles({
-                                            socialIconColor: newValue
-                                        })
-                                    }
+                            </PanelBody>
+                            {times(multiPersonChecked, n => MultiPersonSetting(n))}
+                        </InspectorTab>
+                        <InspectorTab key={'style'}>
+                            <PanelBody
+                                title={__("Image Style")}
+                                className="premium-panel-body"
+                                initialOpen={true}
+                            >
+                                <PremiumFilters
+                                    blur={blur}
+                                    bright={bright}
+                                    contrast={contrast}
+                                    saturation={saturation}
+                                    hue={hue}
+                                    onChangeBlur={newSize => setAttributes({ blur: newSize })}
+                                    onChangeBright={newSize => setAttributes({ bright: newSize })}
+                                    onChangeContrast={newSize => setAttributes({ contrast: newSize })}
+                                    onChangeSat={newSize => setAttributes({ saturation: newSize })}
+                                    onChangeHue={newSize => setAttributes({ hue: newSize })}
                                 />
-                                <AdvancedPopColorControl
-                                    label={__("Social Icon Hover Color", 'premium-block-for-gutenberg')}
-                                    colorValue={socialIconStyles[0].socialIconHoverColor}
-                                    colorDefault={''}
-                                    onColorChange={newValue =>
-                                        saveSocialIconStyles({
-                                            socialIconHoverColor: newValue
-                                        })
-                                    }
+                            </PanelBody>
+                            <PanelBody
+                                title={__("Name")}
+                                className="premium-panel-body"
+                                initialOpen={false}
+                            >
+                                <PremiumTypo
+                                    components={["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"]}
+                                    value={nameTypography}
+                                    onChange={newValue => setAttributes({ nameTypography: newValue })}
                                 />
-                            </div>
-                            <div className="premium-control-toggle">
-                                <AdvancedPopColorControl
-                                    label={__("Social Icon Background Color", 'premium-block-for-gutenberg')}
-                                    colorValue={socialIconStyles[0].socialIconBackgroundColor}
-                                    colorDefault={''}
-                                    onColorChange={newValue =>
-                                        saveSocialIconStyles({
-                                            socialIconBackgroundColor: newValue
-                                        })
-                                    }
+                                <div className="premium-control-toggle">
+                                    <AdvancedPopColorControl
+                                        label={__("Color", 'premium-block-for-gutenberg')}
+                                        colorValue={nameStyles[0].nameColor}
+                                        colorDefault={''}
+                                        onColorChange={newValue =>
+                                            saveNameStyles({
+                                                nameColor: newValue
+                                            })
+                                        }
+                                    />
+                                </div>
+                                <PremiumShadow
+                                    label={__("Text Shadow", "premium-blocks-for-gutenberg")}
+                                    value={nameShadow}
+                                    onChange={(value) => setAttributes({ nameShadow: value })}
                                 />
-                            </div>
-                            <ToggleControl
-                                label={__("Brands Default Colors", "premium-blocks-for-gutenberg")}
-                                checked={socialIconStyles[0].defaultIconColor}
-                                onChange={newCheck => saveSocialIconStyles({ defaultIconColor: newCheck })}
-                            />
-                            <PremiumBorder
-                                label={__('Border', 'premium-blocks-for-gutenberg')}
-                                value={socialIconBorder}
-                                onChange={(value) => setAttributes({ socialIconBorder: value })}
-                            />
-                            <SpacingControl
-                                label={__('Margin', 'premium-blocks-for-gutenberg')}
-                                value={socialIconMargin}
-                                onChange={(value) => setAttributes({ socialIconMargin: value })}
-                                showUnits={true}
-                                responsive={true}
-                            />
-                            <SpacingControl
-                                label={__('Padding', 'premium-blocks-for-gutenberg')}
-                                value={socialIconPadding}
-                                onChange={(value) => setAttributes({ socialIconPadding: value })}
-                                showUnits={true}
-                                responsive={true}
-                            />
-                        </PanelBody>
-                        )}
-                    <PanelBody
-                        title={__("Content")}
-                        className="premium-panel-body"
-                        initialOpen={false}
-                    >
-                        <div className="premium-control-toggle">
-                            <AdvancedPopColorControl
-                                label={__("Color", 'premium-block-for-gutenberg')}
-                                colorValue={contentColor}
-                                colorDefault={''}
-                                onColorChange={newValue =>
-                                    setAttributes({
-                                        contentColor: newValue
-                                    })
+                                <SpacingControl
+                                    label={__('Padding', 'premium-blocks-for-gutenberg')}
+                                    value={namePadding}
+                                    onChange={(value) => setAttributes({ namePadding: value })}
+                                    showUnits={true}
+                                    responsive={true}
+                                />
+                            </PanelBody>
+                            <PanelBody
+                                title={__("Title")}
+                                className="premium-panel-body"
+                                initialOpen={false}
+                            >
+                                <PremiumTypo
+                                    components={["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"]}
+                                    value={titleTypography}
+                                    onChange={newValue => setAttributes({ titleTypography: newValue })}
+                                />
+                                <div className="premium-control-toggle">
+                                    <AdvancedPopColorControl
+                                        label={__("Color", 'premium-block-for-gutenberg')}
+                                        colorValue={titleStyles[0].titleColor}
+                                        colorDefault={''}
+                                        onColorChange={newValue =>
+                                            saveTitleStyles({
+                                                titleColor: newValue
+                                            })
+                                        }
+                                    />
+                                </div>
+                                <PremiumShadow
+                                    label={__("Text Shadow", "premium-blocks-for-gutenberg")}
+                                    value={titleShadow}
+                                    onChange={(value) => setAttributes({ titleShadow: value })}
+                                />
+                                <hr />
+                                <SpacingControl
+                                    label={__('Margin', 'premium-blocks-for-gutenberg')}
+                                    value={titleMargin}
+                                    onChange={(value) => setAttributes({ titleMargin: value })}
+                                    showUnits={true}
+                                    responsive={true}
+                                />
+                                <SpacingControl
+                                    label={__('Padding', 'premium-blocks-for-gutenberg')}
+                                    value={titlePadding}
+                                    onChange={(value) => setAttributes({ titlePadding: value })}
+                                    showUnits={true}
+                                    responsive={true}
+                                />
+                            </PanelBody>
+                            <PanelBody
+                                title={__("Description")}
+                                className="premium-panel-body"
+                                initialOpen={false}
+                            >
+                                <PremiumTypo
+                                    components={["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"]}
+                                    value={descTypography}
+                                    onChange={newValue => setAttributes({ descTypography: newValue })}
+                                />
+                                <div className="premium-control-toggle">
+                                    <AdvancedPopColorControl
+                                        label={__("Color", 'premium-block-for-gutenberg')}
+                                        colorValue={descStyles[0].descColor}
+                                        colorDefault={''}
+                                        onColorChange={newValue =>
+                                            saveDescStyles({
+                                                descColor: newValue
+                                            })
+                                        }
+                                    />
+                                </div>
+                                <PremiumShadow
+                                    label={__("Text Shadow", "premium-blocks-for-gutenberg")}
+                                    value={descShadow}
+                                    onChange={(value) => setAttributes({ descShadow: value })}
+                                />
+                                <SpacingControl
+                                    label={__('Padding', 'premium-blocks-for-gutenberg')}
+                                    value={descPadding}
+                                    onChange={(value) => setAttributes({ descPadding: value })}
+                                    showUnits={true}
+                                    responsive={true}
+                                />
+                            </PanelBody>
+                            {socialIcon && <PanelBody
+                                title={__("Social Icon")}
+                                className="premium-panel-body"
+                                initialOpen={false}
+                            >
+                                <ResponsiveRangeControl
+                                    label={__('Size', 'premium-blocks-for-gutenberg')}
+                                    value={socialIconSize}
+                                    onChange={(value) => setAttributes({ socialIconSize: value })}
+                                    min={1}
+                                    max={100}
+                                    step={1}
+                                    showUnit={true}
+                                    units={['px', 'em', 'rem']}
+                                    defaultValue={20}
+                                />
+                                <InsideTabs>
+                                    <InsideTab tabTitle={__('Normal')}>
+                                        <Fragment>
+                                            <AdvancedPopColorControl
+                                                label={__("Social Icon Color", 'premium-block-for-gutenberg')}
+                                                colorValue={socialIconStyles[0].socialIconColor}
+                                                colorDefault={''}
+                                                onColorChange={newValue =>
+                                                    saveSocialIconStyles({
+                                                        socialIconColor: newValue
+                                                    })
+                                                }
+                                            />
+                                            <AdvancedPopColorControl
+                                                label={__("Social Icon Background Color", 'premium-block-for-gutenberg')}
+                                                colorValue={socialIconStyles[0].socialIconBackgroundColor}
+                                                colorDefault={''}
+                                                onColorChange={newValue =>
+                                                    saveSocialIconStyles({
+                                                        socialIconBackgroundColor: newValue
+                                                    })
+                                                }
+                                            />
+                                        </Fragment>
+                                    </InsideTab>
+                                    <InsideTab tabTitle={__('Hover')}>
+                                        <Fragment>
+                                            <AdvancedPopColorControl
+                                                label={__("Social Icon Hover Color", 'premium-block-for-gutenberg')}
+                                                colorValue={socialIconStyles[0].socialIconHoverColor}
+                                                colorDefault={''}
+                                                onColorChange={newValue =>
+                                                    saveSocialIconStyles({
+                                                        socialIconHoverColor: newValue
+                                                    })
+                                                }
+                                            />
+                                        </Fragment>
+                                    </InsideTab>
+                                </InsideTabs>
+                                <hr />
+                                <ToggleControl
+                                    label={__("Brands Default Colors", 'premium-block-for-gutenberg')}
+                                    checked={socialIconStyles[0].defaultIconColor}
+                                    onChange={newCheck => saveSocialIconStyles({ defaultIconColor: newCheck })}
+                                />
+                                <hr />
+                                <PremiumBorder
+                                    label={__('Border', 'premium-blocks-for-gutenberg')}
+                                    value={socialIconBorder}
+                                    onChange={(value) => setAttributes({ socialIconBorder: value })}
+                                />
+                                <hr />
+                                <SpacingControl
+                                    label={__('Margin', 'premium-blocks-for-gutenberg')}
+                                    value={socialIconMargin}
+                                    onChange={(value) => setAttributes({ socialIconMargin: value })}
+                                    showUnits={true}
+                                    responsive={true}
+                                />
+                                <SpacingControl
+                                    label={__('Padding', 'premium-blocks-for-gutenberg')}
+                                    value={socialIconPadding}
+                                    onChange={(value) => setAttributes({ socialIconPadding: value })}
+                                    showUnits={true}
+                                    responsive={true}
+                                />
+                            </PanelBody>}
+                            <PanelBody
+                                title={__("Content")}
+                                className="premium-panel-body"
+                                initialOpen={false}
+                            >
+                                <div className="premium-control-toggle">
+                                    <AdvancedPopColorControl
+                                        label={__("Color", 'premium-block-for-gutenberg')}
+                                        colorValue={contentColor}
+                                        colorDefault={''}
+                                        onColorChange={newValue =>
+                                            setAttributes({
+                                                contentColor: newValue
+                                            })
+                                        }
+                                    />
+                                </div>
+                                {effectPersonStyle === 'effect1' ?
+                                    <ResponsiveSingleRangeControl
+                                        label={__("Bottom Offset", 'premium-block-for-gutenberg')}
+                                        value={bottomInfo}
+                                        onChange={newValue => setAttributes({ bottomInfo: newValue })}
+                                        showUnit={false}
+                                        defaultValue={15}
+                                        min={15}
+                                    />
+                                    : ""
                                 }
-                            />
-                        </div>
-                        {effectPersonStyle === 'effect1' ?
-                            <ResponsiveSingleRangeControl
-                                label={__("Bottom Offset", 'premium-block-for-gutenberg')}
-                                value={bottomInfo}
-                                onChange={newValue => setAttributes({ bottomInfo: newValue })}
-                                showUnit={false}
-                                defaultValue={15}
-                                min={15}
-                            />
-                            : ""
-                        }
-                    </PanelBody>
+                                <SpacingControl
+                                    label={__('Padding', 'premium-blocks-for-gutenberg')}
+                                    value={contentPadding}
+                                    onChange={(value) => setAttributes({ contentPadding: value })}
+                                    showUnits={true}
+                                    responsive={true}
+                                />
+                            </PanelBody>
+                        </InspectorTab>
+                        <InspectorTab key={'advance'}></InspectorTab>
+                    </InspectorTabs>
                 </InspectorControls>
             ),
+            renderCss,
             <div
                 id={`premium-person-${id}`}
                 className={`${mainClasses} premium-person__${effect} premium-person__${effectDir}`}
@@ -1178,6 +1099,9 @@ class edit extends Component {
                     }}
                 />
                 {content()}
+                {loadNameGoogleFonts}
+                {loadTitleGoogleFonts}
+                {loadDescriptionGoogleFonts}
             </div>
         ];
     };

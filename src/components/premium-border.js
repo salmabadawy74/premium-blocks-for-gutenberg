@@ -1,4 +1,3 @@
-import { Component } from "react";
 const { __ } = wp.i18n;
 const { Tooltip } = wp.components;
 import AdvancedColorControl from './Color Control/ColorComponent'
@@ -45,32 +44,34 @@ const PremiumBorder = (props) => {
 
     }
     return (
-        <div className="premium-control-toggle">
+        <div className=" premium-blocks-field">
             <Fragment>
                 <div className="premium-blocks-border__control " style={{ display: "flex" }}>
                     <div>
                         {props.label ? props.label : __('Border', 'premium-blocks-for-gutenberg')}
                     </div>
-
                     <div className="premium-blocks-border-button-list ">
-                        {[['none', __("None")], ['solid', __('Solid')], ['dotted', __('Dotted')], ['dashed', __('Dashed')], ['double', __('Double')]].map((data, index) => {
+                        {[['solid', __('Solid')], ['dotted', __('Dotted')], ['dashed', __('Dashed')], ['double', __('Double')]].map((data, index) => {
                             return (
                                 <Tooltip text={data[1]}>
-                                    <button className={(borderType == data[0] ? 'active' : '') + ' premium-border-button'} key={index} onClick={() => onChangeBorder("borderType", data[0])}>
+                                    <button className={(borderType == data[0] ? 'active' : '') + ' premium-border-button is-tertiary"'} key={index} onClick={() => onChangeBorder("borderType", data[0])}>
                                         <span className={`premium-blocks-border-type premium-blocks-border-type-${data[0]}`} />
                                     </button>
                                 </Tooltip>
                             )
-                        })
-                        }
+                        })}
                     </div>
-                    {("none" != borderType) &&
-                        <Tooltip text={__('Clear')}>
-                            <div className="premium-blocks-border-clear__container">
-                                <span className="premium-blocks-border-clear" onClick={() => onChangeBorder("borderType", 'none')} role="button"><i className="fas fa-undo" /></span>
-                            </div>
-                        </Tooltip>
-                    }
+
+                    <div className="premium-spacing-btn-reset-wrap">
+                        <button
+                            className="premium-reset-btn "
+                            disabled={"none" === borderType}
+
+                            onClick={() => onChangeBorder("borderType", 'none')}
+
+                        ></button>
+                    </div>
+
                 </div >
                 {"none" != borderType && (
                     <SpacingControl
@@ -81,7 +82,6 @@ const PremiumBorder = (props) => {
                         onChange={(value) => onChangeBorder('borderWidth', { ...value })}
 
                     />
-
                 )}
                 {"none" != borderType && (
                     <Fragment>
@@ -100,10 +100,9 @@ const PremiumBorder = (props) => {
                     responsive={true}
                     showUnits={false}
                     onChange={(value) => onChangeBorder('borderRadius', { ...value })}
-
                 />
             </Fragment>
-        </div>
+        </div >
     );
 
 }

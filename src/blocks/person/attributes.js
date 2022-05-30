@@ -8,16 +8,6 @@ const attributes = {
         type: "string",
         default: "center"
     },
-    imgSize: {
-        type: "number"
-    },
-    imgBorder: {
-        type: "number",
-        default: "1"
-    },
-    imgBorderColor: {
-        type: "string"
-    },
     nameStyles: {
         type: "array",
         default: [
@@ -178,10 +168,6 @@ const attributes = {
             }
         ]
     },
-    change: {
-        type: "boolean",
-        default: false
-    },
     blur: {
         type: "number",
         default: "0"
@@ -202,26 +188,34 @@ const attributes = {
         type: "number",
         default: "0"
     },
+    nameTag: {
+        type: "string",
+        default: "H2"
+    },
+    titleTag: {
+        type: "string",
+        default: "H4"
+    },
     socialIconMargin: {
         type: "object",
         default: {
             Desktop: {
-                top: "",
-                right: "",
-                bottom: "",
-                left: ""
+                top: "0",
+                right: "0",
+                bottom: "0",
+                left: "0"
             },
             Tablet: {
-                top: "",
-                right: "",
-                bottom: "",
-                left: ""
+                top: "0",
+                right: "0",
+                bottom: "0",
+                left: "0"
             },
             Mobile: {
-                top: "",
-                right: "",
-                bottom: "",
-                left: ""
+                top: "0",
+                right: "0",
+                bottom: "0",
+                left: "0"
             },
             unit: "px"
         }
@@ -230,22 +224,22 @@ const attributes = {
         type: "object",
         default: {
             Desktop: {
-                top: "",
-                right: "",
-                bottom: "",
-                left: ""
+                top: "0",
+                right: "0",
+                bottom: "0",
+                left: "0"
             },
             Tablet: {
-                top: "",
-                right: "",
-                bottom: "",
-                left: ""
+                top: "0",
+                right: "0",
+                bottom: "0",
+                left: "0"
             },
             Mobile: {
-                top: "",
-                right: "",
-                bottom: "",
-                left: ""
+                top: "0",
+                right: "0",
+                bottom: "0",
+                left: "0"
             },
             unit: "px"
         }
@@ -304,5 +298,210 @@ const attributes = {
             unit: 'px'
         }
     },
+    titleTypography: {
+        type: "object",
+        default: {
+            "fontWeight": 500,
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'lineHeight': '',
+            'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": "",
+                "Mobile": "",
+                unit: 'px'
+            }
+        }
+    },
+    descTypography: {
+        type: "object",
+        default: {
+            "fontWeight": 400,
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'lineHeight': '',
+            'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
+            'fontSize': {
+                'Desktop': 20,
+                "Tablet": 20,
+                "Mobile": 20,
+                unit: 'px'
+            }
+        }
+    },
+    nameTypography: {
+        type: "object",
+        default: {
+            "fontWeight": 500,
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'lineHeight': '',
+            'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
+            'fontSize': {
+                'Desktop': "",
+                "Tablet": "",
+                "Mobile": "",
+                unit: 'px'
+            }
+        }
+    },
+    titleShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': ''
+        }
+    },
+    nameShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': ''
+        }
+    },
+    descShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': ''
+        }
+    },
+    namePadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: 0,
+                right: 0,
+                bottom: 0,
+                left: 0
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            unit: "px"
+        }
+    },
+    titleMargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "0",
+                right: "0",
+                bottom: "0",
+                left: "0"
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            unit: "px"
+        }
+    },
+    titlePadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "0",
+                right: "0",
+                bottom: "0",
+                left: "0"
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            unit: "px"
+        }
+    },
+    descPadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "0",
+                right: "0",
+                bottom: "0",
+                left: "0"
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            unit: "px"
+        }
+    },
+    contentPadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "0",
+                right: "0",
+                bottom: "0",
+                left: "0"
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            unit: "px"
+        }
+    },
+    imgHeight: {
+        type: "string"
+    },
+    socialIcon: {
+        type: "boolean",
+        default: false
+    }
 }
 export default attributes
