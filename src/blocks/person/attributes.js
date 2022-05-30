@@ -498,6 +498,10 @@ const attributes = {
     },
     imgHeight: {
         type: "string"
+    },
+    socialIcon: {
+        type: "boolean",
+        default: false
     }
 }
 export default attributes

@@ -105,9 +105,24 @@ class edit extends Component {
         const { attributes, setAttributes } = this.props
         const { multiPersonContent } = attributes
 
+        let array = [];
+
         const newItems = multiPersonContent.map((item, thisIndex) => {
             if (index === thisIndex) {
                 item = { ...item, ...value }
+            }
+            if (item.socialIcon) {
+                array.push(true);
+            }
+            if (array.length != 0) {
+                setAttributes({
+                    socialIcon: true,
+                })
+            }
+            else {
+                setAttributes({
+                    socialIcon: false,
+                })
             }
             return item
         })
@@ -163,7 +178,8 @@ class edit extends Component {
             titleMargin,
             descPadding,
             contentPadding,
-            imgHeight
+            imgHeight,
+            socialIcon
         } = this.props.attributes;
 
         const HOVER = [
@@ -937,7 +953,7 @@ class edit extends Component {
                                     responsive={true}
                                 />
                             </PanelBody>
-                            <PanelBody
+                            {socialIcon && <PanelBody
                                 title={__("Social Icon")}
                                 className="premium-panel-body"
                                 initialOpen={false}
@@ -1020,7 +1036,7 @@ class edit extends Component {
                                     showUnits={true}
                                     responsive={true}
                                 />
-                            </PanelBody>
+                            </PanelBody>}
                             <PanelBody
                                 title={__("Content")}
                                 className="premium-panel-body"

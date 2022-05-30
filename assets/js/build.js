@@ -64496,9 +64496,23 @@ var edit = function (_Component) {
             var multiPersonContent = attributes.multiPersonContent;
 
 
+            var array = [];
+
             var newItems = multiPersonContent.map(function (item, thisIndex) {
                 if (index === thisIndex) {
                     item = _extends({}, item, value);
+                }
+                if (item.socialIcon) {
+                    array.push(true);
+                }
+                if (array.length != 0) {
+                    setAttributes({
+                        socialIcon: true
+                    });
+                } else {
+                    setAttributes({
+                        socialIcon: false
+                    });
                 }
                 return item;
             });
@@ -64560,7 +64574,8 @@ var edit = function (_Component) {
                 titleMargin = _props$attributes.titleMargin,
                 descPadding = _props$attributes.descPadding,
                 contentPadding = _props$attributes.contentPadding,
-                imgHeight = _props$attributes.imgHeight;
+                imgHeight = _props$attributes.imgHeight,
+                socialIcon = _props$attributes.socialIcon;
 
 
             var HOVER = [{
@@ -65378,7 +65393,7 @@ var edit = function (_Component) {
                                 responsive: true
                             })
                         ),
-                        React.createElement(
+                        socialIcon && React.createElement(
                             PanelBody,
                             {
                                 title: __("Social Icon"),
@@ -67121,6 +67136,9 @@ var attributes = (_attributes = {
     }
 }), _defineProperty(_attributes, "imgHeight", {
     type: "string"
+}), _defineProperty(_attributes, "socialIcon", {
+    type: "boolean",
+    default: false
 }), _attributes);
 exports.default = attributes;
 
