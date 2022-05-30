@@ -66439,7 +66439,8 @@ var deprecated = [{
                     left: ''
                 }
             },
-            imgHeight: ''
+            imgHeight: '',
+            socialIcon: false
         };
         return Object.assign(attributes, newAttributes);
     },
