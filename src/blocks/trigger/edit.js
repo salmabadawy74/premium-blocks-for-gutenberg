@@ -189,7 +189,7 @@ function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
                 >
                     
                     <RadioComponent
-                        choices={["right", "left", "full"]}
+                        choices={["left", "full", "right", "pushdown"]}
                         value={canvasStyles.layout}
                         onChange={newValue => setCanvasStyles('layout', newValue )}
                         label={__("Layout style", 'premium-blocks-for-gutenberg')}

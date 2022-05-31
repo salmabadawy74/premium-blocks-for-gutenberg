@@ -25,8 +25,7 @@
 			"type": "string"
 		},
 		"displayFloat": {
-			"type": "boolean",
-			"default": false
+			"type": "boolean"
 		},
 		"iconAlignment": {
 			"type": "string",
@@ -58,16 +57,13 @@
 			}
 		},
 		"hideDesktop": {
-			"type": "boolean",
-			"default": false
+			"type": "boolean"
 		},
 		"hideTablet": {
-			"type": "boolean",
-			"default": false
+			"type": "boolean"
 		},
 		"hideMobile": {
-			"type": "boolean",
-			"default": false
+			"type": "boolean"
 		},
 		"triggerBorder": {
 			"type": "object",
