@@ -11,6 +11,7 @@ import ResponsiveRangeControl from "../../components/RangeControl/responsive-ran
 import SpacingControl from '../../components/premium-responsive-spacing'
 import PremiumMediaUpload from "../../components/premium-media-upload"
 import { SortableContainer, SortableElement, arrayMove } from 'react-sortable-hoc';
+import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
 import RadioComponent from '../../components/radio-control';
@@ -179,7 +180,10 @@ class edit extends Component {
             descPadding,
             contentPadding,
             imgHeight,
-            socialIcon
+            socialIcon,
+            hideDesktop,
+            hideTablet,
+            hideMobile,
         } = this.props.attributes;
 
         const HOVER = [
@@ -777,6 +781,7 @@ class edit extends Component {
                                     showUnit={false}
                                     defaultValue={1}
                                     min={1}
+                                    max={20}
                                 />
                                 {multiPersonChecked > 1 ? <SelectControl
                                     label={__("Persons/Row", 'premium-block-for-gutenberg')}
@@ -802,48 +807,14 @@ class edit extends Component {
                                     value={titleTag}
                                     onChange={(newValue) => setAttributes({ titleTag: newValue })}
                                 />
-                                <ResponsiveSingleRangeControl
-                                    label={__("Custom Image Height", 'premium-block-for-gutenberg')}
-                                    value={imgHeight}
-                                    onChange={value => setAttributes({ imgHeight: value })}
-                                    showUnit={false}
-                                    defaultValue={200}
-                                    min={1}
-                                    max={500}
-                                />
-                                <SelectControl
-                                    label={__("Image Hover Effect", 'premium-block-for-gutenberg')}
-                                    options={HOVER}
-                                    value={hoverEffectPerson}
-                                    onChange={newEffect => setAttributes({ hoverEffectPerson: newEffect })}
-                                />
-
                             </PanelBody>
                             {times(multiPersonChecked, n => MultiPersonSetting(n))}
                         </InspectorTab>
                         <InspectorTab key={'style'}>
                             <PanelBody
-                                title={__("Image Style")}
-                                className="premium-panel-body"
-                                initialOpen={true}
-                            >
-                                <PremiumFilters
-                                    blur={blur}
-                                    bright={bright}
-                                    contrast={contrast}
-                                    saturation={saturation}
-                                    hue={hue}
-                                    onChangeBlur={newSize => setAttributes({ blur: newSize })}
-                                    onChangeBright={newSize => setAttributes({ bright: newSize })}
-                                    onChangeContrast={newSize => setAttributes({ contrast: newSize })}
-                                    onChangeSat={newSize => setAttributes({ saturation: newSize })}
-                                    onChangeHue={newSize => setAttributes({ hue: newSize })}
-                                />
-                            </PanelBody>
-                            <PanelBody
                                 title={__("Name")}
                                 className="premium-panel-body"
-                                initialOpen={false}
+                                initialOpen={true}
                             >
                                 <PremiumTypo
                                     components={["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"]}
@@ -951,6 +922,39 @@ class edit extends Component {
                                     onChange={(value) => setAttributes({ descPadding: value })}
                                     showUnits={true}
                                     responsive={true}
+                                />
+                            </PanelBody>
+                            <PanelBody
+                                title={__("Image Style")}
+                                className="premium-panel-body"
+                                initialOpen={false}
+                            >
+                                <PremiumFilters
+                                    blur={blur}
+                                    bright={bright}
+                                    contrast={contrast}
+                                    saturation={saturation}
+                                    hue={hue}
+                                    onChangeBlur={newSize => setAttributes({ blur: newSize })}
+                                    onChangeBright={newSize => setAttributes({ bright: newSize })}
+                                    onChangeContrast={newSize => setAttributes({ contrast: newSize })}
+                                    onChangeSat={newSize => setAttributes({ saturation: newSize })}
+                                    onChangeHue={newSize => setAttributes({ hue: newSize })}
+                                />
+                                <ResponsiveSingleRangeControl
+                                    label={__("Custom Image Height", 'premium-block-for-gutenberg')}
+                                    value={imgHeight}
+                                    onChange={value => setAttributes({ imgHeight: value })}
+                                    showUnit={false}
+                                    defaultValue={200}
+                                    min={1}
+                                    max={500}
+                                />
+                                <SelectControl
+                                    label={__("Image Hover Effect", 'premium-block-for-gutenberg')}
+                                    options={HOVER}
+                                    value={hoverEffectPerson}
+                                    onChange={newEffect => setAttributes({ hoverEffectPerson: newEffect })}
                                 />
                             </PanelBody>
                             {socialIcon && <PanelBody
@@ -1074,14 +1078,23 @@ class edit extends Component {
                                 />
                             </PanelBody>
                         </InspectorTab>
-                        <InspectorTab key={'advance'}></InspectorTab>
+                        <InspectorTab key={'advance'}>
+                            <PremiumResponsiveTabs
+                                Desktop={hideDesktop}
+                                Tablet={hideTablet}
+                                Mobile={hideMobile}
+                                onChangeDesktop={(value) => setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" })}
+                                onChangeTablet={(value) => setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" })}
+                                onChangeMobile={(value) => setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" })}
+                            />
+                        </InspectorTab>
                     </InspectorTabs>
                 </InspectorControls>
             ),
             renderCss,
             <div
                 id={`premium-person-${id}`}
-                className={`${mainClasses} premium-person__${effect} premium-person__${effectDir}`}
+                className={`${mainClasses} premium-person__${effect} premium-person__${effectDir} ${hideDesktop} ${hideTablet} ${hideMobile}`}
                 style={{ textAlign: personAlign }}
             >
                 <style

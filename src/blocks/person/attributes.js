@@ -502,6 +502,18 @@ const attributes = {
     socialIcon: {
         type: "boolean",
         default: false
-    }
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: ''
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: ''
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: ''
+    },
 }
 export default attributes
