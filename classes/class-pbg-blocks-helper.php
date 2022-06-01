@@ -2328,6 +2328,14 @@ class PBG_Blocks_Helper {
 				)
 			);
 		}
+		if ( isset( $attr['btnTypography']['fontFamily'] ) ) {
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $attr['btnTypography']['fontFamily'] ) ? $attr['btnTypography']['fontFamily'] : '' ),
+					'fontVariant' => ( isset( $attr['btnTypography']['fontWeight'] ) ? $attr['btnTypography']['fontWeight'] : '' ),
+				)
+			);
+		}
 
 		$css                    = new Premium_Blocks_css();
 		$media_query            = array();

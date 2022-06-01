@@ -469,7 +469,7 @@ const attributes = {
     titleTypography: {
         type: "object",
         default: {
-            "fontWeight": '',
+            "fontWeight": 300,
             'fontStyle': '',
             'textTransform': '',
             'letterSpacing': '',
@@ -486,7 +486,10 @@ const attributes = {
     descTypography: {
         type: "object",
         default: {
-            "fontWeight": '',
+            "fontWeight": 400,
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
             'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
             'lineHeight': '',
             'fontSize': {
@@ -500,10 +503,12 @@ const attributes = {
     btnTypography: {
         type: "object",
         default: {
-            "fontWeight": '',
+            "fontWeight": 400,
             'fontStyle': '',
             'textTransform': '',
             'letterSpacing': '',
+            'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
+            'lineHeight': '',
             'fontSize': {
                 'Desktop': 20,
                 "Tablet": 20,

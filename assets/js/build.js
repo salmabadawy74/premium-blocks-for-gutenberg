@@ -32612,10 +32612,6 @@ exports.default = attributes;
 
 var _settings = __webpack_require__(1);
 
-var _icons = __webpack_require__(4);
-
-var _icons2 = _interopRequireDefault(_icons);
-
 var _edit = __webpack_require__(268);
 
 var _edit2 = _interopRequireDefault(_edit);
@@ -32632,6 +32628,10 @@ var _attributes = __webpack_require__(271);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
+var _blockIcons = __webpack_require__(388);
+
+var _blockIcons2 = _interopRequireDefault(_blockIcons);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var __ = wp.i18n.__;
@@ -32640,7 +32640,8 @@ var registerBlockType = wp.blocks.registerBlockType;
 
 registerBlockType("premium/icon-box", {
     title: __("Icon Box"),
-    icon: React.createElement(_icons2.default, { icon: "icon-box" }),
+    description: __('Add informative info boxes along with Icon, Description, and CTA using Premium Icon Box Block.', 'premium-block-for-gutenberg'),
+    icon: _blockIcons2.default.icon_box,
     category: "premium-blocks",
     attributes: _attributes2.default,
     supports: {
@@ -32760,9 +32761,7 @@ var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     SelectControl = _wp$components.SelectControl,
     ToggleControl = _wp$components.ToggleControl,
-    TabPanel = _wp$components.TabPanel,
-    TextControl = _wp$components.TextControl,
-    TextareaControl = _wp$components.TextareaControl;
+    TextControl = _wp$components.TextControl;
 var _wp$element = wp.element,
     Fragment = _wp$element.Fragment,
     Component = _wp$element.Component;
@@ -32771,8 +32770,7 @@ var _wp$blockEditor = wp.blockEditor,
     BlockControls = _wp$blockEditor.BlockControls,
     InspectorControls = _wp$blockEditor.InspectorControls,
     RichText = _wp$blockEditor.RichText,
-    AlignmentToolbar = _wp$blockEditor.AlignmentToolbar,
-    URLInput = _wp$blockEditor.URLInput;
+    AlignmentToolbar = _wp$blockEditor.AlignmentToolbar;
 
 var edit = function (_Component) {
     _inherits(edit, _Component);
@@ -32966,6 +32964,8 @@ var edit = function (_Component) {
 
             var loadTitleGoogleFonts = void 0;
             var loadDescriptionGoogleFonts = void 0;
+            var loadButtonGoogleFonts = void 0;
+
             if (titleTypography.fontFamily !== 'Default') {
                 var titleConfig = {
                     google: {
@@ -32981,6 +32981,14 @@ var edit = function (_Component) {
                     }
                 };
                 loadDescriptionGoogleFonts = React.createElement(_fontLoader2.default, { config: descriptionConfig });
+            }
+            if (btnTypography.fontFamily !== 'Default') {
+                var btnConfig = {
+                    google: {
+                        families: [btnTypography.fontFamily]
+                    }
+                };
+                loadButtonGoogleFonts = React.createElement(_fontLoader2.default, { config: btnConfig });
             }
 
             var mainClasses = (0, _classnames2.default)(className, "premium-icon-box");
@@ -33147,34 +33155,12 @@ var edit = function (_Component) {
                                 className: "premium-panel-body",
                                 initialOpen: false
                             },
-                            React.createElement(TextControl, {
-                                label: __("Title", 'premium-block-for-gutenberg'),
-                                value: titleText,
-                                onChange: function onChange(newText) {
-                                    return setAttributes({ titleText: newText });
-                                }
-                            }),
                             React.createElement(_radioControl2.default, {
-                                label: __("Title", 'premium-blocks-for-gutenberg'),
+                                label: __("Title Tag", 'premium-blocks-for-gutenberg'),
                                 choices: ['H1', 'H2', 'H3', 'H4', 'H5', 'H6'],
                                 value: titleStyles[0].titleTag,
                                 onChange: function onChange(newValue) {
                                     return saveTitleStyle({ titleTag: newValue });
-                                }
-                            })
-                        ),
-                        descChecked && React.createElement(
-                            PanelBody,
-                            {
-                                title: __("Description", 'premium-blocks-for-gutenberg'),
-                                className: "premium-panel-body",
-                                initialOpen: false
-                            },
-                            React.createElement(TextareaControl, {
-                                label: __("Content", 'premium-block-for-gutenberg'),
-                                value: descText,
-                                onChange: function onChange(newText) {
-                                    return setAttributes({ descText: newText });
                                 }
                             })
                         ),
@@ -33202,10 +33188,10 @@ var edit = function (_Component) {
                                 }
                             }),
                             React.createElement(TextControl, {
-                                label: __("Text", 'premium-block-for-gutenberg'),
-                                value: btnText,
-                                onChange: function onChange(newText) {
-                                    return setAttributes({ btnText: newText });
+                                label: __("Link", 'premium-block-for-gutenberg'),
+                                value: btnLink,
+                                onChange: function onChange(newLink) {
+                                    return setAttributes({ btnLink: newLink });
                                 }
                             }),
                             React.createElement(ToggleControl, {
@@ -33213,13 +33199,6 @@ var edit = function (_Component) {
                                 checked: btnTarget,
                                 onChange: function onChange(newValue) {
                                     return setAttributes({ btnTarget: newValue });
-                                }
-                            }),
-                            btnTarget && React.createElement(TextControl, {
-                                label: __("Link", 'premium-block-for-gutenberg'),
-                                value: btnLink,
-                                onChange: function onChange(newLink) {
-                                    return setAttributes({ btnLink: newLink });
                                 }
                             })
                         )
@@ -33234,22 +33213,6 @@ var edit = function (_Component) {
                                 className: "premium-panel-body",
                                 initialOpen: true
                             },
-                            React.createElement(_ColorComponent2.default, {
-                                label: __("Icon Color", 'premium-blocks-for-gutenberg'),
-                                colorValue: iconColor,
-                                colorDefault: '',
-                                onColorChange: function onColorChange(newValue) {
-                                    return setAttributes({ iconColor: newValue });
-                                }
-                            }),
-                            React.createElement(_ColorComponent2.default, {
-                                label: __("Icon Background Color"),
-                                colorValue: iconBackColor,
-                                onColorChange: function onColorChange(newvalue) {
-                                    return setAttributes({ iconBackColor: newvalue });
-                                },
-                                colorDefault: ""
-                            }),
                             React.createElement(_responsiveRangeControl2.default, {
                                 label: __('Size', 'premium-blocks-for-gutenberg'),
                                 value: iconSize,
@@ -33262,6 +33225,22 @@ var edit = function (_Component) {
                                 showUnit: true,
                                 units: ['px', 'em', 'rem'],
                                 defaultValue: 40
+                            }),
+                            React.createElement(_ColorComponent2.default, {
+                                label: __("Color", 'premium-blocks-for-gutenberg'),
+                                colorValue: iconColor,
+                                colorDefault: '',
+                                onColorChange: function onColorChange(newValue) {
+                                    return setAttributes({ iconColor: newValue });
+                                }
+                            }),
+                            React.createElement(_ColorComponent2.default, {
+                                label: __("Background Color"),
+                                colorValue: iconBackColor,
+                                onColorChange: function onColorChange(newvalue) {
+                                    return setAttributes({ iconBackColor: newvalue });
+                                },
+                                colorDefault: ""
                             })
                         ),
                         titleChecked && React.createElement(
@@ -33271,19 +33250,19 @@ var edit = function (_Component) {
                                 className: "premium-panel-body",
                                 initialOpen: false
                             },
-                            React.createElement(_ColorComponent2.default, {
-                                label: __("Title Color", 'premium-blocks-for-gutenberg'),
-                                colorValue: titleStyles[0].titleColor,
-                                colorDefault: '',
-                                onColorChange: function onColorChange(newValue) {
-                                    return saveTitleStyle({ titleColor: newValue });
-                                }
-                            }),
                             React.createElement(_premiumTypo2.default, {
                                 components: ["responsiveSize", "weight", "style", "upper", "spacing", "line", "family"],
                                 value: titleTypography,
                                 onChange: function onChange(newValue) {
                                     return setAttributes({ titleTypography: newValue });
+                                }
+                            }),
+                            React.createElement(_ColorComponent2.default, {
+                                label: __("Color", 'premium-blocks-for-gutenberg'),
+                                colorValue: titleStyles[0].titleColor,
+                                colorDefault: '',
+                                onColorChange: function onColorChange(newValue) {
+                                    return saveTitleStyle({ titleColor: newValue });
                                 }
                             }),
                             React.createElement(_PremiumShadow2.default, {
@@ -33310,19 +33289,19 @@ var edit = function (_Component) {
                                 className: "premium-panel-body",
                                 initialOpen: false
                             },
+                            React.createElement(_premiumTypo2.default, {
+                                components: ["responsiveSize", "weight", "style", "upper", "spacing", "line", "family"],
+                                value: descTypography,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({ descTypography: newValue });
+                                }
+                            }),
                             React.createElement(_ColorComponent2.default, {
-                                label: __("Description Color", 'premium-blocks-for-gutenberg'),
+                                label: __("Color", 'premium-blocks-for-gutenberg'),
                                 colorValue: descStyles[0].descColor,
                                 colorDefault: '',
                                 onColorChange: function onColorChange(newValue) {
                                     return saveDescriptionStyle({ descColor: newValue });
-                                }
-                            }),
-                            React.createElement(_premiumTypo2.default, {
-                                components: ["responsiveSize", "weight", "line", "family"],
-                                value: descTypography,
-                                onChange: function onChange(newValue) {
-                                    return setAttributes({ descTypography: newValue });
                                 }
                             }),
                             React.createElement(_premiumResponsiveSpacing2.default, {
@@ -33342,6 +33321,13 @@ var edit = function (_Component) {
                                 className: "premium-panel-body",
                                 initialOpen: false
                             },
+                            React.createElement(_premiumTypo2.default, {
+                                components: ["responsiveSize", "weight", "style", "upper", "spacing", "line", "family"],
+                                value: btnTypography,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({ btnTypography: newValue });
+                                }
+                            }),
                             React.createElement(
                                 _InsideTabs2.default,
                                 null,
@@ -33352,7 +33338,7 @@ var edit = function (_Component) {
                                         Fragment,
                                         null,
                                         React.createElement(_ColorComponent2.default, {
-                                            label: __("Button Color", 'premium-blocks-for-gutenberg'),
+                                            label: __("Color", 'premium-blocks-for-gutenberg'),
                                             colorValue: btnStyles[0].btnColor,
                                             colorDefault: '',
                                             onColorChange: function onColorChange(newValue) {
@@ -33360,7 +33346,7 @@ var edit = function (_Component) {
                                             }
                                         }),
                                         React.createElement(_ColorComponent2.default, {
-                                            label: __("Button Background Color"),
+                                            label: __("Background Color"),
                                             colorValue: btnStyles[0].btnBack,
                                             onColorChange: function onColorChange(newvalue) {
                                                 return saveButtonStyle({ btnBack: newvalue });
@@ -33376,7 +33362,7 @@ var edit = function (_Component) {
                                         Fragment,
                                         null,
                                         React.createElement(_ColorComponent2.default, {
-                                            label: __("Button Hover Color", 'premium-blocks-for-gutenberg'),
+                                            label: __("Hover Color", 'premium-blocks-for-gutenberg'),
                                             colorValue: btnStyles[0].btnHoverColor,
                                             colorDefault: '',
                                             onColorChange: function onColorChange(newValue) {
@@ -33384,7 +33370,7 @@ var edit = function (_Component) {
                                             }
                                         }),
                                         React.createElement(_ColorComponent2.default, {
-                                            label: __('Button Background Hover Color', 'premium-blocks-for-gutenberg'),
+                                            label: __('Background Hover Color', 'premium-blocks-for-gutenberg'),
                                             colorValue: btnStyles[0].btnHoverBack,
                                             colorDefault: '',
                                             onColorChange: function onColorChange(newValue) {
@@ -33392,7 +33378,7 @@ var edit = function (_Component) {
                                             }
                                         }),
                                         React.createElement(_ColorComponent2.default, {
-                                            label: __('Button Border Hover Color', 'premium-blocks-for-gutenberg'),
+                                            label: __('Border Hover Color', 'premium-blocks-for-gutenberg'),
                                             colorValue: btnHoverBorder,
                                             colorDefault: '',
                                             onColorChange: function onColorChange(newValue) {
@@ -33402,13 +33388,14 @@ var edit = function (_Component) {
                                     )
                                 )
                             ),
-                            React.createElement(_premiumTypo2.default, {
-                                components: ["responsiveSize", "weight", "style", "upper", "spacing"],
-                                value: btnTypography,
-                                onChange: function onChange(newValue) {
-                                    return setAttributes({ btnTypography: newValue });
+                            React.createElement("hr", null),
+                            React.createElement(_PremiumShadow2.default, {
+                                value: btnShadow,
+                                onChange: function onChange(value) {
+                                    return setAttributes({ btnShadow: value });
                                 }
                             }),
+                            React.createElement("hr", null),
                             React.createElement(_premiumBorder2.default, {
                                 label: __('Border', 'premium-blocks-for-gutenberg'),
                                 value: btnBorder,
@@ -33416,11 +33403,15 @@ var edit = function (_Component) {
                                     return setAttributes({ btnBorder: value });
                                 }
                             }),
-                            React.createElement(_PremiumShadow2.default, {
-                                value: btnShadow,
+                            React.createElement("hr", null),
+                            React.createElement(_premiumResponsiveSpacing2.default, {
+                                label: __('Margin', 'premium-blocks-for-gutenberg'),
+                                value: btnMargin,
                                 onChange: function onChange(value) {
-                                    return setAttributes({ btnShadow: value });
-                                }
+                                    return setAttributes({ btnMargin: value });
+                                },
+                                showUnits: false,
+                                responsive: true
                             }),
                             React.createElement(_premiumResponsiveSpacing2.default, {
                                 label: __('Padding', 'premium-blocks-for-gutenberg'),
@@ -33429,15 +33420,6 @@ var edit = function (_Component) {
                                     return setAttributes({ btnPadding: value });
                                 },
                                 showUnits: true,
-                                responsive: true
-                            }),
-                            React.createElement(_premiumResponsiveSpacing2.default, {
-                                label: __('Margin', 'premium-blocks-for-gutenberg'),
-                                value: btnMargin,
-                                onChange: function onChange(value) {
-                                    return setAttributes({ btnMargin: value });
-                                },
-                                showUnits: false,
                                 responsive: true
                             })
                         ),
@@ -33454,13 +33436,6 @@ var edit = function (_Component) {
                                     return setAttributes({ containerBackground: value });
                                 }
                             }),
-                            React.createElement(_premiumBorder2.default, {
-                                label: __('Border', 'premium-blocks-for-gutenberg'),
-                                value: containerBorder,
-                                onChange: function onChange(value) {
-                                    return setAttributes({ containerBorder: value });
-                                }
-                            }),
                             React.createElement(_PremiumShadow2.default, {
                                 value: containerShadow,
                                 onChange: function onChange(value) {
@@ -33474,6 +33449,15 @@ var edit = function (_Component) {
                                     return setAttributes({ containerHoverShadow: value });
                                 }
                             }),
+                            React.createElement("hr", null),
+                            React.createElement(_premiumBorder2.default, {
+                                label: __('Border', 'premium-blocks-for-gutenberg'),
+                                value: containerBorder,
+                                onChange: function onChange(value) {
+                                    return setAttributes({ containerBorder: value });
+                                }
+                            }),
+                            React.createElement("hr", null),
                             React.createElement(_premiumResponsiveSpacing2.default, {
                                 label: __('Margin', 'premium-blocks-for-gutenberg'),
                                 value: containerMargin,
@@ -33519,26 +33503,8 @@ var edit = function (_Component) {
                     id: "premium-icon-box-" + block_id,
                     className: mainClasses + " premium-icon-box-" + iconPos + " premium-icon-box-" + iconHPos + " premium-icon-box-" + block_id + " " + hideDesktop + " " + hideTablet + " " + hideMobile,
                     style: _extends({
-                        textAlign: align,
-                        borderStyle: containerBorder.borderType,
-                        borderTopWidth: containerBorder['borderWidth'][this.props.deviceType]['top'] && containerBorder['borderWidth'][this.props.deviceType]['top'] + "px",
-                        borderRightWidth: containerBorder['borderWidth'][this.props.deviceType]['right'] && containerBorder['borderWidth'][this.props.deviceType]['right'] + "px",
-                        borderBottomWidth: containerBorder['borderWidth'][this.props.deviceType]['bottom'] && containerBorder['borderWidth'][this.props.deviceType]['bottom'] + "px",
-                        borderLeftWidth: containerBorder['borderWidth'][this.props.deviceType]['left'] && containerBorder['borderWidth'][this.props.deviceType]['left'] + "px",
-                        borderBottomLeftRadius: containerBorder['borderRadius'][this.props.deviceType]['left'] && containerBorder['borderRadius'][this.props.deviceType]['left'] + "px",
-                        borderTopLeftRadius: containerBorder['borderRadius'][this.props.deviceType]['top'] && containerBorder['borderRadius'][this.props.deviceType]['top'] + "px",
-                        borderTopRightRadius: containerBorder['borderRadius'][this.props.deviceType]['right'] && containerBorder['borderRadius'][this.props.deviceType]['right'] + "px",
-                        borderBottomRightRadius: containerBorder['borderRadius'][this.props.deviceType]['bottom'] && containerBorder['borderRadius'][this.props.deviceType]['bottom'] + "px",
-                        borderColor: containerBorder.borderColor,
-                        paddingTop: containerPadding[this.props.deviceType]['top'] && containerPadding[this.props.deviceType]['top'] + containerPadding.unit,
-                        paddingRight: containerPadding[this.props.deviceType]['right'] && containerPadding[this.props.deviceType]['right'] + containerPadding.unit,
-                        paddingBottom: containerPadding[this.props.deviceType]['bottom'] && containerPadding[this.props.deviceType]['bottom'] + containerPadding.unit,
-                        paddingLeft: containerPadding[this.props.deviceType]['left'] && containerPadding[this.props.deviceType]['left'] + containerPadding.unit,
-                        marginTop: containerMargin[this.props.deviceType]['top'] && containerMargin[this.props.deviceType]['top'] + containerMargin.unit,
-                        marginRight: containerMargin[this.props.deviceType]['right'] && containerMargin[this.props.deviceType]['right'] + containerMargin.unit,
-                        marginBottom: containerMargin[this.props.deviceType]['bottom'] && containerMargin[this.props.deviceType]['bottom'] + containerMargin.unit,
-                        marginLeft: containerMargin[this.props.deviceType]['left'] && containerMargin[this.props.deviceType]['left'] + containerMargin.unit
-                    }, (0, _HelperFunction.gradientBackground)(containerBackground))
+                        textAlign: align
+                    }, (0, _HelperFunction.borderCss)(containerBorder, this.props.deviceType), (0, _HelperFunction.padddingCss)(containerPadding, this.props.deviceType), (0, _HelperFunction.marginCss)(containerMargin, this.props.deviceType), (0, _HelperFunction.gradientBackground)(containerBackground))
                 },
                 btnChecked && btnText && React.createElement("style", {
                     dangerouslySetInnerHTML: {
@@ -33585,12 +33551,7 @@ var edit = function (_Component) {
                         "div",
                         {
                             className: "premium-icon-box__title_wrap",
-                            style: {
-                                marginTop: titleMargin[this.props.deviceType]['top'] && titleMargin[this.props.deviceType]['top'] + titleMargin.unit,
-                                marginRight: titleMargin[this.props.deviceType]['right'] && titleMargin[this.props.deviceType]['right'] + titleMargin.unit,
-                                marginBottom: titleMargin[this.props.deviceType]['bottom'] && titleMargin[this.props.deviceType]['bottom'] + titleMargin.unit,
-                                marginLeft: titleMargin[this.props.deviceType]['left'] && titleMargin[this.props.deviceType]['left'] + titleMargin.unit
-                            }
+                            style: _extends({}, (0, _HelperFunction.marginCss)(titleMargin, this.props.deviceType))
                         },
                         React.createElement(RichText, {
                             tagName: titleStyles[0].titleTag.toLowerCase(),
@@ -33600,17 +33561,10 @@ var edit = function (_Component) {
                             },
                             placeholder: __("Awesome Title"),
                             value: titleText,
-                            style: {
-                                fontSize: "" + (titleTypography.fontSize[this.props.deviceType] || 20) + titleTypography.fontSize.unit,
-                                fontFamily: titleTypography.fontFamily,
-                                letterSpacing: titleTypography.letterSpacing + "px",
-                                textTransform: titleTypography.textTransform ? "uppercase" : "none",
-                                fontStyle: titleTypography.fontStyle,
-                                fontWeight: titleTypography.fontWeight,
-                                lineHeight: titleTypography.lineHeight + "px",
+                            style: _extends({}, (0, _HelperFunction.typographyCss)(titleTypography, this.props.deviceType), {
                                 color: titleStyles[0].titleColor,
                                 textShadow: (titleShadow.horizontal || 0) + "px " + (titleShadow.vertical || 0) + "px " + (titleShadow.blur || 0) + "px " + titleShadow.color
-                            },
+                            }),
                             keepPlaceholderOnFocus: true
                         })
                     ),
@@ -33618,12 +33572,7 @@ var edit = function (_Component) {
                         "div",
                         {
                             className: "premium-icon-box__desc_wrap",
-                            style: {
-                                marginTop: descMargin[this.props.deviceType]['top'] && descMargin[this.props.deviceType]['top'] + descMargin.unit,
-                                marginRight: descMargin[this.props.deviceType]['right'] && descMargin[this.props.deviceType]['right'] + descMargin.unit,
-                                marginBottom: descMargin[this.props.deviceType]['bottom'] && descMargin[this.props.deviceType]['bottom'] + descMargin.unit,
-                                marginLeft: descMargin[this.props.deviceType]['left'] && descMargin[this.props.deviceType]['left'] + descMargin.unit
-                            }
+                            style: _extends({}, (0, _HelperFunction.marginCss)(descMargin, this.props.deviceType))
                         },
                         React.createElement(RichText, {
                             tagName: "p",
@@ -33634,13 +33583,9 @@ var edit = function (_Component) {
                             onChange: function onChange(newText) {
                                 return setAttributes({ descText: newText });
                             },
-                            style: {
-                                color: descStyles[0].descColor,
-                                fontSize: "" + (descTypography.fontSize[this.props.deviceType] || 20) + descTypography.fontSize.unit,
-                                fontFamily: descTypography.fontFamily,
-                                fontWeight: descTypography.fontWeight,
-                                lineHeight: descTypography.lineHeight + "px"
-                            },
+                            style: _extends({}, (0, _HelperFunction.typographyCss)(descTypography, this.props.deviceType), {
+                                color: descStyles[0].descColor
+                            }),
                             keepPlaceholderOnFocus: true
                         })
                     ),
@@ -33648,12 +33593,7 @@ var edit = function (_Component) {
                         "div",
                         {
                             className: "premium-icon-box__btn_wrap premium-button__" + btnEffect + " premium-button__" + effectDir,
-                            style: {
-                                marginTop: btnMargin[this.props.deviceType]['top'] && btnMargin[this.props.deviceType]['top'] + btnMargin.unit,
-                                marginRight: btnMargin[this.props.deviceType]['right'] && btnMargin[this.props.deviceType]['right'] + btnMargin.unit,
-                                marginBottom: btnMargin[this.props.deviceType]['bottom'] && btnMargin[this.props.deviceType]['bottom'] + btnMargin.unit,
-                                marginLeft: btnMargin[this.props.deviceType]['left'] && btnMargin[this.props.deviceType]['left'] + btnMargin.unit
-                            }
+                            style: _extends({}, (0, _HelperFunction.marginCss)(btnMargin, this.props.deviceType))
                         },
                         React.createElement(RichText, {
                             tagName: "a",
@@ -33663,36 +33603,18 @@ var edit = function (_Component) {
                             },
                             placeholder: __("Click Here"),
                             value: btnText,
-                            style: {
-                                fontSize: "" + (btnTypography.fontSize[this.props.deviceType] || 20) + btnTypography.fontSize.unit,
-                                letterSpacing: btnTypography.letterSpacing + "px",
-                                textTransform: btnTypography.textTransform ? "uppercase" : "none",
-                                fontStyle: btnTypography.fontStyle,
-                                fontWeight: btnTypography.fontWeight,
+                            style: _extends({}, (0, _HelperFunction.typographyCss)(btnTypography, this.props.deviceType), (0, _HelperFunction.borderCss)(btnBorder, this.props.deviceType), (0, _HelperFunction.padddingCss)(btnPadding, this.props.deviceType), {
                                 color: btnStyles[0].btnColor,
                                 backgroundColor: btnStyles[0].btnBack,
-                                borderStyle: btnBorder.borderType,
-                                borderTopWidth: btnBorder['borderWidth'][this.props.deviceType]['top'] && btnBorder['borderWidth'][this.props.deviceType]['top'] + "px",
-                                borderRightWidth: btnBorder['borderWidth'][this.props.deviceType]['right'] && btnBorder['borderWidth'][this.props.deviceType]['right'] + "px",
-                                borderBottomWidth: btnBorder['borderWidth'][this.props.deviceType]['bottom'] && btnBorder['borderWidth'][this.props.deviceType]['bottom'] + "px",
-                                borderLeftWidth: btnBorder['borderWidth'][this.props.deviceType]['left'] && btnBorder['borderWidth'][this.props.deviceType]['left'] + "px",
-                                borderBottomLeftRadius: btnBorder['borderRadius'][this.props.deviceType]['left'] && btnBorder['borderRadius'][this.props.deviceType]['left'] + "px",
-                                borderTopLeftRadius: btnBorder['borderRadius'][this.props.deviceType]['top'] && btnBorder['borderRadius'][this.props.deviceType]['top'] + "px",
-                                borderTopRightRadius: btnBorder['borderRadius'][this.props.deviceType]['right'] && btnBorder['borderRadius'][this.props.deviceType]['right'] + "px",
-                                borderBottomRightRadius: btnBorder['borderRadius'][this.props.deviceType]['bottom'] && btnBorder['borderRadius'][this.props.deviceType]['bottom'] + "px",
-                                borderColor: btnBorder.borderColor,
-                                paddingTop: btnPadding[this.props.deviceType]['top'] && btnPadding[this.props.deviceType]['top'] + btnPadding.unit,
-                                paddingRight: btnPadding[this.props.deviceType]['right'] && btnPadding[this.props.deviceType]['right'] + btnPadding.unit,
-                                paddingBottom: btnPadding[this.props.deviceType]['bottom'] && btnPadding[this.props.deviceType]['bottom'] + btnPadding.unit,
-                                paddingLeft: btnPadding[this.props.deviceType]['left'] && btnPadding[this.props.deviceType]['left'] + btnPadding.unit,
                                 boxShadow: (btnShadow.horizontal || 0) + "px " + (btnShadow.vertical || 0) + "px " + (btnShadow.blur || 0) + "px " + btnShadow.color + " " + btnShadow.position
-                            },
+                            }),
                             keepPlaceholderOnFocus: true
                         })
                     )
                 ),
                 loadTitleGoogleFonts,
-                loadDescriptionGoogleFonts
+                loadDescriptionGoogleFonts,
+                loadButtonGoogleFonts
             )];
         }
     }]);
@@ -33742,8 +33664,6 @@ var save = function save(props) {
     var className = props.className;
     var _props$attributes = props.attributes,
         block_id = _props$attributes.block_id,
-        borderIconBox = _props$attributes.borderIconBox,
-        btnBorderIconBox = _props$attributes.btnBorderIconBox,
         align = _props$attributes.align,
         iconImage = _props$attributes.iconImage,
         iconImgUrl = _props$attributes.iconImgUrl,
@@ -33774,7 +33694,6 @@ var save = function save(props) {
         titleStyles = _props$attributes.titleStyles,
         descStyles = _props$attributes.descStyles,
         btnStyles = _props$attributes.btnStyles,
-        containerStyles = _props$attributes.containerStyles,
         btnBorder = _props$attributes.btnBorder,
         containerBorder = _props$attributes.containerBorder,
         containerBackground = _props$attributes.containerBackground,
@@ -33846,17 +33765,10 @@ var save = function save(props) {
                         tagName: titleStyles[0].titleTag.toLowerCase(),
                         className: 'premium-icon-box__title',
                         value: titleText,
-                        style: {
-                            fontSize: '' + (titleTypography.fontSize[props.deviceType] || 20) + titleTypography.fontSize.unit,
-                            fontFamily: titleTypography.fontFamily,
-                            letterSpacing: titleTypography.letterSpacing + "px",
-                            textTransform: titleTypography.textTransform ? "uppercase" : "none",
-                            fontStyle: titleTypography.fontStyle,
-                            fontWeight: titleTypography.fontWeight,
-                            lineHeight: titleTypography.lineHeight + "px",
+                        style: _extends({}, (0, _HelperFunction.typographyCss)(titleTypography, props.deviceType), {
                             color: titleStyles[0].titleColor,
                             textShadow: (titleShadow.horizontal || 0) + 'px ' + (titleShadow.vertical || 0) + 'px ' + (titleShadow.blur || 0) + 'px ' + titleShadow.color
-                        }
+                        })
                     })
                 ),
                 descChecked && descText && React.createElement(
@@ -33868,13 +33780,9 @@ var save = function save(props) {
                         tagName: 'p',
                         className: 'premium-icon-box__desc',
                         value: descText,
-                        style: {
-                            color: descStyles[0].descColor,
-                            fontSize: '' + (descTypography.fontSize[props.deviceType] || 20) + descTypography.fontSize.unit,
-                            fontFamily: descTypography.fontFamily,
-                            fontWeight: descTypography.fontWeight,
-                            lineHeight: descTypography.lineHeight + "px"
-                        }
+                        style: _extends({}, (0, _HelperFunction.typographyCss)(descTypography, props.deviceType), {
+                            color: descStyles[0].descColor
+                        })
                     })
                 ),
                 btnChecked && btnText && React.createElement(
@@ -33889,18 +33797,13 @@ var save = function save(props) {
                         rel: 'noopener noreferrer',
                         target: btnTarget ? "_blank" : "_self",
                         value: btnText,
-                        style: {
-                            fontSize: '' + (btnTypography.fontSize[props.deviceType] || 20) + btnTypography.fontSize.unit,
-                            letterSpacing: btnTypography.letterSpacing + "px",
-                            textTransform: btnTypography.textTransform ? "uppercase" : "none",
-                            fontStyle: btnTypography.fontStyle,
-                            fontWeight: btnTypography.fontWeight,
+                        style: _extends({}, (0, _HelperFunction.typographyCss)(btnTypography, props.deviceType), {
                             color: btnStyles[0].btnColor,
                             backgroundColor: btnStyles[0].btnBack,
                             borderStyle: btnBorder.borderType,
                             borderColor: btnBorder.borderColor,
                             boxShadow: (btnShadow.horizontal || 0) + 'px ' + (btnShadow.vertical || 0) + 'px ' + (btnShadow.blur || 0) + 'px ' + btnShadow.color + ' ' + btnShadow.position
-                        }
+                        })
                     })
                 )
             )
@@ -34793,6 +34696,9 @@ var deprecatedContent = [{
             },
             descTypography: {
                 'fontWeight': attributes.descStyles[0].descWeight,
+                'fontStyle': '',
+                'textTransform': '',
+                'letterSpacing': '',
                 'fontFamily': attributes.descStyles[0].descFont,
                 'lineHeight': attributes.descStyles[0].descLine,
                 'fontSize': {
@@ -34807,6 +34713,8 @@ var deprecatedContent = [{
                 'fontStyle': attributes.btnStyles[0].btnStyle,
                 'textTransform': attributes.btnStyles[0].btnUpper,
                 'letterSpacing': attributes.btnStyles[0].btnLetter,
+                'fontFamily': '',
+                'lineHeight': '',
                 'fontSize': {
                     'Desktop': attributes.btnStyles[0].btnSize,
                     "Tablet": attributes.btnStyles[0].btnSizeTablet,
@@ -37575,7 +37483,7 @@ var attributes = {
     titleTypography: {
         type: "object",
         default: {
-            "fontWeight": '',
+            "fontWeight": 300,
             'fontStyle': '',
             'textTransform': '',
             'letterSpacing': '',
@@ -37592,7 +37500,10 @@ var attributes = {
     descTypography: {
         type: "object",
         default: {
-            "fontWeight": '',
+            "fontWeight": 400,
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
             'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
             'lineHeight': '',
             'fontSize': {
@@ -37606,10 +37517,12 @@ var attributes = {
     btnTypography: {
         type: "object",
         default: {
-            "fontWeight": '',
+            "fontWeight": 400,
             'fontStyle': '',
             'textTransform': '',
             'letterSpacing': '',
+            'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
+            'lineHeight': '',
             'fontSize': {
                 'Desktop': 20,
                 "Tablet": 20,
@@ -64181,6 +64094,30 @@ var PBG_Block_Icons = {
             { id: "Team_Members", "data-name": "Team Members" },
             React.createElement("path", { "class": "cls-1", d: "M12.62,14h-.27a4,4,0,1,1,.3,0ZM12.5,7.48a2.53,2.53,0,0,0-.14,5h.29a2.53,2.53,0,0,0-.15-5Z", transform: "translate(-1.75 -1.75)" }),
             React.createElement("path", { "class": "cls-1", d: "M23.25,12.5a10.75,10.75,0,1,0-18,7.87s0,0,0,.06l.31.27a10,10,0,0,0,2.15,1.42l.33.16a6.5,6.5,0,0,0,.61.25l.34.13.32.1.45.13a10.61,10.61,0,0,0,5.48,0l.45-.13.32-.1.34-.13a6.5,6.5,0,0,0,.61-.25l.33-.16a10,10,0,0,0,2.15-1.42l.31-.27s0,0,0-.06A10.7,10.7,0,0,0,23.25,12.5Zm-20,0a9.25,9.25,0,1,1,16.32,6,5,5,0,0,0-1.68-1.79,10.52,10.52,0,0,0-10.78,0,5,5,0,0,0-1.68,1.79A9.29,9.29,0,0,1,3.25,12.5Zm14.53,7.59c-.21.14-.42.28-.64.4a1.38,1.38,0,0,1-.24.14l-.51.26c-.23.11-.47.21-.71.3a8.84,8.84,0,0,1-1.77.45c-.2,0-.4.06-.6.07a8.22,8.22,0,0,1-1.62,0c-.2,0-.4,0-.6-.07a8.84,8.84,0,0,1-1.77-.45c-.24-.09-.48-.19-.71-.3l-.51-.26a1.38,1.38,0,0,1-.24-.14c-.22-.12-.43-.26-.64-.4a7.73,7.73,0,0,1-.64-.49,3.23,3.23,0,0,1,1.36-1.68,9,9,0,0,1,9.11,0,3.25,3.25,0,0,1,1.37,1.68A7.73,7.73,0,0,1,17.78,20.09Z", transform: "translate(-1.75 -1.75)" })
+        )
+    ),
+    icon_box: React.createElement(
+        "svg",
+        { id: "Accordion", xmlns: "http://www.w3.org/2000/svg", width: "21.5", height: "21.5", viewBox: "0 0 21.5 21.5" },
+        React.createElement(
+            "defs",
+            null,
+            React.createElement(
+                "style",
+                null,
+                ".",
+                "cls-1{fill:#1a1a1a;}"
+            )
+        ),
+        React.createElement(
+            "title",
+            null,
+            "premium-icon-box"
+        ),
+        React.createElement(
+            "g",
+            { id: "Icon_Box", "data-name": "Icon Box" },
+            React.createElement("path", { "class": "cls-1", d: "M18.21,4.83c-.24-2-1.53-3.08-3.71-3.08h-4C8.32,1.75,7,2.84,6.79,4.83c-3.48.73-5,3.08-5,7.57v3c0,5.48,2.32,7.82,7.75,7.82h6c5.43,0,7.75-2.34,7.75-7.82v-3C23.25,7.91,21.69,5.55,18.21,4.83Zm-10,.7c0-1.6.67-2.28,2.25-2.28h4c1.56,0,2.23.66,2.25,2.21v7.12a1.46,1.46,0,0,1-.52,1.33,1.53,1.53,0,0,1-1.48-.25l-1.32-.8a1.92,1.92,0,0,0-1.86,0l-1.32.8a1.53,1.53,0,0,1-1.48.25,1.46,1.46,0,0,1-.52-1.33Zm13.5,9.9c0,4.67-1.64,6.32-6.25,6.32h-6c-4.61,0-6.25-1.65-6.25-6.32v-3c0-3.62,1-5.38,3.5-6v6.2A2.87,2.87,0,0,0,8,15.22a2.91,2.91,0,0,0,3-.28l1.32-.8a.44.44,0,0,1,.3,0l1.32.8a3.65,3.65,0,0,0,1.84.58,2.31,2.31,0,0,0,1.16-.3,2.87,2.87,0,0,0,1.28-2.64V6.37c2.51.65,3.5,2.42,3.5,6Z", transform: "translate(-1.75 -1.75)" })
         )
     )
 };

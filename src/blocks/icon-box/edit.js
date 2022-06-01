@@ -18,14 +18,14 @@ import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
 import InsideTabs from '../../components/InsideTabs'
 import InsideTab from '../../components/InsideTab';
-import { gradientBackground } from '../../components/HelperFunction'
+import { gradientBackground, borderCss, padddingCss, marginCss, typographyCss } from '../../components/HelperFunction'
 
 const { __ } = wp.i18n;
 
-const { PanelBody, SelectControl, ToggleControl, TabPanel, TextControl, TextareaControl } = wp.components;
+const { PanelBody, SelectControl, ToggleControl, TextControl } = wp.components;
 const { Fragment, Component } = wp.element;
 const { withSelect } = wp.data
-const { BlockControls, InspectorControls, RichText, AlignmentToolbar, URLInput } = wp.blockEditor;
+const { BlockControls, InspectorControls, RichText, AlignmentToolbar } = wp.blockEditor;
 
 class edit extends Component {
     constructor() {
@@ -233,6 +233,8 @@ class edit extends Component {
 
         let loadTitleGoogleFonts;
         let loadDescriptionGoogleFonts;
+        let loadButtonGoogleFonts;
+
         if (titleTypography.fontFamily !== 'Default') {
             const titleConfig = {
                 google: {
@@ -252,6 +254,17 @@ class edit extends Component {
             }
             loadDescriptionGoogleFonts = (
                 <WebfontLoader config={descriptionConfig}>
+                </WebfontLoader>
+            )
+        }
+        if (btnTypography.fontFamily !== 'Default') {
+            const btnConfig = {
+                google: {
+                    families: [btnTypography.fontFamily],
+                },
+            }
+            loadButtonGoogleFonts = (
+                <WebfontLoader config={btnConfig}>
                 </WebfontLoader>
             )
         }
@@ -386,33 +399,14 @@ class edit extends Component {
                                     className="premium-panel-body"
                                     initialOpen={false}
                                 >
-                                    <TextControl
-                                        label={__("Title", 'premium-block-for-gutenberg')}
-                                        value={titleText}
-                                        onChange={newText => setAttributes({ titleText: newText })}
-                                    />
                                     <RadioComponent
-                                        label={__("Title", 'premium-blocks-for-gutenberg')}
+                                        label={__("Title Tag", 'premium-blocks-for-gutenberg')}
                                         choices={['H1', 'H2', 'H3', 'H4', 'H5', 'H6']}
                                         value={titleStyles[0].titleTag}
                                         onChange={(newValue) => saveTitleStyle({ titleTag: newValue })}
                                     />
                                 </PanelBody>
                             )}
-                            {descChecked && (
-                                <PanelBody
-                                    title={__("Description", 'premium-blocks-for-gutenberg')}
-                                    className="premium-panel-body"
-                                    initialOpen={false}
-                                >
-                                    <TextareaControl
-                                        label={__("Content", 'premium-block-for-gutenberg')}
-                                        value={descText}
-                                        onChange={newText => setAttributes({ descText: newText })}
-                                    />
-                                </PanelBody>
-                            )}
-
                             {btnChecked && (
                                 <PanelBody
                                     title={__("Button", 'premium-blocks-for-gutenberg')}
@@ -434,22 +428,15 @@ class edit extends Component {
                                         />
                                     )}
                                     <TextControl
-                                        label={__("Text", 'premium-block-for-gutenberg')}
-                                        value={btnText}
-                                        onChange={newText => setAttributes({ btnText: newText })}
+                                        label={__("Link", 'premium-block-for-gutenberg')}
+                                        value={btnLink}
+                                        onChange={newLink => setAttributes({ btnLink: newLink })}
                                     />
                                     <ToggleControl
                                         label={__("Open link in new tab", 'premium-blocks-for-gutenberg')}
                                         checked={btnTarget}
                                         onChange={newValue => setAttributes({ btnTarget: newValue })}
                                     />
-                                    { btnTarget &&
-                                        <TextControl
-                                            label={__("Link", 'premium-block-for-gutenberg')}
-                                            value={btnLink}
-                                            onChange={newLink => setAttributes({ btnLink: newLink })}
-                                        />
-                                    }
                                 </PanelBody>
                             )}
                         </InspectorTab>
@@ -459,18 +446,6 @@ class edit extends Component {
                                 className="premium-panel-body"
                                 initialOpen={true}
                             >
-                                <AdvancedPopColorControl
-                                    label={__("Icon Color", 'premium-blocks-for-gutenberg')}
-                                    colorValue={iconColor}
-                                    colorDefault={''}
-                                    onColorChange={newValue => setAttributes({ iconColor: newValue })}
-                                />
-                                <AdvancedPopColorControl
-                                    label={__(`Icon Background Color`)}
-                                    colorValue={iconBackColor}
-                                    onColorChange={newvalue => setAttributes({ iconBackColor: newvalue, })}
-                                    colorDefault={``}
-                                />
                                 <ResponsiveRangeControl
                                     label={__('Size', 'premium-blocks-for-gutenberg')}
                                     value={iconSize}
@@ -482,6 +457,18 @@ class edit extends Component {
                                     units={['px', 'em', 'rem']}
                                     defaultValue={40}
                                 />
+                                <AdvancedPopColorControl
+                                    label={__("Color", 'premium-blocks-for-gutenberg')}
+                                    colorValue={iconColor}
+                                    colorDefault={''}
+                                    onColorChange={newValue => setAttributes({ iconColor: newValue })}
+                                />
+                                <AdvancedPopColorControl
+                                    label={__(`Background Color`)}
+                                    colorValue={iconBackColor}
+                                    onColorChange={newvalue => setAttributes({ iconBackColor: newvalue, })}
+                                    colorDefault={``}
+                                />
                             </PanelBody>
                             )}
                             {titleChecked && (<PanelBody
@@ -489,12 +476,6 @@ class edit extends Component {
                                 className="premium-panel-body"
                                 initialOpen={false}
                             >
-                                <AdvancedPopColorControl
-                                    label={__("Title Color", 'premium-blocks-for-gutenberg')}
-                                    colorValue={titleStyles[0].titleColor}
-                                    colorDefault={''}
-                                    onColorChange={newValue => saveTitleStyle({ titleColor: newValue })}
-                                />
                                 <PremiumTypo
                                     components={[
                                         "responsiveSize",
@@ -507,6 +488,12 @@ class edit extends Component {
                                     ]}
                                     value={titleTypography}
                                     onChange={newValue => setAttributes({ titleTypography: newValue })}
+                                />
+                                <AdvancedPopColorControl
+                                    label={__("Color", 'premium-blocks-for-gutenberg')}
+                                    colorValue={titleStyles[0].titleColor}
+                                    colorDefault={''}
+                                    onColorChange={newValue => saveTitleStyle({ titleColor: newValue })}
                                 />
                                 <PremiumShadow
                                     label={__("Text Shadow", "premium-blocks-for-gutenberg")}
@@ -527,16 +514,16 @@ class edit extends Component {
                                 className="premium-panel-body"
                                 initialOpen={false}
                             >
+                                <PremiumTypo
+                                    components={["responsiveSize", "weight", "style", "upper", "spacing", "line", "family"]}
+                                    value={descTypography}
+                                    onChange={newValue => setAttributes({ descTypography: newValue })}
+                                />
                                 <AdvancedPopColorControl
-                                    label={__("Description Color", 'premium-blocks-for-gutenberg')}
+                                    label={__("Color", 'premium-blocks-for-gutenberg')}
                                     colorValue={descStyles[0].descColor}
                                     colorDefault={''}
                                     onColorChange={newValue => saveDescriptionStyle({ descColor: newValue })}
-                                />
-                                <PremiumTypo
-                                    components={["responsiveSize", "weight", "line", "family"]}
-                                    value={descTypography}
-                                    onChange={newValue => setAttributes({ descTypography: newValue })}
                                 />
                                 <SpacingControl
                                     label={__('Margin', 'premium-blocks-for-gutenberg')}
@@ -552,18 +539,23 @@ class edit extends Component {
                                 className="premium-panel-body"
                                 initialOpen={false}
                             >
+                                <PremiumTypo
+                                    components={["responsiveSize", "weight", "style", "upper", "spacing", "line", "family"]}
+                                    value={btnTypography}
+                                    onChange={newValue => setAttributes({ btnTypography: newValue })}
+                                />
                                 <InsideTabs>
                                     <InsideTab tabTitle={__('Normal')}>
                                         <Fragment>
                                             <AdvancedPopColorControl
-                                                label={__("Button Color", 'premium-blocks-for-gutenberg')}
+                                                label={__("Color", 'premium-blocks-for-gutenberg')}
                                                 colorValue={btnStyles[0].btnColor}
                                                 colorDefault={''}
                                                 onColorChange={newValue => saveButtonStyle({ btnColor: newValue || "#000", })}
                                             />
 
                                             <AdvancedPopColorControl
-                                                label={__(`Button Background Color`)}
+                                                label={__(`Background Color`)}
                                                 colorValue={btnStyles[0].btnBack}
                                                 onColorChange={newvalue => saveButtonStyle({ btnBack: newvalue, })}
                                                 colorDefault={``}
@@ -573,19 +565,19 @@ class edit extends Component {
                                     <InsideTab tabTitle={__('Hover')}>
                                         <Fragment>
                                             <AdvancedPopColorControl
-                                                label={__("Button Hover Color", 'premium-blocks-for-gutenberg')}
+                                                label={__("Hover Color", 'premium-blocks-for-gutenberg')}
                                                 colorValue={btnStyles[0].btnHoverColor}
                                                 colorDefault={''}
                                                 onColorChange={newValue => saveButtonStyle({ btnHoverColor: newValue || "#000", })}
                                             />
                                             <AdvancedPopColorControl
-                                                label={__('Button Background Hover Color', 'premium-blocks-for-gutenberg')}
+                                                label={__('Background Hover Color', 'premium-blocks-for-gutenberg')}
                                                 colorValue={btnStyles[0].btnHoverBack}
                                                 colorDefault={''}
                                                 onColorChange={newValue => saveButtonStyle({ btnHoverBack: newValue, })}
                                             />
                                             <AdvancedPopColorControl
-                                                label={__('Button Border Hover Color', 'premium-blocks-for-gutenberg')}
+                                                label={__('Border Hover Color', 'premium-blocks-for-gutenberg')}
                                                 colorValue={btnHoverBorder}
                                                 colorDefault={''}
                                                 onColorChange={newValue => setAttributes({ btnHoverBorder: newValue })}
@@ -593,32 +585,30 @@ class edit extends Component {
                                         </Fragment>
                                     </InsideTab>
                                 </InsideTabs>
-                                <PremiumTypo
-                                    components={["responsiveSize", "weight", "style", "upper", "spacing"]}
-                                    value={btnTypography}
-                                    onChange={newValue => setAttributes({ btnTypography: newValue })}
+                                <hr />
+                                <PremiumShadow
+                                    value={btnShadow}
+                                    onChange={(value) => setAttributes({ btnShadow: value })}
                                 />
+                                <hr />
                                 <PremiumBorder
                                     label={__('Border', 'premium-blocks-for-gutenberg')}
                                     value={btnBorder}
                                     onChange={(value) => setAttributes({ btnBorder: value })}
                                 />
-                                <PremiumShadow
-                                    value={btnShadow}
-                                    onChange={(value) => setAttributes({ btnShadow: value })}
+                                <hr />
+                                <SpacingControl
+                                    label={__('Margin', 'premium-blocks-for-gutenberg')}
+                                    value={btnMargin}
+                                    onChange={(value) => setAttributes({ btnMargin: value })}
+                                    showUnits={false}
+                                    responsive={true}
                                 />
                                 <SpacingControl
                                     label={__('Padding', 'premium-blocks-for-gutenberg')}
                                     value={btnPadding}
                                     onChange={(value) => setAttributes({ btnPadding: value })}
                                     showUnits={true}
-                                    responsive={true}
-                                />
-                                <SpacingControl
-                                    label={__('Margin', 'premium-blocks-for-gutenberg')}
-                                    value={btnMargin}
-                                    onChange={(value) => setAttributes({ btnMargin: value })}
-                                    showUnits={false}
                                     responsive={true}
                                 />
                             </PanelBody>
@@ -632,11 +622,6 @@ class edit extends Component {
                                     value={containerBackground}
                                     onChange={(value) => setAttributes({ containerBackground: value })}
                                 />
-                                <PremiumBorder
-                                    label={__('Border', 'premium-blocks-for-gutenberg')}
-                                    value={containerBorder}
-                                    onChange={(value) => setAttributes({ containerBorder: value })}
-                                />
                                 <PremiumShadow
                                     value={containerShadow}
                                     onChange={(value) => setAttributes({ containerShadow: value })}
@@ -646,6 +631,13 @@ class edit extends Component {
                                     value={containerHoverShadow}
                                     onChange={(value) => setAttributes({ containerHoverShadow: value })}
                                 />
+                                <hr />
+                                <PremiumBorder
+                                    label={__('Border', 'premium-blocks-for-gutenberg')}
+                                    value={containerBorder}
+                                    onChange={(value) => setAttributes({ containerBorder: value })}
+                                />
+                                <hr />
                                 <SpacingControl
                                     label={__('Margin', 'premium-blocks-for-gutenberg')}
                                     value={containerMargin}
@@ -680,24 +672,9 @@ class edit extends Component {
                 className={`${mainClasses} premium-icon-box-${iconPos} premium-icon-box-${iconHPos} premium-icon-box-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
                 style={{
                     textAlign: align,
-                    borderStyle: containerBorder.borderType,
-                    borderTopWidth: containerBorder['borderWidth'][this.props.deviceType]['top'] && containerBorder['borderWidth'][this.props.deviceType]['top'] + "px",
-                    borderRightWidth: containerBorder['borderWidth'][this.props.deviceType]['right'] && containerBorder['borderWidth'][this.props.deviceType]['right'] + "px",
-                    borderBottomWidth: containerBorder['borderWidth'][this.props.deviceType]['bottom'] && containerBorder['borderWidth'][this.props.deviceType]['bottom'] + "px",
-                    borderLeftWidth: containerBorder['borderWidth'][this.props.deviceType]['left'] && containerBorder['borderWidth'][this.props.deviceType]['left'] + "px",
-                    borderBottomLeftRadius: containerBorder['borderRadius'][this.props.deviceType]['left'] && containerBorder['borderRadius'][this.props.deviceType]['left'] + "px",
-                    borderTopLeftRadius: containerBorder['borderRadius'][this.props.deviceType]['top'] && containerBorder['borderRadius'][this.props.deviceType]['top'] + "px",
-                    borderTopRightRadius: containerBorder['borderRadius'][this.props.deviceType]['right'] && containerBorder['borderRadius'][this.props.deviceType]['right'] + "px",
-                    borderBottomRightRadius: containerBorder['borderRadius'][this.props.deviceType]['bottom'] && containerBorder['borderRadius'][this.props.deviceType]['bottom'] + "px",
-                    borderColor: containerBorder.borderColor,
-                    paddingTop: containerPadding[this.props.deviceType]['top'] && containerPadding[this.props.deviceType]['top'] + containerPadding.unit,
-                    paddingRight: containerPadding[this.props.deviceType]['right'] && containerPadding[this.props.deviceType]['right'] + containerPadding.unit,
-                    paddingBottom: containerPadding[this.props.deviceType]['bottom'] && containerPadding[this.props.deviceType]['bottom'] + containerPadding.unit,
-                    paddingLeft: containerPadding[this.props.deviceType]['left'] && containerPadding[this.props.deviceType]['left'] + containerPadding.unit,
-                    marginTop: containerMargin[this.props.deviceType]['top'] && containerMargin[this.props.deviceType]['top'] + containerMargin.unit,
-                    marginRight: containerMargin[this.props.deviceType]['right'] && containerMargin[this.props.deviceType]['right'] + containerMargin.unit,
-                    marginBottom: containerMargin[this.props.deviceType]['bottom'] && containerMargin[this.props.deviceType]['bottom'] + containerMargin.unit,
-                    marginLeft: containerMargin[this.props.deviceType]['left'] && containerMargin[this.props.deviceType]['left'] + containerMargin.unit,
+                    ...borderCss(containerBorder, this.props.deviceType),
+                    ...padddingCss(containerPadding, this.props.deviceType),
+                    ...marginCss(containerMargin, this.props.deviceType),
                     ...gradientBackground(containerBackground),
                 }}
             >
@@ -767,10 +744,7 @@ class edit extends Component {
                         <div
                             className={`premium-icon-box__title_wrap`}
                             style={{
-                                marginTop: titleMargin[this.props.deviceType]['top'] && titleMargin[this.props.deviceType]['top'] + titleMargin.unit,
-                                marginRight: titleMargin[this.props.deviceType]['right'] && titleMargin[this.props.deviceType]['right'] + titleMargin.unit,
-                                marginBottom: titleMargin[this.props.deviceType]['bottom'] && titleMargin[this.props.deviceType]['bottom'] + titleMargin.unit,
-                                marginLeft: titleMargin[this.props.deviceType]['left'] && titleMargin[this.props.deviceType]['left'] + titleMargin.unit,
+                                ...marginCss(titleMargin, this.props.deviceType),
                             }}
                         >
                             <RichText
@@ -780,13 +754,7 @@ class edit extends Component {
                                 placeholder={__("Awesome Title")}
                                 value={titleText}
                                 style={{
-                                    fontSize: `${titleTypography.fontSize[this.props.deviceType] || 20}${titleTypography.fontSize.unit}`,
-                                    fontFamily: titleTypography.fontFamily,
-                                    letterSpacing: titleTypography.letterSpacing + "px",
-                                    textTransform: titleTypography.textTransform ? "uppercase" : "none",
-                                    fontStyle: titleTypography.fontStyle,
-                                    fontWeight: titleTypography.fontWeight,
-                                    lineHeight: titleTypography.lineHeight + "px",
+                                    ...typographyCss(titleTypography, this.props.deviceType),
                                     color: titleStyles[0].titleColor,
                                     textShadow: `${titleShadow.horizontal || 0}px ${titleShadow.vertical ||
                                         0}px ${titleShadow.blur || 0}px ${titleShadow.color}`,
@@ -799,10 +767,7 @@ class edit extends Component {
                         <div
                             className={`premium-icon-box__desc_wrap`}
                             style={{
-                                marginTop: descMargin[this.props.deviceType]['top'] && descMargin[this.props.deviceType]['top'] + descMargin.unit,
-                                marginRight: descMargin[this.props.deviceType]['right'] && descMargin[this.props.deviceType]['right'] + descMargin.unit,
-                                marginBottom: descMargin[this.props.deviceType]['bottom'] && descMargin[this.props.deviceType]['bottom'] + descMargin.unit,
-                                marginLeft: descMargin[this.props.deviceType]['left'] && descMargin[this.props.deviceType]['left'] + descMargin.unit,
+                                ...marginCss(descMargin, this.props.deviceType),
                             }}
                         >
                             <RichText
@@ -813,11 +778,8 @@ class edit extends Component {
                                 placeholder="Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
                                 onChange={newText => setAttributes({ descText: newText })}
                                 style={{
+                                    ...typographyCss(descTypography, this.props.deviceType),
                                     color: descStyles[0].descColor,
-                                    fontSize: `${descTypography.fontSize[this.props.deviceType] || 20}${descTypography.fontSize.unit}`,
-                                    fontFamily: descTypography.fontFamily,
-                                    fontWeight: descTypography.fontWeight,
-                                    lineHeight: descTypography.lineHeight + "px"
                                 }}
                                 keepPlaceholderOnFocus
                             />
@@ -827,10 +789,7 @@ class edit extends Component {
                         <div
                             className={`premium-icon-box__btn_wrap premium-button__${btnEffect} premium-button__${effectDir}`}
                             style={{
-                                marginTop: btnMargin[this.props.deviceType]['top'] && btnMargin[this.props.deviceType]['top'] + btnMargin.unit,
-                                marginRight: btnMargin[this.props.deviceType]['right'] && btnMargin[this.props.deviceType]['right'] + btnMargin.unit,
-                                marginBottom: btnMargin[this.props.deviceType]['bottom'] && btnMargin[this.props.deviceType]['bottom'] + btnMargin.unit,
-                                marginLeft: btnMargin[this.props.deviceType]['left'] && btnMargin[this.props.deviceType]['left'] + btnMargin.unit,
+                                ...marginCss(btnMargin, this.props.deviceType),
                             }}
                         >
                             <RichText
@@ -840,43 +799,22 @@ class edit extends Component {
                                 placeholder={__("Click Here")}
                                 value={btnText}
                                 style={{
-                                    fontSize: `${btnTypography.fontSize[this.props.deviceType] || 20}${btnTypography.fontSize.unit}`,
-                                    letterSpacing: btnTypography.letterSpacing + "px",
-                                    textTransform: btnTypography.textTransform ? "uppercase" : "none",
-                                    fontStyle: btnTypography.fontStyle,
-                                    fontWeight: btnTypography.fontWeight,
+                                    ...typographyCss(btnTypography, this.props.deviceType),
+                                    ...borderCss(btnBorder, this.props.deviceType),
+                                    ...padddingCss(btnPadding, this.props.deviceType),
                                     color: btnStyles[0].btnColor,
                                     backgroundColor: btnStyles[0].btnBack,
-                                    borderStyle: btnBorder.borderType,
-                                    borderTopWidth: btnBorder['borderWidth'][this.props.deviceType]['top'] && btnBorder['borderWidth'][this.props.deviceType]['top'] + "px",
-                                    borderRightWidth: btnBorder['borderWidth'][this.props.deviceType]['right'] && btnBorder['borderWidth'][this.props.deviceType]['right'] + "px",
-                                    borderBottomWidth: btnBorder['borderWidth'][this.props.deviceType]['bottom'] && btnBorder['borderWidth'][this.props.deviceType]['bottom'] + "px",
-                                    borderLeftWidth: btnBorder['borderWidth'][this.props.deviceType]['left'] && btnBorder['borderWidth'][this.props.deviceType]['left'] + "px",
-                                    borderBottomLeftRadius: btnBorder['borderRadius'][this.props.deviceType]['left'] && btnBorder['borderRadius'][this.props.deviceType]['left'] + "px",
-                                    borderTopLeftRadius: btnBorder['borderRadius'][this.props.deviceType]['top'] && btnBorder['borderRadius'][this.props.deviceType]['top'] + "px",
-                                    borderTopRightRadius: btnBorder['borderRadius'][this.props.deviceType]['right'] && btnBorder['borderRadius'][this.props.deviceType]['right'] + "px",
-                                    borderBottomRightRadius: btnBorder['borderRadius'][this.props.deviceType]['bottom'] && btnBorder['borderRadius'][this.props.deviceType]['bottom'] + "px",
-                                    borderColor: btnBorder.borderColor,
-                                    paddingTop: btnPadding[this.props.deviceType]['top'] && btnPadding[this.props.deviceType]['top'] + btnPadding.unit,
-                                    paddingRight: btnPadding[this.props.deviceType]['right'] && btnPadding[this.props.deviceType]['right'] + btnPadding.unit,
-                                    paddingBottom: btnPadding[this.props.deviceType]['bottom'] && btnPadding[this.props.deviceType]['bottom'] + btnPadding.unit,
-                                    paddingLeft: btnPadding[this.props.deviceType]['left'] && btnPadding[this.props.deviceType]['left'] + btnPadding.unit,
                                     boxShadow: `${btnShadow.horizontal || 0}px ${btnShadow.vertical ||
                                         0}px ${btnShadow.blur || 0}px ${btnShadow.color} ${btnShadow.position}`
                                 }}
                                 keepPlaceholderOnFocus
                             />
-                            {/* {isSelected && (
-                                <URLInput
-                                    value={btnLink}
-                                    onChange={newLink => setAttributes({ btnLink: newLink })}
-                                />
-                            )} */}
                         </div>
                     )}
                 </div>
                 {loadTitleGoogleFonts}
                 {loadDescriptionGoogleFonts}
+                {loadButtonGoogleFonts}
             </div>
         ];
     }
