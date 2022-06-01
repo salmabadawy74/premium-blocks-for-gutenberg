@@ -28386,6 +28386,10 @@ var _attributes = __webpack_require__(266);
 
 var _attributes2 = _interopRequireDefault(_attributes);
 
+var _blockIcons = __webpack_require__(388);
+
+var _blockIcons2 = _interopRequireDefault(_blockIcons);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var __ = wp.i18n.__;
@@ -28394,7 +28398,8 @@ var registerBlockType = wp.blocks.registerBlockType;
 
 registerBlockType("premium/icon", {
     title: __("Icon"),
-    icon: React.createElement(_icons2.default, { icon: "icon" }),
+    description: __('Decorate your Gutenberg website using Premium Icon Block.', 'premium-block-for-gutenberg'),
+    icon: _blockIcons2.default.icon,
     category: "premium-blocks",
     attributes: _attributes2.default,
     supports: {
@@ -28672,13 +28677,6 @@ var edit = function edit(props) {
                             return saveIconStyle({ iconBack: value });
                         }
                     }),
-                    React.createElement(_premiumBorder2.default, {
-                        label: __('Border', 'premium-blocks-for-gutenberg'),
-                        value: iconBorder,
-                        onChange: function onChange(value) {
-                            return setAttributes({ iconBorder: value });
-                        }
-                    }),
                     React.createElement(_PremiumShadow2.default, {
                         label: __("Text Shadow", "premium-blocks-for-gutenberg"),
                         value: iconShadow,
@@ -28686,6 +28684,15 @@ var edit = function edit(props) {
                             return setAttributes({ iconShadow: value });
                         }
                     }),
+                    React.createElement("hr", null),
+                    React.createElement(_premiumBorder2.default, {
+                        label: __('Border', 'premium-blocks-for-gutenberg'),
+                        value: iconBorder,
+                        onChange: function onChange(value) {
+                            return setAttributes({ iconBorder: value });
+                        }
+                    }),
+                    React.createElement("hr", null),
                     React.createElement(_premiumResponsiveSpacing2.default, {
                         label: __('Margin', 'premium-blocks-for-gutenberg'),
                         value: iconMargin,
@@ -28718,6 +28725,13 @@ var edit = function edit(props) {
                             return setAttributes({ containerBackground: value });
                         }
                     }),
+                    React.createElement(_PremiumShadow2.default, {
+                        value: containerShadow,
+                        onChange: function onChange(value) {
+                            return setAttributes({ containerShadow: value });
+                        }
+                    }),
+                    React.createElement("hr", null),
                     React.createElement(_premiumBorder2.default, {
                         label: __('Border', 'premium-blocks-for-gutenberg'),
                         value: containerBorder,
@@ -28725,12 +28739,7 @@ var edit = function edit(props) {
                             return setAttributes({ containerBorder: value });
                         }
                     }),
-                    React.createElement(_PremiumShadow2.default, {
-                        value: containerShadow,
-                        onChange: function onChange(value) {
-                            return setAttributes({ containerShadow: value });
-                        }
-                    }),
+                    React.createElement("hr", null),
                     React.createElement(_premiumResponsiveSpacing2.default, {
                         label: __('Margin', 'premium-blocks-for-gutenberg'),
                         value: wrapMargin,
@@ -28782,26 +28791,8 @@ var edit = function edit(props) {
                 className: "premium-icon-container",
                 style: _extends({
                     textAlign: align
-                }, (0, _HelperFunction.gradientBackground)(containerBackground), {
-                    borderStyle: containerBorder.borderType,
-                    borderTopWidth: containerBorder['borderWidth'][props.deviceType]['top'] && containerBorder['borderWidth'][props.deviceType]['top'] + "px",
-                    borderRightWidth: containerBorder['borderWidth'][props.deviceType]['right'] && containerBorder['borderWidth'][props.deviceType]['right'] + "px",
-                    borderBottomWidth: containerBorder['borderWidth'][props.deviceType]['bottom'] && containerBorder['borderWidth'][props.deviceType]['bottom'] + "px",
-                    borderLeftWidth: containerBorder['borderWidth'][props.deviceType]['left'] && containerBorder['borderWidth'][props.deviceType]['left'] + "px",
-                    borderBottomLeftRadius: containerBorder['borderRadius'][props.deviceType]['left'] && containerBorder['borderRadius'][props.deviceType]['left'] + "px",
-                    borderTopLeftRadius: containerBorder['borderRadius'][props.deviceType]['top'] && containerBorder['borderRadius'][props.deviceType]['top'] + "px",
-                    borderTopRightRadius: containerBorder['borderRadius'][props.deviceType]['right'] && containerBorder['borderRadius'][props.deviceType]['right'] + "px",
-                    borderBottomRightRadius: containerBorder['borderRadius'][props.deviceType]['bottom'] && containerBorder['borderRadius'][props.deviceType]['bottom'] + "px",
-                    borderColor: containerBorder.borderColor,
-                    boxShadow: (containerShadow.horizontal || 0) + "px " + (containerShadow.vertical || 0) + "px " + (containerShadow.blur || 0) + "px " + containerShadow.color + " " + containerShadow.position,
-                    paddingTop: wrapPadding[props.deviceType]['top'] && wrapPadding[props.deviceType]['top'] + wrapPadding.unit,
-                    paddingRight: wrapPadding[props.deviceType]['right'] && wrapPadding[props.deviceType]['right'] + wrapPadding.unit,
-                    paddingBottom: wrapPadding[props.deviceType]['bottom'] && wrapPadding[props.deviceType]['bottom'] + wrapPadding.unit,
-                    paddingLeft: wrapPadding[props.deviceType]['left'] && wrapPadding[props.deviceType]['left'] + wrapPadding.unit,
-                    marginTop: wrapMargin[props.deviceType]['top'] && wrapMargin[props.deviceType]['top'] + wrapMargin.unit,
-                    marginRight: wrapMargin[props.deviceType]['right'] && wrapMargin[props.deviceType]['right'] + wrapMargin.unit,
-                    marginBottom: wrapMargin[props.deviceType]['bottom'] && wrapMargin[props.deviceType]['bottom'] + wrapMargin.unit,
-                    marginLeft: wrapMargin[props.deviceType]['left'] && wrapMargin[props.deviceType]['left'] + wrapMargin.unit
+                }, (0, _HelperFunction.gradientBackground)(containerBackground), (0, _HelperFunction.borderCss)(containerBorder, props.deviceType), (0, _HelperFunction.padddingCss)(wrapPadding, props.deviceType), (0, _HelperFunction.marginCss)(wrapMargin, props.deviceType), {
+                    boxShadow: (containerShadow.horizontal || 0) + "px " + (containerShadow.vertical || 0) + "px " + (containerShadow.blur || 0) + "px " + containerShadow.color + " " + containerShadow.position
                 })
             },
             iconType === "fa" && 1 != _settings.FontAwesomeEnabled && React.createElement(
@@ -28811,30 +28802,13 @@ var edit = function edit(props) {
             ),
             (iconType === "dash" || 1 == _settings.FontAwesomeEnabled) && React.createElement("i", {
                 className: "premium-icon " + selectedIcon + " premium-icon__" + hoverEffect,
-                style: {
+                style: _extends({
                     color: iconStyles[0].iconColor || "#6ec1e4",
                     backgroundColor: iconStyles[0].iconBack,
-                    fontSize: (iconSize[props.deviceType] || 50) + iconSize.unit,
-                    paddingTop: iconPadding[props.deviceType]['top'] && iconPadding[props.deviceType]['top'] + iconPadding.unit,
-                    paddingRight: iconPadding[props.deviceType]['right'] && iconPadding[props.deviceType]['right'] + iconPadding.unit,
-                    paddingBottom: iconPadding[props.deviceType]['bottom'] && iconPadding[props.deviceType]['bottom'] + iconPadding.unit,
-                    paddingLeft: iconPadding[props.deviceType]['left'] && iconPadding[props.deviceType]['left'] + iconPadding.unit,
-                    marginTop: iconMargin[props.deviceType]['top'] && iconMargin[props.deviceType]['top'] + iconMargin.unit,
-                    marginRight: iconMargin[props.deviceType]['right'] && iconMargin[props.deviceType]['right'] + iconMargin.unit,
-                    marginBottom: iconMargin[props.deviceType]['bottom'] && iconMargin[props.deviceType]['bottom'] + iconMargin.unit,
-                    marginLeft: iconMargin[props.deviceType]['left'] && iconMargin[props.deviceType]['left'] + iconMargin.unit,
-                    borderStyle: iconBorder.borderType,
-                    borderTopWidth: iconBorder['borderWidth'][props.deviceType]['top'] && iconBorder['borderWidth'][props.deviceType]['top'] + "px",
-                    borderRightWidth: iconBorder['borderWidth'][props.deviceType]['right'] && iconBorder['borderWidth'][props.deviceType]['right'] + "px",
-                    borderBottomWidth: iconBorder['borderWidth'][props.deviceType]['bottom'] && iconBorder['borderWidth'][props.deviceType]['bottom'] + "px",
-                    borderLeftWidth: iconBorder['borderWidth'][props.deviceType]['left'] && iconBorder['borderWidth'][props.deviceType]['left'] + "px",
-                    borderBottomLeftRadius: iconBorder['borderRadius'][props.deviceType]['left'] && iconBorder['borderRadius'][props.deviceType]['left'] + "px",
-                    borderTopLeftRadius: iconBorder['borderRadius'][props.deviceType]['top'] && iconBorder['borderRadius'][props.deviceType]['top'] + "px",
-                    borderTopRightRadius: iconBorder['borderRadius'][props.deviceType]['right'] && iconBorder['borderRadius'][props.deviceType]['right'] + "px",
-                    borderBottomRightRadius: iconBorder['borderRadius'][props.deviceType]['bottom'] && iconBorder['borderRadius'][props.deviceType]['bottom'] + "px",
-                    borderColor: iconBorder.borderColor,
+                    fontSize: (iconSize[props.deviceType] || 50) + iconSize.unit
+                }, (0, _HelperFunction.borderCss)(iconBorder, props.deviceType), (0, _HelperFunction.padddingCss)(iconPadding, props.deviceType), (0, _HelperFunction.marginCss)(iconMargin, props.deviceType), {
                     textShadow: (iconShadow.horizontal || 0) + "px " + (iconShadow.vertical || 0) + "px " + (iconShadow.blur || 0) + "px " + iconShadow.color
-                }
+                })
             }),
             urlCheck && isSelected && React.createElement(URLInput, {
                 value: link,
@@ -64105,8 +64079,7 @@ var PBG_Block_Icons = {
             React.createElement(
                 "style",
                 null,
-                ".",
-                "cls-1{fill:#1a1a1a;}"
+                ".cls-1{fill:#1a1a1a;}"
             )
         ),
         React.createElement(
@@ -64118,6 +64091,29 @@ var PBG_Block_Icons = {
             "g",
             { id: "Icon_Box", "data-name": "Icon Box" },
             React.createElement("path", { "class": "cls-1", d: "M18.21,4.83c-.24-2-1.53-3.08-3.71-3.08h-4C8.32,1.75,7,2.84,6.79,4.83c-3.48.73-5,3.08-5,7.57v3c0,5.48,2.32,7.82,7.75,7.82h6c5.43,0,7.75-2.34,7.75-7.82v-3C23.25,7.91,21.69,5.55,18.21,4.83Zm-10,.7c0-1.6.67-2.28,2.25-2.28h4c1.56,0,2.23.66,2.25,2.21v7.12a1.46,1.46,0,0,1-.52,1.33,1.53,1.53,0,0,1-1.48-.25l-1.32-.8a1.92,1.92,0,0,0-1.86,0l-1.32.8a1.53,1.53,0,0,1-1.48.25,1.46,1.46,0,0,1-.52-1.33Zm13.5,9.9c0,4.67-1.64,6.32-6.25,6.32h-6c-4.61,0-6.25-1.65-6.25-6.32v-3c0-3.62,1-5.38,3.5-6v6.2A2.87,2.87,0,0,0,8,15.22a2.91,2.91,0,0,0,3-.28l1.32-.8a.44.44,0,0,1,.3,0l1.32.8a3.65,3.65,0,0,0,1.84.58,2.31,2.31,0,0,0,1.16-.3,2.87,2.87,0,0,0,1.28-2.64V6.37c2.51.65,3.5,2.42,3.5,6Z", transform: "translate(-1.75 -1.75)" })
+        )
+    ),
+    icon: React.createElement(
+        "svg",
+        { id: "Accordion", xmlns: "http://www.w3.org/2000/svg", width: "21.5", height: "21.34", viewBox: "0 0 21.5 21.34" },
+        React.createElement(
+            "defs",
+            null,
+            React.createElement(
+                "style",
+                null,
+                ".cls-1{fill:#1a1a1a;}"
+            )
+        ),
+        React.createElement(
+            "title",
+            null,
+            "premium-icon"
+        ),
+        React.createElement(
+            "g",
+            { id: "Icon" },
+            React.createElement("path", { "class": "cls-1", d: "M18.16,23.17a4.12,4.12,0,0,1-2.06-.67l-3-1.77a1.47,1.47,0,0,0-1.23,0l-3,1.77c-1.77,1.05-2.81.63-3.28.29s-1.18-1.21-.71-3.21l.71-3.07A1.49,1.49,0,0,0,5.3,15.4L2.82,12.92a2.71,2.71,0,0,1-1-2.82A2.71,2.71,0,0,1,4.27,8.37l3.19-.53a1.43,1.43,0,0,0,.86-.64l1.77-3.52c.8-1.61,1.85-1.85,2.41-1.85h0c.55,0,1.6.24,2.4,1.85L16.66,7.2a1.41,1.41,0,0,0,.87.64l3.19.53a2.74,2.74,0,0,1,2.44,1.74,2.75,2.75,0,0,1-1,2.82L19.7,15.4a1.46,1.46,0,0,0-.32,1.12l.71,3.06c.46,2-.25,2.88-.71,3.21A2,2,0,0,1,18.16,23.17ZM12.5,19.09a2.74,2.74,0,0,1,1.37.35l3,1.77c.88.52,1.43.52,1.63.37s.36-.67.14-1.66l-.71-3.07a2.92,2.92,0,0,1,.72-2.51l2.48-2.48c.48-.48.71-1,.61-1.3s-.58-.59-1.26-.71l-3.18-.53a2.94,2.94,0,0,1-2-1.46L13.56,4.35h0c-.32-.64-.72-1-1.06-1h0c-.35,0-.75.38-1.07,1L9.67,7.87a2.92,2.92,0,0,1-2,1.45l-3.19.53c-.67.12-1.14.38-1.25.71s.12.82.61,1.3l2.48,2.48a2.92,2.92,0,0,1,.72,2.51l-.71,3.07c-.23,1-.07,1.51.14,1.66s.75.15,1.62-.37l3-1.77A2.74,2.74,0,0,1,12.5,19.09Z", transform: "translate(-1.75 -1.83)" })
         )
     )
 };
