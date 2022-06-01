@@ -127,7 +127,6 @@ class edit extends Component {
             }
             return item
         })
-
         setAttributes({
             multiPersonContent: newItems,
         })
@@ -180,6 +179,7 @@ class edit extends Component {
             descPadding,
             contentPadding,
             imgHeight,
+            imgWidth,
             socialIcon,
             hideDesktop,
             hideTablet,
@@ -409,7 +409,8 @@ class edit extends Component {
                         transition: all .2s ease-in-out;
                     }
                     #premium-person-${id} .premium-person__img_wrap img {
-                        height: ${imgHeight}px !important;
+                        height: ${imgHeight[this.props.deviceType]}${imgHeight.unit} !important;
+                        width: ${imgWidth[this.props.deviceType]}${imgWidth.unit} !important;
                         filter: ${`brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`} !important;
                     }
                 `}
@@ -797,13 +798,13 @@ class edit extends Component {
                                 />
                                 <RadioComponent
                                     label={__("Name Tag", 'premium-blocks-for-gutenberg')}
-                                    choices={['H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'div', 'span']}
+                                    choices={['H1', 'H2', 'H3', 'H4', 'H5', 'H6']}
                                     value={nameTag}
                                     onChange={(newValue) => setAttributes({ nameTag: newValue })}
                                 />
                                 <RadioComponent
                                     label={__("Title Tag", 'premium-blocks-for-gutenberg')}
-                                    choices={['H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'div', 'span']}
+                                    choices={['H1', 'H2', 'H3', 'H4', 'H5', 'H6']}
                                     value={titleTag}
                                     onChange={(newValue) => setAttributes({ titleTag: newValue })}
                                 />
@@ -941,14 +942,27 @@ class edit extends Component {
                                     onChangeSat={newSize => setAttributes({ saturation: newSize })}
                                     onChangeHue={newSize => setAttributes({ hue: newSize })}
                                 />
-                                <ResponsiveSingleRangeControl
-                                    label={__("Custom Image Height", 'premium-block-for-gutenberg')}
-                                    value={imgHeight}
-                                    onChange={value => setAttributes({ imgHeight: value })}
-                                    showUnit={false}
-                                    defaultValue={200}
+                                <ResponsiveRangeControl
+                                    label={__('Custom Image Width', 'premium-blocks-for-gutenberg')}
+                                    value={imgWidth}
+                                    onChange={(value) => setAttributes({ imgWidth: value })}
                                     min={1}
                                     max={500}
+                                    step={1}
+                                    showUnit={true}
+                                    units={['px', 'em', '%']}
+                                    defaultValue={200}
+                                />
+                                <ResponsiveRangeControl
+                                    label={__('Custom Image Height', 'premium-blocks-for-gutenberg')}
+                                    value={imgHeight}
+                                    onChange={(value) => setAttributes({ imgHeight: value })}
+                                    min={1}
+                                    max={500}
+                                    step={1}
+                                    showUnit={true}
+                                    units={['px', 'em', '%']}
+                                    defaultValue={200}
                                 />
                                 <SelectControl
                                     label={__("Image Hover Effect", 'premium-block-for-gutenberg')}

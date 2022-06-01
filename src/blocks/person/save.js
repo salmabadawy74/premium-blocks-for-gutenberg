@@ -45,7 +45,8 @@ const save = props => {
         descShadow,
         titleTag,
         nameTag,
-        imgHeight
+        imgHeight,
+        imgWidth
     } = props.attributes;
 
 
@@ -63,7 +64,8 @@ const save = props => {
                     transition: all .2s ease-in-out;
                 }
                 #premium-person-${id} .premium-person__img_wrap img {
-                    height: ${imgHeight}px !important;
+                    height: ${imgHeight[props.deviceType]}${imgHeight.unit} !important;
+                    width: ${imgWidth[props.deviceType]}${imgWidth.unit} !important;
                     filter: ${`brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`} !important;
                 }
             `}

@@ -404,7 +404,7 @@ const deprecated = [
                     'fontStyle': attributes.nameStyles[0].nameStyle,
                     'textTransform': attributes.nameStyles[0].nameUpper,
                     'letterSpacing': attributes.nameStyles[0].nameLetter,
-                    'fontFamily': '',
+                    'fontFamily': 'Default',
                     'lineHeight': '',
                     'fontSize': {
                         'Desktop': attributes.nameStyles[0].namefontSize,
@@ -418,7 +418,7 @@ const deprecated = [
                     'fontStyle': attributes.titleStyles[0].titleStyle,
                     'textTransform': attributes.titleStyles[0].titleUpper,
                     'letterSpacing': attributes.titleStyles[0].titleLetter,
-                    'fontFamily': '',
+                    'fontFamily': 'Default',
                     'lineHeight': '',
                     'fontSize': {
                         'Desktop': attributes.titleStyles[0].titleSize,
@@ -432,7 +432,7 @@ const deprecated = [
                     'fontStyle': attributes.descStyles[0].descStyle,
                     'textTransform': attributes.descStyles[0].descUpper,
                     'letterSpacing': attributes.descStyles[0].descLetter,
-                    'fontFamily': '',
+                    'fontFamily': 'Default',
                     'lineHeight': '',
                     'fontSize': {
                         'Desktop': attributes.descStyles[0].descSize,
@@ -559,8 +559,18 @@ const deprecated = [
                         left: ''
                     },
                 },
-                imgHeight: '',
-                socialIcon: false
+                imgHeight: {
+                    unit: '%',
+                    "Desktop": 100
+                },
+                imgWidth: {
+                    unit: '%',
+                    "Desktop": 100
+                },
+                socialIcon: false,
+                hideDesktop: '',
+                hideTablet: '',
+                hideMobile: '',
             }
             return Object.assign(attributes, newAttributes)
         },
