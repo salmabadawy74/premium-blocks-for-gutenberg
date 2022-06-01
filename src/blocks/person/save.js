@@ -45,7 +45,8 @@ const save = props => {
         descShadow,
         titleTag,
         nameTag,
-        imgHeight
+        imgHeight,
+        imgWidth
     } = props.attributes;
 
 
@@ -63,7 +64,8 @@ const save = props => {
                     transition: all .2s ease-in-out;
                 }
                 #premium-person-${id} .premium-person__img_wrap img {
-                    height: ${imgHeight}px !important;
+                    height: ${imgHeight[props.deviceType]}${imgHeight.unit} !important;
+                    width: ${imgWidth[props.deviceType]}${imgWidth.unit} !important;
                     filter: ${`brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`} !important;
                 }
             `}
@@ -121,7 +123,6 @@ const save = props => {
                             tagName={nameTag.toLowerCase()}
                             className={`premium-person__name`}
                             value={value.name}
-                            isSelected={false}
                             onChange={value => { this.save({ name: value }, index) }}
                             style={{
                                 color: nameStyles[0].nameColor,
@@ -137,7 +138,6 @@ const save = props => {
                             tagName={titleTag.toLowerCase()}
                             className={`premium-person__title`}
                             value={value.title}
-                            isSelected={false}
                             onChange={value => { this.save({ title: value }, index) }}
                             style={{
                                 color: titleStyles[0].titleColor,
@@ -153,7 +153,6 @@ const save = props => {
                             tagName="span"
                             className={`premium-person__desc`}
                             value={value.desc}
-                            isSelected={false}
                             onChange={value => { this.save({ desc: value }, index) }}
                             style={{
                                 color: descStyles[0].descColor,

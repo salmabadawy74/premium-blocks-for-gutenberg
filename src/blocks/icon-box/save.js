@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import { gradientBackground } from '../../components/HelperFunction'
+import { gradientBackground, typographyCss } from '../../components/HelperFunction'
 
 const { RichText } = wp.blockEditor;
 
@@ -9,8 +9,6 @@ const save = props => {
 
     const {
         block_id,
-        borderIconBox,
-        btnBorderIconBox,
         align,
         iconImage,
         iconImgUrl,
@@ -41,7 +39,6 @@ const save = props => {
         titleStyles,
         descStyles,
         btnStyles,
-        containerStyles,
         btnBorder,
         containerBorder,
         containerBackground,
@@ -132,13 +129,7 @@ const save = props => {
                                 className={`premium-icon-box__title`}
                                 value={titleText}
                                 style={{
-                                    fontSize: `${titleTypography.fontSize[props.deviceType] || 20}${titleTypography.fontSize.unit}`,
-                                    fontFamily: titleTypography.fontFamily,
-                                    letterSpacing: titleTypography.letterSpacing + "px",
-                                    textTransform: titleTypography.textTransform ? "uppercase" : "none",
-                                    fontStyle: titleTypography.fontStyle,
-                                    fontWeight: titleTypography.fontWeight,
-                                    lineHeight: titleTypography.lineHeight + "px",
+                                    ...typographyCss(titleTypography, props.deviceType),
                                     color: titleStyles[0].titleColor,
                                     textShadow: `${titleShadow.horizontal || 0}px ${titleShadow.vertical ||
                                         0}px ${titleShadow.blur || 0}px ${titleShadow.color}`,
@@ -155,11 +146,8 @@ const save = props => {
                                 className={`premium-icon-box__desc`}
                                 value={descText}
                                 style={{
+                                    ...typographyCss(descTypography, props.deviceType),
                                     color: descStyles[0].descColor,
-                                    fontSize: `${descTypography.fontSize[props.deviceType] || 20}${descTypography.fontSize.unit}`,
-                                    fontFamily: descTypography.fontFamily,
-                                    fontWeight: descTypography.fontWeight,
-                                    lineHeight: descTypography.lineHeight + "px"
                                 }}
                             />
                         </div>
@@ -176,11 +164,7 @@ const save = props => {
                                 target={btnTarget ? "_blank" : "_self"}
                                 value={btnText}
                                 style={{
-                                    fontSize: `${btnTypography.fontSize[props.deviceType] || 20}${btnTypography.fontSize.unit}`,
-                                    letterSpacing: btnTypography.letterSpacing + "px",
-                                    textTransform: btnTypography.textTransform ? "uppercase" : "none",
-                                    fontStyle: btnTypography.fontStyle,
-                                    fontWeight: btnTypography.fontWeight,
+                                    ...typographyCss(btnTypography, props.deviceType),
                                     color: btnStyles[0].btnColor,
                                     backgroundColor: btnStyles[0].btnBack,
                                     borderStyle: btnBorder.borderType,

@@ -497,11 +497,34 @@ const attributes = {
         }
     },
     imgHeight: {
-        type: "string"
+        type: "object",
+        default: {
+            Desktop: '100',
+            unit: '%'
+        }
+    },
+    imgWidth: {
+        type: "object",
+        default: {
+            Desktop: '100',
+            unit: '%'
+        }
     },
     socialIcon: {
         type: "boolean",
         default: false
-    }
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: ''
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: ''
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: ''
+    },
 }
 export default attributes

@@ -11,7 +11,7 @@ import PremiumShadow from "../../components/PremiumShadow";
 import SpacingControl from '../../components/premium-responsive-spacing'
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
-import { gradientBackground } from '../../components/HelperFunction'
+import { gradientBackground, borderCss, padddingCss, marginCss } from '../../components/HelperFunction'
 
 const { __ } = wp.i18n;
 
@@ -184,16 +184,18 @@ const edit = props => {
                                 colorDefault={''}
                                 onColorChange={value => saveIconStyle({ iconBack: value })}
                             />
-                            <PremiumBorder
-                                label={__('Border', 'premium-blocks-for-gutenberg')}
-                                value={iconBorder}
-                                onChange={(value) => setAttributes({ iconBorder: value })}
-                            />
                             <PremiumShadow
                                 label={__("Text Shadow", "premium-blocks-for-gutenberg")}
                                 value={iconShadow}
                                 onChange={(value) => setAttributes({ iconShadow: value })}
                             />
+                            <hr />
+                            <PremiumBorder
+                                label={__('Border', 'premium-blocks-for-gutenberg')}
+                                value={iconBorder}
+                                onChange={(value) => setAttributes({ iconBorder: value })}
+                            />
+                            <hr />
                             <SpacingControl
                                 label={__('Margin', 'premium-blocks-for-gutenberg')}
                                 value={iconMargin}
@@ -218,15 +220,17 @@ const edit = props => {
                                 value={containerBackground}
                                 onChange={(value) => setAttributes({ containerBackground: value })}
                             />
+                            <PremiumShadow
+                                value={containerShadow}
+                                onChange={(value) => setAttributes({ containerShadow: value })}
+                            />
+                            <hr />
                             <PremiumBorder
                                 label={__('Border', 'premium-blocks-for-gutenberg')}
                                 value={containerBorder}
                                 onChange={(value) => setAttributes({ containerBorder: value })}
                             />
-                            <PremiumShadow
-                                value={containerShadow}
-                                onChange={(value) => setAttributes({ containerShadow: value })}
-                            />
+                            <hr />
                             <SpacingControl
                                 label={__('Margin', 'premium-blocks-for-gutenberg')}
                                 value={wrapMargin}
@@ -265,26 +269,11 @@ const edit = props => {
                 style={{
                     textAlign: align,
                     ...gradientBackground(containerBackground),
-                    borderStyle: containerBorder.borderType,
-                    borderTopWidth: containerBorder['borderWidth'][props.deviceType]['top'] && containerBorder['borderWidth'][props.deviceType]['top'] + "px",
-                    borderRightWidth: containerBorder['borderWidth'][props.deviceType]['right'] && containerBorder['borderWidth'][props.deviceType]['right'] + "px",
-                    borderBottomWidth: containerBorder['borderWidth'][props.deviceType]['bottom'] && containerBorder['borderWidth'][props.deviceType]['bottom'] + "px",
-                    borderLeftWidth: containerBorder['borderWidth'][props.deviceType]['left'] && containerBorder['borderWidth'][props.deviceType]['left'] + "px",
-                    borderBottomLeftRadius: containerBorder['borderRadius'][props.deviceType]['left'] && containerBorder['borderRadius'][props.deviceType]['left'] + "px",
-                    borderTopLeftRadius: containerBorder['borderRadius'][props.deviceType]['top'] && containerBorder['borderRadius'][props.deviceType]['top'] + "px",
-                    borderTopRightRadius: containerBorder['borderRadius'][props.deviceType]['right'] && containerBorder['borderRadius'][props.deviceType]['right'] + "px",
-                    borderBottomRightRadius: containerBorder['borderRadius'][props.deviceType]['bottom'] && containerBorder['borderRadius'][props.deviceType]['bottom'] + "px",
-                    borderColor: containerBorder.borderColor,
+                    ...borderCss(containerBorder, props.deviceType),
+                    ...padddingCss(wrapPadding, props.deviceType),
+                    ...marginCss(wrapMargin, props.deviceType),
                     boxShadow: `${containerShadow.horizontal || 0}px ${containerShadow.vertical ||
                         0}px ${containerShadow.blur || 0}px ${containerShadow.color} ${containerShadow.position}`,
-                    paddingTop: wrapPadding[props.deviceType]['top'] && wrapPadding[props.deviceType]['top'] + wrapPadding.unit,
-                    paddingRight: wrapPadding[props.deviceType]['right'] && wrapPadding[props.deviceType]['right'] + wrapPadding.unit,
-                    paddingBottom: wrapPadding[props.deviceType]['bottom'] && wrapPadding[props.deviceType]['bottom'] + wrapPadding.unit,
-                    paddingLeft: wrapPadding[props.deviceType]['left'] && wrapPadding[props.deviceType]['left'] + wrapPadding.unit,
-                    marginTop: wrapMargin[props.deviceType]['top'] && wrapMargin[props.deviceType]['top'] + wrapMargin.unit,
-                    marginRight: wrapMargin[props.deviceType]['right'] && wrapMargin[props.deviceType]['right'] + wrapMargin.unit,
-                    marginBottom: wrapMargin[props.deviceType]['bottom'] && wrapMargin[props.deviceType]['bottom'] + wrapMargin.unit,
-                    marginLeft: wrapMargin[props.deviceType]['left'] && wrapMargin[props.deviceType]['left'] + wrapMargin.unit,
                 }}
             >
                 {iconType === "fa" && 1 != FontAwesomeEnabled && (
@@ -299,24 +288,9 @@ const edit = props => {
                             color: iconStyles[0].iconColor || "#6ec1e4",
                             backgroundColor: iconStyles[0].iconBack,
                             fontSize: (iconSize[props.deviceType] || 50) + iconSize.unit,
-                            paddingTop: iconPadding[props.deviceType]['top'] && iconPadding[props.deviceType]['top'] + iconPadding.unit,
-                            paddingRight: iconPadding[props.deviceType]['right'] && iconPadding[props.deviceType]['right'] + iconPadding.unit,
-                            paddingBottom: iconPadding[props.deviceType]['bottom'] && iconPadding[props.deviceType]['bottom'] + iconPadding.unit,
-                            paddingLeft: iconPadding[props.deviceType]['left'] && iconPadding[props.deviceType]['left'] + iconPadding.unit,
-                            marginTop: iconMargin[props.deviceType]['top'] && iconMargin[props.deviceType]['top'] + iconMargin.unit,
-                            marginRight: iconMargin[props.deviceType]['right'] && iconMargin[props.deviceType]['right'] + iconMargin.unit,
-                            marginBottom: iconMargin[props.deviceType]['bottom'] && iconMargin[props.deviceType]['bottom'] + iconMargin.unit,
-                            marginLeft: iconMargin[props.deviceType]['left'] && iconMargin[props.deviceType]['left'] + iconMargin.unit,
-                            borderStyle: iconBorder.borderType,
-                            borderTopWidth: iconBorder['borderWidth'][props.deviceType]['top'] && iconBorder['borderWidth'][props.deviceType]['top'] + "px",
-                            borderRightWidth: iconBorder['borderWidth'][props.deviceType]['right'] && iconBorder['borderWidth'][props.deviceType]['right'] + "px",
-                            borderBottomWidth: iconBorder['borderWidth'][props.deviceType]['bottom'] && iconBorder['borderWidth'][props.deviceType]['bottom'] + "px",
-                            borderLeftWidth: iconBorder['borderWidth'][props.deviceType]['left'] && iconBorder['borderWidth'][props.deviceType]['left'] + "px",
-                            borderBottomLeftRadius: iconBorder['borderRadius'][props.deviceType]['left'] && iconBorder['borderRadius'][props.deviceType]['left'] + "px",
-                            borderTopLeftRadius: iconBorder['borderRadius'][props.deviceType]['top'] && iconBorder['borderRadius'][props.deviceType]['top'] + "px",
-                            borderTopRightRadius: iconBorder['borderRadius'][props.deviceType]['right'] && iconBorder['borderRadius'][props.deviceType]['right'] + "px",
-                            borderBottomRightRadius: iconBorder['borderRadius'][props.deviceType]['bottom'] && iconBorder['borderRadius'][props.deviceType]['bottom'] + "px",
-                            borderColor: iconBorder.borderColor,
+                            ...borderCss(iconBorder, props.deviceType),
+                            ...padddingCss(iconPadding, props.deviceType),
+                            ...marginCss(iconMargin, props.deviceType),
                             textShadow: `${iconShadow.horizontal || 0}px ${iconShadow.vertical ||
                                 0}px ${iconShadow.blur || 0}px ${iconShadow.color}`
                         }}
