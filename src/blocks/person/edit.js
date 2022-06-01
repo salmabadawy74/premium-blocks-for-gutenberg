@@ -578,7 +578,6 @@ class edit extends Component {
                                 tagName={nameTag.toLowerCase()}
                                 className={`premium-person__name`}
                                 value={value.name}
-                                isSelected={false}
                                 onChange={value => { this.save({ name: value }, index) }}
                                 style={{
                                     ...padddingCss(namePadding, this.props.deviceType),
@@ -595,7 +594,6 @@ class edit extends Component {
                                 tagName={titleTag.toLowerCase()}
                                 className={`premium-person__title`}
                                 value={value.title}
-                                isSelected={false}
                                 onChange={value => { this.save({ title: value }, index) }}
                                 style={{
                                     ...marginCss(titleMargin, this.props.deviceType),
@@ -613,7 +611,6 @@ class edit extends Component {
                                 tagName="span"
                                 className={`premium-person__desc`}
                                 value={value.desc}
-                                isSelected={false}
                                 onChange={value => { this.save({ desc: value }, index) }}
                                 style={{
                                     ...padddingCss(descPadding, this.props.deviceType),

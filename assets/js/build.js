@@ -64266,7 +64266,6 @@ var save = function save(props) {
                             tagName: nameTag.toLowerCase(),
                             className: 'premium-person__name',
                             value: value.name,
-                            isSelected: false,
                             onChange: function onChange(value) {
                                 undefined.save({ name: value }, index);
                             },
@@ -64282,7 +64281,6 @@ var save = function save(props) {
                             tagName: titleTag.toLowerCase(),
                             className: 'premium-person__title',
                             value: value.title,
-                            isSelected: false,
                             onChange: function onChange(value) {
                                 undefined.save({ title: value }, index);
                             },
@@ -64298,7 +64296,6 @@ var save = function save(props) {
                             tagName: 'span',
                             className: 'premium-person__desc',
                             value: value.desc,
-                            isSelected: false,
                             onChange: function onChange(value) {
                                 undefined.save({ desc: value }, index);
                             },
@@ -64996,7 +64993,6 @@ var edit = function (_Component) {
                                     tagName: nameTag.toLowerCase(),
                                     className: "premium-person__name",
                                     value: value.name,
-                                    isSelected: false,
                                     onChange: function onChange(value) {
                                         _this2.save({ name: value }, index);
                                     },
@@ -65012,7 +65008,6 @@ var edit = function (_Component) {
                                     tagName: titleTag.toLowerCase(),
                                     className: "premium-person__title",
                                     value: value.title,
-                                    isSelected: false,
                                     onChange: function onChange(value) {
                                         _this2.save({ title: value }, index);
                                     },
@@ -65027,7 +65022,6 @@ var edit = function (_Component) {
                                     tagName: "span",
                                     className: "premium-person__desc",
                                     value: value.desc,
-                                    isSelected: false,
                                     onChange: function onChange(value) {
                                         _this2.save({ desc: value }, index);
                                     },

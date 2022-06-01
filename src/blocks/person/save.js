@@ -123,7 +123,6 @@ const save = props => {
                             tagName={nameTag.toLowerCase()}
                             className={`premium-person__name`}
                             value={value.name}
-                            isSelected={false}
                             onChange={value => { this.save({ name: value }, index) }}
                             style={{
                                 color: nameStyles[0].nameColor,
@@ -139,7 +138,6 @@ const save = props => {
                             tagName={titleTag.toLowerCase()}
                             className={`premium-person__title`}
                             value={value.title}
-                            isSelected={false}
                             onChange={value => { this.save({ title: value }, index) }}
                             style={{
                                 color: titleStyles[0].titleColor,
@@ -155,7 +153,6 @@ const save = props => {
                             tagName="span"
                             className={`premium-person__desc`}
                             value={value.desc}
-                            isSelected={false}
                             onChange={value => { this.save({ desc: value }, index) }}
                             style={{
                                 color: descStyles[0].descColor,
