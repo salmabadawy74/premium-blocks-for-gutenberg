@@ -1111,20 +1111,6 @@ class edit extends Component {
                 className={`${mainClasses} premium-person__${effect} premium-person__${effectDir} ${hideDesktop} ${hideTablet} ${hideMobile}`}
                 style={{ textAlign: personAlign }}
             >
-                <style
-                    dangerouslySetInnerHTML={{
-                        __html: [
-                            `#premium-person-${id} .premium-person:hover {`,
-                            `border-color: ${borderHoverColor} !important;`,
-                            "}",
-                            `#premium-person-${id} .premium-person__social-List li:hover i{`,
-                            `color: ${socialIconStyles[0].socialIconHoverColor} !important;`,
-                            `-webkit-transition: all .2s ease-in-out;`,
-                            `transition: all .2s ease-in-out;`,
-                            "}"
-                        ].join("\n")
-                    }}
-                />
                 {content()}
                 {loadNameGoogleFonts}
                 {loadTitleGoogleFonts}
