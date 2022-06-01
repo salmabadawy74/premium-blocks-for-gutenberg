@@ -24,9 +24,10 @@ import {
     TabPanel
 } from '@wordpress/components';
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
-// import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
+import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import PremiumBackgroundControl from "../../components/Premium-Background-Control"
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
+import RadioComponent from '../../components/radio-control';
 import PremiumTypo from "../../components/premium-typo";
 import PremiumShadow from "../../components/PremiumShadow";
 import PremiumBorder from "../../components/premium-border";
@@ -172,7 +173,9 @@ function Edit(props) {
         containerMargin,
         switchSize,
         containerRadius,
+        containerRadiusUnit,
         switchRadius,
+        switchRadiusUnit,
         labelSpacing,
         contentHeight
     } = attributes
@@ -406,7 +409,7 @@ function Edit(props) {
                             />
                             {showLabel && (
                                 <Fragment>
-                                    <TextControl
+                                    {/* <TextControl
                                         label={__("First Label")}
                                         value={firstLabel}
                                         onChange={value => setAttributes({ firstLabel: value })}
@@ -415,13 +418,19 @@ function Edit(props) {
                                         label={__("Second Label")}
                                         value={secondLabel}
                                         onChange={value => setAttributes({ secondLabel: value })}
+                                    /> */}
+                                    <RadioComponent
+                                        label={__("HTML Tag", 'premium-blocks-for-gutenberg')}
+                                        choices={['H1', 'H2', 'H3', 'H4', 'H5', 'H6']}
+                                        value={labelTag}
+                                        onChange={(newValue) => setAttributes({ labelTag: newValue })}
                                     />
-                                    <SelectControl
+                                    {/* <SelectControl
                                         label={__("HTML Tag")}
                                         options={TAGS}
                                         value={labelTag}
                                         onChange={(newValue) => setAttributes({ labelTag: newValue })}
-                                    />
+                                    /> */}
                                     <SelectControl
                                         label={__("Display")}
                                         options={DISPLAY}
@@ -458,11 +467,11 @@ function Edit(props) {
                             className="premium-panel-body"
                             initialOpen={false}
                         >
-                            <TextareaControl
+                            {/* <TextareaControl
                                 label={__("Content", 'premium-block-for-gutenberg')}
                                 value={firstContent}
                                 onChange={newEffect => setAttributes({ firstContent: newEffect })}
-                            />
+                            /> */}
                             <p>{__("Alignment")}</p>
                             <Toolbar
                                 controls={ALIGNS.map(contentAlign => ({
@@ -477,11 +486,11 @@ function Edit(props) {
                             className="premium-panel-body"
                             initialOpen={false}
                         >
-                            <TextareaControl
+                            {/* <TextareaControl
                                 label={__("Content", 'premium-block-for-gutenberg')}
                                 value={secondContent}
                                 onChange={newEffect => setAttributes({ secondContent: newEffect })}
-                            />
+                            /> */}
                             <p>{__("Alignment")}</p>
                             <Toolbar
                                 controls={ALIGNS.map(contentAlign => ({
@@ -508,27 +517,31 @@ function Edit(props) {
                                 showUnit={false}
                                 defaultValue={15}
                             />
-                            <ResponsiveRangeControl
-                                label={__('Controller Border Radius', 'premium-blocks-for-gutenberg')}
+                            <ResponsiveSingleRangeControl
+                                label={__("Controller Border Radius", 'premium-blocks-for-gutenberg')}
                                 value={containerRadius}
-                                onChange={(value) => setAttributes({ containerRadius: value })}
+                                onChange={newSize => setAttributes({ containerRadius: newSize })}
                                 min={1}
                                 max={100}
                                 step={1}
                                 showUnit={true}
-                                units={['px', 'em', 'rem']}
+                                units={['px', 'em', '%']}
                                 defaultValue={50}
+                                unit={containerRadiusUnit}
+                                onChangeUnit={newSize => setAttributes({ containerRadiusUnit: newSize })}
                             />
-                            <ResponsiveRangeControl
-                                label={__('Switcher Border Radius', 'premium-blocks-for-gutenberg')}
+                            <ResponsiveSingleRangeControl
+                                label={__("Switcher Border Radius", 'premium-blocks-for-gutenberg')}
                                 value={switchRadius}
-                                onChange={(value) => setAttributes({ switchRadius: value })}
+                                onChange={newSize => setAttributes({ switchRadius: newSize })}
                                 min={1}
                                 max={100}
                                 step={1}
                                 showUnit={true}
-                                units={['px', 'em', 'rem']}
+                                units={['px', 'em', '%']}
                                 defaultValue={1.5}
+                                unit={switchRadiusUnit}
+                                onChangeUnit={newSize => setAttributes({ switchRadiusUnit: newSize })}
                             />
                             {/* <h3>{__("Controller State 1 Color")}</h3> */}
                             {/* <PremiumBackgroundControl
@@ -1281,11 +1294,11 @@ function Edit(props) {
             <style>
                 {`
                      #premium-content-switcher-${block_id} .premium-content-switcher-toggle-switch-slider:before {
-                         border-radius: ${containerRadius[props.deviceType] || 50}${containerRadius.unit} !important;
+                         border-radius: ${containerRadius || 50}${containerRadiusUnit} !important;
                          box-shadow: ${switcherStyles.containerShadowHorizontal}px ${switcherStyles.containerShadowVertical}px ${switcherStyles.containerShadowBlur}px ${switcherStyles.containerShadowColor} ${switcherStyles.containerShadowPosition};
                      }
                     #premium-content-switcher-${block_id} .premium-content-switcher-toggle-switch-slider {
-                        border-radius: ${switchRadius[props.deviceType]}${switchRadius.unit} !important;
+                        border-radius: ${switchRadius}${switchRadiusUnit} !important;
                          box-shadow: ${switcherStyles.switchShadowHorizontal}px ${switcherStyles.switchShadowVertical}px ${switcherStyles.switchShadowBlur}px ${switcherStyles.switchShadowColor} ${switcherStyles.switchShadowPosition};
                      }
                      #premium-content-switcher-${block_id} .premium-content-switcher-toggle-inline .premium-content-switcher-first-label {

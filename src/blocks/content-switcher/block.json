@@ -5,7 +5,7 @@
     "title": "Content Switcher",
     "icon": "content-switcher",
     "category": "premium-blocks",
-    "description": "Example static block scaffolded with Create Block tool.",
+    "description": "Toggle between two different content using Premium Content Switcher Block.",
     "keywords": [
         "content",
         "switcher"
@@ -553,18 +553,20 @@
             }
         },
         "containerRadius": {
-            "type": "object",
-            "default": {
-                "Desktop": "50",
-                "unit": "%"
-            }
+            "type": "number",
+            "default": 50
+        },
+        "containerRadiusUnit": {
+            "type": "string",
+            "default": "%"
         },
         "switchRadius": {
-            "type": "object",
-            "default": {
-                "Desktop": "1.5",
-                "unit": "em"
-            }
+            "type": "number",
+            "default": "1.5"
+        },
+        "switchRadiusUnit": {
+            "type": "string",
+            "default": "em"
         },
         "labelSpacing": {
             "type": "object",
