@@ -873,6 +873,9 @@ const deprecatedContent = [
                 },
                 descTypography: {
                     'fontWeight': attributes.descStyles[0].descWeight,
+                    'fontStyle': '',
+                    'textTransform': '',
+                    'letterSpacing': '',
                     'fontFamily': attributes.descStyles[0].descFont,
                     'lineHeight': attributes.descStyles[0].descLine,
                     'fontSize': {
@@ -887,6 +890,8 @@ const deprecatedContent = [
                     'fontStyle': attributes.btnStyles[0].btnStyle,
                     'textTransform': attributes.btnStyles[0].btnUpper,
                     'letterSpacing': attributes.btnStyles[0].btnLetter,
+                    'fontFamily': '',
+                    'lineHeight': '',
                     'fontSize': {
                         'Desktop': attributes.btnStyles[0].btnSize,
                         "Tablet": attributes.btnStyles[0].btnSizeTablet,

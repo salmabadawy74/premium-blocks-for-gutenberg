@@ -11,6 +11,7 @@ import ResponsiveRangeControl from "../../components/RangeControl/responsive-ran
 import SpacingControl from '../../components/premium-responsive-spacing'
 import PremiumMediaUpload from "../../components/premium-media-upload"
 import { SortableContainer, SortableElement, arrayMove } from 'react-sortable-hoc';
+import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
 import RadioComponent from '../../components/radio-control';
@@ -126,7 +127,6 @@ class edit extends Component {
             }
             return item
         })
-
         setAttributes({
             multiPersonContent: newItems,
         })
@@ -179,7 +179,11 @@ class edit extends Component {
             descPadding,
             contentPadding,
             imgHeight,
-            socialIcon
+            imgWidth,
+            socialIcon,
+            hideDesktop,
+            hideTablet,
+            hideMobile,
         } = this.props.attributes;
 
         const HOVER = [
@@ -405,7 +409,8 @@ class edit extends Component {
                         transition: all .2s ease-in-out;
                     }
                     #premium-person-${id} .premium-person__img_wrap img {
-                        height: ${imgHeight}px !important;
+                        height: ${imgHeight[this.props.deviceType]}${imgHeight.unit} !important;
+                        width: ${imgWidth[this.props.deviceType]}${imgWidth.unit} !important;
                         filter: ${`brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`} !important;
                     }
                 `}
@@ -573,7 +578,6 @@ class edit extends Component {
                                 tagName={nameTag.toLowerCase()}
                                 className={`premium-person__name`}
                                 value={value.name}
-                                isSelected={false}
                                 onChange={value => { this.save({ name: value }, index) }}
                                 style={{
                                     ...padddingCss(namePadding, this.props.deviceType),
@@ -590,7 +594,6 @@ class edit extends Component {
                                 tagName={titleTag.toLowerCase()}
                                 className={`premium-person__title`}
                                 value={value.title}
-                                isSelected={false}
                                 onChange={value => { this.save({ title: value }, index) }}
                                 style={{
                                     ...marginCss(titleMargin, this.props.deviceType),
@@ -608,7 +611,6 @@ class edit extends Component {
                                 tagName="span"
                                 className={`premium-person__desc`}
                                 value={value.desc}
-                                isSelected={false}
                                 onChange={value => { this.save({ desc: value }, index) }}
                                 style={{
                                     ...padddingCss(descPadding, this.props.deviceType),
@@ -777,6 +779,7 @@ class edit extends Component {
                                     showUnit={false}
                                     defaultValue={1}
                                     min={1}
+                                    max={20}
                                 />
                                 {multiPersonChecked > 1 ? <SelectControl
                                     label={__("Persons/Row", 'premium-block-for-gutenberg')}
@@ -792,58 +795,24 @@ class edit extends Component {
                                 />
                                 <RadioComponent
                                     label={__("Name Tag", 'premium-blocks-for-gutenberg')}
-                                    choices={['H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'div', 'span']}
+                                    choices={['H1', 'H2', 'H3', 'H4', 'H5', 'H6']}
                                     value={nameTag}
                                     onChange={(newValue) => setAttributes({ nameTag: newValue })}
                                 />
                                 <RadioComponent
                                     label={__("Title Tag", 'premium-blocks-for-gutenberg')}
-                                    choices={['H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'div', 'span']}
+                                    choices={['H1', 'H2', 'H3', 'H4', 'H5', 'H6']}
                                     value={titleTag}
                                     onChange={(newValue) => setAttributes({ titleTag: newValue })}
                                 />
-                                <ResponsiveSingleRangeControl
-                                    label={__("Custom Image Height", 'premium-block-for-gutenberg')}
-                                    value={imgHeight}
-                                    onChange={value => setAttributes({ imgHeight: value })}
-                                    showUnit={false}
-                                    defaultValue={200}
-                                    min={1}
-                                    max={500}
-                                />
-                                <SelectControl
-                                    label={__("Image Hover Effect", 'premium-block-for-gutenberg')}
-                                    options={HOVER}
-                                    value={hoverEffectPerson}
-                                    onChange={newEffect => setAttributes({ hoverEffectPerson: newEffect })}
-                                />
-
                             </PanelBody>
                             {times(multiPersonChecked, n => MultiPersonSetting(n))}
                         </InspectorTab>
                         <InspectorTab key={'style'}>
                             <PanelBody
-                                title={__("Image Style")}
-                                className="premium-panel-body"
-                                initialOpen={true}
-                            >
-                                <PremiumFilters
-                                    blur={blur}
-                                    bright={bright}
-                                    contrast={contrast}
-                                    saturation={saturation}
-                                    hue={hue}
-                                    onChangeBlur={newSize => setAttributes({ blur: newSize })}
-                                    onChangeBright={newSize => setAttributes({ bright: newSize })}
-                                    onChangeContrast={newSize => setAttributes({ contrast: newSize })}
-                                    onChangeSat={newSize => setAttributes({ saturation: newSize })}
-                                    onChangeHue={newSize => setAttributes({ hue: newSize })}
-                                />
-                            </PanelBody>
-                            <PanelBody
                                 title={__("Name")}
                                 className="premium-panel-body"
-                                initialOpen={false}
+                                initialOpen={true}
                             >
                                 <PremiumTypo
                                     components={["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"]}
@@ -951,6 +920,52 @@ class edit extends Component {
                                     onChange={(value) => setAttributes({ descPadding: value })}
                                     showUnits={true}
                                     responsive={true}
+                                />
+                            </PanelBody>
+                            <PanelBody
+                                title={__("Image Style")}
+                                className="premium-panel-body"
+                                initialOpen={false}
+                            >
+                                <PremiumFilters
+                                    blur={blur}
+                                    bright={bright}
+                                    contrast={contrast}
+                                    saturation={saturation}
+                                    hue={hue}
+                                    onChangeBlur={newSize => setAttributes({ blur: newSize })}
+                                    onChangeBright={newSize => setAttributes({ bright: newSize })}
+                                    onChangeContrast={newSize => setAttributes({ contrast: newSize })}
+                                    onChangeSat={newSize => setAttributes({ saturation: newSize })}
+                                    onChangeHue={newSize => setAttributes({ hue: newSize })}
+                                />
+                                <ResponsiveRangeControl
+                                    label={__('Custom Image Width', 'premium-blocks-for-gutenberg')}
+                                    value={imgWidth}
+                                    onChange={(value) => setAttributes({ imgWidth: value })}
+                                    min={1}
+                                    max={500}
+                                    step={1}
+                                    showUnit={true}
+                                    units={['px', 'em', '%']}
+                                    defaultValue={200}
+                                />
+                                <ResponsiveRangeControl
+                                    label={__('Custom Image Height', 'premium-blocks-for-gutenberg')}
+                                    value={imgHeight}
+                                    onChange={(value) => setAttributes({ imgHeight: value })}
+                                    min={1}
+                                    max={500}
+                                    step={1}
+                                    showUnit={true}
+                                    units={['px', 'em', '%']}
+                                    defaultValue={200}
+                                />
+                                <SelectControl
+                                    label={__("Image Hover Effect", 'premium-block-for-gutenberg')}
+                                    options={HOVER}
+                                    value={hoverEffectPerson}
+                                    onChange={newEffect => setAttributes({ hoverEffectPerson: newEffect })}
                                 />
                             </PanelBody>
                             {socialIcon && <PanelBody
@@ -1074,30 +1089,25 @@ class edit extends Component {
                                 />
                             </PanelBody>
                         </InspectorTab>
-                        <InspectorTab key={'advance'}></InspectorTab>
+                        <InspectorTab key={'advance'}>
+                            <PremiumResponsiveTabs
+                                Desktop={hideDesktop}
+                                Tablet={hideTablet}
+                                Mobile={hideMobile}
+                                onChangeDesktop={(value) => setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" })}
+                                onChangeTablet={(value) => setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" })}
+                                onChangeMobile={(value) => setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" })}
+                            />
+                        </InspectorTab>
                     </InspectorTabs>
                 </InspectorControls>
             ),
             renderCss,
             <div
                 id={`premium-person-${id}`}
-                className={`${mainClasses} premium-person__${effect} premium-person__${effectDir}`}
+                className={`${mainClasses} premium-person__${effect} premium-person__${effectDir} ${hideDesktop} ${hideTablet} ${hideMobile}`}
                 style={{ textAlign: personAlign }}
             >
-                <style
-                    dangerouslySetInnerHTML={{
-                        __html: [
-                            `#premium-person-${id} .premium-person:hover {`,
-                            `border-color: ${borderHoverColor} !important;`,
-                            "}",
-                            `#premium-person-${id} .premium-person__social-List li:hover i{`,
-                            `color: ${socialIconStyles[0].socialIconHoverColor} !important;`,
-                            `-webkit-transition: all .2s ease-in-out;`,
-                            `transition: all .2s ease-in-out;`,
-                            "}"
-                        ].join("\n")
-                    }}
-                />
                 {content()}
                 {loadNameGoogleFonts}
                 {loadTitleGoogleFonts}
