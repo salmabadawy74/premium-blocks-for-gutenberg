@@ -4460,6 +4460,1124 @@ module.exports = toString;
 
 /***/ }),
 
+/***/ "../../node_modules/object-assign/index.js":
+/*!*************************************************!*\
+  !*** ../../node_modules/object-assign/index.js ***!
+  \*************************************************/
+/***/ (function(module) {
+
+"use strict";
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
+
+
+/* eslint-disable no-unused-vars */
+var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+var propIsEnumerable = Object.prototype.propertyIsEnumerable;
+
+function toObject(val) {
+	if (val === null || val === undefined) {
+		throw new TypeError('Object.assign cannot be called with null or undefined');
+	}
+
+	return Object(val);
+}
+
+function shouldUseNative() {
+	try {
+		if (!Object.assign) {
+			return false;
+		}
+
+		// Detect buggy property enumeration order in older V8 versions.
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
+		var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
+		test1[5] = 'de';
+		if (Object.getOwnPropertyNames(test1)[0] === '5') {
+			return false;
+		}
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+		var test2 = {};
+		for (var i = 0; i < 10; i++) {
+			test2['_' + String.fromCharCode(i)] = i;
+		}
+		var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
+			return test2[n];
+		});
+		if (order2.join('') !== '0123456789') {
+			return false;
+		}
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+		var test3 = {};
+		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
+			test3[letter] = letter;
+		});
+		if (Object.keys(Object.assign({}, test3)).join('') !==
+				'abcdefghijklmnopqrst') {
+			return false;
+		}
+
+		return true;
+	} catch (err) {
+		// We don't expect any of the above to throw, but better to be safe.
+		return false;
+	}
+}
+
+module.exports = shouldUseNative() ? Object.assign : function (target, source) {
+	var from;
+	var to = toObject(target);
+	var symbols;
+
+	for (var s = 1; s < arguments.length; s++) {
+		from = Object(arguments[s]);
+
+		for (var key in from) {
+			if (hasOwnProperty.call(from, key)) {
+				to[key] = from[key];
+			}
+		}
+
+		if (getOwnPropertySymbols) {
+			symbols = getOwnPropertySymbols(from);
+			for (var i = 0; i < symbols.length; i++) {
+				if (propIsEnumerable.call(from, symbols[i])) {
+					to[symbols[i]] = from[symbols[i]];
+				}
+			}
+		}
+	}
+
+	return to;
+};
+
+
+/***/ }),
+
+/***/ "../../node_modules/prop-types/checkPropTypes.js":
+/*!*******************************************************!*\
+  !*** ../../node_modules/prop-types/checkPropTypes.js ***!
+  \*******************************************************/
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var printWarning = function() {};
+
+if (true) {
+  var ReactPropTypesSecret = __webpack_require__(/*! ./lib/ReactPropTypesSecret */ "../../node_modules/prop-types/lib/ReactPropTypesSecret.js");
+  var loggedTypeFailures = {};
+  var has = Function.call.bind(Object.prototype.hasOwnProperty);
+
+  printWarning = function(text) {
+    var message = 'Warning: ' + text;
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  };
+}
+
+/**
+ * Assert that the values match with the type specs.
+ * Error messages are memorized and will only be shown once.
+ *
+ * @param {object} typeSpecs Map of name to a ReactPropType
+ * @param {object} values Runtime values that need to be type-checked
+ * @param {string} location e.g. "prop", "context", "child context"
+ * @param {string} componentName Name of the component for error messages.
+ * @param {?Function} getStack Returns the component stack.
+ * @private
+ */
+function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
+  if (true) {
+    for (var typeSpecName in typeSpecs) {
+      if (has(typeSpecs, typeSpecName)) {
+        var error;
+        // Prop type validation may throw. In case they do, we don't want to
+        // fail the render phase where it didn't fail before. So we log it.
+        // After these have been cleaned up, we'll let them throw.
+        try {
+          // This is intentionally an invariant that gets caught. It's the same
+          // behavior as without this statement except with a better message.
+          if (typeof typeSpecs[typeSpecName] !== 'function') {
+            var err = Error(
+              (componentName || 'React class') + ': ' + location + ' type `' + typeSpecName + '` is invalid; ' +
+              'it must be a function, usually from the `prop-types` package, but received `' + typeof typeSpecs[typeSpecName] + '`.'
+            );
+            err.name = 'Invariant Violation';
+            throw err;
+          }
+          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret);
+        } catch (ex) {
+          error = ex;
+        }
+        if (error && !(error instanceof Error)) {
+          printWarning(
+            (componentName || 'React class') + ': type specification of ' +
+            location + ' `' + typeSpecName + '` is invalid; the type checker ' +
+            'function must return `null` or an `Error` but returned a ' + typeof error + '. ' +
+            'You may have forgotten to pass an argument to the type checker ' +
+            'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' +
+            'shape all require an argument).'
+          );
+        }
+        if (error instanceof Error && !(error.message in loggedTypeFailures)) {
+          // Only monitor this failure once because there tends to be a lot of the
+          // same error.
+          loggedTypeFailures[error.message] = true;
+
+          var stack = getStack ? getStack() : '';
+
+          printWarning(
+            'Failed ' + location + ' type: ' + error.message + (stack != null ? stack : '')
+          );
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Resets warning cache when testing.
+ *
+ * @private
+ */
+checkPropTypes.resetWarningCache = function() {
+  if (true) {
+    loggedTypeFailures = {};
+  }
+}
+
+module.exports = checkPropTypes;
+
+
+/***/ }),
+
+/***/ "../../node_modules/prop-types/factoryWithTypeCheckers.js":
+/*!****************************************************************!*\
+  !*** ../../node_modules/prop-types/factoryWithTypeCheckers.js ***!
+  \****************************************************************/
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var ReactIs = __webpack_require__(/*! react-is */ "../../node_modules/react-is/index.js");
+var assign = __webpack_require__(/*! object-assign */ "../../node_modules/object-assign/index.js");
+
+var ReactPropTypesSecret = __webpack_require__(/*! ./lib/ReactPropTypesSecret */ "../../node_modules/prop-types/lib/ReactPropTypesSecret.js");
+var checkPropTypes = __webpack_require__(/*! ./checkPropTypes */ "../../node_modules/prop-types/checkPropTypes.js");
+
+var has = Function.call.bind(Object.prototype.hasOwnProperty);
+var printWarning = function() {};
+
+if (true) {
+  printWarning = function(text) {
+    var message = 'Warning: ' + text;
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  };
+}
+
+function emptyFunctionThatReturnsNull() {
+  return null;
+}
+
+module.exports = function(isValidElement, throwOnDirectAccess) {
+  /* global Symbol */
+  var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
+  var FAUX_ITERATOR_SYMBOL = '@@iterator'; // Before Symbol spec.
+
+  /**
+   * Returns the iterator method function contained on the iterable object.
+   *
+   * Be sure to invoke the function with the iterable as context:
+   *
+   *     var iteratorFn = getIteratorFn(myIterable);
+   *     if (iteratorFn) {
+   *       var iterator = iteratorFn.call(myIterable);
+   *       ...
+   *     }
+   *
+   * @param {?object} maybeIterable
+   * @return {?function}
+   */
+  function getIteratorFn(maybeIterable) {
+    var iteratorFn = maybeIterable && (ITERATOR_SYMBOL && maybeIterable[ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL]);
+    if (typeof iteratorFn === 'function') {
+      return iteratorFn;
+    }
+  }
+
+  /**
+   * Collection of methods that allow declaration and validation of props that are
+   * supplied to React components. Example usage:
+   *
+   *   var Props = require('ReactPropTypes');
+   *   var MyArticle = React.createClass({
+   *     propTypes: {
+   *       // An optional string prop named "description".
+   *       description: Props.string,
+   *
+   *       // A required enum prop named "category".
+   *       category: Props.oneOf(['News','Photos']).isRequired,
+   *
+   *       // A prop named "dialog" that requires an instance of Dialog.
+   *       dialog: Props.instanceOf(Dialog).isRequired
+   *     },
+   *     render: function() { ... }
+   *   });
+   *
+   * A more formal specification of how these methods are used:
+   *
+   *   type := array|bool|func|object|number|string|oneOf([...])|instanceOf(...)
+   *   decl := ReactPropTypes.{type}(.isRequired)?
+   *
+   * Each and every declaration produces a function with the same signature. This
+   * allows the creation of custom validation functions. For example:
+   *
+   *  var MyLink = React.createClass({
+   *    propTypes: {
+   *      // An optional string or URI prop named "href".
+   *      href: function(props, propName, componentName) {
+   *        var propValue = props[propName];
+   *        if (propValue != null && typeof propValue !== 'string' &&
+   *            !(propValue instanceof URI)) {
+   *          return new Error(
+   *            'Expected a string or an URI for ' + propName + ' in ' +
+   *            componentName
+   *          );
+   *        }
+   *      }
+   *    },
+   *    render: function() {...}
+   *  });
+   *
+   * @internal
+   */
+
+  var ANONYMOUS = '<<anonymous>>';
+
+  // Important!
+  // Keep this list in sync with production version in `./factoryWithThrowingShims.js`.
+  var ReactPropTypes = {
+    array: createPrimitiveTypeChecker('array'),
+    bool: createPrimitiveTypeChecker('boolean'),
+    func: createPrimitiveTypeChecker('function'),
+    number: createPrimitiveTypeChecker('number'),
+    object: createPrimitiveTypeChecker('object'),
+    string: createPrimitiveTypeChecker('string'),
+    symbol: createPrimitiveTypeChecker('symbol'),
+
+    any: createAnyTypeChecker(),
+    arrayOf: createArrayOfTypeChecker,
+    element: createElementTypeChecker(),
+    elementType: createElementTypeTypeChecker(),
+    instanceOf: createInstanceTypeChecker,
+    node: createNodeChecker(),
+    objectOf: createObjectOfTypeChecker,
+    oneOf: createEnumTypeChecker,
+    oneOfType: createUnionTypeChecker,
+    shape: createShapeTypeChecker,
+    exact: createStrictShapeTypeChecker,
+  };
+
+  /**
+   * inlined Object.is polyfill to avoid requiring consumers ship their own
+   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
+   */
+  /*eslint-disable no-self-compare*/
+  function is(x, y) {
+    // SameValue algorithm
+    if (x === y) {
+      // Steps 1-5, 7-10
+      // Steps 6.b-6.e: +0 != -0
+      return x !== 0 || 1 / x === 1 / y;
+    } else {
+      // Step 6.a: NaN == NaN
+      return x !== x && y !== y;
+    }
+  }
+  /*eslint-enable no-self-compare*/
+
+  /**
+   * We use an Error-like object for backward compatibility as people may call
+   * PropTypes directly and inspect their output. However, we don't use real
+   * Errors anymore. We don't inspect their stack anyway, and creating them
+   * is prohibitively expensive if they are created too often, such as what
+   * happens in oneOfType() for any type before the one that matched.
+   */
+  function PropTypeError(message) {
+    this.message = message;
+    this.stack = '';
+  }
+  // Make `instanceof Error` still work for returned errors.
+  PropTypeError.prototype = Error.prototype;
+
+  function createChainableTypeChecker(validate) {
+    if (true) {
+      var manualPropTypeCallCache = {};
+      var manualPropTypeWarningCount = 0;
+    }
+    function checkType(isRequired, props, propName, componentName, location, propFullName, secret) {
+      componentName = componentName || ANONYMOUS;
+      propFullName = propFullName || propName;
+
+      if (secret !== ReactPropTypesSecret) {
+        if (throwOnDirectAccess) {
+          // New behavior only for users of `prop-types` package
+          var err = new Error(
+            'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
+            'Use `PropTypes.checkPropTypes()` to call them. ' +
+            'Read more at http://fb.me/use-check-prop-types'
+          );
+          err.name = 'Invariant Violation';
+          throw err;
+        } else if ( true && typeof console !== 'undefined') {
+          // Old behavior for people using React.PropTypes
+          var cacheKey = componentName + ':' + propName;
+          if (
+            !manualPropTypeCallCache[cacheKey] &&
+            // Avoid spamming the console because they are often not actionable except for lib authors
+            manualPropTypeWarningCount < 3
+          ) {
+            printWarning(
+              'You are manually calling a React.PropTypes validation ' +
+              'function for the `' + propFullName + '` prop on `' + componentName  + '`. This is deprecated ' +
+              'and will throw in the standalone `prop-types` package. ' +
+              'You may be seeing this warning due to a third-party PropTypes ' +
+              'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.'
+            );
+            manualPropTypeCallCache[cacheKey] = true;
+            manualPropTypeWarningCount++;
+          }
+        }
+      }
+      if (props[propName] == null) {
+        if (isRequired) {
+          if (props[propName] === null) {
+            return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required ' + ('in `' + componentName + '`, but its value is `null`.'));
+          }
+          return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required in ' + ('`' + componentName + '`, but its value is `undefined`.'));
+        }
+        return null;
+      } else {
+        return validate(props, propName, componentName, location, propFullName);
+      }
+    }
+
+    var chainedCheckType = checkType.bind(null, false);
+    chainedCheckType.isRequired = checkType.bind(null, true);
+
+    return chainedCheckType;
+  }
+
+  function createPrimitiveTypeChecker(expectedType) {
+    function validate(props, propName, componentName, location, propFullName, secret) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== expectedType) {
+        // `propValue` being instance of, say, date/regexp, pass the 'object'
+        // check, but we can offer a more precise error message here rather than
+        // 'of type `object`'.
+        var preciseType = getPreciseType(propValue);
+
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + preciseType + '` supplied to `' + componentName + '`, expected ') + ('`' + expectedType + '`.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createAnyTypeChecker() {
+    return createChainableTypeChecker(emptyFunctionThatReturnsNull);
+  }
+
+  function createArrayOfTypeChecker(typeChecker) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (typeof typeChecker !== 'function') {
+        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside arrayOf.');
+      }
+      var propValue = props[propName];
+      if (!Array.isArray(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an array.'));
+      }
+      for (var i = 0; i < propValue.length; i++) {
+        var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret);
+        if (error instanceof Error) {
+          return error;
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createElementTypeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      if (!isValidElement(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createElementTypeTypeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      if (!ReactIs.isValidElementType(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement type.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createInstanceTypeChecker(expectedClass) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (!(props[propName] instanceof expectedClass)) {
+        var expectedClassName = expectedClass.name || ANONYMOUS;
+        var actualClassName = getClassName(props[propName]);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + actualClassName + '` supplied to `' + componentName + '`, expected ') + ('instance of `' + expectedClassName + '`.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createEnumTypeChecker(expectedValues) {
+    if (!Array.isArray(expectedValues)) {
+      if (true) {
+        if (arguments.length > 1) {
+          printWarning(
+            'Invalid arguments supplied to oneOf, expected an array, got ' + arguments.length + ' arguments. ' +
+            'A common mistake is to write oneOf(x, y, z) instead of oneOf([x, y, z]).'
+          );
+        } else {
+          printWarning('Invalid argument supplied to oneOf, expected an array.');
+        }
+      }
+      return emptyFunctionThatReturnsNull;
+    }
+
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      for (var i = 0; i < expectedValues.length; i++) {
+        if (is(propValue, expectedValues[i])) {
+          return null;
+        }
+      }
+
+      var valuesString = JSON.stringify(expectedValues, function replacer(key, value) {
+        var type = getPreciseType(value);
+        if (type === 'symbol') {
+          return String(value);
+        }
+        return value;
+      });
+      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of value `' + String(propValue) + '` ' + ('supplied to `' + componentName + '`, expected one of ' + valuesString + '.'));
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createObjectOfTypeChecker(typeChecker) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (typeof typeChecker !== 'function') {
+        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside objectOf.');
+      }
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an object.'));
+      }
+      for (var key in propValue) {
+        if (has(propValue, key)) {
+          var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+          if (error instanceof Error) {
+            return error;
+          }
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createUnionTypeChecker(arrayOfTypeCheckers) {
+    if (!Array.isArray(arrayOfTypeCheckers)) {
+       true ? printWarning('Invalid argument supplied to oneOfType, expected an instance of array.') : 0;
+      return emptyFunctionThatReturnsNull;
+    }
+
+    for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+      var checker = arrayOfTypeCheckers[i];
+      if (typeof checker !== 'function') {
+        printWarning(
+          'Invalid argument supplied to oneOfType. Expected an array of check functions, but ' +
+          'received ' + getPostfixForTypeWarning(checker) + ' at index ' + i + '.'
+        );
+        return emptyFunctionThatReturnsNull;
+      }
+    }
+
+    function validate(props, propName, componentName, location, propFullName) {
+      for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+        var checker = arrayOfTypeCheckers[i];
+        if (checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret) == null) {
+          return null;
+        }
+      }
+
+      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`.'));
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createNodeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (!isNode(props[propName])) {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`, expected a ReactNode.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createShapeTypeChecker(shapeTypes) {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+      }
+      for (var key in shapeTypes) {
+        var checker = shapeTypes[key];
+        if (!checker) {
+          continue;
+        }
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+        if (error) {
+          return error;
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createStrictShapeTypeChecker(shapeTypes) {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+      }
+      // We need to check all keys in case some are required but missing from
+      // props.
+      var allKeys = assign({}, props[propName], shapeTypes);
+      for (var key in allKeys) {
+        var checker = shapeTypes[key];
+        if (!checker) {
+          return new PropTypeError(
+            'Invalid ' + location + ' `' + propFullName + '` key `' + key + '` supplied to `' + componentName + '`.' +
+            '\nBad object: ' + JSON.stringify(props[propName], null, '  ') +
+            '\nValid keys: ' +  JSON.stringify(Object.keys(shapeTypes), null, '  ')
+          );
+        }
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+        if (error) {
+          return error;
+        }
+      }
+      return null;
+    }
+
+    return createChainableTypeChecker(validate);
+  }
+
+  function isNode(propValue) {
+    switch (typeof propValue) {
+      case 'number':
+      case 'string':
+      case 'undefined':
+        return true;
+      case 'boolean':
+        return !propValue;
+      case 'object':
+        if (Array.isArray(propValue)) {
+          return propValue.every(isNode);
+        }
+        if (propValue === null || isValidElement(propValue)) {
+          return true;
+        }
+
+        var iteratorFn = getIteratorFn(propValue);
+        if (iteratorFn) {
+          var iterator = iteratorFn.call(propValue);
+          var step;
+          if (iteratorFn !== propValue.entries) {
+            while (!(step = iterator.next()).done) {
+              if (!isNode(step.value)) {
+                return false;
+              }
+            }
+          } else {
+            // Iterator will provide entry [k,v] tuples rather than values.
+            while (!(step = iterator.next()).done) {
+              var entry = step.value;
+              if (entry) {
+                if (!isNode(entry[1])) {
+                  return false;
+                }
+              }
+            }
+          }
+        } else {
+          return false;
+        }
+
+        return true;
+      default:
+        return false;
+    }
+  }
+
+  function isSymbol(propType, propValue) {
+    // Native Symbol.
+    if (propType === 'symbol') {
+      return true;
+    }
+
+    // falsy value can't be a Symbol
+    if (!propValue) {
+      return false;
+    }
+
+    // 19.4.3.5 Symbol.prototype[@@toStringTag] === 'Symbol'
+    if (propValue['@@toStringTag'] === 'Symbol') {
+      return true;
+    }
+
+    // Fallback for non-spec compliant Symbols which are polyfilled.
+    if (typeof Symbol === 'function' && propValue instanceof Symbol) {
+      return true;
+    }
+
+    return false;
+  }
+
+  // Equivalent of `typeof` but with special handling for array and regexp.
+  function getPropType(propValue) {
+    var propType = typeof propValue;
+    if (Array.isArray(propValue)) {
+      return 'array';
+    }
+    if (propValue instanceof RegExp) {
+      // Old webkits (at least until Android 4.0) return 'function' rather than
+      // 'object' for typeof a RegExp. We'll normalize this here so that /bla/
+      // passes PropTypes.object.
+      return 'object';
+    }
+    if (isSymbol(propType, propValue)) {
+      return 'symbol';
+    }
+    return propType;
+  }
+
+  // This handles more types than `getPropType`. Only used for error messages.
+  // See `createPrimitiveTypeChecker`.
+  function getPreciseType(propValue) {
+    if (typeof propValue === 'undefined' || propValue === null) {
+      return '' + propValue;
+    }
+    var propType = getPropType(propValue);
+    if (propType === 'object') {
+      if (propValue instanceof Date) {
+        return 'date';
+      } else if (propValue instanceof RegExp) {
+        return 'regexp';
+      }
+    }
+    return propType;
+  }
+
+  // Returns a string that is postfixed to a warning about an invalid type.
+  // For example, "undefined" or "of type array"
+  function getPostfixForTypeWarning(value) {
+    var type = getPreciseType(value);
+    switch (type) {
+      case 'array':
+      case 'object':
+        return 'an ' + type;
+      case 'boolean':
+      case 'date':
+      case 'regexp':
+        return 'a ' + type;
+      default:
+        return type;
+    }
+  }
+
+  // Returns class name of the object, if any.
+  function getClassName(propValue) {
+    if (!propValue.constructor || !propValue.constructor.name) {
+      return ANONYMOUS;
+    }
+    return propValue.constructor.name;
+  }
+
+  ReactPropTypes.checkPropTypes = checkPropTypes;
+  ReactPropTypes.resetWarningCache = checkPropTypes.resetWarningCache;
+  ReactPropTypes.PropTypes = ReactPropTypes;
+
+  return ReactPropTypes;
+};
+
+
+/***/ }),
+
+/***/ "../../node_modules/prop-types/index.js":
+/*!**********************************************!*\
+  !*** ../../node_modules/prop-types/index.js ***!
+  \**********************************************/
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+if (true) {
+  var ReactIs = __webpack_require__(/*! react-is */ "../../node_modules/react-is/index.js");
+
+  // By explicitly using `prop-types` you are opting into new development behavior.
+  // http://fb.me/prop-types-in-prod
+  var throwOnDirectAccess = true;
+  module.exports = __webpack_require__(/*! ./factoryWithTypeCheckers */ "../../node_modules/prop-types/factoryWithTypeCheckers.js")(ReactIs.isElement, throwOnDirectAccess);
+} else {}
+
+
+/***/ }),
+
+/***/ "../../node_modules/prop-types/lib/ReactPropTypesSecret.js":
+/*!*****************************************************************!*\
+  !*** ../../node_modules/prop-types/lib/ReactPropTypesSecret.js ***!
+  \*****************************************************************/
+/***/ (function(module) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+
+module.exports = ReactPropTypesSecret;
+
+
+/***/ }),
+
+/***/ "../../node_modules/react-is/cjs/react-is.development.js":
+/*!***************************************************************!*\
+  !*** ../../node_modules/react-is/cjs/react-is.development.js ***!
+  \***************************************************************/
+/***/ (function(__unused_webpack_module, exports) {
+
+"use strict";
+/** @license React v16.8.6
+ * react-is.development.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+
+
+if (true) {
+  (function() {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+// The Symbol used to tag the ReactElement-like types. If there is no native Symbol
+// nor polyfill, then a plain number is used for performance.
+var hasSymbol = typeof Symbol === 'function' && Symbol.for;
+
+var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;
+var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
+var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
+var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
+var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
+var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
+var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace;
+var REACT_ASYNC_MODE_TYPE = hasSymbol ? Symbol.for('react.async_mode') : 0xeacf;
+var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
+var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
+var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
+var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
+var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
+
+function isValidElementType(type) {
+  return typeof type === 'string' || typeof type === 'function' ||
+  // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
+  type === REACT_FRAGMENT_TYPE || type === REACT_CONCURRENT_MODE_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || typeof type === 'object' && type !== null && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE);
+}
+
+/**
+ * Forked from fbjs/warning:
+ * https://github.com/facebook/fbjs/blob/e66ba20ad5be433eb54423f2b097d829324d9de6/packages/fbjs/src/__forks__/warning.js
+ *
+ * Only change is we use console.warn instead of console.error,
+ * and do nothing when 'console' is not supported.
+ * This really simplifies the code.
+ * ---
+ * Similar to invariant but only logs a warning if the condition is not met.
+ * This can be used to log issues in development environments in critical
+ * paths. Removing the logging code for production environments will keep the
+ * same logic and follow the same code paths.
+ */
+
+var lowPriorityWarning = function () {};
+
+{
+  var printWarning = function (format) {
+    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+
+    var argIndex = 0;
+    var message = 'Warning: ' + format.replace(/%s/g, function () {
+      return args[argIndex++];
+    });
+    if (typeof console !== 'undefined') {
+      console.warn(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  };
+
+  lowPriorityWarning = function (condition, format) {
+    if (format === undefined) {
+      throw new Error('`lowPriorityWarning(condition, format, ...args)` requires a warning ' + 'message argument');
+    }
+    if (!condition) {
+      for (var _len2 = arguments.length, args = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
+        args[_key2 - 2] = arguments[_key2];
+      }
+
+      printWarning.apply(undefined, [format].concat(args));
+    }
+  };
+}
+
+var lowPriorityWarning$1 = lowPriorityWarning;
+
+function typeOf(object) {
+  if (typeof object === 'object' && object !== null) {
+    var $$typeof = object.$$typeof;
+    switch ($$typeof) {
+      case REACT_ELEMENT_TYPE:
+        var type = object.type;
+
+        switch (type) {
+          case REACT_ASYNC_MODE_TYPE:
+          case REACT_CONCURRENT_MODE_TYPE:
+          case REACT_FRAGMENT_TYPE:
+          case REACT_PROFILER_TYPE:
+          case REACT_STRICT_MODE_TYPE:
+          case REACT_SUSPENSE_TYPE:
+            return type;
+          default:
+            var $$typeofType = type && type.$$typeof;
+
+            switch ($$typeofType) {
+              case REACT_CONTEXT_TYPE:
+              case REACT_FORWARD_REF_TYPE:
+              case REACT_PROVIDER_TYPE:
+                return $$typeofType;
+              default:
+                return $$typeof;
+            }
+        }
+      case REACT_LAZY_TYPE:
+      case REACT_MEMO_TYPE:
+      case REACT_PORTAL_TYPE:
+        return $$typeof;
+    }
+  }
+
+  return undefined;
+}
+
+// AsyncMode is deprecated along with isAsyncMode
+var AsyncMode = REACT_ASYNC_MODE_TYPE;
+var ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;
+var ContextConsumer = REACT_CONTEXT_TYPE;
+var ContextProvider = REACT_PROVIDER_TYPE;
+var Element = REACT_ELEMENT_TYPE;
+var ForwardRef = REACT_FORWARD_REF_TYPE;
+var Fragment = REACT_FRAGMENT_TYPE;
+var Lazy = REACT_LAZY_TYPE;
+var Memo = REACT_MEMO_TYPE;
+var Portal = REACT_PORTAL_TYPE;
+var Profiler = REACT_PROFILER_TYPE;
+var StrictMode = REACT_STRICT_MODE_TYPE;
+var Suspense = REACT_SUSPENSE_TYPE;
+
+var hasWarnedAboutDeprecatedIsAsyncMode = false;
+
+// AsyncMode should be deprecated
+function isAsyncMode(object) {
+  {
+    if (!hasWarnedAboutDeprecatedIsAsyncMode) {
+      hasWarnedAboutDeprecatedIsAsyncMode = true;
+      lowPriorityWarning$1(false, 'The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 17+. Update your code to use ' + 'ReactIs.isConcurrentMode() instead. It has the exact same API.');
+    }
+  }
+  return isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
+}
+function isConcurrentMode(object) {
+  return typeOf(object) === REACT_CONCURRENT_MODE_TYPE;
+}
+function isContextConsumer(object) {
+  return typeOf(object) === REACT_CONTEXT_TYPE;
+}
+function isContextProvider(object) {
+  return typeOf(object) === REACT_PROVIDER_TYPE;
+}
+function isElement(object) {
+  return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+}
+function isForwardRef(object) {
+  return typeOf(object) === REACT_FORWARD_REF_TYPE;
+}
+function isFragment(object) {
+  return typeOf(object) === REACT_FRAGMENT_TYPE;
+}
+function isLazy(object) {
+  return typeOf(object) === REACT_LAZY_TYPE;
+}
+function isMemo(object) {
+  return typeOf(object) === REACT_MEMO_TYPE;
+}
+function isPortal(object) {
+  return typeOf(object) === REACT_PORTAL_TYPE;
+}
+function isProfiler(object) {
+  return typeOf(object) === REACT_PROFILER_TYPE;
+}
+function isStrictMode(object) {
+  return typeOf(object) === REACT_STRICT_MODE_TYPE;
+}
+function isSuspense(object) {
+  return typeOf(object) === REACT_SUSPENSE_TYPE;
+}
+
+exports.typeOf = typeOf;
+exports.AsyncMode = AsyncMode;
+exports.ConcurrentMode = ConcurrentMode;
+exports.ContextConsumer = ContextConsumer;
+exports.ContextProvider = ContextProvider;
+exports.Element = Element;
+exports.ForwardRef = ForwardRef;
+exports.Fragment = Fragment;
+exports.Lazy = Lazy;
+exports.Memo = Memo;
+exports.Portal = Portal;
+exports.Profiler = Profiler;
+exports.StrictMode = StrictMode;
+exports.Suspense = Suspense;
+exports.isValidElementType = isValidElementType;
+exports.isAsyncMode = isAsyncMode;
+exports.isConcurrentMode = isConcurrentMode;
+exports.isContextConsumer = isContextConsumer;
+exports.isContextProvider = isContextProvider;
+exports.isElement = isElement;
+exports.isForwardRef = isForwardRef;
+exports.isFragment = isFragment;
+exports.isLazy = isLazy;
+exports.isMemo = isMemo;
+exports.isPortal = isPortal;
+exports.isProfiler = isProfiler;
+exports.isStrictMode = isStrictMode;
+exports.isSuspense = isSuspense;
+  })();
+}
+
+
+/***/ }),
+
+/***/ "../../node_modules/react-is/index.js":
+/*!********************************************!*\
+  !*** ../../node_modules/react-is/index.js ***!
+  \********************************************/
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+"use strict";
+
+
+if (false) {} else {
+  module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ "../../node_modules/react-is/cjs/react-is.development.js");
+}
+
+
+/***/ }),
+
 /***/ "../../node_modules/webfontloader/webfontloader.js":
 /*!*********************************************************!*\
   !*** ../../node_modules/webfontloader/webfontloader.js ***!
@@ -4643,6 +5761,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../components/typography/fontLoader */ "../components/typography/fontLoader.js");
 /* harmony import */ var _components_inspectorTabs__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../components/inspectorTabs */ "../components/inspectorTabs.js");
 /* harmony import */ var _components_inspectorTab__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../components/inspectorTab */ "../components/inspectorTab.js");
+/* harmony import */ var _components_InsideTabs__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../components/InsideTabs */ "../components/InsideTabs.js");
+/* harmony import */ var _components_InsideTab__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../components/InsideTab */ "../components/InsideTab.js");
+/* harmony import */ var _components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../../components/premium-responsive-tabs */ "../components/premium-responsive-tabs.js");
+/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../../components/HelperFunction */ "../components/HelperFunction.js");
+
+
+
+
 
 
 
@@ -4721,22 +5847,6 @@ function Edit(props) {
     setMounted(!mounted);
   };
 
-  const getPreviewSize = (device, desktopSize, tabletSize, mobileSize) => {
-    if (device === 'Mobile') {
-      if (undefined !== mobileSize && '' !== mobileSize) {
-        return mobileSize;
-      } else if (undefined !== tabletSize && '' !== tabletSize) {
-        return tabletSize;
-      }
-    } else if (device === 'Tablet') {
-      if (undefined !== tabletSize && '' !== tabletSize) {
-        return tabletSize;
-      }
-    }
-
-    return desktopSize;
-  };
-
   const {
     block_id,
     align,
@@ -4752,41 +5862,10 @@ function Edit(props) {
     switcherStyles,
     // backgroundType,
     labelStyles,
-    firstLabelBorderTop,
-    firstLabelBorderRight,
-    firstLabelBorderBottom,
-    firstLabelBorderLeft,
-    firstLabelBorderUpdated,
-    firstLabelBorderWidth,
-    secondLabelBorderTop,
-    secondLabelBorderRight,
-    secondLabelBorderBottom,
-    secondLabelBorderLeft,
-    secondLabelBorderUpdated,
-    secondLabelBorderWidth,
-    contentStyles,
     firstContentStyles,
-    firstContentBorderTop,
-    firstContentBorderRight,
-    firstContentBorderBottom,
-    firstContentBorderLeft,
-    firstContentBorderUpdated,
-    firstContentBorderWidth,
     secondContentStyles,
-    secondContentBorderTop,
-    secondContentBorderRight,
-    secondContentBorderBottom,
-    secondContentBorderLeft,
-    secondContentBorderUpdated,
-    secondContentBorderWidth,
     containerStyles,
     backgroundType,
-    containerBorderTop,
-    containerBorderRight,
-    containerBorderBottom,
-    containerBorderLeft,
-    containerBorderUpdated,
-    containerBorderWidth,
     effect,
     slide,
     firstLabelborder,
@@ -4802,7 +5881,29 @@ function Edit(props) {
     switchRadius,
     switchRadiusUnit,
     labelSpacing,
-    contentHeight
+    contentHeight,
+    switchShadow,
+    containerShadow,
+    firstLabelShadow,
+    firstLabelBoxShadow,
+    firstLabelTypography,
+    secondLabelTypography,
+    secondLabelShadow,
+    secondLabelBoxShadow,
+    secondLabelborder,
+    firstContentTypography,
+    firstContentShadow,
+    firstContentBoxShadow,
+    firstContentborder,
+    secondContentTypography,
+    secondContentShadow,
+    secondContentBoxShadow,
+    secondContentborder,
+    containerBoxShadow,
+    containerborder,
+    hideDesktop,
+    hideTablet,
+    hideMobile
   } = attributes;
   const DISPLAY = [{
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Block"),
@@ -4832,25 +5933,6 @@ function Edit(props) {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Right"),
     value: "right"
   }];
-  const TAGS = [{
-    value: "h1",
-    label: "H1"
-  }, {
-    value: "h2",
-    label: "H2"
-  }, {
-    value: "h3",
-    label: "H3"
-  }, {
-    value: "h4",
-    label: "H4"
-  }, {
-    value: "h5",
-    label: "H5"
-  }, {
-    value: "h6",
-    label: "H6"
-  }];
   let btnGrad, btnGrad2, btnbg;
 
   if (undefined !== backgroundType && 'gradient' === backgroundType) {
@@ -4866,64 +5948,12 @@ function Edit(props) {
     btnbg = containerStyles.backgroundImageURL ? `url('${containerStyles.backgroundImageURL}')` : '';
   }
 
-  const SwitcherSize = getPreviewSize(props.deviceType, switcherStyles.switchSize, switcherStyles.switchSizeTablet, switcherStyles.switchSizeMobile);
-  const SwitcherBorderRadius = getPreviewSize(props.deviceType, switcherStyles.switchRadius, switcherStyles.switchRadiusTablet, switcherStyles.switchRadiusMobile);
-  const ContainerBorderRadius = getPreviewSize(props.deviceType, switcherStyles.containerRadius, switcherStyles.containerRadiusTablet, switcherStyles.containerRadiusMobile);
-  const LabelSpacing = getPreviewSize(props.deviceType, labelStyles.labelSpacing, labelStyles.labelSpacingTablet, labelStyles.labelSpacingMobile);
-  const FirstLabelSize = getPreviewSize(props.deviceType, labelStyles.firstLabelfontSize, labelStyles.firstLabelfontSizeTablet, labelStyles.firstLabelfontSizeMobile);
-  const FirstLabelPaddingTop = getPreviewSize(props.deviceType, firstLabelPadding.Desktop.top, firstLabelPadding.Tablet.top, firstLabelPadding.Mobile.top);
-  const FirstLabelPaddingRight = getPreviewSize(props.deviceType, firstLabelPadding.Desktop.right, firstLabelPadding.Tablet.right, firstLabelPadding.Mobile.right);
-  const FirstLabelPaddingBottom = getPreviewSize(props.deviceType, firstLabelPadding.Desktop.bottom, firstLabelPadding.Tablet.bottom, firstLabelPadding.Mobile.bottom);
-  const FirstLabelPaddingLeft = getPreviewSize(props.deviceType, firstLabelPadding.Desktop.left, firstLabelPadding.Tablet.left, firstLabelPadding.Mobile.left);
-  const SecondLabelSize = getPreviewSize(props.deviceType, labelStyles.secondLabelfontSize, labelStyles.secondLabelfontSizeTablet, labelStyles.secondLabelfontSizeMobile);
-  const SecondLabelPaddingTop = getPreviewSize(props.deviceType, secondLabelPadding.Desktop.top, secondLabelPadding.Tablet.top, secondLabelPadding.Mobile.top);
-  const SecondLabelPaddingRight = getPreviewSize(props.deviceType, secondLabelPadding.Desktop.right, secondLabelPadding.Tablet.right, secondLabelPadding.Mobile.right);
-  const SecondLabelPaddingBottom = getPreviewSize(props.deviceType, secondLabelPadding.Desktop.bottom, secondLabelPadding.Tablet.bottom, secondLabelPadding.Mobile.bottom);
-  const SecondLabelPaddingLeft = getPreviewSize(props.deviceType, secondLabelPadding.Desktop.left, secondLabelPadding.Tablet.left, secondLabelPadding.Mobile.left);
-  const ContentHeight = getPreviewSize(props.deviceType, contentStyles.contentHeight, contentStyles.contentHeightTablet, contentStyles.contentHeightMobile);
-  const FirstContentSize = getPreviewSize(props.deviceType, firstContentStyles.firstContentfontSize, firstContentStyles.firstContentfontSizeTablet, firstContentStyles.firstContentfontSizeMobile);
-  const FirstContentMarginTop = getPreviewSize(props.deviceType, firstContentMargin.Desktop.top, firstContentMargin.Tablet.top, firstContentMargin.Mobile.top);
-  const FirstContentMarginRight = getPreviewSize(props.deviceType, firstContentMargin.Desktop.right, firstContentMargin.Tablet.right, firstContentMargin.Mobile.right);
-  const FirstContentMarginBottom = getPreviewSize(props.deviceType, firstContentMargin.Desktop.bottom, firstContentMargin.Tablet.bottom, firstContentMargin.Mobile.bottom);
-  const FirstContentMarginLeft = getPreviewSize(props.deviceType, firstContentMargin.Desktop.left, firstContentMargin.Tablet.left, firstContentMargin.Mobile.left);
-  const ContentPaddingTop = getPreviewSize(props.deviceType, contentPadding.Desktop.top, contentPadding.Tablet.top, contentPadding.Mobile.top);
-  const ContentPaddingRight = getPreviewSize(props.deviceType, contentPadding.Desktop.right, contentPadding.Tablet.right, contentPadding.Mobile.right);
-  const ContentPaddingBottom = getPreviewSize(props.deviceType, contentPadding.Desktop.bottom, contentPadding.Tablet.bottom, contentPadding.Mobile.bottom);
-  const ContentPaddingLeft = getPreviewSize(props.deviceType, contentPadding.Desktop.left, contentPadding.Tablet.left, contentPadding.Mobile.left);
-  const SecondContentSize = getPreviewSize(props.deviceType, secondContentStyles.secondContentfontSize, secondContentStyles.secondContentfontSizeTablet, secondContentStyles.secondContentfontSizeMobile);
-  const ContainerMarginTop = getPreviewSize(props.deviceType, containerMargin.Desktop.top, containerMargin.Tablet.top, containerMargin.Mobile.top);
-  const ContainerMarginRight = getPreviewSize(props.deviceType, containerMargin.Desktop.right, containerMargin.Tablet.right, containerMargin.Mobile.right);
-  const ContainerMarginBottom = getPreviewSize(props.deviceType, containerMargin.Desktop.bottom, containerMargin.Tablet.bottom, containerMargin.Mobile.bottom);
-  const ContainerMarginLeft = getPreviewSize(props.deviceType, containerMargin.Desktop.left, containerMargin.Tablet.left, containerMargin.Mobile.left);
-  const ContainerPaddingTop = getPreviewSize(props.deviceType, containerPadding.Desktop.top, containerPadding.Tablet.top, containerPadding.Mobile.top);
-  const ContainerPaddingRight = getPreviewSize(props.deviceType, containerPadding.Desktop.right, containerPadding.Tablet.right, containerPadding.Mobile.right);
-  const ContainerPaddingBottom = getPreviewSize(props.deviceType, containerPadding.Desktop.bottom, containerPadding.Tablet.bottom, containerPadding.Mobile.bottom);
-  const ContainerPaddingLeft = getPreviewSize(props.deviceType, containerPadding.Desktop.left, containerPadding.Tablet.left, containerPadding.Mobile.left);
-
-  const saveSwitcherStyles = (color, value) => {
-    const newColors = { ...switcherStyles
-    };
-    newColors[color] = value;
-    setAttributes({
-      switcherStyles: newColors
-    });
-  };
-
   const saveLabelStyles = (color, value) => {
     const newColors = { ...labelStyles
     };
     newColors[color] = value;
     setAttributes({
       labelStyles: newColors
-    });
-  };
-
-  const saveContentStyles = (color, value) => {
-    const newColors = { ...contentStyles
-    };
-    newColors[color] = value;
-    setAttributes({
-      contentStyles: newColors
     });
   };
 
@@ -4945,63 +5975,53 @@ function Edit(props) {
     });
   };
 
-  const saveContainerStyles = (color, value) => {
-    const newColors = { ...containerStyles
-    };
-    newColors[color] = value;
-    setAttributes({
-      containerStyles: newColors
-    });
-  };
-
   let loadFirstLabelGoogleFonts;
   let loadSecondLabelGoogleFonts;
   let loadFirstContentGoogleFonts;
-  let loadSecondContentGoogleFonts;
-
-  if (labelStyles.firstLabelFontFamily !== 'Default') {
-    const firstLabelconfig = {
-      google: {
-        families: [labelStyles.firstLabelFontFamily]
-      }
-    };
-    loadFirstLabelGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_16__["default"], {
-      config: firstLabelconfig
-    });
-  }
-
-  if (labelStyles.secondLabelFontFamily !== "Default") {
-    const secondLabelConfig = {
-      google: {
-        families: [labelStyles.secondLabelFontFamily]
-      }
-    };
-    loadSecondLabelGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_16__["default"], {
-      config: secondLabelConfig
-    });
-  }
-
-  if (firstContentStyles.firstContentFontFamily !== "Default") {
-    const firstContentConfig = {
-      google: {
-        families: [firstContentStyles.firstContentFontFamily]
-      }
-    };
-    loadFirstContentGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_16__["default"], {
-      config: firstContentConfig
-    });
-  }
-
-  if (secondContentStyles.secondContentFontFamily !== "Default") {
-    const secondContentConfig = {
-      google: {
-        families: [secondContentStyles.secondContentFontFamily]
-      }
-    };
-    loadSecondContentGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_16__["default"], {
-      config: secondContentConfig
-    });
-  }
+  let loadSecondContentGoogleFonts; // if (labelStyles.firstLabelFontFamily !== 'Default') {
+  //     const firstLabelconfig = {
+  //         google: {
+  //             families: [labelStyles.firstLabelFontFamily],
+  //         },
+  //     }
+  //     loadFirstLabelGoogleFonts = (
+  //         <WebfontLoader config={firstLabelconfig}>
+  //         </WebfontLoader>
+  //     )
+  // }
+  // if (labelStyles.secondLabelFontFamily !== "Default") {
+  //     const secondLabelConfig = {
+  //         google: {
+  //             families: [labelStyles.secondLabelFontFamily],
+  //         },
+  //     }
+  //     loadSecondLabelGoogleFonts = (
+  //         <WebfontLoader config={secondLabelConfig}>
+  //         </WebfontLoader>
+  //     )
+  // }
+  // if (firstContentStyles.firstContentFontFamily !== "Default") {
+  //     const firstContentConfig = {
+  //         google: {
+  //             families: [firstContentStyles.firstContentFontFamily],
+  //         }
+  //     }
+  //     loadFirstContentGoogleFonts = (
+  //         <WebfontLoader config={firstContentConfig}>
+  //         </WebfontLoader>
+  //     )
+  // }
+  // if (secondContentStyles.secondContentFontFamily !== "Default") {
+  //     const secondContentConfig = {
+  //         google: {
+  //             families: [secondContentStyles.secondContentFontFamily],
+  //         }
+  //     }
+  //     loadSecondContentGoogleFonts = (
+  //         <WebfontLoader config={secondContentConfig}>
+  //         </WebfontLoader>
+  //     )
+  // }
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.BlockControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.AlignmentToolbar, {
     value: align,
@@ -5134,31 +6154,19 @@ function Edit(props) {
       switchRadiusUnit: newSize
     })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_13__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Controller Shadow", 'premium-blocks-for-gutenberg'),
-    boxShadow: true,
-    color: switcherStyles.containerShadowColor,
-    blur: switcherStyles.containerShadowBlur,
-    horizontal: switcherStyles.containerShadowHorizontal,
-    vertical: switcherStyles.containerShadowVertical,
-    position: switcherStyles.containerShadowPosition,
-    onChangeColor: newColor => saveSwitcherStyles('containerShadowColor', newColor),
-    onChangeBlur: newBlur => saveSwitcherStyles('containerShadowBlur', newBlur),
-    onChangehHorizontal: newValue => saveSwitcherStyles('containerShadowHorizontal', newValue),
-    onChangeVertical: newValue => saveSwitcherStyles('containerShadowVertical', newValue),
-    onChangePosition: newValue => saveSwitcherStyles('containerShadowPosition', newValue)
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Controller Shadow", "premium-blocks-for-gutenberg"),
+    value: containerShadow,
+    onChange: value => setAttributes({
+      containerShadow: value
+    }),
+    boxShadow: true
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_13__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Switcher Shadow", 'premium-blocks-for-gutenberg'),
-    boxShadow: true,
-    color: switcherStyles.switchShadowColor,
-    blur: switcherStyles.switchShadowBlur,
-    horizontal: switcherStyles.switchShadowHorizontal,
-    vertical: switcherStyles.switchShadowVertical,
-    position: switcherStyles.switchShadowPosition,
-    onChangeColor: newColor => saveSwitcherStyles('switchShadowColor', newColor),
-    onChangeBlur: newBlur => saveSwitcherStyles('switchShadowBlur', newBlur),
-    onChangehHorizontal: newValue => saveSwitcherStyles('switchShadowHorizontal', newValue),
-    onChangeVertical: newValue => saveSwitcherStyles('switchShadowVertical', newValue),
-    onChangePosition: newValue => saveSwitcherStyles('switchShadowPosition', newValue)
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Switcher Shadow", "premium-blocks-for-gutenberg"),
+    value: switchShadow,
+    onChange: value => setAttributes({
+      switchShadow: value
+    }),
+    boxShadow: true
   })), showLabel && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Labels Style"),
     className: "premium-panel-body",
@@ -5174,207 +6182,85 @@ function Edit(props) {
     step: 1,
     showUnit: false,
     defaultValue: 15
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.TabPanel, {
-    className: "premium-color-tabpanel",
-    activeClass: "active-tab",
-    tabs: [{
-      name: "firstLabel",
-      title: "First Label",
-      className: "premium-tab"
-    }, {
-      name: "secondLabel",
-      title: "Second Label",
-      className: "premium-tab"
-    }]
-  }, tab => {
-    let tabout;
-
-    if ("firstLabel" === tab.name) {
-      tabout = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Text Color", 'premium-block-for-gutenberg'),
-        colorValue: labelStyles.firstLabelColor,
-        colorDefault: '',
-        onColorChange: newValue => saveLabelStyles('firstLabelColor', newValue)
-      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_12__["default"], {
-        components: ["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"],
-        setAttributes: saveLabelStyles,
-        fontSizeType: {
-          value: labelStyles.firstLabelfontSizeType,
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("firstLabelfontSizeType")
-        },
-        fontSize: labelStyles.firstLabelfontSize,
-        fontSizeMobile: labelStyles.firstLabelfontSizeMobile,
-        fontSizeTablet: labelStyles.firstLabelfontSizeTablet,
-        onChangeSize: newSize => saveLabelStyles('firstLabelfontSize', newSize),
-        onChangeTabletSize: newSize => saveLabelStyles('firstLabelfontSizeTablet', newSize),
-        onChangeMobileSize: newSize => saveLabelStyles('firstLabelfontSizeMobile', newSize),
-        weight: labelStyles.firstLabelWeight,
-        style: labelStyles.firstLabelStyle,
-        spacing: labelStyles.firstLabelLetter,
-        upper: labelStyles.firstLabelUpper,
-        line: labelStyles.firstLabelLine,
-        fontFamily: labelStyles.firstLabelFontFamily,
-        onChangeWeight: newWeight => saveLabelStyles('firstLabelWeight', newWeight || 500),
-        onChangeStyle: newStyle => saveLabelStyles('firstLabelStyle', newStyle),
-        onChangeSpacing: newValue => saveLabelStyles('firstLabelLetter', newValue),
-        onChangeUpper: check => saveLabelStyles('firstLabelUpper', check),
-        onChangeLine: newValue => saveLabelStyles('firstLabelLine', newValue),
-        onChangeFamily: fontFamily => saveLabelStyles('firstLabelFontFamily', fontFamily)
-      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_13__["default"], {
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Text Shadow", 'premium-blocks-for-gutenberg'),
-        color: labelStyles.firstLabelShadowColor,
-        blur: labelStyles.firstLabelShadowBlur,
-        horizontal: labelStyles.firstLabelShadowHorizontal,
-        vertical: labelStyles.firstLabelShadowVertical,
-        onChangeColor: newColor => saveLabelStyles('firstLabelShadowColor', newColor),
-        onChangeBlur: newBlur => saveLabelStyles('firstLabelShadowBlur', newBlur),
-        onChangehHorizontal: newValue => saveLabelStyles('firstLabelShadowHorizontal', newValue),
-        onChangeVertical: newValue => saveLabelStyles('firstLabelShadowVertical', newValue)
-      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_14__["default"], {
-        borderType: labelStyles.firstLabelborderType,
-        borderWidth: firstLabelBorderWidth,
-        top: firstLabelBorderTop,
-        right: firstLabelBorderRight,
-        bottom: firstLabelBorderBottom,
-        left: firstLabelBorderLeft,
-        borderColor: labelStyles.firstLabelborderColor,
-        borderRadius: labelStyles.firstLabelborderRadius,
-        onChangeType: newType => saveLabelStyles('firstLabelborderType', newType),
-        onChangeWidth: _ref => {
-          let {
-            top,
-            right,
-            bottom,
-            left
-          } = _ref;
-          return setAttributes({
-            firstLabelBorderUpdated: true,
-            firstLabelBorderTop: top,
-            firstLabelBorderRight: right,
-            firstLabelBorderBottom: bottom,
-            firstLabelBorderLeft: left
-          });
-        },
-        onChangeColor: colorValue => saveLabelStyles('firstLabelborderColor', colorValue),
-        onChangeRadius: newrRadius => saveLabelStyles('firstLabelborderRadius', newrRadius)
-      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_13__["default"], {
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Box Shadow", 'premium-blocks-for-gutenberg'),
-        boxShadow: true,
-        color: labelStyles.firstLabelBoxShadowColor,
-        blur: labelStyles.firstLabelBoxShadowBlur,
-        horizontal: labelStyles.firstLabelBoxShadowHorizontal,
-        vertical: labelStyles.firstLabelBoxShadowVertical,
-        position: labelStyles.firstLabelBoxShadowPosition,
-        onChangeColor: newColor => saveLabelStyles('firstLabelBoxShadowColor', newColor),
-        onChangeBlur: newBlur => saveLabelStyles('firstLabelBoxShadowBlur', newBlur),
-        onChangehHorizontal: newValue => saveLabelStyles('firstLabelBoxShadowHorizontal', newValue),
-        onChangeVertical: newValue => saveLabelStyles('firstLabelBoxShadowVertical', newValue),
-        onChangePosition: newValue => saveLabelStyles('firstLabelBoxShadowPosition', newValue)
-      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_15__["default"], {
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Padding', 'premium-blocks-for-gutenberg'),
-        value: firstLabelPadding,
-        onChange: value => setAttributes({
-          firstLabelPadding: value
-        }),
-        showUnits: true,
-        responsive: true
-      }));
-    }
-
-    if ("secondLabel" === tab.name) {
-      tabout = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Text Color", 'premium-block-for-gutenberg'),
-        colorValue: labelStyles.secondLabelColor,
-        colorDefault: '',
-        onColorChange: newValue => saveLabelStyles('secondLabelColor', newValue)
-      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_12__["default"], {
-        components: ["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"],
-        setAttributes: saveLabelStyles,
-        fontSizeType: {
-          value: labelStyles.secondLabelfontSizeType,
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("secondLabelfontSizeType")
-        },
-        fontSize: labelStyles.secondLabelfontSize,
-        fontSizeMobile: labelStyles.secondLabelfontSizeMobile,
-        fontSizeTablet: labelStyles.secondLabelfontSizeTablet,
-        onChangeSize: newSize => saveLabelStyles('secondLabelfontSize', newSize),
-        onChangeTabletSize: newSize => saveLabelStyles('secondLabelfontSizeTablet', newSize),
-        onChangeMobileSize: newSize => saveLabelStyles('secondLabelfontSizeMobile', newSize),
-        weight: labelStyles.secondLabelWeight,
-        style: labelStyles.secondLabelStyle,
-        spacing: labelStyles.secondLabelLetter,
-        upper: labelStyles.secondLabelUpper,
-        line: labelStyles.secondLabelLine,
-        fontFamily: labelStyles.secondLabelFontFamily,
-        onChangeWeight: newWeight => saveLabelStyles('secondLabelWeight', newWeight || 500),
-        onChangeStyle: newStyle => saveLabelStyles('secondLabelStyle', newStyle),
-        onChangeSpacing: newValue => saveLabelStyles('secondLabelLetter', newValue),
-        onChangeUpper: check => saveLabelStyles('secondLabelUpper', check),
-        onChangeLine: newValue => saveLabelStyles('secondLabelLine', newValue),
-        onChangeFamily: fontFamily => saveLabelStyles('secondLabelFontFamily', fontFamily)
-      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_13__["default"], {
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Text Shadow", 'premium-blocks-for-gutenberg'),
-        color: labelStyles.secondLabelShadowColor,
-        blur: labelStyles.secondLabelShadowBlur,
-        horizontal: labelStyles.secondLabelShadowHorizontal,
-        vertical: labelStyles.secondLabelShadowVertical,
-        onChangeColor: newColor => saveLabelStyles('secondLabelShadowColor', newColor),
-        onChangeBlur: newBlur => saveLabelStyles('secondLabelShadowBlur', newBlur),
-        onChangehHorizontal: newValue => saveLabelStyles('secondLabelShadowHorizontal', newValue),
-        onChangeVertical: newValue => saveLabelStyles('secondLabelShadowVertical', newValue)
-      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_14__["default"], {
-        borderType: labelStyles.secondLabelborderType,
-        borderWidth: secondLabelBorderWidth,
-        top: secondLabelBorderTop,
-        right: secondLabelBorderRight,
-        bottom: secondLabelBorderBottom,
-        left: secondLabelBorderLeft,
-        borderColor: labelStyles.secondLabelborderColor,
-        borderRadius: labelStyles.secondLabelborderRadius,
-        onChangeType: newType => saveLabelStyles('secondLabelborderType', newType),
-        onChangeWidth: _ref2 => {
-          let {
-            top,
-            right,
-            bottom,
-            left
-          } = _ref2;
-          return setAttributes({
-            secondLabelBorderUpdated: true,
-            secondLabelBorderTop: top,
-            secondLabelBorderRight: right,
-            secondLabelBorderBottom: bottom,
-            secondLabelBorderLeft: left
-          });
-        },
-        onChangeColor: colorValue => saveLabelStyles('secondLabelborderColor', colorValue),
-        onChangeRadius: newrRadius => saveLabelStyles('secondLabelborderRadius', newrRadius)
-      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_13__["default"], {
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Box Shadow", 'premium-blocks-for-gutenberg'),
-        boxShadow: true,
-        color: labelStyles.secondLabelBoxShadowColor,
-        blur: labelStyles.secondLabelBoxShadowBlur,
-        horizontal: labelStyles.secondLabelBoxShadowHorizontal,
-        vertical: labelStyles.secondLabelBoxShadowVertical,
-        position: labelStyles.secondLabelBoxShadowPosition,
-        onChangeColor: newColor => saveLabelStyles('secondLabelBoxShadowColor', newColor),
-        onChangeBlur: newBlur => saveLabelStyles('secondLabelBoxShadowBlur', newBlur),
-        onChangehHorizontal: newValue => saveLabelStyles('secondLabelBoxShadowHorizontal', newValue),
-        onChangeVertical: newValue => saveLabelStyles('secondLabelBoxShadowVertical', newValue),
-        onChangePosition: newValue => saveLabelStyles('secondLabelBoxShadowPosition', newValue)
-      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_15__["default"], {
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Padding', 'premium-blocks-for-gutenberg'),
-        value: secondLabelPadding,
-        onChange: value => setAttributes({
-          secondLabelPadding: value
-        }),
-        showUnits: true,
-        responsive: true
-      }));
-    }
-
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null, tabout);
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.PanelBody, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_InsideTabs__WEBPACK_IMPORTED_MODULE_19__["default"], null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_InsideTab__WEBPACK_IMPORTED_MODULE_20__["default"], {
+    tabTitle: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('First Label')
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_12__["default"], {
+    components: ["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"],
+    value: firstLabelTypography,
+    onChange: newValue => setAttributes({
+      firstLabelTypography: newValue
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Text Color", 'premium-block-for-gutenberg'),
+    colorValue: labelStyles.firstLabelColor,
+    colorDefault: '',
+    onColorChange: newValue => saveLabelStyles('firstLabelColor', newValue)
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_13__["default"], {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Text Shadow", "premium-blocks-for-gutenberg"),
+    value: firstLabelShadow,
+    onChange: value => setAttributes({
+      firstLabelShadow: value
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_13__["default"], {
+    value: firstLabelBoxShadow,
+    onChange: value => setAttributes({
+      firstLabelBoxShadow: value
+    }),
+    boxShadow: true
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_14__["default"], {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Border', 'premium-blocks-for-gutenberg'),
+    value: firstLabelborder,
+    onChange: value => setAttributes({
+      firstLabelborder: value
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_15__["default"], {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Padding', 'premium-blocks-for-gutenberg'),
+    value: firstLabelPadding,
+    onChange: value => setAttributes({
+      firstLabelPadding: value
+    }),
+    showUnits: true,
+    responsive: true
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_InsideTab__WEBPACK_IMPORTED_MODULE_20__["default"], {
+    tabTitle: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Second Label')
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_12__["default"], {
+    components: ["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"],
+    value: secondLabelTypography,
+    onChange: newValue => setAttributes({
+      secondLabelTypography: newValue
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Text Color", 'premium-block-for-gutenberg'),
+    colorValue: labelStyles.secondLabelColor,
+    colorDefault: '',
+    onColorChange: newValue => saveLabelStyles('secondLabelColor', newValue)
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_13__["default"], {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Text Shadow", "premium-blocks-for-gutenberg"),
+    value: secondLabelShadow,
+    onChange: value => setAttributes({
+      secondLabelShadow: value
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_13__["default"], {
+    value: secondLabelBoxShadow,
+    onChange: value => setAttributes({
+      secondLabelBoxShadow: value
+    }),
+    boxShadow: true
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_14__["default"], {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Border', 'premium-blocks-for-gutenberg'),
+    value: secondLabelborder,
+    onChange: value => setAttributes({
+      secondLabelborder: value
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_15__["default"], {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Padding', 'premium-blocks-for-gutenberg'),
+    value: secondLabelPadding,
+    onChange: value => setAttributes({
+      secondLabelPadding: value
+    }),
+    showUnits: true,
+    responsive: true
+  }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Content Style"),
     className: "premium-panel-body",
     initialOpen: false
@@ -5390,201 +6276,79 @@ function Edit(props) {
     showUnit: true,
     units: ['px', 'em', 'rem'],
     defaultValue: 100
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.TabPanel, {
-    className: "premium-color-tabpanel",
-    activeClass: "active-tab",
-    tabs: [{
-      name: "first",
-      title: "First Content",
-      className: "premium-tab"
-    }, {
-      name: "second",
-      title: "Second Content",
-      className: "premium-tab"
-    }]
-  }, tab => {
-    let tabout;
-
-    if ("first" === tab.name) {
-      tabout = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Text Color", 'premium-block-for-gutenberg'),
-        colorValue: firstContentStyles.firstContentColor,
-        colorDefault: '',
-        onColorChange: newValue => saveFirstContentStyles('firstContentColor', newValue)
-      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Background Color", 'premium-block-for-gutenberg'),
-        colorValue: firstContentStyles.firstContentBGColor,
-        colorDefault: '',
-        onColorChange: newValue => saveFirstContentStyles('firstContentBGColor', newValue)
-      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_12__["default"], {
-        components: ["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"],
-        setAttributes: saveFirstContentStyles,
-        fontSizeType: {
-          value: firstContentStyles.firstContentfontSizeType,
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("firstContentfontSizeType")
-        },
-        fontSize: firstContentStyles.firstContentfontSize,
-        fontSizeMobile: firstContentStyles.firstContentfontSizeMobile,
-        fontSizeTablet: firstContentStyles.firstContentfontSizeTablet,
-        onChangeSize: newSize => saveFirstContentStyles('firstContentfontSize', newSize),
-        onChangeTabletSize: newSize => saveFirstContentStyles('firstContentfontSizeTablet', newSize),
-        onChangeMobileSize: newSize => saveFirstContentStyles('firstContentfontSizeMobile', newSize),
-        weight: firstContentStyles.firstContentWeight,
-        style: firstContentStyles.firstContentStyle,
-        spacing: firstContentStyles.firstContentLetter,
-        upper: firstContentStyles.firstContentUpper,
-        line: firstContentStyles.firstContentLine,
-        fontFamily: firstContentStyles.firstContentFontFamily,
-        onChangeWeight: newWeight => saveFirstContentStyles('firstContentWeight', newWeight || 500),
-        onChangeStyle: newStyle => saveFirstContentStyles('firstContentStyle', newStyle),
-        onChangeSpacing: newValue => saveFirstContentStyles('firstContentLetter', newValue),
-        onChangeUpper: check => saveFirstContentStyles('firstContentUpper', check),
-        onChangeLine: newValue => saveFirstContentStyles('firstContentLine', newValue),
-        onChangeFamily: fontFamily => saveFirstContentStyles('firstContentFontFamily', fontFamily)
-      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_13__["default"], {
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Text Shadow", 'premium-blocks-for-gutenberg'),
-        color: firstContentStyles.firstContentShadowColor,
-        blur: firstContentStyles.firstContentShadowBlur,
-        horizontal: firstContentStyles.firstContentShadowHorizontal,
-        vertical: firstContentStyles.firstContentShadowVertical,
-        onChangeColor: newColor => saveFirstContentStyles('firstContentShadowColor', newColor),
-        onChangeBlur: newBlur => saveFirstContentStyles('firstContentShadowBlur', newBlur),
-        onChangehHorizontal: newValue => saveFirstContentStyles('firstContentShadowHorizontal', newValue),
-        onChangeVertical: newValue => saveFirstContentStyles('firstContentShadowVertical', newValue)
-      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_14__["default"], {
-        borderType: firstContentStyles.firstContentborderType,
-        borderWidth: firstContentBorderWidth,
-        top: firstContentBorderTop,
-        right: firstContentBorderRight,
-        bottom: firstContentBorderBottom,
-        left: firstContentBorderLeft,
-        borderColor: firstContentStyles.firstContentborderColor,
-        borderRadius: firstContentStyles.firstContentborderRadius,
-        onChangeType: newType => saveFirstContentStyles('firstContentborderType', newType),
-        onChangeWidth: _ref3 => {
-          let {
-            top,
-            right,
-            bottom,
-            left
-          } = _ref3;
-          return setAttributes({
-            firstContentBorderUpdated: true,
-            firstContentBorderTop: top,
-            firstContentBorderRight: right,
-            firstContentBorderBottom: bottom,
-            firstContentBorderLeft: left
-          });
-        },
-        onChangeColor: colorValue => saveFirstContentStyles('firstContentborderColor', colorValue),
-        onChangeRadius: newrRadius => saveFirstContentStyles('firstContentborderRadius', newrRadius)
-      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_13__["default"], {
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Box Shadow", 'premium-blocks-for-gutenberg'),
-        boxShadow: true,
-        color: firstContentStyles.firstContentBoxShadowColor,
-        blur: firstContentStyles.firstContentBoxShadowBlur,
-        horizontal: firstContentStyles.firstContentBoxShadowHorizontal,
-        vertical: firstContentStyles.firstContentBoxShadowVertical,
-        position: firstContentStyles.firstContentBoxShadowPosition,
-        onChangeColor: newColor => saveFirstContentStyles('firstContentBoxShadowColor', newColor),
-        onChangeBlur: newBlur => saveFirstContentStyles('firstContentBoxShadowBlur', newBlur),
-        onChangehHorizontal: newValue => saveFirstContentStyles('firstContentBoxShadowHorizontal', newValue),
-        onChangeVertical: newValue => saveFirstContentStyles('firstContentBoxShadowVertical', newValue),
-        onChangePosition: newValue => saveFirstContentStyles('firstContentBoxShadowPosition', newValue)
-      }));
-    }
-
-    if ("second" === tab.name) {
-      tabout = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Text Color", 'premium-block-for-gutenberg'),
-        colorValue: secondContentStyles.secondContentColor,
-        colorDefault: '',
-        onColorChange: newValue => saveSecondContentStyles('secondContentColor', newValue)
-      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Background Color", 'premium-block-for-gutenberg'),
-        colorValue: secondContentStyles.secondContentBGColor,
-        colorDefault: '',
-        onColorChange: newValue => saveSecondContentStyles('secondContentBGColor', newValue)
-      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_12__["default"], {
-        components: ["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"],
-        setAttributes: saveSecondContentStyles,
-        fontSizeType: {
-          value: secondContentStyles.secondContentfontSizeType,
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("secondContentfontSizeType")
-        },
-        fontSize: secondContentStyles.secondContentfontSize,
-        fontSizeMobile: secondContentStyles.secondContentfontSizeMobile,
-        fontSizeTablet: secondContentStyles.secondContentfontSizeTablet,
-        onChangeSize: newSize => saveSecondContentStyles('secondContentfontSize', newSize),
-        onChangeTabletSize: newSize => saveSecondContentStyles('secondContentfontSizeTablet', newSize),
-        onChangeMobileSize: newSize => saveSecondContentStyles('secondContentfontSizeMobile', newSize),
-        weight: secondContentStyles.secondContentWeight,
-        style: secondContentStyles.secondContentStyle,
-        spacing: secondContentStyles.secondContentLetter,
-        upper: secondContentStyles.secondContentUpper,
-        line: secondContentStyles.secondContentLine,
-        fontFamily: secondContentStyles.secondContentFontFamily,
-        onChangeWeight: newWeight => saveSecondContentStyles('secondContentWeight', newWeight || 500),
-        onChangeStyle: newStyle => saveSecondContentStyles('secondContentStyle', newStyle),
-        onChangeSpacing: newValue => saveSecondContentStyles('secondContentLetter', newValue),
-        onChangeUpper: check => saveSecondContentStyles('secondContentUpper', check),
-        onChangeLine: newValue => saveSecondContentStyles('secondContentLine', newValue),
-        onChangeFamily: fontFamily => saveSecondContentStyles('secondContentFontFamily', fontFamily)
-      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_13__["default"], {
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Text Shadow", 'premium-blocks-for-gutenberg'),
-        color: secondContentStyles.secondContentShadowColor,
-        blur: secondContentStyles.secondContentShadowBlur,
-        horizontal: secondContentStyles.secondContentShadowHorizontal,
-        vertical: secondContentStyles.secondContentShadowVertical,
-        onChangeColor: newColor => saveSecondContentStyles('secondContentShadowColor', newColor),
-        onChangeBlur: newBlur => saveSecondContentStyles('secondContentShadowBlur', newBlur),
-        onChangehHorizontal: newValue => saveSecondContentStyles('secondContentShadowHorizontal', newValue),
-        onChangeVertical: newValue => saveSecondContentStyles('secondContentShadowVertical', newValue)
-      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_14__["default"], {
-        borderType: secondContentStyles.secondContentborderType,
-        borderWidth: secondContentBorderWidth,
-        top: secondContentBorderTop,
-        right: secondContentBorderRight,
-        bottom: secondContentBorderBottom,
-        left: secondContentBorderLeft,
-        borderColor: secondContentStyles.secondContentborderColor,
-        borderRadius: secondContentStyles.secondContentborderRadius,
-        onChangeType: newType => saveSecondContentStyles('secondContentborderType', newType),
-        onChangeWidth: _ref4 => {
-          let {
-            top,
-            right,
-            bottom,
-            left
-          } = _ref4;
-          return setAttributes({
-            secondContentBorderUpdated: true,
-            secondContentBorderTop: top,
-            secondContentBorderRight: right,
-            secondContentBorderBottom: bottom,
-            secondContentBorderLeft: left
-          });
-        },
-        onChangeColor: colorValue => saveSecondContentStyles('secondContentborderColor', colorValue),
-        onChangeRadius: newrRadius => saveSecondContentStyles('secondContentborderRadius', newrRadius)
-      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_13__["default"], {
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Box Shadow", 'premium-blocks-for-gutenberg'),
-        boxShadow: true,
-        color: secondContentStyles.secondContentBoxShadowColor,
-        blur: secondContentStyles.secondContentBoxShadowBlur,
-        horizontal: secondContentStyles.secondContentBoxShadowHorizontal,
-        vertical: secondContentStyles.secondContentBoxShadowVertical,
-        position: secondContentStyles.secondContentBoxShadowPosition,
-        onChangeColor: newColor => saveSecondContentStyles('secondContentBoxShadowColor', newColor),
-        onChangeBlur: newBlur => saveSecondContentStyles('secondContentBoxShadowBlur', newBlur),
-        onChangehHorizontal: newValue => saveSecondContentStyles('secondContentBoxShadowHorizontal', newValue),
-        onChangeVertical: newValue => saveSecondContentStyles('secondContentBoxShadowVertical', newValue),
-        onChangePosition: newValue => saveSecondContentStyles('secondContentBoxShadowPosition', newValue)
-      }));
-    }
-
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null, tabout);
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_15__["default"], {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_InsideTabs__WEBPACK_IMPORTED_MODULE_19__["default"], null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_InsideTab__WEBPACK_IMPORTED_MODULE_20__["default"], {
+    tabTitle: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('First Content')
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_12__["default"], {
+    components: ["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"],
+    value: firstContentTypography,
+    onChange: newValue => setAttributes({
+      firstContentTypography: newValue
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Text Color", 'premium-block-for-gutenberg'),
+    colorValue: firstContentStyles.firstContentColor,
+    colorDefault: '',
+    onColorChange: newValue => saveFirstContentStyles('firstContentColor', newValue)
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Background Color", 'premium-block-for-gutenberg'),
+    colorValue: firstContentStyles.firstContentBGColor,
+    colorDefault: '',
+    onColorChange: newValue => saveFirstContentStyles('firstContentBGColor', newValue)
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_13__["default"], {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Text Shadow", "premium-blocks-for-gutenberg"),
+    value: firstContentShadow,
+    onChange: value => setAttributes({
+      firstContentShadow: value
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_13__["default"], {
+    value: firstContentBoxShadow,
+    onChange: value => setAttributes({
+      firstContentBoxShadow: value
+    }),
+    boxShadow: true
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_14__["default"], {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Border', 'premium-blocks-for-gutenberg'),
+    value: firstContentborder,
+    onChange: value => setAttributes({
+      firstContentborder: value
+    })
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_InsideTab__WEBPACK_IMPORTED_MODULE_20__["default"], {
+    tabTitle: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Second Content')
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_12__["default"], {
+    components: ["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"],
+    value: secondContentTypography,
+    onChange: newValue => setAttributes({
+      secondContentTypography: newValue
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Text Color", 'premium-block-for-gutenberg'),
+    colorValue: secondContentStyles.secondContentColor,
+    colorDefault: '',
+    onColorChange: newValue => saveSecondContentStyles('secondContentColor', newValue)
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Background Color", 'premium-block-for-gutenberg'),
+    colorValue: secondContentStyles.secondContentBGColor,
+    colorDefault: '',
+    onColorChange: newValue => saveSecondContentStyles('secondContentBGColor', newValue)
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_13__["default"], {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Text Shadow", "premium-blocks-for-gutenberg"),
+    value: secondContentShadow,
+    onChange: value => setAttributes({
+      secondContentShadow: value
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_13__["default"], {
+    value: secondContentBoxShadow,
+    onChange: value => setAttributes({
+      secondContentBoxShadow: value
+    }),
+    boxShadow: true
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_14__["default"], {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Border', 'premium-blocks-for-gutenberg'),
+    value: secondContentborder,
+    onChange: value => setAttributes({
+      secondContentborder: value
+    })
+  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_15__["default"], {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Margin', 'premium-blocks-for-gutenberg'),
     value: firstContentMargin,
     onChange: value => setAttributes({
@@ -5604,47 +6368,19 @@ function Edit(props) {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Container Style"),
     className: "premium-panel-body",
     initialOpen: false
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_14__["default"], {
-    borderType: containerStyles.containerborderType,
-    borderWidth: containerBorderWidth,
-    top: containerBorderTop,
-    right: containerBorderRight,
-    bottom: containerBorderBottom,
-    left: containerBorderLeft,
-    borderColor: containerStyles.containerborderColor,
-    borderRadius: containerStyles.containerborderRadius,
-    onChangeType: newType => saveContainerStyles('containerborderType', newType),
-    onChangeWidth: _ref5 => {
-      let {
-        top,
-        right,
-        bottom,
-        left
-      } = _ref5;
-      return setAttributes({
-        containerBorderUpdated: true,
-        containerBorderTop: top,
-        containerBorderRight: right,
-        containerBorderBottom: bottom,
-        containerBorderLeft: left
-      });
-    },
-    onChangeColor: colorValue => saveContainerStyles('containerborderColor', colorValue),
-    onChangeRadius: newrRadius => saveContainerStyles('containerborderRadius', newrRadius)
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_13__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Box Shadow", 'premium-blocks-for-gutenberg'),
-    boxShadow: true,
-    color: containerStyles.containerBoxShadowColor,
-    blur: containerStyles.containerBoxShadowBlur,
-    horizontal: containerStyles.containerBoxShadowHorizontal,
-    vertical: containerStyles.containerBoxShadowVertical,
-    position: containerStyles.containerBoxShadowPosition,
-    onChangeColor: newColor => saveContainerStyles('containerBoxShadowColor', newColor),
-    onChangeBlur: newBlur => saveContainerStyles('containerBoxShadowBlur', newBlur),
-    onChangehHorizontal: newValue => saveContainerStyles('containerBoxShadowHorizontal', newValue),
-    onChangeVertical: newValue => saveContainerStyles('containerBoxShadowVertical', newValue),
-    onChangePosition: newValue => saveContainerStyles('containerBoxShadowPosition', newValue)
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_15__["default"], {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_13__["default"], {
+    value: containerBoxShadow,
+    onChange: value => setAttributes({
+      containerBoxShadow: value
+    }),
+    boxShadow: true
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_14__["default"], {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Border', 'premium-blocks-for-gutenberg'),
+    value: containerborder,
+    onChange: value => setAttributes({
+      containerborder: value
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_15__["default"], {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Margin', 'premium-blocks-for-gutenberg'),
     value: containerMargin,
     onChange: value => setAttributes({
@@ -5662,14 +6398,27 @@ function Edit(props) {
     responsive: true
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_18__["default"], {
     key: 'advance'
-  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("style", null, `
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_21__["default"], {
+    Desktop: hideDesktop,
+    Tablet: hideTablet,
+    Mobile: hideMobile,
+    onChangeDesktop: value => setAttributes({
+      hideDesktop: value ? " premium-desktop-hidden" : ""
+    }),
+    onChangeTablet: value => setAttributes({
+      hideTablet: value ? " premium-tablet-hidden" : ""
+    }),
+    onChangeMobile: value => setAttributes({
+      hideMobile: value ? " premium-mobile-hidden" : ""
+    })
+  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("style", null, `
                      #premium-content-switcher-${block_id} .premium-content-switcher-toggle-switch-slider:before {
                          border-radius: ${containerRadius || 50}${containerRadiusUnit} !important;
-                         box-shadow: ${switcherStyles.containerShadowHorizontal}px ${switcherStyles.containerShadowVertical}px ${switcherStyles.containerShadowBlur}px ${switcherStyles.containerShadowColor} ${switcherStyles.containerShadowPosition};
+                         box-shadow: ${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position} !important;
                      }
                     #premium-content-switcher-${block_id} .premium-content-switcher-toggle-switch-slider {
                         border-radius: ${switchRadius}${switchRadiusUnit} !important;
-                         box-shadow: ${switcherStyles.switchShadowHorizontal}px ${switcherStyles.switchShadowVertical}px ${switcherStyles.switchShadowBlur}px ${switcherStyles.switchShadowColor} ${switcherStyles.switchShadowPosition};
+                         box-shadow: ${switchShadow.horizontal}px ${switchShadow.vertical}px ${switchShadow.blur}px ${switchShadow.color} ${switchShadow.position} !important;
                      }
                      #premium-content-switcher-${block_id} .premium-content-switcher-toggle-inline .premium-content-switcher-first-label {
                          margin-right: ${labelSpacing[props.deviceType]}px !important;
@@ -5684,7 +6433,7 @@ function Edit(props) {
                         margin-top: ${labelSpacing[props.deviceType]}px !important;
                     }
                  `), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.useBlockProps)({
-    className: classnames__WEBPACK_IMPORTED_MODULE_3___default()(className, `premium-block-${props.clientId}`)
+    className: classnames__WEBPACK_IMPORTED_MODULE_3___default()(className, `premium-block-${props.clientId} ${hideDesktop} ${hideTablet} ${hideMobile}`)
   }), {
     id: `premium-content-switcher-${block_id}`,
     style: {
@@ -5692,27 +6441,17 @@ function Edit(props) {
     }
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-content-switcher`,
-    style: {
+    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_22__.borderCss)(containerborder, props.deviceType),
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_22__.padddingCss)(containerPadding, props.deviceType),
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_22__.marginCss)(containerMargin, props.deviceType),
       textAlign: align,
       backgroundColor: backgroundType === "solid" ? containerStyles.containerBack : "transparent",
-      boxShadow: `${containerStyles.containerBoxShadowHorizontal}px ${containerStyles.containerBoxShadowVertical}px ${containerStyles.containerBoxShadowBlur}px ${containerStyles.containerBoxShadowColor} ${containerStyles.containerBoxShadowPosition}`,
       backgroundImage: btnbg,
       backgroundRepeat: containerStyles.backgroundRepeat,
       backgroundPosition: containerStyles.backgroundPosition,
       backgroundSize: containerStyles.backgroundSize,
       backgroundAttachment: containerStyles.fixed ? "fixed" : "unset",
-      borderStyle: containerStyles.containerborderType,
-      borderWidth: containerBorderUpdated ? `${containerBorderTop}px ${containerBorderRight}px ${containerBorderBottom}px ${containerBorderLeft}px` : containerBorderWidth + "px",
-      borderRadius: containerStyles.containerborderRadius + "px",
-      borderColor: containerStyles.containerborderColor,
-      paddingTop: ContainerPaddingTop + containerPadding.unit,
-      paddingRight: ContainerPaddingRight + containerPadding.unit,
-      paddingBottom: ContainerPaddingBottom + containerPadding.unit,
-      paddingLeft: ContainerPaddingLeft + containerPadding.unit,
-      marginTop: ContainerMarginTop + containerMargin.unit,
-      marginBottom: ContainerMarginBottom + containerMargin.unit,
-      marginLeft: ContainerMarginLeft + containerMargin.unit,
-      marginRight: ContainerMarginRight + containerMargin.unit
+      boxShadow: `${containerBoxShadow.horizontal || 0}px ${containerBoxShadow.vertical || 0}px ${containerBoxShadow.blur || 0}px ${containerBoxShadow.color} ${containerBoxShadow.position}`
     }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-content-switcher-toggle-${display}`,
@@ -5730,26 +6469,13 @@ function Edit(props) {
       firstLabel: newValue
     }),
     value: firstLabel,
-    style: {
+    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_22__.typographyCss)(firstLabelTypography, props.deviceType),
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_22__.borderCss)(firstLabelborder, props.deviceType),
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_22__.padddingCss)(firstLabelPadding, props.deviceType),
       margin: 0,
       color: labelStyles.firstLabelColor,
-      fontSize: FirstLabelSize + labelStyles.firstLabelfontSizeType,
-      letterSpacing: labelStyles.firstLabelLetter + "px",
-      textTransform: labelStyles.firstLabelUpper ? "uppercase" : "none",
-      fontStyle: labelStyles.firstLabelStyle,
-      fontWeight: labelStyles.firstLabelWeight,
-      lineHeight: (labelStyles.firstLabelLine ? labelStyles.firstLabelLine : "") + "px",
-      fontFamily: labelStyles.firstLabelFontFamily,
-      borderStyle: labelStyles.firstLabelborderType,
-      borderWidth: firstLabelBorderUpdated ? `${firstLabelBorderTop}px ${firstLabelBorderRight}px ${firstLabelBorderBottom}px ${firstLabelBorderLeft}px` : firstLabelBorderWidth + "px",
-      borderRadius: labelStyles.firstLabelborderRadius + "px",
-      borderColor: labelStyles.firstLabelborderColor,
-      paddingTop: FirstLabelPaddingTop + firstLabelPadding.unit,
-      paddingBottom: FirstLabelPaddingBottom + firstLabelPadding.unit,
-      paddingLeft: FirstLabelPaddingLeft + firstLabelPadding.unit,
-      paddingRight: FirstLabelPaddingRight + firstLabelPadding.unit,
-      textShadow: `${labelStyles.firstLabelShadowHorizontal}px ${labelStyles.firstLabelShadowVertical}px ${labelStyles.firstLabelShadowBlur}px ${labelStyles.firstLabelShadowColor}`,
-      boxShadow: `${labelStyles.firstLabelBoxShadowHorizontal}px ${labelStyles.firstLabelBoxShadowVertical}px ${labelStyles.firstLabelBoxShadowBlur}px ${labelStyles.firstLabelBoxShadowColor} ${labelStyles.firstLabelBoxShadowPosition}`
+      textShadow: `${firstLabelShadow.horizontal || 0}px ${firstLabelShadow.vertical || 0}px ${firstLabelShadow.blur || 0}px ${firstLabelShadow.color}`,
+      boxShadow: `${firstLabelBoxShadow.horizontal || 0}px ${firstLabelBoxShadow.vertical || 0}px ${firstLabelBoxShadow.blur || 0}px ${firstLabelBoxShadow.color} ${firstLabelBoxShadow.position}`
     }
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "premium-content-switcher-toggle-switch",
@@ -5773,52 +6499,28 @@ function Edit(props) {
       secondLabel: newValue
     }),
     value: secondLabel,
-    style: {
+    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_22__.typographyCss)(secondLabelTypography, props.deviceType),
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_22__.borderCss)(secondLabelborder, props.deviceType),
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_22__.padddingCss)(secondLabelPadding, props.deviceType),
       margin: 0,
       color: labelStyles.secondLabelColor,
-      fontSize: SecondLabelSize + labelStyles.secondLabelfontSizeType,
-      letterSpacing: labelStyles.secondLabelLetter + "px",
-      textTransform: labelStyles.secondLabelUpper ? "uppercase" : "none",
-      fontStyle: labelStyles.secondLabelStyle,
-      fontWeight: labelStyles.secondLabelWeight,
-      lineHeight: (labelStyles.secondLabelLine ? labelStyles.secondLabelLine : "") + "px",
-      fontFamily: labelStyles.secondLabelFontFamily,
-      borderStyle: labelStyles.secondLabelborderType,
-      borderWidth: secondLabelBorderUpdated ? `${secondLabelBorderTop}px ${secondLabelBorderRight}px ${secondLabelBorderBottom}px ${secondLabelBorderLeft}px` : secondLabelBorderWidth + "px",
-      borderRadius: labelStyles.secondLabelborderRadius + "px",
-      borderColor: labelStyles.secondLabelborderColor,
-      paddingTop: SecondLabelPaddingTop + secondLabelPadding.unit,
-      paddingBottom: SecondLabelPaddingBottom + secondLabelPadding.unit,
-      paddingLeft: SecondLabelPaddingLeft + secondLabelPadding.unit,
-      paddingRight: SecondLabelPaddingRight + secondLabelPadding.unit,
-      textShadow: `${labelStyles.secondLabelShadowHorizontal}px ${labelStyles.secondLabelShadowVertical}px ${labelStyles.secondLabelShadowBlur}px ${labelStyles.secondLabelShadowColor}`,
-      boxShadow: `${labelStyles.secondLabelBoxShadowHorizontal}px ${labelStyles.secondLabelBoxShadowVertical}px ${labelStyles.secondLabelBoxShadowBlur}px ${labelStyles.secondLabelBoxShadowColor} ${labelStyles.secondLabelBoxShadowPosition}`
+      textShadow: `${secondLabelShadow.horizontal || 0}px ${secondLabelShadow.vertical || 0}px ${secondLabelShadow.blur || 0}px ${secondLabelShadow.color}`,
+      boxShadow: `${secondLabelBoxShadow.horizontal || 0}px ${secondLabelBoxShadow.vertical || 0}px ${secondLabelBoxShadow.blur || 0}px ${secondLabelBoxShadow.color} ${secondLabelBoxShadow.position}`
     }
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-content-switcher-list ${effect == 'slide' ? `slide-${slide}` : ""}`,
-    style: {
-      marginTop: FirstContentMarginTop + firstContentMargin.unit,
-      marginBottom: FirstContentMarginBottom + firstContentMargin.unit,
-      marginLeft: FirstContentMarginLeft + firstContentMargin.unit,
-      marginRight: FirstContentMarginRight + firstContentMargin.unit
+    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_22__.marginCss)(firstContentMargin, props.deviceType)
     }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("ul", {
     className: "premium-content-switcher-two-content"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("li", {
     ref: inputFirstContent,
     className: `premium-content-switcher-is-visible premium-content-switcher-first-list ${props.clientId}`,
-    style: {
+    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_22__.borderCss)(firstContentborder, props.deviceType),
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_22__.padddingCss)(contentPadding, props.deviceType),
       background: firstContentStyles.firstContentBGColor,
-      borderStyle: firstContentStyles.firstContentborderType,
-      borderWidth: firstContentBorderUpdated ? `${firstContentBorderTop}px ${firstContentBorderRight}px ${firstContentBorderBottom}px ${firstContentBorderLeft}px` : firstContentBorderWidth + "px",
-      borderRadius: firstContentStyles.firstContentborderRadius + "px",
-      borderColor: firstContentStyles.firstContentborderColor,
       minHeight: (contentHeight[props.deviceType] || 100) + contentHeight.unit,
-      paddingTop: ContentPaddingTop + contentPadding.unit,
-      paddingBottom: ContentPaddingBottom + contentPadding.unit,
-      paddingLeft: ContentPaddingLeft + contentPadding.unit,
-      paddingRight: ContentPaddingRight + contentPadding.unit,
-      boxShadow: `${firstContentStyles.firstContentBoxShadowHorizontal}px ${firstContentStyles.firstContentBoxShadowVertical}px ${firstContentStyles.firstContentBoxShadowBlur}px ${firstContentStyles.firstContentBoxShadowColor} ${firstContentStyles.firstContentBoxShadowPosition}`
+      boxShadow: `${firstContentBoxShadow.horizontal || 0}px ${firstContentBoxShadow.vertical || 0}px ${firstContentBoxShadow.blur || 0}px ${firstContentBoxShadow.color} ${firstContentBoxShadow.position}`
     }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.RichText, {
     tagName: "div",
@@ -5829,34 +6531,20 @@ function Edit(props) {
         firstContent: value
       });
     },
-    style: {
+    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_22__.typographyCss)(firstContentTypography, props.deviceType),
       textAlign: firstcontentlign,
       justifyContent: firstcontentlign,
       color: firstContentStyles.firstContentColor,
-      fontSize: FirstContentSize + firstContentStyles.firstContentfontSizeType,
-      letterSpacing: firstContentStyles.firstContentLetter + "px",
-      textTransform: firstContentStyles.firstContentUpper ? "uppercase" : "none",
-      fontStyle: firstContentStyles.firstContentStyle,
-      fontWeight: firstContentStyles.firstContentWeight,
-      lineHeight: (firstContentStyles.firstContentLine ? firstContentStyles.firstContentLine : "") + "px",
-      fontFamily: firstContentStyles.firstContentFontFamily,
-      textShadow: `${firstContentStyles.firstContentShadowHorizontal}px ${firstContentStyles.firstContentShadowVertical}px ${firstContentStyles.firstContentShadowBlur}px ${firstContentStyles.firstContentShadowColor}`
+      textShadow: `${firstContentShadow.horizontal || 0}px ${firstContentShadow.vertical || 0}px ${firstContentShadow.blur || 0}px ${firstContentShadow.color}`
     }
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("li", {
     ref: inputSecondContent,
     className: `premium-content-switcher-is-hidden premium-content-switcher-second-list ${props.clientId}`,
-    style: {
+    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_22__.borderCss)(secondContentborder, props.deviceType),
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_22__.padddingCss)(contentPadding, props.deviceType),
       background: secondContentStyles.secondContentBGColor,
-      borderStyle: secondContentStyles.secondContentborderType,
-      borderWidth: secondContentBorderUpdated ? `${secondContentBorderTop}px ${secondContentBorderRight}px ${secondContentBorderBottom}px ${secondContentBorderLeft}px` : secondContentBorderWidth + "px",
-      borderRadius: secondContentStyles.secondContentborderRadius + "px",
-      borderColor: secondContentStyles.secondContentborderColor,
       minHeight: (contentHeight[props.deviceType] || 100) + contentHeight.unit,
-      paddingTop: ContentPaddingTop + contentPadding.unit,
-      paddingBottom: ContentPaddingBottom + contentPadding.unit,
-      paddingLeft: ContentPaddingLeft + contentPadding.unit,
-      paddingRight: ContentPaddingRight + contentPadding.unit,
-      boxShadow: `${secondContentStyles.secondContentBoxShadowHorizontal}px ${secondContentStyles.secondContentBoxShadowVertical}px ${secondContentStyles.secondContentBoxShadowBlur}px ${secondContentStyles.secondContentBoxShadowColor} ${secondContentStyles.secondContentBoxShadowPosition}`
+      boxShadow: `${secondContentBoxShadow.horizontal || 0}px ${secondContentBoxShadow.vertical || 0}px ${secondContentBoxShadow.blur || 0}px ${secondContentBoxShadow.color} ${secondContentBoxShadow.position}`
     }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.RichText, {
     tagName: "div",
@@ -5867,18 +6555,11 @@ function Edit(props) {
         secondContent: value
       });
     },
-    style: {
+    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_22__.typographyCss)(secondContentTypography, props.deviceType),
       textAlign: secondcontentlign,
       justifyContent: secondcontentlign,
       color: secondContentStyles.secondContentColor,
-      fontSize: SecondContentSize + secondContentStyles.secondContentfontSizeType,
-      letterSpacing: secondContentStyles.secondContentLetter + "px",
-      textTransform: secondContentStyles.secondContentUpper ? "uppercase" : "none",
-      fontStyle: secondContentStyles.secondContentStyle,
-      fontWeight: secondContentStyles.secondContentWeight,
-      lineHeight: (secondContentStyles.secondContentLine ? secondContentStyles.secondContentLine : "") + "px",
-      fontFamily: secondContentStyles.secondContentFontFamily,
-      textShadow: `${secondContentStyles.secondContentShadowHorizontal}px ${secondContentStyles.secondContentShadowVertical}px ${secondContentStyles.secondContentShadowBlur}px ${secondContentStyles.secondContentShadowColor}`
+      textShadow: `${secondContentShadow.horizontal || 0}px ${secondContentShadow.vertical || 0}px ${secondContentShadow.blur || 0}px ${secondContentShadow.color}`
     }
   }))))), loadFirstLabelGoogleFonts, loadSecondLabelGoogleFonts, loadFirstContentGoogleFonts, loadSecondContentGoogleFonts));
 }
@@ -5913,6 +6594,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/HelperFunction */ "../components/HelperFunction.js");
+
 
 
 
@@ -5934,75 +6617,72 @@ function save(props) {
     secondContent,
     firstcontentlign,
     secondcontentlign,
-    // backgroundType,
     switcherStyles,
+    // backgroundType,
     labelStyles,
-    firstLabelBorderTop,
-    firstLabelBorderRight,
-    firstLabelBorderBottom,
-    firstLabelBorderLeft,
-    firstLabelBorderUpdated,
-    firstLabelBorderWidth,
-    secondLabelBorderTop,
-    secondLabelBorderRight,
-    secondLabelBorderBottom,
-    secondLabelBorderLeft,
-    secondLabelBorderUpdated,
-    secondLabelBorderWidth,
     firstContentStyles,
-    firstContentBorderTop,
-    firstContentBorderRight,
-    firstContentBorderBottom,
-    firstContentBorderLeft,
-    firstContentBorderUpdated,
-    firstContentBorderWidth,
     secondContentStyles,
-    secondContentBorderTop,
-    secondContentBorderRight,
-    secondContentBorderBottom,
-    secondContentBorderLeft,
-    secondContentBorderUpdated,
-    secondContentBorderWidth,
     containerStyles,
     backgroundType,
-    containerBorderTop,
-    containerBorderRight,
-    containerBorderBottom,
-    containerBorderLeft,
-    containerBorderUpdated,
-    containerBorderWidth,
     effect,
-    slide
+    slide,
+    firstLabelborder,
+    firstLabelShadow,
+    firstLabelBoxShadow,
+    firstLabelTypography,
+    secondLabelTypography,
+    secondLabelShadow,
+    secondLabelBoxShadow,
+    secondLabelborder,
+    firstContentTypography,
+    firstContentShadow,
+    firstContentBoxShadow,
+    firstContentborder,
+    secondContentTypography,
+    secondContentShadow,
+    secondContentBoxShadow,
+    secondContentborder,
+    containerBoxShadow,
+    containerborder,
+    hideDesktop,
+    hideTablet,
+    hideMobile,
+    containerShadow,
+    switchShadow
   } = attributes;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
-    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, `premium-block-${block_id}`)
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, `premium-block-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`)
   }), {
     id: `premium-content-switcher-${block_id}`,
     style: {
       textAlign: align
     }
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("style", null, `
-                     #premium-content-switcher-${block_id} .premium-content-switcher-toggle-switch-slider:before {
-                         box-shadow: ${switcherStyles.containerShadowHorizontal}px ${switcherStyles.containerShadowVertical}px ${switcherStyles.containerShadowBlur}px ${switcherStyles.containerShadowColor} ${switcherStyles.containerShadowPosition};
-                     }
+                    #premium-content-switcher-${block_id} .premium-content-switcher-toggle-switch-slider:before {
+                        box-shadow: ${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position} !important;
+                    }
                     #premium-content-switcher-${block_id} .premium-content-switcher-toggle-switch-slider {
-                         box-shadow: ${switcherStyles.switchShadowHorizontal}px ${switcherStyles.switchShadowVertical}px ${switcherStyles.switchShadowBlur}px ${switcherStyles.switchShadowColor} ${switcherStyles.switchShadowPosition};
-                     }
+                        box-shadow: ${switchShadow.horizontal}px ${switchShadow.vertical}px ${switchShadow.blur}px ${switchShadow.color} ${switchShadow.position} !important;
+                    }
                  `), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-content-switcher`,
     style: {
       textAlign: align,
       backgroundColor: backgroundType === "solid" ? containerStyles.containerBack : "transparent",
-      boxShadow: `${containerStyles.containerBoxShadowHorizontal}px ${containerStyles.containerBoxShadowVertical}px ${containerStyles.containerBoxShadowBlur}px ${containerStyles.containerBoxShadowColor} ${containerStyles.containerBoxShadowPosition}`,
       // backgroundImage: btnbg,
       backgroundRepeat: containerStyles.backgroundRepeat,
       backgroundPosition: containerStyles.backgroundPosition,
       backgroundSize: containerStyles.backgroundSize,
       backgroundAttachment: containerStyles.fixed ? "fixed" : "unset",
-      borderStyle: containerStyles.containerborderType,
-      borderWidth: containerBorderUpdated ? `${containerBorderTop}px ${containerBorderRight}px ${containerBorderBottom}px ${containerBorderLeft}px` : containerBorderWidth + "px",
-      borderRadius: containerStyles.containerborderRadius + "px",
-      borderColor: containerStyles.containerborderColor
+      borderStyle: containerborder.borderType,
+      borderColor: containerborder.borderColor,
+      boxShadow: `${containerBoxShadow.horizontal || 0}px ${containerBoxShadow.vertical || 0}px ${containerBoxShadow.blur || 0}px ${containerBoxShadow.color} ${containerBoxShadow.position}` // borderStyle: containerStyles.containerborderType,
+      // borderWidth: containerBorderUpdated
+      //     ? `${containerBorderTop}px ${containerBorderRight}px ${containerBorderBottom}px ${containerBorderLeft}px`
+      //     : containerBorderWidth + "px",
+      // borderRadius: containerStyles.containerborderRadius + "px",
+      // borderColor: containerStyles.containerborderColor
+
     }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-content-switcher-toggle-${display}`,
@@ -6020,21 +6700,27 @@ function save(props) {
       firstLabel: newValue
     }),
     value: firstLabel,
-    style: {
+    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_4__.typographyCss)(firstLabelTypography, props.deviceType),
       margin: 0,
       color: labelStyles.firstLabelColor,
-      letterSpacing: labelStyles.firstLabelLetter + "px",
-      textTransform: labelStyles.firstLabelUpper ? "uppercase" : "none",
-      fontStyle: labelStyles.firstLabelStyle,
-      fontWeight: labelStyles.firstLabelWeight,
-      lineHeight: (labelStyles.firstLabelLine ? labelStyles.firstLabelLine : "") + "px",
-      fontFamily: labelStyles.firstLabelFontFamily,
-      borderStyle: labelStyles.firstLabelborderType,
-      borderWidth: firstLabelBorderUpdated ? `${firstLabelBorderTop}px ${firstLabelBorderRight}px ${firstLabelBorderBottom}px ${firstLabelBorderLeft}px` : firstLabelBorderWidth + "px",
-      borderRadius: labelStyles.firstLabelborderRadius + "px",
-      borderColor: labelStyles.firstLabelborderColor,
-      textShadow: `${labelStyles.firstLabelShadowHorizontal}px ${labelStyles.firstLabelShadowVertical}px ${labelStyles.firstLabelShadowBlur}px ${labelStyles.firstLabelShadowColor}`,
-      boxShadow: `${labelStyles.firstLabelBoxShadowHorizontal}px ${labelStyles.firstLabelBoxShadowVertical}px ${labelStyles.firstLabelBoxShadowBlur}px ${labelStyles.firstLabelBoxShadowColor} ${labelStyles.firstLabelBoxShadowPosition}`
+      borderStyle: firstLabelborder.borderType,
+      borderColor: firstLabelborder.borderColor,
+      boxShadow: `${firstLabelBoxShadow.horizontal || 0}px ${firstLabelBoxShadow.vertical || 0}px ${firstLabelBoxShadow.blur || 0}px ${firstLabelBoxShadow.color} ${firstLabelBoxShadow.position}`,
+      textShadow: `${firstLabelShadow.horizontal || 0}px ${firstLabelShadow.vertical || 0}px ${firstLabelShadow.blur || 0}px ${firstLabelShadow.color}` // letterSpacing: labelStyles.firstLabelLetter + "px",
+      // textTransform: labelStyles.firstLabelUpper ? "uppercase" : "none",
+      // fontStyle: labelStyles.firstLabelStyle,
+      // fontWeight: labelStyles.firstLabelWeight,
+      // lineHeight: (labelStyles.firstLabelLine ? labelStyles.firstLabelLine : "") + "px",
+      // fontFamily: labelStyles.firstLabelFontFamily,
+      // borderStyle: labelStyles.firstLabelborderType,
+      // borderWidth: firstLabelBorderUpdated
+      //     ? `${firstLabelBorderTop}px ${firstLabelBorderRight}px ${firstLabelBorderBottom}px ${firstLabelBorderLeft}px`
+      //     : firstLabelBorderWidth + "px",
+      // borderRadius: labelStyles.firstLabelborderRadius + "px",
+      // borderColor: labelStyles.firstLabelborderColor,
+      // textShadow: `${labelStyles.firstLabelShadowHorizontal}px ${labelStyles.firstLabelShadowVertical}px ${labelStyles.firstLabelShadowBlur}px ${labelStyles.firstLabelShadowColor}`,
+      // boxShadow: `${labelStyles.firstLabelBoxShadowHorizontal}px ${labelStyles.firstLabelBoxShadowVertical}px ${labelStyles.firstLabelBoxShadowBlur}px ${labelStyles.firstLabelBoxShadowColor} ${labelStyles.firstLabelBoxShadowPosition}`,
+
     }
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "premium-content-switcher-toggle-switch"
@@ -6054,21 +6740,27 @@ function save(props) {
       secondLabel: newValue
     }),
     value: secondLabel,
-    style: {
+    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_4__.typographyCss)(secondLabelTypography, props.deviceType),
       margin: 0,
       color: labelStyles.secondLabelColor,
-      letterSpacing: labelStyles.secondLabelLetter + "px",
-      textTransform: labelStyles.secondLabelUpper ? "uppercase" : "none",
-      fontStyle: labelStyles.secondLabelStyle,
-      fontWeight: labelStyles.secondLabelWeight,
-      lineHeight: (labelStyles.secondLabelLine ? labelStyles.secondLabelLine : "") + "px",
-      fontFamily: labelStyles.secondLabelFontFamily,
-      borderStyle: labelStyles.secondLabelborderType,
-      borderWidth: secondLabelBorderUpdated ? `${secondLabelBorderTop}px ${secondLabelBorderRight}px ${secondLabelBorderBottom}px ${secondLabelBorderLeft}px` : secondLabelBorderWidth + "px",
-      borderRadius: labelStyles.secondLabelborderRadius + "px",
-      borderColor: labelStyles.secondLabelborderColor,
-      textShadow: `${labelStyles.secondLabelShadowHorizontal}px ${labelStyles.secondLabelShadowVertical}px ${labelStyles.secondLabelShadowBlur}px ${labelStyles.secondLabelShadowColor}`,
-      boxShadow: `${labelStyles.secondLabelBoxShadowHorizontal}px ${labelStyles.secondLabelBoxShadowVertical}px ${labelStyles.secondLabelBoxShadowBlur}px ${labelStyles.secondLabelBoxShadowColor} ${labelStyles.secondLabelBoxShadowPosition}`
+      borderStyle: secondLabelborder.borderType,
+      borderColor: secondLabelborder.borderColor,
+      boxShadow: `${secondLabelBoxShadow.horizontal || 0}px ${secondLabelBoxShadow.vertical || 0}px ${secondLabelBoxShadow.blur || 0}px ${secondLabelBoxShadow.color} ${secondLabelBoxShadow.position}`,
+      textShadow: `${secondLabelShadow.horizontal || 0}px ${secondLabelShadow.vertical || 0}px ${secondLabelShadow.blur || 0}px ${secondLabelShadow.color}` // letterSpacing: labelStyles.secondLabelLetter + "px",
+      // textTransform: labelStyles.secondLabelUpper ? "uppercase" : "none",
+      // fontStyle: labelStyles.secondLabelStyle,
+      // fontWeight: labelStyles.secondLabelWeight,
+      // lineHeight: (labelStyles.secondLabelLine ? labelStyles.secondLabelLine : "") + "px",
+      // fontFamily: labelStyles.secondLabelFontFamily,
+      // borderStyle: labelStyles.secondLabelborderType,
+      // borderWidth: secondLabelBorderUpdated
+      //     ? `${secondLabelBorderTop}px ${secondLabelBorderRight}px ${secondLabelBorderBottom}px ${secondLabelBorderLeft}px`
+      //     : secondLabelBorderWidth + "px",
+      // borderRadius: labelStyles.secondLabelborderRadius + "px",
+      // borderColor: labelStyles.secondLabelborderColor,
+      // textShadow: `${labelStyles.secondLabelShadowHorizontal}px ${labelStyles.secondLabelShadowVertical}px ${labelStyles.secondLabelShadowBlur}px ${labelStyles.secondLabelShadowColor}`,
+      // boxShadow: `${labelStyles.secondLabelBoxShadowHorizontal}px ${labelStyles.secondLabelBoxShadowVertical}px ${labelStyles.secondLabelBoxShadowBlur}px ${labelStyles.secondLabelBoxShadowColor} ${labelStyles.secondLabelBoxShadowPosition}`,
+
     }
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-content-switcher-list ${effect == 'slide' ? `slide-${slide}` : ""}`
@@ -6078,11 +6770,16 @@ function save(props) {
     className: `premium-content-switcher-first-list premium-content-switcher-is-visible ${block_id}`,
     style: {
       background: firstContentStyles.firstContentBGColor,
-      borderStyle: firstContentStyles.firstContentborderType,
-      borderWidth: firstContentBorderUpdated ? `${firstContentBorderTop}px ${firstContentBorderRight}px ${firstContentBorderBottom}px ${firstContentBorderLeft}px` : firstContentBorderWidth + "px",
-      borderRadius: firstContentStyles.firstContentborderRadius + "px",
-      borderColor: firstContentStyles.firstContentborderColor,
-      boxShadow: `${firstContentStyles.firstContentBoxShadowHorizontal}px ${firstContentStyles.firstContentBoxShadowVertical}px ${firstContentStyles.firstContentBoxShadowBlur}px ${firstContentStyles.firstContentBoxShadowColor} ${firstContentStyles.firstContentBoxShadowPosition}`
+      borderStyle: firstContentborder.borderType,
+      borderColor: firstContentborder.borderColor,
+      boxShadow: `${firstContentBoxShadow.horizontal || 0}px ${firstContentBoxShadow.vertical || 0}px ${firstContentBoxShadow.blur || 0}px ${firstContentBoxShadow.color} ${firstContentBoxShadow.position}` // borderStyle: firstContentStyles.firstContentborderType,
+      // borderWidth: firstContentBorderUpdated
+      //     ? `${firstContentBorderTop}px ${firstContentBorderRight}px ${firstContentBorderBottom}px ${firstContentBorderLeft}px`
+      //     : firstContentBorderWidth + "px",
+      // borderRadius: firstContentStyles.firstContentborderRadius + "px",
+      // borderColor: firstContentStyles.firstContentborderColor,
+      // boxShadow: `${firstContentStyles.firstContentBoxShadowHorizontal}px ${firstContentStyles.firstContentBoxShadowVertical}px ${firstContentStyles.firstContentBoxShadowBlur}px ${firstContentStyles.firstContentBoxShadowColor} ${firstContentStyles.firstContentBoxShadowPosition}`,
+
     }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText.Content, {
     tagName: "div",
@@ -6093,27 +6790,31 @@ function save(props) {
         firstContent: value
       });
     },
-    style: {
+    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_4__.typographyCss)(firstContentTypography, props.deviceType),
       textAlign: firstcontentlign,
       justifyContent: firstcontentlign,
       color: firstContentStyles.firstContentColor,
-      letterSpacing: firstContentStyles.firstContentLetter + "px",
-      textTransform: firstContentStyles.firstContentUpper ? "uppercase" : "none",
-      fontStyle: firstContentStyles.firstContentStyle,
-      fontWeight: firstContentStyles.firstContentWeight,
-      lineHeight: (firstContentStyles.firstContentLine ? firstContentStyles.firstContentLine : "") + "px",
-      fontFamily: firstContentStyles.firstContentFontFamily,
-      textShadow: `${firstContentStyles.firstContentShadowHorizontal}px ${firstContentStyles.firstContentShadowVertical}px ${firstContentStyles.firstContentShadowBlur}px ${firstContentStyles.firstContentShadowColor}`
+      // letterSpacing: firstContentStyles.firstContentLetter + "px",
+      // textTransform: firstContentStyles.firstContentUpper ? "uppercase" : "none",
+      // fontStyle: firstContentStyles.firstContentStyle,
+      // fontWeight: firstContentStyles.firstContentWeight,
+      // lineHeight: (firstContentStyles.firstContentLine ? firstContentStyles.firstContentLine : "") + "px",
+      // fontFamily: firstContentStyles.firstContentFontFamily,
+      textShadow: `${firstContentShadow.horizontal || 0}px ${firstContentShadow.vertical || 0}px ${firstContentShadow.blur || 0}px ${firstContentShadow.color}`
     }
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("li", {
     className: `premium-content-switcher-second-list premium-content-switcher-is-hidden ${block_id}`,
     style: {
       background: secondContentStyles.secondContentBGColor,
-      borderStyle: secondContentStyles.secondContentborderType,
-      borderWidth: secondContentBorderUpdated ? `${secondContentBorderTop}px ${secondContentBorderRight}px ${secondContentBorderBottom}px ${secondContentBorderLeft}px` : secondContentBorderWidth + "px",
-      borderRadius: secondContentStyles.secondContentborderRadius + "px",
-      borderColor: secondContentStyles.secondContentborderColor,
-      boxShadow: `${secondContentStyles.secondContentBoxShadowHorizontal}px ${secondContentStyles.secondContentBoxShadowVertical}px ${secondContentStyles.secondContentBoxShadowBlur}px ${secondContentStyles.secondContentBoxShadowColor} ${secondContentStyles.secondContentBoxShadowPosition}`
+      borderStyle: secondContentborder.borderType,
+      borderColor: secondContentborder.borderColor,
+      // borderStyle: secondContentStyles.secondContentborderType,
+      // borderWidth: secondContentBorderUpdated
+      //     ? `${secondContentBorderTop}px ${secondContentBorderRight}px ${secondContentBorderBottom}px ${secondContentBorderLeft}px`
+      //     : secondContentBorderWidth + "px",
+      // borderRadius: secondContentStyles.secondContentborderRadius + "px",
+      // borderColor: secondContentStyles.secondContentborderColor,
+      boxShadow: `${secondContentBoxShadow.horizontal || 0}px ${secondContentBoxShadow.vertical || 0}px ${secondContentBoxShadow.blur || 0}px ${secondContentBoxShadow.color} ${secondContentBoxShadow.position}`
     }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText.Content, {
     tagName: "div",
@@ -6124,17 +6825,17 @@ function save(props) {
         secondContent: value
       });
     },
-    style: {
+    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_4__.typographyCss)(secondContentTypography, props.deviceType),
       textAlign: secondcontentlign,
       justifyContent: secondcontentlign,
       color: secondContentStyles.secondContentColor,
-      letterSpacing: secondContentStyles.secondContentLetter + "px",
-      textTransform: secondContentStyles.secondContentUpper ? "uppercase" : "none",
-      fontStyle: secondContentStyles.secondContentStyle,
-      fontWeight: secondContentStyles.secondContentWeight,
-      lineHeight: (secondContentStyles.secondContentLine ? secondContentStyles.secondContentLine : "") + "px",
-      fontFamily: secondContentStyles.secondContentFontFamily,
-      textShadow: `${secondContentStyles.secondContentShadowHorizontal}px ${secondContentStyles.secondContentShadowVertical}px ${secondContentStyles.secondContentShadowBlur}px ${secondContentStyles.secondContentShadowColor}`
+      // letterSpacing: secondContentStyles.secondContentLetter + "px",
+      // textTransform: secondContentStyles.secondContentUpper ? "uppercase" : "none",
+      // fontStyle: secondContentStyles.secondContentStyle,
+      // fontWeight: secondContentStyles.secondContentWeight,
+      // lineHeight: (secondContentStyles.secondContentLine ? secondContentStyles.secondContentLine : "") + "px",
+      // fontFamily: secondContentStyles.secondContentFontFamily,
+      textShadow: `${secondContentShadow.horizontal || 0}px ${secondContentShadow.vertical || 0}px ${secondContentShadow.blur || 0}px ${secondContentShadow.color}`
     }
   }))))));
 }
@@ -6359,6 +7060,238 @@ class AdvancedColorControl extends Component {
     disableCustomColors
   };
 })(AdvancedColorControl));
+
+/***/ }),
+
+/***/ "../components/HelperFunction.js":
+/*!***************************************!*\
+  !*** ../components/HelperFunction.js ***!
+  \***************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "borderCss": function() { return /* binding */ borderCss; },
+/* harmony export */   "gradientBackground": function() { return /* binding */ gradientBackground; },
+/* harmony export */   "marginCss": function() { return /* binding */ marginCss; },
+/* harmony export */   "padddingCss": function() { return /* binding */ padddingCss; },
+/* harmony export */   "typographyCss": function() { return /* binding */ typographyCss; }
+/* harmony export */ });
+const gradientBackground = value => {
+  const {
+    backgroundType,
+    backgroundColor,
+    backgroundRepeat,
+    backgroundPosition,
+    fixed,
+    backgroundSize,
+    gradientColorTwo,
+    gradientPosition,
+    gradientType,
+    gradientLocationOne,
+    gradientLocationTwo,
+    gradientAngle,
+    backgroundImageURL
+  } = value;
+  let btnGrad, btnGrad2, btnbg;
+
+  if (undefined !== backgroundType && 'gradient' === backgroundType) {
+    btnGrad = 'transparent' === backgroundColor || undefined === backgroundColor ? 'rgba(255,255,255,0)' : backgroundColor;
+    btnGrad2 = undefined !== gradientColorTwo && undefined !== gradientColorTwo && '' !== gradientColorTwo ? gradientColorTwo : '#777';
+
+    if ('radial' === gradientType) {
+      btnbg = `radial-gradient(at ${gradientPosition}, ${btnGrad} ${gradientLocationOne}%, ${btnGrad2} ${gradientLocationTwo}%)`;
+    } else if ('radial' !== gradientType) {
+      btnbg = `linear-gradient(${gradientAngle}deg, ${btnGrad} ${gradientLocationOne}%, ${btnGrad2} ${gradientLocationTwo}%)`;
+    }
+  } else {
+    btnbg = backgroundImageURL ? `url('${backgroundImageURL}')` : '';
+  }
+
+  return {
+    backgroundColor: backgroundColor,
+    backgroundImage: btnbg,
+    backgroundRepeat: backgroundRepeat,
+    backgroundPosition: backgroundPosition,
+    backgroundSize: backgroundSize,
+    backgroundAttachment: fixed ? "fixed" : "unset"
+  };
+};
+const borderCss = (value, device) => {
+  return {
+    borderStyle: value.borderType,
+    borderTopWidth: value['borderWidth'][device]['top'] && value['borderWidth'][device]['top'] + "px",
+    borderRightWidth: value['borderWidth'][device]['right'] && value['borderWidth'][device]['right'] + "px",
+    borderBottomWidth: value['borderWidth'][device]['bottom'] && value['borderWidth'][device]['bottom'] + "px",
+    borderLeftWidth: value['borderWidth'][device]['left'] && value['borderWidth'][device]['left'] + "px",
+    borderBottomLeftRadius: value['borderRadius'][device]['left'] && value['borderRadius'][device]['left'] + "px",
+    borderTopLeftRadius: value['borderRadius'][device]['top'] && value['borderRadius'][device]['top'] + "px",
+    borderTopRightRadius: value['borderRadius'][device]['right'] && value['borderRadius'][device]['right'] + "px",
+    borderBottomRightRadius: value['borderRadius'][device]['bottom'] && value['borderRadius'][device]['bottom'] + "px",
+    borderColor: value.borderColor
+  };
+};
+const padddingCss = (value, device) => {
+  return {
+    paddingTop: value[device]['top'] && value[device]['top'] + value.unit,
+    paddingRight: value[device]['right'] && value[device]['right'] + value.unit,
+    paddingBottom: value[device]['bottom'] && value[device]['bottom'] + value.unit,
+    paddingLeft: value[device]['left'] && value[device]['left'] + value.unit
+  };
+};
+const marginCss = (value, device) => {
+  return {
+    marginTop: value[device]['top'] && value[device]['top'] + value.unit,
+    marginRight: value[device]['right'] && value[device]['right'] + value.unit,
+    marginBottom: value[device]['bottom'] && value[device]['bottom'] + value.unit,
+    marginLeft: value[device]['left'] && value[device]['left'] + value.unit
+  };
+};
+const typographyCss = (value, device) => {
+  return {
+    fontSize: `${value.fontSize[device] || ''}${value.fontSize.unit}`,
+    fontFamily: value.fontFamily,
+    letterSpacing: value.letterSpacing + "px",
+    textTransform: value.textTransform ? "uppercase" : "none",
+    fontStyle: value.fontStyle,
+    fontWeight: value.fontWeight,
+    lineHeight: value.lineHeight + "px"
+  };
+};
+
+/***/ }),
+
+/***/ "../components/InsideTab.js":
+/*!**********************************!*\
+  !*** ../components/InsideTab.js ***!
+  \**********************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+const {
+  Component,
+  Fragment
+} = wp.element;
+
+class InsideTab extends Component {
+  render() {
+    const {
+      children,
+      onTabChange
+    } = this.props;
+    onTabChange && onTabChange();
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, " ", Array.isArray(children) ? children.map(item => item) : children, " ");
+  }
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (InsideTab);
+
+/***/ }),
+
+/***/ "../components/InsideTabs.js":
+/*!***********************************!*\
+  !*** ../components/InsideTabs.js ***!
+  \***********************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ InsideTabs; }
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "../../node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "../../node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+const {
+  __
+} = wp.i18n;
+const {
+  Component,
+  Fragment
+} = wp.element;
+const {
+  Tooltip
+} = wp.components;
+class InsideTabs extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeTab: this.props.children[0].props.tabTitle
+    };
+  }
+
+  render() {
+    let TEMPTAG = Fragment;
+    const tabs = this.props.children,
+          {
+      activeTab
+    } = this.state,
+          {
+      label,
+      panelGroup
+    } = this.props;
+    const className = classnames__WEBPACK_IMPORTED_MODULE_2___default()('premium-field', 'premium-field-tabs', {
+      'panel-group': panelGroup
+    }, {
+      'premium-has-label': typeof label !== 'undefined'
+    });
+
+    if (panelGroup) {
+      TEMPTAG = 'Div';
+    }
+
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: className
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "premium-field-tab-header"
+    }, label && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, label), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "premium-field-tab-menus"
+    }, tabs.map(tab => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Tooltip, {
+      text: __(tab.props.tabTitle)
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TEMPTAG, panelGroup && {
+      className: 'tab-menu-wrapper'
+    }, panelGroup && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+      width: "21",
+      height: "18",
+      viewBox: "0 0 21 18",
+      xmlns: "http://www.w3.org/2000/svg"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("g", {
+      transform: "translate(-29 -4) translate(29 4)",
+      fill: "none"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+      d: "M1 .708v15.851",
+      className: "premium-svg-stroke",
+      "stroke-linecap": "square"
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("rect", {
+      className: "premium-svg-fill",
+      x: "5",
+      y: "5",
+      width: "16",
+      height: "7",
+      rx: "1"
+    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+      onClick: () => this.setState({
+        activeTab: tab.props.tabTitle
+      }),
+      className: 'premium-tab-menu ' + (tab.props.tabTitle === activeTab ? 'active' : '')
+    }, tab.props.tabTitle)))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "premium-field-tab-items"
+    }, tabs.map(tab => tab.props.tabTitle === activeTab ? tab : '')));
+  }
+
+}
 
 /***/ }),
 
@@ -13296,6 +14229,57 @@ const SpacingComponent = props => {
 
 /***/ }),
 
+/***/ "../components/premium-responsive-tabs.js":
+/*!************************************************!*\
+  !*** ../components/premium-responsive-tabs.js ***!
+  \************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+const {
+  __
+} = wp.i18n;
+const {
+  PanelBody,
+  ToggleControl
+} = wp.components;
+
+function PremiumResponsiveTabs(props) {
+  const {
+    onChangeDesktop = () => {},
+    onChangeTablet = () => {},
+    onChangeMobile = () => {},
+    Desktop,
+    Tablet,
+    Mobile
+  } = props;
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
+    title: __("Responsive"),
+    className: "premium-panel-body",
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
+    label: __('Hide in Desktop'),
+    checked: Desktop,
+    onChange: onChangeDesktop
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
+    label: __('Hide in Tablet'),
+    checked: Tablet,
+    onChange: onChangeTablet
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
+    label: __('Hide in Mobile'),
+    checked: Mobile,
+    onChange: onChangeMobile
+  }));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (PremiumResponsiveTabs);
+
+/***/ }),
+
 /***/ "../components/premium-size-units.js":
 /*!*******************************************!*\
   !*** ../components/premium-size-units.js ***!
@@ -14358,7 +15342,7 @@ function _extends() {
 /***/ (function(module) {
 
 "use strict";
-module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/content-switcher","title":"Content Switcher","icon":"content-switcher","category":"premium-blocks","description":"Toggle between two different content using Premium Content Switcher Block.","keywords":["content","switcher"],"supports":{"html":false},"editorScript":"file:./build/block.js","script":"gpb-content-switcher-block-script","editorStyle":"file:./build/index.css","style":"file:./build/style-block.css","attributes":{"block_id":{"type":"string"},"classMigrate":{"type":"boolean","default":false},"align":{"type":"string","default":"center"},"showLabel":{"type":"boolean","default":true},"firstLabel":{"type":"string","default":"Content #1"},"secondLabel":{"type":"string","default":"Content #2"},"display":{"type":"string","default":"inline"},"labelTag":{"type":"string","default":"h3"},"firstContent":{"type":"string","default":"Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."},"secondContent":{"type":"string","default":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."},"firstcontentlign":{"type":"string","default":"center"},"secondcontentlign":{"type":"string","default":"center"},"switcherStyles":{"type":"object","default":{"switchSize":15,"switchSizeMobile":15,"switchSizeTablet":15,"switchRadiusType":"em","switchRadius":1.5,"switchRadiusMobile":1.5,"switchRadiusTablet":1.5,"containerRadiusType":"%","containerRadius":50,"containerRadiusMobile":50,"containerRadiusTablet":50,"containerBackState1":"","backgroundImageIDState1":"","backgroundImageURLState1":"","backgroundRepeatState1":"no-reapet","backgroundPositionState1":"top center","backgroundSizeState1":"auto","fixedState1":false,"gradientLocationOneState1":"0","gradientColorTwoState1":"","gradientLocationTwoState1":"100","gradientTypeState1":"linear","gradientAngleState1":"180","gradientPositionState1":"center center","containerShadowColor":"","containerShadowBlur":"","containerShadowHorizontal":"","containerShadowVertical":"","containerShadowPosition":"inset","switchShadowColor":"","switchShadowBlur":"","switchShadowHorizontal":"","switchShadowVertical":"","switchShadowPosition":"inset"}},"backgroundTypeState2":{"type":"string","default":""},"labelStyles":{"type":"object","default":{"labelSpacing":15,"labelSpacingMobile":15,"labelSpacingTablet":15,"firstLabelColor":"rgb(84, 89, 95)","firstLabelLetter":0,"firstLabelLine":0,"firstLabelStyle":"normal","firstLabelUpper":false,"firstLabelWeight":"","firstLabelfontSize":23,"firstLabelfontSizeType":"px","firstLabelfontSizeMobile":23,"firstLabelfontSizeTablet":23,"firstLabelFontFamily":"Default","firstLabelShadowColor":"","firstLabelShadowBlur":"0","firstLabelShadowHorizontal":"0","firstLabelShadowVertical":"0","firstLabelborderType":"none","firstLabelborderRadius":0,"firstLabelborderColor":"","firstLabelBoxShadowColor":"","firstLabelBoxShadowBlur":"","firstLabelBoxShadowHorizontal":"","firstLabelBoxShadowVertical":"","firstLabelBoxShadowPosition":"inset","secondLabelColor":"rgb(84, 89, 95)","secondLabelLetter":0,"secondLabelLine":0,"secondLabelStyle":"normal","secondLabelUpper":false,"secondLabelWeight":"","secondLabelfontSize":23,"secondLabelfontSizeType":"px","secondLabelfontSizeMobile":23,"secondLabelfontSizeTablet":23,"secondLabelFontFamily":"Default","secondLabelShadowColor":"","secondLabelShadowBlur":"0","secondLabelShadowHorizontal":"0","secondLabelShadowVertical":"0","secondLabelborderType":"none","secondLabelborderRadius":0,"secondLabelborderColor":"","secondLabelBoxShadowColor":"","secondLabelBoxShadowBlur":"","secondLabelBoxShadowHorizontal":"","secondLabelBoxShadowVertical":"","secondLabelBoxShadowPosition":"inset"}},"firstLabelBorderTop":{"type":"number","default":"1"},"firstLabelBorderRight":{"type":"number","default":"1"},"firstLabelBorderBottom":{"type":"number","default":"1"},"firstLabelBorderLeft":{"type":"number","default":"1"},"firstLabelBorderUpdated":{"type":"boolean","default":false},"firstLabelBorderWidth":{"type":"number","default":"1"},"secondLabelBorderTop":{"type":"number","default":"1"},"secondLabelBorderRight":{"type":"number","default":"1"},"secondLabelBorderBottom":{"type":"number","default":"1"},"secondLabelBorderLeft":{"type":"number","default":"1"},"secondLabelBorderUpdated":{"type":"boolean","default":false},"secondLabelBorderWidth":{"type":"number","default":"1"},"contentStyles":{"type":"object","default":{"contentHeight":100,"contentHeightType":"px","contentHeightMobile":100,"contentHeightTablet":100}},"firstContentStyles":{"type":"object","default":{"firstContentColor":"#54595f","firstContentLetter":0,"firstContentLine":0,"firstContentStyle":"normal","firstContentUpper":false,"firstContentWeight":"","firstContentfontSize":"","firstContentfontSizeType":"px","firstContentfontSizeMobile":"","firstContentfontSizeTablet":"","firstContentFontFamily":"Default","firstContentShadowColor":"","firstContentShadowBlur":"0","firstContentShadowHorizontal":"0","firstContentShadowVertical":"0","firstContentBGColor":"","firstContentborderType":"none","firstContentborderRadius":0,"firstContentborderColor":"","firstContentBoxShadowColor":"","firstContentBoxShadowBlur":"","firstContentBoxShadowHorizontal":"","firstContentBoxShadowVertical":"","firstContentBoxShadowPosition":"inset"}},"firstContentBorderTop":{"type":"number","default":"1"},"firstContentBorderRight":{"type":"number","default":"1"},"firstContentBorderBottom":{"type":"number","default":"1"},"firstContentBorderLeft":{"type":"number","default":"1"},"firstContentBorderUpdated":{"type":"boolean","default":false},"firstContentBorderWidth":{"type":"number","default":"1"},"secondContentStyles":{"type":"object","default":{"secondContentColor":"#54595f","secondContentLetter":0,"secondContentLine":0,"secondContentStyle":"normal","secondContentUpper":false,"secondContentWeight":"","secondContentfontSize":"","secondContentfontSizeType":"px","secondContentfontSizeMobile":"","secondContentfontSizeTablet":"","secondContentFontFamily":"Default","secondContentShadowColor":"","secondContentShadowBlur":"0","secondContentShadowHorizontal":"0","secondContentShadowVertical":"0","secondContentBGColor":"","secondContentborderType":"none","secondContentborderRadius":0,"secondContentborderColor":"","secondContentBoxShadowColor":"","secondContentBoxShadowBlur":"","secondContentBoxShadowHorizontal":"","secondContentBoxShadowVertical":"","secondContentBoxShadowPosition":"inset"}},"secondContentBorderTop":{"type":"number","default":"1"},"secondContentBorderRight":{"type":"number","default":"1"},"secondContentBorderBottom":{"type":"number","default":"1"},"secondContentBorderLeft":{"type":"number","default":"1"},"secondContentBorderUpdated":{"type":"boolean","default":false},"secondContentBorderWidth":{"type":"number","default":"1"},"containerStyles":{"type":"object","default":{"containerBack":"","backgroundImageID":"","backgroundImageURL":"","backgroundRepeat":"no-reapet","backgroundPosition":"top center","backgroundSize":"auto","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientType":"linear","gradientAngle":"180","gradientPosition":"center center","containerborderType":"none","containerborderRadius":0,"containerborderColor":"","containerBoxShadowColor":"","containerBoxShadowBlur":"","containerBoxShadowHorizontal":"","containerBoxShadowVertical":"","containerBoxShadowPosition":"inset"}},"backgroundType":{"type":"string","default":""},"containerBorderTop":{"type":"number","default":"1"},"containerBorderRight":{"type":"number","default":"1"},"containerBorderBottom":{"type":"number","default":"1"},"containerBorderLeft":{"type":"number","default":"1"},"containerBorderUpdated":{"type":"boolean","default":false},"containerBorderWidth":{"type":"number","default":"1"},"firstStateColor":{"type":"string","default":"#6ec1e4"},"secondStateColor":{"type":"string","default":"#6ec1e4"},"switcherBGColor":{"type":"string","default":"#f2f2f2"},"effect":{"type":"string","default":"fade"},"slide":{"type":"string","default":"top"},"firstLabelborder":{"type":"object"},"firstLabelPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"secondLabelPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"contentPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"containerPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"firstContentMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"containerMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"switchSize":{"type":"object","default":{"Desktop":15}},"containerRadius":{"type":"number","default":50},"containerRadiusUnit":{"type":"string","default":"%"},"switchRadius":{"type":"number","default":"1.5"},"switchRadiusUnit":{"type":"string","default":"em"},"labelSpacing":{"type":"object","default":{"Desktop":"15"}},"contentHeight":{"type":"object","default":{"Desktop":"100","unit":"px"}}}}');
+module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/content-switcher","title":"Content Switcher","icon":"content-switcher","category":"premium-blocks","description":"Toggle between two different content using Premium Content Switcher Block.","keywords":["content","switcher"],"supports":{"html":false},"editorScript":"file:./build/block.js","script":"gpb-content-switcher-block-script","editorStyle":"file:./build/index.css","style":"file:./build/style-block.css","attributes":{"block_id":{"type":"string"},"classMigrate":{"type":"boolean","default":false},"align":{"type":"string","default":"center"},"showLabel":{"type":"boolean","default":true},"firstLabel":{"type":"string","default":"Content #1"},"secondLabel":{"type":"string","default":"Content #2"},"display":{"type":"string","default":"inline"},"labelTag":{"type":"string","default":"H3"},"firstContent":{"type":"string","default":"Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."},"secondContent":{"type":"string","default":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."},"firstcontentlign":{"type":"string","default":"center"},"secondcontentlign":{"type":"string","default":"center"},"switcherStyles":{"type":"object","default":{"containerBackState1":"","backgroundImageIDState1":"","backgroundImageURLState1":"","backgroundRepeatState1":"no-reapet","backgroundPositionState1":"top center","backgroundSizeState1":"auto","fixedState1":false,"gradientLocationOneState1":"0","gradientColorTwoState1":"","gradientLocationTwoState1":"100","gradientTypeState1":"linear","gradientAngleState1":"180","gradientPositionState1":"center center"}},"backgroundTypeState2":{"type":"string","default":""},"labelStyles":{"type":"object","default":{"firstLabelColor":"rgb(84, 89, 95)","secondLabelColor":"rgb(84, 89, 95)"}},"firstContentStyles":{"type":"object","default":{"firstContentColor":"#54595f","firstContentBGColor":""}},"secondContentStyles":{"type":"object","default":{"secondContentColor":"#54595f","secondContentBGColor":""}},"containerStyles":{"type":"object","default":{"containerBack":"","backgroundImageID":"","backgroundImageURL":"","backgroundRepeat":"no-reapet","backgroundPosition":"top center","backgroundSize":"auto","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientType":"linear","gradientAngle":"180","gradientPosition":"center center"}},"backgroundType":{"type":"string","default":""},"firstStateColor":{"type":"string","default":"#6ec1e4"},"secondStateColor":{"type":"string","default":"#6ec1e4"},"switcherBGColor":{"type":"string","default":"#f2f2f2"},"effect":{"type":"string","default":"fade"},"slide":{"type":"string","default":"top"},"firstLabelPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"secondLabelPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"contentPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"containerPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"firstContentMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"containerMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"switchSize":{"type":"object","default":{"Desktop":15}},"containerRadius":{"type":"number","default":50},"containerRadiusUnit":{"type":"string","default":"%"},"switchRadius":{"type":"number","default":"1.5"},"switchRadiusUnit":{"type":"string","default":"em"},"labelSpacing":{"type":"object","default":{"Desktop":"15"}},"contentHeight":{"type":"object","default":{"Desktop":"100","unit":"px"}},"containerShadow":{"type":"object","default":{"color":"","blur":"","horizontal":"","vertical":"","position":""}},"switchShadow":{"type":"object","default":{"color":"","blur":"","horizontal":"","vertical":"","position":""}},"firstLabelShadow":{"type":"object","default":{"color":"","blur":"","horizontal":"","vertical":""}},"firstLabelBoxShadow":{"type":"object","default":{"color":"","blur":"","horizontal":"","vertical":"","position":""}},"firstLabelTypography":{"type":"object","default":{"fontWeight":400,"fontStyle":"","textTransform":"","letterSpacing":"","fontFamily":"Default","lineHeight":"","fontSize":{"Desktop":20,"Tablet":20,"Mobile":20,"unit":"px"}}},"firstLabelborder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"secondLabelTypography":{"type":"object","default":{"fontWeight":400,"fontStyle":"","textTransform":"","letterSpacing":"","fontFamily":"Default","lineHeight":"","fontSize":{"Desktop":20,"Tablet":20,"Mobile":20,"unit":"px"}}},"secondLabelShadow":{"type":"object","default":{"color":"","blur":"","horizontal":"","vertical":""}},"secondLabelBoxShadow":{"type":"object","default":{"color":"","blur":"","horizontal":"","vertical":"","position":""}},"secondLabelborder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"firstContentTypography":{"type":"object","default":{"fontWeight":400,"fontStyle":"","textTransform":"","letterSpacing":"","fontFamily":"Default","lineHeight":"","fontSize":{"Desktop":20,"Tablet":20,"Mobile":20,"unit":"px"}}},"firstContentShadow":{"type":"object","default":{"color":"","blur":"","horizontal":"","vertical":""}},"firstContentBoxShadow":{"type":"object","default":{"color":"","blur":"","horizontal":"","vertical":"","position":""}},"firstContentborder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"secondContentTypography":{"type":"object","default":{"fontWeight":400,"fontStyle":"","textTransform":"","letterSpacing":"","fontFamily":"Default","lineHeight":"","fontSize":{"Desktop":20,"Tablet":20,"Mobile":20,"unit":"px"}}},"secondContentShadow":{"type":"object","default":{"color":"","blur":"","horizontal":"","vertical":""}},"secondContentBoxShadow":{"type":"object","default":{"color":"","blur":"","horizontal":"","vertical":"","position":""}},"secondContentborder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"containerBoxShadow":{"type":"object","default":{"color":"","blur":"","horizontal":"","vertical":"","position":""}},"containerborder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""}}}');
 
 /***/ })
 

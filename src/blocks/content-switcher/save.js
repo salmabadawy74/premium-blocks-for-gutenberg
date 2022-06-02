@@ -3,6 +3,7 @@ import {
     RichText,
     useBlockProps
 } from '@wordpress/block-editor';
+import { gradientBackground, borderCss, padddingCss, marginCss, typographyCss } from '../../components/HelperFunction'
 
 export default function save(props) {
 
@@ -20,45 +21,38 @@ export default function save(props) {
         secondContent,
         firstcontentlign,
         secondcontentlign,
-        // backgroundType,
         switcherStyles,
+        // backgroundType,
         labelStyles,
-        firstLabelBorderTop,
-        firstLabelBorderRight,
-        firstLabelBorderBottom,
-        firstLabelBorderLeft,
-        firstLabelBorderUpdated,
-        firstLabelBorderWidth,
-        secondLabelBorderTop,
-        secondLabelBorderRight,
-        secondLabelBorderBottom,
-        secondLabelBorderLeft,
-        secondLabelBorderUpdated,
-        secondLabelBorderWidth,
         firstContentStyles,
-        firstContentBorderTop,
-        firstContentBorderRight,
-        firstContentBorderBottom,
-        firstContentBorderLeft,
-        firstContentBorderUpdated,
-        firstContentBorderWidth,
         secondContentStyles,
-        secondContentBorderTop,
-        secondContentBorderRight,
-        secondContentBorderBottom,
-        secondContentBorderLeft,
-        secondContentBorderUpdated,
-        secondContentBorderWidth,
         containerStyles,
         backgroundType,
-        containerBorderTop,
-        containerBorderRight,
-        containerBorderBottom,
-        containerBorderLeft,
-        containerBorderUpdated,
-        containerBorderWidth,
         effect,
-        slide
+        slide,
+        firstLabelborder,
+        firstLabelShadow,
+        firstLabelBoxShadow,
+        firstLabelTypography,
+        secondLabelTypography,
+        secondLabelShadow,
+        secondLabelBoxShadow,
+        secondLabelborder,
+        firstContentTypography,
+        firstContentShadow,
+        firstContentBoxShadow,
+        firstContentborder,
+        secondContentTypography,
+        secondContentShadow,
+        secondContentBoxShadow,
+        secondContentborder,
+        containerBoxShadow,
+        containerborder,
+        hideDesktop,
+        hideTablet,
+        hideMobile,
+        containerShadow,
+        switchShadow
     } = attributes
 
     return (
@@ -66,7 +60,7 @@ export default function save(props) {
             {...useBlockProps.save({
                 className: classnames(
                     className,
-                    `premium-block-${block_id}`
+                    `premium-block-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`
                 ),
             })}
             id={`premium-content-switcher-${block_id}`}
@@ -74,15 +68,14 @@ export default function save(props) {
                 textAlign: align,
             }}
         >
-
             <style>
                 {`
-                     #premium-content-switcher-${block_id} .premium-content-switcher-toggle-switch-slider:before {
-                         box-shadow: ${switcherStyles.containerShadowHorizontal}px ${switcherStyles.containerShadowVertical}px ${switcherStyles.containerShadowBlur}px ${switcherStyles.containerShadowColor} ${switcherStyles.containerShadowPosition};
-                     }
+                    #premium-content-switcher-${block_id} .premium-content-switcher-toggle-switch-slider:before {
+                        box-shadow: ${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position} !important;
+                    }
                     #premium-content-switcher-${block_id} .premium-content-switcher-toggle-switch-slider {
-                         box-shadow: ${switcherStyles.switchShadowHorizontal}px ${switcherStyles.switchShadowVertical}px ${switcherStyles.switchShadowBlur}px ${switcherStyles.switchShadowColor} ${switcherStyles.switchShadowPosition};
-                     }
+                        box-shadow: ${switchShadow.horizontal}px ${switchShadow.vertical}px ${switchShadow.blur}px ${switchShadow.color} ${switchShadow.position} !important;
+                    }
                  `}
             </style>
 
@@ -90,18 +83,20 @@ export default function save(props) {
                 style={{
                     textAlign: align,
                     backgroundColor: backgroundType === "solid" ? containerStyles.containerBack : "transparent",
-                    boxShadow: `${containerStyles.containerBoxShadowHorizontal}px ${containerStyles.containerBoxShadowVertical}px ${containerStyles.containerBoxShadowBlur}px ${containerStyles.containerBoxShadowColor} ${containerStyles.containerBoxShadowPosition}`,
                     // backgroundImage: btnbg,
                     backgroundRepeat: containerStyles.backgroundRepeat,
                     backgroundPosition: containerStyles.backgroundPosition,
                     backgroundSize: containerStyles.backgroundSize,
                     backgroundAttachment: containerStyles.fixed ? "fixed" : "unset",
-                    borderStyle: containerStyles.containerborderType,
-                    borderWidth: containerBorderUpdated
-                        ? `${containerBorderTop}px ${containerBorderRight}px ${containerBorderBottom}px ${containerBorderLeft}px`
-                        : containerBorderWidth + "px",
-                    borderRadius: containerStyles.containerborderRadius + "px",
-                    borderColor: containerStyles.containerborderColor
+                    borderStyle: containerborder.borderType,
+                    borderColor: containerborder.borderColor,
+                    boxShadow: `${containerBoxShadow.horizontal || 0}px ${containerBoxShadow.vertical || 0}px ${containerBoxShadow.blur || 0}px ${containerBoxShadow.color} ${containerBoxShadow.position}`
+                    // borderStyle: containerStyles.containerborderType,
+                    // borderWidth: containerBorderUpdated
+                    //     ? `${containerBorderTop}px ${containerBorderRight}px ${containerBorderBottom}px ${containerBorderLeft}px`
+                    //     : containerBorderWidth + "px",
+                    // borderRadius: containerStyles.containerborderRadius + "px",
+                    // borderColor: containerStyles.containerborderColor
                 }}>
                 <div className={`premium-content-switcher-toggle-${display}`}
                     style={{
@@ -116,22 +111,27 @@ export default function save(props) {
                             onChange={(newValue) => setAttributes({ firstLabel: newValue })}
                             value={firstLabel}
                             style={{
+                                ...typographyCss(firstLabelTypography, props.deviceType),
                                 margin: 0,
                                 color: labelStyles.firstLabelColor,
-                                letterSpacing: labelStyles.firstLabelLetter + "px",
-                                textTransform: labelStyles.firstLabelUpper ? "uppercase" : "none",
-                                fontStyle: labelStyles.firstLabelStyle,
-                                fontWeight: labelStyles.firstLabelWeight,
-                                lineHeight: (labelStyles.firstLabelLine ? labelStyles.firstLabelLine : "") + "px",
-                                fontFamily: labelStyles.firstLabelFontFamily,
-                                borderStyle: labelStyles.firstLabelborderType,
-                                borderWidth: firstLabelBorderUpdated
-                                    ? `${firstLabelBorderTop}px ${firstLabelBorderRight}px ${firstLabelBorderBottom}px ${firstLabelBorderLeft}px`
-                                    : firstLabelBorderWidth + "px",
-                                borderRadius: labelStyles.firstLabelborderRadius + "px",
-                                borderColor: labelStyles.firstLabelborderColor,
-                                textShadow: `${labelStyles.firstLabelShadowHorizontal}px ${labelStyles.firstLabelShadowVertical}px ${labelStyles.firstLabelShadowBlur}px ${labelStyles.firstLabelShadowColor}`,
-                                boxShadow: `${labelStyles.firstLabelBoxShadowHorizontal}px ${labelStyles.firstLabelBoxShadowVertical}px ${labelStyles.firstLabelBoxShadowBlur}px ${labelStyles.firstLabelBoxShadowColor} ${labelStyles.firstLabelBoxShadowPosition}`,
+                                borderStyle: firstLabelborder.borderType,
+                                borderColor: firstLabelborder.borderColor,
+                                boxShadow: `${firstLabelBoxShadow.horizontal || 0}px ${firstLabelBoxShadow.vertical || 0}px ${firstLabelBoxShadow.blur || 0}px ${firstLabelBoxShadow.color} ${firstLabelBoxShadow.position}`,
+                                textShadow: `${firstLabelShadow.horizontal || 0}px ${firstLabelShadow.vertical || 0}px ${firstLabelShadow.blur || 0}px ${firstLabelShadow.color}`,
+                                // letterSpacing: labelStyles.firstLabelLetter + "px",
+                                // textTransform: labelStyles.firstLabelUpper ? "uppercase" : "none",
+                                // fontStyle: labelStyles.firstLabelStyle,
+                                // fontWeight: labelStyles.firstLabelWeight,
+                                // lineHeight: (labelStyles.firstLabelLine ? labelStyles.firstLabelLine : "") + "px",
+                                // fontFamily: labelStyles.firstLabelFontFamily,
+                                // borderStyle: labelStyles.firstLabelborderType,
+                                // borderWidth: firstLabelBorderUpdated
+                                //     ? `${firstLabelBorderTop}px ${firstLabelBorderRight}px ${firstLabelBorderBottom}px ${firstLabelBorderLeft}px`
+                                //     : firstLabelBorderWidth + "px",
+                                // borderRadius: labelStyles.firstLabelborderRadius + "px",
+                                // borderColor: labelStyles.firstLabelborderColor,
+                                // textShadow: `${labelStyles.firstLabelShadowHorizontal}px ${labelStyles.firstLabelShadowVertical}px ${labelStyles.firstLabelShadowBlur}px ${labelStyles.firstLabelShadowColor}`,
+                                // boxShadow: `${labelStyles.firstLabelBoxShadowHorizontal}px ${labelStyles.firstLabelBoxShadowVertical}px ${labelStyles.firstLabelBoxShadowBlur}px ${labelStyles.firstLabelBoxShadowColor} ${labelStyles.firstLabelBoxShadowPosition}`,
                             }}
                         />
                     </div>
@@ -151,22 +151,28 @@ export default function save(props) {
                             onChange={(newValue) => setAttributes({ secondLabel: newValue })}
                             value={secondLabel}
                             style={{
+                                ...typographyCss(secondLabelTypography, props.deviceType),
                                 margin: 0,
                                 color: labelStyles.secondLabelColor,
-                                letterSpacing: labelStyles.secondLabelLetter + "px",
-                                textTransform: labelStyles.secondLabelUpper ? "uppercase" : "none",
-                                fontStyle: labelStyles.secondLabelStyle,
-                                fontWeight: labelStyles.secondLabelWeight,
-                                lineHeight: (labelStyles.secondLabelLine ? labelStyles.secondLabelLine : "") + "px",
-                                fontFamily: labelStyles.secondLabelFontFamily,
-                                borderStyle: labelStyles.secondLabelborderType,
-                                borderWidth: secondLabelBorderUpdated
-                                    ? `${secondLabelBorderTop}px ${secondLabelBorderRight}px ${secondLabelBorderBottom}px ${secondLabelBorderLeft}px`
-                                    : secondLabelBorderWidth + "px",
-                                borderRadius: labelStyles.secondLabelborderRadius + "px",
-                                borderColor: labelStyles.secondLabelborderColor,
-                                textShadow: `${labelStyles.secondLabelShadowHorizontal}px ${labelStyles.secondLabelShadowVertical}px ${labelStyles.secondLabelShadowBlur}px ${labelStyles.secondLabelShadowColor}`,
-                                boxShadow: `${labelStyles.secondLabelBoxShadowHorizontal}px ${labelStyles.secondLabelBoxShadowVertical}px ${labelStyles.secondLabelBoxShadowBlur}px ${labelStyles.secondLabelBoxShadowColor} ${labelStyles.secondLabelBoxShadowPosition}`,
+                                borderStyle: secondLabelborder.borderType,
+                                borderColor: secondLabelborder.borderColor,
+                                boxShadow: `${secondLabelBoxShadow.horizontal || 0}px ${secondLabelBoxShadow.vertical || 0}px ${secondLabelBoxShadow.blur || 0}px ${secondLabelBoxShadow.color} ${secondLabelBoxShadow.position}`,
+                                textShadow: `${secondLabelShadow.horizontal || 0}px ${secondLabelShadow.vertical || 0}px ${secondLabelShadow.blur || 0}px ${secondLabelShadow.color}`,
+
+                                // letterSpacing: labelStyles.secondLabelLetter + "px",
+                                // textTransform: labelStyles.secondLabelUpper ? "uppercase" : "none",
+                                // fontStyle: labelStyles.secondLabelStyle,
+                                // fontWeight: labelStyles.secondLabelWeight,
+                                // lineHeight: (labelStyles.secondLabelLine ? labelStyles.secondLabelLine : "") + "px",
+                                // fontFamily: labelStyles.secondLabelFontFamily,
+                                // borderStyle: labelStyles.secondLabelborderType,
+                                // borderWidth: secondLabelBorderUpdated
+                                //     ? `${secondLabelBorderTop}px ${secondLabelBorderRight}px ${secondLabelBorderBottom}px ${secondLabelBorderLeft}px`
+                                //     : secondLabelBorderWidth + "px",
+                                // borderRadius: labelStyles.secondLabelborderRadius + "px",
+                                // borderColor: labelStyles.secondLabelborderColor,
+                                // textShadow: `${labelStyles.secondLabelShadowHorizontal}px ${labelStyles.secondLabelShadowVertical}px ${labelStyles.secondLabelShadowBlur}px ${labelStyles.secondLabelShadowColor}`,
+                                // boxShadow: `${labelStyles.secondLabelBoxShadowHorizontal}px ${labelStyles.secondLabelBoxShadowVertical}px ${labelStyles.secondLabelBoxShadowBlur}px ${labelStyles.secondLabelBoxShadowColor} ${labelStyles.secondLabelBoxShadowPosition}`,
                             }}
                         />
                     </div>
@@ -179,13 +185,16 @@ export default function save(props) {
                         <li className={`premium-content-switcher-first-list premium-content-switcher-is-visible ${block_id}`}
                             style={{
                                 background: firstContentStyles.firstContentBGColor,
-                                borderStyle: firstContentStyles.firstContentborderType,
-                                borderWidth: firstContentBorderUpdated
-                                    ? `${firstContentBorderTop}px ${firstContentBorderRight}px ${firstContentBorderBottom}px ${firstContentBorderLeft}px`
-                                    : firstContentBorderWidth + "px",
-                                borderRadius: firstContentStyles.firstContentborderRadius + "px",
-                                borderColor: firstContentStyles.firstContentborderColor,
-                                boxShadow: `${firstContentStyles.firstContentBoxShadowHorizontal}px ${firstContentStyles.firstContentBoxShadowVertical}px ${firstContentStyles.firstContentBoxShadowBlur}px ${firstContentStyles.firstContentBoxShadowColor} ${firstContentStyles.firstContentBoxShadowPosition}`,
+                                borderStyle: firstContentborder.borderType,
+                                borderColor: firstContentborder.borderColor,
+                                boxShadow: `${firstContentBoxShadow.horizontal || 0}px ${firstContentBoxShadow.vertical || 0}px ${firstContentBoxShadow.blur || 0}px ${firstContentBoxShadow.color} ${firstContentBoxShadow.position}`
+                                // borderStyle: firstContentStyles.firstContentborderType,
+                                // borderWidth: firstContentBorderUpdated
+                                //     ? `${firstContentBorderTop}px ${firstContentBorderRight}px ${firstContentBorderBottom}px ${firstContentBorderLeft}px`
+                                //     : firstContentBorderWidth + "px",
+                                // borderRadius: firstContentStyles.firstContentborderRadius + "px",
+                                // borderColor: firstContentStyles.firstContentborderColor,
+                                // boxShadow: `${firstContentStyles.firstContentBoxShadowHorizontal}px ${firstContentStyles.firstContentBoxShadowVertical}px ${firstContentStyles.firstContentBoxShadowBlur}px ${firstContentStyles.firstContentBoxShadowColor} ${firstContentStyles.firstContentBoxShadowPosition}`,
                             }}>
                             <RichText.Content
                                 tagName="div"
@@ -195,29 +204,32 @@ export default function save(props) {
                                     setAttributes({ firstContent: value })
                                 }}
                                 style={{
+                                    ...typographyCss(firstContentTypography, props.deviceType),
                                     textAlign: firstcontentlign,
                                     justifyContent: firstcontentlign,
                                     color: firstContentStyles.firstContentColor,
-                                    letterSpacing: firstContentStyles.firstContentLetter + "px",
-                                    textTransform: firstContentStyles.firstContentUpper ? "uppercase" : "none",
-                                    fontStyle: firstContentStyles.firstContentStyle,
-                                    fontWeight: firstContentStyles.firstContentWeight,
-                                    lineHeight: (firstContentStyles.firstContentLine ? firstContentStyles.firstContentLine : "") + "px",
-                                    fontFamily: firstContentStyles.firstContentFontFamily,
-                                    textShadow: `${firstContentStyles.firstContentShadowHorizontal}px ${firstContentStyles.firstContentShadowVertical}px ${firstContentStyles.firstContentShadowBlur}px ${firstContentStyles.firstContentShadowColor}`,
+                                    // letterSpacing: firstContentStyles.firstContentLetter + "px",
+                                    // textTransform: firstContentStyles.firstContentUpper ? "uppercase" : "none",
+                                    // fontStyle: firstContentStyles.firstContentStyle,
+                                    // fontWeight: firstContentStyles.firstContentWeight,
+                                    // lineHeight: (firstContentStyles.firstContentLine ? firstContentStyles.firstContentLine : "") + "px",
+                                    // fontFamily: firstContentStyles.firstContentFontFamily,
+                                    textShadow: `${firstContentShadow.horizontal || 0}px ${firstContentShadow.vertical || 0}px ${firstContentShadow.blur || 0}px ${firstContentShadow.color}`,
                                 }}
                             />
                         </li>
                         <li className={`premium-content-switcher-second-list premium-content-switcher-is-hidden ${block_id}`}
                             style={{
                                 background: secondContentStyles.secondContentBGColor,
-                                borderStyle: secondContentStyles.secondContentborderType,
-                                borderWidth: secondContentBorderUpdated
-                                    ? `${secondContentBorderTop}px ${secondContentBorderRight}px ${secondContentBorderBottom}px ${secondContentBorderLeft}px`
-                                    : secondContentBorderWidth + "px",
-                                borderRadius: secondContentStyles.secondContentborderRadius + "px",
-                                borderColor: secondContentStyles.secondContentborderColor,
-                                boxShadow: `${secondContentStyles.secondContentBoxShadowHorizontal}px ${secondContentStyles.secondContentBoxShadowVertical}px ${secondContentStyles.secondContentBoxShadowBlur}px ${secondContentStyles.secondContentBoxShadowColor} ${secondContentStyles.secondContentBoxShadowPosition}`,
+                                borderStyle: secondContentborder.borderType,
+                                borderColor: secondContentborder.borderColor,
+                                // borderStyle: secondContentStyles.secondContentborderType,
+                                // borderWidth: secondContentBorderUpdated
+                                //     ? `${secondContentBorderTop}px ${secondContentBorderRight}px ${secondContentBorderBottom}px ${secondContentBorderLeft}px`
+                                //     : secondContentBorderWidth + "px",
+                                // borderRadius: secondContentStyles.secondContentborderRadius + "px",
+                                // borderColor: secondContentStyles.secondContentborderColor,
+                                boxShadow: `${secondContentBoxShadow.horizontal || 0}px ${secondContentBoxShadow.vertical || 0}px ${secondContentBoxShadow.blur || 0}px ${secondContentBoxShadow.color} ${secondContentBoxShadow.position}`
                             }}>
                             <RichText.Content
                                 tagName="div"
@@ -227,16 +239,17 @@ export default function save(props) {
                                     setAttributes({ secondContent: value })
                                 }}
                                 style={{
+                                    ...typographyCss(secondContentTypography, props.deviceType),
                                     textAlign: secondcontentlign,
                                     justifyContent: secondcontentlign,
                                     color: secondContentStyles.secondContentColor,
-                                    letterSpacing: secondContentStyles.secondContentLetter + "px",
-                                    textTransform: secondContentStyles.secondContentUpper ? "uppercase" : "none",
-                                    fontStyle: secondContentStyles.secondContentStyle,
-                                    fontWeight: secondContentStyles.secondContentWeight,
-                                    lineHeight: (secondContentStyles.secondContentLine ? secondContentStyles.secondContentLine : "") + "px",
-                                    fontFamily: secondContentStyles.secondContentFontFamily,
-                                    textShadow: `${secondContentStyles.secondContentShadowHorizontal}px ${secondContentStyles.secondContentShadowVertical}px ${secondContentStyles.secondContentShadowBlur}px ${secondContentStyles.secondContentShadowColor}`,
+                                    // letterSpacing: secondContentStyles.secondContentLetter + "px",
+                                    // textTransform: secondContentStyles.secondContentUpper ? "uppercase" : "none",
+                                    // fontStyle: secondContentStyles.secondContentStyle,
+                                    // fontWeight: secondContentStyles.secondContentWeight,
+                                    // lineHeight: (secondContentStyles.secondContentLine ? secondContentStyles.secondContentLine : "") + "px",
+                                    // fontFamily: secondContentStyles.secondContentFontFamily,
+                                    textShadow: `${secondContentShadow.horizontal || 0}px ${secondContentShadow.vertical || 0}px ${secondContentShadow.blur || 0}px ${secondContentShadow.color}`,
                                 }}
                             />
                         </li>
