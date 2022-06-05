@@ -163,6 +163,7 @@ export default function PremiumBackground(props) {
                             <div
                                 onClick={open}
                                 className={"premium-placeholder-image"}
+
                             >
                                 <Dashicon icon="insert" />
                                 <span>{__("Insert Background ")}</span>

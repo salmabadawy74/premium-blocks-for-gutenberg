@@ -56,7 +56,7 @@ class PremiumPadding extends Component {
 
         return (
             <div className={`premium-spacing-responsive`}>
-                {  this.props.label && <header className="premium-control-label-container">
+                {this.props.label && <header className="premium-control-label-container">
                     <div className={`premium-slider-title-wrap`}>
                         {__("Padding", 'premium-blocks-for-gutenberg')}
                     </div>
@@ -121,7 +121,7 @@ class PremiumPadding extends Component {
                             </li>
                         </ul>
                     </div>
-                    <div className="premium-spacing-btn-reset-wrap">
+                    <div className="premium-btn-reset-wrap">
                         <button
                             className="premium-reset-btn "
                             disabled={

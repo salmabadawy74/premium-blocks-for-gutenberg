@@ -62,7 +62,7 @@ const PremiumBorder = (props) => {
                         })}
                     </div>
 
-                    <div className="premium-spacing-btn-reset-wrap">
+                    <div className="premium-btn-reset-wrap">
                         <button
                             className="premium-reset-btn "
                             disabled={"none" === borderType}
