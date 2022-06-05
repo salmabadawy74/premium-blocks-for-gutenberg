@@ -28,12 +28,12 @@ const RadioComponent = ({ value, onChange, label, choices, showIcons = false }) 
             })}
         </Fragment>
     }
-    return <Fragment>
-        <span className="customize-control-title premium-control-title">{label}</span>
+    return <div className={`premium-blocks-field`}>
+        {label && <span className="customize-control-title premium-control-title">{label}</span>}
         <ButtonGroup className="premium-radio-container-control">
             {renderButtons()}
         </ButtonGroup>
-    </Fragment>
+    </div>
 }
 
 export default React.memo(RadioComponent);

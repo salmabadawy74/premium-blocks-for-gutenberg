@@ -162,10 +162,7 @@ const SpacingComponent = (props) => {
                 <div className="premium-btn-reset-wrap">
                     <button
                         className="premium-reset-btn "
-                        disabled={
-                            JSON.stringify(state) ===
-                            JSON.stringify(defaultValues)
-                        }
+                        disabled={JSON.stringify(state) === JSON.stringify(defaultValues)}
                         onClick={(e) => {
                             e.preventDefault();
                             props.onChange(defaultValues);

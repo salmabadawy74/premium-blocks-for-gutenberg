@@ -17,6 +17,7 @@ const { withSelect, select, dispatch } = wp.data
 const { InnerBlocks, InspectorControls, BlockControls } = wp.blockEditor
 const { createBlock } = wp.blocks
 class PremiumColumn extends Component {
+
     constructor() {
         super(...arguments);
         this.state = {
@@ -54,80 +55,11 @@ class PremiumColumn extends Component {
         const { attributes: { colWidth }, clientId } = this.props
         const { getPreviousBlockClientId, getNextBlockClientId } = select('core/block-editor')
         const currentColumn = $(`#block-${clientId}`)
-        const rowWidth = currentColumn.parents('.qubely-backend-row').width()
+        const rowWidth = currentColumn.parents('.premium-backend-row').width()
         const nextBlockId = getNextBlockClientId(clientId)
         const prevBlockId = getPreviousBlockClientId(clientId)
         currentColumn.css({ width: colWidth.Desktop + '%' })
         this.setState({ rowWidth, nextBlockId, prevBlockId, maxResizeWidth: rowWidth, colWidth: { ...colWidth } })
-    }
-
-    onResizeStartEvent(event, direction, elt) {
-        let { toggleSelection, clientId, setAttributes } = this.props
-        const { rowWidth, nextColWidth, prevColWidth } = this.state
-        toggleSelection(false)
-        const editorSelector = select('core/block-editor')
-        const colWidth = editorSelector.getBlockAttributes(clientId).colWidth
-        const nextBlockClientId = editorSelector.getNextBlockClientId(clientId)
-        const prevBlockClientId = editorSelector.getPreviousBlockClientId(clientId)
-        if (nextBlockClientId !== null) {
-            nextColWidth.Desktop = parseFloat(editorSelector.getBlockAttributes(nextBlockClientId).colWidth.Desktop)
-        }
-        if (prevBlockClientId !== null) {
-            prevColWidth.Desktop = parseFloat(editorSelector.getBlockAttributes(prevBlockClientId).colWidth.Desktop)
-        }
-        let maxResizeWidth = 0
-        if (direction === 'right' && nextBlockClientId !== null) {
-            let resizeNextColWidth = ((nextColWidth.Desktop / 100) * rowWidth) - 100
-            let resizeCurrenColWidth = (colWidth.Desktop / 100) * rowWidth
-            maxResizeWidth = resizeNextColWidth + resizeCurrenColWidth
-        }
-        if (direction === 'left' && prevBlockClientId !== null) {
-            let resizePrevColWidth = ((prevColWidth.Desktop / 100) * rowWidth) - 100
-            let resizeCurrenColWidth = (colWidth.Desktop / 100) * rowWidth
-            maxResizeWidth = resizePrevColWidth + resizeCurrenColWidth
-        }
-        setAttributes({ colWidth: colWidth })
-        const clmRect = document.getElementById(`block-${clientId}`).getBoundingClientRect()
-        this.setState({ colWidth: colWidth, prevColWidth, nextColWidth, maxResizeWidth, resizing: true, absWidth: clmRect.width })
-    }
-
-    onResize(event, direction, elt, delta) {
-        const { colWidth, nextColWidth, rowWidth, absWidth } = this.state
-        const { clientId, setAttributes } = this.props
-        const currentcolumnId = $(`#block-${clientId}`)
-        const NextColumn = currentcolumnId.next();
-        let currentBlockWidth = absWidth + (delta.width);
-        let calWidth = (currentBlockWidth / rowWidth) * 100;
-        let diff = parseFloat(colWidth.Desktop) - calWidth;
-        let nextBlockWidth = 0
-        if (direction === 'right') {
-            if (NextColumn.length > 0) {
-                nextBlockWidth = parseFloat(nextColWidth.Desktop) + diff;
-                if (nextBlockWidth > 10 && calWidth > 10) {
-                    nextBlockWidth = Math.abs(nextBlockWidth)
-                    NextColumn.css({ width: nextBlockWidth.toFixed(2) + '%' })
-                    const editorSelector = select('core/block-editor')
-                    const nextBlockClientId = editorSelector.getNextBlockClientId(clientId)
-                    if (nextBlockClientId !== null) {
-                        const nextBlock = editorSelector.getBlock(nextBlockClientId)
-                        nextBlock.attributes.colWidth.Desktop = nextBlockWidth.toFixed(2)
-                    }
-                }
-            }
-        }
-
-        currentcolumnId.find('.components-resizable-box__container').css({ width: 'auto' })
-        if (nextBlockWidth > 10 && calWidth > 10) {
-            currentcolumnId.css({ width: calWidth.toFixed(2) + '%' })
-            setAttributes({ colWidth: { ...colWidth, Desktop: calWidth.toFixed(2) } })
-        }
-    }
-
-    onResizeStop(event, direction, elt, delta) {
-        const { toggleSelection } = this.props
-        toggleSelection(true);
-
-        this.setState({ resizing: false })
     }
 
     updateColumns(updateType) {
@@ -152,26 +84,6 @@ class PremiumColumn extends Component {
             updateBlockAttributes(block.clientId, Object.assign(block.attributes, { colWidth: { ...equalWidth } }))
             $(`#block-${block.clientId}`).css({ width: equalWidth.Desktop + '%' }) //update next block width
         })
-    }
-
-    checkColumnStatus() {
-        const { clientId } = this.props
-        const { getBlockRootClientId, getPreviousBlockClientId, getNextBlockClientId, getBlockIndex, getBlock } = select('core/block-editor')
-        const rootClientId = getBlockRootClientId(clientId)
-        const nextBlockId = getNextBlockClientId(clientId)
-        const prevBlockId = getPreviousBlockClientId(clientId)
-        const blockIndex = getBlockIndex(clientId, rootClientId)
-        return { nextBlockId, prevBlockId, blockIndex }
-    }
-
-    _isActiveRow() {
-        const rootClientId = select('core/block-editor').getBlockRootClientId(this.props.clientId)
-        const selected = select('core/block-editor').getSelectedBlock()
-        if (selected && rootClientId && selected.clientId) {
-            return rootClientId == selected.clientId ? true : false
-        } else {
-            return false
-        }
     }
 
     updateColumnWidth(colWidth) {
@@ -223,6 +135,16 @@ class PremiumColumn extends Component {
 
     }
 
+    checkColumnStatus() {
+        const { clientId } = this.props
+        const { getBlockRootClientId, getPreviousBlockClientId, getNextBlockClientId, getBlockIndex, getBlock } = select('core/block-editor')
+        const rootClientId = getBlockRootClientId(clientId)
+        const nextBlockId = getNextBlockClientId(clientId)
+        const prevBlockId = getPreviousBlockClientId(clientId)
+        const blockIndex = getBlockIndex(clientId, rootClientId)
+        return { nextBlockId, prevBlockId, blockIndex }
+    }
+
     render() {
         const {
             attributes: {
@@ -252,15 +174,9 @@ class PremiumColumn extends Component {
             nextBlockId = columnStatus.nextBlockId
             blockIndex = columnStatus.blockIndex
         }
-        let resigingClass = 'qubely-column-resizer'
-        if (nextBlockId !== null && isSelected) {
-            resigingClass += ' is-selected-column'
-        }
-        if (resizing) {
-            resigingClass += ' is-resizing'
-        }
-        const { getBlockOrder } = select('core/block-editor');
 
+        const { getBlockOrder } = select('core/block-editor');
+        const active = isSelected ? 'active' : 'not-active';
         return (
             <Fragment>
                 <InspectorControls>
@@ -354,29 +270,16 @@ class PremiumColumn extends Component {
                     </Toolbar>
                 </BlockControls>
 
-                <ResizableBox
-                    className={resigingClass}
-                    style={{
-                    }}
-                    size={{
-                    }}
-                    maxWidth={this.state.maxWidth}
-                    enable={{
-                        top: false,
-                        right: true,
-                        bottom: false,
-                        left: false,
-                        topRight: false,
-                        bottomRight: false,
-                        bottomLeft: false,
-                        topLeft: false,
-                    }}
-                    minHeight="10"
-                    onResize={(event, direction, elt, delta) => this.onResize(event, direction, elt, delta)}
-                    onResizeStop={(event, direction, elt, delta) => this.onResizeStop(event, direction, elt, delta)}
-                    onResizeStart={(event, direction, elt) => this.onResizeStartEvent(event, direction, elt)} >
-                    <div className={`qubely-column qubely-column-admin premium-blocks-${this.props.clientId} qubely-block-${uniqueId}${className ? ` ${className}` : ''}`} data-column-width={this.props.attributes.colWidth.Desktop}>
-                        <div className={`qubely-column-inner`} style={{
+                <div
+                    className={classnames(
+                        className,
+                        'premium-column__wrap',
+                        `premium-column__edit-${active}`,
+                        `premium-block-${clientId.substr(0, 8)}`
+                    )}
+                >
+                    <div className={`premium-column premium-column-admin premium-blocks-${this.props.clientId} premium-block-${uniqueId}${className ? ` ${className}` : ''}`} data-column-width={this.props.attributes.colWidth.Desktop}>
+                        <div className={`premium-column-inner`} style={{
                             ...gradientBackground(columnBackground),
                             ...borderCss(columnBorder, this.props.deviceType),
                             ...padddingCss(columnPadding, this.props.deviceType),
@@ -392,11 +295,12 @@ class PremiumColumn extends Component {
                             />
                         </div>
                     </div>
-                </ResizableBox>
+                </div>
 
             </Fragment >
         )
     }
+
 }
 export default withSelect((select, props) => {
     const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');

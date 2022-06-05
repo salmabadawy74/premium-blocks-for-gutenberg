@@ -93,150 +93,144 @@ export default function PremiumBackgroundControl({ value, onChange, backgroundVe
                     </div>
                 </div>
             </div>
-            {
-                'solid' === backgroundType && (
-                    <div className="premium-inner-sub-section premium-blocks-field">
-                        <PremiumBackground
-                            type="color"
-                            colorValue={backgroundColor}
-                            colorDefault={''}
-                            onChangeColor={newValue => onChangeBackground('backgroundColor', newValue)}
-                        />
-                        <PremiumBackground
-                            imageID={backgroundImageID}
-                            imageURL={backgroundImageURL}
-                            backgroundPosition={backgroundPosition}
-                            backgroundRepeat={backgroundRepeat}
-                            backgroundSize={backgroundSize}
-                            fixed={fixed}
-                            onSelectMedia={media => { onChangeBackground('backgroundImageURL', media.url) }}
-                            onRemoveImage={() => onChangeBackground('backgroundImageURL', '')}
-                            onChangeBackPos={newValue => onChangeBackground('backgroundPosition', newValue)}
-                            onchangeBackRepeat={newValue => onChangeBackground('backgroundRepeat', newValue)}
-                            onChangeBackSize={newValue => onChangeBackground('backgroundSize', newValue)}
-                            onChangeFixed={check => onChangeBackground('fixed', check)}
-                        />
+            {'solid' === backgroundType && (
+                <div className="premium-inner-sub-section premium-blocks-field">
+                    <PremiumBackground
+                        type="color"
+                        colorValue={backgroundColor}
+                        colorDefault={''}
+                        onChangeColor={newValue => onChangeBackground('backgroundColor', newValue)}
+                    />
+                    <PremiumBackground
+                        imageID={backgroundImageID}
+                        imageURL={backgroundImageURL}
+                        backgroundPosition={backgroundPosition}
+                        backgroundRepeat={backgroundRepeat}
+                        backgroundSize={backgroundSize}
+                        fixed={fixed}
+                        onSelectMedia={media => { onChangeBackground('backgroundImageURL', media.url) }}
+                        onRemoveImage={() => onChangeBackground('backgroundImageURL', '')}
+                        onChangeBackPos={newValue => onChangeBackground('backgroundPosition', newValue)}
+                        onchangeBackRepeat={newValue => onChangeBackground('backgroundRepeat', newValue)}
+                        onChangeBackSize={newValue => onChangeBackground('backgroundSize', newValue)}
+                        onChangeFixed={check => onChangeBackground('fixed', check)}
+                    />
+                </div>
+            )}
+            {'gradient' === backgroundType && (
+                <div className="premium-inner-sub-section premium-blocks-field">
+                    <AdvancedPopColorControl
+                        label={__('Gradient Color 1', 'premium-blocks-for-gutenberg')}
+                        colorValue={backgroundColor}
+                        colorDefault={''}
+                        onColorChange={value => onChangeBackground('backgroundColor', value)}
+                    />
+                    <ResponsiveSingleRangeControl
+                        label={__('Location', 'premium-blocks-for-gutenberg')}
+                        value={gradientLocationOne}
+                        onChange={(value) => onChangeBackground('gradientLocationOne', value)}
+                        showUnit={false}
+                        defaultValue={0}
+                    />
+                    <AdvancedPopColorControl
+                        label={__('Gradient Color 2', 'premium-blocks-for-gutenberg')}
+                        colorValue={gradientColorTwo}
+                        colorDefault={'#777777'}
+                        onColorChange={value => onChangeBackground('gradientColorTwo', value)}
+                    />
+                    <ResponsiveSingleRangeControl
+                        label={__('Location', 'premium-blocks-for-gutenberg')}
+                        value={gradientLocationTwo}
+                        onChange={(value) => onChangeBackground('gradientLocationTwo', value)}
+                        showUnit={false}
+                        defaultValue={0}
+                    />
+                    <div className="premium-btn-size-settings-container">
+                        <p className="premium-beside-btn-group">{__('Gradient Type', 'premium-blocks-for-gutenberg')}</p>
+                        <ButtonGroup className="premium-button-size-type-options" aria-label={__('Gradient Type', 'premium-blocks-for-gutenberg')}>
+                            {map(gradTypes, ({ name, key }) => (
+                                <Button
+                                    key={key}
+                                    className="premium-btn-size-btn"
+                                    isSmall
+                                    isPrimary={gradientType === key}
+                                    onClick={() => onChangeBackground('gradientType', key)}
+                                >
+                                    {name}
+                                </Button>
+                            ))}
+                        </ButtonGroup>
                     </div>
-                )
-            }
-            {
-                'gradient' === backgroundType && (
-                    <div className="premium-inner-sub-section premium-blocks-field">
-                        <AdvancedPopColorControl
-                            label={__('Gradient Color 1', 'premium-blocks-for-gutenberg')}
-                            colorValue={backgroundColor}
-                            colorDefault={''}
-                            onColorChange={value => onChangeBackground('backgroundColor', value)}
-                        />
+                    {'radial' !== (gradientType) && (
                         <ResponsiveSingleRangeControl
-                            label={__('Location', 'premium-blocks-for-gutenberg')}
-                            value={gradientLocationOne}
-                            onChange={(value) => onChangeBackground('gradientLocationOne', value)}
+                            label={__('Gradient Angle', 'premium-blocks-for-gutenberg')}
+                            value={gradientAngle}
+                            onChange={(value) => onChangeBackground('gradientAngle', value)}
                             showUnit={false}
                             defaultValue={0}
+                            min={0}
+                            max={360}
                         />
-                        <AdvancedPopColorControl
-                            label={__('Gradient Color 2', 'premium-blocks-for-gutenberg')}
-                            colorValue={gradientColorTwo}
-                            colorDefault={'#777777'}
-                            onColorChange={value => onChangeBackground('gradientColorTwo', value)}
-                        />
-                        <ResponsiveSingleRangeControl
-                            label={__('Location', 'premium-blocks-for-gutenberg')}
-                            value={gradientLocationTwo}
-                            onChange={(value) => onChangeBackground('gradientLocationTwo', value)}
-                            showUnit={false}
-                            defaultValue={0}
-                        />
-                        <div className="premium-btn-size-settings-container">
-                            <p className="premium-beside-btn-group">{__('Gradient Type', 'premium-blocks-for-gutenberg')}</p>
-                            <ButtonGroup className="premium-button-size-type-options" aria-label={__('Gradient Type', 'premium-blocks-for-gutenberg')}>
-                                {map(gradTypes, ({ name, key }) => (
-                                    <Button
-                                        key={key}
-                                        className="premium-btn-size-btn"
-                                        isSmall
-                                        isPrimary={gradientType === key}
-                                        onClick={() => onChangeBackground('gradientType', key)}
-                                    >
-                                        {name}
-                                    </Button>
-                                ))}
-                            </ButtonGroup>
-                        </div>
-                        {'radial' !== (gradientType) && (
-                            <ResponsiveSingleRangeControl
-                                label={__('Gradient Angle', 'premium-blocks-for-gutenberg')}
-                                value={gradientAngle}
-                                onChange={(value) => onChangeBackground('gradientAngle', value)}
-                                showUnit={false}
-                                defaultValue={0}
-                                min={0}
-                                max={360}
-                            />
-                        )}
-                        {'radial' === (gradientType) && (
-                            <SelectControl
-                                label={__('Gradient Position', 'premium-blocks-for-gutenberg')}
-                                value={(gradientPosition)}
-                                options={[
-                                    { value: 'center top', label: __('Center Top', 'premium-blocks-for-gutenberg') },
-                                    { value: 'center center', label: __('Center Center', 'premium-blocks-for-gutenberg') },
-                                    { value: 'center bottom', label: __('Center Bottom', 'premium-blocks-for-gutenberg') },
-                                    { value: 'left top', label: __('Left Top', 'premium-blocks-for-gutenberg') },
-                                    { value: 'left center', label: __('Left Center', 'premium-blocks-for-gutenberg') },
-                                    { value: 'left bottom', label: __('Left Bottom', 'premium-blocks-for-gutenberg') },
-                                    { value: 'right top', label: __('Right Top', 'premium-blocks-for-gutenberg') },
-                                    { value: 'right center', label: __('Right Center', 'premium-blocks-for-gutenberg') },
-                                    { value: 'right bottom', label: __('Right Bottom', 'premium-blocks-for-gutenberg') },
-                                ]}
-                                onChange={value => onChangeBackground('gradientPosition', value)}
-                            />
-                        )}
-                    </div>
-                )
-            }
-            {
-                'video' === backgroundType && (
-                    <Fragment>
+                    )}
+                    {'radial' === (gradientType) && (
                         <SelectControl
-                            label={__('Video Source', 'premium-blocks-for-gutenberg')}
-                            value={videoSource}
+                            label={__('Gradient Position', 'premium-blocks-for-gutenberg')}
+                            value={(gradientPosition)}
                             options={[
-                                { value: 'local', label: __('Local', 'premium-blocks-for-gutenberg') },
-                                { value: 'external', label: __('External', 'premium-blocks-for-gutenberg') }
+                                { value: 'center top', label: __('Center Top', 'premium-blocks-for-gutenberg') },
+                                { value: 'center center', label: __('Center Center', 'premium-blocks-for-gutenberg') },
+                                { value: 'center bottom', label: __('Center Bottom', 'premium-blocks-for-gutenberg') },
+                                { value: 'left top', label: __('Left Top', 'premium-blocks-for-gutenberg') },
+                                { value: 'left center', label: __('Left Center', 'premium-blocks-for-gutenberg') },
+                                { value: 'left bottom', label: __('Left Bottom', 'premium-blocks-for-gutenberg') },
+                                { value: 'right top', label: __('Right Top', 'premium-blocks-for-gutenberg') },
+                                { value: 'right center', label: __('Right Center', 'premium-blocks-for-gutenberg') },
+                                { value: 'right bottom', label: __('Right Bottom', 'premium-blocks-for-gutenberg') },
                             ]}
-                            onChange={(val) => onChangeBackground('videoSource', val)}
+                            onChange={value => onChangeBackground('gradientPosition', value)}
                         />
-                        {videoSource === 'external' ?
-                            <TextControl
-                                label={__('Video URL', "premium-blocks-for-gutenberg")}
-                                value={bgExternalVideo || ""}
-                                onChange={val => onChangeBackground('bgExternalVideo', val)}
+                    )}
+                </div>
+            )}
+            {'video' === backgroundType && (
+                <Fragment>
+                    <SelectControl
+                        label={__('Video Source', 'premium-blocks-for-gutenberg')}
+                        value={videoSource}
+                        options={[
+                            { value: 'local', label: __('Local', 'premium-blocks-for-gutenberg') },
+                            { value: 'external', label: __('External', 'premium-blocks-for-gutenberg') }
+                        ]}
+                        onChange={(val) => onChangeBackground('videoSource', val)}
+                    />
+                    {videoSource === 'external' ?
+                        <TextControl
+                            label={__('Video URL', "premium-blocks-for-gutenberg")}
+                            value={bgExternalVideo || ""}
+                            onChange={val => onChangeBackground('bgExternalVideo', val)}
+                        />
+                        :
+                        <Fragment>
+                            <p>{__('Video', "premium-blocks-for-gutenberg")}</p>
+                            <PremiumMediaUpload
+                                type="video"
+                                imageID={videoID}
+                                imageURL={videoURL}
+                                onSelectMedia={media => onChangeBackground('videoURL', media.url)}
+                                onRemoveImage={() => onChangeBackground('videoURL', "")}
                             />
-                            :
-                            <Fragment>
-                                <p>{__('Video', "premium-blocks-for-gutenberg")}</p>
-                                <PremiumMediaUpload
-                                    type="video"
-                                    imageID={videoID}
-                                    imageURL={videoURL}
-                                    onSelectMedia={media => onChangeBackground('videoURL', media.url)}
-                                    onRemoveImage={() => onChangeBackground('videoURL', "")}
-                                />
-                            </Fragment>
-                        }
-                        <p>{__('Fallback Image (Poster)', 'premium-blocks-for-gutenberg')}</p>
-                        <PremiumMediaUpload
-                            type="image"
-                            imageID={bgVideoFallbackID}
-                            imageURL={bgVideoFallbackURL}
-                            onSelectMedia={media => onChangeBackground('bgVideoFallbackURL', media.url)}
-                            onRemoveImage={() => onChangeBackground('bgVideoFallbackURL', "")}
-                        />
-                    </Fragment>
-                )
-            }
-        </Fragment >
+                        </Fragment>
+                    }
+                    <p>{__('Fallback Image (Poster)', 'premium-blocks-for-gutenberg')}</p>
+                    <PremiumMediaUpload
+                        type="image"
+                        imageID={bgVideoFallbackID}
+                        imageURL={bgVideoFallbackURL}
+                        onSelectMedia={media => onChangeBackground('bgVideoFallbackURL', media.url)}
+                        onRemoveImage={() => onChangeBackground('bgVideoFallbackURL', "")}
+                    />
+                </Fragment>
+            )}
+        </Fragment>
     )
 }

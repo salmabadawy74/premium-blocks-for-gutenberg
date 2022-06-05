@@ -796,7 +796,7 @@ var PremiumBorder = function PremiumBorder(props) {
                 'div',
                 { className: 'premium-blocks-border__control ', style: { display: "flex" } },
                 React.createElement(
-                    'div',
+                    'span',
                     null,
                     props.label ? props.label : __('Border', 'premium-blocks-for-gutenberg')
                 ),
@@ -1458,9 +1458,9 @@ var RadioComponent = function RadioComponent(_ref) {
         );
     };
     return React.createElement(
-        Fragment,
-        null,
-        React.createElement(
+        'div',
+        { className: 'premium-blocks-field' },
+        label && React.createElement(
             'span',
             { className: 'customize-control-title premium-control-title' },
             label
@@ -3823,7 +3823,7 @@ function PremiumFilters(props) {
         "div",
         { className: "premium-filter__container premium-blocks-field" },
         React.createElement(
-            "p",
+            "span",
             null,
             __(label || "CSS Filters")
         ),
@@ -11702,33 +11702,6 @@ var PremiumAccordion = function (_Component) {
                         value: direction,
                         onChange: function onChange(newEffect) {
                             return setAttributes({ direction: newEffect });
-                        }
-                    }),
-                    React.createElement(_premiumTypo2.default, {
-                        components: ["size", "weight", "style", "upper", "spacing", "line"],
-                        size: titleStyles[0].titleSize,
-                        weight: titleStyles[0].titleWeight,
-                        style: titleStyles[0].titleStyle,
-                        spacing: titleStyles[0].titleLetter,
-                        line: titleStyles[0].titleLine,
-                        upper: titleStyles[0].titleUpper,
-                        onChangeSize: function onChangeSize(newSize) {
-                            return saveTitleStyles({ titleSize: newSize });
-                        },
-                        onChangeWeight: function onChangeWeight(newWeight) {
-                            return saveTitleStyles({ titleWeight: newWeight });
-                        },
-                        onChangeStyle: function onChangeStyle(newStyle) {
-                            return saveTitleStyles({ titleStyle: newStyle });
-                        },
-                        onChangeSpacing: function onChangeSpacing(newValue) {
-                            return saveTitleStyles({ titleLetter: newValue });
-                        },
-                        onChangeLine: function onChangeLine(newValue) {
-                            return saveTitleStyles({ titleLine: newValue });
-                        },
-                        onChangeUpper: function onChangeUpper(check) {
-                            return saveTitleStyles({ titleUpper: check });
                         }
                     }),
                     React.createElement(_ColorComponent2.default, {
@@ -69628,98 +69601,11 @@ var PremiumColumn = function (_Component) {
                 getNextBlockClientId = _select.getNextBlockClientId;
 
             var currentColumn = $("#block-" + clientId);
-            var rowWidth = currentColumn.parents('.qubely-backend-row').width();
+            var rowWidth = currentColumn.parents('.premium-backend-row').width();
             var nextBlockId = getNextBlockClientId(clientId);
             var prevBlockId = getPreviousBlockClientId(clientId);
             currentColumn.css({ width: colWidth.Desktop + '%' });
             this.setState({ rowWidth: rowWidth, nextBlockId: nextBlockId, prevBlockId: prevBlockId, maxResizeWidth: rowWidth, colWidth: _extends({}, colWidth) });
-        }
-    }, {
-        key: "onResizeStartEvent",
-        value: function onResizeStartEvent(event, direction, elt) {
-            var _props3 = this.props,
-                toggleSelection = _props3.toggleSelection,
-                clientId = _props3.clientId,
-                setAttributes = _props3.setAttributes;
-            var _state = this.state,
-                rowWidth = _state.rowWidth,
-                nextColWidth = _state.nextColWidth,
-                prevColWidth = _state.prevColWidth;
-
-            toggleSelection(false);
-            var editorSelector = select('core/block-editor');
-            var colWidth = editorSelector.getBlockAttributes(clientId).colWidth;
-            var nextBlockClientId = editorSelector.getNextBlockClientId(clientId);
-            var prevBlockClientId = editorSelector.getPreviousBlockClientId(clientId);
-            if (nextBlockClientId !== null) {
-                nextColWidth.Desktop = parseFloat(editorSelector.getBlockAttributes(nextBlockClientId).colWidth.Desktop);
-            }
-            if (prevBlockClientId !== null) {
-                prevColWidth.Desktop = parseFloat(editorSelector.getBlockAttributes(prevBlockClientId).colWidth.Desktop);
-            }
-            var maxResizeWidth = 0;
-            if (direction === 'right' && nextBlockClientId !== null) {
-                var resizeNextColWidth = nextColWidth.Desktop / 100 * rowWidth - 100;
-                var resizeCurrenColWidth = colWidth.Desktop / 100 * rowWidth;
-                maxResizeWidth = resizeNextColWidth + resizeCurrenColWidth;
-            }
-            if (direction === 'left' && prevBlockClientId !== null) {
-                var resizePrevColWidth = prevColWidth.Desktop / 100 * rowWidth - 100;
-                var _resizeCurrenColWidth = colWidth.Desktop / 100 * rowWidth;
-                maxResizeWidth = resizePrevColWidth + _resizeCurrenColWidth;
-            }
-            setAttributes({ colWidth: colWidth });
-            var clmRect = document.getElementById("block-" + clientId).getBoundingClientRect();
-            this.setState({ colWidth: colWidth, prevColWidth: prevColWidth, nextColWidth: nextColWidth, maxResizeWidth: maxResizeWidth, resizing: true, absWidth: clmRect.width });
-        }
-    }, {
-        key: "onResize",
-        value: function onResize(event, direction, elt, delta) {
-            var _state2 = this.state,
-                colWidth = _state2.colWidth,
-                nextColWidth = _state2.nextColWidth,
-                rowWidth = _state2.rowWidth,
-                absWidth = _state2.absWidth;
-            var _props4 = this.props,
-                clientId = _props4.clientId,
-                setAttributes = _props4.setAttributes;
-
-            var currentcolumnId = $("#block-" + clientId);
-            var NextColumn = currentcolumnId.next();
-            var currentBlockWidth = absWidth + delta.width;
-            var calWidth = currentBlockWidth / rowWidth * 100;
-            var diff = parseFloat(colWidth.Desktop) - calWidth;
-            var nextBlockWidth = 0;
-            if (direction === 'right') {
-                if (NextColumn.length > 0) {
-                    nextBlockWidth = parseFloat(nextColWidth.Desktop) + diff;
-                    if (nextBlockWidth > 10 && calWidth > 10) {
-                        nextBlockWidth = Math.abs(nextBlockWidth);
-                        NextColumn.css({ width: nextBlockWidth.toFixed(2) + '%' });
-                        var editorSelector = select('core/block-editor');
-                        var nextBlockClientId = editorSelector.getNextBlockClientId(clientId);
-                        if (nextBlockClientId !== null) {
-                            var nextBlock = editorSelector.getBlock(nextBlockClientId);
-                            nextBlock.attributes.colWidth.Desktop = nextBlockWidth.toFixed(2);
-                        }
-                    }
-                }
-            }
-
-            currentcolumnId.find('.components-resizable-box__container').css({ width: 'auto' });
-            if (nextBlockWidth > 10 && calWidth > 10) {
-                currentcolumnId.css({ width: calWidth.toFixed(2) + '%' });
-                setAttributes({ colWidth: _extends({}, colWidth, { Desktop: calWidth.toFixed(2) }) });
-            }
-        }
-    }, {
-        key: "onResizeStop",
-        value: function onResizeStop(event, direction, elt, delta) {
-            var toggleSelection = this.props.toggleSelection;
-
-            toggleSelection(true);
-
-            this.setState({ resizing: false });
         }
     }, {
         key: "updateColumns",
@@ -69756,41 +69642,12 @@ var PremiumColumn = function (_Component) {
             });
         }
     }, {
-        key: "checkColumnStatus",
-        value: function checkColumnStatus() {
-            var clientId = this.props.clientId;
-
-            var _select3 = select('core/block-editor'),
-                getBlockRootClientId = _select3.getBlockRootClientId,
-                getPreviousBlockClientId = _select3.getPreviousBlockClientId,
-                getNextBlockClientId = _select3.getNextBlockClientId,
-                getBlockIndex = _select3.getBlockIndex,
-                getBlock = _select3.getBlock;
-
-            var rootClientId = getBlockRootClientId(clientId);
-            var nextBlockId = getNextBlockClientId(clientId);
-            var prevBlockId = getPreviousBlockClientId(clientId);
-            var blockIndex = getBlockIndex(clientId, rootClientId);
-            return { nextBlockId: nextBlockId, prevBlockId: prevBlockId, blockIndex: blockIndex };
-        }
-    }, {
-        key: "_isActiveRow",
-        value: function _isActiveRow() {
-            var rootClientId = select('core/block-editor').getBlockRootClientId(this.props.clientId);
-            var selected = select('core/block-editor').getSelectedBlock();
-            if (selected && rootClientId && selected.clientId) {
-                return rootClientId == selected.clientId ? true : false;
-            } else {
-                return false;
-            }
-        }
-    }, {
         key: "updateColumnWidth",
         value: function updateColumnWidth(colWidth) {
-            var _props5 = this.props,
-                clientId = _props5.clientId,
-                setAttributes = _props5.setAttributes,
-                attributes = _props5.attributes;
+            var _props3 = this.props,
+                clientId = _props3.clientId,
+                setAttributes = _props3.setAttributes,
+                attributes = _props3.attributes;
 
             this.setState({ colWidthMax: colWidth.device === 'Desktop' ? 85 : 100, responsiveDevice: colWidth.device });
             if (colWidth.device && colWidth.device !== 'Desktop') {
@@ -69806,10 +69663,10 @@ var PremiumColumn = function (_Component) {
             var calWidth = parseFloat(colWidth.Desktop);
             var different = calWidth - parseFloat(attributes.colWidth.Desktop);
 
-            var _select4 = select('core/block-editor'),
-                getPreviousBlockClientId = _select4.getPreviousBlockClientId,
-                getNextBlockClientId = _select4.getNextBlockClientId,
-                getBlock = _select4.getBlock;
+            var _select3 = select('core/block-editor'),
+                getPreviousBlockClientId = _select3.getPreviousBlockClientId,
+                getNextBlockClientId = _select3.getNextBlockClientId,
+                getBlock = _select3.getBlock;
 
             var _dispatch2 = dispatch('core/block-editor'),
                 updateBlockAttributes = _dispatch2.updateBlockAttributes;
@@ -69843,28 +69700,46 @@ var PremiumColumn = function (_Component) {
             }
         }
     }, {
+        key: "checkColumnStatus",
+        value: function checkColumnStatus() {
+            var clientId = this.props.clientId;
+
+            var _select4 = select('core/block-editor'),
+                getBlockRootClientId = _select4.getBlockRootClientId,
+                getPreviousBlockClientId = _select4.getPreviousBlockClientId,
+                getNextBlockClientId = _select4.getNextBlockClientId,
+                getBlockIndex = _select4.getBlockIndex,
+                getBlock = _select4.getBlock;
+
+            var rootClientId = getBlockRootClientId(clientId);
+            var nextBlockId = getNextBlockClientId(clientId);
+            var prevBlockId = getPreviousBlockClientId(clientId);
+            var blockIndex = getBlockIndex(clientId, rootClientId);
+            return { nextBlockId: nextBlockId, prevBlockId: prevBlockId, blockIndex: blockIndex };
+        }
+    }, {
         key: "render",
         value: function render() {
             var _this2 = this;
 
-            var _props6 = this.props,
-                _props6$attributes = _props6.attributes,
-                uniqueId = _props6$attributes.uniqueId,
-                className = _props6$attributes.className,
-                colWidth = _props6$attributes.colWidth,
-                ColumnAnimation = _props6$attributes.ColumnAnimation,
-                columnBackground = _props6$attributes.columnBackground,
-                columnBorder = _props6$attributes.columnBorder,
-                columnShadow = _props6$attributes.columnShadow,
-                columnMargin = _props6$attributes.columnMargin,
-                columnPadding = _props6$attributes.columnPadding,
-                setAttributes = _props6.setAttributes,
-                isSelected = _props6.isSelected,
-                clientId = _props6.clientId;
-            var _state3 = this.state,
-                rowWidth = _state3.rowWidth,
-                resizing = _state3.resizing,
-                responsiveDevice = _state3.responsiveDevice;
+            var _props4 = this.props,
+                _props4$attributes = _props4.attributes,
+                uniqueId = _props4$attributes.uniqueId,
+                className = _props4$attributes.className,
+                colWidth = _props4$attributes.colWidth,
+                ColumnAnimation = _props4$attributes.ColumnAnimation,
+                columnBackground = _props4$attributes.columnBackground,
+                columnBorder = _props4$attributes.columnBorder,
+                columnShadow = _props4$attributes.columnShadow,
+                columnMargin = _props4$attributes.columnMargin,
+                columnPadding = _props4$attributes.columnPadding,
+                setAttributes = _props4.setAttributes,
+                isSelected = _props4.isSelected,
+                clientId = _props4.clientId;
+            var _state = this.state,
+                rowWidth = _state.rowWidth,
+                resizing = _state.resizing,
+                responsiveDevice = _state.responsiveDevice;
 
             var _select5 = select('core/block-editor'),
                 getBlockRootClientId = _select5.getBlockRootClientId,
@@ -69881,17 +69756,11 @@ var PremiumColumn = function (_Component) {
                 nextBlockId = columnStatus.nextBlockId;
                 blockIndex = columnStatus.blockIndex;
             }
-            var resigingClass = 'qubely-column-resizer';
-            if (nextBlockId !== null && isSelected) {
-                resigingClass += ' is-selected-column';
-            }
-            if (resizing) {
-                resigingClass += ' is-resizing';
-            }
 
             var _select6 = select('core/block-editor'),
                 getBlockOrder = _select6.getBlockOrder;
 
+            var active = isSelected ? 'active' : 'not-active';
             return React.createElement(
                 Fragment,
                 null,
@@ -70023,38 +69892,16 @@ var PremiumColumn = function (_Component) {
                     )
                 ),
                 React.createElement(
-                    ResizableBox,
+                    "div",
                     {
-                        className: resigingClass,
-                        style: {},
-                        size: {},
-                        maxWidth: this.state.maxWidth,
-                        enable: {
-                            top: false,
-                            right: true,
-                            bottom: false,
-                            left: false,
-                            topRight: false,
-                            bottomRight: false,
-                            bottomLeft: false,
-                            topLeft: false
-                        },
-                        minHeight: "10",
-                        onResize: function onResize(event, direction, elt, delta) {
-                            return _this2.onResize(event, direction, elt, delta);
-                        },
-                        onResizeStop: function onResizeStop(event, direction, elt, delta) {
-                            return _this2.onResizeStop(event, direction, elt, delta);
-                        },
-                        onResizeStart: function onResizeStart(event, direction, elt) {
-                            return _this2.onResizeStartEvent(event, direction, elt);
-                        } },
+                        className: (0, _classnames2.default)(className, 'premium-column__wrap', "premium-column__edit-" + active, "premium-block-" + clientId.substr(0, 8))
+                    },
                     React.createElement(
                         "div",
-                        { className: "qubely-column qubely-column-admin premium-blocks-" + this.props.clientId + " qubely-block-" + uniqueId + (className ? " " + className : ''), "data-column-width": this.props.attributes.colWidth.Desktop },
+                        { className: "premium-column premium-column-admin premium-blocks-" + this.props.clientId + " premium-block-" + uniqueId + (className ? " " + className : ''), "data-column-width": this.props.attributes.colWidth.Desktop },
                         React.createElement(
                             "div",
-                            { className: "qubely-column-inner", style: _extends({}, (0, _HelperFunction.gradientBackground)(columnBackground), (0, _HelperFunction.borderCss)(columnBorder, this.props.deviceType), (0, _HelperFunction.padddingCss)(columnPadding, this.props.deviceType), (0, _HelperFunction.marginCss)(columnMargin, this.props.deviceType)) },
+                            { className: "premium-column-inner", style: _extends({}, (0, _HelperFunction.gradientBackground)(columnBackground), (0, _HelperFunction.borderCss)(columnBorder, this.props.deviceType), (0, _HelperFunction.padddingCss)(columnPadding, this.props.deviceType), (0, _HelperFunction.marginCss)(columnMargin, this.props.deviceType)) },
                             React.createElement(InnerBlocks, {
                                 templateLock: false,
                                 renderAppender: getBlockOrder(clientId).length > 0 ? undefined : function () {

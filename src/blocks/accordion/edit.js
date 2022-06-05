@@ -348,16 +348,8 @@ class PremiumAccordion extends Component {
                             value={direction}
                             onChange={newEffect => setAttributes({ direction: newEffect })}
                         />
-
-                        <PremiumTypo
-                            components={[
-                                "size",
-                                "weight",
-                                "style",
-                                "upper",
-                                "spacing",
-                                "line"
-                            ]}
+                        {/* <PremiumTypo
+                            components={["size","weight","style","upper","spacing","line"]}
                             size={titleStyles[0].titleSize}
                             weight={titleStyles[0].titleWeight}
                             style={titleStyles[0].titleStyle}
@@ -370,7 +362,7 @@ class PremiumAccordion extends Component {
                             onChangeSpacing={newValue => saveTitleStyles({ titleLetter: newValue })}
                             onChangeLine={newValue => saveTitleStyles({ titleLine: newValue })}
                             onChangeUpper={check => saveTitleStyles({ titleUpper: check })}
-                        />
+                        /> */}
                         <AdvancedPopColorControl
                             label={__("Text Color", 'premium-blocks-for-gutenberg')}
                             colorValue={titleStyles[0].titleColor}
