@@ -101,47 +101,28 @@ class Edit extends Component {
     }
 
     render() {
-        console.log(this.state.device)
         const {
             attributes: {
                 uniqueId,
                 className,
                 rowId,
                 columns,
-                evenColumnHeight,
-                align,
-                rowGutter,
-                rowBlend,
-                rowOverlay,
-                rowOpacity,
-                rowContainer,
-                rowContainerWidth,
-                position,
+
                 padding,
                 margin,
-                marginTop,
-                marginBottom,
-                rowBg,
+
+
                 shapeTop,
                 shapeBottom,
-                rowReverse,
-                rowShadow,
+                minHeight,
                 heightOptions,
-                rowHeight,
+
                 border,
-                borderRadius,
-                enableRowOverlay,
+
                 //animation
                 animation,
                 //global
-                enablePosition,
-                selectPosition,
-                positionXaxis,
-                positionYaxis,
-                globalZindex,
-                hideTablet,
-                hideMobile,
-                globalCss,
+
                 innerWidthType,
                 innerWidth,
                 columnGutter,
@@ -155,7 +136,6 @@ class Edit extends Component {
             setAttributes } = this.props;
 
         const { device, hideRowSettings } = this.state;
-        console.log(device, "ColOptions")
         if (!columns) {
             return (
                 <Fragment>
@@ -307,7 +287,6 @@ class Edit extends Component {
                                     onChange={(value) => setAttributes({ boxShadow: value })}
                                 />
                             </PanelBody>
-
                             <PanelBody initialOpen={false} title={__('Shape Divider')}>
                                 <InsideTabs>
                                     <InsideTab tabTitle={__('Top Shape')}>
@@ -366,7 +345,9 @@ class Edit extends Component {
 
 
 
-                <div className={`qubely-section qubely-block-${uniqueId} ${className ? ` ${className}` : ''}`} {...rowId ? { id: rowId } : ''}>
+                <div className={`qubely-section qubely-block-${uniqueId} premium-container__${innerWidthType} ${className ? ` ${className}` : ''}`} {...rowId ? { id: rowId } : ''}
+
+                >
                     <div className="qubley-padding-indicator">
                         <span className="qubely-indicator-top" style={{ height: padding.Desktop.top ? padding.Desktop.top + padding.unit : 0 }} >
                             {(padding.Desktop.top && padding.Desktop.top > 20) ? padding.Desktop.top + ' ' + padding.unit : ''}
@@ -382,26 +363,26 @@ class Edit extends Component {
                         </span>
                     </div>
                     <div className="qubley-margin-indicator">
-                        <span className="qubely-indicator-top" style={{ height: marginTop.Desktop ? marginTop.Desktop + marginTop.unit : 0 }} >
-                            {marginTop.Desktop && marginTop.Desktop > 20 ? marginTop.Desktop + ' ' + marginTop.unit : ''}
-                        </span>
-                        <span className="qubely-indicator-bottom" style={{ height: marginBottom.Desktop ? marginBottom.Desktop + marginBottom.unit : 0 }} >
-                            {marginBottom.Desktop && marginBottom.Desktop > 20 ? marginBottom.Desktop + ' ' + marginBottom.unit : ''}
-                        </span>
+
 
                     </div>
                     {(Object.entries(shapeTop).length > 1 && shapeTop.openShape == 1 && shapeTop.style) &&
                         <div className="qubely-shape-divider qubely-top-shape" dangerouslySetInnerHTML={{ __html: qubely_admin.shapes[shapeTop.style] }} />
                     }
-                    {(Object.entries(rowBg).length > 0 && rowBg.openBg == 1 && rowBg.bgType == 'video') &&
-                        videoBackground(rowBg, 'row')
-                    }
+
                     {(Object.entries(shapeBottom).length > 1 && shapeBottom.openShape == 1 && shapeBottom.style) &&
                         <div className="qubely-shape-divider qubely-bottom-shape" dangerouslySetInnerHTML={{ __html: qubely_admin.shapes[shapeBottom.style] }} />
                     }
                     <div className="qubely-row-overlay"></div>
                     {/* <div className={`${align == 'full' ? ((rowContainerWidth == 'boxed') ? 'qubely-container' : 'qubely-container-fluid') : 'qubely-container-fluid'}`}> */}
-                    <div className={this.getClassName()}>
+                    <div className={this.getClassName()} style={{
+                        maxWidth: "boxed" == innerWidthType && stretchSection
+                            ? innerWidth
+                                ? innerWidth + "px"
+                                : "1140px"
+                            : "100%",
+                        minHeight: "fit" === height ? "100vh" : minHeight + minHeight['unit'],
+                    }}>
                         <div className={`qubely-row qubely-backend-row ${(heightOptions == 'window') ? 'qubely-row-height-window' : ''}`}>
                             <InnerBlocks
                                 template={this.getTemplate(columns)}

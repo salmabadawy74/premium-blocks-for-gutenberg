@@ -1,13 +1,10 @@
 const attributes = {
+    uniqueId: {
+        type: 'string'
+    },
     colWidth: {
         type: 'object',
-        default: {
-            Desktop: 50,
-            Tablet: 50,
-            Mobile: 100,
-            unit: '%',
 
-        },
     },
     columnPadding: {
         type: 'object',

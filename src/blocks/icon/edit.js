@@ -203,7 +203,6 @@ const edit = props => {
     const wrapMarginBottom = getPreviewSize(props.deviceType, wrapMarginB, wrapMarginBTablet, wrapMarginBMobile);
     const wrapMarginLeft = getPreviewSize(props.deviceType, wrapMarginL, wrapMarginLTablet, wrapMarginLMobile);
 
-    console.log(hideDesktop, hideTablet, hideMobile)
     return [
         isSelected && (
             <InspectorControls key={"inspector"}>

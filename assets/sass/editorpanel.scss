@@ -2,12 +2,27 @@
   * FontIconPicker CSS
   */
 /** * Responsive Icons */
-
+/**
+ * Responsive Icons
+ */
+/* Reset Button CSS */
+/*   */
+/** Inside Setting group popup - Colors */
+/**************** Premium Modal Box *********************/
+/*******************************************************/
+/**********************************************************************/
+/************************ Advanced Tabs Css ************************** */
+/* ******************** Panel Body Tab ****************************/
+/* ****************************************************************/
+/********************** Border Control  *****************/
+/*******************************************************/
+/******************* Toggle Control  *************************/
+/************************************************************/
 :root {
-    --primaryColor: #007cba;
-    --accentColorHover: #135e96;
-    --optionBorderColor: #e1e1e1;
-    --inputBorderColor: #e1e1e1;
+    --primarycolor: #007cba;
+    --accentcolorhover: #135e96;
+    --optionbordercolor: #e1e1e1;
+    --inputbordercolor: #e1e1e1;
 }
 .premium-panel-body {
     p.premium-editor-paragraph {
@@ -36,8 +51,8 @@
         margin-right: 0.4em;
     }
 }
-
 .premium-size-type-field-tabs {
+    position: relative;
     .components-range-control {
         .components-base-control__field {
             display: block;
@@ -51,16 +66,11 @@
             vertical-align: middle;
         }
     }
-    position: relative;
     .components-tab-panel__tabs {
         position: absolute;
         margin-left: 79px;
         margin-top: -2px;
         button {
-            svg {
-                width: 14px;
-                height: 14px;
-            }
             border: 0;
             border-bottom: 0;
             padding: 3px;
@@ -75,6 +85,10 @@
             height: 20px;
             width: 20px;
             margin-right: 3px;
+            svg {
+                width: 14px;
+                height: 14px;
+            }
         }
         button.active-tab {
             color: #23282d;
@@ -285,7 +299,7 @@
 }
 .lottie-remove {
     display: block;
-    background-color: rgb(240, 240, 240);
+    background-color: #f0f0f0;
     color: #000;
     font-size: 16px;
     padding: 10px 20px;
@@ -313,7 +327,7 @@
     button.components-tab-panel__tabs-item {
         display: block;
         text-align: center;
-        border: 1px solid rgb(240, 240, 240);
+        border: 1px solid #f0f0f0;
         box-sizing: border-box;
         align-items: center;
         border-radius: 2px;
@@ -327,7 +341,7 @@
     button.active-tab {
         border: none;
         color: #000;
-        background-color: rgb(240, 240, 240);
+        background-color: #f0f0f0;
     }
 }
 .premium-repeater-btn__wrap {
@@ -438,6 +452,15 @@
     }
     .rfipicons__icon {
         height: 40px;
+    }
+    .components-panel__body {
+        .premium-inspector-tabs-container {
+            position: static !important;
+            margin-left: -16px;
+            margin-right: -16px;
+            border-top: 0 !important;
+            top: 0 !important;
+        }
     }
 }
 .components-button.uagb-rm-btn {
@@ -3660,10 +3683,32 @@ i.fipicon-angle-left {
         font-family: dashicons;
     }
 }
-.Premium-btn-size-settings-container {
+.premium-filter__container {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+.premium-btn-size-settings-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    p.premium-beside-btn-group {
+        margin: 0px;
+    }
+    .premium-background-type__wrap {
+        display: flex;
+        align-items: center;
+        .premium-button-size-type-options {
+            margin-right: 6px;
+            button.premium-btn-size-btn {
+                border: 1px solid #e1e2e1;
+                box-shadow: none;
+            }
+        }
+    }
+}
+.premium-inner-sub-section {
+    margin-top: 15px;
 }
 .premium-shadow-control__container {
     display: flex;
@@ -3674,8 +3719,39 @@ i.fipicon-angle-left {
         align-items: center;
     }
 }
+.premium-blocks-field {
+    position: relative;
+    margin-bottom: 20px;
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+.premium-control-toggle-content .components-popover__content {
+    border-radius: 0px;
+    background-color: #fff;
+    width: 290px;
+}
+
+/******************* Toggle Control  *************************/
+/************************************************************/
+.premium-inspector-tab
+    .components-toggle-control
+    .components-base-control__field {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+.premium-blocks-field {
+    position: relative;
+    margin-bottom: 20px;
+}
+.premium-blocks-field:last-child {
+    margin-bottom: 0;
+}
+
 @import "./RangeControl.scss";
 @import "./spacing.scss";
 @import "./color.scss";
 @import "./radio-control.scss";
 @import "./typography.scss";
+@import "./border.scss";

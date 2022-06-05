@@ -4,79 +4,106 @@ const { useState } = wp.element;
 const { __ } = wp.i18n;
 import PremiumSizeUnits from '../premium-size-units';
 import ResponsiveSingleRangeControl from './single-range-control';
-
 import Responsive from '../responsive'
+
 export default function ResponsiveRangeControl({
     label,
     onChange,
-    onChangeTablet,
-    onChangeMobile,
-    mobileValue,
-    tabletValue,
     value,
     step = 1,
     max = 100,
     min = 0,
     unit = '',
-    onChangeUnit,
     showUnit = false,
     units = ['px', 'em', 'rem'],
     defaultValue
 }) {
-    const [deviceType, setDeviceType] = useState('Desktop');
+    let defaultValues = {
+        'Desktop': '',
+        'Tablet': '',
+        'Mobile': '',
+        unit: 'px'
 
+    }
+    value = value ? { ...defaultValues, ...value } : defaultValues;
+    const [state, setState] = useState(value)
+    const [deviceType, setDeviceType] = useState('Desktop');
+    let customSetPreviewDeviceType = (device) => {
+        setDeviceType(device);
+    };
+    if (wp.data.select('core/edit-post')) {
+        const theDevice = useSelect((select) => {
+            const {
+                __experimentalGetPreviewDeviceType = null,
+            } = select('core/edit-post');
+            return __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : 'Desktop';
+        }, []);
+        if (theDevice !== deviceType) {
+            setDeviceType(theDevice);
+        }
+        const {
+            __experimentalSetPreviewDeviceType = null,
+        } = useDispatch('core/edit-post');
+        customSetPreviewDeviceType = (device) => {
+            __experimentalSetPreviewDeviceType(device);
+            setDeviceType(device);
+        };
+    }
     const devices = ['Desktop', 'Tablet', 'Mobile'];
+    const onChangeValue = (value, device) => {
+        const updatedState = { ...state }
+        updatedState[device] = value
+        setState(updatedState)
+        onChange(updatedState)
+    }
+    const onChangeUnit = (value) => {
+        const updatedState = { ...state }
+        updatedState['unit'] = value
+        setState(updatedState)
+        onChange(updatedState)
+    }
     const output = {};
     output.Mobile = (
         <ResponsiveSingleRangeControl
             device={'mobile'}
-            value={(undefined !== mobileValue ? mobileValue : '')}
-            onChange={(size) => onChangeMobile(size)}
+            value={state['Mobile']}
+            onChange={(size) => onChangeValue(size, 'Mobile')}
             min={min}
             max={max}
-            step={unit === "em" ? .1 : 1}
-            unit={unit}
-            onChangeUnit={onChangeUnit}
+            step={(state['unit'] === "em" || state['unit'] === "rem") ? .1 : 1}
             showUnit={false}
-            units={units}
             defaultValue={defaultValue}
         />
     );
     output.Tablet = (
         <ResponsiveSingleRangeControl
             device={'tablet'}
-            value={(undefined !== tabletValue ? tabletValue : '')}
-            onChange={(size) => onChangeTablet(size)}
+            value={state['Tablet']}
+            onChange={(size) => onChangeValue(size, 'Tablet')}
             min={min}
             max={max}
-            step={unit === "em" ? .1 : 1}
-            unit={unit}
-            onChangeUnit={onChangeUnit}
+            step={(state['unit'] === "em" || state['unit'] === "rem") ? .1 : 1}
             showUnit={false}
-            units={units}
             defaultValue={defaultValue}
         />
     );
     output.Desktop = (
         <ResponsiveSingleRangeControl
             device={'desktop'}
-            value={(undefined !== value ? value : '')}
-            onChange={(size) => onChange(size)}
+            value={state['Desktop']}
+            onChange={(size) => onChangeValue(size, "Desktop")}
             min={min}
             max={max}
-            step={unit === "em" ? .1 : 1}
-            unit={unit}
-            onChangeUnit={onChangeUnit}
+            step={(state['unit'] === "em" || state['unit'] === "rem") ? .1 : 1}
             showUnit={false}
-            units={units}
             defaultValue={defaultValue}
         />
     );
     return [
-        onChange && onChangeTablet && onChangeMobile && (
-            <div className={`premium-blocks-range-control premium-blocks-field`}>
+        onChange && (
+            <div className={`premium-blocks-range-control`}>
                 <header>
-                    <div className={`premium-slider-title-wrap`} style={{ display: 'flex' }}>
+                    <div className={`premium-title-wrap`}>
                         {label && (
                             <span className="customize-control-title premium-control-title">{label}</span>
                         )}
@@ -85,7 +112,7 @@ export default function ResponsiveRangeControl({
                     {showUnit && (
                         <PremiumSizeUnits
                             units={units}
-                            activeUnit={unit}
+                            activeUnit={state['unit']}
                             onChangeSizeUnit={newValue =>
                                 onChangeUnit(newValue)
                             }
@@ -93,7 +120,7 @@ export default function ResponsiveRangeControl({
 
                     )}
                 </header>
-                {(output[deviceType] ? output[deviceType] : output.Desktop)}
+                { (output[deviceType] ? output[deviceType] : output.Desktop)}
             </div >
         ),
     ];

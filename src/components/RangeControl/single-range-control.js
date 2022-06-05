@@ -22,7 +22,7 @@ export default function ResponsiveSingleRangeControl({
         onChange && (
             <div className={`premium-blocks-range-control premium-blocks-field`}>
                 {label && <header>
-                    <div className={`premium-slider-title-wrap`}>
+                    <div className={`premium-title-wrap`}>
                         {label && (
                             <span className="customize-control-title premium-control-title">{label}</span>
                         )}

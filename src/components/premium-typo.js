@@ -26,31 +26,37 @@ function fuzzysearch(needle, haystack) {
     return true
 }
 export default class PremiumTypo extends Component {
-    constructor(props) {
-        super(props)
-        let responsiveSize;
+    constructor() {
+        super(...arguments);
+        let FontSize;
         if (this.props.components.includes("responsiveSize")) {
-            responsiveSize = {
-                Desktop: this.props.fontSize || '',
-                Tablet: this.props.fontSizeTablet || '',
-                Mobile: this.props.fontSizeMobile || ''
+            FontSize = {
+                'Desktop': '',
+                'Tablet': '',
+                'Mobile': '',
+                unit: 'px'
             }
+        } else {
+            FontSize = ''
+        }
+        let defaultValues = {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': 'Default',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': FontSize
         }
         this.state = {
-            fontFamily: this.props.fontFamily || 'Default',
-            line: this.props.line,
-            weight: this.props.weight || '400',
-            size: this.props.components.includes("responsiveSize") ? responsiveSize : this.props.size,
-            textTransform: this.props.textTransform,
-            textDecoration: this.props.textDecoration,
-            sizeUnit: this.props.sizeUnit || 'px',
+            sizeUnit: FontSize['unit'] || 'px',
             isVisible: false,
             currentView: '',
             search: "",
             showUnit: this.props.showUnit || false,
-            spacing: this.props.spacing,
-            style: this.props.style,
             device: 'Desktop',
+            value: this.props.value ? { ...defaultValues, ...this.props.value } : this.props.value
         }
     }
     componentDidUpdate(prevProps) {
@@ -66,50 +72,12 @@ export default class PremiumTypo extends Component {
         }
     }
     render() {
-        const {
-            components,
-            setAttributes,
-            onChangeTextTransform = () => { },
-            onChangeTextDecoration = () => { },
-            onChangeFamily = () => { },
-            onChangeSize = () => { },
-            onChangeTabletSize = () => { },
-            onChangeMobileSize = () => { },
-            onChangeWeight = () => { },
-            onChangeStyle = () => { },
-            onChangeSpacing = () => { },
-            onChangeLine = () => { },
-            onResetClick = () => { },
-        } = this.props;
-        const {
-            fontFamily,
-            line,
-            weight,
-            size,
-            textTransform,
-            textDecoration,
-            sizeUnit,
-            isVisible,
-            currentView,
-            search,
-            showUnit,
-            spacing,
-            style,
-            device,
-        } = this.state;
+        const { components, onChange } = this.props;
+        const { value, sizeUnit, isVisible, currentView, search, device } = this.state;
         const STYLE = [
-            {
-                value: "normal",
-                label: __("Normal", 'premium-blocks-for-gutenberg'),
-            },
-            {
-                value: "italic",
-                label: __("Italic", 'premium-blocks-for-gutenberg'),
-            },
-            {
-                value: "oblique",
-                label: __("Oblique", 'premium-blocks-for-gutenberg'),
-            },
+            { value: "normal", label: __("Normal", 'premium-blocks-for-gutenberg') },
+            { value: "italic", label: __("Italic", 'premium-blocks-for-gutenberg') },
+            { value: "oblique", label: __("Oblique", 'premium-blocks-for-gutenberg') },
         ];
         const fonts = [
             { value: "Default", label: __("Default", 'premium-blocks-for-gutenberg'), weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], google: false },
@@ -123,7 +91,7 @@ export default class PremiumTypo extends Component {
             fonts.push(
                 { value: k, label: k, weight: googleFonts[k].weight, google: true }
             )
-            if (k === fontFamily) {
+            if (k === value['fontFamily']) {
                 fontWeight = googleFonts[k].weight
 
             }
@@ -146,9 +114,9 @@ export default class PremiumTypo extends Component {
             }
         };
         const renderVariations = fonts.map((item, index) => {
-            if (item.value == fontFamily) {
+            if (item.value == value['fontFamily']) {
                 return ((item.weight || []).map((weights, i) => {
-                    return <li key={i} className={`${weights == weight ? 'active' : ''}`} onClick={() => { this.setState({ weight: weights }), onChangeWeight(weights) }}>
+                    return <li key={i} className={`${weights == value['fontWeight'] ? 'active' : ''}`} onClick={() => changeTypography('fontWeight', weights)}>
                         <span className="premium-variation-name">
                             {weights}
                         </span>
@@ -156,8 +124,14 @@ export default class PremiumTypo extends Component {
                 }))
             }
         })
+        const changeTypography = (item, value) => {
+            const initialState = { ...this.state.value }
+            initialState[item] = value;
+            onChange(initialState)
+            this.setState({ value: initialState })
+        }
         const linearFonts = fonts.filter(family => fuzzysearch(search.toLowerCase(), family['value'].toLowerCase()))
-        const fontSize = components.includes("responsiveSize") ? size[device] : size
+        const fontSize = components.includes("responsiveSize") ? value['fontSize'][device] : value['fontSize']
         return (
             <div className="premium-control-toggle premium-typography premium-blocks-field">
                 <header>
@@ -176,7 +150,7 @@ export default class PremiumTypo extends Component {
                                     }}
                                 >
                                     <span>
-                                        {fontFamily}
+                                        {value['fontFamily']}
                                     </span>
                                     {isVisible && currentView == 'fonts' && components.includes('family') &&
                                         <Popover className="premium-typography-option premium-font-family__modal" onClose={toggleClose}>
@@ -191,7 +165,7 @@ export default class PremiumTypo extends Component {
                                                                     onKeyUp={(e) => {
                                                                         if (e.keyCode == 13) {
                                                                             if (linearFonts.length > 0) {
-                                                                                onChangeFamily(linearFonts[0])
+                                                                                changeTypography("fontFamily", linearFonts[0])
                                                                                 this.setState({ search: '' })
                                                                             }
                                                                         }
@@ -213,8 +187,8 @@ export default class PremiumTypo extends Component {
                                                         </ul>
                                                         <FontsList
                                                             linearFontsList={linearFonts}
-                                                            value={fontFamily}
-                                                            onPickFamily={(value) => { this.setState({ fontFamily: value }), onChangeFamily(value) }}
+                                                            value={value['fontFamily']}
+                                                            onPickFamily={(value) => { changeTypography('fontFamily', value) }}
                                                         />
                                                     </div>
                                                 </div>
@@ -235,26 +209,15 @@ export default class PremiumTypo extends Component {
                                         <div className=" ">
                                             <div className="premium-typography-container">
                                                 <ul className="premium-typography-options" style={{ width: `100%` }}>
-                                                    {components.includes("style") && (
-                                                        <li className="customize-control-premium-slider">
-                                                            <SelectControl
-                                                                label={__("Style", 'premium-blocks-for-gutenberg')}
-                                                                options={STYLE}
-                                                                value={style}
-                                                                onChange={(value) => { this.setState({ style: value }), onChangeStyle(value) }}
-                                                                onResetClick={onResetClick}
-                                                            />
-                                                        </li>
-                                                    )}
                                                     {components.includes("size") && (
                                                         <li className="customize-control-premium-slider">
                                                             <ResponsiveSingleRangeControl
                                                                 label={__("Font Size (PX)", 'premium-blocks-for-gutenberg')}
-                                                                value={size}
+                                                                value={value['fontSize']}
                                                                 min="10"
                                                                 max="80"
                                                                 defaultValue={20}
-                                                                onChange={(value) => { this.setState({ size: value }), onChangeSize(value) }}
+                                                                onChange={(value) => { changeTypography('fontSize', value) }}
                                                                 showUnit={false}
                                                             />
                                                         </li>
@@ -263,14 +226,8 @@ export default class PremiumTypo extends Component {
                                                         <li className="customize-control-premium-slider">
                                                             <ResponsiveRangeControl
                                                                 label={__("Font Size", 'premium-blocks-for-gutenberg')}
-                                                                value={this.props.fontSize}
-                                                                onChange={value => { this.setState({ ...this.state.size, Desktop: value }), onChangeSize(value) }}
-                                                                tabletValue={this.props.fontSizeTablet}
-                                                                onChangeTablet={value => { onChangeTabletSize(value) }}
-                                                                mobileValue={this.props.fontSizeMobile}
-                                                                onChangeMobile={value => { onChangeMobileSize(value) }}
-                                                                onChangeUnit={key => setAttributes({ [this.props.fontSizeType.label]: key })}
-                                                                unit={this.props.fontSizeType.value}
+                                                                value={value['fontSize']}
+                                                                onChange={value => changeTypography('fontSize', value)}
                                                                 showUnit={true}
                                                                 defaultValue={20}
                                                                 units={["px", "em"]}
@@ -281,8 +238,8 @@ export default class PremiumTypo extends Component {
                                                         <li className="customize-control-premium-slider">
                                                             <ResponsiveSingleRangeControl
                                                                 label={__("Line Height (PX)", 'premium-blocks-for-gutenberg')}
-                                                                value={line}
-                                                                onChange={(value) => { this.setState({ line: value }), onChangeLine(value) }}
+                                                                value={value['lineHeight']}
+                                                                onChange={(value) => { changeTypography('lineHeight', value) }}
                                                                 defaultValue={1}
                                                                 showUnit={false}
                                                                 min={0}
@@ -294,8 +251,8 @@ export default class PremiumTypo extends Component {
                                                         <li className="customize-control-premium-slider">
                                                             <ResponsiveSingleRangeControl
                                                                 label={__("Letter Spacing (PX)", 'premium-blocks-for-gutenberg')}
-                                                                value={spacing}
-                                                                onChange={(value) => { this.setState({ spacing: value }), onChangeSpacing(value) }}
+                                                                value={value['letterSpacing']}
+                                                                onChange={(value) => { changeTypography('letterSpacing', value) }}
                                                                 defaultValue={''}
                                                                 showUnit={false}
                                                                 step={0.1}
@@ -304,14 +261,24 @@ export default class PremiumTypo extends Component {
                                                             />
                                                         </li>
                                                     )}
-
+                                                    {components.includes("style") && (
+                                                        <li className="customize-control-premium-slider">
+                                                            <SelectControl
+                                                                label={__("Style", 'premium-blocks-for-gutenberg')}
+                                                                options={STYLE}
+                                                                value={value['fontStyle']}
+                                                                onChange={(value) => { changeTypography('fontStyle', value) }}
+                                                            // onResetClick={onResetClick}
+                                                            />
+                                                        </li>
+                                                    )}
                                                     {components.includes("Upper") && (<li className="premium-typography-variant">
                                                         <ul className="premium-text-transform">
                                                             {['capitalize', 'uppercase'].map((variant) => (
                                                                 <li
                                                                     key={variant}
-                                                                    onClick={() => { this.setState({ textTransform: variant }), onChangeTextTransform(variant) }}
-                                                                    className={`${textTransform == variant ? 'active' : ''}`}
+                                                                    onClick={() => { changeTypography('textTransform', variant) }}
+                                                                    className={`${value['textTransform'] == variant ? 'active' : ''}`}
                                                                     data-variant={variant}>
                                                                     <i className="premium-tooltip-top">
                                                                         {variant}
@@ -326,8 +293,8 @@ export default class PremiumTypo extends Component {
                                                             {['line-through', 'underline'].map((variant) => (
                                                                 <li
                                                                     key={variant}
-                                                                    onClick={() => { this.setState({ textDecoration: variant }), onChangeTextDecoration(variant) }}
-                                                                    className={`${textDecoration == variant ? 'active' : ''}`}
+                                                                    onClick={() => { changeTypography('textDecoration', variant) }}
+                                                                    className={`${value['textDecoration'] == variant ? 'active' : ''}`}
                                                                     data-variant={variant}>
                                                                     <i className="premium-tooltip-top">
                                                                         {variant}
@@ -348,7 +315,7 @@ export default class PremiumTypo extends Component {
                                     onClick={() => {
                                         toggleVisible("variations")
                                     }}
-                                >{weight}
+                                >{value['fontWeight']}
                                     {isVisible && currentView == 'variations' &&
                                         <Popover className="premium-typography-option" onClose={toggleClose}>
                                             <div className="premium-typography-option-modal ">

@@ -20,9 +20,9 @@ class PremiumColumn extends Component {
     constructor() {
         super(...arguments);
         this.state = {
-            colWidth: { Desktop: 0, Tablet: 0, Mobile: 0, device: 'Desktop' },
-            nextColWidth: { Desktop: 0, Tablet: 0, Mobile: 0, device: 'Desktop' },
-            prevColWidth: { Desktop: 0, Tablet: 0, Mobile: 0, device: 'Desktop' },
+            colWidth: { Desktop: 0, Tablet: 0, Mobile: 0 },
+            nextColWidth: { Desktop: 0, Tablet: 0, Mobile: 0 },
+            prevColWidth: { Desktop: 0, Tablet: 0, Mobile: 0 },
             rowWidth: 0,
             absWidth: 0,
             maxResizeWidth: 0,
@@ -30,10 +30,10 @@ class PremiumColumn extends Component {
             isHover: false,
             resizing: false,
             blockIndex: null,
-            responsiveDevice: 'Desktop',
             colWidthMax: 85
         };
     }
+
     componentDidMount() {
         const { setAttributes, clientId, attributes: { uniqueId } } = this.props
         const _client = clientId.substr(0, 6)
@@ -50,7 +50,6 @@ class PremiumColumn extends Component {
         this.updateColumnWidthAttribute();
     }
 
-
     updateColumnWidthAttribute() {
         const { attributes: { colWidth }, clientId } = this.props
         const { getPreviousBlockClientId, getNextBlockClientId } = select('core/block-editor')
@@ -59,8 +58,9 @@ class PremiumColumn extends Component {
         const nextBlockId = getNextBlockClientId(clientId)
         const prevBlockId = getPreviousBlockClientId(clientId)
         currentColumn.css({ width: colWidth.Desktop + '%' })
-        this.setState({ rowWidth, nextBlockId, prevBlockId, maxResizeWidth: rowWidth, colWidth: { ...colWidth, device: 'Desktop' } })
+        this.setState({ rowWidth, nextBlockId, prevBlockId, maxResizeWidth: rowWidth, colWidth: { ...colWidth } })
     }
+
     onResizeStartEvent(event, direction, elt) {
         let { toggleSelection, clientId, setAttributes } = this.props
         const { rowWidth, nextColWidth, prevColWidth } = this.state
@@ -69,7 +69,6 @@ class PremiumColumn extends Component {
         const colWidth = editorSelector.getBlockAttributes(clientId).colWidth
         const nextBlockClientId = editorSelector.getNextBlockClientId(clientId)
         const prevBlockClientId = editorSelector.getPreviousBlockClientId(clientId)
-
         if (nextBlockClientId !== null) {
             nextColWidth.Desktop = parseFloat(editorSelector.getBlockAttributes(nextBlockClientId).colWidth.Desktop)
         }
@@ -87,11 +86,10 @@ class PremiumColumn extends Component {
             let resizeCurrenColWidth = (colWidth.Desktop / 100) * rowWidth
             maxResizeWidth = resizePrevColWidth + resizeCurrenColWidth
         }
-        setAttributes({ colWidth })
+        setAttributes({ colWidth: colWidth })
         const clmRect = document.getElementById(`block-${clientId}`).getBoundingClientRect()
         this.setState({ colWidth: colWidth, prevColWidth, nextColWidth, maxResizeWidth, resizing: true, absWidth: clmRect.width })
     }
-
 
     onResize(event, direction, elt, delta) {
         const { colWidth, nextColWidth, rowWidth, absWidth } = this.state
@@ -101,7 +99,6 @@ class PremiumColumn extends Component {
         let currentBlockWidth = absWidth + (delta.width);
         let calWidth = (currentBlockWidth / rowWidth) * 100;
         let diff = parseFloat(colWidth.Desktop) - calWidth;
-
         let nextBlockWidth = 0
         if (direction === 'right') {
             if (NextColumn.length > 0) {
@@ -118,6 +115,7 @@ class PremiumColumn extends Component {
                 }
             }
         }
+
         currentcolumnId.find('.components-resizable-box__container').css({ width: 'auto' })
         if (nextBlockWidth > 10 && calWidth > 10) {
             currentcolumnId.css({ width: calWidth.toFixed(2) + '%' })
@@ -128,9 +126,9 @@ class PremiumColumn extends Component {
     onResizeStop(event, direction, elt, delta) {
         const { toggleSelection } = this.props
         toggleSelection(true);
+
         this.setState({ resizing: false })
     }
-
 
     updateColumns(updateType) {
         const { clientId } = this.props
@@ -156,8 +154,6 @@ class PremiumColumn extends Component {
         })
     }
 
-
-
     checkColumnStatus() {
         const { clientId } = this.props
         const { getBlockRootClientId, getPreviousBlockClientId, getNextBlockClientId, getBlockIndex, getBlock } = select('core/block-editor')
@@ -168,7 +164,6 @@ class PremiumColumn extends Component {
         return { nextBlockId, prevBlockId, blockIndex }
     }
 
-
     _isActiveRow() {
         const rootClientId = select('core/block-editor').getBlockRootClientId(this.props.clientId)
         const selected = select('core/block-editor').getSelectedBlock()
@@ -178,7 +173,6 @@ class PremiumColumn extends Component {
             return false
         }
     }
-
 
     updateColumnWidth(colWidth) {
         const { clientId, setAttributes, attributes } = this.props
@@ -229,32 +223,13 @@ class PremiumColumn extends Component {
 
     }
 
-    // componentWillReceiveProps(nextProps) {
-    //     document.getElementById("block-" + this.props.clientId).style.alignSelf = nextProps.attributes.position
-    // }
     render() {
         const {
             attributes: {
                 uniqueId,
                 className,
                 colWidth,
-                padding,
-                margin,
-                colBg,
-                colBorder,
-                colRadius,
-                colShadow,
-                corner,
-                borderRadius,
                 ColumnAnimation,
-                enablePosition,
-                selectPosition,
-                positionXaxis,
-                positionYaxis,
-                globalZindex,
-                hideTablet,
-                hideMobile,
-                globalCss,
                 columnBackground,
                 columnBorder,
                 columnShadow,
@@ -293,16 +268,15 @@ class PremiumColumn extends Component {
                         <InspectorTab key={'layout'}>
                             <PanelBody initialOpen={true} title={__('Dimension')}>
                                 <ResponsiveRangeControl
-                                    label={__("Column Gutter", 'premium-blocks-for-gutenberg')}
+                                    label={__("Column Width (%)", 'premium-blocks-for-gutenberg')}
                                     value={colWidth}
                                     min="0"
                                     max="100"
-                                    onChange={newValue => setAttributes({ colWidth: newValue })}
+                                    onChange={newValue => this.updateColumnWidth(newValue)}
                                     defaultValue={0}
-                                    showUnit={true}
+                                    showUnit={false}
                                 />
                             </PanelBody>
-
                         </InspectorTab>
                         <InspectorTab key={'style'}>
                             <PanelBody
@@ -380,47 +354,46 @@ class PremiumColumn extends Component {
                     </Toolbar>
                 </BlockControls>
 
-
-                {
-                    rowWidth !== 0 &&
-                    <ResizableBox
-                        className={resigingClass}
-                        style={{}}
-                        size={{}}
-                        maxWidth={this.state.maxWidth}
-                        enable={{
-                            top: false,
-                            right: true,
-                            bottom: false,
-                            left: false,
-                            topRight: false,
-                            bottomRight: false,
-                            bottomLeft: false,
-                            topLeft: false,
-                        }}
-                        minHeight="10"
-                        onResize={(event, direction, elt, delta) => this.onResize(event, direction, elt, delta)}
-                        onResizeStop={(event, direction, elt, delta) => this.onResizeStop(event, direction, elt, delta)}
-                        onResizeStart={(event, direction, elt) => this.onResizeStartEvent(event, direction, elt)} >
-                        <div className={`qubely-column qubely-column-admin premium-blocks-${this.props.clientId} qubely-block-${uniqueId}${className ? ` ${className}` : ''}`} data-column-width={this.props.attributes.colWidth.Desktop}>
-                            <div className={`qubely-column-inner`} style={{
-                                ...gradientBackground(columnBackground),
-                                ...borderCss(columnBorder, this.props.deviceType),
-                                ...padddingCss(columnPadding, this.props.deviceType),
-                                ...marginCss(columnMargin, this.props.deviceType)
-                            }}>
-                                <InnerBlocks
-                                    templateLock={false}
-                                    renderAppender={(
-                                        getBlockOrder(clientId).length > 0 ?
-                                            undefined :
-                                            () => <InnerBlocks.ButtonBlockAppender />
-                                    )}
-                                />
-                            </div>
+                <ResizableBox
+                    className={resigingClass}
+                    style={{
+                    }}
+                    size={{
+                    }}
+                    maxWidth={this.state.maxWidth}
+                    enable={{
+                        top: false,
+                        right: true,
+                        bottom: false,
+                        left: false,
+                        topRight: false,
+                        bottomRight: false,
+                        bottomLeft: false,
+                        topLeft: false,
+                    }}
+                    minHeight="10"
+                    onResize={(event, direction, elt, delta) => this.onResize(event, direction, elt, delta)}
+                    onResizeStop={(event, direction, elt, delta) => this.onResizeStop(event, direction, elt, delta)}
+                    onResizeStart={(event, direction, elt) => this.onResizeStartEvent(event, direction, elt)} >
+                    <div className={`qubely-column qubely-column-admin premium-blocks-${this.props.clientId} qubely-block-${uniqueId}${className ? ` ${className}` : ''}`} data-column-width={this.props.attributes.colWidth.Desktop}>
+                        <div className={`qubely-column-inner`} style={{
+                            ...gradientBackground(columnBackground),
+                            ...borderCss(columnBorder, this.props.deviceType),
+                            ...padddingCss(columnPadding, this.props.deviceType),
+                            ...marginCss(columnMargin, this.props.deviceType)
+                        }}>
+                            <InnerBlocks
+                                templateLock={false}
+                                renderAppender={(
+                                    getBlockOrder(clientId).length > 0 ?
+                                        undefined :
+                                        () => <InnerBlocks.ButtonBlockAppender />
+                                )}
+                            />
                         </div>
-                    </ResizableBox>
-                }
+                    </div>
+                </ResizableBox>
+
             </Fragment >
         )
     }

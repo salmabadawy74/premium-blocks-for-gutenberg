@@ -31,7 +31,7 @@ export default function PremiumShadow({ label, value, onChange, boxShadow = fals
 
     return (
         <div className=" premium-shadow-control__container premium-blocks-field">
-            <strong>{__(label || "Box Shadow")}</strong>
+            <p>{__(label || "Box Shadow")}</p>
             <div className={`premium-shadow-control__wrapper`}>
                 <AdvancedColorControl
                     colorValue={color}

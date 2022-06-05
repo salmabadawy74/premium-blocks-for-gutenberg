@@ -1,5 +1,3 @@
-
-
 const attributes = {
     uniqueId: {
         type: 'string',
@@ -9,15 +7,8 @@ const attributes = {
         type: 'number',
         default: ''
     },
-    childRow: {
-        type: 'boolean',
-        default: false
-    },
-    evenColumnHeight: {
-        type: 'boolean',
-        default: false,
 
-    },
+
     // Dimension
     padding: {
         type: 'object',
@@ -67,59 +58,12 @@ const attributes = {
             unit: 'px',
         },
     },
-
-    marginTop: {
-        type: 'object',
-        default: { Desktop: 0, unit: 'px' },
-
-    },
-    marginBottom: {
-        type: 'object',
-        default: { Desktop: 0, unit: 'px' },
-    },
-
-    rowGutter: {
-        type: 'object',
-        default: {
-            Desktop: 30,
-            Tablet: 30,
-            Mobile: 30,
-            unit: 'px'
-        },
-
-    },
-
-    rowContainerWidth: {
-        type: 'string',
-        default: 'boxed'
-    },
-
     rowContainer: {
         type: 'number',
         default: 0,
 
     },
-    position: {
-        type: 'string',
-        default: '',
-    },
-
     // Background
-    rowBg: {
-        type: 'object',
-        default: {
-            bgimgPosition: 'center center',
-            bgimgSize: 'cover',
-            bgimgRepeat: 'no-repeat',
-            bgDefaultColor: '#f5f5f5',
-            bgimageSource: 'local',
-            externalImageUrl: {}
-        },
-    },
-    height: {
-        type: 'string',
-        default: 'auto'
-    },
     minHeight: {
         type: 'object',
         default: {
@@ -128,7 +72,6 @@ const attributes = {
             Mobile: "",
             unit: 'px'
         },
-
     },
     vPos: {
         type: "string",
@@ -146,12 +89,12 @@ const attributes = {
         type: "object",
         default: {
             'backgroundType': '',
-            'backgroundColor': '',
+            'backgroundColor': '#f5f5f5',
             'backgroundImageID': '',
             'backgroundImageURL': '',
-            'backgroundPosition': '',
-            'backgroundRepeat': '',
-            'backgroundSize': '',
+            'backgroundPosition': 'center center',
+            'backgroundRepeat': 'no-repeat',
+            'backgroundSize': 'cover',
             'fixed': false,
             'gradientLocationOne': "",
             'gradientColorTwo': '',
@@ -167,8 +110,6 @@ const attributes = {
             'bgVideoFallbackURL': ''
         }
     },
-
-
     border: {
         type: 'object',
         default: {
@@ -227,9 +168,11 @@ const attributes = {
             'position': ''
         }
     },
-
     // Overlay
-    enableRowOverlay: { type: 'boolean', default: false },
+    enableRowOverlay: {
+        type: 'boolean',
+        default: false
+    },
     rowOverlay: {
         type: 'object',
         default: {},
@@ -243,7 +186,6 @@ const attributes = {
         type: 'number',
         default: '.8',
     },
-
     // Divider
     shapeTop: {
         type: 'object',
@@ -265,13 +207,19 @@ const attributes = {
             height: { unit: 'px' }
         },
     },
-
+    // Animation
+    animation: {
+        type: "object",
+        default: {}
+    },
     // Responsive
     hideTablet: {
-        type: 'boolean', default: false,
+        type: 'boolean',
+        default: false,
     },
     hideMobile: {
-        type: 'boolean', default: false,
+        type: 'boolean',
+        default: false,
     },
 
     // Advanced Settings
@@ -295,9 +243,9 @@ const attributes = {
     columnGutter: {
         type: 'object',
         default: {
-            "Desktop": '',
-            "Tablet": '',
-            "Mobile": '',
+            Desktop: 30,
+            Tablet: 30,
+            Mobile: 30,
             unit: 'px'
         }
     },

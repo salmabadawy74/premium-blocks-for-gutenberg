@@ -78,7 +78,6 @@ module.exports = function (grunt) {
                         src: [
                             "./premium-blocks-for-gutenberg/**"
                         ]
-
                     }
                 ]
             }
@@ -94,7 +93,6 @@ module.exports = function (grunt) {
                 }
             },
         },
-
     });
 
 
@@ -102,28 +100,18 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-wp-readme-to-markdown")
     grunt.loadNpmTasks('grunt-bumpup');
     grunt.loadNpmTasks('grunt-sass');
-
     grunt.loadNpmTasks("grunt-contrib-copy")
     grunt.loadNpmTasks("grunt-contrib-compress")
     grunt.loadNpmTasks("grunt-contrib-clean")
-
-
     // Run readme task
     grunt.registerTask("readme", ["wp_readme_to_markdown"])
-
     //Run bumpup, readme tasks
     grunt.registerTask("build", (releaseType) => {
-
         releaseType = releaseType ? releaseType : 'patch';
-
         var prevStableVersion = 'patch' === releaseType ? pkgInfo.prev_stable_version : pkgInfo.version;
-
         grunt.config.set('prev_stable_version', prevStableVersion);
-
         grunt.task.run('bumpup:' + releaseType);
-
         grunt.task.run('readme');
-
     });
 
 
@@ -134,6 +122,4 @@ module.exports = function (grunt) {
         "compress",
         "clean:main",
     ]);
-
-
 };

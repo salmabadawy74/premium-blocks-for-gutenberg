@@ -1,0 +1,97 @@
+.premium-blocks-border__control {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-bottom: 20px;
+}
+.premium-blocks-border-button-list {
+    margin-left: auto;
+    display: inline-flex;
+    vertical-align: middle;
+    margin-right: 6px;
+    .premium-border-button {
+        flex: 1 1 0;
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: 600;
+        font-style: normal;
+        text-transform: uppercase;
+        height: 27px;
+        line-height: normal;
+        padding: 12px 8px;
+        box-shadow: none;
+        background: transparent;
+        color: #4a5568;
+        white-space: normal;
+        border: none;
+        box-shadow: inset 0 0 0 1px #ddd !important;
+        transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+        min-height: 26px;
+        cursor: pointer;
+        align-items: center;
+        text-align: center;
+        &:not(:first-child) {
+            margin-left: -1px;
+        }
+        &:not(:last-child) {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+    }
+    .premium-border-button.active {
+        background: #007cba;
+        color: #ffffff;
+    }
+}
+.premium-blocks-border-type {
+    width: 16px;
+    display: block;
+    height: 0;
+    width: 16px;
+    display: block;
+    height: 0;
+}
+.premium-blocks-border-type.premium-blocks-border-type-solid {
+    border-top: 3px solid #4a5568;
+}
+.premium-blocks-border-type.premium-blocks-border-type-dotted {
+    border-top: 3px dotted #4a5568;
+}
+.premium-blocks-border-type.premium-blocks-border-type-dashed {
+    border-top: 3px dashed #4a5568;
+}
+.premium-blocks-border-type.premium-blocks-border-type-double {
+    border-top: 6px double #4a5568;
+}
+.active {
+    .premium-blocks-border-type.premium-blocks-border-type-solid {
+        border-top-color: #fff;
+    }
+    .premium-blocks-border-type.premium-blocks-border-type-dotted {
+        border-top-color: #fff;
+    }
+    .premium-blocks-border-type.premium-blocks-border-type-dashed {
+        border-top-color: #fff;
+    }
+    .premium-blocks-border-type.premium-blocks-border-type-double {
+        border-top-color: #fff;
+    }
+    .premium-svg-fill {
+        fill: #2184f9;
+    }
+    .premium-svg-stroke {
+        stroke: #2184f9;
+    }
+}
+.premium-svg-fill {
+    fill: #8d96a0;
+}
+.premium-svg-stroke {
+    stroke: #8d96a0;
+}
+.premium-blocks-border-clear__container {
+    margin-left: 10px;
+}

@@ -36,8 +36,8 @@ export default function PremiumBackgroundControl({ value, onChange, backgroundVe
     const [state, setState] = useState(value)
 
     const gradTypes = [
-        { key: 'linear', name: __('Linear') },
-        { key: 'radial', name: __('Radial') },
+        { key: 'linear', name: __('Linear', 'premium-blocks-for-gutenberg') },
+        { key: 'radial', name: __('Radial', 'premium-blocks-for-gutenberg') },
     ];
 
     const bgType = [
@@ -62,123 +62,140 @@ export default function PremiumBackgroundControl({ value, onChange, backgroundVe
 
     return (
         <Fragment>
-            <PremiumBackground
-                type="color"
-                colorValue={backgroundColor}
-                onChangeColor={newValue => onChangeBackground('backgroundColor', newValue)}
-            />
-            <div className="Premium-btn-size-settings-container">
-                <h2 className="Premium-beside-btn-group">{__('Background Type', 'premium-blocks-for-gutenberg')}</h2>
-                <ButtonGroup className="Premium-button-size-type-options" aria-label={__('Background Type', 'premium-blocks-for-gutenberg')}>
-                    {map(bgType, ({ icon, key, tooltip }) => (
-                        <Tooltip text={tooltip}>
-                            <Button
-                                key={key}
-                                className="Premium-btn-size-btn"
-                                isSmall
-                                isPrimary={backgroundType === key}
-                                onClick={() => onChangeBackground('backgroundType', key)}
-                            >
-                                {icon}
-                            </Button>
-                        </Tooltip>
-                    ))}
-                </ButtonGroup>
-            </div>
-            {'solid' === backgroundType && (
-                <div className="Premium-inner-sub-section premium-blocks-field">
-
-                    <PremiumBackground
-                        imageID={backgroundImageID}
-                        imageURL={backgroundImageURL}
-                        backgroundPosition={backgroundPosition}
-                        backgroundRepeat={backgroundRepeat}
-                        backgroundSize={backgroundSize}
-                        fixed={fixed}
-                        onSelectMedia={media => { onChangeBackground('backgroundImageURL', media.url) }}
-                        onRemoveImage={() => onChangeBackground('backgroundImageURL', '')}
-                        onChangeBackPos={newValue => onChangeBackground('backgroundPosition', newValue)}
-                        onchangeBackRepeat={newValue => onChangeBackground('backgroundRepeat', newValue)}
-                        onChangeBackSize={newValue => onChangeBackground('backgroundSize', newValue)}
-                        onChangeFixed={check => onChangeBackground('fixed', check)}
-                    />
-                </div>
-            )}
-            {'gradient' === backgroundType && (
-                <div className="Premium-inner-sub-section premium-blocks-field">
-                    <AdvancedPopColorControl
-                        label={__('Gradient Color 1', 'premium-blocks-for-gutenberg')}
-                        colorValue={backgroundColor}
-                        colorDefault={''}
-                        onColorChange={value => onChangeBackground('backgroundColor', value)}
-                    />
-                    <ResponsiveSingleRangeControl
-                        label={__('Location', 'premium-blocks-for-gutenberg')}
-                        value={gradientLocationOne}
-                        onChange={(value) => onChangeBackground('gradientLocationOne', value)}
-                        showUnit={false}
-                        defaultValue={0}
-                    />
-                    <AdvancedPopColorControl
-                        label={__('Gradient Color 2', 'premium-blocks-for-gutenberg')}
-                        colorValue={gradientColorTwo}
-                        colorDefault={'#777777'}
-                        onColorChange={value => onChangeBackground('gradientColorTwo', value)}
-                    />
-                    <ResponsiveSingleRangeControl
-                        label={__('Location', 'premium-blocks-for-gutenberg')}
-                        value={gradientLocationTwo}
-                        onChange={(value) => onChangeBackground('gradientLocationTwo', value)}
-                        showUnit={false}
-                        defaultValue={0}
-                    />
-                    <div className="Premium-btn-size-settings-container">
-                        <h2 className="Premium-beside-btn-group">{__('Gradient Type', 'premium-blocks-for-gutenberg')}</h2>
-                        <ButtonGroup className="Premium-button-size-type-options" aria-label={__('Gradient Type', 'premium-blocks-for-gutenberg')}>
-                            {map(gradTypes, ({ name, key }) => (
+            <div className="premium-btn-size-settings-container">
+                <p className="premium-beside-btn-group">{__('Background Type', 'premium-blocks-for-gutenberg')}</p>
+                <div className={`premium-background-type__wrap`} >
+                    <ButtonGroup className="premium-button-size-type-options" aria-label={__('Background Type', 'premium-blocks-for-gutenberg')}>
+                        {map(bgType, ({ icon, key, tooltip }) => (
+                            <Tooltip text={tooltip}>
                                 <Button
                                     key={key}
-                                    className="Premium-btn-size-btn"
+                                    className="premium-btn-size-btn"
                                     isSmall
-                                    isPrimary={gradientType === key}
-                                    onClick={() => onChangeBackground('gradientType', key)}
+                                    isPrimary={backgroundType === key}
+                                    onClick={() => onChangeBackground('backgroundType', key)}
                                 >
-                                    {name}
+                                    {icon}
                                 </Button>
-                            ))}
-                        </ButtonGroup>
+                            </Tooltip>
+                        ))}
+                    </ButtonGroup>
+                    <div className="premium-btn-reset-wrap">
+                        <button
+                            className="premium-reset-btn "
+                            disabled={"" === backgroundType}
+                            onClick={(e) => {
+                                e.preventDefault()
+                                setState(defaultValues)
+                                onChange(defaultValues)
+                            }}
+                        ></button>
                     </div>
-                    {'radial' !== (gradientType) && (
+                </div>
+            </div>
+            {
+                'solid' === backgroundType && (
+                    <div className="premium-inner-sub-section premium-blocks-field">
+                        <PremiumBackground
+                            type="color"
+                            colorValue={backgroundColor}
+                            colorDefault={''}
+                            onChangeColor={newValue => onChangeBackground('backgroundColor', newValue)}
+                        />
+                        <PremiumBackground
+                            imageID={backgroundImageID}
+                            imageURL={backgroundImageURL}
+                            backgroundPosition={backgroundPosition}
+                            backgroundRepeat={backgroundRepeat}
+                            backgroundSize={backgroundSize}
+                            fixed={fixed}
+                            onSelectMedia={media => { onChangeBackground('backgroundImageURL', media.url) }}
+                            onRemoveImage={() => onChangeBackground('backgroundImageURL', '')}
+                            onChangeBackPos={newValue => onChangeBackground('backgroundPosition', newValue)}
+                            onchangeBackRepeat={newValue => onChangeBackground('backgroundRepeat', newValue)}
+                            onChangeBackSize={newValue => onChangeBackground('backgroundSize', newValue)}
+                            onChangeFixed={check => onChangeBackground('fixed', check)}
+                        />
+                    </div>
+                )
+            }
+            {
+                'gradient' === backgroundType && (
+                    <div className="premium-inner-sub-section premium-blocks-field">
+                        <AdvancedPopColorControl
+                            label={__('Gradient Color 1', 'premium-blocks-for-gutenberg')}
+                            colorValue={backgroundColor}
+                            colorDefault={''}
+                            onColorChange={value => onChangeBackground('backgroundColor', value)}
+                        />
                         <ResponsiveSingleRangeControl
-                            label={__('Gradient Angle', 'premium-blocks-for-gutenberg')}
-                            value={gradientAngle}
-                            onChange={(value) => onChangeBackground('gradientAngle', value)}
+                            label={__('Location', 'premium-blocks-for-gutenberg')}
+                            value={gradientLocationOne}
+                            onChange={(value) => onChangeBackground('gradientLocationOne', value)}
                             showUnit={false}
                             defaultValue={0}
-                            min={0}
-                            max={360}
                         />
-                    )}
-                    {'radial' === (gradientType) && (
-                        <SelectControl
-                            label={__('Gradient Position', 'premium-blocks-for-gutenberg')}
-                            value={(gradientPosition)}
-                            options={[
-                                { value: 'center top', label: __('Center Top', 'premium-blocks-for-gutenberg') },
-                                { value: 'center center', label: __('Center Center', 'premium-blocks-for-gutenberg') },
-                                { value: 'center bottom', label: __('Center Bottom', 'premium-blocks-for-gutenberg') },
-                                { value: 'left top', label: __('Left Top', 'premium-blocks-for-gutenberg') },
-                                { value: 'left center', label: __('Left Center', 'premium-blocks-for-gutenberg') },
-                                { value: 'left bottom', label: __('Left Bottom', 'premium-blocks-for-gutenberg') },
-                                { value: 'right top', label: __('Right Top', 'premium-blocks-for-gutenberg') },
-                                { value: 'right center', label: __('Right Center', 'premium-blocks-for-gutenberg') },
-                                { value: 'right bottom', label: __('Right Bottom', 'premium-blocks-for-gutenberg') },
-                            ]}
-                            onChange={value => onChangeBackground('gradientPosition', value)}
+                        <AdvancedPopColorControl
+                            label={__('Gradient Color 2', 'premium-blocks-for-gutenberg')}
+                            colorValue={gradientColorTwo}
+                            colorDefault={'#777777'}
+                            onColorChange={value => onChangeBackground('gradientColorTwo', value)}
                         />
-                    )}
-                </div>
-            )}
+                        <ResponsiveSingleRangeControl
+                            label={__('Location', 'premium-blocks-for-gutenberg')}
+                            value={gradientLocationTwo}
+                            onChange={(value) => onChangeBackground('gradientLocationTwo', value)}
+                            showUnit={false}
+                            defaultValue={0}
+                        />
+                        <div className="premium-btn-size-settings-container">
+                            <p className="premium-beside-btn-group">{__('Gradient Type', 'premium-blocks-for-gutenberg')}</p>
+                            <ButtonGroup className="premium-button-size-type-options" aria-label={__('Gradient Type', 'premium-blocks-for-gutenberg')}>
+                                {map(gradTypes, ({ name, key }) => (
+                                    <Button
+                                        key={key}
+                                        className="premium-btn-size-btn"
+                                        isSmall
+                                        isPrimary={gradientType === key}
+                                        onClick={() => onChangeBackground('gradientType', key)}
+                                    >
+                                        {name}
+                                    </Button>
+                                ))}
+                            </ButtonGroup>
+                        </div>
+                        {'radial' !== (gradientType) && (
+                            <ResponsiveSingleRangeControl
+                                label={__('Gradient Angle', 'premium-blocks-for-gutenberg')}
+                                value={gradientAngle}
+                                onChange={(value) => onChangeBackground('gradientAngle', value)}
+                                showUnit={false}
+                                defaultValue={0}
+                                min={0}
+                                max={360}
+                            />
+                        )}
+                        {'radial' === (gradientType) && (
+                            <SelectControl
+                                label={__('Gradient Position', 'premium-blocks-for-gutenberg')}
+                                value={(gradientPosition)}
+                                options={[
+                                    { value: 'center top', label: __('Center Top', 'premium-blocks-for-gutenberg') },
+                                    { value: 'center center', label: __('Center Center', 'premium-blocks-for-gutenberg') },
+                                    { value: 'center bottom', label: __('Center Bottom', 'premium-blocks-for-gutenberg') },
+                                    { value: 'left top', label: __('Left Top', 'premium-blocks-for-gutenberg') },
+                                    { value: 'left center', label: __('Left Center', 'premium-blocks-for-gutenberg') },
+                                    { value: 'left bottom', label: __('Left Bottom', 'premium-blocks-for-gutenberg') },
+                                    { value: 'right top', label: __('Right Top', 'premium-blocks-for-gutenberg') },
+                                    { value: 'right center', label: __('Right Center', 'premium-blocks-for-gutenberg') },
+                                    { value: 'right bottom', label: __('Right Bottom', 'premium-blocks-for-gutenberg') },
+                                ]}
+                                onChange={value => onChangeBackground('gradientPosition', value)}
+                            />
+                        )}
+                    </div>
+                )
+            }
             {
                 'video' === backgroundType && (
                     <Fragment>
@@ -220,6 +237,6 @@ export default function PremiumBackgroundControl({ value, onChange, backgroundVe
                     </Fragment>
                 )
             }
-        </Fragment>
+        </Fragment >
     )
 }
