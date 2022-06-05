@@ -3632,15 +3632,7 @@ i.fipicon-angle-left:before {
     position: relative;
     display: flex;
 }
-.premium-blocks-range-control .wrapper .kemet-slider {
-    position: relative;
-    display: flex;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-}
+
 .premium-blocks-range-control .input-field-wrapper {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -3752,12 +3744,6 @@ i.fipicon-angle-left:before {
     height: 13px;
     font-size: 15px;
     color: #bbb;
-}
-
-.kemet-slider-wrap {
-    position: relative;
-    margin-bottom: 0;
-    margin-top: 25px;
 }
 
 .premium-blocks-range-control .wrapper {
