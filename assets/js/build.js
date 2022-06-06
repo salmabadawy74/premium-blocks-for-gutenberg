@@ -368,12 +368,15 @@ var AdvancedColorControl = function (_Component) {
 
             var normalizeColor = function normalizeColor(color) {
                 var parsedColor = (0, _colord.colord)(color);
+
                 if (!parsedColor.parsed) {
                     return color;
                 }
+
                 if (parsedColor.rgba.a === 1) {
                     return parsedColor.toHex();
                 }
+
                 return parsedColor.toRgbString();
             };
 
@@ -381,13 +384,13 @@ var AdvancedColorControl = function (_Component) {
 
             return React.createElement(
                 'div',
-                { className: 'premium-color-popover-container ' },
+                { className: 'premium-color-popover-container' },
                 React.createElement(
                     'div',
                     { className: 'premium-advanced-color-container' },
                     this.props.label && React.createElement(
-                        'span',
-                        { className: 'premium-control-title' },
+                        'h2',
+                        { className: 'premium-color-label' },
                         this.props.label
                     ),
                     React.createElement(

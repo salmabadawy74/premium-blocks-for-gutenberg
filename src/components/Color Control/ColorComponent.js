@@ -29,6 +29,7 @@ class AdvancedColorControl extends Component {
     }
 
     render() {
+
         const toggleVisible = () => {
             if ('transparent' === this.props.colorDefault) {
                 this.setState({ currentColor: (undefined === this.props.colorValue || '' === this.props.colorValue || 'transparent' === this.props.colorValue ? '' : this.props.colorValue) });
@@ -46,22 +47,25 @@ class AdvancedColorControl extends Component {
 
         const normalizeColor = (color) => {
             const parsedColor = colord(color)
+
             if (!parsedColor.parsed) {
                 return color
             }
+
             if (parsedColor.rgba.a === 1) {
                 return parsedColor.toHex()
             }
+
             return parsedColor.toRgbString()
         }
 
         const isNew = wp.components.GradientPicker;
 
         return (
-            <div className="premium-color-popover-container ">
+            <div className="premium-color-popover-container">
                 <div className="premium-advanced-color-container">
                     {this.props.label && (
-                        <span className="premium-control-title">{this.props.label}</span>
+                        <h2 className="premium-color-label">{this.props.label}</h2>
                     )}
                     <div className="premium-color-wrapper">
                         {this.state.isVisible && (
@@ -78,6 +82,7 @@ class AdvancedColorControl extends Component {
                                                 if (color.rgb) {
                                                     this.props.onColorChange(color.rgb.a != 1 ? 'rgba(' + color.rgb.r + ',' + color.rgb.g + ',' + color.rgb.b + ',' + color.rgb.a + ')' : color.hex)
                                                 }
+
                                             }}
                                         />
                                     )}
