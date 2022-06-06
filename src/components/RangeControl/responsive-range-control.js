@@ -99,11 +99,11 @@ export default function ResponsiveRangeControl({
     );
     return [
         onChange && (
-            <div className={`premium-blocks-range-control premium-blocks-field`}>
+            <div className={`premium-blocks-range-control premium-blocks-base-control`}>
                 <header>
                     <div className={`premium-slider-title-wrap`} style={{ display: "flex", alignItems: 'center' }}>
                         {label && (
-                            <span className='customize-control-title premium-control-title'>{label}</span>
+                            <span className=' premium-control-title'>{label}</span>
                         )}
                         <Responsive onChange={(newDevice) => setDeviceType(newDevice)} />
                     </div>

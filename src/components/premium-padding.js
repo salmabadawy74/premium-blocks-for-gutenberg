@@ -121,7 +121,7 @@ class PremiumPadding extends Component {
                             </li>
                         </ul>
                     </div>
-                    <div className="premium-spacing-btn-reset-wrap">
+                    <div className="premium-btn-reset-wrap">
                         <button
                             className="premium-reset-btn "
                             disabled={

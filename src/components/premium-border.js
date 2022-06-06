@@ -44,7 +44,7 @@ const PremiumBorder = (props) => {
 
     }
     return (
-        <div className=" premium-blocks-field">
+        <div className=" premium-blocks-base-control">
             <Fragment>
                 <div className="premium-blocks-border__control " style={{ display: "flex" }}>
                     <div>
@@ -62,7 +62,7 @@ const PremiumBorder = (props) => {
                         })}
                     </div>
 
-                    <div className="premium-spacing-btn-reset-wrap">
+                    <div className="premium-btn-reset-wrap">
                         <button
                             className="premium-reset-btn "
                             disabled={"none" === borderType}

@@ -18,7 +18,7 @@ export default function PremiumFilters(props) {
     } = props;
 
     return (
-        <div className=" premium-blocks-field">
+        <div className=" premium-blocks-base-control">
             <strong>{__(label || "CSS Filters")}</strong>
             <Dropdown
                 className="premium-control-toggle-btn"
