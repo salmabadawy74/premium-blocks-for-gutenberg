@@ -28,7 +28,7 @@ const RadioComponent = ({ value, onChange, label, choices, showIcons = false }) 
             })}
         </Fragment>
     }
-    return <div className={`premium-blocks-field`}>
+    return <div className={`premium-blocks__base-control`}>
         {label && <span className="customize-control-title premium-control-title">{label}</span>}
         <ButtonGroup className="premium-radio-container-control">
             {renderButtons()}

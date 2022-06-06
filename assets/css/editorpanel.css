@@ -3679,11 +3679,11 @@ i.fipicon-angle-left:before {
     align-items: center;
 }
 
-.premium-blocks-field {
+.premium-blocks__base-control {
     position: relative;
     margin-bottom: 20px;
 }
-.premium-blocks-field:last-child {
+.premium-blocks__base-control:last-child {
     margin-bottom: 0;
 }
 
@@ -3703,12 +3703,12 @@ i.fipicon-angle-left:before {
     justify-content: space-between;
 }
 
-.premium-blocks-field {
+.premium-blocks__base-control {
     position: relative;
     margin-bottom: 20px;
 }
 
-.premium-blocks-field:last-child {
+.premium-blocks__base-control:last-child {
     margin-bottom: 0;
 }
 
@@ -6197,11 +6197,11 @@ input[type="number"] {
     background-color: #fff;
 }
 
-.premium-blocks-field {
+.premium-blocks__base-control {
     position: relative;
     margin-bottom: 20px;
 }
-.premium-blocks-field:last-child {
+.premium-blocks__base-control:last-child {
     margin-bottom: 0;
 }
 

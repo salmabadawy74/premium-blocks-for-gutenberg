@@ -61,7 +61,7 @@ class AdvancedColorControl extends Component {
             <div className="premium-color-popover-container ">
                 <div className="premium-advanced-color-container">
                     {this.props.label && (
-                        <h2 className="premium-color-label">{this.props.label}</h2>
+                        <span className="premium-control-title">{this.props.label}</span>
                     )}
                     <div className="premium-color-wrapper">
                         {this.state.isVisible && (

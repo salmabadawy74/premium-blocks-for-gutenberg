@@ -236,7 +236,7 @@ function ResponsiveSingleRangeControl(_ref) {
 
     return [_onChange && React.createElement(
         'div',
-        { className: 'premium-blocks-range-control premium-blocks-field' },
+        { className: 'premium-blocks-range-control premium-blocks__base-control' },
         label && React.createElement(
             'header',
             null,
@@ -245,7 +245,7 @@ function ResponsiveSingleRangeControl(_ref) {
                 { className: 'premium-title-wrap' },
                 label && React.createElement(
                     'span',
-                    { className: 'customize-control-title premium-control-title' },
+                    { className: 'premium-control-title' },
                     label
                 )
             ),
@@ -386,8 +386,8 @@ var AdvancedColorControl = function (_Component) {
                     'div',
                     { className: 'premium-advanced-color-container' },
                     this.props.label && React.createElement(
-                        'h2',
-                        { className: 'premium-color-label' },
+                        'span',
+                        { className: 'premium-control-title' },
                         this.props.label
                     ),
                     React.createElement(
@@ -626,7 +626,7 @@ function PremiumShadow(_ref) {
 
     return React.createElement(
         'div',
-        { className: ' premium-shadow-control__container premium-blocks-field' },
+        { className: ' premium-shadow-control__container premium-blocks__base-control' },
         React.createElement(
             'p',
             null,
@@ -788,7 +788,7 @@ var PremiumBorder = function PremiumBorder(props) {
     };
     return React.createElement(
         'div',
-        { className: ' premium-blocks-field' },
+        { className: ' premium-blocks__base-control' },
         React.createElement(
             Fragment,
             null,
@@ -1053,7 +1053,7 @@ var PremiumTypo = function (_Component) {
             var fontSize = components.includes("responsiveSize") ? value['fontSize'][device] : value['fontSize'];
             return React.createElement(
                 "div",
-                { className: "premium-control-toggle premium-typography premium-blocks-field" },
+                { className: "premium-control-toggle premium-typography premium-blocks__base-control" },
                 React.createElement(
                     "header",
                     null,
@@ -1459,7 +1459,7 @@ var RadioComponent = function RadioComponent(_ref) {
     };
     return React.createElement(
         'div',
-        { className: 'premium-blocks-field' },
+        { className: 'premium-blocks__base-control' },
         label && React.createElement(
             'span',
             { className: 'customize-control-title premium-control-title' },
@@ -2103,7 +2103,7 @@ function ResponsiveRangeControl(_ref) {
                 { className: 'premium-title-wrap' },
                 label && React.createElement(
                     'span',
-                    { className: 'customize-control-title premium-control-title' },
+                    { className: 'premium-control-title' },
                     label
                 ),
                 React.createElement(_responsive2.default, { onChange: function onChange(newDevice) {
@@ -2507,7 +2507,7 @@ function PremiumBackgroundControl(_ref) {
         ),
         'solid' === backgroundType && _react2.default.createElement(
             'div',
-            { className: 'premium-inner-sub-section premium-blocks-field' },
+            { className: 'premium-inner-sub-section premium-blocks__base-control' },
             _react2.default.createElement(_premiumBackground2.default, {
                 type: 'color',
                 colorValue: backgroundColor,
@@ -2545,7 +2545,7 @@ function PremiumBackgroundControl(_ref) {
         ),
         'gradient' === backgroundType && _react2.default.createElement(
             'div',
-            { className: 'premium-inner-sub-section premium-blocks-field' },
+            { className: 'premium-inner-sub-section premium-blocks__base-control' },
             _react2.default.createElement(_ColorComponent2.default, {
                 label: __('Gradient Color 1', 'premium-blocks-for-gutenberg'),
                 colorValue: backgroundColor,
@@ -3821,7 +3821,7 @@ function PremiumFilters(props) {
 
     return React.createElement(
         "div",
-        { className: "premium-filter__container premium-blocks-field" },
+        { className: "premium-filter__container premium-blocks__base-control" },
         React.createElement(
             "span",
             null,
@@ -4958,7 +4958,7 @@ var SpacingComponent = function SpacingComponent(props) {
     };
     return React.createElement(
         "div",
-        { className: "premium-spacing-responsive premium-blocks-field" },
+        { className: "premium-spacing-responsive premium-blocks__base-control" },
         React.createElement(
             "header",
             null,
@@ -4967,7 +4967,7 @@ var SpacingComponent = function SpacingComponent(props) {
                 { className: "premium-title-wrap", style: { display: "flex" } },
                 React.createElement(
                     "span",
-                    { className: "customize-control-title premium-control-title" },
+                    { className: " premium-control-title" },
                     "  ",
                     label
                 ),

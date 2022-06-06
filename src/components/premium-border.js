@@ -44,7 +44,7 @@ const PremiumBorder = (props) => {
 
     }
     return (
-        <div className=" premium-blocks-field">
+        <div className=" premium-blocks__base-control">
             <Fragment>
                 <div className="premium-blocks-border__control " style={{ display: "flex" }}>
                     <span>

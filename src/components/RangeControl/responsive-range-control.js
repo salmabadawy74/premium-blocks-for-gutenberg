@@ -105,7 +105,7 @@ export default function ResponsiveRangeControl({
                 <header>
                     <div className={`premium-title-wrap`}>
                         {label && (
-                            <span className="customize-control-title premium-control-title">{label}</span>
+                            <span className="premium-control-title">{label}</span>
                         )}
                         <Responsive onChange={(newDevice) => setDeviceType(newDevice)} />
                     </div>

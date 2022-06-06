@@ -58,9 +58,9 @@ const MultiButtonsControl = ({ choices, label, options, showIcons, onChange, val
     );
 
     return (
-        <div className={`components-base-control premium-blocks-field `}>
+        <div className={`components-base-control premium-blocks__base-control `}>
             <header>
-                {label && <span className="customize-control-title premium-control-title">{label}</span>}
+                {label && <span className="premium-control-title">{label}</span>}
                 <Responsive onChange={(newDevice) => setDevice(newDevice)} />
             </header>
             { output[device] ? output[device] : output.Desktop}

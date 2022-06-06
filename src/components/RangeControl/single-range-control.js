@@ -20,11 +20,11 @@ export default function ResponsiveSingleRangeControl({
 }) {
     return [
         onChange && (
-            <div className={`premium-blocks-range-control premium-blocks-field`}>
+            <div className={`premium-blocks-range-control premium-blocks__base-control`}>
                 {label && <header>
                     <div className={`premium-title-wrap`}>
                         {label && (
-                            <span className="customize-control-title premium-control-title">{label}</span>
+                            <span className="premium-control-title">{label}</span>
                         )}
 
                     </div>
