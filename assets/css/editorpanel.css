@@ -3669,10 +3669,6 @@ i.fipicon-angle-left:before {
     margin-left: 0px !important;
 }
 
-.kemet_range_value .premium-range-unit {
-    margin-left: 5px;
-}
-
 .premium-blocks-range-control .input-field-wrapper {
     display: none;
     width: 100%;
@@ -3706,12 +3702,6 @@ i.fipicon-angle-left:before {
 /**
  * Responsive Icons
  */
-.description.customize-control-description {
-    margin-bottom: 20px;
-    color: #848484 !important;
-    font-size: 12px;
-}
-
 .premium-responsive-control-btns {
     line-height: 1px;
     margin-bottom: 2px;
@@ -3788,34 +3778,6 @@ i.fipicon-angle-left:before {
 .premium-blocks-range-control
     .premium-slider-reset:hover:not(:disabled):before {
     transform: rotate(-45deg);
-}
-
-.kemet_range_value .premium-range-unit {
-    position: absolute;
-    right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 35px;
-    height: 28px;
-    background: #fff;
-    cursor: default;
-    font-size: 10px;
-    font-weight: 600;
-    line-height: normal;
-    letter-spacing: 1px;
-    align-self: auto;
-    text-transform: uppercase;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    transition: color 0.1s ease, font-weight 0.1s ease;
-    padding: 0;
-    border-width: 1px 1px 1px 0;
-    border-style: solid;
-    border-color: #ddd;
-    border-radius: 0;
 }
 
 .components-simple-tooltip.components-range-control__tooltip {
@@ -4068,12 +4030,15 @@ input[type="number"] {
     display: flex;
     position: relative;
     align-items: center;
-    margin-bottom: -10px;
+    margin-bottom: 5px;
     justify-content: space-between;
     margin-left: 2px;
 }
-
-.premium-spacing-btn-reset-wrap .premium-reset-btn {
+.premium-spacing-responsive header .premium-title-wrap {
+    display: flex;
+    align-items: center;
+}
+.premium-btn-reset-wrap .premium-reset-btn {
     display: flex;
     width: 12px;
     height: 12px;
@@ -4092,24 +4057,24 @@ input[type="number"] {
     align-items: center;
     justify-content: center;
 }
-.premium-spacing-btn-reset-wrap .premium-reset-btn:disabled {
+.premium-btn-reset-wrap .premium-reset-btn:disabled {
     color: rgba(0, 0, 0, 0.2);
     cursor: default;
 }
-.premium-spacing-btn-reset-wrap .premium-reset-btn::before {
+.premium-btn-reset-wrap .premium-reset-btn::before {
     content: "\f531";
     transition: transform 0.3s ease;
     transform: rotate(45deg);
 }
-.premium-spacing-btn-reset-wrap .premium-reset-btn:hover {
+.premium-btn-reset-wrap .premium-reset-btn:hover {
     box-shadow: none;
     border: none;
     background: transparent;
 }
-.premium-spacing-btn-reset-wrap .premium-reset-btn:hover:not(:disabled):before {
+.premium-btn-reset-wrap .premium-reset-btn:hover:not(:disabled):before {
     transform: rotate(-45deg);
 }
-.premium-spacing-btn-reset-wrap .premium-reset-btn:focus {
+.premium-btn-reset-wrap .premium-reset-btn:focus {
     box-shadow: none;
     border: none;
     background: transparent;
@@ -6178,12 +6143,57 @@ input[type="number"] {
     flex-direction: row-reverse;
     justify-content: space-between;
 }
-.premium-blocks-field {
+.premium-inspector-tabs-container .premium-inspector-tabs .premium-panel-body {
     position: relative;
     margin-bottom: 20px;
 }
-.premium-blocks-field:last-child {
+.premium-inspector-tabs-container
+    .premium-inspector-tabs
+    .premium-panel-body
+    .premium-blocks-base-control:last-child {
     margin-bottom: 0;
+}
+.premium-blocks-range-control {
+    margin: 10px 0px;
+}
+.premium-blocks-range-control header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.premium-blocks-range-control header .premium-title-wrap {
+    display: flex;
+    align-items: center;
+}
+.premium-blocks-range-control .wrapper {
+    position: relative;
+    display: flex;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.premium-blocks-range-control .wrapper .kemet-slider {
+    position: relative;
+    display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.premium-blocks-range-control .input-field-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: none;
+    width: 100%;
 }
 
 /******************* Sortable element  *************************/
@@ -6287,4 +6297,8 @@ input[type="number"] {
     .components-base-control__field
     .components-form-toggle {
     margin-right: 0px;
+}
+
+.block-editor-block-inspector .components-base-control {
+    margin-bottom: 20px !important;
 }

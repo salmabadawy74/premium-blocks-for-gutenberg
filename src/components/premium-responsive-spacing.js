@@ -142,7 +142,7 @@ const SpacingComponent = (props) => {
         setState(updateState);
     }
     return (
-        <div className="premium-spacing-responsive premium-blocks-field">
+        <div className="premium-spacing-responsive premium-blocks-base-control">
             <header>
                 <div className={`premium-slider-title-wrap`} style={{ display: "flex", alignItems: 'center' }}>
                     <span className="customize-control-title premium-control-title">  {label}</span>
@@ -159,7 +159,7 @@ const SpacingComponent = (props) => {
                 <div className={`input-wrapper premium-spacing-responsive-wrapper`}>
                     {inputHtml}
                 </div>
-                <div className="premium-spacing-btn-reset-wrap">
+                <div className="premium-btn-reset-wrap">
                     <button
                         className="premium-reset-btn "
                         disabled={

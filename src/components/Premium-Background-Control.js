@@ -86,7 +86,7 @@ export default function PremiumBackgroundControl({ value, onChange, backgroundVe
                 </ButtonGroup>
             </div>
             {'solid' === backgroundType && (
-                <div className="Premium-inner-sub-section premium-blocks-field">
+                <div className="Premium-inner-sub-section premium-blocks-base-control">
 
                     <PremiumBackground
                         imageID={backgroundImageID}
@@ -105,7 +105,7 @@ export default function PremiumBackgroundControl({ value, onChange, backgroundVe
                 </div>
             )}
             {'gradient' === backgroundType && (
-                <div className="Premium-inner-sub-section premium-blocks-field">
+                <div className="Premium-inner-sub-section premium-blocks-base-control">
                     <AdvancedPopColorControl
                         label={__('Gradient Color 1', 'premium-blocks-for-gutenberg')}
                         colorValue={backgroundColor}
