@@ -7,8 +7,6 @@ const attributes = {
         type: 'number',
         default: ''
     },
-
-
     // Dimension
     padding: {
         type: 'object',
@@ -37,19 +35,19 @@ const attributes = {
     margin: {
         type: 'object',
         default: {
-            Desktop: {
+            'Desktop': {
                 top: 0,
                 right: 0,
                 bottom: 0,
                 left: 0
             },
-            Tablet: {
+            'Tablet': {
                 top: 0,
                 right: 0,
                 bottom: 0,
                 left: 0
             },
-            Mobile: {
+            'Mobile': {
                 top: 0,
                 right: 0,
                 bottom: 0,
@@ -61,7 +59,6 @@ const attributes = {
     rowContainer: {
         type: 'number',
         default: 0,
-
     },
     // Background
     minHeight: {
@@ -81,10 +78,7 @@ const attributes = {
         type: "string",
         value: "default"
     },
-    stretchSection: {
-        type: 'boolean',
-        default: false
-    },
+
     backgroundOptions: {
         type: "object",
         default: {
@@ -176,7 +170,6 @@ const attributes = {
     rowOverlay: {
         type: 'object',
         default: {},
-
     },
     rowBlend: {
         type: 'string',
@@ -221,18 +214,25 @@ const attributes = {
         type: 'boolean',
         default: false,
     },
-
     // Advanced Settings
-    rowId: { type: 'string', default: '' },
+    rowId: {
+        type: 'string',
+        default: ''
+    },
     rowZindex: {
         type: 'number', default: '',
     },
     rowReverse: {
         type: 'object',
-        default: { openRowReverse: false, values: {} },
+        default: {
+            openRowReverse: false,
+            values: {}
+        },
     },
-
-    rowCss: { type: 'string', default: '', },
+    rowCss: {
+        type: 'string',
+        default: '',
+    },
     innerWidthType: {
         type: "string",
         default: 'boxed'

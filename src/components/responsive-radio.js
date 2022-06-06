@@ -1,17 +1,10 @@
-/**
- * WordPress dependencies
- */
-import { Button, ButtonGroup } from '@wordpress/components';
-import { __ } from '@wordpress/i18n';
-/**
- * Import Css
- */
-import React, { useLayoutEffect, useState } from 'react';
-import { select } from '@wordpress/data';
+
+import React, { useState } from 'react';
+
 import RadioComponent from './radio-control';
 import Responsive from './responsive';
 
-const MultiButtonsControl = ({ choices, label, options, showIcons, onChange, value }) => {
+const ResponsiveRadio = ({ choices, label, options, showIcons, onChange, value }) => {
     const defaultValue = {
         'Desktop': '',
         'Tablet': '',
@@ -58,7 +51,7 @@ const MultiButtonsControl = ({ choices, label, options, showIcons, onChange, val
     );
 
     return (
-        <div className={`components-base-control premium-blocks__base-control `}>
+        <div className={`premium-blocks-responsive-radio components-base-control premium-blocks__base-control `}>
             <header>
                 {label && <span className="premium-control-title">{label}</span>}
                 <Responsive onChange={(newDevice) => setDevice(newDevice)} />
@@ -68,4 +61,4 @@ const MultiButtonsControl = ({ choices, label, options, showIcons, onChange, val
     );
 };
 
-export default MultiButtonsControl;
+export default ResponsiveRadio;

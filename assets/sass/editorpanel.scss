@@ -3748,6 +3748,10 @@ i.fipicon-angle-left {
 .premium-blocks__base-control:last-child {
     margin-bottom: 0;
 }
+.premium-blocks-responsive-radio header {
+    display: flex;
+    align-items: center;
+}
 
 @import "./RangeControl.scss";
 @import "./spacing.scss";
