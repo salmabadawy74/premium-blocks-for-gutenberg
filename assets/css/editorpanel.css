@@ -3655,7 +3655,7 @@ i.fipicon-angle-left:before {
 
 .input-field-wrapper .components-range-control.premium-range-value-input {
     flex-grow: 1;
-    margin-bottom: 0;
+    margin-bottom: 0px !important;
 }
 
 .premium-range-value-input {
@@ -6143,14 +6143,17 @@ input[type="number"] {
     flex-direction: row-reverse;
     justify-content: space-between;
 }
-.premium-inspector-tabs-container .premium-inspector-tabs .premium-panel-body {
+.premium-inspector-tabs-container
+    > .premium-inspector-tabs
+    > .premium-panel-body
+    > .premium-blocks-base-control {
     position: relative;
     margin-bottom: 20px;
 }
 .premium-inspector-tabs-container
-    .premium-inspector-tabs
-    .premium-panel-body
-    .premium-blocks-base-control:last-child {
+    > .premium-inspector-tabs
+    > .premium-panel-body
+    > .premium-blocks-base-control:last-child {
     margin-bottom: 0;
 }
 .premium-blocks-range-control {
