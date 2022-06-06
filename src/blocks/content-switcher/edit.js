@@ -17,7 +17,6 @@ import {
 import {
     PanelBody,
     SelectControl,
-    Toolbar,
     ToggleControl,
 } from '@wordpress/components';
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
@@ -25,6 +24,7 @@ import ResponsiveSingleRangeControl from "../../components/RangeControl/single-r
 import PremiumBackgroundControl from "../../components/Premium-Background-Control"
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 import RadioComponent from '../../components/radio-control';
+import ResponsiveRadioControl from '../../components/responsive-radio'
 import PremiumTypo from "../../components/premium-typo";
 import PremiumShadow from "../../components/PremiumShadow";
 import PremiumBorder from "../../components/premium-border";
@@ -46,8 +46,6 @@ import { gradientBackground, borderCss, padddingCss, marginCss, typographyCss } 
  * @return {WPElement} Element to render.
  */
 
-
-
 function Edit(props) {
 
     const { attributes, setAttributes, className } = props;
@@ -59,14 +57,23 @@ function Edit(props) {
     useEffect(() => {
         setAttributes({ block_id: props.clientId })
         setAttributes({ classMigrate: true })
+        setAttributes({ controller: false })
         // Pushing Style tag for this block css.
         const $style = document.createElement("style")
         $style.setAttribute("id", "premium-style-content-switcher-" + props.clientId)
         document.head.appendChild($style)
+
+        // fetch('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyClGdkPJ1BvgLOol5JAkQY4Mv2lkLYu00k')
+        //     .then(blob => blob.json())
+        //     .then(data => {
+        //         data.items.map(i => {
+        //             // setAttributes({ family: i.family })
+        //             console.log(i)
+        //         })
+        //     })
     }, [])
 
     useEffect(() => {
-        const content = document.querySelector('.premium-content-switcher-two-content');
 
         if (!mounted) {
             inputFirstContent.current.classList.remove("premium-content-switcher-is-visible");
@@ -86,15 +93,12 @@ function Edit(props) {
 
             // content.style.overflow = 'hidden';
         }
-        // setTimeout(function () {
-        //     content.style.overflow = '';
-        // }, 100);
     }, [mounted])
 
     const initToggleBox = () => {
-        const { block_id } = props.attributes;
+        const { block_id, controller } = props.attributes;
         if (!block_id) return null;
-
+        setAttributes({ controller: !controller })
         setMounted(!mounted)
     }
 
@@ -108,15 +112,11 @@ function Edit(props) {
         labelTag,
         firstContent,
         secondContent,
-        firstcontentlign,
+        firstcontentalign,
         secondcontentlign,
-        switcherStyles,
-        // backgroundType,
         labelStyles,
         firstContentStyles,
         secondContentStyles,
-        containerStyles,
-        backgroundType,
         effect,
         slide,
         firstLabelborder,
@@ -155,6 +155,11 @@ function Edit(props) {
         hideDesktop,
         hideTablet,
         hideMobile,
+        controllerOneBackground,
+        controllerTwoBackground,
+        controller,
+        switcherBackground,
+        containerBackground
     } = attributes
 
     const DISPLAY = [
@@ -167,7 +172,6 @@ function Edit(props) {
             value: "inline"
         }
     ];
-    const ALIGNS = ["left", "center", "right"];
 
     const EFFECTS = [
         {
@@ -198,18 +202,32 @@ function Edit(props) {
         }
     ]
 
-    let btnGrad, btnGrad2, btnbg;
+    let btnGradControllerOne, btnGrad2ControllerOne, btnbgControllerOne;
 
-    if (undefined !== backgroundType && 'gradient' === backgroundType) {
-        btnGrad = ('transparent' === containerStyles.containerBack || undefined === containerStyles.containerBack ? 'rgba(255,255,255,0)' : containerStyles.containerBack);
-        btnGrad2 = (undefined !== containerStyles.gradientColorTwo && undefined !== containerStyles.gradientColorTwo && '' !== containerStyles.gradientColorTwo ? containerStyles.gradientColorTwo : '#777');
-        if ('radial' === containerStyles.gradientType) {
-            btnbg = `radial-gradient(at ${containerStyles.gradientPosition}, ${btnGrad} ${containerStyles.gradientLocationOne}%, ${btnGrad2} ${containerStyles.gradientLocationTwo}%)`;
-        } else if ('radial' !== containerStyles.gradientType) {
-            btnbg = `linear-gradient(${containerStyles.gradientAngle}deg, ${btnGrad} ${containerStyles.gradientLocationOne}%, ${btnGrad2} ${containerStyles.gradientLocationTwo}%)`;
+    if (undefined !== controllerOneBackground.backgroundType && 'gradient' === controllerOneBackground.backgroundType) {
+        btnGradControllerOne = ('transparent' === controllerOneBackground.backgroundColor || undefined === controllerOneBackground.backgroundColor ? 'rgba(255,255,255,0)' : controllerOneBackground.backgroundColor);
+        btnGrad2ControllerOne = (undefined !== controllerOneBackground.gradientColorTwo && undefined !== controllerOneBackground.gradientColorTwo && '' !== controllerOneBackground.gradientColorTwo ? controllerOneBackground.gradientColorTwo : '#777');
+        if ('radial' === controllerOneBackground.gradientType) {
+            btnbgControllerOne = `radial-gradient(at ${controllerOneBackground.gradientPosition}, ${btnGradControllerOne} ${controllerOneBackground.gradientLocationOne}%, ${btnGrad2ControllerOne} ${controllerOneBackground.gradientLocationTwo}%)`;
+        } else if ('radial' !== controllerOneBackground.gradientType) {
+            btnbgControllerOne = `linear-gradient(${controllerOneBackground.gradientAngle}deg, ${btnGradControllerOne} ${controllerOneBackground.gradientLocationOne}%, ${btnGrad2ControllerOne} ${controllerOneBackground.gradientLocationTwo}%)`;
         }
     } else {
-        btnbg = containerStyles.backgroundImageURL ? `url('${containerStyles.backgroundImageURL}')` : ''
+        btnbgControllerOne = controllerOneBackground.backgroundImageURL ? `url('${controllerOneBackground.backgroundImageURL}')` : ''
+    }
+
+    let btnGradControllerTwo, btnGrad2ControllerTwo, btnbgControllerTwo;
+
+    if (undefined !== controllerTwoBackground.backgroundType && 'gradient' === controllerTwoBackground.backgroundType) {
+        btnGradControllerTwo = ('transparent' === controllerTwoBackground.backgroundColor || undefined === controllerTwoBackground.backgroundColor ? 'rgba(255,255,255,0)' : controllerTwoBackground.backgroundColor);
+        btnGrad2ControllerTwo = (undefined !== controllerTwoBackground.gradientColorTwo && undefined !== controllerTwoBackground.gradientColorTwo && '' !== controllerTwoBackground.gradientColorTwo ? controllerTwoBackground.gradientColorTwo : '#777');
+        if ('radial' === controllerTwoBackground.gradientType) {
+            btnbgControllerTwo = `radial-gradient(at ${controllerTwoBackground.gradientPosition}, ${btnGradControllerTwo} ${controllerTwoBackground.gradientLocationOne}%, ${btnGrad2ControllerTwo} ${controllerTwoBackground.gradientLocationTwo}%)`;
+        } else if ('radial' !== controllerTwoBackground.gradientType) {
+            btnbgControllerTwo = `linear-gradient(${controllerTwoBackground.gradientAngle}deg, ${btnGradControllerTwo} ${controllerTwoBackground.gradientLocationOne}%, ${btnGrad2ControllerTwo} ${controllerTwoBackground.gradientLocationTwo}%)`;
+        }
+    } else {
+        btnbgControllerTwo = controllerTwoBackground.backgroundImageURL ? `url('${controllerTwoBackground.backgroundImageURL}')` : ''
     }
 
     const saveLabelStyles = (color, value) => {
@@ -259,16 +277,16 @@ function Edit(props) {
     //     )
     // }
 
-    // if (firstContentStyles.firstContentFontFamily !== "Default") {
-    //     const firstContentConfig = {
-    //         google: {
-    //             families: [firstContentStyles.firstContentFontFamily],
-    //         }
+    // if (firstContentTypography.fontFamily !== "Default") {
+    // const firstContentConfig = {
+    //     google: {
+    //         families: [firstContentStyles.firstContentFontFamily],
     //     }
-    //     loadFirstContentGoogleFonts = (
-    //         <WebfontLoader config={firstContentConfig}>
-    //         </WebfontLoader>
-    //     )
+    // }
+    // loadFirstContentGoogleFonts = (
+    //     <WebfontLoader config={firstContentConfig}>
+    //     </WebfontLoader>
+    // )
     // }
 
     // if (secondContentStyles.secondContentFontFamily !== "Default") {
@@ -286,12 +304,12 @@ function Edit(props) {
     return (
         <Fragment>
             <BlockControls>
-                <AlignmentToolbar
+                {/* <AlignmentToolbar
                     value={align}
                     onChange={(value) => {
                         setAttributes({ align: value })
                     }}
-                />
+                /> */}
             </BlockControls>
             <InspectorControls>
                 <InspectorTabs tabs={['layout', 'style', 'advance']}>
@@ -310,7 +328,14 @@ function Edit(props) {
                                 <Fragment>
                                     <RadioComponent
                                         label={__("HTML Tag", 'premium-blocks-for-gutenberg')}
-                                        choices={['H1', 'H2', 'H3', 'H4', 'H5', 'H6']}
+                                        choices={[
+                                            { value: 'H1', label: __('H1') },
+                                            { value: 'H2', label: __('H2') },
+                                            { value: 'H3', label: __('H3') },
+                                            { value: 'H4', label: __('H4') },
+                                            { value: 'H5', label: __('H5') },
+                                            { value: 'H6', label: __('H6') }
+                                        ]}
                                         value={labelTag}
                                         onChange={(newValue) => setAttributes({ labelTag: newValue })}
                                     />
@@ -322,16 +347,77 @@ function Edit(props) {
                                     />
                                 </Fragment>
                             )}
-                            <p>{__("Alignment")}</p>
+                            <ResponsiveRadioControl
+                                label={__("Alignment", 'premium-blocks-for-gutenberg')}
+                                choices={[
+                                    { value: 'left', label: __('Left'), icon: (<svg id="Accordion" xmlns="http://www.w3.org/2000/svg" width="19.5" height="16.5" viewBox="0 0 19.5 16.5"><defs><style>{`.cls-1{fill:#333;}`}</style></defs><title>text-align-left</title><g id="Left_Align" data-name="Left Align"><path class="cls-1" d="M21.5,5.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M13,10.75H3.5a.75.75,0,0,1,0-1.5H13a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,15.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M13,20.75H3.5a.75.75,0,0,1,0-1.5H13a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /></g></svg>) },
+                                    { value: 'center', label: __('Center'), icon: (<svg id="Accordion" xmlns="http://www.w3.org/2000/svg" width="19.5" height="16.5" viewBox="0 0 19.5 16.5"><defs><style>{`.cls-1{fill:#333;}`}</style></defs><title>text-align-center</title><g id="Center_Align" data-name="Center Align"><path class="cls-1" d="M21.5,5.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M17.24,10.75H7.76a.75.75,0,1,1,0-1.5h9.48a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,15.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M17.24,20.75H7.76a.75.75,0,1,1,0-1.5h9.48a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /></g></svg>) },
+                                    { value: 'right', label: __('Right'), icon: (<svg id="Accordion" xmlns="http://www.w3.org/2000/svg" width="19.5" height="16.5" viewBox="0 0 19.5 16.5"><defs><style>{`.cls-1{fill:#333;}`}</style></defs><title>text-align-right</title><g id="Right_Align" data-name="Right Align"><path class="cls-1" d="M21.5,5.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,10.75H12a.75.75,0,0,1,0-1.5H21.5a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,15.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,20.75H12a.75.75,0,0,1,0-1.5H21.5a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /></g></svg>) }
+                                ]}
+                                value={align}
+                                onChange={(newValue) => setAttributes({ align: newValue })}
+                                showIcons={true}
+                            />
+                        </PanelBody>
+                        <PanelBody
+                            title={__("Content 1")}
+                            className="premium-panel-body"
+                            initialOpen={false}
+                        >
+                            <ResponsiveRadioControl
+                                label={__("Alignment", 'premium-blocks-for-gutenberg')}
+                                choices={[
+                                    { value: 'left', label: __('Left'), icon: (<svg id="Accordion" xmlns="http://www.w3.org/2000/svg" width="19.5" height="16.5" viewBox="0 0 19.5 16.5"><defs><style>{`.cls-1{fill:#333;}`}</style></defs><title>text-align-left</title><g id="Left_Align" data-name="Left Align"><path class="cls-1" d="M21.5,5.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M13,10.75H3.5a.75.75,0,0,1,0-1.5H13a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,15.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M13,20.75H3.5a.75.75,0,0,1,0-1.5H13a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /></g></svg>) },
+                                    { value: 'center', label: __('Center'), icon: (<svg id="Accordion" xmlns="http://www.w3.org/2000/svg" width="19.5" height="16.5" viewBox="0 0 19.5 16.5"><defs><style>{`.cls-1{fill:#333;}`}</style></defs><title>text-align-center</title><g id="Center_Align" data-name="Center Align"><path class="cls-1" d="M21.5,5.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M17.24,10.75H7.76a.75.75,0,1,1,0-1.5h9.48a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,15.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M17.24,20.75H7.76a.75.75,0,1,1,0-1.5h9.48a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /></g></svg>) },
+                                    { value: 'right', label: __('Right'), icon: (<svg id="Accordion" xmlns="http://www.w3.org/2000/svg" width="19.5" height="16.5" viewBox="0 0 19.5 16.5"><defs><style>{`.cls-1{fill:#333;}`}</style></defs><title>text-align-right</title><g id="Right_Align" data-name="Right Align"><path class="cls-1" d="M21.5,5.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,10.75H12a.75.75,0,0,1,0-1.5H21.5a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,15.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,20.75H12a.75.75,0,0,1,0-1.5H21.5a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /></g></svg>) },
+                                    { value: 'justify', label: __('Justify'), icon: (<svg id="Accordion" xmlns="http://www.w3.org/2000/svg" width="19.5" height="16.5" viewBox="0 0 19.5 16.5"><defs><style>{`.cls-1{fill:#333;}`}</style></defs><title>text-align-justify</title><g id="Justify"><path class="cls-1" d="M21.5,5.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,10.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,15.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,20.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /></g></svg>) }
+                                ]}
+                                value={firstcontentalign}
+                                onChange={(newValue) => setAttributes({ firstcontentalign: newValue })}
+                                showIcons={true}
+                            />
+                            {/* <p>{__("Alignment")}</p>
                             <Toolbar
                                 controls={ALIGNS.map(contentAlign => ({
                                     icon: "editor-align" + contentAlign,
-                                    isActive: contentAlign === align,
-                                    onClick: () => setAttributes({ align: contentAlign })
+                                    isActive: contentAlign === firstcontentalign,
+                                    onClick: () => setAttributes({ firstcontentalign: contentAlign })
                                 }))}
+                            /> */}
+                        </PanelBody>
+                        <PanelBody
+                            title={__("Content 2")}
+                            className="premium-panel-body"
+                            initialOpen={false}
+                        >
+                            <ResponsiveRadioControl
+                                label={__("Alignment", 'premium-blocks-for-gutenberg')}
+                                choices={[
+                                    { value: 'left', label: __('Left'), icon: (<svg id="Accordion" xmlns="http://www.w3.org/2000/svg" width="19.5" height="16.5" viewBox="0 0 19.5 16.5"><defs><style>{`.cls-1{fill:#333;}`}</style></defs><title>text-align-left</title><g id="Left_Align" data-name="Left Align"><path class="cls-1" d="M21.5,5.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M13,10.75H3.5a.75.75,0,0,1,0-1.5H13a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,15.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M13,20.75H3.5a.75.75,0,0,1,0-1.5H13a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /></g></svg>) },
+                                    { value: 'center', label: __('Center'), icon: (<svg id="Accordion" xmlns="http://www.w3.org/2000/svg" width="19.5" height="16.5" viewBox="0 0 19.5 16.5"><defs><style>{`.cls-1{fill:#333;}`}</style></defs><title>text-align-center</title><g id="Center_Align" data-name="Center Align"><path class="cls-1" d="M21.5,5.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M17.24,10.75H7.76a.75.75,0,1,1,0-1.5h9.48a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,15.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M17.24,20.75H7.76a.75.75,0,1,1,0-1.5h9.48a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /></g></svg>) },
+                                    { value: 'right', label: __('Right'), icon: (<svg id="Accordion" xmlns="http://www.w3.org/2000/svg" width="19.5" height="16.5" viewBox="0 0 19.5 16.5"><defs><style>{`.cls-1{fill:#333;}`}</style></defs><title>text-align-right</title><g id="Right_Align" data-name="Right Align"><path class="cls-1" d="M21.5,5.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,10.75H12a.75.75,0,0,1,0-1.5H21.5a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,15.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,20.75H12a.75.75,0,0,1,0-1.5H21.5a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /></g></svg>) },
+                                    { value: 'justify', label: __('Justify'), icon: (<svg id="Accordion" xmlns="http://www.w3.org/2000/svg" width="19.5" height="16.5" viewBox="0 0 19.5 16.5"><defs><style>{`.cls-1{fill:#333;}`}</style></defs><title>text-align-justify</title><g id="Justify"><path class="cls-1" d="M21.5,5.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,10.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,15.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,20.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /></g></svg>) }
+                                ]}
+                                value={secondcontentlign}
+                                onChange={(newValue) => setAttributes({ secondcontentlign: newValue })}
+                                showIcons={true}
                             />
+                            {/* <p>{__("Alignment")}</p>
+                            <Toolbar
+                                controls={ALIGNS.map(contentAlign => ({
+                                    icon: "editor-align" + contentAlign,
+                                    isActive: contentAlign === secondcontentlign,
+                                    onClick: () => setAttributes({ secondcontentlign: contentAlign })
+                                }))}
+                            /> */}
+                        </PanelBody>
+                        <PanelBody
+                            title={__("Display Options")}
+                            className="premium-panel-body"
+                            initialOpen={false}
+                        >
                             <SelectControl
-                                label={__("Effect")}
+                                label={__("Animation")}
                                 options={EFFECTS}
                                 value={effect}
                                 onChange={newEffect => setAttributes({ effect: newEffect })}
@@ -344,34 +430,6 @@ function Edit(props) {
                                     onChange={newEffect => setAttributes({ slide: newEffect })}
                                 />
                             }
-                        </PanelBody>
-                        <PanelBody
-                            title={__("Content 1")}
-                            className="premium-panel-body"
-                            initialOpen={false}
-                        >
-                            <p>{__("Alignment")}</p>
-                            <Toolbar
-                                controls={ALIGNS.map(contentAlign => ({
-                                    icon: "editor-align" + contentAlign,
-                                    isActive: contentAlign === firstcontentlign,
-                                    onClick: () => setAttributes({ firstcontentlign: contentAlign })
-                                }))}
-                            />
-                        </PanelBody>
-                        <PanelBody
-                            title={__("Content 2")}
-                            className="premium-panel-body"
-                            initialOpen={false}
-                        >
-                            <p>{__("Alignment")}</p>
-                            <Toolbar
-                                controls={ALIGNS.map(contentAlign => ({
-                                    icon: "editor-align" + contentAlign,
-                                    isActive: contentAlign === secondcontentlign,
-                                    onClick: () => setAttributes({ secondcontentlign: contentAlign })
-                                }))}
-                            />
                         </PanelBody>
                     </InspectorTab>
                     <InspectorTab key={'style'}>
@@ -389,6 +447,36 @@ function Edit(props) {
                                 step={1}
                                 showUnit={false}
                                 defaultValue={15}
+                            />
+                            <h2>{__("Controller State 1 Color")}</h2>
+                            <PremiumBackgroundControl
+                                value={controllerOneBackground}
+                                onChange={(value) => setAttributes({ controllerOneBackground: value })}
+                            />
+                            <hr />
+                            <h2>{__("Controller State 2 Color")}</h2>
+                            <PremiumBackgroundControl
+                                value={controllerTwoBackground}
+                                onChange={(value) => setAttributes({ controllerTwoBackground: value })}
+                            />
+                            <hr />
+                            <h2>{__("Switcher Background")}</h2>
+                            <PremiumBackgroundControl
+                                value={switcherBackground}
+                                onChange={(value) => setAttributes({ switcherBackground: value })}
+                            />
+                            <hr />
+                            <PremiumShadow
+                                label={__("Controller Shadow", "premium-blocks-for-gutenberg")}
+                                value={containerShadow}
+                                onChange={(value) => setAttributes({ containerShadow: value })}
+                                boxShadow={true}
+                            />
+                            <PremiumShadow
+                                label={__("Switcher Shadow", "premium-blocks-for-gutenberg")}
+                                value={switchShadow}
+                                onChange={(value) => setAttributes({ switchShadow: value })}
+                                boxShadow={true}
                             />
                             <ResponsiveSingleRangeControl
                                 label={__("Controller Border Radius", 'premium-blocks-for-gutenberg')}
@@ -415,56 +503,6 @@ function Edit(props) {
                                 defaultValue={1.5}
                                 unit={switchRadiusUnit}
                                 onChangeUnit={newSize => setAttributes({ switchRadiusUnit: newSize })}
-                            />
-                            {/* <h3>{__("Controller State 1 Color")}</h3> */}
-                            {/* <PremiumBackgroundControl
-                        setAttributes={setAttributes}
-                        saveContainerStyle={saveSwitcherStyles}
-                        backgroundType={backgroundType}
-                        backgroundColor={switcherStyles[0].containerBackState1}
-                        backgroundImageID={switcherStyles[0].backgroundImageIDState1}
-                        backgroundImageURL={switcherStyles[0].backgroundImageURLState1}
-                        backgroundPosition={switcherStyles[0].backgroundPositionState1}
-                        backgroundRepeat={switcherStyles[0].backgroundRepeatState1}
-                        backgroundSize={switcherStyles[0].backgroundSizeState1}
-                        fixed={switcherStyles[0].fixedState1}
-                        gradientLocationOne={switcherStyles[0].gradientLocationOneState1}
-                        gradientColorTwo={switcherStyles[0].gradientColorTwoState1}
-                        gradientLocationTwo={switcherStyles[0].gradientLocationTwoState1}
-                        gradientAngle={switcherStyles[0].gradientAngleState1}
-                        gradientPosition={switcherStyles[0].gradientPositionState1}
-                        gradientType={switcherStyles[0].gradientTypeState1}
-                    /> */}
-                            {/* <h3>{__("Controller State 2 Color")}</h3> */}
-                            {/* <PremiumBackgroundControl
-                            setAttributes={setAttributes}
-                            saveContainerStyle={saveSwitcherStyles}
-                            backgroundType={backgroundTypeState2}
-                            backgroundColor={switcherStyles[0].containerBackState2}
-                            backgroundImageID={switcherStyles[0].backgroundImageIDState2}
-                            backgroundImageURL={switcherStyles[0].backgroundImageURLState2}
-                            backgroundPosition={switcherStyles[0].backgroundPositionState2}
-                            backgroundRepeat={switcherStyles[0].backgroundRepeatState2}
-                            backgroundSize={switcherStyles[0].backgroundSizeState2}
-                            fixed={switcherStyles[0].fixedState2}
-                            gradientLocationOne={switcherStyles[0].gradientLocationOneState2}
-                            gradientColorTwo={switcherStyles[0].gradientColorTwoState2}
-                            gradientLocationTwo={switcherStyles[0].gradientLocationTwoState2}
-                            gradientAngle={switcherStyles[0].gradientAngleState2}
-                            gradientPosition={switcherStyles[0].gradientPositionState2}
-                            gradientType={switcherStyles[0].gradientTypeState2}
-                        /> */}
-                            <PremiumShadow
-                                label={__("Controller Shadow", "premium-blocks-for-gutenberg")}
-                                value={containerShadow}
-                                onChange={(value) => setAttributes({ containerShadow: value })}
-                                boxShadow={true}
-                            />
-                            <PremiumShadow
-                                label={__("Switcher Shadow", "premium-blocks-for-gutenberg")}
-                                value={switchShadow}
-                                onChange={(value) => setAttributes({ switchShadow: value })}
-                                boxShadow={true}
                             />
                         </PanelBody>
                         {showLabel && (<PanelBody
@@ -497,6 +535,16 @@ function Edit(props) {
                                             onColorChange={newValue =>
                                                 saveLabelStyles(
                                                     'firstLabelColor', newValue
+                                                )
+                                            }
+                                        />
+                                        <AdvancedPopColorControl
+                                            label={__("Background Color", 'premium-block-for-gutenberg')}
+                                            colorValue={labelStyles.firstLabelBGColor}
+                                            colorDefault={''}
+                                            onColorChange={newValue =>
+                                                saveLabelStyles(
+                                                    'firstLabelBGColor', newValue
                                                 )
                                             }
                                         />
@@ -540,6 +588,16 @@ function Edit(props) {
                                             onColorChange={newValue =>
                                                 saveLabelStyles(
                                                     'secondLabelColor', newValue
+                                                )
+                                            }
+                                        />
+                                        <AdvancedPopColorControl
+                                            label={__("Background Color", 'premium-block-for-gutenberg')}
+                                            colorValue={labelStyles.secondLabelBGColor}
+                                            colorDefault={''}
+                                            onColorChange={newValue =>
+                                                saveLabelStyles(
+                                                    'secondLabelBGColor', newValue
                                                 )
                                             }
                                         />
@@ -702,24 +760,11 @@ function Edit(props) {
                             className="premium-panel-body"
                             initialOpen={false}
                         >
-                            {/* <PremiumBackgroundControl
-                        setAttributes={setAttributes}
-                        saveContainerStyle={saveContainerStyles}
-                        backgroundType={backgroundType}
-                        backgroundColor={containerStyles.containerBack}
-                        backgroundImageID={containerStyles.backgroundImageID}
-                        backgroundImageURL={containerStyles.backgroundImageURL}
-                        backgroundPosition={containerStyles.backgroundPosition}
-                        backgroundRepeat={containerStyles.backgroundRepeat}
-                        backgroundSize={containerStyles.backgroundSize}
-                        fixed={containerStyles.fixed}
-                        gradientLocationOne={containerStyles.gradientLocationOne}
-                        gradientColorTwo={containerStyles.gradientColorTwo}
-                        gradientLocationTwo={containerStyles.gradientLocationTwo}
-                        gradientAngle={containerStyles.gradientAngle}
-                        gradientPosition={containerStyles.gradientPosition}
-                        gradientType={containerStyles.gradientType}
-                    /> */}
+                            <PremiumBackgroundControl
+                                value={containerBackground}
+                                onChange={(value) => setAttributes({ containerBackground: value })}
+                            />
+                            <hr />
                             <PremiumShadow
                                 value={containerBoxShadow}
                                 onChange={(value) => setAttributes({ containerBoxShadow: value })}
@@ -764,8 +809,14 @@ function Edit(props) {
             <style>
                 {`
                      #premium-content-switcher-${block_id} .premium-content-switcher-toggle-switch-slider:before {
-                         border-radius: ${containerRadius || 50}${containerRadiusUnit} !important;
-                         box-shadow: ${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position} !important;
+                        border-radius: ${containerRadius || 50}${containerRadiusUnit} !important;
+                        box-shadow: ${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position} !important;
+                        background-color: ${controller ? (controllerTwoBackground.backgroundType === "solid" ? controllerTwoBackground.backgroundColor : "#6ec1e4") : (controllerOneBackground.backgroundType === "solid" ? controllerOneBackground.backgroundColor : "#6ec1e4")};
+                        background-image: ${controller ? btnbgControllerTwo : btnbgControllerOne};
+                        background-repeat: ${controller ? controllerTwoBackground.backgroundRepeat : controllerOneBackground.backgroundRepeat};
+                        background-position: ${controller ? controllerTwoBackground.backgroundPosition : controllerOneBackground.backgroundPosition};
+                        background-size: ${controller ? controllerTwoBackground.backgroundSize : controllerOneBackground.backgroundSize};
+                        background-attachment: ${controller ? (controllerTwoBackground.fixed ? "fixed" : "unset") : (controllerOneBackground.fixed ? "fixed" : "unset")};
                      }
                     #premium-content-switcher-${block_id} .premium-content-switcher-toggle-switch-slider {
                         border-radius: ${switchRadius}${switchRadiusUnit} !important;
@@ -794,7 +845,7 @@ function Edit(props) {
                 })}
                 id={`premium-content-switcher-${block_id}`}
                 style={{
-                    textAlign: align,
+                    textAlign: align[props.deviceType],
                 }}
             >
                 <div className={`premium-content-switcher`}
@@ -802,20 +853,15 @@ function Edit(props) {
                         ...borderCss(containerborder, props.deviceType),
                         ...padddingCss(containerPadding, props.deviceType),
                         ...marginCss(containerMargin, props.deviceType),
-                        textAlign: align,
-                        backgroundColor: backgroundType === "solid" ? containerStyles.containerBack : "transparent",
-                        backgroundImage: btnbg,
-                        backgroundRepeat: containerStyles.backgroundRepeat,
-                        backgroundPosition: containerStyles.backgroundPosition,
-                        backgroundSize: containerStyles.backgroundSize,
-                        backgroundAttachment: containerStyles.fixed ? "fixed" : "unset",
+                        ...gradientBackground(containerBackground),
+                        textAlign: align[props.deviceType],
                         boxShadow: `${containerBoxShadow.horizontal || 0}px ${containerBoxShadow.vertical || 0}px ${containerBoxShadow.blur || 0}px ${containerBoxShadow.color} ${containerBoxShadow.position}`
                     }}>
                     <div className={`premium-content-switcher-toggle-${display}`}
                         style={{
-                            textAlign: align,
-                            justifyContent: align == "right" ? "flex-end" : align == "left" ? 'flex-start' : align,
-                            alignItems: display == "inline" ? "center" : align == "right" ? "flex-end" : align == "left" ? 'flex-start' : align,
+                            textAlign: align[props.deviceType],
+                            justifyContent: align[props.deviceType] == "right" ? "flex-end" : align[props.deviceType] == "left" ? 'flex-start' : align[props.deviceType],
+                            alignItems: display == "inline" ? "center" : align[props.deviceType] == "right" ? "flex-end" : align[props.deviceType] == "left" ? 'flex-start' : align[props.deviceType],
                         }}>
                         {showLabel && (<div className="premium-content-switcher-first-label">
                             <RichText
@@ -829,6 +875,7 @@ function Edit(props) {
                                     ...padddingCss(firstLabelPadding, props.deviceType),
                                     margin: 0,
                                     color: labelStyles.firstLabelColor,
+                                    background: labelStyles.firstLabelBGColor,
                                     textShadow: `${firstLabelShadow.horizontal || 0}px ${firstLabelShadow.vertical || 0}px ${firstLabelShadow.blur || 0}px ${firstLabelShadow.color}`,
                                     boxShadow: `${firstLabelBoxShadow.horizontal || 0}px ${firstLabelBoxShadow.vertical || 0}px ${firstLabelBoxShadow.blur || 0}px ${firstLabelBoxShadow.color} ${firstLabelBoxShadow.position}`
                                 }}
@@ -843,7 +890,12 @@ function Edit(props) {
                         >
                             <label className={`premium-content-switcher-toggle-switch-label`}>
                                 <input onClick={() => initToggleBox()} type="checkbox" className={`premium-content-switcher-toggle-switch-input ${props.clientId}`} />
-                                <span className="premium-content-switcher-toggle-switch-slider round"></span>
+                                <span
+                                    className="premium-content-switcher-toggle-switch-slider round"
+                                    style={{
+                                        ...gradientBackground(switcherBackground),
+                                    }}
+                                ></span>
                             </label>
                         </div>
                         {showLabel && (<div className="premium-content-switcher-second-label">
@@ -858,6 +910,7 @@ function Edit(props) {
                                     ...padddingCss(secondLabelPadding, props.deviceType),
                                     margin: 0,
                                     color: labelStyles.secondLabelColor,
+                                    background: labelStyles.secondLabelBGColor,
                                     textShadow: `${secondLabelShadow.horizontal || 0}px ${secondLabelShadow.vertical || 0}px ${secondLabelShadow.blur || 0}px ${secondLabelShadow.color}`,
                                     boxShadow: `${secondLabelBoxShadow.horizontal || 0}px ${secondLabelBoxShadow.vertical || 0}px ${secondLabelBoxShadow.blur || 0}px ${secondLabelBoxShadow.color} ${secondLabelBoxShadow.position}`
                                 }}
@@ -889,8 +942,8 @@ function Edit(props) {
                                     }}
                                     style={{
                                         ...typographyCss(firstContentTypography, props.deviceType),
-                                        textAlign: firstcontentlign,
-                                        justifyContent: firstcontentlign,
+                                        textAlign: firstcontentalign[props.deviceType],
+                                        justifyContent: firstcontentalign[props.deviceType],
                                         color: firstContentStyles.firstContentColor,
                                         textShadow: `${firstContentShadow.horizontal || 0}px ${firstContentShadow.vertical || 0}px ${firstContentShadow.blur || 0}px ${firstContentShadow.color}`,
                                     }}
@@ -913,8 +966,8 @@ function Edit(props) {
                                     }}
                                     style={{
                                         ...typographyCss(secondContentTypography, props.deviceType),
-                                        textAlign: secondcontentlign,
-                                        justifyContent: secondcontentlign,
+                                        textAlign: secondcontentlign[props.deviceType],
+                                        justifyContent: secondcontentlign[props.deviceType],
                                         color: secondContentStyles.secondContentColor,
                                         textShadow: `${secondContentShadow.horizontal || 0}px ${secondContentShadow.vertical || 0}px ${secondContentShadow.blur || 0}px ${secondContentShadow.color}`,
                                     }}

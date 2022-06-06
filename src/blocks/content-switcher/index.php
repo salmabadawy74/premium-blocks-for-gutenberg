@@ -14,6 +14,15 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 	$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
 	$unique_id = $attributes['block_id'];
 
+	if ( isset( $attributes['firstContentTypography']['fontFamily'] ) ) {
+		$block_helpers->add_gfont(
+			array(
+				'fontFamily'  => ( isset( $attributes['firstContentTypography']['fontFamily'] ) ? $attributes['firstContentTypography']['fontFamily'] : '' ),
+				'fontVariant' => ( isset( $attributes['firstContentTypography']['fontWeight'] ) ? $attributes['firstContentTypography']['fontWeight'] : '' ),
+			)
+		);
+	}
+
 	if ( isset( $attributes['labelStyles'] ) ) {
 		$labelStyles = $attributes['labelStyles'];
 		$block_helpers->add_gfont(
@@ -26,15 +35,15 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 		);
 	}
 
-	if ( isset( $attributes['firstContentStyles'] ) ) {
-		$firstContentStyles = $attributes['firstContentStyles'];
-		$block_helpers->add_gfont(
-			array(
-				'fontFamily'  => ( isset( $firstContentStyles['firstContentFontFamily'] ) ? $firstContentStyles['firstContentFontFamily'] : '' ),
-				'fontVariant' => ( isset( $firstContentStyles['firstContentWeight'] ) ? $firstContentStyles['firstContentWeight'] : '' )
-			)
-		);
-	}
+	// if ( isset( $attributes['firstContentTypography'] ) ) {
+	// 	$firstContentTypography = $attributes['firstContentTypography'];
+	// 	$block_helpers->add_gfont(
+	// 		array(
+	// 			'fontFamily'  => ( isset( $firstContentTypography['fontFamily'] ) ? $firstContentTypography['fontFamily'] : '' ),
+	// 			'fontVariant' => ( isset( $firstContentTypography['fontWeight'] ) ? $firstContentTypography['fontWeight'] : '' )
+	// 		)
+	// 	);
+	// }
 
 	if ( isset( $attributes['secondContentStyles'] ) ) {
 		$secondContentStyles = $attributes['secondContentStyles'];
@@ -79,37 +88,37 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
 		$css->add_property( 'margin-left', ( $attributes['containerMargin']['Desktop']['left'] . ( isset( $attributes['containerMargin']['unit'] ) ? $attributes['containerMargin']['unit'] : 'px' ) . '!important' ) );
 	}
-	if ( isset( $attr['containerborder']['borderWidth']['Desktop']['top'] ) ) {
+	if ( isset( $attributes['containerborder']['borderWidth']['Desktop']['top'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
-		$css->add_property( 'border-top-width', ( $attr['containerborder']['borderWidth']['Desktop']['top'] . 'px' ) );
+		$css->add_property( 'border-top-width', ( $attributes['containerborder']['borderWidth']['Desktop']['top'] . 'px' ) );
 	}
-	if ( isset( $attr['containerborder']['borderWidth']['Desktop']['right'] ) ) {
+	if ( isset( $attributes['containerborder']['borderWidth']['Desktop']['right'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
-		$css->add_property( 'border-right-width', ( $attr['containerborder']['borderWidth']['Desktop']['right'] . 'px' ) );
+		$css->add_property( 'border-right-width', ( $attributes['containerborder']['borderWidth']['Desktop']['right'] . 'px' ) );
 	}
-	if ( isset( $attr['containerborder']['borderWidth']['Desktop']['bottom'] ) ) {
+	if ( isset( $attributes['containerborder']['borderWidth']['Desktop']['bottom'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
-		$css->add_property( 'border-bottom-width', ( $attr['containerborder']['borderWidth']['Desktop']['bottom'] . 'px' ) );
+		$css->add_property( 'border-bottom-width', ( $attributes['containerborder']['borderWidth']['Desktop']['bottom'] . 'px' ) );
 	}
-	if ( isset( $attr['containerborder']['borderWidth']['Desktop']['left'] ) ) {
+	if ( isset( $attributes['containerborder']['borderWidth']['Desktop']['left'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
-		$css->add_property( 'border-left-width', ( $attr['containerborder']['borderWidth']['Desktop']['left'] . 'px' ) );
+		$css->add_property( 'border-left-width', ( $attributes['containerborder']['borderWidth']['Desktop']['left'] . 'px' ) );
 	}
-	if ( isset( $attr['containerborder']['borderRadius']['Desktop']['top'] ) ) {
+	if ( isset( $attributes['containerborder']['borderRadius']['Desktop']['top'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
-		$css->add_property( 'border-top-left-radius', ( $attr['containerborder']['borderRadius']['Desktop']['top'] . 'px' ) );
+		$css->add_property( 'border-top-left-radius', ( $attributes['containerborder']['borderRadius']['Desktop']['top'] . 'px' ) );
 	}
-	if ( isset( $attr['containerborder']['borderRadius']['Desktop']['right'] ) ) {
+	if ( isset( $attributes['containerborder']['borderRadius']['Desktop']['right'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
-		$css->add_property( 'border-top-right-radius', ( $attr['containerborder']['borderRadius']['Desktop']['right'] . 'px' ) );
+		$css->add_property( 'border-top-right-radius', ( $attributes['containerborder']['borderRadius']['Desktop']['right'] . 'px' ) );
 	}
-	if ( isset( $attr['containerborder']['borderRadius']['Desktop']['bottom'] ) ) {
+	if ( isset( $attributes['containerborder']['borderRadius']['Desktop']['bottom'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
-		$css->add_property( 'border-bottom-right-radius', ( $attr['containerborder']['borderRadius']['Desktop']['bottom'] . 'px' ) );
+		$css->add_property( 'border-bottom-right-radius', ( $attributes['containerborder']['borderRadius']['Desktop']['bottom'] . 'px' ) );
 	}
-	if ( isset( $attr['containerborder']['borderRadius']['Desktop']['left'] ) ) {
+	if ( isset( $attributes['containerborder']['borderRadius']['Desktop']['left'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
-		$css->add_property( 'border-bottom-left-radius', ( $attr['containerborder']['borderRadius']['Desktop']['left'] . 'px' ) );
+		$css->add_property( 'border-bottom-left-radius', ( $attributes['containerborder']['borderRadius']['Desktop']['left'] . 'px' ) );
 	}
 
 	//First Label styles
@@ -141,37 +150,37 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-first-label' );
 		$css->add_property( 'margin-bottom', ( $attributes['labelSpacing']['Desktop'] . 'px' ) );
 	}
-	if ( isset( $attr['firstLabelborder']['borderWidth']['Desktop']['top'] ) ) {
+	if ( isset( $attributes['firstLabelborder']['borderWidth']['Desktop']['top'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'border-top-width', ( $attr['firstLabelborder']['borderWidth']['Desktop']['top'] . 'px' ) );
+		$css->add_property( 'border-top-width', ( $attributes['firstLabelborder']['borderWidth']['Desktop']['top'] . 'px' ) );
 	}
-	if ( isset( $attr['firstLabelborder']['borderWidth']['Desktop']['right'] ) ) {
+	if ( isset( $attributes['firstLabelborder']['borderWidth']['Desktop']['right'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'border-right-width', ( $attr['firstLabelborder']['borderWidth']['Desktop']['right'] . 'px' ) );
+		$css->add_property( 'border-right-width', ( $attributes['firstLabelborder']['borderWidth']['Desktop']['right'] . 'px' ) );
 	}
-	if ( isset( $attr['firstLabelborder']['borderWidth']['Desktop']['bottom'] ) ) {
+	if ( isset( $attributes['firstLabelborder']['borderWidth']['Desktop']['bottom'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'border-bottom-width', ( $attr['firstLabelborder']['borderWidth']['Desktop']['bottom'] . 'px' ) );
+		$css->add_property( 'border-bottom-width', ( $attributes['firstLabelborder']['borderWidth']['Desktop']['bottom'] . 'px' ) );
 	}
-	if ( isset( $attr['firstLabelborder']['borderWidth']['Desktop']['left'] ) ) {
+	if ( isset( $attributes['firstLabelborder']['borderWidth']['Desktop']['left'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'border-left-width', ( $attr['firstLabelborder']['borderWidth']['Desktop']['left'] . 'px' ) );
+		$css->add_property( 'border-left-width', ( $attributes['firstLabelborder']['borderWidth']['Desktop']['left'] . 'px' ) );
 	}
-	if ( isset( $attr['firstLabelborder']['borderRadius']['Desktop']['top'] ) ) {
+	if ( isset( $attributes['firstLabelborder']['borderRadius']['Desktop']['top'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'border-top-left-radius', ( $attr['firstLabelborder']['borderRadius']['Desktop']['top'] . 'px' ) );
+		$css->add_property( 'border-top-left-radius', ( $attributes['firstLabelborder']['borderRadius']['Desktop']['top'] . 'px' ) );
 	}
-	if ( isset( $attr['firstLabelborder']['borderRadius']['Desktop']['right'] ) ) {
+	if ( isset( $attributes['firstLabelborder']['borderRadius']['Desktop']['right'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'border-top-right-radius', ( $attr['firstLabelborder']['borderRadius']['Desktop']['right'] . 'px' ) );
+		$css->add_property( 'border-top-right-radius', ( $attributes['firstLabelborder']['borderRadius']['Desktop']['right'] . 'px' ) );
 	}
-	if ( isset( $attr['firstLabelborder']['borderRadius']['Desktop']['bottom'] ) ) {
+	if ( isset( $attributes['firstLabelborder']['borderRadius']['Desktop']['bottom'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'border-bottom-right-radius', ( $attr['firstLabelborder']['borderRadius']['Desktop']['bottom'] . 'px' ) );
+		$css->add_property( 'border-bottom-right-radius', ( $attributes['firstLabelborder']['borderRadius']['Desktop']['bottom'] . 'px' ) );
 	}
-	if ( isset( $attr['firstLabelborder']['borderRadius']['Desktop']['left'] ) ) {
+	if ( isset( $attributes['firstLabelborder']['borderRadius']['Desktop']['left'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'border-bottom-left-radius', ( $attr['firstLabelborder']['borderRadius']['Desktop']['left'] . 'px' ) );
+		$css->add_property( 'border-bottom-left-radius', ( $attributes['firstLabelborder']['borderRadius']['Desktop']['left'] . 'px' ) );
 	}
 
 	//Second Label styles
@@ -203,37 +212,37 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
 		$css->add_property( 'margin-top', ( $attributes['labelSpacing']['Desktop'] . 'px' ) );
 	}
-	if ( isset( $attr['secondLabelborder']['borderWidth']['Desktop']['top'] ) ) {
+	if ( isset( $attributes['secondLabelborder']['borderWidth']['Desktop']['top'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
-		$css->add_property( 'border-top-width', ( $attr['secondLabelborder']['borderWidth']['Desktop']['top'] . 'px' ) );
+		$css->add_property( 'border-top-width', ( $attributes['secondLabelborder']['borderWidth']['Desktop']['top'] . 'px' ) );
 	}
-	if ( isset( $attr['secondLabelborder']['borderWidth']['Desktop']['right'] ) ) {
+	if ( isset( $attributes['secondLabelborder']['borderWidth']['Desktop']['right'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
-		$css->add_property( 'border-right-width', ( $attr['secondLabelborder']['borderWidth']['Desktop']['right'] . 'px' ) );
+		$css->add_property( 'border-right-width', ( $attributes['secondLabelborder']['borderWidth']['Desktop']['right'] . 'px' ) );
 	}
-	if ( isset( $attr['secondLabelborder']['borderWidth']['Desktop']['bottom'] ) ) {
+	if ( isset( $attributes['secondLabelborder']['borderWidth']['Desktop']['bottom'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
-		$css->add_property( 'border-bottom-width', ( $attr['secondLabelborder']['borderWidth']['Desktop']['bottom'] . 'px' ) );
+		$css->add_property( 'border-bottom-width', ( $attributes['secondLabelborder']['borderWidth']['Desktop']['bottom'] . 'px' ) );
 	}
-	if ( isset( $attr['secondLabelborder']['borderWidth']['Desktop']['left'] ) ) {
+	if ( isset( $attributes['secondLabelborder']['borderWidth']['Desktop']['left'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
-		$css->add_property( 'border-left-width', ( $attr['secondLabelborder']['borderWidth']['Desktop']['left'] . 'px' ) );
+		$css->add_property( 'border-left-width', ( $attributes['secondLabelborder']['borderWidth']['Desktop']['left'] . 'px' ) );
 	}
-	if ( isset( $attr['secondLabelborder']['borderRadius']['Desktop']['top'] ) ) {
+	if ( isset( $attributes['secondLabelborder']['borderRadius']['Desktop']['top'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
-		$css->add_property( 'border-top-left-radius', ( $attr['secondLabelborder']['borderRadius']['Desktop']['top'] . 'px' ) );
+		$css->add_property( 'border-top-left-radius', ( $attributes['secondLabelborder']['borderRadius']['Desktop']['top'] . 'px' ) );
 	}
-	if ( isset( $attr['secondLabelborder']['borderRadius']['Desktop']['right'] ) ) {
+	if ( isset( $attributes['secondLabelborder']['borderRadius']['Desktop']['right'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
-		$css->add_property( 'border-top-right-radius', ( $attr['secondLabelborder']['borderRadius']['Desktop']['right'] . 'px' ) );
+		$css->add_property( 'border-top-right-radius', ( $attributes['secondLabelborder']['borderRadius']['Desktop']['right'] . 'px' ) );
 	}
-	if ( isset( $attr['secondLabelborder']['borderRadius']['Desktop']['bottom'] ) ) {
+	if ( isset( $attributes['secondLabelborder']['borderRadius']['Desktop']['bottom'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
-		$css->add_property( 'border-bottom-right-radius', ( $attr['secondLabelborder']['borderRadius']['Desktop']['bottom'] . 'px' ) );
+		$css->add_property( 'border-bottom-right-radius', ( $attributes['secondLabelborder']['borderRadius']['Desktop']['bottom'] . 'px' ) );
 	}
-	if ( isset( $attr['secondLabelborder']['borderRadius']['Desktop']['left'] ) ) {
+	if ( isset( $attributes['secondLabelborder']['borderRadius']['Desktop']['left'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
-		$css->add_property( 'border-bottom-left-radius', ( $attr['secondLabelborder']['borderRadius']['Desktop']['left'] . 'px' ) );
+		$css->add_property( 'border-bottom-left-radius', ( $attributes['secondLabelborder']['borderRadius']['Desktop']['left'] . 'px' ) );
 	}
 
 	//Switch styles
@@ -292,37 +301,37 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-first-list' );
 		$css->add_property( 'padding-left', ( $attributes['contentPadding']['Desktop']['left'] . ( isset( $attributes['contentPadding']['unit'] ) ? $attributes['contentPadding']['unit'] : 'px' ) . '!important' ) );
 	}
-	if ( isset( $attr['firstContentborder']['borderWidth']['Desktop']['top'] ) ) {
+	if ( isset( $attributes['firstContentborder']['borderWidth']['Desktop']['top'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-first-list' );
-		$css->add_property( 'border-top-width', ( $attr['firstContentborder']['borderWidth']['Desktop']['top'] . 'px' ) );
+		$css->add_property( 'border-top-width', ( $attributes['firstContentborder']['borderWidth']['Desktop']['top'] . 'px' ) );
 	}
-	if ( isset( $attr['firstContentborder']['borderWidth']['Desktop']['right'] ) ) {
+	if ( isset( $attributes['firstContentborder']['borderWidth']['Desktop']['right'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-first-list' );
-		$css->add_property( 'border-right-width', ( $attr['firstContentborder']['borderWidth']['Desktop']['right'] . 'px' ) );
+		$css->add_property( 'border-right-width', ( $attributes['firstContentborder']['borderWidth']['Desktop']['right'] . 'px' ) );
 	}
-	if ( isset( $attr['firstContentborder']['borderWidth']['Desktop']['bottom'] ) ) {
+	if ( isset( $attributes['firstContentborder']['borderWidth']['Desktop']['bottom'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-first-list' );
-		$css->add_property( 'border-bottom-width', ( $attr['firstContentborder']['borderWidth']['Desktop']['bottom'] . 'px' ) );
+		$css->add_property( 'border-bottom-width', ( $attributes['firstContentborder']['borderWidth']['Desktop']['bottom'] . 'px' ) );
 	}
-	if ( isset( $attr['firstContentborder']['borderWidth']['Desktop']['left'] ) ) {
+	if ( isset( $attributes['firstContentborder']['borderWidth']['Desktop']['left'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-first-list' );
-		$css->add_property( 'border-left-width', ( $attr['firstContentborder']['borderWidth']['Desktop']['left'] . 'px' ) );
+		$css->add_property( 'border-left-width', ( $attributes['firstContentborder']['borderWidth']['Desktop']['left'] . 'px' ) );
 	}
-	if ( isset( $attr['firstContentborder']['borderRadius']['Desktop']['top'] ) ) {
+	if ( isset( $attributes['firstContentborder']['borderRadius']['Desktop']['top'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-first-list' );
-		$css->add_property( 'border-top-left-radius', ( $attr['firstContentborder']['borderRadius']['Desktop']['top'] . 'px' ) );
+		$css->add_property( 'border-top-left-radius', ( $attributes['firstContentborder']['borderRadius']['Desktop']['top'] . 'px' ) );
 	}
-	if ( isset( $attr['firstContentborder']['borderRadius']['Desktop']['right'] ) ) {
+	if ( isset( $attributes['firstContentborder']['borderRadius']['Desktop']['right'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-first-list' );
-		$css->add_property( 'border-top-right-radius', ( $attr['firstContentborder']['borderRadius']['Desktop']['right'] . 'px' ) );
+		$css->add_property( 'border-top-right-radius', ( $attributes['firstContentborder']['borderRadius']['Desktop']['right'] . 'px' ) );
 	}
-	if ( isset( $attr['firstContentborder']['borderRadius']['Desktop']['bottom'] ) ) {
+	if ( isset( $attributes['firstContentborder']['borderRadius']['Desktop']['bottom'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-first-list' );
-		$css->add_property( 'border-bottom-right-radius', ( $attr['firstContentborder']['borderRadius']['Desktop']['bottom'] . 'px' ) );
+		$css->add_property( 'border-bottom-right-radius', ( $attributes['firstContentborder']['borderRadius']['Desktop']['bottom'] . 'px' ) );
 	}
-	if ( isset( $attr['firstContentborder']['borderRadius']['Desktop']['left'] ) ) {
+	if ( isset( $attributes['firstContentborder']['borderRadius']['Desktop']['left'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-first-list' );
-		$css->add_property( 'border-bottom-left-radius', ( $attr['firstContentborder']['borderRadius']['Desktop']['left'] . 'px' ) );
+		$css->add_property( 'border-bottom-left-radius', ( $attributes['firstContentborder']['borderRadius']['Desktop']['left'] . 'px' ) );
 	}
 
 	//Second Content styles
@@ -350,37 +359,37 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-second-list' );
 		$css->add_property( 'padding-left', ( $attributes['contentPadding']['Desktop']['left'] . ( isset( $attributes['contentPadding']['unit'] ) ? $attributes['contentPadding']['unit'] : 'px' ) . '!important' ) );
 	}
-	if ( isset( $attr['secondContentborder']['borderWidth']['Desktop']['top'] ) ) {
+	if ( isset( $attributes['secondContentborder']['borderWidth']['Desktop']['top'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-second-list' );
-		$css->add_property( 'border-top-width', ( $attr['secondContentborder']['borderWidth']['Desktop']['top'] . 'px' ) );
+		$css->add_property( 'border-top-width', ( $attributes['secondContentborder']['borderWidth']['Desktop']['top'] . 'px' ) );
 	}
-	if ( isset( $attr['secondContentborder']['borderWidth']['Desktop']['right'] ) ) {
+	if ( isset( $attributes['secondContentborder']['borderWidth']['Desktop']['right'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-second-list' );
-		$css->add_property( 'border-right-width', ( $attr['secondContentborder']['borderWidth']['Desktop']['right'] . 'px' ) );
+		$css->add_property( 'border-right-width', ( $attributes['secondContentborder']['borderWidth']['Desktop']['right'] . 'px' ) );
 	}
-	if ( isset( $attr['secondContentborder']['borderWidth']['Desktop']['bottom'] ) ) {
+	if ( isset( $attributes['secondContentborder']['borderWidth']['Desktop']['bottom'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-second-list' );
-		$css->add_property( 'border-bottom-width', ( $attr['secondContentborder']['borderWidth']['Desktop']['bottom'] . 'px' ) );
+		$css->add_property( 'border-bottom-width', ( $attributes['secondContentborder']['borderWidth']['Desktop']['bottom'] . 'px' ) );
 	}
-	if ( isset( $attr['secondContentborder']['borderWidth']['Desktop']['left'] ) ) {
+	if ( isset( $attributes['secondContentborder']['borderWidth']['Desktop']['left'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-second-list' );
-		$css->add_property( 'border-left-width', ( $attr['secondContentborder']['borderWidth']['Desktop']['left'] . 'px' ) );
+		$css->add_property( 'border-left-width', ( $attributes['secondContentborder']['borderWidth']['Desktop']['left'] . 'px' ) );
 	}
-	if ( isset( $attr['secondContentborder']['borderRadius']['Desktop']['top'] ) ) {
+	if ( isset( $attributes['secondContentborder']['borderRadius']['Desktop']['top'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-second-list' );
-		$css->add_property( 'border-top-left-radius', ( $attr['secondContentborder']['borderRadius']['Desktop']['top'] . 'px' ) );
+		$css->add_property( 'border-top-left-radius', ( $attributes['secondContentborder']['borderRadius']['Desktop']['top'] . 'px' ) );
 	}
-	if ( isset( $attr['secondContentborder']['borderRadius']['Desktop']['right'] ) ) {
+	if ( isset( $attributes['secondContentborder']['borderRadius']['Desktop']['right'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-second-list' );
-		$css->add_property( 'border-top-right-radius', ( $attr['secondContentborder']['borderRadius']['Desktop']['right'] . 'px' ) );
+		$css->add_property( 'border-top-right-radius', ( $attributes['secondContentborder']['borderRadius']['Desktop']['right'] . 'px' ) );
 	}
-	if ( isset( $attr['secondContentborder']['borderRadius']['Desktop']['bottom'] ) ) {
+	if ( isset( $attributes['secondContentborder']['borderRadius']['Desktop']['bottom'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-second-list' );
-		$css->add_property( 'border-bottom-right-radius', ( $attr['secondContentborder']['borderRadius']['Desktop']['bottom'] . 'px' ) );
+		$css->add_property( 'border-bottom-right-radius', ( $attributes['secondContentborder']['borderRadius']['Desktop']['bottom'] . 'px' ) );
 	}
-	if ( isset( $attr['secondContentborder']['borderRadius']['Desktop']['left'] ) ) {
+	if ( isset( $attributes['secondContentborder']['borderRadius']['Desktop']['left'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-second-list' );
-		$css->add_property( 'border-bottom-left-radius', ( $attr['secondContentborder']['borderRadius']['Desktop']['left'] . 'px' ) );
+		$css->add_property( 'border-bottom-left-radius', ( $attributes['secondContentborder']['borderRadius']['Desktop']['left'] . 'px' ) );
 	}
 
 	$css->start_media_query( $media_query['tablet'] );
@@ -418,37 +427,37 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
 		$css->add_property( 'margin-left', ( $attributes['containerMargin']['Tablet']['left'] . ( isset( $attributes['containerMargin']['unit'] ) ? $attributes['containerMargin']['unit'] : 'px' ) . '!important' ) );
 	}
-	if ( isset( $attr['containerborder']['borderWidth']['Tablet']['top'] ) ) {
+	if ( isset( $attributes['containerborder']['borderWidth']['Tablet']['top'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
-		$css->add_property( 'border-top-width', ( $attr['containerborder']['borderWidth']['Tablet']['top'] . 'px' ) );
+		$css->add_property( 'border-top-width', ( $attributes['containerborder']['borderWidth']['Tablet']['top'] . 'px' ) );
 	}
-	if ( isset( $attr['containerborder']['borderWidth']['Tablet']['right'] ) ) {
+	if ( isset( $attributes['containerborder']['borderWidth']['Tablet']['right'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
-		$css->add_property( 'border-right-width', ( $attr['containerborder']['borderWidth']['Tablet']['right'] . 'px' ) );
+		$css->add_property( 'border-right-width', ( $attributes['containerborder']['borderWidth']['Tablet']['right'] . 'px' ) );
 	}
-	if ( isset( $attr['containerborder']['borderWidth']['Tablet']['bottom'] ) ) {
+	if ( isset( $attributes['containerborder']['borderWidth']['Tablet']['bottom'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
-		$css->add_property( 'border-bottom-width', ( $attr['containerborder']['borderWidth']['Tablet']['bottom'] . 'px' ) );
+		$css->add_property( 'border-bottom-width', ( $attributes['containerborder']['borderWidth']['Tablet']['bottom'] . 'px' ) );
 	}
-	if ( isset( $attr['containerborder']['borderWidth']['Tablet']['left'] ) ) {
+	if ( isset( $attributes['containerborder']['borderWidth']['Tablet']['left'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
-		$css->add_property( 'border-left-width', ( $attr['containerborder']['borderWidth']['Tablet']['left'] . 'px' ) );
+		$css->add_property( 'border-left-width', ( $attributes['containerborder']['borderWidth']['Tablet']['left'] . 'px' ) );
 	}
-	if ( isset( $attr['containerborder']['borderRadius']['Tablet']['top'] ) ) {
+	if ( isset( $attributes['containerborder']['borderRadius']['Tablet']['top'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
-		$css->add_property( 'border-top-left-radius', ( $attr['containerborder']['borderRadius']['Tablet']['top'] . 'px' ) );
+		$css->add_property( 'border-top-left-radius', ( $attributes['containerborder']['borderRadius']['Tablet']['top'] . 'px' ) );
 	}
-	if ( isset( $attr['containerborder']['borderRadius']['Tablet']['right'] ) ) {
+	if ( isset( $attributes['containerborder']['borderRadius']['Tablet']['right'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
-		$css->add_property( 'border-top-right-radius', ( $attr['containerborder']['borderRadius']['Tablet']['right'] . 'px' ) );
+		$css->add_property( 'border-top-right-radius', ( $attributes['containerborder']['borderRadius']['Tablet']['right'] . 'px' ) );
 	}
-	if ( isset( $attr['containerborder']['borderRadius']['Tablet']['bottom'] ) ) {
+	if ( isset( $attributes['containerborder']['borderRadius']['Tablet']['bottom'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
-		$css->add_property( 'border-bottom-right-radius', ( $attr['containerborder']['borderRadius']['Tablet']['bottom'] . 'px' ) );
+		$css->add_property( 'border-bottom-right-radius', ( $attributes['containerborder']['borderRadius']['Tablet']['bottom'] . 'px' ) );
 	}
-	if ( isset( $attr['containerborder']['borderRadius']['Tablet']['left'] ) ) {
+	if ( isset( $attributes['containerborder']['borderRadius']['Tablet']['left'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
-		$css->add_property( 'border-bottom-left-radius', ( $attr['containerborder']['borderRadius']['Tablet']['left'] . 'px' ) );
+		$css->add_property( 'border-bottom-left-radius', ( $attributes['containerborder']['borderRadius']['Tablet']['left'] . 'px' ) );
 	}
 
 	//First Label styles
@@ -480,37 +489,37 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-first-label' );
 		$css->add_property( 'margin-bottom', ( $attributes['labelSpacing']['Tablet'] . 'px' ) );
 	}
-	if ( isset( $attr['firstLabelborder']['borderWidth']['Tablet']['top'] ) ) {
+	if ( isset( $attributes['firstLabelborder']['borderWidth']['Tablet']['top'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'border-top-width', ( $attr['firstLabelborder']['borderWidth']['Tablet']['top'] . 'px' ) );
+		$css->add_property( 'border-top-width', ( $attributes['firstLabelborder']['borderWidth']['Tablet']['top'] . 'px' ) );
 	}
-	if ( isset( $attr['firstLabelborder']['borderWidth']['Tablet']['right'] ) ) {
+	if ( isset( $attributes['firstLabelborder']['borderWidth']['Tablet']['right'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'border-right-width', ( $attr['firstLabelborder']['borderWidth']['Tablet']['right'] . 'px' ) );
+		$css->add_property( 'border-right-width', ( $attributes['firstLabelborder']['borderWidth']['Tablet']['right'] . 'px' ) );
 	}
-	if ( isset( $attr['firstLabelborder']['borderWidth']['Tablet']['bottom'] ) ) {
+	if ( isset( $attributes['firstLabelborder']['borderWidth']['Tablet']['bottom'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'border-bottom-width', ( $attr['firstLabelborder']['borderWidth']['Tablet']['bottom'] . 'px' ) );
+		$css->add_property( 'border-bottom-width', ( $attributes['firstLabelborder']['borderWidth']['Tablet']['bottom'] . 'px' ) );
 	}
-	if ( isset( $attr['firstLabelborder']['borderWidth']['Tablet']['left'] ) ) {
+	if ( isset( $attributes['firstLabelborder']['borderWidth']['Tablet']['left'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'border-left-width', ( $attr['firstLabelborder']['borderWidth']['Tablet']['left'] . 'px' ) );
+		$css->add_property( 'border-left-width', ( $attributes['firstLabelborder']['borderWidth']['Tablet']['left'] . 'px' ) );
 	}
-	if ( isset( $attr['firstLabelborder']['borderRadius']['Tablet']['top'] ) ) {
+	if ( isset( $attributes['firstLabelborder']['borderRadius']['Tablet']['top'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'border-top-left-radius', ( $attr['firstLabelborder']['borderRadius']['Tablet']['top'] . 'px' ) );
+		$css->add_property( 'border-top-left-radius', ( $attributes['firstLabelborder']['borderRadius']['Tablet']['top'] . 'px' ) );
 	}
-	if ( isset( $attr['firstLabelborder']['borderRadius']['Tablet']['right'] ) ) {
+	if ( isset( $attributes['firstLabelborder']['borderRadius']['Tablet']['right'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'border-top-right-radius', ( $attr['firstLabelborder']['borderRadius']['Tablet']['right'] . 'px' ) );
+		$css->add_property( 'border-top-right-radius', ( $attributes['firstLabelborder']['borderRadius']['Tablet']['right'] . 'px' ) );
 	}
-	if ( isset( $attr['firstLabelborder']['borderRadius']['Tablet']['bottom'] ) ) {
+	if ( isset( $attributes['firstLabelborder']['borderRadius']['Tablet']['bottom'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'border-bottom-right-radius', ( $attr['firstLabelborder']['borderRadius']['Tablet']['bottom'] . 'px' ) );
+		$css->add_property( 'border-bottom-right-radius', ( $attributes['firstLabelborder']['borderRadius']['Tablet']['bottom'] . 'px' ) );
 	}
-	if ( isset( $attr['firstLabelborder']['borderRadius']['Tablet']['left'] ) ) {
+	if ( isset( $attributes['firstLabelborder']['borderRadius']['Tablet']['left'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'border-bottom-left-radius', ( $attr['firstLabelborder']['borderRadius']['Tablet']['left'] . 'px' ) );
+		$css->add_property( 'border-bottom-left-radius', ( $attributes['firstLabelborder']['borderRadius']['Tablet']['left'] . 'px' ) );
 	}
 
 	//Second Label styles
@@ -542,37 +551,37 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
 		$css->add_property( 'margin-top', ( $attributes['labelSpacing']['Tablet'] . 'px' ) );
 	}
-	if ( isset( $attr['secondLabelborder']['borderWidth']['Tablet']['top'] ) ) {
+	if ( isset( $attributes['secondLabelborder']['borderWidth']['Tablet']['top'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
-		$css->add_property( 'border-top-width', ( $attr['secondLabelborder']['borderWidth']['Tablet']['top'] . 'px' ) );
+		$css->add_property( 'border-top-width', ( $attributes['secondLabelborder']['borderWidth']['Tablet']['top'] . 'px' ) );
 	}
-	if ( isset( $attr['secondLabelborder']['borderWidth']['Tablet']['right'] ) ) {
+	if ( isset( $attributes['secondLabelborder']['borderWidth']['Tablet']['right'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
-		$css->add_property( 'border-right-width', ( $attr['secondLabelborder']['borderWidth']['Tablet']['right'] . 'px' ) );
+		$css->add_property( 'border-right-width', ( $attributes['secondLabelborder']['borderWidth']['Tablet']['right'] . 'px' ) );
 	}
-	if ( isset( $attr['secondLabelborder']['borderWidth']['Tablet']['bottom'] ) ) {
+	if ( isset( $attributes['secondLabelborder']['borderWidth']['Tablet']['bottom'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
-		$css->add_property( 'border-bottom-width', ( $attr['secondLabelborder']['borderWidth']['Tablet']['bottom'] . 'px' ) );
+		$css->add_property( 'border-bottom-width', ( $attributes['secondLabelborder']['borderWidth']['Tablet']['bottom'] . 'px' ) );
 	}
-	if ( isset( $attr['secondLabelborder']['borderWidth']['Tablet']['left'] ) ) {
+	if ( isset( $attributes['secondLabelborder']['borderWidth']['Tablet']['left'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
-		$css->add_property( 'border-left-width', ( $attr['secondLabelborder']['borderWidth']['Tablet']['left'] . 'px' ) );
+		$css->add_property( 'border-left-width', ( $attributes['secondLabelborder']['borderWidth']['Tablet']['left'] . 'px' ) );
 	}
-	if ( isset( $attr['secondLabelborder']['borderRadius']['Tablet']['top'] ) ) {
+	if ( isset( $attributes['secondLabelborder']['borderRadius']['Tablet']['top'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
-		$css->add_property( 'border-top-left-radius', ( $attr['secondLabelborder']['borderRadius']['Tablet']['top'] . 'px' ) );
+		$css->add_property( 'border-top-left-radius', ( $attributes['secondLabelborder']['borderRadius']['Tablet']['top'] . 'px' ) );
 	}
-	if ( isset( $attr['secondLabelborder']['borderRadius']['Tablet']['right'] ) ) {
+	if ( isset( $attributes['secondLabelborder']['borderRadius']['Tablet']['right'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
-		$css->add_property( 'border-top-right-radius', ( $attr['secondLabelborder']['borderRadius']['Tablet']['right'] . 'px' ) );
+		$css->add_property( 'border-top-right-radius', ( $attributes['secondLabelborder']['borderRadius']['Tablet']['right'] . 'px' ) );
 	}
-	if ( isset( $attr['secondLabelborder']['borderRadius']['Tablet']['bottom'] ) ) {
+	if ( isset( $attributes['secondLabelborder']['borderRadius']['Tablet']['bottom'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
-		$css->add_property( 'border-bottom-right-radius', ( $attr['secondLabelborder']['borderRadius']['Tablet']['bottom'] . 'px' ) );
+		$css->add_property( 'border-bottom-right-radius', ( $attributes['secondLabelborder']['borderRadius']['Tablet']['bottom'] . 'px' ) );
 	}
-	if ( isset( $attr['secondLabelborder']['borderRadius']['Tablet']['left'] ) ) {
+	if ( isset( $attributes['secondLabelborder']['borderRadius']['Tablet']['left'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
-		$css->add_property( 'border-bottom-left-radius', ( $attr['secondLabelborder']['borderRadius']['Tablet']['left'] . 'px' ) );
+		$css->add_property( 'border-bottom-left-radius', ( $attributes['secondLabelborder']['borderRadius']['Tablet']['left'] . 'px' ) );
 	}
 
 	//Switch styles
@@ -631,37 +640,37 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-first-list' );
 		$css->add_property( 'padding-left', ( $attributes['contentPadding']['Tablet']['left'] . ( isset( $attributes['contentPadding']['unit'] ) ? $attributes['contentPadding']['unit'] : 'px' ) . '!important' ) );
 	}
-	if ( isset( $attr['firstContentborder']['borderWidth']['Tablet']['top'] ) ) {
+	if ( isset( $attributes['firstContentborder']['borderWidth']['Tablet']['top'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-first-list' );
-		$css->add_property( 'border-top-width', ( $attr['firstContentborder']['borderWidth']['Tablet']['top'] . 'px' ) );
+		$css->add_property( 'border-top-width', ( $attributes['firstContentborder']['borderWidth']['Tablet']['top'] . 'px' ) );
 	}
-	if ( isset( $attr['firstContentborder']['borderWidth']['Tablet']['right'] ) ) {
+	if ( isset( $attributes['firstContentborder']['borderWidth']['Tablet']['right'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-first-list' );
-		$css->add_property( 'border-right-width', ( $attr['firstContentborder']['borderWidth']['Tablet']['right'] . 'px' ) );
+		$css->add_property( 'border-right-width', ( $attributes['firstContentborder']['borderWidth']['Tablet']['right'] . 'px' ) );
 	}
-	if ( isset( $attr['firstContentborder']['borderWidth']['Tablet']['bottom'] ) ) {
+	if ( isset( $attributes['firstContentborder']['borderWidth']['Tablet']['bottom'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-first-list' );
-		$css->add_property( 'border-bottom-width', ( $attr['firstContentborder']['borderWidth']['Tablet']['bottom'] . 'px' ) );
+		$css->add_property( 'border-bottom-width', ( $attributes['firstContentborder']['borderWidth']['Tablet']['bottom'] . 'px' ) );
 	}
-	if ( isset( $attr['firstContentborder']['borderWidth']['Tablet']['left'] ) ) {
+	if ( isset( $attributes['firstContentborder']['borderWidth']['Tablet']['left'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-first-list' );
-		$css->add_property( 'border-left-width', ( $attr['firstContentborder']['borderWidth']['Tablet']['left'] . 'px' ) );
+		$css->add_property( 'border-left-width', ( $attributes['firstContentborder']['borderWidth']['Tablet']['left'] . 'px' ) );
 	}
-	if ( isset( $attr['firstContentborder']['borderRadius']['Tablet']['top'] ) ) {
+	if ( isset( $attributes['firstContentborder']['borderRadius']['Tablet']['top'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-first-list' );
-		$css->add_property( 'border-top-left-radius', ( $attr['firstContentborder']['borderRadius']['Tablet']['top'] . 'px' ) );
+		$css->add_property( 'border-top-left-radius', ( $attributes['firstContentborder']['borderRadius']['Tablet']['top'] . 'px' ) );
 	}
-	if ( isset( $attr['firstContentborder']['borderRadius']['Tablet']['right'] ) ) {
+	if ( isset( $attributes['firstContentborder']['borderRadius']['Tablet']['right'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-first-list' );
-		$css->add_property( 'border-top-right-radius', ( $attr['firstContentborder']['borderRadius']['Tablet']['right'] . 'px' ) );
+		$css->add_property( 'border-top-right-radius', ( $attributes['firstContentborder']['borderRadius']['Tablet']['right'] . 'px' ) );
 	}
-	if ( isset( $attr['firstContentborder']['borderRadius']['Tablet']['bottom'] ) ) {
+	if ( isset( $attributes['firstContentborder']['borderRadius']['Tablet']['bottom'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-first-list' );
-		$css->add_property( 'border-bottom-right-radius', ( $attr['firstContentborder']['borderRadius']['Tablet']['bottom'] . 'px' ) );
+		$css->add_property( 'border-bottom-right-radius', ( $attributes['firstContentborder']['borderRadius']['Tablet']['bottom'] . 'px' ) );
 	}
-	if ( isset( $attr['firstContentborder']['borderRadius']['Tablet']['left'] ) ) {
+	if ( isset( $attributes['firstContentborder']['borderRadius']['Tablet']['left'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-first-list' );
-		$css->add_property( 'border-bottom-left-radius', ( $attr['firstContentborder']['borderRadius']['Tablet']['left'] . 'px' ) );
+		$css->add_property( 'border-bottom-left-radius', ( $attributes['firstContentborder']['borderRadius']['Tablet']['left'] . 'px' ) );
 	}
 
 	//Second Content styles
@@ -689,37 +698,37 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-second-list' );
 		$css->add_property( 'padding-left', ( $attributes['contentPadding']['Tablet']['left'] . ( isset( $attributes['contentPadding']['unit'] ) ? $attributes['contentPadding']['unit'] : 'px' ) . '!important' ) );
 	}
-	if ( isset( $attr['secondContentborder']['borderWidth']['Tablet']['top'] ) ) {
+	if ( isset( $attributes['secondContentborder']['borderWidth']['Tablet']['top'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-second-list' );
-		$css->add_property( 'border-top-width', ( $attr['secondContentborder']['borderWidth']['Tablet']['top'] . 'px' ) );
+		$css->add_property( 'border-top-width', ( $attributes['secondContentborder']['borderWidth']['Tablet']['top'] . 'px' ) );
 	}
-	if ( isset( $attr['secondContentborder']['borderWidth']['Tablet']['right'] ) ) {
+	if ( isset( $attributes['secondContentborder']['borderWidth']['Tablet']['right'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-second-list' );
-		$css->add_property( 'border-right-width', ( $attr['secondContentborder']['borderWidth']['Tablet']['right'] . 'px' ) );
+		$css->add_property( 'border-right-width', ( $attributes['secondContentborder']['borderWidth']['Tablet']['right'] . 'px' ) );
 	}
-	if ( isset( $attr['secondContentborder']['borderWidth']['Tablet']['bottom'] ) ) {
+	if ( isset( $attributes['secondContentborder']['borderWidth']['Tablet']['bottom'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-second-list' );
-		$css->add_property( 'border-bottom-width', ( $attr['secondContentborder']['borderWidth']['Tablet']['bottom'] . 'px' ) );
+		$css->add_property( 'border-bottom-width', ( $attributes['secondContentborder']['borderWidth']['Tablet']['bottom'] . 'px' ) );
 	}
-	if ( isset( $attr['secondContentborder']['borderWidth']['Tablet']['left'] ) ) {
+	if ( isset( $attributes['secondContentborder']['borderWidth']['Tablet']['left'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-second-list' );
-		$css->add_property( 'border-left-width', ( $attr['secondContentborder']['borderWidth']['Tablet']['left'] . 'px' ) );
+		$css->add_property( 'border-left-width', ( $attributes['secondContentborder']['borderWidth']['Tablet']['left'] . 'px' ) );
 	}
-	if ( isset( $attr['secondContentborder']['borderRadius']['Tablet']['top'] ) ) {
+	if ( isset( $attributes['secondContentborder']['borderRadius']['Tablet']['top'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-second-list' );
-		$css->add_property( 'border-top-left-radius', ( $attr['secondContentborder']['borderRadius']['Tablet']['top'] . 'px' ) );
+		$css->add_property( 'border-top-left-radius', ( $attributes['secondContentborder']['borderRadius']['Tablet']['top'] . 'px' ) );
 	}
-	if ( isset( $attr['secondContentborder']['borderRadius']['Tablet']['right'] ) ) {
+	if ( isset( $attributes['secondContentborder']['borderRadius']['Tablet']['right'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-second-list' );
-		$css->add_property( 'border-top-right-radius', ( $attr['secondContentborder']['borderRadius']['Tablet']['right'] . 'px' ) );
+		$css->add_property( 'border-top-right-radius', ( $attributes['secondContentborder']['borderRadius']['Tablet']['right'] . 'px' ) );
 	}
-	if ( isset( $attr['secondContentborder']['borderRadius']['Tablet']['bottom'] ) ) {
+	if ( isset( $attributes['secondContentborder']['borderRadius']['Tablet']['bottom'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-second-list' );
-		$css->add_property( 'border-bottom-right-radius', ( $attr['secondContentborder']['borderRadius']['Tablet']['bottom'] . 'px' ) );
+		$css->add_property( 'border-bottom-right-radius', ( $attributes['secondContentborder']['borderRadius']['Tablet']['bottom'] . 'px' ) );
 	}
-	if ( isset( $attr['secondContentborder']['borderRadius']['Tablet']['left'] ) ) {
+	if ( isset( $attributes['secondContentborder']['borderRadius']['Tablet']['left'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-second-list' );
-		$css->add_property( 'border-bottom-left-radius', ( $attr['secondContentborder']['borderRadius']['Tablet']['left'] . 'px' ) );
+		$css->add_property( 'border-bottom-left-radius', ( $attributes['secondContentborder']['borderRadius']['Tablet']['left'] . 'px' ) );
 	}
 
 	$css->stop_media_query();
@@ -759,37 +768,37 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
 		$css->add_property( 'margin-left', ( $attributes['containerMargin']['Mobile']['left'] . ( isset( $attributes['containerMargin']['unit'] ) ? $attributes['containerMargin']['unit'] : 'px' ) . '!important' ) );
 	}
-	if ( isset( $attr['containerborder']['borderWidth']['Mobile']['top'] ) ) {
+	if ( isset( $attributes['containerborder']['borderWidth']['Mobile']['top'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
-		$css->add_property( 'border-top-width', ( $attr['containerborder']['borderWidth']['Mobile']['top'] . 'px' ) );
+		$css->add_property( 'border-top-width', ( $attributes['containerborder']['borderWidth']['Mobile']['top'] . 'px' ) );
 	}
-	if ( isset( $attr['containerborder']['borderWidth']['Mobile']['right'] ) ) {
+	if ( isset( $attributes['containerborder']['borderWidth']['Mobile']['right'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
-		$css->add_property( 'border-right-width', ( $attr['containerborder']['borderWidth']['Mobile']['right'] . 'px' ) );
+		$css->add_property( 'border-right-width', ( $attributes['containerborder']['borderWidth']['Mobile']['right'] . 'px' ) );
 	}
-	if ( isset( $attr['containerborder']['borderWidth']['Mobile']['bottom'] ) ) {
+	if ( isset( $attributes['containerborder']['borderWidth']['Mobile']['bottom'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
-		$css->add_property( 'border-bottom-width', ( $attr['containerborder']['borderWidth']['Mobile']['bottom'] . 'px' ) );
+		$css->add_property( 'border-bottom-width', ( $attributes['containerborder']['borderWidth']['Mobile']['bottom'] . 'px' ) );
 	}
-	if ( isset( $attr['containerborder']['borderWidth']['Mobile']['left'] ) ) {
+	if ( isset( $attributes['containerborder']['borderWidth']['Mobile']['left'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
-		$css->add_property( 'border-left-width', ( $attr['containerborder']['borderWidth']['Mobile']['left'] . 'px' ) );
+		$css->add_property( 'border-left-width', ( $attributes['containerborder']['borderWidth']['Mobile']['left'] . 'px' ) );
 	}
-	if ( isset( $attr['containerborder']['borderRadius']['Mobile']['top'] ) ) {
+	if ( isset( $attributes['containerborder']['borderRadius']['Mobile']['top'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
-		$css->add_property( 'border-top-left-radius', ( $attr['containerborder']['borderRadius']['Mobile']['top'] . 'px' ) );
+		$css->add_property( 'border-top-left-radius', ( $attributes['containerborder']['borderRadius']['Mobile']['top'] . 'px' ) );
 	}
-	if ( isset( $attr['containerborder']['borderRadius']['Mobile']['right'] ) ) {
+	if ( isset( $attributes['containerborder']['borderRadius']['Mobile']['right'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
-		$css->add_property( 'border-top-right-radius', ( $attr['containerborder']['borderRadius']['Mobile']['right'] . 'px' ) );
+		$css->add_property( 'border-top-right-radius', ( $attributes['containerborder']['borderRadius']['Mobile']['right'] . 'px' ) );
 	}
-	if ( isset( $attr['containerborder']['borderRadius']['Mobile']['bottom'] ) ) {
+	if ( isset( $attributes['containerborder']['borderRadius']['Mobile']['bottom'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
-		$css->add_property( 'border-bottom-right-radius', ( $attr['containerborder']['borderRadius']['Mobile']['bottom'] . 'px' ) );
+		$css->add_property( 'border-bottom-right-radius', ( $attributes['containerborder']['borderRadius']['Mobile']['bottom'] . 'px' ) );
 	}
-	if ( isset( $attr['containerborder']['borderRadius']['Mobile']['left'] ) ) {
+	if ( isset( $attributes['containerborder']['borderRadius']['Mobile']['left'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher');
-		$css->add_property( 'border-bottom-left-radius', ( $attr['containerborder']['borderRadius']['Mobile']['left'] . 'px' ) );
+		$css->add_property( 'border-bottom-left-radius', ( $attributes['containerborder']['borderRadius']['Mobile']['left'] . 'px' ) );
 	}
 
 	//First Label styles
@@ -821,37 +830,37 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-first-label' );
 		$css->add_property( 'margin-bottom', ( $attributes['labelSpacing']['Mobile'] . 'px' ) );
 	}
-	if ( isset( $attr['firstLabelborder']['borderWidth']['Mobile']['top'] ) ) {
+	if ( isset( $attributes['firstLabelborder']['borderWidth']['Mobile']['top'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'border-top-width', ( $attr['firstLabelborder']['borderWidth']['Mobile']['top'] . 'px' ) );
+		$css->add_property( 'border-top-width', ( $attributes['firstLabelborder']['borderWidth']['Mobile']['top'] . 'px' ) );
 	}
-	if ( isset( $attr['firstLabelborder']['borderWidth']['Mobile']['right'] ) ) {
+	if ( isset( $attributes['firstLabelborder']['borderWidth']['Mobile']['right'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'border-right-width', ( $attr['firstLabelborder']['borderWidth']['Mobile']['right'] . 'px' ) );
+		$css->add_property( 'border-right-width', ( $attributes['firstLabelborder']['borderWidth']['Mobile']['right'] . 'px' ) );
 	}
-	if ( isset( $attr['firstLabelborder']['borderWidth']['Mobile']['bottom'] ) ) {
+	if ( isset( $attributes['firstLabelborder']['borderWidth']['Mobile']['bottom'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'border-bottom-width', ( $attr['firstLabelborder']['borderWidth']['Mobile']['bottom'] . 'px' ) );
+		$css->add_property( 'border-bottom-width', ( $attributes['firstLabelborder']['borderWidth']['Mobile']['bottom'] . 'px' ) );
 	}
-	if ( isset( $attr['firstLabelborder']['borderWidth']['Mobile']['left'] ) ) {
+	if ( isset( $attributes['firstLabelborder']['borderWidth']['Mobile']['left'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'border-left-width', ( $attr['firstLabelborder']['borderWidth']['Mobile']['left'] . 'px' ) );
+		$css->add_property( 'border-left-width', ( $attributes['firstLabelborder']['borderWidth']['Mobile']['left'] . 'px' ) );
 	}
-	if ( isset( $attr['firstLabelborder']['borderRadius']['Mobile']['top'] ) ) {
+	if ( isset( $attributes['firstLabelborder']['borderRadius']['Mobile']['top'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'border-top-left-radius', ( $attr['firstLabelborder']['borderRadius']['Mobile']['top'] . 'px' ) );
+		$css->add_property( 'border-top-left-radius', ( $attributes['firstLabelborder']['borderRadius']['Mobile']['top'] . 'px' ) );
 	}
-	if ( isset( $attr['firstLabelborder']['borderRadius']['Mobile']['right'] ) ) {
+	if ( isset( $attributes['firstLabelborder']['borderRadius']['Mobile']['right'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'border-top-right-radius', ( $attr['firstLabelborder']['borderRadius']['Mobile']['right'] . 'px' ) );
+		$css->add_property( 'border-top-right-radius', ( $attributes['firstLabelborder']['borderRadius']['Mobile']['right'] . 'px' ) );
 	}
-	if ( isset( $attr['firstLabelborder']['borderRadius']['Mobile']['bottom'] ) ) {
+	if ( isset( $attributes['firstLabelborder']['borderRadius']['Mobile']['bottom'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'border-bottom-right-radius', ( $attr['firstLabelborder']['borderRadius']['Mobile']['bottom'] . 'px' ) );
+		$css->add_property( 'border-bottom-right-radius', ( $attributes['firstLabelborder']['borderRadius']['Mobile']['bottom'] . 'px' ) );
 	}
-	if ( isset( $attr['firstLabelborder']['borderRadius']['Mobile']['left'] ) ) {
+	if ( isset( $attributes['firstLabelborder']['borderRadius']['Mobile']['left'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'border-bottom-left-radius', ( $attr['firstLabelborder']['borderRadius']['Mobile']['left'] . 'px' ) );
+		$css->add_property( 'border-bottom-left-radius', ( $attributes['firstLabelborder']['borderRadius']['Mobile']['left'] . 'px' ) );
 	}
 
 	//Second Label styles
@@ -883,37 +892,37 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
 		$css->add_property( 'margin-top', ( $attributes['labelSpacing']['Mobile'] . 'px' ) );
 	}
-	if ( isset( $attr['secondLabelborder']['borderWidth']['Mobile']['top'] ) ) {
+	if ( isset( $attributes['secondLabelborder']['borderWidth']['Mobile']['top'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
-		$css->add_property( 'border-top-width', ( $attr['secondLabelborder']['borderWidth']['Mobile']['top'] . 'px' ) );
+		$css->add_property( 'border-top-width', ( $attributes['secondLabelborder']['borderWidth']['Mobile']['top'] . 'px' ) );
 	}
-	if ( isset( $attr['secondLabelborder']['borderWidth']['Mobile']['right'] ) ) {
+	if ( isset( $attributes['secondLabelborder']['borderWidth']['Mobile']['right'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
-		$css->add_property( 'border-right-width', ( $attr['secondLabelborder']['borderWidth']['Mobile']['right'] . 'px' ) );
+		$css->add_property( 'border-right-width', ( $attributes['secondLabelborder']['borderWidth']['Mobile']['right'] . 'px' ) );
 	}
-	if ( isset( $attr['secondLabelborder']['borderWidth']['Mobile']['bottom'] ) ) {
+	if ( isset( $attributes['secondLabelborder']['borderWidth']['Mobile']['bottom'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
-		$css->add_property( 'border-bottom-width', ( $attr['secondLabelborder']['borderWidth']['Mobile']['bottom'] . 'px' ) );
+		$css->add_property( 'border-bottom-width', ( $attributes['secondLabelborder']['borderWidth']['Mobile']['bottom'] . 'px' ) );
 	}
-	if ( isset( $attr['secondLabelborder']['borderWidth']['Mobile']['left'] ) ) {
+	if ( isset( $attributes['secondLabelborder']['borderWidth']['Mobile']['left'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
-		$css->add_property( 'border-left-width', ( $attr['secondLabelborder']['borderWidth']['Mobile']['left'] . 'px' ) );
+		$css->add_property( 'border-left-width', ( $attributes['secondLabelborder']['borderWidth']['Mobile']['left'] . 'px' ) );
 	}
-	if ( isset( $attr['secondLabelborder']['borderRadius']['Mobile']['top'] ) ) {
+	if ( isset( $attributes['secondLabelborder']['borderRadius']['Mobile']['top'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
-		$css->add_property( 'border-top-left-radius', ( $attr['secondLabelborder']['borderRadius']['Mobile']['top'] . 'px' ) );
+		$css->add_property( 'border-top-left-radius', ( $attributes['secondLabelborder']['borderRadius']['Mobile']['top'] . 'px' ) );
 	}
-	if ( isset( $attr['secondLabelborder']['borderRadius']['Mobile']['right'] ) ) {
+	if ( isset( $attributes['secondLabelborder']['borderRadius']['Mobile']['right'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
-		$css->add_property( 'border-top-right-radius', ( $attr['secondLabelborder']['borderRadius']['Mobile']['right'] . 'px' ) );
+		$css->add_property( 'border-top-right-radius', ( $attributes['secondLabelborder']['borderRadius']['Mobile']['right'] . 'px' ) );
 	}
-	if ( isset( $attr['secondLabelborder']['borderRadius']['Mobile']['bottom'] ) ) {
+	if ( isset( $attributes['secondLabelborder']['borderRadius']['Mobile']['bottom'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
-		$css->add_property( 'border-bottom-right-radius', ( $attr['secondLabelborder']['borderRadius']['Mobile']['bottom'] . 'px' ) );
+		$css->add_property( 'border-bottom-right-radius', ( $attributes['secondLabelborder']['borderRadius']['Mobile']['bottom'] . 'px' ) );
 	}
-	if ( isset( $attr['secondLabelborder']['borderRadius']['Mobile']['left'] ) ) {
+	if ( isset( $attributes['secondLabelborder']['borderRadius']['Mobile']['left'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
-		$css->add_property( 'border-bottom-left-radius', ( $attr['secondLabelborder']['borderRadius']['Mobile']['left'] . 'px' ) );
+		$css->add_property( 'border-bottom-left-radius', ( $attributes['secondLabelborder']['borderRadius']['Mobile']['left'] . 'px' ) );
 	}
 
 	//Switch styles
@@ -972,37 +981,37 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-first-list' );
 		$css->add_property( 'padding-left', ( $attributes['contentPadding']['Mobile']['left'] . ( isset( $attributes['contentPadding']['unit'] ) ? $attributes['contentPadding']['unit'] : 'px' ) . '!important' ) );
 	}
-	if ( isset( $attr['firstContentborder']['borderWidth']['Mobile']['top'] ) ) {
+	if ( isset( $attributes['firstContentborder']['borderWidth']['Mobile']['top'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-first-list' );
-		$css->add_property( 'border-top-width', ( $attr['firstContentborder']['borderWidth']['Mobile']['top'] . 'px' ) );
+		$css->add_property( 'border-top-width', ( $attributes['firstContentborder']['borderWidth']['Mobile']['top'] . 'px' ) );
 	}
-	if ( isset( $attr['firstContentborder']['borderWidth']['Mobile']['right'] ) ) {
+	if ( isset( $attributes['firstContentborder']['borderWidth']['Mobile']['right'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-first-list' );
-		$css->add_property( 'border-right-width', ( $attr['firstContentborder']['borderWidth']['Mobile']['right'] . 'px' ) );
+		$css->add_property( 'border-right-width', ( $attributes['firstContentborder']['borderWidth']['Mobile']['right'] . 'px' ) );
 	}
-	if ( isset( $attr['firstContentborder']['borderWidth']['Mobile']['bottom'] ) ) {
+	if ( isset( $attributes['firstContentborder']['borderWidth']['Mobile']['bottom'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-first-list' );
-		$css->add_property( 'border-bottom-width', ( $attr['firstContentborder']['borderWidth']['Mobile']['bottom'] . 'px' ) );
+		$css->add_property( 'border-bottom-width', ( $attributes['firstContentborder']['borderWidth']['Mobile']['bottom'] . 'px' ) );
 	}
-	if ( isset( $attr['firstContentborder']['borderWidth']['Mobile']['left'] ) ) {
+	if ( isset( $attributes['firstContentborder']['borderWidth']['Mobile']['left'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-first-list' );
-		$css->add_property( 'border-left-width', ( $attr['firstContentborder']['borderWidth']['Mobile']['left'] . 'px' ) );
+		$css->add_property( 'border-left-width', ( $attributes['firstContentborder']['borderWidth']['Mobile']['left'] . 'px' ) );
 	}
-	if ( isset( $attr['firstContentborder']['borderRadius']['Mobile']['top'] ) ) {
+	if ( isset( $attributes['firstContentborder']['borderRadius']['Mobile']['top'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-first-list' );
-		$css->add_property( 'border-top-left-radius', ( $attr['firstContentborder']['borderRadius']['Mobile']['top'] . 'px' ) );
+		$css->add_property( 'border-top-left-radius', ( $attributes['firstContentborder']['borderRadius']['Mobile']['top'] . 'px' ) );
 	}
-	if ( isset( $attr['firstContentborder']['borderRadius']['Mobile']['right'] ) ) {
+	if ( isset( $attributes['firstContentborder']['borderRadius']['Mobile']['right'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-first-list' );
-		$css->add_property( 'border-top-right-radius', ( $attr['firstContentborder']['borderRadius']['Mobile']['right'] . 'px' ) );
+		$css->add_property( 'border-top-right-radius', ( $attributes['firstContentborder']['borderRadius']['Mobile']['right'] . 'px' ) );
 	}
-	if ( isset( $attr['firstContentborder']['borderRadius']['Mobile']['bottom'] ) ) {
+	if ( isset( $attributes['firstContentborder']['borderRadius']['Mobile']['bottom'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-first-list' );
-		$css->add_property( 'border-bottom-right-radius', ( $attr['firstContentborder']['borderRadius']['Mobile']['bottom'] . 'px' ) );
+		$css->add_property( 'border-bottom-right-radius', ( $attributes['firstContentborder']['borderRadius']['Mobile']['bottom'] . 'px' ) );
 	}
-	if ( isset( $attr['firstContentborder']['borderRadius']['Mobile']['left'] ) ) {
+	if ( isset( $attributes['firstContentborder']['borderRadius']['Mobile']['left'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-first-list' );
-		$css->add_property( 'border-bottom-left-radius', ( $attr['firstContentborder']['borderRadius']['Mobile']['left'] . 'px' ) );
+		$css->add_property( 'border-bottom-left-radius', ( $attributes['firstContentborder']['borderRadius']['Mobile']['left'] . 'px' ) );
 	}
 
 	//Second Content styles
@@ -1030,37 +1039,37 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-second-list' );
 		$css->add_property( 'padding-left', ( $attributes['contentPadding']['Mobile']['left'] . ( isset( $attributes['contentPadding']['unit'] ) ? $attributes['contentPadding']['unit'] : 'px' ) . '!important' ) );
 	}
-	if ( isset( $attr['secondContentborder']['borderWidth']['Mobile']['top'] ) ) {
+	if ( isset( $attributes['secondContentborder']['borderWidth']['Mobile']['top'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-second-list' );
-		$css->add_property( 'border-top-width', ( $attr['secondContentborder']['borderWidth']['Mobile']['top'] . 'px' ) );
+		$css->add_property( 'border-top-width', ( $attributes['secondContentborder']['borderWidth']['Mobile']['top'] . 'px' ) );
 	}
-	if ( isset( $attr['secondContentborder']['borderWidth']['Mobile']['right'] ) ) {
+	if ( isset( $attributes['secondContentborder']['borderWidth']['Mobile']['right'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-second-list' );
-		$css->add_property( 'border-right-width', ( $attr['secondContentborder']['borderWidth']['Mobile']['right'] . 'px' ) );
+		$css->add_property( 'border-right-width', ( $attributes['secondContentborder']['borderWidth']['Mobile']['right'] . 'px' ) );
 	}
-	if ( isset( $attr['secondContentborder']['borderWidth']['Mobile']['bottom'] ) ) {
+	if ( isset( $attributes['secondContentborder']['borderWidth']['Mobile']['bottom'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-second-list' );
-		$css->add_property( 'border-bottom-width', ( $attr['secondContentborder']['borderWidth']['Mobile']['bottom'] . 'px' ) );
+		$css->add_property( 'border-bottom-width', ( $attributes['secondContentborder']['borderWidth']['Mobile']['bottom'] . 'px' ) );
 	}
-	if ( isset( $attr['secondContentborder']['borderWidth']['Mobile']['left'] ) ) {
+	if ( isset( $attributes['secondContentborder']['borderWidth']['Mobile']['left'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-second-list' );
-		$css->add_property( 'border-left-width', ( $attr['secondContentborder']['borderWidth']['Mobile']['left'] . 'px' ) );
+		$css->add_property( 'border-left-width', ( $attributes['secondContentborder']['borderWidth']['Mobile']['left'] . 'px' ) );
 	}
-	if ( isset( $attr['secondContentborder']['borderRadius']['Mobile']['top'] ) ) {
+	if ( isset( $attributes['secondContentborder']['borderRadius']['Mobile']['top'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-second-list' );
-		$css->add_property( 'border-top-left-radius', ( $attr['secondContentborder']['borderRadius']['Mobile']['top'] . 'px' ) );
+		$css->add_property( 'border-top-left-radius', ( $attributes['secondContentborder']['borderRadius']['Mobile']['top'] . 'px' ) );
 	}
-	if ( isset( $attr['secondContentborder']['borderRadius']['Mobile']['right'] ) ) {
+	if ( isset( $attributes['secondContentborder']['borderRadius']['Mobile']['right'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-second-list' );
-		$css->add_property( 'border-top-right-radius', ( $attr['secondContentborder']['borderRadius']['Mobile']['right'] . 'px' ) );
+		$css->add_property( 'border-top-right-radius', ( $attributes['secondContentborder']['borderRadius']['Mobile']['right'] . 'px' ) );
 	}
-	if ( isset( $attr['secondContentborder']['borderRadius']['Mobile']['bottom'] ) ) {
+	if ( isset( $attributes['secondContentborder']['borderRadius']['Mobile']['bottom'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-second-list' );
-		$css->add_property( 'border-bottom-right-radius', ( $attr['secondContentborder']['borderRadius']['Mobile']['bottom'] . 'px' ) );
+		$css->add_property( 'border-bottom-right-radius', ( $attributes['secondContentborder']['borderRadius']['Mobile']['bottom'] . 'px' ) );
 	}
-	if ( isset( $attr['secondContentborder']['borderRadius']['Mobile']['left'] ) ) {
+	if ( isset( $attributes['secondContentborder']['borderRadius']['Mobile']['left'] ) ) {
 		$css->set_selector( '#premium-content-switcher-' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-list' . ' > .premium-content-switcher-two-content' . ' > .premium-content-switcher-second-list' );
-		$css->add_property( 'border-bottom-left-radius', ( $attr['secondContentborder']['borderRadius']['Mobile']['left'] . 'px' ) );
+		$css->add_property( 'border-bottom-left-radius', ( $attributes['secondContentborder']['borderRadius']['Mobile']['left'] . 'px' ) );
 	}
 
 	$css->stop_media_query();

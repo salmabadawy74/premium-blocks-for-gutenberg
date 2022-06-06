@@ -19,18 +19,16 @@ export default function save(props) {
         labelTag,
         firstContent,
         secondContent,
-        firstcontentlign,
+        firstcontentalign,
         secondcontentlign,
-        switcherStyles,
-        // backgroundType,
         labelStyles,
         firstContentStyles,
         secondContentStyles,
-        containerStyles,
-        backgroundType,
         effect,
         slide,
         firstLabelborder,
+        switchShadow,
+        containerShadow,
         firstLabelShadow,
         firstLabelBoxShadow,
         firstLabelTypography,
@@ -51,9 +49,40 @@ export default function save(props) {
         hideDesktop,
         hideTablet,
         hideMobile,
-        containerShadow,
-        switchShadow
+        controllerOneBackground,
+        controllerTwoBackground,
+        controller,
+        switcherBackground,
+        containerBackground
     } = attributes
+
+    let btnGradControllerOne, btnGrad2ControllerOne, btnbgControllerOne;
+
+    if (undefined !== controllerOneBackground.backgroundType && 'gradient' === controllerOneBackground.backgroundType) {
+        btnGradControllerOne = ('transparent' === controllerOneBackground.backgroundColor || undefined === controllerOneBackground.backgroundColor ? 'rgba(255,255,255,0)' : controllerOneBackground.backgroundColor);
+        btnGrad2ControllerOne = (undefined !== controllerOneBackground.gradientColorTwo && undefined !== controllerOneBackground.gradientColorTwo && '' !== controllerOneBackground.gradientColorTwo ? controllerOneBackground.gradientColorTwo : '#777');
+        if ('radial' === controllerOneBackground.gradientType) {
+            btnbgControllerOne = `radial-gradient(at ${controllerOneBackground.gradientPosition}, ${btnGradControllerOne} ${controllerOneBackground.gradientLocationOne}%, ${btnGrad2ControllerOne} ${controllerOneBackground.gradientLocationTwo}%)`;
+        } else if ('radial' !== controllerOneBackground.gradientType) {
+            btnbgControllerOne = `linear-gradient(${controllerOneBackground.gradientAngle}deg, ${btnGradControllerOne} ${controllerOneBackground.gradientLocationOne}%, ${btnGrad2ControllerOne} ${controllerOneBackground.gradientLocationTwo}%)`;
+        }
+    } else {
+        btnbgControllerOne = controllerOneBackground.backgroundImageURL ? `url('${controllerOneBackground.backgroundImageURL}')` : ''
+    }
+
+    let btnGradControllerTwo, btnGrad2ControllerTwo, btnbgControllerTwo;
+
+    if (undefined !== controllerTwoBackground.backgroundType && 'gradient' === controllerTwoBackground.backgroundType) {
+        btnGradControllerTwo = ('transparent' === controllerTwoBackground.backgroundColor || undefined === controllerTwoBackground.backgroundColor ? 'rgba(255,255,255,0)' : controllerTwoBackground.backgroundColor);
+        btnGrad2ControllerTwo = (undefined !== controllerTwoBackground.gradientColorTwo && undefined !== controllerTwoBackground.gradientColorTwo && '' !== controllerTwoBackground.gradientColorTwo ? controllerTwoBackground.gradientColorTwo : '#777');
+        if ('radial' === controllerTwoBackground.gradientType) {
+            btnbgControllerTwo = `radial-gradient(at ${controllerTwoBackground.gradientPosition}, ${btnGradControllerTwo} ${controllerTwoBackground.gradientLocationOne}%, ${btnGrad2ControllerTwo} ${controllerTwoBackground.gradientLocationTwo}%)`;
+        } else if ('radial' !== controllerTwoBackground.gradientType) {
+            btnbgControllerTwo = `linear-gradient(${controllerTwoBackground.gradientAngle}deg, ${btnGradControllerTwo} ${controllerTwoBackground.gradientLocationOne}%, ${btnGrad2ControllerTwo} ${controllerTwoBackground.gradientLocationTwo}%)`;
+        }
+    } else {
+        btnbgControllerTwo = controllerTwoBackground.backgroundImageURL ? `url('${controllerTwoBackground.backgroundImageURL}')` : ''
+    }
 
     return (
         <div
@@ -65,14 +94,20 @@ export default function save(props) {
             })}
             id={`premium-content-switcher-${block_id}`}
             style={{
-                textAlign: align,
+                textAlign: align[props.deviceType],
             }}
         >
             <style>
                 {`
                     #premium-content-switcher-${block_id} .premium-content-switcher-toggle-switch-slider:before {
                         box-shadow: ${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position} !important;
-                    }
+                        background-color: ${controller ? (controllerTwoBackground.backgroundType === "solid" ? controllerTwoBackground.backgroundColor : "#6ec1e4") : (controllerOneBackground.backgroundType === "solid" ? controllerOneBackground.backgroundColor : "#6ec1e4")};
+                        background-image: ${controller ? btnbgControllerTwo : btnbgControllerOne};
+                        background-repeat: ${controller ? controllerTwoBackground.backgroundRepeat : controllerOneBackground.backgroundRepeat};
+                        background-position: ${controller ? controllerTwoBackground.backgroundPosition : controllerOneBackground.backgroundPosition};
+                        background-size: ${controller ? controllerTwoBackground.backgroundSize : controllerOneBackground.backgroundSize};
+                        background-attachment: ${controller ? (controllerTwoBackground.fixed ? "fixed" : "unset") : (controllerOneBackground.fixed ? "fixed" : "unset")};
+                     }
                     #premium-content-switcher-${block_id} .premium-content-switcher-toggle-switch-slider {
                         box-shadow: ${switchShadow.horizontal}px ${switchShadow.vertical}px ${switchShadow.blur}px ${switchShadow.color} ${switchShadow.position} !important;
                     }
@@ -81,13 +116,14 @@ export default function save(props) {
 
             <div className={`premium-content-switcher`}
                 style={{
-                    textAlign: align,
-                    backgroundColor: backgroundType === "solid" ? containerStyles.containerBack : "transparent",
-                    // backgroundImage: btnbg,
-                    backgroundRepeat: containerStyles.backgroundRepeat,
-                    backgroundPosition: containerStyles.backgroundPosition,
-                    backgroundSize: containerStyles.backgroundSize,
-                    backgroundAttachment: containerStyles.fixed ? "fixed" : "unset",
+                    ...gradientBackground(containerBackground),
+                    textAlign: align[props.deviceType],
+                    // backgroundColor: backgroundType === "solid" ? containerStyles.containerBack : "transparent",
+                    // // backgroundImage: btnbg,
+                    // backgroundRepeat: containerStyles.backgroundRepeat,
+                    // backgroundPosition: containerStyles.backgroundPosition,
+                    // backgroundSize: containerStyles.backgroundSize,
+                    // backgroundAttachment: containerStyles.fixed ? "fixed" : "unset",
                     borderStyle: containerborder.borderType,
                     borderColor: containerborder.borderColor,
                     boxShadow: `${containerBoxShadow.horizontal || 0}px ${containerBoxShadow.vertical || 0}px ${containerBoxShadow.blur || 0}px ${containerBoxShadow.color} ${containerBoxShadow.position}`
@@ -100,9 +136,9 @@ export default function save(props) {
                 }}>
                 <div className={`premium-content-switcher-toggle-${display}`}
                     style={{
-                        textAlign: align,
-                        justifyContent: align == "right" ? "flex-end" : align == "left" ? 'flex-start' : align,
-                        alignItems: display == "inline" ? "center" : align == "right" ? "flex-end" : align == "left" ? 'flex-start' : align,
+                        textAlign: align[props.deviceType],
+                        justifyContent: align[props.deviceType] == "right" ? "flex-end" : align[props.deviceType] == "left" ? 'flex-start' : align[props.deviceType],
+                        alignItems: display == "inline" ? "center" : align[props.deviceType] == "right" ? "flex-end" : align[props.deviceType] == "left" ? 'flex-start' : align[props.deviceType],
                     }}>
                     {showLabel && (<div className="premium-content-switcher-first-label">
                         <RichText.Content
@@ -114,6 +150,7 @@ export default function save(props) {
                                 ...typographyCss(firstLabelTypography, props.deviceType),
                                 margin: 0,
                                 color: labelStyles.firstLabelColor,
+                                background: labelStyles.firstLabelBGColor,
                                 borderStyle: firstLabelborder.borderType,
                                 borderColor: firstLabelborder.borderColor,
                                 boxShadow: `${firstLabelBoxShadow.horizontal || 0}px ${firstLabelBoxShadow.vertical || 0}px ${firstLabelBoxShadow.blur || 0}px ${firstLabelBoxShadow.color} ${firstLabelBoxShadow.position}`,
@@ -141,7 +178,12 @@ export default function save(props) {
                     >
                         <label className={`premium-content-switcher-toggle-switch-label`}>
                             <input type="checkbox" className={`premium-content-switcher-toggle-switch-input ${block_id}`} />
-                            <span className="premium-content-switcher-toggle-switch-slider round"></span>
+                            <span
+                                className="premium-content-switcher-toggle-switch-slider round"
+                                style={{
+                                    ...gradientBackground(switcherBackground),
+                                }}
+                            ></span>
                         </label>
                     </div>
                     {showLabel && (<div className="premium-content-switcher-second-label">
@@ -154,6 +196,7 @@ export default function save(props) {
                                 ...typographyCss(secondLabelTypography, props.deviceType),
                                 margin: 0,
                                 color: labelStyles.secondLabelColor,
+                                background: labelStyles.secondLabelBGColor,
                                 borderStyle: secondLabelborder.borderType,
                                 borderColor: secondLabelborder.borderColor,
                                 boxShadow: `${secondLabelBoxShadow.horizontal || 0}px ${secondLabelBoxShadow.vertical || 0}px ${secondLabelBoxShadow.blur || 0}px ${secondLabelBoxShadow.color} ${secondLabelBoxShadow.position}`,
@@ -205,8 +248,8 @@ export default function save(props) {
                                 }}
                                 style={{
                                     ...typographyCss(firstContentTypography, props.deviceType),
-                                    textAlign: firstcontentlign,
-                                    justifyContent: firstcontentlign,
+                                    textAlign: firstcontentalign[props.deviceType],
+                                    justifyContent: firstcontentalign[props.deviceType],
                                     color: firstContentStyles.firstContentColor,
                                     // letterSpacing: firstContentStyles.firstContentLetter + "px",
                                     // textTransform: firstContentStyles.firstContentUpper ? "uppercase" : "none",
@@ -240,8 +283,8 @@ export default function save(props) {
                                 }}
                                 style={{
                                     ...typographyCss(secondContentTypography, props.deviceType),
-                                    textAlign: secondcontentlign,
-                                    justifyContent: secondcontentlign,
+                                    textAlign: secondcontentlign[props.deviceType],
+                                    justifyContent: secondcontentlign[props.deviceType],
                                     color: secondContentStyles.secondContentColor,
                                     // letterSpacing: secondContentStyles.secondContentLetter + "px",
                                     // textTransform: secondContentStyles.secondContentUpper ? "uppercase" : "none",

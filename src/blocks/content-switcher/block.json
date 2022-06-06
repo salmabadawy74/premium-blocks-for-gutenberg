@@ -57,31 +57,17 @@
             "type": "string",
             "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
         },
-        "firstcontentlign": {
-            "type": "string",
-            "default": "center"
+        "firstcontentalign": {
+            "type": "object",
+            "default": {
+                "Desktop": "center",
+                "Tablet": "center",
+                "Mobile": "center"
+            }
         },
         "secondcontentlign": {
             "type": "string",
             "default": "center"
-        },
-        "switcherStyles": {
-            "type": "object",
-            "default": {
-                "containerBackState1": "",
-                "backgroundImageIDState1": "",
-                "backgroundImageURLState1": "",
-                "backgroundRepeatState1": "no-reapet",
-                "backgroundPositionState1": "top center",
-                "backgroundSizeState1": "auto",
-                "fixedState1": false,
-                "gradientLocationOneState1": "0",
-                "gradientColorTwoState1": "",
-                "gradientLocationTwoState1": "100",
-                "gradientTypeState1": "linear",
-                "gradientAngleState1": "180",
-                "gradientPositionState1": "center center"
-            }
         },
         "backgroundTypeState2": {
             "type": "string",
@@ -91,7 +77,9 @@
             "type": "object",
             "default": {
                 "firstLabelColor": "rgb(84, 89, 95)",
-                "secondLabelColor": "rgb(84, 89, 95)"
+                "secondLabelColor": "rgb(84, 89, 95)",
+                "firstLabelBGColor": "",
+                "secondLabelBGColor": ""
             }
         },
         "firstContentStyles": {
@@ -107,28 +95,6 @@
                 "secondContentColor": "#54595f",
                 "secondContentBGColor": ""
             }
-        },
-        "containerStyles": {
-            "type": "object",
-            "default": {
-                "containerBack": "",
-                "backgroundImageID": "",
-                "backgroundImageURL": "",
-                "backgroundRepeat": "no-reapet",
-                "backgroundPosition": "top center",
-                "backgroundSize": "auto",
-                "fixed": false,
-                "gradientLocationOne": "0",
-                "gradientColorTwo": "",
-                "gradientLocationTwo": "100",
-                "gradientType": "linear",
-                "gradientAngle": "180",
-                "gradientPosition": "center center"
-            }
-        },
-        "backgroundType": {
-            "type": "string",
-            "default": ""
         },
         "firstStateColor": {
             "type": "string",
@@ -749,6 +715,86 @@
         "hideMobile": {
             "type": "boolean",
             "default": ""
+        },
+        "controllerOneBackground": {
+            "type": "object",
+            "default": {
+                "backgroundType": "",
+                "backgroundColor": "",
+                "backgroundImageID": "",
+                "backgroundImageURL": "",
+                "backgroundPosition": "",
+                "backgroundRepeat": "",
+                "backgroundSize": "",
+                "fixed": false,
+                "gradientLocationOne": "",
+                "gradientColorTwo": "",
+                "gradientLocationTwo": "",
+                "gradientAngle": "",
+                "gradientPosition": "",
+                "gradientType": ""
+            }
+        },
+        "controllerTwoBackground": {
+            "type": "object",
+            "default": {
+                "backgroundType": "",
+                "backgroundColor": "",
+                "backgroundImageID": "",
+                "backgroundImageURL": "",
+                "backgroundPosition": "",
+                "backgroundRepeat": "",
+                "backgroundSize": "",
+                "fixed": false,
+                "gradientLocationOne": "",
+                "gradientColorTwo": "",
+                "gradientLocationTwo": "",
+                "gradientAngle": "",
+                "gradientPosition": "",
+                "gradientType": ""
+            }
+        },
+        "switcherBackground": {
+            "type": "object",
+            "default": {
+                "backgroundType": "",
+                "backgroundColor": "",
+                "backgroundImageID": "",
+                "backgroundImageURL": "",
+                "backgroundPosition": "",
+                "backgroundRepeat": "",
+                "backgroundSize": "",
+                "fixed": false,
+                "gradientLocationOne": "",
+                "gradientColorTwo": "",
+                "gradientLocationTwo": "",
+                "gradientAngle": "",
+                "gradientPosition": "",
+                "gradientType": ""
+            }
+        },
+        "containerBackground": {
+            "type": "object",
+            "default": {
+                "backgroundType": "",
+                "backgroundColor": "",
+                "backgroundImageID": "",
+                "backgroundImageURL": "",
+                "backgroundPosition": "",
+                "backgroundRepeat": "",
+                "backgroundSize": "",
+                "fixed": false,
+                "gradientLocationOne": "",
+                "gradientColorTwo": "",
+                "gradientLocationTwo": "",
+                "gradientAngle": "",
+                "gradientPosition": "",
+                "gradientType": ""
+            }
+        },
+        "controller": {
+            "type": "boolean",
+            "default": false
         }
     }
 }
