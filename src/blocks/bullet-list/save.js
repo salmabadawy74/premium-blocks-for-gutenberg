@@ -26,7 +26,11 @@ export default function save(props) {
         titleFont,
         dividerStyles,
         divider,
-        dividerStyle
+        dividerStyle,
+        titlesTextShadow,
+        boxShadow,
+        hoverBoxShadow,
+        titleTypography
     } = attributes
 
     return (
@@ -50,7 +54,7 @@ export default function save(props) {
                         "}",
                         `#premium-bullet-list-${block_id} .premium-bullet-list__wrapper:hover {`,
                         `background-color: ${generalStyles[0].generalHoverBackgroundColor} !important;`,
-                        `box-shadow: ${generalStyles[0].generalHoverShadowHorizontal}px ${generalStyles[0].generalHoverShadowVertical}px ${generalStyles[0].generalHoverShadowBlur}px ${generalStyles[0].generalHoverShadowColor} ${generalStyles[0].generalHoverShadowPosition} !important;`,
+                        `box-shadow: ${hoverBoxShadow.horizontal}px ${hoverBoxShadow.vertical}px ${hoverBoxShadow.blur}px ${hoverBoxShadow.color} ${hoverBoxShadow.position} !important;`,
                         "}",
                         `#premium-bullet-list-${block_id} .premium-bullet-list-divider-block:not(:last-child)::after {`,
                         `border-top-style: ${dividerStyle};`,
@@ -126,7 +130,7 @@ export default function save(props) {
                                             backgroundColor: generalStyles[0].generalBackgroundColor,
                                             borderStyle: generalBorder && generalBorder.borderType,
                                             borderColor: generalBorder && generalBorder.borderColor,
-                                            boxShadow: `${generalStyles[0].generalShadowHorizontal}px ${generalStyles[0].generalShadowVertical}px ${generalStyles[0].generalShadowBlur}px ${generalStyles[0].generalShadowColor} ${generalStyles[0].generalShadowPosition}`,
+                                            boxShadow: `${boxShadow.horizontal}px ${boxShadow.vertical}px ${boxShadow.blur}px ${boxShadow.color} ${boxShadow.position}`,
                                         }}
                                     >
                                         <div className={`premium-bullet-list__content-wrap premium-bullet-list__content-wrap-${bulletAlign}`} style={{
@@ -149,15 +153,15 @@ export default function save(props) {
                                                     value={repeaterBulletList[index].label}
                                                     className='premium-bullet-list__label'
                                                     style={{
-                                                        fontFamily: titleFont,
-                                                        fontWeight: titleStyles[0].titleWeight,
-                                                        letterSpacing: titleStyles[0].titleLetter + "px",
-                                                        lineHeight: titleStyles[0].titleLine + "px",
-                                                        fontStyle: titleStyles[0].titleStyle,
-                                                        textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
-                                                        fontFamily: titleStyles[0].titleFontFamily,
+                                                        fontStyle: titleTypography.fontStyle,
+                                                        fontFamily: titleTypography.fontFamily,
+                                                        fontWeight: titleTypography.fontWeight,
+                                                        letterSpacing: titleTypography.letterSpacing,
+                                                        textDecoration: titleTypography.textDecoration,
+                                                        textTransform: titleTypography.textTransform,
+                                                        lineHeight: `${titleTypography.lineHeight}px`,
                                                         color: titleStyles[0].titleColor,
-                                                        textShadow: `${titleStyles[0].titleshadowHorizontal}px ${titleStyles[0].titleshadowVertical}px ${titleStyles[0].titleshadowBlur}px ${titleStyles[0].titleshadowColor}`,
+                                                        textShadow: `${titlesTextShadow.titleshadowHorizontal}px ${titlesTextShadow.titleshadowVertical}px ${titlesTextShadow.titleshadowBlur}px ${titlesTextShadow.titleshadowColor}`
                                                     }} />
                                             </div>
                                         </div>
@@ -185,7 +189,7 @@ export default function save(props) {
                                             backgroundColor: generalStyles[0].generalBackgroundColor,
                                             borderStyle: generalBorder && generalBorder.borderType,
                                             borderColor: generalBorder && generalBorder.borderColor,
-                                            boxShadow: `${generalStyles[0].generalShadowHorizontal}px ${generalStyles[0].generalShadowVertical}px ${generalStyles[0].generalShadowBlur}px ${generalStyles[0].generalShadowColor} ${generalStyles[0].generalShadowPosition}`,
+                                            boxShadow: `${boxShadow.horizontal}px ${boxShadow.vertical}px ${boxShadow.blur}px ${boxShadow.color} ${boxShadow.position}`,
                                         }}
                                     >
                                         <a
@@ -221,7 +225,7 @@ export default function save(props) {
                                                             textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
                                                             fontFamily: titleStyles[0].titleFontFamily,
                                                             color: titleStyles[0].titleColor,
-                                                            textShadow: `${titleStyles[0].titleshadowHorizontal}px ${titleStyles[0].titleshadowVertical}px ${titleStyles[0].titleshadowBlur}px ${titleStyles[0].titleshadowColor}`,
+                                                            textShadow: `${titlesTextShadow.titleshadowHorizontal}px ${titlesTextShadow.titleshadowVertical}px ${titlesTextShadow.titleshadowBlur}px ${titlesTextShadow.titleshadowColor}`
                                                         }} />
                                                 </div>
                                             </div>

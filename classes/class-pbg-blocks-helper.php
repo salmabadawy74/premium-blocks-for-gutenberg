@@ -162,7 +162,7 @@ class PBG_Blocks_Helper {
 
 		wp_register_script(
 			'pbg-blocks-js',
-			PREMIUM_BLOCKS_URL . 'assets/js/build.js',
+			PREMIUM_BLOCKS_URL . 'assets/js/build/index.js',
 			array( 'wp-api-fetch', 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'wp-api', 'wp-edit-post' ),
 			PREMIUM_BLOCKS_VERSION,
 			true
@@ -1049,7 +1049,7 @@ class PBG_Blocks_Helper {
 		// Style.
 		if ( isset( $attr['titleTypography'] ) ) {
 			$title_typography = $attr['titleTypography'];
-			$title_size = $title_typography['fontSize'];
+			$title_size       = $title_typography['fontSize'];
 
 			$this->add_gfont(
 				array(
@@ -1059,7 +1059,7 @@ class PBG_Blocks_Helper {
 			);
 
 			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' . ' > .premium-accordion__title' . ' > .premium-accordion__title_text' );
-			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Desktop', $title_size['unit'] )  );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Desktop', $title_size['unit'] ) );
 		}
 
 		if ( isset( $attr['titleSize'] ) && isset( $attr['titleSizeUnit'] ) ) {
@@ -1083,7 +1083,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $attr['titlePaddingL'] . 'px' . '!important' ) );
 		}
 
-		if(isset( $attr['titlePadding'] )){
+		if ( isset( $attr['titlePadding'] ) ) {
 			$title_padding = $attr['titlePadding'];
 			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
 			$css->add_property( 'padding-top', $css->render_color( $title_padding['Desktop']['top'] . $title_padding['unit'] ) );
@@ -1096,7 +1096,7 @@ class PBG_Blocks_Helper {
 			$title_border        = $attr['titleBorder'];
 			$title_border_width  = $attr['titleBorder']['borderWidth'];
 			$title_border_radius = $attr['titleBorder']['borderRadius'];
-	
+
 			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $title_border_width, 'top', 'Desktop', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $title_border_width, 'right', 'Desktop', 'px' ) );
@@ -1111,7 +1111,7 @@ class PBG_Blocks_Helper {
 		// Desc Style
 		if ( isset( $attr['descTypography'] ) ) {
 			$desc_typography = $attr['descTypography'];
-			$desc_size = $desc_typography['fontSize'];
+			$desc_size       = $desc_typography['fontSize'];
 
 			$this->add_gfont(
 				array(
@@ -1121,7 +1121,7 @@ class PBG_Blocks_Helper {
 			);
 
 			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' . ' > .premium-accordion__desc' );
-			$css->add_property( 'font-size', $css->get_responsive_size_value( $desc_size, 'Desktop', $desc_size['unit'] )  );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $desc_size, 'Desktop', $desc_size['unit'] ) );
 		}
 
 		if ( isset( $attr['descSize'] ) && isset( $attr['descSizeUnit'] ) ) {
@@ -1145,7 +1145,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $attr['descPaddingL'] . 'px' . '!important' ) );
 		}
 
-		if(isset( $attr['descPadding'] )){
+		if ( isset( $attr['descPadding'] ) ) {
 			$desc_padding = $attr['descPadding'];
 			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
 			$css->add_property( 'padding-top', $css->render_color( $desc_padding['Desktop']['top'] . $desc_padding['unit'] ) );
@@ -1158,7 +1158,7 @@ class PBG_Blocks_Helper {
 			$desc_border        = $attr['descPadding'];
 			$desc_border_width  = $attr['descPadding']['borderWidth'];
 			$desc_border_radius = $attr['descPadding']['borderRadius'];
-	
+
 			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $desc_border_width, 'top', 'Desktop', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $desc_border_width, 'right', 'Desktop', 'px' ) );
@@ -1174,10 +1174,10 @@ class PBG_Blocks_Helper {
 
 		if ( isset( $attr['titleTypography'] ) ) {
 			$title_typography = $attr['titleTypography'];
-			$title_size = $title_typography['fontSize'];
+			$title_size       = $title_typography['fontSize'];
 
 			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' . ' > .premium-accordion__title' . ' > .premium-accordion__title_text' );
-			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Tablet', $title_size['unit'] )  );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Tablet', $title_size['unit'] ) );
 		}
 
 		if ( isset( $attr['titleSizeTablet'] ) && isset( $attr['descSizeUnit'] ) ) {
@@ -1201,7 +1201,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $attr['titlePaddingLTablet'] . 'px' . '!important' ) );
 		}
 
-		if(isset( $attr['titlePadding'] )){
+		if ( isset( $attr['titlePadding'] ) ) {
 			$title_padding = $attr['titlePadding'];
 			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
 			$css->add_property( 'padding-top', $css->render_color( $title_padding['Tablet']['top'] . $title_padding['unit'] ) );
@@ -1214,7 +1214,7 @@ class PBG_Blocks_Helper {
 			$title_border        = $attr['titleBorder'];
 			$title_border_width  = $attr['titleBorder']['borderWidth'];
 			$title_border_radius = $attr['titleBorder']['borderRadius'];
-	
+
 			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $title_border_width, 'top', 'Tablet', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $title_border_width, 'right', 'Tablet', 'px' ) );
@@ -1229,10 +1229,10 @@ class PBG_Blocks_Helper {
 		// Desc Style
 		if ( isset( $attr['descTypography'] ) ) {
 			$desc_typography = $attr['descTypography'];
-			$desc_size = $desc_typography['fontSize'];
+			$desc_size       = $desc_typography['fontSize'];
 
 			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' . ' > .premium-accordion__desc' );
-			$css->add_property( 'font-size', $css->get_responsive_size_value( $desc_size, 'Tablet', $desc_size['unit'] )  );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $desc_size, 'Tablet', $desc_size['unit'] ) );
 		}
 		if ( isset( $attr['descSizeTablet'] ) && isset( $attr['descSizeUnit'] ) ) {
 			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' . ' > .premium-accordion__desc' );
@@ -1255,7 +1255,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $attr['descPaddingLTablet'] . 'px' . '!important' ) );
 		}
 
-		if(isset( $attr['descPadding'] )){
+		if ( isset( $attr['descPadding'] ) ) {
 			$desc_padding = $attr['descPadding'];
 			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
 			$css->add_property( 'padding-top', $css->render_color( $desc_padding['Tablet']['top'] . $desc_padding['unit'] ) );
@@ -1268,7 +1268,7 @@ class PBG_Blocks_Helper {
 			$desc_border        = $attr['descBorder'];
 			$desc_border_width  = $attr['descBorder']['borderWidth'];
 			$desc_border_radius = $attr['descBorder']['borderRadius'];
-	
+
 			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $desc_border_width, 'top', 'Tablet', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $desc_border_width, 'right', 'Tablet', 'px' ) );
@@ -1284,10 +1284,10 @@ class PBG_Blocks_Helper {
 		$css->start_media_query( $media_query['mobile'] );
 		if ( isset( $attr['titleTypography'] ) ) {
 			$title_typography = $attr['titleTypography'];
-			$title_size = $title_typography['fontSize'];
+			$title_size       = $title_typography['fontSize'];
 
 			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' . ' > .premium-accordion__title' . ' > .premium-accordion__title_text' );
-			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Mobile', $title_size['unit'] )  );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Mobile', $title_size['unit'] ) );
 		}
 		if ( isset( $attr['titleSizeMobile'] ) && isset( $attr['descSizeUnit'] ) ) {
 			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' . ' > .premium-accordion__title' . ' > .premium-accordion__title_text' );
@@ -1311,7 +1311,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $attr['titlePaddingLMobile'] . 'px' . '!important' ) );
 		}
 
-		if(isset( $attr['titlePadding'] )){
+		if ( isset( $attr['titlePadding'] ) ) {
 			$title_padding = $attr['titlePadding'];
 			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
 			$css->add_property( 'padding-top', $css->render_color( $title_padding['Mobile']['top'] . $title_padding['unit'] ) );
@@ -1324,7 +1324,7 @@ class PBG_Blocks_Helper {
 			$title_border        = $attr['titleBorder'];
 			$title_border_width  = $attr['titleBorder']['borderWidth'];
 			$title_border_radius = $attr['titleBorder']['borderRadius'];
-	
+
 			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $title_border_width, 'top', 'Mobile', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $title_border_width, 'right', 'Mobile', 'px' ) );
@@ -1339,10 +1339,10 @@ class PBG_Blocks_Helper {
 		// Desc Style
 		if ( isset( $attr['descTypography'] ) ) {
 			$desc_typography = $attr['descTypography'];
-			$desc_size = $desc_typography['fontSize'];
+			$desc_size       = $desc_typography['fontSize'];
 
 			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' . ' > .premium-accordion__desc' );
-			$css->add_property( 'font-size', $css->get_responsive_size_value( $desc_size, 'Mobile', $desc_size['unit'] )  );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $desc_size, 'Mobile', $desc_size['unit'] ) );
 		}
 		if ( isset( $attr['descSizeMobile'] ) && isset( $attr['descSizeUnit'] ) ) {
 			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' . ' > .premium-accordion__desc' );
@@ -1365,7 +1365,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $attr['descPaddingLMobile'] . 'px' . '!important' ) );
 		}
 
-		if(isset( $attr['descPadding'] )){
+		if ( isset( $attr['descPadding'] ) ) {
 			$desc_padding = $attr['descPadding'];
 			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
 			$css->add_property( 'padding-top', $css->render_color( $desc_padding['Mobile']['top'] . $desc_padding['unit'] ) );
@@ -1378,7 +1378,7 @@ class PBG_Blocks_Helper {
 			$desc_border        = $attr['descBorder'];
 			$desc_border_width  = $attr['descBorder']['borderWidth'];
 			$desc_border_radius = $attr['descBorder']['borderRadius'];
-	
+
 			$css->set_selector( '#' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $desc_border_width, 'top', 'Mobile', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $desc_border_width, 'right', 'Mobile', 'px' ) );
@@ -1456,7 +1456,7 @@ class PBG_Blocks_Helper {
 		// Style.
 		if ( isset( $attr['titleTypography'] ) ) {
 			$title_typography = $attr['titleTypography'];
-			$title_size = $title_typography['fontSize'];
+			$title_size       = $title_typography['fontSize'];
 
 			$this->add_gfont(
 				array(
@@ -1466,7 +1466,7 @@ class PBG_Blocks_Helper {
 			);
 
 			$css->set_selector( '#premium-banner-' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__title_wrap' . ' > .premium-banner__title' );
-			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Desktop', $title_size['unit'] )  );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Desktop', $title_size['unit'] ) );
 		}
 		if ( isset( $attr['titleStyles'] ) ) {
 			if ( isset( $attr['titleStyles'][0]['titleSize'] ) && isset( $attr['titleStyles'][0]['titleSizeUnit'] ) ) {
@@ -1477,7 +1477,7 @@ class PBG_Blocks_Helper {
 		// Desc Style
 		if ( isset( $attr['descTypography'] ) ) {
 			$desc_typography = $attr['descTypography'];
-			$desc_size = $desc_typography['fontSize'];
+			$desc_size       = $desc_typography['fontSize'];
 
 			$this->add_gfont(
 				array(
@@ -1487,7 +1487,7 @@ class PBG_Blocks_Helper {
 			);
 
 			$css->set_selector( '#premium-banner-' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__desc_wrap' . ' > .premium-banner__desc' );
-			$css->add_property( 'font-size', $css->get_responsive_size_value( $desc_size, 'Desktop', $desc_size['unit'] )  );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $desc_size, 'Desktop', $desc_size['unit'] ) );
 		}
 		if ( isset( $attr['descStyles'] ) ) {
 			if ( isset( $attr['descStyles'][0]['descSize'] ) && isset( $attr['descStyles'][0]['descSizeUnit'] ) ) {
@@ -1513,7 +1513,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $attr['paddingL'] . $attr['containerStyles'][0]['paddingU'] ) );
 		}
 
-		if(isset( $attr['padding'] )){
+		if ( isset( $attr['padding'] ) ) {
 			$padding = $attr['padding'];
 			$css->set_selector( '#premium-banner-' . $unique_id );
 			$css->add_property( 'padding-top', $css->render_color( $padding['Desktop']['top'] . $padding['unit'] ) );
@@ -1526,7 +1526,7 @@ class PBG_Blocks_Helper {
 			$border        = $attr['border'];
 			$border_width  = $attr['border']['borderWidth'];
 			$border_radius = $attr['border']['borderRadius'];
-	
+
 			$css->set_selector( '#premium-banner-' . $unique_id . ' > .premium-banner__inner' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $border_width, 'top', 'Desktop', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $border_width, 'right', 'Desktop', 'px' ) );
@@ -1542,10 +1542,10 @@ class PBG_Blocks_Helper {
 
 		if ( isset( $attr['titleTypography'] ) ) {
 			$title_typography = $attr['titleTypography'];
-			$title_size = $title_typography['fontSize'];
+			$title_size       = $title_typography['fontSize'];
 
 			$css->set_selector( '#premium-banner-' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__title_wrap' . ' > .premium-banner__title' );
-			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Tablet', $title_size['unit'] )  );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Tablet', $title_size['unit'] ) );
 		}
 
 		if ( isset( $attr['titleStyles'][0]['titleSizeTablet'] ) ) {
@@ -1555,10 +1555,10 @@ class PBG_Blocks_Helper {
 		// Desc Style
 		if ( isset( $attr['descTypography'] ) ) {
 			$desc_typography = $attr['descTypography'];
-			$desc_size = $desc_typography['fontSize'];
+			$desc_size       = $desc_typography['fontSize'];
 
 			$css->set_selector( '#premium-banner-' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__desc_wrap' . ' > .premium-banner__desc' );
-			$css->add_property( 'font-size', $css->get_responsive_size_value( $desc_size, 'Tablet', $desc_size['unit'] )  );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $desc_size, 'Tablet', $desc_size['unit'] ) );
 		}
 		if ( isset( $attr['descStyles'][0]['descSizeTablet'] ) ) {
 			$css->set_selector( '#premium-banner-' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__desc_wrap' . ' > .premium-banner__desc' );
@@ -1583,7 +1583,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $attr['paddingLTablet'] . $attr['containerStyles'][0]['paddingU'] ) );
 		}
 
-		if(isset( $attr['padding'] )){
+		if ( isset( $attr['padding'] ) ) {
 			$padding = $attr['padding'];
 			$css->set_selector( '#premium-banner-' . $unique_id );
 			$css->add_property( 'padding-top', $css->render_color( $padding['Tablet']['top'] . $padding['unit'] ) );
@@ -1596,7 +1596,7 @@ class PBG_Blocks_Helper {
 			$border        = $attr['border'];
 			$border_width  = $attr['border']['borderWidth'];
 			$border_radius = $attr['border']['borderRadius'];
-	
+
 			$css->set_selector( '#premium-banner-' . $unique_id . ' > .premium-banner__inner' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $border_width, 'top', 'Tablet', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $border_width, 'right', 'Tablet', 'px' ) );
@@ -1612,10 +1612,10 @@ class PBG_Blocks_Helper {
 
 		if ( isset( $attr['titleTypography'] ) ) {
 			$title_typography = $attr['titleTypography'];
-			$title_size = $title_typography['fontSize'];
-			
+			$title_size       = $title_typography['fontSize'];
+
 			$css->set_selector( '#premium-banner-' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__title_wrap' . ' > .premium-banner__title' );
-			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Mobile', $title_size['unit'] )  );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Mobile', $title_size['unit'] ) );
 		}
 
 		$css->start_media_query( $media_query['mobile'] );
@@ -1626,10 +1626,10 @@ class PBG_Blocks_Helper {
 		// Desc Style
 		if ( isset( $attr['descTypography'] ) ) {
 			$desc_typography = $attr['descTypography'];
-			$desc_size = $desc_typography['fontSize'];
+			$desc_size       = $desc_typography['fontSize'];
 
 			$css->set_selector( '#premium-banner-' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__desc_wrap' . ' > .premium-banner__desc' );
-			$css->add_property( 'font-size', $css->get_responsive_size_value( $desc_size, 'Mobile', $desc_size['unit'] )  );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $desc_size, 'Mobile', $desc_size['unit'] ) );
 		}
 		if ( isset( $attr['descStyles'][0]['descSizeMobile'] ) ) {
 			$css->set_selector( '#premium-banner-' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__desc_wrap' . ' > .premium-banner__desc' );
@@ -1653,7 +1653,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $attr['paddingLMobile'] . $attr['containerStyles'][0]['paddingU'] ) );
 		}
 
-		if(isset( $attr['padding'] )){
+		if ( isset( $attr['padding'] ) ) {
 			$padding = $attr['padding'];
 			$css->set_selector( '#premium-banner-' . $unique_id );
 			$css->add_property( 'padding-top', $css->render_color( $padding['Mobile']['top'] . $padding['unit'] ) );
@@ -1666,7 +1666,7 @@ class PBG_Blocks_Helper {
 			$border        = $attr['border'];
 			$border_width  = $attr['border']['borderWidth'];
 			$border_radius = $attr['border']['borderRadius'];
-	
+
 			$css->set_selector( '#premium-banner-' . $unique_id . ' > .premium-banner__inner' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $border_width, 'top', 'Mobile', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $border_width, 'right', 'Mobile', 'px' ) );
@@ -1742,6 +1742,21 @@ class PBG_Blocks_Helper {
 		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
 		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
 		// Title Style
+		if ( isset( $attr['typography'] ) ) {
+			$typography = $attr['typography'];
+			$font_size  = $typography['fontSize'];
+
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $typography['fontFamily'] ) ? $typography['fontFamily'] : '' ),
+					'fontVariant' => ( isset( $typography['fontWeight'] ) ? $typography['fontWeight'] : '' ),
+				)
+			);
+
+			$css->set_selector( '#premium-button-wrap-' . $unique_id . '> .premium-button' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $font_size, 'Desktop', $font_size['unit'] ) );
+		}
+
 		if ( isset( $attr['textStyles'] ) ) {
 			if ( isset( $attr['textStyles'][0]['textSize'] ) || isset( $attr['textStyles'][0]['textSizeUnit'] ) ) {
 				$css->set_selector( '#premium-button-wrap-' . $unique_id . '> .premium-button' );
@@ -1749,11 +1764,21 @@ class PBG_Blocks_Helper {
 			}
 		}
 
+		if ( isset( $attr['padding'] ) ) {
+			$padding = $attr['padding'];
+
+			$css->set_selector( '#premium-button-wrap-' . $unique_id . '> .premium-button' );
+			$css->add_property( 'padding-top', $css->get_responsive_value( $padding, 'top', 'Desktop', $padding['unit'] ) );
+			$css->add_property( 'padding-right', $css->get_responsive_value( $padding, 'right', 'Desktop', $padding['unit'] ) );
+			$css->add_property( 'padding-bottom', $css->get_responsive_value( $padding, 'bottom', 'Desktop', $padding['unit'] ) );
+			$css->add_property( 'padding-left', $css->get_responsive_value( $padding, 'left', 'Desktop', $padding['unit'] ) );
+		}
+
 		if ( isset( $attr['border'] ) ) {
 			$border        = $attr['border'];
 			$border_width  = $attr['border']['borderWidth'];
 			$border_radius = $attr['border']['borderRadius'];
-	
+
 			$css->set_selector( '#premium-button-wrap-' . $unique_id . '> .premium-button' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $border_width, 'top', 'Desktop', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $border_width, 'right', 'Desktop', 'px' ) );
@@ -1766,16 +1791,35 @@ class PBG_Blocks_Helper {
 		}
 
 		$css->start_media_query( $media_query['tablet'] );
+
+		if ( isset( $attr['typography'] ) ) {
+			$typography = $attr['typography'];
+			$font_size  = $typography['fontSize'];
+
+			$css->set_selector( '#premium-button-wrap-' . $unique_id . '> .premium-button' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $font_size, 'Tablet', $font_size['unit'] ) );
+		}
+
 		if ( isset( $attr['textStyles'][0]['textSizeTablet'] ) ) {
 			$css->set_selector( '#premium-button-wrap-' . $unique_id . '> .premium-button' );
 			$css->add_property( 'font-size', $css->render_color( $attr['textStyles'][0]['textSizeTablet'] . $attr['textStyles'][0]['textSizeUnit'] . '!important' ) );
+		}
+
+		if ( isset( $attr['padding'] ) ) {
+			$padding = $attr['padding'];
+
+			$css->set_selector( '#premium-button-wrap-' . $unique_id . '> .premium-button' );
+			$css->add_property( 'padding-top', $css->get_responsive_value( $padding, 'top', 'Tablet', $padding['unit'] ) );
+			$css->add_property( 'padding-right', $css->get_responsive_value( $padding, 'right', 'Tablet', $padding['unit'] ) );
+			$css->add_property( 'padding-bottom', $css->get_responsive_value( $padding, 'bottom', 'Tablet', $padding['unit'] ) );
+			$css->add_property( 'padding-left', $css->get_responsive_value( $padding, 'left', 'Tablet', $padding['unit'] ) );
 		}
 
 		if ( isset( $attr['border'] ) ) {
 			$border        = $attr['border'];
 			$border_width  = $attr['border']['borderWidth'];
 			$border_radius = $attr['border']['borderRadius'];
-	
+
 			$css->set_selector( '#premium-button-wrap-' . $unique_id . '> .premium-button' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $border_width, 'top', 'Tablet', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $border_width, 'right', 'Tablet', 'px' ) );
@@ -1789,17 +1833,36 @@ class PBG_Blocks_Helper {
 
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['mobile'] );
+
+		if ( isset( $attr['typography'] ) ) {
+			$typography = $attr['typography'];
+			$font_size  = $typography['fontSize'];
+
+			$css->set_selector( '#premium-button-wrap-' . $unique_id . '> .premium-button' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $font_size, 'Mobile', $font_size['unit'] ) );
+		}
+
 		if ( isset( $attr['textStyles'][0]['textSizeMobile'] ) ) {
 			$css->set_selector( '#premium-button-wrap-' . $unique_id . '> .premium-button' );
 			$css->add_property( 'font-size', $css->render_color( $attr['textStyles'][0]['textSizeMobile'] . $attr['textStyles'][0]['textSizeUnit'] . '!important' ) );
 
 		}
 
+		if ( isset( $attr['padding'] ) ) {
+			$padding = $attr['padding'];
+
+			$css->set_selector( '#premium-button-wrap-' . $unique_id . '> .premium-button' );
+			$css->add_property( 'padding-top', $css->get_responsive_value( $padding, 'top', 'Mobile', $padding['unit'] ) );
+			$css->add_property( 'padding-right', $css->get_responsive_value( $padding, 'right', 'Mobile', $padding['unit'] ) );
+			$css->add_property( 'padding-bottom', $css->get_responsive_value( $padding, 'bottom', 'Mobile', $padding['unit'] ) );
+			$css->add_property( 'padding-left', $css->get_responsive_value( $padding, 'left', 'Mobile', $padding['unit'] ) );
+		}
+
 		if ( isset( $attr['border'] ) ) {
 			$border        = $attr['border'];
 			$border_width  = $attr['border']['borderWidth'];
 			$border_radius = $attr['border']['borderRadius'];
-	
+
 			$css->set_selector( '#premium-button-wrap-' . $unique_id . '> .premium-button' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $border_width, 'top', 'Mobile', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $border_width, 'right', 'Mobile', 'px' ) );
@@ -1921,7 +1984,39 @@ class PBG_Blocks_Helper {
 		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
 		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
 		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
+
+		// Border.
+		if ( isset( $attr['border'] ) ) {
+			$border        = $attr['border'];
+			$border_width  = $attr['border']['borderWidth'];
+			$border_radius = $attr['border']['borderRadius'];
+
+			$css->set_selector( '#premium-countup-' . $unique_id );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $border_width, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $border_width, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $border_width, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $border_width, 'left', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $border_radius, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $border_radius, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $border_radius, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $border_radius, 'left', 'Desktop', 'px' ) );
+		}
+
 		// Number Style
+		if ( isset( $attr['numberTypography'] ) ) {
+			$number_typography = $attr['numberTypography'];
+			$number_size       = $number_typography['fontSize'];
+
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $number_typography['fontFamily'] ) ? $number_typography['fontFamily'] : '' ),
+					'fontVariant' => ( isset( $number_typography['fontWeight'] ) ? $number_typography['fontWeight'] : '' ),
+				)
+			);
+
+			$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__increment' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $number_size, 'Desktop', $number_size['unit'] ) );
+		}
 		if ( isset( $attr['numberStyles'] ) ) {
 			if ( isset( $attr['numberStyles'][0]['numberSize'] ) && isset( $attr['numberStyles'][0]['numberSizeUnit'] ) ) {
 				$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__increment' );
@@ -1929,6 +2024,20 @@ class PBG_Blocks_Helper {
 			}
 		}
 		// Title Style
+		if ( isset( $attr['titleTypography'] ) ) {
+			$title_typography = $attr['titleTypography'];
+			$title_size       = $title_typography['fontSize'];
+
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $title_typography['fontFamily'] ) ? $title_typography['fontFamily'] : '' ),
+					'fontVariant' => ( isset( $title_typography['fontWeight'] ) ? $title_typography['fontWeight'] : '' ),
+				)
+			);
+
+			$css->set_selector( '#premium-countup-' . $unique_id . ' > .premium-countup__title' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Desktop', $title_size['unit'] ) );
+		}
 		if ( isset( $attr['titleStyles'] ) ) {
 			if ( isset( $attr['titleStyles'][0]['titleSize'] ) && isset( $attr['titleStyles'][0]['titleSizeUnit'] ) ) {
 				$css->set_selector( '#premium-countup-' . $unique_id . ' > .premium-countup__title' );
@@ -1936,6 +2045,20 @@ class PBG_Blocks_Helper {
 			}
 		}
 		// Prefix Style
+		if ( isset( $attr['prefixTypography'] ) ) {
+			$prefix_typography = $attr['prefixTypography'];
+			$prefix_size       = $prefix_typography['fontSize'];
+
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $prefix_typography['fontFamily'] ) ? $prefix_typography['fontFamily'] : '' ),
+					'fontVariant' => ( isset( $prefix_typography['fontWeight'] ) ? $prefix_typography['fontWeight'] : '' ),
+				)
+			);
+
+			$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__prefix' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $prefix_size, 'Desktop', $prefix_size['unit'] ) );
+		}
 		if ( isset( $attr['prefixStyles'] ) ) {
 			if ( isset( $attr['prefixStyles'][0]['prefixSize'] ) && isset( $attr['prefixStyles'][0]['prefixSizeUnit'] ) ) {
 				$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__prefix' );
@@ -1943,6 +2066,20 @@ class PBG_Blocks_Helper {
 			}
 		}
 		// Suffix Style
+		if ( isset( $attr['suffixTypography'] ) ) {
+			$suffix_typography = $attr['suffixTypography'];
+			$suffix_size       = $suffix_typography['fontSize'];
+
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $suffix_typography['fontFamily'] ) ? $suffix_typography['fontFamily'] : '' ),
+					'fontVariant' => ( isset( $suffix_typography['fontWeight'] ) ? $suffix_typography['fontWeight'] : '' ),
+				)
+			);
+
+			$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__suffix' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $suffix_size, 'Desktop', $suffix_size['unit'] ) );
+		}
 		if ( isset( $attr['suffixStyles'] ) ) {
 			if ( isset( $attr['suffixStyles'][0]['suffixSize'] ) && isset( $attr['suffixStyles'][0]['suffixSizeUnit'] ) ) {
 				$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__suffix' );
@@ -1967,7 +2104,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', ( $attr['paddingL'] . $attr['containerStyles'][0]['paddingU'] ) );
 		}
 
-		if(isset( $attr['padding'] )){
+		if ( isset( $attr['padding'] ) ) {
 			$padding = $attr['padding'];
 			$css->set_selector( '#premium-countup-' . $unique_id );
 			$css->add_property( 'padding-top', $css->render_color( $padding['Desktop']['top'] . $padding['unit'] ) );
@@ -1977,7 +2114,31 @@ class PBG_Blocks_Helper {
 		}
 
 		$css->start_media_query( $media_query['tablet'] );
+		// Border.
+		if ( isset( $attr['border'] ) ) {
+			$border        = $attr['border'];
+			$border_width  = $attr['border']['borderWidth'];
+			$border_radius = $attr['border']['borderRadius'];
+
+			$css->set_selector( '#premium-countup-' . $unique_id );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $border_width, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $border_width, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $border_width, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $border_width, 'left', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $border_radius, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $border_radius, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $border_radius, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $border_radius, 'left', 'Tablet', 'px' ) );
+		}
+
 		// Number Style Tablet
+		if ( isset( $attr['numberTypography'] ) ) {
+			$number_typography = $attr['numberTypography'];
+			$number_size       = $number_typography['fontSize'];
+
+			$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__increment' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $number_size, 'Tablet', $number_size['unit'] ) );
+		}
 		if ( isset( $attr['numberStyles'] ) ) {
 			if ( isset( $attr['numberStyles'][0]['numberSizeTablet'] ) && isset( $attr['numberStyles'][0]['numberSizeUnit'] ) ) {
 				$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__increment' );
@@ -1985,6 +2146,13 @@ class PBG_Blocks_Helper {
 			}
 		}
 		// Title Style Tablet
+		if ( isset( $attr['titleTypography'] ) ) {
+			$title_typography = $attr['titleTypography'];
+			$title_size       = $title_typography['fontSize'];
+
+			$css->set_selector( '#premium-countup-' . $unique_id . ' > .premium-countup__title' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Tablet', $title_size['unit'] ) );
+		}
 		if ( isset( $attr['titleStyles'] ) ) {
 			if ( isset( $attr['titleStyles'][0]['titleSizeTablet'] ) && isset( $attr['titleStyles'][0]['titleSizeUnit'] ) ) {
 				$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__title' );
@@ -1992,6 +2160,13 @@ class PBG_Blocks_Helper {
 			}
 		}
 		// Prefix Style Tablet
+		if ( isset( $attr['prefixTypography'] ) ) {
+			$prefix_typography = $attr['prefixTypography'];
+			$prefix_size       = $prefix_typography['fontSize'];
+
+			$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__prefix' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $prefix_size, 'Tablet', $prefix_size['unit'] ) );
+		}
 		if ( isset( $attr['prefixStyles'] ) ) {
 			if ( isset( $attr['prefixStyles'][0]['prefixSizeTablet'] ) && isset( $attr['prefixStyles'][0]['prefixSizeUnit'] ) ) {
 				$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__prefix' );
@@ -1999,6 +2174,13 @@ class PBG_Blocks_Helper {
 			}
 		}
 		// Suffix Style Tablet
+		if ( isset( $attr['suffixTypography'] ) ) {
+			$suffix_typography = $attr['suffixTypography'];
+			$suffix_size       = $suffix_typography['fontSize'];
+
+			$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__suffix' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $suffix_size, 'Tablet', $suffix_size['unit'] ) );
+		}
 		if ( isset( $attr['suffixStyles'] ) ) {
 			if ( isset( $attr['suffixStyles'][0]['suffixSizeTablet'] ) && isset( $attr['suffixStyles'][0]['suffixSizeUnit'] ) ) {
 				$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__suffix' );
@@ -2023,7 +2205,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', ( $attr['paddingLTablet'] . $attr['containerStyles'][0]['paddingU'] ) );
 		}
 
-		if(isset( $attr['padding'] )){
+		if ( isset( $attr['padding'] ) ) {
 			$padding = $attr['padding'];
 			$css->set_selector( '#premium-countup-' . $unique_id );
 			$css->add_property( 'padding-top', $css->render_color( $padding['Tablet']['top'] . $padding['unit'] ) );
@@ -2034,7 +2216,31 @@ class PBG_Blocks_Helper {
 
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['mobile'] );
+		// Border.
+		if ( isset( $attr['border'] ) ) {
+			$border        = $attr['border'];
+			$border_width  = $attr['border']['borderWidth'];
+			$border_radius = $attr['border']['borderRadius'];
+
+			$css->set_selector( '#premium-countup-' . $unique_id );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $border_width, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $border_width, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $border_width, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $border_width, 'left', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $border_radius, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $border_radius, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $border_radius, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $border_radius, 'left', 'Mobile', 'px' ) );
+		}
+
 		// Number Style Mobile
+		if ( isset( $attr['numberTypography'] ) ) {
+			$number_typography = $attr['numberTypography'];
+			$number_size       = $number_typography['fontSize'];
+
+			$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__increment' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $number_size, 'Mobile', $number_size['unit'] ) );
+		}
 		if ( isset( $attr['numberStyles'] ) ) {
 			if ( isset( $attr['numberStyles'][0]['numberSizeMobile'] ) && isset( $attr['numberStyles'][0]['numberSizeUnit'] ) ) {
 				$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__increment' );
@@ -2042,6 +2248,13 @@ class PBG_Blocks_Helper {
 			}
 		}
 		// Title Style Mobile
+		if ( isset( $attr['titleTypography'] ) ) {
+			$title_typography = $attr['titleTypography'];
+			$title_size       = $title_typography['fontSize'];
+
+			$css->set_selector( '#premium-countup-' . $unique_id . ' > .premium-countup__title' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Mobile', $title_size['unit'] ) );
+		}
 		if ( isset( $attr['titleStyles'] ) ) {
 			if ( isset( $attr['titleStyles'][0]['titleSizeMobile'] ) && isset( $attr['titleStyles'][0]['titleSizeUnit'] ) ) {
 				$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__title' );
@@ -2049,6 +2262,13 @@ class PBG_Blocks_Helper {
 			}
 		}
 		// Prefix Style Mobile
+		if ( isset( $attr['prefixTypography'] ) ) {
+			$prefix_typography = $attr['prefixTypography'];
+			$prefix_size       = $prefix_typography['fontSize'];
+
+			$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__prefix' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $prefix_size, 'Mobile', $prefix_size['unit'] ) );
+		}
 		if ( isset( $attr['prefixStyles'] ) ) {
 			if ( isset( $attr['prefixStyles'][0]['prefixSizeMobile'] ) && isset( $attr['prefixStyles'][0]['prefixSizeUnit'] ) ) {
 				$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__prefix' );
@@ -2056,6 +2276,13 @@ class PBG_Blocks_Helper {
 			}
 		}
 		// Suffix Style Mobile
+		if ( isset( $attr['suffixTypography'] ) ) {
+			$suffix_typography = $attr['suffixTypography'];
+			$suffix_size       = $suffix_typography['fontSize'];
+
+			$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__suffix' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $suffix_size, 'Mobile', $suffix_size['unit'] ) );
+		}
 		if ( isset( $attr['suffixStyles'] ) ) {
 			if ( isset( $attr['suffixStyles'][0]['suffixSizeMobile'] ) && isset( $attr['suffixStyles'][0]['suffixSizeUnit'] ) ) {
 				$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__suffix' );
@@ -2080,7 +2307,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', ( $attr['paddingLMobile'] . $attr['containerStyles'][0]['paddingU'] ) );
 		}
 
-		if(isset( $attr['padding'] )){
+		if ( isset( $attr['padding'] ) ) {
 			$padding = $attr['padding'];
 			$css->set_selector( '#premium-countup-' . $unique_id );
 			$css->add_property( 'padding-top', $css->render_color( $padding['Mobile']['top'] . $padding['unit'] ) );
@@ -2165,7 +2392,7 @@ class PBG_Blocks_Helper {
 			$container_border        = $attr['containerBorder'];
 			$container_border_width  = $attr['containerBorder']['borderWidth'];
 			$container_border_radius = $attr['containerBorder']['borderRadius'];
-	
+
 			$css->set_selector( '#premium-dheading-block-' . $unique_id );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $container_border_width, 'top', 'Desktop', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $container_border_width, 'right', 'Desktop', 'px' ) );
@@ -2189,8 +2416,8 @@ class PBG_Blocks_Helper {
 			$first_border        = $attr['firstBorder'];
 			$first_border_width  = $attr['firstBorder']['borderWidth'];
 			$first_border_radius = $attr['firstBorder']['borderRadius'];
-	
-			$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first'  );
+
+			$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $first_border_width, 'top', 'Desktop', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $first_border_width, 'right', 'Desktop', 'px' ) );
 			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $first_border_width, 'bottom', 'Desktop', 'px' ) );
@@ -2213,8 +2440,8 @@ class PBG_Blocks_Helper {
 			$second_border        = $attr['secondBorder'];
 			$second_border_width  = $attr['secondBorder']['borderWidth'];
 			$second_border_radius = $attr['secondBorder']['borderRadius'];
-	
-			$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second'  );
+
+			$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $second_border_width, 'top', 'Desktop', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $second_border_width, 'right', 'Desktop', 'px' ) );
 			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $second_border_width, 'bottom', 'Desktop', 'px' ) );
@@ -2231,7 +2458,7 @@ class PBG_Blocks_Helper {
 			$container_border        = $attr['containerBorder'];
 			$container_border_width  = $attr['containerBorder']['borderWidth'];
 			$container_border_radius = $attr['containerBorder']['borderRadius'];
-	
+
 			$css->set_selector( '#premium-dheading-block-' . $unique_id );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $container_border_width, 'top', 'Tablet', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $container_border_width, 'right', 'Tablet', 'px' ) );
@@ -2255,8 +2482,8 @@ class PBG_Blocks_Helper {
 			$first_border        = $attr['firstBorder'];
 			$first_border_width  = $attr['firstBorder']['borderWidth'];
 			$first_border_radius = $attr['firstBorder']['borderRadius'];
-	
-			$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first'  );
+
+			$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $first_border_width, 'top', 'Tablet', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $first_border_width, 'right', 'Tablet', 'px' ) );
 			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $first_border_width, 'bottom', 'Tablet', 'px' ) );
@@ -2279,8 +2506,8 @@ class PBG_Blocks_Helper {
 			$second_border        = $attr['secondBorder'];
 			$second_border_width  = $attr['secondBorder']['borderWidth'];
 			$second_border_radius = $attr['secondBorder']['borderRadius'];
-	
-			$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second'  );
+
+			$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $second_border_width, 'top', 'Tablet', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $second_border_width, 'right', 'Tablet', 'px' ) );
 			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $second_border_width, 'bottom', 'Tablet', 'px' ) );
@@ -2298,7 +2525,7 @@ class PBG_Blocks_Helper {
 			$container_border        = $attr['containerBorder'];
 			$container_border_width  = $attr['containerBorder']['borderWidth'];
 			$container_border_radius = $attr['containerBorder']['borderRadius'];
-	
+
 			$css->set_selector( '#premium-dheading-block-' . $unique_id );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $container_border_width, 'top', 'Mobile', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $container_border_width, 'right', 'Mobile', 'px' ) );
@@ -2322,8 +2549,8 @@ class PBG_Blocks_Helper {
 			$first_border        = $attr['firstBorder'];
 			$first_border_width  = $attr['firstBorder']['borderWidth'];
 			$first_border_radius = $attr['firstBorder']['borderRadius'];
-	
-			$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first'  );
+
+			$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $first_border_width, 'top', 'Mobile', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $first_border_width, 'right', 'Mobile', 'px' ) );
 			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $first_border_width, 'bottom', 'Mobile', 'px' ) );
@@ -2346,8 +2573,8 @@ class PBG_Blocks_Helper {
 			$second_border        = $attr['secondBorder'];
 			$second_border_width  = $attr['secondBorder']['borderWidth'];
 			$second_border_radius = $attr['secondBorder']['borderRadius'];
-	
-			$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second'  );
+
+			$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $second_border_width, 'top', 'Mobile', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $second_border_width, 'right', 'Mobile', 'px' ) );
 			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $second_border_width, 'bottom', 'Mobile', 'px' ) );
@@ -3262,7 +3489,7 @@ class PBG_Blocks_Helper {
 			$border        = $attr['border'];
 			$border_width  = $attr['border']['borderWidth'];
 			$border_radius = $attr['border']['borderRadius'];
-	
+
 			$css->set_selector( '.premium-container' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $border_width, 'top', 'Desktop', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $border_width, 'right', 'Desktop', 'px' ) );
@@ -3312,7 +3539,7 @@ class PBG_Blocks_Helper {
 			$border        = $attr['border'];
 			$border_width  = $attr['border']['borderWidth'];
 			$border_radius = $attr['border']['borderRadius'];
-	
+
 			$css->set_selector( '.premium-container' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $border_width, 'top', 'Tablet', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $border_width, 'right', 'Tablet', 'px' ) );
@@ -3363,7 +3590,7 @@ class PBG_Blocks_Helper {
 			$border        = $attr['border'];
 			$border_width  = $attr['border']['borderWidth'];
 			$border_radius = $attr['border']['borderRadius'];
-	
+
 			$css->set_selector( '.premium-container' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $border_width, 'top', 'Mobile', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $border_width, 'right', 'Mobile', 'px' ) );
@@ -3727,13 +3954,13 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['iconSize'] ) ) {
 			$icon_size = $attr['iconSize'];
 			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header h3 i' );
-			$css->add_property( 'font-size',$css->get_responsive_size_value( $icon_size, 'Desktop', $icon_size['unit'] ) );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $icon_size, 'Desktop', $icon_size['unit'] ) );
 			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header h3 img' );
-			$css->add_property( 'width',$css->get_responsive_size_value( $icon_size, 'Desktop', $icon_size['unit'] ) );
-			$css->add_property( 'height',$css->get_responsive_size_value( $icon_size, 'Desktop', $icon_size['unit'] ) );
+			$css->add_property( 'width', $css->get_responsive_size_value( $icon_size, 'Desktop', $icon_size['unit'] ) );
+			$css->add_property( 'height', $css->get_responsive_size_value( $icon_size, 'Desktop', $icon_size['unit'] ) );
 			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header h3 .premium-lottie-animation' );
-			$css->add_property( 'width',$css->get_responsive_size_value( $icon_size, 'Desktop', $icon_size['unit'] ) );
-			$css->add_property( 'height',$css->get_responsive_size_value( $icon_size, 'Desktop', $icon_size['unit'] ) );
+			$css->add_property( 'width', $css->get_responsive_size_value( $icon_size, 'Desktop', $icon_size['unit'] ) );
+			$css->add_property( 'height', $css->get_responsive_size_value( $icon_size, 'Desktop', $icon_size['unit'] ) );
 		}
 
 		// Trigger Sizr for Image/Lottie
@@ -3770,7 +3997,7 @@ class PBG_Blocks_Helper {
 
 		if ( isset( $attr['triggerTypography'] ) ) {
 			$trigger_typography = $attr['triggerTypography'];
-			$trigger_size = $trigger_typography['fontSize'];
+			$trigger_size       = $trigger_typography['fontSize'];
 
 			$this->add_gfont(
 				array(
@@ -3802,7 +4029,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', ( $attr['triggerPaddingL'] . 'px' ) );
 		}
 
-		if(isset( $attr['triggerPadding'] )){
+		if ( isset( $attr['triggerPadding'] ) ) {
 			$trigger_padding = $attr['triggerPadding'];
 			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > button' );
 			$css->add_property( 'padding-top', $css->render_color( $trigger_padding['Desktop']['top'] . $trigger_padding['unit'] ) );
@@ -3811,12 +4038,12 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $trigger_padding['Desktop']['left'] . $trigger_padding['unit'] ) );
 		}
 
-		if(isset( $attr['triggerBorder'] )){
+		if ( isset( $attr['triggerBorder'] ) ) {
 			$trigger_border        = $attr['triggerBorder'];
 			$trigger_border_width  = $attr['triggerBorder']['borderWidth'];
 			$trigger_border_radius = $attr['triggerBorder']['borderRadius'];
 
-			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > button, #premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > img, #premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > .premium-modal-trigger-text'  );
+			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > button, #premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > img, #premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > .premium-modal-trigger-text' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $trigger_border_width, 'top', 'Desktop', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $trigger_border_width, 'right', 'Desktop', 'px' ) );
 			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $trigger_border_width, 'bottom', 'Desktop', 'px' ) );
@@ -3827,7 +4054,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $trigger_border_radius, 'left', 'Desktop', 'px' ) );
 		}
 
-		if(isset( $attr['triggerBorderH'] )){
+		if ( isset( $attr['triggerBorderH'] ) ) {
 			$trigger_border_h        = $attr['triggerBorderH'];
 			$trigger_border_h_width  = $attr['triggerBorderH']['borderWidth'];
 			$trigger_border_h_radius = $attr['triggerBorderH']['borderRadius'];
@@ -3853,7 +4080,7 @@ class PBG_Blocks_Helper {
 
 		if ( isset( $attr['headerTypography'] ) ) {
 			$header_typography = $attr['headerTypography'];
-			$header_size = $header_typography['fontSize'];
+			$header_size       = $header_typography['fontSize'];
 
 			$this->add_gfont(
 				array(
@@ -3866,7 +4093,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $header_size, 'Desktop', $header_size['unit'] ) );
 		}
 
-		if(isset( $attr['headerBorder'] )){
+		if ( isset( $attr['headerBorder'] ) ) {
 			$header_border        = $attr['headerBorder'];
 			$header_border_width  = $attr['headerBorder']['borderWidth'];
 			$header_border_radius = $attr['headerBorder']['borderRadius'];
@@ -3900,7 +4127,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', ( $attr['upperPaddingL'] . 'px' ) );
 		}
 
-		if(isset( $attr['upperPadding'] )){
+		if ( isset( $attr['upperPadding'] ) ) {
 			$upper_padding = $attr['upperPadding'];
 			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header' . '> .premium-modal-box-close-button-container button' );
 			$css->add_property( 'padding-top', $css->render_color( $upper_padding['Desktop']['top'] . $upper_padding['unit'] ) );
@@ -3909,7 +4136,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $upper_padding['Desktop']['left'] . $upper_padding['unit'] ) );
 		}
 
-		if(isset( $attr['upperBorder'] )){
+		if ( isset( $attr['upperBorder'] ) ) {
 			$upper_border        = $attr['upperBorder'];
 			$upper_border_width  = $attr['upperBorder']['borderWidth'];
 			$upper_border_radius = $attr['upperBorder']['borderRadius'];
@@ -3939,7 +4166,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $lower_size, 'Desktop', $lower_size['unit'] ) );
 		}
 
-		if(isset( $attr['lowerBorder'] )){
+		if ( isset( $attr['lowerBorder'] ) ) {
 			$lower_border        = $attr['lowerBorder'];
 			$lower_border_width  = $attr['lowerBorder']['borderWidth'];
 			$lower_border_radius = $attr['lowerBorder']['borderRadius'];
@@ -3973,7 +4200,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', ( $attr['lowerPaddingL'] . 'px' ) );
 		}
 
-		if(isset( $attr['lowerPadding'] )){
+		if ( isset( $attr['lowerPadding'] ) ) {
 			$lower_padding = $attr['lowerPadding'];
 			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header' . '> .premium-modal-box-close-button-container button' );
 			$css->add_property( 'padding-top', $css->render_color( $lower_padding['Desktop']['top'] . $lower_padding['unit'] ) );
@@ -3997,10 +4224,10 @@ class PBG_Blocks_Helper {
 				$css->add_property( 'font-size', ( $attr['modalStyles'][0]['modalSize'] . $attr['modalStyles'][0]['modalSizeUnit'] ) );
 			}
 		}
-		
+
 		if ( isset( $attr['modalTypography'] ) ) {
 			$modal_typography = $attr['modalTypography'];
-			$modal_size = $modal_typography['fontSize'];
+			$modal_size       = $modal_typography['fontSize'];
 
 			$this->add_gfont(
 				array(
@@ -4061,7 +4288,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', ( $attr['modalPaddingL'] . 'px' ) );
 		}
 
-		if(isset( $attr['modalPadding'] )){
+		if ( isset( $attr['modalPadding'] ) ) {
 			$modal_padding = $attr['modalPadding'];
 			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' > .premium-modal-box-modal-body' );
 			$css->add_property( 'padding-top', $css->render_color( $modal_padding['Desktop']['top'] . $modal_padding['unit'] ) );
@@ -4070,7 +4297,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $modal_padding['Desktop']['left'] . $modal_padding['unit'] ) );
 		}
 
-		if(isset( $attr['modalMargin'] )){
+		if ( isset( $attr['modalMargin'] ) ) {
 			$modal_margin = $attr['modalMargin'];
 			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
 			$css->add_property( 'margin-top', $css->render_color( $modal_margin['Desktop']['top'] . $modal_margin['unit'] ) );
@@ -4079,7 +4306,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'margin-left', $css->render_color( $modal_margin['Desktop']['left'] . $modal_margin['unit'] ) );
 		}
 
-		if(isset( $attr['modalBorder'] )){
+		if ( isset( $attr['modalBorder'] ) ) {
 			$lower_border        = $attr['modalBorder'];
 			$lower_border_width  = $attr['modalBorder']['borderWidth'];
 			$lower_border_radius = $attr['modalBorder']['borderRadius'];
@@ -4113,13 +4340,13 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['iconSize'] ) ) {
 			$icon_size = $attr['iconSize'];
 			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header h3 i' );
-			$css->add_property( 'font-size',$css->get_responsive_size_value( $icon_size, 'Tablet', $icon_size['unit'] ) );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $icon_size, 'Tablet', $icon_size['unit'] ) );
 			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header h3 img' );
-			$css->add_property( 'width',$css->get_responsive_size_value( $icon_size, 'Tablet', $icon_size['unit'] ) );
-			$css->add_property( 'height',$css->get_responsive_size_value( $icon_size, 'Tablet', $icon_size['unit'] ) );
+			$css->add_property( 'width', $css->get_responsive_size_value( $icon_size, 'Tablet', $icon_size['unit'] ) );
+			$css->add_property( 'height', $css->get_responsive_size_value( $icon_size, 'Tablet', $icon_size['unit'] ) );
 			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header h3 .premium-lottie-animation' );
-			$css->add_property( 'width',$css->get_responsive_size_value( $icon_size, 'Tablet', $icon_size['unit'] ) );
-			$css->add_property( 'height',$css->get_responsive_size_value( $icon_size, 'Tablet', $icon_size['unit'] ) );
+			$css->add_property( 'width', $css->get_responsive_size_value( $icon_size, 'Tablet', $icon_size['unit'] ) );
+			$css->add_property( 'height', $css->get_responsive_size_value( $icon_size, 'Tablet', $icon_size['unit'] ) );
 		}
 
 		// Trigger Sizr for Image/Lottie
@@ -4162,7 +4389,7 @@ class PBG_Blocks_Helper {
 			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > span' );
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $trigger_size, 'Tablet', $trigger_size['unit'] ) );
 		}
-		
+
 		if ( isset( $attr['triggerPaddingTTablet'] ) ) {
 			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > button' );
 			$css->add_property( 'padding-top', ( $attr['triggerPaddingTTablet'] . 'px' ) );
@@ -4180,7 +4407,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', ( $attr['triggerPaddingLTablet'] . 'px' ) );
 		}
 
-		if(isset( $attr['triggerPadding'] )){
+		if ( isset( $attr['triggerPadding'] ) ) {
 			$trigger_padding = $attr['triggerPadding'];
 			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > button' );
 			$css->add_property( 'padding-top', $css->render_color( $trigger_padding['Tablet']['top'] . $trigger_padding['unit'] ) );
@@ -4189,12 +4416,12 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $trigger_padding['Tablet']['left'] . $trigger_padding['unit'] ) );
 		}
 
-		if(isset( $attr['triggerBorder'] )){
+		if ( isset( $attr['triggerBorder'] ) ) {
 			$trigger_border        = $attr['triggerBorder'];
 			$trigger_border_width  = $attr['triggerBorder']['borderWidth'];
 			$trigger_border_radius = $attr['triggerBorder']['borderRadius'];
 
-			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > button, #premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > img, #premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > .premium-modal-trigger-text'  );
+			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > button, #premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > img, #premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > .premium-modal-trigger-text' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $trigger_border_width, 'top', 'Tablet', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $trigger_border_width, 'right', 'Tablet', 'px' ) );
 			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $trigger_border_width, 'bottom', 'Tablet', 'px' ) );
@@ -4205,7 +4432,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $trigger_border_radius, 'left', 'Tablet', 'px' ) );
 		}
 
-		if(isset( $attr['triggerBorderH'] )){
+		if ( isset( $attr['triggerBorderH'] ) ) {
 			$trigger_border_h        = $attr['triggerBorderH'];
 			$trigger_border_h_width  = $attr['triggerBorderH']['borderWidth'];
 			$trigger_border_h_radius = $attr['triggerBorderH']['borderRadius'];
@@ -4236,7 +4463,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $header_size, 'Tablet', $header_size['unit'] ) );
 		}
 
-		if(isset( $attr['headerBorder'] )){
+		if ( isset( $attr['headerBorder'] ) ) {
 			$header_border        = $attr['headerBorder'];
 			$header_border_width  = $attr['headerBorder']['borderWidth'];
 			$header_border_radius = $attr['headerBorder']['borderRadius'];
@@ -4270,7 +4497,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', ( $attr['upperPaddingLTablet'] . 'px' ) );
 		}
 
-		if(isset( $attr['upperPadding'] )){
+		if ( isset( $attr['upperPadding'] ) ) {
 			$upper_padding = $attr['upperPadding'];
 			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header' . '> .premium-modal-box-close-button-container button' );
 			$css->add_property( 'padding-top', $css->render_color( $upper_padding['Tablet']['top'] . $upper_padding['unit'] ) );
@@ -4279,7 +4506,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $upper_padding['Tablet']['left'] . $upper_padding['unit'] ) );
 		}
 
-		if(isset( $attr['upperBorder'] )){
+		if ( isset( $attr['upperBorder'] ) ) {
 			$upper_border        = $attr['upperBorder'];
 			$upper_border_width  = $attr['upperBorder']['borderWidth'];
 			$upper_border_radius = $attr['upperBorder']['borderRadius'];
@@ -4309,7 +4536,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $lower_size, 'Tablet', $lower_size['unit'] ) );
 		}
 
-		if(isset( $attr['lowerBorder'] )){
+		if ( isset( $attr['lowerBorder'] ) ) {
 			$lower_border        = $attr['lowerBorder'];
 			$lower_border_width  = $attr['lowerBorder']['borderWidth'];
 			$lower_border_radius = $attr['lowerBorder']['borderRadius'];
@@ -4343,7 +4570,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', ( $attr['lowerPaddingLTablet'] . 'px' ) );
 		}
 
-		if(isset( $attr['lowerPadding'] )){
+		if ( isset( $attr['lowerPadding'] ) ) {
 			$lower_padding = $attr['lowerPadding'];
 			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header' . '> .premium-modal-box-close-button-container button' );
 			$css->add_property( 'padding-top', $css->render_color( $lower_padding['Tablet']['top'] . $lower_padding['unit'] ) );
@@ -4422,7 +4649,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', ( $attr['modalPaddingLTablet'] . 'px' ) );
 		}
 
-		if(isset( $attr['modalPadding'] )){
+		if ( isset( $attr['modalPadding'] ) ) {
 			$modal_padding = $attr['modalPadding'];
 			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' > .premium-modal-box-modal-body' );
 			$css->add_property( 'padding-top', $css->render_color( $modal_padding['Tablet']['top'] . $modal_padding['unit'] ) );
@@ -4431,7 +4658,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $modal_padding['Tablet']['left'] . $modal_padding['unit'] ) );
 		}
 
-		if(isset( $attr['modalMargin'] )){
+		if ( isset( $attr['modalMargin'] ) ) {
 			$modal_margin = $attr['modalMargin'];
 			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
 			$css->add_property( 'margin-top', $css->render_color( $modal_margin['Tablet']['top'] . $modal_margin['unit'] ) );
@@ -4440,7 +4667,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'margin-left', $css->render_color( $modal_margin['Tablet']['left'] . $modal_margin['unit'] ) );
 		}
 
-		if(isset( $attr['modalBorder'] )){
+		if ( isset( $attr['modalBorder'] ) ) {
 			$lower_border        = $attr['modalBorder'];
 			$lower_border_width  = $attr['modalBorder']['borderWidth'];
 			$lower_border_radius = $attr['modalBorder']['borderRadius'];
@@ -4476,13 +4703,13 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['iconSize'] ) ) {
 			$icon_size = $attr['iconSize'];
 			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header h3 i' );
-			$css->add_property( 'font-size',$css->get_responsive_size_value( $icon_size, 'Mobile', $icon_size['unit'] ) );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $icon_size, 'Mobile', $icon_size['unit'] ) );
 			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header h3 img' );
-			$css->add_property( 'width',$css->get_responsive_size_value( $icon_size, 'Mobile', $icon_size['unit'] ) );
-			$css->add_property( 'height',$css->get_responsive_size_value( $icon_size, 'Mobile', $icon_size['unit'] ) );
+			$css->add_property( 'width', $css->get_responsive_size_value( $icon_size, 'Mobile', $icon_size['unit'] ) );
+			$css->add_property( 'height', $css->get_responsive_size_value( $icon_size, 'Mobile', $icon_size['unit'] ) );
 			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header h3 .premium-lottie-animation' );
-			$css->add_property( 'width',$css->get_responsive_size_value( $icon_size, 'Mobile', $icon_size['unit'] ) );
-			$css->add_property( 'height',$css->get_responsive_size_value( $icon_size, 'Mobile', $icon_size['unit'] ) );
+			$css->add_property( 'width', $css->get_responsive_size_value( $icon_size, 'Mobile', $icon_size['unit'] ) );
+			$css->add_property( 'height', $css->get_responsive_size_value( $icon_size, 'Mobile', $icon_size['unit'] ) );
 		}
 
 		// Trigger Size for Image/Lottie
@@ -4543,7 +4770,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', ( $attr['triggerPaddingLMobile'] . 'px' ) );
 		}
 
-		if(isset( $attr['triggerPadding'] )){
+		if ( isset( $attr['triggerPadding'] ) ) {
 			$trigger_padding = $attr['triggerPadding'];
 			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > button' );
 			$css->add_property( 'padding-top', $css->render_color( $trigger_padding['Mobile']['top'] . $trigger_padding['unit'] ) );
@@ -4552,12 +4779,12 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $trigger_padding['Mobile']['left'] . $trigger_padding['unit'] ) );
 		}
 
-		if(isset( $attr['triggerBorder'] )){
+		if ( isset( $attr['triggerBorder'] ) ) {
 			$trigger_border        = $attr['triggerBorder'];
 			$trigger_border_width  = $attr['triggerBorder']['borderWidth'];
 			$trigger_border_radius = $attr['triggerBorder']['borderRadius'];
 
-			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > button, #premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > img, #premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > .premium-modal-trigger-text'  );
+			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > button, #premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > img, #premium-modal-box-' . $unique_id . '> .premium-modal-trigger-container' . ' > .premium-modal-trigger-text' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $trigger_border_width, 'top', 'Mobile', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $trigger_border_width, 'right', 'Mobile', 'px' ) );
 			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $trigger_border_width, 'bottom', 'Mobile', 'px' ) );
@@ -4568,7 +4795,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $trigger_border_radius, 'left', 'Mobile', 'px' ) );
 		}
 
-		if(isset( $attr['triggerBorderH'] )){
+		if ( isset( $attr['triggerBorderH'] ) ) {
 			$trigger_border_h        = $attr['triggerBorderH'];
 			$trigger_border_h_width  = $attr['triggerBorderH']['borderWidth'];
 			$trigger_border_h_radius = $attr['triggerBorderH']['borderRadius'];
@@ -4598,7 +4825,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $header_size, 'Mobile', $header_size['unit'] ) );
 		}
 
-		if(isset( $attr['headerBorder'] )){
+		if ( isset( $attr['headerBorder'] ) ) {
 			$header_border        = $attr['headerBorder'];
 			$header_border_width  = $attr['headerBorder']['borderWidth'];
 			$header_border_radius = $attr['headerBorder']['borderRadius'];
@@ -4632,7 +4859,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', ( $attr['upperPaddingLMobile'] . 'px' ) );
 		}
 
-		if(isset( $attr['upperPadding'] )){
+		if ( isset( $attr['upperPadding'] ) ) {
 			$upper_padding = $attr['upperPadding'];
 			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header' . '> .premium-modal-box-close-button-container button' );
 			$css->add_property( 'padding-top', $css->render_color( $upper_padding['Mobile']['top'] . $upper_padding['unit'] ) );
@@ -4641,7 +4868,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $upper_padding['Mobile']['left'] . $upper_padding['unit'] ) );
 		}
 
-		if(isset( $attr['upperBorder'] )){
+		if ( isset( $attr['upperBorder'] ) ) {
 			$upper_border        = $attr['upperBorder'];
 			$upper_border_width  = $attr['upperBorder']['borderWidth'];
 			$upper_border_radius = $attr['upperBorder']['borderRadius'];
@@ -4671,7 +4898,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $lower_size, 'Mobile', $lower_size['unit'] ) );
 		}
 
-		if(isset( $attr['lowerBorder'] )){
+		if ( isset( $attr['lowerBorder'] ) ) {
 			$lower_border        = $attr['lowerBorder'];
 			$lower_border_width  = $attr['lowerBorder']['borderWidth'];
 			$lower_border_radius = $attr['lowerBorder']['borderRadius'];
@@ -4705,7 +4932,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', ( $attr['lowerPaddingLMobile'] . 'px' ) );
 		}
 
-		if(isset( $attr['lowerPadding'] )){
+		if ( isset( $attr['lowerPadding'] ) ) {
 			$lower_padding = $attr['lowerPadding'];
 			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header' . '> .premium-modal-box-close-button-container button' );
 			$css->add_property( 'padding-top', $css->render_color( $lower_padding['Mobile']['top'] . $lower_padding['unit'] ) );
@@ -4784,7 +5011,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', ( $attr['modalPaddingLMobile'] . 'px' ) );
 		}
 
-		if(isset( $attr['modalPadding'] )){
+		if ( isset( $attr['modalPadding'] ) ) {
 			$modal_padding = $attr['modalPadding'];
 			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' > .premium-modal-box-modal-body' );
 			$css->add_property( 'padding-top', $css->render_color( $modal_padding['Mobile']['top'] . $modal_padding['unit'] ) );
@@ -4793,7 +5020,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $modal_padding['Mobile']['left'] . $modal_padding['unit'] ) );
 		}
 
-		if(isset( $attr['modalMargin'] )){
+		if ( isset( $attr['modalMargin'] ) ) {
 			$modal_margin = $attr['modalMargin'];
 			$css->set_selector( '#premium-modal-box-' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
 			$css->add_property( 'margin-top', $css->render_color( $modal_margin['Mobile']['top'] . $modal_margin['unit'] ) );
@@ -4802,7 +5029,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'margin-left', $css->render_color( $modal_margin['Mobile']['left'] . $modal_margin['unit'] ) );
 		}
 
-		if(isset( $attr['modalBorder'] )){
+		if ( isset( $attr['modalBorder'] ) ) {
 			$lower_border        = $attr['modalBorder'];
 			$lower_border_width  = $attr['modalBorder']['borderWidth'];
 			$lower_border_radius = $attr['modalBorder']['borderRadius'];
@@ -4969,7 +5196,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'margin-left', ( $attr['generalmarginL'] . ( isset( $attr['generalStyles'][0]['generalmarginType'] ) ? $attr['generalStyles'][0]['generalmarginType'] : 'px' ) . '!important' ) );
 		}
 
-		if(isset( $attr['generalpadding'] )){
+		if ( isset( $attr['generalpadding'] ) ) {
 			$general_padding = $attr['generalpadding'];
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' );
 			$css->add_property( 'padding-top', $css->render_color( $general_padding['Desktop']['top'] . $general_padding['unit'] ) );
@@ -4978,7 +5205,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $general_padding['Desktop']['left'] . $general_padding['unit'] ) );
 		}
 
-		if(isset( $attr['generalmargin'] )){
+		if ( isset( $attr['generalmargin'] ) ) {
 			$general_margin = $attr['generalmargin'];
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' );
 			$css->add_property( 'margin-top', $css->render_color( $general_margin['Desktop']['top'] . $general_margin['unit'] ) );
@@ -4991,7 +5218,7 @@ class PBG_Blocks_Helper {
 			$general_border        = $attr['generalBorder'];
 			$general_border_width  = $attr['generalBorder']['borderWidth'];
 			$general_border_radius = $attr['generalBorder']['borderRadius'];
-	
+
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $general_border_width, 'top', 'Desktop', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $general_border_width, 'right', 'Desktop', 'px' ) );
@@ -5043,7 +5270,7 @@ class PBG_Blocks_Helper {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' );
 			$css->add_property( 'margin-left', ( $attr['titlemarginL'] . ( isset( $attr['titleStyles'][0]['titlemarginType'] ) ? $attr['titleStyles'][0]['titlemarginType'] : 'px' ) . '!important' ) );
 		}
-		
+
 		// Style for divider.
 		if ( isset( $attr['dividerStyles'] ) ) {
 
@@ -5074,6 +5301,34 @@ class PBG_Blocks_Helper {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
 			$css->add_property( 'height', $css->render_color( ( isset( $attr['bulletIconStyles'][0]['bulletListfontSize'] ) ? $attr['bulletIconStyles'][0]['bulletListfontSize'] : '20' ) . ( isset( $attr['bulletIconStyles'][0]['bulletListfontSizeType'] ) ? $attr['bulletIconStyles'][0]['bulletListfontSizeType'] : 'px' ) . '!important' ) );
 		}
+
+		if ( isset( $attr['bulletIconFontSize'] ) ) {
+			$buller_icon_size = $attr['bulletIconFontSize'];
+
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $buller_icon_size, 'Desktop', $buller_icon_size['unit'] ) );
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $buller_icon_size, 'Desktop', $buller_icon_size['unit'] ) );
+		}
+
+		if ( isset( $attr['dividerWidth'] ) ) {
+			$divider_width = $attr['dividerWidth'];
+
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'width', $css->get_responsive_size_value( $divider_width, 'Desktop', $divider_width['unit'] ) );
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'width', $css->get_responsive_size_value( $divider_width, 'Desktop', $divider_width['unit'] ) );
+		}
+
+		if ( isset( $attr['dividerHeight'] ) ) {
+			$divider_height = $attr['dividerHeight'];
+
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'height', $css->get_responsive_size_value( $divider_height, 'Desktop', $divider_height['unit'] ) );
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'height', $css->get_responsive_size_value( $divider_height, 'Desktop', $divider_height['unit'] ) );
+		}
+
 		if ( isset( $attr['bulletIconpaddingTop'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
 			$css->add_property( 'padding-top', $css->render_color( $attr['bulletIconpaddingTop'] . ( isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ? $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] : 'px' ) . '!important' ) );
@@ -5107,8 +5362,8 @@ class PBG_Blocks_Helper {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
 			$css->add_property( 'padding-left', ( $attr['bulletIconpaddingLeft'] . ( isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ? $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] : 'px' ) . '!important' ) );
 		}
-		
-		if(isset( $attr['bulletIconpadding'] )){
+
+		if ( isset( $attr['bulletIconpadding'] ) ) {
 			$bullet_icon_padding = $attr['bulletIconpadding'];
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i, #premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img, #premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i, #premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
 			$css->add_property( 'padding-top', $css->render_color( $bullet_icon_padding['Desktop']['top'] . $bullet_icon_padding['unit'] ) );
@@ -5121,7 +5376,7 @@ class PBG_Blocks_Helper {
 			$bullet_icon_border        = $attr['bulletIconBorder'];
 			$bullet_icon_border_width  = $attr['bulletIconBorder']['borderWidth'];
 			$bullet_icon_border_radius = $attr['bulletIconBorder']['borderRadius'];
-	
+
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i, #premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $bullet_icon_border_width, 'top', 'Desktop', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $bullet_icon_border_width, 'right', 'Desktop', 'px' ) );
@@ -5151,7 +5406,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'margin-left', ( $attr['bulletIconmarginL'] . ( isset( $attr['bulletIconStyles'][0]['bulletIconmarginType'] ) ? $attr['bulletIconStyles'][0]['bulletIconmarginType'] : 'px' ) . '!important' ) );
 		}
 
-		if(isset( $attr['bulletIconmargin'] )){
+		if ( isset( $attr['bulletIconmargin'] ) ) {
 			$bullet_icon_margin = $attr['bulletIconmargin'];
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap, #premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' );
 			$css->add_property( 'margin-top', $css->render_color( $bullet_icon_margin['Desktop']['top'] . $bullet_icon_margin['unit'] ) );
@@ -5167,6 +5422,24 @@ class PBG_Blocks_Helper {
 				$css->add_property( 'font-size', ( $attr['titleStyles'][0]['titleSize'] . ( isset( $attr['titleStyles'][0]['titlefontSizeType'] ) ? $attr['titleStyles'][0]['titlefontSizeType'] : 'px' ) . '!important' ) );
 			}
 		}
+
+		if ( isset( $attr['titleTypography'] ) ) {
+			$title_typography = $attr['titleTypography'];
+			$title_size       = $title_typography['fontSize'];
+
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $title_typography['fontFamily'] ) ? $title_typography['fontFamily'] : '' ),
+					'fontVariant' => ( isset( $title_typography['fontWeight'] ) ? $title_typography['fontWeight'] : '' ),
+				)
+			);
+
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__label-wrap' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Desktop', $title_size['unit'] ) );
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__label-wrap' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Desktop', $title_size['unit'] ) );
+		}
+
 		if ( isset( $attr['titlemarginT'] ) && isset( $attr['titleStyles'][0]['titlemarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' );
 			$css->add_property( 'margin-top', ( $attr['titlemarginT'] . ( isset( $attr['titleStyles'][0]['titlemarginType'] ) ? $attr['titleStyles'][0]['titlemarginType'] : 'px' ) . '!important' ) );
@@ -5184,7 +5457,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'margin-left', ( $attr['titlemarginL'] . ( isset( $attr['titleStyles'][0]['titlemarginType'] ) ? $attr['titleStyles'][0]['titlemarginType'] : 'px' ) . '!important' ) );
 		}
 
-		if(isset( $attr['titlemargin'] )){
+		if ( isset( $attr['titlemargin'] ) ) {
 			$title_margin = $attr['titlemargin'];
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap, #premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' );
 			$css->add_property( 'margin-top', $css->render_color( $title_margin['Desktop']['top'] . $title_margin['unit'] ) );
@@ -5276,7 +5549,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'margin-left', ( $attr['generalmarginLTablet'] . $attr['generalStyles'][0]['generalmarginType'] . '!important' ) );
 		}
 
-		if(isset( $attr['generalpadding'] )){
+		if ( isset( $attr['generalpadding'] ) ) {
 			$general_padding = $attr['generalpadding'];
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' );
 			$css->add_property( 'padding-top', $css->render_color( $general_padding['Tablet']['top'] . $general_padding['unit'] ) );
@@ -5285,7 +5558,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $general_padding['Tablet']['left'] . $general_padding['unit'] ) );
 		}
 
-		if(isset( $attr['generalmargin'] )){
+		if ( isset( $attr['generalmargin'] ) ) {
 			$general_margin = $attr['generalmargin'];
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' );
 			$css->add_property( 'margin-top', $css->render_color( $general_margin['Tablet']['top'] . $general_margin['unit'] ) );
@@ -5298,7 +5571,7 @@ class PBG_Blocks_Helper {
 			$general_border        = $attr['generalBorder'];
 			$general_border_width  = $attr['generalBorder']['borderWidth'];
 			$general_border_radius = $attr['generalBorder']['borderRadius'];
-	
+
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $general_border_width, 'top', 'Tablet', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $general_border_width, 'right', 'Tablet', 'px' ) );
@@ -5379,6 +5652,34 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'height', ( $attr['bulletIconStyles'][0]['bulletListfontSizeTablet'] . $attr['bulletIconStyles'][0]['bulletListfontSizeType'] . '!important' ) );
 
 		}
+
+		if ( isset( $attr['bulletIconFontSize'] ) ) {
+			$buller_icon_size = $attr['bulletIconFontSize'];
+
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $buller_icon_size, 'Tablet', $buller_icon_size['unit'] ) );
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $buller_icon_size, 'Tablet', $buller_icon_size['unit'] ) );
+		}
+
+		if ( isset( $attr['dividerWidth'] ) ) {
+			$divider_width = $attr['dividerWidth'];
+
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'width', $css->get_responsive_size_value( $divider_width, 'Tablet', $divider_width['unit'] ) );
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'width', $css->get_responsive_size_value( $divider_width, 'Tablet', $divider_width['unit'] ) );
+		}
+
+		if ( isset( $attr['dividerHeight'] ) ) {
+			$divider_height = $attr['dividerHeight'];
+
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'height', $css->get_responsive_size_value( $divider_height, 'Tablet', $divider_height['unit'] ) );
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'height', $css->get_responsive_size_value( $divider_height, 'Tablet', $divider_height['unit'] ) );
+		}
+
 		if ( isset( $attr['bulletIconpaddingTTablet'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
 			$css->add_property( 'padding-top', ( $attr['bulletIconpaddingTTablet'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] . '!important' ) );
@@ -5414,7 +5715,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', ( $attr['bulletIconpaddingLTablet'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] . '!important' ) );
 		}
 
-		if(isset( $attr['bulletIconpadding'] )){
+		if ( isset( $attr['bulletIconpadding'] ) ) {
 			$bullet_icon_padding = $attr['bulletIconpadding'];
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i, #premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img, #premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i, #premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
 			$css->add_property( 'padding-top', $css->render_color( $bullet_icon_padding['Tablet']['top'] . $bullet_icon_padding['unit'] ) );
@@ -5427,7 +5728,7 @@ class PBG_Blocks_Helper {
 			$bullet_icon_border        = $attr['bulletIconBorder'];
 			$bullet_icon_border_width  = $attr['bulletIconBorder']['borderWidth'];
 			$bullet_icon_border_radius = $attr['bulletIconBorder']['borderRadius'];
-	
+
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i, #premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $bullet_icon_border_width, 'top', 'Tablet', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $bullet_icon_border_width, 'right', 'Tablet', 'px' ) );
@@ -5457,7 +5758,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'margin-left', ( $attr['bulletIconmarginLTablet'] . $attr['bulletIconStyles'][0]['bulletIconmarginType'] . '!important' ) );
 		}
 
-		if(isset( $attr['bulletIconmargin'] )){
+		if ( isset( $attr['bulletIconmargin'] ) ) {
 			$bullet_icon_margin = $attr['bulletIconmargin'];
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap, #premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' );
 			$css->add_property( 'margin-top', $css->render_color( $bullet_icon_margin['Tablet']['top'] . $bullet_icon_margin['unit'] ) );
@@ -5473,6 +5774,17 @@ class PBG_Blocks_Helper {
 				$css->add_property( 'font-size', ( $attr['titleStyles'][0]['titlefontSizeTablet'] . $attr['titleStyles'][0]['titlefontSizeType'] . '!important' ) );
 			}
 		}
+
+		if ( isset( $attr['titleTypography'] ) ) {
+			$title_typography = $attr['titleTypography'];
+			$title_size       = $title_typography['fontSize'];
+
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__label-wrap' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Tablet', $title_size['unit'] ) );
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__label-wrap' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Tablet', $title_size['unit'] ) );
+		}
+
 		if ( isset( $attr['titlemarginTTablet'] ) && isset( $attr['titleStyles'][0]['titlemarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' );
 			$css->add_property( 'margin-top', ( $attr['titlemarginTTablet'] . $attr['titleStyles'][0]['titlemarginType'] . '!important' ) );
@@ -5490,7 +5802,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'margin-left', ( $attr['titlemarginLTablet'] . $attr['titleStyles'][0]['titlemarginType'] . '!important' ) );
 		}
 
-		if(isset( $attr['titlemargin'] )){
+		if ( isset( $attr['titlemargin'] ) ) {
 			$title_margin = $attr['titlemargin'];
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap, #premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' );
 			$css->add_property( 'margin-top', $css->render_color( $title_margin['Tablet']['top'] . $title_margin['unit'] ) );
@@ -5584,7 +5896,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'margin-left', ( $attr['generalmarginLMobile'] . $attr['generalStyles'][0]['generalmarginType'] . '!important' ) );
 		}
 
-		if(isset( $attr['generalpadding'] )){
+		if ( isset( $attr['generalpadding'] ) ) {
 			$general_padding = $attr['generalpadding'];
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' );
 			$css->add_property( 'padding-top', $css->render_color( $general_padding['Mobile']['top'] . $general_padding['unit'] ) );
@@ -5593,7 +5905,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $general_padding['Mobile']['left'] . $general_padding['unit'] ) );
 		}
 
-		if(isset( $attr['generalmargin'] )){
+		if ( isset( $attr['generalmargin'] ) ) {
 			$general_margin = $attr['generalmargin'];
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' );
 			$css->add_property( 'margin-top', $css->render_color( $general_margin['Mobile']['top'] . $general_margin['unit'] ) );
@@ -5606,7 +5918,7 @@ class PBG_Blocks_Helper {
 			$general_border        = $attr['generalBorder'];
 			$general_border_width  = $attr['generalBorder']['borderWidth'];
 			$general_border_radius = $attr['generalBorder']['borderRadius'];
-	
+
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $general_border_width, 'top', 'Mobile', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $general_border_width, 'right', 'Mobile', 'px' ) );
@@ -5688,6 +6000,34 @@ class PBG_Blocks_Helper {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
 			$css->add_property( 'height', ( $attr['bulletIconStyles'][0]['bulletListfontSizeMobile'] . $attr['bulletIconStyles'][0]['bulletListfontSizeType'] . '!important' ) );
 		}
+
+		if ( isset( $attr['bulletIconFontSize'] ) ) {
+			$buller_icon_size = $attr['bulletIconFontSize'];
+
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $buller_icon_size, 'Mobile', $buller_icon_size['unit'] ) );
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $buller_icon_size, 'Mobile', $buller_icon_size['unit'] ) );
+		}
+
+		if ( isset( $attr['dividerWidth'] ) ) {
+			$divider_width = $attr['dividerWidth'];
+
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'width', $css->get_responsive_size_value( $divider_width, 'Mobile', $divider_width['unit'] ) );
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'width', $css->get_responsive_size_value( $divider_width, 'Mobile', $divider_width['unit'] ) );
+		}
+
+		if ( isset( $attr['dividerHeight'] ) ) {
+			$divider_height = $attr['dividerHeight'];
+
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'height', $css->get_responsive_size_value( $divider_height, 'Mobile', $divider_height['unit'] ) );
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'height', $css->get_responsive_size_value( $divider_height, 'Mobile', $divider_height['unit'] ) );
+		}
+
 		if ( isset( $attr['bulletIconpaddingTMobile'] ) && isset( $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
 			$css->add_property( 'padding-top', ( $attr['bulletIconpaddingTMobile'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] . '!important' ) );
@@ -5723,7 +6063,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', ( $attr['bulletIconpaddingLMobile'] . $attr['bulletIconStyles'][0]['bulletIconpaddingUnit'] . '!important' ) );
 		}
 
-		if(isset( $attr['bulletIconpadding'] )){
+		if ( isset( $attr['bulletIconpadding'] ) ) {
 			$bullet_icon_padding = $attr['bulletIconpadding'];
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i, #premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img, #premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i, #premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
 			$css->add_property( 'padding-top', $css->render_color( $bullet_icon_padding['Mobile']['top'] . $bullet_icon_padding['unit'] ) );
@@ -5736,7 +6076,7 @@ class PBG_Blocks_Helper {
 			$bullet_icon_border        = $attr['bulletIconBorder'];
 			$bullet_icon_border_width  = $attr['bulletIconBorder']['borderWidth'];
 			$bullet_icon_border_radius = $attr['bulletIconBorder']['borderRadius'];
-	
+
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i, #premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $bullet_icon_border_width, 'top', 'Mobile', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $bullet_icon_border_width, 'right', 'Mobile', 'px' ) );
@@ -5765,7 +6105,7 @@ class PBG_Blocks_Helper {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' );
 			$css->add_property( 'margin-left', ( $attr['bulletIconmarginLMobile'] . $attr['bulletIconStyles'][0]['bulletIconmarginType'] . '!important' ) );
 		}
-		if(isset( $attr['bulletIconmargin'] )){
+		if ( isset( $attr['bulletIconmargin'] ) ) {
 			$bullet_icon_margin = $attr['bulletIconmargin'];
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap, #premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' );
 			$css->add_property( 'margin-top', $css->render_color( $bullet_icon_margin['Mobile']['top'] . $bullet_icon_margin['unit'] ) );
@@ -5780,6 +6120,17 @@ class PBG_Blocks_Helper {
 				$css->add_property( 'font-size', ( $attr['titleStyles'][0]['titlefontSizeMobile'] . $attr['titleStyles'][0]['titlefontSizeType'] . '!important' ) );
 			}
 		}
+
+		if ( isset( $attr['titleTypography'] ) ) {
+			$title_typography = $attr['titleTypography'];
+			$title_size       = $title_typography['fontSize'];
+
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__label-wrap' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Mobile', $title_size['unit'] ) );
+			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__label-wrap' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Mobile', $title_size['unit'] ) );
+		}
+
 		if ( isset( $attr['titlemarginTMobile'] ) && isset( $attr['titleStyles'][0]['titlemarginType'] ) ) {
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' );
 			$css->add_property( 'margin-top', ( $attr['titlemarginTMobile'] . $attr['titleStyles'][0]['titlemarginType'] . '!important' ) );
@@ -5797,7 +6148,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'margin-left', ( $attr['titlemarginLMobile'] . $attr['titleStyles'][0]['titlemarginType'] . '!important' ) );
 		}
 
-		if(isset( $attr['titlemargin'] )){
+		if ( isset( $attr['titlemargin'] ) ) {
 			$title_margin = $attr['titlemargin'];
 			$css->set_selector( '#premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap, #premium-bullet-list-' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' );
 			$css->add_property( 'margin-top', $css->render_color( $title_margin['Mobile']['top'] . $title_margin['unit'] ) );
@@ -6306,7 +6657,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'margin-left', ( $attr['titleMarginL'] . ( isset( $attr['titleStyles'][0]['titleMarginType'] ) ? $attr['titleStyles'][0]['titleMarginType'] : 'px' ) . '!important' ) );
 		}
 
-		if(isset( $attr['titlePadding'] )){
+		if ( isset( $attr['titlePadding'] ) ) {
 			$title_padding = $attr['titlePadding'];
 			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' );
 			$css->add_property( 'padding-top', $css->render_color( $title_padding['Desktop']['top'] . $title_padding['unit'] ) );
@@ -6315,7 +6666,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $title_padding['Desktop']['left'] . $title_padding['unit'] ) );
 		}
 
-		if(isset( $attr['titleMargin'] )){
+		if ( isset( $attr['titleMargin'] ) ) {
 			$title_margin = $attr['titleMargin'];
 			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' );
 			$css->add_property( 'margin-top', $css->render_color( $title_margin['Desktop']['top'] . $title_margin['unit'] ) );
@@ -6323,7 +6674,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'margin-bottom', $css->render_color( $title_margin['Desktop']['bottom'] . $title_margin['unit'] ) );
 			$css->add_property( 'margin-left', $css->render_color( $title_margin['Desktop']['left'] . $title_margin['unit'] ) );
 		}
-		
+
 		// Style for icon.
 		if ( isset( $attr['iconStyles'] ) ) {
 			if ( isset( $attr['iconStyles'][0]['iconSize'] ) && isset( $attr['iconStyles'][0]['iconSizeType'] ) ) {
@@ -6380,7 +6731,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'margin-left', ( $attr['iconMarginL'] . ( isset( $attr['iconStyles'][0]['iconMarginType'] ) ? $attr['iconStyles'][0]['iconMarginType'] : 'px' ) . '!important' ) );
 		}
 
-		if(isset( $attr['iconPadding'] )){
+		if ( isset( $attr['iconPadding'] ) ) {
 			$icon_padding = $attr['iconPadding'];
 			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-icon' );
 			$css->add_property( 'padding-top', $css->render_color( $icon_padding['Desktop']['top'] . $icon_padding['unit'] ) );
@@ -6389,7 +6740,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $icon_padding['Desktop']['left'] . $icon_padding['unit'] ) );
 		}
 
-		if(isset( $attr['iconMargin'] )){
+		if ( isset( $attr['iconMargin'] ) ) {
 			$icon_margin = $attr['iconMargin'];
 			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-icon' );
 			$css->add_property( 'margin-top', $css->render_color( $icon_margin['Desktop']['top'] . $icon_margin['unit'] ) );
@@ -6483,7 +6834,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'margin-left', ( $attr['titleMarginLTablet'] . ( isset( $attr['titleStyles'][0]['titleMarginType'] ) ? $attr['titleStyles'][0]['titleMarginType'] : 'px' ) . '!important' ) );
 		}
 
-		if(isset( $attr['titlePadding'] )){
+		if ( isset( $attr['titlePadding'] ) ) {
 			$title_padding = $attr['titlePadding'];
 			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' );
 			$css->add_property( 'padding-top', $css->render_color( $title_padding['Tablet']['top'] . $title_padding['unit'] ) );
@@ -6492,7 +6843,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $title_padding['Tablet']['left'] . $title_padding['unit'] ) );
 		}
 
-		if(isset( $attr['titleMargin'] )){
+		if ( isset( $attr['titleMargin'] ) ) {
 			$title_margin = $attr['titleMargin'];
 			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' );
 			$css->add_property( 'margin-top', $css->render_color( $title_margin['Tablet']['top'] . $title_margin['unit'] ) );
@@ -6557,7 +6908,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'margin-left', ( $attr['iconMarginLTablet'] . ( isset( $attr['iconStyles'][0]['iconMarginType'] ) ? $attr['iconStyles'][0]['iconMarginType'] : 'px' ) . '!important' ) );
 		}
 
-		if(isset( $attr['iconPadding'] )){
+		if ( isset( $attr['iconPadding'] ) ) {
 			$icon_padding = $attr['iconPadding'];
 			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-icon' );
 			$css->add_property( 'padding-top', $css->render_color( $icon_padding['Tablet']['top'] . $icon_padding['unit'] ) );
@@ -6566,7 +6917,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $icon_padding['Tablet']['left'] . $icon_padding['unit'] ) );
 		}
 
-		if(isset( $attr['iconMargin'] )){
+		if ( isset( $attr['iconMargin'] ) ) {
 			$icon_margin = $attr['iconMargin'];
 			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-icon' );
 			$css->add_property( 'margin-top', $css->render_color( $icon_margin['Tablet']['top'] . $icon_margin['unit'] ) );
@@ -6662,7 +7013,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'margin-left', ( $attr['titleMarginLMobile'] . ( isset( $attr['titleStyles'][0]['titleMarginType'] ) ? $attr['titleStyles'][0]['titleMarginType'] : 'px' ) . '!important' ) );
 		}
 
-		if(isset( $attr['titlePadding'] )){
+		if ( isset( $attr['titlePadding'] ) ) {
 			$title_padding = $attr['titlePadding'];
 			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' );
 			$css->add_property( 'padding-top', $css->render_color( $title_padding['Mobile']['top'] . $title_padding['unit'] ) );
@@ -6671,7 +7022,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $title_padding['Mobile']['left'] . $title_padding['unit'] ) );
 		}
 
-		if(isset( $attr['titleMargin'] )){
+		if ( isset( $attr['titleMargin'] ) ) {
 			$title_margin = $attr['titleMargin'];
 			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' );
 			$css->add_property( 'margin-top', $css->render_color( $title_margin['Mobile']['top'] . $title_margin['unit'] ) );
@@ -6736,7 +7087,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'margin-left', ( $attr['iconMarginLMobile'] . ( isset( $attr['iconStyles'][0]['iconMarginType'] ) ? $attr['iconStyles'][0]['iconMarginType'] : 'px' ) . '!important' ) );
 		}
 
-		if(isset( $attr['iconPadding'] )){
+		if ( isset( $attr['iconPadding'] ) ) {
 			$icon_padding = $attr['iconPadding'];
 			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-icon' );
 			$css->add_property( 'padding-top', $css->render_color( $icon_padding['Mobile']['top'] . $icon_padding['unit'] ) );
@@ -6745,7 +7096,7 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding-left', $css->render_color( $icon_padding['Mobile']['left'] . $icon_padding['unit'] ) );
 		}
 
-		if(isset( $attr['iconMargin'] )){
+		if ( isset( $attr['iconMargin'] ) ) {
 			$icon_margin = $attr['iconMargin'];
 			$css->set_selector( '#premium-title-' . $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-icon' );
 			$css->add_property( 'margin-top', $css->render_color( $icon_margin['Mobile']['top'] . $icon_margin['unit'] ) );

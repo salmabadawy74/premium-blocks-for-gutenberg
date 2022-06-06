@@ -12,7 +12,8 @@ import icons from '../../components/align';
 import PremiumShadow from "../../components/PremiumShadow";
 import WebfontLoader from "../../components/typography/fontLoader";
 import RadioComponent from '../../components/radio-control';
-
+import InspectorTabs from '../../components/inspectorTabs';
+import InspectorTab from '../../components/inspectorTab';
 
 const { withSelect } = wp.data
 
@@ -283,10 +284,16 @@ class edit extends Component {
             titleStyles,
             generalStyles,
             generalBorder,
-            titleFont,
             divider,
             dividerStyle,
-            dividerStyles
+            dividerStyles,
+            titlesTextShadow,
+            boxShadow,
+            hoverBoxShadow,
+            bulletIconFontSize,
+            dividerWidth,
+            dividerHeight,
+            titleTypography
         } = attributes
 
         const LAYOUT = [
@@ -340,30 +347,31 @@ class edit extends Component {
 
         const ALIGNS = ["left", "center", "right"];
 
-        const BulletIconSize = this.getPreviewSize(this.props.deviceType, bulletIconStyles[0].bulletListfontSize, bulletIconStyles[0].bulletListfontSizeTablet, bulletIconStyles[0].bulletListfontSizeMobile);
-        const BulletIconMarginTop = this.getPreviewSize(this.props.deviceType, bulletIconmargin.Desktop.top, bulletIconmargin.Tablet.top, bulletIconmargin.Mobile.top);
-        const BulletIconMarginRight = this.getPreviewSize(this.props.deviceType, bulletIconmargin.Desktop.right, bulletIconmargin.Tablet.right, bulletIconmargin.Mobile.right);
-        const BulletIconMarginBottom = this.getPreviewSize(this.props.deviceType, bulletIconmargin.Desktop.bottom, bulletIconmargin.Tablet.bottom, bulletIconmargin.Mobile.bottom);
-        const BulletIconMarginLeft = this.getPreviewSize(this.props.deviceType, bulletIconmargin.Desktop.left, bulletIconmargin.Tablet.left, bulletIconmargin.Mobile.left);
-        const BulletIconPaddingTop = this.getPreviewSize(this.props.deviceType, bulletIconpadding.Desktop.top, bulletIconpadding.Tablet.top, bulletIconpadding.Mobile.top);
-        const BulletIconPaddingRight = this.getPreviewSize(this.props.deviceType, bulletIconpadding.Desktop.right, bulletIconpadding.Tablet.right, bulletIconpadding.Mobile.right);
-        const BulletIconPaddingBottom = this.getPreviewSize(this.props.deviceType, bulletIconpadding.Desktop.bottom, bulletIconpadding.Tablet.bottom, bulletIconpadding.Mobile.bottom);
-        const BulletIconPaddingLeft = this.getPreviewSize(this.props.deviceType, bulletIconpadding.Desktop.left, bulletIconpadding.Tablet.left, bulletIconpadding.Mobile.left);
-        const TitleSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titlefontSizeTablet, titleStyles[0].titlefontSizeMobile);
-        const TitleMarginTop = this.getPreviewSize(this.props.deviceType, titlemargin.Desktop.top, titlemargin.Tablet.top, titlemargin.Mobile.top);
-        const TitleMarginRight = this.getPreviewSize(this.props.deviceType, titlemargin.Desktop.right, titlemargin.Tablet.right, titlemargin.Mobile.right);
-        const TitleMarginBottom = this.getPreviewSize(this.props.deviceType, titlemargin.Desktop.bottom, titlemargin.Tablet.bottom, titlemargin.Mobile.bottom);
-        const TitleMarginLeft = this.getPreviewSize(this.props.deviceType, titlemargin.Desktop.left, titlemargin.Tablet.left, titlemargin.Mobile.left);
-        const GeneralMarginTop = this.getPreviewSize(this.props.deviceType, generalmargin.Desktop.top, generalmargin.Tablet.top, generalmargin.Mobile.top);
-        const GeneralMarginRight = this.getPreviewSize(this.props.deviceType, generalmargin.Desktop.right, generalmargin.Tablet.right, generalmargin.Mobile.right);
-        const GeneralMarginBottom = this.getPreviewSize(this.props.deviceType, generalmargin.Desktop.bottom, generalmargin.Tablet.bottom, generalmargin.Mobile.bottom);
-        const GeneralMarginLeft = this.getPreviewSize(this.props.deviceType, generalmargin.Desktop.left, generalmargin.Tablet.left, generalmargin.Mobile.left);
-        const GeneralPaddingTop = this.getPreviewSize(this.props.deviceType, generalpadding.Desktop.top, generalpadding.Tablet.top, generalpadding.Mobile.top);
-        const GeneralPaddingRight = this.getPreviewSize(this.props.deviceType, generalpadding.Desktop.right, generalpadding.Tablet.right, generalpadding.Mobile.right);
-        const GeneralPaddingBottom = this.getPreviewSize(this.props.deviceType, generalpadding.Desktop.bottom, generalpadding.Tablet.bottom, generalpadding.Mobile.bottom);
-        const GeneralPaddingLeft = this.getPreviewSize(this.props.deviceType, generalpadding.Desktop.left, generalpadding.Tablet.left, generalpadding.Mobile.left);
-        const DividerWidth = this.getPreviewSize(this.props.deviceType, dividerStyles[0].dividerWidth, dividerStyles[0].dividerWidthTablet, dividerStyles[0].dividerWidthMobile);
-        const DividerHeight = this.getPreviewSize(this.props.deviceType, dividerStyles[0].dividerHeight, dividerStyles[0].dividerHeightTablet, dividerStyles[0].dividerHeightMobile);
+        const currentDevice = this.props.deviceType;
+        const BulletIconSize = bulletIconFontSize[currentDevice];
+        const BulletIconMarginTop = bulletIconmargin[currentDevice].top;
+        const BulletIconMarginRight = bulletIconmargin[currentDevice].right;
+        const BulletIconMarginBottom = bulletIconmargin[currentDevice].bottom;
+        const BulletIconMarginLeft = bulletIconmargin[currentDevice].left;
+        const BulletIconPaddingTop = bulletIconpadding[currentDevice].top;
+        const BulletIconPaddingRight = bulletIconpadding[currentDevice].right;
+        const BulletIconPaddingBottom = bulletIconpadding[currentDevice].bottom;
+        const BulletIconPaddingLeft = bulletIconpadding[currentDevice].left;
+        const TitleSize = titleTypography ? titleTypography.fontSize[currentDevice] : '';
+        const TitleMarginTop = titlemargin[currentDevice].top;
+        const TitleMarginRight = titlemargin[currentDevice].right;
+        const TitleMarginBottom = titlemargin[currentDevice].bottom;
+        const TitleMarginLeft = titlemargin[currentDevice].left;
+        const GeneralMarginTop = generalmargin[currentDevice].top;
+        const GeneralMarginRight = generalmargin[currentDevice].right;
+        const GeneralMarginBottom = generalmargin[currentDevice].bottom;
+        const GeneralMarginLeft = generalmargin[currentDevice].left;
+        const GeneralPaddingTop = generalpadding[currentDevice].top;
+        const GeneralPaddingRight = generalpadding[currentDevice].right;
+        const GeneralPaddingBottom = generalpadding[currentDevice].bottom;
+        const GeneralPaddingLeft = generalpadding[currentDevice].left;
+        const DividerWidth = dividerWidth[currentDevice];
+        const DividerHeight = dividerHeight[currentDevice];
 
         const addNewBulletList = () => {
             let cloneIcons = [...repeaterBulletList]
@@ -639,371 +647,316 @@ class edit extends Component {
             ),
             isSelected && (
                 <InspectorControls>
-                    <PanelBody
-                        title={__("General Settings")}
-                        className="premium-panel-body"
-                        initialOpen={false}
-                    >
-                        < SortableList
-                            items={repeaterBulletList}
-                            onSortEnd={(o, n) => onSortEndSingle(o, n)}
-                            onRemove={(value) => onRemove(value)}
-                            showContent={(value, i) => showContent(value, i)}
-                            changeLabel={(value, i) => changeLabel(value, i)}
-                            toggleShowBulletIcon={(value, i) => toggleShowBulletIcon(value, i)}
-                            selectIconType={(value, i) => selectIconType(value, i)}
-                            changeIcons={(value, i) => changeIcons(value, i)}
-                            selectImage={(value, i) => selectImage(value, i)}
-                            removeImage={(value, i) => removeImage(value, i)}
-                            toggleIconLink={(value, i) => toggleIconLink(value, i)}
-                            saveLink={(value, i) => saveLink(value, i)}
-                            openLink={(value, i) => openLink(value, i)}
-                            shouldCancelStart={shouldCancelStart}
-                        />
-                        < div className="premium-bullet-list-btn__wrap" >
-                            <button
-                                className={"premium-bullet-list-btn"}
-                                onClick={() => addNewBulletList()}
+                    <InspectorTabs tabs={['layout', 'style', 'advance']}>
+                        <InspectorTab key={'layout'}>
+                            <PanelBody
+                                title={__("General Settings")}
+                                className="premium-panel-body"
+                                initialOpen={true}
                             >
-                                <i className="dashicons dashicons-plus premium-bullet-list-icon" />
-                                {__("Add New Item")}
-                            </button>
-                        </div>
-                    </PanelBody>
-                    <PanelBody
-                        title={__("Display Options")}
-                        className="premium-panel-body"
-                        initialOpen={false}
-                    >
-                        <SelectControl
-                            label={__("Layout Type")}
-                            options={LAYOUT}
-                            value={layoutPos}
-                            onChange={newValue => setAttributes({ layoutPos: newValue })}
-                        />
-                        <SelectControl
-                            label={__("Bullet Position")}
-                            options={POSITION}
-                            value={iconPosition}
-                            onChange={newValue => setAttributes({ iconPosition: newValue })}
-                        />
-                        <div>
-                            <label>{__('Bullet Alignment')}</label>
-                            {iconPosition !== 'top' ? <div className="bullet-list-button-list">
-                                <Tooltip text={__('Top')}>
+                                < SortableList
+                                    items={repeaterBulletList}
+                                    onSortEnd={(o, n) => onSortEndSingle(o, n)}
+                                    onRemove={(value) => onRemove(value)}
+                                    showContent={(value, i) => showContent(value, i)}
+                                    changeLabel={(value, i) => changeLabel(value, i)}
+                                    toggleShowBulletIcon={(value, i) => toggleShowBulletIcon(value, i)}
+                                    selectIconType={(value, i) => selectIconType(value, i)}
+                                    changeIcons={(value, i) => changeIcons(value, i)}
+                                    selectImage={(value, i) => selectImage(value, i)}
+                                    removeImage={(value, i) => removeImage(value, i)}
+                                    toggleIconLink={(value, i) => toggleIconLink(value, i)}
+                                    saveLink={(value, i) => saveLink(value, i)}
+                                    openLink={(value, i) => openLink(value, i)}
+                                    shouldCancelStart={shouldCancelStart}
+                                />
+                                < div className="premium-bullet-list-btn__wrap" >
                                     <button
-                                        onClick={() => setAttributes({ bulletAlign: 'flex-start' })}
-                                        className={"bullet-list-button" + (bulletAlign === 'flex-start' ? ' active' : '')}
-                                    >{icons.vertical_top}</button>
-                                </Tooltip>
+                                        className={"premium-bullet-list-btn"}
+                                        onClick={() => addNewBulletList()}
+                                    >
+                                        <i className="dashicons dashicons-plus premium-bullet-list-icon" />
+                                        {__("Add New Item")}
+                                    </button>
+                                </div>
+                            </PanelBody>
+                            <PanelBody
+                                title={__("Display Options")}
+                                className="premium-panel-body"
+                                initialOpen={false}
+                            >
+                                <SelectControl
+                                    label={__("Layout Type")}
+                                    options={LAYOUT}
+                                    value={layoutPos}
+                                    onChange={newValue => setAttributes({ layoutPos: newValue })}
+                                />
+                                <hr />
+                                <div>
+                                    <label>{__('Bullet Alignment')}</label>
+                                    {iconPosition !== 'top' ? <div className="bullet-list-button-list">
+                                        <Tooltip text={__('Top')}>
+                                            <button
+                                                onClick={() => setAttributes({ bulletAlign: 'flex-start' })}
+                                                className={"bullet-list-button" + (bulletAlign === 'flex-start' ? ' active' : '')}
+                                            >{icons.vertical_top}</button>
+                                        </Tooltip>
 
-                                <Tooltip text={__('Middle')} >
-                                    <button
-                                        onClick={() => setAttributes({ bulletAlign: 'center' })}
-                                        className={"bullet-list-button" + (bulletAlign === 'center' ? ' active' : '')}
-                                    >{icons.vertical_middle}</button>
-                                </Tooltip>
+                                        <Tooltip text={__('Middle')} >
+                                            <button
+                                                onClick={() => setAttributes({ bulletAlign: 'center' })}
+                                                className={"bullet-list-button" + (bulletAlign === 'center' ? ' active' : '')}
+                                            >{icons.vertical_middle}</button>
+                                        </Tooltip>
 
-                                <Tooltip text={__('Bottom')} >
-                                    <button
-                                        onClick={() => setAttributes({ bulletAlign: 'flex-end' })}
-                                        className={"bullet-list-button" + (bulletAlign === 'flex-end' ? ' active' : '')}
-                                    >{icons.vertical_bottom}</button>
-                                </Tooltip>
-                            </div> : <RadioComponent
-                                choices={ALIGNS}
-                                value={bulletAlign}
-                                onChange={(newValue) => setAttributes({ bulletAlign: newValue })}
-                                label={__("", 'premium-blocks-for-gutenberg')}
-                            />
+                                        <Tooltip text={__('Bottom')} >
+                                            <button
+                                                onClick={() => setAttributes({ bulletAlign: 'flex-end' })}
+                                                className={"bullet-list-button" + (bulletAlign === 'flex-end' ? ' active' : '')}
+                                            >{icons.vertical_bottom}</button>
+                                        </Tooltip>
+                                    </div> : <RadioComponent
+                                        choices={ALIGNS}
+                                        value={bulletAlign}
+                                        onChange={(newValue) => setAttributes({ bulletAlign: newValue })}
+                                        label={__("", 'premium-blocks-for-gutenberg')}
+                                    />
+                                    }
+                                </div>
+                                <hr />
+                                <SelectControl
+                                    label={__("Bullet Position")}
+                                    options={POSITION}
+                                    value={iconPosition}
+                                    onChange={newValue => setAttributes({ iconPosition: newValue })}
+                                />
+                                <hr />
+                                <ToggleControl
+                                    label={__("Divider")}
+                                    checked={divider}
+                                    onChange={value => setAttributes({ divider: value })}
+                                />
+                            </PanelBody>
+                        </InspectorTab>
+                        <InspectorTab key={'style'}>
+                            <PanelBody
+                                title={__("General Style")}
+                                className="premium-panel-body"
+                                initialOpen={true}
+                            >
+                                <div className="premium-control-toggle">
+                                    <AdvancedPopColorControl
+                                        label={__("Background Color", 'premium-block-for-gutenberg')}
+                                        colorValue={generalStyles[0].generalBackgroundColor}
+                                        colorDefault={''}
+                                        onColorChange={newValue =>
+                                            saveGeneralStyles({
+                                                generalBackgroundColor: newValue
+                                            })
+                                        }
+                                    />
+                                </div>
+                                <div className="premium-control-toggle">
+                                    <AdvancedPopColorControl
+                                        label={__("Background Hover Color", 'premium-block-for-gutenberg')}
+                                        colorValue={generalStyles[0].generalHoverBackgroundColor}
+                                        colorDefault={''}
+                                        onColorChange={newValue =>
+                                            saveGeneralStyles({
+                                                generalHoverBackgroundColor: newValue
+                                            })
+                                        }
+                                    />
+                                </div>
+                                <hr />
+                                <PremiumShadow
+                                    label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
+                                    boxShadow={true}
+                                    value={boxShadow}
+                                    onChange={(value) => setAttributes({ boxShadow: value })}
+                                />
+                                <PremiumShadow
+                                    label={__("Hover Box Shadow", 'premium-blocks-for-gutenberg')}
+                                    boxShadow={true}
+                                    value={hoverBoxShadow}
+                                    onChange={(value) => setAttributes({ hoverBoxShadow: value })}
+                                />
+                                <hr />
+                                <PremiumBorder
+                                    label={__("Border")}
+                                    value={generalBorder}
+                                    borderType={generalBorder.borderType}
+                                    borderColor={generalBorder.borderColor}
+                                    borderWidth={generalBorder.borderWidth}
+                                    borderRadius={generalBorder.borderRadius}
+                                    onChange={(value) => setAttributes({ generalBorder: value })}
+                                />
+                                <hr />
+                                <SpacingComponent value={generalmargin} responsive={true} showUnits={true} label={__("Margin")} onChange={(value) => setAttributes({ generalmargin: value })} />
+                                <SpacingComponent value={generalpadding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ generalpadding: value })} />
+                            </PanelBody>
+                            <PanelBody
+                                title={__("Bullet Style")}
+                                className="premium-panel-body"
+                                initialOpen={false}
+                            >
+                                <ResponsiveRangeControl
+                                    label={__("Size", 'premium-blocks-for-gutenberg')}
+                                    value={bulletIconFontSize}
+                                    units={['px', 'em', 'rem']}
+                                    onChange={newValue => setAttributes({ bulletIconFontSize: newValue })}
+                                    showUnit={true}
+                                    min={1}
+                                    max={100}
+                                />
+                                <hr />
+                                <AdvancedPopColorControl
+                                    label={__("Color", 'premium-block-for-gutenberg')}
+                                    colorValue={bulletIconStyles[0].bulletIconColor}
+                                    colorDefault={''}
+                                    onColorChange={newValue =>
+                                        saveBulletIconStyles({
+                                            bulletIconColor: newValue
+                                        })
+                                    }
+                                />
+                                <AdvancedPopColorControl
+                                    label={__("Hover Color", 'premium-block-for-gutenberg')}
+                                    colorValue={bulletIconStyles[0].bulletIconHoverColor}
+                                    colorDefault={''}
+                                    onColorChange={newValue =>
+                                        saveBulletIconStyles({
+                                            bulletIconHoverColor: newValue
+                                        })
+                                    }
+                                />
+                                <AdvancedPopColorControl
+                                    label={__("Background Color", 'premium-block-for-gutenberg')}
+                                    colorValue={bulletIconStyles[0].bulletIconBackgroundColor}
+                                    colorDefault={''}
+                                    onColorChange={newValue =>
+                                        saveBulletIconStyles({
+                                            bulletIconBackgroundColor: newValue
+                                        })
+                                    }
+                                />
+                                <AdvancedPopColorControl
+                                    label={__("Hover Background Color", 'premium-block-for-gutenberg')}
+                                    colorValue={bulletIconStyles[0].bulletIconHoverBackgroundColor}
+                                    colorDefault={''}
+                                    onColorChange={newValue =>
+                                        saveBulletIconStyles({
+                                            bulletIconHoverBackgroundColor: newValue
+                                        })
+                                    }
+                                />
+                                <hr />
+                                <PremiumBorder
+                                    label={__("Border")}
+                                    value={bulletIconBorder}
+                                    borderType={bulletIconBorder.borderType}
+                                    borderColor={bulletIconBorder.borderColor}
+                                    borderWidth={bulletIconBorder.borderWidth}
+                                    borderRadius={bulletIconBorder.borderRadius}
+                                    onChange={(value) => setAttributes({ bulletIconBorder: value })}
+                                />
+                                <hr />
+                                <SpacingComponent value={bulletIconmargin} responsive={true} showUnits={true} label={__("Margin")} onChange={(value) => setAttributes({ bulletIconmargin: value })} />
+                                <SpacingComponent value={bulletIconpadding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ bulletIconpadding: value })} />
+                            </PanelBody>
+                            <PanelBody
+                                title={__("Title Style")}
+                                className="premium-panel-body"
+                                initialOpen={false}
+                            >
+                                <PremiumTypo
+                                    components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
+                                    value={titleTypography}
+                                    onChange={newValue => setAttributes({ titleTypography: newValue })}
+                                />
+                                <hr />
+                                <div className="premium-control-toggle">
+                                    <AdvancedPopColorControl
+                                        label={__("Color", 'premium-block-for-gutenberg')}
+                                        colorValue={titleStyles[0].titleColor}
+                                        colorDefault={''}
+                                        onColorChange={newValue =>
+                                            saveTitleStyles({
+                                                titleColor: newValue
+                                            })
+                                        }
+                                    />
+                                </div>
+                                <div className="premium-control-toggle">
+                                    <AdvancedPopColorControl
+                                        label={__("Hover Color", 'premium-block-for-gutenberg')}
+                                        colorValue={titleStyles[0].titleHoverColor}
+                                        colorDefault={''}
+                                        onColorChange={newValue =>
+                                            saveTitleStyles({
+                                                titleHoverColor: newValue
+                                            })
+                                        }
+                                    />
+                                </div>
+                                <hr />
+                                <PremiumShadow
+                                    label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
+                                    boxShadow={false}
+                                    value={titlesTextShadow}
+                                    onChange={(value) => setAttributes({ titlesTextShadow: value })}
+                                />
+                                <hr />
+                                <SpacingComponent value={titlemargin} responsive={true} showUnits={true} label={__("Margin")} onChange={(value) => setAttributes({ titlemargin: value })} />
+                            </PanelBody>
+                            {divider &&
+                                <PanelBody
+                                    title={__("Divider")}
+                                    className="premium-panel-body"
+                                    initialOpen={false}
+                                >
+                                    <SelectControl
+                                        label={__("Divider Style")}
+                                        options={DividerStyle}
+                                        value={dividerStyle}
+                                        onChange={newValue => setAttributes({ dividerStyle: newValue })}
+                                    />
+                                    <hr />
+                                    <ResponsiveRangeControl
+                                        label={__("Width", 'premium-blocks-for-gutenberg')}
+                                        value={dividerWidth}
+                                        units={['px', 'em', '%']}
+                                        onChange={newValue => setAttributes({ dividerWidth: newValue })}
+                                        showUnit={true}
+                                        min={1}
+                                        max={600}
+                                    />
+                                    <hr />
+                                    <ResponsiveRangeControl
+                                        label={__("Width", 'premium-blocks-for-gutenberg')}
+                                        value={dividerHeight}
+                                        units={['px', 'em', '%']}
+                                        onChange={newValue => setAttributes({ dividerHeight: newValue })}
+                                        showUnit={true}
+                                        min={1}
+                                        max={600}
+                                    />
+                                    <hr />
+                                    <AdvancedPopColorControl
+                                        label={__("Color", 'premium-block-for-gutenberg')}
+                                        colorValue={dividerStyles[0].dividerColor}
+                                        colorDefault={''}
+                                        onColorChange={newValue =>
+                                            saveDividerStyles({
+                                                dividerColor: newValue
+                                            })
+                                        }
+                                    />
+                                </PanelBody>
                             }
-                        </div>
-                        <hr />
-                        <ToggleControl
-                            label={__("Divider")}
-                            checked={divider}
-                            onChange={value => setAttributes({ divider: value })}
-                        />
-                    </PanelBody>
-                    <PanelBody
-                        title={__("General Style")}
-                        className="premium-panel-body"
-                        initialOpen={false}
-                    >
-                        <div className="premium-control-toggle">
-                            <AdvancedPopColorControl
-                                label={__("Background Color", 'premium-block-for-gutenberg')}
-                                colorValue={generalStyles[0].generalBackgroundColor}
-                                colorDefault={''}
-                                onColorChange={newValue =>
-                                    saveGeneralStyles({
-                                        generalBackgroundColor: newValue
-                                    })
-                                }
-                            />
-                        </div>
-                        <div className="premium-control-toggle">
-                            <AdvancedPopColorControl
-                                label={__("Background Hover Color", 'premium-block-for-gutenberg')}
-                                colorValue={generalStyles[0].generalHoverBackgroundColor}
-                                colorDefault={''}
-                                onColorChange={newValue =>
-                                    saveGeneralStyles({
-                                        generalHoverBackgroundColor: newValue
-                                    })
-                                }
-                            />
-                        </div>
-                        <PremiumShadow
-                            label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
-                            boxShadow={true}
-                            color={generalStyles[0].generalShadowColor}
-                            blur={generalStyles[0].generalShadowBlur}
-                            horizontal={generalStyles[0].generalShadowHorizontal}
-                            vertical={generalStyles[0].generalShadowVertical}
-                            position={generalStyles[0].generalShadowPosition}
-                            onChangeColor={newColor => saveGeneralStyles({ generalShadowColor: newColor === undefined ? "transparent" : newColor })}
-                            onChangeBlur={newBlur => saveGeneralStyles({ generalShadowBlur: newBlur === undefined ? 0 : newBlur })}
-                            onChangehHorizontal={newValue => saveGeneralStyles({ generalShadowHorizontal: newValue === undefined ? 0 : newValue })}
-                            onChangeVertical={newValue => saveGeneralStyles({ generalShadowVertical: newValue === undefined ? 0 : newValue })}
-                            onChangePosition={newValue => saveGeneralStyles({ generalShadowPosition: newValue === undefined ? 0 : newValue })}
-                        />
-                        <PremiumShadow
-                            label={__("Hover Box Shadow", 'premium-blocks-for-gutenberg')}
-                            boxShadow={true}
-                            color={generalStyles[0].generalHoverShadowColor}
-                            blur={generalStyles[0].generalHoverShadowBlur}
-                            horizontal={generalStyles[0].generalHoverShadowHorizontal}
-                            vertical={generalStyles[0].generalHoverShadowVertical}
-                            position={generalStyles[0].generalHoverShadowPosition}
-                            onChangeColor={newColor => saveGeneralStyles({ generalHoverShadowColor: newColor === undefined ? "transparent" : newColor })}
-                            onChangeBlur={newBlur => saveGeneralStyles({ generalHoverShadowBlur: newBlur === undefined ? 0 : newBlur })}
-                            onChangehHorizontal={newValue => saveGeneralStyles({ generalHoverShadowHorizontal: newValue === undefined ? 0 : newValue })}
-                            onChangeVertical={newValue => saveGeneralStyles({ generalHoverShadowVertical: newValue === undefined ? 0 : newValue })}
-                            onChangePosition={newValue => saveGeneralStyles({ generalHoverShadowPosition: newValue === undefined ? 0 : newValue })}
-                        />
-                        <PremiumBorder
-                            label={__("Border")}
-                            value={generalBorder}
-                            borderType={generalBorder.borderType}
-                            borderColor={generalBorder.borderColor}
-                            borderWidth={generalBorder.borderWidth}
-                            borderRadius={generalBorder.borderRadius}
-                            onChange={(value) => setAttributes({ generalBorder: value })}
-                        />
-                        <SpacingComponent value={generalmargin} responsive={true} showUnits={true} label={__("Margin")} onChange={(value) => setAttributes({ generalmargin: value })} />
-                        <SpacingComponent value={generalpadding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ generalpadding: value })} />
-                    </PanelBody>
-                    <PanelBody
-                        title={__("Bullet Style")}
-                        className="premium-panel-body"
-                        initialOpen={false}
-                    >
-                        <ResponsiveRangeControl
-                            label={__("Size", 'premium-block-for-gutenberg')}
-                            value={bulletIconStyles[0].bulletListfontSize}
-                            tabletValue={bulletIconStyles[0].bulletListfontSizeTablet}
-                            mobileValue={bulletIconStyles[0].bulletListfontSizeMobile}
-                            onChange={(value) => saveBulletIconStyles({ bulletListfontSize: value })}
-                            onChangeTablet={(value) => saveBulletIconStyles({ bulletListfontSizeTablet: value })}
-                            onChangeMobile={(value) => saveBulletIconStyles({ bulletListfontSizeMobile: value })}
-                            onChangeUnit={(key) =>
-                                saveBulletIconStyles({ bulletListfontSizeType: key })
-                            }
-                            unit={bulletIconStyles[0].bulletListfontSizeType}
-                            showUnit={true}
-                            defaultValue={20}
-                            min={1}
-                            max={100}
-                        />
-                        <AdvancedPopColorControl
-                            label={__("Color", 'premium-block-for-gutenberg')}
-                            colorValue={bulletIconStyles[0].bulletIconColor}
-                            colorDefault={''}
-                            onColorChange={newValue =>
-                                saveBulletIconStyles({
-                                    bulletIconColor: newValue
-                                })
-                            }
-                        />
-                        <AdvancedPopColorControl
-                            label={__("Hover Color", 'premium-block-for-gutenberg')}
-                            colorValue={bulletIconStyles[0].bulletIconHoverColor}
-                            colorDefault={''}
-                            onColorChange={newValue =>
-                                saveBulletIconStyles({
-                                    bulletIconHoverColor: newValue
-                                })
-                            }
-                        />
-                        <AdvancedPopColorControl
-                            label={__("Background Color", 'premium-block-for-gutenberg')}
-                            colorValue={bulletIconStyles[0].bulletIconBackgroundColor}
-                            colorDefault={''}
-                            onColorChange={newValue =>
-                                saveBulletIconStyles({
-                                    bulletIconBackgroundColor: newValue
-                                })
-                            }
-                        />
-                        <AdvancedPopColorControl
-                            label={__("Hover Background Color", 'premium-block-for-gutenberg')}
-                            colorValue={bulletIconStyles[0].bulletIconHoverBackgroundColor}
-                            colorDefault={''}
-                            onColorChange={newValue =>
-                                saveBulletIconStyles({
-                                    bulletIconHoverBackgroundColor: newValue
-                                })
-                            }
-                        />
-                        <PremiumBorder
-                            label={__("Border")}
-                            value={bulletIconBorder}
-                            borderType={bulletIconBorder.borderType}
-                            borderColor={bulletIconBorder.borderColor}
-                            borderWidth={bulletIconBorder.borderWidth}
-                            borderRadius={bulletIconBorder.borderRadius}
-                            onChange={(value) => setAttributes({ bulletIconBorder: value })}
-                        />
-                        <SpacingComponent value={bulletIconmargin} responsive={true} showUnits={true} label={__("Margin")} onChange={(value) => setAttributes({ bulletIconmargin: value })} />
-                        <SpacingComponent value={bulletIconpadding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ bulletIconpadding: value })} />
-                    </PanelBody>
-                    <PanelBody
-                        title={__("Title Style")}
-                        className="premium-panel-body"
-                        initialOpen={false}
-                    >
-                        <PremiumTypo
-                            components={["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"]}
-                            setAttributes={saveTitleStyles}
-                            fontSizeType={{ value: titleStyles[0].titlefontSizeType, label: __("titlefontSizeType") }}
-                            fontSize={titleStyles[0].titleSize}
-                            fontSizeMobile={titleStyles[0].titlefontSizeMobile}
-                            fontSizeTablet={titleStyles[0].titlefontSizeTablet}
-                            onChangeSize={newSize => saveTitleStyles({ titleSize: newSize })}
-                            onChangeTabletSize={newSize => saveTitleStyles({ titlefontSizeTablet: newSize })}
-                            onChangeMobileSize={newSize => saveTitleStyles({ titlefontSizeMobile: newSize })}
-                            weight={titleStyles[0].titleWeight}
-                            style={titleStyles[0].titleStyle}
-                            spacing={titleStyles[0].titleLetter}
-                            upper={titleStyles[0].titleUpper}
-                            line={titleStyles[0].titleLine}
-                            fontFamily={titleStyles[0].titleFontFamily}
-                            onChangeWeight={newWeight =>
-                                saveTitleStyles({ titleWeight: newWeight || 500 })
-                            }
-                            onChangeStyle={newStyle =>
-                                saveTitleStyles({ titleStyle: newStyle })
-                            }
-                            onChangeSpacing={newValue =>
-                                saveTitleStyles({ titleLetter: newValue })
-                            }
-                            onChangeUpper={check => saveTitleStyles({ titleUpper: check })}
-                            onChangeLine={newValue => saveTitleStyles({ titleLine: newValue })}
-                            onChangeFamily={(fontFamily) => saveTitleStyles({ titleFontFamily: fontFamily })}
-                        />
-                        <div className="premium-control-toggle">
-                            <AdvancedPopColorControl
-                                label={__("Color", 'premium-block-for-gutenberg')}
-                                colorValue={titleStyles[0].titleColor}
-                                colorDefault={''}
-                                onColorChange={newValue =>
-                                    saveTitleStyles({
-                                        titleColor: newValue
-                                    })
-                                }
-                            />
-                        </div>
-                        <div className="premium-control-toggle">
-                            <AdvancedPopColorControl
-                                label={__("Hover Color", 'premium-block-for-gutenberg')}
-                                colorValue={titleStyles[0].titleHoverColor}
-                                colorDefault={''}
-                                onColorChange={newValue =>
-                                    saveTitleStyles({
-                                        titleHoverColor: newValue
-                                    })
-                                }
-                            />
-                        </div>
-                        <PremiumShadow
-                            label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
-                            boxShadow={false}
-                            color={titleStyles[0].titleshadowColor}
-                            blur={titleStyles[0].titleshadowBlur}
-                            horizontal={titleStyles[0].titleshadowHorizontal}
-                            vertical={titleStyles[0].titleshadowVertical}
-                            onChangeColor={newColor =>
-                                saveTitleStyles({ titleshadowColor: newColor })
-                            }
-                            onChangeBlur={newBlur => saveTitleStyles({ titleshadowBlur: newBlur })}
-                            onChangehHorizontal={newValue =>
-                                saveTitleStyles({ titleshadowHorizontal: newValue })
-                            }
-                            onChangeVertical={newValue =>
-                                saveTitleStyles({ titleshadowVertical: newValue })
-                            }
-                        />
-                        <SpacingComponent value={titlemargin} responsive={true} showUnits={true} label={__("Margin")} onChange={(value) => setAttributes({ titlemargin: value })} />
-                    </PanelBody>
-                    {divider &&
-                        <PanelBody
-                            title={__("Divider")}
-                            className="premium-panel-body"
-                            initialOpen={false}
-                        >
-                            <SelectControl
-                                label={__("Divider Style")}
-                                options={DividerStyle}
-                                value={dividerStyle}
-                                onChange={newValue => setAttributes({ dividerStyle: newValue })}
-                            />
-                            <ResponsiveRangeControl
-                                label={__("Width", 'premium-block-for-gutenberg')}
-                                value={dividerStyles[0].dividerWidth}
-                                tabletValue={dividerStyles[0].dividerWidthTablet}
-                                mobileValue={dividerStyles[0].dividerWidthMobile}
-                                onChange={(value) => saveDividerStyles({ dividerWidth: value })}
-                                onChangeTablet={(value) => saveDividerStyles({ dividerWidthTablet: value })}
-                                onChangeMobile={(value) => saveDividerStyles({ dividerWidthMobile: value })}
-                                onChangeUnit={(key) =>
-                                    saveDividerStyles({ dividerWidthType: key })
-                                }
-                                unit={dividerStyles[0].dividerWidthType}
-                                showUnit={true}
-                                defaultValue={0}
-                                min={1}
-                                max={600}
-                            />
-                            <ResponsiveRangeControl
-                                label={__("Height", 'premium-block-for-gutenberg')}
-                                value={dividerStyles[0].dividerHeight}
-                                tabletValue={dividerStyles[0].dividerHeightTablet}
-                                mobileValue={dividerStyles[0].dividerHeightMobile}
-                                onChange={(value) => saveDividerStyles({ dividerHeight: value })}
-                                onChangeTablet={(value) => saveDividerStyles({ dividerHeightTablet: value })}
-                                onChangeMobile={(value) => saveDividerStyles({ dividerHeightMobile: value })}
-                                onChangeUnit={(key) =>
-                                    saveDividerStyles({ dividerHeightType: key })
-                                }
-                                unit={dividerStyles[0].dividerHeightType}
-                                showUnit={true}
-                                defaultValue={0}
-                                min={1}
-                                max={600}
-                            />
-                            <AdvancedPopColorControl
-                                label={__("Color", 'premium-block-for-gutenberg')}
-                                colorValue={dividerStyles[0].dividerColor}
-                                colorDefault={''}
-                                onColorChange={newValue =>
-                                    saveDividerStyles({
-                                        dividerColor: newValue
-                                    })
-                                }
-                            />
-                        </PanelBody>
-                    }
+                        </InspectorTab>
+                        <InspectorTab key={'advance'}></InspectorTab>
+                    </InspectorTabs>
                 </InspectorControls >
             ),
             <div className={classnames(className, `premium-bullet-list-${this.props.clientId}`)}
@@ -1021,7 +974,7 @@ class edit extends Component {
                             "}",
                             `#premium-bullet-list-${this.props.clientId} .premium-bullet-list__wrapper:hover {`,
                             `background-color: ${generalStyles[0].generalHoverBackgroundColor} !important;`,
-                            `box-shadow: ${generalStyles[0].generalHoverShadowHorizontal}px ${generalStyles[0].generalHoverShadowVertical}px ${generalStyles[0].generalHoverShadowBlur}px ${generalStyles[0].generalHoverShadowColor} ${generalStyles[0].generalHoverShadowPosition} !important;`,
+                            `box-shadow: ${hoverBoxShadow.horizontal}px ${hoverBoxShadow.vertical}px ${hoverBoxShadow.blur}px ${hoverBoxShadow.color} ${hoverBoxShadow.position} !important;`,
                             "}",
                             `#premium-bullet-list-${this.props.clientId} .premium-bullet-list-divider-block:not(:last-child)::after {`,
                             `border-top-width: ${DividerHeight}${dividerStyles[0].dividerHeightType};`,
@@ -1055,24 +1008,23 @@ class edit extends Component {
                                                 className={`${icon.icon}`}
                                                 style={{
                                                     overflow: 'hidden',
-                                                    fontSize: BulletIconSize + bulletIconStyles[0].bulletListfontSizeType,
+                                                    fontSize: `${BulletIconSize}${bulletIconFontSize.unit}`,
                                                     color: bulletIconStyles[0].bulletIconColor,
                                                     backgroundColor: bulletIconStyles[0].bulletIconBackgroundColor,
-                                                    paddingTop: BulletIconPaddingTop + bulletIconStyles[0].bulletIconpaddingUnit,
-                                                    paddingBottom: BulletIconPaddingBottom + bulletIconStyles[0].bulletIconpaddingUnit,
-                                                    paddingLeft: BulletIconPaddingLeft + bulletIconStyles[0].bulletIconpaddingUnit,
-                                                    paddingRight: BulletIconPaddingRight + bulletIconStyles[0].bulletIconpaddingUnit,
+                                                    paddingTop: BulletIconPaddingTop + bulletIconpadding.unit,
+                                                    paddingBottom: BulletIconPaddingBottom + bulletIconpadding.unit,
+                                                    paddingLeft: BulletIconPaddingLeft + bulletIconpadding.unit,
+                                                    paddingRight: BulletIconPaddingRight + bulletIconpadding.unit,
                                                     borderStyle: bulletIconBorder && bulletIconBorder.borderType,
-                                                    borderTopWidth: bulletIconBorder && bulletIconBorder.borderWidth.Desktop.top,
-                                                    borderRightWidth: bulletIconBorder && bulletIconBorder.borderWidth.Desktop.right,
-                                                    borderBottomWidth: bulletIconBorder && bulletIconBorder.borderWidth.Desktop.bottom,
-                                                    borderLeftWidth: bulletIconBorder && bulletIconBorder.borderWidth.Desktop.left,
-                                                    borderRadius: `${bulletIconBorder && bulletIconBorder.borderRadius.Desktop.top || 0}px ${bulletIconBorder && bulletIconBorder.borderRadius.Desktop.right || 0}px ${bulletIconBorder && bulletIconBorder.borderRadius.Desktop.bottom || 0}px ${bulletIconBorder && bulletIconBorder.borderRadius.Desktop.left || 0}px`,
+                                                    borderTopWidth: bulletIconBorder && bulletIconBorder.borderWidth[currentDevice].top,
+                                                    borderRightWidth: bulletIconBorder && bulletIconBorder.borderWidth[currentDevice].right,
+                                                    borderBottomWidth: bulletIconBorder && bulletIconBorder.borderWidth[currentDevice].bottom,
+                                                    borderLeftWidth: bulletIconBorder && bulletIconBorder.borderWidth[currentDevice].left,
                                                     borderColor: bulletIconBorder && bulletIconBorder.borderColor,
-                                                    borderTopLeftRadius: `${bulletIconBorder && bulletIconBorder.borderRadius.Desktop.top || 0}px`,
-                                                    borderTopRightRadius: `${bulletIconBorder && bulletIconBorder.borderRadius.Desktop.right || 0}px`,
-                                                    borderBottomLeftRadius: `${bulletIconBorder && bulletIconBorder.borderRadius.Desktop.bottom || 0}px`,
-                                                    borderBottomRightRadius: `${bulletIconBorder && bulletIconBorder.borderRadius.Desktop.left || 0}px`,
+                                                    borderTopLeftRadius: `${bulletIconBorder && bulletIconBorder.borderRadius[currentDevice].top || 0}px`,
+                                                    borderTopRightRadius: `${bulletIconBorder && bulletIconBorder.borderRadius[currentDevice].right || 0}px`,
+                                                    borderBottomLeftRadius: `${bulletIconBorder && bulletIconBorder.borderRadius[currentDevice].bottom || 0}px`,
+                                                    borderBottomRightRadius: `${bulletIconBorder && bulletIconBorder.borderRadius[currentDevice].left || 0}px`,
                                                     verticalAlign: bulletAlign == 'flex-start' ? 'top' : bulletAlign == 'flex-end' ? 'bottom' : 'middle'
                                                 }}
                                             />
@@ -1086,23 +1038,22 @@ class edit extends Component {
                                             key={index}
                                             style={{
                                                 overflow: 'hidden',
-                                                width: BulletIconSize + bulletIconStyles[0].bulletListfontSizeType,
-                                                height: BulletIconSize + bulletIconStyles[0].bulletListfontSizeType,
-                                                paddingTop: BulletIconPaddingTop + bulletIconStyles[0].bulletIconpaddingUnit,
-                                                paddingBottom: BulletIconPaddingBottom + bulletIconStyles[0].bulletIconpaddingUnit,
-                                                paddingLeft: BulletIconPaddingLeft + bulletIconStyles[0].bulletIconpaddingUnit,
-                                                paddingRight: BulletIconPaddingRight + bulletIconStyles[0].bulletIconpaddingUnit,
+                                                width: `${BulletIconSize}${bulletIconFontSize.unit}`,
+                                                height: `${BulletIconSize}${bulletIconFontSize.unit}`,
+                                                paddingTop: BulletIconPaddingTop + bulletIconpadding.unit,
+                                                paddingBottom: BulletIconPaddingBottom + bulletIconpadding.unit,
+                                                paddingLeft: BulletIconPaddingLeft + bulletIconpadding.unit,
+                                                paddingRight: BulletIconPaddingRight + bulletIconpadding.unit,
                                                 borderStyle: bulletIconBorder && bulletIconBorder.borderType,
-                                                borderTopWidth: bulletIconBorder && bulletIconBorder.borderWidth.Desktop.top,
-                                                borderRightWidth: bulletIconBorder && bulletIconBorder.borderWidth.Desktop.right,
-                                                borderBottomWidth: bulletIconBorder && bulletIconBorder.borderWidth.Desktop.bottom,
-                                                borderLeftWidth: bulletIconBorder && bulletIconBorder.borderWidth.Desktop.left,
-                                                borderRadius: `${bulletIconBorder && bulletIconBorder.borderRadius.Desktop.top || 0}px ${bulletIconBorder && bulletIconBorder.borderRadius.Desktop.right || 0}px ${bulletIconBorder && bulletIconBorder.borderRadius.Desktop.bottom || 0}px ${bulletIconBorder && bulletIconBorder.borderRadius.Desktop.left || 0}px`,
+                                                borderTopWidth: bulletIconBorder && bulletIconBorder.borderWidth[currentDevice].top,
+                                                borderRightWidth: bulletIconBorder && bulletIconBorder.borderWidth[currentDevice].right,
+                                                borderBottomWidth: bulletIconBorder && bulletIconBorder.borderWidth[currentDevice].bottom,
+                                                borderLeftWidth: bulletIconBorder && bulletIconBorder.borderWidth[currentDevice].left,
                                                 borderColor: bulletIconBorder && bulletIconBorder.borderColor,
-                                                borderTopLeftRadius: `${bulletIconBorder && bulletIconBorder.borderRadius.Desktop.top || 0}px`,
-                                                borderTopRightRadius: `${bulletIconBorder && bulletIconBorder.borderRadius.Desktop.right || 0}px`,
-                                                borderBottomLeftRadius: `${bulletIconBorder && bulletIconBorder.borderRadius.Desktop.bottom || 0}px`,
-                                                borderBottomRightRadius: `${bulletIconBorder && bulletIconBorder.borderRadius.Desktop.left || 0}px`,
+                                                borderTopLeftRadius: `${bulletIconBorder && bulletIconBorder.borderRadius[currentDevice].top || 0}px`,
+                                                borderTopRightRadius: `${bulletIconBorder && bulletIconBorder.borderRadius[currentDevice].right || 0}px`,
+                                                borderBottomLeftRadius: `${bulletIconBorder && bulletIconBorder.borderRadius[currentDevice].bottom || 0}px`,
+                                                borderBottomRightRadius: `${bulletIconBorder && bulletIconBorder.borderRadius[currentDevice].left || 0}px`,
                                                 verticalAlign: bulletAlign == 'flex-start' ? 'top' : bulletAlign == 'flex-end' ? 'bottom' : 'middle'
                                             }}
                                         />
@@ -1128,44 +1079,43 @@ class edit extends Component {
                                             justifyContent: align == "right" ? "flex-end" : align,
                                             backgroundColor: generalStyles[0].generalBackgroundColor,
                                             borderStyle: generalBorder && generalBorder.borderType,
-                                            borderTopWidth: generalBorder && generalBorder.borderWidth.Desktop.top,
-                                            borderRightWidth: generalBorder && generalBorder.borderWidth.Desktop.right,
-                                            borderBottomWidth: generalBorder && generalBorder.borderWidth.Desktop.bottom,
-                                            borderLeftWidth: generalBorder && generalBorder.borderWidth.Desktop.left,
-                                            borderRadius: `${generalBorder && generalBorder.borderRadius.Desktop.top || 0}px ${generalBorder && generalBorder.borderRadius.Desktop.right || 0}px ${generalBorder && generalBorder.borderRadius.Desktop.bottom || 0}px ${generalBorder && generalBorder.borderRadius.Desktop.left || 0}px`,
+                                            borderTopWidth: generalBorder && generalBorder.borderWidth[currentDevice].top,
+                                            borderRightWidth: generalBorder && generalBorder.borderWidth[currentDevice].right,
+                                            borderBottomWidth: generalBorder && generalBorder.borderWidth[currentDevice].bottom,
+                                            borderLeftWidth: generalBorder && generalBorder.borderWidth[currentDevice].left,
                                             borderColor: generalBorder && generalBorder.borderColor,
-                                            borderTopLeftRadius: `${generalBorder && generalBorder.borderRadius.Desktop.top || 0}px`,
-                                            borderTopRightRadius: `${generalBorder && generalBorder.borderRadius.Desktop.right || 0}px`,
-                                            borderBottomLeftRadius: `${generalBorder && generalBorder.borderRadius.Desktop.bottom || 0}px`,
-                                            borderBottomRightRadius: `${generalBorder && generalBorder.borderRadius.Desktop.left || 0}px`,
-                                            paddingTop: GeneralPaddingTop + generalStyles[0].generalpaddingUnit,
-                                            paddingBottom: GeneralPaddingBottom + generalStyles[0].generalpaddingUnit,
-                                            paddingLeft: GeneralPaddingLeft + generalStyles[0].generalpaddingUnit,
-                                            paddingRight: GeneralPaddingRight + generalStyles[0].generalpaddingUnit,
-                                            marginTop: GeneralMarginTop + generalStyles[0].generalmarginType,
-                                            marginBottom: GeneralMarginBottom + generalStyles[0].generalmarginType,
-                                            marginLeft: GeneralMarginLeft + generalStyles[0].generalmarginType,
-                                            marginRight: GeneralMarginRight + generalStyles[0].generalmarginType,
-                                            boxShadow: `${generalStyles[0].generalShadowHorizontal}px ${generalStyles[0].generalShadowVertical}px ${generalStyles[0].generalShadowBlur}px ${generalStyles[0].generalShadowColor} ${generalStyles[0].generalShadowPosition}`,
+                                            borderTopLeftRadius: `${generalBorder && generalBorder.borderRadius[currentDevice].top || 0}px`,
+                                            borderTopRightRadius: `${generalBorder && generalBorder.borderRadius[currentDevice].right || 0}px`,
+                                            borderBottomLeftRadius: `${generalBorder && generalBorder.borderRadius[currentDevice].bottom || 0}px`,
+                                            borderBottomRightRadius: `${generalBorder && generalBorder.borderRadius[currentDevice].left || 0}px`,
+                                            paddingTop: GeneralPaddingTop + generalpadding.unit,
+                                            paddingBottom: GeneralPaddingBottom + generalpadding.unit,
+                                            paddingLeft: GeneralPaddingLeft + generalpadding.unit,
+                                            paddingRight: GeneralPaddingRight + generalpadding.unit,
+                                            marginTop: GeneralMarginTop + generalmargin.unit,
+                                            marginBottom: GeneralMarginBottom + generalmargin.unit,
+                                            marginLeft: GeneralMarginLeft + generalmargin.unit,
+                                            marginRight: GeneralMarginRight + generalmargin.unit,
+                                            boxShadow: `${boxShadow.horizontal}px ${boxShadow.vertical}px ${boxShadow.blur}px ${boxShadow.color} ${boxShadow.position}`,
                                         }}
                                     >
                                         <div className={`premium-bullet-list__content-wrap premium-bullet-list__content-wrap-${bulletAlign}`} style={{
                                             justifyContent: align == "right" ? align : align,
                                             display: iconPosition == "before" ? "flex" : "inline-flex",
                                             flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? 'row-reverse' : "",
-                                            marginTop: TitleMarginTop + titleStyles[0].titlemarginType,
-                                            marginBottom: TitleMarginBottom + titleStyles[0].titlemarginType,
-                                            marginLeft: TitleMarginLeft + titleStyles[0].titlemarginType,
-                                            marginRight: TitleMarginRight + titleStyles[0].titlemarginType,
+                                            marginTop: TitleMarginTop + titlemargin.unit,
+                                            marginBottom: TitleMarginBottom + titlemargin.unit,
+                                            marginLeft: TitleMarginLeft + titlemargin.unit,
+                                            marginRight: TitleMarginRight + titlemargin.unit,
                                         }}>
                                             {icon.showBulletIcon && <span className={`premium-bullet-list__icon-wrap`}
                                                 style={{
                                                     // overflow: "hidden",
                                                     alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
-                                                    marginTop: BulletIconMarginTop + bulletIconStyles[0].bulletIconmarginType,
-                                                    marginBottom: BulletIconMarginBottom + bulletIconStyles[0].bulletIconmarginType,
-                                                    marginLeft: BulletIconMarginLeft + bulletIconStyles[0].bulletIconmarginType,
-                                                    marginRight: BulletIconMarginRight + bulletIconStyles[0].bulletIconmarginType,
+                                                    marginTop: BulletIconMarginTop + bulletIconmargin.unit,
+                                                    marginBottom: BulletIconMarginBottom + bulletIconmargin.unit,
+                                                    marginLeft: BulletIconMarginLeft + bulletIconmargin.unit,
+                                                    marginRight: BulletIconMarginRight + bulletIconmargin.unit,
                                                     textAlign: bulletAlign,
                                                     justifyContent: bulletAlign,
                                                     alignItems: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
@@ -1174,9 +1124,9 @@ class edit extends Component {
                                             <div
                                                 className="premium-bullet-list__label-wrap"
                                                 style={{
-                                                    fontFamily: titleFont,
-                                                    fontSize: TitleSize + titleStyles[0].titlefontSizeType,
-                                                    fontWeight: titleStyles[0].titleWeight,
+                                                    fontSize: `${TitleSize}${titleTypography.fontSize.unit}`,
+                                                    fontFamily: titleTypography.fontFamily,
+                                                    fontWeight: titleTypography.fontWeight,
                                                 }}
                                             >
                                                 <RichText
@@ -1187,16 +1137,15 @@ class edit extends Component {
                                                     onChange={(val) => changeLabel(val, index)}
                                                     multiline={false}
                                                     style={{
-                                                        // fontFamily: titleFont,
-                                                        // fontSize: TitleSize + titleStyles[0].titlefontSizeType,
-                                                        // fontWeight: titleStyles[0].titleWeight,
-                                                        letterSpacing: titleStyles[0].titleLetter + "px",
-                                                        lineHeight: titleStyles[0].titleLine + "px",
-                                                        fontStyle: titleStyles[0].titleStyle,
-                                                        textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
-                                                        fontFamily: titleStyles[0].titleFontFamily,
-                                                        color: titleStyles[0].titleColor,
-                                                        textShadow: `${titleStyles[0].titleshadowHorizontal}px ${titleStyles[0].titleshadowVertical}px ${titleStyles[0].titleshadowBlur}px ${titleStyles[0].titleshadowColor}`,
+                                                        fontSize: `${TitleSize}${titleTypography.fontSize.unit}`,
+                                                        fontStyle: titleTypography.fontStyle,
+                                                        fontFamily: titleTypography.fontFamily,
+                                                        fontWeight: titleTypography.fontWeight,
+                                                        letterSpacing: titleTypography.letterSpacing,
+                                                        textDecoration: titleTypography.textDecoration,
+                                                        textTransform: titleTypography.textTransform,
+                                                        lineHeight: `${titleTypography.lineHeight}px`,
+                                                        textShadow: `${titlesTextShadow.titleshadowHorizontal}px ${titlesTextShadow.titleshadowVertical}px ${titlesTextShadow.titleshadowBlur}px ${titlesTextShadow.titleshadowColor}`
                                                     }}
                                                 />
                                             </div>

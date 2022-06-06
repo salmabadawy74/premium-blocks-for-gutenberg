@@ -206,11 +206,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _get = __webpack_require__(85);
+var _get = __webpack_require__(87);
 
 var _get2 = _interopRequireDefault(_get);
 
-var _map = __webpack_require__(94);
+var _map = __webpack_require__(96);
 
 var _map2 = _interopRequireDefault(_map);
 
@@ -1843,7 +1843,7 @@ module.exports = isArray;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var freeGlobal = __webpack_require__(88);
+var freeGlobal = __webpack_require__(90);
 
 /** Detect free variable `self`. */
 var freeSelf = (typeof self === 'undefined' ? 'undefined' : _typeof(self)) == 'object' && self && self.Object === Object && self;
@@ -2696,7 +2696,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _webfontloader = __webpack_require__(104);
+var _webfontloader = __webpack_require__(106);
 
 var _webfontloader2 = _interopRequireDefault(_webfontloader);
 
@@ -2827,7 +2827,7 @@ var _premiumBackground = __webpack_require__(107);
 
 var _premiumBackground2 = _interopRequireDefault(_premiumBackground);
 
-var _map = __webpack_require__(94);
+var _map = __webpack_require__(96);
 
 var _map2 = _interopRequireDefault(_map);
 
@@ -3722,7 +3722,7 @@ module.exports = $export;
 
 var anObject = __webpack_require__(44);
 var IE8_DOM_DEFINE = __webpack_require__(120);
-var toPrimitive = __webpack_require__(72);
+var toPrimitive = __webpack_require__(74);
 var dP = Object.defineProperty;
 
 exports.f = __webpack_require__(28) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
@@ -3974,7 +3974,7 @@ module.exports = function (exec) {
 
 // to indexed object, toObject with fallback for non-array-like ES3 strings
 var IObject = __webpack_require__(123);
-var defined = __webpack_require__(73);
+var defined = __webpack_require__(75);
 module.exports = function (it) {
   return IObject(defined(it));
 };
@@ -3986,7 +3986,7 @@ module.exports = function (it) {
 "use strict";
 
 
-var store = __webpack_require__(76)('wks');
+var store = __webpack_require__(78)('wks');
 var uid = __webpack_require__(57);
 var _Symbol = __webpack_require__(20).Symbol;
 var USE_SYMBOL = typeof _Symbol == 'function';
@@ -4473,7 +4473,7 @@ module.exports = ListCache;
 "use strict";
 
 
-var eq = __webpack_require__(92);
+var eq = __webpack_require__(94);
 
 /**
  * Gets the index at which the `key` is found in `array` of key-value pairs.
@@ -4689,7 +4689,7 @@ module.exports = function (bitmap, value) {
 
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
 var $keys = __webpack_require__(122);
-var enumBugKeys = __webpack_require__(77);
+var enumBugKeys = __webpack_require__(79);
 
 module.exports = Object.keys || function keys(O) {
   return $keys(O, enumBugKeys);
@@ -4991,7 +4991,7 @@ module.exports = isLength;
 "use strict";
 
 
-var isFunction = __webpack_require__(90),
+var isFunction = __webpack_require__(92),
     isLength = __webpack_require__(65);
 
 /**
@@ -5030,6 +5030,246 @@ module.exports = isArrayLike;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _classnames = __webpack_require__(40);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+var _wp$element = wp.element,
+    Fragment = _wp$element.Fragment,
+    cloneElement = _wp$element.cloneElement,
+    Children = _wp$element.Children;
+var Tooltip = wp.components.Tooltip;
+var _wp$element2 = wp.element,
+    useState = _wp$element2.useState,
+    useRef = _wp$element2.useRef,
+    useEffect = _wp$element2.useEffect,
+    LAYOUT = 'layout',
+    STYLE = 'style',
+    ADVANCE = 'advance';
+
+
+var InspectorTabs = function InspectorTabs(props) {
+    var defaultTab = props.defaultTab,
+        children = props.children,
+        tabs = props.tabs,
+        _useState = useState(defaultTab ? defaultTab : tabs[0]),
+        _useState2 = _slicedToArray(_useState, 2),
+        currentTab = _useState2[0],
+        setCurrentTab = _useState2[1],
+        tabContainer = useRef(),
+        offset = useRef(undefined);
+
+    var sidebarPanel = void 0;
+
+    useEffect(function () {
+        sidebarPanel = tabContainer.current.closest('.components-panel');
+    });
+
+    var observer = new IntersectionObserver(function (_ref) {
+        var _ref2 = _slicedToArray(_ref, 1),
+            e = _ref2[0];
+
+        return e.target.classList.toggle('premium-is-sticky', e.intersectionRatio < 1);
+    }, { threshold: [1] });
+
+    // component did mount
+    useEffect(function () {
+        // sticky tabs menu
+        var container = document.querySelector('.premium-inspector-tabs-container');
+        if (container) {
+            observer.observe(container);
+        }
+
+        // component will unmount
+        return function () {
+            sidebarPanel && sidebarPanel.removeAttribute('data-premium-tab');
+        };
+    }, []);
+
+    useEffect(function () {
+
+        sidebarPanel && sidebarPanel.setAttribute('data-premium-tab', defaultTab);
+    }, [defaultTab]);
+
+    var _onTabChange = function _onTabChange(tab) {
+        setCurrentTab(tab);
+        sidebarPanel && sidebarPanel.setAttribute('data-premium-tab', tab);
+    };
+
+    return React.createElement(
+        Fragment,
+        null,
+        React.createElement(
+            'div',
+            { className: 'premium-inspector-tabs-container' },
+            React.createElement(
+                'div',
+                { ref: tabContainer, className: (0, _classnames2.default)('premium-inspector-tabs', 'premium-inspector-tabs-count-' + tabs.length, currentTab) },
+                tabs.indexOf(LAYOUT) > -1 && React.createElement(
+                    Tooltip,
+                    { text: __('Layout', 'premium-blocks-for-gutenberg') },
+                    React.createElement(
+                        'button',
+                        { className: (0, _classnames2.default)({ 'premium-active': currentTab === LAYOUT }), onClick: function onClick() {
+                                return _onTabChange(LAYOUT);
+                            } },
+                        React.createElement(
+                            'svg',
+                            { id: 'Layer_1', 'data-name': 'Layer 1', xmlns: 'http://www.w3.org/2000/svg', width: '18', height: '21', viewBox: '0 0 23.98 23.99' },
+                            React.createElement('defs', null),
+                            React.createElement(
+                                'title',
+                                null,
+                                'layout-tab'
+                            ),
+                            React.createElement(
+                                'g',
+                                { id: 'Layout' },
+                                React.createElement('path', { 'class': 'cls-1', d: 'M23.84,2.9a4,4,0,0,0-1-1.74,4,4,0,0,0-1.75-1,3.85,3.85,0,0,0-2,0,31.93,31.93,0,0,0-9,4v8.48l6.29-6.3a1.19,1.19,0,0,1,.33-.22,1,1,0,0,1,.77,0,1,1,0,0,1,.55.55,1,1,0,0,1,0,.77,1.19,1.19,0,0,1-.22.33L14.41,11H21.6a30.63,30.63,0,0,0,2.28-6.07A4,4,0,0,0,23.84,2.9Z', transform: 'translate(-0.01 0)' }),
+                                React.createElement('path', { 'class': 'cls-1', d: 'M20.53,13a28.68,28.68,0,0,1-4,5.46,8.24,8.24,0,0,1-2.69,1.87,8.07,8.07,0,0,1-3.21.67A7.43,7.43,0,0,1,6,19.42L12.43,13h8.1Z', transform: 'translate(-0.01 0)' }),
+                                React.createElement('path', { 'class': 'cls-1', d: 'M5.82,19.31l.17.11L1.71,23.71A1,1,0,0,1,1,24a1,1,0,0,1-.69-.3A1,1,0,0,1,0,23a1,1,0,0,1,.28-.71L4.58,18A8,8,0,0,0,5.82,19.31Z', transform: 'translate(-0.01 0)' }),
+                                React.createElement('path', { 'class': 'cls-1', d: 'M4.58,18A7.72,7.72,0,0,1,5.26,7.87,25.63,25.63,0,0,1,8,5.51v9a.35.35,0,0,0,0,.06Z', transform: 'translate(-0.01 0)' })
+                            )
+                        ),
+                        '                                    ',
+                        React.createElement(
+                            'h5',
+                            null,
+                            __('Layout', 'premium-blocks-for-gutenberg')
+                        )
+                    )
+                ),
+                tabs.indexOf(STYLE) > -1 && React.createElement(
+                    Tooltip,
+                    { text: __('Style', 'premium-blocks-for-gutenberg') },
+                    React.createElement(
+                        'button',
+                        { className: (0, _classnames2.default)({ 'premium-active': currentTab === STYLE }), onClick: function onClick() {
+                                return _onTabChange(STYLE);
+                            } },
+                        React.createElement(
+                            'svg',
+                            { id: 'Layer_1', 'data-name': 'Layer 1', xmlns: 'http://www.w3.org/2000/svg', width: '18', height: '21', viewBox: '0 0 24 24' },
+                            React.createElement('defs', null),
+                            React.createElement(
+                                'title',
+                                null,
+                                'style-tab'
+                            ),
+                            React.createElement(
+                                'g',
+                                { id: 'Style' },
+                                React.createElement('path', { 'class': 'cls-1', d: 'M2.89,6.84a.93.93,0,0,0,.46-.12,1,1,0,0,0,.37-.32,10,10,0,0,1,2.8-2.77,1,1,0,0,0,.28-.27A.82.82,0,0,0,7,3a1,1,0,0,0,0-.39,1.2,1.2,0,0,0-.15-.37A1,1,0,0,0,6.54,2a1,1,0,0,0-.36-.16,1.27,1.27,0,0,0-.39,0A1.2,1.2,0,0,0,5.42,2,11.94,11.94,0,0,0,2.06,5.28a1,1,0,0,0-.17.5A1,1,0,0,0,2,6.3a1.07,1.07,0,0,0,.37.39A1,1,0,0,0,2.89,6.84Z', transform: 'translate(0)' }),
+                                React.createElement('path', { 'class': 'cls-1', d: 'M2,12a10,10,0,0,1,.19-2,1,1,0,0,0,0-.39,1.2,1.2,0,0,0-.15-.37A1.07,1.07,0,0,0,1.77,9a1.14,1.14,0,0,0-.36-.15.86.86,0,0,0-.39,0A1.2,1.2,0,0,0,.65,9a1,1,0,0,0-.27.28,1.2,1.2,0,0,0-.15.37,12.14,12.14,0,0,0,0,4.73,1,1,0,0,0,.35.57,1,1,0,0,0,.63.23l.2,0a1,1,0,0,0,.64-.43A1,1,0,0,0,2.2,14,10.05,10.05,0,0,1,2,12Z', transform: 'translate(0)' }),
+                                React.createElement('path', { 'class': 'cls-1', d: 'M6.53,20.37a9.85,9.85,0,0,1-2.81-2.76,1.07,1.07,0,0,0-.28-.28.93.93,0,0,0-.36-.14,1,1,0,0,0-1,1.54A11.94,11.94,0,0,0,5.43,22a1,1,0,0,0,.75.15,1.06,1.06,0,0,0,.64-.43A1,1,0,0,0,7,21a1,1,0,0,0-.43-.64Z', transform: 'translate(0)' }),
+                                React.createElement('path', { 'class': 'cls-1', d: 'M12,0A12.17,12.17,0,0,0,9.83.2a1,1,0,0,0-.62.38,1,1,0,0,0-.2.69,1,1,0,0,0,.32.65,1,1,0,0,0,.68.26h.18A10,10,0,0,1,12,2V22a10,10,0,0,1-1.81-.16,1,1,0,0,0-1.17.8,1.05,1.05,0,0,0,.17.75,1,1,0,0,0,.64.41A12.05,12.05,0,0,0,15,23.61a12.23,12.23,0,0,0,4.64-2.39A12,12,0,0,0,12,0Z', transform: 'translate(0)' })
+                            )
+                        ),
+                        React.createElement(
+                            'h5',
+                            null,
+                            __('Style', 'premium-blocks-for-gutenberg')
+                        )
+                    )
+                ),
+                tabs.indexOf(ADVANCE) > -1 && React.createElement(
+                    Tooltip,
+                    { text: __('Advanced', 'premium-blocks-for-gutenberg') },
+                    React.createElement(
+                        'button',
+                        { className: (0, _classnames2.default)({ 'premium-active': currentTab === ADVANCE }), onClick: function onClick() {
+                                return _onTabChange(ADVANCE);
+                            } },
+                        React.createElement(
+                            'svg',
+                            { id: 'Layer_1', 'data-name': 'Layer 1', xmlns: 'http://www.w3.org/2000/svg', width: '18', height: '21', viewBox: '0 0 21.59 24' },
+                            React.createElement('defs', null),
+                            React.createElement(
+                                'title',
+                                null,
+                                'advanced-tab'
+                            ),
+                            React.createElement('path', { id: 'Advanced', 'class': 'cls-1', d: 'M1.61,18A3,3,0,0,0,5.7,19.1h0l.44-.26A9,9,0,0,0,9,20.49V21a3,3,0,0,0,6,0v-.51a9,9,0,0,0,2.85-1.65l.45.26a3,3,0,0,0,3-5.2l-.45-.26a9.1,9.1,0,0,0,0-3.29l.45-.25a3,3,0,0,0-3-5.2l-.45.25A9.21,9.21,0,0,0,15,3.51V3A3,3,0,0,0,9,3v.51A9,9,0,0,0,6.15,5.16L5.71,4.9a3,3,0,1,0-3,5.2l.44.26a9.1,9.1,0,0,0,0,3.29l-.44.25A3,3,0,0,0,1.61,18ZM12,8a4,4,0,1,1-4,4A4,4,0,0,1,12,8Z', transform: 'translate(-1.2)' })
+                        ),
+                        React.createElement(
+                            'h5',
+                            null,
+                            __('Advanced', 'premium-blocks-for-gutenberg')
+                        )
+                    )
+                )
+            )
+        ),
+        Array.isArray(children) && Children.map(children, function (child, index) {
+            if (!child.key) {
+                throw new Error('props.key not found in <InspectorTab />, you must use `key` prop');
+                return;
+            }
+            return cloneElement(child, {
+                index: index,
+                isActive: child.key === currentTab
+            });
+        })
+    );
+};
+
+InspectorTabs.defaultProps = {
+    defaultTab: null,
+    tabs: ['layout', 'style', 'advance']
+};
+
+exports.default = InspectorTabs;
+
+/***/ }),
+/* 68 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var Fragment = wp.element.Fragment;
+
+
+var InspectorTab = function InspectorTab(props) {
+    var children = props.children,
+        isActive = props.isActive,
+        key = props.key;
+
+    return React.createElement(
+        'div',
+        {
+            style: {
+                display: isActive ? 'block' : 'none'
+            },
+            className: 'premium-inspector-tab'
+        },
+        Array.isArray(children) ? children.map(function (item) {
+            return item;
+        }) : children
+    );
+};
+
+exports.default = InspectorTab;
+
+/***/ }),
+/* 69 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -5044,7 +5284,7 @@ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 module.exports = ReactPropTypesSecret;
 
 /***/ }),
-/* 68 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5112,7 +5352,7 @@ var PremiumLowerQuote = function (_Component) {
 exports.default = PremiumLowerQuote;
 
 /***/ }),
-/* 69 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5181,7 +5421,7 @@ var PremiumUpperQuote = function (_Component) {
 exports.default = PremiumUpperQuote;
 
 /***/ }),
-/* 70 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6826,7 +7066,7 @@ exports.arrayMove = arrayMove;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
 /***/ }),
-/* 71 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7180,7 +7420,7 @@ Lottie.defaultProps = {
 };
 
 /***/ }),
-/* 72 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7200,7 +7440,7 @@ module.exports = function (it, S) {
 };
 
 /***/ }),
-/* 73 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7213,7 +7453,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 74 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7227,20 +7467,20 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 75 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var shared = __webpack_require__(76)('keys');
+var shared = __webpack_require__(78)('keys');
 var uid = __webpack_require__(57);
 module.exports = function (key) {
   return shared[key] || (shared[key] = uid(key));
 };
 
 /***/ }),
-/* 76 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7260,7 +7500,7 @@ var store = global[SHARED] || (global[SHARED] = {});
 });
 
 /***/ }),
-/* 77 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7270,7 +7510,7 @@ var store = global[SHARED] || (global[SHARED] = {});
 module.exports = 'constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf'.split(',');
 
 /***/ }),
-/* 78 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7279,20 +7519,20 @@ module.exports = 'constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,
 exports.f = Object.getOwnPropertySymbols;
 
 /***/ }),
-/* 79 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 // 7.1.13 ToObject(argument)
-var defined = __webpack_require__(73);
+var defined = __webpack_require__(75);
 module.exports = function (it) {
   return Object(defined(it));
 };
 
 /***/ }),
-/* 80 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7301,7 +7541,7 @@ module.exports = function (it) {
 module.exports = {};
 
 /***/ }),
-/* 81 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7310,8 +7550,8 @@ module.exports = {};
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 var anObject = __webpack_require__(44);
 var dPs = __webpack_require__(343);
-var enumBugKeys = __webpack_require__(77);
-var IE_PROTO = __webpack_require__(75)('IE_PROTO');
+var enumBugKeys = __webpack_require__(79);
+var IE_PROTO = __webpack_require__(77)('IE_PROTO');
 var Empty = function Empty() {/* empty */};
 var PROTOTYPE = 'prototype';
 
@@ -7351,7 +7591,7 @@ module.exports = Object.create || function create(O, Properties) {
 };
 
 /***/ }),
-/* 82 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7366,7 +7606,7 @@ module.exports = function (it, tag, stat) {
 };
 
 /***/ }),
-/* 83 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7375,7 +7615,7 @@ module.exports = function (it, tag, stat) {
 exports.f = __webpack_require__(37);
 
 /***/ }),
-/* 84 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7384,7 +7624,7 @@ exports.f = __webpack_require__(37);
 var global = __webpack_require__(20);
 var core = __webpack_require__(13);
 var LIBRARY = __webpack_require__(56);
-var wksExt = __webpack_require__(83);
+var wksExt = __webpack_require__(85);
 var defineProperty = __webpack_require__(27).f;
 module.exports = function (name) {
   var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
@@ -7392,13 +7632,13 @@ module.exports = function (name) {
 };
 
 /***/ }),
-/* 85 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var baseGet = __webpack_require__(86);
+var baseGet = __webpack_require__(88);
 
 /**
  * Gets the value at `path` of `object`. If the resolved value is
@@ -7433,13 +7673,13 @@ function get(object, path, defaultValue) {
 module.exports = get;
 
 /***/ }),
-/* 86 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var castPath = __webpack_require__(87),
+var castPath = __webpack_require__(89),
     toKey = __webpack_require__(51);
 
 /**
@@ -7465,7 +7705,7 @@ function baseGet(object, path) {
 module.exports = baseGet;
 
 /***/ }),
-/* 87 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7494,7 +7734,7 @@ function castPath(value, object) {
 module.exports = castPath;
 
 /***/ }),
-/* 88 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7506,10 +7746,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 var freeGlobal = (typeof global === 'undefined' ? 'undefined' : _typeof(global)) == 'object' && global && global.Object === Object && global;
 
 module.exports = freeGlobal;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(89)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(91)))
 
 /***/ }),
-/* 89 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7539,7 +7779,7 @@ try {
 module.exports = g;
 
 /***/ }),
-/* 90 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7584,7 +7824,7 @@ function isFunction(value) {
 module.exports = isFunction;
 
 /***/ }),
-/* 91 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7618,7 +7858,7 @@ function toSource(func) {
 module.exports = toSource;
 
 /***/ }),
-/* 92 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7663,7 +7903,7 @@ function eq(value, other) {
 module.exports = eq;
 
 /***/ }),
-/* 93 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7692,13 +7932,13 @@ function arrayMap(array, iteratee) {
 module.exports = arrayMap;
 
 /***/ }),
-/* 94 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var arrayMap = __webpack_require__(93),
+var arrayMap = __webpack_require__(95),
     baseIteratee = __webpack_require__(164),
     baseMap = __webpack_require__(214),
     isArray = __webpack_require__(14);
@@ -7753,7 +7993,7 @@ function map(collection, iteratee) {
 module.exports = map;
 
 /***/ }),
-/* 95 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7788,7 +8028,7 @@ Stack.prototype.set = stackSet;
 module.exports = Stack;
 
 /***/ }),
-/* 96 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7824,7 +8064,7 @@ function baseIsEqual(value, other, bitmask, customizer, stack) {
 module.exports = baseIsEqual;
 
 /***/ }),
-/* 97 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7910,7 +8150,7 @@ function equalArrays(array, other, bitmask, customizer, equalFunc, stack) {
 module.exports = equalArrays;
 
 /***/ }),
-/* 98 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7955,7 +8195,7 @@ var isArguments = baseIsArguments(function () {
 module.exports = isArguments;
 
 /***/ }),
-/* 99 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8004,7 +8244,7 @@ module.exports = isBuffer;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(52)(module)))
 
 /***/ }),
-/* 100 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8036,7 +8276,7 @@ function isIndex(value, length) {
 module.exports = isIndex;
 
 /***/ }),
-/* 101 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8071,7 +8311,7 @@ var isTypedArray = nodeIsTypedArray ? baseUnary(nodeIsTypedArray) : baseIsTypedA
 module.exports = isTypedArray;
 
 /***/ }),
-/* 102 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8094,7 +8334,7 @@ function isStrictComparable(value) {
 module.exports = isStrictComparable;
 
 /***/ }),
-/* 103 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8121,7 +8361,7 @@ function matchesStrictComparable(key, srcValue) {
 module.exports = matchesStrictComparable;
 
 /***/ }),
-/* 104 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8477,246 +8717,6 @@ var __WEBPACK_AMD_DEFINE_RESULT__;
   }).call(exports, __webpack_require__, exports, module),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : "undefined" !== typeof module && module.exports ? module.exports = Z : (window.WebFont = Z, window.WebFontConfig && Y.load(window.WebFontConfig));
 })();
-
-/***/ }),
-/* 105 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-var _classnames = __webpack_require__(40);
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var __ = wp.i18n.__;
-var _wp$element = wp.element,
-    Fragment = _wp$element.Fragment,
-    cloneElement = _wp$element.cloneElement,
-    Children = _wp$element.Children;
-var Tooltip = wp.components.Tooltip;
-var _wp$element2 = wp.element,
-    useState = _wp$element2.useState,
-    useRef = _wp$element2.useRef,
-    useEffect = _wp$element2.useEffect,
-    LAYOUT = 'layout',
-    STYLE = 'style',
-    ADVANCE = 'advance';
-
-
-var InspectorTabs = function InspectorTabs(props) {
-    var defaultTab = props.defaultTab,
-        children = props.children,
-        tabs = props.tabs,
-        _useState = useState(defaultTab ? defaultTab : tabs[0]),
-        _useState2 = _slicedToArray(_useState, 2),
-        currentTab = _useState2[0],
-        setCurrentTab = _useState2[1],
-        tabContainer = useRef(),
-        offset = useRef(undefined);
-
-    var sidebarPanel = void 0;
-
-    useEffect(function () {
-        sidebarPanel = tabContainer.current.closest('.components-panel');
-    });
-
-    var observer = new IntersectionObserver(function (_ref) {
-        var _ref2 = _slicedToArray(_ref, 1),
-            e = _ref2[0];
-
-        return e.target.classList.toggle('premium-is-sticky', e.intersectionRatio < 1);
-    }, { threshold: [1] });
-
-    // component did mount
-    useEffect(function () {
-        // sticky tabs menu
-        var container = document.querySelector('.premium-inspector-tabs-container');
-        if (container) {
-            observer.observe(container);
-        }
-
-        // component will unmount
-        return function () {
-            sidebarPanel && sidebarPanel.removeAttribute('data-premium-tab');
-        };
-    }, []);
-
-    useEffect(function () {
-
-        sidebarPanel && sidebarPanel.setAttribute('data-premium-tab', defaultTab);
-    }, [defaultTab]);
-
-    var _onTabChange = function _onTabChange(tab) {
-        setCurrentTab(tab);
-        sidebarPanel && sidebarPanel.setAttribute('data-premium-tab', tab);
-    };
-
-    return React.createElement(
-        Fragment,
-        null,
-        React.createElement(
-            'div',
-            { className: 'premium-inspector-tabs-container' },
-            React.createElement(
-                'div',
-                { ref: tabContainer, className: (0, _classnames2.default)('premium-inspector-tabs', 'premium-inspector-tabs-count-' + tabs.length, currentTab) },
-                tabs.indexOf(LAYOUT) > -1 && React.createElement(
-                    Tooltip,
-                    { text: __('Layout', 'premium-blocks-for-gutenberg') },
-                    React.createElement(
-                        'button',
-                        { className: (0, _classnames2.default)({ 'premium-active': currentTab === LAYOUT }), onClick: function onClick() {
-                                return _onTabChange(LAYOUT);
-                            } },
-                        React.createElement(
-                            'svg',
-                            { id: 'Layer_1', 'data-name': 'Layer 1', xmlns: 'http://www.w3.org/2000/svg', width: '18', height: '21', viewBox: '0 0 23.98 23.99' },
-                            React.createElement('defs', null),
-                            React.createElement(
-                                'title',
-                                null,
-                                'layout-tab'
-                            ),
-                            React.createElement(
-                                'g',
-                                { id: 'Layout' },
-                                React.createElement('path', { 'class': 'cls-1', d: 'M23.84,2.9a4,4,0,0,0-1-1.74,4,4,0,0,0-1.75-1,3.85,3.85,0,0,0-2,0,31.93,31.93,0,0,0-9,4v8.48l6.29-6.3a1.19,1.19,0,0,1,.33-.22,1,1,0,0,1,.77,0,1,1,0,0,1,.55.55,1,1,0,0,1,0,.77,1.19,1.19,0,0,1-.22.33L14.41,11H21.6a30.63,30.63,0,0,0,2.28-6.07A4,4,0,0,0,23.84,2.9Z', transform: 'translate(-0.01 0)' }),
-                                React.createElement('path', { 'class': 'cls-1', d: 'M20.53,13a28.68,28.68,0,0,1-4,5.46,8.24,8.24,0,0,1-2.69,1.87,8.07,8.07,0,0,1-3.21.67A7.43,7.43,0,0,1,6,19.42L12.43,13h8.1Z', transform: 'translate(-0.01 0)' }),
-                                React.createElement('path', { 'class': 'cls-1', d: 'M5.82,19.31l.17.11L1.71,23.71A1,1,0,0,1,1,24a1,1,0,0,1-.69-.3A1,1,0,0,1,0,23a1,1,0,0,1,.28-.71L4.58,18A8,8,0,0,0,5.82,19.31Z', transform: 'translate(-0.01 0)' }),
-                                React.createElement('path', { 'class': 'cls-1', d: 'M4.58,18A7.72,7.72,0,0,1,5.26,7.87,25.63,25.63,0,0,1,8,5.51v9a.35.35,0,0,0,0,.06Z', transform: 'translate(-0.01 0)' })
-                            )
-                        ),
-                        '                                    ',
-                        React.createElement(
-                            'h5',
-                            null,
-                            __('Layout', 'premium-blocks-for-gutenberg')
-                        )
-                    )
-                ),
-                tabs.indexOf(STYLE) > -1 && React.createElement(
-                    Tooltip,
-                    { text: __('Style', 'premium-blocks-for-gutenberg') },
-                    React.createElement(
-                        'button',
-                        { className: (0, _classnames2.default)({ 'premium-active': currentTab === STYLE }), onClick: function onClick() {
-                                return _onTabChange(STYLE);
-                            } },
-                        React.createElement(
-                            'svg',
-                            { id: 'Layer_1', 'data-name': 'Layer 1', xmlns: 'http://www.w3.org/2000/svg', width: '18', height: '21', viewBox: '0 0 24 24' },
-                            React.createElement('defs', null),
-                            React.createElement(
-                                'title',
-                                null,
-                                'style-tab'
-                            ),
-                            React.createElement(
-                                'g',
-                                { id: 'Style' },
-                                React.createElement('path', { 'class': 'cls-1', d: 'M2.89,6.84a.93.93,0,0,0,.46-.12,1,1,0,0,0,.37-.32,10,10,0,0,1,2.8-2.77,1,1,0,0,0,.28-.27A.82.82,0,0,0,7,3a1,1,0,0,0,0-.39,1.2,1.2,0,0,0-.15-.37A1,1,0,0,0,6.54,2a1,1,0,0,0-.36-.16,1.27,1.27,0,0,0-.39,0A1.2,1.2,0,0,0,5.42,2,11.94,11.94,0,0,0,2.06,5.28a1,1,0,0,0-.17.5A1,1,0,0,0,2,6.3a1.07,1.07,0,0,0,.37.39A1,1,0,0,0,2.89,6.84Z', transform: 'translate(0)' }),
-                                React.createElement('path', { 'class': 'cls-1', d: 'M2,12a10,10,0,0,1,.19-2,1,1,0,0,0,0-.39,1.2,1.2,0,0,0-.15-.37A1.07,1.07,0,0,0,1.77,9a1.14,1.14,0,0,0-.36-.15.86.86,0,0,0-.39,0A1.2,1.2,0,0,0,.65,9a1,1,0,0,0-.27.28,1.2,1.2,0,0,0-.15.37,12.14,12.14,0,0,0,0,4.73,1,1,0,0,0,.35.57,1,1,0,0,0,.63.23l.2,0a1,1,0,0,0,.64-.43A1,1,0,0,0,2.2,14,10.05,10.05,0,0,1,2,12Z', transform: 'translate(0)' }),
-                                React.createElement('path', { 'class': 'cls-1', d: 'M6.53,20.37a9.85,9.85,0,0,1-2.81-2.76,1.07,1.07,0,0,0-.28-.28.93.93,0,0,0-.36-.14,1,1,0,0,0-1,1.54A11.94,11.94,0,0,0,5.43,22a1,1,0,0,0,.75.15,1.06,1.06,0,0,0,.64-.43A1,1,0,0,0,7,21a1,1,0,0,0-.43-.64Z', transform: 'translate(0)' }),
-                                React.createElement('path', { 'class': 'cls-1', d: 'M12,0A12.17,12.17,0,0,0,9.83.2a1,1,0,0,0-.62.38,1,1,0,0,0-.2.69,1,1,0,0,0,.32.65,1,1,0,0,0,.68.26h.18A10,10,0,0,1,12,2V22a10,10,0,0,1-1.81-.16,1,1,0,0,0-1.17.8,1.05,1.05,0,0,0,.17.75,1,1,0,0,0,.64.41A12.05,12.05,0,0,0,15,23.61a12.23,12.23,0,0,0,4.64-2.39A12,12,0,0,0,12,0Z', transform: 'translate(0)' })
-                            )
-                        ),
-                        React.createElement(
-                            'h5',
-                            null,
-                            __('Style', 'premium-blocks-for-gutenberg')
-                        )
-                    )
-                ),
-                tabs.indexOf(ADVANCE) > -1 && React.createElement(
-                    Tooltip,
-                    { text: __('Advanced', 'premium-blocks-for-gutenberg') },
-                    React.createElement(
-                        'button',
-                        { className: (0, _classnames2.default)({ 'premium-active': currentTab === ADVANCE }), onClick: function onClick() {
-                                return _onTabChange(ADVANCE);
-                            } },
-                        React.createElement(
-                            'svg',
-                            { id: 'Layer_1', 'data-name': 'Layer 1', xmlns: 'http://www.w3.org/2000/svg', width: '18', height: '21', viewBox: '0 0 21.59 24' },
-                            React.createElement('defs', null),
-                            React.createElement(
-                                'title',
-                                null,
-                                'advanced-tab'
-                            ),
-                            React.createElement('path', { id: 'Advanced', 'class': 'cls-1', d: 'M1.61,18A3,3,0,0,0,5.7,19.1h0l.44-.26A9,9,0,0,0,9,20.49V21a3,3,0,0,0,6,0v-.51a9,9,0,0,0,2.85-1.65l.45.26a3,3,0,0,0,3-5.2l-.45-.26a9.1,9.1,0,0,0,0-3.29l.45-.25a3,3,0,0,0-3-5.2l-.45.25A9.21,9.21,0,0,0,15,3.51V3A3,3,0,0,0,9,3v.51A9,9,0,0,0,6.15,5.16L5.71,4.9a3,3,0,1,0-3,5.2l.44.26a9.1,9.1,0,0,0,0,3.29l-.44.25A3,3,0,0,0,1.61,18ZM12,8a4,4,0,1,1-4,4A4,4,0,0,1,12,8Z', transform: 'translate(-1.2)' })
-                        ),
-                        React.createElement(
-                            'h5',
-                            null,
-                            __('Advanced', 'premium-blocks-for-gutenberg')
-                        )
-                    )
-                )
-            )
-        ),
-        Array.isArray(children) && Children.map(children, function (child, index) {
-            if (!child.key) {
-                throw new Error('props.key not found in <InspectorTab />, you must use `key` prop');
-                return;
-            }
-            return cloneElement(child, {
-                index: index,
-                isActive: child.key === currentTab
-            });
-        })
-    );
-};
-
-InspectorTabs.defaultProps = {
-    defaultTab: null,
-    tabs: ['layout', 'style', 'advance']
-};
-
-exports.default = InspectorTabs;
-
-/***/ }),
-/* 106 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-var Fragment = wp.element.Fragment;
-
-
-var InspectorTab = function InspectorTab(props) {
-    var children = props.children,
-        isActive = props.isActive,
-        key = props.key;
-
-    return React.createElement(
-        'div',
-        {
-            style: {
-                display: isActive ? 'block' : 'none'
-            },
-            className: 'premium-inspector-tab'
-        },
-        Array.isArray(children) ? children.map(function (item) {
-            return item;
-        }) : children
-    );
-};
-
-exports.default = InspectorTab;
 
 /***/ }),
 /* 107 */
@@ -10361,7 +10361,7 @@ module.exports = function (it) {
 var has = __webpack_require__(29);
 var toIObject = __webpack_require__(36);
 var arrayIndexOf = __webpack_require__(325)(false);
-var IE_PROTO = __webpack_require__(75)('IE_PROTO');
+var IE_PROTO = __webpack_require__(77)('IE_PROTO');
 
 module.exports = function (object, names) {
   var O = toIObject(object);
@@ -10414,8 +10414,8 @@ module.exports = function (it) {
 
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
 var has = __webpack_require__(29);
-var toObject = __webpack_require__(79);
-var IE_PROTO = __webpack_require__(75)('IE_PROTO');
+var toObject = __webpack_require__(81);
+var IE_PROTO = __webpack_require__(77)('IE_PROTO');
 var ObjectProto = Object.prototype;
 
 module.exports = Object.getPrototypeOf || function (O) {
@@ -10472,9 +10472,9 @@ var LIBRARY = __webpack_require__(56);
 var $export = __webpack_require__(26);
 var redefine = __webpack_require__(128);
 var hide = __webpack_require__(33);
-var Iterators = __webpack_require__(80);
+var Iterators = __webpack_require__(82);
 var $iterCreate = __webpack_require__(342);
-var setToStringTag = __webpack_require__(82);
+var setToStringTag = __webpack_require__(84);
 var getPrototypeOf = __webpack_require__(125);
 var ITERATOR = __webpack_require__(37)('iterator');
 var BUGGY = !([].keys && 'next' in [].keys()); // Safari has buggy iterators w/o `next`
@@ -10567,7 +10567,7 @@ module.exports = __webpack_require__(33);
 
 // 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
 var $keys = __webpack_require__(122);
-var hiddenKeys = __webpack_require__(77).concat('length', 'prototype');
+var hiddenKeys = __webpack_require__(79).concat('length', 'prototype');
 
 exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
   return $keys(O, hiddenKeys);
@@ -10583,7 +10583,7 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 var pIE = __webpack_require__(58);
 var createDesc = __webpack_require__(54);
 var toIObject = __webpack_require__(36);
-var toPrimitive = __webpack_require__(72);
+var toPrimitive = __webpack_require__(74);
 var has = __webpack_require__(29);
 var IE8_DOM_DEFINE = __webpack_require__(120);
 var gOPD = Object.getOwnPropertyDescriptor;
@@ -10801,11 +10801,11 @@ var _singleRangeControl = __webpack_require__(3);
 
 var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
-var _inspectorTabs = __webpack_require__(105);
+var _inspectorTabs = __webpack_require__(67);
 
 var _inspectorTabs2 = _interopRequireDefault(_inspectorTabs);
 
-var _inspectorTab = __webpack_require__(106);
+var _inspectorTab = __webpack_require__(68);
 
 var _inspectorTab2 = _interopRequireDefault(_inspectorTab);
 
@@ -11780,10 +11780,10 @@ module.exports = hashClear;
 "use strict";
 
 
-var isFunction = __webpack_require__(90),
+var isFunction = __webpack_require__(92),
     isMasked = __webpack_require__(145),
     isObject = __webpack_require__(62),
-    toSource = __webpack_require__(91);
+    toSource = __webpack_require__(93);
 
 /**
  * Used to match `RegExp`
@@ -12333,7 +12333,7 @@ module.exports = toString;
 
 
 var _Symbol = __webpack_require__(46),
-    arrayMap = __webpack_require__(93),
+    arrayMap = __webpack_require__(95),
     isArray = __webpack_require__(14),
     isSymbol = __webpack_require__(60);
 
@@ -12418,7 +12418,7 @@ module.exports = baseIteratee;
 
 var baseIsMatch = __webpack_require__(166),
     getMatchData = __webpack_require__(205),
-    matchesStrictComparable = __webpack_require__(103);
+    matchesStrictComparable = __webpack_require__(105);
 
 /**
  * The base implementation of `_.matches` which doesn't clone `source`.
@@ -12446,8 +12446,8 @@ module.exports = baseMatches;
 "use strict";
 
 
-var Stack = __webpack_require__(95),
-    baseIsEqual = __webpack_require__(96);
+var Stack = __webpack_require__(97),
+    baseIsEqual = __webpack_require__(98);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -12645,14 +12645,14 @@ module.exports = stackSet;
 "use strict";
 
 
-var Stack = __webpack_require__(95),
-    equalArrays = __webpack_require__(97),
+var Stack = __webpack_require__(97),
+    equalArrays = __webpack_require__(99),
     equalByTag = __webpack_require__(178),
     equalObjects = __webpack_require__(182),
     getTag = __webpack_require__(200),
     isArray = __webpack_require__(14),
-    isBuffer = __webpack_require__(99),
-    isTypedArray = __webpack_require__(101);
+    isBuffer = __webpack_require__(101),
+    isTypedArray = __webpack_require__(103);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1;
@@ -12872,8 +12872,8 @@ module.exports = cacheHas;
 
 var _Symbol = __webpack_require__(46),
     Uint8Array = __webpack_require__(179),
-    eq = __webpack_require__(92),
-    equalArrays = __webpack_require__(97),
+    eq = __webpack_require__(94),
+    equalArrays = __webpack_require__(99),
     mapToArray = __webpack_require__(180),
     setToArray = __webpack_require__(181);
 
@@ -13327,11 +13327,11 @@ module.exports = stubArray;
 
 
 var baseTimes = __webpack_require__(190),
-    isArguments = __webpack_require__(98),
+    isArguments = __webpack_require__(100),
     isArray = __webpack_require__(14),
-    isBuffer = __webpack_require__(99),
-    isIndex = __webpack_require__(100),
-    isTypedArray = __webpack_require__(101);
+    isBuffer = __webpack_require__(101),
+    isIndex = __webpack_require__(102),
+    isTypedArray = __webpack_require__(103);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -13541,7 +13541,7 @@ module.exports = baseUnary;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var freeGlobal = __webpack_require__(88);
+var freeGlobal = __webpack_require__(90);
 
 /** Detect free variable `exports`. */
 var freeExports = ( false ? 'undefined' : _typeof(exports)) == 'object' && exports && !exports.nodeType && exports;
@@ -13687,7 +13687,7 @@ var DataView = __webpack_require__(201),
     Set = __webpack_require__(203),
     WeakMap = __webpack_require__(204),
     baseGetTag = __webpack_require__(38),
-    toSource = __webpack_require__(91);
+    toSource = __webpack_require__(93);
 
 /** `Object#toString` result references. */
 var mapTag = '[object Map]',
@@ -13808,7 +13808,7 @@ module.exports = WeakMap;
 "use strict";
 
 
-var isStrictComparable = __webpack_require__(102),
+var isStrictComparable = __webpack_require__(104),
     keys = __webpack_require__(64);
 
 /**
@@ -13840,12 +13840,12 @@ module.exports = getMatchData;
 "use strict";
 
 
-var baseIsEqual = __webpack_require__(96),
-    get = __webpack_require__(85),
+var baseIsEqual = __webpack_require__(98),
+    get = __webpack_require__(87),
     hasIn = __webpack_require__(207),
     isKey = __webpack_require__(59),
-    isStrictComparable = __webpack_require__(102),
-    matchesStrictComparable = __webpack_require__(103),
+    isStrictComparable = __webpack_require__(104),
+    matchesStrictComparable = __webpack_require__(105),
     toKey = __webpack_require__(51);
 
 /** Used to compose bitmasks for value comparisons. */
@@ -13942,10 +13942,10 @@ module.exports = baseHasIn;
 "use strict";
 
 
-var castPath = __webpack_require__(87),
-    isArguments = __webpack_require__(98),
+var castPath = __webpack_require__(89),
+    isArguments = __webpack_require__(100),
     isArray = __webpack_require__(14),
-    isIndex = __webpack_require__(100),
+    isIndex = __webpack_require__(102),
     isLength = __webpack_require__(65),
     toKey = __webpack_require__(51);
 
@@ -14079,7 +14079,7 @@ module.exports = baseProperty;
 "use strict";
 
 
-var baseGet = __webpack_require__(86);
+var baseGet = __webpack_require__(88);
 
 /**
  * A specialized version of `baseProperty` which supports deep paths.
@@ -15472,7 +15472,7 @@ var _classnames = __webpack_require__(40);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _webfontloader = __webpack_require__(104);
+var _webfontloader = __webpack_require__(106);
 
 var _webfontloader2 = _interopRequireDefault(_webfontloader);
 
@@ -17675,11 +17675,11 @@ var _PremiumShadow = __webpack_require__(5);
 
 var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
-var _inspectorTabs = __webpack_require__(105);
+var _inspectorTabs = __webpack_require__(67);
 
 var _inspectorTabs2 = _interopRequireDefault(_inspectorTabs);
 
-var _inspectorTab = __webpack_require__(106);
+var _inspectorTab = __webpack_require__(68);
 
 var _inspectorTab2 = _interopRequireDefault(_inspectorTab);
 
@@ -31772,7 +31772,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 var ReactIs = __webpack_require__(108);
 var assign = __webpack_require__(253);
 
-var ReactPropTypesSecret = __webpack_require__(67);
+var ReactPropTypesSecret = __webpack_require__(69);
 var checkPropTypes = __webpack_require__(254);
 
 var has = Function.call.bind(Object.prototype.hasOwnProperty);
@@ -32446,7 +32446,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 var printWarning = function printWarning() {};
 
 if (process.env.NODE_ENV !== 'production') {
-  var ReactPropTypesSecret = __webpack_require__(67);
+  var ReactPropTypesSecret = __webpack_require__(69);
   var loggedTypeFailures = {};
   var has = Function.call.bind(Object.prototype.hasOwnProperty);
 
@@ -32540,7 +32540,7 @@ module.exports = checkPropTypes;
 
 
 
-var ReactPropTypesSecret = __webpack_require__(67);
+var ReactPropTypesSecret = __webpack_require__(69);
 
 function emptyFunction() {}
 function emptyFunctionWithReset() {}
@@ -47841,11 +47841,11 @@ var _defaultImage = __webpack_require__(43);
 
 var _defaultImage2 = _interopRequireDefault(_defaultImage);
 
-var _upperQuote = __webpack_require__(68);
+var _upperQuote = __webpack_require__(70);
 
 var _upperQuote2 = _interopRequireDefault(_upperQuote);
 
-var _lowerQuote = __webpack_require__(69);
+var _lowerQuote = __webpack_require__(71);
 
 var _lowerQuote2 = _interopRequireDefault(_lowerQuote);
 
@@ -48690,11 +48690,11 @@ var _defaultImage = __webpack_require__(43);
 
 var _defaultImage2 = _interopRequireDefault(_defaultImage);
 
-var _upperQuote = __webpack_require__(68);
+var _upperQuote = __webpack_require__(70);
 
 var _upperQuote2 = _interopRequireDefault(_upperQuote);
 
-var _lowerQuote = __webpack_require__(69);
+var _lowerQuote = __webpack_require__(71);
 
 var _lowerQuote2 = _interopRequireDefault(_lowerQuote);
 
@@ -48892,11 +48892,11 @@ var _defaultImage = __webpack_require__(43);
 
 var _defaultImage2 = _interopRequireDefault(_defaultImage);
 
-var _upperQuote = __webpack_require__(68);
+var _upperQuote = __webpack_require__(70);
 
 var _upperQuote2 = _interopRequireDefault(_upperQuote);
 
-var _lowerQuote = __webpack_require__(69);
+var _lowerQuote = __webpack_require__(71);
 
 var _lowerQuote2 = _interopRequireDefault(_lowerQuote);
 
@@ -53369,7 +53369,7 @@ var _radioControl = __webpack_require__(10);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
 
-var _reactSortableHoc = __webpack_require__(70);
+var _reactSortableHoc = __webpack_require__(72);
 
 var _PremiumShadow = __webpack_require__(5);
 
@@ -56536,7 +56536,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _reactLottieWithSegments = __webpack_require__(71);
+var _reactLottieWithSegments = __webpack_require__(73);
 
 var _reactLottieWithSegments2 = _interopRequireDefault(_reactLottieWithSegments);
 
@@ -57383,9 +57383,9 @@ module.exports = function (it) {
 // 19.1.2.1 Object.assign(target, source, ...)
 
 var getKeys = __webpack_require__(55);
-var gOPS = __webpack_require__(78);
+var gOPS = __webpack_require__(80);
 var pIE = __webpack_require__(58);
-var toObject = __webpack_require__(79);
+var toObject = __webpack_require__(81);
 var IObject = __webpack_require__(123);
 var $assign = Object.assign;
 
@@ -57461,7 +57461,7 @@ module.exports = function (IS_INCLUDES) {
 
 
 // 7.1.15 ToLength
-var toInteger = __webpack_require__(74);
+var toInteger = __webpack_require__(76);
 var min = Math.min;
 module.exports = function (it) {
   return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
@@ -57474,7 +57474,7 @@ module.exports = function (it) {
 "use strict";
 
 
-var toInteger = __webpack_require__(74);
+var toInteger = __webpack_require__(76);
 var max = Math.max;
 var min = Math.min;
 module.exports = function (index, length) {
@@ -57509,7 +57509,7 @@ module.exports = __webpack_require__(13).Object.getPrototypeOf;
 
 
 // 19.1.2.9 Object.getPrototypeOf(O)
-var toObject = __webpack_require__(79);
+var toObject = __webpack_require__(81);
 var $getPrototypeOf = __webpack_require__(125);
 
 __webpack_require__(331)('getPrototypeOf', function () {
@@ -57664,7 +57664,7 @@ module.exports = { "default": __webpack_require__(339), __esModule: true };
 
 __webpack_require__(340);
 __webpack_require__(345);
-module.exports = __webpack_require__(83).f('iterator');
+module.exports = __webpack_require__(85).f('iterator');
 
 /***/ }),
 /* 340 */
@@ -57697,8 +57697,8 @@ __webpack_require__(127)(String, 'String', function (iterated) {
 "use strict";
 
 
-var toInteger = __webpack_require__(74);
-var defined = __webpack_require__(73);
+var toInteger = __webpack_require__(76);
+var defined = __webpack_require__(75);
 // true  -> String#at
 // false -> String#codePointAt
 module.exports = function (TO_STRING) {
@@ -57720,9 +57720,9 @@ module.exports = function (TO_STRING) {
 "use strict";
 
 
-var create = __webpack_require__(81);
+var create = __webpack_require__(83);
 var descriptor = __webpack_require__(54);
-var setToStringTag = __webpack_require__(82);
+var setToStringTag = __webpack_require__(84);
 var IteratorPrototype = {};
 
 // 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
@@ -57777,7 +57777,7 @@ module.exports = document && document.documentElement;
 __webpack_require__(346);
 var global = __webpack_require__(20);
 var hide = __webpack_require__(33);
-var Iterators = __webpack_require__(80);
+var Iterators = __webpack_require__(82);
 var TO_STRING_TAG = __webpack_require__(37)('toStringTag');
 
 var DOMIterables = ('CSSRuleList,CSSStyleDeclaration,CSSValueList,ClientRectList,DOMRectList,DOMStringList,' + 'DOMTokenList,DataTransferItemList,FileList,HTMLAllCollection,HTMLCollection,HTMLFormElement,HTMLSelectElement,' + 'MediaList,MimeTypeArray,NamedNodeMap,NodeList,PaintRequestList,Plugin,PluginArray,SVGLengthList,SVGNumberList,' + 'SVGPathSegList,SVGPointList,SVGStringList,SVGTransformList,SourceBufferList,StyleSheetList,TextTrackCueList,' + 'TextTrackList,TouchList').split(',');
@@ -57799,7 +57799,7 @@ for (var i = 0; i < DOMIterables.length; i++) {
 
 var addToUnscopables = __webpack_require__(347);
 var step = __webpack_require__(348);
-var Iterators = __webpack_require__(80);
+var Iterators = __webpack_require__(82);
 var toIObject = __webpack_require__(36);
 
 // 22.1.3.4 Array.prototype.entries()
@@ -57890,20 +57890,20 @@ var $export = __webpack_require__(26);
 var redefine = __webpack_require__(128);
 var META = __webpack_require__(352).KEY;
 var $fails = __webpack_require__(35);
-var shared = __webpack_require__(76);
-var setToStringTag = __webpack_require__(82);
+var shared = __webpack_require__(78);
+var setToStringTag = __webpack_require__(84);
 var uid = __webpack_require__(57);
 var wks = __webpack_require__(37);
-var wksExt = __webpack_require__(83);
-var wksDefine = __webpack_require__(84);
+var wksExt = __webpack_require__(85);
+var wksDefine = __webpack_require__(86);
 var enumKeys = __webpack_require__(353);
 var isArray = __webpack_require__(354);
 var anObject = __webpack_require__(44);
 var isObject = __webpack_require__(34);
 var toIObject = __webpack_require__(36);
-var toPrimitive = __webpack_require__(72);
+var toPrimitive = __webpack_require__(74);
 var createDesc = __webpack_require__(54);
-var _create = __webpack_require__(81);
+var _create = __webpack_require__(83);
 var gOPNExt = __webpack_require__(355);
 var $GOPD = __webpack_require__(130);
 var $DP = __webpack_require__(27);
@@ -58035,7 +58035,7 @@ if (!USE_NATIVE) {
   $DP.f = $defineProperty;
   __webpack_require__(129).f = gOPNExt.f = $getOwnPropertyNames;
   __webpack_require__(58).f = $propertyIsEnumerable;
-  __webpack_require__(78).f = $getOwnPropertySymbols;
+  __webpack_require__(80).f = $getOwnPropertySymbols;
 
   if (DESCRIPTORS && !__webpack_require__(56)) {
     redefine(ObjectProto, 'propertyIsEnumerable', $propertyIsEnumerable, true);
@@ -58195,7 +58195,7 @@ var meta = module.exports = {
 
 // all enumerable object keys, includes symbols
 var getKeys = __webpack_require__(55);
-var gOPS = __webpack_require__(78);
+var gOPS = __webpack_require__(80);
 var pIE = __webpack_require__(58);
 module.exports = function (it) {
   var result = getKeys(it);
@@ -58266,7 +58266,7 @@ module.exports.f = function getOwnPropertyNames(it) {
 "use strict";
 
 
-__webpack_require__(84)('asyncIterator');
+__webpack_require__(86)('asyncIterator');
 
 /***/ }),
 /* 358 */
@@ -58275,7 +58275,7 @@ __webpack_require__(84)('asyncIterator');
 "use strict";
 
 
-__webpack_require__(84)('observable');
+__webpack_require__(86)('observable');
 
 /***/ }),
 /* 359 */
@@ -58413,7 +58413,7 @@ module.exports = function create(P, D) {
 
 var $export = __webpack_require__(26);
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-$export($export.S, 'Object', { create: __webpack_require__(81) });
+$export($export.S, 'Object', { create: __webpack_require__(83) });
 
 /***/ }),
 /* 367 */
@@ -59778,7 +59778,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _reactLottieWithSegments = __webpack_require__(71);
+var _reactLottieWithSegments = __webpack_require__(73);
 
 var _reactLottieWithSegments2 = _interopRequireDefault(_reactLottieWithSegments);
 
@@ -60396,11 +60396,11 @@ var _premiumResponsiveSpacing = __webpack_require__(21);
 
 var _premiumResponsiveSpacing2 = _interopRequireDefault(_premiumResponsiveSpacing);
 
-var _inspectorTabs = __webpack_require__(105);
+var _inspectorTabs = __webpack_require__(67);
 
 var _inspectorTabs2 = _interopRequireDefault(_inspectorTabs);
 
-var _inspectorTab = __webpack_require__(106);
+var _inspectorTab = __webpack_require__(68);
 
 var _inspectorTab2 = _interopRequireDefault(_inspectorTab);
 
@@ -65190,7 +65190,11 @@ function save(props) {
         titleFont = attributes.titleFont,
         dividerStyles = attributes.dividerStyles,
         divider = attributes.divider,
-        dividerStyle = attributes.dividerStyle;
+        dividerStyle = attributes.dividerStyle,
+        titlesTextShadow = attributes.titlesTextShadow,
+        boxShadow = attributes.boxShadow,
+        hoverBoxShadow = attributes.hoverBoxShadow,
+        titleTypography = attributes.titleTypography;
 
 
     return React.createElement(
@@ -65202,7 +65206,7 @@ function save(props) {
             } },
         React.createElement("style", {
             dangerouslySetInnerHTML: {
-                __html: ["#premium-bullet-list-" + block_id + " .premium-bullet-list__content-icon i:hover {", "color: " + bulletIconStyles[0].bulletIconHoverColor + " !important;", "background-color: " + bulletIconStyles[0].bulletIconHoverBackgroundColor + " !important;", "}", "#premium-bullet-list-" + block_id + " .premium-bullet-list__label-wrap .premium-bullet-list__label:hover {", "color: " + titleStyles[0].titleHoverColor + " !important;", "}", "#premium-bullet-list-" + block_id + " .premium-bullet-list__wrapper:hover {", "background-color: " + generalStyles[0].generalHoverBackgroundColor + " !important;", "box-shadow: " + generalStyles[0].generalHoverShadowHorizontal + "px " + generalStyles[0].generalHoverShadowVertical + "px " + generalStyles[0].generalHoverShadowBlur + "px " + generalStyles[0].generalHoverShadowColor + " " + generalStyles[0].generalHoverShadowPosition + " !important;", "}", "#premium-bullet-list-" + block_id + " .premium-bullet-list-divider-block:not(:last-child)::after {", "border-top-style: " + dividerStyle + ";", "border-top-color: " + dividerStyles[0].dividerColor + ";", "}", "#premium-bullet-list-" + block_id + " .premium-bullet-list-divider-inline:not(:last-child)::after {", "border-left-style: " + dividerStyle + ";", "border-left-color: " + dividerStyles[0].dividerColor + ";", "}"].join("\n")
+                __html: ["#premium-bullet-list-" + block_id + " .premium-bullet-list__content-icon i:hover {", "color: " + bulletIconStyles[0].bulletIconHoverColor + " !important;", "background-color: " + bulletIconStyles[0].bulletIconHoverBackgroundColor + " !important;", "}", "#premium-bullet-list-" + block_id + " .premium-bullet-list__label-wrap .premium-bullet-list__label:hover {", "color: " + titleStyles[0].titleHoverColor + " !important;", "}", "#premium-bullet-list-" + block_id + " .premium-bullet-list__wrapper:hover {", "background-color: " + generalStyles[0].generalHoverBackgroundColor + " !important;", "box-shadow: " + hoverBoxShadow.horizontal + "px " + hoverBoxShadow.vertical + "px " + hoverBoxShadow.blur + "px " + hoverBoxShadow.color + " " + hoverBoxShadow.position + " !important;", "}", "#premium-bullet-list-" + block_id + " .premium-bullet-list-divider-block:not(:last-child)::after {", "border-top-style: " + dividerStyle + ";", "border-top-color: " + dividerStyles[0].dividerColor + ";", "}", "#premium-bullet-list-" + block_id + " .premium-bullet-list-divider-inline:not(:last-child)::after {", "border-left-style: " + dividerStyle + ";", "border-left-color: " + dividerStyles[0].dividerColor + ";", "}"].join("\n")
             }
         }),
         React.createElement(
@@ -65256,8 +65260,6 @@ function save(props) {
                 var link_url = icon.disableLink ? icon.link : "/";
 
                 if (!icon.disableLink) {
-                    var _ref;
-
                     return React.createElement(
                         Fragment,
                         null,
@@ -65273,7 +65275,7 @@ function save(props) {
                                     backgroundColor: generalStyles[0].generalBackgroundColor,
                                     borderStyle: generalBorder && generalBorder.borderType,
                                     borderColor: generalBorder && generalBorder.borderColor,
-                                    boxShadow: generalStyles[0].generalShadowHorizontal + "px " + generalStyles[0].generalShadowVertical + "px " + generalStyles[0].generalShadowBlur + "px " + generalStyles[0].generalShadowColor + " " + generalStyles[0].generalShadowPosition
+                                    boxShadow: boxShadow.horizontal + "px " + boxShadow.vertical + "px " + boxShadow.blur + "px " + boxShadow.color + " " + boxShadow.position
                                 }
                             },
                             React.createElement(
@@ -65303,21 +65305,24 @@ function save(props) {
                                         tagName: "span",
                                         value: repeaterBulletList[index].label,
                                         className: "premium-bullet-list__label",
-                                        style: (_ref = {
-                                            fontFamily: titleFont,
-                                            fontWeight: titleStyles[0].titleWeight,
-                                            letterSpacing: titleStyles[0].titleLetter + "px",
-                                            lineHeight: titleStyles[0].titleLine + "px",
-                                            fontStyle: titleStyles[0].titleStyle,
-                                            textTransform: titleStyles[0].titleUpper ? "uppercase" : "none"
-                                        }, _defineProperty(_ref, "fontFamily", titleStyles[0].titleFontFamily), _defineProperty(_ref, "color", titleStyles[0].titleColor), _defineProperty(_ref, "textShadow", titleStyles[0].titleshadowHorizontal + "px " + titleStyles[0].titleshadowVertical + "px " + titleStyles[0].titleshadowBlur + "px " + titleStyles[0].titleshadowColor), _ref) })
+                                        style: {
+                                            fontStyle: titleTypography.fontStyle,
+                                            fontFamily: titleTypography.fontFamily,
+                                            fontWeight: titleTypography.fontWeight,
+                                            letterSpacing: titleTypography.letterSpacing,
+                                            textDecoration: titleTypography.textDecoration,
+                                            textTransform: titleTypography.textTransform,
+                                            lineHeight: titleTypography.lineHeight + "px",
+                                            color: titleStyles[0].titleColor,
+                                            textShadow: titlesTextShadow.titleshadowHorizontal + "px " + titlesTextShadow.titleshadowVertical + "px " + titlesTextShadow.titleshadowBlur + "px " + titlesTextShadow.titleshadowColor
+                                        } })
                                 )
                             )
                         ),
                         divider && React.createElement("div", { className: "premium-bullet-list-divider-" + layoutPos })
                     );
                 } else {
-                    var _ref2;
+                    var _ref;
 
                     return React.createElement(
                         Fragment,
@@ -65335,7 +65340,7 @@ function save(props) {
                                     backgroundColor: generalStyles[0].generalBackgroundColor,
                                     borderStyle: generalBorder && generalBorder.borderType,
                                     borderColor: generalBorder && generalBorder.borderColor,
-                                    boxShadow: generalStyles[0].generalShadowHorizontal + "px " + generalStyles[0].generalShadowVertical + "px " + generalStyles[0].generalShadowBlur + "px " + generalStyles[0].generalShadowColor + " " + generalStyles[0].generalShadowPosition
+                                    boxShadow: boxShadow.horizontal + "px " + boxShadow.vertical + "px " + boxShadow.blur + "px " + boxShadow.color + " " + boxShadow.position
                                 }
                             },
                             React.createElement(
@@ -65372,14 +65377,14 @@ function save(props) {
                                             tagName: "span",
                                             value: repeaterBulletList[index].label,
                                             className: "premium-bullet-list__label",
-                                            style: (_ref2 = {
+                                            style: (_ref = {
                                                 fontFamily: titleFont,
                                                 fontWeight: titleStyles[0].titleWeight,
                                                 letterSpacing: titleStyles[0].titleLetter + "px",
                                                 lineHeight: titleStyles[0].titleLine + "px",
                                                 fontStyle: titleStyles[0].titleStyle,
                                                 textTransform: titleStyles[0].titleUpper ? "uppercase" : "none"
-                                            }, _defineProperty(_ref2, "fontFamily", titleStyles[0].titleFontFamily), _defineProperty(_ref2, "color", titleStyles[0].titleColor), _defineProperty(_ref2, "textShadow", titleStyles[0].titleshadowHorizontal + "px " + titleStyles[0].titleshadowVertical + "px " + titleStyles[0].titleshadowBlur + "px " + titleStyles[0].titleshadowColor), _ref2) })
+                                            }, _defineProperty(_ref, "fontFamily", titleStyles[0].titleFontFamily), _defineProperty(_ref, "color", titleStyles[0].titleColor), _defineProperty(_ref, "textShadow", titlesTextShadow.titleshadowHorizontal + "px " + titlesTextShadow.titleshadowVertical + "px " + titlesTextShadow.titleshadowBlur + "px " + titlesTextShadow.titleshadowColor), _ref) })
                                     )
                                 )
                             )
@@ -65443,7 +65448,7 @@ var _responsiveRangeControl = __webpack_require__(18);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
-var _reactSortableHoc = __webpack_require__(70);
+var _reactSortableHoc = __webpack_require__(72);
 
 var _align = __webpack_require__(385);
 
@@ -65460,6 +65465,14 @@ var _fontLoader2 = _interopRequireDefault(_fontLoader);
 var _radioControl = __webpack_require__(10);
 
 var _radioControl2 = _interopRequireDefault(_radioControl);
+
+var _inspectorTabs = __webpack_require__(67);
+
+var _inspectorTabs2 = _interopRequireDefault(_inspectorTabs);
+
+var _inspectorTab = __webpack_require__(68);
+
+var _inspectorTab2 = _interopRequireDefault(_inspectorTab);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -65796,10 +65809,16 @@ var edit = function (_Component) {
                 titleStyles = attributes.titleStyles,
                 generalStyles = attributes.generalStyles,
                 generalBorder = attributes.generalBorder,
-                titleFont = attributes.titleFont,
                 divider = attributes.divider,
                 dividerStyle = attributes.dividerStyle,
-                dividerStyles = attributes.dividerStyles;
+                dividerStyles = attributes.dividerStyles,
+                titlesTextShadow = attributes.titlesTextShadow,
+                boxShadow = attributes.boxShadow,
+                hoverBoxShadow = attributes.hoverBoxShadow,
+                bulletIconFontSize = attributes.bulletIconFontSize,
+                dividerWidth = attributes.dividerWidth,
+                dividerHeight = attributes.dividerHeight,
+                titleTypography = attributes.titleTypography;
 
 
             var LAYOUT = [{
@@ -65840,30 +65859,31 @@ var edit = function (_Component) {
 
             var ALIGNS = ["left", "center", "right"];
 
-            var BulletIconSize = this.getPreviewSize(this.props.deviceType, bulletIconStyles[0].bulletListfontSize, bulletIconStyles[0].bulletListfontSizeTablet, bulletIconStyles[0].bulletListfontSizeMobile);
-            var BulletIconMarginTop = this.getPreviewSize(this.props.deviceType, bulletIconmargin.Desktop.top, bulletIconmargin.Tablet.top, bulletIconmargin.Mobile.top);
-            var BulletIconMarginRight = this.getPreviewSize(this.props.deviceType, bulletIconmargin.Desktop.right, bulletIconmargin.Tablet.right, bulletIconmargin.Mobile.right);
-            var BulletIconMarginBottom = this.getPreviewSize(this.props.deviceType, bulletIconmargin.Desktop.bottom, bulletIconmargin.Tablet.bottom, bulletIconmargin.Mobile.bottom);
-            var BulletIconMarginLeft = this.getPreviewSize(this.props.deviceType, bulletIconmargin.Desktop.left, bulletIconmargin.Tablet.left, bulletIconmargin.Mobile.left);
-            var BulletIconPaddingTop = this.getPreviewSize(this.props.deviceType, bulletIconpadding.Desktop.top, bulletIconpadding.Tablet.top, bulletIconpadding.Mobile.top);
-            var BulletIconPaddingRight = this.getPreviewSize(this.props.deviceType, bulletIconpadding.Desktop.right, bulletIconpadding.Tablet.right, bulletIconpadding.Mobile.right);
-            var BulletIconPaddingBottom = this.getPreviewSize(this.props.deviceType, bulletIconpadding.Desktop.bottom, bulletIconpadding.Tablet.bottom, bulletIconpadding.Mobile.bottom);
-            var BulletIconPaddingLeft = this.getPreviewSize(this.props.deviceType, bulletIconpadding.Desktop.left, bulletIconpadding.Tablet.left, bulletIconpadding.Mobile.left);
-            var TitleSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titlefontSizeTablet, titleStyles[0].titlefontSizeMobile);
-            var TitleMarginTop = this.getPreviewSize(this.props.deviceType, titlemargin.Desktop.top, titlemargin.Tablet.top, titlemargin.Mobile.top);
-            var TitleMarginRight = this.getPreviewSize(this.props.deviceType, titlemargin.Desktop.right, titlemargin.Tablet.right, titlemargin.Mobile.right);
-            var TitleMarginBottom = this.getPreviewSize(this.props.deviceType, titlemargin.Desktop.bottom, titlemargin.Tablet.bottom, titlemargin.Mobile.bottom);
-            var TitleMarginLeft = this.getPreviewSize(this.props.deviceType, titlemargin.Desktop.left, titlemargin.Tablet.left, titlemargin.Mobile.left);
-            var GeneralMarginTop = this.getPreviewSize(this.props.deviceType, generalmargin.Desktop.top, generalmargin.Tablet.top, generalmargin.Mobile.top);
-            var GeneralMarginRight = this.getPreviewSize(this.props.deviceType, generalmargin.Desktop.right, generalmargin.Tablet.right, generalmargin.Mobile.right);
-            var GeneralMarginBottom = this.getPreviewSize(this.props.deviceType, generalmargin.Desktop.bottom, generalmargin.Tablet.bottom, generalmargin.Mobile.bottom);
-            var GeneralMarginLeft = this.getPreviewSize(this.props.deviceType, generalmargin.Desktop.left, generalmargin.Tablet.left, generalmargin.Mobile.left);
-            var GeneralPaddingTop = this.getPreviewSize(this.props.deviceType, generalpadding.Desktop.top, generalpadding.Tablet.top, generalpadding.Mobile.top);
-            var GeneralPaddingRight = this.getPreviewSize(this.props.deviceType, generalpadding.Desktop.right, generalpadding.Tablet.right, generalpadding.Mobile.right);
-            var GeneralPaddingBottom = this.getPreviewSize(this.props.deviceType, generalpadding.Desktop.bottom, generalpadding.Tablet.bottom, generalpadding.Mobile.bottom);
-            var GeneralPaddingLeft = this.getPreviewSize(this.props.deviceType, generalpadding.Desktop.left, generalpadding.Tablet.left, generalpadding.Mobile.left);
-            var DividerWidth = this.getPreviewSize(this.props.deviceType, dividerStyles[0].dividerWidth, dividerStyles[0].dividerWidthTablet, dividerStyles[0].dividerWidthMobile);
-            var DividerHeight = this.getPreviewSize(this.props.deviceType, dividerStyles[0].dividerHeight, dividerStyles[0].dividerHeightTablet, dividerStyles[0].dividerHeightMobile);
+            var currentDevice = this.props.deviceType;
+            var BulletIconSize = bulletIconFontSize[currentDevice];
+            var BulletIconMarginTop = bulletIconmargin[currentDevice].top;
+            var BulletIconMarginRight = bulletIconmargin[currentDevice].right;
+            var BulletIconMarginBottom = bulletIconmargin[currentDevice].bottom;
+            var BulletIconMarginLeft = bulletIconmargin[currentDevice].left;
+            var BulletIconPaddingTop = bulletIconpadding[currentDevice].top;
+            var BulletIconPaddingRight = bulletIconpadding[currentDevice].right;
+            var BulletIconPaddingBottom = bulletIconpadding[currentDevice].bottom;
+            var BulletIconPaddingLeft = bulletIconpadding[currentDevice].left;
+            var TitleSize = titleTypography ? titleTypography.fontSize[currentDevice] : '';
+            var TitleMarginTop = titlemargin[currentDevice].top;
+            var TitleMarginRight = titlemargin[currentDevice].right;
+            var TitleMarginBottom = titlemargin[currentDevice].bottom;
+            var TitleMarginLeft = titlemargin[currentDevice].left;
+            var GeneralMarginTop = generalmargin[currentDevice].top;
+            var GeneralMarginRight = generalmargin[currentDevice].right;
+            var GeneralMarginBottom = generalmargin[currentDevice].bottom;
+            var GeneralMarginLeft = generalmargin[currentDevice].left;
+            var GeneralPaddingTop = generalpadding[currentDevice].top;
+            var GeneralPaddingRight = generalpadding[currentDevice].right;
+            var GeneralPaddingBottom = generalpadding[currentDevice].bottom;
+            var GeneralPaddingLeft = generalpadding[currentDevice].left;
+            var DividerWidth = dividerWidth[currentDevice];
+            var DividerHeight = dividerHeight[currentDevice];
 
             var addNewBulletList = function addNewBulletList() {
                 var cloneIcons = [].concat(_toConsumableArray(repeaterBulletList));
@@ -66084,522 +66104,435 @@ var edit = function (_Component) {
                 InspectorControls,
                 null,
                 React.createElement(
-                    PanelBody,
-                    {
-                        title: __("General Settings"),
-                        className: "premium-panel-body",
-                        initialOpen: false
-                    },
-                    React.createElement(SortableList, {
-                        items: repeaterBulletList,
-                        onSortEnd: function onSortEnd(o, n) {
-                            return onSortEndSingle(o, n);
-                        },
-                        onRemove: function onRemove(value) {
-                            return _onRemove(value);
-                        },
-                        showContent: function showContent(value, i) {
-                            return _showContent(value, i);
-                        },
-                        changeLabel: function changeLabel(value, i) {
-                            return _changeLabel(value, i);
-                        },
-                        toggleShowBulletIcon: function toggleShowBulletIcon(value, i) {
-                            return _toggleShowBulletIcon(value, i);
-                        },
-                        selectIconType: function selectIconType(value, i) {
-                            return _selectIconType(value, i);
-                        },
-                        changeIcons: function changeIcons(value, i) {
-                            return _changeIcons(value, i);
-                        },
-                        selectImage: function selectImage(value, i) {
-                            return _selectImage(value, i);
-                        },
-                        removeImage: function removeImage(value, i) {
-                            return _removeImage(value, i);
-                        },
-                        toggleIconLink: function toggleIconLink(value, i) {
-                            return _toggleIconLink(value, i);
-                        },
-                        saveLink: function saveLink(value, i) {
-                            return _saveLink(value, i);
-                        },
-                        openLink: function openLink(value, i) {
-                            return _openLink(value, i);
-                        },
-                        shouldCancelStart: shouldCancelStart
-                    }),
+                    _inspectorTabs2.default,
+                    { tabs: ['layout', 'style', 'advance'] },
                     React.createElement(
-                        "div",
-                        { className: "premium-bullet-list-btn__wrap" },
+                        _inspectorTab2.default,
+                        { key: 'layout' },
                         React.createElement(
-                            "button",
+                            PanelBody,
                             {
-                                className: "premium-bullet-list-btn",
-                                onClick: function onClick() {
-                                    return addNewBulletList();
-                                }
+                                title: __("General Settings"),
+                                className: "premium-panel-body",
+                                initialOpen: false
                             },
-                            React.createElement("i", { className: "dashicons dashicons-plus premium-bullet-list-icon" }),
-                            __("Add New Item")
-                        )
-                    )
-                ),
-                React.createElement(
-                    PanelBody,
-                    {
-                        title: __("Display Options"),
-                        className: "premium-panel-body",
-                        initialOpen: false
-                    },
-                    React.createElement(SelectControl, {
-                        label: __("Layout Type"),
-                        options: LAYOUT,
-                        value: layoutPos,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({ layoutPos: newValue });
-                        }
-                    }),
-                    React.createElement(SelectControl, {
-                        label: __("Bullet Position"),
-                        options: POSITION,
-                        value: iconPosition,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({ iconPosition: newValue });
-                        }
-                    }),
-                    React.createElement(
-                        "div",
-                        null,
-                        React.createElement(
-                            "label",
-                            null,
-                            __('Bullet Alignment')
-                        ),
-                        iconPosition !== 'top' ? React.createElement(
-                            "div",
-                            { className: "bullet-list-button-list" },
+                            React.createElement(SortableList, {
+                                items: repeaterBulletList,
+                                onSortEnd: function onSortEnd(o, n) {
+                                    return onSortEndSingle(o, n);
+                                },
+                                onRemove: function onRemove(value) {
+                                    return _onRemove(value);
+                                },
+                                showContent: function showContent(value, i) {
+                                    return _showContent(value, i);
+                                },
+                                changeLabel: function changeLabel(value, i) {
+                                    return _changeLabel(value, i);
+                                },
+                                toggleShowBulletIcon: function toggleShowBulletIcon(value, i) {
+                                    return _toggleShowBulletIcon(value, i);
+                                },
+                                selectIconType: function selectIconType(value, i) {
+                                    return _selectIconType(value, i);
+                                },
+                                changeIcons: function changeIcons(value, i) {
+                                    return _changeIcons(value, i);
+                                },
+                                selectImage: function selectImage(value, i) {
+                                    return _selectImage(value, i);
+                                },
+                                removeImage: function removeImage(value, i) {
+                                    return _removeImage(value, i);
+                                },
+                                toggleIconLink: function toggleIconLink(value, i) {
+                                    return _toggleIconLink(value, i);
+                                },
+                                saveLink: function saveLink(value, i) {
+                                    return _saveLink(value, i);
+                                },
+                                openLink: function openLink(value, i) {
+                                    return _openLink(value, i);
+                                },
+                                shouldCancelStart: shouldCancelStart
+                            }),
                             React.createElement(
-                                Tooltip,
-                                { text: __('Top') },
+                                "div",
+                                { className: "premium-bullet-list-btn__wrap" },
                                 React.createElement(
                                     "button",
                                     {
+                                        className: "premium-bullet-list-btn",
                                         onClick: function onClick() {
-                                            return setAttributes({ bulletAlign: 'flex-start' });
-                                        },
-                                        className: "bullet-list-button" + (bulletAlign === 'flex-start' ? ' active' : '')
+                                            return addNewBulletList();
+                                        }
                                     },
-                                    _align2.default.vertical_top
-                                )
-                            ),
-                            React.createElement(
-                                Tooltip,
-                                { text: __('Middle') },
-                                React.createElement(
-                                    "button",
-                                    {
-                                        onClick: function onClick() {
-                                            return setAttributes({ bulletAlign: 'center' });
-                                        },
-                                        className: "bullet-list-button" + (bulletAlign === 'center' ? ' active' : '')
-                                    },
-                                    _align2.default.vertical_middle
-                                )
-                            ),
-                            React.createElement(
-                                Tooltip,
-                                { text: __('Bottom') },
-                                React.createElement(
-                                    "button",
-                                    {
-                                        onClick: function onClick() {
-                                            return setAttributes({ bulletAlign: 'flex-end' });
-                                        },
-                                        className: "bullet-list-button" + (bulletAlign === 'flex-end' ? ' active' : '')
-                                    },
-                                    _align2.default.vertical_bottom
+                                    React.createElement("i", { className: "dashicons dashicons-plus premium-bullet-list-icon" }),
+                                    __("Add New Item")
                                 )
                             )
-                        ) : React.createElement(_radioControl2.default, {
-                            choices: ALIGNS,
-                            value: bulletAlign,
-                            onChange: function onChange(newValue) {
-                                return setAttributes({ bulletAlign: newValue });
+                        ),
+                        React.createElement(
+                            PanelBody,
+                            {
+                                title: __("Display Options"),
+                                className: "premium-panel-body",
+                                initialOpen: false
                             },
-                            label: __("", 'premium-blocks-for-gutenberg')
-                        })
-                    ),
-                    React.createElement("hr", null),
-                    React.createElement(ToggleControl, {
-                        label: __("Divider"),
-                        checked: divider,
-                        onChange: function onChange(value) {
-                            return setAttributes({ divider: value });
-                        }
-                    })
-                ),
-                React.createElement(
-                    PanelBody,
-                    {
-                        title: __("General Style"),
-                        className: "premium-panel-body",
-                        initialOpen: false
-                    },
-                    React.createElement(
-                        "div",
-                        { className: "premium-control-toggle" },
-                        React.createElement(_ColorComponent2.default, {
-                            label: __("Background Color", 'premium-block-for-gutenberg'),
-                            colorValue: generalStyles[0].generalBackgroundColor,
-                            colorDefault: '',
-                            onColorChange: function onColorChange(newValue) {
-                                return saveGeneralStyles({
-                                    generalBackgroundColor: newValue
-                                });
-                            }
-                        })
-                    ),
-                    React.createElement(
-                        "div",
-                        { className: "premium-control-toggle" },
-                        React.createElement(_ColorComponent2.default, {
-                            label: __("Background Hover Color", 'premium-block-for-gutenberg'),
-                            colorValue: generalStyles[0].generalHoverBackgroundColor,
-                            colorDefault: '',
-                            onColorChange: function onColorChange(newValue) {
-                                return saveGeneralStyles({
-                                    generalHoverBackgroundColor: newValue
-                                });
-                            }
-                        })
-                    ),
-                    React.createElement(_PremiumShadow2.default, {
-                        label: __("Box Shadow", 'premium-blocks-for-gutenberg'),
-                        boxShadow: true,
-                        color: generalStyles[0].generalShadowColor,
-                        blur: generalStyles[0].generalShadowBlur,
-                        horizontal: generalStyles[0].generalShadowHorizontal,
-                        vertical: generalStyles[0].generalShadowVertical,
-                        position: generalStyles[0].generalShadowPosition,
-                        onChangeColor: function onChangeColor(newColor) {
-                            return saveGeneralStyles({ generalShadowColor: newColor === undefined ? "transparent" : newColor });
-                        },
-                        onChangeBlur: function onChangeBlur(newBlur) {
-                            return saveGeneralStyles({ generalShadowBlur: newBlur === undefined ? 0 : newBlur });
-                        },
-                        onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return saveGeneralStyles({ generalShadowHorizontal: newValue === undefined ? 0 : newValue });
-                        },
-                        onChangeVertical: function onChangeVertical(newValue) {
-                            return saveGeneralStyles({ generalShadowVertical: newValue === undefined ? 0 : newValue });
-                        },
-                        onChangePosition: function onChangePosition(newValue) {
-                            return saveGeneralStyles({ generalShadowPosition: newValue === undefined ? 0 : newValue });
-                        }
-                    }),
-                    React.createElement(_PremiumShadow2.default, {
-                        label: __("Hover Box Shadow", 'premium-blocks-for-gutenberg'),
-                        boxShadow: true,
-                        color: generalStyles[0].generalHoverShadowColor,
-                        blur: generalStyles[0].generalHoverShadowBlur,
-                        horizontal: generalStyles[0].generalHoverShadowHorizontal,
-                        vertical: generalStyles[0].generalHoverShadowVertical,
-                        position: generalStyles[0].generalHoverShadowPosition,
-                        onChangeColor: function onChangeColor(newColor) {
-                            return saveGeneralStyles({ generalHoverShadowColor: newColor === undefined ? "transparent" : newColor });
-                        },
-                        onChangeBlur: function onChangeBlur(newBlur) {
-                            return saveGeneralStyles({ generalHoverShadowBlur: newBlur === undefined ? 0 : newBlur });
-                        },
-                        onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return saveGeneralStyles({ generalHoverShadowHorizontal: newValue === undefined ? 0 : newValue });
-                        },
-                        onChangeVertical: function onChangeVertical(newValue) {
-                            return saveGeneralStyles({ generalHoverShadowVertical: newValue === undefined ? 0 : newValue });
-                        },
-                        onChangePosition: function onChangePosition(newValue) {
-                            return saveGeneralStyles({ generalHoverShadowPosition: newValue === undefined ? 0 : newValue });
-                        }
-                    }),
-                    React.createElement(_premiumBorder2.default, {
-                        label: __("Border"),
-                        value: generalBorder,
-                        borderType: generalBorder.borderType,
-                        borderColor: generalBorder.borderColor,
-                        borderWidth: generalBorder.borderWidth,
-                        borderRadius: generalBorder.borderRadius,
-                        onChange: function onChange(value) {
-                            return setAttributes({ generalBorder: value });
-                        }
-                    }),
-                    React.createElement(_premiumResponsiveSpacing2.default, { value: generalmargin, responsive: true, showUnits: true, label: __("Margin"), onChange: function onChange(value) {
-                            return setAttributes({ generalmargin: value });
-                        } }),
-                    React.createElement(_premiumResponsiveSpacing2.default, { value: generalpadding, responsive: true, showUnits: true, label: __("Padding"), onChange: function onChange(value) {
-                            return setAttributes({ generalpadding: value });
-                        } })
-                ),
-                React.createElement(
-                    PanelBody,
-                    {
-                        title: __("Bullet Style"),
-                        className: "premium-panel-body",
-                        initialOpen: false
-                    },
-                    React.createElement(_responsiveRangeControl2.default, {
-                        label: __("Size", 'premium-block-for-gutenberg'),
-                        value: bulletIconStyles[0].bulletListfontSize,
-                        tabletValue: bulletIconStyles[0].bulletListfontSizeTablet,
-                        mobileValue: bulletIconStyles[0].bulletListfontSizeMobile,
-                        onChange: function onChange(value) {
-                            return saveBulletIconStyles({ bulletListfontSize: value });
-                        },
-                        onChangeTablet: function onChangeTablet(value) {
-                            return saveBulletIconStyles({ bulletListfontSizeTablet: value });
-                        },
-                        onChangeMobile: function onChangeMobile(value) {
-                            return saveBulletIconStyles({ bulletListfontSizeMobile: value });
-                        },
-                        onChangeUnit: function onChangeUnit(key) {
-                            return saveBulletIconStyles({ bulletListfontSizeType: key });
-                        },
-                        unit: bulletIconStyles[0].bulletListfontSizeType,
-                        showUnit: true,
-                        defaultValue: 20,
-                        min: 1,
-                        max: 100
-                    }),
-                    React.createElement(_ColorComponent2.default, {
-                        label: __("Color", 'premium-block-for-gutenberg'),
-                        colorValue: bulletIconStyles[0].bulletIconColor,
-                        colorDefault: '',
-                        onColorChange: function onColorChange(newValue) {
-                            return saveBulletIconStyles({
-                                bulletIconColor: newValue
-                            });
-                        }
-                    }),
-                    React.createElement(_ColorComponent2.default, {
-                        label: __("Hover Color", 'premium-block-for-gutenberg'),
-                        colorValue: bulletIconStyles[0].bulletIconHoverColor,
-                        colorDefault: '',
-                        onColorChange: function onColorChange(newValue) {
-                            return saveBulletIconStyles({
-                                bulletIconHoverColor: newValue
-                            });
-                        }
-                    }),
-                    React.createElement(_ColorComponent2.default, {
-                        label: __("Background Color", 'premium-block-for-gutenberg'),
-                        colorValue: bulletIconStyles[0].bulletIconBackgroundColor,
-                        colorDefault: '',
-                        onColorChange: function onColorChange(newValue) {
-                            return saveBulletIconStyles({
-                                bulletIconBackgroundColor: newValue
-                            });
-                        }
-                    }),
-                    React.createElement(_ColorComponent2.default, {
-                        label: __("Hover Background Color", 'premium-block-for-gutenberg'),
-                        colorValue: bulletIconStyles[0].bulletIconHoverBackgroundColor,
-                        colorDefault: '',
-                        onColorChange: function onColorChange(newValue) {
-                            return saveBulletIconStyles({
-                                bulletIconHoverBackgroundColor: newValue
-                            });
-                        }
-                    }),
-                    React.createElement(_premiumBorder2.default, {
-                        label: __("Border"),
-                        value: bulletIconBorder,
-                        borderType: bulletIconBorder.borderType,
-                        borderColor: bulletIconBorder.borderColor,
-                        borderWidth: bulletIconBorder.borderWidth,
-                        borderRadius: bulletIconBorder.borderRadius,
-                        onChange: function onChange(value) {
-                            return setAttributes({ bulletIconBorder: value });
-                        }
-                    }),
-                    React.createElement(_premiumResponsiveSpacing2.default, { value: bulletIconmargin, responsive: true, showUnits: true, label: __("Margin"), onChange: function onChange(value) {
-                            return setAttributes({ bulletIconmargin: value });
-                        } }),
-                    React.createElement(_premiumResponsiveSpacing2.default, { value: bulletIconpadding, responsive: true, showUnits: true, label: __("Padding"), onChange: function onChange(value) {
-                            return setAttributes({ bulletIconpadding: value });
-                        } })
-                ),
-                React.createElement(
-                    PanelBody,
-                    {
-                        title: __("Title Style"),
-                        className: "premium-panel-body",
-                        initialOpen: false
-                    },
-                    React.createElement(_premiumTypo2.default, {
-                        components: ["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"],
-                        setAttributes: saveTitleStyles,
-                        fontSizeType: { value: titleStyles[0].titlefontSizeType, label: __("titlefontSizeType") },
-                        fontSize: titleStyles[0].titleSize,
-                        fontSizeMobile: titleStyles[0].titlefontSizeMobile,
-                        fontSizeTablet: titleStyles[0].titlefontSizeTablet,
-                        onChangeSize: function onChangeSize(newSize) {
-                            return saveTitleStyles({ titleSize: newSize });
-                        },
-                        onChangeTabletSize: function onChangeTabletSize(newSize) {
-                            return saveTitleStyles({ titlefontSizeTablet: newSize });
-                        },
-                        onChangeMobileSize: function onChangeMobileSize(newSize) {
-                            return saveTitleStyles({ titlefontSizeMobile: newSize });
-                        },
-                        weight: titleStyles[0].titleWeight,
-                        style: titleStyles[0].titleStyle,
-                        spacing: titleStyles[0].titleLetter,
-                        upper: titleStyles[0].titleUpper,
-                        line: titleStyles[0].titleLine,
-                        fontFamily: titleStyles[0].titleFontFamily,
-                        onChangeWeight: function onChangeWeight(newWeight) {
-                            return saveTitleStyles({ titleWeight: newWeight || 500 });
-                        },
-                        onChangeStyle: function onChangeStyle(newStyle) {
-                            return saveTitleStyles({ titleStyle: newStyle });
-                        },
-                        onChangeSpacing: function onChangeSpacing(newValue) {
-                            return saveTitleStyles({ titleLetter: newValue });
-                        },
-                        onChangeUpper: function onChangeUpper(check) {
-                            return saveTitleStyles({ titleUpper: check });
-                        },
-                        onChangeLine: function onChangeLine(newValue) {
-                            return saveTitleStyles({ titleLine: newValue });
-                        },
-                        onChangeFamily: function onChangeFamily(fontFamily) {
-                            return saveTitleStyles({ titleFontFamily: fontFamily });
-                        }
-                    }),
-                    React.createElement(
-                        "div",
-                        { className: "premium-control-toggle" },
-                        React.createElement(_ColorComponent2.default, {
-                            label: __("Color", 'premium-block-for-gutenberg'),
-                            colorValue: titleStyles[0].titleColor,
-                            colorDefault: '',
-                            onColorChange: function onColorChange(newValue) {
-                                return saveTitleStyles({
-                                    titleColor: newValue
-                                });
-                            }
-                        })
+                            React.createElement(SelectControl, {
+                                label: __("Layout Type"),
+                                options: LAYOUT,
+                                value: layoutPos,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({ layoutPos: newValue });
+                                }
+                            }),
+                            React.createElement("hr", null),
+                            React.createElement(
+                                "div",
+                                null,
+                                React.createElement(
+                                    "label",
+                                    null,
+                                    __('Bullet Alignment')
+                                ),
+                                iconPosition !== 'top' ? React.createElement(
+                                    "div",
+                                    { className: "bullet-list-button-list" },
+                                    React.createElement(
+                                        Tooltip,
+                                        { text: __('Top') },
+                                        React.createElement(
+                                            "button",
+                                            {
+                                                onClick: function onClick() {
+                                                    return setAttributes({ bulletAlign: 'flex-start' });
+                                                },
+                                                className: "bullet-list-button" + (bulletAlign === 'flex-start' ? ' active' : '')
+                                            },
+                                            _align2.default.vertical_top
+                                        )
+                                    ),
+                                    React.createElement(
+                                        Tooltip,
+                                        { text: __('Middle') },
+                                        React.createElement(
+                                            "button",
+                                            {
+                                                onClick: function onClick() {
+                                                    return setAttributes({ bulletAlign: 'center' });
+                                                },
+                                                className: "bullet-list-button" + (bulletAlign === 'center' ? ' active' : '')
+                                            },
+                                            _align2.default.vertical_middle
+                                        )
+                                    ),
+                                    React.createElement(
+                                        Tooltip,
+                                        { text: __('Bottom') },
+                                        React.createElement(
+                                            "button",
+                                            {
+                                                onClick: function onClick() {
+                                                    return setAttributes({ bulletAlign: 'flex-end' });
+                                                },
+                                                className: "bullet-list-button" + (bulletAlign === 'flex-end' ? ' active' : '')
+                                            },
+                                            _align2.default.vertical_bottom
+                                        )
+                                    )
+                                ) : React.createElement(_radioControl2.default, {
+                                    choices: ALIGNS,
+                                    value: bulletAlign,
+                                    onChange: function onChange(newValue) {
+                                        return setAttributes({ bulletAlign: newValue });
+                                    },
+                                    label: __("", 'premium-blocks-for-gutenberg')
+                                })
+                            ),
+                            React.createElement("hr", null),
+                            React.createElement(SelectControl, {
+                                label: __("Bullet Position"),
+                                options: POSITION,
+                                value: iconPosition,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({ iconPosition: newValue });
+                                }
+                            }),
+                            React.createElement("hr", null),
+                            React.createElement(ToggleControl, {
+                                label: __("Divider"),
+                                checked: divider,
+                                onChange: function onChange(value) {
+                                    return setAttributes({ divider: value });
+                                }
+                            })
+                        )
                     ),
                     React.createElement(
-                        "div",
-                        { className: "premium-control-toggle" },
-                        React.createElement(_ColorComponent2.default, {
-                            label: __("Hover Color", 'premium-block-for-gutenberg'),
-                            colorValue: titleStyles[0].titleHoverColor,
-                            colorDefault: '',
-                            onColorChange: function onColorChange(newValue) {
-                                return saveTitleStyles({
-                                    titleHoverColor: newValue
-                                });
-                            }
-                        })
+                        _inspectorTab2.default,
+                        { key: 'style' },
+                        React.createElement(
+                            PanelBody,
+                            {
+                                title: __("General Style"),
+                                className: "premium-panel-body",
+                                initialOpen: false
+                            },
+                            React.createElement(
+                                "div",
+                                { className: "premium-control-toggle" },
+                                React.createElement(_ColorComponent2.default, {
+                                    label: __("Background Color", 'premium-block-for-gutenberg'),
+                                    colorValue: generalStyles[0].generalBackgroundColor,
+                                    colorDefault: '',
+                                    onColorChange: function onColorChange(newValue) {
+                                        return saveGeneralStyles({
+                                            generalBackgroundColor: newValue
+                                        });
+                                    }
+                                })
+                            ),
+                            React.createElement(
+                                "div",
+                                { className: "premium-control-toggle" },
+                                React.createElement(_ColorComponent2.default, {
+                                    label: __("Background Hover Color", 'premium-block-for-gutenberg'),
+                                    colorValue: generalStyles[0].generalHoverBackgroundColor,
+                                    colorDefault: '',
+                                    onColorChange: function onColorChange(newValue) {
+                                        return saveGeneralStyles({
+                                            generalHoverBackgroundColor: newValue
+                                        });
+                                    }
+                                })
+                            ),
+                            React.createElement("hr", null),
+                            React.createElement(_PremiumShadow2.default, {
+                                label: __("Box Shadow", 'premium-blocks-for-gutenberg'),
+                                boxShadow: true,
+                                value: boxShadow,
+                                onChange: function onChange(value) {
+                                    return setAttributes({ boxShadow: value });
+                                }
+                            }),
+                            React.createElement(_PremiumShadow2.default, {
+                                label: __("Hover Box Shadow", 'premium-blocks-for-gutenberg'),
+                                boxShadow: true,
+                                value: hoverBoxShadow,
+                                onChange: function onChange(value) {
+                                    return setAttributes({ hoverBoxShadow: value });
+                                }
+                            }),
+                            React.createElement("hr", null),
+                            React.createElement(_premiumBorder2.default, {
+                                label: __("Border"),
+                                value: generalBorder,
+                                borderType: generalBorder.borderType,
+                                borderColor: generalBorder.borderColor,
+                                borderWidth: generalBorder.borderWidth,
+                                borderRadius: generalBorder.borderRadius,
+                                onChange: function onChange(value) {
+                                    return setAttributes({ generalBorder: value });
+                                }
+                            }),
+                            React.createElement("hr", null),
+                            React.createElement(_premiumResponsiveSpacing2.default, { value: generalmargin, responsive: true, showUnits: true, label: __("Margin"), onChange: function onChange(value) {
+                                    return setAttributes({ generalmargin: value });
+                                } }),
+                            React.createElement(_premiumResponsiveSpacing2.default, { value: generalpadding, responsive: true, showUnits: true, label: __("Padding"), onChange: function onChange(value) {
+                                    return setAttributes({ generalpadding: value });
+                                } })
+                        ),
+                        React.createElement(
+                            PanelBody,
+                            {
+                                title: __("Bullet Style"),
+                                className: "premium-panel-body",
+                                initialOpen: false
+                            },
+                            React.createElement(_responsiveRangeControl2.default, {
+                                label: __("Size", 'premium-blocks-for-gutenberg'),
+                                value: bulletIconFontSize,
+                                units: ['px', 'em', 'rem'],
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({ bulletIconFontSize: newValue });
+                                },
+                                showUnit: true,
+                                min: 1,
+                                max: 100
+                            }),
+                            React.createElement("hr", null),
+                            React.createElement(_ColorComponent2.default, {
+                                label: __("Color", 'premium-block-for-gutenberg'),
+                                colorValue: bulletIconStyles[0].bulletIconColor,
+                                colorDefault: '',
+                                onColorChange: function onColorChange(newValue) {
+                                    return saveBulletIconStyles({
+                                        bulletIconColor: newValue
+                                    });
+                                }
+                            }),
+                            React.createElement(_ColorComponent2.default, {
+                                label: __("Hover Color", 'premium-block-for-gutenberg'),
+                                colorValue: bulletIconStyles[0].bulletIconHoverColor,
+                                colorDefault: '',
+                                onColorChange: function onColorChange(newValue) {
+                                    return saveBulletIconStyles({
+                                        bulletIconHoverColor: newValue
+                                    });
+                                }
+                            }),
+                            React.createElement(_ColorComponent2.default, {
+                                label: __("Background Color", 'premium-block-for-gutenberg'),
+                                colorValue: bulletIconStyles[0].bulletIconBackgroundColor,
+                                colorDefault: '',
+                                onColorChange: function onColorChange(newValue) {
+                                    return saveBulletIconStyles({
+                                        bulletIconBackgroundColor: newValue
+                                    });
+                                }
+                            }),
+                            React.createElement(_ColorComponent2.default, {
+                                label: __("Hover Background Color", 'premium-block-for-gutenberg'),
+                                colorValue: bulletIconStyles[0].bulletIconHoverBackgroundColor,
+                                colorDefault: '',
+                                onColorChange: function onColorChange(newValue) {
+                                    return saveBulletIconStyles({
+                                        bulletIconHoverBackgroundColor: newValue
+                                    });
+                                }
+                            }),
+                            React.createElement("hr", null),
+                            React.createElement(_premiumBorder2.default, {
+                                label: __("Border"),
+                                value: bulletIconBorder,
+                                borderType: bulletIconBorder.borderType,
+                                borderColor: bulletIconBorder.borderColor,
+                                borderWidth: bulletIconBorder.borderWidth,
+                                borderRadius: bulletIconBorder.borderRadius,
+                                onChange: function onChange(value) {
+                                    return setAttributes({ bulletIconBorder: value });
+                                }
+                            }),
+                            React.createElement("hr", null),
+                            React.createElement(_premiumResponsiveSpacing2.default, { value: bulletIconmargin, responsive: true, showUnits: true, label: __("Margin"), onChange: function onChange(value) {
+                                    return setAttributes({ bulletIconmargin: value });
+                                } }),
+                            React.createElement(_premiumResponsiveSpacing2.default, { value: bulletIconpadding, responsive: true, showUnits: true, label: __("Padding"), onChange: function onChange(value) {
+                                    return setAttributes({ bulletIconpadding: value });
+                                } })
+                        ),
+                        React.createElement(
+                            PanelBody,
+                            {
+                                title: __("Title Style"),
+                                className: "premium-panel-body",
+                                initialOpen: false
+                            },
+                            React.createElement(_premiumTypo2.default, {
+                                components: ["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"],
+                                value: titleTypography,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({ titleTypography: newValue });
+                                }
+                            }),
+                            React.createElement("hr", null),
+                            React.createElement(
+                                "div",
+                                { className: "premium-control-toggle" },
+                                React.createElement(_ColorComponent2.default, {
+                                    label: __("Color", 'premium-block-for-gutenberg'),
+                                    colorValue: titleStyles[0].titleColor,
+                                    colorDefault: '',
+                                    onColorChange: function onColorChange(newValue) {
+                                        return saveTitleStyles({
+                                            titleColor: newValue
+                                        });
+                                    }
+                                })
+                            ),
+                            React.createElement(
+                                "div",
+                                { className: "premium-control-toggle" },
+                                React.createElement(_ColorComponent2.default, {
+                                    label: __("Hover Color", 'premium-block-for-gutenberg'),
+                                    colorValue: titleStyles[0].titleHoverColor,
+                                    colorDefault: '',
+                                    onColorChange: function onColorChange(newValue) {
+                                        return saveTitleStyles({
+                                            titleHoverColor: newValue
+                                        });
+                                    }
+                                })
+                            ),
+                            React.createElement("hr", null),
+                            React.createElement(_PremiumShadow2.default, {
+                                label: __("Text Shadow", 'premium-blocks-for-gutenberg'),
+                                boxShadow: false,
+                                value: titlesTextShadow,
+                                onChange: function onChange(value) {
+                                    return setAttributes({ titlesTextShadow: value });
+                                }
+                            }),
+                            React.createElement("hr", null),
+                            React.createElement(_premiumResponsiveSpacing2.default, { value: titlemargin, responsive: true, showUnits: true, label: __("Margin"), onChange: function onChange(value) {
+                                    return setAttributes({ titlemargin: value });
+                                } })
+                        ),
+                        divider && React.createElement(
+                            PanelBody,
+                            {
+                                title: __("Divider"),
+                                className: "premium-panel-body",
+                                initialOpen: false
+                            },
+                            React.createElement(SelectControl, {
+                                label: __("Divider Style"),
+                                options: DividerStyle,
+                                value: dividerStyle,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({ dividerStyle: newValue });
+                                }
+                            }),
+                            React.createElement("hr", null),
+                            React.createElement(_responsiveRangeControl2.default, {
+                                label: __("Width", 'premium-blocks-for-gutenberg'),
+                                value: dividerWidth,
+                                units: ['px', 'em', '%'],
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({ dividerWidth: newValue });
+                                },
+                                showUnit: true,
+                                min: 1,
+                                max: 600
+                            }),
+                            React.createElement("hr", null),
+                            React.createElement(_responsiveRangeControl2.default, {
+                                label: __("Width", 'premium-blocks-for-gutenberg'),
+                                value: dividerHeight,
+                                units: ['px', 'em', '%'],
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({ dividerHeight: newValue });
+                                },
+                                showUnit: true,
+                                min: 1,
+                                max: 600
+                            }),
+                            React.createElement("hr", null),
+                            React.createElement(_ColorComponent2.default, {
+                                label: __("Color", 'premium-block-for-gutenberg'),
+                                colorValue: dividerStyles[0].dividerColor,
+                                colorDefault: '',
+                                onColorChange: function onColorChange(newValue) {
+                                    return saveDividerStyles({
+                                        dividerColor: newValue
+                                    });
+                                }
+                            })
+                        )
                     ),
-                    React.createElement(_PremiumShadow2.default, {
-                        label: __("Text Shadow", 'premium-blocks-for-gutenberg'),
-                        boxShadow: false,
-                        color: titleStyles[0].titleshadowColor,
-                        blur: titleStyles[0].titleshadowBlur,
-                        horizontal: titleStyles[0].titleshadowHorizontal,
-                        vertical: titleStyles[0].titleshadowVertical,
-                        onChangeColor: function onChangeColor(newColor) {
-                            return saveTitleStyles({ titleshadowColor: newColor });
-                        },
-                        onChangeBlur: function onChangeBlur(newBlur) {
-                            return saveTitleStyles({ titleshadowBlur: newBlur });
-                        },
-                        onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return saveTitleStyles({ titleshadowHorizontal: newValue });
-                        },
-                        onChangeVertical: function onChangeVertical(newValue) {
-                            return saveTitleStyles({ titleshadowVertical: newValue });
-                        }
-                    }),
-                    React.createElement(_premiumResponsiveSpacing2.default, { value: titlemargin, responsive: true, showUnits: true, label: __("Margin"), onChange: function onChange(value) {
-                            return setAttributes({ titlemargin: value });
-                        } })
-                ),
-                divider && React.createElement(
-                    PanelBody,
-                    {
-                        title: __("Divider"),
-                        className: "premium-panel-body",
-                        initialOpen: false
-                    },
-                    React.createElement(SelectControl, {
-                        label: __("Divider Style"),
-                        options: DividerStyle,
-                        value: dividerStyle,
-                        onChange: function onChange(newValue) {
-                            return setAttributes({ dividerStyle: newValue });
-                        }
-                    }),
-                    React.createElement(_responsiveRangeControl2.default, {
-                        label: __("Width", 'premium-block-for-gutenberg'),
-                        value: dividerStyles[0].dividerWidth,
-                        tabletValue: dividerStyles[0].dividerWidthTablet,
-                        mobileValue: dividerStyles[0].dividerWidthMobile,
-                        onChange: function onChange(value) {
-                            return saveDividerStyles({ dividerWidth: value });
-                        },
-                        onChangeTablet: function onChangeTablet(value) {
-                            return saveDividerStyles({ dividerWidthTablet: value });
-                        },
-                        onChangeMobile: function onChangeMobile(value) {
-                            return saveDividerStyles({ dividerWidthMobile: value });
-                        },
-                        onChangeUnit: function onChangeUnit(key) {
-                            return saveDividerStyles({ dividerWidthType: key });
-                        },
-                        unit: dividerStyles[0].dividerWidthType,
-                        showUnit: true,
-                        defaultValue: 0,
-                        min: 1,
-                        max: 600
-                    }),
-                    React.createElement(_responsiveRangeControl2.default, {
-                        label: __("Height", 'premium-block-for-gutenberg'),
-                        value: dividerStyles[0].dividerHeight,
-                        tabletValue: dividerStyles[0].dividerHeightTablet,
-                        mobileValue: dividerStyles[0].dividerHeightMobile,
-                        onChange: function onChange(value) {
-                            return saveDividerStyles({ dividerHeight: value });
-                        },
-                        onChangeTablet: function onChangeTablet(value) {
-                            return saveDividerStyles({ dividerHeightTablet: value });
-                        },
-                        onChangeMobile: function onChangeMobile(value) {
-                            return saveDividerStyles({ dividerHeightMobile: value });
-                        },
-                        onChangeUnit: function onChangeUnit(key) {
-                            return saveDividerStyles({ dividerHeightType: key });
-                        },
-                        unit: dividerStyles[0].dividerHeightType,
-                        showUnit: true,
-                        defaultValue: 0,
-                        min: 1,
-                        max: 600
-                    }),
-                    React.createElement(_ColorComponent2.default, {
-                        label: __("Color", 'premium-block-for-gutenberg'),
-                        colorValue: dividerStyles[0].dividerColor,
-                        colorDefault: '',
-                        onColorChange: function onColorChange(newValue) {
-                            return saveDividerStyles({
-                                dividerColor: newValue
-                            });
-                        }
-                    })
+                    React.createElement(_inspectorTab2.default, { key: 'advance' })
                 )
             ), React.createElement(
                 "div",
@@ -66608,7 +66541,7 @@ var edit = function (_Component) {
                     id: "premium-bullet-list-" + this.props.clientId },
                 React.createElement("style", {
                     dangerouslySetInnerHTML: {
-                        __html: ["#premium-bullet-list-" + this.props.clientId + " .premium-bullet-list__content-icon i:hover {", "color: " + bulletIconStyles[0].bulletIconHoverColor + " !important;", "background-color: " + bulletIconStyles[0].bulletIconHoverBackgroundColor + " !important;", "}", "#premium-bullet-list-" + this.props.clientId + " .premium-bullet-list__label-wrap .premium-bullet-list__label:hover {", "color: " + titleStyles[0].titleHoverColor + " !important;", "}", "#premium-bullet-list-" + this.props.clientId + " .premium-bullet-list__wrapper:hover {", "background-color: " + generalStyles[0].generalHoverBackgroundColor + " !important;", "box-shadow: " + generalStyles[0].generalHoverShadowHorizontal + "px " + generalStyles[0].generalHoverShadowVertical + "px " + generalStyles[0].generalHoverShadowBlur + "px " + generalStyles[0].generalHoverShadowColor + " " + generalStyles[0].generalHoverShadowPosition + " !important;", "}", "#premium-bullet-list-" + this.props.clientId + " .premium-bullet-list-divider-block:not(:last-child)::after {", "border-top-width: " + DividerHeight + dividerStyles[0].dividerHeightType + ";", "border-top-style: " + dividerStyle + ";", "border-top-color: " + dividerStyles[0].dividerColor + ";", "width: " + DividerWidth + dividerStyles[0].dividerWidthType + ";", "}", "#premium-bullet-list-" + this.props.clientId + " .premium-bullet-list-divider-inline:not(:last-child)::after {", "height: " + DividerHeight + dividerStyles[0].dividerHeightType + ";", "border-left-style: " + dividerStyle + ";", "border-left-color: " + dividerStyles[0].dividerColor + ";", "border-left-width: " + DividerWidth + dividerStyles[0].dividerWidthType + ";", "}"].join("\n")
+                        __html: ["#premium-bullet-list-" + this.props.clientId + " .premium-bullet-list__content-icon i:hover {", "color: " + bulletIconStyles[0].bulletIconHoverColor + " !important;", "background-color: " + bulletIconStyles[0].bulletIconHoverBackgroundColor + " !important;", "}", "#premium-bullet-list-" + this.props.clientId + " .premium-bullet-list__label-wrap .premium-bullet-list__label:hover {", "color: " + titleStyles[0].titleHoverColor + " !important;", "}", "#premium-bullet-list-" + this.props.clientId + " .premium-bullet-list__wrapper:hover {", "background-color: " + generalStyles[0].generalHoverBackgroundColor + " !important;", "box-shadow: " + hoverBoxShadow.horizontal + "px " + hoverBoxShadow.vertical + "px " + hoverBoxShadow.blur + "px " + hoverBoxShadow.color + " " + hoverBoxShadow.position + " !important;", "}", "#premium-bullet-list-" + this.props.clientId + " .premium-bullet-list-divider-block:not(:last-child)::after {", "border-top-width: " + DividerHeight + dividerStyles[0].dividerHeightType + ";", "border-top-style: " + dividerStyle + ";", "border-top-color: " + dividerStyles[0].dividerColor + ";", "width: " + DividerWidth + dividerStyles[0].dividerWidthType + ";", "}", "#premium-bullet-list-" + this.props.clientId + " .premium-bullet-list-divider-inline:not(:last-child)::after {", "height: " + DividerHeight + dividerStyles[0].dividerHeightType + ";", "border-left-style: " + dividerStyle + ";", "border-left-color: " + dividerStyles[0].dividerColor + ";", "border-left-width: " + DividerWidth + dividerStyles[0].dividerWidthType + ";", "}"].join("\n")
                     }
                 }),
                 React.createElement(
@@ -66631,24 +66564,23 @@ var edit = function (_Component) {
                                             className: "" + icon.icon,
                                             style: {
                                                 overflow: 'hidden',
-                                                fontSize: BulletIconSize + bulletIconStyles[0].bulletListfontSizeType,
+                                                fontSize: "" + BulletIconSize + bulletIconFontSize.unit,
                                                 color: bulletIconStyles[0].bulletIconColor,
                                                 backgroundColor: bulletIconStyles[0].bulletIconBackgroundColor,
-                                                paddingTop: BulletIconPaddingTop + bulletIconStyles[0].bulletIconpaddingUnit,
-                                                paddingBottom: BulletIconPaddingBottom + bulletIconStyles[0].bulletIconpaddingUnit,
-                                                paddingLeft: BulletIconPaddingLeft + bulletIconStyles[0].bulletIconpaddingUnit,
-                                                paddingRight: BulletIconPaddingRight + bulletIconStyles[0].bulletIconpaddingUnit,
+                                                paddingTop: BulletIconPaddingTop + bulletIconpadding.unit,
+                                                paddingBottom: BulletIconPaddingBottom + bulletIconpadding.unit,
+                                                paddingLeft: BulletIconPaddingLeft + bulletIconpadding.unit,
+                                                paddingRight: BulletIconPaddingRight + bulletIconpadding.unit,
                                                 borderStyle: bulletIconBorder && bulletIconBorder.borderType,
-                                                borderTopWidth: bulletIconBorder && bulletIconBorder.borderWidth.Desktop.top,
-                                                borderRightWidth: bulletIconBorder && bulletIconBorder.borderWidth.Desktop.right,
-                                                borderBottomWidth: bulletIconBorder && bulletIconBorder.borderWidth.Desktop.bottom,
-                                                borderLeftWidth: bulletIconBorder && bulletIconBorder.borderWidth.Desktop.left,
-                                                borderRadius: (bulletIconBorder && bulletIconBorder.borderRadius.Desktop.top || 0) + "px " + (bulletIconBorder && bulletIconBorder.borderRadius.Desktop.right || 0) + "px " + (bulletIconBorder && bulletIconBorder.borderRadius.Desktop.bottom || 0) + "px " + (bulletIconBorder && bulletIconBorder.borderRadius.Desktop.left || 0) + "px",
+                                                borderTopWidth: bulletIconBorder && bulletIconBorder.borderWidth[currentDevice].top,
+                                                borderRightWidth: bulletIconBorder && bulletIconBorder.borderWidth[currentDevice].right,
+                                                borderBottomWidth: bulletIconBorder && bulletIconBorder.borderWidth[currentDevice].bottom,
+                                                borderLeftWidth: bulletIconBorder && bulletIconBorder.borderWidth[currentDevice].left,
                                                 borderColor: bulletIconBorder && bulletIconBorder.borderColor,
-                                                borderTopLeftRadius: (bulletIconBorder && bulletIconBorder.borderRadius.Desktop.top || 0) + "px",
-                                                borderTopRightRadius: (bulletIconBorder && bulletIconBorder.borderRadius.Desktop.right || 0) + "px",
-                                                borderBottomLeftRadius: (bulletIconBorder && bulletIconBorder.borderRadius.Desktop.bottom || 0) + "px",
-                                                borderBottomRightRadius: (bulletIconBorder && bulletIconBorder.borderRadius.Desktop.left || 0) + "px",
+                                                borderTopLeftRadius: (bulletIconBorder && bulletIconBorder.borderRadius[currentDevice].top || 0) + "px",
+                                                borderTopRightRadius: (bulletIconBorder && bulletIconBorder.borderRadius[currentDevice].right || 0) + "px",
+                                                borderBottomLeftRadius: (bulletIconBorder && bulletIconBorder.borderRadius[currentDevice].bottom || 0) + "px",
+                                                borderBottomRightRadius: (bulletIconBorder && bulletIconBorder.borderRadius[currentDevice].left || 0) + "px",
                                                 verticalAlign: bulletAlign == 'flex-start' ? 'top' : bulletAlign == 'flex-end' ? 'bottom' : 'middle'
                                             }
                                         })
@@ -66662,23 +66594,22 @@ var edit = function (_Component) {
                                         key: index,
                                         style: {
                                             overflow: 'hidden',
-                                            width: BulletIconSize + bulletIconStyles[0].bulletListfontSizeType,
-                                            height: BulletIconSize + bulletIconStyles[0].bulletListfontSizeType,
-                                            paddingTop: BulletIconPaddingTop + bulletIconStyles[0].bulletIconpaddingUnit,
-                                            paddingBottom: BulletIconPaddingBottom + bulletIconStyles[0].bulletIconpaddingUnit,
-                                            paddingLeft: BulletIconPaddingLeft + bulletIconStyles[0].bulletIconpaddingUnit,
-                                            paddingRight: BulletIconPaddingRight + bulletIconStyles[0].bulletIconpaddingUnit,
+                                            width: "" + BulletIconSize + bulletIconFontSize.unit,
+                                            height: "" + BulletIconSize + bulletIconFontSize.unit,
+                                            paddingTop: BulletIconPaddingTop + bulletIconpadding.unit,
+                                            paddingBottom: BulletIconPaddingBottom + bulletIconpadding.unit,
+                                            paddingLeft: BulletIconPaddingLeft + bulletIconpadding.unit,
+                                            paddingRight: BulletIconPaddingRight + bulletIconpadding.unit,
                                             borderStyle: bulletIconBorder && bulletIconBorder.borderType,
-                                            borderTopWidth: bulletIconBorder && bulletIconBorder.borderWidth.Desktop.top,
-                                            borderRightWidth: bulletIconBorder && bulletIconBorder.borderWidth.Desktop.right,
-                                            borderBottomWidth: bulletIconBorder && bulletIconBorder.borderWidth.Desktop.bottom,
-                                            borderLeftWidth: bulletIconBorder && bulletIconBorder.borderWidth.Desktop.left,
-                                            borderRadius: (bulletIconBorder && bulletIconBorder.borderRadius.Desktop.top || 0) + "px " + (bulletIconBorder && bulletIconBorder.borderRadius.Desktop.right || 0) + "px " + (bulletIconBorder && bulletIconBorder.borderRadius.Desktop.bottom || 0) + "px " + (bulletIconBorder && bulletIconBorder.borderRadius.Desktop.left || 0) + "px",
+                                            borderTopWidth: bulletIconBorder && bulletIconBorder.borderWidth[currentDevice].top,
+                                            borderRightWidth: bulletIconBorder && bulletIconBorder.borderWidth[currentDevice].right,
+                                            borderBottomWidth: bulletIconBorder && bulletIconBorder.borderWidth[currentDevice].bottom,
+                                            borderLeftWidth: bulletIconBorder && bulletIconBorder.borderWidth[currentDevice].left,
                                             borderColor: bulletIconBorder && bulletIconBorder.borderColor,
-                                            borderTopLeftRadius: (bulletIconBorder && bulletIconBorder.borderRadius.Desktop.top || 0) + "px",
-                                            borderTopRightRadius: (bulletIconBorder && bulletIconBorder.borderRadius.Desktop.right || 0) + "px",
-                                            borderBottomLeftRadius: (bulletIconBorder && bulletIconBorder.borderRadius.Desktop.bottom || 0) + "px",
-                                            borderBottomRightRadius: (bulletIconBorder && bulletIconBorder.borderRadius.Desktop.left || 0) + "px",
+                                            borderTopLeftRadius: (bulletIconBorder && bulletIconBorder.borderRadius[currentDevice].top || 0) + "px",
+                                            borderTopRightRadius: (bulletIconBorder && bulletIconBorder.borderRadius[currentDevice].right || 0) + "px",
+                                            borderBottomLeftRadius: (bulletIconBorder && bulletIconBorder.borderRadius[currentDevice].bottom || 0) + "px",
+                                            borderBottomRightRadius: (bulletIconBorder && bulletIconBorder.borderRadius[currentDevice].left || 0) + "px",
                                             verticalAlign: bulletAlign == 'flex-start' ? 'top' : bulletAlign == 'flex-end' ? 'bottom' : 'middle'
                                         }
                                     });
@@ -66704,25 +66635,24 @@ var edit = function (_Component) {
                                         justifyContent: align == "right" ? "flex-end" : align,
                                         backgroundColor: generalStyles[0].generalBackgroundColor,
                                         borderStyle: generalBorder && generalBorder.borderType,
-                                        borderTopWidth: generalBorder && generalBorder.borderWidth.Desktop.top,
-                                        borderRightWidth: generalBorder && generalBorder.borderWidth.Desktop.right,
-                                        borderBottomWidth: generalBorder && generalBorder.borderWidth.Desktop.bottom,
-                                        borderLeftWidth: generalBorder && generalBorder.borderWidth.Desktop.left,
-                                        borderRadius: (generalBorder && generalBorder.borderRadius.Desktop.top || 0) + "px " + (generalBorder && generalBorder.borderRadius.Desktop.right || 0) + "px " + (generalBorder && generalBorder.borderRadius.Desktop.bottom || 0) + "px " + (generalBorder && generalBorder.borderRadius.Desktop.left || 0) + "px",
+                                        borderTopWidth: generalBorder && generalBorder.borderWidth[currentDevice].top,
+                                        borderRightWidth: generalBorder && generalBorder.borderWidth[currentDevice].right,
+                                        borderBottomWidth: generalBorder && generalBorder.borderWidth[currentDevice].bottom,
+                                        borderLeftWidth: generalBorder && generalBorder.borderWidth[currentDevice].left,
                                         borderColor: generalBorder && generalBorder.borderColor,
-                                        borderTopLeftRadius: (generalBorder && generalBorder.borderRadius.Desktop.top || 0) + "px",
-                                        borderTopRightRadius: (generalBorder && generalBorder.borderRadius.Desktop.right || 0) + "px",
-                                        borderBottomLeftRadius: (generalBorder && generalBorder.borderRadius.Desktop.bottom || 0) + "px",
-                                        borderBottomRightRadius: (generalBorder && generalBorder.borderRadius.Desktop.left || 0) + "px",
-                                        paddingTop: GeneralPaddingTop + generalStyles[0].generalpaddingUnit,
-                                        paddingBottom: GeneralPaddingBottom + generalStyles[0].generalpaddingUnit,
-                                        paddingLeft: GeneralPaddingLeft + generalStyles[0].generalpaddingUnit,
-                                        paddingRight: GeneralPaddingRight + generalStyles[0].generalpaddingUnit,
-                                        marginTop: GeneralMarginTop + generalStyles[0].generalmarginType,
-                                        marginBottom: GeneralMarginBottom + generalStyles[0].generalmarginType,
-                                        marginLeft: GeneralMarginLeft + generalStyles[0].generalmarginType,
-                                        marginRight: GeneralMarginRight + generalStyles[0].generalmarginType,
-                                        boxShadow: generalStyles[0].generalShadowHorizontal + "px " + generalStyles[0].generalShadowVertical + "px " + generalStyles[0].generalShadowBlur + "px " + generalStyles[0].generalShadowColor + " " + generalStyles[0].generalShadowPosition
+                                        borderTopLeftRadius: (generalBorder && generalBorder.borderRadius[currentDevice].top || 0) + "px",
+                                        borderTopRightRadius: (generalBorder && generalBorder.borderRadius[currentDevice].right || 0) + "px",
+                                        borderBottomLeftRadius: (generalBorder && generalBorder.borderRadius[currentDevice].bottom || 0) + "px",
+                                        borderBottomRightRadius: (generalBorder && generalBorder.borderRadius[currentDevice].left || 0) + "px",
+                                        paddingTop: GeneralPaddingTop + generalpadding.unit,
+                                        paddingBottom: GeneralPaddingBottom + generalpadding.unit,
+                                        paddingLeft: GeneralPaddingLeft + generalpadding.unit,
+                                        paddingRight: GeneralPaddingRight + generalpadding.unit,
+                                        marginTop: GeneralMarginTop + generalmargin.unit,
+                                        marginBottom: GeneralMarginBottom + generalmargin.unit,
+                                        marginLeft: GeneralMarginLeft + generalmargin.unit,
+                                        marginRight: GeneralMarginRight + generalmargin.unit,
+                                        boxShadow: boxShadow.horizontal + "px " + boxShadow.vertical + "px " + boxShadow.blur + "px " + boxShadow.color + " " + boxShadow.position
                                     }
                                 },
                                 React.createElement(
@@ -66731,10 +66661,10 @@ var edit = function (_Component) {
                                             justifyContent: align == "right" ? align : align,
                                             display: iconPosition == "before" ? "flex" : "inline-flex",
                                             flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? 'row-reverse' : "",
-                                            marginTop: TitleMarginTop + titleStyles[0].titlemarginType,
-                                            marginBottom: TitleMarginBottom + titleStyles[0].titlemarginType,
-                                            marginLeft: TitleMarginLeft + titleStyles[0].titlemarginType,
-                                            marginRight: TitleMarginRight + titleStyles[0].titlemarginType
+                                            marginTop: TitleMarginTop + titlemargin.unit,
+                                            marginBottom: TitleMarginBottom + titlemargin.unit,
+                                            marginLeft: TitleMarginLeft + titlemargin.unit,
+                                            marginRight: TitleMarginRight + titlemargin.unit
                                         } },
                                     icon.showBulletIcon && React.createElement(
                                         "span",
@@ -66742,10 +66672,10 @@ var edit = function (_Component) {
                                             style: {
                                                 // overflow: "hidden",
                                                 alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
-                                                marginTop: BulletIconMarginTop + bulletIconStyles[0].bulletIconmarginType,
-                                                marginBottom: BulletIconMarginBottom + bulletIconStyles[0].bulletIconmarginType,
-                                                marginLeft: BulletIconMarginLeft + bulletIconStyles[0].bulletIconmarginType,
-                                                marginRight: BulletIconMarginRight + bulletIconStyles[0].bulletIconmarginType,
+                                                marginTop: BulletIconMarginTop + bulletIconmargin.unit,
+                                                marginBottom: BulletIconMarginBottom + bulletIconmargin.unit,
+                                                marginLeft: BulletIconMarginLeft + bulletIconmargin.unit,
+                                                marginRight: BulletIconMarginRight + bulletIconmargin.unit,
                                                 textAlign: bulletAlign,
                                                 justifyContent: bulletAlign,
                                                 alignItems: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center'
@@ -66758,9 +66688,9 @@ var edit = function (_Component) {
                                         {
                                             className: "premium-bullet-list__label-wrap",
                                             style: {
-                                                fontFamily: titleFont,
-                                                fontSize: TitleSize + titleStyles[0].titlefontSizeType,
-                                                fontWeight: titleStyles[0].titleWeight
+                                                fontSize: "" + TitleSize + titleTypography.fontSize.unit,
+                                                fontFamily: titleTypography.fontFamily,
+                                                fontWeight: titleTypography.fontWeight
                                             }
                                         },
                                         React.createElement(RichText, {
@@ -66773,16 +66703,15 @@ var edit = function (_Component) {
                                             },
                                             multiline: false,
                                             style: {
-                                                // fontFamily: titleFont,
-                                                // fontSize: TitleSize + titleStyles[0].titlefontSizeType,
-                                                // fontWeight: titleStyles[0].titleWeight,
-                                                letterSpacing: titleStyles[0].titleLetter + "px",
-                                                lineHeight: titleStyles[0].titleLine + "px",
-                                                fontStyle: titleStyles[0].titleStyle,
-                                                textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
-                                                fontFamily: titleStyles[0].titleFontFamily,
-                                                color: titleStyles[0].titleColor,
-                                                textShadow: titleStyles[0].titleshadowHorizontal + "px " + titleStyles[0].titleshadowVertical + "px " + titleStyles[0].titleshadowBlur + "px " + titleStyles[0].titleshadowColor
+                                                fontSize: "" + TitleSize + titleTypography.fontSize.unit,
+                                                fontStyle: titleTypography.fontStyle,
+                                                fontFamily: titleTypography.fontFamily,
+                                                fontWeight: titleTypography.fontWeight,
+                                                letterSpacing: titleTypography.letterSpacing,
+                                                textDecoration: titleTypography.textDecoration,
+                                                textTransform: titleTypography.textTransform,
+                                                lineHeight: titleTypography.lineHeight + "px",
+                                                textShadow: titlesTextShadow.titleshadowHorizontal + "px " + titlesTextShadow.titleshadowVertical + "px " + titlesTextShadow.titleshadowBlur + "px " + titlesTextShadow.titleshadowColor
                                             }
                                         })
                                     )
@@ -66952,10 +66881,6 @@ var attributes = {
     bulletIconStyles: {
         type: "array",
         default: [{
-            bulletListfontSize: 20,
-            bulletListfontSizeType: "px",
-            bulletListfontSizeMobile: 20,
-            bulletListfontSizeTablet: 20,
             bulletIconHoverColor: '',
             bulletIconColor: "#6EC1E4",
             bulletIconBackgroundColor: '',
@@ -66979,10 +66904,6 @@ var attributes = {
             titleFontFamily: __('Default', 'premium-blocks-for-gutenberg'),
             titleColor: "#6EC1E4",
             titleHoverColor: "",
-            titleshadowColor: '',
-            titleshadowBlur: 0,
-            titleshadowHorizontal: 0,
-            titleshadowVertical: 0,
             titlemarginType: 'px'
         }]
     },
@@ -66991,16 +66912,6 @@ var attributes = {
         default: [{
             generalBackgroundColor: "",
             generalHoverBackgroundColor: '',
-            generalShadowColor: '',
-            generalShadowBlur: 0,
-            generalShadowHorizontal: 0,
-            generalShadowVertical: 0,
-            generalShadowPosition: '',
-            generalHoverShadowColor: '',
-            generalHoverShadowBlur: '',
-            generalHoverShadowHorizontal: '',
-            generalHoverShadowVertical: '',
-            generalHoverShadowPosition: '',
             generalpaddingUnit: 'px',
             generalmarginType: 'px'
         }]
@@ -67035,14 +66946,6 @@ var attributes = {
     dividerStyles: {
         type: "array",
         default: [{
-            dividerWidth: '0',
-            dividerWidthTablet: '0',
-            dividerWidthMobile: '0',
-            dividerWidthType: 'px',
-            dividerHeight: '0',
-            dividerHeightTablet: '0',
-            dividerHeightMobile: '0',
-            dividerHeightType: 'px',
             dividerColor: '#ddd'
         }]
     },
@@ -67258,6 +67161,80 @@ var attributes = {
                     left: ''
                 }
             }
+        }
+    },
+    titleTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
+    },
+    titlesTextShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': ''
+        }
+    },
+    boxShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
+    },
+    hoverBoxShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
+    },
+    bulletIconFontSize: {
+        type: "object",
+        default: {
+            'Desktop': 20,
+            'Tablet': 20,
+            'Mobile': 20,
+            'unit': 'px'
+        }
+    },
+    dividerWidth: {
+        type: "object",
+        default: {
+            'Desktop': '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': 'px'
+        }
+    },
+    dividerHeight: {
+        type: "object",
+        default: {
+            'Desktop': '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': 'px'
         }
     }
 };
@@ -67900,6 +67877,80 @@ var newAttributes = {
                 }
             }
         }
+    },
+    titleTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
+    },
+    titlesTextShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': ''
+        }
+    },
+    boxShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
+    },
+    hoverBoxShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
+    },
+    bulletIconFontSize: {
+        type: "object",
+        default: {
+            'Desktop': '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': 'px'
+        }
+    },
+    dividerWidth: {
+        type: "object",
+        default: {
+            'Desktop': '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': 'px'
+        }
+    },
+    dividerHeight: {
+        type: "object",
+        default: {
+            'Desktop': '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': 'px'
+        }
     }
 };
 
@@ -68109,6 +68160,59 @@ var deprecated = [{
                         }
                     }
                 }
+            },
+            titleTypography: {
+                "fontWeight": attributes.titleStyles[0].titleWeight || '',
+                'fontStyle': attributes.titleStyles[0].titleStyle || '',
+                'textTransform': attributes.titleStyles[0].titleUpper || '',
+                'letterSpacing': attributes.titleStyles[0].titleLetter || '',
+                'fontFamily': attributes.titleStyles[0].titleFontFamily || '',
+                'lineHeight': attributes.titleStyles[0].titleLine || '',
+                'textDecoration': '',
+                'fontSize': {
+                    'Desktop': attributes.titleStyles[0].titleSize || '',
+                    "Tablet": attributes.titleStyles[0].titlefontSizeTablet || '',
+                    "Mobile": attributes.titleStyles[0].titlefontSizeMobile || '',
+                    "unit": 'px'
+                }
+            },
+            titlesTextShadow: {
+                'color': attributes.titleStyles[0].titleshadowColor || '',
+                'blur': attributes.titleStyles[0].titleshadowBlur || '',
+                'horizontal': attributes.titleStyles[0].titleshadowHorizontal || '',
+                'vertical': attributes.titleStyles[0].titleshadowVertical || ''
+            },
+            boxShadow: {
+                'color': attributes.generalStyles[0].generalShadowColor || '',
+                'blur': attributes.generalStyles[0].generalShadowBlur || '',
+                'horizontal': attributes.generalStyles[0].generalShadowHorizontal || '',
+                'vertical': attributes.generalStyles[0].generalShadowVertical || '',
+                'position': attributes.generalStyles[0].generalShadowPosition || ''
+            },
+            hoverBoxShadow: {
+                'color': attributes.generalStyles[0].generalHoverShadowColor || '',
+                'blur': attributes.generalStyles[0].generalHoverShadowBlur || '',
+                'horizontal': attributes.generalStyles[0].generalHoverShadowHorizontal || '',
+                'vertical': attributes.generalStyles[0].generalHoverShadowVertical || '',
+                'position': attributes.generalStyles[0].generalHoverShadowPosition || ''
+            },
+            bulletIconFontSize: {
+                'Desktop': attributes.bulletIconStyles[0].bulletListfontSize || '',
+                'Tablet': attributes.bulletIconStyles[0].bulletListfontSizeTablet || '',
+                'Mobile': attributes.bulletIconStyles[0].bulletListfontSizeMobile || '',
+                'unit': attributes.bulletIconStyles[0].bulletListfontSizeType || 'px'
+            },
+            dividerWidth: {
+                'Desktop': attributes.dividerStyles[0].dividerWidth || '',
+                'Tablet': attributes.dividerStyles[0].dividerWidthTablet || '',
+                'Mobile': attributes.dividerStyles[0].dividerWidthMobile || '',
+                'unit': 'px'
+            },
+            dividerHeight: {
+                'Desktop': attributes.dividerStyles[0].dividerHeight || '',
+                'Tablet': attributes.dividerStyles[0].dividerHeightTablet || '',
+                'Mobile': attributes.dividerStyles[0].dividerHeightMobile || '',
+                'unit': 'px'
             }
         };
         return Object.assign(attributes, newAttributes);
@@ -68692,7 +68796,7 @@ var _premiumMediaUpload = __webpack_require__(12);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
-var _reactSortableHoc = __webpack_require__(70);
+var _reactSortableHoc = __webpack_require__(72);
 
 var _times = __webpack_require__(391);
 
@@ -70854,7 +70958,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 var freeGlobal = (typeof global === 'undefined' ? 'undefined' : _typeof(global)) == 'object' && global && global.Object === Object && global;
 
 module.exports = freeGlobal;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(89)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(91)))
 
 /***/ }),
 /* 405 */
@@ -71600,7 +71704,7 @@ var _premiumMediaUpload = __webpack_require__(12);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
-var _reactLottieWithSegments = __webpack_require__(71);
+var _reactLottieWithSegments = __webpack_require__(73);
 
 var _reactLottieWithSegments2 = _interopRequireDefault(_reactLottieWithSegments);
 

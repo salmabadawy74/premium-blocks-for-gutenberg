@@ -555,7 +555,155 @@ const newAttributes = {
             },
             unit: 'px'
         }
-    }
+    },
+    numberTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
+    },
+    prefixTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
+    },
+    suffixTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
+    },
+    titleTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
+    },
+    boxShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
+    },
+    border: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    background: {
+        type: "object",
+        default: {
+            'backgroundType': '',
+            'backgroundColor': '',
+            'backgroundImageID': '',
+            'backgroundImageURL': '',
+            'backgroundPosition': '',
+            'backgroundRepeat': '',
+            'backgroundSize': '',
+            'fixed': false,
+            'gradientLocationOne': "",
+            'gradientColorTwo': '',
+            'gradientLocationTwo': '',
+            'gradientAngle': '',
+            'gradientPosition': '',
+            'gradientType': ''
+        }
+    },
 }
 
 
@@ -587,7 +735,134 @@ const deprecatedContent = [
                         left: attributes.paddingLMobile || ''
                     },
                     "unit": "px"
-                }
+                },
+                numberTypography: {
+                    "fontWeight": attributes?.numberStyles[0]?.numberWeight || '',
+                    'fontStyle': '',
+                    'textTransform': '',
+                    'letterSpacing': '',
+                    'fontFamily': attributes?.counterFamily || '',
+                    'lineHeight': '',
+                    'textDecoration': '',
+                    'fontSize': {
+                        'Desktop': attributes?.numberStyles[0]?.numberSize || '',
+                        "Tablet": attributes?.numberStyles[0]?.numberSizeTablet || '',
+                        "Mobile": attributes?.numberStyles[0]?.numberSizeMobile || '',
+                        "unit": attributes?.numberStyles[0]?.numberSizeUnit || 'px'
+                    }
+                },
+                prefixTypography: {
+                    "fontWeight": attributes?.prefixStyles[0]?.prefixWeight || '',
+                    'fontStyle': '',
+                    'textTransform': '',
+                    'letterSpacing': '',
+                    'fontFamily': attributes?.prefixStyles[0]?.prefixFamily || '',
+                    'lineHeight': '',
+                    'textDecoration': '',
+                    'fontSize': {
+                        'Desktop': attributes?.prefixStyles[0]?.prefixSize || '',
+                        "Tablet": attributes?.prefixStyles[0]?.prefixSizeTablet || '',
+                        "Mobile": attributes?.prefixStyles[0]?.prefixSizeMobile || '',
+                        "unit": attributes?.prefixStyles[0]?.prefixSizeUnit || 'px'
+                    }
+                },
+                suffixTypography: {
+                    "fontWeight": attributes?.suffixStyles[0]?.suffixWeight || '',
+                    'fontStyle': '',
+                    'textTransform': '',
+                    'letterSpacing': '',
+                    'fontFamily': attributes?.suffixStyles[0]?.suffixFamily || '',
+                    'lineHeight': '',
+                    'textDecoration': '',
+                    'fontSize': {
+                        'Desktop': attributes?.suffixStyles[0]?.suffixSize || '',
+                        "Tablet": attributes?.suffixStyles[0]?.suffixSizeTablet || '',
+                        "Mobile": attributes?.suffixStyles[0]?.suffixSizeMobile || '',
+                        "unit": attributes?.suffixStyles[0]?.suffixSizeUnit || 'px'
+                    }
+                },
+                titleTypography: {
+                    "fontWeight": attributes?.titleStyles[0]?.titleWeight || '',
+                    'fontStyle': attributes?.titleStyles[0]?.titleStyle || '',
+                    'textTransform': attributes?.titleStyles[0]?.titleUpper || '',
+                    'letterSpacing': attributes?.titleStyles[0]?.titleSpacing || '',
+                    'fontFamily': attributes?.titleStyles[0]?.titleFamily || '',
+                    'lineHeight': '',
+                    'textDecoration': '',
+                    'fontSize': {
+                        'Desktop': attributes?.titleStyles[0]?.titleSize || '',
+                        "Tablet": attributes?.titleStyles[0]?.titleSizeTablet || '',
+                        "Mobile": attributes?.titleStyles[0]?.titleSizeMobile || '',
+                        "unit": attributes?.titleStyles[0]?.titleSizeUnit || 'px'
+                    }
+                },
+                boxShadow: {
+                    'color': attributes?.containerStyles[0]?.shadowColor || '',
+                    'blur': attributes?.containerStyles[0]?.shadowBlur || '',
+                    'horizontal': attributes?.containerStyles[0]?.shadowHorizontal || '',
+                    'vertical': attributes?.containerStyles[0]?.shadowVertical || '',
+                    'position': attributes?.containerStyles[0]?.shadowPosition || ''
+                },
+                border: {
+                    "borderType": attributes?.containerStyles[0]?.borderType || '',
+                    "borderColor": attributes?.containerStyles[0]?.borderColor || '',
+                    "borderWidth": {
+                        Desktop: {
+                            top: attributes?.borderTop || '',
+                            right: attributes?.borderRight || '',
+                            bottom: attributes?.borderBottom || '',
+                            left: attributes?.borderLeft || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    },
+                    "borderRadius": {
+                        Desktop: {
+                            top: attributes?.containerStyles[0]?.borderRadius || '',
+                            right: attributes?.containerStyles[0]?.borderRadius || '',
+                            bottom: attributes?.containerStyles[0]?.borderRadius || '',
+                            left: attributes?.containerStyles[0]?.borderRadius || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    }
+                },
+                background: {
+                    'backgroundType': '',
+                    'backgroundColor': attributes?.containerStyles[0]?.containerBack || '',
+                    'backgroundImageID': attributes?.containerStyles[0]?.backgroundImageID || '',
+                    'backgroundImageURL': attributes?.containerStyles[0]?.backgroundImageURL || '',
+                    'backgroundPosition': attributes?.containerStyles[0]?.backgroundPosition || 'top center',
+                    'backgroundRepeat': attributes?.containerStyles[0]?.backgroundRepeat || 'no-reapet',
+                    'backgroundSize': attributes?.containerStyles[0]?.backgroundSize || 'auto',
+                    'fixed': attributes?.containerStyles[0]?.fixed || false,
+                    'gradientLocationOne': attributes?.containerStyles[0]?.gradientLocationOne || '0',
+                    'gradientColorTwo': attributes?.containerStyles[0]?.gradientColorTwo || '',
+                    'gradientLocationTwo': attributes?.containerStyles[0]?.gradientLocationTwo || '100',
+                    'gradientAngle': attributes?.containerStyles[0]?.gradientAngle || '180',
+                    'gradientPosition': attributes?.containerStyles[0]?.gradientPosition || 'center center',
+                    'gradientType': attributes?.containerStyles[0]?.gradientType || 'linear'
+                },
             }
             return Object.assign(attributes, newAttributes)
         },

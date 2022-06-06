@@ -80,10 +80,6 @@ const attributes = {
     bulletIconStyles: {
         type: "array",
         default: [{
-            bulletListfontSize: 20,
-            bulletListfontSizeType: "px",
-            bulletListfontSizeMobile: 20,
-            bulletListfontSizeTablet: 20,
             bulletIconHoverColor: '',
             bulletIconColor: "#6EC1E4",
             bulletIconBackgroundColor: '',
@@ -107,10 +103,6 @@ const attributes = {
             titleFontFamily: __('Default', 'premium-blocks-for-gutenberg'),
             titleColor: "#6EC1E4",
             titleHoverColor: "",
-            titleshadowColor: '',
-            titleshadowBlur: 0,
-            titleshadowHorizontal: 0,
-            titleshadowVertical: 0,
             titlemarginType: 'px'
         }],
     },
@@ -119,16 +111,6 @@ const attributes = {
         default: [{
             generalBackgroundColor: "",
             generalHoverBackgroundColor: '',
-            generalShadowColor: '',
-            generalShadowBlur: 0,
-            generalShadowHorizontal: 0,
-            generalShadowVertical: 0,
-            generalShadowPosition: '',
-            generalHoverShadowColor: '',
-            generalHoverShadowBlur: '',
-            generalHoverShadowHorizontal: '',
-            generalHoverShadowVertical: '',
-            generalHoverShadowPosition: '',
             generalpaddingUnit: 'px',
             generalmarginType: 'px'
         }],
@@ -163,14 +145,6 @@ const attributes = {
     dividerStyles: {
         type: "array",
         default: [{
-            dividerWidth: '0',
-            dividerWidthTablet: '0',
-            dividerWidthMobile: '0',
-            dividerWidthType: 'px',
-            dividerHeight: '0',
-            dividerHeightTablet: '0',
-            dividerHeightMobile: '0',
-            dividerHeightType: 'px',
             dividerColor: '#ddd'
         }]
     },
@@ -387,6 +361,80 @@ const attributes = {
                 }
             }
         }
-    }
+    },
+    titleTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
+    },
+    titlesTextShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+        }
+    },
+    boxShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
+    },
+    hoverBoxShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
+    },
+    bulletIconFontSize: {
+        type: "object",
+        default: {
+            'Desktop': 20,
+            'Tablet': 20,
+            'Mobile': 20,
+            'unit': 'px'
+        }
+    },
+    dividerWidth: {
+        type: "object",
+        default: {
+            'Desktop': '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': 'px'
+        }
+    },
+    dividerHeight: {
+        type: "object",
+        default: {
+            'Desktop': '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': 'px'
+        }
+    },
 }
 export default attributes

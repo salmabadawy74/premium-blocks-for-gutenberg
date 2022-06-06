@@ -624,7 +624,81 @@ const newAttributes = {
                 }
             }
         }
-    }
+    },
+    titleTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
+    },
+    titlesTextShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+        }
+    },
+    boxShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
+    },
+    hoverBoxShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
+    },
+    bulletIconFontSize: {
+        type: "object",
+        default: {
+            'Desktop': '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': 'px'
+        }
+    },
+    dividerWidth: {
+        type: "object",
+        default: {
+            'Desktop': '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': 'px'
+        }
+    },
+    dividerHeight: {
+        type: "object",
+        default: {
+            'Desktop': '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': 'px'
+        }
+    },
 }
 
 const deprecated = [
@@ -833,7 +907,60 @@ const deprecated = [
                             }
                         }
                     }
-                }
+                },
+                titleTypography: {
+                    "fontWeight": attributes.titleStyles[0].titleWeight || '',
+                    'fontStyle': attributes.titleStyles[0].titleStyle || '',
+                    'textTransform': attributes.titleStyles[0].titleUpper || '',
+                    'letterSpacing': attributes.titleStyles[0].titleLetter || '',
+                    'fontFamily': attributes.titleStyles[0].titleFontFamily || '',
+                    'lineHeight': attributes.titleStyles[0].titleLine || '',
+                    'textDecoration': '',
+                    'fontSize': {
+                        'Desktop': attributes.titleStyles[0].titleSize || '',
+                        "Tablet": attributes.titleStyles[0].titlefontSizeTablet || '',
+                        "Mobile": attributes.titleStyles[0].titlefontSizeMobile || '',
+                        "unit": 'px'
+                    }
+                },
+                titlesTextShadow: {
+                    'color': attributes.titleStyles[0].titleshadowColor || '',
+                    'blur': attributes.titleStyles[0].titleshadowBlur || '',
+                    'horizontal': attributes.titleStyles[0].titleshadowHorizontal || '',
+                    'vertical': attributes.titleStyles[0].titleshadowVertical || '',
+                },
+                boxShadow: {
+                    'color': attributes.generalStyles[0].generalShadowColor || '',
+                    'blur': attributes.generalStyles[0].generalShadowBlur || '',
+                    'horizontal': attributes.generalStyles[0].generalShadowHorizontal || '',
+                    'vertical': attributes.generalStyles[0].generalShadowVertical || '',
+                    'position': attributes.generalStyles[0].generalShadowPosition || ''
+                },
+                hoverBoxShadow: {
+                    'color': attributes.generalStyles[0].generalHoverShadowColor || '',
+                    'blur': attributes.generalStyles[0].generalHoverShadowBlur || '',
+                    'horizontal': attributes.generalStyles[0].generalHoverShadowHorizontal || '',
+                    'vertical': attributes.generalStyles[0].generalHoverShadowVertical || '',
+                    'position': attributes.generalStyles[0].generalHoverShadowPosition || ''
+                },
+                bulletIconFontSize: {
+                    'Desktop': attributes.bulletIconStyles[0].bulletListfontSize || '',
+                    'Tablet': attributes.bulletIconStyles[0].bulletListfontSizeTablet || '',
+                    'Mobile': attributes.bulletIconStyles[0].bulletListfontSizeMobile || '',
+                    'unit': attributes.bulletIconStyles[0].bulletListfontSizeType || 'px'
+                },
+                dividerWidth: {
+                    'Desktop': attributes.dividerStyles[0].dividerWidth || '',
+                    'Tablet': attributes.dividerStyles[0].dividerWidthTablet || '',
+                    'Mobile': attributes.dividerStyles[0].dividerWidthMobile || '',
+                    'unit': 'px'
+                },
+                dividerHeight: {
+                    'Desktop': attributes.dividerStyles[0].dividerHeight || '',
+                    'Tablet': attributes.dividerStyles[0].dividerHeightTablet || '',
+                    'Mobile': attributes.dividerStyles[0].dividerHeightMobile || '',
+                    'unit': 'px'
+                },
             }
             return Object.assign(attributes, newAttributes)
         },

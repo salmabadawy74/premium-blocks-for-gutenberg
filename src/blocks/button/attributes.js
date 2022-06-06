@@ -56,27 +56,6 @@ const attributes = {
         type: 'boolean',
         default: false
     },
-    textStyles: {
-        type: "array",
-        default: [
-            {
-                textSizeUnit: 'px',
-                textSize: 20,
-                textSizeTablet: '',
-                textSizeMobile: '',
-                textFontFamily: __('Default', 'premium-blocks-for-gutenberg'),
-                textLetter: '',
-                textStyle: '',
-                textUpper: false,
-                textWeight: '',
-                textLine: '',
-                shadowColor: '',
-                shadowBlur: '0',
-                shadowHorizontal: '0',
-                shadowVertical: '0',
-            }
-        ]
-    },
     btnStyles: {
         type: 'array',
         default: [
@@ -87,13 +66,6 @@ const attributes = {
                 backOpacity: 1,
                 backHoverColor: '',
                 borderHoverColor: '',
-                btnShadowColor: '',
-                btnShadowBlur: 0,
-                btnShadowHorizontal: 0,
-                btnShadowVertical: 0,
-                btnShadowPosition: '',
-                padding: '',
-                paddingU: 'px',
             }
         ]
     },
@@ -143,6 +115,67 @@ const attributes = {
                 }
             }
         }
-    }
+    },
+    typography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
+    },
+    textShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+        }
+    },
+    boxShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
+    },
+    padding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
 }
 export default attributes

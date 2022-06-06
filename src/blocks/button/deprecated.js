@@ -393,6 +393,67 @@ const v7Attrinutes = {
                 }
             }
         }
+    },
+    typography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
+    },
+    textShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+        }
+    },
+    boxShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
+    },
+    padding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
     }
 };
 
@@ -445,6 +506,55 @@ const deprecatedContent = [
                         }
                     }
                 },
+                typography: {
+                    "fontWeight": attributes?.textStyles[0]?.textWeight || '',
+                    'fontStyle': attributes?.textStyles[0]?.textStyle || '',
+                    'textTransform': attributes?.textStyles[0]?.textUpper || '',
+                    'letterSpacing': attributes?.textStyles[0]?.textLetter || '',
+                    'fontFamily': attributes?.textStyles[0]?.textFontFamily || '',
+                    'lineHeight': attributes?.textStyles[0]?.textLine || '',
+                    'textDecoration': '',
+                    'fontSize': {
+                        'Desktop': attributes?.textStyles[0]?.textSize || '',
+                        "Tablet": attributes?.textStyles[0]?.textSizeTablet || '',
+                        "Mobile": attributes?.textStyles[0]?.textSizeMobile || '',
+                        "unit": attributes?.textStyles[0]?.textSizeUnit || 'px'
+                    }
+                },
+                textShadow: {
+                    'color': attributes?.textStyles[0]?.shadowColor || '',
+                    'blur': attributes?.textStyles[0]?.shadowBlur || '',
+                    'horizontal': attributes?.textStyles[0]?.shadowHorizontal || '',
+                    'vertical': attributes?.textStyles[0]?.shadowVertical || '',
+                },
+                boxShadow: {
+                    'color': attributes?.btnStyles[0]?.btnShadowColor || '',
+                    'blur': attributes?.btnStyles[0]?.btnShadowBlur || '',
+                    'horizontal': attributes?.btnStyles[0]?.btnShadowHorizontal || '',
+                    'vertical': attributes?.btnStyles[0]?.btnShadowVertical || '',
+                    'position': attributes?.btnStyles[0]?.btnShadowPosition || ''
+                },
+                padding: {
+                    Desktop: {
+                        top: attributes?.btnStyles[0]?.padding || '',
+                        right: attributes?.btnStyles[0]?.padding || '',
+                        bottom: attributes?.btnStyles[0]?.padding || '',
+                        left: attributes?.btnStyles[0]?.padding || ''
+                    },
+                    Tablet: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    Mobile: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    unit: attributes?.btnStyles[0]?.paddingU || 'px'
+                }
             }
             return Object.assign(attributes, newAttributes)
         },

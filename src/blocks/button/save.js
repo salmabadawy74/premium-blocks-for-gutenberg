@@ -16,9 +16,11 @@ const save = props => {
         hideDesktop,
         hideTablet,
         hideMobile,
-        textStyles,
         btnStyles,
         border,
+        typography,
+        textShadow,
+        boxShadow
     } = props.attributes;
     const mainClasses = classnames(className, 'premium-button');
 
@@ -56,26 +58,17 @@ const save = props => {
                 style={{
                     color: btnStyles[0].textColor,
                     backgroundColor: btnStyles[0].backColor,
-                    fontFamily: textStyles[0].textFontFamily,
-                    letterSpacing: textStyles[0].textLetter + "px",
-                    textTransform: textStyles[0].textUpper ? "uppercase" : "none",
-                    fontStyle: textStyles[0].textStyle,
-                    lineHeight: textStyles[0].textLine + "px",
-                    fontWeight: textStyles[0].textWeight,
-                    textShadow: `${textStyles[0].shadowHorizontal}px ${textStyles[0].shadowVertical}px ${textStyles[0].shadowBlur}px ${textStyles[0].shadowColor}`,
-                    boxShadow: `${btnStyles[0].btnShadowHorizontal}px ${btnStyles[0].btnShadowVertical}px ${btnStyles[0].btnShadowBlur}px ${btnStyles[0].btnShadowColor} ${btnStyles[0].btnShadowPosition}`,
-                    padding: btnStyles[0].padding + btnStyles[0].paddingU,
-                    borderStyle: border && border.borderType,
-                    borderTopWidth: border && border.borderWidth.Desktop.top,
-                    borderRightWidth: border && border.borderWidth.Desktop.right,
-                    borderBottomWidth: border && border.borderWidth.Desktop.bottom,
-                    borderLeftWidth: border && border.borderWidth.Desktop.left,
-                    borderRadius: `${border && border.borderRadius.Desktop.top || 0}px ${border && border.borderRadius.Desktop.right || 0}px ${border && border.borderRadius.Desktop.bottom || 0}px ${border && border.borderRadius.Desktop.left || 0}px`,
-                    borderColor: border && border.borderColor,
-                    borderTopLeftRadius: `${border && border.borderRadius.Desktop.top || 0}px`,
-                    borderTopRightRadius: `${border && border.borderRadius.Desktop.right || 0}px`,
-                    borderBottomLeftRadius: `${border && border.borderRadius.Desktop.bottom || 0}px`,
-                    borderBottomRightRadius: `${border && border.borderRadius.Desktop.left || 0}px`,
+                    fontStyle: typography?.fontStyle,
+                    fontFamily: typography?.fontFamily,
+                    fontWeight: typography?.fontWeight,
+                    letterSpacing: typography?.letterSpacing,
+                    textDecoration: typography?.textDecoration,
+                    textTransform: typography?.textTransform,
+                    lineHeight: `${typography?.lineHeight}px`,
+                    textShadow: `${textShadow?.horizontal}px ${textShadow?.vertical}px ${textShadow?.blur}px ${textShadow?.color}`,
+                    boxShadow: `${boxShadow?.horizontal}px ${boxShadow?.vertical}px ${boxShadow?.blur}px ${boxShadow?.color} ${boxShadow?.position}`,
+                    borderStyle: border?.borderType,
+                    borderColor: border?.borderColor,
                 }}
             />
         </div>
