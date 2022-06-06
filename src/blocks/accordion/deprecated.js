@@ -630,6 +630,14 @@ const newAttributes = {
                 "unit": 'px'
             }
         }
+    },
+    descAlign: {
+        type: 'object',
+        default: {
+            Desktop: '',
+            Tablet: '',
+            Mobile: '',
+        }
     }
 }
 
@@ -800,7 +808,12 @@ const deprecated = [
                         "Mobile": attributes.descStyles[0].descSize || '',
                         "unit": 'px'
                     }
-                }
+                },
+                descAlign: {
+                    Desktop: attributes?.descStyles[0]?.descAlign || 'left',
+                    Tablet: attributes?.descStyles[0]?.descAlign || 'left',
+                    Mobile: attributes?.descStyles[0]?.descAlign || 'left',
+                },
             }
             return Object.assign(attributes, newAttributes)
         },

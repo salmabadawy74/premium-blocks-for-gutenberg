@@ -5,9 +5,12 @@ import PremiumTypo from "../../components/premium-typo";
 import PremiumShadow from "../../components/PremiumShadow";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 import RadioComponent from '../../components/radio-control';
+import MultiButtonsControl from '../../components/responsive-radio';
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
+import Icons from "../../components/icons";
+import { generateBlockId } from '../../components/HelperFunction';
 
 const { Component, Fragment } = wp.element;
 const { __ } = wp.i18n;
@@ -26,8 +29,8 @@ class PremiumAccordion extends Component {
 
     componentDidMount() {
         const { attributes, setAttributes, clientId } = this.props;
-        if (!attributes.accordionId) {
-            setAttributes({ accordionId: "premium-accordion-" + clientId });
+        if (!attributes.blockId) {
+            setAttributes({ blockId: "premium-accordion-" + generateBlockId(clientId) });
         }
         this.initAccordion();
     }
@@ -38,8 +41,7 @@ class PremiumAccordion extends Component {
     }
 
     initAccordion() {
-        const { accordionId } = this.props.attributes;
-        if (!this.props.attributes.accordionId) return null;
+        if (!this.props.attributes.blockId) return null;
         let title = this.accordionRef.current.getElementsByClassName("premium-accordion__title_wrap")[0];
         title.addEventListener("click", () => {
             title
@@ -53,7 +55,7 @@ class PremiumAccordion extends Component {
         const { isSelected, setAttributes, className } = this.props;
 
         const {
-            accordionId,
+            blockId,
             repeaterItems,
             direction,
             titleTag,
@@ -70,41 +72,9 @@ class PremiumAccordion extends Component {
             descPadding,
             descBorder,
             titleTypography,
-            descTypography
+            descTypography,
+            descAlign
         } = this.props.attributes;
-
-        const DIRECTION = [
-            {
-                value: "ltr",
-                label: "LTR"
-            },
-            {
-                value: "rtl",
-                label: "RTL"
-            }
-        ];
-
-        const ARROW = [
-            {
-                value: "in",
-                label: __("In", 'premium-blocks-for-gutenberg')
-            },
-            {
-                value: "out",
-                label: __("Out", 'premium-blocks-for-gutenberg')
-            }
-        ];
-
-        const TYPE = [
-            {
-                value: "text",
-                label: __("Text", 'premium-blocks-for-gutenberg')
-            },
-            {
-                value: "block",
-                label: __("Gutenberg Block", 'premium-blocks-for-gutenberg')
-            }
-        ];
 
         const saveTitleStyles = (value) => {
             const newUpdate = titleStyles.map((item, index) => {
@@ -180,7 +150,6 @@ class PremiumAccordion extends Component {
                             borderRightWidth: titleBorder && titleBorder.borderWidth[this.props.deviceType].right,
                             borderBottomWidth: titleBorder && titleBorder.borderWidth[this.props.deviceType].bottom,
                             borderLeftWidth: titleBorder && titleBorder.borderWidth[this.props.deviceType].left,
-                            borderRadius: `${titleBorder && titleBorder.borderRadius[this.props.deviceType].top || 0}px ${titleBorder && titleBorder.borderRadius[this.props.deviceType].right || 0}px ${titleBorder && titleBorder.borderRadius[this.props.deviceType].bottom || 0}px ${titleBorder && titleBorder.borderRadius[this.props.deviceType].left || 0}px`,
                             borderColor: titleBorder && titleBorder.borderColor,
                             borderTopLeftRadius: `${titleBorder && titleBorder.borderRadius[this.props.deviceType].top || 0}px`,
                             borderTopRightRadius: `${titleBorder && titleBorder.borderRadius[this.props.deviceType].right || 0}px`,
@@ -239,7 +208,7 @@ class PremiumAccordion extends Component {
                     <div
                         className={`premium-accordion__desc_wrap`}
                         style={{
-                            textAlign: descStyles[0].descAlign,
+                            textAlign: descAlign?.[this.props.deviceType],
                             backgroundColor: descStyles[0].descBack,
                             paddingTop: descPaddingTop && `${descPaddingTop}${descPadding.unit}`,
                             paddingRight: descPaddingRight && `${descPaddingRight}${descPadding.unit}`,
@@ -250,7 +219,6 @@ class PremiumAccordion extends Component {
                             borderRightWidth: descBorder && descBorder.borderWidth[this.props.deviceType].right,
                             borderBottomWidth: descBorder && descBorder.borderWidth[this.props.deviceType].bottom,
                             borderLeftWidth: descBorder && descBorder.borderWidth[this.props.deviceType].left,
-                            borderRadius: `${descBorder && descBorder.borderRadius[this.props.deviceType].top || 0}px ${descBorder && descBorder.borderRadius[this.props.deviceType].right || 0}px ${descBorder && descBorder.borderRadius[this.props.deviceType].bottom || 0}px ${descBorder && descBorder.borderRadius[this.props.deviceType].left || 0}px`,
                             borderColor: descBorder && descBorder.borderColor,
                             borderTopLeftRadius: `${descBorder && descBorder.borderRadius[this.props.deviceType].top || 0}px`,
                             borderTopRightRadius: `${descBorder && descBorder.borderRadius[this.props.deviceType].right || 0}px`,
@@ -295,10 +263,10 @@ class PremiumAccordion extends Component {
                             <PanelBody
                                 title={__("Title", 'premium-blocks-for-gutenberg')}
                                 className="premium-panel-body"
-                                initialOpen={false}
+                                initialOpen={true}
                             >
                                 <RadioComponent
-                                    choices={['H1', 'H2', 'H3', 'H4', 'H5', 'H6']}
+                                    choices={[{ value: 'h1', label: __('H1') }, { value: 'h2', label: __('H2') }, { value: 'h3', label: __('H3') }, { value: 'h4', label: __('H4') }, { value: 'h5', label: __('H5') }, { value: 'h6', label: __('H6') }]}
                                     value={titleTag}
                                     onChange={(newValue) => setAttributes({ titleTag: newValue })}
                                     label={__("Title Tag", 'premium-blocks-for-gutenberg')}
@@ -310,7 +278,7 @@ class PremiumAccordion extends Component {
                                 initialOpen={false}
                             >
                                 <RadioComponent
-                                    choices={['in', 'out']}
+                                    choices={[{ value: 'in', label: __('In') }, { value: 'out', label: __('Out') }]}
                                     value={arrowStyles[0].arrowPos}
                                     onChange={(newValue) => saveArrowStyles({ arrowPos: newValue })}
                                     label={__("Position", 'premium-blocks-for-gutenberg')}
@@ -322,7 +290,7 @@ class PremiumAccordion extends Component {
                                 initialOpen={false}
                             >
                                 <RadioComponent
-                                    choices={['text', 'block']}
+                                    choices={[{ value: 'text', label: __('Text') }, { value: 'block', label: __('Block') }]}
                                     value={contentType}
                                     onChange={newType => setAttributes({ contentType: newType })}
                                     label={__("Type", 'premium-blocks-for-gutenberg')}
@@ -333,10 +301,10 @@ class PremiumAccordion extends Component {
                             <PanelBody
                                 title={__("Title", 'premium-blocks-for-gutenberg')}
                                 className="premium-panel-body"
-                                initialOpen={false}
+                                initialOpen={true}
                             >
                                 <RadioComponent
-                                    choices={['rtl', 'ltr']}
+                                    choices={[{ value: 'ltr', label: __('LTR') }, { value: 'rtl', label: __('RTL') }]}
                                     value={direction}
                                     onChange={newEffect => setAttributes({ direction: newEffect })}
                                     label={__("Direction", 'premium-blocks-for-gutenberg')}
@@ -432,12 +400,12 @@ class PremiumAccordion extends Component {
                                 className="premium-panel-body"
                                 initialOpen={false}
                             >
-                                <RadioComponent
-                                    choices={["left", "center", "right"]}
-                                    label={__(`Align Content `)}
-                                    onChange={(align) => SaveDescStyles({ descAlign: align })}
-                                    value={descStyles[0].descAlign}
-                                />
+                                <MultiButtonsControl
+                                    choices={[{ value: 'left', label: __('Left'), icon: Icons.alignLeft }, { value: 'center', label: __('Center'), icon: Icons.alignCenter }, { value: 'right', label: __('Right'), icon: Icons.alignRight }]}
+                                    value={descAlign}
+                                    onChange={(align) => setAttributes({ descAlign: align })}
+                                    label={__("Align Content", "premium-blocks-for-gutenberg")}
+                                    showIcons={true} />
                                 <hr />
                                 {"text" === contentType && (
                                     <Fragment>
@@ -496,7 +464,7 @@ class PremiumAccordion extends Component {
                 </InspectorControls >
             ),
             <Fragment>
-                <div ref={this.accordionRef} id={accordionId} className={`${mainClasses}`}>
+                <div ref={this.accordionRef} className={`${mainClasses} ${blockId}`}>
                     {accordionItems}
                 </div>
                 <div className={"premium-repeater"}>

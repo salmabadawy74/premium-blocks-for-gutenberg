@@ -1,6 +1,5 @@
 import classnames from 'classnames'
 const { __ } = wp.i18n;
-
 const { RichText, InnerBlocks } = wp.blockEditor;
 
 const save = props => {
@@ -8,7 +7,7 @@ const save = props => {
     const { className } = props;
 
     const {
-        accordionId,
+        blockId,
         repeaterItems,
         direction,
         titleTag,
@@ -16,17 +15,13 @@ const save = props => {
         arrowStyles,
         descStyles,
         contentType,
-        textShadowColor,
-        textShadowBlur,
-        textShadowHorizontal,
-        textShadowVertical,
         titleBorder,
         descBorder,
         titleTypography,
         descTypography
     } = props.attributes;
 
-    const mainClasses = classnames(className, 'premium-accordion');
+    const mainClasses = classnames(className, 'premium-accordion', blockId);
 
     const accordionItems = repeaterItems.map((item, index) => {
         return (
@@ -82,7 +77,6 @@ const save = props => {
                 <div
                     className={`premium-accordion__desc_wrap premium-accordion__desc_close`}
                     style={{
-                        textAlign: descStyles[0].descAlign,
                         backgroundColor: descStyles[0].descBack,
                         borderStyle: descBorder && descBorder.borderType,
                         borderColor: descBorder && descBorder.borderColor,
@@ -112,7 +106,7 @@ const save = props => {
         );
     });
     return (
-        <div id={accordionId} className={`${mainClasses}`}>
+        <div className={`${mainClasses}`}>
             {accordionItems}
         </div>
     );

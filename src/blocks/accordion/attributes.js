@@ -1,7 +1,7 @@
 const { __ } = wp.i18n;
 
 const attributes = {
-    accordionId: {
+    blockId: {
         type: "string"
     },
     repeaterItems: {
@@ -62,7 +62,14 @@ const attributes = {
 
         ]
     },
-
+    descAlign: {
+        type: 'object',
+        default: {
+            Desktop: 'left',
+            Tablet: 'left',
+            Mobile: 'left',
+        }
+    },
     contentType: {
         type: "string",
         default: "text"

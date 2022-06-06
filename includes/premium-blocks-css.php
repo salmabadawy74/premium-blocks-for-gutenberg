@@ -571,4 +571,8 @@ class Premium_Blocks_css {
 	public function get_responsive_size_value( $values, $device = 'Desktop', $unit = 'px' ) {
 		return isset( $values[ $device ] ) && $values[ $device ] ? "{$values[ $device ]}{$unit}" : '';
 	}
+
+	public function get_responsive_css( $values, $device = 'Desktop' ) {
+		return isset( $values[ $device ] ) && $values[ $device ] ? "{$values[ $device ]}" : '';
+	}
 }

@@ -13,7 +13,7 @@ export const gradientBackground = (value) => {
         btnbg = backgroundImageURL ? `url('${backgroundImageURL}')` : ''
     }
     return {
-        backgroundColor: backgroundType === "solid" ? backgroundColor : "transparent",
+        backgroundColor: backgroundColor,
         backgroundImage: btnbg,
         backgroundRepeat: backgroundRepeat,
         backgroundPosition: backgroundPosition,
@@ -21,4 +21,46 @@ export const gradientBackground = (value) => {
         backgroundAttachment: fixed ? "fixed" : "unset",
     };
 
+}
+export const borderCss = (value, device) => {
+    return {
+        borderStyle: value.borderType,
+        borderTopWidth: value['borderWidth'][device]['top'] && value['borderWidth'][device]['top'] + "px",
+        borderRightWidth: value['borderWidth'][device]['right'] && value['borderWidth'][device]['right'] + "px",
+        borderBottomWidth: value['borderWidth'][device]['bottom'] && value['borderWidth'][device]['bottom'] + "px",
+        borderLeftWidth: value['borderWidth'][device]['left'] && value['borderWidth'][device]['left'] + "px",
+        borderBottomLeftRadius: value['borderRadius'][device]['left'] && value['borderRadius'][device]['left'] + "px",
+        borderTopLeftRadius: value['borderRadius'][device]['top'] && value['borderRadius'][device]['top'] + "px",
+        borderTopRightRadius: value['borderRadius'][device]['right'] && value['borderRadius'][device]['right'] + "px",
+        borderBottomRightRadius: value['borderRadius'][device]['bottom'] && value['borderRadius'][device]['bottom'] + "px",
+        borderColor: value.borderColor,
+    }
+
+}
+export const padddingCss = (value, device) => {
+    return {
+        paddingTop: value[device]['top'] && value[device]['top'] + value.unit,
+        paddingRight: value[device]['right'] && value[device]['right'] + value.unit,
+        paddingBottom: value[device]['bottom'] && value[device]['bottom'] + value.unit,
+        paddingLeft: value[device]['left'] && value[device]['left'] + value.unit,
+    }
+}
+export const marginCss = (value, device) => {
+    return {
+        marginTop: value[device]['top'] && value[device]['top'] + value.unit,
+        marginRight: value[device]['right'] && value[device]['right'] + value.unit,
+        marginBottom: value[device]['bottom'] && value[device]['bottom'] + value.unit,
+        marginLeft: value[device]['left'] && value[device]['left'] + value.unit,
+    }
+}
+export const animationAttr = (data) => {
+    if (typeof data !== 'undefined' && typeof data.name !== 'undefined' && data.openAnimation) {
+        return { 'data-premiumanimation': JSON.stringify(data) }
+    } else {
+        return {}
+    }
+}
+
+export const generateBlockId = (clientId) => {
+    return clientId.split('-')[4];
 }
