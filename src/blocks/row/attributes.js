@@ -186,8 +186,19 @@ const attributes = {
             openShape: 0,
             color: '#006fbf',
             shapeType: 'top',
-            width: { unit: '%' },
-            height: { unit: 'px' },
+            width: {
+                'Desktop': '',
+                'Tablet': '',
+                'Mobile': '',
+                unit: '%'
+            },
+            height: {
+                'Desktop': '',
+                'Tablet': '',
+                'Mobile': '',
+                unit: 'px'
+            },
+
         },
     },
     shapeBottom: {
@@ -196,8 +207,18 @@ const attributes = {
             openShape: 0,
             color: '#006fbf',
             shapeType: 'bottom',
-            width: { unit: '%' },
-            height: { unit: 'px' }
+            width: {
+                'Desktop': '',
+                'Tablet': '',
+                'Mobile': '',
+                unit: '%'
+            },
+            height: {
+                'Desktop': '',
+                'Tablet': '',
+                'Mobile': '',
+                unit: 'px'
+            }
         },
     },
     // Animation

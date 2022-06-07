@@ -39,14 +39,13 @@ const InspectorTabs = props => {
 
     useEffect(() => {
 
-        sidebarPanel && sidebarPanel.setAttribute('data-premium-tab', defaultTab)
-    }, [defaultTab]);
+        sidebarPanel && sidebarPanel.setAttribute('data-premium-tab', currentTab)
+    }, []);
 
     const _onTabChange = tab => {
         setCurrentTab(tab);
         sidebarPanel && sidebarPanel.setAttribute('data-premium-tab', tab);
     };
-
     return (
         <Fragment>
             <div className={'premium-inspector-tabs-container'}>

@@ -20,6 +20,7 @@ class Shape extends Component {
     setSettings(type, val) {
         const { value, onChange, shapeType } = this.props
         const styleVal = type == 'style' && val == '' ? { openShape: 0 } : { openShape: 1 }
+        console.log(Object.assign({}, value, styleVal, { shapeType }, { [type]: val }))
         onChange(Object.assign({}, value, styleVal, { shapeType }, { [type]: val }))
     }
 
@@ -115,14 +116,19 @@ class Shape extends Component {
                                 onChange={val => this.setSettings('height', val)}
                             />
                             <ToggleControl
-                                checked={value.flipShapeDivider}
                                 label={__('Flip Divider', 'premium-blocks-for-gutenberg')}
+                                checked={value.flipShapeDivider}
                                 onChange={newValue => this.setSettings('flipShapeDivider', newValue)}
                             />
-                            <CheckboxControl
+                            <ToggleControl
+                                label={__('Invert', 'premium-blocks-for-gutenberg')}
+                                checked={value.invertShapeDivider}
+                                onChange={newValue => this.setSettings('invertShapeDivider', newValue)}
+                            />
+                            <ToggleControl
                                 label={__('Bring to front', 'premium-blocks-for-gutenberg')}
-                                isChecked={value.front == 1 ? true : false}
-                                onChange={val => this.setSettings('front', val ? 1 : 0)}
+                                checked={value.front}
+                                onChange={val => this.setSettings('front', val)}
                             />
                         </Fragment>
                     }
