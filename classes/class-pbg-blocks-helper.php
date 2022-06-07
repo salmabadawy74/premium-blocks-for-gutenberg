@@ -1007,8 +1007,8 @@ class PBG_Blocks_Helper {
 	 */
 	public function get_accordion_css( $attributes, $content ) {
 
-		if ( isset( $attributes['accordionId'] ) && ! empty( $attributes['accordionId'] ) ) {
-			$unique_id = $attributes['accordionId'];
+		if ( isset( $attributes['blockId'] ) && ! empty( $attributes['blockId'] ) ) {
+			$unique_id = $attributes['blockId'];
 		} else {
 			$unique_id = rand( 100, 10000 );
 
