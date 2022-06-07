@@ -1,0 +1,79 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "premium/breadcrumbs",
+  "title": "Breadcrumbs",
+  "icon": "universal-access-alt",
+  "category": "premium-blocks",
+  "editorScript": "file:./build/block.js",
+  "style": "file:./build/style-block.css",
+  "usesContext": [
+    "postId",
+    "postType",
+    "queryId"
+  ],
+  "attributes": {
+    "textAlign": {
+      "type": "string"
+    },
+    "breadcrumbsStyle": {
+      "type": "string",
+      "default": "normal"
+    },
+    "prefix": {
+      "type": "string"
+    },
+    "divider": {
+      "type": "string",
+      "default": "»"
+    },
+    "homeItemType": {
+      "type": "string",
+      "default": "text"
+    },
+    "colors": {
+      "type": "object",
+      "default": {
+        "text": "",
+        "background": "",
+        "link": "",
+        "linkHover": "",
+        "separator": "",
+        "item": ""
+      }
+    },
+    "spacing": {
+      "type": "object",
+      "default": {
+        "padding": null,
+        "margin": null,
+        "itemPadding": null
+      }
+    },
+    "typography": {
+      "type": "object",
+      "default": {
+        "fontWeight": "",
+        "fontStyle": "",
+        "textTransform": "",
+        "letterSpacing": "",
+        "fontFamily": "",
+        "lineHeight": "",
+        "textDecoration": "",
+        "fontSize": {
+          "Desktop": "",
+          "Tablet": "",
+          "Mobile": "",
+          "unit": "px"
+        }
+      }
+    }
+  },
+  "supports": {
+    "align": [
+      "wide",
+      "full"
+    ],
+    "html": false
+  }
+}

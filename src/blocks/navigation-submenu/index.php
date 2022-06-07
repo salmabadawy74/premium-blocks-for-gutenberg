@@ -1,7 +1,7 @@
 <?php
 
 function get_premium_submenu_navigation_css( $attributes, $unique_id ) {
-	$block_helpers          = new PBG_Blocks_Helper();
+	$block_helpers          = pbg_blocks_helper();
 	$css                    = new Premium_Blocks_css();
 	$media_query            = array();
 	$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
@@ -15,7 +15,7 @@ function get_premium_submenu_navigation_css( $attributes, $unique_id ) {
 			$container_grid  = '';
 			$container_grid2 = '';
 			$container_bg    = '';
-			if ( 'gradient' === $background['backgroundType'] ) {
+			if ( isset($background['backgroundType']) && $background['backgroundType'] && 'gradient' === $background['backgroundType'] ) {
 				$container_grid  = $background['backgroundColor'] ? $background['backgroundColor'] : 'rgba(255,255,255,0)';
 				$container_grid2 = $background['gradientColorTwo'] ? $background['gradientColorTwo'] : '#777';
 				if ( 'radial' === $background['gradientType'] ) {
@@ -282,7 +282,7 @@ function render_block_premium_navigation_submenu( $attributes, $content, $block 
 	if ( ! wp_style_is( $unique_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
 			$css = get_premium_submenu_navigation_css( $attributes, $id );
 		if ( ! empty( $css ) ) {
-			$block_helpers = new PBG_Blocks_Helper();
+			$block_helpers = pbg_blocks_helper();
 			$block_helpers->render_inline_css( $css, $unique_id, true );
 		}
 	};
