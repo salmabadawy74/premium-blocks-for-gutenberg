@@ -1,7 +1,7 @@
 const { __ } = wp.i18n;
 
 const attributes = {
-    accordionId: {
+    blockId: {
         type: "string"
     },
     repeaterItems: {
@@ -27,15 +27,6 @@ const attributes = {
         default: [
             {
                 titleColor: "",
-                titleSize: '',
-                titleLine: '',
-                titleLetter: '',
-                titleStyle: '',
-                titleUpper: '',
-                titleWeight: '500',
-                titleBorder: 'none',
-                titleBorderRadius: '',
-                titleBorderColor: '',
                 titleBack: '',
                 titleShadowColor: '',
                 titleShadowBlur: 0,
@@ -63,21 +54,6 @@ const attributes = {
                 descAlign: 'left',
                 descColor: '',
                 descBack: '',
-                descBorder: 'none',
-                descBorderWidth: 1,
-                descBorderUpdated: false,
-                descBorderTop: '',
-                descBorderRight: '',
-                descBorderBottom: '',
-                descBorderLeft: '',
-                descBorderRadius: 0,
-                descBorderColor: '',
-                descSize: '',
-                descLine: '',
-                descLetter: '',
-                descStyle: '',
-                descUpper: false,
-                descWeight: 500,
                 descPaddingT: '',
                 descPaddingR: '',
                 descPaddingB: '',
@@ -86,7 +62,14 @@ const attributes = {
 
         ]
     },
-
+    descAlign: {
+        type: 'object',
+        default: {
+            Desktop: 'left',
+            Tablet: 'left',
+            Mobile: 'left',
+        }
+    },
     contentType: {
         type: "string",
         default: "text"
@@ -111,118 +94,183 @@ const attributes = {
         type: "number",
         default: "0"
     },
-    titleBorderWidth: {
-        type: "number",
-        default: "1"
+    titlePadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
     },
-    titleBorderTop: {
-        type: "number"
+    descPadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
     },
-    titleBorderRight: {
-        type: "number"
+    titleBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
     },
-    titleBorderBottom: {
-        type: "number"
+    descBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
     },
-    titleBorderLeft: {
-        type: "number"
+    titleTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
     },
-    titleBorderUpdated: {
-        type: "boolean",
-        default: false
-    },
-    titlePaddingT: {
-        type: "number"
-    },
-    titlePaddingR: {
-        type: "number"
-    },
-    titlePaddingB: {
-        type: "number"
-    },
-    titlePaddingL: {
-        type: "number"
-    },
-    descBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    descBorderUpdated: {
-        type: "boolean",
-        default: false
-    },
-    descBorderTop: {
-        type: "number"
-    },
-    descBorderRight: {
-        type: "number"
-    },
-    descBorderBottom: {
-        type: "number"
-    },
-    descBorderLeft: {
-        type: "number"
-    },
-    descPaddingT: {
-        type: "number"
-    },
-    descPaddingR: {
-        type: "number"
-    },
-    descPaddingB: {
-        type: "number"
-    },
-    descPaddingL: {
-        type: "number",
-        default: 10
-    },
-    titlePaddingTTablet: {
-        type: "number"
-    },
-    titlePaddingRTablet: {
-        type: "number"
-    },
-    titlePaddingBTablet: {
-        type: "number"
-    },
-    titlePaddingLTablet: {
-        type: "number"
-    },
-    titlePaddingTMobile: {
-        type: "number"
-    },
-    titlePaddingRMobile: {
-        type: "number"
-    },
-    titlePaddingBMobile: {
-        type: "number"
-    },
-    titlePaddingLMobile: {
-        type: "number"
-    },
-    descPaddingTTablet: {
-        type: "number"
-    },
-    descPaddingRTablet: {
-        type: "number"
-    },
-    descPaddingBTablet: {
-        type: "number"
-    },
-    descPaddingLTablet: {
-        type: "number"
-    },
-    descPaddingTMobile: {
-        type: "number"
-    },
-    descPaddingRMobile: {
-        type: "number"
-    },
-    descPaddingBMobile: {
-        type: "number"
-    },
-    descPaddingLMobile: {
-        type: "number"
+    descTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
     },
 }
 export default attributes;

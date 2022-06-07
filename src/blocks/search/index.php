@@ -6,7 +6,7 @@
  */
 
 function get_premium_search_css( $attributes, $unique_id ) {
-	$block_helpers          = new PBG_Blocks_Helper();
+	$block_helpers          = pbg_blocks_helper();
 	$css                    = new Premium_Blocks_css();
 	$media_query            = array();
 	$media_query['Mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
@@ -241,7 +241,7 @@ function get_premium_search_css( $attributes, $unique_id ) {
 		}
 		$css->stop_media_query();
 	}
-	error_log( $css->css_output() );
+
 	return $css->css_output();
 }
 
@@ -378,7 +378,7 @@ function render_block_premium_search( $attributes ) {
 	if ( ! wp_style_is( $unique_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
 		$css = get_premium_search_css( $attributes, $id );
 		if ( ! empty( $css ) ) {
-			$block_helpers = new PBG_Blocks_Helper();
+			$block_helpers = pbg_blocks_helper();
 			$block_helpers->render_inline_css( $css, $unique_id, true );
 		}
 	};

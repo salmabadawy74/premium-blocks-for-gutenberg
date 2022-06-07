@@ -12,6 +12,7 @@ const { registerBlockType } = wp.blocks;
 
 registerBlockType("premium/accordion", {
     title: __("Accordion"),
+    description: __('Display collapsed content like FAQs using Premium Accordion Block.'),
     icon: <PbgIcon icon="accordion" />,
     category: "premium-blocks",
     attributes: attributes,

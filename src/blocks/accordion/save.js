@@ -1,6 +1,5 @@
 import classnames from 'classnames'
 const { __ } = wp.i18n;
-
 const { RichText, InnerBlocks } = wp.blockEditor;
 
 const save = props => {
@@ -8,7 +7,7 @@ const save = props => {
     const { className } = props;
 
     const {
-        accordionId,
+        blockId,
         repeaterItems,
         direction,
         titleTag,
@@ -16,26 +15,13 @@ const save = props => {
         arrowStyles,
         descStyles,
         contentType,
-        titleEditBorder,
-        textShadowColor,
-        textShadowBlur,
-        textShadowHorizontal,
-        textShadowVertical,
-        titleBorderWidth,
-        titleBorderTop,
-        titleBorderRight,
-        titleBorderBottom,
-        titleBorderLeft,
-        titleBorderUpdated,
-        descBorderWidth,
-        descBorderUpdated,
-        descBorderTop,
-        descBorderRight,
-        descBorderBottom,
-        descBorderLeft,
+        titleBorder,
+        descBorder,
+        titleTypography,
+        descTypography
     } = props.attributes;
 
-    const mainClasses = classnames(className, 'premium-accordion');
+    const mainClasses = classnames(className, 'premium-accordion', blockId);
 
     const accordionItems = repeaterItems.map((item, index) => {
         return (
@@ -47,12 +33,8 @@ const save = props => {
                     className={`premium-accordion__title_wrap premium-accordion__${direction} premium-accordion__${arrowStyles[0].arrowPos}`}
                     style={{
                         backgroundColor: titleStyles[0].titleBack,
-                        borderStyle: titleStyles[0].titleBorder,
-                        borderWidth: titleBorderUpdated
-                            ? `${titleBorderTop}px ${titleBorderRight}px ${titleBorderBottom}px ${titleBorderLeft}px`
-                            : titleBorderWidth + "px",
-                        borderRadius: titleStyles[0].titleBorderRadius + "px",
-                        borderColor: titleStyles[0].titleBorderColor
+                        borderStyle: titleBorder && titleBorder.borderType,
+                        borderColor: titleBorder && titleBorder.borderColor,
                     }}
                 >
                     <div className={`premium-accordion__title`}>
@@ -62,13 +44,13 @@ const save = props => {
                             value={item.titleText}
                             style={{
                                 color: titleStyles[0].titleColor,
-                                fontSize: titleStyles[0].titleSize + "px",
-                                letterSpacing: titleStyles[0].titleLetter + "px",
-                                textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
-                                fontStyle: titleStyles[0].titleStyle,
-                                fontWeight: titleStyles[0].titleWeight,
-                                textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`,
-                                lineHeight: titleStyles[0].titleLine + "px"
+                                fontStyle: titleTypography.fontStyle,
+                                fontFamily: titleTypography.fontFamily,
+                                fontWeight: titleTypography.fontWeight,
+                                letterSpacing: titleTypography.letterSpacing,
+                                textDecoration: titleTypography.textDecoration,
+                                textTransform: titleTypography.textTransform,
+                                lineHeight: `${titleTypography.lineHeight}px`,
                             }}
                         />
                     </div>
@@ -95,14 +77,9 @@ const save = props => {
                 <div
                     className={`premium-accordion__desc_wrap premium-accordion__desc_close`}
                     style={{
-                        textAlign: descStyles[0].descAlign,
                         backgroundColor: descStyles[0].descBack,
-                        borderStyle: descStyles[0].descBorder,
-                        borderWidth: descBorderUpdated
-                            ? `${descBorderTop}px ${descBorderRight}px ${descBorderBottom}px ${descBorderLeft}px`
-                            : descBorderWidth + "px",
-                        borderRadius: descStyles[0].descBorderRadius + "px",
-                        borderColor: descStyles[0].descBorderColor,
+                        borderStyle: descBorder && descBorder.borderType,
+                        borderColor: descBorder && descBorder.borderColor,
 
                     }}
                 >
@@ -113,13 +90,13 @@ const save = props => {
                             value={item.descText}
                             style={{
                                 color: descStyles[0].descColor,
-                                fontSize: descStyles[0].descSize + "px",
-                                letterSpacing: descStyles[0].descLetter + "px",
-                                textTransform: descStyles[0].descUpper ? "uppercase" : "none",
-                                textShadow: `${textShadowHorizontal}px ${textShadowVertical}px ${textShadowBlur}px ${textShadowColor}`,
-                                fontStyle: descStyles[0].descStyle,
-                                fontWeight: descStyles[0].descWeight,
-                                lineHeight: descStyles[0].descLine + "px"
+                                fontStyle: descTypography.fontStyle,
+                                fontFamily: descTypography.fontFamily,
+                                fontWeight: descTypography.fontWeight,
+                                letterSpacing: descTypography.letterSpacing,
+                                textDecoration: descTypography.textDecoration,
+                                textTransform: descTypography.textTransform,
+                                lineHeight: `${descTypography.lineHeight}px`,
                             }}
                         />
                     )}
@@ -129,7 +106,7 @@ const save = props => {
         );
     });
     return (
-        <div id={accordionId} className={`${mainClasses}`}>
+        <div className={`${mainClasses}`}>
             {accordionItems}
         </div>
     );
