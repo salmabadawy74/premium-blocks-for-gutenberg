@@ -1,5 +1,5 @@
 import React from 'react'
-const { SelectControl, Button, ButtonGroup, Tooltip } = wp.components;
+const { SelectControl, Button, ButtonGroup, Tooltip, TextControl } = wp.components;
 // import { FontAwesomeEnabled } from "../../assets/js/settings";
 import PremiumMediaUpload from './premium-media-upload'
 import PremiumBackground from './premium-background'
