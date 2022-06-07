@@ -71091,7 +71091,6 @@ var Shape = function (_Component) {
                 shapeType = _props.shapeType;
 
             var styleVal = type == 'style' && val == '' ? { openShape: 0 } : { openShape: 1 };
-            console.log(Object.assign({}, value, styleVal, { shapeType: shapeType }, _defineProperty({}, type, val)));
             onChange(Object.assign({}, value, styleVal, { shapeType: shapeType }, _defineProperty({}, type, val)));
         }
     }, {

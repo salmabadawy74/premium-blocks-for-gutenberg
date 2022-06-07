@@ -20,7 +20,6 @@ class Shape extends Component {
     setSettings(type, val) {
         const { value, onChange, shapeType } = this.props
         const styleVal = type == 'style' && val == '' ? { openShape: 0 } : { openShape: 1 }
-        console.log(Object.assign({}, value, styleVal, { shapeType }, { [type]: val }))
         onChange(Object.assign({}, value, styleVal, { shapeType }, { [type]: val }))
     }
 
