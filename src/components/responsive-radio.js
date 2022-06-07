@@ -1,21 +1,24 @@
-import React, { useState } from 'react';
+
+import React from 'react';
+const { useState } = wp.element;
 import RadioComponent from './radio-control';
 import Responsive from './responsive';
 
-const ResponsiveRadioControl = ({ choices, label, showIcons, onChange, value }) => {
-    const defaultValue = {
+const ResponsiveRadio = ({ choices, label, showIcons, onChange, value }) => {
+    let defaultValue = {
         'Desktop': '',
         'Tablet': '',
         'Mobile': ''
     }
-    const [state, setState] = useState(value ? value : defaultValue)
+    const [state, setState] = useState(value ? { ...defaultValue, ...value } : defaultValue)
     const [device, setDevice] = useState("Desktop");
 
     const output = {};
 
-    const handleChange = (value, device) => {
+
+    const handleChange = (val, dev) => {
         const updatedState = { ...state };
-        updatedState[device] = value;
+        updatedState[dev] = val;
         setState(updatedState)
         onChange(updatedState)
     }
@@ -49,14 +52,14 @@ const ResponsiveRadioControl = ({ choices, label, showIcons, onChange, value }) 
     );
 
     return (
-        <div className={`components-base-control premium-blocks-base-control `}>
+        <div className={`premium-blocks-responsive-radio components-base-control premium-blocks__base-control `}>
             <header>
                 {label && <span className="premium-control-title">{label}</span>}
-                <Responsive onChange={(newDevice) => setDevice(newDevice)} />
+                <Responsive deviceType={device} onChange={(newDevice) => setDevice(newDevice)} />
             </header>
             { output[device] ? output[device] : output.Desktop}
         </div>
     );
 };
 
-export default ResponsiveRadioControl;
+export default React.memo(ResponsiveRadio);
