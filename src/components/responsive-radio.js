@@ -1,6 +1,6 @@
 
-import React, { useState } from 'react';
-
+import React from 'react';
+const { useState } = wp.element;
 import RadioComponent from './radio-control';
 import Responsive from './responsive';
 
@@ -10,10 +10,11 @@ const ResponsiveRadio = ({ choices, label, options, showIcons, onChange, value }
         'Tablet': '',
         'Mobile': ''
     }
-    const [state, setState] = useState(value ? value : defaultValue)
+    const [state, setState] = useState(value ? { ...defaultValue, ...value } : defaultValue)
     const [device, setDevice] = useState("Desktop");
 
     const output = {};
+
 
     const handleChange = (value, device) => {
         const updatedState = { ...state };
@@ -54,7 +55,7 @@ const ResponsiveRadio = ({ choices, label, options, showIcons, onChange, value }
         <div className={`premium-blocks-responsive-radio components-base-control premium-blocks__base-control `}>
             <header>
                 {label && <span className="premium-control-title">{label}</span>}
-                <Responsive onChange={(newDevice) => setDevice(newDevice)} />
+                <Responsive deviceType={device} onChange={(newDevice) => setDevice(newDevice)} />
             </header>
             { output[device] ? output[device] : output.Desktop}
         </div>

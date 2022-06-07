@@ -141,12 +141,13 @@ const SpacingComponent = (props) => {
         props.onChange(updateState);
         setState(updateState);
     }
+
     return (
         <div className="premium-spacing-responsive premium-blocks__base-control">
             <header>
                 <div className={`premium-title-wrap`} style={{ display: "flex" }}>
                     <span className=" premium-control-title">  {label}</span>
-                    {responsive && <Responsive onChange={(newValue) => setDevice(newValue)} />}
+                    {responsive && <Responsive deviceType={device} onChange={(newValue) => setDevice(newValue)} />}
                 </div>
                 {showUnits && (
                     <PremiumSizeUnits

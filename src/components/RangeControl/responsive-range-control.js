@@ -107,7 +107,7 @@ export default function ResponsiveRangeControl({
                         {label && (
                             <span className="premium-control-title">{label}</span>
                         )}
-                        <Responsive onChange={(newDevice) => setDeviceType(newDevice)} />
+                        <Responsive deviceType={deviceType} onChange={(newDevice) => setDeviceType(newDevice)} />
                     </div>
                     {showUnit && (
                         <PremiumSizeUnits
