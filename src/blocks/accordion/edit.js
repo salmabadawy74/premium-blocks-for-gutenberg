@@ -63,10 +63,8 @@ class PremiumAccordion extends Component {
             arrowStyles,
             descStyles,
             contentType,
-            textShadowColor,
-            textShadowBlur,
-            textShadowHorizontal,
-            textShadowVertical,
+            textShadow,
+            titleTextShadow,
             titleBorder,
             titlePadding,
             descPadding,
@@ -182,6 +180,7 @@ class PremiumAccordion extends Component {
                                     textDecoration: titleTypography.textDecoration,
                                     textTransform: titleTypography.textTransform,
                                     lineHeight: `${titleTypography.lineHeight}px`,
+                                    textShadow: `${titleTextShadow.horizontal}px ${titleTextShadow.vertical}px ${titleTextShadow.blur}px ${titleTextShadow.color}`
                                 }}
                             />
                         </div>
@@ -224,6 +223,7 @@ class PremiumAccordion extends Component {
                             borderTopRightRadius: `${descBorder && descBorder.borderRadius[this.props.deviceType].right || 0}px`,
                             borderBottomLeftRadius: `${descBorder && descBorder.borderRadius[this.props.deviceType].bottom || 0}px`,
                             borderBottomRightRadius: `${descBorder && descBorder.borderRadius[this.props.deviceType].left || 0}px`,
+                            textShadow: `${textShadow.horizontal}px ${textShadow.vertical}px ${textShadow.blur}px ${textShadow.color}`
                         }}
                     >
                         {"text" === contentType && (
@@ -246,6 +246,7 @@ class PremiumAccordion extends Component {
                                     textDecoration: descTypography.textDecoration,
                                     textTransform: descTypography.textTransform,
                                     lineHeight: `${descTypography.lineHeight}px`,
+                                    textShadow: `${textShadow.horizontal}px ${textShadow.vertical}px ${textShadow.blur}px ${textShadow.color}`
                                 }}
                             />
                         )}
@@ -330,15 +331,10 @@ class PremiumAccordion extends Component {
                                 />
                                 <hr />
                                 <PremiumShadow
-                                    label={__("Text Shadow", "premium-blocks-for-gutenberg")}
-                                    color={titleStyles[0].titleShadowColor}
-                                    blur={titleStyles[0].titleShadowBlur}
-                                    horizontal={titleStyles[0].titleShadowHorizontal}
-                                    vertical={titleStyles[0].titleShadowVertical}
-                                    onChangeColor={newColor => saveTitleStyles({ titleShadowColor: newColor })}
-                                    onChangeBlur={newBlur => saveTitleStyles({ titleShadowBlur: newBlur })}
-                                    onChangehHorizontal={newValue => saveTitleStyles({ titleShadowHorizontal: newValue })}
-                                    onChangeVertical={newValue => saveTitleStyles({ titleShadowVertical: newValue })}
+                                    label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
+                                    boxShadow={false}
+                                    value={titleTextShadow}
+                                    onChange={(value) => setAttributes({ titleTextShadow: value })}
                                 />
                                 <hr />
                                 <PremiumBorder
@@ -433,15 +429,10 @@ class PremiumAccordion extends Component {
                                 {"text" === contentType && (
                                     <Fragment>
                                         <PremiumShadow
-                                            label={__("Text Shadow ", "premium-blocks-for-gutenberg")}
-                                            color={textShadowColor}
-                                            blur={textShadowBlur}
-                                            horizontal={textShadowHorizontal}
-                                            vertical={textShadowVertical}
-                                            onChangeColor={newColor => setAttributes({ textShadowColor: newColor === undefined ? "transparent" : newColor })}
-                                            onChangeBlur={newBlur => setAttributes({ textShadowBlur: newBlur === undefined ? 0 : newBlur })}
-                                            onChangehHorizontal={newValue => setAttributes({ textShadowHorizontal: newValue === undefined ? 0 : newValue })}
-                                            onChangeVertical={newValue => setAttributes({ textShadowVertical: newValue === undefined ? 0 : newValue })}
+                                            label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
+                                            boxShadow={false}
+                                            value={textShadow}
+                                            onChange={(value) => setAttributes({ textShadow: value })}
                                         />
                                         <hr />
                                     </Fragment>

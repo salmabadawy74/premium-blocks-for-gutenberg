@@ -638,7 +638,25 @@ const newAttributes = {
             Tablet: '',
             Mobile: '',
         }
-    }
+    },
+    titleTextShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+        }
+    },
+    textShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+        }
+    },
 }
 
 const deprecated = [
@@ -813,6 +831,18 @@ const deprecated = [
                     Desktop: attributes?.descStyles[0]?.descAlign || 'left',
                     Tablet: attributes?.descStyles[0]?.descAlign || 'left',
                     Mobile: attributes?.descStyles[0]?.descAlign || 'left',
+                },
+                titleTextShadow: {
+                    'color': attributes?.titleStyles[0]?.titleShadowColor || '',
+                    'blur': attributes?.titleStyles[0]?.titleShadowBlur || '',
+                    'horizontal': attributes?.titleStyles[0]?.titleShadowHorizontal || '',
+                    'vertical': attributes?.titleStyles[0]?.titleShadowVertical || '',
+                },
+                textShadow: {
+                    'color': attributes?.textShadowColor,
+                    'blur': attributes?.textShadowBlur,
+                    'horizontal': attributes?.textShadowHorizontal,
+                    'vertical': attributes?.textShadowVertical,
                 },
             }
             return Object.assign(attributes, newAttributes)

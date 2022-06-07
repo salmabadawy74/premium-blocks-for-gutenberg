@@ -4856,6 +4856,24 @@ const attributes = {
         "unit": 'px'
       }
     }
+  },
+  titleTextShadow: {
+    type: "object",
+    default: {
+      'color': '',
+      'blur': '',
+      'horizontal': '',
+      'vertical': ''
+    }
+  },
+  textShadow: {
+    type: "object",
+    default: {
+      'color': '',
+      'blur': '',
+      'horizontal': '',
+      'vertical': ''
+    }
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (attributes);
@@ -5499,6 +5517,24 @@ const newAttributes = {
       Tablet: '',
       Mobile: ''
     }
+  },
+  titleTextShadow: {
+    type: "object",
+    default: {
+      'color': '',
+      'blur': '',
+      'horizontal': '',
+      'vertical': ''
+    }
+  },
+  textShadow: {
+    type: "object",
+    default: {
+      'color': '',
+      'blur': '',
+      'horizontal': '',
+      'vertical': ''
+    }
   }
 };
 const deprecated = [{
@@ -5509,7 +5545,7 @@ const deprecated = [{
   },
 
   migrate: attributes => {
-    var _attributes$descStyle, _attributes$descStyle2, _attributes$descStyle3;
+    var _attributes$descStyle, _attributes$descStyle2, _attributes$descStyle3, _attributes$titleStyl, _attributes$titleStyl2, _attributes$titleStyl3, _attributes$titleStyl4;
 
     let newAttributes = {
       titlePadding: {
@@ -5676,6 +5712,18 @@ const deprecated = [{
         Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle = attributes.descStyles[0]) === null || _attributes$descStyle === void 0 ? void 0 : _attributes$descStyle.descAlign) || 'left',
         Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle2 = attributes.descStyles[0]) === null || _attributes$descStyle2 === void 0 ? void 0 : _attributes$descStyle2.descAlign) || 'left',
         Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle3 = attributes.descStyles[0]) === null || _attributes$descStyle3 === void 0 ? void 0 : _attributes$descStyle3.descAlign) || 'left'
+      },
+      titleTextShadow: {
+        'color': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl = attributes.titleStyles[0]) === null || _attributes$titleStyl === void 0 ? void 0 : _attributes$titleStyl.titleShadowColor) || '',
+        'blur': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl2 = attributes.titleStyles[0]) === null || _attributes$titleStyl2 === void 0 ? void 0 : _attributes$titleStyl2.titleShadowBlur) || '',
+        'horizontal': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl3 = attributes.titleStyles[0]) === null || _attributes$titleStyl3 === void 0 ? void 0 : _attributes$titleStyl3.titleShadowHorizontal) || '',
+        'vertical': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl4 = attributes.titleStyles[0]) === null || _attributes$titleStyl4 === void 0 ? void 0 : _attributes$titleStyl4.titleShadowVertical) || ''
+      },
+      textShadow: {
+        'color': attributes === null || attributes === void 0 ? void 0 : attributes.textShadowColor,
+        'blur': attributes === null || attributes === void 0 ? void 0 : attributes.textShadowBlur,
+        'horizontal': attributes === null || attributes === void 0 ? void 0 : attributes.textShadowHorizontal,
+        'vertical': attributes === null || attributes === void 0 ? void 0 : attributes.textShadowVertical
       }
     };
     return Object.assign(attributes, newAttributes);
@@ -6419,10 +6467,8 @@ class PremiumAccordion extends Component {
       arrowStyles,
       descStyles,
       contentType,
-      textShadowColor,
-      textShadowBlur,
-      textShadowHorizontal,
-      textShadowVertical,
+      textShadow,
+      titleTextShadow,
       titleBorder,
       titlePadding,
       descPadding,
@@ -6539,7 +6585,8 @@ class PremiumAccordion extends Component {
           letterSpacing: titleTypography.letterSpacing,
           textDecoration: titleTypography.textDecoration,
           textTransform: titleTypography.textTransform,
-          lineHeight: `${titleTypography.lineHeight}px`
+          lineHeight: `${titleTypography.lineHeight}px`,
+          textShadow: `${titleTextShadow.horizontal}px ${titleTextShadow.vertical}px ${titleTextShadow.blur}px ${titleTextShadow.color}`
         }
       })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
         className: `premium-accordion__icon_wrap`
@@ -6577,7 +6624,8 @@ class PremiumAccordion extends Component {
           borderTopLeftRadius: `${descBorder && descBorder.borderRadius[this.props.deviceType].top || 0}px`,
           borderTopRightRadius: `${descBorder && descBorder.borderRadius[this.props.deviceType].right || 0}px`,
           borderBottomLeftRadius: `${descBorder && descBorder.borderRadius[this.props.deviceType].bottom || 0}px`,
-          borderBottomRightRadius: `${descBorder && descBorder.borderRadius[this.props.deviceType].left || 0}px`
+          borderBottomRightRadius: `${descBorder && descBorder.borderRadius[this.props.deviceType].left || 0}px`,
+          textShadow: `${textShadow.horizontal}px ${textShadow.vertical}px ${textShadow.blur}px ${textShadow.color}`
         }
       }, "text" === contentType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText, {
         tagName: "p",
@@ -6595,7 +6643,8 @@ class PremiumAccordion extends Component {
           letterSpacing: descTypography.letterSpacing,
           textDecoration: descTypography.textDecoration,
           textTransform: descTypography.textTransform,
-          lineHeight: `${descTypography.lineHeight}px`
+          lineHeight: `${descTypography.lineHeight}px`,
+          textShadow: `${textShadow.horizontal}px ${textShadow.vertical}px ${textShadow.blur}px ${textShadow.color}`
         }
       }), "block" === contentType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InnerBlocks, {
         templateLock: false
@@ -6710,22 +6759,11 @@ class PremiumAccordion extends Component {
         titleBack: value
       })
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_5__["default"], {
-      label: __("Text Shadow", "premium-blocks-for-gutenberg"),
-      color: titleStyles[0].titleShadowColor,
-      blur: titleStyles[0].titleShadowBlur,
-      horizontal: titleStyles[0].titleShadowHorizontal,
-      vertical: titleStyles[0].titleShadowVertical,
-      onChangeColor: newColor => saveTitleStyles({
-        titleShadowColor: newColor
-      }),
-      onChangeBlur: newBlur => saveTitleStyles({
-        titleShadowBlur: newBlur
-      }),
-      onChangehHorizontal: newValue => saveTitleStyles({
-        titleShadowHorizontal: newValue
-      }),
-      onChangeVertical: newValue => saveTitleStyles({
-        titleShadowVertical: newValue
+      label: __("Text Shadow", 'premium-blocks-for-gutenberg'),
+      boxShadow: false,
+      value: titleTextShadow,
+      onChange: value => setAttributes({
+        titleTextShadow: value
       })
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_2__["default"], {
       label: __("Border"),
@@ -6832,22 +6870,11 @@ class PremiumAccordion extends Component {
         descBack: value
       })
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null)), "text" === contentType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_5__["default"], {
-      label: __("Text Shadow ", "premium-blocks-for-gutenberg"),
-      color: textShadowColor,
-      blur: textShadowBlur,
-      horizontal: textShadowHorizontal,
-      vertical: textShadowVertical,
-      onChangeColor: newColor => setAttributes({
-        textShadowColor: newColor === undefined ? "transparent" : newColor
-      }),
-      onChangeBlur: newBlur => setAttributes({
-        textShadowBlur: newBlur === undefined ? 0 : newBlur
-      }),
-      onChangehHorizontal: newValue => setAttributes({
-        textShadowHorizontal: newValue === undefined ? 0 : newValue
-      }),
-      onChangeVertical: newValue => setAttributes({
-        textShadowVertical: newValue === undefined ? 0 : newValue
+      label: __("Text Shadow", 'premium-blocks-for-gutenberg'),
+      boxShadow: false,
+      value: textShadow,
+      onChange: value => setAttributes({
+        textShadow: value
       })
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_2__["default"], {
       label: __("Border"),
@@ -6989,7 +7016,9 @@ const save = props => {
     titleBorder,
     descBorder,
     titleTypography,
-    descTypography
+    descTypography,
+    textShadow,
+    titleTextShadow
   } = props.attributes;
   const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, 'premium-accordion', blockId);
   const accordionItems = repeaterItems.map((item, index) => {
@@ -7017,7 +7046,8 @@ const save = props => {
         letterSpacing: titleTypography.letterSpacing,
         textDecoration: titleTypography.textDecoration,
         textTransform: titleTypography.textTransform,
-        lineHeight: `${titleTypography.lineHeight}px`
+        lineHeight: `${titleTypography.lineHeight}px`,
+        textShadow: `${titleTextShadow.horizontal}px ${titleTextShadow.vertical}px ${titleTextShadow.blur}px ${titleTextShadow.color}`
       }
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: `premium-accordion__icon_wrap`
@@ -7056,7 +7086,8 @@ const save = props => {
         letterSpacing: descTypography.letterSpacing,
         textDecoration: descTypography.textDecoration,
         textTransform: descTypography.textTransform,
-        lineHeight: `${descTypography.lineHeight}px`
+        lineHeight: `${descTypography.lineHeight}px`,
+        textShadow: `${textShadow.horizontal}px ${textShadow.vertical}px ${textShadow.blur}px ${textShadow.color}`
       }
     }), "block" === contentType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InnerBlocks.Content, null)));
   });
@@ -55824,8 +55855,8 @@ const RadioComponent = _ref => {
   } = _ref;
 
   const HandleChange = newVal => {
-    onChange(newVal);
     setState(newVal);
+    onChange(newVal);
   };
 
   let defaultVal = '';
@@ -55833,12 +55864,10 @@ const RadioComponent = _ref => {
   const [state, setState] = useState(value);
 
   const renderButtons = () => {
-    let currentChoices = choices;
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, currentChoices.map(choice => {
-      const currentValue = state;
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, choices.map(choice => {
       return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
         isTertiary: true,
-        className: choice.value === currentValue ? 'active-radio' : '',
+        className: choice.value === value ? 'active-radio' : '',
         onClick: () => {
           HandleChange(choice.value);
         }
@@ -55875,10 +55904,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _responsive__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./responsive */ "./src/components/responsive.js");
 
 
+const {
+  useState
+} = wp.element;
 
 
 
-const ResponsiveRadioControl = _ref => {
+const ResponsiveRadio = _ref => {
   let {
     choices,
     label,
@@ -55886,19 +55918,21 @@ const ResponsiveRadioControl = _ref => {
     onChange,
     value
   } = _ref;
-  const defaultValue = {
+  let defaultValue = {
     'Desktop': '',
     'Tablet': '',
     'Mobile': ''
   };
-  const [state, setState] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(value ? value : defaultValue);
-  const [device, setDevice] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("Desktop");
+  const [state, setState] = useState(value ? { ...defaultValue,
+    ...value
+  } : defaultValue);
+  const [device, setDevice] = useState("Desktop");
   const output = {};
 
-  const handleChange = (value, device) => {
+  const handleChange = (val, dev) => {
     const updatedState = { ...state
     };
-    updatedState[device] = value;
+    updatedState[dev] = val;
     setState(updatedState);
     onChange(updatedState);
   };
@@ -55925,15 +55959,16 @@ const ResponsiveRadioControl = _ref => {
     value: state['Mobile']
   });
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: `components-base-control premium-blocks-base-control `
+    className: `premium-blocks-responsive-radio components-base-control premium-blocks__base-control `
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("header", null, label && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "premium-control-title"
   }, label), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_responsive__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    deviceType: device,
     onChange: newDevice => setDevice(newDevice)
   })), output[device] ? output[device] : output.Desktop);
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (ResponsiveRadioControl);
+/* harmony default export */ __webpack_exports__["default"] = (react__WEBPACK_IMPORTED_MODULE_1___default().memo(ResponsiveRadio));
 
 /***/ }),
 
