@@ -3674,6 +3674,10 @@ i.fipicon-angle-left {
         align-items: center;
     }
 }
+.premium-blocks-responsive-radio header {
+    display: flex;
+    align-items: center;
+}
 @import "./RangeControl.scss";
 @import "./spacing.scss";
 @import "./color.scss";

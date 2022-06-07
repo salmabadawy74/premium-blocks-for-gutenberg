@@ -6305,3 +6305,7 @@ input[type="number"] {
 .block-editor-block-inspector .components-base-control {
     margin-bottom: 20px !important;
 }
+.premium-blocks-responsive-radio header {
+    display: flex;
+    align-items: center;
+}
