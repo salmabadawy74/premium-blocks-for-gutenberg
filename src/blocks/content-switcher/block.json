@@ -18,7 +18,7 @@
     "editorStyle": "file:./build/index.css",
     "style": "file:./build/style-block.css",
     "attributes": {
-        "block_id": {
+        "blockId": {
             "type": "string"
         },
         "classMigrate": {
@@ -26,8 +26,12 @@
             "default": false
         },
         "align": {
-            "type": "string",
-            "default": "center"
+            "type": "object",
+            "default": {
+                "Desktop": "center",
+                "Tablet": "center",
+                "Mobile": "center"
+            }
         },
         "showLabel": {
             "type": "boolean",
@@ -47,7 +51,7 @@
         },
         "labelTag": {
             "type": "string",
-            "default": "H3"
+            "default": "h3"
         },
         "firstContent": {
             "type": "string",
@@ -66,8 +70,12 @@
             }
         },
         "secondcontentlign": {
-            "type": "string",
-            "default": "center"
+            "type": "object",
+            "default": {
+                "Desktop": "center",
+                "Tablet": "center",
+                "Mobile": "center"
+            }
         },
         "backgroundTypeState2": {
             "type": "string",
@@ -735,25 +743,6 @@
                 "gradientType": ""
             }
         },
-        "controllerTwoBackground": {
-            "type": "object",
-            "default": {
-                "backgroundType": "",
-                "backgroundColor": "",
-                "backgroundImageID": "",
-                "backgroundImageURL": "",
-                "backgroundPosition": "",
-                "backgroundRepeat": "",
-                "backgroundSize": "",
-                "fixed": false,
-                "gradientLocationOne": "",
-                "gradientColorTwo": "",
-                "gradientLocationTwo": "",
-                "gradientAngle": "",
-                "gradientPosition": "",
-                "gradientType": ""
-            }
-        },
         "switcherBackground": {
             "type": "object",
             "default": {
@@ -791,10 +780,6 @@
                 "gradientPosition": "",
                 "gradientType": ""
             }
-        },
-        "controller": {
-            "type": "boolean",
-            "default": false
         }
     }
 }

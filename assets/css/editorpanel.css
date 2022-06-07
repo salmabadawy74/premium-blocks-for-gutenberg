@@ -6540,6 +6540,7 @@ input[type="number"] {
 .premium-field-tabs {
     margin-left: -16px;
     margin-right: -16px;
+    background: #f7f8fc;
 }
 
 .premium-field-tabs:last-child {
@@ -6559,7 +6560,7 @@ input[type="number"] {
     border-radius: 2px;
     width: 50%;
     height: 40px !important;
-    margin: 10px 1px;
+    /* margin: 10px 1px; */
     padding: 5px 10px;
     border-radius: 5px;
     box-shadow: none !important;

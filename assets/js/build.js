@@ -794,7 +794,7 @@ var PremiumBorder = function PremiumBorder(props) {
     };
     return React.createElement(
         'div',
-        { className: ' premium-blocks-field' },
+        { className: ' premium-blocks__base-control' },
         React.createElement(
             Fragment,
             null,
@@ -802,7 +802,7 @@ var PremiumBorder = function PremiumBorder(props) {
                 'div',
                 { className: 'premium-blocks-border__control ', style: { display: "flex" } },
                 React.createElement(
-                    'div',
+                    'span',
                     null,
                     props.label ? props.label : __('Border', 'premium-blocks-for-gutenberg')
                 ),
@@ -1930,10 +1930,10 @@ function ResponsiveRangeControl(_ref) {
                 { className: 'premium-title-wrap' },
                 label && React.createElement(
                     'span',
-                    { className: 'customize-control-title premium-control-title' },
+                    { className: 'premium-control-title' },
                     label
                 ),
-                React.createElement(_responsive2.default, { onChange: function onChange(newDevice) {
+                React.createElement(_responsive2.default, { deviceType: deviceType, onChange: function onChange(newDevice) {
                         return setDeviceType(newDevice);
                     } })
             ),
@@ -3876,6 +3876,10 @@ var typographyCss = exports.typographyCss = function typographyCss(value, device
     };
 };
 
+var generateBlockId = exports.generateBlockId = function generateBlockId(clientId) {
+    return clientId.split('-')[4];
+};
+
 /***/ }),
 /* 34 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -4471,9 +4475,10 @@ var SpacingComponent = function SpacingComponent(props) {
         props.onChange(updateState);
         setState(updateState);
     };
+
     return React.createElement(
         "div",
-        { className: "premium-spacing-responsive premium-blocks-field" },
+        { className: "premium-spacing-responsive premium-blocks__base-control" },
         React.createElement(
             "header",
             null,
@@ -4482,11 +4487,11 @@ var SpacingComponent = function SpacingComponent(props) {
                 { className: "premium-title-wrap", style: { display: "flex" } },
                 React.createElement(
                     "span",
-                    { className: "customize-control-title premium-control-title" },
+                    { className: " premium-control-title" },
                     "  ",
                     label
                 ),
-                responsive && React.createElement(_responsive2.default, { onChange: function onChange(newValue) {
+                responsive && React.createElement(_responsive2.default, { deviceType: device, onChange: function onChange(newValue) {
                         return setDevice(newValue);
                     } })
             ),
@@ -8633,7 +8638,7 @@ var _wp$data = wp.data,
 
 
 function Responsive(props) {
-    var previewDevice = wp.data && wp.data.select && (wp.data.select('core/edit-post') || wp.data.select('core/edit-site')) && wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType ? wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType() : 'Desktop';
+    var previewDevice = wp.customize ? wp.customize.previewedDevice.get() : wp.data && wp.data.select && wp.data.select('core/edit-post') && wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType ? wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType() : 'Desktop';
 
     var customSetPreviewDeviceType = function customSetPreviewDeviceType(device) {
         props.onChange(device);
@@ -8646,6 +8651,9 @@ function Responsive(props) {
 
             return __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : 'Desktop';
         }, []);
+        if (theDevice !== props.deviceType) {
+            props.onChange(theDevice);
+        }
 
         var _useDispatch = useDispatch('core/edit-post'),
             _useDispatch$__experi = _useDispatch.__experimentalSetPreviewDeviceType,
@@ -8653,24 +8661,6 @@ function Responsive(props) {
 
         customSetPreviewDeviceType = function customSetPreviewDeviceType(device) {
             __experimentalSetPreviewDeviceType(device);
-            props.onChange(device);
-        };
-    }
-    if (wp.data.select('core/edit-site')) {
-        var _theDevice = useSelect(function (select) {
-            var _select2 = select('core/edit-site'),
-                _select2$__experiment = _select2.__experimentalGetPreviewDeviceType,
-                __experimentalGetPreviewDeviceType = _select2$__experiment === undefined ? null : _select2$__experiment;
-
-            return __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : 'Desktop';
-        }, []);
-
-        var _useDispatch2 = useDispatch('core/edit-site'),
-            _useDispatch2$__exper = _useDispatch2.__experimentalSetPreviewDeviceType,
-            _experimentalSetPreviewDeviceType = _useDispatch2$__exper === undefined ? null : _useDispatch2$__exper;
-
-        customSetPreviewDeviceType = function customSetPreviewDeviceType(device) {
-            _experimentalSetPreviewDeviceType(device);
             props.onChange(device);
         };
     }
@@ -8688,7 +8678,7 @@ function Responsive(props) {
                 } },
             _react2.default.createElement(
                 'svg',
-                { className: 'fa-desktop', 'aria-hidden': 'true', focusable: 'false', 'data-prefix': 'far', 'data-icon': 'desktop', role: 'img', xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 576 512', 'data-fa-i2svg': '' },
+                { 'class': 'fa-desktop', 'aria-hidden': 'true', focusable: 'false', 'data-prefix': 'far', 'data-icon': 'desktop', role: 'img', xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 576 512', 'data-fa-i2svg': '' },
                 _react2.default.createElement('path', { fill: 'currentColor', d: 'M528 0H48C21.5 0 0 21.5 0 48v288c0 26.5 21.5 48 48 48h480c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48zm-6 336H54c-3.3 0-6-2.7-6-6V54c0-3.3 2.7-6 6-6h468c3.3 0 6 2.7 6 6v276c0 3.3-2.7 6-6 6zm-42 152c0 13.3-10.7 24-24 24H120c-13.3 0-24-10.7-24-24s10.7-24 24-24h98.7l18.6-55.8c1.6-4.9 6.2-8.2 11.4-8.2h78.7c5.2 0 9.8 3.3 11.4 8.2l18.6 55.8H456c13.3 0 24 10.7 24 24z' })
             )
         ),
@@ -8699,7 +8689,7 @@ function Responsive(props) {
                 } },
             _react2.default.createElement(
                 'svg',
-                { className: 'fa-tablet-alt', 'aria-hidden': 'true', focusable: 'false', 'data-prefix': 'fas', 'data-icon': 'tablet-alt', role: 'img', xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 448 512', 'data-fa-i2svg': '' },
+                { 'class': 'fa-tablet-alt', 'aria-hidden': 'true', focusable: 'false', 'data-prefix': 'fas', 'data-icon': 'tablet-alt', role: 'img', xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 448 512', 'data-fa-i2svg': '' },
                 _react2.default.createElement('path', { fill: 'currentColor', d: 'M400 0H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48zM224 480c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm176-108c0 6.6-5.4 12-12 12H60c-6.6 0-12-5.4-12-12V60c0-6.6 5.4-12 12-12h328c6.6 0 12 5.4 12 12v312z' })
             )
         ),
@@ -8710,7 +8700,7 @@ function Responsive(props) {
                 } },
             _react2.default.createElement(
                 'svg',
-                { className: 'fa-mobile-alt', 'aria-hidden': 'true', focusable: 'false', 'data-prefix': 'fas', 'data-icon': 'mobile-alt', role: 'img', xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 320 512', 'data-fa-i2svg': '' },
+                { 'class': 'fa-mobile-alt', 'aria-hidden': 'true', focusable: 'false', 'data-prefix': 'fas', 'data-icon': 'mobile-alt', role: 'img', xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 320 512', 'data-fa-i2svg': '' },
                 _react2.default.createElement('path', { fill: 'currentColor', d: 'M272 0H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h224c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48zM160 480c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm112-108c0 6.6-5.4 12-12 12H60c-6.6 0-12-5.4-12-12V60c0-6.6 5.4-12 12-12h200c6.6 0 12 5.4 12 12v312z' })
             )
         )

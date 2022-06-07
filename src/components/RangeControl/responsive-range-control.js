@@ -104,9 +104,9 @@ export default function ResponsiveRangeControl({
                 <header>
                     <div className={`premium-title-wrap`}>
                         {label && (
-                            <span className="customize-control-title premium-control-title">{label}</span>
+                            <span className="premium-control-title">{label}</span>
                         )}
-                        <Responsive onChange={(newDevice) => setDeviceType(newDevice)} />
+                        <Responsive deviceType={deviceType} onChange={(newDevice) => setDeviceType(newDevice)} />
                     </div>
                     {showUnit && (
                         <PremiumSizeUnits
@@ -119,7 +119,7 @@ export default function ResponsiveRangeControl({
 
                     )}
                 </header>
-                {(output[deviceType] ? output[deviceType] : output.Desktop)}
+                { (output[deviceType] ? output[deviceType] : output.Desktop)}
             </div >
         ),
     ];

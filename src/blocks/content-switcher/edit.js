@@ -2,8 +2,6 @@ import { __ } from '@wordpress/i18n';
 import classnames from "classnames";
 import { withSelect } from '@wordpress/data'
 import {
-    BlockControls,
-    AlignmentToolbar,
     InspectorControls,
     RichText,
     useBlockProps
@@ -35,7 +33,8 @@ import InspectorTab from '../../components/inspectorTab';
 import InsideTabs from '../../components/InsideTabs'
 import InsideTab from '../../components/InsideTab';
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
-import { gradientBackground, borderCss, padddingCss, marginCss, typographyCss } from '../../components/HelperFunction'
+import Icons from "../../components/icons";
+import { gradientBackground, borderCss, padddingCss, marginCss, typographyCss, generateBlockId } from '../../components/HelperFunction'
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -55,22 +54,12 @@ function Edit(props) {
     const [mounted, setMounted] = useState(true);
 
     useEffect(() => {
-        setAttributes({ block_id: props.clientId })
+        setAttributes({ blockId: "premium-content-switcher-" + generateBlockId(props.clientId) })
         setAttributes({ classMigrate: true })
-        setAttributes({ controller: false })
         // Pushing Style tag for this block css.
         const $style = document.createElement("style")
         $style.setAttribute("id", "premium-style-content-switcher-" + props.clientId)
         document.head.appendChild($style)
-
-        // fetch('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyClGdkPJ1BvgLOol5JAkQY4Mv2lkLYu00k')
-        //     .then(blob => blob.json())
-        //     .then(data => {
-        //         data.items.map(i => {
-        //             // setAttributes({ family: i.family })
-        //             console.log(i)
-        //         })
-        //     })
     }, [])
 
     useEffect(() => {
@@ -96,14 +85,13 @@ function Edit(props) {
     }, [mounted])
 
     const initToggleBox = () => {
-        const { block_id, controller } = props.attributes;
-        if (!block_id) return null;
-        setAttributes({ controller: !controller })
+        const { blockId } = props.attributes;
+        if (!blockId) return null;
         setMounted(!mounted)
     }
 
     const {
-        block_id,
+        blockId,
         align,
         showLabel,
         firstLabel,
@@ -156,8 +144,6 @@ function Edit(props) {
         hideTablet,
         hideMobile,
         controllerOneBackground,
-        controllerTwoBackground,
-        controller,
         switcherBackground,
         containerBackground
     } = attributes
@@ -183,24 +169,6 @@ function Edit(props) {
             value: "slide"
         }
     ]
-    const SLIDE = [
-        {
-            label: __("Top"),
-            value: "top"
-        },
-        {
-            label: __("Left"),
-            value: "left"
-        },
-        {
-            label: __("Bottom"),
-            value: "bottom"
-        },
-        {
-            label: __("Right"),
-            value: "right"
-        }
-    ]
 
     let btnGradControllerOne, btnGrad2ControllerOne, btnbgControllerOne;
 
@@ -214,20 +182,6 @@ function Edit(props) {
         }
     } else {
         btnbgControllerOne = controllerOneBackground.backgroundImageURL ? `url('${controllerOneBackground.backgroundImageURL}')` : ''
-    }
-
-    let btnGradControllerTwo, btnGrad2ControllerTwo, btnbgControllerTwo;
-
-    if (undefined !== controllerTwoBackground.backgroundType && 'gradient' === controllerTwoBackground.backgroundType) {
-        btnGradControllerTwo = ('transparent' === controllerTwoBackground.backgroundColor || undefined === controllerTwoBackground.backgroundColor ? 'rgba(255,255,255,0)' : controllerTwoBackground.backgroundColor);
-        btnGrad2ControllerTwo = (undefined !== controllerTwoBackground.gradientColorTwo && undefined !== controllerTwoBackground.gradientColorTwo && '' !== controllerTwoBackground.gradientColorTwo ? controllerTwoBackground.gradientColorTwo : '#777');
-        if ('radial' === controllerTwoBackground.gradientType) {
-            btnbgControllerTwo = `radial-gradient(at ${controllerTwoBackground.gradientPosition}, ${btnGradControllerTwo} ${controllerTwoBackground.gradientLocationOne}%, ${btnGrad2ControllerTwo} ${controllerTwoBackground.gradientLocationTwo}%)`;
-        } else if ('radial' !== controllerTwoBackground.gradientType) {
-            btnbgControllerTwo = `linear-gradient(${controllerTwoBackground.gradientAngle}deg, ${btnGradControllerTwo} ${controllerTwoBackground.gradientLocationOne}%, ${btnGrad2ControllerTwo} ${controllerTwoBackground.gradientLocationTwo}%)`;
-        }
-    } else {
-        btnbgControllerTwo = controllerTwoBackground.backgroundImageURL ? `url('${controllerTwoBackground.backgroundImageURL}')` : ''
     }
 
     const saveLabelStyles = (color, value) => {
@@ -303,21 +257,13 @@ function Edit(props) {
 
     return (
         <Fragment>
-            <BlockControls>
-                {/* <AlignmentToolbar
-                    value={align}
-                    onChange={(value) => {
-                        setAttributes({ align: value })
-                    }}
-                /> */}
-            </BlockControls>
             <InspectorControls>
                 <InspectorTabs tabs={['layout', 'style', 'advance']}>
                     <InspectorTab key={'layout'}>
                         <PanelBody
                             title={__("Switcher")}
                             className="premium-panel-body"
-                            initialOpen={false}
+                            initialOpen={true}
                         >
                             <ToggleControl
                                 label={__("Show Labels")}
@@ -329,12 +275,12 @@ function Edit(props) {
                                     <RadioComponent
                                         label={__("HTML Tag", 'premium-blocks-for-gutenberg')}
                                         choices={[
-                                            { value: 'H1', label: __('H1') },
-                                            { value: 'H2', label: __('H2') },
-                                            { value: 'H3', label: __('H3') },
-                                            { value: 'H4', label: __('H4') },
-                                            { value: 'H5', label: __('H5') },
-                                            { value: 'H6', label: __('H6') }
+                                            { value: 'h1', label: __('H1') },
+                                            { value: 'h2', label: __('H2') },
+                                            { value: 'h3', label: __('H3') },
+                                            { value: 'h4', label: __('H4') },
+                                            { value: 'h5', label: __('H5') },
+                                            { value: 'h6', label: __('H6') }
                                         ]}
                                         value={labelTag}
                                         onChange={(newValue) => setAttributes({ labelTag: newValue })}
@@ -350,9 +296,9 @@ function Edit(props) {
                             <ResponsiveRadioControl
                                 label={__("Alignment", 'premium-blocks-for-gutenberg')}
                                 choices={[
-                                    { value: 'left', label: __('Left'), icon: (<svg id="Accordion" xmlns="http://www.w3.org/2000/svg" width="19.5" height="16.5" viewBox="0 0 19.5 16.5"><defs><style>{`.cls-1{fill:#333;}`}</style></defs><title>text-align-left</title><g id="Left_Align" data-name="Left Align"><path class="cls-1" d="M21.5,5.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M13,10.75H3.5a.75.75,0,0,1,0-1.5H13a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,15.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M13,20.75H3.5a.75.75,0,0,1,0-1.5H13a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /></g></svg>) },
-                                    { value: 'center', label: __('Center'), icon: (<svg id="Accordion" xmlns="http://www.w3.org/2000/svg" width="19.5" height="16.5" viewBox="0 0 19.5 16.5"><defs><style>{`.cls-1{fill:#333;}`}</style></defs><title>text-align-center</title><g id="Center_Align" data-name="Center Align"><path class="cls-1" d="M21.5,5.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M17.24,10.75H7.76a.75.75,0,1,1,0-1.5h9.48a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,15.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M17.24,20.75H7.76a.75.75,0,1,1,0-1.5h9.48a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /></g></svg>) },
-                                    { value: 'right', label: __('Right'), icon: (<svg id="Accordion" xmlns="http://www.w3.org/2000/svg" width="19.5" height="16.5" viewBox="0 0 19.5 16.5"><defs><style>{`.cls-1{fill:#333;}`}</style></defs><title>text-align-right</title><g id="Right_Align" data-name="Right Align"><path class="cls-1" d="M21.5,5.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,10.75H12a.75.75,0,0,1,0-1.5H21.5a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,15.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,20.75H12a.75.75,0,0,1,0-1.5H21.5a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /></g></svg>) }
+                                    { value: 'left', label: __('Left'), icon: Icons.alignLeft },
+                                    { value: 'center', label: __('Center'), icon: Icons.alignCenter },
+                                    { value: 'right', label: __('Right'), icon: Icons.alignRight }
                                 ]}
                                 value={align}
                                 onChange={(newValue) => setAttributes({ align: newValue })}
@@ -367,23 +313,15 @@ function Edit(props) {
                             <ResponsiveRadioControl
                                 label={__("Alignment", 'premium-blocks-for-gutenberg')}
                                 choices={[
-                                    { value: 'left', label: __('Left'), icon: (<svg id="Accordion" xmlns="http://www.w3.org/2000/svg" width="19.5" height="16.5" viewBox="0 0 19.5 16.5"><defs><style>{`.cls-1{fill:#333;}`}</style></defs><title>text-align-left</title><g id="Left_Align" data-name="Left Align"><path class="cls-1" d="M21.5,5.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M13,10.75H3.5a.75.75,0,0,1,0-1.5H13a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,15.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M13,20.75H3.5a.75.75,0,0,1,0-1.5H13a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /></g></svg>) },
-                                    { value: 'center', label: __('Center'), icon: (<svg id="Accordion" xmlns="http://www.w3.org/2000/svg" width="19.5" height="16.5" viewBox="0 0 19.5 16.5"><defs><style>{`.cls-1{fill:#333;}`}</style></defs><title>text-align-center</title><g id="Center_Align" data-name="Center Align"><path class="cls-1" d="M21.5,5.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M17.24,10.75H7.76a.75.75,0,1,1,0-1.5h9.48a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,15.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M17.24,20.75H7.76a.75.75,0,1,1,0-1.5h9.48a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /></g></svg>) },
-                                    { value: 'right', label: __('Right'), icon: (<svg id="Accordion" xmlns="http://www.w3.org/2000/svg" width="19.5" height="16.5" viewBox="0 0 19.5 16.5"><defs><style>{`.cls-1{fill:#333;}`}</style></defs><title>text-align-right</title><g id="Right_Align" data-name="Right Align"><path class="cls-1" d="M21.5,5.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,10.75H12a.75.75,0,0,1,0-1.5H21.5a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,15.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,20.75H12a.75.75,0,0,1,0-1.5H21.5a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /></g></svg>) },
-                                    { value: 'justify', label: __('Justify'), icon: (<svg id="Accordion" xmlns="http://www.w3.org/2000/svg" width="19.5" height="16.5" viewBox="0 0 19.5 16.5"><defs><style>{`.cls-1{fill:#333;}`}</style></defs><title>text-align-justify</title><g id="Justify"><path class="cls-1" d="M21.5,5.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,10.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,15.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,20.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /></g></svg>) }
+                                    { value: 'left', label: __('Left'), icon: Icons.alignLeft },
+                                    { value: 'center', label: __('Center'), icon: Icons.alignCenter },
+                                    { value: 'right', label: __('Right'), icon: Icons.alignRight },
+                                    { value: 'justify', label: __('Justify'), icon: Icons.alignJustify }
                                 ]}
                                 value={firstcontentalign}
                                 onChange={(newValue) => setAttributes({ firstcontentalign: newValue })}
                                 showIcons={true}
                             />
-                            {/* <p>{__("Alignment")}</p>
-                            <Toolbar
-                                controls={ALIGNS.map(contentAlign => ({
-                                    icon: "editor-align" + contentAlign,
-                                    isActive: contentAlign === firstcontentalign,
-                                    onClick: () => setAttributes({ firstcontentalign: contentAlign })
-                                }))}
-                            /> */}
                         </PanelBody>
                         <PanelBody
                             title={__("Content 2")}
@@ -393,23 +331,15 @@ function Edit(props) {
                             <ResponsiveRadioControl
                                 label={__("Alignment", 'premium-blocks-for-gutenberg')}
                                 choices={[
-                                    { value: 'left', label: __('Left'), icon: (<svg id="Accordion" xmlns="http://www.w3.org/2000/svg" width="19.5" height="16.5" viewBox="0 0 19.5 16.5"><defs><style>{`.cls-1{fill:#333;}`}</style></defs><title>text-align-left</title><g id="Left_Align" data-name="Left Align"><path class="cls-1" d="M21.5,5.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M13,10.75H3.5a.75.75,0,0,1,0-1.5H13a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,15.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M13,20.75H3.5a.75.75,0,0,1,0-1.5H13a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /></g></svg>) },
-                                    { value: 'center', label: __('Center'), icon: (<svg id="Accordion" xmlns="http://www.w3.org/2000/svg" width="19.5" height="16.5" viewBox="0 0 19.5 16.5"><defs><style>{`.cls-1{fill:#333;}`}</style></defs><title>text-align-center</title><g id="Center_Align" data-name="Center Align"><path class="cls-1" d="M21.5,5.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M17.24,10.75H7.76a.75.75,0,1,1,0-1.5h9.48a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,15.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M17.24,20.75H7.76a.75.75,0,1,1,0-1.5h9.48a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /></g></svg>) },
-                                    { value: 'right', label: __('Right'), icon: (<svg id="Accordion" xmlns="http://www.w3.org/2000/svg" width="19.5" height="16.5" viewBox="0 0 19.5 16.5"><defs><style>{`.cls-1{fill:#333;}`}</style></defs><title>text-align-right</title><g id="Right_Align" data-name="Right Align"><path class="cls-1" d="M21.5,5.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,10.75H12a.75.75,0,0,1,0-1.5H21.5a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,15.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,20.75H12a.75.75,0,0,1,0-1.5H21.5a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /></g></svg>) },
-                                    { value: 'justify', label: __('Justify'), icon: (<svg id="Accordion" xmlns="http://www.w3.org/2000/svg" width="19.5" height="16.5" viewBox="0 0 19.5 16.5"><defs><style>{`.cls-1{fill:#333;}`}</style></defs><title>text-align-justify</title><g id="Justify"><path class="cls-1" d="M21.5,5.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,10.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,15.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /><path class="cls-1" d="M21.5,20.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z" transform="translate(-2.75 -4.25)" /></g></svg>) }
+                                    { value: 'left', label: __('Left'), icon: Icons.alignLeft },
+                                    { value: 'center', label: __('Center'), icon: Icons.alignCenter },
+                                    { value: 'right', label: __('Right'), icon: Icons.alignRight },
+                                    { value: 'justify', label: __('Justify'), icon: Icons.alignJustify }
                                 ]}
                                 value={secondcontentlign}
                                 onChange={(newValue) => setAttributes({ secondcontentlign: newValue })}
                                 showIcons={true}
                             />
-                            {/* <p>{__("Alignment")}</p>
-                            <Toolbar
-                                controls={ALIGNS.map(contentAlign => ({
-                                    icon: "editor-align" + contentAlign,
-                                    isActive: contentAlign === secondcontentlign,
-                                    onClick: () => setAttributes({ secondcontentlign: contentAlign })
-                                }))}
-                            /> */}
                         </PanelBody>
                         <PanelBody
                             title={__("Display Options")}
@@ -423,11 +353,17 @@ function Edit(props) {
                                 onChange={newEffect => setAttributes({ effect: newEffect })}
                             />
                             {effect == 'slide' &&
-                                <SelectControl
-                                    label={__("Slide Direction")}
-                                    options={SLIDE}
+                                <RadioComponent
+                                    label={__("Slide Direction", 'premium-blocks-for-gutenberg')}
+                                    choices={[
+                                        { value: 'top', label: __('Top'), icon: Icons.arrowTop },
+                                        { value: 'right', label: __('Right'), icon: Icons.arrowRight },
+                                        { value: 'bottom', label: __('Bottom'), icon: Icons.arrowBottom },
+                                        { value: 'left', label: __('Left'), icon: Icons.arrowLeft }
+                                    ]}
                                     value={slide}
-                                    onChange={newEffect => setAttributes({ slide: newEffect })}
+                                    onChange={(newValue) => setAttributes({ slide: newValue })}
+                                    showIcons={true}
                                 />
                             }
                         </PanelBody>
@@ -436,7 +372,7 @@ function Edit(props) {
                         <PanelBody
                             title={__("Switcher Style")}
                             className="premium-panel-body"
-                            initialOpen={false}
+                            initialOpen={true}
                         >
                             <ResponsiveRangeControl
                                 label={__('Size', 'premium-blocks-for-gutenberg')}
@@ -447,17 +383,12 @@ function Edit(props) {
                                 step={1}
                                 showUnit={false}
                                 defaultValue={15}
+                                device="Desktop"
                             />
-                            <h2>{__("Controller State 1 Color")}</h2>
+                            <h2>{__("Controller Background")}</h2>
                             <PremiumBackgroundControl
                                 value={controllerOneBackground}
                                 onChange={(value) => setAttributes({ controllerOneBackground: value })}
-                            />
-                            <hr />
-                            <h2>{__("Controller State 2 Color")}</h2>
-                            <PremiumBackgroundControl
-                                value={controllerTwoBackground}
-                                onChange={(value) => setAttributes({ controllerTwoBackground: value })}
                             />
                             <hr />
                             <h2>{__("Switcher Background")}</h2>
@@ -478,6 +409,7 @@ function Edit(props) {
                                 onChange={(value) => setAttributes({ switchShadow: value })}
                                 boxShadow={true}
                             />
+                            <hr />
                             <ResponsiveSingleRangeControl
                                 label={__("Controller Border Radius", 'premium-blocks-for-gutenberg')}
                                 value={containerRadius}
@@ -519,6 +451,7 @@ function Edit(props) {
                                 step={1}
                                 showUnit={false}
                                 defaultValue={15}
+                                device="Desktop"
                             />
                             <InsideTabs>
                                 <InsideTab tabTitle={__('First Label')}>
@@ -563,6 +496,7 @@ function Edit(props) {
                                             label={__('Border', 'premium-blocks-for-gutenberg')}
                                             value={firstLabelborder}
                                             onChange={(value) => setAttributes({ firstLabelborder: value })}
+                                            device="Desktop"
                                         />
                                         <hr />
                                         <SpacingControl
@@ -571,6 +505,7 @@ function Edit(props) {
                                             onChange={(value) => setAttributes({ firstLabelPadding: value })}
                                             showUnits={true}
                                             responsive={true}
+                                            device="Desktop"
                                         />
                                     </Fragment>
                                 </InsideTab>
@@ -616,6 +551,7 @@ function Edit(props) {
                                             label={__('Border', 'premium-blocks-for-gutenberg')}
                                             value={secondLabelborder}
                                             onChange={(value) => setAttributes({ secondLabelborder: value })}
+                                            device="Desktop"
                                         />
                                         <hr />
                                         <SpacingControl
@@ -624,6 +560,7 @@ function Edit(props) {
                                             onChange={(value) => setAttributes({ secondLabelPadding: value })}
                                             showUnits={true}
                                             responsive={true}
+                                            device="Desktop"
                                         />
                                     </Fragment>
                                 </InsideTab>
@@ -645,6 +582,7 @@ function Edit(props) {
                                 showUnit={true}
                                 units={['px', 'em', 'rem']}
                                 defaultValue={100}
+                                device="Desktop"
                             />
                             <InsideTabs>
                                 <InsideTab tabTitle={__('First Content')}>
@@ -689,6 +627,7 @@ function Edit(props) {
                                             label={__('Border', 'premium-blocks-for-gutenberg')}
                                             value={firstContentborder}
                                             onChange={(value) => setAttributes({ firstContentborder: value })}
+                                            device="Desktop"
                                         />
                                     </Fragment>
                                 </InsideTab>
@@ -734,17 +673,18 @@ function Edit(props) {
                                             label={__('Border', 'premium-blocks-for-gutenberg')}
                                             value={secondContentborder}
                                             onChange={(value) => setAttributes({ secondContentborder: value })}
+                                            device="Desktop"
                                         />
                                     </Fragment>
                                 </InsideTab>
                             </InsideTabs>
-                            <hr />
                             <SpacingControl
                                 label={__('Margin', 'premium-blocks-for-gutenberg')}
                                 value={firstContentMargin}
                                 onChange={(value) => setAttributes({ firstContentMargin: value })}
                                 showUnits={true}
                                 responsive={true}
+                                device="Desktop"
                             />
                             <SpacingControl
                                 label={__('Padding', 'premium-blocks-for-gutenberg')}
@@ -752,6 +692,7 @@ function Edit(props) {
                                 onChange={(value) => setAttributes({ contentPadding: value })}
                                 showUnits={true}
                                 responsive={true}
+                                device="Desktop"
                             />
                         </PanelBody>
 
@@ -775,6 +716,7 @@ function Edit(props) {
                                 label={__('Border', 'premium-blocks-for-gutenberg')}
                                 value={containerborder}
                                 onChange={(value) => setAttributes({ containerborder: value })}
+                                device="Desktop"
                             />
                             <hr />
                             <SpacingControl
@@ -783,6 +725,7 @@ function Edit(props) {
                                 onChange={(value) => setAttributes({ containerMargin: value })}
                                 showUnits={true}
                                 responsive={true}
+                                device="Desktop"
                             />
                             <SpacingControl
                                 label={__('Padding', 'premium-blocks-for-gutenberg')}
@@ -790,6 +733,7 @@ function Edit(props) {
                                 onChange={(value) => setAttributes({ containerPadding: value })}
                                 showUnits={true}
                                 responsive={true}
+                                device="Desktop"
                             />
                         </PanelBody>
                     </InspectorTab>
@@ -808,30 +752,30 @@ function Edit(props) {
 
             <style>
                 {`
-                     #premium-content-switcher-${block_id} .premium-content-switcher-toggle-switch-slider:before {
+                     .${blockId} .premium-content-switcher-toggle-switch-slider:before {
                         border-radius: ${containerRadius || 50}${containerRadiusUnit} !important;
                         box-shadow: ${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position} !important;
-                        background-color: ${controller ? (controllerTwoBackground.backgroundType === "solid" ? controllerTwoBackground.backgroundColor : "#6ec1e4") : (controllerOneBackground.backgroundType === "solid" ? controllerOneBackground.backgroundColor : "#6ec1e4")};
-                        background-image: ${controller ? btnbgControllerTwo : btnbgControllerOne};
-                        background-repeat: ${controller ? controllerTwoBackground.backgroundRepeat : controllerOneBackground.backgroundRepeat};
-                        background-position: ${controller ? controllerTwoBackground.backgroundPosition : controllerOneBackground.backgroundPosition};
-                        background-size: ${controller ? controllerTwoBackground.backgroundSize : controllerOneBackground.backgroundSize};
-                        background-attachment: ${controller ? (controllerTwoBackground.fixed ? "fixed" : "unset") : (controllerOneBackground.fixed ? "fixed" : "unset")};
+                        background-color: ${controllerOneBackground.backgroundType == "solid" ? controllerOneBackground.backgroundColor : "#6ec1e4"};
+                        background-image: ${btnbgControllerOne};
+                        background-repeat: ${controllerOneBackground.backgroundRepeat};
+                        background-position: ${controllerOneBackground.backgroundPosition};
+                        background-size: ${controllerOneBackground.backgroundSize};
+                        background-attachment: ${controllerOneBackground.fixed ? "fixed" : "unset"};
                      }
-                    #premium-content-switcher-${block_id} .premium-content-switcher-toggle-switch-slider {
+                    .${blockId} .premium-content-switcher-toggle-switch-slider {
                         border-radius: ${switchRadius}${switchRadiusUnit} !important;
                          box-shadow: ${switchShadow.horizontal}px ${switchShadow.vertical}px ${switchShadow.blur}px ${switchShadow.color} ${switchShadow.position} !important;
                      }
-                     #premium-content-switcher-${block_id} .premium-content-switcher-toggle-inline .premium-content-switcher-first-label {
+                     .${blockId} .premium-content-switcher-toggle-inline .premium-content-switcher-first-label {
                          margin-right: ${labelSpacing[props.deviceType]}px !important;
                     }
-                    #premium-content-switcher-${block_id} .premium-content-switcher-toggle-inline .premium-content-switcher-second-label {
+                    .${blockId} .premium-content-switcher-toggle-inline .premium-content-switcher-second-label {
                         margin-left: ${labelSpacing[props.deviceType]}px !important;
                     }
-                   #premium-content-switcher-${block_id} .premium-content-switcher-toggle-block .premium-content-switcher-first-label {
+                   .${blockId} .premium-content-switcher-toggle-block .premium-content-switcher-first-label {
                          margin-bottom: ${labelSpacing[props.deviceType]}px !important;
                      }
-                    #premium-content-switcher-${block_id} .premium-content-switcher-toggle-block .premium-content-switcher-second-label {
+                    .${blockId} .premium-content-switcher-toggle-block .premium-content-switcher-second-label {
                         margin-top: ${labelSpacing[props.deviceType]}px !important;
                     }
                  `}
@@ -840,10 +784,9 @@ function Edit(props) {
                 {...useBlockProps({
                     className: classnames(
                         className,
-                        `premium-block-${props.clientId} ${hideDesktop} ${hideTablet} ${hideMobile}`
+                        `premium-content-switcher ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`
                     ),
                 })}
-                id={`premium-content-switcher-${block_id}`}
                 style={{
                     textAlign: align[props.deviceType],
                 }}

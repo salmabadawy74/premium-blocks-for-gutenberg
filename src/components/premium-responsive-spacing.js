@@ -141,12 +141,13 @@ const SpacingComponent = (props) => {
         props.onChange(updateState);
         setState(updateState);
     }
+
     return (
-        <div className="premium-spacing-responsive premium-blocks-field">
+        <div className="premium-spacing-responsive premium-blocks__base-control">
             <header>
                 <div className={`premium-title-wrap`} style={{ display: "flex" }}>
-                    <span className="customize-control-title premium-control-title">  {label}</span>
-                    {responsive && <Responsive onChange={(newValue) => setDevice(newValue)} />}
+                    <span className=" premium-control-title">  {label}</span>
+                    {responsive && <Responsive deviceType={device} onChange={(newValue) => setDevice(newValue)} />}
                 </div>
                 {showUnits && (
                     <PremiumSizeUnits
@@ -162,10 +163,7 @@ const SpacingComponent = (props) => {
                 <div className="premium-btn-reset-wrap">
                     <button
                         className="premium-reset-btn "
-                        disabled={
-                            JSON.stringify(state) ===
-                            JSON.stringify(defaultValues)
-                        }
+                        disabled={JSON.stringify(state) === JSON.stringify(defaultValues)}
                         onClick={(e) => {
                             e.preventDefault();
                             props.onChange(defaultValues);
