@@ -64,3 +64,7 @@ export const typographyCss = (value, device) => {
         lineHeight: value.lineHeight + "px",
     }
 }
+
+export const generateBlockId = (clientId) => {
+    return clientId.split('-')[4];
+}
