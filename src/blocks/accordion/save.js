@@ -18,7 +18,9 @@ const save = props => {
         titleBorder,
         descBorder,
         titleTypography,
-        descTypography
+        descTypography,
+        textShadow,
+        titleTextShadow,
     } = props.attributes;
 
     const mainClasses = classnames(className, 'premium-accordion', blockId);
@@ -51,6 +53,7 @@ const save = props => {
                                 textDecoration: titleTypography.textDecoration,
                                 textTransform: titleTypography.textTransform,
                                 lineHeight: `${titleTypography.lineHeight}px`,
+                                textShadow: `${titleTextShadow.horizontal}px ${titleTextShadow.vertical}px ${titleTextShadow.blur}px ${titleTextShadow.color}`
                             }}
                         />
                     </div>
@@ -97,6 +100,7 @@ const save = props => {
                                 textDecoration: descTypography.textDecoration,
                                 textTransform: descTypography.textTransform,
                                 lineHeight: `${descTypography.lineHeight}px`,
+                                textShadow: `${textShadow.horizontal}px ${textShadow.vertical}px ${textShadow.blur}px ${textShadow.color}`
                             }}
                         />
                     )}
