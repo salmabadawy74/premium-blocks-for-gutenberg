@@ -8,7 +8,7 @@
 require_once PREMIUM_BLOCKS_PATH . 'src/blocks/breadcrumbs/class-pbg-breadcrumb-trail.php';
 
 function get_breadcrumbs_css( $attributes, $unique_id ) {
-	$block_helpers          = new PBG_Blocks_Helper();
+	$block_helpers          = pbg_blocks_helper();
 	$css                    = new Premium_Blocks_css();
 	$media_query            = array();
 	$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
@@ -52,7 +52,6 @@ function get_breadcrumbs_css( $attributes, $unique_id ) {
 		$spacing = $attributes['spacing'];
 		if ( $spacing['padding'] ) {
 			$padding = $spacing['padding'];
-			error_log( wp_json_encode( $spacing['padding'] ) );
 			$css->set_selector( '#' . $unique_id . ' > .premium-breadcrumb-trail' );
 			$css->add_property( 'padding-top', $css->render_color( $padding['Desktop']['top'] . 'px' ) );
 			$css->add_property( 'padding-right', $css->render_color( $padding['Desktop']['right'] . 'px' ) );
@@ -185,7 +184,7 @@ function render_block_pbg_breadcrumbs( $attributes ) {
 	if ( ! wp_style_is( $unique_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
 		$css = get_breadcrumbs_css( $attributes, $id );
 		if ( ! empty( $css ) ) {
-			$block_helpers = new PBG_Blocks_Helper();
+			$block_helpers = pbg_blocks_helper();
 			$block_helpers->render_inline_css( $css, $unique_id, true );
 		}
 	};
