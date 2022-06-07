@@ -4,8 +4,8 @@ const { useState } = wp.element;
 import RadioComponent from './radio-control';
 import Responsive from './responsive';
 
-const ResponsiveRadio = ({ choices, label, options, showIcons, onChange, value }) => {
-    const defaultValue = {
+const ResponsiveRadio = ({ choices, label, showIcons, onChange, value }) => {
+    let defaultValue = {
         'Desktop': '',
         'Tablet': '',
         'Mobile': ''
@@ -16,9 +16,9 @@ const ResponsiveRadio = ({ choices, label, options, showIcons, onChange, value }
     const output = {};
 
 
-    const handleChange = (value, device) => {
+    const handleChange = (val, dev) => {
         const updatedState = { ...state };
-        updatedState[device] = value;
+        updatedState[dev] = val;
         setState(updatedState)
         onChange(updatedState)
     }
