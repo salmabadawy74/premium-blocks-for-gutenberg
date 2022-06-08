@@ -19,6 +19,9 @@ function Responsive(props) {
             } = select('core/edit-post');
             return __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : 'Desktop';
         }, []);
+        if (theDevice !== props.deviceType) {
+            props.onChange(theDevice);
+        }
 
         const {
             __experimentalSetPreviewDeviceType = null,
