@@ -10,7 +10,7 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 	$css                    = new Premium_Blocks_css();
 	$media_query            = array();
 	$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
-	$media_query['Tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
+	$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
 	$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
 	$unique_id = $attributes['blockId'];
 
@@ -46,38 +46,6 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 				)
 		);
 	}
-
-	// if ( isset( $attributes['labelStyles'] ) ) {
-	// 	$labelStyles = $attributes['labelStyles'];
-	// 	$block_helpers->add_gfont(
-	// 		array(
-	// 			'fontFamily'  => ( isset( $labelStyles['firstLabelFontFamily'] ) ? $labelStyles['firstLabelFontFamily'] : '' ),
-	// 			'fontVariant' => ( isset( $labelStyles['firstLabelWeight'] ) ? $labelStyles['firstLabelWeight'] : '' ),
-	// 			'fontFamily'  => ( isset( $labelStyles['secondLabelFontFamily'] ) ? $labelStyles['secondLabelFontFamily'] : '' ),
-	// 			'fontVariant' => ( isset( $labelStyles['secondLabelWeight'] ) ? $labelStyles['secondLabelWeight'] : '' ),
-	// 		)
-	// 	);
-	// }
-
-	// if ( isset( $attributes['firstContentTypography'] ) ) {
-	// 	$firstContentTypography = $attributes['firstContentTypography'];
-	// 	$block_helpers->add_gfont(
-	// 		array(
-	// 			'fontFamily'  => ( isset( $firstContentTypography['fontFamily'] ) ? $firstContentTypography['fontFamily'] : '' ),
-	// 			'fontVariant' => ( isset( $firstContentTypography['fontWeight'] ) ? $firstContentTypography['fontWeight'] : '' )
-	// 		)
-	// 	);
-	// }
-
-	// if ( isset( $attributes['secondContentStyles'] ) ) {
-	// 	$secondContentStyles = $attributes['secondContentStyles'];
-	// 	$block_helpers->add_gfont(
-	// 		array(
-	// 			'fontFamily'  => ( isset( $secondContentStyles['secondContentFontFamily'] ) ? $secondContentStyles['secondContentFontFamily'] : '' ),
-	// 			'fontVariant' => ( isset( $secondContentStyles['secondContentWeight'] ) ? $secondContentStyles['secondContentWeight'] : '' )
-	// 		)
-	// 	);
-	// }
 
 	//Container styles
 	if ( isset( $attributes['align']['Desktop'] ) ) {
@@ -440,7 +408,7 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 		$css->add_property( 'border-bottom-left-radius', ( $attributes['secondContentborder']['borderRadius']['Desktop']['left'] . 'px' ) );
 	}
 
-	$css->start_media_query( $media_query['Tablet'] );
+	$css->start_media_query( $media_query['tablet'] );
 
 	//Container styles
 	if ( isset( $attributes['align']['Tablet'] ) ) {
