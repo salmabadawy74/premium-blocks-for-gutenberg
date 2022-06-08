@@ -5817,11 +5817,7 @@ function Edit(props) {
     });
     setAttributes({
       classMigrate: true
-    }); // Pushing Style tag for this block css.
-
-    const $style = document.createElement("style");
-    $style.setAttribute("id", "premium-style-content-switcher-" + props.clientId);
-    document.head.appendChild($style);
+    });
   }, []);
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
     if (!mounted) {
@@ -8209,16 +8205,15 @@ const Icons = {
     width: "19.5",
     height: "16.5",
     viewBox: "0 0 19.5 16.5"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("title", null, "text-align-right"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("g", {
-    id: "Right_Align",
-    "data-name": "Right Align"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("title", null, "text-align-justify"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("g", {
+    id: "Justify"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
     class: "cls-1",
     d: "M21.5,5.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z",
     transform: "translate(-2.75 -4.25)"
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
     class: "cls-1",
-    d: "M21.5,10.75H12a.75.75,0,0,1,0-1.5H21.5a.75.75,0,0,1,0,1.5Z",
+    d: "M21.5,10.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z",
     transform: "translate(-2.75 -4.25)"
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
     class: "cls-1",
@@ -8226,7 +8221,7 @@ const Icons = {
     transform: "translate(-2.75 -4.25)"
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
     class: "cls-1",
-    d: "M21.5,20.75H12a.75.75,0,0,1,0-1.5H21.5a.75.75,0,0,1,0,1.5Z",
+    d: "M21.5,20.75H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z",
     transform: "translate(-2.75 -4.25)"
   }))),
   arrowTop: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {

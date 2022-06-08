@@ -56,10 +56,6 @@ function Edit(props) {
     useEffect(() => {
         setAttributes({ blockId: "premium-content-switcher-" + generateBlockId(props.clientId) })
         setAttributes({ classMigrate: true })
-        // Pushing Style tag for this block css.
-        const $style = document.createElement("style")
-        $style.setAttribute("id", "premium-style-content-switcher-" + props.clientId)
-        document.head.appendChild($style)
     }, [])
 
     useEffect(() => {
