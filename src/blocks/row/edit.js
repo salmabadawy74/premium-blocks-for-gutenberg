@@ -77,6 +77,7 @@ class Edit extends Component {
 
 
 
+
     getClassName = () => {
         const {
             attributes: {
@@ -140,7 +141,7 @@ class Edit extends Component {
 
         const { device, hideRowSettings } = this.state;
 
-
+        console.log(PremiumBlocksSettings.shapes)
         const topShapeClasses = classnames(
             'premium-shape-divider',
             'premium-top-shape',
@@ -350,7 +351,7 @@ class Edit extends Component {
                                     label={__("Direction", 'premium-blocks-for-gutenberg')}
                                     showIcons={true}
                                 />
-                                {/* <ResponsiveRadio
+                                <ResponsiveRadio
                                     choices={[
                                         {
                                             value: 'flex-start',
@@ -377,8 +378,8 @@ class Edit extends Component {
                                     onChange={(newValue) => setAttributes({ alignItems: newValue })}
                                     label={__("Align Items", 'premium-blocks-for-gutenberg')}
                                     showIcons={true}
-                                /> */}
-                                {/* <ResponsiveRadio
+                                />
+                                <ResponsiveRadio
                                     choices={[
                                         {
                                             value: 'flex-start',
@@ -405,13 +406,16 @@ class Edit extends Component {
                                     onChange={(newValue) => setAttributes({ justifyItems: newValue })}
                                     label={__("Justify Items", 'premium-blocks-for-gutenberg')}
                                     showIcons={true}
-                                /> */}
-                                {/* <ResponsiveRadio
+                                />
+                                <ResponsiveRadio
                                     choices={[
                                         {
                                             value: 'flex-start',
                                             tooltip: __('Flex Start', 'premium-blocks-for-gutenberg'),
-                                            icon: (<svg width="24" height="24" viewBox="0 0 33 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M1.33984 0C1.89213 0 2.33984 0.447715 2.33984 1V30.5C2.33984 31.0523 1.89213 31.5 1.33984 31.5C0.787559 31.5 0.339844 31.0523 0.339844 30.5V1C0.339844 0.447715 0.787559 0 1.33984 0Z"></path><path d="M31.3398 0C31.8921 0 32.3398 0.447715 32.3398 1V30.5C32.3398 31.0523 31.8921 31.5 31.3398 31.5C30.7876 31.5 30.3398 31.0523 30.3398 30.5V1C30.3398 0.447715 30.7876 0 31.3398 0Z"></path><path d="M27.3398 5C27.8921 5 28.3398 5.44772 28.3398 6V22C28.3398 22.0022 28.3398 22.0043 28.3398 22.0065C28.3363 22.5558 27.89 23 27.3398 23L10.8398 23L12.7185 24.8786C13.1091 25.2692 13.1091 25.9023 12.7185 26.2929C12.328 26.6834 11.6949 26.6834 11.3043 26.2929L7.71852 22.7071C7.328 22.3166 7.328 21.6834 7.71852 21.2929L11.3043 17.7071C11.6949 17.3166 12.328 17.3166 12.7185 17.7071C13.1091 18.0977 13.1091 18.7308 12.7185 19.1213L10.8398 21L26.3398 21V7L5.33984 7C4.78756 7 4.33984 6.55228 4.33984 6C4.33984 5.44771 4.78756 5 5.33984 5H27.3398Z"></path></svg>),
+                                            icon: (<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                                                <title>order-start</title>
+                                                <path d="M1.344 0c0.736 0 1.344 0.608 1.344 1.344v29.312c0 0.704-0.512 1.28-1.184 1.344h-0.16c-0.736 0-1.344-0.608-1.344-1.344v-29.312c0-0.704 0.512-1.28 1.184-1.344h0.16zM13.344 8c0.32 0.032 0.576 0.16 0.864 0.416 0.224 0.224 0.32 0.512 0.32 0.864v4.064h15.552c0.992 0 1.792 0.736 1.888 1.696v1.76c0 0.96-0.736 1.76-1.696 1.856h-15.744v4.192c-0.064 0.352-0.224 0.64-0.48 0.864-0.288 0.192-0.576 0.288-0.896 0.288s-0.608-0.16-0.864-0.416l-6.72-6.784c-0.192-0.256-0.256-0.576-0.224-0.896s0.16-0.64 0.384-0.864l6.688-6.72c0.256-0.256 0.576-0.352 0.928-0.32z"></path>
+                                            </svg>),
                                         },
                                         {
                                             value: 'center',
@@ -429,7 +433,7 @@ class Edit extends Component {
                                     onChange={(newValue) => setAttributes({ wrapItems: newValue })}
                                     label={__("Wrap Items", 'premium-blocks-for-gutenberg')}
                                     showIcons={true}
-                                /> */}
+                                />
                             </PanelBody>
                         </InspectorTab>
                         <InspectorTab key={"style"}>
@@ -520,6 +524,7 @@ class Edit extends Component {
                         ...borderCss(border, this.props.deviceType),
                         ...padddingCss(padding, this.props.deviceType),
                         ...marginCss(margin, this.props.deviceType),
+                        ...gradientBackground(backgroundOptions),
                         boxShadow: `${boxShadow.horizontal || 0}px ${boxShadow.vertical ||
                             0}px ${boxShadow.blur || 0}px ${boxShadow.color} ${boxShadow.position}`,
 
