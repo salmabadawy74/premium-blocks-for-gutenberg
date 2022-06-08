@@ -67,4 +67,4 @@ export const typographyCss = (value, device) => {
 
 export const generateBlockId = (clientId) => {
     return clientId.split('-')[4];
-} 
+}

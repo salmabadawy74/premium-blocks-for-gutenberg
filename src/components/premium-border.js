@@ -44,12 +44,12 @@ const PremiumBorder = (props) => {
 
     }
     return (
-        <div className=" premium-blocks__base-control">
+        <div className=" premium-blocks-base-control">
             <Fragment>
                 <div className="premium-blocks-border__control " style={{ display: "flex" }}>
-                    <span>
+                    <div>
                         {props.label ? props.label : __('Border', 'premium-blocks-for-gutenberg')}
-                    </span>
+                    </div>
                     <div className="premium-blocks-border-button-list ">
                         {[['solid', __('Solid')], ['dotted', __('Dotted')], ['dashed', __('Dashed')], ['double', __('Double')]].map((data, index) => {
                             return (

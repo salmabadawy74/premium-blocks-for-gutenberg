@@ -332,7 +332,7 @@ class Premium_Blocks_css {
 	}
 
 	public function render_color( $color, $opacity = null ) {
-		if ( empty( $color ) ) {
+		if ( empty( $color ) || 'px' === $color || 'Default' === $color ) {
 			return false;
 		}
 		return $color;
@@ -563,5 +563,16 @@ class Premium_Blocks_css {
 		// Output minified css
 		return $this->_output;
 	}
-
+	
+	public function get_responsive_value( $values, $side = '', $device = 'Desktop', $unit = 'px' ) {
+		return isset( $values[ $device ][ $side ] ) && $values[ $device ][ $side ] ? "{$values[ $device ][ $side ]}{$unit}" : '';
+	}
+	
+	public function get_responsive_size_value( $values, $device = 'Desktop', $unit = 'px' ) {
+		return isset( $values[ $device ] ) && $values[ $device ] ? "{$values[ $device ]}{$unit}" : '';
+	}
+	
+	public function get_responsive_css( $values, $device = 'Desktop' ) {
+		return isset( $values[ $device ] ) && $values[ $device ] ? "{$values[ $device ]}" : '';
+	}
 }

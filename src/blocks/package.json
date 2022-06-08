@@ -11,14 +11,16 @@
     "@wordpress/data": "^6.8.0",
     "@wordpress/element": "^4.4.0",
     "@wordpress/i18n": "^4.6.0",
-    "node-sass": "^7.0.1",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "webfontloader": "^1.6.28"
+    "react-dom": "^17.0.2"
   },
   "scripts": {
     "start:content-switcher": "wp-scripts start content-switcher/block.js --output-path=content-switcher/build",
-    "build:content-switcher": "wp-scripts build content-switcher/block.js --output-path=content-switcher/build"
+    "build:content-switcher": "wp-scripts build content-switcher/block.js --output-path=content-switcher/build",
+    "start:breadcrumbs": "wp-scripts start breadcrumbs/block.js --output-path=breadcrumbs/build",
+    "build:breadcrumbs": "wp-scripts build breadcrumbs/block.js --output-path=breadcrumbs/build",
+    "start:search": "wp-scripts start search/index.js --output-path=search/build",
+    "build:search": "wp-scripts build search/index.js --output-path=search/build"
   },
   "devDependencies": {
     "@wordpress/scripts": "^22.4.0"

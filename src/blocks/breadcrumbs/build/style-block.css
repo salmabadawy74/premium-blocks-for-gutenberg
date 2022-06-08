@@ -1,0 +1,60 @@
+/*!***********************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./breadcrumbs/style.scss ***!
+  \***********************************************************************************************************************************************************************************************************************************************/
+.premium-breadcrumb-trail ul {
+  list-style: none;
+}
+.premium-breadcrumb-trail .trail-items,
+.premium-breadcrumb-trail li {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.premium-breadcrumb-trail .breadcrumb-sep {
+  padding: 0 0.4em;
+}
+.premium-breadcrumb-trail > .prefix {
+  margin-right: 0.4em;
+}
+
+.pbg-breadcrumbs-advanced li {
+  display: inline-flex;
+  overflow: hidden;
+  position: relative;
+  padding-right: 30px;
+  align-items: center;
+}
+.pbg-breadcrumbs-advanced li > * {
+  line-height: 26px;
+  background-color: var(--item-bg-color, hsl(34deg, 85%, 35%));
+  padding: 10px;
+}
+.pbg-breadcrumbs-advanced li:last-child > * {
+  line-height: 36px;
+}
+.pbg-breadcrumbs-advanced li::before {
+  content: " ";
+  display: inline-block;
+  width: auto;
+  height: auto;
+  border-top: 50px solid transparent;
+  border-bottom: 50px solid transparent;
+  border-left: 30px solid var(--separator-color, rgba(165, 99, 12, 0.7490196078));
+  z-index: 1;
+  position: absolute;
+  left: calc(100% - 30px);
+}
+
+.wp-block-premium-breadcrumbs [class^=pbg-],
+.wp-block-premium-breadcrumbs [class*=" pbg-"] {
+  font-family: inherit !important;
+  width: auto;
+  height: auto;
+  font-size: inherit !important;
+  color: inherit;
+  margin: 0;
+  text-decoration: inherit !important;
+}
+
+/*# sourceMappingURL=style-block.css.map*/

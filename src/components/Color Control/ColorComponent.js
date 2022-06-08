@@ -66,7 +66,32 @@ class AdvancedColorControl extends Component {
                     <div className="premium-color-wrapper">
                         {this.state.isVisible && (
                             <Popover position="bottom left" className="premium-popover-color" onClose={toggleClose}>
+                                {this.props.colors && (
+                                    <div className={`premium-color-picker-top`}>
+                                        <ul className="premium-color-picker-skins">
+                                            {map(this.props.colors, ({ color, slug, name }) => {
+                                                return (
+                                                    <li key={color} className={classnames('premium-color-picker-single', {
+                                                        'active': this.props.colorValue === color
+                                                    })}
+                                                        style={{ backgroundColor: color }}
+                                                        onClick={() => {
+                                                            this.setState({ currentColor: color })
+                                                            this.props.onColorChange(color);
 
+
+                                                        }}
+                                                    >
+                                                        <div className={`premium-tooltip-top`}>
+                                                            {name ||
+                                                                sprintf(__('Color code: %s'), color)}
+                                                        </div>
+                                                    </li>
+                                                );
+                                            })}
+                                        </ul>
+                                    </div>
+                                )}
                                 <div className={isNew
                                     ? 'premium-gutenberg-color-picker-new'
                                     : 'premium-gutenberg-color-picker'}>
@@ -78,6 +103,7 @@ class AdvancedColorControl extends Component {
                                                 if (color.rgb) {
                                                     this.props.onColorChange(color.rgb.a != 1 ? 'rgba(' + color.rgb.r + ',' + color.rgb.g + ',' + color.rgb.b + ',' + color.rgb.a + ')' : color.hex)
                                                 }
+
                                             }}
                                         />
                                     )}

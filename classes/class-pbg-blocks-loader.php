@@ -35,6 +35,11 @@ if ( ! class_exists( 'PBG_Blocks_Loader' ) ) {
 		 */
 		public function __construct() {
 			require_once PREMIUM_BLOCKS_PATH . 'src/blocks/content-switcher/index.php';
+			require_once PREMIUM_BLOCKS_PATH . 'src/blocks/breadcrumbs/index.php';
+			require_once PREMIUM_BLOCKS_PATH . 'src/blocks/navigation/index.php';
+			require_once PREMIUM_BLOCKS_PATH . 'src/blocks/navigation-link/index.php';
+			require_once PREMIUM_BLOCKS_PATH . 'src/blocks/navigation-submenu/index.php';
+			require_once PREMIUM_BLOCKS_PATH . 'src/blocks/search/index.php';
 		}
 	}
 }

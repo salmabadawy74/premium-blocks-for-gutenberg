@@ -1,5 +1,5 @@
 import { accordion } from "../../../assets/js/settings";
-
+import PBG_Block_Icons from '../../../blocks-config/block-icons'
 import PbgIcon from "../icons";
 import edit from "./edit";
 import save from "./save";
@@ -12,7 +12,8 @@ const { registerBlockType } = wp.blocks;
 
 registerBlockType("premium/accordion", {
     title: __("Accordion"),
-    icon: <PbgIcon icon="accordion" />,
+    description: __('Display collapsed content like FAQs using Premium Accordion Block.'),
+    icon: PBG_Block_Icons.accordion,
     category: "premium-blocks",
     attributes: attributes,
     supports: {

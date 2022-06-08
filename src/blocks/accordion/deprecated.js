@@ -229,8 +229,755 @@ const attributes = {
     }
 }
 
+const newAttributes = {
+    accordionId: {
+        type: "string"
+    },
+    repeaterItems: {
+        type: "array",
+        default: [
+            {
+                titleText: __("Awesome Title", 'premium-blocks-for-gutenberg'),
+                descText:
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+            }
+        ]
+    },
+    direction: {
+        type: "string",
+        default: "ltr"
+    },
+    titleTag: {
+        type: "string",
+        default: "H4"
+    },
+    titleStyles: {
+        type: "array",
+        default: [
+            {
+                titleColor: "",
+                titleSize: '',
+                titleLine: '',
+                titleLetter: '',
+                titleStyle: '',
+                titleUpper: '',
+                titleWeight: '500',
+                titleBorder: 'none',
+                titleBorderRadius: '',
+                titleBorderColor: '',
+                titleBack: '',
+                titleShadowColor: '',
+                titleShadowBlur: 0,
+                titleShadowHorizontal: 0,
+                titleShadowVertical: 0,
+            }
+        ]
+    },
+    arrowStyles: {
+        type: "array",
+        default: [
+            {
+                arrowColor: '',
+                arrowBack: '',
+                arrowPos: 'out',
+                arrowPadding: '',
+                arrowRadius: '',
+                arrowSize: 20
+            }]
+    },
+    descStyles: {
+        type: 'array',
+        default: [
+            {
+                descAlign: 'left',
+                descColor: '',
+                descBack: '',
+                descBorder: 'none',
+                descBorderWidth: 1,
+                descBorderUpdated: false,
+                descBorderTop: '',
+                descBorderRight: '',
+                descBorderBottom: '',
+                descBorderLeft: '',
+                descBorderRadius: 0,
+                descBorderColor: '',
+                descSize: '',
+                descLine: '',
+                descLetter: '',
+                descStyle: '',
+                descUpper: false,
+                descWeight: 500,
+                descPaddingT: '',
+                descPaddingR: '',
+                descPaddingB: '',
+                descPaddingL: ''
+            }
+
+        ]
+    },
+
+    contentType: {
+        type: "string",
+        default: "text"
+    },
+
+    titleEditBorder: {
+        type: "boolean"
+    },
+
+    textShadowColor: {
+        type: "string"
+    },
+    textShadowBlur: {
+        type: "number",
+        default: "0"
+    },
+    textShadowHorizontal: {
+        type: "number",
+        default: "0"
+    },
+    textShadowVertical: {
+        type: "number",
+        default: "0"
+    },
+    titleBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    titleBorderTop: {
+        type: "number"
+    },
+    titleBorderRight: {
+        type: "number"
+    },
+    titleBorderBottom: {
+        type: "number"
+    },
+    titleBorderLeft: {
+        type: "number"
+    },
+    titleBorderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    titlePaddingT: {
+        type: "number"
+    },
+    titlePaddingR: {
+        type: "number"
+    },
+    titlePaddingB: {
+        type: "number"
+    },
+    titlePaddingL: {
+        type: "number"
+    },
+    descBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    descBorderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    descBorderTop: {
+        type: "number"
+    },
+    descBorderRight: {
+        type: "number"
+    },
+    descBorderBottom: {
+        type: "number"
+    },
+    descBorderLeft: {
+        type: "number"
+    },
+    descPaddingT: {
+        type: "number"
+    },
+    descPaddingR: {
+        type: "number"
+    },
+    descPaddingB: {
+        type: "number"
+    },
+    descPaddingL: {
+        type: "number",
+        default: 10
+    },
+    titlePaddingTTablet: {
+        type: "number"
+    },
+    titlePaddingRTablet: {
+        type: "number"
+    },
+    titlePaddingBTablet: {
+        type: "number"
+    },
+    titlePaddingLTablet: {
+        type: "number"
+    },
+    titlePaddingTMobile: {
+        type: "number"
+    },
+    titlePaddingRMobile: {
+        type: "number"
+    },
+    titlePaddingBMobile: {
+        type: "number"
+    },
+    titlePaddingLMobile: {
+        type: "number"
+    },
+    descPaddingTTablet: {
+        type: "number"
+    },
+    descPaddingRTablet: {
+        type: "number"
+    },
+    descPaddingBTablet: {
+        type: "number"
+    },
+    descPaddingLTablet: {
+        type: "number"
+    },
+    descPaddingTMobile: {
+        type: "number"
+    },
+    descPaddingRMobile: {
+        type: "number"
+    },
+    descPaddingBMobile: {
+        type: "number"
+    },
+    descPaddingLMobile: {
+        type: "number"
+    },
+    titlePadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
+    descPadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
+    titleBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    descBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    titleTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
+    },
+    descTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
+    },
+    descAlign: {
+        type: 'object',
+        default: {
+            Desktop: '',
+            Tablet: '',
+            Mobile: '',
+        }
+    },
+    titleTextShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+        }
+    },
+    textShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+        }
+    },
+}
 
 const deprecated = [
+    {
+        attributes: Object.assign(attributes, newAttributes),
+        isEligible() {
+            return true;
+        },
+        migrate: (attributes) => {
+            let newAttributes = {
+                titlePadding: {
+                    "Desktop": {
+                        top: attributes.titlePaddingT || '',
+                        right: attributes.titlePaddingR || '',
+                        bottom: attributes.titlePaddingB || '',
+                        left: attributes.titlePaddingL || ''
+                    },
+                    "Tablet": {
+                        top: attributes.titlePaddingTTablet || '',
+                        right: attributes.titlePaddingRTablet || '',
+                        bottom: attributes.titlePaddingBTablet || '',
+                        left: attributes.titlePaddingLTablet || ''
+                    },
+                    "Mobile": {
+                        top: attributes.titlePaddingTMobile || '',
+                        right: attributes.titlePaddingRMobile || '',
+                        bottom: attributes.titlePaddingBMobile || '',
+                        left: attributes.titlePaddingLMobile || ''
+                    },
+                    "unit": "px"
+                },
+                descPadding: {
+                    "Desktop": {
+                        top: attributes.descPaddingT || '',
+                        right: attributes.descPaddingR || '',
+                        bottom: attributes.descPaddingB || '',
+                        left: attributes.descPaddingL || ''
+                    },
+                    "Tablet": {
+                        top: attributes.descPaddingTTablet || '',
+                        right: attributes.descPaddingRTablet || '',
+                        bottom: attributes.descPaddingBTablet || '',
+                        left: attributes.descPaddingLTablet || ''
+                    },
+                    "Mobile": {
+                        top: attributes.descPaddingTMobile || '',
+                        right: attributes.descPaddingRMobile || '',
+                        bottom: attributes.descPaddingBMobile || '',
+                        left: attributes.descPaddingLMobile || ''
+                    },
+                    "unit": "px"
+                },
+                titleBorder: {
+                    "borderType": attributes.titleStyles[0].titleBorder || '',
+                    "borderColor": attributes.titleStyles[0].titleBorderColor || '',
+                    "borderWidth": {
+                        Desktop: {
+                            top: attributes.titleBorderTop || '',
+                            right: attributes.titleBorderRight || '',
+                            bottom: attributes.titleBorderBottom || '',
+                            left: attributes.titleBorderLeft || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    },
+                    "borderRadius": {
+                        Desktop: {
+                            top: attributes.titleStyles[0].titleBorderRadius || '',
+                            right: attributes.titleStyles[0].titleBorderRadius || '',
+                            bottom: attributes.titleStyles[0].titleBorderRadius || '',
+                            left: attributes.titleStyles[0].titleBorderRadius || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    }
+                },
+                descBorder: {
+                    "borderType": attributes.descStyles[0].descBorder || '',
+                    "borderColor": attributes.descStyles[0].descBorderColor || '',
+                    "borderWidth": {
+                        Desktop: {
+                            top: attributes.descBorderTop || '',
+                            right: attributes.descBorderRight || '',
+                            bottom: attributes.descBorderBottom || '',
+                            left: attributes.descBorderLeft || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    },
+                    "borderRadius": {
+                        Desktop: {
+                            top: attributes.descStyles[0].descBorderRadius || '',
+                            right: attributes.descStyles[0].descBorderRadius || '',
+                            bottom: attributes.descStyles[0].descBorderRadius || '',
+                            left: attributes.descStyles[0].descBorderRadius || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    }
+                },
+                titleTypography: {
+                    "fontWeight": attributes.titleStyles[0].titleWeight || '',
+                    'fontStyle': attributes.titleStyles[0].titleStyle || '',
+                    'textTransform': attributes.titleStyles[0].titleUpper || '',
+                    'letterSpacing': attributes.titleStyles[0].titleLetter || '',
+                    'fontFamily': '',
+                    'lineHeight': attributes.titleStyles[0].titleLine || '',
+                    'textDecoration': '',
+                    'fontSize': {
+                        'Desktop': attributes.titleStyles[0].titleSize || '',
+                        "Tablet": attributes.titleStyles[0].titleSize || '',
+                        "Mobile": attributes.titleStyles[0].titleSize || '',
+                        "unit": 'px'
+                    }
+                },
+                descTypography: {
+                    "fontWeight": attributes.descStyles[0].descWeight || '',
+                    'fontStyle': attributes.descStyles[0].descStyle || '',
+                    'textTransform': attributes.descStyles[0].descUpper || '',
+                    'letterSpacing': attributes.descStyles[0].descLetter || '',
+                    'fontFamily': '',
+                    'lineHeight': attributes.descStyles[0].descLine || '',
+                    'textDecoration': '',
+                    'fontSize': {
+                        'Desktop': attributes.descStyles[0].descSize || '',
+                        "Tablet": attributes.descStyles[0].descSize || '',
+                        "Mobile": attributes.descStyles[0].descSize || '',
+                        "unit": 'px'
+                    }
+                },
+                descAlign: {
+                    Desktop: attributes?.descStyles[0]?.descAlign || 'left',
+                    Tablet: attributes?.descStyles[0]?.descAlign || 'left',
+                    Mobile: attributes?.descStyles[0]?.descAlign || 'left',
+                },
+                titleTextShadow: {
+                    'color': attributes?.titleStyles[0]?.titleShadowColor || '',
+                    'blur': attributes?.titleStyles[0]?.titleShadowBlur || '',
+                    'horizontal': attributes?.titleStyles[0]?.titleShadowHorizontal || '',
+                    'vertical': attributes?.titleStyles[0]?.titleShadowVertical || '',
+                },
+                textShadow: {
+                    'color': attributes?.textShadowColor,
+                    'blur': attributes?.textShadowBlur,
+                    'horizontal': attributes?.textShadowHorizontal,
+                    'vertical': attributes?.textShadowVertical,
+                },
+            }
+            return Object.assign(attributes, newAttributes)
+        },
+        save: props => {
+            const { className } = props;
+            const {
+                accordionId,
+                repeaterItems,
+                direction,
+                titleTag,
+                titleStyles,
+                arrowStyles = [],
+                descStyles,
+                contentType,
+                titleEditBorder,
+                textShadowColor,
+                textShadowBlur,
+                textShadowHorizontal,
+                textShadowVertical,
+                titleBorderWidth,
+                titleBorderTop,
+                titleBorderRight,
+                titleBorderBottom,
+                titleBorderLeft,
+                titleBorderUpdated,
+                descBorderWidth,
+                descBorderUpdated,
+                descBorderTop,
+                descBorderRight,
+                descBorderBottom,
+                descBorderLeft,
+
+            } = props.attributes;
+
+            const mainClasses = classnames(className, 'premium-accordion');
+
+            const accordionItems = repeaterItems.map((item, index) => {
+                return (
+                    <div
+                        id={`premium-accordion__layer${index}`}
+                        className={`premium-accordion__content_wrap`}
+                    >
+                        <div
+                            className={`premium-accordion__title_wrap premium-accordion__${direction} premium-accordion__${arrowStyles[0].arrowPos}`}
+                            style={{
+                                backgroundColor: titleStyles[0].titleBack,
+                                borderStyle: titleStyles[0].titleBorder,
+                                borderWidth: titleBorderUpdated
+                                    ? `${titleBorderTop}px ${titleBorderRight}px ${titleBorderBottom}px ${titleBorderLeft}px`
+                                    : titleBorderWidth + "px",
+                                borderRadius: titleStyles[0].titleBorderRadius + "px",
+                                borderColor: titleStyles[0].titleBorderColor
+                            }}
+                        >
+                            <div className={`premium-accordion__title`}>
+                                <RichText.Content
+                                    tagName={titleTag.toLowerCase()}
+                                    className={`premium-accordion__title_text`}
+                                    value={item.titleText}
+                                    style={{
+                                        color: titleStyles[0].titleColor,
+                                        fontSize: titleStyles[0].titleSize + "px",
+                                        letterSpacing: titleStyles[0].titleLetter + "px",
+                                        textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                        fontStyle: titleStyles[0].titleStyle,
+                                        fontWeight: titleStyles[0].titleWeight,
+                                        textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`,
+                                        lineHeight: titleStyles[0].titleLine + "px"
+                                    }}
+                                />
+                            </div>
+                            <div className={`premium-accordion__icon_wrap`}>
+                                <svg
+                                    className={`premium-accordion__icon premium-accordion__closed`}
+                                    role="img"
+                                    focusable="false"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width={arrowStyles[0].arrowSize}
+                                    height={arrowStyles[0].arrowSize}
+                                    viewBox="0 0 20 20"
+                                    style={{
+                                        fill: arrowStyles[0].arrowColor,
+                                        backgroundColor: arrowStyles[0].arrowBack,
+                                        padding: arrowStyles[0].arrowPadding + "px",
+                                        borderRadius: arrowStyles[0].arrowRadius + "px"
+                                    }}
+                                >
+                                    <polygon points="16.7,3.3 10,10 3.3,3.4 0,6.7 10,16.7 10,16.6 20,6.7 " />
+                                </svg>
+                            </div>
+                        </div>
+                        <div
+                            className={`premium-accordion__desc_wrap premium-accordion__desc_close`}
+                            style={{
+                                textAlign: descStyles[0].descAlign,
+                                backgroundColor: descStyles[0].descBack,
+                                borderStyle: descStyles[0].descBorder,
+                                borderWidth: descBorderUpdated
+                                    ? `${descBorderTop}px ${descBorderRight}px ${descBorderBottom}px ${descBorderLeft}px`
+                                    : descBorderWidth + "px",
+                                borderRadius: descStyles[0].descBorderRadius + "px",
+                                borderColor: descStyles[0].descBorderColor,
+
+                            }}
+                        >
+                            {"text" === contentType && (
+                                <RichText.Content
+                                    tagName="p"
+                                    className={`premium-accordion__desc`}
+                                    value={item.descText}
+                                    style={{
+                                        color: descStyles[0].descColor,
+                                        fontSize: descStyles[0].descSize + "px",
+                                        letterSpacing: descStyles[0].descLetter + "px",
+                                        textTransform: descStyles[0].descUpper ? "uppercase" : "none",
+                                        textShadow: `${textShadowHorizontal}px ${textShadowVertical}px ${textShadowBlur}px ${textShadowColor}`,
+                                        fontStyle: descStyles[0].descStyle,
+                                        fontWeight: descStyles[0].descWeight,
+                                        lineHeight: descStyles[0].descLine + "px"
+                                    }}
+                                />
+                            )}
+                            {"block" === contentType && <InnerBlocks.Content />}
+                        </div>
+                    </div>
+                );
+            });
+            return (
+                <div id={accordionId} className={`${mainClasses}`}>
+                    {accordionItems}
+                </div>
+            );
+        }
+    },
     {
         attributes: attributes,
         migrate: (attributes) => {
@@ -807,6 +1554,6 @@ const deprecated = [
                 </div>
             );
         },
-    },
+    }
 ];
 export default deprecated;

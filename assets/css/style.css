@@ -2113,7 +2113,7 @@ a.premium-dheading-block__link:hover {
     position: relative;
 }
 
-.premium-person__img{
+.premium-person__img {
     border: none;
 }
 
@@ -2130,9 +2130,10 @@ a.premium-dheading-block__link:hover {
 .premium-person__name {
     margin: 0 !important;
 }
+
 .premium-person__title {
-    margin: 0 !important;
-    padding: 0 !important;
+    margin: 0;
+    padding: 0;
 }
 
 .premium-person__effect2 {
