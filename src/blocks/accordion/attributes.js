@@ -122,10 +122,10 @@ const attributes = {
         type: "object",
         default: {
             Desktop: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
+                top: '15',
+                right: '15',
+                bottom: '15',
+                left: '15'
             },
             Tablet: {
                 top: '',
@@ -289,6 +289,18 @@ const attributes = {
             'horizontal': '',
             'vertical': '',
         }
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
     },
 }
 export default attributes;
