@@ -21,6 +21,9 @@ const save = props => {
         descTypography,
         textShadow,
         titleTextShadow,
+        hideDesktop,
+        hideTablet,
+        hideMobile,
     } = props.attributes;
 
     const mainClasses = classnames(className, 'premium-accordion', blockId);
@@ -32,7 +35,7 @@ const save = props => {
                 className={`premium-accordion__content_wrap`}
             >
                 <div
-                    className={`premium-accordion__title_wrap premium-accordion__${direction} premium-accordion__${arrowStyles[0].arrowPos}`}
+                    className={`premium-accordion__title_wrap premium-accordion__${direction} premium-accordion__${arrowStyles[0].arrowPos} ${hideDesktop} ${hideTablet} ${hideMobile}`}
                     style={{
                         backgroundColor: titleStyles[0].titleBack,
                         borderStyle: titleBorder && titleBorder.borderType,
