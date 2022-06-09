@@ -273,6 +273,15 @@ const attributes = {
     height: {
         type: "string",
         default: 'auto'
+    },
+    direction: {
+        type: 'object',
+        default: {
+            'Desktop': '',
+            'Tablet': '',
+            'Mobile': ''
+        }
+
     }
 };
 
