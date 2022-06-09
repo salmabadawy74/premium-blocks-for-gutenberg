@@ -3678,6 +3678,30 @@ i.fipicon-angle-left {
     display: flex;
     align-items: center;
 }
+.premium-btn-size-settings-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    p.premium-beside-btn-group {
+        margin: 0px;
+    }
+    .premium-background-type__wrap {
+        display: flex;
+        align-items: center;
+        .premium-button-size-type-options {
+            margin-right: 6px;
+            button.premium-btn-size-btn {
+                border: 1px solid #e1e2e1;
+                box-shadow: none;
+            }
+            button.premium-btn-size-btn.is-primary {
+                svg > g > path.cls-1 {
+                    fill: #fff;
+                }
+            }
+        }
+    }
+}
 @import "./RangeControl.scss";
 @import "./spacing.scss";
 @import "./color.scss";

@@ -67,6 +67,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "heading": function() { return /* binding */ heading; },
 /* harmony export */   "icon": function() { return /* binding */ icon; },
 /* harmony export */   "iconBox": function() { return /* binding */ iconBox; },
+/* harmony export */   "imageSeparator": function() { return /* binding */ imageSeparator; },
 /* harmony export */   "lottie": function() { return /* binding */ lottie; },
 /* harmony export */   "maps": function() { return /* binding */ maps; },
 /* harmony export */   "modal": function() { return /* binding */ modal; },
@@ -96,7 +97,8 @@ const {
   modal,
   bulletList,
   person,
-  heading // contentSwitcher
+  heading,
+  imageSeparator // contentSwitcher
 
 } = PremiumBlocksSettings.activeBlocks; //Plugin Config Keys
 
@@ -47383,6 +47385,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash_map__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(lodash_map__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Color Control/ColorComponent */ "./src/components/Color Control/ColorComponent.js");
 /* harmony import */ var _RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./RangeControl/single-range-control */ "./src/components/RangeControl/single-range-control.js");
+/* harmony import */ var _radio_control__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./radio-control */ "./src/components/radio-control.js");
 
 
 const {
@@ -47402,6 +47405,7 @@ const {
   Fragment,
   useState
 } = wp.element;
+
 
 
 function PremiumBackgroundControl(_ref) {
@@ -47447,6 +47451,7 @@ function PremiumBackgroundControl(_ref) {
     key: 'solid',
     icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
       id: "Accordion",
+      fill: "inherit",
       xmlns: "http://www.w3.org/2000/svg",
       width: "14.44",
       height: "14.5",
@@ -47472,6 +47477,7 @@ function PremiumBackgroundControl(_ref) {
     key: 'gradient',
     icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
       id: "Accordion",
+      fill: "inherit",
       xmlns: "http://www.w3.org/2000/svg",
       width: "14.44",
       height: "14.5",
@@ -47540,16 +47546,14 @@ function PremiumBackgroundControl(_ref) {
     bgVideoFallbackID,
     bgVideoFallbackURL
   } = state;
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_premium_background__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    type: "color",
-    colorValue: backgroundColor,
-    onChangeColor: newValue => onChangeBackground('backgroundColor', newValue)
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "Premium-btn-size-settings-container"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
-    className: "Premium-beside-btn-group"
-  }, __('Background Type', 'premium-blocks-for-gutenberg')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ButtonGroup, {
-    className: "Premium-button-size-type-options",
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "premium-btn-size-settings-container"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    className: "premium-beside-btn-group"
+  }, __('Background Type', 'premium-blocks-for-gutenberg')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: `premium-background-type__wrap`
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ButtonGroup, {
+    className: "premium-button-size-type-options",
     "aria-label": __('Background Type', 'premium-blocks-for-gutenberg')
   }, lodash_map__WEBPACK_IMPORTED_MODULE_4___default()(bgType, _ref2 => {
     let {
@@ -47561,14 +47565,29 @@ function PremiumBackgroundControl(_ref) {
       text: tooltip
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
       key: key,
-      className: "Premium-btn-size-btn",
+      className: "premium-btn-size-btn",
       isSmall: true,
       isPrimary: backgroundType === key,
       onClick: () => onChangeBackground('backgroundType', key)
     }, icon));
-  }))), 'solid' === backgroundType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "Premium-inner-sub-section premium-blocks-base-control"
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "premium-btn-reset-wrap"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: "premium-reset-btn ",
+    disabled: "" === backgroundType,
+    onClick: e => {
+      e.preventDefault();
+      setState(defaultValues);
+      onChange(defaultValues);
+    }
+  })))), 'solid' === backgroundType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "premium-inner-sub-section premium-blocks__base-control"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_premium_background__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    type: "color",
+    colorValue: backgroundColor,
+    colorDefault: '',
+    onChangeColor: newValue => onChangeBackground('backgroundColor', newValue)
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_premium_background__WEBPACK_IMPORTED_MODULE_3__["default"], {
     imageID: backgroundImageID,
     imageURL: backgroundImageURL,
     backgroundPosition: backgroundPosition,
@@ -47608,11 +47627,11 @@ function PremiumBackgroundControl(_ref) {
     showUnit: false,
     defaultValue: 0
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "Premium-btn-size-settings-container"
+    className: "premium-btn-size-settings-container"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
-    className: "Premium-beside-btn-group"
+    className: "premium-beside-btn-group"
   }, __('Gradient Type', 'premium-blocks-for-gutenberg')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ButtonGroup, {
-    className: "Premium-button-size-type-options",
+    className: "premium-button-size-type-options",
     "aria-label": __('Gradient Type', 'premium-blocks-for-gutenberg')
   }, lodash_map__WEBPACK_IMPORTED_MODULE_4___default()(gradTypes, _ref3 => {
     let {
@@ -47621,7 +47640,7 @@ function PremiumBackgroundControl(_ref) {
     } = _ref3;
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
       key: key,
-      className: "Premium-btn-size-btn",
+      className: "premium-btn-size-btn",
       isSmall: true,
       isPrimary: gradientType === key,
       onClick: () => onChangeBackground('gradientType', key)

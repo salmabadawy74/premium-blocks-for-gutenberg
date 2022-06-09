@@ -21,6 +21,7 @@ export const {
     bulletList,
     person,
     heading,
+    imageSeparator
     // contentSwitcher
 } = PremiumBlocksSettings.activeBlocks;
 
