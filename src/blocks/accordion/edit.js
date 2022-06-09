@@ -11,6 +11,7 @@ import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
 import Icons from "../../components/icons";
 import { generateBlockId } from '../../components/HelperFunction';
+import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 
 const { Component, Fragment } = wp.element;
 const { __ } = wp.i18n;
@@ -71,7 +72,10 @@ class PremiumAccordion extends Component {
             descBorder,
             titleTypography,
             descTypography,
-            descAlign
+            descAlign,
+            hideDesktop,
+            hideTablet,
+            hideMobile,
         } = this.props.attributes;
 
         const saveTitleStyles = (value) => {
@@ -272,6 +276,14 @@ class PremiumAccordion extends Component {
                                     onChange={(newValue) => setAttributes({ titleTag: newValue })}
                                     label={__("Title Tag", 'premium-blocks-for-gutenberg')}
                                 />
+                                <hr />
+                                <RadioComponent
+                                    choices={[{ value: 'ltr', label: __('LTR'), icon: Icons.leftArrow }, { value: 'rtl', label: __('RTL'), icon: Icons.rightArrow }]}
+                                    value={direction}
+                                    onChange={newEffect => setAttributes({ direction: newEffect })}
+                                    label={__("Direction", 'premium-blocks-for-gutenberg')}
+                                    showIcons={true}
+                                />
                             </PanelBody>
                             <PanelBody
                                 title={__("Arrow", 'premium-blocks-for-gutenberg')}
@@ -304,13 +316,6 @@ class PremiumAccordion extends Component {
                                 className="premium-panel-body"
                                 initialOpen={true}
                             >
-                                <RadioComponent
-                                    choices={[{ value: 'ltr', label: __('LTR') }, { value: 'rtl', label: __('RTL') }]}
-                                    value={direction}
-                                    onChange={newEffect => setAttributes({ direction: newEffect })}
-                                    label={__("Direction", 'premium-blocks-for-gutenberg')}
-                                />
-                                <hr />
                                 <PremiumTypo
                                     components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
                                     value={titleTypography}
@@ -450,7 +455,16 @@ class PremiumAccordion extends Component {
                                 <SpacingComponent value={descPadding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ descPadding: value })} />
                             </PanelBody>
                         </InspectorTab>
-                        <InspectorTab key={'advance'} />
+                        <InspectorTab key={'advance'}>
+                            <PremiumResponsiveTabs
+                                Desktop={hideDesktop}
+                                Tablet={hideTablet}
+                                Mobile={hideMobile}
+                                onChangeDesktop={(value) => setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" })}
+                                onChangeTablet={(value) => setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" })}
+                                onChangeMobile={(value) => setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" })}
+                            />
+                        </InspectorTab>
                     </InspectorTabs>
                 </InspectorControls >
             ),
@@ -475,7 +489,6 @@ class PremiumAccordion extends Component {
                         <i className="dashicons dashicons-plus premium-repeater-icon" />
                         {__("Add New Item", 'premium-blocks-for-gutenberg')}
                     </button>
-                    <p>{__("Add the items you need then reload the page", 'premium-blocks-for-gutenberg')}</p>
                 </div>
             </Fragment>
         ];

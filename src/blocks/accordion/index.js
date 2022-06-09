@@ -1,6 +1,5 @@
 import { accordion } from "../../../assets/js/settings";
 import PBG_Block_Icons from '../../../blocks-config/block-icons'
-import PbgIcon from "../icons";
 import edit from "./edit";
 import save from "./save";
 import attributes from './attributes'
