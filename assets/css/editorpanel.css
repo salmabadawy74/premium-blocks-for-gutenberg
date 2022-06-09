@@ -359,7 +359,8 @@
 }
 
 .premium-repeater-btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     background-color: #a4afb7;
     color: #fff;
     font-size: 11px;
@@ -380,6 +381,12 @@
     -webkit-transition-duration: 0.3s;
     -o-transition-duration: 0.3s;
     transition-duration: 0.3s;
+}
+
+.premium-repeater-btn .dashicons,
+.premium-repeater-btn .dashicons-before:before {
+    line-height: inherit;
+    vertical-align: middle;
 }
 
 .premium-repeater__icon {
