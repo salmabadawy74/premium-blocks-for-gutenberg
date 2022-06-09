@@ -1,5 +1,8 @@
 const { __ } = wp.i18n;
 const attributes = {
+    blockId: {
+        type: 'string',
+    },
     borderButton: {
         type: "boolean",
         default: false,
@@ -56,43 +59,6 @@ const attributes = {
         type: 'boolean',
         default: false
     },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    borderTop: {
-        type: "number"
-    },
-    borderRight: {
-        type: "number"
-    },
-    borderBottom: {
-        type: "number"
-    },
-    borderLeft: {
-        type: "number"
-    },
-    textStyles: {
-        type: "array",
-        default: [
-            {
-                textSizeUnit: 'px',
-                textSize: 20,
-                textSizeTablet: '',
-                textSizeMobile: '',
-                textFontFamily: __('Default', 'premium-blocks-for-gutenberg'),
-                textLetter: '',
-                textStyle: '',
-                textUpper: false,
-                textWeight: '',
-                textLine: '',
-                shadowColor: '',
-                shadowBlur: '0',
-                shadowHorizontal: '0',
-                shadowVertical: '0',
-            }
-        ]
-    },
     btnStyles: {
         type: 'array',
         default: [
@@ -102,19 +68,117 @@ const attributes = {
                 backColor: '',
                 backOpacity: 1,
                 backHoverColor: '',
-                borderType: "none",
-                borderRadius: '',
-                borderColor: '',
                 borderHoverColor: '',
-                btnShadowColor: '',
-                btnShadowBlur: 0,
-                btnShadowHorizontal: 0,
-                btnShadowVertical: 0,
-                btnShadowPosition: '',
-                padding: '',
-                paddingU: 'px',
             }
         ]
-    }
+    },
+    border: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    typography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
+    },
+    textShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+        }
+    },
+    boxShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
+    },
+    padding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
 }
 export default attributes
