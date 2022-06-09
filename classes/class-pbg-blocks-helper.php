@@ -1713,8 +1713,8 @@ class PBG_Blocks_Helper {
 	 */
 	public function get_button_css( $attributes, $content ) {
 
-		if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
-			$unique_id = $attributes['block_id'];
+		if ( isset( $attributes['blockId'] ) && ! empty( $attributes['blockId'] ) ) {
+			$unique_id = $attributes['blockId'];
 		} else {
 			$unique_id = rand( 100, 10000 );
 
@@ -1773,13 +1773,13 @@ class PBG_Blocks_Helper {
 				)
 			);
 
-			$css->set_selector( '#premium-button-wrap-' . $unique_id . '> .premium-button' );
+			$css->set_selector( '.' . $unique_id . '> .premium-button' );
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $font_size, 'Desktop', $font_size['unit'] ) );
 		}
 
 		if ( isset( $attr['textStyles'] ) ) {
 			if ( isset( $attr['textStyles'][0]['textSize'] ) || isset( $attr['textStyles'][0]['textSizeUnit'] ) ) {
-				$css->set_selector( '#premium-button-wrap-' . $unique_id . '> .premium-button' );
+				$css->set_selector( '.' . $unique_id . '> .premium-button' );
 				$css->add_property( 'font-size', $css->render_color( $attr['textStyles'][0]['textSize'] . $attr['textStyles'][0]['textSizeUnit'] . '!important' ) );
 			}
 		}
@@ -1787,7 +1787,7 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['padding'] ) ) {
 			$padding = $attr['padding'];
 
-			$css->set_selector( '#premium-button-wrap-' . $unique_id . '> .premium-button' );
+			$css->set_selector( '.' . $unique_id . '> .premium-button' );
 			$css->add_property( 'padding-top', $css->get_responsive_value( $padding, 'top', 'Desktop', $padding['unit'] ) );
 			$css->add_property( 'padding-right', $css->get_responsive_value( $padding, 'right', 'Desktop', $padding['unit'] ) );
 			$css->add_property( 'padding-bottom', $css->get_responsive_value( $padding, 'bottom', 'Desktop', $padding['unit'] ) );
@@ -1799,7 +1799,7 @@ class PBG_Blocks_Helper {
 			$border_width  = $attr['border']['borderWidth'];
 			$border_radius = $attr['border']['borderRadius'];
 
-			$css->set_selector( '#premium-button-wrap-' . $unique_id . '> .premium-button' );
+			$css->set_selector( '.' . $unique_id . '> .premium-button' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $border_width, 'top', 'Desktop', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $border_width, 'right', 'Desktop', 'px' ) );
 			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $border_width, 'bottom', 'Desktop', 'px' ) );
@@ -1816,19 +1816,19 @@ class PBG_Blocks_Helper {
 			$typography = $attr['typography'];
 			$font_size  = $typography['fontSize'];
 
-			$css->set_selector( '#premium-button-wrap-' . $unique_id . '> .premium-button' );
+			$css->set_selector( '.' . $unique_id . '> .premium-button' );
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $font_size, 'Tablet', $font_size['unit'] ) );
 		}
 
 		if ( isset( $attr['textStyles'][0]['textSizeTablet'] ) ) {
-			$css->set_selector( '#premium-button-wrap-' . $unique_id . '> .premium-button' );
+			$css->set_selector( '.' . $unique_id . '> .premium-button' );
 			$css->add_property( 'font-size', $css->render_color( $attr['textStyles'][0]['textSizeTablet'] . $attr['textStyles'][0]['textSizeUnit'] . '!important' ) );
 		}
 
 		if ( isset( $attr['padding'] ) ) {
 			$padding = $attr['padding'];
 
-			$css->set_selector( '#premium-button-wrap-' . $unique_id . '> .premium-button' );
+			$css->set_selector( '.' . $unique_id . '> .premium-button' );
 			$css->add_property( 'padding-top', $css->get_responsive_value( $padding, 'top', 'Tablet', $padding['unit'] ) );
 			$css->add_property( 'padding-right', $css->get_responsive_value( $padding, 'right', 'Tablet', $padding['unit'] ) );
 			$css->add_property( 'padding-bottom', $css->get_responsive_value( $padding, 'bottom', 'Tablet', $padding['unit'] ) );
@@ -1840,7 +1840,7 @@ class PBG_Blocks_Helper {
 			$border_width  = $attr['border']['borderWidth'];
 			$border_radius = $attr['border']['borderRadius'];
 
-			$css->set_selector( '#premium-button-wrap-' . $unique_id . '> .premium-button' );
+			$css->set_selector( '.' . $unique_id . '> .premium-button' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $border_width, 'top', 'Tablet', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $border_width, 'right', 'Tablet', 'px' ) );
 			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $border_width, 'bottom', 'Tablet', 'px' ) );
@@ -1858,12 +1858,12 @@ class PBG_Blocks_Helper {
 			$typography = $attr['typography'];
 			$font_size  = $typography['fontSize'];
 
-			$css->set_selector( '#premium-button-wrap-' . $unique_id . '> .premium-button' );
+			$css->set_selector( '.' . $unique_id . '> .premium-button' );
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $font_size, 'Mobile', $font_size['unit'] ) );
 		}
 
 		if ( isset( $attr['textStyles'][0]['textSizeMobile'] ) ) {
-			$css->set_selector( '#premium-button-wrap-' . $unique_id . '> .premium-button' );
+			$css->set_selector( '.' . $unique_id . '> .premium-button' );
 			$css->add_property( 'font-size', $css->render_color( $attr['textStyles'][0]['textSizeMobile'] . $attr['textStyles'][0]['textSizeUnit'] . '!important' ) );
 
 		}
@@ -1871,7 +1871,7 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['padding'] ) ) {
 			$padding = $attr['padding'];
 
-			$css->set_selector( '#premium-button-wrap-' . $unique_id . '> .premium-button' );
+			$css->set_selector( '.' . $unique_id . '> .premium-button' );
 			$css->add_property( 'padding-top', $css->get_responsive_value( $padding, 'top', 'Mobile', $padding['unit'] ) );
 			$css->add_property( 'padding-right', $css->get_responsive_value( $padding, 'right', 'Mobile', $padding['unit'] ) );
 			$css->add_property( 'padding-bottom', $css->get_responsive_value( $padding, 'bottom', 'Mobile', $padding['unit'] ) );
@@ -1883,7 +1883,7 @@ class PBG_Blocks_Helper {
 			$border_width  = $attr['border']['borderWidth'];
 			$border_radius = $attr['border']['borderRadius'];
 
-			$css->set_selector( '#premium-button-wrap-' . $unique_id . '> .premium-button' );
+			$css->set_selector( '.' . $unique_id . '> .premium-button' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $border_width, 'top', 'Mobile', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $border_width, 'right', 'Mobile', 'px' ) );
 			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $border_width, 'bottom', 'Mobile', 'px' ) );

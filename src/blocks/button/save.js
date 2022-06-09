@@ -3,7 +3,6 @@ const { RichText } = wp.blockEditor;
 const save = props => {
     const { className } = props;
     const {
-        borderButton,
         btnText,
         btnSize,
         btnAlign,
@@ -20,29 +19,29 @@ const save = props => {
         border,
         typography,
         textShadow,
-        boxShadow
+        boxShadow,
+        blockId
     } = props.attributes;
     const mainClasses = classnames(className, 'premium-button');
 
     return (
         <div
-            id={`${mainClasses}-wrap-${block_id}`}
-            className={`${mainClasses}__wrap premium-button__${effect} premium-button__${effectDir} premium-button-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+            className={`${mainClasses}__wrap premium-button__${effect} ${blockId} premium-button__${effectDir} premium-button-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
             style={{ textAlign: btnAlign }}
         >
             <style
                 dangerouslySetInnerHTML={{
                     __html: [
-                        `#premium-button-wrap-${block_id} .premium-button:hover {`,
+                        `.${blockId} .premium-button:hover {`,
                         `color: ${btnStyles[0].textHoverColor} !important;`,
                         `border-color: ${btnStyles[0].borderHoverColor} !important;`,
                         "}",
-                        `#premium-button-wrap-${block_id}.premium-button__none .premium-button:hover {`,
+                        `.${blockId}.premium-button__none .premium-button:hover {`,
                         `background-color: ${btnStyles[0].backHoverColor} !important;`,
                         "}",
-                        `#premium-button-wrap-${block_id}.premium-button__slide .premium-button::before,`,
-                        `#premium-button-wrap-${block_id}.premium-button__shutter .premium-button::before,`,
-                        `#premium-button-wrap-${block_id}.premium-button__radial .premium-button::before {`,
+                        `.${blockId}.premium-button__slide .premium-button::before,`,
+                        `.${blockId}.premium-button__shutter .premium-button::before,`,
+                        `.${blockId}.premium-button__radial .premium-button::before {`,
                         `background-color: ${slideColor}`,
                         "}"
                     ].join("\n")

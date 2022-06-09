@@ -1,5 +1,8 @@
 const { __ } = wp.i18n;
 const attributes = {
+    blockId: {
+        type: 'string',
+    },
     borderButton: {
         type: "boolean",
         default: false,

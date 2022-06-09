@@ -1,7 +1,7 @@
 const className = "premium-button";
 import classnames from 'classnames';
 import hexToRgba from 'hex-to-rgba'
-
+import { generateBlockId } from '../../components/HelperFunction';
 const { __ } = wp.i18n;
 
 const { RichText } = wp.editor;
@@ -454,7 +454,10 @@ const v7Attrinutes = {
             },
             unit: 'px'
         }
-    }
+    },
+    blockId: {
+        type: 'string',
+    },
 };
 
 const deprecatedContent = [
@@ -462,6 +465,7 @@ const deprecatedContent = [
         attributes: v7Attrinutes,
         migrate: (attributes) => {
             let newAttributes = {
+                blockId: attributes.block_id ? "premium-button-" + generateBlockId(attributes.block_id) : '',
                 border: {
                     "borderType": attributes.btnStyles[0].borderType || '',
                     "borderColor": attributes.btnStyles[0].borderColor || '',

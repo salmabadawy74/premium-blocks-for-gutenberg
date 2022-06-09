@@ -13235,6 +13235,9 @@ const {
   __
 } = wp.i18n;
 const attributes = {
+  blockId: {
+    type: 'string'
+  },
   borderButton: {
     type: "boolean",
     default: false
@@ -13429,8 +13432,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var hex_to_rgba__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! hex-to-rgba */ "./node_modules/hex-to-rgba/build/index.js");
 /* harmony import */ var hex_to_rgba__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(hex_to_rgba__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
 
 const className = "premium-button";
+
 
 
 const {
@@ -13882,6 +13887,9 @@ const v7Attrinutes = {
       },
       unit: 'px'
     }
+  },
+  blockId: {
+    type: 'string'
   }
 };
 const deprecatedContent = [{
@@ -13890,6 +13898,7 @@ const deprecatedContent = [{
     var _attributes$textStyle, _attributes$textStyle2, _attributes$textStyle3, _attributes$textStyle4, _attributes$textStyle5, _attributes$textStyle6, _attributes$textStyle7, _attributes$textStyle8, _attributes$textStyle9, _attributes$textStyle10, _attributes$textStyle11, _attributes$textStyle12, _attributes$textStyle13, _attributes$textStyle14, _attributes$btnStyles, _attributes$btnStyles2, _attributes$btnStyles3, _attributes$btnStyles4, _attributes$btnStyles5, _attributes$btnStyles6, _attributes$btnStyles7, _attributes$btnStyles8, _attributes$btnStyles9, _attributes$btnStyles10;
 
     let newAttributes = {
+      blockId: attributes.block_id ? "premium-button-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.generateBlockId)(attributes.block_id) : '',
       border: {
         "borderType": attributes.btnStyles[0].borderType || '',
         "borderColor": attributes.btnStyles[0].borderColor || '',
@@ -14672,6 +14681,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_PremiumShadow__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/PremiumShadow */ "./src/components/PremiumShadow.js");
 /* harmony import */ var _components_inspectorTabs__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/inspectorTabs */ "./src/components/inspectorTabs.js");
 /* harmony import */ var _components_inspectorTab__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/inspectorTab */ "./src/components/inspectorTab.js");
+/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
 
 
 
@@ -14681,6 +14691,7 @@ __webpack_require__.r(__webpack_exports__);
 const {
   __
 } = wp.i18n;
+
 
 
 
@@ -14712,6 +14723,22 @@ class edit extends Component {
     this.getPreviewSize = this.getPreviewSize.bind(this);
   }
 
+  componentDidMount() {
+    const {
+      attributes,
+      setAttributes,
+      clientId
+    } = this.props;
+    console.log('first', attributes.blockId);
+
+    if (!attributes.blockId) {
+      console.log((0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_11__.generateBlockId)(clientId), attributes.blockId);
+      setAttributes({
+        blockId: "premium-button-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_11__.generateBlockId)(clientId)
+      });
+    }
+  }
+
   getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
     if (device === 'Mobile') {
       if (undefined !== mobileSize && '' !== mobileSize) {
@@ -14734,8 +14761,7 @@ class edit extends Component {
     const {
       isSelected,
       setAttributes,
-      className,
-      clientId: blockId
+      className
     } = this.props;
     const {
       btnText,
@@ -14746,7 +14772,6 @@ class edit extends Component {
       effect,
       effectDir,
       slideColor,
-      block_id,
       hideDesktop,
       hideTablet,
       hideMobile,
@@ -14755,7 +14780,8 @@ class edit extends Component {
       typography,
       textShadow,
       boxShadow,
-      padding
+      padding,
+      blockId
     } = this.props.attributes;
     const SIZE = [{
       value: "sm",
@@ -14855,9 +14881,6 @@ class edit extends Component {
       }
     };
 
-    setAttributes({
-      block_id: blockId
-    });
     let loadBtnGoogleFonts;
 
     if ((typography === null || typography === void 0 ? void 0 : typography.fontFamily) !== 'Default') {
@@ -15067,14 +15090,13 @@ class edit extends Component {
         hideMobile: value ? " premium-mobile-hidden" : ""
       })
     })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      id: `premium-button-wrap-${block_id}`,
-      className: `${mainClasses}__wrap premium-button__${effect} premium-button__${effectDir} premium-button-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`,
+      className: `${mainClasses}__wrap premium-button__${effect} ${blockId} premium-button__${effectDir} ${hideDesktop} ${hideTablet} ${hideMobile}`,
       style: {
         textAlign: btnAlign
       }
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
       dangerouslySetInnerHTML: {
-        __html: [`#premium-button-wrap-${block_id} .premium-button:hover {`, `color: ${btnStyles[0].textHoverColor} !important;`, `border-color: ${btnStyles[0].borderHoverColor} !important;`, "}", `#premium-button-wrap-${block_id}.premium-button__none .premium-button:hover {`, `background-color: ${btnStyles[0].backHoverColor} !important;`, "}", `#premium-button-wrap-${block_id}.premium-button__slide .premium-button::before,`, `#premium-button-wrap-${block_id}.premium-button__shutter .premium-button::before,`, `#premium-button-wrap-${block_id}.premium-button__radial .premium-button::before {`, `background-color: ${slideColor}`, "}"].join("\n")
+        __html: [`.${blockId} .premium-button:hover {`, `color: ${btnStyles[0].textHoverColor} !important;`, `border-color: ${btnStyles[0].borderHoverColor} !important;`, "}", `.${blockId}.premium-button__none .premium-button:hover {`, `background-color: ${btnStyles[0].backHoverColor} !important;`, "}", `.${blockId}.premium-button__slide .premium-button::before,`, `.${blockId}.premium-button__shutter .premium-button::before,`, `.${blockId}.premium-button__radial .premium-button::before {`, `background-color: ${slideColor}`, "}"].join("\n")
       }
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText, {
       className: `premium-button premium-button__${btnSize}`,
@@ -15201,7 +15223,6 @@ const save = props => {
     className
   } = props;
   const {
-    borderButton,
     btnText,
     btnSize,
     btnAlign,
@@ -15218,18 +15239,18 @@ const save = props => {
     border,
     typography,
     textShadow,
-    boxShadow
+    boxShadow,
+    blockId
   } = props.attributes;
   const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, 'premium-button');
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    id: `${mainClasses}-wrap-${block_id}`,
-    className: `${mainClasses}__wrap premium-button__${effect} premium-button__${effectDir} premium-button-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`,
+    className: `${mainClasses}__wrap premium-button__${effect} ${blockId} premium-button__${effectDir} premium-button-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`,
     style: {
       textAlign: btnAlign
     }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
     dangerouslySetInnerHTML: {
-      __html: [`#premium-button-wrap-${block_id} .premium-button:hover {`, `color: ${btnStyles[0].textHoverColor} !important;`, `border-color: ${btnStyles[0].borderHoverColor} !important;`, "}", `#premium-button-wrap-${block_id}.premium-button__none .premium-button:hover {`, `background-color: ${btnStyles[0].backHoverColor} !important;`, "}", `#premium-button-wrap-${block_id}.premium-button__slide .premium-button::before,`, `#premium-button-wrap-${block_id}.premium-button__shutter .premium-button::before,`, `#premium-button-wrap-${block_id}.premium-button__radial .premium-button::before {`, `background-color: ${slideColor}`, "}"].join("\n")
+      __html: [`.${blockId} .premium-button:hover {`, `color: ${btnStyles[0].textHoverColor} !important;`, `border-color: ${btnStyles[0].borderHoverColor} !important;`, "}", `.${blockId}.premium-button__none .premium-button:hover {`, `background-color: ${btnStyles[0].backHoverColor} !important;`, "}", `.${blockId}.premium-button__slide .premium-button::before,`, `.${blockId}.premium-button__shutter .premium-button::before,`, `.${blockId}.premium-button__radial .premium-button::before {`, `background-color: ${slideColor}`, "}"].join("\n")
     }
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText.Content, {
     tagName: "a",
