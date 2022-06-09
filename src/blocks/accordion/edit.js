@@ -286,18 +286,6 @@ class PremiumAccordion extends Component {
                                 />
                             </PanelBody>
                             <PanelBody
-                                title={__("Arrow", 'premium-blocks-for-gutenberg')}
-                                className="premium-panel-body"
-                                initialOpen={false}
-                            >
-                                <RadioComponent
-                                    choices={[{ value: 'in', label: __('In') }, { value: 'out', label: __('Out') }]}
-                                    value={arrowStyles[0].arrowPos}
-                                    onChange={(newValue) => saveArrowStyles({ arrowPos: newValue })}
-                                    label={__("Position", 'premium-blocks-for-gutenberg')}
-                                />
-                            </PanelBody>
-                            <PanelBody
                                 title={__("Content", 'premium-blocks-for-gutenberg')}
                                 className="premium-panel-body"
                                 initialOpen={false}
@@ -307,6 +295,18 @@ class PremiumAccordion extends Component {
                                     value={contentType}
                                     onChange={newType => setAttributes({ contentType: newType })}
                                     label={__("Type", 'premium-blocks-for-gutenberg')}
+                                />
+                            </PanelBody>
+                            <PanelBody
+                                title={__("Arrow", 'premium-blocks-for-gutenberg')}
+                                className="premium-panel-body"
+                                initialOpen={false}
+                            >
+                                <RadioComponent
+                                    choices={[{ value: 'in', label: __('In') }, { value: 'out', label: __('Out') }]}
+                                    value={arrowStyles[0].arrowPos}
+                                    onChange={(newValue) => saveArrowStyles({ arrowPos: newValue })}
+                                    label={__("Position", 'premium-blocks-for-gutenberg')}
                                 />
                             </PanelBody>
                         </InspectorTab>
@@ -353,48 +353,6 @@ class PremiumAccordion extends Component {
                                 />
                                 <hr />
                                 <SpacingComponent value={titlePadding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ titlePadding: value })} />
-                            </PanelBody>
-                            <PanelBody
-                                title={__("Arrow", 'premium-blocks-for-gutenberg')}
-                                className="premium-panel-body"
-                                initialOpen={false}
-                            >
-                                <ResponsiveSingleRangeControl
-                                    label={__("Size", 'premium-blocks-for-gutenberg')}
-                                    value={arrowStyles[0].arrowSize}
-                                    onChange={newValue => saveArrowStyles({ arrowSize: newValue })}
-                                    showUnit={false}
-                                    defaultValue={20}
-                                />
-                                <hr />
-                                <AdvancedPopColorControl
-                                    label={__("Arrow Color", 'premium-blocks-for-gutenberg')}
-                                    colorValue={arrowStyles[0].arrowColor}
-                                    colorDefault={''}
-                                    onColorChange={newValue => saveArrowStyles({ arrowColor: newValue })}
-                                />
-                                <AdvancedPopColorControl
-                                    label={__("Background Color", 'premium-blocks-for-gutenberg')}
-                                    colorValue={arrowStyles[0].arrowBack}
-                                    colorDefault={''}
-                                    onColorChange={newValue => saveArrowStyles({ arrowBack: newValue })}
-                                />
-                                <hr />
-                                <ResponsiveSingleRangeControl
-                                    label={__("Border Radius", 'premium-blocks-for-gutenberg')}
-                                    value={arrowStyles[0].arrowRadius}
-                                    onChange={newValue => saveArrowStyles({ arrowRadius: newValue === undefined ? 0 : newValue })}
-                                    defaultValue={0}
-                                    showUnit={false}
-                                />
-                                <hr />
-                                <ResponsiveSingleRangeControl
-                                    label={__("Padding", 'premium-blocks-for-gutenberg')}
-                                    value={arrowStyles[0].arrowPadding}
-                                    onChange={newValue => saveArrowStyles({ arrowPadding: newValue === undefined ? 0 : newValue })}
-                                    defaultValue={0}
-                                    showUnit={false}
-                                />
                             </PanelBody>
                             <PanelBody
                                 title={__("Content", 'premium-blocks-for-gutenberg')}
@@ -453,6 +411,48 @@ class PremiumAccordion extends Component {
                                 />
                                 <hr />
                                 <SpacingComponent value={descPadding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ descPadding: value })} />
+                            </PanelBody>
+                            <PanelBody
+                                title={__("Arrow", 'premium-blocks-for-gutenberg')}
+                                className="premium-panel-body"
+                                initialOpen={false}
+                            >
+                                <ResponsiveSingleRangeControl
+                                    label={__("Size", 'premium-blocks-for-gutenberg')}
+                                    value={arrowStyles[0].arrowSize}
+                                    onChange={newValue => saveArrowStyles({ arrowSize: newValue })}
+                                    showUnit={false}
+                                    defaultValue={20}
+                                />
+                                <hr />
+                                <AdvancedPopColorControl
+                                    label={__("Arrow Color", 'premium-blocks-for-gutenberg')}
+                                    colorValue={arrowStyles[0].arrowColor}
+                                    colorDefault={''}
+                                    onColorChange={newValue => saveArrowStyles({ arrowColor: newValue })}
+                                />
+                                <AdvancedPopColorControl
+                                    label={__("Background Color", 'premium-blocks-for-gutenberg')}
+                                    colorValue={arrowStyles[0].arrowBack}
+                                    colorDefault={''}
+                                    onColorChange={newValue => saveArrowStyles({ arrowBack: newValue })}
+                                />
+                                <hr />
+                                <ResponsiveSingleRangeControl
+                                    label={__("Border Radius", 'premium-blocks-for-gutenberg')}
+                                    value={arrowStyles[0].arrowRadius}
+                                    onChange={newValue => saveArrowStyles({ arrowRadius: newValue === undefined ? 0 : newValue })}
+                                    defaultValue={0}
+                                    showUnit={false}
+                                />
+                                <hr />
+                                <ResponsiveSingleRangeControl
+                                    label={__("Padding", 'premium-blocks-for-gutenberg')}
+                                    value={arrowStyles[0].arrowPadding}
+                                    onChange={newValue => saveArrowStyles({ arrowPadding: newValue === undefined ? 0 : newValue })}
+                                    defaultValue={0}
+                                    showUnit={false}
+                                />
                             </PanelBody>
                         </InspectorTab>
                         <InspectorTab key={'advance'}>

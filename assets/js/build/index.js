@@ -6813,23 +6813,6 @@ class PremiumAccordion extends Component {
       label: __("Direction", 'premium-blocks-for-gutenberg'),
       showIcons: true
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-      title: __("Arrow", 'premium-blocks-for-gutenberg'),
-      className: "premium-panel-body",
-      initialOpen: false
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_radio_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      choices: [{
-        value: 'in',
-        label: __('In')
-      }, {
-        value: 'out',
-        label: __('Out')
-      }],
-      value: arrowStyles[0].arrowPos,
-      onChange: newValue => saveArrowStyles({
-        arrowPos: newValue
-      }),
-      label: __("Position", 'premium-blocks-for-gutenberg')
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
       title: __("Content", 'premium-blocks-for-gutenberg'),
       className: "premium-panel-body",
       initialOpen: false
@@ -6846,6 +6829,23 @@ class PremiumAccordion extends Component {
         contentType: newType
       }),
       label: __("Type", 'premium-blocks-for-gutenberg')
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
+      title: __("Arrow", 'premium-blocks-for-gutenberg'),
+      className: "premium-panel-body",
+      initialOpen: false
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_radio_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      choices: [{
+        value: 'in',
+        label: __('In')
+      }, {
+        value: 'out',
+        label: __('Out')
+      }],
+      value: arrowStyles[0].arrowPos,
+      onChange: newValue => saveArrowStyles({
+        arrowPos: newValue
+      }),
+      label: __("Position", 'premium-blocks-for-gutenberg')
     }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_11__["default"], {
       key: 'style'
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
@@ -6897,48 +6897,6 @@ class PremiumAccordion extends Component {
       onChange: value => setAttributes({
         titlePadding: value
       })
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-      title: __("Arrow", 'premium-blocks-for-gutenberg'),
-      className: "premium-panel-body",
-      initialOpen: false
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      label: __("Size", 'premium-blocks-for-gutenberg'),
-      value: arrowStyles[0].arrowSize,
-      onChange: newValue => saveArrowStyles({
-        arrowSize: newValue
-      }),
-      showUnit: false,
-      defaultValue: 20
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      label: __("Arrow Color", 'premium-blocks-for-gutenberg'),
-      colorValue: arrowStyles[0].arrowColor,
-      colorDefault: '',
-      onColorChange: newValue => saveArrowStyles({
-        arrowColor: newValue
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      label: __("Background Color", 'premium-blocks-for-gutenberg'),
-      colorValue: arrowStyles[0].arrowBack,
-      colorDefault: '',
-      onColorChange: newValue => saveArrowStyles({
-        arrowBack: newValue
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      label: __("Border Radius", 'premium-blocks-for-gutenberg'),
-      value: arrowStyles[0].arrowRadius,
-      onChange: newValue => saveArrowStyles({
-        arrowRadius: newValue === undefined ? 0 : newValue
-      }),
-      defaultValue: 0,
-      showUnit: false
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      label: __("Padding", 'premium-blocks-for-gutenberg'),
-      value: arrowStyles[0].arrowPadding,
-      onChange: newValue => saveArrowStyles({
-        arrowPadding: newValue === undefined ? 0 : newValue
-      }),
-      defaultValue: 0,
-      showUnit: false
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
       title: __("Content", 'premium-blocks-for-gutenberg'),
       className: "premium-panel-body",
@@ -7008,6 +6966,48 @@ class PremiumAccordion extends Component {
       onChange: value => setAttributes({
         descPadding: value
       })
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
+      title: __("Arrow", 'premium-blocks-for-gutenberg'),
+      className: "premium-panel-body",
+      initialOpen: false
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      label: __("Size", 'premium-blocks-for-gutenberg'),
+      value: arrowStyles[0].arrowSize,
+      onChange: newValue => saveArrowStyles({
+        arrowSize: newValue
+      }),
+      showUnit: false,
+      defaultValue: 20
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      label: __("Arrow Color", 'premium-blocks-for-gutenberg'),
+      colorValue: arrowStyles[0].arrowColor,
+      colorDefault: '',
+      onColorChange: newValue => saveArrowStyles({
+        arrowColor: newValue
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      label: __("Background Color", 'premium-blocks-for-gutenberg'),
+      colorValue: arrowStyles[0].arrowBack,
+      colorDefault: '',
+      onColorChange: newValue => saveArrowStyles({
+        arrowBack: newValue
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      label: __("Border Radius", 'premium-blocks-for-gutenberg'),
+      value: arrowStyles[0].arrowRadius,
+      onChange: newValue => saveArrowStyles({
+        arrowRadius: newValue === undefined ? 0 : newValue
+      }),
+      defaultValue: 0,
+      showUnit: false
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      label: __("Padding", 'premium-blocks-for-gutenberg'),
+      value: arrowStyles[0].arrowPadding,
+      onChange: newValue => saveArrowStyles({
+        arrowPadding: newValue === undefined ? 0 : newValue
+      }),
+      defaultValue: 0,
+      showUnit: false
     }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_11__["default"], {
       key: 'advance'
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_14__["default"], {
