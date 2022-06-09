@@ -321,7 +321,7 @@ export class edit extends Component {
                                                         label={__("Text Color", 'premium-blocks-for-gutenberg')}
                                                         colorValue={btnStyles[0].textHoverColor}
                                                         colorDefault={''}
-                                                        onColorChange={newValue => saveBtnStyles({ textHoverColor: newValue, })}
+                                                        onColorChange={newValue => saveBtnStyles({ textHoverColor: newValue })}
                                                     />
                                                     <AdvancedPopColorControl
                                                         label={"radial" !== effect
@@ -329,18 +329,20 @@ export class edit extends Component {
                                                             : __("Background Color", 'premium-blocks-for-gutenberg')}
                                                         colorValue={btnStyles[0].backHoverColor}
                                                         colorDefault={''}
-                                                        onColorChange={newValue =>
+                                                        onColorChange={newValue => {
                                                             saveBtnStyles({
-                                                                backHoverColor: newValue,
-                                                                slideColor: newValue,
+                                                                backHoverColor: newValue
                                                             })
-                                                        }
+                                                            setAttributes({
+                                                                slideColor: newValue
+                                                            });
+                                                        }}
                                                     />
                                                     <AdvancedPopColorControl
                                                         label={__("Border Color", 'premium-blocks-for-gutenberg')}
                                                         colorValue={btnStyles[0].borderHoverColor}
                                                         colorDefault={''}
-                                                        onColorChange={newValue => saveBtnStyles({ borderHoverColor: newValue, })}
+                                                        onColorChange={newValue => saveBtnStyles({ borderHoverColor: newValue })}
                                                     />
                                                 </Fragment>
                                             );
