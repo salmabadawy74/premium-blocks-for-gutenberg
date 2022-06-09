@@ -34,6 +34,22 @@ function get_trigger_css_style( $attr, $unique_id ) {
 		$css->set_selector( '#premium-trigger-' . $unique_id . ' .gpb-popup-content' );
 		$css->add_property( 'padding-left', ( $attr['triggerSpacing']['Desktop']['left'] . ( isset( $attr['triggerSpacing']['unit'] ) ? $attr['triggerSpacing']['unit'] : 'px' ) . '!important' ) );
 	}
+	if ( isset( $attr['triggerBorder']['borderWidth']['Desktop']['top'] ) ) {
+		$css->set_selector( '#premium-trigger-' . $unique_id . ' .toggle-button[data-style="outline"], #premium-trigger-' . $unique_id . ' .toggle-button[data-style="solid"]' );
+		$css->add_property( 'border-top-width', ( $attr['triggerBorder']['borderWidth']['Desktop']['top'] . 'px' ) );
+	}
+	if ( isset( $attr['triggerBorder']['borderWidth']['Desktop']['right'] ) ) {
+		$css->set_selector( '#premium-trigger-' . $unique_id . ' .toggle-button[data-style="outline"], #premium-trigger-' . $unique_id . ' .toggle-button[data-style="solid"]' );
+		$css->add_property( 'border-right-width', ( $attr['triggerBorder']['borderWidth']['Desktop']['right'] . 'px' ) );
+	}
+	if ( isset( $attr['triggerBorder']['borderWidth']['Desktop']['bottom'] ) ) {
+		$css->set_selector( '#premium-trigger-' . $unique_id . ' .toggle-button[data-style="outline"], #premium-trigger-' . $unique_id . ' .toggle-button[data-style="solid"]' );
+		$css->add_property( 'border-bottom-width', ( $attr['triggerBorder']['borderWidth']['Desktop']['bottom'] . 'px' ) );
+	}
+	if ( isset( $attr['triggerBorder']['borderWidth']['Desktop']['left'] ) ) {
+		$css->set_selector( '#premium-trigger-' . $unique_id . ' .toggle-button[data-style="outline"], #premium-trigger-' . $unique_id . ' .toggle-button[data-style="solid"]' );
+		$css->add_property( 'border-left-width', ( $attr['triggerBorder']['borderWidth']['Desktop']['left'] . 'px' ) );
+	}
 	if ( isset( $attr['vOffset'] ) ) {
 		$css->set_selector( '#premium-trigger-' . $unique_id . '.float-position-topright, #premium-trigger-' . $unique_id . '.float-position-topleft' );
 		$css->add_property( 'top', ( $attr['vOffset']['Desktop'] . ( isset( $attr['vOffset']['unit'] ) ? $attr['vOffset']['unit'] : 'px' ) . '!important' ) );
@@ -69,6 +85,22 @@ function get_trigger_css_style( $attr, $unique_id ) {
 	if ( isset( $attr['triggerSpacing']['Tablet']['left'] ) && isset( $attr['triggerSpacing']['unit'] ) ) {
 		$css->set_selector( '#premium-trigger-' . $unique_id . ' .gpb-popup-content' );
 		$css->add_property( 'padding-left', ( $attr['triggerSpacing']['Tablet']['left'] . ( isset( $attr['triggerSpacing']['unit'] ) ? $attr['triggerSpacing']['unit'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attr['triggerBorder']['borderWidth']['Tablet']['top'] ) ) {
+		$css->set_selector( '#premium-trigger-' . $unique_id . ' .toggle-button[data-style="outline"], #premium-trigger-' . $unique_id . ' .toggle-button[data-style="solid"]' );
+		$css->add_property( 'border-top-width', ( $attr['triggerBorder']['borderWidth']['Tablet']['top'] . 'px' ) );
+	}
+	if ( isset( $attr['triggerBorder']['borderWidth']['Tablet']['right'] ) ) {
+		$css->set_selector( '#premium-trigger-' . $unique_id . ' .toggle-button[data-style="outline"], #premium-trigger-' . $unique_id . ' .toggle-button[data-style="solid"]' );
+		$css->add_property( 'border-right-width', ( $attr['triggerBorder']['borderWidth']['Tablet']['right'] . 'px' ) );
+	}
+	if ( isset( $attr['triggerBorder']['borderWidth']['Tablet']['bottom'] ) ) {
+		$css->set_selector( '#premium-trigger-' . $unique_id . ' .toggle-button[data-style="outline"], #premium-trigger-' . $unique_id . ' .toggle-button[data-style="solid"]' );
+		$css->add_property( 'border-bottom-width', ( $attr['triggerBorder']['borderWidth']['Tablet']['bottom'] . 'px' ) );
+	}
+	if ( isset( $attr['triggerBorder']['borderWidth']['Tablet']['left'] ) ) {
+		$css->set_selector( '#premium-trigger-' . $unique_id . ' .toggle-button[data-style="outline"], #premium-trigger-' . $unique_id . ' .toggle-button[data-style="solid"]' );
+		$css->add_property( 'border-left-width', ( $attr['triggerBorder']['borderWidth']['Tablet']['left'] . 'px' ) );
 	}
 	if ( isset( $attr['vOffset']['Tablet'] ) ) {
 		$css->set_selector( '#premium-trigger-' . $unique_id . '.float-position-topright, #premium-trigger-' . $unique_id . ' float-position-topleft' );
@@ -106,6 +138,22 @@ function get_trigger_css_style( $attr, $unique_id ) {
 	if ( isset( $attr['triggerSpacing']['Mobile']['left'] ) && isset( $attr['triggerSpacing']['unit'] ) ) {
 		$css->set_selector( '#premium-trigger-' . $unique_id . ' .gpb-popup-content' );
 		$css->add_property( 'padding-left', ( $attr['triggerSpacing']['Mobile']['left'] . ( isset( $attr['triggerSpacing']['unit'] ) ? $attr['triggerSpacing']['unit'] : 'px' ) . '!important' ) );
+	}
+	if ( isset( $attr['triggerBorder']['borderWidth']['Mobile']['top'] ) ) {
+		$css->set_selector( '#premium-trigger-' . $unique_id . ' .toggle-button[data-style="outline"], #premium-trigger-' . $unique_id . ' .toggle-button[data-style="solid"]' );
+		$css->add_property( 'border-top-width', ( $attr['triggerBorder']['borderWidth']['Mobile']['top'] . 'px' ) );
+	}
+	if ( isset( $attr['triggerBorder']['borderWidth']['Mobile']['right'] ) ) {
+		$css->set_selector( '#premium-trigger-' . $unique_id . ' .toggle-button[data-style="outline"], #premium-trigger-' . $unique_id . ' .toggle-button[data-style="solid"]' );
+		$css->add_property( 'border-right-width', ( $attr['triggerBorder']['borderWidth']['Mobile']['right'] . 'px' ) );
+	}
+	if ( isset( $attr['triggerBorder']['borderWidth']['Mobile']['bottom'] ) ) {
+		$css->set_selector( '#premium-trigger-' . $unique_id . ' .toggle-button[data-style="outline"], #premium-trigger-' . $unique_id . ' .toggle-button[data-style="solid"]' );
+		$css->add_property( 'border-bottom-width', ( $attr['triggerBorder']['borderWidth']['Mobile']['bottom'] . 'px' ) );
+	}
+	if ( isset( $attr['triggerBorder']['borderWidth']['Mobile']['left'] ) ) {
+		$css->set_selector( '#premium-trigger-' . $unique_id . ' .toggle-button[data-style="outline"], #premium-trigger-' . $unique_id . ' .toggle-button[data-style="solid"]' );
+		$css->add_property( 'border-left-width', ( $attr['triggerBorder']['borderWidth']['Mobile']['left'] . 'px' ) );
 	}
 	if ( isset( $attr['vOffset']['Mobile'] ) ) {
 		$css->set_selector( '#premium-trigger-' . $unique_id . '.float-position-topright, #premium-trigger-' . $unique_id . '.float-position-topleft' );

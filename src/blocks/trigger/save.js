@@ -45,11 +45,13 @@
             #premium-trigger-${block_id} .toggle-button[data-style="solid"] {
                 background-color: ${triggerStyles.iconBgColor} ;
             }
-            #premium-trigger-${block_id} .toggle-button[data-style="outline"] {
+            #premium-trigger-${block_id} .toggle-button[data-style="outline"], 
+            #premium-trigger-${block_id} .toggle-button[data-style="solid"]{
                 border-style: ${triggerBorder.borderType};
                 border-color: ${triggerBorder.borderColor};
             }
-            #premium-trigger-${block_id} .toggle-button[data-style="outline"]:hover {
+            #premium-trigger-${block_id} .toggle-button[data-style="outline"]:hover,
+            #premium-trigger-${block_id} .toggle-button[data-style="solid"]:hover {
                 border-color: ${triggerStyles.borderHoverColor} !important;
             }
             #premium-trigger-${block_id} .gpb-trigger-canvas-container[data-layout="right"] .gpb-popup-content,

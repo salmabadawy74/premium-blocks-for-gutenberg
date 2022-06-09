@@ -21,6 +21,8 @@ import SpacingControl from '../../components/premium-responsive-spacing'
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
+import { borderCss } from '../../components/HelperFunction'
+
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
  * Those files can contain any CSS code that gets applied to the editor.
@@ -189,7 +191,7 @@ function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
                 >
                     
                     <RadioComponent
-                        choices={["left", "full", "right", "pushdown"]}
+                        choices={["left", "full", "right"]}
                         value={canvasStyles.layout}
                         onChange={newValue => setCanvasStyles('layout', newValue )}
                         label={__("Layout style", 'premium-blocks-for-gutenberg')}
@@ -296,6 +298,7 @@ function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
                                 label={__('Border', 'premium-blocks-for-gutenberg')}
                                 value={triggerBorder}
                                 onChange={(value) => setAttributes({ triggerBorder: value })}
+                                device="Desktop"
                             />
                             <AdvancedPopColorControl
                                     label={__("Border Hover Color", 'premium-blocks-for-gutenberg')}
@@ -371,16 +374,15 @@ function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
             #block-${block_id} .toggle-button[data-style="solid"] {
                 background-color: ${triggerStyles.iconBgColor} ;
             }
-            #block-${block_id} .toggle-button[data-style="outline"] {
+            #block-${block_id} .toggle-button[data-style="outline"],
+            #block-${block_id} .toggle-button[data-style="solid"] {
                 border-style: ${triggerBorder.borderType};
-                border-top-width: ${triggerBorder && triggerBorder.borderWidth.Desktop.top}px;
-                border-right-width: ${triggerBorder && triggerBorder.borderWidth.Desktop.right}px;
-                border-bottom-width: ${triggerBorder && triggerBorder.borderWidth.Desktop.bottom}px;
-                border-left-width: ${triggerBorder && triggerBorder.borderWidth.Desktop.left}px;
+
                 border-radius: ${triggerBorder && triggerBorder.borderRadius.Desktop.top || 0}px ${triggerBorder && triggerBorder.borderRadius.Desktop.right || 0}px ${triggerBorder && triggerBorder.borderRadius.Desktop.bottom || 0}px ${triggerBorder && triggerBorder.borderRadius.Desktop.left || 0}px !important;
                 border-color: ${triggerBorder && triggerBorder.borderColor};
             }
-            #block-${block_id} .toggle-button[data-style="outline"]:hover {
+            #block-${block_id} .toggle-button[data-style="outline"]:hover,
+            #block-${block_id} .toggle-button[data-style="solid"]:hover {
                 border-color: ${triggerStyles.borderHoverColor} !important;
             }
             #block-${block_id}.float-position-topright {
@@ -423,11 +425,12 @@ function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
             <div className={`premium-trigger-container`}>
             <div className={`gpb-trigger-icon-container has-icon-align-${ iconAlignment }`}>
                     <a className={`toggle-button ${isEditing ? "toggled" : ""}`} 
-                    data-style={triggerStyles.style}
-                    data-label={triggerStyles.labelPosition}
+                        data-style={triggerStyles.style}
+                        data-label={triggerStyles.labelPosition}
                         onClick={ () => setEditing( true )
                         }
-                        >
+                        style={{
+                            ...borderCss(triggerBorder, props.deviceType),                        }}>
                         {triggerLabel &&
                         <span
                             className={`trigger-label`}
