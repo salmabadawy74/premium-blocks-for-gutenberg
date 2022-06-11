@@ -27910,7 +27910,7 @@ const save = props => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 const attributes = {
-  block_id: {
+  blockId: {
     type: "string"
   },
   classMigrate: {
@@ -27930,8 +27930,12 @@ const attributes = {
     default: "dashicons dashicons-admin-site"
   },
   align: {
-    type: "string",
-    default: "center"
+    type: "object",
+    default: {
+      "Desktop": "center",
+      "Tablet": "center",
+      "Mobile": "center"
+    }
   },
   hoverEffect: {
     type: "string",
@@ -27944,6 +27948,8 @@ const attributes = {
       iconSize: '',
       iconColor: '',
       iconBack: '',
+      iconHoverColor: '',
+      iconHoverBack: '',
       iconOpacity: '1'
     }]
   },
@@ -27961,15 +27967,15 @@ const attributes = {
   },
   hideDesktop: {
     type: 'boolean',
-    default: false
+    default: ''
   },
   hideTablet: {
     type: 'boolean',
-    default: false
+    default: ''
   },
   hideMobile: {
     type: 'boolean',
-    default: false
+    default: ''
   },
   iconSize: {
     type: "object",
@@ -29267,7 +29273,7 @@ const deprecatedContent = [{
   attributes: attributes,
   migrate: attributes => {
     let newAttributes = {
-      block_id: '',
+      blockId: '',
       classMigrate: '',
       iconSize: {
         unit: attributes.iconStyles[0].iconSizeUnit,
@@ -29586,7 +29592,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/premium-responsive-spacing */ "./src/components/premium-responsive-spacing.js");
 /* harmony import */ var _components_inspectorTabs__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/inspectorTabs */ "./src/components/inspectorTabs.js");
 /* harmony import */ var _components_inspectorTab__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/inspectorTab */ "./src/components/inspectorTab.js");
-/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
+/* harmony import */ var _components_InsideTabs__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/InsideTabs */ "./src/components/InsideTabs.js");
+/* harmony import */ var _components_InsideTab__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../components/InsideTab */ "./src/components/InsideTab.js");
+/* harmony import */ var _components_responsive_radio__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../components/responsive-radio */ "./src/components/responsive-radio.js");
+/* harmony import */ var _components_icons__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../components/icons */ "./src/components/icons.js");
+/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
+
+
+
+
 
 
 
@@ -29609,14 +29623,14 @@ const {
   PanelBody,
   SelectControl,
   ToggleControl,
-  Toolbar
+  TextControl
 } = wp.components;
 const {
-  useEffect
+  useEffect,
+  Fragment
 } = wp.element;
 const {
-  InspectorControls,
-  URLInput
+  InspectorControls
 } = wp.blockEditor;
 const {
   withSelect
@@ -29630,14 +29644,14 @@ const edit = props => {
   } = props;
   useEffect(() => {
     setAttributes({
-      block_id: props.clientId
+      blockId: "premium-icon-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.generateBlockId)(props.clientId)
     });
     setAttributes({
       classMigrate: true
     });
   }, []);
   const {
-    block_id,
+    blockId,
     iconType,
     selectedIcon,
     align,
@@ -29682,7 +29696,6 @@ const edit = props => {
     value: "wobble",
     label: __("Wobble", 'premium-blocks-for-gutenberg')
   }];
-  const ALIGNS = ["left", "center", "right"];
 
   const saveIconStyle = value => {
     const newUpdate = iconStyles.map((item, index) => {
@@ -29721,33 +29734,44 @@ const edit = props => {
     isMulti: false,
     appendTo: "body",
     noSelectedPlaceholder: __("Select Icon", 'premium-blocks-for-gutenberg')
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
-    label: __("Hover Effect", 'premium-blocks-for-gutenberg'),
-    options: EFFECTS,
-    value: hoverEffect,
-    onChange: newEffect => setAttributes({
-      hoverEffect: newEffect
-    })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, " ", __('Alignment')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Toolbar, {
-    controls: ALIGNS.map(contentAlign => ({
-      icon: "editor-align" + contentAlign,
-      isActive: align === align,
-      onClick: () => setAttributes({
-        align: contentAlign
-      })
-    }))
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
     label: __("Link", 'premium-blocks-for-gutenberg'),
     checked: urlCheck,
     onChange: newValue => setAttributes({
       urlCheck: newValue
     })
-  }), urlCheck && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
+  }), urlCheck && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
+    label: __("Link", 'premium-blocks-for-gutenberg'),
+    value: link,
+    onChange: newLink => setAttributes({
+      link: newLink
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
     label: __("Open link in new tab", 'premium-blocks-for-gutenberg'),
     checked: target,
     onChange: newValue => setAttributes({
       target: newValue
     })
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_16__["default"], {
+    label: __("Alignment", 'premium-blocks-for-gutenberg'),
+    choices: [{
+      value: 'left',
+      label: __('Left'),
+      icon: _components_icons__WEBPACK_IMPORTED_MODULE_17__["default"].alignLeft
+    }, {
+      value: 'center',
+      label: __('Center'),
+      icon: _components_icons__WEBPACK_IMPORTED_MODULE_17__["default"].alignCenter
+    }, {
+      value: 'right',
+      label: __('Right'),
+      icon: _components_icons__WEBPACK_IMPORTED_MODULE_17__["default"].alignRight
+    }],
+    value: align,
+    onChange: newValue => setAttributes({
+      align: newValue
+    }),
+    showIcons: true
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_13__["default"], {
     key: 'style'
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
@@ -29761,13 +29785,15 @@ const edit = props => {
       iconSize: value
     }),
     min: 0,
-    max: 800,
+    max: 300,
     step: 1,
     showUnit: true,
     units: ['px', 'em', 'rem'],
     defaultValue: 50
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_9__["default"], {
-    label: __("Icon Color", 'premium-blocks-for-gutenberg'),
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_InsideTabs__WEBPACK_IMPORTED_MODULE_14__["default"], null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_InsideTab__WEBPACK_IMPORTED_MODULE_15__["default"], {
+    tabTitle: __('Normal')
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    label: __("Color", 'premium-blocks-for-gutenberg'),
     colorValue: iconStyles[0].iconColor,
     colorDefault: '',
     onColorChange: value => saveIconStyle({
@@ -29780,7 +29806,30 @@ const edit = props => {
     onColorChange: value => saveIconStyle({
       iconBack: value
     })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_10__["default"], {
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_InsideTab__WEBPACK_IMPORTED_MODULE_15__["default"], {
+    tabTitle: __('Hover')
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    label: __("Hover Color", 'premium-blocks-for-gutenberg'),
+    colorValue: iconStyles[0].iconHoverColor,
+    colorDefault: '',
+    onColorChange: value => saveIconStyle({
+      iconHoverColor: value
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    label: __("Hover Background Color", 'premium-blocks-for-gutenberg'),
+    colorValue: iconStyles[0].iconHoverBack,
+    colorDefault: '',
+    onColorChange: value => saveIconStyle({
+      iconHoverBack: value
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
+    label: __("Hover Effect", 'premium-blocks-for-gutenberg'),
+    options: EFFECTS,
+    value: hoverEffect,
+    onChange: newEffect => setAttributes({
+      hoverEffect: newEffect
+    })
+  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_10__["default"], {
     label: __("Text Shadow", "premium-blocks-for-gutenberg"),
     value: iconShadow,
     onChange: value => setAttributes({
@@ -29860,16 +29909,20 @@ const edit = props => {
       hideMobile: value ? " premium-mobile-hidden" : ""
     })
   })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: `${mainClasses}__container ${hideDesktop} ${hideTablet} ${hideMobile}`,
-    id: `premium-icon-${block_id}`
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: `${mainClasses}__container ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, `
+                    .${blockId} .premium-icon-container .premium-icon__${hoverEffect}:hover {
+                        color: ${iconStyles[0].iconHoverColor || "#6ec1e4"} !important;
+                        background-color: ${iconStyles[0].iconHoverBack} !important;
+                    }
+                 `), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-icon-container`,
     style: {
-      textAlign: align,
-      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_14__.gradientBackground)(containerBackground),
-      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_14__.borderCss)(containerBorder, props.deviceType),
-      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_14__.padddingCss)(wrapPadding, props.deviceType),
-      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_14__.marginCss)(wrapMargin, props.deviceType),
+      textAlign: align[props.deviceType],
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.gradientBackground)(containerBackground),
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.borderCss)(containerBorder, props.deviceType),
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.padddingCss)(wrapPadding, props.deviceType),
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.marginCss)(wrapMargin, props.deviceType),
       boxShadow: `${containerShadow.horizontal || 0}px ${containerShadow.vertical || 0}px ${containerShadow.blur || 0}px ${containerShadow.color} ${containerShadow.position}`
     }
   }, iconType === "fa" && 1 != _assets_js_settings__WEBPACK_IMPORTED_MODULE_2__.FontAwesomeEnabled && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
@@ -29880,16 +29933,11 @@ const edit = props => {
       color: iconStyles[0].iconColor || "#6ec1e4",
       backgroundColor: iconStyles[0].iconBack,
       fontSize: (iconSize[props.deviceType] || 50) + iconSize.unit,
-      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_14__.borderCss)(iconBorder, props.deviceType),
-      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_14__.padddingCss)(iconPadding, props.deviceType),
-      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_14__.marginCss)(iconMargin, props.deviceType),
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.borderCss)(iconBorder, props.deviceType),
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.padddingCss)(iconPadding, props.deviceType),
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.marginCss)(iconMargin, props.deviceType),
       textShadow: `${iconShadow.horizontal || 0}px ${iconShadow.vertical || 0}px ${iconShadow.blur || 0}px ${iconShadow.color}`
     }
-  }), urlCheck && isSelected && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(URLInput, {
-    value: link,
-    onChange: newUrl => setAttributes({
-      link: newUrl
-    })
   })))];
 };
 
@@ -29972,7 +30020,7 @@ const save = props => {
     className
   } = props;
   const {
-    block_id,
+    blockId,
     iconBorder,
     selectedIcon,
     align,
@@ -29990,10 +30038,9 @@ const save = props => {
     iconShadow,
     iconSize
   } = props.attributes;
-  const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className);
+  const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, 'premium-icon', blockId);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: `${mainClasses}__container ${hideDesktop} ${hideTablet} ${hideMobile}`,
-    id: `premium-icon-${block_id}`
+    className: `${mainClasses}__container ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-icon-container`,
     style: {
