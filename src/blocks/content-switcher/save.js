@@ -1,7 +1,8 @@
 import classnames from "classnames"
 import {
     RichText,
-    useBlockProps
+    useBlockProps,
+    InnerBlocks
 } from '@wordpress/block-editor';
 import { gradientBackground, typographyCss } from '../../components/HelperFunction'
 
@@ -160,7 +161,8 @@ export default function save(props) {
                                 borderColor: firstContentborder.borderColor,
                                 boxShadow: `${firstContentBoxShadow.horizontal || 0}px ${firstContentBoxShadow.vertical || 0}px ${firstContentBoxShadow.blur || 0}px ${firstContentBoxShadow.color} ${firstContentBoxShadow.position}`
                             }}>
-                            <RichText.Content
+                            <InnerBlocks.Content />
+                            {/* <RichText.Content
                                 tagName="div"
                                 className={`premium-content-switcher-first-content`}
                                 value={firstContent}
@@ -169,7 +171,7 @@ export default function save(props) {
                                     color: firstContentStyles.firstContentColor,
                                     textShadow: `${firstContentShadow.horizontal || 0}px ${firstContentShadow.vertical || 0}px ${firstContentShadow.blur || 0}px ${firstContentShadow.color}`,
                                 }}
-                            />
+                            /> */}
                         </li>
                         <li className={`premium-content-switcher-second-list premium-content-switcher-is-hidden ${blockId}`}
                             style={{
@@ -178,7 +180,8 @@ export default function save(props) {
                                 borderColor: secondContentborder.borderColor,
                                 boxShadow: `${secondContentBoxShadow.horizontal || 0}px ${secondContentBoxShadow.vertical || 0}px ${secondContentBoxShadow.blur || 0}px ${secondContentBoxShadow.color} ${secondContentBoxShadow.position}`
                             }}>
-                            <RichText.Content
+                            <InnerBlocks.Content />
+                            {/* <RichText.Content
                                 tagName="div"
                                 className={`premium-content-switcher-second-content`}
                                 value={secondContent}
@@ -187,7 +190,7 @@ export default function save(props) {
                                     color: secondContentStyles.secondContentColor,
                                     textShadow: `${secondContentShadow.horizontal || 0}px ${secondContentShadow.vertical || 0}px ${secondContentShadow.blur || 0}px ${secondContentShadow.color}`,
                                 }}
-                            />
+                            /> */}
                         </li>
                     </ul>
                 </div>

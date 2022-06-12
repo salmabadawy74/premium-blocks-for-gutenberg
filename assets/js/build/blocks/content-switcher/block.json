@@ -780,6 +780,10 @@
         "gradientPosition": "",
         "gradientType": ""
       }
+    },
+    "initialContent": {
+      "type": "string",
+      "default": "primary"
     }
   }
 }

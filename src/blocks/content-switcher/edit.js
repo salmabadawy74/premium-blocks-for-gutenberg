@@ -1,10 +1,11 @@
 import { __ } from '@wordpress/i18n';
 import classnames from "classnames";
-import { withSelect } from '@wordpress/data'
+import { withSelect, dispatch, subscribe, select } from '@wordpress/data'
 import {
     InspectorControls,
     RichText,
-    useBlockProps
+    useBlockProps,
+    InnerBlocks
 } from '@wordpress/block-editor';
 import {
     Fragment,
@@ -17,6 +18,7 @@ import {
     SelectControl,
     ToggleControl,
 } from '@wordpress/components';
+import { createBlock } from "@wordpress/blocks";
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import PremiumBackgroundControl from "../../components/Premium-Background-Control"
@@ -36,6 +38,10 @@ import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
 import Icons from "../../components/icons";
 import { gradientBackground, borderCss, padddingCss, marginCss, typographyCss, generateBlockId } from '../../components/HelperFunction'
 
+const { updateBlockAttributes, insertBlock, removeBlock } = !wp.blockEditor
+    ? dispatch('core/editor')
+    : dispatch('core/block-editor');
+const { getBlock } = !wp.blockEditor ? select('core/editor') : select('core/block-editor');
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
@@ -51,11 +57,25 @@ function Edit(props) {
 
     const inputFirstContent = useRef(null);
     const inputSecondContent = useRef(null);
+    const contentRef = useRef(null);
     const [mounted, setMounted] = useState(true);
+    const [isRemoved, setRemoved] = useState(false);
+    const [isPrimary, setPrimary] = useState(
+        props.attributes.initialContent === "primary" ? true : false
+    );
 
     useEffect(() => {
         setAttributes({ blockId: "premium-content-switcher-" + generateBlockId(props.clientId) })
         setAttributes({ classMigrate: true })
+        // const tabItemBlock = createBlock(
+        //     'core/paragraph'
+        // );
+        // console.log(tabItemBlock)
+        // replaceBlock(props.clientId, tabItemBlock);
+
+        // insertBlock(tabItemBlock, 2, props.clientId);
+        // Listen primary/seconday block remove event
+        subscribe(checkInnerBlocks);
     }, [])
 
     useEffect(() => {
@@ -63,27 +83,98 @@ function Edit(props) {
         if (!mounted) {
             inputFirstContent.current.classList.remove("premium-content-switcher-is-visible");
             inputFirstContent.current.classList.add("premium-content-switcher-is-hidden");
-
+            // inputFirstContent.current.addEventListener("click", () => setPrimary(true));
             // content.style.overflow = 'hidden';
 
             inputSecondContent.current.classList.remove("premium-content-switcher-is-hidden");
             inputSecondContent.current.classList.add("premium-content-switcher-is-visible");
+            // inputSecondContent.current.addEventListener("click", () => setPrimary(false));
         }
         else {
             inputSecondContent.current.classList.remove("premium-content-switcher-is-visible");
             inputSecondContent.current.classList.add("premium-content-switcher-is-hidden");
+            // inputSecondContent.current.addEventListener("click", () => setPrimary(true));
 
             inputFirstContent.current.classList.remove("premium-content-switcher-is-hidden");
             inputFirstContent.current.classList.add("premium-content-switcher-is-visible");
+            // inputFirstContent.current.addEventListener("click", () => setPrimary(false));
 
             // content.style.overflow = 'hidden';
         }
     }, [mounted])
 
+    // useEffect(() => {
+    //     if (contentRef.current) {
+    //         let container = contentRef.current.querySelector(
+    //             ".block-editor-block-list__layout"
+    //         );
+
+    //         if (container && container.children.length === 2) {
+    //             const { firstChild, lastChild } = container;
+
+    //             if (isPrimary) {
+    //                 hideBlock(lastChild);
+    //                 showBlock(firstChild);
+    //             } else {
+    //                 hideBlock(firstChild);
+    //                 showBlock(lastChild);
+    //             }
+    //         }
+    //     }
+    // });
+
+    useEffect(() => {
+        // Replace removed block with an empty block
+        if (isRemoved) {
+            const { innerBlocks } = select("core/block-editor").getBlocksByClientId(
+                props.clientId
+            )[0];
+
+            // const newBlock = createBlock("core/paragraph", {});
+
+            // let replaceBlocks = [];
+            // console.log(isPrimary)
+            // if (isPrimary) {
+            //     replaceBlocks = [newBlock, innerBlocks[0]];
+            // } else {
+            //     replaceBlocks = [innerBlocks[0], newBlock];
+            // }
+            // replaceBlocks = replaceBlocks.filter(function (element) {
+            //     return element !== undefined;
+            // });
+            // console.log(replaceBlocks)
+            // dispatch("core/block-editor").replaceInnerBlocks(props.clientId, replaceBlocks);
+        }
+    }, [isRemoved]);
+
+    const checkInnerBlocks = () => {
+        const block = select("core/block-editor").getBlocksByClientId(props.clientId)[0];
+
+        if (block) {
+            const { innerBlocks } = block;
+
+            innerBlocks && innerBlocks.length === 2
+                ? setRemoved(false)
+                : setRemoved(true);
+        }
+    };
+
+    const hideBlock = (node) => (node.style.display = "none");
+
+    const showBlock = (node) => (node.style.display = "block");
+
     const initToggleBox = () => {
         const { blockId } = props.attributes;
+        const block = getBlock(props.clientId);
+        console.log(block.innerBlocks)
         if (!blockId) return null;
         setMounted(!mounted)
+        console.log(mounted)
+        if (mounted) {
+            // updateBlockAttributes( block.innerBlocks[ n ].clientId, {
+            //     tabActive: tabActive,
+            // } );
+        }
     }
 
     const {
@@ -301,7 +392,7 @@ function Edit(props) {
                                 showIcons={true}
                             />
                         </PanelBody>
-                        <PanelBody
+                        {/* <PanelBody
                             title={__("Content 1")}
                             className="premium-panel-body"
                             initialOpen={false}
@@ -336,7 +427,7 @@ function Edit(props) {
                                 onChange={(newValue) => setAttributes({ secondcontentlign: newValue })}
                                 showIcons={true}
                             />
-                        </PanelBody>
+                        </PanelBody> */}
                         <PanelBody
                             title={__("Display Options")}
                             className="premium-panel-body"
@@ -863,7 +954,7 @@ function Edit(props) {
                             ...marginCss(firstContentMargin, props.deviceType),
                         }}
                     >
-                        <ul className="premium-content-switcher-two-content">
+                        <ul className="premium-content-switcher-two-content" ref={contentRef}>
                             <li ref={inputFirstContent} className={`premium-content-switcher-is-visible premium-content-switcher-first-list ${props.clientId}`}
                                 style={{
                                     ...borderCss(firstContentborder, props.deviceType),
@@ -872,13 +963,20 @@ function Edit(props) {
                                     minHeight: (contentHeight[props.deviceType] || 100) + contentHeight.unit,
                                     boxShadow: `${firstContentBoxShadow.horizontal || 0}px ${firstContentBoxShadow.vertical || 0}px ${firstContentBoxShadow.blur || 0}px ${firstContentBoxShadow.color} ${firstContentBoxShadow.position}`
                                 }}>
-                                <RichText
-                                    tagName="div"
+                                <InnerBlocks
+                                    templateLock={false}
+                                    name="firstContent"
                                     className={`premium-content-switcher-first-content`}
-                                    value={firstContent}
-                                    onChange={value => {
-                                        setAttributes({ firstContent: value })
-                                    }}
+                                    template={[
+                                        // ['premium/switcher-child']
+                                    ]}
+                                // value={firstContent}
+                                // onChange={value => {
+                                //     setAttributes({ firstContent: value })
+                                // }}
+                                />
+                                {/* <RichText
+                                    tagName="div"
                                     style={{
                                         ...typographyCss(firstContentTypography, props.deviceType),
                                         textAlign: firstcontentalign[props.deviceType],
@@ -886,7 +984,7 @@ function Edit(props) {
                                         color: firstContentStyles.firstContentColor,
                                         textShadow: `${firstContentShadow.horizontal || 0}px ${firstContentShadow.vertical || 0}px ${firstContentShadow.blur || 0}px ${firstContentShadow.color}`,
                                     }}
-                                />
+                                /> */}
                             </li>
                             <li ref={inputSecondContent} className={`premium-content-switcher-is-hidden premium-content-switcher-second-list ${props.clientId}`}
                                 style={{
@@ -896,13 +994,18 @@ function Edit(props) {
                                     minHeight: (contentHeight[props.deviceType] || 100) + contentHeight.unit,
                                     boxShadow: `${secondContentBoxShadow.horizontal || 0}px ${secondContentBoxShadow.vertical || 0}px ${secondContentBoxShadow.blur || 0}px ${secondContentBoxShadow.color} ${secondContentBoxShadow.position}`
                                 }}>
-                                <RichText
-                                    tagName="div"
+                                <InnerBlocks name="secondContent"
                                     className={`premium-content-switcher-second-content`}
-                                    value={secondContent}
-                                    onChange={value => {
-                                        setAttributes({ secondContent: value })
-                                    }}
+                                    template={[
+                                        // ['premium/switcher-child']
+                                    ]}
+                                // value={secondContent}
+                                // onChange={value => {
+                                //     setAttributes({ secondContent: value })
+                                // }}
+                                />
+                                {/* <RichText
+                                    tagName="div"
                                     style={{
                                         ...typographyCss(secondContentTypography, props.deviceType),
                                         textAlign: secondcontentlign[props.deviceType],
@@ -910,7 +1013,7 @@ function Edit(props) {
                                         color: secondContentStyles.secondContentColor,
                                         textShadow: `${secondContentShadow.horizontal || 0}px ${secondContentShadow.vertical || 0}px ${secondContentShadow.blur || 0}px ${secondContentShadow.color}`,
                                     }}
-                                />
+                                /> */}
                             </li>
                         </ul>
                     </div>
