@@ -339,9 +339,15 @@ class PBG_Blocks_Helper {
 		register_block_type(
 			'premium/accordion',
 			array(
-				'render_callback' => array( $this, 'get_accordion_css' ),
-				'editor_style'    => 'premium-blocks-editor-css',
-				'editor_script'   => 'pbg-blocks-js',
+				'render_callback'  => array( $this, 'get_accordion_css' ),
+				'editor_style'     => 'premium-blocks-editor-css',
+				'editor_script'    => 'pbg-blocks-js',
+				'provides_context' => array(
+					'titleTag'    => 'titleTag',
+					'contentType' => 'contentType',
+					'direction'   => 'direction',
+					'arrowStyles' => 'arrowStyles',
+				),
 
 			)
 		);

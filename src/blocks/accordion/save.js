@@ -3,7 +3,6 @@ const { __ } = wp.i18n;
 const { RichText, InnerBlocks } = wp.blockEditor;
 
 const save = props => {
-
     const { className } = props;
 
     const {
@@ -114,7 +113,7 @@ const save = props => {
     });
     return (
         <div className={`${mainClasses}`}>
-            {accordionItems}
+            <InnerBlocks.Content />
         </div>
     );
 };

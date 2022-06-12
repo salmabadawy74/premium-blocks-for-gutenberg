@@ -1,0 +1,29 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 2,
+    "name": "premium/accordion-item",
+    "title": "Accordion Item",
+    "category": "premium-blocks",
+    "parent": ["premium/accordion"],
+    "description": "A collection of blocks that allow visitors to get around your site.",
+    "keywords": ["accordion"],
+    "textdomain": "default",
+    "attributes": {
+        "blockId": {
+            "type": "string"
+        },
+        "title": {
+            "type": "string",
+            "default": "Awesome Title"
+        },
+        "description": {
+            "type": "string",
+            "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        }
+    },
+    "supports": {
+        "anchor": true
+    },
+    "usesContext": ["direction", "arrowStyles", "titleTag", "contentType"],
+    "editorScript": "file:./build/index.js"
+}

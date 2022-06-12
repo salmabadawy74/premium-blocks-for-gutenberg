@@ -12,19 +12,20 @@ import InspectorTab from '../../components/inspectorTab';
 import Icons from "../../components/icons";
 import { generateBlockId } from '../../components/HelperFunction';
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
-
+import {
+    createBlock,
+} from '@wordpress/blocks';
+import { store as blockEditorStore } from '@wordpress/block-editor';
 const { Component, Fragment } = wp.element;
 const { __ } = wp.i18n;
-const { withSelect } = wp.data
+const { withSelect, withDispatch } = wp.data
 const { PanelBody, SelectControl } = wp.components;
 const { InspectorControls, RichText, InnerBlocks } = wp.blockEditor;
-
-let isAccUpdated = null;
+import { compose } from '@wordpress/compose';
 
 class PremiumAccordion extends Component {
     constructor() {
         super(...arguments);
-        this.initAccordion = this.initAccordion.bind(this);
         this.accordionRef = React.createRef();
     }
 
@@ -33,28 +34,14 @@ class PremiumAccordion extends Component {
         if (!attributes.blockId) {
             setAttributes({ blockId: "premium-accordion-" + generateBlockId(clientId) });
         }
-        this.initAccordion();
-    }
 
-    componentDidUpdate(prevProps, prevState) {
-        clearTimeout(isAccUpdated);
-        isAccUpdated = setTimeout(this.initAccordion, 500);
-    }
-
-    initAccordion() {
-        if (!this.props.attributes.blockId) return null;
-        let title = this.accordionRef.current.getElementsByClassName("premium-accordion__title_wrap")[0];
-        title.addEventListener("click", () => {
-            title
-                .getElementsByClassName("premium-accordion__icon")[0]
-                .classList.toggle("premium-accordion__closed");
-            title.nextSibling.classList.toggle("premium-accordion__desc_close");
-        });
+        if (this.props.attributes.repeaterItems) {
+            this.props.insertOnlyAllowedBlock();
+        }
     }
 
     render() {
         const { isSelected, setAttributes, className } = this.props;
-
         const {
             blockId,
             repeaterItems,
@@ -113,16 +100,6 @@ class PremiumAccordion extends Component {
             });
         }
 
-        const onAccordionChange = (attr, value, index) => {
-            const items = repeaterItems;
-            return items.map(function (item, currIndex) {
-                if (index == currIndex) {
-                    item[attr] = value;
-                }
-                return item;
-            });
-        };
-
         const titlePaddingTop = titlePadding[this.props.deviceType].top;
         const titlePaddingRight = titlePadding[this.props.deviceType].right;
         const titlePaddingBottom = titlePadding[this.props.deviceType].bottom;
@@ -133,132 +110,99 @@ class PremiumAccordion extends Component {
         const descPaddingLeft = descPadding[this.props.deviceType].left;
         const mainClasses = classnames(className, "premium-accordion");
 
-        const accordionItems = repeaterItems.map((item, index) => {
-            return (
-                <div
-                    id={`premium-accordion__layer${index}`}
-                    className={`premium-accordion__content_wrap`}
-                >
-                    <div
-                        className={`premium-accordion__title_wrap premium-accordion__${direction} premium-accordion__${arrowStyles[0].arrowPos}`}
-                        style={{
-                            backgroundColor: titleStyles[0].titleBack,
-                            paddingTop: titlePaddingTop && `${titlePaddingTop}${titlePadding.unit}`,
-                            paddingRight: titlePaddingRight && `${titlePaddingRight}${titlePadding.unit}`,
-                            paddingBottom: titlePaddingBottom && `${titlePaddingBottom}${titlePadding.unit}`,
-                            paddingLeft: titlePaddingLeft && `${titlePaddingLeft}${titlePadding.unit}`,
-                            borderStyle: titleBorder && titleBorder.borderType,
-                            borderTopWidth: titleBorder && titleBorder.borderWidth[this.props.deviceType].top,
-                            borderRightWidth: titleBorder && titleBorder.borderWidth[this.props.deviceType].right,
-                            borderBottomWidth: titleBorder && titleBorder.borderWidth[this.props.deviceType].bottom,
-                            borderLeftWidth: titleBorder && titleBorder.borderWidth[this.props.deviceType].left,
-                            borderColor: titleBorder && titleBorder.borderColor,
-                            borderTopLeftRadius: `${titleBorder && titleBorder.borderRadius[this.props.deviceType].top || 0}px`,
-                            borderTopRightRadius: `${titleBorder && titleBorder.borderRadius[this.props.deviceType].right || 0}px`,
-                            borderBottomLeftRadius: `${titleBorder && titleBorder.borderRadius[this.props.deviceType].bottom || 0}px`,
-                            borderBottomRightRadius: `${titleBorder && titleBorder.borderRadius[this.props.deviceType].left || 0}px`,
-                        }}
-                    >
-                        <div className={`premium-accordion__title`}>
-                            <RichText
-                                tagName={titleTag.toLowerCase()}
-                                className={`premium-accordion__title_text`}
-                                onChange={newText =>
-                                    setAttributes({
-                                        repeaterItems: onAccordionChange(
-                                            "titleText",
-                                            newText,
-                                            index
-                                        )
-                                    })
-                                }
-                                placeholder={__("Awesome Title", 'premium-blocks-for-gutenberg')}
-                                value={item.titleText}
-                                style={{
-                                    color: titleStyles[0].titleColor,
-                                    fontSize: `${titleTypography.fontSize[this.props.deviceType]}${titleTypography.fontSize.unit}`,
-                                    fontStyle: titleTypography.fontStyle,
-                                    fontFamily: titleTypography.fontFamily,
-                                    fontWeight: titleTypography.fontWeight,
-                                    letterSpacing: titleTypography.letterSpacing,
-                                    textDecoration: titleTypography.textDecoration,
-                                    textTransform: titleTypography.textTransform,
-                                    lineHeight: `${titleTypography.lineHeight}px`,
-                                    textShadow: `${titleTextShadow.horizontal}px ${titleTextShadow.vertical}px ${titleTextShadow.blur}px ${titleTextShadow.color}`
-                                }}
-                            />
-                        </div>
-                        <div className={`premium-accordion__icon_wrap`}>
-                            <svg
-                                className={`premium-accordion__icon`}
-                                role="img"
-                                focusable="false"
-                                xmlns="http://www.w3.org/2000/svg"
-                                width={arrowStyles[0].arrowSize}
-                                height={arrowStyles[0].arrowSize}
-                                viewBox="0 0 20 20"
-                                style={{
-                                    fill: arrowStyles[0].arrowColor,
-                                    backgroundColor: arrowStyles[0].arrowBack,
-                                    padding: arrowStyles[0].arrowPadding + "px",
-                                    borderRadius: arrowStyles[0].arrowRadius + "px"
-                                }}
-                            >
-                                <polygon points="16.7,3.3 10,10 3.3,3.4 0,6.7 10,16.7 10,16.6 20,6.7 " />
-                            </svg>
-                        </div>
-                    </div>
-                    <div
-                        className={`premium-accordion__desc_wrap`}
-                        style={{
-                            textAlign: descAlign?.[this.props.deviceType],
-                            backgroundColor: descStyles[0].descBack,
-                            paddingTop: descPaddingTop && `${descPaddingTop}${descPadding.unit}`,
-                            paddingRight: descPaddingRight && `${descPaddingRight}${descPadding.unit}`,
-                            paddingBottom: descPaddingBottom && `${descPaddingBottom}${descPadding.unit}`,
-                            paddingLeft: descPaddingLeft && `${descPaddingLeft}${descPadding.unit}`,
-                            borderStyle: descBorder && descBorder.borderType,
-                            borderTopWidth: descBorder && descBorder.borderWidth[this.props.deviceType].top,
-                            borderRightWidth: descBorder && descBorder.borderWidth[this.props.deviceType].right,
-                            borderBottomWidth: descBorder && descBorder.borderWidth[this.props.deviceType].bottom,
-                            borderLeftWidth: descBorder && descBorder.borderWidth[this.props.deviceType].left,
-                            borderColor: descBorder && descBorder.borderColor,
-                            borderTopLeftRadius: `${descBorder && descBorder.borderRadius[this.props.deviceType].top || 0}px`,
-                            borderTopRightRadius: `${descBorder && descBorder.borderRadius[this.props.deviceType].right || 0}px`,
-                            borderBottomLeftRadius: `${descBorder && descBorder.borderRadius[this.props.deviceType].bottom || 0}px`,
-                            borderBottomRightRadius: `${descBorder && descBorder.borderRadius[this.props.deviceType].left || 0}px`,
-                            textShadow: `${textShadow.horizontal}px ${textShadow.vertical}px ${textShadow.blur}px ${textShadow.color}`
-                        }}
-                    >
-                        {"text" === contentType && (
-                            <RichText
-                                tagName="p"
-                                className={`premium-accordion__desc`}
-                                onChange={newText =>
-                                    setAttributes({
-                                        repeaterItems: onAccordionChange("descText", newText, index)
-                                    })
-                                }
-                                value={item.descText}
-                                style={{
-                                    color: descStyles[0].descColor,
-                                    fontSize: `${descTypography.fontSize[this.props.deviceType]}${descTypography.fontSize.unit}`,
-                                    fontStyle: descTypography.fontStyle,
-                                    fontFamily: descTypography.fontFamily,
-                                    fontWeight: descTypography.fontWeight,
-                                    letterSpacing: descTypography.letterSpacing,
-                                    textDecoration: descTypography.textDecoration,
-                                    textTransform: descTypography.textTransform,
-                                    lineHeight: `${descTypography.lineHeight}px`,
-                                    textShadow: `${textShadow.horizontal}px ${textShadow.vertical}px ${textShadow.blur}px ${textShadow.color}`
-                                }}
-                            />
-                        )}
-                        {"block" === contentType && <InnerBlocks templateLock={false} />}
-                    </div>
-                </div>
-            );
-        });
+        const loadStyles = () => {
+            const styles = {};
+
+            styles[`.${blockId} .premium-accordion__title_wrap`] = {
+                'backgroundColor': titleStyles[0].titleBack,
+                'padding-top': titlePaddingTop && `${titlePaddingTop}${titlePadding.unit}`,
+                'padding-right': titlePaddingRight && `${titlePaddingRight}${titlePadding.unit}`,
+                'padding-bottom': titlePaddingBottom && `${titlePaddingBottom}${titlePadding.unit}`,
+                'padding-left': titlePaddingLeft && `${titlePaddingLeft}${titlePadding.unit}`,
+                'border-style': titleBorder && titleBorder.borderType,
+                'border-top-width': titleBorder && titleBorder.borderWidth[this.props.deviceType].top,
+                'border-right-width': titleBorder && titleBorder.borderWidth[this.props.deviceType].right,
+                'border-bottom-width': titleBorder && titleBorder.borderWidth[this.props.deviceType].bottom,
+                'border-left-width': titleBorder && titleBorder.borderWidth[this.props.deviceType].left,
+                'border-color': titleBorder && titleBorder.borderColor,
+                'border-top-left-radius': `${titleBorder && titleBorder.borderRadius[this.props.deviceType].top || 0}px`,
+                'border-top-right-radius': `${titleBorder && titleBorder.borderRadius[this.props.deviceType].right || 0}px`,
+                'border-bottom-left-radius': `${titleBorder && titleBorder.borderRadius[this.props.deviceType].bottom || 0}px`,
+                'border-bottom-right-radius': `${titleBorder && titleBorder.borderRadius[this.props.deviceType].left || 0}px`,
+            };
+
+            styles[`.${blockId} .premium-accordion__icon_wrap svg.premium-accordion__icon`] = {
+                fill: arrowStyles[0].arrowColor,
+                'background-color': arrowStyles[0].arrowBack,
+                padding: arrowStyles[0].arrowPadding + "px",
+                'border-radius': arrowStyles[0].arrowRadius + "px",
+                width: `${arrowStyles[0].arrowSize}px`,
+                height: `${arrowStyles[0].arrowSize}px`
+            };
+
+            styles[`.${blockId} .premium-accordion__title_wrap .premium-accordion__title_text`] = {
+                color: titleStyles[0].titleColor,
+                'font-size': `${titleTypography.fontSize[this.props.deviceType]}${titleTypography.fontSize.unit}`,
+                'font-style': titleTypography.fontStyle,
+                'font-family': titleTypography.fontFamily,
+                'font-weight': titleTypography.fontWeight,
+                'letter-spacing': titleTypography.letterSpacing,
+                'text-decoration': titleTypography.textDecoration,
+                'text-transform': titleTypography.textTransform,
+                'line-height': `${titleTypography.lineHeight}px`,
+                'text-shadow': `${titleTextShadow.horizontal}px ${titleTextShadow.vertical}px ${titleTextShadow.blur}px ${titleTextShadow.color}`
+            };
+
+            styles[`.${blockId} .premium-accordion__desc_wrap`] = {
+                'text-align': descAlign?.[this.props.deviceType],
+                'background-color': descStyles[0].descBack,
+                'padding-top': descPaddingTop && `${descPaddingTop}${descPadding.unit}`,
+                'padding-right': descPaddingRight && `${descPaddingRight}${descPadding.unit}`,
+                'padding-bottom': descPaddingBottom && `${descPaddingBottom}${descPadding.unit}`,
+                'padding-left': descPaddingLeft && `${descPaddingLeft}${descPadding.unit}`,
+                'border-style': descBorder && descBorder.borderType,
+                'border-top-width': descBorder && descBorder.borderWidth[this.props.deviceType].top,
+                'border-right-width': descBorder && descBorder.borderWidth[this.props.deviceType].right,
+                'border-bottom-width': descBorder && descBorder.borderWidth[this.props.deviceType].bottom,
+                'border-left-width': descBorder && descBorder.borderWidth[this.props.deviceType].left,
+                'border-color': descBorder && descBorder.borderColor,
+                'border-top-left-radius': `${descBorder && descBorder.borderRadius[this.props.deviceType].top || 0}px`,
+                'border-top-right-radius': `${descBorder && descBorder.borderRadius[this.props.deviceType].right || 0}px`,
+                'border-bottom-left-radius': `${descBorder && descBorder.borderRadius[this.props.deviceType].bottom || 0}px`,
+                'border-bottom-right-radius': `${descBorder && descBorder.borderRadius[this.props.deviceType].left || 0}px`,
+                'text-shadow': `${textShadow.horizontal}px ${textShadow.vertical}px ${textShadow.blur}px ${textShadow.color}`
+            };
+
+            styles[`.${blockId} .premium-accordion__desc_wrap .premium-accordion__desc`] = {
+                color: descStyles[0].descColor,
+                'font-size': `${descTypography.fontSize[this.props.deviceType]}${descTypography.fontSize.unit}`,
+                'font-style': descTypography.fontStyle,
+                'font-family': descTypography.fontFamily,
+                'font-weight': descTypography.fontWeight,
+                'letter-spacing': descTypography.letterSpacing,
+                'text-decoration': descTypography.textDecoration,
+                'text-transform': descTypography.textTransform,
+                'line-height': `${descTypography.lineHeight}px`,
+                'text-shadow': `${textShadow.horizontal}px ${textShadow.vertical}px ${textShadow.blur}px ${textShadow.color}`
+            };
+            let styleCss = '';
+
+            for (const selector in styles) {
+                const selectorStyles = styles[selector];
+                const filteredStyles = Object.keys(selectorStyles).map(property => {
+                    const value = selectorStyles[property];
+                    const valueWithoutUnits = value.toString().replaceAll('px', '').replaceAll(/\s/g, '');
+                    if (value && !value.toString().includes('undefined') && valueWithoutUnits) {
+                        return `${property}: ${value};`;
+                    }
+                }).filter(style => !!style).join('\n');
+                styleCss += `${selector}{
+                    ${filteredStyles}
+                }\n`;
+            }
+
+            return styleCss;
+        }
 
         return [
             isSelected && (
@@ -470,25 +414,16 @@ class PremiumAccordion extends Component {
             ),
             <Fragment>
                 <div ref={this.accordionRef} className={`${mainClasses} ${blockId}`}>
-                    {accordionItems}
-                </div>
-                <div className={"premium-repeater"}>
-                    <button
-                        className={"premium-repeater-btn"}
-                        onClick={() => {
-                            return setAttributes({
-                                repeaterItems: repeaterItems.concat([
-                                    {
-                                        titleText: __("Awesome Title", 'premium-blocks-for-gutenberg'),
-                                        descText: __("Cool Description", 'premium-blocks-for-gutenberg')
-                                    }
-                                ])
-                            });
+                    <style
+                        dangerouslySetInnerHTML={{
+                            __html: loadStyles()
                         }}
-                    >
-                        <i className="dashicons dashicons-plus premium-repeater-icon" />
-                        {__("Add New Item", 'premium-blocks-for-gutenberg')}
-                    </button>
+                    />
+                    <InnerBlocks
+                        // template={getFaqChildTemplate}
+                        templateLock={false}
+                        allowedBlocks={['premium/accordion-item']}
+                    />
                 </div>
             </Fragment>
         ];
@@ -496,11 +431,44 @@ class PremiumAccordion extends Component {
     }
 }
 
-export default withSelect((select, props) => {
-    const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
-    let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+export default compose([
+    withSelect((select) => {
+        const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
+        let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
 
-    return {
-        deviceType: deviceType
-    }
-})(PremiumAccordion)
+        return {
+            deviceType: deviceType
+        }
+    }),
+    withDispatch((dispatch, ownProps, { select }) => {
+        return {
+            insertOnlyAllowedBlock() {
+                const {
+                    attributes,
+                    clientId,
+                    setAttributes
+                } = ownProps;
+                const { insertBlock } = dispatch(blockEditorStore);
+                const repeaterItems = [...attributes.repeaterItems];
+
+                if (repeaterItems.length === 0) {
+                    setAttributes({ repeaterItems: [] })
+                    return;
+                }
+                attributes.repeaterItems.map((item, index) => {
+                    const insertedBlock = createBlock(
+                        "premium/accordion-item",
+                        { title: item.titleText, description: item.descText },
+                    );
+                    insertBlock(
+                        insertedBlock,
+                        index + 1,
+                        clientId
+                    );
+
+                    repeaterItems.splice(index, 1);
+                })
+            },
+        };
+    }),
+])(PremiumAccordion);
