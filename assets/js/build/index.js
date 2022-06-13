@@ -5247,7 +5247,7 @@ const attributes = {
   }
 };
 const newAttributes = {
-  accordionId: {
+  blockId: {
     type: "string"
   },
   repeaterItems: {
@@ -5672,57 +5672,58 @@ const deprecated = [{
 
   migrate: attributes => {
     let newAttributes = {
+      blockId: attributes.accordionId ? attributes.accordionId.split('-')[5] : '',
       titlePadding: {
         "Desktop": {
-          top: attributes.titlePaddingT || '',
-          right: attributes.titlePaddingR || '',
-          bottom: attributes.titlePaddingB || '',
-          left: attributes.titlePaddingL || ''
+          top: attributes?.titlePaddingT || '',
+          right: attributes?.titlePaddingR || '',
+          bottom: attributes?.titlePaddingB || '',
+          left: attributes?.titlePaddingL || ''
         },
         "Tablet": {
-          top: attributes.titlePaddingTTablet || '',
-          right: attributes.titlePaddingRTablet || '',
-          bottom: attributes.titlePaddingBTablet || '',
-          left: attributes.titlePaddingLTablet || ''
+          top: attributes?.titlePaddingTTablet || '',
+          right: attributes?.titlePaddingRTablet || '',
+          bottom: attributes?.titlePaddingBTablet || '',
+          left: attributes?.titlePaddingLTablet || ''
         },
         "Mobile": {
-          top: attributes.titlePaddingTMobile || '',
-          right: attributes.titlePaddingRMobile || '',
-          bottom: attributes.titlePaddingBMobile || '',
-          left: attributes.titlePaddingLMobile || ''
+          top: attributes?.titlePaddingTMobile || '',
+          right: attributes?.titlePaddingRMobile || '',
+          bottom: attributes?.titlePaddingBMobile || '',
+          left: attributes?.titlePaddingLMobile || ''
         },
         "unit": "px"
       },
       descPadding: {
         "Desktop": {
-          top: attributes.descPaddingT || '',
-          right: attributes.descPaddingR || '',
-          bottom: attributes.descPaddingB || '',
-          left: attributes.descPaddingL || ''
+          top: attributes?.descPaddingT || '',
+          right: attributes?.descPaddingR || '',
+          bottom: attributes?.descPaddingB || '',
+          left: attributes?.descPaddingL || ''
         },
         "Tablet": {
-          top: attributes.descPaddingTTablet || '',
-          right: attributes.descPaddingRTablet || '',
-          bottom: attributes.descPaddingBTablet || '',
-          left: attributes.descPaddingLTablet || ''
+          top: attributes?.descPaddingTTablet || '',
+          right: attributes?.descPaddingRTablet || '',
+          bottom: attributes?.descPaddingBTablet || '',
+          left: attributes?.descPaddingLTablet || ''
         },
         "Mobile": {
-          top: attributes.descPaddingTMobile || '',
-          right: attributes.descPaddingRMobile || '',
-          bottom: attributes.descPaddingBMobile || '',
-          left: attributes.descPaddingLMobile || ''
+          top: attributes?.descPaddingTMobile || '',
+          right: attributes?.descPaddingRMobile || '',
+          bottom: attributes?.descPaddingBMobile || '',
+          left: attributes?.descPaddingLMobile || ''
         },
         "unit": "px"
       },
       titleBorder: {
-        "borderType": attributes.titleStyles[0].titleBorder || '',
-        "borderColor": attributes.titleStyles[0].titleBorderColor || '',
+        "borderType": attributes?.titleStyles[0].titleBorder || '',
+        "borderColor": attributes?.titleStyles[0].titleBorderColor || '',
         "borderWidth": {
           Desktop: {
-            top: attributes.titleBorderTop || '',
-            right: attributes.titleBorderRight || '',
-            bottom: attributes.titleBorderBottom || '',
-            left: attributes.titleBorderLeft || ''
+            top: attributes?.titleBorderTop || '',
+            right: attributes?.titleBorderRight || '',
+            bottom: attributes?.titleBorderBottom || '',
+            left: attributes?.titleBorderLeft || ''
           },
           Tablet: {
             top: '',
@@ -5739,10 +5740,10 @@ const deprecated = [{
         },
         "borderRadius": {
           Desktop: {
-            top: attributes.titleStyles[0].titleBorderRadius || '',
-            right: attributes.titleStyles[0].titleBorderRadius || '',
-            bottom: attributes.titleStyles[0].titleBorderRadius || '',
-            left: attributes.titleStyles[0].titleBorderRadius || ''
+            top: attributes?.titleStyles[0].titleBorderRadius || '',
+            right: attributes?.titleStyles[0].titleBorderRadius || '',
+            bottom: attributes?.titleStyles[0].titleBorderRadius || '',
+            left: attributes?.titleStyles[0].titleBorderRadius || ''
           },
           Tablet: {
             top: '',
@@ -5759,14 +5760,14 @@ const deprecated = [{
         }
       },
       descBorder: {
-        "borderType": attributes.descStyles[0].descBorder || '',
-        "borderColor": attributes.descStyles[0].descBorderColor || '',
+        "borderType": attributes?.descStyles[0].descBorder || '',
+        "borderColor": attributes?.descStyles[0].descBorderColor || '',
         "borderWidth": {
           Desktop: {
-            top: attributes.descBorderTop || '',
-            right: attributes.descBorderRight || '',
-            bottom: attributes.descBorderBottom || '',
-            left: attributes.descBorderLeft || ''
+            top: attributes?.descBorderTop || '',
+            right: attributes?.descBorderRight || '',
+            bottom: attributes?.descBorderBottom || '',
+            left: attributes?.descBorderLeft || ''
           },
           Tablet: {
             top: '',
@@ -5783,10 +5784,10 @@ const deprecated = [{
         },
         "borderRadius": {
           Desktop: {
-            top: attributes.descStyles[0].descBorderRadius || '',
-            right: attributes.descStyles[0].descBorderRadius || '',
-            bottom: attributes.descStyles[0].descBorderRadius || '',
-            left: attributes.descStyles[0].descBorderRadius || ''
+            top: attributes?.descStyles[0].descBorderRadius || '',
+            right: attributes?.descStyles[0].descBorderRadius || '',
+            bottom: attributes?.descStyles[0].descBorderRadius || '',
+            left: attributes?.descStyles[0].descBorderRadius || ''
           },
           Tablet: {
             top: '',
@@ -5803,32 +5804,32 @@ const deprecated = [{
         }
       },
       titleTypography: {
-        "fontWeight": attributes.titleStyles[0].titleWeight || '',
-        'fontStyle': attributes.titleStyles[0].titleStyle || '',
-        'textTransform': attributes.titleStyles[0].titleUpper || '',
-        'letterSpacing': attributes.titleStyles[0].titleLetter || '',
+        "fontWeight": attributes?.titleStyles[0].titleWeight || '',
+        'fontStyle': attributes?.titleStyles[0].titleStyle || '',
+        'textTransform': attributes?.titleStyles[0].titleUpper || '',
+        'letterSpacing': attributes?.titleStyles[0].titleLetter || '',
         'fontFamily': '',
-        'lineHeight': attributes.titleStyles[0].titleLine || '',
+        'lineHeight': attributes?.titleStyles[0].titleLine || '',
         'textDecoration': '',
         'fontSize': {
-          'Desktop': attributes.titleStyles[0].titleSize || '',
-          "Tablet": attributes.titleStyles[0].titleSize || '',
-          "Mobile": attributes.titleStyles[0].titleSize || '',
+          'Desktop': attributes?.titleStyles[0].titleSize || '',
+          "Tablet": attributes?.titleStyles[0].titleSize || '',
+          "Mobile": attributes?.titleStyles[0].titleSize || '',
           "unit": 'px'
         }
       },
       descTypography: {
-        "fontWeight": attributes.descStyles[0].descWeight || '',
-        'fontStyle': attributes.descStyles[0].descStyle || '',
-        'textTransform': attributes.descStyles[0].descUpper || '',
-        'letterSpacing': attributes.descStyles[0].descLetter || '',
+        "fontWeight": attributes?.descStyles[0].descWeight || '',
+        'fontStyle': attributes?.descStyles[0].descStyle || '',
+        'textTransform': attributes?.descStyles[0].descUpper || '',
+        'letterSpacing': attributes?.descStyles[0].descLetter || '',
         'fontFamily': '',
-        'lineHeight': attributes.descStyles[0].descLine || '',
+        'lineHeight': attributes?.descStyles[0].descLine || '',
         'textDecoration': '',
         'fontSize': {
-          'Desktop': attributes.descStyles[0].descSize || '',
-          "Tablet": attributes.descStyles[0].descSize || '',
-          "Mobile": attributes.descStyles[0].descSize || '',
+          'Desktop': attributes?.descStyles[0].descSize || '',
+          "Tablet": attributes?.descStyles[0].descSize || '',
+          "Mobile": attributes?.descStyles[0].descSize || '',
           "unit": 'px'
         }
       },
@@ -7149,13 +7150,9 @@ const save = props => {
   } = props;
   const {
     blockId,
-    repeaterItems,
-    direction,
-    titleTag,
     titleStyles,
     arrowStyles,
     descStyles,
-    contentType,
     titleBorder,
     descBorder,
     titleTypography,
@@ -7166,79 +7163,73 @@ const save = props => {
     hideTablet,
     hideMobile
   } = props.attributes;
+
+  const loadStyles = () => {
+    const styles = {};
+    styles[`.${blockId} .premium-accordion__title_wrap`] = {
+      'backgroundColor': titleStyles[0].titleBack,
+      'border-style': titleBorder && titleBorder.borderType,
+      'border-color': titleBorder && titleBorder.borderColor
+    };
+    styles[`.${blockId} .premium-accordion__icon_wrap svg.premium-accordion__icon`] = {
+      fill: arrowStyles[0].arrowColor,
+      'background-color': arrowStyles[0].arrowBack,
+      padding: arrowStyles[0].arrowPadding + "px",
+      'border-radius': arrowStyles[0].arrowRadius + "px",
+      width: `${arrowStyles[0].arrowSize}px`,
+      height: `${arrowStyles[0].arrowSize}px`
+    };
+    styles[`.${blockId} .premium-accordion__title_wrap .premium-accordion__title_text`] = {
+      color: titleStyles[0].titleColor,
+      'font-style': titleTypography.fontStyle,
+      'font-family': titleTypography.fontFamily,
+      'font-weight': titleTypography.fontWeight,
+      'letter-spacing': titleTypography.letterSpacing,
+      'text-decoration': titleTypography.textDecoration,
+      'text-transform': titleTypography.textTransform,
+      'line-height': `${titleTypography.lineHeight}px`,
+      'text-shadow': `${titleTextShadow.horizontal}px ${titleTextShadow.vertical}px ${titleTextShadow.blur}px ${titleTextShadow.color}`
+    };
+    styles[`.${blockId} .premium-accordion__desc_wrap`] = {
+      'background-color': descStyles[0].descBack,
+      'border-style': descBorder && descBorder.borderType,
+      'border-color': descBorder && descBorder.borderColor,
+      'text-shadow': `${textShadow.horizontal}px ${textShadow.vertical}px ${textShadow.blur}px ${textShadow.color}`
+    };
+    styles[`.${blockId} .premium-accordion__desc_wrap .premium-accordion__desc`] = {
+      color: descStyles[0].descColor,
+      'font-style': descTypography.fontStyle,
+      'font-family': descTypography.fontFamily,
+      'font-weight': descTypography.fontWeight,
+      'letter-spacing': descTypography.letterSpacing,
+      'text-decoration': descTypography.textDecoration,
+      'text-transform': descTypography.textTransform,
+      'line-height': `${descTypography.lineHeight}px`,
+      'text-shadow': `${textShadow.horizontal}px ${textShadow.vertical}px ${textShadow.blur}px ${textShadow.color}`
+    };
+    let styleCss = '';
+
+    for (const selector in styles) {
+      const selectorStyles = styles[selector];
+      const filteredStyles = Object.keys(selectorStyles).map(property => {
+        const value = selectorStyles[property];
+        const valueWithoutUnits = value.toString().replaceAll('px', '').replaceAll(/\s/g, '');
+
+        if (value && !value.toString().includes('undefined') && valueWithoutUnits) {
+          return `${property}: ${value};`;
+        }
+      }).filter(style => !!style).join('\n');
+      styleCss += `${selector}{
+                ${filteredStyles}
+            }\n`;
+    }
+
+    return styleCss;
+  };
+
   const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, 'premium-accordion', blockId);
-  const accordionItems = repeaterItems.map((item, index) => {
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      id: `premium-accordion__layer${index}`,
-      className: `premium-accordion__content_wrap`
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `premium-accordion__title_wrap premium-accordion__${direction} premium-accordion__${arrowStyles[0].arrowPos} ${hideDesktop} ${hideTablet} ${hideMobile}`,
-      style: {
-        backgroundColor: titleStyles[0].titleBack,
-        borderStyle: titleBorder && titleBorder.borderType,
-        borderColor: titleBorder && titleBorder.borderColor
-      }
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `premium-accordion__title`
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText.Content, {
-      tagName: titleTag.toLowerCase(),
-      className: `premium-accordion__title_text`,
-      value: item.titleText,
-      style: {
-        color: titleStyles[0].titleColor,
-        fontStyle: titleTypography.fontStyle,
-        fontFamily: titleTypography.fontFamily,
-        fontWeight: titleTypography.fontWeight,
-        letterSpacing: titleTypography.letterSpacing,
-        textDecoration: titleTypography.textDecoration,
-        textTransform: titleTypography.textTransform,
-        lineHeight: `${titleTypography.lineHeight}px`,
-        textShadow: `${titleTextShadow.horizontal}px ${titleTextShadow.vertical}px ${titleTextShadow.blur}px ${titleTextShadow.color}`
-      }
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `premium-accordion__icon_wrap`
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
-      className: `premium-accordion__icon premium-accordion__closed`,
-      role: "img",
-      focusable: "false",
-      xmlns: "http://www.w3.org/2000/svg",
-      width: arrowStyles[0].arrowSize,
-      height: arrowStyles[0].arrowSize,
-      viewBox: "0 0 20 20",
-      style: {
-        fill: arrowStyles[0].arrowColor,
-        backgroundColor: arrowStyles[0].arrowBack,
-        padding: arrowStyles[0].arrowPadding + "px",
-        borderRadius: arrowStyles[0].arrowRadius + "px"
-      }
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("polygon", {
-      points: "16.7,3.3 10,10 3.3,3.4 0,6.7 10,16.7 10,16.6 20,6.7 "
-    })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `premium-accordion__desc_wrap premium-accordion__desc_close`,
-      style: {
-        backgroundColor: descStyles[0].descBack,
-        borderStyle: descBorder && descBorder.borderType,
-        borderColor: descBorder && descBorder.borderColor
-      }
-    }, "text" === contentType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText.Content, {
-      tagName: "p",
-      className: `premium-accordion__desc`,
-      value: item.descText,
-      style: {
-        color: descStyles[0].descColor,
-        fontStyle: descTypography.fontStyle,
-        fontFamily: descTypography.fontFamily,
-        fontWeight: descTypography.fontWeight,
-        letterSpacing: descTypography.letterSpacing,
-        textDecoration: descTypography.textDecoration,
-        textTransform: descTypography.textTransform,
-        lineHeight: `${descTypography.lineHeight}px`,
-        textShadow: `${textShadow.horizontal}px ${textShadow.vertical}px ${textShadow.blur}px ${textShadow.color}`
-      }
-    }), "block" === contentType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InnerBlocks.Content, null)));
-  });
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: `${mainClasses}`
+    className: `${mainClasses} ${hideDesktop} ${hideTablet} ${hideMobile}`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InnerBlocks.Content, null));
 };
 
