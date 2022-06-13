@@ -5672,7 +5672,7 @@ const deprecated = [{
 
   migrate: attributes => {
     let newAttributes = {
-      blockId: attributes.accordionId ? attributes.accordionId.split('-')[6] : '',
+      blockId: attributes.accordionId ? `premium-accordion-${attributes.accordionId.split('-')[6]}` : '',
       titlePadding: {
         "Desktop": {
           top: attributes?.titlePaddingT || '',
