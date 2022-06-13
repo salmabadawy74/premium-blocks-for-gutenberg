@@ -156,6 +156,11 @@
         padding: 0 !important;
         // overflow: hidden;
         list-style-type: none !important;
+
+        .block-editor-inner-blocks {
+            display: block;
+            margin: 10px;
+        }
     }
 
     .premium-content-switcher-two-content {

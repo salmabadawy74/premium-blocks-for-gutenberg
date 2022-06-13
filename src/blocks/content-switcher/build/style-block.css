@@ -95,6 +95,10 @@
   padding: 0 !important;
   list-style-type: none !important;
 }
+.premium-content-switcher .premium-content-switcher-two-content .block-editor-inner-blocks {
+  display: block;
+  margin: 10px;
+}
 .premium-content-switcher .premium-content-switcher-two-content li {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;

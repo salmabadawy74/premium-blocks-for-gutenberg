@@ -1,10 +1,11 @@
 import { __ } from '@wordpress/i18n';
 import classnames from "classnames";
-import { withSelect } from '@wordpress/data'
+import { withSelect, dispatch, select } from '@wordpress/data'
 import {
     InspectorControls,
     RichText,
-    useBlockProps
+    useBlockProps,
+    InnerBlocks
 } from '@wordpress/block-editor';
 import {
     Fragment,
@@ -52,6 +53,11 @@ function Edit(props) {
     const inputFirstContent = useRef(null);
     const inputSecondContent = useRef(null);
     const [mounted, setMounted] = useState(true);
+    const { getBlock } = select('core/block-editor');
+    const { updateBlockAttributes, moveBlockToPosition } = dispatch(
+        'core/block-editor'
+    );
+    const block = getBlock(props.clientId);
 
     useEffect(() => {
         setAttributes({ blockId: "premium-content-switcher-" + generateBlockId(props.clientId) })
@@ -61,21 +67,53 @@ function Edit(props) {
     useEffect(() => {
 
         if (!mounted) {
-            inputFirstContent.current.classList.remove("premium-content-switcher-is-visible");
-            inputFirstContent.current.classList.add("premium-content-switcher-is-hidden");
+            // inputFirstContent.current.classList.remove("premium-content-switcher-is-visible");
+            // inputFirstContent.current.classList.add("premium-content-switcher-is-hidden");
 
             // content.style.overflow = 'hidden';
 
-            inputSecondContent.current.classList.remove("premium-content-switcher-is-hidden");
-            inputSecondContent.current.classList.add("premium-content-switcher-is-visible");
+            // inputSecondContent.current.classList.remove("premium-content-switcher-is-hidden");
+            // inputSecondContent.current.classList.add("premium-content-switcher-is-visible");
+            console.log(block)
+            updateBlockAttributes(block.clientId,
+                0
+            );
+            for (let i = 0; i < block.innerBlocks.length; i++) {
+                updateBlockAttributes(block.innerBlocks[0].clientId,
+                    0
+                );
+            }
+            for (let i = 0; i < block.innerBlocks.length; i++) {
+                updateBlockAttributes(block.innerBlocks[0].clientId, {
+                    id: 0,
+                });
+            }
+            // console.log(updateBlockAttributes(block.clientId,
+            //     0
+            // ))
+            // console.log(updateBlockAttributes(block.innerBlocks[i].clientId,
+            //     0
+            // ))
         }
         else {
-            inputSecondContent.current.classList.remove("premium-content-switcher-is-visible");
-            inputSecondContent.current.classList.add("premium-content-switcher-is-hidden");
+            // inputSecondContent.current.classList.remove("premium-content-switcher-is-visible");
+            // inputSecondContent.current.classList.add("premium-content-switcher-is-hidden");
 
-            inputFirstContent.current.classList.remove("premium-content-switcher-is-hidden");
-            inputFirstContent.current.classList.add("premium-content-switcher-is-visible");
-
+            // inputFirstContent.current.classList.remove("premium-content-switcher-is-hidden");
+            // inputFirstContent.current.classList.add("premium-content-switcher-is-visible");
+            updateBlockAttributes(block.clientId,
+                1
+            );
+            for (let i = 0; i < block.innerBlocks.length; i++) {
+                updateBlockAttributes(block.innerBlocks[1].clientId,
+                    1
+                );
+            }
+            for (let i = 0; i < block.innerBlocks.length; i++) {
+                updateBlockAttributes(block.innerBlocks[1].clientId, {
+                    id: 1,
+                });
+            }
             // content.style.overflow = 'hidden';
         }
     }, [mounted])
@@ -84,6 +122,16 @@ function Edit(props) {
         const { blockId } = props.attributes;
         if (!blockId) return null;
         setMounted(!mounted)
+        console.log(mounted)
+        // updateBlockAttributes(block.clientId, {
+        //     tabActive,
+        // });
+        // for (let i = 0; i < block.innerBlocks.length; i++) {
+        //     updateBlockAttributes(block.innerBlocks[i].clientId, {
+        //         tabActive,
+        //     });
+        // }
+        // this.resetTabOrder();
     }
 
     const {
@@ -141,7 +189,8 @@ function Edit(props) {
         hideMobile,
         controllerOneBackground,
         switcherBackground,
-        containerBackground
+        containerBackground,
+        switcher
     } = attributes
 
     const DISPLAY = [
@@ -864,7 +913,17 @@ function Edit(props) {
                         }}
                     >
                         <ul className="premium-content-switcher-two-content">
-                            <li ref={inputFirstContent} className={`premium-content-switcher-is-visible premium-content-switcher-first-list ${props.clientId}`}
+                            <li>
+                                <InnerBlocks
+                                    template={[
+                                        ['premium/switcher-child'],
+                                        ['premium/switcher-child']
+                                    ]}
+                                    templateLock={false}
+                                    allowedBlocks={['premium/switcher-child']}
+                                />
+                            </li>
+                            {/* <li ref={inputFirstContent} className={`premium-content-switcher-is-visible premium-content-switcher-first-list ${props.clientId}`}
                                 style={{
                                     ...borderCss(firstContentborder, props.deviceType),
                                     ...padddingCss(contentPadding, props.deviceType),
@@ -872,20 +931,13 @@ function Edit(props) {
                                     minHeight: (contentHeight[props.deviceType] || 100) + contentHeight.unit,
                                     boxShadow: `${firstContentBoxShadow.horizontal || 0}px ${firstContentBoxShadow.vertical || 0}px ${firstContentBoxShadow.blur || 0}px ${firstContentBoxShadow.color} ${firstContentBoxShadow.position}`
                                 }}>
-                                <RichText
-                                    tagName="div"
-                                    className={`premium-content-switcher-first-content`}
-                                    value={firstContent}
-                                    onChange={value => {
-                                        setAttributes({ firstContent: value })
-                                    }}
-                                    style={{
-                                        ...typographyCss(firstContentTypography, props.deviceType),
-                                        textAlign: firstcontentalign[props.deviceType],
-                                        justifyContent: firstcontentalign[props.deviceType],
-                                        color: firstContentStyles.firstContentColor,
-                                        textShadow: `${firstContentShadow.horizontal || 0}px ${firstContentShadow.vertical || 0}px ${firstContentShadow.blur || 0}px ${firstContentShadow.color}`,
-                                    }}
+                                <InnerBlocks
+                                    template={[
+                                        ['premium/switcher-child'],
+                                        ['premium/switcher-child']
+                                    ]}
+                                    templateLock={false}
+                                    allowedBlocks={['premium/switcher-child']}
                                 />
                             </li>
                             <li ref={inputSecondContent} className={`premium-content-switcher-is-hidden premium-content-switcher-second-list ${props.clientId}`}
@@ -896,22 +948,21 @@ function Edit(props) {
                                     minHeight: (contentHeight[props.deviceType] || 100) + contentHeight.unit,
                                     boxShadow: `${secondContentBoxShadow.horizontal || 0}px ${secondContentBoxShadow.vertical || 0}px ${secondContentBoxShadow.blur || 0}px ${secondContentBoxShadow.color} ${secondContentBoxShadow.position}`
                                 }}>
-                                <RichText
-                                    tagName="div"
-                                    className={`premium-content-switcher-second-content`}
-                                    value={secondContent}
-                                    onChange={value => {
-                                        setAttributes({ secondContent: value })
-                                    }}
-                                    style={{
-                                        ...typographyCss(secondContentTypography, props.deviceType),
-                                        textAlign: secondcontentlign[props.deviceType],
-                                        justifyContent: secondcontentlign[props.deviceType],
-                                        color: secondContentStyles.secondContentColor,
-                                        textShadow: `${secondContentShadow.horizontal || 0}px ${secondContentShadow.vertical || 0}px ${secondContentShadow.blur || 0}px ${secondContentShadow.color}`,
-                                    }}
+                                <InnerBlocks
+                                    template={[
+                                        ['premium/switcher-child']
+                                    ]}
+                                    templateLock={false}
+                                    allowedBlocks={['premium/switcher-child']}
                                 />
-                            </li>
+                                <InnerBlocks
+                                    template={[
+                                        ['premium/switcher-child']
+                                    ]}
+                                    templateLock={false}
+                                    allowedBlocks={['premium/switcher-child']}
+                                />
+                            </li> */}
                         </ul>
                     </div>
                 </div>

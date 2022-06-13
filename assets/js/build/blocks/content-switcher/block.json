@@ -780,6 +780,17 @@
         "gradientPosition": "",
         "gradientType": ""
       }
+    },
+    "switcher": {
+      "type": "array",
+      "default": [
+        {
+          "label": "first"
+        },
+        {
+          "label": "second"
+        }
+      ]
     }
   }
 }
