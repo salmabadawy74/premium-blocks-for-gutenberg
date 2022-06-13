@@ -28,6 +28,21 @@ function AccordionItemEdit({
         }
     }, [])
 
+    useEffect(() => {
+        if (direction !== attributes.direction) {
+            setAttributes({ direction: direction });
+        }
+        if (contentType !== attributes.contentType) {
+            setAttributes({ contentType: contentType });
+        }
+        if (titleTag !== attributes.titleTag) {
+            setAttributes({ titleTag: titleTag });
+        }
+        if (arrowStyles[0].arrowPos !== attributes.arrowPosition) {
+            setAttributes({ arrowPosition: arrowStyles[0].arrowPos });
+        }
+    }, [titleTag, contentType, direction, arrowStyles]);
+
     return <div {...blockProps}>
         <div
             className={`premium-accordion__title_wrap premium-accordion__${direction} premium-accordion__${arrowStyles[0].arrowPos}`}

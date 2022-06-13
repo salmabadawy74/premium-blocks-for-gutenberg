@@ -1,6 +1,6 @@
 import classnames from 'classnames'
 const { __ } = wp.i18n;
-const { RichText, InnerBlocks } = wp.blockEditor;
+const { InnerBlocks } = wp.blockEditor;
 
 const save = props => {
     const { className } = props;
@@ -92,6 +92,11 @@ const save = props => {
 
     return (
         <div className={`${mainClasses} ${hideDesktop} ${hideTablet} ${hideMobile}`}>
+            <style
+                dangerouslySetInnerHTML={{
+                    __html: loadStyles()
+                }}
+            />
             <InnerBlocks.Content />
         </div>
     );

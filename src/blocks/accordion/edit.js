@@ -451,10 +451,6 @@ export default compose([
                 const { insertBlock } = dispatch(blockEditorStore);
                 const repeaterItems = [...attributes.repeaterItems];
 
-                if (repeaterItems.length === 0) {
-                    setAttributes({ repeaterItems: [] })
-                    return;
-                }
                 attributes.repeaterItems.map((item, index) => {
                     const insertedBlock = createBlock(
                         "premium/accordion-item",
@@ -466,7 +462,12 @@ export default compose([
                         clientId
                     );
 
-                    repeaterItems.splice(index, 1);
+                    repeaterItems.splice(index - 1, 1);
+
+                    if (repeaterItems.length === 0) {
+                        setAttributes({ repeaterItems: [] })
+                        return;
+                    }
                 })
             },
         };

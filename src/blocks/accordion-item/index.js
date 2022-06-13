@@ -16,7 +16,7 @@ const { name } = metadata;
 export { metadata, name };
 
 registerBlockType(name, {
-    // icon: addSubmenu,
+    // icon: ,
 
     __experimentalLabel: ({ label }) => label,
 
@@ -24,6 +24,3 @@ registerBlockType(name, {
 
     save,
 });
-
-
-console.log('accordion Item');

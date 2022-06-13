@@ -7053,21 +7053,20 @@ class PremiumAccordion extends Component {
         insertBlock
       } = dispatch(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_16__.store);
       const repeaterItems = [...attributes.repeaterItems];
-
-      if (repeaterItems.length === 0) {
-        setAttributes({
-          repeaterItems: []
-        });
-        return;
-      }
-
       attributes.repeaterItems.map((item, index) => {
         const insertedBlock = (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_15__.createBlock)("premium/accordion-item", {
           title: item.titleText,
           description: item.descText
         });
         insertBlock(insertedBlock, index + 1, clientId);
-        repeaterItems.splice(index, 1);
+        repeaterItems.splice(index - 1, 1);
+
+        if (repeaterItems.length === 0) {
+          setAttributes({
+            repeaterItems: []
+          });
+          return;
+        }
       });
     }
 
@@ -7140,7 +7139,6 @@ const {
   __
 } = wp.i18n;
 const {
-  RichText,
   InnerBlocks
 } = wp.blockEditor;
 
@@ -7230,7 +7228,11 @@ const save = props => {
   const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, 'premium-accordion', blockId);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `${mainClasses} ${hideDesktop} ${hideTablet} ${hideMobile}`
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InnerBlocks.Content, null));
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
+    dangerouslySetInnerHTML: {
+      __html: loadStyles()
+    }
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InnerBlocks.Content, null));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (save);
