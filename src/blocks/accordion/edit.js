@@ -65,6 +65,23 @@ class PremiumAccordion extends Component {
             hideMobile,
         } = this.props.attributes;
 
+        const INNER_BLOCKS_TEMPLATE = [
+            [
+                'premium/accordion-item',
+                {
+                    title: __('Awesome Title'),
+                    placeholder: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
+                },
+            ],
+            [
+                'premium/accordion-item',
+                {
+                    title: __('Awesome Title'),
+                    placeholder: __("Cool Description."),
+                },
+            ],
+        ];
+
         const saveTitleStyles = (value) => {
             const newUpdate = titleStyles.map((item, index) => {
                 if (0 === index) {
@@ -114,7 +131,7 @@ class PremiumAccordion extends Component {
             const styles = {};
 
             styles[`.${blockId} .premium-accordion__title_wrap`] = {
-                'backgroundColor': titleStyles[0].titleBack,
+                'background-color': titleStyles[0].titleBack,
                 'padding-top': titlePaddingTop && `${titlePaddingTop}${titlePadding.unit}`,
                 'padding-right': titlePaddingRight && `${titlePaddingRight}${titlePadding.unit}`,
                 'padding-bottom': titlePaddingBottom && `${titlePaddingBottom}${titlePadding.unit}`,
@@ -420,7 +437,7 @@ class PremiumAccordion extends Component {
                         }}
                     />
                     <InnerBlocks
-                        // template={getFaqChildTemplate}
+                        template={INNER_BLOCKS_TEMPLATE}
                         templateLock={false}
                         allowedBlocks={['premium/accordion-item']}
                     />

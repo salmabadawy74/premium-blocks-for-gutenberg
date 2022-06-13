@@ -52,7 +52,7 @@ export default function save(props) {
                         value={description}
                     />
                 )}
-                {"block" === contentType && <InnerBlocks templateLock={false} />}
+                {"block" === contentType && <InnerBlocks.Content />}
             </div>
         </div>
     );

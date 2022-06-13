@@ -25,7 +25,7 @@ const save = props => {
         const styles = {};
 
         styles[`.${blockId} .premium-accordion__title_wrap`] = {
-            'backgroundColor': titleStyles[0].titleBack,
+            'background-color': titleStyles[0].titleBack,
             'border-style': titleBorder && titleBorder.borderType,
             'border-color': titleBorder && titleBorder.borderColor,
         };

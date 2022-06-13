@@ -6606,6 +6606,13 @@ class PremiumAccordion extends Component {
       hideTablet,
       hideMobile
     } = this.props.attributes;
+    const INNER_BLOCKS_TEMPLATE = [['premium/accordion-item', {
+      title: __('Awesome Title'),
+      placeholder: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.")
+    }], ['premium/accordion-item', {
+      title: __('Awesome Title'),
+      placeholder: __("Cool Description.")
+    }]];
 
     const saveTitleStyles = value => {
       const newUpdate = titleStyles.map((item, index) => {
@@ -6665,7 +6672,7 @@ class PremiumAccordion extends Component {
     const loadStyles = () => {
       const styles = {};
       styles[`.${blockId} .premium-accordion__title_wrap`] = {
-        'backgroundColor': titleStyles[0].titleBack,
+        'background-color': titleStyles[0].titleBack,
         'padding-top': titlePaddingTop && `${titlePaddingTop}${titlePadding.unit}`,
         'padding-right': titlePaddingRight && `${titlePaddingRight}${titlePadding.unit}`,
         'padding-bottom': titlePaddingBottom && `${titlePaddingBottom}${titlePadding.unit}`,
@@ -7021,8 +7028,8 @@ class PremiumAccordion extends Component {
       dangerouslySetInnerHTML: {
         __html: loadStyles()
       }
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InnerBlocks // template={getFaqChildTemplate}
-    , {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InnerBlocks, {
+      template: INNER_BLOCKS_TEMPLATE,
       templateLock: false,
       allowedBlocks: ['premium/accordion-item']
     })))];
@@ -7165,7 +7172,7 @@ const save = props => {
   const loadStyles = () => {
     const styles = {};
     styles[`.${blockId} .premium-accordion__title_wrap`] = {
-      'backgroundColor': titleStyles[0].titleBack,
+      'background-color': titleStyles[0].titleBack,
       'border-style': titleBorder && titleBorder.borderType,
       'border-color': titleBorder && titleBorder.borderColor
     };
