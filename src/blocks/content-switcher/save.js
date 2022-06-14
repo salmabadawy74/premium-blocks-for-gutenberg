@@ -1,7 +1,8 @@
 import classnames from "classnames"
 import {
     RichText,
-    useBlockProps
+    useBlockProps,
+    InnerBlocks
 } from '@wordpress/block-editor';
 import { gradientBackground, typographyCss } from '../../components/HelperFunction'
 
@@ -16,13 +17,7 @@ export default function save(props) {
         secondLabel,
         display,
         labelTag,
-        firstContent,
-        secondContent,
         labelStyles,
-        firstContentStyles,
-        secondContentStyles,
-        effect,
-        slide,
         firstLabelborder,
         switchShadow,
         containerShadow,
@@ -33,14 +28,6 @@ export default function save(props) {
         secondLabelShadow,
         secondLabelBoxShadow,
         secondLabelborder,
-        firstContentTypography,
-        firstContentShadow,
-        firstContentBoxShadow,
-        firstContentborder,
-        secondContentTypography,
-        secondContentShadow,
-        secondContentBoxShadow,
-        secondContentborder,
         containerBoxShadow,
         containerborder,
         hideDesktop,
@@ -150,46 +137,17 @@ export default function save(props) {
                     )}
                 </div>
                 <div
-                    className={`premium-content-switcher-list ${effect == 'slide' ? `slide-${slide}` : ""}`}
+                    className={`premium-content-switcher-list`}
                 >
-                    <ul className="premium-content-switcher-two-content">
-                        <li className={`premium-content-switcher-first-list premium-content-switcher-is-visible ${blockId}`}
-                            style={{
-                                background: firstContentStyles.firstContentBGColor,
-                                borderStyle: firstContentborder.borderType,
-                                borderColor: firstContentborder.borderColor,
-                                boxShadow: `${firstContentBoxShadow.horizontal || 0}px ${firstContentBoxShadow.vertical || 0}px ${firstContentBoxShadow.blur || 0}px ${firstContentBoxShadow.color} ${firstContentBoxShadow.position}`
-                            }}>
-                            <RichText.Content
-                                tagName="div"
-                                className={`premium-content-switcher-first-content`}
-                                value={firstContent}
-                                style={{
-                                    ...typographyCss(firstContentTypography, props.deviceType),
-                                    color: firstContentStyles.firstContentColor,
-                                    textShadow: `${firstContentShadow.horizontal || 0}px ${firstContentShadow.vertical || 0}px ${firstContentShadow.blur || 0}px ${firstContentShadow.color}`,
-                                }}
-                            />
-                        </li>
-                        <li className={`premium-content-switcher-second-list premium-content-switcher-is-hidden ${blockId}`}
-                            style={{
-                                background: secondContentStyles.secondContentBGColor,
-                                borderStyle: secondContentborder.borderType,
-                                borderColor: secondContentborder.borderColor,
-                                boxShadow: `${secondContentBoxShadow.horizontal || 0}px ${secondContentBoxShadow.vertical || 0}px ${secondContentBoxShadow.blur || 0}px ${secondContentBoxShadow.color} ${secondContentBoxShadow.position}`
-                            }}>
-                            <RichText.Content
-                                tagName="div"
-                                className={`premium-content-switcher-second-content`}
-                                value={secondContent}
-                                style={{
-                                    ...typographyCss(secondContentTypography, props.deviceType),
-                                    color: secondContentStyles.secondContentColor,
-                                    textShadow: `${secondContentShadow.horizontal || 0}px ${secondContentShadow.vertical || 0}px ${secondContentShadow.blur || 0}px ${secondContentShadow.color}`,
-                                }}
-                            />
-                        </li>
-                    </ul>
+                    <div className="premium-content-switcher-two-content" style={{ display: 'none' }}>
+                        <InnerBlocks.Content
+                            template={[
+                                ['premium/switcher-child'],
+                                ['premium/switcher-child']
+                            ]}
+                            templateLock="all"
+                        />
+                    </div>
                 </div>
             </div>
         </div>

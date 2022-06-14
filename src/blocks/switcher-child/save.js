@@ -3,7 +3,6 @@ import {
     InnerBlocks,
     useBlockProps
 } from '@wordpress/block-editor';
-import { gradientBackground, typographyCss } from '../../components/HelperFunction'
 
 export default function save(props) {
 

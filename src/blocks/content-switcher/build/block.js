@@ -4739,17 +4739,11 @@ function Edit(props) {
     setAttributes,
     className
   } = props;
-  const inputFirstContent = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
-  const inputSecondContent = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
-  const [mounted, setMounted] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(true);
-  const {
-    getBlock
-  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.select)('core/block-editor');
-  const {
-    updateBlockAttributes,
-    moveBlockToPosition
-  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.dispatch)('core/block-editor');
-  const block = getBlock(props.clientId);
+  const [isPrimary, setPrimary] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+  const [toggle, setToggle] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(true);
+  const contentRef = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
+  const primaryRef = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
+  const secondaryRef = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
     setAttributes({
       blockId: "premium-content-switcher-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_24__.generateBlockId)(props.clientId)
@@ -4757,68 +4751,46 @@ function Edit(props) {
     setAttributes({
       classMigrate: true
     });
+    setClickEvents();
   }, []);
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
-    if (!mounted) {
-      // inputFirstContent.current.classList.remove("premium-content-switcher-is-visible");
-      // inputFirstContent.current.classList.add("premium-content-switcher-is-hidden");
-      // content.style.overflow = 'hidden';
-      // inputSecondContent.current.classList.remove("premium-content-switcher-is-hidden");
-      // inputSecondContent.current.classList.add("premium-content-switcher-is-visible");
-      console.log(block);
-      updateBlockAttributes(block.clientId, 0);
+    if (contentRef.current) {
+      let container = contentRef.current.querySelector(".block-editor-block-list__layout");
 
-      for (let i = 0; i < block.innerBlocks.length; i++) {
-        updateBlockAttributes(block.innerBlocks[0].clientId, 0);
+      if (container && container.children.length === 2) {
+        const {
+          firstChild,
+          lastChild
+        } = container;
+
+        if (!isPrimary) {
+          hideBlock(lastChild);
+          showBlock(firstChild);
+        } else {
+          hideBlock(firstChild);
+          showBlock(lastChild);
+        }
       }
-
-      for (let i = 0; i < block.innerBlocks.length; i++) {
-        updateBlockAttributes(block.innerBlocks[0].clientId, {
-          id: 0
-        });
-      } // console.log(updateBlockAttributes(block.clientId,
-      //     0
-      // ))
-      // console.log(updateBlockAttributes(block.innerBlocks[i].clientId,
-      //     0
-      // ))
-
-    } else {
-      // inputSecondContent.current.classList.remove("premium-content-switcher-is-visible");
-      // inputSecondContent.current.classList.add("premium-content-switcher-is-hidden");
-      // inputFirstContent.current.classList.remove("premium-content-switcher-is-hidden");
-      // inputFirstContent.current.classList.add("premium-content-switcher-is-visible");
-      updateBlockAttributes(block.clientId, 1);
-
-      for (let i = 0; i < block.innerBlocks.length; i++) {
-        updateBlockAttributes(block.innerBlocks[1].clientId, 1);
-      }
-
-      for (let i = 0; i < block.innerBlocks.length; i++) {
-        updateBlockAttributes(block.innerBlocks[1].clientId, {
-          id: 1
-        });
-      } // content.style.overflow = 'hidden';
-
     }
-  }, [mounted]);
+  });
 
   const initToggleBox = () => {
     const {
       blockId
     } = props.attributes;
     if (!blockId) return null;
-    setMounted(!mounted);
-    console.log(mounted); // updateBlockAttributes(block.clientId, {
-    //     tabActive,
-    // });
-    // for (let i = 0; i < block.innerBlocks.length; i++) {
-    //     updateBlockAttributes(block.innerBlocks[i].clientId, {
-    //         tabActive,
-    //     });
-    // }
-    // this.resetTabOrder();
+    setToggle(!toggle);
+    setPrimary(toggle);
   };
+
+  const setClickEvents = () => {
+    primaryRef.current && primaryRef.current.addEventListener("click", () => setPrimary(true));
+    secondaryRef.current && secondaryRef.current.addEventListener("click", () => setPrimary(false));
+  };
+
+  const hideBlock = node => node.style.display = "none";
+
+  const showBlock = node => node.style.display = "block";
 
   const {
     blockId,
@@ -4828,21 +4800,11 @@ function Edit(props) {
     secondLabel,
     display,
     labelTag,
-    firstContent,
-    secondContent,
-    firstcontentalign,
-    secondcontentlign,
     labelStyles,
-    firstContentStyles,
-    secondContentStyles,
-    effect,
-    slide,
     firstLabelborder,
     firstLabelPadding,
     secondLabelPadding,
-    contentPadding,
     containerPadding,
-    firstContentMargin,
     containerMargin,
     switchSize,
     containerRadius,
@@ -4850,7 +4812,6 @@ function Edit(props) {
     switchRadius,
     switchRadiusUnit,
     labelSpacing,
-    contentHeight,
     switchShadow,
     containerShadow,
     firstLabelShadow,
@@ -4860,14 +4821,6 @@ function Edit(props) {
     secondLabelShadow,
     secondLabelBoxShadow,
     secondLabelborder,
-    firstContentTypography,
-    firstContentShadow,
-    firstContentBoxShadow,
-    firstContentborder,
-    secondContentTypography,
-    secondContentShadow,
-    secondContentBoxShadow,
-    secondContentborder,
     containerBoxShadow,
     containerborder,
     hideDesktop,
@@ -4875,8 +4828,7 @@ function Edit(props) {
     hideMobile,
     controllerOneBackground,
     switcherBackground,
-    containerBackground,
-    switcher
+    containerBackground
   } = attributes;
   const DISPLAY = [{
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Block"),
@@ -4884,13 +4836,6 @@ function Edit(props) {
   }, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Inline"),
     value: "inline"
-  }];
-  const EFFECTS = [{
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Fade"),
-    value: "fade"
-  }, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Slide"),
-    value: "slide"
   }];
   let btnGradControllerOne, btnGrad2ControllerOne, btnbgControllerOne;
 
@@ -4916,28 +4861,8 @@ function Edit(props) {
     });
   };
 
-  const saveFirstContentStyles = (color, value) => {
-    const newColors = { ...firstContentStyles
-    };
-    newColors[color] = value;
-    setAttributes({
-      firstContentStyles: newColors
-    });
-  };
-
-  const saveSecondContentStyles = (color, value) => {
-    const newColors = { ...secondContentStyles
-    };
-    newColors[color] = value;
-    setAttributes({
-      secondContentStyles: newColors
-    });
-  };
-
   let loadFirstLabelGoogleFonts;
-  let loadSecondLabelGoogleFonts;
-  let loadFirstContentGoogleFonts;
-  let loadSecondContentGoogleFonts; // if (labelStyles.firstLabelFontFamily !== 'Default') {
+  let loadSecondLabelGoogleFonts; // if (labelStyles.firstLabelFontFamily !== 'Default') {
   //     const firstLabelconfig = {
   //         google: {
   //             families: [labelStyles.firstLabelFontFamily],
@@ -4956,28 +4881,6 @@ function Edit(props) {
   //     }
   //     loadSecondLabelGoogleFonts = (
   //         <WebfontLoader config={secondLabelConfig}>
-  //         </WebfontLoader>
-  //     )
-  // }
-  // if (firstContentTypography.fontFamily !== "Default") {
-  // const firstContentConfig = {
-  //     google: {
-  //         families: [firstContentStyles.firstContentFontFamily],
-  //     }
-  // }
-  // loadFirstContentGoogleFonts = (
-  //     <WebfontLoader config={firstContentConfig}>
-  //     </WebfontLoader>
-  // )
-  // }
-  // if (secondContentStyles.secondContentFontFamily !== "Default") {
-  //     const secondContentConfig = {
-  //         google: {
-  //             families: [secondContentStyles.secondContentFontFamily],
-  //         }
-  //     }
-  //     loadSecondContentGoogleFonts = (
-  //         <WebfontLoader config={secondContentConfig}>
   //         </WebfontLoader>
   //     )
   // }
@@ -5046,97 +4949,6 @@ function Edit(props) {
     value: align,
     onChange: newValue => setAttributes({
       align: newValue
-    }),
-    showIcons: true
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Content 1"),
-    className: "premium-panel-body",
-    initialOpen: false
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_12__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Alignment", 'premium-blocks-for-gutenberg'),
-    choices: [{
-      value: 'left',
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Left'),
-      icon: _components_icons__WEBPACK_IMPORTED_MODULE_23__["default"].alignLeft
-    }, {
-      value: 'center',
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Center'),
-      icon: _components_icons__WEBPACK_IMPORTED_MODULE_23__["default"].alignCenter
-    }, {
-      value: 'right',
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Right'),
-      icon: _components_icons__WEBPACK_IMPORTED_MODULE_23__["default"].alignRight
-    }, {
-      value: 'justify',
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Justify'),
-      icon: _components_icons__WEBPACK_IMPORTED_MODULE_23__["default"].alignJustify
-    }],
-    value: firstcontentalign,
-    onChange: newValue => setAttributes({
-      firstcontentalign: newValue
-    }),
-    showIcons: true
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Content 2"),
-    className: "premium-panel-body",
-    initialOpen: false
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_12__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Alignment", 'premium-blocks-for-gutenberg'),
-    choices: [{
-      value: 'left',
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Left'),
-      icon: _components_icons__WEBPACK_IMPORTED_MODULE_23__["default"].alignLeft
-    }, {
-      value: 'center',
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Center'),
-      icon: _components_icons__WEBPACK_IMPORTED_MODULE_23__["default"].alignCenter
-    }, {
-      value: 'right',
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Right'),
-      icon: _components_icons__WEBPACK_IMPORTED_MODULE_23__["default"].alignRight
-    }, {
-      value: 'justify',
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Justify'),
-      icon: _components_icons__WEBPACK_IMPORTED_MODULE_23__["default"].alignJustify
-    }],
-    value: secondcontentlign,
-    onChange: newValue => setAttributes({
-      secondcontentlign: newValue
-    }),
-    showIcons: true
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Display Options"),
-    className: "premium-panel-body",
-    initialOpen: false
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.SelectControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Animation"),
-    options: EFFECTS,
-    value: effect,
-    onChange: newEffect => setAttributes({
-      effect: newEffect
-    })
-  }), effect == 'slide' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_radio_control__WEBPACK_IMPORTED_MODULE_11__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Slide Direction", 'premium-blocks-for-gutenberg'),
-    choices: [{
-      value: 'top',
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Top'),
-      icon: _components_icons__WEBPACK_IMPORTED_MODULE_23__["default"].arrowTop
-    }, {
-      value: 'right',
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Right'),
-      icon: _components_icons__WEBPACK_IMPORTED_MODULE_23__["default"].arrowRight
-    }, {
-      value: 'bottom',
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Bottom'),
-      icon: _components_icons__WEBPACK_IMPORTED_MODULE_23__["default"].arrowBottom
-    }, {
-      value: 'left',
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Left'),
-      icon: _components_icons__WEBPACK_IMPORTED_MODULE_23__["default"].arrowLeft
-    }],
-    value: slide,
-    onChange: newValue => setAttributes({
-      slide: newValue
     }),
     showIcons: true
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_19__["default"], {
@@ -5322,115 +5134,6 @@ function Edit(props) {
     responsive: true,
     device: "Desktop"
   }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Content Style"),
-    className: "premium-panel-body",
-    initialOpen: false
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Height', 'premium-blocks-for-gutenberg'),
-    value: contentHeight,
-    onChange: value => setAttributes({
-      contentHeight: value
-    }),
-    min: 1,
-    max: 1000,
-    step: 1,
-    showUnit: true,
-    units: ['px', 'em', 'rem'],
-    defaultValue: 100,
-    device: "Desktop"
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_InsideTabs__WEBPACK_IMPORTED_MODULE_20__["default"], null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_InsideTab__WEBPACK_IMPORTED_MODULE_21__["default"], {
-    tabTitle: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('First Content')
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_13__["default"], {
-    components: ["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"],
-    value: firstContentTypography,
-    onChange: newValue => setAttributes({
-      firstContentTypography: newValue
-    })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_10__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Text Color", 'premium-block-for-gutenberg'),
-    colorValue: firstContentStyles.firstContentColor,
-    colorDefault: '',
-    onColorChange: newValue => saveFirstContentStyles('firstContentColor', newValue)
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_10__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Background Color", 'premium-block-for-gutenberg'),
-    colorValue: firstContentStyles.firstContentBGColor,
-    colorDefault: '',
-    onColorChange: newValue => saveFirstContentStyles('firstContentBGColor', newValue)
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_14__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Text Shadow", "premium-blocks-for-gutenberg"),
-    value: firstContentShadow,
-    onChange: value => setAttributes({
-      firstContentShadow: value
-    })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_14__["default"], {
-    value: firstContentBoxShadow,
-    onChange: value => setAttributes({
-      firstContentBoxShadow: value
-    }),
-    boxShadow: true
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_15__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Border', 'premium-blocks-for-gutenberg'),
-    value: firstContentborder,
-    onChange: value => setAttributes({
-      firstContentborder: value
-    }),
-    device: "Desktop"
-  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_InsideTab__WEBPACK_IMPORTED_MODULE_21__["default"], {
-    tabTitle: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Second Content')
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_13__["default"], {
-    components: ["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"],
-    value: secondContentTypography,
-    onChange: newValue => setAttributes({
-      secondContentTypography: newValue
-    })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_10__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Text Color", 'premium-block-for-gutenberg'),
-    colorValue: secondContentStyles.secondContentColor,
-    colorDefault: '',
-    onColorChange: newValue => saveSecondContentStyles('secondContentColor', newValue)
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_10__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Background Color", 'premium-block-for-gutenberg'),
-    colorValue: secondContentStyles.secondContentBGColor,
-    colorDefault: '',
-    onColorChange: newValue => saveSecondContentStyles('secondContentBGColor', newValue)
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_14__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Text Shadow", "premium-blocks-for-gutenberg"),
-    value: secondContentShadow,
-    onChange: value => setAttributes({
-      secondContentShadow: value
-    })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_14__["default"], {
-    value: secondContentBoxShadow,
-    onChange: value => setAttributes({
-      secondContentBoxShadow: value
-    }),
-    boxShadow: true
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_15__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Border', 'premium-blocks-for-gutenberg'),
-    value: secondContentborder,
-    onChange: value => setAttributes({
-      secondContentborder: value
-    }),
-    device: "Desktop"
-  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_16__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Margin', 'premium-blocks-for-gutenberg'),
-    value: firstContentMargin,
-    onChange: value => setAttributes({
-      firstContentMargin: value
-    }),
-    showUnits: true,
-    responsive: true,
-    device: "Desktop"
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_16__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Padding', 'premium-blocks-for-gutenberg'),
-    value: contentPadding,
-    onChange: value => setAttributes({
-      contentPadding: value
-    }),
-    showUnits: true,
-    responsive: true,
-    device: "Desktop"
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Container Style"),
     className: "premium-panel-body",
     initialOpen: false
@@ -5543,6 +5246,7 @@ function Edit(props) {
       firstLabel: newValue
     }),
     value: firstLabel,
+    ref: primaryRef,
     style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_24__.typographyCss)(firstLabelTypography, props.deviceType),
       ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_24__.borderCss)(firstLabelborder, props.deviceType),
       ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_24__.padddingCss)(firstLabelPadding, props.deviceType),
@@ -5576,6 +5280,7 @@ function Edit(props) {
       secondLabel: newValue
     }),
     value: secondLabel,
+    ref: secondaryRef,
     style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_24__.typographyCss)(secondLabelTypography, props.deviceType),
       ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_24__.borderCss)(secondLabelborder, props.deviceType),
       ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_24__.padddingCss)(secondLabelPadding, props.deviceType),
@@ -5586,16 +5291,14 @@ function Edit(props) {
       boxShadow: `${secondLabelBoxShadow.horizontal || 0}px ${secondLabelBoxShadow.vertical || 0}px ${secondLabelBoxShadow.blur || 0}px ${secondLabelBoxShadow.color} ${secondLabelBoxShadow.position}`
     }
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: `premium-content-switcher-list ${effect == 'slide' ? `slide-${slide}` : ""}`,
-    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_24__.marginCss)(firstContentMargin, props.deviceType)
-    }
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("ul", {
-    className: "premium-content-switcher-two-content"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("li", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.InnerBlocks, {
+    className: `premium-content-switcher-list`
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "premium-content-switcher-two-content",
+    ref: contentRef
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.InnerBlocks, {
     template: [['premium/switcher-child'], ['premium/switcher-child']],
-    templateLock: false,
-    allowedBlocks: ['premium/switcher-child']
-  }))))), loadFirstLabelGoogleFonts, loadSecondLabelGoogleFonts, loadFirstContentGoogleFonts, loadSecondContentGoogleFonts));
+    templateLock: "all"
+  })))), loadFirstLabelGoogleFonts, loadSecondLabelGoogleFonts));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = ((0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.withSelect)((select, props) => {
@@ -5644,13 +5347,7 @@ function save(props) {
     secondLabel,
     display,
     labelTag,
-    firstContent,
-    secondContent,
     labelStyles,
-    firstContentStyles,
-    secondContentStyles,
-    effect,
-    slide,
     firstLabelborder,
     switchShadow,
     containerShadow,
@@ -5661,14 +5358,6 @@ function save(props) {
     secondLabelShadow,
     secondLabelBoxShadow,
     secondLabelborder,
-    firstContentTypography,
-    firstContentShadow,
-    firstContentBoxShadow,
-    firstContentborder,
-    secondContentTypography,
-    secondContentShadow,
-    secondContentBoxShadow,
-    secondContentborder,
     containerBoxShadow,
     containerborder,
     hideDesktop,
@@ -5759,42 +5448,16 @@ function save(props) {
       textShadow: `${secondLabelShadow.horizontal || 0}px ${secondLabelShadow.vertical || 0}px ${secondLabelShadow.blur || 0}px ${secondLabelShadow.color}`
     }
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: `premium-content-switcher-list ${effect == 'slide' ? `slide-${slide}` : ""}`
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
-    className: "premium-content-switcher-two-content"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
-    className: `premium-content-switcher-first-list premium-content-switcher-is-visible ${blockId}`,
+    className: `premium-content-switcher-list`
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "premium-content-switcher-two-content",
     style: {
-      background: firstContentStyles.firstContentBGColor,
-      borderStyle: firstContentborder.borderType,
-      borderColor: firstContentborder.borderColor,
-      boxShadow: `${firstContentBoxShadow.horizontal || 0}px ${firstContentBoxShadow.vertical || 0}px ${firstContentBoxShadow.blur || 0}px ${firstContentBoxShadow.color} ${firstContentBoxShadow.position}`
+      display: 'none'
     }
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
-    tagName: "div",
-    className: `premium-content-switcher-first-content`,
-    value: firstContent,
-    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.typographyCss)(firstContentTypography, props.deviceType),
-      color: firstContentStyles.firstContentColor,
-      textShadow: `${firstContentShadow.horizontal || 0}px ${firstContentShadow.vertical || 0}px ${firstContentShadow.blur || 0}px ${firstContentShadow.color}`
-    }
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
-    className: `premium-content-switcher-second-list premium-content-switcher-is-hidden ${blockId}`,
-    style: {
-      background: secondContentStyles.secondContentBGColor,
-      borderStyle: secondContentborder.borderType,
-      borderColor: secondContentborder.borderColor,
-      boxShadow: `${secondContentBoxShadow.horizontal || 0}px ${secondContentBoxShadow.vertical || 0}px ${secondContentBoxShadow.blur || 0}px ${secondContentBoxShadow.color} ${secondContentBoxShadow.position}`
-    }
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
-    tagName: "div",
-    className: `premium-content-switcher-second-content`,
-    value: secondContent,
-    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.typographyCss)(secondContentTypography, props.deviceType),
-      color: secondContentStyles.secondContentColor,
-      textShadow: `${secondContentShadow.horizontal || 0}px ${secondContentShadow.vertical || 0}px ${secondContentShadow.blur || 0}px ${secondContentShadow.color}`
-    }
-  }))))));
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InnerBlocks.Content, {
+    template: [['premium/switcher-child'], ['premium/switcher-child']],
+    templateLock: "all"
+  })))));
 }
 
 /***/ }),
@@ -14582,7 +14245,7 @@ function _extends() {
 /***/ (function(module) {
 
 "use strict";
-module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/content-switcher","title":"Content Switcher","icon":"content-switcher","category":"premium-blocks","description":"Toggle between two different content using Premium Content Switcher Block.","keywords":["content","switcher"],"supports":{"html":false},"editorScript":"file:./build/block.js","script":"gpb-content-switcher-block-script","editorStyle":"file:./build/index.css","style":"file:./build/style-block.css","attributes":{"blockId":{"type":"string"},"classMigrate":{"type":"boolean","default":false},"align":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"showLabel":{"type":"boolean","default":true},"firstLabel":{"type":"string","default":"Content #1"},"secondLabel":{"type":"string","default":"Content #2"},"display":{"type":"string","default":"inline"},"labelTag":{"type":"string","default":"h3"},"firstContent":{"type":"string","default":"Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."},"secondContent":{"type":"string","default":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."},"firstcontentalign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"secondcontentlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"backgroundTypeState2":{"type":"string","default":""},"labelStyles":{"type":"object","default":{"firstLabelColor":"rgb(84, 89, 95)","secondLabelColor":"rgb(84, 89, 95)","firstLabelBGColor":"","secondLabelBGColor":""}},"firstContentStyles":{"type":"object","default":{"firstContentColor":"#54595f","firstContentBGColor":""}},"secondContentStyles":{"type":"object","default":{"secondContentColor":"#54595f","secondContentBGColor":""}},"firstStateColor":{"type":"string","default":"#6ec1e4"},"secondStateColor":{"type":"string","default":"#6ec1e4"},"switcherBGColor":{"type":"string","default":"#f2f2f2"},"effect":{"type":"string","default":"fade"},"slide":{"type":"string","default":"top"},"firstLabelPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"secondLabelPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"contentPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"containerPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"firstContentMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"containerMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"switchSize":{"type":"object","default":{"Desktop":15}},"containerRadius":{"type":"number","default":50},"containerRadiusUnit":{"type":"string","default":"%"},"switchRadius":{"type":"number","default":"1.5"},"switchRadiusUnit":{"type":"string","default":"em"},"labelSpacing":{"type":"object","default":{"Desktop":"15"}},"contentHeight":{"type":"object","default":{"Desktop":"100","unit":"px"}},"containerShadow":{"type":"object","default":{"color":"","blur":"","horizontal":"","vertical":"","position":""}},"switchShadow":{"type":"object","default":{"color":"","blur":"","horizontal":"","vertical":"","position":""}},"firstLabelShadow":{"type":"object","default":{"color":"","blur":"","horizontal":"","vertical":""}},"firstLabelBoxShadow":{"type":"object","default":{"color":"","blur":"","horizontal":"","vertical":"","position":""}},"firstLabelTypography":{"type":"object","default":{"fontWeight":400,"fontStyle":"","textTransform":"","letterSpacing":"","fontFamily":"Default","lineHeight":"","fontSize":{"Desktop":20,"Tablet":20,"Mobile":20,"unit":"px"}}},"firstLabelborder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"secondLabelTypography":{"type":"object","default":{"fontWeight":400,"fontStyle":"","textTransform":"","letterSpacing":"","fontFamily":"Default","lineHeight":"","fontSize":{"Desktop":20,"Tablet":20,"Mobile":20,"unit":"px"}}},"secondLabelShadow":{"type":"object","default":{"color":"","blur":"","horizontal":"","vertical":""}},"secondLabelBoxShadow":{"type":"object","default":{"color":"","blur":"","horizontal":"","vertical":"","position":""}},"secondLabelborder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"firstContentTypography":{"type":"object","default":{"fontWeight":400,"fontStyle":"","textTransform":"","letterSpacing":"","fontFamily":"Default","lineHeight":"","fontSize":{"Desktop":20,"Tablet":20,"Mobile":20,"unit":"px"}}},"firstContentShadow":{"type":"object","default":{"color":"","blur":"","horizontal":"","vertical":""}},"firstContentBoxShadow":{"type":"object","default":{"color":"","blur":"","horizontal":"","vertical":"","position":""}},"firstContentborder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"secondContentTypography":{"type":"object","default":{"fontWeight":400,"fontStyle":"","textTransform":"","letterSpacing":"","fontFamily":"Default","lineHeight":"","fontSize":{"Desktop":20,"Tablet":20,"Mobile":20,"unit":"px"}}},"secondContentShadow":{"type":"object","default":{"color":"","blur":"","horizontal":"","vertical":""}},"secondContentBoxShadow":{"type":"object","default":{"color":"","blur":"","horizontal":"","vertical":"","position":""}},"secondContentborder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"containerBoxShadow":{"type":"object","default":{"color":"","blur":"","horizontal":"","vertical":"","position":""}},"containerborder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"controllerOneBackground":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"","gradientColorTwo":"","gradientLocationTwo":"","gradientAngle":"","gradientPosition":"","gradientType":""}},"switcherBackground":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"","gradientColorTwo":"","gradientLocationTwo":"","gradientAngle":"","gradientPosition":"","gradientType":""}},"containerBackground":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"","gradientColorTwo":"","gradientLocationTwo":"","gradientAngle":"","gradientPosition":"","gradientType":""}},"switcher":{"type":"array","default":[{"label":"first"},{"label":"second"}]}}}');
+module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/content-switcher","title":"Content Switcher","icon":"content-switcher","category":"premium-blocks","description":"Toggle between two different content using Premium Content Switcher Block.","keywords":["content","switcher"],"supports":{"html":false},"editorScript":"file:./build/block.js","script":"gpb-content-switcher-block-script","editorStyle":"file:./build/index.css","style":"file:./build/style-block.css","attributes":{"blockId":{"type":"string"},"classMigrate":{"type":"boolean","default":false},"align":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"showLabel":{"type":"boolean","default":true},"firstLabel":{"type":"string","default":"Content #1"},"secondLabel":{"type":"string","default":"Content #2"},"display":{"type":"string","default":"inline"},"labelTag":{"type":"string","default":"h3"},"backgroundTypeState2":{"type":"string","default":""},"labelStyles":{"type":"object","default":{"firstLabelColor":"rgb(84, 89, 95)","secondLabelColor":"rgb(84, 89, 95)","firstLabelBGColor":"","secondLabelBGColor":""}},"firstStateColor":{"type":"string","default":"#6ec1e4"},"secondStateColor":{"type":"string","default":"#6ec1e4"},"switcherBGColor":{"type":"string","default":"#f2f2f2"},"firstLabelPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"secondLabelPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"containerPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"containerMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"switchSize":{"type":"object","default":{"Desktop":15}},"containerRadius":{"type":"number","default":50},"containerRadiusUnit":{"type":"string","default":"%"},"switchRadius":{"type":"number","default":"1.5"},"switchRadiusUnit":{"type":"string","default":"em"},"labelSpacing":{"type":"object","default":{"Desktop":"15"}},"containerShadow":{"type":"object","default":{"color":"","blur":"","horizontal":"","vertical":"","position":""}},"switchShadow":{"type":"object","default":{"color":"","blur":"","horizontal":"","vertical":"","position":""}},"firstLabelShadow":{"type":"object","default":{"color":"","blur":"","horizontal":"","vertical":""}},"firstLabelBoxShadow":{"type":"object","default":{"color":"","blur":"","horizontal":"","vertical":"","position":""}},"firstLabelTypography":{"type":"object","default":{"fontWeight":400,"fontStyle":"","textTransform":"","letterSpacing":"","fontFamily":"Default","lineHeight":"","fontSize":{"Desktop":20,"Tablet":20,"Mobile":20,"unit":"px"}}},"firstLabelborder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"secondLabelTypography":{"type":"object","default":{"fontWeight":400,"fontStyle":"","textTransform":"","letterSpacing":"","fontFamily":"Default","lineHeight":"","fontSize":{"Desktop":20,"Tablet":20,"Mobile":20,"unit":"px"}}},"secondLabelShadow":{"type":"object","default":{"color":"","blur":"","horizontal":"","vertical":""}},"secondLabelBoxShadow":{"type":"object","default":{"color":"","blur":"","horizontal":"","vertical":"","position":""}},"secondLabelborder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"containerBoxShadow":{"type":"object","default":{"color":"","blur":"","horizontal":"","vertical":"","position":""}},"containerborder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"controllerOneBackground":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"","gradientColorTwo":"","gradientLocationTwo":"","gradientAngle":"","gradientPosition":"","gradientType":""}},"switcherBackground":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"","gradientColorTwo":"","gradientLocationTwo":"","gradientAngle":"","gradientPosition":"","gradientType":""}},"containerBackground":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"","gradientColorTwo":"","gradientLocationTwo":"","gradientAngle":"","gradientPosition":"","gradientType":""}}}}');
 
 /***/ })
 

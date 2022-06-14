@@ -1,14 +1,13 @@
 import { __ } from '@wordpress/i18n';
 import classnames from "classnames";
 import {
-    InspectorControls,
     InnerBlocks,
     useBlockProps
 } from '@wordpress/block-editor';
 
 function Edit(props) {
 
-    const { attributes, setAttributes, className } = props;
+    const { attributes, className } = props;
 
     const {
         blockId
