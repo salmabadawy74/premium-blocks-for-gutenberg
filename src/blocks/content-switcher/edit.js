@@ -4,7 +4,8 @@ import { withSelect } from '@wordpress/data'
 import {
     InspectorControls,
     RichText,
-    useBlockProps
+    useBlockProps,
+    InnerBlocks
 } from '@wordpress/block-editor';
 import {
     Fragment,
@@ -49,42 +50,57 @@ function Edit(props) {
 
     const { attributes, setAttributes, className } = props;
 
-    const inputFirstContent = useRef(null);
-    const inputSecondContent = useRef(null);
-    const [mounted, setMounted] = useState(true);
+    const [isPrimary, setPrimary] = useState(false);
+    const [toggle, setToggle] = useState(true);
+
+    const contentRef = useRef(null);
+    const primaryRef = useRef(null);
+    const secondaryRef = useRef(null);
 
     useEffect(() => {
         setAttributes({ blockId: "premium-content-switcher-" + generateBlockId(props.clientId) })
         setAttributes({ classMigrate: true })
+        setClickEvents();
     }, [])
 
     useEffect(() => {
+        if (contentRef.current) {
+            let container = contentRef.current.querySelector(
+                ".block-editor-block-list__layout"
+            );
 
-        if (!mounted) {
-            inputFirstContent.current.classList.remove("premium-content-switcher-is-visible");
-            inputFirstContent.current.classList.add("premium-content-switcher-is-hidden");
+            if (container && container.children.length === 2) {
+                const { firstChild, lastChild } = container;
 
-            // content.style.overflow = 'hidden';
-
-            inputSecondContent.current.classList.remove("premium-content-switcher-is-hidden");
-            inputSecondContent.current.classList.add("premium-content-switcher-is-visible");
+                if (!isPrimary) {
+                    hideBlock(lastChild);
+                    showBlock(firstChild);
+                } else {
+                    hideBlock(firstChild);
+                    showBlock(lastChild);
+                }
+            }
         }
-        else {
-            inputSecondContent.current.classList.remove("premium-content-switcher-is-visible");
-            inputSecondContent.current.classList.add("premium-content-switcher-is-hidden");
-
-            inputFirstContent.current.classList.remove("premium-content-switcher-is-hidden");
-            inputFirstContent.current.classList.add("premium-content-switcher-is-visible");
-
-            // content.style.overflow = 'hidden';
-        }
-    }, [mounted])
+    });
 
     const initToggleBox = () => {
         const { blockId } = props.attributes;
         if (!blockId) return null;
-        setMounted(!mounted)
+        setToggle(!toggle)
+        setPrimary(toggle);
     }
+
+    const setClickEvents = () => {
+        primaryRef.current &&
+            primaryRef.current.addEventListener("click", () => setPrimary(true));
+
+        secondaryRef.current &&
+            secondaryRef.current.addEventListener("click", () => setPrimary(false));
+    };
+
+    const hideBlock = (node) => (node.style.display = "none");
+
+    const showBlock = (node) => (node.style.display = "block");
 
     const {
         blockId,
@@ -94,21 +110,11 @@ function Edit(props) {
         secondLabel,
         display,
         labelTag,
-        firstContent,
-        secondContent,
-        firstcontentalign,
-        secondcontentlign,
         labelStyles,
-        firstContentStyles,
-        secondContentStyles,
-        effect,
-        slide,
         firstLabelborder,
         firstLabelPadding,
         secondLabelPadding,
-        contentPadding,
         containerPadding,
-        firstContentMargin,
         containerMargin,
         switchSize,
         containerRadius,
@@ -116,7 +122,6 @@ function Edit(props) {
         switchRadius,
         switchRadiusUnit,
         labelSpacing,
-        contentHeight,
         switchShadow,
         containerShadow,
         firstLabelShadow,
@@ -126,14 +131,6 @@ function Edit(props) {
         secondLabelShadow,
         secondLabelBoxShadow,
         secondLabelborder,
-        firstContentTypography,
-        firstContentShadow,
-        firstContentBoxShadow,
-        firstContentborder,
-        secondContentTypography,
-        secondContentShadow,
-        secondContentBoxShadow,
-        secondContentborder,
         containerBoxShadow,
         containerborder,
         hideDesktop,
@@ -155,17 +152,6 @@ function Edit(props) {
         }
     ];
 
-    const EFFECTS = [
-        {
-            label: __("Fade"),
-            value: "fade"
-        },
-        {
-            label: __("Slide"),
-            value: "slide"
-        }
-    ]
-
     let btnGradControllerOne, btnGrad2ControllerOne, btnbgControllerOne;
 
     if (undefined !== controllerOneBackground.backgroundType && 'gradient' === controllerOneBackground.backgroundType) {
@@ -186,22 +172,8 @@ function Edit(props) {
         setAttributes({ labelStyles: newColors });
     }
 
-    const saveFirstContentStyles = (color, value) => {
-        const newColors = { ...firstContentStyles };
-        newColors[color] = value;
-        setAttributes({ firstContentStyles: newColors });
-    }
-
-    const saveSecondContentStyles = (color, value) => {
-        const newColors = { ...secondContentStyles };
-        newColors[color] = value;
-        setAttributes({ secondContentStyles: newColors });
-    }
-
     let loadFirstLabelGoogleFonts;
     let loadSecondLabelGoogleFonts;
-    let loadFirstContentGoogleFonts;
-    let loadSecondContentGoogleFonts;
 
     // if (labelStyles.firstLabelFontFamily !== 'Default') {
     //     const firstLabelconfig = {
@@ -223,30 +195,6 @@ function Edit(props) {
     //     }
     //     loadSecondLabelGoogleFonts = (
     //         <WebfontLoader config={secondLabelConfig}>
-    //         </WebfontLoader>
-    //     )
-    // }
-
-    // if (firstContentTypography.fontFamily !== "Default") {
-    // const firstContentConfig = {
-    //     google: {
-    //         families: [firstContentStyles.firstContentFontFamily],
-    //     }
-    // }
-    // loadFirstContentGoogleFonts = (
-    //     <WebfontLoader config={firstContentConfig}>
-    //     </WebfontLoader>
-    // )
-    // }
-
-    // if (secondContentStyles.secondContentFontFamily !== "Default") {
-    //     const secondContentConfig = {
-    //         google: {
-    //             families: [secondContentStyles.secondContentFontFamily],
-    //         }
-    //     }
-    //     loadSecondContentGoogleFonts = (
-    //         <WebfontLoader config={secondContentConfig}>
     //         </WebfontLoader>
     //     )
     // }
@@ -300,68 +248,6 @@ function Edit(props) {
                                 onChange={(newValue) => setAttributes({ align: newValue })}
                                 showIcons={true}
                             />
-                        </PanelBody>
-                        <PanelBody
-                            title={__("Content 1")}
-                            className="premium-panel-body"
-                            initialOpen={false}
-                        >
-                            <ResponsiveRadioControl
-                                label={__("Alignment", 'premium-blocks-for-gutenberg')}
-                                choices={[
-                                    { value: 'left', label: __('Left'), icon: Icons.alignLeft },
-                                    { value: 'center', label: __('Center'), icon: Icons.alignCenter },
-                                    { value: 'right', label: __('Right'), icon: Icons.alignRight },
-                                    { value: 'justify', label: __('Justify'), icon: Icons.alignJustify }
-                                ]}
-                                value={firstcontentalign}
-                                onChange={(newValue) => setAttributes({ firstcontentalign: newValue })}
-                                showIcons={true}
-                            />
-                        </PanelBody>
-                        <PanelBody
-                            title={__("Content 2")}
-                            className="premium-panel-body"
-                            initialOpen={false}
-                        >
-                            <ResponsiveRadioControl
-                                label={__("Alignment", 'premium-blocks-for-gutenberg')}
-                                choices={[
-                                    { value: 'left', label: __('Left'), icon: Icons.alignLeft },
-                                    { value: 'center', label: __('Center'), icon: Icons.alignCenter },
-                                    { value: 'right', label: __('Right'), icon: Icons.alignRight },
-                                    { value: 'justify', label: __('Justify'), icon: Icons.alignJustify }
-                                ]}
-                                value={secondcontentlign}
-                                onChange={(newValue) => setAttributes({ secondcontentlign: newValue })}
-                                showIcons={true}
-                            />
-                        </PanelBody>
-                        <PanelBody
-                            title={__("Display Options")}
-                            className="premium-panel-body"
-                            initialOpen={false}
-                        >
-                            <SelectControl
-                                label={__("Animation")}
-                                options={EFFECTS}
-                                value={effect}
-                                onChange={newEffect => setAttributes({ effect: newEffect })}
-                            />
-                            {effect == 'slide' &&
-                                <RadioComponent
-                                    label={__("Slide Direction", 'premium-blocks-for-gutenberg')}
-                                    choices={[
-                                        { value: 'top', label: __('Top'), icon: Icons.arrowTop },
-                                        { value: 'right', label: __('Right'), icon: Icons.arrowRight },
-                                        { value: 'bottom', label: __('Bottom'), icon: Icons.arrowBottom },
-                                        { value: 'left', label: __('Left'), icon: Icons.arrowLeft }
-                                    ]}
-                                    value={slide}
-                                    onChange={(newValue) => setAttributes({ slide: newValue })}
-                                    showIcons={true}
-                                />
-                            }
                         </PanelBody>
                     </InspectorTab>
                     <InspectorTab key={'style'}>
@@ -564,135 +450,6 @@ function Edit(props) {
                         </PanelBody>
                         )}
                         <PanelBody
-                            title={__("Content Style")}
-                            className="premium-panel-body"
-                            initialOpen={false}
-                        >
-                            <ResponsiveRangeControl
-                                label={__('Height', 'premium-blocks-for-gutenberg')}
-                                value={contentHeight}
-                                onChange={(value) => setAttributes({ contentHeight: value })}
-                                min={1}
-                                max={1000}
-                                step={1}
-                                showUnit={true}
-                                units={['px', 'em', 'rem']}
-                                defaultValue={100}
-                                device="Desktop"
-                            />
-                            <InsideTabs>
-                                <InsideTab tabTitle={__('First Content')}>
-                                    <Fragment>
-                                        <PremiumTypo
-                                            components={["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"]}
-                                            value={firstContentTypography}
-                                            onChange={newValue => setAttributes({ firstContentTypography: newValue })}
-                                        />
-                                        <AdvancedPopColorControl
-                                            label={__("Text Color", 'premium-block-for-gutenberg')}
-                                            colorValue={firstContentStyles.firstContentColor}
-                                            colorDefault={''}
-                                            onColorChange={newValue =>
-                                                saveFirstContentStyles(
-                                                    'firstContentColor', newValue
-                                                )
-                                            }
-                                        />
-                                        <AdvancedPopColorControl
-                                            label={__("Background Color", 'premium-block-for-gutenberg')}
-                                            colorValue={firstContentStyles.firstContentBGColor}
-                                            colorDefault={''}
-                                            onColorChange={newValue =>
-                                                saveFirstContentStyles(
-                                                    'firstContentBGColor', newValue
-                                                )
-                                            }
-                                        />
-                                        <PremiumShadow
-                                            label={__("Text Shadow", "premium-blocks-for-gutenberg")}
-                                            value={firstContentShadow}
-                                            onChange={(value) => setAttributes({ firstContentShadow: value })}
-                                        />
-                                        <PremiumShadow
-                                            value={firstContentBoxShadow}
-                                            onChange={(value) => setAttributes({ firstContentBoxShadow: value })}
-                                            boxShadow={true}
-                                        />
-                                        <hr />
-                                        <PremiumBorder
-                                            label={__('Border', 'premium-blocks-for-gutenberg')}
-                                            value={firstContentborder}
-                                            onChange={(value) => setAttributes({ firstContentborder: value })}
-                                            device="Desktop"
-                                        />
-                                    </Fragment>
-                                </InsideTab>
-                                <InsideTab tabTitle={__('Second Content')}>
-                                    <Fragment>
-                                        <PremiumTypo
-                                            components={["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"]}
-                                            value={secondContentTypography}
-                                            onChange={newValue => setAttributes({ secondContentTypography: newValue })}
-                                        />
-                                        <AdvancedPopColorControl
-                                            label={__("Text Color", 'premium-block-for-gutenberg')}
-                                            colorValue={secondContentStyles.secondContentColor}
-                                            colorDefault={''}
-                                            onColorChange={newValue =>
-                                                saveSecondContentStyles(
-                                                    'secondContentColor', newValue
-                                                )
-                                            }
-                                        />
-                                        <AdvancedPopColorControl
-                                            label={__("Background Color", 'premium-block-for-gutenberg')}
-                                            colorValue={secondContentStyles.secondContentBGColor}
-                                            colorDefault={''}
-                                            onColorChange={newValue =>
-                                                saveSecondContentStyles(
-                                                    'secondContentBGColor', newValue
-                                                )
-                                            }
-                                        />
-                                        <PremiumShadow
-                                            label={__("Text Shadow", "premium-blocks-for-gutenberg")}
-                                            value={secondContentShadow}
-                                            onChange={(value) => setAttributes({ secondContentShadow: value })}
-                                        />
-                                        <PremiumShadow
-                                            value={secondContentBoxShadow}
-                                            onChange={(value) => setAttributes({ secondContentBoxShadow: value })}
-                                            boxShadow={true}
-                                        />
-                                        <hr />
-                                        <PremiumBorder
-                                            label={__('Border', 'premium-blocks-for-gutenberg')}
-                                            value={secondContentborder}
-                                            onChange={(value) => setAttributes({ secondContentborder: value })}
-                                            device="Desktop"
-                                        />
-                                    </Fragment>
-                                </InsideTab>
-                            </InsideTabs>
-                            <SpacingControl
-                                label={__('Margin', 'premium-blocks-for-gutenberg')}
-                                value={firstContentMargin}
-                                onChange={(value) => setAttributes({ firstContentMargin: value })}
-                                showUnits={true}
-                                responsive={true}
-                                device="Desktop"
-                            />
-                            <SpacingControl
-                                label={__('Padding', 'premium-blocks-for-gutenberg')}
-                                value={contentPadding}
-                                onChange={(value) => setAttributes({ contentPadding: value })}
-                                showUnits={true}
-                                responsive={true}
-                                device="Desktop"
-                            />
-                        </PanelBody>
-
-                        <PanelBody
                             title={__("Container Style")}
                             className="premium-panel-body"
                             initialOpen={false}
@@ -808,6 +565,7 @@ function Edit(props) {
                                 className={`premium-content-switcher-${display}-editing`}
                                 onChange={(newValue) => setAttributes({ firstLabel: newValue })}
                                 value={firstLabel}
+                                ref={primaryRef}
                                 style={{
                                     ...typographyCss(firstLabelTypography, props.deviceType),
                                     ...borderCss(firstLabelborder, props.deviceType),
@@ -843,6 +601,7 @@ function Edit(props) {
                                 className={`premium-content-switcher-${display}-editing`}
                                 onChange={(newValue) => setAttributes({ secondLabel: newValue })}
                                 value={secondLabel}
+                                ref={secondaryRef}
                                 style={{
                                     ...typographyCss(secondLabelTypography, props.deviceType),
                                     ...borderCss(secondLabelborder, props.deviceType),
@@ -858,71 +617,26 @@ function Edit(props) {
                         )}
                     </div>
                     <div
-                        className={`premium-content-switcher-list ${effect == 'slide' ? `slide-${slide}` : ""}`}
-                        style={{
-                            ...marginCss(firstContentMargin, props.deviceType),
-                        }}
+                        className={`premium-content-switcher-list`}
                     >
-                        <ul className="premium-content-switcher-two-content">
-                            <li ref={inputFirstContent} className={`premium-content-switcher-is-visible premium-content-switcher-first-list ${props.clientId}`}
-                                style={{
-                                    ...borderCss(firstContentborder, props.deviceType),
-                                    ...padddingCss(contentPadding, props.deviceType),
-                                    background: firstContentStyles.firstContentBGColor,
-                                    minHeight: (contentHeight[props.deviceType] || 100) + contentHeight.unit,
-                                    boxShadow: `${firstContentBoxShadow.horizontal || 0}px ${firstContentBoxShadow.vertical || 0}px ${firstContentBoxShadow.blur || 0}px ${firstContentBoxShadow.color} ${firstContentBoxShadow.position}`
-                                }}>
-                                <RichText
-                                    tagName="div"
-                                    className={`premium-content-switcher-first-content`}
-                                    value={firstContent}
-                                    onChange={value => {
-                                        setAttributes({ firstContent: value })
-                                    }}
-                                    style={{
-                                        ...typographyCss(firstContentTypography, props.deviceType),
-                                        textAlign: firstcontentalign[props.deviceType],
-                                        justifyContent: firstcontentalign[props.deviceType],
-                                        color: firstContentStyles.firstContentColor,
-                                        textShadow: `${firstContentShadow.horizontal || 0}px ${firstContentShadow.vertical || 0}px ${firstContentShadow.blur || 0}px ${firstContentShadow.color}`,
-                                    }}
-                                />
-                            </li>
-                            <li ref={inputSecondContent} className={`premium-content-switcher-is-hidden premium-content-switcher-second-list ${props.clientId}`}
-                                style={{
-                                    ...borderCss(secondContentborder, props.deviceType),
-                                    ...padddingCss(contentPadding, props.deviceType),
-                                    background: secondContentStyles.secondContentBGColor,
-                                    minHeight: (contentHeight[props.deviceType] || 100) + contentHeight.unit,
-                                    boxShadow: `${secondContentBoxShadow.horizontal || 0}px ${secondContentBoxShadow.vertical || 0}px ${secondContentBoxShadow.blur || 0}px ${secondContentBoxShadow.color} ${secondContentBoxShadow.position}`
-                                }}>
-                                <RichText
-                                    tagName="div"
-                                    className={`premium-content-switcher-second-content`}
-                                    value={secondContent}
-                                    onChange={value => {
-                                        setAttributes({ secondContent: value })
-                                    }}
-                                    style={{
-                                        ...typographyCss(secondContentTypography, props.deviceType),
-                                        textAlign: secondcontentlign[props.deviceType],
-                                        justifyContent: secondcontentlign[props.deviceType],
-                                        color: secondContentStyles.secondContentColor,
-                                        textShadow: `${secondContentShadow.horizontal || 0}px ${secondContentShadow.vertical || 0}px ${secondContentShadow.blur || 0}px ${secondContentShadow.color}`,
-                                    }}
-                                />
-                            </li>
-                        </ul>
+                        <div className="premium-content-switcher-two-content" ref={contentRef}>
+                            <InnerBlocks
+                                template={[
+                                    ['premium/switcher-child'],
+                                    ['premium/switcher-child']
+                                ]}
+                                templateLock="all"
+                            />
+                        </div>
                     </div>
                 </div>
                 {loadFirstLabelGoogleFonts}
                 {loadSecondLabelGoogleFonts}
-                {loadFirstContentGoogleFonts}
-                {loadSecondContentGoogleFonts}
             </div>
         </Fragment>
     )
 }
+
 export default withSelect((select, props) => {
     const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
     let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;

@@ -20,7 +20,9 @@
         "start:breadcrumbs": "wp-scripts start breadcrumbs/block.js --output-path=breadcrumbs/build",
         "build:breadcrumbs": "wp-scripts build breadcrumbs/block.js --output-path=breadcrumbs/build",
         "start:search": "wp-scripts start search/index.js --output-path=search/build",
-        "build:search": "wp-scripts build search/index.js --output-path=search/build"
+        "build:search": "wp-scripts build search/index.js --output-path=search/build",
+        "start:switcher-child": "wp-scripts start switcher-child/block.js --output-path=switcher-child/build",
+        "build:switcher-child": "wp-scripts build switcher-child/block.js --output-path=switcher-child/build"
     },
     "devDependencies": {
         "@wordpress/scripts": "^22.4.0"

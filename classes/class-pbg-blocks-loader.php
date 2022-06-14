@@ -40,6 +40,7 @@ if ( ! class_exists( 'PBG_Blocks_Loader' ) ) {
 			require_once PREMIUM_BLOCKS_PATH . 'src/blocks/navigation-link/index.php';
 			require_once PREMIUM_BLOCKS_PATH . 'src/blocks/navigation-submenu/index.php';
 			require_once PREMIUM_BLOCKS_PATH . 'src/blocks/search/index.php';
+			require_once PREMIUM_BLOCKS_PATH . 'src/blocks/switcher-child/index.php';
 		}
 	}
 }
