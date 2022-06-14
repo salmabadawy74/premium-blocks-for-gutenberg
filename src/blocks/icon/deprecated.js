@@ -1110,7 +1110,7 @@ const deprecatedContent = [
         attributes: attributes,
         migrate: attributes => {
             let newAttributes = {
-                block_id: '',
+                blockId: '',
                 classMigrate: '',
                 iconSize: {
                     unit: attributes.iconStyles[0].iconSizeUnit,

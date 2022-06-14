@@ -1,5 +1,5 @@
 const attributes = {
-    block_id: {
+    blockId: {
         type: "string"
     },
     classMigrate: {
@@ -19,8 +19,12 @@ const attributes = {
         default: "dashicons dashicons-admin-site"
     },
     align: {
-        type: "string",
-        default: "center"
+        type: "object",
+        default: {
+            "Desktop": "center",
+            "Tablet": "center",
+            "Mobile": "center"
+        }
     },
     hoverEffect: {
         type: "string",
@@ -34,6 +38,8 @@ const attributes = {
                 iconSize: '',
                 iconColor: '',
                 iconBack: '',
+                iconHoverColor: '',
+                iconHoverBack: '',
                 iconOpacity: '1'
             }
         ]
@@ -52,15 +58,15 @@ const attributes = {
     },
     hideDesktop: {
         type: 'boolean',
-        default: false
+        default: ''
     },
     hideTablet: {
         type: 'boolean',
-        default: false
+        default: ''
     },
     hideMobile: {
         type: 'boolean',
-        default: false
+        default: ''
     },
     iconSize: {
         type: "object",

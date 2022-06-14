@@ -11,7 +11,11 @@ import PremiumShadow from "../../components/PremiumShadow";
 import SpacingControl from '../../components/premium-responsive-spacing'
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
-import { gradientBackground, borderCss, padddingCss, marginCss } from '../../components/HelperFunction'
+import InsideTabs from '../../components/InsideTabs'
+import InsideTab from '../../components/InsideTab';
+import ResponsiveRadioControl from '../../components/responsive-radio'
+import Icons from "../../components/icons";
+import { gradientBackground, borderCss, padddingCss, marginCss, generateBlockId } from '../../components/HelperFunction'
 
 const { __ } = wp.i18n;
 
@@ -19,12 +23,12 @@ const {
     PanelBody,
     SelectControl,
     ToggleControl,
-    Toolbar
+    TextControl
 } = wp.components;
 
-const { useEffect } = wp.element;
+const { useEffect, Fragment } = wp.element;
 
-const { InspectorControls, URLInput } = wp.blockEditor;
+const { InspectorControls } = wp.blockEditor;
 
 const { withSelect } = wp.data
 
@@ -32,12 +36,12 @@ const edit = props => {
     const { isSelected, setAttributes, className } = props;
 
     useEffect(() => {
-        setAttributes({ block_id: props.clientId })
+        setAttributes({ blockId: "premium-icon-" + generateBlockId(props.clientId) });
         setAttributes({ classMigrate: true })
     }, [])
 
     const {
-        block_id,
+        blockId,
         iconType,
         selectedIcon,
         align,
@@ -92,8 +96,6 @@ const edit = props => {
         }
     ];
 
-    const ALIGNS = ["left", "center", "right"];
-
     const saveIconStyle = (value) => {
         const newUpdate = iconStyles.map((item, index) => {
             if (0 === index) {
@@ -127,32 +129,36 @@ const edit = props => {
                                 appendTo="body"
                                 noSelectedPlaceholder={__("Select Icon", 'premium-blocks-for-gutenberg')}
                             />
-                            <SelectControl
-                                label={__("Hover Effect", 'premium-blocks-for-gutenberg')}
-                                options={EFFECTS}
-                                value={hoverEffect}
-                                onChange={newEffect => setAttributes({ hoverEffect: newEffect })}
-                            />
-                            <p> {__('Alignment')}</p>
-                            <Toolbar
-                                controls={ALIGNS.map(contentAlign => ({
-                                    icon: "editor-align" + contentAlign,
-                                    isActive: align === align,
-                                    onClick: () => setAttributes({ align: contentAlign })
-                                }))}
-                            />
                             <ToggleControl
                                 label={__("Link", 'premium-blocks-for-gutenberg')}
                                 checked={urlCheck}
                                 onChange={newValue => setAttributes({ urlCheck: newValue })}
                             />
                             {urlCheck && (
-                                <ToggleControl
-                                    label={__("Open link in new tab", 'premium-blocks-for-gutenberg')}
-                                    checked={target}
-                                    onChange={newValue => setAttributes({ target: newValue })}
-                                />
+                                <Fragment>
+                                    <TextControl
+                                        label={__("Link", 'premium-blocks-for-gutenberg')}
+                                        value={link}
+                                        onChange={(newLink) => setAttributes({ link: newLink })}
+                                    />
+                                    <ToggleControl
+                                        label={__("Open link in new tab", 'premium-blocks-for-gutenberg')}
+                                        checked={target}
+                                        onChange={newValue => setAttributes({ target: newValue })}
+                                    />
+                                </Fragment>
                             )}
+                            <ResponsiveRadioControl
+                                label={__("Alignment", 'premium-blocks-for-gutenberg')}
+                                choices={[
+                                    { value: 'left', label: __('Left'), icon: Icons.alignLeft },
+                                    { value: 'center', label: __('Center'), icon: Icons.alignCenter },
+                                    { value: 'right', label: __('Right'), icon: Icons.alignRight }
+                                ]}
+                                value={align}
+                                onChange={(newValue) => setAttributes({ align: newValue })}
+                                showIcons={true}
+                            />
                         </PanelBody>
                     </InspectorTab>
                     <InspectorTab key={'style'}>
@@ -166,24 +172,52 @@ const edit = props => {
                                 value={iconSize}
                                 onChange={(value) => setAttributes({ iconSize: value })}
                                 min={0}
-                                max={800}
+                                max={300}
                                 step={1}
                                 showUnit={true}
                                 units={['px', 'em', 'rem']}
                                 defaultValue={50}
                             />
-                            <AdvancedPopColorControl
-                                label={__("Icon Color", 'premium-blocks-for-gutenberg')}
-                                colorValue={iconStyles[0].iconColor}
-                                colorDefault={''}
-                                onColorChange={value => saveIconStyle({ iconColor: value })}
-                            />
-                            <AdvancedPopColorControl
-                                label={__("Background Color", 'premium-blocks-for-gutenberg')}
-                                colorValue={iconStyles[0].iconBack}
-                                colorDefault={''}
-                                onColorChange={value => saveIconStyle({ iconBack: value })}
-                            />
+                            <InsideTabs>
+                                <InsideTab tabTitle={__('Normal')}>
+                                    <Fragment>
+                                        <AdvancedPopColorControl
+                                            label={__("Color", 'premium-blocks-for-gutenberg')}
+                                            colorValue={iconStyles[0].iconColor}
+                                            colorDefault={''}
+                                            onColorChange={value => saveIconStyle({ iconColor: value })}
+                                        />
+                                        <AdvancedPopColorControl
+                                            label={__("Background Color", 'premium-blocks-for-gutenberg')}
+                                            colorValue={iconStyles[0].iconBack}
+                                            colorDefault={''}
+                                            onColorChange={value => saveIconStyle({ iconBack: value })}
+                                        />
+                                    </Fragment>
+                                </InsideTab>
+                                <InsideTab tabTitle={__('Hover')}>
+                                    <Fragment>
+                                        <AdvancedPopColorControl
+                                            label={__("Hover Color", 'premium-blocks-for-gutenberg')}
+                                            colorValue={iconStyles[0].iconHoverColor}
+                                            colorDefault={''}
+                                            onColorChange={value => saveIconStyle({ iconHoverColor: value })}
+                                        />
+                                        <AdvancedPopColorControl
+                                            label={__("Hover Background Color", 'premium-blocks-for-gutenberg')}
+                                            colorValue={iconStyles[0].iconHoverBack}
+                                            colorDefault={''}
+                                            onColorChange={value => saveIconStyle({ iconHoverBack: value })}
+                                        />
+                                        <SelectControl
+                                            label={__("Hover Effect", 'premium-blocks-for-gutenberg')}
+                                            options={EFFECTS}
+                                            value={hoverEffect}
+                                            onChange={newEffect => setAttributes({ hoverEffect: newEffect })}
+                                        />
+                                    </Fragment>
+                                </InsideTab>
+                            </InsideTabs>
                             <PremiumShadow
                                 label={__("Text Shadow", "premium-blocks-for-gutenberg")}
                                 value={iconShadow}
@@ -261,13 +295,20 @@ const edit = props => {
             </InspectorControls>
         ),
         <div
-            className={`${mainClasses}__container ${hideDesktop} ${hideTablet} ${hideMobile}`}
-            id={`premium-icon-${block_id}`}
+            className={`${mainClasses}__container ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`}
         >
+            <style>
+                {`
+                    .${blockId} .premium-icon-container .premium-icon__${hoverEffect}:hover {
+                        color: ${iconStyles[0].iconHoverColor || "#6ec1e4"} !important;
+                        background-color: ${iconStyles[0].iconHoverBack} !important;
+                    }
+                 `}
+            </style>
             <div
                 className={`premium-icon-container`}
                 style={{
-                    textAlign: align,
+                    textAlign: align[props.deviceType],
                     ...gradientBackground(containerBackground),
                     ...borderCss(containerBorder, props.deviceType),
                     ...padddingCss(wrapPadding, props.deviceType),
@@ -294,12 +335,6 @@ const edit = props => {
                             textShadow: `${iconShadow.horizontal || 0}px ${iconShadow.vertical ||
                                 0}px ${iconShadow.blur || 0}px ${iconShadow.color}`
                         }}
-                    />
-                )}
-                {urlCheck && isSelected && (
-                    <URLInput
-                        value={link}
-                        onChange={newUrl => setAttributes({ link: newUrl })}
                     />
                 )}
             </div>

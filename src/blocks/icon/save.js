@@ -6,7 +6,7 @@ const save = props => {
     const { className } = props;
 
     const {
-        block_id,
+        blockId,
         iconBorder,
         selectedIcon,
         align,
@@ -25,12 +25,11 @@ const save = props => {
         iconSize
     } = props.attributes;
 
-    const mainClasses = classnames(className);
+    const mainClasses = classnames(className, 'premium-icon', blockId);
 
     return (
         <div
-            className={`${mainClasses}__container ${hideDesktop} ${hideTablet} ${hideMobile}`}
-            id={`premium-icon-${block_id}`}
+            className={`${mainClasses}__container ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`}
         >
             <div
                 className={`premium-icon-container`}
