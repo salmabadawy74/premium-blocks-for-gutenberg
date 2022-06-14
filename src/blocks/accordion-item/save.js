@@ -32,7 +32,7 @@ export default function save(props) {
                 </div>
                 <div className={`premium-accordion__icon_wrap`}>
                     <svg
-                        className={`premium-accordion__icon premium-accordion__closed`}
+                        className={`premium-accordion__icon`}
                         role="img"
                         focusable="false"
                         xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +43,7 @@ export default function save(props) {
                 </div>
             </div>
             <div
-                className={`premium-accordion__desc_wrap premium-accordion__desc_close`}
+                className={`premium-accordion__desc_wrap`}
             >
                 {"text" === contentType && (
                     <RichText.Content

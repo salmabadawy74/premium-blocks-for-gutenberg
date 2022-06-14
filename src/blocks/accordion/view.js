@@ -56,9 +56,9 @@ const slideDownAccordion = (target, duration = 500) => {
 }
 const slideToggleAccordion = (target, duration = 500) => {
     if (window.getComputedStyle(target).display === 'none') {
-        return slideDown(target, duration);
+        return slideDownAccordion(target, duration);
     } else {
-        return slideUp(target, duration);
+        return slideUpAccordion(target, duration);
     }
 }
 
@@ -72,7 +72,7 @@ if (accordions.length) {
                 const itemDescription = item.querySelector('.premium-accordion__desc_wrap');
                 const itemIcon = item.querySelector('.premium-accordion__icon');
                 slideUpAccordion(itemDescription, 500);
-                itemIcon.classList.remove('premium-accordion__closed');
+                itemIcon.classList.add('premium-accordion__closed');
             }
         })
     }

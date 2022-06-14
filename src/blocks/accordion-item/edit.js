@@ -13,12 +13,12 @@ function AccordionItemEdit({
     setAttributes,
     context,
     clientId,
-    className
+    className,
+    isSelected
 }) {
     const { blockId, title, description } = attributes;
     const { titleTag, contentType, direction, arrowStyles } = context;
-    const [isOpen, setIsOpen] = useState(true);
-    const iconClasse = isOpen ? ' premium-accordion__closed' : '';
+    const iconClasse = isSelected ? '' : ' premium-accordion__closed';
     const blockProps = useBlockProps({
         className: classnames(className, blockId, 'premium-accordion__content_wrap'),
     });
@@ -46,7 +46,6 @@ function AccordionItemEdit({
     return <div {...blockProps}>
         <div
             className={`premium-accordion__title_wrap premium-accordion__${direction} premium-accordion__${arrowStyles[0].arrowPos}`}
-            onClick={() => setIsOpen(!isOpen)}
         >
             <div className={`premium-accordion__title`}>
                 <RichText
@@ -71,22 +70,24 @@ function AccordionItemEdit({
                 </svg>
             </div>
         </div>
-        <div
-            className={`premium-accordion__desc_wrap${isOpen ? ' premium-accordion__desc_close' : ''}`}
-        >
-            {"text" === contentType && (
-                <RichText
-                    tagName="p"
-                    className={`premium-accordion__desc`}
-                    placeholder={__("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", 'premium-blocks-for-gutenberg')}
-                    onChange={newText =>
-                        setAttributes({ description: newText })
-                    }
-                    value={description}
-                />
-            )}
-            {"block" === contentType && <InnerBlocks templateLock={false} />}
-        </div>
+        {isSelected && (
+            <div
+                className={`premium-accordion__desc_wrap`}
+            >
+                {"text" === contentType && (
+                    <RichText
+                        tagName="p"
+                        className={`premium-accordion__desc`}
+                        placeholder={__("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", 'premium-blocks-for-gutenberg')}
+                        onChange={newText =>
+                            setAttributes({ description: newText })
+                        }
+                        value={description}
+                    />
+                )}
+                {"block" === contentType && <InnerBlocks templateLock={false} />}
+            </div>
+        )}
     </div>;
 }
 

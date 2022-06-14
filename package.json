@@ -7,7 +7,9 @@
         "start:blocks": "wp-scripts start src/index.js --output-path=assets/js/build",
         "build:blocks": "wp-scripts build src/index.js --output-path=assets/js/build",
         "start:accordion:item": "wp-scripts start src/blocks/accordion-item/index.js --output-path=src/blocks/accordion-item/build",
-        "build:accordion:item": "wp-scripts build src/blocks/accordion-item/index.js --output-path=src/blocks/accordion-item/build"
+        "build:accordion:item": "wp-scripts build src/blocks/accordion-item/index.js --output-path=src/blocks/accordion-item/build",
+        "start:accordion:view": "wp-scripts start src/blocks/accordion/view.js --output-path=src/blocks/accordion/view",
+        "build:accordion:view": "wp-scripts build src/blocks/accordion/view.js --output-path=src/blocks/accordion/view"
     },
     "repository": {
         "type": "git",

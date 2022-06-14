@@ -1010,7 +1010,7 @@ class PBG_Blocks_Helper {
 		if ( $this->it_is_not_amp() ) {
 			wp_enqueue_script(
 				'pbg-accordion',
-				PREMIUM_BLOCKS_URL . 'assets/js/accordion.js',
+				PREMIUM_BLOCKS_URL . 'src/blocks/accordion/view/view.js',
 				array( 'jquery' ),
 				PREMIUM_BLOCKS_VERSION,
 				true
