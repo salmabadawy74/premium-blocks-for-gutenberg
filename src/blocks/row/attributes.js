@@ -7,6 +7,23 @@ const attributes = {
         type: 'number',
         default: ''
     },
+    variationSelected: {
+        type: 'boolean',
+        default: false,
+    },
+    isBlockRootParent: {
+        type: 'boolean',
+        default: false,
+    },
+    blockDescendants: {
+        type: 'array',
+        default: []
+    },
+    colWidth: {
+        type: 'object',
+        default: { 'Desktop': 100, 'Tablet': 100, 'Mobile': 100, unit: '%' }
+
+    },
     // Dimension
     padding: {
         type: 'object',
@@ -70,10 +87,7 @@ const attributes = {
             unit: 'px'
         },
     },
-    vPos: {
-        type: "string",
-        default: 'middle'
-    },
+
     overflow: {
         type: "string",
         value: "default"
@@ -270,10 +284,7 @@ const attributes = {
             unit: 'px'
         }
     },
-    height: {
-        type: "string",
-        default: 'auto'
-    },
+
     direction: {
         type: 'object',
         default: {
@@ -282,7 +293,32 @@ const attributes = {
             'Mobile': ''
         }
 
+    },
+    alignItems: {
+        type: 'object',
+        default: {
+            'Desktop': '',
+            'Tablet': '',
+            'Mobile': ''
+        }
+    },
+    justifyItems: {
+        type: 'object',
+        default: {
+            'Desktop': '',
+            'Tablet': '',
+            'Mobile': ''
+        }
+    },
+    wrapItems: {
+        type: 'object',
+        default: {
+            'Desktop': '',
+            'Tablet': '',
+            'Mobile': ''
+        }
     }
+
 };
 
 export default attributes;
