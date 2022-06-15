@@ -1,0 +1,169 @@
+{
+    "apiVersion": 2,
+    "version": "0.1.0",
+    "name": "premium/trigger",
+    "title": "Trigger Icon",
+    "icon": "trigger",
+    "category": "premium-blocks",
+	"description": "Build any kind of Gutenberg content or WordPress menu and display it creatively within Premium Trigger Block.",
+	"keywords": ["trigger", "overlay-canvas", "canvas"],
+	"supports": {
+		"html": false
+	},
+	"editorScript": "file:./build/block.js",
+	"script": "premium-trigger-block-script",
+	"editorStyle": "file:./build/index.css",
+	"style": "file:./build/style-block.css",
+	"attributes": {
+		"text": {
+			"type": "string"
+		},
+		"block_id": {
+			"type": "string"
+		},
+		"triggerLabel": {
+			"type": "string"
+		},
+		"displayFloat": {
+			"type": "boolean"
+		},
+		"iconAlignment": {
+			"type": "string",
+			"default": "left"
+		},
+		"floatPosition": {
+			"type": "string",
+			"default": "topright"
+		},
+		"iconSize": {
+			"type": "object",
+			"default": {
+				"Desktop": "20",
+				"unit": "px"
+			}
+		},
+		"vOffset": {
+			"type": "object",
+			"default": {
+				"Desktop": "20",
+				"unit": "px"
+			}
+		},
+		"hOffset": {
+			"type": "object",
+			"default": {
+				"Desktop": "20",
+				"unit": "px"
+			}
+		},
+		"hideDesktop": {
+			"type": "boolean",
+			"default":""
+		},
+		"hideTablet": {
+			"type": "boolean",
+			"default":""
+		},
+		"hideMobile": {
+			"type": "boolean",
+			"default":""
+		},
+		"triggerBorder": {
+			"type": "object",
+			"default": {
+				"borderColor": "#e8e8e8",
+				"borderType": "solid",
+				"borderRadius": {
+					"Desktop": {
+						"top": "",
+						"right": "",
+						"bottom": "",
+						"left": ""
+					},
+					"Tablet": {
+						"top": "",
+						"right": "",
+						"bottom": "",
+						"left": ""
+					},
+					"Mobile": {
+						"top": "",
+						"right": "",
+						"bottom": "",
+						"left": ""
+					}
+				},
+				"borderWidth": {
+					"Desktop": {
+						"top": "1px",
+						"right": "1px",
+						"bottom": "1px",
+						"left": "1px"
+					},
+					"Tablet": {
+						"top": "",
+						"right": "",
+						"bottom": "",
+						"left": ""
+					},
+					"Mobile": {
+						"top": "",
+						"right": "",
+						"bottom": "",
+						"left": ""
+					}
+				}
+			}
+		},
+		"triggerStyles": {
+            "type": "object",
+            "default": {
+                "iconColor": "",
+                "iconBgColor": "#e8e8e8",
+                "iconHoverColor": "",
+				"labelHoverColor": "",
+                "iconHoverBgColor": "",
+				"labelPosition": "",
+				"style": "simple",
+				"borderType": "solid",
+				"borderColor": "#e8e8e8",
+				"borderHoverColor": ""
+            }
+        },
+		"canvasStyles": {
+            "type": "object",
+            "default": {
+				"overlayBgColor": "",
+                "canvasBgColor": "#fff",
+				"colseIconColor": "#",
+				"layout": "right",
+				"width": ""
+            }
+        },
+		"triggerSpacing": {
+            "type": "object",
+                "default": {
+					"Desktop": {
+						"top": "",
+						"right": "",
+						"bottom": "",
+						"left": ""
+					},
+					"Tablet": {
+						"top": "",
+						"right": "",
+						"bottom": "",
+						"left": ""
+					},
+					"Mobile": {
+						"top": "",
+						"right": "",
+						"bottom": "",
+						"left": ""
+					},
+					"unit": "px"
+            }
+        }
+	}
+
+}

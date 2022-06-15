@@ -22,7 +22,9 @@
         "start:search": "wp-scripts start search/index.js --output-path=search/build",
         "build:search": "wp-scripts build search/index.js --output-path=search/build",
         "start:switcher-child": "wp-scripts start switcher-child/block.js --output-path=switcher-child/build",
-        "build:switcher-child": "wp-scripts build switcher-child/block.js --output-path=switcher-child/build"
+        "build:switcher-child": "wp-scripts build switcher-child/block.js --output-path=switcher-child/build",
+        "start:trigger": "wp-scripts start trigger/block.js --output-path=trigger/build",
+        "build:trigger": "wp-scripts build trigger/block.js --output-path=trigger/build"
     },
     "devDependencies": {
         "@wordpress/scripts": "^22.4.0"
