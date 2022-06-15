@@ -50,7 +50,7 @@ $gray-80: #2c3338;
     }
 }
 
-.pbg-style-button {
+.premium-style-button {
     &.button-style-float {
         position: fixed;
         &.modal-open {
@@ -235,7 +235,7 @@ $gray-80: #2c3338;
     padding: $grid-unit-05;
 }
 
-.pbg-search-dropdown {
+.premium-search-dropdown {
     position: absolute;
     display: grid;
     grid-row-gap: 30px;
@@ -261,7 +261,7 @@ $gray-80: #2c3338;
     }
 }
 
-.pbg-search-modal {
+.premium-search-modal {
     display: none;
     flex-direction: column;
     position: fixed;
@@ -275,7 +275,7 @@ $gray-80: #2c3338;
     &.open {
         display: flex;
     }
-    .pbg-modal-content {
+    .premium-modal-content {
         flex: 1;
         display: flex;
         flex-direction: column;
@@ -285,7 +285,7 @@ $gray-80: #2c3338;
         padding-top: 20px;
         box-sizing: border-box;
         width: 100%;
-        .pbg-advanced-search-form {
+        .premium-advanced-search-form {
             width: 100%;
             max-width: 800px;
             margin: auto;
@@ -293,7 +293,7 @@ $gray-80: #2c3338;
             > div {
                 position: relative;
             }
-            .pbg-advanced-search-icon {
+            .premium-advanced-search-icon {
                 position: absolute;
                 bottom: 0;
                 right: 0;
@@ -328,7 +328,7 @@ $gray-80: #2c3338;
             }
         }
 
-        .pbg-search-results {
+        .premium-search-results {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             grid-column-gap: 30px;
@@ -349,7 +349,7 @@ $gray-80: #2c3338;
                     font-weight: 500;
                 }
 
-                .pbg-image-container {
+                .premium-image-container {
                     flex: 0 0 20%;
                     max-width: 20%;
                     align-self: flex-start;
@@ -382,7 +382,7 @@ $gray-80: #2c3338;
             }
         }
     }
-    .pbg-modal-actions {
+    .premium-modal-actions {
         display: flex;
         align-items: center;
         padding: 35px;

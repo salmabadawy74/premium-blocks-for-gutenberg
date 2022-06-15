@@ -4,6 +4,7 @@ const { useState } = wp.element;
 const { __ } = wp.i18n;
 import PremiumSizeUnits from '../premium-size-units';
 import ResponsiveSingleRangeControl from './single-range-control';
+import Responsive from '../responsive'
 
 export default function ResponsiveRangeControl({
     label,
@@ -62,7 +63,6 @@ export default function ResponsiveRangeControl({
         onChange(updatedState)
     }
     const output = {};
-    console.log(state, "state from responsive range control")
     output.Mobile = (
         <ResponsiveSingleRangeControl
             device={'mobile'}
@@ -103,24 +103,11 @@ export default function ResponsiveRangeControl({
         onChange && (
             <div className={`premium-blocks-range-control`}>
                 <header>
-                    <div className={`premium-slider-title-wrap`}>
+                    <div className={`premium-title-wrap`}>
                         {label && (
-                            <span className="customize-control-title premium-control-title">{label}</span>
+                            <span className="premium-control-title">{label}</span>
                         )}
-                        <ul className="premium-responsive-control-btns premium-responsive-slider-btns">
-                            {devices.map((device, key) => {
-                                const activeClass = device === deviceType ? ' active' : '';
-                                const icon = device.toLowerCase() === 'mobile' ? 'smartphone' : device.toLowerCase();
-                                return <li key={key} className={`${device}${activeClass}`}>
-                                    <button type="button" className={`preview-${device}${activeClass}`} data-device={device}>
-                                        <i class={`dashicons dashicons-${icon}`} onClick={() => {
-                                            const nextDevice = key + 1 > devices.length - 1 ? devices[0] : devices[key + 1];
-                                            customSetPreviewDeviceType(nextDevice);
-                                        }} ></i>
-                                    </button>
-                                </li>
-                            })}
-                        </ul>
+                        <Responsive onChange={(newDevice) => setDeviceType(newDevice)} />
                     </div>
                     {showUnit && (
                         <PremiumSizeUnits
@@ -133,7 +120,7 @@ export default function ResponsiveRangeControl({
 
                     )}
                 </header>
-                {(output[deviceType] ? output[deviceType] : output.Desktop)}
+                { (output[deviceType] ? output[deviceType] : output.Desktop)}
             </div >
         ),
     ];

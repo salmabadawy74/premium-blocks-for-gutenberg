@@ -2,6 +2,7 @@ const { __ } = wp.i18n;
 const { useState, useEffect, Fragment } = wp.element;
 const { useSelect, useDispatch } = wp.data;
 import PremiumSizeUnits from "./premium-size-units";
+import Responsive from "./responsive";
 const SpacingComponent = (props) => {
     let { value, responsive, showUnits, label } = props;
     const [device, setDevice] = useState("Desktop");
@@ -67,9 +68,7 @@ const SpacingComponent = (props) => {
     const renderInputHtml = (device, active = "") => {
         let htmlChoices
         htmlChoices = ['top', 'right', 'bottom', 'left'].map((side) => {
-            let inputValue = responsive
-                ? state[device][side]
-                : state[side];
+            let inputValue = responsive ? state[device][side] : state[side];
             return (<li
                 key={side}
                 className={`premium-spacing-input-item`}
@@ -121,10 +120,7 @@ const SpacingComponent = (props) => {
                     ></button>
                 </li >
             );
-        }
-
-
-        ;
+        };
         return (
             <ul
                 className={`premium-spacing-wrapper ${device} ${active}`}
@@ -138,33 +134,7 @@ const SpacingComponent = (props) => {
     let inputHtml = null;
 
     inputHtml = <Fragment>{renderInputHtml(device, "active")}</Fragment>;
-    const devices = ['Desktop', 'Tablet', 'Mobile'];
 
-    let customSetPreviewDeviceType = (device) => {
-        setDevice(device.toLowerCase());
-    };
-
-    if (wp.data.select('core/edit-post')) {
-        const theDevice = useSelect((select) => {
-            const {
-                __experimentalGetPreviewDeviceType = null,
-            } = select('core/edit-post');
-            return __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : 'Desktop';
-        }, []);
-        if (theDevice !== device) {
-            setDevice(theDevice);
-
-        }
-        const {
-            __experimentalSetPreviewDeviceType = null,
-        } = useDispatch('core/edit-post');
-        customSetPreviewDeviceType = (device) => {
-            __experimentalSetPreviewDeviceType(device);
-            setDevice(device);
-
-
-        };
-    }
     const onUnitChange = (unitValue) => {
         let updateState = { ...state };
         updateState[`unit`] = unitValue;
@@ -172,29 +142,15 @@ const SpacingComponent = (props) => {
         setState(updateState);
     }
     return (
-        <div className="premium-spacing-responsive">
+        <div className="premium-spacing-responsive premium-blocks__base-control">
             <header>
-                <div className={`premium-slider-title-wrap`}>
-                    <span className="customize-control-title premium-control-title">  {label}</span>
-                    {responsive && <ul className="premium-responsive-control-btns premium-responsive-slider-btns">
-                        {devices.map((deviceType, key) => {
-                            const activeClass = deviceType === device ? ' active' : '';
-                            const icon = deviceType.toLowerCase() === 'mobile' ? 'smartphone' : deviceType.toLowerCase();
-                            return <li key={key} className={`${deviceType}${activeClass}`}>
-                                <button type="button" className={`preview-${deviceType}${activeClass}`} data-device={deviceType}>
-                                    <i class={`dashicons dashicons-${icon}`} onClick={() => {
-                                        const nextDevice = key + 1 > devices.length - 1 ? devices[0] : devices[key + 1];
-                                        customSetPreviewDeviceType(nextDevice)
-                                            ;
-                                    }} ></i>
-                                </button>
-                            </li>
-                        })}
-                    </ul>}
+                <div className={`premium-title-wrap`} style={{ display: "flex" }}>
+                    <span className=" premium-control-title">  {label}</span>
+                    {responsive && <Responsive onChange={(newValue) => setDevice(newValue)} />}
                 </div>
                 {showUnits && (
                     <PremiumSizeUnits
-                        activeUnit={value.unit}
+                        activeUnit={state[`unit`]}
                         onChangeSizeUnit={(unitKey) => onUnitChange(unitKey)}
                     />
                 )}
@@ -203,13 +159,10 @@ const SpacingComponent = (props) => {
                 <div className={`input-wrapper premium-spacing-responsive-wrapper`}>
                     {inputHtml}
                 </div>
-                <div className="premium-spacing-btn-reset-wrap">
+                <div className="premium-btn-reset-wrap">
                     <button
                         className="premium-reset-btn "
-                        disabled={
-                            JSON.stringify(state) ===
-                            JSON.stringify(defaultValues)
-                        }
+                        disabled={JSON.stringify(state) === JSON.stringify(defaultValues)}
                         onClick={(e) => {
                             e.preventDefault();
                             props.onChange(defaultValues);

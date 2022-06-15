@@ -3,7 +3,7 @@ const { useState, Fragment } = wp.element;
 const { __ } = wp.i18n;
 const { ButtonGroup, Button } = wp.components;
 
-const RadioComponent = ({ value, onChange, label, choices }) => {
+const RadioComponent = ({ value, onChange, label, choices, showIcons = false }) => {
     const HandleChange = (newVal) => {
         onChange(newVal);
         setState(newVal);
@@ -18,22 +18,22 @@ const RadioComponent = ({ value, onChange, label, choices }) => {
                 const currentValue = state
                 return <Button
                     isTertiary
-                    className={choice === currentValue ? 'active-radio' : ''}
+                    className={choice.value === currentValue ? 'active-radio' : ''}
                     onClick={() => {
-                        HandleChange(choice)
+                        HandleChange(choice.value)
                     }}
                 >
-                    {choice}
+                    {showIcons ? choice.icon : choice.label}
                 </Button>
             })}
         </Fragment>
     }
-    return <Fragment>
-        <span className="customize-control-title premium-control-title">{label}</span>
+    return <div className={`premium-blocks__base-control`}>
+        {label && <span className="customize-control-title premium-control-title">{label}</span>}
         <ButtonGroup className="premium-radio-container-control">
             {renderButtons()}
         </ButtonGroup>
-    </Fragment>
+    </div>
 }
 
 export default React.memo(RadioComponent);
