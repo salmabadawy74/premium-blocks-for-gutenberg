@@ -133,7 +133,7 @@ export default class PremiumTypo extends Component {
         const linearFonts = fonts.filter(family => fuzzysearch(search.toLowerCase(), family['value'].toLowerCase()))
         const fontSize = components.includes("responsiveSize") ? value['fontSize'][device] : value['fontSize']
         return (
-            <div className="premium-control-toggle premium-typography">
+            <div className="premium-control-toggle premium-typography premium-blocks__base-control">
                 <header>
                     <span className="customize-control-title premium-control-title">
                         <strong>{__('Typography', 'premium-blocks-for-gutenberg')}</strong>
@@ -223,7 +223,7 @@ export default class PremiumTypo extends Component {
                                                         </li>
                                                     )}
                                                     {components.includes("responsiveSize") && (
-                                                        <li className="customize-control-premium-slider 33">
+                                                        <li className="customize-control-premium-slider">
                                                             <ResponsiveRangeControl
                                                                 label={__("Font Size", 'premium-blocks-for-gutenberg')}
                                                                 value={value['fontSize']}
@@ -268,6 +268,7 @@ export default class PremiumTypo extends Component {
                                                                 options={STYLE}
                                                                 value={value['fontStyle']}
                                                                 onChange={(value) => { changeTypography('fontStyle', value) }}
+                                                            // onResetClick={onResetClick}
                                                             />
                                                         </li>
                                                     )}
