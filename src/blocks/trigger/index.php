@@ -70,12 +70,12 @@ function get_trigger_css_style( $attr, $unique_id ) {
 		$css->set_selector( '.' . $unique_id . '.float-position-topright, .' . $unique_id . '.float-position-topleft' );
 		$css->add_property( 'top', ( $attr['vOffset']['Desktop'] . ( isset( $attr['vOffset']['unit'] ) ? $attr['vOffset']['unit'] : 'px' ) . '!important' ) );
 		$css->set_selector( '.' . $unique_id . '.float-position-bottomright, .' . $unique_id . '.float-position-bottomleft' );
-		$css->add_property( 'top', ( $attr['vOffset']['Desktop'] . ( isset( $attr['vOffset']['unit'] ) ? $attr['vOffset']['unit'] : 'px' ) . '!important' ) );
+		$css->add_property( 'bottom', ( $attr['vOffset']['Desktop'] . ( isset( $attr['vOffset']['unit'] ) ? $attr['vOffset']['unit'] : 'px' ) . '!important' ) );
 	}
 	if ( isset( $attr['hOffset'] ) ) {
 		$css->set_selector( '.' . $unique_id . '.float-position-topright, .' . $unique_id . '.float-position-bottomright' );
 		$css->add_property( 'right', ( $attr['hOffset']['Desktop'] . ( isset( $attr['hOffset']['unit'] ) ? $attr['hOffset']['unit'] : 'px' ) . '!important' ) );
-		$css->set_selector( '.' . $unique_id . '.float-position-bottomright, .' . $unique_id . '.float-position-bottomleft' );
+		$css->set_selector( '.' . $unique_id . '.float-position-topleft, .' . $unique_id . '.float-position-bottomleft' );
 		$css->add_property( 'left', ( $attr['hOffset']['Desktop'] . ( isset( $attr['hOffset']['unit'] ) ? $attr['hOffset']['unit'] : 'px' ) . '!important' ) );
 	}
 
