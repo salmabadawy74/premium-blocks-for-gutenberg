@@ -14,7 +14,6 @@ class AdvancedColorControl extends Component {
         this.state = {
             isVisible: false,
             colors: [],
-            classSat: 'one',
             currentColor: '',
             defaultColor: '',
         };
@@ -37,7 +36,6 @@ class AdvancedColorControl extends Component {
             } else {
                 this.setState({ currentColor: (undefined === this.props.colorValue || '' === this.props.colorValue ? this.props.colorDefault : this.props.colorValue) });
             }
-            this.setState({ classSat: 'one' });
             this.setState({ isVisible: true });
         };
 
@@ -72,6 +70,34 @@ class AdvancedColorControl extends Component {
                     <div className="premium-color-wrapper">
                         {this.state.isVisible && (
                             <Popover position="bottom left" className="premium-popover-color" onClose={toggleClose}>
+
+                                <div className={isNew
+                                    ? 'premium-gutenberg-color-picker-new'
+                                    : 'premium-gutenberg-color-picker'}>
+                                    {!this.props.disableCustomColors && (
+                                        <ColorPicker
+                                            color={(undefined === this.props.colorValue || '' === this.props.colorValue || 'transparent' === this.props.colorValue ? this.state.defaultColor : this.props.colorValue)}
+                                            onChangeComplete={(color) => {
+                                                this.setState({ currentColor: color.hex })
+                                                if (color.rgb) {
+                                                    this.props.onColorChange(color.rgb.a != 1 ? 'rgba(' + color.rgb.r + ',' + color.rgb.g + ',' + color.rgb.b + ',' + color.rgb.a + ')' : color.hex)
+                                                }
+
+                                            }}
+                                        />
+                                    )}
+
+                                    <div className="premium-color-picker-value">
+                                        <input
+                                            onChange={({ target: { value: color } }) => {
+                                                this.props.onColorChange(normalizeColor(color))
+                                                this.setState({ currentColor: color })
+                                            }}
+                                            value={normalizeColor(this.state.currentColor)}
+                                            type="text"
+                                        />
+                                    </div>
+                                </div>
                                 {this.props.colors && (
                                     <div className={`premium-color-picker-top`}>
                                         <ul className="premium-color-picker-skins">
@@ -82,15 +108,10 @@ class AdvancedColorControl extends Component {
                                                     })}
                                                         style={{ backgroundColor: color }}
                                                         onClick={() => {
+                                                            this.setState({ currentColor: color })
                                                             this.props.onColorChange(color);
-                                                            if (this.props.onColorClassChange) {
-                                                                this.props.onColorClassChange(slug);
-                                                            }
-                                                            if ('three' === this.state.classSat) {
-                                                                this.setState({ classSat: 'two' });
-                                                            } else {
-                                                                this.setState({ classSat: 'three' });
-                                                            }
+
+
                                                         }}
                                                     >
                                                         <div className={`premium-tooltip-top`}>
@@ -103,51 +124,6 @@ class AdvancedColorControl extends Component {
                                         </ul>
                                     </div>
                                 )}
-                                <div className={isNew
-                                    ? 'premium-gutenberg-color-picker-new'
-                                    : 'premium-gutenberg-color-picker'}>
-                                    {this.state.classSat === 'one' && !this.props.disableCustomColors && (
-                                        <ColorPicker
-                                            color={(undefined === this.props.colorValue || '' === this.props.colorValue || 'transparent' === this.props.colorValue ? this.state.defaultColor : this.props.colorValue)}
-                                            onChangeComplete={(color) => {
-                                                this.setState({ currentColor: color.hex })
-                                                if (color.rgb) {
-                                                    this.props.onColorChange(color.rgb.a != 1 ? 'rgba(' + color.rgb.r + ',' + color.rgb.g + ',' + color.rgb.b + ',' + color.rgb.a + ')' : color.hex)
-                                                }
-                                                if (this.props.onColorClassChange) {
-                                                    this.props.onColorClassChange('');
-                                                }
-                                            }}
-                                        />
-                                    )}
-                                    {!this.props.disableCustomColors && this.state.classSat !== 'one' && (
-                                        <ColorPicker
-                                            color={(undefined === this.state.currentColor || '' === this.state.currentColor ? this.state.defaultColor : this.state.currentColor)}
-                                            onChangeComplete={(color) => {
-                                                this.setState({ currentColor: color.hex });
-                                                if (color.rgb) {
-
-                                                    this.props.onColorChange(color.rgb.a != 1 ? 'rgba(' + color.rgb.r + ',' + color.rgb.g + ',' + color.rgb.b + ',' + color.rgb.a + ')' : color.hex)
-                                                }
-                                                if (this.props.onColorClassChange) {
-                                                    this.props.onColorClassChange('');
-                                                }
-                                            }}
-                                        />
-                                    )}
-                                    <div className="premium-color-picker-value">
-                                        <input
-                                            onChange={({ target: { value: color } }) => {
-                                                this.props.onColorChange(
-                                                    normalizeColor(color)
-                                                )
-                                                this.setState({ currentColor: color })
-                                            }}
-                                            value={normalizeColor(this.state.currentColor)}
-                                            type="text"
-                                        />
-                                    </div>
-                                </div>
                             </Popover>
                         )}
                         {this.state.isVisible && (
@@ -173,9 +149,7 @@ class AdvancedColorControl extends Component {
                             onClick={() => {
                                 this.setState({ currentColor: this.props.colorDefault });
                                 this.props.onColorChange(undefined);
-                                if (this.props.onColorClassChange) {
-                                    this.props.onColorClassChange('');
-                                }
+
                             }}>
                         </button>
                     </div>}

@@ -19,7 +19,7 @@
     }
 }
 
-.pbg-breadcrumbs-advanced {
+.premium-breadcrumbs-advanced {
     li {
         display: inline-flex;
         overflow: hidden;
@@ -46,18 +46,5 @@
             position: absolute;
             left: calc(100% - 30px);
         }
-    }
-}
-
-.wp-block-premium-breadcrumbs {
-    [class^="pbg-"],
-    [class*=" pbg-"] {
-        font-family: inherit !important;
-        width: auto;
-        height: auto;
-        font-size: inherit !important;
-        color: inherit;
-        margin: 0;
-        text-decoration: inherit !important;
     }
 }

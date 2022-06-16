@@ -23,7 +23,7 @@ function get_breadcrumbs_css( $attributes, $unique_id ) {
 				'fontVariant' => ( isset( $typography['fontWeight'] ) ? $typography['fontWeight'] : '' ),
 			)
 		);
-		$css->set_selector( '#' . $unique_id . ' > .premium-breadcrumb-trail, #' . $unique_id . ' > .premium-breadcrumb-trail a, #' . $unique_id . ' > .premium-breadcrumb-trail span' );
+		$css->set_selector( '.' . $unique_id . ' > .premium-breadcrumb-trail, .' . $unique_id . ' > .premium-breadcrumb-trail a, .' . $unique_id . ' > .premium-breadcrumb-trail span' );
 		$css->add_property( 'font-family', $css->render_color( $typography['fontFamily'] ) );
 		$css->add_property( 'font-weight', $css->render_color( $typography['fontWeight'] ) );
 		$css->add_property( 'font-style', $css->render_color( $typography['fontStyle'] ) );
@@ -36,16 +36,16 @@ function get_breadcrumbs_css( $attributes, $unique_id ) {
 	}
 	if ( isset( $attributes['colors'] ) ) {
 		$color = $attributes['colors'];
-		$css->set_selector( '#' . $unique_id . ' > .premium-breadcrumb-trail' );
+		$css->set_selector( '.' . $unique_id . ' > .premium-breadcrumb-trail' );
 		$css->add_property( 'color', $css->render_color( $color['text'] ) );
 		$css->add_property( 'background-color', $css->render_color( $color['background'] ) );
-		$css->set_selector( '#' . $unique_id . ' > .premium-breadcrumb-trail a' );
+		$css->set_selector( '.' . $unique_id . ' > .premium-breadcrumb-trail a' );
 		$css->add_property( 'color', $css->render_color( $color['link'] ) );
-		$css->set_selector( '#' . $unique_id . ' > .premium-breadcrumb-trail a:hover' );
+		$css->set_selector( '.' . $unique_id . ' > .premium-breadcrumb-trail a:hover' );
 		$css->add_property( 'color', $css->render_color( $color['linkHover'] ) );
-		$css->set_selector( '#' . $unique_id . '.pbg-breadcrumbs-advanced .premium-breadcrumb-trail li' );
+		$css->set_selector( '.' . $unique_id . '.premium-breadcrumbs-advanced .premium-breadcrumb-trail li' );
 		$css->add_property( '--item-bg-color', $css->render_color( $color['item'] ) );
-		$css->set_selector( '#' . $unique_id . '.pbg-breadcrumbs-advanced .premium-breadcrumb-trail li' );
+		$css->set_selector( '.' . $unique_id . '.premium-breadcrumbs-advanced .premium-breadcrumb-trail li' );
 		$css->add_property( '--separator-color', $css->render_color( $color['separator'] ) );
 	}
 	if ( isset( $attributes['spacing'] ) ) {
@@ -53,7 +53,7 @@ function get_breadcrumbs_css( $attributes, $unique_id ) {
 		if ( $spacing['padding'] ) {
 			$padding = $spacing['padding'];
 			error_log( wp_json_encode( $spacing['padding'] ) );
-			$css->set_selector( '#' . $unique_id . ' > .premium-breadcrumb-trail' );
+			$css->set_selector( '.' . $unique_id . ' > .premium-breadcrumb-trail' );
 			$css->add_property( 'padding-top', $css->render_color( $padding['Desktop']['top'] . 'px' ) );
 			$css->add_property( 'padding-right', $css->render_color( $padding['Desktop']['right'] . 'px' ) );
 			$css->add_property( 'padding-bottom', $css->render_color( $padding['Desktop']['bottom'] . 'px' ) );
@@ -61,7 +61,7 @@ function get_breadcrumbs_css( $attributes, $unique_id ) {
 		}
 		if ( $spacing['margin'] ) {
 			$margin = $spacing['margin'];
-			$css->set_selector( '#' . $unique_id . ' > .premium-breadcrumb-trail' );
+			$css->set_selector( '.' . $unique_id . ' > .premium-breadcrumb-trail' );
 			$css->add_property( 'margin-top', $css->render_color( $margin['Desktop']['top'] . 'px' ) );
 			$css->add_property( 'margin-right', $css->render_color( $margin['Desktop']['right'] . 'px' . '!important' ) );
 			$css->add_property( 'margin-bottom', $css->render_color( $margin['Desktop']['bottom'] . 'px' ) );
@@ -70,7 +70,7 @@ function get_breadcrumbs_css( $attributes, $unique_id ) {
 
 		if ( $spacing['itemPadding'] ) {
 			$item_padding = $spacing['itemPadding'];
-			$css->set_selector( '#' . $unique_id . '.pbg-breadcrumbs-advanced .premium-breadcrumb-trail li > *' );
+			$css->set_selector( '.' . $unique_id . '.premium-breadcrumbs-advanced .premium-breadcrumb-trail li > *' );
 			$css->add_property( 'padding-top', $css->render_color( $item_padding['Desktop']['top'] . 'px' ) );
 			$css->add_property( 'padding-right', $css->render_color( $item_padding['Desktop']['right'] . 'px' ) );
 			$css->add_property( 'padding-bottom', $css->render_color( $item_padding['Desktop']['bottom'] . 'px' ) );
@@ -80,14 +80,14 @@ function get_breadcrumbs_css( $attributes, $unique_id ) {
 		$css->start_media_query( $media_query['tablet'] );
 		if ( isset( $attributes['typography'] ) ) {
 			$typography = $attributes['typography'];
-			$css->set_selector( '#' . $unique_id . ' > .premium-breadcrumb-trail, #' . $unique_id . ' > .premium-breadcrumb-trail a, #' . $unique_id . ' > .premium-breadcrumb-trail span' );
+			$css->set_selector( '.' . $unique_id . ' > .premium-breadcrumb-trail, .' . $unique_id . ' > .premium-breadcrumb-trail a, .' . $unique_id . ' > .premium-breadcrumb-trail span' );
 			if ( isset( $typography['size'] ) ) {
 				$css->add_property( 'font-size', $css->render_color( $typography['size']['Tablet'] . $typography['size']['unit'] ) );
 			}
 		}
 		if ( $spacing['padding'] ) {
 			$padding = $spacing['padding'];
-			$css->set_selector( '#' . $unique_id . ' > .premium-breadcrumb-trail' );
+			$css->set_selector( '.' . $unique_id . ' > .premium-breadcrumb-trail' );
 			$css->add_property( 'padding-top', $css->render_color( $padding['Tablet']['top'] . 'px' ) );
 			$css->add_property( 'padding-right', $css->render_color( $padding['Tablet']['right'] . 'px' ) );
 			$css->add_property( 'padding-bottom', $css->render_color( $padding['Tablet']['bottom'] . 'px' ) );
@@ -96,7 +96,7 @@ function get_breadcrumbs_css( $attributes, $unique_id ) {
 
 		if ( $spacing['margin'] ) {
 			$margin = $spacing['margin'];
-			$css->set_selector( '#' . $unique_id . ' > .premium-breadcrumb-trail' );
+			$css->set_selector( '.' . $unique_id . ' > .premium-breadcrumb-trail' );
 			$css->add_property( 'margin-top', $css->render_color( $margin['Tablet']['top'] . 'px' ) );
 			$css->add_property( 'margin-right', $css->render_color( $margin['Tablet']['right'] . 'px' ) );
 			$css->add_property( 'margin-bottom', $css->render_color( $margin['Tablet']['bottom'] . 'px' ) );
@@ -105,7 +105,7 @@ function get_breadcrumbs_css( $attributes, $unique_id ) {
 
 		if ( $spacing['itemPadding'] ) {
 			$item_padding = $spacing['itemPadding'];
-			$css->set_selector( '#' . $unique_id . '.pbg-breadcrumbs-advanced .premium-breadcrumb-trail li > *' );
+			$css->set_selector( '.' . $unique_id . '.premium-breadcrumbs-advanced .premium-breadcrumb-trail li > *' );
 			$css->add_property( 'padding-top', $css->render_color( $item_padding['Tablet']['top'] . 'px' ) );
 			$css->add_property( 'padding-right', $css->render_color( $item_padding['Tablet']['right'] . 'px' ) );
 			$css->add_property( 'padding-bottom', $css->render_color( $item_padding['Tablet']['bottom'] . 'px' ) );
@@ -116,14 +116,14 @@ function get_breadcrumbs_css( $attributes, $unique_id ) {
 		$css->start_media_query( $media_query['mobile'] );
 		if ( isset( $attributes['typography'] ) ) {
 			$typography = $attributes['typography'];
-			$css->set_selector( '#' . $unique_id . ' > .premium-breadcrumb-trail, #' . $unique_id . ' > .premium-breadcrumb-trail a, #' . $unique_id . ' > .premium-breadcrumb-trail span' );
+			$css->set_selector( '.' . $unique_id . ' > .premium-breadcrumb-trail, .' . $unique_id . ' > .premium-breadcrumb-trail a, .' . $unique_id . ' > .premium-breadcrumb-trail span' );
 			if ( isset( $typography['size'] ) ) {
 				$css->add_property( 'font-size', $css->render_color( $typography['size']['Mobile'] . $typography['size']['unit'] ) );
 			}
 		}
 		if ( $spacing['padding'] ) {
 			$padding = $spacing['padding'];
-			$css->set_selector( '#' . $unique_id . ' > .premium-breadcrumb-trail' );
+			$css->set_selector( '.' . $unique_id . ' > .premium-breadcrumb-trail' );
 			$css->add_property( 'padding-top', $css->render_color( $padding['Mobile']['top'] . 'px' ) );
 			$css->add_property( 'padding-right', $css->render_color( $padding['Mobile']['right'] . 'px' ) );
 			$css->add_property( 'padding-bottom', $css->render_color( $padding['Mobile']['bottom'] . 'px' ) );
@@ -132,7 +132,7 @@ function get_breadcrumbs_css( $attributes, $unique_id ) {
 
 		if ( $spacing['margin'] ) {
 			$margin = $spacing['margin'];
-			$css->set_selector( '#' . $unique_id . ' > .premium-breadcrumb-trail' );
+			$css->set_selector( '.' . $unique_id . ' > .premium-breadcrumb-trail' );
 			$css->add_property( 'margin-top', $css->render_color( $margin['Mobile']['top'] . 'px' ) );
 			$css->add_property( 'margin-right', $css->render_color( $margin['Mobile']['right'] . 'px' ) );
 			$css->add_property( 'margin-bottom', $css->render_color( $margin['Mobile']['bottom'] . 'px' ) );
@@ -141,7 +141,7 @@ function get_breadcrumbs_css( $attributes, $unique_id ) {
 
 		if ( $spacing['itemPadding'] ) {
 			$item_padding = $spacing['itemPadding'];
-			$css->set_selector( '#' . $unique_id . '.pbg-breadcrumbs-advanced .premium-breadcrumb-trail li > *' );
+			$css->set_selector( '.' . $unique_id . '.premium-breadcrumbs-advanced .premium-breadcrumb-trail li > *' );
 			$css->add_property( 'padding-top', $css->render_color( $item_padding['Mobile']['top'] . 'px' ) );
 			$css->add_property( 'padding-right', $css->render_color( $item_padding['Mobile']['right'] . 'px' ) );
 			$css->add_property( 'padding-bottom', $css->render_color( $item_padding['Mobile']['bottom'] . 'px' ) );
@@ -162,8 +162,12 @@ function get_breadcrumbs_css( $attributes, $unique_id ) {
  * @return string The render.
  */
 function render_block_pbg_breadcrumbs( $attributes ) {
+	$unique_id = rand( 100, 10000 );
+	$id        = 'premium-breadcrumbs-' . esc_attr( $unique_id );
+
 	$breadcrumb = apply_filters( 'breadcrumb_trail_object', null );
 	$style      = isset( $attributes['breadcrumbsStyle'] ) ? $attributes['breadcrumbsStyle'] : 'normal';
+	$block_id   = ( ! empty( $attributes['blockId'] ) ) ? $attributes['blockId'] : $id;
 	$args       = array();
 	if ( isset( $attributes['enablePrefix'] ) && $attributes['enablePrefix'] ) {
 		$args['prefix'] = $attributes['prefix'];
@@ -177,13 +181,12 @@ function render_block_pbg_breadcrumbs( $attributes ) {
 	if ( ! is_object( $breadcrumb ) ) {
 		$breadcrumb = new PBG_Breadcrumb_Trail( $args );
 	}
-	$unique_id          = rand( 100, 10000 );
-	$id                 = 'pbg-block-' . esc_attr( $unique_id );
+
 	$align_class_name   = empty( $attributes['textAlign'] ) ? '' : "has-text-align-{$attributes['textAlign']} ";
-	$wrapper_attributes = get_block_wrapper_attributes( array( 'class' => $align_class_name . 'pbg-breadcrumbs-' . $style ) );
+	$wrapper_attributes = get_block_wrapper_attributes( array( 'class' => $align_class_name . 'premium-breadcrumbs-' . $style . ' ' . $block_id ) );
 
 	if ( ! wp_style_is( $unique_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
-		$css = get_breadcrumbs_css( $attributes, $id );
+		$css = get_breadcrumbs_css( $attributes, $block_id );
 		if ( ! empty( $css ) ) {
 			$block_helpers = new PBG_Blocks_Helper();
 			$block_helpers->render_inline_css( $css, $unique_id, true );
@@ -191,8 +194,7 @@ function render_block_pbg_breadcrumbs( $attributes ) {
 	};
 
 	return sprintf(
-		'<div id="%1$s" %2$s>%3$s</div>',
-		esc_attr( $id ),
+		'<div %1$s>%2$s</div>',
 		$wrapper_attributes,
 		// already pre-escaped if it is a link.
 		$breadcrumb->get_trail()

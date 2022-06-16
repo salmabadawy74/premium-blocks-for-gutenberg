@@ -8,6 +8,9 @@
     "style": "file:./build/style-block.css",
     "usesContext": ["postId", "postType", "queryId"],
     "attributes": {
+        "blockId": {
+            "type": "string"
+        },
         "textAlign": {
             "type": "string"
         },
