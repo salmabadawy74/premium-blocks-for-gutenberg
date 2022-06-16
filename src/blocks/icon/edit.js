@@ -137,7 +137,7 @@ const edit = props => {
                             {urlCheck && (
                                 <Fragment>
                                     <TextControl
-                                        label={__("Link", 'premium-blocks-for-gutenberg')}
+                                        label={__("URL", 'premium-blocks-for-gutenberg')}
                                         value={link}
                                         onChange={(newLink) => setAttributes({ link: newLink })}
                                     />
@@ -299,7 +299,7 @@ const edit = props => {
         >
             <style>
                 {`
-                    .${blockId} .premium-icon-container .premium-icon__${hoverEffect}:hover {
+                    .${blockId} .premium-icon-container i:hover {
                         color: ${iconStyles[0].iconHoverColor || "#6ec1e4"} !important;
                         background-color: ${iconStyles[0].iconHoverBack} !important;
                     }
@@ -322,21 +322,23 @@ const edit = props => {
                         {__("Please Enable Font Awesome Icons from Plugin settings")}
                     </p>
                 )}
-                {(iconType === "dash" || 1 == FontAwesomeEnabled) && (
-                    <i
-                        className={`premium-icon ${selectedIcon} premium-icon__${hoverEffect}`}
-                        style={{
-                            color: iconStyles[0].iconColor || "#6ec1e4",
-                            backgroundColor: iconStyles[0].iconBack,
-                            fontSize: (iconSize[props.deviceType] || 50) + iconSize.unit,
-                            ...borderCss(iconBorder, props.deviceType),
-                            ...padddingCss(iconPadding, props.deviceType),
-                            ...marginCss(iconMargin, props.deviceType),
-                            textShadow: `${iconShadow.horizontal || 0}px ${iconShadow.vertical ||
-                                0}px ${iconShadow.blur || 0}px ${iconShadow.color}`
-                        }}
-                    />
-                )}
+                <div className={`premium-icon__${hoverEffect}`}>
+                    {(iconType === "dash" || 1 == FontAwesomeEnabled) && (
+                        <i
+                            className={`premium-icon ${selectedIcon} `}
+                            style={{
+                                color: iconStyles[0].iconColor || "#6ec1e4",
+                                backgroundColor: iconStyles[0].iconBack,
+                                fontSize: (iconSize[props.deviceType] || 50) + iconSize.unit,
+                                ...borderCss(iconBorder, props.deviceType),
+                                ...padddingCss(iconPadding, props.deviceType),
+                                ...marginCss(iconMargin, props.deviceType),
+                                textShadow: `${iconShadow.horizontal || 0}px ${iconShadow.vertical ||
+                                    0}px ${iconShadow.blur || 0}px ${iconShadow.color}`
+                            }}
+                        />
+                    )}
+                </div>
             </div>
         </div>
     ];

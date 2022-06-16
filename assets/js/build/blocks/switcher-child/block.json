@@ -12,9 +12,6 @@
     "html": false
   },
   "editorScript": "file:./build/block.js",
-  "script": "gpb-switcher-child-block-script",
-  "editorStyle": "file:./build/index.css",
-  "style": "file:./build/style-block.css",
   "attributes": {
     "blockId": {
       "type": "string"
