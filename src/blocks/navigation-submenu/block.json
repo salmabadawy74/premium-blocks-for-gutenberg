@@ -8,6 +8,9 @@
     "description": "Add a submenu to your navigation.",
     "textdomain": "default",
     "attributes": {
+        "blockId": {
+            "type": "string"
+        },
         "label": {
             "type": "string"
         },

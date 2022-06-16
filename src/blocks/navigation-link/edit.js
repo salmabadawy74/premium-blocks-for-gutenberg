@@ -51,6 +51,7 @@ import iconsList from "../../components/premium-icons-list";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
+import { generateBlockId } from '../../components/HelperFunction';
 import { name } from './block.json';
 
 const MAX_NESTING = 5;
@@ -291,7 +292,8 @@ export default function NavigationLinkEdit({
 		linkCustomIcon,
 		badgeText,
 		badgeColors,
-		linkBadge
+		linkBadge,
+		blockId
 	} = attributes;
 	const { megaMenu, overlayMenu } = context;
 
@@ -379,6 +381,12 @@ export default function NavigationLinkEdit({
 		},
 		[clientId]
 	);
+
+	useEffect(() => {
+		if (!blockId) {
+			setAttributes({ blockId: "premium-navigation-link-" + generateBlockId(clientId) })
+		}
+	})
 
 	useEffect(() => {
 		// This side-effect should not create an undo level as those should
@@ -519,7 +527,7 @@ export default function NavigationLinkEdit({
 
 	const blockProps = useBlockProps({
 		ref: listItemRef,
-		className: classnames('premium-navigation-item', {
+		className: classnames('premium-navigation-item', blockId, {
 			'is-editing': isSelected || isParentOfSelectedBlock,
 			'is-dragging-within': isDraggingWithin,
 			'has-link': !!url,

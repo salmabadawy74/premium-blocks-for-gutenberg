@@ -8,6 +8,9 @@
     "keywords": ["menu", "navigation", "links"],
     "textdomain": "default",
     "attributes": {
+        "blockId": {
+            "type": "string"
+        },
         "ref": {
             "type": "number"
         },

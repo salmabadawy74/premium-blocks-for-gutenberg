@@ -418,8 +418,6 @@
 }
 
 .wp-block-premium-navigation .has-child :where(.premium-navigation__submenu-container) {
-  background-color: inherit;
-  color: inherit;
   position: absolute;
   z-index: 2;
   display: flex;
@@ -587,12 +585,6 @@ button.premium-navigation-item__content {
     left: auto;
     right: 100%;
   }
-}
-
-.wp-block-premium-navigation:not(.has-background) .premium-navigation__submenu-container {
-  background-color: #fff;
-  color: #000;
-  border: 1px solid rgba(0, 0, 0, 0.15);
 }
 
 .premium-navigation__container {
