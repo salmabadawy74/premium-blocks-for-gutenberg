@@ -6,7 +6,7 @@ const save = props => {
     const { className } = props;
 
     const {
-        block_id,
+        blockId,
         iconBorder,
         selectedIcon,
         align,
@@ -25,17 +25,24 @@ const save = props => {
         iconSize
     } = props.attributes;
 
-    const mainClasses = classnames(className);
+    const mainClasses = classnames(className, 'premium-icon', blockId);
 
     return (
         <div
-            className={`${mainClasses}__container ${hideDesktop} ${hideTablet} ${hideMobile}`}
-            id={`premium-icon-${block_id}`}
+            className={`${mainClasses}__container ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`}
         >
+            <style>
+                {`
+                    .${blockId} .premium-icon-container i:hover {
+                        color: ${iconStyles[0].iconHoverColor || "#6ec1e4"} !important;
+                        background-color: ${iconStyles[0].iconHoverBack} !important;
+                    }
+                 `}
+            </style>
             <div
                 className={`premium-icon-container`}
                 style={{
-                    textAlign: align,
+                    textAlign: align[props.deviceType],
                     ...gradientBackground(containerBackground),
                     borderStyle: containerBorder.borderType,
                     borderColor: containerBorder.borderColor,
@@ -50,18 +57,20 @@ const save = props => {
                     rel="noopener noreferrer"
                     target={target ? "_blank" : "_self"}
                 >
-                    <i
-                        className={`premium-icon ${selectedIcon} premium-icon__${hoverEffect}`}
-                        style={{
-                            fontSize: (iconSize[props.deviceType] || 50) + iconSize.unit,
-                            color: iconStyles[0].iconColor || "#6ec1e4",
-                            backgroundColor: iconStyles[0].iconBack,
-                            borderStyle: iconBorder.borderType,
-                            borderColor: iconBorder.borderColor,
-                            textShadow: `${iconShadow.horizontal || 0}px ${iconShadow.vertical ||
-                                0}px ${iconShadow.blur || 0}px ${iconShadow.color}`
-                        }}
-                    />
+                    <div className={`premium-icon-hover premium-icon__${hoverEffect}`}>
+                        <i
+                            className={`premium-icon ${selectedIcon}`}
+                            style={{
+                                fontSize: (iconSize[props.deviceType] || 50) + iconSize.unit,
+                                color: iconStyles[0].iconColor || "#6ec1e4",
+                                backgroundColor: iconStyles[0].iconBack,
+                                borderStyle: iconBorder.borderType,
+                                borderColor: iconBorder.borderColor,
+                                textShadow: `${iconShadow.horizontal || 0}px ${iconShadow.vertical ||
+                                    0}px ${iconShadow.blur || 0}px ${iconShadow.color}`
+                            }}
+                        />
+                    </div>
                 </a>
             </div>
         </div>
