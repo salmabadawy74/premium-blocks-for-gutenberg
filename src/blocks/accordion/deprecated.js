@@ -230,7 +230,7 @@ const attributes = {
 }
 
 const newAttributes = {
-    accordionId: {
+    blockId: {
         type: "string"
     },
     repeaterItems: {
@@ -667,57 +667,58 @@ const deprecated = [
         },
         migrate: (attributes) => {
             let newAttributes = {
+                blockId: attributes.accordionId ? `premium-accordion-${attributes.accordionId.split('-')[6]}` : '',
                 titlePadding: {
                     "Desktop": {
-                        top: attributes.titlePaddingT || '',
-                        right: attributes.titlePaddingR || '',
-                        bottom: attributes.titlePaddingB || '',
-                        left: attributes.titlePaddingL || ''
+                        top: attributes?.titlePaddingT || '',
+                        right: attributes?.titlePaddingR || '',
+                        bottom: attributes?.titlePaddingB || '',
+                        left: attributes?.titlePaddingL || ''
                     },
                     "Tablet": {
-                        top: attributes.titlePaddingTTablet || '',
-                        right: attributes.titlePaddingRTablet || '',
-                        bottom: attributes.titlePaddingBTablet || '',
-                        left: attributes.titlePaddingLTablet || ''
+                        top: attributes?.titlePaddingTTablet || '',
+                        right: attributes?.titlePaddingRTablet || '',
+                        bottom: attributes?.titlePaddingBTablet || '',
+                        left: attributes?.titlePaddingLTablet || ''
                     },
                     "Mobile": {
-                        top: attributes.titlePaddingTMobile || '',
-                        right: attributes.titlePaddingRMobile || '',
-                        bottom: attributes.titlePaddingBMobile || '',
-                        left: attributes.titlePaddingLMobile || ''
+                        top: attributes?.titlePaddingTMobile || '',
+                        right: attributes?.titlePaddingRMobile || '',
+                        bottom: attributes?.titlePaddingBMobile || '',
+                        left: attributes?.titlePaddingLMobile || ''
                     },
                     "unit": "px"
                 },
                 descPadding: {
                     "Desktop": {
-                        top: attributes.descPaddingT || '',
-                        right: attributes.descPaddingR || '',
-                        bottom: attributes.descPaddingB || '',
-                        left: attributes.descPaddingL || ''
+                        top: attributes?.descPaddingT || '',
+                        right: attributes?.descPaddingR || '',
+                        bottom: attributes?.descPaddingB || '',
+                        left: attributes?.descPaddingL || ''
                     },
                     "Tablet": {
-                        top: attributes.descPaddingTTablet || '',
-                        right: attributes.descPaddingRTablet || '',
-                        bottom: attributes.descPaddingBTablet || '',
-                        left: attributes.descPaddingLTablet || ''
+                        top: attributes?.descPaddingTTablet || '',
+                        right: attributes?.descPaddingRTablet || '',
+                        bottom: attributes?.descPaddingBTablet || '',
+                        left: attributes?.descPaddingLTablet || ''
                     },
                     "Mobile": {
-                        top: attributes.descPaddingTMobile || '',
-                        right: attributes.descPaddingRMobile || '',
-                        bottom: attributes.descPaddingBMobile || '',
-                        left: attributes.descPaddingLMobile || ''
+                        top: attributes?.descPaddingTMobile || '',
+                        right: attributes?.descPaddingRMobile || '',
+                        bottom: attributes?.descPaddingBMobile || '',
+                        left: attributes?.descPaddingLMobile || ''
                     },
                     "unit": "px"
                 },
                 titleBorder: {
-                    "borderType": attributes.titleStyles[0].titleBorder || '',
-                    "borderColor": attributes.titleStyles[0].titleBorderColor || '',
+                    "borderType": attributes?.titleStyles[0].titleBorder || '',
+                    "borderColor": attributes?.titleStyles[0].titleBorderColor || '',
                     "borderWidth": {
                         Desktop: {
-                            top: attributes.titleBorderTop || '',
-                            right: attributes.titleBorderRight || '',
-                            bottom: attributes.titleBorderBottom || '',
-                            left: attributes.titleBorderLeft || ''
+                            top: attributes?.titleBorderTop || '',
+                            right: attributes?.titleBorderRight || '',
+                            bottom: attributes?.titleBorderBottom || '',
+                            left: attributes?.titleBorderLeft || ''
                         },
                         Tablet: {
                             top: '',
@@ -734,10 +735,10 @@ const deprecated = [
                     },
                     "borderRadius": {
                         Desktop: {
-                            top: attributes.titleStyles[0].titleBorderRadius || '',
-                            right: attributes.titleStyles[0].titleBorderRadius || '',
-                            bottom: attributes.titleStyles[0].titleBorderRadius || '',
-                            left: attributes.titleStyles[0].titleBorderRadius || ''
+                            top: attributes?.titleStyles[0].titleBorderRadius || '',
+                            right: attributes?.titleStyles[0].titleBorderRadius || '',
+                            bottom: attributes?.titleStyles[0].titleBorderRadius || '',
+                            left: attributes?.titleStyles[0].titleBorderRadius || ''
                         },
                         Tablet: {
                             top: '',
@@ -754,14 +755,14 @@ const deprecated = [
                     }
                 },
                 descBorder: {
-                    "borderType": attributes.descStyles[0].descBorder || '',
-                    "borderColor": attributes.descStyles[0].descBorderColor || '',
+                    "borderType": attributes?.descStyles[0].descBorder || '',
+                    "borderColor": attributes?.descStyles[0].descBorderColor || '',
                     "borderWidth": {
                         Desktop: {
-                            top: attributes.descBorderTop || '',
-                            right: attributes.descBorderRight || '',
-                            bottom: attributes.descBorderBottom || '',
-                            left: attributes.descBorderLeft || ''
+                            top: attributes?.descBorderTop || '',
+                            right: attributes?.descBorderRight || '',
+                            bottom: attributes?.descBorderBottom || '',
+                            left: attributes?.descBorderLeft || ''
                         },
                         Tablet: {
                             top: '',
@@ -778,10 +779,10 @@ const deprecated = [
                     },
                     "borderRadius": {
                         Desktop: {
-                            top: attributes.descStyles[0].descBorderRadius || '',
-                            right: attributes.descStyles[0].descBorderRadius || '',
-                            bottom: attributes.descStyles[0].descBorderRadius || '',
-                            left: attributes.descStyles[0].descBorderRadius || ''
+                            top: attributes?.descStyles[0].descBorderRadius || '',
+                            right: attributes?.descStyles[0].descBorderRadius || '',
+                            bottom: attributes?.descStyles[0].descBorderRadius || '',
+                            left: attributes?.descStyles[0].descBorderRadius || ''
                         },
                         Tablet: {
                             top: '',
@@ -798,32 +799,32 @@ const deprecated = [
                     }
                 },
                 titleTypography: {
-                    "fontWeight": attributes.titleStyles[0].titleWeight || '',
-                    'fontStyle': attributes.titleStyles[0].titleStyle || '',
-                    'textTransform': attributes.titleStyles[0].titleUpper || '',
-                    'letterSpacing': attributes.titleStyles[0].titleLetter || '',
+                    "fontWeight": attributes?.titleStyles[0].titleWeight || '',
+                    'fontStyle': attributes?.titleStyles[0].titleStyle || '',
+                    'textTransform': attributes?.titleStyles[0].titleUpper || '',
+                    'letterSpacing': attributes?.titleStyles[0].titleLetter || '',
                     'fontFamily': '',
-                    'lineHeight': attributes.titleStyles[0].titleLine || '',
+                    'lineHeight': attributes?.titleStyles[0].titleLine || '',
                     'textDecoration': '',
                     'fontSize': {
-                        'Desktop': attributes.titleStyles[0].titleSize || '',
-                        "Tablet": attributes.titleStyles[0].titleSize || '',
-                        "Mobile": attributes.titleStyles[0].titleSize || '',
+                        'Desktop': attributes?.titleStyles[0].titleSize || '',
+                        "Tablet": attributes?.titleStyles[0].titleSize || '',
+                        "Mobile": attributes?.titleStyles[0].titleSize || '',
                         "unit": 'px'
                     }
                 },
                 descTypography: {
-                    "fontWeight": attributes.descStyles[0].descWeight || '',
-                    'fontStyle': attributes.descStyles[0].descStyle || '',
-                    'textTransform': attributes.descStyles[0].descUpper || '',
-                    'letterSpacing': attributes.descStyles[0].descLetter || '',
+                    "fontWeight": attributes?.descStyles[0].descWeight || '',
+                    'fontStyle': attributes?.descStyles[0].descStyle || '',
+                    'textTransform': attributes?.descStyles[0].descUpper || '',
+                    'letterSpacing': attributes?.descStyles[0].descLetter || '',
                     'fontFamily': '',
-                    'lineHeight': attributes.descStyles[0].descLine || '',
+                    'lineHeight': attributes?.descStyles[0].descLine || '',
                     'textDecoration': '',
                     'fontSize': {
-                        'Desktop': attributes.descStyles[0].descSize || '',
-                        "Tablet": attributes.descStyles[0].descSize || '',
-                        "Mobile": attributes.descStyles[0].descSize || '',
+                        'Desktop': attributes?.descStyles[0].descSize || '',
+                        "Tablet": attributes?.descStyles[0].descSize || '',
+                        "Mobile": attributes?.descStyles[0].descSize || '',
                         "unit": 'px'
                     }
                 },

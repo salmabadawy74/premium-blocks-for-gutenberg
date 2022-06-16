@@ -5,12 +5,12 @@ import classnames from 'classnames'
 const getPostPreview = (post) => {
     const { _embedded, link: href, title } = post;
     return (
-        <a className="pbg-search-item" key={href} {...{ href }}>
+        <a className="premium-search-item" key={href} {...{ href }}>
             {_embedded['wp:featuredmedia'] && (
                 <div
                     {...{
                         class: classnames({
-                            ['pbg-image-container']: true,
+                            ['premium-image-container']: true,
                         }),
                     }}>
                     <img
@@ -49,7 +49,7 @@ const getPostPreview = (post) => {
                                 _embedded['wp:featuredmedia'][0].source_url,
                         }}
                     />
-                    <div class="pbg-ratio" />
+                    <div class="premium-ratio" />
                 </div>
             )}
 
@@ -76,12 +76,12 @@ const searchBlocks = document.querySelectorAll('.wp-block-premium-search');
 
 if (searchBlocks.length > 0) {
     searchBlocks.forEach(function (searchBlock) {
-        if (searchBlock.classList.contains('pbg-style-button')) {
+        if (searchBlock.classList.contains('premium-style-button')) {
             const searchButton = searchBlock.querySelector('.wp-block-premium-search__button');
-            const searchModal = searchBlock.querySelector('.pbg-search-modal');
-            const closeButton = searchModal.querySelector('.pbg-modal-actions button');
+            const searchModal = searchBlock.querySelector('.premium-search-modal');
+            const closeButton = searchModal.querySelector('.premium-modal-actions button');
             const searchInput = searchBlock.querySelector('input[type="search"]');
-            const form = searchBlock.querySelector('.pbg-advanced-search-form');
+            const form = searchBlock.querySelector('.premium-advanced-search-form');
 
             searchButton.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -95,19 +95,19 @@ if (searchBlocks.length > 0) {
                 searchBlock.classList.remove('modal-open');
             })
 
-            if (searchBlock.classList.contains('pbg-ajax-search')) {
+            if (searchBlock.classList.contains('premium-ajax-search')) {
                 searchInput.addEventListener('input', async (e) => {
                     const value = e.target.value;
                     const posts = await getPostsByName(value);
 
-                    const searchResultsElement = form.querySelector('.pbg-search-results');
+                    const searchResultsElement = form.querySelector('.premium-search-results');
                     if (searchResultsElement) {
                         form.removeChild(searchResultsElement)
                     }
 
                     if (posts.length > 0 && e.target.value.trim().length > 0) {
                         let searchResults = (
-                            <div className="pbg-search-results">
+                            <div className="premium-search-results">
                                 {posts.map((post) =>
                                     getPostPreview(post)
                                 )}
@@ -119,21 +119,21 @@ if (searchBlocks.length > 0) {
                 })
             }
         }
-        if (searchBlock.classList.contains('pbg-style-default') && searchBlock.classList.contains('pbg-ajax-search')) {
+        if (searchBlock.classList.contains('premium-style-default') && searchBlock.classList.contains('premium-ajax-search')) {
             const searchInput = searchBlock.querySelector('input[type="search"]');
 
             searchInput.addEventListener('input', async (e) => {
                 const value = e.target.value;
                 const posts = await getPostsByName(value);
 
-                const searchDropdownElement = searchBlock.querySelector('.pbg-search-dropdown');
+                const searchDropdownElement = searchBlock.querySelector('.premium-search-dropdown');
                 if (searchDropdownElement) {
                     searchBlock.removeChild(searchDropdownElement)
                 }
 
                 if (posts.length > 0 && e.target.value.trim().length > 0) {
                     let searchResults = (
-                        <div className="pbg-search-dropdown">
+                        <div className="premium-search-dropdown">
                             {posts.map((post) =>
                                 getPostPreview(post)
                             )}

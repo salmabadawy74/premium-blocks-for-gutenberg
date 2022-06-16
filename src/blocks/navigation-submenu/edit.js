@@ -59,7 +59,7 @@ import SpacingComponent from '../../components/premium-responsive-spacing';
 import PremiumBackgroundControl from "../../components/Premium-Background-Control"
 import iconsList from "../../components/premium-icons-list";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
-import { gradientBackground } from "../../components/HelperFunction";
+import { gradientBackground, generateCss, generateBlockId } from "../../components/HelperFunction";
 
 const ALLOWED_BLOCKS = ['premium/navigation-link', 'premium/navigation-submenu'];
 
@@ -286,6 +286,7 @@ function NavigationSubmenuEdit({
 	onReplace,
 	context,
 	clientId,
+	deviceType = 'Desktop',
 }) {
 	const {
 		label,
@@ -303,7 +304,8 @@ function NavigationSubmenuEdit({
 		linkCustomIcon,
 		badgeText,
 		badgeColors,
-		deviceType = 'Desktop'
+		linkBadge,
+		blockId
 	} = attributes;
 	const link = {
 		url,
@@ -397,6 +399,12 @@ function NavigationSubmenuEdit({
 		},
 		[clientId]
 	);
+
+	useEffect(() => {
+		if (!blockId) {
+			setAttributes({ blockId: "premium-navigation-submenu-" + generateBlockId(clientId) })
+		}
+	})
 
 	// Show the LinkControl on mount if the URL is empty
 	// ( When adding a new menu item)
@@ -616,31 +624,23 @@ function NavigationSubmenuEdit({
 		setAttributes({ badgeColors: newColors });
 	}
 
-	const getSecondPart = (str) => {
-		return str.split(':')[1];
-	}
+	const loadStyles = () => {
+		const styles = {};
 
-	let styleArry = [
-		`#${blockProps.id}.premiun-mega-menu .premium-navigation__submenu-container > *{`,
-		`padding-top: ${columnPadding?.[deviceType]?.top}${columnPadding?.unit};`,
-		`padding-right: ${columnPadding?.[deviceType]?.right}${columnPadding?.unit};`,
-		`padding-bottom: ${columnPadding?.[deviceType]?.bottom}${columnPadding?.unit};`,
-		`padding-left: ${columnPadding?.[deviceType]?.left}${columnPadding?.unit};`,
-		`}`,
-		`#${blockProps.id} .premium-navigation__submenu-container a{`,
-		`--pbg-links-color: ${linkColor};`,
-		`}`,
-		`#${blockProps.id} .premium-navigation__submenu-container a:hover {`,
-		`--pbg-links-hover-color: ${linkHoverColor};`,
-		"}"
-	];
-	styleArry = styleArry.filter(styleLine => {
-		const notAllowed = ['px;', 'undefined;', ';'];
-		const style = getSecondPart(styleLine) ? getSecondPart(styleLine).replace(/\s/g, '') : styleLine;
-		if (!notAllowed.includes(style)) {
-			return style;
+		styles[`.${blockId}.premiun-mega-menu .premium-navigation__submenu-container > *`] = {
+			'padding-top': `${columnPadding?.[deviceType]?.top}${columnPadding?.unit}`,
+			'padding-right': `${columnPadding?.[deviceType]?.right}${columnPadding?.unit}`,
+			'padding-bottom': `${columnPadding?.[deviceType]?.bottom}${columnPadding?.unit}`,
+			'padding-left': `${columnPadding?.[deviceType]?.left}${columnPadding?.unit}`,
 		}
-	}).join('\n')
+
+		styles[`.${blockId} .premium-navigation__submenu-container a`] = {
+			'--pbg-links-color': linkColor,
+			'--pbg-links-hover-color': linkHoverColor
+		}
+
+		return generateCss(styles);
+	}
 
 	return (
 		<Fragment>
@@ -696,26 +696,16 @@ function NavigationSubmenuEdit({
 										value={megaMenuWidth}
 										onChange={newWidth => setAttributes({ megaMenuWidth: newWidth })}
 									/>
-									<PremiumBackgroundControl
-										value={megaMenuBackground}
-										onChange={(value) => setAttributes({ megaMenuBackground: value })}
-									/>
 								</>
 							)}
 
 						</PanelBody>}
-						<PanelBody title={__('Link Badge')}>
-							<TextControl
-								value={badgeText || ''}
-								onChange={(badgeTextValue) => {
-									setAttributes({
-										badgeText: badgeTextValue,
-									});
-								}}
-								label={__('Link Badge Text')}
-							/>
-						</PanelBody>
 						<PanelBody title={__('Link settings')}>
+							<ToggleControl
+								label={__("Enable Badge", 'premium-blocks-for-gutenberg')}
+								checked={linkBadge}
+								onChange={check => setAttributes({ linkBadge: check })}
+							/>
 							<FontIconPicker
 								icons={iconsList}
 								onChange={newIcon => setAttributes({ linkCustomIcon: newIcon })}
@@ -755,17 +745,6 @@ function NavigationSubmenuEdit({
 						</PanelBody>
 					</InspectorTab>
 					<InspectorTab key={'style'}>
-						{megaMenu && (
-							<>
-								<PanelBody
-									title={__('Spacing', 'premium-blocks-for-gutenberg')}
-									initialOpen={false}
-								>
-									<SpacingComponent value={padding} responsive={true} showUnits={true} label={__('Mega Menu Padding')} onChange={(value) => onChangeSpacing({ padding: value })} />
-									<SpacingComponent value={columnPadding} responsive={true} showUnits={true} label={__('Mega Menu Columns Padding')} onChange={(value) => onChangeSpacing({ columnPadding: value })} />
-								</PanelBody>
-							</>
-						)}
 						<PanelBody title={__('Link Badge')}>
 							<AdvancedPopColorControl
 								label={__(`Text Color`, 'premium-blocks-for-gutenberg')}
@@ -780,6 +759,22 @@ function NavigationSubmenuEdit({
 								colorDefault={''}
 							/>
 						</PanelBody>
+						{megaMenu && (
+							<>
+								<PanelBody
+									title={__('Mega Menu', 'premium-blocks-for-gutenberg')}
+									initialOpen={false}
+								>
+									<PremiumBackgroundControl
+										value={megaMenuBackground}
+										onChange={(value) => setAttributes({ megaMenuBackground: value })}
+									/>
+									<hr />
+									<SpacingComponent value={padding} responsive={true} showUnits={true} label={__('Mega Menu Padding')} onChange={(value) => onChangeSpacing({ padding: value })} />
+									<SpacingComponent value={columnPadding} responsive={true} showUnits={true} label={__('Mega Menu Columns Padding')} onChange={(value) => onChangeSpacing({ columnPadding: value })} />
+								</PanelBody>
+							</>
+						)}
 					</InspectorTab>
 					<InspectorTab key={'advance'} />
 				</InspectorTabs>
@@ -787,7 +782,7 @@ function NavigationSubmenuEdit({
 			<div {...blockProps}>
 				<style
 					dangerouslySetInnerHTML={{
-						__html: styleArry
+						__html: loadStyles()
 					}}
 				/>
 				{ /* eslint-disable jsx-a11y/anchor-is-valid */}
@@ -876,7 +871,19 @@ function NavigationSubmenuEdit({
 							<ItemSubmenuIcon />
 						</span>
 					)}
-					{badgeText ? <span style={{ color: badgeColors.text, backgroundColor: badgeColors.background }} className='pbg-navigation-link-label'>{badgeText}</span> : ''}
+					{linkBadge ? <RichText
+						tagName={'span'}
+						className={`pbg-navigation-link-label`}
+						placeholder={__('Badge')}
+						value={badgeText}
+						isSelected={false}
+						onChange={(badgeTextValue) => {
+							setAttributes({
+								badgeText: badgeTextValue,
+							});
+						}}
+						style={{ color: badgeColors.text, backgroundColor: badgeColors.background }}
+					/> : ''}
 				</ParentElement>
 				<div {...innerBlocksProps} />
 			</div>

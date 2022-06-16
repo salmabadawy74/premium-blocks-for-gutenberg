@@ -49,6 +49,8 @@ import SpacingComponent from '../../components/premium-responsive-spacing';
 import PremiumTypo from "../../components/premium-typo"
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
+import { generateBlockId, generateCss } from '../../components/HelperFunction';
+
 const MIN_WIDTH = 220;
 
 function SearchEdit({
@@ -77,7 +79,8 @@ function SearchEdit({
 		buttonTypography,
 		floatPosition,
 		floatValues,
-		ajaxSearch
+		ajaxSearch,
+		blockId
 	} = attributes;
 	const [isVisibility, setIsVisibility] = useState(false);
 	const [posts, setPosts] = useState([]);
@@ -107,6 +110,12 @@ function SearchEdit({
 		});
 	}, [insertedInNavigationBlock]);
 
+	useEffect(() => {
+		if (!blockId) {
+			setAttributes({ blockId: "premium-search-" + generateBlockId(clientId) })
+		}
+	})
+
 	const isButtonPositionInside = 'button-inside' === buttonPosition;
 	const isButtonPositionOutside = 'button-outside' === buttonPosition;
 	const hasNoButton = 'no-button' === buttonPosition;
@@ -120,6 +129,7 @@ function SearchEdit({
 	const getBlockClassNames = () => {
 		return classnames(
 			className,
+			blockId,
 			formStyle === 'button' ? 'wp-block-premium-search-button-style' : undefined,
 			isButtonPositionInside
 				? 'wp-block-premium-search__button-inside'
@@ -501,7 +511,34 @@ function SearchEdit({
 									/>}
 								</>
 							)}
-							{formStyle === 'default' && (
+						</PanelBody>
+						{formStyle === 'default' && (
+							<PanelBody
+								title={__("Input", 'premium-blocks-for-gutenberg')}
+								className="premium-panel-body"
+								initialOpen={false}
+							>
+								<PremiumTypo
+									components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
+									value={typography}
+									onChange={newValue => setAttributes({ submenuTypography: newValue })}
+								/>
+								<hr />
+								<AdvancedPopColorControl
+									label={__(`Form Text Color`, 'premium-blocks-for-gutenberg')}
+									colorValue={colors.text}
+									onColorChange={newValue => setColor('text', newValue)}
+									colorDefault={''}
+								/>
+								<AdvancedPopColorControl
+									label={__(`Form Background Color`, 'premium-blocks-for-gutenberg')}
+									colorValue={colors.background}
+									onColorChange={newValue => setColor('background', newValue)}
+									colorDefault={''}
+								/>
+								<hr />
+								<SpacingComponent value={padding} responsive={true} showUnits={true} label={__('Input Padding')} onChange={(value) => onChangeSpacing({ padding: value })} />
+								<hr />
 								<PremiumBorder
 									label={__("Border")}
 									value={border}
@@ -511,44 +548,24 @@ function SearchEdit({
 									borderRadius={border.borderRadius}
 									onChange={(value) => setAttributes({ border: value })}
 								/>
-							)}
-						</PanelBody>
-						{formStyle === 'default' && (
-							<PanelBody
-								title={__("Input Typography", 'premium-blocks-for-gutenberg')}
-								className="premium-panel-body"
-								initialOpen={false}
-							>
-								<PremiumTypo
-									components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
-									value={typography}
-									onChange={newValue => setAttributes({ submenuTypography: newValue })}
-								/>
-							</PanelBody>
-						)}
-						{!buttonWithIcon && (
-							<PanelBody
-								title={__("Button Typography", 'premium-blocks-for-gutenberg')}
-								className="premium-panel-body"
-								initialOpen={false}
-							>
-								<PremiumTypo
-									components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
-									value={buttonTypography}
-									onChange={newValue => setAttributes({ buttonTypography: newValue })}
-								/>
 							</PanelBody>
 						)}
 						<PanelBody
-							title={__('Spacing', 'premium-blocks-for-gutenberg')}
+							title={__("Button", 'premium-blocks-for-gutenberg')}
+							className="premium-panel-body"
 							initialOpen={false}
 						>
-							{formStyle === 'default' && (
-								<SpacingComponent value={padding} responsive={true} showUnits={true} label={__('Input Padding')} onChange={(value) => onChangeSpacing({ padding: value })} />
+							{!buttonUseIcon && (
+								<>
+									<PremiumTypo
+										components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
+										value={buttonTypography}
+										onChange={newValue => setAttributes({ buttonTypography: newValue })}
+									/>
+									<hr />
+								</>
+
 							)}
-							<SpacingComponent value={buttonPadding} responsive={true} showUnits={true} label={__('Button Padding')} onChange={(value) => onChangeSpacing({ buttonPadding: value })} />
-						</PanelBody>
-						<PanelBody title={__('Colors')}>
 							<TabPanel
 								className="premium-color-tabpanel"
 								activeClass="active-tab"
@@ -569,78 +586,24 @@ function SearchEdit({
 									if ("normal" === tab.name) {
 										return (
 											<Fragment>
-												{ajaxSearch && (
-													<AdvancedPopColorControl
-														label={__(`Links Color`, 'premium-blocks-for-gutenberg')}
-														colorValue={colors.link}
-														onColorChange={newValue => setColor('link', newValue)}
-														colorDefault={''}
-													/>
-												)}
-												{formStyle === 'button' && (
-													<AdvancedPopColorControl
-														label={__(`Modal Background Color`, 'premium-blocks-for-gutenberg')}
-														colorValue={colors.modal}
-														onColorChange={newValue => setColor('modal', newValue)}
-														colorDefault={''}
-													/>
-												)}
-												{formStyle === 'default' && (
-													<>
-														{ajaxSearch && (
-															<AdvancedPopColorControl
-																label={__(`Dropdown Background Color`, 'premium-blocks-for-gutenberg')}
-																colorValue={colors.dropdown}
-																onColorChange={newValue => setColor('dropdown', newValue)}
-																colorDefault={''}
-															/>
-														)}
-														<AdvancedPopColorControl
-															label={__(`Form Text Color`, 'premium-blocks-for-gutenberg')}
-															colorValue={colors.text}
-															onColorChange={newValue => setColor('text', newValue)}
-															colorDefault={''}
-														/>
-														<AdvancedPopColorControl
-															label={__(`Form Background Color`, 'premium-blocks-for-gutenberg')}
-															colorValue={colors.background}
-															onColorChange={newValue => setColor('background', newValue)}
-															colorDefault={''}
-														/>
-													</>
-												)}
 												<AdvancedPopColorControl
-													label={__(`Button Text Color`, 'premium-blocks-for-gutenberg')}
+													label={__(`Color`, 'premium-blocks-for-gutenberg')}
 													colorValue={colors.btnText}
 													onColorChange={newValue => setColor('btnText', newValue)}
 													colorDefault={''}
 												/>
 												<AdvancedPopColorControl
-													label={__(`Button Background Color`, 'premium-blocks-for-gutenberg')}
+													label={__(`Background Color`, 'premium-blocks-for-gutenberg')}
 													colorValue={colors.btnBackground}
 													onColorChange={newValue => setColor('btnBackground', newValue)}
 													colorDefault={''}
 												/>
-												{showLabel && <AdvancedPopColorControl
-													label={__(`Label Color`, 'premium-blocks-for-gutenberg')}
-													colorValue={colors.label}
-													onColorChange={newValue => setColor('label', newValue)}
-													colorDefault={''}
-												/>}
 											</Fragment>
 										);
 									}
 									if ("hover" === tab.name) {
 										return (
 											<Fragment>
-												{ajaxSearch && (
-													<AdvancedPopColorControl
-														label={__(`Links Color`, 'premium-blocks-for-gutenberg')}
-														colorValue={colors.linkHover}
-														onColorChange={newValue => setColor('linkHover', newValue)}
-														colorDefault={''}
-													/>
-												)}
 												<AdvancedPopColorControl
 													label={__(`Button Text Color`, 'premium-blocks-for-gutenberg')}
 													colorValue={colors.btnHoverText}
@@ -658,7 +621,105 @@ function SearchEdit({
 									}
 								}}
 							</TabPanel>
+							<hr />
+							<SpacingComponent value={buttonPadding} responsive={true} showUnits={true} label={__('Button Padding')} onChange={(value) => onChangeSpacing({ buttonPadding: value })} />
 						</PanelBody>
+						{ajaxSearch && (
+							<PanelBody title={formStyle === 'button' ? __('Modal') : __('Dropdown')}>
+								<TabPanel
+									className="premium-color-tabpanel"
+									activeClass="active-tab"
+									tabs={[
+										{
+											name: "normal",
+											title: "Normal",
+											className: "premium-tab",
+										},
+										{
+											name: "hover",
+											title: "Hover",
+											className: "premium-tab",
+										},
+									]}
+								>
+									{(tab) => {
+										if ("normal" === tab.name) {
+											return (
+												<Fragment>
+													{ajaxSearch && (
+														<AdvancedPopColorControl
+															label={__(`Links Color`, 'premium-blocks-for-gutenberg')}
+															colorValue={colors.link}
+															onColorChange={newValue => setColor('link', newValue)}
+															colorDefault={''}
+														/>
+													)}
+													{formStyle === 'button' && (
+														<AdvancedPopColorControl
+															label={__(`Modal Background Color`, 'premium-blocks-for-gutenberg')}
+															colorValue={colors.modal}
+															onColorChange={newValue => setColor('modal', newValue)}
+															colorDefault={''}
+														/>
+													)}
+													{formStyle === 'default' && (
+														<>
+															{ajaxSearch && (
+																<AdvancedPopColorControl
+																	label={__(`Dropdown Background Color`, 'premium-blocks-for-gutenberg')}
+																	colorValue={colors.dropdown}
+																	onColorChange={newValue => setColor('dropdown', newValue)}
+																	colorDefault={''}
+																/>
+															)}
+
+														</>
+													)}
+												</Fragment>
+											);
+										}
+										if ("hover" === tab.name) {
+											return (
+												<Fragment>
+													{ajaxSearch && (
+														<AdvancedPopColorControl
+															label={__(`Links Color`, 'premium-blocks-for-gutenberg')}
+															colorValue={colors.linkHover}
+															onColorChange={newValue => setColor('linkHover', newValue)}
+															colorDefault={''}
+														/>
+													)}
+													<AdvancedPopColorControl
+														label={__(`Button Text Color`, 'premium-blocks-for-gutenberg')}
+														colorValue={colors.btnHoverText}
+														onColorChange={newValue => setColor('btnHoverText', newValue)}
+														colorDefault={''}
+													/>
+													<AdvancedPopColorControl
+														label={__(`Button Background Color`, 'premium-blocks-for-gutenberg')}
+														colorValue={colors.btnHoverBackground}
+														onColorChange={newValue => setColor('btnHoverBackground', newValue)}
+														colorDefault={''}
+													/>
+												</Fragment>
+											);
+										}
+									}}
+								</TabPanel>
+							</PanelBody>
+						)}
+						{showLabel &&
+							<PanelBody
+								title={__('Label', 'premium-blocks-for-gutenberg')}
+								initialOpen={false}
+							>
+								<AdvancedPopColorControl
+									label={__(`Color`, 'premium-blocks-for-gutenberg')}
+									colorValue={colors.label}
+									onColorChange={newValue => setColor('label', newValue)}
+									colorDefault={''}
+								/>
+							</PanelBody>}
 					</InspectorTab>
 					<InspectorTab key={'advance'} />
 				</InspectorTabs>
@@ -681,35 +742,29 @@ function SearchEdit({
 		color: colors.label
 	};
 
-	const getSecondPart = (str) => {
-		return str.split(':')[1];
-	}
+	const loadStyles = () => {
+		const styles = {};
 
-	let styleArry = [
-		`#${blockProps.id}{`,
-		`--pbg-dropdown-bg-color: ${colors.dropdown};`,
-		`--pbg-link-color: ${colors.link}!important;`,
-		`--pbg-link-hover-color: ${colors.linkHover}!important;`,
-		`--pbg-modal-bg-color: ${colors.modal};`,
-		`}`,
-		`#${blockProps.id} .wp-block-premium-search__button:hover{`,
-		`color: ${colors.btnHoverText}!important;`,
-		`background-color: ${colors.btnHoverBackground}!important;`,
-		`}`,
-	];
-	styleArry = styleArry.filter(styleLine => {
-		const notAllowed = ['px;', 'undefined;', ';', '!important;'];
-		const style = getSecondPart(styleLine) ? getSecondPart(styleLine).replace(/\s/g, '') : styleLine;
-		if (!notAllowed.includes(style)) {
-			return style;
+		styles[`.${blockId}`] = {
+			'--pbg-dropdown-bg-color': colors?.dropdown,
+			'--pbg-link-color': colors?.link,
+			'--pbg-link-hover-color': colors?.linkHover,
+			'--pbg-modal-bg-color': colors?.modal,
 		}
-	}).join('\n')
+
+		styles[`.${blockId} .wp-block-premium-search__button:hover`] = {
+			'color': colors?.btnHoverText,
+			'background-color': colors?.btnHoverBackground,
+		}
+
+		return generateCss(styles);
+	}
 
 	return (
 		<div {...blockProps}>
 			<style
 				dangerouslySetInnerHTML={{
-					__html: styleArry
+					__html: loadStyles()
 				}}
 			/>
 			{controls}
@@ -753,9 +808,9 @@ function SearchEdit({
 					{hasOnlyButton && renderButton()}
 					{hasNoButton && renderTextField()}
 					{ajaxSearch && posts.length > 0 && (
-						<div className='pbg-search-dropdown'>
+						<div className='premium-search-dropdown'>
 							{posts.map(post => {
-								return <a href={post.url} className='pbg-search-item'>
+								return <a href={post.url} className='premium-search-item'>
 									{post._embedded['wp:featuredmedia'] && (
 										<img
 											{...{
@@ -804,19 +859,19 @@ function SearchEdit({
 			{formStyle !== 'default' && renderButton()}
 			{formStyle === 'button' && (
 				<Modal isOpen={isVisibility} setIsOpen={setIsVisibility}>
-					<div className='pbg-advanced-search-form'>
+					<div className='premium-advanced-search-form'>
 						<div>
 							<input type='search' placeholder={__("Search")} onChange={(e) => inputChangeHandler(e)} />
-							<div className='pbg-advanced-search-icon'>
+							<div className='premium-advanced-search-icon'>
 								<Icon icon={search} />
 							</div>
 						</div>
 						{ajaxSearch && posts.length > 0 && (
-							<div className='pbg-search-results'>
+							<div className='premium-search-results'>
 								{posts.map(post => {
-									return <a href={post.url} className='pbg-search-item'>
+									return <a href={post.url} className='premium-search-item'>
 										{post._embedded['wp:featuredmedia'] && (
-											<div className='pbg-image-container'>
+											<div className='premium-image-container'>
 												<img
 													{...{
 														src: (
@@ -853,7 +908,7 @@ function SearchEdit({
 															post._embedded['wp:featuredmedia'][0].source_url,
 													}}
 												/>
-												<div class="pbg-ratio"></div>
+												<div class="premium-ratio"></div>
 											</div>
 										)}
 										<span>{post.title}</span>

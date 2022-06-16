@@ -12,10 +12,9 @@ import './style.scss';
 import json from './block.json';
 import edit from './edit';
 
-const { name, category } = json;
+const { name } = json;
 
 registerBlockType(name, {
-    category,
     /**
      * @see ./edit.js
      */

@@ -51,6 +51,7 @@ import iconsList from "../../components/premium-icons-list";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
+import { generateBlockId } from '../../components/HelperFunction';
 import { name } from './block.json';
 
 const MAX_NESTING = 5;
@@ -290,7 +291,9 @@ export default function NavigationLinkEdit({
 		makeHeading,
 		linkCustomIcon,
 		badgeText,
-		badgeColors
+		badgeColors,
+		linkBadge,
+		blockId
 	} = attributes;
 	const { megaMenu, overlayMenu } = context;
 
@@ -378,6 +381,12 @@ export default function NavigationLinkEdit({
 		},
 		[clientId]
 	);
+
+	useEffect(() => {
+		if (!blockId) {
+			setAttributes({ blockId: "premium-navigation-link-" + generateBlockId(clientId) })
+		}
+	})
 
 	useEffect(() => {
 		// This side-effect should not create an undo level as those should
@@ -518,7 +527,7 @@ export default function NavigationLinkEdit({
 
 	const blockProps = useBlockProps({
 		ref: listItemRef,
-		className: classnames('premium-navigation-item', {
+		className: classnames('premium-navigation-item', blockId, {
 			'is-editing': isSelected || isParentOfSelectedBlock,
 			'is-dragging-within': isDraggingWithin,
 			'has-link': !!url,
@@ -591,18 +600,12 @@ export default function NavigationLinkEdit({
 			<InspectorControls>
 				<InspectorTabs tabs={['layout', 'style', 'advance']}>
 					<InspectorTab key={'layout'}>
-						<PanelBody title={__('Link Badge')}>
-							<TextControl
-								value={badgeText || ''}
-								onChange={(badgeTextValue) => {
-									setAttributes({
-										badgeText: badgeTextValue,
-									});
-								}}
-								label={__('Link Badge Text')}
-							/>
-						</PanelBody>
 						<PanelBody title={__('Link settings')}>
+							<ToggleControl
+								label={__("Enable Badge", 'premium-blocks-for-gutenberg')}
+								checked={linkBadge}
+								onChange={check => setAttributes({ linkBadge: check })}
+							/>
 							{megaMenu && overlayMenu !== 'always' && (
 								<>
 									{<ToggleControl
@@ -777,7 +780,19 @@ export default function NavigationLinkEdit({
 							/>
 						</Popover>
 					)}
-					{badgeText ? <span style={{ color: badgeColors.text, backgroundColor: badgeColors.background }} className='pbg-navigation-link-label'>{badgeText}</span> : ''}
+					{linkBadge ? <RichText
+						tagName={'span'}
+						className={`pbg-navigation-link-label`}
+						placeholder={__('Badge')}
+						value={badgeText}
+						isSelected={false}
+						onChange={(badgeTextValue) => {
+							setAttributes({
+								badgeText: badgeTextValue,
+							});
+						}}
+						style={{ color: badgeColors.text, backgroundColor: badgeColors.background }}
+					/> : ''}
 				</a>
 			</div>
 		</Fragment>

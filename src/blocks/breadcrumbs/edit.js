@@ -11,11 +11,14 @@ import {
     AlignmentControl,
     BlockControls,
     useBlockProps,
-    InspectorControls
+    InspectorControls,
+    RichText
 } from '@wordpress/block-editor';
 import { useSelect, withSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
-import { PanelBody, CustomSelectControl, TextControl, Dashicon, TabPanel } from '@wordpress/components';
+import { PanelBody, ToggleControl, TextControl, Dashicon, TabPanel } from '@wordpress/components';
+import { useEffect } from '@wordpress/element';
+
 /**
  * Internal dependencies
  */
@@ -25,8 +28,9 @@ import PremiumTypo from "../../components/premium-typo"
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
 import RadioComponent from '../../components/radio-control';
+import { generateBlockId, generateCss } from '../../components/HelperFunction';
 
-function Edit({ attributes, setAttributes, context: { postType, postId } }, deviceType) {
+function Edit({ clientId, attributes, setAttributes, context: { postType, postId }, deviceType }) {
     const [fullTitle] = useEntityProp('postType', postType, 'title', postId);
     const selectedTerm = useSelect(
         (select) => {
@@ -60,14 +64,14 @@ function Edit({ attributes, setAttributes, context: { postType, postId } }, devi
     });
 
     const categoryName = hasPostTerms ? postTerms[0].name : __('Post Category');
-    const { textAlign, colors, spacing, typography, breadcrumbsStyle } = attributes;
+    const { textAlign, colors, spacing, typography, breadcrumbsStyle, enablePrefix, blockId } = attributes;
     let margin = spacing.margin ? spacing.margin : {};
     let padding = spacing.padding ? spacing.padding : {};
     let itemPadding = spacing.itemPadding ? spacing.itemPadding : {};
 
     const fontSize = typography.size ? typography.size : {};
     const blockProps = useBlockProps({
-        className: classnames({
+        className: classnames(blockId, {
             [`has-text-align-${textAlign}`]: textAlign
         }),
         style: {
@@ -103,70 +107,74 @@ function Edit({ attributes, setAttributes, context: { postType, postId } }, devi
         setAttributes({ colors: newColors });
     }
 
+    useEffect(() => {
+        if (!blockId) {
+            setAttributes({ blockId: "premium-breadcrumbs-" + generateBlockId(clientId) })
+        }
+    })
+
     const onChangeSpacing = (value) => {
         const newSpacing = { ...spacing, ...value };
         setAttributes({ spacing: newSpacing });
     }
 
-    const getSecondPart = (str) => {
-        return str.split(':')[1];
-    }
+    const loadStyles = () => {
+        const styles = {};
 
-    let styleArry = [
-        `#${blockProps.id} a {`,
-        `color: ${colors.link};`,
-        `font-family: ${typography.fontFamily};`,
-        `font-weight: ${typography.fontWeight};`,
-        `font-size: ${fontSize?.[deviceType]}${fontSize?.unit};`,
-        `text-decoration: ${typography.textDecoration};`,
-        `font-style: ${typography.fontStyle || 'normal'};`,
-        "}",
-        `#${blockProps.id} a:hover {`,
-        `color: ${colors.linkHover};`,
-        "}",
-        `#${blockProps.id} .pbg-breadcrumbs-advanced .pbg-breadcrumbs-item {`,
-        `display: inline-flex;`,
-        `overflow: hidden;`,
-        `position: relative;`,
-        `padding-right: 30px;`,
-        `align-items: center;`,
-        `--item-bg-color: ${colors.item};`,
-        `--separator-color: ${colors.separator};`,
-        `}`,
-        `#${blockProps.id} .pbg-breadcrumbs-advanced .pbg-breadcrumbs-item > * {`,
-        `line-height: 26px;`,
-        `}`,
-        `#${blockProps.id} .pbg-breadcrumbs-advanced .pbg-breadcrumbs-item:last-child > * {`,
-        `line-height: 36px;`,
-        `}`,
-        `#${blockProps.id} .pbg-breadcrumbs-advanced .pbg-breadcrumbs-item > *{`,
-        `background-color: var(--item-bg-color, hsla(34,85%,35%,1));`,
-        `padding-top: ${itemPadding?.[deviceType]?.top}${itemPadding?.unit};`,
-        `padding-right: ${itemPadding?.[deviceType]?.right}${itemPadding?.unit};`,
-        `padding-bottom: ${itemPadding?.[deviceType]?.bottom}${itemPadding?.unit};`,
-        `padding-left: ${itemPadding?.[deviceType]?.left}${itemPadding?.unit};`,
-        `}`,
-        `#${blockProps.id} .pbg-breadcrumbs-advanced .pbg-breadcrumbs-item::before {`,
-        `content: " ";`,
-        `display: inline-block;`,
-        `width: auto;`,
-        `height: auto;`,
-        `border-top: 50px solid transparent;`,
-        `border-bottom: 50px solid transparent;`,
-        `border-left: 30px solid var(--separator-color, #a5630cbf);`,
-        `z-index: 1;`,
-        `position: absolute;`,
-        `left: calc(100% - 30px);`,
-        `}`,
-    ];
-
-    styleArry = styleArry.filter(styleLine => {
-        const notAllowed = ['px;', 'undefined;', ';', 'undefinedundefined;'];
-        const style = getSecondPart(styleLine) ? getSecondPart(styleLine).replace(/\s/g, '') : styleLine;
-        if (!notAllowed.includes(style)) {
-            return style;
+        styles[`.${blockId} a`] = {
+            'color': colors?.link,
+            'font-family': typography?.fontFamily,
+            'font-weight': typography?.fontWeight,
+            'font-size': `${fontSize?.[deviceType]}${fontSize?.unit}`,
+            'font-decoration': typography?.textDecoration,
+            'font-style': typography?.fontStyle,
         }
-    }).join('\n')
+
+        styles[`.${blockId} a:hover`] = {
+            'color': colors?.linkHover
+        }
+
+        styles[`.${blockId} .premium-breadcrumbs-advanced .premium-breadcrumbs-item`] = {
+            'display': 'inline-flex',
+            'overflow': 'hidden',
+            'position': 'relative',
+            'padding-right': '30px',
+            'align-items': 'center',
+            '--item-bg-color': colors?.item,
+            '--separator-color': colors?.separator,
+        }
+
+        styles[`.${blockId} .premium-breadcrumbs-advanced .premium-breadcrumbs-item > *`] = {
+            'line-height': '26px'
+        }
+
+        styles[`.${blockId} .premium-breadcrumbs-advanced .premium-breadcrumbs-item:last-child > *`] = {
+            'line-height': '26px'
+        }
+
+        styles[`.${blockId} .premium-breadcrumbs-advanced .premium-breadcrumbs-item > *`] = {
+            'background-color': 'var(--item-bg-color, hsla(34,85%,35%,1))',
+            'padding-top': `${itemPadding?.[deviceType]?.top}${itemPadding?.unit}`,
+            'padding-right': `${itemPadding?.[deviceType]?.right}${itemPadding?.unit}`,
+            'padding-bottom': `${itemPadding?.[deviceType]?.bottom}${itemPadding?.unit}`,
+            'padding-left': `${itemPadding?.[deviceType]?.left}${itemPadding?.unit}`,
+        }
+
+        styles[`.${blockId} .premium-breadcrumbs-advanced .premium-breadcrumbs-item::before`] = {
+            'content': '" "',
+            'display': 'inline-block',
+            'width': 'auto',
+            'height': 'auto',
+            'border-top': '50px solid transparent',
+            'border-bottom': '50px solid transparent',
+            'border-left': '30px solid var(--separator-color, #a5630cbf)',
+            'z-index': '1',
+            'position': 'absolute',
+            'left': 'calc(100% - 30px)',
+        }
+
+        return generateCss(styles);
+    }
 
     return (
         <>
@@ -181,12 +189,20 @@ function Edit({ attributes, setAttributes, context: { postType, postId } }, devi
             <div {...blockProps}>
                 <style
                     dangerouslySetInnerHTML={{
-                        __html: styleArry
+                        __html: loadStyles()
                     }}
                 />
-                <div className={`pbg-breadcrumbs pbg-breadcrumbs-${breadcrumbsStyle}`} style={{ display: breadcrumbsStyle === 'normal' ? 'flex' : '' }}>
-                    {prefix && <span className='prefix' style={{ padding: '0 .4em' }}>{prefix}</span>}
-                    <div className='pbg-breadcrumbs-item'>
+                <div className={`premium-breadcrumbs premium-breadcrumbs-${breadcrumbsStyle}`} style={{ display: breadcrumbsStyle === 'normal' ? 'flex' : '' }}>
+                    {enablePrefix && <RichText
+                        tagName="span"
+                        className={`prefix`}
+                        placeholder={__('You Are Here: ')}
+                        value={prefix}
+                        isSelected={false}
+                        onChange={newText => setAttributes({ prefix: newText })}
+                        style={{ padding: '0 .4em' }}
+                    />}
+                    <div className='premium-breadcrumbs-item'>
                         <a
                             href="#home-pseudo-link"
                             onClick={(event) => event.preventDefault()}
@@ -196,7 +212,7 @@ function Edit({ attributes, setAttributes, context: { postType, postId } }, devi
                         </a>
                     </div>
                     {(type === 'post' || type === 'single') && <>
-                        <div className='pbg-breadcrumbs-item'>
+                        <div className='premium-breadcrumbs-item'>
                             <a
                                 href="#category-pseudo-link"
                                 onClick={(event) => event.preventDefault()}
@@ -206,7 +222,7 @@ function Edit({ attributes, setAttributes, context: { postType, postId } }, devi
                             </a>
                         </div>
                     </>}
-                    <div className='pbg-breadcrumbs-item'>
+                    <div className='premium-breadcrumbs-item'>
                         <span>{fullTitle || __('Post Title')}</span>
                     </div>
                 </div>
@@ -218,6 +234,11 @@ function Edit({ attributes, setAttributes, context: { postType, postId } }, devi
                             title={__('General Settings', 'premium-blocks-for-gutenberg')}
                             initialOpen={true}
                         >
+                            <ToggleControl
+                                label={__("Enable Breadcrumbs Prefix", 'premium-blocks-for-gutenberg')}
+                                checked={enablePrefix}
+                                onChange={check => setAttributes({ enablePrefix: check })}
+                            />
                             <TextControl
                                 label={__('Breadcrumbs Prefix Text', 'premium-blocks-for-gutenberg')}
                                 value={attributes.prefix}
@@ -229,7 +250,7 @@ function Edit({ attributes, setAttributes, context: { postType, postId } }, devi
                                 onChange={(val) => setAttributes({ divider: val })}
                             />
                             <RadioComponent
-                                choices={["icon", "text"]}
+                                choices={[{ label: __('Icon'), value: 'icon' }, { label: __('Text'), value: 'text' }]}
                                 value={homeItemType}
                                 onChange={newValue => setAttributes({ homeItemType: newValue })}
                                 label={__("Home Item", 'premium-blocks-for-gutenberg')}
@@ -242,10 +263,21 @@ function Edit({ attributes, setAttributes, context: { postType, postId } }, devi
                             initialOpen={true}
                         >
                             <RadioComponent
-                                choices={["normal", "advanced"]}
+                                choices={[{ label: __('Normal'), value: 'normal' }, { label: __('Advanced'), value: 'advanced' }]}
                                 value={breadcrumbsStyle}
                                 onChange={newValue => setAttributes({ breadcrumbsStyle: newValue })}
                                 label={__("Breadcrumbs Style", 'premium-blocks-for-gutenberg')}
+                            />
+                        </PanelBody>
+                        <PanelBody
+                            title={__("Typography", 'premium-blocks-for-gutenberg')}
+                            className="premium-panel-body"
+                            initialOpen={false}
+                        >
+                            <PremiumTypo
+                                components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
+                                value={typography}
+                                onChange={newValue => setAttributes({ typography: newValue })}
                             />
                         </PanelBody>
                         <PanelBody
@@ -333,17 +365,6 @@ function Edit({ attributes, setAttributes, context: { postType, postId } }, devi
                             {breadcrumbsStyle === 'advanced' && (
                                 <SpacingComponent value={itemPadding} responsive={true} showUnits={true} label={__('Item Padding')} onChange={(value) => onChangeSpacing({ itemPadding: value })} />
                             )}
-                        </PanelBody>
-                        <PanelBody
-                            title={__("Typography", 'premium-blocks-for-gutenberg')}
-                            className="premium-panel-body"
-                            initialOpen={false}
-                        >
-                            <PremiumTypo
-                                components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
-                                value={typography}
-                                onChange={newValue => setAttributes({ typography: newValue })}
-                            />
                         </PanelBody>
                     </InspectorTab>
                     <InspectorTab key={'advance'} />
