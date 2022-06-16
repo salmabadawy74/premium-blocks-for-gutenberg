@@ -1,0 +1,146 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "premium/search",
+  "title": "Search",
+  "category": "premium-blocks",
+  "description": "Help visitors find your content.",
+  "keywords": [
+    "find"
+  ],
+  "textdomain": "default",
+  "attributes": {
+    "blockId": {
+      "type": "string"
+    },
+    "label": {
+      "type": "string",
+      "__experimentalRole": "content"
+    },
+    "border": {
+      "type": "object",
+      "default": {
+        "borderType": "",
+        "borderColor": "",
+        "borderWidth": "",
+        "borderRadius": ""
+      }
+    },
+    "colors": {
+      "type": "object",
+      "default": {
+        "background": "",
+        "text": "",
+        "btnBackground": "",
+        "btnText": "",
+        "btnHoverBackground": "",
+        "btnHoverText": "",
+        "label": "",
+        "modal": "",
+        "dropdown": "",
+        "link": "",
+        "linkHover": ""
+      }
+    },
+    "position": {
+      "type": "string",
+      "default": "static"
+    },
+    "floatPosition": {
+      "type": "string",
+      "default": "top-right"
+    },
+    "floatValues": {
+      "type": "object",
+      "default": {
+        "top": 10,
+        "right": 10,
+        "bottom": 10,
+        "left": 10
+      }
+    },
+    "formStyle": {
+      "type": "string",
+      "default": "default"
+    },
+    "showLabel": {
+      "type": "boolean",
+      "default": true
+    },
+    "ajaxSearch": {
+      "type": "boolean",
+      "default": true
+    },
+    "placeholder": {
+      "type": "string",
+      "default": "",
+      "__experimentalRole": "content"
+    },
+    "buttonText": {
+      "type": "string",
+      "__experimentalRole": "content"
+    },
+    "buttonPosition": {
+      "type": "string",
+      "default": "button-outside"
+    },
+    "buttonUseIcon": {
+      "type": "boolean",
+      "default": false
+    },
+    "typography": {
+      "type": "object",
+      "default": {
+        "fontWeight": "",
+        "fontStyle": "",
+        "textTransform": "",
+        "letterSpacing": "",
+        "fontFamily": "",
+        "lineHeight": "",
+        "textDecoration": "",
+        "fontSize": {
+          "Desktop": "",
+          "Tablet": "",
+          "Mobile": "",
+          "unit": "px"
+        }
+      }
+    },
+    "buttonTypography": {
+      "type": "object",
+      "default": {
+        "fontWeight": "",
+        "fontStyle": "",
+        "textTransform": "",
+        "letterSpacing": "",
+        "fontFamily": "",
+        "lineHeight": "",
+        "textDecoration": "",
+        "fontSize": {
+          "Desktop": "",
+          "Tablet": "",
+          "Mobile": "",
+          "unit": "px"
+        }
+      }
+    },
+    "spacing": {
+      "type": "object",
+      "default": {
+        "padding": null,
+        "buttonPadding": null
+      }
+    }
+  },
+  "supports": {
+    "align": [
+      "left",
+      "center",
+      "right"
+    ],
+    "html": false
+  },
+  "editorScript": "file:./build/index.js",
+  "editorStyle": "file:./build/index.css",
+  "style": "file:./build/style-index.css"
+}
