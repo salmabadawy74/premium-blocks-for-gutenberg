@@ -428,6 +428,319 @@ const new_attributes = {
 const deprecated_attributes = Object.assign(attributes, new_attributes);
 const deprecatedContent = [
     {
+        attributes: attributes,
+        migrate: attributes => {
+            let newAttributes = {
+                blockId: '',
+                classMigrate: '',
+                align: {
+                    "Desktop": attributes.align,
+                    "Tablet": attributes.align,
+                    "Mobile": attributes.align,
+                },
+                iconSize: {
+                    unit: attributes.iconStyles[0].iconSizeUnit,
+                    "Desktop": attributes.iconStyles[0].iconSize
+                },
+                iconMargin: {
+                    "Desktop": {
+                        top: attributes.marginT,
+                        right: attributes.marginR,
+                        bottom: attributes.marginB,
+                        left: attributes.marginL
+                    },
+                    "Tablet": {
+                        top: attributes.marginTTablet,
+                        right: attributes.marginRTablet,
+                        bottom: attributes.marginBTablet,
+                        left: attributes.marginLTablet
+                    },
+                    "Mobile": {
+                        top: attributes.marginTMobile,
+                        right: attributes.marginRMobile,
+                        bottom: attributes.marginBMobile,
+                        left: attributes.marginLMobile
+                    },
+                    unit: ""
+                },
+                iconPadding: {
+                    "Desktop": {
+                        top: attributes.paddingT,
+                        right: attributes.paddingR,
+                        bottom: attributes.paddingB,
+                        left: attributes.paddingL
+                    },
+                    "Tablet": {
+                        top: attributes.paddingTTablet,
+                        right: attributes.paddingRTablet,
+                        bottom: attributes.paddingBTablet,
+                        left: attributes.paddingLTablet
+                    },
+                    "Mobile": {
+                        top: attributes.paddingTMobile,
+                        right: attributes.paddingRMobile,
+                        bottom: attributes.paddingBMobile,
+                        left: attributes.paddingLMobile
+                    },
+                    unit: attributes.paddingU
+                },
+                wrapMargin: {
+                    "Desktop": {
+                        top: attributes.wrapMarginT,
+                        right: attributes.wrapMarginR,
+                        bottom: attributes.wrapMarginB,
+                        left: attributes.wrapMarginL
+                    },
+                    "Tablet": {
+                        top: attributes.wrapMarginTTablet,
+                        right: attributes.wrapMarginRTablet,
+                        bottom: attributes.wrapMarginBTablet,
+                        left: attributes.wrapMarginLTablet
+                    },
+                    "Mobile": {
+                        top: attributes.wrapMarginTMobile,
+                        right: attributes.wrapMarginRMobile,
+                        bottom: attributes.wrapMarginBMobile,
+                        left: attributes.wrapMarginLMobile
+                    },
+                    unit: ''
+                },
+                wrapPadding: {
+                    "Desktop": {
+                        top: attributes.wrapPaddingT,
+                        right: attributes.wrapPaddingR,
+                        bottom: attributes.wrapPaddingB,
+                        left: attributes.wrapPaddingL
+                    },
+                    "Tablet": {
+                        top: attributes.wrapPaddingTTablet,
+                        right: attributes.wrapPaddingRTablet,
+                        bottom: attributes.wrapPaddingBTablet,
+                        left: attributes.wrapPaddingLTablet
+                    },
+                    "Mobile": {
+                        top: attributes.wrapPaddingTMobile,
+                        right: attributes.wrapPaddingRMobile,
+                        bottom: attributes.wrapPaddingBMobile,
+                        left: attributes.wrapPaddingLMobile
+                    },
+                    unit: ''
+                },
+                iconBorder: {
+                    borderColor: attributes.iconStyles[0].borderColor,
+                    borderType: attributes.iconStyles[0].borderType,
+                    borderRadius: {
+                        "Desktop": {
+                            top: attributes.iconStyles[0].borderRadius,
+                            right: attributes.iconStyles[0].borderRadius,
+                            bottom: attributes.iconStyles[0].borderRadius,
+                            left: attributes.iconStyles[0].borderRadius
+                        },
+                        "Tablet": {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: ""
+                        },
+                        "Mobile": {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: ""
+                        },
+                    },
+                    borderWidth: {
+                        "Desktop": {
+                            top: attributes.iconBorderTop,
+                            right: attributes.iconBorderRight,
+                            bottom: attributes.iconBorderBottom,
+                            left: attributes.iconBorderLeft
+                        },
+                        "Tablet": {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: ""
+                        },
+                        "Mobile": {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: ""
+                        },
+                    }
+                },
+                containerBorder: {
+                    borderColor: attributes.containerStyles[0].wrapBorderColor,
+                    borderType: attributes.containerStyles[0].wrapBorderType,
+                    borderRadius: {
+                        "Desktop": {
+                            top: attributes.containerStyles[0].wrapBorderRadius,
+                            right: attributes.containerStyles[0].wrapBorderRadius,
+                            bottom: attributes.containerStyles[0].wrapBorderRadius,
+                            left: attributes.containerStyles[0].wrapBorderRadius
+                        },
+                        "Tablet": {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: ""
+                        },
+                        "Mobile": {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: ""
+                        },
+                    },
+                    borderWidth: {
+                        "Desktop": {
+                            top: attributes.wrapBorderTop,
+                            right: attributes.wrapBorderRight,
+                            bottom: attributes.wrapBorderBottom,
+                            left: attributes.wrapBorderLeft
+                        },
+                        "Tablet": {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: ""
+                        },
+                        "Mobile": {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: ""
+                        },
+                    }
+                },
+                containerBackground: {
+                    'backgroundType': attributes.backgroundType,
+                    'backgroundColor': attributes.containerStyles[0].containerBack,
+                    'backgroundImageID': attributes.containerStyles[0].backgroundImageID,
+                    'backgroundImageURL': attributes.containerStyles[0].backgroundImageURL,
+                    'backgroundPosition': attributes.containerStyles[0].backgroundPosition,
+                    'backgroundRepeat': attributes.containerStyles[0].backgroundRepeat,
+                    'backgroundSize': attributes.containerStyles[0].backgroundSize,
+                    'fixed': attributes.containerStyles[0].fixed,
+                    'gradientLocationOne': attributes.containerStyles[0].gradientLocationOne,
+                    'gradientColorTwo': attributes.containerStyles[0].gradientColorTwo,
+                    'gradientLocationTwo': attributes.containerStyles[0].gradientLocationTwo,
+                    'gradientAngle': attributes.containerStyles[0].gradientAngle,
+                    'gradientPosition': attributes.containerStyles[0].gradientPosition,
+                    'gradientType': attributes.containerStyles[0].gradientType,
+                },
+                containerShadow: {
+                    'color': attributes.containerStyles[0].wrapShadowColor,
+                    'blur': attributes.containerStyles[0].wrapShadowBlur,
+                    'horizontal': attributes.containerStyles[0].wrapShadowHorizontal,
+                    'vertical': attributes.containerStyles[0].wrapShadowVertical,
+                    'position': attributes.containerStyles[0].wrapShadowPosition
+                },
+                iconShadow: {
+                    'color': attributes.iconStyles[0].shadowColor,
+                    'blur': attributes.iconStyles[0].shadowBlur,
+                    'horizontal': attributes.iconStyles[0].shadowHorizontal,
+                    'vertical': attributes.iconStyles[0].shadowVertical
+                }
+            };
+            return Object.assign(attributes, newAttributes);
+        },
+        save: props => {
+            const {
+                iconBorder,
+                wrapBorder,
+                iconType,
+                selectedIcon,
+                align,
+                hoverEffect,
+                iconStyles,
+                containerStyles,
+                borderWidth,
+                iconBorderTop,
+                iconBorderRight,
+                iconBorderBottom,
+                iconBorderLeft,
+                wrapBorderWidth,
+                wrapBorderTop,
+                wrapBorderRight,
+                wrapBorderBottom,
+                wrapBorderLeft,
+                urlCheck,
+                link,
+                target,
+                hideDesktop,
+                hideTablet,
+                hideMobile,
+                backgroundType
+            } = props.attributes;
+
+            const mainClasses = classnames(className);
+
+            let btnGrad, btnGrad2, btnbg;
+            if ('gradient' === backgroundType) {
+                btnGrad = ('transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack);
+                btnGrad2 = (undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777');
+                if ('radial' === containerStyles[0].gradientType) {
+                    btnbg = `radial-gradient(at ${containerStyles[0].gradientPosition}, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
+                } else if ('radial' !== containerStyles[0].gradientType) {
+                    btnbg = `linear-gradient(${containerStyles[0].gradientAngle}deg, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
+                }
+            } else {
+                btnbg = containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : ''
+            }
+
+            return (
+                <div
+                    className={`${mainClasses}__container ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                    style={{
+                        textAlign: align,
+                        backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
+                        backgroundImage: btnbg,
+                        backgroundRepeat: containerStyles[0].backgroundRepeat,
+                        backgroundPosition: containerStyles[0].backgroundPosition,
+                        backgroundSize: containerStyles[0].backgroundSize,
+                        backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
+                        borderStyle: containerStyles[0].wrapBorderType,
+                        borderWidth: wrapBorder
+                            ? `${wrapBorderTop}px ${wrapBorderRight}px ${wrapBorderBottom}px ${wrapBorderLeft}px`
+                            : wrapBorderWidth + "px",
+                        borderRadius: containerStyles[0].wrapBorderRadius + "px",
+                        borderColor: containerStyles[0].wrapBorderColor,
+                        boxShadow: `${containerStyles[0].wrapShadowHorizontal || 0}px ${containerStyles[0].wrapShadowVertical ||
+                            0}px ${containerStyles[0].wrapShadowBlur ||
+                            0}px ${containerStyles[0].wrapShadowColor} ${containerStyles[0].wrapShadowPosition}`,
+
+                    }}
+                >
+                    <a
+                        className={`premium-icon__link`}
+                        href={urlCheck && link}
+                        rel="noopener noreferrer"
+                        target={target ? "_blank" : "_self"}
+                    >
+                        <i
+                            className={`premium-icon ${selectedIcon} premium-icon__${hoverEffect}`}
+                            style={{
+                                color: iconStyles[0].iconColor || "#6ec1e4",
+                                backgroundColor: iconStyles[0].iconBack,
+                                fontSize: (iconStyles[0].iconSize || 50) + iconStyles[0].iconSizeUnit,
+                                borderStyle: iconStyles[0].borderType,
+                                borderWidth: iconBorder
+                                    ? `${iconBorderTop}px ${iconBorderRight}px ${iconBorderBottom}px ${iconBorderLeft}px`
+                                    : borderWidth + "px",
+                                borderRadius: iconStyles[0].borderRadius || 100 + "px",
+                                borderColor: iconStyles[0].borderColor,
+                                textShadow: `${iconStyles[0].shadowHorizontal || 0}px ${iconStyles[0].shadowVertical ||
+                                    0}px ${iconStyles[0].shadowBlur || 0}px ${iconStyles[0].shadowColor}`
+                            }}
+                        />
+                    </a>
+                </div>
+            );
+        }
+    },
+    {
         attributes: deprecated_attributes,
         migrate: attributes => {
             let newAttributes = {
@@ -1106,314 +1419,6 @@ const deprecatedContent = [
             );
         }
     },
-    {
-        attributes: attributes,
-        migrate: attributes => {
-            let newAttributes = {
-                blockId: '',
-                classMigrate: '',
-                iconSize: {
-                    unit: attributes.iconStyles[0].iconSizeUnit,
-                    "Desktop": attributes.iconStyles[0].iconSize
-                },
-                iconMargin: {
-                    "Desktop": {
-                        top: attributes.marginT,
-                        right: attributes.marginR,
-                        bottom: attributes.marginB,
-                        left: attributes.marginL
-                    },
-                    "Tablet": {
-                        top: attributes.marginTTablet,
-                        right: attributes.marginRTablet,
-                        bottom: attributes.marginBTablet,
-                        left: attributes.marginLTablet
-                    },
-                    "Mobile": {
-                        top: attributes.marginTMobile,
-                        right: attributes.marginRMobile,
-                        bottom: attributes.marginBMobile,
-                        left: attributes.marginLMobile
-                    },
-                    unit: ""
-                },
-                iconPadding: {
-                    "Desktop": {
-                        top: attributes.paddingT,
-                        right: attributes.paddingR,
-                        bottom: attributes.paddingB,
-                        left: attributes.paddingL
-                    },
-                    "Tablet": {
-                        top: attributes.paddingTTablet,
-                        right: attributes.paddingRTablet,
-                        bottom: attributes.paddingBTablet,
-                        left: attributes.paddingLTablet
-                    },
-                    "Mobile": {
-                        top: attributes.paddingTMobile,
-                        right: attributes.paddingRMobile,
-                        bottom: attributes.paddingBMobile,
-                        left: attributes.paddingLMobile
-                    },
-                    unit: attributes.paddingU
-                },
-                wrapMargin: {
-                    "Desktop": {
-                        top: attributes.wrapMarginT,
-                        right: attributes.wrapMarginR,
-                        bottom: attributes.wrapMarginB,
-                        left: attributes.wrapMarginL
-                    },
-                    "Tablet": {
-                        top: attributes.wrapMarginTTablet,
-                        right: attributes.wrapMarginRTablet,
-                        bottom: attributes.wrapMarginBTablet,
-                        left: attributes.wrapMarginLTablet
-                    },
-                    "Mobile": {
-                        top: attributes.wrapMarginTMobile,
-                        right: attributes.wrapMarginRMobile,
-                        bottom: attributes.wrapMarginBMobile,
-                        left: attributes.wrapMarginLMobile
-                    },
-                    unit: ''
-                },
-                wrapPadding: {
-                    "Desktop": {
-                        top: attributes.wrapPaddingT,
-                        right: attributes.wrapPaddingR,
-                        bottom: attributes.wrapPaddingB,
-                        left: attributes.wrapPaddingL
-                    },
-                    "Tablet": {
-                        top: attributes.wrapPaddingTTablet,
-                        right: attributes.wrapPaddingRTablet,
-                        bottom: attributes.wrapPaddingBTablet,
-                        left: attributes.wrapPaddingLTablet
-                    },
-                    "Mobile": {
-                        top: attributes.wrapPaddingTMobile,
-                        right: attributes.wrapPaddingRMobile,
-                        bottom: attributes.wrapPaddingBMobile,
-                        left: attributes.wrapPaddingLMobile
-                    },
-                    unit: ''
-                },
-                iconBorder: {
-                    borderColor: attributes.iconStyles[0].borderColor,
-                    borderType: attributes.iconStyles[0].borderType,
-                    borderRadius: {
-                        "Desktop": {
-                            top: attributes.iconStyles[0].borderRadius,
-                            right: attributes.iconStyles[0].borderRadius,
-                            bottom: attributes.iconStyles[0].borderRadius,
-                            left: attributes.iconStyles[0].borderRadius
-                        },
-                        "Tablet": {
-                            top: "",
-                            right: "",
-                            bottom: "",
-                            left: ""
-                        },
-                        "Mobile": {
-                            top: "",
-                            right: "",
-                            bottom: "",
-                            left: ""
-                        },
-                    },
-                    borderWidth: {
-                        "Desktop": {
-                            top: attributes.iconBorderTop,
-                            right: attributes.iconBorderRight,
-                            bottom: attributes.iconBorderBottom,
-                            left: attributes.iconBorderLeft
-                        },
-                        "Tablet": {
-                            top: "",
-                            right: "",
-                            bottom: "",
-                            left: ""
-                        },
-                        "Mobile": {
-                            top: "",
-                            right: "",
-                            bottom: "",
-                            left: ""
-                        },
-                    }
-                },
-                containerBorder: {
-                    borderColor: attributes.containerStyles[0].wrapBorderColor,
-                    borderType: attributes.containerStyles[0].wrapBorderType,
-                    borderRadius: {
-                        "Desktop": {
-                            top: attributes.containerStyles[0].wrapBorderRadius,
-                            right: attributes.containerStyles[0].wrapBorderRadius,
-                            bottom: attributes.containerStyles[0].wrapBorderRadius,
-                            left: attributes.containerStyles[0].wrapBorderRadius
-                        },
-                        "Tablet": {
-                            top: "",
-                            right: "",
-                            bottom: "",
-                            left: ""
-                        },
-                        "Mobile": {
-                            top: "",
-                            right: "",
-                            bottom: "",
-                            left: ""
-                        },
-                    },
-                    borderWidth: {
-                        "Desktop": {
-                            top: attributes.wrapBorderTop,
-                            right: attributes.wrapBorderRight,
-                            bottom: attributes.wrapBorderBottom,
-                            left: attributes.wrapBorderLeft
-                        },
-                        "Tablet": {
-                            top: "",
-                            right: "",
-                            bottom: "",
-                            left: ""
-                        },
-                        "Mobile": {
-                            top: "",
-                            right: "",
-                            bottom: "",
-                            left: ""
-                        },
-                    }
-                },
-                containerBackground: {
-                    'backgroundType': attributes.backgroundType,
-                    'backgroundColor': attributes.containerStyles[0].containerBack,
-                    'backgroundImageID': attributes.containerStyles[0].backgroundImageID,
-                    'backgroundImageURL': attributes.containerStyles[0].backgroundImageURL,
-                    'backgroundPosition': attributes.containerStyles[0].backgroundPosition,
-                    'backgroundRepeat': attributes.containerStyles[0].backgroundRepeat,
-                    'backgroundSize': attributes.containerStyles[0].backgroundSize,
-                    'fixed': attributes.containerStyles[0].fixed,
-                    'gradientLocationOne': attributes.containerStyles[0].gradientLocationOne,
-                    'gradientColorTwo': attributes.containerStyles[0].gradientColorTwo,
-                    'gradientLocationTwo': attributes.containerStyles[0].gradientLocationTwo,
-                    'gradientAngle': attributes.containerStyles[0].gradientAngle,
-                    'gradientPosition': attributes.containerStyles[0].gradientPosition,
-                    'gradientType': attributes.containerStyles[0].gradientType,
-                },
-                containerShadow: {
-                    'color': attributes.containerStyles[0].wrapShadowColor,
-                    'blur': attributes.containerStyles[0].wrapShadowBlur,
-                    'horizontal': attributes.containerStyles[0].wrapShadowHorizontal,
-                    'vertical': attributes.containerStyles[0].wrapShadowVertical,
-                    'position': attributes.containerStyles[0].wrapShadowPosition
-                },
-                iconShadow: {
-                    'color': attributes.iconStyles[0].shadowColor,
-                    'blur': attributes.iconStyles[0].shadowBlur,
-                    'horizontal': attributes.iconStyles[0].shadowHorizontal,
-                    'vertical': attributes.iconStyles[0].shadowVertical
-                }
-            };
-            return Object.assign(attributes, newAttributes);
-        },
-        save: props => {
-            const {
-                iconBorder,
-                wrapBorder,
-                iconType,
-                selectedIcon,
-                align,
-                hoverEffect,
-                iconStyles,
-                containerStyles,
-                borderWidth,
-                iconBorderTop,
-                iconBorderRight,
-                iconBorderBottom,
-                iconBorderLeft,
-                wrapBorderWidth,
-                wrapBorderTop,
-                wrapBorderRight,
-                wrapBorderBottom,
-                wrapBorderLeft,
-                urlCheck,
-                link,
-                target,
-                hideDesktop,
-                hideTablet,
-                hideMobile,
-                backgroundType
-            } = props.attributes;
-
-            const mainClasses = classnames(className);
-
-            let btnGrad, btnGrad2, btnbg;
-            if ('gradient' === backgroundType) {
-                btnGrad = ('transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack);
-                btnGrad2 = (undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777');
-                if ('radial' === containerStyles[0].gradientType) {
-                    btnbg = `radial-gradient(at ${containerStyles[0].gradientPosition}, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
-                } else if ('radial' !== containerStyles[0].gradientType) {
-                    btnbg = `linear-gradient(${containerStyles[0].gradientAngle}deg, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
-                }
-            } else {
-                btnbg = containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : ''
-            }
-
-            return (
-                <div
-                    className={`${mainClasses}__container ${hideDesktop} ${hideTablet} ${hideMobile}`}
-                    style={{
-                        textAlign: align,
-                        backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
-                        backgroundImage: btnbg,
-                        backgroundRepeat: containerStyles[0].backgroundRepeat,
-                        backgroundPosition: containerStyles[0].backgroundPosition,
-                        backgroundSize: containerStyles[0].backgroundSize,
-                        backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
-                        borderStyle: containerStyles[0].wrapBorderType,
-                        borderWidth: wrapBorder
-                            ? `${wrapBorderTop}px ${wrapBorderRight}px ${wrapBorderBottom}px ${wrapBorderLeft}px`
-                            : wrapBorderWidth + "px",
-                        borderRadius: containerStyles[0].wrapBorderRadius + "px",
-                        borderColor: containerStyles[0].wrapBorderColor,
-                        boxShadow: `${containerStyles[0].wrapShadowHorizontal || 0}px ${containerStyles[0].wrapShadowVertical ||
-                            0}px ${containerStyles[0].wrapShadowBlur ||
-                            0}px ${containerStyles[0].wrapShadowColor} ${containerStyles[0].wrapShadowPosition}`,
-
-                    }}
-                >
-                    <a
-                        className={`premium-icon__link`}
-                        href={urlCheck && link}
-                        rel="noopener noreferrer"
-                        target={target ? "_blank" : "_self"}
-                    >
-                        <i
-                            className={`premium-icon ${selectedIcon} premium-icon__${hoverEffect}`}
-                            style={{
-                                color: iconStyles[0].iconColor || "#6ec1e4",
-                                backgroundColor: iconStyles[0].iconBack,
-                                fontSize: (iconStyles[0].iconSize || 50) + iconStyles[0].iconSizeUnit,
-                                borderStyle: iconStyles[0].borderType,
-                                borderWidth: iconBorder
-                                    ? `${iconBorderTop}px ${iconBorderRight}px ${iconBorderBottom}px ${iconBorderLeft}px`
-                                    : borderWidth + "px",
-                                borderRadius: iconStyles[0].borderRadius || 100 + "px",
-                                borderColor: iconStyles[0].borderColor,
-                                textShadow: `${iconStyles[0].shadowHorizontal || 0}px ${iconStyles[0].shadowVertical ||
-                                    0}px ${iconStyles[0].shadowBlur || 0}px ${iconStyles[0].shadowColor}`
-                            }}
-                        />
-                    </a>
-                </div>
-            );
-        }
-    }
 ];
 
 export default deprecatedContent;
