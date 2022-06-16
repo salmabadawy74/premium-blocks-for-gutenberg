@@ -536,8 +536,6 @@ $navigation-icon-size: 24px;
     // That way if padding is set in theme.json, it still wins.
     // https://css-tricks.com/almanac/selectors/w/where/
     :where(.premium-navigation__submenu-container) {
-        background-color: inherit;
-        color: inherit;
         position: absolute;
         z-index: 2;
         display: flex;
@@ -786,19 +784,6 @@ button.premium-navigation-item__content {
                 right: 100%;
             }
         }
-    }
-}
-
-// Default background and font color.
-.wp-block-premium-navigation:not(.has-background) {
-    .premium-navigation__submenu-container {
-        // Set a background color for submenus so that they're not transparent.
-        // NOTE TO DEVS - if refactoring this code, please double-check that
-        // submenus have a default background color, this feature has regressed
-        // several times, so care needs to be taken.
-        background-color: #fff;
-        color: #000;
-        border: 1px solid rgba(0, 0, 0, 0.15);
     }
 }
 

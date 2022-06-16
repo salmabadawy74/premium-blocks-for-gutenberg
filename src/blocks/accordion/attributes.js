@@ -6,13 +6,6 @@ const attributes = {
     },
     repeaterItems: {
         type: "array",
-        default: [
-            {
-                titleText: __("Awesome Title", 'premium-blocks-for-gutenberg'),
-                descText:
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-            }
-        ]
     },
     direction: {
         type: "string",

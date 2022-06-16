@@ -8,6 +8,9 @@
     "keywords": ["find"],
     "textdomain": "default",
     "attributes": {
+        "blockId": {
+            "type": "string"
+        },
         "label": {
             "type": "string",
             "__experimentalRole": "content"

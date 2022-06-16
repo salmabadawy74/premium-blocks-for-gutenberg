@@ -46,6 +46,7 @@ import PremiumBorder from "../../../components/premium-border"
 import PremiumTypo from "../../../components/premium-typo"
 import InspectorTabs from '../../../components/inspectorTabs';
 import InspectorTab from '../../../components/inspectorTab';
+import { generateBlockId, generateCss } from '../../../components/HelperFunction';
 import useNavigationMenu from '../use-navigation-menu';
 import useNavigationEntities from '../use-navigation-entities';
 import Placeholder from './placeholder';
@@ -76,6 +77,7 @@ function Navigation({
 	// navigation block settings.
 	hasSubmenuIndicatorSetting = true,
 	customPlaceholder: CustomPlaceholder = null,
+	deviceType = 'Desktop',
 }) {
 	const {
 		openSubmenusOnClick,
@@ -103,7 +105,7 @@ function Navigation({
 		overlayMenuBorder,
 		overlayMenuWidth,
 		overlayMenuStyle,
-		deviceType = 'Desktop'
+		blockId
 	} = attributes;
 
 	let areaMenu,
@@ -187,6 +189,12 @@ function Navigation({
 		createNavigationMenuError,
 		createNavigationMenuPost,
 	]);
+
+	useEffect(() => {
+		if (!blockId) {
+			setAttributes({ blockId: "premium-navigation-" + generateBlockId(clientId) })
+		}
+	})
 
 	const {
 		hasUncontrolledInnerBlocks,
@@ -292,14 +300,14 @@ function Navigation({
 
 	const blockProps = useBlockProps({
 		ref: navRef,
-		className: classnames(dropdownReveal && overlayMenu !== 'always' ? `submenu-${dropdownReveal}` : '', menuStyle && overlayMenu !== 'always' ? `effect-${menuStyle}` : '', className, overlayMenu !== 'never' && overlayMenuStyle === 'slide' ? 'overlay-menu-slide' : '', {
+		className: classnames(dropdownReveal && overlayMenu !== 'always' ? `submenu-${dropdownReveal}` : '', menuStyle && overlayMenu !== 'always' ? `effect-${menuStyle}` : '', className, overlayMenu !== 'never' && overlayMenuStyle === 'slide' ? 'overlay-menu-slide' : '', blockId, {
 			'items-justified-right': justifyContent === 'right',
 			'items-justified-space-between': justifyContent === 'space-between',
 			'items-justified-left': justifyContent === 'left',
 			'items-justified-center': justifyContent === 'center',
 			'is-vertical': orientation === 'vertical',
 			'no-wrap': flexWrap === 'nowrap',
-			'submenu-box-shadow': submenuShadow && overlayMenu !== 'always'
+			'submenu-box-shadow': submenuShadow && overlayMenu !== 'always',
 		}),
 		style: {
 			color: menuColors?.link,
@@ -513,50 +521,48 @@ function Navigation({
 		setAttributes({ spacing: newSpacing });
 	}
 
-	const getSecondPart = (str) => {
-		return str.split(':')[1];
-	}
+	const loadStyles = () => {
+		const styles = {};
 
-	let styleArry = [
-		`#${blockProps.id}.overlay-menu-slide .premium-navigation__responsive-container{`,
-		`--overlay-menu-width: ${overlayMenuWidth}px;`,
-		`}`,
-		`#${blockProps.id} > div.is-menu-open .wp-block-premium-navigation-submenu .premium-navigation__submenu-container{`,
-		`border: none !important;`,
-		`}`,
-		`#${blockProps.id} .premium-navigation-item__content{`,
-		`--pbg-links-color: ${menuColors?.link};`,
-		`--pbg-links-hover-color: ${menuColors?.linkHover};`,
-		`}`,
-		`#${blockProps.id} .premium-navigation__container > div > .premium-navigation-item__content{`,
-		`padding-top: ${itemPadding?.[deviceType]?.top}${itemPadding?.unit};`,
-		`padding-right: ${itemPadding?.[deviceType]?.right}${itemPadding?.unit};`,
-		`padding-bottom: ${itemPadding?.[deviceType]?.bottom}${itemPadding?.unit};`,
-		`padding-left: ${itemPadding?.[deviceType]?.left}${itemPadding?.unit};`,
-		`}`,
-		`#${blockProps.id} .premium-navigation__responsive-container-open {`,
-		`color: ${overlayColors.icon};`,
-		"}",
-		`#${blockProps.id} .premium-navigation__responsive-container-open:hover {`,
-		`color: ${overlayColors.iconHover};`,
-		"}",
-		`#${blockProps.id} .premium-navigation__responsive-container.is-menu-open {`,
-		`background-color: ${overlayColors.background};`,
-		"}",
-		`#${blockProps.id} .premium-navigation__responsive-container.is-menu-open .premium-navigation-item__content{`,
-		`--pbg-links-color: ${overlayColors.link};`,
-		"}",
-		`#${blockProps.id} .premium-navigation__responsive-container.is-menu-open .premium-navigation-item__content:hover{`,
-		`--pbg-links-hover-color: ${overlayColors.linkHover};`,
-		"}",
-	];
-	styleArry = styleArry.filter(styleLine => {
-		const notAllowed = ['px;', 'undefined;', ';'];
-		const style = getSecondPart(styleLine) ? getSecondPart(styleLine).replace(/\s/g, '') : styleLine;
-		if (!notAllowed.includes(style)) {
-			return style;
+		styles[`.${blockId}.overlay-menu-slide .premium-navigation__responsive-container`] = {
+			'--overlay-menu-width': `${overlayMenuWidth}px`
 		}
-	}).join('\n')
+
+		styles[`.${blockId} > div.is-menu-open .wp-block-premium-navigation-submenu .premium-navigation__submenu-container`] = {
+			'border': 'none !important'
+		}
+
+		styles[`.${blockId} .premium-navigation-item__content`] = {
+			'--pbg-links-color': menuColors?.link,
+			'--pbg-links-hover-color': menuColors?.linkHover
+		}
+
+		styles[`.${blockId} .premium-navigation__container > div > .premium-navigation-item__content`] = {
+			'padding-top': `${itemPadding?.[deviceType]?.top}${itemPadding?.unit}`,
+			'padding-right': `${itemPadding?.[deviceType]?.right}${itemPadding?.unit}`,
+			'padding-bottom': `${itemPadding?.[deviceType]?.bottom}${itemPadding?.unit}`,
+			'padding-left': `${itemPadding?.[deviceType]?.left}${itemPadding?.unit}`,
+		}
+
+		styles[`.${blockId} .premium-navigation__responsive-container-open`] = {
+			'color': overlayColors?.icon
+		}
+
+		styles[`.${blockId} .premium-navigation__responsive-container-open:hover`] = {
+			'color': overlayColors?.iconHover
+		}
+
+		styles[`.${blockId} .premium-navigation__responsive-container.is-menu-open`] = {
+			'background-color': overlayColors?.background
+		}
+
+		styles[`.${blockId} .premium-navigation__responsive-container.is-menu-open .premium-navigation-item__content`] = {
+			'--pbg-links-color': overlayColors?.link,
+			'--pbg-links-hover-color': overlayColors?.linkHover
+		}
+
+		return generateCss(styles);
+	}
 
 
 	return (
@@ -709,8 +715,13 @@ function Navigation({
 										<option value="topbottom-lines">{__('Top Bottom Lines', 'premium-blocks-for-gutenberg')}</option>
 									</select>
 								</div>
-							</PanelBody>
-							<PanelBody title={__('Menu Styles')}>
+								<hr />
+								<PremiumTypo
+									components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
+									value={typography}
+									onChange={newValue => setAttributes({ typography: newValue })}
+								/>
+								<hr />
 								<TabPanel
 									className="premium-color-tabpanel"
 									activeClass="active-tab"
@@ -760,6 +771,7 @@ function Navigation({
 										}
 									}}
 								</TabPanel>
+								<hr />
 								<PremiumBorder
 									label={__("Border")}
 									value={menuBorder}
@@ -769,6 +781,10 @@ function Navigation({
 									borderRadius={menuBorder.borderRadius}
 									onChange={(value) => setAttributes({ menuBorder: value })}
 								/>
+								<hr />
+								<SpacingComponent value={margin} responsive={true} showUnits={true} label={__('Menu Margin')} onChange={(value) => onChangeSpacing({ margin: value })} />
+								<SpacingComponent value={padding} responsive={true} showUnits={true} label={__('Menu Padding')} onChange={(value) => onChangeSpacing({ padding: value })} />
+								<SpacingComponent value={itemPadding} responsive={true} showUnits={true} label={__('Menu Item Padding')} onChange={(value) => onChangeSpacing({ itemPadding: value })} />
 							</PanelBody>
 							<PanelBody title={__('Overlay Menu')}>
 								<TabPanel
@@ -832,6 +848,7 @@ function Navigation({
 										}
 									}}
 								</TabPanel>
+								<hr />
 								<PremiumBorder
 									label={__("Border")}
 									value={overlayMenuBorder}
@@ -842,39 +859,9 @@ function Navigation({
 									onChange={(value) => setAttributes({ overlayMenuBorder: value })}
 								/>
 							</PanelBody>
-							<PanelBody
-								title={__('Spacing', 'premium-blocks-for-gutenberg')}
-								initialOpen={false}
-							>
-								<SpacingComponent value={padding} responsive={true} showUnits={true} label={__('Menu Padding')} onChange={(value) => onChangeSpacing({ padding: value })} />
-								<SpacingComponent value={itemPadding} responsive={true} showUnits={true} label={__('Menu Item Padding')} onChange={(value) => onChangeSpacing({ itemPadding: value })} />
-								<SpacingComponent value={margin} responsive={true} showUnits={true} label={__('Menu Margin')} onChange={(value) => onChangeSpacing({ margin: value })} />
-							</PanelBody>
-							<PanelBody
-								title={__("Typography", 'premium-blocks-for-gutenberg')}
-								className="premium-panel-body"
-								initialOpen={false}
-							>
-								<PremiumTypo
-									components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
-									value={typography}
-									onChange={newValue => setAttributes({ typography: newValue })}
-								/>
-							</PanelBody>
 							{hasSubmenus && hasSubmenuIndicatorSetting && (
 								<>
-									<PanelBody
-										title={__("Submenu Typography", 'premium-blocks-for-gutenberg')}
-										className="premium-panel-body"
-										initialOpen={false}
-									>
-										<PremiumTypo
-											components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
-											value={submenuTypography}
-											onChange={newValue => setAttributes({ submenuTypography: newValue })}
-										/>
-									</PanelBody>
-									<PanelBody title={__('Submenu Settings')}>
+									<PanelBody title={__('Submenu')}>
 										<div className='menu-styles' style={{ marginBottom: '20px' }}>
 											<label className='components-base-control__label'>{__('Dropdown Reveal', 'premium-blocks-for-gutenberg')}</label>
 											<select style={{ display: "block", width: "100%" }} onChange={(e) => setAttributes({ dropdownReveal: e.target.value })} value={dropdownReveal}>
@@ -884,6 +871,7 @@ function Navigation({
 												<option value="fade-down">{__('Fade Down', 'premium-blocks-for-gutenberg')}</option>
 											</select>
 										</div>
+										<hr />
 										<RangeControl
 											label={__('Submenu Width', 'premium-blocks-for-gutenberg')}
 											value={submenuWidth}
@@ -891,13 +879,13 @@ function Navigation({
 											min={200}
 											max={500}
 										/>
-										<ToggleControl
-											label={__("Submenu Box Shadow", 'premium-blocks-for-gutenberg')}
-											checked={submenuShadow}
-											onChange={check => setAttributes({ submenuShadow: check })}
+										<hr />
+										<PremiumTypo
+											components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
+											value={submenuTypography}
+											onChange={newValue => setAttributes({ submenuTypography: newValue })}
 										/>
-									</PanelBody>
-									<PanelBody title={__('Submenu Styles')}>
+										<hr />
 										<TabPanel
 											className="premium-color-tabpanel"
 											activeClass="active-tab"
@@ -947,6 +935,13 @@ function Navigation({
 												}
 											}}
 										</TabPanel>
+										<hr />
+										<ToggleControl
+											label={__("Submenu Box Shadow", 'premium-blocks-for-gutenberg')}
+											checked={submenuShadow}
+											onChange={check => setAttributes({ submenuShadow: check })}
+										/>
+										<hr />
 										<PremiumBorder
 											label={__("Border")}
 											value={submenuBorder}
@@ -988,7 +983,7 @@ function Navigation({
 					<TagName {...blockProps}>
 						<style
 							dangerouslySetInnerHTML={{
-								__html: styleArry
+								__html: loadStyles()
 							}}
 						/>
 						<ResponsiveWrapper

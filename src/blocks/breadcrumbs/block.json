@@ -1,5 +1,4 @@
 {
-    "$schema": "https://schemas.wp.org/trunk/block.json",
     "apiVersion": 2,
     "name": "premium/breadcrumbs",
     "title": "Breadcrumbs",
@@ -9,12 +8,18 @@
     "style": "file:./build/style-block.css",
     "usesContext": ["postId", "postType", "queryId"],
     "attributes": {
+        "blockId": {
+            "type": "string"
+        },
         "textAlign": {
             "type": "string"
         },
         "breadcrumbsStyle": {
             "type": "string",
             "default": "normal"
+        },
+        "enablePrefix": {
+            "type": "boolean"
         },
         "prefix": {
             "type": "string"
