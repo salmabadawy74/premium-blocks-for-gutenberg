@@ -165,6 +165,32 @@ const attributes = {
     ColumnAnimation: {
         type: "object",
         default: {}
+    },
+    overlayOpacity: {
+        type: 'number'
+    },
+    overlayFilter: {
+        type: 'object',
+        default: {
+            'contrast': '',
+            'blur': '',
+            'bright': '',
+            'saturation': '',
+            'hue': ''
+        }
+    },
+    hoverOverlayOpacity: {
+        type: 'number'
+    },
+    hoverOverlayFilter: {
+        type: 'object',
+        default: {
+            'contrast': '',
+            'blur': '',
+            'bright': '',
+            'saturation': '',
+            'hue': ''
+        },
     }
 };
 

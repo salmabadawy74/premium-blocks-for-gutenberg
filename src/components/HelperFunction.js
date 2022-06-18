@@ -96,3 +96,24 @@ export const videoBackground = (backgroundType, videoSource, videoURL, bgExterna
         }
     }
 }
+export const generateBlockId = (clientId) => {
+    return clientId.split('-')[4];
+}
+export const generateCss = (styles) => {
+    let styleCss = '';
+    for (const selector in styles) {
+        const selectorStyles = styles[selector];
+        const filteredStyles = Object.keys(selectorStyles).map(property => {
+            const value = selectorStyles[property];
+            const valueWithoutUnits = value.toString().replaceAll('px', '').replaceAll(/\s/g, '');
+            if (value && !value.toString().includes('undefined') && valueWithoutUnits) {
+                return `${property}: ${value};`;
+            }
+        }).filter(style => !!style).join('\n');
+        styleCss += `${selector}{
+                    ${filteredStyles}
+                }\n`;
+    }
+
+    return styleCss;
+}

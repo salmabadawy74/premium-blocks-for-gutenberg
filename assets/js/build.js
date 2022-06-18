@@ -2773,6 +2773,153 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+exports.default = PremiumFilters;
+
+var _singleRangeControl = __webpack_require__(3);
+
+var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+var _wp$element = wp.element,
+    Fragment = _wp$element.Fragment,
+    useState = _wp$element.useState;
+var _wp$components = wp.components,
+    Dropdown = _wp$components.Dropdown,
+    Button = _wp$components.Button;
+function PremiumFilters(_ref) {
+    var label = _ref.label,
+        value = _ref.value,
+        onChange = _ref.onChange;
+
+
+    var defaultValues = {
+        'contrast': '',
+        'blur': '',
+        'bright': '',
+        'saturation': '',
+        'hue': ''
+    };
+    value = value ? _extends({}, defaultValues, value) : defaultValues;
+
+    var _useState = useState(value),
+        _useState2 = _slicedToArray(_useState, 2),
+        state = _useState2[0],
+        setState = _useState2[1];
+
+    var onChangeFilter = function onChangeFilter(item, value) {
+        var updatedState = _extends({}, state);
+        updatedState[item] = value;
+        setState(updatedState);
+        onChange(updatedState);
+    };
+    var contrast = state.contrast,
+        blur = state.blur,
+        bright = state.bright,
+        saturation = state.saturation,
+        hue = state.hue;
+
+
+    return React.createElement(
+        'div',
+        { className: 'premium-filter__container premium-blocks__base-control' },
+        React.createElement(
+            'span',
+            null,
+            __(label || "CSS Filters")
+        ),
+        React.createElement(Dropdown, {
+            className: 'premium-control-toggle-btn',
+            contentClassName: 'premium-control-toggle-content',
+            position: 'bottom right',
+            renderToggle: function renderToggle(_ref2) {
+                var isOpen = _ref2.isOpen,
+                    onToggle = _ref2.onToggle;
+                return React.createElement(
+                    Button,
+                    { isSmall: true, onClick: onToggle, 'aria-expanded': isOpen },
+                    React.createElement('i', { className: 'dashicons dashicons-edit' })
+                );
+            },
+            renderContent: function renderContent() {
+                return React.createElement(
+                    Fragment,
+                    null,
+                    React.createElement(_singleRangeControl2.default, {
+                        label: __("Blur"),
+                        value: blur,
+                        onChange: function onChange(value) {
+                            return onChangeFilter('blur', value);
+                        },
+                        showUnit: false,
+                        defaultValue: 0
+                    }),
+                    React.createElement(_singleRangeControl2.default, {
+                        label: __("Brightness"),
+                        min: '0',
+                        max: '200',
+                        value: bright,
+                        onChange: function onChange(value) {
+                            return onChangeFilter('bright', value);
+                        },
+                        showUnit: false,
+                        defaultValue: 100
+                    }),
+                    React.createElement(_singleRangeControl2.default, {
+                        label: __("Contrast"),
+                        min: '0',
+                        max: '200',
+                        value: contrast,
+                        onChange: function onChange(value) {
+                            return onChangeFilter('contrast', value);
+                        },
+                        showUnit: false,
+                        defaultValue: 100
+                    }),
+                    React.createElement(_singleRangeControl2.default, {
+                        label: __("Saturation"),
+                        min: '0',
+                        max: '200',
+                        value: saturation,
+                        onChange: function onChange(value) {
+                            return onChangeFilter('saturation', value);
+                        },
+                        showUnit: false,
+                        defaultValue: 100
+                    }),
+                    React.createElement(_singleRangeControl2.default, {
+                        label: __("Hue"),
+                        min: '0',
+                        max: '360',
+                        value: hue,
+                        onChange: function onChange(value) {
+                            return onChangeFilter('hue', value);
+                        },
+                        showUnit: false,
+                        defaultValue: 0
+                    })
+                );
+            }
+        })
+    );
+}
+
+/***/ }),
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -2884,7 +3031,7 @@ WebfontLoader.defaultProps = {
 exports.default = WebfontLoader;
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3455,7 +3602,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(51)(module)))
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3648,7 +3795,7 @@ function PremiumResponsiveMargin(props) {
 exports.default = PremiumResponsiveMargin;
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3658,7 +3805,7 @@ var global = __webpack_require__(21);
 var core = __webpack_require__(14);
 var ctx = __webpack_require__(121);
 var hide = __webpack_require__(33);
-var has = __webpack_require__(29);
+var has = __webpack_require__(30);
 var PROTOTYPE = 'prototype';
 
 var $export = function $export(type, name, source) {
@@ -3721,7 +3868,7 @@ $export.R = 128; // real proto method for `library`
 module.exports = $export;
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3745,7 +3892,7 @@ exports.f = __webpack_require__(22) ? Object.defineProperty : function definePro
 };
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3757,7 +3904,7 @@ module.exports = function (it, key) {
 };
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3780,122 +3927,6 @@ function getNative(object, key) {
 }
 
 module.exports = getNative;
-
-/***/ }),
-/* 31 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.default = PremiumFilters;
-
-var _singleRangeControl = __webpack_require__(3);
-
-var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var __ = wp.i18n.__;
-var Fragment = wp.element.Fragment;
-var _wp$components = wp.components,
-    Dropdown = _wp$components.Dropdown,
-    Button = _wp$components.Button;
-function PremiumFilters(props) {
-    var label = props.label,
-        blur = props.blur,
-        bright = props.bright,
-        contrast = props.contrast,
-        saturation = props.saturation,
-        hue = props.hue,
-        _props$onChangeBlur = props.onChangeBlur,
-        onChangeBlur = _props$onChangeBlur === undefined ? function () {} : _props$onChangeBlur,
-        _props$onChangeBright = props.onChangeBright,
-        onChangeBright = _props$onChangeBright === undefined ? function () {} : _props$onChangeBright,
-        _props$onChangeContra = props.onChangeContrast,
-        onChangeContrast = _props$onChangeContra === undefined ? function () {} : _props$onChangeContra,
-        _props$onChangeSat = props.onChangeSat,
-        onChangeSat = _props$onChangeSat === undefined ? function () {} : _props$onChangeSat,
-        _props$onChangeHue = props.onChangeHue,
-        onChangeHue = _props$onChangeHue === undefined ? function () {} : _props$onChangeHue;
-
-
-    return React.createElement(
-        "div",
-        { className: "premium-filter__container premium-blocks__base-control" },
-        React.createElement(
-            "span",
-            null,
-            __(label || "CSS Filters")
-        ),
-        React.createElement(Dropdown, {
-            className: "premium-control-toggle-btn",
-            contentClassName: "premium-control-toggle-content",
-            position: "bottom right",
-            renderToggle: function renderToggle(_ref) {
-                var isOpen = _ref.isOpen,
-                    onToggle = _ref.onToggle;
-                return React.createElement(
-                    Button,
-                    { isSmall: true, onClick: onToggle, "aria-expanded": isOpen },
-                    React.createElement("i", { className: "dashicons dashicons-edit" })
-                );
-            },
-            renderContent: function renderContent() {
-                return React.createElement(
-                    Fragment,
-                    null,
-                    React.createElement(_singleRangeControl2.default, {
-                        label: __("Blur"),
-                        value: blur,
-                        onChange: onChangeBlur,
-                        showUnit: false,
-                        defaultValue: 0
-                    }),
-                    React.createElement(_singleRangeControl2.default, {
-                        label: __("Brightness"),
-                        min: "0",
-                        max: "200",
-                        value: bright,
-                        onChange: onChangeBright,
-                        showUnit: false,
-                        defaultValue: 100
-                    }),
-                    React.createElement(_singleRangeControl2.default, {
-                        label: __("Contrast"),
-                        min: "0",
-                        max: "200",
-                        value: contrast,
-                        onChange: onChangeContrast,
-                        showUnit: false,
-                        defaultValue: 100
-                    }),
-                    React.createElement(_singleRangeControl2.default, {
-                        label: __("Saturation"),
-                        min: "0",
-                        max: "200",
-                        value: saturation,
-                        onChange: onChangeSat,
-                        showUnit: false,
-                        defaultValue: 100
-                    }),
-                    React.createElement(_singleRangeControl2.default, {
-                        label: __("Hue"),
-                        min: "0",
-                        max: "360",
-                        value: hue,
-                        onChange: onChangeHue,
-                        showUnit: false,
-                        defaultValue: 0
-                    })
-                );
-            }
-        })
-    );
-}
 
 /***/ }),
 /* 32 */
@@ -3921,7 +3952,7 @@ exports.default = iconsList;
 "use strict";
 
 
-var dP = __webpack_require__(28);
+var dP = __webpack_require__(29);
 var createDesc = __webpack_require__(53);
 module.exports = __webpack_require__(22) ? function (object, key, value) {
   return dP.f(object, key, createDesc(1, value));
@@ -4185,7 +4216,7 @@ module.exports = _Symbol;
 "use strict";
 
 
-var getNative = __webpack_require__(30);
+var getNative = __webpack_require__(31);
 
 /* Built-in method references that are verified to be native. */
 var nativeCreate = getNative(Object, 'create');
@@ -4630,7 +4661,7 @@ module.exports = MapCache;
 "use strict";
 
 
-var getNative = __webpack_require__(30),
+var getNative = __webpack_require__(31),
     root = __webpack_require__(18);
 
 /* Built-in method references that are verified to be native. */
@@ -7179,8 +7210,8 @@ module.exports = Object.create || function create(O, Properties) {
 "use strict";
 
 
-var def = __webpack_require__(28).f;
-var has = __webpack_require__(29);
+var def = __webpack_require__(29).f;
+var has = __webpack_require__(30);
 var TAG = __webpack_require__(37)('toStringTag');
 
 module.exports = function (it, tag, stat) {
@@ -7207,7 +7238,7 @@ var global = __webpack_require__(21);
 var core = __webpack_require__(14);
 var LIBRARY = __webpack_require__(55);
 var wksExt = __webpack_require__(81);
-var defineProperty = __webpack_require__(28).f;
+var defineProperty = __webpack_require__(29).f;
 module.exports = function (name) {
   var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
   if (name.charAt(0) != '_' && !(name in $Symbol)) defineProperty($Symbol, name, { value: wksExt.f(name) });
@@ -10420,7 +10451,7 @@ module.exports = function (it) {
 "use strict";
 
 
-var has = __webpack_require__(29);
+var has = __webpack_require__(30);
 var toIObject = __webpack_require__(36);
 var arrayIndexOf = __webpack_require__(326)(false);
 var IE_PROTO = __webpack_require__(74)('IE_PROTO');
@@ -10475,7 +10506,7 @@ module.exports = function (it) {
 
 
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
-var has = __webpack_require__(29);
+var has = __webpack_require__(30);
 var toObject = __webpack_require__(58);
 var IE_PROTO = __webpack_require__(74)('IE_PROTO');
 var ObjectProto = Object.prototype;
@@ -10531,7 +10562,7 @@ exports.default = typeof _symbol2.default === "function" && _typeof(_iterator2.d
 
 
 var LIBRARY = __webpack_require__(55);
-var $export = __webpack_require__(27);
+var $export = __webpack_require__(28);
 var redefine = __webpack_require__(130);
 var hide = __webpack_require__(33);
 var Iterators = __webpack_require__(78);
@@ -10646,7 +10677,7 @@ var pIE = __webpack_require__(57);
 var createDesc = __webpack_require__(53);
 var toIObject = __webpack_require__(36);
 var toPrimitive = __webpack_require__(71);
-var has = __webpack_require__(29);
+var has = __webpack_require__(30);
 var IE8_DOM_DEFINE = __webpack_require__(122);
 var gOPD = Object.getOwnPropertyDescriptor;
 
@@ -10695,8 +10726,8 @@ var variations = [{
     icon: _icons2.default['50-50'],
     attributes: {
         variationSelected: true,
-        directionDesktop: 'row',
-        wrapMobile: 'wrap'
+        direction: { 'Desktop': 'row', 'Tablet': '', 'Mobile': '' },
+        wrapItems: { 'Desktop': '', "Tablet": '', 'Mobile': 'wrap' }
     },
     isDefault: true,
     innerBlocks: [['premium/row', { colWidth: { 'Desktop': 50, 'Tablet': 100, 'Mobile': 100, unit: '%' } }], ['premium/row', { colWidth: { 'Desktop': 50, 'Tablet': 100, 'Mobile': 100, unit: '%' } }]],
@@ -10706,18 +10737,29 @@ var variations = [{
     icon: _icons2.default['33-33-33'],
     attributes: {
         variationSelected: true,
-        directionDesktop: 'row',
-        wrapMobile: 'wrap'
+        direction: { 'Desktop': 'row', 'Tablet': '', "Mobile": '' },
+        wrapItems: { 'Desktop': '', "Tablet": '', 'Mobile': 'wrap' }
     },
     innerBlocks: [['premium/row', { colWidth: { 'Desktop': 33.33, 'Tablet': 100, 'Mobile': 100, unit: '%' } }], ['premium/row', { colWidth: { 'Desktop': 33.33, 'Tablet': 100, 'Mobile': 100, unit: '%' } }], ['premium/row', { colWidth: { 'Desktop': 33.33, 'Tablet': 100, 'Mobile': 100, unit: '%' } }]],
+    scope: ['block']
+}, {
+    name: 'three-columns-one-big',
+    icon: _icons2.default['100-50-50'],
+    attributes: {
+        variationSelected: true,
+        direction: { 'Desktop': 'row', 'Tablet': '', "Mobile": '' },
+        wrapItems: { 'Desktop': '', "Tablet": '', 'Mobile': 'wrap' }
+    },
+
+    innerBlocks: [['premium/row', { colWidth: { 'Desktop': 50, 'Tablet': 100, 'Mobile': 100, unit: '%' } }], ['premium/row', { colWidth: { 'Desktop': 50, 'Tablet': 100, 'Mobile': 100, unit: '%' }, direction: { 'Desktop': 'column', 'Tablet': '', "Mobile": '' } }, [['premium/row', { colWidth: { 'Desktop': 100, 'Tablet': 100, 'Mobile': 100, unit: '%' } }], ['premium/row', { colWidth: { 'Desktop': 100, 'Tablet': 100, 'Mobile': 100, unit: '%' } }]]]],
     scope: ['block']
 }, {
     name: 'four-column',
     icon: _icons2.default['25-25-25-25'],
     attributes: {
         variationSelected: true,
-        directionDesktop: 'row',
-        wrapMobile: 'wrap'
+        direction: { 'Desktop': 'row', 'Tablet': '', "Mobile": '' },
+        wrapItems: { 'Desktop': '', "Tablet": '', 'Mobile': 'wrap' }
     },
     innerBlocks: [['premium/row', { colWidth: { 'Desktop': 25, 'Tablet': 100, 'Mobile': 100, unit: '%' } }], ['premium/row', { colWidth: { 'Desktop': 25, 'Tablet': 100, 'Mobile': 100, unit: '%' } }], ['premium/row', { colWidth: { 'Desktop': 25, 'Tablet': 100, 'Mobile': 100, unit: '%' } }], ['premium/row', { colWidth: { 'Desktop': 25, 'Tablet': 100, 'Mobile': 100, unit: '%' } }]],
     scope: ['block']
@@ -10726,11 +10768,10 @@ var variations = [{
     icon: _icons2.default['50-50_50-50'],
     attributes: {
         variationSelected: true,
-        directionDesktop: 'row',
-        wrapDesktop: 'wrap',
-        wrapMobile: 'wrap',
-        rowGapDesktop: 20,
-        columnGapDesktop: 20
+        direction: { 'Desktop': 'row', 'Tablet': '', "Mobile": '' },
+        wrapItems: { 'Desktop': 'wrap', "Tablet": '', 'Mobile': 'wrap' },
+        rowGutter: { 'Desktop': 20, 'Tablet': '', 'Mobile': '', 'unit': 'px' },
+        columnGutter: { 'Desktop': 20, 'Tablet': '', 'Mobile': '', 'unit': 'px' }
     },
     innerBlocks: [['premium/row', { colWidth: { 'Desktop': 48, 'Tablet': 100, 'Mobile': 100, unit: '%' } }], ['premium/row', { colWidth: { 'Desktop': 48, 'Tablet': 100, 'Mobile': 100, unit: '%' } }], ['premium/row', { colWidth: { 'Desktop': 48, 'Tablet': 100, 'Mobile': 100, unit: '%' } }], ['premium/row', { colWidth: { 'Desktop': 48, 'Tablet': 100, 'Mobile': 100, unit: '%' } }]],
     scope: ['block']
@@ -10739,8 +10780,8 @@ var variations = [{
     icon: _icons2.default['25-75'],
     attributes: {
         variationSelected: true,
-        directionDesktop: 'row',
-        wrapMobile: 'wrap'
+        direction: { 'Desktop': 'row', 'Tablet': '', "Mobile": '' },
+        wrapItems: { 'Desktop': '', "Tablet": '', 'Mobile': 'wrap' }
     },
     innerBlocks: [['premium/row', { colWidth: { 'Desktop': 25, 'Tablet': 100, 'Mobile': 100, unit: '%' } }], ['premium/row', { colWidth: { 'Desktop': 75, 'Tablet': 100, 'Mobile': 100, unit: '%' } }]],
     scope: ['block']
@@ -10749,11 +10790,11 @@ var variations = [{
     icon: _icons2.default['33-33-33_33-33-33'],
     attributes: {
         variationSelected: true,
-        directionDesktop: 'row',
-        wrapDesktop: 'wrap',
-        rowGapDesktop: 20,
-        columnGapDesktop: 20,
-        wrapMobile: 'wrap'
+        direction: { 'Desktop': 'row', 'Tablet': '', "Mobile": '' },
+        wrapItems: { 'Desktop': 'wrap', "Tablet": '', 'Mobile': 'wrap' },
+        rowGutter: { 'Desktop': 20, 'Tablet': '', 'Mobile': '', 'unit': 'px' },
+        columnGutter: { 'Desktop': 20, 'Tablet': '', 'Mobile': '', 'unit': 'px' }
+
     },
     innerBlocks: [['premium/row', { colWidth: { 'Desktop': 31, 'Tablet': 100, 'Mobile': 100, unit: '%' } }], ['premium/row', { colWidth: { 'Desktop': 31, 'Tablet': 100, 'Mobile': 100, unit: '%' } }], ['premium/row', { colWidth: { 'Desktop': 31, 'Tablet': 100, 'Mobile': 100, unit: '%' } }], ['premium/row', { colWidth: { 'Desktop': 31, 'Tablet': 100, 'Mobile': 100, unit: '%' } }], ['premium/row', { colWidth: { 'Desktop': 31, 'Tablet': 100, 'Mobile': 100, unit: '%' } }], ['premium/row', { colWidth: { 'Desktop': 31, 'Tablet': 100, 'Mobile': 100, unit: '%' } }]],
     scope: ['block']
@@ -10762,8 +10803,8 @@ var variations = [{
     icon: _icons2.default['25-50-25'],
     attributes: {
         variationSelected: true,
-        directionDesktop: 'row',
-        wrapMobile: 'wrap'
+        direction: { 'Desktop': 'row', 'Tablet': '', "Mobile": '' },
+        wrapItems: { 'Desktop': '', "Tablet": '', 'Mobile': 'wrap' }
     },
     innerBlocks: [['premium/row', { colWidth: { 'Desktop': 25, 'Tablet': 100, 'Mobile': 100, unit: '%' } }], ['premium/row', { colWidth: { 'Desktop': 50, 'Tablet': 100, 'Mobile': 100, unit: '%' } }], ['premium/row', { colWidth: { 'Desktop': 25, 'Tablet': 100, 'Mobile': 100, unit: '%' } }]],
     scope: ['block']
@@ -10772,8 +10813,8 @@ var variations = [{
     icon: _icons2.default['75-25'],
     attributes: {
         variationSelected: true,
-        directionDesktop: 'row',
-        wrapMobile: 'wrap'
+        direction: { 'Desktop': 'row', 'Tablet': '', "Mobile": '' },
+        wrapItems: { 'Desktop': '', "Tablet": '', 'Mobile': 'wrap' }
     },
     innerBlocks: [['premium/row', { colWidth: { 'Desktop': 75, 'Tablet': 100, 'Mobile': 100, unit: '%' } }], ['premium/row', { colWidth: { 'Desktop': 25, 'Tablet': 100, 'Mobile': 100, unit: '%' } }]],
     scope: ['block']
@@ -10782,11 +10823,11 @@ var variations = [{
     icon: _icons2.default['75-25_25_75'],
     attributes: {
         variationSelected: true,
-        directionDesktop: 'row',
-        wrapDesktop: 'wrap',
-        rowGapDesktop: 20,
-        columnGapDesktop: 20,
-        wrapMobile: 'wrap'
+        direction: { 'Desktop': 'row', 'Tablet': '', "Mobile": '' },
+        wrapItems: { 'Desktop': 'wrap', "Tablet": '', 'Mobile': 'wrap' },
+        rowGutter: { 'Desktop': 20, 'Tablet': '', 'Mobile': '', 'unit': 'px' },
+        columnGutter: { 'Desktop': 20, 'Tablet': '', 'Mobile': '', 'unit': 'px' }
+
     },
     innerBlocks: [['premium/row', { colWidth: { 'Desktop': 73, 'Tablet': 100, 'Mobile': 100, unit: '%' } }], ['premium/row', { colWidth: { 'Desktop': 23, 'Tablet': 100, 'Mobile': 100, unit: '%' } }], ['premium/row', { colWidth: { 'Desktop': 23, 'Tablet': 100, 'Mobile': 100, unit: '%' } }], ['premium/row', { colWidth: { 'Desktop': 73, 'Tablet': 100, 'Mobile': 100, unit: '%' } }]],
     scope: ['block']
@@ -10795,24 +10836,22 @@ var variations = [{
     icon: _icons2.default['50-50_100'],
     attributes: {
         variationSelected: true,
-        directionDesktop: 'row',
-        wrapDesktop: 'wrap',
-        wrapMobile: 'wrap',
-        rowGapDesktop: 20,
-        columnGapDesktop: 20
+        direction: { 'Desktop': 'row', 'Tablet': '', "Mobile": '' },
+        wrapItems: { 'Desktop': 'wrap', "Tablet": '', 'Mobile': 'wrap' },
+        rowGutter: { 'Desktop': 20, 'Tablet': '', 'Mobile': '', 'unit': 'px' },
+        columnGutter: { 'Desktop': 20, 'Tablet': '', 'Mobile': '', 'unit': 'px' }
     },
-    innerBlocks: [['premium/row', { colWidth: { 'Desktop': 100, 'Tablet': 100, 'Mobile': 100, unit: '%' }, directionDesktop: 'row' }, [['premium/row', { colWidth: { 'Desktop': 48, 'Tablet': 100, 'Mobile': 100, unit: '%' } }], ['premium/row', { colWidth: { 'Desktop': 48, 'Tablet': 100, 'Mobile': 100, unit: '%' } }]]], ['premium/row', { colWidth: { 'Desktop': 100, 'Tablet': 100, 'Mobile': 100, unit: '%' } }]],
+    innerBlocks: [['premium/row', { colWidth: { 'Desktop': 100, 'Tablet': 100, 'Mobile': 100, unit: '%' }, direction: { 'Desktop': 'row', 'Tablet': '', "Mobile": '' } }, [['premium/row', { colWidth: { 'Desktop': 48, 'Tablet': 100, 'Mobile': 100, unit: '%' } }], ['premium/row', { colWidth: { 'Desktop': 48, 'Tablet': 100, 'Mobile': 100, unit: '%' } }]]], ['premium/row', { colWidth: { 'Desktop': 100, 'Tablet': 100, 'Mobile': 100, unit: '%' } }]],
     scope: ['block']
 }, {
     name: '25-75_75-25',
     icon: _icons2.default['25-75_75-25'],
     attributes: {
         variationSelected: true,
-        directionDesktop: 'row',
-        wrapDesktop: 'wrap',
-        wrapMobile: 'wrap',
-        rowGapDesktop: 20,
-        columnGapDesktop: 20
+        direction: { 'Desktop': 'row', 'Tablet': '', "Mobile": '' },
+        wrapItems: { 'Desktop': 'wrap', "Tablet": '', 'Mobile': 'wrap' },
+        rowGutter: { 'Desktop': 20, 'Tablet': '', 'Mobile': '', 'unit': 'px' },
+        columnGutter: { 'Desktop': 20, 'Tablet': '', 'Mobile': '', 'unit': 'px' }
     },
     innerBlocks: [['premium/row', { colWidth: { 'Desktop': 23, 'Tablet': 100, 'Mobile': 100, unit: '%' } }], ['premium/row', { colWidth: { 'Desktop': 73, 'Tablet': 100, 'Mobile': 100, unit: '%' } }], ['premium/row', { colWidth: { 'Desktop': 73, 'Tablet': 100, 'Mobile': 100, unit: '%' } }], ['premium/row', { colWidth: { 'Desktop': 23, 'Tablet': 100, 'Mobile': 100, unit: '%' } }]],
     scope: ['block']
@@ -10945,6 +10984,32 @@ var videoBackground = exports.videoBackground = function videoBackground(backgro
             }
         }
     }
+};
+var generateBlockId = exports.generateBlockId = function generateBlockId(clientId) {
+    return clientId.split('-')[4];
+};
+var generateCss = exports.generateCss = function generateCss(styles) {
+    var styleCss = '';
+
+    var _loop = function _loop(selector) {
+        var selectorStyles = styles[selector];
+        var filteredStyles = Object.keys(selectorStyles).map(function (property) {
+            var value = selectorStyles[property];
+            var valueWithoutUnits = value.toString().replaceAll('px', '').replaceAll(/\s/g, '');
+            if (value && !value.toString().includes('undefined') && valueWithoutUnits) {
+                return property + ': ' + value + ';';
+            }
+        }).filter(function (style) {
+            return !!style;
+        }).join('\n');
+        styleCss += selector + '{\n                    ' + filteredStyles + '\n                }\n';
+    };
+
+    for (var selector in styles) {
+        _loop(selector);
+    }
+
+    return styleCss;
 };
 
 /***/ }),
@@ -11664,33 +11729,6 @@ var PremiumAccordion = function (_Component) {
                     "text" === contentType && React.createElement(
                         Fragment,
                         null,
-                        React.createElement(_premiumTypo2.default, {
-                            components: ["size", "weight", "style", "upper", "spacing", "line"],
-                            size: descStyles[0].descSize,
-                            weight: descStyles[0].descWeight,
-                            style: descStyles[0].descStyle,
-                            spacing: descStyles[0].descLetter,
-                            line: descStyles[0].descLine,
-                            upper: descStyles[0].descUpper,
-                            onChangeSize: function onChangeSize(newSize) {
-                                return SaveDescStyles({ descSize: newSize });
-                            },
-                            onChangeWeight: function onChangeWeight(newWeight) {
-                                return SaveDescStyles({ descWeight: newWeight });
-                            },
-                            onChangeStyle: function onChangeStyle(newStyle) {
-                                return SaveDescStyles({ descStyle: newStyle });
-                            },
-                            onChangeSpacing: function onChangeSpacing(newValue) {
-                                return SaveDescStyles({ descLetter: newValue });
-                            },
-                            onChangeLine: function onChangeLine(newValue) {
-                                return SaveDescStyles({ descLine: newValue });
-                            },
-                            onChangeUpper: function onChangeUpper(check) {
-                                return SaveDescStyles({ descUpper: check });
-                            }
-                        }),
                         React.createElement(_ColorComponent2.default, {
                             label: __("Text Color", 'premium-blocks-for-gutenberg'),
                             colorValue: descStyles[0].descColor,
@@ -11707,108 +11745,7 @@ var PremiumAccordion = function (_Component) {
                                 return SaveDescStyles({ descBack: value });
                             }
                         })
-                    ),
-                    React.createElement(_premiumBorder2.default, {
-                        borderType: descStyles[0].descBorder,
-                        borderWidth: descBorderWidth,
-                        top: descBorderTop,
-                        right: descBorderRight,
-                        bottom: descBorderBottom,
-                        left: descBorderLeft,
-                        borderColor: descStyles[0].descBorderColor,
-                        borderRadius: descStyles[0].descBorderRadius,
-                        onChangeType: function onChangeType(newType) {
-                            return SaveDescStyles({ descBorder: newType });
-                        },
-                        onChangeWidth: function onChangeWidth(_ref2) {
-                            var top = _ref2.top,
-                                right = _ref2.right,
-                                bottom = _ref2.bottom,
-                                left = _ref2.left;
-                            return setAttributes({
-                                descBorderUpdated: true,
-                                descBorderTop: top,
-                                descBorderRight: right,
-                                descBorderBottom: bottom,
-                                descBorderLeft: left
-                            });
-                        },
-                        onChangeColor: function onChangeColor(colorValue) {
-                            return SaveDescStyles({ descBorderColor: colorValue });
-                        },
-                        onChangeRadius: function onChangeRadius(newrRadius) {
-                            return SaveDescStyles({ descBorderRadius: newrRadius });
-                        }
-                    }),
-                    "text" === contentType && React.createElement(_PremiumShadow2.default, {
-                        label: __("Text Shadow ", "premium-blocks-for-gutenberg"),
-                        color: textShadowColor,
-                        blur: textShadowBlur,
-                        horizontal: textShadowHorizontal,
-                        vertical: textShadowVertical,
-                        onChangeColor: function onChangeColor(newColor) {
-                            return setAttributes({ textShadowColor: newColor === undefined ? "transparent" : newColor });
-                        },
-                        onChangeBlur: function onChangeBlur(newBlur) {
-                            return setAttributes({ textShadowBlur: newBlur === undefined ? 0 : newBlur });
-                        },
-                        onChangehHorizontal: function onChangehHorizontal(newValue) {
-                            return setAttributes({ textShadowHorizontal: newValue === undefined ? 0 : newValue });
-                        },
-                        onChangeVertical: function onChangeVertical(newValue) {
-                            return setAttributes({ textShadowVertical: newValue === undefined ? 0 : newValue });
-                        }
-                    }),
-                    React.createElement(_PremiumResponsivePadding2.default, {
-                        paddingT: descPaddingT,
-                        paddingR: descPaddingR,
-                        paddingB: descPaddingB,
-                        paddingL: descPaddingL,
-                        paddingTTablet: descPaddingTTablet,
-                        paddingRTablet: descPaddingRTablet,
-                        paddingBTablet: descPaddingBTablet,
-                        paddingLTablet: descPaddingLTablet,
-                        paddingTMobile: descPaddingTMobile,
-                        paddingRMobile: descPaddingRMobile,
-                        paddingBMobile: descPaddingBMobile,
-                        paddingLMobile: descPaddingLMobile,
-                        onChangePaddingTop: function onChangePaddingTop(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ descPaddingT: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ descPaddingTTablet: newValue });
-                            } else {
-                                setAttributes({ descPaddingTMobile: newValue });
-                            }
-                        },
-                        onChangePaddingRight: function onChangePaddingRight(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ descPaddingR: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ descPaddingRTablet: newValue });
-                            } else {
-                                setAttributes({ descPaddingRMobile: newValue });
-                            }
-                        },
-                        onChangePaddingBottom: function onChangePaddingBottom(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ descPaddingB: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ descPaddingBTablet: newValue });
-                            } else {
-                                setAttributes({ descPaddingBMobile: newValue });
-                            }
-                        },
-                        onChangePaddingLeft: function onChangePaddingLeft(device, newValue) {
-                            if (device === "desktop") {
-                                setAttributes({ descPaddingL: newValue });
-                            } else if (device === "tablet") {
-                                setAttributes({ descPaddingLTablet: newValue });
-                            } else {
-                                setAttributes({ descPaddingLMobile: newValue });
-                            }
-                        }
-                    })
+                    )
                 )
             ), React.createElement(
                 Fragment,
@@ -14165,7 +14102,7 @@ module.exports = getTag;
 "use strict";
 
 
-var getNative = __webpack_require__(30),
+var getNative = __webpack_require__(31),
     root = __webpack_require__(18);
 
 /* Built-in method references that are verified to be native. */
@@ -14180,7 +14117,7 @@ module.exports = DataView;
 "use strict";
 
 
-var getNative = __webpack_require__(30),
+var getNative = __webpack_require__(31),
     root = __webpack_require__(18);
 
 /* Built-in method references that are verified to be native. */
@@ -14195,7 +14132,7 @@ module.exports = Promise;
 "use strict";
 
 
-var getNative = __webpack_require__(30),
+var getNative = __webpack_require__(31),
     root = __webpack_require__(18);
 
 /* Built-in method references that are verified to be native. */
@@ -14210,7 +14147,7 @@ module.exports = Set;
 "use strict";
 
 
-var getNative = __webpack_require__(30),
+var getNative = __webpack_require__(31),
     root = __webpack_require__(18);
 
 /* Built-in method references that are verified to be native. */
@@ -17552,7 +17489,7 @@ var _premiumTypo = __webpack_require__(8);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _premiumFilters = __webpack_require__(31);
+var _premiumFilters = __webpack_require__(24);
 
 var _premiumFilters2 = _interopRequireDefault(_premiumFilters);
 
@@ -20363,7 +20300,7 @@ var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _fontLoader = __webpack_require__(24);
+var _fontLoader = __webpack_require__(25);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
 
@@ -22371,7 +22308,7 @@ var _PremiumResponsivePadding = __webpack_require__(11);
 
 var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
 
-var _fontLoader = __webpack_require__(24);
+var _fontLoader = __webpack_require__(25);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
 
@@ -25517,7 +25454,7 @@ var _PremiumBackgroundControl = __webpack_require__(20);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
-var _fontLoader = __webpack_require__(24);
+var _fontLoader = __webpack_require__(25);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
 
@@ -28396,7 +28333,7 @@ var _classnames2 = _interopRequireDefault(_classnames);
 
 var _settings = __webpack_require__(1);
 
-var _reactFonticonpicker = __webpack_require__(25);
+var _reactFonticonpicker = __webpack_require__(26);
 
 var _reactFonticonpicker2 = _interopRequireDefault(_reactFonticonpicker);
 
@@ -28432,7 +28369,7 @@ var _PremiumResponsivePadding = __webpack_require__(11);
 
 var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
 
-var _PremiumResponsiveMargin = __webpack_require__(26);
+var _PremiumResponsiveMargin = __webpack_require__(27);
 
 var _PremiumResponsiveMargin2 = _interopRequireDefault(_PremiumResponsiveMargin);
 
@@ -32938,7 +32875,7 @@ var _premiumTypo = __webpack_require__(8);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _reactFonticonpicker = __webpack_require__(25);
+var _reactFonticonpicker = __webpack_require__(26);
 
 var _reactFonticonpicker2 = _interopRequireDefault(_reactFonticonpicker);
 
@@ -32978,11 +32915,11 @@ var _PremiumResponsivePadding = __webpack_require__(11);
 
 var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
 
-var _PremiumResponsiveMargin = __webpack_require__(26);
+var _PremiumResponsiveMargin = __webpack_require__(27);
 
 var _PremiumResponsiveMargin2 = _interopRequireDefault(_PremiumResponsiveMargin);
 
-var _fontLoader = __webpack_require__(24);
+var _fontLoader = __webpack_require__(25);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
 
@@ -43671,7 +43608,7 @@ var _PremiumResponsivePadding = __webpack_require__(11);
 
 var _PremiumResponsivePadding2 = _interopRequireDefault(_PremiumResponsivePadding);
 
-var _PremiumResponsiveMargin = __webpack_require__(26);
+var _PremiumResponsiveMargin = __webpack_require__(27);
 
 var _PremiumResponsiveMargin2 = _interopRequireDefault(_PremiumResponsiveMargin);
 
@@ -47977,7 +47914,7 @@ var _premiumBorder = __webpack_require__(6);
 
 var _premiumBorder2 = _interopRequireDefault(_premiumBorder);
 
-var _premiumFilters = __webpack_require__(31);
+var _premiumFilters = __webpack_require__(24);
 
 var _premiumFilters2 = _interopRequireDefault(_premiumFilters);
 
@@ -48001,7 +47938,7 @@ var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _fontLoader = __webpack_require__(24);
+var _fontLoader = __webpack_require__(25);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
 
@@ -54013,7 +53950,7 @@ var _reactLottieWithSegments = __webpack_require__(70);
 
 var _reactLottieWithSegments2 = _interopRequireDefault(_reactLottieWithSegments);
 
-var _premiumFilters = __webpack_require__(31);
+var _premiumFilters = __webpack_require__(24);
 
 var _premiumFilters2 = _interopRequireDefault(_premiumFilters);
 
@@ -54831,7 +54768,7 @@ module.exports = __webpack_require__(14).Object.assign;
 
 
 // 19.1.3.1 Object.assign(target, source)
-var $export = __webpack_require__(27);
+var $export = __webpack_require__(28);
 
 $export($export.S + $export.F, 'Object', { assign: __webpack_require__(325) });
 
@@ -55001,7 +54938,7 @@ __webpack_require__(332)('getPrototypeOf', function () {
 
 
 // most Object methods by ES6 should accept primitives
-var $export = __webpack_require__(27);
+var $export = __webpack_require__(28);
 var core = __webpack_require__(14);
 var fails = __webpack_require__(35);
 module.exports = function (KEY, exec) {
@@ -55092,9 +55029,9 @@ module.exports = function defineProperty(it, key, desc) {
 "use strict";
 
 
-var $export = __webpack_require__(27);
+var $export = __webpack_require__(28);
 // 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
-$export($export.S + $export.F * !__webpack_require__(22), 'Object', { defineProperty: __webpack_require__(28).f });
+$export($export.S + $export.F * !__webpack_require__(22), 'Object', { defineProperty: __webpack_require__(29).f });
 
 /***/ }),
 /* 338 */
@@ -55217,7 +55154,7 @@ module.exports = function (Constructor, NAME, next) {
 "use strict";
 
 
-var dP = __webpack_require__(28);
+var dP = __webpack_require__(29);
 var anObject = __webpack_require__(42);
 var getKeys = __webpack_require__(54);
 
@@ -55359,9 +55296,9 @@ module.exports = __webpack_require__(14).Symbol;
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var global = __webpack_require__(21);
-var has = __webpack_require__(29);
+var has = __webpack_require__(30);
 var DESCRIPTORS = __webpack_require__(22);
-var $export = __webpack_require__(27);
+var $export = __webpack_require__(28);
 var redefine = __webpack_require__(130);
 var META = __webpack_require__(353).KEY;
 var $fails = __webpack_require__(35);
@@ -55383,7 +55320,7 @@ var _create = __webpack_require__(79);
 var gOPNExt = __webpack_require__(356);
 var $GOPD = __webpack_require__(132);
 var $GOPS = __webpack_require__(77);
-var $DP = __webpack_require__(28);
+var $DP = __webpack_require__(29);
 var $keys = __webpack_require__(54);
 var gOPD = $GOPD.f;
 var dP = $DP.f;
@@ -55623,8 +55560,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var META = __webpack_require__(56)('meta');
 var isObject = __webpack_require__(34);
-var has = __webpack_require__(29);
-var setDesc = __webpack_require__(28).f;
+var has = __webpack_require__(30);
+var setDesc = __webpack_require__(29).f;
 var id = 0;
 var isExtensible = Object.isExtensible || function () {
   return true;
@@ -55834,7 +55771,7 @@ module.exports = __webpack_require__(14).Object.setPrototypeOf;
 
 
 // 19.1.3.19 Object.setPrototypeOf(O, proto)
-var $export = __webpack_require__(27);
+var $export = __webpack_require__(28);
 $export($export.S, 'Object', { setPrototypeOf: __webpack_require__(364).set });
 
 /***/ }),
@@ -55900,7 +55837,7 @@ module.exports = function create(P, D) {
 "use strict";
 
 
-var $export = __webpack_require__(27);
+var $export = __webpack_require__(28);
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 $export($export.S, 'Object', { create: __webpack_require__(79) });
 
@@ -57270,7 +57207,7 @@ var _inspector = __webpack_require__(375);
 
 var _inspector2 = _interopRequireDefault(_inspector);
 
-var _fontLoader = __webpack_require__(24);
+var _fontLoader = __webpack_require__(25);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
 
@@ -57841,7 +57778,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _reactFonticonpicker = __webpack_require__(25);
+var _reactFonticonpicker = __webpack_require__(26);
 
 var _reactFonticonpicker2 = _interopRequireDefault(_reactFonticonpicker);
 
@@ -57877,7 +57814,7 @@ var _premiumMediaUpload = __webpack_require__(12);
 
 var _premiumMediaUpload2 = _interopRequireDefault(_premiumMediaUpload);
 
-var _PremiumResponsiveMargin = __webpack_require__(26);
+var _PremiumResponsiveMargin = __webpack_require__(27);
 
 var _PremiumResponsiveMargin2 = _interopRequireDefault(_PremiumResponsiveMargin);
 
@@ -57893,7 +57830,7 @@ var _PremiumBackgroundControl = __webpack_require__(20);
 
 var _PremiumBackgroundControl2 = _interopRequireDefault(_PremiumBackgroundControl);
 
-var _premiumFilters = __webpack_require__(31);
+var _premiumFilters = __webpack_require__(24);
 
 var _premiumFilters2 = _interopRequireDefault(_premiumFilters);
 
@@ -60407,7 +60344,7 @@ var _premiumIconsList = __webpack_require__(32);
 
 var _premiumIconsList2 = _interopRequireDefault(_premiumIconsList);
 
-var _reactFonticonpicker = __webpack_require__(25);
+var _reactFonticonpicker = __webpack_require__(26);
 
 var _reactFonticonpicker2 = _interopRequireDefault(_reactFonticonpicker);
 
@@ -60419,7 +60356,7 @@ var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _premiumFilters = __webpack_require__(31);
+var _premiumFilters = __webpack_require__(24);
 
 var _premiumFilters2 = _interopRequireDefault(_premiumFilters);
 
@@ -60847,41 +60784,26 @@ var edit = function (_Component) {
                             }
                         }),
                         React.createElement(_premiumFilters2.default, {
-                            label: __("Hover CSS Filters"),
+                            label: __(" CSS Filters"),
                             blur: blurHover,
                             bright: brightHover,
                             contrast: contrastHover,
                             saturation: saturationHover,
                             hue: hueHover,
                             onChangeBlur: function onChangeBlur(newSize) {
-                                return setAttributes({
-                                    blurHover: newSize,
-                                    change: true
-                                });
+                                return setAttributes({ blurHover: newSize });
                             },
                             onChangeBright: function onChangeBright(newSize) {
-                                return setAttributes({
-                                    brightHover: newSize,
-                                    change: true
-                                });
+                                return setAttributes({ brightHover: newSize });
                             },
                             onChangeContrast: function onChangeContrast(newSize) {
-                                return setAttributes({
-                                    contrastHover: newSize,
-                                    change: true
-                                });
+                                return setAttributes({ contrastHover: newSize });
                             },
                             onChangeSat: function onChangeSat(newSize) {
-                                return setAttributes({
-                                    saturationHover: newSize,
-                                    change: true
-                                });
+                                return setAttributes({ saturationHover: newSize });
                             },
                             onChangeHue: function onChangeHue(newSize) {
-                                return setAttributes({
-                                    hueHover: newSize,
-                                    change: true
-                                });
+                                return setAttributes({ hueHover: newSize });
                             }
                         })
                     ) : React.createElement(
@@ -61583,7 +61505,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _reactFonticonpicker = __webpack_require__(25);
+var _reactFonticonpicker = __webpack_require__(26);
 
 var _reactFonticonpicker2 = _interopRequireDefault(_reactFonticonpicker);
 
@@ -61603,7 +61525,7 @@ var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _PremiumResponsiveMargin = __webpack_require__(26);
+var _PremiumResponsiveMargin = __webpack_require__(27);
 
 var _PremiumResponsiveMargin2 = _interopRequireDefault(_PremiumResponsiveMargin);
 
@@ -61629,7 +61551,7 @@ var _PremiumShadow = __webpack_require__(5);
 
 var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
-var _fontLoader = __webpack_require__(24);
+var _fontLoader = __webpack_require__(25);
 
 var _fontLoader2 = _interopRequireDefault(_fontLoader);
 
@@ -64111,7 +64033,7 @@ var _defaultImage = __webpack_require__(41);
 
 var _defaultImage2 = _interopRequireDefault(_defaultImage);
 
-var _premiumFilters = __webpack_require__(31);
+var _premiumFilters = __webpack_require__(24);
 
 var _premiumFilters2 = _interopRequireDefault(_premiumFilters);
 
@@ -64119,7 +64041,7 @@ var _ColorComponent = __webpack_require__(2);
 
 var _ColorComponent2 = _interopRequireDefault(_ColorComponent);
 
-var _reactFonticonpicker = __webpack_require__(25);
+var _reactFonticonpicker = __webpack_require__(26);
 
 var _reactFonticonpicker2 = _interopRequireDefault(_reactFonticonpicker);
 
@@ -64131,7 +64053,7 @@ var _responsiveRangeControl = __webpack_require__(15);
 
 var _responsiveRangeControl2 = _interopRequireDefault(_responsiveRangeControl);
 
-var _PremiumResponsiveMargin = __webpack_require__(26);
+var _PremiumResponsiveMargin = __webpack_require__(27);
 
 var _PremiumResponsiveMargin2 = _interopRequireDefault(_PremiumResponsiveMargin);
 
@@ -66687,7 +66609,7 @@ var _premiumIconsList = __webpack_require__(32);
 
 var _premiumIconsList2 = _interopRequireDefault(_premiumIconsList);
 
-var _reactFonticonpicker = __webpack_require__(25);
+var _reactFonticonpicker = __webpack_require__(26);
 
 var _reactFonticonpicker2 = _interopRequireDefault(_reactFonticonpicker);
 
@@ -66723,7 +66645,7 @@ var _reactLottieWithSegments = __webpack_require__(70);
 
 var _reactLottieWithSegments2 = _interopRequireDefault(_reactLottieWithSegments);
 
-var _PremiumResponsiveMargin = __webpack_require__(26);
+var _PremiumResponsiveMargin = __webpack_require__(27);
 
 var _PremiumResponsiveMargin2 = _interopRequireDefault(_PremiumResponsiveMargin);
 
@@ -69081,22 +69003,22 @@ var attributes = {
         type: 'object',
         default: {
             'Desktop': {
-                top: 70,
-                right: 0,
-                bottom: 70,
-                left: 0
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
             },
             'Tablet': {
-                top: 70,
-                right: 0,
-                bottom: 70,
-                left: 0
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
             },
             'Mobile': {
-                top: 70,
-                right: 0,
-                bottom: 70,
-                left: 0
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
             },
             unit: 'px'
         }
@@ -69168,6 +69090,46 @@ var attributes = {
             'videoID': '',
             'bgVideoFallbackID': '',
             'bgVideoFallbackURL': ''
+        }
+    },
+    backgroundOverlay: {
+        type: "object",
+        default: {
+            'backgroundType': '',
+            'backgroundColor': '',
+            'backgroundImageID': '',
+            'backgroundImageURL': '',
+            'backgroundPosition': 'center center',
+            'backgroundRepeat': 'no-repeat',
+            'backgroundSize': 'cover',
+            'fixed': false,
+            'gradientLocationOne': '0',
+            'gradientColorTwo': '',
+            'gradientLocationTwo': '100',
+            'gradientType': 'linear',
+            'gradientAngle': '180',
+            'gradientPosition': 'center center'
+
+        }
+    },
+    backgroundOverlayHover: {
+        type: "object",
+        default: {
+            'backgroundType': '',
+            'backgroundColor': '',
+            'backgroundImageID': '',
+            'backgroundImageURL': '',
+            'backgroundPosition': 'center center',
+            'backgroundRepeat': 'no-repeat',
+            'backgroundSize': 'cover',
+            'fixed': false,
+            'gradientLocationOne': '0',
+            'gradientColorTwo': '',
+            'gradientLocationTwo': '100',
+            'gradientType': 'linear',
+            'gradientAngle': '180',
+            'gradientPosition': 'center center'
+
         }
     },
     border: {
@@ -69325,7 +69287,8 @@ var attributes = {
         default: 'boxed'
     },
     innerWidth: {
-        type: "number"
+        type: "number",
+        default: 1200
     },
     columnGutter: {
         type: 'object',
@@ -69336,7 +69299,15 @@ var attributes = {
             unit: 'px'
         }
     },
-
+    rowGutter: {
+        type: 'object',
+        default: {
+            Desktop: 30,
+            Tablet: 30,
+            Mobile: 30,
+            unit: 'px'
+        }
+    },
     direction: {
         type: 'object',
         default: {
@@ -69369,6 +69340,21 @@ var attributes = {
             'Tablet': '',
             'Mobile': ''
         }
+    },
+    alignContent: {
+        type: 'object',
+        default: {
+            'Desktop': '',
+            'Tablet': '',
+            'Mobile': ''
+        }
+    },
+    containerTag: {
+        type: 'string',
+        default: 'div'
+    },
+    blend: {
+        type: 'string'
     }
 
 };
@@ -69456,6 +69442,10 @@ var _renderIcon2 = _interopRequireDefault(_renderIcon);
 
 var _HelperFunction = __webpack_require__(134);
 
+var _premiumFilters = __webpack_require__(24);
+
+var _premiumFilters2 = _interopRequireDefault(_premiumFilters);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var __ = wp.i18n.__;
@@ -69480,13 +69470,7 @@ var _wp$blockEditor = wp.blockEditor,
 
 
 var defaultLayout = { Desktop: [100], Tablet: [100], Mobile: [100] };
-function removeRowBlock() {
-    var _props = props,
-        clientId = _props.clientId,
-        removeBlock = _props.removeBlock;
 
-    removeBlock(clientId);
-}
 var edit = function edit(props) {
     if (props.isParentOfSelectedBlock) {
         var emptyBlockInserter = document.querySelector('.block-editor-block-list__empty-block-inserter');
@@ -69515,6 +69499,12 @@ var edit = function edit(props) {
         }
     }, [props]);
 
+    var removeRowBlock = function removeRowBlock() {
+        var clientId = props.clientId,
+            removeBlock = props.removeBlock;
+
+        removeBlock(clientId);
+    };
     var _props$attributes = props.attributes,
         uniqueId = _props$attributes.uniqueId,
         className = _props$attributes.className,
@@ -69525,6 +69515,7 @@ var edit = function edit(props) {
         alignItems = _props$attributes.alignItems,
         justifyItems = _props$attributes.justifyItems,
         wrapItems = _props$attributes.wrapItems,
+        alignContent = _props$attributes.alignContent,
         shapeTop = _props$attributes.shapeTop,
         shapeBottom = _props$attributes.shapeBottom,
         minHeight = _props$attributes.minHeight,
@@ -69536,14 +69527,19 @@ var edit = function edit(props) {
         innerWidth = _props$attributes.innerWidth,
         columnGutter = _props$attributes.columnGutter,
         rowGutter = _props$attributes.rowGutter,
-        height = _props$attributes.height,
-        vPos = _props$attributes.vPos,
-        overflow = _props$attributes.overflow,
-        stretchSection = _props$attributes.stretchSection,
+        backgroundOverlay = _props$attributes.backgroundOverlay,
+        backgroundOverlayHover = _props$attributes.backgroundOverlayHover,
+        overlayOpacity = _props$attributes.overlayOpacity,
+        overlayFilter = _props$attributes.overlayFilter,
+        hoverOverlayOpacity = _props$attributes.hoverOverlayOpacity,
+        hoverOverlayFilter = _props$attributes.hoverOverlayFilter,
         backgroundOptions = _props$attributes.backgroundOptions,
         boxShadow = _props$attributes.boxShadow,
         isBlockRootParent = _props$attributes.isBlockRootParent,
         blockDescendants = _props$attributes.blockDescendants,
+        containerTag = _props$attributes.containerTag,
+        overflow = _props$attributes.overflow,
+        blend = _props$attributes.blend,
         clientId = props.clientId,
         setAttributes = props.setAttributes;
 
@@ -69572,8 +69568,8 @@ var edit = function edit(props) {
         });
     };
 
-    var topShapeClasses = (0, _classnames2.default)('premium-shape-divider', 'premium-top-shape', { 'premium-top-shape-flip': shapeTop['flipShapeDivider'] === true }, { 'premium-top-shape-above-content': shapeTop['front'] === true }, { 'premium-top-shape__invert': shapeTop['invertShapeDivider'] === true });
-    var bottomShapeClasses = (0, _classnames2.default)('premium-shape-divider', 'premium-bottom-shape', { 'premium-bottom-shape-flip': shapeBottom['flipShapeDivider'] === true }, { 'premium-bottom-shape-above-content': shapeBottom['front'] === true }, { 'premium-bottom-shape__invert': shapeBottom['invertShapeDivider'] === true });
+    var topShapeClasses = (0, _classnames2.default)('premium-shape-divider', 'premium-top-shape', { 'premium-top-shape-flip': shapeTop['flipShapeDivider'] === true }, { 'premium-shape-above-content': shapeTop['front'] === true }, { 'premium-shape__invert': shapeTop['invertShapeDivider'] === true });
+    var bottomShapeClasses = (0, _classnames2.default)('premium-shape-divider', 'premium-bottom-shape', { 'premium-shape-flip': shapeBottom['flipShapeDivider'] === true }, { 'premium-shape-above-content': shapeBottom['front'] === true }, { 'premium-shape__invert': shapeBottom['invertShapeDivider'] === true });
     var currentOffset = 'row' === direction[props.deviceType] ? 'column' : 'row';
 
     if (!variationSelected && 0 === select('core/block-editor').getBlockParents(props.clientId).length) {
@@ -69582,38 +69578,25 @@ var edit = function edit(props) {
             null,
             React.createElement(
                 'div',
-                { className: 'premium-blocks__row_container', style: {
-                        background: ' #f7f8fc',
-                        padding: '25px 15px'
-                    } },
+                { className: 'premium-blocks__row_container' },
                 React.createElement(
                     Button,
                     { onClick: function onClick() {
                             return removeRowBlock();
                         }, className: 'premium-blocks-remove-button' },
-                    React.createElement('span', { 'class': 'dashicons dashicons-no' }),
-                    '                        '
+                    React.createElement('span', { 'class': 'dashicons dashicons-no' })
                 ),
                 React.createElement(
                     'div',
-                    { className: 'premium-blocks__placeholder_title', style: {
-                            fontFamily: "Helvetica Neue,Helvetica,Arial,sans-serif",
-                            textAlign: 'center',
-                            fontSize: '16px',
-                            marginBottom: '18px',
-                            color: '#191e23'
-                        } },
+                    { className: 'premium-blocks__placeholder_title' },
                     __('Select Column Layout', 'premium-blocks-for-gutenberg')
                 ),
                 React.createElement(
                     'div',
-                    { className: 'premium-blocks__placeholder-group', style: {
-                            maxWidth: '700px',
-                            margin: '0 auto'
-                        } },
+                    { className: 'premium-blocks__placeholder-group' },
                     _variations2.default.map(function (data) {
                         return React.createElement(
-                            'button',
+                            'i',
                             { onClick: function onClick(e) {
                                     e.preventDefault();
                                     setAttributes({ columns: data.innerBlocks });
@@ -69633,11 +69616,98 @@ var edit = function edit(props) {
     var hasChildBlocks = getBlockOrder(clientId).length > 0;
     var moverDirection = 'row' === direction ? 'horizontal' : 'vertical';
 
-    var renderCss = React.createElement(
-        'style',
-        null,
-        '.is-root-container > .block-editor-block-list__block .block-editor-block-list__block#block-' + props.clientId + '{\n                max-width :' + colWidth[props.deviceType] + colWidth['unit'] + '; \n\t\t\t     width :' + colWidth[props.deviceType] + colWidth['unit'] + '; \n               \n            } \n             #block-' + clientId + ' .block-editor-block-list__block{\n                  min-height :' + minHeight[props.deviceType] + minHeight['unit'] + ';\n                flex-direction : ' + direction[props.deviceType] + ';\n                align-items :' + alignItems[props.deviceType] + ' ;\n                justify-content : ' + justifyItems[props.deviceType] + ';\n                flex-wrap :' + wrapItems[props.deviceType] + ';\n                align-content : ' + alignItems[props.deviceType] + ';\n            }\n              #block-' + clientId + ' .uagb-container__shape-top svg {\n                width: calc( \' + topWidth + \'% + 1.3px );\n                height: generateCSSUnit( topHeight, \'px\' );\n\t\t    }\n             #block-' + clientId + ' .uagb-container__shape-top .uagb-container__shape-fill {\n                fill: topColor ;\n            }\n             #block-' + clientId + ' .uagb-container__shape-bottom svg {\n                width: calc( \' + bottomWidth + \'% + 1.3px );\n                height: generateCSSUnit( bottomHeight, \'px\' );\n            }\n             #block-' + clientId + ' .uagb-container__shape-bottom .uagb-container__shape-fill {\n              fill: hexToRgba( maybeGetColorForVariable( bottomColor ), 100 );\n            }\n            #block-' + clientId + ' .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout{\n                 min-height :' + minHeight[props.deviceType] + minHeight['unit'] + ';\n                flex-direction : ' + direction[props.deviceType] + ';\n                align-items :' + alignItems[props.deviceType] + ' ;\n                justify-content : ' + justifyItems[props.deviceType] + ';\n                flex-wrap :' + wrapItems[props.deviceType] + ';\n                align-content : ' + alignItems[props.deviceType] + ';\n            }\n            '
-    );
+    var loadStyles = function loadStyles() {
+        var styles = {};
+        var containerFullWidth = '100vw';
+        styles['.editor-styles-wrapper #block-' + clientId + '  > .wp-block-uagb-container > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout'] = {
+            'min-height': '' + minHeight[props.deviceType] + minHeight['unit'],
+            'flex-direction': direction[props.deviceType],
+            'align-items': alignItems[props.deviceType],
+            'justify-content': justifyItems[props.deviceType],
+            'flex-wrap': wrapItems[props.deviceType],
+            'align-content': alignContent[props.deviceType],
+            'row-gap': '' + rowGutter[props.deviceType] + rowGutter['unit'],
+            'column-gap': '' + columnGutter[props.deviceType] + columnGutter['unit']
+        };
+
+        styles[' .editor-styles-wrapper #block-' + clientId + '.block-editor-block-list__block'] = {
+            'min-height': '' + minHeight[props.deviceType] + minHeight['unit'],
+            'flex-direction': direction[props.deviceType],
+            'align-items': alignItems[props.deviceType],
+            'justify-content': justifyItems[props.deviceType],
+            'flex-wrap': wrapItems[props.deviceType],
+            'align-content': alignContent[props.deviceType]
+        };
+
+        styles[' .editor-styles-wrapper .is-root-container > .block-editor-block-list__block .block-editor-block-list__block#block-' + clientId] = {
+            'max-width': '' + colWidth[props.deviceType] + colWidth['unit'],
+            'width': '' + colWidth[props.deviceType] + colWidth['unit']
+        };
+        styles['.editor-styles-wrapper #block-' + clientId + '  .premium-top-shape svg'] = {
+            'width': 'calc( ' + shapeTop.width[props.deviceType] + '% + 1.3px )',
+            'height': '' + shapeTop.height[props.deviceType] + shapeTop.height['unit'],
+            'fill': '' + shapeTop['color']
+        };
+
+        styles['.editor-styles-wrapper #block-' + clientId + ' .premium-bottom-shape svg'] = {
+            'width': 'calc( ' + shapeBottom.width[props.deviceType] + '% + 1.3px )',
+            'height': '' + shapeBottom.height[props.deviceType] + shapeBottom.height['unit'],
+            'fill': '' + shapeBottom['color']
+        };
+
+        if ('boxed' === innerWidthType) {
+            styles['.editor-styles-wrapper  .is-root-container > .block-editor-block-list__block > .wp-block-uagb-container.uagb-block-' + clientId + ' > .uagb-container-inner-blocks-wrap'] = {
+                '--inner-content-custom-width': 'min(' + containerFullWidth + ',' + innerWidth + 'px)',
+                'max-width': 'var(--inner-content-custom-width)',
+                'margin-left': 'auto',
+                'margin-right': 'auto'
+
+            };
+        }
+
+        var styleCss = '';
+
+        var _loop = function _loop(selector) {
+            var selectorStyles = styles[selector];
+            var filteredStyles = Object.keys(selectorStyles).map(function (property) {
+                var value = selectorStyles[property];
+                var valueWithoutUnits = value ? value.toString().replaceAll('px', '').replaceAll(/\s/g, '') : '';
+                if (value && !value.toString().includes('undefined')) {
+                    return property + ': ' + value + ';';
+                }
+            }).filter(function (style) {
+                return !!style;
+            }).join('\n');
+            styleCss += selector + '{\n                    ' + filteredStyles + '\n                }\n';
+        };
+
+        for (var selector in styles) {
+            _loop(selector);
+        }
+        return styleCss;
+    };
+    var CustomTag = '' + containerTag;
+    var BLEND = [{
+        label: 'Normal', value: 'normal'
+    }, {
+        label: 'Multiply', value: 'multiply'
+    }, {
+        label: 'Screen', value: 'screen'
+    }, {
+        label: 'Overlay', value: 'overlay'
+    }, {
+        label: 'Darken', value: 'darken'
+    }, {
+        label: 'Lighten', value: 'lighten'
+    }, {
+        label: 'Color Dodge', value: 'color-dodge'
+    }, {
+        label: 'Saturation', value: 'saturation'
+    }, {
+        label: 'Color', value: 'color'
+    }, {
+        label: 'Luminosity', value: 'luminosity'
+    }];
     return React.createElement(
         Fragment,
         null,
@@ -69711,6 +69781,14 @@ var edit = function edit(props) {
                             onChange: function onChange(newValue) {
                                 return setAttributes({ overflow: newValue });
                             }
+                        }),
+                        React.createElement(SelectControl, {
+                            label: __("HTML Tag", 'premium-blocks-for-gutenberg'),
+                            options: [{ value: 'div', label: "div" }, { value: 'header', label: 'header' }, { value: 'footer', label: 'footer' }, { value: 'main', label: 'main' }, { value: 'article', label: 'article' }, { value: 'section', label: 'section' }, { value: 'aside', label: 'aside' }, { value: 'nav', label: 'nav' }, { value: 'a', label: 'a' }],
+                            value: containerTag,
+                            onChange: function onChange(newValue) {
+                                return setAttributes({ containerTag: newValue });
+                            }
                         })
                     ),
                     React.createElement(
@@ -69772,48 +69850,28 @@ var edit = function edit(props) {
                         React.createElement(_responsiveRadio2.default, {
                             choices: [{
                                 value: 'flex-start',
-                                tooltip: __('Flex Start', 'premium-blocks-for-gutenberg'),
-                                icon: React.createElement(
-                                    'svg',
-                                    { width: '32', height: '32', viewBox: '0 0 32 32', xmlns: 'http://www.w3.org/2000/svg', 'aria-hidden': 'true', focusable: 'false' },
-                                    React.createElement('path', { 'fill-rule': 'evenodd', 'clip-rule': 'evenodd', d: 'M1 0C1.55228 0 2 0.447715 2 1V30.5C2 31.0523 1.55228 31.5 1 31.5C0.447715 31.5 0 31.0523 0 30.5V1C0 0.447715 0.447715 0 1 0Z' }),
-                                    React.createElement('path', { 'fill-rule': 'evenodd', 'clip-rule': 'evenodd', d: 'M31 0C31.5523 0 32 0.447715 32 1V30.5C32 31.0523 31.5523 31.5 31 31.5C30.4477 31.5 30 31.0523 30 30.5V1C30 0.447715 30.4477 0 31 0Z' }),
-                                    React.createElement('path', { d: 'M5 6L9 6C9.53027 6.00053 10.0387 6.21141 10.4136 6.58637C10.7886 6.96133 10.9995 7.46973 11 8L11 23C10.9995 23.5303 10.7886 24.0387 10.4136 24.4136C10.0387 24.7886 9.53027 24.9995 9 25H5C4.46973 24.9995 3.96133 24.7886 3.58637 24.4136C3.21141 24.0387 3.00053 23.5303 3 23L3 8C3.00053 7.46973 3.21141 6.96133 3.58637 6.58637C3.96133 6.21141 4.46973 6.00053 5 6Z' }),
-                                    React.createElement('path', { d: 'M14 6L18 6C18.5303 6.00053 19.0387 6.21141 19.4136 6.58637C19.7886 6.96133 19.9995 7.46973 20 8L20 23C19.9995 23.5303 19.7886 24.0387 19.4136 24.4136C19.0387 24.7886 18.5303 24.9995 18 25H14C13.4697 24.9995 12.9613 24.7886 12.5864 24.4136C12.2114 24.0387 12.0005 23.5303 12 23L12 8C12.0005 7.46973 12.2114 6.96133 12.5864 6.58637C12.9613 6.21141 13.4697 6.00053 14 6Z' })
-                                )
+                                tooltip: __('Flex Start', 'ultimate-addons-for-gutenberg'),
+                                icon: (0, _renderIcon2.default)('flex-' + currentOffset + '-start')
                             }, {
                                 value: 'center',
-                                tooltip: __('Center', 'premium-blocks-for-gutenberg'),
-                                icon: React.createElement(
-                                    'svg',
-                                    { width: '32', height: '32', viewBox: '0 0 32 32', xmlns: 'http://www.w3.org/2000/svg', 'aria-hidden': 'true', focusable: 'false' },
-                                    React.createElement('path', { 'fill-rule': 'evenodd', 'clip-rule': 'evenodd', d: 'M1 0C1.55228 0 2 0.447715 2 1V30.5C2 31.0523 1.55228 31.5 1 31.5C0.447715 31.5 0 31.0523 0 30.5V1C0 0.447715 0.447715 0 1 0Z' }),
-                                    React.createElement('path', { 'fill-rule': 'evenodd', 'clip-rule': 'evenodd', d: 'M31 0C31.5523 0 32 0.447715 32 1V30.5C32 31.0523 31.5523 31.5 31 31.5C30.4477 31.5 30 31.0523 30 30.5V1C30 0.447715 30.4477 0 31 0Z' }),
-                                    React.createElement('path', { d: 'M9 6L13 6C13.5303 6.00053 14.0387 6.21141 14.4136 6.58637C14.7886 6.96133 14.9995 7.46973 15 8L15 23C14.9995 23.5303 14.7886 24.0387 14.4136 24.4136C14.0387 24.7886 13.5303 24.9995 13 25H9C8.46973 24.9995 7.96133 24.7886 7.58637 24.4136C7.21141 24.0387 7.00053 23.5303 7 23L7 8C7.00053 7.46973 7.21141 6.96133 7.58637 6.58637C7.96133 6.21141 8.46973 6.00053 9 6Z' }),
-                                    React.createElement('path', { d: 'M19 6L23 6C23.5303 6.00053 24.0387 6.21141 24.4136 6.58637C24.7886 6.96133 24.9995 7.46973 25 8L25 23C24.9995 23.5303 24.7886 24.0387 24.4136 24.4136C24.0387 24.7886 23.5303 24.9995 23 25H19C18.4697 24.9995 17.9613 24.7886 17.5864 24.4136C17.2114 24.0387 17.0005 23.5303 17 23L17 8C17.0005 7.46973 17.2114 6.96133 17.5864 6.58637C17.9613 6.21141 18.4697 6.00053 19 6Z' })
-                                )
+                                tooltip: __('Center', 'ultimate-addons-for-gutenberg'),
+                                icon: (0, _renderIcon2.default)('flex-' + currentOffset + '-center')
                             }, {
                                 value: 'flex-end',
-                                tooltip: __('Flex End', 'premium-blocks-for-gutenberg'),
-                                icon: React.createElement(
-                                    'svg',
-                                    { width: '32', height: '32', viewBox: '0 0 32 32', xmlns: 'http://www.w3.org/2000/svg', 'aria-hidden': 'true', focusable: 'false' },
-                                    React.createElement('path', { 'fill-rule': 'evenodd', 'clip-rule': 'evenodd', d: 'M1 0C1.55228 0 2 0.447715 2 1V30.5C2 31.0523 1.55228 31.5 1 31.5C0.447715 31.5 0 31.0523 0 30.5V1C0 0.447715 0.447715 0 1 0Z' }),
-                                    React.createElement('path', { 'fill-rule': 'evenodd', 'clip-rule': 'evenodd', d: 'M31 0C31.5523 0 32 0.447715 32 1V30.5C32 31.0523 31.5523 31.5 31 31.5C30.4477 31.5 30 31.0523 30 30.5V1C30 0.447715 30.4477 0 31 0Z' }),
-                                    React.createElement('path', { d: 'M7 6L11 6C11.5303 6.00053 12.0387 6.21141 12.4136 6.58637C12.7886 6.96133 12.9995 7.46973 13 8L13 23C12.9995 23.5303 12.7886 24.0387 12.4136 24.4136C12.0387 24.7886 11.5303 24.9995 11 25L7 25C6.46973 24.9995 5.96133 24.7886 5.58637 24.4136C5.21141 24.0387 5.00053 23.5303 5 23L5 8C5.00053 7.46973 5.21141 6.96133 5.58637 6.58637C5.96133 6.21141 6.46973 6.00053 7 6Z' }),
-                                    React.createElement('path', { d: 'M21 6L25 6C25.5303 6.00053 26.0387 6.21141 26.4136 6.58637C26.7886 6.96133 26.9995 7.46973 27 8L27 23C26.9995 23.5303 26.7886 24.0387 26.4136 24.4136C26.0387 24.7886 25.5303 24.9995 25 25L21 25C20.4697 24.9995 19.9613 24.7886 19.5864 24.4136C19.2114 24.0387 19.0005 23.5303 19 23L19 8C19.0005 7.46973 19.2114 6.96133 19.5864 6.58637C19.9613 6.21141 20.4697 6.00053 21 6Z' })
-                                )
+                                tooltip: __('Flex End', 'ultimate-addons-for-gutenberg'),
+                                icon: (0, _renderIcon2.default)('flex-' + currentOffset + '-end')
                             }, {
-                                value: 'stretch',
-                                tooltip: __('Stretch', 'premium-blocks-for-gutenberg'),
-                                icon: React.createElement(
-                                    'svg',
-                                    { width: '32', height: '32', viewBox: '0 0 32 32', xmlns: 'http://www.w3.org/2000/svg', 'aria-hidden': 'true', focusable: 'false' },
-                                    React.createElement('path', { 'fill-rule': 'evenodd', 'clip-rule': 'evenodd', d: 'M31 31.5C30.4477 31.5 30 31.0523 30 30.5L30 1C30 0.447716 30.4477 -1.35705e-07 31 -8.74228e-08C31.5523 -3.91405e-08 32 0.447716 32 1L32 30.5C32 31.0523 31.5523 31.5 31 31.5Z' }),
-                                    React.createElement('path', { 'fill-rule': 'evenodd', 'clip-rule': 'evenodd', d: 'M1 31.5C0.447715 31.5 3.91405e-08 31.0523 8.74228e-08 30.5L2.66639e-06 1C2.71468e-06 0.447716 0.447718 -1.35705e-07 1 -8.74228e-08C1.55229 -3.91405e-08 2 0.447716 2 1L2 30.5C2 31.0523 1.55228 31.5 1 31.5Z' }),
-                                    React.createElement('path', { d: 'M12 25.5L8 25.5C7.46973 25.4995 6.96133 25.2886 6.58637 24.9136C6.21141 24.5387 6.00053 24.0303 6 23.5L6 8.5C6.00053 7.96973 6.21141 7.46133 6.58637 7.08637C6.96133 6.71141 7.46973 6.50053 8 6.5L12 6.5C12.5303 6.50053 13.0387 6.71141 13.4136 7.08637C13.7886 7.46133 13.9995 7.96973 14 8.5L14 23.5C13.9995 24.0303 13.7886 24.5387 13.4136 24.9136C13.0387 25.2886 12.5303 25.4995 12 25.5Z' }),
-                                    React.createElement('path', { d: 'M24 25.5L20 25.5C19.4697 25.4995 18.9613 25.2886 18.5864 24.9136C18.2114 24.5387 18.0005 24.0303 18 23.5L18 8.5C18.0005 7.96973 18.2114 7.46133 18.5864 7.08637C18.9613 6.71141 19.4697 6.50053 20 6.5L24 6.5C24.5303 6.50053 25.0387 6.71141 25.4136 7.08637C25.7886 7.46133 25.9995 7.96973 26 8.5L26 23.5C25.9995 24.0303 25.7886 24.5387 25.4136 24.9136C25.0387 25.2886 24.5303 25.4995 24 25.5Z' })
-                                )
+                                value: 'space-between',
+                                tooltip: __('Space Between', 'ultimate-addons-for-gutenberg'),
+                                icon: (0, _renderIcon2.default)('flex-' + currentOffset + '-space-between')
+                            }, {
+                                value: 'space-around',
+                                tooltip: __('Space Around', 'ultimate-addons-for-gutenberg'),
+                                icon: (0, _renderIcon2.default)('flex-' + currentOffset + '-space-around')
+                            }, {
+                                value: 'space-evenly',
+                                tooltip: __('Space Evenly', 'ultimate-addons-for-gutenberg'),
+                                icon: (0, _renderIcon2.default)('flex-' + currentOffset + '-space-evenly')
                             }],
                             value: justifyItems,
                             onChange: function onChange(newValue) {
@@ -69863,6 +69921,39 @@ var edit = function edit(props) {
                             },
                             label: __("Wrap Items", 'premium-blocks-for-gutenberg'),
                             showIcons: true
+                        }),
+                        ('wrap' === wrapItems[props.deviceType] || 'wrap-reverse' === wrapItems[props.deviceType]) && React.createElement(_responsiveRadio2.default, {
+                            choices: [{
+                                value: 'flex-start',
+                                tooltip: __('Flex Start', 'ultimate-addons-for-gutenberg'),
+                                icon: (0, _renderIcon2.default)('flex-' + currentOffset + '-start')
+                            }, {
+                                value: 'center',
+                                tooltip: __('Center', 'ultimate-addons-for-gutenberg'),
+                                icon: (0, _renderIcon2.default)('flex-' + currentOffset + '-center')
+                            }, {
+                                value: 'flex-end',
+                                tooltip: __('Flex End', 'ultimate-addons-for-gutenberg'),
+                                icon: (0, _renderIcon2.default)('flex-' + currentOffset + '-end')
+                            }, {
+                                value: 'space-between',
+                                tooltip: __('Space Between', 'ultimate-addons-for-gutenberg'),
+                                icon: (0, _renderIcon2.default)('flex-' + currentOffset + '-space-between')
+                            }, {
+                                value: 'space-around',
+                                tooltip: __('Space Around', 'ultimate-addons-for-gutenberg'),
+                                icon: (0, _renderIcon2.default)('flex-' + currentOffset + '-space-around')
+                            }, {
+                                value: 'space-evenly',
+                                tooltip: __('Space Evenly', 'ultimate-addons-for-gutenberg'),
+                                icon: (0, _renderIcon2.default)('flex-' + currentOffset + '-space-evenly')
+                            }],
+                            value: alignContent,
+                            onChange: function onChange(newValue) {
+                                return setAttributes({ alignContent: newValue });
+                            },
+                            label: __("Align Content", 'premium-blocks-for-gutenberg'),
+                            showIcons: true
                         })
                     )
                 ),
@@ -69882,6 +69973,83 @@ var edit = function edit(props) {
                             },
                             backgroundVedio: true
                         })
+                    ),
+                    React.createElement(
+                        PanelBody,
+                        {
+                            initialOpen: false,
+                            title: __("Background Overlay", 'premium-blocks-for-gutenberg')
+                        },
+                        React.createElement(
+                            _InsideTabs2.default,
+                            null,
+                            React.createElement(
+                                _InsideTab2.default,
+                                { tabTitle: __('Normal', 'premium-blocks-for-gutenberg') },
+                                React.createElement(_PremiumBackgroundControl2.default, {
+                                    value: backgroundOverlay,
+                                    onChange: function onChange(value) {
+                                        return setAttributes({ backgroundOverlay: value });
+                                    },
+                                    backgroundVedio: false
+                                }),
+                                React.createElement(_singleRangeControl2.default, {
+                                    label: __("Opacity", 'premium-blocks-for-gutenberg'),
+                                    value: overlayOpacity,
+                                    min: '1',
+                                    max: '100',
+                                    onChange: function onChange(newValue) {
+                                        return setAttributes({ overlayOpacity: newValue === undefined ? 50 : newValue });
+                                    },
+                                    defaultValue: '',
+                                    showUnit: false
+                                }),
+                                React.createElement(_premiumFilters2.default, {
+                                    label: __("CSS Filters"),
+                                    value: overlayFilter,
+                                    onChange: function onChange(newValue) {
+                                        return setAttributes({ overlayFilter: newValue });
+                                    }
+                                }),
+                                React.createElement(SelectControl, {
+                                    label: __("Blend Mode "),
+                                    value: blend,
+                                    onChange: function onChange(newSelect) {
+                                        return setAttributes({ blend: newSelect });
+                                    },
+                                    options: BLEND
+                                })
+                            ),
+                            React.createElement(
+                                _InsideTab2.default,
+                                { tabTitle: __('Hover', 'premium-blocks-for-gutenberg') },
+                                React.createElement(_PremiumBackgroundControl2.default, {
+                                    value: backgroundOverlayHover,
+                                    onChange: function onChange(value) {
+                                        return setAttributes({ backgroundOverlayHover: value });
+                                    },
+                                    backgroundVedio: false
+                                }),
+                                React.createElement(_singleRangeControl2.default, {
+                                    label: __("Opacity", 'premium-blocks-for-gutenberg'),
+                                    value: hoverOverlayOpacity,
+                                    min: '1',
+                                    max: '100',
+                                    onChange: function onChange(newValue) {
+                                        return setAttributes({ hoverOverlayOpacity: newValue === undefined ? 50 : newValue });
+                                    },
+                                    defaultValue: '',
+                                    showUnit: false
+                                }),
+                                React.createElement(_premiumFilters2.default, {
+                                    label: __("CSS Filters"),
+                                    value: hoverOverlayFilter,
+                                    onChange: function onChange(newValue) {
+                                        return setAttributes({ hoverOverlayFilter: newValue });
+                                    }
+                                })
+                            )
+                        )
                     ),
                     React.createElement(
                         PanelBody,
@@ -69996,7 +70164,7 @@ var edit = function edit(props) {
                             initialOpen: false
                         },
                         React.createElement(_Animation2.default, {
-                            uniqueId: uniqueId,
+                            uniqueId: clientId,
                             label: __('Animation', 'premium-blocks-for-gutenberg'),
                             value: animation,
                             onChange: function onChange(value) {
@@ -70007,38 +70175,29 @@ var edit = function edit(props) {
                 )
             )
         ),
-        renderCss,
+        React.createElement('style', {
+            dangerouslySetInnerHTML: {
+                __html: loadStyles()
+            }
+        }),
         React.createElement(
-            'div',
+            CustomTag,
             {
-                className: (0, _classnames2.default)(className, 'uagb-block-' + uniqueId),
+                className: (0, _classnames2.default)('wp-block-uagb-container', 'uagb-block-' + clientId, 'premium-blocks-' + clientId),
                 key: uniqueId,
                 style: _extends({}, (0, _HelperFunction.borderCss)(border, props.deviceType), (0, _HelperFunction.padddingCss)(padding, props.deviceType), (0, _HelperFunction.marginCss)(margin, props.deviceType), (0, _HelperFunction.gradientBackground)(backgroundOptions), {
-                    boxShadow: (boxShadow.horizontal || 0) + 'px ' + (boxShadow.vertical || 0) + 'px ' + (boxShadow.blur || 0) + 'px ' + boxShadow.color + ' ' + boxShadow.position
-
+                    boxShadow: (boxShadow.horizontal || 0) + 'px ' + (boxShadow.vertical || 0) + 'px ' + (boxShadow.blur || 0) + 'px ' + boxShadow.color + ' ' + boxShadow.position,
+                    overflow: overflow
                 })
             },
-            Object.entries(shapeTop).length > 1 && shapeTop.openShape == 1 && shapeTop.style && React.createElement('div', { className: topShapeClasses, style: {
-                    overflow: 'hidden',
-                    position: 'absolute',
-                    left: 0,
-                    width: '100%',
-                    lineHeight: '0',
-                    direction: 'ltr',
-                    zIndex: '1',
-                    top: 0
-                }, dangerouslySetInnerHTML: { __html: PremiumBlocksSettings.shapes[shapeTop.style] } }),
+            Object.entries(shapeTop).length > 1 && shapeTop.openShape == 1 && shapeTop.style && React.createElement('div', { className: topShapeClasses, dangerouslySetInnerHTML: { __html: PremiumBlocksSettings.shapes[shapeTop.style] } }),
             (0, _HelperFunction.videoBackground)(backgroundOptions['backgroundType'], backgroundOptions.videoSource, backgroundOptions.videoURL, backgroundOptions.bgExternalVideo),
-            Object.entries(shapeBottom).length > 1 && shapeBottom.openShape == 1 && shapeBottom.style && React.createElement('div', { className: bottomShapeClasses, style: {
-                    overflow: 'hidden',
-                    position: 'absolute',
-                    left: 0,
-                    width: '100%',
-                    lineHeight: '0',
-                    direction: 'ltr',
-                    zIndex: '1',
-                    bottom: 0
-                }, dangerouslySetInnerHTML: { __html: PremiumBlocksSettings.shapes[shapeBottom.style] } }),
+            Object.entries(shapeBottom).length > 1 && shapeBottom.openShape == 1 && shapeBottom.style && React.createElement('div', { className: bottomShapeClasses, dangerouslySetInnerHTML: { __html: PremiumBlocksSettings.shapes[shapeBottom.style] } }),
+            React.createElement('div', { className: 'premium-row__block_overlay', style: _extends({}, (0, _HelperFunction.gradientBackground)(backgroundOverlay), {
+                    opacity: '' + (backgroundOverlay ? overlayOpacity / 100 : 1),
+                    mixBlendMode: blend + ' !important'
+                    // filter: `brightness( ${overlayFilter['bright']}% ) contrast( ${overlayFilter['contrast']}% ) saturate( ${overlayFilter['saturation']}% ) blur( ${overlayFilter['blur']}px ) hue-rotate( ${overlayFilter['hue']}deg )`
+                }) }),
             React.createElement(
                 'div',
                 { className: 'uagb-container-inner-blocks-wrap' },
@@ -70228,6 +70387,13 @@ var rowIcons = {
         "svg",
         { width: "114", height: "60", viewBox: "0 0 114 60", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
         React.createElement("path", { fillRule: "evenodd", clipRule: "evenodd", d: "M112 0C113.105 0 114 0.895447 114 2V27C114 28.1046 113.105 29 112 29H41C39.8954 29 39 28.1046 39 27V2C39 0.895447 39.8954 0 41 0H112ZM2 60C0.895416 60 0 59.1046 0 58V33C0 31.8954 0.895416 31 2 31H73C74.1046 31 75 31.8954 75 33V58C75 59.1046 74.1046 60 73 60H2ZM77 58C77 59.1046 77.8954 60 79 60H112C113.105 60 114 59.1046 114 58V33C114 31.8954 113.105 31 112 31H79C77.8954 31 77 31.8954 77 33V58ZM35 0C36.1046 0 37 0.895447 37 2V27C37 28.1046 36.1046 29 35 29H2C0.895447 29 0 28.1046 0 27V2C0 0.895447 0.895416 0 2 0H35Z", fill: "inherit" })
+    ),
+    '100-50-50': React.createElement(
+        "svg",
+        { viewBox: "0 0 90 44", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
+        React.createElement("rect", { x: "0.5", width: "44", height: "44" }),
+        React.createElement("rect", { x: "45.5", width: "44", height: "21.5" }),
+        React.createElement("rect", { x: "45.5", y: "22.5", width: "44", height: "21.5" })
     )
 };
 
@@ -71287,6 +71453,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _HelperFunction = __webpack_require__(134);
@@ -71353,30 +71521,64 @@ var Save = function (_Component) {
             var _props$attributes = this.props.attributes,
                 uniqueId = _props$attributes.uniqueId,
                 className = _props$attributes.className,
-                rowId = _props$attributes.rowId,
-                columns = _props$attributes.columns,
+                variationSelected = _props$attributes.variationSelected,
                 padding = _props$attributes.padding,
                 margin = _props$attributes.margin,
+                direction = _props$attributes.direction,
+                alignItems = _props$attributes.alignItems,
+                justifyItems = _props$attributes.justifyItems,
+                wrapItems = _props$attributes.wrapItems,
+                alignContent = _props$attributes.alignContent,
                 shapeTop = _props$attributes.shapeTop,
                 shapeBottom = _props$attributes.shapeBottom,
+                minHeight = _props$attributes.minHeight,
+                colWidth = _props$attributes.colWidth,
                 heightOptions = _props$attributes.heightOptions,
                 border = _props$attributes.border,
                 animation = _props$attributes.animation,
                 innerWidthType = _props$attributes.innerWidthType,
                 innerWidth = _props$attributes.innerWidth,
                 columnGutter = _props$attributes.columnGutter,
-                height = _props$attributes.height,
-                vPos = _props$attributes.vPos,
-                overflow = _props$attributes.overflow,
-                stretchSection = _props$attributes.stretchSection,
+                rowGutter = _props$attributes.rowGutter,
+                backgroundOverlay = _props$attributes.backgroundOverlay,
+                backgroundOverlayHover = _props$attributes.backgroundOverlayHover,
+                overlayOpacity = _props$attributes.overlayOpacity,
+                overlayFilter = _props$attributes.overlayFilter,
+                hoverOverlayOpacity = _props$attributes.hoverOverlayOpacity,
+                hoverOverlayFilter = _props$attributes.hoverOverlayFilter,
                 backgroundOptions = _props$attributes.backgroundOptions,
-                boxShadow = _props$attributes.boxShadow;
+                boxShadow = _props$attributes.boxShadow,
+                isBlockRootParent = _props$attributes.isBlockRootParent,
+                blockDescendants = _props$attributes.blockDescendants,
+                containerTag = _props$attributes.containerTag,
+                overflow = _props$attributes.overflow,
+                blend = _props$attributes.blend;
 
+            var CustomTag = '' + containerTag;
 
             return React.createElement(
-                'div',
-                null,
-                React.createElement(InnerBlocks.Content, null)
+                CustomTag,
+                {
+                    className: (0, _classnames2.default)('wp-block-uagb-container', 'uagb-block-' + clientId, 'premium-blocks-' + clientId),
+                    key: uniqueId,
+                    style: _extends({}, borderCss(border, props.deviceType), padddingCss(padding, props.deviceType), marginCss(margin, props.deviceType), gradientBackground(backgroundOptions), {
+                        boxShadow: (boxShadow.horizontal || 0) + 'px ' + (boxShadow.vertical || 0) + 'px ' + (boxShadow.blur || 0) + 'px ' + boxShadow.color + ' ' + boxShadow.position,
+                        overflow: overflow
+                    })
+                },
+                Object.entries(shapeTop).length > 1 && shapeTop.openShape == 1 && shapeTop.style && React.createElement('div', { className: topShapeClasses, dangerouslySetInnerHTML: { __html: PremiumBlocksSettings.shapes[shapeTop.style] } }),
+                videoBackground(backgroundOptions['backgroundType'], backgroundOptions.videoSource, backgroundOptions.videoURL, backgroundOptions.bgExternalVideo),
+                Object.entries(shapeBottom).length > 1 && shapeBottom.openShape == 1 && shapeBottom.style && React.createElement('div', { className: bottomShapeClasses, dangerouslySetInnerHTML: { __html: PremiumBlocksSettings.shapes[shapeBottom.style] } }),
+                React.createElement('div', { className: 'premium-row__block_overlay', style: _extends({}, gradientBackground(backgroundOverlay), {
+                        opacity: '' + (backgroundOverlay ? overlayOpacity / 100 : 1),
+                        mixBlendMode: blend + ' !important'
+                        // filter: `brightness( ${overlayFilter['bright']}% ) contrast( ${overlayFilter['contrast']}% ) saturate( ${overlayFilter['saturation']}% ) blur( ${overlayFilter['blur']}px ) hue-rotate( ${overlayFilter['hue']}deg )`
+                    }) }),
+                React.createElement(
+                    'div',
+                    { className: 'uagb-container-inner-blocks-wrap' },
+                    React.createElement(InnerBlocks.Content, null)
+                )
             );
         }
     }]);

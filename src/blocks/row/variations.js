@@ -24,8 +24,8 @@ const variations = [
         icon: rowIcons['50-50'],
         attributes: {
             variationSelected: true,
-            directionDesktop: 'row',
-            wrapMobile: 'wrap'
+            direction: { 'Desktop': 'row', 'Tablet': '', 'Mobile': '' },
+            wrapItems: { 'Desktop': '', "Tablet": '', 'Mobile': 'wrap' }
         },
         isDefault: true,
         innerBlocks: [
@@ -39,8 +39,8 @@ const variations = [
         icon: rowIcons['33-33-33'],
         attributes: {
             variationSelected: true,
-            directionDesktop: 'row',
-            wrapMobile: 'wrap'
+            direction: { 'Desktop': 'row', 'Tablet': '', "Mobile": '' },
+            wrapItems: { 'Desktop': '', "Tablet": '', 'Mobile': 'wrap' }
         },
         innerBlocks: [
             ['premium/row', { colWidth: { 'Desktop': 33.33, 'Tablet': 100, 'Mobile': 100, unit: '%' } }],
@@ -50,12 +50,35 @@ const variations = [
         scope: ['block'],
     },
     {
+        name: 'three-columns-one-big',
+        icon: rowIcons['100-50-50'],
+        attributes: {
+            variationSelected: true,
+            direction: { 'Desktop': 'row', 'Tablet': '', "Mobile": '' },
+            wrapItems: { 'Desktop': '', "Tablet": '', 'Mobile': 'wrap' }
+        },
+
+        innerBlocks: [
+            ['premium/row', { colWidth: { 'Desktop': 50, 'Tablet': 100, 'Mobile': 100, unit: '%' } }],
+            [
+                'premium/row',
+                { colWidth: { 'Desktop': 50, 'Tablet': 100, 'Mobile': 100, unit: '%' }, direction: { 'Desktop': 'column', 'Tablet': '', "Mobile": '' } },
+                [
+                    ['premium/row', { colWidth: { 'Desktop': 100, 'Tablet': 100, 'Mobile': 100, unit: '%' } }],
+                    ['premium/row', { colWidth: { 'Desktop': 100, 'Tablet': 100, 'Mobile': 100, unit: '%' } }],
+                ]
+            ]
+
+        ],
+        scope: ['block'],
+    },
+    {
         name: 'four-column',
         icon: rowIcons['25-25-25-25'],
         attributes: {
             variationSelected: true,
-            directionDesktop: 'row',
-            wrapMobile: 'wrap'
+            direction: { 'Desktop': 'row', 'Tablet': '', "Mobile": '' },
+            wrapItems: { 'Desktop': '', "Tablet": '', 'Mobile': 'wrap' }
         },
         innerBlocks: [
             ['premium/row', { colWidth: { 'Desktop': 25, 'Tablet': 100, 'Mobile': 100, unit: '%' } }],
@@ -70,11 +93,10 @@ const variations = [
         icon: rowIcons['50-50_50-50'],
         attributes: {
             variationSelected: true,
-            directionDesktop: 'row',
-            wrapDesktop: 'wrap',
-            wrapMobile: 'wrap',
-            rowGapDesktop: 20,
-            columnGapDesktop: 20
+            direction: { 'Desktop': 'row', 'Tablet': '', "Mobile": '' },
+            wrapItems: { 'Desktop': 'wrap', "Tablet": '', 'Mobile': 'wrap' },
+            rowGutter: { 'Desktop': 20, 'Tablet': '', 'Mobile': '', 'unit': 'px' },
+            columnGutter: { 'Desktop': 20, 'Tablet': '', 'Mobile': '', 'unit': 'px' },
         },
         innerBlocks: [
             ['premium/row', { colWidth: { 'Desktop': 48, 'Tablet': 100, 'Mobile': 100, unit: '%' } }],
@@ -89,8 +111,8 @@ const variations = [
         icon: rowIcons['25-75'],
         attributes: {
             variationSelected: true,
-            directionDesktop: 'row',
-            wrapMobile: 'wrap',
+            direction: { 'Desktop': 'row', 'Tablet': '', "Mobile": '' },
+            wrapItems: { 'Desktop': '', "Tablet": '', 'Mobile': 'wrap' }
         },
         innerBlocks: [
             ['premium/row', { colWidth: { 'Desktop': 25, 'Tablet': 100, 'Mobile': 100, unit: '%' } }],
@@ -103,11 +125,11 @@ const variations = [
         icon: rowIcons['33-33-33_33-33-33'],
         attributes: {
             variationSelected: true,
-            directionDesktop: 'row',
-            wrapDesktop: 'wrap',
-            rowGapDesktop: 20,
-            columnGapDesktop: 20,
-            wrapMobile: 'wrap',
+            direction: { 'Desktop': 'row', 'Tablet': '', "Mobile": '' },
+            wrapItems: { 'Desktop': 'wrap', "Tablet": '', 'Mobile': 'wrap' },
+            rowGutter: { 'Desktop': 20, 'Tablet': '', 'Mobile': '', 'unit': 'px' },
+            columnGutter: { 'Desktop': 20, 'Tablet': '', 'Mobile': '', 'unit': 'px' },
+
         },
         innerBlocks: [
             ['premium/row', { colWidth: { 'Desktop': 31, 'Tablet': 100, 'Mobile': 100, unit: '%' } }],
@@ -124,8 +146,8 @@ const variations = [
         icon: rowIcons['25-50-25'],
         attributes: {
             variationSelected: true,
-            directionDesktop: 'row',
-            wrapMobile: 'wrap',
+            direction: { 'Desktop': 'row', 'Tablet': '', "Mobile": '' },
+            wrapItems: { 'Desktop': '', "Tablet": '', 'Mobile': 'wrap' },
         },
         innerBlocks: [
             ['premium/row', { colWidth: { 'Desktop': 25, 'Tablet': 100, 'Mobile': 100, unit: '%' } }],
@@ -139,8 +161,8 @@ const variations = [
         icon: rowIcons['75-25'],
         attributes: {
             variationSelected: true,
-            directionDesktop: 'row',
-            wrapMobile: 'wrap',
+            direction: { 'Desktop': 'row', 'Tablet': '', "Mobile": '' },
+            wrapItems: { 'Desktop': '', "Tablet": '', 'Mobile': 'wrap' },
         },
         innerBlocks: [
             ['premium/row', { colWidth: { 'Desktop': 75, 'Tablet': 100, 'Mobile': 100, unit: '%' } }],
@@ -153,11 +175,11 @@ const variations = [
         icon: rowIcons['75-25_25_75'],
         attributes: {
             variationSelected: true,
-            directionDesktop: 'row',
-            wrapDesktop: 'wrap',
-            rowGapDesktop: 20,
-            columnGapDesktop: 20,
-            wrapMobile: 'wrap',
+            direction: { 'Desktop': 'row', 'Tablet': '', "Mobile": '' },
+            wrapItems: { 'Desktop': 'wrap', "Tablet": '', 'Mobile': 'wrap' },
+            rowGutter: { 'Desktop': 20, 'Tablet': '', 'Mobile': '', 'unit': 'px' },
+            columnGutter: { 'Desktop': 20, 'Tablet': '', 'Mobile': '', 'unit': 'px' },
+
         },
         innerBlocks: [
             ['premium/row', { colWidth: { 'Desktop': 73, 'Tablet': 100, 'Mobile': 100, unit: '%' } }],
@@ -173,16 +195,15 @@ const variations = [
         icon: rowIcons['50-50_100'],
         attributes: {
             variationSelected: true,
-            directionDesktop: 'row',
-            wrapDesktop: 'wrap',
-            wrapMobile: 'wrap',
-            rowGapDesktop: 20,
-            columnGapDesktop: 20
+            direction: { 'Desktop': 'row', 'Tablet': '', "Mobile": '' },
+            wrapItems: { 'Desktop': 'wrap', "Tablet": '', 'Mobile': 'wrap' },
+            rowGutter: { 'Desktop': 20, 'Tablet': '', 'Mobile': '', 'unit': 'px' },
+            columnGutter: { 'Desktop': 20, 'Tablet': '', 'Mobile': '', 'unit': 'px' },
         },
         innerBlocks: [
             [
                 'premium/row',
-                { colWidth: { 'Desktop': 100, 'Tablet': 100, 'Mobile': 100, unit: '%' }, directionDesktop: 'row', },
+                { colWidth: { 'Desktop': 100, 'Tablet': 100, 'Mobile': 100, unit: '%' }, direction: { 'Desktop': 'row', 'Tablet': '', "Mobile": '' }, },
                 [
                     ['premium/row', { colWidth: { 'Desktop': 48, 'Tablet': 100, 'Mobile': 100, unit: '%' } }],
                     ['premium/row', { colWidth: { 'Desktop': 48, 'Tablet': 100, 'Mobile': 100, unit: '%' } }],
@@ -197,11 +218,10 @@ const variations = [
         icon: rowIcons['25-75_75-25'],
         attributes: {
             variationSelected: true,
-            directionDesktop: 'row',
-            wrapDesktop: 'wrap',
-            wrapMobile: 'wrap',
-            rowGapDesktop: 20,
-            columnGapDesktop: 20
+            direction: { 'Desktop': 'row', 'Tablet': '', "Mobile": '' },
+            wrapItems: { 'Desktop': 'wrap', "Tablet": '', 'Mobile': 'wrap' },
+            rowGutter: { 'Desktop': 20, 'Tablet': '', 'Mobile': '', 'unit': 'px' },
+            columnGutter: { 'Desktop': 20, 'Tablet': '', 'Mobile': '', 'unit': 'px' },
         },
         innerBlocks: [
             ['premium/row', { colWidth: { 'Desktop': 23, 'Tablet': 100, 'Mobile': 100, unit: '%' } }],

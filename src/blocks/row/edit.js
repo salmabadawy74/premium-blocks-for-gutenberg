@@ -22,13 +22,11 @@ import Animation from '../../components/Animation'
 import ResponsiveRadio from '../../components/responsive-radio';
 import renderCustomIcon from '../../../blocks-config/renderIcon';
 import { gradientBackground, videoBackground, borderCss, padddingCss, marginCss } from '../../components/HelperFunction'
+import PremiumFilters from "../../components/premium-filters";
 
 
 let defaultLayout = { Desktop: [100], Tablet: [100], Mobile: [100] }
-function removeRowBlock() {
-    const { clientId, removeBlock } = props;
-    removeBlock(clientId);
-}
+
 const edit = (props) => {
     if (props.isParentOfSelectedBlock) {
         const emptyBlockInserter = document.querySelector('.block-editor-block-list__empty-block-inserter');
@@ -57,7 +55,10 @@ const edit = (props) => {
         }
     }, [props]);
 
-
+    const removeRowBlock = () => {
+        const { clientId, removeBlock } = props;
+        removeBlock(clientId);
+    }
     const {
         attributes: {
             uniqueId,
@@ -69,6 +70,7 @@ const edit = (props) => {
             alignItems,
             justifyItems,
             wrapItems,
+            alignContent,
             shapeTop,
             shapeBottom,
             minHeight,
@@ -82,14 +84,19 @@ const edit = (props) => {
             innerWidth,
             columnGutter,
             rowGutter,
-            height,
-            vPos,
-            overflow,
-            stretchSection,
+            backgroundOverlay,
+            backgroundOverlayHover,
+            overlayOpacity,
+            overlayFilter,
+            hoverOverlayOpacity,
+            hoverOverlayFilter,
             backgroundOptions,
             boxShadow,
             isBlockRootParent,
-            blockDescendants
+            blockDescendants,
+            containerTag,
+            overflow,
+            blend
         },
         clientId,
         setAttributes } = props;
@@ -124,48 +131,35 @@ const edit = (props) => {
         'premium-shape-divider',
         'premium-top-shape',
         { 'premium-top-shape-flip': shapeTop['flipShapeDivider'] === true },
-        { 'premium-top-shape-above-content': shapeTop['front'] === true },
-        { 'premium-top-shape__invert': shapeTop['invertShapeDivider'] === true }
+        { 'premium-shape-above-content': shapeTop['front'] === true },
+        { 'premium-shape__invert': shapeTop['invertShapeDivider'] === true }
     )
     const bottomShapeClasses = classnames(
         'premium-shape-divider',
         'premium-bottom-shape',
-        { 'premium-bottom-shape-flip': shapeBottom['flipShapeDivider'] === true },
-        { 'premium-bottom-shape-above-content': shapeBottom['front'] === true },
-        { 'premium-bottom-shape__invert': shapeBottom['invertShapeDivider'] === true }
+        { 'premium-shape-flip': shapeBottom['flipShapeDivider'] === true },
+        { 'premium-shape-above-content': shapeBottom['front'] === true },
+        { 'premium-shape__invert': shapeBottom['invertShapeDivider'] === true }
     )
     const currentOffset = 'row' === direction[props.deviceType] ? 'column' : 'row'
 
     if (!variationSelected && 0 === select('core/block-editor').getBlockParents(props.clientId).length) {
         return (
             <Fragment>
-                <div className="premium-blocks__row_container" style={{
-                    background: ' #f7f8fc',
-                    padding: '25px 15px'
-                }}>
+                <div className="premium-blocks__row_container" >
                     <Button onClick={() => removeRowBlock()} className="premium-blocks-remove-button" >
-                        <span class="dashicons dashicons-no"></span>                        </Button>
-                    <div className="premium-blocks__placeholder_title" style={{
-                        fontFamily: "Helvetica Neue,Helvetica,Arial,sans-serif",
-                        textAlign: 'center',
-                        fontSize: '16px',
-                        marginBottom: '18px',
-                        color: '#191e23'
-                    }}>{__('Select Column Layout', 'premium-blocks-for-gutenberg')}</div>
-                    <div className="premium-blocks__placeholder-group" style={{
-                        maxWidth: '700px',
-                        margin: '0 auto'
-                    }}>
+                        <span class="dashicons dashicons-no"></span>
+                    </Button>
+                    <div className="premium-blocks__placeholder_title" >{__('Select Column Layout', 'premium-blocks-for-gutenberg')}</div>
+                    <div className="premium-blocks__placeholder-group" >
                         {variations.map((data) => (
-
-                            <button onClick={(e) => {
+                            <i onClick={(e) => {
                                 e.preventDefault();
                                 setAttributes({ columns: data.innerBlocks })
                                 blockVariationPickerOnSelect(data)
                             }}>
                                 {data.icon}
-                            </button>
-
+                            </i>
                         ))}
                     </div>
                 </div>
@@ -176,46 +170,109 @@ const edit = (props) => {
     const hasChildBlocks = getBlockOrder(clientId).length > 0;
     const moverDirection = 'row' === direction ? 'horizontal' : 'vertical';
 
-    const renderCss = (
-        <style>
-            {`.is-root-container > .block-editor-block-list__block .block-editor-block-list__block#block-${props.clientId}{
-                max-width :${colWidth[props.deviceType]}${colWidth['unit']}; 
-			     width :${colWidth[props.deviceType]}${colWidth['unit']}; 
-               
-            } 
-             #block-${clientId} .block-editor-block-list__block{
-                  min-height :${minHeight[props.deviceType]}${minHeight['unit']};
-                flex-direction : ${direction[props.deviceType]};
-                align-items :${alignItems[props.deviceType]} ;
-                justify-content : ${justifyItems[props.deviceType]};
-                flex-wrap :${wrapItems[props.deviceType]};
-                align-content : ${alignItems[props.deviceType]};
+
+    const loadStyles = () => {
+        const styles = {};
+        const containerFullWidth = '100vw';
+        styles[`.editor-styles-wrapper #block-${clientId}  > .wp-block-uagb-container > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout`] = {
+            'min-height': `${minHeight[props.deviceType]}${minHeight['unit']}`,
+            'flex-direction': direction[props.deviceType],
+            'align-items': alignItems[props.deviceType],
+            'justify-content': justifyItems[props.deviceType],
+            'flex-wrap': wrapItems[props.deviceType],
+            'align-content': alignContent[props.deviceType],
+            'row-gap': `${rowGutter[props.deviceType]}${rowGutter['unit']}`,
+            'column-gap': `${columnGutter[props.deviceType]}${columnGutter['unit']}`,
+        };
+
+        styles[` .editor-styles-wrapper #block-${clientId}.block-editor-block-list__block`] = {
+            'min-height': `${minHeight[props.deviceType]}${minHeight['unit']}`,
+            'flex-direction': direction[props.deviceType],
+            'align-items': alignItems[props.deviceType],
+            'justify-content': justifyItems[props.deviceType],
+            'flex-wrap': wrapItems[props.deviceType],
+            'align-content': alignContent[props.deviceType],
+        };
+
+        styles[` .editor-styles-wrapper .is-root-container > .block-editor-block-list__block .block-editor-block-list__block#block-${clientId}`] = {
+            'max-width': `${colWidth[props.deviceType]}${colWidth['unit']}`,
+            'width': `${colWidth[props.deviceType]}${colWidth['unit']}`,
+        };
+        styles[`.editor-styles-wrapper #block-${clientId}  .premium-top-shape svg`] = {
+            'width': 'calc( ' + shapeTop.width[props.deviceType] + '% + 1.3px )',
+            'height': `${shapeTop.height[props.deviceType]}${shapeTop.height['unit']}`,
+            'fill': `${shapeTop['color']}`,
+        };
+
+        styles[`.editor-styles-wrapper #block-${clientId} .premium-bottom-shape svg`] = {
+            'width': 'calc( ' + shapeBottom.width[props.deviceType] + '% + 1.3px )',
+            'height': `${shapeBottom.height[props.deviceType]}${shapeBottom.height['unit']}`,
+            'fill': `${shapeBottom['color']}`,
+        };
+
+        if ('boxed' === innerWidthType) {
+            styles[`.editor-styles-wrapper  .is-root-container > .block-editor-block-list__block > .wp-block-uagb-container.uagb-block-${clientId} > .uagb-container-inner-blocks-wrap`] = {
+                '--inner-content-custom-width': `min(${containerFullWidth},${innerWidth}px)`,
+                'max-width': 'var(--inner-content-custom-width)',
+                'margin-left': 'auto',
+                'margin-right': 'auto'
+
             }
-              #block-${clientId} .uagb-container__shape-top svg {
-                width: calc( ' + topWidth + '% + 1.3px );
-                height: generateCSSUnit( topHeight, 'px' );
-		    }
-             #block-${clientId} .uagb-container__shape-top .uagb-container__shape-fill {
-                fill: topColor ;
-            }
-             #block-${clientId} .uagb-container__shape-bottom svg {
-                width: calc( ' + bottomWidth + '% + 1.3px );
-                height: generateCSSUnit( bottomHeight, 'px' );
-            }
-             #block-${clientId} .uagb-container__shape-bottom .uagb-container__shape-fill {
-              fill: hexToRgba( maybeGetColorForVariable( bottomColor ), 100 );
-            }
-            #block-${clientId} .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout{
-                 min-height :${minHeight[props.deviceType]}${minHeight['unit']};
-                flex-direction : ${direction[props.deviceType]};
-                align-items :${alignItems[props.deviceType]} ;
-                justify-content : ${justifyItems[props.deviceType]};
-                flex-wrap :${wrapItems[props.deviceType]};
-                align-content : ${alignItems[props.deviceType]};
-            }
-            `}
-        </style>
-    )
+
+        }
+
+
+        let styleCss = '';
+
+        for (const selector in styles) {
+            const selectorStyles = styles[selector];
+            const filteredStyles = Object.keys(selectorStyles).map(property => {
+                const value = selectorStyles[property];
+                const valueWithoutUnits = value ? value.toString().replaceAll('px', '').replaceAll(/\s/g, '') : '';
+                if (value && !value.toString().includes('undefined')) {
+                    return `${property}: ${value};`;
+                }
+            }).filter(style => !!style).join('\n');
+            styleCss += `${selector}{
+                    ${filteredStyles}
+                }\n`;
+        }
+        return styleCss;
+    }
+    const CustomTag = `${containerTag}`;
+    const BLEND =
+        [
+            {
+                label: 'Normal', value: 'normal'
+            },
+            {
+                label: 'Multiply', value: 'multiply'
+            },
+            {
+                label: 'Screen', value: 'screen'
+            },
+            {
+                label: 'Overlay', value: 'overlay'
+            },
+            {
+                label: 'Darken', value: 'darken'
+            },
+            {
+                label: 'Lighten', value: 'lighten'
+            },
+            {
+                label: 'Color Dodge', value: 'color-dodge'
+            },
+            {
+                label: 'Saturation', value: 'saturation'
+            },
+            {
+                label: 'Color', value: 'color'
+            },
+            {
+                label: 'Luminosity', value: 'luminosity'
+            },
+        ];
     return (
         <Fragment>
             <InspectorControls>
@@ -280,6 +337,22 @@ const edit = (props) => {
                                 ]}
                                 value={overflow}
                                 onChange={newValue => setAttributes({ overflow: newValue })}
+                            />
+                            <SelectControl
+                                label={__("HTML Tag", 'premium-blocks-for-gutenberg')}
+                                options={[
+                                    { value: 'div', label: ("div") },
+                                    { value: 'header', label: ('header') },
+                                    { value: 'footer', label: ('footer') },
+                                    { value: 'main', label: ('main') },
+                                    { value: 'article', label: ('article') },
+                                    { value: 'section', label: ('section') },
+                                    { value: 'aside', label: ('aside') },
+                                    { value: 'nav', label: ('nav') },
+                                    { value: 'a', label: ('a') },
+                                ]}
+                                value={containerTag}
+                                onChange={newValue => setAttributes({ containerTag: newValue })}
                             />
                         </PanelBody>
                         <PanelBody
@@ -346,23 +419,33 @@ const edit = (props) => {
                                 choices={[
                                     {
                                         value: 'flex-start',
-                                        tooltip: __('Flex Start', 'premium-blocks-for-gutenberg'),
-                                        icon: (<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M1 0C1.55228 0 2 0.447715 2 1V30.5C2 31.0523 1.55228 31.5 1 31.5C0.447715 31.5 0 31.0523 0 30.5V1C0 0.447715 0.447715 0 1 0Z"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M31 0C31.5523 0 32 0.447715 32 1V30.5C32 31.0523 31.5523 31.5 31 31.5C30.4477 31.5 30 31.0523 30 30.5V1C30 0.447715 30.4477 0 31 0Z"></path><path d="M5 6L9 6C9.53027 6.00053 10.0387 6.21141 10.4136 6.58637C10.7886 6.96133 10.9995 7.46973 11 8L11 23C10.9995 23.5303 10.7886 24.0387 10.4136 24.4136C10.0387 24.7886 9.53027 24.9995 9 25H5C4.46973 24.9995 3.96133 24.7886 3.58637 24.4136C3.21141 24.0387 3.00053 23.5303 3 23L3 8C3.00053 7.46973 3.21141 6.96133 3.58637 6.58637C3.96133 6.21141 4.46973 6.00053 5 6Z"></path><path d="M14 6L18 6C18.5303 6.00053 19.0387 6.21141 19.4136 6.58637C19.7886 6.96133 19.9995 7.46973 20 8L20 23C19.9995 23.5303 19.7886 24.0387 19.4136 24.4136C19.0387 24.7886 18.5303 24.9995 18 25H14C13.4697 24.9995 12.9613 24.7886 12.5864 24.4136C12.2114 24.0387 12.0005 23.5303 12 23L12 8C12.0005 7.46973 12.2114 6.96133 12.5864 6.58637C12.9613 6.21141 13.4697 6.00053 14 6Z"></path></svg>),
+                                        tooltip: __('Flex Start', 'ultimate-addons-for-gutenberg'),
+                                        icon: (renderCustomIcon(`flex-${currentOffset}-start`)),
                                     },
                                     {
                                         value: 'center',
-                                        tooltip: __('Center', 'premium-blocks-for-gutenberg'),
-                                        icon: (<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M1 0C1.55228 0 2 0.447715 2 1V30.5C2 31.0523 1.55228 31.5 1 31.5C0.447715 31.5 0 31.0523 0 30.5V1C0 0.447715 0.447715 0 1 0Z"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M31 0C31.5523 0 32 0.447715 32 1V30.5C32 31.0523 31.5523 31.5 31 31.5C30.4477 31.5 30 31.0523 30 30.5V1C30 0.447715 30.4477 0 31 0Z"></path><path d="M9 6L13 6C13.5303 6.00053 14.0387 6.21141 14.4136 6.58637C14.7886 6.96133 14.9995 7.46973 15 8L15 23C14.9995 23.5303 14.7886 24.0387 14.4136 24.4136C14.0387 24.7886 13.5303 24.9995 13 25H9C8.46973 24.9995 7.96133 24.7886 7.58637 24.4136C7.21141 24.0387 7.00053 23.5303 7 23L7 8C7.00053 7.46973 7.21141 6.96133 7.58637 6.58637C7.96133 6.21141 8.46973 6.00053 9 6Z"></path><path d="M19 6L23 6C23.5303 6.00053 24.0387 6.21141 24.4136 6.58637C24.7886 6.96133 24.9995 7.46973 25 8L25 23C24.9995 23.5303 24.7886 24.0387 24.4136 24.4136C24.0387 24.7886 23.5303 24.9995 23 25H19C18.4697 24.9995 17.9613 24.7886 17.5864 24.4136C17.2114 24.0387 17.0005 23.5303 17 23L17 8C17.0005 7.46973 17.2114 6.96133 17.5864 6.58637C17.9613 6.21141 18.4697 6.00053 19 6Z"></path></svg>),
+                                        tooltip: __('Center', 'ultimate-addons-for-gutenberg'),
+                                        icon: (renderCustomIcon(`flex-${currentOffset}-center`)),
                                     },
                                     {
                                         value: 'flex-end',
-                                        tooltip: __('Flex End', 'premium-blocks-for-gutenberg'),
-                                        icon: (<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M1 0C1.55228 0 2 0.447715 2 1V30.5C2 31.0523 1.55228 31.5 1 31.5C0.447715 31.5 0 31.0523 0 30.5V1C0 0.447715 0.447715 0 1 0Z"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M31 0C31.5523 0 32 0.447715 32 1V30.5C32 31.0523 31.5523 31.5 31 31.5C30.4477 31.5 30 31.0523 30 30.5V1C30 0.447715 30.4477 0 31 0Z"></path><path d="M7 6L11 6C11.5303 6.00053 12.0387 6.21141 12.4136 6.58637C12.7886 6.96133 12.9995 7.46973 13 8L13 23C12.9995 23.5303 12.7886 24.0387 12.4136 24.4136C12.0387 24.7886 11.5303 24.9995 11 25L7 25C6.46973 24.9995 5.96133 24.7886 5.58637 24.4136C5.21141 24.0387 5.00053 23.5303 5 23L5 8C5.00053 7.46973 5.21141 6.96133 5.58637 6.58637C5.96133 6.21141 6.46973 6.00053 7 6Z"></path><path d="M21 6L25 6C25.5303 6.00053 26.0387 6.21141 26.4136 6.58637C26.7886 6.96133 26.9995 7.46973 27 8L27 23C26.9995 23.5303 26.7886 24.0387 26.4136 24.4136C26.0387 24.7886 25.5303 24.9995 25 25L21 25C20.4697 24.9995 19.9613 24.7886 19.5864 24.4136C19.2114 24.0387 19.0005 23.5303 19 23L19 8C19.0005 7.46973 19.2114 6.96133 19.5864 6.58637C19.9613 6.21141 20.4697 6.00053 21 6Z"></path></svg>),
+                                        tooltip: __('Flex End', 'ultimate-addons-for-gutenberg'),
+                                        icon: (renderCustomIcon(`flex-${currentOffset}-end`)),
                                     },
                                     {
-                                        value: 'stretch',
-                                        tooltip: __('Stretch', 'premium-blocks-for-gutenberg'),
-                                        icon: (<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M31 31.5C30.4477 31.5 30 31.0523 30 30.5L30 1C30 0.447716 30.4477 -1.35705e-07 31 -8.74228e-08C31.5523 -3.91405e-08 32 0.447716 32 1L32 30.5C32 31.0523 31.5523 31.5 31 31.5Z"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M1 31.5C0.447715 31.5 3.91405e-08 31.0523 8.74228e-08 30.5L2.66639e-06 1C2.71468e-06 0.447716 0.447718 -1.35705e-07 1 -8.74228e-08C1.55229 -3.91405e-08 2 0.447716 2 1L2 30.5C2 31.0523 1.55228 31.5 1 31.5Z"></path><path d="M12 25.5L8 25.5C7.46973 25.4995 6.96133 25.2886 6.58637 24.9136C6.21141 24.5387 6.00053 24.0303 6 23.5L6 8.5C6.00053 7.96973 6.21141 7.46133 6.58637 7.08637C6.96133 6.71141 7.46973 6.50053 8 6.5L12 6.5C12.5303 6.50053 13.0387 6.71141 13.4136 7.08637C13.7886 7.46133 13.9995 7.96973 14 8.5L14 23.5C13.9995 24.0303 13.7886 24.5387 13.4136 24.9136C13.0387 25.2886 12.5303 25.4995 12 25.5Z"></path><path d="M24 25.5L20 25.5C19.4697 25.4995 18.9613 25.2886 18.5864 24.9136C18.2114 24.5387 18.0005 24.0303 18 23.5L18 8.5C18.0005 7.96973 18.2114 7.46133 18.5864 7.08637C18.9613 6.71141 19.4697 6.50053 20 6.5L24 6.5C24.5303 6.50053 25.0387 6.71141 25.4136 7.08637C25.7886 7.46133 25.9995 7.96973 26 8.5L26 23.5C25.9995 24.0303 25.7886 24.5387 25.4136 24.9136C25.0387 25.2886 24.5303 25.4995 24 25.5Z"></path></svg>),
+                                        value: 'space-between',
+                                        tooltip: __('Space Between', 'ultimate-addons-for-gutenberg'),
+                                        icon: (renderCustomIcon(`flex-${currentOffset}-space-between`)),
+                                    },
+                                    {
+                                        value: 'space-around',
+                                        tooltip: __('Space Around', 'ultimate-addons-for-gutenberg'),
+                                        icon: (renderCustomIcon(`flex-${currentOffset}-space-around`)),
+                                    },
+                                    {
+                                        value: 'space-evenly',
+                                        tooltip: __('Space Evenly', 'ultimate-addons-for-gutenberg'),
+                                        icon: (renderCustomIcon(`flex-${currentOffset}-space-evenly`)),
                                     },
                                 ]}
                                 value={justifyItems}
@@ -398,6 +481,48 @@ const edit = (props) => {
                                 label={__("Wrap Items", 'premium-blocks-for-gutenberg')}
                                 showIcons={true}
                             />
+                            {('wrap' === wrapItems[props.deviceType] || 'wrap-reverse' === wrapItems[props.deviceType]) &&
+
+                                <ResponsiveRadio
+                                    choices={[
+                                        {
+                                            value: 'flex-start',
+                                            tooltip: __('Flex Start', 'ultimate-addons-for-gutenberg'),
+                                            icon: (renderCustomIcon(`flex-${currentOffset}-start`)),
+                                        },
+                                        {
+                                            value: 'center',
+                                            tooltip: __('Center', 'ultimate-addons-for-gutenberg'),
+                                            icon: (renderCustomIcon(`flex-${currentOffset}-center`)),
+                                        },
+                                        {
+                                            value: 'flex-end',
+                                            tooltip: __('Flex End', 'ultimate-addons-for-gutenberg'),
+                                            icon: (renderCustomIcon(`flex-${currentOffset}-end`)),
+                                        },
+                                        {
+                                            value: 'space-between',
+                                            tooltip: __('Space Between', 'ultimate-addons-for-gutenberg'),
+                                            icon: (renderCustomIcon(`flex-${currentOffset}-space-between`)),
+                                        },
+                                        {
+                                            value: 'space-around',
+                                            tooltip: __('Space Around', 'ultimate-addons-for-gutenberg'),
+                                            icon: (renderCustomIcon(`flex-${currentOffset}-space-around`)),
+                                        },
+                                        {
+                                            value: 'space-evenly',
+                                            tooltip: __('Space Evenly', 'ultimate-addons-for-gutenberg'),
+                                            icon: (renderCustomIcon(`flex-${currentOffset}-space-evenly`)),
+                                        },
+                                    ]}
+                                    value={alignContent}
+                                    onChange={(newValue) => setAttributes({ alignContent: newValue })}
+                                    label={__("Align Content", 'premium-blocks-for-gutenberg')}
+                                    showIcons={true}
+                                />
+
+                            }
                         </PanelBody>
                     </InspectorTab>
                     <InspectorTab key={"style"}>
@@ -410,6 +535,61 @@ const edit = (props) => {
                                 onChange={(value) => setAttributes({ backgroundOptions: value })}
                                 backgroundVedio={true}
                             />
+                        </PanelBody>
+                        <PanelBody
+                            initialOpen={false}
+                            title={__("Background Overlay", 'premium-blocks-for-gutenberg')}
+                        >
+                            <InsideTabs>
+                                <InsideTab tabTitle={__('Normal', 'premium-blocks-for-gutenberg')}>
+                                    <PremiumBackgroundControl
+                                        value={backgroundOverlay}
+                                        onChange={(value) => setAttributes({ backgroundOverlay: value })}
+                                        backgroundVedio={false}
+                                    />
+                                    <ResponsiveSingleRangeControl
+                                        label={__("Opacity", 'premium-blocks-for-gutenberg')}
+                                        value={overlayOpacity}
+                                        min="1"
+                                        max="100"
+                                        onChange={newValue => setAttributes({ overlayOpacity: newValue === undefined ? 50 : newValue })}
+                                        defaultValue={''}
+                                        showUnit={false}
+                                    />
+                                    <PremiumFilters
+                                        label={__("CSS Filters")}
+                                        value={overlayFilter}
+                                        onChange={(newValue) => setAttributes({ overlayFilter: newValue })}
+                                    />
+                                    <SelectControl
+                                        label={__("Blend Mode ")}
+                                        value={blend}
+                                        onChange={newSelect => setAttributes({ blend: newSelect })}
+                                        options={BLEND}
+                                    />
+                                </InsideTab>
+                                <InsideTab tabTitle={__('Hover', 'premium-blocks-for-gutenberg')}>
+                                    <PremiumBackgroundControl
+                                        value={backgroundOverlayHover}
+                                        onChange={(value) => setAttributes({ backgroundOverlayHover: value })}
+                                        backgroundVedio={false}
+                                    />
+                                    <ResponsiveSingleRangeControl
+                                        label={__("Opacity", 'premium-blocks-for-gutenberg')}
+                                        value={hoverOverlayOpacity}
+                                        min="1"
+                                        max="100"
+                                        onChange={newValue => setAttributes({ hoverOverlayOpacity: newValue === undefined ? 50 : newValue })}
+                                        defaultValue={''}
+                                        showUnit={false}
+                                    />
+                                    <PremiumFilters
+                                        label={__("CSS Filters")}
+                                        value={hoverOverlayFilter}
+                                        onChange={(newValue) => setAttributes({ hoverOverlayFilter: newValue })}
+                                    />
+                                </InsideTab>
+                            </InsideTabs>
                         </PanelBody>
                         <PanelBody
                             initialOpen={false}
@@ -492,7 +672,7 @@ const edit = (props) => {
                             initialOpen={false}
                         >
                             <Animation
-                                uniqueId={uniqueId}
+                                uniqueId={clientId}
                                 label={__('Animation', 'premium-blocks-for-gutenberg')}
                                 value={animation}
                                 onChange={(value) => setAttributes({ animation: value })}
@@ -501,11 +681,16 @@ const edit = (props) => {
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>
-            {renderCss}
-            <div
+            <style
+                dangerouslySetInnerHTML={{
+                    __html: loadStyles()
+                }}
+            />
+            <CustomTag
                 className={classnames(
-                    className,
-                    `uagb-block-${uniqueId}`,
+                    'wp-block-uagb-container',
+                    `uagb-block-${clientId}`,
+                    `premium-blocks-${clientId}`
                 )}
                 key={uniqueId}
                 style={{
@@ -513,36 +698,23 @@ const edit = (props) => {
                     ...padddingCss(padding, props.deviceType),
                     ...marginCss(margin, props.deviceType),
                     ...gradientBackground(backgroundOptions),
-                    boxShadow: `${boxShadow.horizontal || 0}px ${boxShadow.vertical ||
-                        0}px ${boxShadow.blur || 0}px ${boxShadow.color} ${boxShadow.position}`,
-
+                    boxShadow: `${boxShadow.horizontal || 0}px ${boxShadow.vertical || 0}px ${boxShadow.blur || 0}px ${boxShadow.color} ${boxShadow.position}`,
+                    overflow: overflow
                 }}
             >
                 {(Object.entries(shapeTop).length > 1 && shapeTop.openShape == 1 && shapeTop.style) &&
-                    <div className={topShapeClasses} style={{
-                        overflow: 'hidden',
-                        position: 'absolute',
-                        left: 0,
-                        width: '100%',
-                        lineHeight: '0',
-                        direction: 'ltr',
-                        zIndex: '1',
-                        top: 0,
-                    }} dangerouslySetInnerHTML={{ __html: PremiumBlocksSettings.shapes[shapeTop.style] }} />
+                    <div className={topShapeClasses} dangerouslySetInnerHTML={{ __html: PremiumBlocksSettings.shapes[shapeTop.style] }} />
                 }
                 {videoBackground(backgroundOptions['backgroundType'], backgroundOptions.videoSource, backgroundOptions.videoURL, backgroundOptions.bgExternalVideo)}
                 {(Object.entries(shapeBottom).length > 1 && shapeBottom.openShape == 1 && shapeBottom.style) &&
-                    <div className={bottomShapeClasses} style={{
-                        overflow: 'hidden',
-                        position: 'absolute',
-                        left: 0,
-                        width: '100%',
-                        lineHeight: '0',
-                        direction: 'ltr',
-                        zIndex: '1',
-                        bottom: 0,
-                    }} dangerouslySetInnerHTML={{ __html: PremiumBlocksSettings.shapes[shapeBottom.style] }} />
+                    <div className={bottomShapeClasses} dangerouslySetInnerHTML={{ __html: PremiumBlocksSettings.shapes[shapeBottom.style] }} />
                 }
+                <div className={`premium-row__block_overlay`} style={{
+                    ...gradientBackground(backgroundOverlay),
+                    opacity: `${backgroundOverlay ? overlayOpacity / 100 : 1}`,
+                    mixBlendMode: `${blend} !important`,
+                    // filter: `brightness( ${overlayFilter['bright']}% ) contrast( ${overlayFilter['contrast']}% ) saturate( ${overlayFilter['saturation']}% ) blur( ${overlayFilter['blur']}px ) hue-rotate( ${overlayFilter['hue']}deg )`
+                }}></div>
                 <div className='uagb-container-inner-blocks-wrap'>
                     <InnerBlocks
                         __experimentalMoverDirection={moverDirection}
@@ -552,7 +724,7 @@ const edit = (props) => {
                     />
                 </div>
 
-            </div>
+            </CustomTag>
         </Fragment >
     )
 }

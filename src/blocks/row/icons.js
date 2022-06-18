@@ -136,6 +136,13 @@ const rowIcons = {
         </svg>
 
     ),
+    '100-50-50': (
+        <svg viewBox="0 0 90 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0.5" width="44" height="44"></rect>
+            <rect x="45.5" width="44" height="21.5"></rect>
+            <rect x="45.5" y="22.5" width="44" height="21.5"></rect>
+        </svg>
+    )
 };
 
 export default rowIcons;

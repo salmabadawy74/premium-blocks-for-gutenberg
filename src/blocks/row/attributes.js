@@ -29,22 +29,22 @@ const attributes = {
         type: 'object',
         default: {
             'Desktop': {
-                top: 70,
-                right: 0,
-                bottom: 70,
-                left: 0
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
             },
             'Tablet': {
-                top: 70,
-                right: 0,
-                bottom: 70,
-                left: 0
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
             },
             'Mobile': {
-                top: 70,
-                right: 0,
-                bottom: 70,
-                left: 0
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
             },
             unit: 'px',
         },
@@ -116,6 +116,46 @@ const attributes = {
             'videoID': '',
             'bgVideoFallbackID': '',
             'bgVideoFallbackURL': ''
+        }
+    },
+    backgroundOverlay: {
+        type: "object",
+        default: {
+            'backgroundType': '',
+            'backgroundColor': '',
+            'backgroundImageID': '',
+            'backgroundImageURL': '',
+            'backgroundPosition': 'center center',
+            'backgroundRepeat': 'no-repeat',
+            'backgroundSize': 'cover',
+            'fixed': false,
+            'gradientLocationOne': '0',
+            'gradientColorTwo': '',
+            'gradientLocationTwo': '100',
+            'gradientType': 'linear',
+            'gradientAngle': '180',
+            'gradientPosition': 'center center',
+
+        }
+    },
+    backgroundOverlayHover: {
+        type: "object",
+        default: {
+            'backgroundType': '',
+            'backgroundColor': '',
+            'backgroundImageID': '',
+            'backgroundImageURL': '',
+            'backgroundPosition': 'center center',
+            'backgroundRepeat': 'no-repeat',
+            'backgroundSize': 'cover',
+            'fixed': false,
+            'gradientLocationOne': '0',
+            'gradientColorTwo': '',
+            'gradientLocationTwo': '100',
+            'gradientType': 'linear',
+            'gradientAngle': '180',
+            'gradientPosition': 'center center',
+
         }
     },
     border: {
@@ -273,7 +313,8 @@ const attributes = {
         default: 'boxed'
     },
     innerWidth: {
-        type: "number"
+        type: "number",
+        default: 1200
     },
     columnGutter: {
         type: 'object',
@@ -284,7 +325,15 @@ const attributes = {
             unit: 'px'
         }
     },
-
+    rowGutter: {
+        type: 'object',
+        default: {
+            Desktop: 30,
+            Tablet: 30,
+            Mobile: 30,
+            unit: 'px'
+        }
+    },
     direction: {
         type: 'object',
         default: {
@@ -317,7 +366,22 @@ const attributes = {
             'Tablet': '',
             'Mobile': ''
         }
-    }
+    },
+    alignContent: {
+        type: 'object',
+        default: {
+            'Desktop': '',
+            'Tablet': '',
+            'Mobile': ''
+        }
+    },
+    containerTag: {
+        type: 'string',
+        default: 'div'
+    },
+    blend: {
+        type: 'string'
+    },
 
 };
 

@@ -534,7 +534,7 @@ class PremiumAccordion extends Component {
                         />
                         {"text" === contentType && (
                             <Fragment>
-                                <PremiumTypo
+                                {/* <PremiumTypo
                                     components={[
                                         "size",
                                         "weight",
@@ -555,7 +555,7 @@ class PremiumAccordion extends Component {
                                     onChangeSpacing={newValue => SaveDescStyles({ descLetter: newValue })}
                                     onChangeLine={newValue => SaveDescStyles({ descLine: newValue })}
                                     onChangeUpper={check => SaveDescStyles({ descUpper: check })}
-                                />
+                                /> */}
                                 <AdvancedPopColorControl
                                     label={__("Text Color", 'premium-blocks-for-gutenberg')}
                                     colorValue={descStyles[0].descColor}
@@ -570,99 +570,7 @@ class PremiumAccordion extends Component {
                                 />
                             </Fragment>
                         )}
-                        <PremiumBorder
-                            borderType={descStyles[0].descBorder}
-                            borderWidth={descBorderWidth}
-                            top={descBorderTop}
-                            right={descBorderRight}
-                            bottom={descBorderBottom}
-                            left={descBorderLeft}
-                            borderColor={descStyles[0].descBorderColor}
-                            borderRadius={descStyles[0].descBorderRadius}
-                            onChangeType={(newType) => SaveDescStyles({ descBorder: newType })}
-                            onChangeWidth={({ top, right, bottom, left }) =>
-                                setAttributes({
-                                    descBorderUpdated: true,
-                                    descBorderTop: top,
-                                    descBorderRight: right,
-                                    descBorderBottom: bottom,
-                                    descBorderLeft: left,
-                                })
-                            }
-                            onChangeColor={(colorValue) => SaveDescStyles({ descBorderColor: colorValue })}
-                            onChangeRadius={(newrRadius) => SaveDescStyles({ descBorderRadius: newrRadius })}
-                        />
-                        {"text" === contentType && (
-                            <PremiumShadow
-                                label={__("Text Shadow ", "premium-blocks-for-gutenberg")}
-                                color={textShadowColor}
-                                blur={textShadowBlur}
-                                horizontal={textShadowHorizontal}
-                                vertical={textShadowVertical}
-                                onChangeColor={newColor => setAttributes({ textShadowColor: newColor === undefined ? "transparent" : newColor })}
-                                onChangeBlur={newBlur => setAttributes({ textShadowBlur: newBlur === undefined ? 0 : newBlur })}
-                                onChangehHorizontal={newValue => setAttributes({ textShadowHorizontal: newValue === undefined ? 0 : newValue })}
-                                onChangeVertical={newValue => setAttributes({ textShadowVertical: newValue === undefined ? 0 : newValue })}
-                            />
-                        )}
-                        <PremiumResponsivePadding
-                            paddingT={descPaddingT}
-                            paddingR={descPaddingR}
-                            paddingB={descPaddingB}
-                            paddingL={descPaddingL}
-                            paddingTTablet={descPaddingTTablet}
-                            paddingRTablet={descPaddingRTablet}
-                            paddingBTablet={descPaddingBTablet}
-                            paddingLTablet={descPaddingLTablet}
-                            paddingTMobile={descPaddingTMobile}
-                            paddingRMobile={descPaddingRMobile}
-                            paddingBMobile={descPaddingBMobile}
-                            paddingLMobile={descPaddingLMobile}
-                            onChangePaddingTop={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ descPaddingT: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ descPaddingTTablet: newValue })
-                                    } else {
-                                        setAttributes({ descPaddingTMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangePaddingRight={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ descPaddingR: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ descPaddingRTablet: newValue })
-                                    } else {
-                                        setAttributes({ descPaddingRMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangePaddingBottom={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ descPaddingB: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ descPaddingBTablet: newValue })
-                                    } else {
-                                        setAttributes({ descPaddingBMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangePaddingLeft={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ descPaddingL: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ descPaddingLTablet: newValue })
-                                    } else {
-                                        setAttributes({ descPaddingLMobile: newValue })
-                                    }
-                                }
-                            }
-                        />
+
                     </PanelBody>
                 </InspectorControls >
             ),

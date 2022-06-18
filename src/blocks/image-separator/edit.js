@@ -427,41 +427,17 @@ class edit extends Component {
                                     }
                                 />
                                 <PremiumFilters
-                                    label={__("Hover CSS Filters")}
+                                    label={__(" CSS Filters")}
                                     blur={blurHover}
                                     bright={brightHover}
                                     contrast={contrastHover}
                                     saturation={saturationHover}
                                     hue={hueHover}
-                                    onChangeBlur={(newSize) =>
-                                        setAttributes({
-                                            blurHover: newSize,
-                                            change: true,
-                                        })
-                                    }
-                                    onChangeBright={(newSize) =>
-                                        setAttributes({
-                                            brightHover: newSize,
-                                            change: true,
-                                        })
-                                    }
-                                    onChangeContrast={(newSize) =>
-                                        setAttributes({
-                                            contrastHover: newSize,
-                                            change: true,
-                                        })
-                                    }
-                                    onChangeSat={(newSize) =>
-                                        setAttributes({
-                                            saturationHover: newSize,
-                                            change: true,
-                                        })
-                                    }
-                                    onChangeHue={(newSize) => setAttributes({
-                                        hueHover: newSize,
-                                        change: true,
-                                    })
-                                    }
+                                    onChangeBlur={(newSize) => setAttributes({ blurHover: newSize })}
+                                    onChangeBright={(newSize) => setAttributes({ brightHover: newSize })}
+                                    onChangeContrast={(newSize) => setAttributes({ contrastHover: newSize })}
+                                    onChangeSat={(newSize) => setAttributes({ saturationHover: newSize })}
+                                    onChangeHue={(newSize) => setAttributes({ hueHover: newSize })}
                                 />
                             </Fragment>
                         ) : (

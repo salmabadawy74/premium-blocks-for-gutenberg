@@ -37,12 +37,18 @@ class Save extends Component {
     render() {
         const { attributes: { uniqueId,
             className,
-            rowId,
-            columns,
+            variationSelected,
             padding,
             margin,
+            direction,
+            alignItems,
+            justifyItems,
+            wrapItems,
+            alignContent,
             shapeTop,
             shapeBottom,
+            minHeight,
+            colWidth,
             heightOptions,
             border,
             //animation
@@ -51,20 +57,58 @@ class Save extends Component {
             innerWidthType,
             innerWidth,
             columnGutter,
-            height,
-            vPos,
-            overflow,
-            stretchSection,
+            rowGutter,
+            backgroundOverlay,
+            backgroundOverlayHover,
+            overlayOpacity,
+            overlayFilter,
+            hoverOverlayOpacity,
+            hoverOverlayFilter,
             backgroundOptions,
-            boxShadow } } = this.props
+            boxShadow,
+            isBlockRootParent,
+            blockDescendants,
+            containerTag,
+            overflow,
+            blend } } = this.props
+        const CustomTag = `${containerTag}`;
 
         return (
-            <div
-
+            <CustomTag
+                className={classnames(
+                    'wp-block-uagb-container',
+                    `uagb-block-${clientId}`,
+                    `premium-blocks-${clientId}`
+                )}
+                key={uniqueId}
+                style={{
+                    ...borderCss(border, props.deviceType),
+                    ...padddingCss(padding, props.deviceType),
+                    ...marginCss(margin, props.deviceType),
+                    ...gradientBackground(backgroundOptions),
+                    boxShadow: `${boxShadow.horizontal || 0}px ${boxShadow.vertical || 0}px ${boxShadow.blur || 0}px ${boxShadow.color} ${boxShadow.position}`,
+                    overflow: overflow
+                }}
             >
-                <InnerBlocks.Content />
+                {(Object.entries(shapeTop).length > 1 && shapeTop.openShape == 1 && shapeTop.style) &&
+                    <div className={topShapeClasses} dangerouslySetInnerHTML={{ __html: PremiumBlocksSettings.shapes[shapeTop.style] }} />
+                }
+                {videoBackground(backgroundOptions['backgroundType'], backgroundOptions.videoSource, backgroundOptions.videoURL, backgroundOptions.bgExternalVideo)}
+                {(Object.entries(shapeBottom).length > 1 && shapeBottom.openShape == 1 && shapeBottom.style) &&
+                    <div className={bottomShapeClasses} dangerouslySetInnerHTML={{ __html: PremiumBlocksSettings.shapes[shapeBottom.style] }} />
+                }
+                <div className={`premium-row__block_overlay`} style={{
+                    ...gradientBackground(backgroundOverlay),
+                    opacity: `${backgroundOverlay ? overlayOpacity / 100 : 1}`,
+                    mixBlendMode: `${blend} !important`,
+                    // filter: `brightness( ${overlayFilter['bright']}% ) contrast( ${overlayFilter['contrast']}% ) saturate( ${overlayFilter['saturation']}% ) blur( ${overlayFilter['blur']}px ) hue-rotate( ${overlayFilter['hue']}deg )`
+                }}></div>
+                <div className='uagb-container-inner-blocks-wrap'>
+                    <InnerBlocks.Content
+                    />
+                </div>
 
-            </div>
+            </CustomTag>
         )
     }
 }
