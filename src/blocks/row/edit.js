@@ -41,7 +41,7 @@ const edit = (props) => {
             props.setAttributes({ isBlockRootParent: true });
         }
         // Assigning block_id in the attribute.
-        props.setAttributes({ block_id: props.clientId.substr(0, 8) });
+        props.setAttributes({ block_id: props.clientId });
         const descendants = select('core/block-editor').getBlocks(props.clientId);
         if (descendants.length !== props.attributes.blockDescendants.length) {
             props.setAttributes({ blockDescendants: descendants });
@@ -61,7 +61,7 @@ const edit = (props) => {
     }
     const {
         attributes: {
-            uniqueId,
+            block_id,
             className,
             variationSelected,
             padding,
@@ -184,7 +184,6 @@ const edit = (props) => {
             'row-gap': `${rowGutter[props.deviceType]}${rowGutter['unit']}`,
             'column-gap': `${columnGutter[props.deviceType]}${columnGutter['unit']}`,
         };
-
         styles[` .editor-styles-wrapper #block-${clientId}.block-editor-block-list__block`] = {
             'min-height': `${minHeight[props.deviceType]}${minHeight['unit']}`,
             'flex-direction': direction[props.deviceType],
@@ -211,7 +210,7 @@ const edit = (props) => {
         };
 
         if ('boxed' === innerWidthType) {
-            styles[`.editor-styles-wrapper  .is-root-container > .block-editor-block-list__block > .wp-block-uagb-container.uagb-block-${clientId} > .uagb-container-inner-blocks-wrap`] = {
+            styles[`.editor-styles-wrapper  .is-root-container > .block-editor-block-list__block > .wp-block-uagb-container.uagb-block-${block_id} > .uagb-container-inner-blocks-wrap`] = {
                 '--inner-content-custom-width': `min(${containerFullWidth},${innerWidth}px)`,
                 'max-width': 'var(--inner-content-custom-width)',
                 'margin-left': 'auto',
@@ -672,7 +671,7 @@ const edit = (props) => {
                             initialOpen={false}
                         >
                             <Animation
-                                uniqueId={clientId}
+                                uniqueId={block_id}
                                 label={__('Animation', 'premium-blocks-for-gutenberg')}
                                 value={animation}
                                 onChange={(value) => setAttributes({ animation: value })}
@@ -689,10 +688,10 @@ const edit = (props) => {
             <CustomTag
                 className={classnames(
                     'wp-block-uagb-container',
-                    `uagb-block-${clientId}`,
-                    `premium-blocks-${clientId}`
+                    `uagb-block-${block_id}`,
+                    `premium-blocks-${block_id}`
                 )}
-                key={uniqueId}
+                key={block_id}
                 style={{
                     ...borderCss(border, props.deviceType),
                     ...padddingCss(padding, props.deviceType),

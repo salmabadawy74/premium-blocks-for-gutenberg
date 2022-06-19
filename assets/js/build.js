@@ -68973,9 +68973,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 var attributes = {
-    uniqueId: {
-        type: 'string',
-        default: ''
+    block_id: {
+        type: 'string'
     },
     columns: {
         type: 'number',
@@ -69485,7 +69484,7 @@ var edit = function edit(props) {
             props.setAttributes({ isBlockRootParent: true });
         }
         // Assigning block_id in the attribute.
-        props.setAttributes({ block_id: props.clientId.substr(0, 8) });
+        props.setAttributes({ block_id: props.clientId });
         var descendants = select('core/block-editor').getBlocks(props.clientId);
         if (descendants.length !== props.attributes.blockDescendants.length) {
             props.setAttributes({ blockDescendants: descendants });
@@ -69506,7 +69505,7 @@ var edit = function edit(props) {
         removeBlock(clientId);
     };
     var _props$attributes = props.attributes,
-        uniqueId = _props$attributes.uniqueId,
+        block_id = _props$attributes.block_id,
         className = _props$attributes.className,
         variationSelected = _props$attributes.variationSelected,
         padding = _props$attributes.padding,
@@ -69629,7 +69628,6 @@ var edit = function edit(props) {
             'row-gap': '' + rowGutter[props.deviceType] + rowGutter['unit'],
             'column-gap': '' + columnGutter[props.deviceType] + columnGutter['unit']
         };
-
         styles[' .editor-styles-wrapper #block-' + clientId + '.block-editor-block-list__block'] = {
             'min-height': '' + minHeight[props.deviceType] + minHeight['unit'],
             'flex-direction': direction[props.deviceType],
@@ -69656,7 +69654,7 @@ var edit = function edit(props) {
         };
 
         if ('boxed' === innerWidthType) {
-            styles['.editor-styles-wrapper  .is-root-container > .block-editor-block-list__block > .wp-block-uagb-container.uagb-block-' + clientId + ' > .uagb-container-inner-blocks-wrap'] = {
+            styles['.editor-styles-wrapper  .is-root-container > .block-editor-block-list__block > .wp-block-uagb-container.uagb-block-' + block_id + ' > .uagb-container-inner-blocks-wrap'] = {
                 '--inner-content-custom-width': 'min(' + containerFullWidth + ',' + innerWidth + 'px)',
                 'max-width': 'var(--inner-content-custom-width)',
                 'margin-left': 'auto',
@@ -70164,7 +70162,7 @@ var edit = function edit(props) {
                             initialOpen: false
                         },
                         React.createElement(_Animation2.default, {
-                            uniqueId: clientId,
+                            uniqueId: block_id,
                             label: __('Animation', 'premium-blocks-for-gutenberg'),
                             value: animation,
                             onChange: function onChange(value) {
@@ -70183,8 +70181,8 @@ var edit = function edit(props) {
         React.createElement(
             CustomTag,
             {
-                className: (0, _classnames2.default)('wp-block-uagb-container', 'uagb-block-' + clientId, 'premium-blocks-' + clientId),
-                key: uniqueId,
+                className: (0, _classnames2.default)('wp-block-uagb-container', 'uagb-block-' + block_id, 'premium-blocks-' + block_id),
+                key: block_id,
                 style: _extends({}, (0, _HelperFunction.borderCss)(border, props.deviceType), (0, _HelperFunction.padddingCss)(padding, props.deviceType), (0, _HelperFunction.marginCss)(margin, props.deviceType), (0, _HelperFunction.gradientBackground)(backgroundOptions), {
                     boxShadow: (boxShadow.horizontal || 0) + 'px ' + (boxShadow.vertical || 0) + 'px ' + (boxShadow.blur || 0) + 'px ' + boxShadow.color + ' ' + boxShadow.position,
                     overflow: overflow
@@ -71455,8 +71453,6 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 var _HelperFunction = __webpack_require__(134);
 
 var _classnames = __webpack_require__(0);
@@ -71465,127 +71461,121 @@ var _classnames2 = _interopRequireDefault(_classnames);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 /* eslint-disable react/react-in-jsx-scope */
-var Component = wp.element.Component;
+var _wp$element = wp.element,
+    Component = _wp$element.Component,
+    Fragment = _wp$element.Fragment;
 var InnerBlocks = wp.blockEditor.InnerBlocks;
 
-var Save = function (_Component) {
-    _inherits(Save, _Component);
 
-    function Save() {
-        var _ref;
+var Save = function Save(props) {
+    var _props$attributes = props.attributes,
+        block_id = _props$attributes.block_id,
+        className = _props$attributes.className,
+        variationSelected = _props$attributes.variationSelected,
+        padding = _props$attributes.padding,
+        margin = _props$attributes.margin,
+        direction = _props$attributes.direction,
+        alignItems = _props$attributes.alignItems,
+        justifyItems = _props$attributes.justifyItems,
+        wrapItems = _props$attributes.wrapItems,
+        alignContent = _props$attributes.alignContent,
+        shapeTop = _props$attributes.shapeTop,
+        shapeBottom = _props$attributes.shapeBottom,
+        minHeight = _props$attributes.minHeight,
+        colWidth = _props$attributes.colWidth,
+        heightOptions = _props$attributes.heightOptions,
+        border = _props$attributes.border,
+        animation = _props$attributes.animation,
+        innerWidthType = _props$attributes.innerWidthType,
+        innerWidth = _props$attributes.innerWidth,
+        backgroundOverlay = _props$attributes.backgroundOverlay,
+        backgroundOverlayHover = _props$attributes.backgroundOverlayHover,
+        overlayOpacity = _props$attributes.overlayOpacity,
+        overlayFilter = _props$attributes.overlayFilter,
+        hoverOverlayOpacity = _props$attributes.hoverOverlayOpacity,
+        hoverOverlayFilter = _props$attributes.hoverOverlayFilter,
+        backgroundOptions = _props$attributes.backgroundOptions,
+        boxShadow = _props$attributes.boxShadow,
+        isBlockRootParent = _props$attributes.isBlockRootParent,
+        blockDescendants = _props$attributes.blockDescendants,
+        containerTag = _props$attributes.containerTag,
+        overflow = _props$attributes.overflow,
+        blend = _props$attributes.blend;
 
-        var _temp, _this, _ret;
+    var CustomTag = '' + containerTag;
+    var loadStyles = function loadStyles() {
+        var styles = {};
+        var containerFullWidth = '100vw';
 
-        _classCallCheck(this, Save);
-
-        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-            args[_key] = arguments[_key];
+        styles['.wp-block-uagb-container.uagb-block-' + block_id + '  .premium-top-shape svg'] = {
+            'fill': '' + shapeTop['color']
+        };
+        styles['.wp-block-uagb-container.uagb-block-' + block_id + ' .premium-bottom-shape svg'] = {
+            'fill': '' + shapeBottom['color']
+        };
+        if ('boxed' === innerWidthType) {
+            styles['.wp-block-uagb-container.uagb-is-root-container.uagb-block-' + block_id] = {
+                '--inner-content-custom-width': 'min(' + containerFullWidth + ', ' + innerWidth + 'px)',
+                'max-width': 'var(--inner-content-custom-width)',
+                'margin-left': 'auto',
+                'margin-right': 'auto'
+            };
         }
+        var styleCss = '';
 
-        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Save.__proto__ || Object.getPrototypeOf(Save)).call.apply(_ref, [this].concat(args))), _this), _this.getClassName = function () {
-            var _this$props$attribute = _this.props.attributes,
-                align = _this$props$attribute.align,
-                childRow = _this$props$attribute.childRow,
-                rowContainerWidth = _this$props$attribute.rowContainerWidth;
-
-            var wrapperClassName = '';
-
-            if (typeof align !== 'undefined') {
-                if (align === 'full' && rowContainerWidth === 'boxed') {
-                    wrapperClassName = 'qubely-container';
-                } else {
-                    wrapperClassName = 'qubely-container-fluid';
+        var _loop = function _loop(selector) {
+            var selectorStyles = styles[selector];
+            var filteredStyles = Object.keys(selectorStyles).map(function (property) {
+                var value = selectorStyles[property];
+                var valueWithoutUnits = value ? value.toString().replaceAll('px', '').replaceAll(/\s/g, '') : '';
+                if (value && !value.toString().includes('undefined')) {
+                    return property + ': ' + value + '; ';
                 }
-            } else {
-                if (childRow) {
-                    wrapperClassName = 'qubely-container-fluid';
-                } else {
-                    wrapperClassName = 'qubely-container';
-                }
+            }).filter(function (style) {
+                return !!style;
+            }).join('\n');
+            styleCss += selector + ' {\n                ' + filteredStyles + '\n            } \n';
+        };
+
+        for (var selector in styles) {
+            _loop(selector);
+        }
+        return styleCss;
+    };
+    var topShapeClasses = (0, _classnames2.default)('premium-shape-divider', 'premium-top-shape', { 'premium-top-shape-flip': shapeTop['flipShapeDivider'] === true }, { 'premium-shape-above-content': shapeTop['front'] === true }, { 'premium-shape__invert': shapeTop['invertShapeDivider'] === true });
+    var bottomShapeClasses = (0, _classnames2.default)('premium-shape-divider', 'premium-bottom-shape', { 'premium-shape-flip': shapeBottom['flipShapeDivider'] === true }, { 'premium-shape-above-content': shapeBottom['front'] === true }, { 'premium-shape__invert': shapeBottom['invertShapeDivider'] === true });
+    console.log(shapeTop);
+    return React.createElement(
+        Fragment,
+        null,
+        React.createElement('style', {
+            dangerouslySetInnerHTML: {
+                __html: loadStyles()
             }
-
-            return wrapperClassName;
-        }, _temp), _possibleConstructorReturn(_this, _ret);
-    }
-
-    _createClass(Save, [{
-        key: 'render',
-        value: function render() {
-            var _props$attributes = this.props.attributes,
-                uniqueId = _props$attributes.uniqueId,
-                className = _props$attributes.className,
-                variationSelected = _props$attributes.variationSelected,
-                padding = _props$attributes.padding,
-                margin = _props$attributes.margin,
-                direction = _props$attributes.direction,
-                alignItems = _props$attributes.alignItems,
-                justifyItems = _props$attributes.justifyItems,
-                wrapItems = _props$attributes.wrapItems,
-                alignContent = _props$attributes.alignContent,
-                shapeTop = _props$attributes.shapeTop,
-                shapeBottom = _props$attributes.shapeBottom,
-                minHeight = _props$attributes.minHeight,
-                colWidth = _props$attributes.colWidth,
-                heightOptions = _props$attributes.heightOptions,
-                border = _props$attributes.border,
-                animation = _props$attributes.animation,
-                innerWidthType = _props$attributes.innerWidthType,
-                innerWidth = _props$attributes.innerWidth,
-                columnGutter = _props$attributes.columnGutter,
-                rowGutter = _props$attributes.rowGutter,
-                backgroundOverlay = _props$attributes.backgroundOverlay,
-                backgroundOverlayHover = _props$attributes.backgroundOverlayHover,
-                overlayOpacity = _props$attributes.overlayOpacity,
-                overlayFilter = _props$attributes.overlayFilter,
-                hoverOverlayOpacity = _props$attributes.hoverOverlayOpacity,
-                hoverOverlayFilter = _props$attributes.hoverOverlayFilter,
-                backgroundOptions = _props$attributes.backgroundOptions,
-                boxShadow = _props$attributes.boxShadow,
-                isBlockRootParent = _props$attributes.isBlockRootParent,
-                blockDescendants = _props$attributes.blockDescendants,
-                containerTag = _props$attributes.containerTag,
-                overflow = _props$attributes.overflow,
-                blend = _props$attributes.blend;
-
-            var CustomTag = '' + containerTag;
-
-            return React.createElement(
-                CustomTag,
-                {
-                    className: (0, _classnames2.default)('wp-block-uagb-container', 'uagb-block-' + clientId, 'premium-blocks-' + clientId),
-                    key: uniqueId,
-                    style: _extends({}, borderCss(border, props.deviceType), padddingCss(padding, props.deviceType), marginCss(margin, props.deviceType), gradientBackground(backgroundOptions), {
-                        boxShadow: (boxShadow.horizontal || 0) + 'px ' + (boxShadow.vertical || 0) + 'px ' + (boxShadow.blur || 0) + 'px ' + boxShadow.color + ' ' + boxShadow.position,
-                        overflow: overflow
-                    })
-                },
-                Object.entries(shapeTop).length > 1 && shapeTop.openShape == 1 && shapeTop.style && React.createElement('div', { className: topShapeClasses, dangerouslySetInnerHTML: { __html: PremiumBlocksSettings.shapes[shapeTop.style] } }),
-                videoBackground(backgroundOptions['backgroundType'], backgroundOptions.videoSource, backgroundOptions.videoURL, backgroundOptions.bgExternalVideo),
-                Object.entries(shapeBottom).length > 1 && shapeBottom.openShape == 1 && shapeBottom.style && React.createElement('div', { className: bottomShapeClasses, dangerouslySetInnerHTML: { __html: PremiumBlocksSettings.shapes[shapeBottom.style] } }),
-                React.createElement('div', { className: 'premium-row__block_overlay', style: _extends({}, gradientBackground(backgroundOverlay), {
-                        opacity: '' + (backgroundOverlay ? overlayOpacity / 100 : 1),
-                        mixBlendMode: blend + ' !important'
-                        // filter: `brightness( ${overlayFilter['bright']}% ) contrast( ${overlayFilter['contrast']}% ) saturate( ${overlayFilter['saturation']}% ) blur( ${overlayFilter['blur']}px ) hue-rotate( ${overlayFilter['hue']}deg )`
-                    }) }),
-                React.createElement(
-                    'div',
-                    { className: 'uagb-container-inner-blocks-wrap' },
-                    React.createElement(InnerBlocks.Content, null)
-                )
-            );
-        }
-    }]);
-
-    return Save;
-}(Component);
-
+        }),
+        React.createElement(
+            CustomTag,
+            {
+                className: (0, _classnames2.default)('wp-block-uagb-container', 'uagb - block - ' + block_id + ' ', 'premium - blocks - ' + block_id + ' ', isBlockRootParent ? 'uagb-is-root-container' : ''),
+                key: block_id,
+                style: _extends({}, (0, _HelperFunction.gradientBackground)(backgroundOptions), {
+                    boxShadow: (boxShadow.horizontal || 0) + ' px ' + (boxShadow.vertical || 0) + ' px ' + (boxShadow.blur || 0) + ' px ' + boxShadow.color + ' ' + boxShadow.position + ' ',
+                    overflow: overflow
+                })
+            },
+            Object.entries(shapeTop).length > 1 && shapeTop.openShape == 1 && shapeTop.style && React.createElement('div', { className: topShapeClasses, dangerouslySetInnerHTML: { __html: PremiumBlocksSettings.shapes[shapeTop.style] } }),
+            (0, _HelperFunction.videoBackground)(backgroundOptions['backgroundType'], backgroundOptions.videoSource, backgroundOptions.videoURL, backgroundOptions.bgExternalVideo),
+            Object.entries(shapeBottom).length > 1 && shapeBottom.openShape == 1 && shapeBottom.style && React.createElement('div', { className: bottomShapeClasses, dangerouslySetInnerHTML: { __html: PremiumBlocksSettings.shapes[shapeBottom.style] } }),
+            React.createElement('div', { className: 'premium - row__block_overlay', style: _extends({}, (0, _HelperFunction.gradientBackground)(backgroundOverlay), {
+                    opacity: (backgroundOverlay ? overlayOpacity / 100 : 1) + ' ',
+                    mixBlendMode: blend + ' !important'
+                    // filter: `brightness(${ overlayFilter['bright']} % ) contrast(${ overlayFilter['contrast']} % ) saturate(${ overlayFilter['saturation']} % ) blur(${ overlayFilter['blur']}px) hue - rotate(${ overlayFilter['hue']}deg)`
+                }) }),
+            React.createElement(InnerBlocks.Content, null)
+        )
+    );
+};
 exports.default = Save;
 
 /***/ })

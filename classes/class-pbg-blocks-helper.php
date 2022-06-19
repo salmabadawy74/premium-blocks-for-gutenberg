@@ -507,6 +507,14 @@ class PBG_Blocks_Helper {
 
 			)
 		);
+       	register_block_type(
+			'premium/row',
+			array(
+				'render_callback' => array( $this, 'get_row_css' ),
+				'editor_style'    => 'premium-blocks-editor-css',
+				'editor_script'   => 'pbg-blocks-js',
+			)
+		);
 
 	}
 
@@ -5165,6 +5173,337 @@ class PBG_Blocks_Helper {
 			}
 		}
 
+		$css->stop_media_query();
+		return $css->css_output();
+	}
+
+    /**
+	 * Get Row Block Content & Style
+	 *
+	 * @access public
+	 *
+	 * @param string $attributes option For attribute.
+	 * @param string $contnet for content of Block.
+	 */
+	public function get_row_css( $attributes, $content ) {
+		if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
+        
+			$unique_id = $attributes['block_id'];
+		} else {
+			$unique_id = rand( 100, 10000 );
+		}
+      
+		// if ( $this->it_is_not_amp() ) {
+		// 	wp_enqueue_script(
+		// 		'pbg-animation',
+		// 		PREMIUM_BLOCKS_URL . 'assets/js/animation.js',
+		// 		array( 'jquery' ),
+		// 		PREMIUM_BLOCKS_VERSION,
+		// 		true
+		// 	);
+		// }
+		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
+		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'heading', $unique_id ) ) {
+			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
+			// $attributes = apply_filters( 'Premium_BLocks_blocks_column_render_block_attributes', $attributes );
+			$css = $this->get_row_css_style( $attributes, $unique_id );
+			if ( ! empty( $css ) ) {
+				if ( $this->should_render_inline( 'row', $unique_id ) ) {
+					$content = '<style id="' . $style_id . '">' . $css . '</style>' . $content;
+				} else {
+					$this->render_inline_css( $css, $style_id, true );
+				}
+			}
+		};
+		return $content;
+	}
+
+    	/**
+	 * Get Heading Block CSS
+	 *
+	 * Return Frontend CSS for Heading Block.
+	 *
+	 * @access public
+	 *
+	 * @param string $attr option attribute.
+	 * @param string $unique_id option For  block ID.
+	 */
+	public function get_row_css_style( $attr, $unique_id ) {
+		
+		$css                    = new Premium_Blocks_css();
+		$media_query            = array();
+		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
+		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
+		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
+
+		
+        $css->set_selector( '.wp-block-uagb-container.uagb-block-' . $unique_id  );
+        if( isset($attr['minHeight'])){
+          $css->add_property( 'min-height', $css->render_color( $attr['minHeight']['Desktop']. $attr['minHeight']['unit'] ) );
+        }
+        if (isset($attr['direction']) ){
+        $css->add_property( 'flex-direction', $css->render_color( $attr['direction']['Desktop'] ) ); 
+        }
+        if(isset($attr['alignItems'])){
+        $css->add_property( 'align-items', $css->render_color( $attr['alignItems']['Desktop'] ) ); 
+        }
+        if(isset($attr['justifyItems'])){
+        $css->add_property( 'justify-content', $css->render_color( $attr['justifyItems']['Desktop'] ) ); 
+        }
+        if(isset($attr['wrapItems'])){
+        $css->add_property( 'flex-wrap', $css->render_color( $attr['wrapItems']['Desktop'] ) ); 
+        }
+        if(isset($attr['alignContent'])){
+        $css->add_property( 'align-content', $css->render_color( $attr['alignContent']['Desktop'] ) ); 
+        }
+        $css->add_property( 'row-gap', $css->render_color( isset($attr['rowGutter']['Desktop'] )?$attr['rowGutter']['Desktop'] .$attr['rowGutter']['unit'] : '20px'     ) ); 
+        $css->add_property( 'column-gap', $css->render_color( isset($attr['rowGutter']['Desktop'] )? $attr['columnGutter']['Desktop'] . $attr['columnGutter']['unit'] : '20px' ) ); 
+        $css->set_selector( '.wp-block-uagb-container' . $unique_id  );
+        if( isset($attr['minHeight'])){
+        $css->add_property( 'min-height', $css->render_color( $attr['minHeight']['Desktop']. $attr['minHeight']['unit'] ) );
+        }
+        if (isset($attr['direction']) ){
+        $css->add_property( 'flex-direction', $css->render_color( $attr['direction']['Desktop'] ) ); 
+        }
+        if(isset($attr['alignItems'])){
+        $css->add_property( 'align-items', $css->render_color( $attr['alignItems']['Desktop'] ) ); 
+        }
+        if(isset($attr['justifyItems'])){
+        $css->add_property( 'justify-content', $css->render_color( $attr['justifyItems']['Desktop'] ) ); 
+        }
+        if(isset($attr['wrapItems'])){
+        $css->add_property( 'flex-wrap', $css->render_color( $attr['wrapItems']['Desktop'] ) ); 
+        }
+        if(isset($attr['alignContent'])){
+        $css->add_property( 'align-content', $css->render_color( $attr['alignContent']['Desktop'] ) ); 
+        }
+        if(isset($attr['colWidth'])){
+        $css->set_selector( '.wp-block-uagb-container.uagb-is-root-container .uagb-block-' . $unique_id  );
+        $css->add_property( 'max-width', $css->render_color($attr['colWidth']['Desktop'] . $attr['colWidth']['unit'] ) ); 
+        $css->add_property( 'width', $css->render_color( $attr['colWidth']['Desktop'] . $attr['colWidth']['unit'] ) ); 
+        }
+        if(isset($attr['shapeTop'])){
+        $css->set_selector( '.wp-block-uagb-container.uagb-block-' . $unique_id . ' .premium-top-shape svg'  );
+        $css->add_property( 'width', $css->render_color( 'calc('. $attr['shapeTop']['width']['Desktop'] . '% + 1.3px )' ) ); 
+        $css->add_property( 'height', $css->render_color( $attr['shapeTop']['height']['Desktop'] . $attr['shapeTop']['height']['unit'] ) ); 
+        }
+        if(isset($attr['shapeBottom'])){
+        $css->set_selector( '.wp-block-uagb-container.uagb-block-' . $unique_id . ' .premium-top-bottom svg'  );
+        $css->add_property( 'width', $css->render_color( 'calc('. $attr['shapeBottom']['width']['Desktop'] . '% + 1.3px )' ) ); 
+        $css->add_property( 'height', $css->render_color( $attr['shapeBottom']['height']['Desktop'] . $attr['shapeBottom']['height']['unit'] ) ); 
+        }
+        if ( isset( $attr['padding'] ) ) {
+			$padding = $attr['padding'];
+			$css->set_selector( '.wp-block-uagb-container.uagb-block-' . $unique_id  );
+			$css->add_property( 'padding-top', $css->render_color( $padding['Desktop']['top'] . $padding['unit'] ) );
+			$css->add_property( 'padding-right', $css->render_color( $padding['Desktop']['right'] . $padding['unit'] ) );
+			$css->add_property( 'padding-bottom', $css->render_color( $padding['Desktop']['bottom'] . $padding['unit'] ) );
+			$css->add_property( 'padding-left', $css->render_color( $padding['Desktop']['left'] . $padding['unit'] ) );
+		}
+         if ( isset( $attr['margin'] ) ) {
+			$margin = $attr['margin'];
+			$css->set_selector( '.wp-block-uagb-container.uagb-block-' . $unique_id  );
+			$css->add_property( 'margin-top', $css->render_color( $margin['Desktop']['top'] . $margin['unit'] ) );
+			$css->add_property( 'margin-right', $css->render_color( $margin['Desktop']['right'] . $margin['unit'] ) );
+			$css->add_property( 'margin-bottom', $css->render_color( $margin['Desktop']['bottom'] . $margin['unit'] ) );
+			$css->add_property( 'margin-left', $css->render_color( $margin['Desktop']['left'] . $margin['unit'] ) );
+		}
+        if ( isset( $attr['border'] ) ) {
+			$border        = $attr['border'];
+			$border_width  = $attr['border']['borderWidth'];
+			$border_radius = $attr['border']['borderRadius'];
+	
+			$css->set_selector( '.wp-block-uagb-container.uagb-block-' . $unique_id );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $border_width, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $border_width, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $border_width, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $border_width, 'left', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $border_radius, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $border_radius, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $border_radius, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $border_radius, 'left', 'Desktop', 'px' ) );
+		}
+
+		$css->start_media_query( $media_query['tablet'] );
+
+        $css->set_selector( '.wp-block-uagb-container.uagb-block-' . $unique_id  );
+        if( isset($attr['minHeight'])){
+        $css->add_property( 'min-height', $css->render_color( $attr['minHeight']['Tablet']. $attr['minHeight']['unit'] ) );
+        }
+        if (isset($attr['direction']) ){
+        $css->add_property( 'flex-direction', $css->render_color( $attr['direction']['Tablet'] ) ); 
+        }
+        if(isset($attr['alignItems'])){
+        $css->add_property( 'align-items', $css->render_color( $attr['alignItems']['Tablet'] ) ); 
+        }
+        if(isset($attr['justifyItems'])){
+        $css->add_property( 'justify-content', $css->render_color( $attr['justifyItems']['Tablet'] ) ); 
+        }
+        if(isset($attr['wrapItems'])){
+        $css->add_property( 'flex-wrap', $css->render_color( $attr['wrapItems']['Tablet'] ) ); 
+        }
+        if(isset($attr['alignContent'])){
+        $css->add_property( 'align-content', $css->render_color( $attr['alignContent']['Tablet'] ) ); 
+        }
+        $css->add_property( 'row-gap', $css->render_color( isset($attr['rowGutter']['Tablet'] )?$attr['rowGutter']['Tablet'] .$attr['rowGutter']['unit'] : '20px'     ) ); 
+        $css->add_property( 'column-gap', $css->render_color( isset($attr['rowGutter']['Tablet'] )? $attr['columnGutter']['Tablet'] . $attr['columnGutter']['unit'] : '20px' ) );   
+        $css->set_selector( '.wp-block-uagb-container' . $unique_id  );
+        if( isset($attr['minHeight'])){
+        $css->add_property( 'min-height', $css->render_color( $attr['minHeight']['Tablet']. $attr['minHeight']['unit'] ) );
+        }
+        if (isset($attr['direction']) ){
+        $css->add_property( 'flex-direction', $css->render_color( $attr['direction']['Tablet'] ) ); 
+        }
+        if(isset($attr['alignItems'])){
+        $css->add_property( 'align-items', $css->render_color( $attr['alignItems']['Tablet'] ) ); 
+        }
+        if(isset($attr['justifyItems'])){
+        $css->add_property( 'justify-content', $css->render_color( $attr['justifyItems']['Tablet'] ) ); 
+        }
+        if(isset($attr['wrapItems'])){
+        $css->add_property( 'flex-wrap', $css->render_color( $attr['wrapItems']['Tablet'] ) ); 
+        }
+        if(isset($attr['alignContent'])){
+        $css->add_property( 'align-content', $css->render_color( $attr['alignContent']['Tablet'] ) ); 
+        }
+        if(isset($attr['colWidth'])){
+        $css->set_selector( '.wp-block-uagb-container.uagb-is-root-container .uagb-block-' . $unique_id  );
+        $css->add_property( 'max-width', $css->render_color($attr['colWidth']['Tablet'] . $attr['colWidth']['unit'] ) ); 
+        $css->add_property( 'width', $css->render_color( $attr['colWidth']['Tablet'] . $attr['colWidth']['unit'] ) ); 
+        }
+         if(isset($attr['shapeTop'])){
+        $css->set_selector( '.wp-block-uagb-container.uagb-block-' . $unique_id . ' .premium-top-shape svg'  );
+        $css->add_property( 'width', $css->render_color( 'calc('. $attr['shapeTop']['width']['Tablet'] . '% + 1.3px )' ) ); 
+        $css->add_property( 'height', $css->render_color( $attr['shapeTop']['height']['Tablet'] . $attr['shapeTop']['height']['unit'] ) ); 
+        }
+        if(isset($attr['shapeBottom'])){
+        $css->set_selector( '.wp-block-uagb-container.uagb-block-' . $unique_id . ' .premium-top-bottom svg'  );
+        $css->add_property( 'width', $css->render_color( 'calc('. $attr['shapeBottom']['width']['Tablet'] . '% + 1.3px )' ) ); 
+        $css->add_property( 'height', $css->render_color( $attr['shapeBottom']['height']['Tablet'] . $attr['shapeBottom']['height']['unit'] ) ); 
+        }
+        if ( isset( $attr['padding'] ) ) {
+			$padding = $attr['padding'];
+			$css->set_selector( '.wp-block-uagb-container.uagb-block-' . $unique_id  );
+			$css->add_property( 'padding-top', $css->render_color( $padding['Tablet']['top'] . $padding['unit'] ) );
+			$css->add_property( 'padding-right', $css->render_color( $padding['Tablet']['right'] . $padding['unit'] ) );
+			$css->add_property( 'padding-bottom', $css->render_color( $padding['Tablet']['bottom'] . $padding['unit'] ) );
+			$css->add_property( 'padding-left', $css->render_color( $padding['Tablet']['left'] . $padding['unit'] ) );
+		}
+         if ( isset( $attr['margin'] ) ) {
+			$margin = $attr['margin'];
+			$css->set_selector( '.wp-block-uagb-container.uagb-block-' . $unique_id  );
+			$css->add_property( 'margin-top', $css->render_color( $margin['Tablet']['top'] . $margin['unit'] ) );
+			$css->add_property( 'margin-right', $css->render_color( $margin['Tablet']['right'] . $margin['unit'] ) );
+			$css->add_property( 'margin-bottom', $css->render_color( $margin['Tablet']['bottom'] . $margin['unit'] ) );
+			$css->add_property( 'margin-left', $css->render_color( $margin['Tablet']['left'] . $margin['unit'] ) );
+		}
+        if ( isset( $attr['border'] ) ) {
+			$border        = $attr['border'];
+			$border_width  = $attr['border']['borderWidth'];
+			$border_radius = $attr['border']['borderRadius'];
+	
+			$css->set_selector( '.wp-block-uagb-container.uagb-block-' . $unique_id );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $border_width, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $border_width, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $border_width, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $border_width, 'left', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $border_radius, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $border_radius, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $border_radius, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $border_radius, 'left', 'Tablet', 'px' ) );
+		}
+
+
+		$css->stop_media_query();
+
+		$css->start_media_query( $media_query['mobile'] );
+
+        $css->set_selector( '.wp-block-uagb-container.uagb-block-' . $unique_id  );
+        if( isset($attr['minHeight'])){
+        $css->add_property( 'min-height', $css->render_color( $attr['minHeight']['Mobile']. $attr['minHeight']['unit'] ) );
+        }
+        if (isset($attr['direction']) ){
+        $css->add_property( 'flex-direction', $css->render_color( $attr['direction']['Mobile'] ) ); 
+        }
+        if(isset($attr['alignItems'])){
+        $css->add_property( 'align-items', $css->render_color( $attr['alignItems']['Mobile'] ) ); 
+        }
+        if(isset($attr['justifyItems'])){
+        $css->add_property( 'justify-content', $css->render_color( $attr['justifyItems']['Mobile'] ) ); 
+        }
+        if(isset($attr['wrapItems'])){
+        $css->add_property( 'flex-wrap', $css->render_color( $attr['wrapItems']['Mobile'] ) ); 
+        }
+        if(isset($attr['alignContent'])){
+        $css->add_property( 'align-content', $css->render_color( $attr['alignContent']['Mobile'] ) ); 
+        }
+        $css->add_property( 'row-gap', $css->render_color( isset($attr['rowGutter']['Mobile'] )?$attr['rowGutter']['Mobile'] .$attr['rowGutter']['unit'] : '20px'     ) ); 
+        $css->add_property( 'column-gap', $css->render_color( isset($attr['rowGutter']['Mobile'] )? $attr['columnGutter']['Mobile'] . $attr['columnGutter']['unit'] : '20px' ) );   
+        $css->set_selector( '.wp-block-uagb-container' . $unique_id  );
+        if( isset($attr['minHeight'])){
+        $css->add_property( 'min-height', $css->render_color( $attr['minHeight']['Mobile']. $attr['minHeight']['unit'] ) );
+        }
+        if (isset($attr['direction']) ){
+        $css->add_property( 'flex-direction', $css->render_color( $attr['direction']['Mobile'] ) ); 
+        }
+        if(isset($attr['alignItems'])){
+        $css->add_property( 'align-items', $css->render_color( $attr['alignItems']['Mobile'] ) ); 
+        }
+        if(isset($attr['justifyItems'])){
+        $css->add_property( 'justify-content', $css->render_color( $attr['justifyItems']['Mobile'] ) ); 
+        }
+        if(isset($attr['wrapItems'])){
+        $css->add_property( 'flex-wrap', $css->render_color( $attr['wrapItems']['Mobile'] ) ); 
+        }
+        if(isset($attr['alignContent'])){
+        $css->add_property( 'align-content', $css->render_color( $attr['alignContent']['Mobile'] ) ); 
+        }
+        if(isset($attr['colWidth'])){
+        $css->set_selector( '.wp-block-uagb-container.uagb-is-root-container .uagb-block-' . $unique_id  );
+        $css->add_property( 'max-width', $css->render_color($attr['colWidth']['Mobile'] . $attr['colWidth']['unit'] ) ); 
+        $css->add_property( 'width', $css->render_color( $attr['colWidth']['Mobile'] . $attr['colWidth']['unit'] ) ); 
+        }
+        if(isset($attr['shapeTop'])){
+        $css->set_selector( '.wp-block-uagb-container.uagb-block-' . $unique_id . ' .premium-top-shape svg'  );
+        $css->add_property( 'width', $css->render_color( 'calc('. $attr['shapeTop']['width']['Mobile'] . '% + 1.3px )' ) ); 
+        $css->add_property( 'height', $css->render_color( $attr['shapeTop']['height']['Mobile'] . $attr['shapeTop']['height']['unit'] ) ); 
+        }
+        if(isset($attr['shapeBottom'])){
+        $css->set_selector( '.wp-block-uagb-container.uagb-block-' . $unique_id . ' .premium-top-bottom svg'  );
+        $css->add_property( 'width', $css->render_color( 'calc('. $attr['shapeBottom']['width']['Mobile'] . '% + 1.3px )' ) ); 
+        $css->add_property( 'height', $css->render_color( $attr['shapeBottom']['height']['Mobile'] . $attr['shapeBottom']['height']['unit'] ) ); 
+        }
+        if ( isset( $attr['padding'] ) ) {
+			$padding = $attr['padding'];
+			$css->set_selector( '.wp-block-uagb-container.uagb-block-' . $unique_id  );
+			$css->add_property( 'padding-top', $css->render_color( $padding['Mobile']['top'] . $padding['unit'] ) );
+			$css->add_property( 'padding-right', $css->render_color( $padding['Mobile']['right'] . $padding['unit'] ) );
+			$css->add_property( 'padding-bottom', $css->render_color( $padding['Mobile']['bottom'] . $padding['unit'] ) );
+			$css->add_property( 'padding-left', $css->render_color( $padding['Mobile']['left'] . $padding['unit'] ) );
+		}
+         if ( isset( $attr['margin'] ) ) {
+			$margin = $attr['margin'];
+			$css->set_selector( '.wp-block-uagb-container.uagb-block-' . $unique_id  );
+			$css->add_property( 'margin-top', $css->render_color( $margin['Mobile']['top'] . $margin['unit'] ) );
+			$css->add_property( 'margin-right', $css->render_color( $margin['Mobile']['right'] . $margin['unit'] ) );
+			$css->add_property( 'margin-bottom', $css->render_color( $margin['Mobile']['bottom'] . $margin['unit'] ) );
+			$css->add_property( 'margin-left', $css->render_color( $margin['Mobile']['left'] . $margin['unit'] ) );
+		}
+        if ( isset( $attr['border'] ) ) {
+			$border        = $attr['border'];
+			$border_width  = $attr['border']['borderWidth'];
+			$border_radius = $attr['border']['borderRadius'];
+	
+			$css->set_selector( '.wp-block-uagb-container.uagb-block-' . $unique_id );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $border_width, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $border_width, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $border_width, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $border_width, 'left', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $border_radius, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $border_radius, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $border_radius, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $border_radius, 'left', 'Mobile', 'px' ) );
+		}
 		$css->stop_media_query();
 		return $css->css_output();
 	}

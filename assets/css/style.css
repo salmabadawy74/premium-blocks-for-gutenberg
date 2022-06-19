@@ -4945,6 +4945,8 @@ animation-fast {
 }
 .wp-block-uagb-container {
     display: flex;
+    position: relative;
+    z-index: 2;
 }
 .wp-block-uagb-container::before {
     content: "";

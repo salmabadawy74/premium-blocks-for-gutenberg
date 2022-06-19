@@ -1,7 +1,6 @@
 const attributes = {
-    uniqueId: {
+    block_id: {
         type: 'string',
-        default: ''
     },
     columns: {
         type: 'number',
