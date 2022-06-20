@@ -1,4 +1,4 @@
-
+import { generateBlockId } from '../../components/HelperFunction';
 
 const { __ } = wp.i18n;
 
@@ -275,7 +275,650 @@ const attributes = {
     }
 }
 
+const newAttributes = {
+    blockId: {
+        type: "string"
+    },
+    borderBanner: {
+        type: "boolean",
+        default: false,
+    },
+    imageID: {
+        type: "number"
+    },
+    imageURL: {
+        type: "string",
+        source: "attribute",
+        attribute: "src",
+        selector: ".premium-banner__img",
+    },
+    titleStyles: {
+        type: "array",
+        default: [
+            {
+                titleSizeUnit: 'px',
+                titleSize: '20',
+                titleSizeMobile: '',
+                titleSizeTablet: '',
+                titleWeight: '',
+                titleLine: '',
+                titleColor: '',
+                titleBack: '',
+                shadowColor: '',
+                shadowBlur: '',
+                shadowHorizontal: '',
+                shadowVertical: ''
+            }
+        ]
+    },
+    descStyles: {
+        type: "array",
+        default: [
+            {
+                descSizeUnit: 'px',
+                descSize: '20',
+                descSizeTablet: '',
+                descSizeMobile: '',
+                descWeight: '',
+                descLine: '',
+                descColor: '#000',
+                descShadowColor: '',
+                descShadowBlur: '',
+                descShadowHorizontal: '',
+                descShadowVertical: '',
+            }
+        ]
+    },
+    containerStyles: {
+        type: "array",
+        default: [
+            {
+                borderType: "none",
+                borderWidth: '',
+                borderRadius: '',
+                borderColor: '',
+                containerShadowColor: '',
+                containerShadowBlur: '',
+                containerShadowHorizontal: '',
+                containerShadowVertical: '',
+                containerShadowPosition: '',
+                paddingU: 'px'
+            }
+        ]
+    },
+    title: {
+        type: "array",
+        source: "children",
+        selector: ".premium-banner__title",
+        default: __("Awesome Title")
+    },
+    titleTag: {
+        type: "string",
+        default: "H3"
+    },
+    desc: {
+        type: "array",
+        source: "children",
+        selector: ".premium-banner__desc",
+        default: __("Cool Description!!", 'premium-blocks-for-gutenberg')
+    },
+    contentAlign: {
+        type: "string",
+        default: "left"
+    },
+    effect: {
+        type: "string",
+        default: "effect1"
+    },
+    hoverEffect: {
+        type: "string",
+        default: "none"
+    },
+    height: {
+        type: "string",
+        default: "default"
+    },
+    minHeight: {
+        type: "number"
+    },
+    verAlign: {
+        type: "string",
+        default: "top"
+    },
+    hovered: {
+        type: "boolean",
+        default: false
+    },
+    responsive: {
+        type: "boolean",
+        default: false
+    },
+    background: {
+        type: "string"
+    },
+    opacity: {
+        type: "number",
+        default: 50
+    },
+    urlCheck: {
+        type: "boolean",
+        default: false
+    },
+    target: {
+        type: "boolean",
+        default: false
+    },
+    url: {
+        type: "string",
+        source: "attribute",
+        attribute: "href",
+        selector: ".premium-banner__link"
+    },
+    sepColor: {
+        type: "string"
+    },
+    blur: {
+        type: "number",
+        default: "0"
+    },
+    bright: {
+        type: "number",
+        default: "100"
+    },
+    contrast: {
+        type: "number",
+        default: "100"
+    },
+    saturation: {
+        type: "number",
+        default: "100"
+    },
+    hue: {
+        type: "number",
+        default: "0"
+    },
+
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    },
+    classMigrate: {
+        type: "boolean",
+        default: false
+    },
+    borderWidth: {
+        type: "number",
+        default: "1"
+    },
+    borderTop: {
+        type: "number",
+    },
+    borderRight: {
+        type: "number",
+    },
+    borderBottom: {
+        type: "number",
+    },
+    borderLeft: {
+        type: "number",
+    },
+    paddingT: {
+        type: "number"
+    },
+    paddingR: {
+        type: "number"
+    },
+    paddingB: {
+        type: "number"
+    },
+    paddingL: {
+        type: "number"
+    },
+    paddingTTablet: {
+        type: "number"
+    },
+    paddingRTablet: {
+        type: "number"
+    },
+    paddingBTablet: {
+        type: "number"
+    },
+    paddingLTablet: {
+        type: "number"
+    },
+    paddingTMobile: {
+        type: "number"
+    },
+    paddingRMobile: {
+        type: "number"
+    },
+    paddingBMobile: {
+        type: "number"
+    },
+    paddingLMobile: {
+        type: "number"
+    },
+    padding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
+    border: {
+        type: "object",
+        default: {
+            "borderType": '',
+            "borderColor": '',
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    titleTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
+    },
+    descTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
+    },
+    titleTextShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+        }
+    },
+    descTextShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
+    },
+    containerShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
+    }
+}
+
 const deprecatedContent = [
+    {
+        attributes: Object.assign(attributes, newAttributes),
+        isEligible() {
+            return true;
+        },
+        migrate: attributes => {
+            let newAttributes = {
+                blockId: attributes.block_id ? "premium-banner-" + generateBlockId(attributes.block_id) : '',
+                padding: {
+                    "Desktop": {
+                        top: attributes?.paddingT || '',
+                        right: attributes?.paddingR || '',
+                        bottom: attributes?.paddingB || '',
+                        left: attributes?.paddingL || ''
+                    },
+                    "Tablet": {
+                        top: attributes?.paddingTTablet || '',
+                        right: attributes?.paddingRTablet || '',
+                        bottom: attributes?.paddingBTablet || '',
+                        left: attributes?.paddingLTablet || ''
+                    },
+                    "Mobile": {
+                        top: attributes?.paddingTMobile || '',
+                        right: attributes?.paddingRMobile || '',
+                        bottom: attributes?.paddingBMobile || '',
+                        left: attributes?.paddingLMobile || ''
+                    },
+                    "unit": "px"
+                },
+                border: {
+                    "borderType": attributes?.containerStyles?.[0].borderType || '',
+                    "borderColor": attributes?.containerStyles?.[0].borderColor || '',
+                    "borderWidth": {
+                        Desktop: {
+                            top: attributes?.borderTop || '',
+                            right: attributes?.borderRight || '',
+                            bottom: attributes?.borderBottom || '',
+                            left: attributes?.borderLeft || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    },
+                    "borderRadius": {
+                        Desktop: {
+                            top: attributes?.containerStyles?.[0].borderRadius || '',
+                            right: attributes?.containerStyles?.[0].borderRadius || '',
+                            bottom: attributes?.containerStyles?.[0].borderRadius || '',
+                            left: attributes?.containerStyles?.[0].borderRadius || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    }
+                },
+                titleTypography: {
+                    "fontWeight": attributes?.titleStyles?.[0].titleWeight || '',
+                    'fontStyle': '',
+                    'textTransform': '',
+                    'letterSpacing': '',
+                    'fontFamily': '',
+                    'lineHeight': attributes?.titleStyles?.[0].titleLine || '',
+                    'textDecoration': '',
+                    'fontSize': {
+                        'Desktop': attributes?.titleStyles?.[0].titleSize || '',
+                        "Tablet": attributes?.titleStyles?.[0].titleSizeTablet || '',
+                        "Mobile": attributes?.titleStyles?.[0].titleSizeMobile || '',
+                        "unit": 'px'
+                    }
+                },
+                descTypography: {
+                    "fontWeight": attributes?.descStyles?.[0].descWeight || '',
+                    'fontStyle': '',
+                    'textTransform': '',
+                    'letterSpacing': '',
+                    'fontFamily': '',
+                    'lineHeight': attributes?.descStyles?.[0].descLine || '',
+                    'textDecoration': '',
+                    'fontSize': {
+                        'Desktop': attributes?.descStyles?.[0].descSize || '',
+                        "Tablet": attributes?.descStyles?.[0].descSizeTablet || '',
+                        "Mobile": attributes?.descStyles?.[0].descSizeMobile || '',
+                        "unit": 'px'
+                    }
+                },
+                titleTextShadow: {
+                    'color': attributes?.titleStyles?.[0].shadowColor || '',
+                    'blur': attributes?.titleStyles?.[0].shadowBlur || '',
+                    'horizontal': attributes?.titleStyles?.[0].shadowHorizontal || '',
+                    'vertical': attributes?.titleStyles?.[0].shadowVertical || '',
+                },
+                descTextShadow: {
+                    'color': attributes?.descStyles?.[0].descShadowColor || '',
+                    'blur': attributes?.descStyles?.[0].descShadowBlur || '',
+                    'horizontal': attributes?.descStyles?.[0].descShadowHorizontal || '',
+                    'vertical': attributes?.descStyles?.[0].descShadowVertical || '',
+                },
+                containerShadow: {
+                    'color': attributes?.containerStyles?.[0].containerShadowColor || '',
+                    'blur': attributes?.containerStyles?.[0].containerShadowBlur || '',
+                    'horizontal': attributes?.containerStyles?.[0].containerShadowHorizontal || '',
+                    'vertical': attributes?.containerStyles?.[0].containerShadowVertical || '',
+                    'position': attributes?.containerStyles?.[0].containerShadowPosition || ''
+                }
+            }
+            return Object.assign(attributes, newAttributes)
+        },
+        save: props => {
+            const { className } = props;
+            const {
+                block_id,
+                borderBanner,
+                imageURL,
+                titleStyles,
+                descStyles,
+                containerStyles,
+                title,
+                titleTag,
+                desc,
+                contentAlign,
+                effect,
+                hoverEffect,
+                height,
+                minHeight,
+                verAlign,
+                hovered,
+                responsive,
+                background,
+                opacity,
+                urlCheck,
+                target,
+                url,
+                sepColor,
+                blur,
+                bright,
+                contrast,
+                saturation,
+                hue,
+                hideDesktop,
+                hideTablet,
+                hideMobile,
+                borderWidth,
+                borderTop,
+                borderRight,
+                borderBottom,
+                borderLeft,
+            } = props.attributes;
+
+            const mainClasses = classnames(className, 'premium-banner');
+
+            return (
+                imageURL &&
+                <div
+                    id={`premium-banner-${block_id}`}
+                    className={`${mainClasses} premium-banner__responsive_${responsive} ${hideDesktop} ${hideTablet} ${hideMobile} premium-banner-${block_id}`}
+                >
+                    <style
+                        dangerouslySetInnerHTML={{
+                            __html: [
+                                `#premium-banner-${block_id} .premium-banner__effect3 .premium-banner__title_wrap::after{`,
+                                `background: ${sepColor}`,
+                                "}",
+                                `#premium-banner-${block_id} .premium-banner__inner {`,
+                                `background: ${background}`,
+                                "}",
+                                `#premium-banner-${block_id} .premium-banner__img.premium-banner__active {`,
+                                `opacity: ${background ? 1 - opacity / 100 : 1} `,
+                                "}"
+                            ].join("\n")
+                        }}
+                    />
+                    <div
+                        className={`premium-banner__inner premium-banner__min premium-banner__${effect} premium-banner__${hoverEffect} hover_${hovered}`}
+                        style={{
+                            boxShadow: `${containerStyles[0].containerShadowHorizontal}px ${containerStyles[0].containerShadowVertical}px ${containerStyles[0].containerShadowBlur}px ${containerStyles[0].containerShadowColor} ${containerStyles[0].containerShadowPosition}`,
+                            borderStyle: containerStyles[0].borderType,
+                            borderWidth: borderBanner
+                                ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
+                                : borderWidth + "px",
+                            borderRadius: containerStyles[0].borderRadius + "px",
+                            borderColor: containerStyles[0].borderColor
+                        }}
+                    >
+                        <div
+                            className={`premium-banner__img_wrap premium-banner__${height}`}
+                            style={{
+                                minHeight: minHeight,
+                                alignItems: verAlign
+                            }}
+                        >
+                            <img
+                                className={`premium-banner__img`}
+                                alt="Banner Image"
+                                src={imageURL}
+                                style={{
+                                    filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
+                                }}
+                            />
+                        </div>
+
+                        <div
+                            className={`premium-banner__content`}
+                            style={{
+                                background: "effect2" === effect ? titleStyles[0].titleBack : "transparent"
+                            }}
+                        >
+                            <div
+                                className={`premium-banner__title_wrap`}
+                                style={{
+                                    textAlign: contentAlign
+                                }}
+                            >
+                                <RichText.Content
+                                    tagName={titleTag.toLowerCase()}
+                                    className={`premium-banner__title`}
+                                    value={title}
+                                    style={{
+                                        color: titleStyles[0].titleColor,
+                                        fontWeight: titleStyles[0].titleWeight,
+                                        lineHeight: titleStyles[0].titleLine + "px",
+                                        textShadow: `${titleStyles[0].shadowHorizontal}px ${titleStyles[0].shadowVertical}px ${titleStyles[0].shadowBlur}px ${titleStyles[0].shadowColor}`
+                                    }}
+                                />
+                            </div>
+                            <div
+                                className={`premium-banner__desc_wrap`}
+                                style={{
+                                    textAlign: contentAlign
+                                }}
+                            >
+                                <RichText.Content
+                                    tagName="p"
+                                    className={`premium-banner__desc`}
+                                    value={desc}
+                                    style={{
+                                        color: descStyles[0].descColor,
+                                        fontWeight: descStyles[0].descWeight,
+                                        lineHeight: descStyles[0].descLine + "px",
+                                        textShadow: `${descStyles[0].descShadowHorizontal}px ${descStyles[0].descShadowVertical}px ${descStyles[0].descShadowBlur}px ${descStyles[0].descShadowColor}`
+                                    }}
+                                />
+                            </div>
+                        </div>
+                        {urlCheck && "" !== url && (
+                            <a
+                                className={`premium-banner__link`}
+                                href={url}
+                                target={target && "_blank"}
+                                rel="noopener"
+                            />
+                        )}
+                    </div>
+                </div>
+            );
+        }
+    },
     {
         attributes: attributes,
         migrate: (attributes) => {

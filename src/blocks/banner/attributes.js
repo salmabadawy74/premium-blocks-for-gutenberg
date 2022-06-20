@@ -1,6 +1,6 @@
 const { __ } = wp.i18n;
 const attributes = {
-    block_id: {
+    blockId: {
         type: "string"
     },
     borderBanner: {
@@ -12,63 +12,60 @@ const attributes = {
     },
     imageURL: {
         type: "string",
-        source: "attribute",
-        attribute: "src",
-        selector: ".premium-banner__img",
     },
     titleStyles: {
         type: "array",
         default: [
             {
-                titleSizeUnit: 'px',
-                titleSize: '20',
-                titleSizeMobile: '',
-                titleSizeTablet: '',
-                titleWeight: '',
-                titleLine: '',
                 titleColor: '',
                 titleBack: '',
-                shadowColor: '',
-                shadowBlur: '',
-                shadowHorizontal: '',
-                shadowVertical: ''
             }
         ]
+    },
+    titleTextShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+        }
     },
     descStyles: {
         type: "array",
         default: [
             {
-                descSizeUnit: 'px',
-                descSize: '20',
-                descSizeTablet: '',
-                descSizeMobile: '',
-                descWeight: '',
-                descLine: '',
                 descColor: '#000',
-                descShadowColor: '',
-                descShadowBlur: '',
-                descShadowHorizontal: '',
-                descShadowVertical: '',
             }
         ]
+    },
+    descTextShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
     },
     containerStyles: {
         type: "array",
         default: [
             {
-                borderType: "none",
-                borderWidth: '',
-                borderRadius: '',
-                borderColor: '',
-                containerShadowColor: '',
-                containerShadowBlur: '',
-                containerShadowHorizontal: '',
-                containerShadowVertical: '',
-                containerShadowPosition: '',
                 paddingU: 'px'
             }
         ]
+    },
+    containerShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
     },
     title: {
         type: "array",
@@ -178,63 +175,111 @@ const attributes = {
         type: "boolean",
         default: false
     },
-    borderWidth: {
-        type: "number",
-        default: "1"
-    },
-    borderTop: {
-        type: "number",
-    },
-    borderRight: {
-        type: "number",
-    },
-    borderBottom: {
-        type: "number",
-    },
-    borderLeft: {
-        type: "number",
-    },
-    paddingT: {
-        type: "number"
-    },
-    paddingR: {
-        type: "number"
-    },
-    paddingB: {
-        type: "number"
-    },
-    paddingL: {
-        type: "number"
-    },
-    paddingTTablet: {
-        type: "number"
-    },
-    paddingRTablet: {
-        type: "number"
-    },
-    paddingBTablet: {
-        type: "number"
-    },
-    paddingLTablet: {
-        type: "number"
-    },
-    paddingTMobile: {
-        type: "number"
-    },
-    paddingRMobile: {
-        type: "number"
-    },
-    paddingBMobile: {
-        type: "number"
-    },
-    paddingLMobile: {
-        type: "number"
-    },
-    titleSize: {
+    padding: {
         type: "object",
         default: {
-            Desktop: '200',
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
             unit: 'px'
+        }
+    },
+    border: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    titleTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
+    },
+    descTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
         }
     }
 }
