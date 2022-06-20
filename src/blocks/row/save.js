@@ -1,36 +1,24 @@
 /* eslint-disable react/react-in-jsx-scope */
-const { Component, Fragment } = wp.element
+const { Fragment } = wp.element
 const { InnerBlocks } = wp.blockEditor
 import { animationAttr, gradientValue } from '../../components/HelperFunction'
 import classnames from "classnames"
-import { gradientBackground, videoBackground, borderCss, padddingCss, marginCss } from '../../components/HelperFunction'
+import { gradientBackground, videoBackground } from '../../components/HelperFunction'
 
 
 const Save = (props) => {
 
     const { attributes: { block_id,
-        className,
-        variationSelected,
-        padding,
-        margin,
-        direction,
-        alignItems,
-        justifyItems,
-        wrapItems,
-        alignContent,
+
         shapeTop,
         shapeBottom,
-        minHeight,
-        colWidth,
-        heightOptions,
+        align,
         border,
         //animation
         animation,
         //global
         innerWidthType,
         innerWidth,
-        columnGutter,
-        rowGutter,
         backgroundOverlay,
         backgroundOverlayHover,
         overlayOpacity,
@@ -50,18 +38,13 @@ const Save = (props) => {
     let wrapperClassName = "";
 
     if (typeof align !== "undefined") {
-        if (align === "full" && innerWidthType === "boxed") {
-            wrapperClassName = "qubely-container";
-        } else {
-            wrapperClassName = "qubely-container-fluid";
-        }
-    } else {
-        if (!isBlockRootParent) {
-            wrapperClassName = "qubely-container-fluid";
-        } else {
-            wrapperClassName = "qubely-container";
+        if (align === "full") {
+            wrapperClassName = "alignfull";
+        } else if (align === "wide") {
+            wrapperClassName = "alignwide";
         }
     }
+
 
     const CustomTag = `${containerTag}`;
     const loadStyles = () => {
@@ -147,6 +130,7 @@ const Save = (props) => {
             />
             <CustomTag
                 className={classnames(
+                    wrapperClassName,
                     'wp-block-premium-container',
                     `premium-block-${block_id} `,
                     `premium-blocks-${block_id} `,

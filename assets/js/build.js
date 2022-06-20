@@ -68958,8 +68958,6 @@ var _variations2 = _interopRequireDefault(_variations);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
 
@@ -68969,9 +68967,10 @@ registerBlockType("premium/row", {
     icon: React.createElement(_icons2.default, { icon: '' }),
     category: "premium-blocks",
     attributes: _attributes2.default,
-    supports: _defineProperty({
-        align: true
-    }, 'align', ["center", "wide", "full"]),
+    supports: {
+        align: ["wide", "center", "full"],
+        html: false
+    },
     variations: _variations2.default,
     example: {},
     edit: _edit2.default,
@@ -71512,35 +71511,20 @@ var _classnames2 = _interopRequireDefault(_classnames);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /* eslint-disable react/react-in-jsx-scope */
-var _wp$element = wp.element,
-    Component = _wp$element.Component,
-    Fragment = _wp$element.Fragment;
+var Fragment = wp.element.Fragment;
 var InnerBlocks = wp.blockEditor.InnerBlocks;
 
 
 var Save = function Save(props) {
     var _props$attributes = props.attributes,
         block_id = _props$attributes.block_id,
-        className = _props$attributes.className,
-        variationSelected = _props$attributes.variationSelected,
-        padding = _props$attributes.padding,
-        margin = _props$attributes.margin,
-        direction = _props$attributes.direction,
-        alignItems = _props$attributes.alignItems,
-        justifyItems = _props$attributes.justifyItems,
-        wrapItems = _props$attributes.wrapItems,
-        alignContent = _props$attributes.alignContent,
         shapeTop = _props$attributes.shapeTop,
         shapeBottom = _props$attributes.shapeBottom,
-        minHeight = _props$attributes.minHeight,
-        colWidth = _props$attributes.colWidth,
-        heightOptions = _props$attributes.heightOptions,
+        align = _props$attributes.align,
         border = _props$attributes.border,
         animation = _props$attributes.animation,
         innerWidthType = _props$attributes.innerWidthType,
         innerWidth = _props$attributes.innerWidth,
-        columnGutter = _props$attributes.columnGutter,
-        rowGutter = _props$attributes.rowGutter,
         backgroundOverlay = _props$attributes.backgroundOverlay,
         backgroundOverlayHover = _props$attributes.backgroundOverlayHover,
         overlayOpacity = _props$attributes.overlayOpacity,
@@ -71559,16 +71543,10 @@ var Save = function Save(props) {
     var wrapperClassName = "";
 
     if (typeof align !== "undefined") {
-        if (align === "full" && innerWidthType === "boxed") {
-            wrapperClassName = "qubely-container";
-        } else {
-            wrapperClassName = "qubely-container-fluid";
-        }
-    } else {
-        if (!isBlockRootParent) {
-            wrapperClassName = "qubely-container-fluid";
-        } else {
-            wrapperClassName = "qubely-container";
+        if (align === "full") {
+            wrapperClassName = "alignfull";
+        } else if (align === "wide") {
+            wrapperClassName = "alignwide";
         }
     }
 
@@ -71650,7 +71628,7 @@ var Save = function Save(props) {
         React.createElement(
             CustomTag,
             _extends({
-                className: (0, _classnames2.default)('wp-block-premium-container', 'premium-block-' + block_id + ' ', 'premium-blocks-' + block_id + ' ', isBlockRootParent ? 'premium-is-root-container' : ''),
+                className: (0, _classnames2.default)(wrapperClassName, 'wp-block-premium-container', 'premium-block-' + block_id + ' ', 'premium-blocks-' + block_id + ' ', isBlockRootParent ? 'premium-is-root-container' : ''),
                 key: block_id,
                 style: _extends({}, (0, _HelperFunction.gradientBackground)(backgroundOptions), {
                     boxShadow: (boxShadow.horizontal || 0) + ' px ' + (boxShadow.vertical || 0) + ' px ' + (boxShadow.blur || 0) + ' px ' + boxShadow.color + ' ' + boxShadow.position + ' ',
