@@ -101,7 +101,7 @@
     }
 }
 .input-field-wrapper {
-    .kemet_range_value {
+    .premium_range_value {
         margin-left: 16px;
         margin-bottom: 0;
         flex: 0 1 88px;
@@ -109,6 +109,8 @@
             text-align: center;
             height: 30px;
             width: 100%;
+            border-radius: 0px;
+            border: 1px solid #e1e1e1;
         }
     }
     .components-range-control.premium-range-value-input {
@@ -125,7 +127,7 @@
 .css-1u6yfd4-Wrapper {
     margin-left: 0px !important;
 }
-.kemet_range_value {
+.premium_range_value {
     .premium-range-unit {
         margin-left: 5px;
         position: absolute;

@@ -5,11 +5,11 @@ import ResponsiveSingleRangeControl from "./RangeControl/single-range-control";
 export default function PremiumFilters({ label, value, onChange }) {
 
     let defaultValues = {
-        'contrast': '',
-        'blur': '',
-        'bright': '',
-        'saturation': '',
-        'hue': ''
+        'contrast': '100',
+        'blur': '0',
+        'bright': '100',
+        'saturation': '100',
+        'hue': '0'
     }
     value = value ? { ...defaultValues, ...value } : defaultValues;
     const [state, setState] = useState(value);

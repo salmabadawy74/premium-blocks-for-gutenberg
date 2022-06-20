@@ -1,16 +1,12 @@
 /* eslint-disable react/react-in-jsx-scope */
 const { Component, Fragment } = wp.element
 const { InnerBlocks } = wp.blockEditor
-import { animationAttr } from '../../components/HelperFunction'
+import { animationAttr, gradientValue } from '../../components/HelperFunction'
 import classnames from "classnames"
 import { gradientBackground, videoBackground, borderCss, padddingCss, marginCss } from '../../components/HelperFunction'
 
 
 const Save = (props) => {
-
-
-
-
 
     const { attributes: { block_id,
         className,
@@ -33,7 +29,8 @@ const Save = (props) => {
         //global
         innerWidthType,
         innerWidth,
-
+        columnGutter,
+        rowGutter,
         backgroundOverlay,
         backgroundOverlayHover,
         overlayOpacity,
@@ -46,21 +43,39 @@ const Save = (props) => {
         blockDescendants,
         containerTag,
         overflow,
-        blend },
-    } = props
+        blend,
+        transition
+    },
+    } = props;
+    let wrapperClassName = "";
+
+    if (typeof align !== "undefined") {
+        if (align === "full" && innerWidthType === "boxed") {
+            wrapperClassName = "qubely-container";
+        } else {
+            wrapperClassName = "qubely-container-fluid";
+        }
+    } else {
+        if (!isBlockRootParent) {
+            wrapperClassName = "qubely-container-fluid";
+        } else {
+            wrapperClassName = "qubely-container";
+        }
+    }
+
     const CustomTag = `${containerTag}`;
     const loadStyles = () => {
         const styles = {};
         const containerFullWidth = '100vw';
 
-        styles[`.wp-block-uagb-container.uagb-block-${block_id}  .premium-top-shape svg`] = {
+        styles[`.wp-block-premium-container.premium-block-${block_id}  .premium-top-shape svg`] = {
             'fill': `${shapeTop['color']}`,
         };
-        styles[`.wp-block-uagb-container.uagb-block-${block_id} .premium-bottom-shape svg`] = {
+        styles[`.wp-block-premium-container.premium-block-${block_id} .premium-bottom-shape svg`] = {
             'fill': `${shapeBottom['color']}`,
         };
         if ('boxed' === innerWidthType) {
-            styles[`.wp-block-uagb-container.uagb-is-root-container.uagb-block-${block_id}`] = {
+            styles[`.wp-block-premium-container.premium-is-root-container.premium-block-${block_id}`] = {
                 '--inner-content-custom-width': `min(${containerFullWidth}, ${innerWidth}px)`,
                 'max-width': 'var(--inner-content-custom-width)',
                 'margin-left': 'auto',
@@ -68,6 +83,31 @@ const Save = (props) => {
             }
 
         }
+        styles[`.premium-blocks-${block_id} .premium-row__block_overlay `] = {
+            'background-color': backgroundOverlay['backgroundColor'],
+            'background-image': gradientValue(backgroundOverlay),
+            'background-repeat': backgroundOverlay['backgroundRepeat'],
+            'background-position': backgroundOverlay['backgroundPosition'],
+            'background-size': backgroundOverlay['backgroundSize'],
+            'background-attachment': backgroundOverlay['fixed'] ? "fixed" : "unset",
+            'opacity': `${backgroundOverlay ? overlayOpacity / 100 : 1} `,
+            'mix-blend-mode': `${blend} !important`,
+            'filter': `brightness( ${overlayFilter['bright']}% ) contrast( ${overlayFilter['contrast']}% ) saturate( ${overlayFilter['saturation']}% ) blur( ${overlayFilter['blur']}px ) hue-rotate( ${overlayFilter['hue']}deg ) `,
+            '-webkit-transition': `${transition}s`,
+            '-o-transition': `${transition}s`,
+            'transition': `${transition}s`,
+        }
+        styles[`.premium-blocks-${block_id}:hover .premium-row__block_overlay `] = {
+            'background-color': backgroundOverlayHover['backgroundColor'],
+            'background-image': gradientValue(backgroundOverlayHover),
+            'background-repeat': backgroundOverlayHover['backgroundRepeat'],
+            'background-position': backgroundOverlayHover['backgroundPosition'],
+            'background-size': backgroundOverlayHover['backgroundSize'],
+            'background-attachment': backgroundOverlayHover['fixed'] ? "fixed" : "unset",
+            'opacity': `${backgroundOverlayHover ? hoverOverlayOpacity / 100 : 1} !important`,
+            'filter': `brightness( ${hoverOverlayFilter['bright']}% ) contrast( ${hoverOverlayFilter['contrast']}% ) saturate( ${hoverOverlayFilter['saturation']}% ) blur( ${hoverOverlayFilter['blur']}px ) hue-rotate( ${hoverOverlayFilter['hue']}deg ) !important`
+        }
+
         let styleCss = '';
         for (const selector in styles) {
             const selectorStyles = styles[selector];
@@ -98,7 +138,6 @@ const Save = (props) => {
         { 'premium-shape-above-content': shapeBottom['front'] === true },
         { 'premium-shape__invert': shapeBottom['invertShapeDivider'] === true }
     )
-    console.log(shapeTop)
     return (
         <Fragment>
             <style
@@ -106,20 +145,22 @@ const Save = (props) => {
                     __html: loadStyles()
                 }}
             />
-
             <CustomTag
                 className={classnames(
-                    'wp-block-uagb-container',
-                    `uagb - block - ${block_id} `,
-                    `premium - blocks - ${block_id} `,
-                    isBlockRootParent ? 'uagb-is-root-container' : ''
+                    'wp-block-premium-container',
+                    `premium-block-${block_id} `,
+                    `premium-blocks-${block_id} `,
+                    isBlockRootParent ? 'premium-is-root-container' : ''
                 )}
                 key={block_id}
                 style={{
                     ...gradientBackground(backgroundOptions),
                     boxShadow: `${boxShadow.horizontal || 0} px ${boxShadow.vertical || 0} px ${boxShadow.blur || 0} px ${boxShadow.color} ${boxShadow.position} `,
-                    overflow: overflow
+                    overflow: overflow,
+                    borderStyle: border['borderType'],
+                    borderColor: border['borderColor']
                 }}
+                {...animationAttr(animation)}
             >
                 {(Object.entries(shapeTop).length > 1 && shapeTop.openShape == 1 && shapeTop.style) &&
                     <div className={topShapeClasses} dangerouslySetInnerHTML={{ __html: PremiumBlocksSettings.shapes[shapeTop.style] }} />
@@ -128,11 +169,10 @@ const Save = (props) => {
                 {(Object.entries(shapeBottom).length > 1 && shapeBottom.openShape == 1 && shapeBottom.style) &&
                     <div className={bottomShapeClasses} dangerouslySetInnerHTML={{ __html: PremiumBlocksSettings.shapes[shapeBottom.style] }} />
                 }
-                <div className={`premium - row__block_overlay`} style={{
+                <div className={`premium-row__block_overlay`} style={{
                     ...gradientBackground(backgroundOverlay),
                     opacity: `${backgroundOverlay ? overlayOpacity / 100 : 1} `,
-                    mixBlendMode: `${blend} !important`,
-                    // filter: `brightness(${ overlayFilter['bright']} % ) contrast(${ overlayFilter['contrast']} % ) saturate(${ overlayFilter['saturation']} % ) blur(${ overlayFilter['blur']}px) hue - rotate(${ overlayFilter['hue']}deg)`
+                    filter: `brightness(${overlayFilter['bright']} % ) contrast(${overlayFilter['contrast']} % ) saturate(${overlayFilter['saturation']} % ) blur(${overlayFilter['blur']}px) hue - rotate(${overlayFilter['hue']}deg)`
                 }}></div>
 
                 <InnerBlocks.Content

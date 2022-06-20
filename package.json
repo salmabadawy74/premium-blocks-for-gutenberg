@@ -50,6 +50,7 @@
         "classnames": "^2.2.6",
         "colord": "^2.9.2",
         "hex-to-rgba": "^2.0.1",
+        "jquery": "^3.6.0",
         "lodash": "^4.17.21",
         "prop-types": "^15.7.2",
         "react": "^16.8.6",

@@ -21,7 +21,7 @@ import Shape from '../../components/premium-shape';
 import Animation from '../../components/Animation'
 import ResponsiveRadio from '../../components/responsive-radio';
 import renderCustomIcon from '../../../blocks-config/renderIcon';
-import { gradientBackground, videoBackground, borderCss, padddingCss, marginCss } from '../../components/HelperFunction'
+import { gradientBackground, videoBackground, borderCss, padddingCss, marginCss, gradientValue } from '../../components/HelperFunction'
 import PremiumFilters from "../../components/premium-filters";
 
 
@@ -96,7 +96,8 @@ const edit = (props) => {
             blockDescendants,
             containerTag,
             overflow,
-            blend
+            blend,
+            transition
         },
         clientId,
         setAttributes } = props;
@@ -170,11 +171,10 @@ const edit = (props) => {
     const hasChildBlocks = getBlockOrder(clientId).length > 0;
     const moverDirection = 'row' === direction ? 'horizontal' : 'vertical';
 
-
     const loadStyles = () => {
         const styles = {};
         const containerFullWidth = '100vw';
-        styles[`.editor-styles-wrapper #block-${clientId}  > .wp-block-uagb-container > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout`] = {
+        styles[`.editor-styles-wrapper #block-${clientId}  > .wp-block-premium-container > .premium-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout`] = {
             'min-height': `${minHeight[props.deviceType]}${minHeight['unit']}`,
             'flex-direction': direction[props.deviceType],
             'align-items': alignItems[props.deviceType],
@@ -198,19 +198,19 @@ const edit = (props) => {
             'width': `${colWidth[props.deviceType]}${colWidth['unit']}`,
         };
         styles[`.editor-styles-wrapper #block-${clientId}  .premium-top-shape svg`] = {
-            'width': 'calc( ' + shapeTop.width[props.deviceType] + '% + 1.3px )',
+            'width': `${shapeTop.width[props.deviceType]}${shapeTop.width['unit']}`,
             'height': `${shapeTop.height[props.deviceType]}${shapeTop.height['unit']}`,
             'fill': `${shapeTop['color']}`,
         };
 
         styles[`.editor-styles-wrapper #block-${clientId} .premium-bottom-shape svg`] = {
-            'width': 'calc( ' + shapeBottom.width[props.deviceType] + '% + 1.3px )',
+            'width': `${shapeBottom.width[props.deviceType]}${shapeBottom.width['unit']}`,
             'height': `${shapeBottom.height[props.deviceType]}${shapeBottom.height['unit']}`,
             'fill': `${shapeBottom['color']}`,
         };
 
         if ('boxed' === innerWidthType) {
-            styles[`.editor-styles-wrapper  .is-root-container > .block-editor-block-list__block > .wp-block-uagb-container.uagb-block-${block_id} > .uagb-container-inner-blocks-wrap`] = {
+            styles[`.editor-styles-wrapper  .is-root-container > .block-editor-block-list__block > .wp-block-premium-container.premium-block-${block_id} > .premium-container-inner-blocks-wrap`] = {
                 '--inner-content-custom-width': `min(${containerFullWidth},${innerWidth}px)`,
                 'max-width': 'var(--inner-content-custom-width)',
                 'margin-left': 'auto',
@@ -218,9 +218,31 @@ const edit = (props) => {
 
             }
 
+        };
+        styles[`.premium-blocks-${block_id} .premium-row__block_overlay `] = {
+            'background-color': backgroundOverlay['backgroundColor'],
+            'background-image': gradientValue(backgroundOverlay),
+            'background-repeat': backgroundOverlay['backgroundRepeat'],
+            'background-position': backgroundOverlay['backgroundPosition'],
+            'background-size': backgroundOverlay['backgroundSize'],
+            'background-attachment': backgroundOverlay['fixed'] ? "fixed" : "unset",
+            'opacity': `${backgroundOverlay ? overlayOpacity / 100 : 1} `,
+            'mix-blend-mode': `${blend} !important`,
+            'filter': `brightness( ${overlayFilter['bright']}% ) contrast( ${overlayFilter['contrast']}% ) saturate( ${overlayFilter['saturation']}% ) blur( ${overlayFilter['blur']}px ) hue-rotate( ${overlayFilter['hue']}deg ) `,
+            '-webkit-transition': `${transition}s`,
+            '-o-transition': `${transition}s`,
+            'transition': `${transition}s`,
         }
-
-
+        styles[`.premium-blocks-${block_id}:hover .premium-row__block_overlay `] = {
+            'background-color': backgroundOverlayHover['backgroundColor'],
+            'background-image': gradientValue(backgroundOverlayHover),
+            'background-repeat': backgroundOverlayHover['backgroundRepeat'],
+            'background-position': backgroundOverlayHover['backgroundPosition'],
+            'background-size': backgroundOverlayHover['backgroundSize'],
+            'background-attachment': backgroundOverlayHover['fixed'] ? "fixed" : "unset",
+            'opacity': `${backgroundOverlayHover ? hoverOverlayOpacity / 100 : 1} !important`,
+            'filter': `brightness( ${hoverOverlayFilter['bright']}% ) contrast( ${hoverOverlayFilter['contrast']}% ) saturate( ${hoverOverlayFilter['saturation']}% ) blur( ${hoverOverlayFilter['blur']}px ) hue-rotate( ${hoverOverlayFilter['hue']}deg ) !important`
+        }
         let styleCss = '';
 
         for (const selector in styles) {
@@ -272,6 +294,7 @@ const edit = (props) => {
                 label: 'Luminosity', value: 'luminosity'
             },
         ];
+
     return (
         <Fragment>
             <InspectorControls>
@@ -566,6 +589,7 @@ const edit = (props) => {
                                         onChange={newSelect => setAttributes({ blend: newSelect })}
                                         options={BLEND}
                                     />
+
                                 </InsideTab>
                                 <InsideTab tabTitle={__('Hover', 'premium-blocks-for-gutenberg')}>
                                     <PremiumBackgroundControl
@@ -586,6 +610,16 @@ const edit = (props) => {
                                         label={__("CSS Filters")}
                                         value={hoverOverlayFilter}
                                         onChange={(newValue) => setAttributes({ hoverOverlayFilter: newValue })}
+                                    />
+                                    <ResponsiveSingleRangeControl
+                                        label={__("Transition Duration", 'premium-blocks-for-gutenberg')}
+                                        value={transition}
+                                        min="0"
+                                        max="3"
+                                        step={.1}
+                                        onChange={newValue => setAttributes({ transition: newValue })}
+                                        defaultValue={''}
+                                        showUnit={false}
                                     />
                                 </InsideTab>
                             </InsideTabs>
@@ -687,8 +721,8 @@ const edit = (props) => {
             />
             <CustomTag
                 className={classnames(
-                    'wp-block-uagb-container',
-                    `uagb-block-${block_id}`,
+                    'wp-block-premium-container',
+                    `premium-block-${block_id}`,
                     `premium-blocks-${block_id}`
                 )}
                 key={block_id}
@@ -708,13 +742,8 @@ const edit = (props) => {
                 {(Object.entries(shapeBottom).length > 1 && shapeBottom.openShape == 1 && shapeBottom.style) &&
                     <div className={bottomShapeClasses} dangerouslySetInnerHTML={{ __html: PremiumBlocksSettings.shapes[shapeBottom.style] }} />
                 }
-                <div className={`premium-row__block_overlay`} style={{
-                    ...gradientBackground(backgroundOverlay),
-                    opacity: `${backgroundOverlay ? overlayOpacity / 100 : 1}`,
-                    mixBlendMode: `${blend} !important`,
-                    // filter: `brightness( ${overlayFilter['bright']}% ) contrast( ${overlayFilter['contrast']}% ) saturate( ${overlayFilter['saturation']}% ) blur( ${overlayFilter['blur']}px ) hue-rotate( ${overlayFilter['hue']}deg )`
-                }}></div>
-                <div className='uagb-container-inner-blocks-wrap'>
+                <div className={`premium-row__block_overlay`} ></div>
+                <div className='premium-container-inner-blocks-wrap'>
                     <InnerBlocks
                         __experimentalMoverDirection={moverDirection}
                         renderAppender={hasChildBlocks

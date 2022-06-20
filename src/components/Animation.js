@@ -2,7 +2,7 @@ const { __ } = wp.i18n
 const { Component, Fragment } = wp.element
 const { SelectControl } = wp.components;
 import ResponsiveSingleRangeControl from "./RangeControl/single-range-control";
-
+import $ from 'jquery';
 
 const defaultData = { animation: '', name: 'fadeCenter', repeat: 'once', direction: 'center', duration: 1000, delay: 0, curve: 'ease-in-out' }
 

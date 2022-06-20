@@ -64,19 +64,25 @@ class Shape extends Component {
                                                 </div>
                                         }
                                     </button>
+                                    {
+                                        value.style &&
+
+                                        <div className="premium-btn-reset-wrap">
+                                            <button
+                                                className="premium-reset-btn "
+
+
+                                                onClick={() => this.setSettings('style', '')}
+
+                                            ></button>
+                                        </div>
+
+
+                                    }
                                 </div>
                             }
                             renderContent={() => this.renderShapeOptions()}
                         />
-                        {
-                            value.style &&
-                            <Tooltip text={__('Clear', 'premium-blocks-for-gutenberg')}>
-                                <div className="premium-ml-10">
-                                    <span className="premium-shape-clear" onClick={() => this.setSettings('style', '')} role="button"><i className="fas fa-undo" /></span>
-                                </div>
-                            </Tooltip>
-                        }
-
                     </div>
                     {value.openShape == 1 &&
                         <Fragment>
@@ -132,7 +138,7 @@ class Shape extends Component {
                         </Fragment>
                     }
                 </div>
-            </div>
+            </div >
         )
     }
 

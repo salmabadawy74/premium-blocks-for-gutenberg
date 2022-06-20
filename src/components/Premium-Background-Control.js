@@ -221,14 +221,7 @@ export default function PremiumBackgroundControl({ value, onChange, backgroundVe
                             />
                         </Fragment>
                     }
-                    <p>{__('Fallback Image (Poster)', 'premium-blocks-for-gutenberg')}</p>
-                    <PremiumMediaUpload
-                        type="image"
-                        imageID={bgVideoFallbackID}
-                        imageURL={bgVideoFallbackURL}
-                        onSelectMedia={media => onChangeBackground('bgVideoFallbackURL', media.url)}
-                        onRemoveImage={() => onChangeBackground('bgVideoFallbackURL', "")}
-                    />
+
                 </Fragment>
             )}
         </Fragment>

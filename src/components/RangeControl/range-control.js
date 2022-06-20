@@ -58,7 +58,7 @@ export default function PremiumRange({
                         help={help}
                         withInputField={false}
                     />
-                    <div className="kemet_range_value">
+                    <div className="premium_range_value">
                         <input
                             value={value}
                             onChange={onChangInput}

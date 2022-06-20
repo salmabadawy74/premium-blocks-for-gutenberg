@@ -215,23 +215,6 @@ const attributes = {
             'position': ''
         }
     },
-    // Overlay
-    enableRowOverlay: {
-        type: 'boolean',
-        default: false
-    },
-    rowOverlay: {
-        type: 'object',
-        default: {},
-    },
-    rowBlend: {
-        type: 'string',
-        default: '',
-    },
-    rowOpacity: {
-        type: 'number',
-        default: '.8',
-    },
     // Divider
     shapeTop: {
         type: 'object',
@@ -289,24 +272,6 @@ const attributes = {
         default: false,
     },
     // Advanced Settings
-    rowId: {
-        type: 'string',
-        default: ''
-    },
-    rowZindex: {
-        type: 'number', default: '',
-    },
-    rowReverse: {
-        type: 'object',
-        default: {
-            openRowReverse: false,
-            values: {}
-        },
-    },
-    rowCss: {
-        type: 'string',
-        default: '',
-    },
     innerWidthType: {
         type: "string",
         default: 'boxed'
@@ -379,8 +344,41 @@ const attributes = {
         default: 'div'
     },
     blend: {
+        type: 'string',
+        default: '',
+    },
+    overlayOpacity: {
+        type: 'number'
+    },
+    overlayFilter: {
+        type: 'object',
+        default: {
+            'contrast': '100',
+            'blur': '0',
+            'bright': '100',
+            'saturation': '100',
+            'hue': '0'
+        }
+    },
+    hoverOverlayOpacity: {
+        type: 'number'
+    },
+    hoverOverlayFilter: {
+        type: 'object',
+        default: {
+            'contrast': '100',
+            'blur': '0',
+            'bright': '100',
+            'saturation': '100',
+            'hue': '0'
+        },
+    },
+    blend: {
         type: 'string'
     },
+    transition: {
+        type: 'number'
+    }
 
 };
 
