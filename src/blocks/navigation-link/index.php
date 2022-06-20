@@ -167,3 +167,77 @@ function register_block_premium_navigation_link() {
 	);
 }
 add_action( 'init', 'register_block_premium_navigation_link' );
+
+
+if ( ! function_exists( 'build_variation_for_navigation_link' ) ) {
+	/**
+	 * Returns a navigation link variation
+	 *
+	 * @param WP_Taxonomy|WP_Post_Type $entity post type or taxonomy entity.
+	 * @param string                   $kind string of value 'taxonomy' or 'post-type'.
+	 *
+	 * @return array
+	 */
+	function build_variation_for_navigation_link( $entity, $kind ) {
+		$title       = '';
+		$description = '';
+
+		if ( property_exists( $entity->labels, 'item_link' ) ) {
+			$title = $entity->labels->item_link;
+		}
+		if ( property_exists( $entity->labels, 'item_link_description' ) ) {
+			$description = $entity->labels->item_link_description;
+		}
+
+		$variation = array(
+			'name'        => $entity->name,
+			'title'       => $title,
+			'description' => $description,
+			'attributes'  => array(
+				'type' => $entity->name,
+				'kind' => $kind,
+			),
+		);
+
+		// Tweak some value for the variations.
+		$variation_overrides = array(
+			'post_tag'    => array(
+				'name'       => 'tag',
+				'attributes' => array(
+					'type' => 'tag',
+					'kind' => $kind,
+				),
+			),
+			'post_format' => array(
+				// The item_link and item_link_description for post formats is the
+				// same as for tags, so need to be overridden.
+				'title'       => __( 'Post Format Link' ),
+				'description' => __( 'A link to a post format' ),
+				'attributes'  => array(
+					'type' => 'post_format',
+					'kind' => $kind,
+				),
+			),
+		);
+
+		if ( array_key_exists( $entity->name, $variation_overrides ) ) {
+			$variation = array_merge(
+				$variation,
+				$variation_overrides[ $entity->name ]
+			);
+		}
+
+		return $variation;
+	}
+}
+
+if ( ! function_exists( 'block_core_navigation_link_render_submenu_icon' ) ) {
+	/**
+	 * Returns the top-level submenu SVG chevron icon.
+	 *
+	 * @return string
+	 */
+	function block_core_navigation_link_render_submenu_icon() {
+		return '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true" focusable="false"><path d="M1.50002 4L6.00002 8L10.5 4" stroke-width="1.5"></path></svg>';
+	}
+}

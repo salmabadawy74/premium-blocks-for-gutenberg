@@ -75,7 +75,7 @@ export const generateCss = (styles) => {
         const selectorStyles = styles[selector];
         const filteredStyles = Object.keys(selectorStyles).map(property => {
             const value = selectorStyles[property];
-            const valueWithoutUnits = value.toString().replaceAll('px', '').replaceAll(/\s/g, '');
+            const valueWithoutUnits = value ? value.toString().replaceAll(/px|em|rem|!important|%/g, '').replaceAll(/\s/g, '') : '';
             if (value && !value.toString().includes('undefined') && valueWithoutUnits) {
                 return `${property}: ${value};`;
             }
