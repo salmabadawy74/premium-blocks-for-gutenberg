@@ -64,7 +64,6 @@ const Save = (props) => {
                 'margin-left': 'auto',
                 'margin-right': 'auto'
             }
-
         }
         styles[`.premium-blocks-${block_id} .premium-row__block_overlay `] = {
             'background-color': backgroundOverlay['backgroundColor'],
@@ -130,7 +129,6 @@ const Save = (props) => {
             />
             <CustomTag
                 className={classnames(
-                    wrapperClassName,
                     'wp-block-premium-container',
                     `premium-block-${block_id} `,
                     `premium-blocks-${block_id} `,

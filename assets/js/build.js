@@ -3041,7 +3041,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
  * 
  */
 !function (e, t) {
-  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(16), __webpack_require__(7), __webpack_require__(0), __webpack_require__(40), __webpack_require__(109)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(16), __webpack_require__(7), __webpack_require__(0), __webpack_require__(40), __webpack_require__(109)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
+  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(16), __webpack_require__(7), __webpack_require__(0), __webpack_require__(41), __webpack_require__(109)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(16), __webpack_require__(7), __webpack_require__(0), __webpack_require__(41), __webpack_require__(109)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) ? exports.FontIconPicker = t(require("prop-types"), require("react"), require("classnames"), require("react-dom"), require("react-transition-group")) : e.FontIconPicker = t(e.PropTypes, e.React, e.classNames, e.ReactDOM, e.ReactTransitionGroup);
@@ -3583,7 +3583,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   }]).default;
 });
 //# sourceMappingURL=fonticonpicker.react.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(51)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(40)(module)))
 
 /***/ }),
 /* 27 */
@@ -3858,7 +3858,7 @@ module.exports = $export;
 "use strict";
 
 
-var anObject = __webpack_require__(42);
+var anObject = __webpack_require__(43);
 var IE8_DOM_DEFINE = __webpack_require__(122);
 var toPrimitive = __webpack_require__(71);
 var dP = Object.defineProperty;
@@ -4012,7 +4012,7 @@ $exports.store = store;
 "use strict";
 
 
-var _Symbol = __webpack_require__(44),
+var _Symbol = __webpack_require__(45),
     getRawTag = __webpack_require__(139),
     objectToString = __webpack_require__(140);
 
@@ -4080,12 +4080,42 @@ module.exports = isObjectLike;
 
 /***/ }),
 /* 40 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (module) {
+	if (!module.webpackPolyfill) {
+		module.deprecate = function () {};
+		module.paths = [];
+		// module.parent = undefined by default
+		if (!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function get() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function get() {
+				return module.i;
+			}
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
+
+/***/ }),
+/* 41 */
 /***/ (function(module, exports) {
 
 module.exports = ReactDOM;
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4129,7 +4159,7 @@ var DefaultImage = function (_Component) {
 exports.default = DefaultImage;
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4142,7 +4172,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4180,7 +4210,7 @@ function isSymbol(value) {
 module.exports = isSymbol;
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4194,7 +4224,7 @@ var _Symbol = root.Symbol;
 module.exports = _Symbol;
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4208,7 +4238,7 @@ var nativeCreate = getNative(Object, 'create');
 module.exports = nativeCreate;
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4249,7 +4279,7 @@ function isObject(value) {
 module.exports = isObject;
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4289,7 +4319,7 @@ ListCache.prototype.set = listCacheSet;
 module.exports = ListCache;
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4318,7 +4348,7 @@ function assocIndexOf(array, key) {
 module.exports = assocIndexOf;
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4342,13 +4372,13 @@ function getMapData(map, key) {
 module.exports = getMapData;
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var isSymbol = __webpack_require__(43);
+var isSymbol = __webpack_require__(44);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0;
@@ -4369,36 +4399,6 @@ function toKey(value) {
 }
 
 module.exports = toKey;
-
-/***/ }),
-/* 51 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = function (module) {
-	if (!module.webpackPolyfill) {
-		module.deprecate = function () {};
-		module.paths = [];
-		// module.parent = undefined by default
-		if (!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function get() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function get() {
-				return module.i;
-			}
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
-};
 
 /***/ }),
 /* 52 */
@@ -4571,7 +4571,7 @@ module.exports = function (it) {
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var isArray = __webpack_require__(17),
-    isSymbol = __webpack_require__(43);
+    isSymbol = __webpack_require__(44);
 
 /** Used to match property names within property paths. */
 var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,
@@ -5088,7 +5088,7 @@ var _propTypes = __webpack_require__(16);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactDom = __webpack_require__(40);
+var _reactDom = __webpack_require__(41);
 
 var _invariant = __webpack_require__(309);
 
@@ -7145,7 +7145,7 @@ module.exports = {};
 
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-var anObject = __webpack_require__(42);
+var anObject = __webpack_require__(43);
 var dPs = __webpack_require__(344);
 var enumBugKeys = __webpack_require__(76);
 var IE_PROTO = __webpack_require__(74)('IE_PROTO');
@@ -7286,7 +7286,7 @@ module.exports = get;
 
 
 var castPath = __webpack_require__(86),
-    toKey = __webpack_require__(50);
+    toKey = __webpack_require__(51);
 
 /**
  * The base implementation of `_.get` without support for default values.
@@ -7362,7 +7362,7 @@ module.exports = freeGlobal;
 
 
 var baseGetTag = __webpack_require__(38),
-    isObject = __webpack_require__(46);
+    isObject = __webpack_require__(47);
 
 /** `Object#toString` result references. */
 var asyncTag = '[object AsyncFunction]',
@@ -7575,7 +7575,7 @@ module.exports = map;
 "use strict";
 
 
-var ListCache = __webpack_require__(47),
+var ListCache = __webpack_require__(48),
     stackClear = __webpack_require__(170),
     stackDelete = __webpack_require__(171),
     stackGet = __webpack_require__(172),
@@ -7845,7 +7845,7 @@ var nativeIsBuffer = Buffer ? Buffer.isBuffer : undefined;
 var isBuffer = nativeIsBuffer || stubFalse;
 
 module.exports = isBuffer;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(51)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(40)(module)))
 
 /***/ }),
 /* 99 */
@@ -7921,7 +7921,7 @@ module.exports = isTypedArray;
 "use strict";
 
 
-var isObject = __webpack_require__(46);
+var isObject = __webpack_require__(47);
 
 /**
  * Checks if `value` is suitable for strict equality comparisons, i.e. `===`.
@@ -8882,7 +8882,7 @@ var PropTypes = _interopRequireWildcard(__webpack_require__(16));
 
 var _react = _interopRequireDefault(__webpack_require__(7));
 
-var _reactDom = _interopRequireDefault(__webpack_require__(40));
+var _reactDom = _interopRequireDefault(__webpack_require__(41));
 
 var _reactLifecyclesCompat = __webpack_require__(111);
 
@@ -11852,7 +11852,7 @@ module.exports = g;
 "use strict";
 
 
-var _Symbol = __webpack_require__(44);
+var _Symbol = __webpack_require__(45);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -12087,7 +12087,7 @@ module.exports = memoize;
 
 
 var Hash = __webpack_require__(145),
-    ListCache = __webpack_require__(47),
+    ListCache = __webpack_require__(48),
     Map = __webpack_require__(61);
 
 /**
@@ -12155,7 +12155,7 @@ module.exports = Hash;
 "use strict";
 
 
-var nativeCreate = __webpack_require__(45);
+var nativeCreate = __webpack_require__(46);
 
 /**
  * Removes all key-value entries from the hash.
@@ -12180,7 +12180,7 @@ module.exports = hashClear;
 
 var isFunction = __webpack_require__(88),
     isMasked = __webpack_require__(148),
-    isObject = __webpack_require__(46),
+    isObject = __webpack_require__(47),
     toSource = __webpack_require__(89);
 
 /**
@@ -12318,7 +12318,7 @@ module.exports = hashDelete;
 "use strict";
 
 
-var nativeCreate = __webpack_require__(45);
+var nativeCreate = __webpack_require__(46);
 
 /** Used to stand-in for `undefined` hash values. */
 var HASH_UNDEFINED = '__lodash_hash_undefined__';
@@ -12356,7 +12356,7 @@ module.exports = hashGet;
 "use strict";
 
 
-var nativeCreate = __webpack_require__(45);
+var nativeCreate = __webpack_require__(46);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -12387,7 +12387,7 @@ module.exports = hashHas;
 "use strict";
 
 
-var nativeCreate = __webpack_require__(45);
+var nativeCreate = __webpack_require__(46);
 
 /** Used to stand-in for `undefined` hash values. */
 var HASH_UNDEFINED = '__lodash_hash_undefined__';
@@ -12439,7 +12439,7 @@ module.exports = listCacheClear;
 "use strict";
 
 
-var assocIndexOf = __webpack_require__(48);
+var assocIndexOf = __webpack_require__(49);
 
 /** Used for built-in method references. */
 var arrayProto = Array.prototype;
@@ -12482,7 +12482,7 @@ module.exports = listCacheDelete;
 "use strict";
 
 
-var assocIndexOf = __webpack_require__(48);
+var assocIndexOf = __webpack_require__(49);
 
 /**
  * Gets the list cache value for `key`.
@@ -12509,7 +12509,7 @@ module.exports = listCacheGet;
 "use strict";
 
 
-var assocIndexOf = __webpack_require__(48);
+var assocIndexOf = __webpack_require__(49);
 
 /**
  * Checks if a list cache value for `key` exists.
@@ -12533,7 +12533,7 @@ module.exports = listCacheHas;
 "use strict";
 
 
-var assocIndexOf = __webpack_require__(48);
+var assocIndexOf = __webpack_require__(49);
 
 /**
  * Sets the list cache `key` to `value`.
@@ -12567,7 +12567,7 @@ module.exports = listCacheSet;
 "use strict";
 
 
-var getMapData = __webpack_require__(49);
+var getMapData = __webpack_require__(50);
 
 /**
  * Removes `key` and its value from the map.
@@ -12616,7 +12616,7 @@ module.exports = isKeyable;
 "use strict";
 
 
-var getMapData = __webpack_require__(49);
+var getMapData = __webpack_require__(50);
 
 /**
  * Gets the map value for `key`.
@@ -12640,7 +12640,7 @@ module.exports = mapCacheGet;
 "use strict";
 
 
-var getMapData = __webpack_require__(49);
+var getMapData = __webpack_require__(50);
 
 /**
  * Checks if a map value for `key` exists.
@@ -12664,7 +12664,7 @@ module.exports = mapCacheHas;
 "use strict";
 
 
-var getMapData = __webpack_require__(49);
+var getMapData = __webpack_require__(50);
 
 /**
  * Sets the map `key` to `value`.
@@ -12730,10 +12730,10 @@ module.exports = toString;
 "use strict";
 
 
-var _Symbol = __webpack_require__(44),
+var _Symbol = __webpack_require__(45),
     arrayMap = __webpack_require__(91),
     isArray = __webpack_require__(17),
-    isSymbol = __webpack_require__(43);
+    isSymbol = __webpack_require__(44);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0;
@@ -12908,7 +12908,7 @@ module.exports = baseIsMatch;
 "use strict";
 
 
-var ListCache = __webpack_require__(47);
+var ListCache = __webpack_require__(48);
 
 /**
  * Removes all key-value entries from the stack.
@@ -13001,7 +13001,7 @@ module.exports = stackHas;
 "use strict";
 
 
-var ListCache = __webpack_require__(47),
+var ListCache = __webpack_require__(48),
     Map = __webpack_require__(61),
     MapCache = __webpack_require__(60);
 
@@ -13268,7 +13268,7 @@ module.exports = cacheHas;
 "use strict";
 
 
-var _Symbol = __webpack_require__(44),
+var _Symbol = __webpack_require__(45),
     Uint8Array = __webpack_require__(182),
     eq = __webpack_require__(90),
     equalArrays = __webpack_require__(95),
@@ -13941,7 +13941,7 @@ var nodeUtil = function () {
 }();
 
 module.exports = nodeUtil;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(51)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(40)(module)))
 
 /***/ }),
 /* 198 */
@@ -14216,7 +14216,7 @@ var baseIsEqual = __webpack_require__(94),
     isKey = __webpack_require__(59),
     isStrictComparable = __webpack_require__(101),
     matchesStrictComparable = __webpack_require__(102),
-    toKey = __webpack_require__(50);
+    toKey = __webpack_require__(51);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -14317,7 +14317,7 @@ var castPath = __webpack_require__(86),
     isArray = __webpack_require__(17),
     isIndex = __webpack_require__(99),
     isLength = __webpack_require__(63),
-    toKey = __webpack_require__(50);
+    toKey = __webpack_require__(51);
 
 /**
  * Checks if `path` exists on `object`.
@@ -14361,7 +14361,7 @@ module.exports = hasPath;
 var baseProperty = __webpack_require__(213),
     basePropertyDeep = __webpack_require__(214),
     isKey = __webpack_require__(59),
-    toKey = __webpack_require__(50);
+    toKey = __webpack_require__(51);
 
 /**
  * Creates a function that returns the value at `path` of a given object.
@@ -30702,7 +30702,7 @@ var _propTypes = _interopRequireDefault(__webpack_require__(16));
 
 var _react = _interopRequireDefault(__webpack_require__(7));
 
-var _reactDom = __webpack_require__(40);
+var _reactDom = __webpack_require__(41);
 
 var _TransitionGroup = _interopRequireDefault(__webpack_require__(113));
 
@@ -45263,7 +45263,7 @@ var _premiumTypo = __webpack_require__(8);
 
 var _premiumTypo2 = _interopRequireDefault(_premiumTypo);
 
-var _defaultImage = __webpack_require__(41);
+var _defaultImage = __webpack_require__(42);
 
 var _defaultImage2 = _interopRequireDefault(_defaultImage);
 
@@ -46112,7 +46112,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _defaultImage = __webpack_require__(41);
+var _defaultImage = __webpack_require__(42);
 
 var _defaultImage2 = _interopRequireDefault(_defaultImage);
 
@@ -46314,7 +46314,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _defaultImage = __webpack_require__(41);
+var _defaultImage = __webpack_require__(42);
 
 var _defaultImage2 = _interopRequireDefault(_defaultImage);
 
@@ -52721,7 +52721,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 	);
 });
 ;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(51)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(40)(module)))
 
 /***/ }),
 /* 296 */
@@ -55171,7 +55171,7 @@ module.exports = function (Constructor, NAME, next) {
 
 
 var dP = __webpack_require__(29);
-var anObject = __webpack_require__(42);
+var anObject = __webpack_require__(43);
 var getKeys = __webpack_require__(54);
 
 module.exports = __webpack_require__(22) ? Object.defineProperties : function defineProperties(O, Properties) {
@@ -55326,7 +55326,7 @@ var wksExt = __webpack_require__(81);
 var wksDefine = __webpack_require__(82);
 var enumKeys = __webpack_require__(354);
 var isArray = __webpack_require__(355);
-var anObject = __webpack_require__(42);
+var anObject = __webpack_require__(43);
 var isObject = __webpack_require__(34);
 var toObject = __webpack_require__(58);
 var toIObject = __webpack_require__(36);
@@ -55800,7 +55800,7 @@ $export($export.S, 'Object', { setPrototypeOf: __webpack_require__(364).set });
 // Works with __proto__ only. Old v8 can't work with null proto objects.
 /* eslint-disable no-proto */
 var isObject = __webpack_require__(34);
-var anObject = __webpack_require__(42);
+var anObject = __webpack_require__(43);
 var check = function check(O, proto) {
   anObject(O);
   if (!isObject(proto) && proto !== null) throw TypeError(proto + ": can't set as prototype!");
@@ -63800,7 +63800,7 @@ var _classnames = __webpack_require__(0);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _defaultImage = __webpack_require__(41);
+var _defaultImage = __webpack_require__(42);
 
 var _defaultImage2 = _interopRequireDefault(_defaultImage);
 
@@ -64045,7 +64045,7 @@ var _PremiumShadow = __webpack_require__(5);
 
 var _PremiumShadow2 = _interopRequireDefault(_PremiumShadow);
 
-var _defaultImage = __webpack_require__(41);
+var _defaultImage = __webpack_require__(42);
 
 var _defaultImage2 = _interopRequireDefault(_defaultImage);
 
@@ -65927,8 +65927,8 @@ module.exports = toFinite;
 
 
 var baseTrim = __webpack_require__(395),
-    isObject = __webpack_require__(46),
-    isSymbol = __webpack_require__(43);
+    isObject = __webpack_require__(47),
+    isSymbol = __webpack_require__(44);
 
 /** Used as references for various `Number` constants. */
 var NAN = 0 / 0;
@@ -68948,7 +68948,7 @@ var _edit = __webpack_require__(404);
 
 var _edit2 = _interopRequireDefault(_edit);
 
-var _save = __webpack_require__(412);
+var _save = __webpack_require__(413);
 
 var _save2 = _interopRequireDefault(_save);
 
@@ -69446,11 +69446,11 @@ var _Animation = __webpack_require__(409);
 
 var _Animation2 = _interopRequireDefault(_Animation);
 
-var _responsiveRadio = __webpack_require__(410);
+var _responsiveRadio = __webpack_require__(411);
 
 var _responsiveRadio2 = _interopRequireDefault(_responsiveRadio);
 
-var _renderIcon = __webpack_require__(411);
+var _renderIcon = __webpack_require__(412);
 
 var _renderIcon2 = _interopRequireDefault(_renderIcon);
 
@@ -70929,7 +70929,7 @@ var _singleRangeControl = __webpack_require__(3);
 
 var _singleRangeControl2 = _interopRequireDefault(_singleRangeControl);
 
-var _jquery = __webpack_require__(413);
+var _jquery = __webpack_require__(410);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
@@ -71116,542 +71116,6 @@ exports.default = Animation;
 
 /***/ }),
 /* 410 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-var _react = __webpack_require__(7);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _radioControl = __webpack_require__(9);
-
-var _radioControl2 = _interopRequireDefault(_radioControl);
-
-var _responsive = __webpack_require__(65);
-
-var _responsive2 = _interopRequireDefault(_responsive);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var useState = wp.element.useState;
-
-
-var ResponsiveRadio = function ResponsiveRadio(_ref) {
-    var choices = _ref.choices,
-        label = _ref.label,
-        showIcons = _ref.showIcons,
-        onChange = _ref.onChange,
-        value = _ref.value;
-
-    var defaultValue = {
-        'Desktop': '',
-        'Tablet': '',
-        'Mobile': ''
-    };
-
-    var _useState = useState(value ? _extends({}, defaultValue, value) : defaultValue),
-        _useState2 = _slicedToArray(_useState, 2),
-        state = _useState2[0],
-        setState = _useState2[1];
-
-    var _useState3 = useState("Desktop"),
-        _useState4 = _slicedToArray(_useState3, 2),
-        device = _useState4[0],
-        setDevice = _useState4[1];
-
-    var output = {};
-
-    var handleChange = function handleChange(val, dev) {
-        var updatedState = _extends({}, state);
-        updatedState[dev] = val;
-        setState(updatedState);
-        onChange(updatedState);
-    };
-
-    output.Desktop = _react2.default.createElement(_radioControl2.default, {
-        choices: choices,
-        showIcons: showIcons,
-        label: false,
-        onChange: function onChange(newValue) {
-            return handleChange(newValue, 'Desktop');
-        },
-        value: state['Desktop']
-    });
-    output.Tablet = _react2.default.createElement(_radioControl2.default, {
-        choices: choices,
-        showIcons: showIcons,
-        label: false,
-        onChange: function onChange(newValue) {
-            return handleChange(newValue, 'Tablet');
-        },
-        value: state['Tablet']
-    });
-    output.Mobile = _react2.default.createElement(_radioControl2.default, {
-        choices: choices,
-        showIcons: showIcons,
-        label: false,
-        onChange: function onChange(newValue) {
-            return handleChange(newValue, 'Mobile');
-        },
-        value: state['Mobile']
-    });
-
-    return _react2.default.createElement(
-        'div',
-        { className: 'premium-blocks-responsive-radio components-base-control premium-blocks__base-control ' },
-        _react2.default.createElement(
-            'header',
-            null,
-            label && _react2.default.createElement(
-                'span',
-                { className: 'premium-control-title' },
-                label
-            ),
-            _react2.default.createElement(_responsive2.default, { deviceType: device, onChange: function onChange(newDevice) {
-                    return setDevice(newDevice);
-                } })
-        ),
-        output[device] ? output[device] : output.Desktop
-    );
-};
-
-exports.default = ResponsiveRadio;
-
-/***/ }),
-/* 411 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-function renderCustomIcon(svg) {
-    var customSVG = '';
-    switch (svg) {
-        // Flex Row
-        case 'flex-row-start':
-            customSVG = React.createElement(
-                'svg',
-                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
-                React.createElement(
-                    'title',
-                    null,
-                    'justify-start-h'
-                ),
-                React.createElement('path', { d: 'M8 0c0.672 0 1.248 0.512 1.312 1.184l0.032 0.16v29.312c0 0.736-0.608 1.344-1.344 1.344-0.672 0-1.248-0.512-1.312-1.184l-0.032-0.16v-29.312c0-0.736 0.608-1.344 1.344-1.344zM15.616 5.344c0.96 0 1.728 0.768 1.728 1.728v17.856c0 0.96-0.768 1.728-1.728 1.728h-1.888c-0.96 0-1.728-0.768-1.728-1.728v-17.856c0-0.96 0.768-1.728 1.728-1.728h1.888zM23.616 5.344c0.96 0 1.728 0.768 1.728 1.728v17.856c0 0.96-0.768 1.728-1.728 1.728h-1.888c-0.96 0-1.728-0.768-1.728-1.728v-17.856c0-0.96 0.768-1.728 1.728-1.728h1.888z' })
-            );
-            break;
-        case 'flex-row-end':
-            customSVG = React.createElement(
-                'svg',
-                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
-                React.createElement(
-                    'title',
-                    null,
-                    'justify-end-h'
-                ),
-                React.createElement('path', { d: 'M24 0c0.672 0 1.248 0.512 1.312 1.184l0.032 0.16v29.312c0 0.736-0.608 1.344-1.344 1.344-0.672 0-1.248-0.512-1.312-1.184l-0.032-0.16v-29.312c0-0.736 0.608-1.344 1.344-1.344zM18.272 5.344c0.96 0 1.728 0.768 1.728 1.728v17.856c0 0.96-0.768 1.728-1.728 1.728h-1.856c-0.96 0-1.76-0.768-1.76-1.728v-17.856c0-0.96 0.8-1.728 1.76-1.728h1.856zM10.272 5.344c0.96 0 1.728 0.768 1.728 1.728v17.856c0 0.96-0.768 1.728-1.728 1.728h-1.856c-0.96 0-1.76-0.768-1.76-1.728v-17.856c0-0.96 0.8-1.728 1.76-1.728h1.856z' })
-            );
-            break;
-        case 'flex-row-center':
-            customSVG = React.createElement(
-                'svg',
-                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
-                React.createElement(
-                    'title',
-                    null,
-                    'justify-center-h'
-                ),
-                React.createElement('path', { d: 'M16 0c0.672 0 1.248 0.512 1.312 1.184l0.032 0.16v29.312c0 0.736-0.608 1.344-1.344 1.344-0.672 0-1.248-0.512-1.312-1.184l-0.032-0.16v-29.312c0-0.736 0.608-1.344 1.344-1.344zM23.616 5.344c0.96 0 1.728 0.768 1.728 1.728v17.856c0 0.96-0.768 1.728-1.728 1.728h-1.888c-0.96 0-1.728-0.768-1.728-1.728v-17.856c0-0.96 0.768-1.728 1.728-1.728h1.888zM10.272 5.344c0.96 0 1.728 0.768 1.728 1.728v17.856c0 0.96-0.768 1.728-1.728 1.728h-1.856c-0.96 0-1.76-0.768-1.76-1.728v-17.856c0-0.96 0.8-1.728 1.76-1.728h1.856z' })
-            );
-            break;
-        case 'flex-row-strech':
-            customSVG = React.createElement(
-                'svg',
-                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
-                React.createElement(
-                    'title',
-                    null,
-                    'shrink'
-                ),
-                React.createElement('path', { d: 'M16 0c0.736 0 1.344 0.608 1.344 1.344v29.312c0 0.736-0.608 1.344-1.344 1.344s-1.344-0.608-1.344-1.344v-29.312c0-0.736 0.608-1.344 1.344-1.344zM26.368 8.672c0.256 0.032 0.48 0.16 0.704 0.384 0.16 0.224 0.256 0.48 0.256 0.8v3.488h2.816c1.024 0 1.856 0.832 1.856 1.856v1.6c0 1.024-0.832 1.856-1.856 1.856h-2.816v3.616c-0.032 0.32-0.16 0.608-0.384 0.8-0.224 0.16-0.448 0.256-0.704 0.256-0.256-0.032-0.48-0.16-0.704-0.384l-5.216-6.080-0.128-0.16c-0.16-0.224-0.224-0.48-0.192-0.8s0.128-0.576 0.32-0.768l5.344-6.208c0.192-0.192 0.416-0.288 0.704-0.256zM5.632 8.672c0.224-0.032 0.448 0.032 0.608 0.16l0.128 0.096 5.344 6.176c0.16 0.224 0.288 0.48 0.288 0.8 0.032 0.256 0 0.448-0.096 0.64l-0.064 0.16-0.128 0.16-5.248 6.080c-0.192 0.224-0.416 0.352-0.704 0.384-0.224 0-0.48-0.096-0.704-0.256-0.16-0.16-0.288-0.352-0.352-0.608l-0.032-0.192v-3.616h-2.816c-1.024 0-1.856-0.832-1.856-1.856v-1.6c0-1.024 0.832-1.856 1.856-1.856h2.816v-3.488c0-0.256 0.064-0.48 0.16-0.672l0.096-0.128c0.192-0.224 0.448-0.352 0.704-0.384z' })
-            );
-            break;
-        case 'flex-row-space-between':
-            customSVG = React.createElement(
-                'svg',
-                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
-                React.createElement(
-                    'title',
-                    null,
-                    'justify-space-between-h'
-                ),
-                React.createElement('path', { d: 'M1.344 0c0.672 0 1.248 0.512 1.312 1.184v29.472c0 0.736-0.576 1.344-1.312 1.344-0.704 0-1.248-0.512-1.344-1.184v-29.472c0-0.736 0.608-1.344 1.344-1.344zM30.656 0c0.704 0 1.28 0.512 1.344 1.184v29.472c0 0.736-0.608 1.344-1.344 1.344-0.672 0-1.248-0.512-1.312-1.184v-29.472c0-0.736 0.576-1.344 1.312-1.344zM8.8 5.344c1.024 0 1.856 0.832 1.856 1.856v17.6c0 1.024-0.832 1.856-1.856 1.856h-3.456v-21.312h3.456zM26.656 5.344v21.312h-3.456c-1.024 0-1.856-0.832-1.856-1.856v-17.6c0-1.024 0.832-1.856 1.856-1.856h3.456z' })
-            );
-            break;
-        case 'flex-row-space-around':
-            customSVG = React.createElement(
-                'svg',
-                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
-                React.createElement(
-                    'title',
-                    null,
-                    'justify-space-around-h'
-                ),
-                React.createElement('path', { d: 'M30.656 0c0.704 0 1.28 0.512 1.344 1.184v29.472c0 0.736-0.608 1.344-1.344 1.344-0.672 0-1.248-0.512-1.312-1.184v-29.472c0-0.736 0.576-1.344 1.312-1.344zM1.344 0c0.672 0 1.248 0.512 1.312 1.184v29.472c0 0.736-0.576 1.344-1.312 1.344-0.704 0-1.248-0.512-1.344-1.184v-29.472c0-0.736 0.608-1.344 1.344-1.344zM20.8 5.344c1.024 0 1.856 0.832 1.856 1.856v17.6c0 1.024-0.832 1.856-1.856 1.856h-1.6c-1.024 0-1.856-0.832-1.856-1.856v-17.6c0-1.024 0.832-1.856 1.856-1.856h1.6zM12.8 5.344c1.024 0 1.856 0.832 1.856 1.856v17.6c0 1.024-0.832 1.856-1.856 1.856h-1.6c-1.024 0-1.856-0.832-1.856-1.856v-17.6c0-1.024 0.832-1.856 1.856-1.856h1.6z' })
-            );
-            break;
-        case 'flex-row-space-evenly':
-            customSVG = React.createElement(
-                'svg',
-                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
-                React.createElement(
-                    'title',
-                    null,
-                    'justify-space-evenly-h'
-                ),
-                React.createElement('path', { d: 'M30.656 0c0.704 0 1.28 0.512 1.344 1.184v29.472c0 0.736-0.608 1.344-1.344 1.344-0.672 0-1.248-0.512-1.312-1.184v-29.472c0-0.736 0.576-1.344 1.312-1.344zM1.344 0c0.672 0 1.248 0.512 1.312 1.184v29.472c0 0.736-0.576 1.344-1.312 1.344-0.704 0-1.248-0.512-1.344-1.184v-29.472c0-0.736 0.608-1.344 1.344-1.344zM22.144 5.344c1.024 0 1.856 0.832 1.856 1.856v17.6c0 1.024-0.832 1.856-1.856 1.856h-1.6c-1.024 0-1.888-0.832-1.888-1.856v-17.6c0-1.024 0.864-1.856 1.888-1.856h1.6zM11.456 5.344c1.024 0 1.888 0.832 1.888 1.856v17.6c0 1.024-0.864 1.856-1.888 1.856h-1.6c-1.024 0-1.856-0.832-1.856-1.856v-17.6c0-1.024 0.832-1.856 1.856-1.856h1.6z' })
-            );
-            break;
-        // Flex Column
-        case 'flex-column-start':
-            customSVG = React.createElement(
-                'svg',
-                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
-                React.createElement(
-                    'title',
-                    null,
-                    'justify-start-v'
-                ),
-                React.createElement('path', { d: 'M24.928 20c0.96 0 1.728 0.768 1.728 1.728v1.856c0 0.96-0.768 1.76-1.728 1.76h-17.856c-0.96 0-1.728-0.8-1.728-1.76v-1.856c0-0.96 0.768-1.728 1.728-1.728h17.856zM24.928 12c0.96 0 1.728 0.768 1.728 1.728v1.856c0 0.96-0.768 1.76-1.728 1.76h-17.856c-0.96 0-1.728-0.8-1.728-1.76v-1.856c0-0.96 0.768-1.728 1.728-1.728h17.856zM30.656 6.656c0.736 0 1.344 0.608 1.344 1.344 0 0.672-0.512 1.248-1.184 1.312l-0.16 0.032h-29.312c-0.736 0-1.344-0.608-1.344-1.344 0-0.672 0.512-1.248 1.184-1.312l0.16-0.032h29.312z' })
-            );
-            break;
-        case 'flex-column-end':
-            customSVG = React.createElement(
-                'svg',
-                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
-                React.createElement(
-                    'title',
-                    null,
-                    'justify-end-v'
-                ),
-                React.createElement('path', { d: 'M30.656 22.656c0.736 0 1.344 0.608 1.344 1.344 0 0.672-0.512 1.248-1.184 1.312l-0.16 0.032h-29.312c-0.736 0-1.344-0.608-1.344-1.344 0-0.672 0.512-1.248 1.184-1.312l0.16-0.032h29.312zM24.928 14.656c0.96 0 1.728 0.768 1.728 1.728v1.888c0 0.96-0.768 1.728-1.728 1.728h-17.856c-0.96 0-1.728-0.768-1.728-1.728v-1.888c0-0.96 0.768-1.728 1.728-1.728h17.856zM24.928 6.656c0.96 0 1.728 0.768 1.728 1.728v1.888c0 0.96-0.768 1.728-1.728 1.728h-17.856c-0.96 0-1.728-0.768-1.728-1.728v-1.888c0-0.96 0.768-1.728 1.728-1.728h17.856z' })
-            );
-            break;
-        case 'flex-column-center':
-            customSVG = React.createElement(
-                'svg',
-                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
-                React.createElement(
-                    'title',
-                    null,
-                    'justify-center-v'
-                ),
-                React.createElement('path', { d: 'M24.928 20c0.96 0 1.728 0.768 1.728 1.728v1.856c0 0.96-0.768 1.76-1.728 1.76h-17.856c-0.96 0-1.728-0.8-1.728-1.76v-1.856c0-0.96 0.768-1.728 1.728-1.728h17.856zM30.656 14.656c0.736 0 1.344 0.608 1.344 1.344 0 0.672-0.512 1.248-1.184 1.312l-0.16 0.032h-29.312c-0.736 0-1.344-0.608-1.344-1.344 0-0.672 0.512-1.248 1.184-1.312l0.16-0.032h29.312zM24.928 6.656c0.96 0 1.728 0.768 1.728 1.728v1.888c0 0.96-0.768 1.728-1.728 1.728h-17.856c-0.96 0-1.728-0.768-1.728-1.728v-1.888c0-0.96 0.768-1.728 1.728-1.728h17.856z' })
-            );
-            break;
-        case 'flex-column-strech':
-            customSVG = React.createElement(
-                'svg',
-                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
-                React.createElement(
-                    'title',
-                    null,
-                    'grow'
-                ),
-                React.createElement('path', { d: 'M1.344 0c0.736 0 1.312 0.608 1.312 1.344v29.312c0 0.736-0.576 1.344-1.312 1.344s-1.344-0.608-1.344-1.344v-29.312c0-0.736 0.608-1.344 1.344-1.344zM30.656 0c0.736 0 1.344 0.608 1.344 1.344v29.312c0 0.736-0.608 1.344-1.344 1.344s-1.312-0.608-1.312-1.344v-29.312c0-0.736 0.576-1.344 1.312-1.344zM20.96 8.672c0.224-0.032 0.448 0.032 0.64 0.16l0.096 0.096 5.344 6.176c0.16 0.224 0.288 0.48 0.32 0.8 0 0.256-0.032 0.448-0.128 0.64l-0.064 0.16-0.128 0.16-5.248 6.080c-0.192 0.224-0.416 0.352-0.672 0.384-0.256 0-0.512-0.096-0.736-0.256-0.16-0.16-0.288-0.352-0.352-0.608l-0.032-0.192v-3.616h-8v3.616c-0.064 0.32-0.16 0.608-0.384 0.8-0.224 0.16-0.48 0.256-0.736 0.256-0.224-0.032-0.48-0.16-0.672-0.384l-5.248-6.080-0.096-0.16c-0.16-0.224-0.224-0.48-0.192-0.8s0.128-0.576 0.288-0.768l5.376-6.208c0.192-0.192 0.416-0.288 0.704-0.256 0.256 0.032 0.48 0.16 0.704 0.384 0.16 0.224 0.256 0.48 0.256 0.8v3.488h8v-3.488c0-0.256 0.064-0.48 0.16-0.672l0.096-0.128c0.224-0.224 0.448-0.352 0.704-0.384z' })
-            );
-            break;
-        case 'flex-column-space-between':
-            customSVG = React.createElement(
-                'svg',
-                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
-                React.createElement(
-                    'title',
-                    null,
-                    'justify-space-between-v'
-                ),
-                React.createElement('path', { d: 'M30.656 29.344c0.736 0 1.344 0.576 1.344 1.312 0 0.704-0.512 1.28-1.184 1.344h-29.472c-0.736 0-1.344-0.608-1.344-1.344 0-0.672 0.512-1.248 1.184-1.312h29.472zM24.8 21.344c1.024 0 1.856 0.832 1.856 1.856v3.456h-21.312v-3.456c0-1.024 0.832-1.856 1.856-1.856h17.6zM26.656 5.344v3.456c0 1.024-0.832 1.856-1.856 1.856h-17.6c-1.024 0-1.856-0.832-1.856-1.856v-3.456h21.312zM30.656 0c0.736 0 1.344 0.608 1.344 1.344 0 0.672-0.512 1.248-1.184 1.312h-29.472c-0.736 0-1.344-0.576-1.344-1.312 0-0.704 0.512-1.28 1.184-1.344h29.472z' })
-            );
-            break;
-        case 'flex-column-space-around':
-            customSVG = React.createElement(
-                'svg',
-                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
-                React.createElement(
-                    'title',
-                    null,
-                    'justify-space-around-v'
-                ),
-                React.createElement('path', { d: 'M30.656 29.344c0.736 0 1.344 0.576 1.344 1.312 0 0.704-0.512 1.28-1.184 1.344h-29.472c-0.736 0-1.344-0.608-1.344-1.344 0-0.672 0.512-1.248 1.184-1.312h29.472zM24.8 17.344c1.024 0 1.856 0.832 1.856 1.856v1.6c0 1.024-0.832 1.856-1.856 1.856h-17.6c-1.024 0-1.856-0.832-1.856-1.856v-1.6c0-1.024 0.832-1.856 1.856-1.856h17.6zM24.8 9.344c1.024 0 1.856 0.832 1.856 1.856v1.6c0 1.024-0.832 1.856-1.856 1.856h-17.6c-1.024 0-1.856-0.832-1.856-1.856v-1.6c0-1.024 0.832-1.856 1.856-1.856h17.6zM30.656 0c0.736 0 1.344 0.608 1.344 1.344 0 0.672-0.512 1.248-1.184 1.312h-29.472c-0.736 0-1.344-0.576-1.344-1.312 0-0.704 0.512-1.28 1.184-1.344h29.472z' })
-            );
-            break;
-        case 'flex-column-space-evenly':
-            customSVG = React.createElement(
-                'svg',
-                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
-                React.createElement(
-                    'title',
-                    null,
-                    'justify-space-evenly-v'
-                ),
-                React.createElement('path', { d: 'M30.656 29.344c0.736 0 1.344 0.576 1.344 1.312 0 0.704-0.512 1.28-1.184 1.344h-29.472c-0.736 0-1.344-0.608-1.344-1.344 0-0.672 0.512-1.248 1.184-1.312h29.472zM24.8 18.656c1.024 0 1.856 0.864 1.856 1.888v1.6c0 1.024-0.832 1.856-1.856 1.856h-17.6c-1.024 0-1.856-0.832-1.856-1.856v-1.6c0-1.024 0.832-1.888 1.856-1.888h17.6zM24.8 8c1.024 0 1.856 0.832 1.856 1.856v1.6c0 1.024-0.832 1.888-1.856 1.888h-17.6c-1.024 0-1.856-0.864-1.856-1.888v-1.6c0-1.024 0.832-1.856 1.856-1.856h17.6zM30.656 0c0.736 0 1.344 0.608 1.344 1.344 0 0.672-0.512 1.248-1.184 1.312h-29.472c-0.736 0-1.344-0.576-1.344-1.312 0-0.704 0.512-1.28 1.184-1.344h29.472z' })
-            );
-            break;
-        // Flex Direction
-        case 'flex-direction-row':
-            customSVG = React.createElement(
-                'svg',
-                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
-                React.createElement(
-                    'title',
-                    null,
-                    'Row'
-                ),
-                React.createElement('path', { d: 'M23.616 17.472l-5.088 5.184c-0.8 0.8-0.8 2.016 0 2.816s2.016 0.8 2.816 0l8.672-8.928c0.8-0.8 0.8-2.016 0-2.816l-8.544-8.384c-0.8-0.8-2.016-0.8-2.816 0s-0.8 1.984 0 2.784l5.472 5.344-20.8-0.128c-1.056 0-1.984 0.928-1.984 1.984s0.928 2.016 1.984 2.016l20.288 0.128z' })
-            );
-            break;
-        case 'flex-direction-column':
-            customSVG = React.createElement(
-                'svg',
-                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
-                React.createElement(
-                    'title',
-                    null,
-                    'Column'
-                ),
-                React.createElement('path', { d: 'M13.216 23.584l-5.216-5.056c-0.8-0.8-1.984-0.8-2.784 0s-0.8 2.016 0 2.816l8.928 8.672c0.8 0.8 1.984 0.8 2.784 0l8.416-8.544c0.8-0.8 0.8-2.016 0-2.816s-2.016-0.8-2.816 0l-5.312 5.472 0.128-20.8c0-1.056-0.928-1.984-2.016-1.984-1.056 0-1.984 0.928-1.984 1.984l-0.128 20.256z' })
-            );
-            break;
-        case 'flex-direction-row-reverse':
-            customSVG = React.createElement(
-                'svg',
-                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
-                React.createElement(
-                    'title',
-                    null,
-                    'Row Reverse'
-                ),
-                React.createElement('path', { d: 'M8.416 17.472l5.056 5.184c0.8 0.8 0.8 2.016 0 2.816s-2.016 0.8-2.816 0l-8.64-8.928c-0.8-0.8-0.8-2.016 0-2.816l8.512-8.384c0.8-0.96 2.016-0.8 2.816 0s0.8 1.984 0 2.784l-5.472 5.344 20.8-0.128c1.056 0 1.984 0.928 1.984 1.984s-0.928 2.016-1.984 2.016l-20.256 0.128z' })
-            );
-            break;
-        case 'flex-direction-column-reverse':
-            customSVG = React.createElement(
-                'svg',
-                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
-                React.createElement(
-                    'title',
-                    null,
-                    'Column Reverse'
-                ),
-                React.createElement('path', { d: 'M13.216 8.384l-5.216 5.088c-0.8 0.8-1.984 0.8-2.784 0s-0.672-2.144 0.128-2.944l8.928-8.672c0.8-0.8 1.984-0.8 2.784 0l8.416 8.544c0.8 0.8 0.8 1.984 0 2.784s-2.016 0.8-2.816 0l-5.312-5.44v20.928c0 1.056-0.928 1.984-2.016 1.984-1.056 0-1.984-0.928-1.984-1.984l-0.128-20.288z' })
-            );
-            break;
-        // Flex Wrap
-        case 'flex-wrap':
-            customSVG = React.createElement(
-                'svg',
-                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
-                React.createElement(
-                    'title',
-                    null,
-                    'wrap'
-                ),
-                React.createElement('path', { d: 'M1.344 0c0.736 0 1.312 0.608 1.312 1.344v29.312c0 0.736-0.576 1.344-1.312 1.344s-1.344-0.608-1.344-1.344v-29.312c0-0.736 0.608-1.344 1.344-1.344zM21.728 5.344c6.656 0 10.272 3.648 10.272 9.312 0 5.568-3.488 9.184-9.888 9.344h-7.648v4.032c0 0.288-0.064 0.544-0.224 0.768l-0.096 0.096c-0.256 0.256-0.544 0.416-0.864 0.448-0.288 0.032-0.544-0.064-0.768-0.192l-0.128-0.096-6.688-6.752c-0.224-0.224-0.32-0.512-0.384-0.864-0.032-0.256 0.032-0.512 0.128-0.736l0.256-0.32 6.528-6.624c0.256-0.256 0.544-0.416 0.864-0.416s0.608 0.096 0.896 0.288c0.192 0.16 0.352 0.384 0.416 0.64l0.064 0.192v4.192h7.232c3.712 0 4.96-1.248 4.96-4 0-2.624-1.184-3.904-4.608-4h-16.704v-5.312h16.384z' })
-            );
-            break;
-        case 'flex-no-wrap':
-            customSVG = React.createElement(
-                'svg',
-                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
-                React.createElement(
-                    'title',
-                    null,
-                    'nowrap'
-                ),
-                React.createElement('path', { d: 'M1.344 0c0.736 0 1.344 0.608 1.344 1.344v29.312c0 0.704-0.512 1.28-1.184 1.344h-0.16c-0.736 0-1.344-0.608-1.344-1.344v-29.312c0-0.704 0.512-1.28 1.184-1.344h0.16zM24 8c0.288-0.032 0.544 0.032 0.768 0.192l0.128 0.096 6.72 6.752c0.224 0.224 0.352 0.512 0.384 0.864 0.032 0.256-0.032 0.48-0.128 0.704l-0.096 0.16-0.16 0.192-6.56 6.624c-0.256 0.256-0.544 0.384-0.864 0.416-0.32 0-0.64-0.096-0.896-0.288-0.224-0.192-0.352-0.416-0.448-0.672l-0.032-0.192v-4.192h-15.616c-1.024 0-1.856-0.832-1.856-1.856v-1.6c0-1.024 0.832-1.856 1.856-1.856h15.616v-4.064c0-0.288 0.064-0.544 0.224-0.736l0.096-0.128c0.256-0.224 0.544-0.384 0.864-0.416z' })
-            );
-            break;
-    }
-    return customSVG;
-}
-exports.default = renderCustomIcon;
-
-/***/ }),
-/* 412 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _HelperFunction = __webpack_require__(134);
-
-var _classnames = __webpack_require__(0);
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/* eslint-disable react/react-in-jsx-scope */
-var Fragment = wp.element.Fragment;
-var InnerBlocks = wp.blockEditor.InnerBlocks;
-
-
-var Save = function Save(props) {
-    var _props$attributes = props.attributes,
-        block_id = _props$attributes.block_id,
-        shapeTop = _props$attributes.shapeTop,
-        shapeBottom = _props$attributes.shapeBottom,
-        align = _props$attributes.align,
-        border = _props$attributes.border,
-        animation = _props$attributes.animation,
-        innerWidthType = _props$attributes.innerWidthType,
-        innerWidth = _props$attributes.innerWidth,
-        backgroundOverlay = _props$attributes.backgroundOverlay,
-        backgroundOverlayHover = _props$attributes.backgroundOverlayHover,
-        overlayOpacity = _props$attributes.overlayOpacity,
-        overlayFilter = _props$attributes.overlayFilter,
-        hoverOverlayOpacity = _props$attributes.hoverOverlayOpacity,
-        hoverOverlayFilter = _props$attributes.hoverOverlayFilter,
-        backgroundOptions = _props$attributes.backgroundOptions,
-        boxShadow = _props$attributes.boxShadow,
-        isBlockRootParent = _props$attributes.isBlockRootParent,
-        blockDescendants = _props$attributes.blockDescendants,
-        containerTag = _props$attributes.containerTag,
-        overflow = _props$attributes.overflow,
-        blend = _props$attributes.blend,
-        transition = _props$attributes.transition;
-
-    var wrapperClassName = "";
-
-    if (typeof align !== "undefined") {
-        if (align === "full") {
-            wrapperClassName = "alignfull";
-        } else if (align === "wide") {
-            wrapperClassName = "alignwide";
-        }
-    }
-
-    var CustomTag = '' + containerTag;
-    var loadStyles = function loadStyles() {
-        var styles = {};
-        var containerFullWidth = '100vw';
-
-        styles['.wp-block-premium-container.premium-block-' + block_id + '  .premium-top-shape svg'] = {
-            'fill': '' + shapeTop['color']
-        };
-        styles['.wp-block-premium-container.premium-block-' + block_id + ' .premium-bottom-shape svg'] = {
-            'fill': '' + shapeBottom['color']
-        };
-        if ('boxed' === innerWidthType) {
-            styles['.wp-block-premium-container.premium-is-root-container.premium-block-' + block_id] = {
-                '--inner-content-custom-width': 'min(' + containerFullWidth + ', ' + innerWidth + 'px)',
-                'max-width': 'var(--inner-content-custom-width)',
-                'margin-left': 'auto',
-                'margin-right': 'auto'
-            };
-        }
-        styles['.premium-blocks-' + block_id + ' .premium-row__block_overlay '] = {
-            'background-color': backgroundOverlay['backgroundColor'],
-            'background-image': (0, _HelperFunction.gradientValue)(backgroundOverlay),
-            'background-repeat': backgroundOverlay['backgroundRepeat'],
-            'background-position': backgroundOverlay['backgroundPosition'],
-            'background-size': backgroundOverlay['backgroundSize'],
-            'background-attachment': backgroundOverlay['fixed'] ? "fixed" : "unset",
-            'opacity': (backgroundOverlay ? overlayOpacity / 100 : 1) + ' ',
-            'mix-blend-mode': blend + ' !important',
-            'filter': 'brightness( ' + overlayFilter['bright'] + '% ) contrast( ' + overlayFilter['contrast'] + '% ) saturate( ' + overlayFilter['saturation'] + '% ) blur( ' + overlayFilter['blur'] + 'px ) hue-rotate( ' + overlayFilter['hue'] + 'deg ) ',
-            '-webkit-transition': transition + 's',
-            '-o-transition': transition + 's',
-            'transition': transition + 's'
-        };
-        styles['.premium-blocks-' + block_id + ':hover .premium-row__block_overlay '] = {
-            'background-color': backgroundOverlayHover['backgroundColor'],
-            'background-image': (0, _HelperFunction.gradientValue)(backgroundOverlayHover),
-            'background-repeat': backgroundOverlayHover['backgroundRepeat'],
-            'background-position': backgroundOverlayHover['backgroundPosition'],
-            'background-size': backgroundOverlayHover['backgroundSize'],
-            'background-attachment': backgroundOverlayHover['fixed'] ? "fixed" : "unset",
-            'opacity': (backgroundOverlayHover ? hoverOverlayOpacity / 100 : 1) + ' !important',
-            'filter': 'brightness( ' + hoverOverlayFilter['bright'] + '% ) contrast( ' + hoverOverlayFilter['contrast'] + '% ) saturate( ' + hoverOverlayFilter['saturation'] + '% ) blur( ' + hoverOverlayFilter['blur'] + 'px ) hue-rotate( ' + hoverOverlayFilter['hue'] + 'deg ) !important'
-        };
-
-        var styleCss = '';
-
-        var _loop = function _loop(selector) {
-            var selectorStyles = styles[selector];
-            var filteredStyles = Object.keys(selectorStyles).map(function (property) {
-                var value = selectorStyles[property];
-                var valueWithoutUnits = value ? value.toString().replaceAll('px', '').replaceAll(/\s/g, '') : '';
-                if (value && !value.toString().includes('undefined')) {
-                    return property + ': ' + value + '; ';
-                }
-            }).filter(function (style) {
-                return !!style;
-            }).join('\n');
-            styleCss += selector + ' {\n                ' + filteredStyles + '\n            } \n';
-        };
-
-        for (var selector in styles) {
-            _loop(selector);
-        }
-        return styleCss;
-    };
-    var topShapeClasses = (0, _classnames2.default)('premium-shape-divider', 'premium-top-shape', { 'premium-top-shape-flip': shapeTop['flipShapeDivider'] === true }, { 'premium-shape-above-content': shapeTop['front'] === true }, { 'premium-shape__invert': shapeTop['invertShapeDivider'] === true });
-    var bottomShapeClasses = (0, _classnames2.default)('premium-shape-divider', 'premium-bottom-shape', { 'premium-shape-flip': shapeBottom['flipShapeDivider'] === true }, { 'premium-shape-above-content': shapeBottom['front'] === true }, { 'premium-shape__invert': shapeBottom['invertShapeDivider'] === true });
-    return React.createElement(
-        Fragment,
-        null,
-        React.createElement('style', {
-            dangerouslySetInnerHTML: {
-                __html: loadStyles()
-            }
-        }),
-        React.createElement(
-            CustomTag,
-            _extends({
-                className: (0, _classnames2.default)(wrapperClassName, 'wp-block-premium-container', 'premium-block-' + block_id + ' ', 'premium-blocks-' + block_id + ' ', isBlockRootParent ? 'premium-is-root-container' : ''),
-                key: block_id,
-                style: _extends({}, (0, _HelperFunction.gradientBackground)(backgroundOptions), {
-                    boxShadow: (boxShadow.horizontal || 0) + ' px ' + (boxShadow.vertical || 0) + ' px ' + (boxShadow.blur || 0) + ' px ' + boxShadow.color + ' ' + boxShadow.position + ' ',
-                    overflow: overflow,
-                    borderStyle: border['borderType'],
-                    borderColor: border['borderColor']
-                })
-            }, (0, _HelperFunction.animationAttr)(animation)),
-            Object.entries(shapeTop).length > 1 && shapeTop.openShape == 1 && shapeTop.style && React.createElement('div', { className: topShapeClasses, dangerouslySetInnerHTML: { __html: PremiumBlocksSettings.shapes[shapeTop.style] } }),
-            (0, _HelperFunction.videoBackground)(backgroundOptions['backgroundType'], backgroundOptions.videoSource, backgroundOptions.videoURL, backgroundOptions.bgExternalVideo),
-            Object.entries(shapeBottom).length > 1 && shapeBottom.openShape == 1 && shapeBottom.style && React.createElement('div', { className: bottomShapeClasses, dangerouslySetInnerHTML: { __html: PremiumBlocksSettings.shapes[shapeBottom.style] } }),
-            React.createElement('div', { className: 'premium-row__block_overlay', style: _extends({}, (0, _HelperFunction.gradientBackground)(backgroundOverlay), {
-                    opacity: (backgroundOverlay ? overlayOpacity / 100 : 1) + ' ',
-                    filter: 'brightness(' + overlayFilter['bright'] + ' % ) contrast(' + overlayFilter['contrast'] + ' % ) saturate(' + overlayFilter['saturation'] + ' % ) blur(' + overlayFilter['blur'] + 'px) hue - rotate(' + overlayFilter['hue'] + 'deg)'
-                }) }),
-            React.createElement(InnerBlocks.Content, null)
-        )
-    );
-};
-exports.default = Save;
-
-/***/ }),
-/* 413 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -82027,7 +81491,543 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 	return jQuery;
 });
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(51)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(40)(module)))
+
+/***/ }),
+/* 411 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _react = __webpack_require__(7);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _radioControl = __webpack_require__(9);
+
+var _radioControl2 = _interopRequireDefault(_radioControl);
+
+var _responsive = __webpack_require__(65);
+
+var _responsive2 = _interopRequireDefault(_responsive);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var useState = wp.element.useState;
+
+
+var ResponsiveRadio = function ResponsiveRadio(_ref) {
+    var choices = _ref.choices,
+        label = _ref.label,
+        showIcons = _ref.showIcons,
+        onChange = _ref.onChange,
+        value = _ref.value;
+
+    var defaultValue = {
+        'Desktop': '',
+        'Tablet': '',
+        'Mobile': ''
+    };
+
+    var _useState = useState(value ? _extends({}, defaultValue, value) : defaultValue),
+        _useState2 = _slicedToArray(_useState, 2),
+        state = _useState2[0],
+        setState = _useState2[1];
+
+    var _useState3 = useState("Desktop"),
+        _useState4 = _slicedToArray(_useState3, 2),
+        device = _useState4[0],
+        setDevice = _useState4[1];
+
+    var output = {};
+
+    var handleChange = function handleChange(val, dev) {
+        var updatedState = _extends({}, state);
+        updatedState[dev] = val;
+        setState(updatedState);
+        onChange(updatedState);
+    };
+
+    output.Desktop = _react2.default.createElement(_radioControl2.default, {
+        choices: choices,
+        showIcons: showIcons,
+        label: false,
+        onChange: function onChange(newValue) {
+            return handleChange(newValue, 'Desktop');
+        },
+        value: state['Desktop']
+    });
+    output.Tablet = _react2.default.createElement(_radioControl2.default, {
+        choices: choices,
+        showIcons: showIcons,
+        label: false,
+        onChange: function onChange(newValue) {
+            return handleChange(newValue, 'Tablet');
+        },
+        value: state['Tablet']
+    });
+    output.Mobile = _react2.default.createElement(_radioControl2.default, {
+        choices: choices,
+        showIcons: showIcons,
+        label: false,
+        onChange: function onChange(newValue) {
+            return handleChange(newValue, 'Mobile');
+        },
+        value: state['Mobile']
+    });
+
+    return _react2.default.createElement(
+        'div',
+        { className: 'premium-blocks-responsive-radio components-base-control premium-blocks__base-control ' },
+        _react2.default.createElement(
+            'header',
+            null,
+            label && _react2.default.createElement(
+                'span',
+                { className: 'premium-control-title' },
+                label
+            ),
+            _react2.default.createElement(_responsive2.default, { deviceType: device, onChange: function onChange(newDevice) {
+                    return setDevice(newDevice);
+                } })
+        ),
+        output[device] ? output[device] : output.Desktop
+    );
+};
+
+exports.default = ResponsiveRadio;
+
+/***/ }),
+/* 412 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+function renderCustomIcon(svg) {
+    var customSVG = '';
+    switch (svg) {
+        // Flex Row
+        case 'flex-row-start':
+            customSVG = React.createElement(
+                'svg',
+                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
+                React.createElement(
+                    'title',
+                    null,
+                    'justify-start-h'
+                ),
+                React.createElement('path', { d: 'M8 0c0.672 0 1.248 0.512 1.312 1.184l0.032 0.16v29.312c0 0.736-0.608 1.344-1.344 1.344-0.672 0-1.248-0.512-1.312-1.184l-0.032-0.16v-29.312c0-0.736 0.608-1.344 1.344-1.344zM15.616 5.344c0.96 0 1.728 0.768 1.728 1.728v17.856c0 0.96-0.768 1.728-1.728 1.728h-1.888c-0.96 0-1.728-0.768-1.728-1.728v-17.856c0-0.96 0.768-1.728 1.728-1.728h1.888zM23.616 5.344c0.96 0 1.728 0.768 1.728 1.728v17.856c0 0.96-0.768 1.728-1.728 1.728h-1.888c-0.96 0-1.728-0.768-1.728-1.728v-17.856c0-0.96 0.768-1.728 1.728-1.728h1.888z' })
+            );
+            break;
+        case 'flex-row-end':
+            customSVG = React.createElement(
+                'svg',
+                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
+                React.createElement(
+                    'title',
+                    null,
+                    'justify-end-h'
+                ),
+                React.createElement('path', { d: 'M24 0c0.672 0 1.248 0.512 1.312 1.184l0.032 0.16v29.312c0 0.736-0.608 1.344-1.344 1.344-0.672 0-1.248-0.512-1.312-1.184l-0.032-0.16v-29.312c0-0.736 0.608-1.344 1.344-1.344zM18.272 5.344c0.96 0 1.728 0.768 1.728 1.728v17.856c0 0.96-0.768 1.728-1.728 1.728h-1.856c-0.96 0-1.76-0.768-1.76-1.728v-17.856c0-0.96 0.8-1.728 1.76-1.728h1.856zM10.272 5.344c0.96 0 1.728 0.768 1.728 1.728v17.856c0 0.96-0.768 1.728-1.728 1.728h-1.856c-0.96 0-1.76-0.768-1.76-1.728v-17.856c0-0.96 0.8-1.728 1.76-1.728h1.856z' })
+            );
+            break;
+        case 'flex-row-center':
+            customSVG = React.createElement(
+                'svg',
+                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
+                React.createElement(
+                    'title',
+                    null,
+                    'justify-center-h'
+                ),
+                React.createElement('path', { d: 'M16 0c0.672 0 1.248 0.512 1.312 1.184l0.032 0.16v29.312c0 0.736-0.608 1.344-1.344 1.344-0.672 0-1.248-0.512-1.312-1.184l-0.032-0.16v-29.312c0-0.736 0.608-1.344 1.344-1.344zM23.616 5.344c0.96 0 1.728 0.768 1.728 1.728v17.856c0 0.96-0.768 1.728-1.728 1.728h-1.888c-0.96 0-1.728-0.768-1.728-1.728v-17.856c0-0.96 0.768-1.728 1.728-1.728h1.888zM10.272 5.344c0.96 0 1.728 0.768 1.728 1.728v17.856c0 0.96-0.768 1.728-1.728 1.728h-1.856c-0.96 0-1.76-0.768-1.76-1.728v-17.856c0-0.96 0.8-1.728 1.76-1.728h1.856z' })
+            );
+            break;
+        case 'flex-row-strech':
+            customSVG = React.createElement(
+                'svg',
+                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
+                React.createElement(
+                    'title',
+                    null,
+                    'shrink'
+                ),
+                React.createElement('path', { d: 'M16 0c0.736 0 1.344 0.608 1.344 1.344v29.312c0 0.736-0.608 1.344-1.344 1.344s-1.344-0.608-1.344-1.344v-29.312c0-0.736 0.608-1.344 1.344-1.344zM26.368 8.672c0.256 0.032 0.48 0.16 0.704 0.384 0.16 0.224 0.256 0.48 0.256 0.8v3.488h2.816c1.024 0 1.856 0.832 1.856 1.856v1.6c0 1.024-0.832 1.856-1.856 1.856h-2.816v3.616c-0.032 0.32-0.16 0.608-0.384 0.8-0.224 0.16-0.448 0.256-0.704 0.256-0.256-0.032-0.48-0.16-0.704-0.384l-5.216-6.080-0.128-0.16c-0.16-0.224-0.224-0.48-0.192-0.8s0.128-0.576 0.32-0.768l5.344-6.208c0.192-0.192 0.416-0.288 0.704-0.256zM5.632 8.672c0.224-0.032 0.448 0.032 0.608 0.16l0.128 0.096 5.344 6.176c0.16 0.224 0.288 0.48 0.288 0.8 0.032 0.256 0 0.448-0.096 0.64l-0.064 0.16-0.128 0.16-5.248 6.080c-0.192 0.224-0.416 0.352-0.704 0.384-0.224 0-0.48-0.096-0.704-0.256-0.16-0.16-0.288-0.352-0.352-0.608l-0.032-0.192v-3.616h-2.816c-1.024 0-1.856-0.832-1.856-1.856v-1.6c0-1.024 0.832-1.856 1.856-1.856h2.816v-3.488c0-0.256 0.064-0.48 0.16-0.672l0.096-0.128c0.192-0.224 0.448-0.352 0.704-0.384z' })
+            );
+            break;
+        case 'flex-row-space-between':
+            customSVG = React.createElement(
+                'svg',
+                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
+                React.createElement(
+                    'title',
+                    null,
+                    'justify-space-between-h'
+                ),
+                React.createElement('path', { d: 'M1.344 0c0.672 0 1.248 0.512 1.312 1.184v29.472c0 0.736-0.576 1.344-1.312 1.344-0.704 0-1.248-0.512-1.344-1.184v-29.472c0-0.736 0.608-1.344 1.344-1.344zM30.656 0c0.704 0 1.28 0.512 1.344 1.184v29.472c0 0.736-0.608 1.344-1.344 1.344-0.672 0-1.248-0.512-1.312-1.184v-29.472c0-0.736 0.576-1.344 1.312-1.344zM8.8 5.344c1.024 0 1.856 0.832 1.856 1.856v17.6c0 1.024-0.832 1.856-1.856 1.856h-3.456v-21.312h3.456zM26.656 5.344v21.312h-3.456c-1.024 0-1.856-0.832-1.856-1.856v-17.6c0-1.024 0.832-1.856 1.856-1.856h3.456z' })
+            );
+            break;
+        case 'flex-row-space-around':
+            customSVG = React.createElement(
+                'svg',
+                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
+                React.createElement(
+                    'title',
+                    null,
+                    'justify-space-around-h'
+                ),
+                React.createElement('path', { d: 'M30.656 0c0.704 0 1.28 0.512 1.344 1.184v29.472c0 0.736-0.608 1.344-1.344 1.344-0.672 0-1.248-0.512-1.312-1.184v-29.472c0-0.736 0.576-1.344 1.312-1.344zM1.344 0c0.672 0 1.248 0.512 1.312 1.184v29.472c0 0.736-0.576 1.344-1.312 1.344-0.704 0-1.248-0.512-1.344-1.184v-29.472c0-0.736 0.608-1.344 1.344-1.344zM20.8 5.344c1.024 0 1.856 0.832 1.856 1.856v17.6c0 1.024-0.832 1.856-1.856 1.856h-1.6c-1.024 0-1.856-0.832-1.856-1.856v-17.6c0-1.024 0.832-1.856 1.856-1.856h1.6zM12.8 5.344c1.024 0 1.856 0.832 1.856 1.856v17.6c0 1.024-0.832 1.856-1.856 1.856h-1.6c-1.024 0-1.856-0.832-1.856-1.856v-17.6c0-1.024 0.832-1.856 1.856-1.856h1.6z' })
+            );
+            break;
+        case 'flex-row-space-evenly':
+            customSVG = React.createElement(
+                'svg',
+                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
+                React.createElement(
+                    'title',
+                    null,
+                    'justify-space-evenly-h'
+                ),
+                React.createElement('path', { d: 'M30.656 0c0.704 0 1.28 0.512 1.344 1.184v29.472c0 0.736-0.608 1.344-1.344 1.344-0.672 0-1.248-0.512-1.312-1.184v-29.472c0-0.736 0.576-1.344 1.312-1.344zM1.344 0c0.672 0 1.248 0.512 1.312 1.184v29.472c0 0.736-0.576 1.344-1.312 1.344-0.704 0-1.248-0.512-1.344-1.184v-29.472c0-0.736 0.608-1.344 1.344-1.344zM22.144 5.344c1.024 0 1.856 0.832 1.856 1.856v17.6c0 1.024-0.832 1.856-1.856 1.856h-1.6c-1.024 0-1.888-0.832-1.888-1.856v-17.6c0-1.024 0.864-1.856 1.888-1.856h1.6zM11.456 5.344c1.024 0 1.888 0.832 1.888 1.856v17.6c0 1.024-0.864 1.856-1.888 1.856h-1.6c-1.024 0-1.856-0.832-1.856-1.856v-17.6c0-1.024 0.832-1.856 1.856-1.856h1.6z' })
+            );
+            break;
+        // Flex Column
+        case 'flex-column-start':
+            customSVG = React.createElement(
+                'svg',
+                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
+                React.createElement(
+                    'title',
+                    null,
+                    'justify-start-v'
+                ),
+                React.createElement('path', { d: 'M24.928 20c0.96 0 1.728 0.768 1.728 1.728v1.856c0 0.96-0.768 1.76-1.728 1.76h-17.856c-0.96 0-1.728-0.8-1.728-1.76v-1.856c0-0.96 0.768-1.728 1.728-1.728h17.856zM24.928 12c0.96 0 1.728 0.768 1.728 1.728v1.856c0 0.96-0.768 1.76-1.728 1.76h-17.856c-0.96 0-1.728-0.8-1.728-1.76v-1.856c0-0.96 0.768-1.728 1.728-1.728h17.856zM30.656 6.656c0.736 0 1.344 0.608 1.344 1.344 0 0.672-0.512 1.248-1.184 1.312l-0.16 0.032h-29.312c-0.736 0-1.344-0.608-1.344-1.344 0-0.672 0.512-1.248 1.184-1.312l0.16-0.032h29.312z' })
+            );
+            break;
+        case 'flex-column-end':
+            customSVG = React.createElement(
+                'svg',
+                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
+                React.createElement(
+                    'title',
+                    null,
+                    'justify-end-v'
+                ),
+                React.createElement('path', { d: 'M30.656 22.656c0.736 0 1.344 0.608 1.344 1.344 0 0.672-0.512 1.248-1.184 1.312l-0.16 0.032h-29.312c-0.736 0-1.344-0.608-1.344-1.344 0-0.672 0.512-1.248 1.184-1.312l0.16-0.032h29.312zM24.928 14.656c0.96 0 1.728 0.768 1.728 1.728v1.888c0 0.96-0.768 1.728-1.728 1.728h-17.856c-0.96 0-1.728-0.768-1.728-1.728v-1.888c0-0.96 0.768-1.728 1.728-1.728h17.856zM24.928 6.656c0.96 0 1.728 0.768 1.728 1.728v1.888c0 0.96-0.768 1.728-1.728 1.728h-17.856c-0.96 0-1.728-0.768-1.728-1.728v-1.888c0-0.96 0.768-1.728 1.728-1.728h17.856z' })
+            );
+            break;
+        case 'flex-column-center':
+            customSVG = React.createElement(
+                'svg',
+                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
+                React.createElement(
+                    'title',
+                    null,
+                    'justify-center-v'
+                ),
+                React.createElement('path', { d: 'M24.928 20c0.96 0 1.728 0.768 1.728 1.728v1.856c0 0.96-0.768 1.76-1.728 1.76h-17.856c-0.96 0-1.728-0.8-1.728-1.76v-1.856c0-0.96 0.768-1.728 1.728-1.728h17.856zM30.656 14.656c0.736 0 1.344 0.608 1.344 1.344 0 0.672-0.512 1.248-1.184 1.312l-0.16 0.032h-29.312c-0.736 0-1.344-0.608-1.344-1.344 0-0.672 0.512-1.248 1.184-1.312l0.16-0.032h29.312zM24.928 6.656c0.96 0 1.728 0.768 1.728 1.728v1.888c0 0.96-0.768 1.728-1.728 1.728h-17.856c-0.96 0-1.728-0.768-1.728-1.728v-1.888c0-0.96 0.768-1.728 1.728-1.728h17.856z' })
+            );
+            break;
+        case 'flex-column-strech':
+            customSVG = React.createElement(
+                'svg',
+                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
+                React.createElement(
+                    'title',
+                    null,
+                    'grow'
+                ),
+                React.createElement('path', { d: 'M1.344 0c0.736 0 1.312 0.608 1.312 1.344v29.312c0 0.736-0.576 1.344-1.312 1.344s-1.344-0.608-1.344-1.344v-29.312c0-0.736 0.608-1.344 1.344-1.344zM30.656 0c0.736 0 1.344 0.608 1.344 1.344v29.312c0 0.736-0.608 1.344-1.344 1.344s-1.312-0.608-1.312-1.344v-29.312c0-0.736 0.576-1.344 1.312-1.344zM20.96 8.672c0.224-0.032 0.448 0.032 0.64 0.16l0.096 0.096 5.344 6.176c0.16 0.224 0.288 0.48 0.32 0.8 0 0.256-0.032 0.448-0.128 0.64l-0.064 0.16-0.128 0.16-5.248 6.080c-0.192 0.224-0.416 0.352-0.672 0.384-0.256 0-0.512-0.096-0.736-0.256-0.16-0.16-0.288-0.352-0.352-0.608l-0.032-0.192v-3.616h-8v3.616c-0.064 0.32-0.16 0.608-0.384 0.8-0.224 0.16-0.48 0.256-0.736 0.256-0.224-0.032-0.48-0.16-0.672-0.384l-5.248-6.080-0.096-0.16c-0.16-0.224-0.224-0.48-0.192-0.8s0.128-0.576 0.288-0.768l5.376-6.208c0.192-0.192 0.416-0.288 0.704-0.256 0.256 0.032 0.48 0.16 0.704 0.384 0.16 0.224 0.256 0.48 0.256 0.8v3.488h8v-3.488c0-0.256 0.064-0.48 0.16-0.672l0.096-0.128c0.224-0.224 0.448-0.352 0.704-0.384z' })
+            );
+            break;
+        case 'flex-column-space-between':
+            customSVG = React.createElement(
+                'svg',
+                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
+                React.createElement(
+                    'title',
+                    null,
+                    'justify-space-between-v'
+                ),
+                React.createElement('path', { d: 'M30.656 29.344c0.736 0 1.344 0.576 1.344 1.312 0 0.704-0.512 1.28-1.184 1.344h-29.472c-0.736 0-1.344-0.608-1.344-1.344 0-0.672 0.512-1.248 1.184-1.312h29.472zM24.8 21.344c1.024 0 1.856 0.832 1.856 1.856v3.456h-21.312v-3.456c0-1.024 0.832-1.856 1.856-1.856h17.6zM26.656 5.344v3.456c0 1.024-0.832 1.856-1.856 1.856h-17.6c-1.024 0-1.856-0.832-1.856-1.856v-3.456h21.312zM30.656 0c0.736 0 1.344 0.608 1.344 1.344 0 0.672-0.512 1.248-1.184 1.312h-29.472c-0.736 0-1.344-0.576-1.344-1.312 0-0.704 0.512-1.28 1.184-1.344h29.472z' })
+            );
+            break;
+        case 'flex-column-space-around':
+            customSVG = React.createElement(
+                'svg',
+                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
+                React.createElement(
+                    'title',
+                    null,
+                    'justify-space-around-v'
+                ),
+                React.createElement('path', { d: 'M30.656 29.344c0.736 0 1.344 0.576 1.344 1.312 0 0.704-0.512 1.28-1.184 1.344h-29.472c-0.736 0-1.344-0.608-1.344-1.344 0-0.672 0.512-1.248 1.184-1.312h29.472zM24.8 17.344c1.024 0 1.856 0.832 1.856 1.856v1.6c0 1.024-0.832 1.856-1.856 1.856h-17.6c-1.024 0-1.856-0.832-1.856-1.856v-1.6c0-1.024 0.832-1.856 1.856-1.856h17.6zM24.8 9.344c1.024 0 1.856 0.832 1.856 1.856v1.6c0 1.024-0.832 1.856-1.856 1.856h-17.6c-1.024 0-1.856-0.832-1.856-1.856v-1.6c0-1.024 0.832-1.856 1.856-1.856h17.6zM30.656 0c0.736 0 1.344 0.608 1.344 1.344 0 0.672-0.512 1.248-1.184 1.312h-29.472c-0.736 0-1.344-0.576-1.344-1.312 0-0.704 0.512-1.28 1.184-1.344h29.472z' })
+            );
+            break;
+        case 'flex-column-space-evenly':
+            customSVG = React.createElement(
+                'svg',
+                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
+                React.createElement(
+                    'title',
+                    null,
+                    'justify-space-evenly-v'
+                ),
+                React.createElement('path', { d: 'M30.656 29.344c0.736 0 1.344 0.576 1.344 1.312 0 0.704-0.512 1.28-1.184 1.344h-29.472c-0.736 0-1.344-0.608-1.344-1.344 0-0.672 0.512-1.248 1.184-1.312h29.472zM24.8 18.656c1.024 0 1.856 0.864 1.856 1.888v1.6c0 1.024-0.832 1.856-1.856 1.856h-17.6c-1.024 0-1.856-0.832-1.856-1.856v-1.6c0-1.024 0.832-1.888 1.856-1.888h17.6zM24.8 8c1.024 0 1.856 0.832 1.856 1.856v1.6c0 1.024-0.832 1.888-1.856 1.888h-17.6c-1.024 0-1.856-0.864-1.856-1.888v-1.6c0-1.024 0.832-1.856 1.856-1.856h17.6zM30.656 0c0.736 0 1.344 0.608 1.344 1.344 0 0.672-0.512 1.248-1.184 1.312h-29.472c-0.736 0-1.344-0.576-1.344-1.312 0-0.704 0.512-1.28 1.184-1.344h29.472z' })
+            );
+            break;
+        // Flex Direction
+        case 'flex-direction-row':
+            customSVG = React.createElement(
+                'svg',
+                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
+                React.createElement(
+                    'title',
+                    null,
+                    'Row'
+                ),
+                React.createElement('path', { d: 'M23.616 17.472l-5.088 5.184c-0.8 0.8-0.8 2.016 0 2.816s2.016 0.8 2.816 0l8.672-8.928c0.8-0.8 0.8-2.016 0-2.816l-8.544-8.384c-0.8-0.8-2.016-0.8-2.816 0s-0.8 1.984 0 2.784l5.472 5.344-20.8-0.128c-1.056 0-1.984 0.928-1.984 1.984s0.928 2.016 1.984 2.016l20.288 0.128z' })
+            );
+            break;
+        case 'flex-direction-column':
+            customSVG = React.createElement(
+                'svg',
+                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
+                React.createElement(
+                    'title',
+                    null,
+                    'Column'
+                ),
+                React.createElement('path', { d: 'M13.216 23.584l-5.216-5.056c-0.8-0.8-1.984-0.8-2.784 0s-0.8 2.016 0 2.816l8.928 8.672c0.8 0.8 1.984 0.8 2.784 0l8.416-8.544c0.8-0.8 0.8-2.016 0-2.816s-2.016-0.8-2.816 0l-5.312 5.472 0.128-20.8c0-1.056-0.928-1.984-2.016-1.984-1.056 0-1.984 0.928-1.984 1.984l-0.128 20.256z' })
+            );
+            break;
+        case 'flex-direction-row-reverse':
+            customSVG = React.createElement(
+                'svg',
+                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
+                React.createElement(
+                    'title',
+                    null,
+                    'Row Reverse'
+                ),
+                React.createElement('path', { d: 'M8.416 17.472l5.056 5.184c0.8 0.8 0.8 2.016 0 2.816s-2.016 0.8-2.816 0l-8.64-8.928c-0.8-0.8-0.8-2.016 0-2.816l8.512-8.384c0.8-0.96 2.016-0.8 2.816 0s0.8 1.984 0 2.784l-5.472 5.344 20.8-0.128c1.056 0 1.984 0.928 1.984 1.984s-0.928 2.016-1.984 2.016l-20.256 0.128z' })
+            );
+            break;
+        case 'flex-direction-column-reverse':
+            customSVG = React.createElement(
+                'svg',
+                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
+                React.createElement(
+                    'title',
+                    null,
+                    'Column Reverse'
+                ),
+                React.createElement('path', { d: 'M13.216 8.384l-5.216 5.088c-0.8 0.8-1.984 0.8-2.784 0s-0.672-2.144 0.128-2.944l8.928-8.672c0.8-0.8 1.984-0.8 2.784 0l8.416 8.544c0.8 0.8 0.8 1.984 0 2.784s-2.016 0.8-2.816 0l-5.312-5.44v20.928c0 1.056-0.928 1.984-2.016 1.984-1.056 0-1.984-0.928-1.984-1.984l-0.128-20.288z' })
+            );
+            break;
+        // Flex Wrap
+        case 'flex-wrap':
+            customSVG = React.createElement(
+                'svg',
+                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
+                React.createElement(
+                    'title',
+                    null,
+                    'wrap'
+                ),
+                React.createElement('path', { d: 'M1.344 0c0.736 0 1.312 0.608 1.312 1.344v29.312c0 0.736-0.576 1.344-1.312 1.344s-1.344-0.608-1.344-1.344v-29.312c0-0.736 0.608-1.344 1.344-1.344zM21.728 5.344c6.656 0 10.272 3.648 10.272 9.312 0 5.568-3.488 9.184-9.888 9.344h-7.648v4.032c0 0.288-0.064 0.544-0.224 0.768l-0.096 0.096c-0.256 0.256-0.544 0.416-0.864 0.448-0.288 0.032-0.544-0.064-0.768-0.192l-0.128-0.096-6.688-6.752c-0.224-0.224-0.32-0.512-0.384-0.864-0.032-0.256 0.032-0.512 0.128-0.736l0.256-0.32 6.528-6.624c0.256-0.256 0.544-0.416 0.864-0.416s0.608 0.096 0.896 0.288c0.192 0.16 0.352 0.384 0.416 0.64l0.064 0.192v4.192h7.232c3.712 0 4.96-1.248 4.96-4 0-2.624-1.184-3.904-4.608-4h-16.704v-5.312h16.384z' })
+            );
+            break;
+        case 'flex-no-wrap':
+            customSVG = React.createElement(
+                'svg',
+                { version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '32', height: '32', viewBox: '0 0 32 32' },
+                React.createElement(
+                    'title',
+                    null,
+                    'nowrap'
+                ),
+                React.createElement('path', { d: 'M1.344 0c0.736 0 1.344 0.608 1.344 1.344v29.312c0 0.704-0.512 1.28-1.184 1.344h-0.16c-0.736 0-1.344-0.608-1.344-1.344v-29.312c0-0.704 0.512-1.28 1.184-1.344h0.16zM24 8c0.288-0.032 0.544 0.032 0.768 0.192l0.128 0.096 6.72 6.752c0.224 0.224 0.352 0.512 0.384 0.864 0.032 0.256-0.032 0.48-0.128 0.704l-0.096 0.16-0.16 0.192-6.56 6.624c-0.256 0.256-0.544 0.384-0.864 0.416-0.32 0-0.64-0.096-0.896-0.288-0.224-0.192-0.352-0.416-0.448-0.672l-0.032-0.192v-4.192h-15.616c-1.024 0-1.856-0.832-1.856-1.856v-1.6c0-1.024 0.832-1.856 1.856-1.856h15.616v-4.064c0-0.288 0.064-0.544 0.224-0.736l0.096-0.128c0.256-0.224 0.544-0.384 0.864-0.416z' })
+            );
+            break;
+    }
+    return customSVG;
+}
+exports.default = renderCustomIcon;
+
+/***/ }),
+/* 413 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _HelperFunction = __webpack_require__(134);
+
+var _classnames = __webpack_require__(0);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/* eslint-disable react/react-in-jsx-scope */
+var Fragment = wp.element.Fragment;
+var InnerBlocks = wp.blockEditor.InnerBlocks;
+
+
+var Save = function Save(props) {
+    var _props$attributes = props.attributes,
+        block_id = _props$attributes.block_id,
+        shapeTop = _props$attributes.shapeTop,
+        shapeBottom = _props$attributes.shapeBottom,
+        align = _props$attributes.align,
+        border = _props$attributes.border,
+        animation = _props$attributes.animation,
+        innerWidthType = _props$attributes.innerWidthType,
+        innerWidth = _props$attributes.innerWidth,
+        backgroundOverlay = _props$attributes.backgroundOverlay,
+        backgroundOverlayHover = _props$attributes.backgroundOverlayHover,
+        overlayOpacity = _props$attributes.overlayOpacity,
+        overlayFilter = _props$attributes.overlayFilter,
+        hoverOverlayOpacity = _props$attributes.hoverOverlayOpacity,
+        hoverOverlayFilter = _props$attributes.hoverOverlayFilter,
+        backgroundOptions = _props$attributes.backgroundOptions,
+        boxShadow = _props$attributes.boxShadow,
+        isBlockRootParent = _props$attributes.isBlockRootParent,
+        blockDescendants = _props$attributes.blockDescendants,
+        containerTag = _props$attributes.containerTag,
+        overflow = _props$attributes.overflow,
+        blend = _props$attributes.blend,
+        transition = _props$attributes.transition;
+
+    var wrapperClassName = "";
+
+    if (typeof align !== "undefined") {
+        if (align === "full") {
+            wrapperClassName = "alignfull";
+        } else if (align === "wide") {
+            wrapperClassName = "alignwide";
+        }
+    }
+
+    var CustomTag = '' + containerTag;
+    var loadStyles = function loadStyles() {
+        var styles = {};
+        var containerFullWidth = '100vw';
+
+        styles['.wp-block-premium-container.premium-block-' + block_id + '  .premium-top-shape svg'] = {
+            'fill': '' + shapeTop['color']
+        };
+        styles['.wp-block-premium-container.premium-block-' + block_id + ' .premium-bottom-shape svg'] = {
+            'fill': '' + shapeBottom['color']
+        };
+        if ('boxed' === innerWidthType) {
+            styles['.wp-block-premium-container.premium-is-root-container.premium-block-' + block_id] = {
+                '--inner-content-custom-width': 'min(' + containerFullWidth + ', ' + innerWidth + 'px)',
+                'max-width': 'var(--inner-content-custom-width)',
+                'margin-left': 'auto',
+                'margin-right': 'auto'
+            };
+        }
+        styles['.premium-blocks-' + block_id + ' .premium-row__block_overlay '] = {
+            'background-color': backgroundOverlay['backgroundColor'],
+            'background-image': (0, _HelperFunction.gradientValue)(backgroundOverlay),
+            'background-repeat': backgroundOverlay['backgroundRepeat'],
+            'background-position': backgroundOverlay['backgroundPosition'],
+            'background-size': backgroundOverlay['backgroundSize'],
+            'background-attachment': backgroundOverlay['fixed'] ? "fixed" : "unset",
+            'opacity': (backgroundOverlay ? overlayOpacity / 100 : 1) + ' ',
+            'mix-blend-mode': blend + ' !important',
+            'filter': 'brightness( ' + overlayFilter['bright'] + '% ) contrast( ' + overlayFilter['contrast'] + '% ) saturate( ' + overlayFilter['saturation'] + '% ) blur( ' + overlayFilter['blur'] + 'px ) hue-rotate( ' + overlayFilter['hue'] + 'deg ) ',
+            '-webkit-transition': transition + 's',
+            '-o-transition': transition + 's',
+            'transition': transition + 's'
+        };
+        styles['.premium-blocks-' + block_id + ':hover .premium-row__block_overlay '] = {
+            'background-color': backgroundOverlayHover['backgroundColor'],
+            'background-image': (0, _HelperFunction.gradientValue)(backgroundOverlayHover),
+            'background-repeat': backgroundOverlayHover['backgroundRepeat'],
+            'background-position': backgroundOverlayHover['backgroundPosition'],
+            'background-size': backgroundOverlayHover['backgroundSize'],
+            'background-attachment': backgroundOverlayHover['fixed'] ? "fixed" : "unset",
+            'opacity': (backgroundOverlayHover ? hoverOverlayOpacity / 100 : 1) + ' !important',
+            'filter': 'brightness( ' + hoverOverlayFilter['bright'] + '% ) contrast( ' + hoverOverlayFilter['contrast'] + '% ) saturate( ' + hoverOverlayFilter['saturation'] + '% ) blur( ' + hoverOverlayFilter['blur'] + 'px ) hue-rotate( ' + hoverOverlayFilter['hue'] + 'deg ) !important'
+        };
+
+        var styleCss = '';
+
+        var _loop = function _loop(selector) {
+            var selectorStyles = styles[selector];
+            var filteredStyles = Object.keys(selectorStyles).map(function (property) {
+                var value = selectorStyles[property];
+                var valueWithoutUnits = value ? value.toString().replaceAll('px', '').replaceAll(/\s/g, '') : '';
+                if (value && !value.toString().includes('undefined')) {
+                    return property + ': ' + value + '; ';
+                }
+            }).filter(function (style) {
+                return !!style;
+            }).join('\n');
+            styleCss += selector + ' {\n                ' + filteredStyles + '\n            } \n';
+        };
+
+        for (var selector in styles) {
+            _loop(selector);
+        }
+        return styleCss;
+    };
+    var topShapeClasses = (0, _classnames2.default)('premium-shape-divider', 'premium-top-shape', { 'premium-top-shape-flip': shapeTop['flipShapeDivider'] === true }, { 'premium-shape-above-content': shapeTop['front'] === true }, { 'premium-shape__invert': shapeTop['invertShapeDivider'] === true });
+    var bottomShapeClasses = (0, _classnames2.default)('premium-shape-divider', 'premium-bottom-shape', { 'premium-shape-flip': shapeBottom['flipShapeDivider'] === true }, { 'premium-shape-above-content': shapeBottom['front'] === true }, { 'premium-shape__invert': shapeBottom['invertShapeDivider'] === true });
+    return React.createElement(
+        Fragment,
+        null,
+        React.createElement('style', {
+            dangerouslySetInnerHTML: {
+                __html: loadStyles()
+            }
+        }),
+        React.createElement(
+            CustomTag,
+            _extends({
+                className: (0, _classnames2.default)('wp-block-premium-container', 'premium-block-' + block_id + ' ', 'premium-blocks-' + block_id + ' ', isBlockRootParent ? 'premium-is-root-container' : ''),
+                key: block_id,
+                style: _extends({}, (0, _HelperFunction.gradientBackground)(backgroundOptions), {
+                    boxShadow: (boxShadow.horizontal || 0) + ' px ' + (boxShadow.vertical || 0) + ' px ' + (boxShadow.blur || 0) + ' px ' + boxShadow.color + ' ' + boxShadow.position + ' ',
+                    overflow: overflow,
+                    borderStyle: border['borderType'],
+                    borderColor: border['borderColor']
+                })
+            }, (0, _HelperFunction.animationAttr)(animation)),
+            Object.entries(shapeTop).length > 1 && shapeTop.openShape == 1 && shapeTop.style && React.createElement('div', { className: topShapeClasses, dangerouslySetInnerHTML: { __html: PremiumBlocksSettings.shapes[shapeTop.style] } }),
+            (0, _HelperFunction.videoBackground)(backgroundOptions['backgroundType'], backgroundOptions.videoSource, backgroundOptions.videoURL, backgroundOptions.bgExternalVideo),
+            Object.entries(shapeBottom).length > 1 && shapeBottom.openShape == 1 && shapeBottom.style && React.createElement('div', { className: bottomShapeClasses, dangerouslySetInnerHTML: { __html: PremiumBlocksSettings.shapes[shapeBottom.style] } }),
+            React.createElement('div', { className: 'premium-row__block_overlay', style: _extends({}, (0, _HelperFunction.gradientBackground)(backgroundOverlay), {
+                    opacity: (backgroundOverlay ? overlayOpacity / 100 : 1) + ' ',
+                    filter: 'brightness(' + overlayFilter['bright'] + ' % ) contrast(' + overlayFilter['contrast'] + ' % ) saturate(' + overlayFilter['saturation'] + ' % ) blur(' + overlayFilter['blur'] + 'px) hue - rotate(' + overlayFilter['hue'] + 'deg)'
+                }) }),
+            React.createElement(InnerBlocks.Content, null)
+        )
+    );
+};
+exports.default = Save;
 
 /***/ })
 /******/ ]);
