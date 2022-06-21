@@ -1721,7 +1721,7 @@ function PremiumMediaUpload(props) {
                                     onClick: open,
                                     role: "button"
                                 },
-                                React.createElement("div", { "aria-label": __("Edit"), className: "fa fa-pencil" })
+                                React.createElement("span", { "class": "dashicons dashicons-edit" })
                             )
                         ),
                         React.createElement(
@@ -1735,7 +1735,7 @@ function PremiumMediaUpload(props) {
                                     onClick: onRemoveImage,
                                     role: "button"
                                 },
-                                React.createElement("div", { "aria-label": __("Close"), className: "fa fa-trash-o" })
+                                React.createElement("span", { "class": "dashicons dashicons-trash" })
                             )
                         )
                     )
@@ -8747,10 +8747,7 @@ function PremiumBackground(props) {
                                         onClick: open,
                                         role: "button"
                                     },
-                                    React.createElement("span", {
-                                        "aria-label": __("Edit"),
-                                        className: "fa fa-pencil"
-                                    })
+                                    React.createElement("span", { "class": "dashicons dashicons-edit" })
                                 )
                             ),
                             React.createElement(
@@ -8764,10 +8761,7 @@ function PremiumBackground(props) {
                                         onClick: onRemoveImage,
                                         role: "button"
                                     },
-                                    React.createElement("span", {
-                                        "aria-label": __("Close"),
-                                        className: "fa fa-trash-o"
-                                    })
+                                    React.createElement("span", { "class": "dashicons dashicons-trash" })
                                 )
                             )
                         )

@@ -137,10 +137,7 @@ export default function PremiumBackground(props) {
                                             onClick={open}
                                             role="button"
                                         >
-                                            <span
-                                                aria-label={__("Edit")}
-                                                className="fa fa-pencil"
-                                            />
+                                            <span class="dashicons dashicons-edit"></span>
                                         </button>
                                     </Tooltip>
                                     <Tooltip text={__("Remove")}>
@@ -150,10 +147,7 @@ export default function PremiumBackground(props) {
                                             onClick={onRemoveImage}
                                             role="button"
                                         >
-                                            <span
-                                                aria-label={__("Close")}
-                                                className="fa fa-trash-o"
-                                            />
+                                            <span class="dashicons dashicons-trash"></span>
                                         </button>
                                     </Tooltip>
                                 </div>
