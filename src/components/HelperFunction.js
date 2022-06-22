@@ -87,3 +87,16 @@ export const generateCss = (styles) => {
 
     return styleCss;
 }
+
+export const filterJsCss = (styles) => {
+    const asArray = Object.entries(styles);
+
+    const filtered = asArray.filter(([property, value]) => {
+        const valueWithoutUnits = value ? value.toString().replaceAll(/px|em|rem|!important|%/g, '').replaceAll(/\s/g, '') : '';
+
+        return value && !value.toString().includes('undefined') && valueWithoutUnits;
+    });
+    const filteredStyles = Object.fromEntries(filtered);
+
+    return filteredStyles;
+}

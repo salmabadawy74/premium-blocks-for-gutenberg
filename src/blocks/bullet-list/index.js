@@ -6,6 +6,8 @@ import save from "./save";
 import edit from "./edit";
 import PbgIcon from "../icons";
 import attributes from './attributes'
+import deprecated from './deprecated';
+import PBG_Block_Icons from '../../../blocks-config/block-icons'
 
 const {
     __
@@ -17,12 +19,14 @@ const {
 
 registerBlockType("premium/bullet-list", {
     title: __("Bullet List"),
-    icon: < PbgIcon icon="bullet-list" />,
+    description: __('Organize your website’s content with attractive lists using Premium Bullet List Block.'),
+    icon: PBG_Block_Icons.bulletList,
     category: "premium-blocks",
     attributes: attributes,
     supports: {
         inserter: bulletList
     },
+    deprecated,
     edit: edit,
     save: save
 });
