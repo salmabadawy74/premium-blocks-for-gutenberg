@@ -12462,30 +12462,30 @@ class edit extends Component {
       value: "groove"
     }];
     const currentDevice = this.props.deviceType;
-    const BulletIconSize = bulletIconFontSize[currentDevice];
-    const BulletIconMarginTop = bulletIconmargin[currentDevice].top;
-    const BulletIconMarginRight = bulletIconmargin[currentDevice].right;
-    const BulletIconMarginBottom = bulletIconmargin[currentDevice].bottom;
-    const BulletIconMarginLeft = bulletIconmargin[currentDevice].left;
-    const BulletIconPaddingTop = bulletIconpadding[currentDevice].top;
-    const BulletIconPaddingRight = bulletIconpadding[currentDevice].right;
-    const BulletIconPaddingBottom = bulletIconpadding[currentDevice].bottom;
-    const BulletIconPaddingLeft = bulletIconpadding[currentDevice].left;
-    const TitleSize = titleTypography ? titleTypography.fontSize[currentDevice] : '';
-    const TitleMarginTop = titlemargin[currentDevice].top;
-    const TitleMarginRight = titlemargin[currentDevice].right;
-    const TitleMarginBottom = titlemargin[currentDevice].bottom;
-    const TitleMarginLeft = titlemargin[currentDevice].left;
-    const GeneralMarginTop = generalmargin[currentDevice].top;
-    const GeneralMarginRight = generalmargin[currentDevice].right;
-    const GeneralMarginBottom = generalmargin[currentDevice].bottom;
-    const GeneralMarginLeft = generalmargin[currentDevice].left;
-    const GeneralPaddingTop = generalpadding[currentDevice].top;
-    const GeneralPaddingRight = generalpadding[currentDevice].right;
-    const GeneralPaddingBottom = generalpadding[currentDevice].bottom;
-    const GeneralPaddingLeft = generalpadding[currentDevice].left;
-    const DividerWidth = dividerWidth[currentDevice];
-    const DividerHeight = dividerHeight[currentDevice];
+    const BulletIconSize = bulletIconFontSize?.[currentDevice];
+    const BulletIconMarginTop = bulletIconmargin?.[currentDevice]?.top;
+    const BulletIconMarginRight = bulletIconmargin?.[currentDevice]?.right;
+    const BulletIconMarginBottom = bulletIconmargin?.[currentDevice]?.bottom;
+    const BulletIconMarginLeft = bulletIconmargin?.[currentDevice]?.left;
+    const BulletIconPaddingTop = bulletIconpadding?.[currentDevice]?.top;
+    const BulletIconPaddingRight = bulletIconpadding?.[currentDevice]?.right;
+    const BulletIconPaddingBottom = bulletIconpadding?.[currentDevice]?.bottom;
+    const BulletIconPaddingLeft = bulletIconpadding?.[currentDevice]?.left;
+    const TitleSize = titleTypography ? titleTypography?.fontSize?.[currentDevice] : '';
+    const TitleMarginTop = titlemargin?.[currentDevice]?.top;
+    const TitleMarginRight = titlemargin?.[currentDevice]?.right;
+    const TitleMarginBottom = titlemargin?.[currentDevice]?.bottom;
+    const TitleMarginLeft = titlemargin?.[currentDevice]?.left;
+    const GeneralMarginTop = generalmargin?.[currentDevice]?.top;
+    const GeneralMarginRight = generalmargin?.[currentDevice]?.right;
+    const GeneralMarginBottom = generalmargin?.[currentDevice]?.bottom;
+    const GeneralMarginLeft = generalmargin?.[currentDevice]?.left;
+    const GeneralPaddingTop = generalpadding?.[currentDevice]?.top;
+    const GeneralPaddingRight = generalpadding?.[currentDevice]?.right;
+    const GeneralPaddingBottom = generalpadding?.[currentDevice]?.bottom;
+    const GeneralPaddingLeft = generalpadding?.[currentDevice]?.left;
+    const DividerWidth = dividerWidth?.[currentDevice];
+    const DividerHeight = dividerHeight?.[currentDevice];
 
     const addNewBulletList = () => {
       let cloneIcons = [...repeaterBulletList];
@@ -12790,21 +12790,21 @@ class edit extends Component {
       onClick: () => setAttributes({
         bulletAlign: 'flex-start'
       }),
-      className: "bullet-list-button" + (bulletAlign[currentDevice] === 'flex-start' ? ' active' : '')
+      className: "bullet-list-button" + (bulletAlign?.[currentDevice] === 'flex-start' ? ' active' : '')
     }, _components_align__WEBPACK_IMPORTED_MODULE_11__["default"].vertical_top)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Tooltip, {
       text: __('Middle')
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
       onClick: () => setAttributes({
         bulletAlign: 'center'
       }),
-      className: "bullet-list-button" + (bulletAlign[currentDevice] === 'center' ? ' active' : '')
+      className: "bullet-list-button" + (bulletAlign?.[currentDevice] === 'center' ? ' active' : '')
     }, _components_align__WEBPACK_IMPORTED_MODULE_11__["default"].vertical_middle)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Tooltip, {
       text: __('Bottom')
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
       onClick: () => setAttributes({
         bulletAlign: 'flex-end'
       }),
-      className: "bullet-list-button" + (bulletAlign[currentDevice] === 'flex-end' ? ' active' : '')
+      className: "bullet-list-button" + (bulletAlign?.[currentDevice] === 'flex-end' ? ' active' : '')
     }, _components_align__WEBPACK_IMPORTED_MODULE_11__["default"].vertical_bottom))) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_15__["default"], {
       choices: [{
         value: 'left',
@@ -12903,10 +12903,10 @@ class edit extends Component {
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_5__["default"], {
       label: __("Border"),
       value: generalBorder,
-      borderType: generalBorder.borderType,
-      borderColor: generalBorder.borderColor,
-      borderWidth: generalBorder.borderWidth,
-      borderRadius: generalBorder.borderRadius,
+      borderType: generalBorder?.borderType,
+      borderColor: generalBorder?.borderColor,
+      borderWidth: generalBorder?.borderWidth,
+      borderRadius: generalBorder?.borderRadius,
       onChange: value => setAttributes({
         generalBorder: value
       })
@@ -13161,16 +13161,16 @@ class edit extends Component {
                 paddingLeft: BulletIconPaddingLeft + bulletIconpadding.unit,
                 paddingRight: BulletIconPaddingRight + bulletIconpadding.unit,
                 borderStyle: bulletIconBorder && bulletIconBorder.borderType,
-                borderTopWidth: bulletIconBorder && bulletIconBorder.borderWidth[currentDevice].top,
-                borderRightWidth: bulletIconBorder && bulletIconBorder.borderWidth[currentDevice].right,
-                borderBottomWidth: bulletIconBorder && bulletIconBorder.borderWidth[currentDevice].bottom,
-                borderLeftWidth: bulletIconBorder && bulletIconBorder.borderWidth[currentDevice].left,
+                borderTopWidth: bulletIconBorder && bulletIconBorder.borderWidth?.[currentDevice]?.top,
+                borderRightWidth: bulletIconBorder && bulletIconBorder.borderWidth?.[currentDevice]?.right,
+                borderBottomWidth: bulletIconBorder && bulletIconBorder.borderWidth?.[currentDevice]?.bottom,
+                borderLeftWidth: bulletIconBorder && bulletIconBorder.borderWidth?.[currentDevice]?.left,
                 borderColor: bulletIconBorder && bulletIconBorder.borderColor,
-                borderTopLeftRadius: `${bulletIconBorder && bulletIconBorder.borderRadius[currentDevice].top || 0}px`,
-                borderTopRightRadius: `${bulletIconBorder && bulletIconBorder.borderRadius[currentDevice].right || 0}px`,
-                borderBottomLeftRadius: `${bulletIconBorder && bulletIconBorder.borderRadius[currentDevice].bottom || 0}px`,
-                borderBottomRightRadius: `${bulletIconBorder && bulletIconBorder.borderRadius[currentDevice].left || 0}px`,
-                verticalAlign: bulletAlign[currentDevice] == 'flex-start' ? 'top' : bulletAlign[currentDevice] == 'flex-end' ? 'bottom' : 'middle'
+                borderTopLeftRadius: `${bulletIconBorder && bulletIconBorder.borderRadius?.[currentDevice]?.top || 0}px`,
+                borderTopRightRadius: `${bulletIconBorder && bulletIconBorder.borderRadius?.[currentDevice]?.right || 0}px`,
+                borderBottomLeftRadius: `${bulletIconBorder && bulletIconBorder.borderRadius?.[currentDevice]?.bottom || 0}px`,
+                borderBottomRightRadius: `${bulletIconBorder && bulletIconBorder.borderRadius?.[currentDevice]?.left || 0}px`,
+                verticalAlign: bulletAlign?.[currentDevice] == 'flex-start' ? 'top' : bulletAlign?.[currentDevice] == 'flex-end' ? 'bottom' : 'middle'
               }
             }));
           }
@@ -13188,16 +13188,16 @@ class edit extends Component {
                 paddingLeft: BulletIconPaddingLeft + bulletIconpadding.unit,
                 paddingRight: BulletIconPaddingRight + bulletIconpadding.unit,
                 borderStyle: bulletIconBorder && bulletIconBorder.borderType,
-                borderTopWidth: bulletIconBorder && bulletIconBorder.borderWidth[currentDevice].top,
-                borderRightWidth: bulletIconBorder && bulletIconBorder.borderWidth[currentDevice].right,
-                borderBottomWidth: bulletIconBorder && bulletIconBorder.borderWidth[currentDevice].bottom,
-                borderLeftWidth: bulletIconBorder && bulletIconBorder.borderWidth[currentDevice].left,
+                borderTopWidth: bulletIconBorder && bulletIconBorder.borderWidth?.[currentDevice]?.top,
+                borderRightWidth: bulletIconBorder && bulletIconBorder.borderWidth?.[currentDevice]?.right,
+                borderBottomWidth: bulletIconBorder && bulletIconBorder.borderWidth?.[currentDevice]?.bottom,
+                borderLeftWidth: bulletIconBorder && bulletIconBorder.borderWidth?.[currentDevice]?.left,
                 borderColor: bulletIconBorder && bulletIconBorder.borderColor,
-                borderTopLeftRadius: `${bulletIconBorder && bulletIconBorder.borderRadius[currentDevice].top || 0}px`,
-                borderTopRightRadius: `${bulletIconBorder && bulletIconBorder.borderRadius[currentDevice].right || 0}px`,
-                borderBottomLeftRadius: `${bulletIconBorder && bulletIconBorder.borderRadius[currentDevice].bottom || 0}px`,
-                borderBottomRightRadius: `${bulletIconBorder && bulletIconBorder.borderRadius[currentDevice].left || 0}px`,
-                verticalAlign: bulletAlign[currentDevice] == 'flex-start' ? 'top' : bulletAlign[currentDevice] == 'flex-end' ? 'bottom' : 'middle'
+                borderTopLeftRadius: `${bulletIconBorder && bulletIconBorder.borderRadius?.[currentDevice]?.top || 0}px`,
+                borderTopRightRadius: `${bulletIconBorder && bulletIconBorder.borderRadius?.[currentDevice]?.right || 0}px`,
+                borderBottomLeftRadius: `${bulletIconBorder && bulletIconBorder.borderRadius?.[currentDevice]?.bottom || 0}px`,
+                borderBottomRightRadius: `${bulletIconBorder && bulletIconBorder.borderRadius?.[currentDevice]?.left || 0}px`,
+                verticalAlign: bulletAlign?.[currentDevice] == 'flex-start' ? 'top' : bulletAlign?.[currentDevice] == 'flex-end' ? 'bottom' : 'middle'
               }
             });
           }
@@ -13215,16 +13215,16 @@ class edit extends Component {
           overflow: 'hidden',
           justifyContent: align == "right" ? "flex-end" : align,
           backgroundColor: generalStyles[0].generalBackgroundColor,
-          borderStyle: generalBorder && generalBorder.borderType,
-          borderTopWidth: generalBorder && generalBorder.borderWidth[currentDevice].top,
-          borderRightWidth: generalBorder && generalBorder.borderWidth[currentDevice].right,
-          borderBottomWidth: generalBorder && generalBorder.borderWidth[currentDevice].bottom,
-          borderLeftWidth: generalBorder && generalBorder.borderWidth[currentDevice].left,
-          borderColor: generalBorder && generalBorder.borderColor,
-          borderTopLeftRadius: `${generalBorder && generalBorder.borderRadius[currentDevice].top || 0}px`,
-          borderTopRightRadius: `${generalBorder && generalBorder.borderRadius[currentDevice].right || 0}px`,
-          borderBottomLeftRadius: `${generalBorder && generalBorder.borderRadius[currentDevice].bottom || 0}px`,
-          borderBottomRightRadius: `${generalBorder && generalBorder.borderRadius[currentDevice].left || 0}px`,
+          borderStyle: generalBorder && generalBorder?.borderType,
+          borderTopWidth: generalBorder && generalBorder?.borderWidth?.[currentDevice]?.top,
+          borderRightWidth: generalBorder && generalBorder?.borderWidth?.[currentDevice]?.right,
+          borderBottomWidth: generalBorder && generalBorder?.borderWidth?.[currentDevice]?.bottom,
+          borderLeftWidth: generalBorder && generalBorder?.borderWidth?.[currentDevice]?.left,
+          borderColor: generalBorder && generalBorder?.borderColor,
+          borderTopLeftRadius: `${generalBorder && generalBorder?.borderRadius?.[currentDevice]?.top || 0}px`,
+          borderTopRightRadius: `${generalBorder && generalBorder?.borderRadius?.[currentDevice]?.right || 0}px`,
+          borderBottomLeftRadius: `${generalBorder && generalBorder?.borderRadius?.[currentDevice]?.bottom || 0}px`,
+          borderBottomRightRadius: `${generalBorder && generalBorder?.borderRadius?.[currentDevice]?.left || 0}px`,
           paddingTop: GeneralPaddingTop + generalpadding.unit,
           paddingBottom: GeneralPaddingBottom + generalpadding.unit,
           paddingLeft: GeneralPaddingLeft + generalpadding.unit,
@@ -13236,7 +13236,7 @@ class edit extends Component {
           boxShadow: `${boxShadow.horizontal}px ${boxShadow.vertical}px ${boxShadow.blur}px ${boxShadow.color} ${boxShadow.position}`
         }
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-        className: `premium-bullet-list__content-wrap premium-bullet-list__content-wrap-${bulletAlign[currentDevice]}`,
+        className: `premium-bullet-list__content-wrap premium-bullet-list__content-wrap-${bulletAlign?.[currentDevice]}`,
         style: {
           justifyContent: align == "right" ? align : align,
           display: iconPosition == "before" ? "flex" : "inline-flex",
@@ -13250,21 +13250,21 @@ class edit extends Component {
         className: `premium-bullet-list__icon-wrap`,
         style: {
           // overflow: "hidden",
-          alignSelf: bulletAlign[currentDevice] == 'left' ? 'flex-start' : bulletAlign[currentDevice] == 'right' ? 'flex-end' : 'center',
+          alignSelf: bulletAlign?.[currentDevice] == 'left' ? 'flex-start' : bulletAlign?.[currentDevice] == 'right' ? 'flex-end' : 'center',
           marginTop: BulletIconMarginTop + bulletIconmargin.unit,
           marginBottom: BulletIconMarginBottom + bulletIconmargin.unit,
           marginLeft: BulletIconMarginLeft + bulletIconmargin.unit,
           marginRight: BulletIconMarginRight + bulletIconmargin.unit,
-          textAlign: bulletAlign[currentDevice],
-          justifyContent: bulletAlign[currentDevice],
-          alignItems: bulletAlign[currentDevice] == 'left' ? 'flex-start' : bulletAlign[currentDevice] == 'right' ? 'flex-end' : 'center'
+          textAlign: bulletAlign?.[currentDevice],
+          justifyContent: bulletAlign?.[currentDevice],
+          alignItems: bulletAlign?.[currentDevice] == 'left' ? 'flex-start' : bulletAlign?.[currentDevice] == 'right' ? 'flex-end' : 'center'
         }
       }, image_icon_html), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
         className: "premium-bullet-list__label-wrap",
         style: {
-          fontSize: `${TitleSize}${titleTypography.fontSize.unit}`,
-          fontFamily: titleTypography.fontFamily,
-          fontWeight: titleTypography.fontWeight
+          fontSize: `${TitleSize}${titleTypography?.fontSize.unit}`,
+          fontFamily: titleTypography?.fontFamily,
+          fontWeight: titleTypography?.fontWeight
         }
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText, {
         tagName: "span",
@@ -13274,14 +13274,14 @@ class edit extends Component {
         onChange: val => changeLabel(val, index),
         multiline: false,
         style: {
-          fontSize: `${TitleSize}${titleTypography.fontSize.unit}`,
-          fontStyle: titleTypography.fontStyle,
-          fontFamily: titleTypography.fontFamily,
-          fontWeight: titleTypography.fontWeight,
-          letterSpacing: titleTypography.letterSpacing,
-          textDecoration: titleTypography.textDecoration,
-          textTransform: titleTypography.textTransform,
-          lineHeight: `${titleTypography.lineHeight}px`,
+          fontSize: `${TitleSize}${titleTypography?.fontSize.unit}`,
+          fontStyle: titleTypography?.fontStyle,
+          fontFamily: titleTypography?.fontFamily,
+          fontWeight: titleTypography?.fontWeight,
+          letterSpacing: titleTypography?.letterSpacing,
+          textDecoration: titleTypography?.textDecoration,
+          textTransform: titleTypography?.textTransform,
+          lineHeight: `${titleTypography?.lineHeight}px`,
           textShadow: `${titlesTextShadow.titleshadowHorizontal}px ${titlesTextShadow.titleshadowVertical}px ${titlesTextShadow.titleshadowBlur}px ${titlesTextShadow.titleshadowColor}`
         }
       })))), divider && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
