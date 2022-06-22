@@ -7,9 +7,12 @@ import deprecatedContent from "./deprecated";
 import attributes from "./attributes";
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
+import PBG_Block_Icons from '../../../blocks-config/block-icons'
+
 registerBlockType("premium/banner", {
     title: __("Banner"),
-    icon: <PbgIcon icon="banner" />,
+    description: __('Create attractive banners along with Heading, Description, and CTA using Premium Banner.'),
+    icon: PBG_Block_Icons.banner,
     category: "premium-blocks",
     attributes: attributes,
     supports: {

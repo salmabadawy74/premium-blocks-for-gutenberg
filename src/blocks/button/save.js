@@ -1,4 +1,5 @@
 import classnames from 'classnames'
+import { generateCss, filterJsCss } from '../../components/HelperFunction';
 const { RichText } = wp.blockEditor;
 const save = props => {
     const { className } = props;
@@ -24,6 +25,23 @@ const save = props => {
     } = props.attributes;
     const mainClasses = classnames(className, 'premium-button');
 
+    const loadStyles = () => {
+        const styles = {};
+
+        styles[`.${blockId} .premium-button:hover`] = {
+            'color': `${btnStyles[0].textHoverColor}!important`,
+            'border-color': `${btnStyles[0].borderHoverColor}!important`
+        };
+        styles[`.${blockId}.premium-button__none .premium-button:hover`] = {
+            'background-color': `${btnStyles[0].backHoverColor}!important`
+        };
+        styles[`.${blockId}.premium-button__slide .premium-button::before, .${blockId}.premium-button__shutter .premium-button::before, .${blockId}.premium-button__radial .premium-button::before`] = {
+            'background-color': `${slideColor}`,
+        };
+
+        return generateCss(styles);
+    }
+
     return (
         <div
             className={`${mainClasses}__wrap premium-button__${effect} ${blockId} premium-button__${effectDir} premium-button-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
@@ -31,20 +49,7 @@ const save = props => {
         >
             <style
                 dangerouslySetInnerHTML={{
-                    __html: [
-                        `.${blockId} .premium-button:hover {`,
-                        `color: ${btnStyles[0].textHoverColor} !important;`,
-                        `border-color: ${btnStyles[0].borderHoverColor} !important;`,
-                        "}",
-                        `.${blockId}.premium-button__none .premium-button:hover {`,
-                        `background-color: ${btnStyles[0].backHoverColor} !important;`,
-                        "}",
-                        `.${blockId}.premium-button__slide .premium-button::before,`,
-                        `.${blockId}.premium-button__shutter .premium-button::before,`,
-                        `.${blockId}.premium-button__radial .premium-button::before {`,
-                        `background-color: ${slideColor}`,
-                        "}"
-                    ].join("\n")
+                    __html: loadStyles()
                 }}
             />
             <RichText.Content
@@ -54,7 +59,7 @@ const save = props => {
                 href={btnLink}
                 rel="noopener noreferrer"
                 target={btnTarget ? "_blank" : "_self"}
-                style={{
+                style={filterJsCss({
                     color: btnStyles[0].textColor,
                     backgroundColor: btnStyles[0].backColor,
                     fontStyle: typography?.fontStyle,
@@ -68,7 +73,7 @@ const save = props => {
                     boxShadow: `${boxShadow?.horizontal}px ${boxShadow?.vertical}px ${boxShadow?.blur}px ${boxShadow?.color} ${boxShadow?.position}`,
                     borderStyle: border?.borderType,
                     borderColor: border?.borderColor,
-                }}
+                })}
             />
         </div>
     );

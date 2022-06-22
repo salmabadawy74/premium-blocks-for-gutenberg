@@ -275,8 +275,8 @@ const attributes = {
     }
 }
 
-const newAttributes = {
-    blockId: {
+const v8Attributes = {
+    block_id: {
         type: "string"
     },
     borderBanner: {
@@ -505,148 +505,12 @@ const newAttributes = {
     },
     paddingLMobile: {
         type: "number"
-    },
-    padding: {
-        type: "object",
-        default: {
-            Desktop: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            Tablet: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            Mobile: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            unit: 'px'
-        }
-    },
-    border: {
-        type: "object",
-        default: {
-            "borderType": '',
-            "borderColor": '',
-            "borderWidth": {
-                Desktop: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Tablet: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Mobile: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                }
-            },
-            "borderRadius": {
-                Desktop: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Tablet: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Mobile: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                }
-            }
-        }
-    },
-    titleTypography: {
-        type: "object",
-        default: {
-            "fontWeight": '',
-            'fontStyle': '',
-            'textTransform': '',
-            'letterSpacing': '',
-            'fontFamily': '',
-            'lineHeight': '',
-            'textDecoration': '',
-            'fontSize': {
-                'Desktop': '',
-                "Tablet": '',
-                "Mobile": '',
-                "unit": 'px'
-            }
-        }
-    },
-    descTypography: {
-        type: "object",
-        default: {
-            "fontWeight": '',
-            'fontStyle': '',
-            'textTransform': '',
-            'letterSpacing': '',
-            'fontFamily': '',
-            'lineHeight': '',
-            'textDecoration': '',
-            'fontSize': {
-                'Desktop': '',
-                "Tablet": '',
-                "Mobile": '',
-                "unit": 'px'
-            }
-        }
-    },
-    titleTextShadow: {
-        type: "object",
-        default: {
-            'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': '',
-        }
-    },
-    descTextShadow: {
-        type: "object",
-        default: {
-            'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': '',
-            'position': ' '
-        }
-    },
-    containerShadow: {
-        type: "object",
-        default: {
-            'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': '',
-            'position': ' '
-        }
     }
 }
 
 const deprecatedContent = [
     {
-        attributes: Object.assign(attributes, newAttributes),
+        attributes: v8Attributes,
         isEligible() {
             return true;
         },

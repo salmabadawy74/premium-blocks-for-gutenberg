@@ -1441,11 +1441,16 @@ class PBG_Blocks_Helper {
 		 */
 	public function get_banner_css( $attributes, $content ) {
 
-		if ( isset( $attributes['blockId'] ) && ! empty( $attributes['blockId'] ) ) {
-			$unique_id = $attributes['blockId'];
-		} else {
-			$unique_id = 'premium-bullet-list-' . rand( 100, 10000 );
+		if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
+			$unique_id = "#premium-banner-{$attributes['block_id']}";
 		}
+
+		if ( isset( $attributes['blockId'] ) && ! empty( $attributes['blockId'] ) ) {
+			$unique_id = ".{$attributes['blockId']}";
+		}
+
+		$style_unique_id = rand( 100, 10000 );
+
 		if ( $this->it_is_not_amp() ) {
 			wp_enqueue_script(
 				'pbg-banner',
@@ -1455,7 +1460,7 @@ class PBG_Blocks_Helper {
 				true
 			);
 		}
-		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
+		$style_id = 'pbg-blocks-style' . esc_attr( $style_unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'banner', $unique_id ) ) {
 			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
 			// $attributes = apply_filters( 'Premium_BLocks_blocks_column_render_block_attributes', $attributes );
@@ -1501,12 +1506,12 @@ class PBG_Blocks_Helper {
 				)
 			);
 
-			$css->set_selector( '.' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__title_wrap' . ' > .premium-banner__title' );
+			$css->set_selector( $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__title_wrap' . ' > .premium-banner__title' );
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Desktop', $title_size['unit'] ) );
 		}
 		if ( isset( $attr['titleStyles'] ) ) {
 			if ( isset( $attr['titleStyles'][0]['titleSize'] ) && isset( $attr['titleStyles'][0]['titleSizeUnit'] ) ) {
-				$css->set_selector( '.' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__title_wrap' . ' > .premium-banner__title' );
+				$css->set_selector( $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__title_wrap' . ' > .premium-banner__title' );
 				$css->add_property( 'font-size', $css->render_color( $attr['titleStyles'][0]['titleSize'] . 'px' . '!important' ) );
 			}
 		}
@@ -1522,36 +1527,36 @@ class PBG_Blocks_Helper {
 				)
 			);
 
-			$css->set_selector( '.' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__desc_wrap' . ' > .premium-banner__desc' );
+			$css->set_selector( $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__desc_wrap' . ' > .premium-banner__desc' );
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $desc_size, 'Desktop', $desc_size['unit'] ) );
 		}
 		if ( isset( $attr['descStyles'] ) ) {
 			if ( isset( $attr['descStyles'][0]['descSize'] ) && isset( $attr['descStyles'][0]['descSizeUnit'] ) ) {
-				$css->set_selector( '.' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__desc_wrap' . ' > .premium-banner__desc' );
+				$css->set_selector( $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__desc_wrap' . ' > .premium-banner__desc' );
 				$css->add_property( 'font-size', $css->render_color( $attr['descStyles'][0]['descSize'] . 'px' . '!important' ) );
 			}
 		}
 		// Container Style
 		if ( isset( $attr['paddingT'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-			$css->set_selector( '.' . $unique_id );
+			$css->set_selector( $unique_id );
 			$css->add_property( 'padding-top', $css->render_color( $attr['paddingT'] . $attr['containerStyles'][0]['paddingU'] ) );
 		}
 		if ( isset( $attr['paddingR'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-			$css->set_selector( '.' . $unique_id );
+			$css->set_selector( $unique_id );
 			$css->add_property( 'padding-right', $css->render_color( $attr['paddingR'] . $attr['containerStyles'][0]['paddingU'] ) );
 		}
 		if ( isset( $attr['paddingB'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-			$css->set_selector( '.' . $unique_id );
+			$css->set_selector( $unique_id );
 			$css->add_property( 'padding-bottom', $css->render_color( $attr['paddingB'] . $attr['containerStyles'][0]['paddingU'] ) );
 		}
 		if ( isset( $attr['paddingL'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-			$css->set_selector( '.' . $unique_id );
+			$css->set_selector( $unique_id );
 			$css->add_property( 'padding-left', $css->render_color( $attr['paddingL'] . $attr['containerStyles'][0]['paddingU'] ) );
 		}
 
 		if ( isset( $attr['padding'] ) ) {
 			$padding = $attr['padding'];
-			$css->set_selector( '.' . $unique_id );
+			$css->set_selector( $unique_id );
 			$css->add_property( 'padding-top', $css->render_color( $padding['Desktop']['top'] . $padding['unit'] ) );
 			$css->add_property( 'padding-right', $css->render_color( $padding['Desktop']['right'] . $padding['unit'] ) );
 			$css->add_property( 'padding-bottom', $css->render_color( $padding['Desktop']['bottom'] . $padding['unit'] ) );
@@ -1563,7 +1568,7 @@ class PBG_Blocks_Helper {
 			$border_width  = $attr['border']['borderWidth'];
 			$border_radius = $attr['border']['borderRadius'];
 
-			$css->set_selector( '.' . $unique_id . ' > .premium-banner__inner' );
+			$css->set_selector( $unique_id . ' > .premium-banner__inner' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $border_width, 'top', 'Desktop', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $border_width, 'right', 'Desktop', 'px' ) );
 			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $border_width, 'bottom', 'Desktop', 'px' ) );
@@ -1580,12 +1585,12 @@ class PBG_Blocks_Helper {
 			$title_typography = $attr['titleTypography'];
 			$title_size       = $title_typography['fontSize'];
 
-			$css->set_selector( '.' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__title_wrap' . ' > .premium-banner__title' );
+			$css->set_selector( $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__title_wrap' . ' > .premium-banner__title' );
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Tablet', $title_size['unit'] ) );
 		}
 
 		if ( isset( $attr['titleStyles'][0]['titleSizeTablet'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__title_wrap' . ' > .premium-banner__title' );
+			$css->set_selector( $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__title_wrap' . ' > .premium-banner__title' );
 			$css->add_property( 'font-size', $css->render_color( $attr['titleStyles'][0]['titleSizeTablet'] . 'px' . '!important' ) );
 		}
 		// Desc Style
@@ -1593,35 +1598,35 @@ class PBG_Blocks_Helper {
 			$desc_typography = $attr['descTypography'];
 			$desc_size       = $desc_typography['fontSize'];
 
-			$css->set_selector( '.' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__desc_wrap' . ' > .premium-banner__desc' );
+			$css->set_selector( $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__desc_wrap' . ' > .premium-banner__desc' );
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $desc_size, 'Tablet', $desc_size['unit'] ) );
 		}
 		if ( isset( $attr['descStyles'][0]['descSizeTablet'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__desc_wrap' . ' > .premium-banner__desc' );
+			$css->set_selector( $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__desc_wrap' . ' > .premium-banner__desc' );
 			$css->add_property( 'font-size', $css->render_color( $attr['descStyles'][0]['descSizeTablet'] . 'px' . '!important' ) );
 		}
 
 		// Container Style
 		if ( isset( $attr['paddingTTablet'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-			$css->set_selector( '.' . $unique_id );
+			$css->set_selector( $unique_id );
 			$css->add_property( 'padding-top', $css->render_color( $attr['paddingTTablet'] . $attr['containerStyles'][0]['paddingU'] ) );
 		}
 		if ( isset( $attr['paddingRTablet'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-			$css->set_selector( '.' . $unique_id );
+			$css->set_selector( $unique_id );
 			$css->add_property( 'padding-right', $css->render_color( $attr['paddingRTablet'] . $attr['containerStyles'][0]['paddingU'] ) );
 		}
 		if ( isset( $attr['paddingBTablet'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-			$css->set_selector( '.' . $unique_id );
+			$css->set_selector( $unique_id );
 			$css->add_property( 'padding-bottom', $css->render_color( $attr['paddingBTablet'] . $attr['containerStyles'][0]['paddingU'] ) );
 		}
 		if ( isset( $attr['paddingLTablet'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-			$css->set_selector( '.' . $unique_id );
+			$css->set_selector( $unique_id );
 			$css->add_property( 'padding-left', $css->render_color( $attr['paddingLTablet'] . $attr['containerStyles'][0]['paddingU'] ) );
 		}
 
 		if ( isset( $attr['padding'] ) ) {
 			$padding = $attr['padding'];
-			$css->set_selector( '.' . $unique_id );
+			$css->set_selector( $unique_id );
 			$css->add_property( 'padding-top', $css->render_color( $padding['Tablet']['top'] . $padding['unit'] ) );
 			$css->add_property( 'padding-right', $css->render_color( $padding['Tablet']['right'] . $padding['unit'] ) );
 			$css->add_property( 'padding-bottom', $css->render_color( $padding['Tablet']['bottom'] . $padding['unit'] ) );
@@ -1633,7 +1638,7 @@ class PBG_Blocks_Helper {
 			$border_width  = $attr['border']['borderWidth'];
 			$border_radius = $attr['border']['borderRadius'];
 
-			$css->set_selector( '.' . $unique_id . ' > .premium-banner__inner' );
+			$css->set_selector( $unique_id . ' > .premium-banner__inner' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $border_width, 'top', 'Tablet', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $border_width, 'right', 'Tablet', 'px' ) );
 			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $border_width, 'bottom', 'Tablet', 'px' ) );
@@ -1650,13 +1655,13 @@ class PBG_Blocks_Helper {
 			$title_typography = $attr['titleTypography'];
 			$title_size       = $title_typography['fontSize'];
 
-			$css->set_selector( '.' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__title_wrap' . ' > .premium-banner__title' );
+			$css->set_selector( $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__title_wrap' . ' > .premium-banner__title' );
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Mobile', $title_size['unit'] ) );
 		}
 
 		$css->start_media_query( $media_query['mobile'] );
 		if ( isset( $attr['titleStyles'][0]['titleSizeMobile'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__title_wrap' . ' > .premium-banner__title' );
+			$css->set_selector( $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__title_wrap' . ' > .premium-banner__title' );
 			$css->add_property( 'font-size', $css->render_color( $attr['titleStyles'][0]['titleSizeMobile'] . 'px' . '!important' ) );
 		}
 		// Desc Style
@@ -1664,34 +1669,34 @@ class PBG_Blocks_Helper {
 			$desc_typography = $attr['descTypography'];
 			$desc_size       = $desc_typography['fontSize'];
 
-			$css->set_selector( '.' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__desc_wrap' . ' > .premium-banner__desc' );
+			$css->set_selector( $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__desc_wrap' . ' > .premium-banner__desc' );
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $desc_size, 'Mobile', $desc_size['unit'] ) );
 		}
 		if ( isset( $attr['descStyles'][0]['descSizeMobile'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__desc_wrap' . ' > .premium-banner__desc' );
+			$css->set_selector( $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__desc_wrap' . ' > .premium-banner__desc' );
 			$css->add_property( 'font-size', $css->render_color( $attr['descStyles'][0]['descSizeMobile'] . 'px' . '!important' ) );
 		}
 		// Container Style
 		if ( isset( $attr['paddingTMobile'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-			$css->set_selector( '.' . $unique_id );
+			$css->set_selector( $unique_id );
 			$css->add_property( 'padding-top', $css->render_color( $attr['paddingTMobile'] . $attr['containerStyles'][0]['paddingU'] ) );
 		}
 		if ( isset( $attr['paddingRMobile'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-			$css->set_selector( '.' . $unique_id );
+			$css->set_selector( $unique_id );
 			$css->add_property( 'padding-right', $css->render_color( $attr['paddingRMobile'] . $attr['containerStyles'][0]['paddingU'] ) );
 		}
 		if ( isset( $attr['paddingBMobile'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-			$css->set_selector( '.' . $unique_id );
+			$css->set_selector( $unique_id );
 			$css->add_property( 'padding-bottom', $css->render_color( $attr['paddingBMobile'] . $attr['containerStyles'][0]['paddingU'] ) );
 		}
 		if ( isset( $attr['paddingLMobile'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-			$css->set_selector( '.' . $unique_id );
+			$css->set_selector( $unique_id );
 			$css->add_property( 'padding-left', $css->render_color( $attr['paddingLMobile'] . $attr['containerStyles'][0]['paddingU'] ) );
 		}
 
 		if ( isset( $attr['padding'] ) ) {
 			$padding = $attr['padding'];
-			$css->set_selector( '.' . $unique_id );
+			$css->set_selector( $unique_id );
 			$css->add_property( 'padding-top', $css->render_color( $padding['Mobile']['top'] . $padding['unit'] ) );
 			$css->add_property( 'padding-right', $css->render_color( $padding['Mobile']['right'] . $padding['unit'] ) );
 			$css->add_property( 'padding-bottom', $css->render_color( $padding['Mobile']['bottom'] . $padding['unit'] ) );
@@ -1703,7 +1708,7 @@ class PBG_Blocks_Helper {
 			$border_width  = $attr['border']['borderWidth'];
 			$border_radius = $attr['border']['borderRadius'];
 
-			$css->set_selector( '.' . $unique_id . ' > .premium-banner__inner' );
+			$css->set_selector( $unique_id . ' > .premium-banner__inner' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $border_width, 'top', 'Mobile', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $border_width, 'right', 'Mobile', 'px' ) );
 			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $border_width, 'bottom', 'Mobile', 'px' ) );
@@ -1729,19 +1734,23 @@ class PBG_Blocks_Helper {
 	 */
 	public function get_button_css( $attributes, $content ) {
 
-		if ( isset( $attributes['blockId'] ) && ! empty( $attributes['blockId'] ) ) {
-			$unique_id = $attributes['blockId'];
-		} else {
-			$unique_id = rand( 100, 10000 );
-
+		if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
+			$unique_id = "#premium-button-wrap-{$attributes['block_id']}";
 		}
+
+		if ( isset( $attributes['blockId'] ) && ! empty( $attributes['blockId'] ) ) {
+			$unique_id = ".{$attributes['blockId']}";
+		}
+
+		$style_unique_id = rand( 100, 10000 );
+
 		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
-		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'banner', $unique_id ) ) {
+		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'button', $unique_id ) ) {
 			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
 			// $attributes = apply_filters( 'Premium_BLocks_blocks_column_render_block_attributes', $attributes );
 			$css = $this->get_button_css_style( $attributes, $unique_id );
 			if ( ! empty( $css ) ) {
-				if ( $this->should_render_inline( 'banner', $unique_id ) ) {
+				if ( $this->should_render_inline( 'button', $unique_id ) ) {
 					$content = '<style id="' . $style_id . '">' . $css . '</style>' . $content;
 				} else {
 					$this->render_inline_css( $css, $style_id, true );
@@ -1789,13 +1798,13 @@ class PBG_Blocks_Helper {
 				)
 			);
 
-			$css->set_selector( '.' . $unique_id . '> .premium-button' );
+			$css->set_selector( $unique_id . '> .premium-button' );
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $font_size, 'Desktop', $font_size['unit'] ) );
 		}
 
 		if ( isset( $attr['textStyles'] ) ) {
 			if ( isset( $attr['textStyles'][0]['textSize'] ) || isset( $attr['textStyles'][0]['textSizeUnit'] ) ) {
-				$css->set_selector( '.' . $unique_id . '> .premium-button' );
+				$css->set_selector( $unique_id . '> .premium-button' );
 				$css->add_property( 'font-size', $css->render_color( $attr['textStyles'][0]['textSize'] . $attr['textStyles'][0]['textSizeUnit'] . '!important' ) );
 			}
 		}
@@ -1803,7 +1812,7 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['padding'] ) ) {
 			$padding = $attr['padding'];
 
-			$css->set_selector( '.' . $unique_id . '> .premium-button' );
+			$css->set_selector( $unique_id . '> .premium-button' );
 			$css->add_property( 'padding-top', $css->get_responsive_value( $padding, 'top', 'Desktop', $padding['unit'] ) );
 			$css->add_property( 'padding-right', $css->get_responsive_value( $padding, 'right', 'Desktop', $padding['unit'] ) );
 			$css->add_property( 'padding-bottom', $css->get_responsive_value( $padding, 'bottom', 'Desktop', $padding['unit'] ) );
@@ -1815,7 +1824,7 @@ class PBG_Blocks_Helper {
 			$border_width  = $attr['border']['borderWidth'];
 			$border_radius = $attr['border']['borderRadius'];
 
-			$css->set_selector( '.' . $unique_id . '> .premium-button' );
+			$css->set_selector( $unique_id . '> .premium-button' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $border_width, 'top', 'Desktop', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $border_width, 'right', 'Desktop', 'px' ) );
 			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $border_width, 'bottom', 'Desktop', 'px' ) );
@@ -1832,19 +1841,19 @@ class PBG_Blocks_Helper {
 			$typography = $attr['typography'];
 			$font_size  = $typography['fontSize'];
 
-			$css->set_selector( '.' . $unique_id . '> .premium-button' );
+			$css->set_selector( $unique_id . '> .premium-button' );
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $font_size, 'Tablet', $font_size['unit'] ) );
 		}
 
 		if ( isset( $attr['textStyles'][0]['textSizeTablet'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-button' );
+			$css->set_selector( $unique_id . '> .premium-button' );
 			$css->add_property( 'font-size', $css->render_color( $attr['textStyles'][0]['textSizeTablet'] . $attr['textStyles'][0]['textSizeUnit'] . '!important' ) );
 		}
 
 		if ( isset( $attr['padding'] ) ) {
 			$padding = $attr['padding'];
 
-			$css->set_selector( '.' . $unique_id . '> .premium-button' );
+			$css->set_selector( $unique_id . '> .premium-button' );
 			$css->add_property( 'padding-top', $css->get_responsive_value( $padding, 'top', 'Tablet', $padding['unit'] ) );
 			$css->add_property( 'padding-right', $css->get_responsive_value( $padding, 'right', 'Tablet', $padding['unit'] ) );
 			$css->add_property( 'padding-bottom', $css->get_responsive_value( $padding, 'bottom', 'Tablet', $padding['unit'] ) );
@@ -1856,7 +1865,7 @@ class PBG_Blocks_Helper {
 			$border_width  = $attr['border']['borderWidth'];
 			$border_radius = $attr['border']['borderRadius'];
 
-			$css->set_selector( '.' . $unique_id . '> .premium-button' );
+			$css->set_selector( $unique_id . '> .premium-button' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $border_width, 'top', 'Tablet', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $border_width, 'right', 'Tablet', 'px' ) );
 			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $border_width, 'bottom', 'Tablet', 'px' ) );
@@ -1874,12 +1883,12 @@ class PBG_Blocks_Helper {
 			$typography = $attr['typography'];
 			$font_size  = $typography['fontSize'];
 
-			$css->set_selector( '.' . $unique_id . '> .premium-button' );
+			$css->set_selector( $unique_id . '> .premium-button' );
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $font_size, 'Mobile', $font_size['unit'] ) );
 		}
 
 		if ( isset( $attr['textStyles'][0]['textSizeMobile'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-button' );
+			$css->set_selector( $unique_id . '> .premium-button' );
 			$css->add_property( 'font-size', $css->render_color( $attr['textStyles'][0]['textSizeMobile'] . $attr['textStyles'][0]['textSizeUnit'] . '!important' ) );
 
 		}
@@ -1887,7 +1896,7 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['padding'] ) ) {
 			$padding = $attr['padding'];
 
-			$css->set_selector( '.' . $unique_id . '> .premium-button' );
+			$css->set_selector( $unique_id . '> .premium-button' );
 			$css->add_property( 'padding-top', $css->get_responsive_value( $padding, 'top', 'Mobile', $padding['unit'] ) );
 			$css->add_property( 'padding-right', $css->get_responsive_value( $padding, 'right', 'Mobile', $padding['unit'] ) );
 			$css->add_property( 'padding-bottom', $css->get_responsive_value( $padding, 'bottom', 'Mobile', $padding['unit'] ) );
@@ -1899,7 +1908,7 @@ class PBG_Blocks_Helper {
 			$border_width  = $attr['border']['borderWidth'];
 			$border_radius = $attr['border']['borderRadius'];
 
-			$css->set_selector( '.' . $unique_id . '> .premium-button' );
+			$css->set_selector( $unique_id . '> .premium-button' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $border_width, 'top', 'Mobile', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $border_width, 'right', 'Mobile', 'px' ) );
 			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $border_width, 'bottom', 'Mobile', 'px' ) );
@@ -1926,10 +1935,15 @@ class PBG_Blocks_Helper {
 	public function get_countup_css( $attributes, $content ) {
 
 		if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
-			$unique_id = $attributes['block_id'];
-		} else {
-			$unique_id = rand( 100, 10000 );
+			$unique_id = "#premium-countup-{$attributes['block_id']}";
 		}
+
+		if ( isset( $attributes['blockId'] ) && ! empty( $attributes['blockId'] ) ) {
+			$unique_id = ".{$attributes['blockId']}";
+		}
+
+		$style_unique_id = rand( 100, 10000 );
+
 		if ( $this->it_is_not_amp() ) {
 			wp_enqueue_script(
 				'pbg-waypoints',
@@ -1953,14 +1967,14 @@ class PBG_Blocks_Helper {
 				true
 			);
 		}
-		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
-		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'banner', $unique_id ) ) {
+		$style_id = 'pbg-blocks-style-' . esc_attr( $unique_id );
+		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'countup', $unique_id ) ) {
 			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
 			// $attributes = apply_filters( 'Premium_BLocks_blocks_column_render_block_attributes', $attributes );
 			$css = $this->get_countup_css_style( $attributes, $unique_id );
 
 			if ( ! empty( $css ) ) {
-				if ( $this->should_render_inline( 'banner', $unique_id ) ) {
+				if ( $this->should_render_inline( 'countup', $unique_id ) ) {
 					$content = '<style id="' . $style_id . '">' . $css . '</style>' . $content;
 				} else {
 					$this->render_inline_css( $css, $style_id, true );
@@ -2020,144 +2034,385 @@ class PBG_Blocks_Helper {
 		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
 		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
 		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
+
+		// Align.
+		if ( isset( $attr['align'] ) ) {
+			$align = $css->get_responsive_css( $attr['align'], 'Desktop' );
+
+			$css->set_selector( $unique_id );
+			$css->add_property( 'justify-content', $align );
+		}
+
+		if ( isset( $attr['selfAlign'] ) ) {
+			$align = $css->get_responsive_css( $attr['selfAlign'], 'Desktop' );
+
+			$css->set_selector( $unique_id . ' .premium-countup__icon_wrap, ' . $unique_id . ' .premium-countup__info, ' . $unique_id . ' .premium-countup__title' );
+			$css->add_property( 'align-self', $align );
+		}
+
+		// Border.
+		if ( isset( $attr['border'] ) ) {
+			$border        = $attr['border'];
+			$border_width  = $attr['border']['borderWidth'];
+			$border_radius = $attr['border']['borderRadius'];
+
+			$css->set_selector( $unique_id );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $border_width, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $border_width, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $border_width, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $border_width, 'left', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $border_radius, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $border_radius, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $border_radius, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $border_radius, 'left', 'Desktop', 'px' ) );
+		}
+
 		// Number Style
+		if ( isset( $attr['numberTypography'] ) ) {
+			$number_typography = $attr['numberTypography'];
+			$number_size       = $number_typography['fontSize'];
+
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $number_typography['fontFamily'] ) ? $number_typography['fontFamily'] : '' ),
+					'fontVariant' => ( isset( $number_typography['fontWeight'] ) ? $number_typography['fontWeight'] : '' ),
+				)
+			);
+
+			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__increment' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $number_size, 'Desktop', $number_size['unit'] ) );
+		}
 		if ( isset( $attr['numberStyles'] ) ) {
 			if ( isset( $attr['numberStyles'][0]['numberSize'] ) && isset( $attr['numberStyles'][0]['numberSizeUnit'] ) ) {
-				$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__increment' );
+				$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__increment' );
 				$css->add_property( 'font-size', ( $attr['numberStyles'][0]['numberSize'] . $attr['numberStyles'][0]['numberSizeUnit'] . '!important' ) );
 			}
 		}
 		// Title Style
+		if ( isset( $attr['titleTypography'] ) ) {
+			$title_typography = $attr['titleTypography'];
+			$title_size       = $title_typography['fontSize'];
+
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $title_typography['fontFamily'] ) ? $title_typography['fontFamily'] : '' ),
+					'fontVariant' => ( isset( $title_typography['fontWeight'] ) ? $title_typography['fontWeight'] : '' ),
+				)
+			);
+
+			$css->set_selector( $unique_id . ' > .premium-countup__title' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Desktop', $title_size['unit'] ) );
+		}
 		if ( isset( $attr['titleStyles'] ) ) {
 			if ( isset( $attr['titleStyles'][0]['titleSize'] ) && isset( $attr['titleStyles'][0]['titleSizeUnit'] ) ) {
-				$css->set_selector( '#premium-countup-' . $unique_id . ' > .premium-countup__title' );
+				$css->set_selector( $unique_id . ' > .premium-countup__title' );
 				$css->add_property( 'font-size', ( $attr['titleStyles'][0]['titleSize'] . $attr['titleStyles'][0]['titleSizeUnit'] . '!important' ) );
 			}
 		}
 		// Prefix Style
+		if ( isset( $attr['prefixTypography'] ) ) {
+			$prefix_typography = $attr['prefixTypography'];
+			$prefix_size       = $prefix_typography['fontSize'];
+
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $prefix_typography['fontFamily'] ) ? $prefix_typography['fontFamily'] : '' ),
+					'fontVariant' => ( isset( $prefix_typography['fontWeight'] ) ? $prefix_typography['fontWeight'] : '' ),
+				)
+			);
+
+			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__prefix' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $prefix_size, 'Desktop', $prefix_size['unit'] ) );
+		}
 		if ( isset( $attr['prefixStyles'] ) ) {
 			if ( isset( $attr['prefixStyles'][0]['prefixSize'] ) && isset( $attr['prefixStyles'][0]['prefixSizeUnit'] ) ) {
-				$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__prefix' );
+				$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__prefix' );
 				$css->add_property( 'font-size', ( $attr['prefixStyles'][0]['prefixSize'] . $attr['prefixStyles'][0]['prefixSizeUnit'] . '!important' ) );
 			}
 		}
 		// Suffix Style
+		if ( isset( $attr['suffixTypography'] ) ) {
+			$suffix_typography = $attr['suffixTypography'];
+			$suffix_size       = $suffix_typography['fontSize'];
+
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $suffix_typography['fontFamily'] ) ? $suffix_typography['fontFamily'] : '' ),
+					'fontVariant' => ( isset( $suffix_typography['fontWeight'] ) ? $suffix_typography['fontWeight'] : '' ),
+				)
+			);
+
+			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__suffix' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $suffix_size, 'Desktop', $suffix_size['unit'] ) );
+		}
 		if ( isset( $attr['suffixStyles'] ) ) {
 			if ( isset( $attr['suffixStyles'][0]['suffixSize'] ) && isset( $attr['suffixStyles'][0]['suffixSizeUnit'] ) ) {
-				$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__suffix' );
+				$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__suffix' );
 				$css->add_property( 'font-size', ( $attr['suffixStyles'][0]['suffixSize'] . $attr['suffixStyles'][0]['suffixSizeUnit'] . '!important' ) );
 			}
 		}
 		// Container Style
 		if ( isset( $attr['paddingT'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-			$css->set_selector( '#premium-countup-' . $unique_id );
+			$css->set_selector( $unique_id );
 			$css->add_property( 'padding-top', ( $attr['paddingT'] . $attr['containerStyles'][0]['paddingU'] ) );
 		}
 		if ( isset( $attr['paddingR'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-			$css->set_selector( '#premium-countup-' . $unique_id );
+			$css->set_selector( $unique_id );
 			$css->add_property( 'padding-right', ( $attr['paddingR'] . $attr['containerStyles'][0]['paddingU'] ) );
 		}
 		if ( isset( $attr['paddingB'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-			$css->set_selector( '#premium-countup-' . $unique_id );
+			$css->set_selector( $unique_id );
 			$css->add_property( 'padding-bottom', ( $attr['paddingB'] . $attr['containerStyles'][0]['paddingU'] ) );
 		}
 		if ( isset( $attr['paddingL'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-			$css->set_selector( '#premium-countup-' . $unique_id );
+			$css->set_selector( $unique_id );
 			$css->add_property( 'padding-left', ( $attr['paddingL'] . $attr['containerStyles'][0]['paddingU'] ) );
 		}
+
+		if ( isset( $attr['padding'] ) ) {
+			$padding = $attr['padding'];
+			$css->set_selector( $unique_id );
+			$css->add_property( 'padding-top', $css->render_color( $padding['Desktop']['top'] . $padding['unit'] ) );
+			$css->add_property( 'padding-right', $css->render_color( $padding['Desktop']['right'] . $padding['unit'] ) );
+			$css->add_property( 'padding-bottom', $css->render_color( $padding['Desktop']['bottom'] . $padding['unit'] ) );
+			$css->add_property( 'padding-left', $css->render_color( $padding['Desktop']['left'] . $padding['unit'] ) );
+		}
+
 		$css->start_media_query( $media_query['tablet'] );
+
+		// Align.
+		if ( isset( $attr['align'] ) ) {
+			$align = $css->get_responsive_css( $attr['align'], 'Tablet' );
+
+			$css->set_selector( $unique_id );
+			$css->add_property( 'justify-content', $align );
+		}
+
+		if ( isset( $attr['selfAlign'] ) ) {
+			$align = $css->get_responsive_css( $attr['selfAlign'], 'Tablet' );
+
+			$css->set_selector( $unique_id . ' .premium-countup__icon_wrap, ' . $unique_id . ' .premium-countup__info, ' . $unique_id . ' .premium-countup__title' );
+			$css->add_property( 'align-self', $align );
+		}
+
+		// Border.
+		if ( isset( $attr['border'] ) ) {
+			$border        = $attr['border'];
+			$border_width  = $attr['border']['borderWidth'];
+			$border_radius = $attr['border']['borderRadius'];
+
+			$css->set_selector( $unique_id );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $border_width, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $border_width, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $border_width, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $border_width, 'left', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $border_radius, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $border_radius, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $border_radius, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $border_radius, 'left', 'Tablet', 'px' ) );
+		}
+
 		// Number Style Tablet
+		if ( isset( $attr['numberTypography'] ) ) {
+			$number_typography = $attr['numberTypography'];
+			$number_size       = $number_typography['fontSize'];
+
+			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__increment' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $number_size, 'Tablet', $number_size['unit'] ) );
+		}
 		if ( isset( $attr['numberStyles'] ) ) {
 			if ( isset( $attr['numberStyles'][0]['numberSizeTablet'] ) && isset( $attr['numberStyles'][0]['numberSizeUnit'] ) ) {
-				$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__increment' );
+				$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__increment' );
 				$css->add_property( 'font-size', ( $attr['numberStyles'][0]['numberSizeTablet'] . $attr['numberStyles'][0]['numberSizeUnit'] . '!important' ) );
 			}
 		}
 		// Title Style Tablet
+		if ( isset( $attr['titleTypography'] ) ) {
+			$title_typography = $attr['titleTypography'];
+			$title_size       = $title_typography['fontSize'];
+
+			$css->set_selector( $unique_id . ' > .premium-countup__title' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Tablet', $title_size['unit'] ) );
+		}
 		if ( isset( $attr['titleStyles'] ) ) {
 			if ( isset( $attr['titleStyles'][0]['titleSizeTablet'] ) && isset( $attr['titleStyles'][0]['titleSizeUnit'] ) ) {
-				$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__title' );
+				$css->set_selector( $unique_id . '> .premium-countup__title' );
 				$css->add_property( 'font-size', ( $attr['titleStyles'][0]['titleSizeTablet'] . $attr['titleStyles'][0]['titleSizeUnit'] ) );
 			}
 		}
 		// Prefix Style Tablet
+		if ( isset( $attr['prefixTypography'] ) ) {
+			$prefix_typography = $attr['prefixTypography'];
+			$prefix_size       = $prefix_typography['fontSize'];
+
+			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__prefix' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $prefix_size, 'Tablet', $prefix_size['unit'] ) );
+		}
 		if ( isset( $attr['prefixStyles'] ) ) {
 			if ( isset( $attr['prefixStyles'][0]['prefixSizeTablet'] ) && isset( $attr['prefixStyles'][0]['prefixSizeUnit'] ) ) {
-				$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__prefix' );
+				$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__prefix' );
 				$css->add_property( 'font-size', ( $attr['prefixStyles'][0]['prefixSizeTablet'] . $attr['prefixStyles'][0]['prefixSizeUnit'] ) );
 			}
 		}
 		// Suffix Style Tablet
+		if ( isset( $attr['suffixTypography'] ) ) {
+			$suffix_typography = $attr['suffixTypography'];
+			$suffix_size       = $suffix_typography['fontSize'];
+
+			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__suffix' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $suffix_size, 'Tablet', $suffix_size['unit'] ) );
+		}
 		if ( isset( $attr['suffixStyles'] ) ) {
 			if ( isset( $attr['suffixStyles'][0]['suffixSizeTablet'] ) && isset( $attr['suffixStyles'][0]['suffixSizeUnit'] ) ) {
-				$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__suffix' );
+				$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__suffix' );
 				$css->add_property( 'font-size', ( $attr['suffixStyles'][0]['suffixSizeTablet'] . $attr['suffixStyles'][0]['suffixSizeUnit'] ) );
 			}
 		}
 		// Container Style
 		if ( isset( $attr['paddingTTablet'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-			$css->set_selector( '#premium-countup-' . $unique_id );
+			$css->set_selector( $unique_id );
 			$css->add_property( 'padding-top', ( $attr['paddingTTablet'] . $attr['containerStyles'][0]['paddingU'] ) );
 		}
 		if ( isset( $attr['paddingRTablet'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-			$css->set_selector( '#premium-countup-' . $unique_id );
+			$css->set_selector( $unique_id );
 			$css->add_property( 'padding-right', ( $attr['paddingRTablet'] . $attr['containerStyles'][0]['paddingU'] ) );
 		}
 		if ( isset( $attr['paddingBTablet'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-			$css->set_selector( '#premium-countup-' . $unique_id );
+			$css->set_selector( $unique_id );
 			$css->add_property( 'padding-bottom', ( $attr['paddingBTablet'] . $attr['containerStyles'][0]['paddingU'] ) );
 		}
 		if ( isset( $attr['paddingLTablet'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-			$css->set_selector( '#premium-countup-' . $unique_id );
+			$css->set_selector( $unique_id );
 			$css->add_property( 'padding-left', ( $attr['paddingLTablet'] . $attr['containerStyles'][0]['paddingU'] ) );
 		}
+
+		if ( isset( $attr['padding'] ) ) {
+			$padding = $attr['padding'];
+			$css->set_selector( $unique_id );
+			$css->add_property( 'padding-top', $css->render_color( $padding['Tablet']['top'] . $padding['unit'] ) );
+			$css->add_property( 'padding-right', $css->render_color( $padding['Tablet']['right'] . $padding['unit'] ) );
+			$css->add_property( 'padding-bottom', $css->render_color( $padding['Tablet']['bottom'] . $padding['unit'] ) );
+			$css->add_property( 'padding-left', $css->render_color( $padding['Tablet']['left'] . $padding['unit'] ) );
+		}
+
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['mobile'] );
+
+		// Align.
+		if ( isset( $attr['align'] ) ) {
+			$align = $css->get_responsive_css( $attr['align'], 'Mobile' );
+
+			$css->set_selector( $unique_id );
+			$css->add_property( 'justify-content', $align );
+		}
+
+		if ( isset( $attr['selfAlign'] ) ) {
+			$align = $css->get_responsive_css( $attr['selfAlign'], 'Mobile' );
+
+			$css->set_selector( $unique_id . ' .premium-countup__icon_wrap, ' . $unique_id . ' .premium-countup__info, ' . $unique_id . ' .premium-countup__title' );
+			$css->add_property( 'align-self', $align );
+		}
+
+		// Border.
+		if ( isset( $attr['border'] ) ) {
+			$border        = $attr['border'];
+			$border_width  = $attr['border']['borderWidth'];
+			$border_radius = $attr['border']['borderRadius'];
+
+			$css->set_selector( $unique_id );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $border_width, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $border_width, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $border_width, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $border_width, 'left', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $border_radius, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $border_radius, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $border_radius, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $border_radius, 'left', 'Mobile', 'px' ) );
+		}
+
 		// Number Style Mobile
+		if ( isset( $attr['numberTypography'] ) ) {
+			$number_typography = $attr['numberTypography'];
+			$number_size       = $number_typography['fontSize'];
+
+			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__increment' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $number_size, 'Mobile', $number_size['unit'] ) );
+		}
 		if ( isset( $attr['numberStyles'] ) ) {
 			if ( isset( $attr['numberStyles'][0]['numberSizeMobile'] ) && isset( $attr['numberStyles'][0]['numberSizeUnit'] ) ) {
-				$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__increment' );
+				$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__increment' );
 				$css->add_property( 'font-size', ( $attr['numberStyles'][0]['numberSizeMobile'] . $attr['numberStyles'][0]['numberSizeUnit'] . '!important' ) );
 			}
 		}
 		// Title Style Mobile
+		if ( isset( $attr['titleTypography'] ) ) {
+			$title_typography = $attr['titleTypography'];
+			$title_size       = $title_typography['fontSize'];
+
+			$css->set_selector( $unique_id . ' > .premium-countup__title' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Mobile', $title_size['unit'] ) );
+		}
 		if ( isset( $attr['titleStyles'] ) ) {
 			if ( isset( $attr['titleStyles'][0]['titleSizeMobile'] ) && isset( $attr['titleStyles'][0]['titleSizeUnit'] ) ) {
-				$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__title' );
+				$css->set_selector( $unique_id . '> .premium-countup__title' );
 				$css->add_property( 'font-size', ( $attr['titleStyles'][0]['titleSizeMobile'] . $attr['titleStyles'][0]['titleSizeUnit'] ) );
 			}
 		}
 		// Prefix Style Mobile
+		if ( isset( $attr['prefixTypography'] ) ) {
+			$prefix_typography = $attr['prefixTypography'];
+			$prefix_size       = $prefix_typography['fontSize'];
+
+			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__prefix' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $prefix_size, 'Mobile', $prefix_size['unit'] ) );
+		}
 		if ( isset( $attr['prefixStyles'] ) ) {
 			if ( isset( $attr['prefixStyles'][0]['prefixSizeMobile'] ) && isset( $attr['prefixStyles'][0]['prefixSizeUnit'] ) ) {
-				$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__prefix' );
+				$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__prefix' );
 				$css->add_property( 'font-size', ( $attr['prefixStyles'][0]['prefixSizeMobile'] . $attr['prefixStyles'][0]['prefixSizeUnit'] ) );
 			}
 		}
 		// Suffix Style Mobile
+		if ( isset( $attr['suffixTypography'] ) ) {
+			$suffix_typography = $attr['suffixTypography'];
+			$suffix_size       = $suffix_typography['fontSize'];
+
+			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__suffix' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $suffix_size, 'Mobile', $suffix_size['unit'] ) );
+		}
 		if ( isset( $attr['suffixStyles'] ) ) {
 			if ( isset( $attr['suffixStyles'][0]['suffixSizeMobile'] ) && isset( $attr['suffixStyles'][0]['suffixSizeUnit'] ) ) {
-				$css->set_selector( '#premium-countup-' . $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__suffix' );
+				$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__suffix' );
 				$css->add_property( 'font-size', ( $attr['suffixStyles'][0]['suffixSizeMobile'] . $attr['suffixStyles'][0]['suffixSizeUnit'] ) );
 			}
 		}
 		// Container Style
 		if ( isset( $attr['paddingTMobile'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-			$css->set_selector( '#premium-countup-' . $unique_id );
+			$css->set_selector( $unique_id );
 			$css->add_property( 'padding-top', ( $attr['paddingTMobile'] . $attr['containerStyles'][0]['paddingU'] ) );
 		}
 		if ( isset( $attr['paddingRMobile'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-			$css->set_selector( '#premium-countup-' . $unique_id );
+			$css->set_selector( $unique_id );
 			$css->add_property( 'padding-right', ( $attr['paddingRMobile'] . $attr['containerStyles'][0]['paddingU'] ) );
 		}
 		if ( isset( $attr['paddingBMobile'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-			$css->set_selector( '#premium-countup-' . $unique_id );
+			$css->set_selector( $unique_id );
 			$css->add_property( 'padding-bottom', ( $attr['paddingBMobile'] . $attr['containerStyles'][0]['paddingU'] ) );
 		}
 		if ( isset( $attr['paddingLMobile'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-			$css->set_selector( '#premium-countup-' . $unique_id );
+			$css->set_selector( $unique_id );
 			$css->add_property( 'padding-left', ( $attr['paddingLMobile'] . $attr['containerStyles'][0]['paddingU'] ) );
 		}
+
+		if ( isset( $attr['padding'] ) ) {
+			$padding = $attr['padding'];
+			$css->set_selector( $unique_id );
+			$css->add_property( 'padding-top', $css->render_color( $padding['Mobile']['top'] . $padding['unit'] ) );
+			$css->add_property( 'padding-right', $css->render_color( $padding['Mobile']['right'] . $padding['unit'] ) );
+			$css->add_property( 'padding-bottom', $css->render_color( $padding['Mobile']['bottom'] . $padding['unit'] ) );
+			$css->add_property( 'padding-left', $css->render_color( $padding['Mobile']['left'] . $padding['unit'] ) );
+		}
+
 		$css->stop_media_query();
 		return $css->css_output();
 

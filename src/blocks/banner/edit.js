@@ -66,13 +66,9 @@ export class edit extends Component {
         const { isSelected, setAttributes, className, clientId: blockID } = this.props;
 
         const {
-            block_id,
-            borderBanner,
-            imageID,
             imageURL,
             titleStyles,
             descStyles,
-            containerStyles,
             title,
             titleTag,
             desc,
