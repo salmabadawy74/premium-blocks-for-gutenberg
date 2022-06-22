@@ -601,6 +601,8 @@ const deprecatedContent = [
         attributes: deprecated_attributes,
         migrate: (attributes) => {
             let newAttributes = {
+                blockId: attributes.block_id ? `premium-icon-box-${attributes.block_id.split('-')[6]}` : '',
+                titleTag: attributes.titleStyles[0].titleTag,
                 iconSize: {
                     Desktop: attributes.iconSize,
                     unit: "px"
