@@ -1,6 +1,6 @@
 const { __ } = wp.i18n;
 const attributes = {
-    block_id: {
+    blockId: {
         type: "string"
     },
     align: {
@@ -80,112 +80,13 @@ const attributes = {
     bulletIconStyles: {
         type: "array",
         default: [{
-            bulletListfontSize: 20,
-            bulletListfontSizeType: "px",
-            bulletListfontSizeMobile: 20,
-            bulletListfontSizeTablet: 20,
             bulletIconHoverColor: '',
             bulletIconColor: "#6EC1E4",
             bulletIconBackgroundColor: '',
             bulletIconHoverBackgroundColor: '',
-            bulletIconborderType: "none",
-            bulletIconborderRadius: 0,
-            bulletIconborderColor: '',
             bulletIconpaddingUnit: 'px',
             bulletIconmarginType: 'px'
         }],
-    },
-    bulletIconBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    bulletIconBorderTop: {
-        type: "number"
-    },
-    bulletIconBorderRight: {
-        type: "number"
-    },
-    bulletIconBorderBottom: {
-        type: "number"
-    },
-    bulletIconBorderLeft: {
-        type: "number"
-    },
-    bulletIconBorderUpdated: {
-        type: "boolean",
-        default: false
-    },
-    bulletIconmarginT: {
-        type: "number"
-    },
-    bulletIconmarginR: {
-        type: "number"
-    },
-    bulletIconmarginB: {
-        type: "number"
-    },
-    bulletIconmarginL: {
-        type: "number"
-    },
-    bulletIconmarginTTablet: {
-        type: "number"
-    },
-    bulletIconmarginRTablet: {
-        type: "number"
-    },
-    bulletIconmarginBTablet: {
-        type: "number"
-    },
-    bulletIconmarginLTablet: {
-        type: "number"
-    },
-    bulletIconmarginTMobile: {
-        type: "number"
-    },
-    bulletIconmarginRMobile: {
-        type: "number"
-    },
-    bulletIconmarginBMobile: {
-        type: "number"
-    },
-    bulletIconmarginLMobile: {
-        type: "number"
-    },
-    bulletIconpaddingTop: {
-        type: "number"
-    },
-    bulletIconpaddingRight: {
-        type: "number"
-    },
-    bulletIconpaddingBottom: {
-        type: "number"
-    },
-    bulletIconpaddingLeft: {
-        type: "number"
-    },
-    bulletIconpaddingTTablet: {
-        type: "number"
-    },
-    bulletIconpaddingRTablet: {
-        type: "number"
-    },
-    bulletIconpaddingBTablet: {
-        type: "number"
-    },
-    bulletIconpaddingLTablet: {
-        type: "number"
-    },
-    bulletIconpaddingTMobile: {
-        type: "number"
-    },
-    bulletIconpaddingRMobile: {
-        type: "number"
-    },
-    bulletIconpaddingBMobile: {
-        type: "number"
-    },
-    bulletIconpaddingLMobile: {
-        type: "number"
     },
     titleStyles: {
         type: "array",
@@ -202,162 +103,17 @@ const attributes = {
             titleFontFamily: __('Default', 'premium-blocks-for-gutenberg'),
             titleColor: "#6EC1E4",
             titleHoverColor: "",
-            titleshadowColor: '',
-            titleshadowBlur: 0,
-            titleshadowHorizontal: 0,
-            titleshadowVertical: 0,
             titlemarginType: 'px'
         }],
-    },
-    titlemarginT: {
-        type: "number"
-    },
-    titlemarginR: {
-        type: "number"
-    },
-    titlemarginB: {
-        type: "number"
-    },
-    titlemarginL: {
-        type: "number"
-    },
-    titlemarginTTablet: {
-        type: "number"
-    },
-    titlemarginRTablet: {
-        type: "number"
-    },
-    titlemarginBTablet: {
-        type: "number"
-    },
-    titlemarginLTablet: {
-        type: "number"
-    },
-    titlemarginTMobile: {
-        type: "number"
-    },
-    titlemarginRMobile: {
-        type: "number"
-    },
-    titlemarginBMobile: {
-        type: "number"
-    },
-    titlemarginLMobile: {
-        type: "number"
     },
     generalStyles: {
         type: "array",
         default: [{
             generalBackgroundColor: "",
             generalHoverBackgroundColor: '',
-            generalborderType: "none",
-            generalborderRadius: 0,
-            generalborderColor: '',
-            generalShadowColor: '',
-            generalShadowBlur: 0,
-            generalShadowHorizontal: 0,
-            generalShadowVertical: 0,
-            generalShadowPosition: '',
-            generalHoverShadowColor: '',
-            generalHoverShadowBlur: '',
-            generalHoverShadowHorizontal: '',
-            generalHoverShadowVertical: '',
-            generalHoverShadowPosition: '',
             generalpaddingUnit: 'px',
             generalmarginType: 'px'
         }],
-    },
-    generalBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    generalBorderTop: {
-        type: "number"
-    },
-    generalBorderRight: {
-        type: "number"
-    },
-    generalBorderBottom: {
-        type: "number"
-    },
-    generalBorderLeft: {
-        type: "number"
-    },
-    generalBorderUpdated: {
-        type: "boolean",
-        default: false
-    },
-    generalmarginT: {
-        type: "number"
-    },
-    generalmarginR: {
-        type: "number"
-    },
-    generalmarginB: {
-        type: "number"
-    },
-    generalmarginL: {
-        type: "number"
-    },
-    generalmarginTTablet: {
-        type: "number"
-    },
-    generalmarginRTablet: {
-        type: "number"
-    },
-    generalmarginBTablet: {
-        type: "number"
-    },
-    generalmarginLTablet: {
-        type: "number"
-    },
-    generalmarginTMobile: {
-        type: "number"
-    },
-    generalmarginRMobile: {
-        type: "number"
-    },
-    generalmarginBMobile: {
-        type: "number"
-    },
-    generalmarginLMobile: {
-        type: "number"
-    },
-    generalpaddingTop: {
-        type: "number"
-    },
-    generalpaddingRight: {
-        type: "number"
-    },
-    generalpaddingBottom: {
-        type: "number"
-    },
-    generalpaddingLeft: {
-        type: "number"
-    },
-    generalpaddingTTablet: {
-        type: "number"
-    },
-    generalpaddingRTablet: {
-        type: "number"
-    },
-    generalpaddingBTablet: {
-        type: "number"
-    },
-    generalpaddingLTablet: {
-        type: "number"
-    },
-    generalpaddingTMobile: {
-        type: "number"
-    },
-    generalpaddingRMobile: {
-        type: "number"
-    },
-    generalpaddingBMobile: {
-        type: "number"
-    },
-    generalpaddingLMobile: {
-        type: "number"
     },
     classMigrate: {
         type: "boolean",
@@ -372,8 +128,12 @@ const attributes = {
         default: "before"
     },
     bulletAlign: {
-        type: "string",
-        default: "center"
+        type: "object",
+        default: {
+            Desktop: 'center',
+            Tablet: 'center',
+            Mobile: 'center',
+        }
     },
     titleFont: {
         type: "string"
@@ -389,16 +149,296 @@ const attributes = {
     dividerStyles: {
         type: "array",
         default: [{
-            dividerWidth: '0',
-            dividerWidthTablet: '0',
-            dividerWidthMobile: '0',
-            dividerWidthType: 'px',
-            dividerHeight: '0',
-            dividerHeightTablet: '0',
-            dividerHeightMobile: '0',
-            dividerHeightType: 'px',
             dividerColor: '#ddd'
         }]
-    }
+    },
+    generalmargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
+    bulletIconmargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
+    titlemargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
+    generalpadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
+    bulletIconpadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
+    generalBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    bulletIconBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    titleTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
+    },
+    titlesTextShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+        }
+    },
+    boxShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
+    },
+    hoverBoxShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
+    },
+    bulletIconFontSize: {
+        type: "object",
+        default: {
+            'Desktop': 20,
+            'Tablet': 20,
+            'Mobile': 20,
+            'unit': 'px'
+        }
+    },
+    dividerWidth: {
+        type: "object",
+        default: {
+            'Desktop': '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': 'px'
+        }
+    },
+    dividerHeight: {
+        type: "object",
+        default: {
+            'Desktop': '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': 'px'
+        }
+    },
 }
 export default attributes
