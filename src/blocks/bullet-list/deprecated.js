@@ -412,304 +412,405 @@ const attributes = {
     }
 }
 const newAttributes = {
-    blockId: {
+    block_id: {
         type: "string"
     },
-    generalmargin: {
-        type: "object",
-        default: {
-            Desktop: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            Tablet: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            Mobile: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            unit: 'px'
-        }
+    align: {
+        type: "string",
+        default: "left"
     },
-    bulletIconmargin: {
-        type: "object",
-        default: {
-            Desktop: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            Tablet: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            Mobile: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            unit: 'px'
+    repeaterBulletList: {
+        type: "array",
+        default: [{
+            id: 1,
+            label: "Title #" + 1,
+            image_icon: "icon",
+            icon: "fa fa-arrow-circle-right",
+            imageURL: "",
+            imageID: '',
+            icon_color: "#6EC1E4",
+            label_color: "#6EC1E4",
+            icon_hover_color: "",
+            label_hover_color: "",
+            icon_bg_color: "",
+            icon_bg_hover_color: "",
+            item_bg_color: "",
+            item_bg_hover_color: "",
+            link: "#",
+            target: false,
+            disableLink: false,
+            showContent: false,
+            showBulletIcon: true,
+            linkTarget: false
+        },
+        {
+            id: 2,
+            label: "Title #" + 2,
+            image_icon: "icon",
+            icon: "fa fa-arrow-circle-right",
+            imageURL: "",
+            imageID: '',
+            icon_color: "#6EC1E4",
+            label_color: "#6EC1E4",
+            icon_hover_color: "",
+            label_hover_color: "",
+            icon_bg_color: "",
+            icon_bg_hover_color: "",
+            item_bg_color: "",
+            item_bg_hover_color: "",
+            link: "#",
+            target: false,
+            disableLink: false,
+            showContent: false,
+            showBulletIcon: true,
+            linkTarget: false
+        },
+        {
+            id: 3,
+            label: "Title #" + 3,
+            image_icon: "icon",
+            icon: "fa fa-arrow-circle-right",
+            imageURL: "",
+            imageID: '',
+            icon_color: "#6EC1E4",
+            label_color: "#6EC1E4",
+            icon_hover_color: "",
+            label_hover_color: "",
+            icon_bg_color: "",
+            icon_bg_hover_color: "",
+            item_bg_color: "",
+            item_bg_hover_color: "",
+            link: "#",
+            target: false,
+            disableLink: false,
+            showContent: false,
+            showBulletIcon: true,
+            linkTarget: false
         }
+        ],
     },
-    titlemargin: {
-        type: "object",
-        default: {
-            Desktop: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            Tablet: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            Mobile: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            unit: 'px'
-        }
+    bulletIconStyles: {
+        type: "array",
+        default: [{
+            bulletListfontSize: 20,
+            bulletListfontSizeType: "px",
+            bulletListfontSizeMobile: 20,
+            bulletListfontSizeTablet: 20,
+            bulletIconHoverColor: '',
+            bulletIconColor: "#6EC1E4",
+            bulletIconBackgroundColor: '',
+            bulletIconHoverBackgroundColor: '',
+            bulletIconborderType: "none",
+            bulletIconborderRadius: 0,
+            bulletIconborderColor: '',
+            bulletIconpaddingUnit: 'px',
+            bulletIconmarginType: 'px'
+        }],
     },
-    generalpadding: {
-        type: "object",
-        default: {
-            Desktop: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            Tablet: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            Mobile: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            unit: 'px'
-        }
+    bulletIconBorderWidth: {
+        type: "number",
+        default: "1"
     },
-    bulletIconpadding: {
-        type: "object",
-        default: {
-            Desktop: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            Tablet: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            Mobile: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            unit: 'px'
-        }
+    bulletIconBorderTop: {
+        type: "number"
     },
-    generalBorder: {
-        type: "object",
-        default: {
-            "borderType": "",
-            "borderColor": "",
-            "borderWidth": {
-                Desktop: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Tablet: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Mobile: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                }
-            },
-            "borderRadius": {
-                Desktop: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Tablet: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Mobile: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                }
-            }
-        }
+    bulletIconBorderRight: {
+        type: "number"
     },
-    bulletIconBorder: {
-        type: "object",
-        default: {
-            "borderType": "",
-            "borderColor": "",
-            "borderWidth": {
-                Desktop: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Tablet: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Mobile: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                }
-            },
-            "borderRadius": {
-                Desktop: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Tablet: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Mobile: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                }
-            }
-        }
+    bulletIconBorderBottom: {
+        type: "number"
     },
-    titleTypography: {
-        type: "object",
-        default: {
-            "fontWeight": '',
-            'fontStyle': '',
-            'textTransform': '',
-            'letterSpacing': '',
-            'fontFamily': '',
-            'lineHeight': '',
-            'textDecoration': '',
-            'fontSize': {
-                'Desktop': '',
-                "Tablet": '',
-                "Mobile": '',
-                "unit": 'px'
-            }
-        }
+    bulletIconBorderLeft: {
+        type: "number"
     },
-    titlesTextShadow: {
-        type: "object",
-        default: {
-            'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': '',
-        }
+    bulletIconBorderUpdated: {
+        type: "boolean",
+        default: false
     },
-    boxShadow: {
-        type: "object",
-        default: {
-            'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': '',
-            'position': ' '
-        }
+    bulletIconmarginT: {
+        type: "number"
     },
-    hoverBoxShadow: {
-        type: "object",
-        default: {
-            'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': '',
-            'position': ' '
-        }
+    bulletIconmarginR: {
+        type: "number"
     },
-    bulletIconFontSize: {
-        type: "object",
-        default: {
-            'Desktop': '',
-            'Tablet': '',
-            'Mobile': '',
-            'unit': 'px'
-        }
+    bulletIconmarginB: {
+        type: "number"
     },
-    dividerWidth: {
-        type: "object",
-        default: {
-            'Desktop': '',
-            'Tablet': '',
-            'Mobile': '',
-            'unit': 'px'
-        }
+    bulletIconmarginL: {
+        type: "number"
     },
-    dividerHeight: {
-        type: "object",
-        default: {
-            'Desktop': '',
-            'Tablet': '',
-            'Mobile': '',
-            'unit': 'px'
-        }
+    bulletIconmarginTTablet: {
+        type: "number"
+    },
+    bulletIconmarginRTablet: {
+        type: "number"
+    },
+    bulletIconmarginBTablet: {
+        type: "number"
+    },
+    bulletIconmarginLTablet: {
+        type: "number"
+    },
+    bulletIconmarginTMobile: {
+        type: "number"
+    },
+    bulletIconmarginRMobile: {
+        type: "number"
+    },
+    bulletIconmarginBMobile: {
+        type: "number"
+    },
+    bulletIconmarginLMobile: {
+        type: "number"
+    },
+    bulletIconpaddingTop: {
+        type: "number"
+    },
+    bulletIconpaddingRight: {
+        type: "number"
+    },
+    bulletIconpaddingBottom: {
+        type: "number"
+    },
+    bulletIconpaddingLeft: {
+        type: "number"
+    },
+    bulletIconpaddingTTablet: {
+        type: "number"
+    },
+    bulletIconpaddingRTablet: {
+        type: "number"
+    },
+    bulletIconpaddingBTablet: {
+        type: "number"
+    },
+    bulletIconpaddingLTablet: {
+        type: "number"
+    },
+    bulletIconpaddingTMobile: {
+        type: "number"
+    },
+    bulletIconpaddingRMobile: {
+        type: "number"
+    },
+    bulletIconpaddingBMobile: {
+        type: "number"
+    },
+    bulletIconpaddingLMobile: {
+        type: "number"
+    },
+    titleStyles: {
+        type: "array",
+        default: [{
+            titleLetter: 0,
+            titleStyle: '',
+            titleUpper: false,
+            titleWeight: 500,
+            titleLine: 0,
+            titleSize: 20,
+            titlefontSizeType: "px",
+            titlefontSizeMobile: 20,
+            titlefontSizeTablet: 20,
+            titleFontFamily: __('Default', 'premium-blocks-for-gutenberg'),
+            titleColor: "#6EC1E4",
+            titleHoverColor: "",
+            titleshadowColor: '',
+            titleshadowBlur: 0,
+            titleshadowHorizontal: 0,
+            titleshadowVertical: 0,
+            titlemarginType: 'px'
+        }],
+    },
+    titlemarginT: {
+        type: "number"
+    },
+    titlemarginR: {
+        type: "number"
+    },
+    titlemarginB: {
+        type: "number"
+    },
+    titlemarginL: {
+        type: "number"
+    },
+    titlemarginTTablet: {
+        type: "number"
+    },
+    titlemarginRTablet: {
+        type: "number"
+    },
+    titlemarginBTablet: {
+        type: "number"
+    },
+    titlemarginLTablet: {
+        type: "number"
+    },
+    titlemarginTMobile: {
+        type: "number"
+    },
+    titlemarginRMobile: {
+        type: "number"
+    },
+    titlemarginBMobile: {
+        type: "number"
+    },
+    titlemarginLMobile: {
+        type: "number"
+    },
+    generalStyles: {
+        type: "array",
+        default: [{
+            generalBackgroundColor: "",
+            generalHoverBackgroundColor: '',
+            generalborderType: "none",
+            generalborderRadius: 0,
+            generalborderColor: '',
+            generalShadowColor: '',
+            generalShadowBlur: 0,
+            generalShadowHorizontal: 0,
+            generalShadowVertical: 0,
+            generalShadowPosition: '',
+            generalHoverShadowColor: '',
+            generalHoverShadowBlur: '',
+            generalHoverShadowHorizontal: '',
+            generalHoverShadowVertical: '',
+            generalHoverShadowPosition: '',
+            generalpaddingUnit: 'px',
+            generalmarginType: 'px'
+        }],
+    },
+    generalBorderWidth: {
+        type: "number",
+        default: "1"
+    },
+    generalBorderTop: {
+        type: "number"
+    },
+    generalBorderRight: {
+        type: "number"
+    },
+    generalBorderBottom: {
+        type: "number"
+    },
+    generalBorderLeft: {
+        type: "number"
+    },
+    generalBorderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    generalmarginT: {
+        type: "number"
+    },
+    generalmarginR: {
+        type: "number"
+    },
+    generalmarginB: {
+        type: "number"
+    },
+    generalmarginL: {
+        type: "number"
+    },
+    generalmarginTTablet: {
+        type: "number"
+    },
+    generalmarginRTablet: {
+        type: "number"
+    },
+    generalmarginBTablet: {
+        type: "number"
+    },
+    generalmarginLTablet: {
+        type: "number"
+    },
+    generalmarginTMobile: {
+        type: "number"
+    },
+    generalmarginRMobile: {
+        type: "number"
+    },
+    generalmarginBMobile: {
+        type: "number"
+    },
+    generalmarginLMobile: {
+        type: "number"
+    },
+    generalpaddingTop: {
+        type: "number"
+    },
+    generalpaddingRight: {
+        type: "number"
+    },
+    generalpaddingBottom: {
+        type: "number"
+    },
+    generalpaddingLeft: {
+        type: "number"
+    },
+    generalpaddingTTablet: {
+        type: "number"
+    },
+    generalpaddingRTablet: {
+        type: "number"
+    },
+    generalpaddingBTablet: {
+        type: "number"
+    },
+    generalpaddingLTablet: {
+        type: "number"
+    },
+    generalpaddingTMobile: {
+        type: "number"
+    },
+    generalpaddingRMobile: {
+        type: "number"
+    },
+    generalpaddingBMobile: {
+        type: "number"
+    },
+    generalpaddingLMobile: {
+        type: "number"
+    },
+    classMigrate: {
+        type: "boolean",
+        default: false
+    },
+    layoutPos: {
+        type: "string",
+        default: "block"
+    },
+    iconPosition: {
+        type: "string",
+        default: "before"
     },
     bulletAlign: {
-        type: "object",
-        default: {
-            Desktop: 'center',
-            Tablet: 'center',
-            Mobile: 'center',
-        }
+        type: "string",
+        default: "center"
+    },
+    titleFont: {
+        type: "string"
+    },
+    divider: {
+        type: "boolean",
+        default: false
+    },
+    dividerStyle: {
+        type: "string",
+        default: "solid"
+    },
+    dividerStyles: {
+        type: "array",
+        default: [{
+            dividerWidth: '0',
+            dividerWidthTablet: '0',
+            dividerWidthMobile: '0',
+            dividerWidthType: 'px',
+            dividerHeight: '0',
+            dividerHeightTablet: '0',
+            dividerHeightMobile: '0',
+            dividerHeightType: 'px',
+            dividerColor: '#ddd'
+        }]
     }
 }
 
@@ -830,8 +931,8 @@ const deprecated = [
                 generalBorder: {
                     type: "object",
                     default: {
-                        "borderType": attributes?.generalStyles?.[0].generalborderType || '',
-                        "borderColor": attributes?.generalStyles?.[0].generalborderColor || '',
+                        "borderType": attributes?.generalStyles?.[0]?.generalborderType || '',
+                        "borderColor": attributes?.generalStyles?.[0]?.generalborderColor || '',
                         "borderWidth": {
                             Desktop: {
                                 top: attributes?.generalBorderTop || '',
@@ -854,10 +955,10 @@ const deprecated = [
                         },
                         "borderRadius": {
                             Desktop: {
-                                top: attributes?.generalStyles?.[0].generalborderRadius || '',
-                                right: attributes?.generalStyles?.[0].generalborderRadius || '',
-                                bottom: attributes?.generalStyles?.[0].generalborderRadius || '',
-                                left: attributes?.generalStyles?.[0].generalborderRadius || ''
+                                top: attributes?.generalStyles?.[0]?.generalborderRadius || '',
+                                right: attributes?.generalStyles?.[0]?.generalborderRadius || '',
+                                bottom: attributes?.generalStyles?.[0]?.generalborderRadius || '',
+                                left: attributes?.generalStyles?.[0]?.generalborderRadius || ''
                             },
                             Tablet: {
                                 top: '',
@@ -877,8 +978,8 @@ const deprecated = [
                 bulletIconBorder: {
                     type: "object",
                     default: {
-                        "borderType": attributes?.bulletIconStyles?.[0].bulletIconborderType || '',
-                        "borderColor": attributes?.bulletIconStyles?.[0].bulletIconborderColor || '',
+                        "borderType": attributes?.bulletIconStyles?.[0]?.bulletIconborderType || '',
+                        "borderColor": attributes?.bulletIconStyles?.[0]?.bulletIconborderColor || '',
                         "borderWidth": {
                             Desktop: {
                                 top: '',
@@ -901,10 +1002,10 @@ const deprecated = [
                         },
                         "borderRadius": {
                             Desktop: {
-                                top: attributes?.bulletIconStyles?.[0].bulletIconborderRadius || '',
-                                right: attributes?.bulletIconStyles?.[0].bulletIconborderRadius || '',
-                                bottom: attributes?.bulletIconStyles?.[0].bulletIconborderRadius || '',
-                                left: attributes?.bulletIconStyles?.[0].bulletIconborderRadius || ''
+                                top: attributes?.bulletIconStyles?.[0]?.bulletIconborderRadius || '',
+                                right: attributes?.bulletIconStyles?.[0]?.bulletIconborderRadius || '',
+                                bottom: attributes?.bulletIconStyles?.[0]?.bulletIconborderRadius || '',
+                                left: attributes?.bulletIconStyles?.[0]?.bulletIconborderRadius || ''
                             },
                             Tablet: {
                                 top: '',
@@ -922,56 +1023,56 @@ const deprecated = [
                     }
                 },
                 titleTypography: {
-                    "fontWeight": attributes?.titleStyles?.[0].titleWeight || '',
-                    'fontStyle': attributes?.titleStyles?.[0].titleStyle || '',
-                    'textTransform': attributes?.titleStyles?.[0].titleUpper || '',
-                    'letterSpacing': attributes?.titleStyles?.[0].titleLetter || '',
-                    'fontFamily': attributes?.titleStyles?.[0].titleFontFamily || '',
-                    'lineHeight': attributes?.titleStyles?.[0].titleLine || '',
+                    "fontWeight": attributes?.titleStyles?.[0]?.titleWeight || '',
+                    'fontStyle': attributes?.titleStyles?.[0]?.titleStyle || '',
+                    'textTransform': attributes?.titleStyles?.[0]?.titleUpper || '',
+                    'letterSpacing': attributes?.titleStyles?.[0]?.titleLetter || '',
+                    'fontFamily': attributes?.titleStyles?.[0]?.titleFontFamily || '',
+                    'lineHeight': attributes?.titleStyles?.[0]?.titleLine || '',
                     'textDecoration': '',
                     'fontSize': {
-                        'Desktop': attributes?.titleStyles?.[0].titleSize || '',
-                        "Tablet": attributes?.titleStyles?.[0].titlefontSizeTablet || '',
-                        "Mobile": attributes?.titleStyles?.[0].titlefontSizeMobile || '',
+                        'Desktop': attributes?.titleStyles?.[0]?.titleSize || '',
+                        "Tablet": attributes?.titleStyles?.[0]?.titlefontSizeTablet || '',
+                        "Mobile": attributes?.titleStyles?.[0]?.titlefontSizeMobile || '',
                         "unit": 'px'
                     }
                 },
                 titlesTextShadow: {
-                    'color': attributes?.titleStyles?.[0].titleshadowColor || '',
-                    'blur': attributes?.titleStyles?.[0].titleshadowBlur || '',
-                    'horizontal': attributes?.titleStyles?.[0].titleshadowHorizontal || '',
-                    'vertical': attributes?.titleStyles?.[0].titleshadowVertical || '',
+                    'color': attributes?.titleStyles?.[0]?.titleshadowColor || '',
+                    'blur': attributes?.titleStyles?.[0]?.titleshadowBlur || '',
+                    'horizontal': attributes?.titleStyles?.[0]?.titleshadowHorizontal || '',
+                    'vertical': attributes?.titleStyles?.[0]?.titleshadowVertical || '',
                 },
                 boxShadow: {
-                    'color': attributes?.generalStyles?.[0].generalShadowColor || '',
-                    'blur': attributes?.generalStyles?.[0].generalShadowBlur || '',
-                    'horizontal': attributes?.generalStyles?.[0].generalShadowHorizontal || '',
-                    'vertical': attributes?.generalStyles?.[0].generalShadowVertical || '',
-                    'position': attributes?.generalStyles?.[0].generalShadowPosition || ''
+                    'color': attributes?.generalStyles?.[0]?.generalShadowColor || '',
+                    'blur': attributes?.generalStyles?.[0]?.generalShadowBlur || '',
+                    'horizontal': attributes?.generalStyles?.[0]?.generalShadowHorizontal || '',
+                    'vertical': attributes?.generalStyles?.[0]?.generalShadowVertical || '',
+                    'position': attributes?.generalStyles?.[0]?.generalShadowPosition || ''
                 },
                 hoverBoxShadow: {
-                    'color': attributes?.generalStyles?.[0].generalHoverShadowColor || '',
-                    'blur': attributes?.generalStyles?.[0].generalHoverShadowBlur || '',
-                    'horizontal': attributes?.generalStyles?.[0].generalHoverShadowHorizontal || '',
-                    'vertical': attributes?.generalStyles?.[0].generalHoverShadowVertical || '',
-                    'position': attributes?.generalStyles?.[0].generalHoverShadowPosition || ''
+                    'color': attributes?.generalStyles?.[0]?.generalHoverShadowColor || '',
+                    'blur': attributes?.generalStyles?.[0]?.generalHoverShadowBlur || '',
+                    'horizontal': attributes?.generalStyles?.[0]?.generalHoverShadowHorizontal || '',
+                    'vertical': attributes?.generalStyles?.[0]?.generalHoverShadowVertical || '',
+                    'position': attributes?.generalStyles?.[0]?.generalHoverShadowPosition || ''
                 },
                 bulletIconFontSize: {
-                    'Desktop': attributes?.bulletIconStyles?.[0].bulletListfontSize || '',
-                    'Tablet': attributes?.bulletIconStyles?.[0].bulletListfontSizeTablet || '',
-                    'Mobile': attributes?.bulletIconStyles?.[0].bulletListfontSizeMobile || '',
-                    'unit': attributes?.bulletIconStyles?.[0].bulletListfontSizeType || 'px'
+                    'Desktop': attributes?.bulletIconStyles?.[0]?.bulletListfontSize || '',
+                    'Tablet': attributes?.bulletIconStyles?.[0]?.bulletListfontSizeTablet || '',
+                    'Mobile': attributes?.bulletIconStyles?.[0]?.bulletListfontSizeMobile || '',
+                    'unit': attributes?.bulletIconStyles?.[0]?.bulletListfontSizeType || 'px'
                 },
                 dividerWidth: {
-                    'Desktop': attributes?.dividerStyles?.[0].dividerWidth || '',
-                    'Tablet': attributes?.dividerStyles?.[0].dividerWidthTablet || '',
-                    'Mobile': attributes?.dividerStyles?.[0].dividerWidthMobile || '',
+                    'Desktop': attributes?.dividerStyles?.[0]?.dividerWidth || '',
+                    'Tablet': attributes?.dividerStyles?.[0]?.dividerWidthTablet || '',
+                    'Mobile': attributes?.dividerStyles?.[0]?.dividerWidthMobile || '',
                     'unit': 'px'
                 },
                 dividerHeight: {
-                    'Desktop': attributes?.dividerStyles?.[0].dividerHeight || '',
-                    'Tablet': attributes?.dividerStyles?.[0].dividerHeightTablet || '',
-                    'Mobile': attributes?.dividerStyles?.[0].dividerHeightMobile || '',
+                    'Desktop': attributes?.dividerStyles?.[0]?.dividerHeight || '',
+                    'Tablet': attributes?.dividerStyles?.[0]?.dividerHeightTablet || '',
+                    'Mobile': attributes?.dividerStyles?.[0]?.dividerHeightMobile || '',
                     'unit': 'px'
                 },
                 bulletAlign: {

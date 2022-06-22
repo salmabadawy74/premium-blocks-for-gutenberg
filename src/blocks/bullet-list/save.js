@@ -13,7 +13,7 @@ export default function save(props) {
     const { attributes, className } = props
 
     const {
-        blockId,
+        blockId = '',
         layoutPos,
         iconPosition,
         align,
