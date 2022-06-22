@@ -62,6 +62,7 @@ class PremiumAccordion extends Component {
             hideDesktop,
             hideTablet,
             hideMobile,
+            repeaterItems
         } = this.props.attributes;
 
         const INNER_BLOCKS_TEMPLATE = [
@@ -421,7 +422,7 @@ class PremiumAccordion extends Component {
                         }}
                     />
                     <InnerBlocks
-                        template={INNER_BLOCKS_TEMPLATE}
+                        template={repeaterItems ? [] : INNER_BLOCKS_TEMPLATE}
                         templateLock={false}
                         allowedBlocks={['premium/accordion-item']}
                     />

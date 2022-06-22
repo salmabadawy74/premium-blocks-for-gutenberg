@@ -6473,7 +6473,8 @@ class PremiumAccordion extends Component {
       descAlign,
       hideDesktop,
       hideTablet,
-      hideMobile
+      hideMobile,
+      repeaterItems
     } = this.props.attributes;
     const INNER_BLOCKS_TEMPLATE = [['premium/accordion-item', {
       title: __('Awesome Title'),
@@ -6881,7 +6882,7 @@ class PremiumAccordion extends Component {
         __html: loadStyles()
       }
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InnerBlocks, {
-      template: INNER_BLOCKS_TEMPLATE,
+      template: repeaterItems ? [] : INNER_BLOCKS_TEMPLATE,
       templateLock: false,
       allowedBlocks: ['premium/accordion-item']
     })))];
@@ -6992,6 +6993,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./src/blocks/node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
+
 
 
 const {
@@ -7064,24 +7067,7 @@ const save = props => {
       'line-height': `${descTypography.lineHeight}px`,
       'text-shadow': `${textShadow.horizontal}px ${textShadow.vertical}px ${textShadow.blur}px ${textShadow.color}`
     };
-    let styleCss = '';
-
-    for (const selector in styles) {
-      const selectorStyles = styles[selector];
-      const filteredStyles = Object.keys(selectorStyles).map(property => {
-        const value = selectorStyles[property];
-        const valueWithoutUnits = value.toString().replaceAll('px', '').replaceAll(/\s/g, '');
-
-        if (value && !value.toString().includes('undefined') && valueWithoutUnits) {
-          return `${property}: ${value};`;
-        }
-      }).filter(style => !!style).join('\n');
-      styleCss += `${selector}{
-                ${filteredStyles}
-            }\n`;
-    }
-
-    return styleCss;
+    return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.generateCss)(styles);
   };
 
   const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, 'premium-accordion', blockId);
