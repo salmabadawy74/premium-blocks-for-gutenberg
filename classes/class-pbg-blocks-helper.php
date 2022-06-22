@@ -5140,7 +5140,6 @@ class PBG_Blocks_Helper {
 			$unique_id = ".{$attributes['blockId']}";
 		}
 
-		error_log( $unique_id );
 		$style_unique_id = rand( 100, 10000 );
 
 		if ( $this->it_is_not_amp() ) {
@@ -5310,7 +5309,7 @@ class PBG_Blocks_Helper {
 			$general_border        = $attr['generalBorder'];
 			$general_border_width  = $attr['generalBorder']['borderWidth'];
 			$general_border_radius = $attr['generalBorder']['borderRadius'];
-			error_log( wp_json_encode( $general_border ) );
+
 			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $general_border_width, 'top', 'Desktop', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $general_border_width, 'right', 'Desktop', 'px' ) );
