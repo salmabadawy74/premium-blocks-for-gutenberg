@@ -9,11 +9,13 @@ import PremiumMediaUpload from "../../components/premium-media-upload";
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
 import { SortableContainer, SortableElement, arrayMove } from 'react-sortable-hoc';
 import icons from '../../components/align';
+import Icons from "../../components/icons";
 import PremiumShadow from "../../components/PremiumShadow";
 import WebfontLoader from "../../components/typography/fontLoader";
-import RadioComponent from '../../components/radio-control';
+import MultiButtonsControl from '../../components/responsive-radio';
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
+import { generateBlockId, generateCss } from '../../components/HelperFunction';
 
 const { withSelect } = wp.data
 
@@ -23,7 +25,7 @@ const { Component, Fragment } = wp.element
 
 const { BlockControls, AlignmentToolbar, InspectorControls, RichText } = wp.blockEditor
 
-const { PanelBody, SelectControl, Toolbar, TextControl, ToggleControl, Tooltip } = wp.components
+const { PanelBody, SelectControl, TabPanel, TextControl, ToggleControl, Tooltip } = wp.components
 
 const ICONTYPE = [
     {
@@ -244,30 +246,17 @@ class edit extends Component {
         }
 
         // Assigning id in the attribute.
-        this.props.setAttributes({ block_id: this.props.clientId })
-        this.props.setAttributes({ classMigrate: true })
-        this.getPreviewSize = this.getPreviewSize.bind(this);
-    }
-
-    getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
-        if (device === 'Mobile') {
-            if (undefined !== mobileSize && '' !== mobileSize) {
-                return mobileSize;
-            } else if (undefined !== tabletSize && '' !== tabletSize) {
-                return tabletSize;
-            }
-        } else if (device === 'Tablet') {
-            if (undefined !== tabletSize && '' !== tabletSize) {
-                return tabletSize;
-            }
+        if (!this.props.attributes.blockId) {
+            this.props.setAttributes({ blockId: "premium-bullet-list-" + generateBlockId(this.props.clientId) });
         }
-        return desktopSize;
+        this.props.setAttributes({ classMigrate: true })
     }
 
     render() {
         const { attributes, setAttributes, isSelected } = this.props
 
         const {
+            blockId,
             layoutPos,
             iconPosition,
             align,
@@ -344,8 +333,6 @@ class edit extends Component {
                 value: "groove"
             }
         ]
-
-        const ALIGNS = ["left", "center", "right"];
 
         const currentDevice = this.props.deviceType;
         const BulletIconSize = bulletIconFontSize[currentDevice];
@@ -619,8 +606,6 @@ class edit extends Component {
             });
         }
 
-        const mainClasses = classnames(className, "premium-bullet-list");
-
         let loadTitleGoogleFonts;
 
         if (titleStyles[0].titleFontFamily !== "Default") {
@@ -634,6 +619,39 @@ class edit extends Component {
                 </WebfontLoader>
             )
         }
+
+        const loadStyles = () => {
+            const styles = {};
+
+            styles[`.${blockId} .premium-bullet-list__content-icon i:hover`] = {
+                'background-color': `${bulletIconStyles?.[0]?.bulletIconHoverColor}!important`,
+                'background-color': `${bulletIconStyles?.[0]?.bulletIconHoverBackgroundColor}!important`
+            };
+            styles[`.${blockId} .premium-bullet-list__label-wrap .premium-bullet-list__label:hover`] = {
+                'color': `${titleStyles?.[0]?.titleHoverColor}!important`
+            };
+            styles[`.${blockId} .premium-bullet-list__wrapper:hover`] = {
+                'background-color': `${generalStyles?.[0]?.generalHoverBackgroundColor}!important`,
+                'box-shadow': `${hoverBoxShadow?.horizontal}px ${hoverBoxShadow?.vertical}px ${hoverBoxShadow?.blur}px ${hoverBoxShadow?.color} ${hoverBoxShadow?.position}!important`
+            };
+
+            styles[`.${blockId} .premium-bullet-list-divider-block:not(:last-child)::after`] = {
+                'border-top-width': `${DividerHeight}${dividerStyles?.[0]?.dividerHeightType}`,
+                'border-top-style': dividerStyle,
+                'border-top-color': dividerStyles?.[0]?.dividerColor,
+                'width': `${DividerWidth}${dividerStyles?.[0]?.dividerWidthType}`,
+            };
+
+            styles[`.${blockId} .premium-bullet-list-divider-inline:not(:last-child)::after`] = {
+                'border-left-width': `${DividerHeight}${dividerStyles?.[0]?.dividerHeightType}`,
+                'border-left-style': dividerStyle,
+                'border-left-color': dividerStyles?.[0]?.dividerColor,
+                'height': `${DividerHeight}${dividerStyles?.[0]?.dividerHeightType}`,
+            };
+
+            return generateCss(styles);
+        }
+
         return [
             isSelected && (
                 <BlockControls>
@@ -698,29 +716,30 @@ class edit extends Component {
                                         <Tooltip text={__('Top')}>
                                             <button
                                                 onClick={() => setAttributes({ bulletAlign: 'flex-start' })}
-                                                className={"bullet-list-button" + (bulletAlign === 'flex-start' ? ' active' : '')}
+                                                className={"bullet-list-button" + (bulletAlign[currentDevice] === 'flex-start' ? ' active' : '')}
                                             >{icons.vertical_top}</button>
                                         </Tooltip>
 
                                         <Tooltip text={__('Middle')} >
                                             <button
                                                 onClick={() => setAttributes({ bulletAlign: 'center' })}
-                                                className={"bullet-list-button" + (bulletAlign === 'center' ? ' active' : '')}
+                                                className={"bullet-list-button" + (bulletAlign[currentDevice] === 'center' ? ' active' : '')}
                                             >{icons.vertical_middle}</button>
                                         </Tooltip>
 
                                         <Tooltip text={__('Bottom')} >
                                             <button
                                                 onClick={() => setAttributes({ bulletAlign: 'flex-end' })}
-                                                className={"bullet-list-button" + (bulletAlign === 'flex-end' ? ' active' : '')}
+                                                className={"bullet-list-button" + (bulletAlign[currentDevice] === 'flex-end' ? ' active' : '')}
                                             >{icons.vertical_bottom}</button>
                                         </Tooltip>
-                                    </div> : <RadioComponent
-                                        choices={ALIGNS}
-                                        value={bulletAlign}
-                                        onChange={(newValue) => setAttributes({ bulletAlign: newValue })}
-                                        label={__("", 'premium-blocks-for-gutenberg')}
-                                    />
+                                    </div> :
+                                        <MultiButtonsControl
+                                            choices={[{ value: 'left', label: __('Left'), icon: Icons.alignLeft }, { value: 'center', label: __('Center'), icon: Icons.alignCenter }, { value: 'right', label: __('Right'), icon: Icons.alignRight }]}
+                                            value={bulletAlign}
+                                            onChange={(align) => setAttributes({ bulletAlign: align })}
+                                            label={__("Align Content", "premium-blocks-for-gutenberg")}
+                                            showIcons={true} />
                                     }
                                 </div>
                                 <hr />
@@ -744,30 +763,63 @@ class edit extends Component {
                                 className="premium-panel-body"
                                 initialOpen={true}
                             >
-                                <div className="premium-control-toggle">
-                                    <AdvancedPopColorControl
-                                        label={__("Background Color", 'premium-block-for-gutenberg')}
-                                        colorValue={generalStyles[0].generalBackgroundColor}
-                                        colorDefault={''}
-                                        onColorChange={newValue =>
-                                            saveGeneralStyles({
-                                                generalBackgroundColor: newValue
-                                            })
+                                <TabPanel
+                                    className="premium-color-tabpanel"
+                                    activeClass="active-tab"
+                                    tabs={[
+                                        {
+                                            name: "normal",
+                                            title: "Normal",
+                                            className: "premium-tab",
+                                        },
+                                        {
+                                            name: "hover",
+                                            title: "Hover",
+                                            className: "premium-tab",
+                                        },
+                                    ]}
+                                >
+                                    {(tab) => {
+                                        let tabout;
+                                        if ("normal" === tab.name) {
+                                            tabout = (
+                                                <div className="premium-control-toggle">
+                                                    <AdvancedPopColorControl
+                                                        label={__("Background Color", 'premium-block-for-gutenberg')}
+                                                        colorValue={generalStyles[0].generalBackgroundColor}
+                                                        colorDefault={''}
+                                                        onColorChange={newValue =>
+                                                            saveGeneralStyles({
+                                                                generalBackgroundColor: newValue
+                                                            })
+                                                        }
+                                                    />
+                                                </div>
+                                            );
                                         }
-                                    />
-                                </div>
-                                <div className="premium-control-toggle">
-                                    <AdvancedPopColorControl
-                                        label={__("Background Hover Color", 'premium-block-for-gutenberg')}
-                                        colorValue={generalStyles[0].generalHoverBackgroundColor}
-                                        colorDefault={''}
-                                        onColorChange={newValue =>
-                                            saveGeneralStyles({
-                                                generalHoverBackgroundColor: newValue
-                                            })
+                                        if ("hover" === tab.name) {
+                                            tabout = (
+                                                <div className="premium-control-toggle">
+                                                    <AdvancedPopColorControl
+                                                        label={__("Background Color", 'premium-block-for-gutenberg')}
+                                                        colorValue={generalStyles[0].generalHoverBackgroundColor}
+                                                        colorDefault={''}
+                                                        onColorChange={newValue =>
+                                                            saveGeneralStyles({
+                                                                generalHoverBackgroundColor: newValue
+                                                            })
+                                                        }
+                                                    />
+                                                </div>
+                                            );
                                         }
-                                    />
-                                </div>
+                                        return (
+                                            <div>
+                                                {tabout}
+                                            </div>
+                                        );
+                                    }}
+                                </TabPanel>
                                 <hr />
                                 <PremiumShadow
                                     label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
@@ -810,46 +862,84 @@ class edit extends Component {
                                     max={100}
                                 />
                                 <hr />
-                                <AdvancedPopColorControl
-                                    label={__("Color", 'premium-block-for-gutenberg')}
-                                    colorValue={bulletIconStyles[0].bulletIconColor}
-                                    colorDefault={''}
-                                    onColorChange={newValue =>
-                                        saveBulletIconStyles({
-                                            bulletIconColor: newValue
-                                        })
-                                    }
-                                />
-                                <AdvancedPopColorControl
-                                    label={__("Hover Color", 'premium-block-for-gutenberg')}
-                                    colorValue={bulletIconStyles[0].bulletIconHoverColor}
-                                    colorDefault={''}
-                                    onColorChange={newValue =>
-                                        saveBulletIconStyles({
-                                            bulletIconHoverColor: newValue
-                                        })
-                                    }
-                                />
-                                <AdvancedPopColorControl
-                                    label={__("Background Color", 'premium-block-for-gutenberg')}
-                                    colorValue={bulletIconStyles[0].bulletIconBackgroundColor}
-                                    colorDefault={''}
-                                    onColorChange={newValue =>
-                                        saveBulletIconStyles({
-                                            bulletIconBackgroundColor: newValue
-                                        })
-                                    }
-                                />
-                                <AdvancedPopColorControl
-                                    label={__("Hover Background Color", 'premium-block-for-gutenberg')}
-                                    colorValue={bulletIconStyles[0].bulletIconHoverBackgroundColor}
-                                    colorDefault={''}
-                                    onColorChange={newValue =>
-                                        saveBulletIconStyles({
-                                            bulletIconHoverBackgroundColor: newValue
-                                        })
-                                    }
-                                />
+                                <TabPanel
+                                    className="premium-color-tabpanel"
+                                    activeClass="active-tab"
+                                    tabs={[
+                                        {
+                                            name: "normal",
+                                            title: "Normal",
+                                            className: "premium-tab",
+                                        },
+                                        {
+                                            name: "hover",
+                                            title: "Hover",
+                                            className: "premium-tab",
+                                        },
+                                    ]}
+                                >
+                                    {(tab) => {
+                                        let tabout;
+                                        if ("normal" === tab.name) {
+                                            tabout = (
+                                                <Fragment>
+                                                    <AdvancedPopColorControl
+                                                        label={__("Color", 'premium-block-for-gutenberg')}
+                                                        colorValue={bulletIconStyles[0].bulletIconColor}
+                                                        colorDefault={''}
+                                                        onColorChange={newValue =>
+                                                            saveBulletIconStyles({
+                                                                bulletIconColor: newValue
+                                                            })
+                                                        }
+                                                    />
+                                                    <AdvancedPopColorControl
+                                                        label={__("Background Color", 'premium-block-for-gutenberg')}
+                                                        colorValue={bulletIconStyles[0].bulletIconBackgroundColor}
+                                                        colorDefault={''}
+                                                        onColorChange={newValue =>
+                                                            saveBulletIconStyles({
+                                                                bulletIconBackgroundColor: newValue
+                                                            })
+                                                        }
+                                                    />
+                                                </Fragment>
+                                            );
+                                        }
+                                        if ("hover" === tab.name) {
+                                            tabout = (
+                                                <Fragment>
+                                                    <AdvancedPopColorControl
+                                                        label={__("Color", 'premium-block-for-gutenberg')}
+                                                        colorValue={bulletIconStyles[0].bulletIconHoverColor}
+                                                        colorDefault={''}
+                                                        onColorChange={newValue =>
+                                                            saveBulletIconStyles({
+                                                                bulletIconHoverColor: newValue
+                                                            })
+                                                        }
+                                                    />
+
+                                                    <AdvancedPopColorControl
+                                                        label={__("Background Color", 'premium-block-for-gutenberg')}
+                                                        colorValue={bulletIconStyles[0].bulletIconHoverBackgroundColor}
+                                                        colorDefault={''}
+                                                        onColorChange={newValue =>
+                                                            saveBulletIconStyles({
+                                                                bulletIconHoverBackgroundColor: newValue
+                                                            })
+                                                        }
+                                                    />
+                                                </Fragment>
+                                            );
+                                        }
+                                        return (
+                                            <div>
+                                                {tabout}
+                                            </div>
+                                        );
+                                    }}
+                                </TabPanel>
                                 <hr />
                                 <PremiumBorder
                                     label={__("Border")}
@@ -875,30 +965,63 @@ class edit extends Component {
                                     onChange={newValue => setAttributes({ titleTypography: newValue })}
                                 />
                                 <hr />
-                                <div className="premium-control-toggle">
-                                    <AdvancedPopColorControl
-                                        label={__("Color", 'premium-block-for-gutenberg')}
-                                        colorValue={titleStyles[0].titleColor}
-                                        colorDefault={''}
-                                        onColorChange={newValue =>
-                                            saveTitleStyles({
-                                                titleColor: newValue
-                                            })
+                                <TabPanel
+                                    className="premium-color-tabpanel"
+                                    activeClass="active-tab"
+                                    tabs={[
+                                        {
+                                            name: "normal",
+                                            title: "Normal",
+                                            className: "premium-tab",
+                                        },
+                                        {
+                                            name: "hover",
+                                            title: "Hover",
+                                            className: "premium-tab",
+                                        },
+                                    ]}
+                                >
+                                    {(tab) => {
+                                        let tabout;
+                                        if ("normal" === tab.name) {
+                                            tabout = (
+                                                <div className="premium-control-toggle">
+                                                    <AdvancedPopColorControl
+                                                        label={__("Color", 'premium-block-for-gutenberg')}
+                                                        colorValue={titleStyles[0].titleColor}
+                                                        colorDefault={''}
+                                                        onColorChange={newValue =>
+                                                            saveTitleStyles({
+                                                                titleColor: newValue
+                                                            })
+                                                        }
+                                                    />
+                                                </div>
+                                            );
                                         }
-                                    />
-                                </div>
-                                <div className="premium-control-toggle">
-                                    <AdvancedPopColorControl
-                                        label={__("Hover Color", 'premium-block-for-gutenberg')}
-                                        colorValue={titleStyles[0].titleHoverColor}
-                                        colorDefault={''}
-                                        onColorChange={newValue =>
-                                            saveTitleStyles({
-                                                titleHoverColor: newValue
-                                            })
+                                        if ("hover" === tab.name) {
+                                            tabout = (
+                                                <div className="premium-control-toggle">
+                                                    <AdvancedPopColorControl
+                                                        label={__("Color", 'premium-block-for-gutenberg')}
+                                                        colorValue={titleStyles[0].titleHoverColor}
+                                                        colorDefault={''}
+                                                        onColorChange={newValue =>
+                                                            saveTitleStyles({
+                                                                titleHoverColor: newValue
+                                                            })
+                                                        }
+                                                    />
+                                                </div>
+                                            );
                                         }
-                                    />
-                                </div>
+                                        return (
+                                            <div>
+                                                {tabout}
+                                            </div>
+                                        );
+                                    }}
+                                </TabPanel>
                                 <hr />
                                 <PremiumShadow
                                     label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
@@ -959,43 +1082,17 @@ class edit extends Component {
                     </InspectorTabs>
                 </InspectorControls >
             ),
-            <div className={classnames(className, `premium-bullet-list-${this.props.clientId}`)}
-                style={{ textAlign: align }}
-                id={`premium-bullet-list-${this.props.clientId}`}>
+            <div className={classnames(className, blockId)}
+                style={{ textAlign: align }}>
                 <style
                     dangerouslySetInnerHTML={{
-                        __html: [
-                            `#premium-bullet-list-${this.props.clientId} .premium-bullet-list__content-icon i:hover {`,
-                            `color: ${bulletIconStyles[0].bulletIconHoverColor} !important;`,
-                            `background-color: ${bulletIconStyles[0].bulletIconHoverBackgroundColor} !important;`,
-                            "}",
-                            `#premium-bullet-list-${this.props.clientId} .premium-bullet-list__label-wrap .premium-bullet-list__label:hover {`,
-                            `color: ${titleStyles[0].titleHoverColor} !important;`,
-                            "}",
-                            `#premium-bullet-list-${this.props.clientId} .premium-bullet-list__wrapper:hover {`,
-                            `background-color: ${generalStyles[0].generalHoverBackgroundColor} !important;`,
-                            `box-shadow: ${hoverBoxShadow.horizontal}px ${hoverBoxShadow.vertical}px ${hoverBoxShadow.blur}px ${hoverBoxShadow.color} ${hoverBoxShadow.position} !important;`,
-                            "}",
-                            `#premium-bullet-list-${this.props.clientId} .premium-bullet-list-divider-block:not(:last-child)::after {`,
-                            `border-top-width: ${DividerHeight}${dividerStyles[0].dividerHeightType};`,
-                            `border-top-style: ${dividerStyle};`,
-                            `border-top-color: ${dividerStyles[0].dividerColor};`,
-                            `width: ${DividerWidth}${dividerStyles[0].dividerWidthType};`,
-                            "}",
-                            `#premium-bullet-list-${this.props.clientId} .premium-bullet-list-divider-inline:not(:last-child)::after {`,
-                            `height: ${DividerHeight}${dividerStyles[0].dividerHeightType};`,
-                            `border-left-style: ${dividerStyle};`,
-                            `border-left-color: ${dividerStyles[0].dividerColor};`,
-                            `border-left-width: ${DividerWidth}${dividerStyles[0].dividerWidthType};`,
-                            "}",
-                        ].join("\n")
+                        __html: loadStyles()
                     }}
                 />
                 <ul className={`premium-bullet-list-${layoutPos} premium-bullet-list`}
                     style={{
                         textAlign: align,
                         justifyContent: align == "right" ? "flex-end" : align,
-                        // margin: iconPosition !== 'top' ? '0px' : '10px 10px 10px 10px !important'
                     }}>
                     {
                         repeaterBulletList.map((icon, index) => {
@@ -1025,7 +1122,7 @@ class edit extends Component {
                                                     borderTopRightRadius: `${bulletIconBorder && bulletIconBorder.borderRadius[currentDevice].right || 0}px`,
                                                     borderBottomLeftRadius: `${bulletIconBorder && bulletIconBorder.borderRadius[currentDevice].bottom || 0}px`,
                                                     borderBottomRightRadius: `${bulletIconBorder && bulletIconBorder.borderRadius[currentDevice].left || 0}px`,
-                                                    verticalAlign: bulletAlign == 'flex-start' ? 'top' : bulletAlign == 'flex-end' ? 'bottom' : 'middle'
+                                                    verticalAlign: bulletAlign[currentDevice] == 'flex-start' ? 'top' : bulletAlign[currentDevice] == 'flex-end' ? 'bottom' : 'middle'
                                                 }}
                                             />
                                         </span>
@@ -1054,7 +1151,7 @@ class edit extends Component {
                                                 borderTopRightRadius: `${bulletIconBorder && bulletIconBorder.borderRadius[currentDevice].right || 0}px`,
                                                 borderBottomLeftRadius: `${bulletIconBorder && bulletIconBorder.borderRadius[currentDevice].bottom || 0}px`,
                                                 borderBottomRightRadius: `${bulletIconBorder && bulletIconBorder.borderRadius[currentDevice].left || 0}px`,
-                                                verticalAlign: bulletAlign == 'flex-start' ? 'top' : bulletAlign == 'flex-end' ? 'bottom' : 'middle'
+                                                verticalAlign: bulletAlign[currentDevice] == 'flex-start' ? 'top' : bulletAlign[currentDevice] == 'flex-end' ? 'bottom' : 'middle'
                                             }}
                                         />
                                     }
@@ -1099,7 +1196,7 @@ class edit extends Component {
                                             boxShadow: `${boxShadow.horizontal}px ${boxShadow.vertical}px ${boxShadow.blur}px ${boxShadow.color} ${boxShadow.position}`,
                                         }}
                                     >
-                                        <div className={`premium-bullet-list__content-wrap premium-bullet-list__content-wrap-${bulletAlign}`} style={{
+                                        <div className={`premium-bullet-list__content-wrap premium-bullet-list__content-wrap-${bulletAlign[currentDevice]}`} style={{
                                             justifyContent: align == "right" ? align : align,
                                             display: iconPosition == "before" ? "flex" : "inline-flex",
                                             flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? 'row-reverse' : "",
@@ -1111,14 +1208,14 @@ class edit extends Component {
                                             {icon.showBulletIcon && <span className={`premium-bullet-list__icon-wrap`}
                                                 style={{
                                                     // overflow: "hidden",
-                                                    alignSelf: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
+                                                    alignSelf: bulletAlign[currentDevice] == 'left' ? 'flex-start' : bulletAlign[currentDevice] == 'right' ? 'flex-end' : 'center',
                                                     marginTop: BulletIconMarginTop + bulletIconmargin.unit,
                                                     marginBottom: BulletIconMarginBottom + bulletIconmargin.unit,
                                                     marginLeft: BulletIconMarginLeft + bulletIconmargin.unit,
                                                     marginRight: BulletIconMarginRight + bulletIconmargin.unit,
-                                                    textAlign: bulletAlign,
-                                                    justifyContent: bulletAlign,
-                                                    alignItems: bulletAlign == 'left' ? 'flex-start' : bulletAlign == 'right' ? 'flex-end' : 'center',
+                                                    textAlign: bulletAlign[currentDevice],
+                                                    justifyContent: bulletAlign[currentDevice],
+                                                    alignItems: bulletAlign[currentDevice] == 'left' ? 'flex-start' : bulletAlign[currentDevice] == 'right' ? 'flex-end' : 'center',
                                                 }}
                                             >{image_icon_html}</span>}
                                             <div

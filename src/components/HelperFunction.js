@@ -64,3 +64,38 @@ export const animationAttr = (data) => {
 export const generateBlockId = (clientId) => {
     return clientId.split('-')[4];
 }
+
+export const generateCss = (styles) => {
+    let styleCss = '';
+    for (const selector in styles) {
+        const selectorStyles = styles[selector];
+        const filteredStyles = Object.keys(selectorStyles).map(property => {
+            const value = selectorStyles[property];
+            const valueWithoutUnits = value ? value.toString().replaceAll(/px|em|rem|!important|%/g, '').replaceAll(/\s/g, '') : '';
+            if (value && !value.toString().includes('undefined') && valueWithoutUnits) {
+                return `${property}: ${value};`;
+            }
+        }).filter(style => !!style).join('\n');
+
+        if (filteredStyles) {
+            styleCss += `${selector}{
+                ${filteredStyles}
+            }\n`;
+        }
+    }
+
+    return styleCss;
+}
+
+export const filterJsCss = (styles) => {
+    const asArray = Object.entries(styles);
+
+    const filtered = asArray.filter(([property, value]) => {
+        const valueWithoutUnits = value ? value.toString().replaceAll(/px|em|rem|!important|%/g, '').replaceAll(/\s/g, '') : '';
+
+        return value && !value.toString().includes('undefined') && valueWithoutUnits;
+    });
+    const filteredStyles = Object.fromEntries(filtered);
+
+    return filteredStyles;
+}

@@ -8,6 +8,8 @@ import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 import PremiumBackgroundControl from "../../components/Premium-Background-Control"
+import MultiButtonsControl from '../../components/responsive-radio';
+import Icons from "../../components/icons";
 const { __ } = wp.i18n;
 const { withSelect } = wp.data
 import RadioComponent from '../../components/radio-control'
@@ -15,7 +17,7 @@ import SpacingComponent from '../../components/premium-responsive-spacing';
 import WebfontLoader from "../../components/typography/fontLoader"
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
-import { gradientBackground } from "../../components/HelperFunction";
+import { gradientBackground, generateBlockId } from "../../components/HelperFunction";
 
 const { PanelBody, SelectControl, TextControl, ToggleControl } = wp.components;
 
@@ -29,28 +31,15 @@ class edit extends Component {
     }
     componentDidMount() {
         const { setAttributes, clientId } = this.props;
-        setAttributes({ block_id: clientId.substr(0, 6) })
-        setAttributes({ classMigrate: true });
-        this.getPreviewSize = this.getPreviewSize.bind(this);
-    }
-    getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
-        if (device === 'Mobile') {
-            if (undefined !== mobileSize && '' !== mobileSize) {
-                return mobileSize;
-            } else if (undefined !== tabletSize && '' !== tabletSize) {
-                return tabletSize;
-            }
-        } else if (device === 'Tablet') {
-            if (undefined !== tabletSize && '' !== tabletSize) {
-                return tabletSize;
-            }
+        if (!this.props.attributes.blockId) {
+            setAttributes({ blockId: "premium-countup-" + generateBlockId(clientId) });
         }
-        return desktopSize;
+        setAttributes({ classMigrate: true });
     }
     render() {
-        const { isSelected, setAttributes, className, clientId: blockId } = this.props;
+        const { isSelected, setAttributes, className } = this.props;
         const {
-            block_id,
+            blockId,
             increment,
             time,
             delay,
@@ -127,17 +116,7 @@ class edit extends Component {
                 label: __("Dashicon", 'premium-blocks-for-gutenberg')
             }
         ];
-        switch (align) {
-            case "left":
-                setAttributes({ selfAlign: "flex-start" });
-                break;
-            case "center":
-                setAttributes({ selfAlign: "center" });
-                break;
-            case "right":
-                setAttributes({ selfAlign: "flex-end" });
-                break;
-        }
+
         let loadCounterGoogleFonts;
         let loadTitleGoogleFonts;
         let loadSuffixGoogleFonts;
@@ -233,7 +212,7 @@ class edit extends Component {
         const containerPaddingRight = padding?.[this.props.deviceType]?.right;
         const containerPaddingBottom = padding?.[this.props.deviceType]?.bottom;
         const containerPaddingLeft = padding?.[this.props.deviceType]?.left;
-
+        // const alignProperty = flexDir.includes("column") ? 
         return [
             isSelected && (
                 <InspectorControls key={"inspector"}>
@@ -256,21 +235,22 @@ class edit extends Component {
                                     onChange={value => setAttributes({ delay: value })}
                                     help={__("Set delay in milliseconds, for example: 10", 'premium-blocks-for-gutenberg')}
                                 />
-                                {"row-reverse" !== flexDir && (
-                                    <RadioComponent
-                                        choices={["left", "center", "right"]}
+
+                                {!flexDir.includes("reverse") && (
+                                    <MultiButtonsControl
+                                        choices={[{ value: 'flex-start', label: __('Left'), icon: Icons.alignLeft }, { value: 'center', label: __('Center'), icon: Icons.alignCenter }, { value: 'flex-end', label: __('Right'), icon: Icons.alignRight }]}
                                         value={align}
-                                        onChange={newValue => setAttributes({ align: newValue })}
-                                        label={__(`Align`)}
-                                    />
+                                        onChange={(align) => setAttributes({ align: align, selfAlign: align })}
+                                        label={__("Align", "premium-blocks-for-gutenberg")}
+                                        showIcons={true} />
                                 )}
-                                {"row-reverse" === flexDir && (
-                                    <RadioComponent
-                                        choices={["right", "center", "left"]}
+                                {flexDir.includes("reverse") && (
+                                    <MultiButtonsControl
+                                        choices={[{ value: 'flex-end', label: __('Left'), icon: Icons.alignLeft }, { value: 'center', label: __('Center'), icon: Icons.alignCenter }, { value: 'flex-start', label: __('Right'), icon: Icons.alignRight }]}
                                         value={align}
-                                        onChange={newValue => setAttributes({ align: newValue })}
-                                        label={__(`Align `)}
-                                    />
+                                        onChange={(align) => setAttributes({ align: align, selfAlign: align })}
+                                        label={__("Align", "premium-blocks-for-gutenberg")}
+                                        showIcons={true} />
                                 )}
                                 <SelectControl
                                     label={__("Direction", 'premium-blocks-for-gutenberg')}
@@ -565,10 +545,9 @@ class edit extends Component {
                 )}
             </div>,
             <div
-                id={`premium-countup-${block_id}`}
-                className={`${mainClasses}__wrap premium-countup-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                className={`${mainClasses}__wrap ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`}
                 style={{
-                    justifyContent: align,
+                    justifyContent: align?.[this.props.deviceType],
                     flexDirection: flexDir,
                     boxShadow: `${boxShadow?.horizontal}px ${boxShadow?.vertical}px ${boxShadow?.blur}px ${boxShadow?.color} ${boxShadow?.position}`,
                     borderStyle: border?.borderType,
@@ -603,7 +582,7 @@ class edit extends Component {
                             alignSelf:
                                 "row-reverse" === flexDir || "row" === flexDir
                                     ? "center"
-                                    : selfAlign
+                                    : selfAlign?.[this.props.deviceType]
                         }}
                     >
                         {"icon" === icon && (
@@ -632,7 +611,7 @@ class edit extends Component {
                         alignSelf:
                             "row-reverse" === flexDir || "row" === flexDir
                                 ? "center"
-                                : selfAlign,
+                                : selfAlign?.[this.props.deviceType],
                     }}
                 >
                     <div className={`premium-countup__desc`}>
@@ -735,7 +714,7 @@ class edit extends Component {
                             textDecoration: titleTypography?.textDecoration,
                             textTransform: titleTypography?.textTransform,
                             lineHeight: `${titleTypography?.lineHeight}px`,
-                            alignSelf: selfAlign
+                            alignSelf: selfAlign?.[this.props.deviceType]
                         }}
                         tagName="h3"
                     />

@@ -1,6 +1,6 @@
 const { __ } = wp.i18n;
 const attributes = {
-    block_id: {
+    blockId: {
         type: "string"
     },
     borderCount: {
@@ -21,7 +21,11 @@ const attributes = {
     },
     align: {
         type: "string",
-        default: "center"
+        default: {
+            Desktop: 'center',
+            Tablet: 'center',
+            Mobile: 'center',
+        }
     },
     flexDir: {
         type: "string",

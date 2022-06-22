@@ -1,5 +1,6 @@
 const { __ } = wp.i18n;
 import classnames from "classnames"
+import { generateBlockId } from '../../components/HelperFunction';
 const {
     Fragment,
 } = wp.element
@@ -411,6 +412,9 @@ const attributes = {
     }
 }
 const newAttributes = {
+    blockId: {
+        type: "string"
+    },
     generalmargin: {
         type: "object",
         default: {
@@ -699,6 +703,14 @@ const newAttributes = {
             'unit': 'px'
         }
     },
+    bulletAlign: {
+        type: "object",
+        default: {
+            Desktop: 'center',
+            Tablet: 'center',
+            Mobile: 'center',
+        }
+    }
 }
 
 const deprecated = [
@@ -709,122 +721,123 @@ const deprecated = [
         },
         migrate: (attributes) => {
             let newAttributes = {
+                blockId: attributes.block_id ? "premium-bullet-list-" + generateBlockId(attributes.block_id) : '',
                 generalmargin: {
                     "Desktop": {
-                        top: attributes.generalmarginT || '',
-                        right: attributes.generalmarginR || '',
-                        bottom: attributes.generalmarginB || '',
-                        left: attributes.generalmarginL || ''
+                        top: attributes?.generalmarginT || '',
+                        right: attributes?.generalmarginR || '',
+                        bottom: attributes?.generalmarginB || '',
+                        left: attributes?.generalmarginL || ''
                     },
                     "Tablet": {
-                        top: attributes.generalmarginTTablet || '',
-                        right: attributes.generalmarginRTablet || '',
-                        bottom: attributes.generalmarginBTablet || '',
-                        left: attributes.generalmarginLTablet || ''
+                        top: attributes?.generalmarginTTablet || '',
+                        right: attributes?.generalmarginRTablet || '',
+                        bottom: attributes?.generalmarginBTablet || '',
+                        left: attributes?.generalmarginLTablet || ''
                     },
                     "Mobile": {
-                        top: attributes.generalmarginTMobile || '',
-                        right: attributes.generalmarginRMobile || '',
-                        bottom: attributes.generalmarginBMobile || '',
-                        left: attributes.generalmarginLMobile || ''
+                        top: attributes?.generalmarginTMobile || '',
+                        right: attributes?.generalmarginRMobile || '',
+                        bottom: attributes?.generalmarginBMobile || '',
+                        left: attributes?.generalmarginLMobile || ''
                     },
                     "unit": "px"
                 },
                 bulletIconmargin: {
                     "Desktop": {
-                        top: attributes.bulletIconmarginT || '',
-                        right: attributes.bulletIconmarginR || '',
-                        bottom: attributes.bulletIconmarginB || '',
-                        left: attributes.bulletIconmarginL || ''
+                        top: attributes?.bulletIconmarginT || '',
+                        right: attributes?.bulletIconmarginR || '',
+                        bottom: attributes?.bulletIconmarginB || '',
+                        left: attributes?.bulletIconmarginL || ''
                     },
                     "Tablet": {
-                        top: attributes.bulletIconmarginTTablet || '',
-                        right: attributes.bulletIconmarginRTablet || '',
-                        bottom: attributes.bulletIconmarginBTablet || '',
-                        left: attributes.bulletIconmarginLTablet || ''
+                        top: attributes?.bulletIconmarginTTablet || '',
+                        right: attributes?.bulletIconmarginRTablet || '',
+                        bottom: attributes?.bulletIconmarginBTablet || '',
+                        left: attributes?.bulletIconmarginLTablet || ''
                     },
                     "Mobile": {
-                        top: attributes.bulletIconmarginTMobile || '',
-                        right: attributes.bulletIconmarginRMobile || '',
-                        bottom: attributes.bulletIconmarginBMobile || '',
-                        left: attributes.bulletIconmarginLMobile || ''
+                        top: attributes?.bulletIconmarginTMobile || '',
+                        right: attributes?.bulletIconmarginRMobile || '',
+                        bottom: attributes?.bulletIconmarginBMobile || '',
+                        left: attributes?.bulletIconmarginLMobile || ''
                     },
                     "unit": "px"
                 },
                 titlemargin: {
                     "Desktop": {
-                        top: attributes.titlemarginT || '',
-                        right: attributes.titlemarginR || '',
-                        bottom: attributes.titlemarginB || '',
-                        left: attributes.titlemarginL || ''
+                        top: attributes?.titlemarginT || '',
+                        right: attributes?.titlemarginR || '',
+                        bottom: attributes?.titlemarginB || '',
+                        left: attributes?.titlemarginL || ''
                     },
                     "Tablet": {
-                        top: attributes.titlemarginTTablet || '',
-                        right: attributes.titlemarginRTablet || '',
-                        bottom: attributes.titlemarginBTablet || '',
-                        left: attributes.titlemarginLTablet || ''
+                        top: attributes?.titlemarginTTablet || '',
+                        right: attributes?.titlemarginRTablet || '',
+                        bottom: attributes?.titlemarginBTablet || '',
+                        left: attributes?.titlemarginLTablet || ''
                     },
                     "Mobile": {
-                        top: attributes.titlemarginTMobile || '',
-                        right: attributes.titlemarginRMobile || '',
-                        bottom: attributes.titlemarginBMobile || '',
-                        left: attributes.titlemarginLMobile || ''
+                        top: attributes?.titlemarginTMobile || '',
+                        right: attributes?.titlemarginRMobile || '',
+                        bottom: attributes?.titlemarginBMobile || '',
+                        left: attributes?.titlemarginLMobile || ''
                     },
                     "unit": "px"
                 },
                 generalpadding: {
                     "Desktop": {
-                        top: attributes.generalpaddingTop || '',
-                        right: attributes.generalpaddingRight || '',
-                        bottom: attributes.generalpaddingBottom || '',
-                        left: attributes.generalpaddingLeft || ''
+                        top: attributes?.generalpaddingTop || '',
+                        right: attributes?.generalpaddingRight || '',
+                        bottom: attributes?.generalpaddingBottom || '',
+                        left: attributes?.generalpaddingLeft || ''
                     },
                     "Tablet": {
-                        top: attributes.generalpaddingTTablet || '',
-                        right: attributes.generalpaddingRTablet || '',
-                        bottom: attributes.generalpaddingBTablet || '',
-                        left: attributes.generalpaddingLTablet || ''
+                        top: attributes?.generalpaddingTTablet || '',
+                        right: attributes?.generalpaddingRTablet || '',
+                        bottom: attributes?.generalpaddingBTablet || '',
+                        left: attributes?.generalpaddingLTablet || ''
                     },
                     "Mobile": {
-                        top: attributes.generalpaddingTMobile || '',
-                        right: attributes.generalpaddingRMobile || '',
-                        bottom: attributes.generalpaddingBMobile || '',
-                        left: attributes.generalpaddingLMobile || ''
+                        top: attributes?.generalpaddingTMobile || '',
+                        right: attributes?.generalpaddingRMobile || '',
+                        bottom: attributes?.generalpaddingBMobile || '',
+                        left: attributes?.generalpaddingLMobile || ''
                     },
                     "unit": "px"
                 },
                 bulletIconpadding: {
                     "Desktop": {
-                        top: attributes.bulletIconpaddingTop || '',
-                        right: attributes.bulletIconpaddingRight || '',
-                        bottom: attributes.bulletIconpaddingBottom || '',
-                        left: attributes.bulletIconpaddingLeft || ''
+                        top: attributes?.bulletIconpaddingTop || '',
+                        right: attributes?.bulletIconpaddingRight || '',
+                        bottom: attributes?.bulletIconpaddingBottom || '',
+                        left: attributes?.bulletIconpaddingLeft || ''
                     },
                     "Tablet": {
-                        top: attributes.bulletIconpaddingTTablet || '',
-                        right: attributes.bulletIconpaddingRTablet || '',
-                        bottom: attributes.bulletIconpaddingBTablet || '',
-                        left: attributes.bulletIconpaddingLTablet || ''
+                        top: attributes?.bulletIconpaddingTTablet || '',
+                        right: attributes?.bulletIconpaddingRTablet || '',
+                        bottom: attributes?.bulletIconpaddingBTablet || '',
+                        left: attributes?.bulletIconpaddingLTablet || ''
                     },
                     "Mobile": {
-                        top: attributes.bulletIconpaddingTMobile || '',
-                        right: attributes.bulletIconpaddingRMobile || '',
-                        bottom: attributes.bulletIconpaddingBMobile || '',
-                        left: attributes.bulletIconpaddingLMobile || ''
+                        top: attributes?.bulletIconpaddingTMobile || '',
+                        right: attributes?.bulletIconpaddingRMobile || '',
+                        bottom: attributes?.bulletIconpaddingBMobile || '',
+                        left: attributes?.bulletIconpaddingLMobile || ''
                     },
                     "unit": "px"
                 },
                 generalBorder: {
                     type: "object",
                     default: {
-                        "borderType": attributes.generalStyles[0].generalborderType || '',
-                        "borderColor": attributes.generalStyles[0].generalborderColor || '',
+                        "borderType": attributes?.generalStyles?.[0].generalborderType || '',
+                        "borderColor": attributes?.generalStyles?.[0].generalborderColor || '',
                         "borderWidth": {
                             Desktop: {
-                                top: attributes.generalBorderTop || '',
-                                right: attributes.generalBorderRight || '',
-                                bottom: attributes.generalBorderBottom || '',
-                                left: attributes.generalBorderLeft || ''
+                                top: attributes?.generalBorderTop || '',
+                                right: attributes?.generalBorderRight || '',
+                                bottom: attributes?.generalBorderBottom || '',
+                                left: attributes?.generalBorderLeft || ''
                             },
                             Tablet: {
                                 top: '',
@@ -841,10 +854,10 @@ const deprecated = [
                         },
                         "borderRadius": {
                             Desktop: {
-                                top: attributes.generalStyles[0].generalborderRadius || '',
-                                right: attributes.generalStyles[0].generalborderRadius || '',
-                                bottom: attributes.generalStyles[0].generalborderRadius || '',
-                                left: attributes.generalStyles[0].generalborderRadius || ''
+                                top: attributes?.generalStyles?.[0].generalborderRadius || '',
+                                right: attributes?.generalStyles?.[0].generalborderRadius || '',
+                                bottom: attributes?.generalStyles?.[0].generalborderRadius || '',
+                                left: attributes?.generalStyles?.[0].generalborderRadius || ''
                             },
                             Tablet: {
                                 top: '',
@@ -864,8 +877,8 @@ const deprecated = [
                 bulletIconBorder: {
                     type: "object",
                     default: {
-                        "borderType": attributes.bulletIconStyles[0].bulletIconborderType || '',
-                        "borderColor": attributes.bulletIconStyles[0].bulletIconborderColor || '',
+                        "borderType": attributes?.bulletIconStyles?.[0].bulletIconborderType || '',
+                        "borderColor": attributes?.bulletIconStyles?.[0].bulletIconborderColor || '',
                         "borderWidth": {
                             Desktop: {
                                 top: '',
@@ -888,10 +901,10 @@ const deprecated = [
                         },
                         "borderRadius": {
                             Desktop: {
-                                top: attributes.bulletIconStyles[0].bulletIconborderRadius || '',
-                                right: attributes.bulletIconStyles[0].bulletIconborderRadius || '',
-                                bottom: attributes.bulletIconStyles[0].bulletIconborderRadius || '',
-                                left: attributes.bulletIconStyles[0].bulletIconborderRadius || ''
+                                top: attributes?.bulletIconStyles?.[0].bulletIconborderRadius || '',
+                                right: attributes?.bulletIconStyles?.[0].bulletIconborderRadius || '',
+                                bottom: attributes?.bulletIconStyles?.[0].bulletIconborderRadius || '',
+                                left: attributes?.bulletIconStyles?.[0].bulletIconborderRadius || ''
                             },
                             Tablet: {
                                 top: '',
@@ -909,58 +922,63 @@ const deprecated = [
                     }
                 },
                 titleTypography: {
-                    "fontWeight": attributes.titleStyles[0].titleWeight || '',
-                    'fontStyle': attributes.titleStyles[0].titleStyle || '',
-                    'textTransform': attributes.titleStyles[0].titleUpper || '',
-                    'letterSpacing': attributes.titleStyles[0].titleLetter || '',
-                    'fontFamily': attributes.titleStyles[0].titleFontFamily || '',
-                    'lineHeight': attributes.titleStyles[0].titleLine || '',
+                    "fontWeight": attributes?.titleStyles?.[0].titleWeight || '',
+                    'fontStyle': attributes?.titleStyles?.[0].titleStyle || '',
+                    'textTransform': attributes?.titleStyles?.[0].titleUpper || '',
+                    'letterSpacing': attributes?.titleStyles?.[0].titleLetter || '',
+                    'fontFamily': attributes?.titleStyles?.[0].titleFontFamily || '',
+                    'lineHeight': attributes?.titleStyles?.[0].titleLine || '',
                     'textDecoration': '',
                     'fontSize': {
-                        'Desktop': attributes.titleStyles[0].titleSize || '',
-                        "Tablet": attributes.titleStyles[0].titlefontSizeTablet || '',
-                        "Mobile": attributes.titleStyles[0].titlefontSizeMobile || '',
+                        'Desktop': attributes?.titleStyles?.[0].titleSize || '',
+                        "Tablet": attributes?.titleStyles?.[0].titlefontSizeTablet || '',
+                        "Mobile": attributes?.titleStyles?.[0].titlefontSizeMobile || '',
                         "unit": 'px'
                     }
                 },
                 titlesTextShadow: {
-                    'color': attributes.titleStyles[0].titleshadowColor || '',
-                    'blur': attributes.titleStyles[0].titleshadowBlur || '',
-                    'horizontal': attributes.titleStyles[0].titleshadowHorizontal || '',
-                    'vertical': attributes.titleStyles[0].titleshadowVertical || '',
+                    'color': attributes?.titleStyles?.[0].titleshadowColor || '',
+                    'blur': attributes?.titleStyles?.[0].titleshadowBlur || '',
+                    'horizontal': attributes?.titleStyles?.[0].titleshadowHorizontal || '',
+                    'vertical': attributes?.titleStyles?.[0].titleshadowVertical || '',
                 },
                 boxShadow: {
-                    'color': attributes.generalStyles[0].generalShadowColor || '',
-                    'blur': attributes.generalStyles[0].generalShadowBlur || '',
-                    'horizontal': attributes.generalStyles[0].generalShadowHorizontal || '',
-                    'vertical': attributes.generalStyles[0].generalShadowVertical || '',
-                    'position': attributes.generalStyles[0].generalShadowPosition || ''
+                    'color': attributes?.generalStyles?.[0].generalShadowColor || '',
+                    'blur': attributes?.generalStyles?.[0].generalShadowBlur || '',
+                    'horizontal': attributes?.generalStyles?.[0].generalShadowHorizontal || '',
+                    'vertical': attributes?.generalStyles?.[0].generalShadowVertical || '',
+                    'position': attributes?.generalStyles?.[0].generalShadowPosition || ''
                 },
                 hoverBoxShadow: {
-                    'color': attributes.generalStyles[0].generalHoverShadowColor || '',
-                    'blur': attributes.generalStyles[0].generalHoverShadowBlur || '',
-                    'horizontal': attributes.generalStyles[0].generalHoverShadowHorizontal || '',
-                    'vertical': attributes.generalStyles[0].generalHoverShadowVertical || '',
-                    'position': attributes.generalStyles[0].generalHoverShadowPosition || ''
+                    'color': attributes?.generalStyles?.[0].generalHoverShadowColor || '',
+                    'blur': attributes?.generalStyles?.[0].generalHoverShadowBlur || '',
+                    'horizontal': attributes?.generalStyles?.[0].generalHoverShadowHorizontal || '',
+                    'vertical': attributes?.generalStyles?.[0].generalHoverShadowVertical || '',
+                    'position': attributes?.generalStyles?.[0].generalHoverShadowPosition || ''
                 },
                 bulletIconFontSize: {
-                    'Desktop': attributes.bulletIconStyles[0].bulletListfontSize || '',
-                    'Tablet': attributes.bulletIconStyles[0].bulletListfontSizeTablet || '',
-                    'Mobile': attributes.bulletIconStyles[0].bulletListfontSizeMobile || '',
-                    'unit': attributes.bulletIconStyles[0].bulletListfontSizeType || 'px'
+                    'Desktop': attributes?.bulletIconStyles?.[0].bulletListfontSize || '',
+                    'Tablet': attributes?.bulletIconStyles?.[0].bulletListfontSizeTablet || '',
+                    'Mobile': attributes?.bulletIconStyles?.[0].bulletListfontSizeMobile || '',
+                    'unit': attributes?.bulletIconStyles?.[0].bulletListfontSizeType || 'px'
                 },
                 dividerWidth: {
-                    'Desktop': attributes.dividerStyles[0].dividerWidth || '',
-                    'Tablet': attributes.dividerStyles[0].dividerWidthTablet || '',
-                    'Mobile': attributes.dividerStyles[0].dividerWidthMobile || '',
+                    'Desktop': attributes?.dividerStyles?.[0].dividerWidth || '',
+                    'Tablet': attributes?.dividerStyles?.[0].dividerWidthTablet || '',
+                    'Mobile': attributes?.dividerStyles?.[0].dividerWidthMobile || '',
                     'unit': 'px'
                 },
                 dividerHeight: {
-                    'Desktop': attributes.dividerStyles[0].dividerHeight || '',
-                    'Tablet': attributes.dividerStyles[0].dividerHeightTablet || '',
-                    'Mobile': attributes.dividerStyles[0].dividerHeightMobile || '',
+                    'Desktop': attributes?.dividerStyles?.[0].dividerHeight || '',
+                    'Tablet': attributes?.dividerStyles?.[0].dividerHeightTablet || '',
+                    'Mobile': attributes?.dividerStyles?.[0].dividerHeightMobile || '',
                     'unit': 'px'
                 },
+                bulletAlign: {
+                    Desktop: attributes?.bulletAlign,
+                    Tablet: attributes?.bulletAlign,
+                    Mobile: attributes?.bulletAlign
+                }
             }
             return Object.assign(attributes, newAttributes)
         },

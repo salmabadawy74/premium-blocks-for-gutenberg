@@ -1,16 +1,13 @@
 import classnames from 'classnames'
-
+import { generateCss } from '../../components/HelperFunction';
 const { RichText } = wp.blockEditor;
 
 const save = props => {
     const { className } = props;
     const {
-        block_id,
-        borderBanner,
         imageURL,
         titleStyles,
         descStyles,
-        containerStyles,
         title,
         titleTag,
         desc,
@@ -41,30 +38,35 @@ const save = props => {
         descTypography,
         titleTextShadow,
         descTextShadow,
-        containerShadow
+        containerShadow,
+        blockId
     } = props.attributes;
 
     const mainClasses = classnames(className, 'premium-banner');
+    const loadStyles = () => {
+        const styles = {};
+
+        styles[`.${blockId} .premium-banner__effect3 .premium-banner__title_wrap::after`] = {
+            'background': sepColor
+        };
+        styles[`.${blockId} .premium-banner__inner`] = {
+            'background': background
+        };
+        styles[`.${blockId} .premium-banner__img.premium-banner__active`] = {
+            'background': `${background ? 1 - opacity / 100 : 1}`
+        };
+
+        return generateCss(styles);
+    }
 
     return (
         imageURL &&
         <div
-            id={`premium-banner-${block_id}`}
-            className={`${mainClasses} premium-banner__responsive_${responsive} ${hideDesktop} ${hideTablet} ${hideMobile} premium-banner-${block_id}`}
+            className={`${mainClasses} premium-banner__responsive_${responsive} ${hideDesktop} ${hideTablet} ${hideMobile} ${blockId}`}
         >
             <style
                 dangerouslySetInnerHTML={{
-                    __html: [
-                        `#premium-banner-${block_id} .premium-banner__effect3 .premium-banner__title_wrap::after{`,
-                        `background: ${sepColor}`,
-                        "}",
-                        `#premium-banner-${block_id} .premium-banner__inner {`,
-                        `background: ${background}`,
-                        "}",
-                        `#premium-banner-${block_id} .premium-banner__img.premium-banner__active {`,
-                        `opacity: ${background ? 1 - opacity / 100 : 1} `,
-                        "}"
-                    ].join("\n")
+                    __html: loadStyles()
                 }}
             />
             <div

@@ -1,6 +1,6 @@
 const { __ } = wp.i18n;
 const attributes = {
-    block_id: {
+    blockId: {
         type: "string"
     },
     borderBanner: {
@@ -12,9 +12,6 @@ const attributes = {
     },
     imageURL: {
         type: "string",
-        source: "attribute",
-        attribute: "src",
-        selector: ".premium-banner__img",
     },
     titleStyles: {
         type: "array",

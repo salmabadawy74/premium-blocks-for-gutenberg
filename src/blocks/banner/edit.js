@@ -11,6 +11,7 @@ import RadioComponent from '../../components/radio-control';
 import PremiumShadow from "../../components/PremiumShadow";
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
+import { generateBlockId, generateCss } from '../../components/HelperFunction';
 
 const { withSelect } = wp.data
 const { __ } = wp.i18n;
@@ -55,7 +56,9 @@ export class edit extends Component {
     }
 
     componentDidMount() {
-        this.props.setAttributes({ block_id: this.props.clientId });
+        if (!this.props.attributes.blockId) {
+            this.props.setAttributes({ blockId: "premium-banner-" + generateBlockId(this.props.clientId) });
+        }
         this.props.setAttributes({ classMigrate: true });
     };
 
@@ -63,13 +66,9 @@ export class edit extends Component {
         const { isSelected, setAttributes, className, clientId: blockID } = this.props;
 
         const {
-            block_id,
-            borderBanner,
-            imageID,
             imageURL,
             titleStyles,
             descStyles,
-            containerStyles,
             title,
             titleTag,
             desc,
@@ -101,7 +100,8 @@ export class edit extends Component {
             descTypography,
             titleTextShadow,
             descTextShadow,
-            containerShadow
+            containerShadow,
+            blockId
         } = this.props.attributes;
 
         const ALIGNS = [
@@ -221,21 +221,26 @@ export class edit extends Component {
             setAttributes({ descStyles: newUpdate });
         }
 
-        const containerStyle = (value) => {
-            const newUpdate = containerStyles.map((item, index) => {
-                if (0 === index) {
-                    item = { ...item, ...value };
-                }
-                return item;
-            });
-            setAttributes({ containerStyles: newUpdate, });
-        }
-
         const currentDevice = this.props.deviceType;
         const containerPaddingTop = padding[currentDevice].top;
         const containerPaddingRight = padding[currentDevice].right;
         const containerPaddingBottom = padding[currentDevice].bottom;
         const containerPaddingLeft = padding[currentDevice].left;
+        const loadStyles = () => {
+            const styles = {};
+
+            styles[`.${blockId} .premium-banner__effect3 .premium-banner__title_wrap::after`] = {
+                'background': sepColor
+            };
+            styles[`.${blockId} .premium-banner__inner`] = {
+                'background': background
+            };
+            styles[`.${blockId} .premium-banner__img.premium-banner__active`] = {
+                'background': `${background ? 1 - opacity / 100 : 1}`
+            };
+
+            return generateCss(styles);
+        }
 
         return [
             isSelected && (
@@ -247,7 +252,6 @@ export class edit extends Component {
                                 , 'premium-blocks-for-gutenberg')}
                             icon="update"
                             className="components-toolbar__control"
-                            onClick={() => setAttributes({ block_id: blockID })}
                         />
                     </Toolbar>
                     <AlignmentToolbar
@@ -346,7 +350,7 @@ export class edit extends Component {
                                 initialOpen={false}
                             >
                                 <RadioComponent
-                                    choices={['H1', 'H2', 'H3', 'H4', 'H5', 'H6']}
+                                    choices={[{ label: __('H1'), value: 'h1' }, { label: __('H2'), value: 'h2' }, { label: __('H3'), value: 'h3' }, { label: __('H4'), value: 'h4' }, { label: __('H5'), value: 'h5' }, { label: __('H6'), value: 'h6' }]}
                                     value={titleTag}
                                     onChange={(newValue) => setAttributes({ titleTag: newValue })}
                                     label={__("HTML Tag", 'premium-blocks-for-gutenberg')}
@@ -512,8 +516,7 @@ export class edit extends Component {
             ),
             imageURL && (
                 <div
-                    id={`premium-banner-${block_id}`}
-                    className={`${mainClasses} premium-banner__responsive_${responsive} premium-banner-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                    className={`${mainClasses} premium-banner__responsive_${responsive} ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`}
                     style={{
                         paddingTop: containerPaddingTop && `${containerPaddingTop}${padding.unit}`,
                         paddingRight: containerPaddingRight && `${containerPaddingRight}${padding.unit}`,
@@ -523,33 +526,23 @@ export class edit extends Component {
                 >
                     <style
                         dangerouslySetInnerHTML={{
-                            __html: [
-                                `#premium-banner-${block_id} .premium-banner__effect3 .premium-banner__title_wrap::after{`,
-                                `background: ${sepColor}`,
-                                "}",
-                                `#premium-banner-${block_id} .premium-banner__inner {`,
-                                `background: ${background}`,
-                                "}",
-                                `#premium-banner-${block_id} .premium-banner__img.premium-banner__active {`,
-                                `opacity: ${background ? 1 - opacity / 100 : 1} `,
-                                "}"
-                            ].join("\n")
+                            __html: loadStyles()
                         }}
                     />
                     <div
                         className={`premium-banner__inner premium-banner__min premium-banner__${effect} premium-banner__${hoverEffect} hover_${hovered}`}
                         style={{
                             boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`,
-                            borderStyle: border && border.borderType,
-                            borderTopWidth: border && border.borderWidth[currentDevice].top,
-                            borderRightWidth: border && border.borderWidth[currentDevice].right,
-                            borderBottomWidth: border && border.borderWidth[currentDevice].bottom,
-                            borderLeftWidth: border && border.borderWidth[currentDevice].left,
-                            borderColor: border && border.borderColor,
-                            borderTopLeftRadius: `${border && border.borderRadius[currentDevice].top || 0}px`,
-                            borderTopRightRadius: `${border && border.borderRadius[currentDevice].right || 0}px`,
-                            borderBottomLeftRadius: `${border && border.borderRadius[currentDevice].bottom || 0}px`,
-                            borderBottomRightRadius: `${border && border.borderRadius[currentDevice].left || 0}px`,
+                            borderStyle: border?.borderType,
+                            borderTopWidth: border?.borderWidth?.[currentDevice]?.top,
+                            borderRightWidth: border?.borderWidth?.[currentDevice]?.right,
+                            borderBottomWidth: border?.borderWidth?.[currentDevice]?.bottom,
+                            borderLeftWidth: border?.borderWidth?.[currentDevice]?.left,
+                            borderColor: border?.borderColor,
+                            borderTopLeftRadius: `${border?.borderRadius?.[currentDevice]?.top || 0}px`,
+                            borderTopRightRadius: `${border?.borderRadius?.[currentDevice]?.right || 0}px`,
+                            borderBottomLeftRadius: `${border?.borderRadius?.[currentDevice]?.bottom || 0}px`,
+                            borderBottomRightRadius: `${border?.borderRadius?.[currentDevice]?.left || 0}px`,
                         }}
                     >
                         <div
@@ -585,19 +578,20 @@ export class edit extends Component {
                                     tagName={titleTag.toLowerCase()}
                                     className={`premium-banner__title`}
                                     value={title}
+                                    placeholder={__('Awesome Title')}
                                     isSelected={false}
                                     onChange={newText => setAttributes({ title: newText })}
                                     style={{
                                         color: titleStyles[0].titleColor,
-                                        fontSize: `${titleTypography.fontSize[this.props.deviceType]}${titleTypography.fontSize.unit}`,
-                                        fontStyle: titleTypography.fontStyle,
-                                        fontFamily: titleTypography.fontFamily,
-                                        fontWeight: titleTypography.fontWeight,
-                                        letterSpacing: titleTypography.letterSpacing,
-                                        textDecoration: titleTypography.textDecoration,
-                                        textTransform: titleTypography.textTransform,
-                                        lineHeight: `${titleTypography.lineHeight}px`,
-                                        textShadow: `${titleTextShadow.horizontal}px ${titleTextShadow.vertical}px ${titleTextShadow.blur}px ${titleTextShadow.color}`,
+                                        fontSize: `${titleTypography?.fontSize[this.props.deviceType]}${titleTypography?.fontSize?.unit}`,
+                                        fontStyle: titleTypography?.fontStyle,
+                                        fontFamily: titleTypography?.fontFamily,
+                                        fontWeight: titleTypography?.fontWeight,
+                                        letterSpacing: titleTypography?.letterSpacing,
+                                        textDecoration: titleTypography?.textDecoration,
+                                        textTransform: titleTypography?.textTransform,
+                                        lineHeight: `${titleTypography?.lineHeight}px`,
+                                        textShadow: `${titleTextShadow?.horizontal}px ${titleTextShadow?.vertical}px ${titleTextShadow?.blur}px ${titleTextShadow?.color}`,
                                     }}
                                 />
                             </div>

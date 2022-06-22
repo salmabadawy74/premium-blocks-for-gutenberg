@@ -1,14 +1,13 @@
 import classnames from 'classnames'
-import { gradientBackground } from "../../components/HelperFunction";
+import { gradientBackground, filterJsCss } from "../../components/HelperFunction";
 
 const save = props => {
     const { className } = props;
     const {
-        block_id,
+        blockId,
         increment,
         time,
         delay,
-        align,
         flexDir,
         prefix,
         suffix,
@@ -43,24 +42,21 @@ const save = props => {
 
     const mainClasses = classnames(className, 'premium-countup');
 
-
     return (
         <div
-            id={`premium-countup-${block_id}`}
-            className={`${mainClasses}__wrap premium-countup-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
-            style={{
-                justifyContent: align,
+            className={`${mainClasses}__wrap ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+            style={filterJsCss({
                 flexDirection: flexDir,
                 boxShadow: `${boxShadow?.horizontal}px ${boxShadow?.vertical}px ${boxShadow?.blur}px ${boxShadow?.color} ${boxShadow?.position}`,
                 borderStyle: border?.borderType,
                 borderColor: border?.borderColor,
                 ...gradientBackground(background)
-            }}
+            })}
         >
             {iconCheck && (
                 <div
                     className={`premium-countup__icon_wrap`}
-                    style={{
+                    style={filterJsCss({
                         marginRight:
                             "row" === flexDir || "row-reverse" === flexDir
                                 ? iconSpacing + "px"
@@ -73,7 +69,7 @@ const save = props => {
                             "row-reverse" === flexDir || "row" === flexDir
                                 ? "center"
                                 : selfAlign
-                    }}
+                    })}
                 >
                     {"icon" === icon && (
                         <i
@@ -87,28 +83,28 @@ const save = props => {
                     {"img" === icon && imageURL && (
                         <img
                             src={imageURL}
-                            style={{
+                            style={filterJsCss({
                                 width: iconSize + "px",
                                 height: iconSize + "px"
-                            }}
+                            })}
                         />
                     )}
                 </div>
             )}
             <div
                 className={`premium-countup__info`}
-                style={{
+                style={filterJsCss({
                     alignSelf:
                         "row-reverse" === flexDir || "row" === flexDir
                             ? "center"
                             : selfAlign,
-                }}
+                })}
             >
                 <div className={`premium-countup__desc`}>
                     {prefix && (
                         <p
                             className={`premium-countup__prefix`}
-                            style={{
+                            style={filterJsCss({
                                 color: prefixStyles[0].prefixColor,
                                 marginRight: prefixStyles[0].prefixGap + "px",
                                 fontStyle: prefixTypography?.fontStyle,
@@ -118,7 +114,7 @@ const save = props => {
                                 textDecoration: prefixTypography?.textDecoration,
                                 textTransform: prefixTypography?.textTransform,
                                 lineHeight: `${prefixTypography?.lineHeight}px`,
-                            }}
+                            })}
                         >
                             {prefixStyles[0].prefixTxt}
                         </p>
@@ -127,7 +123,7 @@ const save = props => {
                         className={`premium-countup__increment`}
                         data-interval={time}
                         data-delay={delay}
-                        style={{
+                        style={filterJsCss({
                             color: numberStyles[0].numberColor,
                             fontStyle: numberTypography?.fontStyle,
                             fontFamily: numberTypography?.fontFamily,
@@ -136,14 +132,14 @@ const save = props => {
                             textDecoration: numberTypography?.textDecoration,
                             textTransform: numberTypography?.textTransform,
                             lineHeight: `${numberTypography?.lineHeight}px`,
-                        }}
+                        })}
                     >
                         {increment}
                     </p>
                     {suffix && (
                         <p
                             className={`premium-countup__suffix`}
-                            style={{
+                            style={filterJsCss({
                                 color: suffixStyles[0].suffixColor,
                                 marginLeft: suffixStyles[0].suffixGap + "px",
                                 fontStyle: suffixTypography?.fontStyle,
@@ -153,7 +149,7 @@ const save = props => {
                                 textDecoration: suffixTypography?.textDecoration,
                                 textTransform: suffixTypography?.textTransform,
                                 lineHeight: `${suffixTypography?.lineHeight}px`,
-                            }}
+                            })}
                         >
                             {suffixStyles[0].suffixTxt}
                         </p>
@@ -162,7 +158,7 @@ const save = props => {
                 {titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && (
                     <h3
                         className={`premium-countup__title`}
-                        style={{
+                        style={filterJsCss({
                             marginTop: titleStyles[0].titleT + "px",
                             marginBottom: titleStyles[0].titleB + "px",
                             color: titleStyles[0].titleColor,
@@ -173,7 +169,7 @@ const save = props => {
                             textDecoration: titleTypography?.textDecoration,
                             textTransform: titleTypography?.textTransform,
                             lineHeight: `${titleTypography?.lineHeight}px`,
-                        }}
+                        })}
                     >
                         {titleTxt}
                     </h3>
@@ -182,7 +178,7 @@ const save = props => {
             {titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && (
                 <h3
                     className={`premium-countup__title`}
-                    style={{
+                    style={filterJsCss({
                         marginTop: titleStyles[0].titleT + "px",
                         marginBottom: titleStyles[0].titleB + "px",
                         color: titleStyles[0].titleColor,
@@ -194,7 +190,7 @@ const save = props => {
                         textTransform: titleTypography?.textTransform,
                         lineHeight: `${titleTypography?.lineHeight}px`,
                         alignSelf: selfAlign
-                    }}
+                    })}
                 >
                     {titleTxt}
                 </h3>

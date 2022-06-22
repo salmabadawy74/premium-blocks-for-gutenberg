@@ -319,7 +319,7 @@ const attributes = {
 }
 
 const newAttributes = {
-    block_id: {
+    blockId: {
         type: "string"
     },
     borderCount: {
@@ -704,6 +704,14 @@ const newAttributes = {
             'gradientType': ''
         }
     },
+    align: {
+        type: "string",
+        default: {
+            Desktop: 'center',
+            Tablet: 'center',
+            Mobile: 'center',
+        }
+    }
 }
 
 
@@ -715,6 +723,12 @@ const deprecatedContent = [
         },
         migrate: attributes => {
             let newAttributes = {
+                blockId: attributes.block_id ? "premium-countup-" + attributes.block_id : '',
+                align: {
+                    Desktop: attributes?.align || 'center',
+                    Tablet: attributes?.align || 'center',
+                    Mobile: attributes?.align || 'center',
+                },
                 padding: {
                     "Desktop": {
                         top: attributes.paddingT || '',

@@ -10,7 +10,7 @@ import ResponsiveSingleRangeControl from "../../components/RangeControl/single-r
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
 import Icons from "../../components/icons";
-import { generateBlockId } from '../../components/HelperFunction';
+import { generateBlockId, generateCss } from '../../components/HelperFunction';
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import {
     createBlock,
@@ -19,8 +19,8 @@ import { store as blockEditorStore } from '@wordpress/block-editor';
 const { Component, Fragment } = wp.element;
 const { __ } = wp.i18n;
 const { withSelect, withDispatch } = wp.data
-const { PanelBody, SelectControl } = wp.components;
-const { InspectorControls, RichText, InnerBlocks } = wp.blockEditor;
+const { PanelBody } = wp.components;
+const { InspectorControls, InnerBlocks } = wp.blockEditor;
 import { compose } from '@wordpress/compose';
 
 class PremiumAccordion extends Component {
@@ -44,7 +44,6 @@ class PremiumAccordion extends Component {
         const { isSelected, setAttributes, className } = this.props;
         const {
             blockId,
-            repeaterItems,
             direction,
             titleTag,
             titleStyles,
@@ -202,23 +201,8 @@ class PremiumAccordion extends Component {
                 'line-height': `${descTypography.lineHeight}px`,
                 'text-shadow': `${textShadow.horizontal}px ${textShadow.vertical}px ${textShadow.blur}px ${textShadow.color}`
             };
-            let styleCss = '';
 
-            for (const selector in styles) {
-                const selectorStyles = styles[selector];
-                const filteredStyles = Object.keys(selectorStyles).map(property => {
-                    const value = selectorStyles[property];
-                    const valueWithoutUnits = value.toString().replaceAll('px', '').replaceAll(/\s/g, '');
-                    if (value && !value.toString().includes('undefined') && valueWithoutUnits) {
-                        return `${property}: ${value};`;
-                    }
-                }).filter(style => !!style).join('\n');
-                styleCss += `${selector}{
-                    ${filteredStyles}
-                }\n`;
-            }
-
-            return styleCss;
+            return generateCss(styles);
         }
 
         return [

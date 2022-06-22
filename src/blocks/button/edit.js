@@ -9,7 +9,7 @@ import SpacingComponent from "../../components/premium-responsive-spacing";
 import PremiumShadow from "../../components/PremiumShadow";
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
-import { generateBlockId } from '../../components/HelperFunction';
+import { generateBlockId, generateCss } from '../../components/HelperFunction';
 const { PanelBody, SelectControl, ToggleControl, TabPanel } = wp.components;
 const { Fragment, Component } = wp.element;
 const { InspectorControls, AlignmentToolbar, BlockControls, RichText, URLInput } = wp.blockEditor;
@@ -22,9 +22,7 @@ export class edit extends Component {
 
     componentDidMount() {
         const { attributes, setAttributes, clientId } = this.props;
-        console.log('first', attributes.blockId);
         if (!attributes.blockId) {
-            console.log(generateBlockId(clientId), attributes.blockId);
             setAttributes({ blockId: "premium-button-" + generateBlockId(clientId) });
         }
     }
@@ -209,6 +207,23 @@ export class edit extends Component {
             setAttributes({
                 btnStyles: newUpdate,
             });
+        }
+
+        const loadStyles = () => {
+            const styles = {};
+
+            styles[`.${blockId} .premium-button:hover`] = {
+                'color': `${btnStyles[0].textHoverColor}!important`,
+                'border-color': `${btnStyles[0].borderHoverColor}!important`
+            };
+            styles[`.${blockId}.premium-button__none .premium-button:hover`] = {
+                'background-color': `${btnStyles[0].backHoverColor}!important`
+            };
+            styles[`.${blockId}.premium-button__slide .premium-button::before, .${blockId}.premium-button__shutter .premium-button::before, .${blockId}.premium-button__radial .premium-button::before`] = {
+                'background-color': `${slideColor}`,
+            };
+
+            return generateCss(styles);
         }
 
         const mainClasses = classnames(className, "premium-button");
@@ -409,20 +424,7 @@ export class edit extends Component {
             >
                 <style
                     dangerouslySetInnerHTML={{
-                        __html: [
-                            `.${blockId} .premium-button:hover {`,
-                            `color: ${btnStyles[0].textHoverColor} !important;`,
-                            `border-color: ${btnStyles[0].borderHoverColor} !important;`,
-                            "}",
-                            `.${blockId}.premium-button__none .premium-button:hover {`,
-                            `background-color: ${btnStyles[0].backHoverColor} !important;`,
-                            "}",
-                            `.${blockId}.premium-button__slide .premium-button::before,`,
-                            `.${blockId}.premium-button__shutter .premium-button::before,`,
-                            `.${blockId}.premium-button__radial .premium-button::before {`,
-                            `background-color: ${slideColor}`,
-                            "}"
-                        ].join("\n")
+                        __html: loadStyles()
                     }}
                 />
                 <RichText

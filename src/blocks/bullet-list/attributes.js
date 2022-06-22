@@ -1,6 +1,6 @@
 const { __ } = wp.i18n;
 const attributes = {
-    block_id: {
+    blockId: {
         type: "string"
     },
     align: {
@@ -128,8 +128,12 @@ const attributes = {
         default: "before"
     },
     bulletAlign: {
-        type: "string",
-        default: "center"
+        type: "object",
+        default: {
+            Desktop: 'center',
+            Tablet: 'center',
+            Mobile: 'center',
+        }
     },
     titleFont: {
         type: "string"
