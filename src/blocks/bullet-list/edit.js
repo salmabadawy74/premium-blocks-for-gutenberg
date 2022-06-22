@@ -1234,6 +1234,7 @@ class edit extends Component {
                                                     onChange={(val) => changeLabel(val, index)}
                                                     multiline={false}
                                                     style={{
+                                                        color: titleStyles[0].titleColor,
                                                         fontSize: `${TitleSize}${titleTypography?.fontSize.unit}`,
                                                         fontStyle: titleTypography?.fontStyle,
                                                         fontFamily: titleTypography?.fontFamily,

@@ -929,96 +929,90 @@ const deprecated = [
                     "unit": "px"
                 },
                 generalBorder: {
-                    type: "object",
-                    default: {
-                        "borderType": attributes?.generalStyles?.[0]?.generalborderType || '',
-                        "borderColor": attributes?.generalStyles?.[0]?.generalborderColor || '',
-                        "borderWidth": {
-                            Desktop: {
-                                top: attributes?.generalBorderTop || '',
-                                right: attributes?.generalBorderRight || '',
-                                bottom: attributes?.generalBorderBottom || '',
-                                left: attributes?.generalBorderLeft || ''
-                            },
-                            Tablet: {
-                                top: '',
-                                right: '',
-                                bottom: '',
-                                left: ''
-                            },
-                            Mobile: {
-                                top: '',
-                                right: '',
-                                bottom: '',
-                                left: ''
-                            }
+                    "borderType": attributes?.generalStyles?.[0]?.generalborderType || '',
+                    "borderColor": attributes?.generalStyles?.[0]?.generalborderColor || '',
+                    "borderWidth": {
+                        Desktop: {
+                            top: attributes?.generalBorderTop || '',
+                            right: attributes?.generalBorderRight || '',
+                            bottom: attributes?.generalBorderBottom || '',
+                            left: attributes?.generalBorderLeft || ''
                         },
-                        "borderRadius": {
-                            Desktop: {
-                                top: attributes?.generalStyles?.[0]?.generalborderRadius || '',
-                                right: attributes?.generalStyles?.[0]?.generalborderRadius || '',
-                                bottom: attributes?.generalStyles?.[0]?.generalborderRadius || '',
-                                left: attributes?.generalStyles?.[0]?.generalborderRadius || ''
-                            },
-                            Tablet: {
-                                top: '',
-                                right: '',
-                                bottom: '',
-                                left: ''
-                            },
-                            Mobile: {
-                                top: '',
-                                right: '',
-                                bottom: '',
-                                left: ''
-                            }
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    },
+                    "borderRadius": {
+                        Desktop: {
+                            top: attributes?.generalStyles?.[0]?.generalborderRadius || '',
+                            right: attributes?.generalStyles?.[0]?.generalborderRadius || '',
+                            bottom: attributes?.generalStyles?.[0]?.generalborderRadius || '',
+                            left: attributes?.generalStyles?.[0]?.generalborderRadius || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
                         }
                     }
                 },
                 bulletIconBorder: {
-                    type: "object",
-                    default: {
-                        "borderType": attributes?.bulletIconStyles?.[0]?.bulletIconborderType || '',
-                        "borderColor": attributes?.bulletIconStyles?.[0]?.bulletIconborderColor || '',
-                        "borderWidth": {
-                            Desktop: {
-                                top: '',
-                                right: '',
-                                bottom: '',
-                                left: ''
-                            },
-                            Tablet: {
-                                top: '',
-                                right: '',
-                                bottom: '',
-                                left: ''
-                            },
-                            Mobile: {
-                                top: '',
-                                right: '',
-                                bottom: '',
-                                left: ''
-                            }
+                    "borderType": attributes?.bulletIconStyles?.[0]?.bulletIconborderType || '',
+                    "borderColor": attributes?.bulletIconStyles?.[0]?.bulletIconborderColor || '',
+                    "borderWidth": {
+                        Desktop: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
                         },
-                        "borderRadius": {
-                            Desktop: {
-                                top: attributes?.bulletIconStyles?.[0]?.bulletIconborderRadius || '',
-                                right: attributes?.bulletIconStyles?.[0]?.bulletIconborderRadius || '',
-                                bottom: attributes?.bulletIconStyles?.[0]?.bulletIconborderRadius || '',
-                                left: attributes?.bulletIconStyles?.[0]?.bulletIconborderRadius || ''
-                            },
-                            Tablet: {
-                                top: '',
-                                right: '',
-                                bottom: '',
-                                left: ''
-                            },
-                            Mobile: {
-                                top: '',
-                                right: '',
-                                bottom: '',
-                                left: ''
-                            }
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    },
+                    "borderRadius": {
+                        Desktop: {
+                            top: attributes?.bulletIconStyles?.[0]?.bulletIconborderRadius || '',
+                            right: attributes?.bulletIconStyles?.[0]?.bulletIconborderRadius || '',
+                            bottom: attributes?.bulletIconStyles?.[0]?.bulletIconborderRadius || '',
+                            left: attributes?.bulletIconStyles?.[0]?.bulletIconborderRadius || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
                         }
                     }
                 },
