@@ -1002,11 +1002,16 @@ class PBG_Blocks_Helper {
 	 */
 	public function get_accordion_css( $attributes, $content ) {
 
-		if ( isset( $attributes['blockId'] ) && ! empty( $attributes['blockId'] ) ) {
-			$unique_id = $attributes['blockId'];
-		} else {
-			$unique_id = rand( 100, 10000 );
+		if ( isset( $attributes['accordionId'] ) && ! empty( $attributes['accordionId'] ) ) {
+			$unique_id = "#{$attributes['accordionId']}";
 		}
+
+		if ( isset( $attributes['blockId'] ) && ! empty( $attributes['blockId'] ) ) {
+			$unique_id = ".{$attributes['blockId']}";
+		}
+
+		$style_unique_id = rand( 100, 10000 );
+
 		if ( $this->it_is_not_amp() ) {
 			wp_enqueue_script(
 				'pbg-accordion',
@@ -1016,7 +1021,7 @@ class PBG_Blocks_Helper {
 				true
 			);
 		}
-		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
+		$style_id = 'pbg-blocks-style' . esc_attr( $style_unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
 			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
 			// $attributes = apply_filters( 'Premium_BLocks_blocks_column_render_block_attributes', $attributes );
@@ -1063,34 +1068,34 @@ class PBG_Blocks_Helper {
 				)
 			);
 
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' . ' > .premium-accordion__title' . ' > .premium-accordion__title_text' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' . ' > .premium-accordion__title' . ' > .premium-accordion__title_text' );
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Desktop', $title_size['unit'] ) );
 		}
 
 		if ( isset( $attr['titleSize'] ) && isset( $attr['titleSizeUnit'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' . ' > .premium-accordion__title' . ' > .premium-accordion__title_text' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' . ' > .premium-accordion__title' . ' > .premium-accordion__title_text' );
 			$css->add_property( 'font-size', $css->render_color( $attr['titleSize'] . 'px' . '!important' ) );
 		}
 		if ( isset( $attr['titlePaddingT'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
 			$css->add_property( 'padding-top', $css->render_color( $attr['titlePaddingT'] . 'px' . '!important' ) );
 		}
 		if ( isset( $attr['titlePaddingR'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
 			$css->add_property( 'padding-right', $css->render_color( $attr['titlePaddingR'] . 'px' . '!important' ) );
 		}
 		if ( isset( $attr['titlePaddingB'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
 			$css->add_property( 'padding-bottom', $css->render_color( $attr['titlePaddingB'] . 'px' . '!important' ) );
 		}
 		if ( isset( $attr['titlePaddingL'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
 			$css->add_property( 'padding-left', $css->render_color( $attr['titlePaddingL'] . 'px' . '!important' ) );
 		}
 
 		if ( isset( $attr['titlePadding'] ) ) {
 			$title_padding = $attr['titlePadding'];
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
 			$css->add_property( 'padding-top', $css->render_color( $title_padding['Desktop']['top'] . $title_padding['unit'] ) );
 			$css->add_property( 'padding-right', $css->render_color( $title_padding['Desktop']['right'] . $title_padding['unit'] ) );
 			$css->add_property( 'padding-bottom', $css->render_color( $title_padding['Desktop']['bottom'] . $title_padding['unit'] ) );
@@ -1102,7 +1107,7 @@ class PBG_Blocks_Helper {
 			$title_border_width  = $attr['titleBorder']['borderWidth'];
 			$title_border_radius = $attr['titleBorder']['borderRadius'];
 
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $title_border_width, 'top', 'Desktop', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $title_border_width, 'right', 'Desktop', 'px' ) );
 			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $title_border_width, 'bottom', 'Desktop', 'px' ) );
@@ -1125,34 +1130,34 @@ class PBG_Blocks_Helper {
 				)
 			);
 
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' . ' > .premium-accordion__desc' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' . ' > .premium-accordion__desc' );
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $desc_size, 'Desktop', $desc_size['unit'] ) );
 		}
 
 		if ( isset( $attr['descSize'] ) && isset( $attr['descSizeUnit'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' . ' > .premium-accordion__desc' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' . ' > .premium-accordion__desc' );
 			$css->add_property( 'font-size', $css->render_color( $attr['descSize'] . 'px' . '!important' ) );
 		}
 		if ( isset( $attr['descPaddingT'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
 			$css->add_property( 'padding-top', $css->render_color( $attr['descPaddingT'] . 'px' . '!important' ) );
 		}
 		if ( isset( $attr['descPaddingR'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
 			$css->add_property( 'padding-right', $css->render_color( $attr['descPaddingR'] . 'px' . '!important' ) );
 		}
 		if ( isset( $attr['descPaddingB'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
 			$css->add_property( 'padding-bottom', $css->render_color( $attr['descPaddingB'] . 'px' . '!important' ) );
 		}
 		if ( isset( $attr['descPaddingL'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
 			$css->add_property( 'padding-left', $css->render_color( $attr['descPaddingL'] . 'px' . '!important' ) );
 		}
 
 		if ( isset( $attr['descPadding'] ) ) {
 			$desc_padding = $attr['descPadding'];
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
 			$css->add_property( 'padding-top', $css->render_color( $desc_padding['Desktop']['top'] . $desc_padding['unit'] ) );
 			$css->add_property( 'padding-right', $css->render_color( $desc_padding['Desktop']['right'] . $desc_padding['unit'] ) );
 			$css->add_property( 'padding-bottom', $css->render_color( $desc_padding['Desktop']['bottom'] . $desc_padding['unit'] ) );
@@ -1164,7 +1169,7 @@ class PBG_Blocks_Helper {
 			$desc_border_width  = $attr['descBorder']['borderWidth'];
 			$desc_border_radius = $attr['descBorder']['borderRadius'];
 
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $desc_border_width, 'top', 'Desktop', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $desc_border_width, 'right', 'Desktop', 'px' ) );
 			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $desc_border_width, 'bottom', 'Desktop', 'px' ) );
@@ -1178,7 +1183,7 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['descAlign'] ) ) {
 			$align = $attr['descAlign'];
 
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
 			$css->add_property( 'text-align', $css->get_responsive_css( $align, 'Desktop' ) );
 		}
 
@@ -1188,34 +1193,34 @@ class PBG_Blocks_Helper {
 			$title_typography = $attr['titleTypography'];
 			$title_size       = $title_typography['fontSize'];
 
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' . ' > .premium-accordion__title' . ' > .premium-accordion__title_text' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' . ' > .premium-accordion__title' . ' > .premium-accordion__title_text' );
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Tablet', $title_size['unit'] ) );
 		}
 
 		if ( isset( $attr['titleSizeTablet'] ) && isset( $attr['descSizeUnit'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' . ' > .premium-accordion__title' . ' > .premium-accordion__title_text' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' . ' > .premium-accordion__title' . ' > .premium-accordion__title_text' );
 			$css->add_property( 'font-size', $css->render_color( $attr['titleSizeTablet'] . 'px' . '!important' ) );
 		}
 		if ( isset( $attr['titlePaddingTTablet'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
 			$css->add_property( 'padding-top', $css->render_color( $attr['titlePaddingTTablet'] . 'px' . '!important' ) );
 		}
 		if ( isset( $attr['titlePaddingRTablet'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
 			$css->add_property( 'padding-right', $css->render_color( $attr['titlePaddingRTablet'] . 'px' . '!important' ) );
 		}
 		if ( isset( $attr['titlePaddingBTablet'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
 			$css->add_property( 'padding-bottom', $css->render_color( $attr['titlePaddingBTablet'] . 'px' . '!important' ) );
 		}
 		if ( isset( $attr['titlePaddingLTablet'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
 			$css->add_property( 'padding-left', $css->render_color( $attr['titlePaddingLTablet'] . 'px' . '!important' ) );
 		}
 
 		if ( isset( $attr['titlePadding'] ) ) {
 			$title_padding = $attr['titlePadding'];
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
 			$css->add_property( 'padding-top', $css->render_color( $title_padding['Tablet']['top'] . $title_padding['unit'] ) );
 			$css->add_property( 'padding-right', $css->render_color( $title_padding['Tablet']['right'] . $title_padding['unit'] ) );
 			$css->add_property( 'padding-bottom', $css->render_color( $title_padding['Tablet']['bottom'] . $title_padding['unit'] ) );
@@ -1227,7 +1232,7 @@ class PBG_Blocks_Helper {
 			$title_border_width  = $attr['titleBorder']['borderWidth'];
 			$title_border_radius = $attr['titleBorder']['borderRadius'];
 
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $title_border_width, 'top', 'Tablet', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $title_border_width, 'right', 'Tablet', 'px' ) );
 			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $title_border_width, 'bottom', 'Tablet', 'px' ) );
@@ -1243,33 +1248,33 @@ class PBG_Blocks_Helper {
 			$desc_typography = $attr['descTypography'];
 			$desc_size       = $desc_typography['fontSize'];
 
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' . ' > .premium-accordion__desc' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' . ' > .premium-accordion__desc' );
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $desc_size, 'Tablet', $desc_size['unit'] ) );
 		}
 		if ( isset( $attr['descSizeTablet'] ) && isset( $attr['descSizeUnit'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' . ' > .premium-accordion__desc' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' . ' > .premium-accordion__desc' );
 			$css->add_property( 'font-size', $css->render_color( $attr['descSizeTablet'] . 'px' . '!important' ) );
 		}
 		if ( isset( $attr['descPaddingTTablet'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
 			$css->add_property( 'padding-top', $css->render_color( $attr['descPaddingTTablet'] . 'px' . '!important' ) );
 		}
 		if ( isset( $attr['descPaddingRTablet'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
 			$css->add_property( 'padding-right', $css->render_color( $attr['descPaddingRTablet'] . 'px' . '!important' ) );
 		}
 		if ( isset( $attr['descPaddingBTablet'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
 			$css->add_property( 'padding-bottom', $css->render_color( $attr['descPaddingBTablet'] . 'px' . '!important' ) );
 		}
 		if ( isset( $attr['descPaddingLTablet'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
 			$css->add_property( 'padding-left', $css->render_color( $attr['descPaddingLTablet'] . 'px' . '!important' ) );
 		}
 
 		if ( isset( $attr['descPadding'] ) ) {
 			$desc_padding = $attr['descPadding'];
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
 			$css->add_property( 'padding-top', $css->render_color( $desc_padding['Tablet']['top'] . $desc_padding['unit'] ) );
 			$css->add_property( 'padding-right', $css->render_color( $desc_padding['Tablet']['right'] . $desc_padding['unit'] ) );
 			$css->add_property( 'padding-bottom', $css->render_color( $desc_padding['Tablet']['bottom'] . $desc_padding['unit'] ) );
@@ -1281,7 +1286,7 @@ class PBG_Blocks_Helper {
 			$desc_border_width  = $attr['descBorder']['borderWidth'];
 			$desc_border_radius = $attr['descBorder']['borderRadius'];
 
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $desc_border_width, 'top', 'Tablet', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $desc_border_width, 'right', 'Tablet', 'px' ) );
 			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $desc_border_width, 'bottom', 'Tablet', 'px' ) );
@@ -1295,7 +1300,7 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['descAlign'] ) ) {
 			$align = $attr['descAlign'];
 
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
 			$css->add_property( 'text-align', $css->get_responsive_css( $align, 'Tablet' ) );
 		}
 
@@ -1305,34 +1310,34 @@ class PBG_Blocks_Helper {
 			$title_typography = $attr['titleTypography'];
 			$title_size       = $title_typography['fontSize'];
 
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' . ' > .premium-accordion__title' . ' > .premium-accordion__title_text' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' . ' > .premium-accordion__title' . ' > .premium-accordion__title_text' );
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Mobile', $title_size['unit'] ) );
 		}
 		if ( isset( $attr['titleSizeMobile'] ) && isset( $attr['descSizeUnit'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' . ' > .premium-accordion__title' . ' > .premium-accordion__title_text' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' . ' > .premium-accordion__title' . ' > .premium-accordion__title_text' );
 			$css->add_property( 'font-size', $css->render_color( $attr['titleSizeMobile'] . 'px' . '!important' ) );
 
 		}
 		if ( isset( $attr['titlePaddingTMobile'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
 			$css->add_property( 'padding-top', $css->render_color( $attr['titlePaddingTMobile'] . 'px' . '!important' ) );
 		}
 		if ( isset( $attr['titlePaddingRMobile'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
 			$css->add_property( 'padding-right', $css->render_color( $attr['titlePaddingRMobile'] . 'px' . '!important' ) );
 		}
 		if ( isset( $attr['titlePaddingBMobile'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
 			$css->add_property( 'padding-bottom', $css->render_color( $attr['titlePaddingBMobile'] . 'px' . '!important' ) );
 		}
 		if ( isset( $attr['titlePaddingLMobile'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
 			$css->add_property( 'padding-left', $css->render_color( $attr['titlePaddingLMobile'] . 'px' . '!important' ) );
 		}
 
 		if ( isset( $attr['titlePadding'] ) ) {
 			$title_padding = $attr['titlePadding'];
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
 			$css->add_property( 'padding-top', $css->render_color( $title_padding['Mobile']['top'] . $title_padding['unit'] ) );
 			$css->add_property( 'padding-right', $css->render_color( $title_padding['Mobile']['right'] . $title_padding['unit'] ) );
 			$css->add_property( 'padding-bottom', $css->render_color( $title_padding['Mobile']['bottom'] . $title_padding['unit'] ) );
@@ -1344,7 +1349,7 @@ class PBG_Blocks_Helper {
 			$title_border_width  = $attr['titleBorder']['borderWidth'];
 			$title_border_radius = $attr['titleBorder']['borderRadius'];
 
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $title_border_width, 'top', 'Mobile', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $title_border_width, 'right', 'Mobile', 'px' ) );
 			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $title_border_width, 'bottom', 'Mobile', 'px' ) );
@@ -1360,33 +1365,33 @@ class PBG_Blocks_Helper {
 			$desc_typography = $attr['descTypography'];
 			$desc_size       = $desc_typography['fontSize'];
 
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' . ' > .premium-accordion__desc' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' . ' > .premium-accordion__desc' );
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $desc_size, 'Mobile', $desc_size['unit'] ) );
 		}
 		if ( isset( $attr['descSizeMobile'] ) && isset( $attr['descSizeUnit'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' . ' > .premium-accordion__desc' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' . ' > .premium-accordion__desc' );
 			$css->add_property( 'font-size', $css->render_color( $attr['descSizeMobile'] . 'px' . '!important' ) );
 		}
 		if ( isset( $attr['descPaddingTMobile'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
 			$css->add_property( 'padding-top', $css->render_color( $attr['descPaddingTMobile'] . 'px' . '!important' ) );
 		}
 		if ( isset( $attr['descPaddingRMobile'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
 			$css->add_property( 'padding-right', $css->render_color( $attr['descPaddingRMobile'] . 'px' . '!important' ) );
 		}
 		if ( isset( $attr['descPaddingBMobile'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
 			$css->add_property( 'padding-bottom', $css->render_color( $attr['descPaddingBMobile'] . 'px' . '!important' ) );
 		}
 		if ( isset( $attr['descPaddingLMobile'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
 			$css->add_property( 'padding-left', $css->render_color( $attr['descPaddingLMobile'] . 'px' . '!important' ) );
 		}
 
 		if ( isset( $attr['descPadding'] ) ) {
 			$desc_padding = $attr['descPadding'];
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
 			$css->add_property( 'padding-top', $css->render_color( $desc_padding['Mobile']['top'] . $desc_padding['unit'] ) );
 			$css->add_property( 'padding-right', $css->render_color( $desc_padding['Mobile']['right'] . $desc_padding['unit'] ) );
 			$css->add_property( 'padding-bottom', $css->render_color( $desc_padding['Mobile']['bottom'] . $desc_padding['unit'] ) );
@@ -1398,7 +1403,7 @@ class PBG_Blocks_Helper {
 			$desc_border_width  = $attr['descBorder']['borderWidth'];
 			$desc_border_radius = $attr['descBorder']['borderRadius'];
 
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
 			$css->add_property( 'border-top-width', $css->get_responsive_value( $desc_border_width, 'top', 'Mobile', 'px' ) );
 			$css->add_property( 'border-right-width', $css->get_responsive_value( $desc_border_width, 'right', 'Mobile', 'px' ) );
 			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $desc_border_width, 'bottom', 'Mobile', 'px' ) );
@@ -1412,13 +1417,12 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['descAlign'] ) ) {
 			$align = $attr['descAlign'];
 
-			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
+			$css->set_selector( $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
 			$css->add_property( 'text-align', $css->get_responsive_css( $align, 'Mobile' ) );
 		}
 
 		$css->stop_media_query();
 		return $css->css_output();
-
 	}
 
 	/**
