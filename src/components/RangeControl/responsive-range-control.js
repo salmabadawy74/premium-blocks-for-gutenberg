@@ -99,7 +99,7 @@ export default function ResponsiveRangeControl({
     );
     return [
         onChange && (
-            <div className={`premium-blocks-range-control premium-blocks-base-control`}>
+            <div className={`premium-blocks-range-control premium-blocks__base-control`}>
                 <header>
                     <div className={`premium-slider-title-wrap`} style={{ display: "flex", alignItems: 'center' }}>
                         {label && (

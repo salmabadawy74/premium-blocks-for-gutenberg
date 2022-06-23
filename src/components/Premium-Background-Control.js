@@ -119,7 +119,7 @@ export default function PremiumBackgroundControl({ value, onChange, backgroundVe
                 </div>
             )}
             {'gradient' === backgroundType && (
-                <div className="Premium-inner-sub-section premium-blocks-base-control">
+                <div className="Premium-inner-sub-section premium-blocks__base-control">
                     <AdvancedPopColorControl
                         label={__('Gradient Color 1', 'premium-blocks-for-gutenberg')}
                         colorValue={backgroundColor}

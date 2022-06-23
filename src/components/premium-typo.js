@@ -133,7 +133,7 @@ export default class PremiumTypo extends Component {
         const linearFonts = fonts.filter(family => fuzzysearch(search.toLowerCase(), family['value'].toLowerCase()))
         const fontSize = components.includes("responsiveSize") ? value['fontSize'][device] : value['fontSize']
         return (
-            <div className="premium-control-toggle premium-typography premium-blocks-base-control">
+            <div className="premium-control-toggle premium-typography premium-blocks__base-control">
                 <header>
                     <span className=" premium-control-title">
                         {__('Typography', 'premium-blocks-for-gutenberg')}

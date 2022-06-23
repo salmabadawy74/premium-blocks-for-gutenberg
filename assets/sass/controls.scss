@@ -1,0 +1,58 @@
+.premium-inspector-tab {
+    .components-toggle-control {
+        .components-base-control__field {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-between;
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-between;
+            .components-form-toggle {
+                margin-right: 0px;
+            }
+        }
+    }
+    .components-panel__body {
+        &:first-child {
+            margin-top: 0;
+            border-top: none !important;
+        }
+    }
+    .components-input-control__container .components-input-control__backdrop {
+        border-color: #e1e1e1 !important;
+    }
+    .components-text-control__input[type="number"] {
+        border-radius: 0px;
+        border: 1px solid #e1e1e1;
+    }
+    .components-form-toggle
+        .components-form-toggle__input:focus
+        + .components-form-toggle__track {
+        outline: none;
+        box-shadow: none;
+    }
+}
+
+.premium-inspector-tab {
+    .components-text-control__input[type="text"] {
+        border: 1px solid #e1e1e1 !important;
+    }
+    .components-text-control__input:focus,
+    .components-text-control__input[type="color"]:focus,
+    .components-text-control__input[type="date"]:focus,
+    .components-text-control__input[type="datetime-local"]:focus,
+    .components-text-control__input[type="datetime"]:focus,
+    .components-text-control__input[type="email"]:focus,
+    .components-text-control__input[type="month"]:focus,
+    .components-text-control__input[type="number"]:focus,
+    .components-text-control__input[type="password"]:focus,
+    .components-text-control__input[type="tel"]:focus,
+    .components-text-control__input[type="text"]:focus,
+    .components-text-control__input[type="time"]:focus,
+    .components-text-control__input[type="url"]:focus,
+    .components-text-control__input[type="week"]:focus,
+    input[type="number"]:focus {
+        outline: none;
+        box-shadow: none;
+    }
+}
