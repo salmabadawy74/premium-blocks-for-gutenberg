@@ -63,7 +63,7 @@ export default function PremiumBackgroundControl({ value, onChange, backgroundVe
 
     return (
         <Fragment>
-            <div className="premium-btn-size-settings-container">
+            <div className="premium-btn-size-settings-container  premium-blocks__base-control">
                 <p className="premium-beside-btn-group">{__('Background Type', 'premium-blocks-for-gutenberg')}</p>
                 <div className={`premium-background-type__wrap`} >
                     <ButtonGroup className="premium-button-size-type-options" aria-label={__('Background Type', 'premium-blocks-for-gutenberg')}>

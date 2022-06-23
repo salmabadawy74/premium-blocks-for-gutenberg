@@ -19,7 +19,7 @@ function PremiumResponsiveTabs(props) {
         <PanelBody
             title={__("Responsive")}
             className="premium-panel-body"
-            initialOpen={false}
+            initialOpen={true}
         >
             <ToggleControl
                 label={__('Hide in Desktop')}
