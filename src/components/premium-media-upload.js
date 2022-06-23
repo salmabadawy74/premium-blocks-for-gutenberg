@@ -30,8 +30,7 @@ export default function PremiumMediaUpload(props) {
                                         onClick={open}
                                         role="button"
                                     >
-                                        <div aria-label={__("Edit")} className="fa fa-pencil" />
-                                    </button>
+                                        <span class="dashicons dashicons-edit"></span>                                    </button>
                                 </Tooltip>
                                 <Tooltip text={__("Remove")}>
                                     <button
@@ -40,8 +39,7 @@ export default function PremiumMediaUpload(props) {
                                         onClick={onRemoveImage}
                                         role="button"
                                     >
-                                        <div aria-label={__("Close")} className="fa fa-trash-o" />
-                                    </button>
+                                        <span class="dashicons dashicons-trash"></span>                                    </button>
                                 </Tooltip>
                             </div>
                         </div>

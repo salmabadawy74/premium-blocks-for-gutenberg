@@ -62,7 +62,7 @@ class AdvancedColorControl extends Component {
         const isNew = wp.components.GradientPicker;
 
         return (
-            <div className="premium-color-popover-container">
+            <div className={`premium-color-popover-container ${!this.props.disableReset ? 'premium-blocks__base-control' : ''} `}>
                 <div className="premium-advanced-color-container">
                     {this.props.label && (
                         <h2 className="premium-color-label">{this.props.label}</h2>
