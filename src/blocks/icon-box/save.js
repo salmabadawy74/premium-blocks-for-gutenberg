@@ -81,7 +81,7 @@ const save = props => {
             <div
                 className={`premium-icon-box-container`}
                 style={{
-                    textAlign: align[props.deviceType],
+                    textAlign: align[props.deviceType] || 'center',
                     borderStyle: containerBorder.borderType,
                     borderColor: containerBorder.borderColor,
                     ...gradientBackground(containerBackground),

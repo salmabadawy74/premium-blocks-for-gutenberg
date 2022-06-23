@@ -20,7 +20,7 @@ import InspectorTab from '../../components/inspectorTab';
 import InsideTabs from '../../components/InsideTabs'
 import InsideTab from '../../components/InsideTab';
 import Icons from "../../components/icons";
-import { gradientBackground, borderCss, padddingCss, marginCss, typographyCss } from '../../components/HelperFunction'
+import { gradientBackground, borderCss, padddingCss, marginCss, typographyCss, generateBlockId } from '../../components/HelperFunction'
 
 const { __ } = wp.i18n;
 
@@ -36,7 +36,7 @@ class edit extends Component {
 
     componentDidMount() {
         const { setAttributes, clientId } = this.props;
-        setAttributes({ blockId: clientId })
+        setAttributes({ blockId: "premium-icon-box-" + generateBlockId(clientId) });
     }
 
     render() {

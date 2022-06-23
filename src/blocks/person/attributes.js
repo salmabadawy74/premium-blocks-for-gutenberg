@@ -1,12 +1,12 @@
 const { __ } = wp.i18n;
 const attributes = {
-    personSize: {
-        type: "string",
-        default: "md"
-    },
     personAlign: {
-        type: "string",
-        default: "center"
+        type: "object",
+        default: {
+            "Desktop": "center",
+            "Tablet": "center",
+            "Mobile": "center"
+        }
     },
     nameStyles: {
         type: "array",
@@ -92,10 +92,6 @@ const attributes = {
             }
         ]
     },
-    titleTag: {
-        type: "string",
-        default: "p"
-    },
     contentColor: {
         type: "string",
     },
@@ -126,7 +122,7 @@ const attributes = {
         type: "string",
         default: ""
     },
-    id: {
+    blockId: {
         type: "string"
     },
     classMigrate: {
@@ -190,11 +186,11 @@ const attributes = {
     },
     nameTag: {
         type: "string",
-        default: "H2"
+        default: "h2"
     },
     titleTag: {
         type: "string",
-        default: "H4"
+        default: "h4"
     },
     socialIconMargin: {
         type: "object",
