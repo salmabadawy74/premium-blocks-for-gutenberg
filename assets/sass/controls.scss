@@ -32,6 +32,27 @@
         box-shadow: none;
     }
 }
-.components-text-control__input[type="text"] {
-    border: 1px solid #e1e1e1 !important;
+
+.premium-inspector-tab {
+    .components-text-control__input[type="text"] {
+        border: 1px solid #e1e1e1 !important;
+    }
+    .components-text-control__input:focus,
+    .components-text-control__input[type="color"]:focus,
+    .components-text-control__input[type="date"]:focus,
+    .components-text-control__input[type="datetime-local"]:focus,
+    .components-text-control__input[type="datetime"]:focus,
+    .components-text-control__input[type="email"]:focus,
+    .components-text-control__input[type="month"]:focus,
+    .components-text-control__input[type="number"]:focus,
+    .components-text-control__input[type="password"]:focus,
+    .components-text-control__input[type="tel"]:focus,
+    .components-text-control__input[type="text"]:focus,
+    .components-text-control__input[type="time"]:focus,
+    .components-text-control__input[type="url"]:focus,
+    .components-text-control__input[type="week"]:focus,
+    input[type="number"]:focus {
+        outline: none;
+        box-shadow: none;
+    }
 }

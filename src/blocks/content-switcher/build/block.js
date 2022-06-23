@@ -1723,7 +1723,7 @@ function PremiumBackgroundControl(_ref) {
     onChangeBackSize: newValue => onChangeBackground('backgroundSize', newValue),
     onChangeFixed: check => onChangeBackground('fixed', check)
   })), 'gradient' === backgroundType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "Premium-inner-sub-section premium-blocks-base-control"
+    className: "Premium-inner-sub-section premium-blocks__base-control"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_5__["default"], {
     label: __('Gradient Color 1', 'premium-blocks-for-gutenberg'),
     colorValue: backgroundColor,
@@ -1910,7 +1910,7 @@ function PremiumShadow(_ref) {
     position
   } = state;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "premium-shadow-control__container premium-blocks-base-control"
+    className: "premium-shadow-control__container premium-blocks__base-control"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "premium-control-title"
   }, __(label || "Box Shadow")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -2199,7 +2199,7 @@ function ResponsiveRangeControl(_ref) {
     defaultValue: defaultValue
   });
   return [onChange && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: `premium-blocks-range-control premium-blocks-base-control`
+    className: `premium-blocks-range-control premium-blocks__base-control`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("header", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-slider-title-wrap`,
     style: {
@@ -2260,7 +2260,7 @@ function ResponsiveSingleRangeControl(_ref) {
     defaultValue
   } = _ref;
   return [onChange && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: `premium-blocks-range-control premium-blocks-base-control`
+    className: `premium-blocks-range-control premium-blocks__base-control`
   }, label && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("header", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-slider-title-wrap`
   }, label && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
@@ -2884,8 +2884,7 @@ function PremiumBackground(props) {
         onClick: open,
         role: "button"
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-        "aria-label": __("Edit"),
-        className: "fa fa-pencil"
+        class: "dashicons dashicons-edit"
       }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Tooltip, {
         text: __("Remove")
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
@@ -2894,8 +2893,7 @@ function PremiumBackground(props) {
         onClick: onRemoveImage,
         role: "button"
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-        "aria-label": __("Close"),
-        className: "fa fa-trash-o"
+        class: "dashicons dashicons-trash"
       }))))), !imageURL && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
         onClick: open,
         className: "premium-placeholder-image"
@@ -3004,7 +3002,7 @@ const PremiumBorder = props => {
   };
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: " premium-blocks-base-control"
+    className: " premium-blocks__base-control"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "premium-blocks-border__control ",
     style: {
@@ -8459,20 +8457,18 @@ function PremiumMediaUpload(props) {
         "aria-label": __("Edit"),
         onClick: open,
         role: "button"
-      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-        "aria-label": __("Edit"),
-        className: "fa fa-pencil"
-      }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Tooltip, {
+      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+        class: "dashicons dashicons-edit"
+      }), "                                    ")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Tooltip, {
         text: __("Remove")
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
         className: "premium-image-button",
         "aria-label": __("Remove"),
         onClick: onRemoveImage,
         role: "button"
-      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-        "aria-label": __("Close"),
-        className: "fa fa-trash-o"
-      }))))), !imageURL && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+        class: "dashicons dashicons-trash"
+      }), "                                    ")))), !imageURL && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
         onClick: open,
         className: "premium-placeholder-image"
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Dashicon, {
@@ -8658,7 +8654,7 @@ const SpacingComponent = props => {
   };
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "premium-spacing-responsive premium-blocks-base-control"
+    className: "premium-spacing-responsive premium-blocks__base-control"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("header", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-slider-title-wrap`,
     style: {
@@ -9001,7 +8997,7 @@ class PremiumTypo extends Component {
     const linearFonts = fonts.filter(family => fuzzysearch(search.toLowerCase(), family['value'].toLowerCase()));
     const fontSize = components.includes("responsiveSize") ? value['fontSize'][device] : value['fontSize'];
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "premium-control-toggle premium-typography premium-blocks-base-control"
+      className: "premium-control-toggle premium-typography premium-blocks__base-control"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("header", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
       className: " premium-control-title"
     }, __('Typography', 'premium-blocks-for-gutenberg'))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {

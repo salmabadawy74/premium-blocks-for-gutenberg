@@ -142,7 +142,7 @@ const SpacingComponent = (props) => {
         setState(updateState);
     }
     return (
-        <div className="premium-spacing-responsive premium-blocks-base-control">
+        <div className="premium-spacing-responsive premium-blocks__base-control">
             <header>
                 <div className={`premium-slider-title-wrap`} style={{ display: "flex", alignItems: 'center' }}>
                     <span className="customize-control-title premium-control-title">  {label}</span>
