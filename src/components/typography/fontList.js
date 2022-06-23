@@ -96,7 +96,7 @@ const FontsList = ({
                 <ul>
                     {systemFonts.map((family) => SingleFont({ family, onPickFamily, value }))}
                 </ul>
-                <div className={`premium-fonts-source`}>{__('Google  Fonts', "kemet")}</div>
+                <div className={`premium-fonts-source`}>{__('Google  Fonts', "premium-blocks-for-gutenberg")}</div>
                 <ul>
                     {googleFonts.map((family) => SingleFont({ family, onPickFamily, value }))}
                 </ul>
