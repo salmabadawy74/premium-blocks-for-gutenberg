@@ -603,6 +603,11 @@ const deprecatedContent = [
             let newAttributes = {
                 blockId: attributes.block_id ? `premium-icon-box-${attributes.block_id.split('-')[6]}` : '',
                 titleTag: attributes.titleStyles[0].titleTag,
+                align: {
+                    "Desktop": attributes.align,
+                    "Tablet": attributes.align,
+                    "Mobile": attributes.align,
+                },
                 iconSize: {
                     Desktop: attributes.iconSize,
                     unit: "px"

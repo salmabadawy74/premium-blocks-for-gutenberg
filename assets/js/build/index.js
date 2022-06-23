@@ -24069,15 +24069,15 @@ const attributes = {
   },
   hideDesktop: {
     type: 'boolean',
-    default: false
+    default: ''
   },
   hideTablet: {
     type: 'boolean',
-    default: false
+    default: ''
   },
   hideMobile: {
     type: 'boolean',
-    default: false
+    default: ''
   },
   iconOpacity: {
     type: "number",
@@ -25070,6 +25070,11 @@ const deprecatedContent = [{
     let newAttributes = {
       blockId: attributes.block_id ? `premium-icon-box-${attributes.block_id.split('-')[6]}` : '',
       titleTag: attributes.titleStyles[0].titleTag,
+      align: {
+        "Desktop": attributes.align,
+        "Tablet": attributes.align,
+        "Mobile": attributes.align
+      },
       iconSize: {
         Desktop: attributes.iconSize,
         unit: "px"
