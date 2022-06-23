@@ -307,8 +307,14 @@ const deprecated = [
         },
         migrate: (attributes) => {
             let newAttributes = {
-                nameTag: 'H2',
-                titleTag: 'H4',
+                nameTag: 'h2',
+                titleTag: 'h4',
+                blockId: attributes.id ? `premium-person-${attributes.id.split('-')[6]}` : '',
+                personAlign: {
+                    "Desktop": attributes.personAlign,
+                    "Tablet": attributes.personAlign,
+                    "Mobile": attributes.personAlign,
+                },
                 socialIconSize: {
                     unit: attributes.socialIconStyles[0].socialIconfontSizeType,
                     "Desktop": attributes.socialIconStyles[0].socialIconSize

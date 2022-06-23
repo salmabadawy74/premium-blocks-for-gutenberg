@@ -15,10 +15,12 @@ import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
 import RadioComponent from '../../components/radio-control';
+import ResponsiveRadioControl from '../../components/responsive-radio'
 import InsideTabs from '../../components/InsideTabs'
 import InsideTab from '../../components/InsideTab';
+import Icons from "../../components/icons";
 import WebfontLoader from "../../components/typography/fontLoader"
-import { borderCss, padddingCss, marginCss, typographyCss } from '../../components/HelperFunction'
+import { borderCss, padddingCss, marginCss, typographyCss, generateBlockId } from '../../components/HelperFunction'
 import times from "lodash/times"
 
 const { withSelect } = wp.data
@@ -35,8 +37,6 @@ const {
 
 const {
     InspectorControls,
-    AlignmentToolbar,
-    BlockControls,
     RichText
 } = wp.editor;
 
@@ -98,7 +98,7 @@ class edit extends Component {
             })
         }
         // Assigning id in the attribute.
-        this.props.setAttributes({ id: this.props.clientId })
+        this.props.setAttributes({ blockId: "premium-person-" + generateBlockId(this.props.clientId) });
         this.props.setAttributes({ classMigrate: true })
     }
 
@@ -133,11 +133,10 @@ class edit extends Component {
     }
 
     render() {
-        const { isSelected, setAttributes, className, clientId: blockId } = this.props;
+        const { isSelected, setAttributes, className } = this.props;
 
         const {
-            id,
-            personSize,
+            blockId,
             personAlign,
             nameStyles,
             titleStyles,
@@ -353,8 +352,6 @@ class edit extends Component {
             },
         ];
 
-        setAttributes({ id: blockId });
-
         const mainClasses = classnames(className, "premium-person");
 
         let loadTitleGoogleFonts;
@@ -400,15 +397,15 @@ class edit extends Component {
         const renderCss = (
             <style>
                 {`
-                    #premium-person-${id} .premium-person:hover {
+                    .${blockId} .premium-person:hover {
                         border-color: ${borderHoverColor} !important;
                     }
-                    #premium-person-${id} .premium-person__social-List li:hover i{
+                    .${blockId} .premium-person__social-List li:hover i{
                         color: ${socialIconStyles[0].socialIconHoverColor} !important;
                         -webkit-transition: all .2s ease-in-out;
                         transition: all .2s ease-in-out;
                     }
-                    #premium-person-${id} .premium-person__img_wrap img {
+                    .${blockId} .premium-person__img_wrap img {
                         height: ${imgHeight[this.props.deviceType]}${imgHeight.unit} !important;
                         width: ${imgWidth[this.props.deviceType]}${imgWidth.unit} !important;
                         filter: ${`brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`} !important;
@@ -545,7 +542,7 @@ class edit extends Component {
         }
 
         const content = () => {
-            return <div className={`premium-person-content ${id} ${multiPersonChecked > 1 ? `premium-person__${rowPerson}` : ""}`}
+            return <div className={`premium-person-content ${multiPersonChecked > 1 ? `premium-person__${rowPerson}` : ""}`}
             > {multiPersonContent.map((value, index) => (
                 <div key={value.id} className={`premium-person__inner premium-persson__min premium-person__${effectPersonStyle} premium-person__${hoverEffectPerson}`}>
                     <div className={`premium-person__img__container`}>
@@ -755,14 +752,6 @@ class edit extends Component {
         }
 
         return [
-            isSelected && "block" != personSize && (
-                <BlockControls key="controls">
-                    <AlignmentToolbar
-                        value={personAlign}
-                        onChange={newAlign => setAttributes({ personAlign: newAlign })}
-                    />
-                </BlockControls>
-            ),
             isSelected && (
                 <InspectorControls key={"inspector"}>
                     <InspectorTabs tabs={['layout', 'style', 'advance']}>
@@ -795,15 +784,40 @@ class edit extends Component {
                                 />
                                 <RadioComponent
                                     label={__("Name Tag", 'premium-blocks-for-gutenberg')}
-                                    choices={['H1', 'H2', 'H3', 'H4', 'H5', 'H6']}
+                                    choices={[
+                                        { value: 'h1', label: __('H1') },
+                                        { value: 'h2', label: __('H2') },
+                                        { value: 'h3', label: __('H3') },
+                                        { value: 'h4', label: __('H4') },
+                                        { value: 'h5', label: __('H5') },
+                                        { value: 'h6', label: __('H6') }
+                                    ]}
                                     value={nameTag}
                                     onChange={(newValue) => setAttributes({ nameTag: newValue })}
                                 />
                                 <RadioComponent
                                     label={__("Title Tag", 'premium-blocks-for-gutenberg')}
-                                    choices={['H1', 'H2', 'H3', 'H4', 'H5', 'H6']}
+                                    choices={[
+                                        { value: 'h1', label: __('H1') },
+                                        { value: 'h2', label: __('H2') },
+                                        { value: 'h3', label: __('H3') },
+                                        { value: 'h4', label: __('H4') },
+                                        { value: 'h5', label: __('H5') },
+                                        { value: 'h6', label: __('H6') }
+                                    ]}
                                     value={titleTag}
                                     onChange={(newValue) => setAttributes({ titleTag: newValue })}
+                                />
+                                <ResponsiveRadioControl
+                                    label={__("Alignment", 'premium-blocks-for-gutenberg')}
+                                    choices={[
+                                        { value: 'left', label: __('Left'), icon: Icons.alignLeft },
+                                        { value: 'center', label: __('Center'), icon: Icons.alignCenter },
+                                        { value: 'right', label: __('Right'), icon: Icons.alignRight }
+                                    ]}
+                                    value={personAlign}
+                                    onChange={(newValue) => setAttributes({ personAlign: newValue })}
+                                    showIcons={true}
                                 />
                             </PanelBody>
                             {times(multiPersonChecked, n => MultiPersonSetting(n))}
@@ -1024,7 +1038,6 @@ class edit extends Component {
                                         </Fragment>
                                     </InsideTab>
                                 </InsideTabs>
-                                <hr />
                                 <ToggleControl
                                     label={__("Brands Default Colors", 'premium-block-for-gutenberg')}
                                     checked={socialIconStyles[0].defaultIconColor}
@@ -1104,9 +1117,8 @@ class edit extends Component {
             ),
             renderCss,
             <div
-                id={`premium-person-${id}`}
-                className={`${mainClasses} premium-person__${effect} premium-person__${effectDir} ${hideDesktop} ${hideTablet} ${hideMobile}`}
-                style={{ textAlign: personAlign }}
+                className={`${mainClasses} ${blockId} premium-person__${effect} premium-person__${effectDir} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                style={{ textAlign: personAlign[this.props.deviceType] }}
             >
                 {content()}
                 {loadNameGoogleFonts}
