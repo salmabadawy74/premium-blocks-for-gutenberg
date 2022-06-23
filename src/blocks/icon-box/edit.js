@@ -11,6 +11,7 @@ import ResponsiveSingleRangeControl from "../../components/RangeControl/single-r
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 import RadioComponent from '../../components/radio-control';
+import ResponsiveRadioControl from '../../components/responsive-radio'
 import SpacingControl from '../../components/premium-responsive-spacing'
 import WebfontLoader from "../../components/typography/fontLoader"
 import PremiumShadow from "../../components/PremiumShadow";
@@ -18,7 +19,8 @@ import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
 import InsideTabs from '../../components/InsideTabs'
 import InsideTab from '../../components/InsideTab';
-import { gradientBackground, borderCss, padddingCss, marginCss, typographyCss } from '../../components/HelperFunction'
+import Icons from "../../components/icons";
+import { gradientBackground, borderCss, padddingCss, marginCss, typographyCss, generateBlockId } from '../../components/HelperFunction'
 
 const { __ } = wp.i18n;
 
@@ -34,11 +36,11 @@ class edit extends Component {
 
     componentDidMount() {
         const { setAttributes, clientId } = this.props;
-        setAttributes({ block_id: clientId })
+        setAttributes({ blockId: "premium-icon-box-" + generateBlockId(clientId) });
     }
 
     render() {
-        const { isSelected, setAttributes, className, clientId: blockId, attributes } = this.props;
+        const { isSelected, setAttributes, className, attributes } = this.props;
 
         const saveTitleStyle = (value) => {
             const newUpdate = titleStyles.map((item, index) => {
@@ -71,7 +73,7 @@ class edit extends Component {
         }
 
         const {
-            block_id,
+            blockId,
             align,
             iconImage,
             iconImgId,
@@ -119,7 +121,8 @@ class edit extends Component {
             containerHoverShadow,
             titleTypography,
             descTypography,
-            btnTypography
+            btnTypography,
+            titleTag
         } = attributes;
 
         const imgIcon = [
@@ -172,25 +175,6 @@ class edit extends Component {
             {
                 value: "slide",
                 label: __("Slide", 'premium-blocks-for-gutenberg')
-            }
-        ];
-
-        const DIRECTION = [
-            {
-                value: "top",
-                label: __("Top to Bottom", 'premium-blocks-for-gutenberg')
-            },
-            {
-                value: "bottom",
-                label: __("Bottom to Top", 'premium-blocks-for-gutenberg')
-            },
-            {
-                value: "left",
-                label: __("Left to Right", 'premium-blocks-for-gutenberg')
-            },
-            {
-                value: "right",
-                label: __("Right to Left", 'premium-blocks-for-gutenberg')
             }
         ];
 
@@ -273,14 +257,6 @@ class edit extends Component {
 
         return [
             isSelected && (
-                <BlockControls key="controls">
-                    <AlignmentToolbar
-                        value={align}
-                        onChange={newAlign => setAttributes({ align: newAlign })}
-                    />
-                </BlockControls>
-            ),
-            isSelected && (
                 <InspectorControls key={"inspector"}>
                     <InspectorTabs tabs={['layout', 'style', 'advance']}>
                         <InspectorTab key={'layout'}>
@@ -308,6 +284,17 @@ class edit extends Component {
                                     label={__("Button", 'premium-blocks-for-gutenberg')}
                                     checked={btnChecked}
                                     onChange={newValue => setAttributes({ btnChecked: newValue })}
+                                />
+                                <ResponsiveRadioControl
+                                    label={__("Alignment", 'premium-blocks-for-gutenberg')}
+                                    choices={[
+                                        { value: 'left', label: __('Left'), icon: Icons.alignLeft },
+                                        { value: 'center', label: __('Center'), icon: Icons.alignCenter },
+                                        { value: 'right', label: __('Right'), icon: Icons.alignRight }
+                                    ]}
+                                    value={align}
+                                    onChange={(newValue) => setAttributes({ align: newValue })}
+                                    showIcons={true}
                                 />
                             </PanelBody>
                             {iconChecked && (
@@ -385,12 +372,6 @@ class edit extends Component {
                                             />
                                         </Fragment>
                                     )}
-                                    <SelectControl
-                                        label={__("Hover Effect", 'premium-blocks-for-gutenberg')}
-                                        options={EFFECTS}
-                                        value={hoverEffect}
-                                        onChange={newEffect => setAttributes({ hoverEffect: newEffect })}
-                                    />
                                 </PanelBody>
                             )}
                             {titleChecked && (
@@ -401,9 +382,16 @@ class edit extends Component {
                                 >
                                     <RadioComponent
                                         label={__("Title Tag", 'premium-blocks-for-gutenberg')}
-                                        choices={['H1', 'H2', 'H3', 'H4', 'H5', 'H6']}
-                                        value={titleStyles[0].titleTag}
-                                        onChange={(newValue) => saveTitleStyle({ titleTag: newValue })}
+                                        choices={[
+                                            { value: 'h1', label: __('H1') },
+                                            { value: 'h2', label: __('H2') },
+                                            { value: 'h3', label: __('H3') },
+                                            { value: 'h4', label: __('H4') },
+                                            { value: 'h5', label: __('H5') },
+                                            { value: 'h6', label: __('H6') }
+                                        ]}
+                                        value={titleTag}
+                                        onChange={(newValue) => setAttributes({ titleTag: newValue })}
                                     />
                                 </PanelBody>
                             )}
@@ -413,20 +401,6 @@ class edit extends Component {
                                     className="premium-panel-body"
                                     initialOpen={false}
                                 >
-                                    <SelectControl
-                                        options={BTN_EFFECTS}
-                                        label={__("Hover Effect", 'premium-blocks-for-gutenberg')}
-                                        value={btnEffect}
-                                        onChange={newValue => setAttributes({ btnEffect: newValue })}
-                                    />
-                                    {"slide" === btnEffect && (
-                                        <SelectControl
-                                            options={DIRECTION}
-                                            label={__("Direction", 'premium-blocks-for-gutenberg')}
-                                            value={effectDir}
-                                            onChange={newValue => setAttributes({ effectDir: newValue })}
-                                        />
-                                    )}
                                     <TextControl
                                         label={__("Link", 'premium-block-for-gutenberg')}
                                         value={btnLink}
@@ -468,6 +442,12 @@ class edit extends Component {
                                     colorValue={iconBackColor}
                                     onColorChange={newvalue => setAttributes({ iconBackColor: newvalue, })}
                                     colorDefault={``}
+                                />
+                                <SelectControl
+                                    label={__("Hover Effect", 'premium-blocks-for-gutenberg')}
+                                    options={EFFECTS}
+                                    value={hoverEffect}
+                                    onChange={newEffect => setAttributes({ hoverEffect: newEffect })}
                                 />
                             </PanelBody>
                             )}
@@ -582,10 +562,29 @@ class edit extends Component {
                                                 colorDefault={''}
                                                 onColorChange={newValue => setAttributes({ btnHoverBorder: newValue })}
                                             />
+                                            <SelectControl
+                                                options={BTN_EFFECTS}
+                                                label={__("Hover Effect", 'premium-blocks-for-gutenberg')}
+                                                value={btnEffect}
+                                                onChange={newValue => setAttributes({ btnEffect: newValue })}
+                                            />
+                                            {"slide" === btnEffect && (
+                                                <RadioComponent
+                                                    label={__("Direction", 'premium-blocks-for-gutenberg')}
+                                                    choices={[
+                                                        { value: 'top', label: __('Top'), icon: Icons.arrowTop },
+                                                        { value: 'right', label: __('Right'), icon: Icons.arrowRight },
+                                                        { value: 'bottom', label: __('Bottom'), icon: Icons.arrowBottom },
+                                                        { value: 'left', label: __('Left'), icon: Icons.arrowLeft }
+                                                    ]}
+                                                    showIcons={true}
+                                                    value={effectDir}
+                                                    onChange={newValue => setAttributes({ effectDir: newValue })}
+                                                />
+                                            )}
                                         </Fragment>
                                     </InsideTab>
                                 </InsideTabs>
-                                <hr />
                                 <PremiumShadow
                                     value={btnShadow}
                                     onChange={(value) => setAttributes({ btnShadow: value })}
@@ -622,16 +621,21 @@ class edit extends Component {
                                     value={containerBackground}
                                     onChange={(value) => setAttributes({ containerBackground: value })}
                                 />
-                                <PremiumShadow
-                                    value={containerShadow}
-                                    onChange={(value) => setAttributes({ containerShadow: value })}
-                                />
-                                <PremiumShadow
-                                    label={__("Hover Box Shadow", "premium-blocks-for-gutenberg")}
-                                    value={containerHoverShadow}
-                                    onChange={(value) => setAttributes({ containerHoverShadow: value })}
-                                />
-                                <hr />
+                                <InsideTabs>
+                                    <InsideTab tabTitle={__('Normal')}>
+                                        <PremiumShadow
+                                            value={containerShadow}
+                                            onChange={(value) => setAttributes({ containerShadow: value })}
+                                        />
+                                    </InsideTab>
+                                    <InsideTab tabTitle={__('Hover')}>
+                                        <PremiumShadow
+                                            label={__("Hover Box Shadow", "premium-blocks-for-gutenberg")}
+                                            value={containerHoverShadow}
+                                            onChange={(value) => setAttributes({ containerHoverShadow: value })}
+                                        />
+                                    </InsideTab>
+                                </InsideTabs>
                                 <PremiumBorder
                                     label={__('Border', 'premium-blocks-for-gutenberg')}
                                     value={containerBorder}
@@ -668,40 +672,35 @@ class edit extends Component {
                 </InspectorControls >
             ),
             <div
-                id={`premium-icon-box-${block_id}`}
-                className={`${mainClasses} premium-icon-box-${iconPos} premium-icon-box-${iconHPos} premium-icon-box-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                className={`${mainClasses} ${blockId} premium-icon-box-${iconPos} premium-icon-box-${iconHPos} ${hideDesktop} ${hideTablet} ${hideMobile}`}
                 style={{
-                    textAlign: align,
+                    textAlign: align[this.props.deviceType],
                     ...borderCss(containerBorder, this.props.deviceType),
                     ...padddingCss(containerPadding, this.props.deviceType),
                     ...marginCss(containerMargin, this.props.deviceType),
                     ...gradientBackground(containerBackground),
                 }}
             >
-                {btnChecked && btnText && (
-                    <style
-                        dangerouslySetInnerHTML={{
-                            __html: [
-                                `#premium-icon-box-${block_id}:hover {`,
-                                `box-shadow: ${containerHoverShadow.horizontal}px ${containerHoverShadow.vertical}px ${containerHoverShadow.blur}px ${containerHoverShadow.color} ${containerHoverShadow.position} !important`,
-                                "}",
-                                `#premium-icon-box-${block_id} {`,
-                                `box-shadow: ${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position} !important`,
-                                "}",
-                                `#premium-icon-box-${block_id} .premium-icon-box__btn:hover {`,
-                                `color: ${btnStyles[0].btnHoverColor} !important;`,
-                                `border-color: ${btnHoverBorder} !important;`,
-                                "}",
-                                `#premium-icon-box-${block_id} .premium-button__none .premium-icon-box__btn:hover {`,
-                                `background-color: ${btnStyles[0].btnHoverBack} !important;`,
-                                "}",
-                                `#premium-icon-box-${block_id} .premium-button__slide .premium-button::before {`,
-                                `background-color: ${btnStyles[0].btnHoverBack} !important;`,
-                                "}"
-                            ].join("\n")
-                        }}
-                    />
-                )}
+                <style>
+                    {`
+                     .${blockId}:hover {
+                        box-shadow: ${containerHoverShadow.horizontal}px ${containerHoverShadow.vertical}px ${containerHoverShadow.blur}px ${containerHoverShadow.color} ${containerHoverShadow.position} !important;
+                     }
+                    .${blockId} {
+                        box-shadow: ${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position} !important;
+                     }
+                     .${blockId} .premium-icon-box__btn:hover {
+                        color: ${btnStyles[0].btnHoverColor} !important;
+                        border-color: ${btnHoverBorder} !important;
+                    }
+                    .${blockId} .premium-button__none .premium-icon-box__btn:hover {
+                        background-color: ${btnStyles[0].btnHoverBack} !important;
+                    }
+                   .${blockId} .premium-button__slide .premium-button::before {
+                        background-color: ${btnStyles[0].btnHoverBack} !important;
+                    }
+                 `}
+                </style>
                 {iconChecked && (
                     <div
                         className={`premium-icon-box__icon_wrap premium-icon-box__icon_${iconVPos}`}
@@ -748,7 +747,7 @@ class edit extends Component {
                             }}
                         >
                             <RichText
-                                tagName={titleStyles[0].titleTag.toLowerCase()}
+                                tagName={titleTag.toLowerCase()}
                                 className={`premium-icon-box__title`}
                                 onChange={newText => setAttributes({ titleText: newText })}
                                 placeholder={__("Awesome Title")}
@@ -774,7 +773,6 @@ class edit extends Component {
                                 tagName="p"
                                 className={`premium-icon-box__desc`}
                                 value={descText}
-                                isSelected={false}
                                 placeholder="Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
                                 onChange={newText => setAttributes({ descText: newText })}
                                 style={{

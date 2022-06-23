@@ -1,6 +1,6 @@
 const { __ } = wp.i18n;
 const attributes = {
-    block_id: {
+    blockId: {
         type: "string"
     },
     borderIconBox: {
@@ -12,8 +12,12 @@ const attributes = {
         default: false
     },
     align: {
-        type: "string",
-        default: "center"
+        type: "object",
+        default: {
+            "Desktop": "center",
+            "Tablet": "center",
+            "Mobile": "center"
+        }
     },
     iconImage: {
         type: "string",
@@ -125,25 +129,28 @@ const attributes = {
     },
     hideDesktop: {
         type: 'boolean',
-        default: false
+        default: ''
     },
     hideTablet: {
         type: 'boolean',
-        default: false
+        default: ''
     },
     hideMobile: {
         type: 'boolean',
-        default: false
+        default: ''
     },
     iconOpacity: {
         type: "number",
         default: "1"
     },
+    titleTag: {
+        type: "string",
+        default: "h2"
+    },
     titleStyles: {
         type: "array",
         default: [
             {
-                titleTag: "H2",
                 titleColor: '',
             }
         ]

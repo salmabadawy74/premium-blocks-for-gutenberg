@@ -11,7 +11,7 @@ const save = props => {
     const { className } = props;
 
     const {
-        id,
+        blockId,
         personAlign,
         nameV,
         titleStyles,
@@ -46,24 +46,27 @@ const save = props => {
         titleTag,
         nameTag,
         imgHeight,
-        imgWidth
+        imgWidth,
+        hideDesktop,
+        hideMobile,
+        hideTablet
     } = props.attributes;
 
 
-    const mainClasses = classnames(className, 'premium-person');
+    const mainClasses = classnames(className, 'premium-person', blockId);
 
     const renderCss = (
         <style>
             {`
-                #premium-person-${id} .premium-person:hover {
+                .${blockId} .premium-person:hover {
                     border-color: ${borderHoverColor} !important;
                 }
-                #premium-person-${id} .premium-person__social-List li:hover i{
+                .${blockId} .premium-person__social-List li:hover i{
                     color: ${socialIconStyles[0].socialIconHoverColor} !important;
                     -webkit-transition: all .2s ease-in-out;
                     transition: all .2s ease-in-out;
                 }
-                #premium-person-${id} .premium-person__img_wrap img {
+                .${blockId} .premium-person__img_wrap img {
                     height: ${imgHeight[props.deviceType]}${imgHeight.unit} !important;
                     width: ${imgWidth[props.deviceType]}${imgWidth.unit} !important;
                     filter: ${`brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`} !important;
@@ -91,7 +94,7 @@ const save = props => {
         </ul>
     }
     const content = () => {
-        return <div className={`premium-person-content ${id} ${multiPersonChecked > 1 ? `premium-person__${rowPerson}` : ""}`}
+        return <div className={`premium-person-content ${multiPersonChecked > 1 ? `premium-person__${rowPerson}` : ""}`}
         > {multiPersonContent.map((value) => (
             <div key={value.id} className={`premium-person__inner premium-persson__min premium-person__${effectPersonStyle} premium-person__${hoverEffectPerson}`}>
                 <div className={`premium-person__img__container`}>
@@ -174,9 +177,8 @@ const save = props => {
 
     return (
         <div
-            id={`premium-person-${id}`}
-            className={`${mainClasses} premium-person__${effect} premium-person__${effectDir}`}
-            style={{ textAlign: personAlign }}
+            className={`${mainClasses} ${blockId} premium-person__${effect} premium-person__${effectDir} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+            style={{ textAlign: personAlign[props.deviceType] || 'center' }}
         >
             {renderCss}
             {content()}

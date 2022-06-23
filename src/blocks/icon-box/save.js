@@ -8,7 +8,7 @@ const save = props => {
     const { className } = props;
 
     const {
-        block_id,
+        blockId,
         align,
         iconImage,
         iconImgUrl,
@@ -48,44 +48,40 @@ const save = props => {
         containerHoverShadow,
         titleTypography,
         descTypography,
-        btnTypography
+        btnTypography,
+        titleTag
     } = props.attributes;
 
-    const mainClasses = classnames(className, 'premium-icon-box');
+    const mainClasses = classnames(className, 'premium-icon-box', blockId);
 
     return (
         <div
-            id={`premium-icon-box-${block_id}`}
-            className={`${mainClasses} premium-icon-box-${iconPos} premium-icon-box-${iconHPos} premium-icon-box-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+            className={`${mainClasses} ${blockId} premium-icon-box-${iconPos} premium-icon-box-${iconHPos} ${hideDesktop} ${hideTablet} ${hideMobile}`}
         >
-            {btnChecked && btnText && (
-                <style
-                    dangerouslySetInnerHTML={{
-                        __html: [
-                            `#premium-icon-box-${block_id}:hover {`,
-                            `box-shadow: ${containerHoverShadow.horizontal}px ${containerHoverShadow.vertical}px ${containerHoverShadow.blur}px ${containerHoverShadow.color} ${containerHoverShadow.position} !important`,
-                            "}",
-                            `#premium-icon-box-${block_id} {`,
-                            `box-shadow: ${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position} !important`,
-                            "}",
-                            `#premium-icon-box-${block_id} .premium-icon-box__btn:hover {`,
-                            `color: ${btnStyles[0].btnHoverColor} !important;`,
-                            `border-color: ${btnHoverBorder} !important;`,
-                            "}",
-                            `#premium-icon-box-${block_id} .premium-button__none .premium-icon-box__btn:hover {`,
-                            `background-color: ${btnStyles[0].btnHoverBack} !important;`,
-                            "}",
-                            `#premium-icon-box-${block_id} .premium-button__slide .premium-button::before {`,
-                            `background-color: ${btnStyles[0].btnHoverBack} !important;`,
-                            "}"
-                        ].join("\n")
-                    }}
-                />
-            )}
+            <style>
+                {`
+                     .${blockId}:hover {
+                        box-shadow: ${containerHoverShadow.horizontal}px ${containerHoverShadow.vertical}px ${containerHoverShadow.blur}px ${containerHoverShadow.color} ${containerHoverShadow.position} !important;
+                     }
+                    .${blockId} {
+                        box-shadow: ${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position} !important;
+                     }
+                     .${blockId} .premium-icon-box__btn:hover {
+                        color: ${btnStyles[0].btnHoverColor} !important;
+                        border-color: ${btnHoverBorder} !important;
+                    }
+                    .${blockId} .premium-button__none .premium-icon-box__btn:hover {
+                        background-color: ${btnStyles[0].btnHoverBack} !important;
+                    }
+                   .${blockId} .premium-button__slide .premium-button::before {
+                        background-color: ${btnStyles[0].btnHoverBack} !important;
+                    }
+                 `}
+            </style>
             <div
                 className={`premium-icon-box-container`}
                 style={{
-                    textAlign: align,
+                    textAlign: align[props.deviceType] || 'center',
                     borderStyle: containerBorder.borderType,
                     borderColor: containerBorder.borderColor,
                     ...gradientBackground(containerBackground),
@@ -125,7 +121,7 @@ const save = props => {
                             className={`premium-icon-box__title_wrap`}
                         >
                             <RichText.Content
-                                tagName={titleStyles[0].titleTag.toLowerCase()}
+                                tagName={titleTag.toLowerCase()}
                                 className={`premium-icon-box__title`}
                                 value={titleText}
                                 style={{
