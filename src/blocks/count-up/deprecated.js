@@ -589,6 +589,11 @@ const deprecatedContent = [
                     Tablet: attributes?.align || 'center',
                     Mobile: attributes?.align || 'center',
                 },
+                selfAlign: {
+                    Desktop: attributes?.selfAlign || 'center',
+                    Tablet: attributes?.selfAlign || 'center',
+                    Mobile: attributes?.selfAlign || 'center',
+                },
                 padding: {
                     "Desktop": {
                         top: attributes.paddingT || '',
