@@ -2429,18 +2429,22 @@ class PBG_Blocks_Helper {
 	public function get_dual_css( $attributes, $content ) {
 
 		if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
-			$unique_id = $attributes['block_id'];
-		} else {
-			$unique_id = rand( 100, 10000 );
-
+			$unique_id = "#premium-dheading-block-{$attributes['block_id']}";
 		}
-		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
-		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'banner', $unique_id ) ) {
+
+		if ( isset( $attributes['blockId'] ) && ! empty( $attributes['blockId'] ) ) {
+			$unique_id = ".{$attributes['blockId']}";
+		}
+
+		$style_unique_id = rand( 100, 10000 );
+
+		$style_id = 'pbg-blocks-style' . esc_attr( $style_unique_id );
+		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'dual-heading', $unique_id ) ) {
 
 			$css = $this->get_dual_css_style( $attributes, $unique_id );
 
 			if ( ! empty( $css ) ) {
-				if ( $this->should_render_inline( 'banner', $unique_id ) ) {
+				if ( $this->should_render_inline( 'dual-heading', $unique_id ) ) {
 					$content = '<style id="' . $style_id . '">' . $css . '</style>' . $content;
 				} else {
 					$this->render_inline_css( $css, $style_id, true );
@@ -2484,54 +2488,404 @@ class PBG_Blocks_Helper {
 		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
 		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
 		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
+
+		if ( isset( $attr['containerBorder'] ) ) {
+			$container_border        = $attr['containerBorder'];
+			$container_border_width  = $attr['containerBorder']['borderWidth'];
+			$container_border_radius = $attr['containerBorder']['borderRadius'];
+
+			$css->set_selector( $unique_id );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $container_border_width, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $container_border_width, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $container_border_width, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $container_border_width, 'left', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $container_border_radius, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $container_border_radius, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $container_border_radius, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $container_border_radius, 'left', 'Desktop', 'px' ) );
+		}
+
 		// First Style FontSize.
 		if ( isset( $attr['firstStyles'] ) ) {
 			if ( isset( $attr['firstStyles'][0]['firstSize'] ) || isset( $attr['firstStyles'][0]['firstSizeUnit'] ) ) {
-				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+				$css->set_selector( $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
 				$css->add_property( 'font-size', ( $attr['firstStyles'][0]['firstSize'] . $attr['firstStyles'][0]['firstSizeUnit'] ) );
 			}
 		}
+
+		if ( isset( $attr['firstTypography'] ) ) {
+			$first_typography = $attr['firstTypography'];
+			$font_size        = $first_typography['fontSize'];
+
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $first_typography['fontFamily'] ) ? $first_typography['fontFamily'] : '' ),
+					'fontVariant' => ( isset( $first_typography['fontWeight'] ) ? $first_typography['fontWeight'] : '' ),
+				)
+			);
+
+			$css->set_selector( $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $font_size, 'Desktop', $font_size['unit'] ) );
+		}
+
+		if ( isset( $attr['firstBorder'] ) ) {
+			$first_border        = $attr['firstBorder'];
+			$first_border_width  = $attr['firstBorder']['borderWidth'];
+			$first_border_radius = $attr['firstBorder']['borderRadius'];
+
+			$css->set_selector( $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $first_border_width, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $first_border_width, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $first_border_width, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $first_border_width, 'left', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $first_border_radius, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $first_border_radius, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $first_border_radius, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $first_border_radius, 'left', 'Desktop', 'px' ) );
+		}
+
+		if ( isset( $attr['firstPadding'] ) ) {
+			$first_padding = $attr['firstPadding'];
+			$css->set_selector( $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+			$css->add_property( 'padding-top', $css->render_color( $first_padding['Desktop']['top'] . $first_padding['unit'] ) );
+			$css->add_property( 'padding-right', $css->render_color( $first_padding['Desktop']['right'] . $first_padding['unit'] ) );
+			$css->add_property( 'padding-bottom', $css->render_color( $first_padding['Desktop']['bottom'] . $first_padding['unit'] ) );
+			$css->add_property( 'padding-left', $css->render_color( $first_padding['Desktop']['left'] . $first_padding['unit'] ) );
+		}
+
+		if ( isset( $attr['firstMargin'] ) ) {
+			$first_margin = $attr['firstMargin'];
+			$css->set_selector( $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+			$css->add_property( 'margin-top', $css->render_color( $first_margin['Desktop']['top'] . $first_margin['unit'] ) );
+			$css->add_property( 'margin-right', $css->render_color( $first_margin['Desktop']['right'] . $first_margin['unit'] ) );
+			$css->add_property( 'margin-bottom', $css->render_color( $first_margin['Desktop']['bottom'] . $first_margin['unit'] ) );
+			$css->add_property( 'margin-left', $css->render_color( $first_margin['Desktop']['left'] . $first_margin['unit'] ) );
+		}
+
 		// Second Style FontSize.
 		if ( isset( $attr['secondStyles'] ) ) {
 			if ( isset( $attr['secondStyles'][0]['secondSize'] ) && isset( $attr['secondStyles'][0]['secondSizeUnit'] ) ) {
-				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+				$css->set_selector( $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
 				$css->add_property( 'font-size', ( $attr['secondStyles'][0]['secondSize'] . $attr['secondStyles'][0]['secondSizeUnit'] ) );
 			}
 		}
+
+		if ( isset( $attr['secondTypography'] ) ) {
+			$second_typography = $attr['secondTypography'];
+			$font_size         = $second_typography['fontSize'];
+
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $second_typography['fontFamily'] ) ? $second_typography['fontFamily'] : '' ),
+					'fontVariant' => ( isset( $second_typography['fontWeight'] ) ? $second_typography['fontWeight'] : '' ),
+				)
+			);
+
+			$css->set_selector( $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $font_size, 'Desktop', $font_size['unit'] ) );
+		}
+
+		if ( isset( $attr['secondBorder'] ) ) {
+			$second_border        = $attr['secondBorder'];
+			$second_border_width  = $attr['secondBorder']['borderWidth'];
+			$second_border_radius = $attr['secondBorder']['borderRadius'];
+
+			$css->set_selector( $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $second_border_width, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $second_border_width, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $second_border_width, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $second_border_width, 'left', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $second_border_radius, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $second_border_radius, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $second_border_radius, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $second_border_radius, 'left', 'Desktop', 'px' ) );
+		}
+
+		if ( isset( $attr['secondPadding'] ) ) {
+			$second_padding = $attr['secondPadding'];
+			$css->set_selector( $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+			$css->add_property( 'padding-top', $css->render_color( $second_padding['Desktop']['top'] . $second_padding['unit'] ) );
+			$css->add_property( 'padding-right', $css->render_color( $second_padding['Desktop']['right'] . $second_padding['unit'] ) );
+			$css->add_property( 'padding-bottom', $css->render_color( $second_padding['Desktop']['bottom'] . $second_padding['unit'] ) );
+			$css->add_property( 'padding-left', $css->render_color( $second_padding['Desktop']['left'] . $second_padding['unit'] ) );
+		}
+
+		if ( isset( $attr['secondMargin'] ) ) {
+			$second_margin = $attr['secondMargin'];
+			$css->set_selector( $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+			$css->add_property( 'margin-top', $css->render_color( $second_margin['Desktop']['top'] . $second_margin['unit'] ) );
+			$css->add_property( 'margin-right', $css->render_color( $second_margin['Desktop']['right'] . $second_margin['unit'] ) );
+			$css->add_property( 'margin-bottom', $css->render_color( $second_margin['Desktop']['bottom'] . $second_margin['unit'] ) );
+			$css->add_property( 'margin-left', $css->render_color( $second_margin['Desktop']['left'] . $second_margin['unit'] ) );
+		}
+
 		$css->start_media_query( $media_query['tablet'] );
+
+		if ( isset( $attr['containerBorder'] ) ) {
+			$container_border        = $attr['containerBorder'];
+			$container_border_width  = $attr['containerBorder']['borderWidth'];
+			$container_border_radius = $attr['containerBorder']['borderRadius'];
+
+			$css->set_selector( $unique_id );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $container_border_width, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $container_border_width, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $container_border_width, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $container_border_width, 'left', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $container_border_radius, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $container_border_radius, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $container_border_radius, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $container_border_radius, 'left', 'Tablet', 'px' ) );
+		}
+
 		// First Style FontSizeTablet.
 		if ( isset( $attr['firstStyles'] ) ) {
 			if ( isset( $attr['firstStyles'][0]['firstSize'] ) || isset( $attr['firstStyles'][0]['firstSizeUnit'] ) ) {
-				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+				$css->set_selector( $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
 				$css->add_property( 'font-size', ( $attr['firstStyles'][0]['firstSize'] . $attr['firstStyles'][0]['firstSizeUnit'] ) );
 			}
 		}
+
+		if ( isset( $attr['firstTypography'] ) ) {
+			$first_typography = $attr['firstTypography'];
+			$font_size        = $first_typography['fontSize'];
+
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $first_typography['fontFamily'] ) ? $first_typography['fontFamily'] : '' ),
+					'fontVariant' => ( isset( $first_typography['fontWeight'] ) ? $first_typography['fontWeight'] : '' ),
+				)
+			);
+
+			$css->set_selector( $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $font_size, 'Tablet', $font_size['unit'] ) );
+		}
+
+		if ( isset( $attr['firstBorder'] ) ) {
+			$first_border        = $attr['firstBorder'];
+			$first_border_width  = $attr['firstBorder']['borderWidth'];
+			$first_border_radius = $attr['firstBorder']['borderRadius'];
+
+			$css->set_selector( $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $first_border_width, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $first_border_width, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $first_border_width, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $first_border_width, 'left', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $first_border_radius, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $first_border_radius, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $first_border_radius, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $first_border_radius, 'left', 'Tablet', 'px' ) );
+		}
+
+		if ( isset( $attr['firstPadding'] ) ) {
+			$first_padding = $attr['firstPadding'];
+			$css->set_selector( $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+			$css->add_property( 'padding-top', $css->render_color( $first_padding['Tablet']['top'] . $first_padding['unit'] ) );
+			$css->add_property( 'padding-right', $css->render_color( $first_padding['Tablet']['right'] . $first_padding['unit'] ) );
+			$css->add_property( 'padding-bottom', $css->render_color( $first_padding['Tablet']['bottom'] . $first_padding['unit'] ) );
+			$css->add_property( 'padding-left', $css->render_color( $first_padding['Tablet']['left'] . $first_padding['unit'] ) );
+		}
+
+		if ( isset( $attr['firstMargin'] ) ) {
+			$first_margin = $attr['firstMargin'];
+			$css->set_selector( $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+			$css->add_property( 'margin-top', $css->render_color( $first_margin['Tablet']['top'] . $first_margin['unit'] ) );
+			$css->add_property( 'margin-right', $css->render_color( $first_margin['Tablet']['right'] . $first_margin['unit'] ) );
+			$css->add_property( 'margin-bottom', $css->render_color( $first_margin['Tablet']['bottom'] . $first_margin['unit'] ) );
+			$css->add_property( 'margin-left', $css->render_color( $first_margin['Tablet']['left'] . $first_margin['unit'] ) );
+		}
+
 		// Second Style FontSizeTablet.
 		if ( isset( $attr['secondStyles'] ) ) {
 			if ( isset( $attr['secondStyles'][0]['secondSize'] ) && isset( $attr['secondStyles'][0]['secondSizeUnit'] ) ) {
-				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+				$css->set_selector( $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
 				$css->add_property( 'font-size', ( $attr['secondStyles'][0]['secondSize'] . $attr['secondStyles'][0]['secondSizeUnit'] ) );
 			}
 		}
+
+		if ( isset( $attr['secondTypography'] ) ) {
+			$second_typography = $attr['secondTypography'];
+			$font_size         = $second_typography['fontSize'];
+
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $second_typography['fontFamily'] ) ? $second_typography['fontFamily'] : '' ),
+					'fontVariant' => ( isset( $second_typography['fontWeight'] ) ? $second_typography['fontWeight'] : '' ),
+				)
+			);
+
+			$css->set_selector( $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $font_size, 'Tablet', $font_size['unit'] ) );
+		}
+
+		if ( isset( $attr['secondBorder'] ) ) {
+			$second_border        = $attr['secondBorder'];
+			$second_border_width  = $attr['secondBorder']['borderWidth'];
+			$second_border_radius = $attr['secondBorder']['borderRadius'];
+
+			$css->set_selector( $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $second_border_width, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $second_border_width, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $second_border_width, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $second_border_width, 'left', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $second_border_radius, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $second_border_radius, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $second_border_radius, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $second_border_radius, 'left', 'Tablet', 'px' ) );
+		}
+
+		if ( isset( $attr['secondPadding'] ) ) {
+			$second_padding = $attr['secondPadding'];
+			$css->set_selector( $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+			$css->add_property( 'padding-top', $css->render_color( $second_padding['Tablet']['top'] . $second_padding['unit'] ) );
+			$css->add_property( 'padding-right', $css->render_color( $second_padding['Tablet']['right'] . $second_padding['unit'] ) );
+			$css->add_property( 'padding-bottom', $css->render_color( $second_padding['Tablet']['bottom'] . $second_padding['unit'] ) );
+			$css->add_property( 'padding-left', $css->render_color( $second_padding['Tablet']['left'] . $second_padding['unit'] ) );
+		}
+
+		if ( isset( $attr['secondMargin'] ) ) {
+			$second_margin = $attr['secondMargin'];
+			$css->set_selector( $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+			$css->add_property( 'margin-top', $css->render_color( $second_margin['Tablet']['top'] . $second_margin['unit'] ) );
+			$css->add_property( 'margin-right', $css->render_color( $second_margin['Tablet']['right'] . $second_margin['unit'] ) );
+			$css->add_property( 'margin-bottom', $css->render_color( $second_margin['Tablet']['bottom'] . $second_margin['unit'] ) );
+			$css->add_property( 'margin-left', $css->render_color( $second_margin['Tablet']['left'] . $second_margin['unit'] ) );
+		}
+
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['mobile'] );
+
+		if ( isset( $attr['containerBorder'] ) ) {
+			$container_border        = $attr['containerBorder'];
+			$container_border_width  = $attr['containerBorder']['borderWidth'];
+			$container_border_radius = $attr['containerBorder']['borderRadius'];
+
+			$css->set_selector( $unique_id );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $container_border_width, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $container_border_width, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $container_border_width, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $container_border_width, 'left', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $container_border_radius, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $container_border_radius, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $container_border_radius, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $container_border_radius, 'left', 'Mobile', 'px' ) );
+		}
+
 		// First Style FontSizeMobile.
 		if ( isset( $attr['firstStyles'] ) ) {
 			if ( isset( $attr['firstStyles'][0]['firstSize'] ) || isset( $attr['firstStyles'][0]['firstSizeUnit'] ) ) {
-				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+				$css->set_selector( $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
 				$css->add_property( 'font-size', ( $attr['firstStyles'][0]['firstSize'] . $attr['firstStyles'][0]['firstSizeUnit'] ) );
 			}
 		}
+
+		if ( isset( $attr['firstTypography'] ) ) {
+			$first_typography = $attr['firstTypography'];
+			$font_size        = $first_typography['fontSize'];
+
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $first_typography['fontFamily'] ) ? $first_typography['fontFamily'] : '' ),
+					'fontVariant' => ( isset( $first_typography['fontWeight'] ) ? $first_typography['fontWeight'] : '' ),
+				)
+			);
+
+			$css->set_selector( $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $font_size, 'Mobile', $font_size['unit'] ) );
+		}
+
+		if ( isset( $attr['firstBorder'] ) ) {
+			$first_border        = $attr['firstBorder'];
+			$first_border_width  = $attr['firstBorder']['borderWidth'];
+			$first_border_radius = $attr['firstBorder']['borderRadius'];
+
+			$css->set_selector( $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $first_border_width, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $first_border_width, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $first_border_width, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $first_border_width, 'left', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $first_border_radius, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $first_border_radius, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $first_border_radius, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $first_border_radius, 'left', 'Mobile', 'px' ) );
+		}
+
+		if ( isset( $attr['firstPadding'] ) ) {
+			$first_padding = $attr['firstPadding'];
+			$css->set_selector( $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+			$css->add_property( 'padding-top', $css->render_color( $first_padding['Mobile']['top'] . $first_padding['unit'] ) );
+			$css->add_property( 'padding-right', $css->render_color( $first_padding['Mobile']['right'] . $first_padding['unit'] ) );
+			$css->add_property( 'padding-bottom', $css->render_color( $first_padding['Mobile']['bottom'] . $first_padding['unit'] ) );
+			$css->add_property( 'padding-left', $css->render_color( $first_padding['Mobile']['left'] . $first_padding['unit'] ) );
+		}
+
+		if ( isset( $attr['firstMargin'] ) ) {
+			$first_margin = $attr['firstMargin'];
+			$css->set_selector( $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__first' );
+			$css->add_property( 'margin-top', $css->render_color( $first_margin['Mobile']['top'] . $first_margin['unit'] ) );
+			$css->add_property( 'margin-right', $css->render_color( $first_margin['Mobile']['right'] . $first_margin['unit'] ) );
+			$css->add_property( 'margin-bottom', $css->render_color( $first_margin['Mobile']['bottom'] . $first_margin['unit'] ) );
+			$css->add_property( 'margin-left', $css->render_color( $first_margin['Mobile']['left'] . $first_margin['unit'] ) );
+		}
+
 		// Second Style FontSizeMobile.
 		if ( isset( $attr['secondStyles'] ) ) {
 			if ( isset( $attr['secondStyles'][0]['secondSize'] ) && isset( $attr['secondStyles'][0]['secondSizeUnit'] ) ) {
-				$css->set_selector( '#premium-dheading-block-' . $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+				$css->set_selector( $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
 				$css->add_property( 'font-size', ( $attr['secondStyles'][0]['secondSize'] . $attr['secondStyles'][0]['secondSizeUnit'] ) );
 			}
 		}
+
+		if ( isset( $attr['secondTypography'] ) ) {
+			$second_typography = $attr['secondTypography'];
+			$font_size         = $second_typography['fontSize'];
+
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $second_typography['fontFamily'] ) ? $second_typography['fontFamily'] : '' ),
+					'fontVariant' => ( isset( $second_typography['fontWeight'] ) ? $second_typography['fontWeight'] : '' ),
+				)
+			);
+
+			$css->set_selector( $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $font_size, 'Mobile', $font_size['unit'] ) );
+		}
+
+		if ( isset( $attr['secondBorder'] ) ) {
+			$second_border        = $attr['secondBorder'];
+			$second_border_width  = $attr['secondBorder']['borderWidth'];
+			$second_border_radius = $attr['secondBorder']['borderRadius'];
+
+			$css->set_selector( $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $second_border_width, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $second_border_width, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $second_border_width, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $second_border_width, 'left', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $second_border_radius, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $second_border_radius, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $second_border_radius, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $second_border_radius, 'left', 'Mobile', 'px' ) );
+		}
+
+		if ( isset( $attr['secondPadding'] ) ) {
+			$second_padding = $attr['secondPadding'];
+			$css->set_selector( $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+			$css->add_property( 'padding-top', $css->render_color( $second_padding['Mobile']['top'] . $second_padding['unit'] ) );
+			$css->add_property( 'padding-right', $css->render_color( $second_padding['Mobile']['right'] . $second_padding['unit'] ) );
+			$css->add_property( 'padding-bottom', $css->render_color( $second_padding['Mobile']['bottom'] . $second_padding['unit'] ) );
+			$css->add_property( 'padding-left', $css->render_color( $second_padding['Mobile']['left'] . $second_padding['unit'] ) );
+		}
+
+		if ( isset( $attr['secondMargin'] ) ) {
+			$second_margin = $attr['secondMargin'];
+			$css->set_selector( $unique_id . '> .premium-dheading-block__wrap' . ' > .premium-dheading-block__title' . ' > .premium-dheading-block__second' );
+			$css->add_property( 'margin-top', $css->render_color( $second_margin['Mobile']['top'] . $second_margin['unit'] ) );
+			$css->add_property( 'margin-right', $css->render_color( $second_margin['Mobile']['right'] . $second_margin['unit'] ) );
+			$css->add_property( 'margin-bottom', $css->render_color( $second_margin['Mobile']['bottom'] . $second_margin['unit'] ) );
+			$css->add_property( 'margin-left', $css->render_color( $second_margin['Mobile']['left'] . $second_margin['unit'] ) );
+		}
+
 		$css->stop_media_query();
 		return $css->css_output();
-
 	}
 
 	/**
