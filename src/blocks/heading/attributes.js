@@ -1,6 +1,6 @@
 const { __ } = wp.i18n;
 const attributes = {
-    block_id: {
+    blockId: {
         type: "string"
     },
     classMigrate: {
@@ -8,8 +8,12 @@ const attributes = {
         default: false
     },
     align: {
-        type: "string",
-        default: "left"
+        type: "object",
+        default: {
+            Desktop: "left",
+            Tablet: "left",
+            Mobile: "left"
+        }
     },
     style: {
         type: "string",
@@ -64,8 +68,12 @@ const attributes = {
         default: "#"
     },
     iconAlign: {
-        type: "string",
-        default: "center"
+        type: "object",
+        default: {
+            Desktop: "center",
+            Tablet: "center",
+            Mobile: "center"
+        }
     },
     stripePosition: {
         type: "string",
@@ -77,25 +85,6 @@ const attributes = {
             titleColor: "#6ec1e4",
             shinyColor: '#fff',
             blurColor: "#000",
-            titleLetter: 0,
-            titleLine: 0,
-            titleStyle: 'normal',
-            titleUpper: false,
-            titleWeight: 600,
-            titlefontSize: '',
-            titlefontSizeType: "px",
-            titlefontSizeMobile: '',
-            titlefontSizeTablet: '',
-            titleFontFamily: __('Default', 'premium-blocks-for-gutenberg'),
-            titleborderType: "solid",
-            titleborderRadius: 0,
-            titleborderColor: '#6ec1e4',
-            titleShadowColor: '',
-            titleShadowBlur: '0',
-            titleShadowHorizontal: '0',
-            titleShadowVertical: '0',
-            titleMarginType: 'px',
-            titlePaddingType: 'px',
             BGColor: '#54595f',
             lineColor: "#6ec1e4",
             triangleColor: "#6ec1e4",
@@ -105,338 +94,389 @@ const attributes = {
             animateduration: '1',
         }]
     },
-    titleBorderTop: {
-        type: "number",
-        default: "0"
+    titlePadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
     },
-    titleBorderRight: {
-        type: "number",
-        default: "0"
+    titleMargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
     },
-    titleBorderBottom: {
-        type: "number",
-        default: "3"
+    titleBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
     },
-    titleBorderLeft: {
-        type: "number",
-        default: 3
+    titleShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+        }
     },
-    titleBorderUpdated: {
-        type: "boolean",
-        default: false
-    },
-    titleBorderWidth: {
-        type: "number",
-        default: "0"
+    titleTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
     },
     stripeAlign: {
-        type: "string",
-        default: "center"
+        type: "object",
+        default: {
+            Desktop: "center",
+            Tablet: "center",
+            Mobile: "center"
+        }
     },
-    stripeStyles: {
-        type: "array",
-        default: [{
-            stripeWidth: 120,
-            stripeWidthTablet: 120,
-            stripeWidthMobile: 120,
-            stripeWidthType: "px",
-            stripeHeight: 5,
-            stripeHeightTablet: 5,
-            stripeHeightMobile: 5,
-            stripeHeightType: "px",
-            stripeTopSpacing: 0,
-            stripeTopSpacingTablet: 0,
-            stripeTopSpacingMobile: 0,
-            stripeTopSpacingType: "px",
-            stripeBottomSpacing: 0,
-            stripeBottomSpacingTablet: 0,
-            stripeBottomSpacingMobile: 0,
-            stripeBottomSpacingType: "px"
-        }]
+    stripeWidth: {
+        type: "object",
+        default: {
+            'Desktop': 120,
+            'Tablet': 120,
+            'Mobile': 120,
+            'unit': 'px'
+        }
+    },
+    stripeHeight: {
+        type: "object",
+        default: {
+            'Desktop': 5,
+            'Tablet': 5,
+            'Mobile': 5,
+            'unit': 'px'
+        }
+    },
+    stripeTopSpacing: {
+        type: "object",
+        default: {
+            'Desktop': 0,
+            'Tablet': 0,
+            'Mobile': 0,
+            'unit': 'px'
+        }
+    },
+    stripeBottomSpacing: {
+        type: "object",
+        default: {
+            'Desktop': 0,
+            'Tablet': 0,
+            'Mobile': 0,
+            'unit': 'px'
+        }
     },
     textStyles: {
         type: "array",
         default: [{
             textBackColor: "#6ec1e4",
-            textBackfontSizeType: 'px',
-            textBackLetter: 0,
-            textBackLine: 0,
-            textBackStyle: 'normal',
-            textBackUpper: false,
-            textBackWeight: 600,
-            textBackfontSize: '',
-            textBackfontSizeMobile: '',
-            textBackfontSizeTablet: '',
-            textBackFontFamily: __('Default', 'premium-blocks-for-gutenberg'),
-            textBackshadowColor: '',
-            textBackshadowBlur: '0',
-            textBackshadowHorizontal: '0',
-            textBackshadowVertical: '0',
-            horizontalText: 0,
-            horizontalTextTablet: 0,
-            horizontalTextMobile: 0,
-            horizontalTextType: "px",
-            verticalText: 0,
-            verticalTextTablet: 0,
-            verticalTextMobile: 0,
-            verticalTextType: "px",
             rotateText: 0,
             rotateTextTablet: 0,
             rotateTextMobile: 0
         }]
     },
+    textTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
+    },
+    textBackshadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+        }
+    },
+    horizontalText: {
+        type: "object",
+        default: {
+            'Desktop': 0,
+            'Tablet': 0,
+            'Mobile': 0,
+            'unit': 'px'
+        }
+    },
+    verticalText: {
+        type: "object",
+        default: {
+            'Desktop': 0,
+            'Tablet': 0,
+            'Mobile': 0,
+            'unit': 'px'
+        }
+    },
+    rotateText: {
+        type: "object",
+        default: {
+            'Desktop': 0,
+            'Tablet': 0,
+            'Mobile': 0,
+        }
+    },
     iconStyles: {
         type: "array",
         default: [{
             iconColor: "#6ec1e4",
-            iconSize: "40",
-            iconSizeTablet: "40",
-            iconSizeMobile: "40",
-            iconSizeType: "px",
-            containerBack: '',
-            backgroundImageID: '',
-            backgroundImageURL: '',
-            backgroundRepeat: 'no-reapet',
-            backgroundPosition: 'top center',
-            backgroundSize: 'auto',
-            fixed: false,
-            gradientLocationOne: '0',
-            gradientColorTwo: '',
-            gradientLocationTwo: '100',
-            gradientType: 'linear',
-            gradientAngle: '180',
-            gradientPosition: 'center center',
-            iconborderType: "none",
-            iconborderRadius: 0,
-            iconborderColor: '#6ec1e4',
-            iconPaddingType: 'px',
-            iconMarginType: 'px',
-            iconshadowColor: '',
-            iconshadowBlur: '0',
-            iconshadowHorizontal: '0',
-            iconshadowVertical: '0',
         }]
+    },
+    iconshadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+        }
+    },
+    iconPadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
+    iconMargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
+    iconBackground: {
+        type: "object",
+        default: {
+            'backgroundType': '',
+            'backgroundColor': '',
+            'backgroundImageID': '',
+            'backgroundImageURL': '',
+            'backgroundPosition': '',
+            'backgroundRepeat': '',
+            'backgroundSize': '',
+            'fixed': false,
+            'gradientLocationOne': "",
+            'gradientColorTwo': '',
+            'gradientLocationTwo': '',
+            'gradientAngle': '',
+            'gradientPosition': '',
+            'gradientType': ''
+        }
+    },
+    iconSize: {
+        type: "object",
+        default: {
+            'Desktop': 40,
+            'Tablet': 40,
+            'Mobile': 40,
+            'unit': 'px'
+        }
+    },
+    iconBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
     },
     strokeStyles: {
         type: "array",
         default: [{
             stroke: false,
-            strokeColor: "",
-            strokeFull: 0,
-            strokeFullTablet: 0,
-            strokeFullMobile: 0
+            strokeColor: ""
         }]
     },
-    backgroundType: {
-        type: "string",
-        default: ""
-    },
-    iconBorderTop: {
-        type: "number",
-        default: "1"
-    },
-    iconBorderRight: {
-        type: "number",
-        default: "1"
-    },
-    iconBorderBottom: {
-        type: "number",
-        default: "1"
-    },
-    iconBorderLeft: {
-        type: "number",
-        default: "1"
-    },
-    iconBorderUpdated: {
-        type: "boolean",
-        default: false
-    },
-    iconBorderWidth: {
-        type: "number",
-        default: "1"
-    },
-    titleMarginT: {
-        type: "number"
-    },
-    titleMarginR: {
-        type: "number"
-    },
-    titleMarginB: {
-        type: "number"
-    },
-    titleMarginL: {
-        type: "number"
-    },
-    titleMarginTTablet: {
-        type: "number"
-    },
-    titleMarginRTablet: {
-        type: "number"
-    },
-    titleMarginBTablet: {
-        type: "number"
-    },
-    titleMarginLTablet: {
-        type: "number"
-    },
-    titleMarginTMobile: {
-        type: "number"
-    },
-    titleMarginRMobile: {
-        type: "number"
-    },
-    titleMarginBMobile: {
-        type: "number"
-    },
-    titleMarginLMobile: {
-        type: "number"
-    },
-    titlePaddingT: {
-        type: "number",
-        default: "0"
-    },
-    titlePaddingR: {
-        type: "number",
-        default: "0"
-    },
-    titlePaddingB: {
-        type: "number",
-        default: "0"
-    },
-    titlePaddingL: {
-        type: "number",
-        default: "0"
-    },
-    titlePaddingTTablet: {
-        type: "number",
-        default: "0"
-    },
-    titlePaddingRTablet: {
-        type: "number",
-        default: "0"
-    },
-    titlePaddingBTablet: {
-        type: "number",
-        default: "0"
-    },
-    titlePaddingLTablet: {
-        type: "number",
-        default: "0"
-    },
-    titlePaddingTMobile: {
-        type: "number",
-        default: "0"
-    },
-    titlePaddingRMobile: {
-        type: "number",
-        default: "0"
-    },
-    titlePaddingBMobile: {
-        type: "number",
-        default: "0"
-    },
-    titlePaddingLMobile: {
-        type: "number",
-        default: "0"
+    strokeFull: {
+        type: "object",
+        default: {
+            'Desktop': 40,
+            'Tablet': 40,
+            'Mobile': 40,
+        }
     },
     iconBGColor: {
         type: "string"
-    },
-    iconPaddingT: {
-        type: "number",
-        default: ""
-    },
-    iconPaddingR: {
-        type: "number",
-        default: ""
-    },
-    iconPaddingB: {
-        type: "number",
-        default: ""
-    },
-    iconPaddingL: {
-        type: "number",
-        default: ""
-    },
-    iconPaddingTTablet: {
-        type: "number",
-        default: ""
-    },
-    iconPaddingRTablet: {
-        type: "number",
-        default: ""
-    },
-    iconPaddingBTablet: {
-        type: "number",
-        default: ""
-    },
-    iconPaddingLTablet: {
-        type: "number",
-        default: ""
-    },
-    iconPaddingTMobile: {
-        type: "number",
-        default: ""
-    },
-    iconPaddingRMobile: {
-        type: "number",
-        default: ""
-    },
-    iconPaddingBMobile: {
-        type: "number",
-        default: ""
-    },
-    iconPaddingLMobile: {
-        type: "number",
-        default: ""
-    },
-    iconMarginT: {
-        type: "number",
-        default: ""
-    },
-    iconMarginR: {
-        type: "number",
-        default: ""
-    },
-    iconMarginB: {
-        type: "number",
-        default: ""
-    },
-    iconMarginL: {
-        type: "number",
-        default: ""
-    },
-    iconMarginTTablet: {
-        type: "number",
-        default: ""
-    },
-    iconMarginRTablet: {
-        type: "number",
-        default: ""
-    },
-    iconMarginBTablet: {
-        type: "number",
-        default: ""
-    },
-    iconMarginLTablet: {
-        type: "number",
-        default: ""
-    },
-    iconMarginTMobile: {
-        type: "number",
-        default: ""
-    },
-    iconMarginRMobile: {
-        type: "number",
-        default: ""
-    },
-    iconMarginBMobile: {
-        type: "number",
-        default: ""
-    },
-    iconMarginLMobile: {
-        type: "number",
-        default: ""
     },
     hideDesktop: {
         type: 'boolean',
