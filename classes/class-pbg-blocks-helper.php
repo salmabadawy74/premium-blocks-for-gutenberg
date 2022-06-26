@@ -5201,6 +5201,13 @@ class PBG_Blocks_Helper {
 				PREMIUM_BLOCKS_VERSION,
 				true
 			);
+            wp_enqueue_script(
+            'pbg-container',
+            PREMIUM_BLOCKS_URL . 'assets/js/Container.js',
+            array( 'jquery' ),
+            PREMIUM_BLOCKS_VERSION,
+            true
+			);
 		}
 		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'heading', $unique_id ) ) {
@@ -5256,6 +5263,7 @@ class PBG_Blocks_Helper {
         if(isset($attr['alignContent'])){
         $css->add_property( 'align-content', $css->render_color( $attr['alignContent']['Desktop'] ) ); 
         }
+        
         $css->add_property( 'row-gap', $css->render_color( isset($attr['rowGutter']['Desktop'] )?$attr['rowGutter']['Desktop'] .$attr['rowGutter']['unit'] : '20px'     ) ); 
         $css->add_property( 'column-gap', $css->render_color( isset($attr['rowGutter']['Desktop'] )? $attr['columnGutter']['Desktop'] . $attr['columnGutter']['unit'] : '20px' ) ); 
         $css->set_selector( '.wp-block-premium-container' . $unique_id  );

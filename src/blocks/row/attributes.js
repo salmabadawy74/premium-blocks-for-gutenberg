@@ -2,6 +2,10 @@ const attributes = {
     block_id: {
         type: 'string',
     },
+    align: {
+        type: "string",
+        default: 'alignwide'
+    },
     columns: {
         type: 'number',
         default: ''
@@ -96,7 +100,7 @@ const attributes = {
         type: "object",
         default: {
             'backgroundType': '',
-            'backgroundColor': '#f5f5f5',
+            'backgroundColor': '',
             'backgroundImageID': '',
             'backgroundImageURL': '',
             'backgroundPosition': 'center center',

@@ -4943,6 +4943,16 @@ animation-fast {
     fill: #d5dadf;
     margin: 4px auto;
 }
+.premium-blocks__row_container
+    .premium-blocks__placeholder-group
+    i
+    .premium-svg-row
+    path {
+    fill: #fff;
+}
+.premium-blocks__row_container .premium-blocks__placeholder-group i:hover svg {
+    fill: #6d7882;
+}
 .wp-block-premium-container {
     display: flex;
     position: relative;

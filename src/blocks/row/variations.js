@@ -20,6 +20,20 @@ const variations = [
         scope: ['block'],
     },
     {
+        name: 'one-column-column',
+        icon: rowIcons['1-100'],
+        column: 1,
+        attributes: {
+            variationSelected: true,
+            direction: {
+                'Desktop': 'column',
+                "Tablet": '',
+                "Mobile": ''
+            }
+        },
+        scope: ['block']
+    },
+    {
         name: 'two-column-split',
         icon: rowIcons['50-50'],
         attributes: {

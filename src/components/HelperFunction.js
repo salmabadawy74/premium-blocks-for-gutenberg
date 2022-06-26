@@ -14,7 +14,7 @@ export const gradientBackground = (value) => {
     }
     return {
         backgroundColor: backgroundColor,
-        backgroundImage: btnbg,
+        backgroundImage: gradientValue(value),
         backgroundRepeat: backgroundRepeat,
         backgroundPosition: backgroundPosition,
         backgroundSize: backgroundSize,
@@ -23,6 +23,7 @@ export const gradientBackground = (value) => {
 
 }
 export const borderCss = (value, device) => {
+
     return {
         borderStyle: value.borderType,
         borderTopWidth: value['borderWidth'][device]['top'] && value['borderWidth'][device]['top'] + "px",
@@ -118,7 +119,7 @@ export const generateCss = (styles) => {
     return styleCss;
 }
 export const gradientValue = (value) => {
-    const { backgroundType, backgroundColor, backgroundRepeat, backgroundPosition, fixed, backgroundSize, gradientColorTwo, gradientPosition, gradientType, gradientLocationOne, gradientLocationTwo, gradientAngle, backgroundImageURL } = value
+    const { backgroundType, backgroundColor, gradientColorTwo, gradientPosition, gradientType, gradientLocationOne, gradientLocationTwo, gradientAngle, backgroundImageURL } = value
 
     let btnGrad, btnGrad2, btnbg;
     if (undefined !== backgroundType && 'gradient' === backgroundType) {
