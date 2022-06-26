@@ -99,3 +99,15 @@ export const filterJsCss = (styles) => {
 
     return filteredStyles;
 }
+
+export const typographyCss = (value, device) => {
+    return {
+        fontSize: `${value.fontSize[device] || ''}${value.fontSize.unit}`,
+        fontFamily: value.fontFamily,
+        letterSpacing: value.letterSpacing + "px",
+        textTransform: value.textTransform ? "uppercase" : "none",
+        fontStyle: value.fontStyle,
+        fontWeight: value.fontWeight,
+        lineHeight: value.lineHeight + "px",
+    }
+}

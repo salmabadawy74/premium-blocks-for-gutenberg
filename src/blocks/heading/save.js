@@ -1,3 +1,4 @@
+import { generateCss, filterJsCss } from "../../components/HelperFunction";
 const {
     Fragment
 } = wp.element;
@@ -7,8 +8,7 @@ export default function save(props) {
     const { attributes } = props
 
     const {
-        block_id,
-        align,
+        blockId,
         titleTag,
         style,
         title,
@@ -22,28 +22,16 @@ export default function save(props) {
         imageURL,
         link,
         url,
-        target,
         iconAlign,
         stripePosition,
-        stripeStyles,
         strokeStyles,
         titleStyles,
-        titleBorderTop,
-        titleBorderRight,
-        titleBorderBottom,
-        titleBorderLeft,
-        titleBorderUpdated,
-        titleBorderWidth,
+        titleBorder,
         iconStyles,
-        backgroundType,
-        iconBorderWidth,
-        iconBorderUpdated,
+        iconBackground,
+        iconBorder,
         textStyles,
         stripeAlign,
-        iconBorderTop,
-        iconBorderRight,
-        iconBorderBottom,
-        iconBorderLeft,
         backgroundText,
         BackText,
         textWidth,
@@ -52,6 +40,11 @@ export default function save(props) {
         hideDesktop,
         hideTablet,
         hideMobile,
+        iconshadow,
+        textBackshadow,
+        textTypography,
+        titleTypography,
+        titleShadow,
     } = attributes;
 
     const styleContainer = title.split("").map(letter => {
@@ -60,174 +53,156 @@ export default function save(props) {
                 tagName='span'
                 className={`premium-title-style9-letter`}
                 value={letter}
-                style={{
+                style={filterJsCss({
                     color: titleStyles[0].titleColor
-                }}
+                })}
             />
         )
     });
 
     let btnGrad, btnGrad2, btnbg;
 
-    if (undefined !== backgroundType && 'gradient' === backgroundType) {
-        btnGrad = ('transparent' === iconStyles[0].containerBack || undefined === iconStyles[0].containerBack ? 'rgba(255,255,255,0)' : iconStyles[0].containerBack);
-        btnGrad2 = (undefined !== iconStyles[0].gradientColorTwo && undefined !== iconStyles[0].gradientColorTwo && '' !== iconStyles[0].gradientColorTwo ? iconStyles[0].gradientColorTwo : '#777');
-        if ('radial' === iconStyles[0].gradientType) {
-            btnbg = `radial-gradient(at ${iconStyles[0].gradientPosition}, ${btnGrad} ${iconStyles[0].gradientLocationOne}%, ${btnGrad2} ${iconStyles[0].gradientLocationTwo}%)`;
-        } else if ('radial' !== iconStyles[0].gradientType) {
-            btnbg = `linear-gradient(${iconStyles[0].gradientAngle}deg, ${btnGrad} ${iconStyles[0].gradientLocationOne}%, ${btnGrad2} ${iconStyles[0].gradientLocationTwo}%)`;
+    if (undefined !== iconBackground.backgroundType && 'gradient' === iconBackground.backgroundType) {
+        btnGrad = ('transparent' === iconBackground.backgroundColor || undefined === iconBackground.backgroundColor ? 'rgba(255,255,255,0)' : iconBackground.backgroundColor);
+        btnGrad2 = (undefined !== iconBackground.gradientColorTwo && undefined !== iconBackground.gradientColorTwo && '' !== iconBackground.gradientColorTwo ? iconBackground.gradientColorTwo : '#777');
+        if ('radial' === iconBackground.gradientType) {
+            btnbg = `radial-gradient(at ${iconBackground.gradientPosition}, ${btnGrad} ${iconBackground.gradientLocationOne}%, ${btnGrad2} ${iconBackground.gradientLocationTwo}%)`;
+        } else if ('radial' !== iconBackground.gradientType) {
+            btnbg = `linear-gradient(${iconBackground.gradientAngle}deg, ${btnGrad} ${iconBackground.gradientLocationOne}%, ${btnGrad2} ${iconBackground.gradientLocationTwo}%)`;
         }
     } else {
-        btnbg = iconStyles[0].backgroundImageURL ? `url('${iconStyles[0].backgroundImageURL}')` : ''
+        btnbg = iconBackground.backgroundImageURL ? `url('${iconBackground.backgroundImageURL}')` : ''
     }
 
-    const renderCss = (
-        <style>
-            {`
-                    #premium-title-${block_id} .premium-title-style8__wrap .premium-title-text-title[data-animation='shiny'] {
-                        --base-color: ${titleStyles[0].titleColor} !important;
-                        --shiny-color: ${titleStyles[0].shinyColor} !important;
-                        --animation-speed: ${titleStyles[0].animateduration}s !important;
-                    }
-                    #premium-title-${block_id} .premium-title-header {
-                        --shadow-color: ${titleStyles[0].blurColor} !important;
-                        --shadow-value: ${titleStyles[0].blurShadow}px !important;
-                        color: ${titleStyles[0].titleColor} !important;
-                    }
-                    #premium-title-${block_id} .premium-title .style1 .premium-title-header {
-                        border-style: ${titleStyles[0].titleborderType} !important;
-                        border-width: ${titleBorderUpdated
-                    ? `${titleBorderTop}px ${titleBorderRight}px ${titleBorderBottom}px ${titleBorderLeft}px`
-                    : titleBorderWidth + "px"} !important;
-                        border-radius: ${titleStyles[0].titleborderRadius || 0}px !important;
-                        border-color: ${titleStyles[0].titleborderColor} !important;
-                        border-left: ${titleBorderLeft >= "1" ? `${titleBorderLeft}px ${titleStyles[0].titleborderType} ${titleStyles[0].titleborderColor}` : ""} !important;
-                    }
-                    #premium-title-${block_id} .premium-title .style2{
-                        border-style: ${titleStyles[0].titleborderType} !important;
-                        border-width: ${titleBorderUpdated
-                    ? `${titleBorderTop}px ${titleBorderRight}px ${titleBorderBottom}px ${titleBorderLeft}px`
-                    : titleBorderWidth + "px"}!important;
-                        border-radius: ${titleStyles[0].titleborderRadius || 0}px !important;
-                        border-color: ${titleStyles[0].titleborderColor}!important;
-                        border-bottom: ${titleBorderBottom >= "0" ? `${titleBorderBottom}px ${titleStyles[0].titleborderType} ${titleStyles[0].titleborderColor} !important` : ""};
-                    }
-                    #premium-title-${block_id} .premium-title .style4{
-                        border-style: ${titleStyles[0].titleborderType} !important;
-                        border-width: ${titleBorderUpdated
-                    ? `${titleBorderTop}px ${titleBorderRight}px ${titleBorderBottom}px ${titleBorderLeft}px`
-                    : titleBorderWidth + "px"} !important;
-                        border-radius: ${titleStyles[0].titleborderRadius || 0}px !important;
-                        border-color: ${titleStyles[0].titleborderColor} !important;
-                        border-bottom: ${titleBorderBottom >= "0" ? `${titleBorderBottom}px ${titleStyles[0].titleborderType} ${titleStyles[0].titleborderColor} !important` : ""};
-                    }
-                    #premium-title-${block_id} .premium-title .style5{
-                        border-style: ${titleStyles[0].titleborderType} !important;
-                        border-width: ${titleBorderUpdated
-                    ? `${titleBorderTop}px ${titleBorderRight}px ${titleBorderBottom}px ${titleBorderLeft}px`
-                    : titleBorderWidth + "px"} !important;
-                        border-radius: ${titleStyles[0].titleborderRadius || 0}px !important;
-                        border-color: ${titleStyles[0].titleborderColor} !important;
-                        border-bottom: ${titleBorderBottom >= "0" ? `${titleBorderBottom}px ${titleStyles[0].titleborderType} ${titleStyles[0].titleborderColor} !important` : ""};
-                    }
-                    #premium-title-${block_id} .premium-title .style6{
-                        border-style: ${titleStyles[0].titleborderType} !important;
-                        border-width: ${titleBorderUpdated
-                    ? `${titleBorderTop}px ${titleBorderRight}px ${titleBorderBottom}px ${titleBorderLeft}px`
-                    : titleBorderWidth + "px"} !important;
-                        border-radius: ${titleStyles[0].titleborderRadius || 0}px !important;
-                        border-color: ${titleStyles[0].titleborderColor} !important;
-                        border-bottom: ${titleBorderBottom >= "0" ? `${titleBorderBottom}px ${titleStyles[0].titleborderType} ${titleStyles[0].titleborderColor} !important` : ""};
-                    }
-                    #premium-title-${block_id} .premium-title-style2__wrap {
-                        background-color: ${titleStyles[0].BGColor} !important;
-                    }
-                    #premium-title-${block_id} .premium-title-style3__wrap {
-                        background-color: ${titleStyles[0].BGColor} !important;
-                    }
-                    #premium-title-${block_id} .premium-title-style5__wrap {
-                        border-bottom: 2px solid ${titleStyles[0].lineColor} !important;
-                    }
-                    #premium-title-${block_id} .premium-title-style6__wrap {
-                        border-bottom: 2px solid ${titleStyles[0].lineColor} !important;
-                    }
-                    #premium-title-${block_id} .premium-title-style6__wrap:before {
-                        border-bottom-color: ${titleStyles[0].triangleColor} !important;
-                    }
-                    #premium-title-${block_id} .premium-title-icon {
-                        color: ${iconStyles[0].iconColor} !important;
-                        background-color: ${backgroundType === "solid" ? iconStyles[0].containerBack : "transparent"} !important;
-                        background-image: ${btnbg} !important;
-                        background-repeat: ${iconStyles[0].backgroundRepeat} !important;
-                        background-position: ${iconStyles[0].backgroundPosition} !important;
-                        background-size: ${iconStyles[0].backgroundSize} !important;
-                        background-attachment: ${iconStyles[0].fixed ? "fixed" : "unset"} !important;
-                        border-style: ${iconStyles[0].iconborderType} !important;
-                        border-width: ${iconBorderUpdated
-                    ? `${iconBorderTop}px ${iconBorderRight}px ${iconBorderBottom}px ${iconBorderLeft}px`
-                    : iconBorderWidth + "px"} !important;
-                        border-radius: ${iconStyles[0].iconborderRadius || 0}px !important;
-                        border-color: ${iconStyles[0].iconborderColor} !important;
-                        text-shadow: ${iconStyles[0].iconshadowHorizontal}px ${iconStyles[0].iconshadowVertical}px ${iconStyles[0].iconshadowBlur}px ${iconStyles[0].iconshadowColor} !important;
-                    }
-                    #premium-title-${block_id} .premium-title-bg-text:before {
-                        content: ${BackText};
-                        width: ${textWidth};
-                        color: ${textStyles[0].textBackColor} !important;
-                        font-weight: ${textStyles[0].textBackWeight} !important;
-                        letter-spacing: ${textStyles[0].textBackLetter}px !important;
-                        line-height: ${textStyles[0].textBackLine}px !important;
-                        font-style: ${textStyles[0].textBackStyle} !important;
-                        text-transform: ${textStyles[0].textBackUpper ? "uppercase" : "none"} !important;
-                        font-family: ${textStyles[0].textBackFontFamily} !important;
-                        text-shadow: ${textStyles[0].textBackshadowHorizontal}px ${textStyles[0].textBackshadowVertical}px ${textStyles[0].textBackshadowBlur}px ${textStyles[0].textBackshadowColor} !important;
-                        mix-blend-mode: ${blend} !important;
-                        z-index: ${zIndex} !important;
-                        -webkit-text-stroke-color: ${strokeStyles[0].strokeColor} !important;
-                    }
-                    #premium-title-${block_id} .premium-title-style7-stripe-span {
-                        background-color: ${titleStyles[0].stripeColor} !important;
-                    }
-                    #premium-title-${block_id} .premium-title-style9__wrap .premium-letters-container .premium-title-style9-letter {
-                        font-weight: ${titleStyles[0].titleWeight} !important;
-                        letter-spacing: ${titleStyles[0].titleLetter}px !important;
-                        line-height: ${titleStyles[0].titleLine ? titleStyles[0].titleLine : ''}px !important;
-                        font-style: ${titleStyles[0].titleStyle} !important;
-                        text-transform: ${titleStyles[0].titleUpper ? "uppercase" : "none"} !important;
-                        font-family: ${titleStyles[0].titleFontFamily} !important;
-                        text-shadow: ${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor} !important;
-                    }
-                `}
-        </style>
-    );
+    const loadStyles = () => {
+        const styles = {};
 
+        styles[`.${blockId} .premium-title-style8__wrap .premium-title-text-title[data-animation='shiny']`] = {
+            '--base-color': `${titleStyles[0].titleColor}!important`,
+            '--shiny-color': `${titleStyles[0].shinyColor}!important`,
+            '--animation-speed': `${titleStyles[0].animateduration}s!important`
+        };
+        styles[`.${blockId} .premium-title-header`] = {
+            '--shadow-color': `${titleStyles[0].blurColor}!important`,
+            '--shadow-value': `${titleStyles[0].blurShadow}px!important`,
+            'color': `${titleStyles[0].titleColor}!important`,
+        };
+        styles[`.${blockId} .premium-title .style1 .premium-title-header`] = {
+            'border-color': `${titleBorder.borderColor}!important`,
+            'border-style': `${titleBorder.borderType}!important`,
+        };
+
+        styles[`.${blockId} .premium-title .style2`] = {
+            'border-color': `${titleBorder.borderColor}!important`,
+            'border-style': `${titleBorder.borderType}!important`,
+        };
+
+        styles[`.${blockId} .premium-title .style4`] = {
+            'border-color': `${titleBorder.borderColor}!important`,
+            'border-style': `${titleBorder.borderType}!important`,
+        };
+
+        styles[`.${blockId} .premium-title .style5`] = {
+            'border-color': `${titleBorder.borderColor}!important`,
+            'border-style': `${titleBorder.borderType}!important`,
+        };
+
+        styles[`.${blockId} .premium-title .style6`] = {
+            'border-color': `${titleBorder.borderColor}!important`,
+            'border-style': `${titleBorder.borderType}!important`,
+        };
+
+        styles[`.${blockId} .premium-title-style2__wrap`] = {
+            'background-color': `${titleStyles[0].BGColor}!important`,
+        };
+
+        styles[`.${blockId} .premium-title-style3__wrap`] = {
+            'background-color': `${titleStyles[0].BGColor}!important`,
+        };
+
+        styles[`.${blockId} .premium-title-style5__wrap`] = {
+            'border-bottom': `2px solid ${titleStyles[0].lineColor}!important`,
+        };
+
+        styles[`.${blockId} .premium-title-style6__wrap`] = {
+            'border-bottom': `2px solid ${titleStyles[0].lineColor}!important`,
+        };
+
+        styles[`.${blockId} .premium-title-style6__wrap:before`] = {
+            'border-bottom-color': `${titleStyles[0].triangleColor}!important`,
+        };
+
+        styles[`.${blockId} .premium-title-icon`] = {
+            'color': `${iconStyles[0].iconColor} !important`,
+            'background-color': `${iconBackground.backgroundType === "solid" ? iconBackground.backgroundColor : "transparent"} !important`,
+            'background-image': `${btnbg} !important`,
+            'background-repeat': `${iconBackground.backgroundRepeat} !important`,
+            'background-position': `${iconBackground.backgroundPosition} !important`,
+            'background-size': `${iconBackground.backgroundSize} !important`,
+            'background-attachment': `${iconBackground.fixed ? "fixed" : "unset"} !important`,
+            'border-color': `${iconBorder.borderColor}!important`,
+            'border-style': `${iconBorder.borderType}!important`,
+            'text-shadow': `${iconshadow.horizontal}px ${iconshadow.vertical}px ${iconshadow.blur}px ${iconshadow.color} !important`,
+        };
+
+        styles[`.${blockId} .premium-title-bg-text:before`] = {
+            'content': `${BackText}`,
+            'width': `${textWidth}`,
+            'color': `${textStyles[0].textBackColor}`,
+            'font-family': `${textTypography?.fontFamily}`,
+            'font-weight': `${textTypography?.fontWeight}`,
+            'letter-spacing': `${textTypography?.letterSpacing}`,
+            'line-height': `${textTypography?.lineHeight}`,
+            'font-style': `${textTypography?.fontStyle}`,
+            'text-transform': `${textTypography?.textTransform}`,
+            'text-decoration': `${textTypography?.textDecoration}`,
+            'mix-blend-mode': `${blend} !important`,
+            'text-shadow': `${textBackshadow.horizontal}px ${textBackshadow.vertical}px ${textBackshadow.blur}px ${textBackshadow.color} !important`,
+            'z-index': `${zIndex} !important`,
+            '-webkit-text-stroke-color': `${strokeStyles[0].strokeColor} !important`,
+        };
+
+        styles[`.${blockId} .premium-title-style7-stripe-span`] = {
+            'background-color': `${titleStyles[0].stripeColor}!important`,
+        };
+
+        styles[`.${blockId} .premium-title-style9__wrap .premium-letters-container .premium-title-style9-letter`] = {
+            'font-family': `${titleTypography?.fontFamily}`,
+            'font-weight': `${titleTypography?.fontWeight}`,
+            'letter-spacing': `${titleTypography?.letterSpacing}`,
+            'line-height': `${titleTypography?.lineHeight}`,
+            'font-style': `${titleTypography?.fontStyle}`,
+            'text-shadow': `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color} !important`,
+        };
+
+        return generateCss(styles);
+    };
     return (
         <div
-            id={`premium-title-${block_id}`}
-            className={`premium-block-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
-            style={{
-                textAlign: align,
-            }}>
-            {renderCss}
-            <div className={`premium-title   ${backgroundText ? 'premium-title-bg-text' : ""}`} style={{
-                textAlign: align,
-            }} data-backgroundText={BackText}>
-                <div className={`premium-title-container ${style} ${style}-${align}`} data-blur-delay={titleStyles[0].animateDelay} data-shiny-dur={titleStyles[0].animateduration}>
+            className={`${blockId} ${hideDesktop ? hideDesktop : ''} ${hideTablet ? hideTablet : ''} ${hideMobile ? hideMobile : ''}`}>
+            <style
+                dangerouslySetInnerHTML={{
+                    __html: loadStyles()
+                }}
+            />
+            <div className={`premium-title   ${backgroundText ? 'premium-title-bg-text' : ""}`} data-backgroundText={BackText}>
+                <div className={`premium-title-container ${style}`} data-blur-delay={titleStyles[0].animateDelay} data-shiny-dur={titleStyles[0].animateduration}>
                     {React.createElement(titleTag,
                         {
-                            className: `premium-title-header premium-title-${style}__wrap ${align} ${iconValue ? iconPosition : ""} ${iconPosition == 'top' ? `premium-title-${iconAlign}` : ""}`,
+                            className: `premium-title-header premium-title-${style}__wrap ${iconValue ? iconPosition : ""} ${iconPosition == 'top' ? `premium-title-${iconAlign?.['Desktop']} premium-title-tablet-${iconAlign?.['Tablet']} premium-title-mobile-${iconAlign?.['Mobile']}` : ""}`,
                             'data-blur-delay': `${titleStyles[0].animateDelay}`,
                             'data-shiny-dur': `${titleStyles[0].animateduration}`,
-                            style: {
+                            style: filterJsCss({
                                 color: titleStyles[0].titleColor,
-                                fontWeight: titleStyles[0].titleWeight,
-                                letterSpacing: titleStyles[0].titleLetter + "px",
-                                lineHeight: (titleStyles[0].titleLine ? titleStyles[0].titleLine : "") + "px",
-                                fontStyle: titleStyles[0].titleStyle,
-                                textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
-                                fontFamily: titleStyles[0].titleFontFamily,
-                                textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`,
-                            }
+                                fontStyle: titleTypography?.fontStyle,
+                                fontFamily: titleTypography?.fontFamily,
+                                fontWeight: titleTypography?.fontWeight,
+                                letterSpacing: titleTypography?.letterSpacing,
+                                textDecoration: titleTypography?.textDecoration,
+                                textTransform: titleTypography?.textTransform,
+                                lineHeight: `${titleTypography?.lineHeight}px`,
+                                textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`,
+                            })
                         },
                         [
                             <Fragment>
@@ -235,13 +210,13 @@ export default function save(props) {
                                     <Fragment>
                                         {
                                             iconPosition != 'top' && iconValue &&
-                                            <span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign}`}>
+                                            <span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign?.['Desktop']} premium-stripe-tablet-${stripeAlign?.['Tablet']} premium-stripe-mobile-${stripeAlign?.['Mobile']}`}>
                                                 <span className={`premium-title-style7-stripe-span`}></span>
                                             </span>
                                         }
                                         {
                                             !iconValue &&
-                                            <span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign}`}>
+                                            <span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign?.['Desktop']} premium-stripe-tablet-${stripeAlign?.['Tablet']} premium-stripe-mobile-${stripeAlign?.['Mobile']}`}>
                                                 <span className={`premium-title-style7-stripe-span`}></span>
                                             </span>
                                         }
@@ -267,7 +242,7 @@ export default function save(props) {
 
                                             {
                                                 iconPosition === 'top' &&
-                                                <span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign}`}>
+                                                <span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign?.['Desktop']} premium-stripe-tablet-${stripeAlign?.['Tablet']} premium-stripe-mobile-${stripeAlign?.['Mobile']}`}>
                                                     <span className={`premium-title-style7-stripe-span`}></span>
                                                 </span>
                                             }
@@ -275,9 +250,9 @@ export default function save(props) {
                                                 tagName='span'
                                                 className={`premium-title-text-title`}
                                                 value={title}
-                                                style={{
+                                                style={filterJsCss({
                                                     color: titleStyles[0].titleColor,
-                                                }}
+                                                })}
                                             />
                                         </div>
                                     </Fragment>
@@ -302,47 +277,47 @@ export default function save(props) {
                                         }
                                         <span
                                             className={`premium-letters-container`}
-                                            style={{
+                                            style={filterJsCss({
                                                 color: titleStyles[0].titleColor
-                                            }}
+                                            })}
                                         >
                                             {styleContainer}
                                         </span>
 
                                     </Fragment> : <Fragment>
-                                            {
-                                                iconValue && iconType == 'icon' && <i className={`premium-title-icon ${icon}`} />
-                                            }
-                                            {
-                                                iconValue && iconType == 'image' && < img className={`premium-title-icon`} src={imageURL} />
-                                            }
-                                            {
-                                                iconValue && iconType == 'lottie' &&
-                                                <div
-                                                    className="premium-title-icon premium-lottie-animation"
-                                                    data-loop={loop}
-                                                    data-lottieurl={`${lottieURl}`}
-                                                    data-reverse={reversedir}
-                                                    data-trigger={"none"}
-                                                >
+                                        {
+                                            iconValue && iconType == 'icon' && <i className={`premium-title-icon ${icon}`} />
+                                        }
+                                        {
+                                            iconValue && iconType == 'image' && < img className={`premium-title-icon`} src={imageURL} />
+                                        }
+                                        {
+                                            iconValue && iconType == 'lottie' &&
+                                            <div
+                                                className="premium-title-icon premium-lottie-animation"
+                                                data-loop={loop}
+                                                data-lottieurl={`${lottieURl}`}
+                                                data-reverse={reversedir}
+                                                data-trigger={"none"}
+                                            >
 
-                                                </div>
-                                            }
-                                            <RichText.Content
-                                                tagName='span'
-                                                className={`premium-title-text-title`}
-                                                value={title}
-                                                style={{
-                                                    minHeight: '15px',
-                                                    margin: 'revert'
-                                                }}
-                                            />
-                                        </Fragment>}
+                                            </div>
+                                        }
+                                        <RichText.Content
+                                            tagName='span'
+                                            className={`premium-title-text-title`}
+                                            value={title}
+                                            style={{
+                                                minHeight: '15px',
+                                                margin: 'revert'
+                                            }}
+                                        />
+                                    </Fragment>}
                                 {link && url !== ' ' && <a rel="noopener noreferrer" target={"_self"} href={`${url}`} ></a>}
                             </Fragment>
                         ])}
                 </div>
             </div>
-        </div >
+        </div>
     )
 }

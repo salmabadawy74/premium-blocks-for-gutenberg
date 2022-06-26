@@ -318,8 +318,8 @@ const attributes = {
     }
 }
 
-const newAttributes = {
-    blockId: {
+const v8Attributes = {
+    block_id: {
         type: "string"
     },
     borderCount: {
@@ -500,6 +500,22 @@ const newAttributes = {
         type: 'number',
         default: '0'
     },
+    paddingT: {
+        type: 'number',
+        default: '0'
+    },
+    paddingR: {
+        type: 'number',
+        default: '0'
+    },
+    paddingB: {
+        type: 'number',
+        default: '0'
+    },
+    paddingL: {
+        type: 'number',
+        default: '0'
+    },
     suffixStyles: {
         type: 'array',
         default: [
@@ -532,192 +548,36 @@ const newAttributes = {
             }
         ]
     },
-    padding: {
-        type: "object",
-        default: {
-            Desktop: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            Tablet: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            Mobile: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            unit: 'px'
-        }
+    paddingTTablet: {
+        type: 'number',
     },
-    numberTypography: {
-        type: "object",
-        default: {
-            "fontWeight": '',
-            'fontStyle': '',
-            'textTransform': '',
-            'letterSpacing': '',
-            'fontFamily': '',
-            'lineHeight': '',
-            'textDecoration': '',
-            'fontSize': {
-                'Desktop': '',
-                "Tablet": '',
-                "Mobile": '',
-                "unit": 'px'
-            }
-        }
+    paddingRTablet: {
+        type: 'number',
     },
-    prefixTypography: {
-        type: "object",
-        default: {
-            "fontWeight": '',
-            'fontStyle': '',
-            'textTransform': '',
-            'letterSpacing': '',
-            'fontFamily': '',
-            'lineHeight': '',
-            'textDecoration': '',
-            'fontSize': {
-                'Desktop': '',
-                "Tablet": '',
-                "Mobile": '',
-                "unit": 'px'
-            }
-        }
+    paddingBTablet: {
+        type: 'number',
     },
-    suffixTypography: {
-        type: "object",
-        default: {
-            "fontWeight": '',
-            'fontStyle': '',
-            'textTransform': '',
-            'letterSpacing': '',
-            'fontFamily': '',
-            'lineHeight': '',
-            'textDecoration': '',
-            'fontSize': {
-                'Desktop': '',
-                "Tablet": '',
-                "Mobile": '',
-                "unit": 'px'
-            }
-        }
+    paddingLTablet: {
+        type: 'number',
     },
-    titleTypography: {
-        type: "object",
-        default: {
-            "fontWeight": '',
-            'fontStyle': '',
-            'textTransform': '',
-            'letterSpacing': '',
-            'fontFamily': '',
-            'lineHeight': '',
-            'textDecoration': '',
-            'fontSize': {
-                'Desktop': '',
-                "Tablet": '',
-                "Mobile": '',
-                "unit": 'px'
-            }
-        }
+    paddingTMobile: {
+        type: 'number',
     },
-    boxShadow: {
-        type: "object",
-        default: {
-            'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': '',
-            'position': ' '
-        }
+    paddingRMobile: {
+        type: 'number',
     },
-    border: {
-        type: "object",
-        default: {
-            "borderType": "",
-            "borderColor": "",
-            "borderWidth": {
-                Desktop: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Tablet: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Mobile: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                }
-            },
-            "borderRadius": {
-                Desktop: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Tablet: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Mobile: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                }
-            }
-        }
+    paddingBMobile: {
+        type: 'number',
     },
-    background: {
-        type: "object",
-        default: {
-            'backgroundType': '',
-            'backgroundColor': '',
-            'backgroundImageID': '',
-            'backgroundImageURL': '',
-            'backgroundPosition': '',
-            'backgroundRepeat': '',
-            'backgroundSize': '',
-            'fixed': false,
-            'gradientLocationOne': "",
-            'gradientColorTwo': '',
-            'gradientLocationTwo': '',
-            'gradientAngle': '',
-            'gradientPosition': '',
-            'gradientType': ''
-        }
-    },
-    align: {
-        type: "string",
-        default: {
-            Desktop: 'center',
-            Tablet: 'center',
-            Mobile: 'center',
-        }
+    paddingLMobile: {
+        type: 'number',
     }
 }
 
 
 const deprecatedContent = [
     {
-        attributes: Object.assign(attributes, newAttributes),
+        attributes: v8Attributes,
         isEligible() {
             return true;
         },
@@ -728,6 +588,11 @@ const deprecatedContent = [
                     Desktop: attributes?.align || 'center',
                     Tablet: attributes?.align || 'center',
                     Mobile: attributes?.align || 'center',
+                },
+                selfAlign: {
+                    Desktop: attributes?.selfAlign || 'center',
+                    Tablet: attributes?.selfAlign || 'center',
+                    Mobile: attributes?.selfAlign || 'center',
                 },
                 padding: {
                     "Desktop": {

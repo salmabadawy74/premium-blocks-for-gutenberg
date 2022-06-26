@@ -47,10 +47,6 @@ const attributes = {
                 descAlign: 'left',
                 descColor: '',
                 descBack: '',
-                descPaddingT: '',
-                descPaddingR: '',
-                descPaddingB: '',
-                descPaddingL: ''
             }
 
         ]

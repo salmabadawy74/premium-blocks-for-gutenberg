@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import { generateCss } from '../../components/HelperFunction';
+import { generateCss, filterJsCss } from '../../components/HelperFunction';
 const { RichText } = wp.blockEditor;
 
 const save = props => {
@@ -71,46 +71,46 @@ const save = props => {
             />
             <div
                 className={`premium-banner__inner premium-banner__min premium-banner__${effect} premium-banner__${hoverEffect} hover_${hovered}`}
-                style={{
+                style={filterJsCss({
                     boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`,
                     borderStyle: border && border.borderType,
                     borderColor: border && border.borderColor,
-                }}
+                })}
             >
                 <div
                     className={`premium-banner__img_wrap premium-banner__${height}`}
-                    style={{
+                    style={filterJsCss({
                         minHeight: minHeight,
                         alignItems: verAlign
-                    }}
+                    })}
                 >
                     <img
                         className={`premium-banner__img`}
                         alt="Banner Image"
                         src={imageURL}
-                        style={{
+                        style={filterJsCss({
                             filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
-                        }}
+                        })}
                     />
                 </div>
 
                 <div
                     className={`premium-banner__content`}
-                    style={{
+                    style={filterJsCss({
                         background: "effect2" === effect ? titleStyles[0].titleBack : "transparent"
-                    }}
+                    })}
                 >
                     <div
                         className={`premium-banner__title_wrap`}
-                        style={{
+                        style={filterJsCss({
                             textAlign: contentAlign
-                        }}
+                        })}
                     >
                         <RichText.Content
                             tagName={titleTag.toLowerCase()}
                             className={`premium-banner__title`}
                             value={title}
-                            style={{
+                            style={filterJsCss({
                                 color: titleStyles[0].titleColor,
                                 fontStyle: titleTypography.fontStyle,
                                 fontFamily: titleTypography.fontFamily,
@@ -120,20 +120,20 @@ const save = props => {
                                 textTransform: titleTypography.textTransform,
                                 lineHeight: `${titleTypography.lineHeight}px`,
                                 textShadow: `${titleTextShadow.horizontal}px ${titleTextShadow.vertical}px ${titleTextShadow.blur}px ${titleTextShadow.color}`,
-                            }}
+                            })}
                         />
                     </div>
                     <div
                         className={`premium-banner__desc_wrap`}
-                        style={{
+                        style={filterJsCss({
                             textAlign: contentAlign
-                        }}
+                        })}
                     >
                         <RichText.Content
                             tagName="p"
                             className={`premium-banner__desc`}
                             value={desc}
-                            style={{
+                            style={filterJsCss({
                                 color: descStyles[0].descColor,
                                 fontStyle: descTypography.fontStyle,
                                 fontFamily: descTypography.fontFamily,
@@ -143,7 +143,7 @@ const save = props => {
                                 textTransform: descTypography.textTransform,
                                 lineHeight: `${descTypography.lineHeight}px`,
                                 textShadow: `${descTextShadow.horizontal}px ${descTextShadow.vertical}px ${descTextShadow.blur}px ${descTextShadow.color}`,
-                            }}
+                            })}
                         />
                     </div>
                 </div>

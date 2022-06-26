@@ -2,7 +2,6 @@ import { countUp } from "../../../assets/js/settings"
 import attributes from './attributes'
 import edit from "./edit"
 import save from "./save"
-import PbgIcon from "../icons"
 import deprecatedContent from "./deprecated"
 import PBG_Block_Icons from '../../../blocks-config/block-icons'
 

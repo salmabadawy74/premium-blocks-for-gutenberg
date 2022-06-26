@@ -4,16 +4,17 @@ import {
 
 import save from "./save";
 import edit from "./edit";
-import PbgIcon from "../icons";
 import attributes from "./attributes";
 import deprecated from './deprecated';
 const { __ } = wp.i18n;
+import PBG_Block_Icons from '../../../blocks-config/block-icons'
 
 const { registerBlockType } = wp.blocks;
 
 registerBlockType("premium/heading", {
     title: __("Heading"),
-    icon: < PbgIcon icon="heading" />,
+    description: __('Grab your website visitors’ attention with stylish headings using Premium Heading Block.'),
+    icon: PBG_Block_Icons.heading,
     category: "premium-blocks",
     attributes: attributes,
     supports: {

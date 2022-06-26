@@ -645,147 +645,6 @@ const v8Attriutes = {
     backgroundType: {
         type: "string",
         default: ""
-    },
-    firstBorder: {
-        type: "object",
-        default: {
-            "borderType": "",
-            "borderColor": "",
-            "borderWidth": {
-                Desktop: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Tablet: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Mobile: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                }
-            },
-            "borderRadius": {
-                Desktop: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Tablet: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Mobile: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                }
-            }
-        }
-    },
-    secondBorder: {
-        type: "object",
-        default: {
-            "borderType": "",
-            "borderColor": "",
-            "borderWidth": {
-                Desktop: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Tablet: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Mobile: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                }
-            },
-            "borderRadius": {
-                Desktop: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Tablet: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Mobile: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                }
-            }
-        }
-    },
-    containerBorder: {
-        type: "object",
-        default: {
-            "borderType": "",
-            "borderColor": "",
-            "borderWidth": {
-                Desktop: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Tablet: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Mobile: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                }
-            },
-            "borderRadius": {
-                Desktop: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Tablet: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Mobile: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                }
-            }
-        }
     }
 }
 
@@ -794,146 +653,280 @@ const deprecatedContent = [
         attributes: v8Attriutes,
         migrate: attributes => {
             let newAttributes = {
+                blockId: attributes.accordionId ? `premium-dual-heading-${attributes.accordionId.split('-')[2]}` : '',
                 firstBorder: {
-                    type: "object",
-                    default: {
-                        "borderType": attributes.firstStyles[0].firstBorderType || '',
-                        "borderColor": attributes.firstStyles[0].firstBorderColor || '',
-                        "borderWidth": {
-                            Desktop: {
-                                top: attributes.firstBorderTop || '',
-                                right: attributes.firstBorderRight || '',
-                                bottom: attributes.firstBorderBottom || '',
-                                left: attributes.firstBorderLeft || ''
-                            },
-                            Tablet: {
-                                top: '',
-                                right: '',
-                                bottom: '',
-                                left: ''
-                            },
-                            Mobile: {
-                                top: '',
-                                right: '',
-                                bottom: '',
-                                left: ''
-                            }
+                    "borderType": attributes?.firstStyles?.[0]?.firstBorderType || '',
+                    "borderColor": attributes?.firstStyles?.[0]?.firstBorderColor || '',
+                    "borderWidth": {
+                        Desktop: {
+                            top: attributes?.firstBorderTop || '',
+                            right: attributes?.firstBorderRight || '',
+                            bottom: attributes?.firstBorderBottom || '',
+                            left: attributes?.firstBorderLeft || ''
                         },
-                        "borderRadius": {
-                            Desktop: {
-                                top: attributes.firstStyles[0].firstBorderRadius || '',
-                                right: attributes.firstStyles[0].firstBorderRadius || '',
-                                bottom: attributes.firstStyles[0].firstBorderRadius || '',
-                                left: attributes.firstStyles[0].firstBorderRadius || ''
-                            },
-                            Tablet: {
-                                top: '',
-                                right: '',
-                                bottom: '',
-                                left: ''
-                            },
-                            Mobile: {
-                                top: '',
-                                right: '',
-                                bottom: '',
-                                left: ''
-                            }
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    },
+                    "borderRadius": {
+                        Desktop: {
+                            top: attributes?.firstStyles?.[0]?.firstBorderRadius || '',
+                            right: attributes?.firstStyles?.[0]?.firstBorderRadius || '',
+                            bottom: attributes?.firstStyles?.[0]?.firstBorderRadius || '',
+                            left: attributes?.firstStyles?.[0]?.firstBorderRadius || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
                         }
                     }
                 },
                 secondBorder: {
-                    type: "object",
-                    default: {
-                        "borderType": attributes.secondStyles[0].secondBorderType || '',
-                        "borderColor": attributes.secondStyles[0].secondBorderColor || '',
-                        "borderWidth": {
-                            Desktop: {
-                                top: attributes.secondBorderTop || '',
-                                right: attributes.secondBorderRight || '',
-                                bottom: attributes.secondBorderBottom || '',
-                                left: attributes.secondBorderLeft || ''
-                            },
-                            Tablet: {
-                                top: '',
-                                right: '',
-                                bottom: '',
-                                left: ''
-                            },
-                            Mobile: {
-                                top: '',
-                                right: '',
-                                bottom: '',
-                                left: ''
-                            }
+                    "borderType": attributes?.secondStyles?.[0]?.secondBorderType || '',
+                    "borderColor": attributes?.secondStyles?.[0]?.secondBorderColor || '',
+                    "borderWidth": {
+                        Desktop: {
+                            top: attributes?.secondBorderTop || '',
+                            right: attributes?.secondBorderRight || '',
+                            bottom: attributes?.secondBorderBottom || '',
+                            left: attributes?.secondBorderLeft || ''
                         },
-                        "borderRadius": {
-                            Desktop: {
-                                top: attributes.secondStyles[0].secondBorderRadius || '',
-                                right: attributes.secondStyles[0].secondBorderRadius || '',
-                                bottom: attributes.secondStyles[0].secondBorderRadius || '',
-                                left: attributes.secondStyles[0].secondBorderRadius || ''
-                            },
-                            Tablet: {
-                                top: '',
-                                right: '',
-                                bottom: '',
-                                left: ''
-                            },
-                            Mobile: {
-                                top: '',
-                                right: '',
-                                bottom: '',
-                                left: ''
-                            }
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    },
+                    "borderRadius": {
+                        Desktop: {
+                            top: attributes?.secondStyles?.[0]?.secondBorderRadius || '',
+                            right: attributes?.secondStyles?.[0]?.secondBorderRadius || '',
+                            bottom: attributes?.secondStyles?.[0]?.secondBorderRadius || '',
+                            left: attributes?.secondStyles?.[0]?.secondBorderRadius || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
                         }
                     }
                 },
                 containerBorder: {
-                    type: "object",
-                    default: {
-                        "borderType": attributes.containerStyles[0].containerBorderType || '',
-                        "borderColor": attributes.containerStyles[0].containerBorderColor || '',
-                        "borderWidth": {
-                            Desktop: {
-                                top: attributes.containerBorderTop || '',
-                                right: attributes.containerBorderRight || '',
-                                bottom: attributes.containerBorderBottom || '',
-                                left: attributes.containerBorderLeft || ''
-                            },
-                            Tablet: {
-                                top: '',
-                                right: '',
-                                bottom: '',
-                                left: ''
-                            },
-                            Mobile: {
-                                top: '',
-                                right: '',
-                                bottom: '',
-                                left: ''
-                            }
+                    "borderType": attributes?.containerStyles?.[0]?.containerBorderType || '',
+                    "borderColor": attributes?.containerStyles?.[0]?.containerBorderColor || '',
+                    "borderWidth": {
+                        Desktop: {
+                            top: attributes?.containerBorderTop || '',
+                            right: attributes?.containerBorderRight || '',
+                            bottom: attributes?.containerBorderBottom || '',
+                            left: attributes?.containerBorderLeft || ''
                         },
-                        "borderRadius": {
-                            Desktop: {
-                                top: attributes.containerStyles[0].containerBorderRadius || '',
-                                right: attributes.containerStyles[0].containerBorderRadius || '',
-                                bottom: attributes.containerStyles[0].containerBorderRadius || '',
-                                left: attributes.containerStyles[0].containerBorderRadius || ''
-                            },
-                            Tablet: {
-                                top: '',
-                                right: '',
-                                bottom: '',
-                                left: ''
-                            },
-                            Mobile: {
-                                top: '',
-                                right: '',
-                                bottom: '',
-                                left: ''
-                            }
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    },
+                    "borderRadius": {
+                        Desktop: {
+                            top: attributes?.containerStyles?.[0]?.containerBorderRadius || '',
+                            right: attributes?.containerStyles?.[0]?.containerBorderRadius || '',
+                            bottom: attributes?.containerStyles?.[0]?.containerBorderRadius || '',
+                            left: attributes?.containerStyles?.[0]?.containerBorderRadius || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
                         }
                     }
+                },
+                firstTypography: {
+                    "fontWeight": attributes?.firstStyles?.[0]?.firstWeight || '',
+                    'fontStyle': attributes?.firstStyles?.[0]?.firstStyle || '',
+                    'textTransform': attributes?.firstStyles?.[0]?.firstUpper || '',
+                    'letterSpacing': attributes?.firstStyles?.[0]?.firstLetter || '',
+                    'fontFamily': attributes?.firstStyles?.[0]?.firstFamily || '',
+                    'lineHeight': '',
+                    'textDecoration': '',
+                    'fontSize': {
+                        'Desktop': attributes?.firstStyles?.[0]?.firstSize || '',
+                        "Tablet": attributes?.firstStyles?.[0]?.firstSizeTablet || '',
+                        "Mobile": attributes?.firstStyles?.[0]?.firstSizeMobile || '',
+                        "unit": attributes?.firstStyles?.[0]?.firstSizeUnit || ''
+                    }
+                },
+                secondTypography: {
+                    "fontWeight": attributes?.secondStyles?.[0]?.secondWeight || '',
+                    'fontStyle': attributes?.secondStyles?.[0]?.secondStyle || '',
+                    'textTransform': attributes?.secondStyles?.[0]?.secondUpper || '',
+                    'letterSpacing': attributes?.secondStyles?.[0]?.secondLetter || '',
+                    'fontFamily': attributes?.secondStyles?.[0]?.secondFamily || '',
+                    'lineHeight': '',
+                    'textDecoration': '',
+                    'fontSize': {
+                        'Desktop': attributes?.secondStyles?.[0]?.secondSize || '',
+                        "Tablet": attributes?.secondStyles?.[0]?.secondSizeTablet || '',
+                        "Mobile": attributes?.secondStyles?.[0]?.secondSizeMobile || '',
+                        "unit": attributes?.secondStyles?.[0]?.secondSizeUnit || ''
+                    }
+                },
+                background: {
+                    'backgroundType': attributes?.backgroundType || '',
+                    'backgroundColor': attributes?.containerStyles?.[0]?.containerBack || '',
+                    'backgroundImageID': attributes?.containerStyles?.[0]?.backgroundImageID || '',
+                    'backgroundImageURL': attributes?.containerStyles?.[0]?.backgroundImageURL || '',
+                    'backgroundPosition': attributes?.containerStyles?.[0]?.backgroundPosition || '',
+                    'backgroundRepeat': attributes?.containerStyles?.[0]?.backgroundRepeat || '',
+                    'backgroundSize': attributes?.containerStyles?.[0]?.backgroundSize || '',
+                    'fixed': attributes?.containerStyles?.[0]?.fixed || '',
+                    'gradientLocationOne': attributes?.containerStyles?.[0]?.gradientLocationOne || '',
+                    'gradientColorTwo': attributes?.containerStyles?.[0]?.gradientColorTwo || '',
+                    'gradientLocationTwo': attributes?.containerStyles?.[0]?.gradientLocationTwo || '',
+                    'gradientAngle': attributes?.containerStyles?.[0]?.gradientAngle || '',
+                    'gradientPosition': attributes?.containerStyles?.[0]?.gradientPosition || '',
+                    'gradientType': attributes?.containerStyles?.[0]?.gradientType || ''
+                },
+                firstShadow: {
+                    'color': attributes?.firstStyles?.[0]?.firstShadowColor || '',
+                    'blur': attributes?.firstStyles?.[0]?.firstShadowBlur || '',
+                    'horizontal': attributes?.firstStyles?.[0]?.firstShadowHorizontal || '',
+                    'vertical': attributes?.firstStyles?.[0]?.firstShadowVertical || '',
+                },
+                secondShadow: {
+                    'color': attributes?.secondStyles?.[0]?.secondShadowColor || '',
+                    'blur': attributes?.secondStyles?.[0]?.secondShadowBlur || '',
+                    'horizontal': attributes?.secondStyles?.[0]?.secondShadowHorizontal || '',
+                    'vertical': attributes?.secondStyles?.[0]?.secondShadowVertical || '',
+                },
+                firstPadding: {
+                    Desktop: {
+                        top: attributes?.firstStyles?.[0]?.firstPadding || '',
+                        right: attributes?.firstStyles?.[0]?.firstPadding || '',
+                        bottom: attributes?.firstStyles?.[0]?.firstPadding || '',
+                        left: attributes?.firstStyles?.[0]?.firstPadding || ''
+                    },
+                    Tablet: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    Mobile: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    unit: 'px'
+                },
+                firstMargin: {
+                    Desktop: {
+                        top: '',
+                        right: attributes?.firstStyles?.[0]?.firstMarginR || '',
+                        bottom: '',
+                        left: attributes?.firstStyles?.[0]?.firstMarginL || ''
+                    },
+                    Tablet: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    Mobile: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    unit: 'px'
+                },
+                secondPadding: {
+                    Desktop: {
+                        top: attributes?.secondStyles?.[0]?.secondPadding || '',
+                        right: attributes?.secondStyles?.[0]?.secondPadding || '',
+                        bottom: attributes?.secondStyles?.[0]?.secondPadding || '',
+                        left: attributes?.secondStyles?.[0]?.secondPadding || ''
+                    },
+                    Tablet: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    Mobile: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    unit: 'px'
+                },
+                secondMargin: {
+                    Desktop: {
+                        top: '',
+                        right: attributes?.secondStyles?.[0]?.secondMarginR || '',
+                        bottom: '',
+                        left: attributes?.secondStyles?.[0]?.secondMarginL || ''
+                    },
+                    Tablet: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    Mobile: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    unit: 'px'
                 }
             }
             return Object.assign(attributes, newAttributes)

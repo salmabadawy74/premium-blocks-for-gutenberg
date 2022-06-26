@@ -12,7 +12,6 @@ import MultiButtonsControl from '../../components/responsive-radio';
 import Icons from "../../components/icons";
 const { __ } = wp.i18n;
 const { withSelect } = wp.data
-import RadioComponent from '../../components/radio-control'
 import SpacingComponent from '../../components/premium-responsive-spacing';
 import WebfontLoader from "../../components/typography/fontLoader"
 import InspectorTabs from '../../components/inspectorTabs';

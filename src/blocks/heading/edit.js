@@ -10,7 +10,12 @@ import PremiumBackgroundControl from "../../components/Premium-Background-Contro
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import PremiumMediaUpload from '../../components/premium-media-upload';
 import Lottie from 'react-lottie-with-segments';
+import { generateBlockId, generateCss, typographyCss } from '../../components/HelperFunction';
+import Icons from "../../components/icons";
+import MultiButtonsControl from '../../components/responsive-radio';
 import SpacingComponent from '../../components/premium-responsive-spacing';
+import InspectorTabs from '../../components/inspectorTabs';
+import InspectorTab from '../../components/inspectorTab';
 
 const { __ } = wp.i18n
 
@@ -44,8 +49,10 @@ class edit extends Component {
     }
 
     componentDidMount() {
-        // Assigning id in the attribute.
-        this.props.setAttributes({ block_id: this.props.clientId })
+        const { setAttributes, clientId } = this.props;
+        if (!this.props.attributes.blockId) {
+            setAttributes({ blockId: "premium-heading-" + generateBlockId(clientId) });
+        }
         this.props.setAttributes({ classMigrate: true })
         // Pushing Style tag for this block css.
         const $style = document.createElement("style")
@@ -128,7 +135,7 @@ class edit extends Component {
         const { attributes, setAttributes, isSelected } = this.props;
 
         const {
-            block_id,
+            blockId,
             align,
             titleTag,
             style,
@@ -147,25 +154,14 @@ class edit extends Component {
             target,
             iconAlign,
             stripePosition,
-            stripeStyles,
             strokeStyles,
             titleStyles,
-            titleBorderTop,
-            titleBorderRight,
-            titleBorderBottom,
-            titleBorderLeft,
-            titleBorderUpdated,
-            titleBorderWidth,
+            titleBorder,
             iconStyles,
-            backgroundType,
-            iconBorderWidth,
-            iconBorderUpdated,
+            iconBackground,
+            iconBorder,
             textStyles,
             stripeAlign,
-            iconBorderTop,
-            iconBorderRight,
-            iconBorderBottom,
-            iconBorderLeft,
             titleMargin,
             titlePadding,
             iconPadding,
@@ -178,6 +174,20 @@ class edit extends Component {
             hideDesktop,
             hideTablet,
             hideMobile,
+            strokeFull,
+            iconSize,
+            iconshadow,
+            rotateText,
+            verticalText,
+            horizontalText,
+            textBackshadow,
+            textTypography,
+            stripeBottomSpacing,
+            stripeTopSpacing,
+            stripeHeight,
+            stripeWidth,
+            titleTypography,
+            titleShadow,
         } = attributes
 
         const STYLE = [{
@@ -281,8 +291,6 @@ class edit extends Component {
             }
         ];
 
-        const ALIGNS = ["left", "center", "right"];
-
         const STRIPEPOSITION = [
             {
                 value: "top",
@@ -327,208 +335,225 @@ class edit extends Component {
                 },
             ];
 
-        const TitleSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titlefontSize, titleStyles[0].titlefontSizeTablet, titleStyles[0].titlefontSizeMobile);
-        const TitleMarginTop = this.getPreviewSize(this.props.deviceType, titleMargin.Desktop.top, titleMargin.Tablet.top, titleMargin.Mobile.top);
-        const TitleMarginRight = this.getPreviewSize(this.props.deviceType, titleMargin.Desktop.right, titleMargin.Tablet.right, titleMargin.Mobile.right);
-        const TitleMarginBottom = this.getPreviewSize(this.props.deviceType, titleMargin.Desktop.bottom, titleMargin.Tablet.bottom, titleMargin.Mobile.bottom);
-        const TitleMarginLeft = this.getPreviewSize(this.props.deviceType, titleMargin.Desktop.left, titleMargin.Tablet.left, titleMargin.Mobile.left);
-        const TitlePaddingTop = this.getPreviewSize(this.props.deviceType, titlePadding.Desktop.top, titlePadding.Tablet.top, titlePadding.Mobile.top);
-        const TitlePaddingRight = this.getPreviewSize(this.props.deviceType, titlePadding.Desktop.right, titlePadding.Tablet.right, titlePadding.Mobile.right);
-        const TitlePaddingBottom = this.getPreviewSize(this.props.deviceType, titlePadding.Desktop.bottom, titlePadding.Tablet.bottom, titlePadding.Mobile.bottom);
-        const TitlePaddingLeft = this.getPreviewSize(this.props.deviceType, titlePadding.Desktop.left, titlePadding.Tablet.left, titlePadding.Mobile.left);
-        const IconSize = this.getPreviewSize(this.props.deviceType, iconStyles[0].iconSize, iconStyles[0].iconSizeTablet, iconStyles[0].iconSizeMobile);
-        const IconMarginTop = this.getPreviewSize(this.props.deviceType, iconMargin.Desktop.top, iconMargin.Tablet.top, iconMargin.Mobile.top);
-        const IconMarginRight = this.getPreviewSize(this.props.deviceType, iconMargin.Desktop.right, iconMargin.Tablet.right, iconMargin.Mobile.right);
-        const IconMarginBottom = this.getPreviewSize(this.props.deviceType, iconMargin.Desktop.bottom, iconMargin.Tablet.bottom, iconMargin.Mobile.bottom);
-        const IconMarginLeft = this.getPreviewSize(this.props.deviceType, iconMargin.Desktop.left, iconMargin.Tablet.left, iconMargin.Mobile.left);
-        const IconPaddingTop = this.getPreviewSize(this.props.deviceType, iconPadding.Desktop.top, iconPadding.Tablet.top, iconPadding.Mobile.top);
-        const IconPaddingRight = this.getPreviewSize(this.props.deviceType, iconPadding.Desktop.right, iconPadding.Tablet.right, iconPadding.Mobile.right);
-        const IconPaddingBottom = this.getPreviewSize(this.props.deviceType, iconPadding.Desktop.bottom, iconPadding.Tablet.bottom, iconPadding.Mobile.bottom);
-        const IconPaddingLeft = this.getPreviewSize(this.props.deviceType, iconPadding.Desktop.left, iconPadding.Tablet.left, iconPadding.Mobile.left);
-        const TextSize = this.getPreviewSize(this.props.deviceType, textStyles[0].textBackfontSize, textStyles[0].textBackfontSizeTablet, textStyles[0].textBackfontSizeMobile);
-        const StripeWidth = this.getPreviewSize(this.props.deviceType, stripeStyles[0].stripeWidth, stripeStyles[0].stripeWidthTablet, stripeStyles[0].stripeWidthMobile);
-        const StripeHeight = this.getPreviewSize(this.props.deviceType, stripeStyles[0].stripeHeight, stripeStyles[0].stripeHeightTablet, stripeStyles[0].stripeHeightMobile);
-        const StripeMarginTop = this.getPreviewSize(this.props.deviceType, stripeStyles[0].stripeTopSpacing, stripeStyles[0].stripeTopSpacingTablet, stripeStyles[0].stripeTopSpacingMobile);
-        const StripeMarginBottom = this.getPreviewSize(this.props.deviceType, stripeStyles[0].stripeBottomSpacing, stripeStyles[0].stripeBottomSpacingTablet, stripeStyles[0].stripeBottomSpacingMobile);
-        const TextVertical = this.getPreviewSize(this.props.deviceType, textStyles[0].verticalText, textStyles[0].verticalTextTablet, textStyles[0].verticalTextMobile);
-        const TextHorizontal = this.getPreviewSize(this.props.deviceType, textStyles[0].horizontalText, textStyles[0].horizontalTextTablet, textStyles[0].horizontalTextMobile);
-        const TextRotate = this.getPreviewSize(this.props.deviceType, textStyles[0].rotateText, textStyles[0].rotateTextTablet, textStyles[0].rotateTextMobile);
-        const StrokeFull = this.getPreviewSize(this.props.deviceType, strokeStyles[0].strokeFull, strokeStyles[0].strokeFullTablet, strokeStyles[0].strokeFullMobile);
+        const TitleMarginTop = titleMargin?.[this.props.deviceType]?.top;
+        const TitleMarginRight = titleMargin?.[this.props.deviceType]?.right;
+        const TitleMarginBottom = titleMargin?.[this.props.deviceType]?.bottom;
+        const TitleMarginLeft = titleMargin?.[this.props.deviceType]?.left;
+        const TitlePaddingTop = titlePadding?.[this.props.deviceType]?.top;
+        const TitlePaddingRight = titlePadding?.[this.props.deviceType]?.right;
+        const TitlePaddingBottom = titlePadding?.[this.props.deviceType]?.bottom;
+        const TitlePaddingLeft = titlePadding?.[this.props.deviceType]?.left;
+        const IconMarginTop = iconMargin?.[this.props.deviceType]?.top;
+        const IconMarginRight = iconMargin?.[this.props.deviceType]?.right;
+        const IconMarginBottom = iconMargin?.[this.props.deviceType]?.bottom;
+        const IconMarginLeft = iconMargin?.[this.props.deviceType]?.left;
+        const IconPaddingTop = iconPadding?.[this.props.deviceType]?.top;
+        const IconPaddingRight = iconPadding?.[this.props.deviceType]?.right;
+        const IconPaddingBottom = iconPadding?.[this.props.deviceType]?.bottom;
+        const IconPaddingLeft = iconPadding?.[this.props.deviceType]?.left;
 
         let btnGrad, btnGrad2, btnbg;
 
-        if (undefined !== backgroundType && 'gradient' === backgroundType) {
-            btnGrad = ('transparent' === iconStyles[0].containerBack || undefined === iconStyles[0].containerBack ? 'rgba(255,255,255,0)' : iconStyles[0].containerBack);
-            btnGrad2 = (undefined !== iconStyles[0].gradientColorTwo && undefined !== iconStyles[0].gradientColorTwo && '' !== iconStyles[0].gradientColorTwo ? iconStyles[0].gradientColorTwo : '#777');
-            if ('radial' === iconStyles[0].gradientType) {
-                btnbg = `radial-gradient(at ${iconStyles[0].gradientPosition}, ${btnGrad} ${iconStyles[0].gradientLocationOne}%, ${btnGrad2} ${iconStyles[0].gradientLocationTwo}%)`;
-            } else if ('radial' !== iconStyles[0].gradientType) {
-                btnbg = `linear-gradient(${iconStyles[0].gradientAngle}deg, ${btnGrad} ${iconStyles[0].gradientLocationOne}%, ${btnGrad2} ${iconStyles[0].gradientLocationTwo}%)`;
+        if (undefined !== iconBackground.backgroundType && 'gradient' === iconBackground.backgroundType) {
+            btnGrad = ('transparent' === iconBackground.backgroundColor || undefined === iconBackground.backgroundColor ? 'rgba(255,255,255,0)' : iconBackground.backgroundColor);
+            btnGrad2 = (undefined !== iconBackground.gradientColorTwo && undefined !== iconBackground.gradientColorTwo && '' !== iconBackground.gradientColorTwo ? iconBackground.gradientColorTwo : '#777');
+            if ('radial' === iconBackground.gradientType) {
+                btnbg = `radial-gradient(at ${iconBackground.gradientPosition}, ${btnGrad} ${iconBackground.gradientLocationOne}%, ${btnGrad2} ${iconBackground.gradientLocationTwo}%)`;
+            } else if ('radial' !== iconBackground.gradientType) {
+                btnbg = `linear-gradient(${iconBackground.gradientAngle}deg, ${btnGrad} ${iconBackground.gradientLocationOne}%, ${btnGrad2} ${iconBackground.gradientLocationTwo}%)`;
             }
         } else {
-            btnbg = iconStyles[0].backgroundImageURL ? `url('${iconStyles[0].backgroundImageURL}')` : ''
+            btnbg = iconBackground.backgroundImageURL ? `url('${iconBackground.backgroundImageURL}')` : ''
         }
 
-        const renderCss = (
-            <style>
-                {`
-                    #premium-title-${block_id} .premium-title-style8__wrap .premium-title-text-title[data-animation='shiny'] {
-                        --base-color: ${titleStyles[0].titleColor} !important;
-                        --shiny-color: ${titleStyles[0].shinyColor} !important;
-                        --animation-speed: ${titleStyles[0].animateduration}s !important;
-                    }
-                    #premium-title-${block_id} .premium-title-header {
-                        --shadow-color: ${titleStyles[0].blurColor} !important;
-                        --shadow-value: ${titleStyles[0].blurShadow}px !important;
-                        color: ${titleStyles[0].titleColor} !important;
-                    }
-                    #premium-title-${block_id} .premium-title .style1 .premium-title-header {
-                        border-style: ${titleStyles[0].titleborderType} !important;
-                        border-width: ${titleBorderUpdated
-                        ? `${titleBorderTop}px ${titleBorderRight}px ${titleBorderBottom}px ${titleBorderLeft}px`
-                        : titleBorderWidth + "px"} !important;
-                        border-radius: ${titleStyles[0].titleborderRadius || 0}px !important;
-                        border-color: ${titleStyles[0].titleborderColor} !important;
-                        border-left: ${titleBorderLeft >= "1" ? `${titleBorderLeft}px ${titleStyles[0].titleborderType} ${titleStyles[0].titleborderColor}` : ""} !important;
-                    }
-                    #premium-title-${block_id} .premium-title .style2{
-                        border-style: ${titleStyles[0].titleborderType} !important;
-                        border-width: ${titleBorderUpdated
-                        ? `${titleBorderTop}px ${titleBorderRight}px ${titleBorderBottom}px ${titleBorderLeft}px`
-                        : titleBorderWidth + "px"}!important;
-                        border-radius: ${titleStyles[0].titleborderRadius || 0}px !important;
-                        border-color: ${titleStyles[0].titleborderColor}!important;
-                        border-bottom: ${titleBorderBottom >= "0" ? `${titleBorderBottom}px ${titleStyles[0].titleborderType} ${titleStyles[0].titleborderColor} !important` : ""};
-                    }
-                    #premium-title-${block_id} .premium-title .style4{
-                        border-style: ${titleStyles[0].titleborderType} !important;
-                        border-width: ${titleBorderUpdated
-                        ? `${titleBorderTop}px ${titleBorderRight}px ${titleBorderBottom}px ${titleBorderLeft}px`
-                        : titleBorderWidth + "px"} !important;
-                        border-radius: ${titleStyles[0].titleborderRadius || 0}px !important;
-                        border-color: ${titleStyles[0].titleborderColor} !important;
-                        border-bottom: ${titleBorderBottom >= "0" ? `${titleBorderBottom}px ${titleStyles[0].titleborderType} ${titleStyles[0].titleborderColor} !important` : ""};
-                    }
-                    #premium-title-${block_id} .premium-title .style5{
-                        border-style: ${titleStyles[0].titleborderType} !important;
-                        border-width: ${titleBorderUpdated
-                        ? `${titleBorderTop}px ${titleBorderRight}px ${titleBorderBottom}px ${titleBorderLeft}px`
-                        : titleBorderWidth + "px"} !important;
-                        border-radius: ${titleStyles[0].titleborderRadius || 0}px !important;
-                        border-color: ${titleStyles[0].titleborderColor} !important;
-                        border-bottom: ${titleBorderBottom >= "0" ? `${titleBorderBottom}px ${titleStyles[0].titleborderType} ${titleStyles[0].titleborderColor} !important` : ""};
-                    }
-                    #premium-title-${block_id} .premium-title .style6{
-                        border-style: ${titleStyles[0].titleborderType} !important;
-                        border-width: ${titleBorderUpdated
-                        ? `${titleBorderTop}px ${titleBorderRight}px ${titleBorderBottom}px ${titleBorderLeft}px`
-                        : titleBorderWidth + "px"} !important;
-                        border-radius: ${titleStyles[0].titleborderRadius || 0}px !important;
-                        border-color: ${titleStyles[0].titleborderColor} !important;
-                        border-bottom: ${titleBorderBottom >= "0" ? `${titleBorderBottom}px ${titleStyles[0].titleborderType} ${titleStyles[0].titleborderColor} !important` : ""};
-                    }
-                    #premium-title-${block_id} .premium-title-style2__wrap {
-                        background-color: ${titleStyles[0].BGColor} !important;
-                    }
-                    #premium-title-${block_id} .premium-title-style3__wrap {
-                        background-color: ${titleStyles[0].BGColor} !important;
-                    }
-                    #premium-title-${block_id} .premium-title-style5__wrap {
-                        border-bottom: 2px solid ${titleStyles[0].lineColor} !important;
-                    }
-                    #premium-title-${block_id} .premium-title-style6__wrap {
-                        border-bottom: 2px solid ${titleStyles[0].lineColor} !important;
-                    }
-                    #premium-title-${block_id} .premium-title-style6__wrap:before {
-                        border-bottom-color: ${titleStyles[0].triangleColor} !important;
-                    }
-                    #premium-title-${block_id} .premium-title-icon {
-                        color: ${iconStyles[0].iconColor} !important;
-                        background-color: ${backgroundType === "solid" ? iconStyles[0].containerBack : "transparent"} !important;
-                        background-image: ${btnbg} !important;
-                        background-repeat: ${iconStyles[0].backgroundRepeat} !important;
-                        background-position: ${iconStyles[0].backgroundPosition} !important;
-                        background-size: ${iconStyles[0].backgroundSize} !important;
-                        background-attachment: ${iconStyles[0].fixed ? "fixed" : "unset"} !important;
-                        font-size: ${IconSize}${iconStyles[0].iconSizeType} !important;
-                        border-style: ${iconStyles[0].iconborderType} !important;
-                        border-width: ${iconBorderUpdated
-                        ? `${iconBorderTop}px ${iconBorderRight}px ${iconBorderBottom}px ${iconBorderLeft}px`
-                        : iconBorderWidth + "px"} !important;
-                        border-radius: ${iconStyles[0].iconborderRadius || 0}px !important;
-                        border-color: ${iconStyles[0].iconborderColor} !important;
-                        padding-top: ${IconPaddingTop}${iconPadding.unit} !important;
-                        padding-right: ${IconPaddingRight}${iconPadding.unit} !important;
-                        padding-bottom: ${IconPaddingBottom}${iconPadding.unit} !important;
-                        padding-left: ${IconPaddingLeft}${iconPadding.unit} !important;
-                        margin-top: ${IconMarginTop}${iconPadding.unit} !important;
-                        margin-right: ${IconMarginRight}${iconPadding.unit} !important;
-                        margin-bottom: ${IconMarginBottom}${iconPadding.unit} !important;
-                        margin-left: ${IconMarginLeft}${iconPadding.unit} !important;
-                        text-shadow: ${iconStyles[0].iconshadowHorizontal}px ${iconStyles[0].iconshadowVertical}px ${iconStyles[0].iconshadowBlur}px ${iconStyles[0].iconshadowColor} !important;
-                    }
-                    #premium-title-${block_id} .premium-lottie-animation svg {
-                        width: ${IconSize}${iconStyles[0].iconSizeType} !important;
-                        height: ${IconSize}${iconStyles[0].iconSizeType} !important;
-                    }
-                    #premium-title-${block_id} .premium-title-header img {
-                        width: ${IconSize}${iconStyles[0].iconSizeType} !important;
-                        height: ${IconSize}${iconStyles[0].iconSizeType} !important;
-                    }
-                    #premium-title-${block_id} .premium-title-bg-text:before {
-                        content: ${BackText};
-                        width: ${textWidth};
-                        color: ${textStyles[0].textBackColor} !important;
-                        font-size: ${TextSize}${textStyles[0].textBackfontSizeType} !important;
-                        font-weight: ${textStyles[0].textBackWeight} !important;
-                        letter-spacing: ${textStyles[0].textBackLetter}px !important;
-                        line-height: ${textStyles[0].textBackLine}px !important;
-                        font-style: ${textStyles[0].textBackStyle} !important;
-                        text-transform: ${textStyles[0].textBackUpper ? "uppercase" : "none"} !important;
-                        font-family: ${textStyles[0].textBackFontFamily} !important;
-                        text-shadow: ${textStyles[0].textBackshadowHorizontal}px ${textStyles[0].textBackshadowVertical}px ${textStyles[0].textBackshadowBlur}px ${textStyles[0].textBackshadowColor} !important;
-                        mix-blend-mode: ${blend} !important;
-                        z-index: ${zIndex} !important;
-                        top: ${TextVertical}${textStyles[0].verticalTextType} !important;
-                        left: ${TextHorizontal}${textStyles[0].horizontalTextType} !important;
-                        transform: rotate(${TextRotate}deg) !important;
-                        -webkit-text-stroke-color: ${strokeStyles[0].strokeColor} !important;
-                        -webkit-text-stroke-width: ${StrokeFull}px !important;
-                    }
-                    #premium-title-${block_id} .premium-title-style7-stripe-span {
-                        width: ${StripeWidth}${stripeStyles[0].stripeWidthType} !important;
-                        height: ${StripeHeight}${stripeStyles[0].stripeHeightType} !important;
-                        background-color: ${titleStyles[0].stripeColor} !important;
-                    }
-                    #premium-title-${block_id} .premium-title-style7-stripe__wrap {
-                        margin-top: ${StripeMarginTop}${stripeStyles[0].stripeTopSpacingType} !important;
-                        margin-bottom: ${StripeMarginBottom}${stripeStyles[0].stripeBottomSpacingType} !important;
-                    }
-                    #premium-title-${block_id} .premium-title-style9__wrap .premium-letters-container .premium-title-style9-letter {
-                        font-size: ${TitleSize}${titleStyles[0].titlefontSizeType} !important;
-                        font-weight: ${titleStyles[0].titleWeight} !important;
-                        letter-spacing: ${titleStyles[0].titleLetter}px !important;
-                        line-height: ${titleStyles[0].titleLine ? titleStyles[0].titleLine : ''}px !important;
-                        font-style: ${titleStyles[0].titleStyle} !important;
-                        text-transform: ${titleStyles[0].titleUpper ? "uppercase" : "none"} !important;
-                        font-family: ${titleStyles[0].titleFontFamily} !important;
-                        text-shadow: ${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor} !important;
-                    }
-                `}
-            </style>
-        );
+        const loadStyles = () => {
+            const styles = {};
 
-        const saveStripeStyles = (value) => {
-            const newUpdate = stripeStyles.map((item, index) => {
-                if (0 === index) {
-                    item = { ...item, ...value };
-                }
-                return item;
-            });
-            setAttributes({
-                stripeStyles: newUpdate,
-            });
-        }
+            styles[`.${blockId} .premium-title-style8__wrap .premium-title-text-title[data-animation='shiny']`] = {
+                '--base-color': `${titleStyles[0].titleColor}!important`,
+                '--shiny-color': `${titleStyles[0].shinyColor}!important`,
+                '--animation-speed': `${titleStyles[0].animateduration}s!important`
+            };
+            styles[`.${blockId} .premium-title-header`] = {
+                '--shadow-color': `${titleStyles[0].blurColor}!important`,
+                '--shadow-value': `${titleStyles[0].blurShadow}px!important`,
+                'color': `${titleStyles[0].titleColor}!important`,
+            };
+            styles[`.${blockId} .premium-title .style1 .premium-title-header`] = {
+                'border-color': `${titleBorder.borderColor}!important`,
+                'border-style': `${titleBorder.borderType}!important`,
+                'border-top-width': `${titleBorder?.borderWidth?.[this.props.deviceType]?.top}px!important`,
+                'border-right-width': `${titleBorder?.borderWidth?.[this.props.deviceType]?.right}px!important`,
+                'border-bottom-width': `${titleBorder?.borderWidth?.[this.props.deviceType]?.bottom}px!important`,
+                'border-left-width': `${titleBorder?.borderWidth?.[this.props.deviceType]?.left}px!important`,
+                'border-top-left-radius': `${titleBorder?.borderRadius?.[this.props.deviceType]?.top}px!important`,
+                'border-top-right-radius': `${titleBorder?.borderRadius?.[this.props.deviceType]?.right}px!important`,
+                'border-bottom-left-radius': `${titleBorder?.borderRadius?.[this.props.deviceType]?.bottom}px!important`,
+                'border-bottom-right-radius': `${titleBorder?.borderRadius?.[this.props.deviceType]?.left}px!important`,
+                'border-left': titleBorder?.borderWidth?.[this.props.deviceType]?.left >= "1" ? `${titleBorder?.borderWidth?.[this.props.deviceType]?.left}px ${titleBorder.borderType} ${titleBorder.borderColor}!important` : '',
+            };
+
+            styles[`.${blockId} .premium-title .style2`] = {
+                'border-color': `${titleBorder.borderColor}!important`,
+                'border-style': `${titleBorder.borderType}!important`,
+                'border-top-width': `${titleBorder?.borderWidth?.[this.props.deviceType]?.top}px!important`,
+                'border-right-width': `${titleBorder?.borderWidth?.[this.props.deviceType]?.right}px!important`,
+                'border-bottom-width': `${titleBorder?.borderWidth?.[this.props.deviceType]?.bottom}px!important`,
+                'border-left-width': `${titleBorder?.borderWidth?.[this.props.deviceType]?.left}px!important`,
+                'border-top-left-radius': `${titleBorder?.borderRadius?.[this.props.deviceType]?.top}px!important`,
+                'border-top-right-radius': `${titleBorder?.borderRadius?.[this.props.deviceType]?.right}px!important`,
+                'border-bottom-left-radius': `${titleBorder?.borderRadius?.[this.props.deviceType]?.bottom}px!important`,
+                'border-bottom-right-radius': `${titleBorder?.borderRadius?.[this.props.deviceType]?.left}px!important`,
+                'border-bottom': titleBorder?.borderWidth?.[this.props.deviceType]?.bottom >= "0" ? `${titleBorder?.borderWidth?.[this.props.deviceType]?.bottom}px ${titleBorder.borderType} ${titleBorder.borderColor}!important` : '',
+            };
+
+            styles[`.${blockId} .premium-title .style4`] = {
+                'border-color': `${titleBorder.borderColor}!important`,
+                'border-style': `${titleBorder.borderType}!important`,
+                'border-top-width': `${titleBorder?.borderWidth?.[this.props.deviceType]?.top}px!important`,
+                'border-right-width': `${titleBorder?.borderWidth?.[this.props.deviceType]?.right}px!important`,
+                'border-bottom-width': `${titleBorder?.borderWidth?.[this.props.deviceType]?.bottom}px!important`,
+                'border-left-width': `${titleBorder?.borderWidth?.[this.props.deviceType]?.left}px!important`,
+                'border-top-left-radius': `${titleBorder?.borderRadius?.[this.props.deviceType]?.top}px!important`,
+                'border-top-right-radius': `${titleBorder?.borderRadius?.[this.props.deviceType]?.right}px!important`,
+                'border-bottom-left-radius': `${titleBorder?.borderRadius?.[this.props.deviceType]?.bottom}px!important`,
+                'border-bottom-right-radius': `${titleBorder?.borderRadius?.[this.props.deviceType]?.left}px!important`,
+                'border-bottom': titleBorder?.borderWidth?.[this.props.deviceType]?.bottom >= "0" ? `${titleBorder?.borderWidth?.[this.props.deviceType]?.bottom}px ${titleBorder.borderType} ${titleBorder.borderColor}!important` : '',
+            };
+
+            styles[`.${blockId} .premium-title .style5`] = {
+                'border-color': `${titleBorder.borderColor}!important`,
+                'border-style': `${titleBorder.borderType}!important`,
+                'border-top-width': `${titleBorder?.borderWidth?.[this.props.deviceType]?.top}px!important`,
+                'border-right-width': `${titleBorder?.borderWidth?.[this.props.deviceType]?.right}px!important`,
+                'border-bottom-width': `${titleBorder?.borderWidth?.[this.props.deviceType]?.bottom}px!important`,
+                'border-left-width': `${titleBorder?.borderWidth?.[this.props.deviceType]?.left}px!important`,
+                'border-top-left-radius': `${titleBorder?.borderRadius?.[this.props.deviceType]?.top}px!important`,
+                'border-top-right-radius': `${titleBorder?.borderRadius?.[this.props.deviceType]?.right}px!important`,
+                'border-bottom-left-radius': `${titleBorder?.borderRadius?.[this.props.deviceType]?.bottom}px!important`,
+                'border-bottom-right-radius': `${titleBorder?.borderRadius?.[this.props.deviceType]?.left}px!important`,
+                'border-bottom': titleBorder?.borderWidth?.[this.props.deviceType]?.bottom >= "0" ? `${titleBorder?.borderWidth?.[this.props.deviceType]?.bottom}px ${titleBorder.borderType} ${titleBorder.borderColor}!important` : '',
+            };
+
+            styles[`.${blockId} .premium-title .style6`] = {
+                'border-color': `${titleBorder.borderColor}!important`,
+                'border-style': `${titleBorder.borderType}!important`,
+                'border-top-width': `${titleBorder?.borderWidth?.[this.props.deviceType]?.top}px!important`,
+                'border-right-width': `${titleBorder?.borderWidth?.[this.props.deviceType]?.right}px!important`,
+                'border-bottom-width': `${titleBorder?.borderWidth?.[this.props.deviceType]?.bottom}px!important`,
+                'border-left-width': `${titleBorder?.borderWidth?.[this.props.deviceType]?.left}px!important`,
+                'border-top-left-radius': `${titleBorder?.borderRadius?.[this.props.deviceType]?.top}px!important`,
+                'border-top-right-radius': `${titleBorder?.borderRadius?.[this.props.deviceType]?.right}px!important`,
+                'border-bottom-left-radius': `${titleBorder?.borderRadius?.[this.props.deviceType]?.bottom}px!important`,
+                'border-bottom-right-radius': `${titleBorder?.borderRadius?.[this.props.deviceType]?.left}px!important`,
+                'border-bottom': titleBorder?.borderWidth?.[this.props.deviceType]?.bottom >= "0" ? `${titleBorder?.borderWidth?.[this.props.deviceType]?.bottom}px ${titleBorder.borderType} ${titleBorder.borderColor}!important` : '',
+            };
+
+            styles[`.${blockId} .premium-title-style2__wrap`] = {
+                'background-color': `${titleStyles[0].BGColor}!important`,
+            };
+
+            styles[`.${blockId} .premium-title-style3__wrap`] = {
+                'background-color': `${titleStyles[0].BGColor}!important`,
+            };
+
+            styles[`.${blockId} .premium-title-style5__wrap`] = {
+                'border-bottom': `2px solid ${titleStyles[0].lineColor}!important`,
+            };
+
+            styles[`.${blockId} .premium-title-style6__wrap`] = {
+                'border-bottom': `2px solid ${titleStyles[0].lineColor}!important`,
+            };
+
+            styles[`.${blockId} .premium-title-style6__wrap:before`] = {
+                'border-bottom-color': `${titleStyles[0].triangleColor}!important`,
+            };
+
+            styles[`.${blockId} .premium-title-icon`] = {
+                'color': `${iconStyles[0].iconColor} !important`,
+                'background-color': `${iconBackground.backgroundType === "solid" ? iconBackground.backgroundColor : "transparent"} !important`,
+                'background-image': `${btnbg} !important`,
+                'background-repeat': `${iconBackground.backgroundRepeat} !important`,
+                'background-position': `${iconBackground.backgroundPosition} !important`,
+                'background-size': `${iconBackground.backgroundSize} !important`,
+                'background-attachment': `${iconBackground.fixed ? "fixed" : "unset"} !important`,
+                'font-size': `${iconSize?.[this.props.deviceType]}${iconSize?.unit} !important`,
+                'border-color': `${iconBorder.borderColor}!important`,
+                'border-style': `${iconBorder.borderType}!important`,
+                'border-top-width': `${iconBorder?.borderWidth?.[this.props.deviceType]?.top}px!important`,
+                'border-right-width': `${iconBorder?.borderWidth?.[this.props.deviceType]?.right}px!important`,
+                'border-bottom-width': `${iconBorder?.borderWidth?.[this.props.deviceType]?.bottom}px!important`,
+                'border-left-width': `${iconBorder?.borderWidth?.[this.props.deviceType]?.left}px!important`,
+                'border-top-left-radius': `${iconBorder?.borderRadius?.[this.props.deviceType]?.top}px!important`,
+                'border-top-right-radius': `${iconBorder?.borderRadius?.[this.props.deviceType]?.right}px!important`,
+                'border-bottom-left-radius': `${iconBorder?.borderRadius?.[this.props.deviceType]?.bottom}px!important`,
+                'border-bottom-right-radius': `${iconBorder?.borderRadius?.[this.props.deviceType]?.left}px!important`,
+                'padding-top': `${IconPaddingTop}${iconPadding.unit} !important`,
+                'padding-right': `${IconPaddingRight}${iconPadding.unit} !important`,
+                'padding-bottom': `${IconPaddingBottom}${iconPadding.unit} !important`,
+                'padding-left': `${IconPaddingLeft}${iconPadding.unit} !important`,
+                'margin-top': `${IconMarginTop}${iconPadding.unit} !important`,
+                'margin-right': `${IconMarginRight}${iconPadding.unit} !important`,
+                'margin-bottom': `${IconMarginBottom}${iconPadding.unit} !important`,
+                'margin-left': `${IconMarginLeft}${iconPadding.unit} !important`,
+                'text-shadow': `${iconshadow.horizontal}px ${iconshadow.vertical}px ${iconshadow.blur}px ${iconshadow.color} !important`,
+            };
+
+            styles[`.${blockId} .premium-lottie-animation svg`] = {
+                'width': `${iconSize?.[this.props.deviceType]}${iconSize?.unit}!important`,
+                'height': `${iconSize?.[this.props.deviceType]}${iconSize?.unit}!important`,
+            };
+
+            styles[`.${blockId} .premium-title-header img`] = {
+                'width': `${iconSize?.[this.props.deviceType]}${iconSize?.unit}!important`,
+                'height': `${iconSize?.[this.props.deviceType]}${iconSize?.unit}!important`,
+            };
+
+            styles[`.${blockId} .premium-title-bg-text:before`] = {
+                'content': `${BackText}`,
+                'width': `${textWidth}`,
+                'color': `${textStyles[0].textBackColor}`,
+                'font-family': `${textTypography?.fontFamily}`,
+                'font-size': `${textTypography?.fontSize?.[this.props.deviceType]}${textTypography?.fontSize?.unit}`,
+                'font-weight': `${textTypography?.fontWeight}`,
+                'letter-spacing': `${textTypography?.letterSpacing}`,
+                'line-height': `${textTypography?.lineHeight}`,
+                'font-style': `${textTypography?.fontStyle}`,
+                'text-transform': `${textTypography?.textTransform}`,
+                'text-decoration': `${textTypography?.textDecoration}`,
+                'mix-blend-mode': `${blend} !important`,
+                'text-shadow': `${textBackshadow.horizontal}px ${textBackshadow.vertical}px ${textBackshadow.blur}px ${textBackshadow.color} !important`,
+                'z-index': `${zIndex} !important`,
+                'top': `${verticalText?.[this.props.deviceType]}${verticalText?.unit} !important`,
+                'left': `${horizontalText?.[this.props.deviceType]}${horizontalText?.unit} !important`,
+                'transform': `rotate(${rotateText?.[this.props.deviceType]}deg) !important`,
+                '-webkit-text-stroke-color': `${strokeStyles[0].strokeColor} !important`,
+                '-webkit-text-stroke-width': `${strokeFull?.[this.props.deviceType]}px !important`,
+            };
+
+            styles[`.${blockId} .premium-title-style7-stripe-span`] = {
+                'width': `${stripeWidth?.[this.props.deviceType]}${stripeWidth?.unit}!important`,
+                'height': `${stripeHeight?.[this.props.deviceType]}${stripeHeight?.unit}!important`,
+                'background-color': `${titleStyles[0].stripeColor}!important`,
+            };
+
+            styles[`.${blockId} .premium-title-style7-stripe__wrap`] = {
+                'margin-top': `${stripeTopSpacing?.[this.props.deviceType]}${stripeTopSpacing?.unit}!important`,
+                'margin-bottom': `${stripeBottomSpacing?.[this.props.deviceType]}${stripeBottomSpacing?.unit}!important`,
+            };
+
+            styles[`.${blockId} .premium-title-style9__wrap .premium-letters-container .premium-title-style9-letter`] = {
+                'font-family': `${titleTypography?.fontFamily}`,
+                'font-size': `${titleTypography?.fontSize?.[this.props.deviceType]}${titleTypography?.fontSize?.unit}`,
+                'font-weight': `${titleTypography?.fontWeight}`,
+                'letter-spacing': `${titleTypography?.letterSpacing}`,
+                'line-height': `${titleTypography?.lineHeight}`,
+                'font-style': `${titleTypography?.fontStyle}`,
+                'text-shadow': `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color} !important`,
+            };
+
+            return generateCss(styles);
+        };
 
         const saveTitleStyles = (value) => {
             const newUpdate = titleStyles.map((item, index) => {
@@ -595,777 +620,604 @@ class edit extends Component {
 
         return [
             isSelected && (
-                <InspectorControls>
-                    <PanelBody
-                        title={__("Title")}
-                        className="premium-panel-body"
-                        initialOpen={false}
-                    >
-                        <TextControl
-                            label={__("Title")}
-                            value={title}
-                            onChange={value => setAttributes({ title: value })}
-                        />
-                        <SelectControl
-                            label={__("Style")}
-                            value={style}
-                            onChange={newSelect => setAttributes({ style: newSelect })}
-                            options={STYLE}
-                        />
-                        <ToggleControl
-                            label={__("Icon")}
-                            checked={iconValue}
-                            onChange={value => setAttributes({ iconValue: value })}
-                        />
-                        {iconValue &&
-                            <Fragment>
+                <InspectorControls key={"inspector"}>
+                    <InspectorTabs tabs={['layout', 'style', 'advance']}>
+                        <InspectorTab key={'layout'}>
+                            <PanelBody
+                                title={__("Title")}
+                                className="premium-panel-body"
+                                initialOpen={true}
+                            >
                                 <SelectControl
-                                    label={__("Icon Type")}
-                                    value={iconType}
-                                    onChange={newSelect => setAttributes({ iconType: newSelect })}
-                                    options={ICON}
+                                    label={__("Style")}
+                                    value={style}
+                                    onChange={newSelect => setAttributes({ style: newSelect })}
+                                    options={STYLE}
                                 />
-                                {
-                                    iconType === 'icon' && <Fragment>
-                                        <p>{__("Icon")}</p>
-                                        <FontIconPicker
-                                            icons={iconsList}
-                                            value={icon}
-                                            onChange={value => setAttributes({ icon: value })}
-                                            isMulti={false}
-                                            appendTo="body"
-                                            noSelectedPlaceholder={__("Select Icon")}
+                                <hr />
+                                <ToggleControl
+                                    label={__("Icon")}
+                                    checked={iconValue}
+                                    onChange={value => setAttributes({ iconValue: value })}
+                                />
+                                <hr />
+                                {iconValue &&
+                                    <Fragment>
+                                        <SelectControl
+                                            label={__("Icon Type")}
+                                            value={iconType}
+                                            onChange={newSelect => setAttributes({ iconType: newSelect })}
+                                            options={ICON}
+                                        />
+                                        {
+                                            iconType === 'icon' && <Fragment>
+                                                <p>{__("Icon")}</p>
+                                                <FontIconPicker
+                                                    icons={iconsList}
+                                                    value={icon}
+                                                    onChange={value => setAttributes({ icon: value })}
+                                                    isMulti={false}
+                                                    appendTo="body"
+                                                    noSelectedPlaceholder={__("Select Icon")}
+                                                />
+                                            </Fragment>
+                                        }
+                                        {iconType === 'lottie' && <Fragment>
+                                            <TextControl
+                                                value={lottieURl}
+                                                onChange={value => setAttributes({ lottieURl: value })}
+                                                label={__("Lottie Url")}
+                                            />
+                                            <ToggleControl
+                                                label={__('Loop')}
+                                                checked={loop}
+                                                onChange={(newValue) => setAttributes({ loop: newValue })}
+                                                help={loop ? __('This option works only on the preview page') : ''}
+                                            />
+                                            <ToggleControl
+                                                label={__("Reverse")}
+                                                checked={reversedir}
+                                                onChange={(value) => setAttributes({ reversedir: value })}
+                                            />
+                                        </Fragment>}
+                                        {iconType === 'image' && <Fragment>
+                                            <PremiumMediaUpload
+                                                type="image"
+                                                imageID={imageID}
+                                                imageURL={imageURL}
+                                                onSelectMedia={media => {
+                                                    setAttributes({
+                                                        imageID: media.id,
+                                                        imageURL: media.url
+                                                    });
+                                                }}
+                                                onRemoveImage={() =>
+                                                    setAttributes({
+                                                        imageID: "",
+                                                        imageURL: ""
+                                                    })
+                                                }
+                                            />
+
+                                        </Fragment>}
+                                        <SelectControl
+                                            label={__("Icon Position")}
+                                            value={iconPosition}
+                                            onChange={newSelect => setAttributes({ iconPosition: newSelect })}
+                                            options={POSITION}
+                                        />
+                                        {(iconPosition === 'top' && style != 'style3' && style != 'style4') && <Fragment>
+                                            <MultiButtonsControl
+                                                choices={[{ value: 'left', label: __('Left'), icon: Icons.alignLeft }, { value: 'center', label: __('Center'), icon: Icons.alignCenter }, { value: 'right', label: __('Right'), icon: Icons.alignRight }]}
+                                                value={iconAlign}
+                                                onChange={(align) => setAttributes({ iconAlign: align })}
+                                                label={__("Icon Alignment", "premium-blocks-for-gutenberg")}
+                                                showIcons={true} />
+                                        </Fragment>
+                                        }
+                                    </Fragment>
+                                }
+                                {style === 'style7' && <Fragment>
+                                    <SelectControl
+                                        label={__("Stripe Position")}
+                                        value={stripePosition}
+                                        onChange={newSelect => setAttributes({ stripePosition: newSelect })}
+                                        options={STRIPEPOSITION}
+                                    />
+                                    <ResponsiveRangeControl
+                                        label={__("Stripe Width", 'premium-blocks-for-gutenberg')}
+                                        value={stripeWidth}
+                                        units={['px', 'em', '%']}
+                                        onChange={newValue => setAttributes({ stripeWidth: newValue })}
+                                        showUnit={true}
+                                        min={1}
+                                        max={1000}
+                                    />
+                                    <ResponsiveRangeControl
+                                        label={__("Stripe Height", 'premium-blocks-for-gutenberg')}
+                                        value={stripeHeight}
+                                        units={['px', 'em', '%']}
+                                        onChange={newValue => setAttributes({ stripeHeight: newValue })}
+                                        showUnit={true}
+                                        min={1}
+                                        max={1000}
+                                    />
+                                    <ResponsiveRangeControl
+                                        label={__("Stripe Top Spacing", 'premium-blocks-for-gutenberg')}
+                                        value={stripeTopSpacing}
+                                        units={['px', 'em', '%']}
+                                        onChange={newValue => setAttributes({ stripeTopSpacing: newValue })}
+                                        showUnit={true}
+                                        min={1}
+                                        max={1000}
+                                    />
+                                    <ResponsiveRangeControl
+                                        label={__("Stripe Bottom Spacing", 'premium-blocks-for-gutenberg')}
+                                        value={stripeBottomSpacing}
+                                        units={['px', 'em', '%']}
+                                        onChange={newValue => setAttributes({ stripeBottomSpacing: newValue })}
+                                        showUnit={true}
+                                        min={1}
+                                        max={1000}
+                                    />
+                                    <MultiButtonsControl
+                                        choices={[{ value: 'left', label: __('Left'), icon: Icons.alignLeft }, { value: 'center', label: __('Center'), icon: Icons.alignCenter }, { value: 'right', label: __('Right'), icon: Icons.alignRight }]}
+                                        value={stripeAlign}
+                                        onChange={(align) => setAttributes({ stripeAlign: align })}
+                                        label={__("Stripe Alignment", "premium-blocks-for-gutenberg")}
+                                        showIcons={true} />
+                                </Fragment>
+                                }
+                                <hr />
+                                <SelectControl
+                                    label={__("HTML Tag")}
+                                    options={TAGS}
+                                    value={titleTag}
+                                    onChange={(newValue) => setAttributes({ titleTag: newValue })}
+                                />
+                                <hr />
+                                <MultiButtonsControl
+                                    choices={[{ value: 'left', label: __('Left'), icon: Icons.alignLeft }, { value: 'center', label: __('Center'), icon: Icons.alignCenter }, { value: 'right', label: __('Right'), icon: Icons.alignRight }]}
+                                    value={align}
+                                    onChange={(align) => setAttributes({ align: align })}
+                                    label={__("Alignment", "premium-blocks-for-gutenberg")}
+                                    showIcons={true} />
+                                <hr />
+                                <ToggleControl
+                                    label={__("Link")}
+                                    checked={link}
+                                    onChange={value => setAttributes({ link: value })}
+                                />
+                                <hr />
+                                {link &&
+                                    <Fragment>
+                                        <p>{__("URL")}</p>
+                                        <TextControl
+                                            value={url}
+                                            onChange={value => setAttributes({ url: value })}
+                                            placeholder={__("Enter URL")}
+                                        />
+                                        <ToggleControl
+                                            checked={target}
+                                            label={__('Open Link in new Tab')}
+                                            onChange={(value) => setAttributes({ target: value })}
+                                        />
+                                        <hr />
+                                    </Fragment>
+                                }
+                                <ToggleControl
+                                    label={__('background Text')}
+                                    checked={backgroundText}
+                                    onChange={(value) => setAttributes({ backgroundText: value })}
+                                />
+                                <hr />
+                                {backgroundText &&
+                                    <Fragment>
+                                        <TextControl
+                                            label={__("Text")}
+                                            value={BackText}
+                                            onChange={value => setAttributes({ BackText: value })}
+                                        />
+                                        <SelectControl
+                                            label={__("Width")}
+                                            value={textWidth}
+                                            onChange={newSelect => setAttributes({ textWidth: newSelect })}
+                                            options={[
+                                                {
+                                                    label: "Auto", value: 'auto'
+                                                }, {
+                                                    label: "Full Width", value: '100%'
+                                                }]}
+                                        />
+                                        <ResponsiveRangeControl
+                                            label={__("Horizontal Offset", 'premium-blocks-for-gutenberg')}
+                                            value={horizontalText}
+                                            onChange={newValue => setAttributes({ horizontalText: newValue })}
+                                            units={['px', 'em', '%']}
+                                            showUnit={true}
+                                            min={-500}
+                                            max={500}
+                                        />
+                                        <ResponsiveRangeControl
+                                            label={__("Vertical Offset", 'premium-blocks-for-gutenberg')}
+                                            value={verticalText}
+                                            onChange={newValue => setAttributes({ verticalText: newValue })}
+                                            units={['px', 'em', '%']}
+                                            showUnit={true}
+                                            min={-500}
+                                            max={500}
+                                            step={1}
+                                        />
+                                        <ResponsiveRangeControl
+                                            label={__("Rotate (degrees)", 'premium-blocks-for-gutenberg')}
+                                            value={rotateText}
+                                            onChange={newValue => setAttributes({ rotateText: newValue })}
+                                            showUnit={false}
+                                            min={0}
+                                            max={360}
+                                            step={1}
                                         />
                                     </Fragment>
                                 }
-                                {iconType === 'lottie' && <Fragment>
-                                    <TextControl
-                                        value={lottieURl}
-                                        onChange={value => setAttributes({ lottieURl: value })}
-                                        label={__("Lottie Url")}
-                                    />
-                                    <ToggleControl
-                                        label={__('Loop')}
-                                        checked={loop}
-                                        onChange={(newValue) => setAttributes({ loop: newValue })}
-                                        help={loop ? __('This option works only on the preview page') : ''}
-                                    />
-                                    <ToggleControl
-                                        label={__("Reverse")}
-                                        checked={reversedir}
-                                        onChange={(value) => setAttributes({ reversedir: value })}
-                                    />
-                                </Fragment>}
-                                {iconType === 'image' && <Fragment>
-                                    <PremiumMediaUpload
-                                        type="image"
-                                        imageID={imageID}
-                                        imageURL={imageURL}
-                                        onSelectMedia={media => {
-                                            setAttributes({
-                                                imageID: media.id,
-                                                imageURL: media.url
-                                            });
-                                        }}
-                                        onRemoveImage={() =>
-                                            setAttributes({
-                                                imageID: "",
-                                                imageURL: ""
-                                            })
-                                        }
-                                    />
-
-                                </Fragment>}
-                                <SelectControl
-                                    label={__("Icon Position")}
-                                    value={iconPosition}
-                                    onChange={newSelect => setAttributes({ iconPosition: newSelect })}
-                                    options={POSITION}
+                            </PanelBody>
+                        </InspectorTab>
+                        <InspectorTab key={'style'}>
+                            <PanelBody
+                                title={__("Title")}
+                                className="premium-panel-body"
+                                initialOpen={true}
+                            >
+                                {(style === "style8" || style === "style9") &&
+                                    <Fragment>
+                                        <ResponsiveSingleRangeControl
+                                            label={__("Animation Delay", 'premium-block-for-gutenberg')}
+                                            value={titleStyles[0].animateDelay}
+                                            onChange={(value) => saveTitleStyles({ animateDelay: value })}
+                                            showUnit={false}
+                                            defaultValue={2}
+                                            min={1}
+                                            max={30}
+                                            step={0.5}
+                                        />
+                                        <hr />
+                                    </Fragment>
+                                }
+                                {style === "style8" &&
+                                    <Fragment>
+                                        <ResponsiveSingleRangeControl
+                                            label={__("Animation Duration", 'premium-block-for-gutenberg')}
+                                            value={titleStyles[0].animateduration}
+                                            onChange={(value) => saveTitleStyles({ animateduration: value })}
+                                            showUnit={false}
+                                            defaultValue={1}
+                                            step={0.5}
+                                        />
+                                        <hr />
+                                    </Fragment>
+                                }
+                                <PremiumTypo
+                                    components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
+                                    value={titleTypography}
+                                    onChange={newValue => setAttributes({ titleTypography: newValue })}
                                 />
-                                {(iconPosition === 'top' && style != 'style3' && style != 'style4') && <Fragment>
-                                    <p>{__("Icon Alignment")}</p>
-                                    <Toolbar
-                                        controls={ALIGNS.map(contentAlign => ({
-                                            icon: "editor-align" + contentAlign,
-                                            isActive: contentAlign === iconAlign,
-                                            onClick: () => setAttributes({ iconAlign: contentAlign })
-                                        }))}
-                                    />
-                                </Fragment>
-                                }
-                            </Fragment>
-                        }
-                        {style === 'style7' && <Fragment>
-                            <SelectControl
-                                label={__("Stripe Position")}
-                                value={stripePosition}
-                                onChange={newSelect => setAttributes({ stripePosition: newSelect })}
-                                options={STRIPEPOSITION}
-                            />
-                            <ResponsiveRangeControl
-                                label={__("Stripe Width", 'premium-block-for-gutenberg')}
-                                value={stripeStyles[0].stripeWidth}
-                                tabletValue={stripeStyles[0].stripeWidthTablet}
-                                mobileValue={stripeStyles[0].stripeWidthMobile}
-                                onChange={(value) => saveStripeStyles({ stripeWidth: value })}
-                                onChangeTablet={(value) => saveStripeStyles({ stripeWidthTablet: value })}
-                                onChangeMobile={(value) => saveStripeStyles({ stripeWidthMobile: value })}
-                                onChangeUnit={(key) =>
-                                    saveStripeStyles({ stripeWidthType: key })
-                                }
-                                unit={stripeStyles[0].stripeWidthType}
-                                showUnit={true}
-                                defaultValue={120}
-                                min={1}
-                                max={100}
-                            />
-                            <ResponsiveRangeControl
-                                label={__("Stripe Height", 'premium-block-for-gutenberg')}
-                                value={stripeStyles[0].stripeHeight}
-                                tabletValue={stripeStyles[0].stripeHeightTablet}
-                                mobileValue={stripeStyles[0].stripeHeightMobile}
-                                onChange={(value) => saveStripeStyles({ stripeHeight: value })}
-                                onChangeTablet={(value) => saveStripeStyles({ stripeHeightTablet: value })}
-                                onChangeMobile={(value) => saveStripeStyles({ stripeHeightMobile: value })}
-                                onChangeUnit={(key) =>
-                                    saveStripeStyles({ stripeHeightType: key })
-                                }
-                                unit={stripeStyles[0].stripeHeightType}
-                                showUnit={true}
-                                defaultValue={5}
-                                min={1}
-                                max={100}
-                            />
-                            <ResponsiveRangeControl
-                                label={__("Stripe Top Spacing", 'premium-block-for-gutenberg')}
-                                value={stripeStyles[0].stripeTopSpacing}
-                                tabletValue={stripeStyles[0].stripeTopSpacingTablet}
-                                mobileValue={stripeStyles[0].stripeTopSpacingMobile}
-                                onChange={(value) => saveStripeStyles({ stripeTopSpacing: value })}
-                                onChangeTablet={(value) => saveStripeStyles({ stripeTopSpacingTablet: value })}
-                                onChangeMobile={(value) => saveStripeStyles({ stripeTopSpacingMobile: value })}
-                                onChangeUnit={(key) =>
-                                    saveStripeStyles({ stripeTopSpacingType: key })
-                                }
-                                unit={stripeStyles[0].stripeTopSpacingType}
-                                showUnit={true}
-                                defaultValue={0}
-                                min={1}
-                                max={100}
-                            />
-                            <ResponsiveRangeControl
-                                label={__("Stripe Bottom Spacing", 'premium-block-for-gutenberg')}
-                                value={stripeStyles[0].stripeBottomSpacing}
-                                tabletValue={stripeStyles[0].stripeBottomSpacingTablet}
-                                mobileValue={stripeStyles[0].stripeBottomSpacingMobile}
-                                onChange={(value) => saveStripeStyles({ stripeBottomSpacing: value })}
-                                onChangeTablet={(value) => saveStripeStyles({ stripeBottomSpacingTablet: value })}
-                                onChangeMobile={(value) => saveStripeStyles({ stripeBottomSpacingMobile: value })}
-                                onChangeUnit={(key) =>
-                                    saveStripeStyles({ stripeBottomSpacingType: key })
-                                }
-                                unit={stripeStyles[0].stripeBottomSpacingType}
-                                showUnit={true}
-                                defaultValue={0}
-                                min={1}
-                                max={100}
-                            />
-                            <p>{__("Stripe Alignment")}</p>
-                            <Toolbar
-                                controls={ALIGNS.map(contentAlign => ({
-                                    icon: "editor-align" + contentAlign,
-                                    isActive: contentAlign === stripeAlign,
-                                    onClick: () => setAttributes({ stripeAlign: contentAlign })
-                                }))}
-                            />
-                        </Fragment>
-                        }
-                        <hr />
-                        <SelectControl
-                            label={__("HTML Tag")}
-                            options={TAGS}
-                            value={titleTag}
-                            onChange={(newValue) => setAttributes({ titleTag: newValue })}
-                        />
-                        <p> {__('Alignment')}</p>
-                        <Toolbar
-                            controls={ALIGNS.map(contentAlign => ({
-                                icon: "editor-align" + contentAlign,
-                                isActive: align === align,
-                                onClick: () => setAttributes({ align: contentAlign })
-                            }))}
-                        />
-                        <ToggleControl
-                            label={__("Link")}
-                            checked={link}
-                            onChange={value => setAttributes({ link: value })}
-                        />
-                        {link &&
-                            <Fragment>
-                                <p>{__("URL")}</p>
-                                <TextControl
-                                    value={url}
-                                    onChange={value => setAttributes({ url: value })}
-                                    placeholder={__("Enter URL")}
-                                />
-                                <ToggleControl
-                                    checked={target}
-                                    label={__('Open Link in new Tab')}
-                                    onChange={(value) => setAttributes({ target: value })}
-                                />
-                            </Fragment>
-                        }
-                        <ToggleControl
-                            label={__('background Text')}
-                            checked={backgroundText}
-                            onChange={(value) => setAttributes({ backgroundText: value })}
-                        />
-                        {backgroundText &&
-                            <Fragment>
-                                <TextControl
-                                    label={__("Text")}
-                                    value={BackText}
-                                    onChange={value => setAttributes({ BackText: value })}
-                                />
-                                <SelectControl
-                                    label={__("Width")}
-                                    value={textWidth}
-                                    onChange={newSelect => setAttributes({ textWidth: newSelect })}
-                                    options={[
-                                        {
-                                            label: "Auto", value: 'auto'
-                                        }, {
-                                            label: "Full Width", value: '100%'
-                                        }]}
-                                />
-                                <ResponsiveRangeControl
-                                    label={__("Horizontal Offset", 'premium-block-for-gutenberg')}
-                                    value={textStyles[0].horizontalText}
-                                    tabletValue={textStyles[0].horizontalTextTablet}
-                                    mobileValue={textStyles[0].horizontalTextMobile}
-                                    onChange={(value) => saveTextStyles({ horizontalText: value })}
-                                    onChangeTablet={(value) => saveTextStyles({ horizontalTextTablet: value })}
-                                    onChangeMobile={(value) => saveTextStyles({ horizontalTextMobile: value })}
-                                    onChangeUnit={(key) =>
-                                        saveTextStyles({ horizontalTextType: key })
-                                    }
-                                    unit={textStyles[0].horizontalTextType}
-                                    showUnit={true}
-                                    defaultValue={0}
-                                    min={-500}
-                                    max={500}
-                                    step={1}
-                                />
-                                <ResponsiveRangeControl
-                                    label={__("Vertical Offset", 'premium-block-for-gutenberg')}
-                                    value={textStyles[0].verticalText}
-                                    tabletValue={textStyles[0].verticalTextTablet}
-                                    mobileValue={textStyles[0].verticalTextMobile}
-                                    onChange={(value) => saveTextStyles({ verticalText: value })}
-                                    onChangeTablet={(value) => saveTextStyles({ verticalTextTablet: value })}
-                                    onChangeMobile={(value) => saveTextStyles({ verticalTextMobile: value })}
-                                    onChangeUnit={(key) =>
-                                        saveTextStyles({ verticalTextType: key })
-                                    }
-                                    unit={textStyles[0].verticalTextType}
-                                    showUnit={true}
-                                    defaultValue={0}
-                                    min={-500}
-                                    max={500}
-                                    step={1}
-                                />
-                                <ResponsiveRangeControl
-                                    label={__("Rotate (degrees)", 'premium-block-for-gutenberg')}
-                                    value={textStyles[0].rotateText}
-                                    tabletValue={textStyles[0].rotateTextTablet}
-                                    mobileValue={textStyles[0].rotateTextMobile}
-                                    onChange={(value) => saveTextStyles({ rotateText: value })}
-                                    onChangeTablet={(value) => saveTextStyles({ rotateTextTablet: value })}
-                                    onChangeMobile={(value) => saveTextStyles({ rotateTextMobile: value })}
-                                    showUnit={false}
-                                    defaultValue={0}
-                                    min={0}
-                                    max={360}
-                                    step={1}
-                                />
-                            </Fragment>
-                        }
-                    </PanelBody>
-                    <PanelBody
-                        title={__("Title Style")}
-                        className="premium-panel-body"
-                        initialOpen={false}
-                    >
-                        <AdvancedPopColorControl
-                            label={__("Color", 'premium-block-for-gutenberg')}
-                            colorValue={titleStyles[0].titleColor}
-                            colorDefault={''}
-                            onColorChange={newValue =>
-                                saveTitleStyles({
-                                    titleColor: newValue
-                                })
-                            }
-                        />
-                        {style === "style8" &&
-                            <AdvancedPopColorControl
-                                label={__("Shiny Color", 'premium-block-for-gutenberg')}
-                                colorValue={titleStyles[0].shinyColor}
-                                colorDefault={''}
-                                onColorChange={newValue =>
-                                    saveTitleStyles({
-                                        shinyColor: newValue
-                                    })
-                                }
-                            />
-                        }
-                        {style === "style9" &&
-                            <AdvancedPopColorControl
-                                label={__("Blur Color", 'premium-block-for-gutenberg')}
-                                colorValue={titleStyles[0].blurColor}
-                                colorDefault={''}
-                                onColorChange={newValue =>
-                                    saveTitleStyles({
-                                        blurColor: newValue
-                                    })
-                                }
-                            />
-                        }
-                        <PremiumTypo
-                            components={["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"]}
-                            setAttributes={saveTitleStyles}
-                            fontSizeType={{ value: titleStyles[0].titlefontSizeType, label: __("titlefontSizeType") }}
-                            fontSize={titleStyles[0].titlefontSize}
-                            fontSizeMobile={titleStyles[0].titlefontSizeMobile}
-                            fontSizeTablet={titleStyles[0].titlefontSizeTablet}
-                            onChangeSize={newSize => saveTitleStyles({ titlefontSize: newSize })}
-                            onChangeTabletSize={newSize => saveTitleStyles({ titlefontSizeTablet: newSize })}
-                            onChangeMobileSize={newSize => saveTitleStyles({ titlefontSizeMobile: newSize })}
-                            weight={titleStyles[0].titleWeight}
-                            style={titleStyles[0].titleStyle}
-                            spacing={titleStyles[0].titleLetter}
-                            upper={titleStyles[0].titleUpper}
-                            line={titleStyles[0].titleLine}
-                            fontFamily={titleStyles[0].titleFontFamily}
-                            onChangeWeight={newWeight =>
-                                saveTitleStyles({ titleWeight: newWeight || 500 })
-                            }
-                            onChangeStyle={newStyle =>
-                                saveTitleStyles({ titleStyle: newStyle })
-                            }
-                            onChangeSpacing={newValue =>
-                                saveTitleStyles({ titleLetter: newValue })
-                            }
-                            onChangeUpper={check => saveTitleStyles({ titleUpper: check })}
-                            onChangeLine={newValue => saveTitleStyles({ titleLine: newValue })}
-                            onChangeFamily={(fontFamily) => saveTitleStyles({ titleFontFamily: fontFamily })}
-                        />
-                        {style === 'style2' &&
-                            <AdvancedPopColorControl
-                                label={__("Background Color", 'premium-block-for-gutenberg')}
-                                colorValue={titleStyles[0].BGColor}
-                                colorDefault={''}
-                                onColorChange={newValue =>
-                                    saveTitleStyles({
-                                        BGColor: newValue
-                                    })
-                                }
-                            />
-                        }
-                        {style === 'style3' &&
-                            <AdvancedPopColorControl
-                                label={__("Background Color", 'premium-block-for-gutenberg')}
-                                colorValue={titleStyles[0].BGColor}
-                                colorDefault={''}
-                                onColorChange={newValue =>
-                                    saveTitleStyles({
-                                        BGColor: newValue
-                                    })
-                                }
-                            />
-                        }
-                        {style === 'style5' &&
-                            <AdvancedPopColorControl
-                                label={__("Line Color", 'premium-block-for-gutenberg')}
-                                colorValue={titleStyles[0].lineColor}
-                                colorDefault={''}
-                                onColorChange={newValue =>
-                                    saveTitleStyles({
-                                        lineColor: newValue
-                                    })
-                                }
-                            />
-                        }
-                        {style === 'style6' &&
-                            <AdvancedPopColorControl
-                                label={__("Line Color", 'premium-block-for-gutenberg')}
-                                colorValue={titleStyles[0].lineColor}
-                                colorDefault={''}
-                                onColorChange={newValue =>
-                                    saveTitleStyles({
-                                        lineColor: newValue
-                                    })
-                                }
-                            />
-                        }
-                        {style === 'style6' &&
-                            <AdvancedPopColorControl
-                                label={__("Triangle Color", 'premium-block-for-gutenberg')}
-                                colorValue={titleStyles[0].triangleColor}
-                                colorDefault={''}
-                                onColorChange={newValue =>
-                                    saveTitleStyles({
-                                        triangleColor: newValue
-                                    })
-                                }
-                            />
-                        }
-                        {style === 'style7' &&
-                            <AdvancedPopColorControl
-                                label={__("Stripe Color", 'premium-block-for-gutenberg')}
-                                colorValue={titleStyles[0].stripeColor}
-                                colorDefault={''}
-                                onColorChange={newValue =>
-                                    saveTitleStyles({
-                                        stripeColor: newValue
-                                    })
-                                }
-                            />
-                        }
-                        {style != 'style3' && style !== "style7" && style !== "style8" && style !== "style9" &&
-                            <PremiumBorder
-                                borderType={titleStyles[0].titleborderType}
-                                borderWidth={titleBorderWidth}
-                                top={titleBorderTop}
-                                right={titleBorderRight}
-                                bottom={titleBorderBottom}
-                                left={titleBorderLeft}
-                                borderColor={titleStyles[0].titleborderColor}
-                                borderRadius={titleStyles[0].titleborderRadius}
-                                onChangeType={newType => saveTitleStyles({ titleborderType: newType })}
-                                onChangeWidth={({ top, right, bottom, left }) =>
-                                    setAttributes({
-                                        titleBorderUpdated: true,
-                                        titleBorderTop: top,
-                                        titleBorderRight: right,
-                                        titleBorderBottom: bottom,
-                                        titleBorderLeft: left,
-                                    })
-                                }
-                                onChangeColor={colorValue =>
-                                    saveTitleStyles({ titleborderColor: colorValue })
-                                }
-                                onChangeRadius={newrRadius =>
-                                    saveTitleStyles({ titleborderRadius: newrRadius })
-                                }
-                            />
-                        }
-                        <PremiumShadow
-                            label={__("Shadow", 'premium-blocks-for-gutenberg')}
-                            color={titleStyles[0].titleShadowColor}
-                            blur={titleStyles[0].titleShadowBlur}
-                            horizontal={titleStyles[0].titleShadowHorizontal}
-                            vertical={titleStyles[0].titleShadowVertical}
-                            onChangeColor={newColor =>
-                                saveTitleStyles({ titleShadowColor: newColor })
-                            }
-                            onChangeBlur={newBlur => saveTitleStyles({ titleShadowBlur: newBlur })}
-                            onChangehHorizontal={newValue =>
-                                saveTitleStyles({ titleShadowHorizontal: newValue })
-                            }
-                            onChangeVertical={newValue =>
-                                saveTitleStyles({ titleShadowVertical: newValue })
-                            }
-                        />
-                        {style === "style9" &&
-                            <ResponsiveSingleRangeControl
-                                label={__("Blur Shadow Value (px)", 'premium-block-for-gutenberg')}
-                                value={titleStyles[0].blurShadow}
-                                onChange={(value) => saveTitleStyles({ blurShadow: value })}
-                                showUnit={false}
-                                defaultValue={120}
-                                min={10}
-                                max={500}
-                                step={10}
-                            />
-                        }
-                        {(style === "style8" || style === "style9") &&
-                            <ResponsiveSingleRangeControl
-                                label={__("Animation Delay", 'premium-block-for-gutenberg')}
-                                value={titleStyles[0].animateDelay}
-                                onChange={(value) => saveTitleStyles({ animateDelay: value })}
-                                showUnit={false}
-                                defaultValue={2}
-                                min={1}
-                                max={30}
-                                step={0.5}
-                            />
-                        }
-                        {style === "style8" &&
-                            <ResponsiveSingleRangeControl
-                                label={__("Animation Duration", 'premium-block-for-gutenberg')}
-                                value={titleStyles[0].animateduration}
-                                onChange={(value) => saveTitleStyles({ animateduration: value })}
-                                showUnit={false}
-                                defaultValue={1}
-                                step={0.5}
-                            />
-                        }
-                        <SpacingComponent value={titleMargin} responsive={true} showUnits={true} label={__("Margin")} onChange={(value) => setAttributes({ titleMargin: value })} />
-                        <SpacingComponent value={titlePadding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ titlePadding: value })} />
-                    </PanelBody>
-                    {
-                        iconValue && <PanelBody
-                            title={__("Icon Style")}
-                            className="premium-panel-body"
-                            initialOpen={false}
-                        >
-                            {iconType === 'icon' &&
+                                <hr />
                                 <AdvancedPopColorControl
                                     label={__("Color", 'premium-block-for-gutenberg')}
-                                    colorValue={iconStyles[0].iconColor}
+                                    colorValue={titleStyles[0].titleColor}
                                     colorDefault={''}
                                     onColorChange={newValue =>
-                                        saveIconStyles({
-                                            iconColor: newValue
+                                        saveTitleStyles({
+                                            titleColor: newValue
                                         })
                                     }
                                 />
-                            }
-                            <ResponsiveRangeControl
-                                label={__("Size", 'premium-block-for-gutenberg')}
-                                value={iconStyles[0].iconSize}
-                                tabletValue={iconStyles[0].iconSizeTablet}
-                                mobileValue={iconStyles[0].iconSizeMobile}
-                                onChange={(value) => saveIconStyles({ iconSize: value })}
-                                onChangeTablet={(value) => saveIconStyles({ iconSizeTablet: value })}
-                                onChangeMobile={(value) => saveIconStyles({ iconSizeMobile: value })}
-                                onChangeUnit={(key) =>
-                                    saveIconStyles({ iconSizeType: key })
-                                }
-                                unit={iconStyles[0].iconSizeType}
-                                showUnit={true}
-                                defaultValue={20}
-                                min={1}
-                                max={100}
-                            />
-                            <PremiumBackgroundControl
-                                setAttributes={setAttributes}
-                                saveContainerStyle={saveIconStyles}
-                                backgroundType={backgroundType}
-                                backgroundColor={iconStyles[0].containerBack}
-                                backgroundImageID={iconStyles[0].backgroundImageID}
-                                backgroundImageURL={iconStyles[0].backgroundImageURL}
-                                backgroundPosition={iconStyles[0].backgroundPosition}
-                                backgroundRepeat={iconStyles[0].backgroundRepeat}
-                                backgroundSize={iconStyles[0].backgroundSize}
-                                fixed={iconStyles[0].fixed}
-                                gradientLocationOne={iconStyles[0].gradientLocationOne}
-                                gradientColorTwo={iconStyles[0].gradientColorTwo}
-                                gradientLocationTwo={iconStyles[0].gradientLocationTwo}
-                                gradientAngle={iconStyles[0].gradientAngle}
-                                gradientPosition={iconStyles[0].gradientPosition}
-                                gradientType={iconStyles[0].gradientType}
-                            />
-                            <PremiumBorder
-                                borderType={iconStyles[0].iconborderType}
-                                borderWidth={iconBorderWidth}
-                                top={iconBorderTop}
-                                right={iconBorderRight}
-                                bottom={iconBorderBottom}
-                                left={iconBorderLeft}
-                                borderColor={iconStyles[0].iconborderColor}
-                                borderRadius={iconStyles[0].iconborderRadius}
-                                onChangeType={newType => saveIconStyles({ iconborderType: newType })}
-                                onChangeWidth={({ top, right, bottom, left }) =>
-                                    setAttributes({
-                                        iconBorderUpdated: true,
-                                        iconBorderTop: top,
-                                        iconBorderRight: right,
-                                        iconBorderBottom: bottom,
-                                        iconBorderLeft: left,
-                                    })
-                                }
-                                onChangeColor={colorValue =>
-                                    saveIconStyles({ iconborderColor: colorValue })
-                                }
-                                onChangeRadius={newrRadius =>
-                                    saveIconStyles({ iconborderRadius: newrRadius })
-                                }
-                            />
-                            <SpacingComponent value={iconMargin} responsive={true} showUnits={true} label={__("Margin")} onChange={(value) => setAttributes({ iconMargin: value })} />
-                            <SpacingComponent value={iconPadding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ iconPadding: value })} />
-                            {iconType === 'icon' &&
-                                <PremiumShadow
-                                    label={__("Icon Shadow", 'premium-blocks-for-gutenberg')}
-                                    color={iconStyles[0].iconshadowColor}
-                                    blur={iconStyles[0].iconshadowBlur}
-                                    horizontal={iconStyles[0].iconshadowHorizontal}
-                                    vertical={iconStyles[0].iconshadowVertical}
-                                    onChangeColor={newColor =>
-                                        saveIconStyles({ iconshadowColor: newColor })
-                                    }
-                                    onChangeBlur={newBlur => saveIconStyles({ iconshadowBlur: newBlur })}
-                                    onChangehHorizontal={newValue =>
-                                        saveIconStyles({ iconshadowHorizontal: newValue })
-                                    }
-                                    onChangeVertical={newValue =>
-                                        saveIconStyles({ iconshadowVertical: newValue })
-                                    }
-                                />
-                            }
-                        </PanelBody>
-                    }
-                    {
-                        backgroundText &&
-                        <PanelBody
-                            title={__("Background Text")}
-                            className="premium-panel-body"
-                            initialOpen={false}
-                        >
-                            <AdvancedPopColorControl
-                                label={__("Color", 'premium-block-for-gutenberg')}
-                                colorValue={textStyles[0].textBackColor}
-                                colorDefault={''}
-                                onColorChange={newValue =>
-                                    saveTextStyles({
-                                        textBackColor: newValue
-                                    })
-                                }
-                            />
-                            <PremiumTypo
-                                components={["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"]}
-                                setAttributes={saveTextStyles}
-                                fontSizeType={{ value: textStyles[0].textBackfontSizeType, label: __("textBackfontSizeType") }}
-                                fontSize={textStyles[0].textBackfontSize}
-                                fontSizeMobile={textStyles[0].textBackfontSizeMobile}
-                                fontSizeTablet={textStyles[0].textBackfontSizeTablet}
-                                onChangeSize={newSize => saveTextStyles({ textBackfontSize: newSize })}
-                                onChangeTabletSize={newSize => saveTextStyles({ textBackfontSizeTablet: newSize })}
-                                onChangeMobileSize={newSize => saveTextStyles({ textBackfontSizeMobile: newSize })}
-                                weight={textStyles[0].textBackWeight}
-                                style={textStyles[0].textBackStyle}
-                                spacing={textStyles[0].textBackLetter}
-                                upper={textStyles[0].textBackUpper}
-                                line={textStyles[0].textBackLine}
-                                fontFamily={textStyles[0].textBackFontFamily}
-                                onChangeWeight={newWeight =>
-                                    saveTextStyles({ textBackWeight: newWeight || 500 })
-                                }
-                                onChangeStyle={newStyle =>
-                                    saveTextStyles({ textBackStyle: newStyle })
-                                }
-                                onChangeSpacing={newValue =>
-                                    saveTextStyles({ textBackLetter: newValue })
-                                }
-                                onChangeUpper={check => saveTextStyles({ textBackUpper: check })}
-                                onChangeLine={newValue => saveTextStyles({ textBackLine: newValue })}
-                                onChangeFamily={(fontFamily) => saveTextStyles({ textBackFontFamily: fontFamily })}
-                            />
-                            <PremiumShadow
-                                label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
-                                color={textStyles[0].textBackshadowColor}
-                                blur={textStyles[0].textBackshadowBlur}
-                                horizontal={textStyles[0].textBackshadowHorizontal}
-                                vertical={textStyles[0].textBackshadowVertical}
-                                onChangeColor={newColor =>
-                                    saveTextStyles({ textBackshadowColor: newColor })
-                                }
-                                onChangeBlur={newBlur => saveTextStyles({ textBackshadowBlur: newBlur })}
-                                onChangehHorizontal={newValue =>
-                                    saveTextStyles({ textBackshadowHorizontal: newValue })
-                                }
-                                onChangeVertical={newValue =>
-                                    saveTextStyles({ textBackshadowVertical: newValue })
-                                }
-                            />
-                            <ToggleControl
-                                label={__('Stroke')}
-                                checked={strokeStyles[0].stroke}
-                                onChange={(newValue) => saveStrokeStyles({ stroke: newValue })}
-                            />
-                            {
-                                strokeStyles[0].stroke && <Fragment>
+                                {style === "style8" &&
                                     <AdvancedPopColorControl
-                                        label={__("Stroke Color", 'premium-block-for-gutenberg')}
-                                        colorValue={strokeStyles[0].strokeColor}
+                                        label={__("Shiny Color", 'premium-block-for-gutenberg')}
+                                        colorValue={titleStyles[0].shinyColor}
                                         colorDefault={''}
                                         onColorChange={newValue =>
-                                            saveStrokeStyles({
-                                                strokeColor: newValue
+                                            saveTitleStyles({
+                                                shinyColor: newValue
                                             })
                                         }
                                     />
-                                    <ResponsiveRangeControl
-                                        label={__("Stroke Full Width", 'premium-block-for-gutenberg')}
-                                        value={strokeStyles[0].strokeFull}
-                                        tabletValue={strokeStyles[0].strokeFullTablet}
-                                        mobileValue={strokeStyles[0].strokeFullMobile}
-                                        onChange={(value) => saveStrokeStyles({ strokeFull: value })}
-                                        onChangeTablet={(value) => saveStrokeStyles({ strokeFullTablet: value })}
-                                        onChangeMobile={(value) => saveStrokeStyles({ strokeFullMobile: value })}
+                                }
+                                {style === "style9" &&
+                                    <AdvancedPopColorControl
+                                        label={__("Blur Color", 'premium-block-for-gutenberg')}
+                                        colorValue={titleStyles[0].blurColor}
+                                        colorDefault={''}
+                                        onColorChange={newValue =>
+                                            saveTitleStyles({
+                                                blurColor: newValue
+                                            })
+                                        }
+                                    />
+                                }
+                                {style === 'style2' &&
+                                    <AdvancedPopColorControl
+                                        label={__("Background Color", 'premium-block-for-gutenberg')}
+                                        colorValue={titleStyles[0].BGColor}
+                                        colorDefault={''}
+                                        onColorChange={newValue =>
+                                            saveTitleStyles({
+                                                BGColor: newValue
+                                            })
+                                        }
+                                    />
+                                }
+                                {style === 'style3' &&
+                                    <AdvancedPopColorControl
+                                        label={__("Background Color", 'premium-block-for-gutenberg')}
+                                        colorValue={titleStyles[0].BGColor}
+                                        colorDefault={''}
+                                        onColorChange={newValue =>
+                                            saveTitleStyles({
+                                                BGColor: newValue
+                                            })
+                                        }
+                                    />
+                                }
+                                {style === 'style5' &&
+                                    <AdvancedPopColorControl
+                                        label={__("Line Color", 'premium-block-for-gutenberg')}
+                                        colorValue={titleStyles[0].lineColor}
+                                        colorDefault={''}
+                                        onColorChange={newValue =>
+                                            saveTitleStyles({
+                                                lineColor: newValue
+                                            })
+                                        }
+                                    />
+                                }
+                                {style === 'style6' &&
+                                    <AdvancedPopColorControl
+                                        label={__("Line Color", 'premium-block-for-gutenberg')}
+                                        colorValue={titleStyles[0].lineColor}
+                                        colorDefault={''}
+                                        onColorChange={newValue =>
+                                            saveTitleStyles({
+                                                lineColor: newValue
+                                            })
+                                        }
+                                    />
+                                }
+                                {style === 'style6' &&
+                                    <AdvancedPopColorControl
+                                        label={__("Triangle Color", 'premium-block-for-gutenberg')}
+                                        colorValue={titleStyles[0].triangleColor}
+                                        colorDefault={''}
+                                        onColorChange={newValue =>
+                                            saveTitleStyles({
+                                                triangleColor: newValue
+                                            })
+                                        }
+                                    />
+                                }
+                                {style === 'style7' &&
+                                    <AdvancedPopColorControl
+                                        label={__("Stripe Color", 'premium-block-for-gutenberg')}
+                                        colorValue={titleStyles[0].stripeColor}
+                                        colorDefault={''}
+                                        onColorChange={newValue =>
+                                            saveTitleStyles({
+                                                stripeColor: newValue
+                                            })
+                                        }
+                                    />
+                                }
+                                <hr />
+                                <PremiumShadow
+                                    label={__("Shadow", 'premium-blocks-for-gutenberg')}
+                                    boxShadow={false}
+                                    value={titleShadow}
+                                    onChange={(value) => setAttributes({ titleShadow: value })}
+                                />
+                                {style === "style9" &&
+                                    <ResponsiveSingleRangeControl
+                                        label={__("Blur Shadow Value (px)", 'premium-block-for-gutenberg')}
+                                        value={titleStyles[0].blurShadow}
+                                        onChange={(value) => saveTitleStyles({ blurShadow: value })}
                                         showUnit={false}
-                                        defaultValue={20}
+                                        defaultValue={120}
+                                        min={10}
+                                        max={500}
+                                        step={10}
+                                    />
+                                }
+                                <hr />
+                                {style != 'style3' && style !== "style7" && style !== "style8" && style !== "style9" &&
+                                    <Fragment>
+                                        <PremiumBorder
+                                            label={__("Border")}
+                                            value={titleBorder}
+                                            borderType={titleBorder.borderType}
+                                            borderColor={titleBorder.borderColor}
+                                            borderWidth={titleBorder.borderWidth}
+                                            borderRadius={titleBorder.borderRadius}
+                                            onChange={(value) => setAttributes({ titleBorder: value })}
+                                        />
+                                        <hr />
+                                    </Fragment>
+                                }
+                                <SpacingComponent value={titleMargin} responsive={true} showUnits={true} label={__("Margin")} onChange={(value) => setAttributes({ titleMargin: value })} />
+                                <SpacingComponent value={titlePadding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ titlePadding: value })} />
+                            </PanelBody>
+                            {
+                                iconValue && <PanelBody
+                                    title={__("Icon")}
+                                    className="premium-panel-body"
+                                    initialOpen={false}
+                                >
+                                    <ResponsiveRangeControl
+                                        label={__("Size", 'premium-blocks-for-gutenberg')}
+                                        value={iconSize}
+                                        onChange={newValue => setAttributes({ iconSize: newValue })}
+                                        units={['px', 'em', '%']}
+                                        showUnit={true}
                                         min={0}
-                                        max={100}
+                                        max={360}
                                         step={1}
                                     />
-                                </Fragment>
+                                    <hr />
+                                    {iconType === 'icon' &&
+                                        <AdvancedPopColorControl
+                                            label={__("Color", 'premium-block-for-gutenberg')}
+                                            colorValue={iconStyles[0].iconColor}
+                                            colorDefault={''}
+                                            onColorChange={newValue =>
+                                                saveIconStyles({
+                                                    iconColor: newValue
+                                                })
+                                            }
+                                        />
+                                    }
+                                    <PremiumBackgroundControl
+                                        value={iconBackground}
+                                        onChange={(value) => setAttributes({ iconBackground: value })}
+                                    />
+                                    <hr />
+                                    {iconType === 'icon' &&
+                                        <Fragment>
+                                            <PremiumShadow
+                                                label={__("Icon Shadow", 'premium-blocks-for-gutenberg')}
+                                                boxShadow={false}
+                                                value={iconshadow}
+                                                onChange={(value) => setAttributes({ iconshadow: value })}
+                                            />
+                                            <hr />
+                                        </Fragment>
+                                    }
+                                    <PremiumBorder
+                                        label={__("Border")}
+                                        value={iconBorder}
+                                        borderType={iconBorder.borderType}
+                                        borderColor={iconBorder.borderColor}
+                                        borderWidth={iconBorder.borderWidth}
+                                        borderRadius={iconBorder.borderRadius}
+                                        onChange={(value) => setAttributes({ iconBorder: value })}
+                                    />
+                                    <hr />
+                                    <SpacingComponent value={iconMargin} responsive={true} showUnits={true} label={__("Margin")} onChange={(value) => setAttributes({ iconMargin: value })} />
+                                    <SpacingComponent value={iconPadding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ iconPadding: value })} />
+                                </PanelBody>
                             }
-                            <hr />
-
-                            <SelectControl
-                                label={__("Blend Mode ")}
-                                value={blend}
-                                onChange={newSelect => setAttributes({ blend: newSelect })}
-                                options={BLEND}
+                        </InspectorTab>
+                        <InspectorTab key={'style'}>
+                            {
+                                backgroundText &&
+                                <PanelBody
+                                    title={__("Background Text")}
+                                    className="premium-panel-body"
+                                    initialOpen={false}
+                                >
+                                    <PremiumTypo
+                                        components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
+                                        value={textTypography}
+                                        onChange={newValue => setAttributes({ titleTypography: newValue })}
+                                    />
+                                    <hr />
+                                    <AdvancedPopColorControl
+                                        label={__("Color", 'premium-block-for-gutenberg')}
+                                        colorValue={textStyles[0].textBackColor}
+                                        colorDefault={''}
+                                        onColorChange={newValue =>
+                                            saveTextStyles({
+                                                textBackColor: newValue
+                                            })
+                                        }
+                                    />
+                                    <hr />
+                                    <PremiumShadow
+                                        label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
+                                        boxShadow={false}
+                                        value={textBackshadow}
+                                        onChange={(value) => setAttributes({ textBackshadow: value })}
+                                    />
+                                    <ToggleControl
+                                        label={__('Stroke')}
+                                        checked={strokeStyles[0].stroke}
+                                        onChange={(newValue) => saveStrokeStyles({ stroke: newValue })}
+                                    />
+                                    <hr />
+                                    {
+                                        strokeStyles[0].stroke && <Fragment>
+                                            <AdvancedPopColorControl
+                                                label={__("Stroke Color", 'premium-block-for-gutenberg')}
+                                                colorValue={strokeStyles[0].strokeColor}
+                                                colorDefault={''}
+                                                onColorChange={newValue =>
+                                                    saveStrokeStyles({
+                                                        strokeColor: newValue
+                                                    })
+                                                }
+                                            />
+                                            <ResponsiveRangeControl
+                                                label={__("Stroke Full Width", 'premium-blocks-for-gutenberg')}
+                                                value={strokeFull}
+                                                onChange={newValue => setAttributes({ iconSize: newValue })}
+                                                showUnit={false}
+                                                min={0}
+                                                max={100}
+                                                step={1}
+                                            />
+                                        </Fragment>
+                                    }
+                                    <hr />
+                                    <SelectControl
+                                        label={__("Blend Mode")}
+                                        value={blend}
+                                        onChange={newSelect => setAttributes({ blend: newSelect })}
+                                        options={BLEND}
+                                    />
+                                    <hr />
+                                    <ResponsiveSingleRangeControl
+                                        label={__("z-index", 'premium-block-for-gutenberg')}
+                                        value={zIndex}
+                                        onChange={(value) => setAttributes({ zIndex: value })}
+                                        showUnit={false}
+                                        defaultValue={0}
+                                        min={0}
+                                        max={100}
+                                    />
+                                </PanelBody>
+                            }
+                        </InspectorTab>
+                        <InspectorTab key={'advance'}>
+                            <PremiumResponsiveTabs
+                                Desktop={hideDesktop}
+                                Tablet={hideTablet}
+                                Mobile={hideMobile}
+                                onChangeDesktop={(value) => setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" })}
+                                onChangeTablet={(value) => setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" })}
+                                onChangeMobile={(value) => setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" })}
                             />
-                            <ResponsiveSingleRangeControl
-                                label={__("z-index", 'premium-block-for-gutenberg')}
-                                value={zIndex}
-                                onChange={(value) => setAttributes({ zIndex: value })}
-                                showUnit={false}
-                                defaultValue={0}
-                                min={0}
-                                max={100}
-                            />
-                        </PanelBody>
-                    }
-                    <PremiumResponsiveTabs
-                        Desktop={hideDesktop}
-                        Tablet={hideTablet}
-                        Mobile={hideMobile}
-                        onChangeDesktop={(value) => setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" })}
-                        onChangeTablet={(value) => setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" })}
-                        onChangeMobile={(value) => setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" })}
-                    />
-                </InspectorControls >
+                        </InspectorTab>
+                    </InspectorTabs>
+                </InspectorControls>
             ),
-            renderCss,
+            <style
+                dangerouslySetInnerHTML={{
+                    __html: loadStyles()
+                }}
+            />,
             <div
-                id={`premium-title-${block_id}`}
-                className={`premium-block-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`} style={{
-                    textAlign: align,
+                className={`${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`} style={{
+                    textAlign: align?.[this.props.deviceType],
                 }} >
-
                 <div className={`premium-title  ${backgroundText ? 'premium-title-bg-text' : ""}`} style={{
-                    textAlign: align,
+                    textAlign: align?.[this.props.deviceType],
                 }} data-backgroundText={BackText}>
-                    <div className={`premium-title-container ${style} ${style}-${align}`} data-blur-delay={titleStyles[0].animateDelay} data-shiny-dur={titleStyles[0].animateduration}>
+                    <div className={`premium-title-container ${style}`} data-blur-delay={titleStyles[0].animateDelay} data-shiny-dur={titleStyles[0].animateduration}>
                         {React.createElement(titleTag,
                             {
-                                className: `premium-title-header premium-title-${style}__wrap ${align} ${iconValue ? iconPosition : ""} ${iconPosition == 'top' ? `premium-title-${iconAlign}` : ""}`,
+                                className: `premium-title-header premium-title-${style}__wrap ${iconValue ? iconPosition : ""} ${iconPosition == 'top' ? `premium-title-${iconAlign?.['Desktop']} premium-title-tablet-${iconAlign?.['Tablet']} premium-title-mobile-${iconAlign?.['Mobile']}` : ""}`,
                                 'data-blur-delay': `${titleStyles[0].animateDelay}`,
                                 'data-shiny-dur': `${titleStyles[0].animateduration}`,
                                 style: {
                                     color: titleStyles[0].titleColor,
-                                    fontSize: TitleSize + titleStyles[0].titlefontSizeType,
-                                    fontWeight: titleStyles[0].titleWeight,
-                                    letterSpacing: titleStyles[0].titleLetter + "px",
-                                    lineHeight: (titleStyles[0].titleLine ? titleStyles[0].titleLine : "") + "px",
-                                    fontStyle: titleStyles[0].titleStyle,
-                                    textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
-                                    fontFamily: titleStyles[0].titleFontFamily,
-                                    textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`,
+                                    textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`,
                                     marginTop: TitleMarginTop && `${TitleMarginTop}${titleMargin.unit}`,
                                     marginBottom: TitleMarginBottom && `${TitleMarginBottom}${titleMargin.unit}`,
                                     marginLeft: TitleMarginLeft && `${TitleMarginLeft}${titleMargin.unit}`,
@@ -1374,6 +1226,7 @@ class edit extends Component {
                                     paddingBottom: TitlePaddingBottom && `${TitlePaddingBottom}${titlePadding.unit}`,
                                     paddingLeft: TitlePaddingLeft && `${TitlePaddingLeft}${titlePadding.unit}`,
                                     paddingRight: TitlePaddingRight && `${TitlePaddingRight}${titlePadding.unit}`,
+                                    ...typographyCss(titleTypography, this.props.deviceType)
                                 }
                             },
                             [<Fragment>
@@ -1381,13 +1234,13 @@ class edit extends Component {
                                     <Fragment>
                                         {
                                             iconPosition != 'top' && iconValue &&
-                                            <span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign}`}>
+                                            <span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign?.['Desktop']} premium-stripe-tablet-${stripeAlign?.['Tablet']} premium-stripe-mobile-${stripeAlign?.['Mobile']}`}>
                                                 <span className={`premium-title-style7-stripe-span`}></span>
                                             </span>
                                         }
                                         {
                                             !iconValue &&
-                                            <span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign}`}>
+                                            <span className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign?.['Desktop']} premium-stripe-tablet-${stripeAlign?.['Tablet']} premium-stripe-mobile-${stripeAlign?.['Mobile']}`}>
                                                 <span className={`premium-title-style7-stripe-span`}></span>
                                             </span>
                                         }
@@ -1423,6 +1276,9 @@ class edit extends Component {
                                                 tagName='span'
                                                 className={`premium-title-text-title`}
                                                 value={title}
+                                                onChange={newText =>
+                                                    setAttributes({ title: newText })
+                                                }
                                                 style={{
                                                     minHeight: '15px'
                                                 }}
@@ -1456,14 +1312,14 @@ class edit extends Component {
                                             className={`premium-letters-container`}
                                             style={{
                                                 color: titleStyles[0].titleColor,
-                                                marginTop: TitleMarginTop + titleStyles[0].titleMarginType,
-                                                marginBottom: TitleMarginBottom + titleStyles[0].titleMarginType,
-                                                marginLeft: TitleMarginLeft + titleStyles[0].titleMarginType,
-                                                marginRight: TitleMarginRight + titleStyles[0].titleMarginType,
-                                                paddingTop: TitlePaddingTop + titleStyles[0].titlePaddingType,
-                                                paddingBottom: TitlePaddingBottom + titleStyles[0].titlePaddingType,
-                                                paddingLeft: TitlePaddingLeft + titleStyles[0].titlePaddingType,
-                                                paddingRight: TitlePaddingRight + titleStyles[0].titlePaddingType,
+                                                marginTop: TitleMarginTop + titleMargin.unit,
+                                                marginBottom: TitleMarginBottom + titleMargin.unit,
+                                                marginLeft: TitleMarginLeft + titleMargin.unit,
+                                                marginRight: TitleMarginRight + titleMargin.unit,
+                                                paddingTop: TitlePaddingTop + titlePadding.unit,
+                                                paddingBottom: TitlePaddingBottom + titlePadding.unit,
+                                                paddingLeft: TitlePaddingLeft + titlePadding.unit,
+                                                paddingRight: TitlePaddingRight + titlePadding.unit,
                                             }}
                                         >
                                             {styleContainer}

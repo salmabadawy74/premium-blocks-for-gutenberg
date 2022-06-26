@@ -1,5 +1,5 @@
 import { dualHeading } from "../../../assets/js/settings";
-import PbgIcon from "../icons";
+import PBG_Block_Icons from '../../../blocks-config/block-icons'
 import edit from "./edit";
 import save from "./save";
 import deprecatedContent from "./deprecated";
@@ -13,7 +13,8 @@ const { registerBlockType } = wp.blocks;
 
 registerBlockType("premium/dheading-block", {
     title: __("Dual Heading"),
-    icon: <PbgIcon icon="dual-heading" />,
+    description: __('Use Premium Dual Heading Block to create one heading with two different styles.'),
+    icon: PBG_Block_Icons.dualHeading,
     category: "premium-blocks",
     attributes: attributes,
     supports: {
