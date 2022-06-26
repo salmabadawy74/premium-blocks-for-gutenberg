@@ -109,7 +109,7 @@ const attributes = {
             'lineHeight': '',
             'textDecoration': '',
             'fontSize': {
-                'Desktop': '',
+                'Desktop': '20',
                 "Tablet": '',
                 "Mobile": '',
                 "unit": 'px'

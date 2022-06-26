@@ -806,14 +806,14 @@ const deprecatedContent = [
                     'fontStyle': attributes?.secondStyles?.[0]?.secondStyle || '',
                     'textTransform': attributes?.secondStyles?.[0]?.secondUpper || '',
                     'letterSpacing': attributes?.secondStyles?.[0]?.secondLetter || '',
-                    'fontFamily': attributes?.secondStyles?.[0]?.secondFamily || '',
+                    'fontFamily': attributes?.secondStyles?.[0]?.secondFamily || 'px',
                     'lineHeight': '',
                     'textDecoration': '',
                     'fontSize': {
-                        'Desktop': attributes?.secondStyles?.[0]?.secondSize || '',
+                        'Desktop': attributes?.secondStyles?.[0]?.secondSize || '20',
                         "Tablet": attributes?.secondStyles?.[0]?.secondSizeTablet || '',
                         "Mobile": attributes?.secondStyles?.[0]?.secondSizeMobile || '',
-                        "unit": attributes?.secondStyles?.[0]?.secondSizeUnit || ''
+                        "unit": attributes?.secondStyles?.[0]?.secondSizeUnit || 'px'
                     }
                 },
                 background: {
