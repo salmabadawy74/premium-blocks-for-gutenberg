@@ -68972,7 +68972,7 @@ registerBlockType("premium/row", {
     category: "premium-blocks",
     attributes: _attributes2.default,
     supports: {
-        align: ["wide", "center", "full"],
+
         html: false
 
     },
@@ -69003,7 +69003,7 @@ var attributes = (_attributes = {
     },
     align: {
         type: "string",
-        default: 'alignwide'
+        default: 'alignfull'
     },
     columns: {
         type: 'number',
@@ -69469,6 +69469,10 @@ var _premiumFilters = __webpack_require__(24);
 
 var _premiumFilters2 = _interopRequireDefault(_premiumFilters);
 
+var _radioControl = __webpack_require__(9);
+
+var _radioControl2 = _interopRequireDefault(_radioControl);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var __ = wp.i18n.__;
@@ -69520,6 +69524,23 @@ var edit = function edit(props) {
         if (descendants.length !== props.attributes.blockDescendants.length) {
             props.setAttributes({ blockDescendants: descendants });
         }
+        var iframeEl = document.querySelector('iframe[name=\'editor-canvas\']');
+        var hasChildren = 0 !== select('core/block-editor').getBlocks(props.clientId).length;
+
+        var element = void 0;
+        if (iframeEl) {
+            element = iframeEl.contentDocument.getElementById('block-' + props.clientId);
+        } else {
+            element = document.getElementById('block-' + props.clientId);
+        }
+        if (element) {
+            if (props.attributes.isBlockRootParent || isBlockRootParent) {
+                element.classList.remove('alignfull');
+                element.classList.remove('alignwide');
+                element.classList.remove('default');
+                element.classList.add(props.attributes.align);
+            }
+        }
     }, [props]);
 
     var removeRowBlock = function removeRowBlock() {
@@ -69530,7 +69551,7 @@ var edit = function edit(props) {
     };
     var _props$attributes = props.attributes,
         block_id = _props$attributes.block_id,
-        className = _props$attributes.className,
+        align = _props$attributes.align,
         variationSelected = _props$attributes.variationSelected,
         padding = _props$attributes.padding,
         margin = _props$attributes.margin,
@@ -69773,14 +69794,31 @@ var edit = function edit(props) {
                             initialOpen: true,
                             title: __('General', "premium-blocks-for-gutenberg")
                         },
-                        isBlockRootParent && React.createElement(SelectControl, {
-                            label: __("Content Width", 'premium-blocks-for-gutenberg'),
-                            options: [{ value: "boxed", label: __("Boxed", 'premium-blocks-for-gutenberg') }, { value: "full", label: __("Full Width", 'premium-blocks-for-gutenberg') }],
-                            value: innerWidthType,
-                            onChange: function onChange(newValue) {
-                                return setAttributes({ innerWidthType: newValue });
-                            }
-                        }),
+                        isBlockRootParent && React.createElement(
+                            Fragment,
+                            null,
+                            React.createElement(_radioControl2.default, {
+                                choices: [{
+                                    value: 'alignfull', label: __('Full Width', 'premium-blocks-for-gutenberg')
+                                }, {
+                                    value: 'alignwide', label: __('boxed', 'premium-blocks-for-gutenberg')
+                                }],
+                                value: align,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({ align: newValue });
+                                },
+                                label: __("Container Width", 'premium-blocks-for-gutenberg'),
+                                showIcons: false
+                            }),
+                            React.createElement(SelectControl, {
+                                label: __("Content Width", 'premium-blocks-for-gutenberg'),
+                                options: [{ value: "boxed", label: __("Boxed", 'premium-blocks-for-gutenberg') }, { value: "full", label: __("Full Width", 'premium-blocks-for-gutenberg') }],
+                                value: innerWidthType,
+                                onChange: function onChange(newValue) {
+                                    return setAttributes({ innerWidthType: newValue });
+                                }
+                            })
+                        ),
                         "boxed" === innerWidthType && isBlockRootParent && React.createElement(_singleRangeControl2.default, {
                             label: __("Max Width", 'premium-blocks-for-gutenberg'),
                             value: innerWidth,
@@ -81967,8 +82005,12 @@ var Save = function Save(props) {
         styles['.wp-block-premium-container.premium-block-' + block_id + ' .premium-bottom-shape svg'] = {
             'fill': '' + shapeBottom['color']
         };
+        styles['.wp-block-premium-container.premium-is-root-container.premium-block-' + block_id + ' .premium-container-inner-blocks-wrap'] = {
+            'display': 'flex'
+        };
+
         if ('boxed' === innerWidthType) {
-            styles['.wp-block-premium-container.premium-is-root-container.premium-block-' + block_id] = {
+            styles['.wp-block-premium-container.premium-is-root-container.premium-block-' + block_id + ' .premium-container-inner-blocks-wrap'] = {
                 '--inner-content-custom-width': 'min(' + containerFullWidth + ', ' + innerWidth + 'px)',
                 'max-width': 'var(--inner-content-custom-width)',
                 'margin-left': 'auto',
@@ -82034,7 +82076,7 @@ var Save = function Save(props) {
         React.createElement(
             CustomTag,
             _extends({
-                className: (0, _classnames2.default)('wp-block-premium-container', 'premium-block-' + block_id + ' ', 'premium-blocks-' + block_id + ' ', isBlockRootParent ? 'premium-is-root-container' : ''),
+                className: (0, _classnames2.default)('wp-block-premium-container', 'premium-block-' + block_id + ' ', 'premium-blocks-' + block_id + ' ', isBlockRootParent ? align + ' premium-is-root-container' : ''),
                 key: block_id,
                 style: _extends({}, (0, _HelperFunction.gradientBackground)(backgroundOptions), {
                     boxShadow: (boxShadow.horizontal || 0) + ' px ' + (boxShadow.vertical || 0) + ' px ' + (boxShadow.blur || 0) + ' px ' + boxShadow.color + ' ' + boxShadow.position + ' ',
@@ -82050,7 +82092,11 @@ var Save = function Save(props) {
                     opacity: (backgroundOverlay ? overlayOpacity / 100 : 1) + ' ',
                     filter: 'brightness(' + overlayFilter['bright'] + ' % ) contrast(' + overlayFilter['contrast'] + ' % ) saturate(' + overlayFilter['saturation'] + ' % ) blur(' + overlayFilter['blur'] + 'px) hue - rotate(' + overlayFilter['hue'] + 'deg)'
                 }) }),
-            React.createElement(InnerBlocks.Content, null)
+            React.createElement(
+                'div',
+                { className: 'premium-container-inner-blocks-wrap' },
+                React.createElement(InnerBlocks.Content, null)
+            )
         )
     );
 };

@@ -13,7 +13,7 @@ registerBlockType("premium/row", {
     category: "premium-blocks",
     attributes: attributes,
     supports: {
-        align: ["wide", "center", "full"],
+
         html: false,
 
     },

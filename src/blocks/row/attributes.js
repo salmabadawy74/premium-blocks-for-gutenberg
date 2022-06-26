@@ -4,7 +4,7 @@ const attributes = {
     },
     align: {
         type: "string",
-        default: 'alignwide'
+        default: 'alignfull'
     },
     columns: {
         type: 'number',

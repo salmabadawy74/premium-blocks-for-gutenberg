@@ -57,8 +57,12 @@ const Save = (props) => {
         styles[`.wp-block-premium-container.premium-block-${block_id} .premium-bottom-shape svg`] = {
             'fill': `${shapeBottom['color']}`,
         };
+        styles[`.wp-block-premium-container.premium-is-root-container.premium-block-${block_id} .premium-container-inner-blocks-wrap`] = {
+            'display': 'flex'
+        };
+
         if ('boxed' === innerWidthType) {
-            styles[`.wp-block-premium-container.premium-is-root-container.premium-block-${block_id}`] = {
+            styles[`.wp-block-premium-container.premium-is-root-container.premium-block-${block_id} .premium-container-inner-blocks-wrap`] = {
                 '--inner-content-custom-width': `min(${containerFullWidth}, ${innerWidth}px)`,
                 'max-width': 'var(--inner-content-custom-width)',
                 'margin-left': 'auto',
@@ -132,7 +136,7 @@ const Save = (props) => {
                     'wp-block-premium-container',
                     `premium-block-${block_id} `,
                     `premium-blocks-${block_id} `,
-                    isBlockRootParent ? 'premium-is-root-container' : ''
+                    isBlockRootParent ? `${align} premium-is-root-container` : ''
                 )}
                 key={block_id}
                 style={{
@@ -156,10 +160,10 @@ const Save = (props) => {
                     opacity: `${backgroundOverlay ? overlayOpacity / 100 : 1} `,
                     filter: `brightness(${overlayFilter['bright']} % ) contrast(${overlayFilter['contrast']} % ) saturate(${overlayFilter['saturation']} % ) blur(${overlayFilter['blur']}px) hue - rotate(${overlayFilter['hue']}deg)`
                 }}></div>
-
-                <InnerBlocks.Content
-                />
-
+                <div className='premium-container-inner-blocks-wrap'>
+                    <InnerBlocks.Content
+                    />
+                </div>
 
             </CustomTag>
         </Fragment>
