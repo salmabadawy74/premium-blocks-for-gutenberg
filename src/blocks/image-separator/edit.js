@@ -1,11 +1,21 @@
 import classnames from "classnames";
 import iconsList from "../../components/premium-icons-list";
+import InspectorTabs from '../../components/inspectorTabs';
+import InspectorTab from '../../components/inspectorTab';
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
 import AdvancedPopColorControl from "../../components/Color Control/ColorComponent";
 import PremiumFilters from "../../components/premium-filters";
 import PremiumMediaUpload from "../../components/premium-media-upload";
-import RadioComponent from '../../components/radio-control';
+import ResponsiveRadioControl from '../../components/responsive-radio'
+import Icons from '../../components/icons';
+import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
+import PremiumBorder from "../../components/premium-border";
+import SpacingControl from '../../components/premium-responsive-spacing'
+import InsideTabs from '../../components/InsideTabs'
+import InsideTab from '../../components/InsideTab';
+import PremiumShadow from "../../components/PremiumShadow";
+import { borderCss, padddingCss, generateBlockId } from '../../components/HelperFunction'
 
 const { __ } = wp.i18n;
 
@@ -25,34 +35,22 @@ class edit extends Component {
     }
 
     componentDidMount() {
-        // Assigning id in the attribute.
-        this.props.setAttributes({ block_id: this.props.clientId });
-        this.getPreviewSize = this.getPreviewSize.bind(this);
-    }
-
-    getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
-        if (device === "Mobile") {
-            if (undefined !== mobileSize && "" !== mobileSize) {
-                return mobileSize;
-            } else if (undefined !== tabletSize && "" !== tabletSize) {
-                return tabletSize;
-            }
-        } else if (device === "Tablet") {
-            if (undefined !== tabletSize && "" !== tabletSize) {
-                return tabletSize;
-            }
+        const { setAttributes, clientId } = this.props;
+        if (!this.props.attributes.blockId) {
+            setAttributes({ blockId: "premium-image-separator-" + generateBlockId(clientId) });
         }
-        return desktopSize;
+        setAttributes({ classMigrate: true });
     }
 
     render() {
-        const { attributes, setAttributes, isSelected } = this.props;
+        const { isSelected, setAttributes, attributes } = this.props;
 
         const {
+            blockId,
             align,
             className,
             iconType,
-            icon,
+            iconSize,
             imageURL,
             imageID,
             link,
@@ -71,14 +69,18 @@ class edit extends Component {
             linkTarget,
             iconStyles,
             imgHeight,
-            imgHeightTablet,
-            imgHeightMobile,
             imgFit,
             imgMask,
             imgMaskID,
             imgMaskURL,
             maskSize,
             maskPosition,
+            hideDesktop,
+            hideTablet,
+            hideMobile,
+            iconBorder,
+            iconPadding,
+            iconShadow
         } = attributes;
 
         const ICON = [
@@ -102,478 +104,457 @@ class edit extends Component {
             setAttributes({ iconStyles: newUpdate });
         };
 
-        const iconSize = this.getPreviewSize(this.props.deviceType, iconStyles[0].iconSize, iconStyles[0].iconSizeTablet, iconStyles[0].iconSizeMobile);
-
-        const iconBorderRadius = this.getPreviewSize(this.props.deviceType, iconStyles[0].iconBorderRadius, iconStyles[0].iconBorderRadiusTablet, iconStyles[0].iconBorderRadiusMobile);
-
-        const iconPadding = this.getPreviewSize(this.props.deviceType, iconStyles[0].iconPadding, iconStyles[0].iconPaddingTablet, iconStyles[0].iconPaddingMobile);
-
-        const imageHeight = this.getPreviewSize(this.props.deviceType, imgHeight, imgHeightTablet, imgHeightMobile);
-
         const renderCss = (<style>
             {`
-        .premium-block-${this.props.clientId} .premium-image-separator-container:hover img{
-         filter:  brightness( ${brightHover}% ) contrast( ${contrastHover}% ) saturate( ${saturationHover}% ) blur( ${blurHover}px ) hue-rotate( ${hueHover}deg ) !important ;
-        }
-        .premium-block-${this.props.clientId} .premium-image-separator-container i:hover {
-          color: ${iconStyles[0].iconColorHover} !important;
-          background-color: ${iconStyles[0].iconBGColorHover} !important;
-        }
+                .${blockId} .premium-image-separator-container {
+                    text-align: ${align[this.props.deviceType]};
+                }
+                .${blockId} .premium-image-separator-container:hover img{
+                    filter:  brightness( ${brightHover}% ) contrast( ${contrastHover}% ) saturate( ${saturationHover}% ) blur( ${blurHover}px ) hue-rotate( ${hueHover}deg ) !important ;
+                }
+                .${blockId} .premium-image-separator-container i:hover {
+                    color: ${iconStyles[0].iconColorHover} !important;
+                    background-color: ${iconStyles[0].iconBGColorHover} !important;
+                }
             `}
         </style>
         )
 
+        const mainClasses = classnames(className, "premium-image-separator");
+
         return [
             isSelected && (
                 <InspectorControls>
-                    <PanelBody
-                        title={__("Image Settings")}
-                        className="premium-panel-body"
-                        initialOpen={false}
-                    >
-                        <SelectControl
-                            label={__("Separator Type")}
-                            value={iconType}
-                            onChange={(newSelect) =>
-                                setAttributes({ iconType: newSelect })
-                            }
-                            options={ICON}
-                        />
-                        {iconType === "icon" ? (
-                            <Fragment>
-                                <p>{__("Icon")}</p>
-                                <FontIconPicker
-                                    icons={iconsList}
-                                    value={iconStyles[0].icon}
-                                    onChange={(value) =>
-                                        setAttributes({ icon: value })
+                    <InspectorTabs tabs={['layout', 'style', 'advance']}>
+                        <InspectorTab key={'layout'}>
+                            <PanelBody
+                                title={__("Separator")}
+                                className="premium-panel-body"
+                                initialOpen={true}
+                            >
+                                <SelectControl
+                                    label={__("Separator Type")}
+                                    value={iconType}
+                                    onChange={(newSelect) =>
+                                        setAttributes({ iconType: newSelect })
                                     }
-                                    isMulti={false}
-                                    appendTo="body"
-                                    noSelectedPlaceholder={__("Select Icon")}
+                                    options={ICON}
                                 />
-                            </Fragment>
-                        ) : (
-                            <Fragment>
-                                {imageURL && (
-                                    <button
-                                        className="lottie-remove"
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            setAttributes({
-                                                imageURL: "",
-                                                imageURL: "",
-                                            });
-                                        }}
-                                    >
-                                        {__(
-                                            "Remove Image",
-                                            "premium-blocks-for-gutenberg"
-                                        )}
-                                    </button>
+                                {iconType === "icon" ? (
+                                    <Fragment>
+                                        <p>{__("Icon")}</p>
+                                        <FontIconPicker
+                                            icons={iconsList}
+                                            value={iconStyles[0].icon}
+                                            onChange={(value) =>
+                                                saveIconStyle({ icon: value })
+                                            }
+                                            isMulti={false}
+                                            appendTo="body"
+                                            noSelectedPlaceholder={__("Select Icon")}
+                                        />
+                                    </Fragment>
+                                ) : (
+                                    <Fragment>
+                                        <PremiumMediaUpload
+                                            type="image"
+                                            imageID={imageID}
+                                            imageURL={imageURL}
+                                            onSelectMedia={media => {
+                                                setAttributes({
+                                                    imageID: media.id,
+                                                    imageURL: media.url
+                                                });
+                                            }}
+                                            onRemoveImage={() =>
+                                                setAttributes({
+                                                    imageURL: "",
+                                                    imageID: ""
+                                                })
+                                            }
+                                        />
+                                    </Fragment>
                                 )}
-                            </Fragment>
-                        )}
-                        <ResponsiveRangeControl
-                            label={__(
-                                "Width/Size",
-                                "premium-blocks-for-gutenberg"
-                            )}
-                            value={iconStyles[0].iconSize}
-                            onChange={(value) =>
-                                saveIconStyle({ iconSize: value })
-                            }
-                            tabletValue={iconStyles[0].iconSizeTablet}
-                            onChangeTablet={(value) =>
-                                saveIconStyle({ iconSizeTablet: value })
-                            }
-                            mobileValue={iconStyles[0].iconSizeMobile}
-                            onChangeMobile={(value) =>
-                                saveIconStyle({ iconSizeMobile: value })
-                            }
-                            onChangeUnit={(key) =>
-                                saveIconStyle({ iconSizeType: key })
-                            }
-                            unit={iconStyles[0].iconSizeType}
-                            showUnit={true}
-                            defaultValue={200}
-                            units={["px", "em"]}
-                            min={1}
-                            max={1000}
-                        />
-                        {iconType === "image" && (
-                            <Fragment>
                                 <ResponsiveRangeControl
                                     label={__(
-                                        "Height",
+                                        "Width/Size",
                                         "premium-blocks-for-gutenberg"
                                     )}
-                                    value={imgHeight}
-                                    onChange={(value) =>
-                                        setAttributes({ imgHeight: value })
-                                    }
-                                    tabletValue={imgHeightTablet}
-                                    onChangeTablet={(value) =>
-                                        setAttributes({
-                                            imgHeightTablet: value,
-                                        })
-                                    }
-                                    mobileValue={imgHeightMobile}
-                                    onChangeMobile={(value) =>
-                                        setAttributes({
-                                            imgHeightMobile: value,
-                                        })
-                                    }
-                                    onChangeUnit={(key) =>
-                                        saveIconStyle({ imgHeightType: key })
-                                    }
-                                    unit={iconStyles[0].imgHeightType}
+                                    value={iconSize}
+                                    onChange={(value) => setAttributes({ iconSize: value })}
                                     showUnit={true}
                                     defaultValue={200}
                                     units={["px", "em"]}
                                     min={1}
                                     max={1000}
+                                    step={1}
                                 />
-                                <SelectControl
-                                    label={__("Image Fit")}
-                                    value={imgFit}
-                                    onChange={(newSelect) =>
-                                        setAttributes({ imgFit: newSelect })
-                                    }
-                                    options={[
-                                        {
-                                            label: __(
-                                                "Cover",
-                                                "premium-blocks-for-gutenberg"
-                                            ),
-                                            value: "cover",
-                                        },
-                                        {
-                                            label: __(
-                                                "Fill",
-                                                "premium-blocks-for-gutenberg"
-                                            ),
-                                            value: "fill",
-                                        },
-                                        {
-                                            label: __(
-                                                "Contain",
-                                                "premium-blocks-for-gutenberg"
-                                            ),
-                                            value: "contain",
-                                        },
-                                    ]}
-                                />
-                            </Fragment>
-                        )}
-                        <TextControl
-                            label={__("Gutter (%)")}
-                            type="Number"
-                            value={gutter}
-                            onChange={(newValue) =>
-                                setAttributes({ gutter: parseInt(newValue) })
-                            }
-                            help="-50% is default. Increase to push the image outside or decrease to pull the image inside."
-                        />
-                        <RadioComponent
-                            choices={["left", "center", "right"]}
-                            label={__(`Alignment `)}
-                            onChange={(value) => setAttributes({ align: value })}
-                            value={align}
-                        />
-                        <ToggleControl
-                            label={__("Link")}
-                            checked={link}
-                            onChange={(value) => setAttributes({ link: value })}
-                        />
-                        {link && (
-                            <Fragment>
-                                <p>{__("URL")}</p>
-                                <TextControl
-                                    value={url}
-                                    onChange={(value) =>
-                                        setAttributes({ url: value })
-                                    }
-                                    placeholder={__("Enter URL")}
-                                />
-                                <ToggleControl
-                                    label={__("Open links in new tab")}
-                                    checked={linkTarget}
-                                    onChange={(newValue) =>
-                                        setAttributes({ linkTarget: newValue })
-                                    }
-                                />
-                            </Fragment>
-                        )}
-                        {iconType === "image" && (
-                            <Fragment>
-                                <ToggleControl
-                                    label={__("Mask Image Shape")}
-                                    checked={imgMask}
-                                    onChange={(newValue) =>
-                                        setAttributes({ imgMask: newValue })
-                                    }
-                                />
-                                {imgMask && (
+                                {iconType === "image" && (
                                     <Fragment>
-                                        <PremiumMediaUpload
-                                            type="image"
-                                            imageID={imgMaskID}
-                                            imageURL={imgMaskURL}
-                                            onSelectMedia={(media) => {
-                                                setAttributes({
-                                                    imgMaskID: media.id,
-                                                    imgMaskURL: media.url,
-                                                });
-                                            }}
-                                            onRemoveImage={() =>
-                                                setAttributes({
-                                                    imgMaskURL: "",
-                                                    imgMaskID: "",
-                                                })
-                                            }
+                                        <ResponsiveRangeControl
+                                            label={__(
+                                                "Height",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
+                                            value={imgHeight}
+                                            onChange={(value) => setAttributes({ imgHeight: value })}
+                                            showUnit={true}
+                                            defaultValue={200}
+                                            units={["px", "em"]}
+                                            min={1}
+                                            max={1000}
+                                            step={1}
                                         />
-
                                         <SelectControl
-                                            label={__("Mask Size")}
-                                            value={maskSize}
+                                            label={__("Image Fit")}
+                                            value={imgFit}
                                             onChange={(newSelect) =>
-                                                setAttributes({
-                                                    maskSize: newSelect,
-                                                })
+                                                setAttributes({ imgFit: newSelect })
                                             }
                                             options={[
                                                 {
-                                                    label: "Contain",
-                                                    value: "contain",
-                                                },
-                                                {
-                                                    label: "Cover",
+                                                    label: __(
+                                                        "Cover",
+                                                        "premium-blocks-for-gutenberg"
+                                                    ),
                                                     value: "cover",
                                                 },
-                                            ]}
-                                        />
-
-                                        <SelectControl
-                                            label={__("Mask Position")}
-                                            value={maskPosition}
-                                            onChange={(newSelect) =>
-                                                setAttributes({
-                                                    maskPosition: newSelect,
-                                                })
-                                            }
-                                            options={[
                                                 {
-                                                    label: "Center Center",
-                                                    value: "center center",
+                                                    label: __(
+                                                        "Fill",
+                                                        "premium-blocks-for-gutenberg"
+                                                    ),
+                                                    value: "fill",
                                                 },
                                                 {
-                                                    label: "Top Center",
-                                                    value: "top center",
-                                                },
-                                                {
-                                                    label: "Bottom Center",
-                                                    value: "bottom center",
+                                                    label: __(
+                                                        "Contain",
+                                                        "premium-blocks-for-gutenberg"
+                                                    ),
+                                                    value: "contain",
                                                 },
                                             ]}
                                         />
                                     </Fragment>
                                 )}
-                            </Fragment>
-                        )}
-                    </PanelBody>
-                    <PanelBody
-                        title={__("Separator")}
-                        className="premium-panel-body"
-                        initialOpen={false}
-                    >
-                        {iconType === "image" ? (
-                            <Fragment>
-                                <PremiumFilters
-                                    blur={blur}
-                                    bright={bright}
-                                    contrast={contrast}
-                                    saturation={saturation}
-                                    hue={hue}
-                                    onChangeBlur={(newSize) =>
-                                        setAttributes({
-                                            blur: newSize,
-                                            change: true,
-                                        })
+                                <TextControl
+                                    label={__("Gutter (%)")}
+                                    type="Number"
+                                    value={gutter}
+                                    onChange={(newValue) =>
+                                        setAttributes({ gutter: parseInt(newValue) })
                                     }
-                                    onChangeBright={(newSize) =>
-                                        setAttributes({
-                                            bright: newSize,
-                                            change: true,
-                                        })
-                                    }
-                                    onChangeContrast={(newSize) =>
-                                        setAttributes({
-                                            contrast: newSize,
-                                            change: true,
-                                        })
-                                    }
-                                    onChangeSat={(newSize) =>
-                                        setAttributes({
-                                            saturation: newSize,
-                                            change: true,
-                                        })
-                                    }
-                                    onChangeHue={(newSize) =>
-                                        setAttributes({
-                                            hue: newSize,
-                                            change: true,
-                                        })
-                                    }
+                                    help="-50% is default. Increase to push the image outside or decrease to pull the image inside."
                                 />
-                                <PremiumFilters
-                                    label={__("Hover CSS Filters")}
-                                    blur={blurHover}
-                                    bright={brightHover}
-                                    contrast={contrastHover}
-                                    saturation={saturationHover}
-                                    hue={hueHover}
-                                    onChangeBlur={(newSize) =>
-                                        setAttributes({
-                                            blurHover: newSize,
-                                            change: true,
-                                        })
-                                    }
-                                    onChangeBright={(newSize) =>
-                                        setAttributes({
-                                            brightHover: newSize,
-                                            change: true,
-                                        })
-                                    }
-                                    onChangeContrast={(newSize) =>
-                                        setAttributes({
-                                            contrastHover: newSize,
-                                            change: true,
-                                        })
-                                    }
-                                    onChangeSat={(newSize) =>
-                                        setAttributes({
-                                            saturationHover: newSize,
-                                            change: true,
-                                        })
-                                    }
-                                    onChangeHue={(newSize) => setAttributes({
-                                        hueHover: newSize,
-                                        change: true,
-                                    })
-                                    }
+                                <ResponsiveRadioControl
+                                    label={__("Alignment", 'premium-blocks-for-gutenberg')}
+                                    choices={[
+                                        { value: 'left', label: __('Left'), icon: Icons.alignLeft },
+                                        { value: 'center', label: __('Center'), icon: Icons.alignCenter },
+                                        { value: 'right', label: __('Right'), icon: Icons.alignRight }
+                                    ]}
+                                    value={align}
+                                    onChange={(newValue) => setAttributes({ align: newValue })}
+                                    showIcons={true}
                                 />
-                            </Fragment>
-                        ) : (
-                            <Fragment>
-                                <AdvancedPopColorControl
-                                    label={__("Color", "premium-blocks-for-gutenberg")}
-                                    colorDefault={""}
-                                    colorValue={iconStyles[0].iconColor}
-                                    onColorChange={(newValue) => saveIconStyle({ iconColor: newValue })}
+                                <ToggleControl
+                                    label={__("Link")}
+                                    checked={link}
+                                    onChange={(value) => setAttributes({ link: value })}
                                 />
-                                <AdvancedPopColorControl
-                                    label={__("Background Color", "premium-blocks-for-gutenberg")}
-                                    colorDefault={""}
-                                    colorValue={iconStyles[0].iconBGColor}
-                                    onColorChange={(newValue) => saveIconStyle({ iconBGColor: newValue, })}
-                                />
-                                <AdvancedPopColorControl
-                                    label={__("Hover Color", "premium-blocks-for-gutenberg")}
-                                    colorValue={iconStyles[0].iconColorHover}
-                                    onColorChange={(newValue) => saveIconStyle({ iconColorHover: newValue, })}
-                                    colorDefault={""}
-                                />
-                                <AdvancedPopColorControl
-                                    label={__("Hover Background Color", "premium-blocks-for-gutenberg")}
-                                    colorValue={iconStyles[0].iconBGColorHover}
-                                    onColorChange={(newValue) => saveIconStyle({ iconBGColorHover: newValue, })}
-                                    colorDefault={""}
-                                />
-                                <PremiumShadow
-                                    label={__("Text Shadow", "premium-blocks-for-gutenberg")}
-                                    color={iconStyles[0].iconShadowColor}
-                                    blur={iconStyles[0].iconShadowBlur}
-                                    horizontal={iconStyles[0].iconShadowHorizontal}
-                                    vertical={iconStyles[0].iconShadowVertical}
-                                    onChangeColor={(newColor) => saveIconStyle({ iconShadowColor: newColor.hex })}
-                                    onChangeBlur={(newBlur) => saveIconStyle({ iconShadowBlur: newBlur, })}
-                                    onChangehHorizontal={(newValue) => saveIconStyle({ iconShadowHorizontal: newValue })}
-                                    onChangeVertical={(newValue) => saveIconStyle({ iconShadowVertical: newValue })}
-                                />
-                                <ResponsiveRangeControl
-                                    label={__("Padding", "premium-blocks-for-gutenberg")}
-                                    value={iconStyles[0].iconPadding}
-                                    onChange={(value) => saveIconStyle({ iconPadding: value })}
-                                    tabletValue={iconStyles[0].iconPaddingTablet}
-                                    onChangeTablet={(value) => saveIconStyle({ iconPaddingTablet: value, })}
-                                    mobileValue={iconStyles[0].iconPaddingMobile}
-                                    onChangeMobile={(value) => saveIconStyle({ iconPaddingMobile: value })}
-                                    onChangeUnit={(key) => saveIconStyle({ iconPaddingType: key })}
-                                    unit={iconStyles[0].iconPaddingType}
-                                    showUnit={true}
-                                    defaultValue={1}
-                                    min={1}
-                                    max={100}
-                                />
-                            </Fragment>
-                        )}
-                        {!iconStyles[0].advancedBorder && (
-                            <ResponsiveRangeControl
-                                label={__("Border Radius", "premium-blocks-for-gutenberg")}
-                                value={iconStyles[0].iconBorderRadius}
-                                onChange={(value) => saveIconStyle({ iconBorderRadius: value })}
-                                tabletValue={iconStyles[0].iconBorderRadiusTablet}
-                                onChangeTablet={(value) => saveIconStyle({ iconBorderRadiusTablet: value })}
-                                mobileValue={iconStyles[0].iconBorderRadiusMobile}
-                                onChangeMobile={(value) => saveIconStyle({ iconBorderRadiusMobile: value })}
-                                onChangeUnit={(key) => saveIconStyle({ iconBorderRadiusType: key })}
-                                unit={iconStyles[0].iconBorderRadiusType}
-                                showUnit={true}
-                                defaultValue={1}
-                                min={1}
-                                max={100}
-                            />
-                        )}
-                        <ToggleControl
-                            label={__("Advanced Border Radius", "premium-blocks-for-gutenberg")}
-                            checked={iconStyles[0].advancedBorder}
-                            onChange={(value) => saveIconStyle({ advancedBorder: value })}
-                        />
-                        <div>
-                            {__("Apply custom radius values. Get the radius value from here", "premium-blocks-for-gutenberg")}
-                            <a
-                                target={"_blank"}
-                                href={
-                                    "https://9elements.github.io/fancy-border-radius/"
-                                }
+                                {link && (
+                                    <Fragment>
+                                        <p>{__("URL")}</p>
+                                        <TextControl
+                                            value={url}
+                                            onChange={(value) =>
+                                                setAttributes({ url: value })
+                                            }
+                                            placeholder={__("Enter URL")}
+                                        />
+                                        <ToggleControl
+                                            label={__("Open links in new tab")}
+                                            checked={linkTarget}
+                                            onChange={(newValue) =>
+                                                setAttributes({ linkTarget: newValue })
+                                            }
+                                        />
+                                    </Fragment>
+                                )}
+                                {iconType === "image" && (
+                                    <Fragment>
+                                        <ToggleControl
+                                            label={__("Mask Image Shape")}
+                                            checked={imgMask}
+                                            onChange={(newValue) =>
+                                                setAttributes({ imgMask: newValue })
+                                            }
+                                        />
+                                        {imgMask && (
+                                            <Fragment>
+                                                <PremiumMediaUpload
+                                                    type="image"
+                                                    imageID={imgMaskID}
+                                                    imageURL={imgMaskURL}
+                                                    onSelectMedia={(media) => {
+                                                        setAttributes({
+                                                            imgMaskID: media.id,
+                                                            imgMaskURL: media.url,
+                                                        });
+                                                    }}
+                                                    onRemoveImage={() =>
+                                                        setAttributes({
+                                                            imgMaskURL: "",
+                                                            imgMaskID: "",
+                                                        })
+                                                    }
+                                                />
+
+                                                <SelectControl
+                                                    label={__("Mask Size")}
+                                                    value={maskSize}
+                                                    onChange={(newSelect) =>
+                                                        setAttributes({
+                                                            maskSize: newSelect,
+                                                        })
+                                                    }
+                                                    options={[
+                                                        {
+                                                            label: "Contain",
+                                                            value: "contain",
+                                                        },
+                                                        {
+                                                            label: "Cover",
+                                                            value: "cover",
+                                                        },
+                                                    ]}
+                                                />
+
+                                                <SelectControl
+                                                    label={__("Mask Position")}
+                                                    value={maskPosition}
+                                                    onChange={(newSelect) =>
+                                                        setAttributes({
+                                                            maskPosition: newSelect,
+                                                        })
+                                                    }
+                                                    options={[
+                                                        {
+                                                            label: "Center Center",
+                                                            value: "center center",
+                                                        },
+                                                        {
+                                                            label: "Top Center",
+                                                            value: "top center",
+                                                        },
+                                                        {
+                                                            label: "Bottom Center",
+                                                            value: "bottom center",
+                                                        },
+                                                    ]}
+                                                />
+                                            </Fragment>
+                                        )}
+                                    </Fragment>
+                                )}
+                            </PanelBody>
+                        </InspectorTab>
+                        <InspectorTab key={'style'}>
+                            <PanelBody
+                                title={__("Separator")}
+                                className="premium-panel-body"
+                                initialOpen={true}
                             >
-                                {" "}
-                                Here
-                            </a>
-                        </div>
-                        {iconStyles[0].advancedBorder && (
-                            <TextControl
-                                label={__("Border Radius", "premium-blocks-for-gutenberg")}
-                                value={iconStyles[0].advancedBorderValue}
-                                onChange={(value) => saveIconStyle({ advancedBorderValue: value })}
+                                {iconType === "image" ? (
+                                    <InsideTabs>
+                                        <InsideTab tabTitle={__('Normal')}>
+                                            <PremiumFilters
+                                                blur={blur}
+                                                bright={bright}
+                                                contrast={contrast}
+                                                saturation={saturation}
+                                                hue={hue}
+                                                onChangeBlur={(newSize) =>
+                                                    setAttributes({
+                                                        blur: newSize,
+                                                        change: true,
+                                                    })
+                                                }
+                                                onChangeBright={(newSize) =>
+                                                    setAttributes({
+                                                        bright: newSize,
+                                                        change: true,
+                                                    })
+                                                }
+                                                onChangeContrast={(newSize) =>
+                                                    setAttributes({
+                                                        contrast: newSize,
+                                                        change: true,
+                                                    })
+                                                }
+                                                onChangeSat={(newSize) =>
+                                                    setAttributes({
+                                                        saturation: newSize,
+                                                        change: true,
+                                                    })
+                                                }
+                                                onChangeHue={(newSize) =>
+                                                    setAttributes({
+                                                        hue: newSize,
+                                                        change: true,
+                                                    })
+                                                }
+                                            />
+                                        </InsideTab>
+                                        <InsideTab tabTitle={__('Hover')}>
+                                            <PremiumFilters
+                                                label={__("Hover CSS Filters")}
+                                                blur={blurHover}
+                                                bright={brightHover}
+                                                contrast={contrastHover}
+                                                saturation={saturationHover}
+                                                hue={hueHover}
+                                                onChangeBlur={(newSize) =>
+                                                    setAttributes({
+                                                        blurHover: newSize,
+                                                        change: true,
+                                                    })
+                                                }
+                                                onChangeBright={(newSize) =>
+                                                    setAttributes({
+                                                        brightHover: newSize,
+                                                        change: true,
+                                                    })
+                                                }
+                                                onChangeContrast={(newSize) =>
+                                                    setAttributes({
+                                                        contrastHover: newSize,
+                                                        change: true,
+                                                    })
+                                                }
+                                                onChangeSat={(newSize) =>
+                                                    setAttributes({
+                                                        saturationHover: newSize,
+                                                        change: true,
+                                                    })
+                                                }
+                                                onChangeHue={(newSize) => setAttributes({
+                                                    hueHover: newSize,
+                                                    change: true,
+                                                })
+                                                }
+                                            />
+                                        </InsideTab>
+                                    </InsideTabs>
+                                ) : (
+                                    <Fragment>
+                                        <InsideTabs>
+                                            <InsideTab tabTitle={__('Normal')}>
+                                                <Fragment>
+                                                    <AdvancedPopColorControl
+                                                        label={__("Color", "premium-blocks-for-gutenberg")}
+                                                        colorDefault={""}
+                                                        colorValue={iconStyles[0].iconColor}
+                                                        onColorChange={(newValue) => saveIconStyle({ iconColor: newValue })}
+                                                    />
+                                                    <AdvancedPopColorControl
+                                                        label={__("Background Color", "premium-blocks-for-gutenberg")}
+                                                        colorDefault={""}
+                                                        colorValue={iconStyles[0].iconBGColor}
+                                                        onColorChange={(newValue) => saveIconStyle({ iconBGColor: newValue, })}
+                                                    />
+                                                </Fragment>
+                                            </InsideTab>
+                                            <InsideTab tabTitle={__('Hover')}>
+                                                <Fragment>
+                                                    <AdvancedPopColorControl
+                                                        label={__("Hover Color", "premium-blocks-for-gutenberg")}
+                                                        colorValue={iconStyles[0].iconColorHover}
+                                                        onColorChange={(newValue) => saveIconStyle({ iconColorHover: newValue, })}
+                                                        colorDefault={""}
+                                                    />
+                                                    <AdvancedPopColorControl
+                                                        label={__("Hover Background Color", "premium-blocks-for-gutenberg")}
+                                                        colorValue={iconStyles[0].iconBGColorHover}
+                                                        onColorChange={(newValue) => saveIconStyle({ iconBGColorHover: newValue, })}
+                                                        colorDefault={""}
+                                                    />
+                                                </Fragment>
+                                            </InsideTab>
+                                        </InsideTabs>
+                                        <PremiumShadow
+                                            label={__("Text Shadow", "premium-blocks-for-gutenberg")}
+                                            value={iconShadow}
+                                            onChange={(value) => setAttributes({ iconShadow: value })}
+                                        />
+                                        <SpacingControl
+                                            label={__('Padding', 'premium-blocks-for-gutenberg')}
+                                            value={iconPadding}
+                                            onChange={(value) => setAttributes({ iconPadding: value })}
+                                            showUnits={true}
+                                            responsive={true}
+                                        />
+                                    </Fragment>
+                                )}
+                                {!iconStyles[0].advancedBorder && (
+                                    <PremiumBorder
+                                        label={__("Border")}
+                                        value={iconBorder}
+                                        borderType={iconBorder.borderType}
+                                        borderColor={iconBorder.borderColor}
+                                        borderWidth={iconBorder.borderWidth}
+                                        borderRadius={iconBorder.borderRadius}
+                                        onChange={(value) => setAttributes({ iconBorder: value })}
+                                    />
+                                )}
+                                <ToggleControl
+                                    label={__("Advanced Border Radius", "premium-blocks-for-gutenberg")}
+                                    checked={iconStyles[0].advancedBorder}
+                                    onChange={(value) => saveIconStyle({ advancedBorder: value })}
+                                />
+                                <div>
+                                    {__("Apply custom radius values. Get the radius value from here", "premium-blocks-for-gutenberg")}
+                                    <a
+                                        target={"_blank"}
+                                        href={
+                                            "https://9elements.github.io/fancy-border-radius/"
+                                        }
+                                    >
+                                        {" "}
+                                        Here
+                                    </a>
+                                </div>
+                                {iconStyles[0].advancedBorder && (
+                                    <TextControl
+                                        label={__("Border Radius", "premium-blocks-for-gutenberg")}
+                                        value={iconStyles[0].advancedBorderValue}
+                                        onChange={(value) => saveIconStyle({ advancedBorderValue: value })}
+                                    />
+                                )}
+                            </PanelBody>
+                        </InspectorTab>
+                        <InspectorTab key={'advance'}>
+                            <PremiumResponsiveTabs
+                                Desktop={hideDesktop}
+                                Tablet={hideTablet}
+                                Mobile={hideMobile}
+                                onChangeDesktop={(value) => setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" })}
+                                onChangeTablet={(value) => setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" })}
+                                onChangeMobile={(value) => setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" })}
                             />
-                        )}
-                    </PanelBody>
-                </InspectorControls>
+                        </InspectorTab>
+                    </InspectorTabs>
+                </InspectorControls >
             ),
             renderCss,
             <div
-                className={classnames(
-                    className,
-                    `premium-block-${this.props.clientId}`
-                )}
-                style={{ textAlign: align }}
+                className={`${mainClasses} ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                style={{ textAlign: align[this.props.deviceType] }}
             >
                 <div
                     className={`premium-image-separator-container`}
                     style={{
-                        textAlign: align,
+                        textAlign: align[this.props.deviceType],
                         transform: `translateY(${gutter}%)`,
                         filter:
                             iconType === "image"
@@ -583,17 +564,18 @@ class edit extends Component {
                 >
                     {iconType === "icon" && (
                         <i
-                            className={`${icon}`}
+                            className={`${iconStyles[0].icon}`}
                             style={{
-                                fontSize: `${iconSize}${iconStyles[0].iconSizeType}`,
-                                padding: `${iconPadding}${iconStyles[0].iconPaddingType}`,
+                                ...borderCss(iconBorder, this.props.deviceType),
+                                ...padddingCss(iconPadding, this.props.deviceType),
+                                fontSize: (iconSize[this.props.deviceType] || 200) + iconSize.unit,
                                 color: iconStyles[0].iconColor,
                                 backgroundColor: iconStyles[0].iconBGColor,
-                                textShadow: `${iconStyles[0].iconShadowHorizontal}px ${iconStyles[0].iconShadowVertical}px ${iconStyles[0].iconShadowBlur}px ${iconStyles[0].iconShadowColor}`,
+                                textShadow: `${iconShadow.horizontal || 0}px ${iconShadow.vertical ||
+                                    0}px ${iconShadow.blur || 0}px ${iconShadow.color}`,
                                 borderRadius: iconStyles[0].advancedBorder
                                     ? iconStyles[0].advancedBorderValue
-                                    : `${iconBorderRadius}${iconStyles[0].iconBorderRadiusType}`,
-
+                                    : `${iconBorder.borderRadius[this.props.deviceType].top}px`,
                             }}
                         />
                     )}
@@ -603,6 +585,7 @@ class edit extends Component {
                                 <img
                                     src={imageURL}
                                     style={{
+                                        ...borderCss(iconBorder, this.props.deviceType),
                                         maskSize: `${maskSize}`,
                                         maskPosition: `${maskPosition}`,
                                         maskImage: imgMaskURL ? `url("${imgMaskURL}")` : '',
@@ -610,11 +593,11 @@ class edit extends Component {
                                         WebkitMaskSize: `${maskSize}`,
                                         WebkitMaskPosition: `${maskPosition}`,
                                         objectFit: `${imgFit}`,
-                                        height: `${imageHeight}${iconStyles[0].imgHeightType}`,
-                                        width: `${iconSize}${iconStyles[0].iconSizeType}`,
+                                        height: (imgHeight[this.props.deviceType] || 200) + iconSize.unit,
+                                        width: (iconSize[this.props.deviceType] || 200) + iconSize.unit,
                                         borderRadius: iconStyles[0].advancedBorder
                                             ? iconStyles[0].advancedBorderValue
-                                            : `${iconBorderRadius}${iconStyles[0].iconBorderRadiusType}`,
+                                            : `${iconBorder.borderRadius[this.props.deviceType].top}px`,
                                     }}
                                 />
                             ) : (
@@ -637,12 +620,12 @@ class edit extends Component {
                             )}
                         </Fragment>
                     )}
-                    {link && (
+                    {/* {link && (
                         <a
                             className="premium-image-separator-link"
                             href={`${url}`}
                         ></a>
-                    )}
+                    )} */}
                 </div>
             </div>,
         ];

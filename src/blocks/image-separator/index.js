@@ -1,16 +1,19 @@
 import { imageSeparator } from "../../../assets/js/settings";
+import PBG_Block_Icons from '../../../blocks-config/block-icons'
 import save from "./save";
 import edit from "./edit";
-import PbgIcon from "../icons";
 import imageSeparatorAttrs from './attributes'
+import deprecated from "./deprecated";
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 registerBlockType("premium/image-separator", {
     title: __("Image Separator"),
-    icon: < PbgIcon icon="image" />,
+    description: __('Separate between your Gutenberg sections using Premium Image Separator Block.'),
+    icon: PBG_Block_Icons.image_separator,
     category: "premium-blocks",
     attributes: imageSeparatorAttrs,
     supports: { inserter: imageSeparator },
     edit: edit,
-    save: save
+    save: save,
+    // deprecated: deprecated
 });
