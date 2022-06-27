@@ -15,5 +15,5 @@ registerBlockType("premium/image-separator", {
     supports: { inserter: imageSeparator },
     edit: edit,
     save: save,
-    // deprecated: deprecated
+    deprecated: deprecated
 });
