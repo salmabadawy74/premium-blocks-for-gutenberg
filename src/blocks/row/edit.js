@@ -69,7 +69,6 @@ const edit = (props) => {
             if (props.attributes.isBlockRootParent || isBlockRootParent) {
                 element.classList.remove('alignfull');
                 element.classList.remove('alignwide');
-                element.classList.remove('default');
                 element.classList.add(props.attributes.align);
             }
         }
@@ -168,9 +167,9 @@ const edit = (props) => {
         return (
             <Fragment>
                 <div className="premium-blocks__row_container" >
-                    <Button onClick={() => removeRowBlock()} className="premium-blocks-remove-button" >
+                    <button onClick={() => removeRowBlock()} className="premium-blocks-remove-button" >
                         <span class="dashicons dashicons-no"></span>
-                    </Button>
+                    </button>
                     <div className="premium-blocks__placeholder_title" >{__('Select Column Layout', 'premium-blocks-for-gutenberg')}</div>
                     <div className="premium-blocks__placeholder-group" >
                         {variations.map((data) => (

@@ -10696,7 +10696,12 @@ var variations = [{
     icon: _icons2.default['100'],
     column: 1,
     attributes: {
-        variationSelected: true
+        variationSelected: true,
+        direction: {
+            'Desktop': 'row',
+            "Tablet": '',
+            "Mobile": ''
+        }
     },
     scope: ['block']
 }, {
@@ -69537,7 +69542,6 @@ var edit = function edit(props) {
             if (props.attributes.isBlockRootParent || isBlockRootParent) {
                 element.classList.remove('alignfull');
                 element.classList.remove('alignwide');
-                element.classList.remove('default');
                 element.classList.add(props.attributes.align);
             }
         }
@@ -69625,7 +69629,7 @@ var edit = function edit(props) {
                 'div',
                 { className: 'premium-blocks__row_container' },
                 React.createElement(
-                    Button,
+                    'button',
                     { onClick: function onClick() {
                             return removeRowBlock();
                         }, className: 'premium-blocks-remove-button' },

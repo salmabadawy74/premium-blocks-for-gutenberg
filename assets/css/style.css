@@ -4920,6 +4920,11 @@ animation-fast {
     transition: 200ms;
     font-size: 17px;
     color: #cccfd5;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    background: none;
+    cursor: pointer;
 }
 .premium-blocks__row_container .premium-blocks__placeholder_title {
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;

@@ -16,6 +16,11 @@ const variations = [
         column: 1,
         attributes: {
             variationSelected: true,
+            direction: {
+                'Desktop': 'row',
+                "Tablet": '',
+                "Mobile": ''
+            }
         },
         scope: ['block'],
     },
