@@ -5,10 +5,7 @@ const LottieAttr = {
     block_id: {
         type: "string"
     },
-    classMigrate: {
-        type: "boolean",
-        default: false
-    },
+
     lottieURl: {
         type: "string",
         default: ""
@@ -44,14 +41,26 @@ const LottieAttr = {
         type: "number",
         default: "4"
     },
-
+    size: {
+        type: "object",
+        default: {
+            'Desktop': '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': 'px'
+        }
+    },
     rotate: {
         type: "number",
         default: 0
     },
     align: {
-        type: "string",
-        default: "center"
+        type: 'object',
+        default: {
+            "Desktop": 'center',
+            'Tablet': 'center',
+            'Mobile': 'center'
+        }
     },
     link: {
         type: "boolean",
@@ -68,6 +77,114 @@ const LottieAttr = {
         type: 'string',
         default: 'svg'
     },
+    backColor: {
+        type: "string"
+    },
+    backOpacity: {
+        type: "number",
+        default: "1"
+    },
+    backHColor: {
+        type: "string"
+    },
+    backHOpacity: {
+        type: "number",
+        default: 1
+    },
+    lottieFilter: {
+        type: 'object',
+        default: {
+            'blur': '0',
+            'bright': '100',
+            'contrast': '100',
+            'saturation': '100',
+            'hue': '0'
+
+        }
+    },
+    lottieFilterHover: {
+        type: 'object',
+        default: {
+            'blur': '0',
+            'bright': '100',
+            'contrast': '100',
+            'saturation': '100',
+            'hue': '0'
+
+        }
+    },
+    lottieBorder: {
+        type: "object",
+        default: {
+            'borderType': 'none',
+            'borderColor': '',
+            'borderWidth': {
+                Desktop: {
+                    'top': '',
+                    'right': '',
+                    'bottom': '',
+                    'left': ''
+                },
+                Tablet: {
+                    'top': '',
+                    'right': '',
+                    'bottom': '',
+                    'left': ''
+                },
+                Mobile: {
+                    'top': '',
+                    'right': '',
+                    'bottom': '',
+                    'left': ''
+                },
+            },
+            'borderRadius': {
+                Desktop: {
+                    'top': '',
+                    'right': '',
+                    'bottom': '',
+                    'left': ''
+                },
+                Tablet: {
+                    'top': '',
+                    'right': '',
+                    'bottom': '',
+                    'left': ''
+                },
+                Mobile: {
+                    'top': '',
+                    'right': '',
+                    'bottom': '',
+                    'left': ''
+                },
+            }
+        },
+
+    },
+    lottiePadding: {
+        type: 'object',
+        default: {
+            'Desktop': {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            'Tablet': {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            'Mobile': {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px',
+        },
+    },
     hideDesktop: {
         type: 'boolean',
         default: false
@@ -79,90 +196,6 @@ const LottieAttr = {
     hideMobile: {
         type: 'boolean',
         default: false
-    },
-    lottieStyles: {
-        type: "array",
-        default: [
-            {
-                size: "200",
-                sizeUnit: 'px',
-                sizeMobile: "200",
-                sizeTablet: "200",
-                backColor: '',
-                backOpacity: 1,
-                backHColor: '',
-                backHOpacity: 1,
-                blur: '0',
-                bright: '100',
-                contrast: '100',
-                saturation: '100',
-                hue: '0',
-                blurH: '0',
-                brightH: '100',
-                contrastH: '100',
-                saturationH: '100',
-                hueH: '0',
-                borderType: 'none',
-                borderColor: '',
-                borderRadius: '0',
-                paddingU: 'px',
-            }
-        ]
-    },
-    paddingT: {
-        type: 'number'
-    },
-    paddingR: {
-        type: 'number'
-    },
-    paddingB: {
-        type: 'number'
-    },
-    paddingL: {
-        type: 'number'
-    },
-    borderTop: {
-        type: 'number'
-    },
-    borderRight: {
-        type: 'number'
-    },
-    borderBottom: {
-        type: 'number'
-    },
-    borderLeft: {
-        type: 'number'
-    },
-    paddingTTablet: {
-        type: 'number'
-    },
-    paddingRTablet: {
-        type: 'number'
-    },
-    paddingBTablet: {
-        type: 'number'
-    },
-    paddingLTablet: {
-        type: 'number'
-    },
-    paddingTMobile: {
-        type: 'number'
-    },
-    paddingRMobile: {
-        type: 'number'
-    },
-    paddingBMobile: {
-        type: 'number'
-    },
-    paddingLMobile: {
-        type: 'number'
-    },
-    lottieWidth: {
-        type: "object",
-        default: {
-            Desktop: '200',
-            unit: 'px'
-        }
     }
 }
 export default LottieAttr;
