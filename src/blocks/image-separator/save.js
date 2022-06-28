@@ -1,16 +1,14 @@
-import classnames from "classnames"
+import classnames from "classnames";
 
 export default function save(props) {
 
-    const { attributes, className } = props
+    const { className } = props
 
     const {
-        block_id,
+        blockId,
         align,
         iconType,
-        icon,
         imageURL,
-        imageID,
         link,
         url,
         gutter,
@@ -30,45 +28,71 @@ export default function save(props) {
         imgMaskURL,
         maskSize,
         maskPosition,
-
-    } = attributes
+        iconBorder,
+        iconShadow,
+        hideDesktop,
+        hideTablet,
+        hideMobile
+    } = props.attributes
 
     let target = (linkTarget) ? "_blank" : "_self"
+    const mainClasses = classnames(className, 'premium-image-separator', blockId);
+
+    const renderCss = (<style>
+        {`
+            .${blockId} .premium-image-separator-container {
+                text-align: ${align[props.deviceType]};
+            }
+            .${blockId} .premium-image-separator-container:hover img{
+                filter:  brightness( ${brightHover}% ) contrast( ${contrastHover}% ) saturate( ${saturationHover}% ) blur( ${blurHover}px ) hue-rotate( ${hueHover}deg ) !important ;
+            }
+            .${blockId} .premium-image-separator-container i:hover {
+                color: ${iconStyles[0].iconColorHover} !important;
+                background-color: ${iconStyles[0].iconBGColorHover} !important;
+            }
+        `}
+    </style>
+    )
 
     return (
         <div
-            className={
-                classnames(className,
-                    `premium-block-${block_id}`
-                )}
-            style={{ textAlign: align }} >
+            className={`${mainClasses} ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+            style={{ textAlign: align[props.deviceType] || 'center' }}
+        >
+            {renderCss}
             <div className={`premium-image-separator-container`} style={{
-                textAlign: align,
+                textAlign: align[props.deviceType] || 'center',
                 transform: `translateY(${gutter}%)`,
                 filter: iconType === 'image' ? `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )` : ""
             }}
             >
-                {
-                    iconType === 'icon' && <i className={`${icon}`} style={{
-                        color: iconStyles[0].iconColor,
-                        backgroundColor: iconStyles[0].iconBGColor,
-                        textShadow: `${iconStyles[0].iconShadowHorizontal}px ${iconStyles[0].iconShadowVertical}px ${iconStyles[0].iconShadowBlur}px ${iconStyles[0].iconShadowColor}`,
-                    }} />
-                }
-                {
-                    iconType === 'image' && < img
-                        src={imageURL}
-                        style={{
-                            maskSize: `${maskSize}`,
-                            maskPosition: `${maskPosition}`,
-                            maskImage: imgMaskURL ? `url("${imgMaskURL}")` : '',
-                            WebkitMaskImage: imgMaskURL ? `url("${imgMaskURL}")` : '',
-                            WebkitMaskSize: `${maskSize}`,
-                            WebkitMaskPosition: `${maskPosition}`,
-                            objectFit: `${imgFit}`,
+                <a className="premium-image-separator-link" href={link && url} target={target} rel="noopener noreferrer">
+                    {
+                        iconType === 'icon' && <i className={`${iconStyles[0].icon}`} style={{
+                            color: iconStyles[0].iconColor,
+                            backgroundColor: iconStyles[0].iconBGColor,
+                            borderColor: iconBorder.borderColor,
+                            borderStyle: iconBorder.borderType,
+                            textShadow: `${iconShadow.horizontal || 0}px ${iconShadow.vertical ||
+                                0}px ${iconShadow.blur || 0}px ${iconShadow.color}`,
                         }} />
-                }
-                {link && <a className="premium-image-separator-link" href={`${url}`} target={target} rel="noopener noreferrer"></a>}
+                    }
+                    {
+                        iconType === 'image' && < img
+                            src={imageURL}
+                            style={{
+                                borderColor: iconBorder.borderColor,
+                                borderStyle: iconBorder.borderType,
+                                maskSize: `${maskSize}`,
+                                maskPosition: `${maskPosition}`,
+                                maskImage: imgMaskURL ? `url("${imgMaskURL}")` : '',
+                                WebkitMaskImage: imgMaskURL ? `url("${imgMaskURL}")` : '',
+                                WebkitMaskSize: `${maskSize}`,
+                                WebkitMaskPosition: `${maskPosition}`,
+                                objectFit: `${imgFit}`,
+                            }} />
+                    }
+                </a>
             </div>
         </div>
     )

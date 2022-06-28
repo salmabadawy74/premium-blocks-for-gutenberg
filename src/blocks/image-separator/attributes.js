@@ -1,5 +1,5 @@
 const imageSeparatorAttrs = {
-    block_id: {
+    blockId: {
         type: "string"
     },
     classMigrate: {
@@ -7,8 +7,12 @@ const imageSeparatorAttrs = {
         default: false
     },
     align: {
-        type: "string",
-        default: "center"
+        type: "object",
+        default: {
+            Desktop: "center",
+            Tablet: "center",
+            Mobile: "center"
+        }
     },
     iconType: {
         type: "string",
@@ -25,12 +29,10 @@ const imageSeparatorAttrs = {
         selector: ".premium-image-separator-container img"
     },
     link: {
-        type: "boolean",
-        default: false
+        type: "boolean"
     },
     url: {
-        type: "string",
-        default: "#"
+        type: "string"
     },
     gutter: {
         type: "number",
@@ -81,18 +83,6 @@ const imageSeparatorAttrs = {
         type: "boolean",
         default: false
     },
-    imgHeight: {
-        type: "number",
-        default: "200"
-    },
-    imgHeightTablet: {
-        type: "number",
-        default: "200"
-    },
-    imgHeightMobile: {
-        type: "number",
-        default: "200"
-    },
     imgFit: {
         type: "string",
         value: 'fill'
@@ -120,23 +110,11 @@ const imageSeparatorAttrs = {
         type: "array",
         default: [
             {
-                iconSize: "200",
-                iconSizeType: "px",
-                iconSizeMobile: "200",
-                iconSizeTablet: "200",
                 icon: "fa fa-bars",
-                iconBorderRadius: "0",
-                iconBorderRadiusType: "px",
-                iconBorderRadiusMobile: "0",
-                iconBorderRadiusTablet: "0",
                 iconColor: "#6ec1e4",
                 iconBGColor: "#54595f",
                 iconColorHover: '',
                 iconBGColorHover: '',
-                iconShadowColor: '',
-                iconShadowBlur: "0",
-                iconShadowHorizontal: "0",
-                iconShadowVertical: "0",
                 iconPadding: ".1",
                 iconPaddingTablet: ".1",
                 iconPaddingType: "em",
@@ -146,6 +124,112 @@ const imageSeparatorAttrs = {
                 imgHeightType: "px",
             }
         ]
+    },
+    iconSize: {
+        type: "object",
+        default: {
+            Desktop: '200',
+            unit: 'px'
+        }
+    },
+    imgHeight: {
+        type: "object",
+        default: {
+            Desktop: '200',
+            unit: 'px'
+        }
+    },
+    iconBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: ''
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: ''
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: ''
+    },
+    iconPadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            unit: "px"
+        }
+    },
+    iconShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': ''
+        }
     }
 };
 export default imageSeparatorAttrs
