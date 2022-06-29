@@ -5,7 +5,6 @@ const LottieAttr = {
     block_id: {
         type: "string"
     },
-
     lottieURl: {
         type: "string",
         default: ""

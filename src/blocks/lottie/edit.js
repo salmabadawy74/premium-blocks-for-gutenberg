@@ -187,15 +187,14 @@ class edit extends Component {
         const reversedir = (reverse) ? -1 : 1;
         const mainClasses = classnames(className, 'premium-lottie-wrap')
         const renderCss = (<style>
-            {/* {`
+            {`
             #premium-lottie-${block_id} .premium-lottie-animation svg{
-                width:${lottieSize}${lottieStyles[0].sizeUnit} !important;
-                height:${lottieSize}${lottieStyles[0].sizeUnit} !important;
+                width:${size[this.props.deviceType]}${sie['unit']} !important;
+                height:${size[this.props.deviceType]}${sie['unit']} !important;
             }
-            `} */}
+            `}
         </style>
         )
-        console.log(lottiePadding)
 
         return [
             renderCss,

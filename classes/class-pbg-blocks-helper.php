@@ -4348,88 +4348,104 @@ class PBG_Blocks_Helper {
 		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
 		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
 		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
-		if ( isset( $attr['lottieStyles'] ) ) {
-			if ( isset( $attr['lottieStyles'][0]['size'] ) || isset( $attr['lottieStyles'][0]['sizeUnit'] ) ) {
-				$css->set_selector( '#premium-lottie-' . $unique_id . '> .premium-lottie-svg svg' );
-				$css->add_property( 'width', ( $attr['lottieStyles'][0]['size'] . $attr['lottieStyles'][0]['sizeUnit'] ) );
-				$css->add_property( 'height', ( $attr['lottieStyles'][0]['size'] . $attr['lottieStyles'][0]['sizeUnit'] ) );
-				$css->set_selector( '#premium-lottie-' . $unique_id . '> .premium-lottie-canvas' );
-				$css->add_property( 'width', ( $attr['lottieStyles'][0]['size'] . $attr['lottieStyles'][0]['sizeUnit'] ) );
-				$css->add_property( 'height', ( $attr['lottieStyles'][0]['size'] . $attr['lottieStyles'][0]['sizeUnit'] ) );
+        if(isset($attr['size'])){
+            $css->set_selector( '#premium-lottie-' . $unique_id . '> .premium-lottie-svg svg' );
+            $css->add_property( 'width', ( $attr['size']['Desktop'] . $attr['size']['unit'] ) );
+            $css->add_property( 'height', ( $attr['size']['Desktop'] . $attr['size']['unit'] ) );
+            $css->set_selector( '#premium-lottie-' . $unique_id . '> .premium-lottie-canvas' );
+            $css->add_property( 'width', ( $attr['size']['Desktop'] . $attr['size']['unit'] ) );
+            $css->add_property( 'height', ( $attr['size']['Desktop'] . $attr['size']['unit'] ) ); 
+        }
+        if(isset($attr['lottieBorder'])){
+			$title_border        = $attr['lottieBorder'];
+			$title_border_width  = $attr['lottieBorder']['borderWidth'];
+			$title_border_radius = $attr['lottieBorder']['borderRadius'];
+			$css->set_selector( '#premium-lottie-' . $unique_id  . ' > .premium-lottie-animation' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $title_border_width, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $title_border_width, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $title_border_width, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $title_border_width, 'left', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $title_border_radius, 'top', 'Desktop', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $title_border_radius, 'right', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $title_border_radius, 'bottom', 'Desktop', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $title_border_radius, 'left', 'Desktop', 'px' ) );
 
-			}
-		}
-		if ( isset( $attr['paddingT'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-			$css->set_selector( '#premium-lottie-' . $unique_id . '.premium-lottie-animation' );
-			$css->add_property( 'padding-top', ( $attr['paddingT'] . $attr['containerStyles'][0]['paddingU'] ) );
-		}
-		if ( isset( $attr['paddingR'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-			$css->set_selector( '#premium-lottie-' . $unique_id . '.premium-lottie-animation' );
-			$css->add_property( 'padding-right', ( $attr['paddingR'] . $attr['containerStyles'][0]['paddingU'] ) );
-		}
-		if ( isset( $attr['paddingB'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-			$css->set_selector( '#premium-lottie-' . $unique_id . '.premium-lottie-animation' );
-			$css->add_property( 'padding-bottom', ( $attr['paddingB'] . $attr['containerStyles'][0]['paddingU'] ) );
-		}
-		if ( isset( $attr['paddingL'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-			$css->set_selector( '#premium-lottie-' . $unique_id . '.premium-lottie-animation' );
-			$css->add_property( 'padding-bottom', ( $attr['paddingL'] . $attr['containerStyles'][0]['paddingU'] ) );
-		}
+        }
+        if(isset($attr['lottiePadding'])){
+			$title_padding = $attr['lottiePadding'];
+			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
+			$css->add_property( 'padding-top', $css->render_color( $title_padding['Desktop']['top'] . $title_padding['unit'] ) );
+			$css->add_property( 'padding-right', $css->render_color( $title_padding['Desktop']['right'] . $title_padding['unit'] ) );
+			$css->add_property( 'padding-bottom', $css->render_color( $title_padding['Desktop']['bottom'] . $title_padding['unit'] ) );
+			$css->add_property( 'padding-left', $css->render_color( $title_padding['Desktop']['left'] . $title_padding['unit'] ) );
+        }
+
 		$css->start_media_query( $media_query['tablet'] );
-		if ( isset( $attr['lottieStyles'] ) ) {
-			if ( isset( $attr['lottieStyles'][0]['sizeTablet'] ) || isset( $attr['lottieStyles'][0]['sizeUnit'] ) ) {
-				$css->set_selector( '#premium-lottie-' . $unique_id . '> .premium-lottie-svg svg' );
-				$css->add_property( 'width', ( $attr['lottieStyles'][0]['sizeTablet'] . $attr['lottieStyles'][0]['sizeUnit'] ) );
-				$css->add_property( 'height', ( $attr['lottieStyles'][0]['sizeTablet'] . $attr['lottieStyles'][0]['sizeUnit'] ) );
-				$css->set_selector( '#premium-lottie-' . $unique_id . '> .premium-lottie-canvas' );
-				$css->add_property( 'width', ( $attr['lottieStyles'][0]['sizeTablet'] . $attr['lottieStyles'][0]['sizeUnit'] ) );
-				$css->add_property( 'height', ( $attr['lottieStyles'][0]['sizeTablet'] . $attr['lottieStyles'][0]['sizeUnit'] ) );
-			}
-		}
-		if ( isset( $attr['paddingTTablet'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-			$css->set_selector( '#premium-lottie-' . $unique_id . '.premium-lottie-animation' );
-			$css->add_property( 'padding-top', ( $attr['paddingTTablet'] . $attr['containerStyles'][0]['paddingU'] ) );
-		}
-		if ( isset( $attr['paddingRTablet'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-			$css->set_selector( '#premium-lottie-' . $unique_id . '.premium-lottie-animation' );
-			$css->add_property( 'padding-right', ( $attr['paddingRTablet'] . $attr['containerStyles'][0]['paddingU'] ) );
-		}
-		if ( isset( $attr['paddingBTablet'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-			$css->set_selector( '#premium-lottie-' . $unique_id . '.premium-lottie-animation' );
-			$css->add_property( 'padding-bottom', ( $attr['paddingBTablet'] . $attr['containerStyles'][0]['paddingU'] ) );
-		}
-		if ( isset( $attr['paddingLTablet'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-			$css->set_selector( '#premium-lottie-' . $unique_id . '.premium-lottie-animation' );
-			$css->add_property( 'padding-bottom', ( $attr['paddingLTablet'] . $attr['containerStyles'][0]['paddingU'] ) );
-		}
+		 if(isset($attr['size'])){
+            $css->set_selector( '#premium-lottie-' . $unique_id . '> .premium-lottie-svg svg' );
+            $css->add_property( 'width', ( $attr['size']['Tablet'] . $attr['size']['unit'] ) );
+            $css->add_property( 'height', ( $attr['size']['Tablet'] . $attr['size']['unit'] ) );
+            $css->set_selector( '#premium-lottie-' . $unique_id . '> .premium-lottie-canvas' );
+            $css->add_property( 'width', ( $attr['size']['Tablet'] . $attr['size']['unit'] ) );
+            $css->add_property( 'height', ( $attr['size']['Tablet'] . $attr['size']['unit'] ) ); 
+        }
+        if(isset($attr['lottieBorder'])){
+			$title_border        = $attr['lottieBorder'];
+			$title_border_width  = $attr['lottieBorder']['borderWidth'];
+			$title_border_radius = $attr['lottieBorder']['borderRadius'];
+			$css->set_selector( '#premium-lottie-' . $unique_id  . ' > .premium-lottie-animation' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $title_border_width, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $title_border_width, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $title_border_width, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $title_border_width, 'left', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $title_border_radius, 'top', 'Tablet', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $title_border_radius, 'right', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $title_border_radius, 'bottom', 'Tablet', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $title_border_radius, 'left', 'Tablet', 'px' ) );
+
+        }
+        if(isset($attr['lottiePadding'])){
+			$title_padding = $attr['lottiePadding'];
+			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
+			$css->add_property( 'padding-top', $css->render_color( $title_padding['Tablet']['top'] . $title_padding['unit'] ) );
+			$css->add_property( 'padding-right', $css->render_color( $title_padding['Tablet']['right'] . $title_padding['unit'] ) );
+			$css->add_property( 'padding-bottom', $css->render_color( $title_padding['Tablet']['bottom'] . $title_padding['unit'] ) );
+			$css->add_property( 'padding-left', $css->render_color( $title_padding['Tablet']['left'] . $title_padding['unit'] ) );
+
+        }
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['mobile'] );
-		if ( isset( $attr['lottieStyles'] ) ) {
-			if ( isset( $attr['lottieStyles'][0]['sizeMobile'] ) || isset( $attr['lottieStyles'][0]['sizeUnit'] ) ) {
-				$css->set_selector( '#premium-lottie-' . $unique_id . '> .premium-lottie-svg svg' );
-				$css->add_property( 'width', ( $attr['lottieStyles'][0]['sizeMobile'] . $attr['lottieStyles'][0]['sizeUnit'] ) );
-				$css->add_property( 'height', ( $attr['lottieStyles'][0]['sizeMobile'] . $attr['lottieStyles'][0]['sizeUnit'] ) );
-				$css->set_selector( '#premium-lottie-' . $unique_id . '> .premium-lottie-canvas' );
-				$css->add_property( 'width', ( $attr['lottieStyles'][0]['sizeMobile'] . $attr['lottieStyles'][0]['sizeUnit'] ) );
-				$css->add_property( 'height', ( $attr['lottieStyles'][0]['sizeMobile'] . $attr['lottieStyles'][0]['sizeUnit'] ) );
-			}
-		}
-		if ( isset( $attr['paddingTMobile'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-			$css->set_selector( '#premium-lottie-' . $unique_id . '.premium-lottie-animation' );
-			$css->add_property( 'padding-top', ( $attr['paddingTMobile'] . $attr['containerStyles'][0]['paddingU'] ) );
-		}
-		if ( isset( $attr['paddingRMobile'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-			$css->set_selector( '#premium-lottie-' . $unique_id . '.premium-lottie-animation' );
-			$css->add_property( 'padding-right', ( $attr['paddingRMobile'] . $attr['containerStyles'][0]['paddingU'] ) );
-		}
-		if ( isset( $attr['paddingBMobile'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-			$css->set_selector( '#premium-lottie-' . $unique_id . '.premium-lottie-animation' );
-			$css->add_property( 'padding-bottom', ( $attr['paddingBMobile'] . $attr['containerStyles'][0]['paddingU'] ) );
-		}
-		if ( isset( $attr['paddingLMobile'] ) && isset( $attr['containerStyles'][0]['paddingU'] ) ) {
-			$css->set_selector( '#premium-lottie-' . $unique_id . '.premium-lottie-animation' );
-			$css->add_property( 'padding-bottom', ( $attr['paddingLMobile'] . $attr['containerStyles'][0]['paddingU'] ) );
-		}
+			 if(isset($attr['size'])){
+            $css->set_selector( '#premium-lottie-' . $unique_id . '> .premium-lottie-svg svg' );
+            $css->add_property( 'width', ( $attr['size']['Mobile'] . $attr['size']['unit'] ) );
+            $css->add_property( 'height', ( $attr['size']['Mobile'] . $attr['size']['unit'] ) );
+            $css->set_selector( '#premium-lottie-' . $unique_id . '> .premium-lottie-canvas' );
+            $css->add_property( 'width', ( $attr['size']['Mobile'] . $attr['size']['unit'] ) );
+            $css->add_property( 'height', ( $attr['size']['Mobile'] . $attr['size']['unit'] ) ); 
+        }
+        if(isset($attr['lottieBorder'])){
+			$title_border        = $attr['lottieBorder'];
+			$title_border_width  = $attr['lottieBorder']['borderWidth'];
+			$title_border_radius = $attr['lottieBorder']['borderRadius'];
+			$css->set_selector( '#premium-lottie-' . $unique_id  . ' > .premium-lottie-animation' );
+			$css->add_property( 'border-top-width', $css->get_responsive_value( $title_border_width, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-right-width', $css->get_responsive_value( $title_border_width, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $title_border_width, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-left-width', $css->get_responsive_value( $title_border_width, 'left', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $title_border_radius, 'top', 'Mobile', 'px' ) );
+			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $title_border_radius, 'right', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $title_border_radius, 'bottom', 'Mobile', 'px' ) );
+			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $title_border_radius, 'left', 'Mobile', 'px' ) );
+        }
+        if(isset($attr['lottiePadding'])){
+			$title_padding = $attr['lottiePadding'];
+			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
+			$css->add_property( 'padding-top', $css->render_color( $title_padding['Mobile']['top'] . $title_padding['unit'] ) );
+			$css->add_property( 'padding-right', $css->render_color( $title_padding['Mobile']['right'] . $title_padding['unit'] ) );
+			$css->add_property( 'padding-bottom', $css->render_color( $title_padding['Mobile']['bottom'] . $title_padding['unit'] ) );
+			$css->add_property( 'padding-left', $css->render_color( $title_padding['Mobile']['left'] . $title_padding['unit'] ) );
+
+        }
 		$css->stop_media_query();
 		return $css->css_output();
 

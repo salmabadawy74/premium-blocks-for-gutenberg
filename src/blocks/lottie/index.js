@@ -2,8 +2,7 @@ import PbgIcon from "../icons";
 import edit from "./edit";
 import { lottie } from "../../../assets/js/settings";
 import save from "./save";
-import deprecated from './deprecated'
-
+import deprecated from './deprecated';
 const { __ } = wp.i18n;
 
 const { registerBlockType } = wp.blocks;
