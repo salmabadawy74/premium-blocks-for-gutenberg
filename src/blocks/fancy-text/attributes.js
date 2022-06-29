@@ -1,7 +1,8 @@
 const { __ } = wp.i18n;
 const attributes = {
     blockId: {
-        type: "string"
+        type: "string",
+
     },
     classMigrate: {
         type: "boolean",
@@ -81,7 +82,7 @@ const attributes = {
     },
     hoverPause: {
         type: "boolean",
-        default: ""
+        default: false
     },
     fancyalign: {
         type: "object",

@@ -96,14 +96,12 @@ class edit extends Component {
     }
 
     componentDidMount() {
-        //this.props.setAttributes({ blockId: this.props.clientId.substr(0, 6) });
+        this.props.setAttributes({ blockId: this.props.clientId.substr(0, 6) });
         this.props.setAttributes({ classMigrate: true });
         this.renderFancyText();
 
 
-        if (!this.props.attributes.blockId) {
-            this.props.setAttributes({ blockId: "premium-fancy-text-" + generateBlockId(this.props.clientId) });
-        }
+
     }
 
     componentDidUpdate() {
@@ -486,7 +484,7 @@ class edit extends Component {
                                     onChange={(align) => setAttributes({ fancyalign: align })}
                                     label={__("Align Content", "premium-blocks-for-gutenberg")}
                                     showIcons={true} />
-                                    
+
                             </Fragment>
                         )}
                     </PanelBody>

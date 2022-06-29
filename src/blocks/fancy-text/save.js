@@ -29,21 +29,21 @@ export default function save(props) {
         PreStyles
     } = props.attributes;
 
-
+    console.log(blockId)
     return (
         <div
             className={classnames(className, `${hideDesktop} ${hideTablet} ${hideMobile}`)}
             style={{
-                textAlign: align,
+                textAlign: 'center',
             }}
         >
 
             {effect === "typing" ? (
                 <div
-                id={`premium-fancy-text-${blockId}`}
+                    id={`premium-fancy-text-${blockId}`}
                     className={`premium-fancy-text`}
                     style={{
-                        textAlign: align,
+                        textAlign: "align",
                     }}
                     data-effect={`${effect}`}
                     data-strings={`${repeaterFancyText.map(
@@ -107,7 +107,7 @@ export default function save(props) {
                     id={`premium-fancy-text-${blockId}`}
                     className={`premium-fancy-text premium-fancy-slide`}
                     style={{
-                        textAlign: align,
+                        textAlign: 'center',
 
                     }}
                     data-effect={`${effect}`}
@@ -135,7 +135,7 @@ export default function save(props) {
                     <div
                         className={`premium-fancy-text-title-slide`}
                         style={{
-                            textAlign: fancyalign[props.deviceType],
+                            textAlign: 'center',
                             color: fancyStyles[0].fancyTextColor,
                             fontWeight: fancyStyles[0].fancyTextWeight,
                             letterSpacing: `${fancyStyles[0].fancyTextLetter}px`,
