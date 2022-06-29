@@ -22677,14 +22677,14 @@ const deprecated = [{
     let newAttributes = {
       blockId: attributes.block_id ? `premium-fancy-text-${attributes.block_id.split('-')[6]}` : '',
       fancyalign: {
+        Desktop: attributes.fancyalign,
+        Tablet: attributes.fancyalign,
+        Mobile: attributes.fancyalign
+      },
+      align: {
         Desktop: attributes.align,
         Tablet: attributes.align,
         Mobile: attributes.align
-      },
-      align: {
-        Desktop: "center",
-        Tablet: "center",
-        Mobile: "center"
       }
     };
     return Object.assign(attributes, newAttributes);
