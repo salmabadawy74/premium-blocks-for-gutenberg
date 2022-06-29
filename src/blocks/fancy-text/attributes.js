@@ -1,15 +1,19 @@
 const { __ } = wp.i18n;
 const attributes = {
-    block_id: {
+    blockId: {
         type: "string"
     },
     classMigrate: {
         type: "boolean",
-        default: false
+        default: ""
     },
     align: {
-        type: "string",
-        default: "center"
+        type: "object",
+        default: {
+            Desktop: "center",
+            Tablet: "center",
+            Mobile: "center",
+        }
     },
     prefix: {
         type: "string",
@@ -77,23 +81,27 @@ const attributes = {
     },
     hoverPause: {
         type: "boolean",
-        default: false
+        default: ""
     },
     fancyalign: {
-        type: "string",
-        default: "center"
+        type: "object",
+        default: {
+            Desktop: "center",
+            Tablet: "center",
+            Mobile: "center"
+        }
     },
     hideDesktop: {
         type: 'boolean',
-        default: false
+        default: ""
     },
     hideTablet: {
         type: 'boolean',
-        default: false
+        default: ""
     },
     hideMobile: {
         type: 'boolean',
-        default: false
+        default: ""
     },
     fancyStyles: {
         type: "array",

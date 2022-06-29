@@ -2,10 +2,10 @@ import classnames from "classnames"
 
 export default function save(props) {
 
-    const { attributes, className } = props
+    const { className } = props
 
     const {
-        block_id,
+        blockId,
         align,
         prefix,
         suffix,
@@ -27,12 +27,12 @@ export default function save(props) {
         hideMobile,
         fancyStyles,
         PreStyles
-    } = attributes;
+    } = props.attributes;
 
 
     return (
         <div
-            className={classnames(className, `premium-block-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`)}
+            className={classnames(className, `${hideDesktop} ${hideTablet} ${hideMobile}`)}
             style={{
                 textAlign: align,
             }}
@@ -40,7 +40,7 @@ export default function save(props) {
 
             {effect === "typing" ? (
                 <div
-                    id={`premium-fancy-text-${block_id}`}
+                id={`premium-fancy-text-${blockId}`}
                     className={`premium-fancy-text`}
                     style={{
                         textAlign: align,
@@ -104,7 +104,7 @@ export default function save(props) {
                 </div>
             ) : (
                 <div
-                    id={`premium-fancy-text-${block_id}`}
+                    id={`premium-fancy-text-${blockId}`}
                     className={`premium-fancy-text premium-fancy-slide`}
                     style={{
                         textAlign: align,
@@ -135,7 +135,7 @@ export default function save(props) {
                     <div
                         className={`premium-fancy-text-title-slide`}
                         style={{
-                            textAlign: fancyalign,
+                            textAlign: fancyalign[props.deviceType],
                             color: fancyStyles[0].fancyTextColor,
                             fontWeight: fancyStyles[0].fancyTextWeight,
                             letterSpacing: `${fancyStyles[0].fancyTextLetter}px`,

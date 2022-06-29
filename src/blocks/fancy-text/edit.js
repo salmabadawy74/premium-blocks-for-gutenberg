@@ -6,11 +6,15 @@ import AdvancedPopColorControl from '../../components/Color Control/ColorCompone
 import RadioComponent from '../../components/radio-control'
 import { SortableContainer, SortableElement, arrayMove } from "react-sortable-hoc";
 import PremiumShadow from "../../components/PremiumShadow";
+import MultiButtonsControl from '../../components/responsive-radio';
+import Icons from "../../components/icons";
+import { generateBlockId, generateCss } from '../../components/HelperFunction';
 const { __ } = wp.i18n;
 const { withSelect } = wp.data
 const { Component, Fragment } = wp.element;
 const { BlockControls, AlignmentToolbar, InspectorControls } = wp.blockEditor;
 const { PanelBody, SelectControl, TextControl, ToggleControl } = wp.components;
+
 
 const SortableItem = SortableElement(
     ({ edit, removeItem, newIndex, value, changeFancyValue, items }) => (
@@ -92,9 +96,14 @@ class edit extends Component {
     }
 
     componentDidMount() {
-        this.props.setAttributes({ block_id: this.props.clientId.substr(0, 6) });
+        //this.props.setAttributes({ blockId: this.props.clientId.substr(0, 6) });
         this.props.setAttributes({ classMigrate: true });
         this.renderFancyText();
+
+
+        if (!this.props.attributes.blockId) {
+            this.props.setAttributes({ blockId: "premium-fancy-text-" + generateBlockId(this.props.clientId) });
+        }
     }
 
     componentDidUpdate() {
@@ -148,7 +157,7 @@ class edit extends Component {
         const { attributes, setAttributes, isSelected, className } = this.props;
 
         const {
-            block_id,
+            blockId,
             align,
             prefix,
             suffix,
@@ -278,7 +287,7 @@ class edit extends Component {
 
         const renderCss = (<style>
             {`
-           #premium-fancy-text-${block_id} .premium-fancy-text-title {
+           .${blockId}  .premium-fancy-text-title {
             font-size:${fancyTextFontSize}${fancyStyles[0].fancyTextfontSizeUnit};
             color: ${fancyStyles[0].fancyTextColor};
             font-weight: ${fancyStyles[0].fancyTextWeight};
@@ -288,7 +297,7 @@ class edit extends Component {
             background-color: ${fancyStyles[0].fancyTextBGColor};
             text-shadow: ${fancyStyles[0].shadowHorizontal}px ${fancyStyles[0].shadowVertical}px ${fancyStyles[0].shadowBlur}px ${fancyStyles[0].shadowColor};
         }
-       #premium-fancy-text-${block_id} .premium-fancy-text-title-slide {
+        .${blockId}  .premium-fancy-text-title-slide {
             font-size:${fancyTextFontSize}${fancyStyles[0].fancyTextfontSizeUnit};
             color: ${fancyStyles[0].fancyTextColor};
             font-weight: ${fancyStyles[0].fancyTextWeight};
@@ -298,10 +307,10 @@ class edit extends Component {
             background-color: ${fancyStyles[0].fancyTextBGColor};
             text-shadow: ${fancyStyles[0].shadowHorizontal}px ${fancyStyles[0].shadowVertical}px ${fancyStyles[0].shadowBlur}px ${fancyStyles[0].shadowColor};
         }
-        #premium-fancy-text-${block_id} .typed-cursor {
+        .${blockId}  .typed-cursor {
             color: ${fancyStyles[0].cursorColor};
         }
-        #premium-fancy-text-${block_id} .premium-fancy-text-prefix-text {
+        .${blockId}  .premium-fancy-text-prefix-text {
             font-size:${PrefixFontSize}${PreStyles[0].textfontSizeUnit};
             color: ${PreStyles[0].textColor};
             font-weight: ${PreStyles[0].textWeight};
@@ -310,7 +319,7 @@ class edit extends Component {
             font-style: ${PreStyles[0].textStyle};
             background-color: ${PreStyles[0].textBGColor};
         }
-        #premium-fancy-text-${block_id} .premium-fancy-text-suffix-text{
+        .${blockId} .premium-fancy-text-suffix-text{
             font-size:${PrefixFontSize}${PreStyles[0].textfontSizeUnit};
             color: ${PreStyles[0].textColor};
             font-weight: ${PreStyles[0].textWeight};
@@ -321,6 +330,7 @@ class edit extends Component {
         }
             `}
         </style>)
+        const mainClasses = classnames(className, "premium-fancy-text");
 
         return [
             renderCss,
@@ -464,12 +474,19 @@ class edit extends Component {
                                     onChange={(newCheck) => setAttributes({ hoverPause: newCheck })}
                                     help={__("If you enabled this option, the slide will be paused when mouseover.", 'premium-blocks-for-gutenberg')}
                                 />
-                                <RadioComponent
+                                {/* <RadioComponent
                                     choices={["right", "center", "left"]}
                                     value={fancyalign}
                                     onChange={newValue => setAttributes({ fancyalign: newValue })}
                                     label={__("Fancy Strings Alignment", 'premium-blocks-for-gutenberg')}
-                                />
+                                /> */}
+                                <MultiButtonsControl
+                                    choices={[{ value: 'left', label: __('Left'), icon: Icons.alignLeft }, { value: 'center', label: __('Center'), icon: Icons.alignCenter }, { value: 'right', label: __('Right'), icon: Icons.alignRight }]}
+                                    value={fancyalign}
+                                    onChange={(align) => setAttributes({ fancyalign: align })}
+                                    label={__("Align Content", "premium-blocks-for-gutenberg")}
+                                    showIcons={true} />
+                                    
                             </Fragment>
                         )}
                     </PanelBody>
@@ -596,15 +613,16 @@ class edit extends Component {
                     />
                 </InspectorControls>
             ),
+
             <div
-                className={classnames(className, `premium-block-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`)}
+                className={`${mainClasses} ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`}
                 style={{
-                    textAlign: align,
+                    textAlign: align?.[this.props.deviceType],
                 }}
             >
                 {effect === "typing" ? (
                     <div
-                        id={`premium-fancy-text-${block_id}`}
+                        id={`premium-fancy-text-${blockId}`}
                         className={`premium-fancy-text`}
                         style={{
                             textAlign: align,
@@ -641,8 +659,9 @@ class edit extends Component {
                     </div>
                 ) : (
                     <div
-                        id={`premium-fancy-text-${block_id}`}
+                        id={`premium-fancy-text-${blockId}`}
                         className={`premium-fancy-text premium-fancy-slide`}
+                        //className={`${mainClasses} ${blockId}`}
                         style={{
                             textAlign: align,
                         }}
@@ -662,7 +681,7 @@ class edit extends Component {
                         <div
                             className={`premium-fancy-text-title-slide`}
                             style={{
-                                textAlign: fancyalign,
+                                textAlign: fancyalign[this.props.deviceType],
                             }}
                         >
                             <ul
