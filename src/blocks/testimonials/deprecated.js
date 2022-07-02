@@ -234,7 +234,7 @@ const attributes = {
 
 const deprecatedContent = [
     {
-        attributes: deprecated_attributes,
+        attributes: attributes,
         migrate: (attributes) => {
             let newAttributes = {
                 blockId: attributes.block_id ? `premium-testimonial-${attributes.block_id.split('-')[6]}` : '',

@@ -3704,6 +3704,31 @@ class PBG_Blocks_Helper {
 		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
 		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
 
+		if ( isset( $attr['authorTypography']['fontFamily'] ) ) {
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $attr['authorTypography']['fontFamily'] ) ? $attr['authorTypography']['fontFamily'] : '' ),
+					'fontVariant' => ( isset( $attr['authorTypography']['fontWeight'] ) ? $attr['authorTypography']['fontWeight'] : '' ),
+				)
+			);
+		}
+		if ( isset( $attr['companyTypography']['fontFamily'] ) ) {
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $attr['companyTypography']['fontFamily'] ) ? $attr['companyTypography']['fontFamily'] : '' ),
+					'fontVariant' => ( isset( $attr['companyTypography']['fontWeight'] ) ? $attr['companyTypography']['fontWeight'] : '' ),
+				)
+			);
+		}
+		if ( isset( $attr['contentTypography']['fontFamily'] ) ) {
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $attr['contentTypography']['fontFamily'] ) ? $attr['contentTypography']['fontFamily'] : '' ),
+					'fontVariant' => ( isset( $attr['contentTypography']['fontWeight'] ) ? $attr['contentTypography']['fontWeight'] : '' ),
+				)
+			);
+		}
+
 		if ( isset( $attr['align'] ) ) {
 			$css->set_selector( '.' . $unique_id . '> .premium-testimonial__container'  . ' > .premium-testimonial__content' );
 			$css->add_property( 'text-align', ( $attr['align']['Desktop'] . '!important' ) );

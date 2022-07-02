@@ -43720,7 +43720,7 @@ const attributes = {
   }
 };
 const deprecatedContent = [{
-  attributes: deprecated_attributes,
+  attributes: attributes,
   migrate: attributes => {
     let newAttributes = {
       blockId: attributes.block_id ? `premium-testimonial-${attributes.block_id.split('-')[6]}` : '',
@@ -44933,7 +44933,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_inspectorTabs__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../components/inspectorTabs */ "./src/components/inspectorTabs.js");
 /* harmony import */ var _components_inspectorTab__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../components/inspectorTab */ "./src/components/inspectorTab.js");
 /* harmony import */ var _components_icons__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../components/icons */ "./src/components/icons.js");
-/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
+/* harmony import */ var _components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../components/typography/fontLoader */ "./src/components/typography/fontLoader.js");
+/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
+
 
 
 
@@ -44985,7 +44987,7 @@ class edit extends Component {
       clientId
     } = this.props;
     setAttributes({
-      blockId: "premium-testimonial-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.generateBlockId)(clientId)
+      blockId: "premium-testimonial-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_20__.generateBlockId)(clientId)
     });
     this.props.setAttributes({
       classMigrate: true
@@ -45107,6 +45109,43 @@ class edit extends Component {
                         border-color: ${imgBorderColor};
                     }
                 `);
+    let loadAuthorGoogleFonts;
+    let loadCompanyGoogleFonts;
+    let loadContentGoogleFonts;
+
+    if (authorTypography.fontFamily !== 'Default') {
+      const authorConfig = {
+        google: {
+          families: [authorTypography.fontFamily]
+        }
+      };
+      loadAuthorGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_19__["default"], {
+        config: authorConfig
+      });
+    }
+
+    if (companyTypography.fontFamily !== 'Default') {
+      const companyConfig = {
+        google: {
+          families: [companyTypography.fontFamily]
+        }
+      };
+      loadCompanyGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_19__["default"], {
+        config: companyConfig
+      });
+    }
+
+    if (contentTypography.fontFamily !== 'Default') {
+      const contentConfig = {
+        google: {
+          families: [contentTypography.fontFamily]
+        }
+      };
+      loadContentGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_19__["default"], {
+        config: contentConfig
+      });
+    }
+
     const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-testimonial");
     return [isSelected && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InspectorControls, {
       key: "inspector"
@@ -45410,8 +45449,8 @@ class edit extends Component {
       })
     })))), renderCss, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: `${mainClasses}__wrap ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`,
-      style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.gradientBackground)(containerBackground),
-        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.padddingCss)(containerPadding, this.props.deviceType),
+      style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_20__.gradientBackground)(containerBackground),
+        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_20__.padddingCss)(containerPadding, this.props.deviceType),
         boxShadow: `${containerShadow.horizontal || 0}px ${containerShadow.vertical || 0}px ${containerShadow.blur || 0}px ${containerShadow.color} ${containerShadow.position}`
       }
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -45445,8 +45484,8 @@ class edit extends Component {
       onChange: newText => setAttributes({
         text: newText
       }),
-      style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.typographyCss)(contentTypography, this.props.deviceType),
-        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.marginCss)(contentMargin, this.props.deviceType),
+      style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_20__.typographyCss)(contentTypography, this.props.deviceType),
+        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_20__.marginCss)(contentMargin, this.props.deviceType),
         color: contentStyle[0].bodyColor
       },
       keepPlaceholderOnFocus: true
@@ -45462,7 +45501,7 @@ class edit extends Component {
       onChange: newText => setAttributes({
         author: newText
       }),
-      style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.typographyCss)(authorTypography, this.props.deviceType),
+      style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_20__.typographyCss)(authorTypography, this.props.deviceType),
         color: authorStyles[0].authorColor
       }
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
@@ -45477,7 +45516,7 @@ class edit extends Component {
         authorCom: newText
       }),
       value: authorCom,
-      style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.typographyCss)(companyTypography, this.props.deviceType),
+      style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_20__.typographyCss)(companyTypography, this.props.deviceType),
         color: companyStyles[0].authorComColor
       }
     }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
@@ -45487,7 +45526,7 @@ class edit extends Component {
       unit: quotUnit,
       color: quoteStyles[0].quotColor,
       opacity: quoteStyles[0].quotOpacity
-    }))))];
+    }))), loadAuthorGoogleFonts, loadCompanyGoogleFonts, loadContentGoogleFonts)];
   }
 
 }

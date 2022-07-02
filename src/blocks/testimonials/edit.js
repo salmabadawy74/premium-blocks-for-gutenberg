@@ -16,6 +16,7 @@ import PremiumShadow from "../../components/PremiumShadow";
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
 import Icons from "../../components/icons";
+import WebfontLoader from "../../components/typography/fontLoader"
 import { gradientBackground, padddingCss, marginCss, typographyCss, generateBlockId } from '../../components/HelperFunction'
 
 const { __ } = wp.i18n;
@@ -142,6 +143,44 @@ class edit extends Component {
                 `}
             </style>
         );
+
+        let loadAuthorGoogleFonts;
+        let loadCompanyGoogleFonts;
+        let loadContentGoogleFonts;
+
+        if (authorTypography.fontFamily !== 'Default') {
+            const authorConfig = {
+                google: {
+                    families: [authorTypography.fontFamily],
+                },
+            }
+            loadAuthorGoogleFonts = (
+                <WebfontLoader config={authorConfig}>
+                </WebfontLoader>
+            )
+        }
+        if (companyTypography.fontFamily !== 'Default') {
+            const companyConfig = {
+                google: {
+                    families: [companyTypography.fontFamily],
+                },
+            }
+            loadCompanyGoogleFonts = (
+                <WebfontLoader config={companyConfig}>
+                </WebfontLoader>
+            )
+        }
+        if (contentTypography.fontFamily !== 'Default') {
+            const contentConfig = {
+                google: {
+                    families: [contentTypography.fontFamily],
+                },
+            }
+            loadContentGoogleFonts = (
+                <WebfontLoader config={contentConfig}>
+                </WebfontLoader>
+            )
+        }
 
         const mainClasses = classnames(className, "premium-testimonial");
 
@@ -506,6 +545,9 @@ class edit extends Component {
                         />
                     </span>
                 </div>
+                {loadAuthorGoogleFonts}
+                {loadCompanyGoogleFonts}
+                {loadContentGoogleFonts}
             </div>
         ];
     }
