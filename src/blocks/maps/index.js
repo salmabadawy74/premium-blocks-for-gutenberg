@@ -5,6 +5,9 @@ import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 import RadioComponent from '../../components/radio-control';
+import PBG_Block_Icons from '../../../blocks-config/block-icons'
+import { gradientBackground, borderCss, padddingCss, marginCss, typographyCss, generateBlockId } from '../../components/HelperFunction'
+
 const className = "premium-maps";
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
@@ -24,7 +27,7 @@ const { Component, Fragment } = wp.element;
 let isMapUpdated = null;
 
 const mapAttrs = {
-    mapID: {
+    blockId: {
         type: "string"
     },
     mapStyle: {
@@ -296,8 +299,8 @@ class PremiumMap extends Component {
 
     componentDidMount() {
         const { attributes, setAttributes, clientId } = this.props;
-        if (!attributes.mapID) {
-            setAttributes({ mapID: "premium-map-" + clientId });
+        if (!attributes.blockId) {
+            setAttributes({ blockId: "premium-map-" + generateBlockId(clientId) });
         }
         this.initMap();
     }
@@ -310,12 +313,12 @@ class PremiumMap extends Component {
     }
 
     initMap() {
-        if (typeof google === "undefined" || !this.props.attributes.mapID)
+        if (typeof google === "undefined" || !this.props.attributes.blockId)
             return null;
 
         const { thisMap, thisInfo } = this.state;
         const {
-            mapID,
+            blockId,
             mapStyle,
             mapType,
             zoom,
@@ -349,7 +352,7 @@ class PremiumMap extends Component {
             parseFloat(centerLng)
         );
         if (!map) {
-            let mapElem = document.getElementById(mapID);
+            let mapElem = document.getElementById(blockId);
             map = new google.maps.Map(mapElem, {
                 zoom: zoom,
                 gestureHandling: "cooperative",
@@ -425,7 +428,7 @@ class PremiumMap extends Component {
         const { isSelected, setAttributes, clientId } = this.props;
 
         const {
-            mapID,
+            blockId,
             mapStyle,
             mapType,
             height,
@@ -751,8 +754,7 @@ class PremiumMap extends Component {
                 </InspectorControls >
             ),
             <div
-                className={`${className}__wrap ${hideDesktop} ${hideTablet} ${hideMobile}`}
-                id={mapID}
+                className={`${className}__wrap ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`}
                 style={{
                     height: height + "px"
                 }}
@@ -763,7 +765,8 @@ class PremiumMap extends Component {
 
 registerBlockType("premium/maps", {
     title: __("Maps"),
-    icon: <PbgIcon icon="maps" />,
+    description: __('Embed Google Maps to your Gutenberg page using Premium Maps Block.', 'premium-block-for-gutenberg'),
+    icon: PBG_Block_Icons.maps,
     category: "premium-blocks",
     attributes: mapAttrs,
     supports: {
@@ -772,7 +775,7 @@ registerBlockType("premium/maps", {
     edit: PremiumMap,
     save: props => {
         const {
-            mapID,
+            blockId,
             height,
             mapStyle,
             mapType,
@@ -805,8 +808,7 @@ registerBlockType("premium/maps", {
 
         return (
             <div
-                className={`${className}__wrap ${hideDesktop} ${hideTablet} ${hideMobile}`}
-                id={mapID}
+                className={`${className}__wrap ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`}
                 style={{
                     height: height + "px"
                 }}
@@ -847,7 +849,7 @@ registerBlockType("premium/maps", {
                 <script>
                     {`window.addEventListener('load',function(){
                     if( typeof google === 'undefined' ) return;
-                    let mapElem = document.getElementById('${mapID}');
+                    let mapElem = document.getElementsByClassName('${blockId}');
                     let pin = mapElem.querySelector('.${className}__marker');
                     let latlng = new google.maps.LatLng( parseFloat( ${centerLat} ) , parseFloat( ${centerLng} ) );
 

@@ -972,7 +972,7 @@ a.premium-dheading-block__link:hover {
     padding: 20px;
 }
 
-.premium-testimonial__content .premium-testimonial__img {
+.premium-testimonial__content img {
     border-style: solid;
 }
 
@@ -1031,6 +1031,16 @@ a.premium-dheading-block__link:hover {
     display: -ms-flex;
     display: flex;
     align-items: baseline;
+}
+
+.premium-testimonial__content .premium-testimonial__info {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
 }
 
 .premium-countup__wrap .premium-countup__title {

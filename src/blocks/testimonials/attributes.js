@@ -1,5 +1,7 @@
+const { __ } = wp.i18n;
+
 const testimonialsAttrs = {
-    block_id: {
+    blockId: {
         type: "string"
     },
     classMigrate: {
@@ -7,8 +9,12 @@ const testimonialsAttrs = {
         default: false
     },
     align: {
-        type: "string",
-        default: "center"
+        type: "object",
+        default: {
+            "Desktop": "center",
+            "Tablet": "center",
+            "Mobile": "center"
+        }
     },
     authorImgId: {
         type: "string"
@@ -21,7 +27,11 @@ const testimonialsAttrs = {
         default: "50%"
     },
     imgSize: {
-        type: "number"
+        type: "object",
+        default: {
+            Desktop: '',
+            unit: 'px'
+        }
     },
     imgBorder: {
         type: "number",
@@ -40,37 +50,17 @@ const testimonialsAttrs = {
         type: 'array',
         default: [
             {
-                authorTag: "H3",
+                authorTag: "h3",
                 authorColor: '',
-                authorSize: '',
-                authorSizeUnit: 'px',
-                authorSizeMobile: '',
-                authorSizeTablet: '',
-                authorLetter: '',
-                authorStyle: '',
-                authorUpper: false,
-                authorWeight: 500,
-                authorComTag: "H4",
+                authorComTag: "h4",
             }
         ]
-    },
-
-    paddingTop: {
-        type: "number"
-    },
-    paddingRight: {
-        type: "number"
-    },
-    paddingBottom: {
-        type: "number"
-    },
-    paddingLeft: {
-        type: "number"
     },
     text: {
         type: "array",
         source: "children",
-        selector: ".premium-testimonial__text"
+        selector: ".premium-testimonial__text",
+        default: "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
     },
     authorCom: {
         type: "array",
@@ -80,28 +70,21 @@ const testimonialsAttrs = {
     },
     hideDesktop: {
         type: 'boolean',
-        default: false
+        default: ''
     },
     hideTablet: {
         type: 'boolean',
-        default: false
+        default: ''
     },
     hideMobile: {
         type: 'boolean',
-        default: false
+        default: ''
     },
     contentStyle: {
         type: "array",
         default: [
             {
-                bodySizeUnit: 'px',
-                bodySize: '',
-                bodySizeMobile: '',
-                bodySizeTablet: '',
-                bodyColor: '',
-                bodyLine: '',
-                bodyTop: '',
-                bodyBottom: '',
+                bodyColor: ''
             }
         ]
 
@@ -111,11 +94,7 @@ const testimonialsAttrs = {
         default: [
             {
                 authorComTag: 'H4',
-                authorComSizeUnit: 'px',
                 authorComColor: '',
-                authorComSize: '',
-                authorComSizeMobile: '',
-                authorComSizeTablet: '',
                 dashColor: '',
                 urlCheck: false,
                 urlText: '',
@@ -128,68 +107,147 @@ const testimonialsAttrs = {
         type: "array",
         default: [
             {
-                quotSize: 2,
                 quotColor: '',
                 quotOpacity: 50,
 
             }
         ]
     },
-    containerStyles: {
-        type: "array",
-        default: [
-            {
-                backOpacity: 1,
-                containerBack: '',
-                backgroundImageID: '',
-                backgroundImageURL: '',
-                backgroundRepeat: 'no-reapet',
-                backgroundPosition: 'top center',
-                backgroundSize: 'auto',
-                fixed: false,
-                shadowColor: '',
-                shadowBlur: '',
-                shadowHorizontal: '',
-                shadowVertical: '',
-                shadowPosition: '',
-                paddingUnit: 'px',
-                gradientColorOne: '',
-                gradientLocationOne: '0',
-                gradientColorTwo: '',
-                gradientLocationTwo: '100',
-                gradientType: 'linear',
-                gradientAngle: '180',
-                gradientPosition: 'center center'
+    contentTypography: {
+        type: "object",
+        default: {
+            "fontWeight": 400,
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
+            'lineHeight': '',
+            'fontSize': {
+                'Desktop': 20,
+                "Tablet": 20,
+                "Mobile": 20,
+                unit: 'px'
             }
-        ]
+        }
     },
-    backgroundType: {
+    contentMargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            unit: "px"
+        }
+    },
+    companyTypography: {
+        type: "object",
+        default: {
+            "fontWeight": 400,
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
+            'lineHeight': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                unit: 'px'
+            }
+        }
+    },
+    quotSize: {
+        type: "number",
+        default: 2
+    },
+    quotUnit: {
         type: "string",
-        default: ""
+        default: 'em'
     },
-    paddingTTablet: {
-        type: "number"
+    authorTypography: {
+        type: "object",
+        default: {
+            "fontWeight": 600,
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
+            'lineHeight': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                unit: 'px'
+            }
+        }
     },
-    paddingRTablet: {
-        type: "number"
+    containerBackground: {
+        type: "object",
+        default: {
+            "backgroundType": "",
+            "backgroundColor": "",
+            "backgroundImageID": "",
+            "backgroundImageURL": "",
+            "backgroundPosition": "",
+            "backgroundRepeat": "",
+            "backgroundSize": "",
+            "fixed": false,
+            "gradientLocationOne": "",
+            "gradientColorTwo": "",
+            "gradientLocationTwo": "",
+            "gradientAngle": "",
+            "gradientPosition": "",
+            "gradientType": ""
+        }
     },
-    paddingBTablet: {
-        type: "number"
+    containerShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
     },
-    paddingLTablet: {
-        type: "number"
-    },
-    paddingTMobile: {
-        type: "number"
-    },
-    paddingRMobile: {
-        type: "number"
-    },
-    paddingBMobile: {
-        type: "number"
-    },
-    paddingLMobile: {
-        type: "number"
+    containerPadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            unit: "px"
+        }
     },
 };
 export default testimonialsAttrs;

@@ -245,6 +245,66 @@ const PBG_Block_Icons = {
     class: "cls-1",
     d: "M16.5,13.25h-8a.75.75,0,0,1,0-1.5h8a.75.75,0,0,1,0,1.5Z",
     transform: "translate(-1.75 -6.25)"
+  }))),
+  image_separator: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    id: "Premium_Blocks",
+    "data-name": "Premium Blocks",
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "21.49",
+    height: "21.5",
+    viewBox: "0 0 21.49 21.5"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("defs", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, `.cls-1{fill:#1a1a1a;}`)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("title", null, "premium-image-separator-block"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("g", {
+    id: "Image_Separator",
+    "data-name": "Image Separator"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    class: "cls-1",
+    d: "M18.87,23.25H6.11a4.37,4.37,0,0,1-3.89-6.32l1.72-3.44a3.23,3.23,0,0,1,2.49-1.93,3.21,3.21,0,0,1,2.81,1.36l.22.29a1.76,1.76,0,0,0,1.45.78,1.74,1.74,0,0,0,1.3-1L14.1,9.57c.78-1.41,1.83-2.16,3-2.09s2.08.9,2.71,2.38l3.13,7.31h0a4.36,4.36,0,0,1-4,6.08ZM6.7,13H6.58a1.8,1.8,0,0,0-1.3,1.11L3.56,17.6a2.86,2.86,0,0,0,2.55,4.15H18.87a2.87,2.87,0,0,0,2.64-4l-3.13-7.3C18,9.55,17.47,9,17,9s-1.09.47-1.56,1.32L13.52,13.7A3.19,3.19,0,0,1,11,15.48a3.24,3.24,0,0,1-2.75-1.34l-.23-.29A1.84,1.84,0,0,0,6.7,13Z",
+    transform: "translate(-1.75 -1.75)"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    class: "cls-1",
+    d: "M7.49,9.25A3.75,3.75,0,1,1,11.24,5.5,3.76,3.76,0,0,1,7.49,9.25Zm0-6A2.25,2.25,0,1,0,9.74,5.5,2.25,2.25,0,0,0,7.49,3.25Z",
+    transform: "translate(-1.75 -1.75)"
+  }))),
+  maps: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    id: "Premium_Blocks",
+    "data-name": "Premium Blocks",
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "21.21",
+    height: "18.84",
+    viewBox: "0 0 21.21 18.84"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("defs", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, `.cls-1{fill:#1a1a1a;}`)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("title", null, "premium-google-maps-block"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("g", {
+    id: "Google_Maps",
+    "data-name": "Google Maps"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    class: "cls-1",
+    d: "M21.85,4.4A2.86,2.86,0,0,0,19,4.59L16.64,5.93a1.47,1.47,0,0,1-1.18,0L10.21,3.34a3,3,0,0,0-2.6.07L3.28,5.89A3,3,0,0,0,1.9,8.27V18a2.84,2.84,0,0,0,1.25,2.59A2.86,2.86,0,0,0,6,20.4l2.35-1.34a1.47,1.47,0,0,1,1.18,0l5.25,2.63a3,3,0,0,0,2.6-.08l4.33-2.48a3,3,0,0,0,1.39-2.39V7A2.84,2.84,0,0,0,21.85,4.4ZM7.61,17.75,5.26,19.09a1.39,1.39,0,0,1-1.36.2A1.44,1.44,0,0,1,3.4,18V8.27A1.47,1.47,0,0,1,4,7.2L8.17,4.83v12.7A2.11,2.11,0,0,0,7.61,17.75Zm7.72,2.5-5.11-2.56a2.11,2.11,0,0,0-.55-.19V4.75L14.79,7.3a2.3,2.3,0,0,0,.54.19Zm6.28-3.54A1.5,1.5,0,0,1,21,17.8l-4.14,2.37V7.46a2.11,2.11,0,0,0,.56-.22L19.74,5.9a1.39,1.39,0,0,1,1.36-.2A1.43,1.43,0,0,1,21.61,7Z",
+    transform: "translate(-1.9 -3.08)"
+  }))),
+  testimonials: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    id: "Premium_Blocks",
+    "data-name": "Premium Blocks",
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "21.48",
+    height: "21.54",
+    viewBox: "0 0 21.48 21.54"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("defs", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, `.cls-1{fill:#1a1a1a;}`)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("title", null, "premium-testimonials-block"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("g", {
+    id: "Testimonials"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    class: "cls-1",
+    d: "M17.7,1.73H11.3c-3.82,0-5.08,2.12-5.42,4.13-2,.33-4.12,1.59-4.12,5.41v4c0,4.62,2.12,5.54,5.54,5.54h.37l.07,0,1.2,1.6a1.87,1.87,0,0,0,3.12,0l1.24-1.62h.4c3.84,0,5.09-2.14,5.41-4.12,2-.33,4.13-1.6,4.13-5.42v-4C23.24,3.65,21.32,1.73,17.7,1.73Zm-4,17.58h-.4a1.57,1.57,0,0,0-1.24.62l-1.2,1.61a.4.4,0,0,1-.72,0l-1.2-1.6a1.68,1.68,0,0,0-1.24-.62H7.3c-3,0-4-.61-4-4v-4c0-2.5,1-3.77,3.29-4h.09a4.68,4.68,0,0,1,.66,0h6.4c2.79,0,4,1.25,4,4v4a3.85,3.85,0,0,1,0,.48,1.49,1.49,0,0,1,0,.21C17.51,18.25,16.24,19.31,13.7,19.31Zm8-8c0,2.2-.8,3.45-2.5,3.87V11.27c0-3.62-1.92-5.54-5.54-5.54H7.43C7.86,4,9.1,3.23,11.3,3.23h6.4c2.79,0,4,1.25,4,4Z",
+    transform: "translate(-1.76 -1.73)"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    class: "cls-1",
+    d: "M14,14.73a1,1,0,0,1,0-2h0a1,1,0,1,1,0,2Z",
+    transform: "translate(-1.76 -1.73)"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    class: "cls-1",
+    d: "M10.51,14.73a1,1,0,0,1,0-2h0a1,1,0,1,1,0,2Z",
+    transform: "translate(-1.76 -1.73)"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    class: "cls-1",
+    d: "M7,14.73a1,1,0,0,1,0-2H7a1,1,0,1,1,0,2Z",
+    transform: "translate(-1.76 -1.73)"
   })))
 };
 /* harmony default export */ __webpack_exports__["default"] = (PBG_Block_Icons);
@@ -33452,6 +33512,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/RangeControl/single-range-control */ "./src/components/RangeControl/single-range-control.js");
 /* harmony import */ var _components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/Color Control/ColorComponent */ "./src/components/Color Control/ColorComponent.js");
 /* harmony import */ var _components_radio_control__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/radio-control */ "./src/components/radio-control.js");
+/* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
+/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
+
+
 
 
 
@@ -33483,7 +33547,7 @@ const {
 } = wp.element;
 let isMapUpdated = null;
 const mapAttrs = {
-  mapID: {
+  blockId: {
     type: "string"
   },
   mapStyle: {
@@ -33757,9 +33821,9 @@ class PremiumMap extends Component {
       clientId
     } = this.props;
 
-    if (!attributes.mapID) {
+    if (!attributes.blockId) {
       setAttributes({
-        mapID: "premium-map-" + clientId
+        blockId: "premium-map-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_9__.generateBlockId)(clientId)
       });
     }
 
@@ -33773,13 +33837,13 @@ class PremiumMap extends Component {
   }
 
   initMap() {
-    if (typeof google === "undefined" || !this.props.attributes.mapID) return null;
+    if (typeof google === "undefined" || !this.props.attributes.blockId) return null;
     const {
       thisMap,
       thisInfo
     } = this.state;
     const {
-      mapID,
+      blockId,
       mapStyle,
       mapType,
       zoom,
@@ -33810,7 +33874,7 @@ class PremiumMap extends Component {
     let latlng = new google.maps.LatLng(parseFloat(centerLat), parseFloat(centerLng));
 
     if (!map) {
-      let mapElem = document.getElementById(mapID);
+      let mapElem = document.getElementById(blockId);
       map = new google.maps.Map(mapElem, {
         zoom: zoom,
         gestureHandling: "cooperative",
@@ -33891,7 +33955,7 @@ class PremiumMap extends Component {
       clientId
     } = this.props;
     const {
-      mapID,
+      blockId,
       mapStyle,
       mapType,
       height,
@@ -34196,8 +34260,7 @@ class PremiumMap extends Component {
         hideMobile: value ? " premium-mobile-hidden" : ""
       })
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `${className}__wrap ${hideDesktop} ${hideTablet} ${hideMobile}`,
-      id: mapID,
+      className: `${className}__wrap ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`,
       style: {
         height: height + "px"
       }
@@ -34208,9 +34271,8 @@ class PremiumMap extends Component {
 
 registerBlockType("premium/maps", {
   title: __("Maps"),
-  icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_icons__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    icon: "maps"
-  }),
+  description: __('Embed Google Maps to your Gutenberg page using Premium Maps Block.', 'premium-block-for-gutenberg'),
+  icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_8__["default"].maps,
   category: "premium-blocks",
   attributes: mapAttrs,
   supports: {
@@ -34219,7 +34281,7 @@ registerBlockType("premium/maps", {
   edit: PremiumMap,
   save: props => {
     const {
-      mapID,
+      blockId,
       height,
       mapStyle,
       mapType,
@@ -34250,8 +34312,7 @@ registerBlockType("premium/maps", {
       hideMobile
     } = props.attributes;
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `${className}__wrap ${hideDesktop} ${hideTablet} ${hideMobile}`,
-      id: mapID,
+      className: `${className}__wrap ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`,
       style: {
         height: height + "px"
       }
@@ -34278,7 +34339,7 @@ registerBlockType("premium/maps", {
       }
     }, markerDesc))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("script", null, `window.addEventListener('load',function(){
                     if( typeof google === 'undefined' ) return;
-                    let mapElem = document.getElementById('${mapID}');
+                    let mapElem = document.getElementsByClassName('${blockId}');
                     let pin = mapElem.querySelector('.${className}__marker');
                     let latlng = new google.maps.LatLng( parseFloat( ${centerLat} ) , parseFloat( ${centerLng} ) );
 
@@ -43165,8 +43226,11 @@ const save = props => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+const {
+  __
+} = wp.i18n;
 const testimonialsAttrs = {
-  block_id: {
+  blockId: {
     type: "string"
   },
   classMigrate: {
@@ -43174,8 +43238,12 @@ const testimonialsAttrs = {
     default: false
   },
   align: {
-    type: "string",
-    default: "center"
+    type: "object",
+    default: {
+      "Desktop": "center",
+      "Tablet": "center",
+      "Mobile": "center"
+    }
   },
   authorImgId: {
     type: "string"
@@ -43188,7 +43256,11 @@ const testimonialsAttrs = {
     default: "50%"
   },
   imgSize: {
-    type: "number"
+    type: "object",
+    default: {
+      Desktop: '',
+      unit: 'px'
+    }
   },
   imgBorder: {
     type: "number",
@@ -43206,35 +43278,16 @@ const testimonialsAttrs = {
   authorStyles: {
     type: 'array',
     default: [{
-      authorTag: "H3",
+      authorTag: "h3",
       authorColor: '',
-      authorSize: '',
-      authorSizeUnit: 'px',
-      authorSizeMobile: '',
-      authorSizeTablet: '',
-      authorLetter: '',
-      authorStyle: '',
-      authorUpper: false,
-      authorWeight: 500,
-      authorComTag: "H4"
+      authorComTag: "h4"
     }]
-  },
-  paddingTop: {
-    type: "number"
-  },
-  paddingRight: {
-    type: "number"
-  },
-  paddingBottom: {
-    type: "number"
-  },
-  paddingLeft: {
-    type: "number"
   },
   text: {
     type: "array",
     source: "children",
-    selector: ".premium-testimonial__text"
+    selector: ".premium-testimonial__text",
+    default: "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
   },
   authorCom: {
     type: "array",
@@ -43244,38 +43297,27 @@ const testimonialsAttrs = {
   },
   hideDesktop: {
     type: 'boolean',
-    default: false
+    default: ''
   },
   hideTablet: {
     type: 'boolean',
-    default: false
+    default: ''
   },
   hideMobile: {
     type: 'boolean',
-    default: false
+    default: ''
   },
   contentStyle: {
     type: "array",
     default: [{
-      bodySizeUnit: 'px',
-      bodySize: '',
-      bodySizeMobile: '',
-      bodySizeTablet: '',
-      bodyColor: '',
-      bodyLine: '',
-      bodyTop: '',
-      bodyBottom: ''
+      bodyColor: ''
     }]
   },
   companyStyles: {
     type: "array",
     default: [{
       authorComTag: 'H4',
-      authorComSizeUnit: 'px',
       authorComColor: '',
-      authorComSize: '',
-      authorComSizeMobile: '',
-      authorComSizeTablet: '',
       dashColor: '',
       urlCheck: false,
       urlText: '',
@@ -43285,64 +43327,145 @@ const testimonialsAttrs = {
   quoteStyles: {
     type: "array",
     default: [{
-      quotSize: 2,
       quotColor: '',
       quotOpacity: 50
     }]
   },
-  containerStyles: {
-    type: "array",
-    default: [{
-      backOpacity: 1,
-      containerBack: '',
-      backgroundImageID: '',
-      backgroundImageURL: '',
-      backgroundRepeat: 'no-reapet',
-      backgroundPosition: 'top center',
-      backgroundSize: 'auto',
-      fixed: false,
-      shadowColor: '',
-      shadowBlur: '',
-      shadowHorizontal: '',
-      shadowVertical: '',
-      shadowPosition: '',
-      paddingUnit: 'px',
-      gradientColorOne: '',
-      gradientLocationOne: '0',
-      gradientColorTwo: '',
-      gradientLocationTwo: '100',
-      gradientType: 'linear',
-      gradientAngle: '180',
-      gradientPosition: 'center center'
-    }]
+  contentTypography: {
+    type: "object",
+    default: {
+      "fontWeight": 400,
+      'fontStyle': '',
+      'textTransform': '',
+      'letterSpacing': '',
+      'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
+      'lineHeight': '',
+      'fontSize': {
+        'Desktop': 20,
+        "Tablet": 20,
+        "Mobile": 20,
+        unit: 'px'
+      }
+    }
   },
-  backgroundType: {
+  contentMargin: {
+    type: "object",
+    default: {
+      Desktop: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      Tablet: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      Mobile: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      unit: "px"
+    }
+  },
+  companyTypography: {
+    type: "object",
+    default: {
+      "fontWeight": 400,
+      'fontStyle': '',
+      'textTransform': '',
+      'letterSpacing': '',
+      'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
+      'lineHeight': '',
+      'fontSize': {
+        'Desktop': '',
+        "Tablet": '',
+        "Mobile": '',
+        unit: 'px'
+      }
+    }
+  },
+  quotSize: {
+    type: "number",
+    default: 2
+  },
+  quotUnit: {
     type: "string",
-    default: ""
+    default: 'em'
   },
-  paddingTTablet: {
-    type: "number"
+  authorTypography: {
+    type: "object",
+    default: {
+      "fontWeight": 600,
+      'fontStyle': '',
+      'textTransform': '',
+      'letterSpacing': '',
+      'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
+      'lineHeight': '',
+      'fontSize': {
+        'Desktop': '',
+        "Tablet": '',
+        "Mobile": '',
+        unit: 'px'
+      }
+    }
   },
-  paddingRTablet: {
-    type: "number"
+  containerBackground: {
+    type: "object",
+    default: {
+      "backgroundType": "",
+      "backgroundColor": "",
+      "backgroundImageID": "",
+      "backgroundImageURL": "",
+      "backgroundPosition": "",
+      "backgroundRepeat": "",
+      "backgroundSize": "",
+      "fixed": false,
+      "gradientLocationOne": "",
+      "gradientColorTwo": "",
+      "gradientLocationTwo": "",
+      "gradientAngle": "",
+      "gradientPosition": "",
+      "gradientType": ""
+    }
   },
-  paddingBTablet: {
-    type: "number"
+  containerShadow: {
+    type: "object",
+    default: {
+      'color': '',
+      'blur': '',
+      'horizontal': '',
+      'vertical': '',
+      'position': ' '
+    }
   },
-  paddingLTablet: {
-    type: "number"
-  },
-  paddingTMobile: {
-    type: "number"
-  },
-  paddingRMobile: {
-    type: "number"
-  },
-  paddingBMobile: {
-    type: "number"
-  },
-  paddingLMobile: {
-    type: "number"
+  containerPadding: {
+    type: "object",
+    default: {
+      Desktop: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      Tablet: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      Mobile: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      unit: "px"
+    }
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (testimonialsAttrs);
@@ -43597,6 +43720,265 @@ const attributes = {
   }
 };
 const deprecatedContent = [{
+  attributes: deprecated_attributes,
+  migrate: attributes => {
+    let newAttributes = {
+      blockId: attributes.block_id ? `premium-testimonial-${attributes.block_id.split('-')[6]}` : '',
+      align: {
+        "Desktop": attributes.align,
+        "Tablet": attributes.align,
+        "Mobile": attributes.align
+      },
+      imgSize: {
+        Desktop: attributes.imgSize,
+        unit: "px"
+      },
+      hideDesktop: '',
+      hideTablet: '',
+      hideMobile: '',
+      quotSize: attributes.quoteStyles[0].quotSize,
+      quotUnit: 'em',
+      contentTypography: {
+        'fontWeight': '',
+        'fontStyle': '',
+        'textTransform': '',
+        'letterSpacing': '',
+        'fontFamily': '',
+        'lineHeight': attributes.contentStyle[0].bodyLine,
+        'fontSize': {
+          'Desktop': attributes.contentStyle[0].bodySize,
+          "Tablet": attributes.contentStyle[0].bodySizeTablet,
+          "Mobile": attributes.contentStyle[0].bodySizeMobile,
+          'unit': attributes.contentStyle[0].bodySizeUnit
+        }
+      },
+      contentMargin: {
+        "Desktop": {
+          top: attributes.contentStyle[0].bodyTop,
+          right: '',
+          bottom: attributes.contentStyle[0].bodyBottom,
+          left: ''
+        },
+        "Tablet": {
+          top: attributes.contentStyle[0].bodyTop,
+          right: '',
+          bottom: attributes.contentStyle[0].bodyBottom,
+          left: ''
+        },
+        "Mobile": {
+          top: attributes.contentStyle[0].bodyTop,
+          right: '',
+          bottom: attributes.contentStyle[0].bodyBottom,
+          left: ''
+        }
+      },
+      companyTypography: {
+        'fontWeight': '',
+        'fontStyle': '',
+        'textTransform': '',
+        'letterSpacing': '',
+        'fontFamily': '',
+        'lineHeight': '',
+        'fontSize': {
+          'Desktop': attributes.companyStyles[0].authorComSize,
+          "Tablet": attributes.companyStyles[0].authorComSizeTablet,
+          "Mobile": attributes.companyStyles[0].authorComSizeMobile,
+          'unit': attributes.companyStyles[0].authorComSizeUnit
+        }
+      },
+      authorTypography: {
+        'fontWeight': attributes.authorStyles[0].authorWeight,
+        'fontStyle': attributes.authorStyles[0].authorStyle,
+        'textTransform': attributes.authorStyles[0].authorUpper,
+        'letterSpacing': attributes.authorStyles[0].authorLetter,
+        'fontFamily': '',
+        'lineHeight': '',
+        'fontSize': {
+          'Desktop': attributes.authorStyles[0].authorSize,
+          "Tablet": attributes.authorStyles[0].authorSizeTablet,
+          "Mobile": attributes.authorStyles[0].authorSizeMobile,
+          'unit': attributes.authorStyles[0].authorSizeUnit
+        }
+      },
+      containerBackground: {
+        'backgroundType': attributes.backgroundType,
+        'backgroundColor': attributes.containerStyles[0].containerBack,
+        'backgroundImageID': attributes.containerStyles[0].backgroundImageID,
+        'backgroundImageURL': attributes.containerStyles[0].backgroundImageURL,
+        'backgroundPosition': attributes.containerStyles[0].backgroundPosition,
+        'backgroundRepeat': attributes.containerStyles[0].backgroundRepeat,
+        'backgroundSize': attributes.containerStyles[0].backgroundSize,
+        'fixed': attributes.containerStyles[0].fixed,
+        'gradientLocationOne': attributes.containerStyles[0].gradientLocationOne,
+        'gradientColorTwo': attributes.containerStyles[0].gradientColorTwo,
+        'gradientLocationTwo': attributes.containerStyles[0].gradientLocationTwo,
+        'gradientAngle': attributes.containerStyles[0].gradientAngle,
+        'gradientPosition': attributes.containerStyles[0].gradientPosition,
+        'gradientType': attributes.containerStyles[0].gradientType
+      },
+      containerShadow: {
+        'color': attributes.containerStyles[0].shadowColor,
+        'blur': attributes.containerStyles[0].shadowBlur,
+        'horizontal': attributes.containerStyles[0].shadowHorizontal,
+        'vertical': attributes.containerStyles[0].shadowVertical,
+        'position': attributes.containerStyles[0].shadowPosition
+      },
+      containerPadding: {
+        "Desktop": {
+          top: attributes.paddingTop,
+          right: attributes.paddingRight,
+          bottom: attributes.paddingBottom,
+          left: attributes.paddingLeft
+        },
+        "Tablet": {
+          top: attributes.paddingTTablet,
+          right: attributes.paddingRTablet,
+          bottom: attributes.paddingBTablet,
+          left: attributes.paddingLTablet
+        },
+        "Mobile": {
+          top: attributes.paddingTMobile,
+          right: attributes.paddingRMobile,
+          bottom: attributes.paddingBMobile,
+          left: attributes.paddingLMobile
+        }
+      }
+    };
+    return Object.assign(attributes, newAttributes);
+  },
+  save: props => {
+    const {
+      block_id,
+      align,
+      authorImgUrl,
+      imgRadius,
+      imgSize,
+      imgBorder,
+      imgBorderColor,
+      author,
+      authorStyles,
+      text,
+      authorCom,
+      hideDesktop,
+      hideTablet,
+      hideMobile,
+      contentStyle,
+      companyStyles,
+      quoteStyles,
+      containerStyles,
+      backgroundType
+    } = props.attributes;
+    const mainClasses = classnames(className, 'premium-testimonial');
+    let btnGrad, btnGrad2, btnbg;
+
+    if (undefined !== backgroundType && 'gradient' === backgroundType) {
+      btnGrad = 'transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack;
+      btnGrad2 = undefined !== containerStyles[0].gradientColorTwo && undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777';
+
+      if ('radial' === containerStyles[0].gradientType) {
+        btnbg = `radial-gradient(at ${containerStyles[0].gradientPosition}, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
+      } else if ('radial' !== containerStyles[0].gradientType) {
+        btnbg = `linear-gradient(${containerStyles[0].gradientAngle}deg, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
+      }
+    } else {
+      btnbg = containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : 'none';
+    }
+
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      id: `premium-testimonial-${block_id}`,
+      className: `${mainClasses}__wrap premium-testimonial-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`,
+      style: {
+        boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px ${containerStyles[0].shadowColor} ${containerStyles[0].shadowPosition}`,
+        backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
+        backgroundImage: btnbg,
+        backgroundRepeat: containerStyles[0].backgroundRepeat,
+        backgroundPosition: containerStyles[0].backgroundPosition,
+        backgroundSize: containerStyles[0].backgroundSize,
+        backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset"
+      }
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: `premium-testimonial__container`
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+      className: `premium-testimonial__upper`
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_testimonials_upper_quote__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      size: quoteStyles[0].quotSize,
+      color: quoteStyles[0].quotColor,
+      opacity: quoteStyles[0].quotOpacity
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: `premium-testimonial__content`,
+      style: {
+        textAlign: align
+      }
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: `premium-testimonial__img_wrap`
+    }, authorImgUrl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+      className: `premium-testimonial__img`,
+      src: `${authorImgUrl}`,
+      alt: "Author",
+      style: {
+        borderWidth: imgBorder + "px",
+        borderRadius: imgRadius,
+        borderColor: imgBorderColor,
+        width: imgSize + "px",
+        height: imgSize + "px"
+      }
+    }), !authorImgUrl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_default_image__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      className: className
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: `premium-testimonial__text_wrap`
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText.Content, {
+      tagName: "p",
+      className: `premium-testimonial__text`,
+      value: text,
+      style: {
+        color: contentStyle[0].bodyColor,
+        lineHeight: contentStyle[0].bodyLine + "px",
+        marginTop: contentStyle[0].bodyTop + "px",
+        marginBottom: contentStyle[0].bodyBottom + "px"
+      }
+    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: `premium-testimonial__info`,
+      style: {
+        justifyContent: align
+      }
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText.Content, {
+      tagName: authorStyles[0].authorTag.toLowerCase(),
+      className: `premium-testimonial__author`,
+      value: author,
+      style: {
+        color: authorStyles[0].authorColor,
+        letterSpacing: authorStyles[0].authorLetter + "px",
+        textTransform: authorStyles[0].authorUpper ? "uppercase" : "none",
+        fontStyle: authorStyles[0].authorStyle,
+        fontWeight: authorStyles[0].authorWeight
+      }
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+      className: `premium-testimonial__sep`,
+      style: {
+        color: companyStyles[0].dashColor
+      }
+    }, "\xA0-\xA0"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: `premium-testimonial__link_wrap`
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText.Content, {
+      tagName: authorStyles[0].authorComTag.toLowerCase(),
+      className: `premium-testimonial__author_comp`,
+      value: authorCom,
+      style: {
+        color: companyStyles[0].authorComColor
+      }
+    }), companyStyles[0].urlCheck && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+      rel: "noopener noreferrer",
+      href: companyStyles[0].urlText,
+      target: companyStyles[0].urlTarget ? "_blank" : ""
+    })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+      className: `premium-testimonial__lower`
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_testimonials_lower_quote__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      size: quoteStyles[0].quotSize,
+      color: quoteStyles[0].quotColor,
+      opacity: quoteStyles[0].quotOpacity
+    }))));
+  }
+}, {
   attributes: attributes,
   migrate: attributes => {
     let newAttributes = {
@@ -44538,15 +44920,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_default_image__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/default-image */ "./src/components/default-image.js");
 /* harmony import */ var _components_testimonials_upper_quote__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/testimonials/upper-quote */ "./src/components/testimonials/upper-quote.js");
 /* harmony import */ var _components_testimonials_lower_quote__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/testimonials/lower-quote */ "./src/components/testimonials/lower-quote.js");
-/* harmony import */ var _components_Premium_Responsive_Padding__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/Premium-Responsive-Padding */ "./src/components/Premium-Responsive-Padding.js");
-/* harmony import */ var _components_premium_media_upload__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/premium-media-upload */ "./src/components/premium-media-upload.js");
-/* harmony import */ var _components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/premium-responsive-tabs */ "./src/components/premium-responsive-tabs.js");
-/* harmony import */ var _components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/RangeControl/single-range-control */ "./src/components/RangeControl/single-range-control.js");
-/* harmony import */ var _components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/Color Control/ColorComponent */ "./src/components/Color Control/ColorComponent.js");
-/* harmony import */ var _components_Premium_Background_Control__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/Premium-Background-Control */ "./src/components/Premium-Background-Control.js");
+/* harmony import */ var _components_premium_media_upload__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/premium-media-upload */ "./src/components/premium-media-upload.js");
+/* harmony import */ var _components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/premium-responsive-tabs */ "./src/components/premium-responsive-tabs.js");
+/* harmony import */ var _components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/RangeControl/single-range-control */ "./src/components/RangeControl/single-range-control.js");
+/* harmony import */ var _components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/Color Control/ColorComponent */ "./src/components/Color Control/ColorComponent.js");
+/* harmony import */ var _components_Premium_Background_Control__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/Premium-Background-Control */ "./src/components/Premium-Background-Control.js");
+/* harmony import */ var _components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/premium-responsive-spacing */ "./src/components/premium-responsive-spacing.js");
 /* harmony import */ var _components_radio_control__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/radio-control */ "./src/components/radio-control.js");
-/* harmony import */ var _components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/RangeControl/responsive-range-control */ "./src/components/RangeControl/responsive-range-control.js");
-/* harmony import */ var _components_PremiumShadow__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/PremiumShadow */ "./src/components/PremiumShadow.js");
+/* harmony import */ var _components_responsive_radio__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/responsive-radio */ "./src/components/responsive-radio.js");
+/* harmony import */ var _components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/RangeControl/responsive-range-control */ "./src/components/RangeControl/responsive-range-control.js");
+/* harmony import */ var _components_PremiumShadow__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../components/PremiumShadow */ "./src/components/PremiumShadow.js");
+/* harmony import */ var _components_inspectorTabs__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../components/inspectorTabs */ "./src/components/inspectorTabs.js");
+/* harmony import */ var _components_inspectorTab__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../components/inspectorTab */ "./src/components/inspectorTab.js");
+/* harmony import */ var _components_icons__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../components/icons */ "./src/components/icons.js");
+/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
+
+
+
+
+
 
 
 
@@ -44572,9 +44964,7 @@ const {
   ToggleControl
 } = wp.components;
 const {
-  BlockControls,
   InspectorControls,
-  AlignmentToolbar,
   RichText
 } = wp.blockEditor;
 const {
@@ -44587,7 +44977,6 @@ const {
 class edit extends Component {
   constructor() {
     super(...arguments);
-    this.getPreviewSize = this.getPreviewSize.bind(this);
   }
 
   componentDidMount() {
@@ -44596,27 +44985,11 @@ class edit extends Component {
       clientId
     } = this.props;
     setAttributes({
-      block_id: clientId.substr(0, 6)
+      blockId: "premium-testimonial-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.generateBlockId)(clientId)
     });
     this.props.setAttributes({
       classMigrate: true
     });
-  }
-
-  getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
-    if (device === 'Mobile') {
-      if (undefined !== mobileSize && '' !== mobileSize) {
-        return mobileSize;
-      } else if (undefined !== tabletSize && '' !== tabletSize) {
-        return tabletSize;
-      }
-    } else if (device === 'Tablet') {
-      if (undefined !== tabletSize && '' !== tabletSize) {
-        return tabletSize;
-      }
-    }
-
-    return desktopSize;
   }
 
   render() {
@@ -44626,7 +44999,7 @@ class edit extends Component {
       setAttributes
     } = this.props;
     const {
-      block_id,
+      blockId,
       align,
       authorImgId,
       authorImgUrl,
@@ -44644,20 +45017,15 @@ class edit extends Component {
       contentStyle,
       companyStyles,
       quoteStyles,
-      containerStyles,
-      paddingTop,
-      paddingRight,
-      paddingBottom,
-      paddingLeft,
-      backgroundType,
-      paddingTTablet,
-      paddingRTablet,
-      paddingBTablet,
-      paddingLTablet,
-      paddingTMobile,
-      paddingRMobile,
-      paddingBMobile,
-      paddingLMobile
+      contentTypography,
+      contentMargin,
+      companyTypography,
+      quotSize,
+      quotUnit,
+      authorTypography,
+      containerBackground,
+      containerShadow,
+      containerPadding
     } = this.props.attributes;
     const RADIUS = [{
       value: "0",
@@ -44700,21 +45068,6 @@ class edit extends Component {
       });
     };
 
-    const saveContainerStyle = value => {
-      const newUpdate = containerStyles.map((item, index) => {
-        if (0 === index) {
-          item = { ...item,
-            ...value
-          };
-        }
-
-        return item;
-      });
-      setAttributes({
-        containerStyles: newUpdate
-      });
-    };
-
     const saveCompanyStyle = value => {
       const newUpdate = companyStyles.map((item, index) => {
         if (0 === index) {
@@ -44745,47 +45098,27 @@ class edit extends Component {
       });
     };
 
-    let btnGrad, btnGrad2, btnbg;
-
-    if (undefined !== backgroundType && 'gradient' === backgroundType) {
-      btnGrad = 'transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack;
-      btnGrad2 = undefined !== containerStyles[0].gradientColorTwo && undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777';
-
-      if ('radial' === containerStyles[0].gradientType) {
-        btnbg = `radial-gradient(at ${containerStyles[0].gradientPosition}, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
-      } else if ('radial' !== containerStyles[0].gradientType) {
-        btnbg = `linear-gradient(${containerStyles[0].gradientAngle}deg, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
-      }
-    } else {
-      btnbg = containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : 'none';
-    }
-
+    const renderCss = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, `
+                    .${blockId} .premium-testimonial__img_wrap img {
+                        height: ${imgSize[this.props.deviceType]}${imgSize.unit} !important;
+                        width: ${imgSize[this.props.deviceType]}${imgSize.unit} !important;
+                        border-width: ${imgBorder + "px"};
+                        border-radius: ${imgRadius};
+                        border-color: ${imgBorderColor};
+                    }
+                `);
     const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-testimonial");
-    const authorFontSize = this.getPreviewSize(this.props.deviceType, authorStyles[0].authorSize, authorStyles[0].authorSizeTablet, authorStyles[0].authorSizeMobile);
-    const authorComFontSize = this.getPreviewSize(this.props.deviceType, companyStyles[0].authorComSize, companyStyles[0].authorComSizeTablet, companyStyles[0].authorComSizeMobile);
-    const testimonalFontSize = this.getPreviewSize(this.props.deviceType, contentStyle[0].bodySize, contentStyle[0].bodySizeTablet, contentStyle[0].bodySizeMobile);
-    const containerPaddingTop = this.getPreviewSize(this.props.deviceType, paddingTop, paddingTTablet, paddingTMobile);
-    const containerPaddingRight = this.getPreviewSize(this.props.deviceType, paddingRight, paddingRTablet, paddingRMobile);
-    const containerPaddingBottom = this.getPreviewSize(this.props.deviceType, paddingLeft, paddingLTablet, paddingLMobile);
-    const containerPaddingLeft = this.getPreviewSize(this.props.deviceType, paddingLeft, paddingLTablet, paddingLMobile);
-    return [isSelected && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(BlockControls, {
-      key: "controls"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(AlignmentToolbar, {
-      value: align,
-      onChange: newAlign => setAttributes({
-        align: newAlign
-      })
-    })), isSelected && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InspectorControls, {
+    return [isSelected && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InspectorControls, {
       key: "inspector"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTabs__WEBPACK_IMPORTED_MODULE_16__["default"], {
+      tabs: ['layout', 'style', 'advance']
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_17__["default"], {
+      key: 'layout'
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
       title: __("Author", 'premium-blocks-for-gutenberg'),
       className: "premium-panel-body",
       initialOpen: true
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-      title: __("Image", 'premium-blocks-for-gutenberg'),
-      className: "premium-panel-body-inner",
-      initialOpen: false
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, __("Author Image", 'premium-blocks-for-gutenberg')), !authorImgUrl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_default_image__WEBPACK_IMPORTED_MODULE_3__["default"], null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_media_upload__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, __("Author Image", 'premium-blocks-for-gutenberg')), !authorImgUrl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_default_image__WEBPACK_IMPORTED_MODULE_3__["default"], null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_media_upload__WEBPACK_IMPORTED_MODULE_6__["default"], {
       type: "image",
       imageID: authorImgId,
       imageURL: authorImgUrl,
@@ -44801,192 +45134,89 @@ class edit extends Component {
           authorImgUrl: ""
         });
       }
-    }), authorImgUrl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
       label: __("Image Style", 'premium-blocks-for-gutenberg'),
       options: RADIUS,
       value: imgRadius,
       onChange: newWeight => setAttributes({
         imgRadius: newWeight
       })
-    }), authorImgUrl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      label: __("Size", 'premium-blocks-for-gutenberg'),
-      value: imgSize,
-      max: "200",
-      onChange: newSize => setAttributes({
-        imgSize: newSize
-      }),
-      showUnit: false,
-      defaultValue: 0
-    }), authorImgUrl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      label: __("Border Width (PX)", 'premium-blocks-for-gutenberg'),
-      value: imgBorder,
-      onChange: newSize => setAttributes({
-        imgBorder: newSize
-      }),
-      showUnit: false,
-      defaultValue: 0
-    }), authorImgUrl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      label: __("Border Color", 'premium-blocks-for-gutenberg'),
-      colorValue: imgBorderColor,
-      colorDefault: '',
-      onColorChange: newValue => setAttributes({
-        imgBorderColor: newValue
-      })
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_radio_control__WEBPACK_IMPORTED_MODULE_12__["default"], {
-      choices: ['H1', 'H2', 'H3', 'H4', 'H5', 'H6'],
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_radio_control__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      choices: [{
+        value: 'h1',
+        label: __('H1')
+      }, {
+        value: 'h2',
+        label: __('H2')
+      }, {
+        value: 'h3',
+        label: __('H3')
+      }, {
+        value: 'h4',
+        label: __('H4')
+      }, {
+        value: 'h5',
+        label: __('H5')
+      }, {
+        value: 'h6',
+        label: __('H6')
+      }],
       value: authorStyles[0].authorTag,
       onChange: newValue => saveAuthorStyle({
         authorTag: newValue
       }),
       label: __("Author HTML Tag", 'premium-blocks-for-gutenberg')
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      components: ["responsiveSize", "weight", "style", "upper", "spacing"],
-      setAttributes: saveAuthorStyle,
-      fontSizeType: {
-        value: authorStyles[0].authorSizeUnit,
-        label: __("authorSizeUnit", 'premium-blocks-for-gutenberg')
-      },
-      fontSize: authorStyles[0].authorSize,
-      fontSizeMobile: authorStyles[0].authorSizeMobile,
-      fontSizeTablet: authorStyles[0].authorSizeTablet,
-      onChangeSize: newSize => saveAuthorStyle({
-        authorSize: newSize
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_13__["default"], {
+      label: __("Alignment", 'premium-blocks-for-gutenberg'),
+      choices: [{
+        value: 'left',
+        label: __('Left'),
+        icon: _components_icons__WEBPACK_IMPORTED_MODULE_18__["default"].alignLeft
+      }, {
+        value: 'center',
+        label: __('Center'),
+        icon: _components_icons__WEBPACK_IMPORTED_MODULE_18__["default"].alignCenter
+      }, {
+        value: 'right',
+        label: __('Right'),
+        icon: _components_icons__WEBPACK_IMPORTED_MODULE_18__["default"].alignRight
+      }],
+      value: align,
+      onChange: newValue => setAttributes({
+        align: newValue
       }),
-      onChangeTabletSize: newSize => saveAuthorStyle({
-        authorSizeTablet: newSize
-      }),
-      onChangeMobileSize: newSize => saveAuthorStyle({
-        authorSizeMobile: newSize
-      }),
-      weight: authorStyles[0].authorWeight,
-      style: authorStyles[0].authorStyle,
-      spacing: authorStyles[0].authorLetter,
-      upper: authorStyles[0].authorUpper,
-      onChangeWeight: newWeight => saveAuthorStyle({
-        authorWeight: newWeight
-      }),
-      onChangeStyle: newStyle => saveAuthorStyle({
-        authorStyle: newStyle
-      }),
-      onChangeSpacing: newValue => saveAuthorStyle({
-        authorLetter: newValue
-      }),
-      onChangeUpper: check => saveAuthorStyle({
-        authorUpper: check
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      label: __("Color", 'premium-blocks-for-gutenberg'),
-      colorValue: authorStyles[0].authorColor,
-      colorDefault: '',
-      onColorChange: newValue => saveAuthorStyle({
-        authorColor: newValue
-      })
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-      title: __("Content", 'premium-blocks-for-gutenberg'),
-      className: "premium-panel-body",
-      initialOpen: false
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_13__["default"], {
-      label: __("Font Size", 'premium-blocks-for-gutenberg'),
-      value: contentStyle[0].bodySize,
-      onChange: value => saveContentStyle({
-        bodySize: value
-      }),
-      tabletValue: contentStyle[0].bodySizeTablet,
-      onChangeTablet: value => saveContentStyle({
-        bodySizeTablet: value
-      }),
-      mobileValue: contentStyle[0].bodySizeMobile,
-      onChangeMobile: value => saveContentStyle({
-        bodySizeMobile: value
-      }),
-      onChangeUnit: key => saveContentStyle({
-        bodySizeUnit: key
-      }),
-      unit: contentStyle[0].bodySizeUnit,
-      showUnit: true,
-      defaultValue: 20,
-      units: ["px", "em"]
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      label: __("Line Height (PX)", 'premium-blocks-for-gutenberg'),
-      value: contentStyle[0].bodyLine,
-      onChange: value => saveContentStyle({
-        bodyLine: value
-      }),
-      defaultValue: 1,
-      showUnit: false,
-      min: 0,
-      max: 100
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      label: __("Color", 'premium-blocks-for-gutenberg'),
-      colorValue: contentStyle[0].bodyColor,
-      colorDefault: '',
-      onColorChange: newValue => saveContentStyle({
-        bodyColor: newValue
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      label: __("Margin Top (PX)", 'premium-blocks-for-gutenberg'),
-      value: contentStyle[0].bodyTop,
-      onChange: newSize => saveContentStyle({
-        bodyTop: newSize
-      }),
-      showUnit: false,
-      defaultValue: 0
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      label: __("Margin Bottom (PX)", 'premium-blocks-for-gutenberg'),
-      value: contentStyle[0].bodyBottom,
-      onChange: newSize => saveContentStyle({
-        bodyBottom: newSize
-      }),
-      showUnit: false,
-      defaultValue: 0
+      showIcons: true
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
       title: __("Company", 'premium-blocks-for-gutenberg'),
       className: "premium-panel-body",
       initialOpen: false
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_radio_control__WEBPACK_IMPORTED_MODULE_12__["default"], {
-      choices: ['H1', 'H2', 'H3', 'H4', 'H5', 'H6'],
+      choices: [{
+        value: 'h1',
+        label: __('H1')
+      }, {
+        value: 'h2',
+        label: __('H2')
+      }, {
+        value: 'h3',
+        label: __('H3')
+      }, {
+        value: 'h4',
+        label: __('H4')
+      }, {
+        value: 'h5',
+        label: __('H5')
+      }, {
+        value: 'h6',
+        label: __('H6')
+      }],
       value: authorStyles[0].authorComTag,
       onChange: newValue => saveAuthorStyle({
         authorComTag: newValue
       }),
       label: __("HTML Tag", 'premium-blocks-for-gutenberg')
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_13__["default"], {
-      label: __("Font Size", 'premium-blocks-for-gutenberg'),
-      value: companyStyles[0].authorComSize,
-      onChange: value => saveCompanyStyle({
-        authorComSize: value
-      }),
-      tabletValue: companyStyles[0].authorComSizeTablet,
-      onChangeTablet: value => saveCompanyStyle({
-        authorComSizeTablet: value
-      }),
-      mobileValue: companyStyles[0].authorComSizeMobile,
-      onChangeMobile: value => saveCompanyStyle({
-        authorComSizeMobile: value
-      }),
-      onChangeUnit: key => saveCompanyStyle({
-        authorComSizeUnit: key
-      }),
-      unit: companyStyles[0].authorComSizeUnit,
-      showUnit: true,
-      defaultValue: 20,
-      units: ["px", "em"]
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      label: __("Text Color", 'premium-blocks-for-gutenberg'),
-      colorValue: companyStyles[0].authorComColor,
-      colorDefault: '',
-      onColorChange: newValue => saveCompanyStyle({
-        authorComColor: newValue
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      label: __("Dash Color", 'premium-blocks-for-gutenberg'),
-      colorValue: companyStyles[0].dashColor,
-      colorDefault: '',
-      onColorChange: newValue => saveCompanyStyle({
-        dashColor: newValue
-      })
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: __("URL", 'premium-blocks-for-gutenberg'),
+      label: __("Link", 'premium-blocks-for-gutenberg'),
       checked: companyStyles[0].urlCheck,
       onChange: newCheck => saveCompanyStyle({
         urlCheck: newCheck
@@ -45003,157 +45233,169 @@ class edit extends Component {
       onChange: newCheck => saveCompanyStyle({
         urlTarget: newCheck
       })
+    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_17__["default"], {
+      key: 'style'
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
+      title: __("Image", 'premium-blocks-for-gutenberg'),
+      className: "premium-panel-body",
+      initialOpen: true
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      label: __('Size', 'premium-blocks-for-gutenberg'),
+      value: imgSize,
+      onChange: value => setAttributes({
+        imgSize: value
+      }),
+      min: 100,
+      max: 200,
+      step: 1,
+      showUnit: true,
+      units: ['px', 'em'],
+      defaultValue: 100
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      label: __("Border Width (PX)", 'premium-blocks-for-gutenberg'),
+      value: imgBorder,
+      onChange: newValue => setAttributes({
+        imgBorder: newValue || 0
+      }),
+      showUnit: false,
+      defaultValue: 0,
+      max: 15
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      label: __("Border Color", 'premium-blocks-for-gutenberg'),
+      colorValue: imgBorderColor,
+      colorDefault: '',
+      onColorChange: newValue => setAttributes({
+        imgBorderColor: newValue
+      })
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
+      title: __("Author", 'premium-blocks-for-gutenberg'),
+      className: "premium-panel-body",
+      initialOpen: false
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      components: ["responsiveSize", "weight", "style", "upper", "spacing", "line", "family"],
+      value: authorTypography,
+      onChange: newValue => setAttributes({
+        authorTypography: newValue
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      label: __("Color", 'premium-blocks-for-gutenberg'),
+      colorValue: authorStyles[0].authorColor,
+      colorDefault: '',
+      onColorChange: newValue => saveAuthorStyle({
+        authorColor: newValue
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      label: __("Dash Color", 'premium-blocks-for-gutenberg'),
+      colorValue: companyStyles[0].dashColor,
+      colorDefault: '',
+      onColorChange: newValue => saveCompanyStyle({
+        dashColor: newValue
+      })
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
+      title: __("Company", 'premium-blocks-for-gutenberg'),
+      className: "premium-panel-body",
+      initialOpen: false
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      components: ["responsiveSize", "weight", "style", "upper", "spacing", "line", "family"],
+      value: companyTypography,
+      onChange: newValue => setAttributes({
+        companyTypography: newValue
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      label: __("Color", 'premium-blocks-for-gutenberg'),
+      colorValue: companyStyles[0].authorComColor,
+      colorDefault: '',
+      onColorChange: newValue => saveCompanyStyle({
+        authorComColor: newValue
+      })
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
       title: __("Quotations", 'premium-blocks-for-gutenberg'),
       className: "premium-panel-body",
       initialOpen: false
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      label: __("Size (EM)", 'premium-blocks-for-gutenberg'),
-      value: quoteStyles[0].quotSize,
-      min: "1",
-      max: "12",
-      onChange: newSize => saveQuoteStyles({
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      label: __("Size", 'premium-blocks-for-gutenberg'),
+      value: quotSize,
+      onChange: newSize => setAttributes({
         quotSize: newSize
       }),
-      showUnit: false,
-      defaultValue: 0
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      label: __("Quotations Color", 'premium-blocks-for-gutenberg'),
+      showUnit: true,
+      defaultValue: 0,
+      max: 50,
+      min: 1,
+      step: 1,
+      units: ['px', 'em', '%'],
+      unit: quotUnit,
+      onChangeUnit: newSize => setAttributes({
+        quotUnit: newSize
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      label: __("Color", 'premium-blocks-for-gutenberg'),
       colorValue: quoteStyles[0].quotColor,
       colorDefault: '',
       onColorChange: newValue => saveQuoteStyles({
         quotColor: newValue
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_8__["default"], {
       label: __("Opacity", 'premium-blocks-for-gutenberg'),
       value: quoteStyles[0].quotOpacity,
       onChange: newValue => saveQuoteStyles({
         quotOpacity: newValue
       }),
       showUnit: false,
-      defaultValue: 0
+      defaultValue: 0,
+      max: 100,
+      min: 1,
+      step: 1
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
+      title: __("Content", 'premium-blocks-for-gutenberg'),
+      className: "premium-panel-body",
+      initialOpen: false
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      components: ["responsiveSize", "weight", "style", "upper", "spacing", "line", "family"],
+      value: contentTypography,
+      onChange: newValue => setAttributes({
+        contentTypography: newValue
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      label: __("Color", 'premium-blocks-for-gutenberg'),
+      colorValue: contentStyle[0].bodyColor,
+      colorDefault: '',
+      onColorChange: newValue => saveContentStyle({
+        bodyColor: newValue
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_11__["default"], {
+      label: __('Margin', 'premium-blocks-for-gutenberg'),
+      value: contentMargin,
+      onChange: value => setAttributes({
+        contentMargin: value
+      }),
+      showUnits: false,
+      responsive: true
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
       title: __("Container", 'premium-blocks-for-gutenberg'),
       className: "premium-panel-body",
       initialOpen: false
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Premium_Background_Control__WEBPACK_IMPORTED_MODULE_11__["default"], {
-      setAttributes: setAttributes,
-      saveContainerStyle: saveContainerStyle,
-      backgroundType: backgroundType,
-      backgroundColor: containerStyles[0].containerBack,
-      backgroundImageID: containerStyles[0].backgroundImageID,
-      backgroundImageURL: containerStyles[0].backgroundImageURL,
-      backgroundPosition: containerStyles[0].backgroundPosition,
-      backgroundRepeat: containerStyles[0].backgroundRepeat,
-      backgroundSize: containerStyles[0].backgroundSize,
-      fixed: containerStyles[0].fixed,
-      gradientLocationOne: containerStyles[0].gradientLocationOne,
-      gradientColorTwo: containerStyles[0].gradientColorTwo,
-      gradientLocationTwo: containerStyles[0].gradientLocationTwo,
-      gradientAngle: containerStyles[0].gradientAngle,
-      gradientPosition: containerStyles[0].gradientPosition,
-      gradientType: containerStyles[0].gradientType
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_14__["default"], {
-      boxShadow: true,
-      color: containerStyles[0].shadowColor,
-      blur: containerStyles[0].shadowBlur,
-      horizontal: containerStyles[0].shadowHorizontal,
-      vertical: containerStyles[0].shadowVertical,
-      position: containerStyles[0].shadowPosition,
-      onChangeColor: newColor => saveContainerStyle({
-        shadowColor: newColor
-      }),
-      onChangeBlur: newBlur => saveContainerStyle({
-        shadowBlur: newBlur
-      }),
-      onChangehHorizontal: newValue => saveContainerStyle({
-        shadowHorizontal: newValue
-      }),
-      onChangeVertical: newValue => saveContainerStyle({
-        shadowVertical: newValue
-      }),
-      onChangePosition: newValue => saveContainerStyle({
-        shadowPosition: newValue
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Premium_Background_Control__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      value: containerBackground,
+      onChange: value => setAttributes({
+        containerBackground: value
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Premium_Responsive_Padding__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      paddingTop: paddingTop,
-      paddingRight: paddingRight,
-      paddingBottom: paddingBottom,
-      paddingLeft: paddingLeft,
-      paddingTopTablet: paddingTTablet,
-      paddingRightTablet: paddingRTablet,
-      paddingBottomTablet: paddingBTablet,
-      paddingLeftTablet: paddingLTablet,
-      paddingTopMobile: paddingTMobile,
-      paddingRightMobile: paddingRMobile,
-      paddingBottomMobile: paddingBMobile,
-      paddingLeftMobile: paddingLMobile,
-      showUnits: true,
-      selectedUnit: containerStyles[0].paddingUnit,
-      onChangePadSizeUnit: newvalue => saveContainerStyle({
-        paddingUnit: newvalue
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_15__["default"], {
+      value: containerShadow,
+      onChange: value => setAttributes({
+        containerShadow: value
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_11__["default"], {
+      label: __('Padding', 'premium-blocks-for-gutenberg'),
+      value: containerPadding,
+      onChange: value => setAttributes({
+        containerPadding: value
       }),
-      onChangePaddingTop: (device, newValue) => {
-        if (device === "desktop") {
-          setAttributes({
-            paddingTop: newValue
-          });
-        } else if (device === "tablet") {
-          setAttributes({
-            paddingTTablet: newValue
-          });
-        } else {
-          setAttributes({
-            paddingTMobile: newValue
-          });
-        }
-      },
-      onChangePaddingRight: (device, newValue) => {
-        if (device === "desktop") {
-          setAttributes({
-            paddingRight: newValue
-          });
-        } else if (device === "tablet") {
-          setAttributes({
-            paddingRTablet: newValue
-          });
-        } else {
-          setAttributes({
-            paddingRMobile: newValue
-          });
-        }
-      },
-      onChangePaddingBottom: (device, newValue) => {
-        if (device === "desktop") {
-          setAttributes({
-            paddingBottom: newValue
-          });
-        } else if (device === "tablet") {
-          setAttributes({
-            paddingBTablet: newValue
-          });
-        } else {
-          setAttributes({
-            paddingBMobile: newValue
-          });
-        }
-      },
-      onChangePaddingLeft: (device, newValue) => {
-        if (device === "desktop") {
-          setAttributes({
-            paddingLeft: newValue
-          });
-        } else if (device === "tablet") {
-          setAttributes({
-            paddingLTablet: newValue
-          });
-        } else {
-          setAttributes({
-            paddingLMobile: newValue
-          });
-        }
-      }
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      showUnits: true,
+      responsive: true
+    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_17__["default"], {
+      key: 'advance'
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_7__["default"], {
       Desktop: hideDesktop,
       Tablet: hideTablet,
       Mobile: hideMobile,
@@ -45166,48 +45408,32 @@ class edit extends Component {
       onChangeMobile: value => setAttributes({
         hideMobile: value ? " premium-mobile-hidden" : ""
       })
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      id: `premium-testimonial-${block_id}`,
-      className: `${mainClasses}__wrap premium-testimonial-${block_id}`,
-      style: {
-        boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px ${containerStyles[0].shadowColor} ${containerStyles[0].shadowPosition}`,
-        backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : 'transparent',
-        backgroundImage: btnbg,
-        backgroundRepeat: containerStyles[0].backgroundRepeat,
-        backgroundPosition: containerStyles[0].backgroundPosition,
-        backgroundSize: containerStyles[0].backgroundSize,
-        backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
-        paddingTop: containerPaddingTop + containerStyles[0].paddingUnit,
-        paddingBottom: containerPaddingBottom + containerStyles[0].paddingUnit,
-        paddingLeft: containerPaddingLeft + containerStyles[0].paddingUnit,
-        paddingRight: containerPaddingRight + containerStyles[0].paddingUnit
+    })))), renderCss, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: `${mainClasses}__wrap ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`,
+      style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.gradientBackground)(containerBackground),
+        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.padddingCss)(containerPadding, this.props.deviceType),
+        boxShadow: `${containerShadow.horizontal || 0}px ${containerShadow.vertical || 0}px ${containerShadow.blur || 0}px ${containerShadow.color} ${containerShadow.position}`
       }
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: `premium-testimonial__container`
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
       className: `premium-testimonial__upper`
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_testimonials_upper_quote__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      size: quoteStyles[0].quotSize,
+      size: quotSize,
+      unit: quotUnit,
       color: quoteStyles[0].quotColor,
       opacity: quoteStyles[0].quotOpacity
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: `premium-testimonial__content`,
       style: {
-        textAlign: align
+        textAlign: align[this.props.deviceType]
       }
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: `premium-testimonial__img_wrap`
     }, authorImgUrl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
       className: `premium-testimonial__img`,
       src: `${authorImgUrl}`,
-      alt: "Author",
-      style: {
-        borderWidth: imgBorder + "px",
-        borderRadius: imgRadius,
-        borderColor: imgBorderColor,
-        width: imgSize + "px",
-        height: imgSize + "px"
-      }
+      alt: "Author"
     }), !authorImgUrl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_default_image__WEBPACK_IMPORTED_MODULE_3__["default"], {
       className: className
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -45216,39 +45442,28 @@ class edit extends Component {
       tagName: "p",
       className: `premium-testimonial__text`,
       value: text,
-      isSelected: false,
-      placeholder: "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.",
       onChange: newText => setAttributes({
         text: newText
       }),
-      style: {
-        fontSize: `${testimonalFontSize}${contentStyle[0].bodySizeUnit}`,
-        color: contentStyle[0].bodyColor,
-        lineHeight: contentStyle[0].bodyLine + "px",
-        marginTop: contentStyle[0].bodyTop + "px",
-        marginBottom: contentStyle[0].bodyBottom + "px"
+      style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.typographyCss)(contentTypography, this.props.deviceType),
+        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.marginCss)(contentMargin, this.props.deviceType),
+        color: contentStyle[0].bodyColor
       },
       keepPlaceholderOnFocus: true
     }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: `premium-testimonial__info`,
       style: {
-        justifyContent: align
+        justifyContent: align[this.props.deviceType]
       }
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText, {
       tagName: authorStyles[0].authorTag.toLowerCase(),
       className: `premium-testimonial__author`,
       value: author,
-      isSelected: false,
       onChange: newText => setAttributes({
         author: newText
       }),
-      style: {
-        fontSize: `${authorFontSize}${authorStyles[0].authorSizeUnit} `,
-        color: authorStyles[0].authorColor,
-        letterSpacing: authorStyles[0].authorLetter + "px",
-        textTransform: authorStyles[0].authorUpper ? "uppercase" : "none",
-        fontStyle: authorStyles[0].authorStyle,
-        fontWeight: authorStyles[0].authorWeight
+      style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.typographyCss)(authorTypography, this.props.deviceType),
+        color: authorStyles[0].authorColor
       }
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
       className: `premium-testimonial__sep`,
@@ -45262,15 +45477,14 @@ class edit extends Component {
         authorCom: newText
       }),
       value: authorCom,
-      isSelected: false,
-      style: {
-        color: companyStyles[0].authorComColor,
-        fontSize: `${authorComFontSize}${companyStyles[0].authorComSizeUnit}`
+      style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.typographyCss)(companyTypography, this.props.deviceType),
+        color: companyStyles[0].authorComColor
       }
     }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
       className: `premium-testimonial__lower`
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_testimonials_lower_quote__WEBPACK_IMPORTED_MODULE_5__["default"], {
-      size: quoteStyles[0].quotSize,
+      size: quotSize,
+      unit: quotUnit,
       color: quoteStyles[0].quotColor,
       opacity: quoteStyles[0].quotOpacity
     }))))];
@@ -45279,7 +45493,7 @@ class edit extends Component {
 }
 
 ;
-/* harmony default export */ __webpack_exports__["default"] = (withSelect((select, props) => {
+/* harmony default export */ __webpack_exports__["default"] = (withSelect(select => {
   const {
     __experimentalGetPreviewDeviceType = null
   } = select('core/edit-post');
@@ -45299,15 +45513,12 @@ class edit extends Component {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _assets_js_settings__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../assets/js/settings */ "./assets/js/settings.js");
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/blocks/testimonials/edit.js");
-/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/blocks/testimonials/save.js");
-/* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/testimonials/deprecated.js");
-/* harmony import */ var _icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../icons */ "./src/blocks/icons.js");
-/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./attributes */ "./src/blocks/testimonials/attributes.js");
-
+/* harmony import */ var _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../assets/js/settings */ "./assets/js/settings.js");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./edit */ "./src/blocks/testimonials/edit.js");
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/blocks/testimonials/save.js");
+/* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/testimonials/deprecated.js");
+/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./attributes */ "./src/blocks/testimonials/attributes.js");
+/* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
 
 
 
@@ -45322,18 +45533,17 @@ const {
 } = wp.blocks;
 registerBlockType("premium/testimonial", {
   title: __("Testimonial"),
-  icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_icons__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    icon: "testimonials"
-  }),
+  description: __('Proof your success by displaying customer reviews using Premium Testimonials Block.', 'premium-block-for-gutenberg'),
+  icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_5__["default"].testimonials,
   category: "premium-blocks",
-  attributes: _attributes__WEBPACK_IMPORTED_MODULE_6__["default"],
+  attributes: _attributes__WEBPACK_IMPORTED_MODULE_4__["default"],
   supports: {
-    inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_1__.testimonial
+    inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.testimonial
   },
   example: {},
-  edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"],
-  save: _save__WEBPACK_IMPORTED_MODULE_3__["default"],
-  deprecated: _deprecated__WEBPACK_IMPORTED_MODULE_4__["default"]
+  edit: _edit__WEBPACK_IMPORTED_MODULE_1__["default"],
+  save: _save__WEBPACK_IMPORTED_MODULE_2__["default"],
+  deprecated: _deprecated__WEBPACK_IMPORTED_MODULE_3__["default"]
 });
 
 /***/ }),
@@ -45353,6 +45563,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_default_image__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/default-image */ "./src/components/default-image.js");
 /* harmony import */ var _components_testimonials_upper_quote__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/testimonials/upper-quote */ "./src/components/testimonials/upper-quote.js");
 /* harmony import */ var _components_testimonials_lower_quote__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/testimonials/lower-quote */ "./src/components/testimonials/lower-quote.js");
+/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
+
 
 
 
@@ -45367,12 +45579,10 @@ const save = props => {
     className
   } = props;
   const {
-    block_id,
+    blockId,
     align,
-    authorImgId,
     authorImgUrl,
     imgRadius,
-    imgSize,
     imgBorder,
     imgBorderColor,
     author,
@@ -45385,63 +45595,47 @@ const save = props => {
     contentStyle,
     companyStyles,
     quoteStyles,
-    containerStyles,
-    backgroundType
+    contentTypography,
+    companyTypography,
+    quotSize,
+    quotUnit,
+    authorTypography,
+    containerBackground,
+    containerShadow
   } = props.attributes;
-  const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, 'premium-testimonial');
-  let btnGrad, btnGrad2, btnbg;
-
-  if (undefined !== backgroundType && 'gradient' === backgroundType) {
-    btnGrad = 'transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack;
-    btnGrad2 = undefined !== containerStyles[0].gradientColorTwo && undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777';
-
-    if ('radial' === containerStyles[0].gradientType) {
-      btnbg = `radial-gradient(at ${containerStyles[0].gradientPosition}, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
-    } else if ('radial' !== containerStyles[0].gradientType) {
-      btnbg = `linear-gradient(${containerStyles[0].gradientAngle}deg, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
-    }
-  } else {
-    btnbg = containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : 'none';
-  }
-
+  const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, 'premium-testimonial', blockId);
+  const renderCss = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, `
+                .${blockId} .premium-testimonial__img_wrap img {
+                    border-width: ${imgBorder + "px"};
+                    border-radius: ${imgRadius};
+                    border-color: ${imgBorderColor};
+                }
+            `);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    id: `premium-testimonial-${block_id}`,
-    className: `${mainClasses}__wrap premium-testimonial-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`,
-    style: {
-      boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px ${containerStyles[0].shadowColor} ${containerStyles[0].shadowPosition}`,
-      backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
-      backgroundImage: btnbg,
-      backgroundRepeat: containerStyles[0].backgroundRepeat,
-      backgroundPosition: containerStyles[0].backgroundPosition,
-      backgroundSize: containerStyles[0].backgroundSize,
-      backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset"
+    className: `${mainClasses}__wrap ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`,
+    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_5__.gradientBackground)(containerBackground),
+      boxShadow: `${containerShadow.horizontal || 0}px ${containerShadow.vertical || 0}px ${containerShadow.blur || 0}px ${containerShadow.color} ${containerShadow.position}`
     }
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, renderCss, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-testimonial__container`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: `premium-testimonial__upper`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_testimonials_upper_quote__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    size: quoteStyles[0].quotSize,
+    size: quotSize,
+    unit: quotUnit,
     color: quoteStyles[0].quotColor,
     opacity: quoteStyles[0].quotOpacity
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-testimonial__content`,
     style: {
-      textAlign: align
+      textAlign: align[props.deviceType] || 'center'
     }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-testimonial__img_wrap`
   }, authorImgUrl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     className: `premium-testimonial__img`,
     src: `${authorImgUrl}`,
-    alt: "Author",
-    style: {
-      borderWidth: imgBorder + "px",
-      borderRadius: imgRadius,
-      borderColor: imgBorderColor,
-      width: imgSize + "px",
-      height: imgSize + "px"
-    }
+    alt: "Author"
   }), !authorImgUrl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_default_image__WEBPACK_IMPORTED_MODULE_2__["default"], {
     className: className
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -45452,48 +45646,44 @@ const save = props => {
     value: text,
     style: {
       color: contentStyle[0].bodyColor,
-      lineHeight: contentStyle[0].bodyLine + "px",
-      marginTop: contentStyle[0].bodyTop + "px",
-      marginBottom: contentStyle[0].bodyBottom + "px"
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_5__.typographyCss)(contentTypography, props.deviceType)
     }
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-testimonial__info`,
     style: {
-      justifyContent: align
+      justifyContent: align[props.deviceType] || 'center'
     }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText.Content, {
     tagName: authorStyles[0].authorTag.toLowerCase(),
     className: `premium-testimonial__author`,
     value: author,
-    style: {
-      color: authorStyles[0].authorColor,
-      letterSpacing: authorStyles[0].authorLetter + "px",
-      textTransform: authorStyles[0].authorUpper ? "uppercase" : "none",
-      fontStyle: authorStyles[0].authorStyle,
-      fontWeight: authorStyles[0].authorWeight
+    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_5__.typographyCss)(authorTypography, props.deviceType),
+      color: authorStyles[0].authorColor
     }
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: `premium-testimonial__sep`,
     style: {
       color: companyStyles[0].dashColor
     }
-  }, "\xA0-\xA0"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, "\xA0-\xA0"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    className: `premium-icon__link`,
+    href: companyStyles[0].urlCheck && companyStyles[0].urlText,
+    rel: "noopener noreferrer",
+    target: companyStyles[0].urlTarget ? "_blank" : "_self"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-testimonial__link_wrap`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText.Content, {
     tagName: authorStyles[0].authorComTag.toLowerCase(),
     className: `premium-testimonial__author_comp`,
     value: authorCom,
-    style: {
+    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_5__.typographyCss)(companyTypography, props.deviceType),
       color: companyStyles[0].authorComColor
     }
-  }), companyStyles[0].urlCheck && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-    rel: "noopener noreferrer",
-    href: companyStyles[0].urlText,
-    target: companyStyles[0].urlTarget ? "_blank" : ""
-  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+  }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: `premium-testimonial__lower`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_testimonials_lower_quote__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    size: quoteStyles[0].quotSize,
+    size: quotSize,
+    unit: quotUnit,
     color: quoteStyles[0].quotColor,
     opacity: quoteStyles[0].quotOpacity
   }))));
@@ -57321,18 +57511,19 @@ const {
 } = wp.element;
 class PremiumUpperQuote extends Component {
   shouldComponentUpdate(nextProps) {
-    return this.props.size !== nextProps.size || this.props.color !== nextProps.color || this.props.opacity !== nextProps.opacity;
+    return this.props.size !== nextProps.size || this.props.unit !== nextProps.unit || this.props.color !== nextProps.color || this.props.opacity !== nextProps.opacity;
   }
 
   render() {
     const {
       size,
       color,
-      opacity
+      opacity,
+      unit
     } = this.props;
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
       style: {
-        width: size + "em",
+        width: size + unit,
         opacity: opacity / 100
       },
       "aria-hidden": "true",
@@ -57371,18 +57562,19 @@ const {
 } = wp.element;
 class PremiumLowerQuote extends Component {
   shouldComponentUpdate(nextProps) {
-    return this.props.size !== nextProps.size || this.props.color !== nextProps.color || this.props.opacity !== nextProps.opacity;
+    return this.props.size !== nextProps.size || this.props.unit !== nextProps.unit || this.props.color !== nextProps.color || this.props.opacity !== nextProps.opacity;
   }
 
   render() {
     const {
       size,
       color,
-      opacity
+      opacity,
+      unit
     } = this.props;
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
       style: {
-        width: size + "em",
+        width: size + unit,
         opacity: opacity / 100
       },
       "aria-hidden": "true",

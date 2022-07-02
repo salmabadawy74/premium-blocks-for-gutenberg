@@ -4,17 +4,18 @@ export default class PremiumUpperQuote extends Component {
     shouldComponentUpdate(nextProps) {
         return (
             this.props.size !== nextProps.size ||
+            this.props.unit !== nextProps.unit ||
             this.props.color !== nextProps.color ||
             this.props.opacity !== nextProps.opacity
         );
     }
 
     render() {
-        const { size, color, opacity } = this.props;
+        const { size, color, opacity, unit } = this.props;
 
         return (
             <svg
-                style={{ width: size + "em", opacity: opacity / 100 }}
+                style={{ width: size + unit, opacity: opacity / 100 }}
                 aria-hidden="true"
                 data-prefix="fas"
                 data-icon="quote-right"

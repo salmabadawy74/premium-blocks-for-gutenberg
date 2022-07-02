@@ -3666,16 +3666,16 @@ class PBG_Blocks_Helper {
 	 */
 	public function get_testimonial_css( $attributes, $content ) {
 
-		if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
-			$unique_id = $attributes['block_id'];
+		if ( isset( $attributes['blockId'] ) && ! empty( $attributes['blockId'] ) ) {
+			$unique_id = $attributes['blockId'];
 		} else {
 			$unique_id = rand( 100, 10000 );
 		}
 		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
-		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
+		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'testimonial', $unique_id ) ) {
 			$css = $this->get_testimonial_css_style( $attributes, $unique_id );
 			if ( ! empty( $css ) ) {
-				if ( $this->should_render_inline( 'accordion', $unique_id ) ) {
+				if ( $this->should_render_inline( 'testimonial', $unique_id ) ) {
 					$content = '<style id="' . $style_id . '">' . $css . '</style>' . $content;
 				} else {
 					$this->render_inline_css( $css, $style_id, true );
@@ -3703,123 +3703,216 @@ class PBG_Blocks_Helper {
 		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
 		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
 		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
+
+		if ( isset( $attr['align'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-testimonial__container'  . ' > .premium-testimonial__content' );
+			$css->add_property( 'text-align', ( $attr['align']['Desktop'] . '!important' ) );
+		}
+
 		// Author Style FontSize.
-		if ( isset( $attr['authorStyles'] ) ) {
-			if ( isset( $attr['authorStyles'][0]['authorSize'] ) && isset( $attr['authorStyles'][0]['authorSizeUnit'] ) ) {
-				$css->set_selector( '#premium-testimonial-' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__info' . '> .premium-testimonial__author ' );
-				$css->add_property( 'font-size', ( $attr['authorStyles'][0]['authorSize'] . $attr['authorStyles'][0]['authorSizeUnit'] ) );
-			}
+		if ( isset( $attr['authorTypography'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__info' . '> .premium-testimonial__author ' );
+			$css->add_property( 'font-size', ( $attr['authorTypography']['fontSize']['Desktop'] . ( isset( $attr['authorTypography']['fontSize']['unit'] ) ? $attr['authorTypography']['fontSize']['unit'] : 'px' ) . '!important' ) );			
 		}
+
 		// Company Style FontSize.
-		if ( isset( $attr['companyStyles'] ) ) {
-			if ( isset( $attr['companyStyles'][0]['authorComSize'] ) && isset( $attr['companyStyles'][0]['authorComSizeUnit'] ) ) {
-				$css->set_selector( '#premium-testimonial-' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__info' . ' > .premium-testimonial__link_wrap' . '> .premium-testimonial__author_comp' );
-				$css->add_property( 'font-size', ( $attr['companyStyles'][0]['authorComSize'] . $attr['companyStyles'][0]['authorComSizeUnit'] ) );
-			}
+		if ( isset( $attr['companyTypography'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__info' . ' > a' . ' > .premium-testimonial__link_wrap' . '> .premium-testimonial__author_comp' );
+			$css->add_property( 'font-size', ( $attr['companyTypography']['fontSize']['Desktop'] . ( isset( $attr['companyTypography']['fontSize']['unit'] ) ? $attr['companyTypography']['fontSize']['unit'] : 'px' ) . '!important' ) );			
 		}
+		if ( isset( $attr['align'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__info' );
+			$css->add_property( 'justify-content', ( $attr['align']['Desktop'] . '!important' ) );
+		}
+
 		// Body Style FontSize.
-		if ( isset( $attr['contentStyle'] ) ) {
-			if ( isset( $attr['contentStyle'][0]['bodySize'] ) && isset( $attr['contentStyle'][0]['bodySizeUnit'] ) ) {
-				$css->set_selector( '#premium-testimonial-' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__text_wrap' . ' > div' . '> .premium-testimonial__text' );
-				$css->add_property( 'font-size', ( $attr['contentStyle'][0]['bodySize'] . $attr['contentStyle'][0]['bodySizeUnit'] ) );
-			}
+		if ( isset( $attr['contentTypography'] ) ) {	
+			$css->set_selector( '.' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__text_wrap' . ' > div' . '> .premium-testimonial__text' );
+			$css->add_property( 'font-size', ( $attr['contentTypography']['fontSize']['Desktop'] . ( isset( $attr['contentTypography']['fontSize']['unit'] ) ? $attr['contentTypography']['fontSize']['unit'] : 'px' ) . '!important' ) );			
 		}
+		if ( isset( $attr['contentMargin']['Desktop']['top'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__text_wrap' . ' > div' . '> .premium-testimonial__text' );
+			$css->add_property( 'margin-top', ( $attr['contentMargin']['Desktop']['top'] . ( isset( $attr['contentMargin']['unit'] ) ? $attr['contentMargin']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['contentMargin']['Desktop']['right'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__text_wrap' . ' > div' . '> .premium-testimonial__text' );
+			$css->add_property( 'margin-right', ( $attr['contentMargin']['Desktop']['right'] . ( isset( $attr['contentMargin']['unit'] ) ? $attr['contentMargin']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['contentMargin']['Desktop']['bottom'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__text_wrap' . ' > div' . '> .premium-testimonial__text' );
+			$css->add_property( 'margin-bottom', ( $attr['contentMargin']['Desktop']['bottom'] . ( isset( $attr['contentMargin']['unit'] ) ? $attr['contentMargin']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['contentMargin']['Desktop']['left'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__text_wrap' . ' > div' . '> .premium-testimonial__text' );
+			$css->add_property( 'margin-left', ( $attr['contentMargin']['Desktop']['left'] . ( isset( $attr['contentMargin']['unit'] ) ? $attr['contentMargin']['unit'] : 'px' ) . '!important' ) );
+		}
+
 		// Container Style
-		if ( isset( $attr['paddingTop'] ) && isset( $attr['containerStyles'][0]['paddingUnit'] ) ) {
-			$css->set_selector( '#premium-testimonial-' . $unique_id );
-			$css->add_property( 'padding-top', ( $attr['paddingTop'] . $attr['containerStyles'][0]['paddingUnit'] ) );
+		if ( isset( $attr['containerPadding']['Desktop']['top'] ) && isset( $attr['containerPadding']['unit'] ) ) {
+			$css->set_selector( '.' . $unique_id );
+			$css->add_property( 'padding-top', ( $attr['containerPadding']['Desktop']['top'] . ( isset( $attr['containerPadding']['unit'] ) ? $attr['containerPadding']['unit'] : 'px' ) . '!important' ) );
 		}
-		if ( isset( $attr['paddingRight'] ) && isset( $attr['containerStyles'][0]['paddingUnit'] ) ) {
-			$css->set_selector( '#premium-testimonial-' . $unique_id );
-			$css->add_property( 'padding-right', ( $attr['paddingRight'] . $attr['containerStyles'][0]['paddingUnit'] ) );
+		if ( isset( $attr['containerPadding']['Desktop']['right'] ) && isset( $attr['containerPadding']['unit'] ) ) {
+			$css->set_selector( '.' . $unique_id );
+			$css->add_property( 'padding-right', ( $attr['containerPadding']['Desktop']['right'] . ( isset( $attr['containerPadding']['unit'] ) ? $attr['containerPadding']['unit'] : 'px' ) . '!important' ) );
 		}
-		if ( isset( $attr['paddingBottom'] ) && isset( $attr['containerStyles'][0]['paddingUnit'] ) ) {
-			$css->set_selector( '#premium-testimonial-' . $unique_id );
-			$css->add_property( 'padding-bottom', ( $attr['paddingBottom'] . $attr['containerStyles'][0]['paddingUnit'] ) );
+		if ( isset( $attr['containerPadding']['Desktop']['bottom'] ) && isset( $attr['containerPadding']['unit'] ) ) {
+			$css->set_selector( '.' . $unique_id );
+			$css->add_property( 'padding-bottom', ( $attr['containerPadding']['Desktop']['bottom'] . ( isset( $attr['containerPadding']['unit'] ) ? $attr['containerPadding']['unit'] : 'px' ) . '!important' ) );
 		}
-		if ( isset( $attr['paddingLeft'] ) && isset( $attr['containerStyles'][0]['paddingUnit'] ) ) {
-			$css->set_selector( '#premium-testimonial-' . $unique_id );
-			$css->add_property( 'padding-left', ( $attr['paddingLeft'] . $attr['containerStyles'][0]['paddingUnit'] ) );
+		if ( isset( $attr['containerPadding']['Desktop']['left'] ) && isset( $attr['containerPadding']['unit'] ) ) {
+			$css->set_selector( '.' . $unique_id );
+			$css->add_property( 'padding-left', ( $attr['containerPadding']['Desktop']['left'] . ( isset( $attr['containerPadding']['unit'] ) ? $attr['containerPadding']['unit'] : 'px' ) . '!important' ) );
 		}
+
+		//image style
+		if ( isset( $attr['imgSize']['Desktop'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__img_wrap' . ' > img' );
+			$css->add_property( 'width', ( ( isset( $attr['imgSize']['Desktop'] ) ? $attr['imgSize']['Desktop'] : '100' ) . ( isset( $attr['imgSize']['unit'] ) ? $attr['imgSize']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'height', ( ( isset( $attr['imgSize']['Desktop'] ) ? $attr['imgSize']['Desktop'] : '100' ) . ( isset( $attr['imgSize']['unit'] ) ? $attr['imgSize']['unit'] : 'px' ) . '!important' ) );
+		}
+
 		$css->start_media_query( $media_query['tablet'] );
-		// Author Style FontSize Tablet.
-		if ( isset( $attr['authorStyles'] ) ) {
-			if ( isset( $attr['authorStyles'][0]['authorSizeTablet'] ) && isset( $attr['authorStyles'][0]['authorSizeUnit'] ) ) {
-				$css->set_selector( '#premium-testimonial-' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__info' . '> .premium-testimonial__author ' );
-				$css->add_property( 'font-size', ( $attr['authorStyles'][0]['authorSizeTablet'] . $attr['authorStyles'][0]['authorSizeUnit'] ) );
-			}
+
+		if ( isset( $attr['align'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-testimonial__container'  . ' > .premium-testimonial__content' );
+			$css->add_property( 'text-align', ( $attr['align']['Tablet'] . '!important' ) );
 		}
-		// Company Style FontSize Tablet.
-		if ( isset( $attr['companyStyles'] ) ) {
-			if ( isset( $attr['companyStyles'][0]['authorComSizeTablet'] ) && isset( $attr['companyStyles'][0]['authorComSizeUnit'] ) ) {
-				$css->set_selector( '#premium-testimonial-' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__info' . ' > .premium-testimonial__link_wrap' . '> .premium-testimonial__author_comp' );
-				$css->add_property( 'font-size', ( $attr['companyStyles'][0]['authorComSizeTablet'] . $attr['companyStyles'][0]['authorComSizeUnit'] ) );
-			}
+
+		// Author Style FontSize.
+		if ( isset( $attr['authorTypography'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__info' . '> .premium-testimonial__author ' );
+			$css->add_property( 'font-size', ( $attr['authorTypography']['fontSize']['Tablet'] . ( isset( $attr['authorTypography']['fontSize']['unit'] ) ? $attr['authorTypography']['fontSize']['unit'] : 'px' ) . '!important' ) );			
 		}
-		// Body Style FontSize Tablet.
-		if ( isset( $attr['contentStyle'] ) ) {
-			if ( isset( $attr['contentStyle'][0]['bodySizeTablet'] ) && isset( $attr['contentStyle'][0]['bodySizeUnit'] ) ) {
-				$css->set_selector( '#premium-testimonial-' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__text_wrap' . ' > div' . '> .premium-testimonial__text' );
-				$css->add_property( 'font-size', ( $attr['contentStyle'][0]['bodySizeTablet'] . $attr['contentStyle'][0]['bodySizeUnit'] ) );
-			}
+
+		// Company Style FontSize.
+		if ( isset( $attr['companyTypography'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__info' . ' > a'  . ' > .premium-testimonial__link_wrap' . '> .premium-testimonial__author_comp' );
+			$css->add_property( 'font-size', ( $attr['companyTypography']['fontSize']['Tablet'] . ( isset( $attr['companyTypography']['fontSize']['unit'] ) ? $attr['companyTypography']['fontSize']['unit'] : 'px' ) . '!important' ) );			
 		}
-		// Container Style Tablet
-		if ( isset( $attr['paddingTTablet'] ) && isset( $attr['containerStyles'][0]['paddingUnit'] ) ) {
-			$css->set_selector( '#premium-testimonial-' . $unique_id );
-			$css->add_property( 'padding-top', ( $attr['paddingTTablet'] . $attr['containerStyles'][0]['paddingUnit'] ) );
+		if ( isset( $attr['align'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__info' );
+			$css->add_property( 'justify-content', ( $attr['align']['Tablet'] . '!important' ) );
 		}
-		if ( isset( $attr['paddingRTablet'] ) && isset( $attr['containerStyles'][0]['paddingUnit'] ) ) {
-			$css->set_selector( '#premium-testimonial-' . $unique_id );
-			$css->add_property( 'padding-right', ( $attr['paddingRTablet'] . $attr['containerStyles'][0]['paddingUnit'] ) );
+
+		// Body Style FontSize.
+		if ( isset( $attr['contentTypography'] ) ) {	
+			$css->set_selector( '.' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__text_wrap' . ' > div' . '> .premium-testimonial__text' );
+			$css->add_property( 'font-size', ( $attr['contentTypography']['fontSize']['Tablet'] . ( isset( $attr['contentTypography']['fontSize']['unit'] ) ? $attr['contentTypography']['fontSize']['unit'] : 'px' ) . '!important' ) );			
 		}
-		if ( isset( $attr['paddingBTablet'] ) && isset( $attr['containerStyles'][0]['paddingUnit'] ) ) {
-			$css->set_selector( '#premium-testimonial-' . $unique_id );
-			$css->add_property( 'padding-bottom', ( $attr['paddingBTablet'] . $attr['containerStyles'][0]['paddingUnit'] ) );
+		if ( isset( $attr['contentMargin']['Tablet']['top'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__text_wrap' . ' > div' . '> .premium-testimonial__text' );
+			$css->add_property( 'margin-top', ( $attr['contentMargin']['Tablet']['top'] . ( isset( $attr['contentMargin']['unit'] ) ? $attr['contentMargin']['unit'] : 'px' ) . '!important' ) );
 		}
-		if ( isset( $attr['paddingLTablet'] ) && isset( $attr['containerStyles'][0]['paddingUnit'] ) ) {
-			$css->set_selector( '#premium-testimonial-' . $unique_id );
-			$css->add_property( 'padding-left', ( $attr['paddingLTablet'] . $attr['containerStyles'][0]['paddingUnit'] ) );
+		if ( isset( $attr['contentMargin']['Tablet']['right'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__text_wrap' . ' > div' . '> .premium-testimonial__text' );
+			$css->add_property( 'margin-right', ( $attr['contentMargin']['Tablet']['right'] . ( isset( $attr['contentMargin']['unit'] ) ? $attr['contentMargin']['unit'] : 'px' ) . '!important' ) );
 		}
+		if ( isset( $attr['contentMargin']['Tablet']['bottom'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__text_wrap' . ' > div' . '> .premium-testimonial__text' );
+			$css->add_property( 'margin-bottom', ( $attr['contentMargin']['Tablet']['bottom'] . ( isset( $attr['contentMargin']['unit'] ) ? $attr['contentMargin']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['contentMargin']['Tablet']['left'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__text_wrap' . ' > div' . '> .premium-testimonial__text' );
+			$css->add_property( 'margin-left', ( $attr['contentMargin']['Tablet']['left'] . ( isset( $attr['contentMargin']['unit'] ) ? $attr['contentMargin']['unit'] : 'px' ) . '!important' ) );
+		}
+
+		// Container Style
+		if ( isset( $attr['containerPadding']['Tablet']['top'] ) && isset( $attr['containerPadding']['unit'] ) ) {
+			$css->set_selector( '.' . $unique_id );
+			$css->add_property( 'padding-top', ( $attr['containerPadding']['Tablet']['top'] . ( isset( $attr['containerPadding']['unit'] ) ? $attr['containerPadding']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['containerPadding']['Tablet']['right'] ) && isset( $attr['containerPadding']['unit'] ) ) {
+			$css->set_selector( '.' . $unique_id );
+			$css->add_property( 'padding-right', ( $attr['containerPadding']['Tablet']['right'] . ( isset( $attr['containerPadding']['unit'] ) ? $attr['containerPadding']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['containerPadding']['Tablet']['bottom'] ) && isset( $attr['containerPadding']['unit'] ) ) {
+			$css->set_selector( '.' . $unique_id );
+			$css->add_property( 'padding-bottom', ( $attr['containerPadding']['Tablet']['bottom'] . ( isset( $attr['containerPadding']['unit'] ) ? $attr['containerPadding']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['containerPadding']['Tablet']['left'] ) && isset( $attr['containerPadding']['unit'] ) ) {
+			$css->set_selector( '.' . $unique_id );
+			$css->add_property( 'padding-left', ( $attr['containerPadding']['Tablet']['left'] . ( isset( $attr['containerPadding']['unit'] ) ? $attr['containerPadding']['unit'] : 'px' ) . '!important' ) );
+		}
+
+		//image style
+		if ( isset( $attr['imgSize']['Tablet'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__img_wrap' . ' > img' );
+			$css->add_property( 'width', ( ( isset( $attr['imgSize']['Tablet'] ) ? $attr['imgSize']['Tablet'] : '100' ) . ( isset( $attr['imgSize']['unit'] ) ? $attr['imgSize']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'height', ( ( isset( $attr['imgSize']['Tablet'] ) ? $attr['imgSize']['Tablet'] : '100' ) . ( isset( $attr['imgSize']['unit'] ) ? $attr['imgSize']['unit'] : 'px' ) . '!important' ) );
+		}
+
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['mobile'] );
-		// Author Style FontSize Mobile.
-		if ( isset( $attr['authorStyles'] ) ) {
-			if ( isset( $attr['authorStyles'][0]['authorSizeMobile'] ) && isset( $attr['authorStyles'][0]['authorSizeUnit'] ) ) {
-				$css->set_selector( '#premium-testimonial-' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__info' . '> .premium-testimonial__author ' );
-				$css->add_property( 'font-size', ( $attr['authorStyles'][0]['authorSizeMobile'] . $attr['authorStyles'][0]['authorSizeUnit'] ) );
-			}
+
+		if ( isset( $attr['align'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-testimonial__container'  . ' > .premium-testimonial__content' );
+			$css->add_property( 'text-align', ( $attr['align']['Mobile'] . '!important' ) );
 		}
-		// Company Style FontSize Mobile.
-		if ( isset( $attr['companyStyles'] ) ) {
-			if ( isset( $attr['companyStyles'][0]['authorComSizeMobile'] ) && isset( $attr['companyStyles'][0]['authorComSizeUnit'] ) ) {
-				$css->set_selector( '#premium-testimonial-' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__info' . ' > .premium-testimonial__link_wrap' . '> .premium-testimonial__author_comp' );
-				$css->add_property( 'font-size', ( $attr['companyStyles'][0]['authorComSizeMobile'] . $attr['companyStyles'][0]['authorComSizeUnit'] ) );
-			}
+
+		// Author Style FontSize.
+		if ( isset( $attr['authorTypography'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__info' . '> .premium-testimonial__author ' );
+			$css->add_property( 'font-size', ( $attr['authorTypography']['fontSize']['Mobile'] . ( isset( $attr['authorTypography']['fontSize']['unit'] ) ? $attr['authorTypography']['fontSize']['unit'] : 'px' ) . '!important' ) );			
 		}
-		// Body Style FontSize Mobile.
-		if ( isset( $attr['contentStyle'] ) ) {
-			if ( isset( $attr['contentStyle'][0]['bodySizeMobile'] ) && isset( $attr['contentStyle'][0]['bodySizeUnit'] ) ) {
-				$css->set_selector( '#premium-testimonial-' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__text_wrap' . ' > div' . '> .premium-testimonial__text' );
-				$css->add_property( 'font-size', ( $attr['contentStyle'][0]['bodySizeMobile'] . $attr['contentStyle'][0]['bodySizeUnit'] ) );
-			}
+
+		// Company Style FontSize.
+		if ( isset( $attr['companyTypography'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__info' . ' > a'  . ' > .premium-testimonial__link_wrap' . '> .premium-testimonial__author_comp' );
+			$css->add_property( 'font-size', ( $attr['companyTypography']['fontSize']['Mobile'] . ( isset( $attr['companyTypography']['fontSize']['unit'] ) ? $attr['companyTypography']['fontSize']['unit'] : 'px' ) . '!important' ) );			
 		}
-		// Container Style Mobile
-		if ( isset( $attr['paddingTMobile'] ) && isset( $attr['containerStyles'][0]['paddingUnit'] ) ) {
-			$css->set_selector( '#premium-testimonial-' . $unique_id );
-			$css->add_property( 'padding-top', ( $attr['paddingTMobile'] . $attr['containerStyles'][0]['paddingUnit'] ) );
+		if ( isset( $attr['align'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__info' );
+			$css->add_property( 'justify-content', ( $attr['align']['Mobile'] . '!important' ) );
 		}
-		if ( isset( $attr['paddingRMobile'] ) && isset( $attr['containerStyles'][0]['paddingUnit'] ) ) {
-			$css->set_selector( '#premium-testimonial-' . $unique_id );
-			$css->add_property( 'padding-right', ( $attr['paddingRMobile'] . $attr['containerStyles'][0]['paddingUnit'] ) );
+
+		// Body Style FontSize.
+		if ( isset( $attr['contentTypography'] ) ) {	
+			$css->set_selector( '.' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__text_wrap' . ' > div' . '> .premium-testimonial__text' );
+			$css->add_property( 'font-size', ( $attr['contentTypography']['fontSize']['Mobile'] . ( isset( $attr['contentTypography']['fontSize']['unit'] ) ? $attr['contentTypography']['fontSize']['unit'] : 'px' ) . '!important' ) );			
 		}
-		if ( isset( $attr['paddingBMobile'] ) && isset( $attr['containerStyles'][0]['paddingUnit'] ) ) {
-			$css->set_selector( '#premium-testimonial-' . $unique_id );
-			$css->add_property( 'padding-bottom', ( $attr['paddingBMobile'] . $attr['containerStyles'][0]['paddingUnit'] ) );
+		if ( isset( $attr['contentMargin']['Mobile']['top'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__text_wrap' . ' > div' . '> .premium-testimonial__text' );
+			$css->add_property( 'margin-top', ( $attr['contentMargin']['Mobile']['top'] . ( isset( $attr['contentMargin']['unit'] ) ? $attr['contentMargin']['unit'] : 'px' ) . '!important' ) );
 		}
-		if ( isset( $attr['paddingLMobile'] ) && isset( $attr['containerStyles'][0]['paddingUnit'] ) ) {
-			$css->set_selector( '#premium-testimonial-' . $unique_id );
-			$css->add_property( 'padding-left', ( $attr['paddingLMobile'] . $attr['containerStyles'][0]['paddingUnit'] ) );
+		if ( isset( $attr['contentMargin']['Mobile']['right'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__text_wrap' . ' > div' . '> .premium-testimonial__text' );
+			$css->add_property( 'margin-right', ( $attr['contentMargin']['Mobile']['right'] . ( isset( $attr['contentMargin']['unit'] ) ? $attr['contentMargin']['unit'] : 'px' ) . '!important' ) );
 		}
+		if ( isset( $attr['contentMargin']['Mobile']['bottom'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__text_wrap' . ' > div' . '> .premium-testimonial__text' );
+			$css->add_property( 'margin-bottom', ( $attr['contentMargin']['Mobile']['bottom'] . ( isset( $attr['contentMargin']['unit'] ) ? $attr['contentMargin']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['contentMargin']['Mobile']['left'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__text_wrap' . ' > div' . '> .premium-testimonial__text' );
+			$css->add_property( 'margin-left', ( $attr['contentMargin']['Mobile']['left'] . ( isset( $attr['contentMargin']['unit'] ) ? $attr['contentMargin']['unit'] : 'px' ) . '!important' ) );
+		}
+
+		// Container Style
+		if ( isset( $attr['containerPadding']['Mobile']['top'] ) && isset( $attr['containerPadding']['unit'] ) ) {
+			$css->set_selector( '.' . $unique_id );
+			$css->add_property( 'padding-top', ( $attr['containerPadding']['Mobile']['top'] . ( isset( $attr['containerPadding']['unit'] ) ? $attr['containerPadding']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['containerPadding']['Mobile']['right'] ) && isset( $attr['containerPadding']['unit'] ) ) {
+			$css->set_selector( '.' . $unique_id );
+			$css->add_property( 'padding-right', ( $attr['containerPadding']['Mobile']['right'] . ( isset( $attr['containerPadding']['unit'] ) ? $attr['containerPadding']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['containerPadding']['Mobile']['bottom'] ) && isset( $attr['containerPadding']['unit'] ) ) {
+			$css->set_selector( '.' . $unique_id );
+			$css->add_property( 'padding-bottom', ( $attr['containerPadding']['Mobile']['bottom'] . ( isset( $attr['containerPadding']['unit'] ) ? $attr['containerPadding']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['containerPadding']['Mobile']['left'] ) && isset( $attr['containerPadding']['unit'] ) ) {
+			$css->set_selector( '.' . $unique_id );
+			$css->add_property( 'padding-left', ( $attr['containerPadding']['Mobile']['left'] . ( isset( $attr['containerPadding']['unit'] ) ? $attr['containerPadding']['unit'] : 'px' ) . '!important' ) );
+		}
+
+		//image style
+		if ( isset( $attr['imgSize']['Mobile'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__img_wrap' . ' > img' );
+			$css->add_property( 'width', ( ( isset( $attr['imgSize']['Mobile'] ) ? $attr['imgSize']['Mobile'] : '100' ) . ( isset( $attr['imgSize']['unit'] ) ? $attr['imgSize']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'height', ( ( isset( $attr['imgSize']['Mobile'] ) ? $attr['imgSize']['Mobile'] : '100' ) . ( isset( $attr['imgSize']['unit'] ) ? $attr['imgSize']['unit'] : 'px' ) . '!important' ) );
+		}
+
 		$css->stop_media_query();
 		return $css->css_output();
 
