@@ -283,36 +283,16 @@ const edit = (props) => {
     const CustomTag = `${containerTag}`;
     const BLEND =
         [
-            {
-                label: 'Normal', value: 'normal'
-            },
-            {
-                label: 'Multiply', value: 'multiply'
-            },
-            {
-                label: 'Screen', value: 'screen'
-            },
-            {
-                label: 'Overlay', value: 'overlay'
-            },
-            {
-                label: 'Darken', value: 'darken'
-            },
-            {
-                label: 'Lighten', value: 'lighten'
-            },
-            {
-                label: 'Color Dodge', value: 'color-dodge'
-            },
-            {
-                label: 'Saturation', value: 'saturation'
-            },
-            {
-                label: 'Color', value: 'color'
-            },
-            {
-                label: 'Luminosity', value: 'luminosity'
-            },
+            { label: 'Normal', value: 'normal' },
+            { label: 'Multiply', value: 'multiply' },
+            { label: 'Screen', value: 'screen' },
+            { label: 'Overlay', value: 'overlay' },
+            { label: 'Darken', value: 'darken' },
+            { label: 'Lighten', value: 'lighten' },
+            { label: 'Color Dodge', value: 'color-dodge' },
+            { label: 'Saturation', value: 'saturation' },
+            { label: 'Color', value: 'color' },
+            { label: 'Luminosity', value: 'luminosity' },
         ];
 
     return (

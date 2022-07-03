@@ -35,18 +35,9 @@ const Save = (props) => {
         transition
     },
     } = props;
-    let wrapperClassName = "";
-
-    if (typeof align !== "undefined") {
-        if (align === "full") {
-            wrapperClassName = "alignfull";
-        } else if (align === "wide") {
-            wrapperClassName = "alignwide";
-        }
-    }
-
 
     const CustomTag = `${containerTag}`;
+
     const loadStyles = () => {
         const styles = {};
         const containerFullWidth = '100vw';
@@ -112,6 +103,7 @@ const Save = (props) => {
         }
         return styleCss;
     }
+
     const topShapeClasses = classnames(
         'premium-shape-divider',
         'premium-top-shape',
@@ -119,6 +111,7 @@ const Save = (props) => {
         { 'premium-shape-above-content': shapeTop['front'] === true },
         { 'premium-shape__invert': shapeTop['invertShapeDivider'] === true }
     )
+
     const bottomShapeClasses = classnames(
         'premium-shape-divider',
         'premium-bottom-shape',
@@ -126,6 +119,7 @@ const Save = (props) => {
         { 'premium-shape-above-content': shapeBottom['front'] === true },
         { 'premium-shape__invert': shapeBottom['invertShapeDivider'] === true }
     )
+
     return (
         <Fragment>
             <style
