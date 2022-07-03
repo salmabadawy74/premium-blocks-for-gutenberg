@@ -12,9 +12,6 @@ const attributes = {
         type: "string",
         default: "center"
     },
-    borderColor: {
-        type: "string"
-    },
     title: {
         type: "array",
         source: "children",
@@ -68,7 +65,7 @@ const attributes = {
         source: "children",
         selector: ".premium-pricing-table__list"
     },
-    block_id: {
+    blockId: {
         type: "string"
     },
     classMigrate: {
@@ -103,15 +100,17 @@ const attributes = {
                 titleWeight: 500,
                 titleColor: "#6ec1e4",
                 titleBack: '',
-                titleShadowColor: '',
-                titleShadowBlur: '0',
-                titleShadowHorizontal: '0',
-                titleShadowVertical: '0',
-                titleMarginB: 20,
-                titleMarginT: 20,
-                titlePadding: 0,
             }
         ]
+    },
+    titleTextShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': ''
+        }
     },
     priceStyles: {
         type: "array",
@@ -119,9 +118,6 @@ const attributes = {
             {
                 priceBack: '',
                 priceOpacity: 1,
-                priceMarginT: '',
-                priceMarginB: 10,
-                pricePadding: '',
                 slashPrice: '',
                 slashColor: '',
                 slashSizeUnit: 'px',
@@ -166,11 +162,34 @@ const attributes = {
             }
         ]
     },
+    slashVAlign: {
+        type: "object",
+        default: {
+            Desktop: 'center',
+            Tablet: 'center',
+            Mobile: 'center',
+        }
+    },
+    currVAlign: {
+        type: "object",
+        default: {
+            Desktop: 'center',
+            Tablet: 'center',
+            Mobile: 'center',
+        }
+    },
+    valVAlign: {
+        type: "object",
+        default: {
+            Desktop: 'center',
+            Tablet: 'center',
+            Mobile: 'center',
+        }
+    },
     featureStyles: {
         type: "array",
         default: [
             {
-                featsAlign: '',
                 listStyle: "disc",
                 listColor: '',
                 listSize: '',
@@ -183,11 +202,16 @@ const attributes = {
                 listLine: '',
                 listUpper: false,
                 listBack: '',
-                listMarginB: 20,
-                listMarginT: '',
-                listPadding: '',
             }
         ]
+    },
+    featureAlign: {
+        type: "object",
+        default: {
+            Desktop: 'center',
+            Tablet: 'center',
+            Mobile: 'center',
+        }
     },
     descStyles: {
         type: "array",
@@ -227,14 +251,6 @@ const attributes = {
                 btnUpper: false,
                 btnBack: "#6ec1e4",
                 btnHoverBack: '',
-                btnMarginT: 0,
-                btnMarginB: 0,
-                btnPadding: 10,
-                btnPaddingU: 'px',
-                btnBorderType: 'none',
-                btnBorderWidth: 1,
-                btnBorderRadius: 0,
-                btnBorderColor: '',
                 btnTarget: true,
             }
         ]
@@ -268,41 +284,376 @@ const attributes = {
             {
                 tableBack: '',
                 tableOpacity: 1,
-                borderType: 'none',
-                borderWidth: 1,
-                borderRadius: 0,
-                tableShadowColor: '',
-                tableShadowBlur: '0',
-                tableShadowHorizontal: '0',
-                tableShadowVertical: '0',
-                tableShadowPosition: '',
-                tablePadding: "0",
             }
         ]
     },
-    btnBorderTop: {
-        type: 'number'
+    tableBoxShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ''
+        }
     },
-    btnBorderRight: {
-        type: 'number'
+    tableBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
     },
-    btnBorderBottom: {
-        type: 'number'
+    buttonBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
     },
-    btnBorderLeft: {
-        type: 'number'
+    tablePadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
     },
-    borderTop: {
-        type: 'number'
+    titlePadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
     },
-    borderRight: {
-        type: 'number'
+    titleMargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: 20,
+                right: '',
+                bottom: 20,
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
     },
-    borderBottom: {
-        type: 'number'
+    pricePadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
     },
-    borderLeft: {
-        type: 'number'
+    priceMargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: 10,
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
+    featuresListPadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
+    featuresListMargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: 20,
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
+    descriptionPadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
+    descriptionMargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: 30,
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
+    buttonPadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: 10,
+                right: 10,
+                bottom: 10,
+                left: 10
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
+    buttonMargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
     },
 }
 export default attributes

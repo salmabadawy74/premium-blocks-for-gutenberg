@@ -1,4 +1,7 @@
 const className = "premium-pricing-table";
+import { generateBlockId } from '../../components/HelperFunction';
+import classnames from "classnames";
+
 const { __ } = wp.i18n;
 const { RichText } = wp.editor;
 import hexToRgba from 'hex-to-rgba'
@@ -610,7 +613,960 @@ const attributes = {
     }
 }
 
+const v5Attributes = {
+    borderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    btnBorderUpdated: {
+        type: "boolean",
+        default: false
+    },
+    contentAlign: {
+        type: "string",
+        default: "center"
+    },
+    borderColor: {
+        type: "string"
+    },
+    title: {
+        type: "array",
+        source: "children",
+        selector: ".premium-pricing-table__title",
+        default: "Pricing Table"
+    },
+    desc: {
+        type: "array",
+        source: "children",
+        selector: ".premium-pricing-table__desc"
+    },
+
+    titleChecked: {
+        type: "boolean",
+        default: true
+    },
+    descChecked: {
+        type: "boolean",
+        default: false
+    },
+    priceChecked: {
+        type: "boolean",
+        default: true
+    },
+
+
+    btnChecked: {
+        type: "boolean",
+        default: true
+    },
+    btnText: {
+        type: "string",
+        default: "Get Started"
+    },
+    btnLink: {
+        type: "string",
+        source: "attribute",
+        attribute: "href",
+        selector: ".premium-pricing-table__button_link"
+    },
+    badgeChecked: {
+        type: "boolean"
+    },
+
+    listChecked: {
+        type: "boolean",
+        default: true
+    },
+    listItems: {
+        type: "array",
+        source: "children",
+        selector: ".premium-pricing-table__list"
+    },
+    block_id: {
+        type: "string"
+    },
+    classMigrate: {
+        type: 'boolean',
+        default: false
+    },
+    hideDesktop: {
+        type: "boolean",
+        default: false
+    },
+    hideTablet: {
+        type: "boolean",
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    },
+    titleStyles: {
+        type: "array",
+        default: [
+            {
+                titleTag: 'H2',
+                titleSizeUnit: 'px',
+                titleSize: '',
+                titleSizeMobile: '',
+                titleSizeTablet: '',
+                titleLine: '',
+                titleLetter: '',
+                titleStyle: '',
+                titleUpper: false,
+                titleWeight: 500,
+                titleColor: "#6ec1e4",
+                titleBack: '',
+                titleShadowColor: '',
+                titleShadowBlur: '0',
+                titleShadowHorizontal: '0',
+                titleShadowVertical: '0',
+                titleMarginB: 20,
+                titleMarginT: 20,
+                titlePadding: 0,
+            }
+        ]
+    },
+    priceStyles: {
+        type: "array",
+        default: [
+            {
+                priceBack: '',
+                priceOpacity: 1,
+                priceMarginT: '',
+                priceMarginB: 10,
+                pricePadding: '',
+                slashPrice: '',
+                slashColor: '',
+                slashSizeUnit: 'px',
+                slashSize: 20,
+                slashSizeMobile: '',
+                slashSizeTablet: '',
+                slashWeight: '',
+                currPrice: '$',
+                currColor: '',
+                currSize: 20,
+                currSizeUnit: 'px',
+                currSizeMobile: '',
+                currSizeTablet: '',
+                currWeight: '',
+                valPrice: '25',
+                valColor: '',
+                valSizeUnit: 'px',
+                valSize: 50,
+                valSizeMobile: '',
+                valSizeTablet: '',
+                valWeight: '',
+                divPrice: "/",
+                divColor: '',
+                divSize: 20,
+                divSizeUnit: 'px',
+                divSizeMobile: '',
+                divSizeTablet: '',
+                divWeight: '',
+                durPrice: 'm',
+                durColor: '',
+                durSizeUnit: 'px',
+                durSize: 20,
+                durSizeMobile: '',
+                durSizeTablet: '',
+                durWeight: '',
+                selectedStyle: "price",
+                slashV: 'center',
+                currV: 'center',
+                valV: "center",
+                divV: 'center',
+                durV: 'center',
+            }
+        ]
+    },
+    featureStyles: {
+        type: "array",
+        default: [
+            {
+                featsAlign: '',
+                listStyle: "disc",
+                listColor: '',
+                listSize: '',
+                listSizeUnit: 'px',
+                listSizeTablet: '',
+                listSizeMobile: '',
+                listWeight: 500,
+                listItemsStyle: '',
+                listLetter: '',
+                listLine: '',
+                listUpper: false,
+                listBack: '',
+                listMarginB: 20,
+                listMarginT: '',
+                listPadding: '',
+            }
+        ]
+    },
+    descStyles: {
+        type: "array",
+        default: [
+            {
+                descSize: '',
+                descSizeUnit: 'px',
+                descSizeTablet: '',
+                descSizeMobile: '',
+                descWeight: '',
+                descLetter: '',
+                descStyle: '',
+                descLine: '',
+                descColor: "#000",
+                descBack: '',
+                descMarginT: 0,
+                descMarginB: 30,
+                descPadding: '0',
+            }
+        ]
+    },
+    buttonStyles: {
+        type: "array",
+        default: [
+            {
+                btnColor: "#fff",
+                btnHoverColor: '',
+                btnWidth: '',
+                btnSize: '',
+                btnSizeUnit: 'px',
+                btnSizeTablet: '',
+                btnSizeMobile: '',
+                btnWeight: 900,
+                btnLine: '',
+                btnLetter: '',
+                btnStyle: '',
+                btnUpper: false,
+                btnBack: "#6ec1e4",
+                btnHoverBack: '',
+                btnMarginT: 0,
+                btnMarginB: 0,
+                btnPadding: 10,
+                btnPaddingU: 'px',
+                btnBorderType: 'none',
+                btnBorderWidth: 1,
+                btnBorderRadius: 0,
+                btnBorderColor: '',
+                btnTarget: true,
+            }
+        ]
+    },
+    badgeStyles: {
+        type: "array",
+        default: [
+            {
+                badgePos: "right",
+                badgeBack: "#6ec1e4",
+                badgeColor: '',
+                badgeSize: '',
+                badgeTextSize: '',
+                badgeTextUnit: 'px',
+                badgeSizeTablet: '',
+                badgeSizeMobile: '',
+                badgeTop: '',
+                badgeHorizontal: '',
+                badgeWidth: '',
+                badgeWeight: 900,
+                badgeLetter: '',
+                badgeStyle: '',
+                badgeUpper: false,
+                badgeText: __("Popular"),
+            }
+        ]
+    },
+    tableStyles: {
+        type: "array",
+        default: [
+            {
+                tableBack: '',
+                tableOpacity: 1,
+                borderType: 'none',
+                borderWidth: 1,
+                borderRadius: 0,
+                tableShadowColor: '',
+                tableShadowBlur: '0',
+                tableShadowHorizontal: '0',
+                tableShadowVertical: '0',
+                tableShadowPosition: '',
+                tablePadding: "0",
+            }
+        ]
+    },
+    btnBorderTop: {
+        type: 'number'
+    },
+    btnBorderRight: {
+        type: 'number'
+    },
+    btnBorderBottom: {
+        type: 'number'
+    },
+    btnBorderLeft: {
+        type: 'number'
+    },
+    borderTop: {
+        type: 'number'
+    },
+    borderRight: {
+        type: 'number'
+    },
+    borderBottom: {
+        type: 'number'
+    },
+    borderLeft: {
+        type: 'number'
+    },
+};
+
 const deprecatedContent = [
+    {
+        attributes: v5Attributes,
+        isEligible() {
+            return true;
+        },
+        migrate: (attributes) => {
+            let newAttributes = {
+                blockId: attributes.block_id ? "premium-pricing-table-" + generateBlockId(attributes.block_id) : '',
+                titleTextShadow: {
+                    'color': attributes?.titleStyles[0]?.titleShadowColor || '',
+                    'blur': attributes?.titleStyles[0]?.titleShadowBlur || '',
+                    'horizontal': attributes?.titleStyles[0]?.titleShadowHorizontal || '',
+                    'vertical': attributes?.titleStyles[0]?.titleShadowVertical || ''
+                },
+                tableBoxShadow: {
+                    'color': attributes?.tableStyles[0]?.tableShadowColor || '',
+                    'blur': attributes?.tableStyles[0]?.tableShadowBlur || '',
+                    'horizontal': attributes?.tableStyles[0]?.tableShadowHorizontal || '',
+                    'vertical': attributes?.tableStyles[0]?.tableShadowVertical || '',
+                    'position': attributes?.tableStyles[0]?.tableShadowPosition || ''
+                },
+                featureAlign: {
+                    Desktop: attributes?.featureStyles[0]?.featsAlign || 'center',
+                    Tablet: attributes?.featureStyles[0]?.featsAlign || 'center',
+                    Mobile: attributes?.featureStyles[0]?.featsAlign || 'center',
+                },
+                tableBorder: {
+                    "borderType": attributes?.tableStyles[0]?.borderType || '',
+                    "borderColor": attributes?.borderColor || '',
+                    "borderWidth": {
+                        Desktop: {
+                            top: attributes?.borderTop || '',
+                            right: attributes?.borderRight || '',
+                            bottom: attributes?.borderBottom || '',
+                            left: attributes?.borderLeft || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    },
+                    "borderRadius": {
+                        Desktop: {
+                            top: attributes?.tableStyles[0]?.borderRadius || '',
+                            right: attributes?.tableStyles[0]?.borderRadius || '',
+                            bottom: attributes?.tableStyles[0]?.borderRadius || '',
+                            left: attributes?.tableStyles[0]?.borderRadius || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    }
+                },
+                buttonBorder: {
+                    "borderType": attributes?.buttonStyles[0]?.btnBorderType || '',
+                    "borderColor": attributes?.buttonStyles[0]?.btnBorderColor || '',
+                    "borderWidth": {
+                        Desktop: {
+                            top: attributes?.btnBorderTop || '',
+                            right: attributes?.btnBorderRight || '',
+                            bottom: attributes?.btnBorderBottom || '',
+                            left: attributes?.btnBorderLeft || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    },
+                    "borderRadius": {
+                        Desktop: {
+                            top: attributes?.buttonStyles[0]?.btnBorderRadius || '',
+                            right: attributes?.buttonStyles[0]?.btnBorderRadius || '',
+                            bottom: attributes?.buttonStyles[0]?.btnBorderRadius || '',
+                            left: attributes?.buttonStyles[0]?.btnBorderRadius || ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        }
+                    }
+                },
+                tablePadding: {
+                    Desktop: {
+                        top: attributes?.tableStyles[0]?.tablePadding || '',
+                        right: attributes?.tableStyles[0]?.tablePadding || '',
+                        bottom: attributes?.tableStyles[0]?.tablePadding || '',
+                        left: attributes?.tableStyles[0]?.tablePadding || ''
+                    },
+                    Tablet: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    Mobile: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    unit: 'px'
+                },
+                titlePadding: {
+                    Desktop: {
+                        top: attributes?.titleStyles[0]?.titlePadding || '',
+                        right: attributes?.titleStyles[0]?.titlePadding || '',
+                        bottom: attributes?.titleStyles[0]?.titlePadding || '',
+                        left: attributes?.titleStyles[0]?.titlePadding || ''
+                    },
+                    Tablet: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    Mobile: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    unit: 'px'
+                },
+                titleMargin: {
+                    Desktop: {
+                        top: attributes?.titleStyles[0]?.titleMarginT || 20,
+                        right: '',
+                        bottom: attributes?.titleStyles[0]?.titleMarginB || 20,
+                        left: ''
+                    },
+                    Tablet: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    Mobile: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    unit: 'px'
+                },
+                pricePadding: {
+                    Desktop: {
+                        top: attributes?.priceStyles[0]?.pricePadding || '',
+                        right: attributes?.priceStyles[0]?.pricePadding || '',
+                        bottom: attributes?.priceStyles[0]?.pricePadding || '',
+                        left: attributes?.priceStyles[0]?.pricePadding || ''
+                    },
+                    Tablet: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    Mobile: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    unit: 'px'
+                },
+                priceMargin: {
+                    Desktop: {
+                        top: attributes?.priceStyles[0]?.priceMarginT || '',
+                        right: '',
+                        bottom: attributes?.priceStyles[0]?.priceMarginB || 10,
+                        left: ''
+                    },
+                    Tablet: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    Mobile: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    unit: 'px'
+                },
+                featuresListPadding: {
+                    Desktop: {
+                        top: attributes?.featureStyles[0]?.listPadding || '',
+                        right: attributes?.featureStyles[0]?.listPadding || '',
+                        bottom: attributes?.featureStyles[0]?.listPadding || '',
+                        left: attributes?.featureStyles[0]?.listPadding || ''
+                    },
+                    Tablet: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    Mobile: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    unit: 'px'
+                },
+                featuresListMargin: {
+                    Desktop: {
+                        top: attributes?.featureStyles[0]?.listMarginT || '',
+                        right: '',
+                        bottom: attributes?.featureStyles[0]?.listMarginB || 20,
+                        left: ''
+                    },
+                    Tablet: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    Mobile: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    unit: 'px'
+                },
+                descriptionPadding: {
+                    Desktop: {
+                        top: attributes?.descStyles[0]?.descPadding || '',
+                        right: attributes?.descStyles[0]?.descPadding || '',
+                        bottom: attributes?.descStyles[0]?.descPadding || '',
+                        left: attributes?.descStyles[0]?.descPadding || ''
+                    },
+                    Tablet: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    Mobile: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    unit: 'px'
+                },
+                descriptionMargin: {
+                    Desktop: {
+                        top: attributes?.descStyles[0]?.descMarginT || '',
+                        right: '',
+                        bottom: attributes?.descStyles[0]?.descMarginB || 30,
+                        left: ''
+                    },
+                    Tablet: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    Mobile: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    unit: 'px'
+                },
+                buttonPadding: {
+                    Desktop: {
+                        top: attributes?.buttonStyles[0]?.btnPadding || 10,
+                        right: attributes?.buttonStyles[0]?.btnPadding || 10,
+                        bottom: attributes?.buttonStyles[0]?.btnPadding || 10,
+                        left: attributes?.buttonStyles[0]?.btnPadding || 10
+                    },
+                    Tablet: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    Mobile: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    unit: attributes?.buttonStyles[0]?.btnPaddingU || 'px'
+                },
+                buttonMargin: {
+                    Desktop: {
+                        top: attributes?.buttonStyles[0]?.btnMarginT || '',
+                        right: '',
+                        bottom: attributes?.buttonStyles[0]?.btnMarginB || '',
+                        left: ''
+                    },
+                    Tablet: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    Mobile: {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    unit: 'px'
+                },
+            }
+            return Object.assign(attributes, newAttributes)
+        },
+        save: (props) => {
+            const { className } = props;
+
+            const {
+                borderUpdated,
+                btnBorderUpdated,
+                contentAlign,
+                borderColor,
+                title,
+                desc,
+                titleChecked,
+                descChecked,
+                priceChecked,
+                selectedStyle,
+                btnChecked,
+                btnText,
+                btnLink,
+                badgeChecked,
+                listChecked,
+                listItems,
+                block_id,
+                classMigrate,
+                hideDesktop,
+                hideTablet,
+                hideMobile,
+                titleStyles,
+                priceStyles,
+                featureStyles,
+                descStyles,
+                buttonStyles,
+                badgeStyles,
+                tableStyles,
+                btnBorderTop,
+                btnBorderRight,
+                btnBorderBottom,
+                btnBorderLeft,
+                borderTop,
+                borderRight,
+                borderBottom,
+                borderLeft,
+            } = props.attributes;
+
+            const mainClasses = classnames(className, "premium-pricing-table");
+
+            return (
+                <div
+                    id={`${mainClasses}-${block_id}`}
+                    className={`${mainClasses} premium-pricing-table-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                    style={{
+                        textAlign: contentAlign,
+                        backgroundColor: tableStyles[0].tableBack,
+                        borderStyle: tableStyles[0].borderType,
+                        borderWidth: borderUpdated
+                            ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
+                            : tableStyles[0].borderWidth + "px",
+                        borderRadius: tableStyles[0].borderRadius + "px",
+                        borderColor: borderColor,
+                        padding: tableStyles[0].tablePadding + "px",
+                        boxShadow: `${tableStyles[0].tableShadowHorizontal}px ${tableStyles[0].tableShadowVertical}px ${tableStyles[0].tableShadowBlur}px ${tableStyles[0].tableShadowColor} ${tableStyles[0].tableShadowPosition}`
+                    }}
+                >
+                    {badgeChecked && (
+                        <div
+                            className={`premium-pricing-table__badge_wrap premium-pricing-table__badge_${badgeStyles[0].badgePos}`}
+                        >
+                            <div
+                                className={`premium-pricing-table__badge`}
+                                style={{
+                                    borderRightColor:
+                                        "right" === badgeStyles[0].badgePos ? badgeStyles[0].badgeBack : "transparent",
+                                    borderTopColor: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeBack : "transparent",
+                                    borderBottomWidth: badgeStyles[0].badgeSize + "px",
+                                    borderRightWidth: badgeStyles[0].badgeSize + "px",
+                                    borderTopWidth: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeSize + "px" : "none",
+                                    borderLeftWidth: "right" === badgeStyles[0].badgePos ? badgeStyles[0].badgeSize + "px" : "none"
+                                }}
+                            >
+                                <span
+                                    style={{
+                                        color: badgeStyles[0].badgeColor,
+                                        fontWeight: badgeStyles[0].badgeWeight,
+                                        textTransform: badgeStyles[0].badgeUpper ? "uppercase" : "none",
+                                        letterSpacing: badgeStyles[0].badgeLetter + "px",
+                                        fontStyle: badgeStyles[0].badgeStyle,
+                                        width: badgeStyles[0].badgeWidth + "px",
+                                        top: badgeStyles[0].badgeTop + "px",
+                                        left: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeHorizontal + "px" : "auto",
+                                        right: "right" === badgeStyles[0].badgePos ? badgeStyles[0].badgeHorizontal + "px" : "auto"
+                                    }}
+                                >
+                                    {badgeStyles[0].badgeText}                       </span>
+                            </div>
+                        </div>
+                    )}
+                    {titleChecked && (
+                        <div
+                            className={`premium-pricing-table__title_wrap`}
+                            style={{
+                                marginTop: titleStyles[0].titleMarginT + "px",
+                                marginBottom: titleStyles[0].titleMarginB + "px",
+                                background: titleStyles[0].titleBack,
+                            }}
+                        >
+                            <RichText.Content
+                                tagName={titleStyles[0].titleTag.toLowerCase()}
+                                className={`premium-pricing-table__title`}
+                                value={title}
+                                style={{
+                                    color: titleStyles[0].titleColor,
+                                    letterSpacing: titleStyles[0].titleLetter + "px",
+                                    textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
+                                    fontStyle: titleStyles[0].titleStyle,
+                                    fontWeight: titleStyles[0].titleWeight,
+                                    lineHeight: titleStyles[0].titleLine + "px",
+                                    padding: titleStyles[0].titlePadding + "px",
+                                    textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`
+                                }}
+                            />
+                        </div>
+                    )}
+                    {priceChecked && (
+                        <div
+                            className={`premium-pricing-table__price_wrap`}
+                            style={{
+                                backgroundColor: priceStyles[0].priceBack,
+                                marginTop: priceStyles[0].priceMarginT + "px",
+                                marginBottom: priceStyles[0].priceMarginB + "px",
+                                padding: priceStyles[0].pricePadding + "px",
+                                justifyContent: contentAlign
+                            }}
+                        >
+                            {priceStyles[0].slashPrice && (
+                                <strike
+                                    className={`premium-pricing-table__slash`}
+                                    style={{
+                                        color: priceStyles[0].slashColor,
+                                        fontWeight: priceStyles[0].slashWeight,
+                                        alignSelf: priceStyles[0].slashV
+                                    }}
+                                >
+                                    {priceStyles[0].slashPrice}
+                                </strike>
+                            )}
+                            {priceStyles[0].currPrice && (
+                                <span
+                                    className={`premium-pricing-table__currency`}
+                                    style={{
+                                        color: priceStyles[0].currColor,
+                                        fontWeight: priceStyles[0].currWeight,
+                                        alignSelf: priceStyles[0].currV
+                                    }}
+                                >
+                                    {priceStyles[0].currPrice}
+                                </span>
+                            )}
+                            {priceStyles[0].valPrice && (
+                                <span
+                                    className={`premium-pricing-table__val`}
+                                    style={{
+                                        color: priceStyles[0].valColor,
+                                        fontWeight: priceStyles[0].valWeight,
+                                        alignSelf: priceStyles[0].valV
+                                    }}
+                                >
+                                    {priceStyles[0].valPrice}
+                                </span>
+                            )}
+                            {priceStyles[0].divPrice && (
+                                <span
+                                    className={`premium-pricing-table__divider`}
+                                    style={{
+                                        color: priceStyles[0].divColor,
+                                        fontWeight: priceStyles[0].divWeight,
+                                        alignSelf: priceStyles[0].divV
+                                    }}
+                                >
+                                    {priceStyles[0].divPrice}
+                                </span>
+                            )}
+                            {priceStyles[0].durPrice && (
+                                <span
+                                    className={`premium-pricing-table__dur`}
+                                    style={{
+                                        color: priceStyles[0].durColor,
+                                        fontWeight: priceStyles[0].durWeight,
+                                        alignSelf: priceStyles[0].durV
+                                    }}
+                                >
+                                    {priceStyles[0].durPrice}
+                                </span>
+                            )}
+                        </div>
+                    )}
+                    {listChecked && (
+                        <div
+                            className={`premium-pricing-table__list_wrap`}
+                            style={{
+                                marginTop: featureStyles[0].listMarginT + "px",
+                                marginBottom: featureStyles[0].listMarginB + "px"
+                            }}
+                        >
+                            <ul
+                                className={`premium-pricing-table__list list-${featureStyles[0].listStyle}`}
+                                style={{
+                                    color: featureStyles[0].listColor,
+                                    background: featureStyles[0].listBack,
+                                    padding: featureStyles[0].listPadding + "px",
+                                    listStyle: "check" !== featureStyles[0].listStyle ? featureStyles[0].listStyle : "none",
+                                    listStylePosition: "inside",
+                                    fontWeight: featureStyles[0].listWeight,
+                                    textTransform: featureStyles[0].listUpper ? "uppercase" : "none",
+                                    letterSpacing: featureStyles[0].listLetter + "px",
+                                    fontStyle: featureStyles[0].listItemsStyle,
+                                    lineHeight: featureStyles[0].listLine + "px",
+                                    textAlign: featureStyles[0].featsAlign ? featureStyles[0].featsAlign : contentAlign
+                                }}
+                            >
+                                {listItems}
+                            </ul>
+                        </div>
+                    )}
+                    {descChecked && (
+                        <div className={`premium-pricing-table__desc_wrap`}>
+                            <RichText.Content
+                                tagName="p"
+                                className={`premium-pricing-table__desc`}
+                                value={desc}
+                                style={{
+                                    color: descStyles[0].descColor,
+                                    background: descStyles[0].descBack,
+                                    fontWeight: descStyles[0].descWeight,
+                                    letterSpacing: descStyles[0].descLetter + "px",
+                                    fontStyle: descStyles[0].descStyle,
+                                    lineHeight: descStyles[0].descLine + "px",
+                                    marginTop: descStyles[0].descMarginT + "px",
+                                    marginBottom: descStyles[0].descMarginB + "px",
+                                    padding: descStyles[0].descPadding + "px"
+                                }}
+                            />
+                        </div>
+                    )}
+                    {btnChecked && (
+                        <div
+                            className={`premium-pricing-table__button`}
+                            style={{
+                                width: buttonStyles[0].btnWidth + "%"
+                            }}
+                        >
+                            <a
+                                class={`premium-pricing-table__button_link`}
+                                href={btnLink}
+                                target={buttonStyles[0].btnTarget ? "_blank" : "_self"}
+                                rel="noopener noreferrer"
+                                style={{
+                                    color: buttonStyles[0].btnColor,
+                                    background: buttonStyles[0].btnBack ? buttonStyles[0].btnBack : "transparent",
+                                    fontWeight: buttonStyles[0].btnWeight,
+                                    letterSpacing: buttonStyles[0].btnLetter + "px",
+                                    fontStyle: buttonStyles[0].btnStyle,
+                                    lineHeight: buttonStyles[0].btnLine + "px",
+                                    marginTop: buttonStyles[0].btnMarginT,
+                                    marginBottom: buttonStyles[0].btnMarginB,
+                                    padding: buttonStyles[0].btnPadding + buttonStyles[0].btnPaddingU,
+                                    borderStyle: buttonStyles[0].btnBorderType,
+                                    borderWidth: btnBorderUpdated
+                                        ? `${btnBorderTop}px ${btnBorderRight}px ${btnBorderBottom}px ${btnBorderLeft}px`
+                                        : buttonStyles[0].btnBorderWidth + "px",
+                                    borderRadius: buttonStyles[0].btnBorderRadius + "px",
+                                    borderColor: buttonStyles[0].btnBorderColor
+                                }}
+                            >
+                                <RichText.Content
+                                    tagName="span"
+                                    onChange={newText =>
+                                        setAttributes({ btnText: newText })
+                                    }
+                                    value={btnText}
+                                    style={{
+                                        textTransform: buttonStyles[0].btnUpper ? "uppercase" : "none"
+                                    }}
+                                />
+                            </a>
+                            <style
+                                dangerouslySetInnerHTML={{
+                                    __html: [
+                                        `#premium-pricing-table-${block_id} .premium-pricing-table__button_link:hover {`,
+                                        `color: ${buttonStyles[0].btnHoverColor} !important;`,
+                                        `background: ${buttonStyles[0].btnHoverBack} !important`,
+                                        "}"
+                                    ].join("\n")
+                                }}
+                            />
+                        </div>
+                    )}
+                </div>
+            );
+        }
+    },
     {
         attributes: attributes,
         migrate: attributes => {
