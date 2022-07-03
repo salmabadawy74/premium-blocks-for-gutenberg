@@ -1,7 +1,5 @@
 
 import rowIcons from './icons';
-
-
 const variations = [
     {
         name: 'one-column',
@@ -15,6 +13,9 @@ const variations = [
                 "Mobile": ''
             }
         },
+        innerBlocks: [
+            ['premium/row', { colWidth: { 'Desktop': 100, 'Tablet': 100, 'Mobile': 100, unit: '%' } }],
+        ],
         scope: ['block'],
     },
     {
@@ -29,6 +30,10 @@ const variations = [
                 "Mobile": ''
             }
         },
+        innerBlocks: [
+            ['premium/row', { colWidth: { 'Desktop': 100, 'Tablet': 100, 'Mobile': 100, unit: '%' } }],
+        ],
+
         scope: ['block']
     },
     {

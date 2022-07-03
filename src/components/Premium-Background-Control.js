@@ -1,5 +1,5 @@
 import React from 'react'
-const { SelectControl, Button, ButtonGroup, Tooltip } = wp.components;
+const { SelectControl, Button, ButtonGroup, Tooltip, TextControl } = wp.components;
 // import { FontAwesomeEnabled } from "../../assets/js/settings";
 import PremiumMediaUpload from './premium-media-upload'
 import PremiumBackground from './premium-background'
@@ -8,7 +8,6 @@ const { __ } = wp.i18n;
 const { Fragment, useState } = wp.element;
 import AdvancedPopColorControl from './Color Control/ColorComponent'
 import ResponsiveSingleRangeControl from "./RangeControl/single-range-control";
-import RadioComponent from './radio-control';
 export default function PremiumBackgroundControl({ value, onChange, backgroundVedio = false }) {
     let defaultValues = {
         'backgroundType': '',

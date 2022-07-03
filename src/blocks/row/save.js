@@ -66,7 +66,9 @@ const Save = (props) => {
                 '--inner-content-custom-width': `min(${containerFullWidth}, ${innerWidth}px)`,
                 'max-width': 'var(--inner-content-custom-width)',
                 'margin-left': 'auto',
-                'margin-right': 'auto'
+                'margin-right': 'auto',
+                'display': 'flex'
+
             }
         }
         styles[`.premium-blocks-${block_id} .premium-row__block_overlay `] = {

@@ -2,8 +2,8 @@ import classnames from "classnames"
 const { __ } = wp.i18n
 const { compose } = wp.compose;
 const { select, useDispatch, withSelect } = wp.data
-const { PanelBody, SelectControl, Tooltip, Button, ToggleControl } = wp.components
-const { useEffect, Fragment, } = wp.element
+const { PanelBody, SelectControl, } = wp.components
+const { useEffect, Fragment, useState } = wp.element
 import variations from './variations';
 const { createBlock } = wp.blocks
 const { InspectorControls, InnerBlocks } = wp.blockEditor
@@ -21,14 +21,15 @@ import Shape from '../../components/premium-shape';
 import Animation from '../../components/Animation'
 import ResponsiveRadio from '../../components/responsive-radio';
 import renderCustomIcon from '../../../blocks-config/renderIcon';
-import { gradientBackground, videoBackground, borderCss, padddingCss, marginCss, gradientValue } from '../../components/HelperFunction'
+import { generateCss, gradientBackground, videoBackground, borderCss, padddingCss, marginCss, gradientValue } from '../../components/HelperFunction'
 import PremiumFilters from "../../components/premium-filters";
 import RadioComponent from "../../components/radio-control";
 
 
-let defaultLayout = { Desktop: [100], Tablet: [100], Mobile: [100] }
 
 const edit = (props) => {
+
+
     if (props.isParentOfSelectedBlock) {
         const emptyBlockInserter = document.querySelector('.block-editor-block-list__empty-block-inserter');
         if (emptyBlockInserter) {
@@ -46,6 +47,20 @@ const edit = (props) => {
         const descendants = select('core/block-editor').getBlocks(props.clientId);
         if (descendants.length !== props.attributes.blockDescendants.length) {
             props.setAttributes({ blockDescendants: descendants });
+        }
+        const iframeEl = document.querySelector(`iframe[name='editor-canvas']`);
+        let element;
+        if (iframeEl) {
+            element = iframeEl.contentDocument.getElementById('block-' + props.clientId)
+        } else {
+            element = document.getElementById('block-' + props.clientId)
+        }
+        if (element) {
+            if (props.attributes.isBlockRootParent || isBlockRootParent) {
+                element.classList.remove('alignfull');
+                element.classList.remove('alignwide');
+                element.classList.add(props.attributes.align);
+            }
         }
 
 
@@ -128,6 +143,7 @@ const edit = (props) => {
             props.setAttributes(nextVariation.attributes);
         }
         if (nextVariation.innerBlocks && 'one-column' !== nextVariation.name) {
+            console.log("one")
             props.replaceInnerBlocks(
                 props.clientId,
                 createBlocksFromInnerBlocksTemplate(nextVariation.innerBlocks)
@@ -262,22 +278,7 @@ const edit = (props) => {
             'opacity': `${backgroundOverlayHover ? hoverOverlayOpacity / 100 : 1} !important`,
             'filter': `brightness( ${hoverOverlayFilter['bright']}% ) contrast( ${hoverOverlayFilter['contrast']}% ) saturate( ${hoverOverlayFilter['saturation']}% ) blur( ${hoverOverlayFilter['blur']}px ) hue-rotate( ${hoverOverlayFilter['hue']}deg ) !important`
         }
-        let styleCss = '';
-
-        for (const selector in styles) {
-            const selectorStyles = styles[selector];
-            const filteredStyles = Object.keys(selectorStyles).map(property => {
-                const value = selectorStyles[property];
-                const valueWithoutUnits = value ? value.toString().replaceAll('px', '').replaceAll(/\s/g, '') : '';
-                if (value && !value.toString().includes('undefined')) {
-                    return `${property}: ${value};`;
-                }
-            }).filter(style => !!style).join('\n');
-            styleCss += `${selector}{
-                    ${filteredStyles}
-                }\n`;
-        }
-        return styleCss;
+        return generateCss(styles);
     }
     const CustomTag = `${containerTag}`;
     const BLEND =
@@ -327,12 +328,8 @@ const edit = (props) => {
                                 <Fragment>
                                     <RadioComponent
                                         choices={[
-                                            {
-                                                value: 'alignfull', label: __('Full Width', 'premium-blocks-for-gutenberg'),
-                                            },
-                                            {
-                                                value: 'alignwide', label: __('boxed', 'premium-blocks-for-gutenberg'),
-                                            },
+                                            { value: 'alignfull', label: __('Full Width', 'premium-blocks-for-gutenberg'), },
+                                            { value: 'alignwide', label: __('boxed', 'premium-blocks-for-gutenberg'), },
                                         ]}
                                         value={align}
                                         onChange={(newValue) => setAttributes({ align: newValue })}
@@ -756,6 +753,7 @@ const edit = (props) => {
                     __html: loadStyles()
                 }}
             />
+
             <CustomTag
                 className={classnames(
                     'wp-block-premium-container',

@@ -8361,23 +8361,28 @@ class PBG_Blocks_Helper {
 		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
 
 		
-        $css->set_selector( '.wp-block-premium-container.premium-block-' . $unique_id  );
         if( isset($attr['minHeight'])){
-          $css->add_property( 'min-height', $css->render_color( $attr['minHeight']['Desktop']. $attr['minHeight']['unit'] ) );
+        $css->set_selector( '.wp-block-premium-container.premium-block-' . $unique_id   );
+        $css->add_property( 'min-height', $css->render_color( $attr['minHeight']['Desktop']. $attr['minHeight']['unit'] ) );
         }
         if (isset($attr['direction']) ){
+        $css->set_selector( '.wp-block-premium-container.premium-block-' . $unique_id  . '.premium-is-root-container > .premium-container-inner-blocks-wrap' );
         $css->add_property( 'flex-direction', $css->render_color( $attr['direction']['Desktop'] ) ); 
         }
         if(isset($attr['alignItems'])){
+        $css->set_selector( '.wp-block-premium-container.premium-block-' . $unique_id  . '.premium-is-root-container >  .premium-container-inner-blocks-wrap' );
         $css->add_property( 'align-items', $css->render_color( $attr['alignItems']['Desktop'] ) ); 
         }
         if(isset($attr['justifyItems'])){
+        $css->set_selector( '.wp-block-premium-container.premium-block-' . $unique_id  . '.premium-is-root-container >  .premium-container-inner-blocks-wrap' );
         $css->add_property( 'justify-content', $css->render_color( $attr['justifyItems']['Desktop'] ) ); 
         }
         if(isset($attr['wrapItems'])){
+        $css->set_selector( '.wp-block-premium-container.premium-block-' . $unique_id  .  '.premium-is-root-container >  .premium-container-inner-blocks-wrap' );
         $css->add_property( 'flex-wrap', $css->render_color( $attr['wrapItems']['Desktop'] ) ); 
         }
         if(isset($attr['alignContent'])){
+        $css->set_selector( '.wp-block-premium-container.premium-block-' . $unique_id  . '.premium-is-root-container >  .premium-container-inner-blocks-wrap' );
         $css->add_property( 'align-content', $css->render_color( $attr['alignContent']['Desktop'] ) ); 
         }
         
