@@ -43278,10 +43278,16 @@ const testimonialsAttrs = {
   authorStyles: {
     type: 'array',
     default: [{
-      authorTag: "h3",
-      authorColor: '',
-      authorComTag: "h4"
+      authorColor: ''
     }]
+  },
+  authorTag: {
+    type: "string",
+    default: "h3"
+  },
+  companyTag: {
+    type: "string",
+    default: "h4"
   },
   text: {
     type: "array",
@@ -43316,7 +43322,6 @@ const testimonialsAttrs = {
   companyStyles: {
     type: "array",
     default: [{
-      authorComTag: 'H4',
       authorComColor: '',
       dashColor: '',
       urlCheck: false,
@@ -43487,6 +43492,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_testimonials_lower_quote__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/testimonials/lower-quote */ "./src/components/testimonials/lower-quote.js");
 /* harmony import */ var hex_to_rgba__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! hex-to-rgba */ "./node_modules/hex-to-rgba/build/index.js");
 /* harmony import */ var hex_to_rgba__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(hex_to_rgba__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! classnames */ "./src/blocks/node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_5__);
+
 
 
 
@@ -43719,19 +43727,105 @@ const attributes = {
     default: false
   }
 };
+const new_attributes = {
+  containerStyles: {
+    type: "array",
+    default: [{
+      backOpacity: 1,
+      containerBack: '',
+      backgroundImageID: '',
+      backgroundImageURL: '',
+      backgroundRepeat: 'no-reapet',
+      backgroundPosition: 'top center',
+      backgroundSize: 'auto',
+      fixed: false,
+      shadowColor: '',
+      shadowBlur: '',
+      shadowHorizontal: '',
+      shadowVertical: '',
+      shadowPosition: '',
+      paddingUnit: 'px',
+      gradientColorOne: '',
+      gradientLocationOne: '0',
+      gradientColorTwo: '',
+      gradientLocationTwo: '100',
+      gradientType: 'linear',
+      gradientAngle: '180',
+      gradientPosition: 'center center'
+    }]
+  },
+  quoteStyles: {
+    type: "array",
+    default: [{
+      quotSize: 2,
+      quotColor: '',
+      quotOpacity: 50
+    }]
+  },
+  contentStyle: {
+    type: "array",
+    default: [{
+      bodySizeUnit: 'px',
+      bodySize: '',
+      bodySizeMobile: '',
+      bodySizeTablet: '',
+      bodyColor: '',
+      bodyLine: '',
+      bodyTop: '',
+      bodyBottom: ''
+    }]
+  },
+  authorStyles: {
+    type: "array",
+    default: [{
+      authorTag: "H3",
+      authorColor: '',
+      authorSize: '',
+      authorSizeUnit: 'px',
+      authorSizeMobile: '',
+      authorSizeTablet: '',
+      authorLetter: '',
+      authorStyle: '',
+      authorUpper: false,
+      authorWeight: 500,
+      authorComTag: "H4"
+    }]
+  },
+  companyStyles: {
+    type: "array",
+    default: [{
+      authorComTag: 'H4',
+      authorComSizeUnit: 'px',
+      authorComColor: '',
+      authorComSize: '',
+      authorComSizeMobile: '',
+      authorComSizeTablet: '',
+      dashColor: '',
+      urlCheck: false,
+      urlText: '',
+      urlTarget: false
+    }]
+  }
+};
+const deprecated_attributes = Object.assign(attributes, new_attributes);
 const deprecatedContent = [{
-  attributes: attributes,
+  attributes: deprecated_attributes,
   migrate: attributes => {
     let newAttributes = {
       blockId: attributes.block_id ? `premium-testimonial-${attributes.block_id.split('-')[6]}` : '',
+      text: "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.",
       align: {
         "Desktop": attributes.align,
         "Tablet": attributes.align,
         "Mobile": attributes.align
       },
+      authorTag: 'h3',
+      companyTag: 'h4',
       imgSize: {
-        Desktop: attributes.imgSize,
-        unit: "px"
+        "Desktop": attributes.imgSize,
+        "Tablet": attributes.imgSize,
+        "Mobile": attributes.imgSize,
+        "unit": "px"
       },
       hideDesktop: '',
       hideTablet: '',
@@ -43868,7 +43962,7 @@ const deprecatedContent = [{
       containerStyles,
       backgroundType
     } = props.attributes;
-    const mainClasses = classnames(className, 'premium-testimonial');
+    const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_5___default()(className, 'premium-testimonial');
     let btnGrad, btnGrad2, btnbg;
 
     if (undefined !== backgroundType && 'gradient' === backgroundType) {
@@ -45027,7 +45121,9 @@ class edit extends Component {
       authorTypography,
       containerBackground,
       containerShadow,
-      containerPadding
+      containerPadding,
+      authorTag,
+      companyTag
     } = this.props.attributes;
     const RADIUS = [{
       value: "0",
@@ -45200,8 +45296,8 @@ class edit extends Component {
         value: 'h6',
         label: __('H6')
       }],
-      value: authorStyles[0].authorTag,
-      onChange: newValue => saveAuthorStyle({
+      value: authorTag,
+      onChange: newValue => setAttributes({
         authorTag: newValue
       }),
       label: __("Author HTML Tag", 'premium-blocks-for-gutenberg')
@@ -45249,9 +45345,9 @@ class edit extends Component {
         value: 'h6',
         label: __('H6')
       }],
-      value: authorStyles[0].authorComTag,
-      onChange: newValue => saveAuthorStyle({
-        authorComTag: newValue
+      value: companyTag,
+      onChange: newValue => setAttributes({
+        companyTag: newValue
       }),
       label: __("HTML Tag", 'premium-blocks-for-gutenberg')
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
@@ -45495,7 +45591,7 @@ class edit extends Component {
         justifyContent: align[this.props.deviceType]
       }
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText, {
-      tagName: authorStyles[0].authorTag.toLowerCase(),
+      tagName: authorTag.toLowerCase(),
       className: `premium-testimonial__author`,
       value: author,
       onChange: newText => setAttributes({
@@ -45510,7 +45606,7 @@ class edit extends Component {
         color: companyStyles[0].dashColor
       }
     }, "\xA0-\xA0"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText, {
-      tagName: authorStyles[0].authorComTag.toLowerCase(),
+      tagName: companyTag.toLowerCase(),
       className: `premium-testimonial__author_comp`,
       onChange: newText => setAttributes({
         authorCom: newText
@@ -45640,7 +45736,9 @@ const save = props => {
     quotUnit,
     authorTypography,
     containerBackground,
-    containerShadow
+    containerShadow,
+    authorTag,
+    companyTag
   } = props.attributes;
   const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, 'premium-testimonial', blockId);
   const renderCss = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, `
@@ -45693,7 +45791,7 @@ const save = props => {
       justifyContent: align[props.deviceType] || 'center'
     }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText.Content, {
-    tagName: authorStyles[0].authorTag.toLowerCase(),
+    tagName: authorTag.toLowerCase(),
     className: `premium-testimonial__author`,
     value: author,
     style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_5__.typographyCss)(authorTypography, props.deviceType),
@@ -45712,7 +45810,7 @@ const save = props => {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-testimonial__link_wrap`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText.Content, {
-    tagName: authorStyles[0].authorComTag.toLowerCase(),
+    tagName: companyTag.toLowerCase(),
     className: `premium-testimonial__author_comp`,
     value: authorCom,
     style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_5__.typographyCss)(companyTypography, props.deviceType),

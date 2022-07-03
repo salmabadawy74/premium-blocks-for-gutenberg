@@ -68,7 +68,9 @@ class edit extends Component {
             authorTypography,
             containerBackground,
             containerShadow,
-            containerPadding
+            containerPadding,
+            authorTag,
+            companyTag
         } = this.props.attributes;
 
         const RADIUS = [
@@ -230,8 +232,8 @@ class edit extends Component {
                                         { value: 'h5', label: __('H5') },
                                         { value: 'h6', label: __('H6') }
                                     ]}
-                                    value={authorStyles[0].authorTag}
-                                    onChange={(newValue) => saveAuthorStyle({ authorTag: newValue })}
+                                    value={authorTag}
+                                    onChange={(newValue) => setAttributes({ authorTag: newValue })}
                                     label={__("Author HTML Tag", 'premium-blocks-for-gutenberg')}
                                 />
                                 <ResponsiveRadioControl
@@ -260,8 +262,8 @@ class edit extends Component {
                                         { value: 'h5', label: __('H5') },
                                         { value: 'h6', label: __('H6') }
                                     ]}
-                                    value={authorStyles[0].authorComTag}
-                                    onChange={(newValue) => saveAuthorStyle({ authorComTag: newValue })}
+                                    value={companyTag}
+                                    onChange={(newValue) => setAttributes({ companyTag: newValue })}
                                     label={__("HTML Tag", 'premium-blocks-for-gutenberg')}
                                 />
                                 <ToggleControl
@@ -507,7 +509,7 @@ class edit extends Component {
                             style={{ justifyContent: align[this.props.deviceType] }}
                         >
                             <RichText
-                                tagName={authorStyles[0].authorTag.toLowerCase()}
+                                tagName={authorTag.toLowerCase()}
                                 className={`premium-testimonial__author`}
                                 value={author}
                                 onChange={newText => setAttributes({ author: newText })}
@@ -525,7 +527,7 @@ class edit extends Component {
                                 &nbsp;-&nbsp;
                             </span>
                             <RichText
-                                tagName={authorStyles[0].authorComTag.toLowerCase()}
+                                tagName={companyTag.toLowerCase()}
                                 className={`premium-testimonial__author_comp`}
                                 onChange={newText => setAttributes({ authorCom: newText })}
                                 value={authorCom}

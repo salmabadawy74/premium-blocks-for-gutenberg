@@ -2,6 +2,7 @@ import DefaultImage from "../../components/default-image";
 import PremiumUpperQuote from "../../components/testimonials/upper-quote";
 import PremiumLowerQuote from "../../components/testimonials/lower-quote";
 import hexToRgba from 'hex-to-rgba'
+import classnames from "classnames"
 
 const className = "premium-testimonial";
 
@@ -231,21 +232,119 @@ const attributes = {
     }
 }
 
+const new_attributes = {
+    containerStyles: {
+        type: "array",
+        default: [
+            {
+                backOpacity: 1,
+                containerBack: '',
+                backgroundImageID: '',
+                backgroundImageURL: '',
+                backgroundRepeat: 'no-reapet',
+                backgroundPosition: 'top center',
+                backgroundSize: 'auto',
+                fixed: false,
+                shadowColor: '',
+                shadowBlur: '',
+                shadowHorizontal: '',
+                shadowVertical: '',
+                shadowPosition: '',
+                paddingUnit: 'px',
+                gradientColorOne: '',
+                gradientLocationOne: '0',
+                gradientColorTwo: '',
+                gradientLocationTwo: '100',
+                gradientType: 'linear',
+                gradientAngle: '180',
+                gradientPosition: 'center center'
+            }
+        ]
+    },
+    quoteStyles: {
+        type: "array",
+        default: [
+            {
+                quotSize: 2,
+                quotColor: '',
+                quotOpacity: 50,
+            }
+        ]
+    },
+    contentStyle: {
+        type: "array",
+        default: [
+            {
+                bodySizeUnit: 'px',
+                bodySize: '',
+                bodySizeMobile: '',
+                bodySizeTablet: '',
+                bodyColor: '',
+                bodyLine: '',
+                bodyTop: '',
+                bodyBottom: '',
+            }
+        ]
+    },
+    authorStyles: {
+        type: "array",
+        default: [
+            {
+                authorTag: "H3",
+                authorColor: '',
+                authorSize: '',
+                authorSizeUnit: 'px',
+                authorSizeMobile: '',
+                authorSizeTablet: '',
+                authorLetter: '',
+                authorStyle: '',
+                authorUpper: false,
+                authorWeight: 500,
+                authorComTag: "H4",
+            }
+        ]
+    },
+    companyStyles: {
+        type: "array",
+        default: [
+            {
+                authorComTag: 'H4',
+                authorComSizeUnit: 'px',
+                authorComColor: '',
+                authorComSize: '',
+                authorComSizeMobile: '',
+                authorComSizeTablet: '',
+                dashColor: '',
+                urlCheck: false,
+                urlText: '',
+                urlTarget: false,
+            }
+        ]
+    }
+}
+
+const deprecated_attributes = Object.assign(attributes, new_attributes);
+
 
 const deprecatedContent = [
     {
-        attributes: attributes,
+        attributes: deprecated_attributes,
         migrate: (attributes) => {
             let newAttributes = {
                 blockId: attributes.block_id ? `premium-testimonial-${attributes.block_id.split('-')[6]}` : '',
+                text: "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.",
                 align: {
                     "Desktop": attributes.align,
                     "Tablet": attributes.align,
                     "Mobile": attributes.align,
                 },
+                authorTag: 'h3',
+                companyTag: 'h4',
                 imgSize: {
-                    Desktop: attributes.imgSize,
-                    unit: "px"
+                    "Desktop": attributes.imgSize,
+                    "Tablet": attributes.imgSize,
+                    "Mobile": attributes.imgSize,
+                    "unit": "px"
                 },
                 hideDesktop: '',
                 hideTablet: '',

@@ -33,7 +33,9 @@ const save = props => {
         quotUnit,
         authorTypography,
         containerBackground,
-        containerShadow
+        containerShadow,
+        authorTag,
+        companyTag
     } = props.attributes;
 
     const mainClasses = classnames(className, 'premium-testimonial', blockId);
@@ -102,7 +104,7 @@ const save = props => {
                         style={{ justifyContent: align[props.deviceType] || 'center' }}
                     >
                         <RichText.Content
-                            tagName={authorStyles[0].authorTag.toLowerCase()}
+                            tagName={authorTag.toLowerCase()}
                             className={`premium-testimonial__author`}
                             value={author}
                             style={{
@@ -126,7 +128,7 @@ const save = props => {
                         >
                             <div className={`premium-testimonial__link_wrap`}>
                                 <RichText.Content
-                                    tagName={authorStyles[0].authorComTag.toLowerCase()}
+                                    tagName={companyTag.toLowerCase()}
                                     className={`premium-testimonial__author_comp`}
                                     value={authorCom}
                                     style={{

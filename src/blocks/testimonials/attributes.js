@@ -50,11 +50,17 @@ const testimonialsAttrs = {
         type: 'array',
         default: [
             {
-                authorTag: "h3",
-                authorColor: '',
-                authorComTag: "h4",
+                authorColor: ''
             }
         ]
+    },
+    authorTag: {
+        type: "string",
+        default: "h3"
+    },
+    companyTag: {
+        type: "string",
+        default: "h4"
     },
     text: {
         type: "array",
@@ -93,7 +99,6 @@ const testimonialsAttrs = {
         type: "array",
         default: [
             {
-                authorComTag: 'H4',
                 authorComColor: '',
                 dashColor: '',
                 urlCheck: false,
