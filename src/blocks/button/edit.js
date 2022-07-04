@@ -4,7 +4,6 @@ import PremiumBorder from "../../components/premium-border";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 const { __ } = wp.i18n;
-import WebfontLoader from "../../components/typography/fontLoader"
 import SpacingComponent from "../../components/premium-responsive-spacing";
 import PremiumShadow from "../../components/PremiumShadow";
 import InspectorTabs from '../../components/inspectorTabs';
@@ -14,6 +13,8 @@ const { PanelBody, SelectControl, ToggleControl, TabPanel } = wp.components;
 const { Fragment, Component } = wp.element;
 const { InspectorControls, AlignmentToolbar, BlockControls, RichText, URLInput } = wp.blockEditor;
 const { withSelect } = wp.data
+import GoogleFontLoader from 'react-google-font-loader';
+
 export class edit extends Component {
     constructor() {
         super(...arguments);
@@ -188,14 +189,15 @@ export class edit extends Component {
 
         let loadBtnGoogleFonts
         if (typography?.fontFamily !== 'Default') {
-            const btnconfig = {
-                google: {
-                    families: [typography.fontFamily],
-                },
-            }
+
             loadBtnGoogleFonts = (
-                <WebfontLoader config={btnconfig}>
-                </WebfontLoader>
+
+                <GoogleFontLoader fonts={[{
+
+                    font: typography?.fontFamily,
+
+                },
+                ]} />
             )
         }
 

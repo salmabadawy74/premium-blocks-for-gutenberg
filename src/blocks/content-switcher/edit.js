@@ -35,6 +35,8 @@ import InsideTabs from '../../components/InsideTabs'
 import InsideTab from '../../components/InsideTab';
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
 import Icons from "../../components/icons";
+import GoogleFontLoader from 'react-google-font-loader';
+
 import { gradientBackground, borderCss, padddingCss, marginCss, typographyCss, generateBlockId } from '../../components/HelperFunction'
 
 /**
@@ -153,7 +155,6 @@ function Edit(props) {
     ];
 
     let btnGradControllerOne, btnGrad2ControllerOne, btnbgControllerOne;
-
     if (undefined !== controllerOneBackground.backgroundType && 'gradient' === controllerOneBackground.backgroundType) {
         btnGradControllerOne = ('transparent' === controllerOneBackground.backgroundColor || undefined === controllerOneBackground.backgroundColor ? 'rgba(255,255,255,0)' : controllerOneBackground.backgroundColor);
         btnGrad2ControllerOne = (undefined !== controllerOneBackground.gradientColorTwo && undefined !== controllerOneBackground.gradientColorTwo && '' !== controllerOneBackground.gradientColorTwo ? controllerOneBackground.gradientColorTwo : '#777');
@@ -175,17 +176,17 @@ function Edit(props) {
     let loadFirstLabelGoogleFonts;
     let loadSecondLabelGoogleFonts;
 
-    // if (labelStyles.firstLabelFontFamily !== 'Default') {
-    //     const firstLabelconfig = {
-    //         google: {
-    //             families: [labelStyles.firstLabelFontFamily],
-    //         },
-    //     }
-    //     loadFirstLabelGoogleFonts = (
-    //         <WebfontLoader config={firstLabelconfig}>
-    //         </WebfontLoader>
-    //     )
-    // }
+    if (firstLabelTypography.fontFamily !== 'Default') {
+
+        loadFirstLabelGoogleFonts = (
+            <GoogleFontLoader fonts={[{
+
+                font: firstLabelTypography.fontFamily,
+
+            },
+            ]} />
+        )
+    }
 
     // if (labelStyles.secondLabelFontFamily !== "Default") {
     //     const secondLabelConfig = {
@@ -198,6 +199,7 @@ function Edit(props) {
     //         </WebfontLoader>
     //     )
     // }
+    console.log(loadFirstLabelGoogleFonts)
 
     return (
         <Fragment>

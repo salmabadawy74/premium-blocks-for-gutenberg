@@ -126,7 +126,7 @@ const attributes = {
             'fontStyle': '',
             'textTransform': '',
             'letterSpacing': '',
-            'fontFamily': '',
+            'fontFamily': 'Default',
             'lineHeight': '',
             'textDecoration': '',
             'fontSize': {
