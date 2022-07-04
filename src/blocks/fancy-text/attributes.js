@@ -2,7 +2,6 @@ const { __ } = wp.i18n;
 const attributes = {
     blockId: {
         type: "string",
-
     },
     classMigrate: {
         type: "boolean",
@@ -108,17 +107,17 @@ const attributes = {
         type: "array",
         default: [
             {
-                fancyTextColor: "#6ec1e4",
-                fancyTextfontSize: 20,
-                fancyTextfontSizeUnit: 'px',
-                fancyTextfontSizeMobile: 20,
-                fancyTextfontSizeTablet: 20,
+                fancyTextColor: '#6ec1e4',
+                // fancyTextfontSize: 20,
+                // fancyTextfontSizeUnit: 'px',
+                // fancyTextfontSizeMobile: 20,
+                // fancyTextfontSizeTablet: 20,
                 fancyTextBGColor: '',
                 fancyTextBGOpacity: 1,
-                fancyTextLetter: '',
-                fancyTextStyle: '',
-                fancyTextUpper: false,
-                fancyTextWeight: 600,
+                // fancyTextLetter: '',
+                // fancyTextStyle: '',
+                // fancyTextUpper: false,
+                // fancyTextWeight: 600,
                 shadowColor: '',
                 shadowBlur: '0',
                 shadowHorizontal: '0',
@@ -132,18 +131,54 @@ const attributes = {
         default: [
             {
                 textColor: "#54595f",
-                textLetter: '',
-                textStyle: '',
-                textUpper: false,
-                textWeight: 600,
-                textfontSize: 20,
-                textfontSizeUnit: 'px',
-                textfontSizeMobile: 20,
-                textfontSizeTablet: 20,
+                // textLetter: '',
+                // textStyle: '',
+                // textUpper: false,
+                // textWeight: 600,
+                // textfontSize: 20,
+                // textfontSizeUnit: 'px',
+                // textfontSizeMobile: 20,
+                // textfontSizeTablet: 20,
                 textBGColor: '',
                 textBGOpacity: 1,
             }
         ]
+    },
+    prefixTypography: {
+        type: "object",
+        default: {
+            'fontWeight': '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                "Desktop": '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
+    },
+    fancyTextTypography: {
+        type: "object",
+        default: {
+            'fontWeight': '',
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'fontFamily': '',
+            'lineHeight': '',
+            'textDecoration': '',
+            'fontSize': {
+                "Desktop": '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
     }
 }
 export default attributes

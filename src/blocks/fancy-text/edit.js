@@ -4,10 +4,13 @@ import Typed from "typed.js";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 import RadioComponent from '../../components/radio-control'
+import WebfontLoader from "../../components/typography/fontLoader";
 import { SortableContainer, SortableElement, arrayMove } from "react-sortable-hoc";
 import PremiumShadow from "../../components/PremiumShadow";
 import MultiButtonsControl from '../../components/responsive-radio';
 import Icons from "../../components/icons";
+import InspectorTabs from '../../components/inspectorTabs';
+import InspectorTab from '../../components/inspectorTab';
 import { generateBlockId, generateCss } from '../../components/HelperFunction';
 const { __ } = wp.i18n;
 const { withSelect } = wp.data
@@ -96,12 +99,19 @@ class edit extends Component {
     }
 
     componentDidMount() {
-        this.props.setAttributes({ blockId: this.props.clientId.substr(0, 6) });
+        //const { setAttributes, clientId } = this.props;
+        // if (!this.props.attributes.blockId) {
+        //     setAttributes({ blockId: clientId });
+        // }      
+        // if (!this.props.attributes.blockId) {
+        //      setAttributes({ blockId: "premium-fancy-text-" + generateBlockId(clientId) });
+        //  } 
+        const { attributes, setAttributes, clientId } = this.props;
+        if (!attributes.blockId) {
+            this.props.setAttributes({ blockId: "premium-fancy-text-" + generateBlockId(clientId) });
+        }
         this.props.setAttributes({ classMigrate: true });
         this.renderFancyText();
-
-
-
     }
 
     componentDidUpdate() {
@@ -176,7 +186,9 @@ class edit extends Component {
             hideTablet,
             hideMobile,
             fancyStyles,
-            PreStyles
+            PreStyles,
+            prefixTypography,
+            fancyTextTypography
         } = attributes;
 
         const EFFECT = [
@@ -280,51 +292,66 @@ class edit extends Component {
             setAttributes({ PreStyles: newUpdate });
         }
 
-        const fancyTextFontSize = this.getPreviewSize(this.props.deviceType, fancyStyles[0].fancyTextfontSize, fancyStyles[0].fancyTextfontSizeTablet, fancyStyles[0].fancyTextfontSizeMobile);;
-        const PrefixFontSize = this.getPreviewSize(this.props.deviceType, PreStyles[0].textfontSize, PreStyles[0].textfontSizeTablet, PreStyles[0].textfontSizeMobile);
+        let loadBtnGoogleFonts
+        if (prefixTypography?.fontFamily !== 'Default') {
+            const btnconfig = {
+                google: {
+                    families: [prefixTypography.fontFamily],
+                },
+            }
+            loadBtnGoogleFonts = (
+                <WebfontLoader config={btnconfig}>
+                </WebfontLoader>
+            )
+        }
+
+        // const fancyTextFontSize = this.getPreviewSize(this.props.deviceType, fancyStyles[0].fancyTextfontSize, fancyStyles[0].fancyTextfontSizeTablet, fancyStyles[0].fancyTextfontSizeMobile);;
+        // const PrefixFontSize = this.getPreviewSize(this.props.deviceType, PreStyles[0].textfontSize, PreStyles[0].textfontSizeTablet, PreStyles[0].textfontSizeMobile);
 
         const renderCss = (<style>
             {`
-           .${blockId}  .premium-fancy-text-title {
-            font-size:${fancyTextFontSize}${fancyStyles[0].fancyTextfontSizeUnit};
+        .${blockId} .premium-fancy-text-title {
             color: ${fancyStyles[0].fancyTextColor};
-            font-weight: ${fancyStyles[0].fancyTextWeight};
-            letter-spacing: ${fancyStyles[0].fancyTextLetter}px;
-            text-transform: ${fancyStyles[0].fancyTextUpper ? "uppercase" : "none"};
-            font-style: ${fancyStyles[0].fancyTextStyle};
             background-color: ${fancyStyles[0].fancyTextBGColor};
             text-shadow: ${fancyStyles[0].shadowHorizontal}px ${fancyStyles[0].shadowVertical}px ${fancyStyles[0].shadowBlur}px ${fancyStyles[0].shadowColor};
+            font-size: ${fancyTextTypography?.fontSize?.[this.props.deviceType]}${prefixTypography?.fontSize?.unit || 'px'};
+            font-style: ${fancyTextTypography?.fontStyle};
+            font-family: ${fancyTextTypography?.fontFamily};
+            font-weight: ${fancyTextTypography?.fontWeight};
+            letter-spacing: ${fancyTextTypography?.letterSpacing};
+            text-decoration: ${fancyTextTypography?.textDecoration};
+            text-transform: ${fancyTextTypography?.textTransform};
+            line-height: ${fancyTextTypography?.lineHeight}px;
         }
-        .${blockId}  .premium-fancy-text-title-slide {
-            font-size:${fancyTextFontSize}${fancyStyles[0].fancyTextfontSizeUnit};
+        .${blockId} .premium-fancy-text-title-slide {
             color: ${fancyStyles[0].fancyTextColor};
-            font-weight: ${fancyStyles[0].fancyTextWeight};
-            letter-spacing: ${fancyStyles[0].fancyTextLetter} + "px";
-            text-transform: ${fancyStyles[0].fancyTextUpper ? "uppercase" : "none"};
-            font-style: ${fancyStyles[0].fancyTextStyle};
             background-color: ${fancyStyles[0].fancyTextBGColor};
             text-shadow: ${fancyStyles[0].shadowHorizontal}px ${fancyStyles[0].shadowVertical}px ${fancyStyles[0].shadowBlur}px ${fancyStyles[0].shadowColor};
+            font-size: ${fancyTextTypography?.fontSize?.[this.props.deviceType]}${prefixTypography?.fontSize?.unit || 'px'};
+            font-style: ${fancyTextTypography?.fontStyle};
+            font-family: ${fancyTextTypography?.fontFamily};
+            font-weight: ${fancyTextTypography?.fontWeight};
+            letter-spacing: ${fancyTextTypography?.letterSpacing};
+            text-decoration: ${fancyTextTypography?.textDecoration};
+            text-transform: ${fancyTextTypography?.textTransform};
+            line-height: ${fancyTextTypography?.lineHeight}px;
         }
-        .${blockId}  .typed-cursor {
+        .${blockId} .typed-cursor {
             color: ${fancyStyles[0].cursorColor};
         }
-        .${blockId}  .premium-fancy-text-prefix-text {
-            font-size:${PrefixFontSize}${PreStyles[0].textfontSizeUnit};
+        .${blockId} .premium-fancy-text-prefix-text,
+        .${blockId} .premium-fancy-text-suffix-text {
             color: ${PreStyles[0].textColor};
-            font-weight: ${PreStyles[0].textWeight};
-            letter-spacing: ${PreStyles[0].textLetter}px;
-            text-transform: ${PreStyles[0].textUpper ? "uppercase" : "none"};
-            font-style: ${PreStyles[0].textStyle};
             background-color: ${PreStyles[0].textBGColor};
-        }
-        .${blockId} .premium-fancy-text-suffix-text{
-            font-size:${PrefixFontSize}${PreStyles[0].textfontSizeUnit};
-            color: ${PreStyles[0].textColor};
-            font-weight: ${PreStyles[0].textWeight};
-            letter-spacing: ${PreStyles[0].textLetter}px;
-            text-transform: ${PreStyles[0].textUpper ? "uppercase" : "none"};
-            font-style: ${PreStyles[0].textStyle};
-            background-color: ${PreStyles[0].textBGColor};
+            font-size: ${prefixTypography?.fontSize?.[this.props.deviceType]}${prefixTypography?.fontSize?.unit || 'px'};
+            font-style: ${prefixTypography?.fontStyle};
+            font-family: ${prefixTypography?.fontFamily};
+            font-weight: ${prefixTypography?.fontWeight};
+            letter-spacing: ${prefixTypography?.letterSpacing};
+            text-decoration: ${prefixTypography?.textDecoration};
+            text-transform: ${prefixTypography?.textTransform};
+            line-height: ${prefixTypography?.lineHeight}px;
+
         }
             `}
         </style>)
@@ -342,12 +369,14 @@ class edit extends Component {
             ],
 
             isSelected && (
-                <InspectorControls>
-                    <PanelBody
+            <InspectorControls key={"inspector"}>
+                <InspectorTabs tabs={['layout', 'style', 'advance']}>
+                    <InspectorTab key={'layout'}>
+                        <PanelBody
                         title={__("General Settings", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
-                        initialOpen={false}
-                    >
+                        initialOpen={true}
+                        >
                         <TextControl
                             label={__("Prefix Text", 'premium-blocks-for-gutenberg')}
                             value={prefix}
@@ -488,10 +517,12 @@ class edit extends Component {
                             </Fragment>
                         )}
                     </PanelBody>
+                    </InspectorTab>
+                        <InspectorTab key={'style'}>
                     <PanelBody
                         title={__("Fancy Text Style", 'premium-blocks-for-gutenberg')}
                         className="premium-panel-body"
-                        initialOpen={false}
+                        initialOpen={true}
                     >
 
                         <AdvancedPopColorControl
@@ -500,7 +531,13 @@ class edit extends Component {
                             colorDefault={''}
                             onColorChange={newValue => saveFancyStyle({ fancyTextColor: newValue })}
                         />
+                        {
                         <PremiumTypo
+                        components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
+                        value={fancyTextTypography}
+                        onChange={newValue => setAttributes({ fancyTextTypography: newValue })}
+                        />
+                    /* <PremiumTypo
                             components={[
                                 "responsiveSize",
                                 "weight",
@@ -527,7 +564,7 @@ class edit extends Component {
                             onChangeStyle={newStyle => saveFancyStyle({ fancyTextStyle: newStyle })}
                             onChangeSpacing={newValue => saveFancyStyle({ fancyTextLetter: newValue })}
                             onChangeUpper={check => saveFancyStyle({ fancyTextUpper: check })}
-                        />
+                        /> */}
                         <AdvancedPopColorControl
                             label={__('Background Color')}
                             colorValue={fancyStyles[0].fancyTextBGColor}
@@ -566,7 +603,12 @@ class edit extends Component {
                             colorDefault={''}
                             onColorChange={newValue => savePrefixStyle({ textColor: newValue, })}
                         />
-                        <PremiumTypo
+                        {<PremiumTypo
+                            components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
+                            value={prefixTypography}
+                            onChange={newValue => setAttributes({ prefixTypography: newValue })}
+                        />
+                        /* <PremiumTypo
                             components={[
                                 "responsiveSize",
                                 "weight",
@@ -593,7 +635,7 @@ class edit extends Component {
                             onChangeStyle={(newStyle) => savePrefixStyle({ textStyle: newStyle })}
                             onChangeSpacing={(newValue) => savePrefixStyle({ textLetter: newValue })}
                             onChangeUpper={(check) => savePrefixStyle({ textUpper: check })}
-                        />
+                        /> */}
                         <AdvancedPopColorControl
                             label={__(`Background Color`)}
                             colorValue={PreStyles[0].textBGColor}
@@ -601,6 +643,8 @@ class edit extends Component {
                             onColorChange={newvalue => savePrefixStyle({ textBGColor: newvalue })}
                         />
                     </PanelBody>
+                    </InspectorTab>
+                        <InspectorTab key={'advance'}>
                     <PremiumResponsiveTabs
                         Desktop={hideDesktop}
                         Tablet={hideTablet}
@@ -609,7 +653,9 @@ class edit extends Component {
                         onChangeTablet={(value) => setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" })}
                         onChangeMobile={(value) => setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" })}
                     />
-                </InspectorControls>
+                </InspectorTab>
+                    </InspectorTabs>
+                </InspectorControls >
             ),
 
             <div
@@ -696,6 +742,7 @@ class edit extends Component {
                         </span>
                     </div>
                 )}
+                {loadBtnGoogleFonts}
             </div>,
         ];
     }

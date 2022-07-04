@@ -26,7 +26,9 @@ export default function save(props) {
         hideTablet,
         hideMobile,
         fancyStyles,
-        PreStyles
+        PreStyles,
+        prefixTypography,
+        fancyTextTypography
     } = props.attributes;
 
     console.log(blockId)
@@ -62,11 +64,14 @@ export default function save(props) {
                     <span className={`premium-fancy-text-prefix-text`}
                         style={{
                             color: PreStyles[0].textColor,
-                            fontWeight: PreStyles[0].textWeight,
-                            letterSpacing: `${PreStyles[0].textLetter}px`,
-                            textTransform: `${PreStyles[0].textUpper ? "uppercase" : "none"}`,
-                            fontStyle: PreStyles[0].textStyle,
-                            backgroundColor: PreStyles[0].textBGColor
+                            backgroundColor: PreStyles[0].textBGColor,
+                            fontStyle: prefixTypography?.fontStyle,
+                            fontFamily: prefixTypography?.fontFamily,
+                            fontWeight: prefixTypography?.fontWeight,
+                            letterSpacing: prefixTypography?.letterSpacing,
+                            textDecoration: prefixTypography?.textDecoration,
+                            textTransform: prefixTypography?.textTransform,
+                            lineHeight: `${prefixTypography?.lineHeight}px`,
                         }}
                     >
                         {prefix}{" "}
@@ -75,12 +80,15 @@ export default function save(props) {
                         className={`premium-fancy-text-title`}
                         style={{
                             color: fancyStyles[0].fancyTextColor,
-                            fontWeight: fancyStyles[0].fancyTextWeight,
-                            letterSpacing: `${fancyStyles[0].fancyTextLetter}px`,
-                            textTransform: `${fancyStyles[0].fancyTextUpper ? "uppercase" : "none"}`,
-                            fontStyle: `${fancyStyles[0].fancyTextStyle}`,
                             backgroundColor: `${fancyStyles[0].fancyTextBGColor}`,
-                            textShadow: `${fancyStyles[0].shadowHorizontal}px ${fancyStyles[0].shadowVertical}px ${fancyStyles[0].shadowBlur}px ${fancyStyles[0].shadowColor}`
+                            textShadow: `${fancyStyles[0].shadowHorizontal}px ${fancyStyles[0].shadowVertical}px ${fancyStyles[0].shadowBlur}px ${fancyStyles[0].shadowColor}`,
+                            fontStyle: fancyTextTypography?.fontStyle,
+                            fontFamily: fancyTextTypography?.fontFamily,
+                            fontWeight: fancyTextTypography?.fontWeight,
+                            letterSpacing: fancyTextTypography?.letterSpacing,
+                            textDecoration: fancyTextTypography?.textDecoration,
+                            textTransform: fancyTextTypography?.textTransform,
+                            lineHeight: `${fancyTextTypography?.lineHeight}px`,
                         }}
                         ref={(el) => {
                             this.el = el;
@@ -91,11 +99,14 @@ export default function save(props) {
                     <span className={`premium-fancy-text-suffix-text`}
                         style={{
                             color: PreStyles[0].textColor,
-                            fontWeight: PreStyles[0].textWeight,
-                            letterSpacing: `${PreStyles[0].textLetter}px`,
-                            textTransform: `${PreStyles[0].textUpper ? "uppercase" : "none"}`,
-                            fontStyle: PreStyles[0].textStyle,
-                            backgroundColor: PreStyles[0].textBGColor
+                            backgroundColor: PreStyles[0].textBGColor,
+                            fontStyle: prefixTypography?.fontStyle,
+                            fontFamily: prefixTypography?.fontFamily,
+                            fontWeight: prefixTypography?.fontWeight,
+                            letterSpacing: prefixTypography?.letterSpacing,
+                            textDecoration: prefixTypography?.textDecoration,
+                            textTransform: prefixTypography?.textTransform,
+                            lineHeight: `${prefixTypography?.lineHeight}px`,
                         }}
                     >
                         {" "}
@@ -123,11 +134,14 @@ export default function save(props) {
                     <span className={`premium-fancy-text-prefix-text`}
                         style={{
                             color: PreStyles[0].textColor,
-                            fontWeight: PreStyles[0].textWeight,
-                            letterSpacing: `${PreStyles[0].textLetter}px`,
-                            textTransform: `${PreStyles[0].textUpper ? "uppercase" : "none"}`,
-                            fontStyle: PreStyles[0].textStyle,
-                            backgroundColor: PreStyles[0].textBGColor
+                            backgroundColor: PreStyles[0].textBGColor,
+                            fontStyle: prefixTypography?.fontStyle,
+                            fontFamily: prefixTypography?.fontFamily,
+                            fontWeight: prefixTypography?.fontWeight,
+                            letterSpacing: prefixTypography?.letterSpacing,
+                            textDecoration: prefixTypography?.textDecoration,
+                            textTransform: prefixTypography?.textTransform,
+                            lineHeight: `${prefixTypography?.lineHeight}px`,
                         }}
                     >
                         {prefix}{" "}
@@ -137,12 +151,15 @@ export default function save(props) {
                         style={{
                             textAlign: 'center',
                             color: fancyStyles[0].fancyTextColor,
-                            fontWeight: fancyStyles[0].fancyTextWeight,
-                            letterSpacing: `${fancyStyles[0].fancyTextLetter}px`,
-                            textTransform: `${fancyStyles[0].fancyTextUpper ? "uppercase" : "none"}`,
-                            fontStyle: `${fancyStyles[0].fancyTextStyle}`,
                             backgroundColor: `${fancyStyles[0].fancyTextBGColor}`,
-                            textShadow: `${fancyStyles[0].shadowHorizontal}px ${fancyStyles[0].shadowVertical}px ${fancyStyles[0].shadowBlur}px ${fancyStyles[0].shadowColor}`
+                            textShadow: `${fancyStyles[0].shadowHorizontal}px ${fancyStyles[0].shadowVertical}px ${fancyStyles[0].shadowBlur}px ${fancyStyles[0].shadowColor}`,
+                            fontStyle: fancyTextTypography?.fontStyle,
+                            fontFamily: fancyTextTypography?.fontFamily,
+                            fontWeight: fancyTextTypography?.fontWeight,
+                            letterSpacing: fancyTextTypography?.letterSpacing,
+                            textDecoration: fancyTextTypography?.textDecoration,
+                            textTransform: fancyTextTypography?.textTransform,
+                            lineHeight: `${fancyTextTypography?.lineHeight}px`,
                         }}
                     >
                         <ul
@@ -156,11 +173,14 @@ export default function save(props) {
                     <span className={`premium-fancy-text-suffix-text`}
                         style={{
                             color: PreStyles[0].textColor,
-                            fontWeight: PreStyles[0].textWeight,
-                            letterSpacing: `${PreStyles[0].textLetter}px`,
-                            textTransform: `${PreStyles[0].textUpper ? "uppercase" : "none"}`,
-                            fontStyle: PreStyles[0].textStyle,
-                            backgroundColor: PreStyles[0].textBGColor
+                            backgroundColor: PreStyles[0].textBGColor,
+                            fontStyle: prefixTypography?.fontStyle,
+                            fontFamily: prefixTypography?.fontFamily,
+                            fontWeight: prefixTypography?.fontWeight,
+                            letterSpacing: prefixTypography?.letterSpacing,
+                            textDecoration: prefixTypography?.textDecoration,
+                            textTransform: prefixTypography?.textTransform,
+                            lineHeight: `${prefixTypography?.lineHeight}px`
                         }}
                     >
                         {" "}

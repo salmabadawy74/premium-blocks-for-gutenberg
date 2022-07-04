@@ -976,24 +976,41 @@ class PBG_Blocks_Helper {
 		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
 		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
 		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
+
+		// Style.
+		if ( isset( $attr['fancyTextTypography'] ) ) {
+			$fancy_typography = $attr['fancyTextTypography'];
+			$fancy_size       = $title_typography['fontSize'];
+
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $fancy_typography['fontFamily'] ) ? $fancy_typography['fontFamily'] : '' ),
+					'fontVariant' => ( isset( $fancy_typography['fontWeight'] ) ? $fancy_typography['fontWeight'] : '' ),
+				)
+			);
+
+			$css->set_selector( '#premium-fancy-text-' . $unique_id . '.premium-fancy-text-title-slide' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $fancy_size, 'Desktop', $fancy_size['unit'] ) );
+		}
+
 		// FancyText Style
-		if ( isset( $attr['fancyStyles'] ) ) {
-			if ( isset( $attr['fancyStyles'][0]['fancyTextfontSize'] ) ) {
-				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title' );
-				$css->add_property( 'font-size', $css->render_color( $attr['fancyStyles'][0]['fancyTextfontSize'] . $attr['fancyStyles'][0]['fancyTextfontSizeUnit'] ) );
-				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title-slide' );
-				$css->add_property( 'font-size', $css->render_color( $attr['fancyStyles'][0]['fancyTextfontSize'] . $attr['fancyStyles'][0]['fancyTextfontSizeUnit'] ) );
-			}
-		}
-		// Prefix and Suffix Style
-		if ( isset( $attr['PreStyles'] ) ) {
-			if ( isset( $attr['PreStyles'][0]['textfontSize'] ) && isset( $attr['PreStyles'][0]['textfontSizeUnit'] ) ) {
-				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-prefix-text' );
-				$css->add_property( 'font-size', ( $attr['PreStyles'][0]['textfontSize'] . $attr['PreStyles'][0]['textfontSizeUnit'] ) );
-				$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-suffix-text' );
-				$css->add_property( 'font-size', ( $attr['PreStyles'][0]['textfontSize'] . $attr['PreStyles'][0]['textfontSizeUnit'] ) );
-			}
-		}
+		// if ( isset( $attr['fancyStyles'] ) ) {
+		// 	if ( isset( $attr['fancyStyles'][0]['fancyTextfontSize'] ) ) {
+		// 		$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title' );
+		// 		$css->add_property( 'font-size', $css->render_color( $attr['fancyStyles'][0]['fancyTextfontSize'] . $attr['fancyStyles'][0]['fancyTextfontSizeUnit'] ) );
+		// 		$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title-slide' );
+		// 		$css->add_property( 'font-size', $css->render_color( $attr['fancyStyles'][0]['fancyTextfontSize'] . $attr['fancyStyles'][0]['fancyTextfontSizeUnit'] ) );
+		// 	}
+		// }
+		// // Prefix and Suffix Style
+		// if ( isset( $attr['PreStyles'] ) ) {
+		// 	if ( isset( $attr['PreStyles'][0]['textfontSize'] ) && isset( $attr['PreStyles'][0]['textfontSizeUnit'] ) ) {
+		// 		$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-prefix-text' );
+		// 		$css->add_property( 'font-size', ( $attr['PreStyles'][0]['textfontSize'] . $attr['PreStyles'][0]['textfontSizeUnit'] ) );
+		// 		$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-suffix-text' );
+		// 		$css->add_property( 'font-size', ( $attr['PreStyles'][0]['textfontSize'] . $attr['PreStyles'][0]['textfontSizeUnit'] ) );
+		// 	}
+		// }
 		$css->start_media_query( $media_query['tablet'] );
 
 		if ( isset( $attr['fancyStyles'][0]['fancyTextfontSizeTablet'] ) ) {
