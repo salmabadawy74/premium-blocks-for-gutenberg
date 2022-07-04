@@ -16,6 +16,9 @@ registerBlockType("premium/testimonial", {
     description: __('Proof your success by displaying customer reviews using Premium Testimonials Block.', 'premium-block-for-gutenberg'),
     icon: PBG_Block_Icons.testimonials,
     category: "premium-blocks",
+    keywords: [
+        "testimonial"
+    ],
     attributes: testimonialsAttrs,
     supports: {
         inserter: testimonial

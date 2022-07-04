@@ -187,7 +187,7 @@ const testimonialsAttrs = {
     authorTypography: {
         type: "object",
         default: {
-            "fontWeight": 600,
+            "fontWeight": 500,
             'fontStyle': '',
             'textTransform': '',
             'letterSpacing': '',

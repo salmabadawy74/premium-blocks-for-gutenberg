@@ -338,8 +338,8 @@ const deprecatedContent = [
                     "Tablet": attributes.align,
                     "Mobile": attributes.align,
                 },
-                authorTag: 'h3',
-                companyTag: 'h4',
+                authorTag: attributes.authorStyles[0].authorTag,
+                companyTag: attributes.authorStyles[0].authorComTag,
                 imgSize: {
                     "Desktop": attributes.imgSize,
                     "Tablet": attributes.imgSize,
