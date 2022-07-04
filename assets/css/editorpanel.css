@@ -3611,6 +3611,12 @@ i.fipicon-angle-left:before {
 .block-editor-block-inspector .components-base-control {
   margin-bottom: 20px !important; }
 
+:root {
+  --primarycolor: #007cba;
+  --accentcolorhover: #135e96;
+  --optionbordercolor: #e1e1e1;
+  --inputbordercolor: #e1e1e1; }
+
 .premium-typohraphy-value {
   display: flex;
   border-radius: 3px;
@@ -3667,9 +3673,9 @@ i.fipicon-angle-left:before {
       max-width: 85px;
       text-transform: capitalize; }
     .premium-typohraphy-value > div > span:hover span {
-      color: var(--primaryColor); }
+      color: #007cba; }
   .premium-typohraphy-value > div > span.active span {
-    color: var(--primaryColor); }
+    color: #007cba; }
   .premium-typohraphy-value .premium-font {
     display: inline-flex;
     align-items: center; }
@@ -3734,10 +3740,10 @@ i.fipicon-angle-left:before {
     box-shadow: 0 0 0 0 transparent;
     transition: box-shadow 0.1s cubic-bezier(0.455, 0.03, 0.515, 0.955), border-color 0.1s cubic-bezier(0.455, 0.03, 0.515, 0.955); }
     .premium-typography-top li:hover {
-      border-color: var(--primaryColor); }
+      border-color: #007cba; }
   .premium-typography-top li.active {
-    border-color: var(--primaryColor);
-    box-shadow: 0 0 0 1px var(--primaryColor); }
+    border-color: #007cba;
+    box-shadow: 0 0 0 1px #007cba; }
   .premium-typography-top .premium-font {
     flex: 1; }
     .premium-typography-top .premium-font span {
@@ -3889,7 +3895,7 @@ i.fipicon-angle-left:before {
       .premium-typography-variant ul li:not(.active) {
         color: #727c88; }
         .premium-typography-variant ul li:not(.active):hover {
-          color: var(--primaryColor); }
+          color: #007cba; }
       .premium-typography-variant ul li:hover .premiumtooltip-top {
         opacity: 1;
         visibility: visible;
@@ -3897,8 +3903,8 @@ i.fipicon-angle-left:before {
     .premium-typography-variant ul li.active {
       z-index: 2;
       color: #fff;
-      background: var(--primaryColor);
-      border-color: var(--primaryColor); }
+      background: #007cba;
+      border-color: #007cba; }
     .premium-typography-variant ul li[data-variant="capitalize"]:before {
       content: "Aa"; }
     .premium-typography-variant ul li[data-variant="uppercase"]:before {
@@ -3941,10 +3947,10 @@ i.fipicon-angle-left:before {
     border-top: 1px solid var(--optionBorderColor); }
   .premium-typography-single-font:hover {
     color: #fff;
-    background: var(--primaryColor);
-    border-color: var(--primaryColor); }
+    background: #007cba;
+    border-color: #007cba; }
     .premium-typography-single-font:hover:after {
-      box-shadow: -5px 0px 15px 10px var(--primaryColor); }
+      box-shadow: -5px 0px 15px 10px #007cba; }
     .premium-typography-single-font:hover + * {
       border-top-color: rgba(255, 255, 255, 0.3); }
     .premium-typography-single-font:hover .premium-font-name {
@@ -3990,18 +3996,18 @@ i.fipicon-angle-left:before {
       border-top: 1px solid var(--optionBorderColor); }
     .premium-typography-variations li:hover {
       color: #fff;
-      background: var(--primaryColor);
-      border-color: var(--primaryColor); }
+      background: #007cba;
+      border-color: #007cba; }
       .premium-typography-variations li:hover:after {
-        box-shadow: -5px 0px 15px 10px var(--primaryColor); }
+        box-shadow: -5px 0px 15px 10px #007cba; }
       .premium-typography-variations li:hover + * {
         border-top-color: rgba(255, 255, 255, 0.3); }
   .premium-typography-variations li.active {
     color: #fff;
-    background: var(--primaryColor);
-    border-color: var(--primaryColor); }
+    background: #007cba;
+    border-color: #007cba; }
     .premium-typography-variations li.active:after {
-      box-shadow: -5px 0px 15px 10px var(--primaryColor); }
+      box-shadow: -5px 0px 15px 10px #007cba; }
     .premium-typography-variations li.active + * {
       border-top-color: rgba(255, 255, 255, 0.3); }
     .premium-typography-variations li.active:before {
@@ -4015,10 +4021,10 @@ i.fipicon-angle-left:before {
 
 .premium-typography-single-font.active {
   color: #fff;
-  background: var(--primaryColor);
-  border-color: var(--primaryColor); }
+  background: #007cba;
+  border-color: #007cba; }
   .premium-typography-single-font.active:after {
-    box-shadow: -5px 0px 15px 10px var(--primaryColor); }
+    box-shadow: -5px 0px 15px 10px #007cba; }
   .premium-typography-single-font.active + * {
     border-top-color: rgba(255, 255, 255, 0.3); }
   .premium-typography-single-font.active:before {
