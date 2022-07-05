@@ -43,9 +43,19 @@ export default class PremiumTypo extends Component {
             "fontWeight": '',
             'fontStyle': '',
             'textTransform': '',
-            'letterSpacing': '',
+            'letterSpacing': {
+                'Desktop': '',
+                'Tablet': '',
+                'Mobile': '',
+                unit: 'px'
+            },
             'fontFamily': 'Default',
-            'lineHeight': '',
+            'lineHeight': {
+                'Desktop': '',
+                'Tablet': '',
+                'Mobile': '',
+                unit: 'px'
+            },
             'textDecoration': '',
             'fontSize': FontSize
         }
@@ -56,7 +66,8 @@ export default class PremiumTypo extends Component {
             search: "",
             showUnit: this.props.showUnit || false,
             device: 'Desktop',
-            value: this.props.value ? { ...defaultValues, ...this.props.value } : this.props.value
+            value: this.props.value ? { ...defaultValues, ...this.props.value } : this.props.value,
+            defaultValue: defaultValues
         }
     }
     componentDidUpdate(prevProps) {
@@ -73,7 +84,7 @@ export default class PremiumTypo extends Component {
     }
     render() {
         const { components, onChange } = this.props;
-        const { value, sizeUnit, isVisible, currentView, search, device } = this.state;
+        const { value, sizeUnit, isVisible, currentView, search, device, defaultValue } = this.state;
         const STYLE = [
             { value: "normal", label: __("Normal", 'premium-blocks-for-gutenberg') },
             { value: "italic", label: __("Italic", 'premium-blocks-for-gutenberg') },
@@ -229,18 +240,17 @@ export default class PremiumTypo extends Component {
                                                                 value={value['fontSize']}
                                                                 onChange={value => changeTypography('fontSize', value)}
                                                                 showUnit={true}
-                                                                defaultValue={20}
                                                                 units={["px", "em"]}
                                                             />
                                                         </li>
                                                     )}
                                                     {components.includes("line") && (
                                                         <li className="customize-control-premium-slider">
-                                                            <ResponsiveSingleRangeControl
+                                                            <ResponsiveRangeControl
                                                                 label={__("Line Height (PX)", 'premium-blocks-for-gutenberg')}
                                                                 value={value['lineHeight']}
                                                                 onChange={(value) => { changeTypography('lineHeight', value) }}
-                                                                defaultValue={1}
+                                                                defaultValue={defaultValue['lineHeight']}
                                                                 showUnit={false}
                                                                 min={0}
                                                                 max={200}
@@ -249,11 +259,11 @@ export default class PremiumTypo extends Component {
                                                     )}
                                                     {components.includes("spacing") && (
                                                         <li className="customize-control-premium-slider">
-                                                            <ResponsiveSingleRangeControl
+                                                            <ResponsiveRangeControl
                                                                 label={__("Letter Spacing (PX)", 'premium-blocks-for-gutenberg')}
                                                                 value={value['letterSpacing']}
                                                                 onChange={(value) => { changeTypography('letterSpacing', value) }}
-                                                                defaultValue={''}
+                                                                defaultValue={defaultValue['letterSpacing']}
                                                                 showUnit={false}
                                                                 step={0.1}
                                                                 min={-5}
@@ -272,37 +282,39 @@ export default class PremiumTypo extends Component {
                                                             />
                                                         </li>
                                                     )}
-                                                    {components.includes("Upper") && (<li className="premium-typography-variant">
-                                                        <ul className="premium-text-transform">
-                                                            {['capitalize', 'uppercase'].map((variant) => (
-                                                                <li
-                                                                    key={variant}
-                                                                    onClick={() => { changeTypography('textTransform', variant) }}
-                                                                    className={`${value['textTransform'] == variant ? 'active' : ''}`}
-                                                                    data-variant={variant}>
-                                                                    <i className="premium-tooltip-top">
-                                                                        {variant}
-                                                                    </i>
-                                                                </li>
-                                                            ))}
-                                                        </ul>
+                                                    <li className="premium-typography-variant">
+                                                        {components.includes("Upper") && (
+                                                            <ul className="premium-text-transform">
+                                                                {['capitalize', 'uppercase'].map((variant) => (
+                                                                    <li
+                                                                        key={variant}
+                                                                        onClick={() => { changeTypography('textTransform', variant) }}
+                                                                        className={`${value['textTransform'] == variant ? 'active' : ''}`}
+                                                                        data-variant={variant}>
+                                                                        <i className="premium-tooltip-top">
+                                                                            {variant}
+                                                                        </i>
+                                                                    </li>
+                                                                ))}
+                                                            </ul>
+
+                                                        )}
+                                                        {components.includes("Decoration") && (
+                                                            <ul className="premium-text-decoration">
+                                                                {['line-through', 'underline'].map((variant) => (
+                                                                    <li
+                                                                        key={variant}
+                                                                        onClick={() => { changeTypography('textDecoration', variant) }}
+                                                                        className={`${value['textDecoration'] == variant ? 'active' : ''}`}
+                                                                        data-variant={variant}>
+                                                                        <i className="premium-tooltip-top">
+                                                                            {variant}
+                                                                        </i>
+                                                                    </li>
+                                                                ))}
+                                                            </ul>
+                                                        )}
                                                     </li>
-                                                    )}
-                                                    {components.includes("Decoration") && (<li className="premium-typography-variant">
-                                                        <ul className="premium-text-decoration">
-                                                            {['line-through', 'underline'].map((variant) => (
-                                                                <li
-                                                                    key={variant}
-                                                                    onClick={() => { changeTypography('textDecoration', variant) }}
-                                                                    className={`${value['textDecoration'] == variant ? 'active' : ''}`}
-                                                                    data-variant={variant}>
-                                                                    <i className="premium-tooltip-top">
-                                                                        {variant}
-                                                                    </i>
-                                                                </li>
-                                                            ))}
-                                                        </ul>
-                                                    </li>)}
                                                 </ul>
                                             </div>
                                         </div>

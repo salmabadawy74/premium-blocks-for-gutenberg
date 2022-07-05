@@ -16,7 +16,7 @@ const SortableItem = SortableElement(
     ({ edit, removeItem, newIndex, value, changeFancyValue, items }) => (
         <div className="premium-repeater-item">
             <div className={`premium-repeater-item__container ${newIndex}`}>
-                <span className="premium-repeater-item__dragHandle"></span>
+                <span class=" premium-repeater-item__dragHandle dashicons dashicons-menu-alt"></span>
                 <div
                     className="premium-repeater-item__content"
                     onClick={() => edit(newIndex)}
@@ -26,9 +26,14 @@ const SortableItem = SortableElement(
 
                 {items.length != 1 ? (
                     <button
-                        className="premium-repeater-item__trashicon fa fa-trash"
-                        onClick={() => removeItem(newIndex, value)}
-                    ></button>
+                        className="premium-repeater-item__trashicon dashicons dashicons-no-alt"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            removeItem(newIndex, value)
+                        }}
+                    >
+
+                    </button>
                 ) : (
                     ""
                 )}

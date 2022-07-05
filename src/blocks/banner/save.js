@@ -115,10 +115,8 @@ const save = props => {
                                 fontStyle: titleTypography.fontStyle,
                                 fontFamily: titleTypography.fontFamily,
                                 fontWeight: titleTypography.fontWeight,
-                                letterSpacing: titleTypography.letterSpacing,
                                 textDecoration: titleTypography.textDecoration,
                                 textTransform: titleTypography.textTransform,
-                                lineHeight: `${titleTypography.lineHeight}px`,
                                 textShadow: `${titleTextShadow.horizontal}px ${titleTextShadow.vertical}px ${titleTextShadow.blur}px ${titleTextShadow.color}`,
                             })}
                         />
@@ -138,10 +136,8 @@ const save = props => {
                                 fontStyle: descTypography.fontStyle,
                                 fontFamily: descTypography.fontFamily,
                                 fontWeight: descTypography.fontWeight,
-                                letterSpacing: descTypography.letterSpacing,
                                 textDecoration: descTypography.textDecoration,
                                 textTransform: descTypography.textTransform,
-                                lineHeight: `${descTypography.lineHeight}px`,
                                 textShadow: `${descTextShadow.horizontal}px ${descTextShadow.vertical}px ${descTextShadow.blur}px ${descTextShadow.color}`,
                             })}
                         />

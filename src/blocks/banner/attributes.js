@@ -252,9 +252,19 @@ const attributes = {
             "fontWeight": '',
             'fontStyle': '',
             'textTransform': '',
-            'letterSpacing': '',
+            'letterSpacing': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            },
             'fontFamily': '',
-            'lineHeight': '',
+            'lineHeight': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            },
             'textDecoration': '',
             'fontSize': {
                 'Desktop': '',
@@ -270,9 +280,19 @@ const attributes = {
             "fontWeight": '',
             'fontStyle': '',
             'textTransform': '',
-            'letterSpacing': '',
+            'letterSpacing': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            },
             'fontFamily': '',
-            'lineHeight': '',
+            'lineHeight': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            },
             'textDecoration': '',
             'fontSize': {
                 'Desktop': '',

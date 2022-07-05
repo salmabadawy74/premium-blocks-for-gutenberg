@@ -52,13 +52,16 @@ const SortableItem = SortableElement(({
     openLink
 }) => <li tabIndex={0} key={newIndex} style={{ listStyle: 'none' }}>
         <span className="premium-bulletList__container">
-            <span className="premium-bulletList__dragHandle"></span>
+
+            <span class="dashicons dashicons-menu-alt"></span>
             <div className="premium-bulletList__content" onClick={() => showContent(newIndex)}>
                 {value.showBulletIcon && <i className={`${value.icon}`} />}
                 <span className={`premium-bulletList__label`}></span>
                 {value.label}
             </div>
-            <button className="premium-bulletList__trashicon fa fa-trash" onClick={() => onRemove(newIndex, value)}></button>
+            <button className="premium-bulletList__trashicon " onClick={() => onRemove(newIndex, value)}>
+                <span class="dashicons dashicons-no-alt"></span>
+            </button>
         </span>
         {value.showContent && (
             <div className="premium-bulletList__link">

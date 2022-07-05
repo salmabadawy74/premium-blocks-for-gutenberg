@@ -1525,6 +1525,8 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['titleTypography'] ) ) {
 			$title_typography = $attr['titleTypography'];
 			$title_size       = $title_typography['fontSize'];
+            $title_line       = $title_typography['lineHeight'];
+            $title_space      = $title_typography['letterSpacing'];
 
 			$this->add_gfont(
 				array(
@@ -1535,6 +1537,10 @@ class PBG_Blocks_Helper {
 
 			$css->set_selector( $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__title_wrap' . ' > .premium-banner__title' );
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Desktop', $title_size['unit'] ) );
+            $css->add_property( 'line-height', $css->get_responsive_size_value( $title_line, 'Desktop',$title_line['unit'] ) );
+			$css->add_property( 'letter-spacing', $css->get_responsive_size_value( $title_space, 'Desktop', $title_space['unit'] ) );
+
+
 		}
 		if ( isset( $attr['titleStyles'] ) ) {
 			if ( isset( $attr['titleStyles'][0]['titleSize'] ) && isset( $attr['titleStyles'][0]['titleSizeUnit'] ) ) {
@@ -1546,6 +1552,8 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['descTypography'] ) ) {
 			$desc_typography = $attr['descTypography'];
 			$desc_size       = $desc_typography['fontSize'];
+          
+
 
 			$this->add_gfont(
 				array(
@@ -1611,6 +1619,8 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['titleTypography'] ) ) {
 			$title_typography = $attr['titleTypography'];
 			$title_size       = $title_typography['fontSize'];
+            $title_line       = $title_typography['lineHeight'];
+            $title_space      = $title_typography['letterSpacing'];
 
 			$css->set_selector( $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__title_wrap' . ' > .premium-banner__title' );
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Tablet', $title_size['unit'] ) );

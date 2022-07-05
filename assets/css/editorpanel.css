@@ -342,24 +342,19 @@
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
-  border: 1px solid;
-  line-height: 2.5em; }
+  border: 1px solid #e1e1e1;
+  align-items: center; }
 
 .premium-repeater-item__dragHandle {
-  font: normal normal normal 14px/1 FontAwesome;
-  font-size: inherit;
+  font-size: 22px;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
   flex: 1;
-  background: darkgrey;
-  border-right: 1px solid;
   cursor: move;
-  color: #ffffff;
   align-items: center;
   display: flex !important;
-  justify-content: center; }
-  .premium-repeater-item__dragHandle::before {
-    content: "\f142"; }
+  justify-content: center;
+  margin: 1px 5px; }
 
 .premium-repeater-item__content {
   font-size: 14px;
@@ -371,13 +366,18 @@
   line-height: 2.5em; }
 
 .premium-repeater-item__trashicon {
-  font-size: 14px;
-  border-left: 1px solid gray;
-  line-height: 2.5em;
-  flex: 2 1 0%;
-  text-align: center; }
-  .premium-repeater-item__trashicon:hover {
-    cursor: pointer; }
+  cursor: pointer;
+  text-align: center;
+  background: none;
+  outline: none;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  padding: 15px 10px;
+  border-left: 1px solid #e1e1e1;
+  width: 40px; }
 
 .components-panel .rfipdropdown.rfipdropdown--default.fipappear-enter-done {
   left: 0 !important;

@@ -587,10 +587,10 @@ export class edit extends Component {
                                         fontStyle: titleTypography?.fontStyle,
                                         fontFamily: titleTypography?.fontFamily,
                                         fontWeight: titleTypography?.fontWeight,
-                                        letterSpacing: titleTypography?.letterSpacing,
+                                        letterSpacing: titleTypography?.letterSpacing[this.props.deviceType],
                                         textDecoration: titleTypography?.textDecoration,
                                         textTransform: titleTypography?.textTransform,
-                                        lineHeight: `${titleTypography?.lineHeight}px`,
+                                        lineHeight: `${titleTypography?.lineHeight[this.props.deviceType]}px`,
                                         textShadow: `${titleTextShadow?.horizontal}px ${titleTextShadow?.vertical}px ${titleTextShadow?.blur}px ${titleTextShadow?.color}`,
                                     }}
                                 />
@@ -613,10 +613,10 @@ export class edit extends Component {
                                         fontStyle: descTypography.fontStyle,
                                         fontFamily: descTypography.fontFamily,
                                         fontWeight: descTypography.fontWeight,
-                                        letterSpacing: descTypography.letterSpacing,
+                                        letterSpacing: descTypography.letterSpacing[this.props.deviceType],
                                         textDecoration: descTypography.textDecoration,
                                         textTransform: descTypography.textTransform,
-                                        lineHeight: `${descTypography.lineHeight}px`,
+                                        lineHeight: `${descTypography.lineHeight[this.props.deviceType]}px`,
                                         textShadow: `${descTextShadow.horizontal}px ${descTextShadow.vertical}px ${descTextShadow.blur}px ${descTextShadow.color}`,
                                     }}
                                 />
