@@ -108,16 +108,8 @@ const attributes = {
         default: [
             {
                 fancyTextColor: '#6ec1e4',
-                // fancyTextfontSize: 20,
-                // fancyTextfontSizeUnit: 'px',
-                // fancyTextfontSizeMobile: 20,
-                // fancyTextfontSizeTablet: 20,
                 fancyTextBGColor: '',
                 fancyTextBGOpacity: 1,
-                // fancyTextLetter: '',
-                // fancyTextStyle: '',
-                // fancyTextUpper: false,
-                // fancyTextWeight: 600,
                 shadowColor: '',
                 shadowBlur: '0',
                 shadowHorizontal: '0',
@@ -131,14 +123,6 @@ const attributes = {
         default: [
             {
                 textColor: "#54595f",
-                // textLetter: '',
-                // textStyle: '',
-                // textUpper: false,
-                // textWeight: 600,
-                // textfontSize: 20,
-                // textfontSizeUnit: 'px',
-                // textfontSizeMobile: 20,
-                // textfontSizeTablet: 20,
                 textBGColor: '',
                 textBGOpacity: 1,
             }

@@ -1,5 +1,5 @@
 # Premium Blocks for Gutenberg #
-**Contributors:** [leap13](https://profiles.wordpress.org/leap13)  
+**Contributors:** [leap13](https://profiles.wordpress.org/leap13/)  
 **Tags:** gutenberg, gutenberg addon, gutenberg addons, gutenberg blocks, gutenberg free blocks  
 **Donate link:** http://leap13.com  
 **Requires at least:** 4.5  

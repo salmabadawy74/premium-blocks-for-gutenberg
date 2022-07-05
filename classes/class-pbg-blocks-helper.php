@@ -915,8 +915,8 @@ class PBG_Blocks_Helper {
 	 */
 	public function get_fancy_text_css( $attributes, $content ) {
 
-		if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
-			$unique_id = $attributes['block_id'];
+		if ( isset( $attributes['blockId'] ) && ! empty( $attributes['blockId'] ) ) {
+			$unique_id = $attributes['blockId'];
 		} else {
 			$unique_id = rand( 100, 10000 );
 		}
@@ -978,9 +978,10 @@ class PBG_Blocks_Helper {
 		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
 
 		// Style.
+		// FancyText Style
 		if ( isset( $attr['fancyTextTypography'] ) ) {
 			$fancy_typography = $attr['fancyTextTypography'];
-			$fancy_size       = $title_typography['fontSize'];
+			$fancy_size       = $fancy_typography['fontSize'];
 
 			$this->add_gfont(
 				array(
@@ -988,59 +989,89 @@ class PBG_Blocks_Helper {
 					'fontVariant' => ( isset( $fancy_typography['fontWeight'] ) ? $fancy_typography['fontWeight'] : '' ),
 				)
 			);
+			
+			$css->set_selector( '.' . $unique_id . ' .premium-fancy-text-title' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $fancy_size, 'Desktop', $fancy_size['unit'] ) );
+		}
+		// Prefix and Suffix Style
+		if ( isset( $attr['prefixTypography'] ) ) {
+			$prefix_typography = $attr['prefixTypography'];
+			$prefix_size       = $prefix_typography['fontSize'];
 
-			$css->set_selector( '#premium-fancy-text-' . $unique_id . '.premium-fancy-text-title-slide' );
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $prefix_typography['fontFamily'] ) ? $prefix_typography['fontFamily'] : '' ),
+					'fontVariant' => ( isset( $prefix_typography['fontWeight'] ) ? $prefix_typography['fontWeight'] : '' ),
+				)
+			);
+			
+			$css->set_selector( '.' . $unique_id . ' .premium-fancy-text-suffix-prefix' );
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $fancy_size, 'Desktop', $fancy_size['unit'] ) );
 		}
 
-		// FancyText Style
-		// if ( isset( $attr['fancyStyles'] ) ) {
-		// 	if ( isset( $attr['fancyStyles'][0]['fancyTextfontSize'] ) ) {
-		// 		$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title' );
-		// 		$css->add_property( 'font-size', $css->render_color( $attr['fancyStyles'][0]['fancyTextfontSize'] . $attr['fancyStyles'][0]['fancyTextfontSizeUnit'] ) );
-		// 		$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title-slide' );
-		// 		$css->add_property( 'font-size', $css->render_color( $attr['fancyStyles'][0]['fancyTextfontSize'] . $attr['fancyStyles'][0]['fancyTextfontSizeUnit'] ) );
-		// 	}
-		// }
-		// // Prefix and Suffix Style
-		// if ( isset( $attr['PreStyles'] ) ) {
-		// 	if ( isset( $attr['PreStyles'][0]['textfontSize'] ) && isset( $attr['PreStyles'][0]['textfontSizeUnit'] ) ) {
-		// 		$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-prefix-text' );
-		// 		$css->add_property( 'font-size', ( $attr['PreStyles'][0]['textfontSize'] . $attr['PreStyles'][0]['textfontSizeUnit'] ) );
-		// 		$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-suffix-text' );
-		// 		$css->add_property( 'font-size', ( $attr['PreStyles'][0]['textfontSize'] . $attr['PreStyles'][0]['textfontSizeUnit'] ) );
-		// 	}
-		// }
 		$css->start_media_query( $media_query['tablet'] );
 
-		if ( isset( $attr['fancyStyles'][0]['fancyTextfontSizeTablet'] ) ) {
-			$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title' );
-			$css->add_property( 'font-size', $css->render_color( $attr['fancyStyles'][0]['fancyTextfontSizeTablet'] . $attr['fancyStyles'][0]['fancyTextfontSizeUnit'] ) );
-			$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title-slide' );
-			$css->add_property( 'font-size', $css->render_color( $attr['fancyStyles'][0]['fancyTextfontSizeTablet'] . $attr['fancyStyles'][0]['fancyTextfontSizeUnit'] ) );
+		// FancyText Style
+		if ( isset( $attr['fancyTextTypography'] ) ) {
+			$fancy_typography = $attr['fancyTextTypography'];
+			$fancy_size       = $fancy_typography['fontSize'];
+
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $fancy_typography['fontFamily'] ) ? $fancy_typography['fontFamily'] : '' ),
+					'fontVariant' => ( isset( $fancy_typography['fontWeight'] ) ? $fancy_typography['fontWeight'] : '' ),
+				)
+			);
+			
+			$css->set_selector( '.' . $unique_id . ' .premium-fancy-text-title' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $fancy_size, 'Tablet', $fancy_size['unit'] ) );
 		}
 		// Prefix and Suffix Style
-		if ( isset( $attr['PreStyles'][0]['textfontSizeTablet'] ) && isset( $attr['PreStyles'][0]['textfontSizeUnit'] ) ) {
-			$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-prefix-text' );
-			$css->add_property( 'font-size', ( $attr['PreStyles'][0]['textfontSizeTablet'] . $attr['PreStyles'][0]['textfontSizeUnit'] ) );
-			$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-suffix-text' );
-			$css->add_property( 'font-size', ( $attr['PreStyles'][0]['textfontSizeTablet'] . $attr['PreStyles'][0]['textfontSizeUnit'] ) );
+		if ( isset( $attr['prefixTypography'] ) ) {
+			$prefix_typography = $attr['prefixTypography'];
+			$prefix_size       = $prefix_typography['fontSize'];
+
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $prefix_typography['fontFamily'] ) ? $prefix_typography['fontFamily'] : '' ),
+					'fontVariant' => ( isset( $prefix_typography['fontWeight'] ) ? $prefix_typography['fontWeight'] : '' ),
+				)
+			);
+			
+			$css->set_selector( '.' . $unique_id . ' .premium-fancy-text-suffix-prefix' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $fancy_size, 'Tablet', $fancy_size['unit'] ) );
 		}
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['mobile'] );
+		// FancyText Style
+		if ( isset( $attr['fancyTextTypography'] ) ) {
+			$fancy_typography = $attr['fancyTextTypography'];
+			$fancy_size       = $fancy_typography['fontSize'];
 
-		if ( isset( $attr['fancyStyles'][0]['fancyTextfontSizeMobile'] ) ) {
-			$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title' );
-			$css->add_property( 'font-size', $css->render_color( $attr['fancyStyles'][0]['fancyTextfontSizeMobile'] . $attr['fancyStyles'][0]['fancyTextfontSizeUnit'] ) );
-			$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-title-slide' );
-			$css->add_property( 'font-size', $css->render_color( $attr['fancyStyles'][0]['fancyTextfontSizeMobile'] . $attr['fancyStyles'][0]['fancyTextfontSizeUnit'] ) );
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $fancy_typography['fontFamily'] ) ? $fancy_typography['fontFamily'] : '' ),
+					'fontVariant' => ( isset( $fancy_typography['fontWeight'] ) ? $fancy_typography['fontWeight'] : '' ),
+				)
+			);
+			
+			$css->set_selector( '.' . $unique_id . ' .premium-fancy-text-title' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $fancy_size, 'Mobile', $fancy_size['unit'] ) );
 		}
 		// Prefix and Suffix Style
-		if ( isset( $attr['PreStyles'][0]['textfontSizeMobile'] ) && isset( $attr['PreStyles'][0]['textfontSizeUnit'] ) ) {
-			$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-prefix-text' );
-			$css->add_property( 'font-size', ( $attr['PreStyles'][0]['textfontSizeMobile'] . $attr['PreStyles'][0]['textfontSizeUnit'] ) );
-			$css->set_selector( '#premium-fancy-text-' . $unique_id . '> .premium-fancy-text-suffix-text' );
-			$css->add_property( 'font-size', ( $attr['PreStyles'][0]['textfontSizeMobile'] . $attr['PreStyles'][0]['textfontSizeUnit'] ) );
+		if ( isset( $attr['prefixTypography'] ) ) {
+			$prefix_typography = $attr['prefixTypography'];
+			$prefix_size       = $prefix_typography['fontSize'];
+
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $prefix_typography['fontFamily'] ) ? $prefix_typography['fontFamily'] : '' ),
+					'fontVariant' => ( isset( $prefix_typography['fontWeight'] ) ? $prefix_typography['fontWeight'] : '' ),
+				)
+			);
+			
+			$css->set_selector( '.' . $unique_id . ' .premium-fancy-text-suffix-prefix' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $fancy_size, 'Mobile', $fancy_size['unit'] ) );
 		}
 		$css->stop_media_query();
 		return $css->css_output();

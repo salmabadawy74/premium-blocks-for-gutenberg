@@ -31,12 +31,11 @@ export default function save(props) {
         fancyTextTypography
     } = props.attributes;
 
-    console.log(blockId)
     return (
         <div
-            className={classnames(className, `${hideDesktop} ${hideTablet} ${hideMobile}`)}
+            className={classnames(className, `${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`)}
             style={{
-                textAlign: 'center',
+                textAlign: align,
             }}
         >
 
@@ -45,7 +44,7 @@ export default function save(props) {
                     id={`premium-fancy-text-${blockId}`}
                     className={`premium-fancy-text`}
                     style={{
-                        textAlign: "align",
+                        textAlign: align,
                     }}
                     data-effect={`${effect}`}
                     data-strings={`${repeaterFancyText.map(
@@ -61,7 +60,7 @@ export default function save(props) {
                     data-cursorshow={`${cursorShow}`}
                     data-cursormark={`${cursorMark}`}
                 >
-                    <span className={`premium-fancy-text-prefix-text`}
+                    <span className={`premium-fancy-text-suffix-prefix premium-fancy-text-prefix-text`}
                         style={{
                             color: PreStyles[0].textColor,
                             backgroundColor: PreStyles[0].textBGColor,
@@ -77,7 +76,7 @@ export default function save(props) {
                         {prefix}{" "}
                     </span>
                     <span
-                        className={`premium-fancy-text-title`}
+                        className={`premium-fancy-text-title premium-fancy-text-title-type`}
                         style={{
                             color: fancyStyles[0].fancyTextColor,
                             backgroundColor: `${fancyStyles[0].fancyTextBGColor}`,
@@ -96,7 +95,7 @@ export default function save(props) {
                     >
                         {" "}
                     </span>
-                    <span className={`premium-fancy-text-suffix-text`}
+                    <span className={`premium-fancy-text-suffix-prefix premium-fancy-text-suffix-text`}
                         style={{
                             color: PreStyles[0].textColor,
                             backgroundColor: PreStyles[0].textBGColor,
@@ -118,7 +117,7 @@ export default function save(props) {
                     id={`premium-fancy-text-${blockId}`}
                     className={`premium-fancy-text premium-fancy-slide`}
                     style={{
-                        textAlign: 'center',
+                        textAlign: align,
 
                     }}
                     data-effect={`${effect}`}
@@ -131,7 +130,7 @@ export default function save(props) {
                     data-pausetime={`${pauseTime}`}
                     data-hoverpause={`${hoverPause}`}
                 >
-                    <span className={`premium-fancy-text-prefix-text`}
+                    <span className={`premium-fancy-text-suffix-prefix premium-fancy-text-prefix-text`}
                         style={{
                             color: PreStyles[0].textColor,
                             backgroundColor: PreStyles[0].textBGColor,
@@ -147,9 +146,8 @@ export default function save(props) {
                         {prefix}{" "}
                     </span>
                     <div
-                        className={`premium-fancy-text-title-slide`}
+                        className={`premium-fancy-text-title premium-fancy-text-title-slide`}
                         style={{
-                            textAlign: 'center',
                             color: fancyStyles[0].fancyTextColor,
                             backgroundColor: `${fancyStyles[0].fancyTextBGColor}`,
                             textShadow: `${fancyStyles[0].shadowHorizontal}px ${fancyStyles[0].shadowVertical}px ${fancyStyles[0].shadowBlur}px ${fancyStyles[0].shadowColor}`,
@@ -170,7 +168,7 @@ export default function save(props) {
                             })}
                         </ul>
                     </div>
-                    <span className={`premium-fancy-text-suffix-text`}
+                    <span className={`premium-fancy-text-suffix-prefix premium-fancy-text-suffix-text`}
                         style={{
                             color: PreStyles[0].textColor,
                             backgroundColor: PreStyles[0].textBGColor,

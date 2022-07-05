@@ -11,7 +11,7 @@ import MultiButtonsControl from '../../components/responsive-radio';
 import Icons from "../../components/icons";
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
-import { generateBlockId, generateCss } from '../../components/HelperFunction';
+import { generateBlockId } from '../../components/HelperFunction';
 const { __ } = wp.i18n;
 const { withSelect } = wp.data
 const { Component, Fragment } = wp.element;
@@ -76,7 +76,7 @@ const SortableList = SortableContainer(
     }
 );
 
-class edit extends Component {
+class Edit extends Component {
 
     constructor() {
         super(...arguments);
@@ -106,7 +106,7 @@ class edit extends Component {
         // if (!this.props.attributes.blockId) {
         //      setAttributes({ blockId: "premium-fancy-text-" + generateBlockId(clientId) });
         //  } 
-        const { attributes, setAttributes, clientId } = this.props;
+        const { attributes, clientId } = this.props;
         if (!attributes.blockId) {
             this.props.setAttributes({ blockId: "premium-fancy-text-" + generateBlockId(clientId) });
         }
@@ -252,7 +252,7 @@ class edit extends Component {
             });
         };
 
-        const removeItem = (index, item) => {
+        const removeItem = (index) => {
             let array = repeaterFancyText
                 .map((cont, currIndex) => {
                     return cont;
@@ -323,24 +323,10 @@ class edit extends Component {
             text-transform: ${fancyTextTypography?.textTransform};
             line-height: ${fancyTextTypography?.lineHeight}px;
         }
-        .${blockId} .premium-fancy-text-title-slide {
-            color: ${fancyStyles[0].fancyTextColor};
-            background-color: ${fancyStyles[0].fancyTextBGColor};
-            text-shadow: ${fancyStyles[0].shadowHorizontal}px ${fancyStyles[0].shadowVertical}px ${fancyStyles[0].shadowBlur}px ${fancyStyles[0].shadowColor};
-            font-size: ${fancyTextTypography?.fontSize?.[this.props.deviceType]}${prefixTypography?.fontSize?.unit || 'px'};
-            font-style: ${fancyTextTypography?.fontStyle};
-            font-family: ${fancyTextTypography?.fontFamily};
-            font-weight: ${fancyTextTypography?.fontWeight};
-            letter-spacing: ${fancyTextTypography?.letterSpacing};
-            text-decoration: ${fancyTextTypography?.textDecoration};
-            text-transform: ${fancyTextTypography?.textTransform};
-            line-height: ${fancyTextTypography?.lineHeight}px;
-        }
         .${blockId} .typed-cursor {
             color: ${fancyStyles[0].cursorColor};
         }
-        .${blockId} .premium-fancy-text-prefix-text,
-        .${blockId} .premium-fancy-text-suffix-text {
+        .${blockId} .premium-fancy-text-suffix-prefix {
             color: ${PreStyles[0].textColor};
             background-color: ${PreStyles[0].textBGColor};
             font-size: ${prefixTypography?.fontSize?.[this.props.deviceType]}${prefixTypography?.fontSize?.unit || 'px'};
@@ -355,7 +341,7 @@ class edit extends Component {
         }
             `}
         </style>)
-        const mainClasses = classnames(className, "premium-fancy-text");
+        //const mainClasses = classnames(className, "premium-fancy-text");
 
         return [
             renderCss,
@@ -659,7 +645,7 @@ class edit extends Component {
             ),
 
             <div
-                className={`${mainClasses} ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                className={classnames(className, `${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`)}
                 style={{
                     textAlign: align?.[this.props.deviceType],
                 }}
@@ -685,18 +671,18 @@ class edit extends Component {
                         data-cursorshow={`${cursorShow}`}
                         data-cursormark={`${cursorMark}`}
                     >
-                        <span className={`premium-fancy-text-prefix-text`}>
+                        <span className={`premium-fancy-text-suffix-prefix premium-fancy-text-prefix-text`}>
                             {prefix}{" "}
                         </span>
                         <span
-                            className={`premium-fancy-text-title`}
+                            className={`premium-fancy-text-title premium-fancy-text-title-type`}
                             ref={(el) => {
                                 this.el = el;
                             }}
                         >
                             {" "}
                         </span>
-                        <span className={`premium-fancy-text-suffix-text`}>
+                        <span className={`premium-fancy-text-suffix-prefix premium-fancy-text-suffix-text`}>
                             {" "}
                             {suffix}
                         </span>
@@ -705,7 +691,6 @@ class edit extends Component {
                     <div
                         id={`premium-fancy-text-${blockId}`}
                         className={`premium-fancy-text premium-fancy-slide`}
-                        //className={`${mainClasses} ${blockId}`}
                         style={{
                             textAlign: align,
                         }}
@@ -719,11 +704,11 @@ class edit extends Component {
                         data-pausetime={`${pauseTime}`}
                         data-hoverpause={`${hoverPause}`}
                     >
-                        <span className={`premium-fancy-text-prefix-text`}>
+                        <span className={`premium-fancy-text-suffix-prefix premium-fancy-text-prefix-text`}>
                             {prefix}{" "}
                         </span>
                         <div
-                            className={`premium-fancy-text-title-slide`}
+                            className={`premium-fancy-text-title premium-fancy-text-title-slide`}
                             style={{
                                 textAlign: fancyalign[this.props.deviceType],
                             }}
@@ -736,7 +721,7 @@ class edit extends Component {
                                 })}
                             </ul>
                         </div>
-                        <span className={`premium-fancy-text-suffix-text`}>
+                        <span className={`premium-fancy-text-suffix-prefix premium-fancy-text-suffix-text`}>
                             {" "}
                             {suffix}
                         </span>
@@ -748,11 +733,11 @@ class edit extends Component {
     }
 }
 
-export default withSelect((select, props) => {
+export default withSelect((select) => {
     const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
     let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
 
     return {
         deviceType: deviceType
     }
-})(edit)
+})(Edit)
