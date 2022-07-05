@@ -52,6 +52,5 @@
         "waypoints": "^4.0.1",
         "webfontloader": "^1.6.28",
         "react-google-font-loader": "^1.1.0"
-
     }
 }

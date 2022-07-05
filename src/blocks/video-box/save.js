@@ -6,7 +6,7 @@ const save = props => {
     const { className } = props;
 
     const {
-        block_id,
+        blockId,
         videoBoxId,
         videoType,
         videoURL,
@@ -53,8 +53,7 @@ const save = props => {
     return (
         videoURL && (
             <div
-                id={videoBoxId}
-                className={`${mainClasses} video-overlay-${overlay} premium-video-box-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile} premium-aspect-ratio-${ratioValue}`}
+                className={`${mainClasses} video-overlay-${overlay} premium-video-box-${blockId} ${hideDesktop} ${hideTablet} ${hideMobile} premium-aspect-ratio-${ratioValue}`}
                 data-type={videoType}
                 style={{
                     borderStyle: boxStyles[0].boxBorderType,
@@ -69,7 +68,7 @@ const save = props => {
                 <style
                     dangerouslySetInnerHTML={{
                         __html: [
-                            `#${videoBoxId} .premium-video-box__play:hover {`,
+                            `.${blockId} .premium-video-box__play:hover {`,
                             `color: ${playStyles[0].playHoverColor} !important;`,
                             `background-color: ${playStyles[0].playHoverBackColor} !important;`,
                             "}"

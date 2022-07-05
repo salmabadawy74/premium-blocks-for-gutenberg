@@ -1,6 +1,6 @@
 const { __ } = wp.i18n;
 const videoBoxAttrs = {
-    block_id: {
+    blockId: {
         type: 'string'
     },
     borderBoxUpdated: {
@@ -79,20 +79,20 @@ const videoBoxAttrs = {
         type: 'array',
         default: [
             {
-                boxBorderType: 'none',
-                boxBorderWidth: 1,
-                boxBorderTop: '',
-                boxBorderRight: '',
-                boxBorderBottom: '',
-                boxBorderLeft: '',
-                boxBorderRadius: '',
+                // boxBorderType: 'none',
+                // boxBorderWidth: 1,
+                // boxBorderTop: '',
+                // boxBorderRight: '',
+                // boxBorderBottom: '',
+                // boxBorderLeft: '',
+                // boxBorderRadius: '',
                 boxBorderColor: '',
                 shadowColor: '',
                 shadowBlur: '',
                 shadowHorizontal: '',
                 shadowVertical: '',
                 shadowPosition: '',
-                borderBoxUpdated: false
+                // borderBoxUpdated: false
             }
         ]
     },
@@ -117,20 +117,20 @@ const videoBoxAttrs = {
                 playTop: '',
                 playSize: '',
                 playPadding: '',
-                playBorderType: 'none',
-                playBorderWidth: 1,
-                playBorderRadius: '',
-                playBorderColor: '',
-                playBorderTop: '',
-                playBorderRight: '',
-                playBorderBottom: '',
-                playBorderLeft: '',
+                // playBorderType: 'none',
+                // playBorderWidth: 1,
+                // playBorderRadius: '',
+                // playBorderColor: '',
+                // playBorderTop: '',
+                // playBorderRight: '',
+                // playBorderBottom: '',
+                // playBorderLeft: '',
                 playColor: '',
                 playBack: '',
                 playOpacity: 1,
                 playHoverColor: '',
                 playHoverBackColor: '',
-                borderPlayUpdated: false
+                // borderPlayUpdated: false
 
             }
         ]
@@ -141,15 +141,15 @@ const videoBoxAttrs = {
         default: [
             {
                 videoDescText: '',
-                videoDescFamily: __('Default'),
-                videoDescSize: '',
-                videoDescSizeUnit: 'px',
-                videoDescSizeMobile: '',
-                videoDescSizeTablet: '',
-                videoDescWeight: '',
-                videoDescLetter: '',
-                videoDescStyle: '',
-                videoDescUpper: false,
+                // videoDescFamily: __('Default'),
+                // videoDescSize: '',
+                // videoDescSizeUnit: 'px',
+                // videoDescSizeMobile: '',
+                // videoDescSizeTablet: '',
+                // videoDescWeight: '',
+                // videoDescLetter: '',
+                // videoDescStyle: '',
+                // videoDescUpper: false,
                 videoDescPadding: '',
                 videoDescBorderRadius: '',
                 descShadowColor: '',
@@ -163,7 +163,118 @@ const videoBoxAttrs = {
                 videoDescOpacity: 1,
             }
         ]
-    }
+    },
+    videoDescTypography: {
+        type: "object",
+        default: {
+            "fontWeight": 500,
+            'fontStyle': '',
+            'textTransform': '',
+            'letterSpacing': '',
+            'lineHeight': '',
+            'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
+            'fontSize': {
+                'Desktop': "",
+                "Tablet": "",
+                "Mobile": "",
+                unit: 'px'
+            }
+        }
+    },
+    playBorder: {
+        type: "object",
+        default: {
+            borderColor: "",
+            borderType: "none",
+            borderRadius: {
+                Desktop: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Tablet: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Mobile: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                }
+            },
+            borderWidth: {
+                Desktop: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Tablet: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Mobile: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                }
+            }
+        }
+    },
+    boxBorder: {
+        type: "object",
+        default: {
+            borderColor: "",
+            borderType: "none",
+            borderRadius: {
+                Desktop: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Tablet: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Mobile: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                }
+            },
+            borderWidth: {
+                Desktop: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Tablet: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Mobile: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                }
+            }
+        }
+    },
 
 };
 export default videoBoxAttrs;
