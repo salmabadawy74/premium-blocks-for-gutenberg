@@ -86,12 +86,12 @@ const videoBoxAttrs = {
                 // boxBorderBottom: '',
                 // boxBorderLeft: '',
                 // boxBorderRadius: '',
-                boxBorderColor: '',
-                shadowColor: '',
-                shadowBlur: '',
-                shadowHorizontal: '',
-                shadowVertical: '',
-                shadowPosition: '',
+                // boxBorderColor: '',
+                // shadowColor: '',
+                // shadowBlur: '',
+                // shadowHorizontal: '',
+                // shadowVertical: '',
+                // shadowPosition: '',
                 // borderBoxUpdated: false
             }
         ]
@@ -116,7 +116,7 @@ const videoBoxAttrs = {
             {
                 playTop: '',
                 playSize: '',
-                playPadding: '',
+                // playPadding: '',
                 // playBorderType: 'none',
                 // playBorderWidth: 1,
                 // playBorderRadius: '',
@@ -150,12 +150,12 @@ const videoBoxAttrs = {
                 // videoDescLetter: '',
                 // videoDescStyle: '',
                 // videoDescUpper: false,
-                videoDescPadding: '',
+                // videoDescPadding: '',
                 videoDescBorderRadius: '',
-                descShadowColor: '',
-                descShadowBlur: 0,
-                descShadowHorizontal: 0,
-                descShadowVertical: 0,
+                // descShadowColor: '',
+                // descShadowBlur: 0,
+                // descShadowHorizontal: 0,
+                // descShadowVertical: 0,
                 descLeft: '',
                 descTop: '',
                 videoDescColor: '',
@@ -275,6 +275,72 @@ const videoBoxAttrs = {
             }
         }
     },
-
+    playPadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            unit: "px"
+        }
+    },
+    descPadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            unit: "px"
+        }
+    },
+    descShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': ''
+        }
+    },
+    boxShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
+    }
 };
 export default videoBoxAttrs;
