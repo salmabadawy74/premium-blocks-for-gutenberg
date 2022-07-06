@@ -417,9 +417,7 @@ class PremiumAccordion extends Component {
             <Fragment>
                 <div ref={this.accordionRef} className={`${mainClasses} ${blockId}`}>
                     <style
-                        dangerouslySetInnerHTML={{
-                            __html: loadStyles()
-                        }}
+                        dangerouslySetInnerHTML={{ __html: loadStyles() }}
                     />
                     <InnerBlocks
                         template={INNER_BLOCKS_TEMPLATE}

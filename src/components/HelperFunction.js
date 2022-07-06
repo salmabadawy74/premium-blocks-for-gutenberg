@@ -24,44 +24,45 @@ export const gradientBackground = (value) => {
 }
 export const borderCss = (value, device) => {
     return {
-        borderStyle: value.borderType,
-        borderTopWidth: value['borderWidth'][device]['top'] && value['borderWidth'][device]['top'] + "px",
-        borderRightWidth: value['borderWidth'][device]['right'] && value['borderWidth'][device]['right'] + "px",
-        borderBottomWidth: value['borderWidth'][device]['bottom'] && value['borderWidth'][device]['bottom'] + "px",
-        borderLeftWidth: value['borderWidth'][device]['left'] && value['borderWidth'][device]['left'] + "px",
-        borderBottomLeftRadius: value['borderRadius'][device]['left'] && value['borderRadius'][device]['left'] + "px",
-        borderTopLeftRadius: value['borderRadius'][device]['top'] && value['borderRadius'][device]['top'] + "px",
-        borderTopRightRadius: value['borderRadius'][device]['right'] && value['borderRadius'][device]['right'] + "px",
-        borderBottomRightRadius: value['borderRadius'][device]['bottom'] && value['borderRadius'][device]['bottom'] + "px",
-        borderColor: value.borderColor,
+        borderStyle: value?.borderType,
+        borderTopWidth: value?.borderWidth?.[device]?.top,
+        borderRightWidth: value?.borderWidth?.[device]?.right,
+        borderBottomWidth: value?.borderWidth?.[device]?.bottom,
+        borderLeftWidth: value?.borderWidth?.[device]?.left,
+        borderColor: value?.borderColor,
+        borderTopLeftRadius: `${value?.borderRadius?.[device]?.top || 0}px`,
+        borderTopRightRadius: `${value?.borderRadius?.[device]?.right || 0}px`,
+        borderBottomLeftRadius: `${value?.borderRadius?.[device]?.bottom || 0}px`,
+        borderBottomRightRadius: `${value?.borderRadius?.[device]?.left || 0}px`,
     }
 
 }
 export const padddingCss = (value, device) => {
     return {
-        paddingTop: value[device]['top'] && value[device]['top'] + value.unit,
-        paddingRight: value[device]['right'] && value[device]['right'] + value.unit,
-        paddingBottom: value[device]['bottom'] && value[device]['bottom'] + value.unit,
-        paddingLeft: value[device]['left'] && value[device]['left'] + value.unit,
+        paddingTop: `${value?.[device]?.top}${value?.unit}`,
+        paddingRight: `${value?.[device]?.right}${value?.unit}`,
+        paddingBottom: `${value?.[device]?.bottom}${value?.unit}`,
+        paddingLeft: `${value?.[device]?.left}${value?.unit}`,
     }
 }
 export const marginCss = (value, device) => {
     return {
-        marginTop: value[device]['top'] && value[device]['top'] + value.unit,
-        marginRight: value[device]['right'] && value[device]['right'] + value.unit,
-        marginBottom: value[device]['bottom'] && value[device]['bottom'] + value.unit,
-        marginLeft: value[device]['left'] && value[device]['left'] + value.unit,
+        marginTop: `${value?.[device]?.top}${value?.unit}`,
+        marginRight: `${value?.[device]?.right}${value?.unit}`,
+        marginBottom: `${value?.[device]?.bottom}${value?.unit}`,
+        marginLeft: `${value?.[device]?.left}${value?.unit}`,
     }
 }
 export const typographyCss = (value, device) => {
     return {
-        fontSize: `${value.fontSize[device] || ''}${value.fontSize.unit}`,
-        fontFamily: value.fontFamily,
-        letterSpacing: value.letterSpacing + "px",
-        textTransform: value.textTransform ? "uppercase" : "none",
-        fontStyle: value.fontStyle,
-        fontWeight: value.fontWeight,
-        lineHeight: value.lineHeight + "px",
+        fontSize: `${value?.fontSize[device]}${value?.fontSize?.unit}`,
+        fontStyle: value?.fontStyle,
+        fontFamily: value?.fontFamily,
+        fontWeight: value?.fontWeight,
+        letterSpacing: value?.letterSpacing[device],
+        textDecoration: value?.textDecoration,
+        textTransform: value?.textTransform,
+        lineHeight: `${value?.lineHeight[device]}px`,
     }
 }
 
@@ -100,6 +101,7 @@ export const filterJsCss = (styles) => {
 
     return filteredStyles;
 }
+
 export const videoBackground = (backgroundType, videoSource, videoURL, bgExternalVideo) => {
     if (backgroundType == 'video') {
         if (videoSource == 'local') {
@@ -136,6 +138,7 @@ export const videoBackground = (backgroundType, videoSource, videoURL, bgExterna
         }
     }
 }
+
 export const animationAttr = (data) => {
     if (typeof data !== 'undefined' && typeof data.name !== 'undefined' && data.openAnimation) {
         return { 'data-premiumanimation': JSON.stringify(data) }

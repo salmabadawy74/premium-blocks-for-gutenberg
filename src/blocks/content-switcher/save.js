@@ -4,7 +4,7 @@ import {
     useBlockProps,
     InnerBlocks
 } from '@wordpress/block-editor';
-import { gradientBackground, typographyCss } from '../../components/HelperFunction'
+import { gradientBackground, typographyCss, filterJsCss } from '../../components/HelperFunction'
 
 export default function save(props) {
 
