@@ -1552,6 +1552,8 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['descTypography'] ) ) {
 			$desc_typography = $attr['descTypography'];
 			$desc_size       = $desc_typography['fontSize'];
+            $desc_line       = $desc_typography['lineHeight'];
+            $desc_space      = $desc_typography['letterSpacing'];
           
 
 
@@ -1564,6 +1566,9 @@ class PBG_Blocks_Helper {
 
 			$css->set_selector( $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__desc_wrap' . ' > .premium-banner__desc' );
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $desc_size, 'Desktop', $desc_size['unit'] ) );
+            $css->add_property( 'line-height', $css->get_responsive_size_value( $desc_line, 'Desktop',$desc_line['unit'] ) );
+			$css->add_property( 'letter-spacing', $css->get_responsive_size_value( $desc_space, 'Desktop', $desc_space['unit'] ) );
+
 		}
 		if ( isset( $attr['descStyles'] ) ) {
 			if ( isset( $attr['descStyles'][0]['descSize'] ) && isset( $attr['descStyles'][0]['descSizeUnit'] ) ) {
@@ -1624,6 +1629,9 @@ class PBG_Blocks_Helper {
 
 			$css->set_selector( $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__title_wrap' . ' > .premium-banner__title' );
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Tablet', $title_size['unit'] ) );
+            $css->add_property( 'line-height', $css->get_responsive_size_value( $title_line, 'Tablet',$title_line['unit'] ) );
+			$css->add_property( 'letter-spacing', $css->get_responsive_size_value( $title_space, 'Tablet', $title_space['unit'] ) );
+
 		}
 
 		if ( isset( $attr['titleStyles'][0]['titleSizeTablet'] ) ) {
@@ -1634,9 +1642,13 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['descTypography'] ) ) {
 			$desc_typography = $attr['descTypography'];
 			$desc_size       = $desc_typography['fontSize'];
+            $desc_line       = $desc_typography['lineHeight'];
+            $desc_space      = $desc_typography['letterSpacing'];
 
 			$css->set_selector( $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__desc_wrap' . ' > .premium-banner__desc' );
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $desc_size, 'Tablet', $desc_size['unit'] ) );
+            $css->add_property( 'line-height', $css->get_responsive_size_value( $desc_line , 'Tablet',$desc_line['unit'] ) );
+			$css->add_property( 'letter-spacing', $css->get_responsive_size_value( $desc_space, 'Tablet', $desc_space['unit'] ) );
 		}
 		if ( isset( $attr['descStyles'][0]['descSizeTablet'] ) ) {
 			$css->set_selector( $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__desc_wrap' . ' > .premium-banner__desc' );
@@ -1691,9 +1703,13 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['titleTypography'] ) ) {
 			$title_typography = $attr['titleTypography'];
 			$title_size       = $title_typography['fontSize'];
+            $title_line       = $title_typography['lineHeight'];
+            $title_space      = $title_typography['letterSpacing'];
 
 			$css->set_selector( $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__title_wrap' . ' > .premium-banner__title' );
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Mobile', $title_size['unit'] ) );
+            $css->add_property( 'line-height', $css->get_responsive_size_value( $title_line, 'Mobile',$title_line['unit'] ) );
+			$css->add_property( 'letter-spacing', $css->get_responsive_size_value( $title_space, 'Mobile', $title_space['unit'] ) );
 		}
 
 		$css->start_media_query( $media_query['mobile'] );
@@ -1705,9 +1721,13 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['descTypography'] ) ) {
 			$desc_typography = $attr['descTypography'];
 			$desc_size       = $desc_typography['fontSize'];
+            $desc_line       = $desc_typography['lineHeight'];
+            $desc_space      = $desc_typography['letterSpacing'];
 
 			$css->set_selector( $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__desc_wrap' . ' > .premium-banner__desc' );
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $desc_size, 'Mobile', $desc_size['unit'] ) );
+            $css->add_property( 'line-height', $css->get_responsive_size_value( $desc_line, 'Mobile',$desc_line['unit'] ) );
+			$css->add_property( 'letter-spacing', $css->get_responsive_size_value( $desc_space, 'Mobile', $desc_space['unit'] ) );
 		}
 		if ( isset( $attr['descStyles'][0]['descSizeMobile'] ) ) {
 			$css->set_selector( $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__desc_wrap' . ' > .premium-banner__desc' );
@@ -1755,7 +1775,6 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $border_radius, 'bottom', 'Mobile', 'px' ) );
 			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $border_radius, 'left', 'Mobile', 'px' ) );
 		}
-
 		$css->stop_media_query();
 		return $css->css_output();
 

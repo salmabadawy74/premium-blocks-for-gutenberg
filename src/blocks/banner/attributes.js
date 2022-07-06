@@ -251,7 +251,7 @@ const attributes = {
         default: {
             "fontWeight": '',
             'fontStyle': '',
-            'textTransform': '',
+
             'letterSpacing': {
                 'Desktop': '',
                 "Tablet": '',
@@ -266,6 +266,7 @@ const attributes = {
                 "unit": 'px'
             },
             'textDecoration': '',
+            'textTransform': '',
             'fontSize': {
                 'Desktop': '',
                 "Tablet": '',

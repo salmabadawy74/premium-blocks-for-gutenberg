@@ -28,14 +28,14 @@ import PremiumTypo from "../../components/premium-typo";
 import PremiumShadow from "../../components/PremiumShadow";
 import PremiumBorder from "../../components/premium-border";
 import SpacingControl from '../../components/premium-responsive-spacing'
-import WebfontLoader from "../../components/typography/fontLoader"
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
 import InsideTabs from '../../components/InsideTabs'
 import InsideTab from '../../components/InsideTab';
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
 import Icons from "../../components/icons";
-import { gradientBackground, borderCss, padddingCss, marginCss, typographyCss, generateBlockId } from '../../components/HelperFunction'
+import { gradientBackground, borderCss, padddingCss, marginCss, typographyCss, generateBlockId, filterJsCss } from '../../components/HelperFunction'
+import GoogleFontLoader from 'react-google-font-loader';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -166,39 +166,33 @@ function Edit(props) {
         btnbgControllerOne = controllerOneBackground.backgroundImageURL ? `url('${controllerOneBackground.backgroundImageURL}')` : ''
     }
 
-    const saveLabelStyles = (color, value) => {
+    const saveLabelStyles = (item, value) => {
         const newColors = { ...labelStyles };
-        newColors[color] = value;
+        newColors[item] = value;
         setAttributes({ labelStyles: newColors });
     }
 
     let loadFirstLabelGoogleFonts;
     let loadSecondLabelGoogleFonts;
 
-    // if (labelStyles.firstLabelFontFamily !== 'Default') {
-    //     const firstLabelconfig = {
-    //         google: {
-    //             families: [labelStyles.firstLabelFontFamily],
-    //         },
-    //     }
-    //     loadFirstLabelGoogleFonts = (
-    //         <WebfontLoader config={firstLabelconfig}>
-    //         </WebfontLoader>
-    //     )
-    // }
 
-    // if (labelStyles.secondLabelFontFamily !== "Default") {
-    //     const secondLabelConfig = {
-    //         google: {
-    //             families: [labelStyles.secondLabelFontFamily],
-    //         },
-    //     }
-    //     loadSecondLabelGoogleFonts = (
-    //         <WebfontLoader config={secondLabelConfig}>
-    //         </WebfontLoader>
-    //     )
-    // }
+    if (firstLabelTypography.fontFamily !== 'Default') {
 
+        loadFirstLabelGoogleFonts = (
+            <GoogleFontLoader fonts={[{
+                font: firstLabelTypography.fontFamily,
+            },
+            ]} />
+        )
+    }
+    if (secondLabelTypography.fontFamily !== 'Default') {
+        loadSecondLabelGoogleFonts = (
+            <GoogleFontLoader fonts={[{
+                font: secondLabelTypography.fontFamily,
+            },
+            ]} />
+        )
+    }
     return (
         <Fragment>
             <InspectorControls>
@@ -412,11 +406,7 @@ function Edit(props) {
                                             label={__("Background Color", 'premium-block-for-gutenberg')}
                                             colorValue={labelStyles.secondLabelBGColor}
                                             colorDefault={''}
-                                            onColorChange={newValue =>
-                                                saveLabelStyles(
-                                                    'secondLabelBGColor', newValue
-                                                )
-                                            }
+                                            onColorChange={newValue => saveLabelStyles('secondLabelBGColor', newValue)}
                                         />
                                         <PremiumShadow
                                             label={__("Text Shadow", "premium-blocks-for-gutenberg")}
@@ -586,12 +576,13 @@ function Edit(props) {
                             }}
                         >
                             <label className={`premium-content-switcher-toggle-switch-label`}>
-                                <input onClick={() => initToggleBox()} type="checkbox" className={`premium-content-switcher-toggle-switch-input ${props.clientId}`} />
+                                <input
+                                    onClick={() => initToggleBox()}
+                                    type="checkbox"
+                                    className={`premium-content-switcher-toggle-switch-input ${props.clientId}`} />
                                 <span
                                     className="premium-content-switcher-toggle-switch-slider round"
-                                    style={{
-                                        ...gradientBackground(switcherBackground),
-                                    }}
+                                    style={{ ...gradientBackground(switcherBackground) }}
                                 ></span>
                             </label>
                         </div>

@@ -7767,7 +7767,6 @@ const attributes = {
     default: {
       "fontWeight": '',
       'fontStyle': '',
-      'textTransform': '',
       'letterSpacing': {
         'Desktop': '',
         "Tablet": '',
@@ -7782,6 +7781,7 @@ const attributes = {
         "unit": 'px'
       },
       'textDecoration': '',
+      'textTransform': '',
       'fontSize': {
         'Desktop': '',
         "Tablet": '',
@@ -9632,23 +9632,6 @@ const {
 class edit extends Component {
   constructor() {
     super(...arguments);
-    this.getPreviewSize = this.getPreviewSize.bind(this);
-  }
-
-  getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
-    if (device === 'Mobile') {
-      if (undefined !== mobileSize && '' !== mobileSize) {
-        return mobileSize;
-      } else if (undefined !== tabletSize && '' !== tabletSize) {
-        return tabletSize;
-      }
-    } else if (device === 'Tablet') {
-      if (undefined !== tabletSize && '' !== tabletSize) {
-        return tabletSize;
-      }
-    }
-
-    return desktopSize;
   }
 
   componentDidMount() {
@@ -9664,13 +9647,12 @@ class edit extends Component {
   }
 
   render() {
-    var _border$borderWidth, _border$borderWidth$c, _border$borderWidth2, _border$borderWidth2$, _border$borderWidth3, _border$borderWidth3$, _border$borderWidth4, _border$borderWidth4$, _border$borderRadius, _border$borderRadius$, _border$borderRadius2, _border$borderRadius3, _border$borderRadius4, _border$borderRadius5, _border$borderRadius6, _border$borderRadius7, _titleTypography$font;
-
     const {
       isSelected,
       setAttributes,
       className,
-      clientId: blockID
+      clientId: blockID,
+      deviceType
     } = this.props;
     const {
       imageURL,
@@ -9775,8 +9757,6 @@ class edit extends Component {
       label: __("Custom", 'premium-blocks-for-gutenberg')
     }];
     const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-banner");
-    const titleFontSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titleSizeTablet, titleStyles[0].titleSizeMobile);
-    const descFontSize = this.getPreviewSize(this.props.deviceType, descStyles[0].descSize, descStyles[0].descSizeTablet, descStyles[0].descSizeMobile);
 
     const saveStyles = value => {
       const newUpdate = titleStyles.map((item, index) => {
@@ -9808,11 +9788,10 @@ class edit extends Component {
       });
     };
 
-    const currentDevice = this.props.deviceType;
-    const containerPaddingTop = padding[currentDevice].top;
-    const containerPaddingRight = padding[currentDevice].right;
-    const containerPaddingBottom = padding[currentDevice].bottom;
-    const containerPaddingLeft = padding[currentDevice].left;
+    const containerPaddingTop = padding[deviceType].top;
+    const containerPaddingRight = padding[deviceType].right;
+    const containerPaddingBottom = padding[deviceType].bottom;
+    const containerPaddingLeft = padding[deviceType].left;
 
     const loadStyles = () => {
       const styles = {};
@@ -10137,16 +10116,7 @@ class edit extends Component {
       className: `premium-banner__inner premium-banner__min premium-banner__${effect} premium-banner__${hoverEffect} hover_${hovered}`,
       style: {
         boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`,
-        borderStyle: border === null || border === void 0 ? void 0 : border.borderType,
-        borderTopWidth: border === null || border === void 0 ? void 0 : (_border$borderWidth = border.borderWidth) === null || _border$borderWidth === void 0 ? void 0 : (_border$borderWidth$c = _border$borderWidth[currentDevice]) === null || _border$borderWidth$c === void 0 ? void 0 : _border$borderWidth$c.top,
-        borderRightWidth: border === null || border === void 0 ? void 0 : (_border$borderWidth2 = border.borderWidth) === null || _border$borderWidth2 === void 0 ? void 0 : (_border$borderWidth2$ = _border$borderWidth2[currentDevice]) === null || _border$borderWidth2$ === void 0 ? void 0 : _border$borderWidth2$.right,
-        borderBottomWidth: border === null || border === void 0 ? void 0 : (_border$borderWidth3 = border.borderWidth) === null || _border$borderWidth3 === void 0 ? void 0 : (_border$borderWidth3$ = _border$borderWidth3[currentDevice]) === null || _border$borderWidth3$ === void 0 ? void 0 : _border$borderWidth3$.bottom,
-        borderLeftWidth: border === null || border === void 0 ? void 0 : (_border$borderWidth4 = border.borderWidth) === null || _border$borderWidth4 === void 0 ? void 0 : (_border$borderWidth4$ = _border$borderWidth4[currentDevice]) === null || _border$borderWidth4$ === void 0 ? void 0 : _border$borderWidth4$.left,
-        borderColor: border === null || border === void 0 ? void 0 : border.borderColor,
-        borderTopLeftRadius: `${(border === null || border === void 0 ? void 0 : (_border$borderRadius = border.borderRadius) === null || _border$borderRadius === void 0 ? void 0 : (_border$borderRadius$ = _border$borderRadius[currentDevice]) === null || _border$borderRadius$ === void 0 ? void 0 : _border$borderRadius$.top) || 0}px`,
-        borderTopRightRadius: `${(border === null || border === void 0 ? void 0 : (_border$borderRadius2 = border.borderRadius) === null || _border$borderRadius2 === void 0 ? void 0 : (_border$borderRadius3 = _border$borderRadius2[currentDevice]) === null || _border$borderRadius3 === void 0 ? void 0 : _border$borderRadius3.right) || 0}px`,
-        borderBottomLeftRadius: `${(border === null || border === void 0 ? void 0 : (_border$borderRadius4 = border.borderRadius) === null || _border$borderRadius4 === void 0 ? void 0 : (_border$borderRadius5 = _border$borderRadius4[currentDevice]) === null || _border$borderRadius5 === void 0 ? void 0 : _border$borderRadius5.bottom) || 0}px`,
-        borderBottomRightRadius: `${(border === null || border === void 0 ? void 0 : (_border$borderRadius6 = border.borderRadius) === null || _border$borderRadius6 === void 0 ? void 0 : (_border$borderRadius7 = _border$borderRadius6[currentDevice]) === null || _border$borderRadius7 === void 0 ? void 0 : _border$borderRadius7.left) || 0}px`
+        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_14__.borderCss)(border, currentDevice)
       }
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: `premium-banner__img_wrap premium-banner__${height}`,
@@ -10182,14 +10152,7 @@ class edit extends Component {
       }),
       style: {
         color: titleStyles[0].titleColor,
-        fontSize: `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontSize[this.props.deviceType]}${titleTypography === null || titleTypography === void 0 ? void 0 : (_titleTypography$font = titleTypography.fontSize) === null || _titleTypography$font === void 0 ? void 0 : _titleTypography$font.unit}`,
-        fontStyle: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontStyle,
-        fontFamily: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontFamily,
-        fontWeight: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontWeight,
-        letterSpacing: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.letterSpacing[this.props.deviceType],
-        textDecoration: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textDecoration,
-        textTransform: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textTransform,
-        lineHeight: `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.lineHeight[this.props.deviceType]}px`,
+        ...typographyCss(titleTypography, this.props.deviceType),
         textShadow: `${titleTextShadow === null || titleTextShadow === void 0 ? void 0 : titleTextShadow.horizontal}px ${titleTextShadow === null || titleTextShadow === void 0 ? void 0 : titleTextShadow.vertical}px ${titleTextShadow === null || titleTextShadow === void 0 ? void 0 : titleTextShadow.blur}px ${titleTextShadow === null || titleTextShadow === void 0 ? void 0 : titleTextShadow.color}`
       }
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -10207,14 +10170,7 @@ class edit extends Component {
       }),
       style: {
         color: descStyles[0].descColor,
-        fontSize: `${descTypography.fontSize[this.props.deviceType]}${descTypography.fontSize.unit}`,
-        fontStyle: descTypography.fontStyle,
-        fontFamily: descTypography.fontFamily,
-        fontWeight: descTypography.fontWeight,
-        letterSpacing: descTypography.letterSpacing[this.props.deviceType],
-        textDecoration: descTypography.textDecoration,
-        textTransform: descTypography.textTransform,
-        lineHeight: `${descTypography.lineHeight[this.props.deviceType]}px`,
+        ...typographyCss(descTypography, this.props.deviceType),
         textShadow: `${descTextShadow.horizontal}px ${descTextShadow.vertical}px ${descTextShadow.blur}px ${descTextShadow.color}`
       }
     })))))];
@@ -54231,44 +54187,53 @@ const gradientBackground = value => {
   };
 };
 const borderCss = (value, device) => {
+  var _value$borderWidth, _value$borderWidth$de, _value$borderWidth2, _value$borderWidth2$d, _value$borderWidth3, _value$borderWidth3$d, _value$borderWidth4, _value$borderWidth4$d, _value$borderRadius, _value$borderRadius$d, _value$borderRadius2, _value$borderRadius2$, _value$borderRadius3, _value$borderRadius3$, _value$borderRadius4, _value$borderRadius4$;
+
   return {
-    borderStyle: value.borderType,
-    borderTopWidth: value['borderWidth'][device]['top'] && value['borderWidth'][device]['top'] + "px",
-    borderRightWidth: value['borderWidth'][device]['right'] && value['borderWidth'][device]['right'] + "px",
-    borderBottomWidth: value['borderWidth'][device]['bottom'] && value['borderWidth'][device]['bottom'] + "px",
-    borderLeftWidth: value['borderWidth'][device]['left'] && value['borderWidth'][device]['left'] + "px",
-    borderBottomLeftRadius: value['borderRadius'][device]['left'] && value['borderRadius'][device]['left'] + "px",
-    borderTopLeftRadius: value['borderRadius'][device]['top'] && value['borderRadius'][device]['top'] + "px",
-    borderTopRightRadius: value['borderRadius'][device]['right'] && value['borderRadius'][device]['right'] + "px",
-    borderBottomRightRadius: value['borderRadius'][device]['bottom'] && value['borderRadius'][device]['bottom'] + "px",
-    borderColor: value.borderColor
+    borderStyle: value === null || value === void 0 ? void 0 : value.borderType,
+    borderTopWidth: value === null || value === void 0 ? void 0 : (_value$borderWidth = value.borderWidth) === null || _value$borderWidth === void 0 ? void 0 : (_value$borderWidth$de = _value$borderWidth[device]) === null || _value$borderWidth$de === void 0 ? void 0 : _value$borderWidth$de.top,
+    borderRightWidth: value === null || value === void 0 ? void 0 : (_value$borderWidth2 = value.borderWidth) === null || _value$borderWidth2 === void 0 ? void 0 : (_value$borderWidth2$d = _value$borderWidth2[device]) === null || _value$borderWidth2$d === void 0 ? void 0 : _value$borderWidth2$d.right,
+    borderBottomWidth: value === null || value === void 0 ? void 0 : (_value$borderWidth3 = value.borderWidth) === null || _value$borderWidth3 === void 0 ? void 0 : (_value$borderWidth3$d = _value$borderWidth3[device]) === null || _value$borderWidth3$d === void 0 ? void 0 : _value$borderWidth3$d.bottom,
+    borderLeftWidth: value === null || value === void 0 ? void 0 : (_value$borderWidth4 = value.borderWidth) === null || _value$borderWidth4 === void 0 ? void 0 : (_value$borderWidth4$d = _value$borderWidth4[device]) === null || _value$borderWidth4$d === void 0 ? void 0 : _value$borderWidth4$d.left,
+    borderColor: value === null || value === void 0 ? void 0 : value.borderColor,
+    borderTopLeftRadius: `${(value === null || value === void 0 ? void 0 : (_value$borderRadius = value.borderRadius) === null || _value$borderRadius === void 0 ? void 0 : (_value$borderRadius$d = _value$borderRadius[device]) === null || _value$borderRadius$d === void 0 ? void 0 : _value$borderRadius$d.top) || 0}px`,
+    borderTopRightRadius: `${(value === null || value === void 0 ? void 0 : (_value$borderRadius2 = value.borderRadius) === null || _value$borderRadius2 === void 0 ? void 0 : (_value$borderRadius2$ = _value$borderRadius2[device]) === null || _value$borderRadius2$ === void 0 ? void 0 : _value$borderRadius2$.right) || 0}px`,
+    borderBottomLeftRadius: `${(value === null || value === void 0 ? void 0 : (_value$borderRadius3 = value.borderRadius) === null || _value$borderRadius3 === void 0 ? void 0 : (_value$borderRadius3$ = _value$borderRadius3[device]) === null || _value$borderRadius3$ === void 0 ? void 0 : _value$borderRadius3$.bottom) || 0}px`,
+    borderBottomRightRadius: `${(value === null || value === void 0 ? void 0 : (_value$borderRadius4 = value.borderRadius) === null || _value$borderRadius4 === void 0 ? void 0 : (_value$borderRadius4$ = _value$borderRadius4[device]) === null || _value$borderRadius4$ === void 0 ? void 0 : _value$borderRadius4$.left) || 0}px`
   };
 };
 const padddingCss = (value, device) => {
+  var _value$device, _value$device2, _value$device3, _value$device4;
+
   return {
-    paddingTop: value[device]['top'] && value[device]['top'] + value.unit,
-    paddingRight: value[device]['right'] && value[device]['right'] + value.unit,
-    paddingBottom: value[device]['bottom'] && value[device]['bottom'] + value.unit,
-    paddingLeft: value[device]['left'] && value[device]['left'] + value.unit
+    paddingTop: `${value === null || value === void 0 ? void 0 : (_value$device = value[device]) === null || _value$device === void 0 ? void 0 : _value$device.top}${value === null || value === void 0 ? void 0 : value.unit}`,
+    paddingRight: `${value === null || value === void 0 ? void 0 : (_value$device2 = value[device]) === null || _value$device2 === void 0 ? void 0 : _value$device2.right}${value === null || value === void 0 ? void 0 : value.unit}`,
+    paddingBottom: `${value === null || value === void 0 ? void 0 : (_value$device3 = value[device]) === null || _value$device3 === void 0 ? void 0 : _value$device3.bottom}${value === null || value === void 0 ? void 0 : value.unit}`,
+    paddingLeft: `${value === null || value === void 0 ? void 0 : (_value$device4 = value[device]) === null || _value$device4 === void 0 ? void 0 : _value$device4.left}${value === null || value === void 0 ? void 0 : value.unit}`
   };
 };
 const marginCss = (value, device) => {
+  var _value$device5, _value$device6, _value$device7, _value$device8;
+
   return {
-    marginTop: value[device]['top'] && value[device]['top'] + value.unit,
-    marginRight: value[device]['right'] && value[device]['right'] + value.unit,
-    marginBottom: value[device]['bottom'] && value[device]['bottom'] + value.unit,
-    marginLeft: value[device]['left'] && value[device]['left'] + value.unit
+    marginTop: `${value === null || value === void 0 ? void 0 : (_value$device5 = value[device]) === null || _value$device5 === void 0 ? void 0 : _value$device5.top}${value === null || value === void 0 ? void 0 : value.unit}`,
+    marginRight: `${value === null || value === void 0 ? void 0 : (_value$device6 = value[device]) === null || _value$device6 === void 0 ? void 0 : _value$device6.right}${value === null || value === void 0 ? void 0 : value.unit}`,
+    marginBottom: `${value === null || value === void 0 ? void 0 : (_value$device7 = value[device]) === null || _value$device7 === void 0 ? void 0 : _value$device7.bottom}${value === null || value === void 0 ? void 0 : value.unit}`,
+    marginLeft: `${value === null || value === void 0 ? void 0 : (_value$device8 = value[device]) === null || _value$device8 === void 0 ? void 0 : _value$device8.left}${value === null || value === void 0 ? void 0 : value.unit}`
   };
 };
 const typographyCss = (value, device) => {
+  var _value$fontSize;
+
   return {
-    fontSize: `${value.fontSize[device] || ''}${value.fontSize.unit}`,
-    fontFamily: value.fontFamily,
-    letterSpacing: value.letterSpacing + "px",
-    textTransform: value.textTransform ? "uppercase" : "none",
-    fontStyle: value.fontStyle,
-    fontWeight: value.fontWeight,
-    lineHeight: value.lineHeight + "px"
+    fontSize: `${value === null || value === void 0 ? void 0 : value.fontSize[device]}${value === null || value === void 0 ? void 0 : (_value$fontSize = value.fontSize) === null || _value$fontSize === void 0 ? void 0 : _value$fontSize.unit}`,
+    fontStyle: value === null || value === void 0 ? void 0 : value.fontStyle,
+    fontFamily: value === null || value === void 0 ? void 0 : value.fontFamily,
+    fontWeight: value === null || value === void 0 ? void 0 : value.fontWeight,
+    letterSpacing: value === null || value === void 0 ? void 0 : value.letterSpacing[device],
+    textDecoration: value === null || value === void 0 ? void 0 : value.textDecoration,
+    textTransform: value === null || value === void 0 ? void 0 : value.textTransform,
+    lineHeight: `${value === null || value === void 0 ? void 0 : value.lineHeight[device]}px`
   };
 };
 const generateBlockId = clientId => {

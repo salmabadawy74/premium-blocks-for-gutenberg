@@ -11,7 +11,7 @@ import RadioComponent from '../../components/radio-control';
 import PremiumShadow from "../../components/PremiumShadow";
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
-import { generateBlockId, generateCss } from '../../components/HelperFunction';
+import { borderCss, generateBlockId, generateCss, padddingCss } from '../../components/HelperFunction';
 
 const { withSelect } = wp.data
 const { __ } = wp.i18n;
@@ -37,23 +37,8 @@ const {
 export class edit extends Component {
     constructor() {
         super(...arguments);
-        this.getPreviewSize = this.getPreviewSize.bind(this);
     }
 
-    getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
-        if (device === 'Mobile') {
-            if (undefined !== mobileSize && '' !== mobileSize) {
-                return mobileSize;
-            } else if (undefined !== tabletSize && '' !== tabletSize) {
-                return tabletSize;
-            }
-        } else if (device === 'Tablet') {
-            if (undefined !== tabletSize && '' !== tabletSize) {
-                return tabletSize;
-            }
-        }
-        return desktopSize;
-    }
 
     componentDidMount() {
         if (!this.props.attributes.blockId) {
@@ -63,7 +48,7 @@ export class edit extends Component {
     };
 
     render() {
-        const { isSelected, setAttributes, className, clientId: blockID } = this.props;
+        const { isSelected, setAttributes, className, clientId: blockID, deviceType } = this.props;
 
         const {
             imageURL,
@@ -197,8 +182,6 @@ export class edit extends Component {
         ];
 
         const mainClasses = classnames(className, "premium-banner");
-        const titleFontSize = this.getPreviewSize(this.props.deviceType, titleStyles[0].titleSize, titleStyles[0].titleSizeTablet, titleStyles[0].titleSizeMobile);
-        const descFontSize = this.getPreviewSize(this.props.deviceType, descStyles[0].descSize, descStyles[0].descSizeTablet, descStyles[0].descSizeMobile);
 
         const saveStyles = (value) => {
             const newUpdate = titleStyles.map((item, index) => {
@@ -221,11 +204,10 @@ export class edit extends Component {
             setAttributes({ descStyles: newUpdate });
         }
 
-        const currentDevice = this.props.deviceType;
-        const containerPaddingTop = padding[currentDevice].top;
-        const containerPaddingRight = padding[currentDevice].right;
-        const containerPaddingBottom = padding[currentDevice].bottom;
-        const containerPaddingLeft = padding[currentDevice].left;
+        const containerPaddingTop = padding[deviceType].top;
+        const containerPaddingRight = padding[deviceType].right;
+        const containerPaddingBottom = padding[deviceType].bottom;
+        const containerPaddingLeft = padding[deviceType].left;
         const loadStyles = () => {
             const styles = {};
 
@@ -518,6 +500,7 @@ export class edit extends Component {
                 <div
                     className={`${mainClasses} premium-banner__responsive_${responsive} ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`}
                     style={{
+
                         paddingTop: containerPaddingTop && `${containerPaddingTop}${padding.unit}`,
                         paddingRight: containerPaddingRight && `${containerPaddingRight}${padding.unit}`,
                         paddingBottom: containerPaddingBottom && `${containerPaddingBottom}${padding.unit}`,
@@ -533,16 +516,7 @@ export class edit extends Component {
                         className={`premium-banner__inner premium-banner__min premium-banner__${effect} premium-banner__${hoverEffect} hover_${hovered}`}
                         style={{
                             boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`,
-                            borderStyle: border?.borderType,
-                            borderTopWidth: border?.borderWidth?.[currentDevice]?.top,
-                            borderRightWidth: border?.borderWidth?.[currentDevice]?.right,
-                            borderBottomWidth: border?.borderWidth?.[currentDevice]?.bottom,
-                            borderLeftWidth: border?.borderWidth?.[currentDevice]?.left,
-                            borderColor: border?.borderColor,
-                            borderTopLeftRadius: `${border?.borderRadius?.[currentDevice]?.top || 0}px`,
-                            borderTopRightRadius: `${border?.borderRadius?.[currentDevice]?.right || 0}px`,
-                            borderBottomLeftRadius: `${border?.borderRadius?.[currentDevice]?.bottom || 0}px`,
-                            borderBottomRightRadius: `${border?.borderRadius?.[currentDevice]?.left || 0}px`,
+                            ...borderCss(border, currentDevice)
                         }}
                     >
                         <div
@@ -583,14 +557,7 @@ export class edit extends Component {
                                     onChange={newText => setAttributes({ title: newText })}
                                     style={{
                                         color: titleStyles[0].titleColor,
-                                        fontSize: `${titleTypography?.fontSize[this.props.deviceType]}${titleTypography?.fontSize?.unit}`,
-                                        fontStyle: titleTypography?.fontStyle,
-                                        fontFamily: titleTypography?.fontFamily,
-                                        fontWeight: titleTypography?.fontWeight,
-                                        letterSpacing: titleTypography?.letterSpacing[this.props.deviceType],
-                                        textDecoration: titleTypography?.textDecoration,
-                                        textTransform: titleTypography?.textTransform,
-                                        lineHeight: `${titleTypography?.lineHeight[this.props.deviceType]}px`,
+                                        ...typographyCss(titleTypography, this.props.deviceType),
                                         textShadow: `${titleTextShadow?.horizontal}px ${titleTextShadow?.vertical}px ${titleTextShadow?.blur}px ${titleTextShadow?.color}`,
                                     }}
                                 />
@@ -609,14 +576,7 @@ export class edit extends Component {
                                     onChange={newText => setAttributes({ desc: newText })}
                                     style={{
                                         color: descStyles[0].descColor,
-                                        fontSize: `${descTypography.fontSize[this.props.deviceType]}${descTypography.fontSize.unit}`,
-                                        fontStyle: descTypography.fontStyle,
-                                        fontFamily: descTypography.fontFamily,
-                                        fontWeight: descTypography.fontWeight,
-                                        letterSpacing: descTypography.letterSpacing[this.props.deviceType],
-                                        textDecoration: descTypography.textDecoration,
-                                        textTransform: descTypography.textTransform,
-                                        lineHeight: `${descTypography.lineHeight[this.props.deviceType]}px`,
+                                        ...typographyCss(descTypography, this.props.deviceType),
                                         textShadow: `${descTextShadow.horizontal}px ${descTextShadow.vertical}px ${descTextShadow.blur}px ${descTextShadow.color}`,
                                     }}
                                 />

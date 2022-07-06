@@ -247,9 +247,20 @@
         "fontWeight": 400,
         "fontStyle": "",
         "textTransform": "",
-        "letterSpacing": "",
+        "textDecoration": "",
+        "letterSpacing": {
+          "Desktop": "",
+          "Tablet": "",
+          "Mobile": "",
+          "unit": "px"
+        },
         "fontFamily": "Default",
-        "lineHeight": "",
+        "lineHeight": {
+          "Desktop": "",
+          "Tablet": "",
+          "Mobile": "",
+          "unit": "px"
+        },
         "fontSize": {
           "Desktop": 20,
           "Tablet": 20,
@@ -311,9 +322,20 @@
         "fontWeight": 400,
         "fontStyle": "",
         "textTransform": "",
-        "letterSpacing": "",
+        "textDecoration": "",
+        "letterSpacing": {
+          "Desktop": "",
+          "Tablet": "",
+          "Mobile": "",
+          "unit": "px"
+        },
         "fontFamily": "Default",
-        "lineHeight": "",
+        "lineHeight": {
+          "Desktop": "",
+          "Tablet": "",
+          "Mobile": "",
+          "unit": "px"
+        },
         "fontSize": {
           "Desktop": 20,
           "Tablet": 20,
