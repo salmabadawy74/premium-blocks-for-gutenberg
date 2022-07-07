@@ -2,18 +2,24 @@ import classnames from "classnames";
 import PremiumBorder from "../../components/premium-border";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumFilters from "../../components/premium-filters";
-import SpacingComponent from '../../components/premium-responsive-spacing';
+import SpacingComponent from "../../components/premium-responsive-spacing";
 import PremiumMediaUpload from "../../components/premium-media-upload";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
-import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
-import RadioComponent from '../../components/radio-control';
+import AdvancedPopColorControl from "../../components/Color Control/ColorComponent";
+import RadioComponent from "../../components/radio-control";
 import PremiumShadow from "../../components/PremiumShadow";
-import InspectorTabs from '../../components/inspectorTabs';
-import InspectorTab from '../../components/inspectorTab';
-import { borderCss, generateBlockId, generateCss, padddingCss } from '../../components/HelperFunction';
+import InspectorTabs from "../../components/inspectorTabs";
+import InspectorTab from "../../components/inspectorTab";
+import {
+    borderCss,
+    generateBlockId,
+    generateCss,
+    paddingCss,
+    typographyCss,
+} from "../../components/HelperFunction";
 
-const { withSelect } = wp.data
+const { withSelect } = wp.data;
 const { __ } = wp.i18n;
 const { Component } = wp.element;
 
@@ -31,7 +37,7 @@ const {
     InspectorControls,
     AlignmentToolbar,
     RichText,
-    MediaPlaceholder
+    MediaPlaceholder,
 } = wp.blockEditor;
 
 export class edit extends Component {
@@ -39,16 +45,24 @@ export class edit extends Component {
         super(...arguments);
     }
 
-
     componentDidMount() {
         if (!this.props.attributes.blockId) {
-            this.props.setAttributes({ blockId: "premium-banner-" + generateBlockId(this.props.clientId) });
+            this.props.setAttributes({
+                blockId:
+                    "premium-banner-" + generateBlockId(this.props.clientId),
+            });
         }
         this.props.setAttributes({ classMigrate: true });
-    };
+    }
 
     render() {
-        const { isSelected, setAttributes, className, clientId: blockID, deviceType } = this.props;
+        const {
+            isSelected,
+            setAttributes,
+            className,
+            clientId: blockID,
+            deviceType,
+        } = this.props;
 
         const {
             imageURL,
@@ -86,99 +100,99 @@ export class edit extends Component {
             titleTextShadow,
             descTextShadow,
             containerShadow,
-            blockId
+            blockId,
         } = this.props.attributes;
 
         const ALIGNS = [
             {
                 value: "flex-start",
-                label: __("Top", 'premium-blocks-for-gutenberg')
+                label: __("Top", "premium-blocks-for-gutenberg"),
             },
             {
                 value: "center",
-                label: __("Middle", 'premium-blocks-for-gutenberg')
+                label: __("Middle", "premium-blocks-for-gutenberg"),
             },
             {
                 value: "flex-end",
-                label: __("Bottom", 'premium-blocks-for-gutenberg')
+                label: __("Bottom", "premium-blocks-for-gutenberg"),
             },
             {
                 value: "inherit",
-                label: __("Full", 'premium-blocks-for-gutenberg')
-            }
+                label: __("Full", "premium-blocks-for-gutenberg"),
+            },
         ];
 
         const EFFECTS = [
             {
                 value: "effect1",
-                label: __("Style 1", 'premium-blocks-for-gutenberg')
+                label: __("Style 1", "premium-blocks-for-gutenberg"),
             },
             {
                 value: "effect2",
-                label: __("Style 2", 'premium-blocks-for-gutenberg')
+                label: __("Style 2", "premium-blocks-for-gutenberg"),
             },
             {
                 value: "effect3",
-                label: __("Style 3", 'premium-blocks-for-gutenberg')
+                label: __("Style 3", "premium-blocks-for-gutenberg"),
             },
             {
                 value: "effect4",
-                label: __("Style 4", 'premium-blocks-for-gutenberg')
+                label: __("Style 4", "premium-blocks-for-gutenberg"),
             },
             {
                 value: "effect5",
-                label: __("Style 5", 'premium-blocks-for-gutenberg')
+                label: __("Style 5", "premium-blocks-for-gutenberg"),
             },
             {
                 value: "effect6",
-                label: __("Style 6", 'premium-blocks-for-gutenberg')
-            }
+                label: __("Style 6", "premium-blocks-for-gutenberg"),
+            },
         ];
 
         const HOVER = [
             {
                 value: "none",
-                label: __("None", 'premium-blocks-for-gutenberg')
+                label: __("None", "premium-blocks-for-gutenberg"),
             },
             {
                 value: "zoomin",
-                label: __("Zoom In", 'premium-blocks-for-gutenberg')
+                label: __("Zoom In", "premium-blocks-for-gutenberg"),
             },
             {
                 value: "zoomout",
-                label: __("Zoom Out", 'premium-blocks-for-gutenberg')
+                label: __("Zoom Out", "premium-blocks-for-gutenberg"),
             },
             {
                 value: "scale",
-                label: __("Scale", 'premium-blocks-for-gutenberg')
+                label: __("Scale", "premium-blocks-for-gutenberg"),
             },
             {
                 value: "gray",
-                label: __("Gray Scale", 'premium-blocks-for-gutenberg')
+                label: __("Gray Scale", "premium-blocks-for-gutenberg"),
             },
             {
                 value: "blur",
-                label: __("Blur", 'premium-blocks-for-gutenberg')
+                label: __("Blur", "premium-blocks-for-gutenberg"),
             },
             {
                 value: "bright",
-                label: __("Bright", 'premium-blocks-for-gutenberg')
+                label: __("Bright", "premium-blocks-for-gutenberg"),
             },
             {
                 value: "sepia",
-                label: __("Sepia", 'premium-blocks-for-gutenberg')
-            }
+                label: __("Sepia", "premium-blocks-for-gutenberg"),
+            },
         ];
 
         const HEIGHT = [
             {
                 value: "default",
-                label: __("Default", 'premium-blocks-for-gutenberg')
+                label: __("Default", "premium-blocks-for-gutenberg"),
             },
             {
                 value: "custom",
-                label: __("Custom", 'premium-blocks-for-gutenberg')
-            }
+                label: __("Custom", "premium-blocks-for-gutenberg"),
+            },
         ];
 
         const mainClasses = classnames(className, "premium-banner");
@@ -192,7 +206,7 @@ export class edit extends Component {
             });
 
             setAttributes({ titleStyles: newUpdate });
-        }
+        };
 
         const descriptionStyles = (value) => {
             const newUpdate = descStyles.map((item, index) => {
@@ -202,27 +216,26 @@ export class edit extends Component {
                 return item;
             });
             setAttributes({ descStyles: newUpdate });
-        }
+        };
 
-        const containerPaddingTop = padding[deviceType].top;
-        const containerPaddingRight = padding[deviceType].right;
-        const containerPaddingBottom = padding[deviceType].bottom;
-        const containerPaddingLeft = padding[deviceType].left;
         const loadStyles = () => {
             const styles = {};
 
-            styles[`.${blockId} .premium-banner__effect3 .premium-banner__title_wrap::after`] = {
-                'background': sepColor
+            styles[
+                `.${blockId} .premium-banner__effect3 .premium-banner__title_wrap::after`
+            ] = {
+                background: sepColor,
             };
             styles[`.${blockId} .premium-banner__inner`] = {
-                'background': background
+                background: background,
             };
-            styles[`.${blockId} .premium-banner__img.premium-banner__active`] = {
-                'background': `${background ? 1 - opacity / 100 : 1}`
-            };
+            styles[`.${blockId} .premium-banner__img.premium-banner__active`] =
+                {
+                    background: `${background ? 1 - opacity / 100 : 1}`,
+                };
 
             return generateCss(styles);
-        }
+        };
 
         return [
             isSelected && (
@@ -230,135 +243,238 @@ export class edit extends Component {
                     <Toolbar>
                         <IconButton
                             label={__(
-                                "Refresh this button when it conflict with other buttons styles"
-                                , 'premium-blocks-for-gutenberg')}
+                                "Refresh this button when it conflict with other buttons styles",
+                                "premium-blocks-for-gutenberg"
+                            )}
                             icon="update"
                             className="components-toolbar__control"
                         />
                     </Toolbar>
                     <AlignmentToolbar
                         value={contentAlign}
-                        onChange={newAlign => setAttributes({ contentAlign: newAlign })}
+                        onChange={(newAlign) =>
+                            setAttributes({ contentAlign: newAlign })
+                        }
                     />
                 </BlockControls>
             ),
             isSelected && imageURL && (
                 <InspectorControls key={"inspector"}>
-                    <InspectorTabs tabs={['layout', 'style', 'advance']}>
-                        <InspectorTab key={'layout'}>
+                    <InspectorTabs tabs={["layout", "style", "advance"]}>
+                        <InspectorTab key={"layout"}>
                             <PanelBody
-                                title={__("General", 'premium-blocks-for-gutenberg')}
+                                title={__(
+                                    "General",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 className="premium-panel-body"
                                 initialOpen={true}
                             >
-                                <button className="lottie-remove" onClick={(e) => {
-                                    e.preventDefault();
-                                    setAttributes({
-                                        imageURL: "",
-                                        imageURL: ""
-                                    })
-                                }}>
-                                    {__('Remove Image', 'premium-blocks-for-gutenberg')}
+                                <button
+                                    className="lottie-remove"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        setAttributes({
+                                            imageURL: "",
+                                            imageURL: "",
+                                        });
+                                    }}
+                                >
+                                    {__(
+                                        "Remove Image",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                 </button>
                                 <ToggleControl
-                                    label={__("Link", 'premium-blocks-for-gutenberg')}
+                                    label={__(
+                                        "Link",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     checked={urlCheck}
-                                    onChange={newCheck => setAttributes({ urlCheck: newCheck })}
+                                    onChange={(newCheck) =>
+                                        setAttributes({ urlCheck: newCheck })
+                                    }
                                 />
                                 {urlCheck && (
                                     <TextControl
                                         value={url}
-                                        onChange={newURL => setAttributes({ url: newURL })}
+                                        onChange={(newURL) =>
+                                            setAttributes({ url: newURL })
+                                        }
                                     />
                                 )}
                                 {urlCheck && (
                                     <ToggleControl
-                                        label={__("Open link in new tab", 'premium-blocks-for-gutenberg')}
+                                        label={__(
+                                            "Open link in new tab",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                         checked={target}
-                                        onChange={newValue => setAttributes({ target: newValue })}
+                                        onChange={(newValue) =>
+                                            setAttributes({ target: newValue })
+                                        }
                                     />
                                 )}
                                 <SelectControl
-                                    label={__("Banner Style", 'premium-blocks-for-gutenberg')}
+                                    label={__(
+                                        "Banner Style",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     value={effect}
-                                    onChange={newEffect => setAttributes({ effect: newEffect })}
+                                    onChange={(newEffect) =>
+                                        setAttributes({ effect: newEffect })
+                                    }
                                     options={EFFECTS}
                                 />
                                 <ToggleControl
-                                    label={__("Always Hovered", 'premium-blocks-for-gutenberg')}
+                                    label={__(
+                                        "Always Hovered",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     checked={hovered}
-                                    onChange={check => setAttributes({ hovered: check })}
+                                    onChange={(check) =>
+                                        setAttributes({ hovered: check })
+                                    }
                                 />
                                 <SelectControl
-                                    label={__("Image Hover Effect", 'premium-blocks-for-gutenberg')}
+                                    label={__(
+                                        "Image Hover Effect",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     options={HOVER}
                                     value={hoverEffect}
-                                    onChange={newEffect => setAttributes({ hoverEffect: newEffect })}
+                                    onChange={(newEffect) =>
+                                        setAttributes({
+                                            hoverEffect: newEffect,
+                                        })
+                                    }
                                 />
                                 <SelectControl
-                                    label={__("Height", 'premium-blocks-for-gutenberg')}
+                                    label={__(
+                                        "Height",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     options={HEIGHT}
                                     value={height}
-                                    onChange={newHeight => setAttributes({ height: newHeight })}
+                                    onChange={(newHeight) =>
+                                        setAttributes({ height: newHeight })
+                                    }
                                 />
                                 {"custom" === height && (
                                     <ResponsiveSingleRangeControl
-                                        label={__("Min Height (PX)", 'premium-blocks-for-gutenberg')}
+                                        label={__(
+                                            "Min Height (PX)",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                         value={minHeight}
                                         min="10"
                                         max="800"
-                                        onChange={newSize => setAttributes({ minHeight: newSize })}
+                                        onChange={(newSize) =>
+                                            setAttributes({
+                                                minHeight: newSize,
+                                            })
+                                        }
                                         showUnit={false}
                                         defaultValue={100}
                                     />
                                 )}
                                 {"custom" === height && (
                                     <SelectControl
-                                        label={__("Vertical Align", 'premium-blocks-for-gutenberg')}
+                                        label={__(
+                                            "Vertical Align",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                         options={ALIGNS}
                                         value={verAlign}
-                                        onChange={newValue => setAttributes({ verAlign: newValue })}
+                                        onChange={(newValue) =>
+                                            setAttributes({
+                                                verAlign: newValue,
+                                            })
+                                        }
                                     />
                                 )}
                                 <ToggleControl
-                                    label={__("Hide Description on Mobiles", 'premium-blocks-for-gutenberg')}
+                                    label={__(
+                                        "Hide Description on Mobiles",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     checked={responsive}
-                                    onChange={newValue => setAttributes({ responsive: newValue })}
+                                    onChange={(newValue) =>
+                                        setAttributes({ responsive: newValue })
+                                    }
                                 />
                             </PanelBody>
                             <PanelBody
-                                title={__("Title", 'premium-blocks-for-gutenberg')}
+                                title={__(
+                                    "Title",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 className="premium-panel-body"
                                 initialOpen={false}
                             >
                                 <RadioComponent
-                                    choices={[{ label: __('H1'), value: 'h1' }, { label: __('H2'), value: 'h2' }, { label: __('H3'), value: 'h3' }, { label: __('H4'), value: 'h4' }, { label: __('H5'), value: 'h5' }, { label: __('H6'), value: 'h6' }]}
+                                    choices={[
+                                        { label: __("H1"), value: "h1" },
+                                        { label: __("H2"), value: "h2" },
+                                        { label: __("H3"), value: "h3" },
+                                        { label: __("H4"), value: "h4" },
+                                        { label: __("H5"), value: "h5" },
+                                        { label: __("H6"), value: "h6" },
+                                    ]}
                                     value={titleTag}
-                                    onChange={(newValue) => setAttributes({ titleTag: newValue })}
-                                    label={__("HTML Tag", 'premium-blocks-for-gutenberg')}
+                                    onChange={(newValue) =>
+                                        setAttributes({ titleTag: newValue })
+                                    }
+                                    label={__(
+                                        "HTML Tag",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                 />
                             </PanelBody>
                         </InspectorTab>
-                        <InspectorTab key={'style'}>
+                        <InspectorTab key={"style"}>
                             <PanelBody
-                                title={__("General Settings", 'premium-blocks-for-gutenberg')}
+                                title={__(
+                                    "General Settings",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 className="premium-panel-body"
                                 initialOpen={true}
                             >
                                 <AdvancedPopColorControl
-                                    label={__("Overlay", 'premium-blocks-for-gutenberg')}
+                                    label={__(
+                                        "Overlay",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     colorValue={background}
-                                    colorDefault={''}
-                                    onColorChange={newValue => setAttributes({ background: newValue === undefined ? "transparent" : newValue })}
+                                    colorDefault={""}
+                                    onColorChange={(newValue) =>
+                                        setAttributes({
+                                            background:
+                                                newValue === undefined
+                                                    ? "transparent"
+                                                    : newValue,
+                                        })
+                                    }
                                 />
                                 <ResponsiveSingleRangeControl
-                                    label={__("Overlay Opacity", 'premium-blocks-for-gutenberg')}
+                                    label={__(
+                                        "Overlay Opacity",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     value={opacity}
                                     min="1"
                                     max="100"
-                                    onChange={newOpacity => setAttributes({ opacity: newOpacity === undefined ? 50 : newOpacity })}
+                                    onChange={(newOpacity) =>
+                                        setAttributes({
+                                            opacity:
+                                                newOpacity === undefined
+                                                    ? 50
+                                                    : newOpacity,
+                                        })
+                                    }
                                     showUnit={false}
-                                    defaultValue={''}
+                                    defaultValue={""}
                                 />
                                 <PremiumFilters
                                     blur={blur}
@@ -366,89 +482,193 @@ export class edit extends Component {
                                     contrast={contrast}
                                     saturation={saturation}
                                     hue={hue}
-                                    onChangeBlur={value => setAttributes({ blur: value })}
-                                    onChangeBright={value => setAttributes({ bright: value })}
-                                    onChangeContrast={value => setAttributes({ contrast: value })}
-                                    onChangeSat={value => setAttributes({ saturation: value })}
-                                    onChangeHue={value => setAttributes({ hue: value })}
+                                    onChangeBlur={(value) =>
+                                        setAttributes({ blur: value })
+                                    }
+                                    onChangeBright={(value) =>
+                                        setAttributes({ bright: value })
+                                    }
+                                    onChangeContrast={(value) =>
+                                        setAttributes({ contrast: value })
+                                    }
+                                    onChangeSat={(value) =>
+                                        setAttributes({ saturation: value })
+                                    }
+                                    onChangeHue={(value) =>
+                                        setAttributes({ hue: value })
+                                    }
                                 />
                             </PanelBody>
                             <PanelBody
-                                title={__("Title", 'premium-blocks-for-gutenberg')}
+                                title={__(
+                                    "Title",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 className="premium-panel-body"
                                 initialOpen={false}
                             >
                                 <PremiumTypo
-                                    components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
+                                    components={[
+                                        "responsiveSize",
+                                        "weight",
+                                        "family",
+                                        "spacing",
+                                        "style",
+                                        "Upper",
+                                        "line",
+                                        "Decoration",
+                                    ]}
                                     value={titleTypography}
-                                    onChange={newValue => setAttributes({ titleTypography: newValue })}
+                                    onChange={(newValue) =>
+                                        setAttributes({
+                                            titleTypography: newValue,
+                                        })
+                                    }
                                 />
                                 <hr />
                                 <AdvancedPopColorControl
-                                    label={__("Text Color", 'premium-blocks-for-gutenberg')}
+                                    label={__(
+                                        "Text Color",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     colorValue={titleStyles[0].titleColor}
-                                    colorDefault={''}
-                                    onColorChange={newValue => saveStyles({ titleColor: newValue === undefined ? "transparent" : newValue })}
+                                    colorDefault={""}
+                                    onColorChange={(newValue) =>
+                                        saveStyles({
+                                            titleColor:
+                                                newValue === undefined
+                                                    ? "transparent"
+                                                    : newValue,
+                                        })
+                                    }
                                 />
                                 {"effect3" === effect && (
                                     <AdvancedPopColorControl
-                                        label={__("Separator Color", 'premium-blocks-for-gutenberg')}
+                                        label={__(
+                                            "Separator Color",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                         colorValue={sepColor}
-                                        colorDefault={''}
-                                        onColorChange={newValue => setAttributes({ sepColor: newValue === undefined ? "transparent" : newValue })}
+                                        colorDefault={""}
+                                        onColorChange={(newValue) =>
+                                            setAttributes({
+                                                sepColor:
+                                                    newValue === undefined
+                                                        ? "transparent"
+                                                        : newValue,
+                                            })
+                                        }
                                     />
                                 )}
                                 {"effect2" === effect && (
                                     <AdvancedPopColorControl
-                                        label={__("Background Color", 'premium-blocks-for-gutenberg')}
+                                        label={__(
+                                            "Background Color",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                         colorValue={titleStyles[0].titleBack}
-                                        colorDefault={''}
-                                        onColorChange={newValue => saveStyles({ titleBack: newValue === undefined ? "transparent" : newValue })}
+                                        colorDefault={""}
+                                        onColorChange={(newValue) =>
+                                            saveStyles({
+                                                titleBack:
+                                                    newValue === undefined
+                                                        ? "transparent"
+                                                        : newValue,
+                                            })
+                                        }
                                     />
                                 )}
                                 <hr />
                                 <PremiumShadow
-                                    label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
+                                    label={__(
+                                        "Text Shadow",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     boxShadow={false}
                                     value={titleTextShadow}
-                                    onChange={(value) => setAttributes({ titleTextShadow: value })}
+                                    onChange={(value) =>
+                                        setAttributes({
+                                            titleTextShadow: value,
+                                        })
+                                    }
                                 />
                             </PanelBody>
                             <PanelBody
-                                title={__("Description", 'premium-blocks-for-gutenberg')}
+                                title={__(
+                                    "Description",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 className="premium-panel-body"
                                 initialOpen={false}
                             >
                                 <PremiumTypo
-                                    components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
+                                    components={[
+                                        "responsiveSize",
+                                        "weight",
+                                        "family",
+                                        "spacing",
+                                        "style",
+                                        "Upper",
+                                        "line",
+                                        "Decoration",
+                                    ]}
                                     value={descTypography}
-                                    onChange={newValue => setAttributes({ descTypography: newValue })}
+                                    onChange={(newValue) =>
+                                        setAttributes({
+                                            descTypography: newValue,
+                                        })
+                                    }
                                 />
                                 <hr />
                                 <AdvancedPopColorControl
-                                    label={__("Text Color", 'premium-blocks-for-gutenberg')}
+                                    label={__(
+                                        "Text Color",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     colorValue={descStyles[0].descColor}
-                                    colorDefault={''}
-                                    onColorChange={newValue => descriptionStyles({ descColor: newValue === undefined ? "transparent" : newValue })}
+                                    colorDefault={""}
+                                    onColorChange={(newValue) =>
+                                        descriptionStyles({
+                                            descColor:
+                                                newValue === undefined
+                                                    ? "transparent"
+                                                    : newValue,
+                                        })
+                                    }
                                 />
                                 <hr />
                                 <PremiumShadow
-                                    label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
+                                    label={__(
+                                        "Text Shadow",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     boxShadow={false}
                                     value={descTextShadow}
-                                    onChange={(value) => setAttributes({ descTextShadow: value })}
+                                    onChange={(value) =>
+                                        setAttributes({ descTextShadow: value })
+                                    }
                                 />
                             </PanelBody>
                             <PanelBody
-                                title={__("Container Style", 'premium-blocks-for-gutenberg')}
+                                title={__(
+                                    "Container Style",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 className="premium-panel-body"
                                 initialOpen={false}
                             >
                                 <PremiumShadow
-                                    label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
+                                    label={__(
+                                        "Box Shadow",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     boxShadow={true}
                                     value={containerShadow}
-                                    onChange={(value) => setAttributes({ containerShadow: value })}
+                                    onChange={(value) =>
+                                        setAttributes({
+                                            containerShadow: value,
+                                        })
+                                    }
                                 />
                                 <hr />
                                 <PremiumBorder
@@ -458,20 +678,48 @@ export class edit extends Component {
                                     borderColor={border.borderColor}
                                     borderWidth={border.borderWidth}
                                     borderRadius={border.borderRadius}
-                                    onChange={(value) => setAttributes({ border: value })}
+                                    onChange={(value) =>
+                                        setAttributes({ border: value })
+                                    }
                                 />
                                 <hr />
-                                <SpacingComponent value={padding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ padding: value })} />
+                                <SpacingComponent
+                                    value={padding}
+                                    responsive={true}
+                                    showUnits={true}
+                                    label={__("Padding")}
+                                    onChange={(value) =>
+                                        setAttributes({ padding: value })
+                                    }
+                                />
                             </PanelBody>
                         </InspectorTab>
-                        <InspectorTab key={'advance'}>
+                        <InspectorTab key={"advance"}>
                             <PremiumResponsiveTabs
                                 Desktop={hideDesktop}
                                 Tablet={hideTablet}
                                 Mobile={hideMobile}
-                                onChangeDesktop={(value) => setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" })}
-                                onChangeTablet={(value) => setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" })}
-                                onChangeMobile={(value) => setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" })}
+                                onChangeDesktop={(value) =>
+                                    setAttributes({
+                                        hideDesktop: value
+                                            ? " premium-desktop-hidden"
+                                            : "",
+                                    })
+                                }
+                                onChangeTablet={(value) =>
+                                    setAttributes({
+                                        hideTablet: value
+                                            ? " premium-tablet-hidden"
+                                            : "",
+                                    })
+                                }
+                                onChangeMobile={(value) =>
+                                    setAttributes({
+                                        hideMobile: value
+                                            ? " premium-mobile-hidden"
+                                            : "",
+                                    })
+                                }
                             />
                         </InspectorTab>
                     </InspectorTabs>
@@ -480,50 +728,51 @@ export class edit extends Component {
             !imageURL && (
                 <MediaPlaceholder
                     labels={{
-                        title: __('Premium Banner ', 'premium-blocks-for-gutenberg'),
-                        instructions: __('Upload an image file, pick one from your media library, or add one with a URL.', 'premium-blocks-for-gutenberg')
+                        title: __(
+                            "Premium Banner ",
+                            "premium-blocks-for-gutenberg"
+                        ),
+                        instructions: __(
+                            "Upload an image file, pick one from your media library, or add one with a URL.",
+                            "premium-blocks-for-gutenberg"
+                        ),
                     }}
-                    accept={['image']}
-                    allowedTypes={['image']}
+                    accept={["image"]}
+                    allowedTypes={["image"]}
                     value={imageURL}
                     onSelectURL={(value) => setAttributes({ imageURL: value })}
-                    onSelect={media => {
+                    onSelect={(media) => {
                         setAttributes({
                             imageID: media.id,
-                            imageURL: media.url
+                            imageURL: media.url,
                         });
-                    }
-                    }
+                    }}
                 />
             ),
             imageURL && (
                 <div
                     className={`${mainClasses} premium-banner__responsive_${responsive} ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`}
                     style={{
-
-                        paddingTop: containerPaddingTop && `${containerPaddingTop}${padding.unit}`,
-                        paddingRight: containerPaddingRight && `${containerPaddingRight}${padding.unit}`,
-                        paddingBottom: containerPaddingBottom && `${containerPaddingBottom}${padding.unit}`,
-                        paddingLeft: containerPaddingLeft && `${containerPaddingLeft}${padding.unit}`
+                        ...paddingCss(padding, deviceType),
                     }}
                 >
                     <style
                         dangerouslySetInnerHTML={{
-                            __html: loadStyles()
+                            __html: loadStyles(),
                         }}
                     />
                     <div
                         className={`premium-banner__inner premium-banner__min premium-banner__${effect} premium-banner__${hoverEffect} hover_${hovered}`}
                         style={{
                             boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`,
-                            ...borderCss(border, currentDevice)
+                            ...borderCss(border, deviceType),
                         }}
                     >
                         <div
                             className={`premium-banner__img_wrap premium-banner__${height}`}
                             style={{
                                 minHeight: minHeight,
-                                alignItems: verAlign
+                                alignItems: verAlign,
                             }}
                         >
                             <img
@@ -531,7 +780,7 @@ export class edit extends Component {
                                 alt="Banner Image"
                                 src={imageURL}
                                 style={{
-                                    filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
+                                    filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
                                 }}
                             />
                         </div>
@@ -539,25 +788,33 @@ export class edit extends Component {
                         <div
                             className={`premium-banner__content`}
                             style={{
-                                background: "effect2" === effect ? titleStyles[0].titleBack : "transparent"
+                                background:
+                                    "effect2" === effect
+                                        ? titleStyles[0].titleBack
+                                        : "transparent",
                             }}
                         >
                             <div
                                 className={`premium-banner__title_wrap`}
                                 style={{
-                                    textAlign: contentAlign
+                                    textAlign: contentAlign,
                                 }}
                             >
                                 <RichText
                                     tagName={titleTag.toLowerCase()}
                                     className={`premium-banner__title`}
                                     value={title}
-                                    placeholder={__('Awesome Title')}
+                                    placeholder={__("Awesome Title")}
                                     isSelected={false}
-                                    onChange={newText => setAttributes({ title: newText })}
+                                    onChange={(newText) =>
+                                        setAttributes({ title: newText })
+                                    }
                                     style={{
                                         color: titleStyles[0].titleColor,
-                                        ...typographyCss(titleTypography, this.props.deviceType),
+                                        ...typographyCss(
+                                            titleTypography,
+                                            this.props.deviceType
+                                        ),
                                         textShadow: `${titleTextShadow?.horizontal}px ${titleTextShadow?.vertical}px ${titleTextShadow?.blur}px ${titleTextShadow?.color}`,
                                     }}
                                 />
@@ -565,7 +822,7 @@ export class edit extends Component {
                             <div
                                 className={`premium-banner__desc_wrap`}
                                 style={{
-                                    textAlign: contentAlign
+                                    textAlign: contentAlign,
                                 }}
                             >
                                 <RichText
@@ -573,24 +830,32 @@ export class edit extends Component {
                                     className={`premium-banner__desc`}
                                     value={desc}
                                     isSelected={false}
-                                    onChange={newText => setAttributes({ desc: newText })}
+                                    onChange={(newText) =>
+                                        setAttributes({ desc: newText })
+                                    }
                                     style={{
                                         color: descStyles[0].descColor,
-                                        ...typographyCss(descTypography, this.props.deviceType),
+                                        ...typographyCss(
+                                            descTypography,
+                                            this.props.deviceType
+                                        ),
                                         textShadow: `${descTextShadow.horizontal}px ${descTextShadow.vertical}px ${descTextShadow.blur}px ${descTextShadow.color}`,
                                     }}
                                 />
                             </div>
                         </div>
                     </div>
-
-                </div>)
+                </div>
+            ),
         ];
     }
-};
+}
 export default withSelect((select, props) => {
-    const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
-    let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+    const { __experimentalGetPreviewDeviceType = null } =
+        select("core/edit-post");
+    let deviceType = __experimentalGetPreviewDeviceType
+        ? __experimentalGetPreviewDeviceType()
+        : null;
 
-    return { deviceType: deviceType }
-})(edit)
+    return { deviceType: deviceType };
+})(edit);
