@@ -61,15 +61,15 @@ const videoBoxAttrs = {
     },
     hideDesktop: {
         type: 'boolean',
-        default: false
+        default: ''
     },
     hideTablet: {
         type: 'boolean',
-        default: false
+        default: ''
     },
     hideMobile: {
         type: 'boolean',
-        default: false
+        default: ''
     },
     ratioValue: {
         type: "string",

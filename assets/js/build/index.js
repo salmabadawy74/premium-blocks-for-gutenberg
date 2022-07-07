@@ -45920,15 +45920,15 @@ const videoBoxAttrs = {
   },
   hideDesktop: {
     type: 'boolean',
-    default: false
+    default: ''
   },
   hideTablet: {
     type: 'boolean',
-    default: false
+    default: ''
   },
   hideMobile: {
     type: 'boolean',
-    default: false
+    default: ''
   },
   ratioValue: {
     type: "string",
@@ -47498,13 +47498,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/RangeControl/single-range-control */ "./src/components/RangeControl/single-range-control.js");
 /* harmony import */ var _components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/Color Control/ColorComponent */ "./src/components/Color Control/ColorComponent.js");
 /* harmony import */ var _components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/premium-responsive-spacing */ "./src/components/premium-responsive-spacing.js");
-/* harmony import */ var _components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/typography/fontLoader */ "./src/components/typography/fontLoader.js");
-/* harmony import */ var _components_PremiumShadow__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/PremiumShadow */ "./src/components/PremiumShadow.js");
-/* harmony import */ var _components_inspectorTabs__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/inspectorTabs */ "./src/components/inspectorTabs.js");
-/* harmony import */ var _components_inspectorTab__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/inspectorTab */ "./src/components/inspectorTab.js");
-/* harmony import */ var _components_InsideTabs__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../components/InsideTabs */ "./src/components/InsideTabs.js");
-/* harmony import */ var _components_InsideTab__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../components/InsideTab */ "./src/components/InsideTab.js");
-/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
+/* harmony import */ var _components_default_image__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/default-image */ "./src/components/default-image.js");
+/* harmony import */ var _components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/typography/fontLoader */ "./src/components/typography/fontLoader.js");
+/* harmony import */ var _components_PremiumShadow__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/PremiumShadow */ "./src/components/PremiumShadow.js");
+/* harmony import */ var _components_inspectorTabs__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/inspectorTabs */ "./src/components/inspectorTabs.js");
+/* harmony import */ var _components_inspectorTab__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../components/inspectorTab */ "./src/components/inspectorTab.js");
+/* harmony import */ var _components_InsideTabs__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../components/InsideTabs */ "./src/components/InsideTabs.js");
+/* harmony import */ var _components_InsideTab__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../components/InsideTab */ "./src/components/InsideTab.js");
+/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
+
 
 
 
@@ -47539,14 +47541,15 @@ const {
   Fragment
 } = wp.element;
 const {
-  InspectorControls
+  InspectorControls,
+  RichText
 } = wp.blockEditor;
 const {
   __
 } = wp.i18n;
 let isBoxUpdated = null;
 
-class edit extends Component {
+class Edit extends Component {
   constructor() {
     super(...arguments);
     this.initVideoBox = this.initVideoBox.bind(this);
@@ -47558,20 +47561,12 @@ class edit extends Component {
 
   componentDidMount() {
     const {
-      attributes,
       setAttributes,
       clientId
     } = this.props;
     setAttributes({
-      blockId: "premium-video-box-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_17__.generateBlockId)(this.props.clientId)
+      blockId: "premium-video-box-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.generateBlockId)(clientId)
     });
-
-    if (!attributes.videoBoxId) {
-      setAttributes({
-        videoBoxId: "premium-video-box-" + clientId
-      });
-    }
-
     this.props.setAttributes({
       classMigrate: true
     });
@@ -47580,16 +47575,15 @@ class edit extends Component {
 
   componentDidUpdate() {
     clearTimeout(isBoxUpdated);
-    console.log('update');
     isBoxUpdated = setTimeout(this.initVideoBox, 500);
   }
 
   initVideoBox() {
     const {
-      videoBoxId,
+      blockId,
       videoURL
     } = this.props.attributes;
-    if (!videoBoxId && !videoURL) return null;
+    if (!blockId && !videoURL) return null;
     let videoBox = this.videoboxRef.current,
         video,
         src;
@@ -47629,7 +47623,6 @@ class edit extends Component {
     } = this.props;
     const {
       blockId,
-      videoBoxId,
       videoType,
       videoURL,
       videoID,
@@ -47683,8 +47676,6 @@ class edit extends Component {
       }
     };
 
-    const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-video-box");
-
     const changeVideoType = newvalue => {
       if (newvalue === "self") {
         setAttributes({
@@ -47713,8 +47704,8 @@ class edit extends Component {
     };
 
     const savePlayStyles = value => {
-      const newUpdate = playStyles.map((item, index) => {
-        if (0 === index) {
+      const newUpdate = playStyles.map((item, indx) => {
+        if (0 === indx) {
           item = { ...item,
             ...value
           };
@@ -47728,8 +47719,8 @@ class edit extends Component {
     };
 
     const saveDescritionStyle = value => {
-      const newUpdate = descStyles.map((item, index) => {
-        if (0 === index) {
+      const newUpdate = descStyles.map((item, indexx) => {
+        if (0 === indexx) {
           item = { ...item,
             ...value
           };
@@ -47754,11 +47745,17 @@ class edit extends Component {
     //     )
     // }
 
+    const renderCss = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, `
+                    .${blockId} .premium-video-box__play:hover {
+                        color: ${playStyles[0].playHoverColor} !important;
+                        background-color: ${playStyles[0].playHoverBackColor} !important;
+                    }
+                `);
     return [isSelected && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InspectorControls, {
       key: "inspector"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTabs__WEBPACK_IMPORTED_MODULE_13__["default"], {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTabs__WEBPACK_IMPORTED_MODULE_14__["default"], {
       tabs: ['layout', 'style', 'advance']
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_14__["default"], {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_15__["default"], {
       key: 'layout'
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
       title: __("Video", 'premium-blocks-for-gutenberg'),
@@ -47855,13 +47852,13 @@ class edit extends Component {
       onChange: newValue => setAttributes({
         ratioValue: newValue
       })
-    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_14__["default"], {
+    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_15__["default"], {
       key: 'style'
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
       title: __("Video Box", 'premium-blocks-for-gutenberg'),
       className: "premium-panel-body",
       initialOpen: true
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_12__["default"], {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_13__["default"], {
       value: boxShadow,
       onChange: value => setAttributes({
         boxShadow: value
@@ -47937,7 +47934,7 @@ class edit extends Component {
       }),
       showUnit: false,
       defaultValue: 0
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_InsideTabs__WEBPACK_IMPORTED_MODULE_15__["default"], null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_InsideTab__WEBPACK_IMPORTED_MODULE_16__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_InsideTabs__WEBPACK_IMPORTED_MODULE_16__["default"], null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_InsideTab__WEBPACK_IMPORTED_MODULE_17__["default"], {
       tabTitle: __('Normal')
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_9__["default"], {
       label: __("Icon Color", ''),
@@ -47971,7 +47968,7 @@ class edit extends Component {
         });
       },
       colorDefault: ``
-    })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_InsideTab__WEBPACK_IMPORTED_MODULE_16__["default"], {
+    })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_InsideTab__WEBPACK_IMPORTED_MODULE_17__["default"], {
       tabTitle: __('Hover')
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_9__["default"], {
       label: __("Icon Hover Color", 'premium-blocks-for-gutenberg'),
@@ -48001,17 +47998,11 @@ class edit extends Component {
       }),
       showUnits: true,
       responsive: true
-    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
+    })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
       title: __("Video Description", 'premium-blocks-for-gutenberg'),
       className: "premium-panel-body",
       initialOpen: false
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: __("Enable Video Description", 'premium-blocks-for-gutenberg'),
-      checked: videoDesc,
-      onChange: newCheck => setAttributes({
-        videoDesc: newCheck
-      })
-    }), videoDesc && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextareaControl, {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextareaControl, {
       label: __("Description Text", 'premium-blocks-for-gutenberg'),
       value: descStyles[0].videoDescText,
       onChange: newText => saveDescritionStyle({
@@ -48039,7 +48030,7 @@ class edit extends Component {
       }),
       showUnit: false,
       defaultValue: 0
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_12__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_13__["default"], {
       label: __("Text Shadow", 'premium-blocks-for-gutenberg'),
       value: descShadow,
       onChange: value => setAttributes({
@@ -48053,7 +48044,7 @@ class edit extends Component {
       }),
       showUnits: true,
       responsive: true
-    }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_14__["default"], {
+    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_15__["default"], {
       key: 'advance'
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_7__["default"], {
       Desktop: hideDesktop,
@@ -48089,19 +48080,14 @@ class edit extends Component {
       isPrimary: true,
       disabled: !this.state.url,
       type: "submit"
-    }, __('Embed', 'premium-blocks-for-gutenberg')))), !videoURL && "self" === videoType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, __('Please Click Insert to Select Video ', "premium-blocks-for-gutenberg")), videoURL && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    }, __('Embed', 'premium-blocks-for-gutenberg')))), !videoURL && "self" === videoType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, __('Please Click Insert to Select Video ', "premium-blocks-for-gutenberg")), videoURL && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       ref: this.videoboxRef,
-      id: videoBoxId,
-      className: `${mainClasses} video-overlay-${overlay} premium-video-box-${blockId} ${hideDesktop} ${hideTablet} ${hideMobile} premium-aspect-ratio-${ratioValue}`,
+      className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-video-box", `video-overlay-${overlay} ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile} premium-aspect-ratio-${ratioValue}`),
       "data-type": videoType,
-      style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_17__.borderCss)(boxBorder, this.props.deviceType),
+      style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.borderCss)(boxBorder, this.props.deviceType),
         boxShadow: `${boxShadow.horizontal || 0}px ${boxShadow.vertical || 0}px ${boxShadow.blur || 0}px ${boxShadow.color} ${boxShadow.position}`
       }
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
-      dangerouslySetInnerHTML: {
-        __html: [`.${blockId} .premium-video-box__play:hover {`, `color: ${playStyles[0].playHoverColor} !important;`, `background-color: ${playStyles[0].playHoverBackColor} !important;`, "}"].join("\n")
-      }
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    }, renderCss, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: `premium-video-box__container`
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: `premium-video-box-inner-wrap`
@@ -48125,10 +48111,12 @@ class edit extends Component {
         backgroundImage: `url('${overlayStyles[0].overlayImgURL}')`,
         filter: `brightness( ${overlayStyles[0].bright}% ) contrast( ${overlayStyles[0].contrast}% ) saturate( ${overlayStyles[0].saturation}% ) blur( ${overlayStyles[0].blur}px ) hue-rotate( ${overlayStyles[0].hue}deg )`
       }
+    }), overlay && playIcon && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_default_image__WEBPACK_IMPORTED_MODULE_11__["default"], {
+      className: "premium-video-box-image-container"
     }), overlay && playIcon && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: `premium-video-box__play`,
-      style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_17__.borderCss)(playBorder, this.props.deviceType),
-        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_17__.padddingCss)(playPadding, this.props.deviceType),
+      style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.borderCss)(playBorder, this.props.deviceType),
+        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.padddingCss)(playPadding, this.props.deviceType),
         top: playStyles[0].playTop + "%",
         left: playLeft + "%",
         color: playStyles[0].playColor,
@@ -48139,26 +48127,33 @@ class edit extends Component {
       style: {
         fontSize: playStyles[0].playSize + "px"
       }
-    })), overlay && videoDesc && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: `premium-video-box__desc`,
-      style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_17__.padddingCss)(descPadding, this.props.deviceType),
+      style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.padddingCss)(descPadding, this.props.deviceType),
         color: descStyles[0].videoDescColor,
         backgroundColor: descStyles[0].videoDescBack,
         borderRadius: descStyles[0].videoDescBorderRadius,
         top: descStyles[0].descTop + "%",
         left: descStyles[0].descLeft + "%"
       }
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText, {
+      tagName: "p",
       className: `premium-video-box__desc_text`,
-      style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_17__.typographyCss)(videoDescTypography, this.props.deviceType),
+      value: descStyles[0].videoDescText,
+      placeholder: "Add caption",
+      onChange: newText => saveDescritionStyle({
+        videoDescText: newText
+      }),
+      style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.typographyCss)(videoDescTypography, this.props.deviceType),
         textShadow: `${descShadow.horizontal}px ${descShadow.vertical}px ${descShadow.blur}px ${descShadow.color}`
-      }
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, descStyles[0].videoDescText)))), loadDescriptionGoogleFonts)];
+      },
+      keepPlaceholderOnFocus: true
+    })))), loadDescriptionGoogleFonts)];
   }
 
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (withSelect((select, props) => {
+/* harmony default export */ __webpack_exports__["default"] = (withSelect(select => {
   const {
     __experimentalGetPreviewDeviceType = null
   } = select('core/edit-post');
@@ -48166,7 +48161,7 @@ class edit extends Component {
   return {
     deviceType: deviceType
   };
-})(edit));
+})(Edit));
 
 /***/ }),
 
@@ -48266,9 +48261,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./src/blocks/node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index */ "./src/blocks/video-box/index.js");
+/* harmony import */ var _components_default_image__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/default-image */ "./src/components/default-image.js");
+/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
 
 
 
+
+
+const {
+  RichText
+} = wp.editor;
 
 const save = props => {
   const {
@@ -48276,10 +48278,8 @@ const save = props => {
   } = props;
   const {
     blockId,
-    videoBoxId,
     videoType,
     videoURL,
-    videoID,
     autoPlay,
     loop,
     controls,
@@ -48289,15 +48289,18 @@ const save = props => {
     videoDesc,
     playIcon,
     playLeft,
-    classMigrate,
     hideDesktop,
     hideTablet,
     hideMobile,
-    boxStyles,
+    ratioValue,
     overlayStyles,
     playStyles,
     descStyles,
-    ratioValue
+    videoDescTypography,
+    playBorder,
+    boxBorder,
+    descShadow,
+    boxShadow
   } = props.attributes;
 
   const loopVideo = () => {
@@ -48312,22 +48315,25 @@ const save = props => {
     }
   };
 
-  const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, 'premium-video-box');
+  const renderCss = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, `
+                .${blockId} .premium-video-box__play:hover {
+                    color: ${playStyles[0].playHoverColor} !important;
+                    background-color: ${playStyles[0].playHoverBackColor} !important;
+                }
+            `);
   return videoURL && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: `${mainClasses} video-overlay-${overlay} premium-video-box-${blockId} ${hideDesktop} ${hideTablet} ${hideMobile} premium-aspect-ratio-${ratioValue}`,
+    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-video-box", `video-overlay-${overlay} ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile} premium-aspect-ratio-${ratioValue}`),
     "data-type": videoType,
-    style: {
-      borderStyle: boxStyles[0].boxBorderType,
-      borderWidth: boxStyles[0].borderBoxUpdated ? `${boxStyles[0].boxBorderTop}px ${boxStyles[0].boxBorderRight}px ${boxStyles[0].boxBorderBottom}px ${boxStyles[0].boxBorderLeft}px` : boxStyles[0].boxBorderWidth + "px",
-      borderRadius: boxStyles[0].boxBorderRadius + "px",
-      borderColor: boxStyles[0].boxBorderColor,
-      boxShadow: `${boxStyles[0].shadowHorizontal}px ${boxStyles[0].shadowVertical}px ${boxStyles[0].shadowBlur}px ${boxStyles[0].shadowColor} ${boxStyles[0].shadowPosition}`
-    }
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
-    dangerouslySetInnerHTML: {
-      __html: [`.${blockId} .premium-video-box__play:hover {`, `color: ${playStyles[0].playHoverColor} !important;`, `background-color: ${playStyles[0].playHoverBackColor} !important;`, "}"].join("\n")
-    }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_4__.filterJsCss)({
+      borderStyle: boxBorder.borderType,
+      // borderWidth: boxStyles[0].borderBoxUpdated
+      //     ? `${boxStyles[0].boxBorderTop}px ${boxStyles[0].boxBorderRight}px ${boxStyles[0].boxBorderBottom}px ${boxStyles[0].boxBorderLeft}px`
+      //     : boxStyles[0].boxBorderWidth + "px",
+      // borderRadius: boxStyles[0].boxBorderRadius + "px",
+      borderColor: boxBorder.borderColor,
+      boxShadow: `${boxShadow.horizontal || 0}px ${boxShadow.vertical || 0}px ${boxShadow.blur || 0}px ${boxShadow.color} ${boxShadow.position}`
+    })
+  }, renderCss, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-video-box__container`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-video-box-inner-wrap`
@@ -48347,49 +48353,51 @@ const save = props => {
     controls: controls ? true : false
   }))))), overlay && overlayStyles[0].overlayImgURL && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-video-box__overlay`,
-    style: {
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_4__.filterJsCss)({
       backgroundImage: `url('${overlayStyles[0].overlayImgURL}')`,
       filter: `brightness( ${overlayStyles[0].bright}% ) contrast( ${overlayStyles[0].contrast}% ) saturate( ${overlayStyles[0].saturation}% ) blur( ${overlayStyles[0].blur}px ) hue-rotate( ${overlayStyles[0].hue}deg )`
-    }
+    })
+  }), overlay && playIcon && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_default_image__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    className: "premium-video-box-image-container"
   }), overlay && playIcon && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-video-box__play`,
-    style: {
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_4__.filterJsCss)({
       top: playStyles[0].playTop + "%",
       left: playLeft + "%",
       color: playStyles[0].playColor,
       backgroundColor: playStyles[0].playBack,
-      borderStyle: playStyles[0].playBorderType,
-      borderWidth: playStyles[0].borderPlayUpdated ? `${playStyles[0].playBorderTop}px ${playStyles[0].playBorderRight}px ${playStyles[0].playBorderBottom}px ${playStyles[0].playBorderLeft}px` : playStyles[0].playBorderWidth + "px",
-      borderRadius: playStyles[0].playBorderRadius + "px",
-      borderColor: playStyles[0].playBorderColor,
-      padding: playStyles[0].playPadding + "px"
-    }
+      borderStyle: playBorder.borderType,
+      // borderWidth: playStyles[0].borderPlayUpdated
+      //     ? `${playStyles[0].playBorderTop}px ${playStyles[0].playBorderRight}px ${playStyles[0].playBorderBottom}px ${playStyles[0].playBorderLeft}px`
+      //     : playStyles[0].playBorderWidth + "px",
+      // borderRadius: playStyles[0].playBorderRadius + "px",
+      borderColor: playBorder.borderColor // padding: playStyles[0].playPadding + "px"
+
+    })
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
     className: `premium-video-box__play_icon dashicons dashicons-controls-play`,
-    style: {
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_4__.filterJsCss)({
       fontSize: playStyles[0].playSize + "px"
-    }
-  })), overlay && videoDesc && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    })
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-video-box__desc`,
     style: {
       color: descStyles[0].videoDescColor,
       backgroundColor: descStyles[0].videoDescBack,
-      padding: descStyles[0].videoDescPadding,
       borderRadius: descStyles[0].videoDescBorderRadius,
       top: descStyles[0].descTop + "%",
       left: descStyles[0].descLeft + "%"
     }
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText.Content, {
+    tagName: "p",
     className: `premium-video-box__desc_text`,
-    style: {
-      fontFamily: descStyles[0].videoDescFamily,
-      fontWeight: descStyles[0].videoDescWeight,
-      letterSpacing: descStyles[0].videoDescLetter + "px",
-      textTransform: descStyles[0].videoDescUpper ? "uppercase" : "none",
-      textShadow: `${descStyles[0].descShadowHorizontal}px ${descStyles[0].descShadowVertical}px ${descStyles[0].descShadowBlur}px ${descStyles[0].descShadowColor}`,
-      fontStyle: descStyles[0].videoDescStyle
-    }
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, descStyles[0].videoDescText))));
+    value: descStyles[0].videoDescText,
+    placeholder: "Add caption",
+    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_4__.typographyCss)(videoDescTypography, props.deviceType),
+      textShadow: `${descShadow.horizontal}px ${descShadow.vertical}px ${descShadow.blur}px ${descShadow.color}`
+    },
+    keepPlaceholderOnFocus: true
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (save);
@@ -48627,6 +48635,7 @@ class AdvancedColorControl extends Component {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "borderCss": function() { return /* binding */ borderCss; },
+/* harmony export */   "filterJsCss": function() { return /* binding */ filterJsCss; },
 /* harmony export */   "generateBlockId": function() { return /* binding */ generateBlockId; },
 /* harmony export */   "gradientBackground": function() { return /* binding */ gradientBackground; },
 /* harmony export */   "marginCss": function() { return /* binding */ marginCss; },
@@ -48716,6 +48725,16 @@ const typographyCss = (value, device) => {
 };
 const generateBlockId = clientId => {
   return clientId.split('-')[4];
+};
+const filterJsCss = styles => {
+  const asArray = Object.entries(styles);
+  const filtered = asArray.filter(_ref => {
+    let [value] = _ref;
+    const valueWithoutUnits = value ? value.toString().replaceAll(/px|em|rem|!important|%/g, '').replaceAll(/\s/g, '') : '';
+    return value && !value.toString().includes('undefined') && valueWithoutUnits;
+  });
+  const filteredStyles = Object.fromEntries(filtered);
+  return filteredStyles;
 };
 
 /***/ }),

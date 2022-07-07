@@ -4103,8 +4103,8 @@ class PBG_Blocks_Helper {
 	 */
 	public function get_videobox_css( $attributes, $content ) {
 
-		if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
-			$unique_id = $attributes['block_id'];
+		if ( isset( $attributes['blockId'] ) && ! empty( $attributes['blockId'] ) ) {
+			$unique_id = $attributes['blockId'];
 		} else {
 			$unique_id = rand( 100, 10000 );
 		}
@@ -4118,10 +4118,10 @@ class PBG_Blocks_Helper {
 			);
 		}
 		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
-		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
+		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'videoBox', $unique_id ) ) {
 			$css = $this->get_videobox_css_style( $attributes, $unique_id );
 			if ( ! empty( $css ) ) {
-				if ( $this->should_render_inline( 'accordion', $unique_id ) ) {
+				if ( $this->should_render_inline( 'videoBox', $unique_id ) ) {
 					$content = '<style id="' . $style_id . '">' . $css . '</style>' . $content;
 				} else {
 					$this->render_inline_css( $css, $style_id, true );
@@ -4144,37 +4144,343 @@ class PBG_Blocks_Helper {
 	 */
 	public function get_videobox_css_style( $attr, $unique_id ) {
 
-		if ( isset( $attr['descStyles'][0]['videoDescFamily'] ) ) {
-			$this->add_gfont(
-				array(
-					'fontFamily'  => ( isset( $attr['descStyles'][0]['videoDescFamily'] ) ? $attr['descStyles'][0]['videoDescFamily'] : '' ),
-					'fontVariant' => ( isset( $attr['descStyles'][0]['videoDescWeight'] ) ? $attr['descStyles'][0]['videoDescWeight'] : '' ),
-				)
-			);
-		}
+		// if ( isset( $attr['descStyles'][0]['videoDescFamily'] ) ) {
+		// 	$this->add_gfont(
+		// 		array(
+		// 			'fontFamily'  => ( isset( $attr['descStyles'][0]['videoDescFamily'] ) ? $attr['descStyles'][0]['videoDescFamily'] : '' ),
+		// 			'fontVariant' => ( isset( $attr['descStyles'][0]['videoDescWeight'] ) ? $attr['descStyles'][0]['videoDescWeight'] : '' ),
+		// 		)
+		// 	);
+		// }
 		$css                    = new Premium_Blocks_css();
 		$media_query            = array();
 		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
 		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
 		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
+
+		//Container style
+		if ( isset( $attr['boxBorder']['borderWidth']['Desktop']['top'] ) ) {
+			$css->set_selector( '.' . $unique_id );
+			$css->add_property( 'border-top-width', ( $attr['boxBorder']['borderWidth']['Desktop']['top'] . 'px' ) );
+		}
+		if ( isset( $attr['boxBorder']['borderWidth']['Desktop']['right'] ) ) {
+			$css->set_selector( '.' . $unique_id );
+			$css->add_property( 'border-right-width', ( $attr['boxBorder']['borderWidth']['Desktop']['right'] . 'px' ) );
+		}
+		if ( isset( $attr['boxBorder']['borderWidth']['Desktop']['bottom'] ) ) {
+			$css->set_selector( '.' . $unique_id );
+			$css->add_property( 'border-bottom-width', ( $attr['boxBorder']['borderWidth']['Desktop']['bottom'] . 'px' ) );
+		}
+		if ( isset( $attr['boxBorder']['borderWidth']['Desktop']['left'] ) ) {
+			$css->set_selector( '.' . $unique_id );
+			$css->add_property( 'border-left-width', ( $attr['boxBorder']['borderWidth']['Desktop']['left'] . 'px' ) );
+		}
+		if ( isset( $attr['boxBorder']['borderRadius']['Desktop']['top'] ) ) {
+			$css->set_selector( '.' . $unique_id );
+			$css->add_property( 'border-top-left-radius', ( $attr['boxBorder']['borderRadius']['Desktop']['top'] . 'px' ) );
+		}
+		if ( isset( $attr['boxBorder']['borderRadius']['Desktop']['right'] ) ) {
+			$css->set_selector( '.' . $unique_id );
+			$css->add_property( 'border-top-right-radius', ( $attr['boxBorder']['borderRadius']['Desktop']['right'] . 'px' ) );
+		}
+		if ( isset( $attr['boxBorder']['borderRadius']['Desktop']['bottom'] ) ) {
+			$css->set_selector( '.' . $unique_id );
+			$css->add_property( 'border-bottom-right-radius', ( $attr['boxBorder']['borderRadius']['Desktop']['bottom'] . 'px' ) );
+		}
+		if ( isset( $attr['boxBorder']['borderRadius']['Desktop']['left'] ) ) {
+			$css->set_selector( '.' . $unique_id );
+			$css->add_property( 'border-bottom-left-radius', ( $attr['boxBorder']['borderRadius']['Desktop']['left'] . 'px' ) );
+		}
+
+		//icon Style
+		if ( isset( $attr['playBorder']['borderWidth']['Desktop']['top'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
+			$css->add_property( 'border-top-width', ( $attr['playBorder']['borderWidth']['Desktop']['top'] . 'px' ) );
+		}
+		if ( isset( $attr['playBorder']['borderWidth']['Desktop']['right'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
+			$css->add_property( 'border-right-width', ( $attr['playBorder']['borderWidth']['Desktop']['right'] . 'px' ) );
+		}
+		if ( isset( $attr['playBorder']['borderWidth']['Desktop']['bottom'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
+			$css->add_property( 'border-bottom-width', ( $attr['playBorder']['borderWidth']['Desktop']['bottom'] . 'px' ) );
+		}
+		if ( isset( $attr['playBorder']['borderWidth']['Desktop']['left'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
+			$css->add_property( 'border-left-width', ( $attr['playBorder']['borderWidth']['Desktop']['left'] . 'px' ) );
+		}
+		if ( isset( $attr['playBorder']['borderRadius']['Desktop']['top'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
+			$css->add_property( 'border-top-left-radius', ( $attr['playBorder']['borderRadius']['Desktop']['top'] . 'px' ) );
+		}
+		if ( isset( $attr['playBorder']['borderRadius']['Desktop']['right'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
+			$css->add_property( 'border-top-right-radius', ( $attr['playBorder']['borderRadius']['Desktop']['right'] . 'px' ) );
+		}
+		if ( isset( $attr['playBorder']['borderRadius']['Desktop']['bottom'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
+			$css->add_property( 'border-bottom-right-radius', ( $attr['playBorder']['borderRadius']['Desktop']['bottom'] . 'px' ) );
+		}
+		if ( isset( $attr['playBorder']['borderRadius']['Desktop']['left'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
+			$css->add_property( 'border-bottom-left-radius', ( $attr['playBorder']['borderRadius']['Desktop']['left'] . 'px' ) );
+		}
+		if ( isset( $attr['playPadding']['Desktop']['top'] ) && isset( $attr['playPadding']['unit'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
+			$css->add_property( 'padding-top', ( $attr['playPadding']['Desktop']['top'] . ( isset( $attr['playPadding']['unit'] ) ? $attr['playPadding']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['playPadding']['Desktop']['right'] ) && isset( $attr['playPadding']['unit'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
+			$css->add_property( 'padding-right', ( $attr['playPadding']['Desktop']['right'] . ( isset( $attr['playPadding']['unit'] ) ? $attr['playPadding']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['playPadding']['Desktop']['bottom'] ) && isset( $attr['playPadding']['unit'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
+			$css->add_property( 'padding-bottom', ( $attr['playPadding']['Desktop']['bottom'] . ( isset( $attr['playPadding']['unit'] ) ? $attr['playPadding']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['playPadding']['Desktop']['left'] ) && isset( $attr['playPadding']['unit'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
+			$css->add_property( 'padding-left', ( $attr['playPadding']['Desktop']['left'] . ( isset( $attr['playPadding']['unit'] ) ? $attr['playPadding']['unit'] : 'px' ) . '!important' ) );
+		}
+
 		// Style Description.
-		if ( isset( $attr['descStyles'] ) ) {
-			if ( isset( $attr['descStyles'][0]['videoDescSize'] ) && isset( $attr['descStyles'][0]['videoDescSizeUnit'] ) ) {
-				$css->set_selector( '.premium-video-box-' . $unique_id . '> .premium-video-box__desc' . ' > .premium-video-box__desc_text' );
-				$css->add_property( 'font-size', ( $attr['descStyles'][0]['videoDescSize'] . $attr['descStyles'][0]['videoDescSizeUnit'] ) );
-			}
+		if ( isset( $attr['videoDescTypography']['fontSize']['Desktop'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' . '> .premium-video-box__desc_text' );
+			$css->add_property( 'font-size', ( ( isset( $attr['videoDescTypography']['fontSize']['Desktop'] ) ? $attr['videoDescTypography']['fontSize']['Desktop'] : '20' ) . ( isset( $attr['videoDescTypography']['fontSize']['unit'] ) ? $attr['videoDescTypography']['fontSize']['unit'] : 'px' ) . '!important' ) );
 		}
+		if ( isset( $attr['descPadding']['Desktop']['top'] ) && isset( $attr['descPadding']['unit'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' );
+			$css->add_property( 'padding-top', ( $attr['descPadding']['Desktop']['top'] . ( isset( $attr['descPadding']['unit'] ) ? $attr['descPadding']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['descPadding']['Desktop']['right'] ) && isset( $attr['descPadding']['unit'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' );
+			$css->add_property( 'padding-right', ( $attr['descPadding']['Desktop']['right'] . ( isset( $attr['descPadding']['unit'] ) ? $attr['descPadding']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['descPadding']['Desktop']['bottom'] ) && isset( $attr['descPadding']['unit'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' );
+			$css->add_property( 'padding-bottom', ( $attr['descPadding']['Desktop']['bottom'] . ( isset( $attr['descPadding']['unit'] ) ? $attr['descPadding']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['descPadding']['Desktop']['left'] ) && isset( $attr['descPadding']['unit'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' );
+			$css->add_property( 'padding-left', ( $attr['descPadding']['Desktop']['left'] . ( isset( $attr['descPadding']['unit'] ) ? $attr['descPadding']['unit'] : 'px' ) . '!important' ) );
+		}
+
 		$css->start_media_query( $media_query['tablet'] );
-		if ( isset( $attr['descStyles'][0]['videoDescSizeTablet'] ) && isset( $attr['descStyles'][0]['videoDescSizeUnit'] ) ) {
-			$css->set_selector( '.premium-video-box-' . $unique_id . '> .premium-video-box__desc' . ' > .premium-video-box__desc_text' );
-			$css->add_property( 'font-size', ( $attr['descStyles'][0]['videoDescSizeTablet'] . $attr['descStyles'][0]['videoDescSizeUnit'] ) );
+
+		//Container style
+		if ( isset( $attr['boxBorder']['borderWidth']['Tablet']['top'] ) ) {
+			$css->set_selector( '.' . $unique_id );
+			$css->add_property( 'border-top-width', ( $attr['boxBorder']['borderWidth']['Tablet']['top'] . 'px' ) );
 		}
+		if ( isset( $attr['boxBorder']['borderWidth']['Tablet']['right'] ) ) {
+			$css->set_selector( '.' . $unique_id );
+			$css->add_property( 'border-right-width', ( $attr['boxBorder']['borderWidth']['Tablet']['right'] . 'px' ) );
+		}
+		if ( isset( $attr['boxBorder']['borderWidth']['Tablet']['bottom'] ) ) {
+			$css->set_selector( '.' . $unique_id );
+			$css->add_property( 'border-bottom-width', ( $attr['boxBorder']['borderWidth']['Tablet']['bottom'] . 'px' ) );
+		}
+		if ( isset( $attr['boxBorder']['borderWidth']['Tablet']['left'] ) ) {
+			$css->set_selector( '.' . $unique_id );
+			$css->add_property( 'border-left-width', ( $attr['boxBorder']['borderWidth']['Tablet']['left'] . 'px' ) );
+		}
+		if ( isset( $attr['boxBorder']['borderRadius']['Tablet']['top'] ) ) {
+			$css->set_selector( '.' . $unique_id );
+			$css->add_property( 'border-top-left-radius', ( $attr['boxBorder']['borderRadius']['Tablet']['top'] . 'px' ) );
+		}
+		if ( isset( $attr['boxBorder']['borderRadius']['Tablet']['right'] ) ) {
+			$css->set_selector( '.' . $unique_id );
+			$css->add_property( 'border-top-right-radius', ( $attr['boxBorder']['borderRadius']['Tablet']['right'] . 'px' ) );
+		}
+		if ( isset( $attr['boxBorder']['borderRadius']['Tablet']['bottom'] ) ) {
+			$css->set_selector( '.' . $unique_id );
+			$css->add_property( 'border-bottom-right-radius', ( $attr['boxBorder']['borderRadius']['Tablet']['bottom'] . 'px' ) );
+		}
+		if ( isset( $attr['boxBorder']['borderRadius']['Tablet']['left'] ) ) {
+			$css->set_selector( '.' . $unique_id );
+			$css->add_property( 'border-bottom-left-radius', ( $attr['boxBorder']['borderRadius']['Tablet']['left'] . 'px' ) );
+		}
+
+		//icon Style
+		if ( isset( $attr['playBorder']['borderWidth']['Tablet']['top'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
+			$css->add_property( 'border-top-width', ( $attr['playBorder']['borderWidth']['Tablet']['top'] . 'px' ) );
+		}
+		if ( isset( $attr['playBorder']['borderWidth']['Tablet']['right'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
+			$css->add_property( 'border-right-width', ( $attr['playBorder']['borderWidth']['Tablet']['right'] . 'px' ) );
+		}
+		if ( isset( $attr['playBorder']['borderWidth']['Tablet']['bottom'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
+			$css->add_property( 'border-bottom-width', ( $attr['playBorder']['borderWidth']['Tablet']['bottom'] . 'px' ) );
+		}
+		if ( isset( $attr['playBorder']['borderWidth']['Tablet']['left'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
+			$css->add_property( 'border-left-width', ( $attr['playBorder']['borderWidth']['Tablet']['left'] . 'px' ) );
+		}
+		if ( isset( $attr['playBorder']['borderRadius']['Tablet']['top'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
+			$css->add_property( 'border-top-left-radius', ( $attr['playBorder']['borderRadius']['Tablet']['top'] . 'px' ) );
+		}
+		if ( isset( $attr['playBorder']['borderRadius']['Tablet']['right'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
+			$css->add_property( 'border-top-right-radius', ( $attr['playBorder']['borderRadius']['Tablet']['right'] . 'px' ) );
+		}
+		if ( isset( $attr['playBorder']['borderRadius']['Tablet']['bottom'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
+			$css->add_property( 'border-bottom-right-radius', ( $attr['playBorder']['borderRadius']['Tablet']['bottom'] . 'px' ) );
+		}
+		if ( isset( $attr['playBorder']['borderRadius']['Tablet']['left'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
+			$css->add_property( 'border-bottom-left-radius', ( $attr['playBorder']['borderRadius']['Tablet']['left'] . 'px' ) );
+		}
+		if ( isset( $attr['playPadding']['Tablet']['top'] ) && isset( $attr['playPadding']['unit'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
+			$css->add_property( 'padding-top', ( $attr['playPadding']['Tablet']['top'] . ( isset( $attr['playPadding']['unit'] ) ? $attr['playPadding']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['playPadding']['Tablet']['right'] ) && isset( $attr['playPadding']['unit'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
+			$css->add_property( 'padding-right', ( $attr['playPadding']['Tablet']['right'] . ( isset( $attr['playPadding']['unit'] ) ? $attr['playPadding']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['playPadding']['Tablet']['bottom'] ) && isset( $attr['playPadding']['unit'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
+			$css->add_property( 'padding-bottom', ( $attr['playPadding']['Tablet']['bottom'] . ( isset( $attr['playPadding']['unit'] ) ? $attr['playPadding']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['playPadding']['Tablet']['left'] ) && isset( $attr['playPadding']['unit'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
+			$css->add_property( 'padding-left', ( $attr['playPadding']['Tablet']['left'] . ( isset( $attr['playPadding']['unit'] ) ? $attr['playPadding']['unit'] : 'px' ) . '!important' ) );
+		}
+
+		// Style Description.
+		if ( isset( $attr['videoDescTypography']['fontSize']['Tablet'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' . '> .premium-video-box__desc_text' );
+			$css->add_property( 'font-size', ( ( isset( $attr['videoDescTypography']['fontSize']['Tablet'] ) ? $attr['videoDescTypography']['fontSize']['Tablet'] : '20' ) . ( isset( $attr['videoDescTypography']['fontSize']['unit'] ) ? $attr['videoDescTypography']['fontSize']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['descPadding']['Tablet']['top'] ) && isset( $attr['descPadding']['unit'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' );
+			$css->add_property( 'padding-top', ( $attr['descPadding']['Tablet']['top'] . ( isset( $attr['descPadding']['unit'] ) ? $attr['descPadding']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['descPadding']['Tablet']['right'] ) && isset( $attr['descPadding']['unit'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' );
+			$css->add_property( 'padding-right', ( $attr['descPadding']['Tablet']['right'] . ( isset( $attr['descPadding']['unit'] ) ? $attr['descPadding']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['descPadding']['Tablet']['bottom'] ) && isset( $attr['descPadding']['unit'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' );
+			$css->add_property( 'padding-bottom', ( $attr['descPadding']['Tablet']['bottom'] . ( isset( $attr['descPadding']['unit'] ) ? $attr['descPadding']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['descPadding']['Tablet']['left'] ) && isset( $attr['descPadding']['unit'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' );
+			$css->add_property( 'padding-left', ( $attr['descPadding']['Tablet']['left'] . ( isset( $attr['descPadding']['unit'] ) ? $attr['descPadding']['unit'] : 'px' ) . '!important' ) );
+		}
+
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['mobile'] );
-		if ( isset( $attr['descStyles'][0]['videoDescSizeMobile'] ) && isset( $attr['descStyles'][0]['videoDescSizeUnit'] ) ) {
-			$css->set_selector( '.premium-video-box-' . $unique_id . '> .premium-video-box__desc' . ' > .premium-video-box__desc_text' );
-			$css->add_property( 'font-size', ( $attr['descStyles'][0]['videoDescSizeMobile'] . $attr['descStyles'][0]['videoDescSizeUnit'] ) );
+
+		//Container style
+		if ( isset( $attr['boxBorder']['borderWidth']['Mobile']['top'] ) ) {
+			$css->set_selector( '.' . $unique_id );
+			$css->add_property( 'border-top-width', ( $attr['boxBorder']['borderWidth']['Mobile']['top'] . 'px' ) );
 		}
+		if ( isset( $attr['boxBorder']['borderWidth']['Mobile']['right'] ) ) {
+			$css->set_selector( '.' . $unique_id );
+			$css->add_property( 'border-right-width', ( $attr['boxBorder']['borderWidth']['Mobile']['right'] . 'px' ) );
+		}
+		if ( isset( $attr['boxBorder']['borderWidth']['Mobile']['bottom'] ) ) {
+			$css->set_selector( '.' . $unique_id );
+			$css->add_property( 'border-bottom-width', ( $attr['boxBorder']['borderWidth']['Mobile']['bottom'] . 'px' ) );
+		}
+		if ( isset( $attr['boxBorder']['borderWidth']['Mobile']['left'] ) ) {
+			$css->set_selector( '.' . $unique_id );
+			$css->add_property( 'border-left-width', ( $attr['boxBorder']['borderWidth']['Mobile']['left'] . 'px' ) );
+		}
+		if ( isset( $attr['boxBorder']['borderRadius']['Mobile']['top'] ) ) {
+			$css->set_selector( '.' . $unique_id );
+			$css->add_property( 'border-top-left-radius', ( $attr['boxBorder']['borderRadius']['Mobile']['top'] . 'px' ) );
+		}
+		if ( isset( $attr['boxBorder']['borderRadius']['Mobile']['right'] ) ) {
+			$css->set_selector( '.' . $unique_id );
+			$css->add_property( 'border-top-right-radius', ( $attr['boxBorder']['borderRadius']['Mobile']['right'] . 'px' ) );
+		}
+		if ( isset( $attr['boxBorder']['borderRadius']['Mobile']['bottom'] ) ) {
+			$css->set_selector( '.' . $unique_id );
+			$css->add_property( 'border-bottom-right-radius', ( $attr['boxBorder']['borderRadius']['Mobile']['bottom'] . 'px' ) );
+		}
+		if ( isset( $attr['boxBorder']['borderRadius']['Mobile']['left'] ) ) {
+			$css->set_selector( '.' . $unique_id );
+			$css->add_property( 'border-bottom-left-radius', ( $attr['boxBorder']['borderRadius']['Mobile']['left'] . 'px' ) );
+		}
+
+		//icon Style
+		if ( isset( $attr['playBorder']['borderWidth']['Mobile']['top'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
+			$css->add_property( 'border-top-width', ( $attr['playBorder']['borderWidth']['Mobile']['top'] . 'px' ) );
+		}
+		if ( isset( $attr['playBorder']['borderWidth']['Mobile']['right'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
+			$css->add_property( 'border-right-width', ( $attr['playBorder']['borderWidth']['Mobile']['right'] . 'px' ) );
+		}
+		if ( isset( $attr['playBorder']['borderWidth']['Mobile']['bottom'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
+			$css->add_property( 'border-bottom-width', ( $attr['playBorder']['borderWidth']['Mobile']['bottom'] . 'px' ) );
+		}
+		if ( isset( $attr['playBorder']['borderWidth']['Mobile']['left'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
+			$css->add_property( 'border-left-width', ( $attr['playBorder']['borderWidth']['Mobile']['left'] . 'px' ) );
+		}
+		if ( isset( $attr['playBorder']['borderRadius']['Mobile']['top'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
+			$css->add_property( 'border-top-left-radius', ( $attr['playBorder']['borderRadius']['Mobile']['top'] . 'px' ) );
+		}
+		if ( isset( $attr['playBorder']['borderRadius']['Mobile']['right'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
+			$css->add_property( 'border-top-right-radius', ( $attr['playBorder']['borderRadius']['Mobile']['right'] . 'px' ) );
+		}
+		if ( isset( $attr['playBorder']['borderRadius']['Mobile']['bottom'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
+			$css->add_property( 'border-bottom-right-radius', ( $attr['playBorder']['borderRadius']['Mobile']['bottom'] . 'px' ) );
+		}
+		if ( isset( $attr['playBorder']['borderRadius']['Mobile']['left'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
+			$css->add_property( 'border-bottom-left-radius', ( $attr['playBorder']['borderRadius']['Mobile']['left'] . 'px' ) );
+		}
+		if ( isset( $attr['playPadding']['Mobile']['top'] ) && isset( $attr['playPadding']['unit'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
+			$css->add_property( 'padding-top', ( $attr['playPadding']['Mobile']['top'] . ( isset( $attr['playPadding']['unit'] ) ? $attr['playPadding']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['playPadding']['Mobile']['right'] ) && isset( $attr['playPadding']['unit'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
+			$css->add_property( 'padding-right', ( $attr['playPadding']['Mobile']['right'] . ( isset( $attr['playPadding']['unit'] ) ? $attr['playPadding']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['playPadding']['Mobile']['bottom'] ) && isset( $attr['playPadding']['unit'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
+			$css->add_property( 'padding-bottom', ( $attr['playPadding']['Mobile']['bottom'] . ( isset( $attr['playPadding']['unit'] ) ? $attr['playPadding']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['playPadding']['Mobile']['left'] ) && isset( $attr['playPadding']['unit'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
+			$css->add_property( 'padding-left', ( $attr['playPadding']['Mobile']['left'] . ( isset( $attr['playPadding']['unit'] ) ? $attr['playPadding']['unit'] : 'px' ) . '!important' ) );
+		}
+
+		// Style Description.
+		if ( isset( $attr['videoDescTypography']['fontSize']['Mobile'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' . '> .premium-video-box__desc_text' );
+			$css->add_property( 'font-size', ( ( isset( $attr['videoDescTypography']['fontSize']['Mobile'] ) ? $attr['videoDescTypography']['fontSize']['Mobile'] : '20' ) . ( isset( $attr['videoDescTypography']['fontSize']['unit'] ) ? $attr['videoDescTypography']['fontSize']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['descPadding']['Mobile']['top'] ) && isset( $attr['descPadding']['unit'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' );
+			$css->add_property( 'padding-top', ( $attr['descPadding']['Mobile']['top'] . ( isset( $attr['descPadding']['unit'] ) ? $attr['descPadding']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['descPadding']['Mobile']['right'] ) && isset( $attr['descPadding']['unit'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' );
+			$css->add_property( 'padding-right', ( $attr['descPadding']['Mobile']['right'] . ( isset( $attr['descPadding']['unit'] ) ? $attr['descPadding']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['descPadding']['Mobile']['bottom'] ) && isset( $attr['descPadding']['unit'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' );
+			$css->add_property( 'padding-bottom', ( $attr['descPadding']['Mobile']['bottom'] . ( isset( $attr['descPadding']['unit'] ) ? $attr['descPadding']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['descPadding']['Mobile']['left'] ) && isset( $attr['descPadding']['unit'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' );
+			$css->add_property( 'padding-left', ( $attr['descPadding']['Mobile']['left'] . ( isset( $attr['descPadding']['unit'] ) ? $attr['descPadding']['unit'] : 'px' ) . '!important' ) );
+		}
+
 		$css->stop_media_query();
 		return $css->css_output();
 
