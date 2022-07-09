@@ -1,5 +1,5 @@
 import { pricingTable } from "../../../assets/js/settings";
-import PbgIcon from "../icons";
+import PBG_Block_Icons from '../../../blocks-config/block-icons'
 import edit from "./edit";
 import save from "./save";
 import deprecatedContent from "./deprecated";
@@ -12,7 +12,8 @@ const { __ } = wp.i18n;
 
 registerBlockType("premium/pricing-table", {
     title: __("Pricing Table"),
-    icon: <PbgIcon icon="pricing-table" />,
+    description: __('Display your pricing plans in an elegant way using Premium Pricing Table Block.'),
+    icon: PBG_Block_Icons.pricingTable,
     category: "premium-blocks",
     attributes: attributes,
     supports: {
