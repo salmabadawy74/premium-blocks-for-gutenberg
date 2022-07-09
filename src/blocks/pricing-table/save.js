@@ -1,4 +1,5 @@
 import classnames from "classnames";
+import { filterJsCss, generateCss } from "../../components/HelperFunction";
 
 const { RichText } = wp.blockEditor;
 
@@ -6,24 +7,19 @@ const save = props => {
     const { className } = props;
 
     const {
-        borderUpdated,
-        btnBorderUpdated,
         contentAlign,
-        borderColor,
         title,
         desc,
         titleChecked,
         descChecked,
         priceChecked,
-        selectedStyle,
         btnChecked,
         btnText,
         btnLink,
         badgeChecked,
         listChecked,
         listItems,
-        block_id,
-        classMigrate,
+        blockId,
         hideDesktop,
         hideTablet,
         hideMobile,
@@ -34,34 +30,45 @@ const save = props => {
         buttonStyles,
         badgeStyles,
         tableStyles,
-        btnBorderTop,
-        btnBorderRight,
-        btnBorderBottom,
-        btnBorderLeft,
-        borderTop,
-        borderRight,
-        borderBottom,
-        borderLeft,
+        titleTextShadow,
+        tableBoxShadow,
+        tableBorder,
+        buttonBorder,
+        titleTypography,
+        slashTypography,
+        currTypography,
+        priceTypography,
+        dividerTypography,
+        durationTypography,
+        listTypography,
+        descTypography,
+        buttonTypography,
+        badgeTypography,
     } = props.attributes;
+
+    const loadStyles = () => {
+        const styles = {};
+
+        styles[`.${blockId} .premium-pricing-table__button_link:hover`] = {
+            'color': `${buttonStyles?.[0]?.btnHoverColor}!important`,
+            'background': `${buttonStyles?.[0]?.btnHoverBack}!important`
+        };
+
+        return generateCss(styles);
+    }
 
     const mainClasses = classnames(className, "premium-pricing-table");
 
     return (
         <div
-            id={`${mainClasses}-${block_id}`}
-            className={`${mainClasses} premium-pricing-table-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
-            style={{
+            className={`${mainClasses} ${blockId} ${hideDesktop || ''} ${hideTablet || ''} ${hideMobile || ''}`}
+            style={filterJsCss({
                 textAlign: contentAlign,
                 backgroundColor: tableStyles[0].tableBack,
-                borderStyle: tableStyles[0].borderType,
-                borderWidth: borderUpdated
-                    ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px`
-                    : tableStyles[0].borderWidth + "px",
-                borderRadius: tableStyles[0].borderRadius + "px",
-                borderColor: borderColor,
-                padding: tableStyles[0].tablePadding + "px",
-                boxShadow: `${tableStyles[0].tableShadowHorizontal}px ${tableStyles[0].tableShadowVertical}px ${tableStyles[0].tableShadowBlur}px ${tableStyles[0].tableShadowColor} ${tableStyles[0].tableShadowPosition}`
-            }}
+                borderStyle: tableBorder.borderType,
+                borderColor: tableBorder.borderColor,
+                boxShadow: `${tableBoxShadow.horizontal}px ${tableBoxShadow.vertical}px ${tableBoxShadow.blur}px ${tableBoxShadow.color} ${tableBoxShadow.position}`
+            })}
         >
             {badgeChecked && (
                 <div
@@ -69,7 +76,7 @@ const save = props => {
                 >
                     <div
                         className={`premium-pricing-table__badge`}
-                        style={{
+                        style={filterJsCss({
                             borderRightColor:
                                 "right" === badgeStyles[0].badgePos ? badgeStyles[0].badgeBack : "transparent",
                             borderTopColor: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeBack : "transparent",
@@ -77,120 +84,145 @@ const save = props => {
                             borderRightWidth: badgeStyles[0].badgeSize + "px",
                             borderTopWidth: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeSize + "px" : "none",
                             borderLeftWidth: "right" === badgeStyles[0].badgePos ? badgeStyles[0].badgeSize + "px" : "none"
-                        }}
+                        })}
                     >
                         <span
-                            style={{
+                            style={filterJsCss({
                                 color: badgeStyles[0].badgeColor,
-                                fontWeight: badgeStyles[0].badgeWeight,
-                                textTransform: badgeStyles[0].badgeUpper ? "uppercase" : "none",
-                                letterSpacing: badgeStyles[0].badgeLetter + "px",
-                                fontStyle: badgeStyles[0].badgeStyle,
+                                fontStyle: badgeTypography?.fontStyle,
+                                fontFamily: badgeTypography?.fontFamily,
+                                fontWeight: badgeTypography?.fontWeight,
+                                letterSpacing: badgeTypography?.letterSpacing,
+                                textDecoration: badgeTypography?.textDecoration,
+                                textTransform: badgeTypography?.textTransform,
+                                lineHeight: `${badgeTypography?.lineHeight}px`,
                                 width: badgeStyles[0].badgeWidth + "px",
                                 top: badgeStyles[0].badgeTop + "px",
                                 left: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeHorizontal + "px" : "auto",
                                 right: "right" === badgeStyles[0].badgePos ? badgeStyles[0].badgeHorizontal + "px" : "auto"
-                            }}
+                            })}
                         >
-                            {badgeStyles[0].badgeText}                       </span>
+                            {badgeStyles[0].badgeText}
+                        </span>
                     </div>
                 </div>
             )}
             {titleChecked && (
                 <div
                     className={`premium-pricing-table__title_wrap`}
-                    style={{
-                        marginTop: titleStyles[0].titleMarginT + "px",
-                        marginBottom: titleStyles[0].titleMarginB + "px",
+                    style={filterJsCss({
                         background: titleStyles[0].titleBack,
-                    }}
+                    })}
                 >
                     <RichText.Content
                         tagName={titleStyles[0].titleTag.toLowerCase()}
                         className={`premium-pricing-table__title`}
                         value={title}
-                        style={{
+                        style={filterJsCss({
                             color: titleStyles[0].titleColor,
-                            letterSpacing: titleStyles[0].titleLetter + "px",
-                            textTransform: titleStyles[0].titleUpper ? "uppercase" : "none",
-                            fontStyle: titleStyles[0].titleStyle,
-                            fontWeight: titleStyles[0].titleWeight,
-                            lineHeight: titleStyles[0].titleLine + "px",
-                            padding: titleStyles[0].titlePadding + "px",
-                            textShadow: `${titleStyles[0].titleShadowHorizontal}px ${titleStyles[0].titleShadowVertical}px ${titleStyles[0].titleShadowBlur}px ${titleStyles[0].titleShadowColor}`
-                        }}
+                            fontStyle: titleTypography?.fontStyle,
+                            fontFamily: titleTypography?.fontFamily,
+                            fontWeight: titleTypography?.fontWeight,
+                            letterSpacing: titleTypography?.letterSpacing,
+                            textDecoration: titleTypography?.textDecoration,
+                            textTransform: titleTypography?.textTransform,
+                            lineHeight: `${titleTypography?.lineHeight}px`,
+                            textShadow: `${titleTextShadow.horizontal}px ${titleTextShadow.vertical}px ${titleTextShadow.blur}px ${titleTextShadow.color}`
+                        })}
                     />
                 </div>
             )}
             {priceChecked && (
                 <div
                     className={`premium-pricing-table__price_wrap`}
-                    style={{
+                    style={filterJsCss({
                         backgroundColor: priceStyles[0].priceBack,
-                        marginTop: priceStyles[0].priceMarginT + "px",
-                        marginBottom: priceStyles[0].priceMarginB + "px",
-                        padding: priceStyles[0].pricePadding + "px",
                         justifyContent: contentAlign
-                    }}
+                    })}
                 >
                     {priceStyles[0].slashPrice && (
                         <strike
                             className={`premium-pricing-table__slash`}
-                            style={{
+                            style={filterJsCss({
                                 color: priceStyles[0].slashColor,
-                                fontWeight: priceStyles[0].slashWeight,
-                                alignSelf: priceStyles[0].slashV
-                            }}
+                                fontStyle: slashTypography?.fontStyle,
+                                fontFamily: slashTypography?.fontFamily,
+                                fontWeight: slashTypography?.fontWeight,
+                                letterSpacing: slashTypography?.letterSpacing,
+                                textDecoration: slashTypography?.textDecoration,
+                                textTransform: slashTypography?.textTransform,
+                                lineHeight: `${slashTypography?.lineHeight}px`,
+                            })}
                         >
-                            { priceStyles[0].slashPrice}
+                            {priceStyles[0].slashPrice}
                         </strike>
                     )}
                     {priceStyles[0].currPrice && (
                         <span
                             className={`premium-pricing-table__currency`}
-                            style={{
+                            style={filterJsCss({
                                 color: priceStyles[0].currColor,
-                                fontWeight: priceStyles[0].currWeight,
-                                alignSelf: priceStyles[0].currV
-                            }}
+                                fontStyle: currTypography?.fontStyle,
+                                fontFamily: currTypography?.fontFamily,
+                                fontWeight: currTypography?.fontWeight,
+                                letterSpacing: currTypography?.letterSpacing,
+                                textDecoration: currTypography?.textDecoration,
+                                textTransform: currTypography?.textTransform,
+                                lineHeight: `${currTypography?.lineHeight}px`,
+                            })}
                         >
-                            { priceStyles[0].currPrice}
+                            {priceStyles[0].currPrice}
                         </span>
                     )}
                     {priceStyles[0].valPrice && (
                         <span
                             className={`premium-pricing-table__val`}
-                            style={{
+                            style={filterJsCss({
                                 color: priceStyles[0].valColor,
-                                fontWeight: priceStyles[0].valWeight,
-                                alignSelf: priceStyles[0].valV
-                            }}
+                                fontStyle: priceTypography?.fontStyle,
+                                fontFamily: priceTypography?.fontFamily,
+                                fontWeight: priceTypography?.fontWeight,
+                                letterSpacing: priceTypography?.letterSpacing,
+                                textDecoration: priceTypography?.textDecoration,
+                                textTransform: priceTypography?.textTransform,
+                                lineHeight: `${priceTypography?.lineHeight}px`,
+                            })}
                         >
-                            { priceStyles[0].valPrice}
+                            {priceStyles[0].valPrice}
                         </span>
                     )}
                     {priceStyles[0].divPrice && (
                         <span
                             className={`premium-pricing-table__divider`}
-                            style={{
+                            style={filterJsCss({
                                 color: priceStyles[0].divColor,
-                                fontWeight: priceStyles[0].divWeight,
-                                alignSelf: priceStyles[0].divV
-                            }}
+                                fontStyle: dividerTypography?.fontStyle,
+                                fontFamily: dividerTypography?.fontFamily,
+                                fontWeight: dividerTypography?.fontWeight,
+                                letterSpacing: dividerTypography?.letterSpacing,
+                                textDecoration: dividerTypography?.textDecoration,
+                                textTransform: dividerTypography?.textTransform,
+                                lineHeight: `${dividerTypography?.lineHeight}px`,
+                            })}
                         >
-                            { priceStyles[0].divPrice}
+                            {priceStyles[0].divPrice}
                         </span>
                     )}
                     {priceStyles[0].durPrice && (
                         <span
                             className={`premium-pricing-table__dur`}
-                            style={{
+                            style={filterJsCss({
                                 color: priceStyles[0].durColor,
-                                fontWeight: priceStyles[0].durWeight,
-                                alignSelf: priceStyles[0].durV
-                            }}
+                                fontStyle: durationTypography?.fontStyle,
+                                fontFamily: durationTypography?.fontFamily,
+                                fontWeight: durationTypography?.fontWeight,
+                                letterSpacing: durationTypography?.letterSpacing,
+                                textDecoration: durationTypography?.textDecoration,
+                                textTransform: durationTypography?.textTransform,
+                                lineHeight: `${durationTypography?.lineHeight}px`,
+                            })}
                         >
-                            { priceStyles[0].durPrice}
+                            {priceStyles[0].durPrice}
                         </span>
                     )}
                 </div>
@@ -198,26 +230,22 @@ const save = props => {
             {listChecked && (
                 <div
                     className={`premium-pricing-table__list_wrap`}
-                    style={{
-                        marginTop: featureStyles[0].listMarginT + "px",
-                        marginBottom: featureStyles[0].listMarginB + "px"
-                    }}
                 >
                     <ul
                         className={`premium-pricing-table__list list-${featureStyles[0].listStyle}`}
-                        style={{
+                        style={filterJsCss({
                             color: featureStyles[0].listColor,
                             background: featureStyles[0].listBack,
-                            padding: featureStyles[0].listPadding + "px",
                             listStyle: "check" !== featureStyles[0].listStyle ? featureStyles[0].listStyle : "none",
                             listStylePosition: "inside",
-                            fontWeight: featureStyles[0].listWeight,
-                            textTransform: featureStyles[0].listUpper ? "uppercase" : "none",
-                            letterSpacing: featureStyles[0].listLetter + "px",
-                            fontStyle: featureStyles[0].listItemsStyle,
-                            lineHeight: featureStyles[0].listLine + "px",
-                            textAlign: featureStyles[0].featsAlign ? featureStyles[0].featsAlign : contentAlign
-                        }}
+                            fontStyle: listTypography?.fontStyle,
+                            fontFamily: listTypography?.fontFamily,
+                            fontWeight: listTypography?.fontWeight,
+                            letterSpacing: listTypography?.letterSpacing,
+                            textDecoration: listTypography?.textDecoration,
+                            textTransform: listTypography?.textTransform,
+                            lineHeight: `${listTypography?.lineHeight}px`,
+                        })}
                     >
                         {listItems}
                     </ul>
@@ -229,49 +257,45 @@ const save = props => {
                         tagName="p"
                         className={`premium-pricing-table__desc`}
                         value={desc}
-                        style={{
+                        style={filterJsCss({
                             color: descStyles[0].descColor,
                             background: descStyles[0].descBack,
-                            fontWeight: descStyles[0].descWeight,
-                            letterSpacing: descStyles[0].descLetter + "px",
-                            fontStyle: descStyles[0].descStyle,
-                            lineHeight: descStyles[0].descLine + "px",
-                            marginTop: descStyles[0].descMarginT + "px",
-                            marginBottom: descStyles[0].descMarginB + "px",
-                            padding: descStyles[0].descPadding + "px"
-                        }}
+                            fontStyle: descTypography?.fontStyle,
+                            fontFamily: descTypography?.fontFamily,
+                            fontWeight: descTypography?.fontWeight,
+                            letterSpacing: descTypography?.letterSpacing,
+                            textDecoration: descTypography?.textDecoration,
+                            textTransform: descTypography?.textTransform,
+                            lineHeight: `${descTypography?.lineHeight}px`,
+                        })}
                     />
                 </div>
             )}
             {btnChecked && (
                 <div
                     className={`premium-pricing-table__button`}
-                    style={{
+                    style={filterJsCss({
                         width: buttonStyles[0].btnWidth + "%"
-                    }}
+                    })}
                 >
                     <a
                         class={`premium-pricing-table__button_link`}
                         href={btnLink}
                         target={buttonStyles[0].btnTarget ? "_blank" : "_self"}
                         rel="noopener noreferrer"
-                        style={{
+                        style={filterJsCss({
                             color: buttonStyles[0].btnColor,
                             background: buttonStyles[0].btnBack ? buttonStyles[0].btnBack : "transparent",
-                            fontWeight: buttonStyles[0].btnWeight,
-                            letterSpacing: buttonStyles[0].btnLetter + "px",
-                            fontStyle: buttonStyles[0].btnStyle,
-                            lineHeight: buttonStyles[0].btnLine + "px",
-                            marginTop: buttonStyles[0].btnMarginT,
-                            marginBottom: buttonStyles[0].btnMarginB,
-                            padding: buttonStyles[0].btnPadding + buttonStyles[0].btnPaddingU,
-                            borderStyle: buttonStyles[0].btnBorderType,
-                            borderWidth: btnBorderUpdated
-                                ? `${btnBorderTop}px ${btnBorderRight}px ${btnBorderBottom}px ${btnBorderLeft}px`
-                                : buttonStyles[0].btnBorderWidth + "px",
-                            borderRadius: buttonStyles[0].btnBorderRadius + "px",
-                            borderColor: buttonStyles[0].btnBorderColor
-                        }}
+                            fontStyle: buttonTypography?.fontStyle,
+                            fontFamily: buttonTypography?.fontFamily,
+                            fontWeight: buttonTypography?.fontWeight,
+                            letterSpacing: buttonTypography?.letterSpacing,
+                            textDecoration: buttonTypography?.textDecoration,
+                            textTransform: buttonTypography?.textTransform,
+                            lineHeight: `${buttonTypography?.lineHeight}px`,
+                            borderStyle: buttonBorder.borderType,
+                            borderColor: buttonBorder.borderColor,
+                        })}
                     >
                         <RichText.Content
                             tagName="span"
@@ -279,19 +303,14 @@ const save = props => {
                                 setAttributes({ btnText: newText })
                             }
                             value={btnText}
-                            style={{
+                            style={filterJsCss({
                                 textTransform: buttonStyles[0].btnUpper ? "uppercase" : "none"
-                            }}
+                            })}
                         />
                     </a>
                     <style
                         dangerouslySetInnerHTML={{
-                            __html: [
-                                `#premium-pricing-table-${block_id} .premium-pricing-table__button_link:hover {`,
-                                `color: ${buttonStyles[0].btnHoverColor} !important;`,
-                                `background: ${buttonStyles[0].btnHoverBack} !important`,
-                                "}"
-                            ].join("\n")
+                            __html: loadStyles()
                         }}
                     />
                 </div>
