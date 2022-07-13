@@ -22,7 +22,6 @@ const { withSelect } = wp.data
 const {
     PanelBody,
     SelectControl,
-    TextareaControl,
     ToggleControl,
     Placeholder,
     Button
@@ -475,17 +474,17 @@ class Edit extends Component {
                                         /> */}
                                 {/* {videoDesc && ( */}
                                 {/* <Fragment> */}
-                                <TextareaControl
+                                {/* <TextareaControl
                                     label={__("Description Text", 'premium-blocks-for-gutenberg')}
                                     value={descStyles[0].videoDescText}
                                     onChange={newText => saveDescritionStyle({ videoDescText: newText })}
-                                />
+                                /> */}
                                 <PremiumTypo
                                     components={["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"]}
                                     value={videoDescTypography}
                                     onChange={newValue => setAttributes({ videoDescTypography: newValue })}
                                 />
-                                <ResponsiveSingleRangeControl
+                                {/* <ResponsiveSingleRangeControl
                                     label={__("Vertical Offset (%)", 'premium-blocks-for-gutenberg')}
                                     value={descStyles[0].descTop}
                                     onChange={newValue => saveDescritionStyle({ descTop: newValue === undefined ? 50 : newValue })}
@@ -498,7 +497,7 @@ class Edit extends Component {
                                     onChange={newValue => saveDescritionStyle({ videoDescBorderRadius: newValue === undefined ? 0 : newValue })}
                                     showUnit={false}
                                     defaultValue={0}
-                                />
+                                /> */}
                                 <PremiumShadow
                                     label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
                                     value={descShadow}
@@ -623,7 +622,7 @@ class Edit extends Component {
                                     }}
                                 />
                             )}
-                            {overlay && playIcon && <DefaultImage className="premium-video-box-image-container" />}
+                            {overlay && playIcon && !overlayStyles[0].overlayImgURL && <DefaultImage className="premium-video-box-image-container" />}
                             {overlay && playIcon && (
                                 <div
                                     className={`premium-video-box__play`}

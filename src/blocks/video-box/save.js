@@ -21,7 +21,6 @@ const save = props => {
         relatedVideos,
         mute,
         overlay,
-        videoDesc,
         playIcon,
         playLeft,
         hideDesktop,
@@ -74,10 +73,6 @@ const save = props => {
                 data-type={videoType}
                 style={filterJsCss({
                     borderStyle: boxBorder.borderType,
-                    // borderWidth: boxStyles[0].borderBoxUpdated
-                    //     ? `${boxStyles[0].boxBorderTop}px ${boxStyles[0].boxBorderRight}px ${boxStyles[0].boxBorderBottom}px ${boxStyles[0].boxBorderLeft}px`
-                    //     : boxStyles[0].boxBorderWidth + "px",
-                    // borderRadius: boxStyles[0].boxBorderRadius + "px",
                     borderColor: boxBorder.borderColor,
                     boxShadow: `${boxShadow.horizontal || 0}px ${boxShadow.vertical ||
                         0}px ${boxShadow.blur || 0}px ${boxShadow.color} ${boxShadow.position}`,
@@ -122,7 +117,7 @@ const save = props => {
                         })}
                     />
                 )}
-                {overlay && playIcon && <DefaultImage className="premium-video-box-image-container" />}
+                {overlay && playIcon && !overlayStyles[0].overlayImgURL && <DefaultImage className="premium-video-box-image-container" />}
                 {overlay && playIcon && (
                     <div
                         className={`premium-video-box__play`}
@@ -132,12 +127,7 @@ const save = props => {
                             color: playStyles[0].playColor,
                             backgroundColor: playStyles[0].playBack,
                             borderStyle: playBorder.borderType,
-                            // borderWidth: playStyles[0].borderPlayUpdated
-                            //     ? `${playStyles[0].playBorderTop}px ${playStyles[0].playBorderRight}px ${playStyles[0].playBorderBottom}px ${playStyles[0].playBorderLeft}px`
-                            //     : playStyles[0].playBorderWidth + "px",
-                            // borderRadius: playStyles[0].playBorderRadius + "px",
-                            borderColor: playBorder.borderColor,
-                            // padding: playStyles[0].playPadding + "px"
+                            borderColor: playBorder.borderColor
                         })}
                     >
                         <i

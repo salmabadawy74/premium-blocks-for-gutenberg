@@ -75,27 +75,6 @@ const videoBoxAttrs = {
         type: "string",
         default: '169'
     },
-    boxStyles: {
-        type: 'array',
-        default: [
-            {
-                // boxBorderType: 'none',
-                // boxBorderWidth: 1,
-                // boxBorderTop: '',
-                // boxBorderRight: '',
-                // boxBorderBottom: '',
-                // boxBorderLeft: '',
-                // boxBorderRadius: '',
-                // boxBorderColor: '',
-                // shadowColor: '',
-                // shadowBlur: '',
-                // shadowHorizontal: '',
-                // shadowVertical: '',
-                // shadowPosition: '',
-                // borderBoxUpdated: false
-            }
-        ]
-    },
     overlayStyles: {
         type: 'array',
         default: [
@@ -116,22 +95,11 @@ const videoBoxAttrs = {
             {
                 playTop: '',
                 playSize: '',
-                // playPadding: '',
-                // playBorderType: 'none',
-                // playBorderWidth: 1,
-                // playBorderRadius: '',
-                // playBorderColor: '',
-                // playBorderTop: '',
-                // playBorderRight: '',
-                // playBorderBottom: '',
-                // playBorderLeft: '',
                 playColor: '',
                 playBack: '',
                 playOpacity: 1,
                 playHoverColor: '',
-                playHoverBackColor: '',
-                // borderPlayUpdated: false
-
+                playHoverBackColor: ''
             }
         ]
 
@@ -141,21 +109,7 @@ const videoBoxAttrs = {
         default: [
             {
                 videoDescText: '',
-                // videoDescFamily: __('Default'),
-                // videoDescSize: '',
-                // videoDescSizeUnit: 'px',
-                // videoDescSizeMobile: '',
-                // videoDescSizeTablet: '',
-                // videoDescWeight: '',
-                // videoDescLetter: '',
-                // videoDescStyle: '',
-                // videoDescUpper: false,
-                // videoDescPadding: '',
                 videoDescBorderRadius: '',
-                // descShadowColor: '',
-                // descShadowBlur: 0,
-                // descShadowHorizontal: 0,
-                // descShadowVertical: 0,
                 descLeft: '',
                 descTop: '',
                 videoDescColor: '',
