@@ -1,7 +1,7 @@
 import classnames from "classnames"
+import { filterJsCss } from '../../components/HelperFunction';
 
 export default function save(props) {
-
     const { className } = props
 
     const {
@@ -28,21 +28,22 @@ export default function save(props) {
         fancyStyles,
         PreStyles,
         prefixTypography,
-        fancyTextTypography
+        fancyTextTypography,
+        fancyTextShadow
     } = props.attributes;
-
+    const mainClasses = classnames(className, 'premium-fancy-text');
     return (
         <div
-            className={classnames(className, `${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`)}
-            style={{
+        className={`${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+        style={filterJsCss({
                 textAlign: align,
-            }}
+            })}
         >
 
             {effect === "typing" ? (
                 <div
-                    id={`premium-fancy-text-${blockId}`}
-                    className={`premium-fancy-text`}
+                id={`premium-fancy-text-${blockId}`}
+                className={`premium-fancy-text`}
                     style={{
                         textAlign: align,
                     }}
@@ -61,34 +62,34 @@ export default function save(props) {
                     data-cursormark={`${cursorMark}`}
                 >
                     <span className={`premium-fancy-text-suffix-prefix premium-fancy-text-prefix-text`}
-                        style={{
+                        style={filterJsCss({
                             color: PreStyles[0].textColor,
                             backgroundColor: PreStyles[0].textBGColor,
-                            fontStyle: prefixTypography?.fontStyle,
-                            fontFamily: prefixTypography?.fontFamily,
-                            fontWeight: prefixTypography?.fontWeight,
-                            letterSpacing: prefixTypography?.letterSpacing,
-                            textDecoration: prefixTypography?.textDecoration,
-                            textTransform: prefixTypography?.textTransform,
-                            lineHeight: `${prefixTypography?.lineHeight}px`,
-                        }}
+                            fontStyle: prefixTypography.fontStyle,
+                            fontFamily: prefixTypography.fontFamily,
+                            fontWeight: prefixTypography.fontWeight,
+                            letterSpacing: prefixTypography.letterSpacing,
+                            textDecoration: prefixTypography.textDecoration,
+                            textTransform: prefixTypography.textTransform,
+                            lineHeight: `${prefixTypography.lineHeight}px`,
+                        })}
                     >
                         {prefix}{" "}
                     </span>
                     <span
                         className={`premium-fancy-text-title premium-fancy-text-title-type`}
-                        style={{
+                        style={filterJsCss({
                             color: fancyStyles[0].fancyTextColor,
                             backgroundColor: `${fancyStyles[0].fancyTextBGColor}`,
-                            textShadow: `${fancyStyles[0].shadowHorizontal}px ${fancyStyles[0].shadowVertical}px ${fancyStyles[0].shadowBlur}px ${fancyStyles[0].shadowColor}`,
-                            fontStyle: fancyTextTypography?.fontStyle,
-                            fontFamily: fancyTextTypography?.fontFamily,
-                            fontWeight: fancyTextTypography?.fontWeight,
-                            letterSpacing: fancyTextTypography?.letterSpacing,
-                            textDecoration: fancyTextTypography?.textDecoration,
-                            textTransform: fancyTextTypography?.textTransform,
-                            lineHeight: `${fancyTextTypography?.lineHeight}px`,
-                        }}
+                            textShadow: `${fancyTextShadow.horizontal}px ${fancyTextShadow.vertical}px ${fancyTextShadow.blur}px ${fancyTextShadow.color}`,
+                            fontStyle: fancyTextTypography.fontStyle,
+                            fontFamily: fancyTextTypography.fontFamily,
+                            fontWeight: fancyTextTypography.fontWeight,
+                            letterSpacing: fancyTextTypography.letterSpacing,
+                            textDecoration: fancyTextTypography.textDecoration,
+                            textTransform: fancyTextTypography.textTransform,
+                            lineHeight: `${fancyTextTypography.lineHeight}px`,
+                        })}
                         ref={(el) => {
                             this.el = el;
                         }}
@@ -150,7 +151,7 @@ export default function save(props) {
                         style={{
                             color: fancyStyles[0].fancyTextColor,
                             backgroundColor: `${fancyStyles[0].fancyTextBGColor}`,
-                            textShadow: `${fancyStyles[0].shadowHorizontal}px ${fancyStyles[0].shadowVertical}px ${fancyStyles[0].shadowBlur}px ${fancyStyles[0].shadowColor}`,
+                            textShadow: `${fancyTextShadow.horizontal}px ${fancyTextShadow.vertical}px ${fancyTextShadow.blur}px ${fancyTextShadow.color}`,
                             fontStyle: fancyTextTypography?.fontStyle,
                             fontFamily: fancyTextTypography?.fontFamily,
                             fontWeight: fancyTextTypography?.fontWeight,

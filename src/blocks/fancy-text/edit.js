@@ -106,12 +106,35 @@ class Edit extends Component {
         // if (!this.props.attributes.blockId) {
         //      setAttributes({ blockId: "premium-fancy-text-" + generateBlockId(clientId) });
         //  } 
-        const { attributes, clientId } = this.props;
-        if (!attributes.blockId) {
-            this.props.setAttributes({ blockId: "premium-fancy-text-" + generateBlockId(clientId) });
+        // const { attributes, clientId } = this.props;
+        // if (!attributes.blockId) {
+        //     this.props.setAttributes({ blockId: "premium-fancy-text-" + generateBlockId(clientId) });
+        // }
+        // this.props.setAttributes({ classMigrate: true });
+        // this.renderFancyText();
+
+        const { setAttributes, clientId } = this.props;
+        // Assigning id in the attribute.
+        if (!this.props.attributes.blockId) {
+            setAttributes({ blockId: "premium-fancy-text-" + generateBlockId(clientId) });
         }
-        this.props.setAttributes({ classMigrate: true });
-        this.renderFancyText();
+        setAttributes({ classMigrate: true });
+        this.getPreviewSize = this.getPreviewSize.bind(this);
+    }
+
+    getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
+        if (device === 'Mobile') {
+            if (undefined !== mobileSize && '' !== mobileSize) {
+                return mobileSize;
+            } else if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
+        } else if (device === 'Tablet') {
+            if (undefined !== tabletSize && '' !== tabletSize) {
+                return tabletSize;
+            }
+        }
+        return desktopSize;
     }
 
     componentDidUpdate() {
@@ -188,7 +211,8 @@ class Edit extends Component {
             fancyStyles,
             PreStyles,
             prefixTypography,
-            fancyTextTypography
+            fancyTextTypography,
+            fancyTextShadow
         } = attributes;
 
         const EFFECT = [
@@ -313,7 +337,7 @@ class Edit extends Component {
         .${blockId} .premium-fancy-text-title {
             color: ${fancyStyles[0].fancyTextColor};
             background-color: ${fancyStyles[0].fancyTextBGColor};
-            text-shadow: ${fancyStyles[0].shadowHorizontal}px ${fancyStyles[0].shadowVertical}px ${fancyStyles[0].shadowBlur}px ${fancyStyles[0].shadowColor};
+            text-shadow: ${fancyTextShadow?.horizontal}px ${fancyTextShadow?.vertical}px ${fancyTextShadow?.blur}px ${fancyTextShadow?.color};
             font-size: ${fancyTextTypography?.fontSize?.[this.props.deviceType]}${prefixTypography?.fontSize?.unit || 'px'};
             font-style: ${fancyTextTypography?.fontStyle};
             font-family: ${fancyTextTypography?.fontFamily};
@@ -341,7 +365,7 @@ class Edit extends Component {
         }
             `}
         </style>)
-        //const mainClasses = classnames(className, "premium-fancy-text");
+        const mainClasses = classnames(className, 'premium-fancy-text');
 
         return [
             renderCss,
@@ -558,15 +582,15 @@ class Edit extends Component {
                             onColorChange={newvalue => saveFancyStyle({ fancyTextBGColor: newvalue })}
                         />
                         <PremiumShadow
-                            label={__("Text Shadow", "premium-blocks-for-gutenberg")}
-                            color={fancyStyles[0].shadowColor}
-                            blur={fancyStyles[0].shadowBlur}
-                            horizontal={fancyStyles[0].shadowHorizontal}
-                            vertical={fancyStyles[0].shadowVertical}
-                            onChangeColor={(newColor) => saveFancyStyle({ shadowColor: newColor })}
-                            onChangeBlur={(newBlur) => saveFancyStyle({ shadowBlur: newBlur })}
-                            onChangehHorizontal={(newValue) => saveFancyStyle({ shadowHorizontal: newValue })}
-                            onChangeVertical={(newValue) => saveFancyStyle({ shadowVertical: newValue })}
+                            label={__(
+                                "Text Shadow",
+                                "premium-blocks-for-gutenberg"
+                            )}
+                            boxShadow={false}
+                            value={fancyTextShadow}
+                            onChange={(value) =>
+                                setAttributes({ fancyTextShadow: value })
+                            }
                         />
                         {effect == "typing" && cursorShow && (
                             <AdvancedPopColorControl
@@ -645,10 +669,9 @@ class Edit extends Component {
             ),
 
             <div
-                className={classnames(className, `${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`)}
-                style={{
-                    textAlign: align?.[this.props.deviceType],
-                }}
+            mainClasses
+                id={`premium-fancy-text-${blockId}`}
+                className={`${mainClasses} ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`}
             >
                 {effect === "typing" ? (
                     <div

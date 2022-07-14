@@ -920,6 +920,7 @@ class PBG_Blocks_Helper {
 		} else {
 			$unique_id = rand( 100, 10000 );
 		}
+		
 		if ( $this->it_is_not_amp() ) {
 			wp_enqueue_script(
 				'pbg-sectionfancy-text',
@@ -944,11 +945,11 @@ class PBG_Blocks_Helper {
 			);
 		}
 		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
-		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
+		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'fancy-text', $unique_id ) ) {
 			$css = $this->get_fancy_text_css_style( $attributes, $unique_id );
 
 			if ( ! empty( $css ) ) {
-				if ( $this->should_render_inline( 'accordion', $unique_id ) ) {
+				if ( $this->should_render_inline( 'fancy-text', $unique_id ) ) {
 					$content = '<style id="' . $style_id . '">' . $css . '</style>' . $content;
 				} else {
 					$this->render_inline_css( $css, $style_id, true );
@@ -992,7 +993,14 @@ class PBG_Blocks_Helper {
 			
 			$css->set_selector( '.' . $unique_id . ' .premium-fancy-text-title' );
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $fancy_size, 'Desktop', $fancy_size['unit'] ) );
+			
 		}
+		
+		if ( isset( $attr['fancyalign'] ) ) {
+			$css->set_selector( '.' . $unique_id . ' .premium-fancy-text-title-slide-list' );
+			$css->add_property( 'text-align', ( $attr['fancyalign']['Desktop'] ) );
+		}
+
 		// Prefix and Suffix Style
 		if ( isset( $attr['prefixTypography'] ) ) {
 			$prefix_typography = $attr['prefixTypography'];
@@ -1041,6 +1049,12 @@ class PBG_Blocks_Helper {
 			$css->set_selector( '.' . $unique_id . ' .premium-fancy-text-suffix-prefix' );
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $fancy_size, 'Tablet', $fancy_size['unit'] ) );
 		}
+
+		if ( isset( $attr['fancyalign'] ) ) {
+			$css->set_selector( '.' . $unique_id . ' .premium-fancy-text-title-slide-list' );
+			$css->add_property( 'text-align', ( $attr['fancyalign']['Tablet'] ) );
+		}
+
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['mobile'] );
 		// FancyText Style
@@ -1073,6 +1087,12 @@ class PBG_Blocks_Helper {
 			$css->set_selector( '.' . $unique_id . ' .premium-fancy-text-suffix-prefix' );
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $fancy_size, 'Mobile', $fancy_size['unit'] ) );
 		}
+
+		if ( isset( $attr['fancyalign'] ) ) {
+			$css->set_selector( '.' . $unique_id . ' .premium-fancy-text-title-slide-list' );
+			$css->add_property( 'text-align', ( $attr['fancyalign']['Mobile'] ) );
+		}
+
 		$css->stop_media_query();
 		return $css->css_output();
 

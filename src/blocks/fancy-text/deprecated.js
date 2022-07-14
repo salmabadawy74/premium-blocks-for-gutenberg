@@ -1,4 +1,5 @@
 import classnames from "classnames";
+import { generateBlockId } from '../../components/HelperFunction';	
 
 const { __ } = wp.i18n;
 
@@ -276,6 +277,47 @@ const new_Deprecated_Attributes2 = {
             Mobile: "center",
         }
     },
+    fancyStyles: {
+        type: "array",
+        default: [
+            {
+                fancyTextColor: "#6ec1e4",
+                fancyTextfontSize: 20,
+                fancyTextfontSizeUnit: 'px',
+                fancyTextfontSizeMobile: 20,
+                fancyTextfontSizeTablet: 20,
+                fancyTextBGColor: '',
+                fancyTextBGOpacity: 1,
+                fancyTextLetter: '',
+                fancyTextStyle: '',
+                fancyTextUpper: false,
+                fancyTextWeight: 600,
+                shadowColor: '',
+                shadowBlur: '0',
+                shadowHorizontal: '0',
+                shadowVertical: '0',
+                cursorColor: "#6ec1e4"
+            }
+        ]
+    },
+    PreStyles: {
+        type: "array",
+        default: [
+            {
+                textColor: "#54595f",
+                textLetter: '',
+                textStyle: '',
+                textUpper: false,
+                textWeight: 600,
+                textfontSize: 20,
+                textfontSizeUnit: 'px',
+                textfontSizeMobile: 20,
+                textfontSizeTablet: 20,
+                textBGColor: '',
+                textBGOpacity: 1,
+            }
+        ]
+    }
 
 }
 const deprecated_fancyAttributes2 = Object.assign(deprecated_fancyAttributes, new_Deprecated_Attributes2);
@@ -289,8 +331,7 @@ const deprecated = [
 
         migrate: (attributes) => {
             let newAttributes = {
-
-                blockId: attributes.block_id ? `premium-fancy-text-${attributes.block_id.split('-')[6]}` : '',
+                blockId: attributes.block_id ? "premium-fancy-text-" + generateBlockId(attributes.block_id) : '',	
                 fancyalign: {
                     Desktop: attributes.fancyalign,
                     Tablet: attributes.fancyalign,
@@ -300,6 +341,38 @@ const deprecated = [
                     Desktop: attributes.align,
                     Tablet: attributes.align,
                     Mobile: attributes.align,
+                },
+                prefixTypography: {
+                        // 'fontWeight': '',
+                        // 'fontStyle': '',
+                        // 'textTransform': '',
+                        // 'letterSpacing': '',
+                        // 'fontFamily': '',
+                        // 'lineHeight': '',
+                        // 'textDecoration': '',
+                        'fontSize': {
+                            "Desktop": '100',
+                            //"Desktop": attributes?.PreStyles[0]?.textfontSize || '',
+                            "Tablet": attributes?.PreStyles[0]?.textfontSizeTablet || '',
+                            "Mobile": attributes?.PreStyles[0]?.textfontSizeMobile || '',
+                            "unit": 'px'
+                        }
+
+                    },
+                fancyTextTypography: {
+                        'fontWeight': '',
+                        'fontStyle': '',
+                        'textTransform': '',
+                        'letterSpacing': '',
+                        'fontFamily': '',
+                        'lineHeight': '',
+                        'textDecoration': '',
+                        'fontSize': {
+                            "Desktop": attributes?.fancyStyles?.[0].fancyTextfontSize || '',
+                            "Tablet": attributes?.fancyStyles?.[0].fancyTextfontSizeTablet || '',
+                            "Mobile": attributes?.fancyStyles?.[0].fancyTextfontSizeMobile || '',
+                            "unit": 'px'
+                        }
                 }
             }
             return Object.assign(attributes, newAttributes)
@@ -335,7 +408,7 @@ const deprecated = [
 
             return (
                 <div
-                    className={classnames(className, `premium-block-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`)}
+                    className={`${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
                     style={{
                         textAlign: align,
                     }}

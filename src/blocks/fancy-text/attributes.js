@@ -110,10 +110,10 @@ const attributes = {
                 fancyTextColor: '#6ec1e4',
                 fancyTextBGColor: '',
                 fancyTextBGOpacity: 1,
-                shadowColor: '',
-                shadowBlur: '0',
-                shadowHorizontal: '0',
-                shadowVertical: '0',
+                // shadowColor: '',
+                // shadowBlur: '0',
+                // shadowHorizontal: '0',
+                // shadowVertical: '0',
                 cursorColor: "#6ec1e4"
             }
         ]
@@ -163,6 +163,16 @@ const attributes = {
                 "unit": 'px'
             }
         }
-    }
+    },
+    fancyTextShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
+    },
 }
 export default attributes
