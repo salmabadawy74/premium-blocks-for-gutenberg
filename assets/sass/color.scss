@@ -598,7 +598,7 @@
                 padding: 20px var(--cpm-ph) 1px var(--cpm-ph);
                 display: flex;
                 align-items: flex-end;
-                border-top: 1px solid #e1e1e1;
+                border-top: 1px solid $option-border-color;
 
                 fieldset {
                     flex: 1;
@@ -638,7 +638,7 @@
             .components-color-picker__hue-pointer,
             .components-color-picker__alpha-pointer,
             .components-color-picker__saturation-pointer {
-                border: 3px solid #e1e1e1;
+                border: 3px solid $option-border-color;
                 background: transparent !important;
                 box-shadow: 0 1px 4px rgba(0, 0, 0, 0.37),
                     inset 0 0 3px rgba(0, 0, 0, 0.2) !important;
@@ -670,7 +670,7 @@
                     height: 28px !important;
                     font-size: 11px !important;
                     padding-left: 38px !important;
-                    border: 1px solid #e1e1e1 !important;
+                    border: 1px solid $option-border-color !important;
                     border-radius: 0 !important;
                 }
 
@@ -738,7 +738,7 @@
                 border-radius: 0px;
                 margin-left: 5px;
                 cursor: pointer;
-                border: 1px solid #e1e1e1;
+                border: 1px solid $option-border-color;
                 transition: border-color 0.1s linear;
 
                 &:hover {

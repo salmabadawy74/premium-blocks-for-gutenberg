@@ -43,45 +43,40 @@ export default function save(props) {
             {...useBlockProps.save({
                 className: classnames(
                     className,
-                    `premium-content-switcher ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`
+                    `premium-content-switcher ${blockId} `, {
+                    ' premium-desktop-hidden': hideDesktop,
+                    ' premium-tablet-hidden': hideTablet,
+                    ' premium-mobile-hidden': hideMobile,
+                }
                 ),
             })}
         >
             <style>
                 {`
                     .${blockId} .premium-content-switcher-toggle-switch-slider:before {
-                        box-shadow: ${containerShadow.horizontal}px ${
-                    containerShadow.vertical
-                }px ${containerShadow.blur}px ${containerShadow.color} ${
-                    containerShadow.position
-                } !important;
-                        background-color: ${
-                            controllerOneBackground.backgroundType === "solid"
-                                ? controllerOneBackground.backgroundColor
-                                : "#6ec1e4"
-                        };
+                        box-shadow: ${containerShadow.horizontal}px ${containerShadow.vertical
+                    }px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position
+                    } !important;
+                        background-color: ${controllerOneBackground.backgroundType === "solid"
+                        ? controllerOneBackground.backgroundColor
+                        : "#6ec1e4"
+                    };
                         background-image: ${gradientValue(
-                            controllerOneBackground
-                        )};
-                        background-repeat: ${
-                            controllerOneBackground.backgroundRepeat
-                        };
-                        background-position: ${
-                            controllerOneBackground.backgroundPosition
-                        };
-                        background-size: ${
-                            controllerOneBackground.backgroundSize
-                        };
-                        background-attachment: ${
-                            controllerOneBackground.fixed ? "fixed" : "unset"
-                        };
+                        controllerOneBackground
+                    )};
+                        background-repeat: ${controllerOneBackground.backgroundRepeat
+                    };
+                        background-position: ${controllerOneBackground.backgroundPosition
+                    };
+                        background-size: ${controllerOneBackground.backgroundSize
+                    };
+                        background-attachment: ${controllerOneBackground.fixed ? "fixed" : "unset"
+                    };
                      }
                     .${blockId} .premium-content-switcher-toggle-switch-slider {
-                        box-shadow: ${switchShadow.horizontal}px ${
-                    switchShadow.vertical
-                }px ${switchShadow.blur}px ${switchShadow.color} ${
-                    switchShadow.position
-                } !important;
+                        box-shadow: ${switchShadow.horizontal}px ${switchShadow.vertical
+                    }px ${switchShadow.blur}px ${switchShadow.color} ${switchShadow.position
+                    } !important;
                     }
                  `}
             </style>
@@ -92,11 +87,9 @@ export default function save(props) {
                     ...gradientBackground(containerBackground),
                     borderStyle: containerborder?.borderType,
                     borderColor: containerborder?.borderColor,
-                    boxShadow: `${containerBoxShadow?.horizontal || 0}px ${
-                        containerBoxShadow?.vertical || 0
-                    }px ${containerBoxShadow?.blur || 0}px ${
-                        containerBoxShadow?.color
-                    } ${containerBoxShadow?.position}`,
+                    boxShadow: `${containerBoxShadow?.horizontal || 0}px ${containerBoxShadow?.vertical || 0
+                        }px ${containerBoxShadow?.blur || 0}px ${containerBoxShadow?.color
+                        } ${containerBoxShadow?.position}`,
                 })}
             >
                 <div className={`premium-content-switcher-toggle-${display}`}>
@@ -121,18 +114,13 @@ export default function save(props) {
                                     background: labelStyles?.firstLabelBGColor,
                                     borderStyle: firstLabelborder?.borderType,
                                     borderColor: firstLabelborder?.borderColor,
-                                    boxShadow: `${
-                                        firstLabelBoxShadow?.horizontal || 0
-                                    }px ${
-                                        firstLabelBoxShadow?.vertical || 0
-                                    }px ${firstLabelBoxShadow?.blur || 0}px ${
-                                        firstLabelBoxShadow?.color
-                                    } ${firstLabelBoxShadow?.position}`,
-                                    textShadow: `${
-                                        firstLabelShadow?.horizontal || 0
-                                    }px ${firstLabelShadow?.vertical || 0}px ${
-                                        firstLabelShadow?.blur || 0
-                                    }px ${firstLabelShadow?.color}`,
+                                    boxShadow: `${firstLabelBoxShadow?.horizontal || 0
+                                        }px ${firstLabelBoxShadow?.vertical || 0
+                                        }px ${firstLabelBoxShadow?.blur || 0}px ${firstLabelBoxShadow?.color
+                                        } ${firstLabelBoxShadow?.position}`,
+                                    textShadow: `${firstLabelShadow?.horizontal || 0
+                                        }px ${firstLabelShadow?.vertical || 0}px ${firstLabelShadow?.blur || 0
+                                        }px ${firstLabelShadow?.color}`,
                                 })}
                             />
                         </div>
@@ -174,18 +162,13 @@ export default function save(props) {
                                     background: labelStyles?.secondLabelBGColor,
                                     borderStyle: secondLabelborder?.borderType,
                                     borderColor: secondLabelborder?.borderColor,
-                                    boxShadow: `${
-                                        secondLabelBoxShadow?.horizontal || 0
-                                    }px ${
-                                        secondLabelBoxShadow?.vertical || 0
-                                    }px ${secondLabelBoxShadow?.blur || 0}px ${
-                                        secondLabelBoxShadow?.color
-                                    } ${secondLabelBoxShadow?.position}`,
-                                    textShadow: `${
-                                        secondLabelShadow?.horizontal || 0
-                                    }px ${secondLabelShadow?.vertical || 0}px ${
-                                        secondLabelShadow?.blur || 0
-                                    }px ${secondLabelShadow?.color}`,
+                                    boxShadow: `${secondLabelBoxShadow?.horizontal || 0
+                                        }px ${secondLabelBoxShadow?.vertical || 0
+                                        }px ${secondLabelBoxShadow?.blur || 0}px ${secondLabelBoxShadow?.color
+                                        } ${secondLabelBoxShadow?.position}`,
+                                    textShadow: `${secondLabelShadow?.horizontal || 0
+                                        }px ${secondLabelShadow?.vertical || 0}px ${secondLabelShadow?.blur || 0
+                                        }px ${secondLabelShadow?.color}`,
                                 })}
                             />
                         </div>

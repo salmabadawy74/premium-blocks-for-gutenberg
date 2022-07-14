@@ -306,7 +306,9 @@ class PremiumAccordion extends Component {
                                 initialOpen={false}
                             >
                                 <MultiButtonsControl
-                                    choices={[{ value: 'left', label: __('Left'), icon: Icons.alignLeft }, { value: 'center', label: __('Center'), icon: Icons.alignCenter }, { value: 'right', label: __('Right'), icon: Icons.alignRight }]}
+                                    choices={[{ value: 'left', label: __('Left'), icon: Icons.alignLeft },
+                                    { value: 'center', label: __('Center'), icon: Icons.alignCenter },
+                                    { value: 'right', label: __('Right'), icon: Icons.alignRight }]}
                                     value={descAlign}
                                     onChange={(align) => setAttributes({ descAlign: align })}
                                     label={__("Align Content", "premium-blocks-for-gutenberg")}
