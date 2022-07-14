@@ -1,3 +1,6 @@
+
+;
+
 .premium-typohraphy-value {
     display: flex;
     border-radius: 3px;
@@ -61,13 +64,13 @@
             }
             &:hover {
                 span {
-                    color: var(--primaryColor);
+                    color: $primary-color;
                 }
             }
         }
         > span.active {
             span {
-                color: var(--primaryColor);
+                color: $primary-color;
             }
         }
     }
@@ -145,12 +148,12 @@
         transition: box-shadow 0.1s cubic-bezier(0.455, 0.03, 0.515, 0.955),
             border-color 0.1s cubic-bezier(0.455, 0.03, 0.515, 0.955);
         &:hover {
-            border-color: var(--primaryColor);
+            border-color: $primary-color;
         }
     }
     li.active {
-        border-color: var(--primaryColor);
-        box-shadow: 0 0 0 1px var(--primaryColor);
+        border-color: $primary-color;
+        box-shadow: 0 0 0 1px $primary-color;
     }
     .premium-font {
         flex: 1;
@@ -354,7 +357,7 @@
             &:not(.active) {
                 color: #727c88;
                 &:hover {
-                    color: var(--primaryColor);
+                    color: $primary-color;
                 }
             }
             &:hover {
@@ -368,8 +371,8 @@
         li.active {
             z-index: 2;
             color: #fff;
-            background: var(--primaryColor);
-            border-color: var(--primaryColor);
+            background: $primary-color;
+            border-color: $primary-color;
         }
         li[data-variant="capitalize"] {
             &:before {
@@ -435,10 +438,10 @@
     }
     &:hover {
         color: #fff;
-        background: var(--primaryColor);
-        border-color: var(--primaryColor);
+        background: $primary-color;
+        border-color: $primary-color;
         &:after {
-            box-shadow: -5px 0px 15px 10px var(--primaryColor);
+            box-shadow: -5px 0px 15px 10px $primary-color;
         }
         + {
             * {
@@ -491,10 +494,10 @@
         }
         &:hover {
             color: #fff;
-            background: var(--primaryColor);
-            border-color: var(--primaryColor);
+            background: $primary-color;
+            border-color: $primary-color;
             &:after {
-                box-shadow: -5px 0px 15px 10px var(--primaryColor);
+                box-shadow: -5px 0px 15px 10px $primary-color;
             }
             + {
                 * {
@@ -505,10 +508,10 @@
     }
     li.active {
         color: #fff;
-        background: var(--primaryColor);
-        border-color: var(--primaryColor);
+        background: $primary-color;
+        border-color: $primary-color;
         &:after {
-            box-shadow: -5px 0px 15px 10px var(--primaryColor);
+            box-shadow: -5px 0px 15px 10px $primary-color;
         }
         + {
             * {
@@ -533,10 +536,10 @@
 }
 .premium-typography-single-font.active {
     color: #fff;
-    background: var(--primaryColor);
-    border-color: var(--primaryColor);
+    background: $primary-color;
+    border-color: $primary-color;
     &:after {
-        box-shadow: -5px 0px 15px 10px var(--primaryColor);
+        box-shadow: -5px 0px 15px 10px $primary-color;
     }
     + {
         * {

@@ -11,6 +11,9 @@ import RadioComponent from "../../components/radio-control";
 import PremiumShadow from "../../components/PremiumShadow";
 import InspectorTabs from "../../components/inspectorTabs";
 import InspectorTab from "../../components/inspectorTab";
+import MultiButtonsControl from '../../components/responsive-radio';
+import Icons from "../../components/icons";
+
 import {
     borderCss,
     generateBlockId,
@@ -195,7 +198,11 @@ export class edit extends Component {
             },
         ];
 
-        const mainClasses = classnames(className, "premium-banner");
+        const mainClasses = classnames(className, "premium-banner", {
+            ' premium-desktop-hidden': hideDesktop,
+            ' premium-tablet-hidden': hideTablet,
+            ' premium-mobile-hidden': hideMobile,
+        });
 
         const saveStyles = (value) => {
             const newUpdate = titleStyles.map((item, index) => {
@@ -230,9 +237,9 @@ export class edit extends Component {
                 background: background,
             };
             styles[`.${blockId} .premium-banner__img.premium-banner__active`] =
-                {
-                    background: `${background ? 1 - opacity / 100 : 1}`,
-                };
+            {
+                background: `${background ? 1 - opacity / 100 : 1}`,
+            };
 
             return generateCss(styles);
         };
@@ -250,12 +257,7 @@ export class edit extends Component {
                             className="components-toolbar__control"
                         />
                     </Toolbar>
-                    <AlignmentToolbar
-                        value={contentAlign}
-                        onChange={(newAlign) =>
-                            setAttributes({ contentAlign: newAlign })
-                        }
-                    />
+
                 </BlockControls>
             ),
             isSelected && imageURL && (
@@ -403,6 +405,14 @@ export class edit extends Component {
                                         setAttributes({ responsive: newValue })
                                     }
                                 />
+                                <MultiButtonsControl
+                                    choices={[{ value: 'left', label: __('Left'), icon: Icons.alignLeft },
+                                    { value: 'center', label: __('Center'), icon: Icons.alignCenter },
+                                    { value: 'right', label: __('Right'), icon: Icons.alignRight }]}
+                                    value={contentAlign}
+                                    onChange={(align) => setAttributes({ contentAlign: align })}
+                                    label={__("Align Content", "premium-blocks-for-gutenberg")}
+                                    showIcons={true} />
                             </PanelBody>
                             <PanelBody
                                 title={__(
@@ -751,7 +761,7 @@ export class edit extends Component {
             ),
             imageURL && (
                 <div
-                    className={`${mainClasses} premium-banner__responsive_${responsive} ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                    className={`${mainClasses} premium-banner__responsive_${responsive} ${blockId} `}
                     style={{
                         ...paddingCss(padding, deviceType),
                     }}
@@ -797,7 +807,7 @@ export class edit extends Component {
                             <div
                                 className={`premium-banner__title_wrap`}
                                 style={{
-                                    textAlign: contentAlign,
+                                    textAlign: contentAlign[this.props.deviceType],
                                 }}
                             >
                                 <RichText
@@ -822,7 +832,7 @@ export class edit extends Component {
                             <div
                                 className={`premium-banner__desc_wrap`}
                                 style={{
-                                    textAlign: contentAlign,
+                                    textAlign: contentAlign[this.props.deviceType],
                                 }}
                             >
                                 <RichText

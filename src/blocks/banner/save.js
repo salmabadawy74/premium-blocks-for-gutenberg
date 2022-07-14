@@ -42,7 +42,11 @@ const save = props => {
         blockId
     } = props.attributes;
 
-    const mainClasses = classnames(className, 'premium-banner');
+    const mainClasses = classnames(className, "premium-banner", {
+        ' premium-desktop-hidden': hideDesktop,
+        ' premium-tablet-hidden': hideTablet,
+        ' premium-mobile-hidden': hideMobile,
+    });
     const loadStyles = () => {
         const styles = {};
 
@@ -62,7 +66,7 @@ const save = props => {
     return (
         imageURL &&
         <div
-            className={`${mainClasses} premium-banner__responsive_${responsive} ${hideDesktop} ${hideTablet} ${hideMobile} ${blockId}`}
+            className={`${mainClasses} premium-banner__responsive_${responsive}  ${blockId}`}
         >
             <style
                 dangerouslySetInnerHTML={{

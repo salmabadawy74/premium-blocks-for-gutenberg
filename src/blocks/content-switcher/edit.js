@@ -685,22 +685,18 @@ function Edit(props) {
                             onChangeDesktop={(value) =>
                                 setAttributes({
                                     hideDesktop: value
-                                        ? " premium-desktop-hidden"
-                                        : "",
+
                                 })
                             }
                             onChangeTablet={(value) =>
                                 setAttributes({
                                     hideTablet: value
-                                        ? " premium-tablet-hidden"
-                                        : "",
+
                                 })
                             }
                             onChangeMobile={(value) =>
                                 setAttributes({
                                     hideMobile: value
-                                        ? " premium-mobile-hidden"
-                                        : "",
                                 })
                             }
                         />
@@ -711,60 +707,46 @@ function Edit(props) {
             <style>
                 {`
                      .${blockId} .premium-content-switcher-toggle-switch-slider:before {
-                        border-radius: ${
-                            containerRadius || 50
-                        }${containerRadiusUnit} !important;
-                        box-shadow: ${containerShadow.horizontal}px ${
-                    containerShadow.vertical
-                }px ${containerShadow.blur}px ${containerShadow.color} ${
-                    containerShadow.position
-                } !important;
-                        background-color: ${
-                            controllerOneBackground.backgroundType == "solid"
-                                ? controllerOneBackground.backgroundColor
-                                : "#6ec1e4"
-                        };
+                        border-radius: ${containerRadius || 50
+                    }${containerRadiusUnit} !important;
+                        box-shadow: ${containerShadow.horizontal}px ${containerShadow.vertical
+                    }px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position
+                    } !important;
+                        background-color: ${controllerOneBackground.backgroundType == "solid"
+                        ? controllerOneBackground.backgroundColor
+                        : "#6ec1e4"
+                    };
                         background-image: ${gradientValue(containerBackground)};
-                        background-repeat: ${
-                            controllerOneBackground.backgroundRepeat
-                        };
-                        background-position: ${
-                            controllerOneBackground.backgroundPosition
-                        };
-                        background-size: ${
-                            controllerOneBackground.backgroundSize
-                        };
-                        background-attachment: ${
-                            controllerOneBackground.fixed ? "fixed" : "unset"
-                        };
+                        background-repeat: ${controllerOneBackground.backgroundRepeat
+                    };
+                        background-position: ${controllerOneBackground.backgroundPosition
+                    };
+                        background-size: ${controllerOneBackground.backgroundSize
+                    };
+                        background-attachment: ${controllerOneBackground.fixed ? "fixed" : "unset"
+                    };
                      }
                     .${blockId} .premium-content-switcher-toggle-switch-slider {
                         border-radius: ${switchRadius}${switchRadiusUnit} !important;
-                         box-shadow: ${switchShadow.horizontal}px ${
-                    switchShadow.vertical
-                }px ${switchShadow.blur}px ${switchShadow.color} ${
-                    switchShadow.position
-                } !important;
+                         box-shadow: ${switchShadow.horizontal}px ${switchShadow.vertical
+                    }px ${switchShadow.blur}px ${switchShadow.color} ${switchShadow.position
+                    } !important;
                      }
                      .${blockId} .premium-content-switcher-toggle-inline .premium-content-switcher-first-label {
-                         margin-right: ${
-                             labelSpacing[props.deviceType]
-                         }px !important;
+                         margin-right: ${labelSpacing[props.deviceType]
+                    }px !important;
                     }
                     .${blockId} .premium-content-switcher-toggle-inline .premium-content-switcher-second-label {
-                        margin-left: ${
-                            labelSpacing[props.deviceType]
-                        }px !important;
+                        margin-left: ${labelSpacing[props.deviceType]
+                    }px !important;
                     }
                    .${blockId} .premium-content-switcher-toggle-block .premium-content-switcher-first-label {
-                         margin-bottom: ${
-                             labelSpacing[props.deviceType]
-                         }px !important;
+                         margin-bottom: ${labelSpacing[props.deviceType]
+                    }px !important;
                      }
                     .${blockId} .premium-content-switcher-toggle-block .premium-content-switcher-second-label {
-                        margin-top: ${
-                            labelSpacing[props.deviceType]
-                        }px !important;
+                        margin-top: ${labelSpacing[props.deviceType]
+                    }px !important;
                     }
                  `}
             </style>
@@ -772,7 +754,11 @@ function Edit(props) {
                 {...useBlockProps({
                     className: classnames(
                         className,
-                        `premium-content-switcher ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`
+                        `premium-content-switcher ${blockId} `, {
+                        ' premium-desktop-hidden': hideDesktop,
+                        ' premium-tablet-hidden': hideTablet,
+                        ' premium-mobile-hidden': hideMobile,
+                    }
                     ),
                 })}
                 style={{
@@ -787,11 +773,9 @@ function Edit(props) {
                         ...marginCss(containerMargin, props.deviceType),
                         ...gradientBackground(containerBackground),
                         textAlign: align[props.deviceType],
-                        boxShadow: `${containerBoxShadow.horizontal || 0}px ${
-                            containerBoxShadow.vertical || 0
-                        }px ${containerBoxShadow.blur || 0}px ${
-                            containerBoxShadow.color
-                        } ${containerBoxShadow.position}`,
+                        boxShadow: `${containerBoxShadow.horizontal || 0}px ${containerBoxShadow.vertical || 0
+                            }px ${containerBoxShadow.blur || 0}px ${containerBoxShadow.color
+                            } ${containerBoxShadow.position}`,
                     }}
                 >
                     <div
@@ -802,16 +786,16 @@ function Edit(props) {
                                 align[props.deviceType] == "right"
                                     ? "flex-end"
                                     : align[props.deviceType] == "left"
-                                    ? "flex-start"
-                                    : align[props.deviceType],
+                                        ? "flex-start"
+                                        : align[props.deviceType],
                             alignItems:
                                 display == "inline"
                                     ? "center"
                                     : align[props.deviceType] == "right"
-                                    ? "flex-end"
-                                    : align[props.deviceType] == "left"
-                                    ? "flex-start"
-                                    : align[props.deviceType],
+                                        ? "flex-end"
+                                        : align[props.deviceType] == "left"
+                                            ? "flex-start"
+                                            : align[props.deviceType],
                         }}
                     >
                         {showLabel && (
@@ -841,22 +825,15 @@ function Edit(props) {
                                         color: labelStyles.firstLabelColor,
                                         background:
                                             labelStyles.firstLabelBGColor,
-                                        textShadow: `${
-                                            firstLabelShadow.horizontal || 0
-                                        }px ${
-                                            firstLabelShadow.vertical || 0
-                                        }px ${firstLabelShadow.blur || 0}px ${
-                                            firstLabelShadow.color
-                                        }`,
-                                        boxShadow: `${
-                                            firstLabelBoxShadow.horizontal || 0
-                                        }px ${
-                                            firstLabelBoxShadow.vertical || 0
-                                        }px ${
-                                            firstLabelBoxShadow.blur || 0
-                                        }px ${firstLabelBoxShadow.color} ${
-                                            firstLabelBoxShadow.position
-                                        }`,
+                                        textShadow: `${firstLabelShadow.horizontal || 0
+                                            }px ${firstLabelShadow.vertical || 0
+                                            }px ${firstLabelShadow.blur || 0}px ${firstLabelShadow.color
+                                            }`,
+                                        boxShadow: `${firstLabelBoxShadow.horizontal || 0
+                                            }px ${firstLabelBoxShadow.vertical || 0
+                                            }px ${firstLabelBoxShadow.blur || 0
+                                            }px ${firstLabelBoxShadow.color} ${firstLabelBoxShadow.position
+                                            }`,
                                     }}
                                 />
                             </div>
@@ -913,22 +890,15 @@ function Edit(props) {
                                         color: labelStyles.secondLabelColor,
                                         background:
                                             labelStyles.secondLabelBGColor,
-                                        textShadow: `${
-                                            secondLabelShadow.horizontal || 0
-                                        }px ${
-                                            secondLabelShadow.vertical || 0
-                                        }px ${secondLabelShadow.blur || 0}px ${
-                                            secondLabelShadow.color
-                                        }`,
-                                        boxShadow: `${
-                                            secondLabelBoxShadow.horizontal || 0
-                                        }px ${
-                                            secondLabelBoxShadow.vertical || 0
-                                        }px ${
-                                            secondLabelBoxShadow.blur || 0
-                                        }px ${secondLabelBoxShadow.color} ${
-                                            secondLabelBoxShadow.position
-                                        }`,
+                                        textShadow: `${secondLabelShadow.horizontal || 0
+                                            }px ${secondLabelShadow.vertical || 0
+                                            }px ${secondLabelShadow.blur || 0}px ${secondLabelShadow.color
+                                            }`,
+                                        boxShadow: `${secondLabelBoxShadow.horizontal || 0
+                                            }px ${secondLabelBoxShadow.vertical || 0
+                                            }px ${secondLabelBoxShadow.blur || 0
+                                            }px ${secondLabelBoxShadow.color} ${secondLabelBoxShadow.position
+                                            }`,
                                     }}
                                 />
                             </div>

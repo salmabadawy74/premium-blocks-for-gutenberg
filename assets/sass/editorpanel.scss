@@ -21,12 +21,12 @@
 /******************* Toggle Control  *************************/
 /************************************************************/
 /******************* Sortable element  *************************/
-:root {
-    --primarycolor: #007cba;
-    --accentcolorhover: #135e96;
-    --optionbordercolor: #e1e1e1;
-    --inputbordercolor: #e1e1e1;
-}
+
+    $primary-color: #007cba;
+    $accent-color-hover: #135e96;
+    $option-border-color: #e1e1e1;
+    $input-border-color: #e1e1e1;
+
 .premium-panel-body {
     p.premium-editor-paragraph {
         margin-bottom: 0;
@@ -398,7 +398,7 @@
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
-    border: 1px solid #e1e1e1;
+    border: 1px solid $option-border-color;
     align-items: center;
 }
 .premium-repeater-item__dragHandle {
@@ -432,7 +432,7 @@
     justify-content: center;
     border: none;
     padding: 15px 10px;
-    border-left: 1px solid #e1e1e1;
+    border-left: 1px solid $option-border-color;
     width: 40px;
 }
 .components-panel {
@@ -3783,7 +3783,7 @@ i.fipicon-angle-left {
                 padding: 20px var(--cpm-ph) 1px var(--cpm-ph);
                 display: flex;
                 align-items: flex-end;
-                border-top: 1px solid #e1e1e1;
+                border-top: 1px solid $option-border-color;
                 .components-base-control__field {
                     position: relative;
                     label {
@@ -3818,7 +3818,7 @@ i.fipicon-angle-left {
                     height: 28px !important;
                     font-size: 11px !important;
                     padding-left: 38px !important;
-                    border: 1px solid #e1e1e1 !important;
+                    border: 1px solid $option-border-color !important;
                     border-radius: 0 !important;
                 }
                 > .components-color-picker__inputs-fields {
@@ -3856,7 +3856,7 @@ i.fipicon-angle-left {
                 border-radius: 0px;
                 margin-left: 5px;
                 cursor: pointer;
-                border: 1px solid #e1e1e1;
+                border: 1px solid $option-border-color;
                 transition: border-color 0.1s linear;
                 &:hover {
                     background-color: rgba(238, 238, 238, 0.65);

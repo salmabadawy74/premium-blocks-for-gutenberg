@@ -19,11 +19,11 @@
         }
     }
     .components-input-control__container .components-input-control__backdrop {
-        border-color: #e1e1e1 !important;
+        border-color: $option-border-color !important;
     }
     .components-text-control__input[type="number"] {
         border-radius: 0px;
-        border: 1px solid #e1e1e1;
+        border: 1px solid $option-border-color;
     }
     .components-form-toggle
         .components-form-toggle__input:focus
@@ -35,7 +35,7 @@
 
 .premium-inspector-tab {
     .components-text-control__input[type="text"] {
-        border: 1px solid #e1e1e1 !important;
+        border: 1px solid $option-border-color !important;
     }
     .components-text-control__input:focus,
     .components-text-control__input[type="color"]:focus,

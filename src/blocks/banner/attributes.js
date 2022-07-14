@@ -26,9 +26,9 @@ const attributes = {
         type: "object",
         default: {
             'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': '',
+            'blur': '10',
+            'horizontal': '0',
+            'vertical': '0',
         }
     },
     descStyles: {
@@ -84,8 +84,12 @@ const attributes = {
         default: __("Cool Description!!", 'premium-blocks-for-gutenberg')
     },
     contentAlign: {
-        type: "string",
-        default: "left"
+        type: 'object',
+        default: {
+            Desktop: 'left',
+            Tablet: 'left',
+            Mobile: 'left',
+        }
     },
     effect: {
         type: "string",
@@ -161,15 +165,15 @@ const attributes = {
 
     hideDesktop: {
         type: 'boolean',
-        default: false
+
     },
     hideTablet: {
         type: 'boolean',
-        default: false
+
     },
     hideMobile: {
         type: 'boolean',
-        default: false
+
     },
     classMigrate: {
         type: "boolean",
@@ -249,7 +253,7 @@ const attributes = {
     titleTypography: {
         type: "object",
         default: {
-            "fontWeight": '',
+            "fontWeight": '400',
             'fontStyle': '',
 
             'letterSpacing': {
@@ -258,7 +262,7 @@ const attributes = {
                 "Mobile": '',
                 "unit": 'px'
             },
-            'fontFamily': '',
+            'fontFamily': 'Default',
             'lineHeight': {
                 'Desktop': '',
                 "Tablet": '',

@@ -13,7 +13,7 @@ const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { PanelBody, SelectControl, TextControl, ToggleControl, TabPanel } = wp.components;
 const { BlockControls, InspectorControls, AlignmentToolbar, RichText, URLInput } = wp.blockEditor;
-import { generateBlockId, generateCss, typographyCss, padddingCss, marginCss, borderCss } from "../../components/HelperFunction";
+import { generateBlockId, generateCss, typographyCss, paddingCss, marginCss, borderCss } from "../../components/HelperFunction";
 import SpacingComponent from '../../components/premium-responsive-spacing';
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
@@ -859,7 +859,7 @@ class PremiumPricingTable extends Component {
                     backgroundColor: tableStyles[0].tableBack,
                     boxShadow: `${tableBoxShadow.horizontal}px ${tableBoxShadow.vertical}px ${tableBoxShadow.blur}px ${tableBoxShadow.color} ${tableBoxShadow.position}`,
                     ...borderCss(tableBorder, this.props.deviceType),
-                    ...padddingCss(tablePadding, this.props.deviceType)
+                    ...paddingCss(tablePadding, this.props.deviceType)
                 }}
             >
                 {badgeChecked && (
@@ -911,7 +911,7 @@ class PremiumPricingTable extends Component {
                             style={{
                                 color: titleStyles[0].titleColor,
                                 textShadow: `${titleTextShadow.horizontal}px ${titleTextShadow.vertical}px ${titleTextShadow.blur}px ${titleTextShadow.color}`,
-                                ...padddingCss(titlePadding, this.props.deviceType),
+                                ...paddingCss(titlePadding, this.props.deviceType),
                                 ...typographyCss(titleTypography, this.props.deviceType)
                             }}
                         />
@@ -924,7 +924,7 @@ class PremiumPricingTable extends Component {
                             backgroundColor: priceStyles[0].priceBack,
                             justifyContent: contentAlign,
                             ...marginCss(priceMargin, this.props.deviceType),
-                            ...padddingCss(pricePadding, this.props.deviceType)
+                            ...paddingCss(pricePadding, this.props.deviceType)
                         }}
                     >
                         {priceStyles[0].slashPrice && (
@@ -1009,7 +1009,7 @@ class PremiumPricingTable extends Component {
                                 listStyle: "check" !== featureStyles[0].listStyle ? featureStyles[0].listStyle : "none",
                                 listStylePosition: "inside",
                                 textAlign: featureAlign?.[this.props.deviceType] || contentAlign,
-                                ...padddingCss(featuresListPadding, this.props.deviceType),
+                                ...paddingCss(featuresListPadding, this.props.deviceType),
                                 ...typographyCss(listTypography, this.props.deviceType)
                             }}
                         />
@@ -1027,7 +1027,7 @@ class PremiumPricingTable extends Component {
                                 color: descStyles[0].descColor,
                                 background: descStyles[0].descBack,
                                 ...marginCss(descriptionMargin, this.props.deviceType),
-                                ...padddingCss(descriptionPadding, this.props.deviceType),
+                                ...paddingCss(descriptionPadding, this.props.deviceType),
                                 ...typographyCss(descTypography, this.props.deviceType)
                             }}
                         />
@@ -1048,7 +1048,7 @@ class PremiumPricingTable extends Component {
                                 color: buttonStyles[0].btnColor,
                                 background: buttonStyles[0].btnBack ? buttonStyles[0].btnBack : "transparent",
                                 ...marginCss(buttonMargin, this.props.deviceType),
-                                ...padddingCss(buttonPadding, this.props.deviceType),
+                                ...paddingCss(buttonPadding, this.props.deviceType),
                                 ...borderCss(buttonBorder, this.props.deviceType),
                                 ...typographyCss(buttonTypography, this.props.deviceType)
                             }}
