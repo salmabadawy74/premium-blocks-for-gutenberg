@@ -15,6 +15,7 @@ registerBlockType("premium/banner", {
     icon: PBG_Block_Icons.banner,
     category: "premium-blocks",
     attributes: attributes,
+    keywords: [__('image', 'premium-blocks-for-gutenberg'), __('photo', 'premium-blocks-for-gutenberg')],
     supports: {
         inserter: banner
     },

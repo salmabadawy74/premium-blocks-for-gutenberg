@@ -59,16 +59,8 @@ class edit extends Component {
             link,
             url,
             gutter,
-            blur,
-            bright,
-            contrast,
-            saturation,
-            hue,
-            blurHover,
-            brightHover,
-            contrastHover,
-            saturationHover,
-            hueHover,
+            imgFilter,
+            imgFilterHover,
             linkTarget,
             iconStyles,
             imgHeight,
@@ -114,19 +106,22 @@ class edit extends Component {
                     text-align: ${align[this.props.deviceType]};
                 }
                 .${blockId} .premium-image-separator-container:hover img{
-                    filter:  brightness( ${brightHover}% ) contrast( ${contrastHover}% ) saturate( ${saturationHover}% ) blur( ${blurHover}px ) hue-rotate( ${hueHover}deg ) !important ;
+                    filter:  brightness( ${imgFilterHover?.bright}% ) contrast( ${imgFilterHover?.contrast}% ) saturate( ${imgFilterHover?.saturation}% ) blur( ${imgFilterHover?.blur}px ) hue-rotate( ${imgFilterHover?.hue}deg ) !important ;
                 }
                 .${blockId} .premium-image-separator-container i:hover {
                     color: ${iconStyles[0].iconColorHover} !important;
-                    background-color: ${
-                        iconStyles[0].iconBGColorHover
+                    background-color: ${iconStyles[0].iconBGColorHover
                     } !important;
                 }
             `}
             </style>
         );
 
-        const mainClasses = classnames(className, "premium-image-separator");
+        const mainClasses = classnames(className, "premium-image-separator", {
+            ' premium-desktop-hidden': hideDesktop,
+            ' premium-tablet-hidden': hideTablet,
+            ' premium-mobile-hidden': hideMobile,
+        });
 
         return [
             isSelected && (
@@ -412,82 +407,15 @@ class edit extends Component {
                                     <InsideTabs>
                                         <InsideTab tabTitle={__("Normal")}>
                                             <PremiumFilters
-                                                blur={blur}
-                                                bright={bright}
-                                                contrast={contrast}
-                                                saturation={saturation}
-                                                hue={hue}
-                                                onChangeBlur={(newSize) =>
-                                                    setAttributes({
-                                                        blur: newSize,
-                                                        change: true,
-                                                    })
-                                                }
-                                                onChangeBright={(newSize) =>
-                                                    setAttributes({
-                                                        bright: newSize,
-                                                        change: true,
-                                                    })
-                                                }
-                                                onChangeContrast={(newSize) =>
-                                                    setAttributes({
-                                                        contrast: newSize,
-                                                        change: true,
-                                                    })
-                                                }
-                                                onChangeSat={(newSize) =>
-                                                    setAttributes({
-                                                        saturation: newSize,
-                                                        change: true,
-                                                    })
-                                                }
-                                                onChangeHue={(newSize) =>
-                                                    setAttributes({
-                                                        hue: newSize,
-                                                        change: true,
-                                                    })
-                                                }
+                                                value={imgFilter}
+                                                onChange={(value) => setAttributes({ imgFilter: value })}
                                             />
                                         </InsideTab>
                                         <InsideTab tabTitle={__("Hover")}>
                                             <PremiumFilters
                                                 label={__("Hover CSS Filters")}
-                                                blur={blurHover}
-                                                bright={brightHover}
-                                                contrast={contrastHover}
-                                                saturation={saturationHover}
-                                                hue={hueHover}
-                                                onChangeBlur={(newSize) =>
-                                                    setAttributes({
-                                                        blurHover: newSize,
-                                                        change: true,
-                                                    })
-                                                }
-                                                onChangeBright={(newSize) =>
-                                                    setAttributes({
-                                                        brightHover: newSize,
-                                                        change: true,
-                                                    })
-                                                }
-                                                onChangeContrast={(newSize) =>
-                                                    setAttributes({
-                                                        contrastHover: newSize,
-                                                        change: true,
-                                                    })
-                                                }
-                                                onChangeSat={(newSize) =>
-                                                    setAttributes({
-                                                        saturationHover:
-                                                            newSize,
-                                                        change: true,
-                                                    })
-                                                }
-                                                onChangeHue={(newSize) =>
-                                                    setAttributes({
-                                                        hueHover: newSize,
-                                                        change: true,
-                                                    })
-                                                }
+                                                value={imgFilterHover}
+                                                onChange={(value) => setAttributes({ imgFilterHover: value })}
                                             />
                                         </InsideTab>
                                     </InsideTabs>
@@ -611,10 +539,6 @@ class edit extends Component {
                                     <PremiumBorder
                                         label={__("Border")}
                                         value={iconBorder}
-                                        borderType={iconBorder.borderType}
-                                        borderColor={iconBorder.borderColor}
-                                        borderWidth={iconBorder.borderWidth}
-                                        borderRadius={iconBorder.borderRadius}
                                         onChange={(value) =>
                                             setAttributes({ iconBorder: value })
                                         }
@@ -696,7 +620,7 @@ class edit extends Component {
             ),
             renderCss,
             <div
-                className={`${mainClasses} ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                className={`${mainClasses} ${blockId}`}
                 style={{ textAlign: align[this.props.deviceType] }}
             >
                 <div
@@ -706,7 +630,7 @@ class edit extends Component {
                         transform: `translateY(${gutter}%)`,
                         filter:
                             iconType === "image"
-                                ? `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
+                                ? `brightness( ${imgFilter?.bright}% ) contrast( ${imgFilter?.contrast}% ) saturate( ${imgFilter?.saturation}% ) blur( ${imgFilter?.blur}px ) hue-rotate( ${imgFilter?.hue}deg )`
                                 : "",
                     }}
                 >
@@ -724,18 +648,15 @@ class edit extends Component {
                                     iconSize.unit,
                                 color: iconStyles[0].iconColor,
                                 backgroundColor: iconStyles[0].iconBGColor,
-                                textShadow: `${iconShadow.horizontal || 0}px ${
-                                    iconShadow.vertical || 0
-                                }px ${iconShadow.blur || 0}px ${
-                                    iconShadow.color
-                                }`,
+                                textShadow: `${iconShadow.horizontal || 0}px ${iconShadow.vertical || 0
+                                    }px ${iconShadow.blur || 0}px ${iconShadow.color
+                                    }`,
                                 borderRadius: iconStyles[0].advancedBorder
                                     ? iconStyles[0].advancedBorderValue
-                                    : `${
-                                          iconBorder.borderRadius[
-                                              this.props.deviceType
-                                          ].top
-                                      }px`,
+                                    : `${iconBorder.borderRadius[
+                                        this.props.deviceType
+                                    ].top
+                                    }px`,
                             }}
                         />
                     )}
@@ -769,11 +690,10 @@ class edit extends Component {
                                         borderRadius: iconStyles[0]
                                             .advancedBorder
                                             ? iconStyles[0].advancedBorderValue
-                                            : `${
-                                                  iconBorder.borderRadius[
-                                                      this.props.deviceType
-                                                  ].top
-                                              }px`,
+                                            : `${iconBorder.borderRadius[
+                                                this.props.deviceType
+                                            ].top
+                                            }px`,
                                     }}
                                 />
                             ) : (
@@ -804,12 +724,12 @@ class edit extends Component {
                             )}
                         </Fragment>
                     )}
-                    {/* {link && (
+                    {link && (
                         <a
                             className="premium-image-separator-link"
                             href={`${url}`}
                         ></a>
-                    )} */}
+                    )}
                 </div>
             </div>,
         ];

@@ -160,9 +160,7 @@ const deprecated = [
         },
         migrate: (attributes) => {
             let newAttributes = {
-                hideDesktop: '',
-                hideTablet: '',
-                hideMobile: '',
+
                 blockId: attributes.block_id ? `premium-image-separator-${attributes.block_id.split('-')[6]}` : '',
                 align: {
                     "Desktop": attributes.align,
@@ -251,6 +249,20 @@ const deprecated = [
                     'blur': attributes.iconStyles[0].iconShadowBlur,
                     'horizontal': attributes.iconStyles[0].iconShadowHorizontal,
                     'vertical': attributes.iconStyles[0].iconShadowVertical
+                },
+                imgFilter: {
+                    'contrast': attributes.contrast,
+                    'blur': attributes.blur,
+                    'bright': attributes.bright,
+                    'saturation': attributes.saturation,
+                    'hue': attributes.hue
+                },
+                imgFilterHover: {
+                    'contrast': attributes.contrastHover,
+                    'blur': attributes.blurHover,
+                    'bright': attributes.brightHover,
+                    'saturation': attributes.saturationHover,
+                    'hue': attributes.hueHover
                 }
             }
             return Object.assign(attributes, newAttributes)

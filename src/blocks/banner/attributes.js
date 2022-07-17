@@ -25,7 +25,7 @@ const attributes = {
     titleTextShadow: {
         type: "object",
         default: {
-            'color': '',
+            'color': "undefined",
             'blur': '10',
             'horizontal': '0',
             'vertical': '0',

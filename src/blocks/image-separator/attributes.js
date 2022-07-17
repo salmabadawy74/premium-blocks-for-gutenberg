@@ -38,46 +38,66 @@ const imageSeparatorAttrs = {
         type: "number",
         default: -50
     },
-    blur: {
-        type: "number",
-        default: "0"
+    imgFilter: {
+        type: "object",
+        default: {
+            'contrast': '100',
+            'blur': '0',
+            'bright': '100',
+            'saturation': '100',
+            'hue': '0'
+        }
     },
-    bright: {
-        type: "number",
-        default: "100"
+    imgFilterHover: {
+        type: "object",
+        default: {
+            'contrast': '100',
+            'blur': '0',
+            'bright': '100',
+            'saturation': '100',
+            'hue': '0'
+        }
     },
-    contrast: {
-        type: "number",
-        default: "100"
-    },
-    saturation: {
-        type: "number",
-        default: "100"
-    },
-    hue: {
-        type: "number",
-        default: "0"
-    },
-    blurHover: {
-        type: "number",
-        default: "0"
-    },
-    brightHover: {
-        type: "number",
-        default: "100"
-    },
-    contrastHover: {
-        type: "number",
-        default: "100"
-    },
-    saturationHover: {
-        type: "number",
-        default: "100"
-    },
-    hueHover: {
-        type: "number",
-        default: "0"
-    },
+    // blur: {
+    //     type: "number",
+    //     default: "0"
+    // },
+    // bright: {
+    //     type: "number",
+    //     default: "100"
+    // },
+    // contrast: {
+    //     type: "number",
+    //     default: "100"
+    // },
+    // saturation: {
+    //     type: "number",
+    //     default: "100"
+    // },
+    // hue: {
+    //     type: "number",
+    //     default: "0"
+    // },
+    // blurHover: {
+    //     type: "number",
+    //     default: "0"
+    // },
+    // brightHover: {
+    //     type: "number",
+    //     default: "100"
+    // },
+    // contrastHover: {
+    //     type: "number",
+    //     default: "100"
+    // },
+    // saturationHover: {
+    //     type: "number",
+    //     default: "100"
+    // },
+    // hueHover: {
+    //     type: "number",
+    //     default: "0"
+    // },
 
     linkTarget: {
         type: "boolean",
@@ -142,7 +162,7 @@ const imageSeparatorAttrs = {
     iconBorder: {
         type: "object",
         default: {
-            "borderType": "",
+            "borderType": "none",
             "borderColor": "",
             "borderWidth": {
                 Desktop: {
