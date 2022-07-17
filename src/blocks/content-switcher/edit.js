@@ -1,12 +1,7 @@
 import { __ } from "@wordpress/i18n";
 import classnames from "classnames";
 import { withSelect } from "@wordpress/data";
-import {
-    InspectorControls,
-    RichText,
-    useBlockProps,
-    InnerBlocks,
-} from "@wordpress/block-editor";
+import { InspectorControls, RichText, useBlockProps, InnerBlocks } from "@wordpress/block-editor";
 import { Fragment, useEffect, useState, useRef } from "@wordpress/element";
 import { PanelBody, SelectControl, ToggleControl } from "@wordpress/components";
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
@@ -181,9 +176,7 @@ function Edit(props) {
         loadSecondLabelGoogleFonts = (
             <GoogleFontLoader
                 fonts={[
-                    {
-                        font: secondLabelTypography.fontFamily,
-                    },
+                    { font: secondLabelTypography.fontFamily },
                 ]}
             />
         );
@@ -399,22 +392,8 @@ function Edit(props) {
                                     <InsideTab tabTitle={__("First Label")}>
                                         <Fragment>
                                             <PremiumTypo
-                                                components={[
-                                                    "responsiveSize",
-                                                    "weight",
-                                                    "line",
-                                                    "style",
-                                                    "upper",
-                                                    "spacing",
-                                                    "family",
-                                                ]}
                                                 value={firstLabelTypography}
-                                                onChange={(newValue) =>
-                                                    setAttributes({
-                                                        firstLabelTypography:
-                                                            newValue,
-                                                    })
-                                                }
+                                                onChange={(newValue) => setAttributes({ firstLabelTypography: newValue })}
                                             />
                                             <AdvancedPopColorControl
                                                 label={__(
@@ -506,22 +485,8 @@ function Edit(props) {
                                     <InsideTab tabTitle={__("Second Label")}>
                                         <Fragment>
                                             <PremiumTypo
-                                                components={[
-                                                    "responsiveSize",
-                                                    "weight",
-                                                    "line",
-                                                    "style",
-                                                    "upper",
-                                                    "spacing",
-                                                    "family",
-                                                ]}
                                                 value={secondLabelTypography}
-                                                onChange={(newValue) =>
-                                                    setAttributes({
-                                                        secondLabelTypography:
-                                                            newValue,
-                                                    })
-                                                }
+                                                onChange={(newValue) => setAttributes({ secondLabelTypography: newValue, })}
                                             />
                                             <AdvancedPopColorControl
                                                 label={__(

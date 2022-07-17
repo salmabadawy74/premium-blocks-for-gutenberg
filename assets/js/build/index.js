@@ -33900,7 +33900,7 @@ const imageSeparatorAttrs = {
     type: "boolean",
     default: false
   },
-  align: {
+  iconAlign: {
     type: "object",
     default: {
       Desktop: "center",
@@ -33951,46 +33951,6 @@ const imageSeparatorAttrs = {
       'hue': '0'
     }
   },
-  // blur: {
-  //     type: "number",
-  //     default: "0"
-  // },
-  // bright: {
-  //     type: "number",
-  //     default: "100"
-  // },
-  // contrast: {
-  //     type: "number",
-  //     default: "100"
-  // },
-  // saturation: {
-  //     type: "number",
-  //     default: "100"
-  // },
-  // hue: {
-  //     type: "number",
-  //     default: "0"
-  // },
-  // blurHover: {
-  //     type: "number",
-  //     default: "0"
-  // },
-  // brightHover: {
-  //     type: "number",
-  //     default: "100"
-  // },
-  // contrastHover: {
-  //     type: "number",
-  //     default: "100"
-  // },
-  // saturationHover: {
-  //     type: "number",
-  //     default: "100"
-  // },
-  // hueHover: {
-  //     type: "number",
-  //     default: "0"
-  // },
   linkTarget: {
     type: "boolean",
     default: false
@@ -34307,8 +34267,118 @@ const attributes = {
     }]
   }
 };
+let newAttributes = {
+  iconAlign: {
+    type: "object",
+    default: {
+      Desktop: "center",
+      Tablet: "center",
+      Mobile: "center"
+    }
+  },
+  imgFilter: {
+    type: "object",
+    default: {
+      'contrast': '100',
+      'blur': '0',
+      'bright': '100',
+      'saturation': '100',
+      'hue': '0'
+    }
+  },
+  imgFilterHover: {
+    type: "object",
+    default: {
+      'contrast': '100',
+      'blur': '0',
+      'bright': '100',
+      'saturation': '100',
+      'hue': '0'
+    }
+  },
+  iconBorder: {
+    type: "object",
+    default: {
+      "borderType": "none",
+      "borderColor": "",
+      "borderWidth": {
+        Desktop: {
+          top: '',
+          right: '',
+          bottom: '',
+          left: ''
+        },
+        Tablet: {
+          top: '',
+          right: '',
+          bottom: '',
+          left: ''
+        },
+        Mobile: {
+          top: '',
+          right: '',
+          bottom: '',
+          left: ''
+        }
+      },
+      "borderRadius": {
+        Desktop: {
+          top: '',
+          right: '',
+          bottom: '',
+          left: ''
+        },
+        Tablet: {
+          top: '',
+          right: '',
+          bottom: '',
+          left: ''
+        },
+        Mobile: {
+          top: '',
+          right: '',
+          bottom: '',
+          left: ''
+        }
+      }
+    }
+  },
+  iconPadding: {
+    type: "object",
+    default: {
+      Desktop: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      Tablet: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      Mobile: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      unit: "px"
+    }
+  },
+  iconShadow: {
+    type: "object",
+    default: {
+      'color': '',
+      'blur': '',
+      'horizontal': '',
+      'vertical': ''
+    }
+  }
+};
 const deprecated = [{
-  attributes: attributes,
+  attributes: Object.assign(attributes, newAttributes),
 
   isEligible() {
     return true;
@@ -34317,7 +34387,7 @@ const deprecated = [{
   migrate: attributes => {
     let newAttributes = {
       blockId: attributes.block_id ? `premium-image-separator-${attributes.block_id.split('-')[6]}` : '',
-      align: {
+      iconAlign: {
         "Desktop": attributes.align,
         "Tablet": attributes.align,
         "Mobile": attributes.align
@@ -34462,7 +34532,7 @@ const deprecated = [{
         filter: iconType === 'image' ? `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )` : ""
       }
     }, iconType === 'icon' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
-      className: `${icon}`,
+      className: `${iconStyles[0].icon}`,
       style: {
         color: iconStyles[0].iconColor,
         backgroundColor: iconStyles[0].iconBGColor,
@@ -34591,7 +34661,7 @@ class edit extends Component {
     } = this.props;
     const {
       blockId,
-      align,
+      iconAlign,
       className,
       iconType,
       iconSize,
@@ -34641,18 +34711,18 @@ class edit extends Component {
       });
     };
 
-    const renderCss = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, `
-                .${blockId} .premium-image-separator-container {
-                    text-align: ${align[this.props.deviceType]};
-                }
-                .${blockId} .premium-image-separator-container:hover img{
-                    filter:  brightness( ${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.bright}% ) contrast( ${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.contrast}% ) saturate( ${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.saturation}% ) blur( ${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.blur}px ) hue-rotate( ${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.hue}deg ) !important ;
-                }
-                .${blockId} .premium-image-separator-container i:hover {
-                    color: ${iconStyles[0].iconColorHover} !important;
-                    background-color: ${iconStyles[0].iconBGColorHover} !important;
-                }
-            `);
+    const loadStyles = () => {
+      const styles = {};
+      styles[`.${blockId} .premium-image-separator-container:hover img`] = {
+        'filter': `brightness(${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.bright}% ) contrast(${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.contrast}% ) saturate(${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.saturation}% ) blur(${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.blur}px) hue-rotate(${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.hue}deg)!important`
+      };
+      styles[` .${blockId} .premium-image-separator-container i:hover`] = {
+        'color': `${iconStyles[0].iconColorHover} !important`,
+        'background-color': `${iconStyles[0].iconBGColorHover} !important`
+      };
+      return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.generateCss)(styles);
+    };
+
     const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-image-separator", {
       ' premium-desktop-hidden': hideDesktop,
       ' premium-tablet-hidden': hideTablet,
@@ -34759,9 +34829,9 @@ class edit extends Component {
         label: __("Right"),
         icon: _components_icons__WEBPACK_IMPORTED_MODULE_11__["default"].alignRight
       }],
-      value: align,
+      value: iconAlign,
       onChange: newValue => setAttributes({
-        align: newValue
+        iconAlign: newValue
       }),
       showIcons: true
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
@@ -34934,15 +35004,19 @@ class edit extends Component {
       onChangeMobile: value => setAttributes({
         hideMobile: value ? " premium-mobile-hidden" : ""
       })
-    })))), renderCss, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
+      dangerouslySetInnerHTML: {
+        __html: loadStyles()
+      }
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: `${mainClasses} ${blockId}`,
       style: {
-        textAlign: align[this.props.deviceType]
+        textAlign: iconAlign[this.props.deviceType]
       }
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: `premium-image-separator-container`,
       style: {
-        textAlign: align[this.props.deviceType],
+        textAlign: iconAlign[this.props.deviceType],
         transform: `translateY(${gutter}%)`,
         filter: iconType === "image" ? `brightness( ${imgFilter === null || imgFilter === void 0 ? void 0 : imgFilter.bright}% ) contrast( ${imgFilter === null || imgFilter === void 0 ? void 0 : imgFilter.contrast}% ) saturate( ${imgFilter === null || imgFilter === void 0 ? void 0 : imgFilter.saturation}% ) blur( ${imgFilter === null || imgFilter === void 0 ? void 0 : imgFilter.blur}px ) hue-rotate( ${imgFilter === null || imgFilter === void 0 ? void 0 : imgFilter.hue}deg )` : ""
       }
@@ -35064,6 +35138,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./src/blocks/node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
+
 
 
 function save(props) {
@@ -35072,7 +35148,6 @@ function save(props) {
   } = props;
   const {
     blockId,
-    align,
     iconType,
     imageURL,
     link,
@@ -35093,26 +35168,31 @@ function save(props) {
     hideMobile
   } = props.attributes;
   let target = linkTarget ? "_blank" : "_self";
-  const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, 'premium-image-separator', blockId, {
+  const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, 'premium-image-separator', {
     ' premium-desktop-hidden': hideDesktop,
     ' premium-tablet-hidden': hideTablet,
     ' premium-mobile-hidden': hideMobile
   });
-  const renderCss = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, `
-            .${blockId} .premium-image-separator-container {
-                text-align: ${align[props.deviceType]};
-            }
-            .${blockId} .premium-image-separator-container:hover img{
-                    filter:  brightness( ${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.bright}% ) contrast( ${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.contrast}% ) saturate( ${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.saturation}% ) blur( ${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.blur}px ) hue-rotate( ${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.hue}deg ) !important ;
-            }
-            .${blockId} .premium-image-separator-container i:hover {
-                color: ${iconStyles[0].iconColorHover} !important;
-                background-color: ${iconStyles[0].iconBGColorHover} !important;
-            }
-        `);
+
+  const loadStyles = () => {
+    const styles = {};
+    styles[`.${blockId} .premium-image-separator-container:hover img`] = {
+      'filter': `brightness(${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.bright}% ) contrast(${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.contrast}% ) saturate(${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.saturation}%) blur(${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.blur}px) hue - rotate(${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.hue}deg)!important`
+    };
+    styles[` .${blockId} .premium-image-separator-container i:hover`] = {
+      'color': `${iconStyles[0].iconColorHover} !important`,
+      'background-color': `${iconStyles[0].iconBGColorHover} !important`
+    };
+    return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.generateCss)(styles);
+  };
+
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `${mainClasses} ${blockId} `
-  }, renderCss, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
+    dangerouslySetInnerHTML: {
+      __html: loadStyles()
+    }
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-image-separator-container`,
     style: {
       transform: `translateY(${gutter}%)`,
