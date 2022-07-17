@@ -1,25 +1,31 @@
 const { __ } = wp.i18n;
-const { Fragment } = wp.element;
+const { Fragment, useState } = wp.element;
 const { Dropdown, Button } = wp.components;
 import ResponsiveSingleRangeControl from "./RangeControl/single-range-control";
-export default function PremiumFilters(props) {
-    const {
-        label,
-        blur,
-        bright,
-        contrast,
-        saturation,
-        hue,
-        onChangeBlur = () => { },
-        onChangeBright = () => { },
-        onChangeContrast = () => { },
-        onChangeSat = () => { },
-        onChangeHue = () => { }
-    } = props;
+export default function PremiumFilters({ label, value, onChange }) {
+
+    let defaultValues = {
+        'contrast': '100',
+        'blur': '0',
+        'bright': '100',
+        'saturation': '100',
+        'hue': '0'
+    }
+    value = value ? { ...defaultValues, ...value } : defaultValues;
+    const [state, setState] = useState(value);
+
+    const onChangeFilter = (item, value) => {
+        const updatedState = { ...state };
+        updatedState[item] = value;
+        setState(updatedState)
+        onChange(updatedState)
+    }
+    const { contrast, blur, bright, saturation, hue } = state
+
 
     return (
-        <div className=" premium-blocks-base-control">
-            <strong>{__(label || "CSS Filters")}</strong>
+        <div className="premium-filter__container premium-blocks__base-control">
+            <span>{__(label || "CSS Filters")}</span>
             <Dropdown
                 className="premium-control-toggle-btn"
                 contentClassName="premium-control-toggle-content"
@@ -34,7 +40,7 @@ export default function PremiumFilters(props) {
                         <ResponsiveSingleRangeControl
                             label={__("Blur")}
                             value={blur}
-                            onChange={onChangeBlur}
+                            onChange={value => onChangeFilter('blur', value)}
                             showUnit={false}
                             defaultValue={0}
                         />
@@ -43,7 +49,7 @@ export default function PremiumFilters(props) {
                             min="0"
                             max="200"
                             value={bright}
-                            onChange={onChangeBright}
+                            onChange={value => onChangeFilter('bright', value)}
                             showUnit={false}
                             defaultValue={100}
                         />
@@ -52,7 +58,7 @@ export default function PremiumFilters(props) {
                             min="0"
                             max="200"
                             value={contrast}
-                            onChange={onChangeContrast}
+                            onChange={value => onChangeFilter('contrast', value)}
                             showUnit={false}
                             defaultValue={100}
                         />
@@ -61,7 +67,7 @@ export default function PremiumFilters(props) {
                             min="0"
                             max="200"
                             value={saturation}
-                            onChange={onChangeSat}
+                            onChange={value => onChangeFilter('saturation', value)}
                             showUnit={false}
                             defaultValue={100}
                         />
@@ -70,7 +76,7 @@ export default function PremiumFilters(props) {
                             min="0"
                             max="360"
                             value={hue}
-                            onChange={onChangeHue}
+                            onChange={value => onChangeFilter('hue', value)}
                             showUnit={false}
                             defaultValue={0}
                         />

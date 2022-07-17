@@ -1,6 +1,7 @@
 import videoBoxAttrs from "./attributes";
 import onChangeVideoURL from "./index";
 import hexToRgba from 'hex-to-rgba'
+import classnames from 'classnames'
 
 const className = "premium-video-box";
 const { __ } = wp.i18n;
@@ -545,7 +546,6 @@ const deprecatedContent = [
                 videoBoxId,
                 videoType,
                 videoURL,
-                videoID,
                 autoPlay,
                 loop,
                 controls,
@@ -555,7 +555,6 @@ const deprecatedContent = [
                 videoDesc,
                 playIcon,
                 playLeft,
-                classMigrate,
                 hideDesktop,
                 hideTablet,
                 hideMobile,

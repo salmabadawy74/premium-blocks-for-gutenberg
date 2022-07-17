@@ -45938,12 +45938,7 @@ const videoBoxAttrs = {
     type: 'array',
     default: [{
       overlayImgID: '',
-      overlayImgURL: '',
-      blur: 0,
-      bright: 100,
-      contrast: 100,
-      saturation: 100,
-      hue: 0
+      overlayImgURL: ''
     }]
   },
   playStyles: {
@@ -45976,8 +45971,19 @@ const videoBoxAttrs = {
       "fontWeight": 500,
       'fontStyle': '',
       'textTransform': '',
-      'letterSpacing': '',
-      'lineHeight': '',
+      "textDecoration": "",
+      "letterSpacing": {
+        "Desktop": "",
+        "Tablet": "",
+        "Mobile": "",
+        "unit": "px"
+      },
+      "lineHeight": {
+        "Desktop": "",
+        "Tablet": "",
+        "Mobile": "",
+        "unit": "px"
+      },
       'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
       'fontSize': {
         'Desktop': "",
@@ -45994,22 +46000,22 @@ const videoBoxAttrs = {
       borderType: "none",
       borderRadius: {
         Desktop: {
-          top: "",
-          right: "",
-          bottom: "",
-          left: ""
+          top: "100",
+          right: "100",
+          bottom: "100",
+          left: "100"
         },
         Tablet: {
-          top: "",
-          right: "",
-          bottom: "",
-          left: ""
+          top: "100",
+          right: "100",
+          bottom: "100",
+          left: "100"
         },
         Mobile: {
-          top: "",
-          right: "",
-          bottom: "",
-          left: ""
+          top: "100",
+          right: "100",
+          bottom: "100",
+          left: "100"
         }
       },
       borderWidth: {
@@ -46147,6 +46153,16 @@ const videoBoxAttrs = {
       'vertical': '',
       'position': ' '
     }
+  },
+  overlayFilter: {
+    type: "object",
+    default: {
+      'contrast': '100',
+      'blur': '0',
+      'bright': '100',
+      'saturation': '100',
+      'hue': '0'
+    }
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (videoBoxAttrs);
@@ -46167,6 +46183,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index */ "./src/blocks/video-box/index.js");
 /* harmony import */ var hex_to_rgba__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! hex-to-rgba */ "./node_modules/hex-to-rgba/build/index.js");
 /* harmony import */ var hex_to_rgba__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(hex_to_rgba__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_4__);
+
 
 
 
@@ -46703,7 +46722,6 @@ const deprecatedContent = [{
       videoBoxId,
       videoType,
       videoURL,
-      videoID,
       autoPlay,
       loop,
       controls,
@@ -46713,7 +46731,6 @@ const deprecatedContent = [{
       videoDesc,
       playIcon,
       playLeft,
-      classMigrate,
       hideDesktop,
       hideTablet,
       hideMobile,
@@ -46736,7 +46753,7 @@ const deprecatedContent = [{
       }
     };
 
-    const mainClasses = classnames(className, 'premium-video-box');
+    const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_4___default()(className, 'premium-video-box');
     return videoURL && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       id: videoBoxId,
       className: `${mainClasses} video-overlay-${overlay} premium-video-box-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile} premium-aspect-ratio-${ratioValue}`,
@@ -47741,13 +47758,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/Color Control/ColorComponent */ "./src/components/Color Control/ColorComponent.js");
 /* harmony import */ var _components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/premium-responsive-spacing */ "./src/components/premium-responsive-spacing.js");
 /* harmony import */ var _components_default_image__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/default-image */ "./src/components/default-image.js");
-/* harmony import */ var _components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/typography/fontLoader */ "./src/components/typography/fontLoader.js");
-/* harmony import */ var _components_PremiumShadow__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/PremiumShadow */ "./src/components/PremiumShadow.js");
-/* harmony import */ var _components_inspectorTabs__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/inspectorTabs */ "./src/components/inspectorTabs.js");
-/* harmony import */ var _components_inspectorTab__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../components/inspectorTab */ "./src/components/inspectorTab.js");
-/* harmony import */ var _components_InsideTabs__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../components/InsideTabs */ "./src/components/InsideTabs.js");
-/* harmony import */ var _components_InsideTab__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../components/InsideTab */ "./src/components/InsideTab.js");
-/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
+/* harmony import */ var _components_PremiumShadow__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/PremiumShadow */ "./src/components/PremiumShadow.js");
+/* harmony import */ var _components_inspectorTabs__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/inspectorTabs */ "./src/components/inspectorTabs.js");
+/* harmony import */ var _components_inspectorTab__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/inspectorTab */ "./src/components/inspectorTab.js");
+/* harmony import */ var _components_InsideTabs__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../components/InsideTabs */ "./src/components/InsideTabs.js");
+/* harmony import */ var _components_InsideTab__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../components/InsideTab */ "./src/components/InsideTab.js");
+/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
+/* harmony import */ var react_google_font_loader__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! react-google-font-loader */ "./node_modules/react-google-font-loader/build/index.js");
 
 
 
@@ -47806,7 +47823,7 @@ class Edit extends Component {
       clientId
     } = this.props;
     setAttributes({
-      blockId: "premium-video-box-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.generateBlockId)(clientId)
+      blockId: "premium-video-box-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_17__.generateBlockId)(clientId)
     });
     this.props.setAttributes({
       classMigrate: true
@@ -47873,7 +47890,6 @@ class Edit extends Component {
       relatedVideos,
       mute,
       overlay,
-      videoDesc,
       playIcon,
       playLeft,
       hideDesktop,
@@ -47889,7 +47905,8 @@ class Edit extends Component {
       playPadding,
       descPadding,
       descShadow,
-      boxShadow
+      boxShadow,
+      overlayFilter
     } = this.props.attributes;
     const TYPE = [{
       value: "youtube",
@@ -47974,29 +47991,30 @@ class Edit extends Component {
       });
     };
 
-    let loadDescriptionGoogleFonts; // if (descStyles[0].videoDescFamily !== "Default") {
-    //     const descriptionConfig = {
-    //         google: {
-    //             families: [descStyles[0].videoDescFamily],
-    //         },
-    //     }
-    //     loadDescriptionGoogleFonts = (
-    //         <WebfontLoader config={descriptionConfig}>
-    //         </WebfontLoader>
-    //     )
-    // }
+    let loadDescriptionGoogleFonts;
 
-    const renderCss = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, `
-                    .${blockId} .premium-video-box__play:hover {
-                        color: ${playStyles[0].playHoverColor} !important;
-                        background-color: ${playStyles[0].playHoverBackColor} !important;
-                    }
-                `);
+    if (videoDescTypography.fontFamily !== "Default") {
+      loadDescriptionGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_google_font_loader__WEBPACK_IMPORTED_MODULE_18__["default"], {
+        fonts: [{
+          font: videoDescTypography.fontFamily
+        }]
+      });
+    }
+
+    const renderCss = () => {
+      const styles = {};
+      styles[` .${blockId} .premium-video-box__play:hover`] = {
+        'color': `${playStyles[0].playHoverColor} !important`,
+        'background-color': `${playStyles[0].playHoverBackColor} !important`
+      };
+      return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_17__.generateCss)(styles);
+    };
+
     return [isSelected && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InspectorControls, {
       key: "inspector"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTabs__WEBPACK_IMPORTED_MODULE_14__["default"], {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTabs__WEBPACK_IMPORTED_MODULE_13__["default"], {
       tabs: ['layout', 'style', 'advance']
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_15__["default"], {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_14__["default"], {
       key: 'layout'
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
       title: __("Video", 'premium-blocks-for-gutenberg'),
@@ -48093,13 +48111,13 @@ class Edit extends Component {
       onChange: newValue => setAttributes({
         ratioValue: newValue
       })
-    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_15__["default"], {
+    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_14__["default"], {
       key: 'style'
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
       title: __("Video Box", 'premium-blocks-for-gutenberg'),
       className: "premium-panel-body",
       initialOpen: true
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_13__["default"], {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_12__["default"], {
       value: boxShadow,
       onChange: value => setAttributes({
         boxShadow: value
@@ -48129,25 +48147,9 @@ class Edit extends Component {
         overlayImgURL: ""
       })
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_filters__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      blur: blur,
-      bright: overlayStyles[0].bright,
-      contrast: overlayStyles[0].contrast,
-      saturation: overlayStyles[0].saturation,
-      hue: overlayStyles[0].hue,
-      onChangeBlur: value => saveOverlayStyles({
-        blur: value === undefined ? 0 : value
-      }),
-      onChangeBright: value => saveOverlayStyles({
-        bright: value === undefined ? 100 : value
-      }),
-      onChangeContrast: value => saveOverlayStyles({
-        contrast: value === undefined ? 100 : value
-      }),
-      onChangeSat: value => saveOverlayStyles({
-        saturation: value === undefined ? 100 : value
-      }),
-      onChangeHue: value => saveOverlayStyles({
-        hue: value === undefined ? 100 : value
+      value: overlayFilter,
+      onChange: value => setAttributes({
+        overlayFilter: value
       })
     })), overlay && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
       title: __("Play Icon", 'premium-blocks-for-gutenberg'),
@@ -48175,10 +48177,10 @@ class Edit extends Component {
       }),
       showUnit: false,
       defaultValue: 0
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_InsideTabs__WEBPACK_IMPORTED_MODULE_16__["default"], null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_InsideTab__WEBPACK_IMPORTED_MODULE_17__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_InsideTabs__WEBPACK_IMPORTED_MODULE_15__["default"], null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_InsideTab__WEBPACK_IMPORTED_MODULE_16__["default"], {
       tabTitle: __('Normal')
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      label: __("Icon Color", ''),
+      label: __("Icon Color", 'premium-blocks-for-gutenberg'),
       colorValue: playStyles[0].playColor,
       colorDefault: '',
       onColorChange: newValue => savePlayStyles({
@@ -48193,11 +48195,11 @@ class Edit extends Component {
         });
       },
       colorDefault: ``
-    }), videoDesc && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      label: __("Description Color", ''),
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      label: __("Description Color", 'premium-blocks-for-gutenberg'),
       colorValue: descStyles[0].videoDescColor,
       colorDefault: '',
-      onColorChange: newValue => setAttributes({
+      onColorChange: newValue => saveDescritionStyle({
         videoDescColor: newValue
       })
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -48209,7 +48211,7 @@ class Edit extends Component {
         });
       },
       colorDefault: ``
-    })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_InsideTab__WEBPACK_IMPORTED_MODULE_17__["default"], {
+    })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_InsideTab__WEBPACK_IMPORTED_MODULE_16__["default"], {
       tabTitle: __('Hover')
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_9__["default"], {
       label: __("Icon Hover Color", 'premium-blocks-for-gutenberg'),
@@ -48244,12 +48246,11 @@ class Edit extends Component {
       className: "premium-panel-body",
       initialOpen: false
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      components: ["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"],
       value: videoDescTypography,
       onChange: newValue => setAttributes({
         videoDescTypography: newValue
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_13__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_12__["default"], {
       label: __("Text Shadow", 'premium-blocks-for-gutenberg'),
       value: descShadow,
       onChange: value => setAttributes({
@@ -48263,7 +48264,7 @@ class Edit extends Component {
       }),
       showUnits: true,
       responsive: true
-    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_15__["default"], {
+    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_14__["default"], {
       key: 'advance'
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_7__["default"], {
       Desktop: hideDesktop,
@@ -48301,12 +48302,20 @@ class Edit extends Component {
       type: "submit"
     }, __('Embed', 'premium-blocks-for-gutenberg')))), !videoURL && "self" === videoType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, __('Please Click Insert to Select Video ', "premium-blocks-for-gutenberg")), videoURL && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       ref: this.videoboxRef,
-      className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-video-box", `video-overlay-${overlay} ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile} premium-aspect-ratio-${ratioValue}`),
+      className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-video-box", `video-overlay-${overlay} ${blockId} premium-aspect-ratio-${ratioValue}`, {
+        ' premium-desktop-hidden': hideDesktop,
+        ' premium-tablet-hidden': hideTablet,
+        ' premium-mobile-hidden': hideMobile
+      }),
       "data-type": videoType,
-      style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.borderCss)(boxBorder, this.props.deviceType),
+      style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_17__.borderCss)(boxBorder, this.props.deviceType),
         boxShadow: `${boxShadow.horizontal || 0}px ${boxShadow.vertical || 0}px ${boxShadow.blur || 0}px ${boxShadow.color} ${boxShadow.position}`
       }
-    }, renderCss, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
+      dangerouslySetInnerHTML: {
+        __html: renderCss()
+      }
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: `premium-video-box__container`
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: `premium-video-box-inner-wrap`
@@ -48328,14 +48337,14 @@ class Edit extends Component {
       className: `premium-video-box__overlay`,
       style: {
         backgroundImage: `url('${overlayStyles[0].overlayImgURL}')`,
-        filter: `brightness( ${overlayStyles[0].bright}% ) contrast( ${overlayStyles[0].contrast}% ) saturate( ${overlayStyles[0].saturation}% ) blur( ${overlayStyles[0].blur}px ) hue-rotate( ${overlayStyles[0].hue}deg )`
+        filter: `brightness( ${overlayFilter.bright}% ) contrast( ${overlayFilter.contrast}% ) saturate( ${overlayFilter.saturation}% ) blur( ${overlayFilter.blur}px ) hue-rotate( ${overlayFilter.hue}deg )`
       }
     }), overlay && playIcon && !overlayStyles[0].overlayImgURL && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_default_image__WEBPACK_IMPORTED_MODULE_11__["default"], {
       className: "premium-video-box-image-container"
     }), overlay && playIcon && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: `premium-video-box__play`,
-      style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.borderCss)(playBorder, this.props.deviceType),
-        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.padddingCss)(playPadding, this.props.deviceType),
+      style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_17__.borderCss)(playBorder, this.props.deviceType),
+        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_17__.paddingCss)(playPadding, this.props.deviceType),
         top: playStyles[0].playTop + "%",
         left: playLeft + "%",
         color: playStyles[0].playColor,
@@ -48348,8 +48357,7 @@ class Edit extends Component {
       }
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: `premium-video-box__desc`,
-      style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.padddingCss)(descPadding, this.props.deviceType),
-        color: descStyles[0].videoDescColor,
+      style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_17__.paddingCss)(descPadding, this.props.deviceType),
         backgroundColor: descStyles[0].videoDescBack,
         borderRadius: descStyles[0].videoDescBorderRadius,
         top: descStyles[0].descTop + "%",
@@ -48363,7 +48371,8 @@ class Edit extends Component {
       onChange: newText => saveDescritionStyle({
         videoDescText: newText
       }),
-      style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.typographyCss)(videoDescTypography, this.props.deviceType),
+      style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_17__.typographyCss)(videoDescTypography, this.props.deviceType),
+        color: descStyles[0].videoDescColor,
         textShadow: `${descShadow.horizontal}px ${descShadow.vertical}px ${descShadow.blur}px ${descShadow.color}`
       },
       keepPlaceholderOnFocus: true
@@ -48518,7 +48527,8 @@ const save = props => {
     playBorder,
     boxBorder,
     descShadow,
-    boxShadow
+    boxShadow,
+    overlayFilter
   } = props.attributes;
 
   const loopVideo = () => {
@@ -48533,21 +48543,32 @@ const save = props => {
     }
   };
 
-  const renderCss = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, `
-                .${blockId} .premium-video-box__play:hover {
-                    color: ${playStyles[0].playHoverColor} !important;
-                    background-color: ${playStyles[0].playHoverBackColor} !important;
-                }
-            `);
+  const renderCss = () => {
+    const styles = {};
+    styles[` .${blockId} .premium-video-box__play:hover`] = {
+      'color': `${playStyles[0].playHoverColor} !important`,
+      'background-color': `${playStyles[0].playHoverBackColor} !important`
+    };
+    return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_4__.generateCss)(styles);
+  };
+
   return videoURL && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-video-box", `video-overlay-${overlay} ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile} premium-aspect-ratio-${ratioValue}`),
+    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-video-box", `video-overlay-${overlay} ${blockId} premium-aspect-ratio-${ratioValue}`, {
+      ' premium-desktop-hidden': hideDesktop,
+      ' premium-tablet-hidden': hideTablet,
+      ' premium-mobile-hidden': hideMobile
+    }),
     "data-type": videoType,
     style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_4__.filterJsCss)({
       borderStyle: boxBorder.borderType,
       borderColor: boxBorder.borderColor,
       boxShadow: `${boxShadow.horizontal || 0}px ${boxShadow.vertical || 0}px ${boxShadow.blur || 0}px ${boxShadow.color} ${boxShadow.position}`
     })
-  }, renderCss, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
+    dangerouslySetInnerHTML: {
+      __html: renderCss()
+    }
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-video-box__container`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-video-box-inner-wrap`
@@ -48569,7 +48590,7 @@ const save = props => {
     className: `premium-video-box__overlay`,
     style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_4__.filterJsCss)({
       backgroundImage: `url('${overlayStyles[0].overlayImgURL}')`,
-      filter: `brightness( ${overlayStyles[0].bright}% ) contrast( ${overlayStyles[0].contrast}% ) saturate( ${overlayStyles[0].saturation}% ) blur( ${overlayStyles[0].blur}px ) hue-rotate( ${overlayStyles[0].hue}deg )`
+      filter: `brightness( ${overlayFilter.bright}% ) contrast( ${overlayFilter.contrast}% ) saturate( ${overlayFilter.saturation}% ) blur( ${overlayFilter.blur}px ) hue-rotate( ${overlayFilter.hue}deg )`
     })
   }), overlay && playIcon && !overlayStyles[0].overlayImgURL && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_default_image__WEBPACK_IMPORTED_MODULE_3__["default"], {
     className: "premium-video-box-image-container"
@@ -48590,21 +48611,26 @@ const save = props => {
     })
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-video-box__desc`,
-    style: {
-      color: descStyles[0].videoDescColor,
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_4__.filterJsCss)({
       backgroundColor: descStyles[0].videoDescBack,
       borderRadius: descStyles[0].videoDescBorderRadius,
       top: descStyles[0].descTop + "%",
       left: descStyles[0].descLeft + "%"
-    }
+    })
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText.Content, {
     tagName: "p",
     className: `premium-video-box__desc_text`,
     value: descStyles[0].videoDescText,
     placeholder: "Add caption",
-    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_4__.typographyCss)(videoDescTypography, props.deviceType),
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_4__.filterJsCss)({
+      fontStyle: videoDescTypography === null || videoDescTypography === void 0 ? void 0 : videoDescTypography.fontStyle,
+      fontFamily: videoDescTypography === null || videoDescTypography === void 0 ? void 0 : videoDescTypography.fontFamily,
+      fontWeight: videoDescTypography === null || videoDescTypography === void 0 ? void 0 : videoDescTypography.fontWeight,
+      textDecoration: videoDescTypography === null || videoDescTypography === void 0 ? void 0 : videoDescTypography.textDecoration,
+      textTransform: videoDescTypography === null || videoDescTypography === void 0 ? void 0 : videoDescTypography.textTransform,
+      color: descStyles[0].videoDescColor,
       textShadow: `${descShadow.horizontal}px ${descShadow.vertical}px ${descShadow.blur}px ${descShadow.color}`
-    },
+    }),
     keepPlaceholderOnFocus: true
   })));
 };
@@ -48843,14 +48869,21 @@ class AdvancedColorControl extends Component {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "animationAttr": function() { return /* binding */ animationAttr; },
 /* harmony export */   "borderCss": function() { return /* binding */ borderCss; },
 /* harmony export */   "filterJsCss": function() { return /* binding */ filterJsCss; },
 /* harmony export */   "generateBlockId": function() { return /* binding */ generateBlockId; },
+/* harmony export */   "generateCss": function() { return /* binding */ generateCss; },
 /* harmony export */   "gradientBackground": function() { return /* binding */ gradientBackground; },
+/* harmony export */   "gradientValue": function() { return /* binding */ gradientValue; },
 /* harmony export */   "marginCss": function() { return /* binding */ marginCss; },
-/* harmony export */   "padddingCss": function() { return /* binding */ padddingCss; },
-/* harmony export */   "typographyCss": function() { return /* binding */ typographyCss; }
+/* harmony export */   "paddingCss": function() { return /* binding */ paddingCss; },
+/* harmony export */   "typographyCss": function() { return /* binding */ typographyCss; },
+/* harmony export */   "videoBackground": function() { return /* binding */ videoBackground; }
 /* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
 const gradientBackground = value => {
   const {
     backgroundType,
@@ -48869,22 +48902,22 @@ const gradientBackground = value => {
   } = value;
   let btnGrad, btnGrad2, btnbg;
 
-  if (undefined !== backgroundType && 'gradient' === backgroundType) {
-    btnGrad = 'transparent' === backgroundColor || undefined === backgroundColor ? 'rgba(255,255,255,0)' : backgroundColor;
-    btnGrad2 = undefined !== gradientColorTwo && undefined !== gradientColorTwo && '' !== gradientColorTwo ? gradientColorTwo : '#777';
+  if (undefined !== backgroundType && "gradient" === backgroundType) {
+    btnGrad = "transparent" === backgroundColor || undefined === backgroundColor ? "rgba(255,255,255,0)" : backgroundColor;
+    btnGrad2 = undefined !== gradientColorTwo && undefined !== gradientColorTwo && "" !== gradientColorTwo ? gradientColorTwo : "#777";
 
-    if ('radial' === gradientType) {
+    if ("radial" === gradientType) {
       btnbg = `radial-gradient(at ${gradientPosition}, ${btnGrad} ${gradientLocationOne}%, ${btnGrad2} ${gradientLocationTwo}%)`;
-    } else if ('radial' !== gradientType) {
+    } else if ("radial" !== gradientType) {
       btnbg = `linear-gradient(${gradientAngle}deg, ${btnGrad} ${gradientLocationOne}%, ${btnGrad2} ${gradientLocationTwo}%)`;
     }
   } else {
-    btnbg = backgroundImageURL ? `url('${backgroundImageURL}')` : '';
+    btnbg = backgroundImageURL ? `url('${backgroundImageURL}')` : "";
   }
 
   return {
     backgroundColor: backgroundColor,
-    backgroundImage: btnbg,
+    backgroundImage: gradientValue(value),
     backgroundRepeat: backgroundRepeat,
     backgroundPosition: backgroundPosition,
     backgroundSize: backgroundSize,
@@ -48892,58 +48925,173 @@ const gradientBackground = value => {
   };
 };
 const borderCss = (value, device) => {
+  var _value$borderWidth, _value$borderWidth$de, _value$borderWidth2, _value$borderWidth2$d, _value$borderWidth3, _value$borderWidth3$d, _value$borderWidth4, _value$borderWidth4$d, _value$borderRadius, _value$borderRadius$d, _value$borderRadius2, _value$borderRadius2$, _value$borderRadius3, _value$borderRadius3$, _value$borderRadius4, _value$borderRadius4$;
+
   return {
-    borderStyle: value.borderType,
-    borderTopWidth: value['borderWidth'][device]['top'] && value['borderWidth'][device]['top'] + "px",
-    borderRightWidth: value['borderWidth'][device]['right'] && value['borderWidth'][device]['right'] + "px",
-    borderBottomWidth: value['borderWidth'][device]['bottom'] && value['borderWidth'][device]['bottom'] + "px",
-    borderLeftWidth: value['borderWidth'][device]['left'] && value['borderWidth'][device]['left'] + "px",
-    borderBottomLeftRadius: value['borderRadius'][device]['left'] && value['borderRadius'][device]['left'] + "px",
-    borderTopLeftRadius: value['borderRadius'][device]['top'] && value['borderRadius'][device]['top'] + "px",
-    borderTopRightRadius: value['borderRadius'][device]['right'] && value['borderRadius'][device]['right'] + "px",
-    borderBottomRightRadius: value['borderRadius'][device]['bottom'] && value['borderRadius'][device]['bottom'] + "px",
-    borderColor: value.borderColor
+    borderStyle: value === null || value === void 0 ? void 0 : value.borderType,
+    borderTopWidth: value === null || value === void 0 ? void 0 : (_value$borderWidth = value.borderWidth) === null || _value$borderWidth === void 0 ? void 0 : (_value$borderWidth$de = _value$borderWidth[device]) === null || _value$borderWidth$de === void 0 ? void 0 : _value$borderWidth$de.top,
+    borderRightWidth: value === null || value === void 0 ? void 0 : (_value$borderWidth2 = value.borderWidth) === null || _value$borderWidth2 === void 0 ? void 0 : (_value$borderWidth2$d = _value$borderWidth2[device]) === null || _value$borderWidth2$d === void 0 ? void 0 : _value$borderWidth2$d.right,
+    borderBottomWidth: value === null || value === void 0 ? void 0 : (_value$borderWidth3 = value.borderWidth) === null || _value$borderWidth3 === void 0 ? void 0 : (_value$borderWidth3$d = _value$borderWidth3[device]) === null || _value$borderWidth3$d === void 0 ? void 0 : _value$borderWidth3$d.bottom,
+    borderLeftWidth: value === null || value === void 0 ? void 0 : (_value$borderWidth4 = value.borderWidth) === null || _value$borderWidth4 === void 0 ? void 0 : (_value$borderWidth4$d = _value$borderWidth4[device]) === null || _value$borderWidth4$d === void 0 ? void 0 : _value$borderWidth4$d.left,
+    borderColor: value === null || value === void 0 ? void 0 : value.borderColor,
+    borderTopLeftRadius: `${(value === null || value === void 0 ? void 0 : (_value$borderRadius = value.borderRadius) === null || _value$borderRadius === void 0 ? void 0 : (_value$borderRadius$d = _value$borderRadius[device]) === null || _value$borderRadius$d === void 0 ? void 0 : _value$borderRadius$d.top) || 0}px`,
+    borderTopRightRadius: `${(value === null || value === void 0 ? void 0 : (_value$borderRadius2 = value.borderRadius) === null || _value$borderRadius2 === void 0 ? void 0 : (_value$borderRadius2$ = _value$borderRadius2[device]) === null || _value$borderRadius2$ === void 0 ? void 0 : _value$borderRadius2$.right) || 0}px`,
+    borderBottomLeftRadius: `${(value === null || value === void 0 ? void 0 : (_value$borderRadius3 = value.borderRadius) === null || _value$borderRadius3 === void 0 ? void 0 : (_value$borderRadius3$ = _value$borderRadius3[device]) === null || _value$borderRadius3$ === void 0 ? void 0 : _value$borderRadius3$.bottom) || 0}px`,
+    borderBottomRightRadius: `${(value === null || value === void 0 ? void 0 : (_value$borderRadius4 = value.borderRadius) === null || _value$borderRadius4 === void 0 ? void 0 : (_value$borderRadius4$ = _value$borderRadius4[device]) === null || _value$borderRadius4$ === void 0 ? void 0 : _value$borderRadius4$.left) || 0}px`
   };
 };
-const padddingCss = (value, device) => {
+const paddingCss = (value, device) => {
+  var _value$device, _value$device2, _value$device3, _value$device4;
+
   return {
-    paddingTop: value[device]['top'] && value[device]['top'] + value.unit,
-    paddingRight: value[device]['right'] && value[device]['right'] + value.unit,
-    paddingBottom: value[device]['bottom'] && value[device]['bottom'] + value.unit,
-    paddingLeft: value[device]['left'] && value[device]['left'] + value.unit
+    paddingTop: `${value === null || value === void 0 ? void 0 : (_value$device = value[device]) === null || _value$device === void 0 ? void 0 : _value$device.top}${value === null || value === void 0 ? void 0 : value.unit}`,
+    paddingRight: `${value === null || value === void 0 ? void 0 : (_value$device2 = value[device]) === null || _value$device2 === void 0 ? void 0 : _value$device2.right}${value === null || value === void 0 ? void 0 : value.unit}`,
+    paddingBottom: `${value === null || value === void 0 ? void 0 : (_value$device3 = value[device]) === null || _value$device3 === void 0 ? void 0 : _value$device3.bottom}${value === null || value === void 0 ? void 0 : value.unit}`,
+    paddingLeft: `${value === null || value === void 0 ? void 0 : (_value$device4 = value[device]) === null || _value$device4 === void 0 ? void 0 : _value$device4.left}${value === null || value === void 0 ? void 0 : value.unit}`
   };
 };
 const marginCss = (value, device) => {
+  var _value$device5, _value$device6, _value$device7, _value$device8;
+
   return {
-    marginTop: value[device]['top'] && value[device]['top'] + value.unit,
-    marginRight: value[device]['right'] && value[device]['right'] + value.unit,
-    marginBottom: value[device]['bottom'] && value[device]['bottom'] + value.unit,
-    marginLeft: value[device]['left'] && value[device]['left'] + value.unit
+    marginTop: `${value === null || value === void 0 ? void 0 : (_value$device5 = value[device]) === null || _value$device5 === void 0 ? void 0 : _value$device5.top}${value === null || value === void 0 ? void 0 : value.unit}`,
+    marginRight: `${value === null || value === void 0 ? void 0 : (_value$device6 = value[device]) === null || _value$device6 === void 0 ? void 0 : _value$device6.right}${value === null || value === void 0 ? void 0 : value.unit}`,
+    marginBottom: `${value === null || value === void 0 ? void 0 : (_value$device7 = value[device]) === null || _value$device7 === void 0 ? void 0 : _value$device7.bottom}${value === null || value === void 0 ? void 0 : value.unit}`,
+    marginLeft: `${value === null || value === void 0 ? void 0 : (_value$device8 = value[device]) === null || _value$device8 === void 0 ? void 0 : _value$device8.left}${value === null || value === void 0 ? void 0 : value.unit}`
   };
 };
 const typographyCss = (value, device) => {
+  var _value$fontSize;
+
   return {
-    fontSize: `${value.fontSize[device] || ''}${value.fontSize.unit}`,
-    fontFamily: value.fontFamily,
-    letterSpacing: value.letterSpacing + "px",
-    textTransform: value.textTransform ? "uppercase" : "none",
-    fontStyle: value.fontStyle,
-    fontWeight: value.fontWeight,
-    lineHeight: value.lineHeight + "px"
+    fontSize: `${value === null || value === void 0 ? void 0 : value.fontSize[device]}${value === null || value === void 0 ? void 0 : (_value$fontSize = value.fontSize) === null || _value$fontSize === void 0 ? void 0 : _value$fontSize.unit}`,
+    fontStyle: value === null || value === void 0 ? void 0 : value.fontStyle,
+    fontFamily: value === null || value === void 0 ? void 0 : value.fontFamily,
+    fontWeight: value === null || value === void 0 ? void 0 : value.fontWeight,
+    letterSpacing: value === null || value === void 0 ? void 0 : value.letterSpacing[device],
+    textDecoration: value === null || value === void 0 ? void 0 : value.textDecoration,
+    textTransform: value === null || value === void 0 ? void 0 : value.textTransform,
+    lineHeight: `${value === null || value === void 0 ? void 0 : value.lineHeight[device]}px`
   };
 };
 const generateBlockId = clientId => {
-  return clientId.split('-')[4];
+  return clientId.split("-")[4];
+};
+const generateCss = styles => {
+  let styleCss = "";
+
+  for (const selector in styles) {
+    const selectorStyles = styles[selector];
+    const filteredStyles = Object.keys(selectorStyles).map(property => {
+      const value = selectorStyles[property];
+      const valueWithoutUnits = value ? value.toString().replaceAll(/px|em|rem|!important|%/g, "").replaceAll(/\s/g, "") : "";
+
+      if (value && !value.toString().includes("undefined") && valueWithoutUnits) {
+        return `${property}: ${value};`;
+      }
+    }).filter(style => !!style).join("\n");
+    styleCss += `${selector}{
+                    ${filteredStyles}
+                }\n`;
+  }
+
+  return styleCss;
 };
 const filterJsCss = styles => {
   const asArray = Object.entries(styles);
   const filtered = asArray.filter(_ref => {
-    let [value] = _ref;
-    const valueWithoutUnits = value ? value.toString().replaceAll(/px|em|rem|!important|%/g, '').replaceAll(/\s/g, '') : '';
-    return value && !value.toString().includes('undefined') && valueWithoutUnits;
+    let [property, value] = _ref;
+    const valueWithoutUnits = value ? value.toString().replaceAll(/px|em|rem|!important|%/g, "").replaceAll(/\s/g, "") : "";
+    return value && !value.toString().includes("undefined") && valueWithoutUnits;
   });
   const filteredStyles = Object.fromEntries(filtered);
   return filteredStyles;
+};
+const videoBackground = (backgroundType, videoSource, videoURL, bgExternalVideo) => {
+  if (backgroundType == "video") {
+    if (videoSource == "local") {
+      if (videoURL) {
+        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+          className: "premium-blocks-video-bg-wrap"
+        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("video", {
+          className: "premium-blocks-video-bg",
+          autoPlay: true,
+          muted: true,
+          loop: true
+        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("source", {
+          src: videoURL
+        })));
+      }
+    }
+
+    if (videoSource == "external") {
+      if (bgExternalVideo) {
+        let video = bgExternalVideo,
+            src = "";
+
+        if (video.match("youtube|youtu.be")) {
+          let id = 0;
+
+          if (video.match("embed") && video.split(/embed\//)[1]) {
+            id = video.split(/embed\//)[1].split('"')[0];
+          } else if (video.split(/v\/|v=|youtu\.be\//)[1]) {
+            id = video.split(/v\/|v=|youtu\.be\//)[1].split(/[?&]/)[0];
+          }
+
+          src = "//www.youtube.com/embed/" + id + "?playlist=" + id + "&iv_load_policy=3&enablejsapi=1&disablekb=1&autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&wmode=transparent&widgetid=1";
+        } else if (video.match("vimeo.com")) {
+          let id = video.split(/video\/|https:\/\/vimeo\.com\//)[1].split(/[?&]/)[0];
+          src = "//player.vimeo.com/video/" + id + "?autoplay=1&loop=1&title=0&byline=0&portrait=0";
+        }
+
+        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+          className: "premium-blocks-video-bg-wrap"
+        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("iframe", {
+          src: src,
+          frameBorder: "0",
+          allowFullScreen: true
+        }));
+      }
+    }
+  }
+};
+const animationAttr = data => {
+  if (typeof data !== "undefined" && typeof data.name !== "undefined" && data.openAnimation) {
+    return {
+      "data-premiumanimation": JSON.stringify(data)
+    };
+  } else {
+    return {};
+  }
+};
+const gradientValue = value => {
+  const {
+    backgroundType,
+    backgroundColor,
+    gradientColorTwo,
+    gradientPosition,
+    gradientType,
+    gradientLocationOne,
+    gradientLocationTwo,
+    gradientAngle,
+    backgroundImageURL
+  } = value;
+  let btnGrad, btnGrad2, btnbg;
+
+  if (undefined !== backgroundType && "gradient" === backgroundType) {
+    btnGrad = "transparent" === backgroundColor || undefined === backgroundColor ? "rgba(255,255,255,0)" : backgroundColor;
+    btnGrad2 = undefined !== gradientColorTwo && undefined !== gradientColorTwo && "" !== gradientColorTwo ? gradientColorTwo : "#777";
+
+    if ("radial" === gradientType) {
+      btnbg = `radial-gradient(at ${gradientPosition}, ${btnGrad} ${gradientLocationOne}%, ${btnGrad2} ${gradientLocationTwo}%)`;
+    } else if ("radial" !== gradientType) {
+      btnbg = `linear-gradient(${gradientAngle}deg, ${btnGrad} ${gradientLocationOne}%, ${btnGrad2} ${gradientLocationTwo}%)`;
+    }
+  } else {
+    btnbg = backgroundImageURL ? `url('${backgroundImageURL}')` : "";
+  }
+
+  return btnbg;
 };
 
 /***/ }),
@@ -51002,38 +51150,58 @@ const {
   __
 } = wp.i18n;
 const {
-  Fragment
+  Fragment,
+  useState
 } = wp.element;
 const {
   Dropdown,
   Button
 } = wp.components;
 
-function PremiumFilters(props) {
-  const {
+function PremiumFilters(_ref) {
+  let {
     label,
+    value,
+    onChange
+  } = _ref;
+  let defaultValues = {
+    'contrast': '100',
+    'blur': '0',
+    'bright': '100',
+    'saturation': '100',
+    'hue': '0'
+  };
+  value = value ? { ...defaultValues,
+    ...value
+  } : defaultValues;
+  const [state, setState] = useState(value);
+
+  const onChangeFilter = (item, value) => {
+    const updatedState = { ...state
+    };
+    updatedState[item] = value;
+    setState(updatedState);
+    onChange(updatedState);
+  };
+
+  const {
+    contrast,
     blur,
     bright,
-    contrast,
     saturation,
-    hue,
-    onChangeBlur = () => {},
-    onChangeBright = () => {},
-    onChangeContrast = () => {},
-    onChangeSat = () => {},
-    onChangeHue = () => {}
-  } = props;
+    hue
+  } = state;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: " premium-blocks-base-control"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, __(label || "CSS Filters")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Dropdown, {
+    className: "premium-filter__container premium-blocks__base-control"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, __(label || "CSS Filters")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Dropdown, {
     className: "premium-control-toggle-btn",
     contentClassName: "premium-control-toggle-content",
     position: "bottom right",
-    renderToggle: _ref => {
+    renderToggle: _ref2 => {
       let {
         isOpen,
         onToggle
-      } = _ref;
+      } = _ref2;
       return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
         isSmall: true,
         onClick: onToggle,
@@ -51045,7 +51213,7 @@ function PremiumFilters(props) {
     renderContent: () => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_1__["default"], {
       label: __("Blur"),
       value: blur,
-      onChange: onChangeBlur,
+      onChange: value => onChangeFilter('blur', value),
       showUnit: false,
       defaultValue: 0
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -51053,7 +51221,7 @@ function PremiumFilters(props) {
       min: "0",
       max: "200",
       value: bright,
-      onChange: onChangeBright,
+      onChange: value => onChangeFilter('bright', value),
       showUnit: false,
       defaultValue: 100
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -51061,7 +51229,7 @@ function PremiumFilters(props) {
       min: "0",
       max: "200",
       value: contrast,
-      onChange: onChangeContrast,
+      onChange: value => onChangeFilter('contrast', value),
       showUnit: false,
       defaultValue: 100
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -51069,7 +51237,7 @@ function PremiumFilters(props) {
       min: "0",
       max: "200",
       value: saturation,
-      onChange: onChangeSat,
+      onChange: value => onChangeFilter('saturation', value),
       showUnit: false,
       defaultValue: 100
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -51077,7 +51245,7 @@ function PremiumFilters(props) {
       min: "0",
       max: "360",
       value: hue,
-      onChange: onChangeHue,
+      onChange: value => onChangeFilter('hue', value),
       showUnit: false,
       defaultValue: 0
     }))
@@ -57281,31 +57449,33 @@ function fuzzysearch(needle, haystack) {
 class PremiumTypo extends Component {
   constructor() {
     super(...arguments);
-    let FontSize;
-
-    if (this.props.components.includes("responsiveSize")) {
-      FontSize = {
-        'Desktop': '',
-        'Tablet': '',
-        'Mobile': '',
-        unit: 'px'
-      };
-    } else {
-      FontSize = '';
-    }
-
     let defaultValues = {
       "fontWeight": '',
       'fontStyle': '',
       'textTransform': '',
-      'letterSpacing': '',
+      'letterSpacing': {
+        'Desktop': '',
+        'Tablet': '',
+        'Mobile': '',
+        unit: 'px'
+      },
       'fontFamily': 'Default',
-      'lineHeight': '',
+      'lineHeight': {
+        'Desktop': '',
+        'Tablet': '',
+        'Mobile': '',
+        unit: 'px'
+      },
       'textDecoration': '',
-      'fontSize': FontSize
+      'fontSize': {
+        'Desktop': '',
+        'Tablet': '',
+        'Mobile': '',
+        unit: 'px'
+      }
     };
     this.state = {
-      sizeUnit: FontSize['unit'] || 'px',
+      sizeUnit: 'px',
       isVisible: false,
       currentView: '',
       search: "",
@@ -57313,7 +57483,8 @@ class PremiumTypo extends Component {
       device: 'Desktop',
       value: this.props.value ? { ...defaultValues,
         ...this.props.value
-      } : this.props.value
+      } : this.props.value,
+      defaultValue: defaultValues
     };
   }
 
@@ -57329,7 +57500,6 @@ class PremiumTypo extends Component {
 
   render() {
     const {
-      components,
       onChange
     } = this.props;
     const {
@@ -57338,7 +57508,8 @@ class PremiumTypo extends Component {
       isVisible,
       currentView,
       search,
-      device
+      device,
+      defaultValue
     } = this.state;
     const STYLE = [{
       value: "normal",
@@ -57435,9 +57606,9 @@ class PremiumTypo extends Component {
     };
 
     const linearFonts = fonts.filter(family => fuzzysearch(search.toLowerCase(), family['value'].toLowerCase()));
-    const fontSize = components.includes("responsiveSize") ? value['fontSize'][device] : value['fontSize'];
+    const fontSize = value['fontSize'][device];
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "premium-control-toggle premium-typography premium-blocks-base-control"
+      className: "premium-control-toggle premium-typography premium-blocks__base-control"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("header", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
       className: " premium-control-title"
     }, __('Typography', 'premium-blocks-for-gutenberg'))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -57446,12 +57617,12 @@ class PremiumTypo extends Component {
       className: "premium-typohraphy-value"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "premium-typography-title-container"
-    }, components.includes('family') && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
       className: "premium-font",
       onClick: () => {
         toggleVisible("fonts");
       }
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, value['fontFamily']), isVisible && currentView == 'fonts' && components.includes('family') && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Popover, {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, value['fontFamily']), isVisible && currentView == 'fonts' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Popover, {
       className: "premium-typography-option premium-font-family__modal",
       onClose: toggleClose
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -57523,53 +57694,40 @@ class PremiumTypo extends Component {
       style: {
         width: `100%`
       }
-    }, components.includes("size") && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
-      className: "customize-control-premium-slider"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      label: __("Font Size (PX)", 'premium-blocks-for-gutenberg'),
-      value: value['fontSize'],
-      min: "10",
-      max: "80",
-      defaultValue: 20,
-      onChange: value => {
-        changeTypography('fontSize', value);
-      },
-      showUnit: false
-    })), components.includes("responsiveSize") && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
       className: "customize-control-premium-slider"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
       label: __("Font Size", 'premium-blocks-for-gutenberg'),
       value: value['fontSize'],
       onChange: value => changeTypography('fontSize', value),
       showUnit: true,
-      defaultValue: 20,
       units: ["px", "em"]
-    })), components.includes("line") && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
       className: "customize-control-premium-slider"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
       label: __("Line Height (PX)", 'premium-blocks-for-gutenberg'),
       value: value['lineHeight'],
       onChange: value => {
         changeTypography('lineHeight', value);
       },
-      defaultValue: 1,
+      defaultValue: defaultValue['lineHeight'],
       showUnit: false,
       min: 0,
       max: 200
-    })), components.includes("spacing") && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
       className: "customize-control-premium-slider"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
       label: __("Letter Spacing (PX)", 'premium-blocks-for-gutenberg'),
       value: value['letterSpacing'],
       onChange: value => {
         changeTypography('letterSpacing', value);
       },
-      defaultValue: '',
+      defaultValue: defaultValue['letterSpacing'],
       showUnit: false,
       step: 0.1,
       min: -5,
       max: 15
-    })), components.includes("style") && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
       className: "customize-control-premium-slider"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
       label: __("Style", 'premium-blocks-for-gutenberg'),
@@ -57577,9 +57735,8 @@ class PremiumTypo extends Component {
       value: value['fontStyle'],
       onChange: value => {
         changeTypography('fontStyle', value);
-      } // onResetClick={onResetClick}
-
-    })), components.includes("Upper") && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+      }
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
       className: "premium-typography-variant"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
       className: "premium-text-transform"
@@ -57592,9 +57749,7 @@ class PremiumTypo extends Component {
       "data-variant": variant
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
       className: "premium-tooltip-top"
-    }, variant))))), components.includes("Decoration") && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
-      className: "premium-typography-variant"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
+    }, variant)))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
       className: "premium-text-decoration"
     }, ['line-through', 'underline'].map(variant => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
       key: variant,
@@ -57605,7 +57760,7 @@ class PremiumTypo extends Component {
       "data-variant": variant
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
       className: "premium-tooltip-top"
-    }, variant)))))))))), components.includes("weight") && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    }, variant)))))))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
       className: "premium-weight",
       onClick: () => {
         toggleVisible("variations");

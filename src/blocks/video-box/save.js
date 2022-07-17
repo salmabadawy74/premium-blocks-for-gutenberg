@@ -1,7 +1,7 @@
 import classnames from 'classnames'
 import onChangeVideoURL from "./index";
 import DefaultImage from "../../components/default-image";
-import { typographyCss, filterJsCss } from '../../components/HelperFunction'
+import { filterJsCss, generateCss } from '../../components/HelperFunction'
 
 const {
     RichText
@@ -34,7 +34,8 @@ const save = props => {
         playBorder,
         boxBorder,
         descShadow,
-        boxShadow
+        boxShadow,
+        overlayFilter
     } = props.attributes;
 
     const loopVideo = () => {
@@ -54,22 +55,24 @@ const save = props => {
         }
     };
 
-    const renderCss = (
-        <style>
-            {`
-                .${blockId} .premium-video-box__play:hover {
-                    color: ${playStyles[0].playHoverColor} !important;
-                    background-color: ${playStyles[0].playHoverBackColor} !important;
-                }
-            `}
-        </style>
-    );
+    const renderCss = () => {
+        const styles = {};
+        styles[` .${blockId} .premium-video-box__play:hover`] = {
+            'color': `${playStyles[0].playHoverColor} !important`,
+            'background-color': `${playStyles[0].playHoverBackColor} !important`
+        };
+        return generateCss(styles);
+    }
 
     return (
         videoURL && (
             <div
                 className={classnames(className,
-                    "premium-video-box", `video-overlay-${overlay} ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile} premium-aspect-ratio-${ratioValue}`)}
+                    "premium-video-box", `video-overlay-${overlay} ${blockId} premium-aspect-ratio-${ratioValue}`, {
+                    ' premium-desktop-hidden': hideDesktop,
+                    ' premium-tablet-hidden': hideTablet,
+                    ' premium-mobile-hidden': hideMobile,
+                })}
                 data-type={videoType}
                 style={filterJsCss({
                     borderStyle: boxBorder.borderType,
@@ -78,7 +81,11 @@ const save = props => {
                         0}px ${boxShadow.blur || 0}px ${boxShadow.color} ${boxShadow.position}`,
                 })}
             >
-                {renderCss}
+                <style
+                    dangerouslySetInnerHTML={{
+                        __html: renderCss()
+                    }}
+                />
                 <div className={`premium-video-box__container`}>
                     <div>
                         <div className={`premium-video-box-inner-wrap`}>
@@ -113,7 +120,7 @@ const save = props => {
                         className={`premium-video-box__overlay`}
                         style={filterJsCss({
                             backgroundImage: `url('${overlayStyles[0].overlayImgURL}')`,
-                            filter: `brightness( ${overlayStyles[0].bright}% ) contrast( ${overlayStyles[0].contrast}% ) saturate( ${overlayStyles[0].saturation}% ) blur( ${overlayStyles[0].blur}px ) hue-rotate( ${overlayStyles[0].hue}deg )`
+                            filter: `brightness( ${overlayFilter.bright}% ) contrast( ${overlayFilter.contrast}% ) saturate( ${overlayFilter.saturation}% ) blur( ${overlayFilter.blur}px ) hue-rotate( ${overlayFilter.hue}deg )`
                         })}
                     />
                 )}
@@ -140,23 +147,27 @@ const save = props => {
                 )}
                 <div
                     className={`premium-video-box__desc`}
-                    style={{
-                        color: descStyles[0].videoDescColor,
+                    style={filterJsCss({
                         backgroundColor: descStyles[0].videoDescBack,
                         borderRadius: descStyles[0].videoDescBorderRadius,
                         top: descStyles[0].descTop + "%",
                         left: descStyles[0].descLeft + "%"
-                    }}
+                    })}
                 >
                     <RichText.Content
                         tagName="p"
                         className={`premium-video-box__desc_text`}
                         value={descStyles[0].videoDescText}
                         placeholder="Add caption"
-                        style={{
-                            ...typographyCss(videoDescTypography, props.deviceType),
+                        style={filterJsCss({
+                            fontStyle: videoDescTypography?.fontStyle,
+                            fontFamily: videoDescTypography?.fontFamily,
+                            fontWeight: videoDescTypography?.fontWeight,
+                            textDecoration: videoDescTypography?.textDecoration,
+                            textTransform: videoDescTypography?.textTransform,
+                            color: descStyles[0].videoDescColor,
                             textShadow: `${descShadow.horizontal}px ${descShadow.vertical}px ${descShadow.blur}px ${descShadow.color}`
-                        }}
+                        })}
                         keepPlaceholderOnFocus
                     />
                 </div>

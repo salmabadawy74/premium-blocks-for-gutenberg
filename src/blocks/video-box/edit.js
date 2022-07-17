@@ -9,13 +9,13 @@ import ResponsiveSingleRangeControl from "../../components/RangeControl/single-r
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 import SpacingControl from '../../components/premium-responsive-spacing'
 import DefaultImage from "../../components/default-image";
-import WebfontLoader from "../../components/typography/fontLoader"
 import PremiumShadow from "../../components/PremiumShadow";
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
 import InsideTabs from '../../components/InsideTabs'
 import InsideTab from '../../components/InsideTab';
-import { borderCss, padddingCss, typographyCss, generateBlockId } from '../../components/HelperFunction'
+import { borderCss, paddingCss, typographyCss, generateBlockId, generateCss } from '../../components/HelperFunction'
+import GoogleFontLoader from "react-google-font-loader";
 
 const { withSelect } = wp.data
 
@@ -104,7 +104,6 @@ class Edit extends Component {
             relatedVideos,
             mute,
             overlay,
-            videoDesc,
             playIcon,
             playLeft,
             hideDesktop,
@@ -120,7 +119,8 @@ class Edit extends Component {
             playPadding,
             descPadding,
             descShadow,
-            boxShadow
+            boxShadow,
+            overlayFilter
         } = this.props.attributes;
 
         const TYPE = [
@@ -197,28 +197,26 @@ class Edit extends Component {
         };
 
         let loadDescriptionGoogleFonts;
-        // if (descStyles[0].videoDescFamily !== "Default") {
-        //     const descriptionConfig = {
-        //         google: {
-        //             families: [descStyles[0].videoDescFamily],
-        //         },
-        //     }
-        //     loadDescriptionGoogleFonts = (
-        //         <WebfontLoader config={descriptionConfig}>
-        //         </WebfontLoader>
-        //     )
-        // }
+        if (videoDescTypography.fontFamily !== "Default") {
+            loadDescriptionGoogleFonts = (
+                <GoogleFontLoader
+                    fonts={[
+                        {
+                            font: videoDescTypography.fontFamily,
+                        },
+                    ]}
+                />
+            );
+        }
 
-        const renderCss = (
-            <style>
-                {`
-                    .${blockId} .premium-video-box__play:hover {
-                        color: ${playStyles[0].playHoverColor} !important;
-                        background-color: ${playStyles[0].playHoverBackColor} !important;
-                    }
-                `}
-            </style>
-        );
+        const renderCss = () => {
+            const styles = {};
+            styles[` .${blockId} .premium-video-box__play:hover`] = {
+                'color': `${playStyles[0].playHoverColor} !important`,
+                'background-color': `${playStyles[0].playHoverBackColor} !important`
+            };
+            return generateCss(styles);
+        }
 
         return [
             isSelected && (
@@ -353,16 +351,8 @@ class Edit extends Component {
                                         }
                                     />
                                     <PremiumFilters
-                                        blur={blur}
-                                        bright={overlayStyles[0].bright}
-                                        contrast={overlayStyles[0].contrast}
-                                        saturation={overlayStyles[0].saturation}
-                                        hue={overlayStyles[0].hue}
-                                        onChangeBlur={value => saveOverlayStyles({ blur: value === undefined ? 0 : value })}
-                                        onChangeBright={value => saveOverlayStyles({ bright: value === undefined ? 100 : value })}
-                                        onChangeContrast={value => saveOverlayStyles({ contrast: value === undefined ? 100 : value })}
-                                        onChangeSat={value => saveOverlayStyles({ saturation: value === undefined ? 100 : value })}
-                                        onChangeHue={value => saveOverlayStyles({ hue: value === undefined ? 100 : value })}
+                                        value={overlayFilter}
+                                        onChange={(value) => setAttributes({ overlayFilter: value })}
                                     />
                                 </PanelBody>
                             )}
@@ -398,7 +388,7 @@ class Edit extends Component {
                                                     <InsideTab tabTitle={__('Normal')}>
                                                         <Fragment>
                                                             <AdvancedPopColorControl
-                                                                label={__("Icon Color", '')}
+                                                                label={__("Icon Color", 'premium-blocks-for-gutenberg')}
                                                                 colorValue={playStyles[0].playColor}
                                                                 colorDefault={''}
                                                                 onColorChange={newValue => savePlayStyles({ playColor: newValue, })}
@@ -409,22 +399,20 @@ class Edit extends Component {
                                                                 onColorChange={newvalue => { savePlayStyles({ playBack: newvalue }) }}
                                                                 colorDefault={``}
                                                             />
-                                                            {videoDesc && (
-                                                                <Fragment>
-                                                                    <AdvancedPopColorControl
-                                                                        label={__("Description Color", '')}
-                                                                        colorValue={descStyles[0].videoDescColor}
-                                                                        colorDefault={''}
-                                                                        onColorChange={newValue => setAttributes({ videoDescColor: newValue, })}
-                                                                    />
-                                                                    <AdvancedPopColorControl
-                                                                        label={__(`Background Color`)}
-                                                                        colorValue={descStyles[0].videoDescBack}
-                                                                        onColorChange={newvalue => { saveDescritionStyle({ videoDescBack: newvalue, }) }}
-                                                                        colorDefault={``}
-                                                                    />
-                                                                </Fragment>
-                                                            )}
+                                                            <Fragment>
+                                                                <AdvancedPopColorControl
+                                                                    label={__("Description Color", 'premium-blocks-for-gutenberg')}
+                                                                    colorValue={descStyles[0].videoDescColor}
+                                                                    colorDefault={''}
+                                                                    onColorChange={newValue => saveDescritionStyle({ videoDescColor: newValue, })}
+                                                                />
+                                                                <AdvancedPopColorControl
+                                                                    label={__(`Background Color`)}
+                                                                    colorValue={descStyles[0].videoDescBack}
+                                                                    onColorChange={newvalue => { saveDescritionStyle({ videoDescBack: newvalue, }) }}
+                                                                    colorDefault={``}
+                                                                />
+                                                            </Fragment>
                                                         </Fragment>
                                                     </InsideTab>
                                                     <InsideTab tabTitle={__('Hover')}>
@@ -467,37 +455,10 @@ class Edit extends Component {
                                 className="premium-panel-body"
                                 initialOpen={false}
                             >
-                                {/* <ToggleControl
-                                            label={__("Enable Video Description", 'premium-blocks-for-gutenberg')}
-                                            checked={videoDesc}
-                                            onChange={newCheck => setAttributes({ videoDesc: newCheck })}
-                                        /> */}
-                                {/* {videoDesc && ( */}
-                                {/* <Fragment> */}
-                                {/* <TextareaControl
-                                    label={__("Description Text", 'premium-blocks-for-gutenberg')}
-                                    value={descStyles[0].videoDescText}
-                                    onChange={newText => saveDescritionStyle({ videoDescText: newText })}
-                                /> */}
                                 <PremiumTypo
-                                    components={["responsiveSize", "weight", "line", "style", "upper", "spacing", "family"]}
                                     value={videoDescTypography}
                                     onChange={newValue => setAttributes({ videoDescTypography: newValue })}
                                 />
-                                {/* <ResponsiveSingleRangeControl
-                                    label={__("Vertical Offset (%)", 'premium-blocks-for-gutenberg')}
-                                    value={descStyles[0].descTop}
-                                    onChange={newValue => saveDescritionStyle({ descTop: newValue === undefined ? 50 : newValue })}
-                                    showUnit={false}
-                                    defaultValue={0}
-                                />
-                                <ResponsiveSingleRangeControl
-                                    label={__("Border Radius (px)", 'premium-blocks-for-gutenberg')}
-                                    value={descStyles[0].videoDescBorderRadius}
-                                    onChange={newValue => saveDescritionStyle({ videoDescBorderRadius: newValue === undefined ? 0 : newValue })}
-                                    showUnit={false}
-                                    defaultValue={0}
-                                /> */}
                                 <PremiumShadow
                                     label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
                                     value={descShadow}
@@ -510,15 +471,6 @@ class Edit extends Component {
                                     showUnits={true}
                                     responsive={true}
                                 />
-                                {/* <ResponsiveSingleRangeControl
-                                                    label={__("Padding (PX)", 'premium-blocks-for-gutenberg')}
-                                                    value={descStyles[0].videoDescPadding}
-                                                    onChange={newValue => saveDescritionStyle({ videoDescPadding: newValue === undefined ? 20 : newValue })}
-                                                    showUnit={false}
-                                                    defaultValue={0}
-                                                /> */}
-                                {/* </Fragment> */}
-                                {/* )} */}
                             </PanelBody>
                         </InspectorTab>
                         <InspectorTab key={'advance'}>
@@ -575,7 +527,11 @@ class Edit extends Component {
                         <div
                             ref={this.videoboxRef}
                             className={classnames(className,
-                                "premium-video-box", `video-overlay-${overlay} ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile} premium-aspect-ratio-${ratioValue}`)}
+                                "premium-video-box", `video-overlay-${overlay} ${blockId} premium-aspect-ratio-${ratioValue}`, {
+                                ' premium-desktop-hidden': hideDesktop,
+                                ' premium-tablet-hidden': hideTablet,
+                                ' premium-mobile-hidden': hideMobile,
+                            })}
                             data-type={videoType}
                             style={{
                                 ...borderCss(boxBorder, this.props.deviceType),
@@ -583,7 +539,11 @@ class Edit extends Component {
                                     0}px ${boxShadow.blur || 0}px ${boxShadow.color} ${boxShadow.position}`,
                             }}
                         >
-                            {renderCss}
+                            <style
+                                dangerouslySetInnerHTML={{
+                                    __html: renderCss()
+                                }}
+                            />
                             <div className={`premium-video-box__container`}>
                                 <div>
                                     <div className={`premium-video-box-inner-wrap`}>
@@ -618,7 +578,7 @@ class Edit extends Component {
                                     className={`premium-video-box__overlay`}
                                     style={{
                                         backgroundImage: `url('${overlayStyles[0].overlayImgURL}')`,
-                                        filter: `brightness( ${overlayStyles[0].bright}% ) contrast( ${overlayStyles[0].contrast}% ) saturate( ${overlayStyles[0].saturation}% ) blur( ${overlayStyles[0].blur}px ) hue-rotate( ${overlayStyles[0].hue}deg )`
+                                        filter: `brightness( ${overlayFilter.bright}% ) contrast( ${overlayFilter.contrast}% ) saturate( ${overlayFilter.saturation}% ) blur( ${overlayFilter.blur}px ) hue-rotate( ${overlayFilter.hue}deg )`
                                     }}
                                 />
                             )}
@@ -628,7 +588,7 @@ class Edit extends Component {
                                     className={`premium-video-box__play`}
                                     style={{
                                         ...borderCss(playBorder, this.props.deviceType),
-                                        ...padddingCss(playPadding, this.props.deviceType),
+                                        ...paddingCss(playPadding, this.props.deviceType),
                                         top: playStyles[0].playTop + "%",
                                         left: playLeft + "%",
                                         color: playStyles[0].playColor,
@@ -643,12 +603,10 @@ class Edit extends Component {
                                     />
                                 </div>
                             )}
-                            {/* {overlay && videoDesc && ( */}
                             <div
                                 className={`premium-video-box__desc`}
                                 style={{
-                                    ...padddingCss(descPadding, this.props.deviceType),
-                                    color: descStyles[0].videoDescColor,
+                                    ...paddingCss(descPadding, this.props.deviceType),
                                     backgroundColor: descStyles[0].videoDescBack,
                                     borderRadius: descStyles[0].videoDescBorderRadius,
                                     top: descStyles[0].descTop + "%",
@@ -663,12 +621,12 @@ class Edit extends Component {
                                     onChange={newText => saveDescritionStyle({ videoDescText: newText })}
                                     style={{
                                         ...typographyCss(videoDescTypography, this.props.deviceType),
+                                        color: descStyles[0].videoDescColor,
                                         textShadow: `${descShadow.horizontal}px ${descShadow.vertical}px ${descShadow.blur}px ${descShadow.color}`
                                     }}
                                     keepPlaceholderOnFocus
                                 />
                             </div>
-                            {/* )} */}
                         </div>
                     </Fragment>
                 )}

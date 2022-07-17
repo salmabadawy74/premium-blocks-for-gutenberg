@@ -80,12 +80,7 @@ const videoBoxAttrs = {
         default: [
             {
                 overlayImgID: '',
-                overlayImgURL: '',
-                blur: 0,
-                bright: 100,
-                contrast: 100,
-                saturation: 100,
-                hue: 0,
+                overlayImgURL: ''
             }
         ]
     },
@@ -124,8 +119,19 @@ const videoBoxAttrs = {
             "fontWeight": 500,
             'fontStyle': '',
             'textTransform': '',
-            'letterSpacing': '',
-            'lineHeight': '',
+            "textDecoration": "",
+            "letterSpacing": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            },
+            "lineHeight": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            },
             'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
             'fontSize': {
                 'Desktop': "",
@@ -142,22 +148,22 @@ const videoBoxAttrs = {
             borderType: "none",
             borderRadius: {
                 Desktop: {
-                    top: "",
-                    right: "",
-                    bottom: "",
-                    left: ""
+                    top: "100",
+                    right: "100",
+                    bottom: "100",
+                    left: "100"
                 },
                 Tablet: {
-                    top: "",
-                    right: "",
-                    bottom: "",
-                    left: ""
+                    top: "100",
+                    right: "100",
+                    bottom: "100",
+                    left: "100"
                 },
                 Mobile: {
-                    top: "",
-                    right: "",
-                    bottom: "",
-                    left: ""
+                    top: "100",
+                    right: "100",
+                    bottom: "100",
+                    left: "100"
                 }
             },
             borderWidth: {
@@ -295,6 +301,16 @@ const videoBoxAttrs = {
             'vertical': '',
             'position': ' '
         }
-    }
+    },
+    overlayFilter: {
+        type: "object",
+        default: {
+            'contrast': '100',
+            'blur': '0',
+            'bright': '100',
+            'saturation': '100',
+            'hue': '0'
+        }
+    },
 };
 export default videoBoxAttrs;

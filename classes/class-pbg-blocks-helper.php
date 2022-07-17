@@ -4144,14 +4144,14 @@ class PBG_Blocks_Helper {
 	 */
 	public function get_videobox_css_style( $attr, $unique_id ) {
 
-		// if ( isset( $attr['descStyles'][0]['videoDescFamily'] ) ) {
-		// 	$this->add_gfont(
-		// 		array(
-		// 			'fontFamily'  => ( isset( $attr['descStyles'][0]['videoDescFamily'] ) ? $attr['descStyles'][0]['videoDescFamily'] : '' ),
-		// 			'fontVariant' => ( isset( $attr['descStyles'][0]['videoDescWeight'] ) ? $attr['descStyles'][0]['videoDescWeight'] : '' ),
-		// 		)
-		// 	);
-		// }
+		if ( isset( $attr['videoDescTypography']['fontFamily'] ) ) {
+			$this->add_gfont(
+				array(
+					'fontFamily'  => ( isset( $attr['videoDescTypography']['fontFamily'] ) ? $attr['videoDescTypography']['fontFamily'] : '' ),
+					'fontVariant' => ( isset( $attr['videoDescTypography']['fontWeight'] ) ? $attr['videoDescTypography']['fontWeight'] : '' ),
+					)
+			);
+		}
 		$css                    = new Premium_Blocks_css();
 		$media_query            = array();
 		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
