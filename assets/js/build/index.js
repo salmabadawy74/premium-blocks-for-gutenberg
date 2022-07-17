@@ -7838,7 +7838,7 @@ const attributes = {
         "Mobile": '',
         "unit": 'px'
       },
-      'fontFamily': '',
+      'fontFamily': 'Default',
       'lineHeight': {
         'Desktop': '',
         "Tablet": '',
@@ -65079,19 +65079,6 @@ function fuzzysearch(needle, haystack) {
 class PremiumTypo extends Component {
   constructor() {
     super(...arguments);
-    let FontSize;
-
-    if (this.props.components.includes("responsiveSize")) {
-      FontSize = {
-        'Desktop': '',
-        'Tablet': '',
-        'Mobile': '',
-        unit: 'px'
-      };
-    } else {
-      FontSize = '';
-    }
-
     let defaultValues = {
       "fontWeight": '',
       'fontStyle': '',
@@ -65110,10 +65097,15 @@ class PremiumTypo extends Component {
         unit: 'px'
       },
       'textDecoration': '',
-      'fontSize': FontSize
+      'fontSize': {
+        'Desktop': '',
+        'Tablet': '',
+        'Mobile': '',
+        unit: 'px'
+      }
     };
     this.state = {
-      sizeUnit: FontSize['unit'] || 'px',
+      sizeUnit: 'px',
       isVisible: false,
       currentView: '',
       search: "",
@@ -65138,7 +65130,6 @@ class PremiumTypo extends Component {
 
   render() {
     const {
-      components,
       onChange
     } = this.props;
     const {
@@ -65245,7 +65236,7 @@ class PremiumTypo extends Component {
     };
 
     const linearFonts = fonts.filter(family => fuzzysearch(search.toLowerCase(), family['value'].toLowerCase()));
-    const fontSize = components.includes("responsiveSize") ? value['fontSize'][device] : value['fontSize'];
+    const fontSize = value['fontSize'][device];
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "premium-control-toggle premium-typography premium-blocks__base-control"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("header", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
@@ -65261,7 +65252,7 @@ class PremiumTypo extends Component {
       onClick: () => {
         toggleVisible("fonts");
       }
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, value['fontFamily']), isVisible && currentView == 'fonts' && components.includes('family') && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Popover, {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, value['fontFamily']), isVisible && currentView == 'fonts' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Popover, {
       className: "premium-typography-option premium-font-family__modal",
       onClose: toggleClose
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -65399,7 +65390,7 @@ class PremiumTypo extends Component {
       "data-variant": variant
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
       className: "premium-tooltip-top"
-    }, variant)))))))))), components.includes("weight") && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    }, variant)))))))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
       className: "premium-weight",
       onClick: () => {
         toggleVisible("variations");
