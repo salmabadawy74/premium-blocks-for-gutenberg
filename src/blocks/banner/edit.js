@@ -518,16 +518,6 @@ export class edit extends Component {
                                 initialOpen={false}
                             >
                                 <PremiumTypo
-                                    components={[
-                                        "responsiveSize",
-                                        "weight",
-                                        "family",
-                                        "spacing",
-                                        "style",
-                                        "Upper",
-                                        "line",
-                                        "Decoration",
-                                    ]}
                                     value={titleTypography}
                                     onChange={(newValue) =>
                                         setAttributes({
@@ -612,22 +602,8 @@ export class edit extends Component {
                                 initialOpen={false}
                             >
                                 <PremiumTypo
-                                    components={[
-                                        "responsiveSize",
-                                        "weight",
-                                        "family",
-                                        "spacing",
-                                        "style",
-                                        "Upper",
-                                        "line",
-                                        "Decoration",
-                                    ]}
                                     value={descTypography}
-                                    onChange={(newValue) =>
-                                        setAttributes({
-                                            descTypography: newValue,
-                                        })
-                                    }
+                                    onChange={(newValue) => setAttributes({ descTypography: newValue, })}
                                 />
                                 <hr />
                                 <AdvancedPopColorControl
@@ -668,17 +644,10 @@ export class edit extends Component {
                                 initialOpen={false}
                             >
                                 <PremiumShadow
-                                    label={__(
-                                        "Box Shadow",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
+                                    label={__("Box Shadow", "premium-blocks-for-gutenberg")}
                                     boxShadow={true}
                                     value={containerShadow}
-                                    onChange={(value) =>
-                                        setAttributes({
-                                            containerShadow: value,
-                                        })
-                                    }
+                                    onChange={(value) => setAttributes({ containerShadow: value, })}
                                 />
                                 <hr />
                                 <PremiumBorder

@@ -12,16 +12,8 @@ export default function save(props) {
         link,
         url,
         gutter,
-        blur,
-        bright,
-        contrast,
-        saturation,
-        hue,
-        blurHover,
-        brightHover,
-        contrastHover,
-        saturationHover,
-        hueHover,
+        imgFilter,
+        imgFilterHover,
         linkTarget,
         iconStyles,
         imgFit,
@@ -36,7 +28,11 @@ export default function save(props) {
     } = props.attributes
 
     let target = (linkTarget) ? "_blank" : "_self"
-    const mainClasses = classnames(className, 'premium-image-separator', blockId);
+    const mainClasses = classnames(className, 'premium-image-separator', blockId, {
+        ' premium-desktop-hidden': hideDesktop,
+        ' premium-tablet-hidden': hideTablet,
+        ' premium-mobile-hidden': hideMobile,
+    });
 
     const renderCss = (<style>
         {`
@@ -44,7 +40,7 @@ export default function save(props) {
                 text-align: ${align[props.deviceType]};
             }
             .${blockId} .premium-image-separator-container:hover img{
-                filter:  brightness( ${brightHover}% ) contrast( ${contrastHover}% ) saturate( ${saturationHover}% ) blur( ${blurHover}px ) hue-rotate( ${hueHover}deg ) !important ;
+                    filter:  brightness( ${imgFilterHover?.bright}% ) contrast( ${imgFilterHover?.contrast}% ) saturate( ${imgFilterHover?.saturation}% ) blur( ${imgFilterHover?.blur}px ) hue-rotate( ${imgFilterHover?.hue}deg ) !important ;
             }
             .${blockId} .premium-image-separator-container i:hover {
                 color: ${iconStyles[0].iconColorHover} !important;
@@ -56,14 +52,12 @@ export default function save(props) {
 
     return (
         <div
-            className={`${mainClasses} ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`}
-            style={{ textAlign: align[props.deviceType] || 'center' }}
+            className={`${mainClasses} ${blockId} `}
         >
             {renderCss}
             <div className={`premium-image-separator-container`} style={{
-                textAlign: align[props.deviceType] || 'center',
                 transform: `translateY(${gutter}%)`,
-                filter: iconType === 'image' ? `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )` : ""
+                filter: iconType === 'image' ? `brightness( ${imgFilter?.bright}% ) contrast( ${imgFilter?.contrast}% ) saturate( ${imgFilter?.saturation}% ) blur( ${imgFilter?.blur}px ) hue-rotate( ${imgFilter?.hue}deg )` : ""
             }}
             >
                 <a className="premium-image-separator-link" href={link && url} target={target} rel="noopener noreferrer">
