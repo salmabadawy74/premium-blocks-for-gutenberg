@@ -49,7 +49,7 @@ export default function save(props) {
             }}
             >
                 {
-                    iconType === 'icon' && <i className={`${icon}`} style={{
+                    iconType === 'icon' && <i className={`${iconStyles[0].icon}`} style={{
                         color: iconStyles[0].iconColor,
                         backgroundColor: iconStyles[0].iconBGColor,
                         textShadow: `${iconStyles[0].iconShadowHorizontal}px ${iconStyles[0].iconShadowVertical}px ${iconStyles[0].iconShadowBlur}px ${iconStyles[0].iconShadowColor}`,

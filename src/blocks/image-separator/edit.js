@@ -6,6 +6,7 @@ import AdvancedPopColorControl from "../../components/Color Control/ColorCompone
 import PremiumFilters from "../../components/premium-filters";
 import PremiumMediaUpload from "../../components/premium-media-upload";
 import RadioComponent from '../../components/radio-control';
+import PremiumShadow from "../../components/PremiumShadow"
 
 const { __ } = wp.i18n;
 
@@ -146,7 +147,7 @@ class edit extends Component {
                                     icons={iconsList}
                                     value={iconStyles[0].icon}
                                     onChange={(value) =>
-                                        setAttributes({ icon: value })
+                                        saveIconStyle({ icon: value })
                                     }
                                     isMulti={false}
                                     appendTo="body"
@@ -583,7 +584,7 @@ class edit extends Component {
                 >
                     {iconType === "icon" && (
                         <i
-                            className={`${icon}`}
+                            className={`${iconStyles[0].icon}`}
                             style={{
                                 fontSize: `${iconSize}${iconStyles[0].iconSizeType}`,
                                 padding: `${iconPadding}${iconStyles[0].iconPaddingType}`,
