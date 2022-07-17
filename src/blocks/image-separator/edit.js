@@ -19,6 +19,7 @@ import {
     borderCss,
     paddingCss,
     generateBlockId,
+    generateCss
 } from "../../components/HelperFunction";
 
 const { __ } = wp.i18n;
@@ -50,7 +51,7 @@ class edit extends Component {
 
         const {
             blockId,
-            align,
+            iconAlign,
             className,
             iconType,
             iconSize,
@@ -99,23 +100,19 @@ class edit extends Component {
             setAttributes({ iconStyles: newUpdate });
         };
 
-        const renderCss = (
-            <style>
-                {`
-                .${blockId} .premium-image-separator-container {
-                    text-align: ${align[this.props.deviceType]};
-                }
-                .${blockId} .premium-image-separator-container:hover img{
-                    filter:  brightness( ${imgFilterHover?.bright}% ) contrast( ${imgFilterHover?.contrast}% ) saturate( ${imgFilterHover?.saturation}% ) blur( ${imgFilterHover?.blur}px ) hue-rotate( ${imgFilterHover?.hue}deg ) !important ;
-                }
-                .${blockId} .premium-image-separator-container i:hover {
-                    color: ${iconStyles[0].iconColorHover} !important;
-                    background-color: ${iconStyles[0].iconBGColorHover
-                    } !important;
-                }
-            `}
-            </style>
-        );
+
+
+        const loadStyles = () => {
+            const styles = {};
+            styles[`.${blockId} .premium-image-separator-container:hover img`] = {
+                'filter': `brightness(${imgFilterHover?.bright}% ) contrast(${imgFilterHover?.contrast}% ) saturate(${imgFilterHover?.saturation}% ) blur(${imgFilterHover?.blur}px) hue-rotate(${imgFilterHover?.hue}deg)!important`
+            };
+            styles[` .${blockId} .premium-image-separator-container i:hover`] = {
+                'color': `${iconStyles[0].iconColorHover} !important`,
+                'background-color': `${iconStyles[0].iconBGColorHover} !important`
+            };
+            return generateCss(styles);
+        }
 
         const mainClasses = classnames(className, "premium-image-separator", {
             ' premium-desktop-hidden': hideDesktop,
@@ -281,9 +278,9 @@ class edit extends Component {
                                             icon: Icons.alignRight,
                                         },
                                     ]}
-                                    value={align}
+                                    value={iconAlign}
                                     onChange={(newValue) =>
-                                        setAttributes({ align: newValue })
+                                        setAttributes({ iconAlign: newValue })
                                     }
                                     showIcons={true}
                                 />
@@ -618,15 +615,17 @@ class edit extends Component {
                     </InspectorTabs>
                 </InspectorControls>
             ),
-            renderCss,
+            <style
+                dangerouslySetInnerHTML={{ __html: loadStyles() }}
+            />,
             <div
                 className={`${mainClasses} ${blockId}`}
-                style={{ textAlign: align[this.props.deviceType] }}
+                style={{ textAlign: iconAlign[this.props.deviceType] }}
             >
                 <div
                     className={`premium-image-separator-container`}
                     style={{
-                        textAlign: align[this.props.deviceType],
+                        textAlign: iconAlign[this.props.deviceType],
                         transform: `translateY(${gutter}%)`,
                         filter:
                             iconType === "image"

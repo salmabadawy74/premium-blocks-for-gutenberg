@@ -6,7 +6,7 @@ const imageSeparatorAttrs = {
         type: "boolean",
         default: false
     },
-    align: {
+    iconAlign: {
         type: "object",
         default: {
             Desktop: "center",
@@ -58,46 +58,7 @@ const imageSeparatorAttrs = {
             'hue': '0'
         }
     },
-    // blur: {
-    //     type: "number",
-    //     default: "0"
-    // },
-    // bright: {
-    //     type: "number",
-    //     default: "100"
-    // },
-    // contrast: {
-    //     type: "number",
-    //     default: "100"
-    // },
-    // saturation: {
-    //     type: "number",
-    //     default: "100"
-    // },
-    // hue: {
-    //     type: "number",
-    //     default: "0"
-    // },
-    // blurHover: {
-    //     type: "number",
-    //     default: "0"
-    // },
-    // brightHover: {
-    //     type: "number",
-    //     default: "100"
-    // },
-    // contrastHover: {
-    //     type: "number",
-    //     default: "100"
-    // },
-    // saturationHover: {
-    //     type: "number",
-    //     default: "100"
-    // },
-    // hueHover: {
-    //     type: "number",
-    //     default: "0"
-    // },
+
 
     linkTarget: {
         type: "boolean",

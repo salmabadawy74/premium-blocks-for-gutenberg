@@ -5821,14 +5821,14 @@ class PBG_Blocks_Helper {
 		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
 
 		// container style
-		if ( isset( $attr['align'] ) ) {
+		if ( isset( $attr['iconAlign'] ) ) {
 			$css->set_selector( '.' . $unique_id );
-			$css->add_property( 'text-align', ( $attr['align']['Desktop'] . '!important' ) );
+			$css->add_property( 'text-align', ( $attr['iconAlign']['Desktop'] . ' !important' ) );
 		}
 
-		if ( isset( $attr['align'] ) ) {
+		if ( isset( $attr['iconAlign'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-image-separator-container' );
-			$css->add_property( 'text-align', ( $attr['align']['Desktop'] . '!important' ) );
+			$css->add_property( 'text-align', ( $attr['iconAlign']['Desktop'] . ' !important' ) );
 		}
 
 		// Icon Style.
@@ -5939,14 +5939,14 @@ class PBG_Blocks_Helper {
 		$css->start_media_query( $media_query['tablet'] );
 
 		// container style
-		if ( isset( $attr['align'] ) ) {
+		if ( isset( $attr['iconAlign'] ) ) {
 			$css->set_selector( '.' . $unique_id );
-			$css->add_property( 'text-align', ( $attr['align']['Tablet'] . '!important' ) );
+			$css->add_property( 'text-align', ( $attr['iconAlign']['Tablet'] . '!important' ) );
 		}
 
-		if ( isset( $attr['align'] ) ) {
+		if ( isset( $attr['iconAlign'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-image-separator-container' );
-			$css->add_property( 'text-align', ( $attr['align']['Tablet'] . '!important' ) );
+			$css->add_property( 'text-align', ( $attr['iconAlign']['Tablet'] . '!important' ) );
 		}
 
 		// Icon Style.
@@ -6058,14 +6058,14 @@ class PBG_Blocks_Helper {
 		$css->start_media_query( $media_query['mobile'] );
 
 		// container style
-		if ( isset( $attr['align'] ) ) {
+		if ( isset( $attr['iconAlign'] ) ) {
 			$css->set_selector( '.' . $unique_id );
-			$css->add_property( 'text-align', ( $attr['align']['Mobile'] . '!important' ) );
+			$css->add_property( 'text-align', ( $attr['iconAlign']['Mobile'] . '!important' ) );
 		}
 
-		if ( isset( $attr['align'] ) ) {
+		if ( isset( $attr['iconAlign'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-image-separator-container' );
-			$css->add_property( 'text-align', ( $attr['align']['Mobile'] . '!important' ) );
+			$css->add_property( 'text-align', ( $attr['iconAlign']['Mobile'] . '!important' ) );
 		}
 
 		// Icon Style.

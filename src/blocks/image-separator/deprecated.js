@@ -151,10 +151,120 @@ const attributes = {
         ]
     }
 }
+let newAttributes = {
+    iconAlign: {
+        type: "object",
+        default: {
+            Desktop: "center",
+            Tablet: "center",
+            Mobile: "center"
+        }
+    },
+    imgFilter: {
+        type: "object",
+        default: {
+            'contrast': '100',
+            'blur': '0',
+            'bright': '100',
+            'saturation': '100',
+            'hue': '0'
+        }
+    },
+    imgFilterHover: {
+        type: "object",
+        default: {
+            'contrast': '100',
+            'blur': '0',
+            'bright': '100',
+            'saturation': '100',
+            'hue': '0'
+        }
+    },
+    iconBorder: {
+        type: "object",
+        default: {
+            "borderType": "none",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    iconPadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            unit: "px"
+        }
+    },
+    iconShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': ''
+        }
+    }
+}
 
 const deprecated = [
     {
-        attributes: attributes,
+        attributes: Object.assign(attributes, newAttributes),
         isEligible() {
             return true;
         },
@@ -162,7 +272,7 @@ const deprecated = [
             let newAttributes = {
 
                 blockId: attributes.block_id ? `premium-image-separator-${attributes.block_id.split('-')[6]}` : '',
-                align: {
+                iconAlign: {
                     "Desktop": attributes.align,
                     "Tablet": attributes.align,
                     "Mobile": attributes.align,
@@ -308,7 +418,7 @@ const deprecated = [
                     }}
                     >
                         {
-                            iconType === 'icon' && <i className={`${icon}`} style={{
+                            iconType === 'icon' && <i className={`${iconStyles[0].icon}`} style={{
                                 color: iconStyles[0].iconColor,
                                 backgroundColor: iconStyles[0].iconBGColor,
                                 textShadow: `${iconStyles[0].iconShadowHorizontal}px ${iconStyles[0].iconShadowVertical}px ${iconStyles[0].iconShadowBlur}px ${iconStyles[0].iconShadowColor}`,

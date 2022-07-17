@@ -116,6 +116,14 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
 		$css->add_property( 'font-size', ( $attributes['firstLabelTypography']['fontSize']['Desktop'] . ( isset( $attributes['firstLabelTypography']['fontSize']['unit'] ) ? $attributes['firstLabelTypography']['fontSize']['unit'] : 'px' ) . '!important' ) );
 	}
+    if ( isset( $attributes['firstLabelTypography']['lineHeight']['Desktop'] ) ) {
+		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->add_property( 'line-height', ( $attributes['firstLabelTypography']['lineHeight']['Desktop'] .  'px'  . '!important' ) );
+	}
+    if ( isset( $attributes['firstLabelTypography']['letterSpacing']['Desktop'] ) ) {
+		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->add_property( 'letter-spacing', ( $attributes['firstLabelTypography']['letterSpacing']['Desktop'] .  'px'  . '!important' ) );
+	}
 	if ( isset( $attributes['firstLabelPadding']['Desktop']['top'] ) && isset( $attributes['firstLabelPadding']['unit'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
 		$css->add_property( 'padding-top', ( $attributes['firstLabelPadding']['Desktop']['top'] . ( isset( $attributes['firstLabelPadding']['unit'] ) ? $attributes['firstLabelPadding']['unit'] : 'px' ) . '!important' ) );
@@ -177,6 +185,14 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 	if ( isset( $attributes['secondLabelTypography']['fontSize']['Desktop'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-second-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
 		$css->add_property( 'font-size', ( $attributes['secondLabelTypography']['fontSize']['Desktop'] . ( isset( $attributes['secondLabelTypography']['fontSize']['unit'] ) ? $attributes['secondLabelTypography']['fontSize']['unit'] : 'px' ) . '!important' ) );
+	}
+    if ( isset( $attributes['secondLabelTypography']['lineHeight']['Desktop'] ) ) {
+		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->add_property( 'line-height', ( $attributes['secondLabelTypography']['lineHeight']['Desktop'] .  'px'  . '!important' ) );
+	}
+    if ( isset( $attributes['secondLabelTypography']['letterSpacing']['Desktop'] ) ) {
+		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->add_property( 'letter-spacing', ( $attributes['secondLabelTypography']['letterSpacing']['Desktop'] .  'px'  . '!important' ) );
 	}
 	if ( isset( $attributes['secondLabelPadding']['Desktop']['top'] ) && isset( $attributes['secondLabelPadding']['unit'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-second-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
@@ -336,6 +352,14 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
 		$css->add_property( 'font-size', ( $attributes['firstLabelTypography']['fontSize']['Tablet'] . ( isset( $attributes['firstLabelTypography']['fontSize']['unit'] ) ? $attributes['firstLabelTypography']['fontSize']['unit'] : 'px' ) . '!important' ) );
 	}
+    if ( isset( $attributes['firstLabelTypography']['lineHeight']['Tablet'] ) ) {
+		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->add_property( 'line-height', ( $attributes['firstLabelTypography']['lineHeight']['Tablet'] .  'px'  . '!important' ) );
+	}
+    if ( isset( $attributes['firstLabelTypography']['letterSpacing']['Tablet'] ) ) {
+		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->add_property( 'letter-spacing', ( $attributes['firstLabelTypography']['letterSpacing']['Tablet'] .  'px'  . '!important' ) );
+	}
 	if ( isset( $attributes['firstLabelPadding']['Tablet']['top'] ) && isset( $attributes['firstLabelPadding']['unit'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
 		$css->add_property( 'padding-top', ( $attributes['firstLabelPadding']['Tablet']['top'] . ( isset( $attributes['firstLabelPadding']['unit'] ) ? $attributes['firstLabelPadding']['unit'] : 'px' ) . '!important' ) );
@@ -397,6 +421,14 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 	if ( isset( $attributes['secondLabelTypography']['fontSize']['Tablet'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-second-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
 		$css->add_property( 'font-size', ( $attributes['secondLabelTypography']['fontSize']['Tablet'] . ( isset( $attributes['secondLabelTypography']['fontSize']['unit'] ) ? $attributes['secondLabelTypography']['fontSize']['unit'] : 'px' ) . '!important' ) );
+	}
+    if ( isset( $attributes['secondLabelTypography']['lineHeight']['Tablet'] ) ) {
+		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->add_property( 'line-height', ( $attributes['secondLabelTypography']['lineHeight']['Tablet'] .  'px'  . '!important' ) );
+	}
+    if ( isset( $attributes['secondLabelTypography']['letterSpacing']['Tablet'] ) ) {
+		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->add_property( 'letter-spacing', ( $attributes['secondLabelTypography']['letterSpacing']['Tablet'] .  'px'  . '!important' ) );
 	}
 	if ( isset( $attributes['secondLabelPadding']['Tablet']['top'] ) && isset( $attributes['secondLabelPadding']['unit'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-second-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
@@ -558,6 +590,14 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
 		$css->add_property( 'font-size', ( $attributes['firstLabelTypography']['fontSize']['Mobile'] . ( isset( $attributes['firstLabelTypography']['fontSize']['unit'] ) ? $attributes['firstLabelTypography']['fontSize']['unit'] : 'px' ) . '!important' ) );
 	}
+    if ( isset( $attributes['firstLabelTypography']['lineHeight']['Mobile'] ) ) {
+		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->add_property( 'line-height', ( $attributes['firstLabelTypography']['lineHeight']['Mobile'] .  'px'  . '!important' ) );
+	}
+    if ( isset( $attributes['firstLabelTypography']['letterSpacing']['Mobile'] ) ) {
+		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->add_property( 'letter-spacing', ( $attributes['firstLabelTypography']['letterSpacing']['Mobile'] .  'px'  . '!important' ) );
+	}
 	if ( isset( $attributes['firstLabelPadding']['Mobile']['top'] ) && isset( $attributes['firstLabelPadding']['unit'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
 		$css->add_property( 'padding-top', ( $attributes['firstLabelPadding']['Mobile']['top'] . ( isset( $attributes['firstLabelPadding']['unit'] ) ? $attributes['firstLabelPadding']['unit'] : 'px' ) . '!important' ) );
@@ -619,6 +659,14 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 	if ( isset( $attributes['secondLabelTypography']['fontSize']['Mobile'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-second-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
 		$css->add_property( 'font-size', ( $attributes['secondLabelTypography']['fontSize']['Mobile'] . ( isset( $attributes['secondLabelTypography']['fontSize']['unit'] ) ? $attributes['secondLabelTypography']['fontSize']['unit'] : 'px' ) . '!important' ) );
+	}
+    if ( isset( $attributes['secondLabelTypography']['lineHeight']['Mobile'] ) ) {
+		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->add_property( 'line-height', ( $attributes['secondLabelTypography']['lineHeight']['Mobile'] .  'px'  . '!important' ) );
+	}
+    if ( isset( $attributes['secondLabelTypography']['letterSpacing']['Mobile'] ) ) {
+		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->add_property( 'letter-spacing', ( $attributes['secondLabelTypography']['letterSpacing']['Mobile'] .  'px'  . '!important' ) );
 	}
 	if ( isset( $attributes['secondLabelPadding']['Mobile']['top'] ) && isset( $attributes['secondLabelPadding']['unit'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-second-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
