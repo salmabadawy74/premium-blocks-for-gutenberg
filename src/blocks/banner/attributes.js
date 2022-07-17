@@ -291,7 +291,7 @@ const attributes = {
                 "Mobile": '',
                 "unit": 'px'
             },
-            'fontFamily': '',
+            'fontFamily': 'Default',
             'lineHeight': {
                 'Desktop': '',
                 "Tablet": '',

@@ -28,17 +28,8 @@ function fuzzysearch(needle, haystack) {
 export default class PremiumTypo extends Component {
     constructor() {
         super(...arguments);
-        let FontSize;
-        if (this.props.components.includes("responsiveSize")) {
-            FontSize = {
-                'Desktop': '',
-                'Tablet': '',
-                'Mobile': '',
-                unit: 'px'
-            }
-        } else {
-            FontSize = ''
-        }
+
+
         let defaultValues = {
             "fontWeight": '',
             'fontStyle': '',
@@ -57,10 +48,15 @@ export default class PremiumTypo extends Component {
                 unit: 'px'
             },
             'textDecoration': '',
-            'fontSize': FontSize
+            'fontSize': {
+                'Desktop': '',
+                'Tablet': '',
+                'Mobile': '',
+                unit: 'px'
+            }
         }
         this.state = {
-            sizeUnit: FontSize['unit'] || 'px',
+            sizeUnit: 'px',
             isVisible: false,
             currentView: '',
             search: "",
@@ -83,7 +79,7 @@ export default class PremiumTypo extends Component {
         }
     }
     render() {
-        const { components, onChange } = this.props;
+        const { onChange } = this.props;
         const { value, sizeUnit, isVisible, currentView, search, device, defaultValue } = this.state;
         const STYLE = [
             { value: "normal", label: __("Normal", 'premium-blocks-for-gutenberg') },
@@ -142,7 +138,7 @@ export default class PremiumTypo extends Component {
             this.setState({ value: initialState })
         }
         const linearFonts = fonts.filter(family => fuzzysearch(search.toLowerCase(), family['value'].toLowerCase()))
-        const fontSize = components.includes("responsiveSize") ? value['fontSize'][device] : value['fontSize']
+        const fontSize = value['fontSize'][device]
         return (
             <div className="premium-control-toggle premium-typography premium-blocks__base-control">
                 <header>
@@ -163,7 +159,7 @@ export default class PremiumTypo extends Component {
                                 <span>
                                     {value['fontFamily']}
                                 </span>
-                                {isVisible && currentView == 'fonts' && components.includes('family') &&
+                                {isVisible && currentView == 'fonts' &&
                                     <Popover className="premium-typography-option premium-font-family__modal" onClose={toggleClose}>
                                         <div className="premium-option-modal ">
                                             <div className="premium-typography-container">
@@ -294,24 +290,24 @@ export default class PremiumTypo extends Component {
                                     </Popover>
                                 }
                             </span>
-                            {components.includes("weight") && (
-                                <span
-                                    className="premium-weight"
-                                    onClick={() => {
-                                        toggleVisible("variations")
-                                    }}
-                                >{value['fontWeight']}
-                                    {isVisible && currentView == 'variations' &&
-                                        <Popover className="premium-typography-option" onClose={toggleClose}>
-                                            <div className="premium-typography-option-modal ">
-                                                <div className="premium-typography-container">
-                                                    <ul className="premium-typography-variations">{renderVariations}</ul>
-                                                </div>
+
+                            <span
+                                className="premium-weight"
+                                onClick={() => {
+                                    toggleVisible("variations")
+                                }}
+                            >{value['fontWeight']}
+                                {isVisible && currentView == 'variations' &&
+                                    <Popover className="premium-typography-option" onClose={toggleClose}>
+                                        <div className="premium-typography-option-modal ">
+                                            <div className="premium-typography-container">
+                                                <ul className="premium-typography-variations">{renderVariations}</ul>
                                             </div>
-                                        </Popover>
-                                    }
-                                </span>
-                            )}
+                                        </div>
+                                    </Popover>
+                                }
+                            </span>
+
                         </div>
                     </div>
                 </div>
