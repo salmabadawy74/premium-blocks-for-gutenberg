@@ -110,10 +110,8 @@ const save = props => {
                                 fontStyle: prefixTypography?.fontStyle,
                                 fontFamily: prefixTypography?.fontFamily,
                                 fontWeight: prefixTypography?.fontWeight,
-                                letterSpacing: prefixTypography?.letterSpacing,
                                 textDecoration: prefixTypography?.textDecoration,
                                 textTransform: prefixTypography?.textTransform,
-                                lineHeight: `${prefixTypography?.lineHeight}px`,
                             })}
                         >
                             {prefixStyles[0].prefixTxt}
@@ -128,10 +126,8 @@ const save = props => {
                             fontStyle: numberTypography?.fontStyle,
                             fontFamily: numberTypography?.fontFamily,
                             fontWeight: numberTypography?.fontWeight,
-                            letterSpacing: numberTypography?.letterSpacing,
                             textDecoration: numberTypography?.textDecoration,
                             textTransform: numberTypography?.textTransform,
-                            lineHeight: `${numberTypography?.lineHeight}px`,
                         })}
                     >
                         {increment}
@@ -145,10 +141,8 @@ const save = props => {
                                 fontStyle: suffixTypography?.fontStyle,
                                 fontFamily: suffixTypography?.fontFamily,
                                 fontWeight: suffixTypography?.fontWeight,
-                                letterSpacing: suffixTypography?.letterSpacing,
                                 textDecoration: suffixTypography?.textDecoration,
                                 textTransform: suffixTypography?.textTransform,
-                                lineHeight: `${suffixTypography?.lineHeight}px`,
                             })}
                         >
                             {suffixStyles[0].suffixTxt}
@@ -165,10 +159,8 @@ const save = props => {
                             fontStyle: titleTypography?.fontStyle,
                             fontFamily: titleTypography?.fontFamily,
                             fontWeight: titleTypography?.fontWeight,
-                            letterSpacing: titleTypography?.letterSpacing,
                             textDecoration: titleTypography?.textDecoration,
                             textTransform: titleTypography?.textTransform,
-                            lineHeight: `${titleTypography?.lineHeight}px`,
                         })}
                     >
                         {titleTxt}
@@ -185,10 +177,8 @@ const save = props => {
                         fontStyle: titleTypography?.fontStyle,
                         fontFamily: titleTypography?.fontFamily,
                         fontWeight: titleTypography?.fontWeight,
-                        letterSpacing: titleTypography?.letterSpacing,
                         textDecoration: titleTypography?.textDecoration,
                         textTransform: titleTypography?.textTransform,
-                        lineHeight: `${titleTypography?.lineHeight}px`,
                         alignSelf: selfAlign
                     })}
                 >

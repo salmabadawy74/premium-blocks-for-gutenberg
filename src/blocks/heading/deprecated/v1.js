@@ -1,12 +1,8 @@
 import { generateBlockId } from '../../../components/HelperFunction';
 const { __ } = wp.i18n;
-const {
-    RichText
-} = wp.editor
+const { RichText } = wp.editor
 
-const {
-    Fragment,
-} = wp.element
+const { Fragment } = wp.element
 
 const attributes = {
     block_id: {
