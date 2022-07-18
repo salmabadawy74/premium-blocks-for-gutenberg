@@ -1,6 +1,7 @@
 import videoBoxAttrs from "./attributes";
 import onChangeVideoURL from "./index";
 import hexToRgba from 'hex-to-rgba'
+import classnames from 'classnames'
 
 const className = "premium-video-box";
 const { __ } = wp.i18n;
@@ -374,6 +375,354 @@ const new_deprecated_Attributes = {
 const deprecated_attributes = Object.assign(attributes, new_Attributes)
 const deprecated_attributes_1_2 = Object.assign(deprecated_attributes, new_deprecated_Attributes)
 const deprecatedContent = [
+    {
+        attributes: deprecated_attributes,
+        migrate: (attributes) => {
+            let newAttributes = {
+                blockId: attributes.block_id ? `premium-video-box-${attributes.block_id.split('-')[6]}` : '',
+                videoDescTypography: {
+                    'fontWeight': attributes.descStyles[0].videoDescWeight,
+                    'fontStyle': attributes.descStyles[0].videoDescStyle,
+                    'textTransform': attributes.descStyles[0].videoDescUpper,
+                    'letterSpacing': {
+                        'Desktop': attributes.descStyles[0].videoDescLetter,
+                        "Tablet": attributes.descStyles[0].videoDescLetter,
+                        "Mobile": attributes.descStyles[0].videoDescLetter,
+                        'unit': 'px',
+                    },
+                    'fontFamily': attributes.descStyles[0].videoDescFamily,
+                    'lineHeight': {
+                        'Desktop': '',
+                        "Tablet": '',
+                        "Mobile": '',
+                        'unit': 'px',
+                    },
+                    'fontSize': {
+                        'Desktop': attributes.descStyles[0].videoDescSize,
+                        "Tablet": attributes.descStyles[0].videoDescSizeTablet,
+                        "Mobile": attributes.descStyles[0].videoDescSizeMobile,
+                        'unit': attributes.descStyles[0].videoDescSizeUnit,
+                    }
+                },
+                playBorder: {
+                    borderColor: attributes.playStyles[0].playBorderColor,
+                    borderType: attributes.playStyles[0].playBorderType,
+                    borderRadius: {
+                        "Desktop": {
+                            top: attributes.playStyles[0].playBorderRadius,
+                            right: attributes.playStyles[0].playBorderRadius,
+                            bottom: attributes.playStyles[0].playBorderRadius,
+                            left: attributes.playStyles[0].playBorderRadius,
+                        },
+                        "Tablet": {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: ""
+                        },
+                        "Mobile": {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: ""
+                        },
+                    },
+                    borderWidth: {
+                        "Desktop": {
+                            top: attributes.playStyles[0].borderBoxUpdated ? attributes.playStyles[0].boxBorderTop : attributes.playStyles[0].boxBorderWidth,
+                            right: attributes.playStyles[0].borderBoxUpdated ? attributes.playStyles[0].playBorderRight : attributes.playStyles[0].boxBorderWidth,
+                            bottom: attributes.playStyles[0].borderBoxUpdated ? attributes.playStyles[0].playBorderBottom : attributes.playStyles[0].boxBorderWidth,
+                            left: attributes.playStyles[0].borderBoxUpdated ? attributes.playStyles[0].playBorderLeft : attributes.playStyles[0].boxBorderWidth
+                        },
+                        "Tablet": {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: ""
+                        },
+                        "Mobile": {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: ""
+                        },
+                    }
+                },
+                boxBorder: {
+                    borderColor: attributes.boxStyles[0].boxBorderColor,
+                    borderType: attributes.boxStyles[0].boxBorderType,
+                    borderRadius: {
+                        "Desktop": {
+                            top: attributes.boxStyles[0].boxBorderRadius,
+                            right: attributes.boxStyles[0].boxBorderRadius,
+                            bottom: attributes.boxStyles[0].boxBorderRadius,
+                            left: attributes.boxStyles[0].boxBorderRadius,
+                        },
+                        "Tablet": {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: ""
+                        },
+                        "Mobile": {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: ""
+                        },
+                    },
+                    borderWidth: {
+                        "Desktop": {
+                            top: attributes.boxStyles[0].borderBoxUpdated ? attributes.boxStyles[0].boxBorderTop : attributes.boxStyles[0].boxBorderWidth,
+                            right: attributes.boxStyles[0].borderBoxUpdated ? attributes.boxStyles[0].boxBorderRight : attributes.boxStyles[0].boxBorderWidth,
+                            bottom: attributes.boxStyles[0].borderBoxUpdated ? attributes.boxStyles[0].boxBorderBottom : attributes.boxStyles[0].boxBorderWidth,
+                            left: attributes.boxStyles[0].borderBoxUpdated ? attributes.boxStyles[0].boxBorderLeft : attributes.boxStyles[0].boxBorderWidth
+                        },
+                        "Tablet": {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: ""
+                        },
+                        "Mobile": {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: ""
+                        },
+                    }
+                },
+                playPadding: {
+                    "Desktop": {
+                        top: attributes.playStyles[0].playPadding,
+                        right: attributes.playStyles[0].playPadding,
+                        bottom: attributes.playStyles[0].playPadding,
+                        left: attributes.playStyles[0].playPadding
+                    },
+                    "Tablet": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "Mobile": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    unit: "px"
+                },
+                descPadding: {
+                    "Desktop": {
+                        top: attributes.descStyles[0].videoDescPadding,
+                        right: attributes.descStyles[0].videoDescPadding,
+                        bottom: attributes.descStyles[0].videoDescPadding,
+                        left: attributes.descStyles[0].videoDescPadding
+                    },
+                    "Tablet": {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: ""
+                    },
+                    "Mobile": {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: ""
+                    },
+                    unit: 'px'
+                },
+                descShadow: {
+                    'color': attributes.descStyles[0].descShadowColor,
+                    'blur': attributes.descStyles[0].descShadowBlur,
+                    'horizontal': attributes.descStyles[0].descShadowHorizontal,
+                    'vertical': attributes.descStyles[0].descShadowVertical
+                },
+                boxShadow: {
+                    'color': attributes.boxStyles[0].shadowColor,
+                    'blur': attributes.boxStyles[0].shadowBlur,
+                    'horizontal': attributes.boxStyles[0].shadowHorizontal,
+                    'vertical': attributes.boxStyles[0].shadowVertical,
+                    'position': attributes.boxStyles[0].shadowPosition
+                },
+                overlayFilter: {
+                    'contrast': attributes.overlayStyles[0].contrast,
+                    'blur': attributes.overlayStyles[0].blur,
+                    'bright': attributes.overlayStyles[0].bright,
+                    'saturation': attributes.overlayStyles[0].saturation,
+                    'hue': attributes.overlayStyles[0].hue
+                }
+            };
+            return Object.assign(attributes, newAttributes)
+        },
+        save: (props) => {
+            const {
+                block_id,
+                videoBoxId,
+                videoType,
+                videoURL,
+                autoPlay,
+                loop,
+                controls,
+                relatedVideos,
+                mute,
+                overlay,
+                videoDesc,
+                playIcon,
+                playLeft,
+                hideDesktop,
+                hideTablet,
+                hideMobile,
+                boxStyles,
+                overlayStyles,
+                playStyles,
+                descStyles,
+                ratioValue
+            } = props.attributes;
+
+            const loopVideo = () => {
+                if (videoURL && "youtube" === videoType) {
+                    if (videoURL.startsWith("http")) {
+                        return loop
+                            ? `1&playlist=${videoURL.replace(
+                                "https://www.youtube.com/embed/",
+                                ""
+                            )}`
+                            : "0";
+                    } else {
+                        return loop ? `1&playlist=${videoURL}` : "0";
+                    }
+                } else {
+                    return loop ? "1" : "0";
+                }
+            };
+
+            const mainClasses = classnames(className, 'premium-video-box');
+
+
+            return (
+                videoURL && (
+                    <div
+                        id={videoBoxId}
+                        className={`${mainClasses} video-overlay-${overlay} premium-video-box-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile} premium-aspect-ratio-${ratioValue}`}
+                        data-type={videoType}
+                        style={{
+                            borderStyle: boxStyles[0].boxBorderType,
+                            borderWidth: boxStyles[0].borderBoxUpdated
+                                ? `${boxStyles[0].boxBorderTop}px ${boxStyles[0].boxBorderRight}px ${boxStyles[0].boxBorderBottom}px ${boxStyles[0].boxBorderLeft}px`
+                                : boxStyles[0].boxBorderWidth + "px",
+                            borderRadius: boxStyles[0].boxBorderRadius + "px",
+                            borderColor: boxStyles[0].boxBorderColor,
+                            boxShadow: `${boxStyles[0].shadowHorizontal}px ${boxStyles[0].shadowVertical}px ${boxStyles[0].shadowBlur}px ${boxStyles[0].shadowColor} ${boxStyles[0].shadowPosition}`
+                        }}
+                    >
+                        <style
+                            dangerouslySetInnerHTML={{
+                                __html: [
+                                    `#${videoBoxId} .premium-video-box__play:hover {`,
+                                    `color: ${playStyles[0].playHoverColor} !important;`,
+                                    `background-color: ${playStyles[0].playHoverBackColor} !important;`,
+                                    "}"
+                                ].join("\n")
+                            }}
+                        />
+                        <div className={`premium-video-box__container`}>
+                            <div>
+                                <div className={`premium-video-box-inner-wrap`}>
+                                    <div className={`premium-video-box-video-container`}>
+                                        {"self" !== videoType && (
+                                            <iframe
+                                                src={`${onChangeVideoURL(videoType, videoURL)}?autoplay=${overlay ? 0 : autoPlay
+                                                    }&loop=${loopVideo()}&mute${"vimeo" == videoType ? "d" : ""
+                                                    }=${mute}&rel=${relatedVideos ? "1" : "0"}&controls=${controls ? "1" : "0"
+                                                    }`}
+                                                frameborder="0"
+                                                gesture="media"
+                                                allow="encrypted-media"
+                                                allowfullscreen
+                                            />
+                                        )}
+                                        {"self" === videoType && (
+                                            <video
+                                                src={videoURL}
+                                                loop={loop ? true : false}
+                                                muted={mute ? true : false}
+                                                autoplay={overlay ? false : autoPlay}
+                                                controls={controls ? true : false}
+                                            />
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {overlay && overlayStyles[0].overlayImgURL && (
+                            <div
+                                className={`premium-video-box__overlay`}
+                                style={{
+                                    backgroundImage: `url('${overlayStyles[0].overlayImgURL}')`,
+                                    filter: `brightness( ${overlayStyles[0].bright}% ) contrast( ${overlayStyles[0].contrast}% ) saturate( ${overlayStyles[0].saturation}% ) blur( ${overlayStyles[0].blur}px ) hue-rotate( ${overlayStyles[0].hue}deg )`
+                                }}
+                            />
+                        )}
+                        {overlay && playIcon && (
+                            <div
+                                className={`premium-video-box__play`}
+                                style={{
+                                    top: playStyles[0].playTop + "%",
+                                    left: playLeft + "%",
+                                    color: playStyles[0].playColor,
+                                    backgroundColor: playStyles[0].playBack,
+                                    borderStyle: playStyles[0].playBorderType,
+                                    borderWidth: playStyles[0].borderPlayUpdated
+                                        ? `${playStyles[0].playBorderTop}px ${playStyles[0].playBorderRight}px ${playStyles[0].playBorderBottom}px ${playStyles[0].playBorderLeft}px`
+                                        : playStyles[0].playBorderWidth + "px",
+                                    borderRadius: playStyles[0].playBorderRadius + "px",
+                                    borderColor: playStyles[0].playBorderColor,
+                                    padding: playStyles[0].playPadding + "px"
+                                }}
+                            >
+                                <i
+                                    className={`premium-video-box__play_icon dashicons dashicons-controls-play`}
+                                    style={{
+                                        fontSize: playStyles[0].playSize + "px"
+                                    }}
+                                />
+                            </div>
+                        )}
+                        {overlay && videoDesc && (
+                            <div
+                                className={`premium-video-box__desc`}
+                                style={{
+                                    color: descStyles[0].videoDescColor,
+                                    backgroundColor: descStyles[0].videoDescBack,
+                                    padding: descStyles[0].videoDescPadding,
+                                    borderRadius: descStyles[0].videoDescBorderRadius,
+                                    top: descStyles[0].descTop + "%",
+                                    left: descStyles[0].descLeft + "%"
+                                }}
+                            >
+                                <p
+                                    className={`premium-video-box__desc_text`}
+                                    style={{
+                                        fontFamily: descStyles[0].videoDescFamily,
+                                        fontWeight: descStyles[0].videoDescWeight,
+                                        letterSpacing: descStyles[0].videoDescLetter + "px",
+                                        textTransform: descStyles[0].videoDescUpper ? "uppercase" : "none",
+                                        textShadow: `${descStyles[0].descShadowHorizontal}px ${descStyles[0].descShadowVertical}px ${descStyles[0].descShadowBlur}px ${descStyles[0].descShadowColor}`,
+                                        fontStyle: descStyles[0].videoDescStyle
+                                    }}
+                                >
+                                    <span>{descStyles[0].videoDescText}</span>
+                                </p>
+                            </div>
+                        )}
+                    </div>
+                )
+            );
+        }
+    },
     {
         attributes: deprecated_attributes_1_2,
         save: (props) => {

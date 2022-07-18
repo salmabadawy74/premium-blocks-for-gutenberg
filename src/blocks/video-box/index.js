@@ -1,9 +1,9 @@
 import { videoBox } from "../../../assets/js/settings";
-import PbgIcon from "../icons";
 import edit from "./edit";
 import save from "./save";
 import deprecatedContent from "./deprecated";
 import videoBoxAttrs from "./attributes";
+import PBG_Block_Icons from '../../../blocks-config/block-icons'
 
 const { __ } = wp.i18n;
 
@@ -46,9 +46,11 @@ export default onChangeVideoURL;
 
 registerBlockType("premium/video-box", {
     title: __("Video Box"),
-    icon: <PbgIcon icon="video" />,
+    description: __('Embed YouTube, Vimeo, Dailymotion, or upload a Custom Video using Premium Video Box Block.', 'premium-block-for-gutenberg'),
+    icon: PBG_Block_Icons.video_box,
     category: "premium-blocks",
     attributes: videoBoxAttrs,
+    keywords: [__("video")],
     supports: {
         inserter: videoBox
     },

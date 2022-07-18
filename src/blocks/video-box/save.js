@@ -1,34 +1,41 @@
 import classnames from 'classnames'
 import onChangeVideoURL from "./index";
+import DefaultImage from "../../components/default-image";
+import { filterJsCss, generateCss } from '../../components/HelperFunction'
+
+const {
+    RichText
+} = wp.editor;
 
 const save = props => {
 
     const { className } = props;
 
     const {
-        block_id,
-        videoBoxId,
+        blockId,
         videoType,
         videoURL,
-        videoID,
         autoPlay,
         loop,
         controls,
         relatedVideos,
         mute,
         overlay,
-        videoDesc,
         playIcon,
         playLeft,
-        classMigrate,
         hideDesktop,
         hideTablet,
         hideMobile,
-        boxStyles,
+        ratioValue,
         overlayStyles,
         playStyles,
         descStyles,
-        ratioValue
+        videoDescTypography,
+        playBorder,
+        boxBorder,
+        descShadow,
+        boxShadow,
+        overlayFilter
     } = props.attributes;
 
     const loopVideo = () => {
@@ -48,32 +55,35 @@ const save = props => {
         }
     };
 
-    const mainClasses = classnames(className, 'premium-video-box');
+    const renderCss = () => {
+        const styles = {};
+        styles[` .${blockId} .premium-video-box__play:hover`] = {
+            'color': `${playStyles[0].playHoverColor} !important`,
+            'background-color': `${playStyles[0].playHoverBackColor} !important`
+        };
+        return generateCss(styles);
+    }
 
     return (
         videoURL && (
             <div
-                id={videoBoxId}
-                className={`${mainClasses} video-overlay-${overlay} premium-video-box-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile} premium-aspect-ratio-${ratioValue}`}
+                className={classnames(className,
+                    "premium-video-box", `video-overlay-${overlay} ${blockId} premium-aspect-ratio-${ratioValue}`, {
+                    ' premium-desktop-hidden': hideDesktop,
+                    ' premium-tablet-hidden': hideTablet,
+                    ' premium-mobile-hidden': hideMobile,
+                })}
                 data-type={videoType}
-                style={{
-                    borderStyle: boxStyles[0].boxBorderType,
-                    borderWidth: boxStyles[0].borderBoxUpdated
-                        ? `${boxStyles[0].boxBorderTop}px ${boxStyles[0].boxBorderRight}px ${boxStyles[0].boxBorderBottom}px ${boxStyles[0].boxBorderLeft}px`
-                        : boxStyles[0].boxBorderWidth + "px",
-                    borderRadius: boxStyles[0].boxBorderRadius + "px",
-                    borderColor: boxStyles[0].boxBorderColor,
-                    boxShadow: `${boxStyles[0].shadowHorizontal}px ${boxStyles[0].shadowVertical}px ${boxStyles[0].shadowBlur}px ${boxStyles[0].shadowColor} ${boxStyles[0].shadowPosition}`
-                }}
+                style={filterJsCss({
+                    borderStyle: boxBorder.borderType,
+                    borderColor: boxBorder.borderColor,
+                    boxShadow: `${boxShadow.horizontal || 0}px ${boxShadow.vertical ||
+                        0}px ${boxShadow.blur || 10}px ${boxShadow.color} ${boxShadow.position}`,
+                })}
             >
                 <style
                     dangerouslySetInnerHTML={{
-                        __html: [
-                            `#${videoBoxId} .premium-video-box__play:hover {`,
-                            `color: ${playStyles[0].playHoverColor} !important;`,
-                            `background-color: ${playStyles[0].playHoverBackColor} !important;`,
-                            "}"
-                        ].join("\n")
+                        __html: renderCss()
                     }}
                 />
                 <div className={`premium-video-box__container`}>
@@ -108,64 +118,59 @@ const save = props => {
                 {overlay && overlayStyles[0].overlayImgURL && (
                     <div
                         className={`premium-video-box__overlay`}
-                        style={{
+                        style={filterJsCss({
                             backgroundImage: `url('${overlayStyles[0].overlayImgURL}')`,
-                            filter: `brightness( ${overlayStyles[0].bright}% ) contrast( ${overlayStyles[0].contrast}% ) saturate( ${overlayStyles[0].saturation}% ) blur( ${overlayStyles[0].blur}px ) hue-rotate( ${overlayStyles[0].hue}deg )`
-                        }}
+                            filter: `brightness( ${overlayFilter.bright}% ) contrast( ${overlayFilter.contrast}% ) saturate( ${overlayFilter.saturation}% ) blur( ${overlayFilter.blur}px ) hue-rotate( ${overlayFilter.hue}deg )`
+                        })}
                     />
                 )}
+                {overlay && playIcon && !overlayStyles[0].overlayImgURL && <DefaultImage className="premium-video-box-image-container" />}
                 {overlay && playIcon && (
                     <div
                         className={`premium-video-box__play`}
-                        style={{
+                        style={filterJsCss({
                             top: playStyles[0].playTop + "%",
                             left: playLeft + "%",
                             color: playStyles[0].playColor,
                             backgroundColor: playStyles[0].playBack,
-                            borderStyle: playStyles[0].playBorderType,
-                            borderWidth: playStyles[0].borderPlayUpdated
-                                ? `${playStyles[0].playBorderTop}px ${playStyles[0].playBorderRight}px ${playStyles[0].playBorderBottom}px ${playStyles[0].playBorderLeft}px`
-                                : playStyles[0].playBorderWidth + "px",
-                            borderRadius: playStyles[0].playBorderRadius + "px",
-                            borderColor: playStyles[0].playBorderColor,
-                            padding: playStyles[0].playPadding + "px"
-                        }}
+                            borderStyle: playBorder.borderType,
+                            borderColor: playBorder.borderColor
+                        })}
                     >
                         <i
                             className={`premium-video-box__play_icon dashicons dashicons-controls-play`}
-                            style={{
+                            style={filterJsCss({
                                 fontSize: playStyles[0].playSize + "px"
-                            }}
+                            })}
                         />
                     </div>
                 )}
-                {overlay && videoDesc && (
-                    <div
-                        className={`premium-video-box__desc`}
-                        style={{
+                <div
+                    className={`premium-video-box__desc`}
+                    style={filterJsCss({
+                        backgroundColor: descStyles[0].videoDescBack,
+                        borderRadius: descStyles[0].videoDescBorderRadius,
+                        top: descStyles[0].descTop + "%",
+                        left: descStyles[0].descLeft + "%"
+                    })}
+                >
+                    <RichText.Content
+                        tagName="p"
+                        className={`premium-video-box__desc_text`}
+                        value={descStyles[0].videoDescText}
+                        placeholder="Add caption"
+                        style={filterJsCss({
+                            fontStyle: videoDescTypography?.fontStyle,
+                            fontFamily: videoDescTypography?.fontFamily,
+                            fontWeight: videoDescTypography?.fontWeight,
+                            textDecoration: videoDescTypography?.textDecoration,
+                            textTransform: videoDescTypography?.textTransform,
                             color: descStyles[0].videoDescColor,
-                            backgroundColor: descStyles[0].videoDescBack,
-                            padding: descStyles[0].videoDescPadding,
-                            borderRadius: descStyles[0].videoDescBorderRadius,
-                            top: descStyles[0].descTop + "%",
-                            left: descStyles[0].descLeft + "%"
-                        }}
-                    >
-                        <p
-                            className={`premium-video-box__desc_text`}
-                            style={{
-                                fontFamily: descStyles[0].videoDescFamily,
-                                fontWeight: descStyles[0].videoDescWeight,
-                                letterSpacing: descStyles[0].videoDescLetter + "px",
-                                textTransform: descStyles[0].videoDescUpper ? "uppercase" : "none",
-                                textShadow: `${descStyles[0].descShadowHorizontal}px ${descStyles[0].descShadowVertical}px ${descStyles[0].descShadowBlur}px ${descStyles[0].descShadowColor}`,
-                                fontStyle: descStyles[0].videoDescStyle
-                            }}
-                        >
-                            <span>{descStyles[0].videoDescText}</span>
-                        </p>
-                    </div>
-                )}
+                            textShadow: `${descShadow.horizontal}px ${descShadow.vertical}px ${descShadow.blur}px ${descShadow.color}`
+                        })}
+                        keepPlaceholderOnFocus
+                    />
+                </div>
             </div>
         )
     );
