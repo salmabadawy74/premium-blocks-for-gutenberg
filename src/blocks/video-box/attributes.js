@@ -1,6 +1,6 @@
 const { __ } = wp.i18n;
 const videoBoxAttrs = {
-    block_id: {
+    blockId: {
         type: 'string'
     },
     borderBoxUpdated: {
@@ -61,52 +61,26 @@ const videoBoxAttrs = {
     },
     hideDesktop: {
         type: 'boolean',
-        default: false
+        default: ''
     },
     hideTablet: {
         type: 'boolean',
-        default: false
+        default: ''
     },
     hideMobile: {
         type: 'boolean',
-        default: false
+        default: ''
     },
     ratioValue: {
         type: "string",
         default: '169'
-    },
-    boxStyles: {
-        type: 'array',
-        default: [
-            {
-                boxBorderType: 'none',
-                boxBorderWidth: 1,
-                boxBorderTop: '',
-                boxBorderRight: '',
-                boxBorderBottom: '',
-                boxBorderLeft: '',
-                boxBorderRadius: '',
-                boxBorderColor: '',
-                shadowColor: '',
-                shadowBlur: '',
-                shadowHorizontal: '',
-                shadowVertical: '',
-                shadowPosition: '',
-                borderBoxUpdated: false
-            }
-        ]
     },
     overlayStyles: {
         type: 'array',
         default: [
             {
                 overlayImgID: '',
-                overlayImgURL: '',
-                blur: 0,
-                bright: 100,
-                contrast: 100,
-                saturation: 100,
-                hue: 0,
+                overlayImgURL: ''
             }
         ]
     },
@@ -116,22 +90,11 @@ const videoBoxAttrs = {
             {
                 playTop: '',
                 playSize: '',
-                playPadding: '',
-                playBorderType: 'none',
-                playBorderWidth: 1,
-                playBorderRadius: '',
-                playBorderColor: '',
-                playBorderTop: '',
-                playBorderRight: '',
-                playBorderBottom: '',
-                playBorderLeft: '',
                 playColor: '',
                 playBack: '',
                 playOpacity: 1,
                 playHoverColor: '',
-                playHoverBackColor: '',
-                borderPlayUpdated: false
-
+                playHoverBackColor: ''
             }
         ]
 
@@ -141,21 +104,7 @@ const videoBoxAttrs = {
         default: [
             {
                 videoDescText: '',
-                videoDescFamily: __('Default'),
-                videoDescSize: '',
-                videoDescSizeUnit: 'px',
-                videoDescSizeMobile: '',
-                videoDescSizeTablet: '',
-                videoDescWeight: '',
-                videoDescLetter: '',
-                videoDescStyle: '',
-                videoDescUpper: false,
-                videoDescPadding: '',
                 videoDescBorderRadius: '',
-                descShadowColor: '',
-                descShadowBlur: 0,
-                descShadowHorizontal: 0,
-                descShadowVertical: 0,
                 descLeft: '',
                 descTop: '',
                 videoDescColor: '',
@@ -163,7 +112,205 @@ const videoBoxAttrs = {
                 videoDescOpacity: 1,
             }
         ]
-    }
-
+    },
+    videoDescTypography: {
+        type: "object",
+        default: {
+            "fontWeight": 500,
+            'fontStyle': '',
+            'textTransform': '',
+            "textDecoration": "",
+            "letterSpacing": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            },
+            "lineHeight": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            },
+            'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
+            'fontSize': {
+                'Desktop': "",
+                "Tablet": "",
+                "Mobile": "",
+                unit: 'px'
+            }
+        }
+    },
+    playBorder: {
+        type: "object",
+        default: {
+            borderColor: "",
+            borderType: "none",
+            borderRadius: {
+                Desktop: {
+                    top: "100",
+                    right: "100",
+                    bottom: "100",
+                    left: "100"
+                },
+                Tablet: {
+                    top: "100",
+                    right: "100",
+                    bottom: "100",
+                    left: "100"
+                },
+                Mobile: {
+                    top: "100",
+                    right: "100",
+                    bottom: "100",
+                    left: "100"
+                }
+            },
+            borderWidth: {
+                Desktop: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Tablet: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Mobile: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                }
+            }
+        }
+    },
+    boxBorder: {
+        type: "object",
+        default: {
+            borderColor: "",
+            borderType: "none",
+            borderRadius: {
+                Desktop: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Tablet: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Mobile: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                }
+            },
+            borderWidth: {
+                Desktop: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Tablet: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Mobile: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                }
+            }
+        }
+    },
+    playPadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            unit: "px"
+        }
+    },
+    descPadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
+            },
+            unit: "px"
+        }
+    },
+    descShadow: {
+        type: "object",
+        default: {
+            'color': 'undefinded',
+            'blur': 10,
+            'horizontal': '0',
+            'vertical': '0'
+        }
+    },
+    boxShadow: {
+        type: "object",
+        default: {
+            'color': 'undefinded',
+            'blur': 10,
+            'horizontal': '0',
+            'vertical': '0',
+            'position': ' '
+        }
+    },
+    overlayFilter: {
+        type: "object",
+        default: {
+            'contrast': '100',
+            'blur': '0',
+            'bright': '100',
+            'saturation': '100',
+            'hue': '0'
+        }
+    },
 };
 export default videoBoxAttrs;
