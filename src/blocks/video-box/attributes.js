@@ -286,19 +286,19 @@ const videoBoxAttrs = {
     descShadow: {
         type: "object",
         default: {
-            'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': ''
+            'color': 'undefinded',
+            'blur': 10,
+            'horizontal': '0',
+            'vertical': '0'
         }
     },
     boxShadow: {
         type: "object",
         default: {
-            'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': '',
+            'color': 'undefinded',
+            'blur': 10,
+            'horizontal': '0',
+            'vertical': '0',
             'position': ' '
         }
     },

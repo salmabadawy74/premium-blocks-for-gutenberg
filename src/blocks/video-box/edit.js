@@ -535,7 +535,7 @@ class Edit extends Component {
                             style={{
                                 ...borderCss(boxBorder, this.props.deviceType),
                                 boxShadow: `${boxShadow.horizontal || 0}px ${boxShadow.vertical ||
-                                    0}px ${boxShadow.blur || 0}px ${boxShadow.color} ${boxShadow.position}`,
+                                    0}px ${boxShadow.blur || 10}px ${boxShadow.color} ${boxShadow.position}`,
                             }}
                         >
                             <style

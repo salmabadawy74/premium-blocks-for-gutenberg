@@ -1927,7 +1927,7 @@ a.premium-dheading-block__link:hover {
 }
 
 .premium-video-box .premium-video-box__desc {
-    /* position: absolute; */
+    position: relative;
     z-index: 1;
     padding: 5px;
     /* cursor: pointer;
