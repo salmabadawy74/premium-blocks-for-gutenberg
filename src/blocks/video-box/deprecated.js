@@ -384,9 +384,19 @@ const deprecatedContent = [
                     'fontWeight': attributes.descStyles[0].videoDescWeight,
                     'fontStyle': attributes.descStyles[0].videoDescStyle,
                     'textTransform': attributes.descStyles[0].videoDescUpper,
-                    'letterSpacing': attributes.descStyles[0].videoDescLetter,
+                    'letterSpacing': {
+                        'Desktop': attributes.descStyles[0].videoDescLetter,
+                        "Tablet": attributes.descStyles[0].videoDescLetter,
+                        "Mobile": attributes.descStyles[0].videoDescLetter,
+                        'unit': 'px',
+                    },
                     'fontFamily': attributes.descStyles[0].videoDescFamily,
-                    'lineHeight': '',
+                    'lineHeight': {
+                        'Desktop': '',
+                        "Tablet": '',
+                        "Mobile": '',
+                        'unit': 'px',
+                    },
                     'fontSize': {
                         'Desktop': attributes.descStyles[0].videoDescSize,
                         "Tablet": attributes.descStyles[0].videoDescSizeTablet,
@@ -536,6 +546,13 @@ const deprecatedContent = [
                     'horizontal': attributes.boxStyles[0].shadowHorizontal,
                     'vertical': attributes.boxStyles[0].shadowVertical,
                     'position': attributes.boxStyles[0].shadowPosition
+                },
+                overlayFilter: {
+                    'contrast': attributes.overlayStyles[0].contrast,
+                    'blur': attributes.overlayStyles[0].blur,
+                    'bright': attributes.overlayStyles[0].bright,
+                    'saturation': attributes.overlayStyles[0].saturation,
+                    'hue': attributes.overlayStyles[0].hue
                 }
             };
             return Object.assign(attributes, newAttributes)

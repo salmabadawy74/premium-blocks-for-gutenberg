@@ -64,17 +64,14 @@ class Edit extends Component {
             video, src;
         if (videoBox) {
             videoBox.addEventListener("click", () => {
-                // console.log('videoBox', videoBox)
                 videoBox.classList.add("video-overlay-false");
                 let type = videoBox.getAttribute("data-type");
                 if ("self" !== type) {
                     video = videoBox.getElementsByTagName("iframe")[0];
                     src = video.getAttribute("src");
                 } else {
-                    // console.log('video', videoBox.getElementsByTagName("video"))
                     video = videoBox.getElementsByTagName("video")[0];
                 }
-                // console.log(videoBox.getElementsByClassName("premium-video-box__overlay"))
                 setTimeout(() => {
                     if ("self" !== type) {
                         video.setAttribute("src", src.replace("autoplay=0", "autoplay=1"));
@@ -321,6 +318,7 @@ class Edit extends Component {
                                     value={boxShadow}
                                     onChange={(value) => setAttributes({ boxShadow: value })}
                                 />
+                                <hr />
                                 <PremiumBorder
                                     label={__('Border', 'premium-blocks-for-gutenberg')}
                                     value={boxBorder}
@@ -370,20 +368,6 @@ class Edit extends Component {
                                         />
                                         {playIcon && (
                                             <Fragment>
-                                                <ResponsiveSingleRangeControl
-                                                    label={__("Size (PX)", 'premium-blocks-for-gutenberg')}
-                                                    value={playStyles[0].playSize}
-                                                    onChange={newValue => savePlayStyles({ playSize: newValue === undefined ? 20 : newValue })}
-                                                    showUnit={false}
-                                                    defaultValue={0}
-                                                />
-                                                <ResponsiveSingleRangeControl
-                                                    label={__("Vertical Offset (%)", 'premium-blocks-for-gutenberg')}
-                                                    value={playStyles[0].playTop}
-                                                    onChange={newValue => savePlayStyles({ playTop: newValue === undefined ? 50 : newValue })}
-                                                    showUnit={false}
-                                                    defaultValue={0}
-                                                />
                                                 <InsideTabs>
                                                     <InsideTab tabTitle={__('Normal')}>
                                                         <Fragment>
@@ -432,6 +416,21 @@ class Edit extends Component {
                                                         </Fragment>
                                                     </InsideTab>
                                                 </InsideTabs>
+                                                <ResponsiveSingleRangeControl
+                                                    label={__("Size (PX)", 'premium-blocks-for-gutenberg')}
+                                                    value={playStyles[0].playSize}
+                                                    onChange={newValue => savePlayStyles({ playSize: newValue === undefined ? 20 : newValue })}
+                                                    showUnit={false}
+                                                    defaultValue={0}
+                                                />
+                                                <ResponsiveSingleRangeControl
+                                                    label={__("Vertical Offset (%)", 'premium-blocks-for-gutenberg')}
+                                                    value={playStyles[0].playTop}
+                                                    onChange={newValue => savePlayStyles({ playTop: newValue === undefined ? 50 : newValue })}
+                                                    showUnit={false}
+                                                    defaultValue={0}
+                                                />
+                                                <hr />
                                                 <PremiumBorder
                                                     label={__('Border', 'premium-blocks-for-gutenberg')}
                                                     value={playBorder}

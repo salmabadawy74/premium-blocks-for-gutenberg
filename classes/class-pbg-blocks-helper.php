@@ -4144,6 +4144,12 @@ class PBG_Blocks_Helper {
 	 */
 	public function get_videobox_css_style( $attr, $unique_id ) {
 
+		$css                    = new Premium_Blocks_css();
+		$media_query            = array();
+		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
+		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
+		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
+		
 		if ( isset( $attr['videoDescTypography']['fontFamily'] ) ) {
 			$this->add_gfont(
 				array(
@@ -4152,12 +4158,6 @@ class PBG_Blocks_Helper {
 					)
 			);
 		}
-		$css                    = new Premium_Blocks_css();
-		$media_query            = array();
-		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
-		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
-		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
-
 		//Container style
 		if ( isset( $attr['boxBorder']['borderWidth']['Desktop']['top'] ) ) {
 			$css->set_selector( '.' . $unique_id );
@@ -4246,6 +4246,14 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['videoDescTypography']['fontSize']['Desktop'] ) ) {
 			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' . '> .premium-video-box__desc_text' );
 			$css->add_property( 'font-size', ( ( isset( $attr['videoDescTypography']['fontSize']['Desktop'] ) ? $attr['videoDescTypography']['fontSize']['Desktop'] : '20' ) . ( isset( $attr['videoDescTypography']['fontSize']['unit'] ) ? $attr['videoDescTypography']['fontSize']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['videoDescTypography']['lineHeight']['Desktop'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' . '> .premium-video-box__desc_text' );
+			$css->add_property( 'line-height', ( ( isset( $attr['videoDescTypography']['lineHeight']['Desktop'] ) ? $attr['videoDescTypography']['lineHeight']['Desktop'] : '20' ) . ( isset( $attr['videoDescTypography']['lineHeight']['unit'] ) ? $attr['videoDescTypography']['lineHeight']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['videoDescTypography']['letterSpacing']['Desktop'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' . '> .premium-video-box__desc_text' );
+			$css->add_property( 'letter-spacing', ( ( isset( $attr['videoDescTypography']['letterSpacing']['Desktop'] ) ? $attr['videoDescTypography']['letterSpacing']['Desktop'] : '20' ) . ( isset( $attr['videoDescTypography']['letterSpacing']['unit'] ) ? $attr['videoDescTypography']['letterSpacing']['unit'] : 'px' ) . '!important' ) );
 		}
 		if ( isset( $attr['descPadding']['Desktop']['top'] ) && isset( $attr['descPadding']['unit'] ) ) {
 			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' );
@@ -4355,6 +4363,14 @@ class PBG_Blocks_Helper {
 			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' . '> .premium-video-box__desc_text' );
 			$css->add_property( 'font-size', ( ( isset( $attr['videoDescTypography']['fontSize']['Tablet'] ) ? $attr['videoDescTypography']['fontSize']['Tablet'] : '20' ) . ( isset( $attr['videoDescTypography']['fontSize']['unit'] ) ? $attr['videoDescTypography']['fontSize']['unit'] : 'px' ) . '!important' ) );
 		}
+		if ( isset( $attr['videoDescTypography']['lineHeight']['Tablet'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' . '> .premium-video-box__desc_text' );
+			$css->add_property( 'line-height', ( ( isset( $attr['videoDescTypography']['lineHeight']['Tablet'] ) ? $attr['videoDescTypography']['lineHeight']['Tablet'] : '20' ) . ( isset( $attr['videoDescTypography']['lineHeight']['unit'] ) ? $attr['videoDescTypography']['lineHeight']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['videoDescTypography']['letterSpacing']['Tablet'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' . '> .premium-video-box__desc_text' );
+			$css->add_property( 'letter-spacing', ( ( isset( $attr['videoDescTypography']['letterSpacing']['Tablet'] ) ? $attr['videoDescTypography']['letterSpacing']['Tablet'] : '0' ) . ( isset( $attr['videoDescTypography']['letterSpacing']['unit'] ) ? $attr['videoDescTypography']['letterSpacing']['unit'] : 'px' ) . '!important' ) );
+		}
 		if ( isset( $attr['descPadding']['Tablet']['top'] ) && isset( $attr['descPadding']['unit'] ) ) {
 			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' );
 			$css->add_property( 'padding-top', ( $attr['descPadding']['Tablet']['top'] . ( isset( $attr['descPadding']['unit'] ) ? $attr['descPadding']['unit'] : 'px' ) . '!important' ) );
@@ -4463,6 +4479,14 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['videoDescTypography']['fontSize']['Mobile'] ) ) {
 			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' . '> .premium-video-box__desc_text' );
 			$css->add_property( 'font-size', ( ( isset( $attr['videoDescTypography']['fontSize']['Mobile'] ) ? $attr['videoDescTypography']['fontSize']['Mobile'] : '20' ) . ( isset( $attr['videoDescTypography']['fontSize']['unit'] ) ? $attr['videoDescTypography']['fontSize']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['videoDescTypography']['lineHeight']['Mobile'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' . '> .premium-video-box__desc_text' );
+			$css->add_property( 'line-height', ( ( isset( $attr['videoDescTypography']['lineHeight']['Mobile'] ) ? $attr['videoDescTypography']['lineHeight']['Mobile'] : '20' ) . ( isset( $attr['videoDescTypography']['lineHeight']['unit'] ) ? $attr['videoDescTypography']['lineHeight']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['videoDescTypography']['letterSpacing']['Mobile'] ) ) {
+			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' . '> .premium-video-box__desc_text' );
+			$css->add_property( 'letter-spacing', ( ( isset( $attr['videoDescTypography']['letterSpacing']['Mobile'] ) ? $attr['videoDescTypography']['letterSpacing']['Mobile'] : '0' ) . ( isset( $attr['videoDescTypography']['letterSpacing']['unit'] ) ? $attr['videoDescTypography']['letterSpacing']['unit'] : 'px' ) . '!important' ) );
 		}
 		if ( isset( $attr['descPadding']['Mobile']['top'] ) && isset( $attr['descPadding']['unit'] ) ) {
 			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' );
