@@ -1,4 +1,4 @@
-import classnames from "classnames"
+import classnames from "classnames";
 import { FontAwesomeEnabled } from "../../../assets/js/settings"
 import PremiumTypo from "../../components/premium-typo"
 import PremiumShadow from "../../components/PremiumShadow"
@@ -13,10 +13,10 @@ import Icons from "../../components/icons";
 const { __ } = wp.i18n;
 const { withSelect } = wp.data
 import SpacingComponent from '../../components/premium-responsive-spacing';
-import WebfontLoader from "../../components/typography/fontLoader"
+import GoogleFontLoader from "react-google-font-loader";
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
-import { gradientBackground, generateBlockId } from "../../components/HelperFunction";
+import { gradientBackground, generateBlockId, borderCss, paddingCss, typographyCss } from "../../components/HelperFunction";
 
 const { PanelBody, SelectControl, TextControl, ToggleControl } = wp.components;
 
@@ -122,50 +122,40 @@ class edit extends Component {
         let loadPrefixGoogleFonts;
 
         if (numberTypography.fontFamily !== 'Default') {
-            const counterconfig = {
-                google: {
-                    families: [numberTypography.fontFamily],
-                },
-            }
             loadCounterGoogleFonts = (
-                <WebfontLoader config={counterconfig}>
-                </WebfontLoader>
+                <GoogleFontLoader fonts={[
+                    {
+                        font: numberTypography?.fontFamily,
+                    },
+                ]
+                } />
             )
         }
-
         if (titleTypography.fontFamily !== "Default") {
-            const titleConfig = {
-                google: {
-                    families: [titleTypography.fontFamily],
-                },
-            }
             loadTitleGoogleFonts = (
-                <WebfontLoader config={titleConfig}>
-                </WebfontLoader>
+                <GoogleFontLoader fonts={[
+                    {
+                        font: titleTypography?.fontFamily,
+                    }]
+                } />
             )
         }
-
         if (suffixTypography.fontFamily !== "Default") {
-            const suffixConfig = {
-                google: {
-                    families: [suffixTypography.fontFamily],
-                }
-            }
             loadSuffixGoogleFonts = (
-                <WebfontLoader config={suffixConfig}>
-                </WebfontLoader>
+                <GoogleFontLoader fonts={[
+                    {
+                        font: suffixTypography?.fontFamily,
+                    }]
+                } />
             )
         }
-
         if (prefixTypography.fontFamily !== "Default") {
-            const prefixConfig = {
-                google: {
-                    families: [prefixTypography.fontFamily],
-                }
-            }
             loadPrefixGoogleFonts = (
-                <WebfontLoader config={prefixConfig}>
-                </WebfontLoader>
+                <GoogleFontLoader fonts={[
+                    {
+                        font: prefixTypography?.fontFamily,
+                    }]
+                } />
             )
         }
 
@@ -178,6 +168,7 @@ class edit extends Component {
             });
             setAttributes({ numberStyles: newUpdate });
         }
+
         const saveTitleStyles = (value) => {
             const newUpdate = titleStyles.map((item, index) => {
                 if (0 === index) {
@@ -187,6 +178,7 @@ class edit extends Component {
             });
             setAttributes({ titleStyles: newUpdate });
         }
+
         const savePrefixStyle = (value) => {
             const newUpdate = prefixStyles.map((item, index) => {
                 if (0 === index) {
@@ -196,6 +188,7 @@ class edit extends Component {
             });
             setAttributes({ prefixStyles: newUpdate });
         }
+
         const saveSuffixStyle = (value) => {
             const newUpdate = suffixStyles.map((item, index) => {
                 if (0 === index) {
@@ -206,11 +199,12 @@ class edit extends Component {
             setAttributes({ suffixStyles: newUpdate });
         }
 
-        const mainClasses = classnames(className, "premium-countup");
-        const containerPaddingTop = padding?.[this.props.deviceType]?.top;
-        const containerPaddingRight = padding?.[this.props.deviceType]?.right;
-        const containerPaddingBottom = padding?.[this.props.deviceType]?.bottom;
-        const containerPaddingLeft = padding?.[this.props.deviceType]?.left;
+        const mainClasses = classnames(className, {
+            ' premium-desktop-hidden': hideDesktop,
+            ' premium-tablet-hidden': hideTablet,
+            ' premium-mobile-hidden': hideMobile,
+        }, "premium-countup");
+
         // const alignProperty = flexDir.includes("column") ? 
         return [
             isSelected && (
@@ -379,14 +373,16 @@ class edit extends Component {
                                 <PremiumBorder
                                     label={__("Border")}
                                     value={border}
-                                    borderType={border.borderType}
-                                    borderColor={border.borderColor}
-                                    borderWidth={border.borderWidth}
-                                    borderRadius={border.borderRadius}
                                     onChange={(value) => setAttributes({ border: value })}
                                 />
                                 <hr />
-                                <SpacingComponent value={padding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ padding: value })} />
+                                <SpacingComponent
+                                    value={padding}
+                                    responsive={true}
+                                    showUnits={true}
+                                    label={__("Padding")}
+                                    onChange={(value) => setAttributes({ padding: value })}
+                                />
                             </PanelBody>
                             {iconCheck && (
                                 <PanelBody
@@ -524,9 +520,9 @@ class edit extends Component {
                                 Desktop={hideDesktop}
                                 Tablet={hideTablet}
                                 Mobile={hideMobile}
-                                onChangeDesktop={(value) => setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" })}
-                                onChangeTablet={(value) => setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" })}
-                                onChangeMobile={(value) => setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" })}
+                                onChangeDesktop={(value) => setAttributes({ hideDesktop: value })}
+                                onChangeTablet={(value) => setAttributes({ hideTablet: value })}
+                                onChangeMobile={(value) => setAttributes({ hideMobile: value })}
                             />
                         </InspectorTab>
                     </InspectorTabs>
@@ -545,20 +541,8 @@ class edit extends Component {
                     justifyContent: align?.[this.props.deviceType],
                     flexDirection: flexDir,
                     boxShadow: `${boxShadow?.horizontal}px ${boxShadow?.vertical}px ${boxShadow?.blur}px ${boxShadow?.color} ${boxShadow?.position}`,
-                    borderStyle: border?.borderType,
-                    borderTopWidth: border?.borderWidth?.[this.props.deviceType]?.top,
-                    borderRightWidth: border?.borderWidth?.[this.props.deviceType]?.right,
-                    borderBottomWidth: border?.borderWidth?.[this.props.deviceType]?.bottom,
-                    borderLeftWidth: border?.borderWidth?.[this.props.deviceType]?.left,
-                    borderColor: border?.borderColor,
-                    borderTopLeftRadius: `${border?.borderRadius?.[this.props.deviceType]?.top || 0}px`,
-                    borderTopRightRadius: `${border?.borderRadius?.[this.props.deviceType]?.right || 0}px`,
-                    borderBottomLeftRadius: `${border?.borderRadius?.[this.props.deviceType]?.bottom || 0}px`,
-                    borderBottomRightRadius: `${border?.borderRadius?.[this.props.deviceType]?.left || 0}px`,
-                    paddingTop: containerPaddingTop && `${containerPaddingTop}${padding.unit}`,
-                    paddingRight: containerPaddingRight && `${containerPaddingRight}${padding.unit}`,
-                    paddingBottom: containerPaddingBottom && `${containerPaddingBottom}${padding.unit}`,
-                    paddingLeft: containerPaddingLeft && `${containerPaddingLeft}${padding.unit}`,
+                    ...borderCss(border, this.props.deviceType),
+                    ...paddingCss(padding, this.props.deviceType),
                     ...gradientBackground(background)
                 }}
             >
@@ -618,14 +602,7 @@ class edit extends Component {
                                 style={{
                                     color: prefixStyles[0].prefixColor,
                                     marginRight: `${prefixStyles[0].prefixGap}px`,
-                                    fontSize: `${prefixTypography?.fontSize?.[this.props.deviceType]}${prefixTypography?.fontSize?.unit || 'px'}`,
-                                    fontStyle: prefixTypography?.fontStyle,
-                                    fontFamily: prefixTypography?.fontFamily,
-                                    fontWeight: prefixTypography?.fontWeight,
-                                    letterSpacing: prefixTypography?.letterSpacing,
-                                    textDecoration: prefixTypography?.textDecoration,
-                                    textTransform: prefixTypography?.textTransform,
-                                    lineHeight: `${prefixTypography?.lineHeight}px`,
+                                    ...typographyCss(prefixTypography, this.props.deviceType)
                                 }}
                                 tagName="p"
                             />
@@ -636,14 +613,7 @@ class edit extends Component {
                             onChange={value => setAttributes({ increment: value })}
                             style={{
                                 color: numberStyles[0].numberColor,
-                                fontSize: `${numberTypography?.fontSize?.[this.props.deviceType]}${numberTypography?.fontSize?.unit || 'px'}`,
-                                fontStyle: numberTypography?.fontStyle,
-                                fontFamily: numberTypography?.fontFamily,
-                                fontWeight: numberTypography?.fontWeight,
-                                letterSpacing: numberTypography?.letterSpacing,
-                                textDecoration: numberTypography?.textDecoration,
-                                textTransform: numberTypography?.textTransform,
-                                lineHeight: `${numberTypography?.lineHeight}px`,
+                                ...typographyCss(numberTypography, this.props.deviceType)
                             }}
                             tagName="p"
                             data-interval={time}
@@ -657,14 +627,7 @@ class edit extends Component {
                                 style={{
                                     color: suffixStyles[0].suffixColor,
                                     marginLeft: suffixStyles[0].suffixGap + "px",
-                                    fontSize: `${suffixTypography?.fontSize?.[this.props.deviceType]}${suffixTypography?.fontSize?.unit || 'px'}`,
-                                    fontStyle: suffixTypography?.fontStyle,
-                                    fontFamily: suffixTypography?.fontFamily,
-                                    fontWeight: suffixTypography?.fontWeight,
-                                    letterSpacing: suffixTypography?.letterSpacing,
-                                    textDecoration: suffixTypography?.textDecoration,
-                                    textTransform: suffixTypography?.textTransform,
-                                    lineHeight: `${suffixTypography?.lineHeight}px`,
+                                    ...typographyCss(suffixTypography, this.props.deviceType)
                                 }}
                                 tagName="p"
                             />
@@ -679,14 +642,7 @@ class edit extends Component {
                                 color: titleStyles[0].titleColor,
                                 marginTop: titleStyles[0].titleT + "px",
                                 marginBottom: titleStyles[0].titleB + "px",
-                                fontSize: `${titleTypography?.fontSize?.[this.props.deviceType]}${titleTypography?.fontSize?.unit || 'px'}`,
-                                fontStyle: titleTypography?.fontStyle,
-                                fontFamily: titleTypography?.fontFamily,
-                                fontWeight: titleTypography?.fontWeight,
-                                letterSpacing: titleTypography?.letterSpacing,
-                                textDecoration: titleTypography?.textDecoration,
-                                textTransform: titleTypography?.textTransform,
-                                lineHeight: `${titleTypography?.lineHeight}px`,
+                                ...typographyCss(titleTypography, this.props.deviceType)
                             }}
                             tagName="h3"
                         />
@@ -701,14 +657,7 @@ class edit extends Component {
                             color: titleStyles[0].titleColor,
                             marginTop: titleStyles[0].titleT + "px",
                             marginBottom: titleStyles[0].titleB + "px",
-                            fontSize: `${titleTypography?.fontSize?.[this.props.deviceType]}${titleTypography?.fontSize?.unit || 'px'}`,
-                            fontStyle: titleTypography?.fontStyle,
-                            fontFamily: titleTypography?.fontFamily,
-                            fontWeight: titleTypography?.fontWeight,
-                            letterSpacing: titleTypography?.letterSpacing,
-                            textDecoration: titleTypography?.textDecoration,
-                            textTransform: titleTypography?.textTransform,
-                            lineHeight: `${titleTypography?.lineHeight}px`,
+                            ...typographyCss(titleTypography, this.props.deviceType),
                             alignSelf: selfAlign?.[this.props.deviceType]
                         }}
                         tagName="h3"

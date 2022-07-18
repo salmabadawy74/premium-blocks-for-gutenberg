@@ -109,12 +109,7 @@ const attributes = {
         type: "array",
         default: [
             {
-                numberSizeUnit: "px",
-                numberSize: 30,
-                numberSizeTablet: '',
-                numberSizeMobile: '',
                 numberColor: "#6ec1e4",
-                numberWeight: '',
             }
         ]
     },
@@ -123,18 +118,10 @@ const attributes = {
         default: [
             {
                 titleFamily: __('Default', 'premium-blocks-for-gutenberg'),
-                titleSize: 20,
-                titleSizeUnit: 'px',
-                titleSizeTablet: '',
-                titleSizeMobile: '',
-                titleSpacing: '',
-                titleStyle: '',
-                titleUpper: false,
                 titleColor: '',
                 titleT: 1,
                 titleB: 1,
                 titleColor: '',
-                titleWeight: '',
             }
         ]
     },
@@ -190,12 +177,7 @@ const attributes = {
         default: [
             {
                 suffixTxt: "Suffix",
-                suffixSizeUnit: 'px',
-                suffixSize: 20,
-                suffixSizeTablet: '',
-                suffixSizeMobile: '',
                 suffixColor: '',
-                suffixWeight: '',
                 suffixGap: 2,
                 suffixFamily: __('Default', 'premium-blocks-for-gutenberg'),
             }
@@ -206,14 +188,8 @@ const attributes = {
         default: [
             {
                 prefixTxt: "Prefix",
-                prefixSize: 20,
-                prefixSizeUnit: 'px',
-                prefixSizeTablet: '',
-                prefixSizeMobile: '',
                 prefixColor: '',
-                prefixWeight: '',
                 prefixGap: 2,
-                prefixFamily: __('Default', 'premium-blocks-for-gutenberg'),
             }
         ]
     },
@@ -244,14 +220,24 @@ const attributes = {
     numberTypography: {
         type: "object",
         default: {
-            "fontWeight": '',
+            "fontWeight": '400',
             'fontStyle': '',
             'textTransform': '',
-            'letterSpacing': '',
-            'fontFamily': '',
-            'lineHeight': '',
+            'fontFamily': 'Default',
             'textDecoration': '',
             'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            },
+            'lineHeight': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            },
+            'letterSpacing': {
                 'Desktop': '',
                 "Tablet": '',
                 "Mobile": '',
@@ -262,14 +248,24 @@ const attributes = {
     prefixTypography: {
         type: "object",
         default: {
-            "fontWeight": '',
+            "fontWeight": '400',
             'fontStyle': '',
             'textTransform': '',
-            'letterSpacing': '',
-            'fontFamily': '',
-            'lineHeight': '',
+            'fontFamily': 'Default',
             'textDecoration': '',
             'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            },
+            'lineHeight': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            },
+            'letterSpacing': {
                 'Desktop': '',
                 "Tablet": '',
                 "Mobile": '',
@@ -280,14 +276,24 @@ const attributes = {
     suffixTypography: {
         type: "object",
         default: {
-            "fontWeight": '',
+            "fontWeight": '400',
             'fontStyle': '',
             'textTransform': '',
-            'letterSpacing': '',
-            'fontFamily': '',
-            'lineHeight': '',
+            'fontFamily': 'Default',
             'textDecoration': '',
             'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            },
+            'lineHeight': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            },
+            'letterSpacing': {
                 'Desktop': '',
                 "Tablet": '',
                 "Mobile": '',
@@ -298,14 +304,24 @@ const attributes = {
     titleTypography: {
         type: "object",
         default: {
-            "fontWeight": '',
+            "fontWeight": '400',
             'fontStyle': '',
             'textTransform': '',
-            'letterSpacing': '',
-            'fontFamily': '',
-            'lineHeight': '',
+            'fontFamily': 'Default',
             'textDecoration': '',
             'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            },
+            'lineHeight': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            },
+            'letterSpacing': {
                 'Desktop': '',
                 "Tablet": '',
                 "Mobile": '',
@@ -349,19 +365,19 @@ const attributes = {
                 }
             },
             "borderRadius": {
-                Desktop: {
+                'Desktop': {
+                    'top': '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                'Tablet': {
                     top: '',
                     right: '',
                     bottom: '',
                     left: ''
                 },
-                Tablet: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Mobile: {
+                'Mobile': {
                     top: '',
                     right: '',
                     bottom: '',

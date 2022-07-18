@@ -437,90 +437,123 @@ const attributes = {
     titleShadow: {
         type: "object",
         default: {
-            'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': ''
+            'color': 'undefined',
+            'blur': '10',
+            'horizontal': '0',
+            'vertical': '0'
         }
     },
     btnShadow: {
         type: "object",
         default: {
-            'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': '',
+            'color': 'undefined',
+            'blur': '10',
+            'horizontal': '0',
+            'vertical': '0',
             'position': ' '
         }
     },
     containerShadow: {
         type: "object",
         default: {
-            'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': '',
+            'color': 'undefined',
+            'blur': '10',
+            'horizontal': '0',
+            'vertical': '0',
             'position': ' '
         }
     },
     containerHoverShadow: {
         type: "object",
         default: {
-            'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': '',
+            'color': 'undefined',
+            'blur': '10',
+            'horizontal': '0',
+            'vertical': '0',
             'position': ' '
         }
     },
     titleTypography: {
         type: "object",
         default: {
-            "fontWeight": 300,
+            "fontWeight": '400',
             'fontStyle': '',
             'textTransform': '',
-            'letterSpacing': '',
-            'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
-            'lineHeight': '',
+            'fontFamily': 'Default',
+            'textDecoration': '',
             'fontSize': {
-                'Desktop': 20,
-                "Tablet": 20,
-                "Mobile": 20,
-                unit: 'px'
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            },
+            'lineHeight': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            },
+            'letterSpacing': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
             }
         }
     },
     descTypography: {
         type: "object",
         default: {
-            "fontWeight": 400,
+            "fontWeight": '400',
             'fontStyle': '',
             'textTransform': '',
-            'letterSpacing': '',
-            'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
-            'lineHeight': '',
+            'fontFamily': 'Default',
+            'textDecoration': '',
             'fontSize': {
-                'Desktop': 20,
-                "Tablet": 20,
-                "Mobile": 20,
-                unit: 'px'
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            },
+            'lineHeight': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            },
+            'letterSpacing': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
             }
         }
     },
     btnTypography: {
         type: "object",
         default: {
-            "fontWeight": 400,
+            "fontWeight": '400',
             'fontStyle': '',
             'textTransform': '',
-            'letterSpacing': '',
-            'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
-            'lineHeight': '',
+            'fontFamily': 'Default',
+            'textDecoration': '',
             'fontSize': {
-                'Desktop': 20,
-                "Tablet": 20,
-                "Mobile": 20,
-                unit: 'px'
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            },
+            'lineHeight': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            },
+            'letterSpacing': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
             }
         }
     }
