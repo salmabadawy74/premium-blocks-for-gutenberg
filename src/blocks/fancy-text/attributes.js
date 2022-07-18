@@ -1,15 +1,19 @@
 const { __ } = wp.i18n;
 const attributes = {
-    block_id: {
-        type: "string"
+    blockId: {
+        type: "string",
     },
     classMigrate: {
         type: "boolean",
-        default: false
+        default: ""
     },
-    align: {
-        type: "string",
-        default: "center"
+    contentAlign: {
+        type: "object",
+        default: {
+            Desktop: "center",
+            Tablet: "center",
+            Mobile: "center",
+        }
     },
     prefix: {
         type: "string",
@@ -80,40 +84,36 @@ const attributes = {
         default: false
     },
     fancyalign: {
-        type: "string",
-        default: "center"
+        type: "object",
+        default: {
+            Desktop: "center",
+            Tablet: "center",
+            Mobile: "center"
+        }
     },
     hideDesktop: {
         type: 'boolean',
-        default: false
+        default: ""
     },
     hideTablet: {
         type: 'boolean',
-        default: false
+        default: ""
     },
     hideMobile: {
         type: 'boolean',
-        default: false
+        default: ""
     },
     fancyStyles: {
         type: "array",
         default: [
             {
-                fancyTextColor: "#6ec1e4",
-                fancyTextfontSize: 20,
-                fancyTextfontSizeUnit: 'px',
-                fancyTextfontSizeMobile: 20,
-                fancyTextfontSizeTablet: 20,
+                fancyTextColor: '#6ec1e4',
                 fancyTextBGColor: '',
                 fancyTextBGOpacity: 1,
-                fancyTextLetter: '',
-                fancyTextStyle: '',
-                fancyTextUpper: false,
-                fancyTextWeight: 600,
-                shadowColor: '',
-                shadowBlur: '0',
-                shadowHorizontal: '0',
-                shadowVertical: '0',
+                // shadowColor: '',
+                // shadowBlur: '0',
+                // shadowHorizontal: '0',
+                // shadowVertical: '0',
                 cursorColor: "#6ec1e4"
             }
         ]
@@ -122,19 +122,77 @@ const attributes = {
         type: "array",
         default: [
             {
-                textColor: "#54595f",
-                textLetter: '',
-                textStyle: '',
-                textUpper: false,
-                textWeight: 600,
-                textfontSize: 20,
-                textfontSizeUnit: 'px',
-                textfontSizeMobile: 20,
-                textfontSizeTablet: 20,
-                textBGColor: '',
-                textBGOpacity: 1,
+            textColor: "#54595f",
+            textBGColor: '',
+            textBGOpacity: 1,
             }
         ]
-    }
+    },
+    prefixTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '400',
+            "fontStyle": "",
+            "letterSpacing": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": 'px'
+            },
+            "fontFamily": 'Default',
+            "lineHeight": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": 'px'
+            },
+            "textDecoration": "",
+            "textTransform": "",
+            "fontSize": {
+                'Desktop': "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": 'px'
+            }
+        }
+    },
+    fancyTextTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '400',
+            "fontStyle": "",
+            "letterSpacing": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": 'px'
+            },
+            "fontFamily": 'Default',
+            "lineHeight": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": 'px'
+            },
+            "textDecoration": "",
+            "textTransform": "",
+            "fontSize": {
+                'Desktop': "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": 'px'
+            }
+        }
+    },
+    fancyTextShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
+    },
 }
 export default attributes
