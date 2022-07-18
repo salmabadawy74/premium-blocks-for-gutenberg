@@ -482,9 +482,9 @@ const attributes = {
             'fontFamily': 'Default',
             'textDecoration': '',
             'fontSize': {
-                'Desktop': '',
-                "Tablet": '',
-                "Mobile": '',
+                'Desktop': '20',
+                "Tablet": '20',
+                "Mobile": '20',
                 "unit": 'px'
             },
             'lineHeight': {
@@ -510,9 +510,9 @@ const attributes = {
             'fontFamily': 'Default',
             'textDecoration': '',
             'fontSize': {
-                'Desktop': '',
-                "Tablet": '',
-                "Mobile": '',
+                'Desktop': '20',
+                "Tablet": '20',
+                "Mobile": '20',
                 "unit": 'px'
             },
             'lineHeight': {
