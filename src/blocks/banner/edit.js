@@ -14,13 +14,7 @@ import InspectorTab from "../../components/inspectorTab";
 import MultiButtonsControl from '../../components/responsive-radio';
 import Icons from "../../components/icons";
 
-import {
-    borderCss,
-    generateBlockId,
-    generateCss,
-    paddingCss,
-    typographyCss,
-} from "../../components/HelperFunction";
+import { borderCss, generateBlockId, generateCss, paddingCss, typographyCss, } from "../../components/HelperFunction";
 
 const { withSelect } = wp.data;
 const { __ } = wp.i18n;
@@ -38,7 +32,6 @@ const {
 const {
     BlockControls,
     InspectorControls,
-    AlignmentToolbar,
     RichText,
     MediaPlaceholder,
 } = wp.blockEditor;

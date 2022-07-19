@@ -69,10 +69,10 @@ export const paddingCss = (value, device) => {
 };
 export const marginCss = (value, device) => {
     return {
-        marginTop: `${value?.[device]?.top}${value?.unit}`,
-        marginRight: `${value?.[device]?.right}${value?.unit}`,
-        marginBottom: `${value?.[device]?.bottom}${value?.unit}`,
-        marginLeft: `${value?.[device]?.left}${value?.unit}`,
+        marginTop: value?.[device]?.top && `${value?.[device]?.top}${value?.unit}`,
+        marginRight: value?.[device]?.right && `${value?.[device]?.right}${value?.unit}`,
+        marginBottom: value?.[device]?.bottom && `${value?.[device]?.bottom}${value?.unit}`,
+        marginLeft: value?.[device]?.left && `${value?.[device]?.left}${value?.unit}`,
     };
 };
 export const typographyCss = (value, device) => {

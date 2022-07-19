@@ -332,10 +332,10 @@ const attributes = {
     boxShadow: {
         type: "object",
         default: {
-            'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': '',
+            'color': 'undefined',
+            'blur': '10',
+            'horizontal': '0',
+            'vertical': '0',
             'position': ' '
         }
     },

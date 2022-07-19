@@ -3460,14 +3460,14 @@ class PBG_Blocks_Helper {
 	 */
 	public function get_iconbox_css_style( $attr, $unique_id ) {
 
-		if ( isset( $attr['titleTypography']['fontFamily'] ) ) {
-			$this->add_gfont(
-				array(
-					'fontFamily'  => ( isset( $attr['titleTypography']['fontFamily'] ) ? $attr['titleTypography']['fontFamily'] : '' ),
-					'fontVariant' => ( isset( $attr['titleTypography']['fontWeight'] ) ? $attr['titleTypography']['fontWeight'] : '' ),
-				)
-			);
-		}
+		
+
+		$css                    = new Premium_Blocks_css();
+		$media_query            = array();
+		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
+		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
+		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
+
 		if ( isset( $attr['descTypography']['fontFamily'] ) ) {
 			$this->add_gfont(
 				array(
@@ -3484,13 +3484,6 @@ class PBG_Blocks_Helper {
 				)
 			);
 		}
-
-		$css                    = new Premium_Blocks_css();
-		$media_query            = array();
-		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
-		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
-		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
-
 		// icon style
 		if ( isset( $attr['iconSize']['Desktop'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__icon_wrap' . '> i' );
@@ -3506,25 +3499,39 @@ class PBG_Blocks_Helper {
 		}
 
 		// title style
-		if ( isset( $attr['titleTypography']['fontSize']['Desktop'] ) ) {
-			$css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__title_wrap' . '> .premium-icon-box__title' );
-			$css->add_property( 'font-size', ( $attr['titleTypography']['fontSize']['Desktop'] . ( isset( $attr['titleTypography']['fontSize']['unit'] ) ? $attr['titleTypography']['fontSize']['unit'] : 'px' ) . '!important' ) );
-		}
-		if ( isset( $attr['titleMargin']['Desktop']['top'] ) ) {
+        if(isset( $attr['titleTypography'])){
+            $title_typography    =           $attr['titleTypography'];
+            $title_size          =           $title_typography['fontSize'];
+            $title_line          =           $title_typography['lineHeight'];
+            $title_space         =           $title_typography['letterSpacing'];
+            if ( isset( $attr['titleTypography']['fontFamily'] ) && $attr['titleTypography']['fontFamily'] !== 'Default') {
+                $this->add_gfont(
+                    array(
+                        'fontFamily'  => ( isset( $attr['titleTypography']['fontFamily'] ) ? $attr['titleTypography']['fontFamily'] : '' ),
+                        'fontVariant' => ( isset( $attr['titleTypography']['fontWeight'] ) ? $attr['titleTypography']['fontWeight'] : '' ),
+                    )
+                );
+	    	}
+		    if ( isset( $title_size['Desktop'] ) && $title_size['Desktop'] !== "" ) {
+                $css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__title_wrap' . '> .premium-icon-box__title' );
+			    $css->add_property( 'font-size', $css->get_responsive_size_value( $title_size, 'Desktop', $title_size['unit'] ) );
+		    }
+            if ( isset( $title_line['Desktop'] ) && $title_line['Desktop'] !== "" ) {
+                $css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__title_wrap' . '> .premium-icon-box__title' );
+			    $css->add_property( 'line-height', $css->get_responsive_size_value( $title_line, 'Desktop', 'px' ) );
+		    }
+             if ( isset( $title_space['Desktop'] ) && $title_space['Desktop'] !== "" ) {
+                $css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__title_wrap' . '> .premium-icon-box__title' );
+			    $css->add_property( 'letter-space', $css->get_responsive_size_value( $title_space, 'Desktop', 'px' ) );
+		    }
+
+        }
+      
+
+        if ( isset( $attr['titleMargin'] ) ) {
+			$title_margin = $attr['titleMargin'];
 			$css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__title_wrap' );
-			$css->add_property( 'margin-top', ( $attr['titleMargin']['Desktop']['top'] . 'px' ) );
-		}
-		if ( isset( $attr['titleMargin']['Desktop']['right'] ) ) {
-			$css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__title_wrap' );
-			$css->add_property( 'margin-right', ( $attr['titleMargin']['Desktop']['right'] . 'px' ) );
-		}
-		if ( isset( $attr['titleMargin']['Desktop']['bottom'] ) ) {
-			$css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__title_wrap' );
-			$css->add_property( 'margin-bottom', ( $attr['titleMargin']['Desktop']['bottom'] . 'px' ) );
-		}
-		if ( isset( $attr['titleMargin']['Desktop']['left'] ) ) {
-			$css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__title_wrap' );
-			$css->add_property( 'margin-left', ( $attr['titleMargin']['Desktop']['left'] . 'px' ) );
+			$css->add_property( 'margin', $css->render_spacing( $title_margin['Desktop'] , 'px' ) );
 		}
 
 		// desc style
@@ -3532,21 +3539,26 @@ class PBG_Blocks_Helper {
 			$css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__desc_wrap' . '> .premium-icon-box__desc' );
 			$css->add_property( 'font-size', ( $attr['descTypography']['fontSize']['Desktop'] . ( isset( $attr['descTypography']['fontSize']['unit'] ) ? $attr['descTypography']['fontSize']['unit'] : 'px' ) . '!important' ) );
 		}
-		if ( isset( $attr['descMargin']['Desktop']['top'] ) ) {
+		// if ( isset( $attr['descMargin']['Desktop']['top'] ) ) {
+		// 	$css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__desc_wrap' );
+		// 	$css->add_property( 'margin-top', ( $attr['descMargin']['Desktop']['top'] . 'px' ) );
+		// }
+		// if ( isset( $attr['descMargin']['Desktop']['right'] ) ) {
+		// 	$css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__desc_wrap' );
+		// 	$css->add_property( 'margin-right', ( $attr['descMargin']['Desktop']['right'] . 'px' ) );
+		// }
+		// if ( isset( $attr['descMargin']['Desktop']['bottom'] ) ) {
+		// 	$css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__desc_wrap' );
+		// 	$css->add_property( 'margin-bottom', ( $attr['descMargin']['Desktop']['bottom'] . 'px' ) );
+		// }
+		// if ( isset( $attr['descMargin']['Desktop']['left'] ) ) {
+		// 	$css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__desc_wrap' );
+		// 	$css->add_property( 'margin-left', ( $attr['descMargin']['Desktop']['left'] . 'px' ) );
+		// }
+        if ( isset( $attr['descMargin'] ) ) {
+			$desc_margin = $attr['descMargin'];
 			$css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__desc_wrap' );
-			$css->add_property( 'margin-top', ( $attr['descMargin']['Desktop']['top'] . 'px' ) );
-		}
-		if ( isset( $attr['descMargin']['Desktop']['right'] ) ) {
-			$css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__desc_wrap' );
-			$css->add_property( 'margin-right', ( $attr['descMargin']['Desktop']['right'] . 'px' ) );
-		}
-		if ( isset( $attr['descMargin']['Desktop']['right'] ) ) {
-			$css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__desc_wrap' );
-			$css->add_property( 'margin-bottom', ( $attr['descMargin']['Desktop']['bottom'] . 'px' ) );
-		}
-		if ( isset( $attr['descMargin']['Desktop']['left'] ) ) {
-			$css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__desc_wrap' );
-			$css->add_property( 'margin-left', ( $attr['descMargin']['Desktop']['left'] . 'px' ) );
+			$css->add_property( 'margin', $css->render_spacing( $desc_margin['Desktop'] , 'px' ) );
 		}
 
 		// btn style
@@ -3554,21 +3566,28 @@ class PBG_Blocks_Helper {
 			$css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__btn_wrap' . '> .premium-icon-box__btn' );
 			$css->add_property( 'font-size', ( $attr['btnTypography']['fontSize']['Desktop'] . ( isset( $attr['btnTypography']['fontSize']['unit'] ) ? $attr['btnTypography']['fontSize']['unit'] : 'px' ) . '!important' ) );
 		}
-		if ( isset( $attr['btnMargin']['Desktop']['top'] ) ) {
-			$css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__btn_wrap' );
-			$css->add_property( 'margin-top', ( $attr['btnMargin']['Desktop']['top'] . 'px' ) );
-		}
-		if ( isset( $attr['btnMargin']['Desktop']['right'] ) ) {
-			$css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__btn_wrap' );
-			$css->add_property( 'margin-right', ( $attr['btnMargin']['Desktop']['right'] . 'px' ) );
-		}
-		if ( isset( $attr['btnMargin']['Desktop']['bottom'] ) ) {
-			$css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__btn_wrap' );
-			$css->add_property( 'margin-bottom', ( $attr['btnMargin']['Desktop']['bottom'] . 'px' ) );
-		}
-		if ( isset( $attr['btnMargin']['Desktop']['left'] ) ) {
-			$css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__btn_wrap' );
-			$css->add_property( 'margin-left', ( $attr['btnMargin']['Desktop']['left'] . 'px' ) );
+		// if ( isset( $attr['btnMargin']['Desktop']['top'] ) ) {
+		// 	$css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__btn_wrap' );
+		// 	$css->add_property( 'margin-top', ( $attr['btnMargin']['Desktop']['top'] . 'px' ) );
+		// }
+		// if ( isset( $attr['btnMargin']['Desktop']['right'] ) ) {
+		// 	$css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__btn_wrap' );
+		// 	$css->add_property( 'margin-right', ( $attr['btnMargin']['Desktop']['right'] . 'px' ) );
+		// }
+		// if ( isset( $attr['btnMargin']['Desktop']['bottom'] ) ) {
+		// 	$css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__btn_wrap' );
+		// 	$css->add_property( 'margin-bottom', ( $attr['btnMargin']['Desktop']['bottom'] . 'px' ) );
+		// }
+		// if ( isset( $attr['btnMargin']['Desktop']['left'] ) ) {
+		// 	$css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__btn_wrap' );
+		// 	$css->add_property( 'margin-left', ( $attr['btnMargin']['Desktop']['left'] . 'px' ) );
+		// }
+
+
+        if ( isset( $attr['btnMargin'] ) ) {
+			$btn_margin = $attr['btnMargin'];
+		 	$css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__btn_wrap' );
+			$css->add_property( 'margin', $css->render_spacing( $btn_margin['Desktop'] , 'px' ) );
 		}
 
 		if ( isset( $attr['btnBorder']['borderWidth']['Desktop']['top'] ) ) {
@@ -3705,7 +3724,6 @@ class PBG_Blocks_Helper {
 			$css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__icon_wrap' . '> img' );
 			$css->add_property( 'height', ( $attr['iconSize']['Tablet'] . ( isset( $attr['iconSize']['unit'] ) ? $attr['iconSize']['unit'] : 'px' ) . '!important' ) );
 		}
-
 		// title Style for Tablet Device
 		if ( isset( $attr['titleTypography']['fontSize']['Tablet'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__title_wrap' . '> .premium-icon-box__title' );
@@ -3727,7 +3745,6 @@ class PBG_Blocks_Helper {
 			$css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__title_wrap' );
 			$css->add_property( 'margin-left', ( $attr['titleMargin']['Tablet']['left'] . 'px' ) );
 		}
-
 		  // description Style for Tablet Device
 		if ( isset( $attr['descTypography']['fontSize']['Tablet'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__desc_wrap' . '> .premium-icon-box__desc' );
