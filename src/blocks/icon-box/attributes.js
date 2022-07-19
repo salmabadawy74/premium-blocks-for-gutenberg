@@ -119,7 +119,6 @@ const attributes = {
         attribute: "href",
         selector: ".premium-icon-box__btn"
     },
-
     btnHoverBorder: {
         type: "string"
     },
@@ -181,22 +180,22 @@ const attributes = {
         type: "object",
         default: {
             Desktop: {
-                top: "",
-                right: "",
-                bottom: "",
-                left: ""
+                'top': "",
+                'right': "",
+                'bottom': "",
+                'left': ""
             },
             Tablet: {
-                top: "",
-                right: "",
-                bottom: "",
-                left: ""
+                'top': "",
+                'right': "",
+                'bottom': "",
+                'left': ""
             },
             Mobile: {
-                top: "",
-                right: "",
-                bottom: "",
-                left: ""
+                'top': "",
+                'right': "",
+                'bottom': "",
+                'left': ""
             },
             unit: "px"
         }

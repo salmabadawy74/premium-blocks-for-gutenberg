@@ -20,22 +20,13 @@ import InspectorTab from "../../components/inspectorTab";
 import InsideTabs from "../../components/InsideTabs";
 import InsideTab from "../../components/InsideTab";
 import Icons from "../../components/icons";
-import {
-    gradientBackground,
-    borderCss,
-    paddingCss,
-    marginCss,
-    typographyCss,
-    generateBlockId,
-} from "../../components/HelperFunction";
-
+import { gradientBackground, borderCss, paddingCss, marginCss, typographyCss, generateBlockId, generateCss } from "../../components/HelperFunction";
 const { __ } = wp.i18n;
-
+import GoogleFontLoader from "react-google-font-loader";
 const { PanelBody, SelectControl, ToggleControl, TextControl } = wp.components;
 const { Fragment, Component } = wp.element;
 const { withSelect } = wp.data;
-const { BlockControls, InspectorControls, RichText, AlignmentToolbar } =
-    wp.blockEditor;
+const { InspectorControls, RichText } = wp.blockEditor;
 
 class edit extends Component {
     constructor() {
@@ -230,37 +221,67 @@ class edit extends Component {
         let loadButtonGoogleFonts;
 
         if (titleTypography.fontFamily !== "Default") {
-            const titleConfig = {
-                google: {
-                    families: [titleTypography.fontFamily],
-                },
-            };
             loadTitleGoogleFonts = (
-                <WebfontLoader config={titleConfig}></WebfontLoader>
+                <GoogleFontLoader
+                    fonts={[
+                        {
+                            font: titleTypography.fontFamily,
+                        },
+                    ]}
+                />
             );
         }
         if (descTypography.fontFamily !== "Default") {
-            const descriptionConfig = {
-                google: {
-                    families: [descTypography.fontFamily],
-                },
-            };
+
             loadDescriptionGoogleFonts = (
-                <WebfontLoader config={descriptionConfig}></WebfontLoader>
+                <GoogleFontLoader
+                    fonts={[
+                        {
+                            font: descTypography.fontFamily,
+                        },
+                    ]}
+                />
             );
         }
         if (btnTypography.fontFamily !== "Default") {
-            const btnConfig = {
-                google: {
-                    families: [btnTypography.fontFamily],
-                },
-            };
+
             loadButtonGoogleFonts = (
-                <WebfontLoader config={btnConfig}></WebfontLoader>
-            );
+                <GoogleFontLoader
+                    fonts={[
+                        {
+                            font: btnTypography.fontFamily,
+                        },
+                    ]}
+                />);
         }
 
-        const mainClasses = classnames(className, "premium-icon-box");
+        const mainClasses = classnames(className, "premium-icon-box", {
+            ' premium-desktop-hidden': hideDesktop,
+            ' premium-tablet-hidden': hideTablet,
+            ' premium-mobile-hidden': hideMobile,
+        });
+        const loadStyles = () => {
+            const styles = {};
+            styles[`.${blockId}:hover`] = {
+                'box-shadow': `${containerHoverShadow.horizontal}px ${containerHoverShadow.vertical}px ${containerHoverShadow.blur}px ${containerHoverShadow.color} ${containerHoverShadow.position} !important`,
+            };
+            styles[`.${blockId}`] = {
+                'box-shadow': `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position} !important`,
+            };
+            styles[`.${blockId} .premium-icon-box__btn:hover`] = {
+                color: `${btnStyles[0].btnHoverColor} !important`,
+                'border-color': `${btnHoverBorder} !important`
+            };
+            styles[`.${blockId} .premium-button__none .premium-icon-box__btn:hover`] = {
+                'background-color': `${btnStyles[0].btnHoverBack} !important`,
+            };
+            styles[`.${blockId} .premium-button__slide .premium-button::before`] = {
+                'background-color': `${btnStyles[0].btnHoverBack} !important`,
+            }
+            return generateCss(styles);
+
+        }
+
 
         return [
             isSelected && (
@@ -647,16 +668,9 @@ class edit extends Component {
                                         }
                                     />
                                     <SpacingControl
-                                        label={__(
-                                            "Margin",
-                                            "premium-blocks-for-gutenberg"
-                                        )}
+                                        label={__("Margin (PX)", "premium-blocks-for-gutenberg")}
                                         value={titleMargin}
-                                        onChange={(value) =>
-                                            setAttributes({
-                                                titleMargin: value,
-                                            })
-                                        }
+                                        onChange={(value) => setAttributes({ titleMargin: value })}
                                         showUnits={false}
                                         responsive={true}
                                     />
@@ -669,44 +683,19 @@ class edit extends Component {
                                     initialOpen={false}
                                 >
                                     <PremiumTypo
-                                        components={[
-                                            "responsiveSize",
-                                            "weight",
-                                            "style",
-                                            "upper",
-                                            "spacing",
-                                            "line",
-                                            "family",
-                                        ]}
                                         value={descTypography}
-                                        onChange={(newValue) =>
-                                            setAttributes({
-                                                descTypography: newValue,
-                                            })
-                                        }
+                                        onChange={(newValue) => setAttributes({ descTypography: newValue })}
                                     />
                                     <AdvancedPopColorControl
-                                        label={__(
-                                            "Color",
-                                            "premium-blocks-for-gutenberg"
-                                        )}
+                                        label={__("Color", "premium-blocks-for-gutenberg")}
                                         colorValue={descStyles[0].descColor}
                                         colorDefault={""}
-                                        onColorChange={(newValue) =>
-                                            saveDescriptionStyle({
-                                                descColor: newValue,
-                                            })
-                                        }
+                                        onColorChange={(newValue) => saveDescriptionStyle({ descColor: newValue })}
                                     />
                                     <SpacingControl
-                                        label={__(
-                                            "Margin",
-                                            "premium-blocks-for-gutenberg"
-                                        )}
+                                        label={__("Margin", "premium-blocks-for-gutenberg")}
                                         value={descMargin}
-                                        onChange={(value) =>
-                                            setAttributes({ descMargin: value })
-                                        }
+                                        onChange={(value) => setAttributes({ descMargin: value })}
                                         showUnits={false}
                                         responsive={true}
                                     />
@@ -719,55 +708,23 @@ class edit extends Component {
                                     initialOpen={false}
                                 >
                                     <PremiumTypo
-                                        components={[
-                                            "responsiveSize",
-                                            "weight",
-                                            "style",
-                                            "upper",
-                                            "spacing",
-                                            "line",
-                                            "family",
-                                        ]}
                                         value={btnTypography}
-                                        onChange={(newValue) =>
-                                            setAttributes({
-                                                btnTypography: newValue,
-                                            })
-                                        }
+                                        onChange={(newValue) => setAttributes({ btnTypography: newValue })}
                                     />
                                     <InsideTabs>
                                         <InsideTab tabTitle={__("Normal")}>
                                             <Fragment>
                                                 <AdvancedPopColorControl
-                                                    label={__(
-                                                        "Color",
-                                                        "premium-blocks-for-gutenberg"
-                                                    )}
-                                                    colorValue={
-                                                        btnStyles[0].btnColor
-                                                    }
+                                                    label={__("Color", "premium-blocks-for-gutenberg")}
+                                                    colorValue={btnStyles[0].btnColor}
                                                     colorDefault={""}
-                                                    onColorChange={(newValue) =>
-                                                        saveButtonStyle({
-                                                            btnColor:
-                                                                newValue ||
-                                                                "#000",
-                                                        })
-                                                    }
+                                                    onColorChange={(newValue) => saveButtonStyle({ btnColor: newValue || "#000" })}
                                                 />
 
                                                 <AdvancedPopColorControl
-                                                    label={__(
-                                                        `Background Color`
-                                                    )}
-                                                    colorValue={
-                                                        btnStyles[0].btnBack
-                                                    }
-                                                    onColorChange={(newvalue) =>
-                                                        saveButtonStyle({
-                                                            btnBack: newvalue,
-                                                        })
-                                                    }
+                                                    label={__(`Background Color`)}
+                                                    colorValue={btnStyles[0].btnBack}
+                                                    onColorChange={(newvalue) => saveButtonStyle({ btnBack: newvalue })}
                                                     colorDefault={``}
                                                 />
                                             </Fragment>
@@ -775,111 +732,41 @@ class edit extends Component {
                                         <InsideTab tabTitle={__("Hover")}>
                                             <Fragment>
                                                 <AdvancedPopColorControl
-                                                    label={__(
-                                                        "Hover Color",
-                                                        "premium-blocks-for-gutenberg"
-                                                    )}
-                                                    colorValue={
-                                                        btnStyles[0]
-                                                            .btnHoverColor
-                                                    }
+                                                    label={__("Hover Color", "premium-blocks-for-gutenberg")}
+                                                    colorValue={btnStyles[0].btnHoverColor}
                                                     colorDefault={""}
-                                                    onColorChange={(newValue) =>
-                                                        saveButtonStyle({
-                                                            btnHoverColor:
-                                                                newValue ||
-                                                                "#000",
-                                                        })
-                                                    }
+                                                    onColorChange={(newValue) => saveButtonStyle({ btnHoverColor: newValue || "#000" })}
                                                 />
                                                 <AdvancedPopColorControl
-                                                    label={__(
-                                                        "Background Hover Color",
-                                                        "premium-blocks-for-gutenberg"
-                                                    )}
-                                                    colorValue={
-                                                        btnStyles[0]
-                                                            .btnHoverBack
-                                                    }
+                                                    label={__("Background Hover Color", "premium-blocks-for-gutenberg")}
+                                                    colorValue={btnStyles[0].btnHoverBack}
                                                     colorDefault={""}
-                                                    onColorChange={(newValue) =>
-                                                        saveButtonStyle({
-                                                            btnHoverBack:
-                                                                newValue,
-                                                        })
-                                                    }
+                                                    onColorChange={(newValue) => saveButtonStyle({ btnHoverBack: newValue })}
                                                 />
                                                 <AdvancedPopColorControl
-                                                    label={__(
-                                                        "Border Hover Color",
-                                                        "premium-blocks-for-gutenberg"
-                                                    )}
+                                                    label={__("Border Hover Color", "premium-blocks-for-gutenberg")}
                                                     colorValue={btnHoverBorder}
                                                     colorDefault={""}
-                                                    onColorChange={(newValue) =>
-                                                        setAttributes({
-                                                            btnHoverBorder:
-                                                                newValue,
-                                                        })
-                                                    }
+                                                    onColorChange={(newValue) => setAttributes({ btnHoverBorder: newValue })}
                                                 />
                                                 <SelectControl
                                                     options={BTN_EFFECTS}
-                                                    label={__(
-                                                        "Hover Effect",
-                                                        "premium-blocks-for-gutenberg"
-                                                    )}
+                                                    label={__("Hover Effect", "premium-blocks-for-gutenberg")}
                                                     value={btnEffect}
-                                                    onChange={(newValue) =>
-                                                        setAttributes({
-                                                            btnEffect: newValue,
-                                                        })
-                                                    }
+                                                    onChange={(newValue) => setAttributes({ btnEffect: newValue })}
                                                 />
                                                 {"slide" === btnEffect && (
                                                     <RadioComponent
-                                                        label={__(
-                                                            "Direction",
-                                                            "premium-blocks-for-gutenberg"
-                                                        )}
+                                                        label={__("Direction", "premium-blocks-for-gutenberg")}
                                                         choices={[
-                                                            {
-                                                                value: "top",
-                                                                label: __(
-                                                                    "Top"
-                                                                ),
-                                                                icon: Icons.arrowTop,
-                                                            },
-                                                            {
-                                                                value: "right",
-                                                                label: __(
-                                                                    "Right"
-                                                                ),
-                                                                icon: Icons.arrowRight,
-                                                            },
-                                                            {
-                                                                value: "bottom",
-                                                                label: __(
-                                                                    "Bottom"
-                                                                ),
-                                                                icon: Icons.arrowBottom,
-                                                            },
-                                                            {
-                                                                value: "left",
-                                                                label: __(
-                                                                    "Left"
-                                                                ),
-                                                                icon: Icons.arrowLeft,
-                                                            },
+                                                            { value: "top", label: __("Top"), icon: Icons.arrowTop, },
+                                                            { value: "right", label: __("Right"), icon: Icons.arrowRight },
+                                                            { value: "bottom", label: __("Bottom"), icon: Icons.arrowBottom },
+                                                            { value: "left", label: __("Left"), icon: Icons.arrowLeft }
                                                         ]}
                                                         showIcons={true}
                                                         value={effectDir}
-                                                        onChange={(newValue) =>
-                                                            setAttributes({
-                                                                effectDir:
-                                                                    newValue,
-                                                            })
-                                                        }
+                                                        onChange={(newValue) => setAttributes({ effectDir: newValue })}
                                                     />
                                                 )}
                                             </Fragment>
@@ -887,128 +774,72 @@ class edit extends Component {
                                     </InsideTabs>
                                     <PremiumShadow
                                         value={btnShadow}
-                                        onChange={(value) =>
-                                            setAttributes({ btnShadow: value })
-                                        }
+                                        onChange={(value) => setAttributes({ btnShadow: value })}
                                     />
                                     <hr />
                                     <PremiumBorder
-                                        label={__(
-                                            "Border",
-                                            "premium-blocks-for-gutenberg"
-                                        )}
+                                        label={__("Border", "premium-blocks-for-gutenberg")}
                                         value={btnBorder}
-                                        onChange={(value) =>
-                                            setAttributes({ btnBorder: value })
-                                        }
+                                        onChange={(value) => setAttributes({ btnBorder: value })}
                                     />
                                     <hr />
                                     <SpacingControl
-                                        label={__(
-                                            "Margin",
-                                            "premium-blocks-for-gutenberg"
-                                        )}
+                                        label={__("Margin", "premium-blocks-for-gutenberg")}
                                         value={btnMargin}
-                                        onChange={(value) =>
-                                            setAttributes({ btnMargin: value })
-                                        }
+                                        onChange={(value) => setAttributes({ btnMargin: value })}
                                         showUnits={false}
                                         responsive={true}
                                     />
                                     <SpacingControl
-                                        label={__(
-                                            "Padding",
-                                            "premium-blocks-for-gutenberg"
-                                        )}
+                                        label={__("Padding", "premium-blocks-for-gutenberg")}
                                         value={btnPadding}
-                                        onChange={(value) =>
-                                            setAttributes({ btnPadding: value })
-                                        }
+                                        onChange={(value) => setAttributes({ btnPadding: value })}
                                         showUnits={true}
                                         responsive={true}
                                     />
                                 </PanelBody>
                             )}
                             <PanelBody
-                                title={__(
-                                    "Container",
-                                    "premium-blocks-for-gutenberg"
-                                )}
+                                title={__("Container", "premium-blocks-for-gutenberg")}
                                 className="premium-panel-body"
                                 initialOpen={false}
                             >
                                 <PremiumBackgroundControl
                                     value={containerBackground}
-                                    onChange={(value) =>
-                                        setAttributes({
-                                            containerBackground: value,
-                                        })
-                                    }
+                                    onChange={(value) => setAttributes({ containerBackground: value })}
                                 />
                                 <InsideTabs>
                                     <InsideTab tabTitle={__("Normal")}>
                                         <PremiumShadow
                                             value={containerShadow}
-                                            onChange={(value) =>
-                                                setAttributes({
-                                                    containerShadow: value,
-                                                })
-                                            }
+                                            onChange={(value) => setAttributes({ containerShadow: value })}
                                         />
                                     </InsideTab>
                                     <InsideTab tabTitle={__("Hover")}>
                                         <PremiumShadow
-                                            label={__(
-                                                "Hover Box Shadow",
-                                                "premium-blocks-for-gutenberg"
-                                            )}
+                                            label={__("Hover Box Shadow", "premium-blocks-for-gutenberg")}
                                             value={containerHoverShadow}
-                                            onChange={(value) =>
-                                                setAttributes({
-                                                    containerHoverShadow: value,
-                                                })
-                                            }
+                                            onChange={(value) => setAttributes({ containerHoverShadow: value })}
                                         />
                                     </InsideTab>
                                 </InsideTabs>
                                 <PremiumBorder
-                                    label={__(
-                                        "Border",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
+                                    label={__("Border", "premium-blocks-for-gutenberg")}
                                     value={containerBorder}
-                                    onChange={(value) =>
-                                        setAttributes({
-                                            containerBorder: value,
-                                        })
-                                    }
+                                    onChange={(value) => setAttributes({ containerBorder: value })}
                                 />
                                 <hr />
                                 <SpacingControl
-                                    label={__(
-                                        "Margin",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
+                                    label={__("Margin (PX)", "premium-blocks-for-gutenberg")}
                                     value={containerMargin}
-                                    onChange={(value) =>
-                                        setAttributes({
-                                            containerMargin: value,
-                                        })
-                                    }
+                                    onChange={(value) => setAttributes({ containerMargin: value, })}
                                     showUnits={false}
                                     responsive={true}
                                 />
                                 <SpacingControl
-                                    label={__(
-                                        "Padding",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
+                                    label={__("Padding", "premium-blocks-for-gutenberg")}
                                     value={containerPadding}
-                                    onChange={(value) =>
-                                        setAttributes({
-                                            containerPadding: value,
-                                        })
-                                    }
+                                    onChange={(value) => setAttributes({ containerPadding: value })}
                                     showUnits={true}
                                     responsive={true}
                                 />
@@ -1019,34 +850,21 @@ class edit extends Component {
                                 Desktop={hideDesktop}
                                 Tablet={hideTablet}
                                 Mobile={hideMobile}
-                                onChangeDesktop={(value) =>
-                                    setAttributes({
-                                        hideDesktop: value
-                                            ? " premium-desktop-hidden"
-                                            : "",
-                                    })
-                                }
-                                onChangeTablet={(value) =>
-                                    setAttributes({
-                                        hideTablet: value
-                                            ? " premium-tablet-hidden"
-                                            : "",
-                                    })
-                                }
-                                onChangeMobile={(value) =>
-                                    setAttributes({
-                                        hideMobile: value
-                                            ? " premium-mobile-hidden"
-                                            : "",
-                                    })
-                                }
+                                onChangeDesktop={(value) => setAttributes({ hideDesktop: value })}
+                                onChangeTablet={(value) => setAttributes({ hideTablet: value })}
+                                onChangeMobile={(value) => setAttributes({ hideMobile: value })}
                             />
                         </InspectorTab>
                     </InspectorTabs>
                 </InspectorControls>
             ),
+            <style
+                dangerouslySetInnerHTML={{
+                    __html: loadStyles(),
+                }}
+            />,
             <div
-                className={`${mainClasses} ${blockId} premium-icon-box-${iconPos} premium-icon-box-${iconHPos} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                className={`${mainClasses} ${blockId} premium-icon-box-${iconPos} premium-icon-box-${iconHPos} `}
                 style={{
                     textAlign: align[this.props.deviceType],
                     ...borderCss(containerBorder, this.props.deviceType),
@@ -1055,26 +873,7 @@ class edit extends Component {
                     ...gradientBackground(containerBackground),
                 }}
             >
-                <style>
-                    {`
-                     .${blockId}:hover {
-                        box-shadow: ${containerHoverShadow.horizontal}px ${containerHoverShadow.vertical}px ${containerHoverShadow.blur}px ${containerHoverShadow.color} ${containerHoverShadow.position} !important;
-                     }
-                    .${blockId} {
-                        box-shadow: ${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position} !important;
-                     }
-                     .${blockId} .premium-icon-box__btn:hover {
-                        color: ${btnStyles[0].btnHoverColor} !important;
-                        border-color: ${btnHoverBorder} !important;
-                    }
-                    .${blockId} .premium-button__none .premium-icon-box__btn:hover {
-                        background-color: ${btnStyles[0].btnHoverBack} !important;
-                    }
-                   .${blockId} .premium-button__slide .premium-button::before {
-                        background-color: ${btnStyles[0].btnHoverBack} !important;
-                    }
-                 `}
-                </style>
+
                 {iconChecked && (
                     <div
                         className={`premium-icon-box__icon_wrap premium-icon-box__icon_${iconVPos}`}
@@ -1083,28 +882,24 @@ class edit extends Component {
                             <Fragment>
                                 {iconType === "fa" &&
                                     1 != FontAwesomeEnabled && (
-                                        <p
-                                            className={`premium-icon-box__alert`}
-                                        >
-                                            {__(
-                                                "Please Enable Font Awesome Icons from Plugin settings"
-                                            )}
+                                        <p className={`premium-icon-box__alert`}>
+                                            {__("Please Enable Font Awesome Icons from Plugin settings")}
                                         </p>
                                     )}
                                 {(iconType === "dash" ||
                                     1 == FontAwesomeEnabled) && (
-                                    <i
-                                        className={`${selectedIcon} premium-icon-box__icon premium-icon__${hoverEffect}`}
-                                        style={{
-                                            color: iconColor,
-                                            backgroundColor: iconBackColor,
-                                            fontSize:
-                                                (iconSize[
-                                                    this.props.deviceType
-                                                ] || 40) + iconSize.unit,
-                                        }}
-                                    />
-                                )}
+                                        <i
+                                            className={`${selectedIcon} premium-icon-box__icon premium-icon__${hoverEffect}`}
+                                            style={{
+                                                color: iconColor,
+                                                backgroundColor: iconBackColor,
+                                                fontSize:
+                                                    (iconSize[
+                                                        this.props.deviceType
+                                                    ] || 40) + iconSize.unit,
+                                            }}
+                                        />
+                                    )}
                             </Fragment>
                         )}
                         {"image" === iconImage && iconImgUrl && (
@@ -1130,31 +925,21 @@ class edit extends Component {
                         <div
                             className={`premium-icon-box__title_wrap`}
                             style={{
-                                ...marginCss(
-                                    titleMargin,
-                                    this.props.deviceType
-                                ),
+                                ...marginCss(titleMargin, this.props.deviceType),
                             }}
                         >
                             <RichText
                                 tagName={titleTag.toLowerCase()}
                                 className={`premium-icon-box__title`}
-                                onChange={(newText) =>
-                                    setAttributes({ titleText: newText })
-                                }
+                                onChange={(newText) => setAttributes({ titleText: newText })}
                                 placeholder={__("Awesome Title")}
                                 value={titleText}
                                 style={{
-                                    ...typographyCss(
-                                        titleTypography,
-                                        this.props.deviceType
-                                    ),
+                                    ...typographyCss(titleTypography, this.props.deviceType),
                                     color: titleStyles[0].titleColor,
-                                    textShadow: `${
-                                        titleShadow.horizontal || 0
-                                    }px ${titleShadow.vertical || 0}px ${
-                                        titleShadow.blur || 0
-                                    }px ${titleShadow.color}`,
+                                    textShadow: `${titleShadow.horizontal || 0
+                                        }px ${titleShadow.vertical || 0}px ${titleShadow.blur || 0
+                                        }px ${titleShadow.color}`,
                                 }}
                                 keepPlaceholderOnFocus
                             />
@@ -1176,10 +961,7 @@ class edit extends Component {
                                     setAttributes({ descText: newText })
                                 }
                                 style={{
-                                    ...typographyCss(
-                                        descTypography,
-                                        this.props.deviceType
-                                    ),
+                                    ...typographyCss(descTypography, this.props.deviceType),
                                     color: descStyles[0].descColor,
                                 }}
                                 keepPlaceholderOnFocus
@@ -1196,33 +978,19 @@ class edit extends Component {
                             <RichText
                                 tagName="a"
                                 className={`premium-icon-box__btn premium-button`}
-                                onChange={(newText) =>
-                                    setAttributes({ btnText: newText })
-                                }
+                                onChange={(newText) => setAttributes({ btnText: newText })}
                                 placeholder={__("Click Here")}
                                 value={btnText}
                                 style={{
-                                    ...typographyCss(
-                                        btnTypography,
-                                        this.props.deviceType
-                                    ),
-                                    ...borderCss(
-                                        btnBorder,
-                                        this.props.deviceType
-                                    ),
-                                    ...paddingCss(
-                                        btnPadding,
-                                        this.props.deviceType
-                                    ),
+                                    ...typographyCss(btnTypography, this.props.deviceType),
+                                    ...borderCss(btnBorder, this.props.deviceType),
+                                    ...paddingCss(btnPadding, this.props.deviceType),
                                     color: btnStyles[0].btnColor,
                                     backgroundColor: btnStyles[0].btnBack,
-                                    boxShadow: `${
-                                        btnShadow.horizontal || 0
-                                    }px ${btnShadow.vertical || 0}px ${
-                                        btnShadow.blur || 0
-                                    }px ${btnShadow.color} ${
-                                        btnShadow.position
-                                    }`,
+                                    boxShadow: `${btnShadow.horizontal || 0
+                                        }px ${btnShadow.vertical || 0}px ${btnShadow.blur || 0
+                                        }px ${btnShadow.color} ${btnShadow.position
+                                        }`,
                                 }}
                                 keepPlaceholderOnFocus
                             />

@@ -457,6 +457,48 @@ class Premium_Blocks_css {
 		return $number;
 	}
 
+    	/**
+	 * Generates the size output.
+	 *
+	 * @param array $size an array of size settings.
+	 * @return string
+	 */
+	public function render_size( $size ) {
+		if ( empty( $size ) ) {
+			return false;
+		}
+		if ( ! is_array( $size ) ) {
+			return false;
+		}
+		$size_number = ( isset( $size['size'] ) && ! empty( $size['size'] ) ? $size['size'] : '0' );
+		$size_unit   = ( isset( $size['unit'] ) && ! empty( $size['unit'] ) ? $size['unit'] : 'em' );
+
+		$size_string = $size_number . $size_unit;
+		return $size_string;
+	}
+
+    /**
+	 * Generates the measure output.
+	 *
+	 * @param array $measure an array of font settings.
+	 * @return string
+	 */
+	public function render_spacing( $measure, $unit = 'px' ) {
+
+		if ( empty( $measure ) ) {
+			return false;
+		}
+	
+		if ( ! is_numeric( $measure['top'] ) && ! is_numeric( $measure['right'] ) && ! is_numeric( $measure['bottom'] ) && ! is_numeric( $measure['left'] ) ) {
+			return false;
+		}
+
+		$size_string = ( is_numeric( $measure['top'] ) ? $measure['top'] : '0' ) . $unit . ' ' . ( is_numeric( $measure['right'] ) ? $measure['right'] : '0' ) . $unit . ' ' . ( is_numeric( $measure['bottom'] ) ? $measure['bottom'] : '0' ) . $unit . ' ' . ( is_numeric( $measure['left'] ) ? $measure['left'] : '0' ) . $unit;
+
+		return $size_string;
+
+	}
+
 
 	/**
 	 * Generates the size output.
