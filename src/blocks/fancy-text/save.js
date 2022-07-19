@@ -1,8 +1,8 @@
 import classnames from "classnames"
-import { filterJsCss } from '../../components/HelperFunction';
+import { filterJsCss, typographyCss } from '../../components/HelperFunction';
 
 export default function save(props) {
-    const { className } = props
+    const { attributes, className } = props
 
     const {
         blockId,
@@ -30,8 +30,8 @@ export default function save(props) {
         prefixTypography,
         fancyTextTypography,
         fancyTextShadow
-    } = props.attributes;
-    const mainClasses = classnames(className, 'premium-fancy-text');
+    } = attributes;
+    const mainClasses = classnames(className, "");
     return (
         <div
         className={`${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`}
@@ -59,13 +59,14 @@ export default function save(props) {
                         style={filterJsCss({
                             color: PreStyles[0].textColor,
                             backgroundColor: PreStyles[0].textBGColor,
-                            fontStyle: prefixTypography.fontStyle,
-                            fontFamily: prefixTypography.fontFamily,
-                            fontWeight: prefixTypography.fontWeight,
-                            letterSpacing: prefixTypography.letterSpacing,
-                            textDecoration: prefixTypography.textDecoration,
-                            textTransform: prefixTypography.textTransform,
-                            lineHeight: `${prefixTypography.lineHeight}px`,
+                            // fontStyle: prefixTypography.fontStyle,
+                            // fontFamily: prefixTypography.fontFamily,
+                            // fontWeight: prefixTypography.fontWeight,
+                            // textDecoration: prefixTypography.textDecoration,
+                            // textTransform: prefixTypography.textTransform,
+                            // lineHeight: `${prefixTypography.lineHeight}px`,
+                            // letterSpacing: prefixTypography.letterSpacing,
+                            //...typographyCss(prefixTypography, props.deviceType),
                         })}
                     >
                         {prefix}{" "}
@@ -74,15 +75,14 @@ export default function save(props) {
                         className={`premium-fancy-text-title premium-fancy-text-title-type`}
                         style={filterJsCss({
                             color: fancyStyles[0].fancyTextColor,
-                            backgroundColor: `${fancyStyles[0].fancyTextBGColor}`,
-                            //textShadow: `${fancyTextShadow.horizontal}px ${fancyTextShadow.vertical}px ${fancyTextShadow.blur}px ${fancyTextShadow.color}`,
-                            fontStyle: fancyTextTypography.fontStyle,
+                            backgroundColor: fancyStyles[0].fancyTextBGColor,
                             fontFamily: fancyTextTypography.fontFamily,
                             fontWeight: fancyTextTypography.fontWeight,
-                            letterSpacing: fancyTextTypography.letterSpacing,
                             textDecoration: fancyTextTypography.textDecoration,
                             textTransform: fancyTextTypography.textTransform,
                             lineHeight: `${fancyTextTypography.lineHeight}px`,
+                            textShadow: `${fancyTextShadow.horizontal}px ${fancyTextShadow.vertical}px ${fancyTextShadow.blur}px ${fancyTextShadow.color}`,
+
                         })}
                         ref={(el) => {
                             this.el = el;
@@ -94,13 +94,14 @@ export default function save(props) {
                         style={filterJsCss({
                             color: PreStyles[0].textColor,
                             backgroundColor: PreStyles[0].textBGColor,
-                            fontStyle: prefixTypography.fontStyle,
-                            fontFamily: prefixTypography.fontFamily,
-                            fontWeight: prefixTypography.fontWeight,
-                            letterSpacing: prefixTypography.letterSpacing,
-                            textDecoration: prefixTypography.textDecoration,
-                            textTransform: prefixTypography.textTransform,
-                            lineHeight: `${prefixTypography.lineHeight}px`,
+                            // fontStyle: prefixTypography.fontStyle,
+                            // fontFamily: prefixTypography.fontFamily,
+                            // fontWeight: prefixTypography.fontWeight,
+                            // letterSpacing: prefixTypography.letterSpacing,
+                            // textDecoration: prefixTypography.textDecoration,
+                            // textTransform: prefixTypography.textTransform,
+                            // lineHeight: `${prefixTypography.lineHeight}px`,
+                            //...typographyCss(prefixTypography, props.deviceType),
                         })}
                     >
                         {" "}
@@ -125,13 +126,13 @@ export default function save(props) {
                         style={filterJsCss({
                             color: PreStyles[0].textColor,
                             backgroundColor: PreStyles[0].textBGColor,
-                            fontStyle: prefixTypography.fontStyle,
-                            fontFamily: prefixTypography.fontFamily,
-                            fontWeight: prefixTypography.fontWeight,
-                            letterSpacing: prefixTypography.letterSpacing,
-                            textDecoration: prefixTypography.textDecoration,
-                            textTransform: prefixTypography.textTransform,
-                            lineHeight: `${prefixTypography.lineHeight}px`,
+                            // fontStyle: prefixTypography.fontStyle,
+                            // fontFamily: prefixTypography.fontFamily,
+                            // fontWeight: prefixTypography.fontWeight,
+                            // letterSpacing: prefixTypography.letterSpacing,
+                            // textDecoration: prefixTypography.textDecoration,
+                            // textTransform: prefixTypography.textTransform,
+                            // lineHeight: `${prefixTypography.lineHeight}px`,
                         })}
                     >
                         {prefix}{" "}
@@ -142,13 +143,14 @@ export default function save(props) {
                             color: fancyStyles[0].fancyTextColor,
                             backgroundColor: `${fancyStyles[0].fancyTextBGColor}`,
                             //textShadow: `${fancyTextShadow.horizontal}px ${fancyTextShadow.vertical}px ${fancyTextShadow.blur}px ${fancyTextShadow.color}`,
-                            fontStyle: fancyTextTypography.fontStyle,
-                            fontFamily: fancyTextTypography.fontFamily,
-                            fontWeight: fancyTextTypography.fontWeight,
-                            letterSpacing: fancyTextTypography.letterSpacing,
-                            textDecoration: fancyTextTypography.textDecoration,
-                            textTransform: fancyTextTypography.textTransform,
-                            lineHeight: `${fancyTextTypography.lineHeight}px`,
+                            // fontStyle: fancyTextTypography.fontStyle,
+                            // fontFamily: fancyTextTypography.fontFamily,
+                            // fontWeight: fancyTextTypography.fontWeight,
+                            // letterSpacing: fancyTextTypography.letterSpacing,
+                            // textDecoration: fancyTextTypography.textDecoration,
+                            // textTransform: fancyTextTypography.textTransform,
+                            // lineHeight: `${fancyTextTypography.lineHeight}px`,
+                            //...typographyCss(fancyTextTypography, props.deviceType),
                         }}
                     >
                         <ul
@@ -163,13 +165,14 @@ export default function save(props) {
                         style={filterJsCss({
                             color: PreStyles[0].textColor,
                             backgroundColor: PreStyles[0].textBGColor,
-                            fontStyle: prefixTypography.fontStyle,
-                            fontFamily: prefixTypography.fontFamily,
-                            fontWeight: prefixTypography.fontWeight,
-                            letterSpacing: prefixTypography.letterSpacing,
-                            textDecoration: prefixTypography.textDecoration,
-                            textTransform: prefixTypography.textTransform,
-                            lineHeight: `${prefixTypography.lineHeight}px`
+                            // fontStyle: prefixTypography.fontStyle,
+                            // fontFamily: prefixTypography.fontFamily,
+                            // fontWeight: prefixTypography.fontWeight,
+                            // letterSpacing: prefixTypography.letterSpacing,
+                            // textDecoration: prefixTypography.textDecoration,
+                            // textTransform: prefixTypography.textTransform,
+                            // lineHeight: `${prefixTypography.lineHeight}px`
+                            //...typographyCss(prefixTypography, props.deviceType),
                         })}
                     >
                         {" "}

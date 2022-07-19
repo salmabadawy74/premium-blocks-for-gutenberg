@@ -482,7 +482,7 @@ class Edit extends Component {
                             colorDefault={''}
                             onColorChange={newvalue => saveFancyStyle({ fancyTextBGColor: newvalue })}
                         />
-                        {/* <PremiumShadow
+                         <PremiumShadow
                             label={__(
                                 "Text Shadow",
                                 "premium-blocks-for-gutenberg"
@@ -492,7 +492,7 @@ class Edit extends Component {
                             onChange={(value) =>
                                 setAttributes({ fancyTextShadow: value })
                             }
-                        /> */}
+                        />
                         {effect == "typing" && cursorShow && (
                             <AdvancedPopColorControl
                                 label={__("Cursor Color", 'premium-blocks-for-gutenberg')}
@@ -577,6 +577,8 @@ class Edit extends Component {
                                     fancyTextTypography,
                                     this.props.deviceType
                                 ),
+                                textShadow: `${fancyTextShadow.horizontal}px ${fancyTextShadow.vertical}px ${fancyTextShadow.blur}px ${fancyTextShadow.color}`,
+
                             }}
                         >
                             {" "}

@@ -394,30 +394,107 @@ const v8Attributes = {
     }
 }
 const deprecated_fancyAttributes2 = Object.assign(deprecated_fancyAttributes, v8Attributes)
+
+let newAttributes2 = {
+    prefixTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '400',
+            'fontStyle': '',
+
+            'letterSpacing': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            },
+            'fontFamily': 'Default',
+            'lineHeight': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            },
+            'textDecoration': '',
+            'textTransform': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
+    },
+    fancyTextTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '400',
+            'fontStyle': '',
+
+            'letterSpacing': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            },
+            'fontFamily': 'Default',
+            'lineHeight': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            },
+            'textDecoration': '',
+            'textTransform': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            }
+        }
+    },
+    fancyTextShadow: {
+        type: "object",
+        default: {
+            'color': "undefined",
+            'blur': '10',
+            'horizontal': '0',
+            'vertical': '0'
+        }
+    }
+
+}
 const deprecated = [
     {
-        attributes: deprecated_fancyAttributes2,
+        attributes: Object.assign(deprecated_fancyAttributes2, newAttributes2),
+
         isEligible() {
             return true;
         },
         migrate: attributes => {
             let newAttributes = {
-                blockId: attributes.block_id ? "premium-fancy-text-" + generateBlockId(attributes.block_id) : '',
-                // fancyTextTypography: {
-                //     "fontWeight": attributes?.fancyStyles[0].fancyTextWeight || '',
-                //     'fontStyle': '',
-                //     'textTransform': '',
-                //     'letterSpacing': '',
-                //     'fontFamily': '',
-                //     'lineHeight': '',
-                //     'textDecoration': '',
-                //     'fontSize': {
-                //         'Desktop': attributes?.fancyStyles[0].fancyTextfontSize || '',
-                //         "Tablet": attributes?.fancyStyles[0].fancyTextfontSizeTablet || '',
-                //         "Mobile": attributes?.fancyStyles[0].fancyTextfontSizeMobile || '',
-                //         "unit": 'px'
-                //     }
-                // },
+                blockId: attributes.block_id ? generateBlockId(attributes.block_id) : '',
+                fancyTextTypography: {
+                    'fontWeight': attributes.fancyStyles[0].fancyTextWeight,
+                    'fontStyle': attributes.fancyStyles[0].fancyTextStyle,
+                    'textTransform': attributes.fancyStyles[0].fancyTextUpper,
+                    'letterSpacing': {
+                        'Desktop': attributes.fancyStyles[0].fancyTextLetter,
+                        "Tablet": attributes.fancyStyles[0].fancyTextLetter,
+                        "Mobile": attributes.fancyStyles[0].fancyTextLetter,
+                        "unit": 'px'
+                        },
+                    'fontFamily': '',
+                    'lineHeight': '',
+                    'textDecoration': '',
+                    'fontSize': {
+                        'Desktop': attributes.fancyStyles[0].fancyTextfontSize,
+                        "Tablet": attributes.fancyStyles[0].fancyTextfontSizeTablet,
+                        "Mobile": attributes.fancyStyles[0].fancyTextfontSizeMobile,
+                        "unit": 'px',
+                    }
+                }
             }
             return Object.assign(attributes, newAttributes)
         },
@@ -453,144 +530,144 @@ const deprecated = [
         
             return (
                 <div
-                    className={classnames(className, `premium-block-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`)}
+            className={classnames(className, `premium-block-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`)}
+            style={{
+                textAlign: align,
+            }}
+        >
+
+            {effect === "typing" ? (
+                <div
+                    id={`premium-fancy-text-${block_id}`}
+                    className={`premium-fancy-text`}
                     style={{
                         textAlign: align,
                     }}
+                    data-effect={`${effect}`}
+                    data-strings={`${repeaterFancyText.map(
+                        (item, index) => {
+                            return item.title;
+                        }
+                    )}`}
+                    data-typespeed={`${typeSpeed}`}
+                    data-backspeed={`${backSpeed}`}
+                    data-startdelay={`${startdelay}`}
+                    data-backdelay={`${backdelay}`}
+                    data-loop={`${loop}`}
+                    data-cursorshow={`${cursorShow}`}
+                    data-cursormark={`${cursorMark}`}
                 >
-        
-                    {effect === "typing" ? (
-                        <div
-                            id={`premium-fancy-text-${block_id}`}
-                            className={`premium-fancy-text`}
-                            style={{
-                                textAlign: align,
-                            }}
-                            data-effect={`${effect}`}
-                            data-strings={`${repeaterFancyText.map(
-                                (item, index) => {
-                                    return item.title;
-                                }
-                            )}`}
-                            data-typespeed={`${typeSpeed}`}
-                            data-backspeed={`${backSpeed}`}
-                            data-startdelay={`${startdelay}`}
-                            data-backdelay={`${backdelay}`}
-                            data-loop={`${loop}`}
-                            data-cursorshow={`${cursorShow}`}
-                            data-cursormark={`${cursorMark}`}
+                    <span className={`premium-fancy-text-prefix-text`}
+                        style={{
+                            color: PreStyles[0].textColor,
+                            fontWeight: PreStyles[0].textWeight,
+                            letterSpacing: `${PreStyles[0].textLetter}px`,
+                            textTransform: `${PreStyles[0].textUpper ? "uppercase" : "none"}`,
+                            fontStyle: PreStyles[0].textStyle,
+                            backgroundColor: PreStyles[0].textBGColor
+                        }}
+                    >
+                        {prefix}{" "}
+                    </span>
+                    <span
+                        className={`premium-fancy-text-title`}
+                        style={{
+                            color: fancyStyles[0].fancyTextColor,
+                            fontWeight: fancyStyles[0].fancyTextWeight,
+                            letterSpacing: `${fancyStyles[0].fancyTextLetter}px`,
+                            textTransform: `${fancyStyles[0].fancyTextUpper ? "uppercase" : "none"}`,
+                            fontStyle: `${fancyStyles[0].fancyTextStyle}`,
+                            backgroundColor: `${fancyStyles[0].fancyTextBGColor}`,
+                            textShadow: `${fancyStyles[0].shadowHorizontal}px ${fancyStyles[0].shadowVertical}px ${fancyStyles[0].shadowBlur}px ${fancyStyles[0].shadowColor}`
+                        }}
+                        ref={(el) => {
+                            this.el = el;
+                        }}
+                    >
+                        {" "}
+                    </span>
+                    <span className={`premium-fancy-text-suffix-text`}
+                        style={{
+                            color: PreStyles[0].textColor,
+                            fontWeight: PreStyles[0].textWeight,
+                            letterSpacing: `${PreStyles[0].textLetter}px`,
+                            textTransform: `${PreStyles[0].textUpper ? "uppercase" : "none"}`,
+                            fontStyle: PreStyles[0].textStyle,
+                            backgroundColor: PreStyles[0].textBGColor
+                        }}
+                    >
+                        {" "}
+                        {suffix}
+                    </span>
+                </div>
+            ) : (
+                <div
+                    id={`premium-fancy-text-${block_id}`}
+                    className={`premium-fancy-text premium-fancy-slide`}
+                    style={{
+                        textAlign: align,
+
+                    }}
+                    data-effect={`${effect}`}
+                    data-strings={`${repeaterFancyText.map(
+                        (item, index) => {
+                            return item.title;
+                        }
+                    )}`}
+                    data-animationspeed={`${animationSpeed}`}
+                    data-pausetime={`${pauseTime}`}
+                    data-hoverpause={`${hoverPause}`}
+                >
+                    <span className={`premium-fancy-text-prefix-text`}
+                        style={{
+                            color: PreStyles[0].textColor,
+                            fontWeight: PreStyles[0].textWeight,
+                            letterSpacing: `${PreStyles[0].textLetter}px`,
+                            textTransform: `${PreStyles[0].textUpper ? "uppercase" : "none"}`,
+                            fontStyle: PreStyles[0].textStyle,
+                            backgroundColor: PreStyles[0].textBGColor
+                        }}
+                    >
+                        {prefix}{" "}
+                    </span>
+                    <div
+                        className={`premium-fancy-text-title-slide`}
+                        style={{
+                            textAlign: fancyalign,
+                            color: fancyStyles[0].fancyTextColor,
+                            fontWeight: fancyStyles[0].fancyTextWeight,
+                            letterSpacing: `${fancyStyles[0].fancyTextLetter}px`,
+                            textTransform: `${fancyStyles[0].fancyTextUpper ? "uppercase" : "none"}`,
+                            fontStyle: `${fancyStyles[0].fancyTextStyle}`,
+                            backgroundColor: `${fancyStyles[0].fancyTextBGColor}`,
+                            textShadow: `${fancyStyles[0].shadowHorizontal}px ${fancyStyles[0].shadowVertical}px ${fancyStyles[0].shadowBlur}px ${fancyStyles[0].shadowColor}`
+                        }}
+                    >
+                        <ul
+                            className={`premium-fancy-text-title-slide-list`}
                         >
-                            <span className={`premium-fancy-text-prefix-text`}
-                                style={{
-                                    color: PreStyles[0].textColor,
-                                    fontWeight: PreStyles[0].textWeight,
-                                    letterSpacing: `${PreStyles[0].textLetter}px`,
-                                    textTransform: `${PreStyles[0].textUpper ? "uppercase" : "none"}`,
-                                    fontStyle: PreStyles[0].textStyle,
-                                    backgroundColor: PreStyles[0].textBGColor
-                                }}
-                            >
-                                {prefix}{" "}
-                            </span>
-                            <span
-                                className={`premium-fancy-text-title`}
-                                style={{
-                                    color: fancyStyles[0].fancyTextColor,
-                                    fontWeight: fancyStyles[0].fancyTextWeight,
-                                    letterSpacing: `${fancyStyles[0].fancyTextLetter}px`,
-                                    textTransform: `${fancyStyles[0].fancyTextUpper ? "uppercase" : "none"}`,
-                                    fontStyle: `${fancyStyles[0].fancyTextStyle}`,
-                                    backgroundColor: `${fancyStyles[0].fancyTextBGColor}`,
-                                    textShadow: `${fancyStyles[0].shadowHorizontal}px ${fancyStyles[0].shadowVertical}px ${fancyStyles[0].shadowBlur}px ${fancyStyles[0].shadowColor}`
-                                }}
-                                ref={(el) => {
-                                    this.el = el;
-                                }}
-                            >
-                                {" "}
-                            </span>
-                            <span className={`premium-fancy-text-suffix-text`}
-                                style={{
-                                    color: PreStyles[0].textColor,
-                                    fontWeight: PreStyles[0].textWeight,
-                                    letterSpacing: `${PreStyles[0].textLetter}px`,
-                                    textTransform: `${PreStyles[0].textUpper ? "uppercase" : "none"}`,
-                                    fontStyle: PreStyles[0].textStyle,
-                                    backgroundColor: PreStyles[0].textBGColor
-                                }}
-                            >
-                                {" "}
-                                {suffix}
-                            </span>
-                        </div>
-                    ) : (
-                        <div
-                            id={`premium-fancy-text-${block_id}`}
-                            className={`premium-fancy-text premium-fancy-slide`}
-                            style={{
-                                textAlign: align,
-        
-                            }}
-                            data-effect={`${effect}`}
-                            data-strings={`${repeaterFancyText.map(
-                                (item, index) => {
-                                    return item.title;
-                                }
-                            )}`}
-                            data-animationspeed={`${animationSpeed}`}
-                            data-pausetime={`${pauseTime}`}
-                            data-hoverpause={`${hoverPause}`}
-                        >
-                            <span className={`premium-fancy-text-prefix-text`}
-                                style={{
-                                    color: PreStyles[0].textColor,
-                                    fontWeight: PreStyles[0].textWeight,
-                                    letterSpacing: `${PreStyles[0].textLetter}px`,
-                                    textTransform: `${PreStyles[0].textUpper ? "uppercase" : "none"}`,
-                                    fontStyle: PreStyles[0].textStyle,
-                                    backgroundColor: PreStyles[0].textBGColor
-                                }}
-                            >
-                                {prefix}{" "}
-                            </span>
-                            <div
-                                className={`premium-fancy-text-title-slide`}
-                                style={{
-                                    textAlign: fancyalign,
-                                    color: fancyStyles[0].fancyTextColor,
-                                    fontWeight: fancyStyles[0].fancyTextWeight,
-                                    letterSpacing: `${fancyStyles[0].fancyTextLetter}px`,
-                                    textTransform: `${fancyStyles[0].fancyTextUpper ? "uppercase" : "none"}`,
-                                    fontStyle: `${fancyStyles[0].fancyTextStyle}`,
-                                    backgroundColor: `${fancyStyles[0].fancyTextBGColor}`,
-                                    textShadow: `${fancyStyles[0].shadowHorizontal}px ${fancyStyles[0].shadowVertical}px ${fancyStyles[0].shadowBlur}px ${fancyStyles[0].shadowColor}`
-                                }}
-                            >
-                                <ul
-                                    className={`premium-fancy-text-title-slide-list`}
-                                >
-                                    {repeaterFancyText.map((item, index) => {
-                                        return <li>{item.title}</li>;
-                                    })}
-                                </ul>
-                            </div>
-                            <span className={`premium-fancy-text-suffix-text`}
-                                style={{
-                                    color: PreStyles[0].textColor,
-                                    fontWeight: PreStyles[0].textWeight,
-                                    letterSpacing: `${PreStyles[0].textLetter}px`,
-                                    textTransform: `${PreStyles[0].textUpper ? "uppercase" : "none"}`,
-                                    fontStyle: PreStyles[0].textStyle,
-                                    backgroundColor: PreStyles[0].textBGColor
-                                }}
-                            >
-                                {" "}
-                                {suffix}
-                            </span>
-                        </div>
-                    )
-                    }
-                </div >
+                            {repeaterFancyText.map((item, index) => {
+                                return <li>{item.title}</li>;
+                            })}
+                        </ul>
+                    </div>
+                    <span className={`premium-fancy-text-suffix-text`}
+                        style={{
+                            color: PreStyles[0].textColor,
+                            fontWeight: PreStyles[0].textWeight,
+                            letterSpacing: `${PreStyles[0].textLetter}px`,
+                            textTransform: `${PreStyles[0].textUpper ? "uppercase" : "none"}`,
+                            fontStyle: PreStyles[0].textStyle,
+                            backgroundColor: PreStyles[0].textBGColor
+                        }}
+                    >
+                        {" "}
+                        {suffix}
+                    </span>
+                </div>
+            )
+            }
+        </div >
             )
         
     

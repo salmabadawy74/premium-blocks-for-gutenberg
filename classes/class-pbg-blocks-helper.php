@@ -925,7 +925,7 @@ class PBG_Blocks_Helper {
 	public function get_fancy_text_css( $attributes, $content ) {
 
 		if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
-			$unique_id = "#premium-pricing-table-{$attributes['block_id']}";
+			$unique_id = "{$attributes['block_id']}";
 		}
 
 		if ( isset( $attributes['blockId'] ) && ! empty( $attributes['blockId'] ) ) {
@@ -962,7 +962,7 @@ class PBG_Blocks_Helper {
 			$css = $this->get_fancy_text_css_style( $attributes, $unique_id );
 
 			if ( ! empty( $css ) ) {
-				if ( $this->should_render_inline( 'accordion', $unique_id ) ) {
+				if ( $this->should_render_inline( 'fancy-text', $unique_id ) ) {
 					$content = '<style id="' . $style_id . '">' . $css . '</style>' . $content;
 				} else {
 					$this->render_inline_css( $css, $style_id, true );
@@ -995,6 +995,8 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['fancyTextTypography'] ) ) {
 			$fancy_typography = $attr['fancyTextTypography'];
 			$fancy_size       = $fancy_typography['fontSize'];
+			$fancy_line       = $fancy_typography['lineHeight'];
+            $fancy_space      = $fancy_typography['letterSpacing'];
 
 			$this->add_gfont(
 				array(
@@ -1005,7 +1007,9 @@ class PBG_Blocks_Helper {
 			
 			$css->set_selector( $unique_id . ' .premium-fancy-text-title' );
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $fancy_size, 'Desktop', $fancy_size['unit'] ) );
-			
+            $css->add_property( 'line-height', $css->get_responsive_size_value( $fancy_line, 'Desktop', 'px' ) );
+            $css->add_property( 'letter-spacing', $css->get_responsive_size_value( $fancy_space, 'Desktop', 'px' ) );
+		
 		}
 		
 		// if ( isset( $attr['fancyalign'] ) ) {
@@ -1026,7 +1030,7 @@ class PBG_Blocks_Helper {
 			);
 			
 			$css->set_selector( '.' . $unique_id . ' .premium-fancy-text-suffix-prefix' );
-			$css->add_property( 'font-size', $css->get_responsive_size_value( $fancy_size, 'Desktop', $fancy_size['unit'] ) );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $prefix_size, 'Desktop', $prefix_size['unit'] ) );
 		}
 
 		$css->start_media_query( $media_query['tablet'] );
@@ -1035,6 +1039,8 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['fancyTextTypography'] ) ) {
 			$fancy_typography = $attr['fancyTextTypography'];
 			$fancy_size       = $fancy_typography['fontSize'];
+			$fancy_line       = $fancy_typography['lineHeight'];
+            $fancy_space      = $fancy_typography['letterSpacing'];
 
 			$this->add_gfont(
 				array(
@@ -1045,6 +1051,9 @@ class PBG_Blocks_Helper {
 			
 			$css->set_selector( $unique_id . ' .premium-fancy-text-title' );
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $fancy_size, 'Tablet', $fancy_size['unit'] ) );
+			$css->add_property( 'line-height', $css->get_responsive_size_value( $fancy_line, 'Tablet', 'px' ) );
+            $css->add_property( 'letter-spacing', $css->get_responsive_size_value( $fancy_space, 'Tablet', 'px' ) );
+
 		}
 		// Prefix and Suffix Style
 		if ( isset( $attr['prefixTypography'] ) ) {
@@ -1073,6 +1082,8 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['fancyTextTypography'] ) ) {
 			$fancy_typography = $attr['fancyTextTypography'];
 			$fancy_size       = $fancy_typography['fontSize'];
+			$fancy_line       = $fancy_typography['lineHeight'];
+            $fancy_space      = $fancy_typography['letterSpacing'];
 
 			$this->add_gfont(
 				array(
@@ -1081,8 +1092,10 @@ class PBG_Blocks_Helper {
 				)
 			);
 			
-			$css->set_selector( '.' . $unique_id . ' .premium-fancy-text-title' );
+			$css->set_selector( $unique_id . ' .premium-fancy-text-title' );
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $fancy_size, 'Mobile', $fancy_size['unit'] ) );
+            $css->add_property( 'line-height', $css->get_responsive_size_value( $fancy_line, 'Mobile', 'px' ) );
+            $css->add_property( 'letter-spacing', $css->get_responsive_size_value( $fancy_space, 'Mobile', 'px' ) );
 		}
 		// Prefix and Suffix Style
 		if ( isset( $attr['prefixTypography'] ) ) {

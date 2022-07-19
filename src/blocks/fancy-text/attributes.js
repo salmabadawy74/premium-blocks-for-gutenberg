@@ -132,26 +132,27 @@ const attributes = {
         type: "object",
         default: {
             "fontWeight": '400',
-            "fontStyle": "",
-            "letterSpacing": {
-                "Desktop": "",
-                "Tablet": "",
-                "Mobile": "",
+            'fontStyle': '',
+
+            'letterSpacing': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
                 "unit": 'px'
             },
-            "fontFamily": 'Default',
-            "lineHeight": {
-                "Desktop": "",
-                "Tablet": "",
-                "Mobile": "",
+            'fontFamily': 'Default',
+            'lineHeight': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
                 "unit": 'px'
             },
-            "textDecoration": "",
-            "textTransform": "",
-            "fontSize": {
-                'Desktop': "",
-                "Tablet": "",
-                "Mobile": "",
+            'textDecoration': '',
+            'textTransform': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
                 "unit": 'px'
             }
         }
@@ -160,26 +161,27 @@ const attributes = {
         type: "object",
         default: {
             "fontWeight": '400',
-            "fontStyle": "",
-            "letterSpacing": {
-                "Desktop": "",
-                "Tablet": "",
-                "Mobile": "",
+            'fontStyle': '',
+
+            'letterSpacing': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
                 "unit": 'px'
             },
-            "fontFamily": 'Default',
-            "lineHeight": {
-                "Desktop": "",
-                "Tablet": "",
-                "Mobile": "",
+            'fontFamily': 'Default',
+            'lineHeight': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
                 "unit": 'px'
             },
-            "textDecoration": "",
-            "textTransform": "",
-            "fontSize": {
-                'Desktop': "",
-                "Tablet": "",
-                "Mobile": "",
+            'textDecoration': '',
+            'textTransform': '',
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
                 "unit": 'px'
             }
         }
@@ -187,11 +189,10 @@ const attributes = {
     fancyTextShadow: {
         type: "object",
         default: {
-            'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': '',
-            'position': ' '
+            'color': "undefined",
+            'blur': '10',
+            'horizontal': '0',
+            'vertical': '0'
         }
     },
 }
