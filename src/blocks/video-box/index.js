@@ -50,7 +50,7 @@ registerBlockType("premium/video-box", {
     icon: PBG_Block_Icons.video_box,
     category: "premium-blocks",
     attributes: videoBoxAttrs,
-    keywords: [__("video")],
+    keywords: [__("video", 'premium-blocks-for-gutenberg')],
     supports: {
         inserter: videoBox
     },

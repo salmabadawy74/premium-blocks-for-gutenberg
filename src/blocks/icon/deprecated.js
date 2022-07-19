@@ -433,7 +433,7 @@ const deprecatedContent = [
             let newAttributes = {
                 blockId: '',
                 classMigrate: '',
-                align: {
+                iconAlign: {
                     "Desktop": attributes.align,
                     "Tablet": attributes.align,
                     "Mobile": attributes.align,
@@ -650,7 +650,6 @@ const deprecatedContent = [
             const {
                 iconBorder,
                 wrapBorder,
-                iconType,
                 selectedIcon,
                 align,
                 hoverEffect,

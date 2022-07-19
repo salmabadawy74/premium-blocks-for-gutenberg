@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import { gradientBackground } from '../../components/HelperFunction'
+import { gradientBackground, filterJsCss, generateCss } from '../../components/HelperFunction'
 
 const save = props => {
 
@@ -9,7 +9,6 @@ const save = props => {
         blockId,
         iconBorder,
         selectedIcon,
-        align,
         hoverEffect,
         iconStyles,
         urlCheck,
@@ -21,35 +20,41 @@ const save = props => {
         containerBorder,
         containerBackground,
         containerShadow,
-        iconShadow,
-        iconSize
+        iconShadow
     } = props.attributes;
 
-    const mainClasses = classnames(className, 'premium-icon', blockId);
+    const mainClasses = classnames(className, "premium-banner", {
+        ' premium-desktop-hidden': hideDesktop,
+        ' premium-tablet-hidden': hideTablet,
+        ' premium-mobile-hidden': hideMobile,
+    });
+
+    const loadStyles = () => {
+        const styles = {};
+        styles[` .${blockId} .premium-icon-container i:hover`] = {
+            'color': `${iconStyles[0].iconHoverColor || "#6ec1e4"} !important`,
+            'background-color': `${iconStyles[0].iconHoverBack} !important`
+        };
+        return generateCss(styles);
+    }
 
     return (
         <div
-            className={`${mainClasses}__container ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+            className={`${mainClasses}__container ${blockId}`}
         >
-            <style>
-                {`
-                    .${blockId} .premium-icon-container i:hover {
-                        color: ${iconStyles[0].iconHoverColor || "#6ec1e4"} !important;
-                        background-color: ${iconStyles[0].iconHoverBack} !important;
-                    }
-                 `}
-            </style>
+            <style
+                dangerouslySetInnerHTML={{
+                    __html: loadStyles()
+                }}
+            />
             <div
                 className={`premium-icon-container`}
-                style={{
-                    textAlign: align[props.deviceType] || 'center',
+                style={filterJsCss({
                     ...gradientBackground(containerBackground),
                     borderStyle: containerBorder.borderType,
                     borderColor: containerBorder.borderColor,
-                    boxShadow: `${containerShadow.horizontal || 0}px ${containerShadow.vertical ||
-                        0}px ${containerShadow.blur || 0}px ${containerShadow.color} ${containerShadow.position}`,
-
-                }}
+                    boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`
+                })}
             >
                 <a
                     className={`premium-icon__link`}
@@ -60,15 +65,13 @@ const save = props => {
                     <div className={`premium-icon-hover premium-icon__${hoverEffect}`}>
                         <i
                             className={`premium-icon ${selectedIcon}`}
-                            style={{
-                                fontSize: (iconSize[props.deviceType] || 50) + iconSize.unit,
+                            style={filterJsCss({
                                 color: iconStyles[0].iconColor || "#6ec1e4",
                                 backgroundColor: iconStyles[0].iconBack,
                                 borderStyle: iconBorder.borderType,
                                 borderColor: iconBorder.borderColor,
-                                textShadow: `${iconShadow.horizontal || 0}px ${iconShadow.vertical ||
-                                    0}px ${iconShadow.blur || 0}px ${iconShadow.color}`
-                            }}
+                                textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`
+                            })}
                         />
                     </div>
                 </a>

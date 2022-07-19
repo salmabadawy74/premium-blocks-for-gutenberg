@@ -206,7 +206,7 @@ class Edit extends Component {
             );
         }
 
-        const renderCss = () => {
+        const loadStyles = () => {
             const styles = {};
             styles[` .${blockId} .premium-video-box__play:hover`] = {
                 'color': `${playStyles[0].playHoverColor} !important`,
@@ -540,7 +540,7 @@ class Edit extends Component {
                         >
                             <style
                                 dangerouslySetInnerHTML={{
-                                    __html: renderCss()
+                                    __html: loadStyles()
                                 }}
                             />
                             <div className={`premium-video-box__container`}>

@@ -3041,9 +3041,9 @@ class PBG_Blocks_Helper {
 			$css->set_selector( '.' . $unique_id . ' > .premium-icon-container' );
 			$css->add_property( 'border-bottom-left-radius', ( $attr['containerBorder']['borderRadius']['Desktop']['left'] . 'px' ) );
 		}
-		if ( isset( $attr['align'] ) ) {
+		if ( isset( $attr['iconAlign'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-icon-container' );
-			$css->add_property( 'text-align', ( $attr['align']['Desktop'] . '!important' ) );
+			$css->add_property( 'text-align', ( $attr['iconAlign']['Desktop'] . '!important' ) );
 		}
 
 		// icon Styles
@@ -3187,9 +3187,9 @@ class PBG_Blocks_Helper {
 			$css->set_selector( '.' . $unique_id . ' > .premium-icon-container' );
 			$css->add_property( 'border-bottom-left-radius', ( $attr['containerBorder']['borderRadius']['Tablet']['left'] . 'px' ) );
 		}
-		if ( isset( $attr['align'] ) ) {
+		if ( isset( $attr['iconAlign'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-icon-container' );
-			$css->add_property( 'text-align', ( $attr['align']['Tablet'] . '!important' ) );
+			$css->add_property( 'text-align', ( $attr['iconAlign']['Tablet'] . '!important' ) );
 		}
 
 		// icon Styles
@@ -3334,9 +3334,9 @@ class PBG_Blocks_Helper {
 			$css->set_selector( '.' . $unique_id . ' > .premium-icon-container' );
 			$css->add_property( 'border-bottom-left-radius', ( $attr['containerBorder']['borderRadius']['Mobile']['left'] . 'px' ) );
 		}
-		if ( isset( $attr['align'] ) ) {
+		if ( isset( $attr['iconAlign'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-icon-container' );
-			$css->add_property( 'text-align', ( $attr['align']['Mobile'] . '!important' ) );
+			$css->add_property( 'text-align', ( $attr['iconAlign']['Mobile'] . '!important' ) );
 		}
 
 		// icon Styles
