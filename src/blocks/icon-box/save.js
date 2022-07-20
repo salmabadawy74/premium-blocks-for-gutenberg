@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import { filterJsCss, gradientBackground } from '../../components/HelperFunction'
+import { filterJsCss, gradientBackground, generateCss } from '../../components/HelperFunction'
 
 const { RichText } = wp.blockEditor;
 

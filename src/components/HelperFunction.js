@@ -77,14 +77,14 @@ export const marginCss = (value, device) => {
 };
 export const typographyCss = (value, device) => {
     return {
-        fontSize: `${value?.fontSize[device]}${value?.fontSize?.unit}`,
+        fontSize: value?.fontSize[device] && `${value?.fontSize[device]}${value?.fontSize?.unit}`,
         fontStyle: value?.fontStyle,
         fontFamily: value?.fontFamily,
         fontWeight: value?.fontWeight,
-        letterSpacing: value?.letterSpacing[device],
+        letterSpacing: value?.letterSpacing[device] && `${value?.letterSpacing[device]}px`,
         textDecoration: value?.textDecoration,
         textTransform: value?.textTransform,
-        lineHeight: `${value?.lineHeight[device]}px`,
+        lineHeight: value?.lineHeight[device] && `${value?.lineHeight[device]}px`,
     };
 };
 
