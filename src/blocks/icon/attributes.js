@@ -18,7 +18,7 @@ const attributes = {
         type: "string",
         default: "dashicons dashicons-admin-site"
     },
-    align: {
+    iconAlign: {
         type: "object",
         default: {
             "Desktop": "center",
@@ -34,8 +34,6 @@ const attributes = {
         type: "array",
         default: [
             {
-                iconSizeUnit: 'px',
-                iconSize: '',
                 iconColor: '',
                 iconBack: '',
                 iconHoverColor: '',
@@ -43,9 +41,6 @@ const attributes = {
                 iconOpacity: '1'
             }
         ]
-    },
-    background: {
-        type: "string"
     },
     urlCheck: {
         type: "boolean"
@@ -287,20 +282,20 @@ const attributes = {
     containerShadow: {
         type: "object",
         default: {
-            'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': '',
+            'color': 'undefined',
+            'blur': '10',
+            'horizontal': '0',
+            'vertical': '0',
             'position': ' '
         }
     },
     iconShadow: {
         type: "object",
         default: {
-            'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': ''
+            'color': 'undefined',
+            'blur': '10',
+            'horizontal': '0',
+            'vertical': '0'
         }
     }
 }

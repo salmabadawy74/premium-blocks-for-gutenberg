@@ -1066,6 +1066,13 @@ a.premium-dheading-block__link:hover {
     text-decoration: none;
 }
 
+.premium-icon-container {
+    text-align: center;
+}
+.premium-icon__container .premium-icon.dashicons{
+    font-size: 50px;
+}
+
 .premium-icon__container .premium-icon.dashicons,
 .premium-icon__container .premium-icon.dashicons::before,
 .premium-icon-box .premium-icon-box__icon.dashicons,
