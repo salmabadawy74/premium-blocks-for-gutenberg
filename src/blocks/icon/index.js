@@ -1,5 +1,4 @@
 import { icon } from "../../../assets/js/settings";
-import PbgIcon from "../icons";
 import edit from "./edit";
 import save from "./save";
 import deprecatedContent from "./deprecated";
@@ -17,6 +16,7 @@ registerBlockType("premium/icon", {
     icon: PBG_Block_Icons.icon,
     category: "premium-blocks",
     attributes: attributes,
+    keywords: [__("Icon", 'premium-blocks-for-gutenberg'), __("Font Awesome", 'premium-blocks-for-gutenberg')],
     supports: {
         inserter: icon
     },
