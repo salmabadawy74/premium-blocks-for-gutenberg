@@ -114,12 +114,6 @@ const edit = (props) => {
         return generateCss(styles);
     }
 
-    const mainClasses = classnames(className, "premium-icon", {
-        ' premium-desktop-hidden': hideDesktop,
-        ' premium-tablet-hidden': hideTablet,
-        ' premium-mobile-hidden': hideMobile,
-    });
-
     return [
         isSelected && (
             <InspectorControls key={"inspector"}>
@@ -307,7 +301,12 @@ const edit = (props) => {
             </InspectorControls>
         ),
         <div
-            className={`${mainClasses}__container ${blockId}`}
+            className={classnames(className,
+                "premium-icon", `${blockId} premium-icon__container`, {
+                ' premium-desktop-hidden': hideDesktop,
+                ' premium-tablet-hidden': hideTablet,
+                ' premium-mobile-hidden': hideMobile,
+            })}
         >
             <style
                 dangerouslySetInnerHTML={{

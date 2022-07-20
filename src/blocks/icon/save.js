@@ -23,12 +23,6 @@ const save = props => {
         iconShadow
     } = props.attributes;
 
-    const mainClasses = classnames(className, "premium-banner", {
-        ' premium-desktop-hidden': hideDesktop,
-        ' premium-tablet-hidden': hideTablet,
-        ' premium-mobile-hidden': hideMobile,
-    });
-
     const loadStyles = () => {
         const styles = {};
         styles[` .${blockId} .premium-icon-container i:hover`] = {
@@ -40,7 +34,12 @@ const save = props => {
 
     return (
         <div
-            className={`${mainClasses}__container ${blockId}`}
+            className={classnames(className,
+                "premium-icon", `premium-icon__container ${blockId}`, {
+                ' premium-desktop-hidden': hideDesktop,
+                ' premium-tablet-hidden': hideTablet,
+                ' premium-mobile-hidden': hideMobile,
+            })}
         >
             <style
                 dangerouslySetInnerHTML={{
