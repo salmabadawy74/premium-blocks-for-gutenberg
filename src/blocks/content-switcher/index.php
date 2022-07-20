@@ -43,37 +43,26 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 
 	if ( isset( $attributes['containerborder']['borderWidth']['Desktop'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher');
-		$css->add_property( 'border-width', ( $attributes['containerborder']['borderWidth']['Desktop']['top'] . 'px' ) );
+		$css->add_property( 'border-width', $css->render_spacing( $attributes['containerborder']['borderWidth']['Desktop'] , 'px' ) );
 	}
 	
 	if ( isset( $attributes['containerborder']['borderRadius']['Desktop']['top'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher');
-		$css->add_property( 'border-top-left-radius', ( $attributes['containerborder']['borderRadius']['Desktop']['top'] . 'px' ) );
+		$css->add_property( 'border-radius', $css->render_spacing( $attributes['containerborder']['borderRadius']['Desktop'] , 'px' ) );
 	}
 
 
 	//First Label styles
-	if ( isset( $attributes['firstLabelTypography']['fontSize']['Desktop'] ) ) {
+	if ( isset( $attributes['firstLabelTypography'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'font-size', ( $attributes['firstLabelTypography']['fontSize']['Desktop'] . ( isset( $attributes['firstLabelTypography']['fontSize']['unit'] ) ? $attributes['firstLabelTypography']['fontSize']['unit'] : 'px' ) . '!important' ) );
+		$css->add_property( 'font-size', $css->render_typography ( $attributes['firstLabelTypography'],'Desktop' ) );
 	}
    
 	if ( isset( $attributes['firstLabelPadding']['Desktop']['top'] ) && isset( $attributes['firstLabelPadding']['unit'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'padding-top', ( $attributes['firstLabelPadding']['Desktop']['top'] . ( isset( $attributes['firstLabelPadding']['unit'] ) ? $attributes['firstLabelPadding']['unit'] : 'px' ) . '!important' ) );
+		$css->add_property( 'padding',$css->render_spacing ( $attributes['firstLabelPadding']['Desktop'] , $attributes['firstLabelPadding']['unit']  ) );
 	}
-	if ( isset( $attributes['firstLabelPadding']['Desktop']['right'] ) && isset( $attributes['firstLabelPadding']['unit'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'padding-right', ( $attributes['firstLabelPadding']['Desktop']['right'] . ( isset( $attributes['firstLabelPadding']['unit'] ) ? $attributes['firstLabelPadding']['unit'] : 'px' ) . '!important' ) );
-	}
-	if ( isset( $attributes['firstLabelPadding']['Desktop']['bottom'] ) && isset( $attributes['firstLabelPadding']['unit'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'padding-bottom', ( $attributes['firstLabelPadding']['Desktop']['bottom'] . ( isset( $attributes['firstLabelPadding']['unit'] ) ? $attributes['firstLabelPadding']['unit'] : 'px' ) . '!important' ) );
-	}
-	if ( isset( $attributes['firstLabelPadding']['Desktop']['left'] ) && isset( $attributes['firstLabelPadding']['unit'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'padding-left', ( $attributes['firstLabelPadding']['Desktop']['left'] . ( isset( $attributes['firstLabelPadding']['unit'] ) ? $attributes['firstLabelPadding']['unit'] : 'px' ) . '!important' ) );
-	}
+
 	if ( isset( $attributes['labelSpacing']['Desktop'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-inline' . ' > .premium-content-switcher-first-label' );
 		$css->add_property( 'margin-right', ( $attributes['labelSpacing']['Desktop'] . 'px' ) );
@@ -82,68 +71,26 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-first-label' );
 		$css->add_property( 'margin-bottom', ( $attributes['labelSpacing']['Desktop'] . 'px' ) );
 	}
-	if ( isset( $attributes['firstLabelborder']['borderWidth']['Desktop']['top'] ) ) {
+	if ( isset( $attributes['firstLabelborder']['borderWidth']['Desktop']) ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'border-top-width', ( $attributes['firstLabelborder']['borderWidth']['Desktop']['top'] . 'px' ) );
+		$css->add_property( 'border-width', $css->render_spacing( $attributes['firstLabelborder']['borderWidth']['Desktop'], 'px' ) );
 	}
-	if ( isset( $attributes['firstLabelborder']['borderWidth']['Desktop']['right'] ) ) {
+	if ( isset( $attributes['firstLabelborder']['borderRadius']['Desktop'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'border-right-width', ( $attributes['firstLabelborder']['borderWidth']['Desktop']['right'] . 'px' ) );
-	}
-	if ( isset( $attributes['firstLabelborder']['borderWidth']['Desktop']['bottom'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'border-bottom-width', ( $attributes['firstLabelborder']['borderWidth']['Desktop']['bottom'] . 'px' ) );
-	}
-	if ( isset( $attributes['firstLabelborder']['borderWidth']['Desktop']['left'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'border-left-width', ( $attributes['firstLabelborder']['borderWidth']['Desktop']['left'] . 'px' ) );
-	}
-	if ( isset( $attributes['firstLabelborder']['borderRadius']['Desktop']['top'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'border-top-left-radius', ( $attributes['firstLabelborder']['borderRadius']['Desktop']['top'] . 'px' ) );
-	}
-	if ( isset( $attributes['firstLabelborder']['borderRadius']['Desktop']['right'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'border-top-right-radius', ( $attributes['firstLabelborder']['borderRadius']['Desktop']['right'] . 'px' ) );
-	}
-	if ( isset( $attributes['firstLabelborder']['borderRadius']['Desktop']['bottom'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'border-bottom-right-radius', ( $attributes['firstLabelborder']['borderRadius']['Desktop']['bottom'] . 'px' ) );
-	}
-	if ( isset( $attributes['firstLabelborder']['borderRadius']['Desktop']['left'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'border-bottom-left-radius', ( $attributes['firstLabelborder']['borderRadius']['Desktop']['left'] . 'px' ) );
+		$css->add_property( 'border-radius', $css->render_spacing( $attributes['firstLabelborder']['borderRadius']['Desktop'] , 'px' ) );
 	}
 
+
 	//Second Label styles
-	if ( isset( $attributes['secondLabelTypography']['fontSize']['Desktop'] ) ) {
+	if ( isset( $attributes['secondLabelTypography'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-second-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'font-size', ( $attributes['secondLabelTypography']['fontSize']['Desktop'] . ( isset( $attributes['secondLabelTypography']['fontSize']['unit'] ) ? $attributes['secondLabelTypography']['fontSize']['unit'] : 'px' ) . '!important' ) );
+		$css->render_typography(  $attributes['secondLabelTypography'], 'Desktop' );
 	}
-    if ( isset( $attributes['secondLabelTypography']['lineHeight']['Desktop'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'line-height', ( $attributes['secondLabelTypography']['lineHeight']['Desktop'] .  'px'  . '!important' ) );
-	}
-    if ( isset( $attributes['secondLabelTypography']['letterSpacing']['Desktop'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'letter-spacing', ( $attributes['secondLabelTypography']['letterSpacing']['Desktop'] .  'px'  . '!important' ) );
-	}
-	if ( isset( $attributes['secondLabelPadding']['Desktop']['top'] ) && isset( $attributes['secondLabelPadding']['unit'] ) ) {
+	if ( isset( $attributes['secondLabelPadding'] )  ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-second-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'padding-top', ( $attributes['secondLabelPadding']['Desktop']['top'] . ( isset( $attributes['secondLabelPadding']['unit'] ) ? $attributes['secondLabelPadding']['unit'] : 'px' ) . '!important' ) );
+		$css->add_property( 'padding', $css->render_spacing( $attributes['secondLabelPadding']['Desktop'] , $attributes['secondLabelPadding']['unit'] ) );
 	}
-	if ( isset( $attributes['secondLabelPadding']['Desktop']['right'] ) && isset( $attributes['secondLabelPadding']['unit'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-second-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'padding-right', ( $attributes['secondLabelPadding']['Desktop']['right'] . ( isset( $attributes['secondLabelPadding']['unit'] ) ? $attributes['secondLabelPadding']['unit'] : 'px' ) . '!important' ) );
-	}
-	if ( isset( $attributes['secondLabelPadding']['Desktop']['bottom'] ) && isset( $attributes['secondLabelPadding']['unit'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-second-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'padding-bottom', ( $attributes['secondLabelPadding']['Desktop']['bottom'] . ( isset( $attributes['secondLabelPadding']['unit'] ) ? $attributes['secondLabelPadding']['unit'] : 'px' ) . '!important' ) );
-	}
-	if ( isset( $attributes['secondLabelPadding']['Desktop']['left'] ) && isset( $attributes['secondLabelPadding']['unit'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-second-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'padding-left', ( $attributes['secondLabelPadding']['Desktop']['left'] . ( isset( $attributes['secondLabelPadding']['unit'] ) ? $attributes['secondLabelPadding']['unit'] : 'px' ) . '!important' ) );
-	}
+
 	if ( isset( $attributes['labelSpacing']['Desktop'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-inline' . ' > .premium-content-switcher-second-label');
 		$css->add_property( 'margin-left', ( $attributes['labelSpacing']['Desktop'] . 'px' ) );
@@ -152,38 +99,16 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
 		$css->add_property( 'margin-top', ( $attributes['labelSpacing']['Desktop'] . 'px' ) );
 	}
-	if ( isset( $attributes['secondLabelborder']['borderWidth']['Desktop']['top'] ) ) {
+	if ( isset( $attributes['secondLabelborder']['borderWidth']['Desktop'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
-		$css->add_property( 'border-top-width', ( $attributes['secondLabelborder']['borderWidth']['Desktop']['top'] . 'px' ) );
+		$css->add_property( 'border-width', $css->render_spacing( $attributes['secondLabelborder']['borderWidth']['Desktop'] , 'px' ) );
 	}
-	if ( isset( $attributes['secondLabelborder']['borderWidth']['Desktop']['right'] ) ) {
+
+	if ( isset( $attributes['secondLabelborder']['borderRadius']['Desktop'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
-		$css->add_property( 'border-right-width', ( $attributes['secondLabelborder']['borderWidth']['Desktop']['right'] . 'px' ) );
+		$css->add_property( 'border-radius', $css->render_spacing( $attributes['secondLabelborder']['borderRadius']['Desktop'] , 'px' ) );
 	}
-	if ( isset( $attributes['secondLabelborder']['borderWidth']['Desktop']['bottom'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
-		$css->add_property( 'border-bottom-width', ( $attributes['secondLabelborder']['borderWidth']['Desktop']['bottom'] . 'px' ) );
-	}
-	if ( isset( $attributes['secondLabelborder']['borderWidth']['Desktop']['left'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
-		$css->add_property( 'border-left-width', ( $attributes['secondLabelborder']['borderWidth']['Desktop']['left'] . 'px' ) );
-	}
-	if ( isset( $attributes['secondLabelborder']['borderRadius']['Desktop']['top'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
-		$css->add_property( 'border-top-left-radius', ( $attributes['secondLabelborder']['borderRadius']['Desktop']['top'] . 'px' ) );
-	}
-	if ( isset( $attributes['secondLabelborder']['borderRadius']['Desktop']['right'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
-		$css->add_property( 'border-top-right-radius', ( $attributes['secondLabelborder']['borderRadius']['Desktop']['right'] . 'px' ) );
-	}
-	if ( isset( $attributes['secondLabelborder']['borderRadius']['Desktop']['bottom'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
-		$css->add_property( 'border-bottom-right-radius', ( $attributes['secondLabelborder']['borderRadius']['Desktop']['bottom'] . 'px' ) );
-	}
-	if ( isset( $attributes['secondLabelborder']['borderRadius']['Desktop']['left'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
-		$css->add_property( 'border-bottom-left-radius', ( $attributes['secondLabelborder']['borderRadius']['Desktop']['left'] . 'px' ) );
-	}
+
 
 	//Switch styles
 	if ( isset( $attributes['switchSize']['Desktop'] ) ) {
