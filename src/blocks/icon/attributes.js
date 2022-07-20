@@ -282,7 +282,7 @@ const attributes = {
     containerShadow: {
         type: "object",
         default: {
-            'color': 'undefinded',
+            'color': 'undefined',
             'blur': '10',
             'horizontal': '0',
             'vertical': '0',
@@ -292,7 +292,7 @@ const attributes = {
     iconShadow: {
         type: "object",
         default: {
-            'color': 'undefinded',
+            'color': 'undefined',
             'blur': '10',
             'horizontal': '0',
             'vertical': '0'

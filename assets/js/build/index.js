@@ -31994,7 +31994,7 @@ const attributes = {
   containerShadow: {
     type: "object",
     default: {
-      'color': 'undefinded',
+      'color': 'undefined',
       'blur': '10',
       'horizontal': '0',
       'vertical': '0',
@@ -32004,7 +32004,7 @@ const attributes = {
   iconShadow: {
     type: "object",
     default: {
-      'color': 'undefinded',
+      'color': 'undefined',
       'blur': '10',
       'horizontal': '0',
       'vertical': '0'
@@ -33517,7 +33517,7 @@ const edit = props => {
   const loadStyles = () => {
     const styles = {};
     styles[` .${blockId} .premium-icon-container i:hover`] = {
-      'color': `${iconStyles[0].iconHoverColor || "#6ec1e4"} !important`,
+      'color': `${iconStyles[0].iconHoverColor} !important`,
       'background-color': `${iconStyles[0].iconHoverBack} !important`
     };
     return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.generateCss)(styles);
@@ -33743,9 +33743,9 @@ const edit = props => {
   }, __("Please Enable Font Awesome Icons from Plugin settings")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-icon__${hoverEffect}`
   }, (iconType === "dash" || 1 == _assets_js_settings__WEBPACK_IMPORTED_MODULE_2__.FontAwesomeEnabled) && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
-    className: `premium-icon ${selectedIcon} `,
+    className: `premium-icon ${selectedIcon}`,
     style: {
-      color: iconStyles[0].iconColor || "#6ec1e4",
+      color: iconStyles[0].iconColor,
       backgroundColor: iconStyles[0].iconBack,
       fontSize: (iconSize[props.deviceType] || 50) + iconSize.unit,
       ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.borderCss)(iconBorder, props.deviceType),
@@ -33854,7 +33854,7 @@ const save = props => {
   const loadStyles = () => {
     const styles = {};
     styles[` .${blockId} .premium-icon-container i:hover`] = {
-      'color': `${iconStyles[0].iconHoverColor || "#6ec1e4"} !important`,
+      'color': `${iconStyles[0].iconHoverColor} !important`,
       'background-color': `${iconStyles[0].iconHoverBack} !important`
     };
     return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.generateCss)(styles);
@@ -33887,7 +33887,7 @@ const save = props => {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
     className: `premium-icon ${selectedIcon}`,
     style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
-      color: iconStyles[0].iconColor || "#6ec1e4",
+      color: iconStyles[0].iconColor,
       backgroundColor: iconStyles[0].iconBack,
       borderStyle: iconBorder.borderType,
       borderColor: iconBorder.borderColor,
@@ -39012,7 +39012,7 @@ const attributes = {
   titleShadow: {
     type: "object",
     default: {
-      'color': 'undefinded',
+      'color': 'undefined',
       'blur': '10',
       'horizontal': '0',
       'vertical': '0'
@@ -39021,7 +39021,7 @@ const attributes = {
   nameShadow: {
     type: "object",
     default: {
-      'color': 'undefinded',
+      'color': 'undefined',
       'blur': '10',
       'horizontal': '0',
       'vertical': '0'
@@ -39030,7 +39030,7 @@ const attributes = {
   descShadow: {
     type: "object",
     default: {
-      'color': 'undefinded',
+      'color': 'undefined',
       'blur': '10',
       'horizontal': '0',
       'vertical': '0'
@@ -53476,7 +53476,7 @@ const videoBoxAttrs = {
   descShadow: {
     type: "object",
     default: {
-      'color': 'undefinded',
+      'color': 'undefined',
       'blur': 10,
       'horizontal': '0',
       'vertical': '0'
@@ -53485,7 +53485,7 @@ const videoBoxAttrs = {
   boxShadow: {
     type: "object",
     default: {
-      'color': 'undefinded',
+      'color': 'undefined',
       'blur': 10,
       'horizontal': '0',
       'vertical': '0',

@@ -292,7 +292,7 @@ const attributes = {
     titleShadow: {
         type: "object",
         default: {
-            'color': 'undefinded',
+            'color': 'undefined',
             'blur': '10',
             'horizontal': '0',
             'vertical': '0'
@@ -301,7 +301,7 @@ const attributes = {
     nameShadow: {
         type: "object",
         default: {
-            'color': 'undefinded',
+            'color': 'undefined',
             'blur': '10',
             'horizontal': '0',
             'vertical': '0'
@@ -310,7 +310,7 @@ const attributes = {
     descShadow: {
         type: "object",
         default: {
-            'color': 'undefinded',
+            'color': 'undefined',
             'blur': '10',
             'horizontal': '0',
             'vertical': '0'

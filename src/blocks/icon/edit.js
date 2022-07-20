@@ -108,7 +108,7 @@ const edit = (props) => {
     const loadStyles = () => {
         const styles = {};
         styles[` .${blockId} .premium-icon-container i:hover`] = {
-            'color': `${iconStyles[0].iconHoverColor || "#6ec1e4"} !important`,
+            'color': `${iconStyles[0].iconHoverColor} !important`,
             'background-color': `${iconStyles[0].iconHoverBack} !important`
         };
         return generateCss(styles);
@@ -332,9 +332,9 @@ const edit = (props) => {
                 <div className={`premium-icon__${hoverEffect}`}>
                     {(iconType === "dash" || 1 == FontAwesomeEnabled) && (
                         <i
-                            className={`premium-icon ${selectedIcon} `}
+                            className={`premium-icon ${selectedIcon}`}
                             style={{
-                                color: iconStyles[0].iconColor || "#6ec1e4",
+                                color: iconStyles[0].iconColor,
                                 backgroundColor: iconStyles[0].iconBack,
                                 fontSize: (iconSize[props.deviceType] || 50) + iconSize.unit,
                                 ...borderCss(iconBorder, props.deviceType),
