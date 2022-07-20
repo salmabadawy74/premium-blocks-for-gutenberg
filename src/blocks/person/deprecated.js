@@ -310,14 +310,16 @@ const deprecated = [
                 nameTag: 'h2',
                 titleTag: 'h4',
                 blockId: attributes.id ? `premium-person-${attributes.id.split('-')[6]}` : '',
-                personAlign: {
+                align: {
                     "Desktop": attributes.personAlign,
                     "Tablet": attributes.personAlign,
                     "Mobile": attributes.personAlign,
                 },
                 socialIconSize: {
                     unit: attributes.socialIconStyles[0].socialIconfontSizeType,
-                    "Desktop": attributes.socialIconStyles[0].socialIconSize
+                    "Desktop": attributes.socialIconStyles[0].socialIconSize,
+                    "Tablet": attributes.socialIconStyles[0].socialIconfontSizeTablet,
+                    "Mobile": attributes.socialIconStyles[0].socialIconfontSizeMobile,
                 },
                 socialIconMargin: {
                     "Desktop": {
