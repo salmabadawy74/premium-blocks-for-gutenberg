@@ -38727,7 +38727,7 @@ const attributes = {
   // },
   nameColor: {
     type: "object",
-    default: "rgb(110, 193, 228)"
+    default: ""
   },
   titleColor: {
     type: "object",
@@ -38961,7 +38961,7 @@ const attributes = {
   titleTypography: {
     type: "object",
     default: {
-      "fontWeight": 500,
+      "fontWeight": '',
       'fontStyle': '',
       'textTransform': '',
       'letterSpacing': '',
@@ -38978,7 +38978,7 @@ const attributes = {
   descTypography: {
     type: "object",
     default: {
-      "fontWeight": 400,
+      "fontWeight": '',
       'fontStyle': '',
       'textTransform': '',
       'letterSpacing': '',
@@ -38995,7 +38995,7 @@ const attributes = {
   nameTypography: {
     type: "object",
     default: {
-      "fontWeight": 500,
+      "fontWeight": '',
       'fontStyle': '',
       'textTransform': '',
       'letterSpacing': '',
