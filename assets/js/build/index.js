@@ -32487,7 +32487,7 @@ const deprecatedContent = [{
           bottom: attributes.marginBMobile,
           left: attributes.marginLMobile
         },
-        unit: ""
+        unit: "px"
       },
       iconPadding: {
         "Desktop": {
@@ -32529,7 +32529,7 @@ const deprecatedContent = [{
           bottom: attributes.wrapMarginBMobile,
           left: attributes.wrapMarginLMobile
         },
-        unit: ''
+        unit: 'px'
       },
       wrapPadding: {
         "Desktop": {
@@ -32550,7 +32550,7 @@ const deprecatedContent = [{
           bottom: attributes.wrapPaddingBMobile,
           left: attributes.wrapPaddingLMobile
         },
-        unit: ''
+        unit: 'px'
       },
       iconBorder: {
         borderColor: attributes.iconStyles[0].borderColor,
