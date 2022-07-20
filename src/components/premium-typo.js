@@ -62,7 +62,7 @@ export default class PremiumTypo extends Component {
             search: "",
             showUnit: this.props.showUnit || false,
             device: 'Desktop',
-            value: this.props.value ? { ...defaultValues, ...this.props.value } : this.props.value,
+            value: this.props.value,
             defaultValue: defaultValues
         }
     }
@@ -80,7 +80,7 @@ export default class PremiumTypo extends Component {
     }
     render() {
         const { onChange } = this.props;
-        const { value, sizeUnit, isVisible, currentView, search, device, defaultValue } = this.state;
+        const { value, sizeUnit, isVisible, currentView, search, device } = this.state;
         const STYLE = [
             { value: "normal", label: __("Normal", 'premium-blocks-for-gutenberg') },
             { value: "italic", label: __("Italic", 'premium-blocks-for-gutenberg') },
@@ -131,11 +131,12 @@ export default class PremiumTypo extends Component {
                 }))
             }
         })
-        const changeTypography = (item, value) => {
-            const initialState = { ...this.state.value }
-            initialState[item] = value;
-            onChange(initialState)
+        const changeTypography = (item, v) => {
+            let initialState = { ...value }
+            initialState[item] = v;
+
             this.setState({ value: initialState })
+            onChange(initialState)
         }
         const linearFonts = fonts.filter(family => fuzzysearch(search.toLowerCase(), family['value'].toLowerCase()))
         const fontSize = value['fontSize'][device]
@@ -229,8 +230,7 @@ export default class PremiumTypo extends Component {
                                                         <ResponsiveRangeControl
                                                             label={__("Line Height (PX)", 'premium-blocks-for-gutenberg')}
                                                             value={value['lineHeight']}
-                                                            onChange={(value) => { changeTypography('lineHeight', value) }}
-                                                            defaultValue={defaultValue['lineHeight']}
+                                                            onChange={(value) => changeTypography('lineHeight', value)}
                                                             showUnit={false}
                                                             min={0}
                                                             max={200}
@@ -240,8 +240,7 @@ export default class PremiumTypo extends Component {
                                                         <ResponsiveRangeControl
                                                             label={__("Letter Spacing (PX)", 'premium-blocks-for-gutenberg')}
                                                             value={value['letterSpacing']}
-                                                            onChange={(value) => { changeTypography('letterSpacing', value) }}
-                                                            defaultValue={defaultValue['letterSpacing']}
+                                                            onChange={(value) => changeTypography('letterSpacing', value)}
                                                             showUnit={false}
                                                             step={0.1}
                                                             min={-5}

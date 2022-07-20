@@ -13,7 +13,6 @@ import AdvancedPopColorControl from "../../components/Color Control/ColorCompone
 import RadioComponent from "../../components/radio-control";
 import ResponsiveRadioControl from "../../components/responsive-radio";
 import SpacingControl from "../../components/premium-responsive-spacing";
-import WebfontLoader from "../../components/typography/fontLoader";
 import PremiumShadow from "../../components/PremiumShadow";
 import InspectorTabs from "../../components/inspectorTabs";
 import InspectorTab from "../../components/inspectorTab";
@@ -254,6 +253,8 @@ class edit extends Component {
                     ]}
                 />);
         }
+
+        console.log(titleTypography);
 
         const mainClasses = classnames(className, "premium-icon-box", {
             ' premium-desktop-hidden': hideDesktop,
@@ -626,15 +627,6 @@ class edit extends Component {
                                     initialOpen={false}
                                 >
                                     <PremiumTypo
-                                        components={[
-                                            "responsiveSize",
-                                            "weight",
-                                            "style",
-                                            "upper",
-                                            "spacing",
-                                            "line",
-                                            "family",
-                                        ]}
                                         value={titleTypography}
                                         onChange={(newValue) =>
                                             setAttributes({
