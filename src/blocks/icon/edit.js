@@ -449,17 +449,20 @@ const edit = (props) => {
             </InspectorControls>
         ),
         <div
-            className={`${mainClasses}__container ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+            className={classnames(className,
+                'premium-icon', `${blockId} premium-icon__container`, {
+                ' premium-desktop-hidden': hideDesktop,
+                ' premium-tablet-hidden': hideTablet,
+                ' premium-mobile-hidden': hideMobile,
+            })}
         >
             <style>
                 {`
                     .${blockId} .premium-icon-container i:hover {
-                        color: ${
-                            iconStyles[0].iconHoverColor || "#6ec1e4"
-                        } !important;
-                        background-color: ${
-                            iconStyles[0].iconHoverBack
-                        } !important;
+                        color: ${iconStyles[0].iconHoverColor || "#6ec1e4"
+                    } !important;
+                        background-color: ${iconStyles[0].iconHoverBack
+                    } !important;
                     }
                  `}
             </style>
@@ -471,11 +474,9 @@ const edit = (props) => {
                     ...borderCss(containerBorder, props.deviceType),
                     ...paddingCss(wrapPadding, props.deviceType),
                     ...marginCss(wrapMargin, props.deviceType),
-                    boxShadow: `${containerShadow.horizontal || 0}px ${
-                        containerShadow.vertical || 0
-                    }px ${containerShadow.blur || 0}px ${
-                        containerShadow.color
-                    } ${containerShadow.position}`,
+                    boxShadow: `${containerShadow.horizontal || 0}px ${containerShadow.vertical || 0
+                        }px ${containerShadow.blur || 0}px ${containerShadow.color
+                        } ${containerShadow.position}`,
                 }}
             >
                 {iconType === "fa" && 1 != FontAwesomeEnabled && (
@@ -498,11 +499,9 @@ const edit = (props) => {
                                 ...borderCss(iconBorder, props.deviceType),
                                 ...paddingCss(iconPadding, props.deviceType),
                                 ...marginCss(iconMargin, props.deviceType),
-                                textShadow: `${iconShadow.horizontal || 0}px ${
-                                    iconShadow.vertical || 0
-                                }px ${iconShadow.blur || 0}px ${
-                                    iconShadow.color
-                                }`,
+                                textShadow: `${iconShadow.horizontal || 0}px ${iconShadow.vertical || 0
+                                    }px ${iconShadow.blur || 0}px ${iconShadow.color
+                                    }`,
                             }}
                         />
                     )}
