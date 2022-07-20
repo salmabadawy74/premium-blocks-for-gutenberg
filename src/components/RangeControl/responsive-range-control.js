@@ -70,7 +70,7 @@ export default function ResponsiveRangeControl({
             max={max}
             step={(state['unit'] === 'em' || state['unit'] === 'rem') ? .1 : 1}
             showUnit={false}
-            defaultValue={defaultValue}
+            defaultValue={defaultValues['Mobile']}
         />
     );
     output.Tablet = (
@@ -82,7 +82,7 @@ export default function ResponsiveRangeControl({
             max={max}
             step={(state['unit'] === 'em' || state['unit'] === 'rem') ? .1 : 1}
             showUnit={false}
-            defaultValue={defaultValue}
+            defaultValue={defaultValues['Tablet']}
         />
     );
     output.Desktop = (
@@ -94,7 +94,7 @@ export default function ResponsiveRangeControl({
             max={max}
             step={(state['unit'] === 'em' || state['unit'] === 'rem') ? .1 : 1}
             showUnit={false}
-            defaultValue={defaultValue}
+            defaultValue={defaultValues['Desktop']}
         />
     );
     return [
