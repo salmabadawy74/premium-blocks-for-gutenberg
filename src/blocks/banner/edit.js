@@ -3,7 +3,6 @@ import PremiumBorder from "../../components/premium-border";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumFilters from "../../components/premium-filters";
 import SpacingComponent from "../../components/premium-responsive-spacing";
-import PremiumMediaUpload from "../../components/premium-media-upload";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import AdvancedPopColorControl from "../../components/Color Control/ColorComponent";
@@ -11,10 +10,17 @@ import RadioComponent from "../../components/radio-control";
 import PremiumShadow from "../../components/PremiumShadow";
 import InspectorTabs from "../../components/inspectorTabs";
 import InspectorTab from "../../components/inspectorTab";
-import MultiButtonsControl from '../../components/responsive-radio';
+import MultiButtonsControl from "../../components/responsive-radio";
 import Icons from "../../components/icons";
+import GoogleFontLoader from "react-google-font-loader";
 
-import { borderCss, generateBlockId, generateCss, paddingCss, typographyCss, } from "../../components/HelperFunction";
+import {
+    borderCss,
+    generateBlockId,
+    generateCss,
+    paddingCss,
+    typographyCss,
+} from "../../components/HelperFunction";
 
 const { withSelect } = wp.data;
 const { __ } = wp.i18n;
@@ -29,12 +35,8 @@ const {
     ToggleControl,
 } = wp.components;
 
-const {
-    BlockControls,
-    InspectorControls,
-    RichText,
-    MediaPlaceholder,
-} = wp.blockEditor;
+const { BlockControls, InspectorControls, RichText, MediaPlaceholder } =
+    wp.blockEditor;
 
 export class edit extends Component {
     constructor() {
@@ -81,11 +83,7 @@ export class edit extends Component {
             target,
             url,
             sepColor,
-            blur,
-            bright,
-            contrast,
-            saturation,
-            hue,
+            filter,
             hideDesktop,
             hideTablet,
             hideMobile,
@@ -192,9 +190,9 @@ export class edit extends Component {
         ];
 
         const mainClasses = classnames(className, "premium-banner", {
-            ' premium-desktop-hidden': hideDesktop,
-            ' premium-tablet-hidden': hideTablet,
-            ' premium-mobile-hidden': hideMobile,
+            " premium-desktop-hidden": hideDesktop,
+            " premium-tablet-hidden": hideTablet,
+            " premium-mobile-hidden": hideMobile,
         });
 
         const saveStyles = (value) => {
@@ -226,17 +224,35 @@ export class edit extends Component {
             ] = {
                 background: sepColor,
             };
-            styles[`.${blockId} .premium-banner__inner`] = {
-                background: background,
-            };
-            styles[`.${blockId} .premium-banner__img.premium-banner__active`] =
-            {
-                background: `${background ? 1 - opacity / 100 : 1}`,
-            };
 
             return generateCss(styles);
         };
 
+        let loadTitleGoogleFonts;
+        let loadDesciptionGoogleFonts;
+
+        if (titleTypography.fontFamily !== "Default") {
+            loadTitleGoogleFonts = (
+                <GoogleFontLoader
+                    fonts={[
+                        {
+                            font: titleTypography?.fontFamily,
+                        },
+                    ]}
+                />
+            );
+        }
+        if (descTypography.fontFamily !== "Default") {
+            loadDesciptionGoogleFonts = (
+                <GoogleFontLoader
+                    fonts={[
+                        {
+                            font: descTypography.fontFamily,
+                        },
+                    ]}
+                />
+            );
+        }
         return [
             isSelected && (
                 <BlockControls key="controls">
@@ -250,7 +266,6 @@ export class edit extends Component {
                             className="components-toolbar__control"
                         />
                     </Toolbar>
-
                 </BlockControls>
             ),
             isSelected && imageURL && (
@@ -399,13 +414,33 @@ export class edit extends Component {
                                     }
                                 />
                                 <MultiButtonsControl
-                                    choices={[{ value: 'left', label: __('Left'), icon: Icons.alignLeft },
-                                    { value: 'center', label: __('Center'), icon: Icons.alignCenter },
-                                    { value: 'right', label: __('Right'), icon: Icons.alignRight }]}
+                                    choices={[
+                                        {
+                                            value: "left",
+                                            label: __("Left"),
+                                            icon: Icons.alignLeft,
+                                        },
+                                        {
+                                            value: "center",
+                                            label: __("Center"),
+                                            icon: Icons.alignCenter,
+                                        },
+                                        {
+                                            value: "right",
+                                            label: __("Right"),
+                                            icon: Icons.alignRight,
+                                        },
+                                    ]}
                                     value={contentAlign}
-                                    onChange={(align) => setAttributes({ contentAlign: align })}
-                                    label={__("Align Content", "premium-blocks-for-gutenberg")}
-                                    showIcons={true} />
+                                    onChange={(align) =>
+                                        setAttributes({ contentAlign: align })
+                                    }
+                                    label={__(
+                                        "Align Content",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                    showIcons={true}
+                                />
                             </PanelBody>
                             <PanelBody
                                 title={__(
@@ -453,52 +488,15 @@ export class edit extends Component {
                                     colorDefault={""}
                                     onColorChange={(newValue) =>
                                         setAttributes({
-                                            background:
-                                                newValue === undefined
-                                                    ? "transparent"
-                                                    : newValue,
+                                            background: newValue,
                                         })
                                     }
                                 />
-                                <ResponsiveSingleRangeControl
-                                    label={__(
-                                        "Overlay Opacity",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
-                                    value={opacity}
-                                    min="1"
-                                    max="100"
-                                    onChange={(newOpacity) =>
-                                        setAttributes({
-                                            opacity:
-                                                newOpacity === undefined
-                                                    ? 50
-                                                    : newOpacity,
-                                        })
-                                    }
-                                    showUnit={false}
-                                    defaultValue={""}
-                                />
+
                                 <PremiumFilters
-                                    blur={blur}
-                                    bright={bright}
-                                    contrast={contrast}
-                                    saturation={saturation}
-                                    hue={hue}
-                                    onChangeBlur={(value) =>
-                                        setAttributes({ blur: value })
-                                    }
-                                    onChangeBright={(value) =>
-                                        setAttributes({ bright: value })
-                                    }
-                                    onChangeContrast={(value) =>
-                                        setAttributes({ contrast: value })
-                                    }
-                                    onChangeSat={(value) =>
-                                        setAttributes({ saturation: value })
-                                    }
-                                    onChangeHue={(value) =>
-                                        setAttributes({ hue: value })
+                                    value={filter}
+                                    onChange={(value) =>
+                                        setAttributes({ filter: value })
                                     }
                                 />
                             </PanelBody>
@@ -528,10 +526,7 @@ export class edit extends Component {
                                     colorDefault={""}
                                     onColorChange={(newValue) =>
                                         saveStyles({
-                                            titleColor:
-                                                newValue === undefined
-                                                    ? "transparent"
-                                                    : newValue,
+                                            titleColor: newValue,
                                         })
                                     }
                                 />
@@ -596,7 +591,11 @@ export class edit extends Component {
                             >
                                 <PremiumTypo
                                     value={descTypography}
-                                    onChange={(newValue) => setAttributes({ descTypography: newValue, })}
+                                    onChange={(newValue) =>
+                                        setAttributes({
+                                            descTypography: newValue,
+                                        })
+                                    }
                                 />
                                 <hr />
                                 <AdvancedPopColorControl
@@ -608,10 +607,7 @@ export class edit extends Component {
                                     colorDefault={""}
                                     onColorChange={(newValue) =>
                                         descriptionStyles({
-                                            descColor:
-                                                newValue === undefined
-                                                    ? "transparent"
-                                                    : newValue,
+                                            descColor: newValue,
                                         })
                                     }
                                 />
@@ -637,19 +633,22 @@ export class edit extends Component {
                                 initialOpen={false}
                             >
                                 <PremiumShadow
-                                    label={__("Box Shadow", "premium-blocks-for-gutenberg")}
+                                    label={__(
+                                        "Box Shadow",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     boxShadow={true}
                                     value={containerShadow}
-                                    onChange={(value) => setAttributes({ containerShadow: value, })}
+                                    onChange={(value) =>
+                                        setAttributes({
+                                            containerShadow: value,
+                                        })
+                                    }
                                 />
                                 <hr />
                                 <PremiumBorder
                                     label={__("Border")}
                                     value={border}
-                                    borderType={border.borderType}
-                                    borderColor={border.borderColor}
-                                    borderWidth={border.borderWidth}
-                                    borderRadius={border.borderRadius}
                                     onChange={(value) =>
                                         setAttributes({ border: value })
                                     }
@@ -673,23 +672,17 @@ export class edit extends Component {
                                 Mobile={hideMobile}
                                 onChangeDesktop={(value) =>
                                     setAttributes({
-                                        hideDesktop: value
-                                            ? " premium-desktop-hidden"
-                                            : "",
+                                        hideDesktop: value,
                                     })
                                 }
                                 onChangeTablet={(value) =>
                                     setAttributes({
-                                        hideTablet: value
-                                            ? " premium-tablet-hidden"
-                                            : "",
+                                        hideTablet: value,
                                     })
                                 }
                                 onChangeMobile={(value) =>
                                     setAttributes({
-                                        hideMobile: value
-                                            ? " premium-mobile-hidden"
-                                            : "",
+                                        hideMobile: value,
                                     })
                                 }
                             />
@@ -741,6 +734,12 @@ export class edit extends Component {
                         }}
                     >
                         <div
+                            className="premium-banner__bg-overlay"
+                            style={{
+                                backgroundColor: `${background}`,
+                            }}
+                        ></div>
+                        <div
                             className={`premium-banner__img_wrap premium-banner__${height}`}
                             style={{
                                 minHeight: minHeight,
@@ -752,7 +751,7 @@ export class edit extends Component {
                                 alt="Banner Image"
                                 src={imageURL}
                                 style={{
-                                    filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
+                                    filter: `brightness( ${filter?.bright}% ) contrast( ${filter?.contrast}% ) saturate( ${filter?.saturation}% ) blur( ${filter?.blur}px ) hue-rotate( ${filter?.hue}deg )`,
                                 }}
                             />
                         </div>
@@ -769,7 +768,8 @@ export class edit extends Component {
                             <div
                                 className={`premium-banner__title_wrap`}
                                 style={{
-                                    textAlign: contentAlign[this.props.deviceType],
+                                    textAlign:
+                                        contentAlign[this.props.deviceType],
                                 }}
                             >
                                 <RichText
@@ -794,7 +794,8 @@ export class edit extends Component {
                             <div
                                 className={`premium-banner__desc_wrap`}
                                 style={{
-                                    textAlign: contentAlign[this.props.deviceType],
+                                    textAlign:
+                                        contentAlign[this.props.deviceType],
                                 }}
                             >
                                 <RichText
@@ -817,6 +818,8 @@ export class edit extends Component {
                             </div>
                         </div>
                     </div>
+                    {loadTitleGoogleFonts}
+                    {loadDesciptionGoogleFonts}
                 </div>
             ),
         ];
