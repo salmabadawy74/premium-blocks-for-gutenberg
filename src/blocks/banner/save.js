@@ -1,8 +1,8 @@
-import classnames from 'classnames'
-import { generateCss, filterJsCss } from '../../components/HelperFunction';
+import classnames from "classnames";
+import { generateCss, filterJsCss } from "../../components/HelperFunction";
 const { RichText } = wp.blockEditor;
 
-const save = props => {
+const save = (props) => {
     const { className } = props;
     const {
         imageURL,
@@ -25,11 +25,7 @@ const save = props => {
         target,
         url,
         sepColor,
-        blur,
-        bright,
-        contrast,
-        saturation,
-        hue,
+        filter,
         hideDesktop,
         hideTablet,
         hideMobile,
@@ -39,124 +35,133 @@ const save = props => {
         titleTextShadow,
         descTextShadow,
         containerShadow,
-        blockId
+        blockId,
     } = props.attributes;
 
     const mainClasses = classnames(className, "premium-banner", {
-        ' premium-desktop-hidden': hideDesktop,
-        ' premium-tablet-hidden': hideTablet,
-        ' premium-mobile-hidden': hideMobile,
+        " premium-desktop-hidden": hideDesktop,
+        " premium-tablet-hidden": hideTablet,
+        " premium-mobile-hidden": hideMobile,
     });
     const loadStyles = () => {
         const styles = {};
 
-        styles[`.${blockId} .premium-banner__effect3 .premium-banner__title_wrap::after`] = {
-            'background': sepColor
-        };
-        styles[`.${blockId} .premium-banner__inner`] = {
-            'background': background
-        };
-        styles[`.${blockId} .premium-banner__img.premium-banner__active`] = {
-            'background': `${background ? 1 - opacity / 100 : 1}`
+        styles[
+            `.${blockId} .premium-banner__effect3 .premium-banner__title_wrap::after`
+        ] = {
+            background: sepColor,
         };
 
         return generateCss(styles);
-    }
+    };
 
     return (
-        imageURL &&
-        <div
-            className={`${mainClasses} premium-banner__responsive_${responsive}  ${blockId}`}
-        >
-            <style
-                dangerouslySetInnerHTML={{
-                    __html: loadStyles()
-                }}
-            />
+        imageURL && (
             <div
-                className={`premium-banner__inner premium-banner__min premium-banner__${effect} premium-banner__${hoverEffect} hover_${hovered}`}
-                style={filterJsCss({
-                    boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`,
-                    borderStyle: border && border.borderType,
-                    borderColor: border && border.borderColor,
-                })}
+                className={`${mainClasses} premium-banner__responsive_${responsive}  ${blockId}`}
             >
+                <style
+                    dangerouslySetInnerHTML={{
+                        __html: loadStyles(),
+                    }}
+                />
                 <div
-                    className={`premium-banner__img_wrap premium-banner__${height}`}
+                    className={`premium-banner__inner premium-banner__min premium-banner__${effect} premium-banner__${hoverEffect} hover_${hovered}`}
                     style={filterJsCss({
-                        minHeight: minHeight,
-                        alignItems: verAlign
+                        boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`,
+                        borderStyle: border && border.borderType,
+                        borderColor: border && border.borderColor,
                     })}
                 >
-                    <img
-                        className={`premium-banner__img`}
-                        alt="Banner Image"
-                        src={imageURL}
+                    <div
+                        className="premium-banner__bg-overlay"
+                        style={{
+                            backgroundColor: `${background}`,
+                        }}
+                    ></div>
+                    <div
+                        className={`premium-banner__img_wrap premium-banner__${height}`}
                         style={filterJsCss({
-                            filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
+                            minHeight: minHeight,
+                            alignItems: verAlign,
                         })}
-                    />
-                </div>
+                    >
+                        <img
+                            className={`premium-banner__img`}
+                            alt="Banner Image"
+                            src={imageURL}
+                            style={filterJsCss({
+                                filter: `brightness( ${filter?.bright}% ) contrast( ${filter?.contrast}% ) saturate( ${filter?.saturation}% ) blur( ${filter?.blur}px ) hue-rotate( ${filter?.hue}deg )`,
+                            })}
+                        />
+                    </div>
 
-                <div
-                    className={`premium-banner__content`}
-                    style={filterJsCss({
-                        background: "effect2" === effect ? titleStyles[0].titleBack : "transparent"
-                    })}
-                >
                     <div
-                        className={`premium-banner__title_wrap`}
+                        className={`premium-banner__content`}
                         style={filterJsCss({
-                            textAlign: contentAlign
+                            background:
+                                "effect2" === effect
+                                    ? titleStyles[0].titleBack
+                                    : "transparent",
                         })}
                     >
-                        <RichText.Content
-                            tagName={titleTag.toLowerCase()}
-                            className={`premium-banner__title`}
-                            value={title}
+                        <div
+                            className={`premium-banner__title_wrap`}
                             style={filterJsCss({
-                                color: titleStyles[0].titleColor,
-                                fontStyle: titleTypography.fontStyle,
-                                fontFamily: titleTypography.fontFamily,
-                                fontWeight: titleTypography.fontWeight,
-                                textDecoration: titleTypography.textDecoration,
-                                textTransform: titleTypography.textTransform,
-                                textShadow: `${titleTextShadow.horizontal}px ${titleTextShadow.vertical}px ${titleTextShadow.blur}px ${titleTextShadow.color}`,
+                                textAlign: contentAlign,
                             })}
-                        />
-                    </div>
-                    <div
-                        className={`premium-banner__desc_wrap`}
-                        style={filterJsCss({
-                            textAlign: contentAlign
-                        })}
-                    >
-                        <RichText.Content
-                            tagName="p"
-                            className={`premium-banner__desc`}
-                            value={desc}
+                        >
+                            <RichText.Content
+                                tagName={titleTag.toLowerCase()}
+                                className={`premium-banner__title`}
+                                value={title}
+                                style={filterJsCss({
+                                    color: titleStyles[0].titleColor,
+                                    fontStyle: titleTypography.fontStyle,
+                                    fontFamily: titleTypography.fontFamily,
+                                    fontWeight: titleTypography.fontWeight,
+                                    textDecoration:
+                                        titleTypography.textDecoration,
+                                    textTransform:
+                                        titleTypography.textTransform,
+                                    textShadow: `${titleTextShadow.horizontal}px ${titleTextShadow.vertical}px ${titleTextShadow.blur}px ${titleTextShadow.color}`,
+                                })}
+                            />
+                        </div>
+                        <div
+                            className={`premium-banner__desc_wrap`}
                             style={filterJsCss({
-                                color: descStyles[0].descColor,
-                                fontStyle: descTypography.fontStyle,
-                                fontFamily: descTypography.fontFamily,
-                                fontWeight: descTypography.fontWeight,
-                                textDecoration: descTypography.textDecoration,
-                                textTransform: descTypography.textTransform,
-                                textShadow: `${descTextShadow.horizontal}px ${descTextShadow.vertical}px ${descTextShadow.blur}px ${descTextShadow.color}`,
+                                textAlign: contentAlign,
                             })}
-                        />
+                        >
+                            <RichText.Content
+                                tagName="p"
+                                className={`premium-banner__desc`}
+                                value={desc}
+                                style={filterJsCss({
+                                    color: descStyles[0].descColor,
+                                    fontStyle: descTypography.fontStyle,
+                                    fontFamily: descTypography.fontFamily,
+                                    fontWeight: descTypography.fontWeight,
+                                    textDecoration:
+                                        descTypography.textDecoration,
+                                    textTransform: descTypography.textTransform,
+                                    textShadow: `${descTextShadow.horizontal}px ${descTextShadow.vertical}px ${descTextShadow.blur}px ${descTextShadow.color}`,
+                                })}
+                            />
+                        </div>
                     </div>
+                    {urlCheck && "" !== url && (
+                        <a
+                            className={`premium-banner__link`}
+                            href={url}
+                            target={target && "_blank"}
+                            rel="noopener"
+                        />
+                    )}
                 </div>
-                {urlCheck && "" !== url && (
-                    <a
-                        className={`premium-banner__link`}
-                        href={url}
-                        target={target && "_blank"}
-                        rel="noopener"
-                    />
-                )}
             </div>
-        </div>
+        )
     );
 };
 

@@ -91,6 +91,17 @@ a.premium-dheading-block__link:hover {
 
 /**************** Premium Banner ***********************/
 /*******************************************************/
+.premium-banner__bg-overlay{
+    position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        -webkit-transition: all .4s;
+        -o-transition: all .4s;
+        transition: all .4s;
+        z-index: 2;
+}
 .premium-banner .premium-banner__img,
 .premium-banner .premium-banner__inner {
     display: block;
