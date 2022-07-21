@@ -59,6 +59,11 @@ export default function save(props) {
                         style={filterJsCss({
                             color: PreStyles[0].textColor,
                             backgroundColor: PreStyles[0].textBGColor,
+                            fontStyle: prefixTypography.fontStyle,
+                            fontFamily: prefixTypography.fontFamily,
+                            fontWeight: prefixTypography.fontWeight,
+                            textDecoration: prefixTypography.textDecoration,
+                            textTransform: prefixTypography.textTransform,
                         })}
                     >
                         {prefix}{" "}
@@ -68,6 +73,11 @@ export default function save(props) {
                         style={filterJsCss({
                             color: fancyStyles[0].fancyTextColor,
                             backgroundColor: fancyStyles[0].fancyTextBGColor,
+                            fontStyle: fancyTextTypography.fontStyle,
+                            fontFamily: fancyTextTypography.fontFamily,
+                            fontWeight: fancyTextTypography.fontWeight,
+                            textDecoration: fancyTextTypography.textDecoration,
+                            textTransform: fancyTextTypography.textTransform,
                             textShadow: `${fancyTextShadow.horizontal}px ${fancyTextShadow.vertical}px ${fancyTextShadow.blur}px ${fancyTextShadow.color}`,
 
                         })}
@@ -81,6 +91,11 @@ export default function save(props) {
                         style={filterJsCss({
                             color: PreStyles[0].textColor,
                             backgroundColor: PreStyles[0].textBGColor,
+                            fontStyle: prefixTypography.fontStyle,
+                            fontFamily: prefixTypography.fontFamily,
+                            fontWeight: prefixTypography.fontWeight,
+                            textDecoration: prefixTypography.textDecoration,
+                            textTransform: prefixTypography.textTransform,
                         })}
                     >
                         {" "}
@@ -105,6 +120,11 @@ export default function save(props) {
                         style={filterJsCss({
                             color: PreStyles[0].textColor,
                             backgroundColor: PreStyles[0].textBGColor,
+                            fontStyle: prefixTypography.fontStyle,
+                            fontFamily: prefixTypography.fontFamily,
+                            fontWeight: prefixTypography.fontWeight,
+                            textDecoration: prefixTypography.textDecoration,
+                            textTransform: prefixTypography.textTransform,
                         })}
                     >
                         {prefix}{" "}
@@ -114,6 +134,11 @@ export default function save(props) {
                         style={{
                             color: fancyStyles[0].fancyTextColor,
                             backgroundColor: `${fancyStyles[0].fancyTextBGColor}`,
+                            fontStyle: fancyTextTypography.fontStyle,
+                            fontFamily: fancyTextTypography.fontFamily,
+                            fontWeight: fancyTextTypography.fontWeight,
+                            textDecoration: fancyTextTypography.textDecoration,
+                            textTransform: fancyTextTypography.textTransform,
                             textShadow: `${fancyTextShadow.horizontal}px ${fancyTextShadow.vertical}px ${fancyTextShadow.blur}px ${fancyTextShadow.color}`,
 
                         }}
@@ -130,6 +155,11 @@ export default function save(props) {
                         style={filterJsCss({
                             color: PreStyles[0].textColor,
                             backgroundColor: PreStyles[0].textBGColor,
+                            fontStyle: prefixTypography.fontStyle,
+                            fontFamily: prefixTypography.fontFamily,
+                            fontWeight: prefixTypography.fontWeight,
+                            textDecoration: prefixTypography.textDecoration,
+                            textTransform: prefixTypography.textTransform,
                         })}
                     >
                         {" "}
