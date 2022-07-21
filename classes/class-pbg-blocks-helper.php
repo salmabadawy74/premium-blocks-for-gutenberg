@@ -991,15 +991,15 @@ class PBG_Blocks_Helper {
 				)
 			);
 			
-			$css->set_selector( '.' . $unique_id . ' .premium-fancy-text-title' );
+			$css->set_selector( $unique_id . ' .premium-fancy-text-title' );
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $fancy_size, 'Desktop', $fancy_size['unit'] ) );
 			
 		}
 		
-		if ( isset( $attr['fancyalign'] ) ) {
-			$css->set_selector( '.' . $unique_id . ' .premium-fancy-text-title-slide-list' );
-			$css->add_property( 'text-align', ( $attr['fancyalign']['Desktop'] ) );
-		}
+		// if ( isset( $attr['fancyalign'] ) ) {
+		// 	$css->set_selector( $unique_id . ' .premium-fancy-text-title-slide-list' );
+		// 	$css->add_property( 'text-align', ( $attr['fancyalign']['Desktop'] ) );
+		// }
 
 		// Prefix and Suffix Style
 		if ( isset( $attr['prefixTypography'] ) ) {
@@ -1031,7 +1031,7 @@ class PBG_Blocks_Helper {
 				)
 			);
 			
-			$css->set_selector( '.' . $unique_id . ' .premium-fancy-text-title' );
+			$css->set_selector( $unique_id . ' .premium-fancy-text-title' );
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $fancy_size, 'Tablet', $fancy_size['unit'] ) );
 		}
 		// Prefix and Suffix Style
@@ -1050,10 +1050,10 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $fancy_size, 'Tablet', $fancy_size['unit'] ) );
 		}
 
-		if ( isset( $attr['fancyalign'] ) ) {
-			$css->set_selector( '.' . $unique_id . ' .premium-fancy-text-title-slide-list' );
-			$css->add_property( 'text-align', ( $attr['fancyalign']['Tablet'] ) );
-		}
+		// if ( isset( $attr['fancyalign'] ) ) {
+		// 	$css->set_selector( '.' . $unique_id . ' .premium-fancy-text-title-slide-list' );
+		// 	$css->add_property( 'text-align', ( $attr['fancyalign']['Tablet'] ) );
+		// }
 
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['mobile'] );
@@ -1088,10 +1088,10 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'font-size', $css->get_responsive_size_value( $fancy_size, 'Mobile', $fancy_size['unit'] ) );
 		}
 
-		if ( isset( $attr['fancyalign'] ) ) {
-			$css->set_selector( '.' . $unique_id . ' .premium-fancy-text-title-slide-list' );
-			$css->add_property( 'text-align', ( $attr['fancyalign']['Mobile'] ) );
-		}
+		// if ( isset( $attr['fancyalign'] ) ) {
+		// 	$css->set_selector( '.' . $unique_id . ' .premium-fancy-text-title-slide-list' );
+		// 	$css->add_property( 'text-align', ( $attr['fancyalign']['Mobile'] ) );
+		// }
 
 		$css->stop_media_query();
 		return $css->css_output();

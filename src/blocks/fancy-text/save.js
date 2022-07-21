@@ -6,7 +6,7 @@ export default function save(props) {
 
     const {
         blockId,
-        align,
+        contentAlign,
         prefix,
         suffix,
         repeaterFancyText,
@@ -35,18 +35,12 @@ export default function save(props) {
     return (
         <div
         className={`${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`}
-        style={filterJsCss({
-                textAlign: align,
-            })}
         >
 
             {effect === "typing" ? (
                 <div
                 id={`premium-fancy-text-${blockId}`}
                 className={`premium-fancy-text`}
-                    style={{
-                        textAlign: align,
-                    }}
                     data-effect={`${effect}`}
                     data-strings={`${repeaterFancyText.map(
                         (item, index) => {
@@ -117,10 +111,6 @@ export default function save(props) {
                 <div
                     id={`premium-fancy-text-${blockId}`}
                     className={`premium-fancy-text premium-fancy-slide`}
-                    style={{
-                        textAlign: align,
-
-                    }}
                     data-effect={`${effect}`}
                     data-strings={`${repeaterFancyText.map(
                         (item, index) => {

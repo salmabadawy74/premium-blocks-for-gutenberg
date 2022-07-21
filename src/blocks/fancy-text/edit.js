@@ -3,7 +3,6 @@ import PremiumTypo from "../../components/premium-typo";
 import Typed from "typed.js";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
-import RadioComponent from '../../components/radio-control'
 import WebfontLoader from "../../components/typography/fontLoader";
 import { SortableContainer, SortableElement, arrayMove } from "react-sortable-hoc";
 import PremiumShadow from "../../components/PremiumShadow";
@@ -81,37 +80,10 @@ class Edit extends Component {
     constructor() {
         super(...arguments);
         this.renderFancyText = this.renderFancyText.bind(this);
-        this.getPreviewSize = this.getPreviewSize.bind(this);
-    }
-    getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
-        if (device === 'Mobile') {
-            if (undefined !== mobileSize && '' !== mobileSize) {
-                return mobileSize;
-            } else if (undefined !== tabletSize && '' !== tabletSize) {
-                return tabletSize;
-            }
-        } else if (device === 'Tablet') {
-            if (undefined !== tabletSize && '' !== tabletSize) {
-                return tabletSize;
-            }
-        }
-        return desktopSize;
+
     }
 
     componentDidMount() {
-        //const { setAttributes, clientId } = this.props;
-        // if (!this.props.attributes.blockId) {
-        //     setAttributes({ blockId: clientId });
-        // }      
-        // if (!this.props.attributes.blockId) {
-        //      setAttributes({ blockId: "premium-fancy-text-" + generateBlockId(clientId) });
-        //  } 
-        // const { attributes, clientId } = this.props;
-        // if (!attributes.blockId) {
-        //     this.props.setAttributes({ blockId: "premium-fancy-text-" + generateBlockId(clientId) });
-        // }
-        // this.props.setAttributes({ classMigrate: true });
-        // this.renderFancyText();
 
         const { setAttributes, clientId } = this.props;
         // Assigning id in the attribute.
@@ -119,29 +91,14 @@ class Edit extends Component {
             setAttributes({ blockId: "premium-fancy-text-" + generateBlockId(clientId) });
         }
         setAttributes({ classMigrate: true });
-        this.getPreviewSize = this.getPreviewSize.bind(this);
-    }
 
-    getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
-        if (device === 'Mobile') {
-            if (undefined !== mobileSize && '' !== mobileSize) {
-                return mobileSize;
-            } else if (undefined !== tabletSize && '' !== tabletSize) {
-                return tabletSize;
-            }
-        } else if (device === 'Tablet') {
-            if (undefined !== tabletSize && '' !== tabletSize) {
-                return tabletSize;
-            }
-        }
-        return desktopSize;
     }
 
     componentDidUpdate() {
         const { effect } = this.props.attributes;
         if (effect == "typing" && this.typed != undefined) {
             this.typed.destroy();
-        }
+        } 
         this.renderFancyText();
     }
 
@@ -189,7 +146,7 @@ class Edit extends Component {
 
         const {
             blockId,
-            align,
+            contentAlign,
             prefix,
             suffix,
             repeaterFancyText,
@@ -329,9 +286,6 @@ class Edit extends Component {
             )
         }
 
-        // const fancyTextFontSize = this.getPreviewSize(this.props.deviceType, fancyStyles[0].fancyTextfontSize, fancyStyles[0].fancyTextfontSizeTablet, fancyStyles[0].fancyTextfontSizeMobile);;
-        // const PrefixFontSize = this.getPreviewSize(this.props.deviceType, PreStyles[0].textfontSize, PreStyles[0].textfontSizeTablet, PreStyles[0].textfontSizeMobile);
-
         const renderCss = (<style>
             {`
         .${blockId} .premium-fancy-text-title {
@@ -369,15 +323,6 @@ class Edit extends Component {
 
         return [
             renderCss,
-            isSelected && [
-                < BlockControls >
-                    <AlignmentToolbar
-                        value={align}
-                        onChange={value => setAttributes({ align: value })}
-                    />
-                </BlockControls >
-            ],
-
             isSelected && (
             <InspectorControls key={"inspector"}>
                 <InspectorTabs tabs={['layout', 'style', 'advance']}>
@@ -511,18 +456,12 @@ class Edit extends Component {
                                     onChange={(newCheck) => setAttributes({ hoverPause: newCheck })}
                                     help={__("If you enabled this option, the slide will be paused when mouseover.", 'premium-blocks-for-gutenberg')}
                                 />
-                                {/* <RadioComponent
-                                    choices={["right", "center", "left"]}
-                                    value={fancyalign}
-                                    onChange={newValue => setAttributes({ fancyalign: newValue })}
-                                    label={__("Fancy Strings Alignment", 'premium-blocks-for-gutenberg')}
-                                /> */}
-                                <MultiButtonsControl
+                                {/* <MultiButtonsControl
                                     choices={[{ value: 'left', label: __('Left'), icon: Icons.alignLeft }, { value: 'center', label: __('Center'), icon: Icons.alignCenter }, { value: 'right', label: __('Right'), icon: Icons.alignRight }]}
                                     value={fancyalign}
                                     onChange={(align) => setAttributes({ fancyalign: align })}
                                     label={__("Align Content", "premium-blocks-for-gutenberg")}
-                                    showIcons={true} />
+                                    showIcons={true} /> */}
 
                             </Fragment>
                         )}
@@ -547,34 +486,7 @@ class Edit extends Component {
                         value={fancyTextTypography}
                         onChange={newValue => setAttributes({ fancyTextTypography: newValue })}
                         />
-                    /* <PremiumTypo
-                            components={[
-                                "responsiveSize",
-                                "weight",
-                                "style",
-                                "upper",
-                                "spacing",
-                            ]}
-                            setAttributes={saveFancyStyle}
-                            fontSizeType={{
-                                value: fancyStyles[0].fancyTextfontSizeUnit,
-                                label: __("fancyTextfontSizeUnit", 'premium-blocks-for-gutenberg'),
-                            }}
-                            fontSize={fancyStyles[0].fancyTextfontSize}
-                            fontSizeMobile={fancyStyles[0].fancyTextfontSizeMobile}
-                            fontSizeTablet={fancyStyles[0].fancyTextfontSizeTablet}
-                            onChangeSize={newSize => saveFancyStyle({ fancyTextfontSize: newSize })}
-                            onChangeTabletSize={newSize => saveFancyStyle({ fancyTextfontSizeTablet: newSize })}
-                            onChangeMobileSize={newSize => saveFancyStyle({ fancyTextfontSizeMobile: newSize })}
-                            weight={fancyStyles[0].fancyTextWeight}
-                            style={fancyStyles[0].fancyTextStyle}
-                            spacing={fancyStyles[0].fancyTextLetter}
-                            upper={fancyStyles[0].fancyTextUpper}
-                            onChangeWeight={newWeight => saveFancyStyle({ fancyTextWeight: newWeight || 500, })}
-                            onChangeStyle={newStyle => saveFancyStyle({ fancyTextStyle: newStyle })}
-                            onChangeSpacing={newValue => saveFancyStyle({ fancyTextLetter: newValue })}
-                            onChangeUpper={check => saveFancyStyle({ fancyTextUpper: check })}
-                        /> */}
+                        }
                         <AdvancedPopColorControl
                             label={__('Background Color')}
                             colorValue={fancyStyles[0].fancyTextBGColor}
@@ -617,35 +529,7 @@ class Edit extends Component {
                             components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
                             value={prefixTypography}
                             onChange={newValue => setAttributes({ prefixTypography: newValue })}
-                        />
-                        /* <PremiumTypo
-                            components={[
-                                "responsiveSize",
-                                "weight",
-                                "style",
-                                "upper",
-                                "spacing",
-                            ]}
-                            setAttributes={savePrefixStyle}
-                            fontSizeType={{
-                                value: PreStyles[0].textfontSizeUnit,
-                                label: __("textfontSizeUnit", 'premium-blocks-for-gutenberg'),
-                            }}
-                            fontSize={PreStyles[0].textfontSize}
-                            fontSizeMobile={PreStyles[0].textfontSizeMobile}
-                            fontSizeTablet={PreStyles[0].textfontSizeTablet}
-                            onChangeSize={newSize => savePrefixStyle({ textfontSize: newSize })}
-                            onChangeTabletSize={newSize => savePrefixStyle({ textfontSizeTablet: newSize })}
-                            onChangeMobileSize={newSize => savePrefixStyle({ textfontSizeMobile: newSize })}
-                            weight={PreStyles[0].textWeight}
-                            style={PreStyles[0].textStyle}
-                            spacing={PreStyles[0].textLetter}
-                            upper={PreStyles[0].textUpper}
-                            onChangeWeight={(newWeight) => savePrefixStyle({ textWeight: newWeight || 500 })}
-                            onChangeStyle={(newStyle) => savePrefixStyle({ textStyle: newStyle })}
-                            onChangeSpacing={(newValue) => savePrefixStyle({ textLetter: newValue })}
-                            onChangeUpper={(check) => savePrefixStyle({ textUpper: check })}
-                        /> */}
+                        />}
                         <AdvancedPopColorControl
                             label={__(`Background Color`)}
                             colorValue={PreStyles[0].textBGColor}
@@ -668,18 +552,12 @@ class Edit extends Component {
                 </InspectorControls >
             ),
 
-            <div
-            mainClasses
-                id={`premium-fancy-text-${blockId}`}
-                className={`${mainClasses} ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+            <div className={`${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`}
             >
                 {effect === "typing" ? (
                     <div
-                        id={`premium-fancy-text-${blockId}`}
+                        id={`${blockId}`}
                         className={`premium-fancy-text`}
-                        style={{
-                            textAlign: align,
-                        }}
                         data-effect={`${effect}`}
                         data-strings={`${repeaterFancyText.map(
                             (item, index) => {
@@ -712,11 +590,8 @@ class Edit extends Component {
                     </div>
                 ) : (
                     <div
-                        id={`premium-fancy-text-${blockId}`}
+                        id={`${blockId}`}
                         className={`premium-fancy-text premium-fancy-slide`}
-                        style={{
-                            textAlign: align,
-                        }}
                         data-effect={`${effect}`}
                         data-strings={`${repeaterFancyText.map(
                             (item, index) => {
@@ -732,9 +607,6 @@ class Edit extends Component {
                         </span>
                         <div
                             className={`premium-fancy-text-title premium-fancy-text-title-slide`}
-                            style={{
-                                textAlign: fancyalign[this.props.deviceType],
-                            }}
                         >
                             <ul
                                 className={`premium-fancy-text-title-slide-list`}

@@ -260,7 +260,6 @@ const new_Deprecated_Attributes2 = {
     block_id: {
         type: "string"
     },
-
     fancyalign: {
         type: "object",
         default: {
@@ -332,16 +331,16 @@ const deprecated = [
         migrate: (attributes) => {
             let newAttributes = {
                 blockId: attributes.block_id ? "premium-fancy-text-" + generateBlockId(attributes.block_id) : '',	
-                fancyalign: {
-                    Desktop: attributes.fancyalign,
-                    Tablet: attributes.fancyalign,
-                    Mobile: attributes.fancyalign,
-                },
-                align: {
-                    Desktop: attributes.align,
-                    Tablet: attributes.align,
-                    Mobile: attributes.align,
-                },
+                // fancyalign: {
+                //     Desktop: attributes.fancyalign,
+                //     Tablet: attributes.fancyalign,
+                //     Mobile: attributes.fancyalign,
+                // },
+                // align: {
+                //     Desktop: attributes.align,
+                //     Tablet: attributes.align,
+                //     Mobile: attributes.align,
+                // },
                 prefixTypography: {
                         // 'fontWeight': '',
                         // 'fontStyle': '',
@@ -357,8 +356,7 @@ const deprecated = [
                             "Mobile": attributes?.PreStyles[0]?.textfontSizeMobile || '',
                             "unit": 'px'
                         }
-
-                    },
+                },
                 fancyTextTypography: {
                         'fontWeight': '',
                         'fontStyle': '',
@@ -368,7 +366,7 @@ const deprecated = [
                         'lineHeight': '',
                         'textDecoration': '',
                         'fontSize': {
-                            "Desktop": attributes?.fancyStyles?.[0].fancyTextfontSize || '',
+                            "Desktop": '120',
                             "Tablet": attributes?.fancyStyles?.[0].fancyTextfontSizeTablet || '',
                             "Mobile": attributes?.fancyStyles?.[0].fancyTextfontSizeMobile || '',
                             "unit": 'px'
@@ -408,7 +406,7 @@ const deprecated = [
 
             return (
                 <div
-                    className={`${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                    className={classnames(className, `premium-block-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`)}
                     style={{
                         textAlign: align,
                     }}

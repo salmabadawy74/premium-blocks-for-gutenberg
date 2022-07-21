@@ -7,7 +7,7 @@ const attributes = {
         type: "boolean",
         default: ""
     },
-    align: {
+    contentAlign: {
         type: "object",
         default: {
             Desktop: "center",
