@@ -209,7 +209,7 @@ class PBG_Blocks_Helper {
 				'ajaxurl'           => esc_url( admin_url( 'admin-ajax.php' ) ),
 				'nonce'             => wp_create_nonce( 'pa-blog-block-nonce' ),
 				'settingPath'       => admin_url( 'admin.php?page=premium-gutenberg-maps' ),
-				'defaultAuthImg'    => PREMIUM_BLOCKS_URL . 'assets/img/author.jpg',
+				'defaultAuthImg'    => PREMIUM_BLOCKS_URL . 'assets/img/placeholder.png',
 				'activeBlocks'      => self::$blocks,
 				'tablet_breakpoint' => PBG_TABLET_BREAKPOINT,
 				'mobile_breakpoint' => PBG_MOBILE_BREAKPOINT,
@@ -8601,30 +8601,31 @@ class PBG_Blocks_Helper {
 	 */
 	public function get_person_css_style( $attr, $unique_id ) {
 
-		if ( isset( $attr['nameTypography']['fontFamily'] ) ) {
-			$this->add_gfont(
-				array(
-					'fontFamily'  => ( isset( $attr['nameTypography']['fontFamily'] ) ? $attr['nameTypography']['fontFamily'] : '' ),
-					'fontVariant' => ( isset( $attr['nameTypography']['fontWeight'] ) ? $attr['nameTypography']['fontWeight'] : '' ),
-				)
-			);
-		}
-		if ( isset( $attr['titleTypography']['fontFamily'] ) ) {
-			$this->add_gfont(
-				array(
-					'fontFamily'  => ( isset( $attr['titleTypography']['fontFamily'] ) ? $attr['titleTypography']['fontFamily'] : '' ),
-					'fontVariant' => ( isset( $attr['titleTypography']['fontWeight'] ) ? $attr['titleTypography']['fontWeight'] : '' ),
-				)
-			);
-		}
-		if ( isset( $attr['descTypography']['fontFamily'] ) ) {
-			$this->add_gfont(
-				array(
-					'fontFamily'  => ( isset( $attr['descTypography']['fontFamily'] ) ? $attr['descTypography']['fontFamily'] : '' ),
-					'fontVariant' => ( isset( $attr['descTypography']['fontWeight'] ) ? $attr['descTypography']['fontWeight'] : '' ),
-				)
-			);
-		}
+		// if ( isset( $attr['nameTypography']['fontFamily'] ) ) {
+		// 	$this->add_gfont(
+		// 		array(
+		// 			'fontFamily'  => ( isset( $attr['nameTypography']['fontFamily'] ) ? $attr['nameTypography']['fontFamily'] : '' ),
+		// 			'fontVariant' => ( isset( $attr['nameTypography']['fontWeight'] ) ? $attr['nameTypography']['fontWeight'] : '' ),
+		// 		)
+		// 	);
+		// }
+
+		// if ( isset( $attr['titleTypography']['fontFamily'] ) ) {
+		// 	$this->add_gfont(
+		// 		array(
+		// 			'fontFamily'  => ( isset( $attr['titleTypography']['fontFamily'] ) ? $attr['titleTypography']['fontFamily'] : '' ),
+		// 			'fontVariant' => ( isset( $attr['titleTypography']['fontWeight'] ) ? $attr['titleTypography']['fontWeight'] : '' ),
+		// 		)
+		// 	);
+		// }
+		// if ( isset( $attr['descTypography']['fontFamily'] ) ) {
+		// 	$this->add_gfont(
+		// 		array(
+		// 			'fontFamily'  => ( isset( $attr['descTypography']['fontFamily'] ) ? $attr['descTypography']['fontFamily'] : '' ),
+		// 			'fontVariant' => ( isset( $attr['descTypography']['fontWeight'] ) ? $attr['descTypography']['fontWeight'] : '' ),
+		// 		)
+		// 	);
+		// }
 
 		$css                    = new Premium_Blocks_css();
 		$media_query            = array();
@@ -8658,9 +8659,13 @@ class PBG_Blocks_Helper {
 
 		// Style for Name.
 		if ( isset( $attr['nameTypography'] ) ) {
-				$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . '> .premium-person__inner' . ' > .premium-person__info' . ' > .premium-person__name' );
-				$css->add_property( 'font-size', ( $attr['nameTypography']['fontSize']['Desktop'] . ( isset( $attr['nameTypography']['fontSize']['unit'] ) ? $attr['nameTypography']['fontSize']['unit'] : 'px' ) . '!important' ) );
+			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . '> .premium-person__inner' . ' > .premium-person__info' . ' > .premium-person__name' );
+			$css->render_typography( $attr['nameTypography'] ,'Desktop');
 		}
+		// if ( isset( $attr['nameTypography'] ) ) {
+		// 		$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . '> .premium-person__inner' . ' > .premium-person__info' . ' > .premium-person__name' );
+		// 		$css->add_property( 'font-size', ( $attr['nameTypography']['fontSize']['Desktop'] . ( isset( $attr['nameTypography']['fontSize']['unit'] ) ? $attr['nameTypography']['fontSize']['unit'] : 'px' ) . '!important' ) );
+		// }
 		if ( isset( $attr['namePadding']['Desktop']['top'] ) && isset( $attr['namePadding']['unit'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . '> .premium-person__inner' . ' > .premium-person__info' . ' > .premium-person__name' );
 			$css->add_property( 'padding-top', $css->render_color( $attr['namePadding']['Desktop']['top'] . ( isset( $attr['namePadding']['unit'] ) ? $attr['namePadding']['unit'] : 'px' ) . '!important' ) );
@@ -8680,9 +8685,13 @@ class PBG_Blocks_Helper {
 
 		// Style for Title.
 		if ( isset( $attr['titleTypography'] ) ) {
-				$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . '> .premium-person__inner' . ' > .premium-person__info' . ' > .premium-person__title' );
-				$css->add_property( 'font-size', ( $attr['titleTypography']['fontSize']['Desktop'] . ( isset( $attr['titleTypography']['fontSize']['unit'] ) ? $attr['titleTypography']['fontSize']['unit'] : 'px' ) . '!important' ) );
+			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . '> .premium-person__inner' . ' > .premium-person__info' . ' > .premium-person__title' );
+			$css->render_typography( $attr['titleTypography'] ,'Desktop');
 		}
+		// if ( isset( $attr['titleTypography'] ) ) {
+		// 		$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . '> .premium-person__inner' . ' > .premium-person__info' . ' > .premium-person__title' );
+		// 		$css->add_property( 'font-size', ( $attr['titleTypography']['fontSize']['Desktop'] . ( isset( $attr['titleTypography']['fontSize']['unit'] ) ? $attr['titleTypography']['fontSize']['unit'] : 'px' ) . '!important' ) );
+		// }
 		if ( isset( $attr['titlePadding']['Desktop']['top'] ) && isset( $attr['titlePadding']['unit'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . '> .premium-person__inner' . ' > .premium-person__info' . ' > .premium-person__title' );
 			$css->add_property( 'padding-top', $css->render_color( $attr['titlePadding']['Desktop']['top'] . ( isset( $attr['titlePadding']['unit'] ) ? $attr['titlePadding']['unit'] : 'px' ) . '!important' ) );
@@ -8718,9 +8727,13 @@ class PBG_Blocks_Helper {
 
 		// Style for Desc.
 		if ( isset( $attr['descTypography'] ) ) {
-				$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . '> .premium-person__inner' . ' > .premium-person__info' . ' > .premium-person__desc' );
-				$css->add_property( 'font-size', ( $attr['descTypography']['fontSize']['Desktop'] . ( isset( $attr['descTypography']['fontSize']['unit'] ) ? $attr['descTypography']['fontSize']['unit'] : 'px' ) . '!important' ) );
+			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . '> .premium-person__inner' . ' > .premium-person__info' . ' > .premium-person__desc' );
+			$css->render_typography( $attr['descTypography'] ,'Desktop');
 		}
+		// if ( isset( $attr['descTypography'] ) ) {
+		// 		$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . '> .premium-person__inner' . ' > .premium-person__info' . ' > .premium-person__desc' );
+		// 		$css->add_property( 'font-size', ( $attr['descTypography']['fontSize']['Desktop'] . ( isset( $attr['descTypography']['fontSize']['unit'] ) ? $attr['descTypography']['fontSize']['unit'] : 'px' ) . '!important' ) );
+		// }
 		if ( isset( $attr['descPadding']['Desktop']['top'] ) && isset( $attr['descPadding']['unit'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . '> .premium-person__inner' . ' > .premium-person__info' . ' > .premium-person__desc' );
 			$css->add_property( 'padding-top', $css->render_color( $attr['descPadding']['Desktop']['top'] . ( isset( $attr['descPadding']['unit'] ) ? $attr['descPadding']['unit'] : 'px' ) . '!important' ) );

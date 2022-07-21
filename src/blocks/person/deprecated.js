@@ -308,7 +308,7 @@ const deprecated = [
         migrate: (attributes) => {
             let newAttributes = {
                 nameTag: 'h2',
-                titleTag: 'h4',
+                titleTag: 'h5',
                 blockId: attributes.id ? `premium-person-${attributes.id.split('-')[6]}` : '',
                 align: {
                     "Desktop": attributes.personAlign,

@@ -134,7 +134,7 @@ const attributes = {
     },
     titleTag: {
         type: "string",
-        default: "h4"
+        default: "h5"
     },
     socialIconMargin: {
         type: "object",
@@ -265,9 +265,9 @@ const attributes = {
             'lineHeight': '',
             'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
             'fontSize': {
-                'Desktop': 20,
-                "Tablet": 20,
-                "Mobile": 20,
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
                 unit: 'px'
             }
         }
@@ -320,10 +320,10 @@ const attributes = {
         type: "object",
         default: {
             Desktop: {
-                top: 0,
-                right: 0,
-                bottom: 0,
-                left: 0
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
             },
             Tablet: {
                 top: "",
@@ -344,10 +344,10 @@ const attributes = {
         type: "object",
         default: {
             Desktop: {
-                top: "0",
-                right: "0",
-                bottom: "0",
-                left: "0"
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
             },
             Tablet: {
                 top: "",
@@ -368,10 +368,10 @@ const attributes = {
         type: "object",
         default: {
             Desktop: {
-                top: "0",
-                right: "0",
-                bottom: "0",
-                left: "0"
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
             },
             Tablet: {
                 top: "",
@@ -392,10 +392,10 @@ const attributes = {
         type: "object",
         default: {
             Desktop: {
-                top: "0",
-                right: "0",
-                bottom: "0",
-                left: "0"
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
             },
             Tablet: {
                 top: "",
@@ -439,15 +439,15 @@ const attributes = {
     imgHeight: {
         type: "object",
         default: {
-            Desktop: '100',
-            unit: '%'
+            Desktop: '200',
+            unit: 'px'
         }
     },
     imgWidth: {
         type: "object",
         default: {
-            Desktop: '100',
-            unit: '%'
+            Desktop: '200',
+            unit: 'px'
         }
     },
     socialIcon: {

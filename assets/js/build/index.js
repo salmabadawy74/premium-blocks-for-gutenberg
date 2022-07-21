@@ -38854,7 +38854,7 @@ const attributes = {
   },
   titleTag: {
     type: "string",
-    default: "h4"
+    default: "h5"
   },
   socialIconMargin: {
     type: "object",
@@ -38985,9 +38985,9 @@ const attributes = {
       'lineHeight': '',
       'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
       'fontSize': {
-        'Desktop': 20,
-        "Tablet": 20,
-        "Mobile": 20,
+        'Desktop': '',
+        "Tablet": '',
+        "Mobile": '',
         unit: 'px'
       }
     }
@@ -39040,10 +39040,10 @@ const attributes = {
     type: "object",
     default: {
       Desktop: {
-        top: 0,
-        right: 0,
-        bottom: 0,
-        left: 0
+        top: '',
+        right: '',
+        bottom: '',
+        left: ''
       },
       Tablet: {
         top: "",
@@ -39064,10 +39064,10 @@ const attributes = {
     type: "object",
     default: {
       Desktop: {
-        top: "0",
-        right: "0",
-        bottom: "0",
-        left: "0"
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
       },
       Tablet: {
         top: "",
@@ -39088,10 +39088,10 @@ const attributes = {
     type: "object",
     default: {
       Desktop: {
-        top: "0",
-        right: "0",
-        bottom: "0",
-        left: "0"
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
       },
       Tablet: {
         top: "",
@@ -39112,10 +39112,10 @@ const attributes = {
     type: "object",
     default: {
       Desktop: {
-        top: "0",
-        right: "0",
-        bottom: "0",
-        left: "0"
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
       },
       Tablet: {
         top: "",
@@ -39159,15 +39159,15 @@ const attributes = {
   imgHeight: {
     type: "object",
     default: {
-      Desktop: '100',
-      unit: '%'
+      Desktop: '200',
+      unit: 'px'
     }
   },
   imgWidth: {
     type: "object",
     default: {
-      Desktop: '100',
-      unit: '%'
+      Desktop: '200',
+      unit: 'px'
     }
   },
   socialIcon: {
@@ -39531,7 +39531,7 @@ const deprecated = [{
   migrate: attributes => {
     let newAttributes = {
       nameTag: 'h2',
-      titleTag: 'h4',
+      titleTag: 'h5',
       blockId: attributes.id ? `premium-person-${attributes.id.split('-')[6]}` : '',
       align: {
         "Desktop": attributes.personAlign,
@@ -41289,6 +41289,11 @@ const save = props => {
       style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
         color: nameColor,
         alignSelf: nameV,
+        fontStyle: nameTypography === null || nameTypography === void 0 ? void 0 : nameTypography.fontStyle,
+        fontFamily: nameTypography === null || nameTypography === void 0 ? void 0 : nameTypography.fontFamily,
+        fontWeight: nameTypography === null || nameTypography === void 0 ? void 0 : nameTypography.fontWeight,
+        textDecoration: nameTypography === null || nameTypography === void 0 ? void 0 : nameTypography.textDecoration,
+        textTransform: nameTypography === null || nameTypography === void 0 ? void 0 : nameTypography.textTransform,
         // ...typographyCss(nameTypography, props.deviceType),
         textShadow: `${nameShadow.horizontal}px ${nameShadow.vertical}px ${nameShadow.blur}px ${nameShadow.color}`
       }),
@@ -41304,6 +41309,11 @@ const save = props => {
       },
       style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
         color: titleColor,
+        fontStyle: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontStyle,
+        fontFamily: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontFamily,
+        fontWeight: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontWeight,
+        textDecoration: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textDecoration,
+        textTransform: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textTransform,
         // ...typographyCss(titleTypography, props.deviceType),
         alignSelf: titleV,
         textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`
@@ -41320,6 +41330,11 @@ const save = props => {
       },
       style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
         color: descColor,
+        fontStyle: descTypography === null || descTypography === void 0 ? void 0 : descTypography.fontStyle,
+        fontFamily: descTypography === null || descTypography === void 0 ? void 0 : descTypography.fontFamily,
+        fontWeight: descTypography === null || descTypography === void 0 ? void 0 : descTypography.fontWeight,
+        textDecoration: descTypography === null || descTypography === void 0 ? void 0 : descTypography.textDecoration,
+        textTransform: descTypography === null || descTypography === void 0 ? void 0 : descTypography.textTransform,
         // ...typographyCss(descTypography, props.deviceType),
         alignSelf: descV,
         textShadow: `${descShadow.horizontal}px ${descShadow.vertical}px ${descShadow.blur}px ${descShadow.color}`

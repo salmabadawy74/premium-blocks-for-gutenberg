@@ -127,6 +127,11 @@ const save = props => {
                             style={filterJsCss({
                                 color: nameColor,
                                 alignSelf: nameV,
+                                fontStyle: nameTypography?.fontStyle,
+                                fontFamily: nameTypography?.fontFamily,
+                                fontWeight: nameTypography?.fontWeight,
+                                textDecoration: nameTypography?.textDecoration,
+                                textTransform: nameTypography?.textTransform,
                                 // ...typographyCss(nameTypography, props.deviceType),
                                 textShadow: `${nameShadow.horizontal}px ${nameShadow.vertical}px ${nameShadow.blur}px ${nameShadow.color}`
                             })}
@@ -141,6 +146,11 @@ const save = props => {
                             onChange={title => { this.save({ title: title }, index) }}
                             style={filterJsCss({
                                 color: titleColor,
+                                fontStyle: titleTypography?.fontStyle,
+                                fontFamily: titleTypography?.fontFamily,
+                                fontWeight: titleTypography?.fontWeight,
+                                textDecoration: titleTypography?.textDecoration,
+                                textTransform: titleTypography?.textTransform,
                                 // ...typographyCss(titleTypography, props.deviceType),
                                 alignSelf: titleV,
                                 textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`
@@ -156,6 +166,11 @@ const save = props => {
                             onChange={desc => { this.save({ desc: desc }, index) }}
                             style={filterJsCss({
                                 color: descColor,
+                                fontStyle: descTypography?.fontStyle,
+                                fontFamily: descTypography?.fontFamily,
+                                fontWeight: descTypography?.fontWeight,
+                                textDecoration: descTypography?.textDecoration,
+                                textTransform: descTypography?.textTransform,
                                 // ...typographyCss(descTypography, props.deviceType),
                                 alignSelf: descV,
                                 textShadow: `${descShadow.horizontal}px ${descShadow.vertical}px ${descShadow.blur}px ${descShadow.color}`
