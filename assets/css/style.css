@@ -1,3 +1,11 @@
+:root {
+    --pbBacgroundColor: rgb(242, 242, 242);
+    --pbBorderColor: #e1e1e1;
+    --pbiconHoverColor:#696969:
+}
+
+
+
 /**************** Premium Dual Heading *****************/
 /*******************************************************/
 .premium-dheading-block__container .premium-dheading-block__title {
@@ -155,6 +163,7 @@ a.premium-dheading-block__link:hover {
     text-align: left;
 }
 .premium-banner .premium-banner__inner .premium-banner__content {
+    z-index: 3;
     padding: 15px;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
@@ -366,7 +375,7 @@ a.premium-dheading-block__link:hover {
     bottom: 0;
     padding: 15px;
     height: auto;
-    background: rgb(242, 242, 242);
+    background: var(--pbBacgroundColor);
     color: #3c4a50;
     -webkit-transition: -webkit-transform 0.35s;
     transition: -webkit-transform 0.35s;
@@ -530,7 +539,7 @@ a.premium-dheading-block__link:hover {
     left: 0;
     width: 100%;
     height: 1px;
-    background: #e1e1e1;
+    background: var(--pbBorderColor);
     -webkit-transition: -webkit-transform 0.35s;
     transition: -webkit-transform 0.35s;
     transition: transform 0.35s;
@@ -671,8 +680,8 @@ a.premium-dheading-block__link:hover {
     right: 30px;
     bottom: 50px;
     left: 30px;
-    border-top: 1px solid #e1e1e1;
-    border-bottom: 1px solid #e1e1e1;
+    border-top: 1px solid var(--pbBorderColor);
+    border-bottom: 1px solid var(--pbBorderColor);
     -webkit-transform: scale(0, 1);
     -ms-transform: scale(0, 1);
     transform: scale(0, 1);
@@ -686,8 +695,8 @@ a.premium-dheading-block__link:hover {
     right: 50px;
     bottom: 30px;
     left: 50px;
-    border-right: 1px solid #e1e1e1;
-    border-left: 1px solid #e1e1e1;
+    border-right: 1px solid var(--pbBorderColor);
+    border-left: 1px solid var(--pbBorderColor);
     -webkit-transform: scale(1, 0);
     -ms-transform: scale(1, 0);
     transform: scale(1, 0);
@@ -779,7 +788,7 @@ a.premium-dheading-block__link:hover {
     right: 30px;
     bottom: 30px;
     left: 30px;
-    border: 1px solid #e1e1e1;
+    border: 1px solid var(--pbBorderColor);
 }
 
 .premium-banner .premium-banner__effect6 .premium-banner__title_wrap {
