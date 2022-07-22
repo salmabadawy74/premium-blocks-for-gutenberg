@@ -988,9 +988,13 @@ class PBG_Blocks_Helper {
 		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
 		// FancyText Style
 		if ( isset( $attr['fancyTextTypography'] ) ) {
+			$fancy_typography = $attr['fancyTextTypography'];
+			$fancy_size       = $fancy_typography['fontSize'];
 
             $css->set_selector( '.' . $unique_id . ' .premium-fancy-text-title' );
             $css->render_typography( $attr['fancyTextTypography'] ,'Desktop');
+			$css->set_selector( '.' . $unique_id . ' .typed-cursor' );
+			$css->add_property( 'font-size', $css->get_responsive_size_value( $fancy_size, 'Desktop', $fancy_size['unit'] ) );
 
         }
 		// Suffix, Prefix Style

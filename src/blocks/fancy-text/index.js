@@ -14,6 +14,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType("premium/fancy-text", {
     title: __("Fancy Text"),
     description: __('Insert animated headlines across your Gutenberg page using Premium Fancy Text Block.'),
+    keywords: ["fancy-text", "animated-text", "animated"],
     icon: PBG_Block_Icons.fancyText,
     category: "premium-blocks",
     attributes: attributes,

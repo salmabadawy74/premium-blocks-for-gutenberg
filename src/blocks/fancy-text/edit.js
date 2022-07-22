@@ -304,17 +304,18 @@ class Edit extends Component {
         const renderCss = (
             <style>
                 {`
-        .${blockId} .premium-fancy-text-title {
-            color: ${fancyStyles[0].fancyTextColor};
-            background-color: ${fancyStyles[0].fancyTextBGColor};
-        }
-        .${blockId} .typed-cursor {
-            color: ${fancyStyles[0].cursorColor};
-        }
-        .${blockId} .premium-fancy-text-suffix-prefix {
-            color: ${PreStyles[0].textColor};
-            background-color: ${PreStyles[0].textBGColor};
-        }
+                .${blockId} .premium-fancy-text-title {
+                    color: ${fancyStyles[0].fancyTextColor};
+                    background-color: ${fancyStyles[0].fancyTextBGColor};
+                }
+                .${blockId} .typed-cursor {
+                    color: ${fancyStyles[0].cursorColor};
+                    font-size: ${fancyTextTypography.fontSize[this.props.deviceType]}${fancyTextTypography.fontSize.unit};
+                }
+                .${blockId} .premium-fancy-text-suffix-prefix {
+                    color: ${PreStyles[0].textColor};
+                    background-color: ${PreStyles[0].textBGColor};
+                }
             `}
             </style>
         );
