@@ -11,7 +11,6 @@ const save = (props) => {
         title,
         titleTag,
         desc,
-        contentAlign,
         effect,
         hoverEffect,
         height,
@@ -105,12 +104,7 @@ const save = (props) => {
                                     : "transparent",
                         })}
                     >
-                        <div
-                            className={`premium-banner__title_wrap`}
-                            style={filterJsCss({
-                                textAlign: contentAlign,
-                            })}
-                        >
+                        <div className={`premium-banner__title_wrap`}>
                             <RichText.Content
                                 tagName={titleTag.toLowerCase()}
                                 className={`premium-banner__title`}
@@ -128,12 +122,7 @@ const save = (props) => {
                                 })}
                             />
                         </div>
-                        <div
-                            className={`premium-banner__desc_wrap`}
-                            style={filterJsCss({
-                                textAlign: contentAlign,
-                            })}
-                        >
+                        <div className={`premium-banner__desc_wrap`}>
                             <RichText.Content
                                 tagName="p"
                                 className={`premium-banner__desc`}
