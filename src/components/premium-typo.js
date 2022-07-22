@@ -487,7 +487,7 @@ export default class PremiumTypo extends Component {
                                                                     }${
                                                                         variant ===
                                                                         "none"
-                                                                            ? " fas fa-ban"
+                                                                            ? " dashicons-remove"
                                                                             : ""
                                                                     }`}
                                                                     data-variant={
@@ -506,6 +506,7 @@ export default class PremiumTypo extends Component {
                                                             {[
                                                                 "line-through",
                                                                 "underline",
+                                                                "none",
                                                             ].map((variant) => (
                                                                 <li
                                                                     key={
@@ -523,6 +524,11 @@ export default class PremiumTypo extends Component {
                                                                         ] ==
                                                                         variant
                                                                             ? "active"
+                                                                            : ""
+                                                                    }${
+                                                                        variant ===
+                                                                        "none"
+                                                                            ? " dashicons-remove"
                                                                             : ""
                                                                     }`}
                                                                     data-variant={

@@ -26,6 +26,7 @@
     $accent-color-hover: #135e96;
     $option-border-color: #e1e1e1;
     $input-border-color: #e1e1e1;
+    $icon-background:#696969;
 
 .premium-panel-body {
     p.premium-editor-paragraph {
@@ -359,7 +360,8 @@
     background-color: #a4afb7;
     color: #fff;
     font-size: 11px;
-    padding: 7px 21px;
+    padding: 0px 21px;
+    line-height: 36px;
     cursor: pointer;
     font-weight: 500;
     text-transform: uppercase;
@@ -378,7 +380,7 @@
     transition-duration: 0.3s;
 }
 .premium-repeater__icon {
-    margin-right: 10px;
+    margin-right: 5px;
     vertical-align: middle;
 }
 .premium-notice {
@@ -434,6 +436,9 @@
     padding: 15px 10px;
     border-left: 1px solid $option-border-color;
     width: 40px;
+}
+.premium-repeater-item__trashicon:hover,.premium-repeater-item__dragHandle:hover{
+    background: $icon-background;
 }
 .components-panel {
     .rfipdropdown.rfipdropdown--default.fipappear-enter-done {
