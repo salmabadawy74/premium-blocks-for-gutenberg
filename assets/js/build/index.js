@@ -31614,7 +31614,7 @@ const save = props => {
     styles[`.${blockId} .premium-button__slide .premium-button::before`] = {
       'background-color': `${btnStyles[0].btnHoverBack} !important`
     };
-    return generateCss(styles);
+    return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.generateCss)(styles);
   };
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {

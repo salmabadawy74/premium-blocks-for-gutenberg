@@ -1069,7 +1069,8 @@ a.premium-dheading-block__link:hover {
 .premium-icon-container {
     text-align: center;
 }
-.premium-icon__container .premium-icon.dashicons{
+
+.premium-icon__container .premium-icon.dashicons {
     font-size: 50px;
 }
 
@@ -2161,7 +2162,7 @@ a.premium-dheading-block__link:hover {
 }
 
 .premium-person__name {
-    margin: 0 ;
+    margin: 0;
     padding: 7px;
 }
 
@@ -2416,10 +2417,10 @@ a.premium-dheading-block__link:hover {
 }
 
 .premium-person__socialIcon__link_content {
-    /* text-decoration: none;
-    color: black;
+    text-decoration: none;
+    /* color: black; */
     display: inline-block;
-    margin-top: 1px;
+    /* margin-top: 1px;
     margin-bottom: 1px; */
 }
 
