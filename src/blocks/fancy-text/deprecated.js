@@ -259,22 +259,22 @@ const attributesV2 = {
     block_id: {
         type: "string"
     },
-    // classMigrate: {
-    //     type: "boolean",
-    //     default: false
-    // },
+    classMigrate: {
+        type: "boolean",
+        default: false
+    },
     align: {
         type: "string",
         default: "center"
     },
-    // prefix: {
-    //     type: "string",
-    //     default: "This is"
-    // },
-    // suffix: {
-    //     type: "string",
-    //     default: "Text"
-    // },
+    prefix: {
+        type: "string",
+        default: "This is"
+    },
+    suffix: {
+        type: "string",
+        default: "Text"
+    },
     repeaterFancyText: {
         type: "array",
         default: [{
@@ -291,86 +291,86 @@ const attributesV2 = {
         },
         ]
     },
-    // effect: {
-    //     type: "string",
-    //     default: "typing"
-    // },
-    // loop: {
-    //     type: "boolean",
-    //     default: "true"
-    // },
-    // cursorShow: {
-    //     type: "boolean",
-    //     default: "true"
-    // },
-    // cursorMark: {
-    //     type: "string",
-    //     default: "|"
-    // },
-    // typeSpeed: {
-    //     type: "number",
-    //     default: 100
-    // },
-    // backdelay: {
-    //     type: "number",
-    //     default: 30
-    // },
-    // startdelay: {
-    //     type: "number",
-    //     default: 30
-    // },
-    // backSpeed: {
-    //     type: "number",
-    //     default: 30
-    // },
-    // animationSpeed: {
-    //     type: "number",
-    //     default: 200
-    // },
-    // pauseTime: {
-    //     type: "number",
-    //     default: 3000
-    // },
-    // hoverPause: {
-    //     type: "boolean",
-    //     default: false
-    // },
-    // fancyalign: {
-    //     type: "string",
-    //     default: "center"
-    // },
-    // hideDesktop: {
-    //     type: 'boolean',
-    //     default: false
-    // },
-    // hideTablet: {
-    //     type: 'boolean',
-    //     default: false
-    // },
-    // hideMobile: {
-    //     type: 'boolean',
-    //     default: false
-    // },
+    effect: {
+        type: "string",
+        default: "typing"
+    },
+    loop: {
+        type: "boolean",
+        default: "true"
+    },
+    cursorShow: {
+        type: "boolean",
+        default: "true"
+    },
+    cursorMark: {
+        type: "string",
+        default: "|"
+    },
+    typeSpeed: {
+        type: "number",
+        default: 100
+    },
+    backdelay: {
+        type: "number",
+        default: 30
+    },
+    startdelay: {
+        type: "number",
+        default: 30
+    },
+    backSpeed: {
+        type: "number",
+        default: 30
+    },
+    animationSpeed: {
+        type: "number",
+        default: 200
+    },
+    pauseTime: {
+        type: "number",
+        default: 3000
+    },
+    hoverPause: {
+        type: "boolean",
+        default: false
+    },
+    fancyalign: {
+        type: "string",
+        default: "center"
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: false
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: false
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: false
+    },
     fancyStyles: {
         type: "array",
         default: [
             {
-                //fancyTextColor: "#6ec1e4",
+                fancyTextColor: "#6ec1e4",
                 fancyTextfontSize: 20,
                 fancyTextfontSizeUnit: 'px',
                 fancyTextfontSizeMobile: 20,
                 fancyTextfontSizeTablet: 20,
-                // fancyTextBGColor: '',
-                // fancyTextBGOpacity: 1,
+                fancyTextBGColor: '',
+                fancyTextBGOpacity: 1,
                 fancyTextLetter: '',
                 fancyTextStyle: '',
                 fancyTextUpper: false,
                 fancyTextWeight: 600,
-                // shadowColor: '',
-                // shadowBlur: '0',
-                // shadowHorizontal: '0',
-                // shadowVertical: '0',
-                // cursorColor: "#6ec1e4"
+                shadowColor: '',
+                shadowBlur: '0',
+                shadowHorizontal: '0',
+                shadowVertical: '0',
+                cursorColor: "#6ec1e4"
             }
         ]
     },
@@ -378,7 +378,7 @@ const attributesV2 = {
         type: "array",
         default: [
             {
-                //textColor: "",
+                textColor: "",
                 textLetter: '',
                 textStyle: '',
                 textUpper: false,
@@ -387,8 +387,8 @@ const attributesV2 = {
                 textfontSizeUnit: 'px',
                 textfontSizeMobile: 20,
                 textfontSizeTablet: 20,
-                // textBGColor: '',
-                // textBGOpacity: 1,
+                textBGColor: '',
+                textBGOpacity: 1,
             }
         ]
     }
@@ -400,23 +400,16 @@ const deprecated = [
         attributes: attributesV2,
         migrate: attributes => {
             let newAttributes = {
-                ///here will migrate
-                //blockId: attributes.block_id ? generateBlockId(attributes.block_id) : '',
                 blockId: attributes.block_id ? "premium-fancy-text-" + generateBlockId(attributes.block_id) : '',
                 fancyTextTypography: {
-                    'fontWeight': attributes?.fancyStyles?.[0].fancyTextWeight,
-                    'fontStyle': attributes?.fancyStyles?.[0].fancyTextStyle,
-                    'textTransform': attributes?.fancyStyles?.[0].fancyTextUpper,
-                    'letterSpacing': {
-                        'Desktop': attributes?.fancyStyles?.[0].fancyTextLetter,
-                        "Tablet": attributes?.fancyStyles?.[0].fancyTextLetter,
-                        "Mobile": attributes?.fancyStyles?.[0].fancyTextLetter,
-                        "unit": 'px'
-                    },
+                    'fontWeight': attributes?.fancyStyles?.[0].fancyTextWeight || '',
+                    'fontStyle': '',
+                    'textTransform':  '',
+                    'letterSpacing': '',
                     'fontSize': {
-                        'Desktop': attributes?.fancyStyles?.[0].fancyTextfontSize,
-                        "Tablet": attributes?.fancyStyles?.[0].fancyTextfontSizeTablet,
-                        "Mobile": attributes?.fancyStyles?.[0].fancyTextfontSizeMobile,
+                        'Desktop': attributes?.fancyStyles?.[0].fancyTextfontSize || '',
+                        "Tablet": attributes?.fancyStyles?.[0].fancyTextfontSizeTablet || '',
+                        "Mobile": attributes?.fancyStyles?.[0].fancyTextfontSizeMobile || '',
                         "unit": 'px',
                     }
                 }
