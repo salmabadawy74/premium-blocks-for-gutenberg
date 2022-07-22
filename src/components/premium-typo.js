@@ -487,7 +487,7 @@ export default class PremiumTypo extends Component {
                                                                     }${
                                                                         variant ===
                                                                         "none"
-                                                                            ? " dashicons-remove"
+                                                                            ? " dashicons dashicons-remove"
                                                                             : ""
                                                                     }`}
                                                                     data-variant={
@@ -528,7 +528,7 @@ export default class PremiumTypo extends Component {
                                                                     }${
                                                                         variant ===
                                                                         "none"
-                                                                            ? " dashicons-remove"
+                                                                            ? " dashicons dashicons-remove"
                                                                             : ""
                                                                     }`}
                                                                     data-variant={

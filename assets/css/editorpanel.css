@@ -3873,7 +3873,8 @@ i.fipicon-angle-left:before {
       margin: 0;
       padding: 5px 0;
       cursor: pointer;
-      border: 1px solid #dfe1e4; }
+      border: 1px solid #dfe1e4;
+      height: 30px; }
       .premium-typography-variant ul li:before {
         font-size: 13px;
         font-weight: 700;
@@ -3902,7 +3903,7 @@ i.fipicon-angle-left:before {
     .premium-typography-variant ul li[data-variant="uppercase"]:before {
       content: "AA"; }
     .premium-typography-variant ul li[data-variant="none"] {
-      line-height: 1.2; }
+      line-height: 20px; }
     .premium-typography-variant ul li[data-variant="underline"]:before {
       content: "Aa"; }
     .premium-typography-variant ul li[data-variant="line-through"]:before {
