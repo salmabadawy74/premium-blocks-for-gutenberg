@@ -93,15 +93,12 @@ const attributes = {
     },
     hideDesktop: {
         type: 'boolean',
-        default: ""
     },
     hideTablet: {
         type: 'boolean',
-        default: ""
     },
     hideMobile: {
         type: 'boolean',
-        default: ""
     },
     fancyStyles: {
         type: "array",
