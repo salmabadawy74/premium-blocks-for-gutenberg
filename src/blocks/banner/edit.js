@@ -540,10 +540,7 @@ export class edit extends Component {
                                         colorDefault={""}
                                         onColorChange={(newValue) =>
                                             setAttributes({
-                                                sepColor:
-                                                    newValue === undefined
-                                                        ? "transparent"
-                                                        : newValue,
+                                                sepColor: newValue,
                                             })
                                         }
                                     />

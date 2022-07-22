@@ -35,17 +35,17 @@ const attributes = {
         type: "array",
         default: [
             {
-                descColor: "#000",
+                descColor: "",
             },
         ],
     },
     descTextShadow: {
         type: "object",
         default: {
-            color: "",
-            blur: "",
-            horizontal: "",
-            vertical: "",
+            color: "undefined",
+            blur: "10",
+            horizontal: "0",
+            vertical: "0",
             position: " ",
         },
     },
@@ -60,10 +60,10 @@ const attributes = {
     containerShadow: {
         type: "object",
         default: {
-            color: "",
-            blur: "",
-            horizontal: "",
-            vertical: "",
+            color: "undefined",
+            blur: "10",
+            horizontal: "0",
+            vertical: "0",
             position: " ",
         },
     },
@@ -123,7 +123,6 @@ const attributes = {
     },
     opacity: {
         type: "number",
-        default: 50,
     },
     urlCheck: {
         type: "boolean",
