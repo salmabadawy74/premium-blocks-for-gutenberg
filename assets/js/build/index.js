@@ -23272,13 +23272,16 @@ const SortableItem = (0,react_sortable_hoc__WEBPACK_IMPORTED_MODULE_7__.Sortable
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-repeater-item__container ${newIndex}`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "premium-repeater-item__dragHandle"
-  }, "Edit"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "premium-repeater-item__dragHandle dashicons dashicons-menu-alt"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "premium-repeater-item__content",
     onClick: () => edit(newIndex)
   }, value.title, " "), items.length != 1 ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    className: "premium-repeater-item__trashicon fa fa-trash",
-    onClick: () => removeItem(newIndex, value)
+    className: "premium-repeater-item__trashicon dashicons dashicons-no-alt",
+    onClick: e => {
+      e.preventDefault();
+      removeItem(newIndex, value);
+    }
   }) : ""), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-repeater-item-controls ${value.edit ? "editable" : ""}`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
@@ -23417,10 +23420,10 @@ class Edit extends Component {
       fancyTextAlign
     } = attributes;
     const EFFECT = [{
-      label: __("Typing", 'premium-blocks-for-gutenberg'),
+      label: __("Typing", "premium-blocks-for-gutenberg"),
       value: "typing"
     }, {
-      label: __("Slide", 'premium-blocks-for-gutenberg'),
+      label: __("Slide", "premium-blocks-for-gutenberg"),
       value: "slide"
     }];
 
@@ -23485,7 +23488,7 @@ class Edit extends Component {
     const addNewFancyText = () => {
       setAttributes({
         repeaterFancyText: repeaterFancyText.concat([{
-          title: __("Title", 'premium-blocks-for-gutenberg'),
+          title: __("Title", "premium-blocks-for-gutenberg"),
           edit: true
         }])
       });
@@ -23546,7 +23549,7 @@ class Edit extends Component {
             background-color: ${PreStyles[0].textBGColor};
         }
             `);
-    const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, 'premium-fancy-text');
+    const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-fancy-text");
     let loadFancyGoogleFonts;
     let loadPrefixGoogleFonts;
 
@@ -23569,15 +23572,15 @@ class Edit extends Component {
     return [renderCss, isSelected && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InspectorControls, {
       key: "inspector"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTabs__WEBPACK_IMPORTED_MODULE_11__["default"], {
-      tabs: ['layout', 'style', 'advance']
+      tabs: ["layout", "style", "advance"]
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_12__["default"], {
-      key: 'layout'
+      key: "layout"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-      title: __("General Settings", 'premium-blocks-for-gutenberg'),
+      title: __("General Settings", "premium-blocks-for-gutenberg"),
       className: "premium-panel-body",
       initialOpen: true
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
-      label: __("Prefix Text", 'premium-blocks-for-gutenberg'),
+      label: __("Prefix Text", "premium-blocks-for-gutenberg"),
       value: prefix,
       onChange: newText => setAttributes({
         prefix: newText
@@ -23601,8 +23604,8 @@ class Edit extends Component {
       onClick: () => addNewFancyText()
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
       className: "dashicons dashicons-plus premium-repeater__icon"
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, __('Add New Item'))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("br", null)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
-      label: __("Suffix Text", 'premium-blocks-for-gutenberg'),
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, __("Add New Item"))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("br", null)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
+      label: __("Suffix Text", "premium-blocks-for-gutenberg"),
       value: suffix,
       onChange: newText => setAttributes({
         suffix: newText
@@ -23628,91 +23631,91 @@ class Edit extends Component {
       label: __("Align Content", "premium-blocks-for-gutenberg"),
       showIcons: true
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-      title: __("Advanced Settings", 'premium-blocks-for-gutenberg'),
+      title: __("Advanced Settings", "premium-blocks-for-gutenberg"),
       className: "premium-panel-body",
       initialOpen: false
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
-      label: __("Effect", 'premium-blocks-for-gutenberg'),
+      label: __("Effect", "premium-blocks-for-gutenberg"),
       options: EFFECT,
       value: effect,
       onChange: newValue => setAttributes({
         effect: newValue
       })
     }), "typing" === effect ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
-      label: __("Type Speed", 'premium-blocks-for-gutenberg'),
+      label: __("Type Speed", "premium-blocks-for-gutenberg"),
       type: "Number",
       value: typeSpeed,
       onChange: newValue => setAttributes({
         typeSpeed: parseInt(newValue)
       }),
-      help: __('Set typing effect speed in milliseconds.', 'premium-blocks-for-gutenberg')
+      help: __("Set typing effect speed in milliseconds.", "premium-blocks-for-gutenberg")
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
-      label: __("Back Speed", 'premium-blocks-for-gutenberg'),
+      label: __("Back Speed", "premium-blocks-for-gutenberg"),
       type: "Number",
       value: backSpeed,
       onChange: newValue => setAttributes({
         backSpeed: parseInt(newValue)
       }),
-      help: __('Set a speed for backspace effect in milliseconds.', 'premium-blocks-for-gutenberg')
+      help: __("Set a speed for backspace effect in milliseconds.", "premium-blocks-for-gutenberg")
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
-      label: __("Start Delay", 'premium-blocks-for-gutenberg'),
+      label: __("Start Delay", "premium-blocks-for-gutenberg"),
       type: "Number",
       value: startdelay,
       onChange: newValue => setAttributes({
         startdelay: parseInt(newValue)
       }),
-      help: __('If you set it on 5000 milliseconds, the first word/string will appear after 5 seconds.', 'premium-blocks-for-gutenberg')
+      help: __("If you set it on 5000 milliseconds, the first word/string will appear after 5 seconds.", "premium-blocks-for-gutenberg")
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
-      label: __("Back Delay", 'premium-blocks-for-gutenberg'),
+      label: __("Back Delay", "premium-blocks-for-gutenberg"),
       type: "Number",
       value: backdelay,
       onChange: newValue => setAttributes({
         backdelay: parseInt(newValue)
       }),
-      help: __("If you set it on 5000 milliseconds, the word/string will remain visible for 5 seconds before backspace effect.", 'premium-blocks-for-gutenberg')
+      help: __("If you set it on 5000 milliseconds, the word/string will remain visible for 5 seconds before backspace effect.", "premium-blocks-for-gutenberg")
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: __("Loop", 'premium-blocks-for-gutenberg'),
+      label: __("Loop", "premium-blocks-for-gutenberg"),
       checked: loop,
       onChange: newCheck => setAttributes({
         loop: newCheck
       })
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: __("Show Cursor", 'premium-blocks-for-gutenberg'),
+      label: __("Show Cursor", "premium-blocks-for-gutenberg"),
       checked: cursorShow,
       onChange: newCheck => setAttributes({
         cursorShow: newCheck
       })
     }), cursorShow && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
-      label: __("Cursor Mark", 'premium-blocks-for-gutenberg'),
+      label: __("Cursor Mark", "premium-blocks-for-gutenberg"),
       value: cursorMark,
       onChange: newCheck => setAttributes({
         cursorMark: newCheck
       })
     })) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
       className: "premium-notice"
-    }, __(' Please note that Slide effect works only on frontend', 'premium-blocks-for-gutenberg')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
-      label: __("Animation Speed", 'premium-blocks-for-gutenberg'),
+    }, __(" Please note that Slide effect works only on frontend", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
+      label: __("Animation Speed", "premium-blocks-for-gutenberg"),
       value: animationSpeed,
       type: "Number",
       onChange: newValue => setAttributes({
         animationSpeed: parseInt(newValue)
       }),
-      help: __("Set a duration value in milliseconds for slide effect.", 'premium-blocks-for-gutenberg')
+      help: __("Set a duration value in milliseconds for slide effect.", "premium-blocks-for-gutenberg")
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
-      label: __("Pause Time", 'premium-blocks-for-gutenberg'),
+      label: __("Pause Time", "premium-blocks-for-gutenberg"),
       value: pauseTime,
       type: "Number",
       onChange: newValue => setAttributes({
         pauseTime: parseInt(newValue)
       }),
-      help: __("How long should the word/string stay visible? Set a value in milliseconds.", 'premium-blocks-for-gutenberg')
+      help: __("How long should the word/string stay visible? Set a value in milliseconds.", "premium-blocks-for-gutenberg")
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: __("Pause on Hover", 'premium-blocks-for-gutenberg'),
+      label: __("Pause on Hover", "premium-blocks-for-gutenberg"),
       checked: hoverPause,
       onChange: newCheck => setAttributes({
         hoverPause: newCheck
       }),
-      help: __("If you enabled this option, the slide will be paused when mouseover.", 'premium-blocks-for-gutenberg')
+      help: __("If you enabled this option, the slide will be paused when mouseover.", "premium-blocks-for-gutenberg")
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_9__["default"], {
       choices: [{
         value: "left",
@@ -23734,15 +23737,15 @@ class Edit extends Component {
       label: __("Align Content", "premium-blocks-for-gutenberg"),
       showIcons: true
     })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_12__["default"], {
-      key: 'style'
+      key: "style"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-      title: __("Fancy Text Style", 'premium-blocks-for-gutenberg'),
+      title: __("Fancy Text Style", "premium-blocks-for-gutenberg"),
       className: "premium-panel-body",
       initialOpen: true
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_5__["default"], {
-      label: __("Color", 'premium-blocks-for-gutenberg'),
+      label: __("Color", "premium-blocks-for-gutenberg"),
       colorValue: fancyStyles[0].fancyTextColor,
-      colorDefault: '',
+      colorDefault: "",
       onColorChange: newValue => saveFancyStyle({
         fancyTextColor: newValue
       })
@@ -23752,9 +23755,9 @@ class Edit extends Component {
         fancyTextTypography: newValue
       })
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_5__["default"], {
-      label: __('Background Color'),
+      label: __("Background Color"),
       colorValue: fancyStyles[0].fancyTextBGColor,
-      colorDefault: '',
+      colorDefault: "",
       onColorChange: newvalue => saveFancyStyle({
         fancyTextBGColor: newvalue
       })
@@ -23766,20 +23769,20 @@ class Edit extends Component {
         fancyTextShadow: value
       })
     }), effect == "typing" && cursorShow && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_5__["default"], {
-      label: __("Cursor Color", 'premium-blocks-for-gutenberg'),
+      label: __("Cursor Color", "premium-blocks-for-gutenberg"),
       colorValue: fancyStyles[0].cursorColor,
-      colorDefault: '',
+      colorDefault: "",
       onColorChange: newValue => saveFancyStyle({
         cursorColor: newValue
       })
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-      title: __("Prefix & Suffix Style", 'premium-blocks-for-gutenberg'),
+      title: __("Prefix & Suffix Style", "premium-blocks-for-gutenberg"),
       className: "premium-panel-body",
       initialOpen: false
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_5__["default"], {
-      label: __("Color", 'premium-blocks-for-gutenberg'),
+      label: __("Color", "premium-blocks-for-gutenberg"),
       colorValue: PreStyles[0].textColor,
-      colorDefault: '',
+      colorDefault: "",
       onColorChange: newValue => savePrefixStyle({
         textColor: newValue
       })
@@ -23796,7 +23799,7 @@ class Edit extends Component {
         textBGColor: newvalue
       })
     }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_12__["default"], {
-      key: 'advance'
+      key: "advance"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_4__["default"], {
       Desktop: hideDesktop,
       Tablet: hideTablet,
@@ -23884,7 +23887,7 @@ class Edit extends Component {
 /* harmony default export */ __webpack_exports__["default"] = (withSelect(select => {
   const {
     __experimentalGetPreviewDeviceType = null
-  } = select('core/edit-post');
+  } = select("core/edit-post");
   let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
   return {
     deviceType: deviceType
