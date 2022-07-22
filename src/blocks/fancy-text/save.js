@@ -1,5 +1,5 @@
 import classnames from "classnames"
-import { filterJsCss, typographyCss } from '../../components/HelperFunction';
+import { filterJsCss } from '../../components/HelperFunction';
 
 export default function save(props) {
     const { attributes, className } = props
@@ -32,10 +32,20 @@ export default function save(props) {
         fancyTextShadow
     } = attributes;
     const mainClasses = classnames(className, "");
+    const renderCss = (
+        <style>
+            {`
+                .${blockId} .typed-cursor {
+                    color: ${fancyStyles[0].cursorColor};
+                }
+            `}
+        </style>
+    );
     return (
         <div
         className={`${mainClasses} ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`}
         >
+            {renderCss}
 
             {effect === "typing" ? (
                 <div
