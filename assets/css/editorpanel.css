@@ -3928,6 +3928,9 @@ i.fipicon-angle-left:before {
   top: 3px;
   bottom: 0; }
 
+.premium-text-decoration li[data-variant="none"]:after {
+  display: none; }
+
 .premium-typography-single-font {
   cursor: pointer;
   position: relative;

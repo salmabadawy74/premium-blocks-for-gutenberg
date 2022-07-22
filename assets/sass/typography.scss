@@ -426,6 +426,11 @@
             bottom: 0;
         }
     }
+           li[data-variant="none"] {
+               &:after {
+                display: none;
+               }
+           }
 }
 .premium-typography-single-font {
     cursor: pointer;
