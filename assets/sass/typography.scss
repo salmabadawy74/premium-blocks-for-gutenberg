@@ -338,6 +338,7 @@
             padding: 5px 0;
             cursor: pointer;
             border: 1px solid #dfe1e4;
+            height: 30px;
             &:before {
                 font-size: 13px;
                 font-weight: 700;
@@ -385,8 +386,8 @@
             }
         }
         li[data-variant="none"] {
-                    line-height: 1.2;
-                }
+            line-height: 20px;
+        }
         li[data-variant="underline"] {
             &:before {
                 content: "Aa";
