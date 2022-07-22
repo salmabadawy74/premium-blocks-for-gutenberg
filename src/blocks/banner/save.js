@@ -74,9 +74,9 @@ const save = (props) => {
                 >
                     <div
                         className="premium-banner__bg-overlay"
-                        style={{
+                        style={filterJsCss({
                             backgroundColor: `${background}`,
-                        }}
+                        })}
                     ></div>
                     <div
                         className={`premium-banner__img_wrap premium-banner__${height}`}
