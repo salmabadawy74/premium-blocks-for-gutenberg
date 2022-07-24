@@ -100,7 +100,7 @@ const attributes = {
         type: "array",
         default: [
             {
-                numberColor: "#6ec1e4",
+                numberColor: "",
             }
         ]
     },
@@ -168,9 +168,9 @@ const attributes = {
             'fontFamily': 'Default',
             'textDecoration': '',
             'fontSize': {
-                'Desktop': '',
-                "Tablet": '',
-                "Mobile": '',
+                'Desktop': '30',
+                "Tablet": '30',
+                "Mobile": '30',
                 "unit": 'px'
             },
             'lineHeight': {
