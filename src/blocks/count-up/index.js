@@ -21,6 +21,12 @@ registerBlockType("premium/countup", {
     supports: {
         inserter: countUp
     },
+    keywords: [
+        __("number", "premium-blocks-for-gutenberg"),
+        __('count down', 'premium-blocks-for-gutenberg'),
+        __('count up', 'premium-blocks-for-gutenberg'),
+        __('counter', 'premium-blocks-for-gutenberg'),
+    ],
     example: {},
     edit: edit,
     save: save,
