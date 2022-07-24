@@ -464,7 +464,7 @@ class edit extends Component {
                                     label={__("Number Color", 'premium-blocks-for-gutenberg')}
                                     colorValue={numberStyles[0].numberColor}
                                     colorDefault={''}
-                                    onColorChange={newValue => saveNumberStyles({ numberColor: newValue === undefined ? "transparent" : newValue })}
+                                    onColorChange={newValue => saveNumberStyles({ numberColor: newValue })}
                                 />
                             </PanelBody>
                             {prefix && (

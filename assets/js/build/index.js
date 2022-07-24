@@ -15752,7 +15752,7 @@ const attributes = {
   numberStyles: {
     type: "array",
     default: [{
-      numberColor: "#6ec1e4"
+      numberColor: ""
     }]
   },
   titleStyles: {
@@ -15813,9 +15813,9 @@ const attributes = {
       'fontFamily': 'Default',
       'textDecoration': '',
       'fontSize': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
+        'Desktop': '30',
+        "Tablet": '30',
+        "Mobile": '30',
         "unit": 'px'
       },
       'lineHeight': {
@@ -18612,7 +18612,7 @@ class edit extends Component {
       colorValue: numberStyles[0].numberColor,
       colorDefault: '',
       onColorChange: newValue => saveNumberStyles({
-        numberColor: newValue === undefined ? "transparent" : newValue
+        numberColor: newValue
       })
     })), prefix && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
       title: __("Prefix", 'premium-blocks-for-gutenberg'),
