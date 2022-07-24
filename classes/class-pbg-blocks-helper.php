@@ -1921,6 +1921,7 @@ class PBG_Blocks_Helper {
 	 * @param string $attributes option attribute.
 	 * @param string $content option for content of block.
 	 */
+    
 	public function get_countup_css( $attributes, $content ) {
 
 		if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
@@ -1958,9 +1959,8 @@ class PBG_Blocks_Helper {
 		}
 		$style_id = 'pbg-blocks-style-' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'countup', $unique_id ) ) {
-			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
-			// $attributes = apply_filters( 'Premium_BLocks_blocks_column_render_block_attributes', $attributes );
-			$css = $this->get_countup_css_style( $attributes, $unique_id );
+
+            $css = $this->get_countup_css_style( $attributes, $unique_id );
 
 			if ( ! empty( $css ) ) {
 				if ( $this->should_render_inline( 'countup', $unique_id ) ) {
@@ -1980,7 +1980,6 @@ class PBG_Blocks_Helper {
 	 * Return Frontend CSS for Count-up Block.
 	 *
 	 * @access public
-	 *
 	 * @param string $attr option attribute.
 	 * @param string $unique_id option For block ID.
 	 */
@@ -2040,18 +2039,14 @@ class PBG_Blocks_Helper {
 
 		// Prefix Style
 		if ( isset( $attr['prefixTypography'] ) ) {
-	
 			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__prefix' );
 		    $css->render_typography($attr['prefixTypography'],'Desktop');
-
 		}
 	
 		// Suffix Style
 		if ( isset( $attr['suffixTypography'] ) ) {
-	
 			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__suffix' );
 		    $css->render_typography($attr['suffixTypography'],'Desktop');
-
 		}
 	
 		// Container Style
@@ -2059,7 +2054,6 @@ class PBG_Blocks_Helper {
 			$padding = $attr['padding'];
 			$css->set_selector( $unique_id );
 			$css->add_property( 'padding', $css->render_spacing( $padding['Desktop'] , $padding['unit'] ) );
-	
 		}
 
 		$css->start_media_query( $media_query['tablet'] );
@@ -2074,7 +2068,6 @@ class PBG_Blocks_Helper {
 
 		if ( isset( $attr['selfAlign'] ) ) {
 			$align = $css->get_responsive_css( $attr['selfAlign'], 'Tablet' );
-
 			$css->set_selector( $unique_id . ' .premium-countup__icon_wrap, ' . $unique_id . ' .premium-countup__info, ' . $unique_id . ' .premium-countup__title' );
 			$css->add_property( 'align-self', $align );
 		}
@@ -2083,19 +2076,14 @@ class PBG_Blocks_Helper {
 			$border        = $attr['border'];
 			$border_width  = $attr['border']['borderWidth'];
 			$border_radius = $attr['border']['borderRadius'];
-
 			$css->set_selector( $unique_id );
             $css->add_property( 'border-width', $css->render_spacing( $border_width['Tablet'],  'px' ) );
 			$css->add_property( 'border-radius', $css->render_spacing( $border_radius['Tablet'],  'px' ) );
-
-		
 		}
 
 		// Number Style
 		if ( isset( $attr['numberTypography'] ) ) {
-
 			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__increment' );
-		    
             $css->render_typography($attr['numberTypography'],'Tablet');
 		}
 		
@@ -2164,15 +2152,12 @@ class PBG_Blocks_Helper {
 
 		// Number Style
 		if ( isset( $attr['numberTypography'] ) ) {
-
-			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__increment' );
-		    
+			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__increment' );   
             $css->render_typography($attr['numberTypography'],'Mobile');
 		}
 		
 		// Title Style
 		if ( isset( $attr['titleTypography'] ) ) {
-		
 			$css->set_selector( $unique_id . ' > .premium-countup__title' );
             $css->render_typography($attr['titleTypography'],'Mobile');
 
@@ -2180,7 +2165,6 @@ class PBG_Blocks_Helper {
 
 		// Prefix Style
 		if ( isset( $attr['prefixTypography'] ) ) {
-	
 			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__prefix' );
 		    $css->render_typography($attr['prefixTypography'],'Mobile');
 
@@ -2188,7 +2172,6 @@ class PBG_Blocks_Helper {
 	
 		// Suffix Style
 		if ( isset( $attr['suffixTypography'] ) ) {
-	
 			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__suffix' );
 		    $css->render_typography($attr['suffixTypography'],'Mobile');
 
@@ -2201,8 +2184,6 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding', $css->render_spacing( $padding['Mobile'] , $padding['unit'] ) );
 	
 		}
-
-
 		$css->stop_media_query();
 		return $css->css_output();
 

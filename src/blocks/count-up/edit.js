@@ -35,8 +35,10 @@ class edit extends Component {
         }
         setAttributes({ classMigrate: true });
     }
+
     render() {
         const { isSelected, setAttributes, className } = this.props;
+
         const {
             blockId,
             increment,
@@ -87,6 +89,7 @@ class edit extends Component {
                 label: __("Image", 'premium-blocks-for-gutenberg')
             }
         ];
+
         const DIRECTION = [
             {
                 value: "row",
@@ -105,6 +108,7 @@ class edit extends Component {
                 label: __("Reversed Column", 'premium-blocks-for-gutenberg')
             }
         ];
+
         const TYPE = [
             {
                 value: "fa",
@@ -121,7 +125,7 @@ class edit extends Component {
         let loadSuffixGoogleFonts;
         let loadPrefixGoogleFonts;
 
-        if (numberTypography.fontFamily !== 'Default') {
+        if (numberTypography?.fontFamily !== 'Default') {
             loadCounterGoogleFonts = (
                 <GoogleFontLoader fonts={[
                     {
@@ -131,7 +135,8 @@ class edit extends Component {
                 } />
             )
         }
-        if (titleTypography.fontFamily !== "Default") {
+
+        if (titleTypography?.fontFamily !== "Default") {
             loadTitleGoogleFonts = (
                 <GoogleFontLoader fonts={[
                     {
@@ -140,7 +145,8 @@ class edit extends Component {
                 } />
             )
         }
-        if (suffixTypography.fontFamily !== "Default") {
+
+        if (suffixTypography?.fontFamily !== "Default") {
             loadSuffixGoogleFonts = (
                 <GoogleFontLoader fonts={[
                     {
@@ -149,7 +155,8 @@ class edit extends Component {
                 } />
             )
         }
-        if (prefixTypography.fontFamily !== "Default") {
+
+        if (prefixTypography?.fontFamily !== "Default") {
             loadPrefixGoogleFonts = (
                 <GoogleFontLoader fonts={[
                     {

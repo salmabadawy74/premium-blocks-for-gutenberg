@@ -127,11 +127,11 @@ const attributes = {
             'backgroundRepeat': '',
             'backgroundSize': '',
             'fixed': false,
-            'gradientLocationOne': "",
+            'gradientLocationOne': "0",
             'gradientColorTwo': '',
-            'gradientLocationTwo': '',
-            'gradientAngle': '',
-            'gradientPosition': '',
+            'gradientLocationTwo': '100',
+            'gradientAngle': '180',
+            'gradientPosition': 'center center',
             'gradientType': ''
         }
     },

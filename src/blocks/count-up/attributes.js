@@ -3,10 +3,6 @@ const attributes = {
     blockId: {
         type: "string"
     },
-    borderCount: {
-        type: "boolean",
-        default: false
-    },
     increment: {
         type: "string",
         default: 500
@@ -20,7 +16,7 @@ const attributes = {
         default: 10
     },
     align: {
-        type: "string",
+        type: "object",
         default: {
             Desktop: 'center',
             Tablet: 'center',
@@ -100,10 +96,6 @@ const attributes = {
         type: 'boolean',
         default: false
     },
-    backgroundType: {
-        type: "string",
-        default: ""
-    },
     numberStyles: {
         type: "array",
         default: [
@@ -116,7 +108,6 @@ const attributes = {
         type: "array",
         default: [
             {
-                titleFamily: __('Default', 'premium-blocks-for-gutenberg'),
                 titleColor: '',
                 titleT: 1,
                 titleB: 1,
@@ -124,38 +115,6 @@ const attributes = {
             }
         ]
     },
-    containerStyles: {
-        type: "array",
-        default: [
-            {
-                containerBack: '',
-                containerOpacity: 1,
-                backgroundImageID: '',
-                backgroundImageURL: '',
-                backgroundRepeat: 'no-reapet',
-                backgroundPosition: 'top center',
-                backgroundSize: 'auto',
-                fixed: false,
-                borderType: 'none',
-                borderWidth: 1,
-                borderRadius: 0,
-                borderColor: '',
-                shadowColor: '',
-                shadowBlur: '0',
-                shadowHorizontal: '0',
-                shadowVertical: '0',
-                shadowPosition: '',
-                paddingU: '',
-                gradientLocationOne: '0',
-                gradientColorTwo: '',
-                gradientLocationTwo: '100',
-                gradientType: 'linear',
-                gradientAngle: '180',
-                gradientPosition: 'center center'
-            }
-        ]
-    },
-
     suffixStyles: {
         type: 'array',
         default: [
@@ -163,7 +122,6 @@ const attributes = {
                 suffixTxt: "Suffix",
                 suffixColor: '',
                 suffixGap: 2,
-                suffixFamily: __('Default', 'premium-blocks-for-gutenberg'),
             }
         ]
     },
@@ -350,7 +308,7 @@ const attributes = {
             },
             "borderRadius": {
                 'Desktop': {
-                    'top': '',
+                    top: '',
                     right: '',
                     bottom: '',
                     left: ''
