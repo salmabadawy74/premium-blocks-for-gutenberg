@@ -8,24 +8,24 @@ const attributes = {
             "Mobile": "center"
         }
     },
-    nameStyles: {
-        type: "array",
-        default: [
-            {
-                nameColor: ""
-            }
-        ]
-    },
+    // nameStyles: {
+    //     type: "array",
+    //     default: [
+    //         {
+    //             nameColor: ""
+    //         }
+    //     ]
+    // },
     nameColor: {
-        type: "object",
+        type: "string",
         default: ""
     },
     titleColor: {
-        type: "object",
+        type: "string",
         default: ""
     },
     descColor: {
-        type: "object",
+        type: "string",
         default: ""
     },
     // titleStyles: {
@@ -235,6 +235,8 @@ const attributes = {
         type: "object",
         default: {
             Desktop: '20',
+            Tablet: '20',
+            Mobile: '20',
             unit: 'px'
         }
     },

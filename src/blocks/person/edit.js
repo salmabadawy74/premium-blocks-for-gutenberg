@@ -283,91 +283,91 @@ class Edit extends Component {
 
         const iconsList = [
             {
-                value: "fa fa-facebook-f",
+                value: "fab fa-facebook",
                 label: __("facebook", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fa fa-twitter",
+                value: "fab fa-twitter",
                 label: __("twitter", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fa fa-instagram",
+                value: "fab fa-instagram",
                 label: __("instagram", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fa fa-youtube",
+                value: "fab fa-youtube",
                 label: __("youtube", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fa fa-linkedin",
+                value: "fab fa-linkedin",
                 label: __("linkedin", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fa fa-flickr",
+                value: "fab fa-flickr",
                 label: __("flickr", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fa fa-github",
+                value: "fab fa-github",
                 label: __("github", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fa fa-google-plus",
+                value: "fab fa-google-plus",
                 label: __("google-plus", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fa fa-pinterest",
+                value: "fab fa-pinterest",
                 label: __("pinterest", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fa fa-reddit",
+                value: "fab fa-reddit",
                 label: __("reddit", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fa fa-skype",
+                value: "fab fa-skype",
                 label: __("skype", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fa fa-stack-overflow",
+                value: "fab fa-stack-overflow",
                 label: __("stack-overflow", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fa fa-whatsapp",
+                value: "fab fa-whatsapp",
                 label: __("whatsapp", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fa fa-vimeo",
+                value: "fab fa-vimeo",
                 label: __("vimeo", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fa fa-tumblr",
+                value: "fab fa-tumblr",
                 label: __("tumblr", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fa fa-dribbble",
+                value: "fab fa-dribbble",
                 label: __("dribbble", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fa fa-quora",
+                value: "fab fa-quora",
                 label: __("quora", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fa fa-foursquare",
+                value: "fab fa-foursquare",
                 label: __("foursquare", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fa fa-wordpress",
+                value: "fab fa-wordpress",
                 label: __("wordpress", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fa fa-stumbleupon",
+                value: "fab fa-stumbleupon",
                 label: __("stumbleupon", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fa fa-yahoo",
+                value: "fab fa-yahoo",
                 label: __("yahoo", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fa fa-soundcloud",
+                value: "fab fa-soundcloud",
                 label: __("soundcloud", "premium-blocks-for-gutenberg"),
             },
         ];
@@ -531,7 +531,7 @@ class Edit extends Component {
                                 }}
                             >
                                 <i
-                                    className={`premium-person__socialIcon ${value.label == "youtube" ? "fa fa-youtube-play" : `fa fa-${value.label}`} premium-person__${socialIconStyles[0].socialIconHoverColor}`}
+                                    className={`premium-person__socialIcon ${value.label == "youtube" ? "fab fa-youtube" : `fab fa-${value.label}`} premium-person__${socialIconStyles[0].socialIconHoverColor}`}
                                     style={{
                                         color: socialIconStyles[0].socialIconColor,
                                         fontSize: (socialIconSize[this.props.deviceType] || 20) + socialIconSize.unit
@@ -592,7 +592,7 @@ class Edit extends Component {
                                         onChange={(name) => { this.save({ name: name }, index); }}
                                         style={{
                                             ...paddingCss(namePadding, this.props.deviceType),
-                                            color: nameStyles[0].nameColor,
+                                            color: nameColor,
                                             ...typographyCss(nameTypography, this.props.deviceType),
                                             alignSelf: nameV,
                                             textShadow: `${nameShadow.horizontal}px ${nameShadow.vertical}px ${nameShadow.blur}px ${nameShadow.color}`,
@@ -872,9 +872,9 @@ class Edit extends Component {
                                 />
                                 <AdvancedPopColorControl
                                     label={__("Color", "premium-block-for-gutenberg")}
-                                    colorValue={nameStyles[0].nameColor}
+                                    colorValue={nameColor}
                                     colorDefault={""}
-                                    onColorChange={(newValue) => saveNameStyles({ nameColor: newValue })}
+                                    onColorChange={(newValue) => setAttributes({ nameColor: newValue })}
                                 />
                                 <PremiumShadow
                                     label={__("Text Shadow", "premium-blocks-for-gutenberg")}

@@ -77,7 +77,7 @@ const save = props => {
                         borderColor: socialIconBorder.borderColor,
                         background: socialIconStyles[0].socialIconBackgroundColor,
                     })}>
-                    <i className={`premium-person__socialIcon ${value.label == "youtube" ? "fa fa-youtube-play" : `fa fa-${value.label}`} premium-person__${socialIconHoverColor}`}
+                    <i className={`premium-person__socialIcon ${value.label == "youtube" ? "fa fa-youtube-play" : `fab fa-${value.label}`} premium-person__${socialIconHoverColor}`}
                         style={filterJsCss({
                             color: socialIconStyles[0].socialIconColor
                         })}
@@ -122,7 +122,7 @@ const save = props => {
                             value={value.name}
                             onChange={name => { this.save({ name: name }, index) }}
                             style={filterJsCss({
-                                color: nameStyles[0].nameColor,
+                                color: nameColor,
                                 alignSelf: nameV,
                                 fontStyle: nameTypography?.fontStyle,
                                 fontFamily: nameTypography?.fontFamily,

@@ -579,6 +579,16 @@ const deprecated = [
                 hideDesktop: '',
                 hideTablet: '',
                 hideMobile: '',
+                imageFilter: {
+                    'contrast': attributes.contrast,
+                    'blur': attributes.blur,
+                    'bright': attributes.bright,
+                    'saturation': attributes.saturation,
+                    'hue': attributes.hue
+                },
+                nameColor: attributes.nameStyles[0].nameColor,
+                titleColor: attributes.titleStyles[0].titleColor,
+                descColor: attributes.descStyles[0].descColor
             }
             return Object.assign(attributes, newAttributes)
         },
