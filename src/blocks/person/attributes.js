@@ -1,5 +1,11 @@
 const { __ } = wp.i18n;
 const attributes = {
+    titleColor: {
+        type: "string",
+    },
+    descColor: {
+        type: "string",
+    },
     personAlign: {
         type: "object",
         default: {

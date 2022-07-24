@@ -20,7 +20,7 @@ import InspectorTab from '../../components/inspectorTab';
 import InsideTabs from '../../components/InsideTabs'
 import InsideTab from '../../components/InsideTab';
 import Icons from "../../components/icons";
-import { gradientBackground, borderCss, padddingCss, marginCss, typographyCss, generateBlockId } from '../../components/HelperFunction'
+import { gradientBackground, borderCss, paddingCss, marginCss, typographyCss, generateBlockId } from '../../components/HelperFunction'
 
 const { __ } = wp.i18n;
 
@@ -676,7 +676,7 @@ class edit extends Component {
                 style={{
                     textAlign: align[this.props.deviceType],
                     ...borderCss(containerBorder, this.props.deviceType),
-                    ...padddingCss(containerPadding, this.props.deviceType),
+                    ...paddingCss(containerPadding, this.props.deviceType),
                     ...marginCss(containerMargin, this.props.deviceType),
                     ...gradientBackground(containerBackground),
                 }}
@@ -799,7 +799,7 @@ class edit extends Component {
                                 style={{
                                     ...typographyCss(btnTypography, this.props.deviceType),
                                     ...borderCss(btnBorder, this.props.deviceType),
-                                    ...padddingCss(btnPadding, this.props.deviceType),
+                                    ...paddingCss(btnPadding, this.props.deviceType),
                                     color: btnStyles[0].btnColor,
                                     backgroundColor: btnStyles[0].btnBack,
                                     boxShadow: `${btnShadow.horizontal || 0}px ${btnShadow.vertical ||

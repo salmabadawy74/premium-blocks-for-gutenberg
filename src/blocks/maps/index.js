@@ -6,7 +6,7 @@ import ResponsiveSingleRangeControl from "../../components/RangeControl/single-r
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 import RadioComponent from '../../components/radio-control';
 import PBG_Block_Icons from '../../../blocks-config/block-icons'
-import { gradientBackground, borderCss, padddingCss, marginCss, typographyCss, generateBlockId } from '../../components/HelperFunction'
+import { gradientBackground, borderCss, paddingCss, marginCss, typographyCss, generateBlockId } from '../../components/HelperFunction'
 
 const className = "premium-maps";
 const { __ } = wp.i18n;

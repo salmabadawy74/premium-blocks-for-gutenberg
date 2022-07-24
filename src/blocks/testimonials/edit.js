@@ -17,7 +17,7 @@ import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
 import Icons from "../../components/icons";
 import WebfontLoader from "../../components/typography/fontLoader"
-import { gradientBackground, padddingCss, marginCss, typographyCss, generateBlockId } from '../../components/HelperFunction'
+import { gradientBackground, paddingCss, marginCss, typographyCss, generateBlockId } from '../../components/HelperFunction'
 
 const { __ } = wp.i18n;
 
@@ -458,7 +458,7 @@ class edit extends Component {
                 className={`${mainClasses}__wrap ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`}
                 style={{
                     ...gradientBackground(containerBackground),
-                    ...padddingCss(containerPadding, this.props.deviceType),
+                    ...paddingCss(containerPadding, this.props.deviceType),
                     boxShadow: `${containerShadow.horizontal || 0}px ${containerShadow.vertical ||
                         0}px ${containerShadow.blur || 0}px ${containerShadow.color} ${containerShadow.position}`,
                 }}

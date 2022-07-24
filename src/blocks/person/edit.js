@@ -20,7 +20,7 @@ import InsideTabs from '../../components/InsideTabs'
 import InsideTab from '../../components/InsideTab';
 import Icons from "../../components/icons";
 import WebfontLoader from "../../components/typography/fontLoader"
-import { borderCss, padddingCss, marginCss, typographyCss, generateBlockId } from '../../components/HelperFunction'
+import { borderCss, paddingCss, marginCss, typographyCss, generateBlockId } from '../../components/HelperFunction'
 import times from "lodash/times"
 
 const { withSelect } = wp.data
@@ -183,6 +183,8 @@ class edit extends Component {
             hideDesktop,
             hideTablet,
             hideMobile,
+            titleColor,
+            descColor
         } = this.props.attributes;
 
         const HOVER = [
@@ -381,7 +383,7 @@ class edit extends Component {
                 </WebfontLoader>
             )
         }
-
+        console.log(titleColor)
         if (descTypography.fontFamily !== 'Default') {
             const descriptionConfig = {
                 google: {
@@ -525,7 +527,7 @@ class edit extends Component {
                     <a className={`premium-person__socialIcon__link_content ${socialIconStyles[0].defaultIconColor ? value.label : ""}`} href={`${value.value}`}
                         style={{
                             ...borderCss(socialIconBorder, this.props.deviceType),
-                            ...padddingCss(socialIconPadding, this.props.deviceType),
+                            ...paddingCss(socialIconPadding, this.props.deviceType),
                             ...marginCss(socialIconMargin, this.props.deviceType),
                             background: socialIconStyles[0].socialIconBackgroundColor,
                         }}>
@@ -565,7 +567,7 @@ class edit extends Component {
                     <div
                         className={`premium-person__info`}
                         style={{
-                            ...padddingCss(contentPadding, this.props.deviceType),
+                            ...paddingCss(contentPadding, this.props.deviceType),
                             background: contentColor ? contentColor : "#f2f2f2",
                             bottom: effectPersonStyle === 'effect1' ? bottomInfo + "px" : ""
                         }}
@@ -577,7 +579,7 @@ class edit extends Component {
                                 value={value.name}
                                 onChange={value => { this.save({ name: value }, index) }}
                                 style={{
-                                    ...padddingCss(namePadding, this.props.deviceType),
+                                    ...paddingCss(namePadding, this.props.deviceType),
                                     color: nameStyles[0].nameColor,
                                     ...typographyCss(nameTypography, this.props.deviceType),
                                     alignSelf: nameV,
@@ -593,10 +595,11 @@ class edit extends Component {
                                 value={value.title}
                                 onChange={value => { this.save({ title: value }, index) }}
                                 style={{
+                                    color: titleColor,
                                     ...marginCss(titleMargin, this.props.deviceType),
-                                    ...padddingCss(titlePadding, this.props.deviceType),
+                                    ...paddingCss(titlePadding, this.props.deviceType),
                                     ...typographyCss(titleTypography, this.props.deviceType),
-                                    color: titleStyles[0].titleColor,
+                                    color: titleColor,
                                     alignSelf: titleV,
                                     textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`
                                 }}
@@ -610,9 +613,9 @@ class edit extends Component {
                                 value={value.desc}
                                 onChange={value => { this.save({ desc: value }, index) }}
                                 style={{
-                                    ...padddingCss(descPadding, this.props.deviceType),
+                                    ...paddingCss(descPadding, this.props.deviceType),
                                     ...typographyCss(descTypography, this.props.deviceType),
-                                    color: descStyles[0].descColor,
+                                    color: descColor,
                                     alignSelf: descV,
                                     textShadow: `${descShadow.horizontal}px ${descShadow.vertical}px ${descShadow.blur}px ${descShadow.color}`
                                 }}
@@ -871,10 +874,10 @@ class edit extends Component {
                                 <div className="premium-control-toggle">
                                     <AdvancedPopColorControl
                                         label={__("Color", 'premium-block-for-gutenberg')}
-                                        colorValue={titleStyles[0].titleColor}
+                                        colorValue={titleColor}
                                         colorDefault={''}
                                         onColorChange={newValue =>
-                                            saveTitleStyles({
+                                            setAttributes({
                                                 titleColor: newValue
                                             })
                                         }
@@ -914,10 +917,10 @@ class edit extends Component {
                                 <div className="premium-control-toggle">
                                     <AdvancedPopColorControl
                                         label={__("Color", 'premium-block-for-gutenberg')}
-                                        colorValue={descStyles[0].descColor}
+                                        colorValue={descColor}
                                         colorDefault={''}
                                         onColorChange={newValue =>
-                                            saveDescStyles({
+                                            setAttributes({
                                                 descColor: newValue
                                             })
                                         }

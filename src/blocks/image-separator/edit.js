@@ -15,7 +15,7 @@ import SpacingControl from '../../components/premium-responsive-spacing'
 import InsideTabs from '../../components/InsideTabs'
 import InsideTab from '../../components/InsideTab';
 import PremiumShadow from "../../components/PremiumShadow";
-import { borderCss, padddingCss, generateBlockId } from '../../components/HelperFunction'
+import { borderCss, paddingCss, generateBlockId } from '../../components/HelperFunction'
 
 const { __ } = wp.i18n;
 
@@ -567,7 +567,7 @@ class edit extends Component {
                             className={`${iconStyles[0].icon}`}
                             style={{
                                 ...borderCss(iconBorder, this.props.deviceType),
-                                ...padddingCss(iconPadding, this.props.deviceType),
+                                ...paddingCss(iconPadding, this.props.deviceType),
                                 fontSize: (iconSize[this.props.deviceType] || 200) + iconSize.unit,
                                 color: iconStyles[0].iconColor,
                                 backgroundColor: iconStyles[0].iconBGColor,

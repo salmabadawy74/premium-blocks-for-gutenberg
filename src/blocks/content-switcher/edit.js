@@ -37,7 +37,7 @@ import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
 import Icons from "../../components/icons";
 import GoogleFontLoader from 'react-google-font-loader';
 
-import { gradientBackground, borderCss, padddingCss, marginCss, typographyCss, generateBlockId } from '../../components/HelperFunction'
+import { gradientBackground, borderCss, paddingCss, marginCss, typographyCss, generateBlockId } from '../../components/HelperFunction'
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -549,7 +549,7 @@ function Edit(props) {
                 <div className={`premium-content-switcher`}
                     style={{
                         ...borderCss(containerborder, props.deviceType),
-                        ...padddingCss(containerPadding, props.deviceType),
+                        ...paddingCss(containerPadding, props.deviceType),
                         ...marginCss(containerMargin, props.deviceType),
                         ...gradientBackground(containerBackground),
                         textAlign: align[props.deviceType],
@@ -571,7 +571,7 @@ function Edit(props) {
                                 style={{
                                     ...typographyCss(firstLabelTypography, props.deviceType),
                                     ...borderCss(firstLabelborder, props.deviceType),
-                                    ...padddingCss(firstLabelPadding, props.deviceType),
+                                    ...paddingCss(firstLabelPadding, props.deviceType),
                                     margin: 0,
                                     color: labelStyles.firstLabelColor,
                                     background: labelStyles.firstLabelBGColor,
@@ -607,7 +607,7 @@ function Edit(props) {
                                 style={{
                                     ...typographyCss(secondLabelTypography, props.deviceType),
                                     ...borderCss(secondLabelborder, props.deviceType),
-                                    ...padddingCss(secondLabelPadding, props.deviceType),
+                                    ...paddingCss(secondLabelPadding, props.deviceType),
                                     margin: 0,
                                     color: labelStyles.secondLabelColor,
                                     background: labelStyles.secondLabelBGColor,

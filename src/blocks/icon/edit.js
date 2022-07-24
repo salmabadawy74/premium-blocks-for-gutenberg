@@ -15,7 +15,7 @@ import InsideTabs from '../../components/InsideTabs'
 import InsideTab from '../../components/InsideTab';
 import ResponsiveRadioControl from '../../components/responsive-radio'
 import Icons from "../../components/icons";
-import { gradientBackground, borderCss, padddingCss, marginCss, generateBlockId } from '../../components/HelperFunction'
+import { gradientBackground, borderCss, paddingCss, marginCss, generateBlockId } from '../../components/HelperFunction'
 
 const { __ } = wp.i18n;
 
@@ -311,7 +311,7 @@ const edit = props => {
                     textAlign: align[props.deviceType],
                     ...gradientBackground(containerBackground),
                     ...borderCss(containerBorder, props.deviceType),
-                    ...padddingCss(wrapPadding, props.deviceType),
+                    ...paddingCss(wrapPadding, props.deviceType),
                     ...marginCss(wrapMargin, props.deviceType),
                     boxShadow: `${containerShadow.horizontal || 0}px ${containerShadow.vertical ||
                         0}px ${containerShadow.blur || 0}px ${containerShadow.color} ${containerShadow.position}`,
@@ -331,7 +331,7 @@ const edit = props => {
                                 backgroundColor: iconStyles[0].iconBack,
                                 fontSize: (iconSize[props.deviceType] || 50) + iconSize.unit,
                                 ...borderCss(iconBorder, props.deviceType),
-                                ...padddingCss(iconPadding, props.deviceType),
+                                ...paddingCss(iconPadding, props.deviceType),
                                 ...marginCss(iconMargin, props.deviceType),
                                 textShadow: `${iconShadow.horizontal || 0}px ${iconShadow.vertical ||
                                     0}px ${iconShadow.blur || 0}px ${iconShadow.color}`
