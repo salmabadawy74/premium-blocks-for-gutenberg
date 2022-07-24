@@ -383,7 +383,6 @@ class edit extends Component {
                 </WebfontLoader>
             )
         }
-        console.log(titleColor)
         if (descTypography.fontFamily !== 'Default') {
             const descriptionConfig = {
                 google: {

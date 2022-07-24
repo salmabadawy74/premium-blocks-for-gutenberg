@@ -36342,8 +36342,6 @@ class edit extends Component {
       });
     }
 
-    console.log(titleColor);
-
     if (descTypography.fontFamily !== 'Default') {
       const descriptionConfig = {
         google: {
@@ -37233,8 +37231,11 @@ const save = props => {
     imgWidth,
     hideDesktop,
     hideMobile,
-    hideTablet
+    hideTablet,
+    titleColor,
+    descColor
   } = props.attributes;
+  console.log(titleColor);
   const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, 'premium-person', blockId);
   const renderCss = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, `
                 .${blockId} .premium-person:hover {
@@ -37321,7 +37322,7 @@ const save = props => {
         }, index);
       },
       style: {
-        color: titleStyles[0].titleColor,
+        color: titleColor,
         ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.typographyCss)(titleTypography, props.deviceType),
         alignSelf: titleV,
         textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`
@@ -37337,7 +37338,7 @@ const save = props => {
         }, index);
       },
       style: {
-        color: descStyles[0].descColor,
+        color: descColor,
         ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.typographyCss)(descTypography, props.deviceType),
         alignSelf: descV,
         textShadow: `${descShadow.horizontal}px ${descShadow.vertical}px ${descShadow.blur}px ${descShadow.color}`

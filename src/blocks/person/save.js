@@ -49,8 +49,11 @@ const save = props => {
         imgWidth,
         hideDesktop,
         hideMobile,
-        hideTablet
+        hideTablet,
+        titleColor,
+        descColor
     } = props.attributes;
+    console.log(titleColor)
 
 
     const mainClasses = classnames(className, 'premium-person', blockId);
@@ -143,7 +146,7 @@ const save = props => {
                             value={value.title}
                             onChange={value => { this.save({ title: value }, index) }}
                             style={{
-                                color: titleStyles[0].titleColor,
+                                color: titleColor,
                                 ...typographyCss(titleTypography, props.deviceType),
                                 alignSelf: titleV,
                                 textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`
@@ -158,7 +161,7 @@ const save = props => {
                             value={value.desc}
                             onChange={value => { this.save({ desc: value }, index) }}
                             style={{
-                                color: descStyles[0].descColor,
+                                color: descColor,
                                 ...typographyCss(descTypography, props.deviceType),
                                 alignSelf: descV,
                                 textShadow: `${descShadow.horizontal}px ${descShadow.vertical}px ${descShadow.blur}px ${descShadow.color}`
