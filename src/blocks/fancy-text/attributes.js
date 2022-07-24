@@ -86,7 +86,7 @@ const attributes = {
     fancyTextAlign: {
         type: "object",
         default: {
-            Desktop: "center",
+            Desktop: 'center',
             Tablet: "center",
             Mobile: "center"
         }
@@ -115,9 +115,9 @@ const attributes = {
         type: "array",
         default: [
             {
-            textColor: "",
-            textBGColor: '',
-            textBGOpacity: 1,
+                textColor: "",
+                textBGColor: '',
+                textBGOpacity: 1,
             }
         ]
     },
