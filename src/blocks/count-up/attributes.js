@@ -67,7 +67,6 @@ const attributes = {
     },
     iconColor: {
         type: "string",
-        default: "#6ec1e4"
     },
     selfAlign: {
         type: "string",
@@ -156,22 +155,7 @@ const attributes = {
             }
         ]
     },
-    borderTop: {
-        type: 'number',
-        default: '0'
-    },
-    borderRight: {
-        type: 'number',
-        default: '0'
-    },
-    borderBottom: {
-        type: 'number',
-        default: '0'
-    },
-    borderLeft: {
-        type: 'number',
-        default: '0'
-    },
+
     suffixStyles: {
         type: 'array',
         default: [

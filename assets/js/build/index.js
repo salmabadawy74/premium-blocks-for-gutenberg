@@ -15719,8 +15719,7 @@ const attributes = {
     default: 40
   },
   iconColor: {
-    type: "string",
-    default: "#6ec1e4"
+    type: "string"
   },
   selfAlign: {
     type: "string",
@@ -15802,22 +15801,6 @@ const attributes = {
       gradientAngle: '180',
       gradientPosition: 'center center'
     }]
-  },
-  borderTop: {
-    type: 'number',
-    default: '0'
-  },
-  borderRight: {
-    type: 'number',
-    default: '0'
-  },
-  borderBottom: {
-    type: 'number',
-    default: '0'
-  },
-  borderLeft: {
-    type: 'number',
-    default: '0'
   },
   suffixStyles: {
     type: 'array',
