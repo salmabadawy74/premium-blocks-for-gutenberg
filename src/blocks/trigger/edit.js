@@ -23,10 +23,8 @@ import SpacingControl from '../../components/premium-responsive-spacing'
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
-import { borderCss } from '../../components/HelperFunction';
-import ResponsiveRadioControl from '../../components/responsive-radio';
+import { borderCss, generateBlockId, paddingCss } from '../../components/HelperFunction';
 import Icons from "../../components/icons";
-import { generateBlockId } from '../../components/HelperFunction';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -52,15 +50,16 @@ function Edit(props) {
     const { attributes, setAttributes, className, clientId } = props;
 
     useEffect(() => {
-        setAttributes({ block_id: "premium-trigger-" + generateBlockId(clientId) })
+        setAttributes({ blockId: "premium-trigger-" + generateBlockId(clientId) })
     }, [])
 
     const { triggerLabel,
         iconSize,
         iconAlignment,
+        displayTriggerLabel,
         displayFloat,
         floatPosition,
-        block_id,
+        blockId,
         triggerStyles,
         canvasStyles,
         triggerSpacing,
@@ -76,11 +75,6 @@ function Edit(props) {
         setAttributes({ triggerLabel: newText });
     };
 
-    const triggerSpacingTop = getPreviewSize(props.deviceType, triggerSpacing.Desktop.top, triggerSpacing.Tablet.top, triggerSpacing.Mobile.top);
-    const triggerSpacingRight = getPreviewSize(props.deviceType, triggerSpacing.Desktop.right, triggerSpacing.Tablet.right, triggerSpacing.Mobile.right);
-    const triggerSpacingBottom = getPreviewSize(props.deviceType, triggerSpacing.Desktop.bottom, triggerSpacing.Tablet.bottom, triggerSpacing.Mobile.bottom);
-    const triggerSpacingLeft = getPreviewSize(props.deviceType, triggerSpacing.Desktop.left, triggerSpacing.Tablet.left, triggerSpacing.Mobile.left);
-
     const setTriggerStyles = (style, value) => {
         const newTStyles = { ...triggerStyles };
         newTStyles[style] = value;
@@ -91,20 +85,7 @@ function Edit(props) {
         newCStyles[color] = value;
         setAttributes({ canvasStyles: newCStyles });
     };
-    function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
-        if (device === 'Mobile') {
-            if (undefined !== mobileSize && '' !== mobileSize) {
-                return mobileSize;
-            } else if (undefined !== tabletSize && '' !== tabletSize) {
-                return tabletSize;
-            }
-        } else if (device === 'Tablet') {
-            if (undefined !== tabletSize && '' !== tabletSize) {
-                return tabletSize;
-            }
-        }
-        return desktopSize;
-    }
+
 
     return (
         <Fragment>
@@ -125,21 +106,31 @@ function Edit(props) {
                             title={__('Trigger', 'premium-blocks-for-gutenberg')}
                             initialOpen={true}
                         >
-                            <TextControl
-                                label={__('Trigger Label', 'premium-blocks-for-gutenberg')}
-                                value={attributes.triggerLabel}
-                                onChange={(val) => setAttributes({ triggerLabel: val })}
+                            <ToggleControl
+                                label={__("Display Label", 'premium-blocks-for-gutenberg')}
+                                checked={displayTriggerLabel}
+                                onChange={value => setAttributes({ displayTriggerLabel: value })}
                             />
-                            <RadioComponent
-                                label={__("Label Alignment", 'premium-blocks-for-gutenberg')}
-                                choices={[
-                                    { value: 'left', label: __('Left'), icon: Icons.alignLeft },
-                                    { value: 'right', label: __('Right'), icon: Icons.alignRight }
-                                ]}
-                                value={triggerStyles.labelPosition}
-                                onChange={newValue => setTriggerStyles('labelPosition', newValue)}
-                                showIcons={true}
-                            />
+
+                            {attributes.displayTriggerLabel && (
+                            <Fragment>
+                                <TextControl
+                                    label={__('Trigger Label', 'premium-blocks-for-gutenberg')}
+                                    value={attributes.triggerLabel}
+                                    onChange={(val) => setAttributes({ triggerLabel: val })}
+                                />
+                                <RadioComponent
+                                    label={__("Label Alignment", 'premium-blocks-for-gutenberg')}
+                                    choices={[
+                                        { value: 'left', label: __('Left'), icon: Icons.alignLeft },
+                                        { value: 'right', label: __('Right'), icon: Icons.alignRight }
+                                    ]}
+                                    value={triggerStyles.labelPosition}
+                                    onChange={newValue => setTriggerStyles('labelPosition', newValue)}
+                                    showIcons={true}
+                                />
+                            </Fragment>
+                            )}
                             <RadioComponent
                                 label={__("Icon Style", 'premium-blocks-for-gutenberg')}
                                 choices={[
@@ -385,20 +376,20 @@ function Edit(props) {
 
             <style>
                 {`
-            .${block_id} .toggle-button:hover {
+            .${blockId} .toggle-button:hover {
                 background-color:${triggerStyles.iconBgHoverColor} !important;
             }
-            .${block_id} .toggle-button:hover svg {
+            .${blockId} .toggle-button:hover svg {
                 fill:${triggerStyles.iconHoverColor} !important;
             }
-            .${block_id} .toggle-button:hover .trigger-label {
+            .${blockId} .toggle-button:hover .trigger-label {
                 color:${triggerStyles.labelHoverColor} !important;
             }
-            .${block_id} .toggle-button[data-style="solid"] {
+            .${blockId} .toggle-button[data-style="solid"] {
                 background-color: ${triggerStyles.iconBgColor} ;
             }
-            .${block_id} .toggle-button[data-style="outline"],
-            .${block_id} .toggle-button[data-style="solid"] {
+            .${blockId} .toggle-button[data-style="outline"],
+            .${blockId} .toggle-button[data-style="solid"] {
                 border-style: ${triggerBorder.borderType};
                 border-top-left-radius: ${triggerBorder && triggerBorder.borderRadius[props.deviceType].top || 0}px,
                 border-top-right-radius: ${triggerBorder && triggerBorder.borderRadius[props.deviceType].right || 0}px,
@@ -406,28 +397,28 @@ function Edit(props) {
                 border-bottom-left-radius: ${triggerBorder && triggerBorder.borderRadius[props.deviceType].left || 0}px,
                 border-color: ${triggerBorder && triggerBorder.borderColor};
             }
-            .${block_id} .toggle-button[data-style="outline"]:hover,
-            .${block_id} .toggle-button[data-style="solid"]:hover {
+            .${blockId} .toggle-button[data-style="outline"]:hover,
+            .${blockId} .toggle-button[data-style="solid"]:hover {
                 border-color: ${triggerStyles.borderHoverColor} !important;
             }
-            .${block_id}.float-position-topright {
+            .${blockId}.float-position-topright {
                 top: ${(vOffset[props.deviceType] || 20) + vOffset.unit};
                 right: ${(hOffset[props.deviceType] || 20) + hOffset.unit};
             }
-             .${block_id}.float-position-topleft {
+             .${blockId}.float-position-topleft {
                  top: ${(vOffset[props.deviceType] || 20) + vOffset.unit};
                  left: ${(hOffset[props.deviceType] || 20) + hOffset.unit};
              }
-             .${block_id}.float-position-bottomright {
+             .${blockId}.float-position-bottomright {
                 bottom: ${(vOffset[props.deviceType] || 20) + vOffset.unit};
                 right: ${(hOffset[props.deviceType] || 20) + hOffset.unit};
             }
-            .${block_id}.float-position-bottomleft {
+            .${blockId}.float-position-bottomleft {
                 bottom: ${(vOffset[props.deviceType] || 20) + vOffset.unit};
                 left: ${(hOffset[props.deviceType] || 20) + hOffset.unit};
             }
-            .${block_id} .premium-trigger-canvas-container[data-layout="right"] .premium-popup-content,
-            .${block_id} .premium-trigger-canvas-container[data-layout="left"] .premium-popup-content {
+            .${blockId} .premium-trigger-canvas-container[data-layout="right"] .premium-popup-content,
+            .${blockId} .premium-trigger-canvas-container[data-layout="left"] .premium-popup-content {
                 width: ${canvasStyles.width}px;
             }
         `}
@@ -437,7 +428,7 @@ function Edit(props) {
                 className: classnames(
                     className,
                     "premium-trigger",
-                    `${block_id} ${isEditing ? "active" : ""} ${attributes.displayFloat ? ` float-position-${floatPosition}` : ""} ${hideDesktop} ${hideTablet} ${hideMobile}`
+                    `${blockId} ${isEditing ? "active" : ""} ${attributes.displayFloat ? ` float-position-${floatPosition}` : ""} ${hideDesktop} ${hideTablet} ${hideMobile}`
                 ),
             })}>
                 <div className={`premium-trigger-container`}>
@@ -450,14 +441,14 @@ function Edit(props) {
                             style={{
                                 ...borderCss(triggerBorder, props.deviceType),
                             }}>
-                            {triggerLabel &&
-                                <span
+                            {triggerLabel && displayTriggerLabel && 
+                                (<span
                                     className={`trigger-label`}
                                     onChange={onChangeText}
                                     value={triggerLabel}
                                     placeholder={__('Menu', 'premium-blocks-for-gutenberg')}
                                     style={{ color: triggerStyles.labelColor }}
-                                >{triggerLabel}</span>}
+                                >{triggerLabel}</span>)}
                             <svg style={{ fontSize: (iconSize[props.deviceType] || 20) + iconSize.unit, fill: `${triggerStyles.iconColor}` }} height="1.5em" viewBox="0 -53 384 384" width="1.5em" xmlns="http://www.w3.org/2000/svg">
                                 <path d="m368 154.667969h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"></path>
                                 <path d="m368 32h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"></path>
@@ -472,10 +463,7 @@ function Edit(props) {
                             }}></div>
                             <div className="premium-popup-content"
                                 style={{
-                                    paddingTop: triggerSpacingTop && `${triggerSpacingTop}${triggerSpacing.unit ? triggerSpacing.unit : 'px'}`,
-                                    paddingBottom: triggerSpacingBottom && `${triggerSpacingBottom}${triggerSpacing.unit ? triggerSpacing.unit : 'px'}`,
-                                    paddingLeft: triggerSpacingLeft && `${triggerSpacingLeft}${triggerSpacing.unit ? triggerSpacing.unit : 'px'}`,
-                                    paddingRight: triggerSpacingRight && `${triggerSpacingRight}${triggerSpacing.unit ? triggerSpacing.unit : 'px'}`,
+                                    ...paddingCss(triggerSpacing, deviceType),
                                     backgroundColor: `${canvasStyles.canvasBgColor}`,
                                 }}>
                                 <div className="premium-popup-header">

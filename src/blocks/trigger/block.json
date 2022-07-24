@@ -15,14 +15,15 @@
 	"editorStyle": "file:./build/index.css",
 	"style": "file:./build/style-block.css",
 	"attributes": {
-		"text": {
-			"type": "string"
-		},
-		"block_id": {
+		"blockId": {
 			"type": "string"
 		},
 		"triggerLabel": {
-			"type": "string"
+			"type": "string",
+			"default": "Menu"
+		},
+		"displayTriggerLabel": {
+			"type": "boolean"
 		},
 		"displayFloat": {
 			"type": "boolean"
@@ -123,7 +124,7 @@
                 "iconHoverColor": "",
 				"labelHoverColor": "",
                 "iconHoverBgColor": "",
-				"labelPosition": "",
+				"labelPosition": "left",
 				"style": "simple",
 				"borderType": "solid",
 				"borderColor": "#e8e8e8",

@@ -8,7 +8,7 @@
  import classnames from "classnames";
  export default function Save(props) {
     const { attributes, className } = props;
-    const { block_id, 
+    const { blockId, 
         iconSize,
         iconAlignment,
         triggerLabel,
@@ -16,6 +16,7 @@
         canvasStyles, 
         triggerBorder,
         displayFloat,
+        displayTriggerLabel,
         floatPosition,
         vOffset,
         hOffset,
@@ -25,11 +26,11 @@
      } = attributes;
 
     const blockProps = useBlockProps.save({
-        // id: `premium-trigger-${block_id}`,
+        // id: `premium-trigger-${blockId}`,
          className: classnames(
             className, 
             'premium-trigger',
-            `${block_id} ${hideDesktop} ${hideTablet} ${hideMobile} ${attributes.displayFloat ? `float-position-${floatPosition}` : ""}`
+            `${blockId} ${hideDesktop} ${hideTablet} ${hideMobile} ${attributes.displayFloat ? `float-position-${floatPosition}` : ""}`
          )
      });
 
@@ -37,29 +38,29 @@
          <div { ...blockProps }>
              <style>
             {`
-            .${block_id} .toggle-button:hover {
+            .${blockId} .toggle-button:hover {
                 background-color:${triggerStyles.iconBgHoverColor} !important;
             }
-            .${block_id} .toggle-button:hover svg {
+            .${blockId} .toggle-button:hover svg {
                 fill:${triggerStyles.iconHoverColor} !important;
             }
-            .${block_id} .toggle-button:hover .trigger-label {
+            .${blockId} .toggle-button:hover .trigger-label {
                 color:${triggerStyles.labelHoverColor} !important;
             }
-            .${block_id} .toggle-button[data-style="solid"] {
+            .${blockId} .toggle-button[data-style="solid"] {
                 background-color: ${triggerStyles.iconBgColor} ;
             }
-            .${block_id} .toggle-button[data-style="outline"], 
-            .${block_id} .toggle-button[data-style="solid"]{
+            .${blockId} .toggle-button[data-style="outline"], 
+            .${blockId} .toggle-button[data-style="solid"]{
                 border-style: ${triggerBorder.borderType};
                 border-color: ${triggerBorder.borderColor};
             }
-            .${block_id} .toggle-button[data-style="outline"]:hover,
-            .${block_id} .toggle-button[data-style="solid"]:hover {
+            .${blockId} .toggle-button[data-style="outline"]:hover,
+            .${blockId} .toggle-button[data-style="solid"]:hover {
                 border-color: ${triggerStyles.borderHoverColor} !important;
             }
-            .${block_id} .premium-trigger-canvas-container[data-layout="right"] .premium-popup-content,
-            .s${block_id} .premium-trigger-canvas-container[data-layout="left"] .premium-popup-content {
+            .${blockId} .premium-trigger-canvas-container[data-layout="right"] .premium-popup-content,
+            .s${blockId} .premium-trigger-canvas-container[data-layout="left"] .premium-popup-content {
                 width: ${canvasStyles.width}px;
             }
         `}
@@ -72,7 +73,7 @@
                                 onClick={ () => setEditing( true ) }
                             >
                                 
-                            {triggerLabel &&
+                            { triggerLabel && displayTriggerLabel && 
                                 <span className='trigger-label' style={{color: triggerStyles.labelColor }}>{triggerLabel}</span>
                             }
                                 <svg style={{fill:`${triggerStyles.iconColor}`}} height="1.5em" viewBox="0 -53 384 384" width="1.5em" xmlns="http://www.w3.org/2000/svg">

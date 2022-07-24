@@ -12,7 +12,8 @@ function get_trigger_css_style( $attr, $unique_id ) {
 	$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
 	$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
 	$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
-	$unique_id = $attr['block_id'];
+	// $unique_id = $attr['blockId'];
+	// $unique_id = $attributes['blockId'];
 
 	if ( isset( $attr['iconSize'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' .toggle-button svg' );
@@ -231,27 +232,54 @@ function should_render_trigger_inline( $name, $unique_id ) {
 
 
  function render_block_pbg_trigger( $attributes, $content ) {
-	$wrapper_attributes = get_block_wrapper_attributes();
-	$unique_id = $attributes['block_id'];
-	$align_class_name   = empty( $attributes['textAlign'] ) ? '' : "has-text-align-{$attributes['textAlign']}";
-	$wrapper_attributes = get_block_wrapper_attributes( array( 'class' => $align_class_name ) );
-	$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
-	$id                 = 'premium-trigger-' . esc_attr( $unique_id );
 
-	if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'trigger', $unique_id ) ) {
+	if ( isset( $attributes['blockId'] ) && ! empty( $attributes['blockId'] ) ) {
+		$unique_id = $attributes['blockId'];
+	} else {
+		$unique_id = rand( 100, 10000 );
+	}
+
+	$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
+
+	if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
 		// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
 		// $attributes = apply_filters( 'Premium_BLocks_blocks_column_render_block_attributes', $attributes );
 		$css = get_trigger_css_style( $attributes, $unique_id );
+
 		if ( ! empty( $css ) ) {
 			$block_helpers = new PBG_Blocks_Helper();
-			if ( should_render_trigger_inline( 'trigger', $unique_id ) ) {
-			$content = '<style id="pbg-blocks-style' . esc_attr( $unique_id ) . '">' . $css . '</style>' . $content;
-			 } else {
+			if ( should_render_inline( 'trigger', $unique_id ) ) {
+				$content = '<style id="' . $style_id . '">' . $css . '</style>' . $content;
+			} else {
 				$block_helpers->render_inline_css( $css, $style_id, true );
-				}
+			}
 		}
 	};
 	return $content;
+
+
+
+	// $wrapper_attributes = get_block_wrapper_attributes();
+	// //$unique_id = $attributes['blockId'];
+	// $align_class_name   = empty( $attributes['textAlign'] ) ? '' : "has-text-align-{$attributes['textAlign']}";
+	// $wrapper_attributes = get_block_wrapper_attributes( array( 'class' => $align_class_name ) );
+	// $style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
+	// $id                 = 'premium-trigger-' . esc_attr( $unique_id );
+
+	// if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'trigger', $unique_id ) ) {
+	// 	// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
+	// 	// $attributes = apply_filters( 'Premium_BLocks_blocks_column_render_block_attributes', $attributes );
+	// 	$css = get_trigger_css_style( $attributes, $unique_id );
+	// 	if ( ! empty( $css ) ) {
+	// 		$block_helpers = new PBG_Blocks_Helper();
+	// 		if ( should_render_trigger_inline( 'trigger', $unique_id ) ) {
+	// 		$content = '<style id="pbg-blocks-style' . esc_attr( $unique_id ) . '">' . $css . '</style>' . $content;
+	// 		 } else {
+	// 			$block_helpers->render_inline_css( $css, $style_id, true );
+	// 			}
+	// 	}
+	// };
+	// return $content;
 
 	}
 
