@@ -201,7 +201,8 @@ class Edit extends Component {
             nameColor,
             titleColor,
             descColor,
-            imageFilter
+            imageFilter,
+            nameStyles
         } = this.props.attributes;
 
         const HOVER = [
@@ -442,6 +443,18 @@ class Edit extends Component {
             }
         };
 
+        const saveNameStyles = (value) => {
+            const newUpdate = nameStyles.map((item, index) => {
+                if (0 === index) {
+                    item = { ...item, ...value };
+                }
+                return item;
+            });
+            setAttributes({
+                nameStyles: newUpdate,
+            });
+        };
+
         const saveSocialIconStyles = (value) => {
             const newUpdate = socialIconStyles.map((item, index) => {
                 if (0 === index) {
@@ -560,8 +573,8 @@ class Edit extends Component {
                                         {value.socialIcon && socialIconfn(value.items)}
                                     </div>
                                 ) : (
-                                        ""
-                                    )}
+                                    ""
+                                )}
                             </div>
                             <div
                                 className={`premium-person__info`}
@@ -579,7 +592,7 @@ class Edit extends Component {
                                         onChange={(name) => { this.save({ name: name }, index); }}
                                         style={{
                                             ...paddingCss(namePadding, this.props.deviceType),
-                                            color: nameColor,
+                                            color: nameStyles[0].nameColor,
                                             ...typographyCss(nameTypography, this.props.deviceType),
                                             alignSelf: nameV,
                                             textShadow: `${nameShadow.horizontal}px ${nameShadow.vertical}px ${nameShadow.blur}px ${nameShadow.color}`,
@@ -625,8 +638,8 @@ class Edit extends Component {
                                         {value.socialIcon && socialIconfn(value.items)}
                                     </div>
                                 ) : (
-                                        ""
-                                    )}
+                                    ""
+                                )}
                             </div>
                         </div>
                     ))}
@@ -797,8 +810,8 @@ class Edit extends Component {
                                         options={ROWS}
                                     />
                                 ) : (
-                                        ""
-                                    )}
+                                    ""
+                                )}
                                 <SelectControl
                                     label={__("Style", "premium-block-for-gutenberg")}
                                     value={effectPersonStyle}
@@ -857,14 +870,12 @@ class Edit extends Component {
                                     value={nameTypography}
                                     onChange={(newValue) => setAttributes({ nameTypography: newValue })}
                                 />
-                                <div className="premium-control-toggle">
-                                    <AdvancedPopColorControl
-                                        label={__("Color", "premium-block-for-gutenberg")}
-                                        colorValue={nameColor}
-                                        colorDefault={""}
-                                        onColorChange={(newValue) => setAttributes({ nameColor: newValue })}
-                                    />
-                                </div>
+                                <AdvancedPopColorControl
+                                    label={__("Color", "premium-block-for-gutenberg")}
+                                    colorValue={nameStyles[0].nameColor}
+                                    colorDefault={""}
+                                    onColorChange={(newValue) => saveNameStyles({ nameColor: newValue })}
+                                />
                                 <PremiumShadow
                                     label={__("Text Shadow", "premium-blocks-for-gutenberg")}
                                     value={nameShadow}
@@ -889,10 +900,14 @@ class Edit extends Component {
                                 />
                                 <div className="premium-control-toggle">
                                     <AdvancedPopColorControl
-                                        label={__("Color", "premium-block-for-gutenberg")}
+                                        label={__("Color", 'premium-block-for-gutenberg')}
                                         colorValue={titleColor}
-                                        colorDefault={""}
-                                        onColorChange={(newValue) => setAttributes({ titleColor: newValue })}
+                                        colorDefault={''}
+                                        onColorChange={newValue =>
+                                            setAttributes({
+                                                titleColor: newValue
+                                            })
+                                        }
                                     />
                                 </div>
                                 <PremiumShadow
@@ -1080,8 +1095,8 @@ class Edit extends Component {
                                         min={15}
                                     />
                                 ) : (
-                                        ""
-                                    )}
+                                    ""
+                                )}
                                 <SpacingControl
                                     label={__("Padding", "premium-blocks-for-gutenberg")}
                                     value={contentPadding}

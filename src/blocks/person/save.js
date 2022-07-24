@@ -26,11 +26,6 @@ const save = props => {
         effectPersonStyle,
         multiPersonContent,
         rowPerson,
-        blur,
-        bright,
-        contrast,
-        saturation,
-        hue,
         contentColor,
         bottomInfo,
         socialIconBorder,
@@ -50,8 +45,10 @@ const save = props => {
         nameColor,
         titleColor,
         descColor,
-        imageFilter
+        imageFilter,
+        nameStyles
     } = props.attributes;
+    console.log(titleColor)
 
     const loadStyles = () => {
         const styles = {};
@@ -125,14 +122,13 @@ const save = props => {
                             value={value.name}
                             onChange={name => { this.save({ name: name }, index) }}
                             style={filterJsCss({
-                                color: nameColor,
+                                color: nameStyles[0].nameColor,
                                 alignSelf: nameV,
                                 fontStyle: nameTypography?.fontStyle,
                                 fontFamily: nameTypography?.fontFamily,
                                 fontWeight: nameTypography?.fontWeight,
                                 textDecoration: nameTypography?.textDecoration,
                                 textTransform: nameTypography?.textTransform,
-                                // ...typographyCss(nameTypography, props.deviceType),
                                 textShadow: `${nameShadow.horizontal}px ${nameShadow.vertical}px ${nameShadow.blur}px ${nameShadow.color}`
                             })}
                             keepPlaceholderOnFocus
@@ -151,7 +147,6 @@ const save = props => {
                                 fontWeight: titleTypography?.fontWeight,
                                 textDecoration: titleTypography?.textDecoration,
                                 textTransform: titleTypography?.textTransform,
-                                // ...typographyCss(titleTypography, props.deviceType),
                                 alignSelf: titleV,
                                 textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`
                             })}
@@ -171,7 +166,6 @@ const save = props => {
                                 fontWeight: descTypography?.fontWeight,
                                 textDecoration: descTypography?.textDecoration,
                                 textTransform: descTypography?.textTransform,
-                                // ...typographyCss(descTypography, props.deviceType),
                                 alignSelf: descV,
                                 textShadow: `${descShadow.horizontal}px ${descShadow.vertical}px ${descShadow.blur}px ${descShadow.color}`
                             })}
@@ -195,7 +189,6 @@ const save = props => {
                 ' premium-tablet-hidden': hideTablet,
                 ' premium-mobile-hidden': hideMobile,
             })}
-        // style={{ textAlign: align[props.deviceType] || 'center' }}
         >
             <style
                 dangerouslySetInnerHTML={{

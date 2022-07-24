@@ -8620,6 +8620,17 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding', $css->render_spacing( $content_padding['Desktop'] , $content_padding['unit'] ) );
 		}
 
+		//style for image
+		if ( isset( $attr['imgHeight']['Desktop'] ) ) {
+			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__img_wrap' . ' > img' );
+			$css->add_property( 'height', ( $attr['imgHeight']['Desktop'] . ( isset( $attr['imgHeight']['unit'] ) ? $attr['imgHeight']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['imgWidth']['Desktop'] ) ) {
+			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__img_wrap' . ' > img' );
+			$css->add_property( 'width', ( $attr['imgWidth']['Desktop'] . ( isset( $attr['imgWidth']['unit'] ) ? $attr['imgWidth']['unit'] : 'px' ) . '!important' ) );
+		}
+		
+
 		// Style for Name.
 		if ( isset( $attr['nameTypography'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . '> .premium-person__inner' . ' > .premium-person__info' . ' > .premium-person__name' );
@@ -8723,6 +8734,16 @@ class PBG_Blocks_Helper {
 			$content_padding = $attr['contentPadding'];
 			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . '> .premium-person__inner' . ' > .premium-person__info' );
 			$css->add_property( 'padding', $css->render_spacing( $content_padding['Tablet'] , $content_padding['unit'] ) );
+		}
+
+		//style for image
+		if ( isset( $attr['imgHeight']['Tablet'] ) ) {
+			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__img_wrap' . ' > img' );
+			$css->add_property( 'height', ( $attr['imgHeight']['Tablet'] . ( isset( $attr['imgHeight']['unit'] ) ? $attr['imgHeight']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['imgWidth']['Tablet'] ) ) {
+			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__img_wrap' . ' > img' );
+			$css->add_property( 'width', ( $attr['imgWidth']['Tablet'] . ( isset( $attr['imgWidth']['unit'] ) ? $attr['imgWidth']['unit'] : 'px' ) . '!important' ) );
 		}
 
 		// Style for Name.
@@ -8830,6 +8851,16 @@ class PBG_Blocks_Helper {
 			$content_padding = $attr['contentPadding'];
 			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . '> .premium-person__inner' . ' > .premium-person__info' );
 			$css->add_property( 'padding', $css->render_spacing( $content_padding['Mobile'] , $content_padding['unit'] ) );
+		}
+
+		//style for image
+		if ( isset( $attr['imgHeight']['Mobile'] ) ) {
+			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__img_wrap' . ' > img' );
+			$css->add_property( 'height', ( $attr['imgHeight']['Mobile'] . ( isset( $attr['imgHeight']['unit'] ) ? $attr['imgHeight']['unit'] : 'px' ) . '!important' ) );
+		}
+		if ( isset( $attr['imgWidth']['Mobile'] ) ) {
+			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__img_wrap' . ' > img' );
+			$css->add_property( 'width', ( $attr['imgWidth']['Mobile'] . ( isset( $attr['imgWidth']['unit'] ) ? $attr['imgWidth']['unit'] : 'px' ) . '!important' ) );
 		}
 
 		// Style for Name.

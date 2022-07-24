@@ -38717,14 +38717,12 @@ const attributes = {
       "Mobile": "center"
     }
   },
-  // nameStyles: {
-  //     type: "array",
-  //     default: [
-  //         {
-  //             nameColor: "rgb(110, 193, 228)"
-  //         }
-  //     ]
-  // },
+  nameStyles: {
+    type: "array",
+    default: [{
+      nameColor: ""
+    }]
+  },
   nameColor: {
     type: "object",
     default: ""
@@ -40237,7 +40235,8 @@ class Edit extends Component {
       nameColor,
       titleColor,
       descColor,
-      imageFilter
+      imageFilter,
+      nameStyles
     } = this.props.attributes;
     const HOVER = [{
       value: "none",
@@ -40418,6 +40417,21 @@ class Edit extends Component {
       }
     };
 
+    const saveNameStyles = value => {
+      const newUpdate = nameStyles.map((item, index) => {
+        if (0 === index) {
+          item = { ...item,
+            ...value
+          };
+        }
+
+        return item;
+      });
+      setAttributes({
+        nameStyles: newUpdate
+      });
+    };
+
     const saveSocialIconStyles = value => {
       const newUpdate = socialIconStyles.map((item, index) => {
         if (0 === index) {
@@ -40521,7 +40535,7 @@ class Edit extends Component {
           }, index);
         },
         style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_22__.paddingCss)(namePadding, this.props.deviceType),
-          color: nameColor,
+          color: nameStyles[0].nameColor,
           ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_22__.typographyCss)(nameTypography, this.props.deviceType),
           alignSelf: nameV,
           textShadow: `${nameShadow.horizontal}px ${nameShadow.vertical}px ${nameShadow.blur}px ${nameShadow.color}`
@@ -40828,16 +40842,14 @@ class Edit extends Component {
       onChange: newValue => setAttributes({
         nameTypography: newValue
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "premium-control-toggle"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__["default"], {
       label: __("Color", "premium-block-for-gutenberg"),
-      colorValue: nameColor,
+      colorValue: nameStyles[0].nameColor,
       colorDefault: "",
-      onColorChange: newValue => setAttributes({
+      onColorChange: newValue => saveNameStyles({
         nameColor: newValue
       })
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_4__["default"], {
       label: __("Text Shadow", "premium-blocks-for-gutenberg"),
       value: nameShadow,
       onChange: value => setAttributes({
@@ -40863,9 +40875,9 @@ class Edit extends Component {
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "premium-control-toggle"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      label: __("Color", "premium-block-for-gutenberg"),
+      label: __("Color", 'premium-block-for-gutenberg'),
       colorValue: titleColor,
-      colorDefault: "",
+      colorDefault: '',
       onColorChange: newValue => setAttributes({
         titleColor: newValue
       })
@@ -41189,11 +41201,6 @@ const save = props => {
     effectPersonStyle,
     multiPersonContent,
     rowPerson,
-    blur,
-    bright,
-    contrast,
-    saturation,
-    hue,
     contentColor,
     bottomInfo,
     socialIconBorder,
@@ -41213,8 +41220,10 @@ const save = props => {
     nameColor,
     titleColor,
     descColor,
-    imageFilter
+    imageFilter,
+    nameStyles
   } = props.attributes;
+  console.log(titleColor);
 
   const loadStyles = () => {
     const styles = {};
@@ -41287,14 +41296,13 @@ const save = props => {
         }, index);
       },
       style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
-        color: nameColor,
+        color: nameStyles[0].nameColor,
         alignSelf: nameV,
         fontStyle: nameTypography === null || nameTypography === void 0 ? void 0 : nameTypography.fontStyle,
         fontFamily: nameTypography === null || nameTypography === void 0 ? void 0 : nameTypography.fontFamily,
         fontWeight: nameTypography === null || nameTypography === void 0 ? void 0 : nameTypography.fontWeight,
         textDecoration: nameTypography === null || nameTypography === void 0 ? void 0 : nameTypography.textDecoration,
         textTransform: nameTypography === null || nameTypography === void 0 ? void 0 : nameTypography.textTransform,
-        // ...typographyCss(nameTypography, props.deviceType),
         textShadow: `${nameShadow.horizontal}px ${nameShadow.vertical}px ${nameShadow.blur}px ${nameShadow.color}`
       }),
       keepPlaceholderOnFocus: true
@@ -41314,7 +41322,6 @@ const save = props => {
         fontWeight: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontWeight,
         textDecoration: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textDecoration,
         textTransform: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textTransform,
-        // ...typographyCss(titleTypography, props.deviceType),
         alignSelf: titleV,
         textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`
       }),
@@ -41335,7 +41342,6 @@ const save = props => {
         fontWeight: descTypography === null || descTypography === void 0 ? void 0 : descTypography.fontWeight,
         textDecoration: descTypography === null || descTypography === void 0 ? void 0 : descTypography.textDecoration,
         textTransform: descTypography === null || descTypography === void 0 ? void 0 : descTypography.textTransform,
-        // ...typographyCss(descTypography, props.deviceType),
         alignSelf: descV,
         textShadow: `${descShadow.horizontal}px ${descShadow.vertical}px ${descShadow.blur}px ${descShadow.color}`
       }),
@@ -41348,8 +41354,7 @@ const save = props => {
       ' premium-desktop-hidden': hideDesktop,
       ' premium-tablet-hidden': hideTablet,
       ' premium-mobile-hidden': hideMobile
-    }) // style={{ textAlign: align[props.deviceType] || 'center' }}
-
+    })
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
     dangerouslySetInnerHTML: {
       __html: loadStyles()
@@ -56300,22 +56305,22 @@ class AdvancedColorControl extends Component {
     this.state = {
       isVisible: false,
       colors: [],
-      currentColor: '',
-      defaultColor: ''
+      currentColor: "",
+      defaultColor: ""
     };
   }
 
   componentDidMount() {
-    if ('transparent' === this.props.colorDefault) {
+    if ("transparent" === this.props.colorDefault) {
       this.setState({
-        currentColor: undefined === this.props.colorValue || '' === this.props.colorValue || 'transparent' === this.props.colorValue ? '' : this.props.colorValue
+        currentColor: undefined === this.props.colorValue || "" === this.props.colorValue || "transparent" === this.props.colorValue ? "" : this.props.colorValue
       });
       this.setState({
-        defaultColor: ''
+        defaultColor: ""
       });
     } else {
       this.setState({
-        currentColor: undefined === this.props.colorValue || '' === this.props.colorValue ? this.props.colorDefault : this.props.colorValue
+        currentColor: undefined === this.props.colorValue || "" === this.props.colorValue ? this.props.colorDefault : this.props.colorValue
       });
       this.setState({
         defaultColor: this.props.colorDefault
@@ -56325,13 +56330,13 @@ class AdvancedColorControl extends Component {
 
   render() {
     const toggleVisible = () => {
-      if ('transparent' === this.props.colorDefault) {
+      if ("transparent" === this.props.colorDefault) {
         this.setState({
-          currentColor: undefined === this.props.colorValue || '' === this.props.colorValue || 'transparent' === this.props.colorValue ? '' : this.props.colorValue
+          currentColor: undefined === this.props.colorValue || "" === this.props.colorValue || "transparent" === this.props.colorValue ? "" : this.props.colorValue
         });
       } else {
         this.setState({
-          currentColor: undefined === this.props.colorValue || '' === this.props.colorValue ? this.props.colorDefault : this.props.colorValue
+          currentColor: undefined === this.props.colorValue || "" === this.props.colorValue ? this.props.colorDefault : this.props.colorValue
         });
       }
 
@@ -56364,7 +56369,7 @@ class AdvancedColorControl extends Component {
 
     const isNew = wp.components.GradientPicker;
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `premium-color-popover-container ${!this.props.disableReset ? 'premium-blocks__base-control' : ''} `
+      className: "premium-color-popover-container"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "premium-advanced-color-container"
     }, this.props.label && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
@@ -56375,20 +56380,49 @@ class AdvancedColorControl extends Component {
       position: "bottom left",
       className: "premium-popover-color",
       onClose: toggleClose
-    }, this.props.colors && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: isNew ? "premium-gutenberg-color-picker-new" : "premium-gutenberg-color-picker"
+    }, !this.props.disableCustomColors && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ColorPicker, {
+      color: undefined === this.props.colorValue || "" === this.props.colorValue || "transparent" === this.props.colorValue ? this.state.defaultColor : this.props.colorValue,
+      onChangeComplete: color => {
+        this.setState({
+          currentColor: color.hex
+        });
+
+        if (color.rgb) {
+          this.props.onColorChange(color.rgb.a != 1 ? "rgba(" + color.rgb.r + "," + color.rgb.g + "," + color.rgb.b + "," + color.rgb.a + ")" : color.hex);
+        }
+      }
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "premium-color-picker-value"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+      onChange: _ref => {
+        let {
+          target: {
+            value: color
+          }
+        } = _ref;
+        this.props.onColorChange(normalizeColor(color));
+        this.setState({
+          currentColor: color
+        });
+      },
+      value: normalizeColor(this.state.currentColor),
+      type: "text"
+    }))), this.props.colors && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: `premium-color-picker-top`
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
       className: "premium-color-picker-skins"
-    }, lodash_map__WEBPACK_IMPORTED_MODULE_2___default()(this.props.colors, _ref => {
+    }, lodash_map__WEBPACK_IMPORTED_MODULE_2___default()(this.props.colors, _ref2 => {
       let {
         color,
         slug,
         name
-      } = _ref;
+      } = _ref2;
       return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
         key: color,
-        className: classnames__WEBPACK_IMPORTED_MODULE_3___default()('premium-color-picker-single', {
-          'active': this.props.colorValue === color
+        className: classnames__WEBPACK_IMPORTED_MODULE_3___default()("premium-color-picker-single", {
+          active: this.props.colorValue === color
         }),
         style: {
           backgroundColor: color
@@ -56401,52 +56435,23 @@ class AdvancedColorControl extends Component {
         }
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
         className: `premium-tooltip-top`
-      }, name || sprintf(__('Color code: %s'), color)));
-    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: isNew ? 'premium-gutenberg-color-picker-new' : 'premium-gutenberg-color-picker'
-    }, !this.props.disableCustomColors && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ColorPicker, {
-      color: undefined === this.props.colorValue || '' === this.props.colorValue || 'transparent' === this.props.colorValue ? this.state.defaultColor : this.props.colorValue,
-      onChangeComplete: color => {
-        this.setState({
-          currentColor: color.hex
-        });
-
-        if (color.rgb) {
-          this.props.onColorChange(color.rgb.a != 1 ? 'rgba(' + color.rgb.r + ',' + color.rgb.g + ',' + color.rgb.b + ',' + color.rgb.a + ')' : color.hex);
-        }
-      }
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "premium-color-picker-value"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-      onChange: _ref2 => {
-        let {
-          target: {
-            value: color
-          }
-        } = _ref2;
-        this.props.onColorChange(normalizeColor(color));
-        this.setState({
-          currentColor: color
-        });
-      },
-      value: normalizeColor(this.state.currentColor),
-      type: "text"
+      }, name || sprintf(__("Color code: %s"), color)));
     })))), this.state.isVisible && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Tooltip, {
-      text: __('Select Color')
+      text: __("Select Color")
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
-      className: `premium-color-picker-single ${'' === this.props.colorDefault ? 'Premium-has-alpha' : 'Premium-no-alpha'}`,
+      className: `premium-color-picker-single ${"" === this.props.colorDefault ? "Premium-has-alpha" : "Premium-no-alpha"}`,
       onClick: toggleClose
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ColorIndicator, {
       className: "premium-advanced-color-indicate",
-      colorValue: 'transparent' === this.props.colorValue || undefined === this.props.colorValue || '' === this.props.colorValue ? this.props.colorDefault : this.props.colorValue
+      colorValue: "transparent" === this.props.colorValue || undefined === this.props.colorValue || "" === this.props.colorValue ? this.props.colorDefault : this.props.colorValue
     }))), !this.state.isVisible && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Tooltip, {
-      text: __('Select Color')
+      text: __("Select Color")
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
-      className: `premium-color-picker-single ${'' === this.props.colorDefault ? 'Premium-has-alpha' : 'Premium-no-alpha'}`,
+      className: `premium-color-picker-single ${"" === this.props.colorDefault ? "Premium-has-alpha" : "Premium-no-alpha"}`,
       onClick: toggleVisible
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ColorIndicator, {
       className: "premium-advanced-color-indicate",
-      colorValue: 'transparent' === this.props.colorValue || undefined === this.props.colorValue || '' === this.props.colorValue ? this.props.colorDefault : this.props.colorValue
+      colorValue: "transparent" === this.props.colorValue || undefined === this.props.colorValue || "" === this.props.colorValue ? this.props.colorDefault : this.props.colorValue
     })))), !this.props.disableReset && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "premium-color-btn-reset-wrap"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
@@ -56464,8 +56469,8 @@ class AdvancedColorControl extends Component {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (withSelect((select, ownProps) => {
-  const settings = select('core/block-editor').getSettings();
-  const colors = lodash_get__WEBPACK_IMPORTED_MODULE_1___default()(settings, ['colors'], []);
+  const settings = select("core/block-editor").getSettings();
+  const colors = lodash_get__WEBPACK_IMPORTED_MODULE_1___default()(settings, ["colors"], []);
   const disableCustomColors = ownProps.disableCustomColors === undefined ? settings.disableCustomColors : ownProps.disableCustomColors;
   return {
     colors,

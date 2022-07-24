@@ -8,14 +8,14 @@ const attributes = {
             "Mobile": "center"
         }
     },
-    // nameStyles: {
-    //     type: "array",
-    //     default: [
-    //         {
-    //             nameColor: "rgb(110, 193, 228)"
-    //         }
-    //     ]
-    // },
+    nameStyles: {
+        type: "array",
+        default: [
+            {
+                nameColor: ""
+            }
+        ]
+    },
     nameColor: {
         type: "object",
         default: ""
