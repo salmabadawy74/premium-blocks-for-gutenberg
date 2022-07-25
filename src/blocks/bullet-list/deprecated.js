@@ -1024,6 +1024,18 @@ const deprecated = [
                     'fontFamily': attributes?.titleStyles?.[0]?.titleFontFamily || '',
                     'lineHeight': attributes?.titleStyles?.[0]?.titleLine || '',
                     'textDecoration': '',
+                    letterSpacing: {
+                        Desktop: attributes?.titleStyles?.[0]?.titleLetter || '',
+                        Tablet: attributes?.titleStyles?.[0]?.titleLetter || '',
+                        Mobile: attributes?.titleStyles?.[0]?.titleLetter || '',
+                        unit: "px",
+                    },
+                    lineHeight: {
+                        Desktop: attributes?.titleStyles?.[0]?.titleLine || '',
+                        Tablet: attributes?.titleStyles?.[0]?.titleLine || '',
+                        Mobile: attributes?.titleStyles?.[0]?.titleLine || '',
+                        unit: "px",
+                    },
                     'fontSize': {
                         'Desktop': attributes?.titleStyles?.[0]?.titleSize || '',
                         "Tablet": attributes?.titleStyles?.[0]?.titlefontSizeTablet || '',
@@ -1073,7 +1085,12 @@ const deprecated = [
                     Desktop: attributes?.bulletAlign,
                     Tablet: attributes?.bulletAlign,
                     Mobile: attributes?.bulletAlign
-                }
+                },
+                align: {
+                    Desktop: attributes?.align,
+                    Tablet: attributes?.align,
+                    Mobile: attributes?.align
+                },
             }
             return Object.assign(attributes, newAttributes)
         },

@@ -426,6 +426,61 @@ const PBG_Block_Icons = {
     class: "cls-1",
     d: "M11.59,18.63a2,2,0,0,1-1-.26A2.45,2.45,0,0,1,9.5,16.15v-2.4a2.45,2.45,0,0,1,1.09-2.22,2.47,2.47,0,0,1,2.46.17l2.07,1.2a2.44,2.44,0,0,1,1.38,2A2.45,2.45,0,0,1,15.13,17L13,18.2A2.94,2.94,0,0,1,11.59,18.63Zm0-5.86a.51.51,0,0,0-.25.06,1.06,1.06,0,0,0-.34.92v2.4a1.06,1.06,0,0,0,.34.92,1,1,0,0,0,.95-.17l2.09-1.2c.38-.22.62-.51.62-.75s-.24-.53-.63-.75L12.29,13A1.44,1.44,0,0,0,11.59,12.77Z",
     transform: "translate(-1.75 -1.75)"
+  }))),
+  banner: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    id: "Accordion",
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "21.51",
+    height: "21.5",
+    viewBox: "0 0 21.51 21.5"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("defs", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, `.cls-1{fill:#1a1a1a;}`)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("title", null, "premium-banner"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("g", {
+    id: "Banner"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    class: "cls-1",
+    d: "M9.49,11.25A2.75,2.75,0,1,1,12.24,8.5,2.75,2.75,0,0,1,9.49,11.25Zm0-4A1.25,1.25,0,1,0,10.74,8.5,1.25,1.25,0,0,0,9.49,7.25Z",
+    transform: "translate(-1.75 -1.75)"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    class: "cls-1",
+    d: "M22.5,9.75a.75.75,0,0,0-.75.75v2.26l-.39-.33a3,3,0,0,0-3.8,0L13.4,16a1.49,1.49,0,0,1-1.84,0l-.33-.3a3,3,0,0,0-3.55-.19L3.55,18.29a10.78,10.78,0,0,1-.3-2.79v-6c0-4.61,1.63-6.25,6.25-6.25h4a.75.75,0,0,0,0-1.5h-4c-5.44,0-7.75,2.32-7.75,7.75v6a10.64,10.64,0,0,0,.69,4.16.81.81,0,0,0,.1.21c1.06,2.33,3.31,3.38,7,3.38h6c5.43,0,7.75-2.32,7.75-7.75v-5A.76.76,0,0,0,22.5,9.75Zm-.75,5.75c0,4.61-1.64,6.25-6.25,6.25h-6c-2.77,0-4.46-.59-5.36-2.05l4.37-2.94a1.52,1.52,0,0,1,1.73.08l.34.3a3,3,0,0,0,3.8,0l4.16-3.57a1.47,1.47,0,0,1,1.84,0l1.37,1.18Z",
+    transform: "translate(-1.75 -1.75)"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    class: "cls-1",
+    d: "M22.45,2.57a2.4,2.4,0,0,0-1.68-.82,2.34,2.34,0,0,0-1.66.81L18.69,3a.91.91,0,0,0-.17.17l-3,3a1.91,1.91,0,0,0-.52,1l-.2,1.4a1.46,1.46,0,0,0,.39,1.23,1.4,1.4,0,0,0,1,.41l.22,0,1.4-.2a2.05,2.05,0,0,0,1-.51L22.45,5.9A2.13,2.13,0,0,0,22.45,2.57ZM17.76,8.46a.5.5,0,0,1-.19.1l-1.31.18.19-1.32a.46.46,0,0,1,.09-.17L18.89,4.9a3.91,3.91,0,0,0,1.22,1.21Zm3.63-3.62L21.21,5A2.52,2.52,0,0,1,20,3.8l.18-.18a1,1,0,0,1,.6-.37,1.1,1.1,0,0,1,.62.38C21.91,4.15,21.85,4.38,21.39,4.84Z",
+    transform: "translate(-1.75 -1.75)"
+  }))),
+  bulletList: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    id: "Accordion",
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "19.5",
+    height: "18.5",
+    viewBox: "0 0 19.5 18.5"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("defs", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, `.cls-1{fill:#1a1a1a;}`)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("title", null, "premium-bullet-list"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("g", {
+    id: "Bullet_List",
+    "data-name": "Bullet List"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    class: "cls-1",
+    d: "M21.5,20.75h-10a.75.75,0,0,1,0-1.5h10a.75.75,0,0,1,0,1.5Z",
+    transform: "translate(-2.75 -3.25)"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    class: "cls-1",
+    d: "M21.5,13.75h-10a.75.75,0,0,1,0-1.5h10a.75.75,0,0,1,0,1.5Z",
+    transform: "translate(-2.75 -3.25)"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    class: "cls-1",
+    d: "M21.5,6.75h-10a.75.75,0,0,1,0-1.5h10a.75.75,0,0,1,0,1.5Z",
+    transform: "translate(-2.75 -3.25)"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    class: "cls-1",
+    d: "M4.5,7.75A.74.74,0,0,1,4,7.53l-1-1A.75.75,0,1,1,4,5.47l.47.47L7,3.47A.75.75,0,1,1,8,4.53l-3,3A.74.74,0,0,1,4.5,7.75Z",
+    transform: "translate(-2.75 -3.25)"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    class: "cls-1",
+    d: "M4.5,14.75A.74.74,0,0,1,4,14.53l-1-1A.75.75,0,1,1,4,12.47l.47.47L7,10.47A.75.75,0,1,1,8,11.53l-3,3A.74.74,0,0,1,4.5,14.75Z",
+    transform: "translate(-2.75 -3.25)"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    class: "cls-1",
+    d: "M4.5,21.75A.74.74,0,0,1,4,21.53l-1-1A.75.75,0,0,1,4,19.47l.47.47L7,17.47A.75.75,0,1,1,8,18.53l-3,3A.74.74,0,0,1,4.5,21.75Z",
+    transform: "translate(-2.75 -3.25)"
   })))
 };
 /* harmony default export */ __webpack_exports__["default"] = (PBG_Block_Icons);
@@ -10491,8 +10546,12 @@ const attributes = {
     type: "string"
   },
   align: {
-    type: "string",
-    default: "left"
+    type: "object",
+    default: {
+      Desktop: 'left',
+      Tablet: 'left',
+      Mobile: 'left'
+    }
   },
   repeaterBulletList: {
     type: "array",
@@ -10853,18 +10912,28 @@ const attributes = {
   titleTypography: {
     type: "object",
     default: {
-      "fontWeight": '',
-      'fontStyle': '',
-      'textTransform': '',
-      'letterSpacing': '',
-      'fontFamily': '',
-      'lineHeight': '',
-      'textDecoration': '',
-      'fontSize': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
+      fontWeight: "400",
+      fontStyle: "",
+      letterSpacing: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
+      },
+      fontFamily: "Default",
+      lineHeight: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
+      },
+      textDecoration: "",
+      textTransform: "",
+      fontSize: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
       }
     }
   },
@@ -10923,6 +10992,15 @@ const attributes = {
       'Mobile': '',
       'unit': 'px'
     }
+  },
+  hideDesktop: {
+    type: "boolean"
+  },
+  hideTablet: {
+    type: "boolean"
+  },
+  hideMobile: {
+    type: "boolean"
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (attributes);
@@ -11760,7 +11838,7 @@ const deprecated = [{
   },
 
   migrate: attributes => {
-    var _attributes$generalSt, _attributes$generalSt2, _attributes$generalSt3, _attributes$generalSt4, _attributes$generalSt5, _attributes$generalSt6, _attributes$generalSt7, _attributes$generalSt8, _attributes$generalSt9, _attributes$generalSt10, _attributes$generalSt11, _attributes$generalSt12, _attributes$bulletIco, _attributes$bulletIco2, _attributes$bulletIco3, _attributes$bulletIco4, _attributes$bulletIco5, _attributes$bulletIco6, _attributes$bulletIco7, _attributes$bulletIco8, _attributes$bulletIco9, _attributes$bulletIco10, _attributes$bulletIco11, _attributes$bulletIco12, _attributes$titleStyl, _attributes$titleStyl2, _attributes$titleStyl3, _attributes$titleStyl4, _attributes$titleStyl5, _attributes$titleStyl6, _attributes$titleStyl7, _attributes$titleStyl8, _attributes$titleStyl9, _attributes$titleStyl10, _attributes$titleStyl11, _attributes$titleStyl12, _attributes$titleStyl13, _attributes$titleStyl14, _attributes$titleStyl15, _attributes$titleStyl16, _attributes$titleStyl17, _attributes$titleStyl18, _attributes$titleStyl19, _attributes$titleStyl20, _attributes$titleStyl21, _attributes$titleStyl22, _attributes$titleStyl23, _attributes$titleStyl24, _attributes$titleStyl25, _attributes$titleStyl26, _attributes$generalSt13, _attributes$generalSt14, _attributes$generalSt15, _attributes$generalSt16, _attributes$generalSt17, _attributes$generalSt18, _attributes$generalSt19, _attributes$generalSt20, _attributes$generalSt21, _attributes$generalSt22, _attributes$generalSt23, _attributes$generalSt24, _attributes$generalSt25, _attributes$generalSt26, _attributes$generalSt27, _attributes$generalSt28, _attributes$generalSt29, _attributes$generalSt30, _attributes$generalSt31, _attributes$generalSt32, _attributes$bulletIco13, _attributes$bulletIco14, _attributes$bulletIco15, _attributes$bulletIco16, _attributes$bulletIco17, _attributes$bulletIco18, _attributes$bulletIco19, _attributes$bulletIco20, _attributes$dividerSt, _attributes$dividerSt2, _attributes$dividerSt3, _attributes$dividerSt4, _attributes$dividerSt5, _attributes$dividerSt6, _attributes$dividerSt7, _attributes$dividerSt8, _attributes$dividerSt9, _attributes$dividerSt10, _attributes$dividerSt11, _attributes$dividerSt12;
+    var _attributes$generalSt, _attributes$generalSt2, _attributes$generalSt3, _attributes$generalSt4, _attributes$generalSt5, _attributes$generalSt6, _attributes$generalSt7, _attributes$generalSt8, _attributes$generalSt9, _attributes$generalSt10, _attributes$generalSt11, _attributes$generalSt12, _attributes$bulletIco, _attributes$bulletIco2, _attributes$bulletIco3, _attributes$bulletIco4, _attributes$bulletIco5, _attributes$bulletIco6, _attributes$bulletIco7, _attributes$bulletIco8, _attributes$bulletIco9, _attributes$bulletIco10, _attributes$bulletIco11, _attributes$bulletIco12, _attributes$titleStyl, _attributes$titleStyl2, _attributes$titleStyl3, _attributes$titleStyl4, _attributes$titleStyl5, _attributes$titleStyl6, _attributes$titleStyl7, _attributes$titleStyl8, _attributes$titleStyl9, _attributes$titleStyl10, _attributes$titleStyl11, _attributes$titleStyl12, _attributes$titleStyl13, _attributes$titleStyl14, _attributes$titleStyl15, _attributes$titleStyl16, _attributes$titleStyl17, _attributes$titleStyl18, _attributes$titleStyl19, _attributes$titleStyl20, _attributes$titleStyl21, _attributes$titleStyl22, _attributes$titleStyl23, _attributes$titleStyl24, _attributes$titleStyl25, _attributes$titleStyl26, _attributes$titleStyl27, _attributes$titleStyl28, _attributes$titleStyl29, _attributes$titleStyl30, _attributes$titleStyl31, _attributes$titleStyl32, _attributes$titleStyl33, _attributes$titleStyl34, _attributes$titleStyl35, _attributes$titleStyl36, _attributes$titleStyl37, _attributes$titleStyl38, _attributes$generalSt13, _attributes$generalSt14, _attributes$generalSt15, _attributes$generalSt16, _attributes$generalSt17, _attributes$generalSt18, _attributes$generalSt19, _attributes$generalSt20, _attributes$generalSt21, _attributes$generalSt22, _attributes$generalSt23, _attributes$generalSt24, _attributes$generalSt25, _attributes$generalSt26, _attributes$generalSt27, _attributes$generalSt28, _attributes$generalSt29, _attributes$generalSt30, _attributes$generalSt31, _attributes$generalSt32, _attributes$bulletIco13, _attributes$bulletIco14, _attributes$bulletIco15, _attributes$bulletIco16, _attributes$bulletIco17, _attributes$bulletIco18, _attributes$bulletIco19, _attributes$bulletIco20, _attributes$dividerSt, _attributes$dividerSt2, _attributes$dividerSt3, _attributes$dividerSt4, _attributes$dividerSt5, _attributes$dividerSt6, _attributes$dividerSt7, _attributes$dividerSt8, _attributes$dividerSt9, _attributes$dividerSt10, _attributes$dividerSt11, _attributes$dividerSt12;
 
     let newAttributes = {
       blockId: attributes.block_id ? "premium-bullet-list-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.generateBlockId)(attributes.block_id) : '',
@@ -11965,18 +12043,30 @@ const deprecated = [{
         'fontFamily': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl9 = attributes.titleStyles) === null || _attributes$titleStyl9 === void 0 ? void 0 : (_attributes$titleStyl10 = _attributes$titleStyl9[0]) === null || _attributes$titleStyl10 === void 0 ? void 0 : _attributes$titleStyl10.titleFontFamily) || '',
         'lineHeight': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl11 = attributes.titleStyles) === null || _attributes$titleStyl11 === void 0 ? void 0 : (_attributes$titleStyl12 = _attributes$titleStyl11[0]) === null || _attributes$titleStyl12 === void 0 ? void 0 : _attributes$titleStyl12.titleLine) || '',
         'textDecoration': '',
+        letterSpacing: {
+          Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl13 = attributes.titleStyles) === null || _attributes$titleStyl13 === void 0 ? void 0 : (_attributes$titleStyl14 = _attributes$titleStyl13[0]) === null || _attributes$titleStyl14 === void 0 ? void 0 : _attributes$titleStyl14.titleLetter) || '',
+          Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl15 = attributes.titleStyles) === null || _attributes$titleStyl15 === void 0 ? void 0 : (_attributes$titleStyl16 = _attributes$titleStyl15[0]) === null || _attributes$titleStyl16 === void 0 ? void 0 : _attributes$titleStyl16.titleLetter) || '',
+          Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl17 = attributes.titleStyles) === null || _attributes$titleStyl17 === void 0 ? void 0 : (_attributes$titleStyl18 = _attributes$titleStyl17[0]) === null || _attributes$titleStyl18 === void 0 ? void 0 : _attributes$titleStyl18.titleLetter) || '',
+          unit: "px"
+        },
+        lineHeight: {
+          Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl19 = attributes.titleStyles) === null || _attributes$titleStyl19 === void 0 ? void 0 : (_attributes$titleStyl20 = _attributes$titleStyl19[0]) === null || _attributes$titleStyl20 === void 0 ? void 0 : _attributes$titleStyl20.titleLine) || '',
+          Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl21 = attributes.titleStyles) === null || _attributes$titleStyl21 === void 0 ? void 0 : (_attributes$titleStyl22 = _attributes$titleStyl21[0]) === null || _attributes$titleStyl22 === void 0 ? void 0 : _attributes$titleStyl22.titleLine) || '',
+          Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl23 = attributes.titleStyles) === null || _attributes$titleStyl23 === void 0 ? void 0 : (_attributes$titleStyl24 = _attributes$titleStyl23[0]) === null || _attributes$titleStyl24 === void 0 ? void 0 : _attributes$titleStyl24.titleLine) || '',
+          unit: "px"
+        },
         'fontSize': {
-          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl13 = attributes.titleStyles) === null || _attributes$titleStyl13 === void 0 ? void 0 : (_attributes$titleStyl14 = _attributes$titleStyl13[0]) === null || _attributes$titleStyl14 === void 0 ? void 0 : _attributes$titleStyl14.titleSize) || '',
-          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl15 = attributes.titleStyles) === null || _attributes$titleStyl15 === void 0 ? void 0 : (_attributes$titleStyl16 = _attributes$titleStyl15[0]) === null || _attributes$titleStyl16 === void 0 ? void 0 : _attributes$titleStyl16.titlefontSizeTablet) || '',
-          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl17 = attributes.titleStyles) === null || _attributes$titleStyl17 === void 0 ? void 0 : (_attributes$titleStyl18 = _attributes$titleStyl17[0]) === null || _attributes$titleStyl18 === void 0 ? void 0 : _attributes$titleStyl18.titlefontSizeMobile) || '',
+          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl25 = attributes.titleStyles) === null || _attributes$titleStyl25 === void 0 ? void 0 : (_attributes$titleStyl26 = _attributes$titleStyl25[0]) === null || _attributes$titleStyl26 === void 0 ? void 0 : _attributes$titleStyl26.titleSize) || '',
+          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl27 = attributes.titleStyles) === null || _attributes$titleStyl27 === void 0 ? void 0 : (_attributes$titleStyl28 = _attributes$titleStyl27[0]) === null || _attributes$titleStyl28 === void 0 ? void 0 : _attributes$titleStyl28.titlefontSizeTablet) || '',
+          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl29 = attributes.titleStyles) === null || _attributes$titleStyl29 === void 0 ? void 0 : (_attributes$titleStyl30 = _attributes$titleStyl29[0]) === null || _attributes$titleStyl30 === void 0 ? void 0 : _attributes$titleStyl30.titlefontSizeMobile) || '',
           "unit": 'px'
         }
       },
       titlesTextShadow: {
-        'color': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl19 = attributes.titleStyles) === null || _attributes$titleStyl19 === void 0 ? void 0 : (_attributes$titleStyl20 = _attributes$titleStyl19[0]) === null || _attributes$titleStyl20 === void 0 ? void 0 : _attributes$titleStyl20.titleshadowColor) || '',
-        'blur': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl21 = attributes.titleStyles) === null || _attributes$titleStyl21 === void 0 ? void 0 : (_attributes$titleStyl22 = _attributes$titleStyl21[0]) === null || _attributes$titleStyl22 === void 0 ? void 0 : _attributes$titleStyl22.titleshadowBlur) || '',
-        'horizontal': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl23 = attributes.titleStyles) === null || _attributes$titleStyl23 === void 0 ? void 0 : (_attributes$titleStyl24 = _attributes$titleStyl23[0]) === null || _attributes$titleStyl24 === void 0 ? void 0 : _attributes$titleStyl24.titleshadowHorizontal) || '',
-        'vertical': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl25 = attributes.titleStyles) === null || _attributes$titleStyl25 === void 0 ? void 0 : (_attributes$titleStyl26 = _attributes$titleStyl25[0]) === null || _attributes$titleStyl26 === void 0 ? void 0 : _attributes$titleStyl26.titleshadowVertical) || ''
+        'color': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl31 = attributes.titleStyles) === null || _attributes$titleStyl31 === void 0 ? void 0 : (_attributes$titleStyl32 = _attributes$titleStyl31[0]) === null || _attributes$titleStyl32 === void 0 ? void 0 : _attributes$titleStyl32.titleshadowColor) || '',
+        'blur': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl33 = attributes.titleStyles) === null || _attributes$titleStyl33 === void 0 ? void 0 : (_attributes$titleStyl34 = _attributes$titleStyl33[0]) === null || _attributes$titleStyl34 === void 0 ? void 0 : _attributes$titleStyl34.titleshadowBlur) || '',
+        'horizontal': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl35 = attributes.titleStyles) === null || _attributes$titleStyl35 === void 0 ? void 0 : (_attributes$titleStyl36 = _attributes$titleStyl35[0]) === null || _attributes$titleStyl36 === void 0 ? void 0 : _attributes$titleStyl36.titleshadowHorizontal) || '',
+        'vertical': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl37 = attributes.titleStyles) === null || _attributes$titleStyl37 === void 0 ? void 0 : (_attributes$titleStyl38 = _attributes$titleStyl37[0]) === null || _attributes$titleStyl38 === void 0 ? void 0 : _attributes$titleStyl38.titleshadowVertical) || ''
       },
       boxShadow: {
         'color': (attributes === null || attributes === void 0 ? void 0 : (_attributes$generalSt13 = attributes.generalStyles) === null || _attributes$generalSt13 === void 0 ? void 0 : (_attributes$generalSt14 = _attributes$generalSt13[0]) === null || _attributes$generalSt14 === void 0 ? void 0 : _attributes$generalSt14.generalShadowColor) || '',
@@ -12014,6 +12104,11 @@ const deprecated = [{
         Desktop: attributes === null || attributes === void 0 ? void 0 : attributes.bulletAlign,
         Tablet: attributes === null || attributes === void 0 ? void 0 : attributes.bulletAlign,
         Mobile: attributes === null || attributes === void 0 ? void 0 : attributes.bulletAlign
+      },
+      align: {
+        Desktop: attributes === null || attributes === void 0 ? void 0 : attributes.align,
+        Tablet: attributes === null || attributes === void 0 ? void 0 : attributes.align,
+        Mobile: attributes === null || attributes === void 0 ? void 0 : attributes.align
       }
     };
     return Object.assign(attributes, newAttributes);
@@ -12256,7 +12351,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_responsive_radio__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../components/responsive-radio */ "./src/components/responsive-radio.js");
 /* harmony import */ var _components_inspectorTabs__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../components/inspectorTabs */ "./src/components/inspectorTabs.js");
 /* harmony import */ var _components_inspectorTab__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../components/inspectorTab */ "./src/components/inspectorTab.js");
-/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
+/* harmony import */ var _components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../components/premium-responsive-tabs */ "./src/components/premium-responsive-tabs.js");
+/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
+
 
 
 
@@ -12496,7 +12593,7 @@ class edit extends Component {
 
     if (!this.props.attributes.blockId) {
       this.props.setAttributes({
-        blockId: "premium-bullet-list-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.generateBlockId)(this.props.clientId)
+        blockId: "premium-bullet-list-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.generateBlockId)(this.props.clientId)
       });
     }
 
@@ -12540,7 +12637,10 @@ class edit extends Component {
       bulletIconFontSize,
       dividerWidth,
       dividerHeight,
-      titleTypography
+      titleTypography,
+      hideDesktop,
+      hideTablet,
+      hideMobile
     } = attributes;
     const LAYOUT = [{
       label: __("Block", 'premium-blocks-for-gutenberg'),
@@ -12847,17 +12947,10 @@ class edit extends Component {
         'border-left-color': dividerStyles === null || dividerStyles === void 0 ? void 0 : (_dividerStyles$5 = dividerStyles[0]) === null || _dividerStyles$5 === void 0 ? void 0 : _dividerStyles$5.dividerColor,
         'height': `${DividerHeight}${dividerStyles === null || dividerStyles === void 0 ? void 0 : (_dividerStyles$6 = dividerStyles[0]) === null || _dividerStyles$6 === void 0 ? void 0 : _dividerStyles$6.dividerHeightType}`
       };
-      return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.generateCss)(styles);
+      return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.generateCss)(styles);
     };
 
-    return [isSelected && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(BlockControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(AlignmentToolbar, {
-      value: align,
-      onChange: value => {
-        setAttributes({
-          align: value
-        });
-      }
-    })), isSelected && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTabs__WEBPACK_IMPORTED_MODULE_16__["default"], {
+    return [isSelected && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTabs__WEBPACK_IMPORTED_MODULE_16__["default"], {
       tabs: ['layout', 'style', 'advance']
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_17__["default"], {
       key: 'layout'
@@ -12898,7 +12991,27 @@ class edit extends Component {
       onChange: newValue => setAttributes({
         layoutPos: newValue
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, __('Bullet Alignment')), iconPosition !== 'top' ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_15__["default"], {
+      choices: [{
+        value: 'left',
+        label: __('Left'),
+        icon: _components_icons__WEBPACK_IMPORTED_MODULE_12__["default"].alignLeft
+      }, {
+        value: 'center',
+        label: __('Center'),
+        icon: _components_icons__WEBPACK_IMPORTED_MODULE_12__["default"].alignCenter
+      }, {
+        value: 'right',
+        label: __('Right'),
+        icon: _components_icons__WEBPACK_IMPORTED_MODULE_12__["default"].alignRight
+      }],
+      value: align,
+      onChange: align => setAttributes({
+        align: align
+      }),
+      label: __("Align", "premium-blocks-for-gutenberg"),
+      showIcons: true
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, __('Bullet Alignment')), iconPosition !== 'top' ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "bullet-list-button-list"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Tooltip, {
       text: __('Top')
@@ -13240,11 +13353,28 @@ class edit extends Component {
         dividerColor: newValue
       })
     }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_17__["default"], {
-      key: 'advance'
-    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, blockId),
+      key: "advance"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_18__["default"], {
+      Desktop: hideDesktop,
+      Tablet: hideTablet,
+      Mobile: hideMobile,
+      onChangeDesktop: value => setAttributes({
+        hideDesktop: value
+      }),
+      onChangeTablet: value => setAttributes({
+        hideTablet: value
+      }),
+      onChangeMobile: value => setAttributes({
+        hideMobile: value
+      })
+    })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, blockId, {
+        " premium-desktop-hidden": hideDesktop,
+        " premium-tablet-hidden": hideTablet,
+        " premium-mobile-hidden": hideMobile
+      }),
       style: {
-        textAlign: align
+        textAlign: align === null || align === void 0 ? void 0 : align[this.props.deviceType]
       }
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
       dangerouslySetInnerHTML: {
@@ -13253,19 +13383,15 @@ class edit extends Component {
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
       className: `premium-bullet-list-${layoutPos} premium-bullet-list`,
       style: {
-        textAlign: align,
-        justifyContent: align == "right" ? "flex-end" : align
+        textAlign: align === null || align === void 0 ? void 0 : align[currentDevice],
+        justifyContent: (align === null || align === void 0 ? void 0 : align[currentDevice]) == "right" ? "flex-end" : align === null || align === void 0 ? void 0 : align[currentDevice]
       }
     }, repeaterBulletList.map((icon, index) => {
-      var _generalBorder$border, _generalBorder$border2, _generalBorder$border3, _generalBorder$border4, _generalBorder$border5, _generalBorder$border6, _generalBorder$border7, _generalBorder$border8, _generalBorder$border9, _generalBorder$border10, _generalBorder$border11, _generalBorder$border12, _generalBorder$border13, _generalBorder$border14, _generalBorder$border15, _generalBorder$border16;
-
       let image_icon_html = "";
 
       if (icon.showBulletIcon) {
         if (icon.image_icon == "icon") {
           if (icon.icon) {
-            var _bulletIconBorder$bor, _bulletIconBorder$bor2, _bulletIconBorder$bor3, _bulletIconBorder$bor4, _bulletIconBorder$bor5, _bulletIconBorder$bor6, _bulletIconBorder$bor7, _bulletIconBorder$bor8, _bulletIconBorder$bor9, _bulletIconBorder$bor10, _bulletIconBorder$bor11, _bulletIconBorder$bor12, _bulletIconBorder$bor13, _bulletIconBorder$bor14, _bulletIconBorder$bor15, _bulletIconBorder$bor16;
-
             image_icon_html = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
               className: "premium-bullet-list__content-icon",
               key: index
@@ -13276,28 +13402,14 @@ class edit extends Component {
                 fontSize: `${BulletIconSize}${bulletIconFontSize.unit}`,
                 color: bulletIconStyles[0].bulletIconColor,
                 backgroundColor: bulletIconStyles[0].bulletIconBackgroundColor,
-                paddingTop: BulletIconPaddingTop + bulletIconpadding.unit,
-                paddingBottom: BulletIconPaddingBottom + bulletIconpadding.unit,
-                paddingLeft: BulletIconPaddingLeft + bulletIconpadding.unit,
-                paddingRight: BulletIconPaddingRight + bulletIconpadding.unit,
-                borderStyle: bulletIconBorder && bulletIconBorder.borderType,
-                borderTopWidth: bulletIconBorder && ((_bulletIconBorder$bor = bulletIconBorder.borderWidth) === null || _bulletIconBorder$bor === void 0 ? void 0 : (_bulletIconBorder$bor2 = _bulletIconBorder$bor[currentDevice]) === null || _bulletIconBorder$bor2 === void 0 ? void 0 : _bulletIconBorder$bor2.top),
-                borderRightWidth: bulletIconBorder && ((_bulletIconBorder$bor3 = bulletIconBorder.borderWidth) === null || _bulletIconBorder$bor3 === void 0 ? void 0 : (_bulletIconBorder$bor4 = _bulletIconBorder$bor3[currentDevice]) === null || _bulletIconBorder$bor4 === void 0 ? void 0 : _bulletIconBorder$bor4.right),
-                borderBottomWidth: bulletIconBorder && ((_bulletIconBorder$bor5 = bulletIconBorder.borderWidth) === null || _bulletIconBorder$bor5 === void 0 ? void 0 : (_bulletIconBorder$bor6 = _bulletIconBorder$bor5[currentDevice]) === null || _bulletIconBorder$bor6 === void 0 ? void 0 : _bulletIconBorder$bor6.bottom),
-                borderLeftWidth: bulletIconBorder && ((_bulletIconBorder$bor7 = bulletIconBorder.borderWidth) === null || _bulletIconBorder$bor7 === void 0 ? void 0 : (_bulletIconBorder$bor8 = _bulletIconBorder$bor7[currentDevice]) === null || _bulletIconBorder$bor8 === void 0 ? void 0 : _bulletIconBorder$bor8.left),
-                borderColor: bulletIconBorder && bulletIconBorder.borderColor,
-                borderTopLeftRadius: `${bulletIconBorder && ((_bulletIconBorder$bor9 = bulletIconBorder.borderRadius) === null || _bulletIconBorder$bor9 === void 0 ? void 0 : (_bulletIconBorder$bor10 = _bulletIconBorder$bor9[currentDevice]) === null || _bulletIconBorder$bor10 === void 0 ? void 0 : _bulletIconBorder$bor10.top) || 0}px`,
-                borderTopRightRadius: `${bulletIconBorder && ((_bulletIconBorder$bor11 = bulletIconBorder.borderRadius) === null || _bulletIconBorder$bor11 === void 0 ? void 0 : (_bulletIconBorder$bor12 = _bulletIconBorder$bor11[currentDevice]) === null || _bulletIconBorder$bor12 === void 0 ? void 0 : _bulletIconBorder$bor12.right) || 0}px`,
-                borderBottomLeftRadius: `${bulletIconBorder && ((_bulletIconBorder$bor13 = bulletIconBorder.borderRadius) === null || _bulletIconBorder$bor13 === void 0 ? void 0 : (_bulletIconBorder$bor14 = _bulletIconBorder$bor13[currentDevice]) === null || _bulletIconBorder$bor14 === void 0 ? void 0 : _bulletIconBorder$bor14.bottom) || 0}px`,
-                borderBottomRightRadius: `${bulletIconBorder && ((_bulletIconBorder$bor15 = bulletIconBorder.borderRadius) === null || _bulletIconBorder$bor15 === void 0 ? void 0 : (_bulletIconBorder$bor16 = _bulletIconBorder$bor15[currentDevice]) === null || _bulletIconBorder$bor16 === void 0 ? void 0 : _bulletIconBorder$bor16.left) || 0}px`,
-                verticalAlign: (bulletAlign === null || bulletAlign === void 0 ? void 0 : bulletAlign[currentDevice]) == 'flex-start' ? 'top' : (bulletAlign === null || bulletAlign === void 0 ? void 0 : bulletAlign[currentDevice]) == 'flex-end' ? 'bottom' : 'middle'
+                verticalAlign: (bulletAlign === null || bulletAlign === void 0 ? void 0 : bulletAlign[currentDevice]) == 'flex-start' ? 'top' : (bulletAlign === null || bulletAlign === void 0 ? void 0 : bulletAlign[currentDevice]) == 'flex-end' ? 'bottom' : 'middle',
+                ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.borderCss)(bulletIconBorder, currentDevice),
+                ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.paddingCss)(bulletIconpadding, currentDevice)
               }
             }));
           }
         } else {
           if (icon.imageURL) {
-            var _bulletIconBorder$bor17, _bulletIconBorder$bor18, _bulletIconBorder$bor19, _bulletIconBorder$bor20, _bulletIconBorder$bor21, _bulletIconBorder$bor22, _bulletIconBorder$bor23, _bulletIconBorder$bor24, _bulletIconBorder$bor25, _bulletIconBorder$bor26, _bulletIconBorder$bor27, _bulletIconBorder$bor28, _bulletIconBorder$bor29, _bulletIconBorder$bor30, _bulletIconBorder$bor31, _bulletIconBorder$bor32;
-
             image_icon_html = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
               src: icon.imageURL,
               key: index,
@@ -13305,21 +13417,9 @@ class edit extends Component {
                 overflow: 'hidden',
                 width: `${BulletIconSize}${bulletIconFontSize.unit}`,
                 height: `${BulletIconSize}${bulletIconFontSize.unit}`,
-                paddingTop: BulletIconPaddingTop + bulletIconpadding.unit,
-                paddingBottom: BulletIconPaddingBottom + bulletIconpadding.unit,
-                paddingLeft: BulletIconPaddingLeft + bulletIconpadding.unit,
-                paddingRight: BulletIconPaddingRight + bulletIconpadding.unit,
-                borderStyle: bulletIconBorder && bulletIconBorder.borderType,
-                borderTopWidth: bulletIconBorder && ((_bulletIconBorder$bor17 = bulletIconBorder.borderWidth) === null || _bulletIconBorder$bor17 === void 0 ? void 0 : (_bulletIconBorder$bor18 = _bulletIconBorder$bor17[currentDevice]) === null || _bulletIconBorder$bor18 === void 0 ? void 0 : _bulletIconBorder$bor18.top),
-                borderRightWidth: bulletIconBorder && ((_bulletIconBorder$bor19 = bulletIconBorder.borderWidth) === null || _bulletIconBorder$bor19 === void 0 ? void 0 : (_bulletIconBorder$bor20 = _bulletIconBorder$bor19[currentDevice]) === null || _bulletIconBorder$bor20 === void 0 ? void 0 : _bulletIconBorder$bor20.right),
-                borderBottomWidth: bulletIconBorder && ((_bulletIconBorder$bor21 = bulletIconBorder.borderWidth) === null || _bulletIconBorder$bor21 === void 0 ? void 0 : (_bulletIconBorder$bor22 = _bulletIconBorder$bor21[currentDevice]) === null || _bulletIconBorder$bor22 === void 0 ? void 0 : _bulletIconBorder$bor22.bottom),
-                borderLeftWidth: bulletIconBorder && ((_bulletIconBorder$bor23 = bulletIconBorder.borderWidth) === null || _bulletIconBorder$bor23 === void 0 ? void 0 : (_bulletIconBorder$bor24 = _bulletIconBorder$bor23[currentDevice]) === null || _bulletIconBorder$bor24 === void 0 ? void 0 : _bulletIconBorder$bor24.left),
-                borderColor: bulletIconBorder && bulletIconBorder.borderColor,
-                borderTopLeftRadius: `${bulletIconBorder && ((_bulletIconBorder$bor25 = bulletIconBorder.borderRadius) === null || _bulletIconBorder$bor25 === void 0 ? void 0 : (_bulletIconBorder$bor26 = _bulletIconBorder$bor25[currentDevice]) === null || _bulletIconBorder$bor26 === void 0 ? void 0 : _bulletIconBorder$bor26.top) || 0}px`,
-                borderTopRightRadius: `${bulletIconBorder && ((_bulletIconBorder$bor27 = bulletIconBorder.borderRadius) === null || _bulletIconBorder$bor27 === void 0 ? void 0 : (_bulletIconBorder$bor28 = _bulletIconBorder$bor27[currentDevice]) === null || _bulletIconBorder$bor28 === void 0 ? void 0 : _bulletIconBorder$bor28.right) || 0}px`,
-                borderBottomLeftRadius: `${bulletIconBorder && ((_bulletIconBorder$bor29 = bulletIconBorder.borderRadius) === null || _bulletIconBorder$bor29 === void 0 ? void 0 : (_bulletIconBorder$bor30 = _bulletIconBorder$bor29[currentDevice]) === null || _bulletIconBorder$bor30 === void 0 ? void 0 : _bulletIconBorder$bor30.bottom) || 0}px`,
-                borderBottomRightRadius: `${bulletIconBorder && ((_bulletIconBorder$bor31 = bulletIconBorder.borderRadius) === null || _bulletIconBorder$bor31 === void 0 ? void 0 : (_bulletIconBorder$bor32 = _bulletIconBorder$bor31[currentDevice]) === null || _bulletIconBorder$bor32 === void 0 ? void 0 : _bulletIconBorder$bor32.left) || 0}px`,
-                verticalAlign: (bulletAlign === null || bulletAlign === void 0 ? void 0 : bulletAlign[currentDevice]) == 'flex-start' ? 'top' : (bulletAlign === null || bulletAlign === void 0 ? void 0 : bulletAlign[currentDevice]) == 'flex-end' ? 'bottom' : 'middle'
+                verticalAlign: (bulletAlign === null || bulletAlign === void 0 ? void 0 : bulletAlign[currentDevice]) == 'flex-start' ? 'top' : (bulletAlign === null || bulletAlign === void 0 ? void 0 : bulletAlign[currentDevice]) == 'flex-end' ? 'bottom' : 'middle',
+                ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.borderCss)(bulletIconBorder, currentDevice),
+                ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.paddingCss)(bulletIconpadding, currentDevice)
               }
             });
           }
@@ -13333,53 +13433,32 @@ class edit extends Component {
         target: target,
         rel: "noopener noreferrer",
         style: {
-          textAlign: align,
+          textAlign: align === null || align === void 0 ? void 0 : align[currentDevice],
           overflow: 'hidden',
-          justifyContent: align == "right" ? "flex-end" : align,
+          justifyContent: (align === null || align === void 0 ? void 0 : align[currentDevice]) == "right" ? "flex-end" : align === null || align === void 0 ? void 0 : align[currentDevice],
           backgroundColor: generalStyles[0].generalBackgroundColor,
-          borderStyle: generalBorder && (generalBorder === null || generalBorder === void 0 ? void 0 : generalBorder.borderType),
-          borderTopWidth: generalBorder && (generalBorder === null || generalBorder === void 0 ? void 0 : (_generalBorder$border = generalBorder.borderWidth) === null || _generalBorder$border === void 0 ? void 0 : (_generalBorder$border2 = _generalBorder$border[currentDevice]) === null || _generalBorder$border2 === void 0 ? void 0 : _generalBorder$border2.top),
-          borderRightWidth: generalBorder && (generalBorder === null || generalBorder === void 0 ? void 0 : (_generalBorder$border3 = generalBorder.borderWidth) === null || _generalBorder$border3 === void 0 ? void 0 : (_generalBorder$border4 = _generalBorder$border3[currentDevice]) === null || _generalBorder$border4 === void 0 ? void 0 : _generalBorder$border4.right),
-          borderBottomWidth: generalBorder && (generalBorder === null || generalBorder === void 0 ? void 0 : (_generalBorder$border5 = generalBorder.borderWidth) === null || _generalBorder$border5 === void 0 ? void 0 : (_generalBorder$border6 = _generalBorder$border5[currentDevice]) === null || _generalBorder$border6 === void 0 ? void 0 : _generalBorder$border6.bottom),
-          borderLeftWidth: generalBorder && (generalBorder === null || generalBorder === void 0 ? void 0 : (_generalBorder$border7 = generalBorder.borderWidth) === null || _generalBorder$border7 === void 0 ? void 0 : (_generalBorder$border8 = _generalBorder$border7[currentDevice]) === null || _generalBorder$border8 === void 0 ? void 0 : _generalBorder$border8.left),
-          borderColor: generalBorder && (generalBorder === null || generalBorder === void 0 ? void 0 : generalBorder.borderColor),
-          borderTopLeftRadius: `${generalBorder && (generalBorder === null || generalBorder === void 0 ? void 0 : (_generalBorder$border9 = generalBorder.borderRadius) === null || _generalBorder$border9 === void 0 ? void 0 : (_generalBorder$border10 = _generalBorder$border9[currentDevice]) === null || _generalBorder$border10 === void 0 ? void 0 : _generalBorder$border10.top) || 0}px`,
-          borderTopRightRadius: `${generalBorder && (generalBorder === null || generalBorder === void 0 ? void 0 : (_generalBorder$border11 = generalBorder.borderRadius) === null || _generalBorder$border11 === void 0 ? void 0 : (_generalBorder$border12 = _generalBorder$border11[currentDevice]) === null || _generalBorder$border12 === void 0 ? void 0 : _generalBorder$border12.right) || 0}px`,
-          borderBottomLeftRadius: `${generalBorder && (generalBorder === null || generalBorder === void 0 ? void 0 : (_generalBorder$border13 = generalBorder.borderRadius) === null || _generalBorder$border13 === void 0 ? void 0 : (_generalBorder$border14 = _generalBorder$border13[currentDevice]) === null || _generalBorder$border14 === void 0 ? void 0 : _generalBorder$border14.bottom) || 0}px`,
-          borderBottomRightRadius: `${generalBorder && (generalBorder === null || generalBorder === void 0 ? void 0 : (_generalBorder$border15 = generalBorder.borderRadius) === null || _generalBorder$border15 === void 0 ? void 0 : (_generalBorder$border16 = _generalBorder$border15[currentDevice]) === null || _generalBorder$border16 === void 0 ? void 0 : _generalBorder$border16.left) || 0}px`,
-          paddingTop: GeneralPaddingTop + generalpadding.unit,
-          paddingBottom: GeneralPaddingBottom + generalpadding.unit,
-          paddingLeft: GeneralPaddingLeft + generalpadding.unit,
-          paddingRight: GeneralPaddingRight + generalpadding.unit,
-          marginTop: GeneralMarginTop + generalmargin.unit,
-          marginBottom: GeneralMarginBottom + generalmargin.unit,
-          marginLeft: GeneralMarginLeft + generalmargin.unit,
-          marginRight: GeneralMarginRight + generalmargin.unit,
-          boxShadow: `${boxShadow.horizontal}px ${boxShadow.vertical}px ${boxShadow.blur}px ${boxShadow.color} ${boxShadow.position}`
+          boxShadow: `${boxShadow.horizontal}px ${boxShadow.vertical}px ${boxShadow.blur}px ${boxShadow.color} ${boxShadow.position}`,
+          ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.marginCss)(generalmargin, currentDevice),
+          ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.paddingCss)(generalpadding, currentDevice),
+          ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.borderCss)(generalBorder, currentDevice)
         }
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
         className: `premium-bullet-list__content-wrap premium-bullet-list__content-wrap-${bulletAlign === null || bulletAlign === void 0 ? void 0 : bulletAlign[currentDevice]}`,
         style: {
-          justifyContent: align == "right" ? align : align,
+          justifyContent: (align === null || align === void 0 ? void 0 : align[currentDevice]) == "right" ? align === null || align === void 0 ? void 0 : align[currentDevice] : align === null || align === void 0 ? void 0 : align[currentDevice],
           display: iconPosition == "before" ? "flex" : "inline-flex",
-          flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? 'row-reverse' : "",
-          marginTop: TitleMarginTop + titlemargin.unit,
-          marginBottom: TitleMarginBottom + titlemargin.unit,
-          marginLeft: TitleMarginLeft + titlemargin.unit,
-          marginRight: TitleMarginRight + titlemargin.unit
+          flexDirection: iconPosition == "top" ? (align === null || align === void 0 ? void 0 : align[currentDevice]) == "right" ? "column" : "column" : iconPosition == "after" ? 'row-reverse' : "",
+          ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.marginCss)(titlemargin, currentDevice)
         }
       }, icon.showBulletIcon && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
         className: `premium-bullet-list__icon-wrap`,
         style: {
           // overflow: "hidden",
           alignSelf: (bulletAlign === null || bulletAlign === void 0 ? void 0 : bulletAlign[currentDevice]) == 'left' ? 'flex-start' : (bulletAlign === null || bulletAlign === void 0 ? void 0 : bulletAlign[currentDevice]) == 'right' ? 'flex-end' : 'center',
-          marginTop: BulletIconMarginTop + bulletIconmargin.unit,
-          marginBottom: BulletIconMarginBottom + bulletIconmargin.unit,
-          marginLeft: BulletIconMarginLeft + bulletIconmargin.unit,
-          marginRight: BulletIconMarginRight + bulletIconmargin.unit,
           textAlign: bulletAlign === null || bulletAlign === void 0 ? void 0 : bulletAlign[currentDevice],
           justifyContent: bulletAlign === null || bulletAlign === void 0 ? void 0 : bulletAlign[currentDevice],
-          alignItems: (bulletAlign === null || bulletAlign === void 0 ? void 0 : bulletAlign[currentDevice]) == 'left' ? 'flex-start' : (bulletAlign === null || bulletAlign === void 0 ? void 0 : bulletAlign[currentDevice]) == 'right' ? 'flex-end' : 'center'
+          alignItems: (bulletAlign === null || bulletAlign === void 0 ? void 0 : bulletAlign[currentDevice]) == 'left' ? 'flex-start' : (bulletAlign === null || bulletAlign === void 0 ? void 0 : bulletAlign[currentDevice]) == 'right' ? 'flex-end' : 'center',
+          ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.marginCss)(bulletIconmargin, currentDevice)
         }
       }, image_icon_html), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
         className: "premium-bullet-list__label-wrap",
@@ -13397,15 +13476,8 @@ class edit extends Component {
         multiline: false,
         style: {
           color: titleStyles[0].titleColor,
-          fontSize: `${TitleSize}${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontSize.unit}`,
-          fontStyle: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontStyle,
-          fontFamily: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontFamily,
-          fontWeight: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontWeight,
-          letterSpacing: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.letterSpacing,
-          textDecoration: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textDecoration,
-          textTransform: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textTransform,
-          lineHeight: `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.lineHeight}px`,
-          textShadow: `${titlesTextShadow.titleshadowHorizontal}px ${titlesTextShadow.titleshadowVertical}px ${titlesTextShadow.titleshadowBlur}px ${titlesTextShadow.titleshadowColor}`
+          textShadow: `${titlesTextShadow.titleshadowHorizontal}px ${titlesTextShadow.titleshadowVertical}px ${titlesTextShadow.titleshadowBlur}px ${titlesTextShadow.titleshadowColor}`,
+          ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.typographyCss)(titleTypography, currentDevice)
         }
       })))), divider && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
         className: `premium-bullet-list-divider-${layoutPos}`
@@ -13438,11 +13510,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../assets/js/settings */ "./assets/js/settings.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./save */ "./src/blocks/bullet-list/save.js");
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/blocks/bullet-list/edit.js");
-/* harmony import */ var _icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../icons */ "./src/blocks/icons.js");
-/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./attributes */ "./src/blocks/bullet-list/attributes.js");
-/* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/bullet-list/deprecated.js");
-/* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
-
+/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./attributes */ "./src/blocks/bullet-list/attributes.js");
+/* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/bullet-list/deprecated.js");
+/* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
 
 
 
@@ -13458,13 +13528,13 @@ const {
 registerBlockType("premium/bullet-list", {
   title: __("Bullet List"),
   description: __('Organize your website’s content with attractive lists using Premium Bullet List Block.'),
-  icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_6__["default"].bulletList,
+  icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_5__["default"].bulletList,
   category: "premium-blocks",
-  attributes: _attributes__WEBPACK_IMPORTED_MODULE_4__["default"],
+  attributes: _attributes__WEBPACK_IMPORTED_MODULE_3__["default"],
   supports: {
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.bulletList
   },
-  deprecated: _deprecated__WEBPACK_IMPORTED_MODULE_5__["default"],
+  deprecated: _deprecated__WEBPACK_IMPORTED_MODULE_4__["default"],
   edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"],
   save: _save__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
@@ -13505,7 +13575,6 @@ function save(props) {
     blockId = '',
     layoutPos,
     iconPosition,
-    align,
     repeaterBulletList,
     bulletIconStyles,
     bulletIconBorder,
@@ -13519,7 +13588,10 @@ function save(props) {
     titlesTextShadow,
     boxShadow,
     hoverBoxShadow,
-    titleTypography
+    titleTypography,
+    hideDesktop,
+    hideTablet,
+    hideMobile
   } = attributes;
 
   const loadStyles = () => {
@@ -13549,20 +13621,17 @@ function save(props) {
   };
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, blockId),
-    style: {
-      textAlign: align
-    }
+    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, blockId, {
+      " premium-desktop-hidden": hideDesktop,
+      " premium-tablet-hidden": hideTablet,
+      " premium-mobile-hidden": hideMobile
+    })
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
     dangerouslySetInnerHTML: {
       __html: loadStyles()
     }
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
-    className: `premium-bullet-list-${layoutPos} premium-bullet-list`,
-    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
-      textAlign: align,
-      justifyContent: align == "right" ? "flex-end" : align
-    })
+    className: `premium-bullet-list-${layoutPos} premium-bullet-list`
   }, repeaterBulletList.map((icon, index) => {
     let image_icon_html = "";
 
@@ -13614,9 +13683,7 @@ function save(props) {
         className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(`premium-bullet-list-content${index}`, "premium-bullet-list__wrapper"),
         key: index,
         style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
-          textAlign: align,
           overflow: 'hidden',
-          justifyContent: align == "right" ? "flex-end" : align,
           backgroundColor: generalStyles === null || generalStyles === void 0 ? void 0 : (_generalStyles$2 = generalStyles[0]) === null || _generalStyles$2 === void 0 ? void 0 : _generalStyles$2.generalBackgroundColor,
           borderStyle: generalBorder === null || generalBorder === void 0 ? void 0 : generalBorder.borderType,
           borderColor: generalBorder === null || generalBorder === void 0 ? void 0 : generalBorder.borderColor,
@@ -13625,9 +13692,7 @@ function save(props) {
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
         className: `premium-bullet-list__content-wrap`,
         style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
-          justifyContent: align == "right" ? align : align,
-          display: iconPosition == "before" ? "flex" : "inline-flex",
-          flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? 'row-reverse' : ""
+          display: iconPosition == "before" ? "flex" : "inline-flex"
         })
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
         className: `premium-bullet-list__icon-wrap`,
@@ -13663,8 +13728,6 @@ function save(props) {
         style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
           listStyleType: 'none',
           overflow: 'hidden',
-          textAlign: align,
-          justifyContent: align == "right" ? "flex-end" : align,
           backgroundColor: generalStyles === null || generalStyles === void 0 ? void 0 : (_generalStyles$3 = generalStyles[0]) === null || _generalStyles$3 === void 0 ? void 0 : _generalStyles$3.generalBackgroundColor,
           borderStyle: generalBorder === null || generalBorder === void 0 ? void 0 : generalBorder.borderType,
           borderColor: generalBorder === null || generalBorder === void 0 ? void 0 : generalBorder.borderColor,
@@ -13675,12 +13738,7 @@ function save(props) {
         target: target,
         rel: "noopener noreferrer"
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-        className: `premium-bullet-list__content-wrap`,
-        style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
-          justifyContent: align == "right" ? align : align,
-          display: iconPosition == "before" ? "flex" : "inline-flex",
-          flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? 'row-reverse' : ""
-        })
+        className: `premium-bullet-list__content-wrap`
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
         className: `premium-bullet-list__icon-wrap`,
         style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
