@@ -42,44 +42,35 @@ function get_premium_submenu_navigation_css( $attributes, $unique_id ) {
 			if ( $spacing['padding'] ) {
 				$padding = $spacing['padding'];
 				$css->set_selector( '.' . $unique_id . ' > .premium-navigation__submenu-container' );
-				$css->add_property( 'padding-top', $css->render_color( $padding['Desktop']['top'] . 'px' ) );
-				$css->add_property( 'padding-right', $css->render_color( $padding['Desktop']['right'] . 'px' ) );
-				$css->add_property( 'padding-bottom', $css->render_color( $padding['Desktop']['bottom'] . 'px' ) );
-				$css->add_property( 'padding-left', $css->render_color( $padding['Desktop']['left'] . 'px' ) );
+				$css->add_property( 'padding', $css->render_spacing( $padding['Desktop'], $padding['unit'] ) );
 			}
 
 			if ( $spacing['columnPadding'] ) {
 				$item_padding = $spacing['columnPadding'];
 				$css->set_selector( '.' . $unique_id . ' > .premium-navigation__submenu-container > *' );
-				$css->add_property( 'padding-top', $css->render_color( $item_padding['Desktop']['top'] . 'px' ) );
-				$css->add_property( 'padding-right', $css->render_color( $item_padding['Desktop']['right'] . 'px' ) );
-				$css->add_property( 'padding-bottom', $css->render_color( $item_padding['Desktop']['bottom'] . 'px' ) );
-				$css->add_property( 'padding-left', $css->render_color( $item_padding['Desktop']['left'] . 'px' ) );
+				$css->add_property( 'padding', $css->render_spacing( $item_padding['Desktop'], $item_padding['unit'] ) );
 			}
+		}
 
-			$css->start_media_query( $media_query['tablet'] );
+		$css->start_media_query( $media_query['tablet'] );
 
+		if ( isset( $attributes['spacing'] ) ) {
 			if ( $spacing['padding'] ) {
 				$padding = $spacing['padding'];
 				$css->set_selector( '.' . $unique_id . ' > .premium-navigation__submenu-container' );
-				$css->add_property( 'padding-top', $css->render_color( $padding['Tablet']['top'] . 'px' ) );
-				$css->add_property( 'padding-right', $css->render_color( $padding['Tablet']['right'] . 'px' ) );
-				$css->add_property( 'padding-bottom', $css->render_color( $padding['Tablet']['bottom'] . 'px' ) );
-				$css->add_property( 'padding-left', $css->render_color( $padding['Tablet']['left'] . 'px' ) );
+				$css->add_property( 'padding', $css->render_spacing( $padding['Tablet'], $padding['unit'] ) );
 			}
 
 			if ( $spacing['columnPadding'] ) {
 				$item_padding = $spacing['columnPadding'];
 				$css->set_selector( '.' . $unique_id . ' > .premium-navigation__submenu-container > *' );
-				$css->add_property( 'padding-top', $css->render_color( $item_padding['Tablet']['top'] . 'px' ) );
-				$css->add_property( 'padding-right', $css->render_color( $item_padding['Tablet']['right'] . 'px' ) );
-				$css->add_property( 'padding-bottom', $css->render_color( $item_padding['Tablet']['bottom'] . 'px' ) );
-				$css->add_property( 'padding-left', $css->render_color( $item_padding['Tablet']['left'] . 'px' ) );
+				$css->add_property( 'padding', $css->render_spacing( $item_padding['Tablet'], $item_padding['unit'] ) );
 			}
+		}
+		$css->stop_media_query();
+		$css->start_media_query( $media_query['mobile'] );
 
-			$css->stop_media_query();
-			$css->start_media_query( $media_query['mobile'] );
-
+		if ( isset( $attributes['spacing'] ) ) {
 			if ( $spacing['padding'] ) {
 				$padding = $spacing['padding'];
 				$css->set_selector( '.' . $unique_id . ' > .premium-navigation__submenu-container' );
@@ -87,19 +78,17 @@ function get_premium_submenu_navigation_css( $attributes, $unique_id ) {
 				$css->add_property( 'padding-right', $css->render_color( $padding['Mobile']['right'] . 'px' ) );
 				$css->add_property( 'padding-bottom', $css->render_color( $padding['Mobile']['bottom'] . 'px' ) );
 				$css->add_property( 'padding-left', $css->render_color( $padding['Mobile']['left'] . 'px' ) );
+				$css->add_property( 'padding', $css->render_spacing( $padding['Mobile'], $padding['unit'] ) );
 			}
 
 			if ( $spacing['columnPadding'] ) {
 				$item_padding = $spacing['columnPadding'];
 				$css->set_selector( '.' . $unique_id . ' > .premium-navigation__submenu-container > *' );
-				$css->add_property( 'padding-top', $css->render_color( $item_padding['Mobile']['top'] . 'px' ) );
-				$css->add_property( 'padding-right', $css->render_color( $item_padding['Mobile']['right'] . 'px' ) );
-				$css->add_property( 'padding-bottom', $css->render_color( $item_padding['Mobile']['bottom'] . 'px' ) );
-				$css->add_property( 'padding-left', $css->render_color( $item_padding['Mobile']['left'] . 'px' ) );
+				$css->add_property( 'padding', $css->render_spacing( $item_padding['Mobile'], $item_padding['unit'] ) );
 			}
-
-			$css->stop_media_query();
 		}
+
+		$css->stop_media_query();
 	}
 
 	return $css->css_output();

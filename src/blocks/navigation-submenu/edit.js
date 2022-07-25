@@ -59,7 +59,7 @@ import SpacingComponent from '../../components/premium-responsive-spacing';
 import PremiumBackgroundControl from "../../components/Premium-Background-Control"
 import iconsList from "../../components/premium-icons-list";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
-import { gradientBackground, generateCss, generateBlockId } from "../../components/HelperFunction";
+import { gradientBackground, generateCss, generateBlockId, typographyCss, paddingCss, borderCss } from "../../components/HelperFunction";
 
 const ALLOWED_BLOCKS = ['premium/navigation-link', 'premium/navigation-submenu'];
 
@@ -533,27 +533,10 @@ function NavigationSubmenuEdit({
 			style: {
 				color: linkColor,
 				backgroundColor: backgroundColor,
-				fontSize: `${fontSize?.[deviceType]}${fontSize?.unit}`,
-				fontFamily: family,
-				fontWeight: weight,
-				letterSpacing: letterSpacing,
-				textDecoration: textDecoration,
-				textTransform: textTransform,
-				lineHeight: `${lineHeight}px`,
-				fontStyle: fontStyle,
-				paddingTop: megaMenu ? `${padding?.[deviceType]?.top}${padding?.unit}` : '',
-				paddingRight: megaMenu ? `${padding?.[deviceType]?.right}${padding?.unit}` : '',
-				paddingBottom: megaMenu ? `${padding?.[deviceType]?.bottom}${padding?.unit}` : '',
-				paddingLeft: megaMenu ? `${padding?.[deviceType]?.left}${padding?.unit}` : '',
-				borderTopWidth: submenuBorder?.borderWidth?.[deviceType]?.top,
-				borderRightWidth: submenuBorder?.borderWidth?.[deviceType]?.right,
-				borderBottomWidth: submenuBorder?.borderWidth?.[deviceType]?.bottom,
-				borderLeftWidth: submenuBorder?.borderWidth?.[deviceType]?.left,
-				borderTopLeftRadius: `${submenuBorder?.borderRadius?.[deviceType]?.top || 0}px`,
-				borderTopRightRadius: `${submenuBorder?.borderRadius?.[deviceType]?.right || 0}px`,
-				borderBottomLeftRadius: `${submenuBorder?.borderRadius?.[deviceType]?.bottom || 0}px`,
-				borderBottomRightRadius: `${submenuBorder?.borderRadius?.[deviceType]?.left || 0}px`,
-				...gradientBackground(megaMenuBackground)
+				...borderCss(submenuBorder, deviceType),
+				...gradientBackground(megaMenuBackground),
+				...paddingCss(padding, deviceType),
+				...typographyCss(typography, deviceType),
 			},
 		},
 		{

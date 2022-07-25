@@ -19,22 +19,9 @@ function get_premium_navigation_css( $attributes, $unique_id ) {
 	}
 	if ( isset( $attributes['typography'] ) ) {
 		$typography = $attributes['typography'];
-		$block_helpers->add_gfont(
-			array(
-				'fontFamily'  => ( isset( $typography['fontFamily'] ) ? $typography['fontFamily'] : '' ),
-				'fontVariant' => ( isset( $typography['fontWeight'] ) ? $typography['fontWeight'] : '' ),
-			)
-		);
+
 		$css->set_selector( '.' . $unique_id . ', .' . $unique_id . ' .premium-navigation-item__content' );
-		$css->add_property( 'font-family', $css->render_color( $typography['fontFamily'] ) );
-		$css->add_property( 'font-weight', $css->render_color( $typography['fontWeight'] ) );
-		$css->add_property( 'font-style', $css->render_color( $typography['fontStyle'] ) );
-		if ( isset( $typography['fontSize'] ) ) {
-			$css->add_property( 'font-size', $css->render_color( $typography['fontSize']['Desktop'] . $typography['fontSize']['unit'] ) );
-		}
-		$css->add_property( 'line-height', $css->render_color( $typography['lineHeight'] . 'px' ) );
-		$css->add_property( 'text-transform', $css->render_color( $typography['textTransform'] ) );
-		$css->add_property( 'text-decoration', $css->render_color( $typography['textDecoration'] ) );
+		$css->render_typography( $typography, 'Desktop' );
 	}
 
 	if ( isset( $attributes['menuBorder'] ) ) {
@@ -44,15 +31,9 @@ function get_premium_navigation_css( $attributes, $unique_id ) {
 
 		$css->set_selector( '.' . $unique_id );
 		$css->add_property( 'border-style', $css->render_color( $menu_border['borderType'] ) );
-		$css->add_property( 'border-top-width', $css->get_responsive_value( $menu_border_width, 'top', 'Desktop', 'px' ) );
-		$css->add_property( 'border-right-width', $css->get_responsive_value( $menu_border_width, 'right', 'Desktop', 'px' ) );
-		$css->add_property( 'border-bottom-width', $css->get_responsive_value( $menu_border_width, 'bottom', 'Desktop', 'px' ) );
-		$css->add_property( 'border-left-width', $css->get_responsive_value( $menu_border_width, 'left', 'Desktop', 'px' ) );
 		$css->add_property( 'border-color', $css->render_color( $menu_border['borderColor'] ) );
-		$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $menu_border_width, 'top', 'Desktop', 'px' ) );
-		$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $menu_border_width, 'top', 'Desktop', 'px' ) );
-		$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $menu_border_width, 'top', 'Desktop', 'px' ) );
-		$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $menu_border_width, 'top', 'Desktop', 'px' ) );
+		$css->add_property( 'border-width', $css->render_spacing( $menu_border_width['Desktop'], 'px' ) );
+		$css->add_property( 'border-radius', $css->render_spacing( $menu_border_radius['Desktop'], 'px' ) );
 	}
 
 	if ( isset( $attributes['submenuBorder'] ) ) {
@@ -60,17 +41,11 @@ function get_premium_navigation_css( $attributes, $unique_id ) {
 		$submenu_border_width  = $attributes['submenuBorder']['borderWidth'];
 		$submenu_border_radius = $attributes['submenuBorder']['borderRadius'];
 
-		$css->set_selector( '.' . $unique_id );
+		$css->set_selector( '.' . $unique_id . ' .premium-navigation__submenu-container' );
 		$css->add_property( 'border-style', $css->render_color( $submenu_border['borderType'] ) );
-		$css->add_property( 'border-top-width', $css->get_responsive_value( $submenu_border_width, 'top', 'Desktop', 'px' ) );
-		$css->add_property( 'border-right-width', $css->get_responsive_value( $submenu_border_width, 'right', 'Desktop', 'px' ) );
-		$css->add_property( 'border-bottom-width', $css->get_responsive_value( $submenu_border_width, 'bottom', 'Desktop', 'px' ) );
-		$css->add_property( 'border-left-width', $css->get_responsive_value( $submenu_border_width, 'left', 'Desktop', 'px' ) );
 		$css->add_property( 'border-color', $css->render_color( $submenu_border['borderColor'] ) );
-		$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $submenu_border_width, 'top', 'Desktop', 'px' ) );
-		$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $submenu_border_width, 'top', 'Desktop', 'px' ) );
-		$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $submenu_border_width, 'top', 'Desktop', 'px' ) );
-		$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $submenu_border_width, 'top', 'Desktop', 'px' ) );
+		$css->add_property( 'border-width', $css->render_spacing( $submenu_border_width['Desktop'], 'px' ) );
+		$css->add_property( 'border-radius', $css->render_spacing( $submenu_border_radius['Desktop'], 'px' ) );
 	}
 
 	if ( isset( $attributes['overlayMenuBorder'] ) ) {
@@ -80,35 +55,16 @@ function get_premium_navigation_css( $attributes, $unique_id ) {
 
 		$css->set_selector( '.' . $unique_id . ' .premium-navigation__responsive-container.is-menu-open' );
 		$css->add_property( 'border-style', $css->render_color( $overlay_menu_border['borderType'] ) );
-		$css->add_property( 'border-top-width', $css->get_responsive_value( $overlay_menu_border_width, 'top', 'Desktop', 'px' ) );
-		$css->add_property( 'border-right-width', $css->get_responsive_value( $overlay_menu_border_width, 'right', 'Desktop', 'px' ) );
-		$css->add_property( 'border-bottom-width', $css->get_responsive_value( $overlay_menu_border_width, 'bottom', 'Desktop', 'px' ) );
-		$css->add_property( 'border-left-width', $css->get_responsive_value( $overlay_menu_border_width, 'left', 'Desktop', 'px' ) );
 		$css->add_property( 'border-color', $css->render_color( $overlay_menu_border['borderColor'] ) );
-		$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $overlay_menu_border_width, 'top', 'Desktop', 'px' ) );
-		$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $overlay_menu_border_width, 'top', 'Desktop', 'px' ) );
-		$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $overlay_menu_border_width, 'top', 'Desktop', 'px' ) );
-		$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $overlay_menu_border_width, 'top', 'Desktop', 'px' ) );
+		$css->add_property( 'border-width', $css->render_spacing( $overlay_menu_border_width['Desktop'], 'px' ) );
+		$css->add_property( 'border-radius', $css->render_spacing( $overlay_menu_border_radius['Desktop'], 'px' ) );
 	}
 
 	if ( isset( $attributes['submenuTypography'] ) ) {
 		$submenu_typography = $attributes['submenuTypography'];
-		$block_helpers->add_gfont(
-			array(
-				'fontFamily'  => ( isset( $submenu_typography['fontFamily'] ) ? $submenu_typography['fontFamily'] : '' ),
-				'fontVariant' => ( isset( $submenu_typography['fontWeight'] ) ? $submenu_typography['fontWeight'] : '' ),
-			)
-		);
+
 		$css->set_selector( '.' . $unique_id . ' .wp-block-premium-navigation-submenu, .' . $unique_id . ' .wp-block-premium-navigation-submenu .premium-navigation-item__content' );
-		$css->add_property( 'font-family', $css->render_color( $submenu_typography['fontFamily'] ) );
-		$css->add_property( 'font-weight', $css->render_color( $submenu_typography['fontWeight'] ) );
-		$css->add_property( 'font-style', $css->render_color( $submenu_typography['fontStyle'] ) );
-		if ( isset( $submenu_typography['fontSize'] ) ) {
-			$css->add_property( 'font-size', $css->render_color( $submenu_typography['fontSize']['Desktop'] . $submenu_typography['fontSize']['unit'] ) );
-		}
-		$css->add_property( 'line-height', $css->render_color( $submenu_typography['lineHeight'] . 'px' ) );
-		$css->add_property( 'text-transform', $css->render_color( $submenu_typography['textTransform'] ) );
-		$css->add_property( 'text-decoration', $css->render_color( $submenu_typography['textDecoration'] ) );
+		$css->render_typography( $submenu_typography, 'Desktop' );
 	}
 
 	if ( isset( $attributes['menuColors'] ) ) {
@@ -156,214 +112,151 @@ function get_premium_navigation_css( $attributes, $unique_id ) {
 		if ( $spacing['padding'] ) {
 			$padding = $spacing['padding'];
 			$css->set_selector( '.' . $unique_id . ' .premium-navigation__container' );
-			$css->add_property( 'padding-top', $css->render_color( $padding['Desktop']['top'] . 'px' ) );
-			$css->add_property( 'padding-right', $css->render_color( $padding['Desktop']['right'] . 'px' ) );
-			$css->add_property( 'padding-bottom', $css->render_color( $padding['Desktop']['bottom'] . 'px' ) );
-			$css->add_property( 'padding-left', $css->render_color( $padding['Desktop']['left'] . 'px' ) );
+			$css->add_property( 'padding', $css->render_spacing( $padding['Desktop'], $padding['unit'] ) );
 		}
 
 		if ( $spacing['itemPadding'] ) {
 			$item_padding = $spacing['itemPadding'];
 			$css->set_selector( '.' . $unique_id . ' .premium-navigation__container > .premium-navigation-item > .premium-navigation-item__content' );
-			$css->add_property( 'padding-top', $css->render_color( $item_padding['Desktop']['top'] . 'px' ) );
-			$css->add_property( 'padding-right', $css->render_color( $item_padding['Desktop']['right'] . 'px' ) );
-			$css->add_property( 'padding-bottom', $css->render_color( $item_padding['Desktop']['bottom'] . 'px' ) );
-			$css->add_property( 'padding-left', $css->render_color( $item_padding['Desktop']['left'] . 'px' ) );
+			$css->add_property( 'padding', $css->render_spacing( $item_padding['Desktop'], $item_padding['unit'] ) );
 		}
 
 		if ( $spacing['margin'] ) {
 			$margin = $spacing['margin'];
 			$css->set_selector( '.' . $unique_id . ' .premium-navigation__container' );
-			$css->add_property( 'margin-top', $css->render_color( $margin['Desktop']['top'] . 'px' ) );
-			$css->add_property( 'margin-right', $css->render_color( $margin['Desktop']['right'] . 'px' . '!important' ) );
-			$css->add_property( 'margin-bottom', $css->render_color( $margin['Desktop']['bottom'] . 'px' ) );
-			$css->add_property( 'margin-left', $css->render_color( $margin['Desktop']['left'] . 'px' . '!important' ) );
+			$css->add_property( 'margin', $css->render_spacing( $margin['Desktop'], $margin['unit'] ) );
 		}
-
-		$css->start_media_query( $media_query['tablet'] );
-		if ( isset( $attributes['typography'] ) ) {
-			$typography = $attributes['typography'];
-			$css->set_selector( '.' . $unique_id . ', .' . $unique_id . ' .premium-navigation-item__content' );
-			if ( isset( $typography['fontSize'] ) ) {
-				$css->add_property( 'font-size', $css->render_color( $typography['fontSize']['Tablet'] . $typography['fontSize']['unit'] ) );
-			}
-		}
-
-		if ( isset( $attributes['menuBorder'] ) ) {
-			$menu_border        = $attributes['menuBorder'];
-			$menu_border_width  = $attributes['menuBorder']['borderWidth'];
-			$menu_border_radius = $attributes['menuBorder']['borderRadius'];
-
-			$css->set_selector( '.' . $unique_id );
-			$css->add_property( 'border-top-width', $css->get_responsive_value( $menu_border_width, 'top', 'Tablet', 'px' ) );
-			$css->add_property( 'border-right-width', $css->get_responsive_value( $menu_border_width, 'right', 'Tablet', 'px' ) );
-			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $menu_border_width, 'bottom', 'Tablet', 'px' ) );
-			$css->add_property( 'border-left-width', $css->get_responsive_value( $menu_border_width, 'left', 'Tablet', 'px' ) );
-			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $menu_border_width, 'top', 'Tablet', 'px' ) );
-			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $menu_border_width, 'top', 'Tablet', 'px' ) );
-			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $menu_border_width, 'top', 'Tablet', 'px' ) );
-			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $menu_border_width, 'top', 'Tablet', 'px' ) );
-		}
-
-		if ( isset( $attributes['submenuBorder'] ) ) {
-			$submenu_border        = $attributes['submenuBorder'];
-			$submenu_border_width  = $attributes['submenuBorder']['borderWidth'];
-			$submenu_border_radius = $attributes['submenuBorder']['borderRadius'];
-
-			$css->set_selector( '.' . $unique_id );
-			$css->add_property( 'border-top-width', $css->get_responsive_value( $submenu_border_width, 'top', 'Tablet', 'px' ) );
-			$css->add_property( 'border-right-width', $css->get_responsive_value( $submenu_border_width, 'right', 'Tablet', 'px' ) );
-			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $submenu_border_width, 'bottom', 'Tablet', 'px' ) );
-			$css->add_property( 'border-left-width', $css->get_responsive_value( $submenu_border_width, 'left', 'Tablet', 'px' ) );
-			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $submenu_border_width, 'top', 'Tablet', 'px' ) );
-			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $submenu_border_width, 'top', 'Tablet', 'px' ) );
-			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $submenu_border_width, 'top', 'Tablet', 'px' ) );
-			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $submenu_border_width, 'top', 'Tablet', 'px' ) );
-		}
-
-		if ( isset( $attributes['overlayMenuBorder'] ) ) {
-			$overlay_menu_border        = $attributes['overlayMenuBorder'];
-			$overlay_menu_border_width  = $attributes['overlayMenuBorder']['borderWidth'];
-			$overlay_menu_border_radius = $attributes['overlayMenuBorder']['borderRadius'];
-			$css->set_selector( '.' . $unique_id . ' .premium-navigation__responsive-container.is-menu-open' );
-			$css->add_property( 'border-top-width', $css->get_responsive_value( $overlay_menu_border_width, 'top', 'Tablet', 'px' ) );
-			$css->add_property( 'border-right-width', $css->get_responsive_value( $overlay_menu_border_width, 'right', 'Tablet', 'px' ) );
-			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $overlay_menu_border_width, 'bottom', 'Tablet', 'px' ) );
-			$css->add_property( 'border-left-width', $css->get_responsive_value( $overlay_menu_border_width, 'left', 'Tablet', 'px' ) );
-			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $overlay_menu_border_width, 'top', 'Tablet', 'px' ) );
-			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $overlay_menu_border_width, 'top', 'Tablet', 'px' ) );
-			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $overlay_menu_border_width, 'top', 'Tablet', 'px' ) );
-			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $overlay_menu_border_width, 'top', 'Tablet', 'px' ) );
-		}
-
-		if ( isset( $attributes['submenuTypography'] ) ) {
-			$submenu_typography = $attributes['submenuTypography'];
-			$css->set_selector( '.' . $unique_id . ' .wp-block-premium-navigation-submenu, .' . $unique_id . ' .wp-block-premium-navigation-submenu .premium-navigation-item__content' );
-			if ( isset( $submenu_typography['fontSize'] ) ) {
-				$css->add_property( 'font-size', $css->render_color( $submenu_typography['fontSize']['Tablet'] . $submenu_typography['fontSize']['unit'] ) );
-			}
-		}
-
-		if ( $spacing['padding'] ) {
-			$padding = $spacing['padding'];
-			$css->set_selector( '.' . $unique_id . ' .premium-navigation__container' );
-			$css->add_property( 'padding-top', $css->render_color( $padding['Tablet']['top'] . 'px' ) );
-			$css->add_property( 'padding-right', $css->render_color( $padding['Tablet']['right'] . 'px' ) );
-			$css->add_property( 'padding-bottom', $css->render_color( $padding['Tablet']['bottom'] . 'px' ) );
-			$css->add_property( 'padding-left', $css->render_color( $padding['Tablet']['left'] . 'px' ) );
-		}
-
-		if ( $spacing['itemPadding'] ) {
-			$item_padding = $spacing['itemPadding'];
-			$css->set_selector( '.' . $unique_id . ' .premium-navigation__container > .premium-navigation-item > .premium-navigation-item__content' );
-			$css->add_property( 'padding-top', $css->render_color( $item_padding['Tablet']['top'] . 'px' ) );
-			$css->add_property( 'padding-right', $css->render_color( $item_padding['Tablet']['right'] . 'px' ) );
-			$css->add_property( 'padding-bottom', $css->render_color( $item_padding['Tablet']['bottom'] . 'px' ) );
-			$css->add_property( 'padding-left', $css->render_color( $item_padding['Tablet']['left'] . 'px' ) );
-		}
-
-		if ( $spacing['margin'] ) {
-			$margin = $spacing['margin'];
-			$css->set_selector( '.' . $unique_id . ' .premium-navigation__container' );
-			$css->add_property( 'margin-top', $css->render_color( $margin['Tablet']['top'] . 'px' ) );
-			$css->add_property( 'margin-right', $css->render_color( $margin['Tablet']['right'] . 'px' ) );
-			$css->add_property( 'margin-bottom', $css->render_color( $margin['Tablet']['bottom'] . 'px' ) );
-			$css->add_property( 'margin-left', $css->render_color( $margin['Tablet']['left'] . 'px' ) );
-		}
-		$css->stop_media_query();
-		$css->start_media_query( $media_query['mobile'] );
-
-		if ( isset( $attributes['menuBorder'] ) ) {
-			$menu_border        = $attributes['menuBorder'];
-			$menu_border_width  = $attributes['menuBorder']['borderWidth'];
-			$menu_border_radius = $attributes['menuBorder']['borderRadius'];
-
-			$css->set_selector( '.' . $unique_id );
-			$css->add_property( 'border-top-width', $css->get_responsive_value( $menu_border_width, 'top', 'Mobile', 'px' ) );
-			$css->add_property( 'border-right-width', $css->get_responsive_value( $menu_border_width, 'right', 'Mobile', 'px' ) );
-			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $menu_border_width, 'bottom', 'Mobile', 'px' ) );
-			$css->add_property( 'border-left-width', $css->get_responsive_value( $menu_border_width, 'left', 'Mobile', 'px' ) );
-			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $menu_border_width, 'top', 'Mobile', 'px' ) );
-			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $menu_border_width, 'top', 'Mobile', 'px' ) );
-			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $menu_border_width, 'top', 'Mobile', 'px' ) );
-			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $menu_border_width, 'top', 'Mobile', 'px' ) );
-		}
-
-		if ( isset( $attributes['submenuBorder'] ) ) {
-			$submenu_border        = $attributes['submenuBorder'];
-			$submenu_border_width  = $attributes['submenuBorder']['borderWidth'];
-			$submenu_border_radius = $attributes['submenuBorder']['borderRadius'];
-
-			$css->set_selector( '.' . $unique_id );
-			$css->add_property( 'border-top-width', $css->get_responsive_value( $submenu_border_width, 'top', 'Mobile', 'px' ) );
-			$css->add_property( 'border-right-width', $css->get_responsive_value( $submenu_border_width, 'right', 'Mobile', 'px' ) );
-			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $submenu_border_width, 'bottom', 'Mobile', 'px' ) );
-			$css->add_property( 'border-left-width', $css->get_responsive_value( $submenu_border_width, 'left', 'Mobile', 'px' ) );
-			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $submenu_border_width, 'top', 'Mobile', 'px' ) );
-			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $submenu_border_width, 'top', 'Mobile', 'px' ) );
-			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $submenu_border_width, 'top', 'Mobile', 'px' ) );
-			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $submenu_border_width, 'top', 'Mobile', 'px' ) );
-		}
-
-		if ( isset( $attributes['overlayMenuBorder'] ) ) {
-			$overlay_menu_border        = $attributes['overlayMenuBorder'];
-			$overlay_menu_border_width  = $attributes['overlayMenuBorder']['borderWidth'];
-			$overlay_menu_border_radius = $attributes['overlayMenuBorder']['borderRadius'];
-			$css->set_selector( '.' . $unique_id . ' .premium-navigation__responsive-container.is-menu-open' );
-			$css->add_property( 'border-top-width', $css->get_responsive_value( $overlay_menu_border_width, 'top', 'Mobile', 'px' ) );
-			$css->add_property( 'border-right-width', $css->get_responsive_value( $overlay_menu_border_width, 'right', 'Mobile', 'px' ) );
-			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $overlay_menu_border_width, 'bottom', 'Mobile', 'px' ) );
-			$css->add_property( 'border-left-width', $css->get_responsive_value( $overlay_menu_border_width, 'left', 'Mobile', 'px' ) );
-			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $overlay_menu_border_width, 'top', 'Mobile', 'px' ) );
-			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $overlay_menu_border_width, 'top', 'Mobile', 'px' ) );
-			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $overlay_menu_border_width, 'top', 'Mobile', 'px' ) );
-			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $overlay_menu_border_width, 'top', 'Mobile', 'px' ) );
-		}
-
-		if ( isset( $attributes['typography'] ) ) {
-			$typography = $attributes['typography'];
-			$css->set_selector( '.' . $unique_id . ', .' . $unique_id . ' .premium-navigation-item__content' );
-			if ( isset( $typography['fontSize'] ) ) {
-				$css->add_property( 'font-size', $css->render_color( $typography['fontSize']['Mobile'] . $typography['fontSize']['unit'] ) );
-			}
-		}
-
-		if ( isset( $attributes['submenuTypography'] ) ) {
-			$submenu_typography = $attributes['submenuTypography'];
-			$css->set_selector( '.' . $unique_id . ' .wp-block-premium-navigation-submenu, .' . $unique_id . ' .wp-block-premium-navigation-submenu .premium-navigation-item__content' );
-			if ( isset( $submenu_typography['fontSize'] ) ) {
-				$css->add_property( 'font-size', $css->render_color( $submenu_typography['fontSize']['Mobile'] . $submenu_typography['fontSize']['unit'] ) );
-			}
-		}
-
-		if ( $spacing['padding'] ) {
-			$padding = $spacing['padding'];
-			$css->set_selector( '.' . $unique_id . ' .premium-navigation__container' );
-			$css->add_property( 'padding-top', $css->render_color( $padding['Mobile']['top'] . 'px' ) );
-			$css->add_property( 'padding-right', $css->render_color( $padding['Mobile']['right'] . 'px' ) );
-			$css->add_property( 'padding-bottom', $css->render_color( $padding['Mobile']['bottom'] . 'px' ) );
-			$css->add_property( 'padding-left', $css->render_color( $padding['Mobile']['left'] . 'px' ) );
-		}
-
-		if ( $spacing['itemPadding'] ) {
-			$item_padding = $spacing['itemPadding'];
-			$css->set_selector( '.' . $unique_id . ' .premium-navigation__container > .premium-navigation-item > .premium-navigation-item__content' );
-			$css->add_property( 'padding-top', $css->render_color( $item_padding['Mobile']['top'] . 'px' ) );
-			$css->add_property( 'padding-right', $css->render_color( $item_padding['Mobile']['right'] . 'px' ) );
-			$css->add_property( 'padding-bottom', $css->render_color( $item_padding['Mobile']['bottom'] . 'px' ) );
-			$css->add_property( 'padding-left', $css->render_color( $item_padding['Mobile']['left'] . 'px' ) );
-		}
-
-		if ( $spacing['margin'] ) {
-			$margin = $spacing['margin'];
-			$css->set_selector( '.' . $unique_id . ' .premium-navigation__container' );
-			$css->add_property( 'margin-top', $css->render_color( $margin['Mobile']['top'] . 'px' ) );
-			$css->add_property( 'margin-right', $css->render_color( $margin['Mobile']['right'] . 'px' ) );
-			$css->add_property( 'margin-bottom', $css->render_color( $margin['Mobile']['bottom'] . 'px' ) );
-			$css->add_property( 'margin-left', $css->render_color( $margin['Mobile']['left'] . 'px' ) );
-		}
-		$css->stop_media_query();
 	}
+
+	$css->start_media_query( $media_query['tablet'] );
+	if ( isset( $attributes['typography'] ) ) {
+		$typography = $attributes['typography'];
+
+		$css->set_selector( '.' . $unique_id . ', .' . $unique_id . ' .premium-navigation-item__content' );
+		$css->render_typography( $typography, 'Tablet' );
+	}
+
+	if ( isset( $attributes['menuBorder'] ) ) {
+		$menu_border        = $attributes['menuBorder'];
+		$menu_border_width  = $attributes['menuBorder']['borderWidth'];
+		$menu_border_radius = $attributes['menuBorder']['borderRadius'];
+
+		$css->set_selector( '.' . $unique_id );
+		$css->add_property( 'border-width', $css->render_spacing( $menu_border_width['Tablet'], 'px' ) );
+		$css->add_property( 'border-radius', $css->render_spacing( $menu_border_radius['Tablet'], 'px' ) );
+	}
+
+	if ( isset( $attributes['submenuBorder'] ) ) {
+		$submenu_border        = $attributes['submenuBorder'];
+		$submenu_border_width  = $attributes['submenuBorder']['borderWidth'];
+		$submenu_border_radius = $attributes['submenuBorder']['borderRadius'];
+
+		$css->set_selector( '.' . $unique_id );
+		$css->add_property( 'border-width', $css->render_spacing( $submenu_border_width['Tablet'], 'px' ) );
+		$css->add_property( 'border-radius', $css->render_spacing( $submenu_border_radius['Tablet'], 'px' ) );
+	}
+
+	if ( isset( $attributes['overlayMenuBorder'] ) ) {
+		$overlay_menu_border        = $attributes['overlayMenuBorder'];
+		$overlay_menu_border_width  = $attributes['overlayMenuBorder']['borderWidth'];
+		$overlay_menu_border_radius = $attributes['overlayMenuBorder']['borderRadius'];
+		$css->set_selector( '.' . $unique_id . ' .premium-navigation__responsive-container.is-menu-open' );
+		$css->add_property( 'border-width', $css->render_spacing( $overlay_menu_border_width['Tablet'], 'px' ) );
+		$css->add_property( 'border-radius', $css->render_spacing( $overlay_menu_border_radius['Tablet'], 'px' ) );
+	}
+
+	if ( isset( $attributes['submenuTypography'] ) ) {
+		$submenu_typography = $attributes['submenuTypography'];
+		$css->set_selector( '.' . $unique_id . ' .wp-block-premium-navigation-submenu, .' . $unique_id . ' .wp-block-premium-navigation-submenu .premium-navigation-item__content' );
+		$css->render_typography( $submenu_typography, 'Tablet' );
+	}
+
+	if ( isset( $attributes['spacing'] ) ) {
+		if ( $spacing['padding'] ) {
+			$padding = $spacing['padding'];
+			$css->set_selector( '.' . $unique_id . ' .premium-navigation__container' );
+			$css->add_property( 'padding', $css->render_spacing( $padding['Tablet'], $padding['unit'] ) );
+		}
+
+		if ( $spacing['itemPadding'] ) {
+			$item_padding = $spacing['itemPadding'];
+			$css->set_selector( '.' . $unique_id . ' .premium-navigation__container > .premium-navigation-item > .premium-navigation-item__content' );
+			$css->add_property( 'padding', $css->render_spacing( $item_padding['Tablet'], $item_padding['unit'] ) );
+		}
+
+		if ( $spacing['margin'] ) {
+			$margin = $spacing['margin'];
+			$css->set_selector( '.' . $unique_id . ' .premium-navigation__container' );
+			$css->add_property( 'margin', $css->render_spacing( $margin['Tablet'], $margin['unit'] ) );
+		}
+	}
+
+	$css->stop_media_query();
+	$css->start_media_query( $media_query['mobile'] );
+
+	if ( isset( $attributes['menuBorder'] ) ) {
+		$menu_border        = $attributes['menuBorder'];
+		$menu_border_width  = $attributes['menuBorder']['borderWidth'];
+		$menu_border_radius = $attributes['menuBorder']['borderRadius'];
+
+		$css->set_selector( '.' . $unique_id );
+		$css->add_property( 'border-width', $css->render_spacing( $menu_border_width['Mobile'], 'px' ) );
+		$css->add_property( 'border-radius', $css->render_spacing( $menu_border_radius['Mobile'], 'px' ) );
+	}
+
+	if ( isset( $attributes['submenuBorder'] ) ) {
+		$submenu_border        = $attributes['submenuBorder'];
+		$submenu_border_width  = $attributes['submenuBorder']['borderWidth'];
+		$submenu_border_radius = $attributes['submenuBorder']['borderRadius'];
+
+		$css->set_selector( '.' . $unique_id );
+		$css->add_property( 'border-width', $css->render_spacing( $submenu_border_width['Mobile'], 'px' ) );
+		$css->add_property( 'border-radius', $css->render_spacing( $submenu_border_radius['Mobile'], 'px' ) );
+	}
+
+	if ( isset( $attributes['overlayMenuBorder'] ) ) {
+		$overlay_menu_border        = $attributes['overlayMenuBorder'];
+		$overlay_menu_border_width  = $attributes['overlayMenuBorder']['borderWidth'];
+		$overlay_menu_border_radius = $attributes['overlayMenuBorder']['borderRadius'];
+		$css->set_selector( '.' . $unique_id . ' .premium-navigation__responsive-container.is-menu-open' );
+		$css->add_property( 'border-width', $css->render_spacing( $overlay_menu_border_width['Mobile'], 'px' ) );
+		$css->add_property( 'border-radius', $css->render_spacing( $overlay_menu_border_radius['Mobile'], 'px' ) );
+	}
+
+	if ( isset( $attributes['typography'] ) ) {
+		$typography = $attributes['typography'];
+
+		$css->set_selector( '.' . $unique_id . ', .' . $unique_id . ' .premium-navigation-item__content' );
+		$css->render_typography( $typography, 'Mobile' );
+	}
+
+	if ( isset( $attributes['submenuTypography'] ) ) {
+		$submenu_typography = $attributes['submenuTypography'];
+		$css->set_selector( '.' . $unique_id . ' .wp-block-premium-navigation-submenu, .' . $unique_id . ' .wp-block-premium-navigation-submenu .premium-navigation-item__content' );
+		$css->render_typography( $submenu_typography, 'Mobile' );
+	}
+
+	if ( isset( $attributes['spacing'] ) ) {
+		if ( $spacing['padding'] ) {
+			$padding = $spacing['padding'];
+			$css->set_selector( '.' . $unique_id . ' .premium-navigation__container' );
+			$css->add_property( 'padding', $css->render_spacing( $padding['Mobile'], $padding['unit'] ) );
+		}
+
+		if ( $spacing['itemPadding'] ) {
+			$item_padding = $spacing['itemPadding'];
+			$css->set_selector( '.' . $unique_id . ' .premium-navigation__container > .premium-navigation-item > .premium-navigation-item__content' );
+			$css->add_property( 'padding', $css->render_spacing( $item_padding['Mobile'], $item_padding['unit'] ) );
+		}
+
+		if ( $spacing['margin'] ) {
+			$margin = $spacing['margin'];
+			$css->set_selector( '.' . $unique_id . ' .premium-navigation__container' );
+			$css->add_property( 'margin', $css->render_spacing( $margin['Mobile'], $margin['unit'] ) );
+		}
+	}
+
+	$css->stop_media_query();
 
 	return $css->css_output();
 }
