@@ -18390,15 +18390,15 @@ class edit extends Component {
     }), !flexDir.includes("reverse") && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_11__["default"], {
       choices: [{
         value: 'flex-start',
-        label: __('Left'),
+        label: __('Left', 'premium-blocks-for-gutenberg'),
         icon: _components_icons__WEBPACK_IMPORTED_MODULE_12__["default"].alignLeft
       }, {
         value: 'center',
-        label: __('Center'),
+        label: __('Center', 'premium-blocks-for-gutenberg'),
         icon: _components_icons__WEBPACK_IMPORTED_MODULE_12__["default"].alignCenter
       }, {
         value: 'flex-end',
-        label: __('Right'),
+        label: __('Right', 'premium-blocks-for-gutenberg'),
         icon: _components_icons__WEBPACK_IMPORTED_MODULE_12__["default"].alignRight
       }],
       value: align,
@@ -18533,7 +18533,7 @@ class edit extends Component {
         boxShadow: value
       })
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_5__["default"], {
-      label: __("Border"),
+      label: __("Border", 'premium-blocks-for-gutenberg'),
       value: border,
       onChange: value => setAttributes({
         border: value
@@ -18542,7 +18542,7 @@ class edit extends Component {
       value: padding,
       responsive: true,
       showUnits: true,
-      label: __("Padding"),
+      label: __("Padding", 'premium-blocks-for-gutenberg'),
       onChange: value => setAttributes({
         padding: value
       })

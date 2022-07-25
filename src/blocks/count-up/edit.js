@@ -238,7 +238,7 @@ class edit extends Component {
 
                                 {!flexDir.includes("reverse") && (
                                     <MultiButtonsControl
-                                        choices={[{ value: 'flex-start', label: __('Left'), icon: Icons.alignLeft }, { value: 'center', label: __('Center'), icon: Icons.alignCenter }, { value: 'flex-end', label: __('Right'), icon: Icons.alignRight }]}
+                                        choices={[{ value: 'flex-start', label: __('Left', 'premium-blocks-for-gutenberg'), icon: Icons.alignLeft }, { value: 'center', label: __('Center', 'premium-blocks-for-gutenberg'), icon: Icons.alignCenter }, { value: 'flex-end', label: __('Right', 'premium-blocks-for-gutenberg'), icon: Icons.alignRight }]}
                                         value={align}
                                         onChange={(align) => setAttributes({ align: align, selfAlign: align })}
                                         label={__("Align", "premium-blocks-for-gutenberg")}
@@ -378,7 +378,7 @@ class edit extends Component {
                                 />
                                 <hr />
                                 <PremiumBorder
-                                    label={__("Border")}
+                                    label={__("Border", 'premium-blocks-for-gutenberg')}
                                     value={border}
                                     onChange={(value) => setAttributes({ border: value })}
                                 />
@@ -387,7 +387,7 @@ class edit extends Component {
                                     value={padding}
                                     responsive={true}
                                     showUnits={true}
-                                    label={__("Padding")}
+                                    label={__("Padding", 'premium-blocks-for-gutenberg')}
                                     onChange={(value) => setAttributes({ padding: value })}
                                 />
                             </PanelBody>
