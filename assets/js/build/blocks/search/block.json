@@ -22,8 +22,46 @@
       "default": {
         "borderType": "",
         "borderColor": "",
-        "borderWidth": "",
-        "borderRadius": ""
+        "borderWidth": {
+          "Desktop": {
+            "top": "",
+            "right": "",
+            "bottom": "",
+            "left": ""
+          },
+          "Tablet": {
+            "top": "",
+            "right": "",
+            "bottom": "",
+            "left": ""
+          },
+          "Mobile": {
+            "top": "",
+            "right": "",
+            "bottom": "",
+            "left": ""
+          }
+        },
+        "borderRadius": {
+          "Desktop": {
+            "top": "",
+            "right": "",
+            "bottom": "",
+            "left": ""
+          },
+          "Tablet": {
+            "top": "",
+            "right": "",
+            "bottom": "",
+            "left": ""
+          },
+          "Mobile": {
+            "top": "",
+            "right": "",
+            "bottom": "",
+            "left": ""
+          }
+        }
       }
     },
     "colors": {
@@ -91,13 +129,23 @@
     "typography": {
       "type": "object",
       "default": {
-        "fontWeight": "",
+        "fontWeight": "400",
         "fontStyle": "",
-        "textTransform": "",
-        "letterSpacing": "",
-        "fontFamily": "",
-        "lineHeight": "",
+        "letterSpacing": {
+          "Desktop": "",
+          "Tablet": "",
+          "Mobile": "",
+          "unit": "px"
+        },
+        "fontFamily": "Default",
+        "lineHeight": {
+          "Desktop": "",
+          "Tablet": "",
+          "Mobile": "",
+          "unit": "px"
+        },
         "textDecoration": "",
+        "textTransform": "",
         "fontSize": {
           "Desktop": "",
           "Tablet": "",
@@ -109,13 +157,23 @@
     "buttonTypography": {
       "type": "object",
       "default": {
-        "fontWeight": "",
+        "fontWeight": "400",
         "fontStyle": "",
-        "textTransform": "",
-        "letterSpacing": "",
-        "fontFamily": "",
-        "lineHeight": "",
+        "letterSpacing": {
+          "Desktop": "",
+          "Tablet": "",
+          "Mobile": "",
+          "unit": "px"
+        },
+        "fontFamily": "Default",
+        "lineHeight": {
+          "Desktop": "",
+          "Tablet": "",
+          "Mobile": "",
+          "unit": "px"
+        },
         "textDecoration": "",
+        "textTransform": "",
         "fontSize": {
           "Desktop": "",
           "Tablet": "",
@@ -130,6 +188,15 @@
         "padding": null,
         "buttonPadding": null
       }
+    },
+    "hideDesktop": {
+      "type": "boolean"
+    },
+    "hideTablet": {
+      "type": "boolean"
+    },
+    "hideMobile": {
+      "type": "boolean"
     }
   },
   "supports": {
