@@ -28,7 +28,7 @@ export default class InsideTabs extends Component {
             TEMPTAG = 'Div'
         }
         return (
-            <div className={className}>
+            <div className={`${className} premium-blocks__base-control`}>
                 <div className="premium-field-tab-header">
                     {label && <label>{label}</label>}
                     <div className="premium-field-tab-menus">

@@ -55,7 +55,7 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 	//First Label styles
 	if ( isset( $attributes['firstLabelTypography'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
-		$css->add_property( 'font-size', $css->render_typography ( $attributes['firstLabelTypography'],'Desktop' ) );
+	$css->render_typography ( $attributes['firstLabelTypography'],'Desktop' ) ;
 	}
    
 	if ( isset( $attributes['firstLabelPadding']['Desktop']['top'] ) && isset( $attributes['firstLabelPadding']['unit'] ) ) {

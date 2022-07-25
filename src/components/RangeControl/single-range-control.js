@@ -3,7 +3,6 @@ import PremiumSizeUnits from '../premium-size-units';
 import PremiumRange from './range-control';
 const { Fragment } = wp.element;
 export default function ResponsiveSingleRangeControl({
-    device = 'device',
     onChange,
     value,
     step = 1,
@@ -15,7 +14,7 @@ export default function ResponsiveSingleRangeControl({
     units = ['px', 'em', 'rem'],
     className = '',
     label,
-    defaultValue
+    defaultValue,
 }) {
     return [
         onChange && (

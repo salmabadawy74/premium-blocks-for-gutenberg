@@ -411,7 +411,7 @@ class edit extends Component {
                                             label={__("Icon Color", 'premium-blocks-for-gutenberg')}
                                             colorValue={iconColor}
                                             colorDefault={''}
-                                            onColorChange={newValue => setAttributes({ iconColor: newValue === undefined ? "transparent" : newValue })}
+                                            onColorChange={newValue => setAttributes({ iconColor: newValue })}
                                         />
                                     )}
                                 </PanelBody>
@@ -431,7 +431,7 @@ class edit extends Component {
                                         label={__("Text Color", 'premium-blocks-for-gutenberg')}
                                         colorValue={titleStyles[0].titleColor}
                                         colorDefault={''}
-                                        onColorChange={newValue => saveTitleStyles({ titleColor: newValue === undefined ? "transparent" : newValue })}
+                                        onColorChange={newValue => saveTitleStyles({ titleColor: newValue })}
                                     />
                                     <hr />
                                     <ResponsiveSingleRangeControl
@@ -482,7 +482,7 @@ class edit extends Component {
                                         label={__("Text Color", 'premium-blocks-for-gutenberg')}
                                         colorValue={prefixStyles[0].prefixColor}
                                         colorDefault={''}
-                                        onColorChange={newValue => savePrefixStyle({ prefixColor: newValue === undefined ? "transparent" : newValue })}
+                                        onColorChange={newValue => savePrefixStyle({ prefixColor: newValue })}
                                     />
                                     <hr />
                                     <ResponsiveSingleRangeControl
@@ -509,7 +509,7 @@ class edit extends Component {
                                         label={__("Text Color", 'premium-blocks-for-gutenberg')}
                                         colorValue={suffixStyles[0].suffixColor}
                                         colorDefault={''}
-                                        onColorChange={newValue => saveSuffixStyle({ suffixColor: newValue === undefined ? "transparent" : newValue })}
+                                        onColorChange={newValue => saveSuffixStyle({ suffixColor: newValue })}
                                     />
                                     <hr />
                                     <ResponsiveSingleRangeControl

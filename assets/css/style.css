@@ -1,5 +1,5 @@
 :root {
-    --pbBacgroundColor: rgb(242, 242, 242);
+    --pbBackgroundColor: rgb(242, 242, 242);
     --pbBorderColor: #e1e1e1;
     --pbiconHoverColor:#696969:
 }
@@ -375,7 +375,7 @@ a.premium-dheading-block__link:hover {
     bottom: 0;
     padding: 15px;
     height: auto;
-    background: var(--pbBacgroundColor);
+    background: var(--pbBackgroundColor);
     color: #3c4a50;
     -webkit-transition: -webkit-transform 0.35s;
     transition: -webkit-transform 0.35s;
@@ -2101,6 +2101,7 @@ a.premium-dheading-block__link:hover {
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
     font-style: normal !important;
+    font-size: 200px;
 }
 
 .premium-image-separator-container img {

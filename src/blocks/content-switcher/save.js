@@ -101,8 +101,7 @@ export default function save(props) {
                                 value={firstLabel}
                                 style={filterJsCss({
                                     fontStyle: firstLabelTypography?.fontStyle,
-                                    fontFamily:
-                                        firstLabelTypography?.fontFamily,
+
                                     fontWeight:
                                         firstLabelTypography?.fontWeight,
                                     textDecoration:

@@ -58,8 +58,6 @@ const imageSeparatorAttrs = {
             'hue': '0'
         }
     },
-
-
     linkTarget: {
         type: "boolean",
         default: false
@@ -91,16 +89,12 @@ const imageSeparatorAttrs = {
         type: "array",
         default: [
             {
+                advancedBorder: false,
                 icon: "fa fa-bars",
-                iconColor: "#6ec1e4",
-                iconBGColor: "#54595f",
+                iconColor: "",
+                iconBGColor: "",
                 iconColorHover: '',
                 iconBGColorHover: '',
-                iconPadding: ".1",
-                iconPaddingTablet: ".1",
-                iconPaddingType: "em",
-                iconPaddingMobile: ".1",
-                advancedBorder: false,
                 advancedBorderValue: '',
                 imgHeightType: "px",
             }
@@ -109,7 +103,9 @@ const imageSeparatorAttrs = {
     iconSize: {
         type: "object",
         default: {
-            Desktop: '200',
+            'Desktop': '200',
+            'Tablet': '200',
+            'Mobile': '',
             unit: 'px'
         }
     },
@@ -183,10 +179,10 @@ const imageSeparatorAttrs = {
         type: "object",
         default: {
             Desktop: {
-                top: "",
-                right: "",
-                bottom: "",
-                left: ""
+                top: ".1",
+                right: ".1",
+                bottom: ".1",
+                left: ".1"
             },
             Tablet: {
                 top: "",
@@ -200,16 +196,16 @@ const imageSeparatorAttrs = {
                 bottom: "",
                 left: ""
             },
-            unit: "px"
+            unit: "em"
         }
     },
     iconShadow: {
         type: "object",
         default: {
-            'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': ''
+            'color': 'undefined',
+            'blur': '10',
+            'horizontal': '0',
+            'vertical': '0'
         }
     }
 };
