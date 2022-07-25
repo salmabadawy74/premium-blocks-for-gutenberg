@@ -308,16 +308,18 @@ const deprecated = [
         migrate: (attributes) => {
             let newAttributes = {
                 nameTag: 'h2',
-                titleTag: 'h4',
+                titleTag: 'h5',
                 blockId: attributes.id ? `premium-person-${attributes.id.split('-')[6]}` : '',
-                personAlign: {
+                align: {
                     "Desktop": attributes.personAlign,
                     "Tablet": attributes.personAlign,
                     "Mobile": attributes.personAlign,
                 },
                 socialIconSize: {
                     unit: attributes.socialIconStyles[0].socialIconfontSizeType,
-                    "Desktop": attributes.socialIconStyles[0].socialIconSize
+                    "Desktop": attributes.socialIconStyles[0].socialIconSize,
+                    "Tablet": attributes.socialIconStyles[0].socialIconfontSizeTablet,
+                    "Mobile": attributes.socialIconStyles[0].socialIconfontSizeMobile,
                 },
                 socialIconMargin: {
                     "Desktop": {
@@ -566,17 +568,27 @@ const deprecated = [
                     },
                 },
                 imgHeight: {
-                    unit: '%',
-                    "Desktop": 100
+                    unit: 'px',
+                    "Desktop": 200
                 },
                 imgWidth: {
-                    unit: '%',
-                    "Desktop": 100
+                    unit: 'px',
+                    "Desktop": 200
                 },
                 socialIcon: false,
                 hideDesktop: '',
                 hideTablet: '',
                 hideMobile: '',
+                imageFilter: {
+                    'contrast': attributes.contrast,
+                    'blur': attributes.blur,
+                    'bright': attributes.bright,
+                    'saturation': attributes.saturation,
+                    'hue': attributes.hue
+                },
+                nameColor: attributes.nameStyles[0].nameColor,
+                titleColor: attributes.titleStyles[0].titleColor,
+                descColor: attributes.descStyles[0].descColor
             }
             return Object.assign(attributes, newAttributes)
         },

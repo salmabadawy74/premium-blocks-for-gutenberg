@@ -1,6 +1,6 @@
 const { __ } = wp.i18n;
 const attributes = {
-    personAlign: {
+    align: {
         type: "object",
         default: {
             "Desktop": "center",
@@ -8,68 +8,17 @@ const attributes = {
             "Mobile": "center"
         }
     },
-    nameStyles: {
-        type: "array",
-        default: [
-            {
-                nameColor: "rgb(110, 193, 228)",
-                nameLetter: 0,
-                nameStyle: '',
-                nameUpper: false,
-                nameWeight: 500,
-                nameLine: 0,
-                namefontSize: 20,
-                namefontSizeType: "px",
-                namefontSizeMobile: 20,
-                namefontSizeTablet: 20,
-                nameshadowColor: '',
-                nameshadowBlur: 0,
-                nameshadowHorizontal: 0,
-                nameshadowVertical: 0,
-            }
-        ]
+    nameColor: {
+        type: "string",
+        default: ""
     },
-    titleStyles: {
-        type: "array",
-        default: [
-            {
-                titleColor: "",
-                titleLetter: 0,
-                titleStyle: '',
-                titleUpper: false,
-                titleWeight: 500,
-                titleLine: 0,
-                titleSize: 20,
-                titlefontSizeType: "px",
-                titlefontSizeMobile: 20,
-                titlefontSizeTablet: 20,
-                titleshadowColor: '',
-                titleshadowBlur: 0,
-                titleshadowHorizontal: 0,
-                titleshadowVertical: 0,
-            }
-        ]
+    titleColor: {
+        type: "string",
+        default: ""
     },
-    descStyles: {
-        type: "array",
-        default: [
-            {
-                descColor: "",
-                descLetter: 0,
-                descStyle: '',
-                descUpper: false,
-                descWeight: '',
-                descLine: 0,
-                descSize: 20,
-                descfontSizeType: "px",
-                descfontSizeMobile: 20,
-                descfontSizeTablet: 20,
-                descshadowColor: '',
-                descshadowBlur: 0,
-                descshadowHorizontal: 0,
-                descshadowVertical: 0,
-            }
-        ]
+    descColor: {
+        type: "string",
+        default: ""
     },
     socialIconStyles: {
         type: "array",
@@ -79,16 +28,7 @@ const attributes = {
                 socialIconHoverColor: '',
                 socialIconBackgroundColor: '',
                 defaultIconColor: false,
-                socialIconSize: 20,
-                socialIconfontSizeType: "px",
-                socialIconfontSizeMobile: 20,
-                socialIconfontSizeTablet: 20,
-                borderTypeIcon: 'none',
-                borderWidthIcon: '1',
-                borderRadiusIcon: '0',
-                borderColorIcon: '',
-                socialIconPaddingType: 'px',
-                socialIconMarginType: 'px',
+                borderColorIcon: ''
             }
         ]
     },
@@ -106,10 +46,6 @@ const attributes = {
     effectDir: {
         type: "string",
         default: "top"
-    },
-    descColor: {
-        type: "string",
-        default: "#000"
     },
     multiPersonChecked: {
         type: "number",
@@ -164,33 +100,13 @@ const attributes = {
             }
         ]
     },
-    blur: {
-        type: "number",
-        default: "0"
-    },
-    bright: {
-        type: "number",
-        default: "100"
-    },
-    contrast: {
-        type: "number",
-        default: "100"
-    },
-    saturation: {
-        type: "number",
-        default: "100"
-    },
-    hue: {
-        type: "number",
-        default: "0"
-    },
     nameTag: {
         type: "string",
         default: "h2"
     },
     titleTag: {
         type: "string",
-        default: "h4"
+        default: "h5"
     },
     socialIconMargin: {
         type: "object",
@@ -291,13 +207,15 @@ const attributes = {
         type: "object",
         default: {
             Desktop: '20',
+            Tablet: '20',
+            Mobile: '20',
             unit: 'px'
         }
     },
     titleTypography: {
         type: "object",
         default: {
-            "fontWeight": 500,
+            "fontWeight": '',
             'fontStyle': '',
             'textTransform': '',
             'letterSpacing': '',
@@ -314,16 +232,16 @@ const attributes = {
     descTypography: {
         type: "object",
         default: {
-            "fontWeight": 400,
+            "fontWeight": '',
             'fontStyle': '',
             'textTransform': '',
             'letterSpacing': '',
             'lineHeight': '',
             'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
             'fontSize': {
-                'Desktop': 20,
-                "Tablet": 20,
-                "Mobile": 20,
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
                 unit: 'px'
             }
         }
@@ -331,7 +249,7 @@ const attributes = {
     nameTypography: {
         type: "object",
         default: {
-            "fontWeight": 500,
+            "fontWeight": '',
             'fontStyle': '',
             'textTransform': '',
             'letterSpacing': '',
@@ -348,38 +266,38 @@ const attributes = {
     titleShadow: {
         type: "object",
         default: {
-            'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': ''
+            'color': 'undefined',
+            'blur': '10',
+            'horizontal': '0',
+            'vertical': '0'
         }
     },
     nameShadow: {
         type: "object",
         default: {
-            'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': ''
+            'color': 'undefined',
+            'blur': '10',
+            'horizontal': '0',
+            'vertical': '0'
         }
     },
     descShadow: {
         type: "object",
         default: {
-            'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': ''
+            'color': 'undefined',
+            'blur': '10',
+            'horizontal': '0',
+            'vertical': '0'
         }
     },
     namePadding: {
         type: "object",
         default: {
             Desktop: {
-                top: 0,
-                right: 0,
-                bottom: 0,
-                left: 0
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
             },
             Tablet: {
                 top: "",
@@ -400,10 +318,10 @@ const attributes = {
         type: "object",
         default: {
             Desktop: {
-                top: "0",
-                right: "0",
-                bottom: "0",
-                left: "0"
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
             },
             Tablet: {
                 top: "",
@@ -424,10 +342,10 @@ const attributes = {
         type: "object",
         default: {
             Desktop: {
-                top: "0",
-                right: "0",
-                bottom: "0",
-                left: "0"
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
             },
             Tablet: {
                 top: "",
@@ -448,10 +366,10 @@ const attributes = {
         type: "object",
         default: {
             Desktop: {
-                top: "0",
-                right: "0",
-                bottom: "0",
-                left: "0"
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
             },
             Tablet: {
                 top: "",
@@ -495,15 +413,15 @@ const attributes = {
     imgHeight: {
         type: "object",
         default: {
-            Desktop: '100',
-            unit: '%'
+            Desktop: '200',
+            unit: 'px'
         }
     },
     imgWidth: {
         type: "object",
         default: {
-            Desktop: '100',
-            unit: '%'
+            Desktop: '200',
+            unit: 'px'
         }
     },
     socialIcon: {
@@ -521,6 +439,16 @@ const attributes = {
     hideMobile: {
         type: 'boolean',
         default: ''
+    },
+    imageFilter: {
+        type: "object",
+        default: {
+            'contrast': '100',
+            'blur': '0',
+            'bright': '100',
+            'saturation': '100',
+            'hue': '0'
+        }
     },
 }
 export default attributes
