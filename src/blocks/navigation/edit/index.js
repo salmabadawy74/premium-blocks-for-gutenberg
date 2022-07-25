@@ -46,7 +46,7 @@ import PremiumBorder from "../../../components/premium-border"
 import PremiumTypo from "../../../components/premium-typo"
 import InspectorTabs from '../../../components/inspectorTabs';
 import InspectorTab from '../../../components/inspectorTab';
-import { generateBlockId, generateCss } from '../../../components/HelperFunction';
+import { generateBlockId, generateCss, typographyCss, paddingCss, marginCss, borderCss } from '../../../components/HelperFunction';
 import useNavigationMenu from '../use-navigation-menu';
 import useNavigationEntities from '../use-navigation-entities';
 import Placeholder from './placeholder';
@@ -312,33 +312,10 @@ function Navigation({
 		style: {
 			color: menuColors?.link,
 			backgroundColor: menuColors?.background,
-			marginTop: `${margin?.[deviceType]?.top}${margin?.unit}`,
-			marginRight: `${margin?.[deviceType]?.right}${margin?.unit}`,
-			marginBottom: `${margin?.[deviceType]?.bottom}${margin?.unit}`,
-			marginLeft: `${margin?.[deviceType]?.left}${margin?.unit}`,
-			paddingTop: `${padding?.[deviceType]?.top}${padding?.unit}`,
-			paddingRight: `${padding?.[deviceType]?.right}${padding?.unit}`,
-			paddingBottom: `${padding?.[deviceType]?.bottom}${padding?.unit}`,
-			paddingLeft: `${padding?.[deviceType]?.left}${padding?.unit}`,
-			fontSize: `${fontSize?.[deviceType]}${fontSize.unit}`,
-			fontStyle: typography.fontStyle,
-			fontFamily: typography.fontFamily,
-			fontWeight: typography.fontWeight,
-			letterSpacing: typography.letterSpacing,
-			textDecoration: typography.textDecoration,
-			textTransform: typography.textTransform,
-			lineHeight: `${typography.lineHeight}px`,
-			borderStyle: menuBorder?.borderType,
-			borderTopWidth: menuBorder?.borderWidth?.[deviceType]?.top,
-			borderRightWidth: menuBorder?.borderWidth?.[deviceType]?.right,
-			borderBottomWidth: menuBorder?.borderWidth?.[deviceType]?.bottom,
-			borderLeftWidth: menuBorder?.borderWidth?.[deviceType]?.left,
-			borderRadius: `${menuBorder?.borderRadius?.[deviceType]?.top || 0}px ${menuBorder?.borderRadius?.[deviceType]?.right || 0}px ${menuBorder?.borderRadius?.[deviceType]?.bottom || 0}px ${menuBorder?.borderRadius?.[deviceType]?.left || 0}px`,
-			borderColor: menuBorder?.borderColor,
-			borderTopLeftRadius: `${menuBorder?.borderRadius?.[deviceType]?.top || 0}px`,
-			borderTopRightRadius: `${menuBorder?.borderRadius?.[deviceType]?.right || 0}px`,
-			borderBottomLeftRadius: `${menuBorder?.borderRadius?.[deviceType]?.bottom || 0}px`,
-			borderBottomRightRadius: `${menuBorder?.borderRadius?.[deviceType]?.left || 0}px`,
+			...paddingCss(padding, deviceType),
+			...marginCss(margin, deviceType),
+			...borderCss(menuBorder, deviceType),
+			...typographyCss(typography, deviceType)
 		},
 	});
 
@@ -775,10 +752,6 @@ function Navigation({
 								<PremiumBorder
 									label={__("Border")}
 									value={menuBorder}
-									borderType={menuBorder.borderType}
-									borderColor={menuBorder.borderColor}
-									borderWidth={menuBorder.borderWidth}
-									borderRadius={menuBorder.borderRadius}
 									onChange={(value) => setAttributes({ menuBorder: value })}
 								/>
 								<hr />
@@ -852,10 +825,6 @@ function Navigation({
 								<PremiumBorder
 									label={__("Border")}
 									value={overlayMenuBorder}
-									borderType={overlayMenuBorder.borderType}
-									borderColor={overlayMenuBorder.borderColor}
-									borderWidth={overlayMenuBorder.borderWidth}
-									borderRadius={overlayMenuBorder.borderRadius}
 									onChange={(value) => setAttributes({ overlayMenuBorder: value })}
 								/>
 							</PanelBody>
@@ -945,10 +914,6 @@ function Navigation({
 										<PremiumBorder
 											label={__("Border")}
 											value={submenuBorder}
-											borderType={submenuBorder.borderType}
-											borderColor={submenuBorder.borderColor}
-											borderWidth={submenuBorder.borderWidth}
-											borderRadius={submenuBorder.borderRadius}
 											onChange={(value) => setAttributes({ submenuBorder: value })}
 										/>
 									</PanelBody>
@@ -995,16 +960,7 @@ function Navigation({
 							isResponsive={isResponsive}
 							isHiddenByDefault={'always' === overlayMenu}
 							styles={isResponsiveMenuOpen ? {
-								borderTopWidth: overlayMenuBorder?.borderWidth?.[deviceType]?.top,
-								borderRightWidth: overlayMenuBorder?.borderWidth?.[deviceType]?.right,
-								borderBottomWidth: overlayMenuBorder?.borderWidth?.[deviceType]?.bottom,
-								borderLeftWidth: overlayMenuBorder?.borderWidth?.[deviceType]?.left,
-								borderTopLeftRadius: `${overlayMenuBorder?.borderRadius?.[deviceType]?.top || 0}px`,
-								borderTopRightRadius: `${overlayMenuBorder?.borderRadius?.[deviceType]?.right || 0}px`,
-								borderBottomLeftRadius: `${overlayMenuBorder?.borderRadius?.[deviceType]?.bottom || 0}px`,
-								borderBottomRightRadius: `${overlayMenuBorder?.borderRadius?.[deviceType]?.left || 0}px`,
-								borderColor: overlayMenuBorder?.borderColor,
-								borderStyle: overlayMenuBorder?.borderType
+								...borderCss(overlayMenuBorder, deviceType),
 							} : {}}
 						>
 							{isEntityAvailable && (

@@ -28,7 +28,7 @@ import PremiumTypo from "../../components/premium-typo"
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
 import RadioComponent from '../../components/radio-control';
-import { generateBlockId, generateCss } from '../../components/HelperFunction';
+import { generateBlockId, generateCss, typographyCss, paddingCss, marginCss } from '../../components/HelperFunction';
 
 function Edit({ clientId, attributes, setAttributes, context: { postType, postId }, deviceType }) {
     const [fullTitle] = useEntityProp('postType', postType, 'title', postId);
@@ -75,24 +75,11 @@ function Edit({ clientId, attributes, setAttributes, context: { postType, postId
             [`has-text-align-${textAlign}`]: textAlign
         }),
         style: {
-            marginTop: `${margin?.[deviceType]?.top}${margin?.unit}`,
-            marginRight: `${margin?.[deviceType]?.right}${margin?.unit}`,
-            marginBottom: `${margin?.[deviceType]?.bottom}${margin?.unit}`,
-            marginLeft: `${margin?.[deviceType]?.left}${margin?.unit}`,
-            paddingTop: `${padding?.[deviceType]?.top}${padding?.unit}`,
-            paddingRight: `${padding?.[deviceType]?.right}${padding?.unit}`,
-            paddingBottom: `${padding?.[deviceType]?.bottom}${padding?.unit}`,
-            paddingLeft: `${padding?.[deviceType]?.left}${padding?.unit}`,
             color: colors.text,
             backgroundColor: colors.background,
-            fontSize: `${fontSize?.[deviceType]}${fontSize?.unit}`,
-            fontFamily: typography.fontFamily,
-            fontWeight: typography.fontWeight,
-            fontStyle: typography.fontStyle,
-            letterSpacing: typography.letterSpacing,
-            textDecoration: typography.textDecoration,
-            textTransform: typography.textTransform,
-            lineHeight: `${typography.lineHeight}px`
+            ...typographyCss(typography, deviceType),
+            ...paddingCss(padding, deviceType),
+            ...marginCss(margin, deviceType)
         }
     });
 
@@ -187,11 +174,7 @@ function Edit({ clientId, attributes, setAttributes, context: { postType, postId
                 />
             </BlockControls>
             <div {...blockProps}>
-                <style
-                    dangerouslySetInnerHTML={{
-                        __html: loadStyles()
-                    }}
-                />
+                <style>{loadStyles()}</style>
                 <div className={`premium-breadcrumbs premium-breadcrumbs-${breadcrumbsStyle}`} style={{ display: breadcrumbsStyle === 'normal' ? 'flex' : '' }}>
                     {enablePrefix && <RichText
                         tagName="span"
