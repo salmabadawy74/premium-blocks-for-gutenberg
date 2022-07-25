@@ -15,7 +15,8 @@ import WebfontLoader from "../../components/typography/fontLoader";
 import MultiButtonsControl from '../../components/responsive-radio';
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
-import { generateBlockId, generateCss } from '../../components/HelperFunction';
+import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
+import { generateBlockId, generateCss, typographyCss, paddingCss, marginCss, borderCss } from '../../components/HelperFunction';
 
 const { withSelect } = wp.data
 
@@ -285,7 +286,10 @@ class edit extends Component {
             bulletIconFontSize,
             dividerWidth,
             dividerHeight,
-            titleTypography
+            titleTypography,
+            hideDesktop,
+            hideTablet,
+            hideMobile,
         } = attributes
 
         const LAYOUT = [
@@ -657,16 +661,6 @@ class edit extends Component {
 
         return [
             isSelected && (
-                <BlockControls>
-                    <AlignmentToolbar
-                        value={align}
-                        onChange={(value) => {
-                            setAttributes({ align: value })
-                        }}
-                    />
-                </BlockControls>
-            ),
-            isSelected && (
                 <InspectorControls>
                     <InspectorTabs tabs={['layout', 'style', 'advance']}>
                         <InspectorTab key={'layout'}>
@@ -713,6 +707,12 @@ class edit extends Component {
                                     onChange={newValue => setAttributes({ layoutPos: newValue })}
                                 />
                                 <hr />
+                                <MultiButtonsControl
+                                    choices={[{ value: 'left', label: __('Left'), icon: Icons.alignLeft }, { value: 'center', label: __('Center'), icon: Icons.alignCenter }, { value: 'right', label: __('Right'), icon: Icons.alignRight }]}
+                                    value={align}
+                                    onChange={(align) => setAttributes({ align: align })}
+                                    label={__("Align", "premium-blocks-for-gutenberg")}
+                                    showIcons={true} />
                                 <div>
                                     <label>{__('Bullet Alignment')}</label>
                                     {iconPosition !== 'top' ? <div className="bullet-list-button-list">
@@ -1081,12 +1081,37 @@ class edit extends Component {
                                 </PanelBody>
                             }
                         </InspectorTab>
-                        <InspectorTab key={'advance'}></InspectorTab>
+                        <InspectorTab key={"advance"}>
+                            <PremiumResponsiveTabs
+                                Desktop={hideDesktop}
+                                Tablet={hideTablet}
+                                Mobile={hideMobile}
+                                onChangeDesktop={(value) =>
+                                    setAttributes({
+                                        hideDesktop: value,
+                                    })
+                                }
+                                onChangeTablet={(value) =>
+                                    setAttributes({
+                                        hideTablet: value,
+                                    })
+                                }
+                                onChangeMobile={(value) =>
+                                    setAttributes({
+                                        hideMobile: value,
+                                    })
+                                }
+                            />
+                        </InspectorTab>
                     </InspectorTabs>
-                </InspectorControls >
+                </InspectorControls>
             ),
-            <div className={classnames(className, blockId)}
-                style={{ textAlign: align }}>
+            <div className={classnames(className, blockId, {
+                " premium-desktop-hidden": hideDesktop,
+                " premium-tablet-hidden": hideTablet,
+                " premium-mobile-hidden": hideMobile,
+            })}
+                style={{ textAlign: align?.[this.props.deviceType] }}>
                 <style
                     dangerouslySetInnerHTML={{
                         __html: loadStyles()
@@ -1094,8 +1119,8 @@ class edit extends Component {
                 />
                 <ul className={`premium-bullet-list-${layoutPos} premium-bullet-list`}
                     style={{
-                        textAlign: align,
-                        justifyContent: align == "right" ? "flex-end" : align,
+                        textAlign: align?.[currentDevice],
+                        justifyContent: align?.[currentDevice] == "right" ? "flex-end" : align?.[currentDevice],
                     }}>
                     {
                         repeaterBulletList.map((icon, index) => {
@@ -1111,21 +1136,9 @@ class edit extends Component {
                                                     fontSize: `${BulletIconSize}${bulletIconFontSize.unit}`,
                                                     color: bulletIconStyles[0].bulletIconColor,
                                                     backgroundColor: bulletIconStyles[0].bulletIconBackgroundColor,
-                                                    paddingTop: BulletIconPaddingTop + bulletIconpadding.unit,
-                                                    paddingBottom: BulletIconPaddingBottom + bulletIconpadding.unit,
-                                                    paddingLeft: BulletIconPaddingLeft + bulletIconpadding.unit,
-                                                    paddingRight: BulletIconPaddingRight + bulletIconpadding.unit,
-                                                    borderStyle: bulletIconBorder && bulletIconBorder.borderType,
-                                                    borderTopWidth: bulletIconBorder && bulletIconBorder.borderWidth?.[currentDevice]?.top,
-                                                    borderRightWidth: bulletIconBorder && bulletIconBorder.borderWidth?.[currentDevice]?.right,
-                                                    borderBottomWidth: bulletIconBorder && bulletIconBorder.borderWidth?.[currentDevice]?.bottom,
-                                                    borderLeftWidth: bulletIconBorder && bulletIconBorder.borderWidth?.[currentDevice]?.left,
-                                                    borderColor: bulletIconBorder && bulletIconBorder.borderColor,
-                                                    borderTopLeftRadius: `${bulletIconBorder && bulletIconBorder.borderRadius?.[currentDevice]?.top || 0}px`,
-                                                    borderTopRightRadius: `${bulletIconBorder && bulletIconBorder.borderRadius?.[currentDevice]?.right || 0}px`,
-                                                    borderBottomLeftRadius: `${bulletIconBorder && bulletIconBorder.borderRadius?.[currentDevice]?.bottom || 0}px`,
-                                                    borderBottomRightRadius: `${bulletIconBorder && bulletIconBorder.borderRadius?.[currentDevice]?.left || 0}px`,
-                                                    verticalAlign: bulletAlign?.[currentDevice] == 'flex-start' ? 'top' : bulletAlign?.[currentDevice] == 'flex-end' ? 'bottom' : 'middle'
+                                                    verticalAlign: bulletAlign?.[currentDevice] == 'flex-start' ? 'top' : bulletAlign?.[currentDevice] == 'flex-end' ? 'bottom' : 'middle',
+                                                    ...borderCss(bulletIconBorder, currentDevice),
+                                                    ...paddingCss(bulletIconpadding, currentDevice)
                                                 }}
                                             />
                                         </span>
@@ -1140,21 +1153,9 @@ class edit extends Component {
                                                 overflow: 'hidden',
                                                 width: `${BulletIconSize}${bulletIconFontSize.unit}`,
                                                 height: `${BulletIconSize}${bulletIconFontSize.unit}`,
-                                                paddingTop: BulletIconPaddingTop + bulletIconpadding.unit,
-                                                paddingBottom: BulletIconPaddingBottom + bulletIconpadding.unit,
-                                                paddingLeft: BulletIconPaddingLeft + bulletIconpadding.unit,
-                                                paddingRight: BulletIconPaddingRight + bulletIconpadding.unit,
-                                                borderStyle: bulletIconBorder && bulletIconBorder.borderType,
-                                                borderTopWidth: bulletIconBorder && bulletIconBorder.borderWidth?.[currentDevice]?.top,
-                                                borderRightWidth: bulletIconBorder && bulletIconBorder.borderWidth?.[currentDevice]?.right,
-                                                borderBottomWidth: bulletIconBorder && bulletIconBorder.borderWidth?.[currentDevice]?.bottom,
-                                                borderLeftWidth: bulletIconBorder && bulletIconBorder.borderWidth?.[currentDevice]?.left,
-                                                borderColor: bulletIconBorder && bulletIconBorder.borderColor,
-                                                borderTopLeftRadius: `${bulletIconBorder && bulletIconBorder.borderRadius?.[currentDevice]?.top || 0}px`,
-                                                borderTopRightRadius: `${bulletIconBorder && bulletIconBorder.borderRadius?.[currentDevice]?.right || 0}px`,
-                                                borderBottomLeftRadius: `${bulletIconBorder && bulletIconBorder.borderRadius?.[currentDevice]?.bottom || 0}px`,
-                                                borderBottomRightRadius: `${bulletIconBorder && bulletIconBorder.borderRadius?.[currentDevice]?.left || 0}px`,
-                                                verticalAlign: bulletAlign?.[currentDevice] == 'flex-start' ? 'top' : bulletAlign?.[currentDevice] == 'flex-end' ? 'bottom' : 'middle'
+                                                verticalAlign: bulletAlign?.[currentDevice] == 'flex-start' ? 'top' : bulletAlign?.[currentDevice] == 'flex-end' ? 'bottom' : 'middle',
+                                                ...borderCss(bulletIconBorder, currentDevice),
+                                                ...paddingCss(bulletIconpadding, currentDevice)
                                             }}
                                         />
                                     }
@@ -1174,51 +1175,30 @@ class edit extends Component {
                                         target={target}
                                         rel="noopener noreferrer"
                                         style={{
-                                            textAlign: align,
+                                            textAlign: align?.[currentDevice],
                                             overflow: 'hidden',
-                                            justifyContent: align == "right" ? "flex-end" : align,
+                                            justifyContent: align?.[currentDevice] == "right" ? "flex-end" : align?.[currentDevice],
                                             backgroundColor: generalStyles[0].generalBackgroundColor,
-                                            borderStyle: generalBorder && generalBorder?.borderType,
-                                            borderTopWidth: generalBorder && generalBorder?.borderWidth?.[currentDevice]?.top,
-                                            borderRightWidth: generalBorder && generalBorder?.borderWidth?.[currentDevice]?.right,
-                                            borderBottomWidth: generalBorder && generalBorder?.borderWidth?.[currentDevice]?.bottom,
-                                            borderLeftWidth: generalBorder && generalBorder?.borderWidth?.[currentDevice]?.left,
-                                            borderColor: generalBorder && generalBorder?.borderColor,
-                                            borderTopLeftRadius: `${generalBorder && generalBorder?.borderRadius?.[currentDevice]?.top || 0}px`,
-                                            borderTopRightRadius: `${generalBorder && generalBorder?.borderRadius?.[currentDevice]?.right || 0}px`,
-                                            borderBottomLeftRadius: `${generalBorder && generalBorder?.borderRadius?.[currentDevice]?.bottom || 0}px`,
-                                            borderBottomRightRadius: `${generalBorder && generalBorder?.borderRadius?.[currentDevice]?.left || 0}px`,
-                                            paddingTop: GeneralPaddingTop + generalpadding.unit,
-                                            paddingBottom: GeneralPaddingBottom + generalpadding.unit,
-                                            paddingLeft: GeneralPaddingLeft + generalpadding.unit,
-                                            paddingRight: GeneralPaddingRight + generalpadding.unit,
-                                            marginTop: GeneralMarginTop + generalmargin.unit,
-                                            marginBottom: GeneralMarginBottom + generalmargin.unit,
-                                            marginLeft: GeneralMarginLeft + generalmargin.unit,
-                                            marginRight: GeneralMarginRight + generalmargin.unit,
                                             boxShadow: `${boxShadow.horizontal}px ${boxShadow.vertical}px ${boxShadow.blur}px ${boxShadow.color} ${boxShadow.position}`,
+                                            ...marginCss(generalmargin, currentDevice),
+                                            ...paddingCss(generalpadding, currentDevice),
+                                            ...borderCss(generalBorder, currentDevice)
                                         }}
                                     >
                                         <div className={`premium-bullet-list__content-wrap premium-bullet-list__content-wrap-${bulletAlign?.[currentDevice]}`} style={{
-                                            justifyContent: align == "right" ? align : align,
+                                            justifyContent: align?.[currentDevice] == "right" ? align?.[currentDevice] : align?.[currentDevice],
                                             display: iconPosition == "before" ? "flex" : "inline-flex",
-                                            flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? 'row-reverse' : "",
-                                            marginTop: TitleMarginTop + titlemargin.unit,
-                                            marginBottom: TitleMarginBottom + titlemargin.unit,
-                                            marginLeft: TitleMarginLeft + titlemargin.unit,
-                                            marginRight: TitleMarginRight + titlemargin.unit,
+                                            flexDirection: iconPosition == "top" ? align?.[currentDevice] == "right" ? "column" : "column" : iconPosition == "after" ? 'row-reverse' : "",
+                                            ...marginCss(titlemargin, currentDevice),
                                         }}>
                                             {icon.showBulletIcon && <span className={`premium-bullet-list__icon-wrap`}
                                                 style={{
                                                     // overflow: "hidden",
                                                     alignSelf: bulletAlign?.[currentDevice] == 'left' ? 'flex-start' : bulletAlign?.[currentDevice] == 'right' ? 'flex-end' : 'center',
-                                                    marginTop: BulletIconMarginTop + bulletIconmargin.unit,
-                                                    marginBottom: BulletIconMarginBottom + bulletIconmargin.unit,
-                                                    marginLeft: BulletIconMarginLeft + bulletIconmargin.unit,
-                                                    marginRight: BulletIconMarginRight + bulletIconmargin.unit,
                                                     textAlign: bulletAlign?.[currentDevice],
                                                     justifyContent: bulletAlign?.[currentDevice],
                                                     alignItems: bulletAlign?.[currentDevice] == 'left' ? 'flex-start' : bulletAlign?.[currentDevice] == 'right' ? 'flex-end' : 'center',
+                                                    ...marginCss(bulletIconmargin, currentDevice),
                                                 }}
                                             >{image_icon_html}</span>}
                                             <div
@@ -1238,15 +1218,8 @@ class edit extends Component {
                                                     multiline={false}
                                                     style={{
                                                         color: titleStyles[0].titleColor,
-                                                        fontSize: `${TitleSize}${titleTypography?.fontSize.unit}`,
-                                                        fontStyle: titleTypography?.fontStyle,
-                                                        fontFamily: titleTypography?.fontFamily,
-                                                        fontWeight: titleTypography?.fontWeight,
-                                                        letterSpacing: titleTypography?.letterSpacing,
-                                                        textDecoration: titleTypography?.textDecoration,
-                                                        textTransform: titleTypography?.textTransform,
-                                                        lineHeight: `${titleTypography?.lineHeight}px`,
-                                                        textShadow: `${titlesTextShadow.titleshadowHorizontal}px ${titlesTextShadow.titleshadowVertical}px ${titlesTextShadow.titleshadowBlur}px ${titlesTextShadow.titleshadowColor}`
+                                                        textShadow: `${titlesTextShadow.titleshadowHorizontal}px ${titlesTextShadow.titleshadowVertical}px ${titlesTextShadow.titleshadowBlur}px ${titlesTextShadow.titleshadowColor}`,
+                                                        ...typographyCss(titleTypography, currentDevice)
                                                     }}
                                                 />
                                             </div>

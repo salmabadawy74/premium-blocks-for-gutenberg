@@ -4,8 +4,12 @@ const attributes = {
         type: "string"
     },
     align: {
-        type: "string",
-        default: "left"
+        type: "object",
+        default: {
+            Desktop: 'left',
+            Tablet: 'left',
+            Mobile: 'left',
+        }
     },
     repeaterBulletList: {
         type: "array",
@@ -369,20 +373,31 @@ const attributes = {
     titleTypography: {
         type: "object",
         default: {
-            "fontWeight": '',
-            'fontStyle': '',
-            'textTransform': '',
-            'letterSpacing': '',
-            'fontFamily': '',
-            'lineHeight': '',
-            'textDecoration': '',
-            'fontSize': {
-                'Desktop': '',
-                "Tablet": '',
-                "Mobile": '',
-                "unit": 'px'
-            }
-        }
+            fontWeight: "400",
+            fontStyle: "",
+
+            letterSpacing: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
+            fontFamily: "Default",
+            lineHeight: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
+            textDecoration: "",
+            textTransform: "",
+            fontSize: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
+        },
     },
     titlesTextShadow: {
         type: "object",
@@ -439,6 +454,15 @@ const attributes = {
             'Mobile': '',
             'unit': 'px'
         }
+    },
+    hideDesktop: {
+        type: "boolean",
+    },
+    hideTablet: {
+        type: "boolean",
+    },
+    hideMobile: {
+        type: "boolean",
     },
 }
 export default attributes

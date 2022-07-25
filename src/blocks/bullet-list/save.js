@@ -16,7 +16,6 @@ export default function save(props) {
         blockId = '',
         layoutPos,
         iconPosition,
-        align,
         repeaterBulletList,
         bulletIconStyles,
         bulletIconBorder,
@@ -30,7 +29,10 @@ export default function save(props) {
         titlesTextShadow,
         boxShadow,
         hoverBoxShadow,
-        titleTypography
+        titleTypography,
+        hideDesktop,
+        hideTablet,
+        hideMobile,
     } = attributes
 
     const loadStyles = () => {
@@ -64,21 +66,19 @@ export default function save(props) {
     return (
         <div className={classnames(
             className,
-            blockId
-        )}
-            style={{
-                textAlign: align,
-            }}>
+            blockId,
+            {
+                " premium-desktop-hidden": hideDesktop,
+                " premium-tablet-hidden": hideTablet,
+                " premium-mobile-hidden": hideMobile,
+            }
+        )}>
             <style
                 dangerouslySetInnerHTML={{
                     __html: loadStyles()
                 }}
             />
-            <ul className={`premium-bullet-list-${layoutPos} premium-bullet-list`}
-                style={filterJsCss({
-                    textAlign: align,
-                    justifyContent: align == "right" ? "flex-end" : align
-                })}>
+            <ul className={`premium-bullet-list-${layoutPos} premium-bullet-list`}>
                 {
                     repeaterBulletList.map((icon, index) => {
 
@@ -131,9 +131,7 @@ export default function save(props) {
                                         )}
                                         key={index}
                                         style={filterJsCss({
-                                            textAlign: align,
                                             overflow: 'hidden',
-                                            justifyContent: align == "right" ? "flex-end" : align,
                                             backgroundColor: generalStyles?.[0]?.generalBackgroundColor,
                                             borderStyle: generalBorder?.borderType,
                                             borderColor: generalBorder?.borderColor,
@@ -141,9 +139,7 @@ export default function save(props) {
                                         })}
                                     >
                                         <div className={`premium-bullet-list__content-wrap`} style={filterJsCss({
-                                            justifyContent: align == "right" ? align : align,
                                             display: iconPosition == "before" ? "flex" : "inline-flex",
-                                            flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? 'row-reverse' : "",
                                         })}>
                                             <span className={`premium-bullet-list__icon-wrap`}
                                                 style={filterJsCss({
@@ -187,8 +183,6 @@ export default function save(props) {
                                         style={filterJsCss({
                                             listStyleType: 'none',
                                             overflow: 'hidden',
-                                            textAlign: align,
-                                            justifyContent: align == "right" ? "flex-end" : align,
                                             backgroundColor: generalStyles?.[0]?.generalBackgroundColor,
                                             borderStyle: generalBorder?.borderType,
                                             borderColor: generalBorder?.borderColor,
@@ -200,11 +194,7 @@ export default function save(props) {
                                             target={target}
                                             rel="noopener noreferrer"
                                         >
-                                            <div className={`premium-bullet-list__content-wrap`} style={filterJsCss({
-                                                justifyContent: align == "right" ? align : align,
-                                                display: iconPosition == "before" ? "flex" : "inline-flex",
-                                                flexDirection: iconPosition == "top" ? align == "right" ? "column" : "column" : iconPosition == "after" ? 'row-reverse' : "",
-                                            })}>
+                                            <div className={`premium-bullet-list__content-wrap`}>
                                                 <span className={`premium-bullet-list__icon-wrap`}
                                                     style={filterJsCss({
                                                         overflow: repeaterBulletList?.[index]?.image_icon == 'image' ? "hidden" : "",
