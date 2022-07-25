@@ -201,8 +201,7 @@ class Edit extends Component {
             nameColor,
             titleColor,
             descColor,
-            imageFilter,
-            nameStyles
+            imageFilter
         } = this.props.attributes;
 
         const HOVER = [
@@ -283,91 +282,91 @@ class Edit extends Component {
 
         const iconsList = [
             {
-                value: "fab fa-facebook",
+                value: Icons.facebook,
                 label: __("facebook", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fab fa-twitter",
+                value: Icons.twitter,
                 label: __("twitter", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fab fa-instagram",
+                value: Icons.instagram,
                 label: __("instagram", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fab fa-youtube",
+                value: Icons.youtube,
                 label: __("youtube", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fab fa-linkedin",
+                value: Icons.linkedin,
                 label: __("linkedin", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fab fa-flickr",
+                value: Icons.flickr,
                 label: __("flickr", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fab fa-github",
+                value: Icons.github,
                 label: __("github", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fab fa-google-plus",
+                value: Icons.googlePlus,
                 label: __("google-plus", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fab fa-pinterest",
+                value: Icons.pinterest,
                 label: __("pinterest", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fab fa-reddit",
+                value: Icons.reddit,
                 label: __("reddit", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fab fa-skype",
+                value: Icons.skype,
                 label: __("skype", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fab fa-stack-overflow",
+                value: Icons.stack_overflow,
                 label: __("stack-overflow", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fab fa-whatsapp",
+                value: Icons.whatsapp,
                 label: __("whatsapp", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fab fa-vimeo",
+                value: Icons.vimeo,
                 label: __("vimeo", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fab fa-tumblr",
+                value: Icons.tumblr,
                 label: __("tumblr", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fab fa-dribbble",
+                value: Icons.dribbble,
                 label: __("dribbble", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fab fa-quora",
+                value: Icons.quora,
                 label: __("quora", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fab fa-foursquare",
+                value: Icons.foursquare,
                 label: __("foursquare", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fab fa-wordpress",
+                value: Icons.wordpress,
                 label: __("wordpress", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fab fa-stumbleupon",
+                value: Icons.stumbleupon,
                 label: __("stumbleupon", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fab fa-yahoo",
+                value: Icons.yahoo,
                 label: __("yahoo", "premium-blocks-for-gutenberg"),
             },
             {
-                value: "fab fa-soundcloud",
+                value: Icons.soundcloud,
                 label: __("soundcloud", "premium-blocks-for-gutenberg"),
             },
         ];
@@ -423,15 +422,20 @@ class Edit extends Component {
             styles[` .${blockId} .premium-person:hover`] = {
                 'border-color': `${borderHoverColor} !important`
             };
-            styles[` .${blockId} .premium-person__social-List li:hover i`] = {
-                'color': `${socialIconStyles[0].socialIconHoverColor} !important`,
+            styles[` .${blockId} .premium-person__social-List li:hover .premium-social-media-icon`] = {
+                'fill': `${socialIconStyles[0].socialIconHoverColor} !important`,
                 '-webkit-transition': `all .2s ease-in-out !important`,
                 'transition': `all .2s ease-in-out !important`
             };
             styles[` .${blockId} .premium-person__img_wrap img`] = {
-                'height': `${imgHeight[this.props.deviceType]} ${imgHeight.unit} !important`,
-                'width': `${imgWidth[this.props.deviceType]} ${imgWidth.unit} !important`,
+                'height': `${imgHeight[this.props.deviceType]}${imgHeight.unit} !important`,
+                'width': `${imgWidth[this.props.deviceType]}${imgWidth.unit} !important`,
                 'filter': `brightness( ${imageFilter.bright}% ) contrast( ${imageFilter.contrast}% ) saturate( ${imageFilter.saturation}% ) blur( ${imageFilter.blur}px ) hue-rotate( ${imageFilter.hue}deg ) !important`
+            };
+            styles[` .${blockId} .premium-social-media-icon`] = {
+                'fill': `${socialIconStyles[0].socialIconColor} !important`,
+                'height': `${socialIconSize[this.props.deviceType]}${socialIconSize.unit} !important`,
+                'width': `${socialIconSize[this.props.deviceType]}${socialIconSize.unit} !important`,
             };
             return generateCss(styles);
         }
@@ -441,18 +445,6 @@ class Edit extends Component {
             if (["div", "button", "input"].indexOf(e.target.tagName.toLowerCase()) !== -1) {
                 return true; // Return true to cancel sorting
             }
-        };
-
-        const saveNameStyles = (value) => {
-            const newUpdate = nameStyles.map((item, index) => {
-                if (0 === index) {
-                    item = { ...item, ...value };
-                }
-                return item;
-            });
-            setAttributes({
-                nameStyles: newUpdate,
-            });
         };
 
         const saveSocialIconStyles = (value) => {
@@ -527,16 +519,16 @@ class Edit extends Component {
                                     ...borderCss(socialIconBorder, this.props.deviceType),
                                     ...paddingCss(socialIconPadding, this.props.deviceType),
                                     ...marginCss(socialIconMargin, this.props.deviceType),
-                                    background: socialIconStyles[0].socialIconBackgroundColor
+                                    background: socialIconStyles[0].socialIconBackgroundColor,
+                                    color: socialIconStyles[0].socialIconColor,
+                                    fontSize: (socialIconSize[this.props.deviceType] || 20) + socialIconSize.unit
                                 }}
                             >
-                                <i
-                                    className={`premium-person__socialIcon ${value.label == "youtube" ? "fab fa-youtube" : `fab fa-${value.label}`} premium-person__${socialIconStyles[0].socialIconHoverColor}`}
-                                    style={{
-                                        color: socialIconStyles[0].socialIconColor,
-                                        fontSize: (socialIconSize[this.props.deviceType] || 20) + socialIconSize.unit
-                                    }}
-                                />
+                                {(iconsList || []).map((list) => {
+                                    if (list.label == value.label) {
+                                        return list.value
+                                    }
+                                })}
                             </a>
                         </li>
                     ))}
@@ -573,8 +565,8 @@ class Edit extends Component {
                                         {value.socialIcon && socialIconfn(value.items)}
                                     </div>
                                 ) : (
-                                    ""
-                                )}
+                                        ""
+                                    )}
                             </div>
                             <div
                                 className={`premium-person__info`}
@@ -638,8 +630,8 @@ class Edit extends Component {
                                         {value.socialIcon && socialIconfn(value.items)}
                                     </div>
                                 ) : (
-                                    ""
-                                )}
+                                        ""
+                                    )}
                             </div>
                         </div>
                     ))}
@@ -728,6 +720,10 @@ class Edit extends Component {
             setAttributes((multiPersonContent[i] = arrayItem[0]));
         };
 
+        const renderSVG = svg => (
+            svg
+        );
+
         const MultiPersonSetting = (index) => {
             return (
                 <PanelBody
@@ -756,16 +752,17 @@ class Edit extends Component {
                     {multiPersonContent[index].socialIcon && (
                         <div className="premium-repeater-rows">
                             <label className="premium-repeater-label">
-                                {__("Social Media")}
+                                {__("Social Media", "premium-block-for-gutenberg")}
                             </label>
                             <FontIconPicker
                                 icons={iconsList.map((i) => i.value)}
+                                renderFunc={renderSVG}
                                 onChange={(value) => addSocialIcon(value, index)}
                                 isMulti={false}
                                 appendTo="body"
                                 closeOnSelect={false}
                                 iconsPerPage={25}
-                                noSelectedPlaceholder={__("Select Icon")}
+                                noSelectedPlaceholder={__("Select Icon", "premium-block-for-gutenberg")}
                             />
                             <SortableList
                                 items={multiPersonContent[index].items}
@@ -810,8 +807,8 @@ class Edit extends Component {
                                         options={ROWS}
                                     />
                                 ) : (
-                                    ""
-                                )}
+                                        ""
+                                    )}
                                 <SelectControl
                                     label={__("Style", "premium-block-for-gutenberg")}
                                     value={effectPersonStyle}
@@ -821,12 +818,12 @@ class Edit extends Component {
                                 <RadioComponent
                                     label={__("Name Tag", "premium-blocks-for-gutenberg")}
                                     choices={[
-                                        { value: "h1", label: __("H1") },
-                                        { value: "h2", label: __("H2") },
-                                        { value: "h3", label: __("H3") },
-                                        { value: "h4", label: __("H4") },
-                                        { value: "h5", label: __("H5") },
-                                        { value: "h6", label: __("H6") },
+                                        { value: "h1", label: __("H1", "premium-block-for-gutenberg") },
+                                        { value: "h2", label: __("H2", "premium-block-for-gutenberg") },
+                                        { value: "h3", label: __("H3", "premium-block-for-gutenberg") },
+                                        { value: "h4", label: __("H4", "premium-block-for-gutenberg") },
+                                        { value: "h5", label: __("H5", "premium-block-for-gutenberg") },
+                                        { value: "h6", label: __("H6", "premium-block-for-gutenberg") },
                                     ]}
                                     value={nameTag}
                                     onChange={(newValue) => setAttributes({ nameTag: newValue })}
@@ -834,12 +831,12 @@ class Edit extends Component {
                                 <RadioComponent
                                     label={__("Title Tag", "premium-blocks-for-gutenberg")}
                                     choices={[
-                                        { value: "h1", label: __("H1") },
-                                        { value: "h2", label: __("H2") },
-                                        { value: "h3", label: __("H3") },
-                                        { value: "h4", label: __("H4") },
-                                        { value: "h5", label: __("H5") },
-                                        { value: "h6", label: __("H6") },
+                                        { value: "h1", label: __("H1", "premium-block-for-gutenberg") },
+                                        { value: "h2", label: __("H2", "premium-block-for-gutenberg") },
+                                        { value: "h3", label: __("H3", "premium-block-for-gutenberg") },
+                                        { value: "h4", label: __("H4", "premium-block-for-gutenberg") },
+                                        { value: "h5", label: __("H5", "premium-block-for-gutenberg") },
+                                        { value: "h6", label: __("H6", "premium-block-for-gutenberg") },
                                     ]}
                                     value={titleTag}
                                     onChange={(newValue) => setAttributes({ titleTag: newValue })}
@@ -847,9 +844,9 @@ class Edit extends Component {
                                 <ResponsiveRadioControl
                                     label={__("Alignment", "premium-blocks-for-gutenberg")}
                                     choices={[
-                                        { value: "left", label: __("Left"), icon: Icons.alignLeft },
-                                        { value: "center", label: __("Center"), icon: Icons.alignCenter },
-                                        { value: "right", label: __("Right"), icon: Icons.alignRight },
+                                        { value: "left", label: __("Left", "premium-block-for-gutenberg"), icon: Icons.alignLeft },
+                                        { value: "center", label: __("Center", "premium-block-for-gutenberg"), icon: Icons.alignCenter },
+                                        { value: "right", label: __("Right", "premium-block-for-gutenberg"), icon: Icons.alignRight },
                                     ]}
                                     value={align}
                                     onChange={(newValue) => setAttributes({ align: newValue })}
@@ -1017,7 +1014,7 @@ class Edit extends Component {
                                         defaultValue={20}
                                     />
                                     <InsideTabs>
-                                        <InsideTab tabTitle={__("Normal")}>
+                                        <InsideTab tabTitle={__("Normal", "premium-block-for-gutenberg")}>
                                             <Fragment>
                                                 <AdvancedPopColorControl
                                                     label={__("Social Icon Color", "premium-block-for-gutenberg")}
@@ -1033,7 +1030,7 @@ class Edit extends Component {
                                                 />
                                             </Fragment>
                                         </InsideTab>
-                                        <InsideTab tabTitle={__("Hover")}>
+                                        <InsideTab tabTitle={__("Hover", "premium-block-for-gutenberg")}>
                                             <Fragment>
                                                 <AdvancedPopColorControl
                                                     label={__("Social Icon Hover Color", "premium-block-for-gutenberg")}
@@ -1095,8 +1092,8 @@ class Edit extends Component {
                                         min={15}
                                     />
                                 ) : (
-                                    ""
-                                )}
+                                        ""
+                                    )}
                                 <SpacingControl
                                     label={__("Padding", "premium-blocks-for-gutenberg")}
                                     value={contentPadding}

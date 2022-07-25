@@ -8608,9 +8608,9 @@ class PBG_Blocks_Helper {
 		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
 
 		// style for container
-		if ( isset( $attr['personAlign'] ) ) {
+		if ( isset( $attr['align'] ) ) {
 			$css->set_selector( '.' . $unique_id );
-			$css->add_property( 'text-align', ( $attr['personAlign']['Desktop'] . '!important' ) );
+			$css->add_property( 'text-align', ( $attr['align']['Desktop'] . '!important' ) );
 		}
 
 		// style for Content
@@ -8671,8 +8671,9 @@ class PBG_Blocks_Helper {
 
 		// Style for Social Icon Effect2.
 		if ( isset( $attr['socialIconSize']['Desktop'] ) ) {
-			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
-			$css->add_property( 'font-size', ( $attr['socialIconSize']['Desktop'] . ( isset( $attr['socialIconSize']['unit'] ) ? $attr['socialIconSize']['unit'] : 'px' ) . '!important' ) );
+			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' . ' > .premium-social-media-icon' );
+			$css->add_property( 'width', ( $attr['socialIconSize']['Desktop'] . ( isset( $attr['socialIconSize']['unit'] ) ? $attr['socialIconSize']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'height', ( $attr['socialIconSize']['Desktop'] . ( isset( $attr['socialIconSize']['unit'] ) ? $attr['socialIconSize']['unit'] : 'px' ) . '!important' ) );
 		}
 		if ( isset( $attr['socialIconPadding'] ) ) {
 			$socialIcon_padding = $attr['socialIconPadding'];
@@ -8697,8 +8698,9 @@ class PBG_Blocks_Helper {
 
 		// Style for Social Icon Effect1.
 		if ( isset( $attr['socialIconSize']['Desktop'] ) ) {
-			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
-			$css->add_property( 'font-size', ( $attr['socialIconSize']['Desktop'] . ( isset( $attr['socialIconSize']['unit'] ) ? $attr['socialIconSize']['unit'] : 'px' ) . '!important' ) );
+			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' . ' > .premium-social-media-icon' );
+			$css->add_property( 'width', ( $attr['socialIconSize']['Desktop'] . ( isset( $attr['socialIconSize']['unit'] ) ? $attr['socialIconSize']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'height', ( $attr['socialIconSize']['Desktop'] . ( isset( $attr['socialIconSize']['unit'] ) ? $attr['socialIconSize']['unit'] : 'px' ) . '!important' ) );
 		}
 		if ( isset( $attr['socialIconPadding'] ) ) {
 			$socialIcon_padding = $attr['socialIconPadding'];
@@ -8724,9 +8726,9 @@ class PBG_Blocks_Helper {
 		$css->start_media_query( $media_query['tablet'] );
 
 		// style for container
-		if ( isset( $attr['personAlign'] ) ) {
+		if ( isset( $attr['align'] ) ) {
 			$css->set_selector( '.' . $unique_id );
-			$css->add_property( 'text-align', ( $attr['personAlign']['Tablet'] . '!important' ) );
+			$css->add_property( 'text-align', ( $attr['align']['Tablet'] . '!important' ) );
 		}
 
 		// style for Content
@@ -8786,8 +8788,9 @@ class PBG_Blocks_Helper {
 
 		// Style for Social Icon Effect2.
 		if ( isset( $attr['socialIconSize']['Tablet'] ) ) {
-			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
-			$css->add_property( 'font-size', ( $attr['socialIconSize']['Tablet'] . ( isset( $attr['socialIconSize']['unit'] ) ? $attr['socialIconSize']['unit'] : 'px' ) . '!important' ) );
+			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' . ' > .premium-social-media-icon' );
+			$css->add_property( 'width', ( $attr['socialIconSize']['Tablet'] . ( isset( $attr['socialIconSize']['unit'] ) ? $attr['socialIconSize']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'height', ( $attr['socialIconSize']['Tablet'] . ( isset( $attr['socialIconSize']['unit'] ) ? $attr['socialIconSize']['unit'] : 'px' ) . '!important' ) );
 		}
 		if ( isset( $attr['socialIconPadding'] ) ) {
 			$socialIcon_padding = $attr['socialIconPadding'];
@@ -8812,8 +8815,9 @@ class PBG_Blocks_Helper {
 
 		// Style for Social Icon Effect1.
 		if ( isset( $attr['socialIconSize']['Tablet'] ) ) {
-			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
-			$css->add_property( 'font-size', ( $attr['socialIconSize']['Tablet'] . ( isset( $attr['socialIconSize']['unit'] ) ? $attr['socialIconSize']['unit'] : 'px' ) . '!important' ) );
+			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' . ' > .premium-social-media-icon' );
+			$css->add_property( 'width', ( $attr['socialIconSize']['Tablet'] . ( isset( $attr['socialIconSize']['unit'] ) ? $attr['socialIconSize']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'height', ( $attr['socialIconSize']['Tablet'] . ( isset( $attr['socialIconSize']['unit'] ) ? $attr['socialIconSize']['unit'] : 'px' ) . '!important' ) );
 		}
 		if ( isset( $attr['socialIconPadding'] ) ) {
 			$socialIcon_padding = $attr['socialIconPadding'];
@@ -8841,9 +8845,9 @@ class PBG_Blocks_Helper {
 		$css->start_media_query( $media_query['mobile'] );
 
 		// style for container
-		if ( isset( $attr['personAlign'] ) ) {
+		if ( isset( $attr['align'] ) ) {
 			$css->set_selector( '.' . $unique_id );
-			$css->add_property( 'text-align', ( $attr['personAlign']['Mobile'] . '!important' ) );
+			$css->add_property( 'text-align', ( $attr['align']['Mobile'] . '!important' ) );
 		}
 
 		// style for Content
@@ -8903,8 +8907,9 @@ class PBG_Blocks_Helper {
 
 		// Style for Social Icon Effect2.
 		if ( isset( $attr['socialIconSize']['Mobile'] ) ) {
-			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' );
-			$css->add_property( 'font-size', ( $attr['socialIconSize']['Mobile'] . ( isset( $attr['socialIconSize']['unit'] ) ? $attr['socialIconSize']['unit'] : 'px' ) . '!important' ) );
+			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' . ' > .premium-social-media-icon' );
+			$css->add_property( 'width', ( $attr['socialIconSize']['Mobile'] . ( isset( $attr['socialIconSize']['unit'] ) ? $attr['socialIconSize']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'height', ( $attr['socialIconSize']['Mobile'] . ( isset( $attr['socialIconSize']['unit'] ) ? $attr['socialIconSize']['unit'] : 'px' ) . '!important' ) );
 		}
 		if ( isset( $attr['socialIconPadding'] ) ) {
 			$socialIcon_padding = $attr['socialIconPadding'];
@@ -8929,8 +8934,9 @@ class PBG_Blocks_Helper {
 
 		// Style for Social Icon Effect1.
 		if ( isset( $attr['socialIconSize']['Mobile'] ) ) {
-			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' );
-			$css->add_property( 'font-size', ( $attr['socialIconSize']['Mobile'] . ( isset( $attr['socialIconSize']['unit'] ) ? $attr['socialIconSize']['unit'] : 'px' ) . '!important' ) );
+			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' . ' > .premium-social-media-icon' );
+			$css->add_property( 'width', ( $attr['socialIconSize']['Mobile'] . ( isset( $attr['socialIconSize']['unit'] ) ? $attr['socialIconSize']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'height', ( $attr['socialIconSize']['Mobile'] . ( isset( $attr['socialIconSize']['unit'] ) ? $attr['socialIconSize']['unit'] : 'px' ) . '!important' ) );
 		}
 		if ( isset( $attr['socialIconPadding'] ) ) {
 			$socialIcon_padding = $attr['socialIconPadding'];

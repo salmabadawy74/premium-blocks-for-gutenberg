@@ -1,6 +1,8 @@
 import classnames from 'classnames'
 import DefaultImage from "../../components/default-image";
+import Icons from "../../components/icons";
 import { filterJsCss, generateCss } from '../../components/HelperFunction'
+const { __ } = wp.i18n;
 
 const {
     RichText
@@ -12,12 +14,10 @@ const save = props => {
 
     const {
         blockId,
-        align,
         nameV,
         socialIconStyles,
         titleV,
         descV,
-        socialIconHoverColor,
         effect,
         effectDir,
         multiPersonChecked,
@@ -37,33 +37,121 @@ const save = props => {
         descShadow,
         titleTag,
         nameTag,
-        imgHeight,
-        imgWidth,
         hideDesktop,
         hideMobile,
         hideTablet,
         nameColor,
         titleColor,
         descColor,
-        imageFilter,
-        nameStyles
+        imageFilter
     } = props.attributes;
-    console.log(titleColor)
+
+    const iconsList = [
+        {
+            value: Icons.facebook,
+            label: __("facebook", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: Icons.twitter,
+            label: __("twitter", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: Icons.instagram,
+            label: __("instagram", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: Icons.youtube,
+            label: __("youtube", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: Icons.linkedin,
+            label: __("linkedin", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: Icons.flickr,
+            label: __("flickr", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: Icons.github,
+            label: __("github", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: Icons.googlePlus,
+            label: __("google-plus", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: Icons.pinterest,
+            label: __("pinterest", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: Icons.reddit,
+            label: __("reddit", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: Icons.skype,
+            label: __("skype", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: Icons.stack_overflow,
+            label: __("stack-overflow", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: Icons.whatsapp,
+            label: __("whatsapp", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: Icons.vimeo,
+            label: __("vimeo", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: Icons.tumblr,
+            label: __("tumblr", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: Icons.dribbble,
+            label: __("dribbble", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: Icons.quora,
+            label: __("quora", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: Icons.foursquare,
+            label: __("foursquare", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: Icons.wordpress,
+            label: __("wordpress", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: Icons.stumbleupon,
+            label: __("stumbleupon", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: Icons.yahoo,
+            label: __("yahoo", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: Icons.soundcloud,
+            label: __("soundcloud", "premium-blocks-for-gutenberg"),
+        },
+    ];
 
     const loadStyles = () => {
         const styles = {};
         styles[` .${blockId} .premium-person:hover`] = {
             'border-color': `${borderHoverColor} !important`
         };
-        styles[` .${blockId} .premium-person__social-List li:hover i`] = {
-            'color': `${socialIconStyles[0].socialIconHoverColor} !important`,
+        styles[` .${blockId} .premium-person__social-List li:hover .premium-social-media-icon`] = {
+            'fill': `${socialIconStyles[0].socialIconHoverColor} !important`,
             '-webkit-transition': `all .2s ease-in-out !important`,
             'transition': `all .2s ease-in-out !important`
         };
         styles[` .${blockId} .premium-person__img_wrap img`] = {
-            // 'height': `${imgHeight[this.props.deviceType]} ${imgHeight.unit} !important`,
-            // 'width': `${imgWidth[this.props.deviceType]} ${imgWidth.unit} !important`,
             'filter': `brightness( ${imageFilter.bright}% ) contrast( ${imageFilter.contrast}% ) saturate( ${imageFilter.saturation}% ) blur( ${imageFilter.blur}px ) hue-rotate( ${imageFilter.hue}deg ) !important`
+        };
+        styles[` .${blockId} .premium-social-media-icon`] = {
+            'fill': `${socialIconStyles[0].socialIconColor} !important`
         };
         return generateCss(styles);
     }
@@ -77,11 +165,11 @@ const save = props => {
                         borderColor: socialIconBorder.borderColor,
                         background: socialIconStyles[0].socialIconBackgroundColor,
                     })}>
-                    <i className={`premium-person__socialIcon ${value.label == "youtube" ? "fa fa-youtube-play" : `fab fa-${value.label}`} premium-person__${socialIconHoverColor}`}
-                        style={filterJsCss({
-                            color: socialIconStyles[0].socialIconColor
-                        })}
-                    />
+                    {(iconsList || []).map((list) => {
+                        if (list.label == value.label) {
+                            return list.value
+                        }
+                    })}
                 </a>
             </li>
         ))}
