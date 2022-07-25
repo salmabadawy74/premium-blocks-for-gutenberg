@@ -22,11 +22,11 @@
 /************************************************************/
 /******************* Sortable element  *************************/
 
-    $primary-color: #007cba;
-    $accent-color-hover: #135e96;
-    $option-border-color: #e1e1e1;
-    $input-border-color: #e1e1e1;
-    $icon-background:#696969;
+$primary-color: #007cba;
+$accent-color-hover: #135e96;
+$option-border-color: #e1e1e1;
+$input-border-color: #e1e1e1;
+$icon-background: #696969;
 
 .premium-panel-body {
     p.premium-editor-paragraph {
@@ -437,7 +437,8 @@
     border-left: 1px solid $option-border-color;
     width: 40px;
 }
-.premium-repeater-item__trashicon:hover,.premium-repeater-item__dragHandle:hover{
+.premium-repeater-item__trashicon:hover,
+.premium-repeater-item__dragHandle:hover {
     background: $icon-background;
 }
 .components-panel {
@@ -4610,6 +4611,14 @@ i.fipicon-angle-left {
     .components-base-control {
         margin-bottom: 20px !important;
     }
+}
+.premium_blocks_descrption_range_Control {
+    font-size: 12px;
+    font-style: italic;
+    line-height: 1.4;
+    color: #8e989f;
+    margin-top: -15px;
+    margin-bottom: 20px;
 }
 @import "./typography.scss";
 @import "./spacing.scss";

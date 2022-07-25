@@ -374,7 +374,8 @@
   border-left: 1px solid #e1e1e1;
   width: 40px; }
 
-.premium-repeater-item__trashicon:hover, .premium-repeater-item__dragHandle:hover {
+.premium-repeater-item__trashicon:hover,
+.premium-repeater-item__dragHandle:hover {
   background: #696969; }
 
 .components-panel .rfipdropdown.rfipdropdown--default.fipappear-enter-done {
@@ -3608,6 +3609,14 @@ i.fipicon-angle-left:before {
 
 .block-editor-block-inspector .components-base-control {
   margin-bottom: 20px !important; }
+
+.premium_blocks_descrption_range_Control {
+  font-size: 12px;
+  font-style: italic;
+  line-height: 1.4;
+  color: #8e989f;
+  margin-top: -15px;
+  margin-bottom: 20px; }
 
 .premium-typohraphy-value {
   display: flex;

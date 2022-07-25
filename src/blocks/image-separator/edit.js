@@ -15,12 +15,8 @@ import SpacingControl from "../../components/premium-responsive-spacing";
 import InsideTabs from "../../components/InsideTabs";
 import InsideTab from "../../components/InsideTab";
 import PremiumShadow from "../../components/PremiumShadow";
-import {
-    borderCss,
-    paddingCss,
-    generateBlockId,
-    generateCss
-} from "../../components/HelperFunction";
+import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
+import { borderCss, paddingCss, generateBlockId, generateCss, filterJsCss } from "../../components/HelperFunction";
 
 const { __ } = wp.i18n;
 
@@ -119,6 +115,7 @@ class edit extends Component {
             ' premium-tablet-hidden': hideTablet,
             ' premium-mobile-hidden': hideMobile,
         });
+        let BorderValue = iconStyles[0].advancedBorder ? { borderRadius: iconStyles[0].advancedBorderValue } : borderCss(iconBorder, this.props.deviceType)
 
         return [
             isSelected && (
@@ -245,51 +242,37 @@ class edit extends Component {
                                         />
                                     </Fragment>
                                 )}
-                                <TextControl
-                                    label={__("Gutter (%)")}
-                                    type="Number"
+
+                                <ResponsiveSingleRangeControl
+                                    label={__("Gutter (%)", 'premium-blocks-for-gutenberg')}
                                     value={gutter}
+                                    min="-500"
+                                    max="500"
                                     onChange={(newValue) =>
                                         setAttributes({
                                             gutter: parseInt(newValue),
                                         })
                                     }
-                                    help="-50% is default. Increase to push the image outside or decrease to pull the image inside."
+                                    defaultValue={-50}
+                                    showUnit={false}
+
                                 />
+                                <p className={`premium_blocks_descrption_range_Control`}>{__('-50% is default. Increase to push the image outside or decrease to pull the image inside.', 'premium-blocks-for-gutenberg')}</p>
                                 <ResponsiveRadioControl
-                                    label={__(
-                                        "Alignment",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
+                                    label={__("Alignment", "premium-blocks-for-gutenberg")}
                                     choices={[
-                                        {
-                                            value: "left",
-                                            label: __("Left"),
-                                            icon: Icons.alignLeft,
-                                        },
-                                        {
-                                            value: "center",
-                                            label: __("Center"),
-                                            icon: Icons.alignCenter,
-                                        },
-                                        {
-                                            value: "right",
-                                            label: __("Right"),
-                                            icon: Icons.alignRight,
-                                        },
+                                        { value: "left", label: __("Left"), icon: Icons.alignLeft },
+                                        { value: "center", label: __("Center"), icon: Icons.alignCenter },
+                                        { value: "right", label: __("Right"), icon: Icons.alignRight },
                                     ]}
                                     value={iconAlign}
-                                    onChange={(newValue) =>
-                                        setAttributes({ iconAlign: newValue })
-                                    }
+                                    onChange={(newValue) => setAttributes({ iconAlign: newValue })}
                                     showIcons={true}
                                 />
                                 <ToggleControl
                                     label={__("Link")}
                                     checked={link}
-                                    onChange={(value) =>
-                                        setAttributes({ link: value })
-                                    }
+                                    onChange={(value) => setAttributes({ link: value })}
                                 />
                                 {link && (
                                     <Fragment>
@@ -592,22 +575,16 @@ class edit extends Component {
                                 onChangeDesktop={(value) =>
                                     setAttributes({
                                         hideDesktop: value
-                                            ? " premium-desktop-hidden"
-                                            : "",
                                     })
                                 }
                                 onChangeTablet={(value) =>
                                     setAttributes({
                                         hideTablet: value
-                                            ? " premium-tablet-hidden"
-                                            : "",
                                     })
                                 }
                                 onChangeMobile={(value) =>
                                     setAttributes({
                                         hideMobile: value
-                                            ? " premium-mobile-hidden"
-                                            : "",
                                     })
                                 }
                             />
@@ -627,17 +604,14 @@ class edit extends Component {
                     style={{
                         textAlign: iconAlign[this.props.deviceType],
                         transform: `translateY(${gutter}%)`,
-                        filter:
-                            iconType === "image"
-                                ? `brightness( ${imgFilter?.bright}% ) contrast( ${imgFilter?.contrast}% ) saturate( ${imgFilter?.saturation}% ) blur( ${imgFilter?.blur}px ) hue-rotate( ${imgFilter?.hue}deg )`
-                                : "",
+                        filter: iconType === "image"
+                            ? `brightness( ${imgFilter?.bright}% ) contrast( ${imgFilter?.contrast}% ) saturate( ${imgFilter?.saturation}% ) blur( ${imgFilter?.blur}px ) hue-rotate( ${imgFilter?.hue}deg )`
+                            : "",
                     }}
                 >
                     {iconType === "icon" && (
-                        <i
-                            className={`${iconStyles[0].icon}`}
+                        <i className={`${iconStyles[0].icon}`}
                             style={{
-                                ...borderCss(iconBorder, this.props.deviceType),
                                 ...paddingCss(
                                     iconPadding,
                                     this.props.deviceType
@@ -650,12 +624,7 @@ class edit extends Component {
                                 textShadow: `${iconShadow.horizontal || 0}px ${iconShadow.vertical || 0
                                     }px ${iconShadow.blur || 0}px ${iconShadow.color
                                     }`,
-                                borderRadius: iconStyles[0].advancedBorder
-                                    ? iconStyles[0].advancedBorderValue
-                                    : `${iconBorder.borderRadius[
-                                        this.props.deviceType
-                                    ].top
-                                    }px`,
+                                ...BorderValue
                             }}
                         />
                     )}
@@ -665,34 +634,17 @@ class edit extends Component {
                                 <img
                                     src={imageURL}
                                     style={{
-                                        ...borderCss(
-                                            iconBorder,
-                                            this.props.deviceType
-                                        ),
+                                        ...BorderValue,
                                         maskSize: `${maskSize}`,
                                         maskPosition: `${maskPosition}`,
-                                        maskImage: imgMaskURL
-                                            ? `url("${imgMaskURL}")`
-                                            : "",
-                                        WebkitMaskImage: imgMaskURL
-                                            ? `url("${imgMaskURL}")`
-                                            : "",
+                                        maskImage: imgMaskURL ? `url("${imgMaskURL}")` : "",
+                                        WebkitMaskImage: imgMaskURL ? `url("${imgMaskURL}")` : "",
                                         WebkitMaskSize: `${maskSize}`,
                                         WebkitMaskPosition: `${maskPosition}`,
                                         objectFit: `${imgFit}`,
-                                        height:
-                                            (imgHeight[this.props.deviceType] ||
-                                                200) + iconSize.unit,
+                                        height: (imgHeight[this.props.deviceType] || 200) + iconSize.unit,
                                         width:
-                                            (iconSize[this.props.deviceType] ||
-                                                200) + iconSize.unit,
-                                        borderRadius: iconStyles[0]
-                                            .advancedBorder
-                                            ? iconStyles[0].advancedBorderValue
-                                            : `${iconBorder.borderRadius[
-                                                this.props.deviceType
-                                            ].top
-                                            }px`,
+                                            (iconSize[this.props.deviceType] || 200) + iconSize.unit,
                                     }}
                                 />
                             ) : (
