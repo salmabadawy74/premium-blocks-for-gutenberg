@@ -44,6 +44,7 @@ import AdvancedPopColorControl from '../../../components/Color Control/ColorComp
 import SpacingComponent from '../../../components/premium-responsive-spacing';
 import PremiumBorder from "../../../components/premium-border"
 import PremiumTypo from "../../../components/premium-typo"
+import PremiumResponsiveTabs from "../../../components/premium-responsive-tabs";
 import InspectorTabs from '../../../components/inspectorTabs';
 import InspectorTab from '../../../components/inspectorTab';
 import { generateBlockId, generateCss, typographyCss, paddingCss, marginCss, borderCss } from '../../../components/HelperFunction';
@@ -105,7 +106,10 @@ function Navigation({
 		overlayMenuBorder,
 		overlayMenuWidth,
 		overlayMenuStyle,
-		blockId
+		blockId,
+		hideDesktop,
+		hideTablet,
+		hideMobile,
 	} = attributes;
 
 	let areaMenu,
@@ -308,6 +312,9 @@ function Navigation({
 			'is-vertical': orientation === 'vertical',
 			'no-wrap': flexWrap === 'nowrap',
 			'submenu-box-shadow': submenuShadow && overlayMenu !== 'always',
+			'premium-desktop-hidden': hideDesktop,
+			'premium-tablet-hidden': hideTablet,
+			'premium-mobile-hidden': hideMobile,
 		}),
 		style: {
 			color: menuColors?.link,
@@ -921,7 +928,28 @@ function Navigation({
 								</>
 							)}
 						</InspectorTab>
-						<InspectorTab key={'advance'} />
+						<InspectorTab key={"advance"}>
+							<PremiumResponsiveTabs
+								Desktop={hideDesktop}
+								Tablet={hideTablet}
+								Mobile={hideMobile}
+								onChangeDesktop={(value) =>
+									setAttributes({
+										hideDesktop: value,
+									})
+								}
+								onChangeTablet={(value) =>
+									setAttributes({
+										hideTablet: value,
+									})
+								}
+								onChangeMobile={(value) =>
+									setAttributes({
+										hideMobile: value,
+									})
+								}
+							/>
+						</InspectorTab>
 					</InspectorTabs>
 				</InspectorControls>
 				{isEntityAvailable && (

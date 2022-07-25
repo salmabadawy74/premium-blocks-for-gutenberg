@@ -15,22 +15,14 @@ function get_premium_search_css( $attributes, $unique_id ) {
 
 	if ( isset( $attributes['typography'] ) ) {
 		$typography = $attributes['typography'];
-		$block_helpers->add_gfont(
-			array(
-				'fontFamily'  => ( isset( $typography['fontFamily'] ) ? $typography['fontFamily'] : '' ),
-				'fontVariant' => ( isset( $typography['fontWeight'] ) ? $typography['fontWeight'] : '' ),
-			)
-		);
+
 		$css->set_selector( '.' . $unique_id . ' .wp-block-premium-search__input' );
 		$css->add_property( 'font-family', $css->render_color( $typography['fontFamily'] ) );
 		$css->add_property( 'font-weight', $css->render_color( $typography['fontWeight'] ) );
 		$css->add_property( 'font-style', $css->render_color( $typography['fontStyle'] ) );
-		if ( isset( $typography['size'] ) ) {
-			$css->add_property( 'font-size', $css->render_color( $typography['size']['Desktop'] . $typography['size']['unit'] ) );
-		}
-		$css->add_property( 'line-height', $css->render_color( $typography['lineHeight'] . 'px' ) );
 		$css->add_property( 'text-transform', $css->render_color( $typography['textTransform'] ) );
 		$css->add_property( 'text-decoration', $css->render_color( $typography['textDecoration'] ) );
+		$css->render_typography( $typography, 'Desktop' );
 	}
 
 	if ( isset( $attributes['floatValues'] ) ) {
@@ -52,22 +44,14 @@ function get_premium_search_css( $attributes, $unique_id ) {
 
 	if ( isset( $attributes['buttonTypography'] ) ) {
 		$button_typography = $attributes['buttonTypography'];
-		$block_helpers->add_gfont(
-			array(
-				'fontFamily'  => ( isset( $button_typography['fontFamily'] ) ? $button_typography['fontFamily'] : '' ),
-				'fontVariant' => ( isset( $button_typography['fontWeight'] ) ? $button_typography['fontWeight'] : '' ),
-			)
-		);
+
 		$css->set_selector( '.' . $unique_id . ' .wp-block-premium-search__button' );
 		$css->add_property( 'font-family', $css->render_color( $button_typography['fontFamily'] ) );
 		$css->add_property( 'font-weight', $css->render_color( $button_typography['fontWeight'] ) );
 		$css->add_property( 'font-style', $css->render_color( $button_typography['fontStyle'] ) );
-		if ( isset( $button_typography['size'] ) ) {
-			$css->add_property( 'font-size', $css->render_color( $button_typography['size']['Desktop'] . $button_typography['size']['unit'] ) );
-		}
-		$css->add_property( 'line-height', $css->render_color( $button_typography['lineHeight'] . 'px' ) );
 		$css->add_property( 'text-transform', $css->render_color( $button_typography['textTransform'] ) );
 		$css->add_property( 'text-decoration', $css->render_color( $button_typography['textDecoration'] ) );
+		$css->render_typography( $button_typography, 'Desktop' );
 	}
 
 	if ( isset( $attributes['border'] ) ) {
@@ -77,15 +61,9 @@ function get_premium_search_css( $attributes, $unique_id ) {
 
 		$css->set_selector( '.' . $unique_id . ':not(.wp-block-search__button-inside) .wp-block-premium-search__input, .' . $unique_id . '.wp-block-search__button-inside .wp-block-premium-search__inside-wrapper' );
 		$css->add_property( 'border-style', $css->render_color( $border['borderType'] ) );
-		$css->add_property( 'border-top-width', $css->get_responsive_value( $border_width, 'top', 'Desktop', 'px' ) );
-		$css->add_property( 'border-right-width', $css->get_responsive_value( $border_width, 'right', 'Desktop', 'px' ) );
-		$css->add_property( 'border-bottom-width', $css->get_responsive_value( $border_width, 'bottom', 'Desktop', 'px' ) );
-		$css->add_property( 'border-left-width', $css->get_responsive_value( $border_width, 'left', 'Desktop', 'px' ) );
 		$css->add_property( 'border-color', $css->render_color( $border['borderColor'] ) );
-		$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $border_width, 'top', 'Desktop', 'px' ) );
-		$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $border_width, 'top', 'Desktop', 'px' ) );
-		$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $border_width, 'top', 'Desktop', 'px' ) );
-		$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $border_width, 'top', 'Desktop', 'px' ) );
+		$css->add_property( 'border-width', $css->render_spacing( $border_width['Desktop'], 'px' ) );
+		$css->add_property( 'border-radius', $css->render_spacing( $border_radius['Desktop'], 'px' ) );
 	}
 
 	if ( isset( $attributes['colors'] ) ) {
@@ -118,129 +96,91 @@ function get_premium_search_css( $attributes, $unique_id ) {
 		if ( $spacing['padding'] ) {
 			$padding = $spacing['padding'];
 			$css->set_selector( '.' . $unique_id . ':not(.wp-block-search__button-inside) .wp-block-premium-search__input, .' . $unique_id . '.wp-block-search__button-inside .wp-block-premium-search__inside-wrapper' );
-			$css->add_property( 'padding-top', $css->render_color( $padding['Desktop']['top'] . 'px' ) );
-			$css->add_property( 'padding-right', $css->render_color( $padding['Desktop']['right'] . 'px' ) );
-			$css->add_property( 'padding-bottom', $css->render_color( $padding['Desktop']['bottom'] . 'px' ) );
-			$css->add_property( 'padding-left', $css->render_color( $padding['Desktop']['left'] . 'px' ) );
+			$css->add_property( 'padding', $css->render_spacing( $padding['Desktop'], $padding['unit'] ) );
 		}
 
 		if ( $spacing['buttonPadding'] ) {
 			$button_padding = $spacing['buttonPadding'];
 			$css->set_selector( '.' . $unique_id . ' .wp-block-premium-search__button' );
-			$css->add_property( 'padding-top', $css->render_color( $button_padding['Desktop']['top'] . 'px' ) );
-			$css->add_property( 'padding-right', $css->render_color( $button_padding['Desktop']['right'] . 'px' ) );
-			$css->add_property( 'padding-bottom', $css->render_color( $button_padding['Desktop']['bottom'] . 'px' ) );
-			$css->add_property( 'padding-left', $css->render_color( $button_padding['Desktop']['left'] . 'px' ) );
+			$css->add_property( 'padding', $css->render_spacing( $button_padding['Desktop'], $button_padding['unit'] ) );
 		}
-
-		$css->start_media_query( $media_query['Tablet'] );
-		if ( isset( $attributes['typography'] ) ) {
-			$typography = $attributes['typography'];
-			$css->set_selector( '.' . $unique_id . ' .wp-block-premium-search__input' );
-			if ( isset( $typography['size'] ) ) {
-				$css->add_property( 'font-size', $css->render_color( $typography['size']['Tablet'] . $typography['size']['unit'] ) );
-			}
-		}
-
-		if ( isset( $attributes['buttonTypography'] ) ) {
-			$button_typography = $attributes['buttonTypography'];
-			$css->set_selector( '.' . $unique_id . ' .wp-block-premium-search__button' );
-			if ( isset( $button_typography['size'] ) ) {
-				$css->add_property( 'font-size', $css->render_color( $button_typography['size']['Tablet'] . $button_typography['size']['unit'] ) );
-			}
-		}
-
-		if ( isset( $attributes['border'] ) ) {
-			$border        = $attributes['border'];
-			$border_width  = $attributes['border']['borderWidth'];
-			$border_radius = $attributes['border']['borderRadius'];
-
-			$css->set_selector( '.' . $unique_id . ':not(.wp-block-search__button-inside) .wp-block-premium-search__input, .' . $unique_id . '.wp-block-search__button-inside .wp-block-premium-search__inside-wrapper' );
-			$css->add_property( 'border-style', $css->render_color( $border['borderType'] ) );
-			$css->add_property( 'border-top-width', $css->get_responsive_value( $border_width, 'top', 'Tablet', 'px' ) );
-			$css->add_property( 'border-right-width', $css->get_responsive_value( $border_width, 'right', 'Tablet', 'px' ) );
-			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $border_width, 'bottom', 'Tablet', 'px' ) );
-			$css->add_property( 'border-left-width', $css->get_responsive_value( $border_width, 'left', 'Tablet', 'px' ) );
-			$css->add_property( 'border-color', $css->render_color( $border['borderColor'] ) );
-			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $border_width, 'top', 'Tablet', 'px' ) );
-			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $border_width, 'top', 'Tablet', 'px' ) );
-			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $border_width, 'top', 'Tablet', 'px' ) );
-			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $border_width, 'top', 'Tablet', 'px' ) );
-		}
-
-		if ( $spacing['padding'] ) {
-			$padding = $spacing['padding'];
-			$css->set_selector( '.' . $unique_id . ':not(.wp-block-search__button-inside) .wp-block-premium-search__input, .' . $unique_id . '.wp-block-search__button-inside .wp-block-premium-search__inside-wrapper' );
-			$css->add_property( 'padding-top', $css->render_color( $padding['Tablet']['top'] . 'px' ) );
-			$css->add_property( 'padding-right', $css->render_color( $padding['Tablet']['right'] . 'px' ) );
-			$css->add_property( 'padding-bottom', $css->render_color( $padding['Tablet']['bottom'] . 'px' ) );
-			$css->add_property( 'padding-left', $css->render_color( $padding['Tablet']['left'] . 'px' ) );
-		}
-
-		if ( $spacing['buttonPadding'] ) {
-			$button_padding = $spacing['buttonPadding'];
-			$css->set_selector( '.' . $unique_id . ' .wp-block-premium-search__button' );
-			$css->add_property( 'padding-top', $css->render_color( $button_padding['Tablet']['top'] . 'px' ) );
-			$css->add_property( 'padding-right', $css->render_color( $button_padding['Tablet']['right'] . 'px' ) );
-			$css->add_property( 'padding-bottom', $css->render_color( $button_padding['Tablet']['bottom'] . 'px' ) );
-			$css->add_property( 'padding-left', $css->render_color( $button_padding['Tablet']['left'] . 'px' ) );
-		}
-
-		$css->stop_media_query();
-		$css->start_media_query( $media_query['Mobile'] );
-		if ( isset( $attributes['typography'] ) ) {
-			$typography = $attributes['typography'];
-			$css->set_selector( '.' . $unique_id . ' .wp-block-premium-search__input' );
-			if ( isset( $typography['size'] ) ) {
-				$css->add_property( 'font-size', $css->render_color( $typography['size']['Mobile'] . $typography['size']['unit'] ) );
-			}
-		}
-
-		if ( isset( $attributes['buttonTypography'] ) ) {
-			$button_typography = $attributes['buttonTypography'];
-			$css->set_selector( '.' . $unique_id . ' .wp-block-premium-search__button' );
-			if ( isset( $button_typography['size'] ) ) {
-				$css->add_property( 'font-size', $css->render_color( $button_typography['size']['Mobile'] . $button_typography['size']['unit'] ) );
-			}
-		}
-
-		if ( isset( $attributes['border'] ) ) {
-			$border        = $attributes['border'];
-			$border_width  = $attributes['border']['borderWidth'];
-			$border_radius = $attributes['border']['borderRadius'];
-
-			$css->set_selector( '.' . $unique_id . ':not(.wp-block-search__button-inside) .wp-block-premium-search__input, .' . $unique_id . '.wp-block-search__button-inside .wp-block-premium-search__inside-wrapper' );
-			$css->add_property( 'border-style', $css->render_color( $border['borderType'] ) );
-			$css->add_property( 'border-top-width', $css->get_responsive_value( $border_width, 'top', 'Mobile', 'px' ) );
-			$css->add_property( 'border-right-width', $css->get_responsive_value( $border_width, 'right', 'Mobile', 'px' ) );
-			$css->add_property( 'border-bottom-width', $css->get_responsive_value( $border_width, 'bottom', 'Mobile', 'px' ) );
-			$css->add_property( 'border-left-width', $css->get_responsive_value( $border_width, 'left', 'Mobile', 'px' ) );
-			$css->add_property( 'border-color', $css->render_color( $border['borderColor'] ) );
-			$css->add_property( 'border-top-left-radius', $css->get_responsive_value( $border_width, 'top', 'Mobile', 'px' ) );
-			$css->add_property( 'border-top-right-radius', $css->get_responsive_value( $border_width, 'top', 'Mobile', 'px' ) );
-			$css->add_property( 'border-bottom-left-radius', $css->get_responsive_value( $border_width, 'top', 'Mobile', 'px' ) );
-			$css->add_property( 'border-bottom-right-radius', $css->get_responsive_value( $border_width, 'top', 'Mobile', 'px' ) );
-		}
-
-		if ( $spacing['padding'] ) {
-			$padding = $spacing['padding'];
-			$css->set_selector( '.' . $unique_id . ':not(.wp-block-search__button-inside) .wp-block-premium-search__input, .' . $unique_id . '.wp-block-search__button-inside .wp-block-premium-search__inside-wrapper' );
-			$css->add_property( 'padding-top', $css->render_color( $padding['Mobile']['top'] . 'px' ) );
-			$css->add_property( 'padding-right', $css->render_color( $padding['Mobile']['right'] . 'px' ) );
-			$css->add_property( 'padding-bottom', $css->render_color( $padding['Mobile']['bottom'] . 'px' ) );
-			$css->add_property( 'padding-left', $css->render_color( $padding['Mobile']['left'] . 'px' ) );
-		}
-
-		if ( $spacing['buttonPadding'] ) {
-			$button_padding = $spacing['buttonPadding'];
-			$css->set_selector( '.' . $unique_id . ' .wp-block-premium-search__button' );
-			$css->add_property( 'padding-top', $css->render_color( $button_padding['Mobile']['top'] . 'px' ) );
-			$css->add_property( 'padding-right', $css->render_color( $button_padding['Mobile']['right'] . 'px' ) );
-			$css->add_property( 'padding-bottom', $css->render_color( $button_padding['Mobile']['bottom'] . 'px' ) );
-			$css->add_property( 'padding-left', $css->render_color( $button_padding['Mobile']['left'] . 'px' ) );
-		}
-		$css->stop_media_query();
 	}
+
+	$css->start_media_query( $media_query['Tablet'] );
+	if ( isset( $attributes['typography'] ) ) {
+		$typography = $attributes['typography'];
+		$css->set_selector( '.' . $unique_id . ' .wp-block-premium-search__input' );
+		$css->render_typography( $typography, 'Tablet' );
+	}
+
+	if ( isset( $attributes['buttonTypography'] ) ) {
+		$button_typography = $attributes['buttonTypography'];
+		$css->set_selector( '.' . $unique_id . ' .wp-block-premium-search__button' );
+		$css->render_typography( $button_typography, 'Tablet' );
+	}
+
+	if ( isset( $attributes['border'] ) ) {
+		$border        = $attributes['border'];
+		$border_width  = $attributes['border']['borderWidth'];
+		$border_radius = $attributes['border']['borderRadius'];
+
+		$css->set_selector( '.' . $unique_id . ':not(.wp-block-search__button-inside) .wp-block-premium-search__input, .' . $unique_id . '.wp-block-search__button-inside .wp-block-premium-search__inside-wrapper' );
+		$css->add_property( 'border-width', $css->render_spacing( $border_width['Tablet'], 'px' ) );
+		$css->add_property( 'border-radius', $css->render_spacing( $border_radius['Tablet'], 'px' ) );
+	}
+
+	if ( isset( $attributes['spacing'] ) ) {
+		if ( $spacing['padding'] ) {
+			$padding = $spacing['padding'];
+			$css->set_selector( '.' . $unique_id . ':not(.wp-block-search__button-inside) .wp-block-premium-search__input, .' . $unique_id . '.wp-block-search__button-inside .wp-block-premium-search__inside-wrapper' );
+			$css->add_property( 'padding', $css->render_spacing( $padding['Tablet'], $padding['unit'] ) );
+		}
+
+		if ( $spacing['buttonPadding'] ) {
+			$button_padding = $spacing['buttonPadding'];
+			$css->set_selector( '.' . $unique_id . ' .wp-block-premium-search__button' );
+			$css->add_property( 'padding', $css->render_spacing( $button_padding['Tablet'], $button_padding['unit'] ) );
+		}
+	}
+	$css->stop_media_query();
+	$css->start_media_query( $media_query['Mobile'] );
+	if ( isset( $attributes['typography'] ) ) {
+		$typography = $attributes['typography'];
+		$css->set_selector( '.' . $unique_id . ' .wp-block-premium-search__input' );
+		$css->render_typography( $typography, 'Mobile' );
+	}
+
+	if ( isset( $attributes['buttonTypography'] ) ) {
+		$button_typography = $attributes['buttonTypography'];
+		$css->set_selector( '.' . $unique_id . ' .wp-block-premium-search__button' );
+		$css->render_typography( $button_typography, 'Mobile' );
+	}
+
+	if ( isset( $attributes['border'] ) ) {
+		$border        = $attributes['border'];
+		$border_width  = $attributes['border']['borderWidth'];
+		$border_radius = $attributes['border']['borderRadius'];
+
+		$css->set_selector( '.' . $unique_id . ':not(.wp-block-search__button-inside) .wp-block-premium-search__input, .' . $unique_id . '.wp-block-search__button-inside .wp-block-premium-search__inside-wrapper' );
+		$css->add_property( 'border-width', $css->render_spacing( $border_width['Mobile'], 'px' ) );
+		$css->add_property( 'border-radius', $css->render_spacing( $border_radius['Mobile'], 'px' ) );
+	}
+
+	if ( isset( $attributes['spacing'] ) ) {
+		if ( $spacing['padding'] ) {
+			$padding = $spacing['padding'];
+			$css->set_selector( '.' . $unique_id . ':not(.wp-block-search__button-inside) .wp-block-premium-search__input, .' . $unique_id . '.wp-block-search__button-inside .wp-block-premium-search__inside-wrapper' );
+			$css->add_property( 'padding', $css->render_spacing( $padding['Mobile'], $padding['unit'] ) );
+		}
+
+		if ( $spacing['buttonPadding'] ) {
+			$button_padding = $spacing['buttonPadding'];
+			$css->set_selector( '.' . $unique_id . ' .wp-block-premium-search__button' );
+			$css->add_property( 'padding', $css->render_spacing( $button_padding['Mobile'], $button_padding['unit'] ) );
+		}
+	}
+
+	$css->stop_media_query();
 
 	return $css->css_output();
 }
@@ -299,6 +239,9 @@ function render_block_premium_search( $attributes ) {
 	$input_markup          = '';
 	$button_markup         = '';
 	$block_id              = ( ! empty( $attributes['blockId'] ) ) ? $attributes['blockId'] : $id;
+	$hide_desktop          = ( ! empty( $attributes['hideDesktop'] ) ) ? $attributes['hideDesktop'] : false;
+	$hide_mobile           = ( ! empty( $attributes['hideMobile'] ) ) ? $attributes['hideMobile'] : false;
+	$hide_tablet           = ( ! empty( $attributes['hideTablet'] ) ) ? $attributes['hideTablet'] : false;
 
 	$is_button_inside = ! empty( $attributes['buttonPosition'] ) &&
 		'button-inside' === $attributes['buttonPosition'];
@@ -324,6 +267,18 @@ function render_block_premium_search( $attributes ) {
 		$classnames .= ' premium-ajax-search';
 	}
 
+	if ( $hide_desktop ) {
+		$classnames .= ' premium-desktop-hidden';
+	}
+
+	if ( $hide_tablet ) {
+		$classnames .= ' premium-tablet-hidden';
+	}
+
+	if ( $hide_mobile ) {
+		$classnames .= ' premium-mobile-hidden';
+	}
+
 	if ( 'float' === $button_position && 'button' === $form_style ) {
 		$classnames .= ' button-style-float';
 		$classnames .= ' button-float-' . esc_attr( $button_float_position );
@@ -331,10 +286,10 @@ function render_block_premium_search( $attributes ) {
 
 	if ( 'default' === $form_style && $show_input ) {
 		// $input_markup = sprintf(
-		// 	'<input type="search" id="%s" class="wp-block-premium-search__input" name="s" value="%s" placeholder="%s" required />',
-		// 	$input_id,
-		// 	esc_attr( get_search_query() ),
-		// 	esc_attr( $attributes['placeholder'] ),
+		// '<input type="search" id="%s" class="wp-block-premium-search__input" name="s" value="%s" placeholder="%s" required />',
+		// $input_id,
+		// esc_attr( get_search_query() ),
+		// esc_attr( $attributes['placeholder'] ),
 		// );
 	}
 

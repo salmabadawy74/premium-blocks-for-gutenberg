@@ -19,6 +19,11 @@ function get_breadcrumbs_css( $attributes, $unique_id ) {
 		$typography = $attributes['typography'];
 
 		$css->set_selector( '.' . $unique_id . ' > .premium-breadcrumb-trail, .' . $unique_id . ' > .premium-breadcrumb-trail a, .' . $unique_id . ' > .premium-breadcrumb-trail span' );
+		$css->add_property( 'font-family', $css->render_color( $typography['fontFamily'] ) );
+		$css->add_property( 'font-weight', $css->render_color( $typography['fontWeight'] ) );
+		$css->add_property( 'font-style', $css->render_color( $typography['fontStyle'] ) );
+		$css->add_property( 'text-transform', $css->render_color( $typography['textTransform'] ) );
+		$css->add_property( 'text-decoration', $css->render_color( $typography['textDecoration'] ) );
 		$css->render_typography( $typography, 'Desktop' );
 	}
 	if ( isset( $attributes['colors'] ) ) {
@@ -122,10 +127,14 @@ function render_block_pbg_breadcrumbs( $attributes ) {
 	$unique_id = rand( 100, 10000 );
 	$id        = 'premium-breadcrumbs-' . esc_attr( $unique_id );
 
-	$breadcrumb = apply_filters( 'breadcrumb_trail_object', null );
-	$style      = isset( $attributes['breadcrumbsStyle'] ) ? $attributes['breadcrumbsStyle'] : 'normal';
-	$block_id   = ( ! empty( $attributes['blockId'] ) ) ? $attributes['blockId'] : $id;
-	$args       = array();
+	$breadcrumb   = apply_filters( 'breadcrumb_trail_object', null );
+	$style        = isset( $attributes['breadcrumbsStyle'] ) ? $attributes['breadcrumbsStyle'] : 'normal';
+	$block_id     = ( ! empty( $attributes['blockId'] ) ) ? $attributes['blockId'] : $id;
+	$args         = array();
+	$hide_desktop = ( ! empty( $attributes['hideDesktop'] ) ) ? $attributes['hideDesktop'] : false;
+	$hide_mobile  = ( ! empty( $attributes['hideMobile'] ) ) ? $attributes['hideMobile'] : false;
+	$hide_tablet  = ( ! empty( $attributes['hideTablet'] ) ) ? $attributes['hideTablet'] : false;
+
 	if ( isset( $attributes['enablePrefix'] ) && $attributes['enablePrefix'] ) {
 		$args['prefix'] = $attributes['prefix'];
 	}
@@ -140,7 +149,7 @@ function render_block_pbg_breadcrumbs( $attributes ) {
 	}
 
 	$align_class_name   = empty( $attributes['textAlign'] ) ? '' : "has-text-align-{$attributes['textAlign']} ";
-	$wrapper_attributes = get_block_wrapper_attributes( array( 'class' => $align_class_name . 'premium-breadcrumbs-' . $style . ' ' . $block_id ) );
+	$wrapper_attributes = get_block_wrapper_attributes( array( 'class' => $align_class_name . 'premium-breadcrumbs-' . $style . ' ' . $block_id . ( $hide_desktop ? ' premium-desktop-hidden' : '' ) . ( $hide_tablet ? ' premium-tablet-hidden' : '' ) . ( $hide_mobile ? ' premium-mobile-hidden' : '' ) ) );
 
 	if ( ! wp_style_is( $unique_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
 		$css = get_breadcrumbs_css( $attributes, $block_id );
