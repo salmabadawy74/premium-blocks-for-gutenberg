@@ -2101,6 +2101,7 @@ a.premium-dheading-block__link:hover {
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
     font-style: normal !important;
+    font-size:200px;
 }
 
 .premium-image-separator-container img {

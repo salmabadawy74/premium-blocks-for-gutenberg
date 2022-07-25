@@ -12,6 +12,10 @@ registerBlockType("premium/image-separator", {
     icon: PBG_Block_Icons.image_separator,
     category: "premium-blocks",
     attributes: imageSeparatorAttrs,
+    keywords: [
+        __("image", "premium-blocks-for-gutenberg"),
+        __("seperator", "premium-blocks-for-gutenberg"),
+    ],
     supports: { inserter: imageSeparator },
     edit: edit,
     save: save,
