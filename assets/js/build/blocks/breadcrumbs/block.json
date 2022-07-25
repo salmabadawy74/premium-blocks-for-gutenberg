@@ -82,6 +82,15 @@
           "unit": "px"
         }
       }
+    },
+    "hideDesktop": {
+      "type": "boolean"
+    },
+    "hideTablet": {
+      "type": "boolean"
+    },
+    "hideMobile": {
+      "type": "boolean"
     }
   },
   "supports": {
