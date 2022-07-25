@@ -49,7 +49,8 @@ import SpacingComponent from '../../components/premium-responsive-spacing';
 import PremiumTypo from "../../components/premium-typo"
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
-import { generateBlockId, generateCss } from '../../components/HelperFunction';
+import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
+import { generateBlockId, generateCss, typographyCss, marginCss, paddingCss, borderCss } from '../../components/HelperFunction';
 
 const MIN_WIDTH = 220;
 
@@ -80,7 +81,10 @@ function SearchEdit({
 		floatPosition,
 		floatValues,
 		ajaxSearch,
-		blockId
+		blockId,
+		hideDesktop,
+		hideTablet,
+		hideMobile,
 	} = attributes;
 	const [isVisibility, setIsVisibility] = useState(false);
 	const [posts, setPosts] = useState([]);
@@ -122,9 +126,7 @@ function SearchEdit({
 	const hasOnlyButton = 'button-only' === buttonPosition;
 
 	let padding = spacing.padding ? spacing.padding : {};
-	const fontSize = typography.size ? typography.size : {};
 	let buttonPadding = spacing.buttonPadding ? spacing.buttonPadding : {};
-	const buttonFontSize = buttonTypography.size ? buttonTypography.size : {};
 
 	const getBlockClassNames = () => {
 		return classnames(
@@ -144,7 +146,10 @@ function SearchEdit({
 				: undefined,
 			buttonUseIcon && !hasNoButton
 				? 'wp-block-premium-search__icon-button'
-				: undefined
+				: undefined,
+			hideDesktop ? 'premium-desktop-hidden' : undefined,
+			hideTablet ? 'premium-tablet-hidden' : undefined,
+			hideMobile ? 'premium-mobile-hidden' : undefined,
 		);
 	};
 
@@ -243,31 +248,12 @@ function SearchEdit({
 	const textFieldStyles = {
 		color: colors.text,
 		backgroundColor: colors.background,
-		borderTopWidth: border?.borderWidth?.[deviceType]?.top,
-		borderRightWidth: border?.borderWidth?.[deviceType]?.right,
-		borderBottomWidth: border?.borderWidth?.[deviceType]?.bottom,
-		borderLeftWidth: border?.borderWidth?.[deviceType]?.left,
-		borderTopLeftRadius: `${border?.borderRadius?.[deviceType]?.top || 0}px`,
-		borderTopRightRadius: `${border?.borderRadius?.[deviceType]?.right || 0}px`,
-		borderBottomLeftRadius: `${border?.borderRadius?.[deviceType]?.bottom || 0}px`,
-		borderBottomRightRadius: `${border?.borderRadius?.[deviceType]?.left || 0}px`,
-		borderColor: border?.borderColor,
-		borderStyle: border?.borderType,
-		paddingTop: `${padding?.[deviceType]?.top}${padding?.unit}`,
-		paddingRight: `${padding?.[deviceType]?.right}${padding?.unit}`,
-		paddingBottom: `${padding?.[deviceType]?.bottom}${padding?.unit}`,
-		paddingLeft: `${padding?.[deviceType]?.left}${padding?.unit}`,
+		...paddingCss(padding, deviceType),
+		...borderCss(border, deviceType),
 	};
 
 	const textTypoStyles = {
-		fontSize: `${fontSize?.[deviceType]}${fontSize?.unit}`,
-		fontFamily: typography.fontFamily,
-		fontStyle: typography.fontStyle,
-		fontWeight: typography.fontWeight,
-		letterSpacing: typography.letterSpacing,
-		textDecoration: typography.textDecoration,
-		textTransform: typography.textTransform,
-		lineHeight: `${typography.lineHeight}px`,
+		...typographyCss(typography, deviceType)
 	};
 
 	const renderTextField = () => {
@@ -309,18 +295,8 @@ function SearchEdit({
 		const butttonStyles = {
 			color: colors.btnText,
 			backgroundColor: colors.btnBackground,
-			paddingTop: `${buttonPadding?.[deviceType]?.top}${buttonPadding?.unit}`,
-			paddingRight: `${buttonPadding?.[deviceType]?.right}${buttonPadding?.unit}`,
-			paddingBottom: `${buttonPadding?.[deviceType]?.bottom}${buttonPadding?.unit}`,
-			paddingLeft: `${buttonPadding?.[deviceType]?.left}${buttonPadding?.unit}`,
-			fontSize: `${buttonFontSize?.[deviceType]}${buttonFontSize?.unit}`,
-			fontFamily: buttonTypography.fontFamily,
-			fontStyle: buttonTypography.fontStyle,
-			fontWeight: buttonTypography.fontWeight,
-			letterSpacing: buttonTypography.letterSpacing,
-			textDecoration: buttonTypography.textDecoration,
-			textTransform: buttonTypography.textTransform,
-			lineHeight: `${buttonTypography.lineHeight}px`,
+			...typographyCss(buttonTypography, deviceType),
+			...paddingCss(buttonPadding, deviceType)
 		};
 
 		const onClickHandler = () => {
@@ -542,10 +518,6 @@ function SearchEdit({
 								<PremiumBorder
 									label={__("Border")}
 									value={border}
-									borderType={border.borderType}
-									borderColor={border.borderColor}
-									borderWidth={border.borderWidth}
-									borderRadius={border.borderRadius}
 									onChange={(value) => setAttributes({ border: value })}
 								/>
 							</PanelBody>
@@ -721,7 +693,28 @@ function SearchEdit({
 								/>
 							</PanelBody>}
 					</InspectorTab>
-					<InspectorTab key={'advance'} />
+					<InspectorTab key={"advance"}>
+						<PremiumResponsiveTabs
+							Desktop={hideDesktop}
+							Tablet={hideTablet}
+							Mobile={hideMobile}
+							onChangeDesktop={(value) =>
+								setAttributes({
+									hideDesktop: value,
+								})
+							}
+							onChangeTablet={(value) =>
+								setAttributes({
+									hideTablet: value,
+								})
+							}
+							onChangeMobile={(value) =>
+								setAttributes({
+									hideMobile: value,
+								})
+							}
+						/>
+					</InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 		</>

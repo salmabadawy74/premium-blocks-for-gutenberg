@@ -28,6 +28,7 @@ import PremiumTypo from "../../components/premium-typo"
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
 import RadioComponent from '../../components/radio-control';
+import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import { generateBlockId, generateCss, typographyCss, paddingCss, marginCss } from '../../components/HelperFunction';
 
 function Edit({ clientId, attributes, setAttributes, context: { postType, postId }, deviceType }) {
@@ -64,7 +65,7 @@ function Edit({ clientId, attributes, setAttributes, context: { postType, postId
     });
 
     const categoryName = hasPostTerms ? postTerms[0].name : __('Post Category');
-    const { textAlign, colors, spacing, typography, breadcrumbsStyle, enablePrefix, blockId } = attributes;
+    const { textAlign, colors, spacing, typography, breadcrumbsStyle, enablePrefix, blockId, hideDesktop, hideTablet, hideMobile } = attributes;
     let margin = spacing.margin ? spacing.margin : {};
     let padding = spacing.padding ? spacing.padding : {};
     let itemPadding = spacing.itemPadding ? spacing.itemPadding : {};
@@ -72,7 +73,10 @@ function Edit({ clientId, attributes, setAttributes, context: { postType, postId
     const fontSize = typography.size ? typography.size : {};
     const blockProps = useBlockProps({
         className: classnames(blockId, {
-            [`has-text-align-${textAlign}`]: textAlign
+            [`has-text-align-${textAlign}`]: textAlign,
+            ['premium-desktop-hidden']: hideDesktop,
+            ['premium-tablet-hidden']: hideTablet,
+            ['premium-mobile-hidden']: hideMobile,
         }),
         style: {
             color: colors.text,
@@ -350,7 +354,28 @@ function Edit({ clientId, attributes, setAttributes, context: { postType, postId
                             )}
                         </PanelBody>
                     </InspectorTab>
-                    <InspectorTab key={'advance'} />
+                    <InspectorTab key={"advance"}>
+                        <PremiumResponsiveTabs
+                            Desktop={hideDesktop}
+                            Tablet={hideTablet}
+                            Mobile={hideMobile}
+                            onChangeDesktop={(value) =>
+                                setAttributes({
+                                    hideDesktop: value,
+                                })
+                            }
+                            onChangeTablet={(value) =>
+                                setAttributes({
+                                    hideTablet: value,
+                                })
+                            }
+                            onChangeMobile={(value) =>
+                                setAttributes({
+                                    hideMobile: value,
+                                })
+                            }
+                        />
+                    </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>
         </>

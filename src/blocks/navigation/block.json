@@ -287,6 +287,15 @@
         "overlayMenuWidth": {
             "type": "number",
             "default": 600
+        },
+        "hideDesktop": {
+            "type": "boolean"
+        },
+        "hideTablet": {
+            "type": "boolean"
+        },
+        "hideMobile": {
+            "type": "boolean"
         }
     },
     "usesContext": ["navigationArea"],

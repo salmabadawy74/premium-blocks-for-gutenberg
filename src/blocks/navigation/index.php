@@ -21,6 +21,11 @@ function get_premium_navigation_css( $attributes, $unique_id ) {
 		$typography = $attributes['typography'];
 
 		$css->set_selector( '.' . $unique_id . ', .' . $unique_id . ' .premium-navigation-item__content' );
+		$css->add_property( 'font-family', $css->render_color( $typography['fontFamily'] ) );
+		$css->add_property( 'font-weight', $css->render_color( $typography['fontWeight'] ) );
+		$css->add_property( 'font-style', $css->render_color( $typography['fontStyle'] ) );
+		$css->add_property( 'text-transform', $css->render_color( $typography['textTransform'] ) );
+		$css->add_property( 'text-decoration', $css->render_color( $typography['textDecoration'] ) );
 		$css->render_typography( $typography, 'Desktop' );
 	}
 
@@ -64,6 +69,11 @@ function get_premium_navigation_css( $attributes, $unique_id ) {
 		$submenu_typography = $attributes['submenuTypography'];
 
 		$css->set_selector( '.' . $unique_id . ' .wp-block-premium-navigation-submenu, .' . $unique_id . ' .wp-block-premium-navigation-submenu .premium-navigation-item__content' );
+		$css->add_property( 'font-family', $css->render_color( $submenu_typography['fontFamily'] ) );
+		$css->add_property( 'font-weight', $css->render_color( $submenu_typography['fontWeight'] ) );
+		$css->add_property( 'font-style', $css->render_color( $submenu_typography['fontStyle'] ) );
+		$css->add_property( 'text-transform', $css->render_color( $submenu_typography['textTransform'] ) );
+		$css->add_property( 'text-decoration', $css->render_color( $submenu_typography['textDecoration'] ) );
 		$css->render_typography( $submenu_typography, 'Desktop' );
 	}
 
@@ -288,6 +298,9 @@ function premium_render_block_navigation( $attributes, $content, $block ) {
 	$break_point                  = isset( $attributes['overlayMenu'] ) && 'custom' === $attributes['overlayMenu'] ? $break_point : '600';
 	$overlay_menu_style           = isset( $attributes['overlayMenuStyle'] ) && $is_responsive_menu ? $attributes['overlayMenuStyle'] : '';
 	$block_id                     = ( ! empty( $attributes['blockId'] ) ) ? $attributes['blockId'] : $id;
+	$hide_desktop                 = ( ! empty( $attributes['hideDesktop'] ) ) ? $attributes['hideDesktop'] : false;
+	$hide_mobile                  = ( ! empty( $attributes['hideMobile'] ) ) ? $attributes['hideMobile'] : false;
+	$hide_tablet                  = ( ! empty( $attributes['hideTablet'] ) ) ? $attributes['hideTablet'] : false;
 
 	wp_enqueue_script(
 		'premium-navigation-view',
@@ -406,7 +419,10 @@ function premium_render_block_navigation( $attributes, $content, $block ) {
 		$layout_class ? array( $layout_class ) : array(),
 		$is_fallback ? array( 'is-fallback' ) : array(),
 		$styles_classes ? array( $styles_classes ) : array(),
-		array( $block_id )
+		array( $block_id ),
+		$hide_desktop ? array( 'premium-desktop-hidden' ) : array(),
+		$hide_tablet ? array( 'premium-tablet-hidden' ) : array(),
+		$hide_mobile ? array( 'premium-mobile-hidden' ) : array(),
 	);
 
 	$inner_blocks_html = '';
