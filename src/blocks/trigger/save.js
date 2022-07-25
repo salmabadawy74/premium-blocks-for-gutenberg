@@ -8,25 +8,23 @@
  import classnames from "classnames";
  export default function Save(props) {
     const { attributes, className } = props;
-    const { blockId, 
-        iconSize,
+    const { 
+        blockId, 
         iconAlignment,
         triggerLabel,
+        labelTypography,
         triggerStyles, 
         canvasStyles, 
         triggerBorder,
         displayFloat,
         displayTriggerLabel,
         floatPosition,
-        vOffset,
-        hOffset,
         hideDesktop,
         hideTablet,
         hideMobile
      } = attributes;
 
     const blockProps = useBlockProps.save({
-        // id: `premium-trigger-${blockId}`,
          className: classnames(
             className, 
             'premium-trigger',
@@ -74,7 +72,15 @@
                             >
                                 
                             { triggerLabel && displayTriggerLabel && 
-                                <span className='trigger-label' style={{color: triggerStyles.labelColor }}>{triggerLabel}</span>
+                                <span className='trigger-label' style={{
+                                    color: triggerStyles.labelColor,
+                                    fontStyle: labelTypography.fontStyle,
+                                    fontFamily: labelTypography.fontFamily,
+                                    fontWeight: labelTypography.fontWeight,
+                                    textDecoration: labelTypography.textDecoration,
+                                    textTransform: labelTypography.textTransform
+                                }}
+                                >{triggerLabel}</span>
                             }
                                 <svg style={{fill:`${triggerStyles.iconColor}`}} height="1.5em" viewBox="0 -53 384 384" width="1.5em" xmlns="http://www.w3.org/2000/svg">
                                     <path d="m368 154.667969h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"></path>

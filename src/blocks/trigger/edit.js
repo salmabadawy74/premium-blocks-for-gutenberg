@@ -3,9 +3,7 @@ import classnames from "classnames";
 import {
     useBlockProps,
     InnerBlocks,
-    InspectorControls,
-    BlockControls,
-    AlignmentToolbar
+    InspectorControls
 } from '@wordpress/block-editor';
 import {
     Fragment,
@@ -14,17 +12,26 @@ import {
 } from '@wordpress/element';
 import { withSelect } from '@wordpress/data'
 import { PanelBody, TextControl, TabPanel, ToggleControl, SelectControl } from '@wordpress/components';
+import MultiButtonsControl from "../../components/responsive-radio";
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 import PremiumBorder from "../../components/premium-border";
 import RadioComponent from '../../components/radio-control';
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
-import SpacingControl from '../../components/premium-responsive-spacing'
+import SpacingComponent from "../../components/premium-responsive-spacing";
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
-import { borderCss, generateBlockId, paddingCss } from '../../components/HelperFunction';
+import PremiumTypo from "../../components/premium-typo";
+import { 
+    borderCss,
+    generateBlockId,
+    generateCss,
+    paddingCss,
+    typographyCss,
+} from '../../components/HelperFunction';
 import Icons from "../../components/icons";
+import GoogleFontLoader from "react-google-font-loader";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -47,13 +54,14 @@ import './editor.scss';
 function Edit(props) {
 
     const [isEditing, setEditing] = useState(false);
-    const { attributes, setAttributes, className, clientId } = props;
+    const { attributes, setAttributes, className, clientId, deviceType } = props;
 
     useEffect(() => {
         setAttributes({ blockId: "premium-trigger-" + generateBlockId(clientId) })
     }, [])
 
-    const { triggerLabel,
+    const { 
+        triggerLabel,
         iconSize,
         iconAlignment,
         displayTriggerLabel,
@@ -68,7 +76,8 @@ function Edit(props) {
         hOffset,
         hideDesktop,
         hideTablet,
-        hideMobile
+        hideMobile,
+        labelTypography
     } = attributes;
 
     const onChangeText = (newText) => {
@@ -86,10 +95,76 @@ function Edit(props) {
         setAttributes({ canvasStyles: newCStyles });
     };
 
+    const loadStyles = () => {
+        const styles = {};
+
+        styles[`.${blockId} .toggle-button:hover`] = {
+            'background-color': (triggerStyles?.iconBgHoverColor) + '!important',
+        }
+        styles[`.${blockId} .toggle-button:hover svg`] = {
+            'background-color': triggerStyles?.iconHoverColor + '!important',
+        }
+        styles[`.${blockId} .toggle-button:hover svg`] = {
+            'fill': triggerStyles?.iconHoverColor + '!important',
+        }
+        styles[`.${blockId} .toggle-button:hover .trigger-label`] = {
+            'color': triggerStyles?.labelHoverColor + '!important',
+        }
+        styles[`.${blockId} .toggle-button[data-style="solid"]`] = {
+            'background-color': triggerStyles?.iconBgColor + '!important',
+        }
+        styles[`.${blockId} .toggle-button[data-style="outline"]:hover]`] = {
+            'border-color': triggerStyles?.borderHoverColor + '!important',
+        }
+        styles[`.${blockId} .toggle-button[data-style="solid"]:hover`] = {
+            'border-color': triggerStyles?.borderHoverColor + '!important',
+            'background-color': (triggerStyles?.iconBgHoverColor) + '!important',
+        }
+        styles[`.${blockId}.float-position-topright`] = {
+            'top': (vOffset[props.deviceType] || 20) + vOffset.unit,
+            'right': (hOffset[props.deviceType] || 20) + hOffset.unit,
+        }
+        styles[`.${blockId}.float-position-topleft`] = {
+            'top': (vOffset[props.deviceType] || 20) + vOffset.unit,
+            'left': (hOffset[props.deviceType] || 20) + hOffset.unit,
+        }
+        styles[`.${blockId}.float-position-bottomright`] = {
+            'bottom': (vOffset[props.deviceType] || 20) + vOffset.unit,
+            'right': (hOffset[props.deviceType] || 20) + hOffset.unit,
+        }
+        styles[`.${blockId}.float-position-bottomleft`] = {
+            'bottom': (vOffset[props.deviceType] || 20) + vOffset.unit,
+            'left': (hOffset[props.deviceType] || 20) + hOffset.unit,
+        }
+        styles[`.${blockId} .premium-trigger-canvas-container[data-layout="right"] .premium-popup-content`] = {
+            'width': (canvasStyles?.width) + 'px',
+        }
+        styles[`.${blockId} .premium-trigger-canvas-container[data-layout="left"] .premium-popup-content`] = {
+            'width': (canvasStyles?.width) + 'px',
+        }
+
+        return generateCss(styles);
+    };
+    
+    let loadLabelGoogleFonts;
+
+    if (labelTypography.fontFamily !== "Default") {
+        loadLabelGoogleFonts = (
+            <GoogleFontLoader
+                fonts={[
+                    {
+                        font: labelTypography?.fontFamily,
+                    },
+                ]}
+            />
+        );
+    }
+
+
 
     return (
         <Fragment>
-            <BlockControls group="block">
+            {/* <BlockControls group="block">
                 <AlignmentToolbar
                     value={iconAlignment}
                     onChange={(newAlignment) => {
@@ -97,7 +172,7 @@ function Edit(props) {
                     }}
 
                 />
-            </BlockControls>
+            </BlockControls> */}
 
             <InspectorControls>
                 <InspectorTabs tabs={['layout', 'style', 'advance']}>
@@ -141,6 +216,36 @@ function Edit(props) {
                                 value={triggerStyles.style}
                                 onChange={newValue => setTriggerStyles('style', newValue)}
                             />
+                            <MultiButtonsControl
+                                    choices={[
+                                        {
+                                            value: "left",
+                                            label: __("Left"),
+                                            icon: Icons.alignLeft,
+                                        },
+                                        {
+                                            value: "center",
+                                            label: __("Center"),
+                                            icon: Icons.alignCenter,
+                                        },
+                                        {
+                                            value: "right",
+                                            label: __("Right"),
+                                            icon: Icons.alignRight,
+                                        },
+                                    ]}
+                                    value={iconAlignment}
+                                    onChange={(align) =>
+                                        setAttributes({
+                                            iconAlignment: align,
+                                        })
+                                    }
+                                    label={__(
+                                        "Alignment",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                    showIcons={true}
+                                />
 
                             <ToggleControl
                                 label={__("Float", 'premium-blocks-for-gutenberg')}
@@ -223,6 +328,16 @@ function Edit(props) {
                                 units={['px']}
                                 defaultValue={20}
                             />
+                            {attributes.displayTriggerLabel && (
+                            <PremiumTypo
+                                    value={labelTypography}
+                                    onChange={(newValue) =>
+                                        setAttributes({
+                                            labelTypography: newValue,
+                                        })
+                                    }
+                                />
+                            )}
                             <TabPanel
                                 className="premium-color-tabpanel"
                                 activeClass="active-tab"
@@ -306,7 +421,6 @@ function Edit(props) {
                                         label={__('Border', 'premium-blocks-for-gutenberg')}
                                         value={triggerBorder}
                                         onChange={(value) => setAttributes({ triggerBorder: value })}
-                                        device="Desktop"
                                     />
                                     <AdvancedPopColorControl
                                         label={__("Border Hover Color", 'premium-blocks-for-gutenberg')}
@@ -352,7 +466,7 @@ function Edit(props) {
                                     defaultValue={400}
                                 />)
                             }
-                            <SpacingControl
+                            <SpacingComponent
                                 label={__('Padding', 'premium-blocks-for-gutenberg')}
                                 value={triggerSpacing}
                                 onChange={(value) => setAttributes({ triggerSpacing: value })}
@@ -374,55 +488,11 @@ function Edit(props) {
                 </InspectorTabs>
             </InspectorControls>
 
-            <style>
-                {`
-            .${blockId} .toggle-button:hover {
-                background-color:${triggerStyles.iconBgHoverColor} !important;
-            }
-            .${blockId} .toggle-button:hover svg {
-                fill:${triggerStyles.iconHoverColor} !important;
-            }
-            .${blockId} .toggle-button:hover .trigger-label {
-                color:${triggerStyles.labelHoverColor} !important;
-            }
-            .${blockId} .toggle-button[data-style="solid"] {
-                background-color: ${triggerStyles.iconBgColor} ;
-            }
-            .${blockId} .toggle-button[data-style="outline"],
-            .${blockId} .toggle-button[data-style="solid"] {
-                border-style: ${triggerBorder.borderType};
-                border-top-left-radius: ${triggerBorder && triggerBorder.borderRadius[props.deviceType].top || 0}px,
-                border-top-right-radius: ${triggerBorder && triggerBorder.borderRadius[props.deviceType].right || 0}px,
-                border-bottom-right-radius: ${triggerBorder && triggerBorder.borderRadius[props.deviceType].bottom || 0}px,
-                border-bottom-left-radius: ${triggerBorder && triggerBorder.borderRadius[props.deviceType].left || 0}px,
-                border-color: ${triggerBorder && triggerBorder.borderColor};
-            }
-            .${blockId} .toggle-button[data-style="outline"]:hover,
-            .${blockId} .toggle-button[data-style="solid"]:hover {
-                border-color: ${triggerStyles.borderHoverColor} !important;
-            }
-            .${blockId}.float-position-topright {
-                top: ${(vOffset[props.deviceType] || 20) + vOffset.unit};
-                right: ${(hOffset[props.deviceType] || 20) + hOffset.unit};
-            }
-             .${blockId}.float-position-topleft {
-                 top: ${(vOffset[props.deviceType] || 20) + vOffset.unit};
-                 left: ${(hOffset[props.deviceType] || 20) + hOffset.unit};
-             }
-             .${blockId}.float-position-bottomright {
-                bottom: ${(vOffset[props.deviceType] || 20) + vOffset.unit};
-                right: ${(hOffset[props.deviceType] || 20) + hOffset.unit};
-            }
-            .${blockId}.float-position-bottomleft {
-                bottom: ${(vOffset[props.deviceType] || 20) + vOffset.unit};
-                left: ${(hOffset[props.deviceType] || 20) + hOffset.unit};
-            }
-            .${blockId} .premium-trigger-canvas-container[data-layout="right"] .premium-popup-content,
-            .${blockId} .premium-trigger-canvas-container[data-layout="left"] .premium-popup-content {
-                width: ${canvasStyles.width}px;
-            }
-        `}
-            </style>
+            <style
+                dangerouslySetInnerHTML={{
+                    __html: loadStyles()
+                }}
+            />
 
             <div {...useBlockProps({
                 className: classnames(
@@ -432,14 +502,17 @@ function Edit(props) {
                 ),
             })}>
                 <div className={`premium-trigger-container`}>
-                    <div className={`premium-trigger-icon-container has-icon-align-${iconAlignment}`}>
+                    <div className={`premium-trigger-icon-container`}
+                    style={{
+                        textAlign: iconAlignment[props.deviceType]
+                    }}>
                         <a className={`toggle-button ${isEditing ? "toggled" : ""}`}
                             data-style={triggerStyles.style}
                             data-label={triggerStyles.labelPosition}
                             onClick={() => setEditing(true)
                             }
                             style={{
-                                ...borderCss(triggerBorder, props.deviceType),
+                                ...borderCss(triggerBorder, props.deviceType)
                             }}>
                             {triggerLabel && displayTriggerLabel && 
                                 (<span
@@ -447,7 +520,13 @@ function Edit(props) {
                                     onChange={onChangeText}
                                     value={triggerLabel}
                                     placeholder={__('Menu', 'premium-blocks-for-gutenberg')}
-                                    style={{ color: triggerStyles.labelColor }}
+                                    style={{ 
+                                        color: triggerStyles.labelColor,
+                                        ...typographyCss(
+                                            labelTypography,
+                                            props.deviceType
+                                        ),
+                                     }}
                                 >{triggerLabel}</span>)}
                             <svg style={{ fontSize: (iconSize[props.deviceType] || 20) + iconSize.unit, fill: `${triggerStyles.iconColor}` }} height="1.5em" viewBox="0 -53 384 384" width="1.5em" xmlns="http://www.w3.org/2000/svg">
                                 <path d="m368 154.667969h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"></path>
@@ -479,7 +558,9 @@ function Edit(props) {
                             </div>
                         </div>
                     )}
-                </div></div>
+                </div>
+                {loadLabelGoogleFonts}
+                </div>
         </Fragment>
     )
 }
