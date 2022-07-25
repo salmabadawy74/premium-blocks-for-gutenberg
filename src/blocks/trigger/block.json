@@ -15,28 +15,33 @@
 	"editorStyle": "file:./build/index.css",
 	"style": "file:./build/style-block.css",
 	"attributes": {
-		"text": {
-			"type": "string"
-		},
-		"block_id": {
+		"blockId": {
 			"type": "string"
 		},
 		"triggerLabel": {
-			"type": "string"
+			"type": "string",
+			"default": "Menu"
+		},
+		"displayTriggerLabel": {
+			"type": "boolean"
 		},
 		"displayFloat": {
 			"type": "boolean"
 		},
 		"iconAlignment": {
-			"type": "string",
-			"default": "left"
+			"type": "object",
+        	"default": {
+				"Desktop": "left",
+				"Tablet": "left",
+				"Mobile": "left"
+			}
 		},
 		"floatPosition": {
 			"type": "string",
 			"default": "topright"
 		},
 		"iconSize": {
-			"type": "object",
+			"type": "object", 
 			"default": {
 				"Desktop": "20",
 				"unit": "px"
@@ -68,10 +73,13 @@
 			"type": "boolean",
 			"default":""
 		},
+		"closeIconColor": {
+			"type": "string"
+		},
 		"triggerBorder": {
 			"type": "object",
 			"default": {
-				"borderColor": "#e8e8e8",
+				"borderColor": "#e1e1e1",
 				"borderType": "solid",
 				"borderRadius": {
 					"Desktop": {
@@ -89,7 +97,7 @@
 					"Mobile": {
 						"top": "",
 						"right": "",
-						"bottom": "",
+						"bottom": "",    
 						"left": ""
 					}
 				},
@@ -119,15 +127,12 @@
             "type": "object",
             "default": {
                 "iconColor": "",
-                "iconBgColor": "#e8e8e8",
+                "iconBgColor": "#f2f2f2",
                 "iconHoverColor": "",
 				"labelHoverColor": "",
                 "iconHoverBgColor": "",
-				"labelPosition": "",
-				"style": "simple",
-				"borderType": "solid",
-				"borderColor": "#e8e8e8",
-				"borderHoverColor": ""
+				"labelPosition": "left",
+				"style": "simple"
             }
         },
 		"canvasStyles": {
@@ -135,7 +140,6 @@
             "default": {
 				"overlayBgColor": "",
                 "canvasBgColor": "#fff",
-				"colseIconColor": "#",
 				"layout": "right",
 				"width": ""
             }
@@ -163,7 +167,35 @@
 					},
 					"unit": "px"
             }
-        }
+        },
+		"labelTypography": {
+			"type": "object",
+			"default": {
+				"fontWeight": "400",
+				"fontStyle": "",
+				"letterSpacing": {
+					"Desktop": "",
+					"Tablet": "",
+					"Mobile": "",
+					"unit": "px"
+				},
+				"fontFamily": "Default",
+				"lineHeight": {
+					"Desktop": "",
+					"Tablet": "",
+					"Mobile": "",
+					"unit": "px"
+				},
+				"textDecoration": "",
+				"textTransform": "",
+				"fontSize": {
+					"Desktop": "",
+					"Tablet": "",
+					"Mobile": "",
+					"unit": "px"
+				}
+			}
+		}
 	}
 
 }
