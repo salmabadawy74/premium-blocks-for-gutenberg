@@ -2136,6 +2136,10 @@ a.premium-dheading-block__link:hover {
 
 /**************** Premium Person *********************/
 /*******************************************************/
+.premium-person {
+    text-align: center;
+}
+
 .premium-person__img,
 .premium-person__inner,
 .premium-person__img_wrap img {
@@ -2158,12 +2162,13 @@ a.premium-dheading-block__link:hover {
 }
 
 .premium-person__name {
-    margin: 0 !important;
+    margin: 0;
+    padding: 7px;
 }
 
 .premium-person__title {
     margin: 0;
-    padding: 0;
+    padding: 5px;
 }
 
 .premium-person__effect2 {
@@ -2196,7 +2201,7 @@ a.premium-dheading-block__link:hover {
 }
 
 .premium-person__social-List {
-    margin: 0 !important;
+    /* margin: 0 !important; */
     padding: 0;
     list-style: none !important;
 }
@@ -2210,11 +2215,15 @@ a.premium-dheading-block__link:hover {
     transition: all 0.5s ease-in-out;
 }
 
-.premium-person__social-List li i {
+.premium-person__social-List li svg {
     position: relative;
     bottom: 0;
     -webkit-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
+    margin-right: 7px;
+    margin-left: 7px;
+    width: 20px;
+    height: 20px;
 }
 
 .premium-person__img {
@@ -2223,8 +2232,11 @@ a.premium-dheading-block__link:hover {
 }
 
 .premium-person img {
-    width: 100%;
-    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
     -o-object-fit: cover;
     object-fit: cover;
     -webkit-transition: all 0.5s ease-in-out;
@@ -2272,7 +2284,7 @@ a.premium-dheading-block__link:hover {
     background: #ea4c89 !important;
 }
 
-.vimeo-v:hover {
+.vimeo:hover {
     background: #45bbff !important;
 }
 
@@ -2321,7 +2333,7 @@ a.premium-dheading-block__link:hover {
 }
 
 .wordpress:hover {
-    background: gray !important;
+    background: #00749c !important;
 }
 
 .premium-person__socialIcon__container {
@@ -2410,10 +2422,10 @@ a.premium-dheading-block__link:hover {
 
 .premium-person__socialIcon__link_content {
     text-decoration: none;
-    color: black;
+    /* color: black; */
     display: inline-block;
-    margin-top: 1px;
-    margin-bottom: 1px;
+    /* margin-top: 1px;
+    margin-bottom: 1px; */
 }
 
 .premium-person__socialIcon__link_content:hover {
