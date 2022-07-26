@@ -2,13 +2,11 @@ import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import iconsList from "../../components/premium-icons-list";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 import PremiumBorder from "../../components/premium-border"
-import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import RadioComponent from '../../components/radio-control';
 const { __ } = wp.i18n;
 import PremiumTypo from "../../components/premium-typo";
 import PremiumMediaUpload from "../../components/premium-media-upload"
-import PremiumResponsiveMargin from '../../components/Premium-Responsive-Margin';
 import PremiumShadow from "../../components/PremiumShadow"
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
 import PremiumBackgroundControl from '../../components/Premium-Background-Control'

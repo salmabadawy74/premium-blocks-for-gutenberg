@@ -343,27 +343,7 @@ class edit extends Component {
 
         const currentDevice = this.props.deviceType;
         const BulletIconSize = bulletIconFontSize?.[currentDevice];
-        const BulletIconMarginTop = bulletIconmargin?.[currentDevice]?.top;
-        const BulletIconMarginRight = bulletIconmargin?.[currentDevice]?.right;
-        const BulletIconMarginBottom = bulletIconmargin?.[currentDevice]?.bottom;
-        const BulletIconMarginLeft = bulletIconmargin?.[currentDevice]?.left;
-        const BulletIconPaddingTop = bulletIconpadding?.[currentDevice]?.top;
-        const BulletIconPaddingRight = bulletIconpadding?.[currentDevice]?.right;
-        const BulletIconPaddingBottom = bulletIconpadding?.[currentDevice]?.bottom;
-        const BulletIconPaddingLeft = bulletIconpadding?.[currentDevice]?.left;
         const TitleSize = titleTypography ? titleTypography?.fontSize?.[currentDevice] : '';
-        const TitleMarginTop = titlemargin?.[currentDevice]?.top;
-        const TitleMarginRight = titlemargin?.[currentDevice]?.right;
-        const TitleMarginBottom = titlemargin?.[currentDevice]?.bottom;
-        const TitleMarginLeft = titlemargin?.[currentDevice]?.left;
-        const GeneralMarginTop = generalmargin?.[currentDevice]?.top;
-        const GeneralMarginRight = generalmargin?.[currentDevice]?.right;
-        const GeneralMarginBottom = generalmargin?.[currentDevice]?.bottom;
-        const GeneralMarginLeft = generalmargin?.[currentDevice]?.left;
-        const GeneralPaddingTop = generalpadding?.[currentDevice]?.top;
-        const GeneralPaddingRight = generalpadding?.[currentDevice]?.right;
-        const GeneralPaddingBottom = generalpadding?.[currentDevice]?.bottom;
-        const GeneralPaddingLeft = generalpadding?.[currentDevice]?.left;
         const DividerWidth = dividerWidth?.[currentDevice];
         const DividerHeight = dividerHeight?.[currentDevice];
 

@@ -10,8 +10,9 @@ import ResponsiveSingleRangeControl from "../../components/RangeControl/single-r
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 import PremiumBackgroundControl from '../../components/Premium-Background-Control';
 import RadioComponent from '../../components/radio-control'
-import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
 import PremiumShadow from "../../components/PremiumShadow";
+import PremiumTypo from "../../components/premium-typo";
+import { generateBlockId, gradientBackground, generateCss, typographyCss, paddingCss, marginCss, borderCss } from '../../components/HelperFunction';
 
 const { __ } = wp.i18n;
 
@@ -30,7 +31,10 @@ class edit extends Component {
 
     componentDidMount() {
         const { setAttributes, clientId } = this.props;
-        setAttributes({ block_id: clientId.substr(0, 6) })
+        // Assigning id in the attribute.
+        if (!this.props.attributes.blockId) {
+            setAttributes({ blockId: "premium-testimonials-" + generateBlockId(clientId) });
+        }
         this.props.setAttributes({ classMigrate: true });
     }
 
@@ -52,14 +56,12 @@ class edit extends Component {
     render() {
         const { isSelected, className, setAttributes } = this.props;
         const {
-            block_id,
+            blockId,
             align,
             authorImgId,
             authorImgUrl,
-            imgRadius,
             imgSize,
             imgBorder,
-            imgBorderColor,
             author,
             authorStyles,
             text,
@@ -70,36 +72,14 @@ class edit extends Component {
             contentStyle,
             companyStyles,
             quoteStyles,
-            containerStyles,
-            paddingTop,
-            paddingRight,
-            paddingBottom,
-            paddingLeft,
-            backgroundType,
-            paddingTTablet,
-            paddingRTablet,
-            paddingBTablet,
-            paddingLTablet,
-            paddingTMobile,
-            paddingRMobile,
-            paddingBMobile,
-            paddingLMobile,
+            padding,
+            background,
+            boxShadow,
+            authorTypography,
+            bodyMargin,
+            bodyTypography,
+            companyTypography,
         } = this.props.attributes;
-
-        const RADIUS = [
-            {
-                value: "0",
-                label: __("Square", 'premium-blocks-for-gutenberg')
-            },
-            {
-                value: "50%",
-                label: __("Circle", 'premium-blocks-for-gutenberg')
-            },
-            {
-                value: "15px",
-                label: __("Rounded", 'premium-blocks-for-gutenberg')
-            }
-        ];
 
         const saveAuthorStyle = (value) => {
             const newUpdate = authorStyles.map((item, index) => {
@@ -125,18 +105,6 @@ class edit extends Component {
             });
         }
 
-        const saveContainerStyle = (value) => {
-            const newUpdate = containerStyles.map((item, index) => {
-                if (0 === index) {
-                    item = { ...item, ...value };
-                }
-                return item;
-            });
-            setAttributes({
-                containerStyles: newUpdate,
-            });
-        }
-
         const saveCompanyStyle = (value) => {
             const newUpdate = companyStyles.map((item, index) => {
                 if (0 === index) {
@@ -156,27 +124,13 @@ class edit extends Component {
             });
             setAttributes({ quoteStyles: newUpdate, });
         }
-        let btnGrad, btnGrad2, btnbg;
-        if (undefined !== backgroundType && 'gradient' === backgroundType) {
-            btnGrad = ('transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack);
-            btnGrad2 = (undefined !== containerStyles[0].gradientColorTwo && undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777');
-            if ('radial' === containerStyles[0].gradientType) {
-                btnbg = `radial-gradient(at ${containerStyles[0].gradientPosition}, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
-            } else if ('radial' !== containerStyles[0].gradientType) {
-                btnbg = `linear-gradient(${containerStyles[0].gradientAngle}deg, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
-            }
-        } else {
-            btnbg = containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : 'none'
-        }
 
-        const mainClasses = classnames(className, "premium-testimonial");
-        const authorFontSize = this.getPreviewSize(this.props.deviceType, authorStyles[0].authorSize, authorStyles[0].authorSizeTablet, authorStyles[0].authorSizeMobile);
-        const authorComFontSize = this.getPreviewSize(this.props.deviceType, companyStyles[0].authorComSize, companyStyles[0].authorComSizeTablet, companyStyles[0].authorComSizeMobile);
-        const testimonalFontSize = this.getPreviewSize(this.props.deviceType, contentStyle[0].bodySize, contentStyle[0].bodySizeTablet, contentStyle[0].bodySizeMobile);
-        const containerPaddingTop = this.getPreviewSize(this.props.deviceType, paddingTop, paddingTTablet, paddingTMobile);
-        const containerPaddingRight = this.getPreviewSize(this.props.deviceType, paddingRight, paddingRTablet, paddingRMobile);
-        const containerPaddingBottom = this.getPreviewSize(this.props.deviceType, paddingLeft, paddingLTablet, paddingLMobile);
-        const containerPaddingLeft = this.getPreviewSize(this.props.deviceType, paddingLeft, paddingLTablet, paddingLMobile);
+        const mainClasses = classnames(className, "premium-testimonial", {
+            " premium-desktop-hidden": hideDesktop,
+            " premium-tablet-hidden": hideTablet,
+            " premium-mobile-hidden": hideMobile,
+        });
+
         return [
             isSelected && (
                 <BlockControls key="controls">
@@ -218,14 +172,6 @@ class edit extends Component {
                                 }}
                             />
                             {authorImgUrl && (
-                                <SelectControl
-                                    label={__("Image Style", 'premium-blocks-for-gutenberg')}
-                                    options={RADIUS}
-                                    value={imgRadius}
-                                    onChange={newWeight => setAttributes({ imgRadius: newWeight })}
-                                />
-                            )}
-                            {authorImgUrl && (
                                 <ResponsiveSingleRangeControl
                                     label={__("Size", 'premium-blocks-for-gutenberg')}
                                     value={imgSize}
@@ -236,52 +182,23 @@ class edit extends Component {
                                 />
                             )}
                             {authorImgUrl && (
-                                <ResponsiveSingleRangeControl
-                                    label={__("Border Width (PX)", 'premium-blocks-for-gutenberg')}
+                                <PremiumBorder
+                                    label={__("Border")}
                                     value={imgBorder}
-                                    onChange={newSize => setAttributes({ imgBorder: newSize })}
-                                    showUnit={false}
-                                    defaultValue={0}
-                                />
-                            )}
-                            {authorImgUrl && (
-                                <AdvancedPopColorControl
-                                    label={__("Border Color", 'premium-blocks-for-gutenberg')}
-                                    colorValue={imgBorderColor}
-                                    colorDefault={''}
-                                    onColorChange={newValue => setAttributes({ imgBorderColor: newValue })}
+                                    onChange={(value) => setAttributes({ imgBorder: value })}
                                 />
                             )}
                         </PanelBody>
                         <RadioComponent
-                            choices={['H1', 'H2', 'H3', 'H4', 'H5', 'H6']}
+                            choices={[{ value: 'h1', label: __('H1') }, { value: 'h2', label: __('H2') }, { value: 'h3', label: __('H3') }, { value: 'h4', label: __('H4') }, { value: 'h5', label: __('H5') }, { value: 'h6', label: __('H6') }]}
                             value={authorStyles[0].authorTag}
                             onChange={(newValue) => saveAuthorStyle({ authorTag: newValue })}
-                            label={__("Author HTML Tag", 'premium-blocks-for-gutenberg')}
+                            label={__("Title Tag", 'premium-blocks-for-gutenberg')}
                         />
                         <PremiumTypo
-                            components={["responsiveSize", "weight", "style", "upper", "spacing"]}
-                            setAttributes={saveAuthorStyle}
-                            fontSizeType={{
-                                value: authorStyles[0].authorSizeUnit,
-                                label: __("authorSizeUnit", 'premium-blocks-for-gutenberg'),
-                            }}
-                            fontSize={authorStyles[0].authorSize}
-                            fontSizeMobile={authorStyles[0].authorSizeMobile}
-                            fontSizeTablet={authorStyles[0].authorSizeTablet}
-                            onChangeSize={newSize => saveAuthorStyle({ authorSize: newSize })}
-                            onChangeTabletSize={newSize => saveAuthorStyle({ authorSizeTablet: newSize })}
-                            onChangeMobileSize={newSize => saveAuthorStyle({ authorSizeMobile: newSize })}
-                            weight={authorStyles[0].authorWeight}
-                            style={authorStyles[0].authorStyle}
-                            spacing={authorStyles[0].authorLetter}
-                            upper={authorStyles[0].authorUpper}
-                            onChangeWeight={newWeight =>
-                                saveAuthorStyle({ authorWeight: newWeight })
-                            }
-                            onChangeStyle={newStyle => saveAuthorStyle({ authorStyle: newStyle })}
-                            onChangeSpacing={newValue => saveAuthorStyle({ authorLetter: newValue })}
-                            onChangeUpper={check => saveAuthorStyle({ authorUpper: check })}
+                            components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
+                            value={authorTypography}
+                            onChange={newValue => setAttributes({ authorTypography: newValue })}
                         />
                         <AdvancedPopColorControl
                             label={__("Color", 'premium-blocks-for-gutenberg')}
@@ -295,28 +212,10 @@ class edit extends Component {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <ResponsiveRangeControl
-                            label={__("Font Size", 'premium-blocks-for-gutenberg')}
-                            value={contentStyle[0].bodySize}
-                            onChange={value => saveContentStyle({ bodySize: value })}
-                            tabletValue={contentStyle[0].bodySizeTablet}
-                            onChangeTablet={value => saveContentStyle({ bodySizeTablet: value })}
-                            mobileValue={contentStyle[0].bodySizeMobile}
-                            onChangeMobile={value => saveContentStyle({ bodySizeMobile: value })}
-                            onChangeUnit={key => saveContentStyle({ bodySizeUnit: key })}
-                            unit={contentStyle[0].bodySizeUnit}
-                            showUnit={true}
-                            defaultValue={20}
-                            units={["px", "em"]}
-                        />
-                        <ResponsiveSingleRangeControl
-                            label={__("Line Height (PX)", 'premium-blocks-for-gutenberg')}
-                            value={contentStyle[0].bodyLine}
-                            onChange={(value) => saveContentStyle({ bodyLine: value })}
-                            defaultValue={1}
-                            showUnit={false}
-                            min={0}
-                            max={100}
+                        <PremiumTypo
+                            components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
+                            value={bodyTypography}
+                            onChange={newValue => setAttributes({ bodyTypography: newValue })}
                         />
                         <AdvancedPopColorControl
                             label={__("Color", 'premium-blocks-for-gutenberg')}
@@ -324,20 +223,7 @@ class edit extends Component {
                             colorDefault={''}
                             onColorChange={newValue => saveContentStyle({ bodyColor: newValue })}
                         />
-                        <ResponsiveSingleRangeControl
-                            label={__("Margin Top (PX)", 'premium-blocks-for-gutenberg')}
-                            value={contentStyle[0].bodyTop}
-                            onChange={newSize => saveContentStyle({ bodyTop: newSize })}
-                            showUnit={false}
-                            defaultValue={0}
-                        />
-                        <ResponsiveSingleRangeControl
-                            label={__("Margin Bottom (PX)", 'premium-blocks-for-gutenberg')}
-                            value={contentStyle[0].bodyBottom}
-                            onChange={newSize => saveContentStyle({ bodyBottom: newSize })}
-                            showUnit={false}
-                            defaultValue={0}
-                        />
+                        <SpacingComponent value={bodyMargin} responsive={true} showUnits={true} label={__("Margin")} onChange={(value) => setAttributes({ bodyMargin: value })} />
                     </PanelBody>
                     <PanelBody
                         title={__("Company", 'premium-blocks-for-gutenberg')}
@@ -345,24 +231,15 @@ class edit extends Component {
                         initialOpen={false}
                     >
                         <RadioComponent
-                            choices={['H1', 'H2', 'H3', 'H4', 'H5', 'H6']}
+                            choices={[{ value: 'h1', label: __('H1') }, { value: 'h2', label: __('H2') }, { value: 'h3', label: __('H3') }, { value: 'h4', label: __('H4') }, { value: 'h5', label: __('H5') }, { value: 'h6', label: __('H6') }]}
                             value={authorStyles[0].authorComTag}
                             onChange={(newValue) => saveAuthorStyle({ authorComTag: newValue })}
-                            label={__("HTML Tag", 'premium-blocks-for-gutenberg')}
+                            label={__("Title Tag", 'premium-blocks-for-gutenberg')}
                         />
-                        <ResponsiveRangeControl
-                            label={__("Font Size", 'premium-blocks-for-gutenberg')}
-                            value={companyStyles[0].authorComSize}
-                            onChange={value => saveCompanyStyle({ authorComSize: value })}
-                            tabletValue={companyStyles[0].authorComSizeTablet}
-                            onChangeTablet={value => saveCompanyStyle({ authorComSizeTablet: value })}
-                            mobileValue={companyStyles[0].authorComSizeMobile}
-                            onChangeMobile={value => saveCompanyStyle({ authorComSizeMobile: value })}
-                            onChangeUnit={key => saveCompanyStyle({ authorComSizeUnit: key })}
-                            unit={companyStyles[0].authorComSizeUnit}
-                            showUnit={true}
-                            defaultValue={20}
-                            units={["px", "em"]}
+                        <PremiumTypo
+                            components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
+                            value={companyTypography}
+                            onChange={newValue => setAttributes({ companyTypography: newValue })}
                         />
                         <AdvancedPopColorControl
                             label={__("Text Color", 'premium-blocks-for-gutenberg')}
@@ -430,99 +307,16 @@ class edit extends Component {
                         initialOpen={false}
                     >
                         <PremiumBackgroundControl
-                            setAttributes={setAttributes}
-                            saveContainerStyle={saveContainerStyle}
-                            backgroundType={backgroundType}
-                            backgroundColor={containerStyles[0].containerBack}
-                            backgroundImageID={containerStyles[0].backgroundImageID}
-                            backgroundImageURL={containerStyles[0].backgroundImageURL}
-                            backgroundPosition={containerStyles[0].backgroundPosition}
-                            backgroundRepeat={containerStyles[0].backgroundRepeat}
-                            backgroundSize={containerStyles[0].backgroundSize}
-                            fixed={containerStyles[0].fixed}
-                            gradientLocationOne={containerStyles[0].gradientLocationOne}
-                            gradientColorTwo={containerStyles[0].gradientColorTwo}
-                            gradientLocationTwo={containerStyles[0].gradientLocationTwo}
-                            gradientAngle={containerStyles[0].gradientAngle}
-                            gradientPosition={containerStyles[0].gradientPosition}
-                            gradientType={containerStyles[0].gradientType}
+                            value={background}
+                            onChange={(value) => setAttributes({ background: value })}
                         />
                         <PremiumShadow
+                            label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
                             boxShadow={true}
-                            color={containerStyles[0].shadowColor}
-                            blur={containerStyles[0].shadowBlur}
-                            horizontal={containerStyles[0].shadowHorizontal}
-                            vertical={containerStyles[0].shadowVertical}
-                            position={containerStyles[0].shadowPosition}
-                            onChangeColor={newColor => saveContainerStyle({ shadowColor: newColor })}
-                            onChangeBlur={newBlur => saveContainerStyle({ shadowBlur: newBlur })}
-                            onChangehHorizontal={newValue => saveContainerStyle({ shadowHorizontal: newValue })}
-                            onChangeVertical={newValue => saveContainerStyle({ shadowVertical: newValue })}
-                            onChangePosition={newValue => saveContainerStyle({ shadowPosition: newValue })}
+                            value={boxShadow}
+                            onChange={(value) => setAttributes({ boxShadow: value })}
                         />
-
-                        <PremiumResponsivePadding
-                            paddingTop={paddingTop}
-                            paddingRight={paddingRight}
-                            paddingBottom={paddingBottom}
-                            paddingLeft={paddingLeft}
-                            paddingTopTablet={paddingTTablet}
-                            paddingRightTablet={paddingRTablet}
-                            paddingBottomTablet={paddingBTablet}
-                            paddingLeftTablet={paddingLTablet}
-                            paddingTopMobile={paddingTMobile}
-                            paddingRightMobile={paddingRMobile}
-                            paddingBottomMobile={paddingBMobile}
-                            paddingLeftMobile={paddingLMobile}
-                            showUnits={true}
-                            selectedUnit={containerStyles[0].paddingUnit}
-                            onChangePadSizeUnit={newvalue => saveContainerStyle({ paddingUnit: newvalue })}
-                            onChangePaddingTop={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ paddingTop: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ paddingTTablet: newValue })
-                                    } else {
-                                        setAttributes({ paddingTMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangePaddingRight={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ paddingRight: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ paddingRTablet: newValue })
-                                    } else {
-                                        setAttributes({ paddingRMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangePaddingBottom={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ paddingBottom: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ paddingBTablet: newValue })
-                                    } else {
-                                        setAttributes({ paddingBMobile: newValue })
-                                    }
-                                }
-                            }
-                            onChangePaddingLeft={
-                                (device, newValue) => {
-                                    if (device === "desktop") {
-                                        setAttributes({ paddingLeft: newValue })
-                                    } else if (device === "tablet") {
-                                        setAttributes({ paddingLTablet: newValue })
-                                    } else {
-                                        setAttributes({ paddingLMobile: newValue })
-                                    }
-                                }
-                            }
-                        />
-
+                        <SpacingComponent value={padding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ padding: value })} />
                     </PanelBody>
                     <PremiumResponsiveTabs
                         Desktop={hideDesktop}
@@ -535,20 +329,11 @@ class edit extends Component {
                 </InspectorControls>
             ),
             <div
-                id={`premium-testimonial-${block_id}`}
-                className={`${mainClasses}__wrap premium-testimonial-${block_id}`}
+                className={`${mainClasses}__wrap ${blockId}`}
                 style={{
-                    boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px ${containerStyles[0].shadowColor} ${containerStyles[0].shadowPosition}`,
-                    backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : 'transparent',
-                    backgroundImage: btnbg,
-                    backgroundRepeat: containerStyles[0].backgroundRepeat,
-                    backgroundPosition: containerStyles[0].backgroundPosition,
-                    backgroundSize: containerStyles[0].backgroundSize,
-                    backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
-                    paddingTop: containerPaddingTop + containerStyles[0].paddingUnit,
-                    paddingBottom: containerPaddingBottom + containerStyles[0].paddingUnit,
-                    paddingLeft: containerPaddingLeft + containerStyles[0].paddingUnit,
-                    paddingRight: containerPaddingRight + containerStyles[0].paddingUnit
+                    boxShadow: `${boxShadow?.horizontal}px ${boxShadow?.vertical}px ${boxShadow?.blur}px ${boxShadow?.color} ${boxShadow?.position}`,
+                    ...gradientBackground(background),
+                    ...paddingCss(padding, this.props.deviceType)
                 }}
             >
                 <div className={`premium-testimonial__container`}>
@@ -572,11 +357,9 @@ class edit extends Component {
                                     src={`${authorImgUrl}`}
                                     alt="Author"
                                     style={{
-                                        borderWidth: imgBorder + "px",
-                                        borderRadius: imgRadius,
-                                        borderColor: imgBorderColor,
                                         width: imgSize + "px",
-                                        height: imgSize + "px"
+                                        height: imgSize + "px",
+                                        ...borderCss(imgBorder, this.props.deviceType)
                                     }}
                                 />
                             )}
@@ -592,11 +375,9 @@ class edit extends Component {
                                     placeholder="Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
                                     onChange={newText => setAttributes({ text: newText })}
                                     style={{
-                                        fontSize: `${testimonalFontSize}${contentStyle[0].bodySizeUnit}`,
                                         color: contentStyle[0].bodyColor,
-                                        lineHeight: contentStyle[0].bodyLine + "px",
-                                        marginTop: contentStyle[0].bodyTop + "px",
-                                        marginBottom: contentStyle[0].bodyBottom + "px"
+                                        ...typographyCss(bodyTypography, this.props.deviceType),
+                                        ...marginCss(bodyMargin, this.props.deviceType)
                                     }}
                                     keepPlaceholderOnFocus
                                 />
@@ -613,12 +394,8 @@ class edit extends Component {
                                 isSelected={false}
                                 onChange={newText => setAttributes({ author: newText })}
                                 style={{
-                                    fontSize: `${authorFontSize}${authorStyles[0].authorSizeUnit} `,
                                     color: authorStyles[0].authorColor,
-                                    letterSpacing: authorStyles[0].authorLetter + "px",
-                                    textTransform: authorStyles[0].authorUpper ? "uppercase" : "none",
-                                    fontStyle: authorStyles[0].authorStyle,
-                                    fontWeight: authorStyles[0].authorWeight
+                                    ...typographyCss(authorTypography, this.props.deviceType),
                                 }}
                             />
                             <span
@@ -637,7 +414,7 @@ class edit extends Component {
                                 isSelected={false}
                                 style={{
                                     color: companyStyles[0].authorComColor,
-                                    fontSize: `${authorComFontSize}${companyStyles[0].authorComSizeUnit}`
+                                    ...typographyCss(companyTypography, this.props.deviceType),
                                 }}
                             />
                         </div>

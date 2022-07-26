@@ -1,5 +1,5 @@
 const testimonialsAttrs = {
-    block_id: {
+    blockId: {
         type: "string"
     },
     classMigrate: {
@@ -7,8 +7,12 @@ const testimonialsAttrs = {
         default: false
     },
     align: {
-        type: "string",
-        default: "center"
+        type: "object",
+        default: {
+            Desktop: "center",
+            Tablet: "center",
+            Mobile: "center",
+        },
     },
     authorImgId: {
         type: "string"
@@ -16,19 +20,55 @@ const testimonialsAttrs = {
     authorImgUrl: {
         type: "string"
     },
-    imgRadius: {
-        type: "string",
-        default: "50%"
-    },
     imgSize: {
         type: "number"
     },
     imgBorder: {
-        type: "number",
-        default: "1"
-    },
-    imgBorderColor: {
-        type: "string"
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
     },
     author: {
         type: "array",
@@ -42,10 +82,6 @@ const testimonialsAttrs = {
             {
                 authorTag: "H3",
                 authorColor: '',
-                authorSize: '',
-                authorSizeUnit: 'px',
-                authorSizeMobile: '',
-                authorSizeTablet: '',
                 authorLetter: '',
                 authorStyle: '',
                 authorUpper: false,
@@ -54,18 +90,53 @@ const testimonialsAttrs = {
             }
         ]
     },
-
-    paddingTop: {
-        type: "number"
+    padding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
+            },
+            unit: "px",
+        },
     },
-    paddingRight: {
-        type: "number"
-    },
-    paddingBottom: {
-        type: "number"
-    },
-    paddingLeft: {
-        type: "number"
+    bodyMargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
+            },
+            unit: "px",
+        },
     },
     text: {
         type: "array",
@@ -94,10 +165,6 @@ const testimonialsAttrs = {
         type: "array",
         default: [
             {
-                bodySizeUnit: 'px',
-                bodySize: '',
-                bodySizeMobile: '',
-                bodySizeTablet: '',
                 bodyColor: '',
                 bodyLine: '',
                 bodyTop: '',
@@ -106,16 +173,21 @@ const testimonialsAttrs = {
         ]
 
     },
+    bodySize: {
+        type: "object",
+        default: {
+            "Desktop": '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': 'px',
+        }
+    },
     companyStyles: {
         type: "array",
         default: [
             {
                 authorComTag: 'H4',
-                authorComSizeUnit: 'px',
                 authorComColor: '',
-                authorComSize: '',
-                authorComSizeMobile: '',
-                authorComSizeTablet: '',
                 dashColor: '',
                 urlCheck: false,
                 urlText: '',
@@ -123,6 +195,15 @@ const testimonialsAttrs = {
 
             }
         ]
+    },
+    authorComSize: {
+        type: "object",
+        default: {
+            "Desktop": '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': 'px',
+        }
     },
     quoteStyles: {
         type: "array",
@@ -135,61 +216,121 @@ const testimonialsAttrs = {
             }
         ]
     },
-    containerStyles: {
-        type: "array",
-        default: [
-            {
-                backOpacity: 1,
-                containerBack: '',
-                backgroundImageID: '',
-                backgroundImageURL: '',
-                backgroundRepeat: 'no-reapet',
-                backgroundPosition: 'top center',
-                backgroundSize: 'auto',
-                fixed: false,
-                shadowColor: '',
-                shadowBlur: '',
-                shadowHorizontal: '',
-                shadowVertical: '',
-                shadowPosition: '',
-                paddingUnit: 'px',
-                gradientColorOne: '',
-                gradientLocationOne: '0',
-                gradientColorTwo: '',
-                gradientLocationTwo: '100',
-                gradientType: 'linear',
-                gradientAngle: '180',
-                gradientPosition: 'center center'
-            }
-        ]
+    boxShadow: {
+        type: "object",
+        default: {
+            'color': '',
+            'blur': '',
+            'horizontal': '',
+            'vertical': '',
+            'position': ' '
+        }
     },
-    backgroundType: {
-        type: "string",
-        default: ""
+    background: {
+        type: "object",
+        default: {
+            'backgroundType': '',
+            'backgroundColor': '',
+            'backgroundImageID': '',
+            'backgroundImageURL': '',
+            'backgroundPosition': '',
+            'backgroundRepeat': '',
+            'backgroundSize': '',
+            'fixed': false,
+            'gradientLocationOne': "",
+            'gradientColorTwo': '',
+            'gradientLocationTwo': '',
+            'gradientAngle': '',
+            'gradientPosition': '',
+            'gradientType': ''
+        }
     },
-    paddingTTablet: {
-        type: "number"
+    authorTypography: {
+        type: "object",
+        default: {
+            fontWeight: "400",
+            fontStyle: "",
+
+            letterSpacing: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
+            fontFamily: "Default",
+            lineHeight: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
+            textDecoration: "",
+            textTransform: "",
+            fontSize: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
+        },
     },
-    paddingRTablet: {
-        type: "number"
+    bodyTypography: {
+        type: "object",
+        default: {
+            fontWeight: "400",
+            fontStyle: "",
+
+            letterSpacing: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
+            fontFamily: "Default",
+            lineHeight: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
+            textDecoration: "",
+            textTransform: "",
+            fontSize: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
+        },
     },
-    paddingBTablet: {
-        type: "number"
-    },
-    paddingLTablet: {
-        type: "number"
-    },
-    paddingTMobile: {
-        type: "number"
-    },
-    paddingRMobile: {
-        type: "number"
-    },
-    paddingBMobile: {
-        type: "number"
-    },
-    paddingLMobile: {
-        type: "number"
+    companyTypography: {
+        type: "object",
+        default: {
+            fontWeight: "400",
+            fontStyle: "",
+
+            letterSpacing: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
+            fontFamily: "Default",
+            lineHeight: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
+            textDecoration: "",
+            textTransform: "",
+            fontSize: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
+        },
     },
 };
 export default testimonialsAttrs;
