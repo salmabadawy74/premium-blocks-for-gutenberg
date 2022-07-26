@@ -205,46 +205,46 @@
         "containerShadow": {
             "type": "object",
             "default": {
-                "color": "",
-                "blur": "",
-                "horizontal": "",
-                "vertical": "",
+                "color": "undefined",
+                "blur": "10",
+                "horizontal": "0",
+                "vertical": "0",
                 "position": ""
             }
         },
         "switchShadow": {
             "type": "object",
             "default": {
-                "color": "",
-                "blur": "",
-                "horizontal": "",
-                "vertical": "",
+                "color": "undefined",
+                "blur": "10",
+                "horizontal": "0",
+                "vertical": "0",
                 "position": ""
             }
         },
         "firstLabelShadow": {
             "type": "object",
             "default": {
-                "color": "",
-                "blur": "",
-                "horizontal": "",
-                "vertical": ""
+                "color": "undefined",
+                "blur": "10",
+                "horizontal": "0",
+                "vertical": "0"
             }
         },
         "firstLabelBoxShadow": {
             "type": "object",
             "default": {
-                "color": "",
-                "blur": "",
-                "horizontal": "",
-                "vertical": "",
+                "color": "undefined",
+                "blur": "10",
+                "horizontal": "0",
+                "vertical": "0",
                 "position": ""
             }
         },
         "firstLabelTypography": {
             "type": "object",
             "default": {
-                "fontWeight": 400,
+                "fontWeight": "400",
                 "fontStyle": "",
                 "textTransform": "",
                 "textDecoration": "",
@@ -319,7 +319,7 @@
         "secondLabelTypography": {
             "type": "object",
             "default": {
-                "fontWeight": 400,
+                "fontWeight": "400",
                 "fontStyle": "",
                 "textTransform": "",
                  "textDecoration": "",
@@ -349,19 +349,19 @@
         "secondLabelShadow": {
             "type": "object",
             "default": {
-                "color": "",
-                "blur": "",
-                "horizontal": "",
-                "vertical": ""
+                "color": "undefined",
+                "blur": "10",
+                "horizontal": "0",
+                "vertical": "0"
             }
         },
         "secondLabelBoxShadow": {
             "type": "object",
             "default": {
-                "color": "",
-                "blur": "",
-                "horizontal": "",
-                "vertical": "",
+                "color": "undefined",
+                "blur": "10",
+                "horizontal": "0",
+                "vertical": "0",
                 "position": ""
             }
         },
@@ -415,10 +415,10 @@
         "containerBoxShadow": {
             "type": "object",
             "default": {
-                "color": "",
-                "blur": "",
-                "horizontal": "",
-                "vertical": "",
+                "color": "undefined",
+                "blur": "10",
+                "horizontal": "0",
+                "vertical": "0",
                 "position": ""
             }
         },
@@ -492,12 +492,12 @@
                 "backgroundRepeat": "",
                 "backgroundSize": "",
                 "fixed": false,
-                "gradientLocationOne": "",
+                "gradientLocationOne": "0",
                 "gradientColorTwo": "",
-                "gradientLocationTwo": "",
-                "gradientAngle": "",
-                "gradientPosition": "",
-                "gradientType": ""
+                "gradientLocationTwo": "100",
+                "gradientAngle": "180",
+                "gradientPosition": "center center",
+                "gradientType": "linear"
             }
         },
         "switcherBackground": {
@@ -511,12 +511,12 @@
                 "backgroundRepeat": "",
                 "backgroundSize": "",
                 "fixed": false,
-                "gradientLocationOne": "",
+                 "gradientLocationOne": "0",
                 "gradientColorTwo": "",
-                "gradientLocationTwo": "",
-                "gradientAngle": "",
-                "gradientPosition": "",
-                "gradientType": ""
+                "gradientLocationTwo": "100",
+                "gradientAngle": "180",
+                "gradientPosition": "center center",
+                "gradientType": "linear"
             }
         },
         "containerBackground": {
@@ -530,12 +530,12 @@
                 "backgroundRepeat": "",
                 "backgroundSize": "",
                 "fixed": false,
-                "gradientLocationOne": "",
+                "gradientLocationOne": "0",
                 "gradientColorTwo": "",
-                "gradientLocationTwo": "",
-                "gradientAngle": "",
-                "gradientPosition": "",
-                "gradientType": ""
+                "gradientLocationTwo": "100",
+                "gradientAngle": "180",
+                "gradientPosition": "center center",
+                "gradientType": "linear"
             }
         }
     }

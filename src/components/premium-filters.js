@@ -1,7 +1,11 @@
 const { __ } = wp.i18n;
+
 const { Fragment, useState } = wp.element;
+
 const { Dropdown, Button } = wp.components;
+
 import ResponsiveSingleRangeControl from "./RangeControl/single-range-control";
+
 export default function PremiumFilters({ label, value, onChange }) {
 
     let defaultValues = {

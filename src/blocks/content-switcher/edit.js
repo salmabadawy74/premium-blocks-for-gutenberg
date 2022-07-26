@@ -20,15 +20,7 @@ import InsideTabs from "../../components/InsideTabs";
 import InsideTab from "../../components/InsideTab";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import Icons from "../../components/icons";
-import {
-    gradientBackground,
-    borderCss,
-    paddingCss,
-    marginCss,
-    typographyCss,
-    generateBlockId,
-    gradientValue,
-} from "../../components/HelperFunction";
+import { gradientBackground, borderCss, paddingCss, marginCss, typographyCss, generateBlockId, gradientValue } from "../../components/HelperFunction";
 import GoogleFontLoader from "react-google-font-loader";
 
 /**
@@ -180,6 +172,43 @@ function Edit(props) {
             />
         );
     }
+    const loadStyles = () => {
+        const styles = {};
+        styles[`.${blockId} .premium-content-switcher-toggle-switch-slider:before `] = {
+            'border-radius': `${containerRadius || 50}${containerRadiusUnit} !important`,
+            'box-shadow': ` ${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position} !important`,
+            "background-color": `${controllerOneBackground.backgroundType == 'solid' ? controllerOneBackground.backgroundColor : '#6ec1e4'}`,
+            'background-image': `${gradientValue(controllerOneBackground)}`,
+            'background-repeat': `${controllerOneBackground.backgroundRepeat}`,
+            'background-position': `${controllerOneBackground.backgroundPosition}`,
+            'background-size': `${controllerOneBackground.backgroundSize}`,
+            'background-attachment': `${controllerOneBackground.fixed ? "fixed" : "unset"}`,
+        };
+        styles[`.${blockId} .premium-content-switcher-toggle-switch-slider `] = {
+            'border-radius': `${switchRadius} ${switchRadiusUnit} !important`,
+            'box-shadow': `${switchShadow.horizontal}px ${switchShadow.vertical}px ${switchShadow.blur}px ${switchShadow.color} ${switchShadow.position} !important`,
+
+        };
+        styles[`.${blockId} .premium-content-switcher-toggle-switch-slider `] = {
+            'border-radius': `${switchRadius} ${switchRadiusUnit} !important`,
+            'box-shadow': `${switchShadow.horizontal}px ${switchShadow.vertical}px ${switchShadow.blur}px ${switchShadow.color} ${switchShadow.position} !important`,
+        };
+        styles[`.${blockId} .premium-content-switcher-toggle-inline.premium-content-switcher-first-label `] = {
+            'margin-right': `${labelSpacing[props.deviceType]}px !important`,
+        };
+        styles[`.${blockId} .premium-content-switcher-toggle-inline.premium-content-switcher-second-label `] = {
+            'margin-left': `${labelSpacing[props.deviceType]}px !important`
+        };
+        styles[`.${blockId} .premium-content-switcher-toggle-block.premium-content-switcher-first-label `] = {
+            'margin-bottom': `${labelSpacing[props.deviceType]}px !important`,
+        };
+        styles[`.${blockId} .premium-content-switcher-toggle-block.premium-content-switcher-second-label `] = {
+            'margin-top': `${labelSpacing[props.deviceType]}px !important`
+        };
+        return generateCss(styles);
+
+
+    }
     return (
         <Fragment>
             <InspectorControls>
@@ -191,7 +220,7 @@ function Edit(props) {
                             initialOpen={true}
                         >
                             <ToggleControl
-                                label={__("Show Labels")}
+                                label={__("Show Labels", "premium-blocks-for-gutenberg")}
                                 checked={showLabel}
                                 onChange={(newCheck) =>
                                     setAttributes({ showLabel: newCheck })
@@ -200,27 +229,20 @@ function Edit(props) {
                             {showLabel && (
                                 <Fragment>
                                     <RadioComponent
-                                        label={__(
-                                            "HTML Tag",
-                                            "premium-blocks-for-gutenberg"
-                                        )}
+                                        label={__("HTML Tag", "premium-blocks-for-gutenberg")}
                                         choices={[
-                                            { value: "h1", label: __("H1") },
-                                            { value: "h2", label: __("H2") },
-                                            { value: "h3", label: __("H3") },
-                                            { value: "h4", label: __("H4") },
-                                            { value: "h5", label: __("H5") },
-                                            { value: "h6", label: __("H6") },
+                                            { value: "h1", label: __("H1", "premium-blocks-for-gutenberg") },
+                                            { value: "h2", label: __("H2", "premium-blocks-for-gutenberg") },
+                                            { value: "h3", label: __("H3", "premium-blocks-for-gutenberg") },
+                                            { value: "h4", label: __("H4", "premium-blocks-for-gutenberg") },
+                                            { value: "h5", label: __("H5", "premium-blocks-for-gutenberg") },
+                                            { value: "h6", label: __("H6", "premium-blocks-for-gutenberg") },
                                         ]}
                                         value={labelTag}
-                                        onChange={(newValue) =>
-                                            setAttributes({
-                                                labelTag: newValue,
-                                            })
-                                        }
+                                        onChange={(newValue) => setAttributes({ labelTag: newValue, })}
                                     />
                                     <SelectControl
-                                        label={__("Display")}
+                                        label={__("Display", "premium-blocks-for-gutenberg")}
                                         options={DISPLAY}
                                         value={display}
                                         onChange={(newValue) => setAttributes({ display: newValue })}
@@ -228,38 +250,33 @@ function Edit(props) {
                                 </Fragment>
                             )}
                             <ResponsiveRadioControl
-                                label={__(
-                                    "Alignment",
-                                    "premium-blocks-for-gutenberg"
-                                )}
+                                label={__("Alignment", "premium-blocks-for-gutenberg")}
                                 choices={[
                                     {
                                         value: "left",
-                                        label: __("Left"),
+                                        label: __("Left", "premium-blocks-for-gutenberg"),
                                         icon: Icons.alignLeft,
                                     },
                                     {
                                         value: "center",
-                                        label: __("Center"),
+                                        label: __("Center", "premium-blocks-for-gutenberg"),
                                         icon: Icons.alignCenter,
                                     },
                                     {
                                         value: "right",
-                                        label: __("Right"),
+                                        label: __("Right", "premium-blocks-for-gutenberg"),
                                         icon: Icons.alignRight,
                                     },
                                 ]}
                                 value={align}
-                                onChange={(newValue) =>
-                                    setAttributes({ align: newValue })
-                                }
+                                onChange={(newValue) => setAttributes({ align: newValue })}
                                 showIcons={true}
                             />
                         </PanelBody>
                     </InspectorTab>
                     <InspectorTab key={"style"}>
                         <PanelBody
-                            title={__("Switcher Style")}
+                            title={__("Switcher Style", "premium-blocks-for-gutenberg")}
                             className="premium-panel-body"
                             initialOpen={true}
                         >
@@ -274,13 +291,13 @@ function Edit(props) {
                                 defaultValue={15}
                                 device="Desktop"
                             />
-                            <h2>{__("Controller Background")}</h2>
+                            <h2>{__("Controller Background", "premium-blocks-for-gutenberg")}</h2>
                             <PremiumBackgroundControl
                                 value={controllerOneBackground}
                                 onChange={(value) => setAttributes({ controllerOneBackground: value })}
                             />
                             <hr />
-                            <h2>{__("Switcher Background")}</h2>
+                            <h2>{__("Switcher Background", "premium-blocks-for-gutenberg")}</h2>
                             <PremiumBackgroundControl
                                 value={switcherBackground}
                                 onChange={(value) => setAttributes({ switcherBackground: value })}
@@ -344,7 +361,7 @@ function Edit(props) {
                                     device="Desktop"
                                 />
                                 <InsideTabs>
-                                    <InsideTab tabTitle={__("First Label")}>
+                                    <InsideTab tabTitle={__("First Label", "premium-blocks-for-gutenberg")}>
                                         <Fragment>
                                             <PremiumTypo
                                                 value={firstLabelTypography}
@@ -390,7 +407,7 @@ function Edit(props) {
                                             />
                                         </Fragment>
                                     </InsideTab>
-                                    <InsideTab tabTitle={__("Second Label")}>
+                                    <InsideTab tabTitle={__("Second Label", "premium-blocks-for-gutenberg")}>
                                         <Fragment>
                                             <PremiumTypo
                                                 value={secondLabelTypography}
@@ -440,7 +457,7 @@ function Edit(props) {
                             </PanelBody>
                         )}
                         <PanelBody
-                            title={__("Container Style")}
+                            title={__("Container Style", "premium-blocks-for-gutenberg")}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
@@ -492,53 +509,10 @@ function Edit(props) {
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>
-
-            <style>
-                {`
-                     .${blockId} .premium-content-switcher-toggle-switch-slider:before {
-                        border-radius: ${containerRadius || 50
-                    }${containerRadiusUnit} !important;
-                        box-shadow: ${containerShadow.horizontal}px ${containerShadow.vertical
-                    }px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position
-                    } !important;
-                        background-color: ${controllerOneBackground.backgroundType == "solid"
-                        ? controllerOneBackground.backgroundColor
-                        : "#6ec1e4"
-                    };
-                        background-image: ${gradientValue(containerBackground)};
-                        background-repeat: ${controllerOneBackground.backgroundRepeat
-                    };
-                        background-position: ${controllerOneBackground.backgroundPosition
-                    };
-                        background-size: ${controllerOneBackground.backgroundSize
-                    };
-                        background-attachment: ${controllerOneBackground.fixed ? "fixed" : "unset"
-                    };
-                     }
-                    .${blockId} .premium-content-switcher-toggle-switch-slider {
-                        border-radius: ${switchRadius}${switchRadiusUnit} !important;
-                         box-shadow: ${switchShadow.horizontal}px ${switchShadow.vertical
-                    }px ${switchShadow.blur}px ${switchShadow.color} ${switchShadow.position
-                    } !important;
-                     }
-                     .${blockId} .premium-content-switcher-toggle-inline .premium-content-switcher-first-label {
-                         margin-right: ${labelSpacing[props.deviceType]
-                    }px !important;
-                    }
-                    .${blockId} .premium-content-switcher-toggle-inline .premium-content-switcher-second-label {
-                        margin-left: ${labelSpacing[props.deviceType]
-                    }px !important;
-                    }
-                   .${blockId} .premium-content-switcher-toggle-block .premium-content-switcher-first-label {
-                         margin-bottom: ${labelSpacing[props.deviceType]
-                    }px !important;
-                     }
-                    .${blockId} .premium-content-switcher-toggle-block .premium-content-switcher-second-label {
-                        margin-top: ${labelSpacing[props.deviceType]
-                    }px !important;
-                    }
-                 `}
-            </style>
+            <style
+                dangerouslySetInnerHTML={{
+                    __html: loadStyles()
+                }} />
             <div
                 {...useBlockProps({
                     className: classnames(
@@ -562,29 +536,15 @@ function Edit(props) {
                         ...marginCss(containerMargin, props.deviceType),
                         ...gradientBackground(containerBackground),
                         textAlign: align[props.deviceType],
-                        boxShadow: `${containerBoxShadow.horizontal || 0}px ${containerBoxShadow.vertical || 0
-                            }px ${containerBoxShadow.blur || 0}px ${containerBoxShadow.color
-                            } ${containerBoxShadow.position}`,
+                        boxShadow: `${containerBoxShadow.horizontal || 0}px ${containerBoxShadow.vertical || 0}px ${containerBoxShadow.blur || 0}px ${containerBoxShadow.color} ${containerBoxShadow.position} `,
                     }}
                 >
                     <div
-                        className={`premium-content-switcher-toggle-${display}`}
+                        className={`premium-content-switcher-toggle-${display} `}
                         style={{
                             textAlign: align[props.deviceType],
-                            justifyContent:
-                                align[props.deviceType] == "right"
-                                    ? "flex-end"
-                                    : align[props.deviceType] == "left"
-                                        ? "flex-start"
-                                        : align[props.deviceType],
-                            alignItems:
-                                display == "inline"
-                                    ? "center"
-                                    : align[props.deviceType] == "right"
-                                        ? "flex-end"
-                                        : align[props.deviceType] == "left"
-                                            ? "flex-start"
-                                            : align[props.deviceType],
+                            justifyContent: align[props.deviceType] == "right" ? "flex-end" : align[props.deviceType] == "left" ? "flex-start" : align[props.deviceType],
+                            alignItems: display == "inline" ? "center" : align[props.deviceType] == "right" ? "flex-end" : align[props.deviceType] == "left" ? "flex-start" : align[props.deviceType],
                         }}
                     >
                         {showLabel && (
@@ -592,37 +552,18 @@ function Edit(props) {
                                 <RichText
                                     tagName={labelTag.toLowerCase()}
                                     className={`premium-content-switcher-${display}-editing`}
-                                    onChange={(newValue) =>
-                                        setAttributes({ firstLabel: newValue })
-                                    }
+                                    onChange={(newValue) => setAttributes({ firstLabel: newValue })}
                                     value={firstLabel}
                                     ref={primaryRef}
                                     style={{
-                                        ...typographyCss(
-                                            firstLabelTypography,
-                                            props.deviceType
-                                        ),
-                                        ...borderCss(
-                                            firstLabelborder,
-                                            props.deviceType
-                                        ),
-                                        ...paddingCss(
-                                            firstLabelPadding,
-                                            props.deviceType
-                                        ),
+                                        ...typographyCss(firstLabelTypography, props.deviceType),
+                                        ...borderCss(firstLabelborder, props.deviceType),
+                                        ...paddingCss(firstLabelPadding, props.deviceType),
                                         margin: 0,
                                         color: labelStyles.firstLabelColor,
-                                        background:
-                                            labelStyles.firstLabelBGColor,
-                                        textShadow: `${firstLabelShadow.horizontal || 0
-                                            }px ${firstLabelShadow.vertical || 0
-                                            }px ${firstLabelShadow.blur || 0}px ${firstLabelShadow.color
-                                            }`,
-                                        boxShadow: `${firstLabelBoxShadow.horizontal || 0
-                                            }px ${firstLabelBoxShadow.vertical || 0
-                                            }px ${firstLabelBoxShadow.blur || 0
-                                            }px ${firstLabelBoxShadow.color} ${firstLabelBoxShadow.position
-                                            }`,
+                                        background: labelStyles.firstLabelBGColor,
+                                        textShadow: `${firstLabelShadow.horizontal || 0}px ${firstLabelShadow.vertical || 0}px ${firstLabelShadow.blur || 0}px ${firstLabelShadow.color} `,
+                                        boxShadow: `${firstLabelBoxShadow.horizontal || 0}px ${firstLabelBoxShadow.vertical || 0}px ${firstLabelBoxShadow.blur || 0}px ${firstLabelBoxShadow.color} ${firstLabelBoxShadow.position} `,
                                     }}
                                 />
                             </div>
@@ -630,24 +571,19 @@ function Edit(props) {
                         <div
                             className="premium-content-switcher-toggle-switch"
                             style={{
-                                fontSize:
-                                    (switchSize[props.deviceType] || 15) + "px",
+                                fontSize: (switchSize[props.deviceType] || 15) + "px"
                             }}
                         >
-                            <label
-                                className={`premium-content-switcher-toggle-switch-label`}
-                            >
+                            <label className={`premium-content-switcher-toggle-switch-label`}>
                                 <input
                                     onClick={() => initToggleBox()}
                                     type="checkbox"
-                                    className={`premium-content-switcher-toggle-switch-input ${props.clientId}`}
+                                    className={`premium-content-switcher-toggle-switch-input ${props.clientId} `}
                                 />
                                 <span
                                     className="premium-content-switcher-toggle-switch-slider round"
                                     style={{
-                                        ...gradientBackground(
-                                            switcherBackground
-                                        ),
+                                        ...gradientBackground(switcherBackground),
                                     }}
                                 ></span>
                             </label>
@@ -663,31 +599,14 @@ function Edit(props) {
                                     value={secondLabel}
                                     ref={secondaryRef}
                                     style={{
-                                        ...typographyCss(
-                                            secondLabelTypography,
-                                            props.deviceType
-                                        ),
-                                        ...borderCss(
-                                            secondLabelborder,
-                                            props.deviceType
-                                        ),
-                                        ...paddingCss(
-                                            secondLabelPadding,
-                                            props.deviceType
-                                        ),
+                                        ...typographyCss(secondLabelTypography, props.deviceType),
+                                        ...borderCss(secondLabelborder, props.deviceType),
+                                        ...paddingCss(secondLabelPadding, props.deviceType),
                                         margin: 0,
                                         color: labelStyles.secondLabelColor,
-                                        background:
-                                            labelStyles.secondLabelBGColor,
-                                        textShadow: `${secondLabelShadow.horizontal || 0
-                                            }px ${secondLabelShadow.vertical || 0
-                                            }px ${secondLabelShadow.blur || 0}px ${secondLabelShadow.color
-                                            }`,
-                                        boxShadow: `${secondLabelBoxShadow.horizontal || 0
-                                            }px ${secondLabelBoxShadow.vertical || 0
-                                            }px ${secondLabelBoxShadow.blur || 0
-                                            }px ${secondLabelBoxShadow.color} ${secondLabelBoxShadow.position
-                                            }`,
+                                        background: labelStyles.secondLabelBGColor,
+                                        textShadow: `${secondLabelShadow.horizontal || 0}px ${secondLabelShadow.vertical || 0}px ${secondLabelShadow.blur || 0} px ${secondLabelShadow.color} `,
+                                        boxShadow: `${secondLabelBoxShadow.horizontal || 0}px ${secondLabelBoxShadow.vertical || 0}px ${secondLabelBoxShadow.blur || 0}px ${secondLabelBoxShadow.color} ${secondLabelBoxShadow.position} `,
                                     }}
                                 />
                             </div>
