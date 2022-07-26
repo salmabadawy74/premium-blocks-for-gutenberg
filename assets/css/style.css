@@ -2073,6 +2073,7 @@ a.premium-dheading-block__link:hover {
     top: auto;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
+    text-align: center;
 }
 
 .premium-image-separator-container .premium-image-separator-link {
