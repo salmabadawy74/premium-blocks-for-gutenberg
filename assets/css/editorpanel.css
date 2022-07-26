@@ -212,10 +212,16 @@
   top: 15px;
   right: 10px; }
   .premium-image-actions button {
-    font-size: 16px;
     padding: 2px;
+    cursor: pointer;
+    background: #fff;
+    border: 1px solid #e1e1e1;
+    margin: 2px;
     cursor: pointer; }
     .premium-image-actions button span {
+      width: 19px;
+      height: 18px;
+      font-size: 17px;
       color: #8d96a0; }
 
 .premium-placeholder-image {
