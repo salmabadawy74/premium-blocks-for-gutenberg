@@ -3,7 +3,8 @@ import PremiumTypo from "../../components/premium-typo";
 import DefaultImage from "../../components/default-image";
 import PremiumUpperQuote from "../../components/testimonials/upper-quote";
 import PremiumLowerQuote from "../../components/testimonials/lower-quote";
-import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
+import Icons from "../../components/icons";
+import MultiButtonsControl from '../../components/responsive-radio';
 import PremiumMediaUpload from "../../components/premium-media-upload";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
@@ -11,8 +12,10 @@ import AdvancedPopColorControl from '../../components/Color Control/ColorCompone
 import PremiumBackgroundControl from '../../components/Premium-Background-Control';
 import RadioComponent from '../../components/radio-control'
 import PremiumShadow from "../../components/PremiumShadow";
-// import PremiumTypo from "../../components/premium-typo";
-import { generateBlockId, gradientBackground, generateCss, typographyCss, paddingCss, marginCss, borderCss } from '../../components/HelperFunction';
+import InspectorTabs from '../../components/inspectorTabs';
+import InspectorTab from '../../components/inspectorTab';
+import SpacingComponent from "../../components/premium-responsive-spacing";
+import { generateBlockId, gradientBackground, typographyCss, paddingCss, marginCss, borderCss } from '../../components/HelperFunction';
 
 const { __ } = wp.i18n;
 
@@ -133,199 +136,212 @@ class edit extends Component {
 
         return [
             isSelected && (
-                <BlockControls key="controls">
-                    <AlignmentToolbar
-                        value={align}
-                        onChange={newAlign => setAttributes({ align: newAlign })}
-                    />
-                </BlockControls>
-            ),
-            isSelected && (
                 <InspectorControls key={"inspector"}>
-                    <PanelBody
-                        title={__("Author", 'premium-blocks-for-gutenberg')}
-                        className="premium-panel-body"
-                        initialOpen={true}
-                    >
-                        <PanelBody
-                            title={__("Image", 'premium-blocks-for-gutenberg')}
-                            className="premium-panel-body-inner"
-                            initialOpen={false}
-                        >
-                            <p>{__("Author Image", 'premium-blocks-for-gutenberg')}</p>
-                            {!authorImgUrl && <DefaultImage />}
-                            <PremiumMediaUpload
-                                type="image"
-                                imageID={authorImgId}
-                                imageURL={authorImgUrl}
-                                onSelectMedia={(media) => {
-                                    setAttributes({
-                                        authorImgId: media.id,
-                                        authorImgUrl: media.url
-                                    })
-                                }}
-                                onRemoveImage={() => {
-                                    setAttributes({
-                                        authorImgId: "",
-                                        authorImgUrl: ""
-                                    })
-                                }}
-                            />
-                            {authorImgUrl && (
+                    <InspectorTabs tabs={['layout', 'style', 'advance']}>
+                        <InspectorTab key={'layout'}>
+                            <PanelBody
+                                title={__("Author", 'premium-blocks-for-gutenberg')}
+                                className="premium-panel-body"
+                                initialOpen={true}
+                            >
+                                <p>{__("Author Image", 'premium-blocks-for-gutenberg')}</p>
+                                {!authorImgUrl && <DefaultImage />}
+                                <PremiumMediaUpload
+                                    type="image"
+                                    imageID={authorImgId}
+                                    imageURL={authorImgUrl}
+                                    onSelectMedia={(media) => {
+                                        setAttributes({
+                                            authorImgId: media.id,
+                                            authorImgUrl: media.url
+                                        })
+                                    }}
+                                    onRemoveImage={() => {
+                                        setAttributes({
+                                            authorImgId: "",
+                                            authorImgUrl: ""
+                                        })
+                                    }}
+                                />
+                                <RadioComponent
+                                    choices={[{ value: 'h1', label: __('H1') }, { value: 'h2', label: __('H2') }, { value: 'h3', label: __('H3') }, { value: 'h4', label: __('H4') }, { value: 'h5', label: __('H5') }, { value: 'h6', label: __('H6') }]}
+                                    value={authorStyles[0].authorTag}
+                                    onChange={(newValue) => saveAuthorStyle({ authorTag: newValue })}
+                                    label={__("Title Tag", 'premium-blocks-for-gutenberg')}
+                                />
+                                <MultiButtonsControl
+                                    choices={[{ value: 'left', label: __('Left'), icon: Icons.alignLeft }, { value: 'center', label: __('Center'), icon: Icons.alignCenter }, { value: 'right', label: __('Right'), icon: Icons.alignRight }]}
+                                    value={align}
+                                    onChange={(align) => setAttributes({ align: align })}
+                                    label={__("Align Content", "premium-blocks-for-gutenberg")}
+                                    showIcons={true} />
+                            </PanelBody>
+                            <PanelBody
+                                title={__("Company", 'premium-blocks-for-gutenberg')}
+                                className="premium-panel-body"
+                                initialOpen={false}
+                            >
+                                <RadioComponent
+                                    choices={[{ value: 'h1', label: __('H1') }, { value: 'h2', label: __('H2') }, { value: 'h3', label: __('H3') }, { value: 'h4', label: __('H4') }, { value: 'h5', label: __('H5') }, { value: 'h6', label: __('H6') }]}
+                                    value={authorStyles[0].authorComTag}
+                                    onChange={(newValue) => saveAuthorStyle({ authorComTag: newValue })}
+                                    label={__("Title Tag", 'premium-blocks-for-gutenberg')}
+                                />
+                                <ToggleControl
+                                    label={__("URL", 'premium-blocks-for-gutenberg')}
+                                    checked={companyStyles[0].urlCheck}
+                                    onChange={newCheck => saveCompanyStyle({ urlCheck: newCheck })}
+                                />
+                                {companyStyles[0].urlCheck && (
+                                    <TextControl
+                                        label={__("URL", 'premium-blocks-for-gutenberg')}
+                                        value={companyStyles[0].urlText}
+                                        onChange={newURL => saveCompanyStyle({ urlText: newURL })}
+                                    />
+                                )}
+                                {companyStyles[0].urlCheck && (
+                                    <ToggleControl
+                                        label={__("Open Link in a New Tab", 'premium-blocks-for-gutenberg')}
+                                        checked={companyStyles[0].urlTarget}
+                                        onChange={newCheck => saveCompanyStyle({ urlTarget: newCheck })}
+                                    />
+                                )}
+                            </PanelBody>
+
+                        </InspectorTab>
+                        <InspectorTab key={'style'}>
+                            <PanelBody
+                                title={__("Author", 'premium-blocks-for-gutenberg')}
+                                className="premium-panel-body"
+                                initialOpen={true}
+                            >
+                                {authorImgUrl && (
+                                    <ResponsiveSingleRangeControl
+                                        label={__("Size", 'premium-blocks-for-gutenberg')}
+                                        value={imgSize}
+                                        max="200"
+                                        onChange={newSize => setAttributes({ imgSize: newSize })}
+                                        showUnit={false}
+                                        defaultValue={0}
+                                    />
+                                )}
+                                <PremiumTypo
+                                    components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
+                                    value={authorTypography}
+                                    onChange={newValue => setAttributes({ authorTypography: newValue })}
+                                />
+                                <AdvancedPopColorControl
+                                    label={__("Color", 'premium-blocks-for-gutenberg')}
+                                    colorValue={authorStyles[0].authorColor}
+                                    colorDefault={''}
+                                    onColorChange={newValue => saveAuthorStyle({ authorColor: newValue })}
+                                />
+                                {authorImgUrl && (
+                                    <PremiumBorder
+                                        label={__("Border")}
+                                        value={imgBorder}
+                                        onChange={(value) => setAttributes({ imgBorder: value })}
+                                    />
+                                )}
+                            </PanelBody>
+                            <PanelBody
+                                title={__("Company", 'premium-blocks-for-gutenberg')}
+                                className="premium-panel-body"
+                                initialOpen={false}
+                            >
+                                <PremiumTypo
+                                    components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
+                                    value={companyTypography}
+                                    onChange={newValue => setAttributes({ companyTypography: newValue })}
+                                />
+                                <AdvancedPopColorControl
+                                    label={__("Text Color", 'premium-blocks-for-gutenberg')}
+                                    colorValue={companyStyles[0].authorComColor}
+                                    colorDefault={''}
+                                    onColorChange={newValue => saveCompanyStyle({ authorComColor: newValue })}
+                                />
+                                <AdvancedPopColorControl
+                                    label={__("Dash Color", 'premium-blocks-for-gutenberg')}
+                                    colorValue={companyStyles[0].dashColor}
+                                    colorDefault={''}
+                                    onColorChange={newValue => saveCompanyStyle({ dashColor: newValue })}
+                                />
+                            </PanelBody>
+                            <PanelBody
+                                title={__("Content", 'premium-blocks-for-gutenberg')}
+                                className="premium-panel-body"
+                                initialOpen={false}
+                            >
+                                <PremiumTypo
+                                    components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
+                                    value={bodyTypography}
+                                    onChange={newValue => setAttributes({ bodyTypography: newValue })}
+                                />
+                                <AdvancedPopColorControl
+                                    label={__("Color", 'premium-blocks-for-gutenberg')}
+                                    colorValue={contentStyle[0].bodyColor}
+                                    colorDefault={''}
+                                    onColorChange={newValue => saveContentStyle({ bodyColor: newValue })}
+                                />
+                                <SpacingComponent value={bodyMargin} responsive={true} showUnits={true} label={__("Margin")} onChange={(value) => setAttributes({ bodyMargin: value })} />
+                            </PanelBody>
+                            <PanelBody
+                                title={__("Quotations", 'premium-blocks-for-gutenberg')}
+                                className="premium-panel-body"
+                                initialOpen={false}
+                            >
                                 <ResponsiveSingleRangeControl
-                                    label={__("Size", 'premium-blocks-for-gutenberg')}
-                                    value={imgSize}
-                                    max="200"
-                                    onChange={newSize => setAttributes({ imgSize: newSize })}
+                                    label={__("Size (EM)", 'premium-blocks-for-gutenberg')}
+                                    value={quoteStyles[0].quotSize}
+                                    min="1"
+                                    max="12"
+                                    onChange={newSize => saveQuoteStyles({ quotSize: newSize })}
                                     showUnit={false}
                                     defaultValue={0}
                                 />
-                            )}
-                            {authorImgUrl && (
-                                <PremiumBorder
-                                    label={__("Border")}
-                                    value={imgBorder}
-                                    onChange={(value) => setAttributes({ imgBorder: value })}
+                                <AdvancedPopColorControl
+                                    label={__("Quotations Color", 'premium-blocks-for-gutenberg')}
+                                    colorValue={quoteStyles[0].quotColor}
+                                    colorDefault={''}
+                                    onColorChange={newValue => saveQuoteStyles({ quotColor: newValue })}
                                 />
-                            )}
-                        </PanelBody>
-                        <RadioComponent
-                            choices={[{ value: 'h1', label: __('H1') }, { value: 'h2', label: __('H2') }, { value: 'h3', label: __('H3') }, { value: 'h4', label: __('H4') }, { value: 'h5', label: __('H5') }, { value: 'h6', label: __('H6') }]}
-                            value={authorStyles[0].authorTag}
-                            onChange={(newValue) => saveAuthorStyle({ authorTag: newValue })}
-                            label={__("Title Tag", 'premium-blocks-for-gutenberg')}
-                        />
-                        <PremiumTypo
-                            components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
-                            value={authorTypography}
-                            onChange={newValue => setAttributes({ authorTypography: newValue })}
-                        />
-                        <AdvancedPopColorControl
-                            label={__("Color", 'premium-blocks-for-gutenberg')}
-                            colorValue={authorStyles[0].authorColor}
-                            colorDefault={''}
-                            onColorChange={newValue => saveAuthorStyle({ authorColor: newValue })}
-                        />
-                    </PanelBody>
-                    <PanelBody
-                        title={__("Content", 'premium-blocks-for-gutenberg')}
-                        className="premium-panel-body"
-                        initialOpen={false}
-                    >
-                        <PremiumTypo
-                            components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
-                            value={bodyTypography}
-                            onChange={newValue => setAttributes({ bodyTypography: newValue })}
-                        />
-                        <AdvancedPopColorControl
-                            label={__("Color", 'premium-blocks-for-gutenberg')}
-                            colorValue={contentStyle[0].bodyColor}
-                            colorDefault={''}
-                            onColorChange={newValue => saveContentStyle({ bodyColor: newValue })}
-                        />
-                        <SpacingComponent value={bodyMargin} responsive={true} showUnits={true} label={__("Margin")} onChange={(value) => setAttributes({ bodyMargin: value })} />
-                    </PanelBody>
-                    <PanelBody
-                        title={__("Company", 'premium-blocks-for-gutenberg')}
-                        className="premium-panel-body"
-                        initialOpen={false}
-                    >
-                        <RadioComponent
-                            choices={[{ value: 'h1', label: __('H1') }, { value: 'h2', label: __('H2') }, { value: 'h3', label: __('H3') }, { value: 'h4', label: __('H4') }, { value: 'h5', label: __('H5') }, { value: 'h6', label: __('H6') }]}
-                            value={authorStyles[0].authorComTag}
-                            onChange={(newValue) => saveAuthorStyle({ authorComTag: newValue })}
-                            label={__("Title Tag", 'premium-blocks-for-gutenberg')}
-                        />
-                        <PremiumTypo
-                            components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
-                            value={companyTypography}
-                            onChange={newValue => setAttributes({ companyTypography: newValue })}
-                        />
-                        <AdvancedPopColorControl
-                            label={__("Text Color", 'premium-blocks-for-gutenberg')}
-                            colorValue={companyStyles[0].authorComColor}
-                            colorDefault={''}
-                            onColorChange={newValue => saveCompanyStyle({ authorComColor: newValue })}
-                        />
-                        <AdvancedPopColorControl
-                            label={__("Dash Color", 'premium-blocks-for-gutenberg')}
-                            colorValue={companyStyles[0].dashColor}
-                            colorDefault={''}
-                            onColorChange={newValue => saveCompanyStyle({ dashColor: newValue })}
-                        />
-                        <ToggleControl
-                            label={__("URL", 'premium-blocks-for-gutenberg')}
-                            checked={companyStyles[0].urlCheck}
-                            onChange={newCheck => saveCompanyStyle({ urlCheck: newCheck })}
-                        />
-                        {companyStyles[0].urlCheck && (
-                            <TextControl
-                                label={__("URL", 'premium-blocks-for-gutenberg')}
-                                value={companyStyles[0].urlText}
-                                onChange={newURL => saveCompanyStyle({ urlText: newURL })}
+                                <ResponsiveSingleRangeControl
+                                    label={__("Opacity", 'premium-blocks-for-gutenberg')}
+                                    value={quoteStyles[0].quotOpacity}
+                                    onChange={newValue => saveQuoteStyles({ quotOpacity: newValue })}
+                                    showUnit={false}
+                                    defaultValue={0}
+                                />
+                            </PanelBody>
+                            <PanelBody
+                                title={__("Container", 'premium-blocks-for-gutenberg')}
+                                className="premium-panel-body"
+                                initialOpen={false}
+                            >
+                                <PremiumBackgroundControl
+                                    value={background}
+                                    onChange={(value) => setAttributes({ background: value })}
+                                />
+                                <PremiumShadow
+                                    label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
+                                    boxShadow={true}
+                                    value={boxShadow}
+                                    onChange={(value) => setAttributes({ boxShadow: value })}
+                                />
+                                <SpacingComponent value={padding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ padding: value })} />
+                            </PanelBody>
+                        </InspectorTab>
+                        <InspectorTab key={'advance'}>
+                            <PremiumResponsiveTabs
+                                Desktop={hideDesktop}
+                                Tablet={hideTablet}
+                                Mobile={hideMobile}
+                                onChangeDesktop={(value) => setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" })}
+                                onChangeTablet={(value) => setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" })}
+                                onChangeMobile={(value) => setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" })}
                             />
-                        )}
-                        {companyStyles[0].urlCheck && (
-                            <ToggleControl
-                                label={__("Open Link in a New Tab", 'premium-blocks-for-gutenberg')}
-                                checked={companyStyles[0].urlTarget}
-                                onChange={newCheck => saveCompanyStyle({ urlTarget: newCheck })}
-                            />
-                        )}
-                    </PanelBody>
-                    <PanelBody
-                        title={__("Quotations", 'premium-blocks-for-gutenberg')}
-                        className="premium-panel-body"
-                        initialOpen={false}
-                    >
-                        <ResponsiveSingleRangeControl
-                            label={__("Size (EM)", 'premium-blocks-for-gutenberg')}
-                            value={quoteStyles[0].quotSize}
-                            min="1"
-                            max="12"
-                            onChange={newSize => saveQuoteStyles({ quotSize: newSize })}
-                            showUnit={false}
-                            defaultValue={0}
-                        />
-                        <AdvancedPopColorControl
-                            label={__("Quotations Color", 'premium-blocks-for-gutenberg')}
-                            colorValue={quoteStyles[0].quotColor}
-                            colorDefault={''}
-                            onColorChange={newValue => saveQuoteStyles({ quotColor: newValue })}
-                        />
-                        <ResponsiveSingleRangeControl
-                            label={__("Opacity", 'premium-blocks-for-gutenberg')}
-                            value={quoteStyles[0].quotOpacity}
-                            onChange={newValue => saveQuoteStyles({ quotOpacity: newValue })}
-                            showUnit={false}
-                            defaultValue={0}
-                        />
-                    </PanelBody>
-                    <PanelBody
-                        title={__("Container", 'premium-blocks-for-gutenberg')}
-                        className="premium-panel-body"
-                        initialOpen={false}
-                    >
-                        <PremiumBackgroundControl
-                            value={background}
-                            onChange={(value) => setAttributes({ background: value })}
-                        />
-                        <PremiumShadow
-                            label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
-                            boxShadow={true}
-                            value={boxShadow}
-                            onChange={(value) => setAttributes({ boxShadow: value })}
-                        />
-                        <SpacingComponent value={padding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ padding: value })} />
-                    </PanelBody>
-                    <PremiumResponsiveTabs
-                        Desktop={hideDesktop}
-                        Tablet={hideTablet}
-                        Mobile={hideMobile}
-                        onChangeDesktop={(value) => setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" })}
-                        onChangeTablet={(value) => setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" })}
-                        onChangeMobile={(value) => setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" })}
-                    />
+                        </InspectorTab>
+                    </InspectorTabs>
                 </InspectorControls>
             ),
             <div
@@ -347,7 +363,7 @@ class edit extends Component {
                     <div
                         className={`premium-testimonial__content`}
                         style={{
-                            textAlign: align
+                            textAlign: align?.[this.props.deviceType]
                         }}
                     >
                         <div className={`premium-testimonial__img_wrap`}>
@@ -385,7 +401,7 @@ class edit extends Component {
                         </div>
                         <div
                             className={`premium-testimonial__info`}
-                            style={{ justifyContent: align }}
+                            style={{ justifyContent: align?.[this.props.deviceType] }}
                         >
                             <RichText
                                 tagName={authorStyles[0].authorTag.toLowerCase()}
