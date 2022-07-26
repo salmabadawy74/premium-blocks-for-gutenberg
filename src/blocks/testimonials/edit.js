@@ -11,7 +11,7 @@ import AdvancedPopColorControl from '../../components/Color Control/ColorCompone
 import PremiumBackgroundControl from '../../components/Premium-Background-Control';
 import RadioComponent from '../../components/radio-control'
 import PremiumShadow from "../../components/PremiumShadow";
-import PremiumTypo from "../../components/premium-typo";
+// import PremiumTypo from "../../components/premium-typo";
 import { generateBlockId, gradientBackground, generateCss, typographyCss, paddingCss, marginCss, borderCss } from '../../components/HelperFunction';
 
 const { __ } = wp.i18n;
