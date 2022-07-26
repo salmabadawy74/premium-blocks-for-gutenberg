@@ -1,6 +1,5 @@
 import { person } from "../../../assets/js/settings";
 import PBG_Block_Icons from '../../../blocks-config/block-icons'
-
 import save from "./save";
 import edit from "./edit";
 import deprecated from "./deprecated";

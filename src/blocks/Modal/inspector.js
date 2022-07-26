@@ -5,7 +5,6 @@ import PremiumBorder from "../../components/premium-border"
 import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import RadioComponent from '../../components/radio-control';
-const { __ } = wp.i18n;
 import PremiumTypo from "../../components/premium-typo";
 import PremiumMediaUpload from "../../components/premium-media-upload"
 import PremiumResponsiveMargin from '../../components/Premium-Responsive-Margin';
@@ -18,6 +17,7 @@ import SpacingComponent from '../../components/premium-responsive-spacing';
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
 
+const { __ } = wp.i18n;
 const {
     PanelBody,
     SelectControl,
@@ -29,12 +29,12 @@ const {
 const { InspectorControls, URLInput } = wp.blockEditor;
 const { Fragment, useEffect, useRef } = wp.element;
 const { InnerBlocks, MediaPlaceholder } = wp.blockEditor;
+
 const Inspector = ({
     attributes,
     setAttributes
 }) => {
     const {
-        block_id,
         contentStyles,
         triggerSettings,
         triggerStyles,
@@ -66,6 +66,7 @@ const Inspector = ({
         modalWidth,
         modalHeight
     } = attributes;
+
     const saveContentStyle = (value) => {
         const newUpdate = contentStyles.map((item, index) => {
             if (0 === index) {
@@ -77,9 +78,10 @@ const Inspector = ({
             contentStyles: newUpdate,
         });
     }
+
     const saveTriggerSettings = (value) => {
-        const newUpdate = triggerSettings.map((item, index) => {
-            if (0 === index) {
+        const newUpdate = triggerSettings.map((item, indx) => {
+            if (0 === indx) {
                 item = { ...item, ...value };
             }
             return item;
@@ -88,9 +90,10 @@ const Inspector = ({
             triggerSettings: newUpdate,
         });
     }
+
     const saveTriggerStyles = (value) => {
-        const newUpdate = triggerStyles.map((item, index) => {
-            if (0 === index) {
+        const newUpdate = triggerStyles.map((item, indexx) => {
+            if (0 === indexx) {
                 item = { ...item, ...value };
             }
             return item;
@@ -99,9 +102,10 @@ const Inspector = ({
             triggerStyles: newUpdate,
         });
     }
+
     const saveHeaderStyles = (value) => {
-        const newUpdate = headerStyles.map((item, index) => {
-            if (0 === index) {
+        const newUpdate = headerStyles.map((item, headerIndex) => {
+            if (0 === headerIndex) {
                 item = { ...item, ...value };
             }
             return item;
@@ -110,9 +114,10 @@ const Inspector = ({
             headerStyles: newUpdate,
         });
     }
+
     const saveUpperStyles = (value) => {
-        const newUpdate = upperStyles.map((item, index) => {
-            if (0 === index) {
+        const newUpdate = upperStyles.map((item, upperIndex) => {
+            if (0 === upperIndex) {
                 item = { ...item, ...value };
             }
             return item;
@@ -121,9 +126,10 @@ const Inspector = ({
             upperStyles: newUpdate,
         });
     }
+
     const saveLowerStyles = (value) => {
-        const newUpdate = lowerStyles.map((item, index) => {
-            if (0 === index) {
+        const newUpdate = lowerStyles.map((item, lowerIndex) => {
+            if (0 === lowerIndex) {
                 item = { ...item, ...value };
             }
             return item;
@@ -132,9 +138,10 @@ const Inspector = ({
             lowerStyles: newUpdate,
         });
     }
+
     const saveModalStyles = (value) => {
-        const newUpdate = modalStyles.map((item, index) => {
-            if (0 === index) {
+        const newUpdate = modalStyles.map((item, modalIndex) => {
+            if (0 === modalIndex) {
                 item = { ...item, ...value };
             }
             return item;
@@ -143,6 +150,7 @@ const Inspector = ({
             modalStyles: newUpdate,
         });
     }
+
     return (
         <InspectorControls key={"inspector"}>
             <InspectorTabs tabs={['layout', 'style', 'advance']}>

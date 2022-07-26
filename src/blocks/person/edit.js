@@ -19,6 +19,7 @@ import ResponsiveRadioControl from "../../components/responsive-radio";
 import InsideTabs from "../../components/InsideTabs";
 import InsideTab from "../../components/InsideTab";
 import Icons from "../../components/icons";
+import Social from "../../components/social-media";
 import { borderCss, paddingCss, marginCss, typographyCss, generateBlockId, generateCss } from "../../components/HelperFunction";
 import times from "lodash/times";
 import GoogleFontLoader from "react-google-font-loader";
@@ -282,91 +283,91 @@ class Edit extends Component {
 
         const iconsList = [
             {
-                value: Icons.facebook,
+                value: Social.facebook,
                 label: __("facebook", "premium-blocks-for-gutenberg"),
             },
             {
-                value: Icons.twitter,
+                value: Social.twitter,
                 label: __("twitter", "premium-blocks-for-gutenberg"),
             },
             {
-                value: Icons.instagram,
+                value: Social.instagram,
                 label: __("instagram", "premium-blocks-for-gutenberg"),
             },
             {
-                value: Icons.youtube,
+                value: Social.youtube,
                 label: __("youtube", "premium-blocks-for-gutenberg"),
             },
             {
-                value: Icons.linkedin,
+                value: Social.linkedin,
                 label: __("linkedin", "premium-blocks-for-gutenberg"),
             },
             {
-                value: Icons.flickr,
+                value: Social.flickr,
                 label: __("flickr", "premium-blocks-for-gutenberg"),
             },
             {
-                value: Icons.github,
+                value: Social.github,
                 label: __("github", "premium-blocks-for-gutenberg"),
             },
             {
-                value: Icons.googlePlus,
+                value: Social.googlePlus,
                 label: __("google-plus", "premium-blocks-for-gutenberg"),
             },
             {
-                value: Icons.pinterest,
+                value: Social.pinterest,
                 label: __("pinterest", "premium-blocks-for-gutenberg"),
             },
             {
-                value: Icons.reddit,
+                value: Social.reddit,
                 label: __("reddit", "premium-blocks-for-gutenberg"),
             },
             {
-                value: Icons.skype,
+                value: Social.skype,
                 label: __("skype", "premium-blocks-for-gutenberg"),
             },
             {
-                value: Icons.stack_overflow,
+                value: Social.stack_overflow,
                 label: __("stack-overflow", "premium-blocks-for-gutenberg"),
             },
             {
-                value: Icons.whatsapp,
+                value: Social.whatsapp,
                 label: __("whatsapp", "premium-blocks-for-gutenberg"),
             },
             {
-                value: Icons.vimeo,
+                value: Social.vimeo,
                 label: __("vimeo", "premium-blocks-for-gutenberg"),
             },
             {
-                value: Icons.tumblr,
+                value: Social.tumblr,
                 label: __("tumblr", "premium-blocks-for-gutenberg"),
             },
             {
-                value: Icons.dribbble,
+                value: Social.dribbble,
                 label: __("dribbble", "premium-blocks-for-gutenberg"),
             },
             {
-                value: Icons.quora,
+                value: Social.quora,
                 label: __("quora", "premium-blocks-for-gutenberg"),
             },
             {
-                value: Icons.foursquare,
+                value: Social.foursquare,
                 label: __("foursquare", "premium-blocks-for-gutenberg"),
             },
             {
-                value: Icons.wordpress,
+                value: Social.wordpress,
                 label: __("wordpress", "premium-blocks-for-gutenberg"),
             },
             {
-                value: Icons.stumbleupon,
+                value: Social.stumbleupon,
                 label: __("stumbleupon", "premium-blocks-for-gutenberg"),
             },
             {
-                value: Icons.yahoo,
+                value: Social.yahoo,
                 label: __("yahoo", "premium-blocks-for-gutenberg"),
             },
             {
-                value: Icons.soundcloud,
+                value: Social.soundcloud,
                 label: __("soundcloud", "premium-blocks-for-gutenberg"),
             },
         ];
@@ -565,8 +566,8 @@ class Edit extends Component {
                                         {value.socialIcon && socialIconfn(value.items)}
                                     </div>
                                 ) : (
-                                        ""
-                                    )}
+                                    ""
+                                )}
                             </div>
                             <div
                                 className={`premium-person__info`}
@@ -630,8 +631,8 @@ class Edit extends Component {
                                         {value.socialIcon && socialIconfn(value.items)}
                                     </div>
                                 ) : (
-                                        ""
-                                    )}
+                                    ""
+                                )}
                             </div>
                         </div>
                     ))}
@@ -807,8 +808,8 @@ class Edit extends Component {
                                         options={ROWS}
                                     />
                                 ) : (
-                                        ""
-                                    )}
+                                    ""
+                                )}
                                 <SelectControl
                                     label={__("Style", "premium-block-for-gutenberg")}
                                     value={effectPersonStyle}
@@ -1092,8 +1093,8 @@ class Edit extends Component {
                                         min={15}
                                     />
                                 ) : (
-                                        ""
-                                    )}
+                                    ""
+                                )}
                                 <SpacingControl
                                     label={__("Padding", "premium-blocks-for-gutenberg")}
                                     value={contentPadding}

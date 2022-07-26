@@ -8,14 +8,6 @@ const attributes = {
             "Mobile": "center"
         }
     },
-    // nameStyles: {
-    //     type: "array",
-    //     default: [
-    //         {
-    //             nameColor: ""
-    //         }
-    //     ]
-    // },
     nameColor: {
         type: "string",
         default: ""
@@ -28,22 +20,6 @@ const attributes = {
         type: "string",
         default: ""
     },
-    // titleStyles: {
-    //     type: "array",
-    //     default: [
-    //         {
-    //             titleColor: ""
-    //         }
-    //     ]
-    // },
-    // descStyles: {
-    //     type: "array",
-    //     default: [
-    //         {
-    //             descColor: ""
-    //         }
-    //     ]
-    // },
     socialIconStyles: {
         type: "array",
         default: [
@@ -71,10 +47,6 @@ const attributes = {
         type: "string",
         default: "top"
     },
-    // descColor: {
-    //     type: "string",
-    //     default: "#000"
-    // },
     multiPersonChecked: {
         type: "number",
         default: 1
