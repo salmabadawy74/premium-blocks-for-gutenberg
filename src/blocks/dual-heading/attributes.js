@@ -3,9 +3,13 @@ const attributes = {
     blockId: {
         type: "string"
     },
-    contentAlign: {
-        type: "string",
-        default: "center"
+    alignContent: {
+        type: "object",
+        default: {
+            'Desktop': 'center',
+            'Tablet': 'center',
+            'Mobile': 'center'
+        }
     },
     firstHeading: {
         type: "array",
@@ -38,37 +42,45 @@ const attributes = {
                 firstBackground: '',
                 firstOpacity: '1',
                 firstClipColor: "#54595f",
-                firstMarginL: 0,
-                firstMarginR: 0,
-                firstPadding: 0,
+
             }
         ]
     },
     firstShadow: {
         type: "object",
         default: {
-            'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': '',
+            'color': 'undefined',
+            'blur': '`10',
+            'horizontal': '0',
+            'vertical': '0',
         }
     },
     firstTypography: {
         type: "object",
         default: {
-            "fontWeight": '',
+            "fontWeight": '400',
             'fontStyle': '',
-            'textTransform': '',
-            'letterSpacing': '',
-            'fontFamily': '',
-            'lineHeight': '',
+            'fontFamily': 'Default',
             'textDecoration': '',
+            'textTransform': "",
             'fontSize': {
                 'Desktop': '',
                 "Tablet": '',
                 "Mobile": '',
                 "unit": 'px'
-            }
+            },
+            'letterSpacing': {
+                'Desktop': "",
+                'Tablet': "",
+                'Mobile': "",
+                'unit': "px",
+            },
+            'lineHeight': {
+                'Desktop': "",
+                'Tablet': "",
+                'Mobile': "",
+                'unit': "px",
+            },
         }
     },
     secondStyles: {
@@ -92,10 +104,10 @@ const attributes = {
     secondShadow: {
         type: "object",
         default: {
-            'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': '',
+            'color': 'undefined',
+            'blur': '10',
+            'horizontal': '0',
+            'vertical': '0',
         }
     },
     secondTypography: {
@@ -104,16 +116,26 @@ const attributes = {
             "fontWeight": '',
             'fontStyle': '',
             'textTransform': '',
-            'letterSpacing': '',
             'fontFamily': '',
-            'lineHeight': '',
             'textDecoration': '',
             'fontSize': {
                 'Desktop': '20',
                 "Tablet": '',
                 "Mobile": '',
                 "unit": 'px'
-            }
+            },
+            'letterSpacing': {
+                'Desktop': "",
+                'Tablet': "",
+                'Mobile': "",
+                'unit': "px",
+            },
+            'lineHeight': {
+                'Desktop': "",
+                'Tablet': "",
+                'Mobile': "",
+                'unit': "px",
+            },
         }
     },
     background: {
@@ -135,10 +157,7 @@ const attributes = {
             'gradientType': ''
         }
     },
-    containerBorder: {
-        type: 'boolean',
-        default: false
-    },
+
     link: {
         type: "boolean",
         default: false
@@ -162,10 +181,7 @@ const attributes = {
         type: 'boolean',
         default: false
     },
-    backgroundType: {
-        type: "string",
-        default: ""
-    },
+
     firstBorder: {
         type: "object",
         default: {

@@ -647,8 +647,694 @@ const v8Attriutes = {
         default: ""
     }
 }
+let deprecated_attributes = {
+    alignContent: {
+        type: "object",
+        default: {
+            'Desktop': 'center',
+            'Tablet': 'center',
+            'Mobile': 'center'
+        }
+    },
+    firstShadow: {
+        type: "object",
+        default: {
+            'color': 'undefined',
+            'blur': '`10',
+            'horizontal': '0',
+            'vertical': '0',
+        }
+    },
+    firstTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '400',
+            'fontStyle': '',
+            'fontFamily': 'Default',
+            'textDecoration': '',
+            'textTransform': "",
+            'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            },
+            'letterSpacing': {
+                'Desktop': "",
+                'Tablet': "",
+                'Mobile': "",
+                'unit': "px",
+            },
+            'lineHeight': {
+                'Desktop': "",
+                'Tablet': "",
+                'Mobile': "",
+                'unit': "px",
+            },
+        }
+    },
+    secondShadow: {
+        type: "object",
+        default: {
+            'color': 'undefined',
+            'blur': '10',
+            'horizontal': '0',
+            'vertical': '0',
+        }
+    },
+    secondTypography: {
+        type: "object",
+        default: {
+            "fontWeight": '',
+            'fontStyle': '',
+            'textTransform': '',
+            'fontFamily': '',
+            'textDecoration': '',
+            'fontSize': {
+                'Desktop': '20',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            },
+            'letterSpacing': {
+                'Desktop': "",
+                'Tablet': "",
+                'Mobile': "",
+                'unit': "px",
+            },
+            'lineHeight': {
+                'Desktop': "",
+                'Tablet': "",
+                'Mobile': "",
+                'unit': "px",
+            },
+        }
+    },
+    background: {
+        type: "object",
+        default: {
+            'backgroundType': '',
+            'backgroundColor': '',
+            'backgroundImageID': '',
+            'backgroundImageURL': '',
+            'backgroundPosition': '',
+            'backgroundRepeat': '',
+            'backgroundSize': '',
+            'fixed': false,
+            'gradientLocationOne': "0",
+            'gradientColorTwo': '',
+            'gradientLocationTwo': '100',
+            'gradientAngle': '180',
+            'gradientPosition': 'center center',
+            'gradientType': ''
+        }
+    },
+    firstBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    secondBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    containerBorder: {
+        type: "object",
+        default: {
+            "borderType": "",
+            "borderColor": "",
+            "borderWidth": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            },
+            "borderRadius": {
+                Desktop: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Tablet: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                },
+                Mobile: {
+                    top: '',
+                    right: '',
+                    bottom: '',
+                    left: ''
+                }
+            }
+        }
+    },
+    firstPadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
+    firstMargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
+    secondPadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
+    secondMargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Tablet: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            Mobile: {
+                top: '',
+                right: '',
+                bottom: '',
+                left: ''
+            },
+            unit: 'px'
+        }
+    },
+
+
+}
 
 const deprecatedContent = [
+    {
+        attributes: Object.assign(deprecated_attributes, v8Attriutes),
+        migrate: attributes => {
+            let new_attributes = {
+                alignContent: {
+                    'Desktop': attributes.contentAlign,
+                    'Tablet': attributes.contentAlign,
+                    'Mobile': attributes.contentAlign
+                },
+                firstShadow: {
+                    'color': attributes.firstStyles[0].firstShadowColor,
+                    'blur': '`10',
+                    'horizontal': '0',
+                    'vertical': '0',
+                },
+                firstTypography: {
+                    type: "object",
+                    default: {
+                        "fontWeight": '400',
+                        'fontStyle': '',
+                        'fontFamily': 'Default',
+                        'textDecoration': '',
+                        'textTransform': "",
+                        'fontSize': {
+                            'Desktop': '',
+                            "Tablet": '',
+                            "Mobile": '',
+                            "unit": 'px'
+                        },
+                        'letterSpacing': {
+                            'Desktop': "",
+                            'Tablet': "",
+                            'Mobile': "",
+                            'unit': "px",
+                        },
+                        'lineHeight': {
+                            'Desktop': "",
+                            'Tablet': "",
+                            'Mobile': "",
+                            'unit': "px",
+                        },
+                    }
+                },
+                secondShadow: {
+                    type: "object",
+                    default: {
+                        'color': 'undefined',
+                        'blur': '10',
+                        'horizontal': '0',
+                        'vertical': '0',
+                    }
+                },
+                secondTypography: {
+                    type: "object",
+                    default: {
+                        "fontWeight": '',
+                        'fontStyle': '',
+                        'textTransform': '',
+                        'fontFamily': '',
+                        'textDecoration': '',
+                        'fontSize': {
+                            'Desktop': '20',
+                            "Tablet": '',
+                            "Mobile": '',
+                            "unit": 'px'
+                        },
+                        'letterSpacing': {
+                            'Desktop': "",
+                            'Tablet': "",
+                            'Mobile': "",
+                            'unit': "px",
+                        },
+                        'lineHeight': {
+                            'Desktop': "",
+                            'Tablet': "",
+                            'Mobile': "",
+                            'unit': "px",
+                        },
+                    }
+                },
+                background: {
+                    type: "object",
+                    default: {
+                        'backgroundType': '',
+                        'backgroundColor': '',
+                        'backgroundImageID': '',
+                        'backgroundImageURL': '',
+                        'backgroundPosition': '',
+                        'backgroundRepeat': '',
+                        'backgroundSize': '',
+                        'fixed': false,
+                        'gradientLocationOne': "0",
+                        'gradientColorTwo': '',
+                        'gradientLocationTwo': '100',
+                        'gradientAngle': '180',
+                        'gradientPosition': 'center center',
+                        'gradientType': ''
+                    }
+                },
+                firstBorder: {
+                    type: "object",
+                    default: {
+                        "borderType": "",
+                        "borderColor": "",
+                        "borderWidth": {
+                            Desktop: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            },
+                            Tablet: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            },
+                            Mobile: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            }
+                        },
+                        "borderRadius": {
+                            Desktop: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            },
+                            Tablet: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            },
+                            Mobile: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            }
+                        }
+                    }
+                },
+                secondBorder: {
+                    type: "object",
+                    default: {
+                        "borderType": "",
+                        "borderColor": "",
+                        "borderWidth": {
+                            Desktop: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            },
+                            Tablet: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            },
+                            Mobile: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            }
+                        },
+                        "borderRadius": {
+                            Desktop: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            },
+                            Tablet: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            },
+                            Mobile: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            }
+                        }
+                    }
+                },
+                containerBorder: {
+                    type: "object",
+                    default: {
+                        "borderType": "",
+                        "borderColor": "",
+                        "borderWidth": {
+                            Desktop: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            },
+                            Tablet: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            },
+                            Mobile: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            }
+                        },
+                        "borderRadius": {
+                            Desktop: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            },
+                            Tablet: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            },
+                            Mobile: {
+                                top: '',
+                                right: '',
+                                bottom: '',
+                                left: ''
+                            }
+                        }
+                    }
+                },
+                firstPadding: {
+                    type: "object",
+                    default: {
+                        Desktop: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        unit: 'px'
+                    }
+                },
+                firstMargin: {
+                    type: "object",
+                    default: {
+                        Desktop: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        unit: 'px'
+                    }
+                },
+                secondPadding: {
+                    type: "object",
+                    default: {
+                        Desktop: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        unit: 'px'
+                    }
+                },
+                secondMargin: {
+                    type: "object",
+                    default: {
+                        Desktop: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Tablet: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        Mobile: {
+                            top: '',
+                            right: '',
+                            bottom: '',
+                            left: ''
+                        },
+                        unit: 'px'
+                    }
+                },
+            }
+            return Object.assign(attributes, new_attributes)
+
+        },
+        save: props => {
+
+        }
+    },
     {
         attributes: v8Attriutes,
         migrate: attributes => {

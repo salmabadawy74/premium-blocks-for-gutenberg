@@ -1985,6 +1985,7 @@ class PBG_Blocks_Helper {
 	 */
 	public function get_countup_css_style( $attr, $unique_id ) {
 
+
 	
 		$css                    = new Premium_Blocks_css();
 		$media_query            = array();

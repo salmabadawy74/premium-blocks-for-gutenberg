@@ -5,6 +5,7 @@ import {
     typographyCss,
     filterJsCss,
     gradientValue,
+    generateCss
 } from "../../components/HelperFunction";
 
 export default function save(props) {
@@ -54,7 +55,7 @@ export default function save(props) {
             'background-attachment': `${controllerOneBackground.fixed ? "fixed" : "unset"}`,
         };
         styles[`.${blockId} .premium-content-switcher-toggle-switch-slider `] = {
-            'border-radius': `${switchRadius} ${switchRadiusUnit} !important`,
+            'border-radius': `${switchRadius}${switchRadiusUnit} !important`,
             'box-shadow': `${switchShadow.horizontal}px ${switchShadow.vertical}px ${switchShadow.blur}px ${switchShadow.color} ${switchShadow.position} !important`,
 
         };

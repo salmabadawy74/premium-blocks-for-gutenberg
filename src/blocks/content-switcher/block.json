@@ -199,7 +199,9 @@
         "labelSpacing": {
             "type": "object",
             "default": {
-                "Desktop": "15"
+                "Desktop": "15",
+                "Tablet":"",
+                "Mobile":""
             }
         },
         "containerShadow": {

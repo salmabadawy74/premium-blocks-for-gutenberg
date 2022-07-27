@@ -20,7 +20,7 @@ import InsideTabs from "../../components/InsideTabs";
 import InsideTab from "../../components/InsideTab";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import Icons from "../../components/icons";
-import { gradientBackground, borderCss, paddingCss, marginCss, typographyCss, generateBlockId, gradientValue } from "../../components/HelperFunction";
+import { gradientBackground, borderCss, paddingCss, marginCss, typographyCss, generateBlockId, gradientValue, generateCss } from "../../components/HelperFunction";
 import GoogleFontLoader from "react-google-font-loader";
 
 /**
@@ -185,14 +185,11 @@ function Edit(props) {
             'background-attachment': `${controllerOneBackground.fixed ? "fixed" : "unset"}`,
         };
         styles[`.${blockId} .premium-content-switcher-toggle-switch-slider `] = {
-            'border-radius': `${switchRadius} ${switchRadiusUnit} !important`,
+            'border-radius': `${switchRadius}${switchRadiusUnit} !important`,
             'box-shadow': `${switchShadow.horizontal}px ${switchShadow.vertical}px ${switchShadow.blur}px ${switchShadow.color} ${switchShadow.position} !important`,
 
         };
-        styles[`.${blockId} .premium-content-switcher-toggle-switch-slider `] = {
-            'border-radius': `${switchRadius} ${switchRadiusUnit} !important`,
-            'box-shadow': `${switchShadow.horizontal}px ${switchShadow.vertical}px ${switchShadow.blur}px ${switchShadow.color} ${switchShadow.position} !important`,
-        };
+
         styles[`.${blockId} .premium-content-switcher-toggle-inline.premium-content-switcher-first-label `] = {
             'margin-right': `${labelSpacing[props.deviceType]}px !important`,
         };
