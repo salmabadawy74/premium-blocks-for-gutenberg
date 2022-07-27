@@ -73,11 +73,7 @@ export default function save(props) {
                 " premium-mobile-hidden": hideMobile,
             }
         )}>
-            <style
-                dangerouslySetInnerHTML={{
-                    __html: loadStyles()
-                }}
-            />
+            <style>{loadStyles()}</style>
             <ul className={`premium-bullet-list-${layoutPos} premium-bullet-list`}>
                 {
                     repeaterBulletList.map((icon, index) => {

@@ -850,11 +850,7 @@ class edit extends Component {
                     </InspectorTabs>
                 </InspectorControls>
             ),
-            <style
-                dangerouslySetInnerHTML={{
-                    __html: loadStyles(),
-                }}
-            />,
+            <style>{loadStyles()}</style>,
             <div
                 className={`${mainClasses} ${blockId} premium-icon-box-${iconPos} premium-icon-box-${iconHPos} `}
                 style={{

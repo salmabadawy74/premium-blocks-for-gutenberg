@@ -1,5 +1,6 @@
 import classnames from "classnames";
 import PremiumTypo from "../../components/premium-typo";
+import PremiumBorder from "../../components/premium-border"
 import DefaultImage from "../../components/default-image";
 import PremiumUpperQuote from "../../components/testimonials/upper-quote";
 import PremiumLowerQuote from "../../components/testimonials/lower-quote";

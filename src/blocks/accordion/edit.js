@@ -44,7 +44,6 @@ class PremiumAccordion extends Component {
         const { isSelected, setAttributes, className } = this.props;
         const {
             blockId,
-            repeaterItems,
             direction,
             titleTag,
             titleStyles,
@@ -125,7 +124,11 @@ class PremiumAccordion extends Component {
         const descPaddingRight = descPadding[this.props.deviceType].right;
         const descPaddingBottom = descPadding[this.props.deviceType].bottom;
         const descPaddingLeft = descPadding[this.props.deviceType].left;
-        const mainClasses = classnames(className, "premium-accordion");
+        const mainClasses = classnames(className, "premium-accordion", {
+            ' premium-desktop-hidden': hideDesktop,
+            ' premium-tablet-hidden': hideTablet,
+            ' premium-mobile-hidden': hideMobile,
+        });
 
         const loadStyles = () => {
             const styles = {};
@@ -159,14 +162,14 @@ class PremiumAccordion extends Component {
 
             styles[`.${blockId} .premium-accordion__title_wrap .premium-accordion__title_text`] = {
                 color: titleStyles[0].titleColor,
-                'font-size': `${titleTypography.fontSize[this.props.deviceType]}${titleTypography.fontSize.unit}`,
-                'font-style': titleTypography.fontStyle,
-                'font-family': titleTypography.fontFamily,
-                'font-weight': titleTypography.fontWeight,
-                'letter-spacing': titleTypography.letterSpacing,
-                'text-decoration': titleTypography.textDecoration,
-                'text-transform': titleTypography.textTransform,
-                'line-height': `${titleTypography.lineHeight}px`,
+                'font-size': `${titleTypography?.fontSize[this.props.deviceType]}${titleTypography?.fontSize.unit}`,
+                'font-style': titleTypography?.fontStyle,
+                'font-family': titleTypography?.fontFamily,
+                'font-weight': titleTypography?.fontWeight,
+                'letter-spacing': `${titleTypography?.letterSpacing[this.props.deviceType]}${titleTypography?.letterSpacing.unit}`,
+                'text-decoration': titleTypography?.textDecoration,
+                'text-transform': titleTypography?.textTransform,
+                'line-height': `${titleTypography?.lineHeight[this.props.deviceType]}${titleTypography?.lineHeight.unit}`,
                 'text-shadow': `${titleTextShadow.horizontal}px ${titleTextShadow.vertical}px ${titleTextShadow.blur}px ${titleTextShadow.color}`
             };
 
@@ -192,14 +195,14 @@ class PremiumAccordion extends Component {
 
             styles[`.${blockId} .premium-accordion__desc_wrap .premium-accordion__desc`] = {
                 color: descStyles[0].descColor,
-                'font-size': `${descTypography.fontSize[this.props.deviceType]}${descTypography.fontSize.unit}`,
-                'font-style': descTypography.fontStyle,
-                'font-family': descTypography.fontFamily,
-                'font-weight': descTypography.fontWeight,
-                'letter-spacing': descTypography.letterSpacing,
-                'text-decoration': descTypography.textDecoration,
-                'text-transform': descTypography.textTransform,
-                'line-height': `${descTypography.lineHeight}px`,
+                'font-size': `${descTypography?.fontSize[this.props.deviceType]}${descTypography?.fontSize.unit}`,
+                'font-style': descTypography?.fontStyle,
+                'font-family': descTypography?.fontFamily,
+                'font-weight': descTypography?.fontWeight,
+                'letter-spacing': `${descTypography?.letterSpacing[this.props.deviceType]}${descTypography?.letterSpacing.unit}`,
+                'text-decoration': descTypography?.textDecoration,
+                'text-transform': descTypography?.textTransform,
+                'line-height': `${descTypography?.lineHeight[this.props.deviceType]}${descTypography?.lineHeight.unit}`,
                 'text-shadow': `${textShadow.horizontal}px ${textShadow.vertical}px ${textShadow.blur}px ${textShadow.color}`
             };
 
@@ -291,10 +294,6 @@ class PremiumAccordion extends Component {
                                 <PremiumBorder
                                     label={__("Border")}
                                     value={titleBorder}
-                                    borderType={titleBorder.borderType}
-                                    borderColor={titleBorder.borderColor}
-                                    borderWidth={titleBorder.borderWidth}
-                                    borderRadius={titleBorder.borderRadius}
                                     onChange={(value) => setAttributes({ titleBorder: value })}
                                 />
                                 <hr />
@@ -351,10 +350,6 @@ class PremiumAccordion extends Component {
                                 <PremiumBorder
                                     label={__("Border")}
                                     value={descBorder}
-                                    borderType={descBorder.borderType}
-                                    borderColor={descBorder.borderColor}
-                                    borderWidth={descBorder.borderWidth}
-                                    borderRadius={descBorder.borderRadius}
                                     onChange={(value) => setAttributes({ descBorder: value })}
                                 />
                                 <hr />
@@ -418,9 +413,7 @@ class PremiumAccordion extends Component {
             ),
             <Fragment>
                 <div ref={this.accordionRef} className={`${mainClasses} ${blockId}`}>
-                    <style
-                        dangerouslySetInnerHTML={{ __html: loadStyles() }}
-                    />
+                    <style>{loadStyles()}</style>
                     <InnerBlocks
                         template={INNER_BLOCKS_TEMPLATE}
                         templateLock={false}
