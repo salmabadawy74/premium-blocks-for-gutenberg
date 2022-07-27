@@ -2,6 +2,7 @@ import DefaultImage from "../../components/default-image";
 import PremiumUpperQuote from "../../components/testimonials/upper-quote";
 import PremiumLowerQuote from "../../components/testimonials/lower-quote";
 import hexToRgba from 'hex-to-rgba'
+import classnames from 'classnames'
 
 const className = "premium-testimonial";
 
@@ -428,7 +429,7 @@ const v7Attributes = {
 
 const deprecatedContent = [
     {
-        attributes: attributes,
+        attributes: v7Attributes,
         isEligible() {
             return true;
         },

@@ -2,7 +2,7 @@ import classnames from 'classnames'
 import DefaultImage from "../../components/default-image";
 import PremiumUpperQuote from "../../components/testimonials/upper-quote";
 import PremiumLowerQuote from "../../components/testimonials/lower-quote";
-
+import { filterJsCss, gradientBackground } from '../../components/HelperFunction';
 const { RichText } = wp.blockEditor;
 
 const save = props => {
@@ -10,14 +10,10 @@ const save = props => {
     const { className } = props;
 
     const {
-        block_id,
-        align,
-        authorImgId,
+        blockId,
         authorImgUrl,
-        imgRadius,
         imgSize,
         imgBorder,
-        imgBorderColor,
         author,
         authorStyles,
         text,
@@ -28,38 +24,26 @@ const save = props => {
         contentStyle,
         companyStyles,
         quoteStyles,
-        containerStyles,
-        backgroundType
+        background,
+        boxShadow,
+        authorTypography,
+        bodyTypography,
+        companyTypography,
     } = props.attributes;
 
-    const mainClasses = classnames(className, 'premium-testimonial');
-
-    let btnGrad, btnGrad2, btnbg;
-    if (undefined !== backgroundType && 'gradient' === backgroundType) {
-        btnGrad = ('transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack);
-        btnGrad2 = (undefined !== containerStyles[0].gradientColorTwo && undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777');
-        if ('radial' === containerStyles[0].gradientType) {
-            btnbg = `radial-gradient(at ${containerStyles[0].gradientPosition}, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
-        } else if ('radial' !== containerStyles[0].gradientType) {
-            btnbg = `linear-gradient(${containerStyles[0].gradientAngle}deg, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
-        }
-    } else {
-        btnbg = containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : 'none'
-    }
+    const mainClasses = classnames(className, 'premium-testimonial', {
+        " premium-desktop-hidden": hideDesktop,
+        " premium-tablet-hidden": hideTablet,
+        " premium-mobile-hidden": hideMobile,
+    });
 
     return (
         <div
-            id={`premium-testimonial-${block_id}`}
-            className={`${mainClasses}__wrap premium-testimonial-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
-            style={{
-                boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px ${containerStyles[0].shadowColor} ${containerStyles[0].shadowPosition}`,
-                backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
-                backgroundImage: btnbg,
-                backgroundRepeat: containerStyles[0].backgroundRepeat,
-                backgroundPosition: containerStyles[0].backgroundPosition,
-                backgroundSize: containerStyles[0].backgroundSize,
-                backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
-            }}
+            className={`${mainClasses}__wrap ${blockId}`}
+            style={filterJsCss({
+                boxShadow: `${boxShadow?.horizontal}px ${boxShadow?.vertical}px ${boxShadow?.blur}px ${boxShadow?.color} ${boxShadow?.position}`,
+                ...gradientBackground(background),
+            })}
         >
             <div className={`premium-testimonial__container`}>
                 <span className={`premium-testimonial__upper`}>
@@ -71,9 +55,6 @@ const save = props => {
                 </span>
                 <div
                     className={`premium-testimonial__content`}
-                    style={{
-                        textAlign: align
-                    }}
                 >
                     <div className={`premium-testimonial__img_wrap`}>
                         {authorImgUrl && (
@@ -81,13 +62,12 @@ const save = props => {
                                 className={`premium-testimonial__img`}
                                 src={`${authorImgUrl}`}
                                 alt="Author"
-                                style={{
-                                    borderWidth: imgBorder + "px",
-                                    borderRadius: imgRadius,
-                                    borderColor: imgBorderColor,
+                                style={filterJsCss({
+                                    borderStyle: imgBorder?.borderType,
+                                    borderColor: imgBorder?.borderColor,
                                     width: imgSize + "px",
                                     height: imgSize + "px"
-                                }}
+                                })}
                             />
                         )}
                         {!authorImgUrl && <DefaultImage className={className} />}
@@ -98,46 +78,56 @@ const save = props => {
                                 tagName="p"
                                 className={`premium-testimonial__text`}
                                 value={text}
-                                style={{
+                                style={filterJsCss({
                                     color: contentStyle[0].bodyColor,
                                     lineHeight: contentStyle[0].bodyLine + "px",
                                     marginTop: contentStyle[0].bodyTop + "px",
-                                    marginBottom: contentStyle[0].bodyBottom + "px"
-                                }}
+                                    marginBottom: contentStyle[0].bodyBottom + "px",
+                                    fontStyle: bodyTypography?.fontStyle,
+                                    fontFamily: bodyTypography?.fontFamily,
+                                    fontWeight: bodyTypography?.fontWeight,
+                                    textDecoration: bodyTypography?.textDecoration,
+                                    textTransform: bodyTypography?.textTransform,
+                                })}
                             />
                         </div>
                     </div>
                     <div className={`premium-testimonial__info`}
-                        style={{ justifyContent: align }}
                     >
                         <RichText.Content
                             tagName={authorStyles[0].authorTag.toLowerCase()}
                             className={`premium-testimonial__author`}
                             value={author}
-                            style={{
+                            style={filterJsCss({
                                 color: authorStyles[0].authorColor,
-                                letterSpacing: authorStyles[0].authorLetter + "px",
-                                textTransform: authorStyles[0].authorUpper ? "uppercase" : "none",
-                                fontStyle: authorStyles[0].authorStyle,
-                                fontWeight: authorStyles[0].authorWeight
-                            }}
+                                fontStyle: authorTypography?.fontStyle,
+                                fontFamily: authorTypography?.fontFamily,
+                                fontWeight: authorTypography?.fontWeight,
+                                textDecoration: authorTypography?.textDecoration,
+                                textTransform: authorTypography?.textTransform,
+                            })}
                         />
                         <span
                             className={`premium-testimonial__sep`}
-                            style={{
+                            style={filterJsCss({
                                 color: companyStyles[0].dashColor
-                            }}
+                            })}
                         >
                             &nbsp;-&nbsp;
-            </span>
+                        </span>
                         <div className={`premium-testimonial__link_wrap`}>
                             <RichText.Content
                                 tagName={authorStyles[0].authorComTag.toLowerCase()}
                                 className={`premium-testimonial__author_comp`}
                                 value={authorCom}
-                                style={{
+                                style={filterJsCss({
                                     color: companyStyles[0].authorComColor,
-                                }}
+                                    fontStyle: companyTypography?.fontStyle,
+                                    fontFamily: companyTypography?.fontFamily,
+                                    fontWeight: companyTypography?.fontWeight,
+                                    textDecoration: companyTypography?.textDecoration,
+                                    textTransform: companyTypography?.textTransform,
+                                })}
                             />
                             {companyStyles[0].urlCheck && (
                                 <a

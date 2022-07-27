@@ -1092,11 +1092,7 @@ class edit extends Component {
                 " premium-mobile-hidden": hideMobile,
             })}
                 style={{ textAlign: align?.[this.props.deviceType] }}>
-                <style
-                    dangerouslySetInnerHTML={{
-                        __html: loadStyles()
-                    }}
-                />
+                <style>{loadStyles()}</style>
                 <ul className={`premium-bullet-list-${layoutPos} premium-bullet-list`}
                     style={{
                         textAlign: align?.[currentDevice],

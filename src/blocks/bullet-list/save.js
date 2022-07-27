@@ -73,11 +73,7 @@ export default function save(props) {
                 " premium-mobile-hidden": hideMobile,
             }
         )}>
-            <style
-                dangerouslySetInnerHTML={{
-                    __html: loadStyles()
-                }}
-            />
+            <style>{loadStyles()}</style>
             <ul className={`premium-bullet-list-${layoutPos} premium-bullet-list`}>
                 {
                     repeaterBulletList.map((icon, index) => {
@@ -155,10 +151,8 @@ export default function save(props) {
                                                         fontStyle: titleTypography?.fontStyle,
                                                         fontFamily: titleTypography?.fontFamily,
                                                         fontWeight: titleTypography?.fontWeight,
-                                                        letterSpacing: titleTypography?.letterSpacing,
                                                         textDecoration: titleTypography?.textDecoration,
                                                         textTransform: titleTypography?.textTransform,
-                                                        lineHeight: `${titleTypography?.lineHeight}px`,
                                                         color: titleStyles?.[0]?.titleColor,
                                                         textShadow: `${titlesTextShadow?.titleshadowHorizontal}px ${titlesTextShadow?.titleshadowVertical}px ${titlesTextShadow?.titleshadowBlur}px ${titlesTextShadow?.titleshadowColor}`
                                                     })} />
@@ -208,8 +202,6 @@ export default function save(props) {
                                                         style={filterJsCss({
                                                             fontFamily: titleFont,
                                                             fontWeight: titleStyles?.[0]?.titleWeight,
-                                                            letterSpacing: titleStyles?.[0]?.titleLetter + "px",
-                                                            lineHeight: titleStyles?.[0]?.titleLine + "px",
                                                             fontStyle: titleStyles?.[0]?.titleStyle,
                                                             textTransform: titleStyles?.[0]?.titleUpper ? "uppercase" : "none",
                                                             fontFamily: titleStyles?.[0]?.titleFontFamily,

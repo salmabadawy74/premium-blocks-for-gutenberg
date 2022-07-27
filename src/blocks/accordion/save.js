@@ -44,10 +44,8 @@ const save = props => {
             'font-style': titleTypography.fontStyle,
             'font-family': titleTypography.fontFamily,
             'font-weight': titleTypography.fontWeight,
-            'letter-spacing': titleTypography.letterSpacing,
             'text-decoration': titleTypography.textDecoration,
             'text-transform': titleTypography.textTransform,
-            'line-height': `${titleTypography.lineHeight}px`,
             'text-shadow': `${titleTextShadow.horizontal}px ${titleTextShadow.vertical}px ${titleTextShadow.blur}px ${titleTextShadow.color}`
         };
 
@@ -63,10 +61,8 @@ const save = props => {
             'font-style': descTypography.fontStyle,
             'font-family': descTypography.fontFamily,
             'font-weight': descTypography.fontWeight,
-            'letter-spacing': descTypography.letterSpacing,
             'text-decoration': descTypography.textDecoration,
             'text-transform': descTypography.textTransform,
-            'line-height': `${descTypography.lineHeight}px`,
             'text-shadow': `${textShadow.horizontal}px ${textShadow.vertical}px ${textShadow.blur}px ${textShadow.color}`
         };
         let styleCss = '';
@@ -88,15 +84,15 @@ const save = props => {
         return styleCss;
     }
 
-    const mainClasses = classnames(className, 'premium-accordion', blockId);
+    const mainClasses = classnames(className, 'premium-accordion', blockId, {
+        ' premium-desktop-hidden': hideDesktop,
+        ' premium-tablet-hidden': hideTablet,
+        ' premium-mobile-hidden': hideMobile,
+    });
 
     return (
-        <div className={`${mainClasses} ${hideDesktop} ${hideTablet} ${hideMobile}`}>
-            <style
-                dangerouslySetInnerHTML={{
-                    __html: loadStyles()
-                }}
-            />
+        <div className={`${mainClasses}`}>
+            <style>{loadStyles()}</style>
             <InnerBlocks.Content />
         </div>
     );
