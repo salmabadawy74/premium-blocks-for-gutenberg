@@ -9,6 +9,8 @@ const { __ } = wp.i18n;
 const { withSelect } = wp.data
 const { Fragment, useEffect, useState } = wp.element;
 const { InnerBlocks, MediaPlaceholder } = wp.blockEditor;
+const { RichText } = wp.editor;
+
 
 const edit = props => {
 
@@ -51,7 +53,10 @@ const edit = props => {
         hideDesktop,
         hideTablet,
         hideMobile,
-        align
+        align,
+        upperIconWidth,
+        lowerIconWidth,
+        triggerIconSize
     } = props.attributes;
 
     const currentDevice = props.deviceType;
@@ -199,32 +204,35 @@ const edit = props => {
                             ...paddingCss(triggerPadding, currentDevice),
                             ...borderCss(triggerBorder, currentDevice),
                             fontSize: `${triggerTypography.fontSize[currentDevice]}${triggerTypography.fontSize.unit}`,
-                            // paddingTop: triggerPaddingTop && `${triggerPaddingTop}${triggerPadding.unit}`,
-                            // paddingRight: triggerPaddingRight && `${triggerPaddingRight}${triggerPadding.unit}`,
-                            // paddingBottom: triggerPaddingBottom && `${triggerPaddingBottom}${triggerPadding.unit}`,
-                            // paddingLeft: triggerPaddingLeft && `${triggerPaddingLeft}${triggerPadding.unit}`,
                             backgroundColor: triggerStyles[0].triggerBack,
-                            // borderStyle: triggerBorder && triggerBorder.borderType,
-                            // borderTopWidth: triggerBorder && triggerBorder.borderWidth[currentDevice].top,
-                            // borderRightWidth: triggerBorder && triggerBorder.borderWidth[currentDevice].right,
-                            // borderBottomWidth: triggerBorder && triggerBorder.borderWidth[currentDevice].bottom,
-                            // borderLeftWidth: triggerBorder && triggerBorder.borderWidth[currentDevice].left,
-                            // borderColor: triggerBorder && triggerBorder.borderColor,
-                            // borderTopLeftRadius: `${triggerBorder && triggerBorder.borderRadius[currentDevice].top || 0}px`,
-                            // borderTopRightRadius: `${triggerBorder && triggerBorder.borderRadius[currentDevice].right || 0}px`,
-                            // borderBottomLeftRadius: `${triggerBorder && triggerBorder.borderRadius[currentDevice].bottom || 0}px`,
-                            // borderBottomRightRadius: `${triggerBorder && triggerBorder.borderRadius[currentDevice].left || 0}px`,
                             boxShadow: `${triggerShadow.horizontal}px ${triggerShadow.vertical}px ${triggerShadow.blur}px ${triggerShadow.color} ${triggerShadow.position}`,
                         }}>
                         {triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "before" &&
                             <i
                                 className={` premium-modal-box-icon ${triggerSettings[0].icon}`}
                                 style={{
-                                    fontSize: `${triggerSettings[0].iconSize}px`,
+                                    fontSize: `${triggerIconSize[currentDevice]}${triggerIconSize.unit} !important`,
                                     marginRight: `${triggerSettings[0].iconSpacing}px`,
                                     color: triggerStyles[0].iconColor
                                 }}></i>
                         }
+                        {/* <RichText
+                            tagName={'span'}
+                            className={`premium-person__name`}
+                            value={triggerSettings[0].btnText}
+                            onChange={(newValue) => saveTriggerSettings({ btnText: newValue })}
+                            style={{
+                                color: triggerStyles[0].color,
+                                fontFamily: triggerTypography?.fontFamily,
+                                fontWeight: triggerTypography?.fontWeight,
+                                fontStyle: triggerTypography?.fontStyle,
+                                letterSpacing: triggerTypography?.letterSpacing[currentDevice],
+                                textDecoration: triggerTypography?.textDecoration,
+                                textTransform: triggerTypography?.textTransform,
+                                lineHeight: `${triggerTypography?.lineHeight[currentDevice]}px`,
+                            }}
+                            keepPlaceholderOnFocus
+                        /> */}
                         <span
                             style={{
                                 color: triggerStyles[0].color,
@@ -242,7 +250,7 @@ const edit = props => {
                             <i
                                 className={` premium-modal-box-icon ${triggerSettings[0].icon}`}
                                 style={{
-                                    fontSize: `${triggerSettings[0].iconSize}px`,
+                                    fontSize: `${triggerIconSize[currentDevice]}${triggerIconSize.unit} !important`,
                                     marginLeft: `${triggerSettings[0].iconSpacing}px`,
                                     color: triggerStyles[0].iconColor
                                 }} ></i>
@@ -396,7 +404,7 @@ const edit = props => {
                                         }}>
                                         <button role="button" className="premium-modal-box-modal-close close-button" onClick={() => setOpenModal(false)}
                                             style={{
-                                                fontSize: `${upperStyles[0].iconWidth}${upperStyles[0].iconWidthUnit}`,
+                                                fontSize: `${upperIconWidth[currentDevice]}${upperIconWidth.unit}`,
                                                 color: `${upperStyles[0].color}`,
 
                                             }} data-dismiss="premium-modal" >×</button>
@@ -423,7 +431,7 @@ const edit = props => {
                                     ...typographyCss(lowerTypography, currentDevice),
                                     ...paddingCss(lowerPadding, currentDevice),
                                     ...borderCss(lowerBorder, currentDevice),
-                                    width: `${lowerStyles[0].iconWidth}${lowerStyles[0].iconWidthUnit}`,
+                                    width: `${lowerIconWidth[currentDevice]}${lowerIconWidth.unit}`,
                                     color: `${lowerStyles[0].color}`,
                                     backgroundColor: `${lowerStyles[0].backColor}`
                                 }}

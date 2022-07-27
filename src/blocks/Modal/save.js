@@ -112,7 +112,7 @@ const save = props => {
                 }}
             />
             <div className={`premium-modal-trigger-container`}
-            // style={{ textAlign: triggerSettings[0].align }}
+            // style={{ textAlign: align }}
             >
                 {(triggerSettings[0].triggerType === "button") &&
                     <button className={` premium-modal-trigger-btn premium-button__${triggerSettings[0].btnSize} `}
@@ -126,7 +126,7 @@ const save = props => {
                             <i
                                 className={` premium-modal-box-icon ${triggerSettings[0].icon}`}
                                 style={{
-                                    fontSize: `${triggerSettings[0].iconSize}px`,
+                                    // fontSize: `${triggerIconSize[currentDevice]}${triggerIconSize.unit} !important`,
                                     marginRight: `${triggerSettings[0].iconSpacing}px`,
                                     color: triggerStyles[0].iconColor
                                 }}></i>
@@ -146,7 +146,7 @@ const save = props => {
                             <i
                                 className={`premium-modal-box-icon ${triggerSettings[0].icon}`}
                                 style={{
-                                    fontSize: `${triggerSettings[0].iconSize}px`,
+                                    // fontSize: `${triggerIconSize[currentDevice]}${triggerIconSize.unit} !important`,
                                     marginLeft: `${triggerSettings[0].iconSpacing}px`,
                                     color: triggerStyles[0].iconColor
                                 }} ></i>
@@ -242,7 +242,7 @@ const save = props => {
                                 }}>
                                 <button type="button" className="premium-modal-box-modal-close close-button"
                                     style={{
-                                        fontSize: `${upperStyles[0].iconWidth}${upperStyles[0].iconWidthUnit}`,
+                                        // fontSize: `${upperIconWidth[currentDevice]}${upperIconWidth.unit}`,
                                         color: `${upperStyles[0].color}`,
 
                                     }} data-dismiss="premium-modal" >×</button>
@@ -275,7 +275,7 @@ const save = props => {
                                 fontStyle: lowerTypography.fontStyle,
                                 textDecoration: lowerTypography?.textDecoration,
                                 textTransform: lowerTypography?.textTransform,
-                                width: `${lowerStyles[0].iconWidth}${lowerStyles[0].iconWidthUnit}`,
+                                // width: `${lowerIconWidth[current]}${lowerIconWidth.unit}`,
                                 color: `${lowerStyles[0].color}`,
                                 backgroundColor: `${lowerStyles[0].backColor}`,
                                 borderStyle: `${lowerBorder.borderType}`,

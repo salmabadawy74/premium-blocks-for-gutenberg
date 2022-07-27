@@ -16,10 +16,10 @@ const attributes = {
                 lottieURL: '',
                 loopLottie: true,
                 reverseLottie: false,
-                iconSize: '',
-                iconSizeTablet: '',
-                iconSizeMobile: '',
-                iconSizeUnit: 'px',
+                // iconSize: '',
+                // iconSizeTablet: '',
+                // iconSizeMobile: '',
+                // iconSizeUnit: 'px',
                 titleText: __('Modal Box Title', 'premium-blocks-for-gutenberg'),
                 showUpperClose: true,
                 showLowerClose: true,
@@ -38,7 +38,7 @@ const attributes = {
                 showIcon: false,
                 icon: '',
                 iconPosition: 'before',
-                iconSize: '50',
+                // iconSize: '50',
                 iconSpacing: '',
                 btnSize: 'md',
                 triggerImgID: '',
@@ -48,9 +48,9 @@ const attributes = {
                 triggerLoopLottie: true,
                 triggerReverseLottie: false,
                 triggerPlayLottie: false,
-                imageWidth: '',
-                imageWidthTablet: '',
-                imageWidthMobile: '',
+                // imageWidth: '',
+                // imageWidthTablet: '',
+                // imageWidthMobile: '',
                 // align: 'center',
                 delayTime: 1
             }
@@ -85,15 +85,15 @@ const attributes = {
             {
                 color: '',
                 backColor: '',
-                headerSizeUnit: 'px',
+                // headerSizeUnit: 'px',
             }
         ]
     },
     upperStyles: {
         type: "array",
         default: [{
-            iconWidth: '',
-            iconWidthUnit: 'px',
+            // iconWidth: '',
+            // iconWidthUnit: 'px',
             color: '',
             backColor: '',
 
@@ -103,8 +103,8 @@ const attributes = {
         type: 'array',
         default: [
             {
-                iconWidth: '',
-                iconWidthUnit: 'px',
+                // iconWidth: '',
+                // iconWidthUnit: 'px',
                 color: '',
                 backColor: '',
             }
@@ -118,14 +118,14 @@ const attributes = {
                 contentText: __('Modal Box Content', 'premium-blocks-for-gutenberg'),
                 textColor: '',
                 textBackColor: '',
-                modalWidth: '',
-                modalWidthTablet: '',
-                modalWidthMobile: '',
-                modalWidthUnit: 'px',
-                modalHeight: '',
-                modalHeightTablet: '',
-                modalHeightMobile: '',
-                modalHeightUnit: 'px',
+                // modalWidth: '',
+                // modalWidthTablet: '',
+                // modalWidthMobile: '',
+                // modalWidthUnit: 'px',
+                // modalHeight: '',
+                // modalHeightTablet: '',
+                // modalHeightMobile: '',
+                // modalHeightUnit: 'px',
                 footerBackColor: '',
             }
         ]
@@ -178,9 +178,9 @@ const attributes = {
             'vertical': '0'
         }
     },
-    backgroundType: {
-        type: "string"
-    },
+    // backgroundType: {
+    //     type: "string"
+    // },
     triggerPadding: {
         type: "object",
         default: {
@@ -304,7 +304,7 @@ const attributes = {
     triggerBorder: {
         type: "object",
         default: {
-            "borderType": "",
+            borderType: "none",
             "borderColor": "",
             "borderWidth": {
                 Desktop: {
@@ -351,7 +351,7 @@ const attributes = {
     triggerBorderH: {
         type: "object",
         default: {
-            "borderType": "",
+            borderType: "none",
             "borderColor": "",
             "borderWidth": {
                 Desktop: {
@@ -398,7 +398,7 @@ const attributes = {
     headerBorder: {
         type: "object",
         default: {
-            "borderType": "",
+            borderType: "none",
             "borderColor": "",
             "borderWidth": {
                 Desktop: {
@@ -445,7 +445,7 @@ const attributes = {
     upperBorder: {
         type: "object",
         default: {
-            "borderType": "",
+            borderType: "none",
             "borderColor": "",
             "borderWidth": {
                 Desktop: {
@@ -492,7 +492,7 @@ const attributes = {
     lowerBorder: {
         type: "object",
         default: {
-            "borderType": "",
+            borderType: "none",
             "borderColor": "",
             "borderWidth": {
                 Desktop: {
@@ -539,7 +539,7 @@ const attributes = {
     modalBorder: {
         type: "object",
         default: {
-            "borderType": "",
+            borderType: "none",
             "borderColor": "",
             "borderWidth": {
                 Desktop: {
@@ -770,6 +770,33 @@ const attributes = {
     hideMobile: {
         type: 'boolean',
         default: ''
+    },
+    triggerIconSize: {
+        type: "object",
+        default: {
+            "Desktop": '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': 'px',
+        }
+    },
+    upperIconWidth: {
+        type: "object",
+        default: {
+            "Desktop": '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': 'px',
+        }
+    },
+    lowerIconWidth: {
+        type: "object",
+        default: {
+            "Desktop": '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': 'px',
+        }
     },
 }
 export default attributes;
