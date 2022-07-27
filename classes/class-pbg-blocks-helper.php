@@ -4247,11 +4247,16 @@ class PBG_Blocks_Helper {
 	public function get_testimonial_css( $attributes, $content ) {
 
 		if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
-			$unique_id = $attributes['block_id'];
-		} else {
-			$unique_id = rand( 100, 10000 );
+			$unique_id = "#premium-testimonial-{$attributes['block_id']}";
 		}
-		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
+
+		if ( isset( $attributes['blockId'] ) && ! empty( $attributes['blockId'] ) ) {
+			$unique_id = ".{$attributes['blockId']}";
+		}
+
+		$style_unique_id = rand( 100, 10000 );
+
+		$style_id = 'pbg-blocks-style' . esc_attr( $style_unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
 			$css = $this->get_testimonial_css_style( $attributes, $unique_id );
 			if ( ! empty( $css ) ) {
