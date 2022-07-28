@@ -24144,7 +24144,7 @@ const attributes = {
   },
   BackText: {
     type: "string",
-    default: 'Awesome Title'
+    default: "Awesome Title"
   },
   textWidth: {
     type: "number"
@@ -24169,108 +24169,108 @@ const attributes = {
     type: "array",
     default: [{
       titleColor: "#6ec1e4",
-      shinyColor: '#fff',
+      shinyColor: "#fff",
       blurColor: "#000",
-      BGColor: '#54595f',
+      BGColor: "#54595f",
       lineColor: "#6ec1e4",
       triangleColor: "#6ec1e4",
       stripeColor: "#6ec1e4",
-      blurShadow: '120',
-      animateDelay: '2',
-      animateduration: '1'
+      blurShadow: "120",
+      animateDelay: "2",
+      animateduration: "1"
     }]
   },
   titlePadding: {
     type: "object",
     default: {
       Desktop: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
       },
       Tablet: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
       },
       Mobile: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
       },
-      unit: 'px'
+      unit: "px"
     }
   },
   titleMargin: {
     type: "object",
     default: {
       Desktop: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
       },
       Tablet: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
       },
       Mobile: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
       },
-      unit: 'px'
+      unit: "px"
     }
   },
   titleBorder: {
     type: "object",
     default: {
-      "borderType": "",
-      "borderColor": "",
-      "borderWidth": {
+      borderType: "",
+      borderColor: "",
+      borderWidth: {
         Desktop: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
+          top: "",
+          right: "",
+          bottom: "",
+          left: ""
         },
         Tablet: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
+          top: "",
+          right: "",
+          bottom: "",
+          left: ""
         },
         Mobile: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
+          top: "",
+          right: "",
+          bottom: "",
+          left: ""
         }
       },
-      "borderRadius": {
+      borderRadius: {
         Desktop: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
+          top: "",
+          right: "",
+          bottom: "",
+          left: ""
         },
         Tablet: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
+          top: "",
+          right: "",
+          bottom: "",
+          left: ""
         },
         Mobile: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
+          top: "",
+          right: "",
+          bottom: "",
+          left: ""
         }
       }
     }
@@ -24278,10 +24278,10 @@ const attributes = {
   titleShadow: {
     type: "object",
     default: {
-      'color': '',
-      'blur': '',
-      'horizontal': '',
-      'vertical': ''
+      color: "",
+      blur: "",
+      horizontal: "",
+      vertical: ""
     }
   },
   titleTypography: {
@@ -24323,37 +24323,37 @@ const attributes = {
   stripeWidth: {
     type: "object",
     default: {
-      'Desktop': 120,
-      'Tablet': 120,
-      'Mobile': 120,
-      'unit': 'px'
+      Desktop: 120,
+      Tablet: 120,
+      Mobile: 120,
+      unit: "px"
     }
   },
   stripeHeight: {
     type: "object",
     default: {
-      'Desktop': 5,
-      'Tablet': 5,
-      'Mobile': 5,
-      'unit': 'px'
+      Desktop: 5,
+      Tablet: 5,
+      Mobile: 5,
+      unit: "px"
     }
   },
   stripeTopSpacing: {
     type: "object",
     default: {
-      'Desktop': 0,
-      'Tablet': 0,
-      'Mobile': 0,
-      'unit': 'px'
+      Desktop: 0,
+      Tablet: 0,
+      Mobile: 0,
+      unit: "px"
     }
   },
   stripeBottomSpacing: {
     type: "object",
     default: {
-      'Desktop': 0,
-      'Tablet': 0,
-      'Mobile': 0,
-      'unit': 'px'
+      Desktop: 0,
+      Tablet: 0,
+      Mobile: 0,
+      unit: "px"
     }
   },
   textStyles: {
@@ -24396,36 +24396,36 @@ const attributes = {
   textBackshadow: {
     type: "object",
     default: {
-      'color': '',
-      'blur': '',
-      'horizontal': '',
-      'vertical': ''
+      color: "",
+      blur: "",
+      horizontal: "",
+      vertical: ""
     }
   },
   horizontalText: {
     type: "object",
     default: {
-      'Desktop': 0,
-      'Tablet': 0,
-      'Mobile': 0,
-      'unit': 'px'
+      Desktop: 0,
+      Tablet: 0,
+      Mobile: 0,
+      unit: "px"
     }
   },
   verticalText: {
     type: "object",
     default: {
-      'Desktop': 0,
-      'Tablet': 0,
-      'Mobile': 0,
-      'unit': 'px'
+      Desktop: 0,
+      Tablet: 0,
+      Mobile: 0,
+      unit: "px"
     }
   },
   rotateText: {
     type: "object",
     default: {
-      'Desktop': 0,
-      'Tablet': 0,
-      'Mobile': 0
+      Desktop: 0,
+      Tablet: 0,
+      Mobile: 0
     }
   },
   iconStyles: {
@@ -24437,131 +24437,131 @@ const attributes = {
   iconshadow: {
     type: "object",
     default: {
-      'color': '',
-      'blur': '',
-      'horizontal': '',
-      'vertical': ''
+      color: "",
+      blur: "",
+      horizontal: "",
+      vertical: ""
     }
   },
   iconPadding: {
     type: "object",
     default: {
       Desktop: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
       },
       Tablet: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
       },
       Mobile: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
       },
-      unit: 'px'
+      unit: "px"
     }
   },
   iconMargin: {
     type: "object",
     default: {
       Desktop: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
       },
       Tablet: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
       },
       Mobile: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
       },
-      unit: 'px'
+      unit: "px"
     }
   },
   iconBackground: {
     type: "object",
     default: {
-      'backgroundType': '',
-      'backgroundColor': '',
-      'backgroundImageID': '',
-      'backgroundImageURL': '',
-      'backgroundPosition': '',
-      'backgroundRepeat': '',
-      'backgroundSize': '',
-      'fixed': false,
-      'gradientLocationOne': "",
-      'gradientColorTwo': '',
-      'gradientLocationTwo': '',
-      'gradientAngle': '',
-      'gradientPosition': '',
-      'gradientType': ''
+      backgroundType: "",
+      backgroundColor: "",
+      backgroundImageID: "",
+      backgroundImageURL: "",
+      backgroundPosition: "",
+      backgroundRepeat: "",
+      backgroundSize: "",
+      fixed: false,
+      gradientLocationOne: "",
+      gradientColorTwo: "",
+      gradientLocationTwo: "",
+      gradientAngle: "",
+      gradientPosition: "",
+      gradientType: ""
     }
   },
   iconSize: {
     type: "object",
     default: {
-      'Desktop': 40,
-      'Tablet': 40,
-      'Mobile': 40,
-      'unit': 'px'
+      Desktop: 40,
+      Tablet: 40,
+      Mobile: 40,
+      unit: "px"
     }
   },
   iconBorder: {
     type: "object",
     default: {
-      "borderType": "",
-      "borderColor": "",
-      "borderWidth": {
+      borderType: "none",
+      borderColor: "",
+      borderWidth: {
         Desktop: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
+          top: "",
+          right: "",
+          bottom: "",
+          left: ""
         },
         Tablet: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
+          top: "",
+          right: "",
+          bottom: "",
+          left: ""
         },
         Mobile: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
+          top: "",
+          right: "",
+          bottom: "",
+          left: ""
         }
       },
-      "borderRadius": {
+      borderRadius: {
         Desktop: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
+          top: "",
+          right: "",
+          bottom: "",
+          left: ""
         },
         Tablet: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
+          top: "",
+          right: "",
+          bottom: "",
+          left: ""
         },
         Mobile: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
+          top: "",
+          right: "",
+          bottom: "",
+          left: ""
         }
       }
     }
@@ -24576,45 +24576,45 @@ const attributes = {
   strokeFull: {
     type: "object",
     default: {
-      'Desktop': 40,
-      'Tablet': 40,
-      'Mobile': 40
+      Desktop: "",
+      Tablet: "",
+      Mobile: ""
     }
   },
   iconBGColor: {
     type: "string"
   },
   hideDesktop: {
-    type: 'boolean',
+    type: "boolean",
     default: false
   },
   hideTablet: {
-    type: 'boolean',
+    type: "boolean",
     default: false
   },
   hideMobile: {
-    type: 'boolean',
+    type: "boolean",
     default: false
   },
   z_index: {
     type: "number"
   },
   blend: {
-    type: 'string'
+    type: "string"
   },
   lottieURl: {
-    type: 'string'
+    type: "string"
   },
   loop: {
-    type: 'boolean',
+    type: "boolean",
     default: true
   },
   reversedir: {
-    type: 'boolean',
+    type: "boolean",
     default: false
   },
   target: {
-    type: 'boolean',
+    type: "boolean",
     default: false
   },
   blend: {
@@ -25898,14 +25898,14 @@ class edit extends Component {
   }
 
   getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
-    if (device === 'Mobile') {
-      if (undefined !== mobileSize && '' !== mobileSize) {
+    if (device === "Mobile") {
+      if (undefined !== mobileSize && "" !== mobileSize) {
         return mobileSize;
-      } else if (undefined !== tabletSize && '' !== tabletSize) {
+      } else if (undefined !== tabletSize && "" !== tabletSize) {
         return tabletSize;
       }
-    } else if (device === 'Tablet') {
-      if (undefined !== tabletSize && '' !== tabletSize) {
+    } else if (device === "Tablet") {
+      if (undefined !== tabletSize && "" !== tabletSize) {
         return tabletSize;
       }
     }
@@ -25925,9 +25925,9 @@ class edit extends Component {
             duration = titleStyles[0].animateduration * 1000;
 
         function shinyEffect() {
-          titleElement.setAttribute('data-animation', 'shiny');
+          titleElement.setAttribute("data-animation", "shiny");
           setTimeout(function () {
-            titleElement.removeAttribute('data-animation');
+            titleElement.removeAttribute("data-animation");
           }, duration);
         }
 
@@ -25938,7 +25938,7 @@ class edit extends Component {
       }
 
       if (titleContainer.classList.contains("style9")) {
-        let style9 = document.querySelectorAll('.premium-title-style9__wrap');
+        let style9 = document.querySelectorAll(".premium-title-style9__wrap");
         style9.forEach(function (style) {
           let holdTime = titleStyles[0].animateDelay * 1000;
           style.setAttribute("data-animation-blur", "process");
@@ -25946,18 +25946,18 @@ class edit extends Component {
             index += 1;
             let delayTime;
 
-            if (document.getElementsByTagName("BODY")[0].classList.contains('.rtl')) {
-              delayTime = 0.2 / index + 's';
+            if (document.getElementsByTagName("BODY")[0].classList.contains(".rtl")) {
+              delayTime = 0.2 / index + "s";
             } else {
-              delayTime = index / 20 + 's';
+              delayTime = index / 20 + "s";
             }
 
             letter.style.animationDelay = delayTime;
           });
           setInterval(function () {
-            style.setAttribute('data-animation-blur', 'done');
+            style.setAttribute("data-animation-blur", "done");
             setTimeout(function () {
-              style.setAttribute('data-animation-blur', 'process');
+              style.setAttribute("data-animation-blur", "process");
             }, 150);
           }, holdTime);
         });
@@ -26110,35 +26110,35 @@ class edit extends Component {
       label: __("Bottom")
     }];
     const BLEND = [{
-      label: 'Normal',
-      value: 'normal'
+      label: "Normal",
+      value: "normal"
     }, {
-      label: 'Multiply',
-      value: 'multiply'
+      label: "Multiply",
+      value: "multiply"
     }, {
-      label: 'Screen',
-      value: 'screen'
+      label: "Screen",
+      value: "screen"
     }, {
-      label: 'Overlay',
-      value: 'overlay'
+      label: "Overlay",
+      value: "overlay"
     }, {
-      label: 'Darken',
-      value: 'darken'
+      label: "Darken",
+      value: "darken"
     }, {
-      label: 'Lighten',
-      value: 'lighten'
+      label: "Lighten",
+      value: "lighten"
     }, {
-      label: 'Color Dodge',
-      value: 'color-dodge'
+      label: "Color Dodge",
+      value: "color-dodge"
     }, {
-      label: 'Saturation',
-      value: 'saturation'
+      label: "Saturation",
+      value: "saturation"
     }, {
-      label: 'Color',
-      value: 'color'
+      label: "Color",
+      value: "color"
     }, {
-      label: 'Luminosity',
-      value: 'luminosity'
+      label: "Luminosity",
+      value: "luminosity"
     }];
     const TitleMarginTop = titleMargin === null || titleMargin === void 0 ? void 0 : (_titleMargin$this$pro = titleMargin[this.props.deviceType]) === null || _titleMargin$this$pro === void 0 ? void 0 : _titleMargin$this$pro.top;
     const TitleMarginRight = titleMargin === null || titleMargin === void 0 ? void 0 : (_titleMargin$this$pro2 = titleMargin[this.props.deviceType]) === null || _titleMargin$this$pro2 === void 0 ? void 0 : _titleMargin$this$pro2.right;
@@ -26158,17 +26158,17 @@ class edit extends Component {
     const IconPaddingLeft = iconPadding === null || iconPadding === void 0 ? void 0 : (_iconPadding$this$pro4 = iconPadding[this.props.deviceType]) === null || _iconPadding$this$pro4 === void 0 ? void 0 : _iconPadding$this$pro4.left;
     let btnGrad, btnGrad2, btnbg;
 
-    if (undefined !== iconBackground.backgroundType && 'gradient' === iconBackground.backgroundType) {
-      btnGrad = 'transparent' === iconBackground.backgroundColor || undefined === iconBackground.backgroundColor ? 'rgba(255,255,255,0)' : iconBackground.backgroundColor;
-      btnGrad2 = undefined !== iconBackground.gradientColorTwo && undefined !== iconBackground.gradientColorTwo && '' !== iconBackground.gradientColorTwo ? iconBackground.gradientColorTwo : '#777';
+    if (undefined !== iconBackground.backgroundType && "gradient" === iconBackground.backgroundType) {
+      btnGrad = "transparent" === iconBackground.backgroundColor || undefined === iconBackground.backgroundColor ? "rgba(255,255,255,0)" : iconBackground.backgroundColor;
+      btnGrad2 = undefined !== iconBackground.gradientColorTwo && undefined !== iconBackground.gradientColorTwo && "" !== iconBackground.gradientColorTwo ? iconBackground.gradientColorTwo : "#777";
 
-      if ('radial' === iconBackground.gradientType) {
+      if ("radial" === iconBackground.gradientType) {
         btnbg = `radial-gradient(at ${iconBackground.gradientPosition}, ${btnGrad} ${iconBackground.gradientLocationOne}%, ${btnGrad2} ${iconBackground.gradientLocationTwo}%)`;
-      } else if ('radial' !== iconBackground.gradientType) {
+      } else if ("radial" !== iconBackground.gradientType) {
         btnbg = `linear-gradient(${iconBackground.gradientAngle}deg, ${btnGrad} ${iconBackground.gradientLocationOne}%, ${btnGrad2} ${iconBackground.gradientLocationTwo}%)`;
       }
     } else {
-      btnbg = iconBackground.backgroundImageURL ? `url('${iconBackground.backgroundImageURL}')` : '';
+      btnbg = iconBackground.backgroundImageURL ? `url('${iconBackground.backgroundImageURL}')` : "";
     }
 
     const loadStyles = () => {
@@ -26176,170 +26176,170 @@ class edit extends Component {
 
       const styles = {};
       styles[`.${blockId} .premium-title-style8__wrap .premium-title-text-title[data-animation='shiny']`] = {
-        '--base-color': `${titleStyles[0].titleColor}!important`,
-        '--shiny-color': `${titleStyles[0].shinyColor}!important`,
-        '--animation-speed': `${titleStyles[0].animateduration}s!important`
+        "--base-color": `${titleStyles[0].titleColor}!important`,
+        "--shiny-color": `${titleStyles[0].shinyColor}!important`,
+        "--animation-speed": `${titleStyles[0].animateduration}s!important`
       };
       styles[`.${blockId} .premium-title-header`] = {
-        '--shadow-color': `${titleStyles[0].blurColor}!important`,
-        '--shadow-value': `${titleStyles[0].blurShadow}px!important`,
-        'color': `${titleStyles[0].titleColor}!important`
+        "--shadow-color": `${titleStyles[0].blurColor}!important`,
+        "--shadow-value": `${titleStyles[0].blurShadow}px!important`,
+        color: `${titleStyles[0].titleColor}!important`
       };
       styles[`.${blockId} .premium-title .style1 .premium-title-header`] = {
-        'border-color': `${titleBorder.borderColor}!important`,
-        'border-style': `${titleBorder.borderType}!important`,
-        'border-top-width': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi = titleBorder.borderWidth) === null || _titleBorder$borderWi === void 0 ? void 0 : (_titleBorder$borderWi2 = _titleBorder$borderWi[this.props.deviceType]) === null || _titleBorder$borderWi2 === void 0 ? void 0 : _titleBorder$borderWi2.top}px!important`,
-        'border-right-width': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi3 = titleBorder.borderWidth) === null || _titleBorder$borderWi3 === void 0 ? void 0 : (_titleBorder$borderWi4 = _titleBorder$borderWi3[this.props.deviceType]) === null || _titleBorder$borderWi4 === void 0 ? void 0 : _titleBorder$borderWi4.right}px!important`,
-        'border-bottom-width': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi5 = titleBorder.borderWidth) === null || _titleBorder$borderWi5 === void 0 ? void 0 : (_titleBorder$borderWi6 = _titleBorder$borderWi5[this.props.deviceType]) === null || _titleBorder$borderWi6 === void 0 ? void 0 : _titleBorder$borderWi6.bottom}px!important`,
-        'border-left-width': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi7 = titleBorder.borderWidth) === null || _titleBorder$borderWi7 === void 0 ? void 0 : (_titleBorder$borderWi8 = _titleBorder$borderWi7[this.props.deviceType]) === null || _titleBorder$borderWi8 === void 0 ? void 0 : _titleBorder$borderWi8.left}px!important`,
-        'border-top-left-radius': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa = titleBorder.borderRadius) === null || _titleBorder$borderRa === void 0 ? void 0 : (_titleBorder$borderRa2 = _titleBorder$borderRa[this.props.deviceType]) === null || _titleBorder$borderRa2 === void 0 ? void 0 : _titleBorder$borderRa2.top}px!important`,
-        'border-top-right-radius': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa3 = titleBorder.borderRadius) === null || _titleBorder$borderRa3 === void 0 ? void 0 : (_titleBorder$borderRa4 = _titleBorder$borderRa3[this.props.deviceType]) === null || _titleBorder$borderRa4 === void 0 ? void 0 : _titleBorder$borderRa4.right}px!important`,
-        'border-bottom-left-radius': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa5 = titleBorder.borderRadius) === null || _titleBorder$borderRa5 === void 0 ? void 0 : (_titleBorder$borderRa6 = _titleBorder$borderRa5[this.props.deviceType]) === null || _titleBorder$borderRa6 === void 0 ? void 0 : _titleBorder$borderRa6.bottom}px!important`,
-        'border-bottom-right-radius': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa7 = titleBorder.borderRadius) === null || _titleBorder$borderRa7 === void 0 ? void 0 : (_titleBorder$borderRa8 = _titleBorder$borderRa7[this.props.deviceType]) === null || _titleBorder$borderRa8 === void 0 ? void 0 : _titleBorder$borderRa8.left}px!important`,
-        'border-left': (titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi9 = titleBorder.borderWidth) === null || _titleBorder$borderWi9 === void 0 ? void 0 : (_titleBorder$borderWi10 = _titleBorder$borderWi9[this.props.deviceType]) === null || _titleBorder$borderWi10 === void 0 ? void 0 : _titleBorder$borderWi10.left) >= "1" ? `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi11 = titleBorder.borderWidth) === null || _titleBorder$borderWi11 === void 0 ? void 0 : (_titleBorder$borderWi12 = _titleBorder$borderWi11[this.props.deviceType]) === null || _titleBorder$borderWi12 === void 0 ? void 0 : _titleBorder$borderWi12.left}px ${titleBorder.borderType} ${titleBorder.borderColor}!important` : ''
+        "border-color": `${titleBorder.borderColor}!important`,
+        "border-style": `${titleBorder.borderType}!important`,
+        "border-top-width": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi = titleBorder.borderWidth) === null || _titleBorder$borderWi === void 0 ? void 0 : (_titleBorder$borderWi2 = _titleBorder$borderWi[this.props.deviceType]) === null || _titleBorder$borderWi2 === void 0 ? void 0 : _titleBorder$borderWi2.top}px!important`,
+        "border-right-width": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi3 = titleBorder.borderWidth) === null || _titleBorder$borderWi3 === void 0 ? void 0 : (_titleBorder$borderWi4 = _titleBorder$borderWi3[this.props.deviceType]) === null || _titleBorder$borderWi4 === void 0 ? void 0 : _titleBorder$borderWi4.right}px!important`,
+        "border-bottom-width": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi5 = titleBorder.borderWidth) === null || _titleBorder$borderWi5 === void 0 ? void 0 : (_titleBorder$borderWi6 = _titleBorder$borderWi5[this.props.deviceType]) === null || _titleBorder$borderWi6 === void 0 ? void 0 : _titleBorder$borderWi6.bottom}px!important`,
+        "border-left-width": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi7 = titleBorder.borderWidth) === null || _titleBorder$borderWi7 === void 0 ? void 0 : (_titleBorder$borderWi8 = _titleBorder$borderWi7[this.props.deviceType]) === null || _titleBorder$borderWi8 === void 0 ? void 0 : _titleBorder$borderWi8.left}px!important`,
+        "border-top-left-radius": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa = titleBorder.borderRadius) === null || _titleBorder$borderRa === void 0 ? void 0 : (_titleBorder$borderRa2 = _titleBorder$borderRa[this.props.deviceType]) === null || _titleBorder$borderRa2 === void 0 ? void 0 : _titleBorder$borderRa2.top}px!important`,
+        "border-top-right-radius": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa3 = titleBorder.borderRadius) === null || _titleBorder$borderRa3 === void 0 ? void 0 : (_titleBorder$borderRa4 = _titleBorder$borderRa3[this.props.deviceType]) === null || _titleBorder$borderRa4 === void 0 ? void 0 : _titleBorder$borderRa4.right}px!important`,
+        "border-bottom-left-radius": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa5 = titleBorder.borderRadius) === null || _titleBorder$borderRa5 === void 0 ? void 0 : (_titleBorder$borderRa6 = _titleBorder$borderRa5[this.props.deviceType]) === null || _titleBorder$borderRa6 === void 0 ? void 0 : _titleBorder$borderRa6.bottom}px!important`,
+        "border-bottom-right-radius": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa7 = titleBorder.borderRadius) === null || _titleBorder$borderRa7 === void 0 ? void 0 : (_titleBorder$borderRa8 = _titleBorder$borderRa7[this.props.deviceType]) === null || _titleBorder$borderRa8 === void 0 ? void 0 : _titleBorder$borderRa8.left}px!important`,
+        "border-left": (titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi9 = titleBorder.borderWidth) === null || _titleBorder$borderWi9 === void 0 ? void 0 : (_titleBorder$borderWi10 = _titleBorder$borderWi9[this.props.deviceType]) === null || _titleBorder$borderWi10 === void 0 ? void 0 : _titleBorder$borderWi10.left) >= "1" ? `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi11 = titleBorder.borderWidth) === null || _titleBorder$borderWi11 === void 0 ? void 0 : (_titleBorder$borderWi12 = _titleBorder$borderWi11[this.props.deviceType]) === null || _titleBorder$borderWi12 === void 0 ? void 0 : _titleBorder$borderWi12.left}px ${titleBorder.borderType} ${titleBorder.borderColor}!important` : ""
       };
       styles[`.${blockId} .premium-title .style2`] = {
-        'border-color': `${titleBorder.borderColor}!important`,
-        'border-style': `${titleBorder.borderType}!important`,
-        'border-top-width': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi13 = titleBorder.borderWidth) === null || _titleBorder$borderWi13 === void 0 ? void 0 : (_titleBorder$borderWi14 = _titleBorder$borderWi13[this.props.deviceType]) === null || _titleBorder$borderWi14 === void 0 ? void 0 : _titleBorder$borderWi14.top}px!important`,
-        'border-right-width': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi15 = titleBorder.borderWidth) === null || _titleBorder$borderWi15 === void 0 ? void 0 : (_titleBorder$borderWi16 = _titleBorder$borderWi15[this.props.deviceType]) === null || _titleBorder$borderWi16 === void 0 ? void 0 : _titleBorder$borderWi16.right}px!important`,
-        'border-bottom-width': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi17 = titleBorder.borderWidth) === null || _titleBorder$borderWi17 === void 0 ? void 0 : (_titleBorder$borderWi18 = _titleBorder$borderWi17[this.props.deviceType]) === null || _titleBorder$borderWi18 === void 0 ? void 0 : _titleBorder$borderWi18.bottom}px!important`,
-        'border-left-width': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi19 = titleBorder.borderWidth) === null || _titleBorder$borderWi19 === void 0 ? void 0 : (_titleBorder$borderWi20 = _titleBorder$borderWi19[this.props.deviceType]) === null || _titleBorder$borderWi20 === void 0 ? void 0 : _titleBorder$borderWi20.left}px!important`,
-        'border-top-left-radius': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa9 = titleBorder.borderRadius) === null || _titleBorder$borderRa9 === void 0 ? void 0 : (_titleBorder$borderRa10 = _titleBorder$borderRa9[this.props.deviceType]) === null || _titleBorder$borderRa10 === void 0 ? void 0 : _titleBorder$borderRa10.top}px!important`,
-        'border-top-right-radius': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa11 = titleBorder.borderRadius) === null || _titleBorder$borderRa11 === void 0 ? void 0 : (_titleBorder$borderRa12 = _titleBorder$borderRa11[this.props.deviceType]) === null || _titleBorder$borderRa12 === void 0 ? void 0 : _titleBorder$borderRa12.right}px!important`,
-        'border-bottom-left-radius': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa13 = titleBorder.borderRadius) === null || _titleBorder$borderRa13 === void 0 ? void 0 : (_titleBorder$borderRa14 = _titleBorder$borderRa13[this.props.deviceType]) === null || _titleBorder$borderRa14 === void 0 ? void 0 : _titleBorder$borderRa14.bottom}px!important`,
-        'border-bottom-right-radius': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa15 = titleBorder.borderRadius) === null || _titleBorder$borderRa15 === void 0 ? void 0 : (_titleBorder$borderRa16 = _titleBorder$borderRa15[this.props.deviceType]) === null || _titleBorder$borderRa16 === void 0 ? void 0 : _titleBorder$borderRa16.left}px!important`,
-        'border-bottom': (titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi21 = titleBorder.borderWidth) === null || _titleBorder$borderWi21 === void 0 ? void 0 : (_titleBorder$borderWi22 = _titleBorder$borderWi21[this.props.deviceType]) === null || _titleBorder$borderWi22 === void 0 ? void 0 : _titleBorder$borderWi22.bottom) >= "0" ? `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi23 = titleBorder.borderWidth) === null || _titleBorder$borderWi23 === void 0 ? void 0 : (_titleBorder$borderWi24 = _titleBorder$borderWi23[this.props.deviceType]) === null || _titleBorder$borderWi24 === void 0 ? void 0 : _titleBorder$borderWi24.bottom}px ${titleBorder.borderType} ${titleBorder.borderColor}!important` : ''
+        "border-color": `${titleBorder.borderColor}!important`,
+        "border-style": `${titleBorder.borderType}!important`,
+        "border-top-width": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi13 = titleBorder.borderWidth) === null || _titleBorder$borderWi13 === void 0 ? void 0 : (_titleBorder$borderWi14 = _titleBorder$borderWi13[this.props.deviceType]) === null || _titleBorder$borderWi14 === void 0 ? void 0 : _titleBorder$borderWi14.top}px!important`,
+        "border-right-width": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi15 = titleBorder.borderWidth) === null || _titleBorder$borderWi15 === void 0 ? void 0 : (_titleBorder$borderWi16 = _titleBorder$borderWi15[this.props.deviceType]) === null || _titleBorder$borderWi16 === void 0 ? void 0 : _titleBorder$borderWi16.right}px!important`,
+        "border-bottom-width": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi17 = titleBorder.borderWidth) === null || _titleBorder$borderWi17 === void 0 ? void 0 : (_titleBorder$borderWi18 = _titleBorder$borderWi17[this.props.deviceType]) === null || _titleBorder$borderWi18 === void 0 ? void 0 : _titleBorder$borderWi18.bottom}px!important`,
+        "border-left-width": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi19 = titleBorder.borderWidth) === null || _titleBorder$borderWi19 === void 0 ? void 0 : (_titleBorder$borderWi20 = _titleBorder$borderWi19[this.props.deviceType]) === null || _titleBorder$borderWi20 === void 0 ? void 0 : _titleBorder$borderWi20.left}px!important`,
+        "border-top-left-radius": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa9 = titleBorder.borderRadius) === null || _titleBorder$borderRa9 === void 0 ? void 0 : (_titleBorder$borderRa10 = _titleBorder$borderRa9[this.props.deviceType]) === null || _titleBorder$borderRa10 === void 0 ? void 0 : _titleBorder$borderRa10.top}px!important`,
+        "border-top-right-radius": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa11 = titleBorder.borderRadius) === null || _titleBorder$borderRa11 === void 0 ? void 0 : (_titleBorder$borderRa12 = _titleBorder$borderRa11[this.props.deviceType]) === null || _titleBorder$borderRa12 === void 0 ? void 0 : _titleBorder$borderRa12.right}px!important`,
+        "border-bottom-left-radius": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa13 = titleBorder.borderRadius) === null || _titleBorder$borderRa13 === void 0 ? void 0 : (_titleBorder$borderRa14 = _titleBorder$borderRa13[this.props.deviceType]) === null || _titleBorder$borderRa14 === void 0 ? void 0 : _titleBorder$borderRa14.bottom}px!important`,
+        "border-bottom-right-radius": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa15 = titleBorder.borderRadius) === null || _titleBorder$borderRa15 === void 0 ? void 0 : (_titleBorder$borderRa16 = _titleBorder$borderRa15[this.props.deviceType]) === null || _titleBorder$borderRa16 === void 0 ? void 0 : _titleBorder$borderRa16.left}px!important`,
+        "border-bottom": (titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi21 = titleBorder.borderWidth) === null || _titleBorder$borderWi21 === void 0 ? void 0 : (_titleBorder$borderWi22 = _titleBorder$borderWi21[this.props.deviceType]) === null || _titleBorder$borderWi22 === void 0 ? void 0 : _titleBorder$borderWi22.bottom) >= "0" ? `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi23 = titleBorder.borderWidth) === null || _titleBorder$borderWi23 === void 0 ? void 0 : (_titleBorder$borderWi24 = _titleBorder$borderWi23[this.props.deviceType]) === null || _titleBorder$borderWi24 === void 0 ? void 0 : _titleBorder$borderWi24.bottom}px ${titleBorder.borderType} ${titleBorder.borderColor}!important` : ""
       };
       styles[`.${blockId} .premium-title .style4`] = {
-        'border-color': `${titleBorder.borderColor}!important`,
-        'border-style': `${titleBorder.borderType}!important`,
-        'border-top-width': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi25 = titleBorder.borderWidth) === null || _titleBorder$borderWi25 === void 0 ? void 0 : (_titleBorder$borderWi26 = _titleBorder$borderWi25[this.props.deviceType]) === null || _titleBorder$borderWi26 === void 0 ? void 0 : _titleBorder$borderWi26.top}px!important`,
-        'border-right-width': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi27 = titleBorder.borderWidth) === null || _titleBorder$borderWi27 === void 0 ? void 0 : (_titleBorder$borderWi28 = _titleBorder$borderWi27[this.props.deviceType]) === null || _titleBorder$borderWi28 === void 0 ? void 0 : _titleBorder$borderWi28.right}px!important`,
-        'border-bottom-width': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi29 = titleBorder.borderWidth) === null || _titleBorder$borderWi29 === void 0 ? void 0 : (_titleBorder$borderWi30 = _titleBorder$borderWi29[this.props.deviceType]) === null || _titleBorder$borderWi30 === void 0 ? void 0 : _titleBorder$borderWi30.bottom}px!important`,
-        'border-left-width': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi31 = titleBorder.borderWidth) === null || _titleBorder$borderWi31 === void 0 ? void 0 : (_titleBorder$borderWi32 = _titleBorder$borderWi31[this.props.deviceType]) === null || _titleBorder$borderWi32 === void 0 ? void 0 : _titleBorder$borderWi32.left}px!important`,
-        'border-top-left-radius': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa17 = titleBorder.borderRadius) === null || _titleBorder$borderRa17 === void 0 ? void 0 : (_titleBorder$borderRa18 = _titleBorder$borderRa17[this.props.deviceType]) === null || _titleBorder$borderRa18 === void 0 ? void 0 : _titleBorder$borderRa18.top}px!important`,
-        'border-top-right-radius': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa19 = titleBorder.borderRadius) === null || _titleBorder$borderRa19 === void 0 ? void 0 : (_titleBorder$borderRa20 = _titleBorder$borderRa19[this.props.deviceType]) === null || _titleBorder$borderRa20 === void 0 ? void 0 : _titleBorder$borderRa20.right}px!important`,
-        'border-bottom-left-radius': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa21 = titleBorder.borderRadius) === null || _titleBorder$borderRa21 === void 0 ? void 0 : (_titleBorder$borderRa22 = _titleBorder$borderRa21[this.props.deviceType]) === null || _titleBorder$borderRa22 === void 0 ? void 0 : _titleBorder$borderRa22.bottom}px!important`,
-        'border-bottom-right-radius': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa23 = titleBorder.borderRadius) === null || _titleBorder$borderRa23 === void 0 ? void 0 : (_titleBorder$borderRa24 = _titleBorder$borderRa23[this.props.deviceType]) === null || _titleBorder$borderRa24 === void 0 ? void 0 : _titleBorder$borderRa24.left}px!important`,
-        'border-bottom': (titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi33 = titleBorder.borderWidth) === null || _titleBorder$borderWi33 === void 0 ? void 0 : (_titleBorder$borderWi34 = _titleBorder$borderWi33[this.props.deviceType]) === null || _titleBorder$borderWi34 === void 0 ? void 0 : _titleBorder$borderWi34.bottom) >= "0" ? `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi35 = titleBorder.borderWidth) === null || _titleBorder$borderWi35 === void 0 ? void 0 : (_titleBorder$borderWi36 = _titleBorder$borderWi35[this.props.deviceType]) === null || _titleBorder$borderWi36 === void 0 ? void 0 : _titleBorder$borderWi36.bottom}px ${titleBorder.borderType} ${titleBorder.borderColor}!important` : ''
+        "border-color": `${titleBorder.borderColor}!important`,
+        "border-style": `${titleBorder.borderType}!important`,
+        "border-top-width": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi25 = titleBorder.borderWidth) === null || _titleBorder$borderWi25 === void 0 ? void 0 : (_titleBorder$borderWi26 = _titleBorder$borderWi25[this.props.deviceType]) === null || _titleBorder$borderWi26 === void 0 ? void 0 : _titleBorder$borderWi26.top}px!important`,
+        "border-right-width": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi27 = titleBorder.borderWidth) === null || _titleBorder$borderWi27 === void 0 ? void 0 : (_titleBorder$borderWi28 = _titleBorder$borderWi27[this.props.deviceType]) === null || _titleBorder$borderWi28 === void 0 ? void 0 : _titleBorder$borderWi28.right}px!important`,
+        "border-bottom-width": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi29 = titleBorder.borderWidth) === null || _titleBorder$borderWi29 === void 0 ? void 0 : (_titleBorder$borderWi30 = _titleBorder$borderWi29[this.props.deviceType]) === null || _titleBorder$borderWi30 === void 0 ? void 0 : _titleBorder$borderWi30.bottom}px!important`,
+        "border-left-width": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi31 = titleBorder.borderWidth) === null || _titleBorder$borderWi31 === void 0 ? void 0 : (_titleBorder$borderWi32 = _titleBorder$borderWi31[this.props.deviceType]) === null || _titleBorder$borderWi32 === void 0 ? void 0 : _titleBorder$borderWi32.left}px!important`,
+        "border-top-left-radius": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa17 = titleBorder.borderRadius) === null || _titleBorder$borderRa17 === void 0 ? void 0 : (_titleBorder$borderRa18 = _titleBorder$borderRa17[this.props.deviceType]) === null || _titleBorder$borderRa18 === void 0 ? void 0 : _titleBorder$borderRa18.top}px!important`,
+        "border-top-right-radius": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa19 = titleBorder.borderRadius) === null || _titleBorder$borderRa19 === void 0 ? void 0 : (_titleBorder$borderRa20 = _titleBorder$borderRa19[this.props.deviceType]) === null || _titleBorder$borderRa20 === void 0 ? void 0 : _titleBorder$borderRa20.right}px!important`,
+        "border-bottom-left-radius": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa21 = titleBorder.borderRadius) === null || _titleBorder$borderRa21 === void 0 ? void 0 : (_titleBorder$borderRa22 = _titleBorder$borderRa21[this.props.deviceType]) === null || _titleBorder$borderRa22 === void 0 ? void 0 : _titleBorder$borderRa22.bottom}px!important`,
+        "border-bottom-right-radius": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa23 = titleBorder.borderRadius) === null || _titleBorder$borderRa23 === void 0 ? void 0 : (_titleBorder$borderRa24 = _titleBorder$borderRa23[this.props.deviceType]) === null || _titleBorder$borderRa24 === void 0 ? void 0 : _titleBorder$borderRa24.left}px!important`,
+        "border-bottom": (titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi33 = titleBorder.borderWidth) === null || _titleBorder$borderWi33 === void 0 ? void 0 : (_titleBorder$borderWi34 = _titleBorder$borderWi33[this.props.deviceType]) === null || _titleBorder$borderWi34 === void 0 ? void 0 : _titleBorder$borderWi34.bottom) >= "0" ? `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi35 = titleBorder.borderWidth) === null || _titleBorder$borderWi35 === void 0 ? void 0 : (_titleBorder$borderWi36 = _titleBorder$borderWi35[this.props.deviceType]) === null || _titleBorder$borderWi36 === void 0 ? void 0 : _titleBorder$borderWi36.bottom}px ${titleBorder.borderType} ${titleBorder.borderColor}!important` : ""
       };
       styles[`.${blockId} .premium-title .style5`] = {
-        'border-color': `${titleBorder.borderColor}!important`,
-        'border-style': `${titleBorder.borderType}!important`,
-        'border-top-width': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi37 = titleBorder.borderWidth) === null || _titleBorder$borderWi37 === void 0 ? void 0 : (_titleBorder$borderWi38 = _titleBorder$borderWi37[this.props.deviceType]) === null || _titleBorder$borderWi38 === void 0 ? void 0 : _titleBorder$borderWi38.top}px!important`,
-        'border-right-width': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi39 = titleBorder.borderWidth) === null || _titleBorder$borderWi39 === void 0 ? void 0 : (_titleBorder$borderWi40 = _titleBorder$borderWi39[this.props.deviceType]) === null || _titleBorder$borderWi40 === void 0 ? void 0 : _titleBorder$borderWi40.right}px!important`,
-        'border-bottom-width': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi41 = titleBorder.borderWidth) === null || _titleBorder$borderWi41 === void 0 ? void 0 : (_titleBorder$borderWi42 = _titleBorder$borderWi41[this.props.deviceType]) === null || _titleBorder$borderWi42 === void 0 ? void 0 : _titleBorder$borderWi42.bottom}px!important`,
-        'border-left-width': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi43 = titleBorder.borderWidth) === null || _titleBorder$borderWi43 === void 0 ? void 0 : (_titleBorder$borderWi44 = _titleBorder$borderWi43[this.props.deviceType]) === null || _titleBorder$borderWi44 === void 0 ? void 0 : _titleBorder$borderWi44.left}px!important`,
-        'border-top-left-radius': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa25 = titleBorder.borderRadius) === null || _titleBorder$borderRa25 === void 0 ? void 0 : (_titleBorder$borderRa26 = _titleBorder$borderRa25[this.props.deviceType]) === null || _titleBorder$borderRa26 === void 0 ? void 0 : _titleBorder$borderRa26.top}px!important`,
-        'border-top-right-radius': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa27 = titleBorder.borderRadius) === null || _titleBorder$borderRa27 === void 0 ? void 0 : (_titleBorder$borderRa28 = _titleBorder$borderRa27[this.props.deviceType]) === null || _titleBorder$borderRa28 === void 0 ? void 0 : _titleBorder$borderRa28.right}px!important`,
-        'border-bottom-left-radius': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa29 = titleBorder.borderRadius) === null || _titleBorder$borderRa29 === void 0 ? void 0 : (_titleBorder$borderRa30 = _titleBorder$borderRa29[this.props.deviceType]) === null || _titleBorder$borderRa30 === void 0 ? void 0 : _titleBorder$borderRa30.bottom}px!important`,
-        'border-bottom-right-radius': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa31 = titleBorder.borderRadius) === null || _titleBorder$borderRa31 === void 0 ? void 0 : (_titleBorder$borderRa32 = _titleBorder$borderRa31[this.props.deviceType]) === null || _titleBorder$borderRa32 === void 0 ? void 0 : _titleBorder$borderRa32.left}px!important`,
-        'border-bottom': (titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi45 = titleBorder.borderWidth) === null || _titleBorder$borderWi45 === void 0 ? void 0 : (_titleBorder$borderWi46 = _titleBorder$borderWi45[this.props.deviceType]) === null || _titleBorder$borderWi46 === void 0 ? void 0 : _titleBorder$borderWi46.bottom) >= "0" ? `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi47 = titleBorder.borderWidth) === null || _titleBorder$borderWi47 === void 0 ? void 0 : (_titleBorder$borderWi48 = _titleBorder$borderWi47[this.props.deviceType]) === null || _titleBorder$borderWi48 === void 0 ? void 0 : _titleBorder$borderWi48.bottom}px ${titleBorder.borderType} ${titleBorder.borderColor}!important` : ''
+        "border-color": `${titleBorder.borderColor}!important`,
+        "border-style": `${titleBorder.borderType}!important`,
+        "border-top-width": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi37 = titleBorder.borderWidth) === null || _titleBorder$borderWi37 === void 0 ? void 0 : (_titleBorder$borderWi38 = _titleBorder$borderWi37[this.props.deviceType]) === null || _titleBorder$borderWi38 === void 0 ? void 0 : _titleBorder$borderWi38.top}px!important`,
+        "border-right-width": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi39 = titleBorder.borderWidth) === null || _titleBorder$borderWi39 === void 0 ? void 0 : (_titleBorder$borderWi40 = _titleBorder$borderWi39[this.props.deviceType]) === null || _titleBorder$borderWi40 === void 0 ? void 0 : _titleBorder$borderWi40.right}px!important`,
+        "border-bottom-width": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi41 = titleBorder.borderWidth) === null || _titleBorder$borderWi41 === void 0 ? void 0 : (_titleBorder$borderWi42 = _titleBorder$borderWi41[this.props.deviceType]) === null || _titleBorder$borderWi42 === void 0 ? void 0 : _titleBorder$borderWi42.bottom}px!important`,
+        "border-left-width": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi43 = titleBorder.borderWidth) === null || _titleBorder$borderWi43 === void 0 ? void 0 : (_titleBorder$borderWi44 = _titleBorder$borderWi43[this.props.deviceType]) === null || _titleBorder$borderWi44 === void 0 ? void 0 : _titleBorder$borderWi44.left}px!important`,
+        "border-top-left-radius": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa25 = titleBorder.borderRadius) === null || _titleBorder$borderRa25 === void 0 ? void 0 : (_titleBorder$borderRa26 = _titleBorder$borderRa25[this.props.deviceType]) === null || _titleBorder$borderRa26 === void 0 ? void 0 : _titleBorder$borderRa26.top}px!important`,
+        "border-top-right-radius": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa27 = titleBorder.borderRadius) === null || _titleBorder$borderRa27 === void 0 ? void 0 : (_titleBorder$borderRa28 = _titleBorder$borderRa27[this.props.deviceType]) === null || _titleBorder$borderRa28 === void 0 ? void 0 : _titleBorder$borderRa28.right}px!important`,
+        "border-bottom-left-radius": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa29 = titleBorder.borderRadius) === null || _titleBorder$borderRa29 === void 0 ? void 0 : (_titleBorder$borderRa30 = _titleBorder$borderRa29[this.props.deviceType]) === null || _titleBorder$borderRa30 === void 0 ? void 0 : _titleBorder$borderRa30.bottom}px!important`,
+        "border-bottom-right-radius": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa31 = titleBorder.borderRadius) === null || _titleBorder$borderRa31 === void 0 ? void 0 : (_titleBorder$borderRa32 = _titleBorder$borderRa31[this.props.deviceType]) === null || _titleBorder$borderRa32 === void 0 ? void 0 : _titleBorder$borderRa32.left}px!important`,
+        "border-bottom": (titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi45 = titleBorder.borderWidth) === null || _titleBorder$borderWi45 === void 0 ? void 0 : (_titleBorder$borderWi46 = _titleBorder$borderWi45[this.props.deviceType]) === null || _titleBorder$borderWi46 === void 0 ? void 0 : _titleBorder$borderWi46.bottom) >= "0" ? `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi47 = titleBorder.borderWidth) === null || _titleBorder$borderWi47 === void 0 ? void 0 : (_titleBorder$borderWi48 = _titleBorder$borderWi47[this.props.deviceType]) === null || _titleBorder$borderWi48 === void 0 ? void 0 : _titleBorder$borderWi48.bottom}px ${titleBorder.borderType} ${titleBorder.borderColor}!important` : ""
       };
       styles[`.${blockId} .premium-title .style6`] = {
-        'border-color': `${titleBorder.borderColor}!important`,
-        'border-style': `${titleBorder.borderType}!important`,
-        'border-top-width': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi49 = titleBorder.borderWidth) === null || _titleBorder$borderWi49 === void 0 ? void 0 : (_titleBorder$borderWi50 = _titleBorder$borderWi49[this.props.deviceType]) === null || _titleBorder$borderWi50 === void 0 ? void 0 : _titleBorder$borderWi50.top}px!important`,
-        'border-right-width': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi51 = titleBorder.borderWidth) === null || _titleBorder$borderWi51 === void 0 ? void 0 : (_titleBorder$borderWi52 = _titleBorder$borderWi51[this.props.deviceType]) === null || _titleBorder$borderWi52 === void 0 ? void 0 : _titleBorder$borderWi52.right}px!important`,
-        'border-bottom-width': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi53 = titleBorder.borderWidth) === null || _titleBorder$borderWi53 === void 0 ? void 0 : (_titleBorder$borderWi54 = _titleBorder$borderWi53[this.props.deviceType]) === null || _titleBorder$borderWi54 === void 0 ? void 0 : _titleBorder$borderWi54.bottom}px!important`,
-        'border-left-width': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi55 = titleBorder.borderWidth) === null || _titleBorder$borderWi55 === void 0 ? void 0 : (_titleBorder$borderWi56 = _titleBorder$borderWi55[this.props.deviceType]) === null || _titleBorder$borderWi56 === void 0 ? void 0 : _titleBorder$borderWi56.left}px!important`,
-        'border-top-left-radius': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa33 = titleBorder.borderRadius) === null || _titleBorder$borderRa33 === void 0 ? void 0 : (_titleBorder$borderRa34 = _titleBorder$borderRa33[this.props.deviceType]) === null || _titleBorder$borderRa34 === void 0 ? void 0 : _titleBorder$borderRa34.top}px!important`,
-        'border-top-right-radius': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa35 = titleBorder.borderRadius) === null || _titleBorder$borderRa35 === void 0 ? void 0 : (_titleBorder$borderRa36 = _titleBorder$borderRa35[this.props.deviceType]) === null || _titleBorder$borderRa36 === void 0 ? void 0 : _titleBorder$borderRa36.right}px!important`,
-        'border-bottom-left-radius': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa37 = titleBorder.borderRadius) === null || _titleBorder$borderRa37 === void 0 ? void 0 : (_titleBorder$borderRa38 = _titleBorder$borderRa37[this.props.deviceType]) === null || _titleBorder$borderRa38 === void 0 ? void 0 : _titleBorder$borderRa38.bottom}px!important`,
-        'border-bottom-right-radius': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa39 = titleBorder.borderRadius) === null || _titleBorder$borderRa39 === void 0 ? void 0 : (_titleBorder$borderRa40 = _titleBorder$borderRa39[this.props.deviceType]) === null || _titleBorder$borderRa40 === void 0 ? void 0 : _titleBorder$borderRa40.left}px!important`,
-        'border-bottom': (titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi57 = titleBorder.borderWidth) === null || _titleBorder$borderWi57 === void 0 ? void 0 : (_titleBorder$borderWi58 = _titleBorder$borderWi57[this.props.deviceType]) === null || _titleBorder$borderWi58 === void 0 ? void 0 : _titleBorder$borderWi58.bottom) >= "0" ? `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi59 = titleBorder.borderWidth) === null || _titleBorder$borderWi59 === void 0 ? void 0 : (_titleBorder$borderWi60 = _titleBorder$borderWi59[this.props.deviceType]) === null || _titleBorder$borderWi60 === void 0 ? void 0 : _titleBorder$borderWi60.bottom}px ${titleBorder.borderType} ${titleBorder.borderColor}!important` : ''
+        "border-color": `${titleBorder.borderColor}!important`,
+        "border-style": `${titleBorder.borderType}!important`,
+        "border-top-width": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi49 = titleBorder.borderWidth) === null || _titleBorder$borderWi49 === void 0 ? void 0 : (_titleBorder$borderWi50 = _titleBorder$borderWi49[this.props.deviceType]) === null || _titleBorder$borderWi50 === void 0 ? void 0 : _titleBorder$borderWi50.top}px!important`,
+        "border-right-width": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi51 = titleBorder.borderWidth) === null || _titleBorder$borderWi51 === void 0 ? void 0 : (_titleBorder$borderWi52 = _titleBorder$borderWi51[this.props.deviceType]) === null || _titleBorder$borderWi52 === void 0 ? void 0 : _titleBorder$borderWi52.right}px!important`,
+        "border-bottom-width": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi53 = titleBorder.borderWidth) === null || _titleBorder$borderWi53 === void 0 ? void 0 : (_titleBorder$borderWi54 = _titleBorder$borderWi53[this.props.deviceType]) === null || _titleBorder$borderWi54 === void 0 ? void 0 : _titleBorder$borderWi54.bottom}px!important`,
+        "border-left-width": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi55 = titleBorder.borderWidth) === null || _titleBorder$borderWi55 === void 0 ? void 0 : (_titleBorder$borderWi56 = _titleBorder$borderWi55[this.props.deviceType]) === null || _titleBorder$borderWi56 === void 0 ? void 0 : _titleBorder$borderWi56.left}px!important`,
+        "border-top-left-radius": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa33 = titleBorder.borderRadius) === null || _titleBorder$borderRa33 === void 0 ? void 0 : (_titleBorder$borderRa34 = _titleBorder$borderRa33[this.props.deviceType]) === null || _titleBorder$borderRa34 === void 0 ? void 0 : _titleBorder$borderRa34.top}px!important`,
+        "border-top-right-radius": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa35 = titleBorder.borderRadius) === null || _titleBorder$borderRa35 === void 0 ? void 0 : (_titleBorder$borderRa36 = _titleBorder$borderRa35[this.props.deviceType]) === null || _titleBorder$borderRa36 === void 0 ? void 0 : _titleBorder$borderRa36.right}px!important`,
+        "border-bottom-left-radius": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa37 = titleBorder.borderRadius) === null || _titleBorder$borderRa37 === void 0 ? void 0 : (_titleBorder$borderRa38 = _titleBorder$borderRa37[this.props.deviceType]) === null || _titleBorder$borderRa38 === void 0 ? void 0 : _titleBorder$borderRa38.bottom}px!important`,
+        "border-bottom-right-radius": `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderRa39 = titleBorder.borderRadius) === null || _titleBorder$borderRa39 === void 0 ? void 0 : (_titleBorder$borderRa40 = _titleBorder$borderRa39[this.props.deviceType]) === null || _titleBorder$borderRa40 === void 0 ? void 0 : _titleBorder$borderRa40.left}px!important`,
+        "border-bottom": (titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi57 = titleBorder.borderWidth) === null || _titleBorder$borderWi57 === void 0 ? void 0 : (_titleBorder$borderWi58 = _titleBorder$borderWi57[this.props.deviceType]) === null || _titleBorder$borderWi58 === void 0 ? void 0 : _titleBorder$borderWi58.bottom) >= "0" ? `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi59 = titleBorder.borderWidth) === null || _titleBorder$borderWi59 === void 0 ? void 0 : (_titleBorder$borderWi60 = _titleBorder$borderWi59[this.props.deviceType]) === null || _titleBorder$borderWi60 === void 0 ? void 0 : _titleBorder$borderWi60.bottom}px ${titleBorder.borderType} ${titleBorder.borderColor}!important` : ""
       };
       styles[`.${blockId} .premium-title-style2__wrap`] = {
-        'background-color': `${titleStyles[0].BGColor}!important`
+        "background-color": `${titleStyles[0].BGColor}!important`
       };
       styles[`.${blockId} .premium-title-style3__wrap`] = {
-        'background-color': `${titleStyles[0].BGColor}!important`
+        "background-color": `${titleStyles[0].BGColor}!important`
       };
       styles[`.${blockId} .premium-title-style5__wrap`] = {
-        'border-bottom': `2px solid ${titleStyles[0].lineColor}!important`
+        "border-bottom": `2px solid ${titleStyles[0].lineColor}!important`
       };
       styles[`.${blockId} .premium-title-style6__wrap`] = {
-        'border-bottom': `2px solid ${titleStyles[0].lineColor}!important`
+        "border-bottom": `2px solid ${titleStyles[0].lineColor}!important`
       };
       styles[`.${blockId} .premium-title-style6__wrap:before`] = {
-        'border-bottom-color': `${titleStyles[0].triangleColor}!important`
+        "border-bottom-color": `${titleStyles[0].triangleColor}!important`
       };
       styles[`.${blockId} .premium-title-icon`] = {
-        'color': `${iconStyles[0].iconColor} !important`,
-        'background-color': `${iconBackground.backgroundType === "solid" ? iconBackground.backgroundColor : "transparent"} !important`,
-        'background-image': `${btnbg} !important`,
-        'background-repeat': `${iconBackground.backgroundRepeat} !important`,
-        'background-position': `${iconBackground.backgroundPosition} !important`,
-        'background-size': `${iconBackground.backgroundSize} !important`,
-        'background-attachment': `${iconBackground.fixed ? "fixed" : "unset"} !important`,
-        'font-size': `${iconSize === null || iconSize === void 0 ? void 0 : iconSize[this.props.deviceType]}${iconSize === null || iconSize === void 0 ? void 0 : iconSize.unit} !important`,
-        'border-color': `${iconBorder.borderColor}!important`,
-        'border-style': `${iconBorder.borderType}!important`,
-        'border-top-width': `${iconBorder === null || iconBorder === void 0 ? void 0 : (_iconBorder$borderWid = iconBorder.borderWidth) === null || _iconBorder$borderWid === void 0 ? void 0 : (_iconBorder$borderWid2 = _iconBorder$borderWid[this.props.deviceType]) === null || _iconBorder$borderWid2 === void 0 ? void 0 : _iconBorder$borderWid2.top}px!important`,
-        'border-right-width': `${iconBorder === null || iconBorder === void 0 ? void 0 : (_iconBorder$borderWid3 = iconBorder.borderWidth) === null || _iconBorder$borderWid3 === void 0 ? void 0 : (_iconBorder$borderWid4 = _iconBorder$borderWid3[this.props.deviceType]) === null || _iconBorder$borderWid4 === void 0 ? void 0 : _iconBorder$borderWid4.right}px!important`,
-        'border-bottom-width': `${iconBorder === null || iconBorder === void 0 ? void 0 : (_iconBorder$borderWid5 = iconBorder.borderWidth) === null || _iconBorder$borderWid5 === void 0 ? void 0 : (_iconBorder$borderWid6 = _iconBorder$borderWid5[this.props.deviceType]) === null || _iconBorder$borderWid6 === void 0 ? void 0 : _iconBorder$borderWid6.bottom}px!important`,
-        'border-left-width': `${iconBorder === null || iconBorder === void 0 ? void 0 : (_iconBorder$borderWid7 = iconBorder.borderWidth) === null || _iconBorder$borderWid7 === void 0 ? void 0 : (_iconBorder$borderWid8 = _iconBorder$borderWid7[this.props.deviceType]) === null || _iconBorder$borderWid8 === void 0 ? void 0 : _iconBorder$borderWid8.left}px!important`,
-        'border-top-left-radius': `${iconBorder === null || iconBorder === void 0 ? void 0 : (_iconBorder$borderRad = iconBorder.borderRadius) === null || _iconBorder$borderRad === void 0 ? void 0 : (_iconBorder$borderRad2 = _iconBorder$borderRad[this.props.deviceType]) === null || _iconBorder$borderRad2 === void 0 ? void 0 : _iconBorder$borderRad2.top}px!important`,
-        'border-top-right-radius': `${iconBorder === null || iconBorder === void 0 ? void 0 : (_iconBorder$borderRad3 = iconBorder.borderRadius) === null || _iconBorder$borderRad3 === void 0 ? void 0 : (_iconBorder$borderRad4 = _iconBorder$borderRad3[this.props.deviceType]) === null || _iconBorder$borderRad4 === void 0 ? void 0 : _iconBorder$borderRad4.right}px!important`,
-        'border-bottom-left-radius': `${iconBorder === null || iconBorder === void 0 ? void 0 : (_iconBorder$borderRad5 = iconBorder.borderRadius) === null || _iconBorder$borderRad5 === void 0 ? void 0 : (_iconBorder$borderRad6 = _iconBorder$borderRad5[this.props.deviceType]) === null || _iconBorder$borderRad6 === void 0 ? void 0 : _iconBorder$borderRad6.bottom}px!important`,
-        'border-bottom-right-radius': `${iconBorder === null || iconBorder === void 0 ? void 0 : (_iconBorder$borderRad7 = iconBorder.borderRadius) === null || _iconBorder$borderRad7 === void 0 ? void 0 : (_iconBorder$borderRad8 = _iconBorder$borderRad7[this.props.deviceType]) === null || _iconBorder$borderRad8 === void 0 ? void 0 : _iconBorder$borderRad8.left}px!important`,
-        'padding-top': `${IconPaddingTop}${iconPadding.unit} !important`,
-        'padding-right': `${IconPaddingRight}${iconPadding.unit} !important`,
-        'padding-bottom': `${IconPaddingBottom}${iconPadding.unit} !important`,
-        'padding-left': `${IconPaddingLeft}${iconPadding.unit} !important`,
-        'margin-top': `${IconMarginTop}${iconPadding.unit} !important`,
-        'margin-right': `${IconMarginRight}${iconPadding.unit} !important`,
-        'margin-bottom': `${IconMarginBottom}${iconPadding.unit} !important`,
-        'margin-left': `${IconMarginLeft}${iconPadding.unit} !important`,
-        'text-shadow': `${iconshadow.horizontal}px ${iconshadow.vertical}px ${iconshadow.blur}px ${iconshadow.color} !important`
+        color: `${iconStyles[0].iconColor} !important`,
+        "background-color": `${iconBackground.backgroundType === "solid" ? iconBackground.backgroundColor : "transparent"} !important`,
+        "background-image": `${btnbg} !important`,
+        "background-repeat": `${iconBackground.backgroundRepeat} !important`,
+        "background-position": `${iconBackground.backgroundPosition} !important`,
+        "background-size": `${iconBackground.backgroundSize} !important`,
+        "background-attachment": `${iconBackground.fixed ? "fixed" : "unset"} !important`,
+        "font-size": `${iconSize === null || iconSize === void 0 ? void 0 : iconSize[this.props.deviceType]}${iconSize === null || iconSize === void 0 ? void 0 : iconSize.unit} !important`,
+        "border-color": `${iconBorder.borderColor}!important`,
+        "border-style": `${iconBorder.borderType}!important`,
+        "border-top-width": `${iconBorder === null || iconBorder === void 0 ? void 0 : (_iconBorder$borderWid = iconBorder.borderWidth) === null || _iconBorder$borderWid === void 0 ? void 0 : (_iconBorder$borderWid2 = _iconBorder$borderWid[this.props.deviceType]) === null || _iconBorder$borderWid2 === void 0 ? void 0 : _iconBorder$borderWid2.top}px!important`,
+        "border-right-width": `${iconBorder === null || iconBorder === void 0 ? void 0 : (_iconBorder$borderWid3 = iconBorder.borderWidth) === null || _iconBorder$borderWid3 === void 0 ? void 0 : (_iconBorder$borderWid4 = _iconBorder$borderWid3[this.props.deviceType]) === null || _iconBorder$borderWid4 === void 0 ? void 0 : _iconBorder$borderWid4.right}px!important`,
+        "border-bottom-width": `${iconBorder === null || iconBorder === void 0 ? void 0 : (_iconBorder$borderWid5 = iconBorder.borderWidth) === null || _iconBorder$borderWid5 === void 0 ? void 0 : (_iconBorder$borderWid6 = _iconBorder$borderWid5[this.props.deviceType]) === null || _iconBorder$borderWid6 === void 0 ? void 0 : _iconBorder$borderWid6.bottom}px!important`,
+        "border-left-width": `${iconBorder === null || iconBorder === void 0 ? void 0 : (_iconBorder$borderWid7 = iconBorder.borderWidth) === null || _iconBorder$borderWid7 === void 0 ? void 0 : (_iconBorder$borderWid8 = _iconBorder$borderWid7[this.props.deviceType]) === null || _iconBorder$borderWid8 === void 0 ? void 0 : _iconBorder$borderWid8.left}px!important`,
+        "border-top-left-radius": `${iconBorder === null || iconBorder === void 0 ? void 0 : (_iconBorder$borderRad = iconBorder.borderRadius) === null || _iconBorder$borderRad === void 0 ? void 0 : (_iconBorder$borderRad2 = _iconBorder$borderRad[this.props.deviceType]) === null || _iconBorder$borderRad2 === void 0 ? void 0 : _iconBorder$borderRad2.top}px!important`,
+        "border-top-right-radius": `${iconBorder === null || iconBorder === void 0 ? void 0 : (_iconBorder$borderRad3 = iconBorder.borderRadius) === null || _iconBorder$borderRad3 === void 0 ? void 0 : (_iconBorder$borderRad4 = _iconBorder$borderRad3[this.props.deviceType]) === null || _iconBorder$borderRad4 === void 0 ? void 0 : _iconBorder$borderRad4.right}px!important`,
+        "border-bottom-left-radius": `${iconBorder === null || iconBorder === void 0 ? void 0 : (_iconBorder$borderRad5 = iconBorder.borderRadius) === null || _iconBorder$borderRad5 === void 0 ? void 0 : (_iconBorder$borderRad6 = _iconBorder$borderRad5[this.props.deviceType]) === null || _iconBorder$borderRad6 === void 0 ? void 0 : _iconBorder$borderRad6.bottom}px!important`,
+        "border-bottom-right-radius": `${iconBorder === null || iconBorder === void 0 ? void 0 : (_iconBorder$borderRad7 = iconBorder.borderRadius) === null || _iconBorder$borderRad7 === void 0 ? void 0 : (_iconBorder$borderRad8 = _iconBorder$borderRad7[this.props.deviceType]) === null || _iconBorder$borderRad8 === void 0 ? void 0 : _iconBorder$borderRad8.left}px!important`,
+        "padding-top": `${IconPaddingTop}${iconPadding.unit} !important`,
+        "padding-right": `${IconPaddingRight}${iconPadding.unit} !important`,
+        "padding-bottom": `${IconPaddingBottom}${iconPadding.unit} !important`,
+        "padding-left": `${IconPaddingLeft}${iconPadding.unit} !important`,
+        "margin-top": `${IconMarginTop}${iconPadding.unit} !important`,
+        "margin-right": `${IconMarginRight}${iconPadding.unit} !important`,
+        "margin-bottom": `${IconMarginBottom}${iconPadding.unit} !important`,
+        "margin-left": `${IconMarginLeft}${iconPadding.unit} !important`,
+        "text-shadow": `${iconshadow.horizontal}px ${iconshadow.vertical}px ${iconshadow.blur}px ${iconshadow.color} !important`
       };
       styles[`.${blockId} .premium-lottie-animation svg`] = {
-        'width': `${iconSize === null || iconSize === void 0 ? void 0 : iconSize[this.props.deviceType]}${iconSize === null || iconSize === void 0 ? void 0 : iconSize.unit}!important`,
-        'height': `${iconSize === null || iconSize === void 0 ? void 0 : iconSize[this.props.deviceType]}${iconSize === null || iconSize === void 0 ? void 0 : iconSize.unit}!important`
+        width: `${iconSize === null || iconSize === void 0 ? void 0 : iconSize[this.props.deviceType]}${iconSize === null || iconSize === void 0 ? void 0 : iconSize.unit}!important`,
+        height: `${iconSize === null || iconSize === void 0 ? void 0 : iconSize[this.props.deviceType]}${iconSize === null || iconSize === void 0 ? void 0 : iconSize.unit}!important`
       };
       styles[`.${blockId} .premium-title-header img`] = {
-        'width': `${iconSize === null || iconSize === void 0 ? void 0 : iconSize[this.props.deviceType]}${iconSize === null || iconSize === void 0 ? void 0 : iconSize.unit}!important`,
-        'height': `${iconSize === null || iconSize === void 0 ? void 0 : iconSize[this.props.deviceType]}${iconSize === null || iconSize === void 0 ? void 0 : iconSize.unit}!important`
+        width: `${iconSize === null || iconSize === void 0 ? void 0 : iconSize[this.props.deviceType]}${iconSize === null || iconSize === void 0 ? void 0 : iconSize.unit}!important`,
+        height: `${iconSize === null || iconSize === void 0 ? void 0 : iconSize[this.props.deviceType]}${iconSize === null || iconSize === void 0 ? void 0 : iconSize.unit}!important`
       };
       styles[`.${blockId} .premium-title-bg-text:before`] = {
-        'content': `${BackText}`,
-        'width': `${textWidth}`,
-        'color': `${textStyles[0].textBackColor}`,
-        'font-family': `${textTypography === null || textTypography === void 0 ? void 0 : textTypography.fontFamily}`,
-        'font-size': `${textTypography === null || textTypography === void 0 ? void 0 : (_textTypography$fontS = textTypography.fontSize) === null || _textTypography$fontS === void 0 ? void 0 : _textTypography$fontS[this.props.deviceType]}${textTypography === null || textTypography === void 0 ? void 0 : (_textTypography$fontS2 = textTypography.fontSize) === null || _textTypography$fontS2 === void 0 ? void 0 : _textTypography$fontS2.unit}`,
-        'font-weight': `${textTypography === null || textTypography === void 0 ? void 0 : textTypography.fontWeight}`,
-        'letter-spacing': `${textTypography === null || textTypography === void 0 ? void 0 : (_textTypography$lette = textTypography.letterSpacing) === null || _textTypography$lette === void 0 ? void 0 : _textTypography$lette[this.props.deviceType]}${textTypography === null || textTypography === void 0 ? void 0 : (_textTypography$lette2 = textTypography.letterSpacing) === null || _textTypography$lette2 === void 0 ? void 0 : _textTypography$lette2.unit}`,
-        'line-height': `${textTypography === null || textTypography === void 0 ? void 0 : (_textTypography$lineH = textTypography.lineHeight) === null || _textTypography$lineH === void 0 ? void 0 : _textTypography$lineH[this.props.deviceType]}${textTypography === null || textTypography === void 0 ? void 0 : (_textTypography$lineH2 = textTypography.lineHeight) === null || _textTypography$lineH2 === void 0 ? void 0 : _textTypography$lineH2.unit}`,
-        'font-style': `${textTypography === null || textTypography === void 0 ? void 0 : textTypography.fontStyle}`,
-        'text-transform': `${textTypography === null || textTypography === void 0 ? void 0 : textTypography.textTransform}`,
-        'text-decoration': `${textTypography === null || textTypography === void 0 ? void 0 : textTypography.textDecoration}`,
-        'mix-blend-mode': `${blend} !important`,
-        'text-shadow': `${textBackshadow.horizontal}px ${textBackshadow.vertical}px ${textBackshadow.blur}px ${textBackshadow.color} !important`,
-        'z-index': `${zIndex} !important`,
-        'top': `${verticalText === null || verticalText === void 0 ? void 0 : verticalText[this.props.deviceType]}${verticalText === null || verticalText === void 0 ? void 0 : verticalText.unit} !important`,
-        'left': `${horizontalText === null || horizontalText === void 0 ? void 0 : horizontalText[this.props.deviceType]}${horizontalText === null || horizontalText === void 0 ? void 0 : horizontalText.unit} !important`,
-        'transform': `rotate(${rotateText === null || rotateText === void 0 ? void 0 : rotateText[this.props.deviceType]}deg) !important`,
-        '-webkit-text-stroke-color': `${strokeStyles[0].strokeColor} !important`,
-        '-webkit-text-stroke-width': `${strokeFull === null || strokeFull === void 0 ? void 0 : strokeFull[this.props.deviceType]}px !important`
+        content: `${BackText}`,
+        width: `${textWidth}`,
+        color: `${textStyles[0].textBackColor}`,
+        "font-family": `${textTypography === null || textTypography === void 0 ? void 0 : textTypography.fontFamily}`,
+        "font-size": `${textTypography === null || textTypography === void 0 ? void 0 : (_textTypography$fontS = textTypography.fontSize) === null || _textTypography$fontS === void 0 ? void 0 : _textTypography$fontS[this.props.deviceType]}${textTypography === null || textTypography === void 0 ? void 0 : (_textTypography$fontS2 = textTypography.fontSize) === null || _textTypography$fontS2 === void 0 ? void 0 : _textTypography$fontS2.unit}`,
+        "font-weight": `${textTypography === null || textTypography === void 0 ? void 0 : textTypography.fontWeight}`,
+        "letter-spacing": `${textTypography === null || textTypography === void 0 ? void 0 : (_textTypography$lette = textTypography.letterSpacing) === null || _textTypography$lette === void 0 ? void 0 : _textTypography$lette[this.props.deviceType]}${textTypography === null || textTypography === void 0 ? void 0 : (_textTypography$lette2 = textTypography.letterSpacing) === null || _textTypography$lette2 === void 0 ? void 0 : _textTypography$lette2.unit}`,
+        "line-height": `${textTypography === null || textTypography === void 0 ? void 0 : (_textTypography$lineH = textTypography.lineHeight) === null || _textTypography$lineH === void 0 ? void 0 : _textTypography$lineH[this.props.deviceType]}${textTypography === null || textTypography === void 0 ? void 0 : (_textTypography$lineH2 = textTypography.lineHeight) === null || _textTypography$lineH2 === void 0 ? void 0 : _textTypography$lineH2.unit}`,
+        "font-style": `${textTypography === null || textTypography === void 0 ? void 0 : textTypography.fontStyle}`,
+        "text-transform": `${textTypography === null || textTypography === void 0 ? void 0 : textTypography.textTransform}`,
+        "text-decoration": `${textTypography === null || textTypography === void 0 ? void 0 : textTypography.textDecoration}`,
+        "mix-blend-mode": `${blend} !important`,
+        "text-shadow": `${textBackshadow.horizontal}px ${textBackshadow.vertical}px ${textBackshadow.blur}px ${textBackshadow.color} !important`,
+        "z-index": `${zIndex} !important`,
+        top: `${verticalText === null || verticalText === void 0 ? void 0 : verticalText[this.props.deviceType]}${verticalText === null || verticalText === void 0 ? void 0 : verticalText.unit} !important`,
+        left: `${horizontalText === null || horizontalText === void 0 ? void 0 : horizontalText[this.props.deviceType]}${horizontalText === null || horizontalText === void 0 ? void 0 : horizontalText.unit} !important`,
+        transform: `rotate(${rotateText === null || rotateText === void 0 ? void 0 : rotateText[this.props.deviceType]}deg) !important`,
+        "-webkit-text-stroke-color": `${strokeStyles[0].strokeColor} !important`,
+        "-webkit-text-stroke-width": `${strokeFull === null || strokeFull === void 0 ? void 0 : strokeFull[this.props.deviceType]}px !important`
       };
       styles[`.${blockId} .premium-title-style7-stripe-span`] = {
-        'width': `${stripeWidth === null || stripeWidth === void 0 ? void 0 : stripeWidth[this.props.deviceType]}${stripeWidth === null || stripeWidth === void 0 ? void 0 : stripeWidth.unit}!important`,
-        'height': `${stripeHeight === null || stripeHeight === void 0 ? void 0 : stripeHeight[this.props.deviceType]}${stripeHeight === null || stripeHeight === void 0 ? void 0 : stripeHeight.unit}!important`,
-        'background-color': `${titleStyles[0].stripeColor}!important`
+        width: `${stripeWidth === null || stripeWidth === void 0 ? void 0 : stripeWidth[this.props.deviceType]}${stripeWidth === null || stripeWidth === void 0 ? void 0 : stripeWidth.unit}!important`,
+        height: `${stripeHeight === null || stripeHeight === void 0 ? void 0 : stripeHeight[this.props.deviceType]}${stripeHeight === null || stripeHeight === void 0 ? void 0 : stripeHeight.unit}!important`,
+        "background-color": `${titleStyles[0].stripeColor}!important`
       };
       styles[`.${blockId} .premium-title-style7-stripe__wrap`] = {
-        'margin-top': `${stripeTopSpacing === null || stripeTopSpacing === void 0 ? void 0 : stripeTopSpacing[this.props.deviceType]}${stripeTopSpacing === null || stripeTopSpacing === void 0 ? void 0 : stripeTopSpacing.unit}!important`,
-        'margin-bottom': `${stripeBottomSpacing === null || stripeBottomSpacing === void 0 ? void 0 : stripeBottomSpacing[this.props.deviceType]}${stripeBottomSpacing === null || stripeBottomSpacing === void 0 ? void 0 : stripeBottomSpacing.unit}!important`
+        "margin-top": `${stripeTopSpacing === null || stripeTopSpacing === void 0 ? void 0 : stripeTopSpacing[this.props.deviceType]}${stripeTopSpacing === null || stripeTopSpacing === void 0 ? void 0 : stripeTopSpacing.unit}!important`,
+        "margin-bottom": `${stripeBottomSpacing === null || stripeBottomSpacing === void 0 ? void 0 : stripeBottomSpacing[this.props.deviceType]}${stripeBottomSpacing === null || stripeBottomSpacing === void 0 ? void 0 : stripeBottomSpacing.unit}!important`
       };
       styles[`.${blockId} .premium-title-style9__wrap .premium-letters-container .premium-title-style9-letter`] = {
-        'font-family': `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontFamily}`,
-        'font-size': `${titleTypography === null || titleTypography === void 0 ? void 0 : (_titleTypography$font = titleTypography.fontSize) === null || _titleTypography$font === void 0 ? void 0 : _titleTypography$font[this.props.deviceType]}${titleTypography === null || titleTypography === void 0 ? void 0 : (_titleTypography$font2 = titleTypography.fontSize) === null || _titleTypography$font2 === void 0 ? void 0 : _titleTypography$font2.unit}`,
-        'font-weight': `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontWeight}`,
-        'letter-spacing': `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.letterSpacing}`,
-        'line-height': `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.lineHeight}`,
-        'font-style': `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontStyle}`,
-        'text-shadow': `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color} !important`
+        "font-family": `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontFamily}`,
+        "font-size": `${titleTypography === null || titleTypography === void 0 ? void 0 : (_titleTypography$font = titleTypography.fontSize) === null || _titleTypography$font === void 0 ? void 0 : _titleTypography$font[this.props.deviceType]}${titleTypography === null || titleTypography === void 0 ? void 0 : (_titleTypography$font2 = titleTypography.fontSize) === null || _titleTypography$font2 === void 0 ? void 0 : _titleTypography$font2.unit}`,
+        "font-weight": `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontWeight}`,
+        "letter-spacing": `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.letterSpacing}`,
+        "line-height": `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.lineHeight}`,
+        "font-style": `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontStyle}`,
+        "text-shadow": `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color} !important`
       };
       return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_14__.generateCss)(styles);
     };
@@ -26423,9 +26423,9 @@ class edit extends Component {
     return [isSelected && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InspectorControls, {
       key: "inspector"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTabs__WEBPACK_IMPORTED_MODULE_18__["default"], {
-      tabs: ['layout', 'style', 'advance']
+      tabs: ["layout", "style", "advance"]
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_19__["default"], {
-      key: 'layout'
+      key: "layout"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
       title: __("Title"),
       className: "premium-panel-body",
@@ -26450,7 +26450,7 @@ class edit extends Component {
         iconType: newSelect
       }),
       options: ICON
-    }), iconType === 'icon' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, __("Icon")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)((_fonticonpicker_react_fonticonpicker__WEBPACK_IMPORTED_MODULE_5___default()), {
+    }), iconType === "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, __("Icon")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)((_fonticonpicker_react_fonticonpicker__WEBPACK_IMPORTED_MODULE_5___default()), {
       icons: _components_premium_icons_list__WEBPACK_IMPORTED_MODULE_4__["default"],
       value: icon,
       onChange: value => setAttributes({
@@ -26459,26 +26459,26 @@ class edit extends Component {
       isMulti: false,
       appendTo: "body",
       noSelectedPlaceholder: __("Select Icon")
-    })), iconType === 'lottie' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
+    })), iconType === "lottie" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
       value: lottieURl,
       onChange: value => setAttributes({
         lottieURl: value
       }),
       label: __("Lottie Url")
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: __('Loop'),
+      label: __("Loop"),
       checked: loop,
       onChange: newValue => setAttributes({
         loop: newValue
       }),
-      help: loop ? __('This option works only on the preview page') : ''
+      help: loop ? __("This option works only on the preview page") : ""
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
       label: __("Reverse"),
       checked: reversedir,
       onChange: value => setAttributes({
         reversedir: value
       })
-    })), iconType === 'image' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_media_upload__WEBPACK_IMPORTED_MODULE_12__["default"], {
+    })), iconType === "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_media_upload__WEBPACK_IMPORTED_MODULE_12__["default"], {
       type: "image",
       imageID: imageID,
       imageURL: imageURL,
@@ -26499,18 +26499,18 @@ class edit extends Component {
         iconPosition: newSelect
       }),
       options: POSITION
-    }), iconPosition === 'top' && style != 'style3' && style != 'style4' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_16__["default"], {
+    }), iconPosition === "top" && style != "style3" && style != "style4" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_16__["default"], {
       choices: [{
-        value: 'left',
-        label: __('Left'),
+        value: "left",
+        label: __("Left"),
         icon: _components_icons__WEBPACK_IMPORTED_MODULE_15__["default"].alignLeft
       }, {
-        value: 'center',
-        label: __('Center'),
+        value: "center",
+        label: __("Center"),
         icon: _components_icons__WEBPACK_IMPORTED_MODULE_15__["default"].alignCenter
       }, {
-        value: 'right',
-        label: __('Right'),
+        value: "right",
+        label: __("Right"),
         icon: _components_icons__WEBPACK_IMPORTED_MODULE_15__["default"].alignRight
       }],
       value: iconAlign,
@@ -26519,7 +26519,7 @@ class edit extends Component {
       }),
       label: __("Icon Alignment", "premium-blocks-for-gutenberg"),
       showIcons: true
-    }))), style === 'style7' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
+    }))), style === "style7" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
       label: __("Stripe Position"),
       value: stripePosition,
       onChange: newSelect => setAttributes({
@@ -26527,9 +26527,9 @@ class edit extends Component {
       }),
       options: STRIPEPOSITION
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      label: __("Stripe Width", 'premium-blocks-for-gutenberg'),
+      label: __("Stripe Width", "premium-blocks-for-gutenberg"),
       value: stripeWidth,
-      units: ['px', 'em', '%'],
+      units: ["px", "em", "%"],
       onChange: newValue => setAttributes({
         stripeWidth: newValue
       }),
@@ -26537,9 +26537,9 @@ class edit extends Component {
       min: 1,
       max: 1000
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      label: __("Stripe Height", 'premium-blocks-for-gutenberg'),
+      label: __("Stripe Height", "premium-blocks-for-gutenberg"),
       value: stripeHeight,
-      units: ['px', 'em', '%'],
+      units: ["px", "em", "%"],
       onChange: newValue => setAttributes({
         stripeHeight: newValue
       }),
@@ -26547,9 +26547,9 @@ class edit extends Component {
       min: 1,
       max: 1000
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      label: __("Stripe Top Spacing", 'premium-blocks-for-gutenberg'),
+      label: __("Stripe Top Spacing", "premium-blocks-for-gutenberg"),
       value: stripeTopSpacing,
-      units: ['px', 'em', '%'],
+      units: ["px", "em", "%"],
       onChange: newValue => setAttributes({
         stripeTopSpacing: newValue
       }),
@@ -26557,9 +26557,9 @@ class edit extends Component {
       min: 1,
       max: 1000
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      label: __("Stripe Bottom Spacing", 'premium-blocks-for-gutenberg'),
+      label: __("Stripe Bottom Spacing", "premium-blocks-for-gutenberg"),
       value: stripeBottomSpacing,
-      units: ['px', 'em', '%'],
+      units: ["px", "em", "%"],
       onChange: newValue => setAttributes({
         stripeBottomSpacing: newValue
       }),
@@ -26568,16 +26568,16 @@ class edit extends Component {
       max: 1000
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_16__["default"], {
       choices: [{
-        value: 'left',
-        label: __('Left'),
+        value: "left",
+        label: __("Left"),
         icon: _components_icons__WEBPACK_IMPORTED_MODULE_15__["default"].alignLeft
       }, {
-        value: 'center',
-        label: __('Center'),
+        value: "center",
+        label: __("Center"),
         icon: _components_icons__WEBPACK_IMPORTED_MODULE_15__["default"].alignCenter
       }, {
-        value: 'right',
-        label: __('Right'),
+        value: "right",
+        label: __("Right"),
         icon: _components_icons__WEBPACK_IMPORTED_MODULE_15__["default"].alignRight
       }],
       value: stripeAlign,
@@ -26595,16 +26595,16 @@ class edit extends Component {
       })
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_16__["default"], {
       choices: [{
-        value: 'left',
-        label: __('Left'),
+        value: "left",
+        label: __("Left"),
         icon: _components_icons__WEBPACK_IMPORTED_MODULE_15__["default"].alignLeft
       }, {
-        value: 'center',
-        label: __('Center'),
+        value: "center",
+        label: __("Center"),
         icon: _components_icons__WEBPACK_IMPORTED_MODULE_15__["default"].alignCenter
       }, {
-        value: 'right',
-        label: __('Right'),
+        value: "right",
+        label: __("Right"),
         icon: _components_icons__WEBPACK_IMPORTED_MODULE_15__["default"].alignRight
       }],
       value: align,
@@ -26627,12 +26627,12 @@ class edit extends Component {
       placeholder: __("Enter URL")
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
       checked: target,
-      label: __('Open Link in new Tab'),
+      label: __("Open Link in new Tab"),
       onChange: value => setAttributes({
         target: value
       })
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: __('background Text'),
+      label: __("background Text"),
       checked: backgroundText,
       onChange: value => setAttributes({
         backgroundText: value
@@ -26651,34 +26651,34 @@ class edit extends Component {
       }),
       options: [{
         label: "Auto",
-        value: 'auto'
+        value: "auto"
       }, {
         label: "Full Width",
-        value: '100%'
+        value: "100%"
       }]
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      label: __("Horizontal Offset", 'premium-blocks-for-gutenberg'),
+      label: __("Horizontal Offset", "premium-blocks-for-gutenberg"),
       value: horizontalText,
       onChange: newValue => setAttributes({
         horizontalText: newValue
       }),
-      units: ['px', 'em', '%'],
+      units: ["px", "em", "%"],
       showUnit: true,
       min: -500,
       max: 500
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      label: __("Vertical Offset", 'premium-blocks-for-gutenberg'),
+      label: __("Vertical Offset", "premium-blocks-for-gutenberg"),
       value: verticalText,
       onChange: newValue => setAttributes({
         verticalText: newValue
       }),
-      units: ['px', 'em', '%'],
+      units: ["px", "em", "%"],
       showUnit: true,
       min: -500,
       max: 500,
       step: 1
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      label: __("Rotate (degrees)", 'premium-blocks-for-gutenberg'),
+      label: __("Rotate (degrees)", "premium-blocks-for-gutenberg"),
       value: rotateText,
       onChange: newValue => setAttributes({
         rotateText: newValue
@@ -26688,13 +26688,13 @@ class edit extends Component {
       max: 360,
       step: 1
     })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_19__["default"], {
-      key: 'style'
+      key: "style"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
       title: __("Title"),
       className: "premium-panel-body",
       initialOpen: true
     }, (style === "style8" || style === "style9") && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_11__["default"], {
-      label: __("Animation Delay", 'premium-block-for-gutenberg'),
+      label: __("Animation Delay", "premium-block-for-gutenberg"),
       value: titleStyles[0].animateDelay,
       onChange: value => saveTitleStyles({
         animateDelay: value
@@ -26705,7 +26705,7 @@ class edit extends Component {
       max: 30,
       step: 0.5
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null)), style === "style8" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_11__["default"], {
-      label: __("Animation Duration", 'premium-block-for-gutenberg'),
+      label: __("Animation Duration", "premium-block-for-gutenberg"),
       value: titleStyles[0].animateduration,
       onChange: value => saveTitleStyles({
         animateduration: value
@@ -26720,77 +26720,77 @@ class edit extends Component {
         titleTypography: newValue
       })
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      label: __("Color", 'premium-block-for-gutenberg'),
+      label: __("Color", "premium-block-for-gutenberg"),
       colorValue: titleStyles[0].titleColor,
-      colorDefault: '',
+      colorDefault: "",
       onColorChange: newValue => saveTitleStyles({
         titleColor: newValue
       })
     }), style === "style8" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      label: __("Shiny Color", 'premium-block-for-gutenberg'),
+      label: __("Shiny Color", "premium-block-for-gutenberg"),
       colorValue: titleStyles[0].shinyColor,
-      colorDefault: '',
+      colorDefault: "",
       onColorChange: newValue => saveTitleStyles({
         shinyColor: newValue
       })
     }), style === "style9" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      label: __("Blur Color", 'premium-block-for-gutenberg'),
+      label: __("Blur Color", "premium-block-for-gutenberg"),
       colorValue: titleStyles[0].blurColor,
-      colorDefault: '',
+      colorDefault: "",
       onColorChange: newValue => saveTitleStyles({
         blurColor: newValue
       })
-    }), style === 'style2' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      label: __("Background Color", 'premium-block-for-gutenberg'),
+    }), style === "style2" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      label: __("Background Color", "premium-block-for-gutenberg"),
       colorValue: titleStyles[0].BGColor,
-      colorDefault: '',
+      colorDefault: "",
       onColorChange: newValue => saveTitleStyles({
         BGColor: newValue
       })
-    }), style === 'style3' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      label: __("Background Color", 'premium-block-for-gutenberg'),
+    }), style === "style3" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      label: __("Background Color", "premium-block-for-gutenberg"),
       colorValue: titleStyles[0].BGColor,
-      colorDefault: '',
+      colorDefault: "",
       onColorChange: newValue => saveTitleStyles({
         BGColor: newValue
       })
-    }), style === 'style5' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      label: __("Line Color", 'premium-block-for-gutenberg'),
+    }), style === "style5" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      label: __("Line Color", "premium-block-for-gutenberg"),
       colorValue: titleStyles[0].lineColor,
-      colorDefault: '',
+      colorDefault: "",
       onColorChange: newValue => saveTitleStyles({
         lineColor: newValue
       })
-    }), style === 'style6' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      label: __("Line Color", 'premium-block-for-gutenberg'),
+    }), style === "style6" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      label: __("Line Color", "premium-block-for-gutenberg"),
       colorValue: titleStyles[0].lineColor,
-      colorDefault: '',
+      colorDefault: "",
       onColorChange: newValue => saveTitleStyles({
         lineColor: newValue
       })
-    }), style === 'style6' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      label: __("Triangle Color", 'premium-block-for-gutenberg'),
+    }), style === "style6" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      label: __("Triangle Color", "premium-block-for-gutenberg"),
       colorValue: titleStyles[0].triangleColor,
-      colorDefault: '',
+      colorDefault: "",
       onColorChange: newValue => saveTitleStyles({
         triangleColor: newValue
       })
-    }), style === 'style7' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      label: __("Stripe Color", 'premium-block-for-gutenberg'),
+    }), style === "style7" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      label: __("Stripe Color", "premium-block-for-gutenberg"),
       colorValue: titleStyles[0].stripeColor,
-      colorDefault: '',
+      colorDefault: "",
       onColorChange: newValue => saveTitleStyles({
         stripeColor: newValue
       })
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      label: __("Shadow", 'premium-blocks-for-gutenberg'),
+      label: __("Shadow", "premium-blocks-for-gutenberg"),
       boxShadow: false,
       value: titleShadow,
       onChange: value => setAttributes({
         titleShadow: value
       })
     }), style === "style9" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_11__["default"], {
-      label: __("Blur Shadow Value (px)", 'premium-block-for-gutenberg'),
+      label: __("Blur Shadow Value (px)", "premium-block-for-gutenberg"),
       value: titleStyles[0].blurShadow,
       onChange: value => saveTitleStyles({
         blurShadow: value
@@ -26800,7 +26800,7 @@ class edit extends Component {
       min: 10,
       max: 500,
       step: 10
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), style != 'style3' && style !== "style7" && style !== "style8" && style !== "style9" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), style != "style3" && style !== "style7" && style !== "style8" && style !== "style9" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_3__["default"], {
       label: __("Border"),
       value: titleBorder,
       borderType: titleBorder.borderType,
@@ -26831,20 +26831,20 @@ class edit extends Component {
       className: "premium-panel-body",
       initialOpen: false
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      label: __("Size", 'premium-blocks-for-gutenberg'),
+      label: __("Size", "premium-blocks-for-gutenberg"),
       value: iconSize,
       onChange: newValue => setAttributes({
         iconSize: newValue
       }),
-      units: ['px', 'em', '%'],
+      units: ["px", "em", "%"],
       showUnit: true,
       min: 0,
       max: 360,
       step: 1
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), iconType === 'icon' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      label: __("Color", 'premium-block-for-gutenberg'),
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), iconType === "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      label: __("Color", "premium-block-for-gutenberg"),
       colorValue: iconStyles[0].iconColor,
-      colorDefault: '',
+      colorDefault: "",
       onColorChange: newValue => saveIconStyles({
         iconColor: newValue
       })
@@ -26853,8 +26853,8 @@ class edit extends Component {
       onChange: value => setAttributes({
         iconBackground: value
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), iconType === 'icon' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      label: __("Icon Shadow", 'premium-blocks-for-gutenberg'),
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), iconType === "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      label: __("Icon Shadow", "premium-blocks-for-gutenberg"),
       boxShadow: false,
       value: iconshadow,
       onChange: value => setAttributes({
@@ -26883,7 +26883,7 @@ class edit extends Component {
         iconPadding: value
       })
     }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_19__["default"], {
-      key: 'style'
+      key: "style"
     }, backgroundText && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
       title: __("Background Text"),
       className: "premium-panel-body",
@@ -26895,43 +26895,43 @@ class edit extends Component {
         titleTypography: newValue
       })
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      label: __("Color", 'premium-block-for-gutenberg'),
+      label: __("Color", "premium-block-for-gutenberg"),
       colorValue: textStyles[0].textBackColor,
-      colorDefault: '',
+      colorDefault: "",
       onColorChange: newValue => saveTextStyles({
         textBackColor: newValue
       })
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      label: __("Text Shadow", 'premium-blocks-for-gutenberg'),
+      label: __("Text Shadow", "premium-blocks-for-gutenberg"),
       boxShadow: false,
       value: textBackshadow,
       onChange: value => setAttributes({
         textBackshadow: value
       })
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: __('Stroke'),
+      label: __("Stroke"),
       checked: strokeStyles[0].stroke,
       onChange: newValue => saveStrokeStyles({
         stroke: newValue
       })
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), strokeStyles[0].stroke && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      label: __("Stroke Color", 'premium-block-for-gutenberg'),
+      label: __("Stroke Color", "premium-block-for-gutenberg"),
       colorValue: strokeStyles[0].strokeColor,
-      colorDefault: '',
+      colorDefault: "",
       onColorChange: newValue => saveStrokeStyles({
         strokeColor: newValue
       })
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      label: __("Stroke Full Width", 'premium-blocks-for-gutenberg'),
+      label: __("Stroke Full Width", "premium-blocks-for-gutenberg"),
       value: strokeFull,
       onChange: newValue => setAttributes({
-        iconSize: newValue
+        strokeFull: newValue
       }),
       showUnit: false,
       min: 0,
       max: 100,
       step: 1
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
       label: __("Blend Mode"),
       value: blend,
       onChange: newSelect => setAttributes({
@@ -26939,7 +26939,7 @@ class edit extends Component {
       }),
       options: BLEND
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_11__["default"], {
-      label: __("z-index", 'premium-block-for-gutenberg'),
+      label: __("z-index", "premium-block-for-gutenberg"),
       value: zIndex,
       onChange: value => setAttributes({
         zIndex: value
@@ -26949,7 +26949,7 @@ class edit extends Component {
       min: 0,
       max: 100
     }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_19__["default"], {
-      key: 'advance'
+      key: "advance"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_8__["default"], {
       Desktop: hideDesktop,
       Tablet: hideTablet,
@@ -26969,7 +26969,7 @@ class edit extends Component {
         textAlign: align === null || align === void 0 ? void 0 : align[this.props.deviceType]
       }
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `premium-title  ${backgroundText ? 'premium-title-bg-text' : ""}`,
+      className: `premium-title  ${backgroundText ? "premium-title-bg-text" : ""}`,
       style: {
         textAlign: align === null || align === void 0 ? void 0 : align[this.props.deviceType]
       },
@@ -26979,9 +26979,9 @@ class edit extends Component {
       "data-blur-delay": titleStyles[0].animateDelay,
       "data-shiny-dur": titleStyles[0].animateduration
     }, React.createElement(titleTag, {
-      className: `premium-title-header premium-title-${style}__wrap ${iconValue ? iconPosition : ""} ${iconPosition == 'top' ? `premium-title-${iconAlign === null || iconAlign === void 0 ? void 0 : iconAlign['Desktop']} premium-title-tablet-${iconAlign === null || iconAlign === void 0 ? void 0 : iconAlign['Tablet']} premium-title-mobile-${iconAlign === null || iconAlign === void 0 ? void 0 : iconAlign['Mobile']}` : ""}`,
-      'data-blur-delay': `${titleStyles[0].animateDelay}`,
-      'data-shiny-dur': `${titleStyles[0].animateduration}`,
+      className: `premium-title-header premium-title-${style}__wrap ${iconValue ? iconPosition : ""} ${iconPosition == "top" ? `premium-title-${iconAlign === null || iconAlign === void 0 ? void 0 : iconAlign["Desktop"]} premium-title-tablet-${iconAlign === null || iconAlign === void 0 ? void 0 : iconAlign["Tablet"]} premium-title-mobile-${iconAlign === null || iconAlign === void 0 ? void 0 : iconAlign["Mobile"]}` : ""}`,
+      "data-blur-delay": `${titleStyles[0].animateDelay}`,
+      "data-shiny-dur": `${titleStyles[0].animateduration}`,
       style: {
         color: titleStyles[0].titleColor,
         textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`,
@@ -26995,33 +26995,33 @@ class edit extends Component {
         paddingRight: TitlePaddingRight && `${TitlePaddingRight}${titlePadding.unit}`,
         ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_14__.typographyCss)(titleTypography, this.props.deviceType)
       }
-    }, [(0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, style === 'style7' ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, iconPosition != 'top' && iconValue && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-      className: `premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign['Desktop']} premium-stripe-tablet-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign['Tablet']} premium-stripe-mobile-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign['Mobile']}`
+    }, [(0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, style === "style7" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, iconPosition != "top" && iconValue && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+      className: `premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign["Desktop"]} premium-stripe-tablet-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign["Tablet"]} premium-stripe-mobile-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign["Mobile"]}`
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
       className: `premium-title-style7-stripe-span`
     })), !iconValue && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-      className: `premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign['Desktop']} premium-stripe-tablet-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign['Tablet']} premium-stripe-mobile-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign['Mobile']}`
+      className: `premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign["Desktop"]} premium-stripe-tablet-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign["Tablet"]} premium-stripe-mobile-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign["Mobile"]}`
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
       className: `premium-title-style7-stripe-span`
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: `premium-title-style7-inner-title`
-    }, iconValue && iconType == 'icon' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
+    }, iconValue && iconType == "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
       className: `premium-title-icon ${icon}`
-    }), iconValue && iconType == 'image' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    }), iconValue && iconType == "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
       className: `premium-title-icon`,
       src: imageURL
-    }), iconValue && iconType == 'lottie' && lottieURl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    }), iconValue && iconType == "lottie" && lottieURl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: " premium-title-icon premium-lottie-animation"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_lottie_with_segments__WEBPACK_IMPORTED_MODULE_13__["default"], {
       options: {
         loop: loop,
         path: lottieURl,
         rendererSettings: {
-          preserveAspectRatio: 'xMidYMid'
+          preserveAspectRatio: "xMidYMid"
         }
       },
       direction: reverse
-    })), iconValue && iconPosition === 'top' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    })), iconValue && iconPosition === "top" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
       className: `premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign}`
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
       className: `premium-title-style7-stripe-span`
@@ -27033,21 +27033,21 @@ class edit extends Component {
         title: newText
       }),
       style: {
-        minHeight: '15px'
+        minHeight: "15px"
       }
-    }))) : style === "style9" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, iconValue && iconType == 'icon' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
+    }))) : style === "style9" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, iconValue && iconType == "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
       className: `premium-title-icon ${icon}`
-    }), iconValue && iconType == 'image' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    }), iconValue && iconType == "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
       className: `premium-title-icon`,
       src: imageURL
-    }), iconValue && iconType == 'lottie' && lottieURl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    }), iconValue && iconType == "lottie" && lottieURl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: " premium-title-icon premium-lottie-animation"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_lottie_with_segments__WEBPACK_IMPORTED_MODULE_13__["default"], {
       options: {
         loop: loop,
         path: lottieURl,
         rendererSettings: {
-          preserveAspectRatio: 'xMidYMid'
+          preserveAspectRatio: "xMidYMid"
         }
       },
       direction: reverse
@@ -27064,19 +27064,19 @@ class edit extends Component {
         paddingLeft: TitlePaddingLeft + titlePadding.unit,
         paddingRight: TitlePaddingRight + titlePadding.unit
       }
-    }, styleContainer)) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, iconValue && iconType == 'icon' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
+    }, styleContainer)) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, iconValue && iconType == "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
       className: `premium-title-icon ${icon}`
-    }), iconValue && iconType == 'image' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    }), iconValue && iconType == "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
       className: `premium-title-icon`,
       src: imageURL
-    }), iconValue && iconType == 'lottie' && lottieURl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    }), iconValue && iconType == "lottie" && lottieURl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: " premium-title-icon premium-lottie-animation"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_lottie_with_segments__WEBPACK_IMPORTED_MODULE_13__["default"], {
       options: {
         loop: loop,
         path: lottieURl,
         rendererSettings: {
-          preserveAspectRatio: 'xMidYMid'
+          preserveAspectRatio: "xMidYMid"
         }
       },
       direction: reverse
@@ -27088,9 +27088,9 @@ class edit extends Component {
       }),
       value: title,
       style: {
-        minHeight: '15px'
+        minHeight: "15px"
       }
-    })), link && url !== ' ' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    })), link && url !== " " && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
       rel: "noopener noreferrer",
       target: "_self",
       href: `${url}`
@@ -27102,7 +27102,7 @@ class edit extends Component {
 /* harmony default export */ __webpack_exports__["default"] = (withSelect((select, props) => {
   const {
     __experimentalGetPreviewDeviceType = null
-  } = select('core/edit-post');
+  } = select("core/edit-post");
   let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
   return {
     deviceType: deviceType
