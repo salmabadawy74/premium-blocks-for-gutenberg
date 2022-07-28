@@ -19,7 +19,6 @@ import {
 } from "../../components/HelperFunction";
 import InspectorTabs from "../../components/inspectorTabs";
 import InspectorTab from "../../components/inspectorTab";
-import MultiButtonsControl from "../../components/responsive-radio";
 
 const { Fragment, Component } = wp.element;
 
@@ -47,21 +46,6 @@ class edit extends Component {
             });
         }
         this.props.setAttributes({ classMigrate: true });
-        this.getPreviewSize = this.getPreviewSize.bind(this);
-    }
-    getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
-        if (device === "Mobile") {
-            if (undefined !== mobileSize && "" !== mobileSize) {
-                return mobileSize;
-            } else if (undefined !== tabletSize && "" !== tabletSize) {
-                return tabletSize;
-            }
-        } else if (device === "Tablet") {
-            if (undefined !== tabletSize && "" !== tabletSize) {
-                return tabletSize;
-            }
-        }
-        return desktopSize;
     }
     render() {
         const { setAttributes, isSelected, className } = this.props;
