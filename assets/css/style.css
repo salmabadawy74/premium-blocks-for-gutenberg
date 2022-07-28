@@ -2077,7 +2077,14 @@ a.premium-dheading-block__link:hover {
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
-
+.premium-lottie-wrap .premium-lottie-animation svg,
+.premium-lottie-wrap .premium-lottie-animation.premium-lottie-canvas{
+    width: 200px;
+    height: 200px;
+}
+.premium-lottie-wrap{
+    text-align: center;
+}
 .premium-lottie-wrap .premium-lottie-animation .premium-lottie-inner {
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;

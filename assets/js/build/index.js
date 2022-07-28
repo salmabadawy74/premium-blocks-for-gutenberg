@@ -21573,7 +21573,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
 /* harmony import */ var _components_inspectorTabs__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/inspectorTabs */ "./src/components/inspectorTabs.js");
 /* harmony import */ var _components_inspectorTab__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/inspectorTab */ "./src/components/inspectorTab.js");
-/* harmony import */ var _components_responsive_radio__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/responsive-radio */ "./src/components/responsive-radio.js");
 
 
 
@@ -21587,7 +21586,6 @@ const {
 const {
   withSelect
 } = wp.data;
-
 
 
 
@@ -21626,23 +21624,6 @@ class edit extends Component {
     this.props.setAttributes({
       classMigrate: true
     });
-    this.getPreviewSize = this.getPreviewSize.bind(this);
-  }
-
-  getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
-    if (device === "Mobile") {
-      if (undefined !== mobileSize && "" !== mobileSize) {
-        return mobileSize;
-      } else if (undefined !== tabletSize && "" !== tabletSize) {
-        return tabletSize;
-      }
-    } else if (device === "Tablet") {
-      if (undefined !== tabletSize && "" !== tabletSize) {
-        return tabletSize;
-      }
-    }
-
-    return desktopSize;
   }
 
   render() {
@@ -35643,7 +35624,7 @@ const LottieAttr = {
     type: "object"
   },
   loop: {
-    type: 'boolean',
+    type: "boolean",
     default: true
   },
   reverse: {
@@ -35655,8 +35636,8 @@ const LottieAttr = {
     default: "1"
   },
   trigger: {
-    type: 'string',
-    default: 'none'
+    type: "string",
+    default: "none"
   },
   bottom: {
     type: "number",
@@ -35674,9 +35655,13 @@ const LottieAttr = {
     type: "number",
     default: 0
   },
-  align: {
-    type: "string",
-    default: "center"
+  lottieAlign: {
+    type: "object",
+    default: {
+      Desktop: "center",
+      Tablet: "center",
+      Mobile: "center"
+    }
   },
   link: {
     type: "boolean",
@@ -35690,103 +35675,178 @@ const LottieAttr = {
     default: false
   },
   render: {
-    type: 'string',
-    default: 'svg'
+    type: "string",
+    default: "svg"
   },
   hideDesktop: {
-    type: 'boolean',
+    type: "boolean",
     default: false
   },
   hideTablet: {
-    type: 'boolean',
+    type: "boolean",
     default: false
   },
   hideMobile: {
-    type: 'boolean',
+    type: "boolean",
     default: false
   },
   lottieStyles: {
     type: "array",
     default: [{
-      size: "200",
-      sizeUnit: 'px',
-      sizeMobile: "200",
-      sizeTablet: "200",
-      backColor: '',
+      backColor: "",
       backOpacity: 1,
-      backHColor: '',
-      backHOpacity: 1,
-      blur: '0',
-      bright: '100',
-      contrast: '100',
-      saturation: '100',
-      hue: '0',
-      blurH: '0',
-      brightH: '100',
-      contrastH: '100',
-      saturationH: '100',
-      hueH: '0',
-      borderType: 'none',
-      borderColor: '',
-      borderRadius: '0',
-      paddingU: 'px'
+      backHColor: "",
+      backHOpacity: 1
     }]
   },
-  paddingT: {
-    type: 'number'
-  },
-  paddingR: {
-    type: 'number'
-  },
-  paddingB: {
-    type: 'number'
-  },
-  paddingL: {
-    type: 'number'
-  },
-  borderTop: {
-    type: 'number'
-  },
-  borderRight: {
-    type: 'number'
-  },
-  borderBottom: {
-    type: 'number'
-  },
-  borderLeft: {
-    type: 'number'
-  },
-  paddingTTablet: {
-    type: 'number'
-  },
-  paddingRTablet: {
-    type: 'number'
-  },
-  paddingBTablet: {
-    type: 'number'
-  },
-  paddingLTablet: {
-    type: 'number'
-  },
-  paddingTMobile: {
-    type: 'number'
-  },
-  paddingRMobile: {
-    type: 'number'
-  },
-  paddingBMobile: {
-    type: 'number'
-  },
-  paddingLMobile: {
-    type: 'number'
-  },
-  lottieWidth: {
+  padding: {
     type: "object",
     default: {
-      Desktop: '200',
-      unit: 'px'
+      Desktop: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      Tablet: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      Mobile: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      unit: "px"
     }
-  }
+  },
+  border: {
+    type: "object",
+    default: {
+      borderType: "none",
+      borderColor: "",
+      borderWidth: {
+        Desktop: {
+          top: "",
+          right: "",
+          bottom: "",
+          left: ""
+        },
+        Tablet: {
+          top: "",
+          right: "",
+          bottom: "",
+          left: ""
+        },
+        Mobile: {
+          top: "",
+          right: "",
+          bottom: "",
+          left: ""
+        }
+      },
+      borderRadius: {
+        Desktop: {
+          top: "",
+          right: "",
+          bottom: "",
+          left: ""
+        },
+        Tablet: {
+          top: "",
+          right: "",
+          bottom: "",
+          left: ""
+        },
+        Mobile: {
+          top: "",
+          right: "",
+          bottom: "",
+          left: ""
+        }
+      }
+    }
+  },
+  filter: {
+    type: "object",
+    default: {
+      contrast: "100",
+      blur: "0",
+      bright: "100",
+      saturation: "100",
+      hue: "0"
+    }
+  },
+  filterHover: {
+    type: "object",
+    default: {
+      contrast: "100",
+      blur: "0",
+      bright: "100",
+      saturation: "100",
+      hue: "0"
+    }
+  },
+  size: {
+    type: "object",
+    default: {
+      Desktop: "200",
+      Tablet: "200",
+      Mobile: "200",
+      unit: "px"
+    }
+  } // paddingT: {
+  //     type: 'number'
+  // },
+  // paddingR: {
+  //     type: 'number'
+  // },
+  // paddingB: {
+  //     type: 'number'
+  // },
+  // paddingL: {
+  //     type: 'number'
+  // },
+  // borderTop: {
+  //     type: 'number'
+  // },
+  // borderRight: {
+  //     type: 'number'
+  // },
+  // borderBottom: {
+  //     type: 'number'
+  // },
+  // borderLeft: {
+  //     type: 'number'
+  // },
+  // paddingTTablet: {
+  //     type: 'number'
+  // },
+  // paddingRTablet: {
+  //     type: 'number'
+  // },
+  // paddingBTablet: {
+  //     type: 'number'
+  // },
+  // paddingLTablet: {
+  //     type: 'number'
+  // },
+  // paddingTMobile: {
+  //     type: 'number'
+  // },
+  // paddingRMobile: {
+  //     type: 'number'
+  // },
+  // paddingBMobile: {
+  //     type: 'number'
+  // },
+  // paddingLMobile: {
+  //     type: 'number'
+  // },
+
 };
 /* harmony default export */ __webpack_exports__["default"] = (LottieAttr);
 
@@ -36236,14 +36296,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_lottie_with_segments__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-lottie-with-segments */ "./node_modules/react-lottie-with-segments/dist/index.js");
 /* harmony import */ var _components_premium_filters__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/premium-filters */ "./src/components/premium-filters.js");
 /* harmony import */ var _components_premium_border__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/premium-border */ "./src/components/premium-border.js");
-/* harmony import */ var _components_Premium_Responsive_Padding__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/Premium-Responsive-Padding */ "./src/components/Premium-Responsive-Padding.js");
-/* harmony import */ var _components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/premium-responsive-tabs */ "./src/components/premium-responsive-tabs.js");
-/* harmony import */ var _components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/RangeControl/single-range-control */ "./src/components/RangeControl/single-range-control.js");
-/* harmony import */ var _components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/Color Control/ColorComponent */ "./src/components/Color Control/ColorComponent.js");
-/* harmony import */ var _components_radio_control__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/radio-control */ "./src/components/radio-control.js");
+/* harmony import */ var _components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/premium-responsive-tabs */ "./src/components/premium-responsive-tabs.js");
+/* harmony import */ var _components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/RangeControl/single-range-control */ "./src/components/RangeControl/single-range-control.js");
+/* harmony import */ var _components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/Color Control/ColorComponent */ "./src/components/Color Control/ColorComponent.js");
+/* harmony import */ var _components_responsive_radio__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/responsive-radio */ "./src/components/responsive-radio.js");
+/* harmony import */ var _components_icons__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/icons */ "./src/components/icons.js");
 /* harmony import */ var _components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/RangeControl/responsive-range-control */ "./src/components/RangeControl/responsive-range-control.js");
 /* harmony import */ var _container_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./container.js */ "./src/blocks/lottie/container.js");
 /* harmony import */ var _assets_js_settings__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../assets/js/settings */ "./assets/js/settings.js");
+/* harmony import */ var _components_inspectorTabs__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/inspectorTabs */ "./src/components/inspectorTabs.js");
+/* harmony import */ var _components_inspectorTab__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/inspectorTab */ "./src/components/inspectorTab.js");
+/* harmony import */ var _components_InsideTabs__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../components/InsideTabs */ "./src/components/InsideTabs.js");
+/* harmony import */ var _components_InsideTab__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../components/InsideTab */ "./src/components/InsideTab.js");
+/* harmony import */ var _components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../components/premium-responsive-spacing */ "./src/components/premium-responsive-spacing.js");
+/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
 
 
 
@@ -36266,6 +36332,12 @@ const {
 const {
   withSelect
 } = wp.data;
+
+
+
+
+
+
 
 const {
   InspectorControls
@@ -36312,26 +36384,9 @@ class edit extends Component {
 
     this.onSelectLottieJSON = this.onSelectLottieJSON.bind(this);
     this.initLottieAnimation = this.initLottieAnimation.bind(this);
-    this.getPreviewSize = this.getPreviewSize.bind(this);
     this.setState({
       isJSONAllowed: Boolean(_assets_js_settings__WEBPACK_IMPORTED_MODULE_12__.JsonUploadEnabled)
     });
-  }
-
-  getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
-    if (device === 'Mobile') {
-      if (undefined !== mobileSize && '' !== mobileSize) {
-        return mobileSize;
-      } else if (undefined !== tabletSize && '' !== tabletSize) {
-        return tabletSize;
-      }
-    } else if (device === 'Tablet') {
-      if (undefined !== tabletSize && '' !== tabletSize) {
-        return tabletSize;
-      }
-    }
-
-    return desktopSize;
   }
 
   componentDidUpdate() {
@@ -36370,10 +36425,10 @@ class edit extends Component {
 
     if (lottieContainer !== null) {
       let lottieContainer = document.getElementById(`premium-lottie-${block_id}`),
-          scrollElement = document.querySelector('.interface-interface-skeleton__content'),
+          scrollElement = document.querySelector(".interface-interface-skeleton__content"),
           animate = this.lottieplayer.current;
       document.addEventListener("load", initScroll);
-      scrollElement.addEventListener('scroll', initScroll);
+      scrollElement.addEventListener("scroll", initScroll);
 
       function initScroll() {
         let triggerEvent = trigger,
@@ -36402,6 +36457,8 @@ class edit extends Component {
   }
 
   render() {
+    var _padding$this$props$d, _padding$this$props$d2, _padding$this$props$d3, _padding$this$props$d4;
+
     const {
       attributes,
       setAttributes,
@@ -36420,7 +36477,7 @@ class edit extends Component {
       top,
       scrollSpeed,
       rotate,
-      align,
+      lottieAlign,
       link,
       url,
       target,
@@ -36429,31 +36486,19 @@ class edit extends Component {
       hideTablet,
       hideMobile,
       lottieStyles,
-      paddingT,
-      paddingR,
-      paddingB,
-      paddingL,
-      borderTop,
-      borderRight,
-      borderBottom,
-      borderLeft,
-      paddingTTablet,
-      paddingRTablet,
-      paddingBTablet,
-      paddingLTablet,
-      paddingTMobile,
-      paddingRMobile,
-      paddingBMobile,
-      paddingLMobile,
-      lottieWidth
+      padding,
+      border,
+      filter,
+      filterHover,
+      size
     } = attributes;
-    let validJsonPath = 'invalid';
+    let validJsonPath = "invalid";
 
-    if (lottieURl && lottieURl.endsWith('.json')) {
-      validJsonPath = 'valid';
+    if (lottieURl && lottieURl.endsWith(".json")) {
+      validJsonPath = "valid";
     }
 
-    if (validJsonPath === 'invalid') {
+    if (validJsonPath === "invalid") {
       return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
         className: "premium-lottie-animation-wrap"
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_container_js__WEBPACK_IMPORTED_MODULE_11__["default"], {
@@ -36499,45 +36544,85 @@ class edit extends Component {
 
     let stopAnimation = true;
 
-    if ('none' === trigger || 'undefined' === typeof trigger) {
+    if ("none" === trigger || "undefined" === typeof trigger) {
       stopAnimation = false;
     }
 
     const reversedir = reverse ? -1 : 1;
-    const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, 'premium-lottie-wrap');
-    const lottieSize = this.getPreviewSize(this.props.deviceType, lottieStyles[0].size, lottieStyles[0].sizeTablet, lottieStyles[0].sizeMobile);
-    const renderCss = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, `
-            #premium-lottie-${block_id} .premium-lottie-animation svg{
-                width:${lottieSize}${lottieStyles[0].sizeUnit} !important;
-                height:${lottieSize}${lottieStyles[0].sizeUnit} !important;
-            }
-            `);
-    const containerPaddingTop = this.getPreviewSize(this.props.deviceType, paddingT, paddingTTablet, paddingTMobile);
-    const containerPaddingRight = this.getPreviewSize(this.props.deviceType, paddingR, paddingRTablet, paddingRMobile);
-    const containerPaddingBottom = this.getPreviewSize(this.props.deviceType, paddingB, paddingBTablet, paddingBMobile);
-    const containerPaddingLeft = this.getPreviewSize(this.props.deviceType, paddingL, paddingLTablet, paddingLMobile);
-    return [renderCss, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
+    const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-lottie-wrap", {
+      " premium-desktop-hidden": hideDesktop,
+      " premium-tablet-hidden": hideTablet,
+      " premium-mobile-hidden": hideMobile
+    });
+    const paddingTop = padding === null || padding === void 0 ? void 0 : (_padding$this$props$d = padding[this.props.deviceType]) === null || _padding$this$props$d === void 0 ? void 0 : _padding$this$props$d.top;
+    const paddingRight = padding === null || padding === void 0 ? void 0 : (_padding$this$props$d2 = padding[this.props.deviceType]) === null || _padding$this$props$d2 === void 0 ? void 0 : _padding$this$props$d2.right;
+    const paddingBottom = padding === null || padding === void 0 ? void 0 : (_padding$this$props$d3 = padding[this.props.deviceType]) === null || _padding$this$props$d3 === void 0 ? void 0 : _padding$this$props$d3.bottom;
+    const paddingLeft = padding === null || padding === void 0 ? void 0 : (_padding$this$props$d4 = padding[this.props.deviceType]) === null || _padding$this$props$d4 === void 0 ? void 0 : _padding$this$props$d4.left;
+
+    const loadStyles = () => {
+      var _border$borderWidth, _border$borderWidth$t, _border$borderWidth2, _border$borderWidth2$, _border$borderWidth3, _border$borderWidth3$, _border$borderWidth4, _border$borderWidth4$, _border$borderRadius, _border$borderRadius$, _border$borderRadius2, _border$borderRadius3, _border$borderRadius4, _border$borderRadius5, _border$borderRadius6, _border$borderRadius7;
+
+      const styles = {};
+      styles[`#premium-lottie-${block_id} .premium-lottie-animation svg`] = {
+        width: `${size[this.props.deviceType]}${size["unit"]} !important`,
+        height: `
+                ${size[this.props.deviceType]}${size["unit"]} !important`
+      };
+      styles[`#premium-lottie-${block_id}`] = {
+        "text-align": `${lottieAlign[this.props.deviceType]}`
+      };
+      styles[`#premium-lottie-${block_id}  .premium-lottie-animation`] = {
+        "background-color": `${lottieStyles[0].backColor}`,
+        filter: ` brightness( ${filter === null || filter === void 0 ? void 0 : filter.bright}% ) contrast( ${filter === null || filter === void 0 ? void 0 : filter.contrast}% ) saturate( ${filter === null || filter === void 0 ? void 0 : filter.saturation}% ) blur( ${filter === null || filter === void 0 ? void 0 : filter.blur}px ) hue-rotate( ${filter === null || filter === void 0 ? void 0 : filter.hue}deg )`,
+        "border-style": `${border === null || border === void 0 ? void 0 : border.borderType}`,
+        "border-color": `${border === null || border === void 0 ? void 0 : border.borderColor}`,
+        "border-top-width": `${border === null || border === void 0 ? void 0 : (_border$borderWidth = border.borderWidth) === null || _border$borderWidth === void 0 ? void 0 : (_border$borderWidth$t = _border$borderWidth[this.props.deviceType]) === null || _border$borderWidth$t === void 0 ? void 0 : _border$borderWidth$t.top}px!important`,
+        "border-right-width": `${border === null || border === void 0 ? void 0 : (_border$borderWidth2 = border.borderWidth) === null || _border$borderWidth2 === void 0 ? void 0 : (_border$borderWidth2$ = _border$borderWidth2[this.props.deviceType]) === null || _border$borderWidth2$ === void 0 ? void 0 : _border$borderWidth2$.right}px!important`,
+        "border-bottom-width": `${border === null || border === void 0 ? void 0 : (_border$borderWidth3 = border.borderWidth) === null || _border$borderWidth3 === void 0 ? void 0 : (_border$borderWidth3$ = _border$borderWidth3[this.props.deviceType]) === null || _border$borderWidth3$ === void 0 ? void 0 : _border$borderWidth3$.bottom}px!important`,
+        "border-left-width": `${border === null || border === void 0 ? void 0 : (_border$borderWidth4 = border.borderWidth) === null || _border$borderWidth4 === void 0 ? void 0 : (_border$borderWidth4$ = _border$borderWidth4[this.props.deviceType]) === null || _border$borderWidth4$ === void 0 ? void 0 : _border$borderWidth4$.left}px!important`,
+        "border-top-left-radius": `${border === null || border === void 0 ? void 0 : (_border$borderRadius = border.borderRadius) === null || _border$borderRadius === void 0 ? void 0 : (_border$borderRadius$ = _border$borderRadius[this.props.deviceType]) === null || _border$borderRadius$ === void 0 ? void 0 : _border$borderRadius$.top}px!important`,
+        "border-top-right-radius": `${border === null || border === void 0 ? void 0 : (_border$borderRadius2 = border.borderRadius) === null || _border$borderRadius2 === void 0 ? void 0 : (_border$borderRadius3 = _border$borderRadius2[this.props.deviceType]) === null || _border$borderRadius3 === void 0 ? void 0 : _border$borderRadius3.right}px!important`,
+        "border-bottom-left-radius": `${border === null || border === void 0 ? void 0 : (_border$borderRadius4 = border.borderRadius) === null || _border$borderRadius4 === void 0 ? void 0 : (_border$borderRadius5 = _border$borderRadius4[this.props.deviceType]) === null || _border$borderRadius5 === void 0 ? void 0 : _border$borderRadius5.bottom}px!important`,
+        "border-bottom-right-radius": `${border === null || border === void 0 ? void 0 : (_border$borderRadius6 = border.borderRadius) === null || _border$borderRadius6 === void 0 ? void 0 : (_border$borderRadius7 = _border$borderRadius6[this.props.deviceType]) === null || _border$borderRadius7 === void 0 ? void 0 : _border$borderRadius7.left}px!important`,
+        "padding-top": `${paddingTop}${padding === null || padding === void 0 ? void 0 : padding.unit} !important`,
+        "padding-right": `${paddingRight}${padding === null || padding === void 0 ? void 0 : padding.unit} !important`,
+        "padding-bottom": `${paddingBottom}${padding === null || padding === void 0 ? void 0 : padding.unit} !important`,
+        "padding-left": `${paddingLeft}${padding === null || padding === void 0 ? void 0 : padding.unit} !important`,
+        transform: `rotate(${rotate}deg) !important`
+      };
+      styles[`#premium-lottie-${block_id}  .premium-lottie-animation:hover`] = {
+        "background-color": `${lottieStyles[0].backHColor}`,
+        filter: `brightness( ${filterHover === null || filterHover === void 0 ? void 0 : filterHover.bright}% ) contrast( ${filterHover === null || filterHover === void 0 ? void 0 : filterHover.contrast}% ) saturate( ${filterHover === null || filterHover === void 0 ? void 0 : filterHover.saturation}% ) blur( ${filterHover === null || filterHover === void 0 ? void 0 : filterHover.blur}px ) hue-rotate( ${filterHover === null || filterHover === void 0 ? void 0 : filterHover.hue}deg ) !important`
+      };
+      return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.generateCss)(styles);
+    };
+
+    return [(0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTabs__WEBPACK_IMPORTED_MODULE_13__["default"], {
+      tabs: ["layout", "style", "advance"]
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      key: "layout"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
       title: __("General Settings"),
       className: "premium-panel-body",
       initialOpen: true
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
       className: "lottie-remove",
       onClick: handleRemoveLottie
-    }, __('Change Animation')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: __(`loop`, 'premium-blocks-for-gutenberg'),
+    }, __("Change Animation")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
+      label: __(`loop`, "premium-blocks-for-gutenberg"),
       checked: loop,
       onChange: value => setAttributes({
         loop: value
       }),
-      help: loop ? __('This option works only on the preview page', 'premium-blocks-for-gutenberg') : ''
+      help: loop ? __("This option works only on the preview page", "premium-blocks-for-gutenberg") : ""
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: __(`Reverse`, 'premium-blocks-for-gutenberg'),
+      label: __(`Reverse`, "premium-blocks-for-gutenberg"),
       checked: reverse,
       onChange: () => setAttributes({
         reverse: !reverse
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      label: __('Animation Speed', 'premium-blocks-for-gutenberg'),
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      label: __("Animation Speed", "premium-blocks-for-gutenberg"),
       value: speed,
       onChange: newValue => setAttributes({
         speed: newValue !== "" ? newValue : 1
@@ -36545,72 +36630,72 @@ class edit extends Component {
       showUnit: false,
       defaultValue: 1,
       max: 3,
-      min: .1,
+      min: 0.1,
       step: 0.1
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
-      label: __('Trigger', 'premium-blocks-for-gutenberg'),
+      label: __("Trigger", "premium-blocks-for-gutenberg"),
       options: [{
-        value: 'none',
-        label: __("None", 'premium-blocks-for-gutenberg')
+        value: "none",
+        label: __("None", "premium-blocks-for-gutenberg")
       }, {
         value: "hover",
-        label: __("Hover", 'premium-blocks-for-gutenberg')
+        label: __("Hover", "premium-blocks-for-gutenberg")
       }, {
         value: "scroll",
-        label: __("Scroll", 'premium-blocks-for-gutenberg')
+        label: __("Scroll", "premium-blocks-for-gutenberg")
       }, {
         value: "viewport",
-        label: __("Viewport", 'premium-blocks-for-gutenberg')
+        label: __("Viewport", "premium-blocks-for-gutenberg")
       }],
       value: trigger,
       onChange: newValue => setAttributes({
         trigger: newValue
       })
-    }), 'scroll' === trigger && !reverse && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      label: __('Scroll Speed', 'premium-blocks-for-gutenberg'),
+    }), "scroll" === trigger && !reverse && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      label: __("Scroll Speed", "premium-blocks-for-gutenberg"),
       value: scrollSpeed,
       onChange: newValue => setAttributes({
-        scrollSpeed: newValue !== "" ? newValue : 200
+        scrollSpeed: newValue
       }),
       showUnit: false,
       defaultValue: 0,
       min: 1,
       max: 10,
-      step: .1
-    })), (trigger === 'viewport' || trigger === 'scroll') && !reverse && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      label: __('Bottom', 'premium-blocks-for-gutenberg'),
+      step: 0.1
+    })), (trigger === "viewport" || trigger === "scroll") && !reverse && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      label: __("Bottom", "premium-blocks-for-gutenberg"),
       value: bottom,
       onChange: newValue => setAttributes({
         bottom: newValue
       }),
       showUnit: false,
-      defaultValue: '',
+      defaultValue: "",
       min: 0,
       max: 50
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      label: __('Top', 'premium-blocks-for-gutenberg'),
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      label: __("Top", "premium-blocks-for-gutenberg"),
       value: top,
       onChange: newValue => setAttributes({
         top: newValue
       }),
       showUnit: false,
-      defaultValue: '',
+      defaultValue: "",
       min: 50,
       max: 100
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      label: __('Size', 'premium-blocks-for-gutenberg'),
-      value: lottieWidth,
+      label: __("Size", "premium-blocks-for-gutenberg"),
+      value: size,
       onChange: value => setAttributes({
-        lottieWidth: value
+        size: value
       }),
       min: 0,
       max: 800,
       step: 1,
       showUnit: true,
-      units: ['px', 'em', 'rem'],
+      units: ["px", "em", "rem"],
       defaultValue: 200
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      label: __("Rotate (Degree)", 'premium-blocks-for-gutenberg'),
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      label: __("Rotate (Degree)", "premium-blocks-for-gutenberg"),
       value: rotate,
       min: -180,
       max: 180,
@@ -36619,258 +36704,111 @@ class edit extends Component {
       }),
       showUnit: false,
       defaultValue: 0
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_radio_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      choices: ["left", "center", "right"],
-      value: align,
-      onChange: newValue => setAttributes({
-        align: newValue
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      choices: [{
+        value: "left",
+        label: __("Left"),
+        icon: _components_icons__WEBPACK_IMPORTED_MODULE_9__["default"].alignLeft
+      }, {
+        value: "center",
+        label: __("Center"),
+        icon: _components_icons__WEBPACK_IMPORTED_MODULE_9__["default"].alignCenter
+      }, {
+        value: "right",
+        label: __("Right"),
+        icon: _components_icons__WEBPACK_IMPORTED_MODULE_9__["default"].alignRight
+      }],
+      value: lottieAlign,
+      onChange: align => setAttributes({
+        lottieAlign: align
       }),
-      label: __("Alignment", 'premium-blocks-for-gutenberg')
+      label: __("Alignment", "premium-blocks-for-gutenberg"),
+      showIcons: true
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: __("Link", 'premium-blocks-for-gutenberg'),
+      label: __("Link", "premium-blocks-for-gutenberg"),
       checked: link,
       onChange: () => setAttributes({
         link: !link
       })
     }), link && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
-      label: __("URL", 'premium-blocks-for-gutenberg'),
+      label: __("URL", "premium-blocks-for-gutenberg"),
       value: url,
       onChange: newURL => setAttributes({
         url: newURL
       })
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: __("Open link in new tab", 'premium-blocks-for-gutenberg'),
+      label: __("Open link in new tab", "premium-blocks-for-gutenberg"),
       checked: target,
       onChange: newValue => setAttributes({
         target: newValue
       })
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
-      label: __('Render As', 'premium-blocks-for-gutenberg'),
+      label: __("Render As", "premium-blocks-for-gutenberg"),
       value: render,
       options: [{
         label: "SVG",
-        value: 'svg'
+        value: "svg"
       }, {
-        label: 'Canvas',
-        value: 'canvas'
+        label: "Canvas",
+        value: "canvas"
       }],
       help: __(`Set render type to canvas if you're having performance issues on the page.
                     This setting will only take effect once you are on the live page, and not while you're editing.
-                    `, 'premium-blocks-for-gutenberg'),
+                    `, "premium-blocks-for-gutenberg"),
       onChange: newValue => setAttributes({
         render: newValue
       })
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-      title: __("Style", 'premium-blocks-for-gutenberg'),
+    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      key: "style"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
+      title: __("Style", "premium-blocks-for-gutenberg"),
       className: "premium-panel-body",
-      initialOpen: false
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TabPanel, {
-      className: "premium-color-tabpanel",
-      activeClass: "active-tab",
-      tabs: [{
-        name: "normal",
-        title: "Normal",
-        className: "premium-tab"
-      }, {
-        name: "hover",
-        title: "Hover",
-        className: "premium-tab"
-      }]
-    }, tab => {
-      let tabout;
-
-      if ("normal" === tab.name) {
-        tabout = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_8__["default"], {
-          label: __("Background Color", 'premium-blocks-for-gutenberg'),
-          colorValue: lottieStyles[0].backColor,
-          colorDefault: '',
-          onColorChange: newValue => saveLottieStyles({
-            backColor: newValue
-          })
-        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
-          label: __(`Opacity`, 'premium-blocks-for-gutenberg'),
-          value: lottieStyles[0].backOpacity,
-          max: 1,
-          min: .1,
-          step: 0.01,
-          onChange: newvalue => saveLottieStyles({
-            backOpacity: newvalue
-          }),
-          showUnit: false,
-          defaultValue: .1
-        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_filters__WEBPACK_IMPORTED_MODULE_3__["default"], {
-          blur: lottieStyles[0].blur,
-          bright: lottieStyles[0].bright,
-          contrast: lottieStyles[0].contrast,
-          saturation: lottieStyles[0].saturation,
-          hue: lottieStyles[0].hue,
-          onChangeBlur: value => saveLottieStyles({
-            blur: value
-          }),
-          onChangeBright: value => saveLottieStyles({
-            bright: value
-          }),
-          onChangeContrast: value => saveLottieStyles({
-            contrast: value
-          }),
-          onChangeSat: value => saveLottieStyles({
-            saturation: value
-          }),
-          onChangeHue: value => saveLottieStyles({
-            hue: value
-          })
-        }));
-      }
-
-      if ("hover" === tab.name) {
-        tabout = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_8__["default"], {
-          label: __("Background Color", 'premium-blocks-for-gutenberg'),
-          colorValue: lottieStyles[0].backHColor,
-          colorDefault: '',
-          onColorChange: newValue => saveLottieStyles({
-            backHColor: newValue
-          })
-        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
-          label: __(`Opacity`, 'premium-blocks-for-gutenberg'),
-          value: lottieStyles[0].backHOpacity,
-          max: 1,
-          min: .1,
-          step: 0.01,
-          onChange: newvalue => saveLottieStyles({
-            backHOpacity: newvalue
-          }),
-          showUnit: false,
-          defaultValue: .1
-        }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_filters__WEBPACK_IMPORTED_MODULE_3__["default"], {
-          blur: lottieStyles[0].blurH,
-          bright: lottieStyles[0].brightH,
-          contrast: lottieStyles[0].contrastH,
-          saturation: lottieStyles[0].saturationH,
-          hue: lottieStyles[0].hueH,
-          onChangeBlur: value => saveLottieStyles({
-            blurH: value
-          }),
-          onChangeBright: value => saveLottieStyles({
-            brightH: value
-          }),
-          onChangeContrast: value => saveLottieStyles({
-            contrastH: value
-          }),
-          onChangeSat: value => saveLottieStyles({
-            saturationH: value
-          }),
-          onChangeHue: value => saveLottieStyles({
-            hueH: value
-          })
-        }));
-      }
-
-      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, tabout, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null));
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      borderType: lottieStyles[0].borderType,
-      top: borderTop,
-      right: borderRight,
-      bottom: borderBottom,
-      left: borderLeft,
-      borderColor: lottieStyles[0].borderColor,
-      borderRadius: lottieStyles[0].borderRadius,
-      onChangeType: newType => saveLottieStyles({
-        borderType: newType
-      }),
-      onChangeWidth: _ref => {
-        let {
-          top,
-          right,
-          bottom,
-          left
-        } = _ref;
-        return setAttributes({
-          borderTop: top,
-          borderRight: right,
-          borderBottom: bottom,
-          borderLeft: left
-        });
-      },
-      onChangeColor: colorValue => saveLottieStyles({
-        borderColor: colorValue === undefined ? "transparent" : colorValue
-      }),
-      onChangeRadius: newRadius => saveLottieStyles({
-        borderRadius: newRadius === undefined ? 0 : newRadius
+      initialOpen: true
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_InsideTabs__WEBPACK_IMPORTED_MODULE_15__["default"], null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_InsideTab__WEBPACK_IMPORTED_MODULE_16__["default"], {
+      tabTitle: __("Normal")
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      label: __("Background Color", "premium-blocks-for-gutenberg"),
+      colorValue: lottieStyles[0].backColor,
+      colorDefault: "",
+      onColorChange: newValue => saveLottieStyles({
+        backColor: newValue
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Premium_Responsive_Padding__WEBPACK_IMPORTED_MODULE_5__["default"], {
-      paddingTop: paddingT,
-      paddingRight: paddingR,
-      paddingBottom: paddingB,
-      paddingLeft: paddingL,
-      paddingTopTablet: paddingTTablet,
-      paddingRightTablet: paddingRTablet,
-      paddingBottomTablet: paddingBTablet,
-      paddingLeftTablet: paddingLTablet,
-      paddingTopMobile: paddingTMobile,
-      paddingRightMobile: paddingRMobile,
-      paddingBottomMobile: paddingBMobile,
-      paddingLeftMobile: paddingLMobile,
-      onChangePaddingTop: (device, newValue) => {
-        if (device === "desktop") {
-          setAttributes({
-            paddingT: newValue
-          });
-        } else if (device === "tablet") {
-          setAttributes({
-            paddingTTablet: newValue
-          });
-        } else {
-          setAttributes({
-            paddingTMobile: newValue
-          });
-        }
-      },
-      onChangePaddingRight: (device, newValue) => {
-        if (device === "desktop") {
-          setAttributes({
-            paddingR: newValue
-          });
-        } else if (device === "tablet") {
-          setAttributes({
-            paddingRTablet: newValue
-          });
-        } else {
-          setAttributes({
-            paddingRMobile: newValue
-          });
-        }
-      },
-      onChangePaddingBottom: (device, newValue) => {
-        if (device === "desktop") {
-          setAttributes({
-            paddingB: newValue
-          });
-        } else if (device === "tablet") {
-          setAttributes({
-            paddingBTablet: newValue
-          });
-        } else {
-          setAttributes({
-            paddingBMobile: newValue
-          });
-        }
-      },
-      onChangePaddingLeft: (device, newValue) => {
-        if (device === "desktop") {
-          setAttributes({
-            paddingL: newValue
-          });
-        } else if (device === "tablet") {
-          setAttributes({
-            paddingLTablet: newValue
-          });
-        } else {
-          setAttributes({
-            paddingLMobile: newValue
-          });
-        }
-      }
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_filters__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      value: filter,
+      onChange: value => setAttributes({
+        filter: value
+      })
+    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_InsideTab__WEBPACK_IMPORTED_MODULE_16__["default"], {
+      tabTitle: __("Hover")
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      label: __("Background Color", "premium-blocks-for-gutenberg"),
+      colorValue: lottieStyles[0].backHColor,
+      colorDefault: "",
+      onColorChange: newValue => saveLottieStyles({
+        backHColor: newValue
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_filters__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      value: filterHover,
+      onChange: value => setAttributes({
+        filterHover: value
+      })
+    })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      label: __("Border", "premium-blocks-for-gutenberg"),
+      value: border,
+      onChange: value => setAttributes({
+        border: value
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_17__["default"], {
+      label: __("Padding", "premium-blocks-for-gutenberg"),
+      value: padding,
+      onChange: value => setAttributes({
+        padding: value
+      }),
+      showUnits: true,
+      responsive: true
+    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      key: "advance"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_5__["default"], {
       Desktop: hideDesktop,
       Tablet: hideTablet,
       Mobile: hideMobile,
@@ -36883,24 +36821,28 @@ class edit extends Component {
       onChangeMobile: value => setAttributes({
         hideMobile: value ? " premium-mobile-hidden" : ""
       })
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
+      dangerouslySetInnerHTML: {
+        __html: loadStyles()
+      }
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       id: `premium-lottie-${block_id}`,
-      className: `premium-lottie-${block_id} ${mainClasses} ${hideDesktop} ${hideTablet} ${hideMobile}`,
+      className: `premium-lottie-${block_id} ${mainClasses} `,
       "data-lottieURl": lottieURl,
       "data-trigger": trigger,
       "data-start": bottom,
       "data-end": top
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: `premium-lottie-animation`,
-      onMouseEnter: 'hover' === trigger ? handleLottieMouseEnter : () => stopAnimation = true,
-      onMouseLeave: 'hover' === trigger ? handleLottieMouseLeave : () => stopAnimation = true
+      onMouseEnter: "hover" === trigger ? handleLottieMouseEnter : () => stopAnimation = true,
+      onMouseLeave: "hover" === trigger ? handleLottieMouseLeave : () => stopAnimation = true
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_lottie_with_segments__WEBPACK_IMPORTED_MODULE_2__["default"], {
       ref: this.lottieplayer,
       options: {
         loop: loop,
         path: lottieURl,
         rendererSettings: {
-          preserveAspectRatio: 'xMidYMid',
+          preserveAspectRatio: "xMidYMid",
           className: "premium-lottie-inner"
         }
       },
@@ -36908,15 +36850,11 @@ class edit extends Component {
       speed: speed === "" ? 1 : speed,
       isClickToPauseDisabled: true,
       direction: reversedir
-    }), link && url !== ' ' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    }), link && url !== " " && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
       rel: "noopener noreferrer",
       target: target ? "_blank" : "_self",
       href: "javascript:void(0)"
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
-      dangerouslySetInnerHTML: {
-        __html: [`#premium-lottie-${block_id}{`, `text-align:${align};`, "}", `#premium-lottie-${block_id}  .premium-lottie-animation  {`, `background-color:${lottieStyles[0].backColor};`, `opacity : ${lottieStyles[0].backOpacity};`, `filter: brightness( ${lottieStyles[0].bright}% ) contrast( ${lottieStyles[0].contrast}% ) saturate( ${lottieStyles[0].saturation}% ) blur( ${lottieStyles[0].blur}px ) hue-rotate( ${lottieStyles[0].hue}deg );`, `border-style : ${lottieStyles[0].borderType};`, `border-width : ${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px ;`, `border-radius : ${lottieStyles[0].borderRadius}px;`, `border-color : ${lottieStyles[0].borderColor}; `, `padding-top : ${containerPaddingTop}${lottieStyles[0].paddingU};`, `padding-right : ${containerPaddingRight}${lottieStyles[0].paddingU};`, `padding-bottom : ${containerPaddingBottom}${lottieStyles[0].paddingU};`, `padding-left : ${containerPaddingLeft}${lottieStyles[0].paddingU};`, `transform: rotate(${rotate}deg) !important;`, "}", `#premium-lottie-${block_id}  .premium-lottie-animation:hover {`, `background-color:${lottieStyles[0].backHColor};`, `opacity:${lottieStyles[0].backHOpacity};`, `filter: brightness( ${lottieStyles[0].brightH}% ) contrast( ${lottieStyles[0].contrastH}% ) saturate( ${lottieStyles[0].saturationH}% ) blur( ${lottieStyles[0].blurH}px ) hue-rotate( ${lottieStyles[0].hueH}deg ) !important;`, "}"].join("\n")
-      }
-    }))];
+    })))];
   }
 
 }
@@ -36924,7 +36862,7 @@ class edit extends Component {
 /* harmony default export */ __webpack_exports__["default"] = (withSelect((select, props) => {
   const {
     __experimentalGetPreviewDeviceType = null
-  } = select('core/edit-post');
+  } = select("core/edit-post");
   let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
   return {
     deviceType: deviceType
@@ -36995,7 +36933,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
 
+
+const {
+  Fragment
+} = wp.element;
 
 function save(props) {
   const {
@@ -37006,7 +36949,6 @@ function save(props) {
     lottieId,
     block_id,
     lottieURl,
-    lottieJson,
     loop,
     reverse,
     speed,
@@ -37015,7 +36957,6 @@ function save(props) {
     top,
     scrollSpeed,
     rotate,
-    align,
     link,
     url,
     target,
@@ -37024,13 +36965,33 @@ function save(props) {
     hideTablet,
     hideMobile,
     lottieStyles,
-    borderTop,
-    borderRight,
-    borderBottom,
-    borderLeft
+    border,
+    filter,
+    filterHover
   } = attributes;
-  const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, 'premium-lottie-wrap');
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-lottie-wrap");
+
+  const loadStyles = () => {
+    const styles = {};
+    styles[`#premium-lottie-${block_id}  .premium-lottie-animation`] = {
+      "background-color": `${lottieStyles[0].backColor}`,
+      filter: ` brightness( ${filter === null || filter === void 0 ? void 0 : filter.bright}% ) contrast( ${filter === null || filter === void 0 ? void 0 : filter.contrast}% ) saturate( ${filter === null || filter === void 0 ? void 0 : filter.saturation}% ) blur( ${filter === null || filter === void 0 ? void 0 : filter.blur}px ) hue-rotate( ${filter === null || filter === void 0 ? void 0 : filter.hue}deg )`,
+      "border-style": `${border === null || border === void 0 ? void 0 : border.borderType}`,
+      "border-color": `${border === null || border === void 0 ? void 0 : border.borderColor}`,
+      transform: `rotate(${rotate}deg) !important`
+    };
+    styles[`#premium-lottie-${block_id}  .premium-lottie-animation:hover`] = {
+      "background-color": `${lottieStyles[0].backHColor}`,
+      filter: `brightness( ${filterHover === null || filterHover === void 0 ? void 0 : filterHover.bright}% ) contrast( ${filterHover === null || filterHover === void 0 ? void 0 : filterHover.contrast}% ) saturate( ${filterHover === null || filterHover === void 0 ? void 0 : filterHover.saturation}% ) blur( ${filterHover === null || filterHover === void 0 ? void 0 : filterHover.blur}px ) hue-rotate( ${filterHover === null || filterHover === void 0 ? void 0 : filterHover.hue}deg ) !important`
+    };
+    return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.generateCss)(styles);
+  };
+
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
+    dangerouslySetInnerHTML: {
+      __html: loadStyles()
+    }
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     id: `premium-lottie-${block_id}`,
     className: `premium-lottie-${block_id} ${mainClasses} ${hideDesktop} ${hideTablet} ${hideMobile}`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -37044,15 +37005,11 @@ function save(props) {
     "data-render": render,
     "data-reverse": reverse,
     "data-scrollSpeed": scrollSpeed
-  }, link && url !== ' ' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+  }, link && url !== " " && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     rel: "noopener noreferrer",
     target: target ? "_blank" : "_self",
     href: url
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
-    dangerouslySetInnerHTML: {
-      __html: [`#premium-lottie-${block_id}{`, `text-align:${align};`, "}", `#premium-lottie-${block_id}  .premium-lottie-animation  {`, `background-color:${lottieStyles[0].backColor};`, `opacity : ${lottieStyles[0].backOpacity};`, `filter: brightness( ${lottieStyles[0].bright}% ) contrast( ${lottieStyles[0].contrast}% ) saturate( ${lottieStyles[0].saturation}% ) blur( ${lottieStyles[0].blur}px ) hue-rotate( ${lottieStyles[0].hue}deg );`, `border-style : ${lottieStyles[0].borderType};`, `border-width : ${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px ;`, `border-radius : ${lottieStyles[0].borderRadius}px;`, `border-color : ${lottieStyles[0].borderColor}; `, `transform: rotate(${rotate}deg) !important;`, "}", `#premium-lottie-${block_id}  .premium-lottie-animation:hover {`, `background-color:${lottieStyles[0].backHColor};`, `opacity:${lottieStyles[0].backHOpacity};`, `filter: brightness( ${lottieStyles[0].brightH}% ) contrast( ${lottieStyles[0].contrastH}% ) saturate( ${lottieStyles[0].saturationH}% ) blur( ${lottieStyles[0].blurH}px ) hue-rotate( ${lottieStyles[0].hueH}deg ) !important;`, "}"].join("\n")
-    }
-  }));
+  }))));
 }
 
 /***/ }),

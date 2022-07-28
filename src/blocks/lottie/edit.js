@@ -1,31 +1,29 @@
 import classnames from "classnames";
-import Lottie from 'react-lottie-with-segments';
+import Lottie from "react-lottie-with-segments";
 import PremiumFilters from "../../components/premium-filters";
 import PremiumBorder from "../../components/premium-border";
-import PremiumResponsivePadding from '../../components/Premium-Responsive-Padding';
-import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
+import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
-import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
-import RadioComponent from '../../components/radio-control'
+import AdvancedPopColorControl from "../../components/Color Control/ColorComponent";
+import MultiButtonsControl from "../../components/responsive-radio";
+import Icons from "../../components/icons";
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
-import Placeholder from './container.js';
+import Placeholder from "./container.js";
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { withSelect } = wp.data
+const { withSelect } = wp.data;
 import { JsonUploadEnabled } from "../../../assets/js/settings";
+import InspectorTabs from "../../components/inspectorTabs";
+import InspectorTab from "../../components/inspectorTab";
+import InsideTabs from "../../components/InsideTabs";
+import InsideTab from "../../components/InsideTab";
+import SpacingControl from "../../components/premium-responsive-spacing";
+import { generateBlockId, generateCss } from "../../components/HelperFunction";
 
+const { InspectorControls } = wp.blockEditor;
 
-const {
-    InspectorControls,
-} = wp.blockEditor
-
-const {
-    PanelBody,
-    TextControl,
-    ToggleControl,
-    SelectControl,
-    TabPanel,
-} = wp.components
+const { PanelBody, TextControl, ToggleControl, SelectControl, TabPanel } =
+    wp.components;
 
 let isLottieUpdated = null;
 
@@ -34,8 +32,8 @@ class edit extends Component {
         super(...arguments);
         this.lottieplayer = React.createRef();
         this.state = {
-            isJSONAllowed: false
-        }
+            isJSONAllowed: false,
+        };
     }
 
     componentDidMount() {
@@ -49,22 +47,7 @@ class edit extends Component {
         }
         this.onSelectLottieJSON = this.onSelectLottieJSON.bind(this);
         this.initLottieAnimation = this.initLottieAnimation.bind(this);
-        this.getPreviewSize = this.getPreviewSize.bind(this);
-        this.setState({ isJSONAllowed: Boolean(JsonUploadEnabled) })
-    }
-    getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
-        if (device === 'Mobile') {
-            if (undefined !== mobileSize && '' !== mobileSize) {
-                return mobileSize;
-            } else if (undefined !== tabletSize && '' !== tabletSize) {
-                return tabletSize;
-            }
-        } else if (device === 'Tablet') {
-            if (undefined !== tabletSize && '' !== tabletSize) {
-                return tabletSize;
-            }
-        }
-        return desktopSize;
+        this.setState({ isJSONAllowed: Boolean(JsonUploadEnabled) });
     }
 
     componentDidUpdate() {
@@ -73,24 +56,30 @@ class edit extends Component {
     }
 
     onSelectLottieJSON(media) {
-        const { setAttributes } = this.props
+        const { setAttributes } = this.props;
         if (!media || !media.url) {
-            setAttributes({ jsonLottie: null })
-            return
+            setAttributes({ jsonLottie: null });
+            return;
         }
-        setAttributes({ jsonLottie: media })
-        setAttributes({ lottieURl: media.url })
+        setAttributes({ jsonLottie: media });
+        setAttributes({ lottieURl: media.url });
     }
 
     initLottieAnimation() {
         const { block_id, trigger, bottom, top } = this.props.attributes;
-        let lottieContainer = document.getElementById(`premium-lottie-${block_id}`);
+        let lottieContainer = document.getElementById(
+            `premium-lottie-${block_id}`
+        );
         if (lottieContainer !== null) {
-            let lottieContainer = document.getElementById(`premium-lottie-${block_id}`),
-                scrollElement = document.querySelector('.interface-interface-skeleton__content'),
+            let lottieContainer = document.getElementById(
+                    `premium-lottie-${block_id}`
+                ),
+                scrollElement = document.querySelector(
+                    ".interface-interface-skeleton__content"
+                ),
                 animate = this.lottieplayer.current;
-            document.addEventListener("load", initScroll)
-            scrollElement.addEventListener('scroll', initScroll)
+            document.addEventListener("load", initScroll);
+            scrollElement.addEventListener("scroll", initScroll);
             function initScroll() {
                 let triggerEvent = trigger,
                     startEvent = bottom,
@@ -100,7 +89,8 @@ class edit extends Component {
                         scrollTop = scrollElement.scrollTop,
                         pageRange = scrollElement.clientHeight,
                         precentage = (scrollTop * 100) / scrollHeight,
-                        pageEnd = ((scrollTop + pageRange) * 100) / scrollHeight;
+                        pageEnd =
+                            ((scrollTop + pageRange) * 100) / scrollHeight;
 
                     if (triggerEvent === "viewport") {
                         if (startEvent < precentage && pageEnd < endEvent)
@@ -111,8 +101,7 @@ class edit extends Component {
                     } else {
                         let stopFrame = animate.anim.totalFrames;
                         let currframe = (precentage / 100) * stopFrame;
-                        animate.anim.goToAndStop(currframe, true)
-
+                        animate.anim.goToAndStop(currframe, true);
                     }
                 }
             }
@@ -134,7 +123,7 @@ class edit extends Component {
             top,
             scrollSpeed,
             rotate,
-            align,
+            lottieAlign,
             link,
             url,
             target,
@@ -143,43 +132,32 @@ class edit extends Component {
             hideTablet,
             hideMobile,
             lottieStyles,
-            paddingT,
-            paddingR,
-            paddingB,
-            paddingL,
-            borderTop,
-            borderRight,
-            borderBottom,
-            borderLeft,
-            paddingTTablet,
-            paddingRTablet,
-            paddingBTablet,
-            paddingLTablet,
-            paddingTMobile,
-            paddingRMobile,
-            paddingBMobile,
-            paddingLMobile,
-            lottieWidth
-        } = attributes
-        let validJsonPath = 'invalid';
-        if (lottieURl && lottieURl.endsWith('.json')) {
-            validJsonPath = 'valid'
+            padding,
+            border,
+            filter,
+            filterHover,
+            size,
+        } = attributes;
+        let validJsonPath = "invalid";
+        if (lottieURl && lottieURl.endsWith(".json")) {
+            validJsonPath = "valid";
         }
 
-        if (validJsonPath === 'invalid') {
+        if (validJsonPath === "invalid") {
             return (
                 <div className="premium-lottie-animation-wrap">
-
                     <Placeholder
                         className={className}
                         value={lottieJson}
                         isJSONAllowed={JsonUploadEnabled == 1 ? true : false}
                         attributes={attributes}
-                        onSelectURL={(value) => setAttributes({ lottieURl: value })}
+                        onSelectURL={(value) =>
+                            setAttributes({ lottieURl: value })
+                        }
                         onSelect={this.onSelectLottieJSON}
                     />
                 </div>
-            )
+            );
         }
 
         const handleLottieMouseEnter = () => {
@@ -190,12 +168,11 @@ class edit extends Component {
             this.lottieplayer.current.anim.pause();
         };
 
-
         const handleRemoveLottie = () => {
             setAttributes({
-                lottieURl: ""
-            })
-        }
+                lottieURl: "",
+            });
+        };
 
         const saveLottieStyles = (value) => {
             const newUpdate = lottieStyles.map((item, index) => {
@@ -207,432 +184,532 @@ class edit extends Component {
             setAttributes({
                 lottieStyles: newUpdate,
             });
-        }
+        };
 
         let stopAnimation = true;
 
-        if ('none' === trigger || 'undefined' === typeof trigger) {
+        if ("none" === trigger || "undefined" === typeof trigger) {
             stopAnimation = false;
         }
-        const reversedir = (reverse) ? -1 : 1;
-        const mainClasses = classnames(className, 'premium-lottie-wrap')
-        const lottieSize = this.getPreviewSize(this.props.deviceType, lottieStyles[0].size, lottieStyles[0].sizeTablet, lottieStyles[0].sizeMobile);
-        const renderCss = (<style>
-            {`
-            #premium-lottie-${block_id} .premium-lottie-animation svg{
-                width:${lottieSize}${lottieStyles[0].sizeUnit} !important;
-                height:${lottieSize}${lottieStyles[0].sizeUnit} !important;
-            }
-            `}
-        </style>
-        )
-        const containerPaddingTop = this.getPreviewSize(this.props.deviceType, paddingT, paddingTTablet, paddingTMobile);
-        const containerPaddingRight = this.getPreviewSize(this.props.deviceType, paddingR, paddingRTablet, paddingRMobile);
-        const containerPaddingBottom = this.getPreviewSize(this.props.deviceType, paddingB, paddingBTablet, paddingBMobile);
-        const containerPaddingLeft = this.getPreviewSize(this.props.deviceType, paddingL, paddingLTablet, paddingLMobile);
+        const reversedir = reverse ? -1 : 1;
+        const mainClasses = classnames(className, "premium-lottie-wrap", {
+            " premium-desktop-hidden": hideDesktop,
+            " premium-tablet-hidden": hideTablet,
+            " premium-mobile-hidden": hideMobile,
+        });
+        const paddingTop = padding?.[this.props.deviceType]?.top;
+        const paddingRight = padding?.[this.props.deviceType]?.right;
+        const paddingBottom = padding?.[this.props.deviceType]?.bottom;
+        const paddingLeft = padding?.[this.props.deviceType]?.left;
+
+        const loadStyles = () => {
+            const styles = {};
+            styles[
+                `#premium-lottie-${block_id} .premium-lottie-animation svg`
+            ] = {
+                width: `${size[this.props.deviceType]}${
+                    size["unit"]
+                } !important`,
+                height: `
+                ${size[this.props.deviceType]}${size["unit"]} !important`,
+            };
+            styles[`#premium-lottie-${block_id}`] = {
+                "text-align": `${lottieAlign[this.props.deviceType]}`,
+            };
+            styles[`#premium-lottie-${block_id}  .premium-lottie-animation`] = {
+                "background-color": `${lottieStyles[0].backColor}`,
+                filter: ` brightness( ${filter?.bright}% ) contrast( ${filter?.contrast}% ) saturate( ${filter?.saturation}% ) blur( ${filter?.blur}px ) hue-rotate( ${filter?.hue}deg )`,
+                "border-style": `${border?.borderType}`,
+                "border-color": `${border?.borderColor}`,
+                "border-top-width": `${
+                    border?.borderWidth?.[this.props.deviceType]?.top
+                }px!important`,
+                "border-right-width": `${
+                    border?.borderWidth?.[this.props.deviceType]?.right
+                }px!important`,
+                "border-bottom-width": `${
+                    border?.borderWidth?.[this.props.deviceType]?.bottom
+                }px!important`,
+                "border-left-width": `${
+                    border?.borderWidth?.[this.props.deviceType]?.left
+                }px!important`,
+                "border-top-left-radius": `${
+                    border?.borderRadius?.[this.props.deviceType]?.top
+                }px!important`,
+                "border-top-right-radius": `${
+                    border?.borderRadius?.[this.props.deviceType]?.right
+                }px!important`,
+                "border-bottom-left-radius": `${
+                    border?.borderRadius?.[this.props.deviceType]?.bottom
+                }px!important`,
+                "border-bottom-right-radius": `${
+                    border?.borderRadius?.[this.props.deviceType]?.left
+                }px!important`,
+                "padding-top": `${paddingTop}${padding?.unit} !important`,
+                "padding-right": `${paddingRight}${padding?.unit} !important`,
+                "padding-bottom": `${paddingBottom}${padding?.unit} !important`,
+                "padding-left": `${paddingLeft}${padding?.unit} !important`,
+                transform: `rotate(${rotate}deg) !important`,
+            };
+            styles[
+                `#premium-lottie-${block_id}  .premium-lottie-animation:hover`
+            ] = {
+                "background-color": `${lottieStyles[0].backHColor}`,
+                filter: `brightness( ${filterHover?.bright}% ) contrast( ${filterHover?.contrast}% ) saturate( ${filterHover?.saturation}% ) blur( ${filterHover?.blur}px ) hue-rotate( ${filterHover?.hue}deg ) !important`,
+            };
+            return generateCss(styles);
+        };
 
         return [
-            renderCss,
             <InspectorControls>
-                <PanelBody
-                    title={__("General Settings")}
-                    className="premium-panel-body"
-                    initialOpen={true}
-                >
-                    <button className="lottie-remove" onClick={handleRemoveLottie}>{__('Change Animation')}</button>
-                    <ToggleControl
-                        label={__(`loop`, 'premium-blocks-for-gutenberg')}
-                        checked={loop}
-                        onChange={(value) => setAttributes({ loop: value })}
-                        help={loop ? __('This option works only on the preview page', 'premium-blocks-for-gutenberg') : ''}
-                    />
-                    <ToggleControl
-                        label={__(`Reverse`, 'premium-blocks-for-gutenberg')}
-                        checked={reverse}
-                        onChange={() => setAttributes({ reverse: !reverse })}
-                    />
-                    <ResponsiveSingleRangeControl
-                        label={__('Animation Speed', 'premium-blocks-for-gutenberg')}
-                        value={speed}
-                        onChange={newValue => setAttributes({ speed: (newValue !== "") ? newValue : 1 })}
-                        showUnit={false}
-                        defaultValue={1}
-                        max={3}
-                        min={.1}
-                        step={0.1}
-                    />
-                    <SelectControl
-                        label={__('Trigger', 'premium-blocks-for-gutenberg')}
-                        options={[
-                            { value: 'none', label: __("None", 'premium-blocks-for-gutenberg') },
-                            { value: "hover", label: __("Hover", 'premium-blocks-for-gutenberg') },
-                            { value: "scroll", label: __("Scroll", 'premium-blocks-for-gutenberg') },
-                            { value: "viewport", label: __("Viewport", 'premium-blocks-for-gutenberg') },
-                        ]}
-                        value={trigger}
-                        onChange={(newValue) => setAttributes({ trigger: newValue })}
-                    />
-
-                    {('scroll' === trigger && !reverse) && <Fragment>
-                        <ResponsiveSingleRangeControl
-                            label={__('Scroll Speed', 'premium-blocks-for-gutenberg')}
-                            value={scrollSpeed}
-                            onChange={(newValue) => setAttributes({ scrollSpeed: (newValue !== "") ? newValue : 200 })}
-                            showUnit={false}
-                            defaultValue={0}
-                            min={1}
-                            max={10}
-                            step={.1}
-                        />
-                    </Fragment>}
-                    {((trigger === 'viewport' || trigger === 'scroll') && !reverse) && <Fragment>
-                        <ResponsiveSingleRangeControl
-                            label={__('Bottom', 'premium-blocks-for-gutenberg')}
-                            value={bottom}
-                            onChange={(newValue) => setAttributes({ bottom: newValue })}
-                            showUnit={false}
-                            defaultValue={''}
-                            min={0}
-                            max={50}
-                        />
-                        <ResponsiveSingleRangeControl
-                            label={__('Top', 'premium-blocks-for-gutenberg')}
-                            value={top}
-                            onChange={(newValue) => setAttributes({ top: newValue })}
-                            showUnit={false}
-                            defaultValue={''}
-                            min={50}
-                            max={100}
-                        />
-                    </Fragment>}
-                    {/* <ResponsiveRangeControl
-                        label={__('Size', 'premium-blocks-for-gutenberg')}
-                        value={lottieStyles[0].size}
-                        onChange={(value) => saveLottieStyles({ size: (value !== "") ? value : 200 })}
-                        tabletValue={lottieStyles[0].sizeTablet}
-                        onChangeTablet={(value) => saveLottieStyles({ sizeTablet: (value !== "") ? value : 200 })}
-                        mobileValue={lottieStyles[0].sizeMobile}
-                        onChangeMobile={(value) => saveLottieStyles({ sizeMobile: (value !== "") ? value : 200 })}
-                        min={0}
-                        max={800}
-                        step={1}
-                        onChangeUnit={newValue => saveLottieStyles({ sizeUnit: newValue })}
-                        unit={lottieStyles[0].sizeUnit}
-                        showUnit={true}
-                        units={['px', 'em', 'rem']}
-                        defaultValue={200}
-                    /> */}
-                    <ResponsiveRangeControl
-                        label={__('Size', 'premium-blocks-for-gutenberg')}
-                        value={lottieWidth}
-                        onChange={(value) => setAttributes({ lottieWidth: value })}
-                        min={0}
-                        max={800}
-                        step={1}
-                        showUnit={true}
-                        units={['px', 'em', 'rem']}
-                        defaultValue={200}
-                    />
-                    <ResponsiveSingleRangeControl
-                        label={__("Rotate (Degree)", 'premium-blocks-for-gutenberg')}
-                        value={rotate}
-                        min={-180}
-                        max={180}
-                        onChange={(newValue) => setAttributes({ rotate: newValue })}
-                        showUnit={false}
-                        defaultValue={0}
-                    />
-                    <RadioComponent
-                        choices={["left", "center", "right"]}
-                        value={align}
-                        onChange={newValue => setAttributes({ align: newValue })}
-                        label={__("Alignment", 'premium-blocks-for-gutenberg')}
-                    />
-                    <hr />
-                    <ToggleControl
-                        label={__("Link", 'premium-blocks-for-gutenberg')}
-                        checked={link}
-                        onChange={() => setAttributes({ link: !link })}
-                    />
-                    {link &&
-                        <Fragment>
-                            <TextControl
-                                label={__("URL", 'premium-blocks-for-gutenberg')}
-                                value={url}
-                                onChange={(newURL) => setAttributes({ url: newURL })}
+                <InspectorTabs tabs={["layout", "style", "advance"]}>
+                    <InspectorTab key={"layout"}>
+                        <PanelBody
+                            title={__("General Settings")}
+                            className="premium-panel-body"
+                            initialOpen={true}
+                        >
+                            <button
+                                className="lottie-remove"
+                                onClick={handleRemoveLottie}
+                            >
+                                {__("Change Animation")}
+                            </button>
+                            <ToggleControl
+                                label={__(
+                                    `loop`,
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                                checked={loop}
+                                onChange={(value) =>
+                                    setAttributes({ loop: value })
+                                }
+                                help={
+                                    loop
+                                        ? __(
+                                              "This option works only on the preview page",
+                                              "premium-blocks-for-gutenberg"
+                                          )
+                                        : ""
+                                }
                             />
                             <ToggleControl
-                                label={__("Open link in new tab", 'premium-blocks-for-gutenberg')}
-                                checked={target}
-                                onChange={(newValue) => setAttributes({ target: newValue })}
+                                label={__(
+                                    `Reverse`,
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                                checked={reverse}
+                                onChange={() =>
+                                    setAttributes({ reverse: !reverse })
+                                }
                             />
-                        </Fragment>}
-                    <SelectControl
-                        label={__('Render As', 'premium-blocks-for-gutenberg')}
-                        value={render}
-                        options={[
-                            { label: "SVG", value: 'svg' },
-                            { label: 'Canvas', value: 'canvas' }
-                        ]}
-                        help={__(`Set render type to canvas if you're having performance issues on the page.
+                            <ResponsiveSingleRangeControl
+                                label={__(
+                                    "Animation Speed",
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                                value={speed}
+                                onChange={(newValue) =>
+                                    setAttributes({
+                                        speed: newValue !== "" ? newValue : 1,
+                                    })
+                                }
+                                showUnit={false}
+                                defaultValue={1}
+                                max={3}
+                                min={0.1}
+                                step={0.1}
+                            />
+                            <SelectControl
+                                label={__(
+                                    "Trigger",
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                                options={[
+                                    {
+                                        value: "none",
+                                        label: __(
+                                            "None",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                    },
+                                    {
+                                        value: "hover",
+                                        label: __(
+                                            "Hover",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                    },
+                                    {
+                                        value: "scroll",
+                                        label: __(
+                                            "Scroll",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                    },
+                                    {
+                                        value: "viewport",
+                                        label: __(
+                                            "Viewport",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                    },
+                                ]}
+                                value={trigger}
+                                onChange={(newValue) =>
+                                    setAttributes({ trigger: newValue })
+                                }
+                            />
+
+                            {"scroll" === trigger && !reverse && (
+                                <Fragment>
+                                    <ResponsiveSingleRangeControl
+                                        label={__(
+                                            "Scroll Speed",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
+                                        value={scrollSpeed}
+                                        onChange={(newValue) =>
+                                            setAttributes({
+                                                scrollSpeed: newValue,
+                                            })
+                                        }
+                                        showUnit={false}
+                                        defaultValue={0}
+                                        min={1}
+                                        max={10}
+                                        step={0.1}
+                                    />
+                                </Fragment>
+                            )}
+                            {(trigger === "viewport" || trigger === "scroll") &&
+                                !reverse && (
+                                    <Fragment>
+                                        <ResponsiveSingleRangeControl
+                                            label={__(
+                                                "Bottom",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
+                                            value={bottom}
+                                            onChange={(newValue) =>
+                                                setAttributes({
+                                                    bottom: newValue,
+                                                })
+                                            }
+                                            showUnit={false}
+                                            defaultValue={""}
+                                            min={0}
+                                            max={50}
+                                        />
+                                        <ResponsiveSingleRangeControl
+                                            label={__(
+                                                "Top",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
+                                            value={top}
+                                            onChange={(newValue) =>
+                                                setAttributes({ top: newValue })
+                                            }
+                                            showUnit={false}
+                                            defaultValue={""}
+                                            min={50}
+                                            max={100}
+                                        />
+                                    </Fragment>
+                                )}
+                            <ResponsiveRangeControl
+                                label={__(
+                                    "Size",
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                                value={size}
+                                onChange={(value) =>
+                                    setAttributes({ size: value })
+                                }
+                                min={0}
+                                max={800}
+                                step={1}
+                                showUnit={true}
+                                units={["px", "em", "rem"]}
+                                defaultValue={200}
+                            />
+                            <ResponsiveSingleRangeControl
+                                label={__(
+                                    "Rotate (Degree)",
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                                value={rotate}
+                                min={-180}
+                                max={180}
+                                onChange={(newValue) =>
+                                    setAttributes({ rotate: newValue })
+                                }
+                                showUnit={false}
+                                defaultValue={0}
+                            />
+                            <MultiButtonsControl
+                                choices={[
+                                    {
+                                        value: "left",
+                                        label: __("Left"),
+                                        icon: Icons.alignLeft,
+                                    },
+                                    {
+                                        value: "center",
+                                        label: __("Center"),
+                                        icon: Icons.alignCenter,
+                                    },
+                                    {
+                                        value: "right",
+                                        label: __("Right"),
+                                        icon: Icons.alignRight,
+                                    },
+                                ]}
+                                value={lottieAlign}
+                                onChange={(align) =>
+                                    setAttributes({ lottieAlign: align })
+                                }
+                                label={__(
+                                    "Alignment",
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                                showIcons={true}
+                            />
+                            <hr />
+                            <ToggleControl
+                                label={__(
+                                    "Link",
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                                checked={link}
+                                onChange={() => setAttributes({ link: !link })}
+                            />
+                            {link && (
+                                <Fragment>
+                                    <TextControl
+                                        label={__(
+                                            "URL",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
+                                        value={url}
+                                        onChange={(newURL) =>
+                                            setAttributes({ url: newURL })
+                                        }
+                                    />
+                                    <ToggleControl
+                                        label={__(
+                                            "Open link in new tab",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
+                                        checked={target}
+                                        onChange={(newValue) =>
+                                            setAttributes({ target: newValue })
+                                        }
+                                    />
+                                </Fragment>
+                            )}
+                            <SelectControl
+                                label={__(
+                                    "Render As",
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                                value={render}
+                                options={[
+                                    { label: "SVG", value: "svg" },
+                                    { label: "Canvas", value: "canvas" },
+                                ]}
+                                help={__(
+                                    `Set render type to canvas if you're having performance issues on the page.
                     This setting will only take effect once you are on the live page, and not while you're editing.
-                    `, 'premium-blocks-for-gutenberg')}
-                        onChange={(newValue) => setAttributes({ render: newValue })}
-                    />
-                </PanelBody>
-
-                <PanelBody
-                    title={__("Style", 'premium-blocks-for-gutenberg')}
-                    className="premium-panel-body"
-                    initialOpen={false}
-                >
-
-                    <TabPanel
-                        className="premium-color-tabpanel"
-                        activeClass="active-tab"
-                        tabs={[
-                            {
-                                name: "normal",
-                                title: "Normal",
-                                className: "premium-tab",
-                            },
-                            {
-                                name: "hover",
-                                title: "Hover",
-                                className: "premium-tab",
-                            },
-                        ]}
-                    >
-                        {(tab) => {
-                            let tabout;
-                            if ("normal" === tab.name) {
-                                tabout = (
+                    `,
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                                onChange={(newValue) =>
+                                    setAttributes({ render: newValue })
+                                }
+                            />
+                        </PanelBody>
+                    </InspectorTab>
+                    <InspectorTab key={"style"}>
+                        <PanelBody
+                            title={__("Style", "premium-blocks-for-gutenberg")}
+                            className="premium-panel-body"
+                            initialOpen={true}
+                        >
+                            <InsideTabs>
+                                <InsideTab tabTitle={__("Normal")}>
                                     <Fragment>
                                         <AdvancedPopColorControl
-                                            label={__("Background Color", 'premium-blocks-for-gutenberg')}
-                                            colorValue={lottieStyles[0].backColor}
-                                            colorDefault={''}
-                                            onColorChange={(newValue) => saveLottieStyles({ backColor: newValue })}
+                                            label={__(
+                                                "Background Color",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
+                                            colorValue={
+                                                lottieStyles[0].backColor
+                                            }
+                                            colorDefault={""}
+                                            onColorChange={(newValue) =>
+                                                saveLottieStyles({
+                                                    backColor: newValue,
+                                                })
+                                            }
                                         />
-                                        <ResponsiveSingleRangeControl
-                                            label={__(`Opacity`, 'premium-blocks-for-gutenberg')}
-                                            value={lottieStyles[0].backOpacity}
-                                            max={1}
-                                            min={.1}
-                                            step={0.01}
-                                            onChange={(newvalue) => saveLottieStyles({ backOpacity: newvalue })}
-                                            showUnit={false}
-                                            defaultValue={.1}
-                                        />
+
                                         <PremiumFilters
-                                            blur={lottieStyles[0].blur}
-                                            bright={lottieStyles[0].bright}
-                                            contrast={lottieStyles[0].contrast}
-                                            saturation={lottieStyles[0].saturation}
-                                            hue={lottieStyles[0].hue}
-                                            onChangeBlur={(value) => saveLottieStyles({ blur: value })}
-                                            onChangeBright={(value) => saveLottieStyles({ bright: value })}
-                                            onChangeContrast={(value) => saveLottieStyles({ contrast: value })}
-                                            onChangeSat={(value) => saveLottieStyles({ saturation: value })}
-                                            onChangeHue={(value) => saveLottieStyles({ hue: value })}
+                                            value={filter}
+                                            onChange={(value) =>
+                                                setAttributes({
+                                                    filter: value,
+                                                })
+                                            }
                                         />
                                     </Fragment>
-                                )
-                            }
-                            if ("hover" === tab.name) {
-                                tabout = (
+                                </InsideTab>
+                                <InsideTab tabTitle={__("Hover")}>
                                     <Fragment>
                                         <AdvancedPopColorControl
-                                            label={__("Background Color", 'premium-blocks-for-gutenberg')}
-                                            colorValue={lottieStyles[0].backHColor}
-                                            colorDefault={''}
-                                            onColorChange={(newValue) => saveLottieStyles({ backHColor: newValue })}
+                                            label={__(
+                                                "Background Color",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
+                                            colorValue={
+                                                lottieStyles[0].backHColor
+                                            }
+                                            colorDefault={""}
+                                            onColorChange={(newValue) =>
+                                                saveLottieStyles({
+                                                    backHColor: newValue,
+                                                })
+                                            }
                                         />
-                                        <ResponsiveSingleRangeControl
-                                            label={__(`Opacity`, 'premium-blocks-for-gutenberg')}
-                                            value={lottieStyles[0].backHOpacity}
-                                            max={1}
-                                            min={.1}
-                                            step={0.01}
-                                            onChange={(newvalue) => saveLottieStyles({ backHOpacity: newvalue })}
-                                            showUnit={false}
-                                            defaultValue={.1}
-                                        />
+
                                         <PremiumFilters
-                                            blur={lottieStyles[0].blurH}
-                                            bright={lottieStyles[0].brightH}
-                                            contrast={lottieStyles[0].contrastH}
-                                            saturation={lottieStyles[0].saturationH}
-                                            hue={lottieStyles[0].hueH}
-                                            onChangeBlur={(value) => saveLottieStyles({ blurH: value })}
-                                            onChangeBright={(value) => saveLottieStyles({ brightH: value })}
-                                            onChangeContrast={(value) => saveLottieStyles({ contrastH: value })}
-                                            onChangeSat={(value) => saveLottieStyles({ saturationH: value })}
-                                            onChangeHue={(value) => saveLottieStyles({ hueH: value })}
+                                            value={filterHover}
+                                            onChange={(value) =>
+                                                setAttributes({
+                                                    filterHover: value,
+                                                })
+                                            }
                                         />
                                     </Fragment>
-                                )
-                            }
-                            return (
-                                <div>
-                                    {tabout}
-                                    <hr />
-                                </div>
-                            );
-                        }}
-                    </TabPanel>
+                                </InsideTab>
+                            </InsideTabs>
 
-                    <PremiumBorder
-                        borderType={lottieStyles[0].borderType}
-                        top={borderTop}
-                        right={borderRight}
-                        bottom={borderBottom}
-                        left={borderLeft}
-                        borderColor={lottieStyles[0].borderColor}
-                        borderRadius={lottieStyles[0].borderRadius}
-                        onChangeType={(newType) => saveLottieStyles({ borderType: newType })}
-                        onChangeWidth={({ top, right, bottom, left }) =>
-                            setAttributes({
-                                borderTop: top,
-                                borderRight: right,
-                                borderBottom: bottom,
-                                borderLeft: left,
-                            })
-                        }
-                        onChangeColor={(colorValue) => saveLottieStyles({ borderColor: colorValue === undefined ? "transparent" : colorValue, })}
-                        onChangeRadius={(newRadius) => saveLottieStyles({ borderRadius: newRadius === undefined ? 0 : newRadius, })}
-                    />
+                            <PremiumBorder
+                                label={__(
+                                    "Border",
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                                value={border}
+                                onChange={(value) =>
+                                    setAttributes({ border: value })
+                                }
+                            />
 
-                    <PremiumResponsivePadding
-                        paddingTop={paddingT}
-                        paddingRight={paddingR}
-                        paddingBottom={paddingB}
-                        paddingLeft={paddingL}
-                        paddingTopTablet={paddingTTablet}
-                        paddingRightTablet={paddingRTablet}
-                        paddingBottomTablet={paddingBTablet}
-                        paddingLeftTablet={paddingLTablet}
-                        paddingTopMobile={paddingTMobile}
-                        paddingRightMobile={paddingRMobile}
-                        paddingBottomMobile={paddingBMobile}
-                        paddingLeftMobile={paddingLMobile}
-                        onChangePaddingTop={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ paddingT: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ paddingTTablet: newValue })
-                                } else {
-                                    setAttributes({ paddingTMobile: newValue })
+                            <SpacingControl
+                                label={__(
+                                    "Padding",
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                                value={padding}
+                                onChange={(value) =>
+                                    setAttributes({
+                                        padding: value,
+                                    })
                                 }
+                                showUnits={true}
+                                responsive={true}
+                            />
+                        </PanelBody>
+                    </InspectorTab>
+                    <InspectorTab key={"advance"}>
+                        <PremiumResponsiveTabs
+                            Desktop={hideDesktop}
+                            Tablet={hideTablet}
+                            Mobile={hideMobile}
+                            onChangeDesktop={(value) =>
+                                setAttributes({
+                                    hideDesktop: value
+                                        ? " premium-desktop-hidden"
+                                        : "",
+                                })
                             }
-                        }
-                        onChangePaddingRight={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ paddingR: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ paddingRTablet: newValue })
-                                } else {
-                                    setAttributes({ paddingRMobile: newValue })
-                                }
+                            onChangeTablet={(value) =>
+                                setAttributes({
+                                    hideTablet: value
+                                        ? " premium-tablet-hidden"
+                                        : "",
+                                })
                             }
-                        }
-                        onChangePaddingBottom={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ paddingB: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ paddingBTablet: newValue })
-                                } else {
-                                    setAttributes({ paddingBMobile: newValue })
-                                }
+                            onChangeMobile={(value) =>
+                                setAttributes({
+                                    hideMobile: value
+                                        ? " premium-mobile-hidden"
+                                        : "",
+                                })
                             }
-                        }
-                        onChangePaddingLeft={
-                            (device, newValue) => {
-                                if (device === "desktop") {
-                                    setAttributes({ paddingL: newValue })
-                                } else if (device === "tablet") {
-                                    setAttributes({ paddingLTablet: newValue })
-                                } else {
-                                    setAttributes({ paddingLMobile: newValue })
-                                }
-                            }
-                        }
-                    />
-                </PanelBody>
-                <PremiumResponsiveTabs
-                    Desktop={hideDesktop}
-                    Tablet={hideTablet}
-                    Mobile={hideMobile}
-                    onChangeDesktop={(value) => setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" })}
-                    onChangeTablet={(value) => setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" })}
-                    onChangeMobile={(value) => setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" })}
-                />
+                        />
+                    </InspectorTab>
+                </InspectorTabs>
             </InspectorControls>,
-            <div id={`premium-lottie-${block_id}`} className={`premium-lottie-${block_id} ${mainClasses} ${hideDesktop} ${hideTablet} ${hideMobile}`}
-                data-lottieURl={lottieURl} data-trigger={trigger} data-start={bottom} data-end={top}
-            >
-                <div className={`premium-lottie-animation`}
-                    onMouseEnter={'hover' === trigger ? handleLottieMouseEnter : () => stopAnimation = true}
-                    onMouseLeave={'hover' === trigger ? handleLottieMouseLeave : () => stopAnimation = true}
-                >
+            <style dangerouslySetInnerHTML={{ __html: loadStyles() }} />,
 
+            <div
+                id={`premium-lottie-${block_id}`}
+                className={`premium-lottie-${block_id} ${mainClasses} `}
+                data-lottieURl={lottieURl}
+                data-trigger={trigger}
+                data-start={bottom}
+                data-end={top}
+            >
+                <div
+                    className={`premium-lottie-animation`}
+                    onMouseEnter={
+                        "hover" === trigger
+                            ? handleLottieMouseEnter
+                            : () => (stopAnimation = true)
+                    }
+                    onMouseLeave={
+                        "hover" === trigger
+                            ? handleLottieMouseLeave
+                            : () => (stopAnimation = true)
+                    }
+                >
                     <Lottie
                         ref={this.lottieplayer}
                         options={{
                             loop: loop,
                             path: lottieURl,
                             rendererSettings: {
-                                preserveAspectRatio: 'xMidYMid',
-                                className: "premium-lottie-inner"
-                            }
+                                preserveAspectRatio: "xMidYMid",
+                                className: "premium-lottie-inner",
+                            },
                         }}
                         isStopped={stopAnimation}
                         speed={speed === "" ? 1 : speed}
                         isClickToPauseDisabled={true}
                         direction={reversedir}
                     />
-                    {link && url !== ' ' && <a rel="noopener noreferrer" target={target ? "_blank" : "_self"} href={"javascript:void(0)"} ></a>}
+                    {link && url !== " " && (
+                        <a
+                            rel="noopener noreferrer"
+                            target={target ? "_blank" : "_self"}
+                            href={"javascript:void(0)"}
+                        ></a>
+                    )}
                 </div>
-                <style
-                    dangerouslySetInnerHTML={{
-                        __html: [
-                            `#premium-lottie-${block_id}{`,
-                            `text-align:${align};`,
-                            "}",
-                            `#premium-lottie-${block_id}  .premium-lottie-animation  {`,
-                            `background-color:${lottieStyles[0].backColor};`,
-                            `opacity : ${lottieStyles[0].backOpacity};`,
-                            `filter: brightness( ${lottieStyles[0].bright}% ) contrast( ${lottieStyles[0].contrast}% ) saturate( ${lottieStyles[0].saturation}% ) blur( ${lottieStyles[0].blur}px ) hue-rotate( ${lottieStyles[0].hue}deg );`,
-                            `border-style : ${lottieStyles[0].borderType};`,
-                            `border-width : ${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px ;`,
-                            `border-radius : ${lottieStyles[0].borderRadius}px;`,
-                            `border-color : ${lottieStyles[0].borderColor}; `,
-                            `padding-top : ${containerPaddingTop}${lottieStyles[0].paddingU};`,
-                            `padding-right : ${containerPaddingRight}${lottieStyles[0].paddingU};`,
-                            `padding-bottom : ${containerPaddingBottom}${lottieStyles[0].paddingU};`,
-                            `padding-left : ${containerPaddingLeft}${lottieStyles[0].paddingU};`,
-                            `transform: rotate(${rotate}deg) !important;`,
-                            "}",
-                            `#premium-lottie-${block_id}  .premium-lottie-animation:hover {`,
-                            `background-color:${lottieStyles[0].backHColor};`,
-                            `opacity:${lottieStyles[0].backHOpacity};`,
-                            `filter: brightness( ${lottieStyles[0].brightH}% ) contrast( ${lottieStyles[0].contrastH}% ) saturate( ${lottieStyles[0].saturationH}% ) blur( ${lottieStyles[0].blurH}px ) hue-rotate( ${lottieStyles[0].hueH}deg ) !important;`,
-                            "}",
-                        ].join("\n"),
-                    }}
-                />
-            </div>
-        ]
+            </div>,
+        ];
     }
 }
 export default withSelect((select, props) => {
-    const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
-    let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+    const { __experimentalGetPreviewDeviceType = null } =
+        select("core/edit-post");
+    let deviceType = __experimentalGetPreviewDeviceType
+        ? __experimentalGetPreviewDeviceType()
+        : null;
 
     return {
-        deviceType: deviceType
-    }
-})(edit)
+        deviceType: deviceType,
+    };
+})(edit);
