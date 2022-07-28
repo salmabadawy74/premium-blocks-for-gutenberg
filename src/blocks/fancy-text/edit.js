@@ -97,14 +97,18 @@ class Edit extends Component {
     }
 
     componentDidMount() {
+        // const { setAttributes, clientId } = this.props;
+        // // Assigning id in the attribute.
+        // if (!this.props.attributes.blockId) {
+        //     setAttributes({
+        //         blockId: "premium-fancy-text-" + generateBlockId(clientId),
+        //     });
+        // }
+        // setAttributes({ classMigrate: true });
         const { setAttributes, clientId } = this.props;
-        // Assigning id in the attribute.
-        if (!this.props.attributes.blockId) {
-            setAttributes({
-                blockId: "premium-fancy-text-" + generateBlockId(clientId),
-            });
-        }
-        setAttributes({ classMigrate: true });
+        setAttributes({
+            blockId: "premium-fancy-text-" + generateBlockId(clientId),
+        });
     }
 
     componentDidUpdate() {
@@ -125,7 +129,7 @@ class Edit extends Component {
             backSpeed,
             startdelay,
             backdelay,
-            effect,
+            effect
         } = this.props.attributes;
 
         if (!repeaterFancyText) return null;

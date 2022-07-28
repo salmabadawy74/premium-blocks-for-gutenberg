@@ -2019,11 +2019,17 @@ a.premium-dheading-block__link:hover {
 .premium-fancy-text-title-slide {
     display: inline-block;
     text-align: center;
+    top: 10px;
 }
 
 .premium-fancy-text-title-slide-list {
     list-style: none !important;
     margin: 0px 5px;;
+}
+
+.premium-fancy-text-title-slide-list li {
+    padding-top: 3px;
+    padding-bottom: 3px;
 }
 
 .premium-fancy-slide .typed-cursor {
