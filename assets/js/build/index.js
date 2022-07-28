@@ -7874,7 +7874,7 @@ const attributes = {
   border: {
     type: "object",
     default: {
-      borderType: "",
+      borderType: "none",
       borderColor: "",
       borderWidth: {
         Desktop: {
@@ -15696,9 +15696,9 @@ const attributes = {
   align: {
     type: "object",
     default: {
-      Desktop: 'center',
-      Tablet: 'center',
-      Mobile: 'center'
+      Desktop: "center",
+      Tablet: "center",
+      Mobile: "center"
     }
   },
   flexDir: {
@@ -15752,7 +15752,7 @@ const attributes = {
   },
   titleTxt: {
     type: "string",
-    default: __("Premium Count Up", 'premium-blocks-for-gutenberg')
+    default: __("Premium Count Up", "premium-blocks-for-gutenberg")
   },
   faIcon: {
     type: "string",
@@ -15760,18 +15760,18 @@ const attributes = {
   },
   counterFamily: {
     type: "string",
-    default: __('Default', 'premium-blocks-for-gutenberg')
+    default: __("Default", "premium-blocks-for-gutenberg")
   },
   hideDesktop: {
-    type: 'boolean',
+    type: "boolean",
     default: false
   },
   hideTablet: {
-    type: 'boolean',
+    type: "boolean",
     default: false
   },
   hideMobile: {
-    type: 'boolean',
+    type: "boolean",
     default: false
   },
   numberStyles: {
@@ -15783,17 +15783,17 @@ const attributes = {
   titleStyles: {
     type: "array",
     default: [{
-      titleColor: '',
+      titleColor: "",
       titleT: 1,
       titleB: 1,
-      titleColor: ''
+      titleColor: ""
     }]
   },
   suffixStyles: {
-    type: 'array',
+    type: "array",
     default: [{
       suffixTxt: "Suffix",
-      suffixColor: '',
+      suffixColor: "",
       suffixGap: 2
     }]
   },
@@ -15801,7 +15801,7 @@ const attributes = {
     type: "array",
     default: [{
       prefixTxt: "Prefix",
-      prefixColor: '',
+      prefixColor: "",
       prefixGap: 2
     }]
   },
@@ -15809,191 +15809,191 @@ const attributes = {
     type: "object",
     default: {
       Desktop: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
       },
       Tablet: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
       },
       Mobile: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
       },
-      unit: 'px'
+      unit: "px"
     }
   },
   numberTypography: {
     type: "object",
     default: {
-      "fontWeight": '400',
-      'fontStyle': '',
-      'textTransform': '',
-      'fontFamily': 'Default',
-      'textDecoration': '',
-      'fontSize': {
-        'Desktop': '30',
-        "Tablet": '30',
-        "Mobile": '30',
-        "unit": 'px'
+      fontWeight: "400",
+      fontStyle: "",
+      textTransform: "",
+      fontFamily: "Default",
+      textDecoration: "",
+      fontSize: {
+        Desktop: "30",
+        Tablet: "30",
+        Mobile: "30",
+        unit: "px"
       },
-      'lineHeight': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
+      lineHeight: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
       },
-      'letterSpacing': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
+      letterSpacing: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
       }
     }
   },
   prefixTypography: {
     type: "object",
     default: {
-      "fontWeight": '400',
-      'fontStyle': '',
-      'textTransform': '',
-      'fontFamily': 'Default',
-      'textDecoration': '',
-      'fontSize': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
+      fontWeight: "400",
+      fontStyle: "",
+      textTransform: "",
+      fontFamily: "Default",
+      textDecoration: "",
+      fontSize: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
       },
-      'lineHeight': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
+      lineHeight: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
       },
-      'letterSpacing': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
+      letterSpacing: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
       }
     }
   },
   suffixTypography: {
     type: "object",
     default: {
-      "fontWeight": '400',
-      'fontStyle': '',
-      'textTransform': '',
-      'fontFamily': 'Default',
-      'textDecoration': '',
-      'fontSize': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
+      fontWeight: "400",
+      fontStyle: "",
+      textTransform: "",
+      fontFamily: "Default",
+      textDecoration: "",
+      fontSize: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
       },
-      'lineHeight': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
+      lineHeight: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
       },
-      'letterSpacing': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
+      letterSpacing: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
       }
     }
   },
   titleTypography: {
     type: "object",
     default: {
-      "fontWeight": '400',
-      'fontStyle': '',
-      'textTransform': '',
-      'fontFamily': 'Default',
-      'textDecoration': '',
-      'fontSize': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
+      fontWeight: "400",
+      fontStyle: "",
+      textTransform: "",
+      fontFamily: "Default",
+      textDecoration: "",
+      fontSize: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
       },
-      'lineHeight': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
+      lineHeight: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
       },
-      'letterSpacing': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
+      letterSpacing: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
       }
     }
   },
   boxShadow: {
     type: "object",
     default: {
-      'color': 'undefined',
-      'blur': '10',
-      'horizontal': '0',
-      'vertical': '0',
-      'position': ' '
+      color: "undefined",
+      blur: "10",
+      horizontal: "0",
+      vertical: "0",
+      position: " "
     }
   },
   border: {
     type: "object",
     default: {
-      "borderType": "",
-      "borderColor": "",
-      "borderWidth": {
+      borderType: "none",
+      borderColor: "",
+      borderWidth: {
         Desktop: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
+          top: "",
+          right: "",
+          bottom: "",
+          left: ""
         },
         Tablet: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
+          top: "",
+          right: "",
+          bottom: "",
+          left: ""
         },
         Mobile: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
+          top: "",
+          right: "",
+          bottom: "",
+          left: ""
         }
       },
-      "borderRadius": {
-        'Desktop': {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
+      borderRadius: {
+        Desktop: {
+          top: "",
+          right: "",
+          bottom: "",
+          left: ""
         },
-        'Tablet': {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
+        Tablet: {
+          top: "",
+          right: "",
+          bottom: "",
+          left: ""
         },
-        'Mobile': {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
+        Mobile: {
+          top: "",
+          right: "",
+          bottom: "",
+          left: ""
         }
       }
     }
@@ -16001,20 +16001,20 @@ const attributes = {
   background: {
     type: "object",
     default: {
-      'backgroundType': '',
-      'backgroundColor': '',
-      'backgroundImageID': '',
-      'backgroundImageURL': '',
-      'backgroundPosition': '',
-      'backgroundRepeat': '',
-      'backgroundSize': '',
-      'fixed': false,
-      'gradientLocationOne': "",
-      'gradientColorTwo': '',
-      'gradientLocationTwo': '',
-      'gradientAngle': '',
-      'gradientPosition': '',
-      'gradientType': ''
+      backgroundType: "",
+      backgroundColor: "",
+      backgroundImageID: "",
+      backgroundImageURL: "",
+      backgroundPosition: "",
+      backgroundRepeat: "",
+      backgroundSize: "",
+      fixed: false,
+      gradientLocationOne: "",
+      gradientColorTwo: "",
+      gradientLocationTwo: "",
+      gradientAngle: "",
+      gradientPosition: "",
+      gradientType: ""
     }
   }
 };
@@ -19043,12 +19043,8 @@ const attributes = {
     type: "string"
   },
   alignContent: {
-    type: "object",
-    default: {
-      Desktop: "center",
-      Tablet: "center",
-      Mobile: "center"
-    }
+    type: "string",
+    default: "center"
   },
   firstHeading: {
     type: "array",
@@ -19086,7 +19082,7 @@ const attributes = {
     type: "object",
     default: {
       color: "undefined",
-      blur: "`10",
+      blur: "10",
       horizontal: "0",
       vertical: "0"
     }
@@ -19216,7 +19212,7 @@ const attributes = {
   firstBorder: {
     type: "object",
     default: {
-      borderType: "",
+      borderType: "none",
       borderColor: "",
       borderWidth: {
         Desktop: {
@@ -19263,7 +19259,7 @@ const attributes = {
   secondBorder: {
     type: "object",
     default: {
-      borderType: "",
+      borderType: "none",
       borderColor: "",
       borderWidth: {
         Desktop: {
@@ -19310,7 +19306,7 @@ const attributes = {
   containerBorder: {
     type: "object",
     default: {
-      borderType: "",
+      borderType: "none",
       borderColor: "",
       borderWidth: {
         Desktop: {

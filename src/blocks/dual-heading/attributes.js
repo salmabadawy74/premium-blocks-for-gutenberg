@@ -4,12 +4,8 @@ const attributes = {
         type: "string",
     },
     alignContent: {
-        type: "object",
-        default: {
-            Desktop: "center",
-            Tablet: "center",
-            Mobile: "center",
-        },
+        type: "string",
+        default: "center",
     },
     firstHeading: {
         type: "array",
@@ -49,7 +45,7 @@ const attributes = {
         type: "object",
         default: {
             color: "undefined",
-            blur: "`10",
+            blur: "10",
             horizontal: "0",
             vertical: "0",
         },
@@ -183,7 +179,7 @@ const attributes = {
     firstBorder: {
         type: "object",
         default: {
-            borderType: "",
+            borderType: "none",
             borderColor: "",
             borderWidth: {
                 Desktop: {
@@ -230,7 +226,7 @@ const attributes = {
     secondBorder: {
         type: "object",
         default: {
-            borderType: "",
+            borderType: "none",
             borderColor: "",
             borderWidth: {
                 Desktop: {
@@ -277,7 +273,7 @@ const attributes = {
     containerBorder: {
         type: "object",
         default: {
-            borderType: "",
+            borderType: "none",
             borderColor: "",
             borderWidth: {
                 Desktop: {
