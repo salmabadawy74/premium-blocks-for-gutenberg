@@ -1,202 +1,204 @@
 const { __ } = wp.i18n;
 const attributes = {
     blockId: {
-        type: "string"
+        type: "string",
     },
     classMigrate: {
         type: "boolean",
-        default: false
+        default: false,
     },
     align: {
         type: "object",
         default: {
             Desktop: "left",
             Tablet: "left",
-            Mobile: "left"
-        }
+            Mobile: "left",
+        },
     },
     style: {
         type: "string",
-        default: "style1"
+        default: "style1",
     },
     title: {
         type: "string",
-        default: "Premium Title"
+        default: "Premium Title",
     },
     iconValue: {
         type: "boolean",
-        default: false
+        default: false,
     },
     iconType: {
         type: "string",
-        default: "icon"
+        default: "icon",
     },
     icon: {
         type: "string",
-        default: "fa fa-bars"
+        default: "fa fa-bars",
     },
     iconPosition: {
         type: "string",
-        default: "before"
+        default: "before",
     },
     imageID: {
-        type: "number"
+        type: "number",
     },
     imageURL: {
         type: "string",
         source: "attribute",
         attribute: "src",
-        selector: ".premium-title-icon"
+        selector: ".premium-title-icon",
     },
     link: {
         type: "boolean",
-        default: false
+        default: false,
     },
     backgroundText: {
         type: "boolean",
-        default: false
+        default: false,
     },
     BackText: {
         type: "string",
-        default: 'Awesome Title'
+        default: "Awesome Title",
     },
     textWidth: {
         type: "number",
     },
     url: {
         type: "string",
-        default: "#"
+        default: "#",
     },
     iconAlign: {
         type: "object",
         default: {
             Desktop: "center",
             Tablet: "center",
-            Mobile: "center"
-        }
+            Mobile: "center",
+        },
     },
     stripePosition: {
         type: "string",
-        default: "top"
+        default: "top",
     },
     titleStyles: {
         type: "array",
-        default: [{
-            titleColor: "#6ec1e4",
-            shinyColor: '#fff',
-            blurColor: "#000",
-            BGColor: '#54595f',
-            lineColor: "#6ec1e4",
-            triangleColor: "#6ec1e4",
-            stripeColor: "#6ec1e4",
-            blurShadow: '120',
-            animateDelay: '2',
-            animateduration: '1',
-        }]
+        default: [
+            {
+                titleColor: "#6ec1e4",
+                shinyColor: "#fff",
+                blurColor: "#000",
+                BGColor: "#54595f",
+                lineColor: "#6ec1e4",
+                triangleColor: "#6ec1e4",
+                stripeColor: "#6ec1e4",
+                blurShadow: "120",
+                animateDelay: "2",
+                animateduration: "1",
+            },
+        ],
     },
     titlePadding: {
         type: "object",
         default: {
             Desktop: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
             },
             Tablet: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
             },
             Mobile: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
             },
-            unit: 'px'
-        }
+            unit: "px",
+        },
     },
     titleMargin: {
         type: "object",
         default: {
             Desktop: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
             },
             Tablet: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
             },
             Mobile: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
             },
-            unit: 'px'
-        }
+            unit: "px",
+        },
     },
     titleBorder: {
         type: "object",
         default: {
-            "borderType": "",
-            "borderColor": "",
-            "borderWidth": {
+            borderType: "",
+            borderColor: "",
+            borderWidth: {
                 Desktop: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: "",
                 },
                 Tablet: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: "",
                 },
                 Mobile: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                }
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: "",
+                },
             },
-            "borderRadius": {
+            borderRadius: {
                 Desktop: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: "",
                 },
                 Tablet: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: "",
                 },
                 Mobile: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                }
-            }
-        }
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: "",
+                },
+            },
+        },
     },
     titleShadow: {
         type: "object",
         default: {
-            'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': '',
-        }
+            color: "",
+            blur: "",
+            horizontal: "",
+            vertical: "",
+        },
     },
     titleTypography: {
         type: "object",
@@ -224,60 +226,62 @@ const attributes = {
                 Mobile: "",
                 unit: "px",
             },
-        }
+        },
     },
     stripeAlign: {
         type: "object",
         default: {
             Desktop: "center",
             Tablet: "center",
-            Mobile: "center"
-        }
+            Mobile: "center",
+        },
     },
     stripeWidth: {
         type: "object",
         default: {
-            'Desktop': 120,
-            'Tablet': 120,
-            'Mobile': 120,
-            'unit': 'px'
-        }
+            Desktop: 120,
+            Tablet: 120,
+            Mobile: 120,
+            unit: "px",
+        },
     },
     stripeHeight: {
         type: "object",
         default: {
-            'Desktop': 5,
-            'Tablet': 5,
-            'Mobile': 5,
-            'unit': 'px'
-        }
+            Desktop: 5,
+            Tablet: 5,
+            Mobile: 5,
+            unit: "px",
+        },
     },
     stripeTopSpacing: {
         type: "object",
         default: {
-            'Desktop': 0,
-            'Tablet': 0,
-            'Mobile': 0,
-            'unit': 'px'
-        }
+            Desktop: 0,
+            Tablet: 0,
+            Mobile: 0,
+            unit: "px",
+        },
     },
     stripeBottomSpacing: {
         type: "object",
         default: {
-            'Desktop': 0,
-            'Tablet': 0,
-            'Mobile': 0,
-            'unit': 'px'
-        }
+            Desktop: 0,
+            Tablet: 0,
+            Mobile: 0,
+            unit: "px",
+        },
     },
     textStyles: {
         type: "array",
-        default: [{
-            textBackColor: "#6ec1e4",
-            rotateText: 0,
-            rotateTextTablet: 0,
-            rotateTextMobile: 0
-        }]
+        default: [
+            {
+                textBackColor: "#6ec1e4",
+                rotateText: 0,
+                rotateTextTablet: 0,
+                rotateTextMobile: 0,
+            },
+        ],
     },
     textTypography: {
         type: "object",
@@ -305,241 +309,245 @@ const attributes = {
                 Mobile: "",
                 unit: "px",
             },
-        }
+        },
     },
     textBackshadow: {
         type: "object",
         default: {
-            'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': '',
-        }
+            color: "",
+            blur: "",
+            horizontal: "",
+            vertical: "",
+        },
     },
     horizontalText: {
         type: "object",
         default: {
-            'Desktop': 0,
-            'Tablet': 0,
-            'Mobile': 0,
-            'unit': 'px'
-        }
+            Desktop: 0,
+            Tablet: 0,
+            Mobile: 0,
+            unit: "px",
+        },
     },
     verticalText: {
         type: "object",
         default: {
-            'Desktop': 0,
-            'Tablet': 0,
-            'Mobile': 0,
-            'unit': 'px'
-        }
+            Desktop: 0,
+            Tablet: 0,
+            Mobile: 0,
+            unit: "px",
+        },
     },
     rotateText: {
         type: "object",
         default: {
-            'Desktop': 0,
-            'Tablet': 0,
-            'Mobile': 0,
-        }
+            Desktop: 0,
+            Tablet: 0,
+            Mobile: 0,
+        },
     },
     iconStyles: {
         type: "array",
-        default: [{
-            iconColor: "#6ec1e4",
-        }]
+        default: [
+            {
+                iconColor: "#6ec1e4",
+            },
+        ],
     },
     iconshadow: {
         type: "object",
         default: {
-            'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': '',
-        }
+            color: "",
+            blur: "",
+            horizontal: "",
+            vertical: "",
+        },
     },
     iconPadding: {
         type: "object",
         default: {
             Desktop: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
             },
             Tablet: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
             },
             Mobile: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
             },
-            unit: 'px'
-        }
+            unit: "px",
+        },
     },
     iconMargin: {
         type: "object",
         default: {
             Desktop: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
             },
             Tablet: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
             },
             Mobile: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
             },
-            unit: 'px'
-        }
+            unit: "px",
+        },
     },
     iconBackground: {
         type: "object",
         default: {
-            'backgroundType': '',
-            'backgroundColor': '',
-            'backgroundImageID': '',
-            'backgroundImageURL': '',
-            'backgroundPosition': '',
-            'backgroundRepeat': '',
-            'backgroundSize': '',
-            'fixed': false,
-            'gradientLocationOne': "",
-            'gradientColorTwo': '',
-            'gradientLocationTwo': '',
-            'gradientAngle': '',
-            'gradientPosition': '',
-            'gradientType': ''
-        }
+            backgroundType: "",
+            backgroundColor: "",
+            backgroundImageID: "",
+            backgroundImageURL: "",
+            backgroundPosition: "",
+            backgroundRepeat: "",
+            backgroundSize: "",
+            fixed: false,
+            gradientLocationOne: "",
+            gradientColorTwo: "",
+            gradientLocationTwo: "",
+            gradientAngle: "",
+            gradientPosition: "",
+            gradientType: "",
+        },
     },
     iconSize: {
         type: "object",
         default: {
-            'Desktop': 40,
-            'Tablet': 40,
-            'Mobile': 40,
-            'unit': 'px'
-        }
+            Desktop: 40,
+            Tablet: 40,
+            Mobile: 40,
+            unit: "px",
+        },
     },
     iconBorder: {
         type: "object",
         default: {
-            "borderType": "",
-            "borderColor": "",
-            "borderWidth": {
+            borderType: "none",
+            borderColor: "",
+            borderWidth: {
                 Desktop: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: "",
                 },
                 Tablet: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: "",
                 },
                 Mobile: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                }
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: "",
+                },
             },
-            "borderRadius": {
+            borderRadius: {
                 Desktop: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: "",
                 },
                 Tablet: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: "",
                 },
                 Mobile: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                }
-            }
-        }
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: "",
+                },
+            },
+        },
     },
     strokeStyles: {
         type: "array",
-        default: [{
-            stroke: false,
-            strokeColor: ""
-        }]
+        default: [
+            {
+                stroke: false,
+                strokeColor: "",
+            },
+        ],
     },
     strokeFull: {
         type: "object",
         default: {
-            'Desktop': 40,
-            'Tablet': 40,
-            'Mobile': 40,
-        }
+            Desktop: "",
+            Tablet: "",
+            Mobile: "",
+        },
     },
     iconBGColor: {
-        type: "string"
+        type: "string",
     },
     hideDesktop: {
-        type: 'boolean',
-        default: false
+        type: "boolean",
+        default: false,
     },
     hideTablet: {
-        type: 'boolean',
-        default: false
+        type: "boolean",
+        default: false,
     },
     hideMobile: {
-        type: 'boolean',
-        default: false
+        type: "boolean",
+        default: false,
     },
     z_index: {
-        type: "number"
+        type: "number",
     },
     blend: {
-        type: 'string'
+        type: "string",
     },
     lottieURl: {
-        type: 'string'
+        type: "string",
     },
     loop: {
-        type: 'boolean',
-        default: true
+        type: "boolean",
+        default: true,
     },
     reversedir: {
-        type: 'boolean',
-        default: false
+        type: "boolean",
+        default: false,
     },
     target: {
-        type: 'boolean',
-        default: false
+        type: "boolean",
+        default: false,
     },
     blend: {
-        type: "string"
+        type: "string",
     },
     zIndex: {
-        type: "number"
+        type: "number",
     },
     titleTag: {
         type: "string",
-        default: "h2"
+        default: "h2",
     },
-}
-export default attributes
+};
+export default attributes;
