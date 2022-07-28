@@ -263,7 +263,11 @@ class PremiumPricingTable extends Component {
             setAttributes({ descStyles: newUpdate });
         }
 
-        const mainClasses = classnames(className, "premium-pricing-table");
+        const mainClasses = classnames(className, "premium-pricing-table", {
+            " premium-desktop-hidden": hideDesktop,
+            " premium-tablet-hidden": hideTablet,
+            " premium-mobile-hidden": hideMobile,
+        });
 
         return [
             isSelected && (
@@ -852,8 +856,7 @@ class PremiumPricingTable extends Component {
                 </InspectorControls>
             ),
             <div
-                id={`premium-pricing-table-${blockId}`}
-                className={`${mainClasses} ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                className={`${mainClasses} ${blockId}`}
                 style={{
                     textAlign: contentAlign,
                     backgroundColor: tableStyles[0].tableBack,
@@ -1066,11 +1069,7 @@ class PremiumPricingTable extends Component {
                             value={btnLink}
                             onChange={newLink => setAttributes({ btnLink: newLink })}
                         />
-                        <style
-                            dangerouslySetInnerHTML={{
-                                __html: loadStyles()
-                            }}
-                        />
+                        <style>{loadStyles()}</style>
                     </div>
                 )}
             </div>

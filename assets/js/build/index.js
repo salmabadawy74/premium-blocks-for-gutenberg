@@ -13874,18 +13874,28 @@ const attributes = {
   typography: {
     type: "object",
     default: {
-      "fontWeight": '',
-      'fontStyle': '',
-      'textTransform': '',
-      'letterSpacing': '',
-      'fontFamily': '',
-      'lineHeight': '',
-      'textDecoration': '',
-      'fontSize': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
+      fontWeight: "400",
+      fontStyle: "",
+      letterSpacing: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
+      },
+      fontFamily: "Default",
+      lineHeight: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
+      },
+      textDecoration: "",
+      textTransform: "",
+      fontSize: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
       }
     }
   },
@@ -14256,7 +14266,7 @@ const v7Attrinutes = {
 const deprecatedContent = [{
   attributes: v7Attrinutes,
   migrate: attributes => {
-    var _attributes$textStyle, _attributes$textStyle2, _attributes$textStyle3, _attributes$textStyle4, _attributes$textStyle5, _attributes$textStyle6, _attributes$textStyle7, _attributes$textStyle8, _attributes$textStyle9, _attributes$textStyle10, _attributes$textStyle11, _attributes$textStyle12, _attributes$textStyle13, _attributes$textStyle14, _attributes$btnStyles, _attributes$btnStyles2, _attributes$btnStyles3, _attributes$btnStyles4, _attributes$btnStyles5, _attributes$btnStyles6, _attributes$btnStyles7, _attributes$btnStyles8, _attributes$btnStyles9, _attributes$btnStyles10;
+    var _attributes$textStyle, _attributes$textStyle2, _attributes$textStyle3, _attributes$textStyle4, _attributes$textStyle5, _attributes$textStyle6, _attributes$textStyle7, _attributes$textStyle8, _attributes$textStyle9, _attributes$textStyle10, _attributes$textStyle11, _attributes$textStyle12, _attributes$textStyle13, _attributes$textStyle14, _attributes$textStyle15, _attributes$textStyle16, _attributes$textStyle17, _attributes$textStyle18, _attributes$textStyle19, _attributes$textStyle20, _attributes$btnStyles, _attributes$btnStyles2, _attributes$btnStyles3, _attributes$btnStyles4, _attributes$btnStyles5, _attributes$btnStyles6, _attributes$btnStyles7, _attributes$btnStyles8, _attributes$btnStyles9, _attributes$btnStyles10;
 
     let newAttributes = {
       blockId: attributes.block_id ? "premium-button-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.generateBlockId)(attributes.block_id) : '',
@@ -14312,18 +14322,30 @@ const deprecatedContent = [{
         'fontFamily': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle5 = attributes.textStyles[0]) === null || _attributes$textStyle5 === void 0 ? void 0 : _attributes$textStyle5.textFontFamily) || '',
         'lineHeight': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle6 = attributes.textStyles[0]) === null || _attributes$textStyle6 === void 0 ? void 0 : _attributes$textStyle6.textLine) || '',
         'textDecoration': '',
+        letterSpacing: {
+          Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle7 = attributes.textStyles[0]) === null || _attributes$textStyle7 === void 0 ? void 0 : _attributes$textStyle7.textLetter) || '',
+          Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle8 = attributes.textStyles[0]) === null || _attributes$textStyle8 === void 0 ? void 0 : _attributes$textStyle8.textLetter) || '',
+          Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle9 = attributes.textStyles[0]) === null || _attributes$textStyle9 === void 0 ? void 0 : _attributes$textStyle9.textLetter) || '',
+          unit: "px"
+        },
+        lineHeight: {
+          Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle10 = attributes.textStyles[0]) === null || _attributes$textStyle10 === void 0 ? void 0 : _attributes$textStyle10.textLine) || '',
+          Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle11 = attributes.textStyles[0]) === null || _attributes$textStyle11 === void 0 ? void 0 : _attributes$textStyle11.textLine) || '',
+          Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle12 = attributes.textStyles[0]) === null || _attributes$textStyle12 === void 0 ? void 0 : _attributes$textStyle12.textLine) || '',
+          unit: "px"
+        },
         'fontSize': {
-          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle7 = attributes.textStyles[0]) === null || _attributes$textStyle7 === void 0 ? void 0 : _attributes$textStyle7.textSize) || '',
-          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle8 = attributes.textStyles[0]) === null || _attributes$textStyle8 === void 0 ? void 0 : _attributes$textStyle8.textSizeTablet) || '',
-          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle9 = attributes.textStyles[0]) === null || _attributes$textStyle9 === void 0 ? void 0 : _attributes$textStyle9.textSizeMobile) || '',
-          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle10 = attributes.textStyles[0]) === null || _attributes$textStyle10 === void 0 ? void 0 : _attributes$textStyle10.textSizeUnit) || 'px'
+          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle13 = attributes.textStyles[0]) === null || _attributes$textStyle13 === void 0 ? void 0 : _attributes$textStyle13.textSize) || '',
+          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle14 = attributes.textStyles[0]) === null || _attributes$textStyle14 === void 0 ? void 0 : _attributes$textStyle14.textSizeTablet) || '',
+          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle15 = attributes.textStyles[0]) === null || _attributes$textStyle15 === void 0 ? void 0 : _attributes$textStyle15.textSizeMobile) || '',
+          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle16 = attributes.textStyles[0]) === null || _attributes$textStyle16 === void 0 ? void 0 : _attributes$textStyle16.textSizeUnit) || 'px'
         }
       },
       textShadow: {
-        'color': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle11 = attributes.textStyles[0]) === null || _attributes$textStyle11 === void 0 ? void 0 : _attributes$textStyle11.shadowColor) || '',
-        'blur': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle12 = attributes.textStyles[0]) === null || _attributes$textStyle12 === void 0 ? void 0 : _attributes$textStyle12.shadowBlur) || '',
-        'horizontal': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle13 = attributes.textStyles[0]) === null || _attributes$textStyle13 === void 0 ? void 0 : _attributes$textStyle13.shadowHorizontal) || '',
-        'vertical': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle14 = attributes.textStyles[0]) === null || _attributes$textStyle14 === void 0 ? void 0 : _attributes$textStyle14.shadowVertical) || ''
+        'color': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle17 = attributes.textStyles[0]) === null || _attributes$textStyle17 === void 0 ? void 0 : _attributes$textStyle17.shadowColor) || '',
+        'blur': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle18 = attributes.textStyles[0]) === null || _attributes$textStyle18 === void 0 ? void 0 : _attributes$textStyle18.shadowBlur) || '',
+        'horizontal': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle19 = attributes.textStyles[0]) === null || _attributes$textStyle19 === void 0 ? void 0 : _attributes$textStyle19.shadowHorizontal) || '',
+        'vertical': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle20 = attributes.textStyles[0]) === null || _attributes$textStyle20 === void 0 ? void 0 : _attributes$textStyle20.shadowVertical) || ''
       },
       boxShadow: {
         'color': (attributes === null || attributes === void 0 ? void 0 : (_attributes$btnStyles = attributes.btnStyles[0]) === null || _attributes$btnStyles === void 0 ? void 0 : _attributes$btnStyles.btnShadowColor) || '',
@@ -15115,8 +15137,6 @@ class edit extends Component {
   }
 
   render() {
-    var _typography$fontSize, _typography$fontSize2, _padding$this$props$d, _padding$this$props$d2, _padding$this$props$d3, _padding$this$props$d4, _border$borderWidth, _border$borderWidth$t, _border$borderWidth2, _border$borderWidth2$, _border$borderWidth3, _border$borderWidth3$, _border$borderWidth4, _border$borderWidth4$, _border$borderRadius, _border$borderRadius$, _border$borderRadius2, _border$borderRadius3, _border$borderRadius4, _border$borderRadius5, _border$borderRadius6, _border$borderRadius7;
-
     const {
       isSelected,
       setAttributes,
@@ -15283,7 +15303,11 @@ class edit extends Component {
       return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_11__.generateCss)(styles);
     };
 
-    const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-button");
+    const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-button__wrap", {
+      " premium-desktop-hidden": hideDesktop,
+      " premium-tablet-hidden": hideTablet,
+      " premium-mobile-hidden": hideMobile
+    });
     return [isSelected && "block" != btnSize && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(BlockControls, {
       key: "controls"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(AlignmentToolbar, {
@@ -15433,10 +15457,6 @@ class edit extends Component {
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_3__["default"], {
       label: __("Border"),
       value: border,
-      borderType: border.borderType,
-      borderColor: border.borderColor,
-      borderWidth: border.borderWidth,
-      borderRadius: border.borderRadius,
       onChange: value => setAttributes({
         border: value
       })
@@ -15464,15 +15484,11 @@ class edit extends Component {
         hideMobile: value ? " premium-mobile-hidden" : ""
       })
     })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `${mainClasses}__wrap premium-button__${effect} ${blockId} premium-button__${effectDir} ${hideDesktop} ${hideTablet} ${hideMobile}`,
+      className: `${mainClasses} premium-button__${effect} ${blockId} premium-button__${effectDir}`,
       style: {
         textAlign: btnAlign
       }
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
-      dangerouslySetInnerHTML: {
-        __html: loadStyles()
-      }
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText, {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, loadStyles()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText, {
       className: `premium-button premium-button__${btnSize}`,
       value: btnText,
       onChange: value => setAttributes({
@@ -15481,30 +15497,11 @@ class edit extends Component {
       style: {
         color: btnStyles[0].textColor,
         backgroundColor: btnStyles[0].backColor,
-        fontSize: `${typography === null || typography === void 0 ? void 0 : (_typography$fontSize = typography.fontSize) === null || _typography$fontSize === void 0 ? void 0 : _typography$fontSize[this.props.deviceType]}${(typography === null || typography === void 0 ? void 0 : (_typography$fontSize2 = typography.fontSize) === null || _typography$fontSize2 === void 0 ? void 0 : _typography$fontSize2.unit) || 'px'}`,
-        fontStyle: typography === null || typography === void 0 ? void 0 : typography.fontStyle,
-        fontFamily: typography === null || typography === void 0 ? void 0 : typography.fontFamily,
-        fontWeight: typography === null || typography === void 0 ? void 0 : typography.fontWeight,
-        letterSpacing: typography === null || typography === void 0 ? void 0 : typography.letterSpacing,
-        textDecoration: typography === null || typography === void 0 ? void 0 : typography.textDecoration,
-        textTransform: typography === null || typography === void 0 ? void 0 : typography.textTransform,
-        lineHeight: `${typography === null || typography === void 0 ? void 0 : typography.lineHeight}px`,
         textShadow: `${textShadow === null || textShadow === void 0 ? void 0 : textShadow.horizontal}px ${textShadow === null || textShadow === void 0 ? void 0 : textShadow.vertical}px ${textShadow === null || textShadow === void 0 ? void 0 : textShadow.blur}px ${textShadow === null || textShadow === void 0 ? void 0 : textShadow.color}`,
         boxShadow: `${boxShadow === null || boxShadow === void 0 ? void 0 : boxShadow.horizontal}px ${boxShadow === null || boxShadow === void 0 ? void 0 : boxShadow.vertical}px ${boxShadow === null || boxShadow === void 0 ? void 0 : boxShadow.blur}px ${boxShadow === null || boxShadow === void 0 ? void 0 : boxShadow.color} ${boxShadow === null || boxShadow === void 0 ? void 0 : boxShadow.position}`,
-        paddingTop: `${padding === null || padding === void 0 ? void 0 : (_padding$this$props$d = padding[this.props.deviceType]) === null || _padding$this$props$d === void 0 ? void 0 : _padding$this$props$d.top}${padding === null || padding === void 0 ? void 0 : padding.unit}`,
-        paddingRight: `${padding === null || padding === void 0 ? void 0 : (_padding$this$props$d2 = padding[this.props.deviceType]) === null || _padding$this$props$d2 === void 0 ? void 0 : _padding$this$props$d2.right}${padding === null || padding === void 0 ? void 0 : padding.unit}`,
-        paddingBottom: `${padding === null || padding === void 0 ? void 0 : (_padding$this$props$d3 = padding[this.props.deviceType]) === null || _padding$this$props$d3 === void 0 ? void 0 : _padding$this$props$d3.bottom}${padding === null || padding === void 0 ? void 0 : padding.unit}`,
-        paddingLeft: `${padding === null || padding === void 0 ? void 0 : (_padding$this$props$d4 = padding[this.props.deviceType]) === null || _padding$this$props$d4 === void 0 ? void 0 : _padding$this$props$d4.left}${padding === null || padding === void 0 ? void 0 : padding.unit}`,
-        borderStyle: border === null || border === void 0 ? void 0 : border.borderType,
-        borderTopWidth: border === null || border === void 0 ? void 0 : (_border$borderWidth = border.borderWidth) === null || _border$borderWidth === void 0 ? void 0 : (_border$borderWidth$t = _border$borderWidth[this.props.deviceType]) === null || _border$borderWidth$t === void 0 ? void 0 : _border$borderWidth$t.top,
-        borderRightWidth: border === null || border === void 0 ? void 0 : (_border$borderWidth2 = border.borderWidth) === null || _border$borderWidth2 === void 0 ? void 0 : (_border$borderWidth2$ = _border$borderWidth2[this.props.deviceType]) === null || _border$borderWidth2$ === void 0 ? void 0 : _border$borderWidth2$.right,
-        borderBottomWidth: border === null || border === void 0 ? void 0 : (_border$borderWidth3 = border.borderWidth) === null || _border$borderWidth3 === void 0 ? void 0 : (_border$borderWidth3$ = _border$borderWidth3[this.props.deviceType]) === null || _border$borderWidth3$ === void 0 ? void 0 : _border$borderWidth3$.bottom,
-        borderLeftWidth: border === null || border === void 0 ? void 0 : (_border$borderWidth4 = border.borderWidth) === null || _border$borderWidth4 === void 0 ? void 0 : (_border$borderWidth4$ = _border$borderWidth4[this.props.deviceType]) === null || _border$borderWidth4$ === void 0 ? void 0 : _border$borderWidth4$.left,
-        borderColor: border === null || border === void 0 ? void 0 : border.borderColor,
-        borderTopLeftRadius: `${(border === null || border === void 0 ? void 0 : (_border$borderRadius = border.borderRadius) === null || _border$borderRadius === void 0 ? void 0 : (_border$borderRadius$ = _border$borderRadius[this.props.deviceType]) === null || _border$borderRadius$ === void 0 ? void 0 : _border$borderRadius$.top) || 0}px`,
-        borderTopRightRadius: `${(border === null || border === void 0 ? void 0 : (_border$borderRadius2 = border.borderRadius) === null || _border$borderRadius2 === void 0 ? void 0 : (_border$borderRadius3 = _border$borderRadius2[this.props.deviceType]) === null || _border$borderRadius3 === void 0 ? void 0 : _border$borderRadius3.right) || 0}px`,
-        borderBottomLeftRadius: `${(border === null || border === void 0 ? void 0 : (_border$borderRadius4 = border.borderRadius) === null || _border$borderRadius4 === void 0 ? void 0 : (_border$borderRadius5 = _border$borderRadius4[this.props.deviceType]) === null || _border$borderRadius5 === void 0 ? void 0 : _border$borderRadius5.bottom) || 0}px`,
-        borderBottomRightRadius: `${(border === null || border === void 0 ? void 0 : (_border$borderRadius6 = border.borderRadius) === null || _border$borderRadius6 === void 0 ? void 0 : (_border$borderRadius7 = _border$borderRadius6[this.props.deviceType]) === null || _border$borderRadius7 === void 0 ? void 0 : _border$borderRadius7.left) || 0}px`
+        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_11__.typographyCss)(typography, this.props.deviceType),
+        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_11__.paddingCss)(padding, this.props.deviceType),
+        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_11__.borderCss)(border, this.props.deviceType)
       },
       keepPlaceholderOnFocus: true
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(URLInput, {
@@ -15616,7 +15613,11 @@ const save = props => {
     boxShadow,
     blockId
   } = props.attributes;
-  const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, 'premium-button');
+  const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, 'premium-button__wrap', {
+    " premium-desktop-hidden": hideDesktop,
+    " premium-tablet-hidden": hideTablet,
+    " premium-mobile-hidden": hideMobile
+  });
 
   const loadStyles = () => {
     const styles = {};
@@ -15634,15 +15635,11 @@ const save = props => {
   };
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: `${mainClasses}__wrap premium-button__${effect} ${blockId} premium-button__${effectDir} premium-button-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`,
+    className: `${mainClasses} premium-button__${effect} ${blockId} premium-button__${effectDir} premium-button-${block_id}`,
     style: {
       textAlign: btnAlign
     }
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
-    dangerouslySetInnerHTML: {
-      __html: loadStyles()
-    }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText.Content, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, loadStyles()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText.Content, {
     tagName: "a",
     value: btnText,
     className: `premium-button premium-button__${btnSize}`,
@@ -15655,10 +15652,8 @@ const save = props => {
       fontStyle: typography === null || typography === void 0 ? void 0 : typography.fontStyle,
       fontFamily: typography === null || typography === void 0 ? void 0 : typography.fontFamily,
       fontWeight: typography === null || typography === void 0 ? void 0 : typography.fontWeight,
-      letterSpacing: typography === null || typography === void 0 ? void 0 : typography.letterSpacing,
       textDecoration: typography === null || typography === void 0 ? void 0 : typography.textDecoration,
       textTransform: typography === null || typography === void 0 ? void 0 : typography.textTransform,
-      lineHeight: `${typography === null || typography === void 0 ? void 0 : typography.lineHeight}px`,
       textShadow: `${textShadow === null || textShadow === void 0 ? void 0 : textShadow.horizontal}px ${textShadow === null || textShadow === void 0 ? void 0 : textShadow.vertical}px ${textShadow === null || textShadow === void 0 ? void 0 : textShadow.blur}px ${textShadow === null || textShadow === void 0 ? void 0 : textShadow.color}`,
       boxShadow: `${boxShadow === null || boxShadow === void 0 ? void 0 : boxShadow.horizontal}px ${boxShadow === null || boxShadow === void 0 ? void 0 : boxShadow.vertical}px ${boxShadow === null || boxShadow === void 0 ? void 0 : boxShadow.blur}px ${boxShadow === null || boxShadow === void 0 ? void 0 : boxShadow.color} ${boxShadow === null || boxShadow === void 0 ? void 0 : boxShadow.position}`,
       borderStyle: border === null || border === void 0 ? void 0 : border.borderType,
@@ -24282,18 +24277,28 @@ const attributes = {
   titleTypography: {
     type: "object",
     default: {
-      "fontWeight": '',
-      'fontStyle': '',
-      'textTransform': '',
-      'letterSpacing': '',
-      'fontFamily': '',
-      'lineHeight': '',
-      'textDecoration': '',
-      'fontSize': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
+      fontWeight: "400",
+      fontStyle: "",
+      letterSpacing: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
+      },
+      fontFamily: "Default",
+      lineHeight: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
+      },
+      textDecoration: "",
+      textTransform: "",
+      fontSize: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
       }
     }
   },
@@ -24353,18 +24358,28 @@ const attributes = {
   textTypography: {
     type: "object",
     default: {
-      "fontWeight": '',
-      'fontStyle': '',
-      'textTransform': '',
-      'letterSpacing': '',
-      'fontFamily': '',
-      'lineHeight': '',
-      'textDecoration': '',
-      'fontSize': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
+      fontWeight: "400",
+      fontStyle: "",
+      letterSpacing: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
+      },
+      fontFamily: "Default",
+      lineHeight: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
+      },
+      textDecoration: "",
+      textTransform: "",
+      fontSize: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
       }
     }
   },
@@ -25135,7 +25150,7 @@ const deprecated = {
   },
 
   migrate: attributes => {
-    var _attributes$titleStyl, _attributes$titleStyl2, _attributes$titleStyl3, _attributes$titleStyl4, _attributes$titleStyl5, _attributes$titleStyl6, _attributes$titleStyl7, _attributes$titleStyl8, _attributes$titleStyl9, _attributes$titleStyl10, _attributes$titleStyl11, _attributes$titleStyl12, _attributes$titleStyl13, _attributes$titleStyl14, _attributes$titleStyl15, _attributes$titleStyl16, _attributes$titleStyl17, _attributes$titleStyl18, _attributes$titleStyl19, _attributes$titleStyl20, _attributes$titleStyl21, _attributes$titleStyl22, _attributes$titleStyl23, _attributes$titleStyl24, _attributes$titleStyl25, _attributes$titleStyl26, _attributes$titleStyl27, _attributes$titleStyl28, _attributes$titleStyl29, _attributes$titleStyl30, _attributes$titleStyl31, _attributes$titleStyl32, _attributes$titleStyl33, _attributes$titleStyl34, _attributes$titleStyl35, _attributes$titleStyl36, _attributes$titleStyl37, _attributes$titleStyl38, _attributes$titleStyl39, _attributes$titleStyl40, _attributes$stripeSty, _attributes$stripeSty2, _attributes$stripeSty3, _attributes$stripeSty4, _attributes$stripeSty5, _attributes$stripeSty6, _attributes$stripeSty7, _attributes$stripeSty8, _attributes$stripeSty9, _attributes$stripeSty10, _attributes$stripeSty11, _attributes$stripeSty12, _attributes$stripeSty13, _attributes$stripeSty14, _attributes$stripeSty15, _attributes$stripeSty16, _attributes$stripeSty17, _attributes$stripeSty18, _attributes$stripeSty19, _attributes$stripeSty20, _attributes$stripeSty21, _attributes$stripeSty22, _attributes$stripeSty23, _attributes$stripeSty24, _attributes$stripeSty25, _attributes$stripeSty26, _attributes$stripeSty27, _attributes$stripeSty28, _attributes$stripeSty29, _attributes$stripeSty30, _attributes$stripeSty31, _attributes$stripeSty32, _attributes$textStyle, _attributes$textStyle2, _attributes$textStyle3, _attributes$textStyle4, _attributes$textStyle5, _attributes$textStyle6, _attributes$textStyle7, _attributes$textStyle8, _attributes$textStyle9, _attributes$textStyle10, _attributes$textStyle11, _attributes$textStyle12, _attributes$textStyle13, _attributes$textStyle14, _attributes$textStyle15, _attributes$textStyle16, _attributes$textStyle17, _attributes$textStyle18, _attributes$textStyle19, _attributes$textStyle20, _attributes$textStyle21, _attributes$textStyle22, _attributes$textStyle23, _attributes$textStyle24, _attributes$textStyle25, _attributes$textStyle26, _attributes$textStyle27, _attributes$textStyle28, _attributes$textStyle29, _attributes$textStyle30, _attributes$textStyle31, _attributes$textStyle32, _attributes$textStyle33, _attributes$textStyle34, _attributes$textStyle35, _attributes$textStyle36, _attributes$textStyle37, _attributes$textStyle38, _attributes$textStyle39, _attributes$textStyle40, _attributes$textStyle41, _attributes$textStyle42, _attributes$textStyle43, _attributes$textStyle44, _attributes$textStyle45, _attributes$textStyle46, _attributes$textStyle47, _attributes$textStyle48, _attributes$textStyle49, _attributes$textStyle50, _attributes$iconStyle, _attributes$iconStyle2, _attributes$iconStyle3, _attributes$iconStyle4, _attributes$iconStyle5, _attributes$iconStyle6, _attributes$iconStyle7, _attributes$iconStyle8, _attributes$iconStyle9, _attributes$iconStyle10, _attributes$iconStyle11, _attributes$iconStyle12, _attributes$iconStyle13, _attributes$iconStyle14, _attributes$iconStyle15, _attributes$iconStyle16, _attributes$iconStyle17, _attributes$iconStyle18, _attributes$iconStyle19, _attributes$iconStyle20, _attributes$iconStyle21, _attributes$iconStyle22, _attributes$iconStyle23, _attributes$iconStyle24, _attributes$iconStyle25, _attributes$iconStyle26, _attributes$iconStyle27, _attributes$iconStyle28, _attributes$iconStyle29, _attributes$iconStyle30, _attributes$iconStyle31, _attributes$iconStyle32, _attributes$iconStyle33, _attributes$iconStyle34, _attributes$iconStyle35, _attributes$iconStyle36, _attributes$iconStyle37, _attributes$iconStyle38, _attributes$iconStyle39, _attributes$iconStyle40, _attributes$iconStyle41, _attributes$iconStyle42, _attributes$iconStyle43, _attributes$iconStyle44, _attributes$iconStyle45, _attributes$iconStyle46, _attributes$iconStyle47, _attributes$iconStyle48, _attributes$iconStyle49, _attributes$iconStyle50, _attributes$iconStyle51, _attributes$iconStyle52, _attributes$iconStyle53, _attributes$iconStyle54, _attributes$strokeSty, _attributes$strokeSty2, _attributes$strokeSty3, _attributes$strokeSty4, _attributes$strokeSty5, _attributes$strokeSty6;
+    var _attributes$titleStyl, _attributes$titleStyl2, _attributes$titleStyl3, _attributes$titleStyl4, _attributes$titleStyl5, _attributes$titleStyl6, _attributes$titleStyl7, _attributes$titleStyl8, _attributes$titleStyl9, _attributes$titleStyl10, _attributes$titleStyl11, _attributes$titleStyl12, _attributes$titleStyl13, _attributes$titleStyl14, _attributes$titleStyl15, _attributes$titleStyl16, _attributes$titleStyl17, _attributes$titleStyl18, _attributes$titleStyl19, _attributes$titleStyl20, _attributes$titleStyl21, _attributes$titleStyl22, _attributes$titleStyl23, _attributes$titleStyl24, _attributes$titleStyl25, _attributes$titleStyl26, _attributes$titleStyl27, _attributes$titleStyl28, _attributes$titleStyl29, _attributes$titleStyl30, _attributes$titleStyl31, _attributes$titleStyl32, _attributes$titleStyl33, _attributes$titleStyl34, _attributes$titleStyl35, _attributes$titleStyl36, _attributes$titleStyl37, _attributes$titleStyl38, _attributes$titleStyl39, _attributes$titleStyl40, _attributes$titleStyl41, _attributes$titleStyl42, _attributes$titleStyl43, _attributes$titleStyl44, _attributes$titleStyl45, _attributes$titleStyl46, _attributes$titleStyl47, _attributes$titleStyl48, _attributes$stripeSty, _attributes$stripeSty2, _attributes$stripeSty3, _attributes$stripeSty4, _attributes$stripeSty5, _attributes$stripeSty6, _attributes$stripeSty7, _attributes$stripeSty8, _attributes$stripeSty9, _attributes$stripeSty10, _attributes$stripeSty11, _attributes$stripeSty12, _attributes$stripeSty13, _attributes$stripeSty14, _attributes$stripeSty15, _attributes$stripeSty16, _attributes$stripeSty17, _attributes$stripeSty18, _attributes$stripeSty19, _attributes$stripeSty20, _attributes$stripeSty21, _attributes$stripeSty22, _attributes$stripeSty23, _attributes$stripeSty24, _attributes$stripeSty25, _attributes$stripeSty26, _attributes$stripeSty27, _attributes$stripeSty28, _attributes$stripeSty29, _attributes$stripeSty30, _attributes$stripeSty31, _attributes$stripeSty32, _attributes$textStyle, _attributes$textStyle2, _attributes$textStyle3, _attributes$textStyle4, _attributes$textStyle5, _attributes$textStyle6, _attributes$textStyle7, _attributes$textStyle8, _attributes$textStyle9, _attributes$textStyle10, _attributes$textStyle11, _attributes$textStyle12, _attributes$textStyle13, _attributes$textStyle14, _attributes$textStyle15, _attributes$textStyle16, _attributes$textStyle17, _attributes$textStyle18, _attributes$textStyle19, _attributes$textStyle20, _attributes$textStyle21, _attributes$textStyle22, _attributes$textStyle23, _attributes$textStyle24, _attributes$textStyle25, _attributes$textStyle26, _attributes$textStyle27, _attributes$textStyle28, _attributes$textStyle29, _attributes$textStyle30, _attributes$textStyle31, _attributes$textStyle32, _attributes$textStyle33, _attributes$textStyle34, _attributes$textStyle35, _attributes$textStyle36, _attributes$textStyle37, _attributes$textStyle38, _attributes$textStyle39, _attributes$textStyle40, _attributes$textStyle41, _attributes$textStyle42, _attributes$textStyle43, _attributes$textStyle44, _attributes$textStyle45, _attributes$textStyle46, _attributes$textStyle47, _attributes$textStyle48, _attributes$textStyle49, _attributes$textStyle50, _attributes$textStyle51, _attributes$textStyle52, _attributes$textStyle53, _attributes$textStyle54, _attributes$textStyle55, _attributes$textStyle56, _attributes$textStyle57, _attributes$textStyle58, _attributes$iconStyle, _attributes$iconStyle2, _attributes$iconStyle3, _attributes$iconStyle4, _attributes$iconStyle5, _attributes$iconStyle6, _attributes$iconStyle7, _attributes$iconStyle8, _attributes$iconStyle9, _attributes$iconStyle10, _attributes$iconStyle11, _attributes$iconStyle12, _attributes$iconStyle13, _attributes$iconStyle14, _attributes$iconStyle15, _attributes$iconStyle16, _attributes$iconStyle17, _attributes$iconStyle18, _attributes$iconStyle19, _attributes$iconStyle20, _attributes$iconStyle21, _attributes$iconStyle22, _attributes$iconStyle23, _attributes$iconStyle24, _attributes$iconStyle25, _attributes$iconStyle26, _attributes$iconStyle27, _attributes$iconStyle28, _attributes$iconStyle29, _attributes$iconStyle30, _attributes$iconStyle31, _attributes$iconStyle32, _attributes$iconStyle33, _attributes$iconStyle34, _attributes$iconStyle35, _attributes$iconStyle36, _attributes$iconStyle37, _attributes$iconStyle38, _attributes$iconStyle39, _attributes$iconStyle40, _attributes$iconStyle41, _attributes$iconStyle42, _attributes$iconStyle43, _attributes$iconStyle44, _attributes$iconStyle45, _attributes$iconStyle46, _attributes$iconStyle47, _attributes$iconStyle48, _attributes$iconStyle49, _attributes$iconStyle50, _attributes$iconStyle51, _attributes$iconStyle52, _attributes$iconStyle53, _attributes$iconStyle54, _attributes$strokeSty, _attributes$strokeSty2, _attributes$strokeSty3, _attributes$strokeSty4, _attributes$strokeSty5, _attributes$strokeSty6;
 
     let newAttributes = {
       blockId: attributes.block_id ? "premium-heading-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_1__.generateBlockId)(attributes.block_id) : '',
@@ -25277,15 +25292,25 @@ const deprecated = {
         "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl21 = attributes.titleStyles) === null || _attributes$titleStyl21 === void 0 ? void 0 : (_attributes$titleStyl22 = _attributes$titleStyl21[0]) === null || _attributes$titleStyl22 === void 0 ? void 0 : _attributes$titleStyl22.titleWeight) || '',
         'fontStyle': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl23 = attributes.titleStyles) === null || _attributes$titleStyl23 === void 0 ? void 0 : (_attributes$titleStyl24 = _attributes$titleStyl23[0]) === null || _attributes$titleStyl24 === void 0 ? void 0 : _attributes$titleStyl24.titleStyle) || '',
         'textTransform': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl25 = attributes.titleStyles) === null || _attributes$titleStyl25 === void 0 ? void 0 : (_attributes$titleStyl26 = _attributes$titleStyl25[0]) === null || _attributes$titleStyl26 === void 0 ? void 0 : _attributes$titleStyl26.titleUpper) || '',
-        'letterSpacing': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl27 = attributes.titleStyles) === null || _attributes$titleStyl27 === void 0 ? void 0 : (_attributes$titleStyl28 = _attributes$titleStyl27[0]) === null || _attributes$titleStyl28 === void 0 ? void 0 : _attributes$titleStyl28.titleLetter) || '',
-        'fontFamily': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl29 = attributes.titleStyles) === null || _attributes$titleStyl29 === void 0 ? void 0 : (_attributes$titleStyl30 = _attributes$titleStyl29[0]) === null || _attributes$titleStyl30 === void 0 ? void 0 : _attributes$titleStyl30.titleFontFamily) || '',
-        'lineHeight': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl31 = attributes.titleStyles) === null || _attributes$titleStyl31 === void 0 ? void 0 : (_attributes$titleStyl32 = _attributes$titleStyl31[0]) === null || _attributes$titleStyl32 === void 0 ? void 0 : _attributes$titleStyl32.titleLine) || '',
+        'fontFamily': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl27 = attributes.titleStyles) === null || _attributes$titleStyl27 === void 0 ? void 0 : (_attributes$titleStyl28 = _attributes$titleStyl27[0]) === null || _attributes$titleStyl28 === void 0 ? void 0 : _attributes$titleStyl28.titleFontFamily) || '',
         'textDecoration': '',
+        letterSpacing: {
+          Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl29 = attributes.titleStyles) === null || _attributes$titleStyl29 === void 0 ? void 0 : (_attributes$titleStyl30 = _attributes$titleStyl29[0]) === null || _attributes$titleStyl30 === void 0 ? void 0 : _attributes$titleStyl30.titleLetter) || '',
+          Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl31 = attributes.titleStyles) === null || _attributes$titleStyl31 === void 0 ? void 0 : (_attributes$titleStyl32 = _attributes$titleStyl31[0]) === null || _attributes$titleStyl32 === void 0 ? void 0 : _attributes$titleStyl32.titleLetter) || '',
+          Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl33 = attributes.titleStyles) === null || _attributes$titleStyl33 === void 0 ? void 0 : (_attributes$titleStyl34 = _attributes$titleStyl33[0]) === null || _attributes$titleStyl34 === void 0 ? void 0 : _attributes$titleStyl34.titleLetter) || '',
+          unit: "px"
+        },
+        lineHeight: {
+          Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl35 = attributes.titleStyles) === null || _attributes$titleStyl35 === void 0 ? void 0 : (_attributes$titleStyl36 = _attributes$titleStyl35[0]) === null || _attributes$titleStyl36 === void 0 ? void 0 : _attributes$titleStyl36.titleLine) || '',
+          Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl37 = attributes.titleStyles) === null || _attributes$titleStyl37 === void 0 ? void 0 : (_attributes$titleStyl38 = _attributes$titleStyl37[0]) === null || _attributes$titleStyl38 === void 0 ? void 0 : _attributes$titleStyl38.titleLine) || '',
+          Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl39 = attributes.titleStyles) === null || _attributes$titleStyl39 === void 0 ? void 0 : (_attributes$titleStyl40 = _attributes$titleStyl39[0]) === null || _attributes$titleStyl40 === void 0 ? void 0 : _attributes$titleStyl40.titleLine) || '',
+          unit: "px"
+        },
         'fontSize': {
-          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl33 = attributes.titleStyles) === null || _attributes$titleStyl33 === void 0 ? void 0 : (_attributes$titleStyl34 = _attributes$titleStyl33[0]) === null || _attributes$titleStyl34 === void 0 ? void 0 : _attributes$titleStyl34.titlefontSize) || '',
-          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl35 = attributes.titleStyles) === null || _attributes$titleStyl35 === void 0 ? void 0 : (_attributes$titleStyl36 = _attributes$titleStyl35[0]) === null || _attributes$titleStyl36 === void 0 ? void 0 : _attributes$titleStyl36.titlefontSizeTablet) || '',
-          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl37 = attributes.titleStyles) === null || _attributes$titleStyl37 === void 0 ? void 0 : (_attributes$titleStyl38 = _attributes$titleStyl37[0]) === null || _attributes$titleStyl38 === void 0 ? void 0 : _attributes$titleStyl38.titlefontSizeMobile) || '',
-          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl39 = attributes.titleStyles) === null || _attributes$titleStyl39 === void 0 ? void 0 : (_attributes$titleStyl40 = _attributes$titleStyl39[0]) === null || _attributes$titleStyl40 === void 0 ? void 0 : _attributes$titleStyl40.titlefontSizeType) || 'px'
+          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl41 = attributes.titleStyles) === null || _attributes$titleStyl41 === void 0 ? void 0 : (_attributes$titleStyl42 = _attributes$titleStyl41[0]) === null || _attributes$titleStyl42 === void 0 ? void 0 : _attributes$titleStyl42.titlefontSize) || '',
+          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl43 = attributes.titleStyles) === null || _attributes$titleStyl43 === void 0 ? void 0 : (_attributes$titleStyl44 = _attributes$titleStyl43[0]) === null || _attributes$titleStyl44 === void 0 ? void 0 : _attributes$titleStyl44.titlefontSizeTablet) || '',
+          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl45 = attributes.titleStyles) === null || _attributes$titleStyl45 === void 0 ? void 0 : (_attributes$titleStyl46 = _attributes$titleStyl45[0]) === null || _attributes$titleStyl46 === void 0 ? void 0 : _attributes$titleStyl46.titlefontSizeMobile) || '',
+          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl47 = attributes.titleStyles) === null || _attributes$titleStyl47 === void 0 ? void 0 : (_attributes$titleStyl48 = _attributes$titleStyl47[0]) === null || _attributes$titleStyl48 === void 0 ? void 0 : _attributes$titleStyl48.titlefontSizeType) || 'px'
         }
       },
       stripeWidth: {
@@ -25316,39 +25341,49 @@ const deprecated = {
         "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle = attributes.textStyles) === null || _attributes$textStyle === void 0 ? void 0 : (_attributes$textStyle2 = _attributes$textStyle[0]) === null || _attributes$textStyle2 === void 0 ? void 0 : _attributes$textStyle2.textBackWeight) || '',
         'fontStyle': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle3 = attributes.textStyles) === null || _attributes$textStyle3 === void 0 ? void 0 : (_attributes$textStyle4 = _attributes$textStyle3[0]) === null || _attributes$textStyle4 === void 0 ? void 0 : _attributes$textStyle4.textBackStyle) || '',
         'textTransform': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle5 = attributes.textStyles) === null || _attributes$textStyle5 === void 0 ? void 0 : (_attributes$textStyle6 = _attributes$textStyle5[0]) === null || _attributes$textStyle6 === void 0 ? void 0 : _attributes$textStyle6.textBackUpper) || '',
-        'letterSpacing': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle7 = attributes.textStyles) === null || _attributes$textStyle7 === void 0 ? void 0 : (_attributes$textStyle8 = _attributes$textStyle7[0]) === null || _attributes$textStyle8 === void 0 ? void 0 : _attributes$textStyle8.textBackLetter) || '',
-        'fontFamily': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle9 = attributes.textStyles) === null || _attributes$textStyle9 === void 0 ? void 0 : (_attributes$textStyle10 = _attributes$textStyle9[0]) === null || _attributes$textStyle10 === void 0 ? void 0 : _attributes$textStyle10.textBackFontFamily) || '',
-        'lineHeight': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle11 = attributes.textStyles) === null || _attributes$textStyle11 === void 0 ? void 0 : (_attributes$textStyle12 = _attributes$textStyle11[0]) === null || _attributes$textStyle12 === void 0 ? void 0 : _attributes$textStyle12.textBackLine) || '',
+        'fontFamily': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle7 = attributes.textStyles) === null || _attributes$textStyle7 === void 0 ? void 0 : (_attributes$textStyle8 = _attributes$textStyle7[0]) === null || _attributes$textStyle8 === void 0 ? void 0 : _attributes$textStyle8.textBackFontFamily) || '',
         'textDecoration': '',
+        letterSpacing: {
+          Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle9 = attributes.textStyles) === null || _attributes$textStyle9 === void 0 ? void 0 : (_attributes$textStyle10 = _attributes$textStyle9[0]) === null || _attributes$textStyle10 === void 0 ? void 0 : _attributes$textStyle10.textBackLetter) || '',
+          Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle11 = attributes.textStyles) === null || _attributes$textStyle11 === void 0 ? void 0 : (_attributes$textStyle12 = _attributes$textStyle11[0]) === null || _attributes$textStyle12 === void 0 ? void 0 : _attributes$textStyle12.textBackLetter) || '',
+          Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle13 = attributes.textStyles) === null || _attributes$textStyle13 === void 0 ? void 0 : (_attributes$textStyle14 = _attributes$textStyle13[0]) === null || _attributes$textStyle14 === void 0 ? void 0 : _attributes$textStyle14.textBackLetter) || '',
+          unit: "px"
+        },
+        lineHeight: {
+          Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle15 = attributes.textStyles) === null || _attributes$textStyle15 === void 0 ? void 0 : (_attributes$textStyle16 = _attributes$textStyle15[0]) === null || _attributes$textStyle16 === void 0 ? void 0 : _attributes$textStyle16.textBackLine) || '',
+          Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle17 = attributes.textStyles) === null || _attributes$textStyle17 === void 0 ? void 0 : (_attributes$textStyle18 = _attributes$textStyle17[0]) === null || _attributes$textStyle18 === void 0 ? void 0 : _attributes$textStyle18.textBackLine) || '',
+          Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle19 = attributes.textStyles) === null || _attributes$textStyle19 === void 0 ? void 0 : (_attributes$textStyle20 = _attributes$textStyle19[0]) === null || _attributes$textStyle20 === void 0 ? void 0 : _attributes$textStyle20.textBackLine) || '',
+          unit: "px"
+        },
         'fontSize': {
-          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle13 = attributes.textStyles) === null || _attributes$textStyle13 === void 0 ? void 0 : (_attributes$textStyle14 = _attributes$textStyle13[0]) === null || _attributes$textStyle14 === void 0 ? void 0 : _attributes$textStyle14.textBackfontSize) || '',
-          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle15 = attributes.textStyles) === null || _attributes$textStyle15 === void 0 ? void 0 : (_attributes$textStyle16 = _attributes$textStyle15[0]) === null || _attributes$textStyle16 === void 0 ? void 0 : _attributes$textStyle16.textBackfontSizeTablet) || '',
-          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle17 = attributes.textStyles) === null || _attributes$textStyle17 === void 0 ? void 0 : (_attributes$textStyle18 = _attributes$textStyle17[0]) === null || _attributes$textStyle18 === void 0 ? void 0 : _attributes$textStyle18.textBackfontSizeMobile) || '',
-          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle19 = attributes.textStyles) === null || _attributes$textStyle19 === void 0 ? void 0 : (_attributes$textStyle20 = _attributes$textStyle19[0]) === null || _attributes$textStyle20 === void 0 ? void 0 : _attributes$textStyle20.textBackfontSizeType) || 'px'
+          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle21 = attributes.textStyles) === null || _attributes$textStyle21 === void 0 ? void 0 : (_attributes$textStyle22 = _attributes$textStyle21[0]) === null || _attributes$textStyle22 === void 0 ? void 0 : _attributes$textStyle22.textBackfontSize) || '',
+          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle23 = attributes.textStyles) === null || _attributes$textStyle23 === void 0 ? void 0 : (_attributes$textStyle24 = _attributes$textStyle23[0]) === null || _attributes$textStyle24 === void 0 ? void 0 : _attributes$textStyle24.textBackfontSizeTablet) || '',
+          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle25 = attributes.textStyles) === null || _attributes$textStyle25 === void 0 ? void 0 : (_attributes$textStyle26 = _attributes$textStyle25[0]) === null || _attributes$textStyle26 === void 0 ? void 0 : _attributes$textStyle26.textBackfontSizeMobile) || '',
+          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle27 = attributes.textStyles) === null || _attributes$textStyle27 === void 0 ? void 0 : (_attributes$textStyle28 = _attributes$textStyle27[0]) === null || _attributes$textStyle28 === void 0 ? void 0 : _attributes$textStyle28.textBackfontSizeType) || 'px'
         }
       },
       textBackshadow: {
-        'color': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle21 = attributes.textStyles) === null || _attributes$textStyle21 === void 0 ? void 0 : (_attributes$textStyle22 = _attributes$textStyle21[0]) === null || _attributes$textStyle22 === void 0 ? void 0 : _attributes$textStyle22.textBackshadowColor) || '',
-        'blur': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle23 = attributes.textStyles) === null || _attributes$textStyle23 === void 0 ? void 0 : (_attributes$textStyle24 = _attributes$textStyle23[0]) === null || _attributes$textStyle24 === void 0 ? void 0 : _attributes$textStyle24.textBackshadowBlur) || '',
-        'horizontal': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle25 = attributes.textStyles) === null || _attributes$textStyle25 === void 0 ? void 0 : (_attributes$textStyle26 = _attributes$textStyle25[0]) === null || _attributes$textStyle26 === void 0 ? void 0 : _attributes$textStyle26.textBackshadowHorizontal) || '',
-        'vertical': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle27 = attributes.textStyles) === null || _attributes$textStyle27 === void 0 ? void 0 : (_attributes$textStyle28 = _attributes$textStyle27[0]) === null || _attributes$textStyle28 === void 0 ? void 0 : _attributes$textStyle28.textBackshadowVertical) || ''
+        'color': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle29 = attributes.textStyles) === null || _attributes$textStyle29 === void 0 ? void 0 : (_attributes$textStyle30 = _attributes$textStyle29[0]) === null || _attributes$textStyle30 === void 0 ? void 0 : _attributes$textStyle30.textBackshadowColor) || '',
+        'blur': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle31 = attributes.textStyles) === null || _attributes$textStyle31 === void 0 ? void 0 : (_attributes$textStyle32 = _attributes$textStyle31[0]) === null || _attributes$textStyle32 === void 0 ? void 0 : _attributes$textStyle32.textBackshadowBlur) || '',
+        'horizontal': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle33 = attributes.textStyles) === null || _attributes$textStyle33 === void 0 ? void 0 : (_attributes$textStyle34 = _attributes$textStyle33[0]) === null || _attributes$textStyle34 === void 0 ? void 0 : _attributes$textStyle34.textBackshadowHorizontal) || '',
+        'vertical': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle35 = attributes.textStyles) === null || _attributes$textStyle35 === void 0 ? void 0 : (_attributes$textStyle36 = _attributes$textStyle35[0]) === null || _attributes$textStyle36 === void 0 ? void 0 : _attributes$textStyle36.textBackshadowVertical) || ''
       },
       horizontalText: {
-        'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle29 = attributes.textStyles) === null || _attributes$textStyle29 === void 0 ? void 0 : (_attributes$textStyle30 = _attributes$textStyle29[0]) === null || _attributes$textStyle30 === void 0 ? void 0 : _attributes$textStyle30.horizontalText) || 0,
-        'Tablet': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle31 = attributes.textStyles) === null || _attributes$textStyle31 === void 0 ? void 0 : (_attributes$textStyle32 = _attributes$textStyle31[0]) === null || _attributes$textStyle32 === void 0 ? void 0 : _attributes$textStyle32.horizontalTextTablet) || 0,
-        'Mobile': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle33 = attributes.textStyles) === null || _attributes$textStyle33 === void 0 ? void 0 : (_attributes$textStyle34 = _attributes$textStyle33[0]) === null || _attributes$textStyle34 === void 0 ? void 0 : _attributes$textStyle34.horizontalTextMobile) || 0,
-        'unit': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle35 = attributes.textStyles) === null || _attributes$textStyle35 === void 0 ? void 0 : (_attributes$textStyle36 = _attributes$textStyle35[0]) === null || _attributes$textStyle36 === void 0 ? void 0 : _attributes$textStyle36.horizontalTextType) || 'px'
+        'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle37 = attributes.textStyles) === null || _attributes$textStyle37 === void 0 ? void 0 : (_attributes$textStyle38 = _attributes$textStyle37[0]) === null || _attributes$textStyle38 === void 0 ? void 0 : _attributes$textStyle38.horizontalText) || 0,
+        'Tablet': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle39 = attributes.textStyles) === null || _attributes$textStyle39 === void 0 ? void 0 : (_attributes$textStyle40 = _attributes$textStyle39[0]) === null || _attributes$textStyle40 === void 0 ? void 0 : _attributes$textStyle40.horizontalTextTablet) || 0,
+        'Mobile': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle41 = attributes.textStyles) === null || _attributes$textStyle41 === void 0 ? void 0 : (_attributes$textStyle42 = _attributes$textStyle41[0]) === null || _attributes$textStyle42 === void 0 ? void 0 : _attributes$textStyle42.horizontalTextMobile) || 0,
+        'unit': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle43 = attributes.textStyles) === null || _attributes$textStyle43 === void 0 ? void 0 : (_attributes$textStyle44 = _attributes$textStyle43[0]) === null || _attributes$textStyle44 === void 0 ? void 0 : _attributes$textStyle44.horizontalTextType) || 'px'
       },
       verticalText: {
-        'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle37 = attributes.textStyles) === null || _attributes$textStyle37 === void 0 ? void 0 : (_attributes$textStyle38 = _attributes$textStyle37[0]) === null || _attributes$textStyle38 === void 0 ? void 0 : _attributes$textStyle38.verticalText) || 0,
-        'Tablet': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle39 = attributes.textStyles) === null || _attributes$textStyle39 === void 0 ? void 0 : (_attributes$textStyle40 = _attributes$textStyle39[0]) === null || _attributes$textStyle40 === void 0 ? void 0 : _attributes$textStyle40.verticalTextTablet) || 0,
-        'Mobile': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle41 = attributes.textStyles) === null || _attributes$textStyle41 === void 0 ? void 0 : (_attributes$textStyle42 = _attributes$textStyle41[0]) === null || _attributes$textStyle42 === void 0 ? void 0 : _attributes$textStyle42.verticalTextMobile) || 0,
-        'unit': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle43 = attributes.textStyles) === null || _attributes$textStyle43 === void 0 ? void 0 : (_attributes$textStyle44 = _attributes$textStyle43[0]) === null || _attributes$textStyle44 === void 0 ? void 0 : _attributes$textStyle44.verticalTextType) || 'px'
+        'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle45 = attributes.textStyles) === null || _attributes$textStyle45 === void 0 ? void 0 : (_attributes$textStyle46 = _attributes$textStyle45[0]) === null || _attributes$textStyle46 === void 0 ? void 0 : _attributes$textStyle46.verticalText) || 0,
+        'Tablet': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle47 = attributes.textStyles) === null || _attributes$textStyle47 === void 0 ? void 0 : (_attributes$textStyle48 = _attributes$textStyle47[0]) === null || _attributes$textStyle48 === void 0 ? void 0 : _attributes$textStyle48.verticalTextTablet) || 0,
+        'Mobile': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle49 = attributes.textStyles) === null || _attributes$textStyle49 === void 0 ? void 0 : (_attributes$textStyle50 = _attributes$textStyle49[0]) === null || _attributes$textStyle50 === void 0 ? void 0 : _attributes$textStyle50.verticalTextMobile) || 0,
+        'unit': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle51 = attributes.textStyles) === null || _attributes$textStyle51 === void 0 ? void 0 : (_attributes$textStyle52 = _attributes$textStyle51[0]) === null || _attributes$textStyle52 === void 0 ? void 0 : _attributes$textStyle52.verticalTextType) || 'px'
       },
       rotateText: {
-        'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle45 = attributes.textStyles) === null || _attributes$textStyle45 === void 0 ? void 0 : (_attributes$textStyle46 = _attributes$textStyle45[0]) === null || _attributes$textStyle46 === void 0 ? void 0 : _attributes$textStyle46.rotateText) || 0,
-        'Tablet': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle47 = attributes.textStyles) === null || _attributes$textStyle47 === void 0 ? void 0 : (_attributes$textStyle48 = _attributes$textStyle47[0]) === null || _attributes$textStyle48 === void 0 ? void 0 : _attributes$textStyle48.rotateTextTablet) || 0,
-        'Mobile': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle49 = attributes.textStyles) === null || _attributes$textStyle49 === void 0 ? void 0 : (_attributes$textStyle50 = _attributes$textStyle49[0]) === null || _attributes$textStyle50 === void 0 ? void 0 : _attributes$textStyle50.rotateTextMobile) || 0
+        'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle53 = attributes.textStyles) === null || _attributes$textStyle53 === void 0 ? void 0 : (_attributes$textStyle54 = _attributes$textStyle53[0]) === null || _attributes$textStyle54 === void 0 ? void 0 : _attributes$textStyle54.rotateText) || 0,
+        'Tablet': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle55 = attributes.textStyles) === null || _attributes$textStyle55 === void 0 ? void 0 : (_attributes$textStyle56 = _attributes$textStyle55[0]) === null || _attributes$textStyle56 === void 0 ? void 0 : _attributes$textStyle56.rotateTextTablet) || 0,
+        'Mobile': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle57 = attributes.textStyles) === null || _attributes$textStyle57 === void 0 ? void 0 : (_attributes$textStyle58 = _attributes$textStyle57[0]) === null || _attributes$textStyle58 === void 0 ? void 0 : _attributes$textStyle58.rotateTextMobile) || 0
       },
       iconshadow: {
         'color': (attributes === null || attributes === void 0 ? void 0 : (_attributes$iconStyle = attributes.iconStyles) === null || _attributes$iconStyle === void 0 ? void 0 : (_attributes$iconStyle2 = _attributes$iconStyle[0]) === null || _attributes$iconStyle2 === void 0 ? void 0 : _attributes$iconStyle2.iconshadowColor) || '',
@@ -25754,25 +25789,28 @@ const deprecated = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_premium_typo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/premium-typo */ "./src/components/premium-typo.js");
-/* harmony import */ var _components_premium_border__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/premium-border */ "./src/components/premium-border.js");
-/* harmony import */ var _components_premium_icons_list__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/premium-icons-list */ "./src/components/premium-icons-list.js");
-/* harmony import */ var _fonticonpicker_react_fonticonpicker__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fonticonpicker/react-fonticonpicker */ "./node_modules/@fonticonpicker/react-fonticonpicker/dist/fonticonpicker.react.js");
-/* harmony import */ var _fonticonpicker_react_fonticonpicker__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_fonticonpicker_react_fonticonpicker__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/Color Control/ColorComponent */ "./src/components/Color Control/ColorComponent.js");
-/* harmony import */ var _components_PremiumShadow__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/PremiumShadow */ "./src/components/PremiumShadow.js");
-/* harmony import */ var _components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/premium-responsive-tabs */ "./src/components/premium-responsive-tabs.js");
-/* harmony import */ var _components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/RangeControl/responsive-range-control */ "./src/components/RangeControl/responsive-range-control.js");
-/* harmony import */ var _components_Premium_Background_Control__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/Premium-Background-Control */ "./src/components/Premium-Background-Control.js");
-/* harmony import */ var _components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/RangeControl/single-range-control */ "./src/components/RangeControl/single-range-control.js");
-/* harmony import */ var _components_premium_media_upload__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/premium-media-upload */ "./src/components/premium-media-upload.js");
-/* harmony import */ var react_lottie_with_segments__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-lottie-with-segments */ "./node_modules/react-lottie-with-segments/dist/index.js");
-/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
-/* harmony import */ var _components_icons__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/icons */ "./src/components/icons.js");
-/* harmony import */ var _components_responsive_radio__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../components/responsive-radio */ "./src/components/responsive-radio.js");
-/* harmony import */ var _components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../components/premium-responsive-spacing */ "./src/components/premium-responsive-spacing.js");
-/* harmony import */ var _components_inspectorTabs__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../components/inspectorTabs */ "./src/components/inspectorTabs.js");
-/* harmony import */ var _components_inspectorTab__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../components/inspectorTab */ "./src/components/inspectorTab.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./src/blocks/node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_premium_typo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/premium-typo */ "./src/components/premium-typo.js");
+/* harmony import */ var _components_premium_border__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/premium-border */ "./src/components/premium-border.js");
+/* harmony import */ var _components_premium_icons_list__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/premium-icons-list */ "./src/components/premium-icons-list.js");
+/* harmony import */ var _fonticonpicker_react_fonticonpicker__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @fonticonpicker/react-fonticonpicker */ "./node_modules/@fonticonpicker/react-fonticonpicker/dist/fonticonpicker.react.js");
+/* harmony import */ var _fonticonpicker_react_fonticonpicker__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_fonticonpicker_react_fonticonpicker__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/Color Control/ColorComponent */ "./src/components/Color Control/ColorComponent.js");
+/* harmony import */ var _components_PremiumShadow__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/PremiumShadow */ "./src/components/PremiumShadow.js");
+/* harmony import */ var _components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/premium-responsive-tabs */ "./src/components/premium-responsive-tabs.js");
+/* harmony import */ var _components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/RangeControl/responsive-range-control */ "./src/components/RangeControl/responsive-range-control.js");
+/* harmony import */ var _components_Premium_Background_Control__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/Premium-Background-Control */ "./src/components/Premium-Background-Control.js");
+/* harmony import */ var _components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/RangeControl/single-range-control */ "./src/components/RangeControl/single-range-control.js");
+/* harmony import */ var _components_premium_media_upload__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/premium-media-upload */ "./src/components/premium-media-upload.js");
+/* harmony import */ var react_lottie_with_segments__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-lottie-with-segments */ "./node_modules/react-lottie-with-segments/dist/index.js");
+/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
+/* harmony import */ var _components_icons__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../components/icons */ "./src/components/icons.js");
+/* harmony import */ var _components_responsive_radio__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../components/responsive-radio */ "./src/components/responsive-radio.js");
+/* harmony import */ var _components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../components/premium-responsive-spacing */ "./src/components/premium-responsive-spacing.js");
+/* harmony import */ var _components_inspectorTabs__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../components/inspectorTabs */ "./src/components/inspectorTabs.js");
+/* harmony import */ var _components_inspectorTab__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../components/inspectorTab */ "./src/components/inspectorTab.js");
+
 
 
 
@@ -25829,7 +25867,7 @@ class edit extends Component {
 
     if (!this.props.attributes.blockId) {
       setAttributes({
-        blockId: "premium-heading-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_13__.generateBlockId)(clientId)
+        blockId: "premium-heading-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_14__.generateBlockId)(clientId)
       });
     }
 
@@ -25923,7 +25961,8 @@ class edit extends Component {
     const {
       attributes,
       setAttributes,
-      isSelected
+      isSelected,
+      className
     } = this.props;
     const {
       blockId,
@@ -26123,7 +26162,7 @@ class edit extends Component {
     }
 
     const loadStyles = () => {
-      var _titleBorder$borderWi, _titleBorder$borderWi2, _titleBorder$borderWi3, _titleBorder$borderWi4, _titleBorder$borderWi5, _titleBorder$borderWi6, _titleBorder$borderWi7, _titleBorder$borderWi8, _titleBorder$borderRa, _titleBorder$borderRa2, _titleBorder$borderRa3, _titleBorder$borderRa4, _titleBorder$borderRa5, _titleBorder$borderRa6, _titleBorder$borderRa7, _titleBorder$borderRa8, _titleBorder$borderWi9, _titleBorder$borderWi10, _titleBorder$borderWi11, _titleBorder$borderWi12, _titleBorder$borderWi13, _titleBorder$borderWi14, _titleBorder$borderWi15, _titleBorder$borderWi16, _titleBorder$borderWi17, _titleBorder$borderWi18, _titleBorder$borderWi19, _titleBorder$borderWi20, _titleBorder$borderRa9, _titleBorder$borderRa10, _titleBorder$borderRa11, _titleBorder$borderRa12, _titleBorder$borderRa13, _titleBorder$borderRa14, _titleBorder$borderRa15, _titleBorder$borderRa16, _titleBorder$borderWi21, _titleBorder$borderWi22, _titleBorder$borderWi23, _titleBorder$borderWi24, _titleBorder$borderWi25, _titleBorder$borderWi26, _titleBorder$borderWi27, _titleBorder$borderWi28, _titleBorder$borderWi29, _titleBorder$borderWi30, _titleBorder$borderWi31, _titleBorder$borderWi32, _titleBorder$borderRa17, _titleBorder$borderRa18, _titleBorder$borderRa19, _titleBorder$borderRa20, _titleBorder$borderRa21, _titleBorder$borderRa22, _titleBorder$borderRa23, _titleBorder$borderRa24, _titleBorder$borderWi33, _titleBorder$borderWi34, _titleBorder$borderWi35, _titleBorder$borderWi36, _titleBorder$borderWi37, _titleBorder$borderWi38, _titleBorder$borderWi39, _titleBorder$borderWi40, _titleBorder$borderWi41, _titleBorder$borderWi42, _titleBorder$borderWi43, _titleBorder$borderWi44, _titleBorder$borderRa25, _titleBorder$borderRa26, _titleBorder$borderRa27, _titleBorder$borderRa28, _titleBorder$borderRa29, _titleBorder$borderRa30, _titleBorder$borderRa31, _titleBorder$borderRa32, _titleBorder$borderWi45, _titleBorder$borderWi46, _titleBorder$borderWi47, _titleBorder$borderWi48, _titleBorder$borderWi49, _titleBorder$borderWi50, _titleBorder$borderWi51, _titleBorder$borderWi52, _titleBorder$borderWi53, _titleBorder$borderWi54, _titleBorder$borderWi55, _titleBorder$borderWi56, _titleBorder$borderRa33, _titleBorder$borderRa34, _titleBorder$borderRa35, _titleBorder$borderRa36, _titleBorder$borderRa37, _titleBorder$borderRa38, _titleBorder$borderRa39, _titleBorder$borderRa40, _titleBorder$borderWi57, _titleBorder$borderWi58, _titleBorder$borderWi59, _titleBorder$borderWi60, _iconBorder$borderWid, _iconBorder$borderWid2, _iconBorder$borderWid3, _iconBorder$borderWid4, _iconBorder$borderWid5, _iconBorder$borderWid6, _iconBorder$borderWid7, _iconBorder$borderWid8, _iconBorder$borderRad, _iconBorder$borderRad2, _iconBorder$borderRad3, _iconBorder$borderRad4, _iconBorder$borderRad5, _iconBorder$borderRad6, _iconBorder$borderRad7, _iconBorder$borderRad8, _textTypography$fontS, _textTypography$fontS2, _titleTypography$font, _titleTypography$font2;
+      var _titleBorder$borderWi, _titleBorder$borderWi2, _titleBorder$borderWi3, _titleBorder$borderWi4, _titleBorder$borderWi5, _titleBorder$borderWi6, _titleBorder$borderWi7, _titleBorder$borderWi8, _titleBorder$borderRa, _titleBorder$borderRa2, _titleBorder$borderRa3, _titleBorder$borderRa4, _titleBorder$borderRa5, _titleBorder$borderRa6, _titleBorder$borderRa7, _titleBorder$borderRa8, _titleBorder$borderWi9, _titleBorder$borderWi10, _titleBorder$borderWi11, _titleBorder$borderWi12, _titleBorder$borderWi13, _titleBorder$borderWi14, _titleBorder$borderWi15, _titleBorder$borderWi16, _titleBorder$borderWi17, _titleBorder$borderWi18, _titleBorder$borderWi19, _titleBorder$borderWi20, _titleBorder$borderRa9, _titleBorder$borderRa10, _titleBorder$borderRa11, _titleBorder$borderRa12, _titleBorder$borderRa13, _titleBorder$borderRa14, _titleBorder$borderRa15, _titleBorder$borderRa16, _titleBorder$borderWi21, _titleBorder$borderWi22, _titleBorder$borderWi23, _titleBorder$borderWi24, _titleBorder$borderWi25, _titleBorder$borderWi26, _titleBorder$borderWi27, _titleBorder$borderWi28, _titleBorder$borderWi29, _titleBorder$borderWi30, _titleBorder$borderWi31, _titleBorder$borderWi32, _titleBorder$borderRa17, _titleBorder$borderRa18, _titleBorder$borderRa19, _titleBorder$borderRa20, _titleBorder$borderRa21, _titleBorder$borderRa22, _titleBorder$borderRa23, _titleBorder$borderRa24, _titleBorder$borderWi33, _titleBorder$borderWi34, _titleBorder$borderWi35, _titleBorder$borderWi36, _titleBorder$borderWi37, _titleBorder$borderWi38, _titleBorder$borderWi39, _titleBorder$borderWi40, _titleBorder$borderWi41, _titleBorder$borderWi42, _titleBorder$borderWi43, _titleBorder$borderWi44, _titleBorder$borderRa25, _titleBorder$borderRa26, _titleBorder$borderRa27, _titleBorder$borderRa28, _titleBorder$borderRa29, _titleBorder$borderRa30, _titleBorder$borderRa31, _titleBorder$borderRa32, _titleBorder$borderWi45, _titleBorder$borderWi46, _titleBorder$borderWi47, _titleBorder$borderWi48, _titleBorder$borderWi49, _titleBorder$borderWi50, _titleBorder$borderWi51, _titleBorder$borderWi52, _titleBorder$borderWi53, _titleBorder$borderWi54, _titleBorder$borderWi55, _titleBorder$borderWi56, _titleBorder$borderRa33, _titleBorder$borderRa34, _titleBorder$borderRa35, _titleBorder$borderRa36, _titleBorder$borderRa37, _titleBorder$borderRa38, _titleBorder$borderRa39, _titleBorder$borderRa40, _titleBorder$borderWi57, _titleBorder$borderWi58, _titleBorder$borderWi59, _titleBorder$borderWi60, _iconBorder$borderWid, _iconBorder$borderWid2, _iconBorder$borderWid3, _iconBorder$borderWid4, _iconBorder$borderWid5, _iconBorder$borderWid6, _iconBorder$borderWid7, _iconBorder$borderWid8, _iconBorder$borderRad, _iconBorder$borderRad2, _iconBorder$borderRad3, _iconBorder$borderRad4, _iconBorder$borderRad5, _iconBorder$borderRad6, _iconBorder$borderRad7, _iconBorder$borderRad8, _textTypography$fontS, _textTypography$fontS2, _textTypography$lette, _textTypography$lette2, _textTypography$lineH, _textTypography$lineH2, _titleTypography$font, _titleTypography$font2;
 
       const styles = {};
       styles[`.${blockId} .premium-title-style8__wrap .premium-title-text-title[data-animation='shiny']`] = {
@@ -26260,8 +26299,8 @@ class edit extends Component {
         'font-family': `${textTypography === null || textTypography === void 0 ? void 0 : textTypography.fontFamily}`,
         'font-size': `${textTypography === null || textTypography === void 0 ? void 0 : (_textTypography$fontS = textTypography.fontSize) === null || _textTypography$fontS === void 0 ? void 0 : _textTypography$fontS[this.props.deviceType]}${textTypography === null || textTypography === void 0 ? void 0 : (_textTypography$fontS2 = textTypography.fontSize) === null || _textTypography$fontS2 === void 0 ? void 0 : _textTypography$fontS2.unit}`,
         'font-weight': `${textTypography === null || textTypography === void 0 ? void 0 : textTypography.fontWeight}`,
-        'letter-spacing': `${textTypography === null || textTypography === void 0 ? void 0 : textTypography.letterSpacing}`,
-        'line-height': `${textTypography === null || textTypography === void 0 ? void 0 : textTypography.lineHeight}`,
+        'letter-spacing': `${textTypography === null || textTypography === void 0 ? void 0 : (_textTypography$lette = textTypography.letterSpacing) === null || _textTypography$lette === void 0 ? void 0 : _textTypography$lette[this.props.deviceType]}${textTypography === null || textTypography === void 0 ? void 0 : (_textTypography$lette2 = textTypography.letterSpacing) === null || _textTypography$lette2 === void 0 ? void 0 : _textTypography$lette2.unit}`,
+        'line-height': `${textTypography === null || textTypography === void 0 ? void 0 : (_textTypography$lineH = textTypography.lineHeight) === null || _textTypography$lineH === void 0 ? void 0 : _textTypography$lineH[this.props.deviceType]}${textTypography === null || textTypography === void 0 ? void 0 : (_textTypography$lineH2 = textTypography.lineHeight) === null || _textTypography$lineH2 === void 0 ? void 0 : _textTypography$lineH2.unit}`,
         'font-style': `${textTypography === null || textTypography === void 0 ? void 0 : textTypography.fontStyle}`,
         'text-transform': `${textTypography === null || textTypography === void 0 ? void 0 : textTypography.textTransform}`,
         'text-decoration': `${textTypography === null || textTypography === void 0 ? void 0 : textTypography.textDecoration}`,
@@ -26292,7 +26331,7 @@ class edit extends Component {
         'font-style': `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontStyle}`,
         'text-shadow': `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color} !important`
       };
-      return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_13__.generateCss)(styles);
+      return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_14__.generateCss)(styles);
     };
 
     const saveTitleStyles = value => {
@@ -26365,12 +26404,17 @@ class edit extends Component {
         }
       });
     });
+    const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, {
+      " premium-desktop-hidden": hideDesktop,
+      " premium-tablet-hidden": hideTablet,
+      " premium-mobile-hidden": hideMobile
+    });
     const reverse = reversedir ? -1 : 1;
     return [isSelected && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InspectorControls, {
       key: "inspector"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTabs__WEBPACK_IMPORTED_MODULE_17__["default"], {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTabs__WEBPACK_IMPORTED_MODULE_18__["default"], {
       tabs: ['layout', 'style', 'advance']
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_18__["default"], {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_19__["default"], {
       key: 'layout'
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
       title: __("Title"),
@@ -26396,8 +26440,8 @@ class edit extends Component {
         iconType: newSelect
       }),
       options: ICON
-    }), iconType === 'icon' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, __("Icon")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)((_fonticonpicker_react_fonticonpicker__WEBPACK_IMPORTED_MODULE_4___default()), {
-      icons: _components_premium_icons_list__WEBPACK_IMPORTED_MODULE_3__["default"],
+    }), iconType === 'icon' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, __("Icon")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)((_fonticonpicker_react_fonticonpicker__WEBPACK_IMPORTED_MODULE_5___default()), {
+      icons: _components_premium_icons_list__WEBPACK_IMPORTED_MODULE_4__["default"],
       value: icon,
       onChange: value => setAttributes({
         icon: value
@@ -26424,7 +26468,7 @@ class edit extends Component {
       onChange: value => setAttributes({
         reversedir: value
       })
-    })), iconType === 'image' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_media_upload__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    })), iconType === 'image' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_media_upload__WEBPACK_IMPORTED_MODULE_12__["default"], {
       type: "image",
       imageID: imageID,
       imageURL: imageURL,
@@ -26445,19 +26489,19 @@ class edit extends Component {
         iconPosition: newSelect
       }),
       options: POSITION
-    }), iconPosition === 'top' && style != 'style3' && style != 'style4' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_15__["default"], {
+    }), iconPosition === 'top' && style != 'style3' && style != 'style4' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_16__["default"], {
       choices: [{
         value: 'left',
         label: __('Left'),
-        icon: _components_icons__WEBPACK_IMPORTED_MODULE_14__["default"].alignLeft
+        icon: _components_icons__WEBPACK_IMPORTED_MODULE_15__["default"].alignLeft
       }, {
         value: 'center',
         label: __('Center'),
-        icon: _components_icons__WEBPACK_IMPORTED_MODULE_14__["default"].alignCenter
+        icon: _components_icons__WEBPACK_IMPORTED_MODULE_15__["default"].alignCenter
       }, {
         value: 'right',
         label: __('Right'),
-        icon: _components_icons__WEBPACK_IMPORTED_MODULE_14__["default"].alignRight
+        icon: _components_icons__WEBPACK_IMPORTED_MODULE_15__["default"].alignRight
       }],
       value: iconAlign,
       onChange: align => setAttributes({
@@ -26472,7 +26516,7 @@ class edit extends Component {
         stripePosition: newSelect
       }),
       options: STRIPEPOSITION
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
       label: __("Stripe Width", 'premium-blocks-for-gutenberg'),
       value: stripeWidth,
       units: ['px', 'em', '%'],
@@ -26482,7 +26526,7 @@ class edit extends Component {
       showUnit: true,
       min: 1,
       max: 1000
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
       label: __("Stripe Height", 'premium-blocks-for-gutenberg'),
       value: stripeHeight,
       units: ['px', 'em', '%'],
@@ -26492,7 +26536,7 @@ class edit extends Component {
       showUnit: true,
       min: 1,
       max: 1000
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
       label: __("Stripe Top Spacing", 'premium-blocks-for-gutenberg'),
       value: stripeTopSpacing,
       units: ['px', 'em', '%'],
@@ -26502,7 +26546,7 @@ class edit extends Component {
       showUnit: true,
       min: 1,
       max: 1000
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
       label: __("Stripe Bottom Spacing", 'premium-blocks-for-gutenberg'),
       value: stripeBottomSpacing,
       units: ['px', 'em', '%'],
@@ -26512,19 +26556,19 @@ class edit extends Component {
       showUnit: true,
       min: 1,
       max: 1000
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_15__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_16__["default"], {
       choices: [{
         value: 'left',
         label: __('Left'),
-        icon: _components_icons__WEBPACK_IMPORTED_MODULE_14__["default"].alignLeft
+        icon: _components_icons__WEBPACK_IMPORTED_MODULE_15__["default"].alignLeft
       }, {
         value: 'center',
         label: __('Center'),
-        icon: _components_icons__WEBPACK_IMPORTED_MODULE_14__["default"].alignCenter
+        icon: _components_icons__WEBPACK_IMPORTED_MODULE_15__["default"].alignCenter
       }, {
         value: 'right',
         label: __('Right'),
-        icon: _components_icons__WEBPACK_IMPORTED_MODULE_14__["default"].alignRight
+        icon: _components_icons__WEBPACK_IMPORTED_MODULE_15__["default"].alignRight
       }],
       value: stripeAlign,
       onChange: align => setAttributes({
@@ -26539,19 +26583,19 @@ class edit extends Component {
       onChange: newValue => setAttributes({
         titleTag: newValue
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_15__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_16__["default"], {
       choices: [{
         value: 'left',
         label: __('Left'),
-        icon: _components_icons__WEBPACK_IMPORTED_MODULE_14__["default"].alignLeft
+        icon: _components_icons__WEBPACK_IMPORTED_MODULE_15__["default"].alignLeft
       }, {
         value: 'center',
         label: __('Center'),
-        icon: _components_icons__WEBPACK_IMPORTED_MODULE_14__["default"].alignCenter
+        icon: _components_icons__WEBPACK_IMPORTED_MODULE_15__["default"].alignCenter
       }, {
         value: 'right',
         label: __('Right'),
-        icon: _components_icons__WEBPACK_IMPORTED_MODULE_14__["default"].alignRight
+        icon: _components_icons__WEBPACK_IMPORTED_MODULE_15__["default"].alignRight
       }],
       value: align,
       onChange: align => setAttributes({
@@ -26602,7 +26646,7 @@ class edit extends Component {
         label: "Full Width",
         value: '100%'
       }]
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
       label: __("Horizontal Offset", 'premium-blocks-for-gutenberg'),
       value: horizontalText,
       onChange: newValue => setAttributes({
@@ -26612,7 +26656,7 @@ class edit extends Component {
       showUnit: true,
       min: -500,
       max: 500
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
       label: __("Vertical Offset", 'premium-blocks-for-gutenberg'),
       value: verticalText,
       onChange: newValue => setAttributes({
@@ -26623,7 +26667,7 @@ class edit extends Component {
       min: -500,
       max: 500,
       step: 1
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
       label: __("Rotate (degrees)", 'premium-blocks-for-gutenberg'),
       value: rotateText,
       onChange: newValue => setAttributes({
@@ -26633,13 +26677,13 @@ class edit extends Component {
       min: 0,
       max: 360,
       step: 1
-    })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_18__["default"], {
+    })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_19__["default"], {
       key: 'style'
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
       title: __("Title"),
       className: "premium-panel-body",
       initialOpen: true
-    }, (style === "style8" || style === "style9") && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    }, (style === "style8" || style === "style9") && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_11__["default"], {
       label: __("Animation Delay", 'premium-block-for-gutenberg'),
       value: titleStyles[0].animateDelay,
       onChange: value => saveTitleStyles({
@@ -26650,7 +26694,7 @@ class edit extends Component {
       min: 1,
       max: 30,
       step: 0.5
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null)), style === "style8" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null)), style === "style8" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_11__["default"], {
       label: __("Animation Duration", 'premium-block-for-gutenberg'),
       value: titleStyles[0].animateduration,
       onChange: value => saveTitleStyles({
@@ -26659,83 +26703,83 @@ class edit extends Component {
       showUnit: false,
       defaultValue: 1,
       step: 0.5
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_2__["default"], {
       components: ["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"],
       value: titleTypography,
       onChange: newValue => setAttributes({
         titleTypography: newValue
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
       label: __("Color", 'premium-block-for-gutenberg'),
       colorValue: titleStyles[0].titleColor,
       colorDefault: '',
       onColorChange: newValue => saveTitleStyles({
         titleColor: newValue
       })
-    }), style === "style8" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    }), style === "style8" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
       label: __("Shiny Color", 'premium-block-for-gutenberg'),
       colorValue: titleStyles[0].shinyColor,
       colorDefault: '',
       onColorChange: newValue => saveTitleStyles({
         shinyColor: newValue
       })
-    }), style === "style9" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    }), style === "style9" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
       label: __("Blur Color", 'premium-block-for-gutenberg'),
       colorValue: titleStyles[0].blurColor,
       colorDefault: '',
       onColorChange: newValue => saveTitleStyles({
         blurColor: newValue
       })
-    }), style === 'style2' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    }), style === 'style2' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
       label: __("Background Color", 'premium-block-for-gutenberg'),
       colorValue: titleStyles[0].BGColor,
       colorDefault: '',
       onColorChange: newValue => saveTitleStyles({
         BGColor: newValue
       })
-    }), style === 'style3' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    }), style === 'style3' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
       label: __("Background Color", 'premium-block-for-gutenberg'),
       colorValue: titleStyles[0].BGColor,
       colorDefault: '',
       onColorChange: newValue => saveTitleStyles({
         BGColor: newValue
       })
-    }), style === 'style5' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    }), style === 'style5' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
       label: __("Line Color", 'premium-block-for-gutenberg'),
       colorValue: titleStyles[0].lineColor,
       colorDefault: '',
       onColorChange: newValue => saveTitleStyles({
         lineColor: newValue
       })
-    }), style === 'style6' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    }), style === 'style6' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
       label: __("Line Color", 'premium-block-for-gutenberg'),
       colorValue: titleStyles[0].lineColor,
       colorDefault: '',
       onColorChange: newValue => saveTitleStyles({
         lineColor: newValue
       })
-    }), style === 'style6' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    }), style === 'style6' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
       label: __("Triangle Color", 'premium-block-for-gutenberg'),
       colorValue: titleStyles[0].triangleColor,
       colorDefault: '',
       onColorChange: newValue => saveTitleStyles({
         triangleColor: newValue
       })
-    }), style === 'style7' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    }), style === 'style7' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
       label: __("Stripe Color", 'premium-block-for-gutenberg'),
       colorValue: titleStyles[0].stripeColor,
       colorDefault: '',
       onColorChange: newValue => saveTitleStyles({
         stripeColor: newValue
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_7__["default"], {
       label: __("Shadow", 'premium-blocks-for-gutenberg'),
       boxShadow: false,
       value: titleShadow,
       onChange: value => setAttributes({
         titleShadow: value
       })
-    }), style === "style9" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    }), style === "style9" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_11__["default"], {
       label: __("Blur Shadow Value (px)", 'premium-block-for-gutenberg'),
       value: titleStyles[0].blurShadow,
       onChange: value => saveTitleStyles({
@@ -26746,7 +26790,7 @@ class edit extends Component {
       min: 10,
       max: 500,
       step: 10
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), style != 'style3' && style !== "style7" && style !== "style8" && style !== "style9" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), style != 'style3' && style !== "style7" && style !== "style8" && style !== "style9" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_3__["default"], {
       label: __("Border"),
       value: titleBorder,
       borderType: titleBorder.borderType,
@@ -26756,7 +26800,7 @@ class edit extends Component {
       onChange: value => setAttributes({
         titleBorder: value
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_16__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_17__["default"], {
       value: titleMargin,
       responsive: true,
       showUnits: true,
@@ -26764,7 +26808,7 @@ class edit extends Component {
       onChange: value => setAttributes({
         titleMargin: value
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_16__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_17__["default"], {
       value: titlePadding,
       responsive: true,
       showUnits: true,
@@ -26776,7 +26820,7 @@ class edit extends Component {
       title: __("Icon"),
       className: "premium-panel-body",
       initialOpen: false
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
       label: __("Size", 'premium-blocks-for-gutenberg'),
       value: iconSize,
       onChange: newValue => setAttributes({
@@ -26787,36 +26831,32 @@ class edit extends Component {
       min: 0,
       max: 360,
       step: 1
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), iconType === 'icon' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), iconType === 'icon' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
       label: __("Color", 'premium-block-for-gutenberg'),
       colorValue: iconStyles[0].iconColor,
       colorDefault: '',
       onColorChange: newValue => saveIconStyles({
         iconColor: newValue
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Premium_Background_Control__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Premium_Background_Control__WEBPACK_IMPORTED_MODULE_10__["default"], {
       value: iconBackground,
       onChange: value => setAttributes({
         iconBackground: value
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), iconType === 'icon' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), iconType === 'icon' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_7__["default"], {
       label: __("Icon Shadow", 'premium-blocks-for-gutenberg'),
       boxShadow: false,
       value: iconshadow,
       onChange: value => setAttributes({
         iconshadow: value
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_3__["default"], {
       label: __("Border"),
       value: iconBorder,
-      borderType: iconBorder.borderType,
-      borderColor: iconBorder.borderColor,
-      borderWidth: iconBorder.borderWidth,
-      borderRadius: iconBorder.borderRadius,
       onChange: value => setAttributes({
         iconBorder: value
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_16__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_17__["default"], {
       value: iconMargin,
       responsive: true,
       showUnits: true,
@@ -26824,7 +26864,7 @@ class edit extends Component {
       onChange: value => setAttributes({
         iconMargin: value
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_16__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_17__["default"], {
       value: iconPadding,
       responsive: true,
       showUnits: true,
@@ -26832,26 +26872,26 @@ class edit extends Component {
       onChange: value => setAttributes({
         iconPadding: value
       })
-    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_18__["default"], {
+    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_19__["default"], {
       key: 'style'
     }, backgroundText && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
       title: __("Background Text"),
       className: "premium-panel-body",
       initialOpen: false
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_2__["default"], {
       components: ["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"],
       value: textTypography,
       onChange: newValue => setAttributes({
         titleTypography: newValue
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
       label: __("Color", 'premium-block-for-gutenberg'),
       colorValue: textStyles[0].textBackColor,
       colorDefault: '',
       onColorChange: newValue => saveTextStyles({
         textBackColor: newValue
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_7__["default"], {
       label: __("Text Shadow", 'premium-blocks-for-gutenberg'),
       boxShadow: false,
       value: textBackshadow,
@@ -26864,14 +26904,14 @@ class edit extends Component {
       onChange: newValue => saveStrokeStyles({
         stroke: newValue
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), strokeStyles[0].stroke && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), strokeStyles[0].stroke && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
       label: __("Stroke Color", 'premium-block-for-gutenberg'),
       colorValue: strokeStyles[0].strokeColor,
       colorDefault: '',
       onColorChange: newValue => saveStrokeStyles({
         strokeColor: newValue
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
       label: __("Stroke Full Width", 'premium-blocks-for-gutenberg'),
       value: strokeFull,
       onChange: newValue => setAttributes({
@@ -26888,7 +26928,7 @@ class edit extends Component {
         blend: newSelect
       }),
       options: BLEND
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_11__["default"], {
       label: __("z-index", 'premium-block-for-gutenberg'),
       value: zIndex,
       onChange: value => setAttributes({
@@ -26898,9 +26938,9 @@ class edit extends Component {
       defaultValue: 0,
       min: 0,
       max: 100
-    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_18__["default"], {
+    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_19__["default"], {
       key: 'advance'
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_8__["default"], {
       Desktop: hideDesktop,
       Tablet: hideTablet,
       Mobile: hideMobile,
@@ -26913,12 +26953,8 @@ class edit extends Component {
       onChangeMobile: value => setAttributes({
         hideMobile: value ? " premium-mobile-hidden" : ""
       })
-    })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
-      dangerouslySetInnerHTML: {
-        __html: loadStyles()
-      }
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`,
+    })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, loadStyles()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: `${blockId} ${mainClasses}`,
       style: {
         textAlign: align === null || align === void 0 ? void 0 : align[this.props.deviceType]
       }
@@ -26947,7 +26983,7 @@ class edit extends Component {
         paddingBottom: TitlePaddingBottom && `${TitlePaddingBottom}${titlePadding.unit}`,
         paddingLeft: TitlePaddingLeft && `${TitlePaddingLeft}${titlePadding.unit}`,
         paddingRight: TitlePaddingRight && `${TitlePaddingRight}${titlePadding.unit}`,
-        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_13__.typographyCss)(titleTypography, this.props.deviceType)
+        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_14__.typographyCss)(titleTypography, this.props.deviceType)
       }
     }, [(0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, style === 'style7' ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, iconPosition != 'top' && iconValue && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
       className: `premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign['Desktop']} premium-stripe-tablet-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign['Tablet']} premium-stripe-mobile-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign['Mobile']}`
@@ -26966,7 +27002,7 @@ class edit extends Component {
       src: imageURL
     }), iconValue && iconType == 'lottie' && lottieURl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: " premium-title-icon premium-lottie-animation"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_lottie_with_segments__WEBPACK_IMPORTED_MODULE_12__["default"], {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_lottie_with_segments__WEBPACK_IMPORTED_MODULE_13__["default"], {
       options: {
         loop: loop,
         path: lottieURl,
@@ -26996,7 +27032,7 @@ class edit extends Component {
       src: imageURL
     }), iconValue && iconType == 'lottie' && lottieURl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: " premium-title-icon premium-lottie-animation"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_lottie_with_segments__WEBPACK_IMPORTED_MODULE_12__["default"], {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_lottie_with_segments__WEBPACK_IMPORTED_MODULE_13__["default"], {
       options: {
         loop: loop,
         path: lottieURl,
@@ -27025,7 +27061,7 @@ class edit extends Component {
       src: imageURL
     }), iconValue && iconType == 'lottie' && lottieURl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: " premium-title-icon premium-lottie-animation"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_lottie_with_segments__WEBPACK_IMPORTED_MODULE_12__["default"], {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_lottie_with_segments__WEBPACK_IMPORTED_MODULE_13__["default"], {
       options: {
         loop: loop,
         path: lottieURl,
@@ -27120,7 +27156,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./src/blocks/node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
+
 
 
 const {
@@ -27131,7 +27170,8 @@ const {
 } = wp.blockEditor;
 function save(props) {
   const {
-    attributes
+    attributes,
+    className
   } = props;
   const {
     blockId,
@@ -27177,7 +27217,7 @@ function save(props) {
       tagName: "span",
       className: `premium-title-style9-letter`,
       value: letter,
-      style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_1__.filterJsCss)({
+      style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
         color: titleStyles[0].titleColor
       })
     });
@@ -27262,8 +27302,6 @@ function save(props) {
       'color': `${textStyles[0].textBackColor}`,
       'font-family': `${textTypography === null || textTypography === void 0 ? void 0 : textTypography.fontFamily}`,
       'font-weight': `${textTypography === null || textTypography === void 0 ? void 0 : textTypography.fontWeight}`,
-      'letter-spacing': `${textTypography === null || textTypography === void 0 ? void 0 : textTypography.letterSpacing}`,
-      'line-height': `${textTypography === null || textTypography === void 0 ? void 0 : textTypography.lineHeight}`,
       'font-style': `${textTypography === null || textTypography === void 0 ? void 0 : textTypography.fontStyle}`,
       'text-transform': `${textTypography === null || textTypography === void 0 ? void 0 : textTypography.textTransform}`,
       'text-decoration': `${textTypography === null || textTypography === void 0 ? void 0 : textTypography.textDecoration}`,
@@ -27283,16 +27321,17 @@ function save(props) {
       'font-style': `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontStyle}`,
       'text-shadow': `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color} !important`
     };
-    return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_1__.generateCss)(styles);
+    return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.generateCss)(styles);
   };
 
+  const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, {
+    " premium-desktop-hidden": hideDesktop,
+    " premium-tablet-hidden": hideTablet,
+    " premium-mobile-hidden": hideMobile
+  });
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: `${blockId} ${hideDesktop ? hideDesktop : ''} ${hideTablet ? hideTablet : ''} ${hideMobile ? hideMobile : ''}`
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
-    dangerouslySetInnerHTML: {
-      __html: loadStyles()
-    }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: `${blockId} ${mainClasses}`
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, loadStyles()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-title   ${backgroundText ? 'premium-title-bg-text' : ""}`,
     "data-backgroundText": BackText
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -27303,15 +27342,13 @@ function save(props) {
     className: `premium-title-header premium-title-${style}__wrap ${iconValue ? iconPosition : ""} ${iconPosition == 'top' ? `premium-title-${iconAlign === null || iconAlign === void 0 ? void 0 : iconAlign['Desktop']} premium-title-tablet-${iconAlign === null || iconAlign === void 0 ? void 0 : iconAlign['Tablet']} premium-title-mobile-${iconAlign === null || iconAlign === void 0 ? void 0 : iconAlign['Mobile']}` : ""}`,
     'data-blur-delay': `${titleStyles[0].animateDelay}`,
     'data-shiny-dur': `${titleStyles[0].animateduration}`,
-    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_1__.filterJsCss)({
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       color: titleStyles[0].titleColor,
       fontStyle: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontStyle,
       fontFamily: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontFamily,
       fontWeight: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontWeight,
-      letterSpacing: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.letterSpacing,
       textDecoration: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textDecoration,
       textTransform: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textTransform,
-      lineHeight: `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.lineHeight}px`,
       textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`
     })
   }, [(0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, style === 'style7' ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, iconPosition != 'top' && iconValue && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
@@ -27343,7 +27380,7 @@ function save(props) {
     tagName: "span",
     className: `premium-title-text-title`,
     value: title,
-    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_1__.filterJsCss)({
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       color: titleStyles[0].titleColor
     })
   }))) : style === "style9" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, iconValue && iconType == 'icon' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
@@ -27359,7 +27396,7 @@ function save(props) {
     "data-trigger": "none"
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: `premium-letters-container`,
-    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_1__.filterJsCss)({
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       color: titleStyles[0].titleColor
     })
   }, styleContainer)) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, iconValue && iconType == 'icon' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
@@ -41743,7 +41780,7 @@ const attributes = {
   },
   descChecked: {
     type: "boolean",
-    default: false
+    default: true
   },
   priceChecked: {
     type: "boolean",
@@ -41764,7 +41801,8 @@ const attributes = {
     selector: ".premium-pricing-table__button_link"
   },
   badgeChecked: {
-    type: "boolean"
+    type: "boolean",
+    default: true
   },
   listChecked: {
     type: "boolean",
@@ -41805,18 +41843,28 @@ const attributes = {
   titleTypography: {
     type: "object",
     default: {
-      "fontWeight": '400',
-      'fontStyle': '',
-      'textTransform': '',
-      'letterSpacing': '',
-      'fontFamily': 'Default',
-      'lineHeight': '',
-      'textDecoration': '',
-      'fontSize': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
+      fontWeight: "400",
+      fontStyle: "",
+      letterSpacing: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
+      },
+      fontFamily: "Default",
+      lineHeight: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
+      },
+      textDecoration: "",
+      textTransform: "",
+      fontSize: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
       }
     }
   },
@@ -41850,90 +41898,140 @@ const attributes = {
   slashTypography: {
     type: "object",
     default: {
-      "fontWeight": '500',
-      'fontStyle': '',
-      'textTransform': '',
-      'letterSpacing': '',
-      'fontFamily': 'Default',
-      'lineHeight': '',
-      'textDecoration': '',
-      'fontSize': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
+      fontWeight: "400",
+      fontStyle: "",
+      letterSpacing: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
+      },
+      fontFamily: "Default",
+      lineHeight: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
+      },
+      textDecoration: "",
+      textTransform: "",
+      fontSize: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
       }
     }
   },
   currTypography: {
     type: "object",
     default: {
-      "fontWeight": '500',
-      'fontStyle': '',
-      'textTransform': '',
-      'letterSpacing': '',
-      'fontFamily': 'Default',
-      'lineHeight': '',
-      'textDecoration': '',
-      'fontSize': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
+      fontWeight: "400",
+      fontStyle: "",
+      letterSpacing: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
+      },
+      fontFamily: "Default",
+      lineHeight: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
+      },
+      textDecoration: "",
+      textTransform: "",
+      fontSize: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
       }
     }
   },
   priceTypography: {
     type: "object",
     default: {
-      "fontWeight": '400',
-      'fontStyle': '',
-      'textTransform': '',
-      'letterSpacing': '',
-      'fontFamily': 'Default',
-      'lineHeight': '',
-      'textDecoration': '',
-      'fontSize': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
+      fontWeight: "400",
+      fontStyle: "",
+      letterSpacing: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
+      },
+      fontFamily: "Default",
+      lineHeight: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
+      },
+      textDecoration: "",
+      textTransform: "",
+      fontSize: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
       }
     }
   },
   dividerTypography: {
     type: "object",
     default: {
-      "fontWeight": '400',
-      'fontStyle': '',
-      'textTransform': '',
-      'letterSpacing': '',
-      'fontFamily': 'Default',
-      'lineHeight': '',
-      'textDecoration': '',
-      'fontSize': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
+      fontWeight: "400",
+      fontStyle: "",
+      letterSpacing: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
+      },
+      fontFamily: "Default",
+      lineHeight: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
+      },
+      textDecoration: "",
+      textTransform: "",
+      fontSize: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
       }
     }
   },
   durationTypography: {
     type: "object",
     default: {
-      "fontWeight": '400',
-      'fontStyle': '',
-      'textTransform': '',
-      'letterSpacing': '',
-      'fontFamily': 'Default',
-      'lineHeight': '',
-      'textDecoration': '',
-      'fontSize': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
+      fontWeight: "400",
+      fontStyle: "",
+      letterSpacing: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
+      },
+      fontFamily: "Default",
+      lineHeight: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
+      },
+      textDecoration: "",
+      textTransform: "",
+      fontSize: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
       }
     }
   },
@@ -41989,18 +42087,28 @@ const attributes = {
   listTypography: {
     type: "object",
     default: {
-      "fontWeight": '400',
-      'fontStyle': '',
-      'textTransform': '',
-      'letterSpacing': '',
-      'fontFamily': 'Default',
-      'lineHeight': '',
-      'textDecoration': '',
-      'fontSize': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
+      fontWeight: "400",
+      fontStyle: "",
+      letterSpacing: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
+      },
+      fontFamily: "Default",
+      lineHeight: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
+      },
+      textDecoration: "",
+      textTransform: "",
+      fontSize: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
       }
     }
   },
@@ -42025,18 +42133,28 @@ const attributes = {
   descTypography: {
     type: "object",
     default: {
-      "fontWeight": '400',
-      'fontStyle': '',
-      'textTransform': '',
-      'letterSpacing': '',
-      'fontFamily': 'Default',
-      'lineHeight': '',
-      'textDecoration': '',
-      'fontSize': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
+      fontWeight: "400",
+      fontStyle: "",
+      letterSpacing: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
+      },
+      fontFamily: "Default",
+      lineHeight: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
+      },
+      textDecoration: "",
+      textTransform: "",
+      fontSize: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
       }
     }
   },
@@ -42054,18 +42172,28 @@ const attributes = {
   buttonTypography: {
     type: "object",
     default: {
-      "fontWeight": '900',
-      'fontStyle': '',
-      'textTransform': '',
-      'letterSpacing': '',
-      'fontFamily': 'Default',
-      'lineHeight': '',
-      'textDecoration': '',
-      'fontSize': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
+      fontWeight: "400",
+      fontStyle: "",
+      letterSpacing: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
+      },
+      fontFamily: "Default",
+      lineHeight: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
+      },
+      textDecoration: "",
+      textTransform: "",
+      fontSize: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
       }
     }
   },
@@ -42084,18 +42212,28 @@ const attributes = {
   badgeTypography: {
     type: "object",
     default: {
-      "fontWeight": '900',
-      'fontStyle': '',
-      'textTransform': '',
-      'letterSpacing': '',
-      'fontFamily': 'Default',
-      'lineHeight': '',
-      'textDecoration': '',
-      'fontSize': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
+      fontWeight: "400",
+      fontStyle: "",
+      letterSpacing: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
+      },
+      fontFamily: "Default",
+      lineHeight: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
+      },
+      textDecoration: "",
+      textTransform: "",
+      fontSize: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
       }
     }
   },
@@ -43408,7 +43546,7 @@ const deprecatedContent = [{
   },
 
   migrate: attributes => {
-    var _attributes$titleStyl, _attributes$titleStyl2, _attributes$titleStyl3, _attributes$titleStyl4, _attributes$tableStyl, _attributes$tableStyl2, _attributes$tableStyl3, _attributes$tableStyl4, _attributes$tableStyl5, _attributes$featureSt, _attributes$featureSt2, _attributes$featureSt3, _attributes$tableStyl6, _attributes$tableStyl7, _attributes$tableStyl8, _attributes$tableStyl9, _attributes$tableStyl10, _attributes$buttonSty, _attributes$buttonSty2, _attributes$buttonSty3, _attributes$buttonSty4, _attributes$buttonSty5, _attributes$buttonSty6, _attributes$tableStyl11, _attributes$tableStyl12, _attributes$tableStyl13, _attributes$tableStyl14, _attributes$titleStyl5, _attributes$titleStyl6, _attributes$titleStyl7, _attributes$titleStyl8, _attributes$titleStyl9, _attributes$titleStyl10, _attributes$priceStyl, _attributes$priceStyl2, _attributes$priceStyl3, _attributes$priceStyl4, _attributes$priceStyl5, _attributes$priceStyl6, _attributes$featureSt4, _attributes$featureSt5, _attributes$featureSt6, _attributes$featureSt7, _attributes$featureSt8, _attributes$featureSt9, _attributes$descStyle, _attributes$descStyle2, _attributes$descStyle3, _attributes$descStyle4, _attributes$descStyle5, _attributes$descStyle6, _attributes$buttonSty7, _attributes$buttonSty8, _attributes$buttonSty9, _attributes$buttonSty10, _attributes$buttonSty11, _attributes$buttonSty12, _attributes$buttonSty13, _attributes$titleStyl11, _attributes$titleStyl12, _attributes$titleStyl13, _attributes$titleStyl14, _attributes$titleStyl15, _attributes$titleStyl16, _attributes$titleStyl17, _attributes$titleStyl18, _attributes$titleStyl19, _attributes$priceStyl7, _attributes$priceStyl8, _attributes$priceStyl9, _attributes$priceStyl10, _attributes$priceStyl11, _attributes$priceStyl12, _attributes$priceStyl13, _attributes$priceStyl14, _attributes$priceStyl15, _attributes$priceStyl16, _attributes$priceStyl17, _attributes$priceStyl18, _attributes$priceStyl19, _attributes$priceStyl20, _attributes$priceStyl21, _attributes$priceStyl22, _attributes$priceStyl23, _attributes$priceStyl24, _attributes$priceStyl25, _attributes$priceStyl26, _attributes$priceStyl27, _attributes$priceStyl28, _attributes$priceStyl29, _attributes$priceStyl30, _attributes$priceStyl31, _attributes$featureSt10, _attributes$featureSt11, _attributes$featureSt12, _attributes$featureSt13, _attributes$featureSt14, _attributes$featureSt15, _attributes$featureSt16, _attributes$featureSt17, _attributes$featureSt18, _attributes$descStyle7, _attributes$descStyle8, _attributes$descStyle9, _attributes$descStyle10, _attributes$descStyle11, _attributes$descStyle12, _attributes$descStyle13, _attributes$descStyle14, _attributes$buttonSty14, _attributes$buttonSty15, _attributes$buttonSty16, _attributes$buttonSty17, _attributes$buttonSty18, _attributes$buttonSty19, _attributes$buttonSty20, _attributes$buttonSty21, _attributes$buttonSty22, _attributes$badgeStyl, _attributes$badgeStyl2, _attributes$badgeStyl3, _attributes$badgeStyl4, _attributes$badgeStyl5, _attributes$badgeStyl6, _attributes$badgeStyl7, _attributes$badgeStyl8, _attributes$priceStyl32, _attributes$priceStyl33, _attributes$priceStyl34, _attributes$priceStyl35, _attributes$priceStyl36, _attributes$priceStyl37, _attributes$priceStyl38, _attributes$priceStyl39, _attributes$priceStyl40, _attributes$priceStyl41, _attributes$priceStyl42, _attributes$priceStyl43, _attributes$priceStyl44, _attributes$priceStyl45, _attributes$priceStyl46;
+    var _attributes$titleStyl, _attributes$titleStyl2, _attributes$titleStyl3, _attributes$titleStyl4, _attributes$tableStyl, _attributes$tableStyl2, _attributes$tableStyl3, _attributes$tableStyl4, _attributes$tableStyl5, _attributes$featureSt, _attributes$featureSt2, _attributes$featureSt3, _attributes$tableStyl6, _attributes$tableStyl7, _attributes$tableStyl8, _attributes$tableStyl9, _attributes$tableStyl10, _attributes$buttonSty, _attributes$buttonSty2, _attributes$buttonSty3, _attributes$buttonSty4, _attributes$buttonSty5, _attributes$buttonSty6, _attributes$tableStyl11, _attributes$tableStyl12, _attributes$tableStyl13, _attributes$tableStyl14, _attributes$titleStyl5, _attributes$titleStyl6, _attributes$titleStyl7, _attributes$titleStyl8, _attributes$titleStyl9, _attributes$titleStyl10, _attributes$priceStyl, _attributes$priceStyl2, _attributes$priceStyl3, _attributes$priceStyl4, _attributes$priceStyl5, _attributes$priceStyl6, _attributes$featureSt4, _attributes$featureSt5, _attributes$featureSt6, _attributes$featureSt7, _attributes$featureSt8, _attributes$featureSt9, _attributes$descStyle, _attributes$descStyle2, _attributes$descStyle3, _attributes$descStyle4, _attributes$descStyle5, _attributes$descStyle6, _attributes$buttonSty7, _attributes$buttonSty8, _attributes$buttonSty9, _attributes$buttonSty10, _attributes$buttonSty11, _attributes$buttonSty12, _attributes$buttonSty13, _attributes$titleStyl11, _attributes$titleStyl12, _attributes$titleStyl13, _attributes$titleStyl14, _attributes$titleStyl15, _attributes$titleStyl16, _attributes$titleStyl17, _attributes$titleStyl18, _attributes$titleStyl19, _attributes$titleStyl20, _attributes$titleStyl21, _attributes$titleStyl22, _attributes$titleStyl23, _attributes$priceStyl7, _attributes$priceStyl8, _attributes$priceStyl9, _attributes$priceStyl10, _attributes$priceStyl11, _attributes$priceStyl12, _attributes$priceStyl13, _attributes$priceStyl14, _attributes$priceStyl15, _attributes$priceStyl16, _attributes$priceStyl17, _attributes$priceStyl18, _attributes$priceStyl19, _attributes$priceStyl20, _attributes$priceStyl21, _attributes$priceStyl22, _attributes$priceStyl23, _attributes$priceStyl24, _attributes$priceStyl25, _attributes$priceStyl26, _attributes$priceStyl27, _attributes$priceStyl28, _attributes$priceStyl29, _attributes$priceStyl30, _attributes$priceStyl31, _attributes$featureSt10, _attributes$featureSt11, _attributes$featureSt12, _attributes$featureSt13, _attributes$featureSt14, _attributes$featureSt15, _attributes$featureSt16, _attributes$featureSt17, _attributes$featureSt18, _attributes$featureSt19, _attributes$featureSt20, _attributes$featureSt21, _attributes$featureSt22, _attributes$descStyle7, _attributes$descStyle8, _attributes$descStyle9, _attributes$descStyle10, _attributes$descStyle11, _attributes$descStyle12, _attributes$descStyle13, _attributes$descStyle14, _attributes$descStyle15, _attributes$descStyle16, _attributes$descStyle17, _attributes$descStyle18, _attributes$buttonSty14, _attributes$buttonSty15, _attributes$buttonSty16, _attributes$buttonSty17, _attributes$buttonSty18, _attributes$buttonSty19, _attributes$buttonSty20, _attributes$buttonSty21, _attributes$buttonSty22, _attributes$buttonSty23, _attributes$buttonSty24, _attributes$buttonSty25, _attributes$buttonSty26, _attributes$badgeStyl, _attributes$badgeStyl2, _attributes$badgeStyl3, _attributes$badgeStyl4, _attributes$badgeStyl5, _attributes$badgeStyl6, _attributes$badgeStyl7, _attributes$badgeStyl8, _attributes$badgeStyl9, _attributes$badgeStyl10, _attributes$priceStyl32, _attributes$priceStyl33, _attributes$priceStyl34, _attributes$priceStyl35, _attributes$priceStyl36, _attributes$priceStyl37, _attributes$priceStyl38, _attributes$priceStyl39, _attributes$priceStyl40, _attributes$priceStyl41, _attributes$priceStyl42, _attributes$priceStyl43, _attributes$priceStyl44, _attributes$priceStyl45, _attributes$priceStyl46;
 
     let newAttributes = {
       blockId: attributes.block_id ? "premium-pricing-table-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_1__.generateBlockId)(attributes.block_id) : '',
@@ -43753,25 +43891,45 @@ const deprecatedContent = [{
         "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl11 = attributes.titleStyles[0]) === null || _attributes$titleStyl11 === void 0 ? void 0 : _attributes$titleStyl11.titleWeight) || '400',
         'fontStyle': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl12 = attributes.titleStyles[0]) === null || _attributes$titleStyl12 === void 0 ? void 0 : _attributes$titleStyl12.titleStyle) || '',
         'textTransform': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl13 = attributes.titleStyles[0]) === null || _attributes$titleStyl13 === void 0 ? void 0 : _attributes$titleStyl13.titleUpper) || '',
-        'letterSpacing': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl14 = attributes.titleStyles[0]) === null || _attributes$titleStyl14 === void 0 ? void 0 : _attributes$titleStyl14.titleLetter) || '',
         'fontFamily': 'Default',
-        'lineHeight': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl15 = attributes.titleStyles[0]) === null || _attributes$titleStyl15 === void 0 ? void 0 : _attributes$titleStyl15.titleLine) || '',
+        letterSpacing: {
+          Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl14 = attributes.titleStyles[0]) === null || _attributes$titleStyl14 === void 0 ? void 0 : _attributes$titleStyl14.titleLetter) || '',
+          Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl15 = attributes.titleStyles[0]) === null || _attributes$titleStyl15 === void 0 ? void 0 : _attributes$titleStyl15.titleLetter) || '',
+          Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl16 = attributes.titleStyles[0]) === null || _attributes$titleStyl16 === void 0 ? void 0 : _attributes$titleStyl16.titleLetter) || '',
+          unit: "px"
+        },
+        lineHeight: {
+          Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl17 = attributes.titleStyles[0]) === null || _attributes$titleStyl17 === void 0 ? void 0 : _attributes$titleStyl17.titleLine) || '',
+          Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl18 = attributes.titleStyles[0]) === null || _attributes$titleStyl18 === void 0 ? void 0 : _attributes$titleStyl18.titleLine) || '',
+          Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl19 = attributes.titleStyles[0]) === null || _attributes$titleStyl19 === void 0 ? void 0 : _attributes$titleStyl19.titleLine) || '',
+          unit: "px"
+        },
         'textDecoration': '',
         'fontSize': {
-          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl16 = attributes.titleStyles[0]) === null || _attributes$titleStyl16 === void 0 ? void 0 : _attributes$titleStyl16.titleSize) || '',
-          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl17 = attributes.titleStyles[0]) === null || _attributes$titleStyl17 === void 0 ? void 0 : _attributes$titleStyl17.titleSizeTablet) || '',
-          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl18 = attributes.titleStyles[0]) === null || _attributes$titleStyl18 === void 0 ? void 0 : _attributes$titleStyl18.titleSizeMobile) || '',
-          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl19 = attributes.titleStyles[0]) === null || _attributes$titleStyl19 === void 0 ? void 0 : _attributes$titleStyl19.titleSizeUnit) || 'px'
+          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl20 = attributes.titleStyles[0]) === null || _attributes$titleStyl20 === void 0 ? void 0 : _attributes$titleStyl20.titleSize) || '',
+          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl21 = attributes.titleStyles[0]) === null || _attributes$titleStyl21 === void 0 ? void 0 : _attributes$titleStyl21.titleSizeTablet) || '',
+          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl22 = attributes.titleStyles[0]) === null || _attributes$titleStyl22 === void 0 ? void 0 : _attributes$titleStyl22.titleSizeMobile) || '',
+          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl23 = attributes.titleStyles[0]) === null || _attributes$titleStyl23 === void 0 ? void 0 : _attributes$titleStyl23.titleSizeUnit) || 'px'
         }
       },
       slashTypography: {
         "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl7 = attributes.priceStyles[0]) === null || _attributes$priceStyl7 === void 0 ? void 0 : _attributes$priceStyl7.slashWeight) || '400',
         'fontStyle': '',
         'textTransform': '',
-        'letterSpacing': '',
         'fontFamily': 'Default',
-        'lineHeight': '',
         'textDecoration': '',
+        letterSpacing: {
+          Desktop: '',
+          Tablet: '',
+          Mobile: '',
+          unit: "px"
+        },
+        lineHeight: {
+          Desktop: '',
+          Tablet: '',
+          Mobile: '',
+          unit: "px"
+        },
         'fontSize': {
           'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl8 = attributes.priceStyles[0]) === null || _attributes$priceStyl8 === void 0 ? void 0 : _attributes$priceStyl8.slashSize) || '',
           "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl9 = attributes.priceStyles[0]) === null || _attributes$priceStyl9 === void 0 ? void 0 : _attributes$priceStyl9.slashSizeTablet) || '',
@@ -43783,10 +43941,20 @@ const deprecatedContent = [{
         "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl12 = attributes.priceStyles[0]) === null || _attributes$priceStyl12 === void 0 ? void 0 : _attributes$priceStyl12.currWeight) || '400',
         'fontStyle': '',
         'textTransform': '',
-        'letterSpacing': '',
         'fontFamily': 'Default',
-        'lineHeight': '',
         'textDecoration': '',
+        letterSpacing: {
+          Desktop: '',
+          Tablet: '',
+          Mobile: '',
+          unit: "px"
+        },
+        lineHeight: {
+          Desktop: '',
+          Tablet: '',
+          Mobile: '',
+          unit: "px"
+        },
         'fontSize': {
           'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl13 = attributes.priceStyles[0]) === null || _attributes$priceStyl13 === void 0 ? void 0 : _attributes$priceStyl13.currSize) || '',
           "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl14 = attributes.priceStyles[0]) === null || _attributes$priceStyl14 === void 0 ? void 0 : _attributes$priceStyl14.currSizeTablet) || '',
@@ -43798,10 +43966,20 @@ const deprecatedContent = [{
         "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl17 = attributes.priceStyles[0]) === null || _attributes$priceStyl17 === void 0 ? void 0 : _attributes$priceStyl17.valWeight) || '400',
         'fontStyle': '',
         'textTransform': '',
-        'letterSpacing': '',
         'fontFamily': 'Default',
-        'lineHeight': '',
         'textDecoration': '',
+        letterSpacing: {
+          Desktop: '',
+          Tablet: '',
+          Mobile: '',
+          unit: "px"
+        },
+        lineHeight: {
+          Desktop: '',
+          Tablet: '',
+          Mobile: '',
+          unit: "px"
+        },
         'fontSize': {
           'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl18 = attributes.priceStyles[0]) === null || _attributes$priceStyl18 === void 0 ? void 0 : _attributes$priceStyl18.valSize) || '',
           "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl19 = attributes.priceStyles[0]) === null || _attributes$priceStyl19 === void 0 ? void 0 : _attributes$priceStyl19.valSizeTablet) || '',
@@ -43813,10 +43991,20 @@ const deprecatedContent = [{
         "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl22 = attributes.priceStyles[0]) === null || _attributes$priceStyl22 === void 0 ? void 0 : _attributes$priceStyl22.divWeight) || '400',
         'fontStyle': '',
         'textTransform': '',
-        'letterSpacing': '',
         'fontFamily': 'Default',
-        'lineHeight': '',
         'textDecoration': '',
+        letterSpacing: {
+          Desktop: '',
+          Tablet: '',
+          Mobile: '',
+          unit: "px"
+        },
+        lineHeight: {
+          Desktop: '',
+          Tablet: '',
+          Mobile: '',
+          unit: "px"
+        },
         'fontSize': {
           'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl23 = attributes.priceStyles[0]) === null || _attributes$priceStyl23 === void 0 ? void 0 : _attributes$priceStyl23.divSize) || '',
           "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl24 = attributes.priceStyles[0]) === null || _attributes$priceStyl24 === void 0 ? void 0 : _attributes$priceStyl24.divSizeTablet) || '',
@@ -43828,10 +44016,20 @@ const deprecatedContent = [{
         "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl27 = attributes.priceStyles[0]) === null || _attributes$priceStyl27 === void 0 ? void 0 : _attributes$priceStyl27.durWeight) || '400',
         'fontStyle': '',
         'textTransform': '',
-        'letterSpacing': '',
         'fontFamily': 'Default',
-        'lineHeight': '',
         'textDecoration': '',
+        letterSpacing: {
+          Desktop: '',
+          Tablet: '',
+          Mobile: '',
+          unit: "px"
+        },
+        lineHeight: {
+          Desktop: '',
+          Tablet: '',
+          Mobile: '',
+          unit: "px"
+        },
         'fontSize': {
           'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl28 = attributes.priceStyles[0]) === null || _attributes$priceStyl28 === void 0 ? void 0 : _attributes$priceStyl28.durSize) || '',
           "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl29 = attributes.priceStyles[0]) === null || _attributes$priceStyl29 === void 0 ? void 0 : _attributes$priceStyl29.durSizeTablet) || '',
@@ -43843,60 +44041,100 @@ const deprecatedContent = [{
         "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt10 = attributes.featureStyles[0]) === null || _attributes$featureSt10 === void 0 ? void 0 : _attributes$featureSt10.listWeight) || '400',
         'fontStyle': (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt11 = attributes.featureStyles[0]) === null || _attributes$featureSt11 === void 0 ? void 0 : _attributes$featureSt11.listItemsStyle) || '',
         'textTransform': (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt12 = attributes.featureStyles[0]) === null || _attributes$featureSt12 === void 0 ? void 0 : _attributes$featureSt12.listUpper) || '',
-        'letterSpacing': (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt13 = attributes.featureStyles[0]) === null || _attributes$featureSt13 === void 0 ? void 0 : _attributes$featureSt13.listLetter) || '',
         'fontFamily': 'Default',
-        'lineHeight': (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt14 = attributes.featureStyles[0]) === null || _attributes$featureSt14 === void 0 ? void 0 : _attributes$featureSt14.listLine) || '',
+        letterSpacing: {
+          Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt13 = attributes.featureStyles[0]) === null || _attributes$featureSt13 === void 0 ? void 0 : _attributes$featureSt13.listLetter) || '',
+          Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt14 = attributes.featureStyles[0]) === null || _attributes$featureSt14 === void 0 ? void 0 : _attributes$featureSt14.listLetter) || '',
+          Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt15 = attributes.featureStyles[0]) === null || _attributes$featureSt15 === void 0 ? void 0 : _attributes$featureSt15.listLetter) || '',
+          unit: "px"
+        },
+        lineHeight: {
+          Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt16 = attributes.featureStyles[0]) === null || _attributes$featureSt16 === void 0 ? void 0 : _attributes$featureSt16.listLine) || '',
+          Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt17 = attributes.featureStyles[0]) === null || _attributes$featureSt17 === void 0 ? void 0 : _attributes$featureSt17.listLine) || '',
+          Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt18 = attributes.featureStyles[0]) === null || _attributes$featureSt18 === void 0 ? void 0 : _attributes$featureSt18.listLine) || '',
+          unit: "px"
+        },
         'textDecoration': '',
         'fontSize': {
-          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt15 = attributes.featureStyles[0]) === null || _attributes$featureSt15 === void 0 ? void 0 : _attributes$featureSt15.listSize) || '',
-          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt16 = attributes.featureStyles[0]) === null || _attributes$featureSt16 === void 0 ? void 0 : _attributes$featureSt16.listSizeTablet) || '',
-          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt17 = attributes.featureStyles[0]) === null || _attributes$featureSt17 === void 0 ? void 0 : _attributes$featureSt17.listSizeMobile) || '',
-          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt18 = attributes.featureStyles[0]) === null || _attributes$featureSt18 === void 0 ? void 0 : _attributes$featureSt18.listSizeUnit) || 'px'
+          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt19 = attributes.featureStyles[0]) === null || _attributes$featureSt19 === void 0 ? void 0 : _attributes$featureSt19.listSize) || '',
+          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt20 = attributes.featureStyles[0]) === null || _attributes$featureSt20 === void 0 ? void 0 : _attributes$featureSt20.listSizeTablet) || '',
+          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt21 = attributes.featureStyles[0]) === null || _attributes$featureSt21 === void 0 ? void 0 : _attributes$featureSt21.listSizeMobile) || '',
+          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt22 = attributes.featureStyles[0]) === null || _attributes$featureSt22 === void 0 ? void 0 : _attributes$featureSt22.listSizeUnit) || 'px'
         }
       },
       descTypography: {
         "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle7 = attributes.descStyles[0]) === null || _attributes$descStyle7 === void 0 ? void 0 : _attributes$descStyle7.descWeight) || '400',
         'fontStyle': (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle8 = attributes.descStyles[0]) === null || _attributes$descStyle8 === void 0 ? void 0 : _attributes$descStyle8.descStyle) || '',
         'textTransform': '',
-        'letterSpacing': (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle9 = attributes.descStyles[0]) === null || _attributes$descStyle9 === void 0 ? void 0 : _attributes$descStyle9.descLetter) || '',
         'fontFamily': 'Default',
-        'lineHeight': (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle10 = attributes.descStyles[0]) === null || _attributes$descStyle10 === void 0 ? void 0 : _attributes$descStyle10.descLine) || '',
         'textDecoration': '',
+        letterSpacing: {
+          Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle9 = attributes.descStyles[0]) === null || _attributes$descStyle9 === void 0 ? void 0 : _attributes$descStyle9.descLetter) || '',
+          Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle10 = attributes.descStyles[0]) === null || _attributes$descStyle10 === void 0 ? void 0 : _attributes$descStyle10.descLetter) || '',
+          Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle11 = attributes.descStyles[0]) === null || _attributes$descStyle11 === void 0 ? void 0 : _attributes$descStyle11.descLetter) || '',
+          unit: "px"
+        },
+        lineHeight: {
+          Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle12 = attributes.descStyles[0]) === null || _attributes$descStyle12 === void 0 ? void 0 : _attributes$descStyle12.descLine) || '',
+          Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle13 = attributes.descStyles[0]) === null || _attributes$descStyle13 === void 0 ? void 0 : _attributes$descStyle13.descLine) || '',
+          Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle14 = attributes.descStyles[0]) === null || _attributes$descStyle14 === void 0 ? void 0 : _attributes$descStyle14.descLine) || '',
+          unit: "px"
+        },
         'fontSize': {
-          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle11 = attributes.descStyles[0]) === null || _attributes$descStyle11 === void 0 ? void 0 : _attributes$descStyle11.descSize) || '',
-          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle12 = attributes.descStyles[0]) === null || _attributes$descStyle12 === void 0 ? void 0 : _attributes$descStyle12.descSizeTablet) || '',
-          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle13 = attributes.descStyles[0]) === null || _attributes$descStyle13 === void 0 ? void 0 : _attributes$descStyle13.descSizeMobile) || '',
-          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle14 = attributes.descStyles[0]) === null || _attributes$descStyle14 === void 0 ? void 0 : _attributes$descStyle14.descSizeUnit) || 'px'
+          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle15 = attributes.descStyles[0]) === null || _attributes$descStyle15 === void 0 ? void 0 : _attributes$descStyle15.descSize) || '',
+          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle16 = attributes.descStyles[0]) === null || _attributes$descStyle16 === void 0 ? void 0 : _attributes$descStyle16.descSizeTablet) || '',
+          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle17 = attributes.descStyles[0]) === null || _attributes$descStyle17 === void 0 ? void 0 : _attributes$descStyle17.descSizeMobile) || '',
+          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle18 = attributes.descStyles[0]) === null || _attributes$descStyle18 === void 0 ? void 0 : _attributes$descStyle18.descSizeUnit) || 'px'
         }
       },
       buttonTypography: {
         "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty14 = attributes.buttonStyles[0]) === null || _attributes$buttonSty14 === void 0 ? void 0 : _attributes$buttonSty14.btnWeight) || '400',
         'fontStyle': (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty15 = attributes.buttonStyles[0]) === null || _attributes$buttonSty15 === void 0 ? void 0 : _attributes$buttonSty15.btnStyle) || '',
         'textTransform': (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty16 = attributes.buttonStyles[0]) === null || _attributes$buttonSty16 === void 0 ? void 0 : _attributes$buttonSty16.btnUpper) || '',
-        'letterSpacing': (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty17 = attributes.buttonStyles[0]) === null || _attributes$buttonSty17 === void 0 ? void 0 : _attributes$buttonSty17.btnLetter) || '',
         'fontFamily': 'Default',
-        'lineHeight': (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty18 = attributes.buttonStyles[0]) === null || _attributes$buttonSty18 === void 0 ? void 0 : _attributes$buttonSty18.btnLine) || '',
+        letterSpacing: {
+          Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty17 = attributes.buttonStyles[0]) === null || _attributes$buttonSty17 === void 0 ? void 0 : _attributes$buttonSty17.btnLetter) || '',
+          Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty18 = attributes.buttonStyles[0]) === null || _attributes$buttonSty18 === void 0 ? void 0 : _attributes$buttonSty18.btnLetter) || '',
+          Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty19 = attributes.buttonStyles[0]) === null || _attributes$buttonSty19 === void 0 ? void 0 : _attributes$buttonSty19.btnLetter) || '',
+          unit: "px"
+        },
+        lineHeight: {
+          Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty20 = attributes.buttonStyles[0]) === null || _attributes$buttonSty20 === void 0 ? void 0 : _attributes$buttonSty20.btnLine) || '',
+          Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty21 = attributes.buttonStyles[0]) === null || _attributes$buttonSty21 === void 0 ? void 0 : _attributes$buttonSty21.btnLine) || '',
+          Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty22 = attributes.buttonStyles[0]) === null || _attributes$buttonSty22 === void 0 ? void 0 : _attributes$buttonSty22.btnLine) || '',
+          unit: "px"
+        },
         'textDecoration': '',
         'fontSize': {
-          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty19 = attributes.buttonStyles[0]) === null || _attributes$buttonSty19 === void 0 ? void 0 : _attributes$buttonSty19.btnSize) || '',
-          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty20 = attributes.buttonStyles[0]) === null || _attributes$buttonSty20 === void 0 ? void 0 : _attributes$buttonSty20.btnSizeTablet) || '',
-          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty21 = attributes.buttonStyles[0]) === null || _attributes$buttonSty21 === void 0 ? void 0 : _attributes$buttonSty21.btnSizeMobile) || '',
-          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty22 = attributes.buttonStyles[0]) === null || _attributes$buttonSty22 === void 0 ? void 0 : _attributes$buttonSty22.btnSizeUnit) || 'px'
+          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty23 = attributes.buttonStyles[0]) === null || _attributes$buttonSty23 === void 0 ? void 0 : _attributes$buttonSty23.btnSize) || '',
+          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty24 = attributes.buttonStyles[0]) === null || _attributes$buttonSty24 === void 0 ? void 0 : _attributes$buttonSty24.btnSizeTablet) || '',
+          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty25 = attributes.buttonStyles[0]) === null || _attributes$buttonSty25 === void 0 ? void 0 : _attributes$buttonSty25.btnSizeMobile) || '',
+          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty26 = attributes.buttonStyles[0]) === null || _attributes$buttonSty26 === void 0 ? void 0 : _attributes$buttonSty26.btnSizeUnit) || 'px'
         }
       },
       badgeTypography: {
         "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$badgeStyl = attributes.badgeStyles[0]) === null || _attributes$badgeStyl === void 0 ? void 0 : _attributes$badgeStyl.badgeWeight) || '400',
         'fontStyle': (attributes === null || attributes === void 0 ? void 0 : (_attributes$badgeStyl2 = attributes.badgeStyles[0]) === null || _attributes$badgeStyl2 === void 0 ? void 0 : _attributes$badgeStyl2.badgeStyle) || '',
         'textTransform': (attributes === null || attributes === void 0 ? void 0 : (_attributes$badgeStyl3 = attributes.badgeStyles[0]) === null || _attributes$badgeStyl3 === void 0 ? void 0 : _attributes$badgeStyl3.badgeUpper) || '',
-        'letterSpacing': (attributes === null || attributes === void 0 ? void 0 : (_attributes$badgeStyl4 = attributes.badgeStyles[0]) === null || _attributes$badgeStyl4 === void 0 ? void 0 : _attributes$badgeStyl4.badgeLetter) || '',
         'fontFamily': 'Default',
-        'lineHeight': '',
         'textDecoration': '',
+        letterSpacing: {
+          Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$badgeStyl4 = attributes.badgeStyles[0]) === null || _attributes$badgeStyl4 === void 0 ? void 0 : _attributes$badgeStyl4.badgeLetter) || '',
+          Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$badgeStyl5 = attributes.badgeStyles[0]) === null || _attributes$badgeStyl5 === void 0 ? void 0 : _attributes$badgeStyl5.badgeLetter) || '',
+          Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$badgeStyl6 = attributes.badgeStyles[0]) === null || _attributes$badgeStyl6 === void 0 ? void 0 : _attributes$badgeStyl6.badgeLetter) || '',
+          unit: "px"
+        },
+        lineHeight: {
+          Desktop: '',
+          Tablet: '',
+          Mobile: '',
+          unit: "px"
+        },
         'fontSize': {
-          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$badgeStyl5 = attributes.badgeStyles[0]) === null || _attributes$badgeStyl5 === void 0 ? void 0 : _attributes$badgeStyl5.badgeTextSize) || '',
-          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$badgeStyl6 = attributes.badgeStyles[0]) === null || _attributes$badgeStyl6 === void 0 ? void 0 : _attributes$badgeStyl6.badgeSizeTablet) || '',
-          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$badgeStyl7 = attributes.badgeStyles[0]) === null || _attributes$badgeStyl7 === void 0 ? void 0 : _attributes$badgeStyl7.badgeSizeMobile) || '',
-          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$badgeStyl8 = attributes.badgeStyles[0]) === null || _attributes$badgeStyl8 === void 0 ? void 0 : _attributes$badgeStyl8.badgeTextUnit) || 'px'
+          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$badgeStyl7 = attributes.badgeStyles[0]) === null || _attributes$badgeStyl7 === void 0 ? void 0 : _attributes$badgeStyl7.badgeTextSize) || '',
+          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$badgeStyl8 = attributes.badgeStyles[0]) === null || _attributes$badgeStyl8 === void 0 ? void 0 : _attributes$badgeStyl8.badgeSizeTablet) || '',
+          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$badgeStyl9 = attributes.badgeStyles[0]) === null || _attributes$badgeStyl9 === void 0 ? void 0 : _attributes$badgeStyl9.badgeSizeMobile) || '',
+          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$badgeStyl10 = attributes.badgeStyles[0]) === null || _attributes$badgeStyl10 === void 0 ? void 0 : _attributes$badgeStyl10.badgeTextUnit) || 'px'
         }
       },
       slashVAlign: {
@@ -45979,7 +46217,11 @@ class PremiumPricingTable extends Component {
       });
     };
 
-    const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-pricing-table");
+    const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-pricing-table", {
+      " premium-desktop-hidden": hideDesktop,
+      " premium-tablet-hidden": hideTablet,
+      " premium-mobile-hidden": hideMobile
+    });
     return [isSelected && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(BlockControls, {
       key: "controls"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(AlignmentToolbar, {
@@ -46622,8 +46864,7 @@ class PremiumPricingTable extends Component {
         hideMobile: value ? " premium-mobile-hidden" : ""
       })
     })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      id: `premium-pricing-table-${blockId}`,
-      className: `${mainClasses} ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`,
+      className: `${mainClasses} ${blockId}`,
       style: {
         textAlign: contentAlign,
         backgroundColor: tableStyles[0].tableBack,
@@ -46790,11 +47031,7 @@ class PremiumPricingTable extends Component {
       onChange: newLink => setAttributes({
         btnLink: newLink
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
-      dangerouslySetInnerHTML: {
-        __html: loadStyles()
-      }
-    })))];
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, loadStyles())))];
   }
 
 }
@@ -46928,9 +47165,13 @@ const save = props => {
     return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.generateCss)(styles);
   };
 
-  const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-pricing-table");
+  const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-pricing-table", {
+    " premium-desktop-hidden": hideDesktop,
+    " premium-tablet-hidden": hideTablet,
+    " premium-mobile-hidden": hideMobile
+  });
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: `${mainClasses} ${blockId} ${hideDesktop || ''} ${hideTablet || ''} ${hideMobile || ''}`,
+    className: `${mainClasses} ${blockId}`,
     style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       textAlign: contentAlign,
       backgroundColor: tableStyles[0].tableBack,
@@ -46956,10 +47197,8 @@ const save = props => {
       fontStyle: badgeTypography === null || badgeTypography === void 0 ? void 0 : badgeTypography.fontStyle,
       fontFamily: badgeTypography === null || badgeTypography === void 0 ? void 0 : badgeTypography.fontFamily,
       fontWeight: badgeTypography === null || badgeTypography === void 0 ? void 0 : badgeTypography.fontWeight,
-      letterSpacing: badgeTypography === null || badgeTypography === void 0 ? void 0 : badgeTypography.letterSpacing,
       textDecoration: badgeTypography === null || badgeTypography === void 0 ? void 0 : badgeTypography.textDecoration,
       textTransform: badgeTypography === null || badgeTypography === void 0 ? void 0 : badgeTypography.textTransform,
-      lineHeight: `${badgeTypography === null || badgeTypography === void 0 ? void 0 : badgeTypography.lineHeight}px`,
       width: badgeStyles[0].badgeWidth + "px",
       top: badgeStyles[0].badgeTop + "px",
       left: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeHorizontal + "px" : "auto",
@@ -46979,10 +47218,8 @@ const save = props => {
       fontStyle: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontStyle,
       fontFamily: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontFamily,
       fontWeight: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontWeight,
-      letterSpacing: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.letterSpacing,
       textDecoration: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textDecoration,
       textTransform: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textTransform,
-      lineHeight: `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.lineHeight}px`,
       textShadow: `${titleTextShadow.horizontal}px ${titleTextShadow.vertical}px ${titleTextShadow.blur}px ${titleTextShadow.color}`
     })
   })), priceChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -46998,10 +47235,8 @@ const save = props => {
       fontStyle: slashTypography === null || slashTypography === void 0 ? void 0 : slashTypography.fontStyle,
       fontFamily: slashTypography === null || slashTypography === void 0 ? void 0 : slashTypography.fontFamily,
       fontWeight: slashTypography === null || slashTypography === void 0 ? void 0 : slashTypography.fontWeight,
-      letterSpacing: slashTypography === null || slashTypography === void 0 ? void 0 : slashTypography.letterSpacing,
       textDecoration: slashTypography === null || slashTypography === void 0 ? void 0 : slashTypography.textDecoration,
-      textTransform: slashTypography === null || slashTypography === void 0 ? void 0 : slashTypography.textTransform,
-      lineHeight: `${slashTypography === null || slashTypography === void 0 ? void 0 : slashTypography.lineHeight}px`
+      textTransform: slashTypography === null || slashTypography === void 0 ? void 0 : slashTypography.textTransform
     })
   }, priceStyles[0].slashPrice), priceStyles[0].currPrice && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: `premium-pricing-table__currency`,
@@ -47010,10 +47245,8 @@ const save = props => {
       fontStyle: currTypography === null || currTypography === void 0 ? void 0 : currTypography.fontStyle,
       fontFamily: currTypography === null || currTypography === void 0 ? void 0 : currTypography.fontFamily,
       fontWeight: currTypography === null || currTypography === void 0 ? void 0 : currTypography.fontWeight,
-      letterSpacing: currTypography === null || currTypography === void 0 ? void 0 : currTypography.letterSpacing,
       textDecoration: currTypography === null || currTypography === void 0 ? void 0 : currTypography.textDecoration,
-      textTransform: currTypography === null || currTypography === void 0 ? void 0 : currTypography.textTransform,
-      lineHeight: `${currTypography === null || currTypography === void 0 ? void 0 : currTypography.lineHeight}px`
+      textTransform: currTypography === null || currTypography === void 0 ? void 0 : currTypography.textTransform
     })
   }, priceStyles[0].currPrice), priceStyles[0].valPrice && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: `premium-pricing-table__val`,
@@ -47022,10 +47255,8 @@ const save = props => {
       fontStyle: priceTypography === null || priceTypography === void 0 ? void 0 : priceTypography.fontStyle,
       fontFamily: priceTypography === null || priceTypography === void 0 ? void 0 : priceTypography.fontFamily,
       fontWeight: priceTypography === null || priceTypography === void 0 ? void 0 : priceTypography.fontWeight,
-      letterSpacing: priceTypography === null || priceTypography === void 0 ? void 0 : priceTypography.letterSpacing,
       textDecoration: priceTypography === null || priceTypography === void 0 ? void 0 : priceTypography.textDecoration,
-      textTransform: priceTypography === null || priceTypography === void 0 ? void 0 : priceTypography.textTransform,
-      lineHeight: `${priceTypography === null || priceTypography === void 0 ? void 0 : priceTypography.lineHeight}px`
+      textTransform: priceTypography === null || priceTypography === void 0 ? void 0 : priceTypography.textTransform
     })
   }, priceStyles[0].valPrice), priceStyles[0].divPrice && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: `premium-pricing-table__divider`,
@@ -47034,10 +47265,8 @@ const save = props => {
       fontStyle: dividerTypography === null || dividerTypography === void 0 ? void 0 : dividerTypography.fontStyle,
       fontFamily: dividerTypography === null || dividerTypography === void 0 ? void 0 : dividerTypography.fontFamily,
       fontWeight: dividerTypography === null || dividerTypography === void 0 ? void 0 : dividerTypography.fontWeight,
-      letterSpacing: dividerTypography === null || dividerTypography === void 0 ? void 0 : dividerTypography.letterSpacing,
       textDecoration: dividerTypography === null || dividerTypography === void 0 ? void 0 : dividerTypography.textDecoration,
-      textTransform: dividerTypography === null || dividerTypography === void 0 ? void 0 : dividerTypography.textTransform,
-      lineHeight: `${dividerTypography === null || dividerTypography === void 0 ? void 0 : dividerTypography.lineHeight}px`
+      textTransform: dividerTypography === null || dividerTypography === void 0 ? void 0 : dividerTypography.textTransform
     })
   }, priceStyles[0].divPrice), priceStyles[0].durPrice && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: `premium-pricing-table__dur`,
@@ -47046,10 +47275,8 @@ const save = props => {
       fontStyle: durationTypography === null || durationTypography === void 0 ? void 0 : durationTypography.fontStyle,
       fontFamily: durationTypography === null || durationTypography === void 0 ? void 0 : durationTypography.fontFamily,
       fontWeight: durationTypography === null || durationTypography === void 0 ? void 0 : durationTypography.fontWeight,
-      letterSpacing: durationTypography === null || durationTypography === void 0 ? void 0 : durationTypography.letterSpacing,
       textDecoration: durationTypography === null || durationTypography === void 0 ? void 0 : durationTypography.textDecoration,
-      textTransform: durationTypography === null || durationTypography === void 0 ? void 0 : durationTypography.textTransform,
-      lineHeight: `${durationTypography === null || durationTypography === void 0 ? void 0 : durationTypography.lineHeight}px`
+      textTransform: durationTypography === null || durationTypography === void 0 ? void 0 : durationTypography.textTransform
     })
   }, priceStyles[0].durPrice)), listChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-pricing-table__list_wrap`
@@ -47063,10 +47290,8 @@ const save = props => {
       fontStyle: listTypography === null || listTypography === void 0 ? void 0 : listTypography.fontStyle,
       fontFamily: listTypography === null || listTypography === void 0 ? void 0 : listTypography.fontFamily,
       fontWeight: listTypography === null || listTypography === void 0 ? void 0 : listTypography.fontWeight,
-      letterSpacing: listTypography === null || listTypography === void 0 ? void 0 : listTypography.letterSpacing,
       textDecoration: listTypography === null || listTypography === void 0 ? void 0 : listTypography.textDecoration,
-      textTransform: listTypography === null || listTypography === void 0 ? void 0 : listTypography.textTransform,
-      lineHeight: `${listTypography === null || listTypography === void 0 ? void 0 : listTypography.lineHeight}px`
+      textTransform: listTypography === null || listTypography === void 0 ? void 0 : listTypography.textTransform
     })
   }, listItems)), descChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-pricing-table__desc_wrap`
@@ -47080,10 +47305,8 @@ const save = props => {
       fontStyle: descTypography === null || descTypography === void 0 ? void 0 : descTypography.fontStyle,
       fontFamily: descTypography === null || descTypography === void 0 ? void 0 : descTypography.fontFamily,
       fontWeight: descTypography === null || descTypography === void 0 ? void 0 : descTypography.fontWeight,
-      letterSpacing: descTypography === null || descTypography === void 0 ? void 0 : descTypography.letterSpacing,
       textDecoration: descTypography === null || descTypography === void 0 ? void 0 : descTypography.textDecoration,
-      textTransform: descTypography === null || descTypography === void 0 ? void 0 : descTypography.textTransform,
-      lineHeight: `${descTypography === null || descTypography === void 0 ? void 0 : descTypography.lineHeight}px`
+      textTransform: descTypography === null || descTypography === void 0 ? void 0 : descTypography.textTransform
     })
   })), btnChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-pricing-table__button`,
@@ -47101,10 +47324,8 @@ const save = props => {
       fontStyle: buttonTypography === null || buttonTypography === void 0 ? void 0 : buttonTypography.fontStyle,
       fontFamily: buttonTypography === null || buttonTypography === void 0 ? void 0 : buttonTypography.fontFamily,
       fontWeight: buttonTypography === null || buttonTypography === void 0 ? void 0 : buttonTypography.fontWeight,
-      letterSpacing: buttonTypography === null || buttonTypography === void 0 ? void 0 : buttonTypography.letterSpacing,
       textDecoration: buttonTypography === null || buttonTypography === void 0 ? void 0 : buttonTypography.textDecoration,
       textTransform: buttonTypography === null || buttonTypography === void 0 ? void 0 : buttonTypography.textTransform,
-      lineHeight: `${buttonTypography === null || buttonTypography === void 0 ? void 0 : buttonTypography.lineHeight}px`,
       borderStyle: buttonBorder.borderType,
       borderColor: buttonBorder.borderColor
     })

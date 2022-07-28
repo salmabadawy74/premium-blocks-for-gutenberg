@@ -1,3 +1,4 @@
+import classnames from "classnames";
 import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
 import iconsList from "../../components/premium-icons-list";
@@ -10,7 +11,7 @@ import PremiumBackgroundControl from "../../components/Premium-Background-Contro
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import PremiumMediaUpload from '../../components/premium-media-upload';
 import Lottie from 'react-lottie-with-segments';
-import { generateBlockId, generateCss, typographyCss } from '../../components/HelperFunction';
+import { generateBlockId, generateCss, typographyCss, paddingCss, marginCss, borderCss } from '../../components/HelperFunction';
 import Icons from "../../components/icons";
 import MultiButtonsControl from '../../components/responsive-radio';
 import SpacingComponent from '../../components/premium-responsive-spacing';
@@ -132,7 +133,7 @@ class edit extends Component {
     }
 
     render() {
-        const { attributes, setAttributes, isSelected } = this.props;
+        const { attributes, setAttributes, isSelected, className } = this.props;
 
         const {
             blockId,
@@ -516,8 +517,8 @@ class edit extends Component {
                 'font-family': `${textTypography?.fontFamily}`,
                 'font-size': `${textTypography?.fontSize?.[this.props.deviceType]}${textTypography?.fontSize?.unit}`,
                 'font-weight': `${textTypography?.fontWeight}`,
-                'letter-spacing': `${textTypography?.letterSpacing}`,
-                'line-height': `${textTypography?.lineHeight}`,
+                'letter-spacing': `${textTypography?.letterSpacing?.[this.props.deviceType]}${textTypography?.letterSpacing?.unit}`,
+                'line-height': `${textTypography?.lineHeight?.[this.props.deviceType]}${textTypography?.lineHeight?.unit}`,
                 'font-style': `${textTypography?.fontStyle}`,
                 'text-transform': `${textTypography?.textTransform}`,
                 'text-decoration': `${textTypography?.textDecoration}`,
@@ -614,6 +615,12 @@ class edit extends Component {
                     }}
                 />
             )
+        });
+
+        const mainClasses = classnames(className, {
+            " premium-desktop-hidden": hideDesktop,
+            " premium-tablet-hidden": hideTablet,
+            " premium-mobile-hidden": hideMobile,
         });
 
         const reverse = reversedir ? -1 : 1;
@@ -1092,10 +1099,6 @@ class edit extends Component {
                                     <PremiumBorder
                                         label={__("Border")}
                                         value={iconBorder}
-                                        borderType={iconBorder.borderType}
-                                        borderColor={iconBorder.borderColor}
-                                        borderWidth={iconBorder.borderWidth}
-                                        borderRadius={iconBorder.borderRadius}
                                         onChange={(value) => setAttributes({ iconBorder: value })}
                                     />
                                     <hr />
@@ -1197,13 +1200,9 @@ class edit extends Component {
                     </InspectorTabs>
                 </InspectorControls>
             ),
-            <style
-                dangerouslySetInnerHTML={{
-                    __html: loadStyles()
-                }}
-            />,
+            <style>{loadStyles()}</style>,
             <div
-                className={`${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`} style={{
+                className={`${blockId} ${mainClasses}`} style={{
                     textAlign: align?.[this.props.deviceType],
                 }} >
                 <div className={`premium-title  ${backgroundText ? 'premium-title-bg-text' : ""}`} style={{

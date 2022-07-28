@@ -23,7 +23,11 @@ const save = props => {
         boxShadow,
         blockId
     } = props.attributes;
-    const mainClasses = classnames(className, 'premium-button');
+    const mainClasses = classnames(className, 'premium-button__wrap', {
+        " premium-desktop-hidden": hideDesktop,
+        " premium-tablet-hidden": hideTablet,
+        " premium-mobile-hidden": hideMobile,
+    });
 
     const loadStyles = () => {
         const styles = {};
@@ -44,14 +48,10 @@ const save = props => {
 
     return (
         <div
-            className={`${mainClasses}__wrap premium-button__${effect} ${blockId} premium-button__${effectDir} premium-button-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+            className={`${mainClasses} premium-button__${effect} ${blockId} premium-button__${effectDir} premium-button-${block_id}`}
             style={{ textAlign: btnAlign }}
         >
-            <style
-                dangerouslySetInnerHTML={{
-                    __html: loadStyles()
-                }}
-            />
+            <style>{loadStyles()}</style>
             <RichText.Content
                 tagName="a"
                 value={btnText}
@@ -65,10 +65,8 @@ const save = props => {
                     fontStyle: typography?.fontStyle,
                     fontFamily: typography?.fontFamily,
                     fontWeight: typography?.fontWeight,
-                    letterSpacing: typography?.letterSpacing,
                     textDecoration: typography?.textDecoration,
                     textTransform: typography?.textTransform,
-                    lineHeight: `${typography?.lineHeight}px`,
                     textShadow: `${textShadow?.horizontal}px ${textShadow?.vertical}px ${textShadow?.blur}px ${textShadow?.color}`,
                     boxShadow: `${boxShadow?.horizontal}px ${boxShadow?.vertical}px ${boxShadow?.blur}px ${boxShadow?.color} ${boxShadow?.position}`,
                     borderStyle: border?.borderType,
